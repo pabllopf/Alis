@@ -47,14 +47,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImDrawData drawData = new ImDrawData {Valid = 1};
-            
+
             // Act
             byte valid = drawData.Valid;
-            
+
             // Assert
             Assert.Equal(1, valid);
         }
-        
+
         /// <summary>
         ///     Tests that cmd lists count should be initialized correctly
         /// </summary>
@@ -63,14 +63,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImDrawData drawData = new ImDrawData {CmdListsCount = 5};
-            
+
             // Act
             int cmdListsCount = drawData.CmdListsCount;
-            
+
             // Assert
             Assert.Equal(5, cmdListsCount);
         }
-        
+
         /// <summary>
         ///     Tests that total idx count should be initialized correctly
         /// </summary>
@@ -79,14 +79,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImDrawData drawData = new ImDrawData {TotalIdxCount = 100};
-            
+
             // Act
             int totalIdxCount = drawData.TotalIdxCount;
-            
+
             // Assert
             Assert.Equal(100, totalIdxCount);
         }
-        
+
         /// <summary>
         ///     Tests that total vtx count should be initialized correctly
         /// </summary>
@@ -95,14 +95,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImDrawData drawData = new ImDrawData {TotalVtxCount = 200};
-            
+
             // Act
             int totalVtxCount = drawData.TotalVtxCount;
-            
+
             // Assert
             Assert.Equal(200, totalVtxCount);
         }
-        
+
         /// <summary>
         ///     Tests that cmd lists ptr should be initialized correctly
         /// </summary>
@@ -112,14 +112,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
             // Arrange
             IntPtr ptr = new IntPtr(123);
             ImDrawData drawData = new ImDrawData {CmdListsPtr = ptr};
-            
+
             // Act
             IntPtr cmdListsPtr = drawData.CmdListsPtr;
-            
+
             // Assert
             Assert.Equal(ptr, cmdListsPtr);
         }
-        
+
         /// <summary>
         ///     Tests that display pos should be initialized correctly
         /// </summary>
@@ -128,14 +128,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImDrawData drawData = new ImDrawData {DisplayPos = new Vector2(1.0f, 2.0f)};
-            
+
             // Act
             Vector2 displayPos = drawData.DisplayPos;
-            
+
             // Assert
             Assert.Equal(new Vector2(1.0f, 2.0f), displayPos);
         }
-        
+
         /// <summary>
         ///     Tests that display size should be initialized correctly
         /// </summary>
@@ -144,14 +144,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImDrawData drawData = new ImDrawData {DisplaySize = new Vector2(3.0f, 4.0f)};
-            
+
             // Act
             Vector2 displaySize = drawData.DisplaySize;
-            
+
             // Assert
             Assert.Equal(new Vector2(3.0f, 4.0f), displaySize);
         }
-        
+
         /// <summary>
         ///     Tests that framebuffer scale should be initialized correctly
         /// </summary>
@@ -160,14 +160,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImDrawData drawData = new ImDrawData {FramebufferScale = new Vector2(5.0f, 6.0f)};
-            
+
             // Act
             Vector2 framebufferScale = drawData.FramebufferScale;
-            
+
             // Assert
             Assert.Equal(new Vector2(5.0f, 6.0f), framebufferScale);
         }
-        
+
         /// <summary>
         ///     Tests that owner viewport ptr should be initialized correctly
         /// </summary>
@@ -177,14 +177,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
             // Arrange
             IntPtr ptr = new IntPtr(456);
             ImDrawData drawData = new ImDrawData {OwnerViewportPtr = ptr};
-            
+
             // Act
             IntPtr ownerViewportPtr = drawData.OwnerViewportPtr;
-            
+
             // Assert
             Assert.Equal(ptr, ownerViewportPtr);
         }
-        
+
         /// <summary>
         ///     Tests that clear should clear data
         /// </summary>
@@ -193,10 +193,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImDrawData drawData = new ImDrawData {Valid = 1, CmdListsCount = 5};
-            
+
             Assert.Throws<DllNotFoundException>(() => drawData.Clear());
         }
-        
+
         /// <summary>
         ///     Tests that de index all buffers should de index buffers
         /// </summary>
@@ -207,11 +207,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawData drawData = new ImDrawData {CmdListsCount = 1, CmdListsPtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImDrawList>())};
             ImDrawList drawList = new ImDrawList();
             Marshal.StructureToPtr(drawList, drawData.CmdListsPtr, false);
-            
+
             // Act
             Assert.Throws<DllNotFoundException>(() => drawData.DeIndexAllBuffers());
         }
-        
+
         /// <summary>
         ///     Tests that scale clip rects should scale clip rects
         /// </summary>
@@ -223,11 +223,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawList drawList = new ImDrawList();
             Marshal.StructureToPtr(drawList, drawData.CmdListsPtr, false);
             Vector2 fbScale = new Vector2(2.0f, 2.0f);
-            
+
             // Act
             Assert.Throws<DllNotFoundException>(() => drawData.ScaleClipRects(fbScale));
         }
-        
+
         /// <summary>
         ///     Tests that clear throws dll not found exception
         /// </summary>
@@ -237,7 +237,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawData drawData = new ImDrawData();
             Assert.Throws<DllNotFoundException>(() => drawData.Clear());
         }
-        
+
         /// <summary>
         ///     Tests that de index all buffers throws dll not found exception
         /// </summary>
@@ -247,7 +247,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawData drawData = new ImDrawData();
             Assert.Throws<DllNotFoundException>(() => drawData.DeIndexAllBuffers());
         }
-        
+
         /// <summary>
         ///     Tests that scale clip rects throws dll not found exception
         /// </summary>
@@ -258,7 +258,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Vector2 fbScale = new Vector2(1.0f, 1.0f);
             Assert.Throws<DllNotFoundException>(() => drawData.ScaleClipRects(fbScale));
         }
-        
+
         /// <summary>
         ///     Tests that cmd lists range throws dll not found exception
         /// </summary>

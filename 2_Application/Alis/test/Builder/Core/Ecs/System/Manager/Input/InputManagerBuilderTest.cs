@@ -45,10 +45,10 @@ namespace Alis.Test.Builder.Core.Ecs.System.Manager.Input
         public void InputManagerBuilder_DefaultConstructor_ValidInput()
         {
             InputManagerBuilder inputManagerBuilder = new InputManagerBuilder();
-            
+
             Assert.NotNull(inputManagerBuilder);
         }
-        
+
         /// <summary>
         ///     Tests that build valid input
         /// </summary>
@@ -56,9 +56,9 @@ namespace Alis.Test.Builder.Core.Ecs.System.Manager.Input
         public void Build_ValidInput()
         {
             InputManagerBuilder inputManagerBuilder = new InputManagerBuilder();
-            
+
             InputManager inputManager = inputManagerBuilder.Build();
-            
+
             Assert.NotNull(inputManager);
         }
     }

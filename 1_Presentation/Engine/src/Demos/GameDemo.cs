@@ -51,58 +51,58 @@ namespace Alis.App.Engine.Demos
         ///     The name window
         /// </summary>
         public const string NameWindow = "Game(sample)";
-        
+
         /// <summary>
         ///     The blue
         /// </summary>
         public byte _blue;
-        
+
         /// <summary>
         ///     The green
         /// </summary>
         public byte _green;
-        
+
         /// <summary>
         ///     The red
         /// </summary>
         public byte _red;
-        
+
         /// <summary>
         ///     The close render
         /// </summary>
         public bool closeRender = true;
-        
+
         /// <summary>
         ///     The pixels ptr
         /// </summary>
         public IntPtr pixelsPtr;
-        
+
         /// <summary>
         ///     The zero
         /// </summary>
         public IntPtr rendererGame = IntPtr.Zero;
-        
+
         /// <summary>
         ///     The texture
         /// </summary>
         public IntPtr texture;
-        
+
         /// <summary>
         ///     The textureopengl id
         /// </summary>
         public uint textureopenglId;
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="GameDemo" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
         public GameDemo(SpaceWork spaceWork) => SpaceWork = spaceWork;
-        
+
         /// <summary>
         ///     Gets the value of the space work
         /// </summary>
         public SpaceWork SpaceWork { get; }
-        
+
         /// <summary>
         ///     Initializes this instance
         /// </summary>
@@ -110,15 +110,15 @@ namespace Alis.App.Engine.Demos
         {
             InitSimpleGameDemo();
         }
-        
+
         /// <summary>
         ///     Starts this instance
         /// </summary>
         public void Start()
         {
         }
-        
-        
+
+
         /// <summary>
         ///     Runs this instance
         /// </summary>
@@ -126,7 +126,7 @@ namespace Alis.App.Engine.Demos
         {
             SimpleGameDemo();
         }
-        
+
         /// <summary>
         ///     Inits the simple game demo
         /// </summary>
@@ -142,7 +142,7 @@ namespace Alis.App.Engine.Demos
                 Marshal.WriteByte(pixelsPtr, i + 2, 0);
                 Marshal.WriteByte(pixelsPtr, i + 3, 255);
             }
-            
+
             uint[] textures = new uint[1];
             Gl.GlGenTextures(1, textures);
             textureopenglId = textures[0];
@@ -151,11 +151,11 @@ namespace Alis.App.Engine.Demos
             Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Linear);
             Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Linear);
             Gl.GlBindTexture(TextureTarget.Texture2D, 0);
-            
-            
+
+
             texture = (IntPtr) textureopenglId;
         }
-        
+
         /// <summary>
         ///     Simples the game demo
         /// </summary>
@@ -163,21 +163,21 @@ namespace Alis.App.Engine.Demos
         public void SimpleGameDemo()
         {
             RenderColors();
-            
+
             Sdl.SetRenderDrawColor(rendererGame, _red, _green, _blue, 255);
             Sdl.RenderClear(rendererGame);
             Sdl.RenderPresent(rendererGame);
-            
+
             RectangleI rect = new RectangleI(0, 0, 800, 600);
             Sdl.RenderReadPixels(rendererGame, ref rect, Sdl.PixelFormatABgr8888, pixelsPtr, 800 * 4);
-            
+
             // Update opengl texture 
             Gl.GlBindTexture(TextureTarget.Texture2D, textureopenglId);
             Gl.GlTexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba8, 800, 600, 0, PixelFormat.Rgba, PixelType.UnsignedByte, pixelsPtr);
             Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Linear);
             Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Linear);
             Gl.GlBindTexture(TextureTarget.Texture2D, 0);
-            
+
             if (ImGui.Begin(NameWindow, ref closeRender, ImGuiWindowFlags.NoCollapse))
             {
                 ImGui.Text("This is some useful text.");
@@ -189,10 +189,10 @@ namespace Alis.App.Engine.Demos
                     new Vector4(1, 1, 1, 1),
                     new Vector4(255, 0, 0, 255));
             }
-            
+
             ImGui.End();
         }
-        
+
         /// <summary>
         ///     Renders the colors
         /// </summary>

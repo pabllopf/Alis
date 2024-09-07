@@ -48,7 +48,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             uint expectedTimestamp = 123456789;
             uint expectedWindowID = 987654321;
             byte[] expectedText = new byte[32] {72, 101, 108, 108, 111, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-            
+
             TextInputEvent textInputEvent = new TextInputEvent
             {
                 type = expectedType,
@@ -87,7 +87,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
                 byte30 = 0,
                 byte31 = 0
             };
-            
+
             Assert.Equal(expectedType, textInputEvent.type);
             Assert.Equal(expectedTimestamp, textInputEvent.timestamp);
             Assert.Equal(expectedWindowID, textInputEvent.windowID);

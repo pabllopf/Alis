@@ -47,7 +47,7 @@ namespace Alis.Core.Network.Test.Exceptions
             ServerListenerSocketException exception = new ServerListenerSocketException();
             Assert.NotNull(exception);
         }
-        
+
         /// <summary>
         ///     Tests that server listener socket exception constructor with message
         /// </summary>
@@ -58,7 +58,7 @@ namespace Alis.Core.Network.Test.Exceptions
             Assert.NotNull(exception);
             Assert.Equal("Test message", exception.Message);
         }
-        
+
         /// <summary>
         ///     Tests that server listener socket exception constructor with message and inner exception
         /// </summary>

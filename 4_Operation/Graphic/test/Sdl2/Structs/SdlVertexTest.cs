@@ -49,7 +49,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             PropertyInfo[] fields = typeof(Vertex).GetProperties();
             Assert.Equal(3, fields.Length);
         }
-        
+
         /// <summary>
         ///     Tests that sdl vertex position field is of type point f
         /// </summary>
@@ -60,7 +60,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             Assert.NotNull(positionField);
             Assert.Equal(typeof(PointF), positionField.PropertyType);
         }
-        
+
         /// <summary>
         ///     Tests that sdl vertex color field is of type sdl color
         /// </summary>
@@ -71,7 +71,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             Assert.NotNull(colorField);
             Assert.Equal(typeof(Color), colorField.PropertyType);
         }
-        
+
         /// <summary>
         ///     Tests that sdl vertex tex coordinate field is of type point f
         /// </summary>
@@ -82,7 +82,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             Assert.NotNull(texCoordinateField);
             Assert.Equal(typeof(PointF), texCoordinateField.PropertyType);
         }
-        
+
         /// <summary>
         ///     Tests that sdl vertex position field initializes correctly
         /// </summary>
@@ -92,7 +92,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             Vertex vertex = new Vertex();
             Assert.Equal(new PointF(), vertex.Position);
         }
-        
+
         /// <summary>
         ///     Tests that sdl vertex color field initializes correctly
         /// </summary>
@@ -102,7 +102,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             Vertex vertex = new Vertex();
             Assert.Equal(new Color(), vertex.Color);
         }
-        
+
         /// <summary>
         ///     Tests that sdl vertex tex coordinate field initializes correctly
         /// </summary>

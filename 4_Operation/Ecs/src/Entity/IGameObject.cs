@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using Alis.Core.Ecs.Entity.Property;
 
@@ -42,9 +41,9 @@ namespace Alis.Core.Ecs.Entity
         ///     Gets or sets the value of the components
         /// </summary>
         public List<T> Components { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the is static
+        ///     Gets or sets the value of the is static
         /// </summary>
         public bool IsStatic { get; set; }
     }

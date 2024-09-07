@@ -47,17 +47,17 @@ namespace Alis.Test.Core.Ecs.System.Setting.Graphic
         {
             // Arrange
             GraphicSetting graphicSetting = new GraphicSetting();
-            
+
             // Act
             graphicSetting.Window = new Window();
             IWindow result = graphicSetting.Window;
-            
+
             // Assert
             Assert.NotNull(graphicSetting);
             Assert.NotNull(result);
             Assert.IsType<Window>(result);
         }
-        
+
         /// <summary>
         ///     Tests that test graphic setting builder
         /// </summary>
@@ -66,10 +66,10 @@ namespace Alis.Test.Core.Ecs.System.Setting.Graphic
         {
             // Arrange
             GraphicSetting graphicSetting = new GraphicSetting();
-            
+
             // Act
             GraphicSettingBuilder result = graphicSetting.Builder();
-            
+
             // Assert
             Assert.NotNull(result);
             Assert.IsType<GraphicSettingBuilder>(result);

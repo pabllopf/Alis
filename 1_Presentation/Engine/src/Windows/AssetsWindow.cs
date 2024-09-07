@@ -45,17 +45,17 @@ namespace Alis.App.Engine.Windows
         ///     The window name
         /// </summary>
         private const string WindowName = "Assets";
-        
+
         /// <summary>
         ///     The command ptr
         /// </summary>
         private readonly IntPtr commandPtr;
-        
+
         /// <summary>
         ///     The is open
         /// </summary>
         private bool isOpen = true;
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="AssetsWindow" /> class
         /// </summary>
@@ -65,26 +65,26 @@ namespace Alis.App.Engine.Windows
             SpaceWork = spaceWork;
             commandPtr = Marshal.AllocHGlobal(256);
         }
-        
+
         /// <summary>
         ///     Gets the value of the space work
         /// </summary>
         public SpaceWork SpaceWork { get; }
-        
+
         /// <summary>
         ///     Initializes this instance
         /// </summary>
         public void Initialize()
         {
         }
-        
+
         /// <summary>
         ///     Starts this instance
         /// </summary>
         public void Start()
         {
         }
-        
+
         /// <summary>
         ///     Renders this instance
         /// </summary>
@@ -94,7 +94,7 @@ namespace Alis.App.Engine.Windows
             {
                 return;
             }
-            
+
             if (ImGui.Begin(WindowName, ref isOpen))
             {
                 ImGui.Button("Assets");
@@ -107,17 +107,17 @@ namespace Alis.App.Engine.Windows
                 ImGui.Separator();
                 ImGui.Columns(2);
                 ImGui.Text("Directory");
-                
+
                 if (ImGui.TreeNodeEx("Folder"))
                 {
                     for (int i = 0; i < 10; i++)
                     {
                         ImGui.Text($"Folder {i}");
                     }
-                    
+
                     ImGui.TreePop();
                 }
-                
+
                 ImGui.NextColumn();
                 ImGui.Text("Files");
                 for (int i = 0; i < 10; i++)
@@ -125,7 +125,7 @@ namespace Alis.App.Engine.Windows
                     ImGui.Text($"Texture {i}");
                 }
             }
-            
+
             ImGui.End();
         }
     }

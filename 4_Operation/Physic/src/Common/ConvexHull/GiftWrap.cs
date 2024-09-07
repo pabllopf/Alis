@@ -1,4 +1,33 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:GiftWrap.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
@@ -11,17 +40,16 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 namespace Alis.Core.Physic.Common.ConvexHull
 {
     /// <summary>
-    /// Giftwrap convex hull algorithm.
-    /// O(nh) time complexity, where n is the number of points and h is the number of points on the convex hull.
-    /// 
-    /// See http://en.wikipedia.org/wiki/Gift_wrapping_algorithm for more details.
+    ///     Giftwrap convex hull algorithm.
+    ///     O(nh) time complexity, where n is the number of points and h is the number of points on the convex hull.
+    ///     See http://en.wikipedia.org/wiki/Gift_wrapping_algorithm for more details.
     /// </summary>
     public static class GiftWrap
     {
         //Extracted from Box2D
 
         /// <summary>
-        /// Returns the convex hull from the given vertices.
+        ///     Returns the convex hull from the given vertices.
         /// </summary>
         /// <param name="vertices">The vertices.</param>
         public static Vertices GetConvexHull(Vertices vertices)
@@ -35,7 +63,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
             for (int i = 1; i < vertices.Count; ++i)
             {
                 float x = vertices[i].X;
-                if (x > x0 || (x == x0 && vertices[i].Y < vertices[i0].Y))
+                if (x > x0 || ((x == x0) && (vertices[i].Y < vertices[i0].Y)))
                 {
                     i0 = i;
                     x0 = x;
@@ -46,7 +74,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
             int m = 0;
             int ih = i0;
 
-            for (; ; )
+            for (;;)
             {
                 hull[m] = ih;
 
@@ -68,7 +96,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
                     }
 
                     // Collinearity check
-                    if (c == 0.0f && v.LengthSquared() > r.LengthSquared())
+                    if ((c == 0.0f) && (v.LengthSquared() > r.LengthSquared()))
                     {
                         ie = j;
                     }
@@ -90,6 +118,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
             {
                 result.Add(vertices[hull[i]]);
             }
+
             return result;
         }
     }

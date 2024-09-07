@@ -45,32 +45,32 @@ namespace Alis.Core.Network
         ///     The cancellation token
         /// </summary>
         internal readonly CancellationToken _cancellationToken;
-        
+
         /// <summary>
         ///     The guid
         /// </summary>
         internal readonly Guid _guid;
-        
+
         /// <summary>
         ///     The keep alive interval
         /// </summary>
         internal readonly TimeSpan _keepAliveInterval;
-        
+
         /// <summary>
         ///     The stopwatch
         /// </summary>
         internal readonly Stopwatch _stopwatch;
-        
+
         /// <summary>
         ///     The web socket
         /// </summary>
         internal readonly WebSocketImplementation _webSocket;
-        
+
         /// <summary>
         ///     The ping sent ticks
         /// </summary>
         internal long _pingSentTicks;
-        
+
         /// <summary>
         ///     Initialises a new instance of the PingPongManager to facilitate ping pong WebSocket messages.
         ///     If you are manually creating an instance of this class then it is advisable to set keepAliveInterval to
@@ -98,7 +98,7 @@ namespace Alis.Core.Network
             _cancellationToken = cancellationToken;
             webSocketImpl.Pong += WebSocketImplPong;
             _stopwatch = Stopwatch.StartNew();
-            
+
             if (keepAliveInterval == TimeSpan.Zero)
             {
                 Task.FromResult(0);
@@ -108,12 +108,12 @@ namespace Alis.Core.Network
                 Task.Run(PingForever, cancellationToken);
             }
         }
-        
+
         /// <summary>
         ///     Raised when a Pong frame is received
         /// </summary>
         public event EventHandler<PongEventArgs> Pong;
-        
+
         /// <summary>
         ///     Sends a ping frame
         /// </summary>
@@ -123,7 +123,7 @@ namespace Alis.Core.Network
         {
             await _webSocket.SendPingAsync(payload, cancellation);
         }
-        
+
         /// <summary>
         ///     Ons the pong using the specified e
         /// </summary>
@@ -132,14 +132,14 @@ namespace Alis.Core.Network
         {
             Pong?.Invoke(this, e);
         }
-        
+
         /// <summary>
         ///     Pings the forever
         /// </summary>
         internal async Task PingForever()
         {
             LogPingPongManagerStart();
-            
+
             try
             {
                 await PingLoop();
@@ -148,10 +148,10 @@ namespace Alis.Core.Network
             {
                 // normal, do nothing
             }
-            
+
             LogPingPongManagerEnd();
         }
-        
+
         /// <summary>
         ///     Pings the loop
         /// </summary>
@@ -160,25 +160,25 @@ namespace Alis.Core.Network
             while (!_cancellationToken.IsCancellationRequested)
             {
                 await Task.Delay(_keepAliveInterval, _cancellationToken);
-                
+
                 if (_webSocket.State != WebSocketState.Open)
                 {
                     break;
                 }
-                
+
                 if (PingSentTicksExist())
                 {
                     await HandleExpiredKeepAliveInterval();
                     break;
                 }
-                
+
                 if (!_cancellationToken.IsCancellationRequested)
                 {
                     await SendPing();
                 }
             }
         }
-        
+
         /// <summary>
         ///     Logs the ping pong manager start
         /// </summary>
@@ -186,7 +186,7 @@ namespace Alis.Core.Network
         {
             Events.Log.PingPongManagerStarted(_guid, (int) _keepAliveInterval.TotalSeconds);
         }
-        
+
         /// <summary>
         ///     Logs the ping pong manager end
         /// </summary>
@@ -194,13 +194,13 @@ namespace Alis.Core.Network
         {
             Events.Log.PingPongManagerEnded(_guid);
         }
-        
+
         /// <summary>
         ///     Describes whether this instance ping sent ticks exist
         /// </summary>
         /// <returns>The bool</returns>
         internal bool PingSentTicksExist() => _pingSentTicks != 0;
-        
+
         /// <summary>
         ///     Handles the expired keep alive interval
         /// </summary>
@@ -211,7 +211,7 @@ namespace Alis.Core.Network
                 $"No Pong message received in response to a Ping after KeepAliveInterval {_keepAliveInterval}",
                 _cancellationToken);
         }
-        
+
         /// <summary>
         ///     Sends the ping
         /// </summary>
@@ -221,7 +221,7 @@ namespace Alis.Core.Network
             ArraySegment<byte> buffer = new ArraySegment<byte>(BitConverter.GetBytes(_pingSentTicks));
             await SendPing(buffer, _cancellationToken);
         }
-        
+
         /// <summary>
         ///     Webs the socket impl pong using the specified sender
         /// </summary>

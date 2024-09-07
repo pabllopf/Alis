@@ -48,7 +48,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(IntPtr.Zero);
             Assert.Equal(IntPtr.Zero, ptr.NativePtr);
         }
-        
+
         /// <summary>
         ///     Tests that font data should be initialized
         /// </summary>
@@ -59,7 +59,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.FontData, ptr.FontData);
         }
-        
+
         /// <summary>
         ///     Tests that font data size should be initialized
         /// </summary>
@@ -70,7 +70,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.FontDataSize, ptr.FontDataSize);
         }
-        
+
         /// <summary>
         ///     Tests that font data owned by atlas should be initialized
         /// </summary>
@@ -81,7 +81,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.FontDataOwnedByAtlas != 0, ptr.FontDataOwnedByAtlas);
         }
-        
+
         /// <summary>
         ///     Tests that font no should be initialized
         /// </summary>
@@ -92,7 +92,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.FontNo, ptr.FontNo);
         }
-        
+
         /// <summary>
         ///     Tests that size pixels should be initialized
         /// </summary>
@@ -103,7 +103,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.SizePixels, ptr.SizePixels);
         }
-        
+
         /// <summary>
         ///     Tests that oversample h should be initialized
         /// </summary>
@@ -114,7 +114,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.OversampleH, ptr.OversampleH);
         }
-        
+
         /// <summary>
         ///     Tests that oversample v should be initialized
         /// </summary>
@@ -125,7 +125,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.OversampleV, ptr.OversampleV);
         }
-        
+
         /// <summary>
         ///     Tests that snap h should be initialized
         /// </summary>
@@ -136,7 +136,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.SnapH != 0, ptr.SnapH);
         }
-        
+
         /// <summary>
         ///     Tests that glyph extra spacing should be initialized
         /// </summary>
@@ -147,7 +147,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.GlyphExtraSpacing, ptr.GlyphExtraSpacing);
         }
-        
+
         /// <summary>
         ///     Tests that glyph offset should be initialized
         /// </summary>
@@ -158,7 +158,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.GlyphOffset, ptr.GlyphOffset);
         }
-        
+
         /// <summary>
         ///     Tests that glyph ranges should be initialized
         /// </summary>
@@ -169,7 +169,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.GlyphRanges, ptr.GlyphRanges);
         }
-        
+
         /// <summary>
         ///     Tests that glyph min advance x should be initialized
         /// </summary>
@@ -180,7 +180,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.GlyphMinAdvanceX, ptr.GlyphMinAdvanceX);
         }
-        
+
         /// <summary>
         ///     Tests that glyph max advance x should be initialized
         /// </summary>
@@ -191,7 +191,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.GlyphMaxAdvanceX, ptr.GlyphMaxAdvanceX);
         }
-        
+
         /// <summary>
         ///     Tests that merge mode should be initialized
         /// </summary>
@@ -202,7 +202,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.MergeMode != 0, ptr.MergeMode);
         }
-        
+
         /// <summary>
         ///     Tests that font builder flags should be initialized
         /// </summary>
@@ -213,7 +213,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.FontBuilderFlags, ptr.FontBuilderFlags);
         }
-        
+
         /// <summary>
         ///     Tests that rasterizer multiply should be initialized
         /// </summary>
@@ -224,7 +224,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.RasterizerMultiply, ptr.RasterizerMultiply);
         }
-        
+
         /// <summary>
         ///     Tests that ellipsis char should be initialized
         /// </summary>
@@ -235,7 +235,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.EllipsisChar, ptr.EllipsisChar);
         }
-        
+
         /// <summary>
         ///     Tests that dst font should be initialized
         /// </summary>
@@ -246,7 +246,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.DstFont, ptr.DstFont.NativePtr);
         }
-        
+
         /// <summary>
         ///     Tests that test constructor with native ptr
         /// </summary>
@@ -256,7 +256,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontPtr result = new ImFontPtr(IntPtr.Zero);
             Assert.Equal(IntPtr.Zero, result.NativePtr);
         }
-        
+
         /// <summary>
         ///     Tests that test add glyph v 1
         /// </summary>
@@ -266,7 +266,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => ptr.AddGlyph(new ImFontConfigPtr(IntPtr.Zero), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that test add remap char v 1
         /// </summary>
@@ -276,7 +276,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => ptr.AddRemapChar(0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that test add remap char v 1
         /// </summary>
@@ -286,7 +286,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontPtr ptr = new ImFontPtr(new ImFont());
             Assert.Throws<DllNotFoundException>(() => ptr.AddRemapChar(0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that test add remap char v 2
         /// </summary>
@@ -296,7 +296,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => ptr.AddRemapChar(0, 0, true));
         }
-        
+
         /// <summary>
         ///     Tests that test build lookup table
         /// </summary>
@@ -306,7 +306,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => ptr.BuildLookupTable());
         }
-        
+
         /// <summary>
         ///     Tests that test clear output data
         /// </summary>
@@ -316,7 +316,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => ptr.ClearOutputData());
         }
-        
+
         /// <summary>
         ///     Tests that test find glyph
         /// </summary>
@@ -326,7 +326,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => ptr.FindGlyph(0));
         }
-        
+
         /// <summary>
         ///     Tests that test find glyph no fallback
         /// </summary>
@@ -336,7 +336,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => ptr.FindGlyphNoFallback(0));
         }
-        
+
         /// <summary>
         ///     Tests that test get char advance
         /// </summary>
@@ -346,7 +346,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => ptr.GetCharAdvance(0));
         }
-        
+
         /// <summary>
         ///     Tests that test get debug name
         /// </summary>
@@ -356,7 +356,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
             Assert.Throws<MarshalDirectiveException>(() => ptr.GetDebugName());
         }
-        
+
         /// <summary>
         ///     Tests that test grow index
         /// </summary>
@@ -366,7 +366,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => ptr.GrowIndex(0));
         }
-        
+
         /// <summary>
         ///     Tests that test is loaded
         /// </summary>
@@ -376,7 +376,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => ptr.IsLoaded());
         }
-        
+
         /// <summary>
         ///     Tests that test render char
         /// </summary>
@@ -386,7 +386,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => ptr.RenderChar(new ImDrawListPtr(IntPtr.Zero), 0, new Vector2(), 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that test set glyph visible
         /// </summary>
@@ -396,7 +396,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => ptr.SetGlyphVisible(0, true));
         }
-        
+
         /// <summary>
         ///     Tests that implicit conversion to int ptr returns native ptr
         /// </summary>
@@ -408,7 +408,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr result = fontPtr;
             Assert.Equal(nativePtr, result);
         }
-        
+
         /// <summary>
         ///     Tests that implicit conversion from int ptr returns im font ptr
         /// </summary>
@@ -419,8 +419,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontPtr fontPtr = nativePtr;
             Assert.Equal(nativePtr, fontPtr.NativePtr);
         }
-        
-        
+
+
         /// <summary>
         ///     Tests that fallback advance x returns correct value
         /// </summary>
@@ -434,7 +434,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Equal(1.23f, fontPtr.FallbackAdvanceX);
             Marshal.FreeHGlobal(nativePtr);
         }
-        
+
         /// <summary>
         ///     Tests that font size returns correct value
         /// </summary>
@@ -448,7 +448,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Equal(12.34f, fontPtr.FontSize);
             Marshal.FreeHGlobal(nativePtr);
         }
-        
+
         /// <summary>
         ///     Tests that container atlas returns correct value
         /// </summary>
@@ -462,7 +462,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Equal(new IntPtr(101112), fontPtr.ContainerAtlas.NativePtr);
             Marshal.FreeHGlobal(nativePtr);
         }
-        
+
         /// <summary>
         ///     Tests that config data get and set returns correct value
         /// </summary>
@@ -474,13 +474,13 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Marshal.StructureToPtr(font, nativePtr, false);
             ImFontPtr fontPtr = new ImFontPtr(nativePtr);
             Assert.Equal(new IntPtr(131415), fontPtr.ConfigData.NativePtr);
-            
+
             ImFontConfigPtr newConfigData = new IntPtr(161718);
             fontPtr.ConfigData = newConfigData;
             Assert.Equal(new IntPtr(161718), fontPtr.ConfigData.NativePtr);
             Marshal.FreeHGlobal(nativePtr);
         }
-        
+
         /// <summary>
         ///     Tests that config data count returns correct value
         /// </summary>
@@ -494,7 +494,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Equal(5, fontPtr.ConfigDataCount);
             Marshal.FreeHGlobal(nativePtr);
         }
-        
+
         /// <summary>
         ///     Tests that fallback char returns correct value
         /// </summary>
@@ -508,7 +508,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Equal(1234, fontPtr.FallbackChar);
             Marshal.FreeHGlobal(nativePtr);
         }
-        
+
         /// <summary>
         ///     Tests that ellipsis char returns correct value
         /// </summary>
@@ -522,7 +522,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Equal(5678, fontPtr.EllipsisChar);
             Marshal.FreeHGlobal(nativePtr);
         }
-        
+
         /// <summary>
         ///     Tests that dot char returns correct value
         /// </summary>
@@ -536,7 +536,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Equal(25475, fontPtr.DotChar);
             Marshal.FreeHGlobal(nativePtr);
         }
-        
+
         /// <summary>
         ///     Tests that dirty lookup tables returns correct value
         /// </summary>
@@ -550,7 +550,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.True(fontPtr.DirtyLookupTables);
             Marshal.FreeHGlobal(nativePtr);
         }
-        
+
         /// <summary>
         ///     Tests that scale returns correct value
         /// </summary>
@@ -564,7 +564,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Equal(2.34f, fontPtr.Scale);
             Marshal.FreeHGlobal(nativePtr);
         }
-        
+
         /// <summary>
         ///     Tests that ascent returns correct value
         /// </summary>
@@ -578,7 +578,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Equal(3.45f, fontPtr.Ascent);
             Marshal.FreeHGlobal(nativePtr);
         }
-        
+
         /// <summary>
         ///     Tests that descent returns correct value
         /// </summary>
@@ -592,7 +592,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Equal(4.56f, fontPtr.Descent);
             Marshal.FreeHGlobal(nativePtr);
         }
-        
+
         /// <summary>
         ///     Tests that metrics total surface returns correct value
         /// </summary>
@@ -606,7 +606,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Equal(7890, fontPtr.MetricsTotalSurface);
             Marshal.FreeHGlobal(nativePtr);
         }
-        
+
         /// <summary>
         ///     Tests that index advance x throws dll not found exception
         /// </summary>
@@ -619,7 +619,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
                 ImVectorG<float> _ = fontPtr.IndexAdvanceX;
             });
         }
-        
+
         /// <summary>
         ///     Tests that fallback advance x throws dll not found exception
         /// </summary>
@@ -632,7 +632,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
                 float _ = fontPtr.FallbackAdvanceX;
             });
         }
-        
+
         /// <summary>
         ///     Tests that font size throws dll not found exception
         /// </summary>
@@ -645,7 +645,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
                 float _ = fontPtr.FontSize;
             });
         }
-        
+
         /// <summary>
         ///     Tests that index lookup throws dll not found exception
         /// </summary>
@@ -658,7 +658,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
                 ImVectorG<ushort> _ = fontPtr.IndexLookup;
             });
         }
-        
+
         /// <summary>
         ///     Tests that container atlas throws dll not found exception
         /// </summary>
@@ -671,7 +671,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
                 ImFontAtlasPtr _ = fontPtr.ContainerAtlas;
             });
         }
-        
+
         /// <summary>
         ///     Tests that config data throws dll not found exception
         /// </summary>
@@ -684,7 +684,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
                 ImFontConfigPtr _ = fontPtr.ConfigData;
             });
         }
-        
+
         /// <summary>
         ///     Tests that config data count throws dll not found exception
         /// </summary>
@@ -697,7 +697,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
                 short _ = fontPtr.ConfigDataCount;
             });
         }
-        
+
         /// <summary>
         ///     Tests that fallback char throws dll not found exception
         /// </summary>
@@ -710,7 +710,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
                 ushort _ = fontPtr.FallbackChar;
             });
         }
-        
+
         /// <summary>
         ///     Tests that ellipsis char throws dll not found exception
         /// </summary>
@@ -723,7 +723,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
                 ushort _ = fontPtr.EllipsisChar;
             });
         }
-        
+
         /// <summary>
         ///     Tests that dot char throws dll not found exception
         /// </summary>
@@ -736,7 +736,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
                 ushort _ = fontPtr.DotChar;
             });
         }
-        
+
         /// <summary>
         ///     Tests that dirty lookup tables throws dll not found exception
         /// </summary>
@@ -749,7 +749,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
                 bool _ = fontPtr.DirtyLookupTables;
             });
         }
-        
+
         /// <summary>
         ///     Tests that scale throws dll not found exception
         /// </summary>
@@ -762,7 +762,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
                 float _ = fontPtr.Scale;
             });
         }
-        
+
         /// <summary>
         ///     Tests that ascent throws dll not found exception
         /// </summary>
@@ -775,7 +775,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
                 float _ = fontPtr.Ascent;
             });
         }
-        
+
         /// <summary>
         ///     Tests that descent throws dll not found exception
         /// </summary>
@@ -788,7 +788,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
                 float _ = fontPtr.Descent;
             });
         }
-        
+
         /// <summary>
         ///     Tests that metrics total surface throws dll not found exception
         /// </summary>

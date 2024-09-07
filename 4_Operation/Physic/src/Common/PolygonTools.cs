@@ -1,4 +1,33 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:PolygonTools.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
@@ -15,7 +44,7 @@ namespace Alis.Core.Physic.Common
     public static class PolygonTools
     {
         /// <summary>
-        /// Build vertices to represent an axis-aligned box.
+        ///     Build vertices to represent an axis-aligned box.
         /// </summary>
         /// <param name="hx">the half-width.</param>
         /// <param name="hy">the half-height.</param>
@@ -31,7 +60,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Build vertices to represent an oriented box.
+        ///     Build vertices to represent an oriented box.
         /// </summary>
         /// <param name="hx">the half-width.</param>
         /// <param name="hy">the half-height.</param>
@@ -55,7 +84,7 @@ namespace Alis.Core.Physic.Common
         //Rounded rectangle contributed by Jonathan Smars - jsmars@gmail.com
 
         /// <summary>
-        /// Creates a rounded rectangle with the specified width and height.
+        ///     Creates a rounded rectangle with the specified width and height.
         /// </summary>
         /// <param name="width">The width.</param>
         /// <param name="height">The height.</param>
@@ -64,7 +93,7 @@ namespace Alis.Core.Physic.Common
         /// <param name="segments">The number of segments to subdivide the edges.</param>
         /// <returns></returns>
         public static Vertices CreateRoundedRectangle(float width, float height, float xRadius, float yRadius,
-                                                      int segments)
+            int segments)
         {
             if (yRadius > height / 2 || xRadius > width / 2)
                 throw new Exception("Rounding amount can't be more than half the height and width respectively.");
@@ -91,7 +120,7 @@ namespace Alis.Core.Physic.Common
             }
             else
             {
-                int numberOfEdges = (segments * 4 + 8);
+                int numberOfEdges = segments * 4 + 8;
 
                 float stepSize = Constant.Tau / (numberOfEdges - 4);
                 int perPhase = numberOfEdges / 4;
@@ -112,8 +141,8 @@ namespace Alis.Core.Physic.Common
                         phase--;
                     }
 
-                    vertices.Add(posOffset + new Vector2(xRadius * (float)Math.Cos(stepSize * -(i + phase)),
-                                                         -yRadius * (float)Math.Sin(stepSize * -(i + phase))));
+                    vertices.Add(posOffset + new Vector2(xRadius * (float) Math.Cos(stepSize * -(i + phase)),
+                        -yRadius * (float) Math.Sin(stepSize * -(i + phase))));
                 }
             }
 
@@ -121,7 +150,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Set this as a single edge.
+        ///     Set this as a single edge.
         /// </summary>
         /// <param name="start">The first point.</param>
         /// <param name="end">The second point.</param>
@@ -135,18 +164,15 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Creates a circle with the specified radius and number of edges.
+        ///     Creates a circle with the specified radius and number of edges.
         /// </summary>
         /// <param name="radius">The radius.</param>
         /// <param name="numberOfEdges">The number of edges. The more edges, the more it resembles a circle</param>
         /// <returns></returns>
-        public static Vertices CreateCircle(float radius, int numberOfEdges)
-        {
-            return CreateEllipse(radius, radius, numberOfEdges);
-        }
+        public static Vertices CreateCircle(float radius, int numberOfEdges) => CreateEllipse(radius, radius, numberOfEdges);
 
         /// <summary>
-        /// Creates a ellipse with the specified width, height and number of edges.
+        ///     Creates a ellipse with the specified width, height and number of edges.
         /// </summary>
         /// <param name="xRadius">Width of the ellipse.</param>
         /// <param name="yRadius">Height of the ellipse.</param>
@@ -160,8 +186,8 @@ namespace Alis.Core.Physic.Common
 
             vertices.Add(new Vector2(xRadius, 0));
             for (int i = numberOfEdges - 1; i > 0; --i)
-                vertices.Add(new Vector2(xRadius * (float)Math.Cos(stepSize * i),
-                                         -yRadius * (float)Math.Sin(stepSize * i)));
+                vertices.Add(new Vector2(xRadius * (float) Math.Cos(stepSize * i),
+                    -yRadius * (float) Math.Sin(stepSize * i)));
 
             return vertices;
         }
@@ -177,8 +203,8 @@ namespace Alis.Core.Physic.Common
             float stepSize = radians / sides;
             for (int i = sides - 1; i > 0; i--)
             {
-                vertices.Add(new Vector2(radius * (float)Math.Cos(stepSize * i),
-                                         radius * (float)Math.Sin(stepSize * i)));
+                vertices.Add(new Vector2(radius * (float) Math.Cos(stepSize * i),
+                    radius * (float) Math.Sin(stepSize * i)));
             }
 
             return vertices;
@@ -187,8 +213,8 @@ namespace Alis.Core.Physic.Common
         //Capsule contributed by Yobiv
 
         /// <summary>
-        /// Creates an capsule with the specified height, radius and number of edges.
-        /// A capsule has the same form as a pill capsule.
+        ///     Creates an capsule with the specified height, radius and number of edges.
+        ///     A capsule has the same form as a pill capsule.
         /// </summary>
         /// <param name="height">Height (inner height + 2 * radius) of the capsule.</param>
         /// <param name="endRadius">Radius of the capsule ends.</param>
@@ -205,8 +231,8 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Creates an capsule with the specified  height, radius and number of edges.
-        /// A capsule has the same form as a pill capsule.
+        ///     Creates an capsule with the specified  height, radius and number of edges.
+        ///     A capsule has the same form as a pill capsule.
         /// </summary>
         /// <param name="height">Height (inner height + radii) of the capsule.</param>
         /// <param name="topRadius">Radius of the top.</param>
@@ -215,7 +241,7 @@ namespace Alis.Core.Physic.Common
         /// <param name="bottomEdges">The number of edges of the bottom. The more edges, the more it resembles an capsule</param>
         /// <returns></returns>
         public static Vertices CreateCapsule(float height, float topRadius, int topEdges, float bottomRadius,
-                                             int bottomEdges)
+            int bottomEdges)
         {
             if (height <= 0)
                 throw new ArgumentException("Height must be longer than 0", "height");
@@ -252,8 +278,8 @@ namespace Alis.Core.Physic.Common
             float stepSize = Constant.Pi / topEdges;
             for (int i = 1; i < topEdges; i++)
             {
-                vertices.Add(new Vector2(topRadius * (float)Math.Cos(stepSize * i),
-                                         topRadius * (float)Math.Sin(stepSize * i) + newHeight));
+                vertices.Add(new Vector2(topRadius * (float) Math.Cos(stepSize * i),
+                    topRadius * (float) Math.Sin(stepSize * i) + newHeight));
             }
 
             vertices.Add(new Vector2(-topRadius, newHeight));
@@ -264,8 +290,8 @@ namespace Alis.Core.Physic.Common
             stepSize = Constant.Pi / bottomEdges;
             for (int i = 1; i < bottomEdges; i++)
             {
-                vertices.Add(new Vector2(-bottomRadius * (float)Math.Cos(stepSize * i),
-                                         -bottomRadius * (float)Math.Sin(stepSize * i) - newHeight));
+                vertices.Add(new Vector2(-bottomRadius * (float) Math.Cos(stepSize * i),
+                    -bottomRadius * (float) Math.Sin(stepSize * i) - newHeight));
             }
 
             vertices.Add(new Vector2(bottomRadius, -newHeight));
@@ -274,7 +300,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Creates a gear shape with the specified radius and number of teeth.
+        ///     Creates a gear shape with the specified radius and number of teeth.
         /// </summary>
         /// <param name="radius">The radius.</param>
         /// <param name="numberOfTeeth">The number of teeth.</param>
@@ -288,9 +314,9 @@ namespace Alis.Core.Physic.Common
             float stepSize = Constant.Tau / numberOfTeeth;
             tipPercentage /= 100f;
             MathUtils.Clamp(tipPercentage, 0f, 1f);
-            float toothTipStepSize = (stepSize / 2f) * tipPercentage;
+            float toothTipStepSize = stepSize / 2f * tipPercentage;
 
-            float toothAngleStepSize = (stepSize - (toothTipStepSize * 2f)) / 2f;
+            float toothAngleStepSize = (stepSize - toothTipStepSize * 2f) / 2f;
 
             for (int i = numberOfTeeth - 1; i >= 0; --i)
             {
@@ -298,24 +324,24 @@ namespace Alis.Core.Physic.Common
                 {
                     vertices.Add(
                         new Vector2(radius *
-                                    (float)Math.Cos(stepSize * i + toothAngleStepSize * 2f + toothTipStepSize),
-                                    -radius *
-                                    (float)Math.Sin(stepSize * i + toothAngleStepSize * 2f + toothTipStepSize)));
+                                    (float) Math.Cos(stepSize * i + toothAngleStepSize * 2f + toothTipStepSize),
+                            -radius *
+                            (float) Math.Sin(stepSize * i + toothAngleStepSize * 2f + toothTipStepSize)));
 
                     vertices.Add(
                         new Vector2((radius + toothHeight) *
-                                    (float)Math.Cos(stepSize * i + toothAngleStepSize + toothTipStepSize),
-                                    -(radius + toothHeight) *
-                                    (float)Math.Sin(stepSize * i + toothAngleStepSize + toothTipStepSize)));
+                                    (float) Math.Cos(stepSize * i + toothAngleStepSize + toothTipStepSize),
+                            -(radius + toothHeight) *
+                            (float) Math.Sin(stepSize * i + toothAngleStepSize + toothTipStepSize)));
                 }
 
                 vertices.Add(new Vector2((radius + toothHeight) *
-                                         (float)Math.Cos(stepSize * i + toothAngleStepSize),
-                                         -(radius + toothHeight) *
-                                         (float)Math.Sin(stepSize * i + toothAngleStepSize)));
+                                         (float) Math.Cos(stepSize * i + toothAngleStepSize),
+                    -(radius + toothHeight) *
+                    (float) Math.Sin(stepSize * i + toothAngleStepSize)));
 
-                vertices.Add(new Vector2(radius * (float)Math.Cos(stepSize * i),
-                                         -radius * (float)Math.Sin(stepSize * i)));
+                vertices.Add(new Vector2(radius * (float) Math.Cos(stepSize * i),
+                    -radius * (float) Math.Sin(stepSize * i)));
             }
 
             return vertices;
@@ -356,10 +382,10 @@ namespace Alis.Core.Physic.Common
         /// <param name="holeDetection">if set to <c>true</c> it will perform hole detection.</param>
         /// <returns></returns>
         public static List<Vertices> CreatePolygon(uint[] data, int width, float hullTolerance,
-                                                   byte alphaTolerance, bool multiPartDetection, bool holeDetection)
+            byte alphaTolerance, bool multiPartDetection, bool holeDetection)
         {
             return TextureConverter.DetectVertices(data, width, hullTolerance, alphaTolerance,
-                                                   multiPartDetection, holeDetection);
+                multiPartDetection, holeDetection);
         }
 #endif
     }

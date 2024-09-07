@@ -1,4 +1,33 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:BayazitDecomposer.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
@@ -15,21 +44,20 @@ namespace Alis.Core.Physic.Common.Decomposition
     //From phed rev 36: http://code.google.com/p/phed/source/browse/trunk/Polygon.cpp
 
     /// <summary>
-    /// Convex decomposition algorithm created by Mark Bayazit (http://mnbayazit.com/)
-    /// 
-    /// Properties:
-    /// - Tries to decompose using polygons instead of triangles.
-    /// - Tends to produce optimal results with low processing time.
-    /// - Running time is O(nr), n = number of vertices, r = reflex vertices.
-    /// - Does not support holes.
-    /// 
-    /// For more information about this algorithm, see http://mnbayazit.com/406/bayazit
+    ///     Convex decomposition algorithm created by Mark Bayazit (http://mnbayazit.com/)
+    ///     Properties:
+    ///     - Tries to decompose using polygons instead of triangles.
+    ///     - Tends to produce optimal results with low processing time.
+    ///     - Running time is O(nr), n = number of vertices, r = reflex vertices.
+    ///     - Does not support holes.
+    ///     For more information about this algorithm, see http://mnbayazit.com/406/bayazit
     /// </summary>
     internal static class BayazitDecomposer
     {
         /// <summary>
-        /// Decompose the polygon into several smaller non-concave polygon.
-        /// If the polygon is already convex, it will return the original polygon, unless it is over Settings.MaxPolygonVertices.
+        ///     Decompose the polygon into several smaller non-concave polygon.
+        ///     If the polygon is already convex, it will return the original polygon, unless it is over
+        ///     Settings.MaxPolygonVertices.
         /// </summary>
         public static List<Vertices> ConvexPartition(Vertices vertices)
         {
@@ -97,7 +125,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                     // if there are no vertices to connect to, choose a point in the middle
                     if (lowerIndex == (upperIndex + 1) % vertices.Count)
                     {
-                        Vector2 p = ((lowerInt + upperInt) / 2);
+                        Vector2 p = (lowerInt + upperInt) / 2;
 
                         lowerPoly = Copy(i, upperIndex, vertices);
                         lowerPoly.Add(p);
@@ -126,6 +154,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                                 {
                                     score += 1;
                                 }
+
                                 if (score > highestScore)
                                 {
                                     bestIndex = j;
@@ -133,9 +162,11 @@ namespace Alis.Core.Physic.Common.Decomposition
                                 }
                             }
                         }
-                        lowerPoly = Copy(i, (int)bestIndex, vertices);
-                        upperPoly = Copy((int)bestIndex, i, vertices);
+
+                        lowerPoly = Copy(i, (int) bestIndex, vertices);
+                        upperPoly = Copy((int) bestIndex, i, vertices);
                     }
+
                     list.AddRange(TriangulatePolygon(lowerPoly));
                     list.AddRange(TriangulatePolygon(upperPoly));
                     return list;
@@ -159,7 +190,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         private static Vector2 At(int i, Vertices vertices)
         {
             int s = vertices.Count;
-            return vertices[i < 0 ? s - 1 - ((-i - 1) % s) : i % s];
+            return vertices[i < 0 ? s - 1 - (-i - 1) % s : i % s];
         }
 
         private static Vertices Copy(int i, int j, Vertices vertices)
@@ -173,6 +204,7 @@ namespace Alis.Core.Physic.Common.Decomposition
             {
                 p.Add(At(i, vertices));
             }
+
             return p;
         }
 
@@ -188,6 +220,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                 if (RightOn(At(i, vertices), At(i + 1, vertices), At(j, vertices)) || LeftOn(At(i, vertices), At(i - 1, vertices), At(j, vertices)))
                     return false;
             }
+
             if (Reflex(j, vertices))
             {
                 if (LeftOn(At(j, vertices), At(j - 1, vertices), At(i, vertices)) && RightOn(At(j, vertices), At(j + 1, vertices), At(i, vertices)))
@@ -198,6 +231,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                 if (RightOn(At(j, vertices), At(j + 1, vertices), At(i, vertices)) || LeftOn(At(j, vertices), At(j - 1, vertices), At(i, vertices)))
                     return false;
             }
+
             for (int k = 0; k < vertices.Count; ++k)
             {
                 if ((k + 1) % vertices.Count == i || k == i || (k + 1) % vertices.Count == j || k == j)
@@ -208,38 +242,21 @@ namespace Alis.Core.Physic.Common.Decomposition
                 if (LineTools.LineIntersect(At(i, vertices), At(j, vertices), At(k, vertices), At(k + 1, vertices), out intersectionPoint))
                     return false;
             }
+
             return true;
         }
 
-        private static bool Reflex(int i, Vertices vertices)
-        {
-            return Right(i, vertices);
-        }
+        private static bool Reflex(int i, Vertices vertices) => Right(i, vertices);
 
-        private static bool Right(int i, Vertices vertices)
-        {
-            return Right(At(i - 1, vertices), At(i, vertices), At(i + 1, vertices));
-        }
+        private static bool Right(int i, Vertices vertices) => Right(At(i - 1, vertices), At(i, vertices), At(i + 1, vertices));
 
-        private static bool Left(Vector2 a, Vector2 b, Vector2 c)
-        {
-            return MathUtils.Area(ref a, ref b, ref c) > 0;
-        }
+        private static bool Left(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) > 0;
 
-        private static bool LeftOn(Vector2 a, Vector2 b, Vector2 c)
-        {
-            return MathUtils.Area(ref a, ref b, ref c) >= 0;
-        }
+        private static bool LeftOn(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) >= 0;
 
-        private static bool Right(Vector2 a, Vector2 b, Vector2 c)
-        {
-            return MathUtils.Area(ref a, ref b, ref c) < 0;
-        }
+        private static bool Right(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) < 0;
 
-        private static bool RightOn(Vector2 a, Vector2 b, Vector2 c)
-        {
-            return MathUtils.Area(ref a, ref b, ref c) <= 0;
-        }
+        private static bool RightOn(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) <= 0;
 
         private static float SquareDist(Vector2 a, Vector2 b)
         {

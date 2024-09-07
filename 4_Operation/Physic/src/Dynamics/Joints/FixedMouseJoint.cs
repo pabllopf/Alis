@@ -1,29 +1,58 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:FixedMouseJoint.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 /* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
 
 /*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-* 
-* Original source Box2D:
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
-* 
-* This software is provided 'as-is', without any express or implied 
-* warranty.  In no event will the authors be held liable for any damages 
-* arising from the use of this software. 
-* Permission is granted to anyone to use this software for any purpose, 
-* including commercial applications, and to alter it and redistribute it 
-* freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
-* claim that you wrote the original software. If you use this software 
-* in a product, an acknowledgment in the product documentation would be 
-* appreciated but is not required. 
-* 2. Altered source versions must be plainly marked as such, and must not be 
-* misrepresented as being the original software. 
-* 3. This notice may not be removed or altered from any source distribution. 
-*/
+ * Farseer Physics Engine:
+ * Copyright (c) 2012 Ian Qvist
+ *
+ * Original source Box2D:
+ * Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
@@ -44,38 +73,38 @@ namespace Alis.Core.Physic.Dynamics.Joints
     // w k % (rx i + ry j) = w * (-ry i + rx j)
 
     /// <summary>
-    /// A mouse joint is used to make a point on a body track a
-    /// specified world point. This a soft constraint with a maximum
-    /// force. This allows the constraint to stretch and without
-    /// applying huge forces.
-    /// NOTE: this joint is not documented in the manual because it was
-    /// developed to be used in the testbed. If you want to learn how to
-    /// use the mouse joint, look at the testbed.
+    ///     A mouse joint is used to make a point on a body track a
+    ///     specified world point. This a soft constraint with a maximum
+    ///     force. This allows the constraint to stretch and without
+    ///     applying huge forces.
+    ///     NOTE: this joint is not documented in the manual because it was
+    ///     developed to be used in the testbed. If you want to learn how to
+    ///     use the mouse joint, look at the testbed.
     /// </summary>
     public class FixedMouseJoint : Joint
     {
-        private Vector2 _worldAnchor;
-        private float _frequency;
-        private float _dampingRatio;
         private float _beta;
+        private Vector2 _C;
+        private float _dampingRatio;
+        private float _frequency;
+        private float _gamma;
 
         // Solver shared
         private Vector2 _impulse;
-        private float _maxForce;
-        private float _gamma;
 
         // Solver temp
         private int _indexA;
-        private Vector2 _rA;
-        private Vector2 _localCenterA;
-        private float _invMassA;
         private float _invIA;
+        private float _invMassA;
+        private Vector2 _localCenterA;
         private Mat22 _mass;
-        private Vector2 _C;
+        private float _maxForce;
+        private Vector2 _rA;
+        private Vector2 _worldAnchor;
 
         /// <summary>
-        /// This requires a world target point,
-        /// tuning parameters, and the time step.
+        ///     This requires a world target point,
+        ///     tuning parameters, and the time step.
         /// </summary>
         /// <param name="body">The body.</param>
         /// <param name="worldAnchor">The target.</param>
@@ -94,19 +123,19 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// The local anchor point on BodyA
+        ///     The local anchor point on BodyA
         /// </summary>
         public Vector2 LocalAnchorA { get; set; }
 
         public override Vector2 WorldAnchorA
         {
-            get { return BodyA.GetWorldPoint(LocalAnchorA); }
-            set { LocalAnchorA = BodyA.GetLocalPoint(value); }
+            get => BodyA.GetWorldPoint(LocalAnchorA);
+            set => LocalAnchorA = BodyA.GetLocalPoint(value);
         }
 
         public override Vector2 WorldAnchorB
         {
-            get { return _worldAnchor; }
+            get => _worldAnchor;
             set
             {
                 WakeBodies();
@@ -115,55 +144,49 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// The maximum constraint force that can be exerted
-        /// to move the candidate body. Usually you will express
-        /// as some multiple of the weight (multiplier * mass * gravity).
+        ///     The maximum constraint force that can be exerted
+        ///     to move the candidate body. Usually you will express
+        ///     as some multiple of the weight (multiplier * mass * gravity).
         /// </summary>
         public float MaxForce
         {
-            get { return _maxForce; }
+            get => _maxForce;
             set
             {
-                Debug.Assert(MathUtils.IsValid(value) && value >= 0.0f);
+                Debug.Assert(MathUtils.IsValid(value) && (value >= 0.0f));
                 _maxForce = value;
             }
         }
 
         /// <summary>
-        /// The response speed.
+        ///     The response speed.
         /// </summary>
         public float Frequency
         {
-            get { return _frequency; }
+            get => _frequency;
             set
             {
-                Debug.Assert(MathUtils.IsValid(value) && value >= 0.0f);
+                Debug.Assert(MathUtils.IsValid(value) && (value >= 0.0f));
                 _frequency = value;
             }
         }
 
         /// <summary>
-        /// The damping ratio. 0 = no damping, 1 = critical damping.
+        ///     The damping ratio. 0 = no damping, 1 = critical damping.
         /// </summary>
         public float DampingRatio
         {
-            get { return _dampingRatio; }
+            get => _dampingRatio;
             set
             {
-                Debug.Assert(MathUtils.IsValid(value) && value >= 0.0f);
+                Debug.Assert(MathUtils.IsValid(value) && (value >= 0.0f));
                 _dampingRatio = value;
             }
         }
 
-        public override Vector2 GetReactionForce(float invDt)
-        {
-            return invDt * _impulse;
-        }
+        public override Vector2 GetReactionForce(float invDt) => invDt * _impulse;
 
-        public override float GetReactionTorque(float invDt)
-        {
-            return invDt * 0.0f;
-        }
+        public override float GetReactionTorque(float invDt) => invDt * 0.0f;
 
         internal override void InitVelocityConstraints(ref SolverData data)
         {
@@ -253,6 +276,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             {
                 _impulse *= maxImpulse / _impulse.Length();
             }
+
             impulse = _impulse - oldImpulse;
 
             vA += _invMassA * impulse;
@@ -262,9 +286,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.velocities[_indexA].w = wA;
         }
 
-        internal override bool SolvePositionConstraints(ref SolverData data)
-        {
-            return true;
-        }
+        internal override bool SolvePositionConstraints(ref SolverData data) => true;
     }
 }

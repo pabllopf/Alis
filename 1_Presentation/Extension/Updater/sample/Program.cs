@@ -47,15 +47,15 @@ namespace Alis.Extension.Updater.Sample
         {
             Logger.LogLevel = LogLevel.Trace;
             Logger.Log("Start sample program");
-            
+
             string urlReleasesLatest = "https://api.github.com/repos/pabllopf/alis/releases/latest";
             GitHubApiService gitHubApiService = new GitHubApiService(urlReleasesLatest);
             FileService fileService = new FileService();
             string pathProgram = Path.Combine(Environment.CurrentDirectory, "bin");
             UpdateManager updateManager = new UpdateManager(gitHubApiService, fileService, pathProgram);
-            
+
             updateManager.Start().Wait();
-            
+
             Logger.Log("End sample program");
         }
     }

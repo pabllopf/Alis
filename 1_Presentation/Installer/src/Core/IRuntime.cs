@@ -38,12 +38,12 @@ namespace Alis.App.Installer.Core
         ///     Initializes this instance
         /// </summary>
         public void Initialize();
-        
+
         /// <summary>
         ///     Updates this instance
         /// </summary>
         public void Update();
-        
+
         /// <summary>
         ///     Renders this instance
         /// </summary>

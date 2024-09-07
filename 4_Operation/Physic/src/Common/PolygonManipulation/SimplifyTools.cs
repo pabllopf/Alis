@@ -1,4 +1,33 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:SimplifyTools.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
@@ -14,12 +43,12 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 namespace Alis.Core.Physic.Common.PolygonManipulation
 {
     /// <summary>
-    /// Provides a set of tools to simplify polygons in various ways.
+    ///     Provides a set of tools to simplify polygons in various ways.
     /// </summary>
     public static class SimplifyTools
     {
         /// <summary>
-        /// Removes all collinear points on the polygon.
+        ///     Removes all collinear points on the polygon.
         /// </summary>
         /// <param name="vertices">The polygon that needs simplification.</param>
         /// <param name="collinearityTolerance">The collinearity tolerance.</param>
@@ -48,10 +77,9 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         }
 
         /// <summary>
-        /// Ramer-Douglas-Peucker polygon simplification algorithm. This is the general recursive version that does not use the
-        /// speed-up technique by using the Melkman convex hull.
-        /// 
-        /// If you pass in 0, it will remove all collinear points.
+        ///     Ramer-Douglas-Peucker polygon simplification algorithm. This is the general recursive version that does not use the
+        ///     speed-up technique by using the Melkman convex hull.
+        ///     If you pass in 0, it will remove all collinear points.
         /// </summary>
         /// <returns>The simplified polygon</returns>
         public static Vertices DouglasPeuckerSimplify(Vertices vertices, float distanceTolerance)
@@ -79,7 +107,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
 
         private static void SimplifySection(Vertices vertices, int i, int j, bool[] usePoint, float distanceTolerance)
         {
-            if ((i + 1) == j)
+            if (i + 1 == j)
                 return;
 
             Vector2 a = vertices[i];
@@ -115,7 +143,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         }
 
         /// <summary>
-        /// Merges all parallel edges in the list of vertices
+        ///     Merges all parallel edges in the list of vertices
         /// </summary>
         /// <param name="vertices">The vertices.</param>
         /// <param name="tolerance">The tolerance.</param>
@@ -132,18 +160,18 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             //Gather points to process
             for (int i = 0; i < vertices.Count; ++i)
             {
-                int lower = (i == 0) ? (vertices.Count - 1) : (i - 1);
+                int lower = i == 0 ? vertices.Count - 1 : i - 1;
                 int middle = i;
-                int upper = (i == vertices.Count - 1) ? (0) : (i + 1);
+                int upper = i == vertices.Count - 1 ? 0 : i + 1;
 
                 float dx0 = vertices[middle].X - vertices[lower].X;
                 float dy0 = vertices[middle].Y - vertices[lower].Y;
                 float dx1 = vertices[upper].Y - vertices[middle].X;
                 float dy1 = vertices[upper].Y - vertices[middle].Y;
-                float norm0 = (float)Math.Sqrt(dx0 * dx0 + dy0 * dy0);
-                float norm1 = (float)Math.Sqrt(dx1 * dx1 + dy1 * dy1);
+                float norm0 = (float) Math.Sqrt(dx0 * dx0 + dy0 * dy0);
+                float norm1 = (float) Math.Sqrt(dx1 * dx1 + dy1 * dy1);
 
-                if (!(norm0 > 0.0f && norm1 > 0.0f) && newNVertices > 3)
+                if (!((norm0 > 0.0f) && (norm1 > 0.0f)) && (newNVertices > 3))
                 {
                     //Merge identical points
                     mergeMe[i] = true;
@@ -157,7 +185,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 float cross = dx0 * dy1 - dx1 * dy0;
                 float dot = dx0 * dx1 + dy0 * dy1;
 
-                if (Math.Abs(cross) < tolerance && dot > 0 && newNVertices > 3)
+                if ((Math.Abs(cross) < tolerance) && (dot > 0) && (newNVertices > 3))
                 {
                     mergeMe[i] = true;
                     --newNVertices;
@@ -189,7 +217,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         }
 
         /// <summary>
-        /// Merges the identical points in the polygon.
+        ///     Merges the identical points in the polygon.
         /// </summary>
         /// <param name="vertices">The vertices.</param>
         public static Vertices MergeIdenticalPoints(Vertices vertices)
@@ -205,7 +233,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         }
 
         /// <summary>
-        /// Reduces the polygon by distance.
+        ///     Reduces the polygon by distance.
         /// </summary>
         /// <param name="vertices">The vertices.</param>
         /// <param name="distance">The distance between points. Points closer than this will be removed.</param>
@@ -234,7 +262,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         }
 
         /// <summary>
-        /// Reduces the polygon by removing the Nth vertex in the vertices list.
+        ///     Reduces the polygon by removing the Nth vertex in the vertices list.
         /// </summary>
         /// <param name="vertices">The vertices.</param>
         /// <param name="nth">The Nth point to remove. Example: 5.</param>
@@ -261,9 +289,8 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         }
 
         /// <summary>
-        /// Simplify the polygon by removing all points that in pairs of 3 have an area less than the tolerance.
-        /// 
-        /// Pass in 0 as tolerance, and it will only remove collinear points.
+        ///     Simplify the polygon by removing all points that in pairs of 3 have an area less than the tolerance.
+        ///     Pass in 0 as tolerance, and it will only remove collinear points.
         /// </summary>
         /// <param name="vertices"></param>
         /// <param name="areaTolerance"></param>

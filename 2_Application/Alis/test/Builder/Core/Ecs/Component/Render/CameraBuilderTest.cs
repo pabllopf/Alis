@@ -47,10 +47,10 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Render
         public void CameraBuilder_DefaultConstructor_ValidInput()
         {
             CameraBuilder cameraBuilder = new CameraBuilder();
-            
+
             Assert.NotNull(cameraBuilder);
         }
-        
+
         /// <summary>
         ///     Tests that build valid input
         /// </summary>
@@ -58,12 +58,12 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Render
         public void Build_ValidInput()
         {
             CameraBuilder cameraBuilder = new CameraBuilder();
-            
+
             Camera camera = cameraBuilder.Build();
-            
+
             Assert.NotNull(camera);
         }
-        
+
         /// <summary>
         ///     Tests that background color valid input
         /// </summary>
@@ -72,12 +72,12 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Render
         {
             CameraBuilder cameraBuilder = new CameraBuilder();
             Color color = new Color(255, 255, 255, 255);
-            
+
             cameraBuilder.BackgroundColor(color);
-            
+
             Assert.Equal(color, cameraBuilder.Build().BackgroundColor);
         }
-        
+
         /// <summary>
         ///     Tests that resolution valid input
         /// </summary>
@@ -87,9 +87,9 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Render
             CameraBuilder cameraBuilder = new CameraBuilder();
             int resolutionX = 1920;
             int resolutionY = 1080;
-            
+
             cameraBuilder.Resolution(resolutionX, resolutionY);
-            
+
             Assert.Equal(new Vector2(resolutionX, resolutionY), cameraBuilder.Build().Resolution);
         }
     }

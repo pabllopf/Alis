@@ -64,6 +64,8 @@ namespace Alis.Core.Sample
         /// </summary>
         private const int Height = 480;
 
+        private const float PIXELS_PER_METER = 32f;
+
         /// <summary>
         ///     The sdl game controller axis
         /// </summary>
@@ -115,15 +117,13 @@ namespace Alis.Core.Sample
         private static RectangleI _dstRectFont1;
 
         private static Body _playerBody;
-        private static float _playerBodyRadius = 1.5f / 2f; // player diameter is 1.5 meters
+        private static readonly float _playerBodyRadius = 1.5f / 2f; // player diameter is 1.5 meters
 
         // Add a variable to store the desired frame rate
-        private static int targetFps = 60;
+        private static readonly int targetFps = 60;
 
         // Calculate the frame duration based on the desired frame rate
-        private static int frameDuration = 1000 / targetFps;
-
-        private const float PIXELS_PER_METER = 32f;
+        private static readonly int frameDuration = 1000 / targetFps;
 
         /// <summary>
         ///     Runs
@@ -292,32 +292,32 @@ namespace Alis.Core.Sample
             // Give it some bounce and friction
             pfixture.Restitution = 0.3f;
             pfixture.Friction = 0.5f;
-            
+
             Vector2 sizeBox = new Vector2(10, 1);
             Body box = world.CreateRectangle(sizeBox.X, sizeBox.Y, 1);
             box.BodyType = BodyType.Static;
             box.Position = new Vector2(0, 0);
             box.SetFriction(0.5f);
             box.SetRestitution(0.3f);
-            
-            
+
+
             Vector2 textureBoxSize = new Vector2(1, 1);
             Body textureBox = world.CreateRectangle(textureBoxSize.X, textureBoxSize.Y, 1);
             textureBox.BodyType = BodyType.Static;
             textureBox.Position = new Vector2(5, 5);
             textureBox.SetFriction(0.5f);
             textureBox.SetRestitution(0.3f);
-            
+
             // Define two Transform objects to store the positions of the bodies
             Transform playerTransform = new Transform();
             Transform boxTransform = new Transform();
             Transform textureTransform = new Transform();
-            
+
             Camera camera = new Camera(renderer);
-            
+
 
             Stopwatch stopwatch = new Stopwatch();
-            
+
             Stopwatch realTimeStopwatch = new Stopwatch();
             realTimeStopwatch.Start();
             int frameCounter = 0;
@@ -357,7 +357,7 @@ namespace Alis.Core.Sample
             {
                 timeStepPhysics = 1f / 5f;
             }
-            
+
             while (_running)
             {
                 stopwatch.Restart();
@@ -399,12 +399,10 @@ namespace Alis.Core.Sample
 
                             if (_sdlEvent.key.KeySym.sym == KeyCodes.W)
                             {
-
                             }
 
                             if (_sdlEvent.key.KeySym.sym == KeyCodes.S)
                             {
-
                             }
 
                             if (_sdlEvent.key.KeySym.sym == KeyCodes.A)
@@ -446,16 +444,14 @@ namespace Alis.Core.Sample
                 }
 
 
-               
-
                 /*RenderColors();
 
                 // Sets the color that the screen will be cleared with.
                 Sdl.SetRenderDrawColor(renderer, _red, _green, _blue, 255);
-                
+
                 Sdl.RenderClear(renderer);
 
-                
+
                 // Sets the color that the rectangle will be drawn with.
                 Sdl.SetRenderDrawColor(renderer, 255, 255, 255, 255);
                 // Draws a rectangle outline.
@@ -472,8 +468,8 @@ namespace Alis.Core.Sample
                 Sdl.RenderCopy(renderer, textureTile, IntPtr.Zero, ref tileRectangleI);
 
                 Sdl.RenderDrawRects(renderer, new[] {rectBorder, rectFilled}, 2);*/
-                
-                
+
+
                 // PHYSICS:
                 world.Step(timeStepPhysics);
 
@@ -484,7 +480,7 @@ namespace Alis.Core.Sample
 
                 boxTransform.Position = box.Position;
                 boxTransform.Rotation = box.Rotation;
-                
+
                 textureTransform.Position = textureBox.Position;
                 textureTransform.Rotation = textureBox.Rotation;
 
@@ -508,38 +504,37 @@ namespace Alis.Core.Sample
                 float boxHeight = sizeBox.Y * PIXELS_PER_METER;
 
                 // Draw the player circle:
-                int circleX = (int)((playerPosX - camera.Position.X + camera.Resolution.X / 2));
-                int circleY = (int)((playerPosY - camera.Position.Y + camera.Resolution.Y / 2));
+                int circleX = (int) (playerPosX - camera.Position.X + camera.Resolution.X / 2);
+                int circleY = (int) (playerPosY - camera.Position.Y + camera.Resolution.Y / 2);
                 Sdl.SetRenderDrawColor(renderer, 0, 255, 0, 255);
-                DrawCircleWithLine(renderer, circleX, circleY, (int)(_playerBodyRadius * PIXELS_PER_METER), playerTransform.Rotation * 180 / MathF.PI);
+                DrawCircleWithLine(renderer, circleX, circleY, (int) (_playerBodyRadius * PIXELS_PER_METER), playerTransform.Rotation * 180 / MathF.PI);
 
                 // Draw the box:
-                int boxX = (int)((boxPosX - camera.Position.X + camera.Resolution.X / 2));
-                int boxY = (int)((boxPosY - camera.Position.Y + camera.Resolution.Y / 2));
+                int boxX = (int) (boxPosX - camera.Position.X + camera.Resolution.X / 2);
+                int boxY = (int) (boxPosY - camera.Position.Y + camera.Resolution.Y / 2);
                 Sdl.SetRenderDrawColor(renderer, 255, 0, 0, 255);
                 RectangleI boxRect = new RectangleI
                 {
-                    X = (int)(boxX - (boxWidth / 2)),
-                    Y = (int)(boxY - (boxHeight / 2)),
-                    W = (int)(boxWidth),
-                    H = (int)(boxHeight)
+                    X = (int) (boxX - boxWidth / 2),
+                    Y = (int) (boxY - boxHeight / 2),
+                    W = (int) boxWidth,
+                    H = (int) boxHeight
                 };
                 Sdl.RenderDrawRect(renderer, ref boxRect);
-                
+
                 // render the texture box
                 Sdl.SetRenderDrawColor(renderer, 0, 0, 255, 255);
                 RectangleI textureBoxRect = new RectangleI
                 {
-                    X = (int)((textureTransform.Position.X * PIXELS_PER_METER - camera.Position.X + camera.Resolution.X / 2) - (tileRectangleI.W / 2)),
-                    Y = (int)((textureTransform.Position.Y * PIXELS_PER_METER - camera.Position.Y + camera.Resolution.Y / 2) - (tileRectangleI.H / 2)),
+                    X = (int) (textureTransform.Position.X * PIXELS_PER_METER - camera.Position.X + camera.Resolution.X / 2 - tileRectangleI.W / 2),
+                    Y = (int) (textureTransform.Position.Y * PIXELS_PER_METER - camera.Position.Y + camera.Resolution.Y / 2 - tileRectangleI.H / 2),
                     W = tileRectangleI.W,
                     H = tileRectangleI.H
                 };
                 Sdl.RenderDrawRect(renderer, ref textureBoxRect);
                 Sdl.RenderCopyEx(renderer, textureTile, IntPtr.Zero, ref textureBoxRect, textureTransform.Rotation * 180 / MathF.PI, IntPtr.Zero, RendererFlips.FlipVertical);
-                
-                
-                
+
+
                 // RENDER THE CAMERA
                 // Reset the render target to the default SDL backbuffer
                 Sdl.SetRenderTarget(renderer, IntPtr.Zero);
@@ -549,9 +544,9 @@ namespace Alis.Core.Sample
 
                 Sdl.RenderPresent(renderer);
 
-               
+
                 stopwatch.Stop();
-                int frameTime = (int)stopwatch.ElapsedMilliseconds;
+                int frameTime = (int) stopwatch.ElapsedMilliseconds;
 
                 // Sleep for the remaining time to maintain the desired frame rate
                 if (frameTime < frameDuration)
@@ -610,7 +605,7 @@ namespace Alis.Core.Sample
                 }
             }
         }
-        
+
         private static void DrawHalfCircle(IntPtr renderer, int x0, int y0, int radius)
         {
             int x = radius - 1;
@@ -648,7 +643,7 @@ namespace Alis.Core.Sample
                 }
             }
         }
-        
+
         private static void DrawCircleWithLine(IntPtr renderer, int x0, int y0, int radius, float angle)
         {
             int x = radius - 1;
@@ -684,17 +679,15 @@ namespace Alis.Core.Sample
             }
 
             // Calculate the end points of the line based on the angle
-            float radian = angle * (float)Math.PI / 180f;
-            int lineX1 = x0 + (int)(radius * Math.Cos(radian));
-            int lineY1 = y0 + (int)(radius * Math.Sin(radian));
-            int lineX2 = x0 - (int)(radius * Math.Cos(radian));
-            int lineY2 = y0 - (int)(radius * Math.Sin(radian));
+            float radian = angle * (float) Math.PI / 180f;
+            int lineX1 = x0 + (int) (radius * Math.Cos(radian));
+            int lineY1 = y0 + (int) (radius * Math.Sin(radian));
+            int lineX2 = x0 - (int) (radius * Math.Cos(radian));
+            int lineY2 = y0 - (int) (radius * Math.Sin(radian));
 
             // Draw the line
             Sdl.RenderDrawLine(renderer, lineX1, lineY1, lineX2, lineY2);
         }
-        
-       
 
 
         /// <summary>

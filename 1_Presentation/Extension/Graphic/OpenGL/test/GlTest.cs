@@ -48,7 +48,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test
             uint program = 1;
             Assert.Throws<TypeInitializationException>(() => Gl.GetProgramLinkStatus(program));
         }
-        
+
         /// <summary>
         ///     Tests that get program link status returns false when not linked
         /// </summary>
@@ -58,7 +58,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test
             uint program = 0;
             Assert.Throws<TypeInitializationException>(() => Gl.GetProgramLinkStatus(program));
         }
-        
+
         /// <summary>
         ///     Tests that uniform matrix 4 fv calls gl uniform matrix 4 fv
         /// </summary>
@@ -69,7 +69,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test
             Matrix4X4 matrix = new Matrix4X4();
             Assert.Throws<TypeInitializationException>(() => Gl.UniformMatrix4Fv(location, matrix));
         }
-        
+
         /// <summary>
         ///     Tests that vertex attrib pointer throws argument out of range exception for negative index
         /// </summary>
@@ -79,7 +79,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test
             int index = -1;
             Assert.Throws<ArgumentOutOfRangeException>(() => Gl.VertexAttribPointer(index, 3, VertexAttribPointerType.Float, false, 0, IntPtr.Zero));
         }
-        
+
         /// <summary>
         ///     Tests that vertex attrib pointer calls gl vertex attrib pointer
         /// </summary>
@@ -89,7 +89,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test
             int index = 1;
             Assert.Throws<TypeInitializationException>(() => Gl.VertexAttribPointer(index, 3, VertexAttribPointerType.Float, false, 0, IntPtr.Zero));
         }
-        
+
         /// <summary>
         ///     Tests that enable vertex attrib array throws argument out of range exception for negative index
         /// </summary>
@@ -99,7 +99,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test
             int index = -1;
             Assert.Throws<ArgumentOutOfRangeException>(() => Gl.EnableVertexAttribArray(index));
         }
-        
+
         /// <summary>
         ///     Tests that enable vertex attrib array calls gl enable vertex attrib array
         /// </summary>
@@ -109,7 +109,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test
             int index = 1;
             Assert.Throws<TypeInitializationException>(() => Gl.EnableVertexAttribArray(index));
         }
-        
+
         /// <summary>
         ///     Tests that gen vertex array calls gl gen vertex arrays
         /// </summary>
@@ -118,7 +118,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test
         {
             Assert.Throws<TypeInitializationException>(() => Gl.GenVertexArray());
         }
-        
+
         /// <summary>
         ///     Tests that delete vertex array calls gl delete vertex arrays
         /// </summary>
@@ -128,7 +128,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test
             uint vao = 1;
             Assert.Throws<TypeInitializationException>(() => Gl.DeleteVertexArray(vao));
         }
-        
+
         /// <summary>
         ///     Tests that gen texture calls gl gen textures
         /// </summary>
@@ -137,7 +137,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test
         {
             Assert.Throws<TypeInitializationException>(() => Gl.GenTexture());
         }
-        
+
         /// <summary>
         ///     Tests that delete texture calls gl delete textures
         /// </summary>

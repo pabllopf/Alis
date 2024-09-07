@@ -46,17 +46,17 @@ namespace Alis.Sample.Flappy.Bird
         ///     The audio source
         /// </summary>
         private AudioSource audioSource;
-        
+
         /// <summary>
         ///     The box collider
         /// </summary>
         private BoxCollider boxCollider;
-        
+
         /// <summary>
         ///     Gets or sets the value of the is dead
         /// </summary>
         public bool IsDead { get; set; } = false;
-        
+
         /// <summary>
         ///     Ons the init
         /// </summary>
@@ -65,7 +65,7 @@ namespace Alis.Sample.Flappy.Bird
             audioSource = GameObject.Get<AudioSource>();
             boxCollider = GameObject.Get<BoxCollider>();
         }
-        
+
         /// <summary>
         ///     Ons the press key using the specified key
         /// </summary>

@@ -1,4 +1,31 @@
-﻿// Copyright (c) 2021 Kastellanos Nikolaos
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ContactManager.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 /* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
@@ -6,28 +33,31 @@
  */
 
 /*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-* 
-* Original source Box2D:
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
-* 
-* This software is provided 'as-is', without any express or implied 
-* warranty.  In no event will the authors be held liable for any damages 
-* arising from the use of this software. 
-* Permission is granted to anyone to use this software for any purpose, 
-* including commercial applications, and to alter it and redistribute it 
-* freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
-* claim that you wrote the original software. If you use this software 
-* in a product, an acknowledgment in the product documentation would be 
-* appreciated but is not required. 
-* 2. Altered source versions must be plainly marked as such, and must not be 
-* misrepresented as being the original software. 
-* 3. This notice may not be removed or altered from any source distribution. 
-*/
+ * Farseer Physics Engine:
+ * Copyright (c) 2012 Ian Qvist
+ *
+ * Original source Box2D:
+ * Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
+using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Dynamics.Contacts;
 
@@ -36,34 +66,36 @@ namespace Alis.Core.Physic.Dynamics
     public class ContactManager
     {
         #region Settings
+
         /// <summary>
-        /// A threshold for activating multiple cores to solve VelocityConstraints.
-        /// An Island with a contact count above this threshold will use multiple threads to solve VelocityConstraints.
-        /// A value of 0 will always use multithreading. A value of (int.MaxValue) will never use multithreading.
-        /// Typical values are {128 or 256}.
+        ///     A threshold for activating multiple cores to solve VelocityConstraints.
+        ///     An Island with a contact count above this threshold will use multiple threads to solve VelocityConstraints.
+        ///     A value of 0 will always use multithreading. A value of (int.MaxValue) will never use multithreading.
+        ///     Typical values are {128 or 256}.
         /// </summary>
         public int VelocityConstraintsMultithreadThreshold = int.MaxValue;
 
         /// <summary>
-        /// A threshold for activating multiple cores to solve PositionConstraints.
-        /// An Island with a contact count above this threshold will use multiple threads to solve PositionConstraints.
-        /// A value of 0 will always use multithreading. A value of (int.MaxValue) will never use multithreading.
-        /// Typical values are {128 or 256}.
+        ///     A threshold for activating multiple cores to solve PositionConstraints.
+        ///     An Island with a contact count above this threshold will use multiple threads to solve PositionConstraints.
+        ///     A value of 0 will always use multithreading. A value of (int.MaxValue) will never use multithreading.
+        ///     Typical values are {128 or 256}.
         /// </summary>
         public int PositionConstraintsMultithreadThreshold = int.MaxValue;
-        
+
         /// <summary>
-        /// A threshold for activating multiple cores to solve Collide.
-        /// An World with a contact count above this threshold will use multiple threads to solve Collide.
-        /// A value of 0 will always use multithreading. A value of (int.MaxValue) will never use multithreading.
-        /// Typical values are {128 or 256}.
+        ///     A threshold for activating multiple cores to solve Collide.
+        ///     An World with a contact count above this threshold will use multiple threads to solve Collide.
+        ///     A value of 0 will always use multithreading. A value of (int.MaxValue) will never use multithreading.
+        ///     Typical values are {128 or 256}.
         /// </summary>
         public int CollideMultithreadThreshold = int.MaxValue;
+
         #endregion
 
 
         /// <summary>
-        /// Fires when a contact is created
+        ///     Fires when a contact is created
         /// </summary>
         public BeginContactDelegate BeginContact;
 
@@ -74,7 +106,7 @@ namespace Alis.Core.Physic.Dynamics
         internal readonly ContactListHead _contactPoolList;
 
         /// <summary>
-        /// The filter used by the contact manager.
+        ///     The filter used by the contact manager.
         /// </summary>
         public CollisionFilterDelegate ContactFilter;
 
@@ -83,33 +115,33 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         /// The set of active contacts.
         /// </summary>
-		public HashSet<Contact> ActiveContacts = new HashSet<Contact>();
+        public HashSet<Contact> ActiveContacts = new HashSet<Contact>();
 
         /// <summary>
         /// A temporary copy of active contacts that is used during updates so
-		/// the hash set can have members added/removed during the update.
-		/// This list is cleared after every update.
+        /// the hash set can have members added/removed during the update.
+        /// This list is cleared after every update.
         /// </summary>
-		List<Contact> ActiveList = new List<Contact>();
+        List<Contact> ActiveList = new List<Contact>();
 #endif
 
         /// <summary>
-        /// Fires when a contact is deleted
+        ///     Fires when a contact is deleted
         /// </summary>
         public EndContactDelegate EndContact;
 
         /// <summary>
-        /// Fires when the broadphase detects that two Fixtures are close to each other.
+        ///     Fires when the broadphase detects that two Fixtures are close to each other.
         /// </summary>
         public BroadphaseDelegate OnBroadphaseCollision;
 
         /// <summary>
-        /// Fires after the solver has run
+        ///     Fires after the solver has run
         /// </summary>
         public PostSolveDelegate PostSolve;
 
         /// <summary>
-        /// Fires before the solver runs
+        ///     Fires before the solver runs
         /// </summary>
         public PreSolveDelegate PreSolve;
 
@@ -128,7 +160,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             FixtureProxy proxyA = BroadPhase.GetProxy(proxyIdA);
             FixtureProxy proxyB = BroadPhase.GetProxy(proxyIdB);
-            
+
             Fixture fixtureA = proxyA.Fixture;
             Fixture fixtureB = proxyB.Fixture;
 
@@ -154,13 +186,13 @@ namespace Alis.Core.Physic.Dynamics
                     int iA = ceB.Contact.ChildIndexA;
                     int iB = ceB.Contact.ChildIndexB;
 
-                    if (fA == fixtureA && fB == fixtureB && iA == indexA && iB == indexB)
+                    if ((fA == fixtureA) && (fB == fixtureB) && (iA == indexA) && (iB == indexB))
                     {
                         // A contact already exists.
                         return;
                     }
 
-                    if (fA == fixtureB && fB == fixtureA && iA == indexB && iB == indexA)
+                    if ((fA == fixtureB) && (fB == fixtureA) && (iA == indexB) && (iB == indexA))
                     {
                         // A contact already exists.
                         return;
@@ -213,7 +245,7 @@ namespace Alis.Core.Physic.Dynamics
             ContactCount++;
 
 #if USE_ACTIVE_CONTACT_SET
-			ActiveContacts.Add(c);
+            ActiveContacts.Add(c);
 #endif
             // Connect to island graph.
 
@@ -227,6 +259,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 bodyA.ContactList.Prev = c._nodeA;
             }
+
             bodyA.ContactList = c._nodeA;
 
             // Connect to body B
@@ -239,10 +272,11 @@ namespace Alis.Core.Physic.Dynamics
             {
                 bodyB.ContactList.Prev = c._nodeB;
             }
+
             bodyB.ContactList = c._nodeB;
 
             // Wake up the bodies
-            if (fixtureA.IsSensor == false && fixtureB.IsSensor == false)
+            if ((fixtureA.IsSensor == false) && (fixtureB.IsSensor == false))
             {
                 bodyA.Awake = true;
                 bodyB.Awake = true;
@@ -314,11 +348,11 @@ namespace Alis.Core.Physic.Dynamics
                 contact._nodeB.Next.Prev = contact._nodeB.Prev;
 
 #if USE_ACTIVE_CONTACT_SET
-			if (ActiveContacts.Contains(contact))
-				ActiveContacts.Remove(contact);
+            if (ActiveContacts.Contains(contact))
+                ActiveContacts.Remove(contact);
 #endif
             contact.Destroy();
-            
+
             // Insert into the pool.
             contact.Next = _contactPoolList.Next;
             _contactPoolList.Next = contact;
@@ -327,7 +361,7 @@ namespace Alis.Core.Physic.Dynamics
         internal void Collide()
         {
 #if NET40 || NET45 || NETSTANDARD2_0_OR_GREATER
-            if (this.ContactCount > CollideMultithreadThreshold && System.Environment.ProcessorCount > 1)
+            if ((ContactCount > CollideMultithreadThreshold) && (Environment.ProcessorCount > 1))
             {
                 CollideMultiCore();
                 return;
@@ -396,14 +430,14 @@ namespace Alis.Core.Physic.Dynamics
                     c.FilterFlag = false;
                 }
 
-                bool activeA = bodyA.Awake && bodyA.BodyType != BodyType.Static;
-                bool activeB = bodyB.Awake && bodyB.BodyType != BodyType.Static;
+                bool activeA = bodyA.Awake && (bodyA.BodyType != BodyType.Static);
+                bool activeB = bodyB.Awake && (bodyB.BodyType != BodyType.Static);
 
                 // At least one body must be awake and it must be dynamic or kinematic.
-                if (activeA == false && activeB == false)
+                if ((activeA == false) && (activeB == false))
                 {
 #if USE_ACTIVE_CONTACT_SET
-					ActiveContacts.Remove(c);
+                    ActiveContacts.Remove(c);
 #endif
                     c = c.Next;
                     continue;
@@ -430,20 +464,20 @@ namespace Alis.Core.Physic.Dynamics
             }
 
 #if USE_ACTIVE_CONTACT_SET
-			ActiveList.Clear();
+            ActiveList.Clear();
 #endif
         }
 
         /// <summary>
-        /// A temporary list of contacts to be updated during Collide().
+        ///     A temporary list of contacts to be updated during Collide().
         /// </summary>
-        List<Contact> updateList = new List<Contact>();
+        private readonly List<Contact> updateList = new List<Contact>();
 
 #if NET40 || NET45 || NETSTANDARD2_0_OR_GREATER
         internal void CollideMultiCore()
         {
             int lockOrder = 0;
- 
+
             // Update awake contacts.
 #if USE_ACTIVE_CONTACT_SET
             ActiveList.AddRange(ActiveContacts);
@@ -451,7 +485,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 Contact c = tmpc;
 #else
-            for (Contact c = ContactList.Next; c != ContactList; )
+            for (Contact c = ContactList.Next; c != ContactList;)
             {
 #endif
                 Fixture fixtureA = c.FixtureA;
@@ -506,14 +540,14 @@ namespace Alis.Core.Physic.Dynamics
                     c.FilterFlag = false;
                 }
 
-                bool activeA = bodyA.Awake && bodyA.BodyType != BodyType.Static;
-                bool activeB = bodyB.Awake && bodyB.BodyType != BodyType.Static;
+                bool activeA = bodyA.Awake && (bodyA.BodyType != BodyType.Static);
+                bool activeB = bodyB.Awake && (bodyB.BodyType != BodyType.Static);
 
                 // At least one body must be awake and it must be dynamic or kinematic.
-                if (activeA == false && activeB == false)
+                if ((activeA == false) && (activeB == false))
                 {
 #if USE_ACTIVE_CONTACT_SET
-					ActiveContacts.Remove(c);
+                    ActiveContacts.Remove(c);
 #endif
                     c = c.Next;
                     continue;
@@ -544,11 +578,11 @@ namespace Alis.Core.Physic.Dynamics
             }
 
 #if USE_ACTIVE_CONTACT_SET
-			ActiveList.Clear();
+            ActiveList.Clear();
 #endif
 
             // update contacts
-            System.Threading.Tasks.Parallel.ForEach<Contact>(updateList, (c) =>
+            Parallel.ForEach(updateList, c =>
             {
                 // find lower order item
                 Fixture fixtureA = c.FixtureA;
@@ -560,7 +594,7 @@ namespace Alis.Core.Physic.Dynamics
                 int idA = orderedBodyA._lockOrder;
                 int idB = orderedBodyB._lockOrder;
                 if (idA == idB)
-                    throw new System.Exception();
+                    throw new Exception();
 
                 if (idA > idB)
                 {
@@ -569,23 +603,23 @@ namespace Alis.Core.Physic.Dynamics
                 }
 
                 // obtain lock
-                for (; ; )
+                for (;;)
                 {
-                    if (System.Threading.Interlocked.CompareExchange(ref orderedBodyA._lock, 1, 0) == 0)
+                    if (Interlocked.CompareExchange(ref orderedBodyA._lock, 1, 0) == 0)
                     {
-                        if (System.Threading.Interlocked.CompareExchange(ref orderedBodyB._lock, 1, 0) == 0)
+                        if (Interlocked.CompareExchange(ref orderedBodyB._lock, 1, 0) == 0)
                             break;
-                        System.Threading.Interlocked.Exchange(ref orderedBodyA._lock, 0);
+                        Interlocked.Exchange(ref orderedBodyA._lock, 0);
                     }
 #if NET40 || NET45 || NETSTANDARD2_0_OR_GREATER
-                    System.Threading.Thread.Sleep(0);
+                    Thread.Sleep(0);
 #endif
                 }
 
                 c.Update(this);
 
-                System.Threading.Interlocked.Exchange(ref orderedBodyB._lock, 0);
-                System.Threading.Interlocked.Exchange(ref orderedBodyA._lock, 0);
+                Interlocked.Exchange(ref orderedBodyB._lock, 0);
+                Interlocked.Exchange(ref orderedBodyA._lock, 0);
             });
 
             updateList.Clear();
@@ -594,13 +628,13 @@ namespace Alis.Core.Physic.Dynamics
 
         private static bool ShouldCollide(Fixture fixtureA, Fixture fixtureB)
         {
-            if (fixtureA.CollisionGroup != 0 && fixtureA.CollisionGroup == fixtureB.CollisionGroup)
+            if ((fixtureA.CollisionGroup != 0) && (fixtureA.CollisionGroup == fixtureB.CollisionGroup))
             {
-                return (fixtureA.CollisionGroup > 0);
+                return fixtureA.CollisionGroup > 0;
             }
 
             bool collide = ((fixtureA.CollidesWith & fixtureB.CollisionCategories) != 0) &&
-                            ((fixtureB.CollidesWith & fixtureA.CollisionCategories) != 0);
+                           ((fixtureB.CollidesWith & fixtureA.CollisionCategories) != 0);
 
             return collide;
         }
@@ -608,7 +642,7 @@ namespace Alis.Core.Physic.Dynamics
 #if USE_ACTIVE_CONTACT_SET
         internal void UpdateActiveContacts(ContactEdge ContactList, bool value)
         {
-            if(value)
+            if (value)
             {
                 for (var contactEdge = ContactList; contactEdge != null; contactEdge = contactEdge.Next)
                 {

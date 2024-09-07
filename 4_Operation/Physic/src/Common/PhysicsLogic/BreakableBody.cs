@@ -1,4 +1,33 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:BreakableBody.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
@@ -17,33 +46,28 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 namespace Alis.Core.Physic.Common.PhysicsLogic
 {
     /// <summary>
-    /// A type of body that supports multiple fixtures that can break apart.
+    ///     A type of body that supports multiple fixtures that can break apart.
     /// </summary>
     public class BreakableBody
     {
         public enum BreakableBodyState
-        {            	
+        {
             Unbroken,
             ShouldBreak,
-            Broken,
+            Broken
         }
 
         private float[] _angularVelocitiesCache = new float[8];
         private Vector2[] _velocitiesCache = new Vector2[8];
-        
+
         public List<Fixture> Parts = new List<Fixture>(8);
 
-        public World World { get; private set; }
-        public Body MainBody { get; private set; }
-        
         /// <summary>
-        /// The force needed to break the body apart.
-        /// Default: 500
+        ///     The force needed to break the body apart.
+        ///     Default: 500
         /// </summary>
         public float Strength = 500.0f;
 
-        public BreakableBodyState State { get; private set; }
-                
         private BreakableBody(World world)
         {
             World = world;
@@ -74,14 +98,14 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                 Parts.Add(fixture);
             }
         }
-        
+
         public BreakableBody(World world, Vertices vertices, float density, Vector2 position = new Vector2(), float rotation = 0) : this(world)
         {
             MainBody = World.CreateBody(position, rotation, BodyType.Dynamic);
-            
+
             //TODO: Implement a Voronoi diagram algorithm to split up the vertices
             List<Vertices> triangles = Triangulate.ConvexPartition(vertices, TriangulationAlgorithm.Earclip);
-         
+
             foreach (Vertices part in triangles)
             {
                 PolygonShape polygonShape = new PolygonShape(part, density);
@@ -89,7 +113,12 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                 Parts.Add(fixture);
             }
         }
-        
+
+        public World World { get; }
+        public Body MainBody { get; }
+
+        public BreakableBodyState State { get; private set; }
+
         private void PostSolve(Contact contact, ContactVelocityConstraint impulse)
         {
             if (State != BreakableBodyState.Broken)
@@ -125,7 +154,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                     break;
             }
         }
-        
+
         // Cache velocities to improve movement on breakage.
         private void CacheVelocities()
         {
@@ -163,7 +192,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
 
                 Body body = World.CreateBody(MainBody.Position, MainBody.Rotation, BodyType.Dynamic);
                 body.Tag = MainBody.Tag;
-                
+
                 Fixture newFixture = body.CreateFixture(shape);
                 newFixture.Tag = fixtureTag;
                 Parts[i] = newFixture;
@@ -173,9 +202,8 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
             }
 
             World.Remove(MainBody);
-            
+
             State = BreakableBodyState.Broken;
         }
-
     }
 }

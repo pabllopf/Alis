@@ -46,7 +46,7 @@ namespace Alis.Core.Aspect.Math.Shape.Point
             X = value;
             Y = value;
         }
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="PointF" /> class
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Core.Aspect.Math.Shape.Point
             X = point.X;
             Y = point.Y;
         }
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="PointF" /> class
         /// </summary>
@@ -67,12 +67,12 @@ namespace Alis.Core.Aspect.Math.Shape.Point
             X = x;
             Y = y;
         }
-        
+
         /// <summary>
         ///     The X
         /// </summary>
         public float X { get; set; }
-        
+
         /// <summary>
         ///     The Y
         /// </summary>

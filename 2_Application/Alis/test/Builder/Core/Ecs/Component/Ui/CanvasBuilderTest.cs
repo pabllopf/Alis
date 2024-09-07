@@ -45,10 +45,10 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Ui
         public void CanvasBuilder_DefaultConstructor_ValidInput()
         {
             CanvasBuilder canvasBuilder = new CanvasBuilder();
-            
+
             Assert.NotNull(canvasBuilder);
         }
-        
+
         /// <summary>
         ///     Tests that build valid input
         /// </summary>
@@ -56,9 +56,9 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Ui
         public void Build_ValidInput()
         {
             CanvasBuilder canvasBuilder = new CanvasBuilder();
-            
+
             Canvas canvas = canvasBuilder.Build();
-            
+
             Assert.NotNull(canvas);
         }
     }

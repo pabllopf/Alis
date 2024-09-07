@@ -41,17 +41,17 @@ namespace Alis.Core.Aspect.Math.Shape.Line
         ///     The x1
         /// </summary>
         public int X1 { get; set; }
-        
+
         /// <summary>
         ///     The y1
         /// </summary>
         public int Y1 { get; set; }
-        
+
         /// <summary>
         ///     The x2
         /// </summary>
         public int X2 { get; set; }
-        
+
         /// <summary>
         ///     The y2
         /// </summary>

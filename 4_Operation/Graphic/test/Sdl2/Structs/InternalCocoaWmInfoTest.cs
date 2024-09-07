@@ -45,12 +45,12 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
         public void InternalCocoaWmInfo_InitializesPropertiesCorrectly()
         {
             IntPtr expectedWindow = new IntPtr(123);
-            
+
             InternalCocoaWmInfo info = new InternalCocoaWmInfo
             {
                 Window = expectedWindow
             };
-            
+
             Assert.Equal(expectedWindow, info.Window);
         }
     }

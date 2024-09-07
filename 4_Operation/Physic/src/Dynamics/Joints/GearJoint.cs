@@ -1,29 +1,58 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:GearJoint.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 /* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
 
 /*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-* 
-* Original source Box2D:
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
-* 
-* This software is provided 'as-is', without any express or implied 
-* warranty.  In no event will the authors be held liable for any damages 
-* arising from the use of this software. 
-* Permission is granted to anyone to use this software for any purpose, 
-* including commercial applications, and to alter it and redistribute it 
-* freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
-* claim that you wrote the original software. If you use this software 
-* in a product, an acknowledgment in the product documentation would be 
-* appreciated but is not required. 
-* 2. Altered source versions must be plainly marked as such, and must not be 
-* misrepresented as being the original software. 
-* 3. This notice may not be removed or altered from any source distribution. 
-*/
+ * Farseer Physics Engine:
+ * Copyright (c) 2012 Ian Qvist
+ *
+ * Original source Box2D:
+ * Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
@@ -55,55 +84,53 @@ namespace Alis.Core.Physic.Dynamics.Joints
     // K = J * invM * JT = invMass + invI * cross(r, ug)^2
 
     /// <summary>
-    /// A gear joint is used to connect two joints together.
-    /// Either joint can be a revolute or prismatic joint.
-    /// You specify a gear ratio to bind the motions together:
-    /// <![CDATA[coordinate1 + ratio * coordinate2 = ant]]>
-    /// The ratio can be negative or positive. If one joint is a revolute joint
-    /// and the other joint is a prismatic joint, then the ratio will have units
-    /// of length or units of 1/length.
-    ///
-    /// Warning: You have to manually destroy the gear joint if jointA or jointB is destroyed.
+    ///     A gear joint is used to connect two joints together.
+    ///     Either joint can be a revolute or prismatic joint.
+    ///     You specify a gear ratio to bind the motions together:
+    ///     <![CDATA[coordinate1 + ratio * coordinate2 = ant]]>
+    ///     The ratio can be negative or positive. If one joint is a revolute joint
+    ///     and the other joint is a prismatic joint, then the ratio will have units
+    ///     of length or units of 1/length.
+    ///     Warning: You have to manually destroy the gear joint if jointA or jointB is destroyed.
     /// </summary>
     public class GearJoint : Joint
     {
-        private JointType _typeA;
-        private JointType _typeB;
+        private readonly Body _bodyA;
+        private readonly Body _bodyB;
+        private readonly Body _bodyC;
+        private readonly Body _bodyD;
 
-        private Body _bodyA;
-        private Body _bodyB;
-        private Body _bodyC;
-        private Body _bodyD;
-
-        // Solver shared
-        private Vector2 _localAnchorA;
-        private Vector2 _localAnchorB;
-        private Vector2 _localAnchorC;
-        private Vector2 _localAnchorD;
-
-        private Vector2 _localAxisC;
-        private Vector2 _localAxisD;
-
-        private float _referenceAngleA;
-        private float _referenceAngleB;
-
-        private float _constant;
-        private float _ratio;
+        private readonly float _constant;
+        private float _iA, _iB, _iC, _iD;
 
         private float _impulse;
 
         // Solver temp
         private int _indexA, _indexB, _indexC, _indexD;
-        private Vector2 _lcA, _lcB, _lcC, _lcD;
-        private float _mA, _mB, _mC, _mD;
-        private float _iA, _iB, _iC, _iD;
         private Vector2 _JvAC, _JvBD;
         private float _JwA, _JwB, _JwC, _JwD;
+        private Vector2 _lcA, _lcB, _lcC, _lcD;
+
+        // Solver shared
+        private readonly Vector2 _localAnchorA;
+        private readonly Vector2 _localAnchorB;
+        private readonly Vector2 _localAnchorC;
+        private readonly Vector2 _localAnchorD;
+
+        private Vector2 _localAxisC;
+        private Vector2 _localAxisD;
+        private float _mA, _mB, _mC, _mD;
         private float _mass;
+        private float _ratio;
+
+        private readonly float _referenceAngleA;
+        private readonly float _referenceAngleB;
+        private readonly JointType _typeA;
+        private readonly JointType _typeB;
 
         /// <summary>
-        /// Requires two existing revolute or prismatic joints (any combination will work).
-        /// The provided joints must attach a dynamic body to a static body.
+        ///     Requires two existing revolute or prismatic joints (any combination will work).
+        ///     The provided joints must attach a dynamic body to a static body.
         /// </summary>
         /// <param name="jointA">The first joint.</param>
         /// <param name="jointB">The second joint.</param>
@@ -140,7 +167,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             if (_typeA == JointType.Revolute)
             {
-                RevoluteJoint revolute = (RevoluteJoint)jointA;
+                RevoluteJoint revolute = (RevoluteJoint) jointA;
                 _localAnchorC = revolute.LocalAnchorA;
                 _localAnchorA = revolute.LocalAnchorB;
                 _referenceAngleA = revolute.ReferenceAngle;
@@ -150,7 +177,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
             else
             {
-                PrismaticJoint prismatic = (PrismaticJoint)jointA;
+                PrismaticJoint prismatic = (PrismaticJoint) jointA;
                 _localAnchorC = prismatic.LocalAnchorA;
                 _localAnchorA = prismatic.LocalAnchorB;
                 _referenceAngleA = prismatic.ReferenceAngle;
@@ -172,7 +199,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             if (_typeB == JointType.Revolute)
             {
-                RevoluteJoint revolute = (RevoluteJoint)jointB;
+                RevoluteJoint revolute = (RevoluteJoint) jointB;
                 _localAnchorD = revolute.LocalAnchorA;
                 _localAnchorB = revolute.LocalAnchorB;
                 _referenceAngleB = revolute.ReferenceAngle;
@@ -182,7 +209,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
             else
             {
-                PrismaticJoint prismatic = (PrismaticJoint)jointB;
+                PrismaticJoint prismatic = (PrismaticJoint) jointB;
                 _localAnchorD = prismatic.LocalAnchorA;
                 _localAnchorB = prismatic.LocalAnchorB;
                 _referenceAngleB = prismatic.ReferenceAngle;
@@ -200,22 +227,22 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
         public override Vector2 WorldAnchorA
         {
-            get { return _bodyA.GetWorldPoint(_localAnchorA); }
-            set { Debug.Assert(false, "You can't set the world anchor on this joint type."); }
+            get => _bodyA.GetWorldPoint(_localAnchorA);
+            set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
         }
 
         public override Vector2 WorldAnchorB
         {
-            get { return _bodyB.GetWorldPoint(_localAnchorB); }
-            set { Debug.Assert(false, "You can't set the world anchor on this joint type."); }
+            get => _bodyB.GetWorldPoint(_localAnchorB);
+            set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
         }
 
         /// <summary>
-        /// The gear ratio.
+        ///     The gear ratio.
         /// </summary>
         public float Ratio
         {
-            get { return _ratio; }
+            get => _ratio;
             set
             {
                 Debug.Assert(MathUtils.IsValid(value));
@@ -224,14 +251,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// The first revolute/prismatic joint attached to the gear joint.
+        ///     The first revolute/prismatic joint attached to the gear joint.
         /// </summary>
-        public Joint JointA { get; private set; }
+        public Joint JointA { get; }
 
         /// <summary>
-        /// The second revolute/prismatic joint attached to the gear joint.
+        ///     The second revolute/prismatic joint attached to the gear joint.
         /// </summary>
-        public Joint JointB { get; private set; }
+        public Joint JointB { get; }
 
         public override Vector2 GetReactionForce(float invDt)
         {
@@ -328,13 +355,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             if (data.step.warmStarting)
             {
-                vA += (_mA * _impulse) * _JvAC;
+                vA += _mA * _impulse * _JvAC;
                 wA += _iA * _impulse * _JwA;
-                vB += (_mB * _impulse) * _JvBD;
+                vB += _mB * _impulse * _JvBD;
                 wB += _iB * _impulse * _JwB;
-                vC -= (_mC * _impulse) * _JvAC;
+                vC -= _mC * _impulse * _JvAC;
                 wC -= _iC * _impulse * _JwC;
-                vD -= (_mD * _impulse) * _JvBD;
+                vD -= _mD * _impulse * _JvBD;
                 wD -= _iD * _impulse * _JwD;
             }
             else
@@ -364,18 +391,18 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float wD = data.velocities[_indexD].w;
 
             float Cdot = Vector2.Dot(_JvAC, vA - vC) + Vector2.Dot(_JvBD, vB - vD);
-            Cdot += (_JwA * wA - _JwC * wC) + (_JwB * wB - _JwD * wD);
+            Cdot += _JwA * wA - _JwC * wC + (_JwB * wB - _JwD * wD);
 
             float impulse = -_mass * Cdot;
             _impulse += impulse;
 
-            vA += (_mA * impulse) * _JvAC;
+            vA += _mA * impulse * _JvAC;
             wA += _iA * impulse * _JwA;
-            vB += (_mB * impulse) * _JvBD;
+            vB += _mB * impulse * _JvBD;
             wB += _iB * impulse * _JwB;
-            vC -= (_mC * impulse) * _JvAC;
+            vC -= _mC * impulse * _JvAC;
             wC -= _iC * impulse * _JwC;
-            vD -= (_mD * impulse) * _JvBD;
+            vD -= _mD * impulse * _JvBD;
             wD -= _iD * impulse * _JwD;
 
             data.velocities[_indexA].v = vA;
@@ -460,7 +487,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 coordinateB = Vector2.Dot(pB - pD, _localAxisD);
             }
 
-            float C = (coordinateA + _ratio * coordinateB) - _constant;
+            float C = coordinateA + _ratio * coordinateB - _constant;
 
             float impulse = 0.0f;
             if (mass > 0.0f)

@@ -43,21 +43,21 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         /// <param name="spaceWork">The space work</param>
         public TopMenu(SpaceWork spaceWork) => SpaceWork = spaceWork;
-        
+
         /// <summary>
         ///     Initializes this instance
         /// </summary>
         public void Initialize()
         {
         }
-        
+
         /// <summary>
         ///     Updates this instance
         /// </summary>
         public void Update()
         {
         }
-        
+
         /// <summary>
         ///     Renders this instance
         /// </summary>
@@ -70,17 +70,17 @@ namespace Alis.App.Engine.Menus
                 ImGui.Text("Sample text");
                 ImGui.EndMenu();
             }
-            
+
             ImGui.EndMainMenuBar();
         }
-        
+
         /// <summary>
         ///     Starts this instance
         /// </summary>
         public void Start()
         {
         }
-        
+
         /// <summary>
         ///     Gets the value of the space work
         /// </summary>

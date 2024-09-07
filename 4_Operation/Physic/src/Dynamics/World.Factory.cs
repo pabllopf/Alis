@@ -1,4 +1,31 @@
-﻿// Copyright (c) 2017 Kastellanos Nikolaos
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:World.Factory.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 /* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
@@ -7,6 +34,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Common;
@@ -24,9 +52,9 @@ namespace Alis.Core.Physic.Dynamics
         {
             Body body = new Body();
             body.Position = position;
-            body.Rotation = rotation;            
+            body.Rotation = rotation;
             body.BodyType = bodyType;
-            
+
 #if LEGACY_ASYNCADDREMOVE
             AddAsync(body);
 #else
@@ -188,7 +216,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Creates a chain.
+        ///     Creates a chain.
         /// </summary>
         /// <param name="world">The world.</param>
         /// <param name="start">The start.</param>
@@ -197,11 +225,14 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="linkHeight">The height.</param>
         /// <param name="numberOfLinks">The number of links.</param>
         /// <param name="linkDensity">The link density.</param>
-        /// <param name="attachRopeJoint">Creates a rope joint between start and end. This enforces the length of the rope. Said in another way: it makes the rope less bouncy.</param>
+        /// <param name="attachRopeJoint">
+        ///     Creates a rope joint between start and end. This enforces the length of the rope. Said in
+        ///     another way: it makes the rope less bouncy.
+        /// </param>
         /// <returns></returns>
         public Path CreateChain(Vector2 start, Vector2 end, float linkWidth, float linkHeight, int numberOfLinks, float linkDensity, bool attachRopeJoint)
         {
-            System.Diagnostics.Debug.Assert(numberOfLinks >= 2);
+            Debug.Assert(numberOfLinks >= 2);
 
             //Chain start / end
             Path path = new Path();
@@ -238,8 +269,5 @@ namespace Alis.Core.Physic.Dynamics
 
             return path;
         }
-
-
-
     }
 }

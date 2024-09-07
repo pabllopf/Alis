@@ -47,7 +47,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImVector vector = new ImVector();
             Assert.Equal(0, vector.Size);
         }
-        
+
         /// <summary>
         ///     Tests that capacity should be initialized
         /// </summary>
@@ -57,7 +57,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImVector vector = new ImVector();
             Assert.Equal(0, vector.Capacity);
         }
-        
+
         /// <summary>
         ///     Tests that data should be initialized
         /// </summary>
@@ -67,7 +67,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImVector vector = new ImVector();
             Assert.Equal(IntPtr.Zero, vector.Data);
         }
-        
+
         /// <summary>
         ///     Tests that constructor should initialize fields
         /// </summary>
@@ -80,7 +80,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Equal(20, vector.Capacity);
             Assert.Equal(data, vector.Data);
         }
-        
+
         /// <summary>
         ///     Tests that ref should return correct value
         /// </summary>
@@ -93,7 +93,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Equal(42, vector.Ref<int>(0));
             Marshal.FreeHGlobal(data);
         }
-        
+
         /// <summary>
         ///     Tests that address should return correct pointer
         /// </summary>

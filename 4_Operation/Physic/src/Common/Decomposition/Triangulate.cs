@@ -1,4 +1,33 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Triangulate.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
@@ -13,61 +42,56 @@ namespace Alis.Core.Physic.Common.Decomposition
     public enum TriangulationAlgorithm
     {
         /// <summary>
-        /// Convex decomposition algorithm using ear clipping
-        /// 
-        /// Properties:
-        /// - Only works on simple polygons.
-        /// - Does not support holes.
-        /// - Running time is O(n^2), n = number of vertices.
+        ///     Convex decomposition algorithm using ear clipping
+        ///     Properties:
+        ///     - Only works on simple polygons.
+        ///     - Does not support holes.
+        ///     - Running time is O(n^2), n = number of vertices.
         /// </summary>
         Earclip,
 
         /// <summary>
-        /// Convex decomposition algorithm created by Mark Bayazit (http://mnbayazit.com/)
-        /// 
-        /// Properties:
-        /// - Tries to decompose using polygons instead of triangles.
-        /// - Tends to produce optimal results with low processing time.
-        /// - Running time is O(nr), n = number of vertices, r = reflex vertices.
-        /// - Does not support holes.
+        ///     Convex decomposition algorithm created by Mark Bayazit (http://mnbayazit.com/)
+        ///     Properties:
+        ///     - Tries to decompose using polygons instead of triangles.
+        ///     - Tends to produce optimal results with low processing time.
+        ///     - Running time is O(nr), n = number of vertices, r = reflex vertices.
+        ///     - Does not support holes.
         /// </summary>
         Bayazit,
 
         /// <summary>
-        /// Convex decomposition algorithm created by unknown
-        /// 
-        /// Properties:
-        /// - No support for holes
-        /// - Very fast
-        /// - Only works on simple polygons
-        /// - Only works on counter clockwise polygons
+        ///     Convex decomposition algorithm created by unknown
+        ///     Properties:
+        ///     - No support for holes
+        ///     - Very fast
+        ///     - Only works on simple polygons
+        ///     - Only works on counter clockwise polygons
         /// </summary>
         Flipcode,
 
         /// <summary>
-        /// Convex decomposition algorithm created by Raimund Seidel
-        /// 
-        /// Properties:
-        /// - Decompose the polygon into trapezoids, then triangulate.
-        /// - To use the trapezoid data, use ConvexPartitionTrapezoid()
-        /// - Generate a lot of garbage due to incapsulation of the Poly2Tri library.
-        /// - Running time is O(n log n), n = number of vertices.
-        /// - Running time is almost linear for most simple polygons.
-        /// - Does not care about winding order. 
+        ///     Convex decomposition algorithm created by Raimund Seidel
+        ///     Properties:
+        ///     - Decompose the polygon into trapezoids, then triangulate.
+        ///     - To use the trapezoid data, use ConvexPartitionTrapezoid()
+        ///     - Generate a lot of garbage due to incapsulation of the Poly2Tri library.
+        ///     - Running time is O(n log n), n = number of vertices.
+        ///     - Running time is almost linear for most simple polygons.
+        ///     - Does not care about winding order.
         /// </summary>
         Seidel,
         SeidelTrapezoids,
 
         /// <summary>
-        /// 2D constrained Delaunay triangulation algorithm.
-        /// Based on the paper "Sweep-line algorithm for constrained Delaunay triangulation" by V. Domiter and and B. Zalik
-        /// 
-        /// Properties:
-        /// - Creates triangles with a large interior angle.
-        /// - Supports holes
-        /// - Generate a lot of garbage due to incapsulation of the Poly2Tri library.
-        /// - Running time is O(n^2), n = number of vertices.
-        /// - Does not care about winding order.
+        ///     2D constrained Delaunay triangulation algorithm.
+        ///     Based on the paper "Sweep-line algorithm for constrained Delaunay triangulation" by V. Domiter and and B. Zalik
+        ///     Properties:
+        ///     - Creates triangles with a large interior angle.
+        ///     - Supports holes
+        ///     - Generate a lot of garbage due to incapsulation of the Poly2Tri library.
+        ///     - Running time is O(n^2), n = number of vertices.
+        ///     - Does not care about winding order.
         /// </summary>
         Delauny
     }
@@ -75,14 +99,14 @@ namespace Alis.Core.Physic.Common.Decomposition
     public static class Triangulate
     {
         /// <param name="skipSanityChecks">
-        /// Set this to true to skip sanity checks in the engine. This will speed up the
-        /// tools by removing the overhead of the checks, but you will need to handle checks
-        /// yourself where it is needed.
+        ///     Set this to true to skip sanity checks in the engine. This will speed up the
+        ///     tools by removing the overhead of the checks, but you will need to handle checks
+        ///     yourself where it is needed.
         /// </param>
         public static List<Vertices> ConvexPartition(Vertices vertices, TriangulationAlgorithm algorithm, bool discardAndFixInvalid = true, float tolerance = 0.001f, bool skipSanityChecks = false)
         {
             if (vertices.Count <= 3)
-                return new List<Vertices> { vertices };
+                return new List<Vertices> {vertices};
 
             List<Vertices> results;
 
@@ -97,6 +121,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                         temp.Reverse();
                         vertices = temp;
                     }
+
                     results = EarclipDecomposer.ConvexPartition(vertices, tolerance);
                     break;
                 case TriangulationAlgorithm.Bayazit:
@@ -108,6 +133,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                         temp.Reverse();
                         vertices = temp;
                     }
+
                     results = BayazitDecomposer.ConvexPartition(vertices);
                     break;
                 case TriangulationAlgorithm.Flipcode:
@@ -119,6 +145,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                         temp.Reverse();
                         vertices = temp;
                     }
+
                     results = FlipcodeDecomposer.ConvexPartition(vertices);
                     break;
                 case TriangulationAlgorithm.Seidel:

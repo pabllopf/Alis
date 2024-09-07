@@ -1,4 +1,33 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Body.Factory.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
@@ -19,10 +48,10 @@ namespace Alis.Core.Physic.Dynamics
     public partial class Body
     {
         /// <summary>
-        /// Creates a fixture and attach it to this body.
-        /// If the density is non-zero, this function automatically updates the mass of the body.
-        /// Contacts are not created until the next time step.
-        /// Warning: This method is locked during callbacks.
+        ///     Creates a fixture and attach it to this body.
+        ///     If the density is non-zero, this function automatically updates the mass of the body.
+        ///     Contacts are not created until the next time step.
+        ///     Warning: This method is locked during callbacks.
         /// </summary>
         /// <param name="shape">The shape.</param>
         /// <param name="userData">Application specific data</param>

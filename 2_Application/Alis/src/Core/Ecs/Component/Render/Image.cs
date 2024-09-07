@@ -50,7 +50,7 @@ namespace Alis.Core.Ecs.Component.Render
             Path = string.Empty;
             Size = new Vector2();
         }
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="Image" /> class
         /// </summary>
@@ -61,7 +61,7 @@ namespace Alis.Core.Ecs.Component.Render
             Path = AssetManager.Find(nameFile);
             Load();
         }
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="Image" /> class
         /// </summary>
@@ -75,37 +75,37 @@ namespace Alis.Core.Ecs.Component.Render
             Size = size;
             Load();
         }
-        
+
         /// <summary>
         ///     Gets or sets the value of the context
         /// </summary>
         [JsonIgnore]
         private Context Context => VideoGame.GetContext();
-        
+
         /// <summary>
         ///     Gets or sets the value of the path
         /// </summary>
         [JsonIgnore]
         public string Path { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the name file
         /// </summary>
         [JsonPropertyName("_NameFile_")]
         public string NameFile { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the texture
         /// </summary>
         [JsonIgnore]
         public IntPtr Texture { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the size
         /// </summary>
         [JsonPropertyName("_Size_")]
         public Vector2 Size { get; set; }
-        
+
         /// <summary>
         ///     Loads this instance
         /// </summary>
@@ -114,12 +114,12 @@ namespace Alis.Core.Ecs.Component.Render
             if (!string.IsNullOrEmpty(NameFile))
             {
                 Path = AssetManager.Find(NameFile);
-                
+
                 Texture = Sdl.CreateTextureFromSurface(Context.GraphicManager.Renderer, Sdl.LoadBmp(Path));
-                
+
                 // get the size of sprite.Image.Texture
                 Sdl.QueryTexture(Texture, out _, out _, out int w, out int h);
-                
+
                 Size = new Vector2(w, h);
             }
         }

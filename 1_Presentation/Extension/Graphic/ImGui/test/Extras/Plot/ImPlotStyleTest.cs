@@ -47,7 +47,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(float), style.LineWeight);
         }
-        
+
         /// <summary>
         ///     Tests that marker should be initialized
         /// </summary>
@@ -57,7 +57,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(int), style.Marker);
         }
-        
+
         /// <summary>
         ///     Tests that marker size should be initialized
         /// </summary>
@@ -67,7 +67,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(float), style.MarkerSize);
         }
-        
+
         /// <summary>
         ///     Tests that marker weight should be initialized
         /// </summary>
@@ -77,7 +77,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(float), style.MarkerWeight);
         }
-        
+
         /// <summary>
         ///     Tests that fill alpha should be initialized
         /// </summary>
@@ -87,7 +87,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(float), style.FillAlpha);
         }
-        
+
         /// <summary>
         ///     Tests that error bar size should be initialized
         /// </summary>
@@ -97,7 +97,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(float), style.ErrorBarSize);
         }
-        
+
         /// <summary>
         ///     Tests that error bar weight should be initialized
         /// </summary>
@@ -107,7 +107,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(float), style.ErrorBarWeight);
         }
-        
+
         /// <summary>
         ///     Tests that digital bit height should be initialized
         /// </summary>
@@ -117,7 +117,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(float), style.DigitalBitHeight);
         }
-        
+
         /// <summary>
         ///     Tests that digital bit gap should be initialized
         /// </summary>
@@ -127,7 +127,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(float), style.DigitalBitGap);
         }
-        
+
         /// <summary>
         ///     Tests that plot border size should be initialized
         /// </summary>
@@ -137,7 +137,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(float), style.PlotBorderSize);
         }
-        
+
         /// <summary>
         ///     Tests that minor alpha should be initialized
         /// </summary>
@@ -147,7 +147,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(float), style.MinorAlpha);
         }
-        
+
         /// <summary>
         ///     Tests that major tick len should be initialized
         /// </summary>
@@ -157,7 +157,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector2), style.MajorTickLen);
         }
-        
+
         /// <summary>
         ///     Tests that minor tick len should be initialized
         /// </summary>
@@ -167,7 +167,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector2), style.MinorTickLen);
         }
-        
+
         /// <summary>
         ///     Tests that major tick size should be initialized
         /// </summary>
@@ -177,7 +177,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector2), style.MajorTickSize);
         }
-        
+
         /// <summary>
         ///     Tests that minor tick size should be initialized
         /// </summary>
@@ -187,7 +187,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector2), style.MinorTickSize);
         }
-        
+
         /// <summary>
         ///     Tests that major grid size should be initialized
         /// </summary>
@@ -197,7 +197,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector2), style.MajorGridSize);
         }
-        
+
         /// <summary>
         ///     Tests that minor grid size should be initialized
         /// </summary>
@@ -207,7 +207,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector2), style.MinorGridSize);
         }
-        
+
         /// <summary>
         ///     Tests that plot padding should be initialized
         /// </summary>
@@ -217,7 +217,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector2), style.PlotPadding);
         }
-        
+
         /// <summary>
         ///     Tests that label padding should be initialized
         /// </summary>
@@ -227,7 +227,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector2), style.LabelPadding);
         }
-        
+
         /// <summary>
         ///     Tests that legend padding should be initialized
         /// </summary>
@@ -237,7 +237,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector2), style.LegendPadding);
         }
-        
+
         /// <summary>
         ///     Tests that legend inner padding should be initialized
         /// </summary>
@@ -247,7 +247,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector2), style.LegendInnerPadding);
         }
-        
+
         /// <summary>
         ///     Tests that legend spacing should be initialized
         /// </summary>
@@ -257,7 +257,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector2), style.LegendSpacing);
         }
-        
+
         /// <summary>
         ///     Tests that mouse pos padding should be initialized
         /// </summary>
@@ -267,7 +267,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector2), style.MousePosPadding);
         }
-        
+
         /// <summary>
         ///     Tests that annotation padding should be initialized
         /// </summary>
@@ -277,7 +277,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector2), style.AnnotationPadding);
         }
-        
+
         /// <summary>
         ///     Tests that fit padding should be initialized
         /// </summary>
@@ -287,7 +287,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector2), style.FitPadding);
         }
-        
+
         /// <summary>
         ///     Tests that plot default size should be initialized
         /// </summary>
@@ -297,7 +297,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector2), style.PlotDefaultSize);
         }
-        
+
         /// <summary>
         ///     Tests that plot min size should be initialized
         /// </summary>
@@ -307,7 +307,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector2), style.PlotMinSize);
         }
-        
+
         /// <summary>
         ///     Tests that colors 0 should be initialized
         /// </summary>
@@ -317,7 +317,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector4), style.Colors0);
         }
-        
+
         /// <summary>
         ///     Tests that colors 1 should be initialized
         /// </summary>
@@ -327,7 +327,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector4), style.Colors1);
         }
-        
+
         /// <summary>
         ///     Tests that colors 2 should be initialized
         /// </summary>
@@ -337,7 +337,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector4), style.Colors2);
         }
-        
+
         /// <summary>
         ///     Tests that colors 3 should be initialized
         /// </summary>
@@ -347,7 +347,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector4), style.Colors3);
         }
-        
+
         /// <summary>
         ///     Tests that colors 4 should be initialized
         /// </summary>
@@ -357,7 +357,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector4), style.Colors4);
         }
-        
+
         /// <summary>
         ///     Tests that colors 5 should be initialized
         /// </summary>
@@ -367,7 +367,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector4), style.Colors5);
         }
-        
+
         /// <summary>
         ///     Tests that colors 6 should be initialized
         /// </summary>
@@ -377,7 +377,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector4), style.Colors6);
         }
-        
+
         /// <summary>
         ///     Tests that colors 7 should be initialized
         /// </summary>
@@ -387,7 +387,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector4), style.Colors7);
         }
-        
+
         /// <summary>
         ///     Tests that colors 8 should be initialized
         /// </summary>
@@ -397,7 +397,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector4), style.Colors8);
         }
-        
+
         /// <summary>
         ///     Tests that colors 9 should be initialized
         /// </summary>
@@ -407,7 +407,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector4), style.Colors9);
         }
-        
+
         /// <summary>
         ///     Tests that colors 10 should be initialized
         /// </summary>
@@ -417,7 +417,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector4), style.Colors10);
         }
-        
+
         /// <summary>
         ///     Tests that colors 11 should be initialized
         /// </summary>
@@ -427,7 +427,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector4), style.Colors11);
         }
-        
+
         /// <summary>
         ///     Tests that colors 12 should be initialized
         /// </summary>
@@ -437,7 +437,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector4), style.Colors12);
         }
-        
+
         /// <summary>
         ///     Tests that colors 13 should be initialized
         /// </summary>
@@ -447,7 +447,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector4), style.Colors13);
         }
-        
+
         /// <summary>
         ///     Tests that colors 14 should be initialized
         /// </summary>
@@ -457,7 +457,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector4), style.Colors14);
         }
-        
+
         /// <summary>
         ///     Tests that colors 15 should be initialized
         /// </summary>
@@ -467,7 +467,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector4), style.Colors15);
         }
-        
+
         /// <summary>
         ///     Tests that colors 16 should be initialized
         /// </summary>
@@ -477,7 +477,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector4), style.Colors16);
         }
-        
+
         /// <summary>
         ///     Tests that colors 17 should be initialized
         /// </summary>
@@ -487,7 +487,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector4), style.Colors17);
         }
-        
+
         /// <summary>
         ///     Tests that colors 18 should be initialized
         /// </summary>
@@ -497,7 +497,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector4), style.Colors18);
         }
-        
+
         /// <summary>
         ///     Tests that colors 19 should be initialized
         /// </summary>
@@ -507,7 +507,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector4), style.Colors19);
         }
-        
+
         /// <summary>
         ///     Tests that colors 20 should be initialized
         /// </summary>
@@ -517,7 +517,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(Vector4), style.Colors20);
         }
-        
+
         /// <summary>
         ///     Tests that colormap should be initialized
         /// </summary>
@@ -527,7 +527,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(ImPlotColormap), style.Colormap);
         }
-        
+
         /// <summary>
         ///     Tests that use local time should be initialized
         /// </summary>
@@ -537,7 +537,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(byte), style.UseLocalTime);
         }
-        
+
         /// <summary>
         ///     Tests that use iso 8601 should be initialized
         /// </summary>
@@ -547,7 +547,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(byte), style.UseIso8601);
         }
-        
+
         /// <summary>
         ///     Tests that use 24 hour clock should be initialized
         /// </summary>
@@ -557,7 +557,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotStyle style = new ImPlotStyle();
             Assert.Equal(default(byte), style.Use24HourClock);
         }
-        
+
         /// <summary>
         ///     Tests that line weight should set and get correctly
         /// </summary>
@@ -569,7 +569,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.LineWeight = value;
             Assert.Equal(value, style.LineWeight);
         }
-        
+
         /// <summary>
         ///     Tests that marker should set and get correctly
         /// </summary>
@@ -581,7 +581,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.Marker = value;
             Assert.Equal(value, style.Marker);
         }
-        
+
         /// <summary>
         ///     Tests that marker size should set and get correctly
         /// </summary>
@@ -593,7 +593,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.MarkerSize = value;
             Assert.Equal(value, style.MarkerSize);
         }
-        
+
         /// <summary>
         ///     Tests that marker weight should set and get correctly
         /// </summary>
@@ -605,7 +605,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.MarkerWeight = value;
             Assert.Equal(value, style.MarkerWeight);
         }
-        
+
         /// <summary>
         ///     Tests that fill alpha should set and get correctly
         /// </summary>
@@ -617,7 +617,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.FillAlpha = value;
             Assert.Equal(value, style.FillAlpha);
         }
-        
+
         /// <summary>
         ///     Tests that error bar size should set and get correctly
         /// </summary>
@@ -629,7 +629,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.ErrorBarSize = value;
             Assert.Equal(value, style.ErrorBarSize);
         }
-        
+
         /// <summary>
         ///     Tests that error bar weight should set and get correctly
         /// </summary>
@@ -641,7 +641,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.ErrorBarWeight = value;
             Assert.Equal(value, style.ErrorBarWeight);
         }
-        
+
         /// <summary>
         ///     Tests that digital bit height should set and get correctly
         /// </summary>
@@ -653,7 +653,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.DigitalBitHeight = value;
             Assert.Equal(value, style.DigitalBitHeight);
         }
-        
+
         /// <summary>
         ///     Tests that digital bit gap should set and get correctly
         /// </summary>
@@ -665,7 +665,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.DigitalBitGap = value;
             Assert.Equal(value, style.DigitalBitGap);
         }
-        
+
         /// <summary>
         ///     Tests that plot border size should set and get correctly
         /// </summary>
@@ -677,7 +677,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.PlotBorderSize = value;
             Assert.Equal(value, style.PlotBorderSize);
         }
-        
+
         /// <summary>
         ///     Tests that minor alpha should set and get correctly
         /// </summary>
@@ -689,7 +689,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.MinorAlpha = value;
             Assert.Equal(value, style.MinorAlpha);
         }
-        
+
         /// <summary>
         ///     Tests that major tick len should set and get correctly
         /// </summary>
@@ -701,7 +701,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.MajorTickLen = value;
             Assert.Equal(value, style.MajorTickLen);
         }
-        
+
         /// <summary>
         ///     Tests that minor tick len should set and get correctly
         /// </summary>
@@ -713,7 +713,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.MinorTickLen = value;
             Assert.Equal(value, style.MinorTickLen);
         }
-        
+
         /// <summary>
         ///     Tests that major tick size should set and get correctly
         /// </summary>
@@ -725,7 +725,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.MajorTickSize = value;
             Assert.Equal(value, style.MajorTickSize);
         }
-        
+
         /// <summary>
         ///     Tests that minor tick size should set and get correctly
         /// </summary>
@@ -737,7 +737,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.MinorTickSize = value;
             Assert.Equal(value, style.MinorTickSize);
         }
-        
+
         /// <summary>
         ///     Tests that major grid size should set and get correctly
         /// </summary>
@@ -749,7 +749,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.MajorGridSize = value;
             Assert.Equal(value, style.MajorGridSize);
         }
-        
+
         /// <summary>
         ///     Tests that minor grid size should set and get correctly
         /// </summary>
@@ -761,7 +761,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.MinorGridSize = value;
             Assert.Equal(value, style.MinorGridSize);
         }
-        
+
         /// <summary>
         ///     Tests that plot padding should set and get correctly
         /// </summary>
@@ -773,7 +773,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.PlotPadding = value;
             Assert.Equal(value, style.PlotPadding);
         }
-        
+
         /// <summary>
         ///     Tests that label padding should set and get correctly
         /// </summary>
@@ -785,7 +785,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.LabelPadding = value;
             Assert.Equal(value, style.LabelPadding);
         }
-        
+
         /// <summary>
         ///     Tests that legend padding should set and get correctly
         /// </summary>
@@ -797,7 +797,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.LegendPadding = value;
             Assert.Equal(value, style.LegendPadding);
         }
-        
+
         /// <summary>
         ///     Tests that legend inner padding should set and get correctly
         /// </summary>
@@ -809,7 +809,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.LegendInnerPadding = value;
             Assert.Equal(value, style.LegendInnerPadding);
         }
-        
+
         /// <summary>
         ///     Tests that legend spacing should set and get correctly
         /// </summary>
@@ -821,7 +821,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.LegendSpacing = value;
             Assert.Equal(value, style.LegendSpacing);
         }
-        
+
         /// <summary>
         ///     Tests that mouse pos padding should set and get correctly
         /// </summary>
@@ -833,7 +833,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.MousePosPadding = value;
             Assert.Equal(value, style.MousePosPadding);
         }
-        
+
         /// <summary>
         ///     Tests that annotation padding should set and get correctly
         /// </summary>
@@ -845,7 +845,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.AnnotationPadding = value;
             Assert.Equal(value, style.AnnotationPadding);
         }
-        
+
         /// <summary>
         ///     Tests that fit padding should set and get correctly
         /// </summary>
@@ -857,7 +857,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.FitPadding = value;
             Assert.Equal(value, style.FitPadding);
         }
-        
+
         /// <summary>
         ///     Tests that plot default size should set and get correctly
         /// </summary>
@@ -869,7 +869,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.PlotDefaultSize = value;
             Assert.Equal(value, style.PlotDefaultSize);
         }
-        
+
         /// <summary>
         ///     Tests that plot min size should set and get correctly
         /// </summary>
@@ -881,7 +881,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.PlotMinSize = value;
             Assert.Equal(value, style.PlotMinSize);
         }
-        
+
         /// <summary>
         ///     Tests that colors 0 should set and get correctly
         /// </summary>
@@ -893,7 +893,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.Colors0 = value;
             Assert.Equal(value, style.Colors0);
         }
-        
+
         /// <summary>
         ///     Tests that colors 1 should set and get correctly
         /// </summary>
@@ -905,7 +905,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.Colors1 = value;
             Assert.Equal(value, style.Colors1);
         }
-        
+
         /// <summary>
         ///     Tests that colors 2 should set and get correctly
         /// </summary>
@@ -917,7 +917,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.Colors2 = value;
             Assert.Equal(value, style.Colors2);
         }
-        
+
         /// <summary>
         ///     Tests that colors 3 should set and get correctly
         /// </summary>
@@ -929,7 +929,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.Colors3 = value;
             Assert.Equal(value, style.Colors3);
         }
-        
+
         /// <summary>
         ///     Tests that colors 4 should set and get correctly
         /// </summary>
@@ -941,7 +941,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.Colors4 = value;
             Assert.Equal(value, style.Colors4);
         }
-        
+
         /// <summary>
         ///     Tests that colors 5 should set and get correctly
         /// </summary>
@@ -953,7 +953,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.Colors5 = value;
             Assert.Equal(value, style.Colors5);
         }
-        
+
         /// <summary>
         ///     Tests that colors 6 should set and get correctly
         /// </summary>
@@ -965,7 +965,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.Colors6 = value;
             Assert.Equal(value, style.Colors6);
         }
-        
+
         /// <summary>
         ///     Tests that colors 7 should set and get correctly
         /// </summary>
@@ -977,7 +977,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.Colors7 = value;
             Assert.Equal(value, style.Colors7);
         }
-        
+
         /// <summary>
         ///     Tests that colors 8 should set and get correctly
         /// </summary>
@@ -989,7 +989,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             style.Colors8 = value;
             Assert.Equal(value, style.Colors8);
         }
-        
+
         /// <summary>
         ///     Tests that colors 9 set and get returns correct value
         /// </summary>
@@ -1001,7 +1001,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             obj.Colors9 = value;
             Assert.Equal(value, obj.Colors9);
         }
-        
+
         /// <summary>
         ///     Tests that colors 10 set and get returns correct value
         /// </summary>
@@ -1013,7 +1013,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             obj.Colors10 = value;
             Assert.Equal(value, obj.Colors10);
         }
-        
+
         /// <summary>
         ///     Tests that colors 11 set and get returns correct value
         /// </summary>
@@ -1025,7 +1025,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             obj.Colors11 = value;
             Assert.Equal(value, obj.Colors11);
         }
-        
+
         /// <summary>
         ///     Tests that colors 12 set and get returns correct value
         /// </summary>
@@ -1037,7 +1037,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             obj.Colors12 = value;
             Assert.Equal(value, obj.Colors12);
         }
-        
+
         /// <summary>
         ///     Tests that colors 13 set and get returns correct value
         /// </summary>
@@ -1049,7 +1049,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             obj.Colors13 = value;
             Assert.Equal(value, obj.Colors13);
         }
-        
+
         /// <summary>
         ///     Tests that colors 14 set and get returns correct value
         /// </summary>
@@ -1061,7 +1061,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             obj.Colors14 = value;
             Assert.Equal(value, obj.Colors14);
         }
-        
+
         /// <summary>
         ///     Tests that colors 15 set and get returns correct value
         /// </summary>
@@ -1073,7 +1073,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             obj.Colors15 = value;
             Assert.Equal(value, obj.Colors15);
         }
-        
+
         /// <summary>
         ///     Tests that colors 16 set and get returns correct value
         /// </summary>
@@ -1085,7 +1085,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             obj.Colors16 = value;
             Assert.Equal(value, obj.Colors16);
         }
-        
+
         /// <summary>
         ///     Tests that colors 17 set and get returns correct value
         /// </summary>
@@ -1097,7 +1097,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             obj.Colors17 = value;
             Assert.Equal(value, obj.Colors17);
         }
-        
+
         /// <summary>
         ///     Tests that colors 18 set and get returns correct value
         /// </summary>
@@ -1109,7 +1109,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             obj.Colors18 = value;
             Assert.Equal(value, obj.Colors18);
         }
-        
+
         /// <summary>
         ///     Tests that colors 19 set and get returns correct value
         /// </summary>
@@ -1121,7 +1121,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             obj.Colors19 = value;
             Assert.Equal(value, obj.Colors19);
         }
-        
+
         /// <summary>
         ///     Tests that colors 20 set and get returns correct value
         /// </summary>
@@ -1133,7 +1133,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             obj.Colors20 = value;
             Assert.Equal(value, obj.Colors20);
         }
-        
+
         /// <summary>
         ///     Tests that colormap set and get returns correct value
         /// </summary>
@@ -1145,7 +1145,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             obj.Colormap = value;
             Assert.Equal(value, obj.Colormap);
         }
-        
+
         /// <summary>
         ///     Tests that use local time set and get returns correct value
         /// </summary>
@@ -1157,7 +1157,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             obj.UseLocalTime = value;
             Assert.Equal(value, obj.UseLocalTime);
         }
-        
+
         /// <summary>
         ///     Tests that use iso 8601 set and get returns correct value
         /// </summary>
@@ -1169,7 +1169,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             obj.UseIso8601 = value;
             Assert.Equal(value, obj.UseIso8601);
         }
-        
+
         /// <summary>
         ///     Tests that use 24 hour clock set and get returns correct value
         /// </summary>

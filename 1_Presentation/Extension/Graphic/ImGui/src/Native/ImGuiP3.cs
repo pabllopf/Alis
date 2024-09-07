@@ -43,8 +43,8 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     The io
         /// </summary>
         private static ImGuiIoPtr _io;
-        
-        
+
+
         /// <summary>
         ///     Describes whether drag scalar n
         /// </summary>
@@ -61,7 +61,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragScalarN(Encoding.UTF8.GetBytes(label), dataType, pData, components, vSpeed, pMin, pMax, Encoding.UTF8.GetBytes(""), 0);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether drag scalar n
         /// </summary>
@@ -79,7 +79,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragScalarN(Encoding.UTF8.GetBytes(label), dataType, pData, components, vSpeed, pMin, pMax, Encoding.UTF8.GetBytes(format), 0);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether drag scalar n
         /// </summary>
@@ -98,7 +98,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragScalarN(Encoding.UTF8.GetBytes(label), dataType, pData, components, vSpeed, pMin, pMax, Encoding.UTF8.GetBytes(format), flags);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Dummies the size
         /// </summary>
@@ -107,7 +107,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igDummy(size);
         }
-        
+
         /// <summary>
         ///     Ends
         /// </summary>
@@ -115,7 +115,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igEnd();
         }
-        
+
         /// <summary>
         ///     Ends the child
         /// </summary>
@@ -123,7 +123,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igEndChild();
         }
-        
+
         /// <summary>
         ///     Ends the child frame
         /// </summary>
@@ -131,7 +131,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igEndChildFrame();
         }
-        
+
         /// <summary>
         ///     Ends the combo
         /// </summary>
@@ -139,7 +139,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igEndCombo();
         }
-        
+
         /// <summary>
         ///     Ends the disabled
         /// </summary>
@@ -147,7 +147,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igEndDisabled();
         }
-        
+
         /// <summary>
         ///     Ends the drag drop source
         /// </summary>
@@ -155,7 +155,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igEndDragDropSource();
         }
-        
+
         /// <summary>
         ///     Ends the drag drop target
         /// </summary>
@@ -163,7 +163,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igEndDragDropTarget();
         }
-        
+
         /// <summary>
         ///     Ends the frame
         /// </summary>
@@ -171,7 +171,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igEndFrame();
         }
-        
+
         /// <summary>
         ///     Ends the group
         /// </summary>
@@ -179,7 +179,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igEndGroup();
         }
-        
+
         /// <summary>
         ///     Ends the list box
         /// </summary>
@@ -187,7 +187,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igEndListBox();
         }
-        
+
         /// <summary>
         ///     Ends the main menu bar
         /// </summary>
@@ -195,7 +195,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igEndMainMenuBar();
         }
-        
+
         /// <summary>
         ///     Ends the menu
         /// </summary>
@@ -203,7 +203,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igEndMenu();
         }
-        
+
         /// <summary>
         ///     Ends the menu bar
         /// </summary>
@@ -211,7 +211,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igEndMenuBar();
         }
-        
+
         /// <summary>
         ///     Ends the popup
         /// </summary>
@@ -219,7 +219,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igEndPopup();
         }
-        
+
         /// <summary>
         ///     Ends the tab bar
         /// </summary>
@@ -227,7 +227,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igEndTabBar();
         }
-        
+
         /// <summary>
         ///     Ends the tab item
         /// </summary>
@@ -235,7 +235,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igEndTabItem();
         }
-        
+
         /// <summary>
         ///     Ends the table
         /// </summary>
@@ -243,7 +243,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igEndTable();
         }
-        
+
         /// <summary>
         ///     Ends the tooltip
         /// </summary>
@@ -251,21 +251,21 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igEndTooltip();
         }
-        
+
         /// <summary>
         ///     Finds the viewport by id using the specified id
         /// </summary>
         /// <param name="id">The id</param>
         /// <returns>The im gui viewport ptr</returns>
         public static ImGuiViewportPtr FindViewportById(uint id) => new ImGuiViewportPtr(ImGuiNative.igFindViewportByID(id));
-        
+
         /// <summary>
         ///     Finds the viewport by platform handle using the specified platform handle
         /// </summary>
         /// <param name="platformHandle">The platform handle</param>
         /// <returns>The im gui viewport ptr</returns>
         public static ImGuiViewportPtr FindViewportByPlatformHandle(IntPtr platformHandle) => new ImGuiViewportPtr(ImGuiNative.igFindViewportByPlatformHandle(platformHandle));
-        
+
         /// <summary>
         ///     Gets the allocator functions using the specified p alloc func
         /// </summary>
@@ -276,26 +276,26 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igGetAllocatorFunctions(ref pAllocFunc, ref pFreeFunc, ref pUserData);
         }
-        
+
         /// <summary>
         ///     Gets the background draw list
         /// </summary>
         /// <returns>The im draw list ptr</returns>
         public static ImDrawListPtr GetBackgroundDrawList() => new ImDrawListPtr(ImGuiNative.igGetBackgroundDrawList_Nil());
-        
+
         /// <summary>
         ///     Gets the background draw list using the specified viewport
         /// </summary>
         /// <param name="viewport">The viewport</param>
         /// <returns>The im draw list ptr</returns>
         public static ImDrawListPtr GetBackgroundDrawList(ImGuiViewportPtr viewport) => new ImDrawListPtr(ImGuiNative.igGetBackgroundDrawList_ViewportPtr(viewport.NativePtr));
-        
+
         /// <summary>
         ///     Gets the clipboard text
         /// </summary>
         /// <returns>The string</returns>
         public static string GetClipboardText() => Encoding.UTF8.GetString(ImGuiNative.igGetClipboardText());
-        
+
         /// <summary>
         ///     Gets the color u 32 using the specified idx
         /// </summary>
@@ -307,7 +307,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             uint ret = ImGuiNative.igGetColorU32_Col(idx, alphaMul);
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the color u 32 using the specified idx
         /// </summary>
@@ -319,7 +319,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             uint ret = ImGuiNative.igGetColorU32_Col(idx, alphaMul);
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the color u 32 using the specified col
         /// </summary>
@@ -330,7 +330,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             uint ret = ImGuiNative.igGetColorU32_Vec4(col);
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the color u 32 using the specified col
         /// </summary>
@@ -341,7 +341,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             uint ret = ImGuiNative.igGetColorU32_U32(col);
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the column index
         /// </summary>
@@ -351,7 +351,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             int ret = ImGuiNative.igGetColumnIndex();
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the column offset
         /// </summary>
@@ -362,7 +362,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float ret = ImGuiNative.igGetColumnOffset(columnIndex);
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the column offset using the specified column index
         /// </summary>
@@ -373,7 +373,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float ret = ImGuiNative.igGetColumnOffset(columnIndex);
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the columns count
         /// </summary>
@@ -383,7 +383,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             int ret = ImGuiNative.igGetColumnsCount();
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the column width
         /// </summary>
@@ -394,7 +394,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float ret = ImGuiNative.igGetColumnWidth(columnIndex);
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the column width using the specified column index
         /// </summary>
@@ -405,7 +405,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float ret = ImGuiNative.igGetColumnWidth(columnIndex);
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the content region avail
         /// </summary>
@@ -415,7 +415,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiNative.igGetContentRegionAvail(out Vector2 retval);
             return retval;
         }
-        
+
         /// <summary>
         ///     Gets the content region max
         /// </summary>
@@ -425,7 +425,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiNative.igGetContentRegionMax(out Vector2 retval);
             return retval;
         }
-        
+
         /// <summary>
         ///     Gets the current context
         /// </summary>
@@ -435,7 +435,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             IntPtr ret = ImGuiNative.igGetCurrentContext();
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the cursor pos
         /// </summary>
@@ -445,7 +445,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiNative.igGetCursorPos(out Vector2 retval);
             return retval;
         }
-        
+
         /// <summary>
         ///     Gets the cursor pos x
         /// </summary>
@@ -455,7 +455,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float ret = ImGuiNative.igGetCursorPosX();
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the cursor pos y
         /// </summary>
@@ -465,7 +465,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float ret = ImGuiNative.igGetCursorPosY();
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the cursor screen pos
         /// </summary>
@@ -475,7 +475,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiNative.igGetCursorScreenPos(out Vector2 retval);
             return retval;
         }
-        
+
         /// <summary>
         ///     Gets the cursor start pos
         /// </summary>
@@ -485,19 +485,19 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiNative.igGetCursorStartPos(out Vector2 retval);
             return retval;
         }
-        
+
         /// <summary>
         ///     Gets the drag drop payload
         /// </summary>
         /// <returns>The im gui payload ptr</returns>
         public static ImGuiPayload GetDragDropPayload() => ImGuiNative.igGetDragDropPayload();
-        
+
         /// <summary>
         ///     Gets the draw data
         /// </summary>
         /// <returns>The im draw data ptr</returns>
         public static ImDrawData GetDrawData() => ImGuiNative.igGetDrawData();
-        
+
         /// <summary>
         ///     Gets the draw list shared data
         /// </summary>
@@ -507,13 +507,13 @@ namespace Alis.Extension.Graphic.ImGui.Native
             IntPtr ret = ImGuiNative.igGetDrawListSharedData();
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the font
         /// </summary>
         /// <returns>The im font ptr</returns>
         public static ImFontPtr GetFont() => new ImFontPtr(ImGuiNative.igGetFont());
-        
+
         /// <summary>
         ///     Gets the font size
         /// </summary>
@@ -523,7 +523,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float ret = ImGuiNative.igGetFontSize();
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the font tex uv white pixel
         /// </summary>
@@ -533,20 +533,20 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiNative.igGetFontTexUvWhitePixel(out Vector2 retval);
             return retval;
         }
-        
+
         /// <summary>
         ///     Gets the foreground draw list
         /// </summary>
         /// <returns>The im draw list ptr</returns>
         public static ImDrawListPtr GetForegroundDrawList() => new ImDrawListPtr(ImGuiNative.igGetForegroundDrawList_Nil());
-        
+
         /// <summary>
         ///     Gets the foreground draw list using the specified viewport
         /// </summary>
         /// <param name="viewport">The viewport</param>
         /// <returns>The im draw list ptr</returns>
         public static ImDrawListPtr GetForegroundDrawList(ImGuiViewportPtr viewport) => new ImDrawListPtr(ImGuiNative.igGetForegroundDrawList_ViewportPtr(viewport.NativePtr));
-        
+
         /// <summary>
         ///     Gets the frame count
         /// </summary>
@@ -556,7 +556,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             int ret = ImGuiNative.igGetFrameCount();
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the frame height
         /// </summary>
@@ -566,7 +566,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float ret = ImGuiNative.igGetFrameHeight();
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the frame height with spacing
         /// </summary>
@@ -576,7 +576,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float ret = ImGuiNative.igGetFrameHeightWithSpacing();
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the id using the specified str id
         /// </summary>
@@ -587,7 +587,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             uint ret = ImGuiNative.igGetID_Str(Encoding.UTF8.GetBytes(strId));
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the id using the specified ptr id
         /// </summary>
@@ -599,7 +599,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             uint ret = ImGuiNative.igGetID_Ptr(nativePtrId);
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the io
         /// </summary>
@@ -610,10 +610,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
             {
                 _io = new ImGuiIoPtr(ImGuiNative.igGetIO());
             }
-            
+
             return _io;
         }
-        
+
         /// <summary>
         ///     Gets the item rect max
         /// </summary>
@@ -623,7 +623,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiNative.igGetItemRectMax(out Vector2 retval);
             return retval;
         }
-        
+
         /// <summary>
         ///     Gets the item rect min
         /// </summary>
@@ -633,7 +633,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiNative.igGetItemRectMin(out Vector2 retval);
             return retval;
         }
-        
+
         /// <summary>
         ///     Gets the item rect size
         /// </summary>
@@ -643,7 +643,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiNative.igGetItemRectSize(out Vector2 retval);
             return retval;
         }
-        
+
         /// <summary>
         ///     Gets the key index using the specified key
         /// </summary>
@@ -654,14 +654,14 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiKey ret = ImGuiNative.igGetKeyIndex(key);
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the key name using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         /// <returns>The string</returns>
         public static string GetKeyName(ImGuiKey key) => Encoding.UTF8.GetString(ImGuiNative.igGetKeyName(key));
-        
+
         /// <summary>
         ///     Gets the key pressed amount using the specified key
         /// </summary>
@@ -674,13 +674,13 @@ namespace Alis.Extension.Graphic.ImGui.Native
             int ret = ImGuiNative.igGetKeyPressedAmount(key, repeatDelay, rate);
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the main viewport
         /// </summary>
         /// <returns>The im gui viewport ptr</returns>
         public static ImGuiViewportPtr GetMainViewport() => new ImGuiViewportPtr(ImGuiNative.igGetMainViewport());
-        
+
         /// <summary>
         ///     Gets the mouse clicked count using the specified button
         /// </summary>
@@ -691,7 +691,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             int ret = ImGuiNative.igGetMouseClickedCount(button);
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the mouse cursor
         /// </summary>
@@ -701,7 +701,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiMouseCursor ret = ImGuiNative.igGetMouseCursor();
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the mouse drag delta
         /// </summary>
@@ -713,7 +713,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiNative.igGetMouseDragDelta(out Vector2 retval, button, lockThreshold);
             return retval;
         }
-        
+
         /// <summary>
         ///     Gets the mouse drag delta using the specified button
         /// </summary>
@@ -725,7 +725,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiNative.igGetMouseDragDelta(out Vector2 retval, button, lockThreshold);
             return retval;
         }
-        
+
         /// <summary>
         ///     Gets the mouse drag delta using the specified button
         /// </summary>
@@ -737,7 +737,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiNative.igGetMouseDragDelta(out Vector2 retval, button, lockThreshold);
             return retval;
         }
-        
+
         /// <summary>
         ///     Gets the mouse pos
         /// </summary>
@@ -747,7 +747,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiNative.igGetMousePos(out Vector2 retval);
             return retval;
         }
-        
+
         /// <summary>
         ///     Gets the mouse pos on opening current popup
         /// </summary>
@@ -757,13 +757,13 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiNative.igGetMousePosOnOpeningCurrentPopup(out Vector2 retval);
             return retval;
         }
-        
+
         /// <summary>
         ///     Gets the platform io
         /// </summary>
         /// <returns>The im gui platform io ptr</returns>
         public static ImGuiPlatformIoPtr GetPlatformIo() => new ImGuiPlatformIoPtr(ImGuiNative.igGetPlatformIO());
-        
+
         /// <summary>
         ///     Gets the scroll max x
         /// </summary>
@@ -773,7 +773,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float ret = ImGuiNative.igGetScrollMaxX();
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the scroll max y
         /// </summary>
@@ -783,7 +783,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float ret = ImGuiNative.igGetScrollMaxY();
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the scroll x
         /// </summary>
@@ -793,7 +793,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float ret = ImGuiNative.igGetScrollX();
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the scroll y
         /// </summary>
@@ -803,26 +803,26 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float ret = ImGuiNative.igGetScrollY();
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the state storage
         /// </summary>
         /// <returns>The im gui storage ptr</returns>
         public static ImGuiStorage GetStateStorage() => ImGuiNative.igGetStateStorage();
-        
+
         /// <summary>
         ///     Gets the style
         /// </summary>
         /// <returns>The im gui style ptr</returns>
         public static ImGuiStyle GetStyle() => ImGuiNative.igGetStyle();
-        
+
         /// <summary>
         ///     Gets the style color name using the specified idx
         /// </summary>
         /// <param name="idx">The idx</param>
         /// <returns>The string</returns>
         public static string GetStyleColorName(ImGuiCol idx) => Encoding.UTF8.GetString(ImGuiNative.igGetStyleColorName(idx));
-        
+
         /// <summary>
         ///     Gets the style color vec 4 using the specified idx
         /// </summary>
@@ -833,7 +833,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             Vector4 ret = ImGuiNative.igGetStyleColorVec4(idx);
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the text line height
         /// </summary>
@@ -843,7 +843,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float ret = ImGuiNative.igGetTextLineHeight();
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the text line height with spacing
         /// </summary>
@@ -853,7 +853,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float ret = ImGuiNative.igGetTextLineHeightWithSpacing();
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the time
         /// </summary>
@@ -863,7 +863,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             double ret = ImGuiNative.igGetTime();
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the tree node to label spacing
         /// </summary>
@@ -873,13 +873,13 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float ret = ImGuiNative.igGetTreeNodeToLabelSpacing();
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the version
         /// </summary>
         /// <returns>The string</returns>
         public static string GetVersion() => Marshal.PtrToStringAnsi(ImGuiNative.igGetVersion());
-        
+
         /// <summary>
         ///     Gets the window content region max
         /// </summary>
@@ -889,7 +889,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiNative.igGetWindowContentRegionMax(out Vector2 retval);
             return retval;
         }
-        
+
         /// <summary>
         ///     Gets the window content region min
         /// </summary>
@@ -899,7 +899,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiNative.igGetWindowContentRegionMin(out Vector2 retval);
             return retval;
         }
-        
+
         /// <summary>
         ///     Gets the window dock id
         /// </summary>
@@ -909,7 +909,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             uint ret = ImGuiNative.igGetWindowDockID();
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the window dpi scale
         /// </summary>
@@ -919,13 +919,13 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float ret = ImGuiNative.igGetWindowDpiScale();
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the window draw list
         /// </summary>
         /// <returns>The im draw list ptr</returns>
         public static ImDrawListPtr GetWindowDrawList() => new ImDrawListPtr(ImGuiNative.igGetWindowDrawList());
-        
+
         /// <summary>
         ///     Gets the window height
         /// </summary>
@@ -935,7 +935,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float ret = ImGuiNative.igGetWindowHeight();
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the window pos
         /// </summary>
@@ -945,7 +945,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiNative.igGetWindowPos(out Vector2 retval);
             return retval;
         }
-        
+
         /// <summary>
         ///     Gets the window size
         /// </summary>
@@ -955,13 +955,13 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiNative.igGetWindowSize(out Vector2 retval);
             return retval;
         }
-        
+
         /// <summary>
         ///     Gets the window viewport
         /// </summary>
         /// <returns>The im gui viewport ptr</returns>
         public static ImGuiViewportPtr GetWindowViewport() => new ImGuiViewportPtr(ImGuiNative.igGetWindowViewport());
-        
+
         /// <summary>
         ///     Gets the window width
         /// </summary>
@@ -971,7 +971,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float ret = ImGuiNative.igGetWindowWidth();
             return ret;
         }
-        
+
         /// <summary>
         ///     Images the user texture id
         /// </summary>
@@ -985,7 +985,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             Vector4 borderCol = new Vector4();
             ImGuiNative.igImage(userTextureId, size, uv0, uv1, tintCol, borderCol);
         }
-        
+
         /// <summary>
         ///     Images the user texture id
         /// </summary>
@@ -999,7 +999,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             Vector4 borderCol = new Vector4();
             ImGuiNative.igImage(userTextureId, size, uv0, uv1, tintCol, borderCol);
         }
-        
+
         /// <summary>
         ///     Images the user texture id
         /// </summary>
@@ -1013,7 +1013,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             Vector4 borderCol = new Vector4();
             ImGuiNative.igImage(userTextureId, size, uv0, uv1, tintCol, borderCol);
         }
-        
+
         /// <summary>
         ///     Images the user texture id
         /// </summary>
@@ -1027,7 +1027,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             Vector4 borderCol = new Vector4();
             ImGuiNative.igImage(userTextureId, size, uv0, uv1, tintCol, borderCol);
         }
-        
+
         /// <summary>
         ///     Images the user texture id
         /// </summary>
@@ -1041,7 +1041,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igImage(userTextureId, size, uv0, uv1, tintCol, borderCol);
         }
-        
+
         /// <summary>
         ///     Describes whether image button
         /// </summary>
@@ -1054,7 +1054,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igImageButton(Encoding.UTF8.GetBytes(strId), userTextureId, size, new Vector2(), new Vector2(1, 1), new Vector4(), new Vector4(1, 1, 1, 1));
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether image button
         /// </summary>
@@ -1068,7 +1068,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igImageButton(Encoding.UTF8.GetBytes(strId), userTextureId, size, uv0, new Vector2(1, 1), new Vector4(), new Vector4(1, 1, 1, 1));
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether image button
         /// </summary>
@@ -1083,7 +1083,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igImageButton(Encoding.UTF8.GetBytes(strId), userTextureId, size, uv0, uv1, new Vector4(), new Vector4(1, 1, 1, 1));
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether image button
         /// </summary>
@@ -1099,7 +1099,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igImageButton(Encoding.UTF8.GetBytes(strId), userTextureId, size, uv0, uv1, bgCol, new Vector4(1, 1, 1, 1));
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether image button
         /// </summary>
@@ -1116,7 +1116,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igImageButton(Encoding.UTF8.GetBytes(strId), userTextureId, size, uv0, uv1, bgCol, tintCol);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Indents
         /// </summary>
@@ -1125,7 +1125,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float indentW = 0.0f;
             ImGuiNative.igIndent(indentW);
         }
-        
+
         /// <summary>
         ///     Indents the indent w
         /// </summary>
@@ -1134,7 +1134,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igIndent(indentW);
         }
-        
+
         /// <summary>
         ///     Describes whether input double
         /// </summary>
@@ -1146,7 +1146,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igInputDouble(Encoding.UTF8.GetBytes(label), ref v, 0.0, 0.0, null, 0);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input double
         /// </summary>
@@ -1159,7 +1159,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igInputDouble(Encoding.UTF8.GetBytes(label), ref v, step, 0.0, null, 0);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input double
         /// </summary>
@@ -1173,7 +1173,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igInputDouble(Encoding.UTF8.GetBytes(label), ref v, step, stepFast, null, 0);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input double
         /// </summary>
@@ -1186,10 +1186,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool InputDouble(string label, ref double v, double step, double stepFast, string format)
         {
             byte ret = ImGuiNative.igInputDouble(Encoding.UTF8.GetBytes(label), ref v, step, stepFast, Encoding.UTF8.GetBytes(format), 0);
-            
+
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input double
         /// </summary>
@@ -1205,7 +1205,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igInputDouble(Encoding.UTF8.GetBytes(label), ref v, step, stepFast, Encoding.UTF8.GetBytes(format), flags);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input float
         /// </summary>
@@ -1217,7 +1217,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igInputFloat(Encoding.UTF8.GetBytes(label), ref v, 0.0f, 0.0f, null, 0);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input float
         /// </summary>
@@ -1230,7 +1230,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igInputFloat(Encoding.UTF8.GetBytes(label), ref v, step, 0.0f, null, 0);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input float
         /// </summary>
@@ -1244,7 +1244,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igInputFloat(Encoding.UTF8.GetBytes(label), ref v, step, stepFast, null, 0);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input float
         /// </summary>
@@ -1259,7 +1259,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igInputFloat(Encoding.UTF8.GetBytes(label), ref v, step, stepFast, Encoding.UTF8.GetBytes(format), 0);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input float
         /// </summary>
@@ -1273,10 +1273,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool InputFloat(string label, ref float v, float step, float stepFast, string format, ImGuiInputTextFlags flags)
         {
             byte ret = ImGuiNative.igInputFloat(Encoding.UTF8.GetBytes(label), ref v, step, stepFast, Encoding.UTF8.GetBytes(format), flags);
-            
+
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input float 2
         /// </summary>
@@ -1286,10 +1286,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool InputFloat2(string label, ref Vector2 v)
         {
             byte ret = ImGuiNative.igInputFloat2(Encoding.UTF8.GetBytes(label), ref v, null, 0);
-            
+
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input float 2
         /// </summary>
@@ -1302,7 +1302,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igInputFloat2(Encoding.UTF8.GetBytes(label), ref v, Encoding.UTF8.GetBytes(format), 0);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input float 2
         /// </summary>
@@ -1314,10 +1314,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool InputFloat2(string label, ref Vector2 v, string format, ImGuiInputTextFlags flags)
         {
             byte ret = ImGuiNative.igInputFloat2(Encoding.UTF8.GetBytes(label), ref v, Encoding.UTF8.GetBytes(format), flags);
-            
+
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input float 3
         /// </summary>
@@ -1329,7 +1329,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igInputFloat3(Encoding.UTF8.GetBytes(label), ref v, null, 0);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input float 3
         /// </summary>
@@ -1340,10 +1340,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool InputFloat3(string label, ref Vector3 v, string format)
         {
             byte ret = ImGuiNative.igInputFloat3(Encoding.UTF8.GetBytes(label), ref v, Encoding.UTF8.GetBytes(format), 0);
-            
+
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input float 3
         /// </summary>
@@ -1357,7 +1357,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igInputFloat3(Encoding.UTF8.GetBytes(label), ref v, Encoding.UTF8.GetBytes(format), flags);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input float 4
         /// </summary>

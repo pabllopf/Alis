@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:RealExplosion.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 /* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
@@ -27,8 +56,8 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
     }
 
     /// <summary>
-    /// This is a comprarer used for 
-    /// detecting angle difference between rays
+    ///     This is a comprarer used for
+    ///     detecting angle difference between rays
     /// </summary>
     internal class RayDataComparer : IComparer<float>
     {
@@ -36,7 +65,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
 
         int IComparer<float>.Compare(float a, float b)
         {
-            float diff = (a - b);
+            float diff = a - b;
             if (diff > 0)
                 return 1;
             if (diff < 0)
@@ -62,49 +91,50 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
      */
 
     /// <summary>
-    /// Creates a realistic explosion based on raycasting. Objects in the open will be affected, but objects behind
-    /// static bodies will not. A body that is half in cover, half in the open will get half the force applied to the end in
-    /// the open.
+    ///     Creates a realistic explosion based on raycasting. Objects in the open will be affected, but objects behind
+    ///     static bodies will not. A body that is half in cover, half in the open will get half the force applied to the end
+    ///     in
+    ///     the open.
     /// </summary>
     public sealed class RealExplosion : PhysicsLogic
     {
         /// <summary>
-        /// Two degrees: maximum angle from edges to first ray tested
+        ///     Two degrees: maximum angle from edges to first ray tested
         /// </summary>
         private const float MaxEdgeOffset = Constant.Pi / 90;
 
+        private readonly List<ShapeData> _data = new List<ShapeData>();
+        private readonly RayDataComparer _rdc;
+
         /// <summary>
-        /// Ratio of arc length to angle from edges to first ray tested.
-        /// Defaults to 1/40.
+        ///     Ratio of arc length to angle from edges to first ray tested.
+        ///     Defaults to 1/40.
         /// </summary>
         public float EdgeRatio = 1.0f / 40.0f;
 
         /// <summary>
-        /// Ignore Explosion if it happens inside a shape.
-        /// Default value is false.
+        ///     Ignore Explosion if it happens inside a shape.
+        ///     Default value is false.
         /// </summary>
         public bool IgnoreWhenInsideShape = false;
 
         /// <summary>
-        /// Max angle between rays (used when segment is large).
-        /// Defaults to 15 degrees
+        ///     Max angle between rays (used when segment is large).
+        ///     Defaults to 15 degrees
         /// </summary>
         public float MaxAngle = Constant.Pi / 15;
 
         /// <summary>
-        /// Maximum number of shapes involved in the explosion.
-        /// Defaults to 100
+        ///     Maximum number of shapes involved in the explosion.
+        ///     Defaults to 100
         /// </summary>
         public int MaxShapes = 100;
 
         /// <summary>
-        /// How many rays per shape/body/segment.
-        /// Defaults to 5
+        ///     How many rays per shape/body/segment.
+        ///     Defaults to 5
         /// </summary>
         public int MinRays = 5;
-
-        private List<ShapeData> _data = new List<ShapeData>();
-        private RayDataComparer _rdc;
 
         public RealExplosion(World world) : base(world)
         {
@@ -113,11 +143,14 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         }
 
         /// <summary>
-        /// Activate the explosion at the specified position.
+        ///     Activate the explosion at the specified position.
         /// </summary>
         /// <param name="pos">The position where the explosion happens </param>
         /// <param name="radius">The explosion radius </param>
-        /// <param name="maxForce">The explosion force at the explosion point (then is inversely proportional to the square of the distance)</param>
+        /// <param name="maxForce">
+        ///     The explosion force at the explosion point (then is inversely proportional to the square of the
+        ///     distance)
+        /// </param>
         /// <returns>A list of bodies and the amount of force that was applied to them.</returns>
         public Dictionary<Fixture, Vector2> Activate(Vector2 pos, float radius, float maxForce)
         {
@@ -185,10 +218,10 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                 else
                     ps = shapes[i].Shape as PolygonShape;
 
-                if ((shapes[i].Body.BodyType == BodyType.Dynamic) && ps != null)
+                if ((shapes[i].Body.BodyType == BodyType.Dynamic) && (ps != null))
                 {
                     Vector2 toCentroid = shapes[i].Body.GetWorldPoint(ps.MassData.Centroid) - pos;
-                    float angleToCentroid = (float)Math.Atan2(toCentroid.Y, toCentroid.X);
+                    float angleToCentroid = (float) Math.Atan2(toCentroid.Y, toCentroid.X);
                     float min = float.MaxValue;
                     float max = float.MinValue;
                     float minAbsolute = 0.0f;
@@ -196,9 +229,9 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
 
                     for (int j = 0; j < ps.Vertices.Count; ++j)
                     {
-                        Vector2 toVertex = (shapes[i].Body.GetWorldPoint(ps.Vertices[j]) - pos);
-                        float newAngle = (float)Math.Atan2(toVertex.Y, toVertex.X);
-                        float diff = (newAngle - angleToCentroid);
+                        Vector2 toVertex = shapes[i].Body.GetWorldPoint(ps.Vertices[j]) - pos;
+                        float newAngle = (float) Math.Atan2(toVertex.Y, toVertex.X);
+                        float diff = newAngle - angleToCentroid;
 
                         diff = (diff - Constant.Pi) % (2 * Constant.Pi);
                         // the minus pi is important. It means cutoff for going other direction is at 180 deg where it needs to be
@@ -216,6 +249,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                             max = diff;
                             maxAbsolute = newAngle;
                         }
+
                         if (diff < min)
                         {
                             min = diff;
@@ -239,43 +273,43 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                 Fixture fixture = null;
                 float midpt;
 
-                int iplus = (i == valIndex - 1 ? 0 : i + 1);
+                int iplus = i == valIndex - 1 ? 0 : i + 1;
                 if (vals[i] == vals[iplus])
                     continue;
 
                 if (i == valIndex - 1)
                 {
                     // the single edgecase
-                    midpt = (vals[0] + Constant.Pi * 2 + vals[i]);
+                    midpt = vals[0] + Constant.Pi * 2 + vals[i];
                 }
                 else
                 {
-                    midpt = (vals[i + 1] + vals[i]);
+                    midpt = vals[i + 1] + vals[i];
                 }
 
                 midpt = midpt / 2;
 
                 Vector2 p1 = pos;
-                Vector2 p2 = radius * new Vector2((float)Math.Cos(midpt), (float)Math.Sin(midpt)) + pos;
+                Vector2 p2 = radius * new Vector2((float) Math.Cos(midpt), (float) Math.Sin(midpt)) + pos;
 
                 // RaycastOne
                 bool hitClosest = false;
                 World.RayCast((f, p, n, fr) =>
-                                  {
-                                      Body body = f.Body;
+                {
+                    Body body = f.Body;
 
-                                      if (!IsActiveOn(body))
-                                          return 0;
+                    if (!IsActiveOn(body))
+                        return 0;
 
-                                      hitClosest = true;
-                                      fixture = f;
-                                      return fr;
-                                  }, p1, p2);
+                    hitClosest = true;
+                    fixture = f;
+                    return fr;
+                }, p1, p2);
 
                 //draws radius points
-                if ((hitClosest) && (fixture.Body.BodyType == BodyType.Dynamic))
+                if (hitClosest && (fixture.Body.BodyType == BodyType.Dynamic))
                 {
-                    if ((_data.Any()) && (_data.Last().Body == fixture.Body) && (!rayMissed))
+                    if (_data.Any() && (_data.Last().Body == fixture.Body) && !rayMissed)
                     {
                         int laPos = _data.Count - 1;
                         ShapeData la = _data[laPos];
@@ -316,6 +350,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                         last.Min = _data.Last().Min - 2 * Constant.Pi;
                         _data[lastPos] = last;
                     }
+
                     rayMissed = false;
                 }
                 else
@@ -332,12 +367,12 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                 float arclen = _data[i].Max - _data[i].Min;
 
                 float first = Math.Min(MaxEdgeOffset, EdgeRatio * arclen);
-                int insertedRays = (int)Math.Ceiling(((arclen - 2.0f * first) - (MinRays - 1) * MaxAngle) / MaxAngle);
+                int insertedRays = (int) Math.Ceiling((arclen - 2.0f * first - (MinRays - 1) * MaxAngle) / MaxAngle);
 
                 if (insertedRays < 0)
                     insertedRays = 0;
 
-                float offset = (arclen - first * 2.0f) / ((float)MinRays + insertedRays - 1);
+                float offset = (arclen - first * 2.0f) / ((float) MinRays + insertedRays - 1);
 
                 //Note: This loop can go into infinite as it operates on floats.
                 //Added FloatEquals with a large epsilon.
@@ -346,7 +381,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                      j += offset)
                 {
                     Vector2 p1 = pos;
-                    Vector2 p2 = pos + radius * new Vector2((float)Math.Cos(j), (float)Math.Sin(j));
+                    Vector2 p2 = pos + radius * new Vector2((float) Math.Cos(j), (float) Math.Sin(j));
                     Vector2 hitpoint = Vector2.Zero;
                     float minlambda = float.MaxValue;
 
@@ -369,10 +404,10 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
 
                         // the force that is to be applied for this particular ray.
                         // offset is angular coverage. lambda*length of segment is distance.
-                        float impulse = (arclen / (MinRays + insertedRays)) * maxForce * 180.0f / Constant.Pi * (1.0f - Math.Min(1.0f, minlambda));
+                        float impulse = arclen / (MinRays + insertedRays) * maxForce * 180.0f / Constant.Pi * (1.0f - Math.Min(1.0f, minlambda));
 
                         // We Apply the impulse!!!
-                        Vector2 vectImp = Vector2.Dot(impulse * new Vector2((float)Math.Cos(j), (float)Math.Sin(j)), -ro.Normal) * new Vector2((float)Math.Cos(j), (float)Math.Sin(j));
+                        Vector2 vectImp = Vector2.Dot(impulse * new Vector2((float) Math.Cos(j), (float) Math.Sin(j)), -ro.Normal) * new Vector2((float) Math.Cos(j), (float) Math.Sin(j));
                         _data[i].Body.ApplyLinearImpulse(ref vectImp, ref hitpoint);
 
                         // We gather the fixtures for returning them

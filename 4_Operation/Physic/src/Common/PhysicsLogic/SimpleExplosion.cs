@@ -1,4 +1,33 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:SimpleExplosion.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
@@ -15,23 +44,20 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 namespace Alis.Core.Physic.Common.PhysicsLogic
 {
     /// <summary>
-    /// Creates a simple explosion that ignores other bodies hiding behind static bodies.
+    ///     Creates a simple explosion that ignores other bodies hiding behind static bodies.
     /// </summary>
     public sealed class SimpleExplosion : PhysicsLogic
     {
-        public SimpleExplosion(World world): base(world)
-        {
-            Power = 1; //linear
-        }
+        public SimpleExplosion(World world) : base(world) => Power = 1; //linear
 
         /// <summary>
-        /// This is the power used in the power function. A value of 1 means the force
-        /// applied to bodies in the explosion is linear. A value of 2 means it is exponential.
+        ///     This is the power used in the power function. A value of 1 means the force
+        ///     applied to bodies in the explosion is linear. A value of 2 means it is exponential.
         /// </summary>
         public float Power { get; set; }
 
         /// <summary>
-        /// Activate the explosion at the specified position.
+        ///     Activate the explosion at the specified position.
         /// </summary>
         /// <param name="pos">The position (center) of the explosion.</param>
         /// <param name="radius">The radius of the explosion.</param>
@@ -73,7 +99,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                     float forcePercent = GetPercent(distance, radius);
 
                     Vector2 forceVector = pos - overlappingBody.Position;
-                    forceVector *= 1f / (float)Math.Sqrt(forceVector.X * forceVector.X + forceVector.Y * forceVector.Y);
+                    forceVector *= 1f / (float) Math.Sqrt(forceVector.X * forceVector.X + forceVector.Y * forceVector.Y);
                     forceVector *= Math.Min(force * forcePercent, maxForce);
                     forceVector *= -1;
 
@@ -88,7 +114,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         private float GetPercent(float distance, float radius)
         {
             //(1-(distance/radius))^power-1
-            float percent = (float)Math.Pow(1 - ((distance - radius) / radius), Power) - 1;
+            float percent = (float) Math.Pow(1 - (distance - radius) / radius, Power) - 1;
 
             if (float.IsNaN(percent))
                 return 0f;

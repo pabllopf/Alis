@@ -49,7 +49,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_U8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -60,7 +60,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_S16Ptr(Encoding.UTF8.GetBytes(labelId), values, count, ImPlotInfLinesFlags.None, 0, sizeof(short));
         }
-        
+
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -72,7 +72,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_S16Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, 0, sizeof(short));
         }
-        
+
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -85,7 +85,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_S16Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, sizeof(short));
         }
-        
+
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -99,7 +99,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_S16Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -110,7 +110,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_U16Ptr(Encoding.UTF8.GetBytes(labelId), values, count, ImPlotInfLinesFlags.None, 0, sizeof(ushort));
         }
-        
+
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -122,7 +122,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_U16Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, 0, sizeof(ushort));
         }
-        
+
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -135,7 +135,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_U16Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, sizeof(ushort));
         }
-        
+
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -149,7 +149,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_U16Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -160,7 +160,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_S32Ptr(Encoding.UTF8.GetBytes(labelId), values, count, ImPlotInfLinesFlags.None, 0, sizeof(int));
         }
-        
+
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -172,7 +172,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_S32Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, 0, sizeof(int));
         }
-        
+
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -185,7 +185,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_S32Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, sizeof(int));
         }
-        
+
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -199,7 +199,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_S32Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -210,7 +210,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_U32Ptr(Encoding.UTF8.GetBytes(labelId), values, count, ImPlotInfLinesFlags.None, 0, sizeof(uint));
         }
-        
+
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -222,7 +222,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_U32Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, 0, sizeof(uint));
         }
-        
+
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -235,7 +235,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_U32Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, sizeof(uint));
         }
-        
+
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -249,7 +249,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_U32Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -260,7 +260,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_S64Ptr(Encoding.UTF8.GetBytes(labelId), values, count, ImPlotInfLinesFlags.None, 0, sizeof(long));
         }
-        
+
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -272,7 +272,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_S64Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, 0, sizeof(long));
         }
-        
+
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -285,7 +285,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_S64Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, sizeof(long));
         }
-        
+
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -299,7 +299,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_S64Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -310,7 +310,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_U64Ptr(Encoding.UTF8.GetBytes(labelId), values, count, ImPlotInfLinesFlags.None, 0, sizeof(ulong));
         }
-        
+
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -322,7 +322,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_U64Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, 0, sizeof(ulong));
         }
-        
+
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -335,7 +335,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_U64Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, sizeof(ulong));
         }
-        
+
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -349,7 +349,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_U64Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -360,7 +360,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 1, 0, 0, 0, sizeof(float));
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -372,7 +372,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, sizeof(float));
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -385,7 +385,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, sizeof(float));
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -399,7 +399,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, 0, sizeof(float));
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -414,7 +414,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, sizeof(float));
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -430,7 +430,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -441,7 +441,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 1, 0, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -453,7 +453,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -466,7 +466,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -480,7 +480,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -495,7 +495,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, 0);
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -511,7 +511,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -522,7 +522,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 1, 0, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -534,7 +534,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -547,7 +547,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -561,7 +561,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -576,7 +576,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, 0);
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -592,7 +592,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -603,7 +603,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 1, 0, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -615,7 +615,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -628,7 +628,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -642,7 +642,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -657,7 +657,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, 0);
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -673,7 +673,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -684,7 +684,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 1, 0, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -696,7 +696,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -709,7 +709,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -723,7 +723,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>

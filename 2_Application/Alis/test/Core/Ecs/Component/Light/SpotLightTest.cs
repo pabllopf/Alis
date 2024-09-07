@@ -44,10 +44,10 @@ namespace Alis.Test.Core.Ecs.Component.Light
         public void SpotLight_DefaultConstructor_ValidInput()
         {
             SpotLight spotLight = new SpotLight();
-            
+
             Assert.NotNull(spotLight);
         }
-        
+
         /// <summary>
         ///     Tests that on init valid input
         /// </summary>
@@ -55,7 +55,7 @@ namespace Alis.Test.Core.Ecs.Component.Light
         public void OnInit_ValidInput()
         {
             SpotLight spotLight = new SpotLight();
-            
+
             spotLight.OnInit();
         }
     }

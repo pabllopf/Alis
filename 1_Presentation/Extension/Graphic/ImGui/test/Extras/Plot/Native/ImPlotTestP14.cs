@@ -47,7 +47,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new[] {1, 2, 3}, 3, 0.0, 1.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems int array 6 params v 1
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new[] {1, 2, 3}, 3, 0.0, 1.0, 0.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems int array 7 params v 1
         /// </summary>
@@ -65,7 +65,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotStemsFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems int array 8 params v 1
         /// </summary>
@@ -74,7 +74,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotStemsFlags.None, 0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems int array 9 params v 1
         /// </summary>
@@ -83,7 +83,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotStemsFlags.None, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems u int array 3 params v 1
         /// </summary>
@@ -92,7 +92,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new uint[] {1, 2, 3}, 3));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems u int array 4 params v 1
         /// </summary>
@@ -101,7 +101,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new uint[] {1, 2, 3}, 3, 0.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems u int array 5 params v 1
         /// </summary>
@@ -110,7 +110,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new uint[] {1, 2, 3}, 3, 0.0, 1.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems u int array 6 params v 1
         /// </summary>
@@ -119,7 +119,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new uint[] {1, 2, 3}, 3, 0.0, 1.0, 0.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems u int array 7 params v 1
         /// </summary>
@@ -128,7 +128,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new uint[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotStemsFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems u int array 8 params v 1
         /// </summary>
@@ -137,7 +137,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new uint[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotStemsFlags.None, 0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems u int array 9 params v 1
         /// </summary>
@@ -146,7 +146,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new uint[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotStemsFlags.None, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems long array 3 params v 1
         /// </summary>
@@ -155,7 +155,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new long[] {1, 2, 3}, 3));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems long array 4 params v 1
         /// </summary>
@@ -164,7 +164,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new long[] {1, 2, 3}, 3, 0.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems long array 5 params v 1
         /// </summary>
@@ -173,7 +173,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new long[] {1, 2, 3}, 3, 0.0, 1.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems long array 6 params v 1
         /// </summary>
@@ -182,7 +182,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new long[] {1, 2, 3}, 3, 0.0, 1.0, 0.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems long array 7 params v 1
         /// </summary>
@@ -191,7 +191,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new long[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotStemsFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems long array 8 params v 1
         /// </summary>
@@ -200,7 +200,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new long[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotStemsFlags.None, 0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems long array 9 params v 1
         /// </summary>
@@ -209,7 +209,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new long[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotStemsFlags.None, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems u long array 3 params v 1
         /// </summary>
@@ -218,7 +218,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new ulong[] {1, 2, 3}, 3));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems u long array 4 params v 1
         /// </summary>
@@ -227,7 +227,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new ulong[] {1, 2, 3}, 3, 0.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems u long array 5 params v 1
         /// </summary>
@@ -236,7 +236,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new ulong[] {1, 2, 3}, 3, 0.0, 1.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems u long array 6 params v 1
         /// </summary>
@@ -245,7 +245,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new ulong[] {1, 2, 3}, 3, 0.0, 1.0, 0.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems u long array 7 params v 1
         /// </summary>
@@ -254,7 +254,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new ulong[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotStemsFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems u long array 8 params v 1
         /// </summary>
@@ -263,7 +263,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new ulong[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotStemsFlags.None, 0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems u long array 9 params v 1
         /// </summary>
@@ -272,7 +272,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new ulong[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotStemsFlags.None, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems float ref 5 params v 1
         /// </summary>
@@ -282,7 +282,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float xs = 1.0f, ys = 2.0f;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 3, 0.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems float ref 6 params v 1
         /// </summary>
@@ -292,7 +292,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float xs = 1.0f, ys = 2.0f;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 3, 0.0, ImPlotStemsFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems float ref 7 params v 1
         /// </summary>
@@ -302,7 +302,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float xs = 1.0f, ys = 2.0f;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 3, 0.0, ImPlotStemsFlags.None, 0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems float ref 8 params v 1
         /// </summary>
@@ -312,7 +312,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float xs = 1.0f, ys = 2.0f;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 3, 0.0, ImPlotStemsFlags.None, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems double ref 4 params v 1
         /// </summary>
@@ -322,7 +322,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 1.0, ys = 2.0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 3));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems double ref 5 params v 1
         /// </summary>
@@ -332,7 +332,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 1.0, ys = 2.0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 3, 0.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems double ref 6 params v 1
         /// </summary>
@@ -342,7 +342,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 1.0, ys = 2.0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 3, 0.0, ImPlotStemsFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems double ref 7 params v 1
         /// </summary>
@@ -352,7 +352,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 1.0, ys = 2.0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 3, 0.0, ImPlotStemsFlags.None, 0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems double ref 8 params v 1
         /// </summary>
@@ -362,7 +362,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 1.0, ys = 2.0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 3, 0.0, ImPlotStemsFlags.None, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems s byte ref 4 params v 1
         /// </summary>
@@ -372,7 +372,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             sbyte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 3));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems s byte ref 5 params v 1
         /// </summary>
@@ -382,7 +382,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             sbyte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 3, 0.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems s byte ref 6 params v 1
         /// </summary>
@@ -392,7 +392,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             sbyte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 3, 0.0, ImPlotStemsFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems s byte ref 7 params v 1
         /// </summary>
@@ -402,7 +402,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             sbyte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 3, 0.0, ImPlotStemsFlags.None, 0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems s byte ref 8 params v 1
         /// </summary>
@@ -412,7 +412,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             sbyte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 3, 0.0, ImPlotStemsFlags.None, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems byte ref 4 params v 1
         /// </summary>
@@ -422,7 +422,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             byte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 3));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems byte ref 5 params v 1
         /// </summary>
@@ -432,7 +432,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             byte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 3, 0.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems byte ref 6 params v 1
         /// </summary>
@@ -442,7 +442,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             byte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 3, 0.0, ImPlotStemsFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems byte ref 7 params v 1
         /// </summary>
@@ -452,7 +452,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             byte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 3, 0.0, ImPlotStemsFlags.None, 0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems byte ref 8 params v 1
         /// </summary>
@@ -462,7 +462,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             byte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 3, 0.0, ImPlotStemsFlags.None, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems short ref 4 params v 1
         /// </summary>
@@ -472,7 +472,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             short xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 3));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems short ref 5 params v 1
         /// </summary>
@@ -482,7 +482,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             short xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 3, 0.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems short ref 6 params v 1
         /// </summary>
@@ -492,7 +492,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             short xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 3, 0.0, ImPlotStemsFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems short ref 7 params v 1
         /// </summary>
@@ -502,7 +502,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             short xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 3, 0.0, ImPlotStemsFlags.None, 0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems short ref 8 params v 1
         /// </summary>
@@ -512,7 +512,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             short xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 3, 0.0, ImPlotStemsFlags.None, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems u short ref 4 params v 1
         /// </summary>
@@ -522,7 +522,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ushort xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 3));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems u short ref 5 params v 1
         /// </summary>
@@ -532,7 +532,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ushort xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 3, 0.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems byte array throws dll not found exception
         /// </summary>
@@ -541,7 +541,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new byte[0], 0, 0.0, 0.0, 0.0, ImPlotStemsFlags.None, 0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems byte array with stride throws dll not found exception
         /// </summary>
@@ -550,7 +550,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new byte[0], 0, 0.0, 0.0, 0.0, ImPlotStemsFlags.None, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems short array throws dll not found exception
         /// </summary>
@@ -559,7 +559,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new short[0], 0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems short array with ref throws dll not found exception
         /// </summary>
@@ -568,7 +568,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new short[0], 0, 0.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems short array with scale throws dll not found exception
         /// </summary>
@@ -577,7 +577,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new short[0], 0, 0.0, 0.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems short array with start throws dll not found exception
         /// </summary>
@@ -586,7 +586,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new short[0], 0, 0.0, 0.0, 0.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems short array with flags throws dll not found exception
         /// </summary>
@@ -595,7 +595,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new short[0], 0, 0.0, 0.0, 0.0, ImPlotStemsFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems short array with offset throws dll not found exception
         /// </summary>
@@ -604,7 +604,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new short[0], 0, 0.0, 0.0, 0.0, ImPlotStemsFlags.None, 0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems short array with stride throws dll not found exception
         /// </summary>
@@ -613,7 +613,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new short[0], 0, 0.0, 0.0, 0.0, ImPlotStemsFlags.None, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems u short array throws dll not found exception
         /// </summary>
@@ -622,7 +622,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new ushort[0], 0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stems u short array with ref throws dll not found exception
         /// </summary>

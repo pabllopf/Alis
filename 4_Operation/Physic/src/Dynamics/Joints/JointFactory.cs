@@ -1,4 +1,33 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:JointFactory.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
@@ -11,7 +40,7 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 namespace Alis.Core.Physic.Dynamics.Joints
 {
     /// <summary>
-    /// An easy to use factory for using joints.
+    ///     An easy to use factory for using joints.
     /// </summary>
     public static class JointFactory
     {
@@ -65,10 +94,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             return joint;
         }
 
-        public static WheelJoint CreateWheelJoint(World world, Body bodyA, Body bodyB, Vector2 axis)
-        {
-            return CreateWheelJoint(world, bodyA, bodyB, Vector2.Zero, axis);
-        }
+        public static WheelJoint CreateWheelJoint(World world, Body bodyA, Body bodyB, Vector2 axis) => CreateWheelJoint(world, bodyA, bodyB, Vector2.Zero, axis);
 
         public static AngleJoint CreateAngleJoint(World world, Body bodyA, Body bodyB)
         {
@@ -84,10 +110,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             return distanceJoint;
         }
 
-        public static DistanceJoint CreateDistanceJoint(World world, Body bodyA, Body bodyB)
-        {
-            return CreateDistanceJoint(world, bodyA, bodyB, Vector2.Zero, Vector2.Zero);
-        }
+        public static DistanceJoint CreateDistanceJoint(World world, Body bodyA, Body bodyB) => CreateDistanceJoint(world, bodyA, bodyB, Vector2.Zero, Vector2.Zero);
 
         public static FrictionJoint CreateFrictionJoint(World world, Body bodyA, Body bodyB, Vector2 anchor, bool useWorldCoordinates = false)
         {
@@ -96,10 +119,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             return frictionJoint;
         }
 
-        public static FrictionJoint CreateFrictionJoint(World world, Body bodyA, Body bodyB)
-        {
-            return CreateFrictionJoint(world, bodyA, bodyB, Vector2.Zero);
-        }
+        public static FrictionJoint CreateFrictionJoint(World world, Body bodyA, Body bodyB) => CreateFrictionJoint(world, bodyA, bodyB, Vector2.Zero);
 
         public static GearJoint CreateGearJoint(World world, Body bodyA, Body bodyB, Joint jointA, Joint jointB, float ratio)
         {

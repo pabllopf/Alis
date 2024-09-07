@@ -43,8 +43,6 @@ namespace Alis.Core.Ecs.System.Setting.General
         IGeneralSetting,
         IBuilder<GeneralSettingBuilder>
     {
-        
-
         /// <summary>
         ///     Initializes a new instance of the <see cref="GeneralSetting" /> class
         /// </summary>
@@ -87,49 +85,49 @@ namespace Alis.Core.Ecs.System.Setting.General
             License = license;
             Icon = AssetManager.Find(icon);
         }
-        
+
         /// <summary>
         ///     Gets or sets the value of the debug
         /// </summary>
         [JsonPropertyName("_Debug_")]
         public bool Debug { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the name
         /// </summary>
         [JsonPropertyName("_Name_")]
         public string Name { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the description
         /// </summary>
         [JsonPropertyName("_Description_")]
         public string Description { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the version
         /// </summary>
         [JsonPropertyName("_Version_")]
         public string Version { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the author
         /// </summary>
         [JsonPropertyName("_Author_")]
         public string Author { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the license
         /// </summary>
         [JsonPropertyName("_License_")]
         public string License { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the icon
         /// </summary>
         [JsonPropertyName("_Icon_")]
         public string Icon { get; set; }
-        
+
         /// <summary>
         ///     Builders this instance
         /// </summary>

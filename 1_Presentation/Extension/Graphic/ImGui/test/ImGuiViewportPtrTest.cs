@@ -48,7 +48,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(viewport);
             Assert.NotEqual(IntPtr.Zero, viewportPtr.NativePtr);
         }
-        
+
         /// <summary>
         ///     Tests that id should be initialized
         /// </summary>
@@ -59,7 +59,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(viewport);
             Assert.Equal(default(uint), viewportPtr.Id);
         }
-        
+
         /// <summary>
         ///     Tests that flags should be initialized
         /// </summary>
@@ -70,7 +70,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(viewport);
             Assert.Equal(default(ImGuiViewportFlags), viewportPtr.Flags);
         }
-        
+
         /// <summary>
         ///     Tests that pos should be initialized
         /// </summary>
@@ -81,7 +81,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(viewport);
             Assert.Equal(default(Vector2), viewportPtr.Pos);
         }
-        
+
         /// <summary>
         ///     Tests that size should be initialized
         /// </summary>
@@ -92,7 +92,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(viewport);
             Assert.Equal(default(Vector2), viewportPtr.Size);
         }
-        
+
         /// <summary>
         ///     Tests that work pos should be initialized
         /// </summary>
@@ -103,7 +103,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(viewport);
             Assert.Equal(default(Vector2), viewportPtr.WorkPos);
         }
-        
+
         /// <summary>
         ///     Tests that work size should be initialized
         /// </summary>
@@ -114,7 +114,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(viewport);
             Assert.Equal(default(Vector2), viewportPtr.WorkSize);
         }
-        
+
         /// <summary>
         ///     Tests that dpi scale should be initialized
         /// </summary>
@@ -125,7 +125,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(viewport);
             Assert.Equal(default(float), viewportPtr.DpiScale);
         }
-        
+
         /// <summary>
         ///     Tests that parent viewport id should be initialized
         /// </summary>
@@ -136,7 +136,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(viewport);
             Assert.Equal(default(uint), viewportPtr.ParentViewportId);
         }
-        
+
         /// <summary>
         ///     Tests that renderer user data should be initialized
         /// </summary>
@@ -147,7 +147,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(viewport);
             Assert.Throws<ArgumentException>(() => viewportPtr.RendererUserData);
         }
-        
+
         /// <summary>
         ///     Tests that platform user data should be initialized
         /// </summary>
@@ -158,7 +158,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(viewport);
             Assert.Throws<ArgumentException>(() => viewportPtr.PlatformUserData);
         }
-        
+
         /// <summary>
         ///     Tests that platform handle should be initialized
         /// </summary>
@@ -169,7 +169,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(viewport);
             Assert.Throws<ArgumentException>(() => viewportPtr.PlatformHandle);
         }
-        
+
         /// <summary>
         ///     Tests that platform handle raw should be initialized
         /// </summary>
@@ -180,7 +180,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(viewport);
             Assert.Throws<ArgumentException>(() => viewportPtr.PlatformHandleRaw);
         }
-        
+
         /// <summary>
         ///     Tests that platform window created should be initialized
         /// </summary>
@@ -191,7 +191,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(viewport);
             Assert.Throws<ArgumentException>(() => viewportPtr.PlatformWindowCreated);
         }
-        
+
         /// <summary>
         ///     Tests that platform request move should be initialized
         /// </summary>
@@ -202,7 +202,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(viewport);
             Assert.Throws<ArgumentException>(() => viewportPtr.PlatformRequestMove);
         }
-        
+
         /// <summary>
         ///     Tests that platform request resize should be initialized
         /// </summary>
@@ -213,7 +213,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(viewport);
             Assert.Throws<ArgumentException>(() => viewportPtr.PlatformRequestResize);
         }
-        
+
         /// <summary>
         ///     Tests that platform request close should be initialized
         /// </summary>
@@ -224,7 +224,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(viewport);
             Assert.Throws<ArgumentException>(() => viewportPtr.PlatformRequestClose);
         }
-        
+
         /// <summary>
         ///     Tests that renderer user data should set and get correctly
         /// </summary>
@@ -234,10 +234,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewport viewport = new ImGuiViewport();
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(viewport);
             IntPtr value = new IntPtr(123);
-            
+
             Assert.Throws<ArgumentException>(() => viewportPtr.RendererUserData = value);
         }
-        
+
         /// <summary>
         ///     Tests that platform user data should set and get correctly
         /// </summary>
@@ -247,10 +247,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewport viewport = new ImGuiViewport();
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(viewport);
             IntPtr value = new IntPtr(123);
-            
+
             Assert.Throws<ArgumentException>(() => viewportPtr.PlatformUserData = value);
         }
-        
+
         /// <summary>
         ///     Tests that implicit operator from int ptr should return correct instance
         /// </summary>
@@ -261,7 +261,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewportPtr viewportPtr = nativePtr;
             Assert.Equal(nativePtr, viewportPtr.NativePtr);
         }
-        
+
         /// <summary>
         ///     Tests that implicit operator from im gui viewport ptr should return correct int ptr
         /// </summary>

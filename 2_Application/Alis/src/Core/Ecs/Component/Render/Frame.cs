@@ -48,7 +48,7 @@ namespace Alis.Core.Ecs.Component.Render
             NameFile = string.Empty;
             FilePath = string.Empty;
         }
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="Frame" /> class
         /// </summary>
@@ -59,19 +59,19 @@ namespace Alis.Core.Ecs.Component.Render
             NameFile = nameFile;
             FilePath = AssetManager.Find(nameFile);
         }
-        
+
         /// <summary>
         ///     Gets or sets the value of the name file
         /// </summary>
         [JsonPropertyName("_NameFile_")]
         public string NameFile { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the file path
         /// </summary>
         [JsonIgnore]
         public string FilePath { get; set; }
-        
+
         /// <summary>
         ///     Builders this instance
         /// </summary>

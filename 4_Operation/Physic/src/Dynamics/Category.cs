@@ -1,29 +1,58 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Category.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 /* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
 
 /*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-* 
-* Original source Box2D:
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
-* 
-* This software is provided 'as-is', without any express or implied 
-* warranty.  In no event will the authors be held liable for any damages 
-* arising from the use of this software. 
-* Permission is granted to anyone to use this software for any purpose, 
-* including commercial applications, and to alter it and redistribute it 
-* freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
-* claim that you wrote the original software. If you use this software 
-* in a product, an acknowledgment in the product documentation would be 
-* appreciated but is not required. 
-* 2. Altered source versions must be plainly marked as such, and must not be 
-* misrepresented as being the original software. 
-* 3. This notice may not be removed or altered from any source distribution. 
-*/
+ * Farseer Physics Engine:
+ * Copyright (c) 2012 Ian Qvist
+ *
+ * Original source Box2D:
+ * Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 using System;
 
@@ -32,16 +61,16 @@ namespace Alis.Core.Physic.Dynamics
     [Flags]
     public enum Category
     {
-        None  = 0x00000000,        
-        Cat1  = 0x00000001,
-        Cat2  = 0x00000002,
-        Cat3  = 0x00000004,
-        Cat4  = 0x00000008,
-        Cat5  = 0x00000010,
-        Cat6  = 0x00000020,
-        Cat7  = 0x00000040,
-        Cat8  = 0x00000080,
-        Cat9  = 0x00000100,
+        None = 0x00000000,
+        Cat1 = 0x00000001,
+        Cat2 = 0x00000002,
+        Cat3 = 0x00000004,
+        Cat4 = 0x00000008,
+        Cat5 = 0x00000010,
+        Cat6 = 0x00000020,
+        Cat7 = 0x00000040,
+        Cat8 = 0x00000080,
+        Cat9 = 0x00000100,
         Cat10 = 0x00000200,
         Cat11 = 0x00000400,
         Cat12 = 0x00000800,
@@ -64,6 +93,6 @@ namespace Alis.Core.Physic.Dynamics
         Cat29 = 0x10000000,
         Cat30 = 0x20000000,
         Cat31 = 0x40000000,
-        All = int.MaxValue,
+        All = int.MaxValue
     }
 }

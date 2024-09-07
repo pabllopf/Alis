@@ -1,4 +1,31 @@
-﻿// Copyright (c) 2017 Kastellanos Nikolaos
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:WorldCallbacks.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 /* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
@@ -6,26 +33,26 @@
  */
 
 /*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-* 
-* Original source Box2D:
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
-* 
-* This software is provided 'as-is', without any express or implied 
-* warranty.  In no event will the authors be held liable for any damages 
-* arising from the use of this software. 
-* Permission is granted to anyone to use this software for any purpose, 
-* including commercial applications, and to alter it and redistribute it 
-* freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
-* claim that you wrote the original software. If you use this software 
-* in a product, an acknowledgment in the product documentation would be 
-* appreciated but is not required. 
-* 2. Altered source versions must be plainly marked as such, and must not be 
-* misrepresented as being the original software. 
-* 3. This notice may not be removed or altered from any source distribution. 
-*/
+ * Farseer Physics Engine:
+ * Copyright (c) 2012 Ian Qvist
+ *
+ * Original source Box2D:
+ * Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;
@@ -39,32 +66,32 @@ using Microsoft.Xna.Framework;
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    /// Called for each fixture found in the query.
-    /// <returns>true: Continues the query, false: Terminate the query</returns>
+    ///     Called for each fixture found in the query.
+    ///     <returns>true: Continues the query, false: Terminate the query</returns>
     /// </summary>
     public delegate bool QueryReportFixtureDelegate(Fixture fixture);
 
     /// <summary>
-    /// Called for each fixture found in the query. You control how the ray cast
-    /// proceeds by returning a float:
-    /// return -1: ignore this fixture and continue
-    /// return 0: terminate the ray cast
-    /// return fraction: clip the ray to this point
-    /// return 1: don't clip the ray and continue
-    /// @param fixture the fixture hit by the ray
-    /// @param point the point of initial intersection
-    /// @param normal the normal vector at the point of intersection
-    /// @return 0 to terminate, fraction to clip the ray for closest hit, 1 to continue
+    ///     Called for each fixture found in the query. You control how the ray cast
+    ///     proceeds by returning a float:
+    ///     return -1: ignore this fixture and continue
+    ///     return 0: terminate the ray cast
+    ///     return fraction: clip the ray to this point
+    ///     return 1: don't clip the ray and continue
+    ///     @param fixture the fixture hit by the ray
+    ///     @param point the point of initial intersection
+    ///     @param normal the normal vector at the point of intersection
+    ///     @return 0 to terminate, fraction to clip the ray for closest hit, 1 to continue
     /// </summary>
     public delegate float RayCastReportFixtureDelegate(Fixture fixture, Vector2 point, Vector2 normal, float fraction);
 
     /// <summary>
-    /// This delegate is called when a contact is deleted
+    ///     This delegate is called when a contact is deleted
     /// </summary>
     public delegate void EndContactDelegate(Contact contact);
 
     /// <summary>
-    /// This delegate is called when a contact is created
+    ///     This delegate is called when a contact is created
     /// </summary>
     public delegate bool BeginContactDelegate(Contact contact);
 

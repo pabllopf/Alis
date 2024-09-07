@@ -45,10 +45,10 @@ namespace Alis.Test.Builder.Core.Ecs.System.Manager.Graphic
         public void GraphicManagerBuilder_DefaultConstructor_ValidInput()
         {
             GraphicManagerBuilder graphicManagerBuilder = new GraphicManagerBuilder();
-            
+
             Assert.NotNull(graphicManagerBuilder);
         }
-        
+
         /// <summary>
         ///     Tests that build valid input
         /// </summary>
@@ -56,9 +56,9 @@ namespace Alis.Test.Builder.Core.Ecs.System.Manager.Graphic
         public void Build_ValidInput()
         {
             GraphicManagerBuilder graphicManagerBuilder = new GraphicManagerBuilder();
-            
+
             GraphicManager graphicManager = graphicManagerBuilder.Build();
-            
+
             Assert.NotNull(graphicManager);
         }
     }

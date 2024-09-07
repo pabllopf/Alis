@@ -1,29 +1,58 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ChainShape.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 /* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
 
 /*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-* 
-* Original source Box2D:
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
-* 
-* This software is provided 'as-is', without any express or implied 
-* warranty.  In no event will the authors be held liable for any damages 
-* arising from the use of this software. 
-* Permission is granted to anyone to use this software for any purpose, 
-* including commercial applications, and to alter it and redistribute it 
-* freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
-* claim that you wrote the original software. If you use this software 
-* in a product, an acknowledgment in the product documentation would be 
-* appreciated but is not required. 
-* 2. Altered source versions must be plainly marked as such, and must not be 
-* misrepresented as being the original software. 
-* 3. This notice may not be removed or altered from any source distribution. 
-*/
+ * Farseer Physics Engine:
+ * Copyright (c) 2012 Ian Qvist
+ *
+ * Original source Box2D:
+ * Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
@@ -35,24 +64,25 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 namespace Alis.Core.Physic.Collision.Shapes
 {
     /// <summary>
-    /// A chain shape is a free form sequence of line segments.
-    /// The chain has two-sided collision, so you can use inside and outside collision.
-    /// Therefore, you may use any winding order.
-    /// Connectivity information is used to create smooth collisions.
-    /// WARNING: The chain will not collide properly if there are self-intersections.
+    ///     A chain shape is a free form sequence of line segments.
+    ///     The chain has two-sided collision, so you can use inside and outside collision.
+    ///     Therefore, you may use any winding order.
+    ///     Connectivity information is used to create smooth collisions.
+    ///     WARNING: The chain will not collide properly if there are self-intersections.
     /// </summary>
     public class ChainShape : Shape
     {
-        /// <summary>
-        /// The vertices. These are not owned/freed by the chain Shape.
-        /// </summary>
-        public Vertices Vertices;
-        private Vector2 _prevVertex, _nextVertex;
+        private static readonly EdgeShape _edgeShape = new EdgeShape();
         private bool _hasPrevVertex, _hasNextVertex;
-        private static EdgeShape _edgeShape = new EdgeShape();
+        private Vector2 _prevVertex, _nextVertex;
 
         /// <summary>
-        /// Constructor for ChainShape. By default have 0 in density.
+        ///     The vertices. These are not owned/freed by the chain Shape.
+        /// </summary>
+        public Vertices Vertices;
+
+        /// <summary>
+        ///     Constructor for ChainShape. By default have 0 in density.
         /// </summary>
         public ChainShape()
             : base(0)
@@ -62,17 +92,20 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>
-        /// Create a new chainshape from the vertices.
+        ///     Create a new chainshape from the vertices.
         /// </summary>
         /// <param name="vertices">The vertices to use. Must contain 2 or more vertices.</param>
-        /// <param name="createLoop">Set to true to create a closed loop. It connects the first vertice to the last, and automatically adjusts connectivity to create smooth collisions along the chain.</param>
+        /// <param name="createLoop">
+        ///     Set to true to create a closed loop. It connects the first vertice to the last, and
+        ///     automatically adjusts connectivity to create smooth collisions along the chain.
+        /// </param>
         public ChainShape(Vertices vertices, bool createLoop = false)
             : base(0)
         {
             ShapeType = ShapeType.Chain;
             _radius = Settings.PolygonRadius;
 
-            Debug.Assert(vertices != null && vertices.Count >= 3);
+            Debug.Assert((vertices != null) && (vertices.Count >= 3));
             Debug.Assert(vertices[0] != vertices[vertices.Count - 1]); // FPE. See http://www.box2d.org/forum/viewtopic.php?f=4&t=7973&p=35363
 
             for (int i = 1; i < vertices.Count; ++i)
@@ -94,19 +127,17 @@ namespace Alis.Core.Physic.Collision.Shapes
             }
         }
 
-        public override int ChildCount
-        {
+        public override int ChildCount =>
             // edge count = vertex count - 1
-            get { return Vertices.Count - 1; }
-        }
+            Vertices.Count - 1;
 
         /// <summary>
-        /// Establish connectivity to a vertex that precedes the first vertex.
-        /// Don't call this for loops.
+        ///     Establish connectivity to a vertex that precedes the first vertex.
+        ///     Don't call this for loops.
         /// </summary>
         public Vector2 PrevVertex
         {
-            get { return _prevVertex; }
+            get => _prevVertex;
             set
             {
                 Debug.Assert(value != null);
@@ -117,12 +148,12 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>
-        /// Establish connectivity to a vertex that follows the last vertex.
-        /// Don't call this for loops.
+        ///     Establish connectivity to a vertex that follows the last vertex.
+        ///     Don't call this for loops.
         /// </summary>
         public Vector2 NextVertex
         {
-            get { return _nextVertex; }
+            get => _nextVertex;
             set
             {
                 Debug.Assert(value != null);
@@ -133,13 +164,13 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>
-        /// This method has been optimized to reduce garbage.
+        ///     This method has been optimized to reduce garbage.
         /// </summary>
         /// <param name="edge">The cached edge to set properties on.</param>
         /// <param name="index">The index.</param>
         internal void GetChildEdge(EdgeShape edge, int index)
         {
-            Debug.Assert(0 <= index && index < Vertices.Count - 1);
+            Debug.Assert((0 <= index) && (index < Vertices.Count - 1));
             Debug.Assert(edge != null);
 
             edge.ShapeType = ShapeType.Edge;
@@ -172,7 +203,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>
-        /// Get a child edge.
+        ///     Get a child edge.
         /// </summary>
         /// <param name="index">The index.</param>
         public EdgeShape GetChildEdge(int index)
@@ -182,10 +213,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             return edgeShape;
         }
 
-        public override bool TestPoint(ref Transform transform, ref Vector2 point)
-        {
-            return false;
-        }
+        public override bool TestPoint(ref Transform transform, ref Vector2 point) => false;
 
         public override bool RayCast(out RayCastOutput output, ref RayCastInput input, ref Transform transform, int childIndex)
         {
@@ -234,7 +262,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>
-        /// Compare the chain to another chain
+        ///     Compare the chain to another chain
         /// </summary>
         /// <param name="shape">The other chain</param>
         /// <returns>True if the two chain shapes are the same</returns>
@@ -249,7 +277,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                     return false;
             }
 
-            return PrevVertex == shape.PrevVertex && NextVertex == shape.NextVertex;
+            return (PrevVertex == shape.PrevVertex) && (NextVertex == shape.NextVertex);
         }
 
         public override Shape Clone()

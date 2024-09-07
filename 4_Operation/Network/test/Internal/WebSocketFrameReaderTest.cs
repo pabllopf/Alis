@@ -51,10 +51,10 @@ namespace Alis.Core.Network.Test.Internal
             MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes("Test message"));
             ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[1024]);
             CancellationToken cancellationToken = new CancellationToken();
-            
+
             await Assert.ThrowsAsync<EndOfStreamException>(() => WebSocketFrameReader.ReadAsync(stream, buffer, cancellationToken));
         }
-        
+
         /// <summary>
         ///     Tests that read async invalid input throws exception
         /// </summary>
@@ -64,10 +64,10 @@ namespace Alis.Core.Network.Test.Internal
             MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes("Invalid message"));
             ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[1024]);
             CancellationToken cancellationToken = new CancellationToken();
-            
+
             await Assert.ThrowsAsync<EndOfStreamException>(() => WebSocketFrameReader.ReadAsync(stream, buffer, cancellationToken));
         }
-        
+
         /// <summary>
         ///     Tests that read from cursor async valid input
         /// </summary>
@@ -78,13 +78,13 @@ namespace Alis.Core.Network.Test.Internal
             ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[1024]);
             CancellationToken cancellationToken = new CancellationToken();
             WebSocketReadCursor readCursor = new WebSocketReadCursor(new WebSocketFrame(true, WebSocketOpCode.TextFrame, 0, new ArraySegment<byte>()), 0, 0);
-            
+
             WebSocketReadCursor result = await WebSocketFrameReader.ReadFromCursorAsync(stream, buffer, readCursor, cancellationToken);
-            
+
             Assert.NotNull(result);
             Assert.Equal(WebSocketOpCode.TextFrame, result.WebSocketFrame.OpCode);
         }
-        
+
         /// <summary>
         ///     Tests that read from cursor async invalid input throws exception
         /// </summary>
@@ -95,13 +95,13 @@ namespace Alis.Core.Network.Test.Internal
             ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[1024]);
             CancellationToken cancellationToken = new CancellationToken();
             WebSocketReadCursor readCursor = new WebSocketReadCursor(new WebSocketFrame(true, WebSocketOpCode.TextFrame, 0, new ArraySegment<byte>()), 0, 0);
-            
+
             Task<WebSocketReadCursor> result = WebSocketFrameReader.ReadFromCursorAsync(stream, buffer, readCursor, cancellationToken);
-            
+
             Assert.NotNull(result);
             return Task.CompletedTask;
         }
-        
+
         /// <summary>
         ///     Tests that read async should read correctly
         /// </summary>
@@ -111,12 +111,12 @@ namespace Alis.Core.Network.Test.Internal
             MemoryStream stream = new MemoryStream();
             ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[1024]);
             CancellationToken cancellationToken = new CancellationToken();
-            
+
             await Assert.ThrowsAsync<EndOfStreamException>(() => WebSocketFrameReader.ReadAsync(stream, buffer, cancellationToken));
-            
+
             // Here you would assert that the properties of result have been set correctly.
         }
-        
+
         /// <summary>
         ///     Tests that decode close frame should decode correctly when count is greater than or equal to two
         /// </summary>
@@ -128,12 +128,12 @@ namespace Alis.Core.Network.Test.Internal
             int count = 2;
             ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[2]);
             ArraySegment<byte> maskKey = new ArraySegment<byte>(new byte[4]);
-            
+
             WebSocketFrame result = WebSocketFrameReader.DecodeCloseFrame(isFinBitSet, opCode, count, buffer, maskKey);
-            
+
             // Here you would assert that the properties of result have been set correctly.
         }
-        
+
         /// <summary>
         ///     Tests that decode close frame should decode correctly when count is less than two
         /// </summary>
@@ -145,12 +145,12 @@ namespace Alis.Core.Network.Test.Internal
             int count = 1;
             ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[1]);
             ArraySegment<byte> maskKey = new ArraySegment<byte>(new byte[4]);
-            
+
             WebSocketFrame result = WebSocketFrameReader.DecodeCloseFrame(isFinBitSet, opCode, count, buffer, maskKey);
-            
+
             // Here you would assert that the properties of result have been set correctly.
         }
-        
+
         /// <summary>
         ///     Tests that read short length valid input
         /// </summary>
@@ -160,16 +160,16 @@ namespace Alis.Core.Network.Test.Internal
             MemoryStream stream = new MemoryStream();
             ArraySegment<byte> smallBuffer = new ArraySegment<byte>(new byte[8]);
             CancellationToken cancellationToken = new CancellationToken();
-            
+
             // Write ushort value to stream
             ushort value = 12345;
             byte[] bytes = BitConverter.GetBytes(value);
             await stream.WriteAsync(bytes, 0, bytes.Length);
             stream.Position = 0;
-            
+
             uint result = await WebSocketFrameReader.ReadShortLength(stream, smallBuffer, cancellationToken);
         }
-        
+
         /// <summary>
         ///     Tests that read long length valid input
         /// </summary>
@@ -179,16 +179,16 @@ namespace Alis.Core.Network.Test.Internal
             MemoryStream stream = new MemoryStream();
             ArraySegment<byte> smallBuffer = new ArraySegment<byte>(new byte[8]);
             CancellationToken cancellationToken = new CancellationToken();
-            
+
             // Write ulong value to stream
             ulong value = 4094698001;
             byte[] bytes = BitConverter.GetBytes(value);
             await stream.WriteAsync(bytes, 0, bytes.Length);
             stream.Position = 0;
-            
+
             uint result = await WebSocketFrameReader.ReadLongLength(stream, smallBuffer, cancellationToken);
         }
-        
+
         /// <summary>
         ///     Tests that read length initial length test
         /// </summary>
@@ -199,12 +199,12 @@ namespace Alis.Core.Network.Test.Internal
             ArraySegment<byte> smallBuffer = new ArraySegment<byte>(new byte[8]);
             MemoryStream fromStream = new MemoryStream(new byte[8]);
             CancellationToken cancellationToken = new CancellationToken();
-            
+
             uint result = await WebSocketFrameReader.ReadLength(byte2, smallBuffer, fromStream, cancellationToken);
-            
+
             Assert.True(result > 0);
         }
-        
+
         /// <summary>
         ///     Tests that read length short length test
         /// </summary>
@@ -215,12 +215,12 @@ namespace Alis.Core.Network.Test.Internal
             ArraySegment<byte> smallBuffer = new ArraySegment<byte>(new byte[8]);
             MemoryStream fromStream = new MemoryStream(BitConverter.GetBytes((ushort) 500));
             CancellationToken cancellationToken = new CancellationToken();
-            
+
             uint result = await WebSocketFrameReader.ReadLength(byte2, smallBuffer, fromStream, cancellationToken);
-            
+
             Assert.True(result > 0);
         }
-        
+
         /// <summary>
         ///     Tests that read length long length test
         /// </summary>
@@ -231,12 +231,12 @@ namespace Alis.Core.Network.Test.Internal
             ArraySegment<byte> smallBuffer = new ArraySegment<byte>(new byte[8]);
             MemoryStream fromStream = new MemoryStream(BitConverter.GetBytes((ulong) 50000));
             CancellationToken cancellationToken = new CancellationToken();
-            
+
             uint result = await WebSocketFrameReader.ReadLength(byte2, smallBuffer, fromStream, cancellationToken);
-            
+
             Assert.False(result > 0);
         }
-        
+
         /// <summary>
         ///     Tests that read length invalid length test
         /// </summary>
@@ -247,10 +247,10 @@ namespace Alis.Core.Network.Test.Internal
             ArraySegment<byte> smallBuffer = new ArraySegment<byte>(new byte[8]);
             MemoryStream fromStream = new MemoryStream(new byte[8]);
             CancellationToken cancellationToken = new CancellationToken();
-            
+
             await WebSocketFrameReader.ReadLength(byte2, smallBuffer, fromStream, cancellationToken);
         }
-        
+
         /// <summary>
         ///     Tests that validate length valid length test
         /// </summary>
@@ -260,7 +260,7 @@ namespace Alis.Core.Network.Test.Internal
             uint validLength = 2048;
             WebSocketFrameReader.ValidateLength(validLength);
         }
-        
+
         /// <summary>
         ///     Tests that validate length invalid length test
         /// </summary>
@@ -270,7 +270,7 @@ namespace Alis.Core.Network.Test.Internal
             uint invalidLength = 2147483649;
             Assert.Throws<ArgumentOutOfRangeException>(() => WebSocketFrameReader.ValidateLength(invalidLength));
         }
-        
+
         /// <summary>
         ///     Tests that calculate num bytes to read test
         /// </summary>
@@ -279,15 +279,15 @@ namespace Alis.Core.Network.Test.Internal
         {
             int bufferSize = 10;
             int numBytesLeftToRead = 5;
-            
+
             int result = WebSocketFrameReader.CalculateNumBytesToRead(numBytesLeftToRead, bufferSize);
-            
+
             Assert.Equal(numBytesLeftToRead, result);
-            
+
             numBytesLeftToRead = 15;
-            
+
             result = WebSocketFrameReader.CalculateNumBytesToRead(numBytesLeftToRead, bufferSize);
-            
+
             Assert.Equal(bufferSize - bufferSize % 4, result);
         }
     }

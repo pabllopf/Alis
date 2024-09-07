@@ -1,12 +1,41 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Vertices.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
 
 /*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-*/
+ * Farseer Physics Engine:
+ * Copyright (c) 2012 Ian Qvist
+ */
 
 using System;
 using System.Collections.Generic;
@@ -24,47 +53,51 @@ namespace Alis.Core.Physic.Common
     public enum PolygonError
     {
         /// <summary>
-        /// There were no errors in the polygon
+        ///     There were no errors in the polygon
         /// </summary>
         NoError,
 
         /// <summary>
-        /// Polygon must have between 3 and Settings.MaxPolygonVertices vertices.
+        ///     Polygon must have between 3 and Settings.MaxPolygonVertices vertices.
         /// </summary>
         InvalidAmountOfVertices,
 
         /// <summary>
-        /// Polygon must be simple. This means no overlapping edges.
+        ///     Polygon must be simple. This means no overlapping edges.
         /// </summary>
         NotSimple,
 
         /// <summary>
-        /// Polygon must have a counter clockwise winding.
+        ///     Polygon must have a counter clockwise winding.
         /// </summary>
         NotCounterClockWise,
 
         /// <summary>
-        /// The polygon is concave, it needs to be convex.
+        ///     The polygon is concave, it needs to be convex.
         /// </summary>
         NotConvex,
 
         /// <summary>
-        /// Polygon area is too small.
+        ///     Polygon area is too small.
         /// </summary>
         AreaTooSmall,
 
         /// <summary>
-        /// The polygon has a side that is too short.
+        ///     The polygon has a side that is too short.
         /// </summary>
         SideTooSmall
     }
-    
+
     [DebuggerDisplay("Count = {Count} Vertices = {ToString()}")]
     public class Vertices : List<Vector2>
     {
-        public Vertices() { }
+        public Vertices()
+        {
+        }
 
-        public Vertices(int capacity) : base(capacity) { }
+        public Vertices(int capacity) : base(capacity)
+        {
+        }
 
         public Vertices(IEnumerable<Vector2> vertices)
         {
@@ -74,50 +107,38 @@ namespace Alis.Core.Physic.Common
         internal bool AttachedToBody { get; set; }
 
         /// <summary>
-        /// You can add holes to this collection.
-        /// It will get respected by some of the triangulation algoithms, but otherwise not used.
+        ///     You can add holes to this collection.
+        ///     It will get respected by some of the triangulation algoithms, but otherwise not used.
         /// </summary>
         public List<Vertices> Holes { get; set; }
 
         /// <summary>
-        /// Gets the next index. Used for iterating all the edges with wrap-around.
+        ///     Gets the next index. Used for iterating all the edges with wrap-around.
         /// </summary>
         /// <param name="index">The current index</param>
-        public int NextIndex(int index)
-        {
-            return (index + 1 > Count - 1) ? 0 : index + 1;
-        }
+        public int NextIndex(int index) => index + 1 > Count - 1 ? 0 : index + 1;
 
         /// <summary>
-        /// Gets the next vertex. Used for iterating all the edges with wrap-around.
+        ///     Gets the next vertex. Used for iterating all the edges with wrap-around.
         /// </summary>
         /// <param name="index">The current index</param>
-        public Vector2 NextVertex(int index)
-        {
-            return this[NextIndex(index)];
-        }
+        public Vector2 NextVertex(int index) => this[NextIndex(index)];
 
         /// <summary>
-        /// Gets the previous index. Used for iterating all the edges with wrap-around.
+        ///     Gets the previous index. Used for iterating all the edges with wrap-around.
         /// </summary>
         /// <param name="index">The current index</param>
-        public int PreviousIndex(int index)
-        {
-            return index - 1 < 0 ? Count - 1 : index - 1;
-        }
+        public int PreviousIndex(int index) => index - 1 < 0 ? Count - 1 : index - 1;
 
         /// <summary>
-        /// Gets the previous vertex. Used for iterating all the edges with wrap-around.
+        ///     Gets the previous vertex. Used for iterating all the edges with wrap-around.
         /// </summary>
         /// <param name="index">The current index</param>
-        public Vector2 PreviousVertex(int index)
-        {
-            return this[PreviousIndex(index)];
-        }
+        public Vector2 PreviousVertex(int index) => this[PreviousIndex(index)];
 
         /// <summary>
-        /// Gets the signed area.
-        /// If the area is less than 0, it indicates that the polygon is clockwise winded.
+        ///     Gets the signed area.
+        ///     If the area is less than 0, it indicates that the polygon is clockwise winded.
         /// </summary>
         /// <returns>The signed area</returns>
         public float GetSignedArea()
@@ -139,22 +160,23 @@ namespace Alis.Core.Physic.Common
                 area += vi.X * vj.Y;
                 area -= vi.Y * vj.X;
             }
+
             area /= 2.0f;
             return area;
         }
 
         /// <summary>
-        /// Gets the area.
+        ///     Gets the area.
         /// </summary>
         /// <returns></returns>
         public float GetArea()
         {
             float area = GetSignedArea();
-            return (area < 0 ? -area : area);
+            return area < 0 ? -area : area;
         }
 
         /// <summary>
-        /// Gets the centroid.
+        ///     Gets the centroid.
         /// </summary>
         /// <returns></returns>
         public Vector2 GetCentroid()
@@ -172,7 +194,7 @@ namespace Alis.Core.Physic.Common
             {
                 // Triangle vertices.
                 Vector2 current = this[i];
-                Vector2 next = (i + 1 < Count ? this[i + 1] : this[0]);
+                Vector2 next = i + 1 < Count ? this[i + 1] : this[0];
 
                 float triangleArea = 0.5f * (current.X * next.Y - current.Y * next.X);
                 area += triangleArea;
@@ -187,7 +209,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Returns an AABB that fully contains this polygon.
+        ///     Returns an AABB that fully contains this polygon.
         /// </summary>
         public AABB GetAABB()
         {
@@ -201,6 +223,7 @@ namespace Alis.Core.Physic.Common
                 {
                     lowerBound.X = this[i].X;
                 }
+
                 if (this[i].X > upperBound.X)
                 {
                     upperBound.X = this[i].X;
@@ -210,6 +233,7 @@ namespace Alis.Core.Physic.Common
                 {
                     lowerBound.Y = this[i].Y;
                 }
+
                 if (this[i].Y > upperBound.Y)
                 {
                     upperBound.Y = this[i].Y;
@@ -223,7 +247,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Translates the vertices with the specified vector.
+        ///     Translates the vertices with the specified vector.
         /// </summary>
         /// <param name="value">The value.</param>
         public void Translate(Vector2 value)
@@ -232,7 +256,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Translates the vertices with the specified vector.
+        ///     Translates the vertices with the specified vector.
         /// </summary>
         /// <param name="value">The vector.</param>
         public void Translate(ref Vector2 value)
@@ -242,7 +266,7 @@ namespace Alis.Core.Physic.Common
             for (int i = 0; i < Count; i++)
                 this[i] = this[i] + value;
 
-            if (Holes != null && Holes.Count > 0)
+            if ((Holes != null) && (Holes.Count > 0))
             {
                 foreach (Vertices hole in Holes)
                 {
@@ -252,7 +276,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Scales the vertices with the specified vector.
+        ///     Scales the vertices with the specified vector.
         /// </summary>
         /// <param name="value">The Value.</param>
         public void Scale(Vector2 value)
@@ -261,7 +285,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Scales the vertices with the specified vector.
+        ///     Scales the vertices with the specified vector.
         /// </summary>
         /// <param name="value">The Value.</param>
         public void Scale(ref Vector2 value)
@@ -271,7 +295,7 @@ namespace Alis.Core.Physic.Common
             for (int i = 0; i < Count; i++)
                 this[i] = this[i] * value;
 
-            if (Holes != null && Holes.Count > 0)
+            if ((Holes != null) && (Holes.Count > 0))
             {
                 foreach (Vertices hole in Holes)
                 {
@@ -281,26 +305,25 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Rotate the vertices with the defined value in radians.
-        /// 
-        /// Warning: Using this method on an active set of vertices of a Body,
-        /// will cause problems with collisions. Use Body.Rotation instead.
+        ///     Rotate the vertices with the defined value in radians.
+        ///     Warning: Using this method on an active set of vertices of a Body,
+        ///     will cause problems with collisions. Use Body.Rotation instead.
         /// </summary>
         /// <param name="value">The amount to rotate by in radians.</param>
         public void Rotate(float value)
         {
             Debug.Assert(!AttachedToBody, "Rotating vertices that are used by a Body can result in unstable behavior.");
 
-            float num1 = (float)Math.Cos(value);
-            float num2 = (float)Math.Sin(value);
+            float num1 = (float) Math.Cos(value);
+            float num2 = (float) Math.Sin(value);
 
             for (int i = 0; i < Count; i++)
             {
                 Vector2 position = this[i];
-                this[i] = new Vector2((position.X * num1 + position.Y * -num2), (position.X * num2 + position.Y * num1));
+                this[i] = new Vector2(position.X * num1 + position.Y * -num2, position.X * num2 + position.Y * num1);
             }
 
-            if (Holes != null && Holes.Count > 0)
+            if ((Holes != null) && (Holes.Count > 0))
             {
                 foreach (Vertices hole in Holes)
                 {
@@ -310,15 +333,14 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Determines whether the polygon is convex.
-        /// O(n^2) running time.
-        /// 
-        /// Assumptions:
-        /// - The polygon is in counter clockwise order
-        /// - The polygon has no overlapping edges
+        ///     Determines whether the polygon is convex.
+        ///     O(n^2) running time.
+        ///     Assumptions:
+        ///     - The polygon is in counter clockwise order
+        ///     - The polygon has no overlapping edges
         /// </summary>
         /// <returns>
-        /// 	<c>true</c> if it is convex; otherwise, <c>false</c>.
+        ///     <c>true</c> if it is convex; otherwise, <c>false</c>.
         /// </returns>
         public bool IsConvex()
         {
@@ -350,12 +372,13 @@ namespace Alis.Core.Physic.Common
                         return false;
                 }
             }
+
             return true;
         }
 
         /// <summary>
-        /// Indicates if the vertices are in counter clockwise order.
-        /// Warning: If the area of the polygon is 0, it is unable to determine the winding.
+        ///     Indicates if the vertices are in counter clockwise order.
+        ///     Warning: If the area of the polygon is 0, it is unable to determine the winding.
         /// </summary>
         public bool IsCounterClockWise()
         {
@@ -363,11 +386,11 @@ namespace Alis.Core.Physic.Common
             if (Count < 3)
                 return false;
 
-            return (GetSignedArea() > 0.0f);
+            return GetSignedArea() > 0.0f;
         }
 
         /// <summary>
-        /// Forces the vertices to be counter clock wise order.
+        ///     Forces the vertices to be counter clock wise order.
         /// </summary>
         public void ForceCounterClockWise()
         {
@@ -380,7 +403,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Checks if the vertices forms an simple polygon by checking for edge crossings.
+        ///     Checks if the vertices forms an simple polygon by checking for edge crossings.
         /// </summary>
         public bool IsSimple()
         {
@@ -403,16 +426,15 @@ namespace Alis.Core.Physic.Common
                         return false;
                 }
             }
+
             return true;
         }
 
         /// <summary>
-        /// Checks if the polygon is valid for use in the engine.
-        ///
-        /// Performs a full check, for simplicity, convexity,
-        /// orientation, minimum angle, and volume.
-        /// 
-        /// From Eric Jordan's convex decomposition library
+        ///     Checks if the polygon is valid for use in the engine.
+        ///     Performs a full check, for simplicity, convexity,
+        ///     orientation, minimum angle, and volume.
+        ///     From Eric Jordan's convex decomposition library
         /// </summary>
         /// <returns>PolygonError.NoError if there were no error.</returns>
         public PolygonError CheckPolygon()
@@ -434,7 +456,7 @@ namespace Alis.Core.Physic.Common
             {
                 int next = i + 1 < Count ? i + 1 : 0;
                 Vector2 edge = this[next] - this[i];
-                if (edge.LengthSquared() <= Settings.Epsilon*Settings.Epsilon)
+                if (edge.LengthSquared() <= Settings.Epsilon * Settings.Epsilon)
                 {
                     return PolygonError.SideTooSmall;
                 }
@@ -447,7 +469,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Projects to axis.
+        ///     Projects to axis.
         /// </summary>
         /// <param name="axis">The axis.</param>
         /// <param name="min">The min.</param>
@@ -477,13 +499,15 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Winding number test for a point in a polygon.
+        ///     Winding number test for a point in a polygon.
         /// </summary>
         /// See more info about the algorithm here: http://softsurfer.com/Archive/algorithm_0103/algorithm_0103.htm
         /// <param name="point">The point to be tested.</param>
-        /// <returns>-1 if the winding number is zero and the point is outside
-        /// the polygon, 1 if the point is inside the polygon, and 0 if the point
-        /// is on the polygons edge.</returns>
+        /// <returns>
+        ///     -1 if the winding number is zero and the point is outside
+        ///     the polygon, 1 if the point is inside the polygon, and 0 if the point
+        ///     is on the polygons edge.
+        /// </returns>
         public int PointInPolygon(ref Vector2 point)
         {
             // Winding number
@@ -499,33 +523,35 @@ namespace Alis.Core.Physic.Common
                 // Test if a point is directly on the edge
                 Vector2 edge = p2 - p1;
                 float area = MathUtils.Area(ref p1, ref p2, ref point);
-                if (area == 0f && Vector2.Dot(point - p1, edge) >= 0f && Vector2.Dot(point - p2, edge) <= 0f)
+                if ((area == 0f) && (Vector2.Dot(point - p1, edge) >= 0f) && (Vector2.Dot(point - p2, edge) <= 0f))
                 {
                     return 0;
                 }
+
                 // Test edge for intersection with ray from point
                 if (p1.Y <= point.Y)
                 {
-                    if (p2.Y > point.Y && area > 0f)
+                    if ((p2.Y > point.Y) && (area > 0f))
                     {
                         ++wn;
                     }
                 }
                 else
                 {
-                    if (p2.Y <= point.Y && area < 0f)
+                    if ((p2.Y <= point.Y) && (area < 0f))
                     {
                         --wn;
                     }
                 }
             }
-            return (wn == 0 ? -1 : 1);
+
+            return wn == 0 ? -1 : 1;
         }
 
         /// <summary>
-        /// Compute the sum of the angles made between the test point and each pair of points making up the polygon. 
-        /// If this sum is 2pi then the point is an interior point, if 0 then the point is an exterior point. 
-        /// ref: http://ozviz.wasp.uwa.edu.au/~pbourke/geometry/insidepoly/  - Solution 2 
+        ///     Compute the sum of the angles made between the test point and each pair of points making up the polygon.
+        ///     If this sum is 2pi then the point is an interior point, if 0 then the point is an exterior point.
+        ///     ref: http://ozviz.wasp.uwa.edu.au/~pbourke/geometry/insidepoly/  - Solution 2
         /// </summary>
         public bool PointInPolygonAngle(ref Vector2 point)
         {
@@ -585,6 +611,7 @@ namespace Alis.Core.Physic.Common
                     builder.Append(" ");
                 }
             }
+
             return builder.ToString();
         }
     }

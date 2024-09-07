@@ -45,10 +45,10 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Light
         public void PointLightBuilder_DefaultConstructor_ValidInput()
         {
             PointLightBuilder pointLightBuilder = new PointLightBuilder();
-            
+
             Assert.NotNull(pointLightBuilder);
         }
-        
+
         /// <summary>
         ///     Tests that build valid input
         /// </summary>
@@ -56,9 +56,9 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Light
         public void Build_ValidInput()
         {
             PointLightBuilder pointLightBuilder = new PointLightBuilder();
-            
+
             PointLight pointLight = pointLightBuilder.Build();
-            
+
             Assert.NotNull(pointLight);
         }
     }

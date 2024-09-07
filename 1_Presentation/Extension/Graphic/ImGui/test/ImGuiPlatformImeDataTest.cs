@@ -47,7 +47,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             platformImeData.WantVisible = 1;
             Assert.Equal(1, platformImeData.WantVisible);
         }
-        
+
         /// <summary>
         ///     Tests that input pos should set and get correctly
         /// </summary>
@@ -59,7 +59,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             platformImeData.InputPos = inputPos;
             Assert.Equal(inputPos, platformImeData.InputPos);
         }
-        
+
         /// <summary>
         ///     Tests that input line height should set and get correctly
         /// </summary>

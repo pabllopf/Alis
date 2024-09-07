@@ -44,10 +44,10 @@ namespace Alis.Test.Core.Ecs.Component.Light
         public void Light_DefaultConstructor_ValidInput()
         {
             LightSample light = new LightSample();
-            
+
             Assert.NotNull(light);
         }
-        
+
         /// <summary>
         ///     Tests that on start valid input
         /// </summary>
@@ -55,10 +55,10 @@ namespace Alis.Test.Core.Ecs.Component.Light
         public void OnStart_ValidInput()
         {
             LightSample light = new LightSample();
-            
+
             light.OnStart();
         }
-        
+
         /// <summary>
         ///     Tests that on update valid input
         /// </summary>
@@ -66,7 +66,7 @@ namespace Alis.Test.Core.Ecs.Component.Light
         public void OnUpdate_ValidInput()
         {
             LightSample light = new LightSample();
-            
+
             light.OnUpdate();
         }
     }

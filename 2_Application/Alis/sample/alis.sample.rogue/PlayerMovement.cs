@@ -47,14 +47,14 @@ namespace Alis.Sample.Rogue
         public override void OnStart()
         {
         }
-        
+
         /// <summary>
         ///     Ons the update
         /// </summary>
         public override void OnUpdate()
         {
         }
-        
+
         /// <summary>
         ///     Ons the press down key using the specified key
         /// </summary>
@@ -66,19 +66,19 @@ namespace Alis.Sample.Rogue
                 GameObject.Transform = new Transform(new Vector2(GameObject.Transform.Position.X + 1, GameObject.Transform.Position.Y), GameObject.Transform.Rotation, GameObject.Transform.Scale);
                 Logger.Info(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation);
             }
-            
+
             if (key == KeyCodes.A)
             {
                 GameObject.Transform = new Transform(new Vector2(GameObject.Transform.Position.X - 1, GameObject.Transform.Position.Y), GameObject.Transform.Rotation, GameObject.Transform.Scale);
                 Logger.Info(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation);
             }
-            
+
             if (key == KeyCodes.W)
             {
                 GameObject.Transform = new Transform(new Vector2(GameObject.Transform.Position.X, GameObject.Transform.Position.Y - 1), GameObject.Transform.Rotation, GameObject.Transform.Scale);
                 Logger.Info(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation);
             }
-            
+
             if (key == KeyCodes.S)
             {
                 GameObject.Transform = new Transform(new Vector2(GameObject.Transform.Position.X, GameObject.Transform.Position.Y + 1), GameObject.Transform.Rotation, GameObject.Transform.Scale);

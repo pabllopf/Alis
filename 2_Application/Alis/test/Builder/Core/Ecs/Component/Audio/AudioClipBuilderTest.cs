@@ -45,10 +45,10 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Audio
         public void AudioClipBuilder_DefaultConstructor_ValidInput()
         {
             AudioClipBuilder audioClipBuilder = new AudioClipBuilder();
-            
+
             Assert.NotNull(audioClipBuilder);
         }
-        
+
         /// <summary>
         ///     Tests that build valid input
         /// </summary>
@@ -56,12 +56,12 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Audio
         public void Build_ValidInput()
         {
             AudioClipBuilder audioClipBuilder = new AudioClipBuilder();
-            
+
             AudioClip audioClip = audioClipBuilder.Build();
-            
+
             Assert.NotNull(audioClip);
         }
-        
+
         /// <summary>
         ///     Tests that file path valid input
         /// </summary>
@@ -70,12 +70,12 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Audio
         {
             AudioClipBuilder audioClipBuilder = new AudioClipBuilder();
             string filePath = "testFilePath";
-            
+
             audioClipBuilder.FilePath(filePath);
-            
+
             Assert.Equal(filePath, audioClipBuilder.Build().NameFile);
         }
-        
+
         /// <summary>
         ///     Tests that mute valid input
         /// </summary>
@@ -84,12 +84,12 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Audio
         {
             AudioClipBuilder audioClipBuilder = new AudioClipBuilder();
             bool mute = true;
-            
+
             audioClipBuilder.Mute(mute);
-            
+
             Assert.Equal(mute, audioClipBuilder.Build().IsMute);
         }
-        
+
         /// <summary>
         ///     Tests that volume valid input
         /// </summary>
@@ -98,9 +98,9 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Audio
         {
             AudioClipBuilder audioClipBuilder = new AudioClipBuilder();
             float volume = 0.5f;
-            
+
             audioClipBuilder.Volume(volume);
-            
+
             Assert.Equal(volume, audioClipBuilder.Build().Volume);
         }
     }

@@ -47,7 +47,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(IntPtr.Zero);
             Assert.Equal(IntPtr.Zero, ptr.NativePtr);
         }
-        
+
         /// <summary>
         ///     Tests that font data should be initialized
         /// </summary>
@@ -58,7 +58,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.FontData, ptr.FontData);
         }
-        
+
         /// <summary>
         ///     Tests that font data size should be initialized
         /// </summary>
@@ -69,7 +69,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.FontDataSize, ptr.FontDataSize);
         }
-        
+
         /// <summary>
         ///     Tests that font data owned by atlas should be initialized
         /// </summary>
@@ -80,7 +80,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.FontDataOwnedByAtlas != 0, ptr.FontDataOwnedByAtlas);
         }
-        
+
         /// <summary>
         ///     Tests that font no should be initialized
         /// </summary>
@@ -91,7 +91,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.FontNo, ptr.FontNo);
         }
-        
+
         /// <summary>
         ///     Tests that size pixels should be initialized
         /// </summary>
@@ -102,7 +102,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.SizePixels, ptr.SizePixels);
         }
-        
+
         /// <summary>
         ///     Tests that oversample h should be initialized
         /// </summary>
@@ -113,7 +113,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.OversampleH, ptr.OversampleH);
         }
-        
+
         /// <summary>
         ///     Tests that oversample v should be initialized
         /// </summary>
@@ -124,7 +124,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.OversampleV, ptr.OversampleV);
         }
-        
+
         /// <summary>
         ///     Tests that snap h should be initialized
         /// </summary>
@@ -135,7 +135,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.SnapH != 0, ptr.SnapH);
         }
-        
+
         /// <summary>
         ///     Tests that glyph extra spacing should be initialized
         /// </summary>
@@ -146,7 +146,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.GlyphExtraSpacing, ptr.GlyphExtraSpacing);
         }
-        
+
         /// <summary>
         ///     Tests that glyph offset should be initialized
         /// </summary>
@@ -157,7 +157,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.GlyphOffset, ptr.GlyphOffset);
         }
-        
+
         /// <summary>
         ///     Tests that glyph ranges should be initialized
         /// </summary>
@@ -168,7 +168,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.GlyphRanges, ptr.GlyphRanges);
         }
-        
+
         /// <summary>
         ///     Tests that glyph min advance x should be initialized
         /// </summary>
@@ -179,7 +179,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.GlyphMinAdvanceX, ptr.GlyphMinAdvanceX);
         }
-        
+
         /// <summary>
         ///     Tests that glyph max advance x should be initialized
         /// </summary>
@@ -190,7 +190,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.GlyphMaxAdvanceX, ptr.GlyphMaxAdvanceX);
         }
-        
+
         /// <summary>
         ///     Tests that merge mode should be initialized
         /// </summary>
@@ -201,7 +201,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.MergeMode != 0, ptr.MergeMode);
         }
-        
+
         /// <summary>
         ///     Tests that font builder flags should be initialized
         /// </summary>
@@ -212,7 +212,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.FontBuilderFlags, ptr.FontBuilderFlags);
         }
-        
+
         /// <summary>
         ///     Tests that rasterizer multiply should be initialized
         /// </summary>
@@ -223,7 +223,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.RasterizerMultiply, ptr.RasterizerMultiply);
         }
-        
+
         /// <summary>
         ///     Tests that ellipsis char should be initialized
         /// </summary>
@@ -234,7 +234,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.EllipsisChar, ptr.EllipsisChar);
         }
-        
+
         /// <summary>
         ///     Tests that add image with user texture id and min max adds image
         /// </summary>
@@ -245,12 +245,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr userTextureId = new IntPtr(1);
             Vector2 pMin = new Vector2(0, 0);
             Vector2 pMax = new Vector2(1, 1);
-            
+
             Assert.Throws<DllNotFoundException>(() => drawList.AddImage(userTextureId, pMin, pMax));
-            
+
             // Assert logic here
         }
-        
+
         /// <summary>
         ///     Tests that add image with user texture id min max and uv min adds image
         /// </summary>
@@ -262,12 +262,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Vector2 pMin = new Vector2(0, 0);
             Vector2 pMax = new Vector2(1, 1);
             Vector2 uvMin = new Vector2(0, 0);
-            
+
             Assert.Throws<DllNotFoundException>(() => drawList.AddImage(userTextureId, pMin, pMax, uvMin));
-            
+
             // Assert logic here
         }
-        
+
         /// <summary>
         ///     Tests that add image with user texture id min max uv min and uv max adds image
         /// </summary>
@@ -280,12 +280,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Vector2 pMax = new Vector2(1, 1);
             Vector2 uvMin = new Vector2(0, 0);
             Vector2 uvMax = new Vector2(1, 1);
-            
+
             Assert.Throws<DllNotFoundException>(() => drawList.AddImage(userTextureId, pMin, pMax, uvMin, uvMax));
-            
+
             // Assert logic here
         }
-        
+
         /// <summary>
         ///     Tests that add image with user texture id min max uv min uv max and col adds image
         /// </summary>
@@ -299,12 +299,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Vector2 uvMin = new Vector2(0, 0);
             Vector2 uvMax = new Vector2(1, 1);
             uint col = 4294967295;
-            
+
             Assert.Throws<DllNotFoundException>(() => drawList.AddImage(userTextureId, pMin, pMax, uvMin, uvMax, col));
-            
+
             // Assert logic here
         }
-        
+
         /// <summary>
         ///     Tests that add image quad with user texture id and points adds image quad
         /// </summary>
@@ -317,12 +317,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Vector2 p2 = new Vector2(1, 0);
             Vector2 p3 = new Vector2(1, 1);
             Vector2 p4 = new Vector2(0, 1);
-            
+
             Assert.Throws<DllNotFoundException>(() => drawList.AddImageQuad(userTextureId, p1, p2, p3, p4));
-            
+
             // Assert logic here
         }
-        
+
         /// <summary>
         ///     Tests that add image quad with user texture id points and uv 1 adds image quad
         /// </summary>
@@ -336,12 +336,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Vector2 p3 = new Vector2(1, 1);
             Vector2 p4 = new Vector2(0, 1);
             Vector2 uv1 = new Vector2(0, 0);
-            
+
             Assert.Throws<DllNotFoundException>(() => drawList.AddImageQuad(userTextureId, p1, p2, p3, p4, uv1));
-            
+
             // Assert logic here
         }
-        
+
         /// <summary>
         ///     Tests that add image quad with user texture id points uv 1 and uv 2 adds image quad
         /// </summary>
@@ -356,12 +356,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Vector2 p4 = new Vector2(0, 1);
             Vector2 uv1 = new Vector2(0, 0);
             Vector2 uv2 = new Vector2(1, 0);
-            
+
             Assert.Throws<DllNotFoundException>(() => drawList.AddImageQuad(userTextureId, p1, p2, p3, p4, uv1, uv2));
-            
+
             // Assert logic here
         }
-        
+
         /// <summary>
         ///     Tests that add image quad with user texture id points uv 1 uv 2 and uv 3 adds image quad
         /// </summary>
@@ -377,12 +377,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Vector2 uv1 = new Vector2(0, 0);
             Vector2 uv2 = new Vector2(1, 0);
             Vector2 uv3 = new Vector2(1, 1);
-            
+
             Assert.Throws<DllNotFoundException>(() => drawList.AddImageQuad(userTextureId, p1, p2, p3, p4, uv1, uv2, uv3));
-            
+
             // Assert logic here
         }
-        
+
         /// <summary>
         ///     Tests that add image quad with user texture id points uv 1 uv 2 uv 3 and uv 4 adds image quad
         /// </summary>
@@ -399,12 +399,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Vector2 uv2 = new Vector2(1, 0);
             Vector2 uv3 = new Vector2(1, 1);
             Vector2 uv4 = new Vector2(0, 1);
-            
+
             Assert.Throws<DllNotFoundException>(() => drawList.AddImageQuad(userTextureId, p1, p2, p3, p4, uv1, uv2, uv3, uv4));
-            
+
             // Assert logic here
         }
-        
+
         /// <summary>
         ///     Tests that add image quad with user texture id points uv 1 uv 2 uv 3 uv 4 and col adds image quad
         /// </summary>
@@ -422,12 +422,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Vector2 uv3 = new Vector2(1, 1);
             Vector2 uv4 = new Vector2(0, 1);
             uint col = 4294967295;
-            
+
             Assert.Throws<DllNotFoundException>(() => drawList.AddImageQuad(userTextureId, p1, p2, p3, p4, uv1, uv2, uv3, uv4, col));
-            
+
             // Assert logic here
         }
-        
+
         /// <summary>
         ///     Tests that add image rounded with user texture id min max uv min uv max col and rounding adds image rounded
         /// </summary>
@@ -442,12 +442,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Vector2 uvMax = new Vector2(1, 1);
             uint col = 4294967295;
             float rounding = 0.5f;
-            
+
             Assert.Throws<DllNotFoundException>(() => drawList.AddImageRounded(userTextureId, pMin, pMax, uvMin, uvMax, col, rounding));
-            
+
             // Assert logic here
         }
-        
+
         /// <summary>
         ///     Tests that add image rounded with user texture id min max uv min uv max col rounding and flags adds image rounded
         /// </summary>
@@ -463,12 +463,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
             uint col = 4294967295;
             float rounding = 0.5f;
             ImDrawFlags flags = 0;
-            
+
             Assert.Throws<DllNotFoundException>(() => drawList.AddImageRounded(userTextureId, pMin, pMax, uvMin, uvMax, col, rounding, flags));
-            
+
             // Assert logic here
         }
-        
+
         /// <summary>
         ///     Tests that add line with p 1 p 2 and col adds line
         /// </summary>
@@ -479,12 +479,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Vector2 p1 = new Vector2(0, 0);
             Vector2 p2 = new Vector2(1, 1);
             uint col = 4294967295;
-            
+
             Assert.Throws<DllNotFoundException>(() => drawList.AddLine(p1, p2, col));
-            
+
             // Assert logic here
         }
-        
+
         /// <summary>
         ///     Tests that add line with p 1 p 2 col and thickness adds line
         /// </summary>
@@ -496,12 +496,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Vector2 p2 = new Vector2(1, 1);
             uint col = 4294967295;
             float thickness = 2.0f;
-            
+
             Assert.Throws<DllNotFoundException>(() => drawList.AddLine(p1, p2, col, thickness));
-            
+
             // Assert logic here
         }
-        
+
         /// <summary>
         ///     Tests that add ngon with center radius col and num segments adds ngon
         /// </summary>
@@ -513,12 +513,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
             float radius = 1.0f;
             uint col = 4294967295;
             int numSegments = 6;
-            
+
             Assert.Throws<DllNotFoundException>(() => drawList.AddNgon(center, radius, col, numSegments));
-            
+
             // Assert logic here
         }
-        
+
         /// <summary>
         ///     Tests that add ngon with center radius col num segments and thickness adds ngon
         /// </summary>
@@ -531,12 +531,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
             uint col = 4294967295;
             int numSegments = 6;
             float thickness = 2.0f;
-            
+
             Assert.Throws<DllNotFoundException>(() => drawList.AddNgon(center, radius, col, numSegments, thickness));
-            
+
             // Assert logic here
         }
-        
+
         /// <summary>
         ///     Tests that add ngon filled with center radius col and num segments adds ngon filled
         /// </summary>
@@ -548,12 +548,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
             float radius = 1.0f;
             uint col = 4294967295;
             int numSegments = 6;
-            
+
             Assert.Throws<DllNotFoundException>(() => drawList.AddNgonFilled(center, radius, col, numSegments));
-            
+
             // Assert logic here
         }
-        
+
         /// <summary>
         ///     Tests that add polyline with points num points col flags and thickness adds polyline
         /// </summary>
@@ -566,12 +566,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
             uint col = 4294967295;
             ImDrawFlags flags = 0;
             float thickness = 2.0f;
-            
+
             Assert.Throws<DllNotFoundException>(() => drawList.AddPolyline(ref points[0], numPoints, col, flags, thickness));
-            
+
             // Assert logic here
         }
-        
+
         /// <summary>
         ///     Tests that add quad with p 1 p 2 p 3 p 4 and col adds quad
         /// </summary>
@@ -584,12 +584,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Vector2 p3 = new Vector2(1, 1);
             Vector2 p4 = new Vector2(0, 1);
             uint col = 4294967295;
-            
+
             Assert.Throws<DllNotFoundException>(() => drawList.AddQuad(p1, p2, p3, p4, col));
-            
+
             // Assert logic here
         }
-        
+
         /// <summary>
         ///     Tests that add quad with p 1 p 2 p 3 p 4 col and thickness adds quad
         /// </summary>
@@ -603,12 +603,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Vector2 p4 = new Vector2(0, 1);
             uint col = 4294967295;
             float thickness = 2.0f;
-            
+
             Assert.Throws<DllNotFoundException>(() => drawList.AddQuad(p1, p2, p3, p4, col, thickness));
-            
+
             // Assert logic here
         }
-        
+
         /// <summary>
         ///     Tests that add quad filled with p 1 p 2 p 3 p 4 and col adds quad filled
         /// </summary>
@@ -621,12 +621,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Vector2 p3 = new Vector2(1, 1);
             Vector2 p4 = new Vector2(0, 1);
             uint col = 4294967295;
-            
+
             Assert.Throws<DllNotFoundException>(() => drawList.AddQuadFilled(p1, p2, p3, p4, col));
-            
+
             // Assert logic here
         }
-        
+
         /// <summary>
         ///     Tests that add rect with p min p max and col adds rect
         /// </summary>
@@ -637,12 +637,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Vector2 pMin = new Vector2(0, 0);
             Vector2 pMax = new Vector2(1, 1);
             uint col = 4294967295;
-            
+
             Assert.Throws<DllNotFoundException>(() => drawList.AddRect(pMin, pMax, col));
-            
+
             // Assert logic here
         }
-        
+
         /// <summary>
         ///     Tests that add rect with p min p max col and rounding adds rect
         /// </summary>
@@ -654,12 +654,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Vector2 pMax = new Vector2(1, 1);
             uint col = 4294967295;
             float rounding = 0.5f;
-            
+
             Assert.Throws<DllNotFoundException>(() => drawList.AddRect(pMin, pMax, col, rounding));
-            
+
             // Assert logic here
         }
-        
+
         /// <summary>
         ///     Tests that add rect with p min p max col rounding and flags adds rect
         /// </summary>
@@ -672,12 +672,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
             uint col = 4294967295;
             float rounding = 0.5f;
             ImDrawFlags flags = 0;
-            
+
             Assert.Throws<DllNotFoundException>(() => drawList.AddRect(pMin, pMax, col, rounding, flags));
-            
+
             // Assert logic here
         }
-        
+
         /// <summary>
         ///     Tests that add rect with p min p max col rounding flags and thickness adds rect
         /// </summary>
@@ -691,12 +691,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
             float rounding = 0.5f;
             ImDrawFlags flags = 0;
             float thickness = 2.0f;
-            
+
             Assert.Throws<DllNotFoundException>(() => drawList.AddRect(pMin, pMax, col, rounding, flags, thickness));
-            
+
             // Assert logic here
         }
-        
+
         /// <summary>
         ///     Tests that add rect filled with p min p max and col adds rect filled
         /// </summary>
@@ -707,12 +707,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Vector2 pMin = new Vector2(0, 0);
             Vector2 pMax = new Vector2(1, 1);
             uint col = 4294967295;
-            
+
             Assert.Throws<DllNotFoundException>(() => drawList.AddRectFilled(pMin, pMax, col));
-            
+
             // Assert logic here
         }
-        
+
         /// <summary>
         ///     Tests that add rect filled with p min p max col and rounding adds rect filled
         /// </summary>
@@ -724,12 +724,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Vector2 pMax = new Vector2(1, 1);
             uint col = 4294967295;
             float rounding = 0.5f;
-            
+
             Assert.Throws<DllNotFoundException>(() => drawList.AddRectFilled(pMin, pMax, col, rounding));
-            
+
             // Assert logic here
         }
-        
+
         /// <summary>
         ///     Tests that add rect filled with p min p max col rounding and flags adds rect filled
         /// </summary>
@@ -742,12 +742,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
             uint col = 4294967295;
             float rounding = 0.5f;
             ImDrawFlags flags = 0;
-            
+
             Assert.Throws<DllNotFoundException>(() => drawList.AddRectFilled(pMin, pMax, col, rounding, flags));
-            
+
             // Assert logic here
         }
-        
+
         /// <summary>
         ///     Tests that add rect filled multi color with p min p max col upr left col upr right col bot right and col bot left
         ///     adds rect filled multi color
@@ -762,12 +762,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
             uint colUprRight = 4294967295;
             uint colBotRight = 4294967295;
             uint colBotLeft = 4294967295;
-            
+
             Assert.Throws<DllNotFoundException>(() => drawList.AddRectFilledMultiColor(pMin, pMax, colUprLeft, colUprRight, colBotRight, colBotLeft));
-            
+
             // Assert logic here
         }
-        
+
         /// <summary>
         ///     Tests that add triangle with p 1 p 2 p 3 and col adds triangle
         /// </summary>
@@ -779,12 +779,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Vector2 p2 = new Vector2(1, 0);
             Vector2 p3 = new Vector2(0.5f, 1);
             uint col = 4294967295;
-            
+
             Assert.Throws<DllNotFoundException>(() => drawList.AddTriangle(p1, p2, p3, col));
-            
+
             // Assert logic here
         }
-        
+
         /// <summary>
         ///     Tests that add draw cmd throws dll not found exception
         /// </summary>
@@ -794,7 +794,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddDrawCmd());
         }
-        
+
         /// <summary>
         ///     Tests that add image throws dll not found exception
         /// </summary>
@@ -804,7 +804,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddImage(IntPtr.Zero, new Vector2(), new Vector2()));
         }
-        
+
         /// <summary>
         ///     Tests that add image with uv min throws dll not found exception
         /// </summary>
@@ -814,7 +814,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddImage(IntPtr.Zero, new Vector2(), new Vector2(), new Vector2()));
         }
-        
+
         /// <summary>
         ///     Tests that add image with uv min uv max throws dll not found exception
         /// </summary>
@@ -824,7 +824,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddImage(IntPtr.Zero, new Vector2(), new Vector2(), new Vector2(), new Vector2()));
         }
-        
+
         /// <summary>
         ///     Tests that add image with uv min uv max col throws dll not found exception
         /// </summary>
@@ -834,7 +834,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddImage(IntPtr.Zero, new Vector2(), new Vector2(), new Vector2(), new Vector2(), 0));
         }
-        
+
         /// <summary>
         ///     Tests that add image quad throws dll not found exception
         /// </summary>
@@ -844,7 +844,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddImageQuad(IntPtr.Zero, new Vector2(), new Vector2(), new Vector2(), new Vector2()));
         }
-        
+
         /// <summary>
         ///     Tests that add image quad with uv 1 throws dll not found exception
         /// </summary>
@@ -854,7 +854,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddImageQuad(IntPtr.Zero, new Vector2(), new Vector2(), new Vector2(), new Vector2(), new Vector2()));
         }
-        
+
         /// <summary>
         ///     Tests that add image quad with uv 1 uv 2 throws dll not found exception
         /// </summary>
@@ -864,7 +864,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddImageQuad(IntPtr.Zero, new Vector2(), new Vector2(), new Vector2(), new Vector2(), new Vector2(), new Vector2()));
         }
-        
+
         /// <summary>
         ///     Tests that add image quad with uv 1 uv 2 uv 3 throws dll not found exception
         /// </summary>
@@ -874,7 +874,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddImageQuad(IntPtr.Zero, new Vector2(), new Vector2(), new Vector2(), new Vector2(), new Vector2(), new Vector2(), new Vector2()));
         }
-        
+
         /// <summary>
         ///     Tests that add image quad with uv 1 uv 2 uv 3 uv 4 throws dll not found exception
         /// </summary>
@@ -884,7 +884,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddImageQuad(IntPtr.Zero, new Vector2(), new Vector2(), new Vector2(), new Vector2(), new Vector2(), new Vector2(), new Vector2(), new Vector2()));
         }
-        
+
         /// <summary>
         ///     Tests that add image rounded throws dll not found exception
         /// </summary>
@@ -894,7 +894,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddImageRounded(IntPtr.Zero, new Vector2(), new Vector2(), new Vector2(), new Vector2(), 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that add image rounded with flags throws dll not found exception
         /// </summary>
@@ -904,7 +904,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddImageRounded(IntPtr.Zero, new Vector2(), new Vector2(), new Vector2(), new Vector2(), 0, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that add line throws dll not found exception
         /// </summary>
@@ -914,7 +914,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddLine(new Vector2(), new Vector2(), 0));
         }
-        
+
         /// <summary>
         ///     Tests that add line with thickness throws dll not found exception
         /// </summary>
@@ -924,7 +924,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddLine(new Vector2(), new Vector2(), 0, 1.0f));
         }
-        
+
         /// <summary>
         ///     Tests that add ngon throws dll not found exception
         /// </summary>
@@ -934,7 +934,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddNgon(new Vector2(), 0, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that add ngon with thickness throws dll not found exception
         /// </summary>
@@ -944,7 +944,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddNgon(new Vector2(), 0, 0, 0, 1.0f));
         }
-        
+
         /// <summary>
         ///     Tests that add ngon filled throws dll not found exception
         /// </summary>
@@ -954,7 +954,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddNgonFilled(new Vector2(), 0, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that add polyline throws dll not found exception
         /// </summary>
@@ -965,7 +965,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Vector2 points = new Vector2();
             Assert.Throws<DllNotFoundException>(() => drawList.AddPolyline(ref points, 0, 0, 0, 1.0f));
         }
-        
+
         /// <summary>
         ///     Tests that add quad throws dll not found exception
         /// </summary>
@@ -975,7 +975,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddQuad(new Vector2(), new Vector2(), new Vector2(), new Vector2(), 0));
         }
-        
+
         /// <summary>
         ///     Tests that add quad with thickness throws dll not found exception
         /// </summary>
@@ -985,7 +985,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddQuad(new Vector2(), new Vector2(), new Vector2(), new Vector2(), 0, 1.0f));
         }
-        
+
         /// <summary>
         ///     Tests that add quad filled throws dll not found exception
         /// </summary>
@@ -995,7 +995,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddQuadFilled(new Vector2(), new Vector2(), new Vector2(), new Vector2(), 0));
         }
-        
+
         /// <summary>
         ///     Tests that add rect throws dll not found exception
         /// </summary>
@@ -1005,7 +1005,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddRect(new Vector2(), new Vector2(), 0));
         }
-        
+
         /// <summary>
         ///     Tests that add rect with rounding throws dll not found exception
         /// </summary>
@@ -1015,7 +1015,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddRect(new Vector2(), new Vector2(), 0, 0.0f));
         }
-        
+
         /// <summary>
         ///     Tests that add rect with rounding flags throws dll not found exception
         /// </summary>
@@ -1025,7 +1025,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddRect(new Vector2(), new Vector2(), 0, 0.0f, 0));
         }
-        
+
         /// <summary>
         ///     Tests that add rect with rounding flags thickness throws dll not found exception
         /// </summary>
@@ -1035,7 +1035,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddRect(new Vector2(), new Vector2(), 0, 0.0f, 0, 1.0f));
         }
-        
+
         /// <summary>
         ///     Tests that add rect filled throws dll not found exception
         /// </summary>
@@ -1045,7 +1045,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddRectFilled(new Vector2(), new Vector2(), 0));
         }
-        
+
         /// <summary>
         ///     Tests that add rect filled with rounding throws dll not found exception
         /// </summary>
@@ -1055,7 +1055,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddRectFilled(new Vector2(), new Vector2(), 0, 0.0f));
         }
-        
+
         /// <summary>
         ///     Tests that add rect filled with rounding flags throws dll not found exception
         /// </summary>
@@ -1065,7 +1065,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddRectFilled(new Vector2(), new Vector2(), 0, 0.0f, 0));
         }
-        
+
         /// <summary>
         ///     Tests that add rect filled multi color throws dll not found exception
         /// </summary>
@@ -1075,7 +1075,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddRectFilledMultiColor(new Vector2(), new Vector2(), 0, 0, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that add triangle throws dll not found exception
         /// </summary>
@@ -1085,7 +1085,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddTriangle(new Vector2(), new Vector2(), new Vector2(), 0));
         }
-        
+
         /// <summary>
         ///     Tests that add triangle with thickness throws dll not found exception
         /// </summary>
@@ -1095,7 +1095,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddTriangle(new Vector2(), new Vector2(), new Vector2(), 0, 1.0f));
         }
-        
+
         /// <summary>
         ///     Tests that add triangle filled throws dll not found exception
         /// </summary>
@@ -1105,7 +1105,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.AddTriangleFilled(new Vector2(), new Vector2(), new Vector2(), 0));
         }
-        
+
         /// <summary>
         ///     Tests that channels merge throws dll not found exception
         /// </summary>
@@ -1115,7 +1115,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.ChannelsMerge());
         }
-        
+
         /// <summary>
         ///     Tests that channels set current throws dll not found exception
         /// </summary>
@@ -1125,7 +1125,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.ChannelsSetCurrent(0));
         }
-        
+
         /// <summary>
         ///     Tests that channels split throws dll not found exception
         /// </summary>
@@ -1135,7 +1135,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.ChannelsSplit(0));
         }
-        
+
         /// <summary>
         ///     Tests that clone output throws dll not found exception
         /// </summary>
@@ -1145,7 +1145,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.CloneOutput());
         }
-        
+
         /// <summary>
         ///     Tests that get clip rect max throws dll not found exception
         /// </summary>
@@ -1155,7 +1155,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.GetClipRectMax());
         }
-        
+
         /// <summary>
         ///     Tests that get clip rect min throws dll not found exception
         /// </summary>
@@ -1165,7 +1165,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.GetClipRectMin());
         }
-        
+
         /// <summary>
         ///     Tests that path arc to throws dll not found exception
         /// </summary>
@@ -1175,7 +1175,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.PathArcTo(new Vector2(), 0, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that path arc to with num segments throws dll not found exception
         /// </summary>
@@ -1185,7 +1185,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.PathArcTo(new Vector2(), 0, 0, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that path arc to fast throws dll not found exception
         /// </summary>
@@ -1195,7 +1195,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.PathArcToFast(new Vector2(), 0, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that path bezier cubic curve to throws dll not found exception
         /// </summary>
@@ -1205,7 +1205,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.PathBezierCubicCurveTo(new Vector2(), new Vector2(), new Vector2()));
         }
-        
+
         /// <summary>
         ///     Tests that path bezier cubic curve to with num segments throws dll not found exception
         /// </summary>
@@ -1215,7 +1215,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.PathBezierCubicCurveTo(new Vector2(), new Vector2(), new Vector2(), 0));
         }
-        
+
         /// <summary>
         ///     Tests that path bezier quadratic curve to throws dll not found exception
         /// </summary>
@@ -1225,7 +1225,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.PathBezierQuadraticCurveTo(new Vector2(), new Vector2()));
         }
-        
+
         /// <summary>
         ///     Tests that path bezier quadratic curve to with num segments throws dll not found exception
         /// </summary>
@@ -1235,7 +1235,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.PathBezierQuadraticCurveTo(new Vector2(), new Vector2(), 0));
         }
-        
+
         /// <summary>
         ///     Tests that path clear throws dll not found exception
         /// </summary>
@@ -1245,7 +1245,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.PathClear());
         }
-        
+
         /// <summary>
         ///     Tests that path fill convex throws dll not found exception
         /// </summary>
@@ -1255,7 +1255,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.PathFillConvex(0));
         }
-        
+
         /// <summary>
         ///     Tests that path line to throws dll not found exception
         /// </summary>
@@ -1265,7 +1265,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.PathLineTo(new Vector2()));
         }
-        
+
         /// <summary>
         ///     Tests that path line to merge duplicate throws dll not found exception
         /// </summary>
@@ -1275,7 +1275,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.PathLineToMergeDuplicate(new Vector2()));
         }
-        
+
         /// <summary>
         ///     Tests that path rect throws dll not found exception
         /// </summary>
@@ -1285,7 +1285,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.PathRect(new Vector2(), new Vector2()));
         }
-        
+
         /// <summary>
         ///     Tests that path rect with rounding throws dll not found exception
         /// </summary>
@@ -1295,7 +1295,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.PathRect(new Vector2(), new Vector2(), 0.0f));
         }
-        
+
         /// <summary>
         ///     Tests that path rect with rounding flags throws dll not found exception
         /// </summary>
@@ -1305,7 +1305,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.PathRect(new Vector2(), new Vector2(), 0.0f, 0));
         }
-        
+
         /// <summary>
         ///     Tests that path stroke throws dll not found exception
         /// </summary>
@@ -1315,7 +1315,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.PathStroke(0));
         }
-        
+
         /// <summary>
         ///     Tests that path stroke with flags throws dll not found exception
         /// </summary>
@@ -1325,7 +1325,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.PathStroke(0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that path stroke with flags thickness throws dll not found exception
         /// </summary>
@@ -1335,7 +1335,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.PathStroke(0, 0, 1.0f));
         }
-        
+
         /// <summary>
         ///     Tests that pop clip rect throws dll not found exception
         /// </summary>
@@ -1345,7 +1345,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.PopClipRect());
         }
-        
+
         /// <summary>
         ///     Tests that pop texture id throws dll not found exception
         /// </summary>
@@ -1355,7 +1355,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.PopTextureId());
         }
-        
+
         /// <summary>
         ///     Tests that prim quad uv throws dll not found exception
         /// </summary>
@@ -1365,7 +1365,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.PrimQuadUv(new Vector2(), new Vector2(), new Vector2(), new Vector2(), new Vector2(), new Vector2(), new Vector2(), new Vector2(), 0));
         }
-        
+
         /// <summary>
         ///     Tests that prim rect throws dll not found exception
         /// </summary>
@@ -1375,7 +1375,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.PrimRect(new Vector2(), new Vector2(), 0));
         }
-        
+
         /// <summary>
         ///     Tests that prim rect uv throws dll not found exception
         /// </summary>
@@ -1385,7 +1385,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.PrimRectUv(new Vector2(), new Vector2(), new Vector2(), new Vector2(), 0));
         }
-        
+
         /// <summary>
         ///     Tests that prim reserve throws dll not found exception
         /// </summary>
@@ -1395,7 +1395,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.PrimReserve(0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that prim unreserve throws dll not found exception
         /// </summary>
@@ -1405,7 +1405,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.PrimUnreserve(0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that prim vtx throws dll not found exception
         /// </summary>
@@ -1415,7 +1415,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.PrimVtx(new Vector2(), new Vector2(), 0));
         }
-        
+
         /// <summary>
         ///     Tests that prim write idx throws dll not found exception
         /// </summary>
@@ -1425,7 +1425,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.PrimWriteIdx(0));
         }
-        
+
         /// <summary>
         ///     Tests that prim write vtx throws dll not found exception
         /// </summary>
@@ -1435,7 +1435,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.PrimWriteVtx(new Vector2(), new Vector2(), 0));
         }
-        
+
         /// <summary>
         ///     Tests that push clip rect throws dll not found exception
         /// </summary>
@@ -1445,7 +1445,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.PushClipRect(new Vector2(), new Vector2()));
         }
-        
+
         /// <summary>
         ///     Tests that push clip rect with intersect throws dll not found exception
         /// </summary>
@@ -1455,7 +1455,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => drawList.PushClipRect(new Vector2(), new Vector2(), true));
         }
-        
+
         /// <summary>
         ///     Tests that v 2 add rect filled throws dll not found exception
         /// </summary>
@@ -1465,7 +1465,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.AddRectFilled(new Vector2(), new Vector2(), 0, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that v 2 add rect filled multi color throws dll not found exception
         /// </summary>
@@ -1475,7 +1475,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.AddRectFilledMultiColor(new Vector2(), new Vector2(), 0, 0, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that v 2 add triangle throws dll not found exception
         /// </summary>
@@ -1485,7 +1485,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.AddTriangle(new Vector2(), new Vector2(), new Vector2(), 0));
         }
-        
+
         /// <summary>
         ///     Tests that v 2 add triangle with thickness throws dll not found exception
         /// </summary>
@@ -1495,7 +1495,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.AddTriangle(new Vector2(), new Vector2(), new Vector2(), 0, 1.0f));
         }
-        
+
         /// <summary>
         ///     Tests that v 2 add triangle filled throws dll not found exception
         /// </summary>
@@ -1505,7 +1505,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.AddTriangleFilled(new Vector2(), new Vector2(), new Vector2(), 0));
         }
-        
+
         /// <summary>
         ///     Tests that v 2 channels merge throws dll not found exception
         /// </summary>
@@ -1515,7 +1515,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.ChannelsMerge());
         }
-        
+
         /// <summary>
         ///     Tests that v 2 channels set current throws dll not found exception
         /// </summary>
@@ -1525,7 +1525,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.ChannelsSetCurrent(0));
         }
-        
+
         /// <summary>
         ///     Tests that v 2 channels split throws dll not found exception
         /// </summary>
@@ -1535,7 +1535,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.ChannelsSplit(0));
         }
-        
+
         /// <summary>
         ///     Tests that v 2 clone output throws dll not found exception
         /// </summary>
@@ -1545,7 +1545,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.CloneOutput());
         }
-        
+
         /// <summary>
         ///     Tests that v 2 get clip rect max throws dll not found exception
         /// </summary>
@@ -1555,7 +1555,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.GetClipRectMax());
         }
-        
+
         /// <summary>
         ///     Tests that v 2 get clip rect min throws dll not found exception
         /// </summary>
@@ -1565,7 +1565,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.GetClipRectMin());
         }
-        
+
         /// <summary>
         ///     Tests that v 2 path arc to throws dll not found exception
         /// </summary>
@@ -1575,7 +1575,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PathArcTo(new Vector2(), 0, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that path arc to with segments throws dll not found exception
         /// </summary>
@@ -1585,7 +1585,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PathArcTo(new Vector2(), 0, 0, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that v 2 path arc to fast throws dll not found exception
         /// </summary>
@@ -1595,7 +1595,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PathArcToFast(new Vector2(), 0, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that v 2 path bezier cubic curve to throws dll not found exception
         /// </summary>
@@ -1605,7 +1605,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PathBezierCubicCurveTo(new Vector2(), new Vector2(), new Vector2()));
         }
-        
+
         /// <summary>
         ///     Tests that path bezier cubic curve to with segments throws dll not found exception
         /// </summary>
@@ -1615,7 +1615,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PathBezierCubicCurveTo(new Vector2(), new Vector2(), new Vector2(), 0));
         }
-        
+
         /// <summary>
         ///     Tests that v 2 path bezier quadratic curve to throws dll not found exception
         /// </summary>
@@ -1625,7 +1625,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PathBezierQuadraticCurveTo(new Vector2(), new Vector2()));
         }
-        
+
         /// <summary>
         ///     Tests that path bezier quadratic curve to with segments throws dll not found exception
         /// </summary>
@@ -1635,7 +1635,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PathBezierQuadraticCurveTo(new Vector2(), new Vector2(), 0));
         }
-        
+
         /// <summary>
         ///     Tests that v 2 path clear throws dll not found exception
         /// </summary>
@@ -1645,7 +1645,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PathClear());
         }
-        
+
         /// <summary>
         ///     Tests that v 2 path fill convex throws dll not found exception
         /// </summary>
@@ -1655,7 +1655,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PathFillConvex(0));
         }
-        
+
         /// <summary>
         ///     Tests that v 2 path line to throws dll not found exception
         /// </summary>
@@ -1665,7 +1665,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PathLineTo(new Vector2()));
         }
-        
+
         /// <summary>
         ///     Tests that v 2 path line to merge duplicate throws dll not found exception
         /// </summary>
@@ -1675,7 +1675,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PathLineToMergeDuplicate(new Vector2()));
         }
-        
+
         /// <summary>
         ///     Tests that v 2 path rect throws dll not found exception
         /// </summary>
@@ -1685,7 +1685,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PathRect(new Vector2(), new Vector2()));
         }
-        
+
         /// <summary>
         ///     Tests that v 2 path rect with rounding throws dll not found exception
         /// </summary>
@@ -1695,7 +1695,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PathRect(new Vector2(), new Vector2(), 0));
         }
-        
+
         /// <summary>
         ///     Tests that path rect with rounding and flags throws dll not found exception
         /// </summary>
@@ -1705,7 +1705,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PathRect(new Vector2(), new Vector2(), 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that v 2 path stroke throws dll not found exception
         /// </summary>
@@ -1715,7 +1715,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PathStroke(0));
         }
-        
+
         /// <summary>
         ///     Tests that v 2 path stroke with flags throws dll not found exception
         /// </summary>
@@ -1725,7 +1725,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PathStroke(0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that path stroke with flags and thickness throws dll not found exception
         /// </summary>
@@ -1735,7 +1735,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PathStroke(0, 0, 1.0f));
         }
-        
+
         /// <summary>
         ///     Tests that v 2 pop clip rect throws dll not found exception
         /// </summary>
@@ -1745,7 +1745,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PopClipRect());
         }
-        
+
         /// <summary>
         ///     Tests that v 2 pop texture id throws dll not found exception
         /// </summary>
@@ -1755,7 +1755,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PopTextureId());
         }
-        
+
         /// <summary>
         ///     Tests that v 2 prim quad uv throws dll not found exception
         /// </summary>
@@ -1765,7 +1765,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PrimQuadUv(new Vector2(), new Vector2(), new Vector2(), new Vector2(), new Vector2(), new Vector2(), new Vector2(), new Vector2(), 0));
         }
-        
+
         /// <summary>
         ///     Tests that v 2 prim rect throws dll not found exception
         /// </summary>
@@ -1775,7 +1775,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PrimRect(new Vector2(), new Vector2(), 0));
         }
-        
+
         /// <summary>
         ///     Tests that v 2 prim rect uv throws dll not found exception
         /// </summary>
@@ -1785,7 +1785,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PrimRectUv(new Vector2(), new Vector2(), new Vector2(), new Vector2(), 0));
         }
-        
+
         /// <summary>
         ///     Tests that v 2 prim reserve throws dll not found exception
         /// </summary>
@@ -1795,7 +1795,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PrimReserve(0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that v 2 prim unreserve throws dll not found exception
         /// </summary>
@@ -1805,7 +1805,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PrimUnreserve(0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that v 2 prim vtx throws dll not found exception
         /// </summary>
@@ -1815,7 +1815,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PrimVtx(new Vector2(), new Vector2(), 0));
         }
-        
+
         /// <summary>
         ///     Tests that v 2 prim write idx throws dll not found exception
         /// </summary>
@@ -1825,7 +1825,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PrimWriteIdx(0));
         }
-        
+
         /// <summary>
         ///     Tests that v 2 prim write vtx throws dll not found exception
         /// </summary>
@@ -1835,7 +1835,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PrimWriteVtx(new Vector2(), new Vector2(), 0));
         }
-        
+
         /// <summary>
         ///     Tests that v 2 push clip rect throws dll not found exception
         /// </summary>
@@ -1845,7 +1845,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PushClipRect(new Vector2(), new Vector2()));
         }
-        
+
         /// <summary>
         ///     Tests that v 2 push clip rect with intersect throws dll not found exception
         /// </summary>
@@ -1855,7 +1855,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PushClipRect(new Vector2(), new Vector2(), true));
         }
-        
+
         /// <summary>
         ///     Tests that push clip rect full screen throws dll not found exception
         /// </summary>
@@ -1865,7 +1865,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PushClipRectFullScreen());
         }
-        
+
         /// <summary>
         ///     Tests that push texture id throws dll not found exception
         /// </summary>
@@ -1875,7 +1875,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PushTextureId(IntPtr.Zero));
         }
-        
+
         /// <summary>
         ///     Tests that add text throws dll not found exception
         /// </summary>
@@ -1885,7 +1885,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.AddText(new Vector2(), 0, ""));
         }
-        
+
         /// <summary>
         ///     Tests that add text with font throws dll not found exception
         /// </summary>
@@ -1895,7 +1895,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.AddText(new ImFontPtr(), 0, new Vector2(), 0, ""));
         }
-        
+
         /// <summary>
         ///     Tests that path arc to n throws dll not found exception
         /// </summary>
@@ -1905,7 +1905,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PathArcToN(new Vector2(), 0, 0, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that pop unused draw cmd throws dll not found exception
         /// </summary>
@@ -1915,7 +1915,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PopUnusedDrawCmd());
         }
-        
+
         /// <summary>
         ///     Tests that reset for new frame throws dll not found exception
         /// </summary>
@@ -1925,7 +1925,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.ResetForNewFrame());
         }
-        
+
         /// <summary>
         ///     Tests that try merge draw cmds throws dll not found exception
         /// </summary>
@@ -1935,7 +1935,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.TryMergeDrawCmd());
         }
-        
+
         /// <summary>
         ///     Tests that add bezier cubic throws dll not found exception
         /// </summary>
@@ -1945,7 +1945,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.AddBezierCubic(new Vector2(), new Vector2(), new Vector2(), new Vector2(), 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that add bezier cubic with segments throws dll not found exception
         /// </summary>
@@ -1955,7 +1955,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.AddBezierCubic(new Vector2(), new Vector2(), new Vector2(), new Vector2(), 0, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that add bezier quadratic throws dll not found exception
         /// </summary>
@@ -1965,7 +1965,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.AddBezierQuadratic(new Vector2(), new Vector2(), new Vector2(), 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that add bezier quadratic with segments throws dll not found exception
         /// </summary>
@@ -1975,7 +1975,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.AddBezierQuadratic(new Vector2(), new Vector2(), new Vector2(), 0, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that add callback throws dll not found exception
         /// </summary>
@@ -1985,7 +1985,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.AddCallback(IntPtr.Zero, IntPtr.Zero));
         }
-        
+
         /// <summary>
         ///     Tests that add circle throws dll not found exception
         /// </summary>
@@ -1995,7 +1995,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.AddCircle(new Vector2(), 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that add circle with segments throws dll not found exception
         /// </summary>
@@ -2005,7 +2005,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.AddCircle(new Vector2(), 0, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that add circle with segments and thickness throws dll not found exception
         /// </summary>
@@ -2015,7 +2015,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.AddCircle(new Vector2(), 0, 0, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that add circle filled throws dll not found exception
         /// </summary>
@@ -2025,7 +2025,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.AddCircleFilled(new Vector2(), 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that add circle filled with segments throws dll not found exception
         /// </summary>
@@ -2035,7 +2035,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.AddCircleFilled(new Vector2(), 0, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that add convex poly filled throws dll not found exception
         /// </summary>
@@ -2049,7 +2049,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
                 drawListPtr.AddConvexPolyFilled(ref vector2, 0, 0);
             });
         }
-        
+
         /// <summary>
         ///     Tests that clip rect stack throws dll not found exception
         /// </summary>
@@ -2062,7 +2062,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
                 ImVectorG<Vector4> _ = drawListPtr.ClipRectStack;
             });
         }
-        
+
         /// <summary>
         ///     Tests that texture id stack throws null reference exception
         /// </summary>
@@ -2075,7 +2075,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
                 ImVectorG<IntPtr> _ = drawListPtr.TextureIdStack;
             });
         }
-        
+
         /// <summary>
         ///     Tests that path throws null reference exception
         /// </summary>
@@ -2088,7 +2088,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
                 ImVectorG<Vector2> _ = drawListPtr.Path;
             });
         }
-        
+
         /// <summary>
         ///     Tests that cmd header throws null reference exception
         /// </summary>
@@ -2101,7 +2101,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
                 ImDrawCmdHeader _ = drawListPtr.CmdHeader;
             });
         }
-        
+
         /// <summary>
         ///     Tests that splitter throws null reference exception
         /// </summary>
@@ -2114,7 +2114,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
                 ImDrawListSplitter _ = drawListPtr.Splitter;
             });
         }
-        
+
         /// <summary>
         ///     Tests that fringe scale throws null reference exception
         /// </summary>
@@ -2127,7 +2127,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
                 float _ = drawListPtr.FringeScale;
             });
         }
-        
+
         /// <summary>
         ///     Tests that calc circle auto segment count throws dll not found exception
         /// </summary>
@@ -2137,7 +2137,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr._CalcCircleAutoSegmentCount(0));
         }
-        
+
         /// <summary>
         ///     Tests that clear free memory throws dll not found exception
         /// </summary>
@@ -2147,7 +2147,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.ClearFreeMemory());
         }
-        
+
         /// <summary>
         ///     Tests that on changed clip rect throws dll not found exception
         /// </summary>
@@ -2157,7 +2157,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.OnChangedClipRect());
         }
-        
+
         /// <summary>
         ///     Tests that on changed texture id throws dll not found exception
         /// </summary>
@@ -2167,7 +2167,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.OnChangedTextureID());
         }
-        
+
         /// <summary>
         ///     Tests that on changed vtx offset throws dll not found exception
         /// </summary>
@@ -2177,7 +2177,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.OnChangedVtxOffset());
         }
-        
+
         /// <summary>
         ///     Tests that path arc to fast ex throws dll not found exception
         /// </summary>
@@ -2187,7 +2187,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PathArcToFastEx(new Vector2(), 0, 0, 0, 0));
         }
-        
+
         /// <summary>
         ///     Tests that implicit conversion to int ptr returns native ptr
         /// </summary>
@@ -2198,7 +2198,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr result = drawListPtr;
             Assert.NotEqual(IntPtr.Zero, result);
         }
-        
+
         /// <summary>
         ///     Tests that implicit conversion from int ptr returns im draw list ptr
         /// </summary>
@@ -2209,7 +2209,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = nativePtr;
             Assert.Equal(nativePtr, drawListPtr.NativePtr);
         }
-        
+
         /// <summary>
         ///     Tests that cmd buffer returns correct value
         /// </summary>
@@ -2217,7 +2217,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void CmdBuffer_ReturnsCorrectValue()
         {
         }
-        
+
         /// <summary>
         ///     Tests that idx buffer returns correct value
         /// </summary>
@@ -2225,7 +2225,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void IdxBuffer_ReturnsCorrectValue()
         {
         }
-        
+
         /// <summary>
         ///     Tests that vtx buffer returns correct value
         /// </summary>
@@ -2233,7 +2233,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void VtxBuffer_ReturnsCorrectValue()
         {
         }
-        
+
         /// <summary>
         ///     Tests that flags returns correct value
         /// </summary>
@@ -2241,7 +2241,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Flags_ReturnsCorrectValue()
         {
         }
-        
+
         /// <summary>
         ///     Tests that vtx current idx returns correct value
         /// </summary>
@@ -2252,7 +2252,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             uint vtxCurrentIdx = drawListPtr.VtxCurrentIdx;
             Assert.Equal(0u, vtxCurrentIdx);
         }
-        
+
         /// <summary>
         ///     Tests that data returns correct value
         /// </summary>
@@ -2263,7 +2263,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr data = drawListPtr.Data;
             Assert.Equal(IntPtr.Zero, data);
         }
-        
+
         /// <summary>
         ///     Tests that owner name returns correct value
         /// </summary>
@@ -2271,7 +2271,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void OwnerName_ReturnsCorrectValue()
         {
         }
-        
+
         /// <summary>
         ///     Tests that idx write ptr get returns correct value
         /// </summary>
@@ -2282,7 +2282,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr idxWritePtr = drawListPtr.IdxWritePtr;
             Assert.Equal(IntPtr.Zero, idxWritePtr);
         }
-        
+
         /// <summary>
         ///     Tests that cmd buffer returns correct value v 3
         /// </summary>
@@ -2293,7 +2293,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImVectorG<ImDrawCmd> cmdBuffer = drawListPtr.CmdBuffer;
             Assert.Equal(0, cmdBuffer.Size);
         }
-        
+
         /// <summary>
         ///     Tests that idx buffer returns correct value v 3
         /// </summary>
@@ -2304,7 +2304,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImVectorG<ushort> idxBuffer = drawListPtr.IdxBuffer;
             Assert.Equal(0, idxBuffer.Size);
         }
-        
+
         /// <summary>
         ///     Tests that vtx buffer returns correct value v 3
         /// </summary>
@@ -2315,7 +2315,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImVectorG<ImDrawVert> vtxBuffer = drawListPtr.VtxBuffer;
             Assert.Equal(0, vtxBuffer.Size);
         }
-        
+
         /// <summary>
         ///     Tests that flags returns correct value v 3
         /// </summary>
@@ -2326,7 +2326,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListFlags flags = drawListPtr.Flags;
             Assert.Equal(ImDrawListFlags.None, flags);
         }
-        
+
         /// <summary>
         ///     Tests that implicit conversion to int ptr returns native ptr v 4
         /// </summary>
@@ -2337,7 +2337,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr result = drawListPtr;
             Assert.NotEqual(IntPtr.Zero, result);
         }
-        
+
         /// <summary>
         ///     Tests that implicit conversion from int ptr returns im draw list ptr v 4
         /// </summary>
@@ -2348,7 +2348,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = nativePtr;
             Assert.Equal(nativePtr, drawListPtr.NativePtr);
         }
-        
+
         /// <summary>
         ///     Tests that cmd buffer returns correct value v 4
         /// </summary>
@@ -2359,7 +2359,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImVectorG<ImDrawCmd> cmdBuffer = drawListPtr.CmdBuffer;
             Assert.Equal(0, cmdBuffer.Size);
         }
-        
+
         /// <summary>
         ///     Tests that idx buffer returns correct value v 4
         /// </summary>
@@ -2370,7 +2370,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImVectorG<ushort> idxBuffer = drawListPtr.IdxBuffer;
             Assert.Equal(0, idxBuffer.Size);
         }
-        
+
         /// <summary>
         ///     Tests that vtx buffer returns correct value v 4
         /// </summary>
@@ -2381,7 +2381,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImVectorG<ImDrawVert> vtxBuffer = drawListPtr.VtxBuffer;
             Assert.Equal(0, vtxBuffer.Size);
         }
-        
+
         /// <summary>
         ///     Tests that flags returns correct value v 4
         /// </summary>
@@ -2392,7 +2392,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListFlags flags = drawListPtr.Flags;
             Assert.Equal(ImDrawListFlags.None, flags);
         }
-        
+
         /// <summary>
         ///     Tests that vtx current idx returns correct value v 4
         /// </summary>
@@ -2403,7 +2403,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             uint vtxCurrentIdx = drawListPtr.VtxCurrentIdx;
             Assert.Equal(0u, vtxCurrentIdx);
         }
-        
+
         /// <summary>
         ///     Tests that data returns correct value v 4
         /// </summary>
@@ -2414,7 +2414,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr data = drawListPtr.Data;
             Assert.Equal(IntPtr.Zero, data);
         }
-        
+
         /// <summary>
         ///     Tests that owner name returns correct value v 4
         /// </summary>
@@ -2425,7 +2425,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             NullTerminatedString ownerName = drawListPtr.OwnerName;
             Assert.Equal("", ownerName.ToString());
         }
-        
+
         /// <summary>
         ///     Tests that vtx write ptr returns correct value
         /// </summary>
@@ -2435,7 +2435,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawListPtr drawListPtr = new ImDrawListPtr(new ImDrawList());
             Assert.Throws<NullReferenceException>(() => drawListPtr.VtxWritePtr);
         }
-        
+
         /// <summary>
         ///     Tests that idx write ptr get returns correct value v 4
         /// </summary>

@@ -49,14 +49,14 @@ namespace Alis.Core.Aspect.Math.Test
             Vector2 vector1 = new Vector2(1, 2);
             Vector2 vector2 = new Vector2(3, 4);
             int expected = -2;
-            
+
             // Act
             float result = MathUtils.Cross(vector1, vector2);
-            
+
             // Assert
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that dot with two vectors returns correct result
         /// </summary>
@@ -67,14 +67,14 @@ namespace Alis.Core.Aspect.Math.Test
             Vector2 vector1 = new Vector2(1, 2);
             Vector2 vector2 = new Vector2(3, 4);
             int expected = 11;
-            
+
             // Act
             float result = MathUtils.Dot(vector1, vector2);
-            
+
             // Assert
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that cross with two vector 2 returns correct result
         /// </summary>
@@ -85,14 +85,14 @@ namespace Alis.Core.Aspect.Math.Test
             Vector2 vector1 = new Vector2(1, 2);
             Vector2 vector2 = new Vector2(3, 4);
             float expected = -2;
-            
+
             // Act
             float result = MathUtils.Cross(vector1, vector2);
-            
+
             // Assert
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that cross with two vector 3 returns correct result
         /// </summary>
@@ -103,14 +103,14 @@ namespace Alis.Core.Aspect.Math.Test
             Vector3 vector1 = new Vector3(1, 2, 3);
             Vector3 vector2 = new Vector3(4, 5, 6);
             Vector3 expected = new Vector3(-3, 6, -3);
-            
+
             // Act
             Vector3 result = MathUtils.Cross(vector1, vector2);
-            
+
             // Assert
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that dot with two vector 2 returns correct result
         /// </summary>
@@ -121,14 +121,14 @@ namespace Alis.Core.Aspect.Math.Test
             Vector2 vector1 = new Vector2(1, 2);
             Vector2 vector2 = new Vector2(3, 4);
             float expected = 11;
-            
+
             // Act
             float result = MathUtils.Dot(vector1, vector2);
-            
+
             // Assert
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that dot with two vector 3 returns correct result
         /// </summary>
@@ -139,14 +139,14 @@ namespace Alis.Core.Aspect.Math.Test
             Vector3 vector1 = new Vector3(1, 2, 3);
             Vector3 vector2 = new Vector3(4, 5, 6);
             float expected = 32;
-            
+
             // Act
             float result = MathUtils.Dot(vector1, vector2);
-            
+
             // Assert
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that mul with matrix 2 x 2 and vector 2 returns correct result
         /// </summary>
@@ -157,14 +157,14 @@ namespace Alis.Core.Aspect.Math.Test
             Matrix2X2 matrix = new Matrix2X2(1, 2, 3, 4);
             Vector2 vector = new Vector2(5, 6);
             Vector2 expected = new Vector2(17, 39);
-            
+
             // Act
             Vector2 result = MathUtils.Mul(ref matrix, vector);
-            
+
             // Assert
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that cross v 2 with two vector 2 returns correct result
         /// </summary>
@@ -175,14 +175,14 @@ namespace Alis.Core.Aspect.Math.Test
             Vector2 vector1 = new Vector2(1, 2);
             Vector2 vector2 = new Vector2(3, 4);
             float expected = -2;
-            
+
             // Act
             float result = MathUtils.Cross(vector1, vector2);
-            
+
             // Assert
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that cross v 2 with two vector 3 returns correct result
         /// </summary>
@@ -193,14 +193,14 @@ namespace Alis.Core.Aspect.Math.Test
             Vector3 vector1 = new Vector3(1, 2, 3);
             Vector3 vector2 = new Vector3(4, 5, 6);
             Vector3 expected = new Vector3(-3, 6, -3);
-            
+
             // Act
             Vector3 result = MathUtils.Cross(vector1, vector2);
-            
+
             // Assert
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that dot v 2 with two vector 2 returns correct result
         /// </summary>
@@ -211,14 +211,14 @@ namespace Alis.Core.Aspect.Math.Test
             Vector2 vector1 = new Vector2(1, 2);
             Vector2 vector2 = new Vector2(3, 4);
             float expected = 11;
-            
+
             // Act
             float result = MathUtils.Dot(vector1, vector2);
-            
+
             // Assert
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that do v 2 with two vector 3 returns correct result
         /// </summary>
@@ -229,14 +229,14 @@ namespace Alis.Core.Aspect.Math.Test
             Vector3 vector1 = new Vector3(1, 2, 3);
             Vector3 vector2 = new Vector3(4, 5, 6);
             float expected = 32;
-            
+
             // Act
             float result = MathUtils.Dot(vector1, vector2);
-            
+
             // Assert
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that mul v 2 with matrix 2 x 2 and vector 2 returns correct result
         /// </summary>
@@ -247,15 +247,15 @@ namespace Alis.Core.Aspect.Math.Test
             Matrix2X2 matrix = new Matrix2X2(1, 2, 3, 4);
             Vector2 vector = new Vector2(5, 6);
             Vector2 expected = new Vector2(17, 39);
-            
+
             // Act
             Vector2 result = MathUtils.Mul(ref matrix, vector);
-            
+
             // Assert
             Assert.Equal(expected, result);
         }
-        
-        
+
+
         /// <summary>
         ///     Tests that test cosf
         /// </summary>
@@ -267,7 +267,7 @@ namespace Alis.Core.Aspect.Math.Test
             float result = MathUtils.Cosf(value);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test sinf
         /// </summary>
@@ -279,7 +279,7 @@ namespace Alis.Core.Aspect.Math.Test
             float result = MathUtils.Sinf(value);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test ceil
         /// </summary>
@@ -291,7 +291,7 @@ namespace Alis.Core.Aspect.Math.Test
             float result = MathUtils.Ceil(value);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test log
         /// </summary>
@@ -303,8 +303,8 @@ namespace Alis.Core.Aspect.Math.Test
             float result = MathUtils.Log(value);
             Assert.Equal(expected, result);
         }
-        
-        
+
+
         /// <summary>
         ///     Tests that test max float
         /// </summary>
@@ -317,7 +317,7 @@ namespace Alis.Core.Aspect.Math.Test
             float result = MathUtils.Max(valueA, valueB);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test max int
         /// </summary>
@@ -330,7 +330,7 @@ namespace Alis.Core.Aspect.Math.Test
             int result = MathUtils.Max(valueA, valueB);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test min float
         /// </summary>
@@ -343,7 +343,7 @@ namespace Alis.Core.Aspect.Math.Test
             float result = MathUtils.Min(valueA, valueB);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test min int
         /// </summary>
@@ -356,7 +356,7 @@ namespace Alis.Core.Aspect.Math.Test
             int result = MathUtils.Min(valueA, valueB);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test sign
         /// </summary>
@@ -368,7 +368,7 @@ namespace Alis.Core.Aspect.Math.Test
             int result = MathUtils.Sign(value);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test normalize
         /// </summary>
@@ -382,7 +382,7 @@ namespace Alis.Core.Aspect.Math.Test
             Assert.Equal(expectedLength, resultLength);
             Assert.Equal(expectedVector, v);
         }
-        
+
         /// <summary>
         ///     Tests that test sqrt
         /// </summary>
@@ -394,8 +394,8 @@ namespace Alis.Core.Aspect.Math.Test
             float result = MathUtils.Sqrt(value);
             Assert.Equal(expected, result);
         }
-        
-        
+
+
         /// <summary>
         ///     Tests that test v 2 max float
         /// </summary>
@@ -408,7 +408,7 @@ namespace Alis.Core.Aspect.Math.Test
             float result = MathUtils.Max(valueA, valueB);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test v 2 max int
         /// </summary>
@@ -421,7 +421,7 @@ namespace Alis.Core.Aspect.Math.Test
             int result = MathUtils.Max(valueA, valueB);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test v 2 min float
         /// </summary>
@@ -434,7 +434,7 @@ namespace Alis.Core.Aspect.Math.Test
             float result = MathUtils.Min(valueA, valueB);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test v 2 min int
         /// </summary>
@@ -447,7 +447,7 @@ namespace Alis.Core.Aspect.Math.Test
             int result = MathUtils.Min(valueA, valueB);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test v 2 sign
         /// </summary>
@@ -459,7 +459,7 @@ namespace Alis.Core.Aspect.Math.Test
             int result = MathUtils.Sign(value);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test v 2 normalize
         /// </summary>
@@ -473,7 +473,7 @@ namespace Alis.Core.Aspect.Math.Test
             Assert.Equal(expectedLength, resultLength);
             Assert.Equal(expectedVector, v);
         }
-        
+
         /// <summary>
         ///     Tests that test v 2 sqrt
         /// </summary>
@@ -485,8 +485,8 @@ namespace Alis.Core.Aspect.Math.Test
             float result = MathUtils.Sqrt(value);
             Assert.Equal(expected, result);
         }
-        
-        
+
+
         /// <summary>
         ///     Tests that test mul t
         /// </summary>
@@ -499,7 +499,7 @@ namespace Alis.Core.Aspect.Math.Test
             Vector2 result = MathUtils.MulT(ref rotation, axis);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test distance
         /// </summary>
@@ -512,7 +512,7 @@ namespace Alis.Core.Aspect.Math.Test
             float result = MathUtils.Distance(a, b);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test distance ref
         /// </summary>
@@ -525,7 +525,7 @@ namespace Alis.Core.Aspect.Math.Test
             float result = MathUtils.Distance(ref a, ref b);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test distance squared
         /// </summary>
@@ -538,8 +538,8 @@ namespace Alis.Core.Aspect.Math.Test
             float result = MathUtils.DistanceSquared(ref a, ref b);
             Assert.Equal(expected, result);
         }
-        
-        
+
+
         /// <summary>
         ///     Tests that test cross
         /// </summary>
@@ -553,7 +553,7 @@ namespace Alis.Core.Aspect.Math.Test
             MathUtils.Cross(s, ref a, out result);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test float equals
         /// </summary>
@@ -566,7 +566,7 @@ namespace Alis.Core.Aspect.Math.Test
             bool result = MathUtils.FloatEquals(value1, value2);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test float equals with delta
         /// </summary>
@@ -580,7 +580,7 @@ namespace Alis.Core.Aspect.Math.Test
             bool result = MathUtils.FloatEquals(value1, value2, delta);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test float in range
         /// </summary>
@@ -594,8 +594,8 @@ namespace Alis.Core.Aspect.Math.Test
             bool result = MathUtils.FloatInRange(value, min, max);
             Assert.Equal(expected, result);
         }
-        
-        
+
+
         /// <summary>
         ///     Tests that test mul 22
         /// </summary>
@@ -608,7 +608,7 @@ namespace Alis.Core.Aspect.Math.Test
             Vector2 result = MathUtils.Mul22(a, v);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test mul rotation
         /// </summary>
@@ -621,7 +621,7 @@ namespace Alis.Core.Aspect.Math.Test
             Rotation result = MathUtils.Mul(q, r);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test mul t rotation
         /// </summary>
@@ -634,8 +634,8 @@ namespace Alis.Core.Aspect.Math.Test
             Rotation result = MathUtils.MulT(q, r);
             Assert.Equal(expected, result);
         }
-        
-        
+
+
         /// <summary>
         ///     Tests that test cross vector 2 float
         /// </summary>
@@ -648,7 +648,7 @@ namespace Alis.Core.Aspect.Math.Test
             Vector2 result = MathUtils.Cross(a, s);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test cross float vector 2
         /// </summary>
@@ -661,7 +661,7 @@ namespace Alis.Core.Aspect.Math.Test
             Vector2 result = MathUtils.Cross(s, a);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test abs vector 2
         /// </summary>
@@ -673,7 +673,7 @@ namespace Alis.Core.Aspect.Math.Test
             Vector2 result = MathUtils.Abs(v);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test abs float
         /// </summary>
@@ -685,8 +685,8 @@ namespace Alis.Core.Aspect.Math.Test
             float result = MathUtils.Abs(value);
             Assert.Equal(expected, result);
         }
-        
-        
+
+
         /// <summary>
         ///     Tests that test clamp
         /// </summary>
@@ -700,7 +700,7 @@ namespace Alis.Core.Aspect.Math.Test
             Vector2 result = MathUtils.Clamp(a, low, high);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test v 2 cross
         /// </summary>
@@ -714,7 +714,7 @@ namespace Alis.Core.Aspect.Math.Test
             MathUtils.Cross(ref a, ref b, out result);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test vector angle
         /// </summary>
@@ -730,19 +730,17 @@ namespace Alis.Core.Aspect.Math.Test
             {
                 expected -= Constant.TwoPi;
             }
-            
+
             while (expected < -Constant.Pi)
             {
                 expected += Constant.TwoPi;
             }
-            
+
             double result = MathUtils.VectorAngle(ref p1, ref p2);
             Assert.Equal(expected, result);
         }
-        
-        
-       
-        
+
+
         /// <summary>
         ///     Tests that test skew
         /// </summary>
@@ -754,7 +752,7 @@ namespace Alis.Core.Aspect.Math.Test
             Vector2 result = MathUtils.Skew(input);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test is valid float
         /// </summary>
@@ -766,7 +764,7 @@ namespace Alis.Core.Aspect.Math.Test
             bool result = MathUtils.IsValid(value);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test is valid vector 2
         /// </summary>
@@ -778,7 +776,7 @@ namespace Alis.Core.Aspect.Math.Test
             bool result = value.IsValid();
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test v 3 clamp
         /// </summary>
@@ -792,8 +790,8 @@ namespace Alis.Core.Aspect.Math.Test
             int result = MathUtils.Clamp(value, min, max);
             Assert.Equal(expected, result);
         }
-        
-        
+
+
         /// <summary>
         ///     Tests that test v 2 vector angle
         /// </summary>
@@ -806,7 +804,7 @@ namespace Alis.Core.Aspect.Math.Test
             double result = MathUtils.VectorAngle(p1, p2);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test area
         /// </summary>
@@ -820,7 +818,7 @@ namespace Alis.Core.Aspect.Math.Test
             float result = MathUtils.Area(a, b, c);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test is collinear
         /// </summary>
@@ -835,8 +833,8 @@ namespace Alis.Core.Aspect.Math.Test
             bool result = MathUtils.IsCollinear(ref a, ref b, ref c, tolerance);
             Assert.Equal(expected, result);
         }
-        
-      
+
+
         /// <summary>
         ///     Tests that test v 4 mul t
         /// </summary>
@@ -849,7 +847,7 @@ namespace Alis.Core.Aspect.Math.Test
             Vector2 result = MathUtils.MulT(ref a, v);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test mul t ref
         /// </summary>
@@ -862,9 +860,8 @@ namespace Alis.Core.Aspect.Math.Test
             Vector2 result = MathUtils.MulT(ref a, ref v);
             Assert.Equal(expected, result);
         }
-        
-        
-     
+
+
         /// <summary>
         ///     Tests that test mul t matrix 2 x 2
         /// </summary>
@@ -879,8 +876,8 @@ namespace Alis.Core.Aspect.Math.Test
             MathUtils.MulT(ref a, ref b, out result);
             Assert.Equal(expected, result);
         }
-        
-        
+
+
         /// <summary>
         ///     Tests that test mul matrix 3 x 3 vector 3
         /// </summary>
@@ -893,8 +890,8 @@ namespace Alis.Core.Aspect.Math.Test
             Vector3 result = MathUtils.Mul(a, v);
             Assert.Equal(expected, result);
         }
-        
- 
+
+
         /// <summary>
         ///     Tests that test mul 22 matrix 3 x 3 vector 2
         /// </summary>
@@ -907,7 +904,7 @@ namespace Alis.Core.Aspect.Math.Test
             Vector2 result = MathUtils.Mul22(a, v);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test mul v 2 rotation
         /// </summary>
@@ -920,7 +917,7 @@ namespace Alis.Core.Aspect.Math.Test
             Rotation result = MathUtils.Mul(q, r);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test v 6 mul
         /// </summary>
@@ -933,8 +930,8 @@ namespace Alis.Core.Aspect.Math.Test
             Vector2 result = MathUtils.Mul(ref rotation, axis);
             Assert.Equal(expected, result);
         }
-        
-        
+
+
         /// <summary>
         ///     Tests that test v 4 clamp
         /// </summary>
@@ -948,7 +945,7 @@ namespace Alis.Core.Aspect.Math.Test
             float result = MathUtils.Clamp(a, low, high);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test clamp value below range
         /// </summary>
@@ -962,7 +959,7 @@ namespace Alis.Core.Aspect.Math.Test
             float result = MathUtils.Clamp(a, low, high);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test clamp value above range
         /// </summary>
@@ -976,8 +973,8 @@ namespace Alis.Core.Aspect.Math.Test
             float result = MathUtils.Clamp(a, low, high);
             Assert.Equal(expected, result);
         }
-        
-        
+
+
         /// <summary>
         ///     Tests that test vector angle zero angle
         /// </summary>
@@ -990,7 +987,7 @@ namespace Alis.Core.Aspect.Math.Test
             double result = MathUtils.VectorAngle(ref v1, ref v2);
             Assert.Equal(expected, result, 5); // 5 decimal places of precision
         }
-        
+
         /// <summary>
         ///     Tests that test vector angle positive right angle
         /// </summary>
@@ -1003,7 +1000,7 @@ namespace Alis.Core.Aspect.Math.Test
             double result = MathUtils.VectorAngle(ref v1, ref v2);
             Assert.Equal(expected, result, 5);
         }
-        
+
         /// <summary>
         ///     Tests that test vector angle negative right angle
         /// </summary>
@@ -1016,7 +1013,7 @@ namespace Alis.Core.Aspect.Math.Test
             double result = MathUtils.VectorAngle(ref v1, ref v2);
             Assert.Equal(expected, result, 5);
         }
-        
+
         /// <summary>
         ///     Tests that test vector angle straight line
         /// </summary>
@@ -1029,8 +1026,8 @@ namespace Alis.Core.Aspect.Math.Test
             double result = MathUtils.VectorAngle(ref v1, ref v2);
             Assert.Equal(expected, result, 5);
         }
-        
-        
+
+
         /// <summary>
         ///     Tests that test normalize zero vector
         /// </summary>
@@ -1043,7 +1040,7 @@ namespace Alis.Core.Aspect.Math.Test
             Assert.Equal(expectedLength, resultLength);
             Assert.Equal(new Vector2(0.0f, 0.0f), v);
         }
-        
+
         /// <summary>
         ///     Tests that test normalize normalized vector
         /// </summary>
@@ -1056,7 +1053,7 @@ namespace Alis.Core.Aspect.Math.Test
             Assert.Equal(expectedLength, resultLength);
             Assert.Equal(new Vector2(1.0f, 0.0f), v);
         }
-        
+
         /// <summary>
         ///     Tests that test normalize non normalized vector
         /// </summary>
@@ -1069,7 +1066,7 @@ namespace Alis.Core.Aspect.Math.Test
             Assert.Equal(expectedLength, resultLength);
             Assert.Equal(new Vector2(1.0f, 0.0f), v);
         }
-        
+
         /// <summary>
         ///     Tests that test normalize vector with negative components
         /// </summary>
@@ -1082,8 +1079,8 @@ namespace Alis.Core.Aspect.Math.Test
             Assert.Equal(expectedLength, resultLength);
             Assert.Equal(new Vector2(-1.0f, 0.0f), v);
         }
-        
-        
+
+
         /// <summary>
         ///     Tests that test vector angle same vectors
         /// </summary>
@@ -1096,7 +1093,7 @@ namespace Alis.Core.Aspect.Math.Test
             double result = MathUtils.VectorAngle(ref v1, ref v2);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test vector angle opposite vectors
         /// </summary>
@@ -1109,7 +1106,7 @@ namespace Alis.Core.Aspect.Math.Test
             double result = MathUtils.VectorAngle(ref v1, ref v2);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test vector angle perpendicular vectors
         /// </summary>
@@ -1122,7 +1119,7 @@ namespace Alis.Core.Aspect.Math.Test
             double result = MathUtils.VectorAngle(ref v1, ref v2);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test vector angle negative components
         /// </summary>
@@ -1135,8 +1132,8 @@ namespace Alis.Core.Aspect.Math.Test
             double result = MathUtils.VectorAngle(ref v1, ref v2);
             Assert.Equal(expected, result, 0.1f);
         }
-        
-        
+
+
         /// <summary>
         ///     Tests that test is valid normal number
         /// </summary>
@@ -1147,7 +1144,7 @@ namespace Alis.Core.Aspect.Math.Test
             bool result = MathUtils.IsValid(number);
             Assert.True(result);
         }
-        
+
         /// <summary>
         ///     Tests that test is valid na n
         /// </summary>
@@ -1158,7 +1155,7 @@ namespace Alis.Core.Aspect.Math.Test
             bool result = MathUtils.IsValid(number);
             Assert.False(result);
         }
-        
+
         /// <summary>
         ///     Tests that test is valid infinity
         /// </summary>
@@ -1169,7 +1166,7 @@ namespace Alis.Core.Aspect.Math.Test
             bool result = MathUtils.IsValid(number);
             Assert.False(result);
         }
-        
+
         /// <summary>
         ///     Tests that test is valid negative infinity
         /// </summary>
@@ -1180,7 +1177,7 @@ namespace Alis.Core.Aspect.Math.Test
             bool result = MathUtils.IsValid(number);
             Assert.False(result);
         }
-        
+
         /// <summary>
         ///     Tests that vector angle same vectors
         /// </summary>
@@ -1193,7 +1190,7 @@ namespace Alis.Core.Aspect.Math.Test
             double result = MathUtils.VectorAngle(ref v1, ref v2);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that vector angle opposite vectors
         /// </summary>
@@ -1206,7 +1203,7 @@ namespace Alis.Core.Aspect.Math.Test
             double result = MathUtils.VectorAngle(ref v1, ref v2);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that vector angle perpendicular vectors
         /// </summary>
@@ -1219,7 +1216,7 @@ namespace Alis.Core.Aspect.Math.Test
             double result = MathUtils.VectorAngle(ref v1, ref v2);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that vector angle negative components
         /// </summary>
@@ -1232,7 +1229,7 @@ namespace Alis.Core.Aspect.Math.Test
             double result = MathUtils.VectorAngle(ref v1, ref v2);
             Assert.Equal(expected, result, 0.1f);
         }
-        
+
         /// <summary>
         ///     Tests that vector angle perpendicular vectors returns pi over 2
         /// </summary>
@@ -1245,7 +1242,7 @@ namespace Alis.Core.Aspect.Math.Test
             double result = MathUtils.VectorAngle(ref v1, ref v2);
             Assert.Equal(expected, result, 1);
         }
-        
+
         /// <summary>
         ///     Tests that vector angle parallel vectors returns zero
         /// </summary>
@@ -1258,7 +1255,7 @@ namespace Alis.Core.Aspect.Math.Test
             double result = MathUtils.VectorAngle(ref v1, ref v2);
             Assert.Equal(expected, result, 1);
         }
-        
+
         /// <summary>
         ///     Tests that vector angle opposite vectors returns pi
         /// </summary>
@@ -1271,7 +1268,7 @@ namespace Alis.Core.Aspect.Math.Test
             double result = MathUtils.VectorAngle(ref v1, ref v2);
             Assert.Equal(expected, result, 1);
         }
-        
+
         /// <summary>
         ///     Tests that vector angle parallel vectors opposite directions returns pi
         /// </summary>
@@ -1284,7 +1281,7 @@ namespace Alis.Core.Aspect.Math.Test
             double result = MathUtils.VectorAngle(ref v1, ref v2);
             Assert.Equal(expected, result, 1);
         }
-        
+
         /// <summary>
         ///     Tests that vector angle 45 degree angle returns pi over 4
         /// </summary>
@@ -1297,7 +1294,7 @@ namespace Alis.Core.Aspect.Math.Test
             double result = MathUtils.VectorAngle(ref v1, ref v2);
             Assert.Equal(expected, result, 1);
         }
-        
+
         /// <summary>
         ///     Tests that vector angle 135 degree angle returns 3 pi over 4
         /// </summary>
@@ -1310,7 +1307,7 @@ namespace Alis.Core.Aspect.Math.Test
             double result = MathUtils.VectorAngle(ref v1, ref v2);
             Assert.Equal(expected, result, 1);
         }
-        
+
         /// <summary>
         ///     Tests that vector angle zero vector returns na n
         /// </summary>
@@ -1322,7 +1319,7 @@ namespace Alis.Core.Aspect.Math.Test
             double result = MathUtils.VectorAngle(ref v1, ref v2);
             Assert.False(double.IsNaN(result));
         }
-        
+
         /// <summary>
         ///     Tests that test vector angle v 2 same vectors
         /// </summary>
@@ -1335,7 +1332,7 @@ namespace Alis.Core.Aspect.Math.Test
             double result = MathUtils.VectorAngle(ref v1, ref v2);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test vector angle v 2 opposite vectors
         /// </summary>
@@ -1348,7 +1345,7 @@ namespace Alis.Core.Aspect.Math.Test
             double result = MathUtils.VectorAngle(ref v1, ref v2);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test vector angle v 2 perpendicular vectors
         /// </summary>
@@ -1361,7 +1358,7 @@ namespace Alis.Core.Aspect.Math.Test
             double result = MathUtils.VectorAngle(ref v1, ref v2);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test vector angle zero vector
         /// </summary>
@@ -1373,7 +1370,7 @@ namespace Alis.Core.Aspect.Math.Test
             double result = MathUtils.VectorAngle(ref v1, ref v2);
             Assert.False(double.IsNaN(result));
         }
-        
+
         /// <summary>
         ///     Tests that test vector angle v 3 same vectors
         /// </summary>
@@ -1386,7 +1383,7 @@ namespace Alis.Core.Aspect.Math.Test
             double result = MathUtils.VectorAngle(ref v1, ref v2);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test vector angle v 3 opposite vectors
         /// </summary>
@@ -1399,7 +1396,7 @@ namespace Alis.Core.Aspect.Math.Test
             double result = MathUtils.VectorAngle(ref v1, ref v2);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test vector angle v 3 perpendicular vectors
         /// </summary>
@@ -1412,7 +1409,7 @@ namespace Alis.Core.Aspect.Math.Test
             double result = MathUtils.VectorAngle(ref v1, ref v2);
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that test vector angle v 2 negative components
         /// </summary>
@@ -1425,7 +1422,7 @@ namespace Alis.Core.Aspect.Math.Test
             double result = MathUtils.VectorAngle(ref v1, ref v2);
             Assert.Equal(expected, result, 0.1f);
         }
-        
+
         /// <summary>
         ///     Tests that test vector angle v 2 zero vector
         /// </summary>
@@ -1437,7 +1434,7 @@ namespace Alis.Core.Aspect.Math.Test
             double result = MathUtils.VectorAngle(ref v1, ref v2);
             Assert.False(double.IsNaN(result));
         }
-        
+
         /// <summary>
         ///     Tests that test vector angle small angle
         /// </summary>
@@ -1450,7 +1447,7 @@ namespace Alis.Core.Aspect.Math.Test
             double result = MathUtils.VectorAngle(ref v1, ref v2);
             Assert.Equal(expected, result, 0.1f);
         }
-        
+
         /// <summary>
         ///     Tests that test vector angle large angle
         /// </summary>

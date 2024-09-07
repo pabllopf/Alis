@@ -45,10 +45,10 @@ namespace Alis.Test.Builder.Core.Ecs.System.Setting.Input
         public void InputSettingBuilder_DefaultConstructor_ValidInput()
         {
             InputSettingBuilder inputSettingBuilder = new InputSettingBuilder();
-            
+
             Assert.NotNull(inputSettingBuilder);
         }
-        
+
         /// <summary>
         ///     Tests that build valid input
         /// </summary>
@@ -56,9 +56,9 @@ namespace Alis.Test.Builder.Core.Ecs.System.Setting.Input
         public void Build_ValidInput()
         {
             InputSettingBuilder inputSettingBuilder = new InputSettingBuilder();
-            
+
             InputSetting inputSetting = inputSettingBuilder.Build();
-            
+
             Assert.NotNull(inputSetting);
         }
     }

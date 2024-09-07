@@ -1,4 +1,31 @@
-﻿// Copyright (c) 2017 Kastellanos Nikolaos
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Island.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 /* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
@@ -6,26 +33,26 @@
  */
 
 /*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-* 
-* Original source Box2D:
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
-* 
-* This software is provided 'as-is', without any express or implied 
-* warranty.  In no event will the authors be held liable for any damages 
-* arising from the use of this software. 
-* Permission is granted to anyone to use this software for any purpose, 
-* including commercial applications, and to alter it and redistribute it 
-* freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
-* claim that you wrote the original software. If you use this software 
-* in a product, an acknowledgment in the product documentation would be 
-* appreciated but is not required. 
-* 2. Altered source versions must be plainly marked as such, and must not be 
-* misrepresented as being the original software. 
-* 3. This notice may not be removed or altered from any source distribution. 
-*/
+ * Farseer Physics Engine:
+ * Copyright (c) 2012 Ian Qvist
+ *
+ * Original source Box2D:
+ * Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 using System;
 using System.Diagnostics;
@@ -40,31 +67,30 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    /// This is an internal class.
+    ///     This is an internal class.
     /// </summary>
     public class Island
     {
-        private ContactManager _contactManager;
-        private ContactSolver _contactSolver = new ContactSolver();
-        private Contact[] _contacts;
-        private Joint[] _joints;
-
         private const float LinTolSqr = Settings.LinearSleepTolerance * Settings.LinearSleepTolerance;
         private const float AngTolSqr = Settings.AngularSleepTolerance * Settings.AngularSleepTolerance;
-        private Stopwatch _watch = new Stopwatch();
-
-        public Body[] Bodies;
-        public int BodyCount;
-        public int ContactCount;
-        public int JointCount;
+        private ContactManager _contactManager;
+        private Contact[] _contacts;
+        private readonly ContactSolver _contactSolver = new ContactSolver();
+        private Joint[] _joints;
+        internal int[] _locks;
+        internal SolverPosition[] _positions;
 
         internal SolverVelocity[] _velocities;
-        internal SolverPosition[] _positions;
-        internal int[] _locks;
+        private readonly Stopwatch _watch = new Stopwatch();
+
+        public Body[] Bodies;
 
         public int BodyCapacity;
+        public int BodyCount;
         public int ContactCapacity;
+        public int ContactCount;
         public int JointCapacity;
+        public int JointCount;
         public TimeSpan JointUpdateTime;
 
         public void Reset(int bodyCapacity, int contactCapacity, int jointCapacity, ContactManager contactManager)
@@ -81,7 +107,7 @@ namespace Alis.Core.Physic.Dynamics
             if (Bodies == null || Bodies.Length < bodyCapacity)
             {
                 int newBodyBufferCapacity = Math.Max(bodyCapacity, 32);
-                newBodyBufferCapacity = (newBodyBufferCapacity + 31) & (~31); // grow in chunks of 32.
+                newBodyBufferCapacity = (newBodyBufferCapacity + 31) & ~31; // grow in chunks of 32.
                 Bodies = new Body[newBodyBufferCapacity];
                 _velocities = new SolverVelocity[newBodyBufferCapacity];
                 _positions = new SolverPosition[newBodyBufferCapacity];
@@ -91,15 +117,15 @@ namespace Alis.Core.Physic.Dynamics
             if (_contacts == null || _contacts.Length < contactCapacity)
             {
                 int newContactBufferCapacity = Math.Max(contactCapacity, 32);
-                newContactBufferCapacity = newContactBufferCapacity + (newContactBufferCapacity*2 >> 4); // grow by x1.125f
-                newContactBufferCapacity = (newContactBufferCapacity + 31) & (~31); // grow in chunks of 32.
+                newContactBufferCapacity = newContactBufferCapacity + ((newContactBufferCapacity * 2) >> 4); // grow by x1.125f
+                newContactBufferCapacity = (newContactBufferCapacity + 31) & ~31; // grow in chunks of 32.
                 _contacts = new Contact[newContactBufferCapacity];
             }
 
             if (_joints == null || _joints.Length < jointCapacity)
             {
                 int newJointBufferCapacity = Math.Max(jointCapacity, 32);
-                newJointBufferCapacity = (newJointBufferCapacity + 31) & (~31); // grow in chunks of 32.
+                newJointBufferCapacity = (newJointBufferCapacity + 31) & ~31; // grow in chunks of 32.
                 _joints = new Joint[newJointBufferCapacity];
             }
         }
@@ -321,7 +347,7 @@ namespace Alis.Core.Physic.Dynamics
                     }
                 }
 
-                if (minSleepTime >= Settings.TimeToSleep && positionSolved)
+                if ((minSleepTime >= Settings.TimeToSleep) && positionSolved)
                 {
                     for (int i = 0; i < BodyCount; ++i)
                     {

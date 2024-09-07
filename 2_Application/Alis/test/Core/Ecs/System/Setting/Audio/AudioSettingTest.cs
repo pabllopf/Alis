@@ -46,16 +46,16 @@ namespace Alis.Test.Core.Ecs.System.Setting.Audio
         {
             // Arrange
             AudioSetting audioSetting = new AudioSetting();
-            
+
             // Act
             audioSetting.Volume = 80;
             int result = audioSetting.Volume;
-            
+
             // Assert
             Assert.NotNull(audioSetting);
             Assert.Equal(80, result);
         }
-        
+
         /// <summary>
         ///     Tests that test audio setting mute
         /// </summary>
@@ -64,17 +64,17 @@ namespace Alis.Test.Core.Ecs.System.Setting.Audio
         {
             // Arrange
             AudioSetting audioSetting = new AudioSetting();
-            
+
             // Act
             audioSetting.Mute = true;
             bool result = audioSetting.Mute;
-            
+
             // Assert
             Assert.NotNull(audioSetting);
             Assert.True(result);
         }
-        
-        
+
+
         /// <summary>
         ///     Tests that test audio setting builder
         /// </summary>
@@ -83,10 +83,10 @@ namespace Alis.Test.Core.Ecs.System.Setting.Audio
         {
             // Arrange
             AudioSetting audioSetting = new AudioSetting();
-            
+
             // Act
             AudioSettingBuilder result = audioSetting.Builder();
-            
+
             // Assert
             Assert.NotNull(result);
             Assert.IsType<AudioSettingBuilder>(result);

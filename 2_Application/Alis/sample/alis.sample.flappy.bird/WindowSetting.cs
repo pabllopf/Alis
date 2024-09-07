@@ -41,14 +41,14 @@ namespace Alis.Sample.Flappy.Bird
         ///     Initializes a new instance of the <see cref="WindowSetting" /> class
         /// </summary>
         public WindowSetting() => Window = new Window();
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="WindowSetting" /> class
         /// </summary>
         /// <param name="window">The window</param>
         [JsonConstructor]
         public WindowSetting(Window window) => Window = window;
-        
+
         /// <summary>
         ///     Gets or sets the value of the window
         /// </summary>

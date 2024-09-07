@@ -47,7 +47,7 @@ namespace Alis.Core.Audio.Test.Players
         {
             Assert.True(true);
         }
-        
+
         /// <summary>
         ///     Tests that play valid input
         /// </summary>
@@ -56,9 +56,9 @@ namespace Alis.Core.Audio.Test.Players
         {
             TestUnixPlayer player = new TestUnixPlayer();
             player.Play("test.mp3").Wait();
-            
+
             Thread.Sleep(1000);
-            
+
             if (player.Playing)
             {
                 Assert.True(player.Playing);
@@ -68,7 +68,7 @@ namespace Alis.Core.Audio.Test.Players
                 Assert.False(player.Playing);
             }
         }
-        
+
         /// <summary>
         ///     Tests that play valid input
         /// </summary>
@@ -77,9 +77,9 @@ namespace Alis.Core.Audio.Test.Players
         {
             TestUnixPlayer player = new TestUnixPlayer();
             player.Play("test.mp3").Wait();
-            
+
             Thread.Sleep(1000);
-            
+
             if (player.Playing)
             {
                 Assert.True(player.Playing);

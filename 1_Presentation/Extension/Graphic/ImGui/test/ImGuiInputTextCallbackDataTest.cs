@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiInputTextCallbackData data = new ImGuiInputTextCallbackData();
             Assert.Equal(default(ImGuiInputTextFlags), data.EventFlag);
         }
-        
+
         /// <summary>
         ///     Tests that flags should be initialized
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiInputTextCallbackData data = new ImGuiInputTextCallbackData();
             Assert.Equal(default(ImGuiInputTextFlags), data.Flags);
         }
-        
+
         /// <summary>
         ///     Tests that user data should be initialized
         /// </summary>
@@ -66,7 +66,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiInputTextCallbackData data = new ImGuiInputTextCallbackData();
             Assert.Equal(IntPtr.Zero, data.UserData);
         }
-        
+
         /// <summary>
         ///     Tests that event char should be initialized
         /// </summary>
@@ -76,7 +76,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiInputTextCallbackData data = new ImGuiInputTextCallbackData();
             Assert.Equal((ushort) 0, data.EventChar);
         }
-        
+
         /// <summary>
         ///     Tests that event key should be initialized
         /// </summary>
@@ -86,7 +86,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiInputTextCallbackData data = new ImGuiInputTextCallbackData();
             Assert.Equal(default(ImGuiKey), data.EventKey);
         }
-        
+
         /// <summary>
         ///     Tests that buf should be initialized
         /// </summary>
@@ -96,7 +96,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiInputTextCallbackData data = new ImGuiInputTextCallbackData();
             Assert.Equal(IntPtr.Zero, data.Buf);
         }
-        
+
         /// <summary>
         ///     Tests that buf text len should be initialized
         /// </summary>
@@ -106,7 +106,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiInputTextCallbackData data = new ImGuiInputTextCallbackData();
             Assert.Equal(0, data.BufTextLen);
         }
-        
+
         /// <summary>
         ///     Tests that buf size should be initialized
         /// </summary>
@@ -116,7 +116,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiInputTextCallbackData data = new ImGuiInputTextCallbackData();
             Assert.Equal(0, data.BufSize);
         }
-        
+
         /// <summary>
         ///     Tests that buf dirty should be initialized
         /// </summary>
@@ -126,7 +126,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiInputTextCallbackData data = new ImGuiInputTextCallbackData();
             Assert.Equal((byte) 0, data.BufDirty);
         }
-        
+
         /// <summary>
         ///     Tests that cursor pos should be initialized
         /// </summary>
@@ -136,7 +136,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiInputTextCallbackData data = new ImGuiInputTextCallbackData();
             Assert.Equal(0, data.CursorPos);
         }
-        
+
         /// <summary>
         ///     Tests that selection start should be initialized
         /// </summary>
@@ -146,7 +146,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiInputTextCallbackData data = new ImGuiInputTextCallbackData();
             Assert.Equal(0, data.SelectionStart);
         }
-        
+
         /// <summary>
         ///     Tests that selection end should be initialized
         /// </summary>
@@ -156,7 +156,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiInputTextCallbackData data = new ImGuiInputTextCallbackData();
             Assert.Equal(0, data.SelectionEnd);
         }
-        
+
         /// <summary>
         ///     Tests that event flag set and get returns correct value
         /// </summary>
@@ -168,7 +168,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.EventFlag = value;
             Assert.Equal(value, obj.EventFlag);
         }
-        
+
         /// <summary>
         ///     Tests that flags set and get returns correct value
         /// </summary>
@@ -180,7 +180,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Flags = value;
             Assert.Equal(value, obj.Flags);
         }
-        
+
         /// <summary>
         ///     Tests that user data set and get returns correct value
         /// </summary>
@@ -192,7 +192,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.UserData = value;
             Assert.Equal(value, obj.UserData);
         }
-        
+
         /// <summary>
         ///     Tests that event char set and get returns correct value
         /// </summary>
@@ -204,7 +204,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.EventChar = value;
             Assert.Equal(value, obj.EventChar);
         }
-        
+
         /// <summary>
         ///     Tests that event key set and get returns correct value
         /// </summary>
@@ -216,7 +216,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.EventKey = value;
             Assert.Equal(value, obj.EventKey);
         }
-        
+
         /// <summary>
         ///     Tests that buf set and get returns correct value
         /// </summary>
@@ -228,7 +228,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Buf = value;
             Assert.Equal(value, obj.Buf);
         }
-        
+
         /// <summary>
         ///     Tests that buf text len set and get returns correct value
         /// </summary>
@@ -240,7 +240,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.BufTextLen = value;
             Assert.Equal(value, obj.BufTextLen);
         }
-        
+
         /// <summary>
         ///     Tests that buf size set and get returns correct value
         /// </summary>
@@ -252,7 +252,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.BufSize = value;
             Assert.Equal(value, obj.BufSize);
         }
-        
+
         /// <summary>
         ///     Tests that buf dirty set and get returns correct value
         /// </summary>
@@ -264,7 +264,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.BufDirty = value;
             Assert.Equal(value, obj.BufDirty);
         }
-        
+
         /// <summary>
         ///     Tests that cursor pos set and get returns correct value
         /// </summary>
@@ -276,7 +276,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.CursorPos = value;
             Assert.Equal(value, obj.CursorPos);
         }
-        
+
         /// <summary>
         ///     Tests that selection start set and get returns correct value
         /// </summary>
@@ -288,7 +288,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.SelectionStart = value;
             Assert.Equal(value, obj.SelectionStart);
         }
-        
+
         /// <summary>
         ///     Tests that selection end set and get returns correct value
         /// </summary>

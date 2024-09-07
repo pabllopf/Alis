@@ -35,7 +35,7 @@ namespace Alis.Core.Audio.Test.Players
     public class WindowsPlayerTest
     {
         /*
-        
+
         /// <summary>
         /// Plays the valid input
         /// </summary>
@@ -44,10 +44,10 @@ namespace Alis.Core.Audio.Test.Players
     {
         WindowsPlayer player = new WindowsPlayer();
         await player.Play(AssetManager.Find("sample_1.wav"));
-        
+
         Assert.True(player.Playing);
     }
-        
+
         /// <summary>
     /// Tests that pause valid input
     /// </summary>
@@ -57,10 +57,10 @@ namespace Alis.Core.Audio.Test.Players
         WindowsPlayer player = new WindowsPlayer();
         await player.Play( AssetManager.Find("sample_1.wav"));
         await player.Pause();
-        
+
         Assert.True(player.Paused);
     }
-        
+
     /// <summary>
     /// Tests that resume valid input
     /// </summary>
@@ -71,10 +71,10 @@ namespace Alis.Core.Audio.Test.Players
         await player.Play(AssetManager.Find("sample_1.wav"));
         await player.Pause();
         await player.Resume();
-        
+
         Assert.False(player.Paused);
     }
-        
+
     /// <summary>
     /// Tests that stop valid input
     /// </summary>
@@ -84,10 +84,10 @@ namespace Alis.Core.Audio.Test.Players
         WindowsPlayer player = new WindowsPlayer();
         await player.Play(AssetManager.Find("sample_1.wav"));
         await player.Stop();
-        
+
         Assert.False(player.Playing);
     }
-        
+
     /// <summary>
     /// Tests that set volume valid input
     /// </summary>
@@ -96,10 +96,10 @@ namespace Alis.Core.Audio.Test.Players
     {
         WindowsPlayer player = new WindowsPlayer();
         await player.SetVolume(50);
-        
+
         // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
     }
-        
+
     /// <summary>
     /// Tests that stop valid input v 2
     /// </summary>
@@ -109,11 +109,11 @@ namespace Alis.Core.Audio.Test.Players
         WindowsPlayer player = new WindowsPlayer();
         await player.Play(AssetManager.Find("sample_1.wav"));
         await player.Stop();
-        
+
         Assert.False(player.Playing);
         Assert.False(player.Paused);
     }
-        
+
     /// <summary>
     /// Tests that set volume valid input v 2
     /// </summary>
@@ -122,10 +122,10 @@ namespace Alis.Core.Audio.Test.Players
     {
         WindowsPlayer player = new WindowsPlayer();
         await player.SetVolume(50);
-        
+
         // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
     }
-        
+
     /// <summary>
     /// Tests that set volume invalid input
     /// </summary>
@@ -135,7 +135,7 @@ namespace Alis.Core.Audio.Test.Players
         WindowsPlayer player = new WindowsPlayer();
         await player.SetVolume(101);
     }
-        
+
      /// <summary>
      /// Resumes the valid input v 4
      /// </summary>
@@ -146,10 +146,10 @@ namespace Alis.Core.Audio.Test.Players
         await player.Play(AssetManager.Find("sample_1.wav"));
         await player.Pause();
         await player.Resume();
-        
+
         Assert.False(player.Paused);
     }
-        
+
      /// <summary>
      /// Resumes the when not paused does nothing
      /// </summary>
@@ -159,10 +159,10 @@ namespace Alis.Core.Audio.Test.Players
         WindowsPlayer player = new WindowsPlayer();
         await player.Play(AssetManager.Find("sample_1.wav"));
         await player.Resume();
-        
+
         Assert.False(player.Paused);
     }
-        
+
      /// <summary>
      /// Stops the valid input v 3
      /// </summary>
@@ -172,11 +172,11 @@ namespace Alis.Core.Audio.Test.Players
         WindowsPlayer player = new WindowsPlayer();
         await player.Play(AssetManager.Find("sample_1.wav"));
         await player.Stop();
-        
+
         Assert.False(player.Playing);
         Assert.False(player.Paused);
     }
-        
+
      /// <summary>
      /// Stops the when not playing does nothing
      /// </summary>
@@ -185,11 +185,11 @@ namespace Alis.Core.Audio.Test.Players
     {
         WindowsPlayer player = new WindowsPlayer();
         await player.Stop();
-        
+
         Assert.False(player.Playing);
         Assert.False(player.Paused);
     }
-        
+
      /// <summary>
      /// Resumes the valid input v 5
      /// </summary>
@@ -200,10 +200,10 @@ namespace Alis.Core.Audio.Test.Players
         await player.Play(AssetManager.Find("sample_1.wav"));
         await player.Pause();
         await player.Resume();
-        
+
         Assert.False(player.Paused);
     }
-        
+
      /// <summary>
      /// Resumes the when not paused does nothing v 4
      /// </summary>
@@ -213,10 +213,10 @@ namespace Alis.Core.Audio.Test.Players
         WindowsPlayer player = new WindowsPlayer();
         await player.Play(AssetManager.Find("sample_1.wav"));
         await player.Resume();
-        
+
         Assert.False(player.Paused);
     }
-        
+
      /// <summary>
      /// Resumes the when not playing does nothing
      /// </summary>
@@ -225,11 +225,11 @@ namespace Alis.Core.Audio.Test.Players
     {
         WindowsPlayer player = new WindowsPlayer();
         await player.Resume();
-        
+
         Assert.False(player.Paused);
         Assert.False(player.Playing);
     }
-        
+
      /// <summary>
      /// Pauses the valid input v 6
      /// </summary>
@@ -239,10 +239,10 @@ namespace Alis.Core.Audio.Test.Players
         WindowsPlayer player = new WindowsPlayer();
         await player.Play(AssetManager.Find("sample_1.wav"));
         await player.Pause();
-        
+
         Assert.True(player.Paused);
     }
-        
+
      /// <summary>
      /// Pauses the when not playing does nothing
      /// </summary>
@@ -251,10 +251,10 @@ namespace Alis.Core.Audio.Test.Players
     {
         WindowsPlayer player = new WindowsPlayer();
         await player.Pause();
-        
+
         Assert.False(player.Paused);
     }
-        
+
      /// <summary>
      /// Pauses the when already paused does nothing
      /// </summary>
@@ -265,7 +265,7 @@ namespace Alis.Core.Audio.Test.Players
         await player.Play(AssetManager.Find("sample_1.wav"));
         await player.Pause();
         await player.Pause();
-        
+
         Assert.True(player.Paused);
     }*/
     }

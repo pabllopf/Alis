@@ -58,15 +58,15 @@ namespace Alis.Core.Network.Test
             bool includeExceptionInCloseResponse = true;
             bool isClient = true;
             string subProtocol = "subProtocol";
-            
+
             WebSocketImplementation webSocket = new WebSocketImplementation(guid, recycledStreamFactory, stream, keepAliveInterval, secWebSocketExtensions, includeExceptionInCloseResponse, isClient, subProtocol);
             PingPongManager pingPongManager = new PingPongManager(guid, webSocket, keepAliveInterval, CancellationToken.None);
             ArraySegment<byte> payload = new ArraySegment<byte>(Encoding.UTF8.GetBytes("Test message"));
             await pingPongManager.SendPing(payload, CancellationToken.None);
-            
+
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
-        
+
         /// <summary>
         ///     Tests that pong valid input
         /// </summary>
@@ -81,20 +81,20 @@ namespace Alis.Core.Network.Test
             bool includeExceptionInCloseResponse = true;
             bool isClient = true;
             string subProtocol = "subProtocol";
-            
+
             WebSocketImplementation webSocket = new WebSocketImplementation(guid, recycledStreamFactory, stream, keepAliveInterval, secWebSocketExtensions, includeExceptionInCloseResponse, isClient, subProtocol);
             PingPongManager pingPongManager = new PingPongManager(guid, webSocket, keepAliveInterval, CancellationToken.None);
             PongEventArgs pongEventArgs = new PongEventArgs(new ArraySegment<byte>(Encoding.UTF8.GetBytes("Test message")));
-            
+
             pingPongManager.Pong += (sender, e) =>
             {
                 // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
             };
-            
+
             // Trigger the Pong event
             typeof(PingPongManager).GetMethod("OnPong", BindingFlags.NonPublic | BindingFlags.Instance)?.Invoke(pingPongManager, new object[] {pongEventArgs});
         }
-        
+
         /// <summary>
         ///     Tests that web socket impl pong valid input
         /// </summary>
@@ -112,13 +112,13 @@ namespace Alis.Core.Network.Test
                 "subProtocol"
             ), TimeSpan.Zero, new CancellationToken());
             PongEventArgs pongEventArgs = new PongEventArgs(new ArraySegment<byte>(BitConverter.GetBytes(1)));
-            
+
             pingPongManager.WebSocketImplPong(this, pongEventArgs);
-            
+
             // Here you would assert that the properties of wheelJoint have been set correctly.
             // As the method does not return a value or modify any accessible state, there's nothing to assert.
         }
-        
+
         /// <summary>
         ///     Tests that web socket impl pong null event args
         /// </summary>
@@ -135,11 +135,11 @@ namespace Alis.Core.Network.Test
                 true,
                 "subProtocol"
             ), TimeSpan.Zero, new CancellationToken());
-            
+
             pingPongManager.WebSocketImplPong(this, null);
         }
-        
-        
+
+
         /// <summary>
         ///     Tests that log ping pong manager start end test
         /// </summary>
@@ -159,13 +159,13 @@ namespace Alis.Core.Network.Test
             );
             TimeSpan keepAliveInterval = TimeSpan.FromSeconds(10);
             CancellationToken cancellationToken = new CancellationToken();
-            
+
             PingPongManager pingPongManager = new PingPongManager(guid, webSocket, keepAliveInterval, cancellationToken);
-            
+
             // Here you would assert that the properties of wheelJoint have been set correctly.
             // As the method does not return a value or modify any accessible state, there's nothing to assert.
         }
-        
+
         /// <summary>
         ///     Tests that ping sent ticks exist test
         /// </summary>
@@ -185,14 +185,14 @@ namespace Alis.Core.Network.Test
             );
             TimeSpan keepAliveInterval = TimeSpan.FromSeconds(10);
             CancellationToken cancellationToken = new CancellationToken();
-            
+
             PingPongManager pingPongManager = new PingPongManager(guid, webSocket, keepAliveInterval, cancellationToken);
-            
+
             bool result = pingPongManager.PingSentTicksExist();
-            
+
             Assert.False(result);
         }
-        
+
         /// <summary>
         ///     Tests that handle expired keep alive interval test
         /// </summary>
@@ -212,12 +212,12 @@ namespace Alis.Core.Network.Test
             );
             TimeSpan keepAliveInterval = TimeSpan.FromSeconds(10);
             CancellationToken cancellationToken = new CancellationToken();
-            
+
             PingPongManager pingPongManager = new PingPongManager(guid, webSocket, keepAliveInterval, cancellationToken);
-            
+
             await pingPongManager.HandleExpiredKeepAliveInterval();
         }
-        
+
         /// <summary>
         ///     Tests that send ping test
         /// </summary>
@@ -237,12 +237,12 @@ namespace Alis.Core.Network.Test
             );
             TimeSpan keepAliveInterval = TimeSpan.FromSeconds(10);
             CancellationToken cancellationToken = new CancellationToken();
-            
+
             PingPongManager pingPongManager = new PingPongManager(guid, webSocket, keepAliveInterval, cancellationToken);
-            
+
             await pingPongManager.SendPing(new ArraySegment<byte>(BitConverter.GetBytes(1)), cancellationToken);
         }
-        
+
         /// <summary>
         ///     Tests that send ping test v 2
         /// </summary>
@@ -262,14 +262,14 @@ namespace Alis.Core.Network.Test
             );
             TimeSpan keepAliveInterval = TimeSpan.FromSeconds(10);
             CancellationToken cancellationToken = new CancellationToken();
-            
+
             PingPongManager pingPongManager = new PingPongManager(guid, webSocket, keepAliveInterval, cancellationToken);
-            
+
             await pingPongManager.SendPing();
-            
+
             Assert.True(pingPongManager.PingSentTicksExist());
         }
-        
+
         /// <summary>
         ///     Tests that log ping pong manager end test
         /// </summary>
@@ -289,11 +289,11 @@ namespace Alis.Core.Network.Test
             );
             TimeSpan keepAliveInterval = TimeSpan.FromSeconds(10);
             CancellationToken cancellationToken = new CancellationToken();
-            
+
             PingPongManager pingPongManager = new PingPongManager(guid, webSocket, keepAliveInterval, cancellationToken);
-            
+
             pingPongManager.LogPingPongManagerEnd();
-            
+
             // Here you would assert that the properties of wheelJoint have been set correctly.
             // As the method does not return a value or modify any accessible state, there's nothing to assert.
         }

@@ -45,7 +45,7 @@ namespace Alis.Core.Aspect.Security.Test
             SecureDouble secureDouble = new SecureDouble(10.0);
             Assert.Equal(10.0, (double) secureDouble);
         }
-        
+
         /// <summary>
         ///     Tests that test secure double implicit conversion
         /// </summary>
@@ -55,7 +55,7 @@ namespace Alis.Core.Aspect.Security.Test
             SecureDouble secureDouble = 10.0;
             Assert.Equal(10.0, (double) secureDouble);
         }
-        
+
         /// <summary>
         ///     Tests that test secure double equality operator
         /// </summary>
@@ -65,11 +65,11 @@ namespace Alis.Core.Aspect.Security.Test
             SecureDouble secureDouble1 = 10.0;
             SecureDouble secureDouble2 = 10.0;
             Assert.True(secureDouble1 == secureDouble2);
-            
+
             secureDouble2 = 20.0;
             Assert.False(secureDouble1 == secureDouble2);
         }
-        
+
         /// <summary>
         ///     Tests that test secure double inequality operator
         /// </summary>
@@ -80,7 +80,7 @@ namespace Alis.Core.Aspect.Security.Test
             SecureDouble secureDouble2 = 20.0;
             Assert.True(secureDouble1 != secureDouble2);
         }
-        
+
         /// <summary>
         ///     Tests that test secure double addition operator
         /// </summary>
@@ -91,7 +91,7 @@ namespace Alis.Core.Aspect.Security.Test
             SecureDouble secureDouble2 = 20.0;
             Assert.Equal(30.0, (double) (secureDouble1 + secureDouble2));
         }
-        
+
         /// <summary>
         ///     Tests that test secure double subtraction operator
         /// </summary>
@@ -102,7 +102,7 @@ namespace Alis.Core.Aspect.Security.Test
             SecureDouble secureDouble2 = 10.0;
             Assert.Equal(10.0, (double) (secureDouble1 - secureDouble2));
         }
-        
+
         /// <summary>
         ///     Tests that test secure double multiplication operator
         /// </summary>
@@ -113,7 +113,7 @@ namespace Alis.Core.Aspect.Security.Test
             SecureDouble secureDouble2 = 20.0;
             Assert.Equal(200.0, (double) (secureDouble1 * secureDouble2));
         }
-        
+
         /// <summary>
         ///     Tests that test secure double division operator
         /// </summary>
@@ -124,7 +124,7 @@ namespace Alis.Core.Aspect.Security.Test
             SecureDouble secureDouble2 = 10.0;
             Assert.Equal(2.0, (double) (secureDouble1 / secureDouble2));
         }
-        
+
         /// <summary>
         ///     Tests that test secure double equals method
         /// </summary>
@@ -134,11 +134,11 @@ namespace Alis.Core.Aspect.Security.Test
             SecureDouble secureDouble1 = 10.0;
             SecureDouble secureDouble2 = 10.0;
             Assert.True(secureDouble1.Equals(secureDouble2));
-            
+
             secureDouble2 = 20.0;
             Assert.False(secureDouble1.Equals(secureDouble2));
         }
-        
+
         /// <summary>
         ///     Tests that test secure double get hash code method
         /// </summary>
@@ -148,11 +148,11 @@ namespace Alis.Core.Aspect.Security.Test
             SecureDouble secureDouble1 = 10.0;
             SecureDouble secureDouble2 = 10.0;
             Assert.Equal(secureDouble1.GetHashCode(), secureDouble2.GetHashCode());
-            
+
             secureDouble2 = 20.0;
             Assert.NotEqual(secureDouble1.GetHashCode(), secureDouble2.GetHashCode());
         }
-        
+
         /// <summary>
         ///     Tests that test secure double to string method
         /// </summary>
@@ -162,8 +162,8 @@ namespace Alis.Core.Aspect.Security.Test
             SecureDouble secureDouble = 10.0;
             Assert.Equal("10", secureDouble.ToString());
         }
-        
-        
+
+
         /// <summary>
         ///     Tests that test value set get
         /// </summary>
@@ -172,14 +172,14 @@ namespace Alis.Core.Aspect.Security.Test
         {
             // Arrange
             SecureDouble secureDouble = new SecureDouble(10.0);
-            
+
             // Act
             double value = secureDouble;
-            
+
             // Assert
             Assert.Equal(10.0, value);
         }
-        
+
         /// <summary>
         ///     Tests that test equality
         /// </summary>
@@ -189,11 +189,11 @@ namespace Alis.Core.Aspect.Security.Test
             // Arrange
             SecureDouble secureDouble1 = new SecureDouble(10.0);
             SecureDouble secureDouble2 = new SecureDouble(10.0);
-            
+
             // Assert
             Assert.True(secureDouble1 == secureDouble2);
         }
-        
+
         /// <summary>
         ///     Tests that test inequality
         /// </summary>
@@ -203,11 +203,11 @@ namespace Alis.Core.Aspect.Security.Test
             // Arrange
             SecureDouble secureDouble1 = new SecureDouble(10.0);
             SecureDouble secureDouble2 = new SecureDouble(20.0);
-            
+
             // Assert
             Assert.True(secureDouble1 != secureDouble2);
         }
-        
+
         /// <summary>
         ///     Tests that test increment
         /// </summary>
@@ -216,14 +216,14 @@ namespace Alis.Core.Aspect.Security.Test
         {
             // Arrange
             SecureDouble secureDouble = new SecureDouble(10.0);
-            
+
             // Act
             secureDouble++;
-            
+
             // Assert
             Assert.Equal(11.0, (double) secureDouble);
         }
-        
+
         /// <summary>
         ///     Tests that test decrement
         /// </summary>
@@ -232,14 +232,14 @@ namespace Alis.Core.Aspect.Security.Test
         {
             // Arrange
             SecureDouble secureDouble = new SecureDouble(10.0);
-            
+
             // Act
             secureDouble--;
-            
+
             // Assert
             Assert.Equal(9.0, (double) secureDouble);
         }
-        
+
         /// <summary>
         ///     Tests that test addition
         /// </summary>
@@ -249,14 +249,14 @@ namespace Alis.Core.Aspect.Security.Test
             // Arrange
             SecureDouble secureDouble1 = new SecureDouble(10.0);
             SecureDouble secureDouble2 = new SecureDouble(20.0);
-            
+
             // Act
             SecureDouble result = secureDouble1 + secureDouble2;
-            
+
             // Assert
             Assert.Equal(30.0, (double) result);
         }
-        
+
         /// <summary>
         ///     Tests that test subtraction
         /// </summary>
@@ -266,14 +266,14 @@ namespace Alis.Core.Aspect.Security.Test
             // Arrange
             SecureDouble secureDouble1 = new SecureDouble(20.0);
             SecureDouble secureDouble2 = new SecureDouble(10.0);
-            
+
             // Act
             SecureDouble result = secureDouble1 - secureDouble2;
-            
+
             // Assert
             Assert.Equal(10.0, (double) result);
         }
-        
+
         /// <summary>
         ///     Tests that test multiplication
         /// </summary>
@@ -283,14 +283,14 @@ namespace Alis.Core.Aspect.Security.Test
             // Arrange
             SecureDouble secureDouble1 = new SecureDouble(10.0);
             SecureDouble secureDouble2 = new SecureDouble(20.0);
-            
+
             // Act
             SecureDouble result = secureDouble1 * secureDouble2;
-            
+
             // Assert
             Assert.Equal(200.0, (double) result);
         }
-        
+
         /// <summary>
         ///     Tests that test division
         /// </summary>
@@ -300,10 +300,10 @@ namespace Alis.Core.Aspect.Security.Test
             // Arrange
             SecureDouble secureDouble1 = new SecureDouble(20.0);
             SecureDouble secureDouble2 = new SecureDouble(10.0);
-            
+
             // Act
             SecureDouble result = secureDouble1 / secureDouble2;
-            
+
             // Assert
             Assert.Equal(2.0, (double) result);
         }

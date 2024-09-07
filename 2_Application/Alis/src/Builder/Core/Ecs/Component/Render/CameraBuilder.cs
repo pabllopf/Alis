@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Aspect.Math.Definition;
@@ -48,7 +47,7 @@ namespace Alis.Builder.Core.Ecs.Component.Render
         ///     The camera
         /// </summary>
         private readonly Camera camera = new Camera();
-        
+
         /// <summary>
         ///     Backgrounds the color using the specified value
         /// </summary>
@@ -59,14 +58,14 @@ namespace Alis.Builder.Core.Ecs.Component.Render
             camera.BackgroundColor = value;
             return this;
         }
-        
+
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The camera</returns>
         public Camera Build() => camera;
-        
-        
+
+
         /// <summary>
         ///     Resolutions the x
         /// </summary>

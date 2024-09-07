@@ -47,7 +47,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new byte[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotStairsFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs byte array with offset throws dll not found exception
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new byte[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotStairsFlags.None, 1));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs byte array with offset and stride throws dll not found exception
         /// </summary>
@@ -65,7 +65,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new byte[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotStairsFlags.None, 1, 2));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs short array throws dll not found exception
         /// </summary>
@@ -74,7 +74,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new short[] {1, 2, 3}, 3));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs short array with x scale throws dll not found exception
         /// </summary>
@@ -83,7 +83,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new short[] {1, 2, 3}, 3, 1.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs short array with x scale and x start throws dll not found exception
         /// </summary>
@@ -92,7 +92,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new short[] {1, 2, 3}, 3, 1.0, 0.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs short array with x scale x start and flags throws dll not found exception
         /// </summary>
@@ -101,7 +101,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new short[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotStairsFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs short array with x scale x start flags and offset throws dll not found exception
         /// </summary>
@@ -110,7 +110,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new short[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotStairsFlags.None, 1));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs short array with x scale x start flags offset and stride throws dll not found exception
         /// </summary>
@@ -119,7 +119,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new short[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotStairsFlags.None, 1, 2));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs u short array throws dll not found exception
         /// </summary>
@@ -128,7 +128,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new ushort[] {1, 2, 3}, 3));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs u short array with x scale throws dll not found exception
         /// </summary>
@@ -137,7 +137,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new ushort[] {1, 2, 3}, 3, 1.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs u short array with x scale and x start throws dll not found exception
         /// </summary>
@@ -146,7 +146,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new ushort[] {1, 2, 3}, 3, 1.0, 0.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs u short array with x scale x start and flags throws dll not found exception
         /// </summary>
@@ -155,7 +155,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new ushort[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotStairsFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs u short array with x scale x start flags and offset throws dll not found exception
         /// </summary>
@@ -164,7 +164,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new ushort[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotStairsFlags.None, 1));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs u short array with x scale x start flags offset and stride throws dll not found exception
         /// </summary>
@@ -173,7 +173,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new ushort[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotStairsFlags.None, 1, 2));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs int array throws dll not found exception
         /// </summary>
@@ -182,7 +182,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new[] {1, 2, 3}, 3));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs int array with x scale throws dll not found exception
         /// </summary>
@@ -191,7 +191,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new[] {1, 2, 3}, 3, 1.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs int array with x scale and x start throws dll not found exception
         /// </summary>
@@ -200,7 +200,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new[] {1, 2, 3}, 3, 1.0, 0.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs int array with x scale x start and flags throws dll not found exception
         /// </summary>
@@ -209,7 +209,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotStairsFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs int array with x scale x start flags and offset throws dll not found exception
         /// </summary>
@@ -218,7 +218,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotStairsFlags.None, 1));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs int array with x scale x start flags offset and stride throws dll not found exception
         /// </summary>
@@ -227,7 +227,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotStairsFlags.None, 1, 2));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs u int array throws dll not found exception
         /// </summary>
@@ -236,7 +236,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new uint[] {1, 2, 3}, 3));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs u int array with x scale throws dll not found exception
         /// </summary>
@@ -245,7 +245,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new uint[] {1, 2, 3}, 3, 1.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs u int array with x scale and x start throws dll not found exception
         /// </summary>
@@ -254,7 +254,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new uint[] {1, 2, 3}, 3, 1.0, 0.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs u int array with x scale x start and flags throws dll not found exception
         /// </summary>
@@ -263,7 +263,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new uint[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotStairsFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs u int array with x scale x start flags and offset throws dll not found exception
         /// </summary>
@@ -272,7 +272,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new uint[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotStairsFlags.None, 1));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs u int array with x scale x start flags offset and stride throws dll not found exception
         /// </summary>
@@ -281,7 +281,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new uint[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotStairsFlags.None, 1, 2));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs long array throws dll not found exception
         /// </summary>
@@ -290,7 +290,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new long[] {1, 2, 3}, 3));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs long array with x scale throws dll not found exception
         /// </summary>
@@ -299,7 +299,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new long[] {1, 2, 3}, 3, 1.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs long array with x scale and x start throws dll not found exception
         /// </summary>
@@ -308,7 +308,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new long[] {1, 2, 3}, 3, 1.0, 0.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs long array with x scale x start and flags throws dll not found exception
         /// </summary>
@@ -317,7 +317,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new long[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotStairsFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs long array with x scale x start flags and offset throws dll not found exception
         /// </summary>
@@ -326,7 +326,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new long[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotStairsFlags.None, 1));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs long array with x scale x start flags offset and stride throws dll not found exception
         /// </summary>
@@ -335,7 +335,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new long[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotStairsFlags.None, 1, 2));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs u long array throws dll not found exception
         /// </summary>
@@ -344,7 +344,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new ulong[] {1, 2, 3}, 3));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs u long array with x scale throws dll not found exception
         /// </summary>
@@ -353,7 +353,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new ulong[] {1, 2, 3}, 3, 1.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs u long array with x scale and x start throws dll not found exception
         /// </summary>
@@ -362,7 +362,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new ulong[] {1, 2, 3}, 3, 1.0, 0.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs u long array with x scale x start and flags throws dll not found exception
         /// </summary>
@@ -371,7 +371,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new ulong[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotStairsFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs u long array with x scale x start flags and offset throws dll not found exception
         /// </summary>
@@ -380,7 +380,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new ulong[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotStairsFlags.None, 1));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs u long array with x scale x start flags offset and stride throws dll not found exception
         /// </summary>
@@ -389,7 +389,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new ulong[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotStairsFlags.None, 1, 2));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs float ref throws dll not found exception
         /// </summary>
@@ -399,7 +399,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float xs = 1.0f, ys = 2.0f;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", ref xs, ref ys, 3));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs float ref with flags throws dll not found exception
         /// </summary>
@@ -409,7 +409,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float xs = 1.0f, ys = 2.0f;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", ref xs, ref ys, 3, ImPlotStairsFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs float ref with flags and offset throws dll not found exception
         /// </summary>
@@ -419,7 +419,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float xs = 1.0f, ys = 2.0f;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", ref xs, ref ys, 3, ImPlotStairsFlags.None, 1));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs float ref with flags offset and stride throws dll not found exception
         /// </summary>
@@ -429,7 +429,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float xs = 1.0f, ys = 2.0f;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", ref xs, ref ys, 3, ImPlotStairsFlags.None, 1, 2));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs double ref throws dll not found exception
         /// </summary>
@@ -439,7 +439,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 1.0, ys = 2.0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", ref xs, ref ys, 3));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs double ref with flags throws dll not found exception
         /// </summary>
@@ -449,7 +449,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 1.0, ys = 2.0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", ref xs, ref ys, 3, ImPlotStairsFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs double ref with flags and offset throws dll not found exception
         /// </summary>
@@ -459,7 +459,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 1.0, ys = 2.0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", ref xs, ref ys, 3, ImPlotStairsFlags.None, 1));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs double ref with flags offset and stride throws dll not found exception
         /// </summary>
@@ -469,7 +469,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 1.0, ys = 2.0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", ref xs, ref ys, 3, ImPlotStairsFlags.None, 1, 2));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs s byte ref throws dll not found exception
         /// </summary>
@@ -479,7 +479,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             sbyte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", ref xs, ref ys, 3));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs s byte ref with flags throws dll not found exception
         /// </summary>
@@ -489,7 +489,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             sbyte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", ref xs, ref ys, 3, ImPlotStairsFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs s byte ref with flags and offset throws dll not found exception
         /// </summary>
@@ -499,7 +499,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             sbyte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", ref xs, ref ys, 3, ImPlotStairsFlags.None, 1));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs s byte ref with flags offset and stride throws dll not found exception
         /// </summary>
@@ -509,7 +509,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             sbyte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", ref xs, ref ys, 3, ImPlotStairsFlags.None, 1, 2));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs byte ref throws dll not found exception
         /// </summary>
@@ -519,7 +519,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             byte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", ref xs, ref ys, 3));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs byte ref with flags throws dll not found exception
         /// </summary>
@@ -529,7 +529,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             byte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", ref xs, ref ys, 3, ImPlotStairsFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot stairs byte ref with flags and offset throws dll not found exception
         /// </summary>

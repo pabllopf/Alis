@@ -1,29 +1,58 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:PolygonShape.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 /* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
 
 /*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-* 
-* Original source Box2D:
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
-* 
-* This software is provided 'as-is', without any express or implied 
-* warranty.  In no event will the authors be held liable for any damages 
-* arising from the use of this software. 
-* Permission is granted to anyone to use this software for any purpose, 
-* including commercial applications, and to alter it and redistribute it 
-* freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
-* claim that you wrote the original software. If you use this software 
-* in a product, an acknowledgment in the product documentation would be 
-* appreciated but is not required. 
-* 2. Altered source versions must be plainly marked as such, and must not be 
-* misrepresented as being the original software. 
-* 3. This notice may not be removed or altered from any source distribution. 
-*/
+ * Farseer Physics Engine:
+ * Copyright (c) 2012 Ian Qvist
+ *
+ * Original source Box2D:
+ * Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
@@ -37,16 +66,15 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 namespace Alis.Core.Physic.Collision.Shapes
 {
     /// <summary>
-    /// Represents a simple non-selfintersecting convex polygon.
-    /// Create a convex hull from the given array of points.
+    ///     Represents a simple non-selfintersecting convex polygon.
+    ///     Create a convex hull from the given array of points.
     /// </summary>
     public class PolygonShape : Shape
     {
         private Vertices _vertices;
-        private Vertices _normals;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PolygonShape"/> class.
+        ///     Initializes a new instance of the <see cref="PolygonShape" /> class.
         /// </summary>
         /// <param name="vertices">The vertices.</param>
         /// <param name="density">The density.</param>
@@ -60,7 +88,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>
-        /// Create a new PolygonShape with the specified density.
+        ///     Create a new PolygonShape with the specified density.
         /// </summary>
         /// <param name="density">The density.</param>
         public PolygonShape(float density)
@@ -71,7 +99,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             ShapeType = ShapeType.Polygon;
             _radius = Settings.PolygonRadius;
             _vertices = new Vertices(Settings.MaxPolygonVertices);
-            _normals = new Vertices(Settings.MaxPolygonVertices);
+            Normals = new Vertices(Settings.MaxPolygonVertices);
         }
 
         internal PolygonShape()
@@ -80,23 +108,23 @@ namespace Alis.Core.Physic.Collision.Shapes
             ShapeType = ShapeType.Polygon;
             _radius = Settings.PolygonRadius;
             _vertices = new Vertices(Settings.MaxPolygonVertices);
-            _normals = new Vertices(Settings.MaxPolygonVertices);
+            Normals = new Vertices(Settings.MaxPolygonVertices);
         }
 
         /// <summary>
-        /// Create a convex hull from the given array of local points.
-        /// The number of vertices must be in the range [3, Settings.MaxPolygonVertices].
-        /// Warning: the points may be re-ordered, even if they form a convex polygon
-        /// Warning: collinear points are handled but not removed. Collinear points may lead to poor stacking behavior.
+        ///     Create a convex hull from the given array of local points.
+        ///     The number of vertices must be in the range [3, Settings.MaxPolygonVertices].
+        ///     Warning: the points may be re-ordered, even if they form a convex polygon
+        ///     Warning: collinear points are handled but not removed. Collinear points may lead to poor stacking behavior.
         /// </summary>
         public Vertices Vertices
         {
-            get { return _vertices; }
+            get => _vertices;
             set
             {
                 _vertices = new Vertices(value);
 
-                Debug.Assert(_vertices.Count >= 3 && _vertices.Count <= Settings.MaxPolygonVertices);
+                Debug.Assert((_vertices.Count >= 3) && (_vertices.Count <= Settings.MaxPolygonVertices));
 
                 if (Settings.UseConvexHullPolygons)
                 {
@@ -108,7 +136,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                         _vertices = GiftWrap.GetConvexHull(_vertices);
                 }
 
-                _normals = new Vertices(_vertices.Count);
+                Normals = new Vertices(_vertices.Count);
 
                 // Compute normals. Ensure the edges have non-zero length.
                 for (int i = 0; i < _vertices.Count; ++i)
@@ -120,7 +148,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                     //FPE optimization: Normals.Add(MathUtils.Cross(edge, 1.0f));
                     Vector2 temp = new Vector2(edge.Y, -edge.X);
                     temp.Normalize();
-                    _normals.Add(temp);
+                    Normals.Add(temp);
                 }
 
                 // Compute the polygon mass data
@@ -128,9 +156,9 @@ namespace Alis.Core.Physic.Collision.Shapes
             }
         }
 
-        public Vertices Normals { get { return _normals; } }
+        public Vertices Normals { get; private set; }
 
-        public override int ChildCount { get { return 1; } }
+        public override int ChildCount => 1;
 
         protected override void ComputeProperties()
         {
@@ -178,6 +206,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             {
                 s += Vertices[i];
             }
+
             s *= 1.0f / Vertices.Count;
 
             const float k_inv3 = 1.0f / 3.0f;
@@ -202,7 +231,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                 float intx2 = ex1 * ex1 + ex2 * ex1 + ex2 * ex2;
                 float inty2 = ey1 * ey1 + ey2 * ey1 + ey2 * ey2;
 
-                I += (0.25f * k_inv3 * D) * (intx2 + inty2);
+                I += 0.25f * k_inv3 * D * (intx2 + inty2);
             }
 
             //The area is too small for the engine to handle.
@@ -275,14 +304,14 @@ namespace Alis.Core.Physic.Collision.Shapes
                     // lower < numerator / denominator, where denominator < 0
                     // Since denominator < 0, we have to flip the inequality:
                     // lower < numerator / denominator <==> denominator * lower > numerator.
-                    if (denominator < 0.0f && numerator < lower * denominator)
+                    if ((denominator < 0.0f) && (numerator < lower * denominator))
                     {
                         // Increase lower.
                         // The segment enters this half-space.
                         lower = numerator / denominator;
                         index = i;
                     }
-                    else if (denominator > 0.0f && numerator < upper * denominator)
+                    else if ((denominator > 0.0f) && (numerator < upper * denominator))
                     {
                         // Decrease upper.
                         // The segment exits this half-space.
@@ -300,7 +329,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                 }
             }
 
-            Debug.Assert(0.0f <= lower && lower <= input.MaxFraction);
+            Debug.Assert((0.0f <= lower) && (lower <= input.MaxFraction));
 
             if (index >= 0)
             {
@@ -313,7 +342,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>
-        /// Given a transform, compute the associated axis aligned bounding box for a child shape.
+        ///     Given a transform, compute the associated axis aligned bounding box for a child shape.
         /// </summary>
         /// <param name="aabb">The aabb results.</param>
         /// <param name="transform">The world transform of the shape.</param>
@@ -321,19 +350,19 @@ namespace Alis.Core.Physic.Collision.Shapes
         public override void ComputeAABB(out AABB aabb, ref Transform transform, int childIndex)
         {
             aabb = new AABB();
-            
+
             // OPT: aabb.LowerBound = Transform.Multiply(Vertices[0], ref transform);
             var vert = Vertices[0];
-            aabb.LowerBound.X = (vert.X * transform.q.R - vert.Y * transform.q.i) + transform.p.X;
-            aabb.LowerBound.Y = (vert.Y * transform.q.R + vert.X * transform.q.i) + transform.p.Y;
+            aabb.LowerBound.X = vert.X * transform.q.R - vert.Y * transform.q.i + transform.p.X;
+            aabb.LowerBound.Y = vert.Y * transform.q.R + vert.X * transform.q.i + transform.p.Y;
             aabb.UpperBound = aabb.LowerBound;
 
             for (int i = 1; i < Vertices.Count; ++i)
             {
                 // OPT: Vector2 v = Transform.Multiply(Vertices[i], ref transform);
                 vert = Vertices[i];
-                float vX = (vert.X * transform.q.R - vert.Y * transform.q.i) + transform.p.X;
-                float vY = (vert.Y * transform.q.R + vert.X * transform.q.i) + transform.p.Y;
+                float vX = vert.X * transform.q.R - vert.Y * transform.q.i + transform.p.X;
+                float vY = vert.Y * transform.q.R + vert.X * transform.q.i + transform.p.Y;
 
                 // OPT: Vector2.Min(ref aabb.LowerBound, ref v, out aabb.LowerBound);
                 // OPT: Vector2.Max(ref aabb.UpperBound, ref v, out aabb.UpperBound);
@@ -392,8 +421,10 @@ namespace Alis.Core.Physic.Collision.Shapes
                         }
                     }
                 }
+
                 lastSubmerged = isSubmerged;
             }
+
             switch (diveCount)
             {
                 case 0:
@@ -415,6 +446,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                     {
                         outoIndex = Vertices.Count - 1;
                     }
+
                     break;
             }
 
@@ -481,7 +513,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                     return false;
             }
 
-            return (Radius == shape.Radius && MassData == shape.MassData);
+            return (Radius == shape.Radius) && (MassData == shape.MassData);
         }
 
         public override Shape Clone()
@@ -491,7 +523,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             clone._radius = _radius;
             clone._density = _density;
             clone._vertices = new Vertices(_vertices);
-            clone._normals = new Vertices(_normals);
+            clone.Normals = new Vertices(Normals);
             clone.MassData = MassData;
             return clone;
         }

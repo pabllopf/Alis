@@ -42,11 +42,11 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Sample
         public static void Main()
         {
             FastPriorityQueueExample.RunExample();
-            
+
             Logger.Trace("------------------------------");
-            
+
             SimplePriorityQueueExample.RunExample();
-            
+
             Logger.Trace("End Program...");
         }
     }

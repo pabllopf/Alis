@@ -48,7 +48,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             EventType expectedType = EventType.FirstEvent;
             byte expectedState = 0;
             byte expectedRepeat = 0;
-            
+
             KeySym expectedKeySym = new KeySym
             {
                 scancode = SdlScancode.SdlScancodeA,
@@ -56,12 +56,12 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
                 mod = KeyMods.KModShift,
                 unicode = 'a'
             };
-            
+
             KeyboardEvent keyboardEvent = new KeyboardEvent
             {
                 KeySym = expectedKeySym
             };
-            
+
             Assert.Equal(expectedType, keyboardEvent.type);
             Assert.Equal(expectedState, keyboardEvent.state);
             Assert.Equal(expectedRepeat, keyboardEvent.repeat);

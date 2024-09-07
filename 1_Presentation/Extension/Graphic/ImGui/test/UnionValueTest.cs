@@ -45,14 +45,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             UnionValue unionValue = new UnionValue {ValueI32 = 42};
-            
+
             // Act
             int value = unionValue.ValueI32;
-            
+
             // Assert
             Assert.Equal(42, value);
         }
-        
+
         /// <summary>
         ///     Tests that value f 32 should be initialized correctly
         /// </summary>
@@ -61,14 +61,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             UnionValue unionValue = new UnionValue {ValueF32 = 42.0f};
-            
+
             // Act
             float value = unionValue.ValueF32;
-            
+
             // Assert
             Assert.Equal(42.0f, value);
         }
-        
+
         /// <summary>
         ///     Tests that value ptr should be initialized correctly
         /// </summary>
@@ -78,14 +78,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
             // Arrange
             IntPtr ptr = new IntPtr(42);
             UnionValue unionValue = new UnionValue {ValuePtr = ptr};
-            
+
             // Act
             IntPtr value = unionValue.ValuePtr;
-            
+
             // Assert
             Assert.Equal(ptr, value);
         }
-        
+
         /// <summary>
         ///     Tests that value i 32 should overwrite value f 32
         /// </summary>
@@ -94,15 +94,15 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             UnionValue unionValue = new UnionValue {ValueF32 = 42.0f};
-            
+
             // Act
             unionValue.ValueI32 = 42;
-            
+
             // Assert
             Assert.Equal(42, unionValue.ValueI32);
             Assert.NotEqual(42.0f, unionValue.ValueF32);
         }
-        
+
         /// <summary>
         ///     Tests that value f 32 should overwrite value i 32
         /// </summary>
@@ -111,15 +111,15 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             UnionValue unionValue = new UnionValue {ValueI32 = 42};
-            
+
             // Act
             unionValue.ValueF32 = 42.0f;
-            
+
             // Assert
             Assert.Equal(42.0f, unionValue.ValueF32);
             Assert.NotEqual(42, unionValue.ValueI32);
         }
-        
+
         /// <summary>
         ///     Tests that value ptr should overwrite value i 32
         /// </summary>
@@ -129,10 +129,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
             // Arrange
             UnionValue unionValue = new UnionValue {ValueI32 = 42};
             IntPtr ptr = new IntPtr(42);
-            
+
             // Act
             unionValue.ValuePtr = ptr;
-            
+
             // Assert
             Assert.Equal(ptr, unionValue.ValuePtr);
             Assert.Equal(42, unionValue.ValueI32);

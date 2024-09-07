@@ -45,7 +45,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             StablePriorityQueueNode node = new StablePriorityQueueNode();
             Assert.Equal(0, node.InsertionIndex);
         }
-        
+
         /// <summary>
         ///     Tests that insertion index set correctly
         /// </summary>

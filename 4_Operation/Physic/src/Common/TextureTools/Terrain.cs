@@ -1,4 +1,33 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Terrain.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
@@ -16,76 +45,78 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 namespace Alis.Core.Physic.Common.TextureTools
 {
     /// <summary>
-    /// Simple class to maintain a terrain. It can keep track
+    ///     Simple class to maintain a terrain. It can keep track
     /// </summary>
     public class Terrain
     {
         /// <summary>
-        /// World to manage terrain in.
+        ///     Generated bodies.
         /// </summary>
-        public World World;
+        private List<Body>[,] _bodyMap;
+
+        private AABB _dirtyArea;
+        private float _localHeight;
+
+        private float _localWidth;
 
         /// <summary>
-        /// Center of terrain in world units.
+        ///     Point cloud defining the terrain.
         /// </summary>
-        public Vector2 Center;
+        private sbyte[,] _terrainMap;
+
+        private Vector2 _topLeft;
+        private int _xnum;
+        private int _ynum;
 
         /// <summary>
-        /// Width of terrain in world units.
-        /// </summary>
-        public float Width;
-
-        /// <summary>
-        /// Height of terrain in world units.
-        /// </summary>
-        public float Height;
-
-        /// <summary>
-        /// Points per each world unit used to define the terrain in the point cloud.
-        /// </summary>
-        public int PointsPerUnit;
-
-        /// <summary>
-        /// Points per cell.
+        ///     Points per cell.
         /// </summary>
         public int CellSize;
 
         /// <summary>
-        /// Points per sub cell.
+        ///     Center of terrain in world units.
         /// </summary>
-        public int SubCellSize;
+        public Vector2 Center;
 
         /// <summary>
-        /// Number of iterations to perform in the Marching Squares algorithm.
-        /// Note: More then 3 has almost no effect on quality.
-        /// </summary>
-        public int Iterations = 2;
-
-        /// <summary>
-        /// Decomposer to use when regenerating terrain. Can be changed on the fly without consequence.
-        /// Note: Some decomposerers are unstable.
+        ///     Decomposer to use when regenerating terrain. Can be changed on the fly without consequence.
+        ///     Note: Some decomposerers are unstable.
         /// </summary>
         public TriangulationAlgorithm Decomposer;
 
         /// <summary>
-        /// Point cloud defining the terrain.
+        ///     Height of terrain in world units.
         /// </summary>
-        private sbyte[,] _terrainMap;
+        public float Height;
 
         /// <summary>
-        /// Generated bodies.
+        ///     Number of iterations to perform in the Marching Squares algorithm.
+        ///     Note: More then 3 has almost no effect on quality.
         /// </summary>
-        private List<Body>[,] _bodyMap;
-
-        private float _localWidth;
-        private float _localHeight;
-        private int _xnum;
-        private int _ynum;
-        private AABB _dirtyArea;
-        private Vector2 _topLeft;
+        public int Iterations = 2;
 
         /// <summary>
-        /// Creates a new terrain.
+        ///     Points per each world unit used to define the terrain in the point cloud.
+        /// </summary>
+        public int PointsPerUnit;
+
+        /// <summary>
+        ///     Points per sub cell.
+        /// </summary>
+        public int SubCellSize;
+
+        /// <summary>
+        ///     Width of terrain in world units.
+        /// </summary>
+        public float Width;
+
+        /// <summary>
+        ///     World to manage terrain in.
+        /// </summary>
+        public World World;
+
+        /// <summary>
+        ///     Creates a new terrain.
         /// </summary>
         /// <param name="world">The World</param>
         /// <param name="area">The area of the terrain.</param>
@@ -98,7 +129,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         }
 
         /// <summary>
-        /// Creates a new terrain
+        ///     Creates a new terrain
         /// </summary>
         /// <param name="world">The World</param>
         /// <param name="position">The position (center) of the terrain.</param>
@@ -113,18 +144,18 @@ namespace Alis.Core.Physic.Common.TextureTools
         }
 
         /// <summary>
-        /// Initialize the terrain for use.
+        ///     Initialize the terrain for use.
         /// </summary>
         public void Initialize()
         {
             // find top left of terrain in world space
-            _topLeft = new Vector2(Center.X - (Width * 0.5f), Center.Y - (-Height * 0.5f));
+            _topLeft = new Vector2(Center.X - Width * 0.5f, Center.Y - -Height * 0.5f);
 
             // convert the terrains size to a point cloud size
             _localWidth = Width * PointsPerUnit;
             _localHeight = Height * PointsPerUnit;
 
-            _terrainMap = new sbyte[(int)_localWidth + 1, (int)_localHeight + 1];
+            _terrainMap = new sbyte[(int) _localWidth + 1, (int) _localHeight + 1];
 
             for (int x = 0; x < _localWidth; x++)
             {
@@ -134,8 +165,8 @@ namespace Alis.Core.Physic.Common.TextureTools
                 }
             }
 
-            _xnum = (int)(_localWidth / CellSize);
-            _ynum = (int)(_localHeight / CellSize);
+            _xnum = (int) (_localWidth / CellSize);
+            _ynum = (int) (_localHeight / CellSize);
             _bodyMap = new List<Body>[_xnum, _ynum];
 
             // make sure to mark the dirty area to an infinitely small box
@@ -143,7 +174,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         }
 
         /// <summary>
-        /// Apply the specified texture data to the terrain.
+        ///     Apply the specified texture data to the terrain.
         /// </summary>
         /// <param name="data"></param>
         /// <param name="offset"></param>
@@ -153,9 +184,9 @@ namespace Alis.Core.Physic.Common.TextureTools
             {
                 for (int y = 0; y < data.GetUpperBound(1); y++)
                 {
-                    if (x + offset.X >= 0 && x + offset.X < _localWidth && y + offset.Y >= 0 && y + offset.Y < _localHeight)
+                    if ((x + offset.X >= 0) && (x + offset.X < _localWidth) && (y + offset.Y >= 0) && (y + offset.Y < _localHeight))
                     {
-                        _terrainMap[(int)(x + offset.X), (int)(y + offset.Y)] = data[x, y];
+                        _terrainMap[(int) (x + offset.X), (int) (y + offset.Y)] = data[x, y];
                     }
                 }
             }
@@ -164,7 +195,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         }
 
         /// <summary>
-        /// Modify a single point in the terrain.
+        ///     Modify a single point in the terrain.
         /// </summary>
         /// <param name="location">World location to modify. Automatically clipped.</param>
         /// <param name="value">-1 = inside terrain, 1 = outside terrain</param>
@@ -178,9 +209,9 @@ namespace Alis.Core.Physic.Common.TextureTools
             p.X = p.X * _localWidth / Width;
             p.Y = p.Y * -_localHeight / Height;
 
-            if (p.X >= 0 && p.X < _localWidth && p.Y >= 0 && p.Y < _localHeight)
+            if ((p.X >= 0) && (p.X < _localWidth) && (p.Y >= 0) && (p.Y < _localHeight))
             {
-                _terrainMap[(int)p.X, (int)p.Y] = value;
+                _terrainMap[(int) p.X, (int) p.Y] = value;
 
                 // expand dirty area
                 if (p.X < _dirtyArea.LowerBound.X) _dirtyArea.LowerBound.X = p.X;
@@ -192,21 +223,21 @@ namespace Alis.Core.Physic.Common.TextureTools
         }
 
         /// <summary>
-        /// Regenerate the terrain.
+        ///     Regenerate the terrain.
         /// </summary>
         public void RegenerateTerrain()
         {
             //iterate effected cells
-            int xStart = (int)(_dirtyArea.LowerBound.X / CellSize);
+            int xStart = (int) (_dirtyArea.LowerBound.X / CellSize);
             if (xStart < 0) xStart = 0;
 
-            int xEnd = (int)(_dirtyArea.UpperBound.X / CellSize) + 1;
+            int xEnd = (int) (_dirtyArea.UpperBound.X / CellSize) + 1;
             if (xEnd > _xnum) xEnd = _xnum;
 
-            int yStart = (int)(_dirtyArea.LowerBound.Y / CellSize);
+            int yStart = (int) (_dirtyArea.LowerBound.Y / CellSize);
             if (yStart < 0) yStart = 0;
 
-            int yEnd = (int)(_dirtyArea.UpperBound.Y / CellSize) + 1;
+            int yEnd = (int) (_dirtyArea.UpperBound.Y / CellSize) + 1;
             if (yEnd > _ynum) yEnd = _ynum;
 
             RemoveOldData(xStart, xEnd, yStart, yEnd);

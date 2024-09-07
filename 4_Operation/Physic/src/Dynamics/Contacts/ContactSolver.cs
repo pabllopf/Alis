@@ -1,4 +1,31 @@
-// Copyright (c) 2017 Kastellanos Nikolaos
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ContactSolver.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 /* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
@@ -6,32 +33,33 @@
  */
 
 /*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-* 
-* Original source Box2D:
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
-* 
-* This software is provided 'as-is', without any express or implied 
-* warranty.  In no event will the authors be held liable for any damages 
-* arising from the use of this software. 
-* Permission is granted to anyone to use this software for any purpose, 
-* including commercial applications, and to alter it and redistribute it 
-* freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
-* claim that you wrote the original software. If you use this software 
-* in a product, an acknowledgment in the product documentation would be 
-* appreciated but is not required. 
-* 2. Altered source versions must be plainly marked as such, and must not be 
-* misrepresented as being the original software. 
-* 3. This notice may not be removed or altered from any source distribution. 
-*/
+ * Farseer Physics Engine:
+ * Copyright (c) 2012 Ian Qvist
+ *
+ * Original source Box2D:
+ * Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 #if XNAAPI
 using Complex = nkast.Aether.Physics2D.Common.Complex;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 #endif
 using System;
+using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
@@ -44,45 +72,45 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 {
     public sealed class ContactPositionConstraint
     {
-        public Vector2[] localPoints = new Vector2[Settings.MaxManifoldPoints];
-        public Vector2 localNormal;
-        public Vector2 localPoint;
         public int indexA;
         public int indexB;
+        public float invIA, invIB;
         public float invMassA, invMassB;
         public Vector2 localCenterA, localCenterB;
-        public float invIA, invIB;
-        public ManifoldType type;
-        public float radiusA, radiusB;
+        public Vector2 localNormal;
+        public Vector2 localPoint;
+        public Vector2[] localPoints = new Vector2[Settings.MaxManifoldPoints];
         public int pointCount;
+        public float radiusA, radiusB;
+        public ManifoldType type;
     }
 
     public sealed class VelocityConstraintPoint
     {
+        public float normalImpulse;
+        public float normalMass;
         public Vector2 rA;
         public Vector2 rB;
-        public float normalImpulse;
         public float tangentImpulse;
-        public float normalMass;
         public float tangentMass;
         public float velocityBias;
     }
 
     public sealed class ContactVelocityConstraint
     {
-        public VelocityConstraintPoint[] points = new VelocityConstraintPoint[Settings.MaxManifoldPoints];
-        public Vector2 normal;
-        public Mat22 normalMass;
-        public Mat22 K;
+        public int contactIndex;
+        public float friction;
         public int indexA;
         public int indexB;
-        public float invMassA, invMassB;
         public float invIA, invIB;
-        public float friction;
+        public float invMassA, invMassB;
+        public Mat22 K;
+        public Vector2 normal;
+        public Mat22 normalMass;
+        public int pointCount;
+        public VelocityConstraintPoint[] points = new VelocityConstraintPoint[Settings.MaxManifoldPoints];
         public float restitution;
         public float tangentSpeed;
-        public int pointCount;
-        public int contactIndex;
 
         public ContactVelocityConstraint()
         {
@@ -95,15 +123,15 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
     public class ContactSolver
     {
-        internal SolverPosition[] _positions;
-        internal SolverVelocity[] _velocities;
-        internal int[] _locks;
-        public ContactPositionConstraint[] _positionConstraints;
-        public ContactVelocityConstraint[] _velocityConstraints;
         public Contact[] _contacts;
         public int _count;
-        int _velocityConstraintsMultithreadThreshold;
-        int _positionConstraintsMultithreadThreshold;
+        internal int[] _locks;
+        public ContactPositionConstraint[] _positionConstraints;
+        private int _positionConstraintsMultithreadThreshold;
+        internal SolverPosition[] _positions;
+        internal SolverVelocity[] _velocities;
+        public ContactVelocityConstraint[] _velocityConstraints;
+        private int _velocityConstraintsMultithreadThreshold;
 
         internal void Reset(ref TimeStep step, int count, Contact[] contacts, SolverPosition[] positions, SolverVelocity[] velocities,
             int[] locks, int velocityConstraintsMultithreadThreshold, int positionConstraintsMultithreadThreshold)
@@ -120,9 +148,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             if (_velocityConstraints == null || _velocityConstraints.Length < count)
             {
                 int newBufferCount = Math.Max(count, 32);
-                newBufferCount = newBufferCount + (newBufferCount * 2 >> 4); // grow by x1.125f
-                newBufferCount = (newBufferCount + 31) & (~31); // grow in chunks of 32.
-                int oldBufferCount = (_velocityConstraints == null) ? 0 : _velocityConstraints.Length;
+                newBufferCount = newBufferCount + ((newBufferCount * 2) >> 4); // grow by x1.125f
+                newBufferCount = (newBufferCount + 31) & ~31; // grow in chunks of 32.
+                int oldBufferCount = _velocityConstraints == null ? 0 : _velocityConstraints.Length;
                 Array.Resize(ref _velocityConstraints, newBufferCount);
                 Array.Resize(ref _positionConstraints, newBufferCount);
 
@@ -362,11 +390,11 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
         public void SolveVelocityConstraints()
         {
-            if (_count >= _velocityConstraintsMultithreadThreshold && System.Environment.ProcessorCount > 1)
+            if ((_count >= _velocityConstraintsMultithreadThreshold) && (Environment.ProcessorCount > 1))
             {
                 if (_count == 0) return;
-                var batchSize = (int)Math.Ceiling((float)_count / System.Environment.ProcessorCount);
-                var batches = (int)Math.Ceiling((float)_count / batchSize);
+                var batchSize = (int) Math.Ceiling((float) _count / Environment.ProcessorCount);
+                var batches = (int) Math.Ceiling((float) _count / batchSize);
 
 #if NET40 || NET45 || NETSTANDARD2_0_OR_GREATER
                 SolveVelocityConstraintsWaitLock.Reset(batches);
@@ -374,8 +402,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 {
                     var start = i * batchSize;
                     var end = Math.Min(start + batchSize, _count);
-                    ThreadPool.QueueUserWorkItem( SolveVelocityConstraintsCallback, SolveVelocityConstraintsState.Get(this, start,end));                    
+                    ThreadPool.QueueUserWorkItem(SolveVelocityConstraintsCallback, SolveVelocityConstraintsState.Get(this, start, end));
                 }
+
                 // We avoid SolveVelocityConstraintsWaitLock.Wait(); because it spins a few milliseconds before going into sleep. Going into sleep(0) directly in a while loop is faster.
                 while (SolveVelocityConstraintsWaitLock.CurrentCount > 0)
                     Thread.Sleep(0);
@@ -384,55 +413,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 #endif
             }
             else
-            {                
+            {
                 SolveVelocityConstraints(0, _count);
             }
-
-            return;
         }
-
-#if NET40 || NET45 || NETSTANDARD2_0_OR_GREATER
-        CountdownEvent SolveVelocityConstraintsWaitLock = new CountdownEvent(0);
-        static void SolveVelocityConstraintsCallback(object state)
-        {
-            var svcState = (SolveVelocityConstraintsState)state;
-
-            svcState.ContactSolver.SolveVelocityConstraints(svcState.Start, svcState.End);
-            SolveVelocityConstraintsState.Return(svcState);
-            svcState.ContactSolver.SolveVelocityConstraintsWaitLock.Signal();
-        }
-
-        private class SolveVelocityConstraintsState
-        {
-            private static System.Collections.Concurrent.ConcurrentQueue<SolveVelocityConstraintsState> _queue = new System.Collections.Concurrent.ConcurrentQueue<SolveVelocityConstraintsState>(); // pool
-
-            public ContactSolver ContactSolver;
-            public int Start { get; private set; }
-            public int End { get; private set; }
-
-            private SolveVelocityConstraintsState()
-            {
-            }
-
-            internal static object Get(ContactSolver contactSolver, int start, int end)
-            {
-                SolveVelocityConstraintsState result;
-                if (!_queue.TryDequeue(out result))
-                    result = new SolveVelocityConstraintsState();
-
-                result.ContactSolver = contactSolver;
-                result.Start = start;
-                result.End = end;
-
-                return result;
-            }
-
-            internal static void Return(object state)
-            {
-                _queue.Enqueue((SolveVelocityConstraintsState)state);
-            }
-        }
-#endif
 
         private void SolveVelocityConstraints(int start, int end)
         {
@@ -449,15 +433,16 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     orderedIndexA = vc.indexB;
                     orderedIndexB = vc.indexA;
                 }
-                
-                for (; ; )
+
+                for (;;)
                 {
                     if (Interlocked.CompareExchange(ref _locks[orderedIndexA], 1, 0) == 0)
                     {
                         if (Interlocked.CompareExchange(ref _locks[orderedIndexB], 1, 0) == 0)
                             break;
-                        System.Threading.Interlocked.Exchange(ref _locks[orderedIndexA], 0);
+                        Interlocked.Exchange(ref _locks[orderedIndexA], 0);
                     }
+
                     Thread.Sleep(0);
                 }
 #endif
@@ -492,7 +477,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                     // Compute tangent force
                     float vt = Vector2.Dot(dv, tangent) - vc.tangentSpeed;
-                    float lambda = vcp.tangentMass * (-vt);
+                    float lambda = vcp.tangentMass * -vt;
 
                     // b2Clamp the accumulated force
                     float maxFriction = friction * vcp.normalImpulse;
@@ -574,7 +559,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     VelocityConstraintPoint cp2 = vc.points[1];
 
                     Vector2 a = new Vector2(cp1.normalImpulse, cp2.normalImpulse);
-                    Debug.Assert(a.X >= 0.0f && a.Y >= 0.0f);
+                    Debug.Assert((a.X >= 0.0f) && (a.Y >= 0.0f));
 
                     // Relative velocity at contact
                     Vector2 dv1 = vB + MathUtils.Cross(wB, ref cp1.rB) - vA - MathUtils.Cross(wA, ref cp1.rA);
@@ -590,10 +575,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                     // Compute b'
                     b -= MathUtils.Mul(ref vc.K, ref a);
-                    
+
                     //B2_NOT_USED(k_errorTol);
 
-                    for (; ; )
+                    for (;;)
                     {
                         //
                         // Case 1: vn = 0
@@ -606,51 +591,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                         //
                         Vector2 x = -MathUtils.Mul(ref vc.normalMass, ref b);
 
-                        if (x.X >= 0.0f && x.Y >= 0.0f)
-                        {
-                            // Get the incremental impulse
-                            Vector2 d = x - a;
-
-                            // Apply incremental impulse
-                            Vector2 P1 = d.X * normal;
-                            Vector2 P2 = d.Y * normal;
-                            vA -= mA * (P1 + P2);
-                            wA -= iA * (MathUtils.Cross(ref cp1.rA, ref P1) + MathUtils.Cross(ref cp2.rA, ref P2));
-
-                            vB += mB * (P1 + P2);
-                            wB += iB * (MathUtils.Cross(ref cp1.rB, ref P1) + MathUtils.Cross(ref cp2.rB, ref P2));
-
-                            // Accumulate
-                            cp1.normalImpulse = x.X;
-                            cp2.normalImpulse = x.Y;
-
-#if B2_DEBUG_SOLVER 
-					// Postconditions
-					dv1 = vB + MathUtils.Cross(wB, cp1.rB) - vA - MathUtils.Cross(wA, cp1.rA);
-					dv2 = vB + MathUtils.Cross(wB, cp2.rB) - vA - MathUtils.Cross(wA, cp2.rA);
-
-					// Compute normal velocity
-					vn1 = Vector2.Dot(dv1, normal);
-					vn2 = Vector2.Dot(dv2, normal);
-
-					b2Assert(b2Abs(vn1 - cp1.velocityBias) < k_errorTol);
-					b2Assert(b2Abs(vn2 - cp2.velocityBias) < k_errorTol);
-#endif
-                            break;
-                        }
-
-                        //
-                        // Case 2: vn1 = 0 and x2 = 0
-                        //
-                        //   0 = a11 * x1 + a12 * 0 + b1' 
-                        // vn2 = a21 * x1 + a22 * 0 + b2'
-                        //
-                        x.X = -cp1.normalMass * b.X;
-                        x.Y = 0.0f;
-                        vn1 = 0.0f;
-                        vn2 = vc.K.ex.Y * x.X + b.Y;
-
-                        if (x.X >= 0.0f && vn2 >= 0.0f)
+                        if ((x.X >= 0.0f) && (x.Y >= 0.0f))
                         {
                             // Get the incremental impulse
                             Vector2 d = x - a;
@@ -669,13 +610,57 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                             cp2.normalImpulse = x.Y;
 
 #if B2_DEBUG_SOLVER
-					// Postconditions
-					dv1 = vB + MathUtils.Cross(wB, cp1.rB) - vA - MathUtils.Cross(wA, cp1.rA);
+                            // Postconditions
+                            dv1 = vB + MathUtils.Cross(wB, cp1.rB) - vA - MathUtils.Cross(wA, cp1.rA);
+                            dv2 = vB + MathUtils.Cross(wB, cp2.rB) - vA - MathUtils.Cross(wA, cp2.rA);
 
-					// Compute normal velocity
-					vn1 = Vector2.Dot(dv1, normal);
+                            // Compute normal velocity
+                            vn1 = Vector2.Dot(dv1, normal);
+                            vn2 = Vector2.Dot(dv2, normal);
 
-					b2Assert(b2Abs(vn1 - cp1.velocityBias) < k_errorTol);
+                            b2Assert(b2Abs(vn1 - cp1.velocityBias) < k_errorTol);
+                            b2Assert(b2Abs(vn2 - cp2.velocityBias) < k_errorTol);
+#endif
+                            break;
+                        }
+
+                        //
+                        // Case 2: vn1 = 0 and x2 = 0
+                        //
+                        //   0 = a11 * x1 + a12 * 0 + b1' 
+                        // vn2 = a21 * x1 + a22 * 0 + b2'
+                        //
+                        x.X = -cp1.normalMass * b.X;
+                        x.Y = 0.0f;
+                        vn1 = 0.0f;
+                        vn2 = vc.K.ex.Y * x.X + b.Y;
+
+                        if ((x.X >= 0.0f) && (vn2 >= 0.0f))
+                        {
+                            // Get the incremental impulse
+                            Vector2 d = x - a;
+
+                            // Apply incremental impulse
+                            Vector2 P1 = d.X * normal;
+                            Vector2 P2 = d.Y * normal;
+                            vA -= mA * (P1 + P2);
+                            wA -= iA * (MathUtils.Cross(ref cp1.rA, ref P1) + MathUtils.Cross(ref cp2.rA, ref P2));
+
+                            vB += mB * (P1 + P2);
+                            wB += iB * (MathUtils.Cross(ref cp1.rB, ref P1) + MathUtils.Cross(ref cp2.rB, ref P2));
+
+                            // Accumulate
+                            cp1.normalImpulse = x.X;
+                            cp2.normalImpulse = x.Y;
+
+#if B2_DEBUG_SOLVER
+                            // Postconditions
+                            dv1 = vB + MathUtils.Cross(wB, cp1.rB) - vA - MathUtils.Cross(wA, cp1.rA);
+
+                            // Compute normal velocity
+                            vn1 = Vector2.Dot(dv1, normal);
+
+                            b2Assert(b2Abs(vn1 - cp1.velocityBias) < k_errorTol);
 #endif
                             break;
                         }
@@ -692,7 +677,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                         vn1 = vc.K.ey.X * x.Y + b.X;
                         vn2 = 0.0f;
 
-                        if (x.Y >= 0.0f && vn1 >= 0.0f)
+                        if ((x.Y >= 0.0f) && (vn1 >= 0.0f))
                         {
                             // Resubstitute for the incremental impulse
                             Vector2 d = x - a;
@@ -711,13 +696,13 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                             cp2.normalImpulse = x.Y;
 
 #if B2_DEBUG_SOLVER
-					// Postconditions
-					dv2 = vB + MathUtils.Cross(wB, cp2.rB) - vA - MathUtils.Cross(wA, cp2.rA);
+                            // Postconditions
+                            dv2 = vB + MathUtils.Cross(wB, cp2.rB) - vA - MathUtils.Cross(wA, cp2.rA);
 
-					// Compute normal velocity
-					vn2 = Vector2.Dot(dv2, normal);
+                            // Compute normal velocity
+                            vn2 = Vector2.Dot(dv2, normal);
 
-					b2Assert(b2Abs(vn2 - cp2.velocityBias) < k_errorTol);
+                            b2Assert(b2Abs(vn2 - cp2.velocityBias) < k_errorTol);
 #endif
                             break;
                         }
@@ -732,7 +717,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                         vn1 = b.X;
                         vn2 = b.Y;
 
-                        if (vn1 >= 0.0f && vn2 >= 0.0f)
+                        if ((vn1 >= 0.0f) && (vn2 >= 0.0f))
                         {
                             // Resubstitute for the incremental impulse
                             Vector2 d = x - a;
@@ -749,8 +734,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                             // Accumulate
                             cp1.normalImpulse = x.X;
                             cp2.normalImpulse = x.Y;
-
-                            break;
                         }
 
                         // No solution, give up. This is hit sometimes, but it doesn't seem to matter.
@@ -764,8 +747,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 _velocities[indexB].w = wB;
 
 #if NET40 || NET45 || NETSTANDARD2_0_OR_GREATER
-                System.Threading.Interlocked.Exchange(ref _locks[orderedIndexB], 0);
-                System.Threading.Interlocked.Exchange(ref _locks[orderedIndexA], 0);
+                Interlocked.Exchange(ref _locks[orderedIndexB], 0);
+                Interlocked.Exchange(ref _locks[orderedIndexA], 0);
 #endif
             }
         }
@@ -793,14 +776,14 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         {
             bool contactsOkay = false;
 
-            if (_count >= _positionConstraintsMultithreadThreshold && System.Environment.ProcessorCount > 1)
+            if ((_count >= _positionConstraintsMultithreadThreshold) && (Environment.ProcessorCount > 1))
             {
                 if (_count == 0) return true;
-                var batchSize = (int)Math.Ceiling((float)_count / System.Environment.ProcessorCount);
-                var batches = (int)Math.Ceiling((float)_count / batchSize);
+                var batchSize = (int) Math.Ceiling((float) _count / Environment.ProcessorCount);
+                var batches = (int) Math.Ceiling((float) _count / batchSize);
 
 #if NET40 || NET45 || NETSTANDARD2_0_OR_GREATER
-                Parallel.For(0, batches, (i) =>
+                Parallel.For(0, batches, i =>
                 {
                     var start = i * batchSize;
                     var end = Math.Min(start + batchSize, _count);
@@ -810,7 +793,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                         contactsOkay = contactsOkay || res;
                     }
                 });
-#else            
+#else
                 contactsOkay = SolvePositionConstraints(0, _count);
 #endif
             }
@@ -818,7 +801,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             {
                 contactsOkay = SolvePositionConstraints(0, _count);
             }
-            
+
             return contactsOkay;
         }
 
@@ -839,16 +822,17 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     orderedIndexA = pc.indexB;
                     orderedIndexB = pc.indexA;
                 }
-                
+
                 // Lock bodies.
-                for (; ; )
+                for (;;)
                 {
                     if (Interlocked.CompareExchange(ref _locks[orderedIndexA], 1, 0) == 0)
                     {
                         if (Interlocked.CompareExchange(ref _locks[orderedIndexB], 1, 0) == 0)
                             break;
-                        System.Threading.Interlocked.Exchange(ref _locks[orderedIndexA], 0);
+                        Interlocked.Exchange(ref _locks[orderedIndexA], 0);
                     }
+
                     Thread.Sleep(0);
                 }
 #endif
@@ -916,8 +900,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
 #if NET40 || NET45 || NETSTANDARD2_0_OR_GREATER
                 // Unlock bodies.
-                System.Threading.Interlocked.Exchange(ref _locks[orderedIndexB], 0);
-                System.Threading.Interlocked.Exchange(ref _locks[orderedIndexA], 0);
+                Interlocked.Exchange(ref _locks[orderedIndexB], 0);
+                Interlocked.Exchange(ref _locks[orderedIndexA], 0);
 #endif
             }
 
@@ -1018,10 +1002,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         public static class WorldManifold
         {
             /// <summary>
-            /// Evaluate the manifold with supplied transforms. This assumes
-            /// modest motion from the original state. This does not change the
-            /// point count, impulses, etc. The radii must come from the Shapes
-            /// that generated the manifold.
+            ///     Evaluate the manifold with supplied transforms. This assumes
+            ///     modest motion from the original state. This does not change the
+            ///     point count, impulses, etc. The radii must come from the Shapes
+            ///     that generated the manifold.
             /// </summary>
             /// <param name="manifold">The manifold.</param>
             /// <param name="xfA">The transform for A.</param>
@@ -1043,53 +1027,53 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 switch (manifold.Type)
                 {
                     case ManifoldType.Circles:
+                    {
+                        normal = new Vector2(1.0f, 0.0f);
+                        Vector2 pointA = Transform.Multiply(ref manifold.LocalPoint, ref xfA);
+                        Vector2 pointB = Transform.Multiply(manifold.Points[0].LocalPoint, ref xfB);
+                        if (Vector2.DistanceSquared(pointA, pointB) > Settings.Epsilon * Settings.Epsilon)
                         {
-                            normal = new Vector2(1.0f, 0.0f);
-                            Vector2 pointA = Transform.Multiply(ref manifold.LocalPoint, ref xfA);
-                            Vector2 pointB = Transform.Multiply(manifold.Points[0].LocalPoint, ref xfB);
-                            if (Vector2.DistanceSquared(pointA, pointB) > Settings.Epsilon * Settings.Epsilon)
-                            {
-                                normal = pointB - pointA;
-                                normal.Normalize();
-                            }
-
-                            Vector2 cA = pointA + radiusA * normal;
-                            Vector2 cB = pointB - radiusB * normal;
-                            points[0] = 0.5f * (cA + cB);
+                            normal = pointB - pointA;
+                            normal.Normalize();
                         }
+
+                        Vector2 cA = pointA + radiusA * normal;
+                        Vector2 cB = pointB - radiusB * normal;
+                        points[0] = 0.5f * (cA + cB);
+                    }
                         break;
 
                     case ManifoldType.FaceA:
-                        {
-                            normal = Complex.Multiply(ref manifold.LocalNormal, ref xfA.q);
-                            Vector2 planePoint = Transform.Multiply(ref manifold.LocalPoint, ref xfA);
+                    {
+                        normal = Complex.Multiply(ref manifold.LocalNormal, ref xfA.q);
+                        Vector2 planePoint = Transform.Multiply(ref manifold.LocalPoint, ref xfA);
 
-                            for (int i = 0; i < manifold.PointCount; ++i)
-                            {
-                                Vector2 clipPoint = Transform.Multiply(manifold.Points[i].LocalPoint, ref xfB);
-                                Vector2 cA = clipPoint + (radiusA - Vector2.Dot(clipPoint - planePoint, normal)) * normal;
-                                Vector2 cB = clipPoint - radiusB * normal;
-                                points[i] = 0.5f * (cA + cB);
-                            }
+                        for (int i = 0; i < manifold.PointCount; ++i)
+                        {
+                            Vector2 clipPoint = Transform.Multiply(manifold.Points[i].LocalPoint, ref xfB);
+                            Vector2 cA = clipPoint + (radiusA - Vector2.Dot(clipPoint - planePoint, normal)) * normal;
+                            Vector2 cB = clipPoint - radiusB * normal;
+                            points[i] = 0.5f * (cA + cB);
                         }
+                    }
                         break;
 
                     case ManifoldType.FaceB:
+                    {
+                        normal = Complex.Multiply(ref manifold.LocalNormal, ref xfB.q);
+                        Vector2 planePoint = Transform.Multiply(ref manifold.LocalPoint, ref xfB);
+
+                        for (int i = 0; i < manifold.PointCount; ++i)
                         {
-                            normal = Complex.Multiply(ref manifold.LocalNormal, ref xfB.q);
-                            Vector2 planePoint = Transform.Multiply(ref manifold.LocalPoint, ref xfB);
-
-                            for (int i = 0; i < manifold.PointCount; ++i)
-                            {
-                                Vector2 clipPoint = Transform.Multiply(manifold.Points[i].LocalPoint, ref xfA);
-                                Vector2 cB = clipPoint + (radiusB - Vector2.Dot(clipPoint - planePoint, normal)) * normal;
-                                Vector2 cA = clipPoint - radiusA * normal;
-                                points[i] = 0.5f * (cA + cB);
-                            }
-
-                            // Ensure normal points from A to B.
-                            normal = -normal;
+                            Vector2 clipPoint = Transform.Multiply(manifold.Points[i].LocalPoint, ref xfA);
+                            Vector2 cB = clipPoint + (radiusB - Vector2.Dot(clipPoint - planePoint, normal)) * normal;
+                            Vector2 cA = clipPoint - radiusA * normal;
+                            points[i] = 0.5f * (cA + cB);
                         }
+
+                        // Ensure normal points from A to B.
+                        normal = -normal;
+                    }
                         break;
                 }
             }
@@ -1104,54 +1088,96 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 switch (pc.type)
                 {
                     case ManifoldType.Circles:
-                        {
-                            Vector2 pointA = Transform.Multiply(ref pc.localPoint, ref xfA);
-                            Vector2 pointB = Transform.Multiply(pc.localPoints[0], ref xfB);
-                            normal = pointB - pointA;
+                    {
+                        Vector2 pointA = Transform.Multiply(ref pc.localPoint, ref xfA);
+                        Vector2 pointB = Transform.Multiply(pc.localPoints[0], ref xfB);
+                        normal = pointB - pointA;
 
-                            // Handle zero normalization
-                            if (normal != Vector2.Zero)
-                                normal.Normalize();
+                        // Handle zero normalization
+                        if (normal != Vector2.Zero)
+                            normal.Normalize();
 
-                            point = 0.5f * (pointA + pointB);
-                            separation = Vector2.Dot(pointB - pointA, normal) - pc.radiusA - pc.radiusB;
-                        }
+                        point = 0.5f * (pointA + pointB);
+                        separation = Vector2.Dot(pointB - pointA, normal) - pc.radiusA - pc.radiusB;
+                    }
                         break;
 
                     case ManifoldType.FaceA:
-                        {
-                            Complex.Multiply(ref pc.localNormal, ref xfA.q, out normal);
-                            Vector2 planePoint = Transform.Multiply(ref pc.localPoint, ref xfA);
+                    {
+                        Complex.Multiply(ref pc.localNormal, ref xfA.q, out normal);
+                        Vector2 planePoint = Transform.Multiply(ref pc.localPoint, ref xfA);
 
-                            Vector2 clipPoint = Transform.Multiply(pc.localPoints[index], ref xfB);
-                            separation = Vector2.Dot(clipPoint - planePoint, normal) - pc.radiusA - pc.radiusB;
-                            point = clipPoint;
-                        }
+                        Vector2 clipPoint = Transform.Multiply(pc.localPoints[index], ref xfB);
+                        separation = Vector2.Dot(clipPoint - planePoint, normal) - pc.radiusA - pc.radiusB;
+                        point = clipPoint;
+                    }
                         break;
 
                     case ManifoldType.FaceB:
-                        {
-                            Complex.Multiply(ref pc.localNormal, ref xfB.q, out normal);
-                            Vector2 planePoint = Transform.Multiply(ref pc.localPoint, ref xfB);
+                    {
+                        Complex.Multiply(ref pc.localNormal, ref xfB.q, out normal);
+                        Vector2 planePoint = Transform.Multiply(ref pc.localPoint, ref xfB);
 
-                            Vector2 clipPoint = Transform.Multiply(pc.localPoints[index], ref xfA);
-                            separation = Vector2.Dot(clipPoint - planePoint, normal) - pc.radiusA - pc.radiusB;
-                            point = clipPoint;
+                        Vector2 clipPoint = Transform.Multiply(pc.localPoints[index], ref xfA);
+                        separation = Vector2.Dot(clipPoint - planePoint, normal) - pc.radiusA - pc.radiusB;
+                        point = clipPoint;
 
-                            // Ensure normal points from A to B
-                            normal = -normal;
-                        }
+                        // Ensure normal points from A to B
+                        normal = -normal;
+                    }
                         break;
                     default:
                         normal = Vector2.Zero;
                         point = Vector2.Zero;
                         separation = 0;
                         break;
-
                 }
             }
         }
+
+#if NET40 || NET45 || NETSTANDARD2_0_OR_GREATER
+        private readonly CountdownEvent SolveVelocityConstraintsWaitLock = new CountdownEvent(0);
+
+        private static void SolveVelocityConstraintsCallback(object state)
+        {
+            var svcState = (SolveVelocityConstraintsState) state;
+
+            svcState.ContactSolver.SolveVelocityConstraints(svcState.Start, svcState.End);
+            SolveVelocityConstraintsState.Return(svcState);
+            svcState.ContactSolver.SolveVelocityConstraintsWaitLock.Signal();
+        }
+
+        private class SolveVelocityConstraintsState
+        {
+            private static readonly ConcurrentQueue<SolveVelocityConstraintsState> _queue = new ConcurrentQueue<SolveVelocityConstraintsState>(); // pool
+
+            public ContactSolver ContactSolver;
+
+            private SolveVelocityConstraintsState()
+            {
+            }
+
+            public int Start { get; private set; }
+            public int End { get; private set; }
+
+            internal static object Get(ContactSolver contactSolver, int start, int end)
+            {
+                SolveVelocityConstraintsState result;
+                if (!_queue.TryDequeue(out result))
+                    result = new SolveVelocityConstraintsState();
+
+                result.ContactSolver = contactSolver;
+                result.Start = start;
+                result.End = end;
+
+                return result;
+            }
+
+            internal static void Return(object state)
+            {
+                _queue.Enqueue((SolveVelocityConstraintsState) state);
+            }
+        }
+#endif
     }
-
-
 }

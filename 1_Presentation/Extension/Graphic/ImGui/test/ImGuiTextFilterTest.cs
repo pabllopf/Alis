@@ -47,7 +47,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             textFilter.InputBuf = inputBuf;
             Assert.Equal(inputBuf, textFilter.InputBuf);
         }
-        
+
         /// <summary>
         ///     Tests that filters should set and get correctly
         /// </summary>
@@ -59,7 +59,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             textFilter.Filters = filters;
             Assert.Equal(filters, textFilter.Filters);
         }
-        
+
         /// <summary>
         ///     Tests that count grep should set and get correctly
         /// </summary>

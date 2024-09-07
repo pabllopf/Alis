@@ -30,22 +30,22 @@
 namespace Alis.Benchmark.Helper
 {
     /// <summary>
-    /// The benchmark result class
+    ///     The benchmark result class
     /// </summary>
     public class BenchmarkResult
     {
         /// <summary>
-        /// Gets or sets the value of the elapsed milliseconds
+        ///     Gets or sets the value of the elapsed milliseconds
         /// </summary>
         public long ElapsedMilliseconds { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the memory used
+        ///     Gets or sets the value of the memory used
         /// </summary>
         public long MemoryUsed { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the elapsed nanoseconds
+        ///     Gets or sets the value of the elapsed nanoseconds
         /// </summary>
         public double ElapsedNanoseconds { get; set; }
     }

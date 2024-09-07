@@ -44,11 +44,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiTableColumnFlags flag = ImGuiTableColumnFlags.IsVisible;
-            
+
             // Act & Assert
             Assert.Equal(33554432, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that is sorted should be initialized correctly
         /// </summary>
@@ -57,11 +57,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiTableColumnFlags flag = ImGuiTableColumnFlags.IsSorted;
-            
+
             // Act & Assert
             Assert.Equal(67108864, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that is hovered should be initialized correctly
         /// </summary>
@@ -70,11 +70,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiTableColumnFlags flag = ImGuiTableColumnFlags.IsHovered;
-            
+
             // Act & Assert
             Assert.Equal(134217728, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that width mask should be initialized correctly
         /// </summary>
@@ -83,11 +83,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiTableColumnFlags flag = ImGuiTableColumnFlags.WidthMask;
-            
+
             // Act & Assert
             Assert.Equal(24, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that indent mask should be initialized correctly
         /// </summary>
@@ -96,11 +96,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiTableColumnFlags flag = ImGuiTableColumnFlags.IndentMask;
-            
+
             // Act & Assert
             Assert.Equal(196608, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that status mask should be initialized correctly
         /// </summary>
@@ -109,11 +109,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiTableColumnFlags flag = ImGuiTableColumnFlags.StatusMask;
-            
+
             // Act & Assert
             Assert.Equal(251658240, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that no direct resize should be initialized correctly
         /// </summary>
@@ -122,7 +122,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiTableColumnFlags flag = ImGuiTableColumnFlags.NoDirectResize;
-            
+
             // Act & Assert
             Assert.Equal(1073741824, (int) flag);
         }

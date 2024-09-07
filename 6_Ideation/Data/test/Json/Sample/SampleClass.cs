@@ -41,12 +41,12 @@ namespace Alis.Core.Aspect.Data.Test.Json.Sample
         /// </summary>
         [JsonPropertyName("SamplePropertyName")]
         public string SampleProperty { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the property without name
         /// </summary>
         public string PropertyWithoutName { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the property without attributes
         /// </summary>

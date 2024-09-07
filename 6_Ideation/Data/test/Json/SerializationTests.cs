@@ -68,8 +68,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal("1234.5677", JsonSerializer.Serialize(1234.5678f));
             Assert.Equal("1234.5678", JsonSerializer.Serialize(1234.5678d));
         }
-        
-        
+
+
         /// <summary>
         ///     Tests that test cyclic
         /// </summary>
@@ -87,7 +87,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
                 Assert.True(ex.Code == 9);
             }
         }
-        
+
         /// <summary>
         ///     Tests that test cyclic custom
         /// </summary>

@@ -1,4 +1,33 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:TriangulationUtil.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
@@ -39,16 +68,15 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
     /**
      * @author Thomas Åhlén, thahlen@gmail.com
      */
-
     internal class TriangulationUtil
     {
         public static double EPSILON = 1e-12;
 
         /// <summary>
-        ///   Requirements:
-        /// 1. a,b and c form a triangle.
-        /// 2. a and d is know to be on opposite side of bc
-        /// <code>
+        ///     Requirements:
+        ///     1. a,b and c form a triangle.
+        ///     2. a and d is know to be on opposite side of bc
+        ///     <code>
         ///                a
         ///                +
         ///               / \
@@ -58,10 +86,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
         ///           /    B    \  
         ///          /           \ 
         /// </code>
-        ///    Facts:
-        ///  d has to be in area B to have a chance to be inside the circle formed by a,b and c
-        ///  d is outside B if orient2d(a,b,d) or orient2d(c,a,d) is CW
-        ///  This preknowledge gives us a way to optimize the incircle test
+        ///     Facts:
+        ///     d has to be in area B to have a chance to be inside the circle formed by a,b and c
+        ///     d is outside B if orient2d(a,b,d) or orient2d(c,a,d) is CW
+        ///     This preknowledge gives us a way to optimize the incircle test
         /// </summary>
         /// <param name="pa">triangle point, opposite d</param>
         /// <param name="pb">triangle point</param>
@@ -69,7 +97,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
         /// <param name="pd">point opposite a</param>
         /// <returns>true if d is inside circle, false if on circle edge</returns>
         public static bool SmartIncircle(TriangulationPoint pa, TriangulationPoint pb, TriangulationPoint pc,
-                                         TriangulationPoint pd)
+            TriangulationPoint pd)
         {
             double pdx = pd.X;
             double pdy = pd.Y;
@@ -152,6 +180,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
             {
                 return false;
             }
+
             return true;
         }
 
@@ -160,20 +189,22 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
         /// Negative if CW
         /// 0 if collinear
         /// A[P1,P2,P3]  =  (x1*y2 - y1*x2) + (x2*y3 - y2*x3) + (x3*y1 - y3*x1)
-        ///              =  (x1-x3)*(y2-y3) - (y1-y3)*(x2-x3)
+        /// =  (x1-x3)*(y2-y3) - (y1-y3)*(x2-x3)
         public static Orientation Orient2d(TriangulationPoint pa, TriangulationPoint pb, TriangulationPoint pc)
         {
             double detleft = (pa.X - pc.X) * (pb.Y - pc.Y);
             double detright = (pa.Y - pc.Y) * (pb.X - pc.X);
             double val = detleft - detright;
-            if (val > -EPSILON && val < EPSILON)
+            if ((val > -EPSILON) && (val < EPSILON))
             {
                 return Orientation.Collinear;
             }
-            else if (val > 0)
+
+            if (val > 0)
             {
                 return Orientation.CCW;
             }
+
             return Orientation.CW;
         }
     }

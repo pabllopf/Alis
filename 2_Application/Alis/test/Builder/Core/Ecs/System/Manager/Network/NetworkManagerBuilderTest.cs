@@ -45,10 +45,10 @@ namespace Alis.Test.Builder.Core.Ecs.System.Manager.Network
         public void NetworkManagerBuilder_DefaultConstructor_ValidInput()
         {
             NetworkManagerBuilder networkManagerBuilder = new NetworkManagerBuilder();
-            
+
             Assert.NotNull(networkManagerBuilder);
         }
-        
+
         /// <summary>
         ///     Tests that build valid input
         /// </summary>
@@ -56,9 +56,9 @@ namespace Alis.Test.Builder.Core.Ecs.System.Manager.Network
         public void Build_ValidInput()
         {
             NetworkManagerBuilder networkManagerBuilder = new NetworkManagerBuilder();
-            
+
             NetworkManager networkManager = networkManagerBuilder.Build();
-            
+
             Assert.NotNull(networkManager);
         }
     }

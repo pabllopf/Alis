@@ -47,7 +47,7 @@ namespace Alis.Core.Network.Test
             PongEventArgs pongEventArgs = new PongEventArgs(payload);
             Assert.NotNull(pongEventArgs);
         }
-        
+
         /// <summary>
         ///     Tests that pong event args payload
         /// </summary>

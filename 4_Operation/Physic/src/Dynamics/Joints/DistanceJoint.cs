@@ -1,29 +1,58 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:DistanceJoint.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 /* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
 
 /*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-* 
-* Original source Box2D:
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
-* 
-* This software is provided 'as-is', without any express or implied 
-* warranty.  In no event will the authors be held liable for any damages 
-* arising from the use of this software. 
-* Permission is granted to anyone to use this software for any purpose, 
-* including commercial applications, and to alter it and redistribute it 
-* freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
-* claim that you wrote the original software. If you use this software 
-* in a product, an acknowledgment in the product documentation would be 
-* appreciated but is not required. 
-* 2. Altered source versions must be plainly marked as such, and must not be 
-* misrepresented as being the original software. 
-* 3. This notice may not be removed or altered from any source distribution. 
-*/
+ * Farseer Physics Engine:
+ * Copyright (c) 2012 Ian Qvist
+ *
+ * Original source Box2D:
+ * Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 using System;
 using System.Diagnostics;
@@ -52,9 +81,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
     //   = invMass1 + invI1 * cross(r1, u)^2 + invMass2 + invI2 * cross(r2, u)^2
 
     /// <summary>
-    /// A distance joint rains two points on two bodies
-    /// to remain at a fixed distance from each other. You can view
-    /// this as a massless, rigid rod.
+    ///     A distance joint rains two points on two bodies
+    ///     to remain at a fixed distance from each other. You can view
+    ///     this as a massless, rigid rod.
     /// </summary>
     public class DistanceJoint : Joint
     {
@@ -66,29 +95,26 @@ namespace Alis.Core.Physic.Dynamics.Joints
         // Solver temp
         private int _indexA;
         private int _indexB;
-        private Vector2 _u;
-        private Vector2 _rA;
-        private Vector2 _rB;
-        private Vector2 _localCenterA;
-        private Vector2 _localCenterB;
-        private float _invMassA;
-        private float _invMassB;
         private float _invIA;
         private float _invIB;
+        private float _invMassA;
+        private float _invMassB;
+        private Vector2 _localCenterA;
+        private Vector2 _localCenterB;
         private float _mass;
+        private Vector2 _rA;
+        private Vector2 _rB;
+        private Vector2 _u;
 
-        internal DistanceJoint()
-        {
-            JointType = JointType.Distance;
-        }
+        internal DistanceJoint() => JointType = JointType.Distance;
 
         /// <summary>
-        /// This requires defining an
-        /// anchor point on both bodies and the non-zero length of the
-        /// distance joint. If you don't supply a length, the local anchor points
-        /// is used so that the initial configuration can violate the constraint
-        /// slightly. This helps when saving and loading a game.
-        /// Warning Do not use a zero or short length.
+        ///     This requires defining an
+        ///     anchor point on both bodies and the non-zero length of the
+        ///     distance joint. If you don't supply a length, the local anchor points
+        ///     is used so that the initial configuration can violate the constraint
+        ///     slightly. This helps when saving and loading a game.
+        ///     Warning Do not use a zero or short length.
         /// </summary>
         /// <param name="bodyA">The first body</param>
         /// <param name="bodyB">The second body</param>
@@ -115,65 +141,62 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// The local anchor point relative to bodyA's origin.
+        ///     The local anchor point relative to bodyA's origin.
         /// </summary>
         public Vector2 LocalAnchorA { get; set; }
 
         /// <summary>
-        /// The local anchor point relative to bodyB's origin.
+        ///     The local anchor point relative to bodyB's origin.
         /// </summary>
         public Vector2 LocalAnchorB { get; set; }
 
-        public override sealed Vector2 WorldAnchorA
+        public sealed override Vector2 WorldAnchorA
         {
-            get { return BodyA.GetWorldPoint(LocalAnchorA); }
-            set { Debug.Assert(false, "You can't set the world anchor on this joint type."); }
+            get => BodyA.GetWorldPoint(LocalAnchorA);
+            set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
         }
 
-        public override sealed Vector2 WorldAnchorB
+        public sealed override Vector2 WorldAnchorB
         {
-            get { return BodyB.GetWorldPoint(LocalAnchorB); }
-            set { Debug.Assert(false, "You can't set the world anchor on this joint type."); }
+            get => BodyB.GetWorldPoint(LocalAnchorB);
+            set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
         }
 
         /// <summary>
-        /// The natural length between the anchor points.
-        /// Manipulating the length can lead to non-physical behavior when the frequency is zero.
+        ///     The natural length between the anchor points.
+        ///     Manipulating the length can lead to non-physical behavior when the frequency is zero.
         /// </summary>
         public float Length { get; set; }
 
         /// <summary>
-        /// The mass-spring-damper frequency in Hertz. A value of 0
-        /// disables softness.
+        ///     The mass-spring-damper frequency in Hertz. A value of 0
+        ///     disables softness.
         /// </summary>
         public float Frequency { get; set; }
 
         /// <summary>
-        /// The damping ratio. 0 = no damping, 1 = critical damping.
+        ///     The damping ratio. 0 = no damping, 1 = critical damping.
         /// </summary>
         public float DampingRatio { get; set; }
 
         /// <summary>
-        /// Get the reaction force given the inverse time step. Unit is N.
+        ///     Get the reaction force given the inverse time step. Unit is N.
         /// </summary>
         /// <param name="invDt"></param>
         /// <returns></returns>
         public override Vector2 GetReactionForce(float invDt)
         {
-            Vector2 F = (invDt * _impulse) * _u;
+            Vector2 F = invDt * _impulse * _u;
             return F;
         }
 
         /// <summary>
-        /// Get the reaction torque given the inverse time step.
-        /// Unit is N*m. This is always zero for a distance joint.
+        ///     Get the reaction torque given the inverse time step.
+        ///     Unit is N*m. This is always zero for a distance joint.
         /// </summary>
         /// <param name="invDt"></param>
         /// <returns></returns>
-        public override float GetReactionTorque(float invDt)
-        {
-            return 0.0f;
-        }
+        public override float GetReactionTorque(float invDt) => 0.0f;
 
         internal override void InitVelocityConstraints(ref SolverData data)
         {
@@ -296,7 +319,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.velocities[_indexA].w = wA;
             data.velocities[_indexB].v = vB;
             data.velocities[_indexB].w = wB;
-
         }
 
         internal override bool SolvePositionConstraints(ref SolverData data)
@@ -319,7 +341,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Vector2 rB = Complex.Multiply(LocalAnchorB - _localCenterB, ref qB);
             Vector2 u = cB + rB - cA - rA;
 
-            float length = u.Length(); u.Normalize();
+            float length = u.Length();
+            u.Normalize();
             float C = length - Length;
             C = MathUtils.Clamp(C, -Settings.MaxLinearCorrection, Settings.MaxLinearCorrection);
 

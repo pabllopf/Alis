@@ -42,12 +42,12 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     Refers to an IDirectFB*
         /// </summary>
         public IntPtr Dfb { get; set; }
-        
+
         /// <summary>
         ///     Refers to an IDirectFBWindow*
         /// </summary>
         public IntPtr Window { get; set; }
-        
+
         /// <summary>
         ///     Refers to an IDirectFBSurface*
         /// </summary>

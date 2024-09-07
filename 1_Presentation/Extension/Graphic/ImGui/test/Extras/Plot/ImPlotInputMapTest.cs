@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotInputMap inputMap = new ImPlotInputMap();
             Assert.Equal(default(ImGuiMouseButton), inputMap.Pan);
         }
-        
+
         /// <summary>
         ///     Tests that pan mod should be initialized
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotInputMap inputMap = new ImPlotInputMap();
             Assert.Equal(default(ImGui.Extras.Plot.ImGuiModFlags), inputMap.PanMod);
         }
-        
+
         /// <summary>
         ///     Tests that fit should be initialized
         /// </summary>
@@ -66,7 +66,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotInputMap inputMap = new ImPlotInputMap();
             Assert.Equal(default(ImGuiMouseButton), inputMap.Fit);
         }
-        
+
         /// <summary>
         ///     Tests that select should be initialized
         /// </summary>
@@ -76,7 +76,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotInputMap inputMap = new ImPlotInputMap();
             Assert.Equal(default(ImGuiMouseButton), inputMap.Select);
         }
-        
+
         /// <summary>
         ///     Tests that select cancel should be initialized
         /// </summary>
@@ -86,7 +86,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotInputMap inputMap = new ImPlotInputMap();
             Assert.Equal(default(ImGuiMouseButton), inputMap.SelectCancel);
         }
-        
+
         /// <summary>
         ///     Tests that select mod should be initialized
         /// </summary>
@@ -96,7 +96,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotInputMap inputMap = new ImPlotInputMap();
             Assert.Equal(default(ImGui.Extras.Plot.ImGuiModFlags), inputMap.SelectMod);
         }
-        
+
         /// <summary>
         ///     Tests that select horz mod should be initialized
         /// </summary>
@@ -106,7 +106,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotInputMap inputMap = new ImPlotInputMap();
             Assert.Equal(default(ImGui.Extras.Plot.ImGuiModFlags), inputMap.SelectHorzMod);
         }
-        
+
         /// <summary>
         ///     Tests that select vert mod should be initialized
         /// </summary>
@@ -116,7 +116,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotInputMap inputMap = new ImPlotInputMap();
             Assert.Equal(default(ImGui.Extras.Plot.ImGuiModFlags), inputMap.SelectVertMod);
         }
-        
+
         /// <summary>
         ///     Tests that menu should be initialized
         /// </summary>
@@ -126,7 +126,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotInputMap inputMap = new ImPlotInputMap();
             Assert.Equal(default(ImGuiMouseButton), inputMap.Menu);
         }
-        
+
         /// <summary>
         ///     Tests that override mod should be initialized
         /// </summary>
@@ -136,7 +136,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotInputMap inputMap = new ImPlotInputMap();
             Assert.Equal(default(ImGui.Extras.Plot.ImGuiModFlags), inputMap.OverrideMod);
         }
-        
+
         /// <summary>
         ///     Tests that zoom mod should be initialized
         /// </summary>
@@ -146,7 +146,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotInputMap inputMap = new ImPlotInputMap();
             Assert.Equal(default(ImGui.Extras.Plot.ImGuiModFlags), inputMap.ZoomMod);
         }
-        
+
         /// <summary>
         ///     Tests that zoom rate should be initialized
         /// </summary>
@@ -156,7 +156,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotInputMap inputMap = new ImPlotInputMap();
             Assert.Equal(default(float), inputMap.ZoomRate);
         }
-        
+
         /// <summary>
         ///     Tests that pan should set and get correctly
         /// </summary>
@@ -168,7 +168,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             inputMap.Pan = value;
             Assert.Equal(value, inputMap.Pan);
         }
-        
+
         /// <summary>
         ///     Tests that pan mod should set and get correctly
         /// </summary>
@@ -180,7 +180,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             inputMap.PanMod = value;
             Assert.Equal(value, inputMap.PanMod);
         }
-        
+
         /// <summary>
         ///     Tests that fit should set and get correctly
         /// </summary>
@@ -192,7 +192,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             inputMap.Fit = value;
             Assert.Equal(value, inputMap.Fit);
         }
-        
+
         /// <summary>
         ///     Tests that select should set and get correctly
         /// </summary>
@@ -204,7 +204,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             inputMap.Select = value;
             Assert.Equal(value, inputMap.Select);
         }
-        
+
         /// <summary>
         ///     Tests that select cancel should set and get correctly
         /// </summary>
@@ -216,7 +216,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             inputMap.SelectCancel = value;
             Assert.Equal(value, inputMap.SelectCancel);
         }
-        
+
         /// <summary>
         ///     Tests that select mod should set and get correctly
         /// </summary>
@@ -228,7 +228,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             inputMap.SelectMod = value;
             Assert.Equal(value, inputMap.SelectMod);
         }
-        
+
         /// <summary>
         ///     Tests that select horz mod should set and get correctly
         /// </summary>
@@ -240,7 +240,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             inputMap.SelectHorzMod = value;
             Assert.Equal(value, inputMap.SelectHorzMod);
         }
-        
+
         /// <summary>
         ///     Tests that select vert mod should set and get correctly
         /// </summary>
@@ -252,7 +252,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             inputMap.SelectVertMod = value;
             Assert.Equal(value, inputMap.SelectVertMod);
         }
-        
+
         /// <summary>
         ///     Tests that menu should set and get correctly
         /// </summary>
@@ -264,7 +264,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             inputMap.Menu = value;
             Assert.Equal(value, inputMap.Menu);
         }
-        
+
         /// <summary>
         ///     Tests that override mod should set and get correctly
         /// </summary>
@@ -276,7 +276,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             inputMap.OverrideMod = value;
             Assert.Equal(value, inputMap.OverrideMod);
         }
-        
+
         /// <summary>
         ///     Tests that zoom mod should set and get correctly
         /// </summary>
@@ -288,7 +288,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             inputMap.ZoomMod = value;
             Assert.Equal(value, inputMap.ZoomMod);
         }
-        
+
         /// <summary>
         ///     Tests that zoom rate should set and get correctly
         /// </summary>

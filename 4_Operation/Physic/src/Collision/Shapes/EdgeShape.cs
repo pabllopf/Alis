@@ -1,29 +1,58 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:EdgeShape.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 /* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
 
 /*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-* 
-* Original source Box2D:
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
-* 
-* This software is provided 'as-is', without any express or implied 
-* warranty.  In no event will the authors be held liable for any damages 
-* arising from the use of this software. 
-* Permission is granted to anyone to use this software for any purpose, 
-* including commercial applications, and to alter it and redistribute it 
-* freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
-* claim that you wrote the original software. If you use this software 
-* in a product, an acknowledgment in the product documentation would be 
-* appreciated but is not required. 
-* 2. Altered source versions must be plainly marked as such, and must not be 
-* misrepresented as being the original software. 
-* 3. This notice may not be removed or altered from any source distribution. 
-*/
+ * Farseer Physics Engine:
+ * Copyright (c) 2012 Ian Qvist
+ *
+ * Original source Box2D:
+ * Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
@@ -35,19 +64,19 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 namespace Alis.Core.Physic.Collision.Shapes
 {
     /// <summary>
-    /// A line segment (edge) shape. These can be connected in chains or loops
-    /// to other edge shapes.
-    /// The connectivity information is used to ensure correct contact normals.
+    ///     A line segment (edge) shape. These can be connected in chains or loops
+    ///     to other edge shapes.
+    ///     The connectivity information is used to ensure correct contact normals.
     /// </summary>
     public class EdgeShape : Shape
     {
         /// <summary>
-        /// Edge start vertex
+        ///     Edge start vertex
         /// </summary>
         internal Vector2 _vertex1;
 
         /// <summary>
-        /// Edge end vertex
+        ///     Edge end vertex
         /// </summary>
         internal Vector2 _vertex2;
 
@@ -59,7 +88,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>
-        /// Create a new EdgeShape with the specified start and end.
+        ///     Create a new EdgeShape with the specified start and end.
         /// </summary>
         /// <param name="start">The start of the edge.</param>
         /// <param name="end">The end of the edge.</param>
@@ -71,37 +100,34 @@ namespace Alis.Core.Physic.Collision.Shapes
             Set(start, end);
         }
 
-        public override int ChildCount
-        {
-            get { return 1; }
-        }
+        public override int ChildCount => 1;
 
         /// <summary>
-        /// Is true if the edge is connected to an adjacent vertex before vertex 1.
+        ///     Is true if the edge is connected to an adjacent vertex before vertex 1.
         /// </summary>
         public bool HasVertex0 { get; set; }
 
         /// <summary>
-        /// Is true if the edge is connected to an adjacent vertex after vertex2.
+        ///     Is true if the edge is connected to an adjacent vertex after vertex2.
         /// </summary>
         public bool HasVertex3 { get; set; }
 
         /// <summary>
-        /// Optional adjacent vertices. These are used for smooth collision.
+        ///     Optional adjacent vertices. These are used for smooth collision.
         /// </summary>
         public Vector2 Vertex0 { get; set; }
 
         /// <summary>
-        /// Optional adjacent vertices. These are used for smooth collision.
+        ///     Optional adjacent vertices. These are used for smooth collision.
         /// </summary>
         public Vector2 Vertex3 { get; set; }
 
         /// <summary>
-        /// These are the edge vertices
+        ///     These are the edge vertices
         /// </summary>
         public Vector2 Vertex1
         {
-            get { return _vertex1; }
+            get => _vertex1;
             set
             {
                 _vertex1 = value;
@@ -110,11 +136,11 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>
-        /// These are the edge vertices
+        ///     These are the edge vertices
         /// </summary>
         public Vector2 Vertex2
         {
-            get { return _vertex2; }
+            get => _vertex2;
             set
             {
                 _vertex2 = value;
@@ -123,7 +149,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>
-        /// Set this as an isolated edge.
+        ///     Set this as an isolated edge.
         /// </summary>
         /// <param name="start">The start.</param>
         /// <param name="end">The end.</param>
@@ -137,10 +163,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             ComputeProperties();
         }
 
-        public override bool TestPoint(ref Transform transform, ref Vector2 point)
-        {
-            return false;
-        }
+        public override bool TestPoint(ref Transform transform, ref Vector2 point) => false;
 
         public override bool RayCast(out RayCastOutput output, ref RayCastInput input, ref Transform transform, int childIndex)
         {
@@ -205,6 +228,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             {
                 output.Normal = normal;
             }
+
             return true;
         }
 
@@ -214,11 +238,11 @@ namespace Alis.Core.Physic.Collision.Shapes
             aabb = new AABB();
 
             // OPT: Vector2 v1 = Transform.Multiply(ref _vertex1, ref transform);
-            float v1X = (_vertex1.X * transform.q.R - _vertex1.Y * transform.q.i) + transform.p.X;
-            float v1Y = (_vertex1.Y * transform.q.R + _vertex1.X * transform.q.i) + transform.p.Y;
+            float v1X = _vertex1.X * transform.q.R - _vertex1.Y * transform.q.i + transform.p.X;
+            float v1Y = _vertex1.Y * transform.q.R + _vertex1.X * transform.q.i + transform.p.Y;
             // OPT: Vector2 v2 = Transform.Multiply(ref _vertex2, ref transform);
-            float v2X = (_vertex2.X * transform.q.R - _vertex2.Y * transform.q.i) + transform.p.X;
-            float v2Y = (_vertex2.Y * transform.q.R + _vertex2.X * transform.q.i) + transform.p.Y;
+            float v2X = _vertex2.X * transform.q.R - _vertex2.Y * transform.q.i + transform.p.X;
+            float v2Y = _vertex2.Y * transform.q.R + _vertex2.X * transform.q.i + transform.p.Y;
 
             // OPT: aabb.LowerBound = Vector2.Min(v1, v2);
             // OPT: aabb.UpperBound = Vector2.Max(v1, v2);
@@ -232,6 +256,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                 aabb.LowerBound.X = v2X;
                 aabb.UpperBound.X = v1X;
             }
+
             if (v1Y < v2Y)
             {
                 aabb.LowerBound.Y = v1Y;
@@ -263,15 +288,12 @@ namespace Alis.Core.Physic.Collision.Shapes
             return 0;
         }
 
-        public bool CompareTo(EdgeShape shape)
-        {
-            return (HasVertex0 == shape.HasVertex0 &&
-                    HasVertex3 == shape.HasVertex3 &&
-                    Vertex0 == shape.Vertex0 &&
-                    Vertex1 == shape.Vertex1 &&
-                    Vertex2 == shape.Vertex2 &&
-                    Vertex3 == shape.Vertex3);
-        }
+        public bool CompareTo(EdgeShape shape) => (HasVertex0 == shape.HasVertex0) &&
+                                                  (HasVertex3 == shape.HasVertex3) &&
+                                                  (Vertex0 == shape.Vertex0) &&
+                                                  (Vertex1 == shape.Vertex1) &&
+                                                  (Vertex2 == shape.Vertex2) &&
+                                                  (Vertex3 == shape.Vertex3);
 
         public override Shape Clone()
         {

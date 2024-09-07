@@ -50,7 +50,7 @@ namespace Alis.Core.Ecs.System.Setting.Audio
             Volume = 100;
             Mute = false;
         }
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioSetting" /> class
         /// </summary>
@@ -62,19 +62,19 @@ namespace Alis.Core.Ecs.System.Setting.Audio
             Volume = volume;
             Mute = mute;
         }
-        
+
         /// <summary>
         ///     Gets or sets the value of the volume
         /// </summary>
         [JsonPropertyName("_Volume_")]
         public int Volume { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the mute
         /// </summary>
         [JsonPropertyName("_Mute_")]
         public bool Mute { get; set; }
-        
+
         /// <summary>
         ///     Builders this instance
         /// </summary>

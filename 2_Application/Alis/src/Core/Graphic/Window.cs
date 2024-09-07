@@ -52,7 +52,7 @@ namespace Alis.Core.Graphic
             Resolution = new Vector2(640, 480);
             IsWindowResizable = true;
         }
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="Window" /> class
         /// </summary>
@@ -66,25 +66,25 @@ namespace Alis.Core.Graphic
             Resolution = resolution;
             IsWindowResizable = isWindowResizable;
         }
-        
+
         /// <summary>
         ///     Builders this instance
         /// </summary>
         /// <returns>The window builder</returns>
         public WindowBuilder Builder() => new WindowBuilder();
-        
+
         /// <summary>
         ///     Gets or sets the value of the background
         /// </summary>
         [JsonPropertyName("_Background_")]
         public Color Background { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the resolution
         /// </summary>
         [JsonPropertyName("_Resolution_")]
         public Vector2 Resolution { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the is window resizable
         /// </summary>

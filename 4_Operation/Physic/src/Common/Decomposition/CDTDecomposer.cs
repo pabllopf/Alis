@@ -1,12 +1,41 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:CDTDecomposer.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
 
 /*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-*/
+ * Farseer Physics Engine:
+ * Copyright (c) 2012 Ian Qvist
+ */
 
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -23,22 +52,20 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 namespace Alis.Core.Physic.Common.Decomposition
 {
     /// <summary>
-    /// 2D constrained Delaunay triangulation algorithm.
-    /// Based on the paper "Sweep-line algorithm for constrained Delaunay triangulation" by V. Domiter and and B. Zalik
-    /// 
-    /// Properties:
-    /// - Creates triangles with a large interior angle.
-    /// - Supports holes
-    /// - Generate a lot of garbage due to incapsulation of the Poly2Tri library.
-    /// - Running time is O(n^2), n = number of vertices.
-    /// - Does not care about winding order.
-    /// 
-    /// Source: http://code.google.com/p/poly2tri/
+    ///     2D constrained Delaunay triangulation algorithm.
+    ///     Based on the paper "Sweep-line algorithm for constrained Delaunay triangulation" by V. Domiter and and B. Zalik
+    ///     Properties:
+    ///     - Creates triangles with a large interior angle.
+    ///     - Supports holes
+    ///     - Generate a lot of garbage due to incapsulation of the Poly2Tri library.
+    ///     - Running time is O(n^2), n = number of vertices.
+    ///     - Does not care about winding order.
+    ///     Source: http://code.google.com/p/poly2tri/
     /// </summary>
     internal static class CDTDecomposer
     {
         /// <summary>
-        /// Decompose the polygon into several smaller non-concave polygon.
+        ///     Decompose the polygon into several smaller non-concave polygon.
         /// </summary>
         public static List<Vertices> ConvexPartition(Vertices vertices)
         {
@@ -73,8 +100,9 @@ namespace Alis.Core.Physic.Common.Decomposition
                 Vertices v = new Vertices();
                 foreach (TriangulationPoint p in triangle.Points)
                 {
-                    v.Add(new Vector2((float)p.X, (float)p.Y));
+                    v.Add(new Vector2((float) p.X, (float) p.Y));
                 }
+
                 results.Add(v);
             }
 

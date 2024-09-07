@@ -44,11 +44,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Act
             ImDrawFlags flag = ImDrawFlags.None;
-            
+
             // Assert
             Assert.Equal(0, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that closed should have correct value
         /// </summary>
@@ -57,11 +57,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Act
             ImDrawFlags flag = ImDrawFlags.Closed;
-            
+
             // Assert
             Assert.Equal(1, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that round corners top left should have correct value
         /// </summary>
@@ -70,11 +70,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Act
             ImDrawFlags flag = ImDrawFlags.RoundCornersTopLeft;
-            
+
             // Assert
             Assert.Equal(16, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that round corners top right should have correct value
         /// </summary>
@@ -83,11 +83,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Act
             ImDrawFlags flag = ImDrawFlags.RoundCornersTopRight;
-            
+
             // Assert
             Assert.Equal(32, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that round corners bottom left should have correct value
         /// </summary>
@@ -96,11 +96,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Act
             ImDrawFlags flag = ImDrawFlags.RoundCornersBottomLeft;
-            
+
             // Assert
             Assert.Equal(64, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that round corners bottom right should have correct value
         /// </summary>
@@ -109,11 +109,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Act
             ImDrawFlags flag = ImDrawFlags.RoundCornersBottomRight;
-            
+
             // Assert
             Assert.Equal(128, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that round corners none should have correct value
         /// </summary>
@@ -122,11 +122,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Act
             ImDrawFlags flag = ImDrawFlags.RoundCornersNone;
-            
+
             // Assert
             Assert.Equal(256, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that round corners top should have correct value
         /// </summary>
@@ -135,11 +135,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Act
             ImDrawFlags flag = ImDrawFlags.RoundCornersTop;
-            
+
             // Assert
             Assert.Equal(48, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that round corners bottom should have correct value
         /// </summary>
@@ -148,11 +148,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Act
             ImDrawFlags flag = ImDrawFlags.RoundCornersBottom;
-            
+
             // Assert
             Assert.Equal(192, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that round corners left should have correct value
         /// </summary>
@@ -161,11 +161,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Act
             ImDrawFlags flag = ImDrawFlags.RoundCornersLeft;
-            
+
             // Assert
             Assert.Equal(80, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that round corners right should have correct value
         /// </summary>
@@ -174,11 +174,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Act
             ImDrawFlags flag = ImDrawFlags.RoundCornersRight;
-            
+
             // Assert
             Assert.Equal(160, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that round corners all should have correct value
         /// </summary>
@@ -187,11 +187,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Act
             ImDrawFlags flag = ImDrawFlags.RoundCornersAll;
-            
+
             // Assert
             Assert.Equal(240, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that round corners default should have correct value
         /// </summary>
@@ -200,11 +200,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Act
             ImDrawFlags flag = ImDrawFlags.RoundCornersDefault;
-            
+
             // Assert
             Assert.Equal(240, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that round corners mask should have correct value
         /// </summary>
@@ -213,7 +213,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Act
             ImDrawFlags flag = ImDrawFlags.RoundCornersMask;
-            
+
             // Assert
             Assert.Equal(496, (int) flag);
         }

@@ -47,12 +47,12 @@ namespace Alis.Core.Network.Test.Internal
         {
             ArraySegment<byte> maskKey = new ArraySegment<byte>(new byte[WebSocketFrameCommon.MaskKeyLength]);
             ArraySegment<byte> payload = new ArraySegment<byte>(new byte[10]);
-            
+
             Exception exception = Record.Exception(() => WebSocketFrameCommon.ToggleMask(maskKey, payload));
-            
+
             Assert.Null(exception);
         }
-        
+
         /// <summary>
         ///     Tests that toggle mask should throw exception when mask key is invalid
         /// </summary>
@@ -61,10 +61,10 @@ namespace Alis.Core.Network.Test.Internal
         {
             ArraySegment<byte> maskKey = new ArraySegment<byte>(new byte[WebSocketFrameCommon.MaskKeyLength - 1]);
             ArraySegment<byte> payload = new ArraySegment<byte>(new byte[10]);
-            
+
             Assert.Throws<MaskKeyLengthException>(() => WebSocketFrameCommon.ToggleMask(maskKey, payload));
         }
-        
+
         /// <summary>
         ///     Tests that toggle mask should change payload when called
         /// </summary>
@@ -74,9 +74,9 @@ namespace Alis.Core.Network.Test.Internal
             ArraySegment<byte> maskKey = new ArraySegment<byte>(new byte[WebSocketFrameCommon.MaskKeyLength] {1, 2, 3, 4});
             ArraySegment<byte> payload = new ArraySegment<byte>(new byte[4] {1, 2, 3, 4});
             ArraySegment<byte> expectedPayload = new ArraySegment<byte>(new byte[4] {0, 0, 0, 0});
-            
+
             WebSocketFrameCommon.ToggleMask(maskKey, payload);
-            
+
             Assert.Equal(expectedPayload, payload);
         }
     }

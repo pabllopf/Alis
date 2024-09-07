@@ -38,7 +38,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
         ///     The local mode
         /// </summary>
         Local = 0,
-        
+
         /// <summary>
         ///     The world mode
         /// </summary>

@@ -42,22 +42,22 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The format
         /// </summary>
         public uint format;
-        
+
         /// <summary>
         ///     The
         /// </summary>
         public int w;
-        
+
         /// <summary>
         ///     The
         /// </summary>
         public int h;
-        
+
         /// <summary>
         ///     The refresh rate
         /// </summary>
         public int refresh_rate;
-        
+
         /// <summary>
         ///     The driver data
         /// </summary>

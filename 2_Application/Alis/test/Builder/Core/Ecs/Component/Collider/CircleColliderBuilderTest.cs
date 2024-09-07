@@ -45,10 +45,10 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Collider
         public void CircleColliderBuilder_DefaultConstructor_ValidInput()
         {
             CircleColliderBuilder circleColliderBuilder = new CircleColliderBuilder();
-            
+
             Assert.NotNull(circleColliderBuilder);
         }
-        
+
         /// <summary>
         ///     Tests that build valid input
         /// </summary>
@@ -56,9 +56,9 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Collider
         public void Build_ValidInput()
         {
             CircleColliderBuilder circleColliderBuilder = new CircleColliderBuilder();
-            
+
             CircleCollider circleCollider = circleColliderBuilder.Build();
-            
+
             Assert.NotNull(circleCollider);
         }
     }

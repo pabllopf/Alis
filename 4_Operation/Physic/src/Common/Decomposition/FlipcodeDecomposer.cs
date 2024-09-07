@@ -1,4 +1,33 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:FlipcodeDecomposer.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
@@ -13,15 +42,13 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 namespace Alis.Core.Physic.Common.Decomposition
 {
     /// <summary>
-    /// Convex decomposition algorithm created by unknown
-    /// 
-    /// Properties:
-    /// - No support for holes
-    /// - Very fast
-    /// - Only works on simple polygons
-    /// - Only works on counter clockwise polygons
-    /// 
-    /// More information: http://www.flipcode.com/archives/Efficient_Polygon_Triangulation.shtml
+    ///     Convex decomposition algorithm created by unknown
+    ///     Properties:
+    ///     - No support for holes
+    ///     - Very fast
+    ///     - Only works on simple polygons
+    ///     - Only works on counter clockwise polygons
+    ///     More information: http://www.flipcode.com/archives/Efficient_Polygon_Triangulation.shtml
     /// </summary>
     internal static class FlipcodeDecomposer
     {
@@ -30,11 +57,9 @@ namespace Alis.Core.Physic.Common.Decomposition
         private static Vector2 _tmpC;
 
         /// <summary>
-        /// Decompose the polygon into triangles.
-        /// 
-        /// Properties:
-        /// - Only works on counter clockwise polygons
-        /// 
+        ///     Decompose the polygon into triangles.
+        ///     Properties:
+        ///     - Only works on counter clockwise polygons
         /// </summary>
         /// <param name="vertices">The list of points describing the polygon</param>
         public static List<Vertices> ConvexPartition(Vertices vertices)
@@ -54,10 +79,10 @@ namespace Alis.Core.Physic.Common.Decomposition
 
             List<Vertices> result = new List<Vertices>();
 
-            for (int v = nv - 1; nv > 2; )
+            for (int v = nv - 1; nv > 2;)
             {
                 // If we loop, it is probably a non-simple polygon 
-                if (0 >= (count--))
+                if (0 >= count--)
                 {
                     // Triangulate: ERROR - probable bad polygon!
                     return new List<Vertices>();
@@ -94,6 +119,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                     {
                         polygon[s] = polygon[t];
                     }
+
                     nv--;
 
                     // Reset error detection counter
@@ -105,8 +131,8 @@ namespace Alis.Core.Physic.Common.Decomposition
         }
 
         /// <summary>
-        /// Check if the point P is inside the triangle defined by
-        /// the points A, B, C
+        ///     Check if the point P is inside the triangle defined by
+        ///     the points A, B, C
         /// </summary>
         /// <param name="a">The A point.</param>
         /// <param name="b">The B point.</param>
@@ -124,12 +150,12 @@ namespace Alis.Core.Physic.Common.Decomposition
             //b cross cp
             float bcp = (a.X - c.X) * (p.Y - c.Y) - (a.Y - c.Y) * (p.X - c.X);
 
-            return ((abp >= 0.0f) && (bcp >= 0.0f) && (aap >= 0.0f));
+            return (abp >= 0.0f) && (bcp >= 0.0f) && (aap >= 0.0f);
         }
 
         /// <summary>
-        /// Cut a the contour and add a triangle into V to describe the 
-        /// location of the cut
+        ///     Cut a the contour and add a triangle into V to describe the
+        ///     location of the cut
         /// </summary>
         /// <param name="contour">The list of points defining the polygon</param>
         /// <param name="u">The index of the first point</param>
@@ -145,7 +171,7 @@ namespace Alis.Core.Physic.Common.Decomposition
 
             for (int p = 0; p < n; p++)
             {
-                if ((p == u) || (p == v) || (p == w))
+                if (p == u || p == v || p == w)
                     continue;
 
                 Vector2 point = contour[V[p]];

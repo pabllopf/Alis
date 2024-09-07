@@ -1,4 +1,31 @@
-// Copyright (c) 2017 Kastellanos Nikolaos
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Fixture.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 /* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
@@ -6,26 +33,26 @@
  */
 
 /*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-* 
-* Original source Box2D:
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
-* 
-* This software is provided 'as-is', without any express or implied 
-* warranty.  In no event will the authors be held liable for any damages 
-* arising from the use of this software. 
-* Permission is granted to anyone to use this software for any purpose, 
-* including commercial applications, and to alter it and redistribute it 
-* freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
-* claim that you wrote the original software. If you use this software 
-* in a product, an acknowledgment in the product documentation would be 
-* appreciated but is not required. 
-* 2. Altered source versions must be plainly marked as such, and must not be 
-* misrepresented as being the original software. 
-* 3. This notice may not be removed or altered from any source distribution. 
-*/
+ * Farseer Physics Engine:
+ * Copyright (c) 2012 Ian Qvist
+ *
+ * Original source Box2D:
+ * Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 using System;
 using System.Diagnostics;
@@ -41,49 +68,51 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    /// A fixture is used to attach a Shape to a body for collision detection. A fixture
-    /// inherits its transform from its parent. Fixtures hold additional non-geometric data
-    /// such as friction, collision filters, etc.
+    ///     A fixture is used to attach a Shape to a body for collision detection. A fixture
+    ///     inherits its transform from its parent. Fixtures hold additional non-geometric data
+    ///     such as friction, collision filters, etc.
     /// </summary>
     public class Fixture
     {
-        private bool _isSensor;
-        private float _friction;
-        private float _restitution;
-
         internal Category _collidesWith;
         internal Category _collisionCategories;
         internal short _collisionGroup;
-
-        public FixtureProxy[] Proxies { get; private set; }
-        public int ProxyCount { get; private set; }
+        private float _friction;
+        private bool _isSensor;
+        private float _restitution;
 
         /// <summary>
-        /// Fires after two shapes has collided and are solved. This gives you a chance to get the impact force.
+        ///     Fires after two shapes has collided and are solved. This gives you a chance to get the impact force.
         /// </summary>
         public AfterCollisionEventHandler AfterCollision;
 
         /// <summary>
-        /// Fires when two fixtures are close to each other.
-        /// Due to how the broadphase works, this can be quite inaccurate as shapes are approximated using AABBs.
+        ///     Fires when two fixtures are close to each other.
+        ///     Due to how the broadphase works, this can be quite inaccurate as shapes are approximated using AABBs.
         /// </summary>
         public BeforeCollisionEventHandler BeforeCollision;
 
         /// <summary>
-        /// Fires when two shapes collide and a contact is created between them.
-        /// Note that the first fixture argument is always the fixture that the delegate is subscribed to.
+        ///     Fires when two shapes collide and a contact is created between them.
+        ///     Note that the first fixture argument is always the fixture that the delegate is subscribed to.
         /// </summary>
         public OnCollisionEventHandler OnCollision;
 
         /// <summary>
-        /// Fires when two shapes separate and a contact is removed between them.
-        /// Note: This can in some cases be called multiple times, as a fixture can have multiple contacts.
-        /// Note The first fixture argument is always the fixture that the delegate is subscribed to.
+        ///     Fires when two shapes separate and a contact is removed between them.
+        ///     Note: This can in some cases be called multiple times, as a fixture can have multiple contacts.
+        ///     Note The first fixture argument is always the fixture that the delegate is subscribed to.
         /// </summary>
         public OnSeparationEventHandler OnSeparation;
 
+        /// <summary>
+        ///     Set the user data. Use this to store your application specific data.
+        /// </summary>
+        /// <value>The user data.</value>
+        public object Tag;
+
         internal Fixture() // Note: This is internal because it's used by Deserialization.
-        {   
+        {
             _collisionCategories = Category.Cat1;
             _collidesWith = Category.All;
             _collisionGroup = 0;
@@ -96,18 +125,20 @@ namespace Alis.Core.Physic.Dynamics
         public Fixture(Shape shape) : this()
         {
             Shape = shape.Clone();
-            
+
             // Reserve proxy space
             Proxies = new FixtureProxy[Shape.ChildCount];
             ProxyCount = 0;
         }
-        
+
+        public FixtureProxy[] Proxies { get; }
+        public int ProxyCount { get; private set; }
+
         /// <summary>
-        /// Defaults to 0
-        /// 
-        /// Collision groups allow a certain group of objects to never collide (negative)
-        /// or always collide (positive). Zero means no collision group. Non-zero group
-        /// filtering always wins against the mask bits.
+        ///     Defaults to 0
+        ///     Collision groups allow a certain group of objects to never collide (negative)
+        ///     or always collide (positive). Zero means no collision group. Non-zero group
+        ///     filtering always wins against the mask bits.
         /// </summary>
         public short CollisionGroup
         {
@@ -119,18 +150,17 @@ namespace Alis.Core.Physic.Dynamics
                 _collisionGroup = value;
                 Refilter();
             }
-            get { return _collisionGroup; }
+            get => _collisionGroup;
         }
 
         /// <summary>
-        /// Defaults to Category.All
-        /// 
-        /// The collision mask bits. This states the categories that this
-        /// fixture would accept for collision.
+        ///     Defaults to Category.All
+        ///     The collision mask bits. This states the categories that this
+        ///     fixture would accept for collision.
         /// </summary>
         public Category CollidesWith
         {
-            get { return _collidesWith; }
+            get => _collidesWith;
 
             set
             {
@@ -143,13 +173,12 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// The collision categories this fixture is a part of.
-        /// 
-        /// Defaults to Category.Cat1
+        ///     The collision categories this fixture is a part of.
+        ///     Defaults to Category.Cat1
         /// </summary>
         public Category CollisionCategories
         {
-            get { return _collisionCategories; }
+            get => _collisionCategories;
 
             set
             {
@@ -162,18 +191,18 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Get the child Shape.
+        ///     Get the child Shape.
         /// </summary>
         /// <value>The shape.</value>
-        public Shape Shape { get; private set; }
+        public Shape Shape { get; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this fixture is a sensor.
+        ///     Gets or sets a value indicating whether this fixture is a sensor.
         /// </summary>
         /// <value><c>true</c> if this instance is a sensor; otherwise, <c>false</c>.</value>
         public bool IsSensor
         {
-            get { return _isSensor; }
+            get => _isSensor;
             set
             {
                 if (Body != null)
@@ -184,25 +213,19 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Get the parent body of this fixture. This is null if the fixture is not attached.
+        ///     Get the parent body of this fixture. This is null if the fixture is not attached.
         /// </summary>
         /// <value>The body.</value>
         public Body Body { get; internal set; }
 
         /// <summary>
-        /// Set the user data. Use this to store your application specific data.
-        /// </summary>
-        /// <value>The user data.</value>
-        public object Tag;
-
-        /// <summary>
-        /// Set the coefficient of friction. This will _not_ change the friction of
-        /// existing contacts.
+        ///     Set the coefficient of friction. This will _not_ change the friction of
+        ///     existing contacts.
         /// </summary>
         /// <value>The friction.</value>
         public float Friction
         {
-            get { return _friction; }
+            get => _friction;
             set
             {
                 Debug.Assert(!float.IsNaN(value));
@@ -211,25 +234,25 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Set the coefficient of restitution. This will not change the restitution of
-        /// existing contacts.
+        ///     Set the coefficient of restitution. This will not change the restitution of
+        ///     existing contacts.
         /// </summary>
         /// <value>The restitution.</value>
         public float Restitution
         {
-            get { return _restitution; }
+            get => _restitution;
             set
             {
                 Debug.Assert(!float.IsNaN(value));
                 _restitution = value;
             }
         }
-        
-        
+
+
         /// <summary>
-        /// Contacts are persistant and will keep being persistant unless they are
-        /// flagged for filtering.
-        /// This methods flags all contacts associated with the body for filtering.
+        ///     Contacts are persistant and will keep being persistant unless they are
+        ///     flagged for filtering.
+        ///     This methods flags all contacts associated with the body for filtering.
         /// </summary>
         private void Refilter()
         {
@@ -259,7 +282,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Touch each proxy so that new pairs may be created
+        ///     Touch each proxy so that new pairs may be created
         /// </summary>
         /// <param name="broadPhase"></param>
         internal void TouchProxies(IBroadPhase broadPhase)
@@ -269,37 +292,31 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Test a point for containment in this fixture.
+        ///     Test a point for containment in this fixture.
         /// </summary>
         /// <param name="point">A point in world coordinates.</param>
         /// <returns></returns>
-        public bool TestPoint(ref Vector2 point)
-        {
-            return Shape.TestPoint(ref Body._xf, ref point);
-        }
+        public bool TestPoint(ref Vector2 point) => Shape.TestPoint(ref Body._xf, ref point);
 
         /// <summary>
-        /// Cast a ray against this Shape.
+        ///     Cast a ray against this Shape.
         /// </summary>
         /// <param name="output">The ray-cast results.</param>
         /// <param name="input">The ray-cast input parameters.</param>
         /// <param name="childIndex">Index of the child.</param>
         /// <returns></returns>
-        public bool RayCast(out RayCastOutput output, ref RayCastInput input, int childIndex)
-        {
-            return Shape.RayCast(out output, ref input, ref Body._xf, childIndex);
-        }
+        public bool RayCast(out RayCastOutput output, ref RayCastInput input, int childIndex) => Shape.RayCast(out output, ref input, ref Body._xf, childIndex);
 
         /// <summary>
-        /// Get the fixture's AABB. This AABB may be enlarge and/or stale.
-        /// If you need a more accurate AABB, compute it using the Shape and
-        /// the body transform.
+        ///     Get the fixture's AABB. This AABB may be enlarge and/or stale.
+        ///     If you need a more accurate AABB, compute it using the Shape and
+        ///     the body transform.
         /// </summary>
         /// <param name="aabb">The aabb.</param>
         /// <param name="childIndex">Index of the child.</param>
         public void GetAABB(out AABB aabb, int childIndex)
         {
-            Debug.Assert(0 <= childIndex && childIndex < ProxyCount);
+            Debug.Assert((0 <= childIndex) && (childIndex < ProxyCount));
             aabb = Proxies[childIndex].AABB;
         }
 
@@ -357,18 +374,15 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Clones the fixture onto the specified body.
+        ///     Clones the fixture onto the specified body.
         /// </summary>
         /// <param name="body">The body you wish to clone the fixture onto.</param>
         /// <returns>The cloned fixture.</returns>
-        public Fixture CloneOnto(Body body)
-        {
-            return CloneOnto(body, this.Shape);
-        }
-        
+        public Fixture CloneOnto(Body body) => CloneOnto(body, Shape);
+
         /// <summary>
-        /// Clones the fixture and attached shape onto the specified body.
-        /// Note: This is used only by Deserialization.
+        ///     Clones the fixture and attached shape onto the specified body.
+        ///     Note: This is used only by Deserialization.
         /// </summary>
         /// <param name="body">The body you wish to clone the fixture onto.</param>
         /// <returns>The cloned fixture.</returns>
@@ -382,7 +396,7 @@ namespace Alis.Core.Physic.Dynamics
             fixture._collisionGroup = _collisionGroup;
             fixture._collisionCategories = _collisionCategories;
             fixture._collidesWith = _collidesWith;
-            
+
             body.Add(fixture);
             return fixture;
         }

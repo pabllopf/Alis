@@ -47,7 +47,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
             byte nativeValue = value ? (byte) 1 : (byte) 0;
             ImGuiZmoNative.InternalAllowAxisFlip(nativeValue);
         }
-        
+
         /// <summary>
         ///     Begins the frame
         /// </summary>
@@ -55,7 +55,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
         {
             ImGuiZmoNative.InternalBeginFrame();
         }
-        
+
         /// <summary>
         ///     Decomposes the matrix to components using the specified matrix
         /// </summary>
@@ -67,7 +67,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
         {
             ImGuiZmoNative.InternalDecomposeMatrixToComponents(matrix, translation, rotation, scale);
         }
-        
+
         /// <summary>
         ///     Draws the cubes using the specified view
         /// </summary>
@@ -79,7 +79,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
         {
             ImGuiZmoNative.InternalDrawCubes(view, projection, matrices, matrixCount);
         }
-        
+
         /// <summary>
         ///     Draws the grid using the specified view
         /// </summary>
@@ -91,7 +91,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
         {
             ImGuiZmoNative.InternalDrawGrid(view, projection, matrix, gridSize);
         }
-        
+
         /// <summary>
         ///     Enables the enable
         /// </summary>
@@ -101,26 +101,26 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
             byte nativeEnable = enable ? (byte) 1 : (byte) 0;
             ImGuiZmoNative.InternalEnable(nativeEnable);
         }
-        
+
         /// <summary>
         ///     Describes whether is over
         /// </summary>
         /// <returns>The bool</returns>
         public static bool IsOver() => ImGuiZmoNative.InternalIsOverNil() != 0;
-        
+
         /// <summary>
         ///     Describes whether is over
         /// </summary>
         /// <param name="op">The op</param>
         /// <returns>The bool</returns>
         public static bool IsOver(Operation op) => ImGuiZmoNative.InternalIsOverOPERATION(op) != 0;
-        
+
         /// <summary>
         ///     Describes whether is using
         /// </summary>
         /// <returns>The bool</returns>
         public static bool IsUsing() => ImGuiZmoNative.InternalIsUsing() != 0;
-        
+
         /// <summary>
         ///     Manipulates the view
         /// </summary>
@@ -140,7 +140,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
                 IntPtr viewPtr = viewHandle.AddrOfPinnedObject();
                 IntPtr projectionPtr = projectionHandle.AddrOfPinnedObject();
                 IntPtr matrixPtr = matrixHandle.AddrOfPinnedObject();
-                
+
                 return ImGuiZmoNative.InternalManipulate(viewPtr, projectionPtr, operation, mode, matrixPtr, new IntPtr(), new IntPtr(), new IntPtr(), new IntPtr());
             }
             finally
@@ -150,7 +150,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
                 if (matrixHandle.IsAllocated) matrixHandle.Free();
             }
         }
-        
+
         /// <summary>
         ///     Recomposes the matrix from components using the specified translation
         /// </summary>
@@ -162,7 +162,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
         {
             ImGuiZmoNative.InternalRecomposeMatrixFromComponents(translation, rotation, scale, matrix);
         }
-        
+
         /// <summary>
         ///     Sets the draw list
         /// </summary>
@@ -170,7 +170,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
         {
             ImGuiZmoNative.InternalSetDrawlist(new IntPtr());
         }
-        
+
         /// <summary>
         ///     Sets the drawlist using the specified drawlist
         /// </summary>
@@ -181,7 +181,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
             Marshal.StructureToPtr(drawList, drawListPtr, false);
             ImGuiZmoNative.InternalSetDrawlist(drawListPtr);
         }
-        
+
         /// <summary>
         ///     Sets the gizmo size clip space using the specified value
         /// </summary>
@@ -190,7 +190,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
         {
             ImGuiZmoNative.InternalSetGizmoSizeClipSpace(value);
         }
-        
+
         /// <summary>
         ///     Sets the id using the specified id
         /// </summary>
@@ -199,7 +199,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
         {
             ImGuiZmoNative.InternalSetID(id);
         }
-        
+
         /// <summary>
         ///     Sets the im gui context using the specified ctx
         /// </summary>
@@ -208,7 +208,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
         {
             ImGuiZmoNative.InternalSetImGuiContext(ctx);
         }
-        
+
         /// <summary>
         ///     Sets the orthographic using the specified is orthographic
         /// </summary>
@@ -218,7 +218,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
             byte nativeIsOrthographic = isOrthographic ? (byte) 1 : (byte) 0;
             ImGuiZmoNative.InternalSetOrthographic(nativeIsOrthographic);
         }
-        
+
         /// <summary>
         ///     Sets the rect using the specified x
         /// </summary>
@@ -230,7 +230,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
         {
             ImGuiZmoNative.InternalSetRect(x, y, width, height);
         }
-        
+
         /// <summary>
         ///     Views to manipulate using the specified view
         /// </summary>

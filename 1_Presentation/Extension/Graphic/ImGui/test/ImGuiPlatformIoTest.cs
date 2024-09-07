@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPlatformIo io = new ImGuiPlatformIo();
             Assert.Equal(IntPtr.Zero, io.PlatformCreateWindow);
         }
-        
+
         /// <summary>
         ///     Tests that platform destroy window should be initialized
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPlatformIo io = new ImGuiPlatformIo();
             Assert.Equal(IntPtr.Zero, io.PlatformDestroyWindow);
         }
-        
+
         /// <summary>
         ///     Tests that platform show window should be initialized
         /// </summary>
@@ -66,7 +66,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPlatformIo io = new ImGuiPlatformIo();
             Assert.Equal(IntPtr.Zero, io.PlatformShowWindow);
         }
-        
+
         /// <summary>
         ///     Tests that platform set window pos should be initialized
         /// </summary>
@@ -76,7 +76,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPlatformIo io = new ImGuiPlatformIo();
             Assert.Equal(IntPtr.Zero, io.PlatformSetWindowPos);
         }
-        
+
         /// <summary>
         ///     Tests that platform get window pos should be initialized
         /// </summary>
@@ -86,7 +86,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPlatformIo io = new ImGuiPlatformIo();
             Assert.Equal(IntPtr.Zero, io.PlatformGetWindowPos);
         }
-        
+
         /// <summary>
         ///     Tests that platform set window size should be initialized
         /// </summary>
@@ -96,7 +96,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPlatformIo io = new ImGuiPlatformIo();
             Assert.Equal(IntPtr.Zero, io.PlatformSetWindowSize);
         }
-        
+
         /// <summary>
         ///     Tests that platform get window size should be initialized
         /// </summary>
@@ -106,7 +106,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPlatformIo io = new ImGuiPlatformIo();
             Assert.Equal(IntPtr.Zero, io.PlatformGetWindowSize);
         }
-        
+
         /// <summary>
         ///     Tests that platform set window focus should be initialized
         /// </summary>
@@ -116,7 +116,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPlatformIo io = new ImGuiPlatformIo();
             Assert.Equal(IntPtr.Zero, io.PlatformSetWindowFocus);
         }
-        
+
         /// <summary>
         ///     Tests that platform get window focus should be initialized
         /// </summary>
@@ -126,7 +126,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPlatformIo io = new ImGuiPlatformIo();
             Assert.Equal(IntPtr.Zero, io.PlatformGetWindowFocus);
         }
-        
+
         /// <summary>
         ///     Tests that platform get window minimized should be initialized
         /// </summary>
@@ -136,7 +136,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPlatformIo io = new ImGuiPlatformIo();
             Assert.Equal(IntPtr.Zero, io.PlatformGetWindowMinimized);
         }
-        
+
         /// <summary>
         ///     Tests that platform set window title should be initialized
         /// </summary>
@@ -146,7 +146,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPlatformIo io = new ImGuiPlatformIo();
             Assert.Equal(IntPtr.Zero, io.PlatformSetWindowTitle);
         }
-        
+
         /// <summary>
         ///     Tests that platform set window alpha should be initialized
         /// </summary>
@@ -156,7 +156,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPlatformIo io = new ImGuiPlatformIo();
             Assert.Equal(IntPtr.Zero, io.PlatformSetWindowAlpha);
         }
-        
+
         /// <summary>
         ///     Tests that platform update window should be initialized
         /// </summary>
@@ -166,7 +166,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPlatformIo io = new ImGuiPlatformIo();
             Assert.Equal(IntPtr.Zero, io.PlatformUpdateWindow);
         }
-        
+
         /// <summary>
         ///     Tests that platform render window should be initialized
         /// </summary>
@@ -176,7 +176,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPlatformIo io = new ImGuiPlatformIo();
             Assert.Equal(IntPtr.Zero, io.PlatformRenderWindow);
         }
-        
+
         /// <summary>
         ///     Tests that platform swap buffers should be initialized
         /// </summary>
@@ -186,7 +186,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPlatformIo io = new ImGuiPlatformIo();
             Assert.Equal(IntPtr.Zero, io.PlatformSwapBuffers);
         }
-        
+
         /// <summary>
         ///     Tests that platform get window dpi scale should be initialized
         /// </summary>
@@ -196,7 +196,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPlatformIo io = new ImGuiPlatformIo();
             Assert.Equal(IntPtr.Zero, io.PlatformGetWindowDpiScale);
         }
-        
+
         /// <summary>
         ///     Tests that platform on changed viewport should be initialized
         /// </summary>
@@ -206,7 +206,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPlatformIo io = new ImGuiPlatformIo();
             Assert.Equal(IntPtr.Zero, io.PlatformOnChangedViewport);
         }
-        
+
         /// <summary>
         ///     Tests that platform create vk surface should be initialized
         /// </summary>
@@ -216,7 +216,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPlatformIo io = new ImGuiPlatformIo();
             Assert.Equal(IntPtr.Zero, io.PlatformCreateVkSurface);
         }
-        
+
         /// <summary>
         ///     Tests that renderer create window should be initialized
         /// </summary>
@@ -226,7 +226,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPlatformIo io = new ImGuiPlatformIo();
             Assert.Equal(IntPtr.Zero, io.RendererCreateWindow);
         }
-        
+
         /// <summary>
         ///     Tests that renderer destroy window should be initialized
         /// </summary>
@@ -236,7 +236,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPlatformIo io = new ImGuiPlatformIo();
             Assert.Equal(IntPtr.Zero, io.RendererDestroyWindow);
         }
-        
+
         /// <summary>
         ///     Tests that renderer set window size should be initialized
         /// </summary>
@@ -246,7 +246,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPlatformIo io = new ImGuiPlatformIo();
             Assert.Equal(IntPtr.Zero, io.RendererSetWindowSize);
         }
-        
+
         /// <summary>
         ///     Tests that renderer render window should be initialized
         /// </summary>
@@ -256,7 +256,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPlatformIo io = new ImGuiPlatformIo();
             Assert.Equal(IntPtr.Zero, io.RendererRenderWindow);
         }
-        
+
         /// <summary>
         ///     Tests that renderer swap buffers should be initialized
         /// </summary>
@@ -266,7 +266,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPlatformIo io = new ImGuiPlatformIo();
             Assert.Equal(IntPtr.Zero, io.RendererSwapBuffers);
         }
-        
+
         /// <summary>
         ///     Tests that monitors should be initialized
         /// </summary>
@@ -276,7 +276,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPlatformIo io = new ImGuiPlatformIo();
             Assert.Equal(default(ImVector), io.Monitors);
         }
-        
+
         /// <summary>
         ///     Tests that viewports should be initialized
         /// </summary>
@@ -286,7 +286,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPlatformIo io = new ImGuiPlatformIo();
             Assert.Equal(default(ImVector), io.Viewports);
         }
-        
+
         /// <summary>
         ///     Tests that platform create window set and get returns correct value
         /// </summary>
@@ -298,7 +298,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.PlatformCreateWindow = value;
             Assert.Equal(value, io.PlatformCreateWindow);
         }
-        
+
         /// <summary>
         ///     Tests that platform destroy window set and get returns correct value
         /// </summary>
@@ -310,7 +310,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.PlatformDestroyWindow = value;
             Assert.Equal(value, io.PlatformDestroyWindow);
         }
-        
+
         /// <summary>
         ///     Tests that platform show window set and get returns correct value
         /// </summary>
@@ -322,7 +322,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.PlatformShowWindow = value;
             Assert.Equal(value, io.PlatformShowWindow);
         }
-        
+
         /// <summary>
         ///     Tests that platform set window pos set and get returns correct value
         /// </summary>
@@ -334,7 +334,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.PlatformSetWindowPos = value;
             Assert.Equal(value, io.PlatformSetWindowPos);
         }
-        
+
         /// <summary>
         ///     Tests that platform get window pos set and get returns correct value
         /// </summary>
@@ -346,7 +346,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.PlatformGetWindowPos = value;
             Assert.Equal(value, io.PlatformGetWindowPos);
         }
-        
+
         /// <summary>
         ///     Tests that platform set window size set and get returns correct value
         /// </summary>
@@ -358,7 +358,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.PlatformSetWindowSize = value;
             Assert.Equal(value, io.PlatformSetWindowSize);
         }
-        
+
         /// <summary>
         ///     Tests that platform get window size set and get returns correct value
         /// </summary>
@@ -370,7 +370,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.PlatformGetWindowSize = value;
             Assert.Equal(value, io.PlatformGetWindowSize);
         }
-        
+
         /// <summary>
         ///     Tests that platform set window focus set and get returns correct value
         /// </summary>
@@ -382,7 +382,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.PlatformSetWindowFocus = value;
             Assert.Equal(value, io.PlatformSetWindowFocus);
         }
-        
+
         /// <summary>
         ///     Tests that platform get window focus set and get returns correct value
         /// </summary>
@@ -394,7 +394,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.PlatformGetWindowFocus = value;
             Assert.Equal(value, io.PlatformGetWindowFocus);
         }
-        
+
         /// <summary>
         ///     Tests that platform get window minimized set and get returns correct value
         /// </summary>
@@ -406,7 +406,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.PlatformGetWindowMinimized = value;
             Assert.Equal(value, io.PlatformGetWindowMinimized);
         }
-        
+
         /// <summary>
         ///     Tests that platform set window title set and get returns correct value
         /// </summary>
@@ -418,7 +418,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.PlatformSetWindowTitle = value;
             Assert.Equal(value, io.PlatformSetWindowTitle);
         }
-        
+
         /// <summary>
         ///     Tests that platform set window alpha set and get returns correct value
         /// </summary>
@@ -430,7 +430,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.PlatformSetWindowAlpha = value;
             Assert.Equal(value, io.PlatformSetWindowAlpha);
         }
-        
+
         /// <summary>
         ///     Tests that platform update window set and get returns correct value
         /// </summary>
@@ -442,7 +442,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.PlatformUpdateWindow = value;
             Assert.Equal(value, io.PlatformUpdateWindow);
         }
-        
+
         /// <summary>
         ///     Tests that platform render window set and get returns correct value
         /// </summary>
@@ -454,7 +454,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.PlatformRenderWindow = value;
             Assert.Equal(value, io.PlatformRenderWindow);
         }
-        
+
         /// <summary>
         ///     Tests that platform swap buffers set and get returns correct value
         /// </summary>
@@ -466,7 +466,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.PlatformSwapBuffers = value;
             Assert.Equal(value, io.PlatformSwapBuffers);
         }
-        
+
         /// <summary>
         ///     Tests that platform get window dpi scale set and get returns correct value
         /// </summary>
@@ -478,7 +478,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.PlatformGetWindowDpiScale = value;
             Assert.Equal(value, io.PlatformGetWindowDpiScale);
         }
-        
+
         /// <summary>
         ///     Tests that platform on changed viewport set and get returns correct value
         /// </summary>
@@ -490,7 +490,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.PlatformOnChangedViewport = value;
             Assert.Equal(value, io.PlatformOnChangedViewport);
         }
-        
+
         /// <summary>
         ///     Tests that platform create vk surface set and get returns correct value
         /// </summary>
@@ -502,7 +502,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.PlatformCreateVkSurface = value;
             Assert.Equal(value, io.PlatformCreateVkSurface);
         }
-        
+
         /// <summary>
         ///     Tests that renderer create window set and get returns correct value
         /// </summary>
@@ -514,7 +514,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.RendererCreateWindow = value;
             Assert.Equal(value, io.RendererCreateWindow);
         }
-        
+
         /// <summary>
         ///     Tests that renderer destroy window set and get returns correct value
         /// </summary>
@@ -526,7 +526,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.RendererDestroyWindow = value;
             Assert.Equal(value, io.RendererDestroyWindow);
         }
-        
+
         /// <summary>
         ///     Tests that renderer set window size set and get returns correct value
         /// </summary>
@@ -538,7 +538,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.RendererSetWindowSize = value;
             Assert.Equal(value, io.RendererSetWindowSize);
         }
-        
+
         /// <summary>
         ///     Tests that renderer render window set and get returns correct value
         /// </summary>
@@ -550,7 +550,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.RendererRenderWindow = value;
             Assert.Equal(value, io.RendererRenderWindow);
         }
-        
+
         /// <summary>
         ///     Tests that renderer swap buffers set and get returns correct value
         /// </summary>
@@ -562,7 +562,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.RendererSwapBuffers = value;
             Assert.Equal(value, io.RendererSwapBuffers);
         }
-        
+
         /// <summary>
         ///     Tests that monitors set and get returns correct value
         /// </summary>
@@ -574,7 +574,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.Monitors = value;
             Assert.Equal(value, io.Monitors);
         }
-        
+
         /// <summary>
         ///     Tests that viewports set and get returns correct value
         /// </summary>

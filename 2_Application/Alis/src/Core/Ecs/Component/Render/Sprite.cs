@@ -48,21 +48,21 @@ namespace Alis.Core.Ecs.Component.Render
         IBuilder<SpriteBuilder>
     {
         /// <summary>
-        /// The dst rect
+        ///     The dst rect
         /// </summary>
         private RectangleI dstRect;
 
         /// <summary>
-        /// The 
-        /// </summary>
-        private int w;
-
-        /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         private int h;
 
         private RectangleI Rectangle;
+
+        /// <summary>
+        ///     The
+        /// </summary>
+        private int w;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Sprite" /> class
@@ -128,7 +128,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public override void OnInit()
         {
-           Image.Load();
+            Image.Load();
         }
 
         /// <summary>
@@ -140,13 +140,13 @@ namespace Alis.Core.Ecs.Component.Render
         }
 
         /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
         public override void OnStart()
         {
             Sdl.QueryTexture(Image.Texture, out _, out _, out w, out h);
-            
-            dstRect = new RectangleI( (int)GameObject.Transform.Position.X, (int)GameObject.Transform.Position.Y, w, h);
+
+            dstRect = new RectangleI((int) GameObject.Transform.Position.X, (int) GameObject.Transform.Position.Y, w, h);
         }
 
         public override void OnUpdate()
@@ -161,7 +161,7 @@ namespace Alis.Core.Ecs.Component.Render
             Context.GraphicManager.UnAttach(this);
         }
 
-       public void Render(IntPtr renderer, Vector2 cameraPosition, Vector2 cameraResolution, float pixelsPerMeter)
+        public void Render(IntPtr renderer, Vector2 cameraPosition, Vector2 cameraResolution, float pixelsPerMeter)
         {
             Vector2 spritePosition = GameObject.Transform.Position;
             Vector2 spriteSize = Image.Size;
@@ -171,11 +171,11 @@ namespace Alis.Core.Ecs.Component.Render
             float spritePosX = spritePosition.X * pixelsPerMeter;
             float spritePosY = spritePosition.Y * pixelsPerMeter;
 
-            int scaledWidth = (int)(spriteSize.X * spriteScale.X);
-            int scaledHeight = (int)(spriteSize.Y * spriteScale.Y);
+            int scaledWidth = (int) (spriteSize.X * spriteScale.X);
+            int scaledHeight = (int) (spriteSize.Y * spriteScale.Y);
 
-            int x = (int)(spritePosX - cameraPosition.X * pixelsPerMeter + cameraResolution.X / 2 - scaledWidth / 2);
-            int y = (int)(spritePosY - cameraPosition.Y * pixelsPerMeter + cameraResolution.Y / 2 - scaledHeight / 2);
+            int x = (int) (spritePosX - cameraPosition.X * pixelsPerMeter + cameraResolution.X / 2 - scaledWidth / 2);
+            int y = (int) (spritePosY - cameraPosition.Y * pixelsPerMeter + cameraResolution.Y / 2 - scaledHeight / 2);
 
             Rectangle = new RectangleI
             {
@@ -187,7 +187,7 @@ namespace Alis.Core.Ecs.Component.Render
 
             Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref Rectangle, spriteRotation, IntPtr.Zero, RendererFlips.FlipVertical);
         }
-      
+
         public bool IsVisible(Vector2 cameraPosition, Vector2 cameraResolution, float pixelsPerMeter)
         {
             Vector2 spritePosition = GameObject.Transform.Position;
@@ -206,8 +206,7 @@ namespace Alis.Core.Ecs.Component.Render
             float spriteTop = spritePosY - spriteSize.Y / 2;
             float spriteBottom = spritePosY + spriteSize.Y / 2;
 
-            return spriteRight > cameraLeft && spriteLeft < cameraRight && spriteBottom > cameraTop && spriteTop < cameraBottom;
+            return (spriteRight > cameraLeft) && (spriteLeft < cameraRight) && (spriteBottom > cameraTop) && (spriteTop < cameraBottom);
         }
-        
     }
 }

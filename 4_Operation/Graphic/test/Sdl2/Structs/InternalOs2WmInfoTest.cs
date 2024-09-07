@@ -46,13 +46,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
         {
             IntPtr expectedHwnd = new IntPtr(123);
             IntPtr expectedHwndFrame = new IntPtr(456);
-            
+
             InternalOs2WmInfo info = new InternalOs2WmInfo
             {
                 Hwnd = expectedHwnd,
                 HwndFrame = expectedHwndFrame
             };
-            
+
             Assert.Equal(expectedHwnd, info.Hwnd);
             Assert.Equal(expectedHwndFrame, info.HwndFrame);
         }

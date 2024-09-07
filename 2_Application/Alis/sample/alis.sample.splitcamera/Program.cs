@@ -79,7 +79,7 @@ namespace Alis.Sample.SplitCamera
                                 .Build())
                             .AddComponent(new CameraMovement())
                             .Build())
-                        
+
                         // Decoration tree-001
                         .Add<GameObject>(gameObject => gameObject
                             .Name("tree-001")
@@ -92,7 +92,7 @@ namespace Alis.Sample.SplitCamera
                                 .SetTexture("tree-001.bmp")
                                 .Build())
                             .Build())
-                        
+
                         // Decoration tree-001
                         .Add<GameObject>(gameObject => gameObject
                             .Name("tree-002")

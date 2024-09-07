@@ -51,7 +51,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShaded_S8PtrS8PtrS8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys1, ref ys2, count, flags, offset, sizeof(sbyte));
         }
-        
+
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
@@ -67,7 +67,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShaded_S8PtrS8PtrS8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys1, ref ys2, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
@@ -80,7 +80,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShaded_U8PtrU8PtrU8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys1, ref ys2, count, 0, 0, sizeof(byte));
         }
-        
+
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
@@ -94,7 +94,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShaded_U8PtrU8PtrU8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys1, ref ys2, count, flags, 0, sizeof(byte));
         }
-        
+
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
@@ -109,7 +109,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShaded_U8PtrU8PtrU8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys1, ref ys2, count, flags, offset, sizeof(byte));
         }
-        
+
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
@@ -125,7 +125,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShaded_U8PtrU8PtrU8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys1, ref ys2, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
@@ -138,7 +138,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShaded_S16PtrS16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys1, ys2, count, 0, 0, sizeof(short));
         }
-        
+
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
@@ -152,7 +152,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShaded_S16PtrS16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys1, ys2, count, flags, 0, sizeof(short));
         }
-        
+
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
@@ -167,7 +167,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShaded_S16PtrS16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys1, ys2, count, flags, offset, sizeof(short));
         }
-        
+
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
@@ -183,7 +183,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShaded_S16PtrS16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys1, ys2, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
@@ -196,7 +196,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShaded_U16PtrU16PtrU16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ys1, ys2, count, 0, 0, sizeof(ushort));
         }
-        
+
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
@@ -210,7 +210,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShaded_U16PtrU16PtrU16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ys1, ys2, count, flags, 0, sizeof(ushort));
         }
-        
+
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
@@ -225,7 +225,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShaded_U16PtrU16PtrU16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ys1, ys2, count, flags, offset, sizeof(ushort));
         }
-        
+
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
@@ -241,7 +241,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShaded_U16PtrU16PtrU16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ys1, ys2, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
@@ -254,7 +254,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShaded_S32PtrS32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys1, ys2, count, 0, 0, sizeof(int));
         }
-        
+
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
@@ -268,7 +268,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShaded_S32PtrS32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys1, ys2, count, flags, 0, sizeof(int));
         }
-        
+
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
@@ -283,7 +283,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShaded_S32PtrS32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys1, ys2, count, flags, offset, sizeof(int));
         }
-        
+
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
@@ -299,7 +299,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShaded_S32PtrS32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys1, ys2, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
@@ -312,7 +312,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShaded_U32PtrU32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys1, ys2, count, 0, 0, sizeof(uint));
         }
-        
+
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
@@ -326,7 +326,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShaded_U32PtrU32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys1, ys2, count, flags, 0, sizeof(uint));
         }
-        
+
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
@@ -341,7 +341,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShaded_U32PtrU32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys1, ys2, count, flags, offset, sizeof(uint));
         }
-        
+
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
@@ -357,7 +357,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShaded_U32PtrU32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys1, ys2, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
@@ -370,7 +370,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShaded_S64PtrS64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ys1, ys2, count, 0, 0, sizeof(long));
         }
-        
+
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
@@ -384,7 +384,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShaded_S64PtrS64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ys1, ys2, count, flags, 0, sizeof(long));
         }
-        
+
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
@@ -399,7 +399,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShaded_S64PtrS64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ys1, ys2, count, flags, offset, sizeof(long));
         }
-        
+
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
@@ -415,7 +415,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShaded_S64PtrS64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ys1, ys2, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
@@ -428,7 +428,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShaded_U64PtrU64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ys1, ys2, count, 0, 0, sizeof(ulong));
         }
-        
+
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
@@ -442,7 +442,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShaded_U64PtrU64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ys1, ys2, count, flags, 0, sizeof(ulong));
         }
-        
+
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
@@ -457,7 +457,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShaded_U64PtrU64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ys1, ys2, count, flags, offset, sizeof(ulong));
         }
-        
+
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
@@ -473,7 +473,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShaded_U64PtrU64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ys1, ys2, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the shaded g using the specified label id
         /// </summary>
@@ -487,7 +487,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShadedG(Encoding.UTF8.GetBytes(labelId), getter1, data1, getter2, data2, count, 0);
         }
-        
+
         /// <summary>
         ///     Plots the shaded g using the specified label id
         /// </summary>
@@ -502,7 +502,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotShadedG(Encoding.UTF8.GetBytes(labelId), getter1, data1, getter2, data2, count, flags);
         }
-        
+
         /// <summary>
         ///     Plots the stairs using the specified label id
         /// </summary>
@@ -513,7 +513,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStairs_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 1, 0, 0, 0, sizeof(float));
         }
-        
+
         /// <summary>
         ///     Plots the stairs using the specified label id
         /// </summary>
@@ -525,7 +525,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStairs_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, sizeof(float));
         }
-        
+
         /// <summary>
         ///     Plots the stairs using the specified label id
         /// </summary>
@@ -538,7 +538,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStairs_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, sizeof(float));
         }
-        
+
         /// <summary>
         ///     Plots the stairs using the specified label id
         /// </summary>
@@ -552,7 +552,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStairs_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, 0, sizeof(float));
         }
-        
+
         /// <summary>
         ///     Plots the stairs using the specified label id
         /// </summary>
@@ -567,7 +567,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStairs_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, sizeof(float));
         }
-        
+
         /// <summary>
         ///     Plots the stairs using the specified label id
         /// </summary>
@@ -583,7 +583,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStairs_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the stairs using the specified label id
         /// </summary>
@@ -594,7 +594,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStairs_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 1, 0, 0, 0, sizeof(double));
         }
-        
+
         /// <summary>
         ///     Plots the stairs using the specified label id
         /// </summary>
@@ -606,7 +606,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStairs_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, sizeof(double));
         }
-        
+
         /// <summary>
         ///     Plots the stairs using the specified label id
         /// </summary>
@@ -619,7 +619,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStairs_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, sizeof(double));
         }
-        
+
         /// <summary>
         ///     Plots the stairs using the specified label id
         /// </summary>
@@ -633,7 +633,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStairs_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, 0, sizeof(double));
         }
-        
+
         /// <summary>
         ///     Plots the stairs using the specified label id
         /// </summary>
@@ -648,7 +648,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStairs_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, sizeof(double));
         }
-        
+
         /// <summary>
         ///     Plots the stairs using the specified label id
         /// </summary>
@@ -664,7 +664,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStairs_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the stairs using the specified label id
         /// </summary>
@@ -675,7 +675,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStairs_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 1, 0, 0, 0, sizeof(sbyte));
         }
-        
+
         /// <summary>
         ///     Plots the stairs using the specified label id
         /// </summary>
@@ -687,7 +687,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStairs_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, sizeof(sbyte));
         }
-        
+
         /// <summary>
         ///     Plots the stairs using the specified label id
         /// </summary>
@@ -700,7 +700,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStairs_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, sizeof(sbyte));
         }
-        
+
         /// <summary>
         ///     Plots the stairs using the specified label id
         /// </summary>
@@ -714,7 +714,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStairs_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, 0, sizeof(sbyte));
         }
-        
+
         /// <summary>
         ///     Plots the stairs using the specified label id
         /// </summary>
@@ -729,7 +729,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStairs_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, sizeof(sbyte));
         }
-        
+
         /// <summary>
         ///     Plots the stairs using the specified label id
         /// </summary>
@@ -745,7 +745,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStairs_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the stairs using the specified label id
         /// </summary>
@@ -756,7 +756,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStairs_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 1, 0, 0, 0, sizeof(byte));
         }
-        
+
         /// <summary>
         ///     Plots the stairs using the specified label id
         /// </summary>
@@ -768,7 +768,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStairs_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, sizeof(byte));
         }
-        
+
         /// <summary>
         ///     Plots the stairs using the specified label id
         /// </summary>

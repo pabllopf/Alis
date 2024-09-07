@@ -1,29 +1,58 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:PrismaticJoint.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 /* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
 
 /*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-* 
-* Original source Box2D:
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
-* 
-* This software is provided 'as-is', without any express or implied 
-* warranty.  In no event will the authors be held liable for any damages 
-* arising from the use of this software. 
-* Permission is granted to anyone to use this software for any purpose, 
-* including commercial applications, and to alter it and redistribute it 
-* freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
-* claim that you wrote the original software. If you use this software 
-* in a product, an acknowledgment in the product documentation would be 
-* appreciated but is not required. 
-* 2. Altered source versions must be plainly marked as such, and must not be 
-* misrepresented as being the original software. 
-* 3. This notice may not be removed or altered from any source distribution. 
-*/
+ * Farseer Physics Engine:
+ * Copyright (c) 2012 Ian Qvist
+ *
+ * Original source Box2D:
+ * Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 using System;
 using System.Diagnostics;
@@ -101,52 +130,49 @@ namespace Alis.Core.Physic.Dynamics.Joints
     // df = f2 - f1
 
     /// <summary>
-    /// A prismatic joint. This joint provides one degree of freedom: translation
-    /// along an axis fixed in bodyA. Relative rotation is prevented. You can
-    /// use a joint limit to restrict the range of motion and a joint motor to
-    /// drive the motion or to model joint friction.
+    ///     A prismatic joint. This joint provides one degree of freedom: translation
+    ///     along an axis fixed in bodyA. Relative rotation is prevented. You can
+    ///     use a joint limit to restrict the range of motion and a joint motor to
+    ///     drive the motion or to model joint friction.
     /// </summary>
     public class PrismaticJoint : Joint
     {
-        private Vector2 _localXAxis;
-        private Vector2 _localYAxisA;
-        private Vector3 _impulse;
-        private float _lowerTranslation;
-        private float _upperTranslation;
-        private float _maxMotorForce;
-        private float _motorSpeed;
+        private float _a1, _a2;
+        private Vector2 _axis, _perp;
+        private Vector2 _axis1;
         private bool _enableLimit;
         private bool _enableMotor;
-        private LimitState _limitState;
+        private Vector3 _impulse;
 
         // Solver temp
         private int _indexA;
         private int _indexB;
-        private Vector2 _localCenterA;
-        private Vector2 _localCenterB;
-        private float _invMassA;
-        private float _invMassB;
         private float _invIA;
         private float _invIB;
-        private Vector2 _axis, _perp;
-        private float _s1, _s2;
-        private float _a1, _a2;
+        private float _invMassA;
+        private float _invMassB;
         private Mat33 _K;
+        private LimitState _limitState;
+        private Vector2 _localCenterA;
+        private Vector2 _localCenterB;
+        private Vector2 _localXAxis;
+        private Vector2 _localYAxisA;
+        private float _lowerTranslation;
+        private float _maxMotorForce;
         private float _motorMass;
-        private Vector2 _axis1;
+        private float _motorSpeed;
+        private float _s1, _s2;
+        private float _upperTranslation;
 
-        internal PrismaticJoint()
-        {
-            JointType = JointType.Prismatic;
-        }
+        internal PrismaticJoint() => JointType = JointType.Prismatic;
 
         /// <summary>
-        /// This requires defining a line of
-        /// motion using an axis and an anchor point. The definition uses local
-        /// anchor points and a local axis so that the initial configuration
-        /// can violate the constraint slightly. The joint translation is zero
-        /// when the local anchor points coincide in world space. Using local
-        /// anchors and a local axis helps when saving and loading a game.
+        ///     This requires defining a line of
+        ///     motion using an axis and an anchor point. The definition uses local
+        ///     anchor points and a local axis so that the initial configuration
+        ///     can violate the constraint slightly. The joint translation is zero
+        ///     when the local anchor points coincide in world space. Using local
+        ///     anchors and a local axis helps when saving and loading a game.
         /// </summary>
         /// <param name="bodyA">The first body.</param>
         /// <param name="bodyB">The second body.</param>
@@ -166,51 +192,30 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Initialize(anchor, anchor, axis, useWorldCoordinates);
         }
 
-        private void Initialize(Vector2 localAnchorA, Vector2 localAnchorB, Vector2 axis, bool useWorldCoordinates)
-        {
-            JointType = JointType.Prismatic;
-
-            if (useWorldCoordinates)
-            {
-                LocalAnchorA = BodyA.GetLocalPoint(localAnchorA);
-                LocalAnchorB = BodyB.GetLocalPoint(localAnchorB);
-            }
-            else
-            {
-                LocalAnchorA = localAnchorA;
-                LocalAnchorB = localAnchorB;
-            }
-
-            Axis = axis; //FPE only: store the orignal value for use in Serialization
-            ReferenceAngle = BodyB.Rotation - BodyA.Rotation;
-
-            _limitState = LimitState.Inactive;
-        }
-
         /// <summary>
-        /// The local anchor point on BodyA
+        ///     The local anchor point on BodyA
         /// </summary>
         public Vector2 LocalAnchorA { get; set; }
 
         /// <summary>
-        /// The local anchor point on BodyB
+        ///     The local anchor point on BodyB
         /// </summary>
         public Vector2 LocalAnchorB { get; set; }
 
         public override Vector2 WorldAnchorA
         {
-            get { return BodyA.GetWorldPoint(LocalAnchorA); }
-            set { LocalAnchorA = BodyA.GetLocalPoint(value); }
+            get => BodyA.GetWorldPoint(LocalAnchorA);
+            set => LocalAnchorA = BodyA.GetLocalPoint(value);
         }
 
         public override Vector2 WorldAnchorB
         {
-            get { return BodyB.GetWorldPoint(LocalAnchorB); }
-            set { LocalAnchorB = BodyB.GetLocalPoint(value); }
+            get => BodyB.GetWorldPoint(LocalAnchorB);
+            set => LocalAnchorB = BodyB.GetLocalPoint(value);
         }
 
         /// <summary>
-        /// Get the current joint translation, usually in meters.
+        ///     Get the current joint translation, usually in meters.
         /// </summary>
         /// <value></value>
         public float JointTranslation
@@ -225,7 +230,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Get the current joint translation speed, usually in meters per second.
+        ///     Get the current joint translation speed, usually in meters per second.
         /// </summary>
         /// <value></value>
         public float JointSpeed
@@ -253,12 +258,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Is the joint limit enabled?
+        ///     Is the joint limit enabled?
         /// </summary>
         /// <value><c>true</c> if [limit enabled]; otherwise, <c>false</c>.</value>
         public bool LimitEnabled
         {
-            get { return _enableLimit; }
+            get => _enableLimit;
             set
             {
                 Debug.Assert(BodyA.FixedRotation == false || BodyB.FixedRotation == false, "Warning: limits does currently not work with fixed rotation");
@@ -273,12 +278,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Get the lower joint limit, usually in meters.
+        ///     Get the lower joint limit, usually in meters.
         /// </summary>
         /// <value></value>
         public float LowerLimit
         {
-            get { return _lowerTranslation; }
+            get => _lowerTranslation;
             set
             {
                 if (value != _lowerTranslation)
@@ -291,12 +296,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Get the upper joint limit, usually in meters.
+        ///     Get the upper joint limit, usually in meters.
         /// </summary>
         /// <value></value>
         public float UpperLimit
         {
-            get { return _upperTranslation; }
+            get => _upperTranslation;
             set
             {
                 if (value != _upperTranslation)
@@ -309,7 +314,101 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Set the joint limits, usually in meters.
+        ///     Is the joint motor enabled?
+        /// </summary>
+        /// <value><c>true</c> if [motor enabled]; otherwise, <c>false</c>.</value>
+        public bool MotorEnabled
+        {
+            get => _enableMotor;
+            set
+            {
+                WakeBodies();
+                _enableMotor = value;
+            }
+        }
+
+        /// <summary>
+        ///     Set the motor speed, usually in meters per second.
+        /// </summary>
+        /// <value>The speed.</value>
+        public float MotorSpeed
+        {
+            set
+            {
+                WakeBodies();
+                _motorSpeed = value;
+            }
+            get => _motorSpeed;
+        }
+
+        /// <summary>
+        ///     Set the maximum motor force, usually in N.
+        /// </summary>
+        /// <value>The force.</value>
+        public float MaxMotorForce
+        {
+            get => _maxMotorForce;
+            set
+            {
+                WakeBodies();
+                _maxMotorForce = value;
+            }
+        }
+
+        /// <summary>
+        ///     Get the current motor impulse, usually in N.
+        /// </summary>
+        /// <value></value>
+        public float MotorImpulse { get; set; }
+
+        /// <summary>
+        ///     The axis at which the joint moves.
+        /// </summary>
+        public Vector2 Axis
+        {
+            get => _axis1;
+            set
+            {
+                _axis1 = value;
+                _localXAxis = BodyA.GetLocalVector(_axis1);
+                _localXAxis.Normalize();
+                _localYAxisA = MathUtils.Cross(1.0f, ref _localXAxis);
+            }
+        }
+
+        /// <summary>
+        ///     The axis in local coordinates relative to BodyA
+        /// </summary>
+        public Vector2 LocalXAxis => _localXAxis;
+
+        /// <summary>
+        ///     The reference angle.
+        /// </summary>
+        public float ReferenceAngle { get; set; }
+
+        private void Initialize(Vector2 localAnchorA, Vector2 localAnchorB, Vector2 axis, bool useWorldCoordinates)
+        {
+            JointType = JointType.Prismatic;
+
+            if (useWorldCoordinates)
+            {
+                LocalAnchorA = BodyA.GetLocalPoint(localAnchorA);
+                LocalAnchorB = BodyB.GetLocalPoint(localAnchorB);
+            }
+            else
+            {
+                LocalAnchorA = localAnchorA;
+                LocalAnchorB = localAnchorB;
+            }
+
+            Axis = axis; //FPE only: store the orignal value for use in Serialization
+            ReferenceAngle = BodyB.Rotation - BodyA.Rotation;
+
+            _limitState = LimitState.Inactive;
+        }
+
+        /// <summary>
+        ///     Set the joint limits, usually in meters.
         /// </summary>
         /// <param name="lower">The lower limit</param>
         /// <param name="upper">The upper limit</param>
@@ -325,96 +424,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Is the joint motor enabled?
-        /// </summary>
-        /// <value><c>true</c> if [motor enabled]; otherwise, <c>false</c>.</value>
-        public bool MotorEnabled
-        {
-            get { return _enableMotor; }
-            set
-            {
-                WakeBodies();
-                _enableMotor = value;
-            }
-        }
-
-        /// <summary>
-        /// Set the motor speed, usually in meters per second.
-        /// </summary>
-        /// <value>The speed.</value>
-        public float MotorSpeed
-        {
-            set
-            {
-                WakeBodies();
-                _motorSpeed = value;
-            }
-            get { return _motorSpeed; }
-        }
-
-        /// <summary>
-        /// Set the maximum motor force, usually in N.
-        /// </summary>
-        /// <value>The force.</value>
-        public float MaxMotorForce
-        {
-            get { return _maxMotorForce; }
-            set
-            {
-                WakeBodies();
-                _maxMotorForce = value;
-            }
-        }
-
-        /// <summary>
-        /// Get the current motor impulse, usually in N.
-        /// </summary>
-        /// <value></value>
-        public float MotorImpulse { get; set; }
-
-        /// <summary>
-        /// Gets the motor force.
+        ///     Gets the motor force.
         /// </summary>
         /// <param name="invDt">The inverse delta time</param>
-        public float GetMotorForce(float invDt)
-        {
-            return invDt * MotorImpulse;
-        }
+        public float GetMotorForce(float invDt) => invDt * MotorImpulse;
 
-        /// <summary>
-        /// The axis at which the joint moves.
-        /// </summary>
-        public Vector2 Axis
-        {
-            get { return _axis1; }
-            set
-            {
-                _axis1 = value;
-                _localXAxis = BodyA.GetLocalVector(_axis1);
-                _localXAxis.Normalize();
-                _localYAxisA = MathUtils.Cross(1.0f, ref _localXAxis);
-            }
-        }
+        public override Vector2 GetReactionForce(float invDt) => invDt * (_impulse.X * _perp + (MotorImpulse + _impulse.Z) * _axis);
 
-        /// <summary>
-        /// The axis in local coordinates relative to BodyA
-        /// </summary>
-        public Vector2 LocalXAxis { get { return _localXAxis; } }
-
-        /// <summary>
-        /// The reference angle.
-        /// </summary>
-        public float ReferenceAngle { get; set; }
-
-        public override Vector2 GetReactionForce(float invDt)
-        {
-            return invDt * (_impulse.X * _perp + (MotorImpulse + _impulse.Z) * _axis);
-        }
-
-        public override float GetReactionTorque(float invDt)
-        {
-            return invDt * _impulse.Y;
-        }
+        public override float GetReactionTorque(float invDt) => invDt * _impulse.Y;
 
         internal override void InitVelocityConstraints(ref SolverData data)
         {
@@ -443,7 +460,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             // Compute the effective masses.
             Vector2 rA = Complex.Multiply(LocalAnchorA - _localCenterA, ref qA);
             Vector2 rB = Complex.Multiply(LocalAnchorB - _localCenterB, ref qB);
-            Vector2 d = (cB - cA) + rB - rA;
+            Vector2 d = cB - cA + rB - rA;
 
             float mA = _invMassA, mB = _invMassB;
             float iA = _invIA, iB = _invIB;
@@ -477,6 +494,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     // For bodies with fixed rotation.
                     k22 = 1.0f;
                 }
+
                 float k23 = iA * _a1 + iB * _a2;
                 float k33 = mA + mB + iA * _a1 * _a1 + iB * _a2 * _a2;
 
@@ -565,7 +583,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float iA = _invIA, iB = _invIB;
 
             // Solve linear motor constraint.
-            if (_enableMotor && _limitState != LimitState.Equal)
+            if (_enableMotor && (_limitState != LimitState.Equal))
             {
                 float Cdot = Vector2.Dot(_axis, vB - vA) + _a2 * wB - _a1 * wA;
                 float impulse = _motorMass * (_motorSpeed - Cdot);
@@ -589,7 +607,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Cdot1.X = Vector2.Dot(_perp, vB - vA) + _s2 * wB - _s1 * wA;
             Cdot1.Y = wB - wA;
 
-            if (_enableLimit && _limitState != LimitState.Inactive)
+            if (_enableLimit && (_limitState != LimitState.Inactive))
             {
                 // Solve prismatic and limit constraint in block form.
                 float Cdot2;
@@ -724,6 +742,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     // For fixed rotation
                     k22 = 1.0f;
                 }
+
                 float k23 = iA * a1 + iB * a2;
                 float k33 = mA + mB + iA * a1 * a1 + iB * a2 * a2;
 
@@ -774,7 +793,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.positions[_indexB].c = cB;
             data.positions[_indexB].a = aB;
 
-            return linearError <= Settings.LinearSlop && angularError <= Settings.AngularSlop;
+            return (linearError <= Settings.LinearSlop) && (angularError <= Settings.AngularSlop);
         }
     }
 }

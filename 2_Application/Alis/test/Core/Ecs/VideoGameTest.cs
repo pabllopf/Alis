@@ -60,12 +60,12 @@ namespace Alis.Test.Core.Ecs
                 new NetworkManager(),
                 new PhysicManager(),
                 new SceneManager());
-            
+
             videoGame.Context.TimeManager.IsRunning = false;
-            
+
             Assert.False(videoGame.Context.TimeManager.IsRunning);
         }
-        
+
         /// <summary>
         ///     Tests that builder should return video game builder
         /// </summary>
@@ -73,10 +73,10 @@ namespace Alis.Test.Core.Ecs
         public void Builder_ShouldReturnVideoGameBuilder()
         {
             VideoGameBuilder result = VideoGame.Builder();
-            
+
             Assert.IsType<VideoGameBuilder>(result);
         }
-        
+
         /// <summary>
         ///     Tests that set context should set context
         /// </summary>
@@ -92,9 +92,9 @@ namespace Alis.Test.Core.Ecs
                 new PhysicManager(),
                 new SceneManager());
             Context newContext = new Context(new Settings());
-            
+
             VideoGame.SetContext(newContext);
-            
+
             Assert.Equal(newContext.GetType(), videoGame.Context.GetType());
         }
     }

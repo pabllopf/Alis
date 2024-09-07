@@ -46,13 +46,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
         {
             IntPtr expectedWindow = new IntPtr(123);
             IntPtr expectedSurface = new IntPtr(456);
-            
+
             InternalAndroidWmInfo info = new InternalAndroidWmInfo
             {
                 Window = expectedWindow,
                 Surface = expectedSurface
             };
-            
+
             Assert.Equal(expectedWindow, info.Window);
             Assert.Equal(expectedSurface, info.Surface);
         }

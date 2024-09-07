@@ -45,14 +45,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImDrawVert vert = new ImDrawVert {Pos = new Vector2(1, 2)};
-            
+
             // Act
             Vector2 result = vert.Pos;
-            
+
             // Assert
             Assert.Equal(new Vector2(1, 2), result);
         }
-        
+
         /// <summary>
         ///     Tests that uv should be initialized correctly
         /// </summary>
@@ -61,14 +61,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImDrawVert vert = new ImDrawVert {Uv = new Vector2(3, 4)};
-            
+
             // Act
             Vector2 result = vert.Uv;
-            
+
             // Assert
             Assert.Equal(new Vector2(3, 4), result);
         }
-        
+
         /// <summary>
         ///     Tests that col should be initialized correctly
         /// </summary>
@@ -77,10 +77,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImDrawVert vert = new ImDrawVert {Col = 0xFFFFFFFF};
-            
+
             // Act
             uint result = vert.Col;
-            
+
             // Assert
             Assert.Equal(0xFFFFFFFF, result);
         }

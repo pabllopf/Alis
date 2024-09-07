@@ -47,6 +47,13 @@ namespace Alis.Core.Ecs.Component.Render
         AComponent,
         IBuilder<CameraBuilder>
     {
+        [JsonPropertyName("_Position_")] public Vector2 Position;
+
+        /// <summary>
+        ///     The viewport
+        /// </summary>
+        [JsonPropertyName("_Viewport_")] public RectangleI Viewport;
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="Camera" /> class
         /// </summary>
@@ -84,12 +91,6 @@ namespace Alis.Core.Ecs.Component.Render
         }
 
         /// <summary>
-        ///     The viewport
-        /// </summary>
-        [JsonPropertyName("_Viewport_")] 
-        public RectangleI Viewport;
-
-        /// <summary>
         ///     Gets or sets the value of the texture target
         /// </summary>
         [JsonPropertyName("_TextureTarget_", true, true)]
@@ -113,8 +114,6 @@ namespace Alis.Core.Ecs.Component.Render
         [JsonPropertyName("_CameraBorder_")]
         public float CameraBorder { get; set; }
 
-        [JsonPropertyName("_Position_")] public Vector2 Position;
-
         /// <summary>
         ///     Builders this instance
         /// </summary>
@@ -130,8 +129,8 @@ namespace Alis.Core.Ecs.Component.Render
             {
                 return;
             }
-            
-            Viewport = new RectangleI(0, 0, (int)Resolution.X, (int)Resolution.Y);
+
+            Viewport = new RectangleI(0, 0, (int) Resolution.X, (int) Resolution.Y);
             TextureTarget = Sdl.CreateTexture(Context.GraphicManager.Renderer, Sdl.PixelFormatRgba8888, (int) TextureAccess.SdlTextureAccessTarget, Viewport.W, Viewport.H);
 
             Context.GraphicManager.Attach(this);
@@ -144,9 +143,8 @@ namespace Alis.Core.Ecs.Component.Render
         {
             if (GameObject == null || Context == null)
             {
-                return;
             }
-            
+
             //Viewport = new RectangleI((int) GameObject.Transform.Position.X, (int) GameObject.Transform.Position.Y, Viewport.W, Viewport.H);
         }
 

@@ -49,7 +49,7 @@ namespace Alis.Extension.Language.Dialogue.Test
             manager.AddDialog(dialog);
             Assert.True(manager.dialogs.ContainsKey("testId"));
         }
-        
+
         /// <summary>
         ///     Tests that get dialog should return dialog if exists
         /// </summary>
@@ -62,7 +62,7 @@ namespace Alis.Extension.Language.Dialogue.Test
             Dialog result = manager.GetDialog("testId");
             Assert.Equal(dialog, result);
         }
-        
+
         /// <summary>
         ///     Tests that get dialog should return null if not exists
         /// </summary>
@@ -73,7 +73,7 @@ namespace Alis.Extension.Language.Dialogue.Test
             Dialog result = manager.GetDialog("nonExistentId");
             Assert.Null(result);
         }
-        
+
         /// <summary>
         ///     Tests that show dialog should not throw exception if dialog does not exist
         /// </summary>
@@ -84,7 +84,7 @@ namespace Alis.Extension.Language.Dialogue.Test
             Exception exception = Record.Exception(() => manager.ShowDialog("nonExistentId"));
             Assert.Null(exception);
         }
-        
+
         /// <summary>
         ///     Tests that show dialog should invoke action on valid option selection
         /// </summary>
@@ -96,10 +96,10 @@ namespace Alis.Extension.Language.Dialogue.Test
             Dialog dialog = new Dialog("testId", "Test Dialog");
             dialog.AddOption(new DialogOption("Option 1", () => { actionInvoked = true; }));
             manager.AddDialog(dialog);
-            
+
             Console.SetIn(new StringReader("1\n")); // Simulate user input
             manager.ShowDialog("testId");
-            
+
             Assert.True(actionInvoked);
         }
     }

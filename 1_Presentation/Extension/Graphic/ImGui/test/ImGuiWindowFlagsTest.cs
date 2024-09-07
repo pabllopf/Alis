@@ -44,11 +44,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.None;
-            
+
             // Act & Assert
             Assert.Equal(0, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that no title bar should be initialized correctly
         /// </summary>
@@ -57,11 +57,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.NoTitleBar;
-            
+
             // Act & Assert
             Assert.Equal(1, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that no resize should be initialized correctly
         /// </summary>
@@ -70,11 +70,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.NoResize;
-            
+
             // Act & Assert
             Assert.Equal(2, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that no move should be initialized correctly
         /// </summary>
@@ -83,11 +83,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.NoMove;
-            
+
             // Act & Assert
             Assert.Equal(4, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that no scrollbar should be initialized correctly
         /// </summary>
@@ -96,11 +96,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.NoScrollbar;
-            
+
             // Act & Assert
             Assert.Equal(8, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that no scroll with mouse should be initialized correctly
         /// </summary>
@@ -109,11 +109,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.NoScrollWithMouse;
-            
+
             // Act & Assert
             Assert.Equal(16, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that no collapse should be initialized correctly
         /// </summary>
@@ -122,11 +122,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.NoCollapse;
-            
+
             // Act & Assert
             Assert.Equal(32, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that always auto resize should be initialized correctly
         /// </summary>
@@ -135,11 +135,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.AlwaysAutoResize;
-            
+
             // Act & Assert
             Assert.Equal(64, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that no background should be initialized correctly
         /// </summary>
@@ -148,11 +148,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.NoBackground;
-            
+
             // Act & Assert
             Assert.Equal(128, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that no saved settings should be initialized correctly
         /// </summary>
@@ -161,11 +161,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.NoSavedSettings;
-            
+
             // Act & Assert
             Assert.Equal(256, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that no mouse inputs should be initialized correctly
         /// </summary>
@@ -174,11 +174,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.NoMouseInputs;
-            
+
             // Act & Assert
             Assert.Equal(512, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that menu bar should be initialized correctly
         /// </summary>
@@ -187,11 +187,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.MenuBar;
-            
+
             // Act & Assert
             Assert.Equal(1024, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that horizontal scrollbar should be initialized correctly
         /// </summary>
@@ -200,11 +200,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.HorizontalScrollbar;
-            
+
             // Act & Assert
             Assert.Equal(2048, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that no focus on appearing should be initialized correctly
         /// </summary>
@@ -213,11 +213,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.NoFocusOnAppearing;
-            
+
             // Act & Assert
             Assert.Equal(4096, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that no bring to front on focus should be initialized correctly
         /// </summary>
@@ -226,11 +226,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.NoBringToFrontOnFocus;
-            
+
             // Act & Assert
             Assert.Equal(8192, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that always vertical scrollbar should be initialized correctly
         /// </summary>
@@ -239,11 +239,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.AlwaysVerticalScrollbar;
-            
+
             // Act & Assert
             Assert.Equal(16384, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that always horizontal scrollbar should be initialized correctly
         /// </summary>
@@ -252,11 +252,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.AlwaysHorizontalScrollbar;
-            
+
             // Act & Assert
             Assert.Equal(32768, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that always use window padding should be initialized correctly
         /// </summary>
@@ -265,11 +265,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.AlwaysUseWindowPadding;
-            
+
             // Act & Assert
             Assert.Equal(65536, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that no nav inputs should be initialized correctly
         /// </summary>
@@ -278,11 +278,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.NoNavInputs;
-            
+
             // Act & Assert
             Assert.Equal(262144, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that no nav focus should be initialized correctly
         /// </summary>
@@ -291,11 +291,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.NoNavFocus;
-            
+
             // Act & Assert
             Assert.Equal(524288, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that unsaved document should be initialized correctly
         /// </summary>
@@ -304,11 +304,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.UnsavedDocument;
-            
+
             // Act & Assert
             Assert.Equal(1048576, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that no docking should be initialized correctly
         /// </summary>
@@ -317,11 +317,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.NoDocking;
-            
+
             // Act & Assert
             Assert.Equal(2097152, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that no nav should be initialized correctly
         /// </summary>
@@ -330,11 +330,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.NoNav;
-            
+
             // Act & Assert
             Assert.Equal(786432, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that no decoration should be initialized correctly
         /// </summary>
@@ -343,11 +343,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.NoDecoration;
-            
+
             // Act & Assert
             Assert.Equal(43, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that no inputs should be initialized correctly
         /// </summary>
@@ -356,11 +356,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.NoInputs;
-            
+
             // Act & Assert
             Assert.Equal(786944, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that nav flattened should be initialized correctly
         /// </summary>
@@ -369,11 +369,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.NavFlattened;
-            
+
             // Act & Assert
             Assert.Equal(8388608, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that child window should be initialized correctly
         /// </summary>
@@ -382,11 +382,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.ChildWindow;
-            
+
             // Act & Assert
             Assert.Equal(16777216, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that tooltip should be initialized correctly
         /// </summary>
@@ -395,11 +395,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.Tooltip;
-            
+
             // Act & Assert
             Assert.Equal(33554432, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that popup should be initialized correctly
         /// </summary>
@@ -408,11 +408,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.Popup;
-            
+
             // Act & Assert
             Assert.Equal(67108864, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that modal should be initialized correctly
         /// </summary>
@@ -421,11 +421,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.Modal;
-            
+
             // Act & Assert
             Assert.Equal(134217728, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that child menu should be initialized correctly
         /// </summary>
@@ -434,11 +434,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.ChildMenu;
-            
+
             // Act & Assert
             Assert.Equal(268435456, (int) flag);
         }
-        
+
         /// <summary>
         ///     Tests that dock node host should be initialized correctly
         /// </summary>
@@ -447,7 +447,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiWindowFlags flag = ImGuiWindowFlags.DockNodeHost;
-            
+
             // Act & Assert
             Assert.Equal(536870912, (int) flag);
         }

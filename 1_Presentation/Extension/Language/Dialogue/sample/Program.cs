@@ -43,19 +43,19 @@ namespace Alis.Extension.Language.Dialogue.Sample
         public static void Main(string[] args)
         {
             DialogManager dialogManager = new DialogManager();
-            
+
             // Create dialog for the first character
             Dialog char1Dialog = new Dialog("char1Greeting", "Hello, adventurer! What brings you to these lands?");
             char1Dialog.AddOption(new DialogOption("I'm here to explore.", () => Logger.Info("Ah, the spirit of adventure! Be careful, these lands are full of dangers.")));
             char1Dialog.AddOption(new DialogOption("I'm searching for the ancient treasure.", () => Logger.Info("The ancient treasure, you say? Many have searched for it, but none have returned. Good luck on your quest.")));
             dialogManager.AddDialog(char1Dialog);
-            
+
             // Create dialog for the second character
             Dialog char2Dialog = new Dialog("char2Greeting", "Did you see any monsters on your way here?");
             char2Dialog.AddOption(new DialogOption("Yes, I fought a few.", () => Logger.Info("You're brave! I hope you didn't get hurt.")));
             char2Dialog.AddOption(new DialogOption("No, it was surprisingly peaceful.", () => Logger.Info("That's unusual. Be on your guard, they might be planning something.")));
             dialogManager.AddDialog(char2Dialog);
-            
+
             // Simulate dialog flow
             Logger.Info("You encounter a mysterious traveler.");
             dialogManager.ShowDialog("char1Greeting");

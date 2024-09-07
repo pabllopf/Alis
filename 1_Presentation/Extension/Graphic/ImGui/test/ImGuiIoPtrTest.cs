@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.WantTextInput = false;
             Assert.False(ioPtr.WantTextInput);
         }
-        
+
         /// <summary>
         ///     Tests that want set mouse pos get set returns expected
         /// </summary>
@@ -66,7 +66,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.WantSetMousePos = false;
             Assert.False(ioPtr.WantSetMousePos);
         }
-        
+
         /// <summary>
         ///     Tests that want save ini settings get set returns expected
         /// </summary>
@@ -80,7 +80,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.WantSaveIniSettings = false;
             Assert.False(ioPtr.WantSaveIniSettings);
         }
-        
+
         /// <summary>
         ///     Tests that nav active get set returns expected
         /// </summary>
@@ -94,7 +94,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.NavActive = false;
             Assert.False(ioPtr.NavActive);
         }
-        
+
         /// <summary>
         ///     Tests that nav visible get set returns expected
         /// </summary>
@@ -108,7 +108,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.NavVisible = false;
             Assert.False(ioPtr.NavVisible);
         }
-        
+
         /// <summary>
         ///     Tests that framerate get returns expected
         /// </summary>
@@ -121,7 +121,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.Framerate = expected;
             Assert.Equal(expected, ioPtr.Framerate);
         }
-        
+
         /// <summary>
         ///     Tests that metrics render vertices get set returns expected
         /// </summary>
@@ -134,7 +134,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.MetricsRenderVertices = expected;
             Assert.Equal(expected, ioPtr.MetricsRenderVertices);
         }
-        
+
         /// <summary>
         ///     Tests that metrics render indices get set returns expected
         /// </summary>
@@ -147,7 +147,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.MetricsRenderIndices = expected;
             Assert.Equal(expected, ioPtr.MetricsRenderIndices);
         }
-        
+
         /// <summary>
         ///     Tests that metrics render windows get set returns expected
         /// </summary>
@@ -160,7 +160,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.MetricsRenderWindows = expected;
             Assert.Equal(expected, ioPtr.MetricsRenderWindows);
         }
-        
+
         /// <summary>
         ///     Tests that metrics active windows get set returns expected
         /// </summary>
@@ -173,7 +173,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.MetricsActiveWindows = expected;
             Assert.Equal(expected, ioPtr.MetricsActiveWindows);
         }
-        
+
         /// <summary>
         ///     Tests that metrics active allocations get set returns expected
         /// </summary>
@@ -186,7 +186,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.MetricsActiveAllocations = expected;
             Assert.Equal(expected, ioPtr.MetricsActiveAllocations);
         }
-        
+
         /// <summary>
         ///     Tests that mouse delta get returns expected
         /// </summary>
@@ -199,7 +199,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.MouseDelta = expected;
             Assert.Equal(expected, ioPtr.MouseDelta);
         }
-        
+
         /// <summary>
         ///     Tests that key map get set returns expected
         /// </summary>
@@ -212,7 +212,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.KeyMap = expected;
             Assert.NotEqual(new int[652], ioPtr.KeyMap);
         }
-        
+
         /// <summary>
         ///     Tests that keys down get set returns expected
         /// </summary>
@@ -225,7 +225,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.KeysDown = expected;
             Assert.NotEqual(new List<bool>(100), ioPtr.KeysDown);
         }
-        
+
         /// <summary>
         ///     Tests that nav inputs get set returns expected
         /// </summary>
@@ -238,7 +238,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.NavInputs = expected;
             Assert.NotEqual(new float[21], ioPtr.NavInputs);
         }
-        
+
         /// <summary>
         ///     Tests that mouse pos get set returns expected
         /// </summary>
@@ -251,7 +251,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.MousePos = expected;
             Assert.Equal(expected, ioPtr.MousePos);
         }
-        
+
         /// <summary>
         ///     Tests that mouse down get set returns expected
         /// </summary>
@@ -264,7 +264,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.MouseDown = expected;
             Assert.Equal(expected, ioPtr.MouseDown);
         }
-        
+
         /// <summary>
         ///     Tests that mouse wheel get set returns expected
         /// </summary>
@@ -277,7 +277,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.MouseWheel = expected;
             Assert.Equal(expected, ioPtr.MouseWheel);
         }
-        
+
         /// <summary>
         ///     Tests that mouse wheel h get set returns expected
         /// </summary>
@@ -290,7 +290,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.MouseWheelH = expected;
             Assert.Equal(expected, ioPtr.MouseWheelH);
         }
-        
+
         /// <summary>
         ///     Tests that mouse hovered viewport get set returns expected
         /// </summary>
@@ -303,7 +303,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.MouseHoveredViewport = expected;
             Assert.Equal(expected, ioPtr.MouseHoveredViewport);
         }
-        
+
         /// <summary>
         ///     Tests that key ctrl get set returns expected
         /// </summary>
@@ -317,7 +317,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.KeyCtrl = false;
             Assert.False(ioPtr.KeyCtrl);
         }
-        
+
         /// <summary>
         ///     Tests that key shift get set returns expected
         /// </summary>
@@ -331,7 +331,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.KeyShift = false;
             Assert.False(ioPtr.KeyShift);
         }
-        
+
         /// <summary>
         ///     Tests that key alt get set returns expected
         /// </summary>
@@ -345,7 +345,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.KeyAlt = false;
             Assert.False(ioPtr.KeyAlt);
         }
-        
+
         /// <summary>
         ///     Tests that key super get set returns expected
         /// </summary>
@@ -359,7 +359,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.KeySuper = false;
             Assert.False(ioPtr.KeySuper);
         }
-        
+
         /// <summary>
         ///     Tests that key mods get set returns expected
         /// </summary>
@@ -372,7 +372,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.KeyMods = expected;
             Assert.Equal(expected, ioPtr.KeyMods);
         }
-        
+
         /// <summary>
         ///     Tests that want capture mouse unless popup close get set returns expected
         /// </summary>
@@ -386,7 +386,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.WantCaptureMouseUnlessPopupClose = false;
             Assert.False(ioPtr.WantCaptureMouseUnlessPopupClose);
         }
-        
+
         /// <summary>
         ///     Tests that mouse pos prev get returns expected
         /// </summary>
@@ -399,7 +399,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.MousePosPrev = expected;
             Assert.Equal(expected, ioPtr.MousePosPrev);
         }
-        
+
         /// <summary>
         ///     Tests that mouse clicked time get set returns expected
         /// </summary>
@@ -412,7 +412,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.MouseClickedTime = expected;
             Assert.Equal(expected, ioPtr.MouseClickedTime);
         }
-        
+
         /// <summary>
         ///     Tests that mouse clicked get set returns expected
         /// </summary>
@@ -425,7 +425,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.MouseClicked = expected;
             Assert.Equal(expected, ioPtr.MouseClicked);
         }
-        
+
         /// <summary>
         ///     Tests that mouse double clicked get set returns expected
         /// </summary>
@@ -438,7 +438,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.MouseDoubleClicked = expected;
             Assert.Equal(expected, ioPtr.MouseDoubleClicked);
         }
-        
+
         /// <summary>
         ///     Tests that mouse clicked count get set returns expected
         /// </summary>
@@ -451,7 +451,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.MouseClickedCount = expected;
             Assert.Equal(expected, ioPtr.MouseClickedCount);
         }
-        
+
         /// <summary>
         ///     Tests that mouse clicked last count get set returns expected
         /// </summary>
@@ -464,7 +464,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.MouseClickedLastCount = expected;
             Assert.Equal(expected, ioPtr.MouseClickedLastCount);
         }
-        
+
         /// <summary>
         ///     Tests that mouse released get set returns expected
         /// </summary>
@@ -477,7 +477,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.MouseReleased = expected;
             Assert.Equal(expected, ioPtr.MouseReleased);
         }
-        
+
         /// <summary>
         ///     Tests that mouse down owned get set returns expected
         /// </summary>
@@ -490,7 +490,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.MouseDownOwned = expected;
             Assert.Equal(expected, ioPtr.MouseDownOwned);
         }
-        
+
         /// <summary>
         ///     Tests that mouse down owned unless popup close get set returns expected
         /// </summary>
@@ -503,7 +503,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.MouseDownOwnedUnlessPopupClose = expected;
             Assert.Equal(expected, ioPtr.MouseDownOwnedUnlessPopupClose);
         }
-        
+
         /// <summary>
         ///     Tests that mouse down duration get set returns expected
         /// </summary>
@@ -516,7 +516,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.MouseDownDuration = expected;
             Assert.Equal(expected, ioPtr.MouseDownDuration);
         }
-        
+
         /// <summary>
         ///     Tests that mouse down duration prev get set returns expected
         /// </summary>
@@ -529,7 +529,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.MouseDownDurationPrev = expected;
             Assert.Equal(expected, ioPtr.MouseDownDurationPrev);
         }
-        
+
         /// <summary>
         ///     Tests that mouse drag max distance sqr get set returns expected
         /// </summary>
@@ -542,7 +542,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.MouseDragMaxDistanceSqr = expected;
             Assert.Equal(expected, ioPtr.MouseDragMaxDistanceSqr);
         }
-        
+
         /// <summary>
         ///     Tests that pen pressure get returns expected
         /// </summary>
@@ -555,7 +555,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.PenPressure = expected;
             Assert.Equal(expected, ioPtr.PenPressure);
         }
-        
+
         /// <summary>
         ///     Tests that app focus lost get returns expected
         /// </summary>
@@ -568,7 +568,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.AppFocusLost = expected;
             Assert.Equal(expected, ioPtr.AppFocusLost);
         }
-        
+
         /// <summary>
         ///     Tests that app accepting events get returns expected
         /// </summary>
@@ -581,7 +581,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.AppAcceptingEvents = expected;
             Assert.Equal(expected, ioPtr.AppAcceptingEvents);
         }
-        
+
         /// <summary>
         ///     Tests that backend using legacy key arrays get returns expected
         /// </summary>
@@ -594,7 +594,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.BackendUsingLegacyKeyArrays = expected;
             Assert.Equal(expected, ioPtr.BackendUsingLegacyKeyArrays);
         }
-        
+
         /// <summary>
         ///     Tests that backend using legacy nav input array get returns expected
         /// </summary>
@@ -607,7 +607,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.BackendUsingLegacyNavInputArray = expected;
             Assert.Equal(expected, ioPtr.BackendUsingLegacyNavInputArray);
         }
-        
+
         /// <summary>
         ///     Tests that input queue surrogate get returns expected
         /// </summary>
@@ -620,7 +620,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.InputQueueSurrogate = expected;
             Assert.Equal(expected, ioPtr.InputQueueSurrogate);
         }
-        
+
         /// <summary>
         ///     Tests that input queue characters get returns expected
         /// </summary>
@@ -633,7 +633,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ioPtr.InputQueueCharacters = expected;
             Assert.Equal(expected, ioPtr.InputQueueCharacters);
         }
-        
+
         /// <summary>
         ///     Tests that add focus event should add focus event
         /// </summary>
@@ -646,7 +646,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             // Assuming ImGuiNative.ImGuiIO_AddFocusEvent modifies some internal state
             // Validate the internal state change here
         }
-        
+
         /// <summary>
         ///     Tests that add input character should add input character
         /// </summary>
@@ -658,7 +658,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Throws<DllNotFoundException>(() => ioPtr.AddInputCharacter(65)); // 'A'
             // Validate the internal state change here
         }
-        
+
         /// <summary>
         ///     Tests that add input characters utf 8 should add input characters utf 8
         /// </summary>
@@ -670,7 +670,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Throws<DllNotFoundException>(() => ioPtr.AddInputCharactersUtf8("Test"));
             // Validate the internal state change here
         }
-        
+
         /// <summary>
         ///     Tests that add input character utf 16 should add input character utf 16
         /// </summary>
@@ -682,7 +682,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Throws<DllNotFoundException>(() => ioPtr.AddInputCharacterUtf16(65)); // 'A'
             // Validate the internal state change here
         }
-        
+
         /// <summary>
         ///     Tests that add key analog event should add key analog event
         /// </summary>
@@ -694,7 +694,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Throws<DllNotFoundException>(() => ioPtr.AddKeyAnalogEvent(ImGuiKey.Tab, true, 1.0f));
             // Validate the internal state change here
         }
-        
+
         /// <summary>
         ///     Tests that add key event should add key event
         /// </summary>
@@ -706,7 +706,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Throws<DllNotFoundException>(() => ioPtr.AddKeyEvent(ImGuiKey.Tab, true));
             // Validate the internal state change here
         }
-        
+
         /// <summary>
         ///     Tests that add mouse button event should add mouse button event
         /// </summary>
@@ -718,7 +718,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Throws<DllNotFoundException>(() => ioPtr.AddMouseButtonEvent(0, true));
             // Validate the internal state change here
         }
-        
+
         /// <summary>
         ///     Tests that add mouse pos event should add mouse pos event
         /// </summary>
@@ -730,7 +730,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Throws<DllNotFoundException>(() => ioPtr.AddMousePosEvent(100.0f, 200.0f));
             // Validate the internal state change here
         }
-        
+
         /// <summary>
         ///     Tests that add mouse viewport event should add mouse viewport event
         /// </summary>
@@ -742,7 +742,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Throws<DllNotFoundException>(() => ioPtr.AddMouseViewportEvent(1));
             // Validate the internal state change here
         }
-        
+
         /// <summary>
         ///     Tests that add mouse wheel event should add mouse wheel event
         /// </summary>
@@ -754,7 +754,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Throws<DllNotFoundException>(() => ioPtr.AddMouseWheelEvent(1.0f, 0.0f));
             // Validate the internal state change here
         }
-        
+
         /// <summary>
         ///     Tests that clear input characters should clear input characters
         /// </summary>
@@ -766,7 +766,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Throws<DllNotFoundException>(() => ioPtr.ClearInputCharacters());
             // Validate the internal state change here
         }
-        
+
         /// <summary>
         ///     Tests that clear input keys should clear input keys
         /// </summary>
@@ -778,7 +778,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Throws<DllNotFoundException>(() => ioPtr.ClearInputKeys());
             // Validate the internal state change here
         }
-        
+
         /// <summary>
         ///     Tests that set app accepting events should set app accepting events
         /// </summary>
@@ -790,7 +790,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Throws<DllNotFoundException>(() => ioPtr.SetAppAcceptingEvents(true));
             // Validate the internal state change here
         }
-        
+
         /// <summary>
         ///     Tests that set key event native data should set key event native data
         /// </summary>
@@ -802,7 +802,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Throws<DllNotFoundException>(() => ioPtr.SetKeyEventNativeData(ImGuiKey.Tab, 9, 15));
             // Validate the internal state change here
         }
-        
+
         /// <summary>
         ///     Tests that set key event native data with legacy index should set key event native data
         /// </summary>
@@ -814,7 +814,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Throws<DllNotFoundException>(() => ioPtr.SetKeyEventNativeData(ImGuiKey.Tab, 9, 15, 1));
             // Validate the internal state change here
         }
-        
+
         /// <summary>
         ///     Tests that config viewports no auto merge should set and get
         /// </summary>
@@ -825,7 +825,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.ConfigViewportsNoAutoMerge = 1;
             Assert.Equal(1, io.ConfigViewportsNoAutoMerge);
         }
-        
+
         /// <summary>
         ///     Tests that config viewports no task bar icon should set and get
         /// </summary>
@@ -836,7 +836,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.ConfigViewportsNoTaskBarIcon = 1;
             Assert.Equal(1, io.ConfigViewportsNoTaskBarIcon);
         }
-        
+
         /// <summary>
         ///     Tests that config viewports no decoration should set and get
         /// </summary>
@@ -847,7 +847,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.ConfigViewportsNoDecoration = 1;
             Assert.Equal(1, io.ConfigViewportsNoDecoration);
         }
-        
+
         /// <summary>
         ///     Tests that config viewports no default parent should set and get
         /// </summary>
@@ -858,7 +858,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.ConfigViewportsNoDefaultParent = 1;
             Assert.Equal(1, io.ConfigViewportsNoDefaultParent);
         }
-        
+
         /// <summary>
         ///     Tests that mouse draw cursor should set and get
         /// </summary>
@@ -869,7 +869,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.MouseDrawCursor = 1;
             Assert.Equal(1, io.MouseDrawCursor);
         }
-        
+
         /// <summary>
         ///     Tests that config mac osx behaviors should set and get
         /// </summary>
@@ -880,7 +880,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.ConfigMacOsxBehaviors = 1;
             Assert.Equal(1, io.ConfigMacOsxBehaviors);
         }
-        
+
         /// <summary>
         ///     Tests that config input trickle event queue should set and get
         /// </summary>
@@ -891,7 +891,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.ConfigInputTrickleEventQueue = 1;
             Assert.Equal(1, io.ConfigInputTrickleEventQueue);
         }
-        
+
         /// <summary>
         ///     Tests that config input text cursor blink should set and get
         /// </summary>
@@ -902,7 +902,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.ConfigInputTextCursorBlink = 1;
             Assert.Equal(1, io.ConfigInputTextCursorBlink);
         }
-        
+
         /// <summary>
         ///     Tests that config input text enter keep active should set and get
         /// </summary>
@@ -913,7 +913,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.ConfigInputTextEnterKeepActive = 1;
             Assert.Equal(1, io.ConfigInputTextEnterKeepActive);
         }
-        
+
         /// <summary>
         ///     Tests that config drag click to input text should set and get
         /// </summary>
@@ -924,7 +924,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.ConfigDragClickToInputText = 1;
             Assert.Equal(1, io.ConfigDragClickToInputText);
         }
-        
+
         /// <summary>
         ///     Tests that config windows resize from edges should set and get
         /// </summary>
@@ -935,7 +935,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.ConfigWindowsResizeFromEdges = 1;
             Assert.Equal(1, io.ConfigWindowsResizeFromEdges);
         }
-        
+
         /// <summary>
         ///     Tests that config windows move from title bar only should set and get
         /// </summary>
@@ -946,7 +946,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.ConfigWindowsMoveFromTitleBarOnly = 1;
             Assert.Equal(1, io.ConfigWindowsMoveFromTitleBarOnly);
         }
-        
+
         /// <summary>
         ///     Tests that config memory compact timer should set and get
         /// </summary>
@@ -957,7 +957,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.ConfigMemoryCompactTimer = 1.0f;
             Assert.Equal(1.0f, io.ConfigMemoryCompactTimer);
         }
-        
+
         /// <summary>
         ///     Tests that backend platform name should set and get
         /// </summary>
@@ -969,7 +969,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.BackendPlatformName = ptr;
             Assert.Equal(ptr, io.BackendPlatformName);
         }
-        
+
         /// <summary>
         ///     Tests that backend renderer name should set and get
         /// </summary>
@@ -981,7 +981,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.BackendRendererName = ptr;
             Assert.Equal(ptr, io.BackendRendererName);
         }
-        
+
         /// <summary>
         ///     Tests that backend platform user data should set and get
         /// </summary>
@@ -993,7 +993,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.BackendPlatformUserData = ptr;
             Assert.Equal(ptr, io.BackendPlatformUserData);
         }
-        
+
         /// <summary>
         ///     Tests that backend renderer user data should set and get
         /// </summary>
@@ -1005,7 +1005,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.BackendRendererUserData = ptr;
             Assert.Equal(ptr, io.BackendRendererUserData);
         }
-        
+
         /// <summary>
         ///     Tests that backend language user data should set and get
         /// </summary>
@@ -1017,7 +1017,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.BackendLanguageUserData = ptr;
             Assert.Equal(ptr, io.BackendLanguageUserData);
         }
-        
+
         /// <summary>
         ///     Tests that get clipboard text fn should set and get
         /// </summary>
@@ -1029,7 +1029,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.GetClipboardTextFn = ptr;
             Assert.Equal(ptr, io.GetClipboardTextFn);
         }
-        
+
         /// <summary>
         ///     Tests that set clipboard text fn should set and get
         /// </summary>
@@ -1041,7 +1041,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.SetClipboardTextFn = ptr;
             Assert.Equal(ptr, io.SetClipboardTextFn);
         }
-        
+
         /// <summary>
         ///     Tests that clipboard user data should set and get
         /// </summary>
@@ -1053,7 +1053,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.ClipboardUserData = ptr;
             Assert.Equal(ptr, io.ClipboardUserData);
         }
-        
+
         /// <summary>
         ///     Tests that set platform ime data fn should set and get
         /// </summary>
@@ -1065,7 +1065,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.SetPlatformImeDataFn = ptr;
             Assert.Equal(ptr, io.SetPlatformImeDataFn);
         }
-        
+
         /// <summary>
         ///     Tests that unused padding should set and get
         /// </summary>
@@ -1077,7 +1077,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.UnusedPadding = ptr;
             Assert.Equal(ptr, io.UnusedPadding);
         }
-        
+
         /// <summary>
         ///     Tests that want capture mouse should set and get
         /// </summary>
@@ -1088,7 +1088,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.WantCaptureMouse = 1;
             Assert.Equal(1, io.WantCaptureMouse);
         }
-        
+
         /// <summary>
         ///     Tests that want capture keyboard should set and get
         /// </summary>
@@ -1099,7 +1099,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.WantCaptureKeyboard = 1;
             Assert.Equal(1, io.WantCaptureKeyboard);
         }
-        
+
         /// <summary>
         ///     Tests that want text input should set and get
         /// </summary>
@@ -1110,7 +1110,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.WantTextInput = 1;
             Assert.Equal(1, io.WantTextInput);
         }
-        
+
         /// <summary>
         ///     Tests that want set mouse pos should set and get
         /// </summary>
@@ -1121,7 +1121,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.WantSetMousePos = 1;
             Assert.Equal(1, io.WantSetMousePos);
         }
-        
+
         /// <summary>
         ///     Tests that want save ini settings should set and get
         /// </summary>
@@ -1132,7 +1132,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.WantSaveIniSettings = 1;
             Assert.Equal(1, io.WantSaveIniSettings);
         }
-        
+
         /// <summary>
         ///     Tests that nav active should set and get
         /// </summary>
@@ -1143,7 +1143,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.NavActive = 1;
             Assert.Equal(1, io.NavActive);
         }
-        
+
         /// <summary>
         ///     Tests that nav visible should set and get
         /// </summary>
@@ -1154,7 +1154,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.NavVisible = 1;
             Assert.Equal(1, io.NavVisible);
         }
-        
+
         /// <summary>
         ///     Tests that framerate should set and get
         /// </summary>
@@ -1165,7 +1165,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.Framerate = 60.0f;
             Assert.Equal(60.0f, io.Framerate);
         }
-        
+
         /// <summary>
         ///     Tests that metrics render vertices should set and get
         /// </summary>
@@ -1176,7 +1176,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.MetricsRenderVertices = 1000;
             Assert.Equal(1000, io.MetricsRenderVertices);
         }
-        
+
         /// <summary>
         ///     Tests that metrics render indices should set and get
         /// </summary>
@@ -1187,7 +1187,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.MetricsRenderIndices = 500;
             Assert.Equal(500, io.MetricsRenderIndices);
         }
-        
+
         /// <summary>
         ///     Tests that metrics render windows should set and get
         /// </summary>
@@ -1198,7 +1198,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.MetricsRenderWindows = 10;
             Assert.Equal(10, io.MetricsRenderWindows);
         }
-        
+
         /// <summary>
         ///     Tests that metrics active windows should set and get
         /// </summary>
@@ -1209,7 +1209,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.MetricsActiveWindows = 5;
             Assert.Equal(5, io.MetricsActiveWindows);
         }
-        
+
         /// <summary>
         ///     Tests that metrics active allocations should set and get
         /// </summary>
@@ -1220,7 +1220,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.MetricsActiveAllocations = 20;
             Assert.Equal(20, io.MetricsActiveAllocations);
         }
-        
+
         /// <summary>
         ///     Tests that mouse delta should set and get
         /// </summary>
@@ -1232,7 +1232,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.MouseDelta = delta;
             Assert.Equal(delta, io.MouseDelta);
         }
-        
+
         /// <summary>
         ///     Tests that mouse pos should set and get
         /// </summary>
@@ -1244,7 +1244,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.MousePos = pos;
             Assert.Equal(pos, io.MousePos);
         }
-        
+
         /// <summary>
         ///     Tests that mouse wheel should set and get
         /// </summary>
@@ -1255,7 +1255,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.MouseWheel = 1.0f;
             Assert.Equal(1.0f, io.MouseWheel);
         }
-        
+
         /// <summary>
         ///     Tests that mouse wheel h should set and get
         /// </summary>
@@ -1266,7 +1266,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.MouseWheelH = 1.0f;
             Assert.Equal(1.0f, io.MouseWheelH);
         }
-        
+
         /// <summary>
         ///     Tests that mouse hovered viewport should set and get
         /// </summary>
@@ -1277,7 +1277,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.MouseHoveredViewport = 123;
             Assert.Equal(123u, io.MouseHoveredViewport);
         }
-        
+
         /// <summary>
         ///     Tests that key ctrl should set and get
         /// </summary>
@@ -1288,7 +1288,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.KeyCtrl = 1;
             Assert.Equal(1, io.KeyCtrl);
         }
-        
+
         /// <summary>
         ///     Tests that key shift should set and get
         /// </summary>
@@ -1299,7 +1299,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.KeyShift = 1;
             Assert.Equal(1, io.KeyShift);
         }
-        
+
         /// <summary>
         ///     Tests that key alt should set and get
         /// </summary>
@@ -1310,7 +1310,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.KeyAlt = 1;
             Assert.Equal(1, io.KeyAlt);
         }
-        
+
         /// <summary>
         ///     Tests that key super should set and get
         /// </summary>
@@ -1321,7 +1321,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.KeySuper = 1;
             Assert.Equal(1, io.KeySuper);
         }
-        
+
         /// <summary>
         ///     Tests that key mods should set and get
         /// </summary>
@@ -1333,7 +1333,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.KeyMods = keyMods;
             Assert.Equal(keyMods, io.KeyMods);
         }
-        
+
         /// <summary>
         ///     Tests that keys data should set and get
         /// </summary>
@@ -1345,7 +1345,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             io.KeysData0 = keyData;
             Assert.Equal(keyData, io.KeysData0);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 106 set and get returns correct value
         /// </summary>
@@ -1357,7 +1357,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData106 = value;
             Assert.Equal(value, obj.KeysData106);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 107 set and get returns correct value
         /// </summary>
@@ -1369,7 +1369,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData107 = value;
             Assert.Equal(value, obj.KeysData107);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 108 set and get returns correct value
         /// </summary>
@@ -1381,7 +1381,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData108 = value;
             Assert.Equal(value, obj.KeysData108);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 109 set and get returns correct value
         /// </summary>
@@ -1393,7 +1393,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData109 = value;
             Assert.Equal(value, obj.KeysData109);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 110 set and get returns correct value
         /// </summary>
@@ -1405,7 +1405,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData110 = value;
             Assert.Equal(value, obj.KeysData110);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 111 set and get returns correct value
         /// </summary>
@@ -1417,7 +1417,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData111 = value;
             Assert.Equal(value, obj.KeysData111);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 112 set and get returns correct value
         /// </summary>
@@ -1429,7 +1429,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData112 = value;
             Assert.Equal(value, obj.KeysData112);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 113 set and get returns correct value
         /// </summary>
@@ -1441,7 +1441,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData113 = value;
             Assert.Equal(value, obj.KeysData113);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 114 set and get returns correct value
         /// </summary>
@@ -1453,7 +1453,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData114 = value;
             Assert.Equal(value, obj.KeysData114);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 115 set and get returns correct value
         /// </summary>
@@ -1465,7 +1465,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData115 = value;
             Assert.Equal(value, obj.KeysData115);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 116 set and get returns correct value
         /// </summary>
@@ -1477,7 +1477,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData116 = value;
             Assert.Equal(value, obj.KeysData116);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 117 set and get returns correct value
         /// </summary>
@@ -1489,7 +1489,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData117 = value;
             Assert.Equal(value, obj.KeysData117);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 118 set and get returns correct value
         /// </summary>
@@ -1501,7 +1501,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData118 = value;
             Assert.Equal(value, obj.KeysData118);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 119 set and get returns correct value
         /// </summary>
@@ -1513,7 +1513,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData119 = value;
             Assert.Equal(value, obj.KeysData119);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 120 set and get returns correct value
         /// </summary>
@@ -1525,7 +1525,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData120 = value;
             Assert.Equal(value, obj.KeysData120);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 121 set and get returns correct value
         /// </summary>
@@ -1537,7 +1537,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData121 = value;
             Assert.Equal(value, obj.KeysData121);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 122 set and get returns correct value
         /// </summary>
@@ -1549,7 +1549,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData122 = value;
             Assert.Equal(value, obj.KeysData122);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 123 set and get returns correct value
         /// </summary>
@@ -1561,7 +1561,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData123 = value;
             Assert.Equal(value, obj.KeysData123);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 124 set and get returns correct value
         /// </summary>
@@ -1573,7 +1573,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData124 = value;
             Assert.Equal(value, obj.KeysData124);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 125 set and get returns correct value
         /// </summary>
@@ -1585,7 +1585,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData125 = value;
             Assert.Equal(value, obj.KeysData125);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 126 set and get returns correct value
         /// </summary>
@@ -1597,7 +1597,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData126 = value;
             Assert.Equal(value, obj.KeysData126);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 127 set and get returns correct value
         /// </summary>
@@ -1609,7 +1609,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData127 = value;
             Assert.Equal(value, obj.KeysData127);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 128 set and get returns correct value
         /// </summary>
@@ -1621,7 +1621,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData128 = value;
             Assert.Equal(value, obj.KeysData128);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 129 set and get returns correct value
         /// </summary>
@@ -1633,7 +1633,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData129 = value;
             Assert.Equal(value, obj.KeysData129);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 130 set and get returns correct value
         /// </summary>
@@ -1645,7 +1645,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData130 = value;
             Assert.Equal(value, obj.KeysData130);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 131 set and get returns correct value
         /// </summary>
@@ -1657,7 +1657,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData131 = value;
             Assert.Equal(value, obj.KeysData131);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 132 set and get returns correct value
         /// </summary>
@@ -1669,7 +1669,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData132 = value;
             Assert.Equal(value, obj.KeysData132);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 133 set and get returns correct value
         /// </summary>
@@ -1681,7 +1681,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData133 = value;
             Assert.Equal(value, obj.KeysData133);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 134 set and get returns correct value
         /// </summary>
@@ -1693,7 +1693,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData134 = value;
             Assert.Equal(value, obj.KeysData134);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 135 set and get returns correct value
         /// </summary>
@@ -1705,7 +1705,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData135 = value;
             Assert.Equal(value, obj.KeysData135);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 136 set and get returns correct value
         /// </summary>
@@ -1717,7 +1717,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData136 = value;
             Assert.Equal(value, obj.KeysData136);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 137 set and get returns correct value
         /// </summary>
@@ -1729,7 +1729,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData137 = value;
             Assert.Equal(value, obj.KeysData137);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 138 set and get returns correct value
         /// </summary>
@@ -1741,7 +1741,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData138 = value;
             Assert.Equal(value, obj.KeysData138);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 139 set and get returns correct value
         /// </summary>
@@ -1753,7 +1753,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData139 = value;
             Assert.Equal(value, obj.KeysData139);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 140 set and get returns correct value
         /// </summary>
@@ -1765,7 +1765,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData140 = value;
             Assert.Equal(value, obj.KeysData140);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 141 set and get returns correct value
         /// </summary>
@@ -1777,7 +1777,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData141 = value;
             Assert.Equal(value, obj.KeysData141);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 142 set and get returns correct value
         /// </summary>
@@ -1789,7 +1789,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData142 = value;
             Assert.Equal(value, obj.KeysData142);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 143 set and get returns correct value
         /// </summary>
@@ -1801,7 +1801,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData143 = value;
             Assert.Equal(value, obj.KeysData143);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 144 set and get returns correct value
         /// </summary>
@@ -1813,7 +1813,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData144 = value;
             Assert.Equal(value, obj.KeysData144);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 145 set and get returns correct value
         /// </summary>
@@ -1825,7 +1825,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData145 = value;
             Assert.Equal(value, obj.KeysData145);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 146 set and get returns correct value
         /// </summary>
@@ -1837,7 +1837,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData146 = value;
             Assert.Equal(value, obj.KeysData146);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 147 set and get returns correct value
         /// </summary>
@@ -1849,7 +1849,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData147 = value;
             Assert.Equal(value, obj.KeysData147);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 148 set and get returns correct value
         /// </summary>
@@ -1861,7 +1861,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData148 = value;
             Assert.Equal(value, obj.KeysData148);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 149 set and get returns correct value
         /// </summary>
@@ -1873,7 +1873,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData149 = value;
             Assert.Equal(value, obj.KeysData149);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 150 set and get returns correct value
         /// </summary>
@@ -1885,7 +1885,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData150 = value;
             Assert.Equal(value, obj.KeysData150);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 151 set and get returns correct value
         /// </summary>
@@ -1897,7 +1897,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData151 = value;
             Assert.Equal(value, obj.KeysData151);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 152 set and get returns correct value
         /// </summary>
@@ -1909,7 +1909,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData152 = value;
             Assert.Equal(value, obj.KeysData152);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 153 set and get returns correct value
         /// </summary>
@@ -1921,7 +1921,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData153 = value;
             Assert.Equal(value, obj.KeysData153);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 154 set and get returns correct value
         /// </summary>
@@ -1933,7 +1933,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData154 = value;
             Assert.Equal(value, obj.KeysData154);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 155 set and get returns correct value
         /// </summary>
@@ -1945,7 +1945,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData155 = value;
             Assert.Equal(value, obj.KeysData155);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 156 set and get returns correct value
         /// </summary>
@@ -1957,7 +1957,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData156 = value;
             Assert.Equal(value, obj.KeysData156);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 157 set and get returns correct value
         /// </summary>
@@ -1969,7 +1969,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData157 = value;
             Assert.Equal(value, obj.KeysData157);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 158 set and get returns correct value
         /// </summary>
@@ -1981,7 +1981,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData158 = value;
             Assert.Equal(value, obj.KeysData158);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 159 set and get returns correct value
         /// </summary>
@@ -1993,7 +1993,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData159 = value;
             Assert.Equal(value, obj.KeysData159);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 160 set and get returns correct value
         /// </summary>
@@ -2005,7 +2005,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData160 = value;
             Assert.Equal(value, obj.KeysData160);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 161 set and get returns correct value
         /// </summary>
@@ -2017,7 +2017,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData161 = value;
             Assert.Equal(value, obj.KeysData161);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 162 set and get returns correct value
         /// </summary>
@@ -2029,7 +2029,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData162 = value;
             Assert.Equal(value, obj.KeysData162);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 163 set and get returns correct value
         /// </summary>
@@ -2041,7 +2041,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData163 = value;
             Assert.Equal(value, obj.KeysData163);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 164 set and get returns correct value
         /// </summary>
@@ -2053,7 +2053,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData164 = value;
             Assert.Equal(value, obj.KeysData164);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 165 set and get returns correct value
         /// </summary>
@@ -2065,7 +2065,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData165 = value;
             Assert.Equal(value, obj.KeysData165);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 166 set and get returns correct value
         /// </summary>
@@ -2077,7 +2077,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData166 = value;
             Assert.Equal(value, obj.KeysData166);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 167 set and get returns correct value
         /// </summary>
@@ -2089,7 +2089,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData167 = value;
             Assert.Equal(value, obj.KeysData167);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 168 set and get returns correct value
         /// </summary>
@@ -2101,7 +2101,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData168 = value;
             Assert.Equal(value, obj.KeysData168);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 169 set and get returns correct value
         /// </summary>
@@ -2113,7 +2113,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData169 = value;
             Assert.Equal(value, obj.KeysData169);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 170 set and get returns correct value
         /// </summary>
@@ -2125,7 +2125,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData170 = value;
             Assert.Equal(value, obj.KeysData170);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 171 set and get returns correct value
         /// </summary>
@@ -2137,7 +2137,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData171 = value;
             Assert.Equal(value, obj.KeysData171);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 172 set and get returns correct value
         /// </summary>
@@ -2149,7 +2149,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData172 = value;
             Assert.Equal(value, obj.KeysData172);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 173 set and get returns correct value
         /// </summary>
@@ -2161,7 +2161,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData173 = value;
             Assert.Equal(value, obj.KeysData173);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 174 set and get returns correct value
         /// </summary>
@@ -2173,7 +2173,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData174 = value;
             Assert.Equal(value, obj.KeysData174);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 175 set and get returns correct value
         /// </summary>
@@ -2185,7 +2185,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData175 = value;
             Assert.Equal(value, obj.KeysData175);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 176 set and get returns correct value
         /// </summary>
@@ -2197,7 +2197,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData176 = value;
             Assert.Equal(value, obj.KeysData176);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 177 set and get returns correct value
         /// </summary>
@@ -2209,7 +2209,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData177 = value;
             Assert.Equal(value, obj.KeysData177);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 178 set and get returns correct value
         /// </summary>
@@ -2221,7 +2221,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData178 = value;
             Assert.Equal(value, obj.KeysData178);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 179 set and get returns correct value
         /// </summary>
@@ -2233,7 +2233,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData179 = value;
             Assert.Equal(value, obj.KeysData179);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 180 set and get returns correct value
         /// </summary>
@@ -2245,7 +2245,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData180 = value;
             Assert.Equal(value, obj.KeysData180);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 440 set and get returns correct value
         /// </summary>
@@ -2257,7 +2257,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData440 = value;
             Assert.Equal(value, obj.KeysData440);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 441 set and get returns correct value
         /// </summary>
@@ -2269,7 +2269,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData441 = value;
             Assert.Equal(value, obj.KeysData441);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 442 set and get returns correct value
         /// </summary>
@@ -2281,7 +2281,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData442 = value;
             Assert.Equal(value, obj.KeysData442);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 443 set and get returns correct value
         /// </summary>
@@ -2293,7 +2293,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData443 = value;
             Assert.Equal(value, obj.KeysData443);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 444 set and get returns correct value
         /// </summary>
@@ -2305,7 +2305,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData444 = value;
             Assert.Equal(value, obj.KeysData444);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 445 set and get returns correct value
         /// </summary>
@@ -2317,7 +2317,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData445 = value;
             Assert.Equal(value, obj.KeysData445);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 446 set and get returns correct value
         /// </summary>
@@ -2329,7 +2329,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData446 = value;
             Assert.Equal(value, obj.KeysData446);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 447 set and get returns correct value
         /// </summary>
@@ -2341,7 +2341,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData447 = value;
             Assert.Equal(value, obj.KeysData447);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 448 set and get returns correct value
         /// </summary>
@@ -2353,7 +2353,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData448 = value;
             Assert.Equal(value, obj.KeysData448);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 449 set and get returns correct value
         /// </summary>
@@ -2365,7 +2365,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData449 = value;
             Assert.Equal(value, obj.KeysData449);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 450 set and get returns correct value
         /// </summary>
@@ -2377,7 +2377,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData450 = value;
             Assert.Equal(value, obj.KeysData450);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 451 set and get returns correct value
         /// </summary>
@@ -2389,7 +2389,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData451 = value;
             Assert.Equal(value, obj.KeysData451);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 452 set and get returns correct value
         /// </summary>
@@ -2401,7 +2401,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData452 = value;
             Assert.Equal(value, obj.KeysData452);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 453 set and get returns correct value
         /// </summary>
@@ -2413,7 +2413,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData453 = value;
             Assert.Equal(value, obj.KeysData453);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 454 set and get returns correct value
         /// </summary>
@@ -2425,7 +2425,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData454 = value;
             Assert.Equal(value, obj.KeysData454);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 455 set and get returns correct value
         /// </summary>
@@ -2437,7 +2437,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData455 = value;
             Assert.Equal(value, obj.KeysData455);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 456 set and get returns correct value
         /// </summary>
@@ -2449,7 +2449,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData456 = value;
             Assert.Equal(value, obj.KeysData456);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 457 set and get returns correct value
         /// </summary>
@@ -2461,7 +2461,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData457 = value;
             Assert.Equal(value, obj.KeysData457);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 458 set and get returns correct value
         /// </summary>
@@ -2473,7 +2473,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData458 = value;
             Assert.Equal(value, obj.KeysData458);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 459 set and get returns correct value
         /// </summary>
@@ -2485,7 +2485,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData459 = value;
             Assert.Equal(value, obj.KeysData459);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 460 set and get returns correct value
         /// </summary>
@@ -2497,7 +2497,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData460 = value;
             Assert.Equal(value, obj.KeysData460);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 461 set and get returns correct value
         /// </summary>
@@ -2509,7 +2509,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData461 = value;
             Assert.Equal(value, obj.KeysData461);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 462 set and get returns correct value
         /// </summary>
@@ -2521,7 +2521,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData462 = value;
             Assert.Equal(value, obj.KeysData462);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 463 set and get returns correct value
         /// </summary>
@@ -2533,7 +2533,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData463 = value;
             Assert.Equal(value, obj.KeysData463);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 464 set and get returns correct value
         /// </summary>
@@ -2545,7 +2545,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData464 = value;
             Assert.Equal(value, obj.KeysData464);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 465 set and get returns correct value
         /// </summary>
@@ -2557,7 +2557,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData465 = value;
             Assert.Equal(value, obj.KeysData465);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 466 set and get returns correct value
         /// </summary>
@@ -2569,7 +2569,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData466 = value;
             Assert.Equal(value, obj.KeysData466);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 467 set and get returns correct value
         /// </summary>
@@ -2581,7 +2581,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData467 = value;
             Assert.Equal(value, obj.KeysData467);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 468 set and get returns correct value
         /// </summary>
@@ -2593,7 +2593,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData468 = value;
             Assert.Equal(value, obj.KeysData468);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 469 set and get returns correct value
         /// </summary>
@@ -2605,7 +2605,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData469 = value;
             Assert.Equal(value, obj.KeysData469);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 470 set and get returns correct value
         /// </summary>
@@ -2617,7 +2617,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData470 = value;
             Assert.Equal(value, obj.KeysData470);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 471 set and get returns correct value
         /// </summary>
@@ -2629,7 +2629,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData471 = value;
             Assert.Equal(value, obj.KeysData471);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 472 set and get returns correct value
         /// </summary>
@@ -2641,7 +2641,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData472 = value;
             Assert.Equal(value, obj.KeysData472);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 473 set and get returns correct value
         /// </summary>
@@ -2653,7 +2653,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData473 = value;
             Assert.Equal(value, obj.KeysData473);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 474 set and get returns correct value
         /// </summary>
@@ -2665,7 +2665,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData474 = value;
             Assert.Equal(value, obj.KeysData474);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 475 set and get returns correct value
         /// </summary>
@@ -2677,7 +2677,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData475 = value;
             Assert.Equal(value, obj.KeysData475);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 476 set and get returns correct value
         /// </summary>
@@ -2689,7 +2689,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData476 = value;
             Assert.Equal(value, obj.KeysData476);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 477 set and get returns correct value
         /// </summary>
@@ -2701,7 +2701,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData477 = value;
             Assert.Equal(value, obj.KeysData477);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 478 set and get returns correct value
         /// </summary>
@@ -2713,7 +2713,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData478 = value;
             Assert.Equal(value, obj.KeysData478);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 479 set and get returns correct value
         /// </summary>
@@ -2725,7 +2725,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData479 = value;
             Assert.Equal(value, obj.KeysData479);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 480 set and get returns correct value
         /// </summary>
@@ -2737,7 +2737,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData480 = value;
             Assert.Equal(value, obj.KeysData480);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 481 set and get returns correct value
         /// </summary>
@@ -2749,7 +2749,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData481 = value;
             Assert.Equal(value, obj.KeysData481);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 482 set and get returns correct value
         /// </summary>
@@ -2761,7 +2761,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData482 = value;
             Assert.Equal(value, obj.KeysData482);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 483 set and get returns correct value
         /// </summary>
@@ -2773,7 +2773,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData483 = value;
             Assert.Equal(value, obj.KeysData483);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 484 set and get returns correct value
         /// </summary>
@@ -2785,7 +2785,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData484 = value;
             Assert.Equal(value, obj.KeysData484);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 485 set and get returns correct value
         /// </summary>
@@ -2797,7 +2797,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData485 = value;
             Assert.Equal(value, obj.KeysData485);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 486 set and get returns correct value
         /// </summary>
@@ -2809,7 +2809,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData486 = value;
             Assert.Equal(value, obj.KeysData486);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 487 set and get returns correct value
         /// </summary>
@@ -2821,7 +2821,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData487 = value;
             Assert.Equal(value, obj.KeysData487);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 488 set and get returns correct value
         /// </summary>
@@ -2833,7 +2833,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData488 = value;
             Assert.Equal(value, obj.KeysData488);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 489 set and get returns correct value
         /// </summary>
@@ -2845,7 +2845,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData489 = value;
             Assert.Equal(value, obj.KeysData489);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 490 set and get returns correct value
         /// </summary>
@@ -2857,7 +2857,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData490 = value;
             Assert.Equal(value, obj.KeysData490);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 491 set and get returns correct value
         /// </summary>
@@ -2869,7 +2869,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData491 = value;
             Assert.Equal(value, obj.KeysData491);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 492 set and get returns correct value
         /// </summary>
@@ -2881,7 +2881,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData492 = value;
             Assert.Equal(value, obj.KeysData492);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 493 set and get returns correct value
         /// </summary>
@@ -2893,7 +2893,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData493 = value;
             Assert.Equal(value, obj.KeysData493);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 494 set and get returns correct value
         /// </summary>
@@ -2905,7 +2905,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData494 = value;
             Assert.Equal(value, obj.KeysData494);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 495 set and get returns correct value
         /// </summary>
@@ -2917,7 +2917,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData495 = value;
             Assert.Equal(value, obj.KeysData495);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 496 set and get returns correct value
         /// </summary>
@@ -2929,7 +2929,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData496 = value;
             Assert.Equal(value, obj.KeysData496);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 497 set and get returns correct value
         /// </summary>
@@ -2941,7 +2941,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData497 = value;
             Assert.Equal(value, obj.KeysData497);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 498 set and get returns correct value
         /// </summary>
@@ -2953,7 +2953,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData498 = value;
             Assert.Equal(value, obj.KeysData498);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 499 set and get returns correct value
         /// </summary>
@@ -2965,7 +2965,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData499 = value;
             Assert.Equal(value, obj.KeysData499);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 500 set and get returns correct value
         /// </summary>
@@ -2977,7 +2977,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData500 = value;
             Assert.Equal(value, obj.KeysData500);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 501 set and get returns correct value
         /// </summary>
@@ -2989,7 +2989,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData501 = value;
             Assert.Equal(value, obj.KeysData501);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 502 set and get returns correct value
         /// </summary>
@@ -3001,7 +3001,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData502 = value;
             Assert.Equal(value, obj.KeysData502);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 503 set and get returns correct value
         /// </summary>
@@ -3013,7 +3013,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData503 = value;
             Assert.Equal(value, obj.KeysData503);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 504 set and get returns correct value
         /// </summary>
@@ -3025,7 +3025,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData504 = value;
             Assert.Equal(value, obj.KeysData504);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 505 set and get returns correct value
         /// </summary>
@@ -3037,7 +3037,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData505 = value;
             Assert.Equal(value, obj.KeysData505);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 506 set and get returns correct value
         /// </summary>
@@ -3049,7 +3049,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData506 = value;
             Assert.Equal(value, obj.KeysData506);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 507 set and get returns correct value
         /// </summary>
@@ -3061,7 +3061,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData507 = value;
             Assert.Equal(value, obj.KeysData507);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 508 set and get returns correct value
         /// </summary>
@@ -3073,7 +3073,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData508 = value;
             Assert.Equal(value, obj.KeysData508);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 509 set and get returns correct value
         /// </summary>
@@ -3085,7 +3085,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData509 = value;
             Assert.Equal(value, obj.KeysData509);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 510 set and get returns correct value
         /// </summary>
@@ -3097,7 +3097,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData510 = value;
             Assert.Equal(value, obj.KeysData510);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 511 set and get returns correct value
         /// </summary>
@@ -3109,7 +3109,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData511 = value;
             Assert.Equal(value, obj.KeysData511);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 512 set and get returns correct value
         /// </summary>
@@ -3121,7 +3121,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData512 = value;
             Assert.Equal(value, obj.KeysData512);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 513 set and get returns correct value
         /// </summary>
@@ -3133,7 +3133,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData513 = value;
             Assert.Equal(value, obj.KeysData513);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 514 set and get returns correct value
         /// </summary>
@@ -3145,7 +3145,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData514 = value;
             Assert.Equal(value, obj.KeysData514);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 1 set and get returns correct value
         /// </summary>
@@ -3157,7 +3157,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData1 = value;
             Assert.Equal(value, obj.KeysData1);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 2 set and get returns correct value
         /// </summary>
@@ -3169,7 +3169,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData2 = value;
             Assert.Equal(value, obj.KeysData2);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 3 set and get returns correct value
         /// </summary>
@@ -3181,7 +3181,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData3 = value;
             Assert.Equal(value, obj.KeysData3);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 4 set and get returns correct value
         /// </summary>
@@ -3193,7 +3193,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData4 = value;
             Assert.Equal(value, obj.KeysData4);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 5 set and get returns correct value
         /// </summary>
@@ -3205,7 +3205,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData5 = value;
             Assert.Equal(value, obj.KeysData5);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 6 set and get returns correct value
         /// </summary>
@@ -3217,7 +3217,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData6 = value;
             Assert.Equal(value, obj.KeysData6);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 7 set and get returns correct value
         /// </summary>
@@ -3229,7 +3229,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData7 = value;
             Assert.Equal(value, obj.KeysData7);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 8 set and get returns correct value
         /// </summary>
@@ -3241,7 +3241,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData8 = value;
             Assert.Equal(value, obj.KeysData8);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 9 set and get returns correct value
         /// </summary>
@@ -3253,7 +3253,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData9 = value;
             Assert.Equal(value, obj.KeysData9);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 10 set and get returns correct value
         /// </summary>
@@ -3265,7 +3265,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData10 = value;
             Assert.Equal(value, obj.KeysData10);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 11 set and get returns correct value
         /// </summary>
@@ -3277,7 +3277,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData11 = value;
             Assert.Equal(value, obj.KeysData11);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 12 set and get returns correct value
         /// </summary>
@@ -3289,7 +3289,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData12 = value;
             Assert.Equal(value, obj.KeysData12);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 13 set and get returns correct value
         /// </summary>
@@ -3301,7 +3301,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData13 = value;
             Assert.Equal(value, obj.KeysData13);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 14 set and get returns correct value
         /// </summary>
@@ -3313,7 +3313,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData14 = value;
             Assert.Equal(value, obj.KeysData14);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 15 set and get returns correct value
         /// </summary>
@@ -3325,7 +3325,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData15 = value;
             Assert.Equal(value, obj.KeysData15);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 16 set and get returns correct value
         /// </summary>
@@ -3337,7 +3337,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData16 = value;
             Assert.Equal(value, obj.KeysData16);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 17 set and get returns correct value
         /// </summary>
@@ -3349,7 +3349,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData17 = value;
             Assert.Equal(value, obj.KeysData17);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 18 set and get returns correct value
         /// </summary>
@@ -3361,7 +3361,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData18 = value;
             Assert.Equal(value, obj.KeysData18);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 19 set and get returns correct value
         /// </summary>
@@ -3373,7 +3373,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData19 = value;
             Assert.Equal(value, obj.KeysData19);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 20 set and get returns correct value
         /// </summary>
@@ -3385,7 +3385,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData20 = value;
             Assert.Equal(value, obj.KeysData20);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 21 set and get returns correct value
         /// </summary>
@@ -3397,7 +3397,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData21 = value;
             Assert.Equal(value, obj.KeysData21);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 22 set and get returns correct value
         /// </summary>
@@ -3409,7 +3409,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData22 = value;
             Assert.Equal(value, obj.KeysData22);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 23 set and get returns correct value
         /// </summary>
@@ -3421,7 +3421,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData23 = value;
             Assert.Equal(value, obj.KeysData23);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 24 set and get returns correct value
         /// </summary>
@@ -3433,7 +3433,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData24 = value;
             Assert.Equal(value, obj.KeysData24);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 25 set and get returns correct value
         /// </summary>
@@ -3445,7 +3445,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData25 = value;
             Assert.Equal(value, obj.KeysData25);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 26 set and get returns correct value
         /// </summary>
@@ -3457,7 +3457,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData26 = value;
             Assert.Equal(value, obj.KeysData26);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 27 set and get returns correct value
         /// </summary>
@@ -3469,7 +3469,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData27 = value;
             Assert.Equal(value, obj.KeysData27);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 28 set and get returns correct value
         /// </summary>
@@ -3481,7 +3481,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData28 = value;
             Assert.Equal(value, obj.KeysData28);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 29 set and get returns correct value
         /// </summary>
@@ -3493,7 +3493,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData29 = value;
             Assert.Equal(value, obj.KeysData29);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 30 set and get returns correct value
         /// </summary>
@@ -3505,7 +3505,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData30 = value;
             Assert.Equal(value, obj.KeysData30);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 31 set and get returns correct value
         /// </summary>
@@ -3517,7 +3517,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData31 = value;
             Assert.Equal(value, obj.KeysData31);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 32 set and get returns correct value
         /// </summary>
@@ -3529,7 +3529,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData32 = value;
             Assert.Equal(value, obj.KeysData32);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 33 set and get returns correct value
         /// </summary>
@@ -3541,7 +3541,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData33 = value;
             Assert.Equal(value, obj.KeysData33);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 34 set and get returns correct value
         /// </summary>
@@ -3553,7 +3553,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData34 = value;
             Assert.Equal(value, obj.KeysData34);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 35 set and get returns correct value
         /// </summary>
@@ -3565,7 +3565,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData35 = value;
             Assert.Equal(value, obj.KeysData35);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 36 set and get returns correct value
         /// </summary>
@@ -3577,7 +3577,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData36 = value;
             Assert.Equal(value, obj.KeysData36);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 37 set and get returns correct value
         /// </summary>
@@ -3589,7 +3589,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData37 = value;
             Assert.Equal(value, obj.KeysData37);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 38 set and get returns correct value
         /// </summary>
@@ -3601,7 +3601,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData38 = value;
             Assert.Equal(value, obj.KeysData38);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 39 set and get returns correct value
         /// </summary>
@@ -3613,7 +3613,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData39 = value;
             Assert.Equal(value, obj.KeysData39);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 40 set and get returns correct value
         /// </summary>
@@ -3625,7 +3625,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData40 = value;
             Assert.Equal(value, obj.KeysData40);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 41 set and get returns correct value
         /// </summary>
@@ -3637,7 +3637,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData41 = value;
             Assert.Equal(value, obj.KeysData41);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 42 set and get returns correct value
         /// </summary>
@@ -3649,7 +3649,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData42 = value;
             Assert.Equal(value, obj.KeysData42);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 43 set and get returns correct value
         /// </summary>
@@ -3661,7 +3661,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData43 = value;
             Assert.Equal(value, obj.KeysData43);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 44 set and get returns correct value
         /// </summary>
@@ -3673,7 +3673,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData44 = value;
             Assert.Equal(value, obj.KeysData44);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 45 set and get returns correct value
         /// </summary>
@@ -3685,7 +3685,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData45 = value;
             Assert.Equal(value, obj.KeysData45);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 46 set and get returns correct value
         /// </summary>
@@ -3697,7 +3697,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData46 = value;
             Assert.Equal(value, obj.KeysData46);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 47 set and get returns correct value
         /// </summary>
@@ -3709,7 +3709,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData47 = value;
             Assert.Equal(value, obj.KeysData47);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 48 set and get returns correct value
         /// </summary>
@@ -3721,7 +3721,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData48 = value;
             Assert.Equal(value, obj.KeysData48);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 49 set and get returns correct value
         /// </summary>
@@ -3733,7 +3733,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData49 = value;
             Assert.Equal(value, obj.KeysData49);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 50 set and get returns correct value
         /// </summary>
@@ -3745,7 +3745,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData50 = value;
             Assert.Equal(value, obj.KeysData50);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 51 set and get returns correct value
         /// </summary>
@@ -3757,7 +3757,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData51 = value;
             Assert.Equal(value, obj.KeysData51);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 52 set and get returns correct value
         /// </summary>
@@ -3769,7 +3769,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData52 = value;
             Assert.Equal(value, obj.KeysData52);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 53 set and get returns correct value
         /// </summary>
@@ -3781,7 +3781,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData53 = value;
             Assert.Equal(value, obj.KeysData53);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 54 set and get returns correct value
         /// </summary>
@@ -3793,7 +3793,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData54 = value;
             Assert.Equal(value, obj.KeysData54);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 55 set and get returns correct value
         /// </summary>
@@ -3805,7 +3805,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData55 = value;
             Assert.Equal(value, obj.KeysData55);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 56 set and get returns correct value
         /// </summary>
@@ -3817,7 +3817,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData56 = value;
             Assert.Equal(value, obj.KeysData56);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 57 set and get returns correct value
         /// </summary>
@@ -3829,7 +3829,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData57 = value;
             Assert.Equal(value, obj.KeysData57);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 58 set and get returns correct value
         /// </summary>
@@ -3841,7 +3841,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData58 = value;
             Assert.Equal(value, obj.KeysData58);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 59 set and get returns correct value
         /// </summary>
@@ -3853,7 +3853,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData59 = value;
             Assert.Equal(value, obj.KeysData59);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 60 set and get returns correct value
         /// </summary>
@@ -3865,7 +3865,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData60 = value;
             Assert.Equal(value, obj.KeysData60);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 61 set and get returns correct value
         /// </summary>
@@ -3877,7 +3877,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData61 = value;
             Assert.Equal(value, obj.KeysData61);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 62 set and get returns correct value
         /// </summary>
@@ -3889,7 +3889,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData62 = value;
             Assert.Equal(value, obj.KeysData62);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 63 set and get returns correct value
         /// </summary>
@@ -3901,7 +3901,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData63 = value;
             Assert.Equal(value, obj.KeysData63);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 64 set and get returns correct value
         /// </summary>
@@ -3913,7 +3913,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData64 = value;
             Assert.Equal(value, obj.KeysData64);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 65 set and get returns correct value
         /// </summary>
@@ -3925,7 +3925,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData65 = value;
             Assert.Equal(value, obj.KeysData65);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 66 set and get returns correct value
         /// </summary>
@@ -3937,7 +3937,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData66 = value;
             Assert.Equal(value, obj.KeysData66);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 67 set and get returns correct value
         /// </summary>
@@ -3949,7 +3949,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData67 = value;
             Assert.Equal(value, obj.KeysData67);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 68 set and get returns correct value
         /// </summary>
@@ -3961,7 +3961,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData68 = value;
             Assert.Equal(value, obj.KeysData68);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 603 set and get returns correct value
         /// </summary>
@@ -3973,7 +3973,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData603 = value;
             Assert.Equal(value, obj.KeysData603);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 604 set and get returns correct value
         /// </summary>
@@ -3985,7 +3985,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData604 = value;
             Assert.Equal(value, obj.KeysData604);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 605 set and get returns correct value
         /// </summary>
@@ -3997,7 +3997,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData605 = value;
             Assert.Equal(value, obj.KeysData605);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 606 set and get returns correct value
         /// </summary>
@@ -4009,7 +4009,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData606 = value;
             Assert.Equal(value, obj.KeysData606);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 607 set and get returns correct value
         /// </summary>
@@ -4021,7 +4021,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData607 = value;
             Assert.Equal(value, obj.KeysData607);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 608 set and get returns correct value
         /// </summary>
@@ -4033,7 +4033,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData608 = value;
             Assert.Equal(value, obj.KeysData608);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 609 set and get returns correct value
         /// </summary>
@@ -4045,7 +4045,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData609 = value;
             Assert.Equal(value, obj.KeysData609);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 610 set and get returns correct value
         /// </summary>
@@ -4057,7 +4057,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData610 = value;
             Assert.Equal(value, obj.KeysData610);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 611 set and get returns correct value
         /// </summary>
@@ -4069,7 +4069,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData611 = value;
             Assert.Equal(value, obj.KeysData611);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 612 set and get returns correct value
         /// </summary>
@@ -4081,7 +4081,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData612 = value;
             Assert.Equal(value, obj.KeysData612);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 613 set and get returns correct value
         /// </summary>
@@ -4093,7 +4093,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData613 = value;
             Assert.Equal(value, obj.KeysData613);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 614 set and get returns correct value
         /// </summary>
@@ -4105,7 +4105,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData614 = value;
             Assert.Equal(value, obj.KeysData614);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 615 set and get returns correct value
         /// </summary>
@@ -4117,7 +4117,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData615 = value;
             Assert.Equal(value, obj.KeysData615);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 616 set and get returns correct value
         /// </summary>
@@ -4129,7 +4129,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData616 = value;
             Assert.Equal(value, obj.KeysData616);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 617 set and get returns correct value
         /// </summary>
@@ -4141,7 +4141,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData617 = value;
             Assert.Equal(value, obj.KeysData617);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 618 set and get returns correct value
         /// </summary>
@@ -4153,7 +4153,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData618 = value;
             Assert.Equal(value, obj.KeysData618);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 619 set and get returns correct value
         /// </summary>
@@ -4165,7 +4165,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData619 = value;
             Assert.Equal(value, obj.KeysData619);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 620 set and get returns correct value
         /// </summary>
@@ -4177,7 +4177,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData620 = value;
             Assert.Equal(value, obj.KeysData620);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 621 set and get returns correct value
         /// </summary>
@@ -4189,7 +4189,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData621 = value;
             Assert.Equal(value, obj.KeysData621);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 622 set and get returns correct value
         /// </summary>
@@ -4201,7 +4201,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData622 = value;
             Assert.Equal(value, obj.KeysData622);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 623 set and get returns correct value
         /// </summary>
@@ -4213,7 +4213,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData623 = value;
             Assert.Equal(value, obj.KeysData623);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 624 set and get returns correct value
         /// </summary>
@@ -4225,7 +4225,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData624 = value;
             Assert.Equal(value, obj.KeysData624);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 625 set and get returns correct value
         /// </summary>
@@ -4237,7 +4237,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData625 = value;
             Assert.Equal(value, obj.KeysData625);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 626 set and get returns correct value
         /// </summary>
@@ -4249,7 +4249,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData626 = value;
             Assert.Equal(value, obj.KeysData626);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 627 set and get returns correct value
         /// </summary>
@@ -4261,7 +4261,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData627 = value;
             Assert.Equal(value, obj.KeysData627);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 628 set and get returns correct value
         /// </summary>
@@ -4273,7 +4273,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData628 = value;
             Assert.Equal(value, obj.KeysData628);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 629 set and get returns correct value
         /// </summary>
@@ -4285,7 +4285,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData629 = value;
             Assert.Equal(value, obj.KeysData629);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 630 set and get returns correct value
         /// </summary>
@@ -4297,7 +4297,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData630 = value;
             Assert.Equal(value, obj.KeysData630);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 631 set and get returns correct value
         /// </summary>
@@ -4309,7 +4309,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData631 = value;
             Assert.Equal(value, obj.KeysData631);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 632 set and get returns correct value
         /// </summary>
@@ -4321,7 +4321,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData632 = value;
             Assert.Equal(value, obj.KeysData632);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 633 set and get returns correct value
         /// </summary>
@@ -4333,7 +4333,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData633 = value;
             Assert.Equal(value, obj.KeysData633);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 634 set and get returns correct value
         /// </summary>
@@ -4345,7 +4345,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData634 = value;
             Assert.Equal(value, obj.KeysData634);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 635 set and get returns correct value
         /// </summary>
@@ -4357,7 +4357,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData635 = value;
             Assert.Equal(value, obj.KeysData635);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 636 set and get returns correct value
         /// </summary>
@@ -4369,7 +4369,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData636 = value;
             Assert.Equal(value, obj.KeysData636);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 637 set and get returns correct value
         /// </summary>
@@ -4381,7 +4381,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData637 = value;
             Assert.Equal(value, obj.KeysData637);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 638 set and get returns correct value
         /// </summary>
@@ -4393,7 +4393,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData638 = value;
             Assert.Equal(value, obj.KeysData638);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 639 set and get returns correct value
         /// </summary>
@@ -4405,7 +4405,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData639 = value;
             Assert.Equal(value, obj.KeysData639);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 640 set and get returns correct value
         /// </summary>
@@ -4417,7 +4417,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData640 = value;
             Assert.Equal(value, obj.KeysData640);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 641 set and get returns correct value
         /// </summary>
@@ -4429,7 +4429,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData641 = value;
             Assert.Equal(value, obj.KeysData641);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 642 set and get returns correct value
         /// </summary>
@@ -4441,7 +4441,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData642 = value;
             Assert.Equal(value, obj.KeysData642);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 643 set and get returns correct value
         /// </summary>
@@ -4453,7 +4453,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData643 = value;
             Assert.Equal(value, obj.KeysData643);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 644 set and get returns correct value
         /// </summary>
@@ -4465,7 +4465,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData644 = value;
             Assert.Equal(value, obj.KeysData644);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 645 set and get returns correct value
         /// </summary>
@@ -4477,7 +4477,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData645 = value;
             Assert.Equal(value, obj.KeysData645);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 646 set and get returns correct value
         /// </summary>
@@ -4489,7 +4489,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData646 = value;
             Assert.Equal(value, obj.KeysData646);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 647 set and get returns correct value
         /// </summary>
@@ -4501,7 +4501,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData647 = value;
             Assert.Equal(value, obj.KeysData647);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 648 set and get returns correct value
         /// </summary>
@@ -4513,7 +4513,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData648 = value;
             Assert.Equal(value, obj.KeysData648);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 649 set and get returns correct value
         /// </summary>
@@ -4525,7 +4525,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData649 = value;
             Assert.Equal(value, obj.KeysData649);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 650 set and get returns correct value
         /// </summary>
@@ -4537,7 +4537,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData650 = value;
             Assert.Equal(value, obj.KeysData650);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 651 set and get returns correct value
         /// </summary>
@@ -4549,7 +4549,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData651 = value;
             Assert.Equal(value, obj.KeysData651);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 521 set and get returns correct value
         /// </summary>
@@ -4561,7 +4561,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData521 = value;
             Assert.Equal(value, obj.KeysData521);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 522 set and get returns correct value
         /// </summary>
@@ -4573,7 +4573,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData522 = value;
             Assert.Equal(value, obj.KeysData522);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 523 set and get returns correct value
         /// </summary>
@@ -4585,7 +4585,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData523 = value;
             Assert.Equal(value, obj.KeysData523);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 524 set and get returns correct value
         /// </summary>
@@ -4597,7 +4597,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData524 = value;
             Assert.Equal(value, obj.KeysData524);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 525 set and get returns correct value
         /// </summary>
@@ -4609,7 +4609,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData525 = value;
             Assert.Equal(value, obj.KeysData525);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 526 set and get returns correct value
         /// </summary>
@@ -4621,7 +4621,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData526 = value;
             Assert.Equal(value, obj.KeysData526);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 527 set and get returns correct value
         /// </summary>
@@ -4633,7 +4633,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData527 = value;
             Assert.Equal(value, obj.KeysData527);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 528 set and get returns correct value
         /// </summary>
@@ -4645,7 +4645,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData528 = value;
             Assert.Equal(value, obj.KeysData528);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 529 set and get returns correct value
         /// </summary>
@@ -4657,7 +4657,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData529 = value;
             Assert.Equal(value, obj.KeysData529);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 530 set and get returns correct value
         /// </summary>
@@ -4669,7 +4669,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData530 = value;
             Assert.Equal(value, obj.KeysData530);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 531 set and get returns correct value
         /// </summary>
@@ -4681,7 +4681,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData531 = value;
             Assert.Equal(value, obj.KeysData531);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 532 set and get returns correct value
         /// </summary>
@@ -4693,7 +4693,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData532 = value;
             Assert.Equal(value, obj.KeysData532);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 533 set and get returns correct value
         /// </summary>
@@ -4705,7 +4705,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData533 = value;
             Assert.Equal(value, obj.KeysData533);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 534 set and get returns correct value
         /// </summary>
@@ -4717,7 +4717,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData534 = value;
             Assert.Equal(value, obj.KeysData534);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 535 set and get returns correct value
         /// </summary>
@@ -4729,7 +4729,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData535 = value;
             Assert.Equal(value, obj.KeysData535);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 536 set and get returns correct value
         /// </summary>
@@ -4741,7 +4741,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData536 = value;
             Assert.Equal(value, obj.KeysData536);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 537 set and get returns correct value
         /// </summary>
@@ -4753,7 +4753,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData537 = value;
             Assert.Equal(value, obj.KeysData537);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 538 set and get returns correct value
         /// </summary>
@@ -4765,7 +4765,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData538 = value;
             Assert.Equal(value, obj.KeysData538);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 539 set and get returns correct value
         /// </summary>
@@ -4777,7 +4777,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData539 = value;
             Assert.Equal(value, obj.KeysData539);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 540 set and get returns correct value
         /// </summary>
@@ -4789,7 +4789,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData540 = value;
             Assert.Equal(value, obj.KeysData540);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 541 set and get returns correct value
         /// </summary>
@@ -4801,7 +4801,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData541 = value;
             Assert.Equal(value, obj.KeysData541);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 542 set and get returns correct value
         /// </summary>
@@ -4813,7 +4813,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData542 = value;
             Assert.Equal(value, obj.KeysData542);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 543 set and get returns correct value
         /// </summary>
@@ -4825,7 +4825,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData543 = value;
             Assert.Equal(value, obj.KeysData543);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 544 set and get returns correct value
         /// </summary>
@@ -4837,7 +4837,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData544 = value;
             Assert.Equal(value, obj.KeysData544);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 545 set and get returns correct value
         /// </summary>
@@ -4849,7 +4849,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData545 = value;
             Assert.Equal(value, obj.KeysData545);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 546 set and get returns correct value
         /// </summary>
@@ -4861,7 +4861,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData546 = value;
             Assert.Equal(value, obj.KeysData546);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 547 set and get returns correct value
         /// </summary>
@@ -4873,7 +4873,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData547 = value;
             Assert.Equal(value, obj.KeysData547);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 548 set and get returns correct value
         /// </summary>
@@ -4885,7 +4885,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData548 = value;
             Assert.Equal(value, obj.KeysData548);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 549 set and get returns correct value
         /// </summary>
@@ -4897,7 +4897,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData549 = value;
             Assert.Equal(value, obj.KeysData549);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 550 set and get returns correct value
         /// </summary>
@@ -4909,7 +4909,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData550 = value;
             Assert.Equal(value, obj.KeysData550);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 551 set and get returns correct value
         /// </summary>
@@ -4921,7 +4921,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData551 = value;
             Assert.Equal(value, obj.KeysData551);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 552 set and get returns correct value
         /// </summary>
@@ -4933,7 +4933,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData552 = value;
             Assert.Equal(value, obj.KeysData552);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 553 set and get returns correct value
         /// </summary>
@@ -4945,7 +4945,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData553 = value;
             Assert.Equal(value, obj.KeysData553);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 554 set and get returns correct value
         /// </summary>
@@ -4957,7 +4957,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData554 = value;
             Assert.Equal(value, obj.KeysData554);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 555 set and get returns correct value
         /// </summary>
@@ -4969,7 +4969,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData555 = value;
             Assert.Equal(value, obj.KeysData555);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 556 set and get returns correct value
         /// </summary>
@@ -4981,7 +4981,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData556 = value;
             Assert.Equal(value, obj.KeysData556);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 557 set and get returns correct value
         /// </summary>
@@ -4993,7 +4993,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData557 = value;
             Assert.Equal(value, obj.KeysData557);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 558 set and get returns correct value
         /// </summary>
@@ -5005,7 +5005,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData558 = value;
             Assert.Equal(value, obj.KeysData558);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 559 set and get returns correct value
         /// </summary>
@@ -5017,7 +5017,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData559 = value;
             Assert.Equal(value, obj.KeysData559);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 560 set and get returns correct value
         /// </summary>
@@ -5029,7 +5029,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData560 = value;
             Assert.Equal(value, obj.KeysData560);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 561 set and get returns correct value
         /// </summary>
@@ -5041,7 +5041,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData561 = value;
             Assert.Equal(value, obj.KeysData561);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 562 set and get returns correct value
         /// </summary>
@@ -5053,7 +5053,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData562 = value;
             Assert.Equal(value, obj.KeysData562);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 563 set and get returns correct value
         /// </summary>
@@ -5065,7 +5065,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData563 = value;
             Assert.Equal(value, obj.KeysData563);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 564 set and get returns correct value
         /// </summary>
@@ -5077,7 +5077,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData564 = value;
             Assert.Equal(value, obj.KeysData564);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 565 set and get returns correct value
         /// </summary>
@@ -5089,7 +5089,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData565 = value;
             Assert.Equal(value, obj.KeysData565);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 566 set and get returns correct value
         /// </summary>
@@ -5101,7 +5101,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData566 = value;
             Assert.Equal(value, obj.KeysData566);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 567 set and get returns correct value
         /// </summary>
@@ -5113,7 +5113,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData567 = value;
             Assert.Equal(value, obj.KeysData567);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 568 set and get returns correct value
         /// </summary>
@@ -5125,7 +5125,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData568 = value;
             Assert.Equal(value, obj.KeysData568);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 569 set and get returns correct value
         /// </summary>
@@ -5137,7 +5137,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData569 = value;
             Assert.Equal(value, obj.KeysData569);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 570 set and get returns correct value
         /// </summary>
@@ -5149,7 +5149,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData570 = value;
             Assert.Equal(value, obj.KeysData570);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 571 set and get returns correct value
         /// </summary>
@@ -5161,7 +5161,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData571 = value;
             Assert.Equal(value, obj.KeysData571);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 572 set and get returns correct value
         /// </summary>
@@ -5173,7 +5173,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData572 = value;
             Assert.Equal(value, obj.KeysData572);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 573 set and get returns correct value
         /// </summary>
@@ -5185,7 +5185,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData573 = value;
             Assert.Equal(value, obj.KeysData573);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 574 set and get returns correct value
         /// </summary>
@@ -5197,7 +5197,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData574 = value;
             Assert.Equal(value, obj.KeysData574);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 575 set and get returns correct value
         /// </summary>
@@ -5209,7 +5209,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData575 = value;
             Assert.Equal(value, obj.KeysData575);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 576 set and get returns correct value
         /// </summary>
@@ -5221,7 +5221,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData576 = value;
             Assert.Equal(value, obj.KeysData576);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 577 set and get returns correct value
         /// </summary>
@@ -5233,7 +5233,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData577 = value;
             Assert.Equal(value, obj.KeysData577);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 578 set and get returns correct value
         /// </summary>
@@ -5245,7 +5245,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData578 = value;
             Assert.Equal(value, obj.KeysData578);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 579 set and get returns correct value
         /// </summary>
@@ -5257,7 +5257,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData579 = value;
             Assert.Equal(value, obj.KeysData579);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 580 set and get returns correct value
         /// </summary>
@@ -5269,7 +5269,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData580 = value;
             Assert.Equal(value, obj.KeysData580);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 581 set and get returns correct value
         /// </summary>
@@ -5281,7 +5281,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData581 = value;
             Assert.Equal(value, obj.KeysData581);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 582 set and get returns correct value
         /// </summary>
@@ -5293,7 +5293,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData582 = value;
             Assert.Equal(value, obj.KeysData582);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 583 set and get returns correct value
         /// </summary>
@@ -5305,7 +5305,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData583 = value;
             Assert.Equal(value, obj.KeysData583);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 584 set and get returns correct value
         /// </summary>
@@ -5317,7 +5317,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData584 = value;
             Assert.Equal(value, obj.KeysData584);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 585 set and get returns correct value
         /// </summary>
@@ -5329,7 +5329,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData585 = value;
             Assert.Equal(value, obj.KeysData585);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 586 set and get returns correct value
         /// </summary>
@@ -5341,7 +5341,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData586 = value;
             Assert.Equal(value, obj.KeysData586);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 587 set and get returns correct value
         /// </summary>
@@ -5353,7 +5353,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData587 = value;
             Assert.Equal(value, obj.KeysData587);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 588 set and get returns correct value
         /// </summary>
@@ -5365,7 +5365,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData588 = value;
             Assert.Equal(value, obj.KeysData588);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 589 set and get returns correct value
         /// </summary>
@@ -5377,7 +5377,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData589 = value;
             Assert.Equal(value, obj.KeysData589);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 590 set and get returns correct value
         /// </summary>
@@ -5389,7 +5389,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData590 = value;
             Assert.Equal(value, obj.KeysData590);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 591 set and get returns correct value
         /// </summary>
@@ -5401,7 +5401,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData591 = value;
             Assert.Equal(value, obj.KeysData591);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 592 set and get returns correct value
         /// </summary>
@@ -5413,7 +5413,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData592 = value;
             Assert.Equal(value, obj.KeysData592);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 593 set and get returns correct value
         /// </summary>
@@ -5425,7 +5425,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData593 = value;
             Assert.Equal(value, obj.KeysData593);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 594 set and get returns correct value
         /// </summary>
@@ -5437,7 +5437,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData594 = value;
             Assert.Equal(value, obj.KeysData594);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 595 set and get returns correct value
         /// </summary>
@@ -5449,7 +5449,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData595 = value;
             Assert.Equal(value, obj.KeysData595);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 596 set and get returns correct value
         /// </summary>
@@ -5461,7 +5461,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData596 = value;
             Assert.Equal(value, obj.KeysData596);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 597 set and get returns correct value
         /// </summary>
@@ -5473,7 +5473,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData597 = value;
             Assert.Equal(value, obj.KeysData597);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 598 set and get returns correct value
         /// </summary>
@@ -5485,7 +5485,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData598 = value;
             Assert.Equal(value, obj.KeysData598);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 599 set and get returns correct value
         /// </summary>
@@ -5497,7 +5497,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData599 = value;
             Assert.Equal(value, obj.KeysData599);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 600 set and get returns correct value
         /// </summary>
@@ -5509,7 +5509,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData600 = value;
             Assert.Equal(value, obj.KeysData600);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 601 set and get returns correct value
         /// </summary>
@@ -5521,7 +5521,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData601 = value;
             Assert.Equal(value, obj.KeysData601);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 602 set and get returns correct value
         /// </summary>
@@ -5533,7 +5533,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData602 = value;
             Assert.Equal(value, obj.KeysData602);
         }
-        
+
         /// <summary>
         ///     Tests that v 2 keys data 589 set and get returns correct value
         /// </summary>
@@ -5545,7 +5545,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData589 = value;
             Assert.Equal(value, obj.KeysData589);
         }
-        
+
         /// <summary>
         ///     Tests that v 2 keys data 590 set and get returns correct value
         /// </summary>
@@ -5557,7 +5557,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData590 = value;
             Assert.Equal(value, obj.KeysData590);
         }
-        
+
         /// <summary>
         ///     Tests that v 2 keys data 591 set and get returns correct value
         /// </summary>
@@ -5569,7 +5569,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData591 = value;
             Assert.Equal(value, obj.KeysData591);
         }
-        
+
         /// <summary>
         ///     Tests that v 2 keys data 592 set and get returns correct value
         /// </summary>
@@ -5581,7 +5581,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData592 = value;
             Assert.Equal(value, obj.KeysData592);
         }
-        
+
         /// <summary>
         ///     Tests that v 2 keys data 593 set and get returns correct value
         /// </summary>
@@ -5593,7 +5593,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData593 = value;
             Assert.Equal(value, obj.KeysData593);
         }
-        
+
         /// <summary>
         ///     Tests that v 3 keys data 594 set and get returns correct value
         /// </summary>
@@ -5605,7 +5605,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData594 = value;
             Assert.Equal(value, obj.KeysData594);
         }
-        
+
         /// <summary>
         ///     Tests that v 3 keys data 595 set and get returns correct value
         /// </summary>
@@ -5617,7 +5617,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData595 = value;
             Assert.Equal(value, obj.KeysData595);
         }
-        
+
         /// <summary>
         ///     Tests that v 3 keys data 596 set and get returns correct value
         /// </summary>
@@ -5629,7 +5629,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData596 = value;
             Assert.Equal(value, obj.KeysData596);
         }
-        
+
         /// <summary>
         ///     Tests that v 3 keys data 597 set and get returns correct value
         /// </summary>
@@ -5641,7 +5641,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData597 = value;
             Assert.Equal(value, obj.KeysData597);
         }
-        
+
         /// <summary>
         ///     Tests that v 3 keys data 598 set and get returns correct value
         /// </summary>
@@ -5653,7 +5653,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData598 = value;
             Assert.Equal(value, obj.KeysData598);
         }
-        
+
         /// <summary>
         ///     Tests that v 2 keys data 599 set and get returns correct value
         /// </summary>
@@ -5665,7 +5665,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData599 = value;
             Assert.Equal(value, obj.KeysData599);
         }
-        
+
         /// <summary>
         ///     Tests that v 2 keys data 600 set and get returns correct value
         /// </summary>
@@ -5677,7 +5677,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData600 = value;
             Assert.Equal(value, obj.KeysData600);
         }
-        
+
         /// <summary>
         ///     Tests that v 2 keys data 601 set and get returns correct value
         /// </summary>
@@ -5689,7 +5689,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData601 = value;
             Assert.Equal(value, obj.KeysData601);
         }
-        
+
         /// <summary>
         ///     Tests that v 2 keys data 602 set and get returns correct value
         /// </summary>
@@ -5701,7 +5701,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData602 = value;
             Assert.Equal(value, obj.KeysData602);
         }
-        
+
         /// <summary>
         ///     Tests that mouse clicked pos 1 set and get returns correct value
         /// </summary>
@@ -5713,7 +5713,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.MouseClickedPos1 = value;
             Assert.Equal(value, obj.MouseClickedPos1);
         }
-        
+
         /// <summary>
         ///     Tests that mouse clicked pos 2 set and get returns correct value
         /// </summary>
@@ -5725,7 +5725,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.MouseClickedPos2 = value;
             Assert.Equal(value, obj.MouseClickedPos2);
         }
-        
+
         /// <summary>
         ///     Tests that mouse clicked pos 3 set and get returns correct value
         /// </summary>
@@ -5737,7 +5737,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.MouseClickedPos3 = value;
             Assert.Equal(value, obj.MouseClickedPos3);
         }
-        
+
         /// <summary>
         ///     Tests that mouse clicked pos 4 set and get returns correct value
         /// </summary>
@@ -5749,7 +5749,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.MouseClickedPos4 = value;
             Assert.Equal(value, obj.MouseClickedPos4);
         }
-        
+
         /// <summary>
         ///     Tests that mouse clicked time set and get returns correct value
         /// </summary>
@@ -5761,7 +5761,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.MouseClickedTime = value;
             Assert.Equal(value, obj.MouseClickedTime);
         }
-        
+
         /// <summary>
         ///     Tests that mouse clicked set and get returns correct value
         /// </summary>
@@ -5773,7 +5773,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.MouseClicked = value;
             Assert.Equal(value, obj.MouseClicked);
         }
-        
+
         /// <summary>
         ///     Tests that mouse double clicked set and get returns correct value
         /// </summary>
@@ -5785,7 +5785,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.MouseDoubleClicked = value;
             Assert.Equal(value, obj.MouseDoubleClicked);
         }
-        
+
         /// <summary>
         ///     Tests that mouse clicked count set and get returns correct value
         /// </summary>
@@ -5797,7 +5797,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.MouseClickedCount = value;
             Assert.Equal(value, obj.MouseClickedCount);
         }
-        
+
         /// <summary>
         ///     Tests that mouse clicked last count set and get returns correct value
         /// </summary>
@@ -5809,7 +5809,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.MouseClickedLastCount = value;
             Assert.Equal(value, obj.MouseClickedLastCount);
         }
-        
+
         /// <summary>
         ///     Tests that mouse released set and get returns correct value
         /// </summary>
@@ -5821,7 +5821,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.MouseReleased = value;
             Assert.Equal(value, obj.MouseReleased);
         }
-        
+
         /// <summary>
         ///     Tests that mouse down owned set and get returns correct value
         /// </summary>
@@ -5833,7 +5833,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.MouseDownOwned = value;
             Assert.Equal(value, obj.MouseDownOwned);
         }
-        
+
         /// <summary>
         ///     Tests that mouse down owned unless popup close set and get returns correct value
         /// </summary>
@@ -5845,7 +5845,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.MouseDownOwnedUnlessPopupClose = value;
             Assert.Equal(value, obj.MouseDownOwnedUnlessPopupClose);
         }
-        
+
         /// <summary>
         ///     Tests that mouse down duration set and get returns correct value
         /// </summary>
@@ -5857,7 +5857,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.MouseDownDuration = value;
             Assert.Equal(value, obj.MouseDownDuration);
         }
-        
+
         /// <summary>
         ///     Tests that mouse down duration prev set and get returns correct value
         /// </summary>
@@ -5869,7 +5869,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.MouseDownDurationPrev = value;
             Assert.Equal(value, obj.MouseDownDurationPrev);
         }
-        
+
         /// <summary>
         ///     Tests that v 4 mouse down duration prev set and get returns correct value
         /// </summary>
@@ -5881,7 +5881,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.MouseDownDurationPrev = value;
             Assert.Equal(value, obj.MouseDownDurationPrev);
         }
-        
+
         /// <summary>
         ///     Tests that mouse drag max distance abs 0 set and get returns correct value
         /// </summary>
@@ -5893,7 +5893,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.MouseDragMaxDistanceAbs0 = value;
             Assert.Equal(value, obj.MouseDragMaxDistanceAbs0);
         }
-        
+
         /// <summary>
         ///     Tests that mouse drag max distance abs 1 set and get returns correct value
         /// </summary>
@@ -5905,7 +5905,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.MouseDragMaxDistanceAbs1 = value;
             Assert.Equal(value, obj.MouseDragMaxDistanceAbs1);
         }
-        
+
         /// <summary>
         ///     Tests that mouse drag max distance abs 2 set and get returns correct value
         /// </summary>
@@ -5917,7 +5917,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.MouseDragMaxDistanceAbs2 = value;
             Assert.Equal(value, obj.MouseDragMaxDistanceAbs2);
         }
-        
+
         /// <summary>
         ///     Tests that mouse drag max distance abs 3 set and get returns correct value
         /// </summary>
@@ -5929,7 +5929,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.MouseDragMaxDistanceAbs3 = value;
             Assert.Equal(value, obj.MouseDragMaxDistanceAbs3);
         }
-        
+
         /// <summary>
         ///     Tests that mouse drag max distance abs 4 set and get returns correct value
         /// </summary>
@@ -5941,7 +5941,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.MouseDragMaxDistanceAbs4 = value;
             Assert.Equal(value, obj.MouseDragMaxDistanceAbs4);
         }
-        
+
         /// <summary>
         ///     Tests that mouse drag max distance sqr set and get returns correct value
         /// </summary>
@@ -5953,7 +5953,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.MouseDragMaxDistanceSqr = value;
             Assert.Equal(value, obj.MouseDragMaxDistanceSqr);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 400 set and get returns correct value
         /// </summary>
@@ -5965,7 +5965,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData400 = value;
             Assert.Equal(value, obj.KeysData400);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 401 set and get returns correct value
         /// </summary>
@@ -5977,7 +5977,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData401 = value;
             Assert.Equal(value, obj.KeysData401);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 402 set and get returns correct value
         /// </summary>
@@ -5989,7 +5989,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData402 = value;
             Assert.Equal(value, obj.KeysData402);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 403 set and get returns correct value
         /// </summary>
@@ -6001,7 +6001,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData403 = value;
             Assert.Equal(value, obj.KeysData403);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 404 set and get returns correct value
         /// </summary>
@@ -6013,7 +6013,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData404 = value;
             Assert.Equal(value, obj.KeysData404);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 405 set and get returns correct value
         /// </summary>
@@ -6025,7 +6025,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData405 = value;
             Assert.Equal(value, obj.KeysData405);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 406 set and get returns correct value
         /// </summary>
@@ -6037,7 +6037,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData406 = value;
             Assert.Equal(value, obj.KeysData406);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 407 set and get returns correct value
         /// </summary>
@@ -6049,7 +6049,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData407 = value;
             Assert.Equal(value, obj.KeysData407);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 408 set and get returns correct value
         /// </summary>
@@ -6061,7 +6061,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData408 = value;
             Assert.Equal(value, obj.KeysData408);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 409 set and get returns correct value
         /// </summary>
@@ -6073,7 +6073,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData409 = value;
             Assert.Equal(value, obj.KeysData409);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 410 set and get returns correct value
         /// </summary>
@@ -6085,7 +6085,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData410 = value;
             Assert.Equal(value, obj.KeysData410);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 411 set and get returns correct value
         /// </summary>
@@ -6097,7 +6097,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData411 = value;
             Assert.Equal(value, obj.KeysData411);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 412 set and get returns correct value
         /// </summary>
@@ -6109,7 +6109,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData412 = value;
             Assert.Equal(value, obj.KeysData412);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 413 set and get returns correct value
         /// </summary>
@@ -6121,7 +6121,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData413 = value;
             Assert.Equal(value, obj.KeysData413);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 414 set and get returns correct value
         /// </summary>
@@ -6133,7 +6133,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData414 = value;
             Assert.Equal(value, obj.KeysData414);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 415 set and get returns correct value
         /// </summary>
@@ -6145,7 +6145,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData415 = value;
             Assert.Equal(value, obj.KeysData415);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 416 set and get returns correct value
         /// </summary>
@@ -6157,7 +6157,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData416 = value;
             Assert.Equal(value, obj.KeysData416);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 417 set and get returns correct value
         /// </summary>
@@ -6169,7 +6169,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData417 = value;
             Assert.Equal(value, obj.KeysData417);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 418 set and get returns correct value
         /// </summary>
@@ -6181,7 +6181,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData418 = value;
             Assert.Equal(value, obj.KeysData418);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 419 set and get returns correct value
         /// </summary>
@@ -6193,7 +6193,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData419 = value;
             Assert.Equal(value, obj.KeysData419);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 515 set and get returns correct value
         /// </summary>
@@ -6205,7 +6205,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData515 = value;
             Assert.Equal(value, obj.KeysData515);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 516 set and get returns correct value
         /// </summary>
@@ -6217,7 +6217,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData516 = value;
             Assert.Equal(value, obj.KeysData516);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 517 set and get returns correct value
         /// </summary>
@@ -6229,7 +6229,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData517 = value;
             Assert.Equal(value, obj.KeysData517);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 518 set and get returns correct value
         /// </summary>
@@ -6241,7 +6241,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData518 = value;
             Assert.Equal(value, obj.KeysData518);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 519 set and get returns correct value
         /// </summary>
@@ -6253,7 +6253,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData519 = value;
             Assert.Equal(value, obj.KeysData519);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 520 set and get returns correct value
         /// </summary>
@@ -6265,7 +6265,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData520 = value;
             Assert.Equal(value, obj.KeysData520);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 420 set and get returns correct value
         /// </summary>
@@ -6277,7 +6277,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData420 = value;
             Assert.Equal(value, obj.KeysData420);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 421 set and get returns correct value
         /// </summary>
@@ -6289,7 +6289,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData421 = value;
             Assert.Equal(value, obj.KeysData421);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 422 set and get returns correct value
         /// </summary>
@@ -6301,7 +6301,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData422 = value;
             Assert.Equal(value, obj.KeysData422);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 423 set and get returns correct value
         /// </summary>
@@ -6313,7 +6313,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData423 = value;
             Assert.Equal(value, obj.KeysData423);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 424 set and get returns correct value
         /// </summary>
@@ -6325,7 +6325,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData424 = value;
             Assert.Equal(value, obj.KeysData424);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 425 set and get returns correct value
         /// </summary>
@@ -6337,7 +6337,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData425 = value;
             Assert.Equal(value, obj.KeysData425);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 426 set and get returns correct value
         /// </summary>
@@ -6349,7 +6349,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData426 = value;
             Assert.Equal(value, obj.KeysData426);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 427 set and get returns correct value
         /// </summary>
@@ -6361,7 +6361,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData427 = value;
             Assert.Equal(value, obj.KeysData427);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 428 set and get returns correct value
         /// </summary>
@@ -6373,7 +6373,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData428 = value;
             Assert.Equal(value, obj.KeysData428);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 429 set and get returns correct value
         /// </summary>
@@ -6385,7 +6385,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData429 = value;
             Assert.Equal(value, obj.KeysData429);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 430 set and get returns correct value
         /// </summary>
@@ -6397,7 +6397,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData430 = value;
             Assert.Equal(value, obj.KeysData430);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 431 set and get returns correct value
         /// </summary>
@@ -6409,7 +6409,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData431 = value;
             Assert.Equal(value, obj.KeysData431);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 432 set and get returns correct value
         /// </summary>
@@ -6421,7 +6421,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData432 = value;
             Assert.Equal(value, obj.KeysData432);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 433 set and get returns correct value
         /// </summary>
@@ -6433,7 +6433,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData433 = value;
             Assert.Equal(value, obj.KeysData433);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 434 set and get returns correct value
         /// </summary>
@@ -6445,7 +6445,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData434 = value;
             Assert.Equal(value, obj.KeysData434);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 435 set and get returns correct value
         /// </summary>
@@ -6457,7 +6457,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData435 = value;
             Assert.Equal(value, obj.KeysData435);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 436 set and get returns correct value
         /// </summary>
@@ -6469,7 +6469,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData436 = value;
             Assert.Equal(value, obj.KeysData436);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 437 set and get returns correct value
         /// </summary>
@@ -6481,7 +6481,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData437 = value;
             Assert.Equal(value, obj.KeysData437);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 438 set and get returns correct value
         /// </summary>
@@ -6493,7 +6493,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData438 = value;
             Assert.Equal(value, obj.KeysData438);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 439 set and get returns correct value
         /// </summary>
@@ -6505,7 +6505,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData439 = value;
             Assert.Equal(value, obj.KeysData439);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 69 set and get returns correct value
         /// </summary>
@@ -6517,7 +6517,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData69 = value;
             Assert.Equal(value, obj.KeysData69);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 70 set and get returns correct value
         /// </summary>
@@ -6529,7 +6529,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData70 = value;
             Assert.Equal(value, obj.KeysData70);
         }
-        
+
         /// <summary>
         ///     Tests that v 6 keys data 71 set and get returns correct value
         /// </summary>
@@ -6541,7 +6541,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData71 = value;
             Assert.Equal(value, obj.KeysData71);
         }
-        
+
         /// <summary>
         ///     Tests that v 6 keys data 72 set and get returns correct value
         /// </summary>
@@ -6553,7 +6553,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData72 = value;
             Assert.Equal(value, obj.KeysData72);
         }
-        
+
         /// <summary>
         ///     Tests that v 6 keys data 73 set and get returns correct value
         /// </summary>
@@ -6565,7 +6565,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData73 = value;
             Assert.Equal(value, obj.KeysData73);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 74 set and get returns correct value
         /// </summary>
@@ -6577,7 +6577,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData74 = value;
             Assert.Equal(value, obj.KeysData74);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 75 set and get returns correct value
         /// </summary>
@@ -6589,7 +6589,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData75 = value;
             Assert.Equal(value, obj.KeysData75);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 76 set and get returns correct value
         /// </summary>
@@ -6601,7 +6601,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData76 = value;
             Assert.Equal(value, obj.KeysData76);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 77 set and get returns correct value
         /// </summary>
@@ -6613,7 +6613,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData77 = value;
             Assert.Equal(value, obj.KeysData77);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 78 set and get returns correct value
         /// </summary>
@@ -6625,7 +6625,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData78 = value;
             Assert.Equal(value, obj.KeysData78);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 79 set and get returns correct value
         /// </summary>
@@ -6637,7 +6637,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData79 = value;
             Assert.Equal(value, obj.KeysData79);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 80 set and get returns correct value
         /// </summary>
@@ -6649,7 +6649,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData80 = value;
             Assert.Equal(value, obj.KeysData80);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 81 set and get returns correct value
         /// </summary>
@@ -6661,7 +6661,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData81 = value;
             Assert.Equal(value, obj.KeysData81);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 82 set and get returns correct value
         /// </summary>
@@ -6673,7 +6673,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData82 = value;
             Assert.Equal(value, obj.KeysData82);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 83 set and get returns correct value
         /// </summary>
@@ -6685,7 +6685,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData83 = value;
             Assert.Equal(value, obj.KeysData83);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 84 set and get returns correct value
         /// </summary>
@@ -6697,7 +6697,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData84 = value;
             Assert.Equal(value, obj.KeysData84);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 85 set and get returns correct value
         /// </summary>
@@ -6709,7 +6709,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData85 = value;
             Assert.Equal(value, obj.KeysData85);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 86 set and get returns correct value
         /// </summary>
@@ -6721,7 +6721,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData86 = value;
             Assert.Equal(value, obj.KeysData86);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 87 set and get returns correct value
         /// </summary>
@@ -6733,7 +6733,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData87 = value;
             Assert.Equal(value, obj.KeysData87);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 88 set and get returns correct value
         /// </summary>
@@ -6745,7 +6745,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData88 = value;
             Assert.Equal(value, obj.KeysData88);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 89 set and get returns correct value
         /// </summary>
@@ -6757,7 +6757,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData89 = value;
             Assert.Equal(value, obj.KeysData89);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 90 set and get returns correct value
         /// </summary>
@@ -6769,7 +6769,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData90 = value;
             Assert.Equal(value, obj.KeysData90);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 91 set and get returns correct value
         /// </summary>
@@ -6781,7 +6781,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData91 = value;
             Assert.Equal(value, obj.KeysData91);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 92 set and get returns correct value
         /// </summary>
@@ -6793,7 +6793,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData92 = value;
             Assert.Equal(value, obj.KeysData92);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 93 set and get returns correct value
         /// </summary>
@@ -6805,7 +6805,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData93 = value;
             Assert.Equal(value, obj.KeysData93);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 94 set and get returns correct value
         /// </summary>
@@ -6817,7 +6817,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData94 = value;
             Assert.Equal(value, obj.KeysData94);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 95 set and get returns correct value
         /// </summary>
@@ -6829,7 +6829,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData95 = value;
             Assert.Equal(value, obj.KeysData95);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 96 set and get returns correct value
         /// </summary>
@@ -6841,7 +6841,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData96 = value;
             Assert.Equal(value, obj.KeysData96);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 97 set and get returns correct value
         /// </summary>
@@ -6853,7 +6853,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData97 = value;
             Assert.Equal(value, obj.KeysData97);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 98 set and get returns correct value
         /// </summary>
@@ -6865,7 +6865,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData98 = value;
             Assert.Equal(value, obj.KeysData98);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 99 set and get returns correct value
         /// </summary>
@@ -6877,7 +6877,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData99 = value;
             Assert.Equal(value, obj.KeysData99);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 100 set and get returns correct value
         /// </summary>
@@ -6889,7 +6889,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData100 = value;
             Assert.Equal(value, obj.KeysData100);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 101 set and get returns correct value
         /// </summary>
@@ -6901,7 +6901,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData101 = value;
             Assert.Equal(value, obj.KeysData101);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 102 set and get returns correct value
         /// </summary>
@@ -6913,7 +6913,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData102 = value;
             Assert.Equal(value, obj.KeysData102);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 103 set and get returns correct value
         /// </summary>
@@ -6925,7 +6925,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData103 = value;
             Assert.Equal(value, obj.KeysData103);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 104 set and get returns correct value
         /// </summary>
@@ -6937,7 +6937,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData104 = value;
             Assert.Equal(value, obj.KeysData104);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 105 set and get returns correct value
         /// </summary>
@@ -6949,7 +6949,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData105 = value;
             Assert.Equal(value, obj.KeysData105);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 69 set and get returns correct value
         /// </summary>
@@ -6961,7 +6961,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData69 = value;
             Assert.Equal(value, obj.KeysData69);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 70 set and get returns correct value
         /// </summary>
@@ -6973,7 +6973,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData70 = value;
             Assert.Equal(value, obj.KeysData70);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 71 set and get returns correct value
         /// </summary>
@@ -6985,7 +6985,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData71 = value;
             Assert.Equal(value, obj.KeysData71);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 72 set and get returns correct value
         /// </summary>
@@ -6997,7 +6997,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData72 = value;
             Assert.Equal(value, obj.KeysData72);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 73 set and get returns correct value
         /// </summary>
@@ -7009,7 +7009,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData73 = value;
             Assert.Equal(value, obj.KeysData73);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 74 set and get returns correct value
         /// </summary>
@@ -7021,7 +7021,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData74 = value;
             Assert.Equal(value, obj.KeysData74);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 75 set and get returns correct value
         /// </summary>
@@ -7033,7 +7033,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData75 = value;
             Assert.Equal(value, obj.KeysData75);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 76 set and get returns correct value
         /// </summary>
@@ -7045,7 +7045,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData76 = value;
             Assert.Equal(value, obj.KeysData76);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 77 set and get returns correct value
         /// </summary>
@@ -7057,7 +7057,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData77 = value;
             Assert.Equal(value, obj.KeysData77);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 78 set and get returns correct value
         /// </summary>
@@ -7069,7 +7069,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData78 = value;
             Assert.Equal(value, obj.KeysData78);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 79 set and get returns correct value
         /// </summary>
@@ -7081,7 +7081,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData79 = value;
             Assert.Equal(value, obj.KeysData79);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 80 set and get returns correct value
         /// </summary>
@@ -7093,7 +7093,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData80 = value;
             Assert.Equal(value, obj.KeysData80);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 81 set and get returns correct value
         /// </summary>
@@ -7105,7 +7105,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData81 = value;
             Assert.Equal(value, obj.KeysData81);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 82 set and get returns correct value
         /// </summary>
@@ -7117,7 +7117,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData82 = value;
             Assert.Equal(value, obj.KeysData82);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 83 set and get returns correct value
         /// </summary>
@@ -7129,7 +7129,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData83 = value;
             Assert.Equal(value, obj.KeysData83);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 84 set and get returns correct value
         /// </summary>
@@ -7141,7 +7141,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData84 = value;
             Assert.Equal(value, obj.KeysData84);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 85 set and get returns correct value
         /// </summary>
@@ -7153,7 +7153,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData85 = value;
             Assert.Equal(value, obj.KeysData85);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 86 set and get returns correct value
         /// </summary>
@@ -7165,7 +7165,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData86 = value;
             Assert.Equal(value, obj.KeysData86);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 87 set and get returns correct value
         /// </summary>
@@ -7177,7 +7177,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData87 = value;
             Assert.Equal(value, obj.KeysData87);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 88 set and get returns correct value
         /// </summary>
@@ -7189,7 +7189,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData88 = value;
             Assert.Equal(value, obj.KeysData88);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 89 set and get returns correct value
         /// </summary>
@@ -7201,7 +7201,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData89 = value;
             Assert.Equal(value, obj.KeysData89);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 90 set and get returns correct value
         /// </summary>
@@ -7213,7 +7213,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData90 = value;
             Assert.Equal(value, obj.KeysData90);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 91 set and get returns correct value
         /// </summary>
@@ -7225,7 +7225,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData91 = value;
             Assert.Equal(value, obj.KeysData91);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 92 set and get returns correct value
         /// </summary>
@@ -7237,7 +7237,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData92 = value;
             Assert.Equal(value, obj.KeysData92);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 93 set and get returns correct value
         /// </summary>
@@ -7249,7 +7249,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData93 = value;
             Assert.Equal(value, obj.KeysData93);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 94 set and get returns correct value
         /// </summary>
@@ -7261,7 +7261,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData94 = value;
             Assert.Equal(value, obj.KeysData94);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 95 set and get returns correct value
         /// </summary>
@@ -7273,7 +7273,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData95 = value;
             Assert.Equal(value, obj.KeysData95);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 96 set and get returns correct value
         /// </summary>
@@ -7285,7 +7285,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData96 = value;
             Assert.Equal(value, obj.KeysData96);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 97 set and get returns correct value
         /// </summary>
@@ -7297,7 +7297,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData97 = value;
             Assert.Equal(value, obj.KeysData97);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 98 set and get returns correct value
         /// </summary>
@@ -7309,7 +7309,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData98 = value;
             Assert.Equal(value, obj.KeysData98);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 99 set and get returns correct value
         /// </summary>
@@ -7321,7 +7321,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData99 = value;
             Assert.Equal(value, obj.KeysData99);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 100 set and get returns correct value
         /// </summary>
@@ -7333,7 +7333,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData100 = value;
             Assert.Equal(value, obj.KeysData100);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 101 set and get returns correct value
         /// </summary>
@@ -7345,7 +7345,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData101 = value;
             Assert.Equal(value, obj.KeysData101);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 102 set and get returns correct value
         /// </summary>
@@ -7357,7 +7357,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData102 = value;
             Assert.Equal(value, obj.KeysData102);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 103 set and get returns correct value
         /// </summary>
@@ -7369,7 +7369,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData103 = value;
             Assert.Equal(value, obj.KeysData103);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 104 set and get returns correct value
         /// </summary>
@@ -7381,7 +7381,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData104 = value;
             Assert.Equal(value, obj.KeysData104);
         }
-        
+
         /// <summary>
         ///     Tests that v 5 keys data 105 set and get returns correct value
         /// </summary>
@@ -7393,7 +7393,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData105 = value;
             Assert.Equal(value, obj.KeysData105);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 300 set and get returns correct value
         /// </summary>
@@ -7405,7 +7405,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData300 = value;
             Assert.Equal(value, obj.KeysData300);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 301 set and get returns correct value
         /// </summary>
@@ -7417,7 +7417,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData301 = value;
             Assert.Equal(value, obj.KeysData301);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 302 set and get returns correct value
         /// </summary>
@@ -7429,7 +7429,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData302 = value;
             Assert.Equal(value, obj.KeysData302);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 303 set and get returns correct value
         /// </summary>
@@ -7441,7 +7441,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData303 = value;
             Assert.Equal(value, obj.KeysData303);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 304 set and get returns correct value
         /// </summary>
@@ -7453,7 +7453,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData304 = value;
             Assert.Equal(value, obj.KeysData304);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 305 set and get returns correct value
         /// </summary>
@@ -7465,7 +7465,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData305 = value;
             Assert.Equal(value, obj.KeysData305);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 306 set and get returns correct value
         /// </summary>
@@ -7477,7 +7477,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData306 = value;
             Assert.Equal(value, obj.KeysData306);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 307 set and get returns correct value
         /// </summary>
@@ -7489,7 +7489,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData307 = value;
             Assert.Equal(value, obj.KeysData307);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 308 set and get returns correct value
         /// </summary>
@@ -7501,7 +7501,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData308 = value;
             Assert.Equal(value, obj.KeysData308);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 309 set and get returns correct value
         /// </summary>
@@ -7513,7 +7513,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData309 = value;
             Assert.Equal(value, obj.KeysData309);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 310 set and get returns correct value
         /// </summary>
@@ -7525,7 +7525,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData310 = value;
             Assert.Equal(value, obj.KeysData310);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 311 set and get returns correct value
         /// </summary>
@@ -7537,7 +7537,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData311 = value;
             Assert.Equal(value, obj.KeysData311);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 312 set and get returns correct value
         /// </summary>
@@ -7549,7 +7549,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData312 = value;
             Assert.Equal(value, obj.KeysData312);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 313 set and get returns correct value
         /// </summary>
@@ -7561,7 +7561,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData313 = value;
             Assert.Equal(value, obj.KeysData313);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 314 set and get returns correct value
         /// </summary>
@@ -7573,7 +7573,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData314 = value;
             Assert.Equal(value, obj.KeysData314);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 315 set and get returns correct value
         /// </summary>
@@ -7585,7 +7585,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData315 = value;
             Assert.Equal(value, obj.KeysData315);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 316 set and get returns correct value
         /// </summary>
@@ -7597,7 +7597,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData316 = value;
             Assert.Equal(value, obj.KeysData316);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 317 set and get returns correct value
         /// </summary>
@@ -7609,7 +7609,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData317 = value;
             Assert.Equal(value, obj.KeysData317);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 318 set and get returns correct value
         /// </summary>
@@ -7621,7 +7621,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData318 = value;
             Assert.Equal(value, obj.KeysData318);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 319 set and get returns correct value
         /// </summary>
@@ -7633,7 +7633,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData319 = value;
             Assert.Equal(value, obj.KeysData319);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 320 set and get returns correct value
         /// </summary>
@@ -7645,7 +7645,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData320 = value;
             Assert.Equal(value, obj.KeysData320);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 321 set and get returns correct value
         /// </summary>
@@ -7657,7 +7657,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData321 = value;
             Assert.Equal(value, obj.KeysData321);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 322 set and get returns correct value
         /// </summary>
@@ -7669,7 +7669,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData322 = value;
             Assert.Equal(value, obj.KeysData322);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 323 set and get returns correct value
         /// </summary>
@@ -7681,7 +7681,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData323 = value;
             Assert.Equal(value, obj.KeysData323);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 324 set and get returns correct value
         /// </summary>
@@ -7693,7 +7693,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData324 = value;
             Assert.Equal(value, obj.KeysData324);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 325 set and get returns correct value
         /// </summary>
@@ -7705,7 +7705,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData325 = value;
             Assert.Equal(value, obj.KeysData325);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 326 set and get returns correct value
         /// </summary>
@@ -7717,7 +7717,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData326 = value;
             Assert.Equal(value, obj.KeysData326);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 327 set and get returns correct value
         /// </summary>
@@ -7729,7 +7729,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData327 = value;
             Assert.Equal(value, obj.KeysData327);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 328 set and get returns correct value
         /// </summary>
@@ -7741,7 +7741,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData328 = value;
             Assert.Equal(value, obj.KeysData328);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 329 set and get returns correct value
         /// </summary>
@@ -7753,7 +7753,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData329 = value;
             Assert.Equal(value, obj.KeysData329);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 330 set and get returns correct value
         /// </summary>
@@ -7765,7 +7765,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData330 = value;
             Assert.Equal(value, obj.KeysData330);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 331 set and get returns correct value
         /// </summary>
@@ -7777,7 +7777,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData331 = value;
             Assert.Equal(value, obj.KeysData331);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 332 set and get returns correct value
         /// </summary>
@@ -7789,7 +7789,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData332 = value;
             Assert.Equal(value, obj.KeysData332);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 333 set and get returns correct value
         /// </summary>
@@ -7801,7 +7801,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData333 = value;
             Assert.Equal(value, obj.KeysData333);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 334 set and get returns correct value
         /// </summary>
@@ -7813,7 +7813,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData334 = value;
             Assert.Equal(value, obj.KeysData334);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 335 set and get returns correct value
         /// </summary>
@@ -7825,7 +7825,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData335 = value;
             Assert.Equal(value, obj.KeysData335);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 336 set and get returns correct value
         /// </summary>
@@ -7837,7 +7837,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData336 = value;
             Assert.Equal(value, obj.KeysData336);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 337 set and get returns correct value
         /// </summary>
@@ -7849,7 +7849,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData337 = value;
             Assert.Equal(value, obj.KeysData337);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 338 set and get returns correct value
         /// </summary>
@@ -7861,7 +7861,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData338 = value;
             Assert.Equal(value, obj.KeysData338);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 339 set and get returns correct value
         /// </summary>
@@ -7873,7 +7873,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData339 = value;
             Assert.Equal(value, obj.KeysData339);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 340 set and get returns correct value
         /// </summary>
@@ -7885,7 +7885,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData340 = value;
             Assert.Equal(value, obj.KeysData340);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 341 set and get returns correct value
         /// </summary>
@@ -7897,7 +7897,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData341 = value;
             Assert.Equal(value, obj.KeysData341);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 342 set and get returns correct value
         /// </summary>
@@ -7909,7 +7909,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData342 = value;
             Assert.Equal(value, obj.KeysData342);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 343 set and get returns correct value
         /// </summary>
@@ -7921,7 +7921,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData343 = value;
             Assert.Equal(value, obj.KeysData343);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 344 set and get returns correct value
         /// </summary>
@@ -7933,7 +7933,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData344 = value;
             Assert.Equal(value, obj.KeysData344);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 345 set and get returns correct value
         /// </summary>
@@ -7945,7 +7945,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData345 = value;
             Assert.Equal(value, obj.KeysData345);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 346 set and get returns correct value
         /// </summary>
@@ -7957,7 +7957,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData346 = value;
             Assert.Equal(value, obj.KeysData346);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 347 set and get returns correct value
         /// </summary>
@@ -7969,7 +7969,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData347 = value;
             Assert.Equal(value, obj.KeysData347);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 348 set and get returns correct value
         /// </summary>
@@ -7981,7 +7981,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData348 = value;
             Assert.Equal(value, obj.KeysData348);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 349 set and get returns correct value
         /// </summary>
@@ -7993,7 +7993,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData349 = value;
             Assert.Equal(value, obj.KeysData349);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 350 set and get returns correct value
         /// </summary>
@@ -8005,7 +8005,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData350 = value;
             Assert.Equal(value, obj.KeysData350);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 351 set and get returns correct value
         /// </summary>
@@ -8017,7 +8017,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData351 = value;
             Assert.Equal(value, obj.KeysData351);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 352 set and get returns correct value
         /// </summary>
@@ -8029,7 +8029,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData352 = value;
             Assert.Equal(value, obj.KeysData352);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 353 set and get returns correct value
         /// </summary>
@@ -8041,7 +8041,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData353 = value;
             Assert.Equal(value, obj.KeysData353);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 354 set and get returns correct value
         /// </summary>
@@ -8053,7 +8053,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData354 = value;
             Assert.Equal(value, obj.KeysData354);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 355 set and get returns correct value
         /// </summary>
@@ -8065,7 +8065,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData355 = value;
             Assert.Equal(value, obj.KeysData355);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 356 set and get returns correct value
         /// </summary>
@@ -8077,7 +8077,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData356 = value;
             Assert.Equal(value, obj.KeysData356);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 357 set and get returns correct value
         /// </summary>
@@ -8089,7 +8089,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData357 = value;
             Assert.Equal(value, obj.KeysData357);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 358 set and get returns correct value
         /// </summary>
@@ -8101,7 +8101,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData358 = value;
             Assert.Equal(value, obj.KeysData358);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 359 set and get returns correct value
         /// </summary>
@@ -8113,7 +8113,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData359 = value;
             Assert.Equal(value, obj.KeysData359);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 360 set and get returns correct value
         /// </summary>
@@ -8125,7 +8125,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData360 = value;
             Assert.Equal(value, obj.KeysData360);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 361 set and get returns correct value
         /// </summary>
@@ -8137,7 +8137,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData361 = value;
             Assert.Equal(value, obj.KeysData361);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 362 set and get returns correct value
         /// </summary>
@@ -8149,7 +8149,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData362 = value;
             Assert.Equal(value, obj.KeysData362);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 363 set and get returns correct value
         /// </summary>
@@ -8161,7 +8161,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData363 = value;
             Assert.Equal(value, obj.KeysData363);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 364 set and get returns correct value
         /// </summary>
@@ -8173,7 +8173,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData364 = value;
             Assert.Equal(value, obj.KeysData364);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 365 set and get returns correct value
         /// </summary>
@@ -8185,7 +8185,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData365 = value;
             Assert.Equal(value, obj.KeysData365);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 366 set and get returns correct value
         /// </summary>
@@ -8197,7 +8197,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData366 = value;
             Assert.Equal(value, obj.KeysData366);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 367 set and get returns correct value
         /// </summary>
@@ -8209,7 +8209,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData367 = value;
             Assert.Equal(value, obj.KeysData367);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 368 set and get returns correct value
         /// </summary>
@@ -8221,7 +8221,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData368 = value;
             Assert.Equal(value, obj.KeysData368);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 369 set and get returns correct value
         /// </summary>
@@ -8233,7 +8233,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData369 = value;
             Assert.Equal(value, obj.KeysData369);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 370 set and get returns correct value
         /// </summary>
@@ -8245,7 +8245,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData370 = value;
             Assert.Equal(value, obj.KeysData370);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 371 set and get returns correct value
         /// </summary>
@@ -8257,7 +8257,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData371 = value;
             Assert.Equal(value, obj.KeysData371);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 372 set and get returns correct value
         /// </summary>
@@ -8269,7 +8269,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData372 = value;
             Assert.Equal(value, obj.KeysData372);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 373 set and get returns correct value
         /// </summary>
@@ -8281,7 +8281,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData373 = value;
             Assert.Equal(value, obj.KeysData373);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 374 set and get returns correct value
         /// </summary>
@@ -8293,7 +8293,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData374 = value;
             Assert.Equal(value, obj.KeysData374);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 375 set and get returns correct value
         /// </summary>
@@ -8305,7 +8305,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData375 = value;
             Assert.Equal(value, obj.KeysData375);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 376 set and get returns correct value
         /// </summary>
@@ -8317,7 +8317,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData376 = value;
             Assert.Equal(value, obj.KeysData376);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 377 set and get returns correct value
         /// </summary>
@@ -8329,7 +8329,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData377 = value;
             Assert.Equal(value, obj.KeysData377);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 378 set and get returns correct value
         /// </summary>
@@ -8341,7 +8341,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData378 = value;
             Assert.Equal(value, obj.KeysData378);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 379 set and get returns correct value
         /// </summary>
@@ -8353,7 +8353,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData379 = value;
             Assert.Equal(value, obj.KeysData379);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 380 set and get returns correct value
         /// </summary>
@@ -8365,7 +8365,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData380 = value;
             Assert.Equal(value, obj.KeysData380);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 381 set and get returns correct value
         /// </summary>
@@ -8377,7 +8377,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData381 = value;
             Assert.Equal(value, obj.KeysData381);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 382 set and get returns correct value
         /// </summary>
@@ -8389,7 +8389,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData382 = value;
             Assert.Equal(value, obj.KeysData382);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 383 set and get returns correct value
         /// </summary>
@@ -8401,7 +8401,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData383 = value;
             Assert.Equal(value, obj.KeysData383);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 384 set and get returns correct value
         /// </summary>
@@ -8413,7 +8413,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData384 = value;
             Assert.Equal(value, obj.KeysData384);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 385 set and get returns correct value
         /// </summary>
@@ -8425,7 +8425,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData385 = value;
             Assert.Equal(value, obj.KeysData385);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 386 set and get returns correct value
         /// </summary>
@@ -8437,7 +8437,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData386 = value;
             Assert.Equal(value, obj.KeysData386);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 387 set and get returns correct value
         /// </summary>
@@ -8449,7 +8449,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData387 = value;
             Assert.Equal(value, obj.KeysData387);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 388 set and get returns correct value
         /// </summary>
@@ -8461,7 +8461,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData388 = value;
             Assert.Equal(value, obj.KeysData388);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 389 set and get returns correct value
         /// </summary>
@@ -8473,7 +8473,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData389 = value;
             Assert.Equal(value, obj.KeysData389);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 390 set and get returns correct value
         /// </summary>
@@ -8485,7 +8485,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData390 = value;
             Assert.Equal(value, obj.KeysData390);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 391 set and get returns correct value
         /// </summary>
@@ -8497,7 +8497,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData391 = value;
             Assert.Equal(value, obj.KeysData391);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 392 set and get returns correct value
         /// </summary>
@@ -8509,7 +8509,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData392 = value;
             Assert.Equal(value, obj.KeysData392);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 393 set and get returns correct value
         /// </summary>
@@ -8521,7 +8521,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData393 = value;
             Assert.Equal(value, obj.KeysData393);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 394 set and get returns correct value
         /// </summary>
@@ -8533,7 +8533,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData394 = value;
             Assert.Equal(value, obj.KeysData394);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 395 set and get returns correct value
         /// </summary>
@@ -8545,7 +8545,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData395 = value;
             Assert.Equal(value, obj.KeysData395);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 396 set and get returns correct value
         /// </summary>
@@ -8557,7 +8557,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData396 = value;
             Assert.Equal(value, obj.KeysData396);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 397 set and get returns correct value
         /// </summary>
@@ -8569,7 +8569,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData397 = value;
             Assert.Equal(value, obj.KeysData397);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 398 set and get returns correct value
         /// </summary>
@@ -8581,7 +8581,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData398 = value;
             Assert.Equal(value, obj.KeysData398);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 399 set and get returns correct value
         /// </summary>
@@ -8593,7 +8593,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData399 = value;
             Assert.Equal(value, obj.KeysData399);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 200 set and get returns correct value
         /// </summary>
@@ -8605,7 +8605,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData200 = value;
             Assert.Equal(value, obj.KeysData200);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 201 set and get returns correct value
         /// </summary>
@@ -8617,7 +8617,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData201 = value;
             Assert.Equal(value, obj.KeysData201);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 202 set and get returns correct value
         /// </summary>
@@ -8629,7 +8629,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData202 = value;
             Assert.Equal(value, obj.KeysData202);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 203 set and get returns correct value
         /// </summary>
@@ -8641,7 +8641,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData203 = value;
             Assert.Equal(value, obj.KeysData203);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 204 set and get returns correct value
         /// </summary>
@@ -8653,7 +8653,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData204 = value;
             Assert.Equal(value, obj.KeysData204);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 205 set and get returns correct value
         /// </summary>
@@ -8665,7 +8665,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData205 = value;
             Assert.Equal(value, obj.KeysData205);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 206 set and get returns correct value
         /// </summary>
@@ -8677,7 +8677,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData206 = value;
             Assert.Equal(value, obj.KeysData206);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 207 set and get returns correct value
         /// </summary>
@@ -8689,7 +8689,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData207 = value;
             Assert.Equal(value, obj.KeysData207);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 208 set and get returns correct value
         /// </summary>
@@ -8701,7 +8701,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData208 = value;
             Assert.Equal(value, obj.KeysData208);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 209 set and get returns correct value
         /// </summary>
@@ -8713,7 +8713,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData209 = value;
             Assert.Equal(value, obj.KeysData209);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 210 set and get returns correct value
         /// </summary>
@@ -8725,7 +8725,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData210 = value;
             Assert.Equal(value, obj.KeysData210);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 211 set and get returns correct value
         /// </summary>
@@ -8737,7 +8737,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData211 = value;
             Assert.Equal(value, obj.KeysData211);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 212 set and get returns correct value
         /// </summary>
@@ -8749,7 +8749,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData212 = value;
             Assert.Equal(value, obj.KeysData212);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 213 set and get returns correct value
         /// </summary>
@@ -8761,7 +8761,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData213 = value;
             Assert.Equal(value, obj.KeysData213);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 214 set and get returns correct value
         /// </summary>
@@ -8773,7 +8773,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData214 = value;
             Assert.Equal(value, obj.KeysData214);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 215 set and get returns correct value
         /// </summary>
@@ -8785,7 +8785,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData215 = value;
             Assert.Equal(value, obj.KeysData215);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 216 set and get returns correct value
         /// </summary>
@@ -8797,7 +8797,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData216 = value;
             Assert.Equal(value, obj.KeysData216);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 217 set and get returns correct value
         /// </summary>
@@ -8809,7 +8809,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData217 = value;
             Assert.Equal(value, obj.KeysData217);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 218 set and get returns correct value
         /// </summary>
@@ -8821,7 +8821,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData218 = value;
             Assert.Equal(value, obj.KeysData218);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 219 set and get returns correct value
         /// </summary>
@@ -8833,7 +8833,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData219 = value;
             Assert.Equal(value, obj.KeysData219);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 220 set and get returns correct value
         /// </summary>
@@ -8845,7 +8845,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData220 = value;
             Assert.Equal(value, obj.KeysData220);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 221 set and get returns correct value
         /// </summary>
@@ -8857,7 +8857,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData221 = value;
             Assert.Equal(value, obj.KeysData221);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 222 set and get returns correct value
         /// </summary>
@@ -8869,7 +8869,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData222 = value;
             Assert.Equal(value, obj.KeysData222);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 223 set and get returns correct value
         /// </summary>
@@ -8881,7 +8881,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData223 = value;
             Assert.Equal(value, obj.KeysData223);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 224 set and get returns correct value
         /// </summary>
@@ -8893,7 +8893,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData224 = value;
             Assert.Equal(value, obj.KeysData224);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 225 set and get returns correct value
         /// </summary>
@@ -8905,7 +8905,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData225 = value;
             Assert.Equal(value, obj.KeysData225);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 226 set and get returns correct value
         /// </summary>
@@ -8917,7 +8917,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData226 = value;
             Assert.Equal(value, obj.KeysData226);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 227 set and get returns correct value
         /// </summary>
@@ -8929,7 +8929,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData227 = value;
             Assert.Equal(value, obj.KeysData227);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 228 set and get returns correct value
         /// </summary>
@@ -8941,7 +8941,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData228 = value;
             Assert.Equal(value, obj.KeysData228);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 229 set and get returns correct value
         /// </summary>
@@ -8953,7 +8953,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData229 = value;
             Assert.Equal(value, obj.KeysData229);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 230 set and get returns correct value
         /// </summary>
@@ -8965,7 +8965,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData230 = value;
             Assert.Equal(value, obj.KeysData230);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 231 set and get returns correct value
         /// </summary>
@@ -8977,7 +8977,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData231 = value;
             Assert.Equal(value, obj.KeysData231);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 232 set and get returns correct value
         /// </summary>
@@ -8989,7 +8989,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData232 = value;
             Assert.Equal(value, obj.KeysData232);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 233 set and get returns correct value
         /// </summary>
@@ -9001,7 +9001,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData233 = value;
             Assert.Equal(value, obj.KeysData233);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 234 set and get returns correct value
         /// </summary>
@@ -9013,7 +9013,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData234 = value;
             Assert.Equal(value, obj.KeysData234);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 235 set and get returns correct value
         /// </summary>
@@ -9025,7 +9025,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData235 = value;
             Assert.Equal(value, obj.KeysData235);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 236 set and get returns correct value
         /// </summary>
@@ -9037,7 +9037,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData236 = value;
             Assert.Equal(value, obj.KeysData236);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 237 set and get returns correct value
         /// </summary>
@@ -9049,7 +9049,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData237 = value;
             Assert.Equal(value, obj.KeysData237);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 238 set and get returns correct value
         /// </summary>
@@ -9061,7 +9061,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData238 = value;
             Assert.Equal(value, obj.KeysData238);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 239 set and get returns correct value
         /// </summary>
@@ -9073,7 +9073,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData239 = value;
             Assert.Equal(value, obj.KeysData239);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 240 set and get returns correct value
         /// </summary>
@@ -9085,7 +9085,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData240 = value;
             Assert.Equal(value, obj.KeysData240);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 241 set and get returns correct value
         /// </summary>
@@ -9097,7 +9097,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData241 = value;
             Assert.Equal(value, obj.KeysData241);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 242 set and get returns correct value
         /// </summary>
@@ -9109,7 +9109,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData242 = value;
             Assert.Equal(value, obj.KeysData242);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 243 set and get returns correct value
         /// </summary>
@@ -9121,7 +9121,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData243 = value;
             Assert.Equal(value, obj.KeysData243);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 244 set and get returns correct value
         /// </summary>
@@ -9133,7 +9133,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData244 = value;
             Assert.Equal(value, obj.KeysData244);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 245 set and get returns correct value
         /// </summary>
@@ -9145,7 +9145,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData245 = value;
             Assert.Equal(value, obj.KeysData245);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 246 set and get returns correct value
         /// </summary>
@@ -9157,7 +9157,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData246 = value;
             Assert.Equal(value, obj.KeysData246);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 247 set and get returns correct value
         /// </summary>
@@ -9169,7 +9169,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData247 = value;
             Assert.Equal(value, obj.KeysData247);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 248 set and get returns correct value
         /// </summary>
@@ -9181,7 +9181,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData248 = value;
             Assert.Equal(value, obj.KeysData248);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 249 set and get returns correct value
         /// </summary>
@@ -9193,7 +9193,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData249 = value;
             Assert.Equal(value, obj.KeysData249);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 250 set and get returns correct value
         /// </summary>
@@ -9205,7 +9205,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData250 = value;
             Assert.Equal(value, obj.KeysData250);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 251 set and get returns correct value
         /// </summary>
@@ -9217,7 +9217,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData251 = value;
             Assert.Equal(value, obj.KeysData251);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 252 set and get returns correct value
         /// </summary>
@@ -9229,7 +9229,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData252 = value;
             Assert.Equal(value, obj.KeysData252);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 253 set and get returns correct value
         /// </summary>
@@ -9241,7 +9241,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData253 = value;
             Assert.Equal(value, obj.KeysData253);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 254 set and get returns correct value
         /// </summary>
@@ -9253,7 +9253,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData254 = value;
             Assert.Equal(value, obj.KeysData254);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 255 set and get returns correct value
         /// </summary>
@@ -9265,7 +9265,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData255 = value;
             Assert.Equal(value, obj.KeysData255);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 256 set and get returns correct value
         /// </summary>
@@ -9277,7 +9277,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData256 = value;
             Assert.Equal(value, obj.KeysData256);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 257 set and get returns correct value
         /// </summary>
@@ -9289,7 +9289,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData257 = value;
             Assert.Equal(value, obj.KeysData257);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 258 set and get returns correct value
         /// </summary>
@@ -9301,7 +9301,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData258 = value;
             Assert.Equal(value, obj.KeysData258);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 259 set and get returns correct value
         /// </summary>
@@ -9313,7 +9313,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData259 = value;
             Assert.Equal(value, obj.KeysData259);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 260 set and get returns correct value
         /// </summary>
@@ -9325,7 +9325,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData260 = value;
             Assert.Equal(value, obj.KeysData260);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 261 set and get returns correct value
         /// </summary>
@@ -9337,7 +9337,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData261 = value;
             Assert.Equal(value, obj.KeysData261);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 262 set and get returns correct value
         /// </summary>
@@ -9349,7 +9349,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData262 = value;
             Assert.Equal(value, obj.KeysData262);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 263 set and get returns correct value
         /// </summary>
@@ -9361,7 +9361,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData263 = value;
             Assert.Equal(value, obj.KeysData263);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 264 set and get returns correct value
         /// </summary>
@@ -9373,7 +9373,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData264 = value;
             Assert.Equal(value, obj.KeysData264);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 265 set and get returns correct value
         /// </summary>
@@ -9385,7 +9385,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData265 = value;
             Assert.Equal(value, obj.KeysData265);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 266 set and get returns correct value
         /// </summary>
@@ -9397,7 +9397,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData266 = value;
             Assert.Equal(value, obj.KeysData266);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 267 set and get returns correct value
         /// </summary>
@@ -9409,7 +9409,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData267 = value;
             Assert.Equal(value, obj.KeysData267);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 181 set and get returns correct value
         /// </summary>
@@ -9421,7 +9421,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData181 = value;
             Assert.Equal(value, obj.KeysData181);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 182 set and get returns correct value
         /// </summary>
@@ -9433,7 +9433,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData182 = value;
             Assert.Equal(value, obj.KeysData182);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 183 set and get returns correct value
         /// </summary>
@@ -9445,7 +9445,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData183 = value;
             Assert.Equal(value, obj.KeysData183);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 184 set and get returns correct value
         /// </summary>
@@ -9457,7 +9457,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData184 = value;
             Assert.Equal(value, obj.KeysData184);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 185 set and get returns correct value
         /// </summary>
@@ -9469,7 +9469,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData185 = value;
             Assert.Equal(value, obj.KeysData185);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 186 set and get returns correct value
         /// </summary>
@@ -9481,7 +9481,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData186 = value;
             Assert.Equal(value, obj.KeysData186);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 187 set and get returns correct value
         /// </summary>
@@ -9493,7 +9493,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData187 = value;
             Assert.Equal(value, obj.KeysData187);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 188 set and get returns correct value
         /// </summary>
@@ -9505,7 +9505,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData188 = value;
             Assert.Equal(value, obj.KeysData188);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 189 set and get returns correct value
         /// </summary>
@@ -9517,7 +9517,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData189 = value;
             Assert.Equal(value, obj.KeysData189);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 190 set and get returns correct value
         /// </summary>
@@ -9529,7 +9529,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData190 = value;
             Assert.Equal(value, obj.KeysData190);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 191 set and get returns correct value
         /// </summary>
@@ -9541,7 +9541,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData191 = value;
             Assert.Equal(value, obj.KeysData191);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 192 set and get returns correct value
         /// </summary>
@@ -9553,7 +9553,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData192 = value;
             Assert.Equal(value, obj.KeysData192);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 193 set and get returns correct value
         /// </summary>
@@ -9565,7 +9565,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData193 = value;
             Assert.Equal(value, obj.KeysData193);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 194 set and get returns correct value
         /// </summary>
@@ -9577,7 +9577,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData194 = value;
             Assert.Equal(value, obj.KeysData194);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 195 set and get returns correct value
         /// </summary>
@@ -9589,7 +9589,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData195 = value;
             Assert.Equal(value, obj.KeysData195);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 196 set and get returns correct value
         /// </summary>
@@ -9601,7 +9601,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData196 = value;
             Assert.Equal(value, obj.KeysData196);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 197 set and get returns correct value
         /// </summary>
@@ -9613,7 +9613,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData197 = value;
             Assert.Equal(value, obj.KeysData197);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 198 set and get returns correct value
         /// </summary>
@@ -9625,7 +9625,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData198 = value;
             Assert.Equal(value, obj.KeysData198);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 199 set and get returns correct value
         /// </summary>
@@ -9637,7 +9637,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData199 = value;
             Assert.Equal(value, obj.KeysData199);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 268 set and get returns correct value
         /// </summary>
@@ -9649,7 +9649,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData268 = value;
             Assert.Equal(value, obj.KeysData268);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 269 set and get returns correct value
         /// </summary>
@@ -9661,7 +9661,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData269 = value;
             Assert.Equal(value, obj.KeysData269);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 270 set and get returns correct value
         /// </summary>
@@ -9673,7 +9673,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData270 = value;
             Assert.Equal(value, obj.KeysData270);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 271 set and get returns correct value
         /// </summary>
@@ -9685,7 +9685,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData271 = value;
             Assert.Equal(value, obj.KeysData271);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 272 set and get returns correct value
         /// </summary>
@@ -9697,7 +9697,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData272 = value;
             Assert.Equal(value, obj.KeysData272);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 273 set and get returns correct value
         /// </summary>
@@ -9709,7 +9709,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData273 = value;
             Assert.Equal(value, obj.KeysData273);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 274 set and get returns correct value
         /// </summary>
@@ -9721,7 +9721,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData274 = value;
             Assert.Equal(value, obj.KeysData274);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 275 set and get returns correct value
         /// </summary>
@@ -9733,7 +9733,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData275 = value;
             Assert.Equal(value, obj.KeysData275);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 276 set and get returns correct value
         /// </summary>
@@ -9745,7 +9745,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData276 = value;
             Assert.Equal(value, obj.KeysData276);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 277 set and get returns correct value
         /// </summary>
@@ -9757,7 +9757,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData277 = value;
             Assert.Equal(value, obj.KeysData277);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 278 set and get returns correct value
         /// </summary>
@@ -9769,7 +9769,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData278 = value;
             Assert.Equal(value, obj.KeysData278);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 279 set and get returns correct value
         /// </summary>
@@ -9781,7 +9781,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData279 = value;
             Assert.Equal(value, obj.KeysData279);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 280 set and get returns correct value
         /// </summary>
@@ -9793,7 +9793,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData280 = value;
             Assert.Equal(value, obj.KeysData280);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 281 set and get returns correct value
         /// </summary>
@@ -9805,7 +9805,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData281 = value;
             Assert.Equal(value, obj.KeysData281);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 282 set and get returns correct value
         /// </summary>
@@ -9817,7 +9817,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData282 = value;
             Assert.Equal(value, obj.KeysData282);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 283 set and get returns correct value
         /// </summary>
@@ -9829,7 +9829,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData283 = value;
             Assert.Equal(value, obj.KeysData283);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 284 set and get returns correct value
         /// </summary>
@@ -9841,7 +9841,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData284 = value;
             Assert.Equal(value, obj.KeysData284);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 285 set and get returns correct value
         /// </summary>
@@ -9853,7 +9853,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData285 = value;
             Assert.Equal(value, obj.KeysData285);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 286 set and get returns correct value
         /// </summary>
@@ -9865,7 +9865,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData286 = value;
             Assert.Equal(value, obj.KeysData286);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 287 set and get returns correct value
         /// </summary>
@@ -9877,7 +9877,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData287 = value;
             Assert.Equal(value, obj.KeysData287);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 288 set and get returns correct value
         /// </summary>
@@ -9889,7 +9889,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData288 = value;
             Assert.Equal(value, obj.KeysData288);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 289 set and get returns correct value
         /// </summary>
@@ -9901,7 +9901,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData289 = value;
             Assert.Equal(value, obj.KeysData289);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 290 set and get returns correct value
         /// </summary>
@@ -9913,7 +9913,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData290 = value;
             Assert.Equal(value, obj.KeysData290);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 291 set and get returns correct value
         /// </summary>
@@ -9925,7 +9925,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData291 = value;
             Assert.Equal(value, obj.KeysData291);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 292 set and get returns correct value
         /// </summary>
@@ -9937,7 +9937,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData292 = value;
             Assert.Equal(value, obj.KeysData292);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 293 set and get returns correct value
         /// </summary>
@@ -9949,7 +9949,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData293 = value;
             Assert.Equal(value, obj.KeysData293);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 294 set and get returns correct value
         /// </summary>
@@ -9961,7 +9961,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData294 = value;
             Assert.Equal(value, obj.KeysData294);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 295 set and get returns correct value
         /// </summary>
@@ -9973,7 +9973,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData295 = value;
             Assert.Equal(value, obj.KeysData295);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 296 set and get returns correct value
         /// </summary>
@@ -9985,7 +9985,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData296 = value;
             Assert.Equal(value, obj.KeysData296);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 297 set and get returns correct value
         /// </summary>
@@ -9997,7 +9997,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData297 = value;
             Assert.Equal(value, obj.KeysData297);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 298 set and get returns correct value
         /// </summary>
@@ -10009,7 +10009,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeysData298 = value;
             Assert.Equal(value, obj.KeysData298);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 299 set and get returns correct value
         /// </summary>
