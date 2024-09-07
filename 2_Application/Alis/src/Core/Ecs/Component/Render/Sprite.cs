@@ -158,14 +158,15 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public override void OnExit()
         {
-           
+            Context.GraphicManager.UnAttach(this);
         }
 
-        public void Render(IntPtr renderer, Vector2 cameraPosition, Vector2 cameraResolution, float pixelsPerMeter)
+       public void Render(IntPtr renderer, Vector2 cameraPosition, Vector2 cameraResolution, float pixelsPerMeter)
         {
             Vector2 spritePosition = GameObject.Transform.Position;
             Vector2 spriteSize = Image.Size;
             Vector2 spriteScale = GameObject.Transform.Scale;
+            float spriteRotation = GameObject.Transform.Rotation;
 
             float spritePosX = spritePosition.X * pixelsPerMeter;
             float spritePosY = spritePosition.Y * pixelsPerMeter;
@@ -184,7 +185,7 @@ namespace Alis.Core.Ecs.Component.Render
                 H = scaledHeight
             };
 
-            Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref Rectangle, 0, IntPtr.Zero, RendererFlips.FlipVertical);
+            Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref Rectangle, spriteRotation, IntPtr.Zero, RendererFlips.FlipVertical);
         }
       
         public bool IsVisible(Vector2 cameraPosition, Vector2 cameraResolution, float pixelsPerMeter)
@@ -207,5 +208,6 @@ namespace Alis.Core.Ecs.Component.Render
 
             return spriteRight > cameraLeft && spriteLeft < cameraRight && spriteBottom > cameraTop && spriteTop < cameraBottom;
         }
+        
     }
 }
