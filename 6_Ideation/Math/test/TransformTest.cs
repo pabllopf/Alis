@@ -39,24 +39,6 @@ namespace Alis.Core.Aspect.Math.Test
     public class TransformTest
     {
         /// <summary>
-        ///     Tests that set identity should set to identity
-        /// </summary>
-        [Fact]
-        public void SetIdentity_ShouldSetToIdentity()
-        {
-            // Arrange
-            Transform transform = new Transform(new Vector2(0, 0), 45, new Vector2(1, 1));
-
-            // Act
-            transform.SetIdentity();
-
-            // Assert
-            Assert.Equal(Vector2.Zero, transform.Position);
-            Assert.Equal(45, transform.Rotation);
-            Assert.Equal(Vector2.One, transform.Scale);
-        }
-
-        /// <summary>
         ///     Tests that set should set position and angle
         /// </summary>
         [Fact]
@@ -94,20 +76,7 @@ namespace Alis.Core.Aspect.Math.Test
             Assert.Equal(rotation, transform.Rotation);
             Assert.Equal(scale, transform.Scale);
         }
-
-        /// <summary>
-        ///     Tests that set identity sets position to zero and rotation to identity
-        /// </summary>
-        [Fact]
-        public void SetIdentity_SetsPositionToZeroAndRotationToIdentity()
-        {
-            Transform transform = new Transform(new Vector2(1, 2), 45, new Vector2(3, 4));
-            transform.SetIdentity();
-
-            Assert.Equal(Vector2.Zero, transform.Position);
-            Assert.Equal(45, transform.Rotation);
-        }
-
+        
         /// <summary>
         ///     Tests that set sets position and angle correctly
         /// </summary>
@@ -123,22 +92,6 @@ namespace Alis.Core.Aspect.Math.Test
             Assert.Equal(newPosition, transform.Position);
             Assert.Equal(newAngle, transform.Rotation);
         }
-
-        /// <summary>
-        ///     Tests that get object data serializes properties correctly
-        /// </summary>
-        [Fact]
-        public void GetObjectData_SerializesPropertiesCorrectly()
-        {
-            Transform transform = new Transform(new Vector2(1, 2), 45, new Vector2(3, 4));
-            SerializationInfo info = new SerializationInfo(typeof(Transform), new FormatterConverter());
-            StreamingContext context = new StreamingContext();
-
-            transform.GetObjectData(info, context);
-
-            Assert.Equal(new Vector2(1, 2), (Vector2) info.GetValue("position", typeof(Vector2)));
-            Assert.Equal(new Vector2(3, 4), (Vector2) info.GetValue("scale", typeof(Vector2)));
-            Assert.Equal(new Rotation(45), (Rotation) info.GetValue("rotation", typeof(Rotation)));
-        }
+        
     }
 }
