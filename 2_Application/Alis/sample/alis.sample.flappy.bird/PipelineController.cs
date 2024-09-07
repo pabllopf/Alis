@@ -76,7 +76,7 @@ namespace Alis.Sample.Flappy.Bird
         /// <summary>
         ///     The factor velocity
         /// </summary>
-        private float factorVelocity = 1.1f;
+        private float factorVelocity = 0.5f;
 
         /// <summary>
         ///     The pos origin
@@ -108,7 +108,7 @@ namespace Alis.Sample.Flappy.Bird
                 randomGenerator.GetBytes(data);
             }
 
-            _randomHeight = Math.Abs(BitConverter.ToInt32(data, 0) % 100);
+            _randomHeight = RandomNumberGenerator.GetInt32(0, 3);
             _randomDirection = Math.Abs(BitConverter.ToInt32(data, 4) % 2);
             Logger.Info($"{GameObject.Name} NUM={_randomHeight} Direction={_randomDirection}");
 
@@ -129,12 +129,12 @@ namespace Alis.Sample.Flappy.Bird
                 return;
             }
 
-            if ((GameObject.Transform.Position.X <= -27) && !IsStop)
+            if ((GameObject.Transform.Position.X <= -5) && !IsStop)
             {
                 if (!_generated)
                 {
                     _generated = true;
-                    _randomHeight = Math.Abs(BitConverter.ToInt32(data, 0) % 100);
+                    _randomHeight = RandomNumberGenerator.GetInt32(0, 3);
                     _randomDirection = Math.Abs(BitConverter.ToInt32(data, 4) % 2);
                     Logger.Info($"{GameObject.Name} NUM={_randomHeight} Direction={_randomDirection} velocity={Velocity}");
                 }

@@ -339,7 +339,7 @@ namespace Alis.Sample.Flappy.Bird
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Pipeline UP")
                             .Transform(transform => transform
-                                .Position(0, 6f)
+                                .Position(6, 7f)
                                 .Rotation(180)
                                 .Scale(1f, 1f)
                                 .Build())
@@ -363,7 +363,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .FixedRotation(true)
                                 .IgnoreGravity(false)
                                 .Build())
-                            //.AddComponent(new PipelineController())
+                            .AddComponent(new PipelineController())
                             //.AddComponent(new DeathZone())
                             .Build())
 
@@ -373,7 +373,7 @@ namespace Alis.Sample.Flappy.Bird
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Pipeline Middle")
                             .Transform(transform => transform
-                                .Position(330, 225)
+                                .Position(6, 0)
                                 .Rotation(0)
                                 .Scale(1f, 1.0f)
                                 .Build())
@@ -383,7 +383,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .BodyType(BodyType.Kinematic)
                                 .IsTrigger(true)
                                 .AutoTilling(false)
-                                .Size(50, 100)
+                                .Size(2, 2)
                                 .Rotation(0.0f)
                                 .RelativePosition(0, 0)
                                 .Mass(10.0f)
@@ -399,8 +399,8 @@ namespace Alis.Sample.Flappy.Bird
                                     .FilePath("point.wav")
                                     .Build())
                                 .Build())
-                            //.AddComponent(new PipelineController())
-                            //.AddComponent(new CounterController())
+                            .AddComponent(new PipelineController())
+                            .AddComponent(new CounterController())
                             .Build())
 
                         ////////////////////////////////////////
@@ -409,7 +409,7 @@ namespace Alis.Sample.Flappy.Bird
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Pipeline Down")
                             .Transform(transform => transform
-                                .Position(0, -6.0f)
+                                .Position(6, -7.0f)
                                 .Rotation(0)
                                 .Scale(1f, 1f)
                                 .Build())
@@ -433,7 +433,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .FixedRotation(true)
                                 .IgnoreGravity(true)
                                 .Build())
-                            //.AddComponent(new PipelineController())
+                            .AddComponent(new PipelineController())
                             //.AddComponent(new DeathZone())
                             .Build())
 

@@ -30,13 +30,16 @@
 using System;
 using Alis.Builder.Core.Ecs.Component.Collider;
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component.Render;
+using Alis.Core.Ecs.Entity;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Physic.Dynamics;
+using Alis.Core.Physic.Dynamics.Contacts;
 
 namespace Alis.Core.Ecs.Component.Collider
 {
@@ -162,6 +165,41 @@ namespace Alis.Core.Ecs.Component.Collider
             Body.SetIsSensor(IsTrigger);
             Body.Tag = GameObject;
             Context.GraphicManager.Attach(this);
+            
+            Body.OnCollision += OnCollision;
+            Body.OnSeparation += OnSeparation;
+        }
+
+        private bool OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
+        {
+            GameObject fixtureGameObject = (GameObject) fixtureA.Body.Tag;
+            GameObject fixtureBGameObject = (GameObject) fixtureB.Body.Tag;
+
+            if (fixtureGameObject.Equals(GameObject) && fixtureBGameObject.Contains<BoxCollider>())
+            {
+                fixtureBGameObject.Components.ForEach(i => i.OnCollisionEnter(GameObject));
+            }
+            else if (fixtureBGameObject.Equals(GameObject) && fixtureGameObject.Contains<BoxCollider>())
+            {
+                fixtureGameObject.Components.ForEach(i => i.OnCollisionEnter(GameObject));
+            }
+            
+            return true;
+        }
+
+        private void OnSeparation(Fixture fixtureA, Fixture fixtureB, Contact contact)
+        {
+            GameObject fixtureGameObject = (GameObject) fixtureA.Body.Tag;
+            GameObject fixtureBGameObject = (GameObject) fixtureB.Body.Tag;
+
+            if (fixtureGameObject.Equals(GameObject) && fixtureBGameObject.Contains<BoxCollider>())
+            {
+                fixtureBGameObject.Components.ForEach(i => i.OnCollisionExit(GameObject));
+            }
+            else if (fixtureBGameObject.Equals(GameObject) && fixtureGameObject.Contains<BoxCollider>())
+            {
+                fixtureGameObject.Components.ForEach(i => i.OnCollisionExit(GameObject));
+            }
         }
 
         /// <summary>
@@ -184,8 +222,7 @@ namespace Alis.Core.Ecs.Component.Collider
         /// </summary>
         public override void OnUpdate()
         {
-            GameObject.Transform.Position = new Vector2(Body.Position.X, Body.Position.Y);
-            GameObject.Transform.Rotation = Body.Rotation;
+            GameObject.Transform = new Transform(Body.Position, Body.Rotation, GameObject.Transform.Scale);
 
             // If the collider contains a camera, update the camera position
             if (GameObject.Contains<Camera>())
