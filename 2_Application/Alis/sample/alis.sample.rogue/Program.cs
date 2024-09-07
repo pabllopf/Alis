@@ -114,7 +114,7 @@ namespace Alis.Sample.Rogue
                             .Name("tree-001")
                             .IsStatic()
                             .Transform(transform => transform
-                                .Position(100, 100)
+                                .Position(2, 2)
                                 .Scale(2, 2)
                                 .Rotation(0)
                                 .Build())
@@ -128,7 +128,7 @@ namespace Alis.Sample.Rogue
                             .Name("tree-002")
                             .IsStatic()
                             .Transform(transform => transform
-                                .Position(400, 400)
+                                .Position(4, 4)
                                 .Scale(2, 2)
                                 .Rotation(0)
                                 .Build())
@@ -140,7 +140,7 @@ namespace Alis.Sample.Rogue
                             .Name("tree-001")
                             .IsStatic()
                             .Transform(transform => transform
-                                .Position(-100, -100)
+                                .Position(-1, -1)
                                 .Scale(2, 2)
                                 .Rotation(0)
                                 .Build())
@@ -152,7 +152,7 @@ namespace Alis.Sample.Rogue
                             .Name("tree-001")
                             .IsStatic()
                             .Transform(transform => transform
-                                .Position(-200, -200)
+                                .Position(-2, -2)
                                 .Scale(2, 2)
                                 .Rotation(0)
                                 .Build())

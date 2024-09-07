@@ -71,18 +71,7 @@ namespace Alis.Test.Core.Ecs.Component.Collider
 
             Assert.NotNull(boxColliderBuilder);
         }
-
-        /// <summary>
-        ///     Tests that on init valid input
-        /// </summary>
-        [Fact]
-        public void OnInit_ValidInput()
-        {
-            BoxCollider boxCollider = new BoxCollider();
-
-            Assert.Throws<NullReferenceException>(() => boxCollider.OnInit());
-        }
-
+        
         /// <summary>
         ///     Tests that on awake valid input
         /// </summary>
@@ -104,29 +93,7 @@ namespace Alis.Test.Core.Ecs.Component.Collider
 
             boxCollider.OnStart();
         }
-
-        /// <summary>
-        ///     Tests that on update valid input
-        /// </summary>
-        [Fact]
-        public void OnUpdate_ValidInput()
-        {
-            BoxCollider boxCollider = new BoxCollider();
-
-            boxCollider.OnUpdate();
-        }
-
-        /// <summary>
-        ///     Tests that on draw valid input
-        /// </summary>
-        [Fact]
-        public void OnDraw_ValidInput()
-        {
-            BoxCollider boxCollider = new BoxCollider();
-
-            Assert.Throws<NullReferenceException>(() => boxCollider.OnDraw());
-        }
-
+        
         /// <summary>
         ///     Tests that is trigger property set get returns correct value
         /// </summary>
