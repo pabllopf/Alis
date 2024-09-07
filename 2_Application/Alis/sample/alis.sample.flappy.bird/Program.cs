@@ -71,7 +71,7 @@ namespace Alis.Sample.Flappy.Bird
                             .Build())
                         .Build())
                     .Physic(physic => physic
-                        .Debug(false)
+                        .Debug(true)
                         .DebugColor(Color.Red)
                         .Gravity(0.0f, -9.8f)
                         .Build())
@@ -141,7 +141,7 @@ namespace Alis.Sample.Flappy.Bird
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Message Menu")
                             .Transform(transform => transform
-                                .Position(-0.1f, 1f)
+                                .Position(-0.15f, 1.5f)
                                 .Rotation(0)
                                 .Scale(1f, 1f)
                                 .Build())
@@ -171,7 +171,7 @@ namespace Alis.Sample.Flappy.Bird
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Bird")
                             .Transform(transform => transform
-                                .Position(-1.5f, -0.5f)
+                                .Position(-1.5f, 0f)
                                 .Rotation(0)
                                 .Scale(1f, 1.0f)
                                 .Build())
@@ -260,21 +260,21 @@ namespace Alis.Sample.Flappy.Bird
                             .AddComponent<Sprite>(sprite => sprite
                                 .Builder()
                                 .SetTexture("base.bmp")
-                                .Depth(1)
+                                .Depth(2)
                                 .Build())
                             .AddComponent(new FloorAnimation())
                             .Build())
                         
-                        /*
+                        
                         ////////////////////////////////////////
                         // GAME SCENE: FLOOR COLLISION
                         ////////////////////////////////////////
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Floor Collision")
                             .Transform(transform => transform
-                                .Position(100, 475)
+                                .Position(0, -6.5f)
                                 .Rotation(0)
-                                .Scale(1.5f, 1.0f)
+                                .Scale(1f, 1f)
                                 .Build())
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
@@ -282,7 +282,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .BodyType(BodyType.Kinematic)
                                 .IsTrigger(false)
                                 .AutoTilling(false)
-                                .Size(290, 150)
+                                .Size(9, 3.5f)
                                 .Rotation(0.0f)
                                 .RelativePosition(0, 0)
                                 .Mass(10.0f)
@@ -291,7 +291,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .FixedRotation(true)
                                 .IgnoreGravity(false)
                                 .Build())
-                            .AddComponent(new DeathZone())
+                            //.AddComponent(new DeathZone())
                             .Build())
                         
                         ////////////////////////////////////////
@@ -300,9 +300,9 @@ namespace Alis.Sample.Flappy.Bird
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Sky Collision")
                             .Transform(transform => transform
-                                .Position(100, -25)
+                                .Position(0, 8)
                                 .Rotation(0)
-                                .Scale(1.5f, 1.0f)
+                                .Scale(1f, 1f)
                                 .Build())
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
@@ -310,7 +310,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .BodyType(BodyType.Kinematic)
                                 .IsTrigger(false)
                                 .AutoTilling(false)
-                                .Size(290, 50)
+                                .Size(9, 1)
                                 .Rotation(0.0f)
                                 .RelativePosition(0, 0)
                                 .Mass(10.0f)
@@ -328,9 +328,9 @@ namespace Alis.Sample.Flappy.Bird
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Counter")
                             .Transform(transform => transform
-                                .Position(132, 28f)
+                                .Position(0, 0)
                                 .Rotation(0)
-                                .Scale(1f, 1.0f)
+                                .Scale(1f, 1f)
                                 .Build())
                             .Build())
                         
@@ -340,9 +340,9 @@ namespace Alis.Sample.Flappy.Bird
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Pipeline UP")
                             .Transform(transform => transform
-                                .Position(330, 0.0f)
+                                .Position(0, 6f)
                                 .Rotation(180)
-                                .Scale(1f, 1.0f)
+                                .Scale(1f, 1f)
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite
                                 .Builder()
@@ -356,6 +356,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .IsTrigger(true)
                                 .AutoTilling(true)
                                 .Rotation(180)
+                                .Size(2, 10)
                                 .RelativePosition(0, 0)
                                 .Mass(10.0f)
                                 .Restitution(0f)
@@ -363,8 +364,8 @@ namespace Alis.Sample.Flappy.Bird
                                 .FixedRotation(true)
                                 .IgnoreGravity(false)
                                 .Build())
-                            .AddComponent(new PipelineController())
-                            .AddComponent(new DeathZone())
+                            //.AddComponent(new PipelineController())
+                            //.AddComponent(new DeathZone())
                             .Build())
                         
                         ////////////////////////////////////////
@@ -399,8 +400,8 @@ namespace Alis.Sample.Flappy.Bird
                                     .FilePath("point.wav")
                                     .Build())
                                 .Build())
-                            .AddComponent(new PipelineController())
-                            .AddComponent(new CounterController())
+                            //.AddComponent(new PipelineController())
+                            //.AddComponent(new CounterController())
                             .Build())
                         
                         ////////////////////////////////////////
@@ -409,9 +410,9 @@ namespace Alis.Sample.Flappy.Bird
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Pipeline Down")
                             .Transform(transform => transform
-                                .Position(330, 450)
+                                .Position(0, -6.0f)
                                 .Rotation(0)
-                                .Scale(1f, 1.0f)
+                                .Scale(1f, 1f)
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite
                                 .Builder()
@@ -425,6 +426,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .IsTrigger(true)
                                 .AutoTilling(true)
                                 .Rotation(0.0f)
+                                .Size(2, 10)
                                 .RelativePosition(0, 0)
                                 .Mass(10.0f)
                                 .Restitution(0f)
@@ -432,8 +434,8 @@ namespace Alis.Sample.Flappy.Bird
                                 .FixedRotation(true)
                                 .IgnoreGravity(true)
                                 .Build())
-                            .AddComponent(new PipelineController())
-                            .AddComponent(new DeathZone())
+                            //.AddComponent(new PipelineController())
+                            //.AddComponent(new DeathZone())
                             .Build())
                         
                         ////////////////////////////////////////
@@ -490,7 +492,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .IgnoreGravity(false)
                                 .Build())
                             .AddComponent(new BirdController())
-                            .Build()) // end bird */
+                            .Build()) // end bird 
                         .Build()) // end scene manager
                     .Build()) // end video game
                 .Build();
