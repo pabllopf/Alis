@@ -52,7 +52,9 @@ namespace Alis.Sample.Flappy.Bird
         /// <summary>
         ///     The time delta
         /// </summary>
-        public static float TimeDelta = 10.0f;
+        public static float CounterTimeDeath = 3.0f;
+        
+        public GameObject Bird { get; set; }
 
         /// <summary>
         ///     Ons the init
@@ -60,7 +62,7 @@ namespace Alis.Sample.Flappy.Bird
         public override void OnInit()
         {
             IsDeath = false;
-            TimeDelta = 10.0f;
+            CounterTimeDeath = 3.0f;
         }
 
         /// <summary>
@@ -70,14 +72,41 @@ namespace Alis.Sample.Flappy.Bird
         {
             if (IsDeath)
             {
-                TimeDelta -= 1f * Context.TimeManager.DeltaTime;
-                if (TimeDelta <= 0.0f)
+                if (IsDeadthing)
+                {
+                    Deadthing();   
+                }
+                
+                CounterTimeDeath -= 1f * Context.TimeManager.DeltaTime;
+                if (CounterTimeDeath <= 0.0f)
                 {
                     Context.SceneManager.LoadScene("Main_Menu");
                     Logger.Info("RESET LEVEL");
                 }
             }
         }
+
+        public void Deadthing()
+        {
+            Bird.Get<AudioSource>().AudioClip = new AudioClip("die.wav");
+            Bird.Get<AudioSource>().Play();
+
+            Bird.Remove(Bird.Get<BirdController>());
+            Logger.Info("Player remove bird controller");
+
+            Bird.Get<BoxCollider>().Body.Rotation = -45f;
+            Bird.Get<BoxCollider>().Body.LinearVelocity = new Vector2(0, -3);
+            Bird.Get<BoxCollider>().IsTrigger = true;
+            Bird.Get<BoxCollider>().Body.BodyType = BodyType.Kinematic;
+
+            Bird.Remove(Bird.Get<Animator>());
+
+            PipelineController.IsStop = true;
+            
+            IsDeadthing = false;
+        }
+
+        public bool IsDeadthing { get; set; } = false;
 
         /// <summary>
         ///     Ons the collision enter using the specified game object
@@ -91,23 +120,10 @@ namespace Alis.Sample.Flappy.Bird
 
                 if (gameObject.Contains<BirdController>() && !gameObject.Get<BirdController>().IsDead)
                 {
-                    gameObject.Get<AudioSource>().AudioClip = new AudioClip("die.wav");
-                    gameObject.Get<AudioSource>().Play();
-
-                    gameObject.Remove(gameObject.Get<BirdController>());
-                    Logger.Info("Player remove bird controller");
-
-                    gameObject.Get<BoxCollider>().Body.Rotation = 45f;
-                    gameObject.Get<BoxCollider>().Body.LinearVelocity = new Vector2(0, 7);
-                    gameObject.Get<BoxCollider>().IsTrigger = true;
-                    gameObject.Get<BoxCollider>().Body.BodyType = BodyType.Kinematic;
-
-                    gameObject.Remove(gameObject.Get<Animator>());
-
-                    PipelineController.IsStop = true;
-
-
                     IsDeath = true;
+                    IsDeadthing = true;
+                    Bird = gameObject;
+                    Logger.Info("DEATH");
                 }
             }
         }
