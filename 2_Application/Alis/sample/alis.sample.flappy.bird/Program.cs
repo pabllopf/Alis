@@ -444,7 +444,7 @@ namespace Alis.Sample.Flappy.Bird
                             .Name("Bird")
                             .WithTag("Player")
                             .Transform(transform => transform
-                                .Position(0, 0f)
+                                .Position(-3, 0f)
                                 .Rotation(0)
                                 .Scale(1f, 1f)
                                 .Build())
@@ -485,13 +485,13 @@ namespace Alis.Sample.Flappy.Bird
                                 .Rotation(0.0f)
                                 .Size(1, 1)
                                 .RelativePosition(0, 0)
-                                .Mass(5.0f)
+                                .Mass(1.0f)
                                 .Restitution(0f)
                                 .Friction(0f)
                                 .FixedRotation(true)
                                 .IgnoreGravity(false)
                                 .Build())
-                            //.AddComponent(new BirdController())
+                            .AddComponent(new BirdController())
                             .Build()) // end bird 
                         .Build()) // end scene manager
                     .Build()) // end video game
