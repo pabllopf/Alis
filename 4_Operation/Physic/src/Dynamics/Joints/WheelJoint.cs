@@ -36,22 +36,6 @@ using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
-    // Linear constraint (point-to-line)
-    // d = pB - pA = xB + rB - xA - rA
-    // C = dot(ay, d)
-    // Cdot = dot(d, cross(wA, ay)) + dot(ay, vB + cross(wB, rB) - vA - cross(wA, rA))
-    //      = -dot(ay, vA) - dot(cross(d + rA, ay), wA) + dot(ay, vB) + dot(cross(rB, ay), vB)
-    // J = [-ay, -cross(d + rA, ay), ay, cross(rB, ay)]
-
-    // Spring linear constraint
-    // C = dot(ax, d)
-    // Cdot = = -dot(ax, vA) - dot(cross(d + rA, ax), wA) + dot(ax, vB) + dot(cross(rB, ax), vB)
-    // J = [-ax -cross(d+rA, ax) ax cross(rB, ax)]
-
-    // Motor rotational constraint
-    // Cdot = wB - wA
-    // J = [0 0 -1 0 0 1]
-
     /// <summary>
     ///     A wheel joint. This joint provides two degrees of freedom: translation
     ///     along an axis fixed in bodyA and rotation in the plane. You can use a
@@ -59,6 +43,23 @@ namespace Alis.Core.Physic.Dynamics.Joints
     ///     the rotation or to model rotational friction.
     ///     This joint is designed for vehicle suspensions.
     /// </summary>
+    /// <remarks>
+    /// Linear constraint (point-to-line)
+    /// d = pB - pA = xB + rB - xA - rA
+    /// C = dot(ay, d)
+    /// Cdot = dot(d, cross(wA, ay)) + dot(ay, vB + cross(wB, rB) - vA - cross(wA, rA))
+    ///      = -dot(ay, vA) - dot(cross(d + rA, ay), wA) + dot(ay, vB) + dot(cross(rB, ay), vB)
+    /// J = [-ay, -cross(d + rA, ay), ay, cross(rB, ay)]
+    ///
+    /// Spring linear constraint
+    /// C = dot(ax, d)
+    /// Cdot = = -dot(ax, vA) - dot(cross(d + rA, ax), wA) + dot(ax, vB) + dot(cross(rB, ax), vB)
+    /// J = [-ax -cross(d+rA, ax) ax cross(rB, ax)]
+    ///
+    /// Motor rotational constraint
+    /// Cdot = wB - wA
+    /// J = [0 0 -1 0 0 1]
+    /// </remarks>
     public class WheelJoint : Joint
     {
         /// <summary>
