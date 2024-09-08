@@ -102,8 +102,14 @@ namespace Alis.Core.Physic.Dynamics.Contacts
     /// </summary>
     public class Contact
     {
+        /// <summary>
+        /// The edge shape
+        /// </summary>
         private static readonly EdgeShape _edge = new EdgeShape();
 
+        /// <summary>
+        /// The not supported
+        /// </summary>
         private static readonly ContactType[,] _registers =
         {
             {
@@ -137,10 +143,25 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         };
 
         // Nodes for connecting bodies.
+        /// <summary>
+        /// The contact edge
+        /// </summary>
         internal ContactEdge _nodeA = new ContactEdge();
+        /// <summary>
+        /// The contact edge
+        /// </summary>
         internal ContactEdge _nodeB = new ContactEdge();
+        /// <summary>
+        /// The toi
+        /// </summary>
         internal float _toi;
+        /// <summary>
+        /// The toi count
+        /// </summary>
         internal int _toiCount;
+        /// <summary>
+        /// The type
+        /// </summary>
         private ContactType _type;
 
         /// <summary>
@@ -149,15 +170,34 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// </summary>
         public Manifold Manifold;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Contact"/> class
+        /// </summary>
+        /// <param name="fA">The </param>
+        /// <param name="indexA">The index</param>
+        /// <param name="fB">The </param>
+        /// <param name="indexB">The index</param>
         protected Contact(Fixture fA, int indexA, Fixture fB, int indexB)
         {
             Reset(fA, indexA, fB, indexB);
         }
 
+        /// <summary>
+        /// Gets or sets the value of the fixture a
+        /// </summary>
         public Fixture FixtureA { get; internal set; }
+        /// <summary>
+        /// Gets or sets the value of the fixture b
+        /// </summary>
         public Fixture FixtureB { get; internal set; }
 
+        /// <summary>
+        /// Gets or sets the value of the friction
+        /// </summary>
         public float Friction { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the restitution
+        /// </summary>
         public float Restitution { get; set; }
 
         /// Get or set the desired tangent speed for a conveyor belt behavior. In meters per second.
@@ -203,15 +243,30 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// </returns>
         public bool IsTouching { get; set; }
 
+        /// <summary>
+        /// Gets or sets the value of the island flag
+        /// </summary>
         internal bool IslandFlag { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the toi flag
+        /// </summary>
         internal bool TOIFlag { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the filter flag
+        /// </summary>
         internal bool FilterFlag { get; set; }
 
+        /// <summary>
+        /// Resets the restitution
+        /// </summary>
         public void ResetRestitution()
         {
             Restitution = Settings.MixRestitution(FixtureA.Restitution, FixtureB.Restitution);
         }
 
+        /// <summary>
+        /// Resets the friction
+        /// </summary>
         public void ResetFriction()
         {
             Friction = Settings.MixFriction(FixtureA.Friction, FixtureB.Friction);
@@ -230,6 +285,13 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             ContactSolver.WorldManifold.Initialize(ref Manifold, ref bodyA._xf, shapeA.Radius, ref bodyB._xf, shapeB.Radius, out normal, out points);
         }
 
+        /// <summary>
+        /// Resets the f a
+        /// </summary>
+        /// <param name="fA">The </param>
+        /// <param name="indexA">The index</param>
+        /// <param name="fB">The </param>
+        /// <param name="indexB">The index</param>
         private void Reset(Fixture fA, int indexA, Fixture fB, int indexB)
         {
             Enabled = true;
@@ -465,6 +527,15 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             }
         }
 
+        /// <summary>
+        /// Creates the contact manager
+        /// </summary>
+        /// <param name="contactManager">The contact manager</param>
+        /// <param name="fixtureA">The fixture</param>
+        /// <param name="indexA">The index</param>
+        /// <param name="fixtureB">The fixture</param>
+        /// <param name="indexB">The index</param>
+        /// <returns>The </returns>
         internal static Contact Create(ContactManager contactManager, Fixture fixtureA, int indexA, Fixture fixtureB, int indexB)
         {
             ShapeType type1 = fixtureA.Shape.ShapeType;
@@ -506,6 +577,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             return c;
         }
 
+        /// <summary>
+        /// Destroys this instance
+        /// </summary>
         internal void Destroy()
         {
             if ((Manifold.PointCount > 0) && (FixtureA.IsSensor == false) && (FixtureB.IsSensor == false))
@@ -519,15 +593,42 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
         #region Nested type: ContactType
 
+        /// <summary>
+        /// The contact type enum
+        /// </summary>
         private enum ContactType
         {
+            /// <summary>
+            /// The not supported contact type
+            /// </summary>
             NotSupported,
+            /// <summary>
+            /// The polygon contact type
+            /// </summary>
             Polygon,
+            /// <summary>
+            /// The polygon and circle contact type
+            /// </summary>
             PolygonAndCircle,
+            /// <summary>
+            /// The circle contact type
+            /// </summary>
             Circle,
+            /// <summary>
+            /// The edge and polygon contact type
+            /// </summary>
             EdgeAndPolygon,
+            /// <summary>
+            /// The edge and circle contact type
+            /// </summary>
             EdgeAndCircle,
+            /// <summary>
+            /// The chain and polygon contact type
+            /// </summary>
             ChainAndPolygon,
+            /// <summary>
+            /// The chain and circle contact type
+            /// </summary>
             ChainAndCircle
         }
 

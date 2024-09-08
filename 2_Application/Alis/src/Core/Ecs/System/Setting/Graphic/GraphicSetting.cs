@@ -60,6 +60,15 @@ namespace Alis.Core.Ecs.System.Setting.Graphic
         public Window Window { get; set; }
 
         /// <summary>
+        /// The targetframes
+        /// </summary>
+        [JsonPropertyName("_TargetFrames_")]
+        public double TargetFrames { get; set; } = 60;
+
+        [JsonPropertyName("_Target_")]
+        public string Target { get; set; } = "OpenGL";
+        
+        /// <summary>
         ///     Builders this instance
         /// </summary>
         /// <returns>The graphic setting builder</returns>

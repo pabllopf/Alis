@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -54,9 +54,18 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// </summary>
         private List<Body>[,] _bodyMap;
 
+        /// <summary>
+        /// The dirty area
+        /// </summary>
         private AABB _dirtyArea;
+        /// <summary>
+        /// The local height
+        /// </summary>
         private float _localHeight;
 
+        /// <summary>
+        /// The local width
+        /// </summary>
         private float _localWidth;
 
         /// <summary>
@@ -64,8 +73,17 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// </summary>
         private sbyte[,] _terrainMap;
 
+        /// <summary>
+        /// The top left
+        /// </summary>
         private Vector2 _topLeft;
+        /// <summary>
+        /// The xnum
+        /// </summary>
         private int _xnum;
+        /// <summary>
+        /// The ynum
+        /// </summary>
         private int _ynum;
 
         /// <summary>
@@ -245,6 +263,13 @@ namespace Alis.Core.Physic.Common.TextureTools
             _dirtyArea = new AABB(new Vector2(float.MaxValue, float.MaxValue), new Vector2(float.MinValue, float.MinValue));
         }
 
+        /// <summary>
+        /// Removes the old data using the specified x start
+        /// </summary>
+        /// <param name="xStart">The start</param>
+        /// <param name="xEnd">The end</param>
+        /// <param name="yStart">The start</param>
+        /// <param name="yEnd">The end</param>
         private void RemoveOldData(int xStart, int xEnd, int yStart, int yEnd)
         {
             for (int x = xStart; x < xEnd; x++)
@@ -268,6 +293,11 @@ namespace Alis.Core.Physic.Common.TextureTools
             }
         }
 
+        /// <summary>
+        /// Generates the terrain using the specified gx
+        /// </summary>
+        /// <param name="gx">The gx</param>
+        /// <param name="gy">The gy</param>
         private void GenerateTerrain(int gx, int gy)
         {
             float ax = gx * CellSize;

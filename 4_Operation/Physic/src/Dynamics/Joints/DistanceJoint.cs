@@ -88,24 +88,72 @@ namespace Alis.Core.Physic.Dynamics.Joints
     public class DistanceJoint : Joint
     {
         // Solver shared
+        /// <summary>
+        /// The bias
+        /// </summary>
         private float _bias;
+        /// <summary>
+        /// The gamma
+        /// </summary>
         private float _gamma;
+        /// <summary>
+        /// The impulse
+        /// </summary>
         private float _impulse;
 
         // Solver temp
+        /// <summary>
+        /// The index
+        /// </summary>
         private int _indexA;
+        /// <summary>
+        /// The index
+        /// </summary>
         private int _indexB;
+        /// <summary>
+        /// The inv ia
+        /// </summary>
         private float _invIA;
+        /// <summary>
+        /// The inv ib
+        /// </summary>
         private float _invIB;
+        /// <summary>
+        /// The inv mass
+        /// </summary>
         private float _invMassA;
+        /// <summary>
+        /// The inv mass
+        /// </summary>
         private float _invMassB;
+        /// <summary>
+        /// The local center
+        /// </summary>
         private Vector2 _localCenterA;
+        /// <summary>
+        /// The local center
+        /// </summary>
         private Vector2 _localCenterB;
+        /// <summary>
+        /// The mass
+        /// </summary>
         private float _mass;
+        /// <summary>
+        /// The 
+        /// </summary>
         private Vector2 _rA;
+        /// <summary>
+        /// The 
+        /// </summary>
         private Vector2 _rB;
+        /// <summary>
+        /// The 
+        /// </summary>
         private Vector2 _u;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DistanceJoint"/> class
+        /// </summary>
         internal DistanceJoint() => JointType = JointType.Distance;
 
         /// <summary>
@@ -150,12 +198,18 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         public Vector2 LocalAnchorB { get; set; }
 
+        /// <summary>
+        /// Gets or sets the value of the world anchor a
+        /// </summary>
         public sealed override Vector2 WorldAnchorA
         {
             get => BodyA.GetWorldPoint(LocalAnchorA);
             set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
         }
 
+        /// <summary>
+        /// Gets or sets the value of the world anchor b
+        /// </summary>
         public sealed override Vector2 WorldAnchorB
         {
             get => BodyB.GetWorldPoint(LocalAnchorB);
@@ -198,6 +252,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <returns></returns>
         public override float GetReactionTorque(float invDt) => 0.0f;
 
+        /// <summary>
+        /// Inits the velocity constraints using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
         {
             _indexA = BodyA.IslandIndex;
@@ -294,6 +352,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.velocities[_indexB].w = wB;
         }
 
+        /// <summary>
+        /// Solves the velocity constraints using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(ref SolverData data)
         {
             Vector2 vA = data.velocities[_indexA].v;
@@ -321,6 +383,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.velocities[_indexB].w = wB;
         }
 
+        /// <summary>
+        /// Describes whether this instance solve position constraints
+        /// </summary>
+        /// <param name="data">The data</param>
+        /// <returns>The bool</returns>
         internal override bool SolvePositionConstraints(ref SolverData data)
         {
             if (Frequency > 0.0f)

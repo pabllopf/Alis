@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -48,6 +48,10 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
     /// </summary>
     public sealed class SimpleExplosion : PhysicsLogic
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SimpleExplosion"/> class
+        /// </summary>
+        /// <param name="world">The world</param>
         public SimpleExplosion(World world) : base(world) => Power = 1; //linear
 
         /// <summary>
@@ -87,6 +91,15 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
             return ApplyImpulse(pos, radius, force, maxForce, affectedBodies);
         }
 
+        /// <summary>
+        /// Applies the impulse using the specified pos
+        /// </summary>
+        /// <param name="pos">The pos</param>
+        /// <param name="radius">The radius</param>
+        /// <param name="force">The force</param>
+        /// <param name="maxForce">The max force</param>
+        /// <param name="overlappingBodies">The overlapping bodies</param>
+        /// <returns>The forces</returns>
         private Dictionary<Body, Vector2> ApplyImpulse(Vector2 pos, float radius, float force, float maxForce, HashSet<Body> overlappingBodies)
         {
             Dictionary<Body, Vector2> forces = new Dictionary<Body, Vector2>(overlappingBodies.Count);
@@ -111,6 +124,12 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
             return forces;
         }
 
+        /// <summary>
+        /// Gets the percent using the specified distance
+        /// </summary>
+        /// <param name="distance">The distance</param>
+        /// <param name="radius">The radius</param>
+        /// <returns>The float</returns>
         private float GetPercent(float distance, float radius)
         {
             //(1-(distance/radius))^power-1

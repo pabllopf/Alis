@@ -75,34 +75,103 @@ namespace Alis.Core.Physic.Dynamics.Joints
     /// </summary>
     public class RevoluteJoint : Joint
     {
+        /// <summary>
+        /// The enable limit
+        /// </summary>
         private bool _enableLimit;
 
+        /// <summary>
+        /// The enable motor
+        /// </summary>
         private bool _enableMotor;
 
         // Solver shared
+        /// <summary>
+        /// The impulse
+        /// </summary>
         private Vector3 _impulse;
 
         // Solver temp
+        /// <summary>
+        /// The index
+        /// </summary>
         private int _indexA;
+        /// <summary>
+        /// The index
+        /// </summary>
         private int _indexB;
+        /// <summary>
+        /// The inv ia
+        /// </summary>
         private float _invIA;
+        /// <summary>
+        /// The inv ib
+        /// </summary>
         private float _invIB;
+        /// <summary>
+        /// The inv mass
+        /// </summary>
         private float _invMassA;
+        /// <summary>
+        /// The inv mass
+        /// </summary>
         private float _invMassB;
+        /// <summary>
+        /// The limit state
+        /// </summary>
         private LimitState _limitState;
+        /// <summary>
+        /// The local center
+        /// </summary>
         private Vector2 _localCenterA;
+        /// <summary>
+        /// The local center
+        /// </summary>
         private Vector2 _localCenterB;
+        /// <summary>
+        /// The lower angle
+        /// </summary>
         private float _lowerAngle;
+        /// <summary>
+        /// The mass
+        /// </summary>
         private Mat33 _mass; // effective mass for point-to-point constraint.
+        /// <summary>
+        /// The max motor torque
+        /// </summary>
         private float _maxMotorTorque;
+        /// <summary>
+        /// The motor impulse
+        /// </summary>
         private float _motorImpulse;
+        /// <summary>
+        /// The motor mass
+        /// </summary>
         private float _motorMass; // effective mass for motor/limit angular constraint.
+        /// <summary>
+        /// The motor speed
+        /// </summary>
         private float _motorSpeed;
+        /// <summary>
+        /// The 
+        /// </summary>
         private Vector2 _rA;
+        /// <summary>
+        /// The 
+        /// </summary>
         private Vector2 _rB;
+        /// <summary>
+        /// The reference angle
+        /// </summary>
         private float _referenceAngle;
+        /// <summary>
+        /// The upper angle
+        /// </summary>
         private float _upperAngle;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RevoluteJoint"/> class
+        /// </summary>
         internal RevoluteJoint() => JointType = JointType.Revolute;
 
         /// <summary>
@@ -157,12 +226,18 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         public Vector2 LocalAnchorB { get; set; }
 
+        /// <summary>
+        /// Gets or sets the value of the world anchor a
+        /// </summary>
         public override Vector2 WorldAnchorA
         {
             get => BodyA.GetWorldPoint(LocalAnchorA);
             set => LocalAnchorA = BodyA.GetLocalPoint(value);
         }
 
+        /// <summary>
+        /// Gets or sets the value of the world anchor b
+        /// </summary>
         public override Vector2 WorldAnchorB
         {
             get => BodyB.GetWorldPoint(LocalAnchorB);
@@ -319,14 +394,28 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="invDt">The inverse delta time</param>
         public float GetMotorTorque(float invDt) => invDt * _motorImpulse;
 
+        /// <summary>
+        /// Gets the reaction force using the specified inv dt
+        /// </summary>
+        /// <param name="invDt">The inv dt</param>
+        /// <returns>The vector</returns>
         public override Vector2 GetReactionForce(float invDt)
         {
             Vector2 p = new Vector2(_impulse.X, _impulse.Y);
             return invDt * p;
         }
 
+        /// <summary>
+        /// Gets the reaction torque using the specified inv dt
+        /// </summary>
+        /// <param name="invDt">The inv dt</param>
+        /// <returns>The float</returns>
         public override float GetReactionTorque(float invDt) => invDt * _impulse.Z;
 
+        /// <summary>
+        /// Inits the velocity constraints using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
         {
             _indexA = BodyA.IslandIndex;
@@ -449,6 +538,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.velocities[_indexB].w = wB;
         }
 
+        /// <summary>
+        /// Solves the velocity constraints using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(ref SolverData data)
         {
             Vector2 vA = data.velocities[_indexA].v;
@@ -557,6 +650,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.velocities[_indexB].w = wB;
         }
 
+        /// <summary>
+        /// Describes whether this instance solve position constraints
+        /// </summary>
+        /// <param name="data">The data</param>
+        /// <returns>The bool</returns>
         internal override bool SolvePositionConstraints(ref SolverData data)
         {
             Vector2 cA = data.positions[_indexA].c;

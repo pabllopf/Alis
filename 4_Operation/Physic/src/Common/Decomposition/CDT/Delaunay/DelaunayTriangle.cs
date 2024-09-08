@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -80,6 +80,9 @@ using Alis.Core.Physic.Common.Decomposition.CDT.Util;
 
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
 {
+    /// <summary>
+    /// The delaunay triangle class
+    /// </summary>
     internal class DelaunayTriangle
     {
         /**
@@ -93,6 +96,9 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
          */
         public FixedBitArray3 EdgeIsDelaunay;
 
+        /// <summary>
+        /// The neighbors
+        /// </summary>
         public Util.FixedArray3<DelaunayTriangle> Neighbors;
 
         /**
@@ -100,6 +106,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
          */
         public Util.FixedArray3<TriangulationPoint> Points;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DelaunayTriangle"/> class
+        /// </summary>
+        /// <param name="p1">The </param>
+        /// <param name="p2">The </param>
+        /// <param name="p3">The </param>
         public DelaunayTriangle(TriangulationPoint p1, TriangulationPoint p2, TriangulationPoint p3)
         {
             Points[0] = p1;
@@ -107,8 +119,17 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
             Points[2] = p3;
         }
 
+        /// <summary>
+        /// Gets or sets the value of the is interior
+        /// </summary>
         public bool IsInterior { get; set; }
 
+        /// <summary>
+        /// Indexes the of using the specified p
+        /// </summary>
+        /// <param name="p">The </param>
+        /// <exception cref="Exception">Calling index with a point that doesn't exist in triangle</exception>
+        /// <returns>The </returns>
         public int IndexOf(TriangulationPoint p)
         {
             int i = Points.IndexOf(p);
@@ -117,6 +138,11 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
         }
 
         //TODO: Port note - different implementation
+        /// <summary>
+        /// Indexes the cw using the specified p
+        /// </summary>
+        /// <param name="p">The </param>
+        /// <returns>The int</returns>
         public int IndexCW(TriangulationPoint p)
         {
             int index = IndexOf(p);
@@ -132,6 +158,11 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
         }
 
         //TODO: Port note - different implementation
+        /// <summary>
+        /// Indexes the ccw using the specified p
+        /// </summary>
+        /// <param name="p">The </param>
+        /// <returns>The int</returns>
         public int IndexCCW(TriangulationPoint p)
         {
             int index = IndexOf(p);
@@ -146,10 +177,26 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
             }
         }
 
+        /// <summary>
+        /// Describes whether this instance contains
+        /// </summary>
+        /// <param name="p">The </param>
+        /// <returns>The bool</returns>
         public bool Contains(TriangulationPoint p) => p == Points[0] || p == Points[1] || p == Points[2];
 
+        /// <summary>
+        /// Describes whether this instance contains
+        /// </summary>
+        /// <param name="e">The </param>
+        /// <returns>The bool</returns>
         public bool Contains(DTSweepConstraint e) => Contains(e.P) && Contains(e.Q);
 
+        /// <summary>
+        /// Describes whether this instance contains
+        /// </summary>
+        /// <param name="p">The </param>
+        /// <param name="q">The </param>
+        /// <returns>The bool</returns>
         public bool Contains(TriangulationPoint p, TriangulationPoint q) => Contains(p) && Contains(q);
 
         /// <summary>
@@ -205,11 +252,18 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
             }
         }
 
+        /// <summary>
+        /// Clears the neighbors
+        /// </summary>
         public void ClearNeighbors()
         {
             Neighbors[0] = Neighbors[1] = Neighbors[2] = null;
         }
 
+        /// <summary>
+        /// Clears the neighbor using the specified triangle
+        /// </summary>
+        /// <param name="triangle">The triangle</param>
         public void ClearNeighbor(DelaunayTriangle triangle)
         {
             if (Neighbors[0] == triangle)
@@ -253,16 +307,44 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
             return PointCW(t.PointCW(p));
         }
 
+        /// <summary>
+        /// Neighbors the cw using the specified point
+        /// </summary>
+        /// <param name="point">The point</param>
+        /// <returns>The delaunay triangle</returns>
         public DelaunayTriangle NeighborCW(TriangulationPoint point) => Neighbors[(Points.IndexOf(point) + 1) % 3];
 
+        /// <summary>
+        /// Neighbors the ccw using the specified point
+        /// </summary>
+        /// <param name="point">The point</param>
+        /// <returns>The delaunay triangle</returns>
         public DelaunayTriangle NeighborCCW(TriangulationPoint point) => Neighbors[(Points.IndexOf(point) + 2) % 3];
 
+        /// <summary>
+        /// Neighbors the across using the specified point
+        /// </summary>
+        /// <param name="point">The point</param>
+        /// <returns>The delaunay triangle</returns>
         public DelaunayTriangle NeighborAcross(TriangulationPoint point) => Neighbors[Points.IndexOf(point)];
 
+        /// <summary>
+        /// Points the ccw using the specified point
+        /// </summary>
+        /// <param name="point">The point</param>
+        /// <returns>The triangulation point</returns>
         public TriangulationPoint PointCCW(TriangulationPoint point) => Points[(IndexOf(point) + 1) % 3];
 
+        /// <summary>
+        /// Points the cw using the specified point
+        /// </summary>
+        /// <param name="point">The point</param>
+        /// <returns>The triangulation point</returns>
         public TriangulationPoint PointCW(TriangulationPoint point) => Points[(IndexOf(point) + 2) % 3];
 
+        /// <summary>
+        /// Rotates the cw
+        /// </summary>
         private void RotateCW()
         {
             var t = Points[2];
@@ -282,6 +364,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
             Points[IndexCCW(oPoint)] = nPoint;
         }
 
+        /// <summary>
+        /// Returns the string
+        /// </summary>
+        /// <returns>The string</returns>
         public override string ToString() => Points[0] + "," + Points[1] + "," + Points[2];
 
         /// <summary>
@@ -296,6 +382,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
                 }
         }
 
+        /// <summary>
+        /// Marks the edge using the specified triangle
+        /// </summary>
+        /// <param name="triangle">The triangle</param>
         public void MarkEdge(DelaunayTriangle triangle)
         {
             for (int i = 0; i < 3; i++)
@@ -305,6 +395,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
                 }
         }
 
+        /// <summary>
+        /// Marks the edge using the specified t list
+        /// </summary>
+        /// <param name="tList">The list</param>
         public void MarkEdge(List<DelaunayTriangle> tList)
         {
             foreach (DelaunayTriangle t in tList)
@@ -315,11 +409,19 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
                     }
         }
 
+        /// <summary>
+        /// Marks the constrained edge using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
         public void MarkConstrainedEdge(int index)
         {
             EdgeIsConstrained[index] = true;
         }
 
+        /// <summary>
+        /// Marks the constrained edge using the specified edge
+        /// </summary>
+        /// <param name="edge">The edge</param>
         public void MarkConstrainedEdge(DTSweepConstraint edge)
         {
             MarkConstrainedEdge(edge.P, edge.Q);
@@ -334,6 +436,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
             if (i != -1) EdgeIsConstrained[i] = true;
         }
 
+        /// <summary>
+        /// Areas this instance
+        /// </summary>
+        /// <returns>The double</returns>
         public double Area()
         {
             double b = Points[0].X - Points[1].X;
@@ -342,6 +448,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
             return Math.Abs(b * h * 0.5f);
         }
 
+        /// <summary>
+        /// Centroids this instance
+        /// </summary>
+        /// <returns>The triangulation point</returns>
         public TriangulationPoint Centroid()
         {
             double cx = (Points[0].X + Points[1].X + Points[2].X) / 3f;
@@ -369,43 +479,103 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
             return -1;
         }
 
+        /// <summary>
+        /// Describes whether this instance get constrained edge ccw
+        /// </summary>
+        /// <param name="p">The </param>
+        /// <returns>The bool</returns>
         public bool GetConstrainedEdgeCCW(TriangulationPoint p) => EdgeIsConstrained[(IndexOf(p) + 2) % 3];
 
+        /// <summary>
+        /// Describes whether this instance get constrained edge cw
+        /// </summary>
+        /// <param name="p">The </param>
+        /// <returns>The bool</returns>
         public bool GetConstrainedEdgeCW(TriangulationPoint p) => EdgeIsConstrained[(IndexOf(p) + 1) % 3];
 
+        /// <summary>
+        /// Describes whether this instance get constrained edge across
+        /// </summary>
+        /// <param name="p">The </param>
+        /// <returns>The bool</returns>
         public bool GetConstrainedEdgeAcross(TriangulationPoint p) => EdgeIsConstrained[IndexOf(p)];
 
+        /// <summary>
+        /// Sets the constrained edge ccw using the specified p
+        /// </summary>
+        /// <param name="p">The </param>
+        /// <param name="ce">The ce</param>
         public void SetConstrainedEdgeCCW(TriangulationPoint p, bool ce)
         {
             EdgeIsConstrained[(IndexOf(p) + 2) % 3] = ce;
         }
 
+        /// <summary>
+        /// Sets the constrained edge cw using the specified p
+        /// </summary>
+        /// <param name="p">The </param>
+        /// <param name="ce">The ce</param>
         public void SetConstrainedEdgeCW(TriangulationPoint p, bool ce)
         {
             EdgeIsConstrained[(IndexOf(p) + 1) % 3] = ce;
         }
 
+        /// <summary>
+        /// Sets the constrained edge across using the specified p
+        /// </summary>
+        /// <param name="p">The </param>
+        /// <param name="ce">The ce</param>
         public void SetConstrainedEdgeAcross(TriangulationPoint p, bool ce)
         {
             EdgeIsConstrained[IndexOf(p)] = ce;
         }
 
+        /// <summary>
+        /// Describes whether this instance get delaunay edge ccw
+        /// </summary>
+        /// <param name="p">The </param>
+        /// <returns>The bool</returns>
         public bool GetDelaunayEdgeCCW(TriangulationPoint p) => EdgeIsDelaunay[(IndexOf(p) + 2) % 3];
 
+        /// <summary>
+        /// Describes whether this instance get delaunay edge cw
+        /// </summary>
+        /// <param name="p">The </param>
+        /// <returns>The bool</returns>
         public bool GetDelaunayEdgeCW(TriangulationPoint p) => EdgeIsDelaunay[(IndexOf(p) + 1) % 3];
 
+        /// <summary>
+        /// Describes whether this instance get delaunay edge across
+        /// </summary>
+        /// <param name="p">The </param>
+        /// <returns>The bool</returns>
         public bool GetDelaunayEdgeAcross(TriangulationPoint p) => EdgeIsDelaunay[IndexOf(p)];
 
+        /// <summary>
+        /// Sets the delaunay edge ccw using the specified p
+        /// </summary>
+        /// <param name="p">The </param>
+        /// <param name="ce">The ce</param>
         public void SetDelaunayEdgeCCW(TriangulationPoint p, bool ce)
         {
             EdgeIsDelaunay[(IndexOf(p) + 2) % 3] = ce;
         }
 
+        /// <summary>
+        /// Sets the delaunay edge cw using the specified p
+        /// </summary>
+        /// <param name="p">The </param>
+        /// <param name="ce">The ce</param>
         public void SetDelaunayEdgeCW(TriangulationPoint p, bool ce)
         {
             EdgeIsDelaunay[(IndexOf(p) + 1) % 3] = ce;
         }
 
+        /// <summary>
+        /// Sets the delaunay edge across using the specified p
+        /// </summary>
+        /// <param name="p">The </param>
+        /// <param name="ce">The ce</param>
         public void SetDelaunayEdgeAcross(TriangulationPoint p, bool ce)
         {
             EdgeIsDelaunay[IndexOf(p)] = ce;

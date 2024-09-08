@@ -80,6 +80,9 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// </summary>
         internal Vector2 _vertex2;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EdgeShape"/> class
+        /// </summary>
         internal EdgeShape()
             : base(0)
         {
@@ -100,6 +103,9 @@ namespace Alis.Core.Physic.Collision.Shapes
             Set(start, end);
         }
 
+        /// <summary>
+        /// Gets the value of the child count
+        /// </summary>
         public override int ChildCount => 1;
 
         /// <summary>
@@ -163,8 +169,22 @@ namespace Alis.Core.Physic.Collision.Shapes
             ComputeProperties();
         }
 
+        /// <summary>
+        /// Describes whether this instance test point
+        /// </summary>
+        /// <param name="transform">The transform</param>
+        /// <param name="point">The point</param>
+        /// <returns>The bool</returns>
         public override bool TestPoint(ref Transform transform, ref Vector2 point) => false;
 
+        /// <summary>
+        /// Describes whether this instance ray cast
+        /// </summary>
+        /// <param name="output">The output</param>
+        /// <param name="input">The input</param>
+        /// <param name="transform">The transform</param>
+        /// <param name="childIndex">The child index</param>
+        /// <returns>The bool</returns>
         public override bool RayCast(out RayCastOutput output, ref RayCastInput input, ref Transform transform, int childIndex)
         {
             // p = p1 + t * d
@@ -232,6 +252,12 @@ namespace Alis.Core.Physic.Collision.Shapes
             return true;
         }
 
+        /// <summary>
+        /// Computes the aabb using the specified aabb
+        /// </summary>
+        /// <param name="aabb">The aabb</param>
+        /// <param name="transform">The transform</param>
+        /// <param name="childIndex">The child index</param>
         public override void ComputeAABB(out AABB aabb, ref Transform transform, int childIndex)
         {
             // Initialize aabb
@@ -277,17 +303,33 @@ namespace Alis.Core.Physic.Collision.Shapes
             aabb.UpperBound.Y += Radius;
         }
 
+        /// <summary>
+        /// Computes the properties
+        /// </summary>
         protected override void ComputeProperties()
         {
             MassData.Centroid = 0.5f * (_vertex1 + _vertex2);
         }
 
+        /// <summary>
+        /// Computes the submerged area using the specified normal
+        /// </summary>
+        /// <param name="normal">The normal</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="xf">The xf</param>
+        /// <param name="sc">The sc</param>
+        /// <returns>The float</returns>
         public override float ComputeSubmergedArea(ref Vector2 normal, float offset, ref Transform xf, out Vector2 sc)
         {
             sc = Vector2.Zero;
             return 0;
         }
 
+        /// <summary>
+        /// Describes whether this instance compare to
+        /// </summary>
+        /// <param name="shape">The shape</param>
+        /// <returns>The bool</returns>
         public bool CompareTo(EdgeShape shape) => (HasVertex0 == shape.HasVertex0) &&
                                                   (HasVertex3 == shape.HasVertex3) &&
                                                   (Vertex0 == shape.Vertex0) &&
@@ -295,6 +337,10 @@ namespace Alis.Core.Physic.Collision.Shapes
                                                   (Vertex2 == shape.Vertex2) &&
                                                   (Vertex3 == shape.Vertex3);
 
+        /// <summary>
+        /// Clones this instance
+        /// </summary>
+        /// <returns>The clone</returns>
         public override Shape Clone()
         {
             EdgeShape clone = new EdgeShape();

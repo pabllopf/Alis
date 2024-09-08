@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -70,49 +70,133 @@ namespace Alis.Core.Physic.Collision
     /// </summary>
     public class TOIInput
     {
+        /// <summary>
+        /// The proxy
+        /// </summary>
         public DistanceProxy ProxyA;
+        /// <summary>
+        /// The proxy
+        /// </summary>
         public DistanceProxy ProxyB;
+        /// <summary>
+        /// The sweep
+        /// </summary>
         public Sweep SweepA;
+        /// <summary>
+        /// The sweep
+        /// </summary>
         public Sweep SweepB;
+        /// <summary>
+        /// The max
+        /// </summary>
         public float TMax; // defines sweep interval [0, tMax]
     }
 
+    /// <summary>
+    /// The toi output state enum
+    /// </summary>
     public enum TOIOutputState
     {
+        /// <summary>
+        /// The unknown toi output state
+        /// </summary>
         Unknown,
+        /// <summary>
+        /// The failed toi output state
+        /// </summary>
         Failed,
+        /// <summary>
+        /// The overlapped toi output state
+        /// </summary>
         Overlapped,
+        /// <summary>
+        /// The touching toi output state
+        /// </summary>
         Touching,
+        /// <summary>
+        /// The seperated toi output state
+        /// </summary>
         Seperated
     }
 
+    /// <summary>
+    /// The toi output
+    /// </summary>
     public struct TOIOutput
     {
+        /// <summary>
+        /// The state
+        /// </summary>
         public TOIOutputState State;
+        /// <summary>
+        /// The 
+        /// </summary>
         public float T;
     }
 
+    /// <summary>
+    /// The separation function type enum
+    /// </summary>
     public enum SeparationFunctionType
     {
+        /// <summary>
+        /// The points separation function type
+        /// </summary>
         Points,
+        /// <summary>
+        /// The face separation function type
+        /// </summary>
         FaceA,
+        /// <summary>
+        /// The face separation function type
+        /// </summary>
         FaceB
     }
 
+    /// <summary>
+    /// The separation function class
+    /// </summary>
     public static class SeparationFunction
     {
+        /// <summary>
+        /// The axis
+        /// </summary>
         [ThreadStatic] private static Vector2 _axis;
 
+        /// <summary>
+        /// The local point
+        /// </summary>
         [ThreadStatic] private static Vector2 _localPoint;
 
+        /// <summary>
+        /// The proxy
+        /// </summary>
         [ThreadStatic] private static DistanceProxy _proxyA;
 
+        /// <summary>
+        /// The proxy
+        /// </summary>
         [ThreadStatic] private static DistanceProxy _proxyB;
 
+        /// <summary>
+        /// The sweep
+        /// </summary>
         [ThreadStatic] private static Sweep _sweepA, _sweepB;
 
+        /// <summary>
+        /// The type
+        /// </summary>
         [ThreadStatic] private static SeparationFunctionType _type;
 
+        /// <summary>
+        /// Sets the cache
+        /// </summary>
+        /// <param name="cache">The cache</param>
+        /// <param name="proxyA">The proxy</param>
+        /// <param name="sweepA">The sweep</param>
+        /// <param name="proxyB">The proxy</param>
+        /// <param name="sweepB">The sweep</param>
+        /// <param name="t1">The </param>
         public static void Set(ref SimplexCache cache, ref DistanceProxy proxyA, ref Sweep sweepA, ref DistanceProxy proxyB, ref Sweep sweepB, float t1)
         {
             _localPoint = Vector2.Zero;
@@ -188,6 +272,13 @@ namespace Alis.Core.Physic.Collision
             }
         }
 
+        /// <summary>
+        /// Finds the min separation using the specified index a
+        /// </summary>
+        /// <param name="indexA">The index</param>
+        /// <param name="indexB">The index</param>
+        /// <param name="t">The </param>
+        /// <returns>The float</returns>
         public static float FindMinSeparation(out int indexA, out int indexB, float t)
         {
             Transform xfA, xfB;
@@ -256,6 +347,13 @@ namespace Alis.Core.Physic.Collision
             }
         }
 
+        /// <summary>
+        /// Evaluates the index a
+        /// </summary>
+        /// <param name="indexA">The index</param>
+        /// <param name="indexB">The index</param>
+        /// <param name="t">The </param>
+        /// <returns>The float</returns>
         public static float Evaluate(int indexA, int indexB, float t)
         {
             Transform xfA, xfB;
@@ -304,13 +402,22 @@ namespace Alis.Core.Physic.Collision
         }
     }
 
+    /// <summary>
+    /// The time of impact class
+    /// </summary>
     public static class TimeOfImpact
     {
         // CCD via the local separating axis method. This seeks progression
         // by computing the largest time at which separation is maintained.
 
+        /// <summary>
+        /// The toi max iters
+        /// </summary>
         [ThreadStatic] public static int TOICalls, TOIIters, TOIMaxIters;
 
+        /// <summary>
+        /// The toi max root iters
+        /// </summary>
         [ThreadStatic] public static int TOIRootIters, TOIMaxRootIters;
 
         /// <summary>

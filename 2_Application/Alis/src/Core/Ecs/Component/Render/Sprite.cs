@@ -31,6 +31,7 @@ using System;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.Sdl2;
@@ -57,6 +58,9 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         private int h;
 
+        /// <summary>
+        /// The rectangle
+        /// </summary>
         private RectangleI Rectangle;
 
         /// <summary>
@@ -149,6 +153,9 @@ namespace Alis.Core.Ecs.Component.Render
             dstRect = new RectangleI((int) GameObject.Transform.Position.X, (int) GameObject.Transform.Position.Y, w, h);
         }
 
+        /// <summary>
+        /// Ons the update
+        /// </summary>
         public override void OnUpdate()
         {
         }
@@ -161,6 +168,13 @@ namespace Alis.Core.Ecs.Component.Render
             Context.GraphicManager.UnAttach(this);
         }
 
+        /// <summary>
+        /// Renders the renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="cameraPosition">The camera position</param>
+        /// <param name="cameraResolution">The camera resolution</param>
+        /// <param name="pixelsPerMeter">The pixels per meter</param>
         public void Render(IntPtr renderer, Vector2 cameraPosition, Vector2 cameraResolution, float pixelsPerMeter)
         {
             Vector2 spritePosition = GameObject.Transform.Position;
@@ -188,10 +202,18 @@ namespace Alis.Core.Ecs.Component.Render
             Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref Rectangle, spriteRotation, IntPtr.Zero, RendererFlips.FlipVertical);
         }
 
+        /// <summary>
+        /// Describes whether this instance is visible
+        /// </summary>
+        /// <param name="cameraPosition">The camera position</param>
+        /// <param name="cameraResolution">The camera resolution</param>
+        /// <param name="pixelsPerMeter">The pixels per meter</param>
+        /// <returns>The bool</returns>
         public bool IsVisible(Vector2 cameraPosition, Vector2 cameraResolution, float pixelsPerMeter)
         {
             Vector2 spritePosition = GameObject.Transform.Position;
             Vector2 spriteSize = Image.Size;
+            float spriteRotation = GameObject.Transform.Rotation;
 
             float spritePosX = spritePosition.X * pixelsPerMeter;
             float spritePosY = spritePosition.Y * pixelsPerMeter;
@@ -201,12 +223,68 @@ namespace Alis.Core.Ecs.Component.Render
             float cameraTop = cameraPosition.Y * pixelsPerMeter - cameraResolution.Y / 2;
             float cameraBottom = cameraPosition.Y * pixelsPerMeter + cameraResolution.Y / 2;
 
-            float spriteLeft = spritePosX - spriteSize.X / 2;
-            float spriteRight = spritePosX + spriteSize.X / 2;
-            float spriteTop = spritePosY - spriteSize.Y / 2;
-            float spriteBottom = spritePosY + spriteSize.Y / 2;
+            // Calculate the bounding box of the rotated sprite
+            float halfWidth = spriteSize.X / 2;
+            float halfHeight = spriteSize.Y / 2;
+            float cos = (float) Math.Cos(spriteRotation);
+            float sin = (float) Math.Sin(spriteRotation);
+
+            float[] cornersX = new float[4];
+            float[] cornersY = new float[4];
+
+            cornersX[0] = spritePosX + (-halfWidth * cos - -halfHeight * sin);
+            cornersY[0] = spritePosY + (-halfWidth * sin + -halfHeight * cos);
+            cornersX[1] = spritePosX + (halfWidth * cos - -halfHeight * sin);
+            cornersY[1] = spritePosY + (halfWidth * sin + -halfHeight * cos);
+            cornersX[2] = spritePosX + (halfWidth * cos - halfHeight * sin);
+            cornersY[2] = spritePosY + (halfWidth * sin + halfHeight * cos);
+            cornersX[3] = spritePosX + (-halfWidth * cos - halfHeight * sin);
+            cornersY[3] = spritePosY + (-halfWidth * sin + halfHeight * cos);
+
+            float spriteLeft = Min(cornersX);
+            float spriteRight = Max(cornersX);
+            float spriteTop = Min(cornersY);
+            float spriteBottom = Max(cornersY);
 
             return (spriteRight > cameraLeft) && (spriteLeft < cameraRight) && (spriteBottom > cameraTop) && (spriteTop < cameraBottom);
+        }
+
+        /// <summary>
+        /// Mins the corners x
+        /// </summary>
+        /// <param name="cornersX">The corners</param>
+        /// <returns>The min</returns>
+        private float Min(float[] cornersX)
+        {
+            float min = cornersX[0];
+            for (int i = 1; i < cornersX.Length; i++)
+            {
+                if (cornersX[i] < min)
+                {
+                    min = cornersX[i];
+                }
+            }
+
+            return min;
+        }
+
+        /// <summary>
+        /// Maxes the corners x
+        /// </summary>
+        /// <param name="cornersX">The corners</param>
+        /// <returns>The max</returns>
+        private float Max(float[] cornersX)
+        {
+            float max = cornersX[0];
+            for (int i = 1; i < cornersX.Length; i++)
+            {
+                if (cornersX[i] > max)
+                {
+                    max = cornersX[i];
+                }
+            }
+
+            return max;
         }
     }
 }

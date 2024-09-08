@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -44,12 +44,33 @@ namespace Alis.Core.Physic.Controllers
     /// </summary>
     public class VelocityLimitController : Controller
     {
+        /// <summary>
+        /// The body
+        /// </summary>
         private readonly List<Body> _bodies = new List<Body>();
+        /// <summary>
+        /// The max angular sqared
+        /// </summary>
         private float _maxAngularSqared;
+        /// <summary>
+        /// The max angular velocity
+        /// </summary>
         private float _maxAngularVelocity;
+        /// <summary>
+        /// The max linear sqared
+        /// </summary>
         private float _maxLinearSqared;
+        /// <summary>
+        /// The max linear velocity
+        /// </summary>
         private float _maxLinearVelocity;
+        /// <summary>
+        /// The limit angular velocity
+        /// </summary>
         public bool LimitAngularVelocity = true;
+        /// <summary>
+        /// The limit linear velocity
+        /// </summary>
         public bool LimitLinearVelocity = true;
 
         /// <summary>
@@ -110,6 +131,10 @@ namespace Alis.Core.Physic.Controllers
             }
         }
 
+        /// <summary>
+        /// Updates the dt
+        /// </summary>
+        /// <param name="dt">The dt</param>
         public override void Update(float dt)
         {
             foreach (Body body in _bodies)
@@ -148,11 +173,19 @@ namespace Alis.Core.Physic.Controllers
             }
         }
 
+        /// <summary>
+        /// Adds the body using the specified body
+        /// </summary>
+        /// <param name="body">The body</param>
         public void AddBody(Body body)
         {
             _bodies.Add(body);
         }
 
+        /// <summary>
+        /// Removes the body using the specified body
+        /// </summary>
+        /// <param name="body">The body</param>
         public void RemoveBody(Body body)
         {
             _bodies.Remove(body);

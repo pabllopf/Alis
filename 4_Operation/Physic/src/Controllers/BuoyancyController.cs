@@ -43,13 +43,32 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace Alis.Core.Physic.Controllers
 {
+    /// <summary>
+    /// The buoyancy controller class
+    /// </summary>
+    /// <seealso cref="Controller"/>
     public sealed class BuoyancyController : Controller
     {
+        /// <summary>
+        /// The container
+        /// </summary>
         private AABB _container;
 
+        /// <summary>
+        /// The gravity
+        /// </summary>
         private readonly Vector2 _gravity;
+        /// <summary>
+        /// The normal
+        /// </summary>
         private Vector2 _normal;
+        /// <summary>
+        /// The offset
+        /// </summary>
         private float _offset;
+        /// <summary>
+        /// The body
+        /// </summary>
         private readonly ICollection<Body> _uniqueBodies = new List<Body>();
 
         /// <summary>
@@ -94,6 +113,9 @@ namespace Alis.Core.Physic.Controllers
             _gravity = gravity;
         }
 
+        /// <summary>
+        /// Gets or sets the value of the container
+        /// </summary>
         public AABB Container
         {
             get => _container;
@@ -104,6 +126,10 @@ namespace Alis.Core.Physic.Controllers
             }
         }
 
+        /// <summary>
+        /// Updates the dt
+        /// </summary>
+        /// <param name="dt">The dt</param>
         public override void Update(float dt)
         {
             _uniqueBodies.Clear();

@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -53,9 +53,18 @@ namespace Alis.Core.Physic.Common
     {
         #region LinkType enum
 
+        /// <summary>
+        /// The link type enum
+        /// </summary>
         public enum LinkType
         {
+            /// <summary>
+            /// The revolute link type
+            /// </summary>
             Revolute,
+            /// <summary>
+            /// The slider link type
+            /// </summary>
             Slider
         }
 

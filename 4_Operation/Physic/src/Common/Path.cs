@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -55,6 +55,9 @@ namespace Alis.Core.Physic.Common
     /// </summary>
     public class Path
     {
+        /// <summary>
+        /// The delta
+        /// </summary>
         private float _deltaT;
 
         /// <summary>
@@ -162,6 +165,10 @@ namespace Alis.Core.Physic.Common
                 ControlPoints[i] = Complex.Multiply(ControlPoints[i], ref rotation);
         }
 
+        /// <summary>
+        /// Returns the string
+        /// </summary>
+        /// <returns>The string</returns>
         public override string ToString()
         {
             StringBuilder builder = new StringBuilder();
@@ -198,6 +205,12 @@ namespace Alis.Core.Physic.Common
             return verts;
         }
 
+        /// <summary>
+        /// Gets the position using the specified time
+        /// </summary>
+        /// <param name="time">The time</param>
+        /// <exception cref="Exception">You need at least 2 control points to calculate a position.</exception>
+        /// <returns>The temp</returns>
         public Vector2 GetPosition(float time)
         {
             Vector2 temp;
@@ -261,6 +274,15 @@ namespace Alis.Core.Physic.Common
             return temp;
         }
 
+        /// <summary>
+        /// Calcs the catmull rom using the specified p 0
+        /// </summary>
+        /// <param name="p0">The </param>
+        /// <param name="p1">The </param>
+        /// <param name="p2">The </param>
+        /// <param name="p3">The </param>
+        /// <param name="amount">The amount</param>
+        /// <param name="result">The result</param>
         private void CalcCatmullRom(Vector2 p0, Vector2 p1, Vector2 p2, Vector2 p3, float amount, out Vector2 result)
         {
             double sqAmount = amount * amount;
@@ -305,24 +327,40 @@ namespace Alis.Core.Physic.Common
             return output;
         }
 
+        /// <summary>
+        /// Adds the point
+        /// </summary>
+        /// <param name="point">The point</param>
         public void Add(Vector2 point)
         {
             ControlPoints.Add(point);
             _deltaT = 1f / (ControlPoints.Count - 1);
         }
 
+        /// <summary>
+        /// Removes the point
+        /// </summary>
+        /// <param name="point">The point</param>
         public void Remove(Vector2 point)
         {
             ControlPoints.Remove(point);
             _deltaT = 1f / (ControlPoints.Count - 1);
         }
 
+        /// <summary>
+        /// Removes the at using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
         public void RemoveAt(int index)
         {
             ControlPoints.RemoveAt(index);
             _deltaT = 1f / (ControlPoints.Count - 1);
         }
 
+        /// <summary>
+        /// Gets the length
+        /// </summary>
+        /// <returns>The length</returns>
         public float GetLength()
         {
             List<Vector2> verts = GetVertices(ControlPoints.Count * 25);
@@ -339,6 +377,11 @@ namespace Alis.Core.Physic.Common
             return length;
         }
 
+        /// <summary>
+        /// Subdivides the evenly using the specified divisions
+        /// </summary>
+        /// <param name="divisions">The divisions</param>
+        /// <returns>The verts</returns>
         public List<Vector3> SubdivideEvenly(int divisions)
         {
             List<Vector3> verts = new List<Vector3>();

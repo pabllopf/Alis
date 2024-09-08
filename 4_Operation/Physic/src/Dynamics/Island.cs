@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -71,28 +71,89 @@ namespace Alis.Core.Physic.Dynamics
     /// </summary>
     public class Island
     {
+        /// <summary>
+        /// The linear sleep tolerance
+        /// </summary>
         private const float LinTolSqr = Settings.LinearSleepTolerance * Settings.LinearSleepTolerance;
+        /// <summary>
+        /// The angular sleep tolerance
+        /// </summary>
         private const float AngTolSqr = Settings.AngularSleepTolerance * Settings.AngularSleepTolerance;
+        /// <summary>
+        /// The contact manager
+        /// </summary>
         private ContactManager _contactManager;
+        /// <summary>
+        /// The contacts
+        /// </summary>
         private Contact[] _contacts;
+        /// <summary>
+        /// The contact solver
+        /// </summary>
         private readonly ContactSolver _contactSolver = new ContactSolver();
+        /// <summary>
+        /// The joints
+        /// </summary>
         private Joint[] _joints;
+        /// <summary>
+        /// The locks
+        /// </summary>
         internal int[] _locks;
+        /// <summary>
+        /// The positions
+        /// </summary>
         internal SolverPosition[] _positions;
 
+        /// <summary>
+        /// The velocities
+        /// </summary>
         internal SolverVelocity[] _velocities;
+        /// <summary>
+        /// The stopwatch
+        /// </summary>
         private readonly Stopwatch _watch = new Stopwatch();
 
+        /// <summary>
+        /// The bodies
+        /// </summary>
         public Body[] Bodies;
 
+        /// <summary>
+        /// The body capacity
+        /// </summary>
         public int BodyCapacity;
+        /// <summary>
+        /// The body count
+        /// </summary>
         public int BodyCount;
+        /// <summary>
+        /// The contact capacity
+        /// </summary>
         public int ContactCapacity;
+        /// <summary>
+        /// The contact count
+        /// </summary>
         public int ContactCount;
+        /// <summary>
+        /// The joint capacity
+        /// </summary>
         public int JointCapacity;
+        /// <summary>
+        /// The joint count
+        /// </summary>
         public int JointCount;
+        /// <summary>
+        /// The joint update time
+        /// </summary>
         public TimeSpan JointUpdateTime;
 
+        /// <summary>
+        /// Resets the body capacity
+        /// </summary>
+        /// <param name="bodyCapacity">The body capacity</param>
+        /// <param name="contactCapacity">The contact capacity</param>
+        /// <param name="jointCapacity">The joint capacity</param>
+        /// <param name="contactManager">The contact manager</param>
         public void Reset(int bodyCapacity, int contactCapacity, int jointCapacity, ContactManager contactManager)
         {
             BodyCapacity = bodyCapacity;
@@ -130,6 +191,9 @@ namespace Alis.Core.Physic.Dynamics
             }
         }
 
+        /// <summary>
+        /// Clears this instance
+        /// </summary>
         public void Clear()
         {
             BodyCount = 0;
@@ -137,6 +201,11 @@ namespace Alis.Core.Physic.Dynamics
             JointCount = 0;
         }
 
+        /// <summary>
+        /// Solves the step
+        /// </summary>
+        /// <param name="step">The step</param>
+        /// <param name="gravity">The gravity</param>
         internal void Solve(ref TimeStep step, ref Vector2 gravity)
         {
             float h = step.dt;
@@ -358,6 +427,12 @@ namespace Alis.Core.Physic.Dynamics
             }
         }
 
+        /// <summary>
+        /// Solves the toi using the specified sub step
+        /// </summary>
+        /// <param name="subStep">The sub step</param>
+        /// <param name="toiIndexA">The toi index</param>
+        /// <param name="toiIndexB">The toi index</param>
         internal void SolveTOI(ref TimeStep subStep, int toiIndexA, int toiIndexB)
         {
             Debug.Assert(toiIndexA < BodyCount);
@@ -451,6 +526,10 @@ namespace Alis.Core.Physic.Dynamics
             Report(_contactSolver._velocityConstraints);
         }
 
+        /// <summary>
+        /// Adds the body
+        /// </summary>
+        /// <param name="body">The body</param>
         public void Add(Body body)
         {
             Debug.Assert(BodyCount < BodyCapacity);
@@ -458,18 +537,30 @@ namespace Alis.Core.Physic.Dynamics
             Bodies[BodyCount++] = body;
         }
 
+        /// <summary>
+        /// Adds the contact
+        /// </summary>
+        /// <param name="contact">The contact</param>
         public void Add(Contact contact)
         {
             Debug.Assert(ContactCount < ContactCapacity);
             _contacts[ContactCount++] = contact;
         }
 
+        /// <summary>
+        /// Adds the joint
+        /// </summary>
+        /// <param name="joint">The joint</param>
         public void Add(Joint joint)
         {
             Debug.Assert(JointCount < JointCapacity);
             _joints[JointCount++] = joint;
         }
 
+        /// <summary>
+        /// Reports the constraints
+        /// </summary>
+        /// <param name="constraints">The constraints</param>
         private void Report(ContactVelocityConstraint[] constraints)
         {
             if (_contactManager == null)

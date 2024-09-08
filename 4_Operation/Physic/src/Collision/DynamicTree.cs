@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -75,11 +75,23 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         internal AABB AABB;
 
+        /// <summary>
+        /// The child
+        /// </summary>
         internal int Child1;
+        /// <summary>
+        /// The child
+        /// </summary>
         internal int Child2;
 
         // leaf = 0, free node = -1
+        /// <summary>
+        /// The height
+        /// </summary>
         internal int Height;
+        /// <summary>
+        /// The parent
+        /// </summary>
         internal int Parent;
 
         // to reduce struct size we use Parent for the Free linked-list
@@ -92,9 +104,16 @@ namespace Alis.Core.Physic.Collision
             set => Parent = value;
         }
 
+        /// <summary>
+        /// The user data
+        /// </summary>
         internal TNode UserData;
 
 
+        /// <summary>
+        /// Describes whether this instance is leaf
+        /// </summary>
+        /// <returns>The bool</returns>
         internal bool IsLeaf() => Child1 == DynamicTree<TNode>.NullNode;
     }
 
@@ -108,13 +127,37 @@ namespace Alis.Core.Physic.Collision
     /// </summary>
     public class DynamicTree<TNode>
     {
+        /// <summary>
+        /// The null node
+        /// </summary>
         internal const int NullNode = -1;
+        /// <summary>
+        /// The free list
+        /// </summary>
         private int _freeList;
+        /// <summary>
+        /// The node capacity
+        /// </summary>
         private int _nodeCapacity;
+        /// <summary>
+        /// The node count
+        /// </summary>
         private int _nodeCount;
+        /// <summary>
+        /// The nodes
+        /// </summary>
         private TreeNode<TNode>[] _nodes;
+        /// <summary>
+        /// The stack
+        /// </summary>
         private readonly Stack<int> _queryStack = new Stack<int>(256);
+        /// <summary>
+        /// The stack
+        /// </summary>
         private readonly Stack<int> _raycastStack = new Stack<int>(256);
+        /// <summary>
+        /// The root
+        /// </summary>
         private int _root;
 
         /// <summary>
@@ -500,6 +543,10 @@ namespace Alis.Core.Physic.Collision
             }
         }
 
+        /// <summary>
+        /// Allocates the node
+        /// </summary>
+        /// <returns>The node id</returns>
         private int AllocateNode()
         {
             // Expand the node pool as needed.
@@ -539,6 +586,10 @@ namespace Alis.Core.Physic.Collision
             return nodeId;
         }
 
+        /// <summary>
+        /// Frees the node using the specified node id
+        /// </summary>
+        /// <param name="nodeId">The node id</param>
         private void FreeNode(int nodeId)
         {
             Debug.Assert((0 <= nodeId) && (nodeId < _nodeCapacity));
@@ -549,6 +600,10 @@ namespace Alis.Core.Physic.Collision
             --_nodeCount;
         }
 
+        /// <summary>
+        /// Inserts the leaf using the specified leaf
+        /// </summary>
+        /// <param name="leaf">The leaf</param>
         private void InsertLeaf(int leaf)
         {
             if (_root == NullNode)
@@ -687,6 +742,10 @@ namespace Alis.Core.Physic.Collision
             //Validate();
         }
 
+        /// <summary>
+        /// Removes the leaf using the specified leaf
+        /// </summary>
+        /// <param name="leaf">The leaf</param>
         private void RemoveLeaf(int leaf)
         {
             if (leaf == _root)
@@ -929,6 +988,10 @@ namespace Alis.Core.Physic.Collision
             return height;
         }
 
+        /// <summary>
+        /// Validates the structure using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
         public void ValidateStructure(int index)
         {
             if (index == NullNode)
@@ -964,6 +1027,10 @@ namespace Alis.Core.Physic.Collision
             ValidateStructure(child2);
         }
 
+        /// <summary>
+        /// Validates the metrics using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
         public void ValidateMetrics(int index)
         {
             if (index == NullNode)

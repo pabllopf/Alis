@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -59,9 +59,18 @@ using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic
 {
+    /// <summary>
+    /// The settings class
+    /// </summary>
     public static class Settings
     {
+        /// <summary>
+        /// The max float
+        /// </summary>
         public const float MaxFloat = 3.402823466e+38f;
+        /// <summary>
+        /// The epsilon
+        /// </summary>
         public const float Epsilon = 1.192092896e-07f;
 
         // Common
@@ -173,6 +182,9 @@ namespace Alis.Core.Physic
         /// </summary>
         public const float MaxTranslation = 2.0f;
 
+        /// <summary>
+        /// The max translation
+        /// </summary>
         public const float MaxTranslationSquared = MaxTranslation * MaxTranslation;
 
         /// <summary>
@@ -181,6 +193,9 @@ namespace Alis.Core.Physic
         /// </summary>
         public const float MaxRotation = 0.5f * Constant.Pi;
 
+        /// <summary>
+        /// The max rotation
+        /// </summary>
         public const float MaxRotationSquared = MaxRotation * MaxRotation;
 
         /// <summary>

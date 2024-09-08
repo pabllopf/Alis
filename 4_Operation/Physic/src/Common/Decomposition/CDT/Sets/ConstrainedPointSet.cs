@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -75,10 +75,22 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
      * @author Thomas Åhlén, thahlen@gmail.com
      */
 
+    /// <summary>
+    /// The constrained point set class
+    /// </summary>
+    /// <seealso cref="PointSet"/>
     internal class ConstrainedPointSet : PointSet
     {
+        /// <summary>
+        /// The constrained point list
+        /// </summary>
         private readonly List<TriangulationPoint> _constrainedPointList;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConstrainedPointSet"/> class
+        /// </summary>
+        /// <param name="points">The points</param>
+        /// <param name="index">The index</param>
         public ConstrainedPointSet(List<TriangulationPoint> points, int[] index)
             : base(points)
             => EdgeIndex = index;
@@ -96,10 +108,20 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
             _constrainedPointList.AddRange(constraints);
         }
 
+        /// <summary>
+        /// Gets the value of the edge index
+        /// </summary>
         public int[] EdgeIndex { get; }
 
+        /// <summary>
+        /// Gets the value of the triangulation mode
+        /// </summary>
         public override TriangulationMode TriangulationMode => TriangulationMode.Constrained;
 
+        /// <summary>
+        /// Prepares the triangulation using the specified tcx
+        /// </summary>
+        /// <param name="tcx">The tcx</param>
         public override void PrepareTriangulation(TriangulationContext tcx)
         {
             base.PrepareTriangulation(tcx);

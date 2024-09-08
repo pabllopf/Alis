@@ -93,6 +93,10 @@ namespace Alis.Sample.King.Platform
         {
         }
 
+        /// <summary>
+        /// Ons the release key using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
         public override void OnReleaseKey(KeyCodes key)
         {
             if (key == KeyCodes.A || key == KeyCodes.D)
@@ -101,6 +105,10 @@ namespace Alis.Sample.King.Platform
             }
         }
 
+        /// <summary>
+        /// Ons the press key using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
         public override void OnPressKey(KeyCodes key)
         {
             if (key == KeyCodes.Space)

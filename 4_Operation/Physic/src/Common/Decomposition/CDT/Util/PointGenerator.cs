@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -37,10 +37,22 @@ using System.Collections.Generic;
 
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
 {
+    /// <summary>
+    /// The point generator class
+    /// </summary>
     internal class PointGenerator
     {
+        /// <summary>
+        /// The random
+        /// </summary>
         private static readonly Random RNG = new Random();
 
+        /// <summary>
+        /// Uniforms the distribution using the specified n
+        /// </summary>
+        /// <param name="n">The </param>
+        /// <param name="scale">The scale</param>
+        /// <returns>The points</returns>
         public static List<TriangulationPoint> UniformDistribution(int n, double scale)
         {
             List<TriangulationPoint> points = new List<TriangulationPoint>();
@@ -52,6 +64,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
             return points;
         }
 
+        /// <summary>
+        /// Uniforms the grid using the specified n
+        /// </summary>
+        /// <param name="n">The </param>
+        /// <param name="scale">The scale</param>
+        /// <returns>The points</returns>
         public static List<TriangulationPoint> UniformGrid(int n, double scale)
         {
             double x = 0;

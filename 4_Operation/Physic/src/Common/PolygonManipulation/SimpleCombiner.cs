@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -180,6 +180,12 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             return polys;
         }
 
+        /// <summary>
+        /// Adds the triangle using the specified t
+        /// </summary>
+        /// <param name="t">The </param>
+        /// <param name="vertices">The vertices</param>
+        /// <returns>The result</returns>
         private static Vertices AddTriangle(Vertices t, Vertices vertices)
         {
             // First, find vertices that connect

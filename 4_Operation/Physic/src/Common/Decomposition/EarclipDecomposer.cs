@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -386,9 +386,22 @@ namespace Alis.Core.Physic.Common.Decomposition
             return true;
         }
 
+        /// <summary>
+        /// The triangle class
+        /// </summary>
+        /// <seealso cref="Vertices"/>
         private class Triangle : Vertices
         {
             //Constructor automatically fixes orientation to ccw
+            /// <summary>
+            /// Initializes a new instance of the <see cref="Triangle"/> class
+            /// </summary>
+            /// <param name="x1">The </param>
+            /// <param name="y1">The </param>
+            /// <param name="x2">The </param>
+            /// <param name="y2">The </param>
+            /// <param name="x3">The </param>
+            /// <param name="y3">The </param>
             public Triangle(float x1, float y1, float x2, float y2, float x3, float y3)
             {
                 float cross = (x2 - x1) * (y3 - y1) - (x3 - x1) * (y2 - y1);
@@ -406,6 +419,12 @@ namespace Alis.Core.Physic.Common.Decomposition
                 }
             }
 
+            /// <summary>
+            /// Describes whether this instance is inside
+            /// </summary>
+            /// <param name="x">The </param>
+            /// <param name="y">The </param>
+            /// <returns>The bool</returns>
             public bool IsInside(float x, float y)
             {
                 Vector2 a = this[0];

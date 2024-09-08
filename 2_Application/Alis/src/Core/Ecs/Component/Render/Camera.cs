@@ -47,6 +47,9 @@ namespace Alis.Core.Ecs.Component.Render
         AComponent,
         IBuilder<CameraBuilder>
     {
+        /// <summary>
+        /// The position
+        /// </summary>
         [JsonPropertyName("_Position_")] public Vector2 Position;
 
         /// <summary>
@@ -148,6 +151,9 @@ namespace Alis.Core.Ecs.Component.Render
             //Viewport = new RectangleI((int) GameObject.Transform.Position.X, (int) GameObject.Transform.Position.Y, Viewport.W, Viewport.H);
         }
 
+        /// <summary>
+        /// Ons the exit
+        /// </summary>
         public override void OnExit()
         {
             Context.GraphicManager.UnAttach(this);

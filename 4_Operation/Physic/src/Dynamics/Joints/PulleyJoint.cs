@@ -89,23 +89,68 @@ namespace Alis.Core.Physic.Dynamics.Joints
     public class PulleyJoint : Joint
     {
         // Solver shared
+        /// <summary>
+        /// The impulse
+        /// </summary>
         private float _impulse;
 
         // Solver temp
+        /// <summary>
+        /// The index
+        /// </summary>
         private int _indexA;
+        /// <summary>
+        /// The index
+        /// </summary>
         private int _indexB;
+        /// <summary>
+        /// The inv ia
+        /// </summary>
         private float _invIA;
+        /// <summary>
+        /// The inv ib
+        /// </summary>
         private float _invIB;
+        /// <summary>
+        /// The inv mass
+        /// </summary>
         private float _invMassA;
+        /// <summary>
+        /// The inv mass
+        /// </summary>
         private float _invMassB;
+        /// <summary>
+        /// The local center
+        /// </summary>
         private Vector2 _localCenterA;
+        /// <summary>
+        /// The local center
+        /// </summary>
         private Vector2 _localCenterB;
+        /// <summary>
+        /// The mass
+        /// </summary>
         private float _mass;
+        /// <summary>
+        /// The 
+        /// </summary>
         private Vector2 _rA;
+        /// <summary>
+        /// The 
+        /// </summary>
         private Vector2 _rB;
+        /// <summary>
+        /// The 
+        /// </summary>
         private Vector2 _uA;
+        /// <summary>
+        /// The 
+        /// </summary>
         private Vector2 _uB;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PulleyJoint"/> class
+        /// </summary>
         internal PulleyJoint() => JointType = JointType.Pulley;
 
         /// <summary>
@@ -225,16 +270,33 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public float Ratio { get; set; }
 
         //FPE note: Only used for serialization.
+        /// <summary>
+        /// Gets or sets the value of the constant
+        /// </summary>
         internal float Constant { get; set; }
 
+        /// <summary>
+        /// Gets the reaction force using the specified inv dt
+        /// </summary>
+        /// <param name="invDt">The inv dt</param>
+        /// <returns>The vector</returns>
         public override Vector2 GetReactionForce(float invDt)
         {
             Vector2 P = _impulse * _uB;
             return invDt * P;
         }
 
+        /// <summary>
+        /// Gets the reaction torque using the specified inv dt
+        /// </summary>
+        /// <param name="invDt">The inv dt</param>
+        /// <returns>The float</returns>
         public override float GetReactionTorque(float invDt) => 0.0f;
 
+        /// <summary>
+        /// Inits the velocity constraints using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
         {
             _indexA = BodyA.IslandIndex;
@@ -326,6 +388,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.velocities[_indexB].w = wB;
         }
 
+        /// <summary>
+        /// Solves the velocity constraints using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(ref SolverData data)
         {
             Vector2 vA = data.velocities[_indexA].v;
@@ -353,6 +419,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.velocities[_indexB].w = wB;
         }
 
+        /// <summary>
+        /// Describes whether this instance solve position constraints
+        /// </summary>
+        /// <param name="data">The data</param>
+        /// <returns>The bool</returns>
         internal override bool SolvePositionConstraints(ref SolverData data)
         {
             Vector2 cA = data.positions[_indexA].c;

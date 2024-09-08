@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -529,6 +529,9 @@ namespace Alis.Core.Aspect.Math.Vector
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Normalizes this instance
+        /// </summary>
         public void Normalize()
         {
             float length = (float) System.Math.Sqrt(X * X + Y * Y);
@@ -539,11 +542,23 @@ namespace Alis.Core.Aspect.Math.Vector
 
         #region Fast ref methods
 
+        /// <summary>
+        /// Dots the left
+        /// </summary>
+        /// <param name="left">The left</param>
+        /// <param name="right">The right</param>
+        /// <param name="result">The result</param>
         public static void Dot(ref Vector2 left, ref Vector2 right, out float result)
         {
             result = left.X * right.X + left.Y * right.Y;
         }
 
+        /// <summary>
+        /// Mins the v 1
+        /// </summary>
+        /// <param name="v1">The </param>
+        /// <param name="v2">The </param>
+        /// <param name="result">The result</param>
         public static void Min(ref Vector2 v1, ref Vector2 v2, out Vector2 result)
         {
             result = new Vector2(
@@ -552,11 +567,23 @@ namespace Alis.Core.Aspect.Math.Vector
             );
         }
 
+        /// <summary>
+        /// Maxes the v 1
+        /// </summary>
+        /// <param name="v1">The </param>
+        /// <param name="v2">The </param>
+        /// <param name="result">The result</param>
         public static void Max(ref Vector2 v1, ref Vector2 v2, out Vector2 result)
         {
             result = new Vector2(v1.X > v2.X ? v1.X : v2.X, v1.Y > v2.Y ? v1.Y : v2.Y);
         }
 
+        /// <summary>
+        /// Distances the v 1
+        /// </summary>
+        /// <param name="v1">The </param>
+        /// <param name="v2">The </param>
+        /// <param name="result">The result</param>
         public static void Distance(ref Vector2 v1, ref Vector2 v2, out float result)
         {
             float dx = v1.X - v2.X;
@@ -564,6 +591,12 @@ namespace Alis.Core.Aspect.Math.Vector
             result = (float) System.Math.Sqrt(dx * dx + dy * dy);
         }
 
+        /// <summary>
+        /// Distances the squared using the specified v 1
+        /// </summary>
+        /// <param name="v1">The </param>
+        /// <param name="v2">The </param>
+        /// <param name="result">The result</param>
         public static void DistanceSquared(ref Vector2 v1, ref Vector2 v2, out float result)
         {
             float dx = v1.X - v2.X;
@@ -571,26 +604,56 @@ namespace Alis.Core.Aspect.Math.Vector
             result = dx * dx + dy * dy;
         }
 
+        /// <summary>
+        /// Adds the left
+        /// </summary>
+        /// <param name="left">The left</param>
+        /// <param name="right">The right</param>
+        /// <param name="result">The result</param>
         public static void Add(ref Vector2 left, ref Vector2 right, out Vector2 result)
         {
             result = new Vector2(left.X + right.X, left.Y + right.Y);
         }
 
+        /// <summary>
+        /// Subtracts the left
+        /// </summary>
+        /// <param name="left">The left</param>
+        /// <param name="right">The right</param>
+        /// <param name="result">The result</param>
         public static void Subtract(ref Vector2 left, ref Vector2 right, out Vector2 result)
         {
             result = new Vector2(left.X - right.X, left.Y - right.Y);
         }
 
+        /// <summary>
+        /// Multiplies the left
+        /// </summary>
+        /// <param name="left">The left</param>
+        /// <param name="right">The right</param>
+        /// <param name="result">The result</param>
         public static void Multiply(ref Vector2 left, ref Vector2 right, out Vector2 result)
         {
             result = new Vector2(left.X * right.X, left.Y * right.Y);
         }
 
+        /// <summary>
+        /// Multiplies the left
+        /// </summary>
+        /// <param name="left">The left</param>
+        /// <param name="right">The right</param>
+        /// <param name="result">The result</param>
         public static void Multiply(ref Vector2 left, float right, out Vector2 result)
         {
             result = new Vector2(left.X * right, left.Y * right);
         }
 
+        /// <summary>
+        /// Divides the left
+        /// </summary>
+        /// <param name="left">The left</param>
+        /// <param name="right">The right</param>
+        /// <param name="result">The result</param>
         public static void Divide(ref Vector2 left, float right, out Vector2 result)
         {
             float invRight = 1 / right;
@@ -599,6 +662,12 @@ namespace Alis.Core.Aspect.Math.Vector
 
         #endregion Fast ref methods
 
+        /// <summary>
+        /// Returns the string using the specified f 2
+        /// </summary>
+        /// <param name="f2">The </param>
+        /// <param name="cultureInfo">The culture info</param>
+        /// <returns>The string</returns>
         public string ToString(string f2, CultureInfo cultureInfo) => string.Format("{{X: {0} Y: {1}}}", X.ToString(f2, cultureInfo), Y.ToString(f2, cultureInfo));
     }
 }

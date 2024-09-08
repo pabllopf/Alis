@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -105,8 +105,18 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <returns></returns>
         public static bool operator !=(MassData left, MassData right) => !(left == right);
 
+        /// <summary>
+        /// Describes whether this instance equals
+        /// </summary>
+        /// <param name="other">The other</param>
+        /// <returns>The bool</returns>
         public bool Equals(MassData other) => this == other;
 
+        /// <summary>
+        /// Describes whether this instance equals
+        /// </summary>
+        /// <param name="obj">The obj</param>
+        /// <returns>The bool</returns>
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj))
@@ -118,6 +128,10 @@ namespace Alis.Core.Physic.Collision.Shapes
             return Equals((MassData) obj);
         }
 
+        /// <summary>
+        /// Gets the hash code
+        /// </summary>
+        /// <returns>The int</returns>
         public override int GetHashCode()
         {
             unchecked
@@ -131,13 +145,34 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
     }
 
+    /// <summary>
+    /// The shape type enum
+    /// </summary>
     public enum ShapeType
     {
+        /// <summary>
+        /// The unknown shape type
+        /// </summary>
         Unknown = -1,
+        /// <summary>
+        /// The circle shape type
+        /// </summary>
         Circle = 0,
+        /// <summary>
+        /// The edge shape type
+        /// </summary>
         Edge = 1,
+        /// <summary>
+        /// The polygon shape type
+        /// </summary>
         Polygon = 2,
+        /// <summary>
+        /// The chain shape type
+        /// </summary>
         Chain = 3,
+        /// <summary>
+        /// The type count shape type
+        /// </summary>
         TypeCount = 4
     }
 
@@ -148,8 +183,17 @@ namespace Alis.Core.Physic.Collision.Shapes
     /// </summary>
     public abstract class Shape
     {
+        /// <summary>
+        /// The 2radius
+        /// </summary>
         internal float _2radius;
+        /// <summary>
+        /// The density
+        /// </summary>
         internal float _density;
+        /// <summary>
+        /// The radius
+        /// </summary>
         internal float _radius;
 
         /// <summary>
@@ -161,6 +205,10 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// </summary>
         public MassData MassData;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Shape"/> class
+        /// </summary>
+        /// <param name="density">The density</param>
         protected Shape(float density)
         {
             _density = density;

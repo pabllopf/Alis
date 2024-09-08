@@ -71,32 +71,95 @@ namespace Alis.Core.Physic.Dynamics.Joints
     /// </summary>
     public class MotorJoint : Joint
     {
+        /// <summary>
+        /// The angular error
+        /// </summary>
         private float _angularError;
+        /// <summary>
+        /// The angular impulse
+        /// </summary>
         private float _angularImpulse;
+        /// <summary>
+        /// The angular mass
+        /// </summary>
         private float _angularMass;
+        /// <summary>
+        /// The angular offset
+        /// </summary>
         private float _angularOffset;
 
         // Solver temp
+        /// <summary>
+        /// The index
+        /// </summary>
         private int _indexA;
+        /// <summary>
+        /// The index
+        /// </summary>
         private int _indexB;
+        /// <summary>
+        /// The inv ia
+        /// </summary>
         private float _invIA;
+        /// <summary>
+        /// The inv ib
+        /// </summary>
         private float _invIB;
+        /// <summary>
+        /// The inv mass
+        /// </summary>
         private float _invMassA;
+        /// <summary>
+        /// The inv mass
+        /// </summary>
         private float _invMassB;
+        /// <summary>
+        /// The linear error
+        /// </summary>
         private Vector2 _linearError;
+        /// <summary>
+        /// The linear impulse
+        /// </summary>
         private Vector2 _linearImpulse;
 
+        /// <summary>
+        /// The linear mass
+        /// </summary>
         private Mat22 _linearMass;
 
         // Solver shared
+        /// <summary>
+        /// The linear offset
+        /// </summary>
         private Vector2 _linearOffset;
+        /// <summary>
+        /// The local center
+        /// </summary>
         private Vector2 _localCenterA;
+        /// <summary>
+        /// The local center
+        /// </summary>
         private Vector2 _localCenterB;
+        /// <summary>
+        /// The max force
+        /// </summary>
         private float _maxForce;
+        /// <summary>
+        /// The max torque
+        /// </summary>
         private float _maxTorque;
+        /// <summary>
+        /// The 
+        /// </summary>
         private Vector2 _rA;
+        /// <summary>
+        /// The 
+        /// </summary>
         private Vector2 _rB;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MotorJoint"/> class
+        /// </summary>
         internal MotorJoint() => JointType = JointType.Motor;
 
         /// <summary>
@@ -126,12 +189,18 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _angularOffset = BodyB.Rotation - BodyA.Rotation;
         }
 
+        /// <summary>
+        /// Gets or sets the value of the world anchor a
+        /// </summary>
         public override Vector2 WorldAnchorA
         {
             get => BodyA.Position;
             set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
         }
 
+        /// <summary>
+        /// Gets or sets the value of the world anchor b
+        /// </summary>
         public override Vector2 WorldAnchorB
         {
             get => BodyB.Position;
@@ -197,12 +266,29 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         //FPE note: Used for serialization.
+        /// <summary>
+        /// Gets or sets the value of the correction factor
+        /// </summary>
         internal float CorrectionFactor { get; set; }
 
+        /// <summary>
+        /// Gets the reaction force using the specified inv dt
+        /// </summary>
+        /// <param name="invDt">The inv dt</param>
+        /// <returns>The vector</returns>
         public override Vector2 GetReactionForce(float invDt) => invDt * _linearImpulse;
 
+        /// <summary>
+        /// Gets the reaction torque using the specified inv dt
+        /// </summary>
+        /// <param name="invDt">The inv dt</param>
+        /// <returns>The float</returns>
         public override float GetReactionTorque(float invDt) => invDt * _angularImpulse;
 
+        /// <summary>
+        /// Inits the velocity constraints using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
         {
             _indexA = BodyA.IslandIndex;
@@ -285,6 +371,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.velocities[_indexB].w = wB;
         }
 
+        /// <summary>
+        /// Solves the velocity constraints using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(ref SolverData data)
         {
             Vector2 vA = data.velocities[_indexA].v;
@@ -343,6 +433,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.velocities[_indexB].w = wB;
         }
 
+        /// <summary>
+        /// Describes whether this instance solve position constraints
+        /// </summary>
+        /// <param name="data">The data</param>
+        /// <returns>The bool</returns>
         internal override bool SolvePositionConstraints(ref SolverData data) => true;
     }
 }

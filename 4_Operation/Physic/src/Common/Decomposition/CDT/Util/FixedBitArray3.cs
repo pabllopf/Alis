@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -69,10 +69,19 @@ using System.Collections.Generic;
 
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
 {
+    /// <summary>
+    /// The fixed bit array
+    /// </summary>
     internal struct FixedBitArray3 : IEnumerable<bool>
     {
+        /// <summary>
+        /// The 
+        /// </summary>
         public bool _0, _1, _2;
 
+        /// <summary>
+        /// The index out of range exception
+        /// </summary>
         public bool this[int index]
         {
             get
@@ -110,12 +119,25 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
 
         #region IEnumerable<bool> Members
 
+        /// <summary>
+        /// Gets the enumerator
+        /// </summary>
+        /// <returns>An enumerator of bool</returns>
         public IEnumerator<bool> GetEnumerator() => Enumerate().GetEnumerator();
 
+        /// <summary>
+        /// Gets the enumerator
+        /// </summary>
+        /// <returns>The enumerator</returns>
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         #endregion
 
+        /// <summary>
+        /// Describes whether this instance contains
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
         public bool Contains(bool value)
         {
             for (int i = 0; i < 3; ++i)
@@ -124,6 +146,11 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
             return false;
         }
 
+        /// <summary>
+        /// Indexes the of using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The int</returns>
         public int IndexOf(bool value)
         {
             for (int i = 0; i < 3; ++i)
@@ -132,11 +159,18 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
             return -1;
         }
 
+        /// <summary>
+        /// Clears this instance
+        /// </summary>
         public void Clear()
         {
             _0 = _1 = _2 = false;
         }
 
+        /// <summary>
+        /// Clears the value
+        /// </summary>
+        /// <param name="value">The value</param>
         public void Clear(bool value)
         {
             for (int i = 0; i < 3; ++i)
@@ -144,6 +178,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
                     this[i] = false;
         }
 
+        /// <summary>
+        /// Enumerates this instance
+        /// </summary>
+        /// <returns>An enumerable of bool</returns>
         private IEnumerable<bool> Enumerate()
         {
             for (int i = 0; i < 3; ++i) yield return this[i];

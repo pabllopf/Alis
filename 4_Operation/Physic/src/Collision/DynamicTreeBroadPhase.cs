@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -63,13 +63,27 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace Alis.Core.Physic.Collision
 {
+    /// <summary>
+    /// The pair
+    /// </summary>
     internal struct Pair : IComparable<Pair>
     {
+        /// <summary>
+        /// The proxy id
+        /// </summary>
         public int ProxyIdA;
+        /// <summary>
+        /// The proxy id
+        /// </summary>
         public int ProxyIdB;
 
         #region IComparable<Pair> Members
 
+        /// <summary>
+        /// Compares the to using the specified other
+        /// </summary>
+        /// <param name="other">The other</param>
+        /// <returns>The int</returns>
         public int CompareTo(Pair other)
         {
             if (ProxyIdB < other.ProxyIdB)
@@ -114,16 +128,46 @@ namespace Alis.Core.Physic.Collision
     public class DynamicTreeBroadPhase<TNode> : IBroadPhase<TNode>
         where TNode : struct
     {
+        /// <summary>
+        /// The null proxy
+        /// </summary>
         private const int NullProxy = -1;
+        /// <summary>
+        /// The move buffer
+        /// </summary>
         private int[] _moveBuffer;
+        /// <summary>
+        /// The move capacity
+        /// </summary>
         private int _moveCapacity;
+        /// <summary>
+        /// The move count
+        /// </summary>
         private int _moveCount;
 
+        /// <summary>
+        /// The pair buffer
+        /// </summary>
         private Pair[] _pairBuffer;
+        /// <summary>
+        /// The pair capacity
+        /// </summary>
         private int _pairCapacity;
+        /// <summary>
+        /// The pair count
+        /// </summary>
         private int _pairCount;
+        /// <summary>
+        /// The query callback cache
+        /// </summary>
         private readonly BroadPhaseQueryCallback _queryCallbackCache;
+        /// <summary>
+        /// The query proxy id
+        /// </summary>
         private int _queryProxyId;
+        /// <summary>
+        /// The node
+        /// </summary>
         private readonly DynamicTree<TNode> _tree = new DynamicTree<TNode>();
 
         /// <summary>
@@ -190,6 +234,12 @@ namespace Alis.Core.Physic.Collision
             _tree.RemoveProxy(proxyId);
         }
 
+        /// <summary>
+        /// Moves the proxy using the specified proxy id
+        /// </summary>
+        /// <param name="proxyId">The proxy id</param>
+        /// <param name="aabb">The aabb</param>
+        /// <param name="displacement">The displacement</param>
         public void MoveProxy(int proxyId, ref AABB aabb, Vector2 displacement)
         {
             bool buffer = _tree.MoveProxy(proxyId, ref aabb, displacement);
@@ -199,6 +249,10 @@ namespace Alis.Core.Physic.Collision
             }
         }
 
+        /// <summary>
+        /// Touches the proxy using the specified proxy id
+        /// </summary>
+        /// <param name="proxyId">The proxy id</param>
         public void TouchProxy(int proxyId)
         {
             BufferMove(proxyId);
@@ -214,6 +268,11 @@ namespace Alis.Core.Physic.Collision
             _tree.GetFatAABB(proxyId, out aabb);
         }
 
+        /// <summary>
+        /// Sets the proxy using the specified proxy id
+        /// </summary>
+        /// <param name="proxyId">The proxy id</param>
+        /// <param name="proxy">The proxy</param>
         public void SetProxy(int proxyId, ref TNode proxy)
         {
             _tree.SetUserData(proxyId, proxy);
@@ -317,11 +376,19 @@ namespace Alis.Core.Physic.Collision
             _tree.RayCast(callback, ref input);
         }
 
+        /// <summary>
+        /// Shifts the origin using the specified new origin
+        /// </summary>
+        /// <param name="newOrigin">The new origin</param>
         public void ShiftOrigin(Vector2 newOrigin)
         {
             _tree.ShiftOrigin(newOrigin);
         }
 
+        /// <summary>
+        /// Buffers the move using the specified proxy id
+        /// </summary>
+        /// <param name="proxyId">The proxy id</param>
         private void BufferMove(int proxyId)
         {
             if (_moveCount == _moveCapacity)
@@ -336,6 +403,10 @@ namespace Alis.Core.Physic.Collision
             ++_moveCount;
         }
 
+        /// <summary>
+        /// Uns the buffer move using the specified proxy id
+        /// </summary>
+        /// <param name="proxyId">The proxy id</param>
         private void UnBufferMove(int proxyId)
         {
             for (int i = 0; i < _moveCount; ++i)

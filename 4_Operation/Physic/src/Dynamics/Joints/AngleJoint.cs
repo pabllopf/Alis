@@ -51,11 +51,26 @@ namespace Alis.Core.Physic.Dynamics.Joints
     /// </summary>
     public class AngleJoint : Joint
     {
+        /// <summary>
+        /// The bias
+        /// </summary>
         private float _bias;
+        /// <summary>
+        /// The joint error
+        /// </summary>
         private float _jointError;
+        /// <summary>
+        /// The mass factor
+        /// </summary>
         private float _massFactor;
+        /// <summary>
+        /// The target angle
+        /// </summary>
         private float _targetAngle;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AngleJoint"/> class
+        /// </summary>
         internal AngleJoint() => JointType = JointType.Angle;
 
         /// <summary>
@@ -71,12 +86,18 @@ namespace Alis.Core.Physic.Dynamics.Joints
             MaxImpulse = float.MaxValue;
         }
 
+        /// <summary>
+        /// Gets or sets the value of the world anchor a
+        /// </summary>
         public override Vector2 WorldAnchorA
         {
             get => BodyA.Position;
             set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
         }
 
+        /// <summary>
+        /// Gets or sets the value of the world anchor b
+        /// </summary>
         public override Vector2 WorldAnchorB
         {
             get => BodyB.Position;
@@ -117,13 +138,27 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         public float Softness { get; set; }
 
+        /// <summary>
+        /// Gets the reaction force using the specified inv dt
+        /// </summary>
+        /// <param name="invDt">The inv dt</param>
+        /// <returns>The vector</returns>
         public override Vector2 GetReactionForce(float invDt) =>
             //TODO
             //return _inv_dt * _impulse;
             Vector2.Zero;
 
+        /// <summary>
+        /// Gets the reaction torque using the specified inv dt
+        /// </summary>
+        /// <param name="invDt">The inv dt</param>
+        /// <returns>The float</returns>
         public override float GetReactionTorque(float invDt) => 0;
 
+        /// <summary>
+        /// Inits the velocity constraints using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
         {
             int indexA = BodyA.IslandIndex;
@@ -137,6 +172,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _massFactor = (1 - Softness) / (BodyA._invI + BodyB._invI);
         }
 
+        /// <summary>
+        /// Solves the velocity constraints using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(ref SolverData data)
         {
             int indexA = BodyA.IslandIndex;
@@ -148,6 +187,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.velocities[indexB].w += BodyB._invI * Math.Sign(p) * Math.Min(Math.Abs(p), MaxImpulse);
         }
 
+        /// <summary>
+        /// Describes whether this instance solve position constraints
+        /// </summary>
+        /// <param name="data">The data</param>
+        /// <returns>The bool</returns>
         internal override bool SolvePositionConstraints(ref SolverData data) =>
             //no position solving for this joint
             true;

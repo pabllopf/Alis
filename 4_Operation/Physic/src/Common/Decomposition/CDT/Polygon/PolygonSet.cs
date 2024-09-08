@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -73,21 +73,41 @@ using System.Collections.Generic;
 
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
 {
+    /// <summary>
+    /// The polygon set class
+    /// </summary>
     internal class PolygonSet
     {
+        /// <summary>
+        /// The polygon
+        /// </summary>
         protected List<Polygon> _polygons = new List<Polygon>();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PolygonSet"/> class
+        /// </summary>
         public PolygonSet()
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PolygonSet"/> class
+        /// </summary>
+        /// <param name="poly">The poly</param>
         public PolygonSet(Polygon poly)
         {
             _polygons.Add(poly);
         }
 
+        /// <summary>
+        /// Gets the value of the polygons
+        /// </summary>
         public IEnumerable<Polygon> Polygons => _polygons;
 
+        /// <summary>
+        /// Adds the p
+        /// </summary>
+        /// <param name="p">The </param>
         public void Add(Polygon p)
         {
             _polygons.Add(p);

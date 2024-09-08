@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -95,25 +95,58 @@ namespace Alis.Core.Physic.Dynamics
     /// </summary>
     public delegate bool BeginContactDelegate(Contact contact);
 
+    /// <summary>
+    /// The pre solve delegate
+    /// </summary>
     public delegate void PreSolveDelegate(Contact contact, ref Manifold oldManifold);
 
+    /// <summary>
+    /// The post solve delegate
+    /// </summary>
     public delegate void PostSolveDelegate(Contact contact, ContactVelocityConstraint impulse);
 
+    /// <summary>
+    /// The fixture delegate
+    /// </summary>
     public delegate void FixtureDelegate(World sender, Body body, Fixture fixture);
 
+    /// <summary>
+    /// The joint delegate
+    /// </summary>
     public delegate void JointDelegate(World sender, Joint joint);
 
+    /// <summary>
+    /// The body delegate
+    /// </summary>
     public delegate void BodyDelegate(World sender, Body body);
 
+    /// <summary>
+    /// The controller delegate
+    /// </summary>
     public delegate void ControllerDelegate(World sender, Controller controller);
 
+    /// <summary>
+    /// The collision filter delegate
+    /// </summary>
     public delegate bool CollisionFilterDelegate(Fixture fixtureA, Fixture fixtureB);
 
+    /// <summary>
+    /// The before collision event handler
+    /// </summary>
     public delegate bool BeforeCollisionEventHandler(Fixture sender, Fixture other);
 
+    /// <summary>
+    /// The on collision event handler
+    /// </summary>
     public delegate bool OnCollisionEventHandler(Fixture sender, Fixture other, Contact contact);
 
+    /// <summary>
+    /// The after collision event handler
+    /// </summary>
     public delegate void AfterCollisionEventHandler(Fixture sender, Fixture other, Contact contact, ContactVelocityConstraint impulse);
 
+    /// <summary>
+    /// The on separation event handler
+    /// </summary>
     public delegate void OnSeparationEventHandler(Fixture sender, Fixture other, Contact contact);
 }

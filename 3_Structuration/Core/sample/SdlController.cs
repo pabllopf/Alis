@@ -64,6 +64,9 @@ namespace Alis.Core.Sample
         /// </summary>
         private const int Height = 480;
 
+        /// <summary>
+        /// The pixels per meter
+        /// </summary>
         private const float PIXELS_PER_METER = 32f;
 
         /// <summary>
@@ -116,13 +119,25 @@ namespace Alis.Core.Sample
         /// </summary>
         private static RectangleI _dstRectFont1;
 
+        /// <summary>
+        /// The player body
+        /// </summary>
         private static Body _playerBody;
+        /// <summary>
+        /// The player body radius
+        /// </summary>
         private static readonly float _playerBodyRadius = 1.5f / 2f; // player diameter is 1.5 meters
 
         // Add a variable to store the desired frame rate
+        /// <summary>
+        /// The target fps
+        /// </summary>
         private static readonly int targetFps = 60;
 
         // Calculate the frame duration based on the desired frame rate
+        /// <summary>
+        /// The target fps
+        /// </summary>
         private static readonly int frameDuration = 1000 / targetFps;
 
         /// <summary>
@@ -571,6 +586,13 @@ namespace Alis.Core.Sample
         }
 
 
+        /// <summary>
+        /// Draws the circle using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="x0">The </param>
+        /// <param name="y0">The </param>
+        /// <param name="radius">The radius</param>
         private static void DrawCircle(IntPtr renderer, int x0, int y0, int radius)
         {
             int x = radius - 1;
@@ -606,6 +628,13 @@ namespace Alis.Core.Sample
             }
         }
 
+        /// <summary>
+        /// Draws the half circle using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="x0">The </param>
+        /// <param name="y0">The </param>
+        /// <param name="radius">The radius</param>
         private static void DrawHalfCircle(IntPtr renderer, int x0, int y0, int radius)
         {
             int x = radius - 1;
@@ -644,6 +673,14 @@ namespace Alis.Core.Sample
             }
         }
 
+        /// <summary>
+        /// Draws the circle with line using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="x0">The </param>
+        /// <param name="y0">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="angle">The angle</param>
         private static void DrawCircleWithLine(IntPtr renderer, int x0, int y0, int radius, float angle)
         {
             int x = radius - 1;
