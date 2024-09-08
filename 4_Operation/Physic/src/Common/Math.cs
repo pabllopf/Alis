@@ -314,6 +314,8 @@ namespace Alis.Core.Physic.Common
         ///     false otherwise.
         /// </returns>
         public static bool FloatInRange(float value, float min, float max) => (value >= min) && (value <= max);
+
+        public static float Epsilon { get; set; } = 1e-6f;
     }
 
     /// <summary>

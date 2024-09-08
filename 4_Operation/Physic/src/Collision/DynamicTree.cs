@@ -491,7 +491,7 @@ namespace Alis.Core.Physic.Collision
 
                     float value = callback(ref subInput, nodeId);
 
-                    if (value == 0.0f)
+                    if (Math.Abs(value) < MathUtils.Epsilon)
                     {
                         // the client has terminated the raycast.
                         return;
