@@ -157,7 +157,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             {
                 float a = Angle(p);
                 // If the point is almost colinear with it's neighbor, remove it!
-                if (a >= PiSlop || a <= -PiSlop || a == 0.0f)
+                if (a >= PiSlop || a <= -PiSlop || Math.Abs(a) < float.Epsilon)
                     Remove(p);
                 else if (IsConvex(p))
                     _convexPoints.Add(p);
