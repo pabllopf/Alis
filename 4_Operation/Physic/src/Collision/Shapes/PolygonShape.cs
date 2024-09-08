@@ -527,7 +527,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                     return false;
             }
 
-            return (Radius == shape.Radius) && (MassData == shape.MassData);
+            return (Math.Abs(Radius - shape.Radius) < Settings.Epsilon) && (MassData == shape.MassData);
         }
 
         /// <summary>
