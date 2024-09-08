@@ -100,11 +100,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         /// The inv ia
         /// </summary>
-        private float _invIA;
+        private float invIa;
         /// <summary>
         /// The inv ib
         /// </summary>
-        private float _invIB;
+        private float invIb;
         /// <summary>
         /// The inv mass
         /// </summary>
@@ -364,11 +364,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _localCenterB = BodyB._sweep.LocalCenter;
             _invMassA = BodyA._invMass;
             _invMassB = BodyB._invMass;
-            _invIA = BodyA._invI;
-            _invIB = BodyB._invI;
+            invIa = BodyA._invI;
+            invIb = BodyB._invI;
 
             float mA = _invMassA, mB = _invMassB;
-            float iA = _invIA, iB = _invIB;
+            float iA = invIa, iB = invIb;
 
             Vector2 cA = data.positions[_indexA].c;
             float aA = data.positions[_indexA].a;
@@ -418,7 +418,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 {
                     _springMass = 1.0f / invMass;
 
-                    float C = Vector2.Dot(d1, _ax);
+                    float c = Vector2.Dot(d1, _ax);
 
                     // Frequency
                     float omega = Constant.Tau * Frequency;
@@ -437,7 +437,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                         _gamma = 1.0f / _gamma;
                     }
 
-                    _bias = C * h * k * _gamma;
+                    _bias = c * h * k * _gamma;
 
                     _springMass = invMass + _gamma;
                     if (_springMass > 0.0f)
@@ -473,15 +473,15 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _springImpulse *= data.step.dtRatio;
                 _motorImpulse *= data.step.dtRatio;
 
-                Vector2 P = _impulse * _ay + _springImpulse * _ax;
-                float LA = _impulse * _sAy + _springImpulse * _sAx + _motorImpulse;
-                float LB = _impulse * _sBy + _springImpulse * _sBx + _motorImpulse;
+                Vector2 p = _impulse * _ay + _springImpulse * _ax;
+                float la = _impulse * _sAy + _springImpulse * _sAx + _motorImpulse;
+                float lb = _impulse * _sBy + _springImpulse * _sBx + _motorImpulse;
 
-                vA -= _invMassA * P;
-                wA -= _invIA * LA;
+                vA -= _invMassA * p;
+                wA -= invIa * la;
 
-                vB += _invMassB * P;
-                wB += _invIB * LB;
+                vB += _invMassB * p;
+                wB += invIb * lb;
             }
             else
             {
@@ -503,7 +503,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         internal override void SolveVelocityConstraints(ref SolverData data)
         {
             float mA = _invMassA, mB = _invMassB;
-            float iA = _invIA, iB = _invIB;
+            float iA = invIa, iB = invIb;
 
             Vector2 vA = data.velocities[_indexA].v;
             float wA = data.velocities[_indexA].w;
@@ -512,25 +512,25 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             // Solve spring constraint
             {
-                float Cdot = Vector2.Dot(_ax, vB - vA) + _sBx * wB - _sAx * wA;
-                float impulse = -_springMass * (Cdot + _bias + _gamma * _springImpulse);
+                float cdot = Vector2.Dot(_ax, vB - vA) + _sBx * wB - _sAx * wA;
+                float impulse = -_springMass * (cdot + _bias + _gamma * _springImpulse);
                 _springImpulse += impulse;
 
-                Vector2 P = impulse * _ax;
-                float LA = impulse * _sAx;
-                float LB = impulse * _sBx;
+                Vector2 p = impulse * _ax;
+                float la = impulse * _sAx;
+                float lb = impulse * _sBx;
 
-                vA -= mA * P;
-                wA -= iA * LA;
+                vA -= mA * p;
+                wA -= iA * la;
 
-                vB += mB * P;
-                wB += iB * LB;
+                vB += mB * p;
+                wB += iB * lb;
             }
 
             // Solve rotational motor constraint
             {
-                float Cdot = wB - wA - _motorSpeed;
-                float impulse = -_motorMass * Cdot;
+                float cdot = wB - wA - _motorSpeed;
+                float impulse = -_motorMass * cdot;
 
                 float oldImpulse = _motorImpulse;
                 float maxImpulse = data.step.dt * _maxMotorTorque;
@@ -543,19 +543,19 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             // Solve point to line constraint
             {
-                float Cdot = Vector2.Dot(_ay, vB - vA) + _sBy * wB - _sAy * wA;
-                float impulse = -_mass * Cdot;
+                float cdot = Vector2.Dot(_ay, vB - vA) + _sBy * wB - _sAy * wA;
+                float impulse = -_mass * cdot;
                 _impulse += impulse;
 
-                Vector2 P = impulse * _ay;
-                float LA = impulse * _sAy;
-                float LB = impulse * _sBy;
+                Vector2 p = impulse * _ay;
+                float la = impulse * _sAy;
+                float lb = impulse * _sBy;
 
-                vA -= mA * P;
-                wA -= iA * LA;
+                vA -= mA * p;
+                wA -= iA * la;
 
-                vB += mB * P;
-                wB += iB * LB;
+                vB += mB * p;
+                wB += iB * lb;
             }
 
             data.velocities[_indexA].v = vA;
@@ -588,35 +588,35 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float sAy = MathUtils.Cross(d + rA, ay);
             float sBy = MathUtils.Cross(ref rB, ref ay);
 
-            float C = Vector2.Dot(d, ay);
+            float c = Vector2.Dot(d, ay);
 
-            float k = _invMassA + _invMassB + _invIA * _sAy * _sAy + _invIB * _sBy * _sBy;
+            float k = _invMassA + _invMassB + invIa * _sAy * _sAy + invIb * _sBy * _sBy;
 
             float impulse;
             if (k != 0.0f)
             {
-                impulse = -C / k;
+                impulse = -c / k;
             }
             else
             {
                 impulse = 0.0f;
             }
 
-            Vector2 P = impulse * ay;
-            float LA = impulse * sAy;
-            float LB = impulse * sBy;
+            Vector2 p = impulse * ay;
+            float la = impulse * sAy;
+            float lb = impulse * sBy;
 
-            cA -= _invMassA * P;
-            aA -= _invIA * LA;
-            cB += _invMassB * P;
-            aB += _invIB * LB;
+            cA -= _invMassA * p;
+            aA -= invIa * la;
+            cB += _invMassB * p;
+            aB += invIb * lb;
 
             data.positions[_indexA].c = cA;
             data.positions[_indexA].a = aA;
             data.positions[_indexB].c = cB;
             data.positions[_indexB].a = aB;
 
-            return Math.Abs(C) <= Settings.LinearSlop;
+            return Math.Abs(c) <= Settings.LinearSlop;
         }
     }
 }
