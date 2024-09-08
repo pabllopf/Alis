@@ -763,13 +763,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             DelaunayTriangle ot = t.NeighborAcross(p);
             TriangulationPoint op = ot.OppositePoint(t, p);
 
-            if (ot == null)
-            {
-                // If we want to integrate the fillEdgeEvent do it here
-                // With current implementation we should never get here
-                throw new Exception("[BUG:FIXME] FLIP failed due to missing triangle");
-            }
-
             bool inScanArea = TriangulationUtil.InScanArea(eq, flipTriangle.PointCCW(eq), flipTriangle.PointCW(eq), op);
             if (inScanArea)
             {
