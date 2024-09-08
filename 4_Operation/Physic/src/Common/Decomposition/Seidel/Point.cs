@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 
+using System;
 
 namespace Alis.Core.Physic.Common.Decomposition.Seidel
 {
@@ -86,7 +87,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
-        public bool Neq(Point p) => p.X != X || p.Y != Y;
+        public bool Neq(Point p) => Math.Abs(p.X - X) > float.Epsilon || Math.Abs(p.Y - Y) > float.Epsilon;
 
         /// <summary>
         /// Orients the 2 d using the specified pb
