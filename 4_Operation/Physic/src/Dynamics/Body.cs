@@ -704,7 +704,7 @@ namespace Alis.Core.Physic.Dynamics
                 // to be created at the beginning of the next time step.
                 World._worldHasNewFixture = true;
 
-                var fixtureAddedHandler = World.FixtureAdded;
+                FixtureDelegate fixtureAddedHandler = World.FixtureAdded;
                 if (fixtureAddedHandler != null)
                     fixtureAddedHandler(World, this, fixture);
             }
@@ -761,7 +761,7 @@ namespace Alis.Core.Physic.Dynamics
                 ((PolygonShape) fixture.Shape).Vertices.AttachedToBody = false;
 #endif
 
-            var fixtureRemovedHandler = World.FixtureRemoved;
+            FixtureDelegate fixtureRemovedHandler = World.FixtureRemoved;
             if (fixtureRemovedHandler != null)
                 fixtureRemovedHandler(World, this, fixture);
 

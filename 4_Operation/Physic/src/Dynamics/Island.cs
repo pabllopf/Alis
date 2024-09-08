@@ -545,15 +545,15 @@ namespace Alis.Core.Physic.Dynamics
 
                 //FPE optimization: We don't store the impulses and send it to the delegate. We just send the whole contact.
                 //FPE feature: added after collision
-                var afterCollisionHandlerA = c.FixtureA.AfterCollision;
+                AfterCollisionEventHandler afterCollisionHandlerA = c.FixtureA.AfterCollision;
                 if (afterCollisionHandlerA != null)
                     afterCollisionHandlerA(c.FixtureA, c.FixtureB, c, constraints[i]);
 
-                var afterCollisionHandlerB = c.FixtureB.AfterCollision;
+                AfterCollisionEventHandler afterCollisionHandlerB = c.FixtureB.AfterCollision;
                 if (afterCollisionHandlerB != null)
                     afterCollisionHandlerB(c.FixtureB, c.FixtureA, c, constraints[i]);
 
-                var postSolveHandler = _contactManager.PostSolve;
+                PostSolveDelegate postSolveHandler = _contactManager.PostSolve;
                 if (postSolveHandler != null)
                     postSolveHandler(c, constraints[i]);
             }

@@ -136,7 +136,7 @@ namespace Alis.Core.Physic.Common
         /// </summary>
         public void Normalize()
         {
-            var mag = Magnitude;
+            float mag = Magnitude;
             R = R / mag;
             i = i / mag;
         }
@@ -258,7 +258,7 @@ namespace Alis.Core.Physic.Common
         /// <returns>The complex</returns>
         public static Complex Normalize(ref Complex value)
         {
-            var mag = value.Magnitude;
+            float mag = value.Magnitude;
             return new Complex(value.R / mag, -value.i / mag);
         }
 

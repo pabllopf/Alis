@@ -816,8 +816,8 @@ namespace Alis.Core.Physic.Common
                                     foreach (XMLFragmentElement pair in sn.Elements)
                                     {
                                         Fixture fix = fixtures[int.Parse(pair.Attributes[0].Value)];
-                                        var shape = shapes[int.Parse(pair.Attributes[1].Value)].Clone();
-                                        var clone = fix.CloneOnto(body, shape);
+                                        Shape shape = shapes[int.Parse(pair.Attributes[1].Value)].Clone();
+                                        Fixture clone = fix.CloneOnto(body, shape);
                                         mapFixtureClones[fix] = clone;
                                     }
 

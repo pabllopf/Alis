@@ -1309,7 +1309,7 @@ namespace Alis.Core.Physic.Collision
             int count1 = poly1.Vertices.Count;
             List<Vector2> normals1 = poly1.Normals;
 
-            var xf1To2 = Transform.Divide(ref xf1, ref xf2);
+            Transform xf1To2 = Transform.Divide(ref xf1, ref xf2);
 
             // Vector pointing from the centroid of poly1 to the centroid of poly2.
             Vector2 c2local = Transform.Divide(poly2.MassData.Centroid, ref xf1To2);
