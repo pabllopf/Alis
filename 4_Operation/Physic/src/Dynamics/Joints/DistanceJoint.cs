@@ -289,7 +289,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float invMass = _invMassA + invIa * crAu * crAu + _invMassB + invIb * crBu * crBu;
 
             // Compute the effective mass matrix.
-            _mass = invMass != 0.0f ? 1.0f / invMass : 0.0f;
+            _mass = Math.Abs(invMass) > float.Epsilon ? 1.0f / invMass : 0.0f;
 
             if (Frequency > 0.0f)
             {
@@ -307,11 +307,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 // magic formulas
                 float h = data.step.dt;
                 _gamma = h * (d + h * k);
-                _gamma = _gamma != 0.0f ? 1.0f / _gamma : 0.0f;
+                _gamma = Math.Abs(_gamma) > float.Epsilon ? 1.0f / _gamma : 0.0f;
                 _bias = c * h * k * _gamma;
 
                 invMass += _gamma;
-                _mass = invMass != 0.0f ? 1.0f / invMass : 0.0f;
+                _mass =  Math.Abs(invMass) > float.Epsilon ? 1.0f / invMass : 0.0f;
             }
             else
             {
