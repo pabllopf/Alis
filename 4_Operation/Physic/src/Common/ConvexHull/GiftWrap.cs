@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 
-
+using System;
 using Alis.Core.Aspect.Math.Vector;
 
 
@@ -58,7 +58,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
             for (int i = 1; i < vertices.Count; ++i)
             {
                 float x = vertices[i].X;
-                if (x > x0 || ((x == x0) && (vertices[i].Y < vertices[i0].Y)))
+                if (x > x0 || ((Math.Abs(x - x0) < float.Epsilon) && (vertices[i].Y < vertices[i0].Y)))
                 {
                     i0 = i;
                     x0 = x;
