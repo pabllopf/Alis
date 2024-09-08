@@ -490,7 +490,7 @@ namespace Alis.Core.Physic.Common
                 // Test if a point is directly on the edge
                 Vector2 edge = p2 - p1;
                 float area = MathUtils.Area(ref p1, ref p2, ref point);
-                if ((area == 0f) && (Vector2.Dot(point - p1, edge) >= 0f) && (Vector2.Dot(point - p2, edge) <= 0f))
+                if ((Math.Abs(area) < float.Epsilon) && (Vector2.Dot(point - p1, edge) >= 0f) && (Vector2.Dot(point - p2, edge) <= 0f))
                 {
                     return 0;
                 }
