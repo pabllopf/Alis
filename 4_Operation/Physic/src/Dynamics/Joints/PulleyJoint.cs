@@ -78,11 +78,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         /// The inv ia
         /// </summary>
-        private float _invIA;
+        private float invIa;
         /// <summary>
         /// The inv ib
         /// </summary>
-        private float _invIB;
+        private float invIb;
         /// <summary>
         /// The inv mass
         /// </summary>
@@ -165,7 +165,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 LengthB = dB.Length();
             }
 
-            Debug.Assert(ratio != 0.0f);
+            Debug.Assert(Math.Abs(ratio) > Settings.Epsilon);
             Debug.Assert(ratio > Settings.Epsilon);
 
             Ratio = ratio;
@@ -254,8 +254,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <returns>The vector</returns>
         public override Vector2 GetReactionForce(float invDt)
         {
-            Vector2 P = _impulse * _uB;
-            return invDt * P;
+            Vector2 p = _impulse * _uB;
+            return invDt * p;
         }
 
         /// <summary>
@@ -277,8 +277,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _localCenterB = BodyB._sweep.LocalCenter;
             _invMassA = BodyA._invMass;
             _invMassB = BodyB._invMass;
-            _invIA = BodyA._invI;
-            _invIB = BodyB._invI;
+            invIa = BodyA._invI;
+            invIb = BodyB._invI;
 
             Vector2 cA = data.positions[_indexA].c;
             float aA = data.positions[_indexA].a;
@@ -325,8 +325,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float ruA = MathUtils.Cross(ref _rA, ref _uA);
             float ruB = MathUtils.Cross(ref _rB, ref _uB);
 
-            float mA = _invMassA + _invIA * ruA * ruA;
-            float mB = _invMassB + _invIB * ruB * ruB;
+            float mA = _invMassA + invIa * ruA * ruA;
+            float mB = _invMassB + invIb * ruB * ruB;
 
             _mass = mA + Ratio * Ratio * mB;
 
@@ -341,13 +341,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _impulse *= data.step.dtRatio;
 
                 // Warm starting.
-                Vector2 PA = -_impulse * _uA;
-                Vector2 PB = -Ratio * _impulse * _uB;
+                Vector2 pa = -_impulse * _uA;
+                Vector2 pb = -Ratio * _impulse * _uB;
 
-                vA += _invMassA * PA;
-                wA += _invIA * MathUtils.Cross(ref _rA, ref PA);
-                vB += _invMassB * PB;
-                wB += _invIB * MathUtils.Cross(ref _rB, ref PB);
+                vA += _invMassA * pa;
+                wA += invIa * MathUtils.Cross(ref _rA, ref pa);
+                vB += _invMassB * pb;
+                wB += invIb * MathUtils.Cross(ref _rB, ref pb);
             }
             else
             {
@@ -374,16 +374,16 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Vector2 vpA = vA + MathUtils.Cross(wA, ref _rA);
             Vector2 vpB = vB + MathUtils.Cross(wB, ref _rB);
 
-            float Cdot = -Vector2.Dot(_uA, vpA) - Ratio * Vector2.Dot(_uB, vpB);
-            float impulse = -_mass * Cdot;
+            float cdot = -Vector2.Dot(_uA, vpA) - Ratio * Vector2.Dot(_uB, vpB);
+            float impulse = -_mass * cdot;
             _impulse += impulse;
 
-            Vector2 PA = -impulse * _uA;
-            Vector2 PB = -Ratio * impulse * _uB;
-            vA += _invMassA * PA;
-            wA += _invIA * MathUtils.Cross(ref _rA, ref PA);
-            vB += _invMassB * PB;
-            wB += _invIB * MathUtils.Cross(ref _rB, ref PB);
+            Vector2 pa = -impulse * _uA;
+            Vector2 pb = -Ratio * impulse * _uB;
+            vA += _invMassA * pa;
+            wA += invIa * MathUtils.Cross(ref _rA, ref pa);
+            vB += _invMassB * pb;
+            wB += invIb * MathUtils.Cross(ref _rB, ref pb);
 
             data.velocities[_indexA].v = vA;
             data.velocities[_indexA].w = wA;
@@ -438,8 +438,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float ruA = MathUtils.Cross(ref rA, ref uA);
             float ruB = MathUtils.Cross(ref rB, ref uB);
 
-            float mA = _invMassA + _invIA * ruA * ruA;
-            float mB = _invMassB + _invIB * ruB * ruB;
+            float mA = _invMassA + invIa * ruA * ruA;
+            float mB = _invMassB + invIb * ruB * ruB;
 
             float mass = mA + Ratio * Ratio * mB;
 
@@ -448,18 +448,18 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 mass = 1.0f / mass;
             }
 
-            float C = Constant - lengthA - Ratio * lengthB;
-            float linearError = Math.Abs(C);
+            float c = Constant - lengthA - Ratio * lengthB;
+            float linearError = Math.Abs(c);
 
-            float impulse = -mass * C;
+            float impulse = -mass * c;
 
-            Vector2 PA = -impulse * uA;
-            Vector2 PB = -Ratio * impulse * uB;
+            Vector2 pa = -impulse * uA;
+            Vector2 pb = -Ratio * impulse * uB;
 
-            cA += _invMassA * PA;
-            aA += _invIA * MathUtils.Cross(ref rA, ref PA);
-            cB += _invMassB * PB;
-            aB += _invIB * MathUtils.Cross(ref rB, ref PB);
+            cA += _invMassA * pa;
+            aA += invIa * MathUtils.Cross(ref rA, ref pa);
+            cB += _invMassB * pb;
+            aB += invIb * MathUtils.Cross(ref rB, ref pb);
 
             data.positions[_indexA].c = cA;
             data.positions[_indexA].a = aA;
