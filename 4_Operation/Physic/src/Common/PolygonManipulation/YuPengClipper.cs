@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 
-
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
@@ -286,7 +286,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
 
                 if (clipType == PolyClipType.Intersect)
                 {
-                    if (edgeCharacter == 1f)
+                    if (Math.Abs(edgeCharacter - 1f) < float.Epsilon)
                     {
                         resultSimplices.Add(poly1Simplicies[i]);
                     }
@@ -324,7 +324,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
 
                         if (clipType == PolyClipType.Intersect || clipType == PolyClipType.Difference)
                         {
-                            if (edgeCharacter == 1f)
+                            if (Math.Abs(edgeCharacter - 1f) < float.Epsilon)
                             {
                                 resultSimplices.Add(-poly2Simplicies[i]);
                             }
