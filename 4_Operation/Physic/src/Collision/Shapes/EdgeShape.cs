@@ -28,9 +28,10 @@
 //  --------------------------------------------------------------------------
 
 
-
+using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
+using MathUtils = Alis.Core.Aspect.Math.MathUtils;
 
 
 namespace Alis.Core.Physic.Collision.Shapes
@@ -200,7 +201,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             // s = dot(q - v1, r) / dot(r, r)
             Vector2 r = v2 - v1;
             float rr = Vector2.Dot(r, r);
-            if (rr == 0.0f)
+            if (Math.Abs(rr) < Alis.Core.Physic.Common.MathUtils.Epsilon)
             {
                 return false;
             }
