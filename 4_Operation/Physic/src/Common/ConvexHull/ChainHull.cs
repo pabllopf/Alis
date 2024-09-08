@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 
-
+using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 
@@ -73,7 +73,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
             float xmin = pointSet[0].X;
             for (i = 1; i < pointSet.Count; i++)
             {
-                if (pointSet[i].X != xmin)
+                if (Math.Abs(pointSet[i].X - xmin) > float.Epsilon)
                     break;
             }
 
@@ -83,7 +83,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
             {
                 h[++top] = pointSet[minmin];
 
-                if (pointSet[minmax].Y != pointSet[minmin].Y) // a nontrivial segment
+                if (Math.Abs(pointSet[minmax].Y - pointSet[minmin].Y) > float.Epsilon) // a nontrivial segment
                     h[++top] = pointSet[minmax];
 
                 h[++top] = pointSet[minmin]; // add polygon endpoint
@@ -104,7 +104,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
             float xmax = pointSet[pointSet.Count - 1].X;
             for (i = pointSet.Count - 2; i >= 0; i--)
             {
-                if (pointSet[i].X != xmax)
+                if (Math.Abs(pointSet[i].X - xmax) > float.Epsilon)
                     break;
             }
 
