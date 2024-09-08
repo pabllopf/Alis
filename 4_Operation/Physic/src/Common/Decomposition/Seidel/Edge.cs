@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 
-
+using System;
 using System.Collections.Generic;
 
 namespace Alis.Core.Physic.Common.Decomposition.Seidel
@@ -83,7 +83,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             P = p;
             Q = q;
 
-            if (q.X - p.X != 0)
+            if (Math.Abs(q.X - p.X) > float.Epsilon)
                 Slope = (q.Y - p.Y) / (q.X - p.X);
             else
                 Slope = 0;
