@@ -27,12 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
-
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
@@ -44,136 +41,151 @@ namespace Alis.Core.Physic.Dynamics.Joints
     ///     This joint is designed for vehicle suspensions.
     /// </summary>
     /// <remarks>
-    /// Linear constraint (point-to-line)
-    /// d = pB - pA = xB + rB - xA - rA
-    /// C = dot(ay, d)
-    /// Cdot = dot(d, cross(wA, ay)) + dot(ay, vB + cross(wB, rB) - vA - cross(wA, rA))
-    ///      = -dot(ay, vA) - dot(cross(d + rA, ay), wA) + dot(ay, vB) + dot(cross(rB, ay), vB)
-    /// J = [-ay, -cross(d + rA, ay), ay, cross(rB, ay)]
-    ///
-    /// Spring linear constraint
-    /// C = dot(ax, d)
-    /// Cdot = = -dot(ax, vA) - dot(cross(d + rA, ax), wA) + dot(ax, vB) + dot(cross(rB, ax), vB)
-    /// J = [-ax -cross(d+rA, ax) ax cross(rB, ax)]
-    ///
-    /// Motor rotational constraint
-    /// Cdot = wB - wA
-    /// J = [0 0 -1 0 0 1]
+    ///     Linear constraint (point-to-line)
+    ///     d = pB - pA = xB + rB - xA - rA
+    ///     C = dot(ay, d)
+    ///     Cdot = dot(d, cross(wA, ay)) + dot(ay, vB + cross(wB, rB) - vA - cross(wA, rA))
+    ///     = -dot(ay, vA) - dot(cross(d + rA, ay), wA) + dot(ay, vB) + dot(cross(rB, ay), vB)
+    ///     J = [-ay, -cross(d + rA, ay), ay, cross(rB, ay)]
+    ///     Spring linear constraint
+    ///     C = dot(ax, d)
+    ///     Cdot = = -dot(ax, vA) - dot(cross(d + rA, ax), wA) + dot(ax, vB) + dot(cross(rB, ax), vB)
+    ///     J = [-ax -cross(d+rA, ax) ax cross(rB, ax)]
+    ///     Motor rotational constraint
+    ///     Cdot = wB - wA
+    ///     J = [0 0 -1 0 0 1]
     /// </remarks>
     public class WheelJoint : Joint
     {
         /// <summary>
-        /// The ay
+        ///     The ay
         /// </summary>
         private Vector2 _ax, _ay;
+
         /// <summary>
-        /// The axis
+        ///     The axis
         /// </summary>
         private Vector2 _axis;
 
         /// <summary>
-        /// The bias
+        ///     The bias
         /// </summary>
         private float _bias;
+
         /// <summary>
-        /// The enable motor
+        ///     The enable motor
         /// </summary>
         private bool _enableMotor;
+
         /// <summary>
-        /// The gamma
+        ///     The gamma
         /// </summary>
         private float _gamma;
 
         /// <summary>
-        /// The impulse
+        ///     The impulse
         /// </summary>
         private float _impulse;
 
         // Solver temp
         /// <summary>
-        /// The index
+        ///     The index
         /// </summary>
         private int _indexA;
+
         /// <summary>
-        /// The index
+        ///     The index
         /// </summary>
         private int _indexB;
+
         /// <summary>
-        /// The inv ia
-        /// </summary>
-        private float invIa;
-        /// <summary>
-        /// The inv ib
-        /// </summary>
-        private float invIb;
-        /// <summary>
-        /// The inv mass
+        ///     The inv mass
         /// </summary>
         private float _invMassA;
+
         /// <summary>
-        /// The inv mass
+        ///     The inv mass
         /// </summary>
         private float _invMassB;
+
         /// <summary>
-        /// The local center
+        ///     The local center
         /// </summary>
         private Vector2 _localCenterA;
 
         /// <summary>
-        /// The local center
+        ///     The local center
         /// </summary>
         private Vector2 _localCenterB;
 
         // Solver shared
         /// <summary>
-        /// The local axis
+        ///     The local axis
         /// </summary>
         private Vector2 _localXAxis;
+
         /// <summary>
-        /// The local axis
+        ///     The local axis
         /// </summary>
         private Vector2 _localYAxis;
 
         /// <summary>
-        /// The mass
+        ///     The mass
         /// </summary>
         private float _mass;
 
         /// <summary>
-        /// The max motor torque
+        ///     The max motor torque
         /// </summary>
         private float _maxMotorTorque;
+
         /// <summary>
-        /// The motor impulse
+        ///     The motor impulse
         /// </summary>
         private float _motorImpulse;
+
         /// <summary>
-        /// The motor mass
+        ///     The motor mass
         /// </summary>
         private float _motorMass;
+
         /// <summary>
-        /// The motor speed
+        ///     The motor speed
         /// </summary>
         private float _motorSpeed;
+
         /// <summary>
-        /// The bx
+        ///     The bx
         /// </summary>
         private float _sAx, _sBx;
+
         /// <summary>
-        /// The by
+        ///     The by
         /// </summary>
         private float _sAy, _sBy;
+
         /// <summary>
-        /// The spring impulse
+        ///     The spring impulse
         /// </summary>
         private float _springImpulse;
+
         /// <summary>
-        /// The spring mass
+        ///     The spring mass
         /// </summary>
         private float _springMass;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="WheelJoint"/> class
+        ///     The inv ia
+        /// </summary>
+        private float invIa;
+
+        /// <summary>
+        ///     The inv ib
+        /// </summary>
+        private float invIb;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="WheelJoint" /> class
         /// </summary>
         internal WheelJoint() => JointType = JointType.Wheel;
 
@@ -215,7 +227,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public Vector2 LocalAnchorB { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the world anchor a
+        ///     Gets or sets the value of the world anchor a
         /// </summary>
         public override Vector2 WorldAnchorA
         {
@@ -224,7 +236,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Gets or sets the value of the world anchor b
+        ///     Gets or sets the value of the world anchor b
         /// </summary>
         public override Vector2 WorldAnchorB
         {
@@ -340,21 +352,21 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public float GetMotorTorque(float invDt) => invDt * _motorImpulse;
 
         /// <summary>
-        /// Gets the reaction force using the specified inv dt
+        ///     Gets the reaction force using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vector</returns>
         public override Vector2 GetReactionForce(float invDt) => invDt * (_impulse * _ay + _springImpulse * _ax);
 
         /// <summary>
-        /// Gets the reaction torque using the specified inv dt
+        ///     Gets the reaction torque using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The float</returns>
         public override float GetReactionTorque(float invDt) => invDt * _motorImpulse;
 
         /// <summary>
-        /// Inits the velocity constraints using the specified data
+        ///     Inits the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
@@ -498,7 +510,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Solves the velocity constraints using the specified data
+        ///     Solves the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(ref SolverData data)
@@ -566,7 +578,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Describes whether this instance solve position constraints
+        ///     Describes whether this instance solve position constraints
         /// </summary>
         /// <param name="data">The data</param>
         /// <returns>The bool</returns>

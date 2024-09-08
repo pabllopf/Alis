@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:WorldXmlSerializer.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -12,17 +41,17 @@ using Alis.Core.Physic.Dynamics.Joints;
 namespace Alis.Core.Physic.Common
 {
     /// <summary>
-    /// The world xml serializer class
+    ///     The world xml serializer class
     /// </summary>
     internal static class WorldXmlSerializer
     {
         /// <summary>
-        /// The writer
+        ///     The writer
         /// </summary>
         private static XmlWriter _writer;
 
         /// <summary>
-        /// Serializes the shape using the specified shape
+        ///     Serializes the shape using the specified shape
         /// </summary>
         /// <param name="shape">The shape</param>
         /// <exception cref="Exception"></exception>
@@ -83,7 +112,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Serializes the fixture using the specified fixtures
+        ///     Serializes the fixture using the specified fixtures
         /// </summary>
         /// <param name="fixtures">The fixtures</param>
         /// <param name="fixture">The fixture</param>
@@ -113,7 +142,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Serializes the body using the specified fixtures
+        ///     Serializes the body using the specified fixtures
         /// </summary>
         /// <param name="fixtures">The fixtures</param>
         /// <param name="shapes">The shapes</param>
@@ -155,7 +184,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Serializes the joint using the specified bodies
+        ///     Serializes the joint using the specified bodies
         /// </summary>
         /// <param name="bodies">The bodies</param>
         /// <param name="joint">The joint</param>
@@ -304,7 +333,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Writes the dynamic type using the specified type
+        ///     Writes the dynamic type using the specified type
         /// </summary>
         /// <param name="type">The type</param>
         /// <param name="val">The val</param>
@@ -319,7 +348,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Writes the element using the specified name
+        ///     Writes the element using the specified name
         /// </summary>
         /// <param name="name">The name</param>
         /// <param name="vec">The vec</param>
@@ -329,7 +358,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Writes the element using the specified name
+        ///     Writes the element using the specified name
         /// </summary>
         /// <param name="name">The name</param>
         /// <param name="val">The val</param>
@@ -339,7 +368,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Writes the element using the specified name
+        ///     Writes the element using the specified name
         /// </summary>
         /// <param name="name">The name</param>
         /// <param name="val">The val</param>
@@ -349,7 +378,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Writes the element using the specified name
+        ///     Writes the element using the specified name
         /// </summary>
         /// <param name="name">The name</param>
         /// <param name="val">The val</param>
@@ -359,14 +388,14 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Floats the to string using the specified value
+        ///     Floats the to string using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The string</returns>
         private static string FloatToString(float value) => value.ToString(CultureInfo.InvariantCulture);
 
         /// <summary>
-        /// Serializes the world
+        ///     Serializes the world
         /// </summary>
         /// <param name="world">The world</param>
         /// <param name="stream">The stream</param>

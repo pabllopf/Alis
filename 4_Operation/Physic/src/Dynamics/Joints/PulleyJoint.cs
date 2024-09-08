@@ -27,13 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
-
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
@@ -62,66 +59,78 @@ namespace Alis.Core.Physic.Dynamics.Joints
     {
         // Solver shared
         /// <summary>
-        /// The impulse
+        ///     The impulse
         /// </summary>
         private float _impulse;
 
         // Solver temp
         /// <summary>
-        /// The index
+        ///     The index
         /// </summary>
         private int _indexA;
+
         /// <summary>
-        /// The index
+        ///     The index
         /// </summary>
         private int _indexB;
+
         /// <summary>
-        /// The inv ia
-        /// </summary>
-        private float invIa;
-        /// <summary>
-        /// The inv ib
-        /// </summary>
-        private float invIb;
-        /// <summary>
-        /// The inv mass
+        ///     The inv mass
         /// </summary>
         private float _invMassA;
+
         /// <summary>
-        /// The inv mass
+        ///     The inv mass
         /// </summary>
         private float _invMassB;
+
         /// <summary>
-        /// The local center
+        ///     The local center
         /// </summary>
         private Vector2 _localCenterA;
+
         /// <summary>
-        /// The local center
+        ///     The local center
         /// </summary>
         private Vector2 _localCenterB;
+
         /// <summary>
-        /// The mass
+        ///     The mass
         /// </summary>
         private float _mass;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         private Vector2 _rA;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         private Vector2 _rB;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         private Vector2 _uA;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         private Vector2 _uB;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PulleyJoint"/> class
+        ///     The inv ia
+        /// </summary>
+        private float invIa;
+
+        /// <summary>
+        ///     The inv ib
+        /// </summary>
+        private float invIb;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="PulleyJoint" /> class
         /// </summary>
         internal PulleyJoint() => JointType = JointType.Pulley;
 
@@ -243,12 +252,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
         //FPE note: Only used for serialization.
         /// <summary>
-        /// Gets or sets the value of the constant
+        ///     Gets or sets the value of the constant
         /// </summary>
         internal float Constant { get; set; }
 
         /// <summary>
-        /// Gets the reaction force using the specified inv dt
+        ///     Gets the reaction force using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vector</returns>
@@ -259,14 +268,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Gets the reaction torque using the specified inv dt
+        ///     Gets the reaction torque using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The float</returns>
         public override float GetReactionTorque(float invDt) => 0.0f;
 
         /// <summary>
-        /// Inits the velocity constraints using the specified data
+        ///     Inits the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
@@ -361,7 +370,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Solves the velocity constraints using the specified data
+        ///     Solves the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(ref SolverData data)
@@ -392,7 +401,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Describes whether this instance solve position constraints
+        ///     Describes whether this instance solve position constraints
         /// </summary>
         /// <param name="data">The data</param>
         /// <returns>The bool</returns>

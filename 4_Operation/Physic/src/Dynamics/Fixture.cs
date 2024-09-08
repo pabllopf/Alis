@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
@@ -36,7 +34,6 @@ using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Dynamics.Contacts;
-
 
 namespace Alis.Core.Physic.Dynamics
 {
@@ -48,27 +45,32 @@ namespace Alis.Core.Physic.Dynamics
     public class Fixture
     {
         /// <summary>
-        /// The collides with
+        ///     The collides with
         /// </summary>
         internal Category _collidesWith;
+
         /// <summary>
-        /// The collision categories
+        ///     The collision categories
         /// </summary>
         internal Category _collisionCategories;
+
         /// <summary>
-        /// The collision group
+        ///     The collision group
         /// </summary>
         internal short _collisionGroup;
+
         /// <summary>
-        /// The friction
+        ///     The friction
         /// </summary>
         private float _friction;
+
         /// <summary>
-        /// The is sensor
+        ///     The is sensor
         /// </summary>
         private bool _isSensor;
+
         /// <summary>
-        /// The restitution
+        ///     The restitution
         /// </summary>
         private float _restitution;
 
@@ -103,7 +105,7 @@ namespace Alis.Core.Physic.Dynamics
         public object Tag;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Fixture"/> class
+        ///     Initializes a new instance of the <see cref="Fixture" /> class
         /// </summary>
         internal Fixture() // Note: This is internal because it's used by Deserialization.
         {
@@ -117,7 +119,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Fixture"/> class
+        ///     Initializes a new instance of the <see cref="Fixture" /> class
         /// </summary>
         /// <param name="shape">The shape</param>
         public Fixture(Shape shape) : this()
@@ -130,11 +132,12 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Gets the value of the proxies
+        ///     Gets the value of the proxies
         /// </summary>
         public FixtureProxy[] Proxies { get; }
+
         /// <summary>
-        /// Gets or sets the value of the proxy count
+        ///     Gets or sets the value of the proxy count
         /// </summary>
         public int ProxyCount { get; private set; }
 
@@ -326,7 +329,7 @@ namespace Alis.Core.Physic.Dynamics
 
         // These support body activation/deactivation.
         /// <summary>
-        /// Creates the proxies using the specified broad phase
+        ///     Creates the proxies using the specified broad phase
         /// </summary>
         /// <param name="broadPhase">The broad phase</param>
         /// <param name="xf">The xf</param>
@@ -353,7 +356,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Destroys the proxies using the specified broad phase
+        ///     Destroys the proxies using the specified broad phase
         /// </summary>
         /// <param name="broadPhase">The broad phase</param>
         internal void DestroyProxies(IBroadPhase broadPhase)
@@ -369,7 +372,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Synchronizes the broad phase
+        ///     Synchronizes the broad phase
         /// </summary>
         /// <param name="broadPhase">The broad phase</param>
         /// <param name="transform1">The transform</param>

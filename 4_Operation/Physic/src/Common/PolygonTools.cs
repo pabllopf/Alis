@@ -27,18 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 
-
 namespace Alis.Core.Physic.Common
 {
     /// <summary>
-    /// The polygon tools class
+    ///     The polygon tools class
     /// </summary>
     public static class PolygonTools
     {
@@ -192,7 +189,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Creates the arc using the specified radians
+        ///     Creates the arc using the specified radians
         /// </summary>
         /// <param name="radians">The radians</param>
         /// <param name="sides">The sides</param>
@@ -352,7 +349,5 @@ namespace Alis.Core.Physic.Common
 
             return vertices;
         }
-
-
     }
 }

@@ -27,23 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
-
-
 using System.Collections.Generic;
 using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay;
 
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
 {
     /// <summary>
-    /// The point set class
+    ///     The point set class
     /// </summary>
-    /// <seealso cref="Triangulatable"/>
+    /// <seealso cref="Triangulatable" />
     internal class PointSet : Triangulatable
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PointSet"/> class
+        ///     Initializes a new instance of the <see cref="PointSet" /> class
         /// </summary>
         /// <param name="points">The points</param>
         public PointSet(List<TriangulationPoint> points) => Points = new List<TriangulationPoint>(points);
@@ -51,21 +47,22 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
         #region Triangulatable Members
 
         /// <summary>
-        /// Gets the value of the points
+        ///     Gets the value of the points
         /// </summary>
         public IList<TriangulationPoint> Points { get; }
+
         /// <summary>
-        /// Gets or sets the value of the triangles
+        ///     Gets or sets the value of the triangles
         /// </summary>
         public IList<DelaunayTriangle> Triangles { get; private set; }
 
         /// <summary>
-        /// Gets the value of the triangulation mode
+        ///     Gets the value of the triangulation mode
         /// </summary>
         public virtual TriangulationMode TriangulationMode => TriangulationMode.Unconstrained;
 
         /// <summary>
-        /// Adds the triangle using the specified t
+        ///     Adds the triangle using the specified t
         /// </summary>
         /// <param name="t">The </param>
         public void AddTriangle(DelaunayTriangle t)
@@ -74,7 +71,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
         }
 
         /// <summary>
-        /// Adds the triangles using the specified list
+        ///     Adds the triangles using the specified list
         /// </summary>
         /// <param name="list">The list</param>
         public void AddTriangles(IEnumerable<DelaunayTriangle> list)
@@ -83,7 +80,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
         }
 
         /// <summary>
-        /// Clears the triangles
+        ///     Clears the triangles
         /// </summary>
         public void ClearTriangles()
         {
@@ -91,7 +88,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
         }
 
         /// <summary>
-        /// Prepares the triangulation using the specified tcx
+        ///     Prepares the triangulation using the specified tcx
         /// </summary>
         /// <param name="tcx">The tcx</param>
         public virtual void PrepareTriangulation(TriangulationContext tcx)

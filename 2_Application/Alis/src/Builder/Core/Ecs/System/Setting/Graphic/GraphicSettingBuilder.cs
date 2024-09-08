@@ -66,7 +66,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Graphic
         }
 
         /// <summary>
-        /// Targets the value
+        ///     Targets the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The graphic setting builder</returns>
@@ -75,9 +75,9 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Graphic
             graphicSetting.Target = value;
             return this;
         }
-        
+
         /// <summary>
-        /// Frames the rate using the specified value
+        ///     Frames the rate using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The graphic setting builder</returns>

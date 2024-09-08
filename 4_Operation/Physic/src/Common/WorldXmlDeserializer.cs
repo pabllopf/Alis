@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:WorldXmlDeserializer.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -12,12 +41,12 @@ using Alis.Core.Physic.Dynamics.Joints;
 namespace Alis.Core.Physic.Common
 {
     /// <summary>
-    /// The world xml deserializer class
+    ///     The world xml deserializer class
     /// </summary>
     internal static class WorldXmlDeserializer
     {
         /// <summary>
-        /// Deserializes the stream
+        ///     Deserializes the stream
         /// </summary>
         /// <param name="stream">The stream</param>
         /// <returns>The world</returns>
@@ -29,7 +58,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Deserializes the world
+        ///     Deserializes the world
         /// </summary>
         /// <param name="world">The world</param>
         /// <param name="stream">The stream</param>
@@ -707,7 +736,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Reads the vector using the specified node
+        ///     Reads the vector using the specified node
         /// </summary>
         /// <param name="node">The node</param>
         /// <returns>The vector</returns>
@@ -718,7 +747,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Reads the simple type using the specified node
+        ///     Reads the simple type using the specified node
         /// </summary>
         /// <param name="node">The node</param>
         /// <param name="type">The type</param>
@@ -747,7 +776,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Parses the float using the specified value
+        ///     Parses the float using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The float</returns>

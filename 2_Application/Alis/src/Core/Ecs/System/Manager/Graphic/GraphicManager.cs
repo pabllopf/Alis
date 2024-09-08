@@ -54,7 +54,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
     public class GraphicManager : AManager
     {
         /// <summary>
-        /// The pixels per meter
+        ///     The pixels per meter
         /// </summary>
         private const float PixelsPerMeter = 32.0f;
 
@@ -278,7 +278,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         }
 
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public override void OnUpdate()
         {

@@ -1,4 +1,4 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -30,7 +30,7 @@
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    /// The solver iterations
+    ///     The solver iterations
     /// </summary>
     public struct SolverIterations
     {

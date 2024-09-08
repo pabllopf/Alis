@@ -38,17 +38,17 @@ namespace Alis.Core.Ecs.System.Manager.Physic
     public class PhysicManager : AManager
     {
         /// <summary>
+        ///     The time step physics
+        /// </summary>
+        private float timeStepPhysics;
+
+        /// <summary>
         ///     The vector
         /// </summary>
         public World World = new World();
 
         /// <summary>
-        /// The time step physics
-        /// </summary>
-        private float timeStepPhysics;
-
-        /// <summary>
-        /// Ons the init
+        ///     Ons the init
         /// </summary>
         public override void OnInit()
         {
@@ -56,7 +56,7 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         }
 
         /// <summary>
-        /// Ons the awake
+        ///     Ons the awake
         /// </summary>
         public override void OnAwake()
         {
@@ -98,7 +98,7 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         }
 
         /// <summary>
-        /// Ons the physic update
+        ///     Ons the physic update
         /// </summary>
         public override void OnPhysicUpdate()
         {

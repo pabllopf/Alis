@@ -27,9 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
-
 using System;
 using System.Collections.Concurrent;
 using System.Diagnostics;
@@ -43,49 +40,57 @@ using Alis.Core.Physic.Common;
 namespace Alis.Core.Physic.Dynamics.Contacts
 {
     /// <summary>
-    /// The contact solver class
+    ///     The contact solver class
     /// </summary>
     public class ContactSolver
     {
         /// <summary>
-        /// The contacts
+        ///     The contacts
         /// </summary>
         public Contact[] _contacts;
+
         /// <summary>
-        /// The count
+        ///     The count
         /// </summary>
         public int _count;
+
         /// <summary>
-        /// The locks
+        ///     The locks
         /// </summary>
         internal int[] _locks;
+
         /// <summary>
-        /// The position constraints
+        ///     The position constraints
         /// </summary>
         public ContactPositionConstraint[] _positionConstraints;
+
         /// <summary>
-        /// The position constraints multithread threshold
+        ///     The position constraints multithread threshold
         /// </summary>
         private int _positionConstraintsMultithreadThreshold;
+
         /// <summary>
-        /// The positions
+        ///     The positions
         /// </summary>
         internal SolverPosition[] _positions;
+
         /// <summary>
-        /// The velocities
+        ///     The velocities
         /// </summary>
         internal SolverVelocity[] _velocities;
+
         /// <summary>
-        /// The velocity constraints
+        ///     The velocity constraints
         /// </summary>
         public ContactVelocityConstraint[] _velocityConstraints;
+
         /// <summary>
-        /// The velocity constraints multithread threshold
+        ///     The velocity constraints multithread threshold
         /// </summary>
         private int _velocityConstraintsMultithreadThreshold;
 
         /// <summary>
-        /// Resets the step
+        ///     Resets the step
         /// </summary>
         /// <param name="step">The step</param>
         /// <param name="count">The count</param>
@@ -200,7 +205,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Initializes the velocity constraints
+        ///     Initializes the velocity constraints
         /// </summary>
         public void InitializeVelocityConstraints()
         {
@@ -304,7 +309,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     else
                     {
                         // The constraints are redundant, just use one.
-                        
+
                         vc.pointCount = 1;
                     }
                 }
@@ -312,7 +317,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Warms the start
+        ///     Warms the start
         /// </summary>
         public void WarmStart()
         {
@@ -355,7 +360,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Solves the velocity constraints
+        ///     Solves the velocity constraints
         /// </summary>
         public void SolveVelocityConstraints()
         {
@@ -388,7 +393,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Solves the velocity constraints using the specified start
+        ///     Solves the velocity constraints using the specified start
         /// </summary>
         /// <param name="start">The start</param>
         /// <param name="end">The end</param>
@@ -728,7 +733,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Stores the impulses
+        ///     Stores the impulses
         /// </summary>
         public void StoreImpulses()
         {
@@ -750,7 +755,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Describes whether this instance solve position constraints
+        ///     Describes whether this instance solve position constraints
         /// </summary>
         /// <returns>The contacts okay</returns>
         public bool SolvePositionConstraints()
@@ -784,7 +789,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Describes whether this instance solve position constraints
+        ///     Describes whether this instance solve position constraints
         /// </summary>
         /// <param name="start">The start</param>
         /// <param name="end">The end</param>
@@ -892,7 +897,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
         // Sequential position solver for position constraints.
         /// <summary>
-        /// Describes whether this instance solve toi position constraints
+        ///     Describes whether this instance solve toi position constraints
         /// </summary>
         /// <param name="toiIndexA">The toi index</param>
         /// <param name="toiIndexB">The toi index</param>
@@ -982,7 +987,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         }
 
         /// <summary>
-        /// The world manifold class
+        ///     The world manifold class
         /// </summary>
         public static class WorldManifold
         {
@@ -1065,12 +1070,12 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         }
 
         /// <summary>
-        /// The position solver manifold class
+        ///     The position solver manifold class
         /// </summary>
         private static class PositionSolverManifold
         {
             /// <summary>
-            /// Initializes the pc
+            ///     Initializes the pc
             /// </summary>
             /// <param name="pc">The pc</param>
             /// <param name="xfA">The xf</param>

@@ -27,12 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
-
 
 namespace Alis.Core.Physic.Common.PolygonManipulation
 {
@@ -144,7 +142,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 }
             }
 
-            
+
             //Remove empty vertice collections
             for (int i = polys.Count - 1; i >= 0; i--)
             {
@@ -156,7 +154,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         }
 
         /// <summary>
-        /// Adds the triangle using the specified t
+        ///     Adds the triangle using the specified t
         /// </summary>
         /// <param name="t">The </param>
         /// <param name="vertices">The vertices</param>

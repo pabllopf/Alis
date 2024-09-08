@@ -33,25 +33,27 @@ using System.Text;
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
 {
     /// <summary>
-    /// The advancing front class
+    ///     The advancing front class
     /// </summary>
     internal class AdvancingFront
     {
         /// <summary>
-        /// The head
+        ///     The head
         /// </summary>
         public AdvancingFrontNode Head;
+
         /// <summary>
-        /// The search
+        ///     The search
         /// </summary>
         protected AdvancingFrontNode Search;
+
         /// <summary>
-        /// The tail
+        ///     The tail
         /// </summary>
         public AdvancingFrontNode Tail;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AdvancingFront"/> class
+        ///     Initializes a new instance of the <see cref="AdvancingFront" /> class
         /// </summary>
         /// <param name="head">The head</param>
         /// <param name="tail">The tail</param>
@@ -65,7 +67,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Adds the node using the specified node
+        ///     Adds the node using the specified node
         /// </summary>
         /// <param name="node">The node</param>
         public void AddNode(AdvancingFrontNode node)
@@ -74,7 +76,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Removes the node using the specified node
+        ///     Removes the node using the specified node
         /// </summary>
         /// <param name="node">The node</param>
         public void RemoveNode(AdvancingFrontNode node)
@@ -83,7 +85,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Returns the string
+        ///     Returns the string
         /// </summary>
         /// <returns>The string</returns>
         public override string ToString()
@@ -106,7 +108,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         ///     Removed an overload that depended on this being exact
         /// </summary>
         private AdvancingFrontNode FindSearchNode(double x) =>
-            
             Search;
 
         /// <summary>
@@ -115,7 +116,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         public AdvancingFrontNode LocateNode(TriangulationPoint point) => LocateNode(point.X);
 
         /// <summary>
-        /// Locates the node using the specified x
+        ///     Locates the node using the specified x
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The advancing front node</returns>

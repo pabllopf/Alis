@@ -30,35 +30,35 @@
 using System;
 using Alis.Core.Aspect.Math.Vector;
 
-
 namespace Alis.Core.Physic.Common
 {
     /// <summary>
-    /// The complex
+    ///     The complex
     /// </summary>
     public struct Complex
     {
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public float R;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public float i;
 
         /// <summary>
-        /// Gets the value of the one
+        ///     Gets the value of the one
         /// </summary>
         public static Complex One { get; } = new Complex(1, 0);
 
         /// <summary>
-        /// Gets the value of the imaginary one
+        ///     Gets the value of the imaginary one
         /// </summary>
         public static Complex ImaginaryOne { get; } = new Complex(0, 1);
 
         /// <summary>
-        /// Gets or sets the value of the phase
+        ///     Gets or sets the value of the phase
         /// </summary>
         public float Phase
         {
@@ -77,13 +77,13 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Gets the value of the magnitude
+        ///     Gets the value of the magnitude
         /// </summary>
         public float Magnitude => (float) Math.Sqrt(MagnitudeSquared());
 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Complex"/> class
+        ///     Initializes a new instance of the <see cref="Complex" /> class
         /// </summary>
         /// <param name="real">The real</param>
         /// <param name="imaginary">The imaginary</param>
@@ -94,7 +94,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Creates the angle using the specified angle
+        ///     Creates the angle using the specified angle
         /// </summary>
         /// <param name="angle">The angle</param>
         /// <returns>The complex</returns>
@@ -109,7 +109,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Conjugates this instance
+        ///     Conjugates this instance
         /// </summary>
         public void Conjugate()
         {
@@ -117,7 +117,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Negates this instance
+        ///     Negates this instance
         /// </summary>
         public void Negate()
         {
@@ -126,13 +126,13 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Magnitudes the squared
+        ///     Magnitudes the squared
         /// </summary>
         /// <returns>The float</returns>
         public float MagnitudeSquared() => R * R + i * i;
 
         /// <summary>
-        /// Normalizes this instance
+        ///     Normalizes this instance
         /// </summary>
         public void Normalize()
         {
@@ -142,13 +142,13 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Returns the vector 2
+        ///     Returns the vector 2
         /// </summary>
         /// <returns>The vector</returns>
         public Vector2 ToVector2() => new Vector2(R, i);
 
         /// <summary>
-        /// Multiplies the left
+        ///     Multiplies the left
         /// </summary>
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
@@ -157,7 +157,7 @@ namespace Alis.Core.Physic.Common
             left.i * right.R + left.R * right.i);
 
         /// <summary>
-        /// Divides the left
+        ///     Divides the left
         /// </summary>
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
@@ -166,7 +166,7 @@ namespace Alis.Core.Physic.Common
             right.R * left.i - right.i * left.R);
 
         /// <summary>
-        /// Divides the left
+        ///     Divides the left
         /// </summary>
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
@@ -178,7 +178,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Multiplies the left
+        ///     Multiplies the left
         /// </summary>
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
@@ -187,7 +187,7 @@ namespace Alis.Core.Physic.Common
             left.Y * right.R + left.X * right.i);
 
         /// <summary>
-        /// Multiplies the left
+        ///     Multiplies the left
         /// </summary>
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
@@ -199,7 +199,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Multiplies the left
+        ///     Multiplies the left
         /// </summary>
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
@@ -208,7 +208,7 @@ namespace Alis.Core.Physic.Common
             left.Y * right.R + left.X * right.i);
 
         /// <summary>
-        /// Divides the left
+        ///     Divides the left
         /// </summary>
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
@@ -217,7 +217,7 @@ namespace Alis.Core.Physic.Common
             left.Y * right.R - left.X * right.i);
 
         /// <summary>
-        /// Divides the left
+        ///     Divides the left
         /// </summary>
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
@@ -226,7 +226,7 @@ namespace Alis.Core.Physic.Common
             left.Y * right.R - left.X * right.i);
 
         /// <summary>
-        /// Divides the left
+        ///     Divides the left
         /// </summary>
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
@@ -238,21 +238,21 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Conjugates the value
+        ///     Conjugates the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The complex</returns>
         public static Complex Conjugate(ref Complex value) => new Complex(value.R, -value.i);
 
         /// <summary>
-        /// Negates the value
+        ///     Negates the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The complex</returns>
         public static Complex Negate(ref Complex value) => new Complex(-value.R, -value.i);
 
         /// <summary>
-        /// Normalizes the value
+        ///     Normalizes the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The complex</returns>
@@ -263,7 +263,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Returns the string
+        ///     Returns the string
         /// </summary>
         /// <returns>The string</returns>
         public override string ToString() => string.Format("{{R: {0} i: {1} Phase: {2} Magnitude: {3}}}", R, i, Phase, Magnitude);

@@ -58,7 +58,7 @@ namespace Alis.Core.Ecs.Component.Render
         private int h;
 
         /// <summary>
-        /// The rectangle
+        ///     The rectangle
         /// </summary>
         private RectangleI Rectangle;
 
@@ -153,7 +153,7 @@ namespace Alis.Core.Ecs.Component.Render
         }
 
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public override void OnUpdate()
         {
@@ -168,7 +168,7 @@ namespace Alis.Core.Ecs.Component.Render
         }
 
         /// <summary>
-        /// Renders the renderer
+        ///     Renders the renderer
         /// </summary>
         /// <param name="renderer">The renderer</param>
         /// <param name="cameraPosition">The camera position</param>
@@ -202,7 +202,7 @@ namespace Alis.Core.Ecs.Component.Render
         }
 
         /// <summary>
-        /// Describes whether this instance is visible
+        ///     Describes whether this instance is visible
         /// </summary>
         /// <param name="cameraPosition">The camera position</param>
         /// <param name="cameraResolution">The camera resolution</param>
@@ -249,7 +249,7 @@ namespace Alis.Core.Ecs.Component.Render
         }
 
         /// <summary>
-        /// Mins the corners x
+        ///     Mins the corners x
         /// </summary>
         /// <param name="cornersX">The corners</param>
         /// <returns>The min</returns>
@@ -268,7 +268,7 @@ namespace Alis.Core.Ecs.Component.Render
         }
 
         /// <summary>
-        /// Maxes the corners x
+        ///     Maxes the corners x
         /// </summary>
         /// <param name="cornersX">The corners</param>
         /// <returns>The max</returns>

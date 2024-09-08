@@ -370,7 +370,7 @@ namespace Alis.Core.Ecs.System
         public void SetSceneManager(SceneManager sceneManager) => SceneManager = sceneManager;
 
         /// <summary>
-        /// Ons the physic update
+        ///     Ons the physic update
         /// </summary>
         public void OnPhysicUpdate()
         {

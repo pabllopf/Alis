@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
@@ -46,7 +45,7 @@ namespace Alis.Core.Physic.Collision.Shapes
     public class PolygonShape : Shape
     {
         /// <summary>
-        /// The vertices
+        ///     The vertices
         /// </summary>
         private Vertices _vertices;
 
@@ -80,7 +79,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PolygonShape"/> class
+        ///     Initializes a new instance of the <see cref="PolygonShape" /> class
         /// </summary>
         internal PolygonShape()
             : base(0)
@@ -137,17 +136,17 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>
-        /// Gets or sets the value of the normals
+        ///     Gets or sets the value of the normals
         /// </summary>
         public Vertices Normals { get; private set; }
 
         /// <summary>
-        /// Gets the value of the child count
+        ///     Gets the value of the child count
         /// </summary>
         public override int ChildCount => 1;
 
         /// <summary>
-        /// Computes the properties
+        ///     Computes the properties
         /// </summary>
         protected override void ComputeProperties()
         {
@@ -244,7 +243,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>
-        /// Describes whether this instance test point
+        ///     Describes whether this instance test point
         /// </summary>
         /// <param name="transform">The transform</param>
         /// <param name="point">The point</param>
@@ -266,7 +265,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>
-        /// Describes whether this instance ray cast
+        ///     Describes whether this instance ray cast
         /// </summary>
         /// <param name="output">The output</param>
         /// <param name="input">The input</param>
@@ -387,7 +386,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>
-        /// Computes the submerged area using the specified normal
+        ///     Computes the submerged area using the specified normal
         /// </summary>
         /// <param name="normal">The normal</param>
         /// <param name="offset">The offset</param>
@@ -514,7 +513,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>
-        /// Describes whether this instance compare to
+        ///     Describes whether this instance compare to
         /// </summary>
         /// <param name="shape">The shape</param>
         /// <returns>The bool</returns>
@@ -533,7 +532,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>
-        /// Clones this instance
+        ///     Clones this instance
         /// </summary>
         /// <returns>The clone</returns>
         public override Shape Clone()

@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
@@ -36,12 +34,11 @@ using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Common.Decomposition;
 
-
 namespace Alis.Core.Physic.Dynamics
 {
     // An easy to use factory for creating bodies
     /// <summary>
-    /// The body class
+    ///     The body class
     /// </summary>
     public partial class Body
     {
@@ -62,7 +59,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Creates the edge using the specified start
+        ///     Creates the edge using the specified start
         /// </summary>
         /// <param name="start">The start</param>
         /// <param name="end">The end</param>
@@ -74,7 +71,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Creates the chain shape using the specified vertices
+        ///     Creates the chain shape using the specified vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <returns>The fixture</returns>
@@ -85,7 +82,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Creates the loop shape using the specified vertices
+        ///     Creates the loop shape using the specified vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <returns>The fixture</returns>
@@ -96,7 +93,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Creates the rectangle using the specified width
+        ///     Creates the rectangle using the specified width
         /// </summary>
         /// <param name="width">The width</param>
         /// <param name="height">The height</param>
@@ -112,7 +109,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Creates the circle using the specified radius
+        ///     Creates the circle using the specified radius
         /// </summary>
         /// <param name="radius">The radius</param>
         /// <param name="density">The density</param>
@@ -128,7 +125,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Creates the circle using the specified radius
+        ///     Creates the circle using the specified radius
         /// </summary>
         /// <param name="radius">The radius</param>
         /// <param name="density">The density</param>
@@ -146,7 +143,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Creates the polygon using the specified vertices
+        ///     Creates the polygon using the specified vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <param name="density">The density</param>
@@ -162,7 +159,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Creates the ellipse using the specified x radius
+        ///     Creates the ellipse using the specified x radius
         /// </summary>
         /// <param name="xRadius">The radius</param>
         /// <param name="yRadius">The radius</param>
@@ -185,7 +182,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Creates the compound polygon using the specified list
+        ///     Creates the compound polygon using the specified list
         /// </summary>
         /// <param name="list">The list</param>
         /// <param name="density">The density</param>
@@ -213,7 +210,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Creates the line arc using the specified radians
+        ///     Creates the line arc using the specified radians
         /// </summary>
         /// <param name="radians">The radians</param>
         /// <param name="sides">The sides</param>
@@ -228,7 +225,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Creates the solid arc using the specified density
+        ///     Creates the solid arc using the specified density
         /// </summary>
         /// <param name="density">The density</param>
         /// <param name="radians">The radians</param>

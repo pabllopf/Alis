@@ -27,13 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
-
 
 namespace Alis.Core.Physic.Common.Decomposition
 {
@@ -64,7 +61,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         }
 
         /// <summary>
-        /// Triangulates the polygon using the specified vertices
+        ///     Triangulates the polygon using the specified vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <returns>The list</returns>
@@ -189,7 +186,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         }
 
         /// <summary>
-        /// Ats the i
+        ///     Ats the i
         /// </summary>
         /// <param name="i">The </param>
         /// <param name="vertices">The vertices</param>
@@ -201,7 +198,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         }
 
         /// <summary>
-        /// Copies the i
+        ///     Copies the i
         /// </summary>
         /// <param name="i">The </param>
         /// <param name="j">The </param>
@@ -223,7 +220,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         }
 
         /// <summary>
-        /// Describes whether can see
+        ///     Describes whether can see
         /// </summary>
         /// <param name="i">The </param>
         /// <param name="j">The </param>
@@ -268,7 +265,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         }
 
         /// <summary>
-        /// Describes whether reflex
+        ///     Describes whether reflex
         /// </summary>
         /// <param name="i">The </param>
         /// <param name="vertices">The vertices</param>
@@ -276,7 +273,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         private static bool Reflex(int i, Vertices vertices) => Right(i, vertices);
 
         /// <summary>
-        /// Describes whether right
+        ///     Describes whether right
         /// </summary>
         /// <param name="i">The </param>
         /// <param name="vertices">The vertices</param>
@@ -284,7 +281,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         private static bool Right(int i, Vertices vertices) => Right(At(i - 1, vertices), At(i, vertices), At(i + 1, vertices));
 
         /// <summary>
-        /// Describes whether left
+        ///     Describes whether left
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="b">The </param>
@@ -293,7 +290,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         private static bool Left(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) > 0;
 
         /// <summary>
-        /// Describes whether left on
+        ///     Describes whether left on
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="b">The </param>
@@ -302,7 +299,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         private static bool LeftOn(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) >= 0;
 
         /// <summary>
-        /// Describes whether right
+        ///     Describes whether right
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="b">The </param>
@@ -311,7 +308,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         private static bool Right(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) < 0;
 
         /// <summary>
-        /// Describes whether right on
+        ///     Describes whether right on
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="b">The </param>
@@ -320,7 +317,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         private static bool RightOn(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) <= 0;
 
         /// <summary>
-        /// Squares the dist using the specified a
+        ///     Squares the dist using the specified a
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="b">The </param>

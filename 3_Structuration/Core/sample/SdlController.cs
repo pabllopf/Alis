@@ -65,7 +65,7 @@ namespace Alis.Core.Sample
         private const int Height = 480;
 
         /// <summary>
-        /// The pixels per meter
+        ///     The pixels per meter
         /// </summary>
         private const float PIXELS_PER_METER = 32f;
 
@@ -120,23 +120,24 @@ namespace Alis.Core.Sample
         private static RectangleI _dstRectFont1;
 
         /// <summary>
-        /// The player body
+        ///     The player body
         /// </summary>
         private static Body _playerBody;
+
         /// <summary>
-        /// The player body radius
+        ///     The player body radius
         /// </summary>
         private static readonly float _playerBodyRadius = 1.5f / 2f; // player diameter is 1.5 meters
 
         // Add a variable to store the desired frame rate
         /// <summary>
-        /// The target fps
+        ///     The target fps
         /// </summary>
         private static readonly int targetFps = 60;
 
         // Calculate the frame duration based on the desired frame rate
         /// <summary>
-        /// The target fps
+        ///     The target fps
         /// </summary>
         private static readonly int frameDuration = 1000 / targetFps;
 
@@ -587,7 +588,7 @@ namespace Alis.Core.Sample
 
 
         /// <summary>
-        /// Draws the circle using the specified renderer
+        ///     Draws the circle using the specified renderer
         /// </summary>
         /// <param name="renderer">The renderer</param>
         /// <param name="x0">The </param>
@@ -629,7 +630,7 @@ namespace Alis.Core.Sample
         }
 
         /// <summary>
-        /// Draws the half circle using the specified renderer
+        ///     Draws the half circle using the specified renderer
         /// </summary>
         /// <param name="renderer">The renderer</param>
         /// <param name="x0">The </param>
@@ -674,7 +675,7 @@ namespace Alis.Core.Sample
         }
 
         /// <summary>
-        /// Draws the circle with line using the specified renderer
+        ///     Draws the circle with line using the specified renderer
         /// </summary>
         /// <param name="renderer">The renderer</param>
         /// <param name="x0">The </param>

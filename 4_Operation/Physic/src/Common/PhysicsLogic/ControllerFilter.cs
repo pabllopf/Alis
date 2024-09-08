@@ -27,22 +27,20 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 namespace Alis.Core.Physic.Common.PhysicsLogic
 {
     /// <summary>
-    /// The controller filter
+    ///     The controller filter
     /// </summary>
     public struct ControllerFilter
     {
         /// <summary>
-        /// The controller categories
+        ///     The controller categories
         /// </summary>
         public ControllerCategory ControllerCategories;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ControllerFilter"/> class
+        ///     Initializes a new instance of the <see cref="ControllerFilter" /> class
         /// </summary>
         /// <param name="controllerCategory">The controller category</param>
         public ControllerFilter(ControllerCategory controllerCategory) => ControllerCategories = controllerCategory;

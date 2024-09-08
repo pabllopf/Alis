@@ -50,7 +50,7 @@ namespace Alis.Core.Ecs.Component.Collider
     public class BoxCollider : ACollider, IBuilder<BoxColliderBuilder>
     {
         /// <summary>
-        /// The rectangle
+        ///     The rectangle
         /// </summary>
         private RectangleI Rectangle;
 
@@ -174,7 +174,7 @@ namespace Alis.Core.Ecs.Component.Collider
         }
 
         /// <summary>
-        /// Describes whether this instance on collision
+        ///     Describes whether this instance on collision
         /// </summary>
         /// <param name="fixtureA">The fixture</param>
         /// <param name="fixtureB">The fixture</param>
@@ -198,7 +198,7 @@ namespace Alis.Core.Ecs.Component.Collider
         }
 
         /// <summary>
-        /// Ons the separation using the specified fixture a
+        ///     Ons the separation using the specified fixture a
         /// </summary>
         /// <param name="fixtureA">The fixture</param>
         /// <param name="fixtureB">The fixture</param>
@@ -266,7 +266,7 @@ namespace Alis.Core.Ecs.Component.Collider
         }
 
         /// <summary>
-        /// Renders the renderer
+        ///     Renders the renderer
         /// </summary>
         /// <param name="renderer">The renderer</param>
         /// <param name="cameraPosition">The camera position</param>
@@ -300,7 +300,7 @@ namespace Alis.Core.Ecs.Component.Collider
         }
 
         /// <summary>
-        /// Describes whether this instance is visible
+        ///     Describes whether this instance is visible
         /// </summary>
         /// <param name="cameraPosition">The camera position</param>
         /// <param name="cameraResolution">The camera resolution</param>
@@ -323,8 +323,8 @@ namespace Alis.Core.Ecs.Component.Collider
             // Calculate the bounding box of the rotated collider
             float halfWidth = colliderSize.X / 2;
             float halfHeight = colliderSize.Y / 2;
-            float cos = (float)Math.Cos(colliderRotation);
-            float sin = (float)Math.Sin(colliderRotation);
+            float cos = (float) Math.Cos(colliderRotation);
+            float sin = (float) Math.Sin(colliderRotation);
 
             float[] cornersX = new float[4];
             float[] cornersY = new float[4];
@@ -347,7 +347,7 @@ namespace Alis.Core.Ecs.Component.Collider
         }
 
         /// <summary>
-        /// Mins the corners x
+        ///     Mins the corners x
         /// </summary>
         /// <param name="cornersX">The corners</param>
         /// <returns>The min</returns>
@@ -365,9 +365,9 @@ namespace Alis.Core.Ecs.Component.Collider
 
             return min;
         }
-        
+
         /// <summary>
-        /// Maxes the corners x
+        ///     Maxes the corners x
         /// </summary>
         /// <param name="cornersX">The corners</param>
         /// <returns>The max</returns>

@@ -27,10 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
-
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -39,25 +35,24 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Dynamics;
 
-
 namespace Alis.Core.Physic.Common
 {
     /// <summary>
-    /// The vertices class
+    ///     The vertices class
     /// </summary>
-    /// <seealso cref="List{Vector2}"/>
+    /// <seealso cref="List{Vector2}" />
     [DebuggerDisplay("Count = {Count} Vertices = {ToString()}")]
     public class Vertices : List<Vector2>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vertices"/> class
+        ///     Initializes a new instance of the <see cref="Vertices" /> class
         /// </summary>
         public Vertices()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vertices"/> class
+        ///     Initializes a new instance of the <see cref="Vertices" /> class
         /// </summary>
         /// <param name="capacity">The capacity</param>
         public Vertices(int capacity) : base(capacity)
@@ -65,7 +60,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vertices"/> class
+        ///     Initializes a new instance of the <see cref="Vertices" /> class
         /// </summary>
         /// <param name="vertices">The vertices</param>
         public Vertices(IEnumerable<Vector2> vertices)
@@ -74,7 +69,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Gets or sets the value of the attached to body
+        ///     Gets or sets the value of the attached to body
         /// </summary>
         internal bool AttachedToBody { get; set; }
 
@@ -548,9 +543,8 @@ namespace Alis.Core.Physic.Common
         }
 
 
-
         /// <summary>
-        /// Returns the string
+        ///     Returns the string
         /// </summary>
         /// <returns>The string</returns>
         public override string ToString()

@@ -27,10 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
-
-
 /**
  * Forces a triangle edge between two points p and q
  * when triangulating. For example used to enforce
@@ -42,16 +38,17 @@
 namespace Alis.Core.Physic.Common.Decomposition.CDT
 {
     /// <summary>
-    /// The triangulation constraint class
+    ///     The triangulation constraint class
     /// </summary>
     internal class TriangulationConstraint
     {
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public TriangulationPoint P;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public TriangulationPoint Q;
     }

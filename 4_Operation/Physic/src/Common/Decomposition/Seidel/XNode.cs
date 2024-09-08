@@ -27,23 +27,21 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 namespace Alis.Core.Physic.Common.Decomposition.Seidel
 {
     /// <summary>
-    /// The node class
+    ///     The node class
     /// </summary>
-    /// <seealso cref="Node"/>
+    /// <seealso cref="Node" />
     internal class XNode : Node
     {
         /// <summary>
-        /// The point
+        ///     The point
         /// </summary>
         private readonly Point _point;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="XNode"/> class
+        ///     Initializes a new instance of the <see cref="XNode" /> class
         /// </summary>
         /// <param name="point">The point</param>
         /// <param name="lChild">The child</param>
@@ -53,7 +51,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             => _point = point;
 
         /// <summary>
-        /// Locates the edge
+        ///     Locates the edge
         /// </summary>
         /// <param name="edge">The edge</param>
         /// <returns>The sink</returns>

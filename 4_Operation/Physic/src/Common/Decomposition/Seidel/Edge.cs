@@ -27,54 +27,57 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Collections.Generic;
 
 namespace Alis.Core.Physic.Common.Decomposition.Seidel
 {
     /// <summary>
-    /// The edge class
+    ///     The edge class
     /// </summary>
     internal class Edge
     {
         // Pointers used for building trapezoidal map
         /// <summary>
-        /// The above
+        ///     The above
         /// </summary>
         public Trapezoid Above;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public float B;
+
         /// <summary>
-        /// The below
+        ///     The below
         /// </summary>
         public Trapezoid Below;
 
         // Montone mountain points
         /// <summary>
-        /// The points
+        ///     The points
         /// </summary>
         public HashSet<Point> MPoints;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public Point P;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public Point Q;
 
         // Slope of the line (m)
         /// <summary>
-        /// The slope
+        ///     The slope
         /// </summary>
         public float Slope;
 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Edge"/> class
+        ///     Initializes a new instance of the <see cref="Edge" /> class
         /// </summary>
         /// <param name="p">The </param>
         /// <param name="q">The </param>
@@ -97,21 +100,21 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         }
 
         /// <summary>
-        /// Describes whether this instance is above
+        ///     Describes whether this instance is above
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
         public bool IsAbove(Point point) => P.Orient2D(Q, point) < 0;
 
         /// <summary>
-        /// Describes whether this instance is below
+        ///     Describes whether this instance is below
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
         public bool IsBelow(Point point) => P.Orient2D(Q, point) > 0;
 
         /// <summary>
-        /// Adds the mpoint using the specified point
+        ///     Adds the mpoint using the specified point
         /// </summary>
         /// <param name="point">The point</param>
         public void AddMpoint(Point point)

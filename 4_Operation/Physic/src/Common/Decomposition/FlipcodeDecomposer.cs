@@ -27,13 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
-
 
 namespace Alis.Core.Physic.Common.Decomposition
 {
@@ -49,15 +46,17 @@ namespace Alis.Core.Physic.Common.Decomposition
     internal static class FlipcodeDecomposer
     {
         /// <summary>
-        /// The tmp
+        ///     The tmp
         /// </summary>
         private static Vector2 _tmpA;
+
         /// <summary>
-        /// The tmp
+        ///     The tmp
         /// </summary>
         private static Vector2 _tmpB;
+
         /// <summary>
-        /// The tmp
+        ///     The tmp
         /// </summary>
         private static Vector2 _tmpC;
 

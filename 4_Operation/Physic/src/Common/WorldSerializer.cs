@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Serialization.cs
+//  File:WorldSerializer.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,11 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System.IO;
 using Alis.Core.Physic.Dynamics;
-
 
 namespace Alis.Core.Physic.Common
 {

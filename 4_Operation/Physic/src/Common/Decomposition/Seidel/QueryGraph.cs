@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System.Collections.Generic;
 
 namespace Alis.Core.Physic.Common.Decomposition.Seidel
@@ -36,30 +34,30 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
     // Directed Acyclic graph (DAG)
     // See "Computational Geometry", 3rd edition, by Mark de Berg et al, Chapter 6.2
     /// <summary>
-    /// The query graph class
+    ///     The query graph class
     /// </summary>
     internal class QueryGraph
     {
         /// <summary>
-        /// The head
+        ///     The head
         /// </summary>
         private Node _head;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="QueryGraph"/> class
+        ///     Initializes a new instance of the <see cref="QueryGraph" /> class
         /// </summary>
         /// <param name="head">The head</param>
         public QueryGraph(Node head) => _head = head;
 
         /// <summary>
-        /// Locates the edge
+        ///     Locates the edge
         /// </summary>
         /// <param name="edge">The edge</param>
         /// <returns>The trapezoid</returns>
         private Trapezoid Locate(Edge edge) => _head.Locate(edge).Trapezoid;
 
         /// <summary>
-        /// Follows the edge using the specified edge
+        ///     Follows the edge using the specified edge
         /// </summary>
         /// <param name="edge">The edge</param>
         /// <returns>The trapezoids</returns>
@@ -87,7 +85,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         }
 
         /// <summary>
-        /// Replaces the sink
+        ///     Replaces the sink
         /// </summary>
         /// <param name="sink">The sink</param>
         /// <param name="node">The node</param>
@@ -100,7 +98,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         }
 
         /// <summary>
-        /// Cases the 1 using the specified sink
+        ///     Cases the 1 using the specified sink
         /// </summary>
         /// <param name="sink">The sink</param>
         /// <param name="edge">The edge</param>
@@ -114,7 +112,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         }
 
         /// <summary>
-        /// Cases the 2 using the specified sink
+        ///     Cases the 2 using the specified sink
         /// </summary>
         /// <param name="sink">The sink</param>
         /// <param name="edge">The edge</param>
@@ -127,7 +125,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         }
 
         /// <summary>
-        /// Cases the 3 using the specified sink
+        ///     Cases the 3 using the specified sink
         /// </summary>
         /// <param name="sink">The sink</param>
         /// <param name="edge">The edge</param>
@@ -139,7 +137,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         }
 
         /// <summary>
-        /// Cases the 4 using the specified sink
+        ///     Cases the 4 using the specified sink
         /// </summary>
         /// <param name="sink">The sink</param>
         /// <param name="edge">The edge</param>

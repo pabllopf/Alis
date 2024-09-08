@@ -27,14 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Dynamics;
-
 
 namespace Alis.Core.Physic.Common.PhysicsLogic
 {
@@ -44,7 +41,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
     public sealed class SimpleExplosion : PhysicsLogic
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SimpleExplosion"/> class
+        ///     Initializes a new instance of the <see cref="SimpleExplosion" /> class
         /// </summary>
         /// <param name="world">The world</param>
         public SimpleExplosion(World world) : base(world) => Power = 1; //linear
@@ -87,7 +84,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         }
 
         /// <summary>
-        /// Applies the impulse using the specified pos
+        ///     Applies the impulse using the specified pos
         /// </summary>
         /// <param name="pos">The pos</param>
         /// <param name="radius">The radius</param>
@@ -120,7 +117,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         }
 
         /// <summary>
-        /// Gets the percent using the specified distance
+        ///     Gets the percent using the specified distance
         /// </summary>
         /// <param name="distance">The distance</param>
         /// <param name="radius">The radius</param>

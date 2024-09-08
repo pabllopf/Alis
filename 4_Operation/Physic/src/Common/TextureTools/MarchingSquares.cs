@@ -27,12 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;
-
 
 namespace Alis.Core.Physic.Common.TextureTools
 {
@@ -64,7 +62,7 @@ namespace Alis.Core.Physic.Common.TextureTools
     */
 
     /// <summary>
-    /// The marching squares class
+    ///     The marching squares class
     /// </summary>
     public static class MarchingSquares
     {
@@ -323,7 +321,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         };
 
         /// <summary>
-        /// Lerps the x 0
+        ///     Lerps the x 0
         /// </summary>
         /// <param name="x0">The </param>
         /// <param name="x1">The </param>
@@ -376,7 +374,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         private static float Square(float x) => x * x;
 
         /// <summary>
-        /// Vecs the dsq using the specified a
+        ///     Vecs the dsq using the specified a
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="b">The </param>
@@ -388,7 +386,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         }
 
         /// <summary>
-        /// Vecs the cross using the specified a
+        ///     Vecs the cross using the specified a
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="b">The </param>
@@ -548,13 +546,13 @@ namespace Alis.Core.Physic.Common.TextureTools
         internal class CxFastList<T>
         {
             /// <summary>
-            /// The count
+            ///     The count
             /// </summary>
             private int _count;
 
             // first node in the list
             /// <summary>
-            /// The head
+            ///     The head
             /// </summary>
             private CxFastListNode<T> _head;
 
@@ -737,7 +735,7 @@ namespace Alis.Core.Physic.Common.TextureTools
 
             // Non CxFastList Methods 
             /// <summary>
-            /// Finds the value
+            ///     Finds the value
             /// </summary>
             /// <param name="value">The value</param>
             /// <returns>A cx fast list node of t</returns>
@@ -778,7 +776,7 @@ namespace Alis.Core.Physic.Common.TextureTools
             }
 
             /// <summary>
-            /// Gets the list of elements
+            ///     Gets the list of elements
             /// </summary>
             /// <returns>The list</returns>
             public List<T> GetListOfElements()
@@ -805,33 +803,34 @@ namespace Alis.Core.Physic.Common.TextureTools
         #region Nested type: CxFastListNode
 
         /// <summary>
-        /// The cx fast list node class
+        ///     The cx fast list node class
         /// </summary>
         internal class CxFastListNode<T>
         {
             /// <summary>
-            /// The elt
+            ///     The elt
             /// </summary>
             internal T _elt;
+
             /// <summary>
-            /// The next
+            ///     The next
             /// </summary>
             internal CxFastListNode<T> _next;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="CxFastListNode"/> class
+            ///     Initializes a new instance of the <see cref="CxFastListNode" /> class
             /// </summary>
             /// <param name="obj">The obj</param>
             public CxFastListNode(T obj) => _elt = obj;
 
             /// <summary>
-            /// Elems this instance
+            ///     Elems this instance
             /// </summary>
             /// <returns>The</returns>
             public T Elem() => _elt;
 
             /// <summary>
-            /// Nexts this instance
+            ///     Nexts this instance
             /// </summary>
             /// <returns>A cx fast list node of t</returns>
             public CxFastListNode<T> Next() => _next;
@@ -846,21 +845,22 @@ namespace Alis.Core.Physic.Common.TextureTools
         #region Nested type: GeomPoly
 
         /// <summary>
-        /// The geom poly class
+        ///     The geom poly class
         /// </summary>
         internal class GeomPoly
         {
             /// <summary>
-            /// The length
+            ///     The length
             /// </summary>
             public int Length;
+
             /// <summary>
-            /// The points
+            ///     The points
             /// </summary>
             public CxFastList<Vector2> Points;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="GeomPoly"/> class
+            ///     Initializes a new instance of the <see cref="GeomPoly" /> class
             /// </summary>
             public GeomPoly()
             {
@@ -874,21 +874,21 @@ namespace Alis.Core.Physic.Common.TextureTools
         #region Nested type: GeomPolyVal
 
         /// <summary>
-        /// The geom poly val class
+        ///     The geom poly val class
         /// </summary>
         private class GeomPolyVal
         {
-            /// <summary>
-            /// The geom
-            /// </summary>
-            public GeomPoly GeomP;
-
             /** Associated polygon at coordinate **/
             /** Key of original sub-polygon **/
             public readonly int Key;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="GeomPolyVal"/> class
+            ///     The geom
+            /// </summary>
+            public GeomPoly GeomP;
+
+            /// <summary>
+            ///     Initializes a new instance of the <see cref="GeomPolyVal" /> class
             /// </summary>
             /// <param name="geomP">The geom</param>
             /// <param name="K">The </param>

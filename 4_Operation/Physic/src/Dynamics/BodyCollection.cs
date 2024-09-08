@@ -1,4 +1,4 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -34,29 +34,31 @@ using System.Collections.Generic;
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    /// The body collection class
+    ///     The body collection class
     /// </summary>
-    /// <seealso cref="IEnumerable{Body}"/>
-    /// <seealso cref="ICollection{Body}"/>
-    /// <seealso cref="IList{Body}"/>
+    /// <seealso cref="IEnumerable{Body}" />
+    /// <seealso cref="ICollection{Body}" />
+    /// <seealso cref="IList{Body}" />
     public class BodyCollection : IEnumerable<Body>
         , ICollection<Body>, IList<Body>
     {
         /// <summary>
-        /// The body
+        ///     The body
         /// </summary>
         internal readonly List<Body> _list = new List<Body>(32);
+
         /// <summary>
-        /// The world
+        ///     The world
         /// </summary>
         private readonly World _world;
+
         /// <summary>
-        /// The generation stamp
+        ///     The generation stamp
         /// </summary>
         internal int _generationStamp = 0;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BodyCollection"/> class
+        ///     Initializes a new instance of the <see cref="BodyCollection" /> class
         /// </summary>
         /// <param name="world">The world</param>
         public BodyCollection(World world) => _world = world;
@@ -65,7 +67,7 @@ namespace Alis.Core.Physic.Dynamics
         #region IEnumerable<Body>
 
         /// <summary>
-        /// Gets the enumerator
+        ///     Gets the enumerator
         /// </summary>
         /// <returns>An enumerator of body</returns>
         IEnumerator<Body> IEnumerable<Body>.GetEnumerator() => new BodyEnumerator(this, _list);
@@ -76,7 +78,7 @@ namespace Alis.Core.Physic.Dynamics
         #region IEnumerable
 
         /// <summary>
-        /// Gets the enumerator
+        ///     Gets the enumerator
         /// </summary>
         /// <returns>The enumerator</returns>
         IEnumerator IEnumerable.GetEnumerator() => new BodyEnumerator(this, _list);
@@ -84,36 +86,39 @@ namespace Alis.Core.Physic.Dynamics
         #endregion IEnumerable
 
         /// <summary>
-        /// Gets the enumerator
+        ///     Gets the enumerator
         /// </summary>
         /// <returns>The body enumerator</returns>
         public BodyEnumerator GetEnumerator() => new BodyEnumerator(this, _list);
 
 
         /// <summary>
-        /// The body enumerator
+        ///     The body enumerator
         /// </summary>
         public struct BodyEnumerator : IEnumerator<Body>
         {
             /// <summary>
-            /// The collection
+            ///     The collection
             /// </summary>
             private BodyCollection _collection;
+
             /// <summary>
-            /// The list
+            ///     The list
             /// </summary>
             private List<Body> _list;
+
             /// <summary>
-            /// The generation stamp
+            ///     The generation stamp
             /// </summary>
             private readonly int _generationStamp;
+
             /// <summary>
-            /// The 
+            ///     The
             /// </summary>
             private int i;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="BodyEnumerator"/> class
+            ///     Initializes a new instance of the <see cref="BodyEnumerator" /> class
             /// </summary>
             /// <param name="collection">The collection</param>
             /// <param name="list">The list</param>
@@ -126,7 +131,7 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             /// <summary>
-            /// Gets the value of the current
+            ///     Gets the value of the current
             /// </summary>
             public Body Current
             {
@@ -141,7 +146,7 @@ namespace Alis.Core.Physic.Dynamics
             #region IEnumerator<Body>
 
             /// <summary>
-            /// Gets the value of the current
+            ///     Gets the value of the current
             /// </summary>
             Body IEnumerator<Body>.Current
             {
@@ -158,7 +163,7 @@ namespace Alis.Core.Physic.Dynamics
             #region IEnumerator
 
             /// <summary>
-            /// Describes whether this instance move next
+            ///     Describes whether this instance move next
             /// </summary>
             /// <exception cref="InvalidOperationException">Collection was modified.</exception>
             /// <returns>The bool</returns>
@@ -172,7 +177,7 @@ namespace Alis.Core.Physic.Dynamics
 
 
             /// <summary>
-            /// Gets the value of the current
+            ///     Gets the value of the current
             /// </summary>
             object IEnumerator.Current
             {
@@ -185,7 +190,7 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             /// <summary>
-            /// Disposes this instance
+            ///     Disposes this instance
             /// </summary>
             void IDisposable.Dispose()
             {
@@ -195,7 +200,7 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             /// <summary>
-            /// Resets this instance
+            ///     Resets this instance
             /// </summary>
             void IEnumerator.Reset()
             {
@@ -209,7 +214,7 @@ namespace Alis.Core.Physic.Dynamics
         #region IList<Body>
 
         /// <summary>
-        /// The not supported exception
+        ///     The not supported exception
         /// </summary>
         public Body this[int index]
         {
@@ -218,14 +223,14 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Indexes the of using the specified item
+        ///     Indexes the of using the specified item
         /// </summary>
         /// <param name="item">The item</param>
         /// <returns>The int</returns>
         public int IndexOf(Body item) => _list.IndexOf(item);
 
         /// <summary>
-        /// Inserts the index
+        ///     Inserts the index
         /// </summary>
         /// <param name="index">The index</param>
         /// <param name="item">The item</param>
@@ -236,7 +241,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Removes the at using the specified index
+        ///     Removes the at using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         /// <exception cref="NotSupportedException"></exception>
@@ -251,17 +256,17 @@ namespace Alis.Core.Physic.Dynamics
         #region ICollection<Body>
 
         /// <summary>
-        /// Gets the value of the is read only
+        ///     Gets the value of the is read only
         /// </summary>
         public bool IsReadOnly => true;
 
         /// <summary>
-        /// Gets the value of the count
+        ///     Gets the value of the count
         /// </summary>
         public int Count => _list.Count;
 
         /// <summary>
-        /// Adds the item
+        ///     Adds the item
         /// </summary>
         /// <param name="item">The item</param>
         /// <exception cref="NotSupportedException"></exception>
@@ -271,14 +276,14 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Describes whether this instance remove
+        ///     Describes whether this instance remove
         /// </summary>
         /// <param name="item">The item</param>
         /// <returns>The bool</returns>
         bool ICollection<Body>.Remove(Body item) => throw new NotSupportedException();
 
         /// <summary>
-        /// Clears this instance
+        ///     Clears this instance
         /// </summary>
         /// <exception cref="NotSupportedException"></exception>
         void ICollection<Body>.Clear()
@@ -287,14 +292,14 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Describes whether this instance contains
+        ///     Describes whether this instance contains
         /// </summary>
         /// <param name="item">The item</param>
         /// <returns>The bool</returns>
         public bool Contains(Body item) => _list.Contains(item);
 
         /// <summary>
-        /// Copies the to using the specified array
+        ///     Copies the to using the specified array
         /// </summary>
         /// <param name="array">The array</param>
         /// <param name="arrayIndex">The array index</param>

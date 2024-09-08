@@ -53,7 +53,7 @@ namespace Alis.Core.Ecs
         ///     The instancie
         /// </summary>
         [JsonIgnore] public static VideoGame _instancie;
-        
+
         /// <summary>
         ///     The accumulator
         /// </summary>
@@ -93,7 +93,7 @@ namespace Alis.Core.Ecs
         ///     The target frame duration
         /// </summary>
         private double targetFrameDuration;
-        
+
         /// <summary>
         ///     The total time
         /// </summary>
@@ -159,7 +159,7 @@ namespace Alis.Core.Ecs
             OnInit();
             OnAwake();
             OnStart();
-            
+
             targetFrameDuration = 1 / Context.Settings.Graphic.TargetFrames;
 
             currentTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
@@ -178,8 +178,8 @@ namespace Alis.Core.Ecs
             lastDeltaTime = 0f;
             smoothDeltaTimeSum = 0f;
             smoothDeltaTimeCount = 0;
-            
-            
+
+
             // Variable for log output
             lastLogTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
 
@@ -221,7 +221,7 @@ namespace Alis.Core.Ecs
                 OnDispatchEvents();
 
                 OnPhysicUpdate();
-                
+
                 OnBeforeUpdate();
                 OnUpdate();
                 OnAfterUpdate();
@@ -276,17 +276,17 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// Ons the physic update
+        ///     Exits this instance
+        /// </summary>
+        public void Exit() => Context.TimeManager.IsRunning = false;
+
+        /// <summary>
+        ///     Ons the physic update
         /// </summary>
         private void OnPhysicUpdate()
         {
             Context.OnPhysicUpdate();
         }
-
-        /// <summary>
-        ///     Exits this instance
-        /// </summary>
-        public void Exit() => Context.TimeManager.IsRunning = false;
 
         /// <summary>
         ///     Inits the preview

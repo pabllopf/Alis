@@ -27,36 +27,34 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Physic.Common.PhysicsLogic
 {
     /// <summary>
-    /// The physics logic class
+    ///     The physics logic class
     /// </summary>
-    /// <seealso cref="FilterData"/>
+    /// <seealso cref="FilterData" />
     public abstract class PhysicsLogic : FilterData
     {
         /// <summary>
-        /// The cat 01
+        ///     The cat 01
         /// </summary>
         public ControllerCategory ControllerCategory = ControllerCategory.Cat01;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PhysicsLogic"/> class
+        ///     Initializes a new instance of the <see cref="PhysicsLogic" /> class
         /// </summary>
         /// <param name="world">The world</param>
         public PhysicsLogic(World world) => World = world;
 
         /// <summary>
-        /// Gets or sets the value of the world
+        ///     Gets or sets the value of the world
         /// </summary>
         public World World { get; internal set; }
 
         /// <summary>
-        /// Describes whether this instance is active on
+        ///     Describes whether this instance is active on
         /// </summary>
         /// <param name="body">The body</param>
         /// <returns>The bool</returns>

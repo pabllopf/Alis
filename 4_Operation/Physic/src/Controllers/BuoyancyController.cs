@@ -27,44 +27,44 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Dynamics;
 
-
 namespace Alis.Core.Physic.Controllers
 {
     /// <summary>
-    /// The buoyancy controller class
+    ///     The buoyancy controller class
     /// </summary>
-    /// <seealso cref="Controller"/>
+    /// <seealso cref="Controller" />
     public sealed class BuoyancyController : Controller
     {
         /// <summary>
-        /// The container
+        ///     The gravity
+        /// </summary>
+        private readonly Vector2 _gravity;
+
+        /// <summary>
+        ///     The body
+        /// </summary>
+        private readonly ICollection<Body> _uniqueBodies = new List<Body>();
+
+        /// <summary>
+        ///     The container
         /// </summary>
         private AABB _container;
 
         /// <summary>
-        /// The gravity
-        /// </summary>
-        private readonly Vector2 _gravity;
-        /// <summary>
-        /// The normal
+        ///     The normal
         /// </summary>
         private Vector2 _normal;
+
         /// <summary>
-        /// The offset
+        ///     The offset
         /// </summary>
         private float _offset;
-        /// <summary>
-        /// The body
-        /// </summary>
-        private readonly ICollection<Body> _uniqueBodies = new List<Body>();
 
         /// <summary>
         ///     Controls the rotational drag that the fluid exerts on the bodies within it. Use higher values will simulate thick
@@ -109,7 +109,7 @@ namespace Alis.Core.Physic.Controllers
         }
 
         /// <summary>
-        /// Gets or sets the value of the container
+        ///     Gets or sets the value of the container
         /// </summary>
         public AABB Container
         {
@@ -122,7 +122,7 @@ namespace Alis.Core.Physic.Controllers
         }
 
         /// <summary>
-        /// Updates the dt
+        ///     Updates the dt
         /// </summary>
         /// <param name="dt">The dt</param>
         public override void Update(float dt)

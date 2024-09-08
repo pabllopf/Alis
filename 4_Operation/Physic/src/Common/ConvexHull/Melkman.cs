@@ -27,11 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
-
 
 namespace Alis.Core.Physic.Common.ConvexHull
 {
@@ -78,7 +76,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
                 for (startIndex = 3; startIndex < vertices.Count; startIndex++)
                 {
                     Vector2 tmp = vertices[startIndex];
-                    if (Math.Abs(MathUtils.Area(ref deque[0], ref deque[1], ref tmp))< float.Epsilon) //This point is also collinear
+                    if (Math.Abs(MathUtils.Area(ref deque[0], ref deque[1], ref tmp)) < float.Epsilon) //This point is also collinear
                         deque[1] = vertices[startIndex];
                     else break;
                 }

@@ -53,11 +53,16 @@ namespace Alis.Sample.Flappy.Bird
         ///     The time delta
         /// </summary>
         public static float CounterTimeDeath = 3.0f;
-        
+
         /// <summary>
-        /// Gets or sets the value of the bird
+        ///     Gets or sets the value of the bird
         /// </summary>
         public GameObject Bird { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the is deadthing
+        /// </summary>
+        public bool IsDeadthing { get; set; }
 
         /// <summary>
         ///     Ons the init
@@ -77,9 +82,9 @@ namespace Alis.Sample.Flappy.Bird
             {
                 if (IsDeadthing)
                 {
-                    Deadthing();   
+                    Deadthing();
                 }
-                
+
                 CounterTimeDeath -= 1f * Context.TimeManager.DeltaTime;
                 if (CounterTimeDeath <= 0.0f)
                 {
@@ -90,7 +95,7 @@ namespace Alis.Sample.Flappy.Bird
         }
 
         /// <summary>
-        /// Deadthings this instance
+        ///     Deadthings this instance
         /// </summary>
         public void Deadthing()
         {
@@ -108,14 +113,9 @@ namespace Alis.Sample.Flappy.Bird
             Bird.Remove(Bird.Get<Animator>());
 
             PipelineController.IsStop = true;
-            
+
             IsDeadthing = false;
         }
-
-        /// <summary>
-        /// Gets or sets the value of the is deadthing
-        /// </summary>
-        public bool IsDeadthing { get; set; } = false;
 
         /// <summary>
         ///     Ons the collision enter using the specified game object

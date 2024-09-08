@@ -48,7 +48,7 @@ namespace Alis.Core.Ecs.Component.Render
         IBuilder<CameraBuilder>
     {
         /// <summary>
-        /// The position
+        ///     The position
         /// </summary>
         [JsonPropertyName("_Position_")] public Vector2 Position;
 
@@ -152,7 +152,7 @@ namespace Alis.Core.Ecs.Component.Render
         }
 
         /// <summary>
-        /// Ons the exit
+        ///     Ons the exit
         /// </summary>
         public override void OnExit()
         {

@@ -1,4 +1,4 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -27,12 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
-
 
 namespace Alis.Core.Physic.Collision
 {
@@ -54,46 +51,54 @@ namespace Alis.Core.Physic.Collision
         where TNode : struct
     {
         /// <summary>
-        /// The null proxy
+        ///     The null proxy
         /// </summary>
         private const int NullProxy = -1;
+
         /// <summary>
-        /// The move buffer
+        ///     The query callback cache
+        /// </summary>
+        private readonly BroadPhaseQueryCallback _queryCallbackCache;
+
+        /// <summary>
+        ///     The node
+        /// </summary>
+        private readonly DynamicTree<TNode> _tree = new DynamicTree<TNode>();
+
+        /// <summary>
+        ///     The move buffer
         /// </summary>
         private int[] _moveBuffer;
+
         /// <summary>
-        /// The move capacity
+        ///     The move capacity
         /// </summary>
         private int _moveCapacity;
+
         /// <summary>
-        /// The move count
+        ///     The move count
         /// </summary>
         private int _moveCount;
 
         /// <summary>
-        /// The pair buffer
+        ///     The pair buffer
         /// </summary>
         private Pair[] _pairBuffer;
+
         /// <summary>
-        /// The pair capacity
+        ///     The pair capacity
         /// </summary>
         private int _pairCapacity;
+
         /// <summary>
-        /// The pair count
+        ///     The pair count
         /// </summary>
         private int _pairCount;
+
         /// <summary>
-        /// The query callback cache
-        /// </summary>
-        private readonly BroadPhaseQueryCallback _queryCallbackCache;
-        /// <summary>
-        /// The query proxy id
+        ///     The query proxy id
         /// </summary>
         private int _queryProxyId;
-        /// <summary>
-        /// The node
-        /// </summary>
-        private readonly DynamicTree<TNode> _tree = new DynamicTree<TNode>();
 
         /// <summary>
         ///     Constructs a new broad phase based on the dynamic tree implementation
@@ -160,7 +165,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Moves the proxy using the specified proxy id
+        ///     Moves the proxy using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         /// <param name="aabb">The aabb</param>
@@ -175,7 +180,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Touches the proxy using the specified proxy id
+        ///     Touches the proxy using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         public void TouchProxy(int proxyId)
@@ -194,7 +199,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Sets the proxy using the specified proxy id
+        ///     Sets the proxy using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         /// <param name="proxy">The proxy</param>
@@ -302,7 +307,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Shifts the origin using the specified new origin
+        ///     Shifts the origin using the specified new origin
         /// </summary>
         /// <param name="newOrigin">The new origin</param>
         public void ShiftOrigin(Vector2 newOrigin)
@@ -311,7 +316,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Buffers the move using the specified proxy id
+        ///     Buffers the move using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         private void BufferMove(int proxyId)
@@ -329,7 +334,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Uns the buffer move using the specified proxy id
+        ///     Uns the buffer move using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         private void UnBufferMove(int proxyId)

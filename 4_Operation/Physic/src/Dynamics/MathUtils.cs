@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Math.cs
+//  File:MathUtils.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
@@ -35,12 +34,17 @@ using Alis.Core.Physic.Common;
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    /// The math utils class
+    ///     The math utils class
     /// </summary>
     public static class MathUtils
     {
         /// <summary>
-        /// Crosses the a
+        ///     Gets or sets the value of the epsilon
+        /// </summary>
+        public static float Epsilon { get; set; } = 1e-6f;
+
+        /// <summary>
+        ///     Crosses the a
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="b">The </param>
@@ -48,7 +52,7 @@ namespace Alis.Core.Physic.Dynamics
         public static float Cross(ref Vector2 a, ref Vector2 b) => a.X * b.Y - a.Y * b.X;
 
         /// <summary>
-        /// Crosses the a
+        ///     Crosses the a
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="b">The </param>
@@ -61,7 +65,7 @@ namespace Alis.Core.Physic.Dynamics
             a.X * b.Y - a.Y * b.X);
 
         /// <summary>
-        /// Crosses the a
+        ///     Crosses the a
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="s">The </param>
@@ -69,14 +73,14 @@ namespace Alis.Core.Physic.Dynamics
         public static Vector2 Cross(Vector2 a, float s) => new Vector2(s * a.Y, -s * a.X);
 
         /// <summary>
-        /// Rots the 270 using the specified a
+        ///     Rots the 270 using the specified a
         /// </summary>
         /// <param name="a">The </param>
         /// <returns>The vector</returns>
         public static Vector2 Rot270(ref Vector2 a) => new Vector2(a.Y, -a.X);
 
         /// <summary>
-        /// Crosses the s
+        ///     Crosses the s
         /// </summary>
         /// <param name="s">The </param>
         /// <param name="a">The </param>
@@ -84,21 +88,21 @@ namespace Alis.Core.Physic.Dynamics
         public static Vector2 Cross(float s, ref Vector2 a) => new Vector2(-s * a.Y, s * a.X);
 
         /// <summary>
-        /// Rots the 90 using the specified a
+        ///     Rots the 90 using the specified a
         /// </summary>
         /// <param name="a">The </param>
         /// <returns>The vector</returns>
         public static Vector2 Rot90(ref Vector2 a) => new Vector2(-a.Y, a.X);
 
         /// <summary>
-        /// Abses the v
+        ///     Abses the v
         /// </summary>
         /// <param name="v">The </param>
         /// <returns>The vector</returns>
         public static Vector2 Abs(Vector2 v) => new Vector2(Math.Abs(v.X), Math.Abs(v.Y));
 
         /// <summary>
-        /// Muls the a
+        ///     Muls the a
         /// </summary>
         /// <param name="A">The </param>
         /// <param name="v">The </param>
@@ -106,7 +110,7 @@ namespace Alis.Core.Physic.Dynamics
         public static Vector2 Mul(ref Mat22 A, Vector2 v) => Mul(ref A, ref v);
 
         /// <summary>
-        /// Muls the a
+        ///     Muls the a
         /// </summary>
         /// <param name="A">The </param>
         /// <param name="v">The </param>
@@ -114,7 +118,7 @@ namespace Alis.Core.Physic.Dynamics
         public static Vector2 Mul(ref Mat22 A, ref Vector2 v) => new Vector2(A.Ex.X * v.X + A.Ey.X * v.Y, A.Ex.Y * v.X + A.Ey.Y * v.Y);
 
         /// <summary>
-        /// Muls the t using the specified a
+        ///     Muls the t using the specified a
         /// </summary>
         /// <param name="A">The </param>
         /// <param name="v">The </param>
@@ -122,7 +126,7 @@ namespace Alis.Core.Physic.Dynamics
         public static Vector2 MulT(ref Mat22 A, Vector2 v) => MulT(ref A, ref v);
 
         /// <summary>
-        /// Muls the t using the specified a
+        ///     Muls the t using the specified a
         /// </summary>
         /// <param name="A">The </param>
         /// <param name="v">The </param>
@@ -134,7 +138,7 @@ namespace Alis.Core.Physic.Dynamics
         public static Vector3 Mul(Mat33 A, Vector3 v) => v.X * A.Ex + v.Y * A.Ey + v.Z * A.Ez;
 
         /// <summary>
-        /// Swaps the a
+        ///     Swaps the a
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="a">The </param>
@@ -172,14 +176,14 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Describes whether is valid
+        ///     Describes whether is valid
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The bool</returns>
         public static bool IsValid(this Vector2 x) => IsValid(x.X) && IsValid(x.Y);
 
         /// <summary>
-        /// Clamps the a
+        ///     Clamps the a
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="low">The low</param>
@@ -188,7 +192,7 @@ namespace Alis.Core.Physic.Dynamics
         public static int Clamp(int a, int low, int high) => Math.Max(low, Math.Min(a, high));
 
         /// <summary>
-        /// Clamps the a
+        ///     Clamps the a
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="low">The low</param>
@@ -197,7 +201,7 @@ namespace Alis.Core.Physic.Dynamics
         public static float Clamp(float a, float low, float high) => Math.Max(low, Math.Min(a, high));
 
         /// <summary>
-        /// Clamps the a
+        ///     Clamps the a
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="low">The low</param>
@@ -211,7 +215,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Crosses the a
+        ///     Crosses the a
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="b">The </param>
@@ -246,7 +250,7 @@ namespace Alis.Core.Physic.Dynamics
         public static float Dot(Vector2 a, ref Vector2 b) => a.X * b.X + a.Y * b.Y;
 
         /// <summary>
-        /// Vectors the angle using the specified p 1
+        ///     Vectors the angle using the specified p 1
         /// </summary>
         /// <param name="p1">The </param>
         /// <param name="p2">The </param>
@@ -283,7 +287,7 @@ namespace Alis.Core.Physic.Dynamics
 
 
         /// <summary>
-        /// Describes whether float equals
+        ///     Describes whether float equals
         /// </summary>
         /// <param name="value1">The value</param>
         /// <param name="value2">The value</param>
@@ -312,10 +316,5 @@ namespace Alis.Core.Physic.Dynamics
         ///     false otherwise.
         /// </returns>
         public static bool FloatInRange(float value, float min, float max) => (value >= min) && (value <= max);
-
-        /// <summary>
-        /// Gets or sets the value of the epsilon
-        /// </summary>
-        public static float Epsilon { get; set; } = 1e-6f;
     }
 }

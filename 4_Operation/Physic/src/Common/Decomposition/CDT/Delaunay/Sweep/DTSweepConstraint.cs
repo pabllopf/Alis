@@ -27,15 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
 {
     /// <summary>
-    /// The dt sweep constraint class
+    ///     The dt sweep constraint class
     /// </summary>
-    /// <seealso cref="TriangulationConstraint"/>
+    /// <seealso cref="TriangulationConstraint" />
     internal class DtSweepConstraint : TriangulationConstraint
     {
         /// <summary>

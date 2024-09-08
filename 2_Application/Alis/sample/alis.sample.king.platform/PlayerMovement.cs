@@ -94,7 +94,7 @@ namespace Alis.Sample.King.Platform
         }
 
         /// <summary>
-        /// Ons the release key using the specified key
+        ///     Ons the release key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public override void OnReleaseKey(KeyCodes key)
@@ -106,7 +106,7 @@ namespace Alis.Sample.King.Platform
         }
 
         /// <summary>
-        /// Ons the press key using the specified key
+        ///     Ons the press key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public override void OnPressKey(KeyCodes key)

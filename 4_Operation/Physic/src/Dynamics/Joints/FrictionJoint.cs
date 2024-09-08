@@ -27,11 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
-
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
@@ -54,69 +51,79 @@ namespace Alis.Core.Physic.Dynamics.Joints
     public class FrictionJoint : Joint
     {
         /// <summary>
-        /// The angular impulse
+        ///     The angular impulse
         /// </summary>
         private float _angularImpulse;
+
         /// <summary>
-        /// The angular mass
+        ///     The angular mass
         /// </summary>
         private float _angularMass;
 
         // Solver temp
         /// <summary>
-        /// The index
+        ///     The index
         /// </summary>
         private int _indexA;
+
         /// <summary>
-        /// The index
+        ///     The index
         /// </summary>
         private int _indexB;
+
         /// <summary>
-        /// The inv ia
+        ///     The inv ia
         /// </summary>
         private float _invIA;
+
         /// <summary>
-        /// The inv ib
+        ///     The inv ib
         /// </summary>
         private float _invIB;
+
         /// <summary>
-        /// The inv mass
+        ///     The inv mass
         /// </summary>
         private float _invMassA;
 
         /// <summary>
-        /// The inv mass
+        ///     The inv mass
         /// </summary>
         private float _invMassB;
 
         // Solver shared
         /// <summary>
-        /// The linear impulse
+        ///     The linear impulse
         /// </summary>
         private Vector2 _linearImpulse;
+
         /// <summary>
-        /// The linear mass
+        ///     The linear mass
         /// </summary>
         private Mat22 _linearMass;
+
         /// <summary>
-        /// The local center
+        ///     The local center
         /// </summary>
         private Vector2 _localCenterA;
+
         /// <summary>
-        /// The local center
+        ///     The local center
         /// </summary>
         private Vector2 _localCenterB;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         private Vector2 _rA;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         private Vector2 _rB;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FrictionJoint"/> class
+        ///     Initializes a new instance of the <see cref="FrictionJoint" /> class
         /// </summary>
         internal FrictionJoint() => JointType = JointType.Friction;
 
@@ -155,7 +162,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public Vector2 LocalAnchorB { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the world anchor a
+        ///     Gets or sets the value of the world anchor a
         /// </summary>
         public override Vector2 WorldAnchorA
         {
@@ -164,7 +171,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Gets or sets the value of the world anchor b
+        ///     Gets or sets the value of the world anchor b
         /// </summary>
         public override Vector2 WorldAnchorB
         {
@@ -183,21 +190,21 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public float MaxTorque { get; set; }
 
         /// <summary>
-        /// Gets the reaction force using the specified inv dt
+        ///     Gets the reaction force using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vector</returns>
         public override Vector2 GetReactionForce(float invDt) => invDt * _linearImpulse;
 
         /// <summary>
-        /// Gets the reaction torque using the specified inv dt
+        ///     Gets the reaction torque using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The float</returns>
         public override float GetReactionTorque(float invDt) => invDt * _angularImpulse;
 
         /// <summary>
-        /// Inits the velocity constraints using the specified data
+        ///     Inits the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
@@ -277,7 +284,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Solves the velocity constraints using the specified data
+        ///     Solves the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(ref SolverData data)
@@ -338,7 +345,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Describes whether this instance solve position constraints
+        ///     Describes whether this instance solve position constraints
         /// </summary>
         /// <param name="data">The data</param>
         /// <returns>The bool</returns>

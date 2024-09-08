@@ -27,92 +27,100 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 
-
 namespace Alis.Core.Physic.Dynamics.Joints
 {
     /// <summary>
-///     A rope joint enforces a maximum distance between two points on two bodies. It has no other effect.
-///     It can be used on ropes that are made up of several connected bodies, and if there is a need to support a heavy
-///     body.
-///     This joint is used for stabiliation of heavy objects on soft constraint joints.
-///     Warning: if you attempt to change the maximum length during the simulation you will get some non-physical behavior.
-///     Use the DistanceJoint instead if you want to dynamically control the length.
-/// </summary>
-/// <remarks>
-/// Limit:
-/// C = norm(pB - pA) - L
-/// u = (pB - pA) / norm(pB - pA)
-/// Cdot = dot(u, vB + cross(wB, rB) - vA - cross(wA, rA))
-/// J = [-u -cross(rA, u) u cross(rB, u)]
-/// K = J * invM * JT
-///   = invMassA + invIA * cross(rA, u)^2 + invMassB + invIB * cross(rB, u)^2
-/// </remarks>
+    ///     A rope joint enforces a maximum distance between two points on two bodies. It has no other effect.
+    ///     It can be used on ropes that are made up of several connected bodies, and if there is a need to support a heavy
+    ///     body.
+    ///     This joint is used for stabiliation of heavy objects on soft constraint joints.
+    ///     Warning: if you attempt to change the maximum length during the simulation you will get some non-physical behavior.
+    ///     Use the DistanceJoint instead if you want to dynamically control the length.
+    /// </summary>
+    /// <remarks>
+    ///     Limit:
+    ///     C = norm(pB - pA) - L
+    ///     u = (pB - pA) / norm(pB - pA)
+    ///     Cdot = dot(u, vB + cross(wB, rB) - vA - cross(wA, rA))
+    ///     J = [-u -cross(rA, u) u cross(rB, u)]
+    ///     K = J * invM * JT
+    ///     = invMassA + invIA * cross(rA, u)^2 + invMassB + invIB * cross(rB, u)^2
+    /// </remarks>
     public class RopeJoint : Joint
     {
         // Solver shared
         /// <summary>
-        /// The impulse
+        ///     The impulse
         /// </summary>
         private float _impulse;
 
         // Solver temp
         /// <summary>
-        /// The index
+        ///     The index
         /// </summary>
         private int _indexA;
+
         /// <summary>
-        /// The index
+        ///     The index
         /// </summary>
         private int _indexB;
+
         /// <summary>
-        /// The inv ia
-        /// </summary>
-        private float invIa;
-        /// <summary>
-        /// The inv ib
-        /// </summary>
-        private float invIb;
-        /// <summary>
-        /// The inv mass
+        ///     The inv mass
         /// </summary>
         private float _invMassA;
+
         /// <summary>
-        /// The inv mass
+        ///     The inv mass
         /// </summary>
         private float _invMassB;
+
         /// <summary>
-        /// The length
+        ///     The length
         /// </summary>
         private float _length;
+
         /// <summary>
-        /// The local center
+        ///     The local center
         /// </summary>
         private Vector2 _localCenterA;
+
         /// <summary>
-        /// The local center
+        ///     The local center
         /// </summary>
         private Vector2 _localCenterB;
+
         /// <summary>
-        /// The mass
+        ///     The mass
         /// </summary>
         private float _mass;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         private Vector2 _rA, _rB;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         private Vector2 _u;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RopeJoint"/> class
+        ///     The inv ia
+        /// </summary>
+        private float invIa;
+
+        /// <summary>
+        ///     The inv ib
+        /// </summary>
+        private float invIb;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="RopeJoint" /> class
         /// </summary>
         internal RopeJoint() => JointType = JointType.Rope;
 
@@ -156,7 +164,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public Vector2 LocalAnchorB { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the world anchor a
+        ///     Gets or sets the value of the world anchor a
         /// </summary>
         public sealed override Vector2 WorldAnchorA
         {
@@ -165,7 +173,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Gets or sets the value of the world anchor b
+        ///     Gets or sets the value of the world anchor b
         /// </summary>
         public sealed override Vector2 WorldAnchorB
         {
@@ -185,21 +193,21 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public LimitState State { get; private set; }
 
         /// <summary>
-        /// Gets the reaction force using the specified inv dt
+        ///     Gets the reaction force using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vector</returns>
         public override Vector2 GetReactionForce(float invDt) => invDt * _impulse * _u;
 
         /// <summary>
-        /// Gets the reaction torque using the specified inv dt
+        ///     Gets the reaction torque using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The float</returns>
         public override float GetReactionTorque(float invDt) => 0;
 
         /// <summary>
-        /// Inits the velocity constraints using the specified data
+        ///     Inits the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
@@ -284,7 +292,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Solves the velocity constraints using the specified data
+        ///     Solves the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(ref SolverData data)
@@ -324,7 +332,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Describes whether this instance solve position constraints
+        ///     Describes whether this instance solve position constraints
         /// </summary>
         /// <param name="data">The data</param>
         /// <returns>The bool</returns>

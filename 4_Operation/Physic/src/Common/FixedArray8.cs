@@ -1,47 +1,83 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:FixedArray8.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 
 namespace Alis.Core.Physic.Common
 {
     /// <summary>
-    /// The fixed array
+    ///     The fixed array
     /// </summary>
     public struct FixedArray8<T>
     {
         /// <summary>
-        /// The value
+        ///     The value
         /// </summary>
         private T _value0;
+
         /// <summary>
-        /// The value
+        ///     The value
         /// </summary>
         private T _value1;
+
         /// <summary>
-        /// The value
+        ///     The value
         /// </summary>
         private T _value2;
+
         /// <summary>
-        /// The value
+        ///     The value
         /// </summary>
         private T _value3;
+
         /// <summary>
-        /// The value
+        ///     The value
         /// </summary>
         private T _value4;
+
         /// <summary>
-        /// The value
+        ///     The value
         /// </summary>
         private T _value5;
+
         /// <summary>
-        /// The value
+        ///     The value
         /// </summary>
         private T _value6;
+
         /// <summary>
-        /// The value
+        ///     The value
         /// </summary>
         private T _value7;
 
         /// <summary>
-        /// The index out of range exception
+        ///     The index out of range exception
         /// </summary>
         public T this[int index]
         {

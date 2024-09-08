@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:AABB.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
@@ -21,7 +50,7 @@ namespace Alis.Core.Physic.Collision
         public Vector2 UpperBound;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AABB"/> class
+        ///     Initializes a new instance of the <see cref="AABB" /> class
         /// </summary>
         /// <param name="min">The min</param>
         /// <param name="max">The max</param>
@@ -31,7 +60,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AABB"/> class
+        ///     Initializes a new instance of the <see cref="AABB" /> class
         /// </summary>
         /// <param name="min">The min</param>
         /// <param name="max">The max</param>
@@ -42,7 +71,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AABB"/> class
+        ///     Initializes a new instance of the <see cref="AABB" /> class
         /// </summary>
         /// <param name="center">The center</param>
         /// <param name="width">The width</param>
@@ -54,12 +83,12 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Gets the value of the width
+        ///     Gets the value of the width
         /// </summary>
         public float Width => UpperBound.X - LowerBound.X;
 
         /// <summary>
-        /// Gets the value of the height
+        ///     Gets the value of the height
         /// </summary>
         public float Height => UpperBound.Y - LowerBound.Y;
 

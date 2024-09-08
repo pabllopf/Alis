@@ -27,39 +27,39 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
 
-
 namespace Alis.Core.Physic.Dynamics.Joints
 {
     /// <summary>
-    /// The joint class
+    ///     The joint class
     /// </summary>
     public abstract class Joint
     {
         /// <summary>
-        /// The breakpoint
+        ///     The breakpoint
         /// </summary>
         private float _breakpoint;
+
         /// <summary>
-        /// The breakpoint squared
+        ///     The breakpoint squared
         /// </summary>
         private double _breakpointSquared;
+
         /// <summary>
-        /// The world
+        ///     The world
         /// </summary>
         internal World _world;
 
         /// <summary>
-        /// The joint edge
+        ///     The joint edge
         /// </summary>
         internal JointEdge EdgeA = new JointEdge();
+
         /// <summary>
-        /// The joint edge
+        ///     The joint edge
         /// </summary>
         internal JointEdge EdgeB = new JointEdge();
 
@@ -70,7 +70,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public bool Enabled = true;
 
         /// <summary>
-        /// The island flag
+        ///     The island flag
         /// </summary>
         internal bool IslandFlag;
 
@@ -81,7 +81,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public object Tag;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Joint"/> class
+        ///     Initializes a new instance of the <see cref="Joint" /> class
         /// </summary>
         protected Joint()
         {
@@ -92,7 +92,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Joint"/> class
+        ///     Initializes a new instance of the <see cref="Joint" /> class
         /// </summary>
         /// <param name="bodyA">The body</param>
         /// <param name="bodyB">The body</param>
@@ -180,7 +180,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public abstract float GetReactionTorque(float invDt);
 
         /// <summary>
-        /// Wakes the bodies
+        ///     Wakes the bodies
         /// </summary>
         protected void WakeBodies()
         {
@@ -203,13 +203,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
                                      JointType == JointType.FixedFriction;
 
         /// <summary>
-        /// Inits the velocity constraints using the specified data
+        ///     Inits the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal abstract void InitVelocityConstraints(ref SolverData data);
 
         /// <summary>
-        /// Validates the inv dt
+        ///     Validates the inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         internal void Validate(float invDt)
@@ -229,7 +229,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Solves the velocity constraints using the specified data
+        ///     Solves the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal abstract void SolveVelocityConstraints(ref SolverData data);

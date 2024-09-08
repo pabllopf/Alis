@@ -27,9 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
-
 using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
@@ -40,11 +37,10 @@ using Alis.Core.Physic.Common.PhysicsLogic;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Alis.Core.Physic.Dynamics.Joints;
 
-
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    /// The body class
+    ///     The body class
     /// </summary>
     public partial class Body
     {
@@ -55,107 +51,127 @@ namespace Alis.Core.Physic.Dynamics
         public readonly FixtureCollection FixtureList;
 
         /// <summary>
-        /// The angular damping
+        ///     The angular damping
         /// </summary>
         private float _angularDamping;
+
         /// <summary>
-        /// The angular velocity
+        ///     The angular velocity
         /// </summary>
         internal float _angularVelocity;
+
         /// <summary>
-        /// The awake
+        ///     The awake
         /// </summary>
         private bool _awake;
+
         /// <summary>
-        /// The body type
+        ///     The body type
         /// </summary>
         private BodyType _bodyType;
 
         /// <summary>
-        /// The enabled
+        ///     The enabled
         /// </summary>
         internal bool _enabled;
+
         /// <summary>
-        /// The fixed rotation
+        ///     The fixed rotation
         /// </summary>
         private bool _fixedRotation;
+
         /// <summary>
-        /// The force
+        ///     The force
         /// </summary>
         internal Vector2 _force;
+
         /// <summary>
-        /// The inertia
+        ///     The inertia
         /// </summary>
         private float _inertia;
+
         /// <summary>
-        /// The inv
+        ///     The inv
         /// </summary>
         internal float _invI;
+
         /// <summary>
-        /// The inv mass
+        ///     The inv mass
         /// </summary>
         internal float _invMass;
+
         /// <summary>
-        /// The island
+        ///     The island
         /// </summary>
         internal bool _island;
+
         /// <summary>
-        /// The linear damping
+        ///     The linear damping
         /// </summary>
         private float _linearDamping;
+
         /// <summary>
-        /// The linear velocity
+        ///     The linear velocity
         /// </summary>
         internal Vector2 _linearVelocity;
+
         /// <summary>
-        /// The lock
+        ///     The lock
         /// </summary>
         internal int _lock;
+
         /// <summary>
-        /// The lock order
+        ///     The lock order
         /// </summary>
         internal int _lockOrder;
+
         /// <summary>
-        /// The mass
+        ///     The mass
         /// </summary>
         private float _mass;
+
         /// <summary>
-        /// The sleeping allowed
+        ///     The sleeping allowed
         /// </summary>
         private bool _sleepingAllowed;
+
         /// <summary>
-        /// The sleep time
+        ///     The sleep time
         /// </summary>
         internal float _sleepTime;
+
         /// <summary>
-        /// The sweep
+        ///     The sweep
         /// </summary>
         internal Sweep _sweep; // the swept motion for CCD
+
         /// <summary>
-        /// The torque
+        ///     The torque
         /// </summary>
         internal float _torque;
+
         /// <summary>
-        /// The world
+        ///     The world
         /// </summary>
         internal World _world;
+
         /// <summary>
-        /// The xf
+        ///     The xf
         /// </summary>
         internal Transform _xf; // the body origin transform
 
         /// <summary>
-        /// The all
+        ///     The all
         /// </summary>
         public ControllerFilter ControllerFilter = new ControllerFilter(ControllerCategory.All);
 
         /// <summary>
-        /// The on collision event handler
+        ///     The on collision event handler
         /// </summary>
         internal OnCollisionEventHandler onCollisionEventHandler;
 
         /// <summary>
-        /// The on separation event handler
+        ///     The on separation event handler
         /// </summary>
         internal OnSeparationEventHandler onSeparationEventHandler;
 
@@ -166,7 +182,7 @@ namespace Alis.Core.Physic.Dynamics
         public object Tag;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Body"/> class
+        ///     Initializes a new instance of the <see cref="Body" /> class
         /// </summary>
         public Body()
         {
@@ -610,7 +626,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Gets or sets the value of the ignore ccd
+        ///     Gets or sets the value of the ignore ccd
         /// </summary>
         public bool IgnoreCCD { get; set; }
 
@@ -1170,7 +1186,7 @@ namespace Alis.Core.Physic.Dynamics
         public Vector2 GetLinearVelocityFromLocalPoint(ref Vector2 localPoint) => GetLinearVelocityFromWorldPoint(GetWorldPoint(ref localPoint));
 
         /// <summary>
-        /// Synchronizes the fixtures
+        ///     Synchronizes the fixtures
         /// </summary>
         internal void SynchronizeFixtures()
         {
@@ -1185,7 +1201,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Synchronizes the transform
+        ///     Synchronizes the transform
         /// </summary>
         internal void SynchronizeTransform()
         {
@@ -1223,7 +1239,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Advances the alpha
+        ///     Advances the alpha
         /// </summary>
         /// <param name="alpha">The alpha</param>
         internal void Advance(float alpha)
@@ -1237,7 +1253,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// The on collision
+        ///     The on collision
         /// </summary>
         public event OnCollisionEventHandler OnCollision
         {
@@ -1246,7 +1262,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// The on separation
+        ///     The on separation
         /// </summary>
         public event OnSeparationEventHandler OnSeparation
         {
