@@ -217,7 +217,7 @@ namespace Alis.Core.Physic.Common
                     if (!secondIsSegment || ((ub >= 0.0f) && (ub <= 1.0f)))
                     {
                         // check if they are coincident (no collision in this case)
-                        if (ua != 0f || ub != 0f)
+                        if (Math.Abs(ua) > Settings.Epsilon && Math.Abs(ub) > Settings.Epsilon)
                         {
                             //There is an intersection
                             point.X = point1.X + ua * b;
