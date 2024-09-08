@@ -10,7 +10,7 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         /// The ey
         /// </summary>
-        public Vector2 ex, ey;
+        public Vector2 Ex, Ey;
 
         /// <summary>
         ///     Construct this matrix using columns.
@@ -19,8 +19,8 @@ namespace Alis.Core.Physic.Common
         /// <param name="c2">The c2.</param>
         public Mat22(Vector2 c1, Vector2 c2)
         {
-            ex = c1;
-            ey = c2;
+            Ex = c1;
+            Ey = c2;
         }
 
         /// <summary>
@@ -32,8 +32,8 @@ namespace Alis.Core.Physic.Common
         /// <param name="a22">The a22.</param>
         public Mat22(float a11, float a12, float a21, float a22)
         {
-            ex = new Vector2(a11, a21);
-            ey = new Vector2(a12, a22);
+            Ex = new Vector2(a11, a21);
+            Ey = new Vector2(a12, a22);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Alis.Core.Physic.Common
         {
             get
             {
-                float a = ex.X, b = ey.X, c = ex.Y, d = ey.Y;
+                float a = Ex.X, b = Ey.X, c = Ex.Y, d = Ey.Y;
                 float det = a * d - b * c;
                 if (det != 0.0f)
                 {
@@ -51,8 +51,8 @@ namespace Alis.Core.Physic.Common
                 }
 
                 Mat22 result;
-                result.ex = new Vector2(det * d, -det * c);
-                result.ey = new Vector2(-det * b, det * a);
+                result.Ex = new Vector2(det * d, -det * c);
+                result.Ey = new Vector2(-det * b, det * a);
 
                 return result;
             }
@@ -65,8 +65,8 @@ namespace Alis.Core.Physic.Common
         /// <param name="c2">The c2.</param>
         public void Set(Vector2 c1, Vector2 c2)
         {
-            ex = c1;
-            ey = c2;
+            Ex = c1;
+            Ey = c2;
         }
 
         /// <summary>
@@ -74,10 +74,10 @@ namespace Alis.Core.Physic.Common
         /// </summary>
         public void SetIdentity()
         {
-            ex.X = 1.0f;
-            ey.X = 0.0f;
-            ex.Y = 0.0f;
-            ey.Y = 1.0f;
+            Ex.X = 1.0f;
+            Ey.X = 0.0f;
+            Ex.Y = 0.0f;
+            Ey.Y = 1.0f;
         }
 
         /// <summary>
@@ -85,10 +85,10 @@ namespace Alis.Core.Physic.Common
         /// </summary>
         public void SetZero()
         {
-            ex.X = 0.0f;
-            ey.X = 0.0f;
-            ex.Y = 0.0f;
-            ey.Y = 0.0f;
+            Ex.X = 0.0f;
+            Ey.X = 0.0f;
+            Ex.Y = 0.0f;
+            Ey.Y = 0.0f;
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Alis.Core.Physic.Common
         /// <returns></returns>
         public Vector2 Solve(Vector2 b)
         {
-            float a11 = ex.X, a12 = ey.X, a21 = ex.Y, a22 = ey.Y;
+            float a11 = Ex.X, a12 = Ey.X, a21 = Ex.Y, a22 = Ey.Y;
             float det = a11 * a22 - a12 * a21;
             if (det != 0.0f)
             {
@@ -112,13 +112,13 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         /// Adds the a
         /// </summary>
-        /// <param name="A">The </param>
-        /// <param name="B">The </param>
-        /// <param name="R">The </param>
-        public static void Add(ref Mat22 A, ref Mat22 B, out Mat22 R)
+        /// <param name="a">The </param>
+        /// <param name="b">The </param>
+        /// <param name="r">The </param>
+        public static void Add(ref Mat22 a, ref Mat22 b, out Mat22 r)
         {
-            R.ex = A.ex + B.ex;
-            R.ey = A.ey + B.ey;
+            r.Ex = a.Ex + b.Ex;
+            r.Ey = a.Ey + b.Ey;
         }
     }
 }

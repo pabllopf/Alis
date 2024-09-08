@@ -297,8 +297,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     if (k11 * k11 < k_maxConditionNumber * (k11 * k22 - k12 * k12))
                     {
                         // K is safe to invert.
-                        vc.K.ex = new Vector2(k11, k12);
-                        vc.K.ey = new Vector2(k12, k22);
+                        vc.K.Ex = new Vector2(k11, k12);
+                        vc.K.Ey = new Vector2(k12, k22);
                         vc.normalMass = vc.K.Inverse;
                     }
                     else
@@ -607,7 +607,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                         x.X = -cp1.normalMass * b.X;
                         x.Y = 0.0f;
                         vn1 = 0.0f;
-                        vn2 = vc.K.ex.Y * x.X + b.Y;
+                        vn2 = vc.K.Ex.Y * x.X + b.Y;
 
                         if ((x.X >= 0.0f) && (vn2 >= 0.0f))
                         {
@@ -648,7 +648,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                         //
                         x.X = 0.0f;
                         x.Y = -cp2.normalMass * b.Y;
-                        vn1 = vc.K.ey.X * x.Y + b.X;
+                        vn1 = vc.K.Ey.X * x.Y + b.X;
                         vn2 = 0.0f;
 
                         if ((x.Y >= 0.0f) && (vn1 >= 0.0f))
