@@ -1,4 +1,4 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -43,10 +43,7 @@ using System.Diagnostics;
 using System.Text;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;
-#if XNAAPI
-using Vector2 = Microsoft.Xna.Framework.Vector2;
-using Matrix = Microsoft.Xna.Framework.Matrix;
-#endif
+
 
 namespace Alis.Core.Physic.Common
 {
@@ -596,30 +593,7 @@ namespace Alis.Core.Physic.Common
             return true;
         }
 
-#if XNAAPI
-        /// <summary>
-        /// Transforms the polygon using the defined matrix.
-        /// </summary>
-        /// <param name="transform">The matrix to use as transformation.</param>
-        public void Transform(ref Matrix transform)
-        {
-            // Transform main polygon
-            for (int i = 0; i < Count; i++)
-                this[i] = Vector2.Transform(this[i], transform);
 
-            // Transform holes
-            if (Holes != null && Holes.Count > 0)
-            {
-                for (int i = 0; i < Holes.Count; i++)
-                {
-                    Vector2[] temp = Holes[i].ToArray();
-                    Vector2.Transform(temp, ref transform, temp);
-
-                    Holes[i] = new Vertices(temp);
-                }
-            }
-        }
-#endif
 
         /// <summary>
         /// Returns the string

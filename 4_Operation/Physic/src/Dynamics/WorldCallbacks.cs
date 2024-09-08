@@ -34,9 +34,7 @@ using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Controllers;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Alis.Core.Physic.Dynamics.Joints;
-#if XNAAPI
-using Microsoft.Xna.Framework;
-#endif
+
 
 namespace Alis.Core.Physic.Dynamics
 {

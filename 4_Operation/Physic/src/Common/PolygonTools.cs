@@ -1,4 +1,4 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -35,9 +35,7 @@
 using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
-#if XNAAPI
-using Vector2 = Microsoft.Xna.Framework.Vector2;
-#endif
+
 
 namespace Alis.Core.Physic.Common
 {
@@ -357,46 +355,6 @@ namespace Alis.Core.Physic.Common
             return vertices;
         }
 
-#if XNAAPI
-        /// <summary>
-        /// Detects the vertices by analyzing the texture data.
-        /// </summary>
-        /// <param name="data">The texture data.</param>
-        /// <param name="width">The texture width.</param>
-        /// <returns></returns>
-        public static Vertices CreatePolygon(uint[] data, int width)
-        {
-            return TextureConverter.DetectVertices(data, width);
-        }
 
-        /// <summary>
-        /// Detects the vertices by analyzing the texture data.
-        /// </summary>
-        /// <param name="data">The texture data.</param>
-        /// <param name="width">The texture width.</param>
-        /// <param name="holeDetection">if set to <c>true</c> it will perform hole detection.</param>
-        /// <returns></returns>
-        public static Vertices CreatePolygon(uint[] data, int width, bool holeDetection)
-        {
-            return TextureConverter.DetectVertices(data, width, holeDetection);
-        }
-
-        /// <summary>
-        /// Detects the vertices by analyzing the texture data.
-        /// </summary>
-        /// <param name="data">The texture data.</param>
-        /// <param name="width">The texture width.</param>
-        /// <param name="hullTolerance">The hull tolerance.</param>
-        /// <param name="alphaTolerance">The alpha tolerance.</param>
-        /// <param name="multiPartDetection">if set to <c>true</c> it will perform multi part detection.</param>
-        /// <param name="holeDetection">if set to <c>true</c> it will perform hole detection.</param>
-        /// <returns></returns>
-        public static List<Vertices> CreatePolygon(uint[] data, int width, float hullTolerance,
-            byte alphaTolerance, bool multiPartDetection, bool holeDetection)
-        {
-            return TextureConverter.DetectVertices(data, width, hullTolerance, alphaTolerance,
-                multiPartDetection, holeDetection);
-        }
-#endif
     }
 }
