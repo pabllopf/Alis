@@ -1012,11 +1012,11 @@ namespace Alis.Core.Physic.Dynamics
 
             // Fire World events:
 
-            var bodyAddedHandler = BodyAdded;
+            BodyDelegate bodyAddedHandler = BodyAdded;
             if (bodyAddedHandler != null)
                 bodyAddedHandler(this, body);
 
-            var fixtureAddedHandler = FixtureAdded;
+            FixtureDelegate fixtureAddedHandler = FixtureAdded;
             if (fixtureAddedHandler != null)
                 for (int i = 0; i < body.FixtureList._list.Count; i++)
                     fixtureAddedHandler(this, body, body.FixtureList._list[i]);
@@ -1071,7 +1071,7 @@ namespace Alis.Core.Physic.Dynamics
 
             // Delete the attached fixtures. This destroys broad-phase proxies.
             body.DestroyProxies();
-            var fixtureRemovedHandler = FixtureRemoved;
+            FixtureDelegate fixtureRemovedHandler = FixtureRemoved;
             if (fixtureRemovedHandler != null)
                 for (int i = 0; i < body.FixtureList._list.Count; i++)
                     fixtureRemovedHandler(this, body, body.FixtureList._list[i]);
@@ -1080,7 +1080,7 @@ namespace Alis.Core.Physic.Dynamics
             BodyList._list.Remove(body);
             BodyList._generationStamp++;
 
-            var bodyRemovedHandler = BodyRemoved;
+            BodyDelegate bodyRemovedHandler = BodyRemoved;
             if (bodyRemovedHandler != null)
                 bodyRemovedHandler(this, body);
 
@@ -1156,7 +1156,7 @@ namespace Alis.Core.Physic.Dynamics
                 }
             }
 
-            var jointAddedHandler = JointAdded;
+            JointDelegate jointAddedHandler = JointAdded;
             if (jointAddedHandler != null)
                 jointAddedHandler(this, joint);
 
@@ -1261,7 +1261,7 @@ namespace Alis.Core.Physic.Dynamics
                 }
             }
 
-            var jointRemovedHandler = JointRemoved;
+            JointDelegate jointRemovedHandler = JointRemoved;
             if (jointRemovedHandler != null)
                 jointRemovedHandler(this, joint);
         }
@@ -1663,7 +1663,7 @@ namespace Alis.Core.Physic.Dynamics
             ControllerList._list.Add(controller);
             ControllerList._generationStamp++;
 
-            var controllerAddedHandler = ControllerAdded;
+            ControllerDelegate controllerAddedHandler = ControllerAdded;
             if (controllerAddedHandler != null)
                 controllerAddedHandler(this, controller);
         }
@@ -1685,7 +1685,7 @@ namespace Alis.Core.Physic.Dynamics
             ControllerList._list.Remove(controller);
             ControllerList._generationStamp++;
 
-            var controllerRemovedHandler = ControllerRemoved;
+            ControllerDelegate controllerRemovedHandler = ControllerRemoved;
             if (controllerRemovedHandler != null)
                 controllerRemovedHandler(this, controller);
         }

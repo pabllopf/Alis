@@ -208,18 +208,18 @@ namespace Alis.Core.Physic.Dynamics
                 return;
 
             // Check user filtering.
-            var contactFilterHandler = ContactFilter;
+            CollisionFilterDelegate contactFilterHandler = ContactFilter;
             if (contactFilterHandler != null)
                 if (contactFilterHandler(fixtureA, fixtureB) == false)
                     return;
 
             //FPE feature: BeforeCollision delegate
-            var beforeCollisionHandlerA = fixtureA.BeforeCollision;
+            BeforeCollisionEventHandler beforeCollisionHandlerA = fixtureA.BeforeCollision;
             if (beforeCollisionHandlerA != null)
                 if (beforeCollisionHandlerA(fixtureA, fixtureB) == false)
                     return;
 
-            var beforeCollisionHandlerB = fixtureB.BeforeCollision;
+            BeforeCollisionEventHandler beforeCollisionHandlerB = fixtureB.BeforeCollision;
             if (beforeCollisionHandlerB != null)
                 if (beforeCollisionHandlerB(fixtureB, fixtureA) == false)
                     return;
@@ -304,28 +304,28 @@ namespace Alis.Core.Physic.Dynamics
             if (contact.IsTouching)
             {
                 //Report the separation to both participants:
-                var onFixtureSeparationHandlerA = fixtureA.OnSeparation;
+                OnSeparationEventHandler onFixtureSeparationHandlerA = fixtureA.OnSeparation;
                 if (onFixtureSeparationHandlerA != null)
                     onFixtureSeparationHandlerA(fixtureA, fixtureB, contact);
 
                 //Reverse the order of the reported fixtures. The first fixture is always the one that the
                 //user subscribed to.
-                var onFixtureSeparationHandlerB = fixtureB.OnSeparation;
+                OnSeparationEventHandler onFixtureSeparationHandlerB = fixtureB.OnSeparation;
                 if (onFixtureSeparationHandlerB != null)
                     onFixtureSeparationHandlerB(fixtureB, fixtureA, contact);
 
                 //Report the separation to both bodies:
-                var onBodySeparationHandlerA = bodyA.onSeparationEventHandler;
+                OnSeparationEventHandler onBodySeparationHandlerA = bodyA.onSeparationEventHandler;
                 if (onBodySeparationHandlerA != null)
                     onBodySeparationHandlerA(fixtureA, fixtureB, contact);
 
                 //Reverse the order of the reported fixtures. The first fixture is always the one that the
                 //user subscribed to.
-                var onBodySeparationHandlerB = bodyB.onSeparationEventHandler;
+                OnSeparationEventHandler onBodySeparationHandlerB = bodyB.onSeparationEventHandler;
                 if (onBodySeparationHandlerB != null)
                     onBodySeparationHandlerB(fixtureB, fixtureA, contact);
 
-                var endContactHandler = EndContact;
+                EndContactDelegate endContactHandler = EndContact;
                 if (endContactHandler != null)
                     endContactHandler(contact);
             }
@@ -423,7 +423,7 @@ namespace Alis.Core.Physic.Dynamics
                     }
 
                     // Check user filtering.
-                    var contactFilterHandler = ContactFilter;
+                    CollisionFilterDelegate contactFilterHandler = ContactFilter;
                     if (contactFilterHandler != null)
                     {
                         if (contactFilterHandler(fixtureA, fixtureB) == false)
@@ -533,7 +533,7 @@ namespace Alis.Core.Physic.Dynamics
                     }
 
                     // Check user filtering.
-                    var contactFilterHandler = ContactFilter;
+                    CollisionFilterDelegate contactFilterHandler = ContactFilter;
                     if (contactFilterHandler != null)
                     {
                         if (contactFilterHandler(fixtureA, fixtureB) == false)

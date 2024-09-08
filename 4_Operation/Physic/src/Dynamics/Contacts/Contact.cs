@@ -382,27 +382,27 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                     // Report the collision to both participants. Track which ones returned true so we can
                     // later call OnSeparation if the contact is disabled for a different reason.
-                    var onFixtureCollisionHandlerA = FixtureA.OnCollision;
+                    OnCollisionEventHandler onFixtureCollisionHandlerA = FixtureA.OnCollision;
                     if (onFixtureCollisionHandlerA != null)
                         foreach (OnCollisionEventHandler handler in onFixtureCollisionHandlerA.GetInvocationList())
                             enabledA = handler(FixtureA, FixtureB, this) && enabledA;
 
                     // Reverse the order of the reported fixtures. The first fixture is always the one that the
                     // user subscribed to.
-                    var onFixtureCollisionHandlerB = FixtureB.OnCollision;
+                    OnCollisionEventHandler onFixtureCollisionHandlerB = FixtureB.OnCollision;
                     if (onFixtureCollisionHandlerB != null)
                         foreach (OnCollisionEventHandler handler in onFixtureCollisionHandlerB.GetInvocationList())
                             enabledB = handler(FixtureB, FixtureA, this) && enabledB;
 
                     // Report the collision to both bodies:
-                    var onBodyCollisionHandlerA = bodyA.onCollisionEventHandler;
+                    OnCollisionEventHandler onBodyCollisionHandlerA = bodyA.onCollisionEventHandler;
                     if (onBodyCollisionHandlerA != null)
                         foreach (OnCollisionEventHandler handler in onBodyCollisionHandlerA.GetInvocationList())
                             enabledA = handler(FixtureA, FixtureB, this) && enabledA;
 
                     // Reverse the order of the reported fixtures. The first fixture is always the one that the
                     // user subscribed to.
-                    var onBodyCollisionHandlerB = bodyB.onCollisionEventHandler;
+                    OnCollisionEventHandler onBodyCollisionHandlerB = bodyB.onCollisionEventHandler;
                     if (onBodyCollisionHandlerB != null)
                         foreach (OnCollisionEventHandler handler in onBodyCollisionHandlerB.GetInvocationList())
                             enabledB = handler(FixtureB, FixtureA, this) && enabledB;
@@ -411,7 +411,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     Enabled = enabledA && enabledB;
 
                     // BeginContact can also return false and disable the contact
-                    var beginContactHandler = contactManager.BeginContact;
+                    BeginContactDelegate beginContactHandler = contactManager.BeginContact;
                     if (enabledA && enabledB && (beginContactHandler != null))
                         Enabled = beginContactHandler(this);
 
@@ -427,28 +427,28 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 if (touching == false)
                 {
                     //Report the separation to both participants:
-                    var onFixtureSeparationHandlerA = FixtureA.OnSeparation;
+                    OnSeparationEventHandler onFixtureSeparationHandlerA = FixtureA.OnSeparation;
                     if (onFixtureSeparationHandlerA != null)
                         onFixtureSeparationHandlerA(FixtureA, FixtureB, this);
 
                     //Reverse the order of the reported fixtures. The first fixture is always the one that the
                     //user subscribed to.
-                    var onFixtureSeparationHandlerB = FixtureB.OnSeparation;
+                    OnSeparationEventHandler onFixtureSeparationHandlerB = FixtureB.OnSeparation;
                     if (onFixtureSeparationHandlerB != null)
                         onFixtureSeparationHandlerB(FixtureB, FixtureA, this);
 
                     //Report the separation to both bodies:
-                    var onBodySeparationHandlerA = bodyA.onSeparationEventHandler;
+                    OnSeparationEventHandler onBodySeparationHandlerA = bodyA.onSeparationEventHandler;
                     if (onBodySeparationHandlerA != null)
                         onBodySeparationHandlerA(FixtureA, FixtureB, this);
 
                     //Reverse the order of the reported fixtures. The first fixture is always the one that the
                     //user subscribed to.
-                    var onBodySeparationHandlerB = bodyB.onSeparationEventHandler;
+                    OnSeparationEventHandler onBodySeparationHandlerB = bodyB.onSeparationEventHandler;
                     if (onBodySeparationHandlerB != null)
                         onBodySeparationHandlerB(FixtureB, FixtureA, this);
 
-                    var endContactHandler = contactManager.EndContact;
+                    EndContactDelegate endContactHandler = contactManager.EndContact;
                     if (endContactHandler != null)
                         endContactHandler(this);
                 }
@@ -457,7 +457,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             if (sensor)
                 return;
 
-            var preSolveHandler = contactManager.PreSolve;
+            PreSolveDelegate preSolveHandler = contactManager.PreSolve;
             if (preSolveHandler != null)
                 preSolveHandler(this, ref oldManifold);
         }
@@ -518,7 +518,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             Debug.Assert((ShapeType.Unknown < type2) && (type2 < ShapeType.TypeCount));
 
             Contact c = null;
-            var contactPoolList = contactManager._contactPoolList;
+            ContactListHead contactPoolList = contactManager._contactPoolList;
             if (contactPoolList.Next != contactPoolList)
             {
                 // get first item in the pool.

@@ -347,7 +347,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
         /// </summary>
         private void RotateCW()
         {
-            var t = Points[2];
+            TriangulationPoint t = Points[2];
             Points[2] = Points[1];
             Points[1] = Points[0];
             Points[0] = t;
