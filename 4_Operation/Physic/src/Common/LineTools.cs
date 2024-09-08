@@ -32,6 +32,7 @@
 using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;
+using Alis.Core.Physic.Dynamics;
 
 
 namespace Alis.Core.Physic.Common

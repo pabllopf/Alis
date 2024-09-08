@@ -28,12 +28,11 @@
 //  --------------------------------------------------------------------------
 
 
-
 using System;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Common;
 
-
-namespace Alis.Core.Physic.Common
+namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
     /// The math utils class
@@ -289,7 +288,7 @@ namespace Alis.Core.Physic.Common
         /// <param name="value1">The value</param>
         /// <param name="value2">The value</param>
         /// <returns>The bool</returns>
-        public static bool FloatEquals(float value1, float value2) => Math.Abs(value1 - value2) <= Settings.Epsilon;
+        public static bool FloatEquals(float value1, float value2) => Math.Abs(value1 - value2) <= float.Epsilon;
 
         /// <summary>
         ///     Checks if a floating point Value is equal to another,
