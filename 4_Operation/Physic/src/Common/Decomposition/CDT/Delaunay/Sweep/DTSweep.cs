@@ -84,7 +84,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
 
                 if (point.HasEdges)
                 {
-                    foreach (DTSweepConstraint e in point.Edges)
+                    foreach (DtSweepConstraint e in point.Edges)
                     {
                         EdgeEvent(tcx, e, node);
                     }
@@ -277,7 +277,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// <param name="tcx">The tcx</param>
         /// <param name="edge">The edge</param>
         /// <param name="node">The node</param>
-        private static void EdgeEvent(DTSweepContext tcx, DTSweepConstraint edge, AdvancingFrontNode node)
+        private static void EdgeEvent(DTSweepContext tcx, DtSweepConstraint edge, AdvancingFrontNode node)
         {
             try
             {
@@ -308,7 +308,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// <param name="tcx">The tcx</param>
         /// <param name="edge">The edge</param>
         /// <param name="node">The node</param>
-        private static void FillEdgeEvent(DTSweepContext tcx, DTSweepConstraint edge, AdvancingFrontNode node)
+        private static void FillEdgeEvent(DTSweepContext tcx, DtSweepConstraint edge, AdvancingFrontNode node)
         {
             if (tcx.EdgeEvent.Right)
             {
@@ -326,7 +326,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// <param name="tcx">The tcx</param>
         /// <param name="edge">The edge</param>
         /// <param name="node">The node</param>
-        private static void FillRightConcaveEdgeEvent(DTSweepContext tcx, DTSweepConstraint edge,
+        private static void FillRightConcaveEdgeEvent(DTSweepContext tcx, DtSweepConstraint edge,
             AdvancingFrontNode node)
         {
             Fill(tcx, node.Next);
@@ -352,7 +352,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// <param name="tcx">The tcx</param>
         /// <param name="edge">The edge</param>
         /// <param name="node">The node</param>
-        private static void FillRightConvexEdgeEvent(DTSweepContext tcx, DTSweepConstraint edge, AdvancingFrontNode node)
+        private static void FillRightConvexEdgeEvent(DTSweepContext tcx, DtSweepConstraint edge, AdvancingFrontNode node)
         {
             // Next concave or convex?
             if (TriangulationUtil.Orient2d(node.Next.Point, node.Next.Next.Point, node.Next.Next.Next.Point) ==
@@ -380,7 +380,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// <param name="tcx">The tcx</param>
         /// <param name="edge">The edge</param>
         /// <param name="node">The node</param>
-        private static void FillRightBelowEdgeEvent(DTSweepContext tcx, DTSweepConstraint edge, AdvancingFrontNode node)
+        private static void FillRightBelowEdgeEvent(DTSweepContext tcx, DtSweepConstraint edge, AdvancingFrontNode node)
         {
             if (node.Point.X < edge.P.X) // needed?
             {
@@ -405,7 +405,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// <param name="tcx">The tcx</param>
         /// <param name="edge">The edge</param>
         /// <param name="node">The node</param>
-        private static void FillRightAboveEdgeEvent(DTSweepContext tcx, DTSweepConstraint edge, AdvancingFrontNode node)
+        private static void FillRightAboveEdgeEvent(DTSweepContext tcx, DtSweepConstraint edge, AdvancingFrontNode node)
         {
             while (node.Next.Point.X < edge.P.X)
             {
@@ -428,7 +428,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// <param name="tcx">The tcx</param>
         /// <param name="edge">The edge</param>
         /// <param name="node">The node</param>
-        private static void FillLeftConvexEdgeEvent(DTSweepContext tcx, DTSweepConstraint edge, AdvancingFrontNode node)
+        private static void FillLeftConvexEdgeEvent(DTSweepContext tcx, DtSweepConstraint edge, AdvancingFrontNode node)
         {
             // Next concave or convex?
             if (TriangulationUtil.Orient2d(node.Prev.Point, node.Prev.Prev.Point, node.Prev.Prev.Prev.Point) ==
@@ -456,7 +456,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// <param name="tcx">The tcx</param>
         /// <param name="edge">The edge</param>
         /// <param name="node">The node</param>
-        private static void FillLeftConcaveEdgeEvent(DTSweepContext tcx, DTSweepConstraint edge, AdvancingFrontNode node)
+        private static void FillLeftConcaveEdgeEvent(DTSweepContext tcx, DtSweepConstraint edge, AdvancingFrontNode node)
         {
             Fill(tcx, node.Prev);
             if (node.Prev.Point != edge.P)
@@ -481,7 +481,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// <param name="tcx">The tcx</param>
         /// <param name="edge">The edge</param>
         /// <param name="node">The node</param>
-        private static void FillLeftBelowEdgeEvent(DTSweepContext tcx, DTSweepConstraint edge, AdvancingFrontNode node)
+        private static void FillLeftBelowEdgeEvent(DTSweepContext tcx, DtSweepConstraint edge, AdvancingFrontNode node)
         {
             if (node.Point.X > edge.P.X)
             {
@@ -506,7 +506,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// <param name="tcx">The tcx</param>
         /// <param name="edge">The edge</param>
         /// <param name="node">The node</param>
-        private static void FillLeftAboveEdgeEvent(DTSweepContext tcx, DTSweepConstraint edge, AdvancingFrontNode node)
+        private static void FillLeftAboveEdgeEvent(DTSweepContext tcx, DtSweepConstraint edge, AdvancingFrontNode node)
         {
             while (node.Prev.Point.X > edge.P.X)
             {
@@ -643,7 +643,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         {
             DelaunayTriangle ot = t.NeighborAcross(p);
             TriangulationPoint op = ot.OppositePoint(t, p);
-            
+
             if (t.GetConstrainedEdgeAcross(p))
             {
                 throw new Exception("Intersecting Constraints");
@@ -762,6 +762,13 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         {
             DelaunayTriangle ot = t.NeighborAcross(p);
             TriangulationPoint op = ot.OppositePoint(t, p);
+
+            if (ot == null)
+            {
+                // If we want to integrate the fillEdgeEvent do it here
+                // With current implementation we should never get here
+                throw new Exception("[BUG:FIXME] FLIP failed due to missing triangle");
+            }
 
             bool inScanArea = TriangulationUtil.InScanArea(eq, flipTriangle.PointCCW(eq), flipTriangle.PointCW(eq), op);
             if (inScanArea)

@@ -269,7 +269,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// <param name="a">The </param>
         /// <param name="b">The </param>
         /// <returns>The triangulation constraint</returns>
-        public override TriangulationConstraint NewConstraint(TriangulationPoint a, TriangulationPoint b) => new DTSweepConstraint(a, b);
+        public override TriangulationConstraint NewConstraint(TriangulationPoint a, TriangulationPoint b) => new DtSweepConstraint(a, b);
 
         #region Nested type: DTSweepBasin
 
@@ -312,7 +312,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             /// <summary>
             /// The constrained edge
             /// </summary>
-            public DTSweepConstraint ConstrainedEdge;
+            public DtSweepConstraint ConstrainedEdge;
             /// <summary>
             /// The right
             /// </summary>

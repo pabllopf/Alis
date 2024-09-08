@@ -157,7 +157,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
         /// </summary>
         /// <param name="e">The </param>
         /// <returns>The bool</returns>
-        public bool Contains(DTSweepConstraint e) => Contains(e.P) && Contains(e.Q);
+        public bool Contains(DtSweepConstraint e) => Contains(e.P) && Contains(e.Q);
 
         /// <summary>
         /// Describes whether this instance contains
@@ -390,7 +390,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
         /// Marks the constrained edge using the specified edge
         /// </summary>
         /// <param name="edge">The edge</param>
-        public void MarkConstrainedEdge(DTSweepConstraint edge)
+        public void MarkConstrainedEdge(DtSweepConstraint edge)
         {
             MarkConstrainedEdge(edge.P, edge.Q);
         }
