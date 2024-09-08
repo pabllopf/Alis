@@ -37,26 +37,27 @@ using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
-    // 1-D rained system
-    // m (v2 - v1) = lambda
-    // v2 + (beta/h) * x1 + gamma * lambda = 0, gamma has units of inverse mass.
-    // x2 = x1 + h * v2
-
-    // 1-D mass-damper-spring system
-    // m (v2 - v1) + h * d * v2 + h * k * 
-
-    // C = norm(p2 - p1) - L
-    // u = (p2 - p1) / norm(p2 - p1)
-    // Cdot = dot(u, v2 + cross(w2, r2) - v1 - cross(w1, r1))
-    // J = [-u -cross(r1, u) u cross(r2, u)]
-    // K = J * invM * JT
-    //   = invMass1 + invI1 * cross(r1, u)^2 + invMass2 + invI2 * cross(r2, u)^2
-
-    /// <summary>
-    ///     A distance joint rains two points on two bodies
-    ///     to remain at a fixed distance from each other. You can view
-    ///     this as a massless, rigid rod.
-    /// </summary>
+/// <summary>
+///     A distance joint rains two points on two bodies
+///     to remain at a fixed distance from each other. You can view
+///     this as a massless, rigid rod.
+/// </summary>
+/// <remarks>
+/// 1-D rained system
+/// m (v2 - v1) = lambda
+/// v2 + (beta/h) * x1 + gamma * lambda = 0, gamma has units of inverse mass.
+/// x2 = x1 + h * v2
+///
+/// 1-D mass-damper-spring system
+/// m (v2 - v1) + h * d * v2 + h * k * 
+///
+/// C = norm(p2 - p1) - L
+/// u = (p2 - p1) / norm(p2 - p1)
+/// Cdot = dot(u, v2 + cross(w2, r2) - v1 - cross(w1, r1))
+/// J = [-u -cross(r1, u) u cross(r2, u)]
+/// K = J * invM * JT
+///   = invMass1 + invI1 * cross(r1, u)^2 + invMass2 + invI2 * cross(r2, u)^2
+/// </remarks>
     public class DistanceJoint : Joint
     {
         // Solver shared
@@ -85,11 +86,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         /// The inv ia
         /// </summary>
-        private float _invIA;
+        private float invIa;
         /// <summary>
         /// The inv ib
         /// </summary>
-        private float _invIB;
+        private float invIb;
         /// <summary>
         /// The inv mass
         /// </summary>
@@ -176,7 +177,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public sealed override Vector2 WorldAnchorA
         {
             get => BodyA.GetWorldPoint(LocalAnchorA);
-            set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
+            set
+            {
+                _localCenterA = value;
+                Debug.Assert(false, "You can't set the world anchor on this joint type.");
+            }
         }
 
         /// <summary>
@@ -185,7 +190,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public sealed override Vector2 WorldAnchorB
         {
             get => BodyB.GetWorldPoint(LocalAnchorB);
-            set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
+            set
+            {
+                _localCenterA = value;
+                Debug.Assert(false, "You can't set the world anchor on this joint type.");
+            }
         }
 
         /// <summary>
@@ -212,8 +221,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <returns></returns>
         public override Vector2 GetReactionForce(float invDt)
         {
-            Vector2 F = invDt * _impulse * _u;
-            return F;
+            Vector2 f = invDt * _impulse * _u;
+            return f;
         }
 
         /// <summary>
@@ -236,8 +245,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _localCenterB = BodyB._sweep.LocalCenter;
             _invMassA = BodyA._invMass;
             _invMassB = BodyB._invMass;
-            _invIA = BodyA._invI;
-            _invIB = BodyB._invI;
+            invIa = BodyA._invI;
+            invIb = BodyB._invI;
 
             Vector2 cA = data.positions[_indexA].c;
             float aA = data.positions[_indexA].a;
@@ -269,14 +278,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             float crAu = MathUtils.Cross(ref _rA, ref _u);
             float crBu = MathUtils.Cross(ref _rB, ref _u);
-            float invMass = _invMassA + _invIA * crAu * crAu + _invMassB + _invIB * crBu * crBu;
+            float invMass = _invMassA + invIa * crAu * crAu + _invMassB + invIb * crBu * crBu;
 
             // Compute the effective mass matrix.
             _mass = invMass != 0.0f ? 1.0f / invMass : 0.0f;
 
             if (Frequency > 0.0f)
             {
-                float C = length - Length;
+                float c = length - Length;
 
                 // Frequency
                 float omega = Constant.Tau * Frequency;
@@ -291,7 +300,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 float h = data.step.dt;
                 _gamma = h * (d + h * k);
                 _gamma = _gamma != 0.0f ? 1.0f / _gamma : 0.0f;
-                _bias = C * h * k * _gamma;
+                _bias = c * h * k * _gamma;
 
                 invMass += _gamma;
                 _mass = invMass != 0.0f ? 1.0f / invMass : 0.0f;
@@ -307,11 +316,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 // Scale the impulse to support a variable time step.
                 _impulse *= data.step.dtRatio;
 
-                Vector2 P = _impulse * _u;
-                vA -= _invMassA * P;
-                wA -= _invIA * MathUtils.Cross(ref _rA, ref P);
-                vB += _invMassB * P;
-                wB += _invIB * MathUtils.Cross(ref _rB, ref P);
+                Vector2 p = _impulse * _u;
+                vA -= _invMassA * p;
+                wA -= invIa * MathUtils.Cross(ref _rA, ref p);
+                vB += _invMassB * p;
+                wB += invIb * MathUtils.Cross(ref _rB, ref p);
             }
             else
             {
@@ -338,16 +347,16 @@ namespace Alis.Core.Physic.Dynamics.Joints
             // Cdot = dot(u, v + cross(w, r))
             Vector2 vpA = vA + MathUtils.Cross(wA, ref _rA);
             Vector2 vpB = vB + MathUtils.Cross(wB, ref _rB);
-            float Cdot = Vector2.Dot(_u, vpB - vpA);
+            float cdot = Vector2.Dot(_u, vpB - vpA);
 
-            float impulse = -_mass * (Cdot + _bias + _gamma * _impulse);
+            float impulse = -_mass * (cdot + _bias + _gamma * _impulse);
             _impulse += impulse;
 
-            Vector2 P = impulse * _u;
-            vA -= _invMassA * P;
-            wA -= _invIA * MathUtils.Cross(ref _rA, ref P);
-            vB += _invMassB * P;
-            wB += _invIB * MathUtils.Cross(ref _rB, ref P);
+            Vector2 p = impulse * _u;
+            vA -= _invMassA * p;
+            wA -= invIa * MathUtils.Cross(ref _rA, ref p);
+            vB += _invMassB * p;
+            wB += invIb * MathUtils.Cross(ref _rB, ref p);
 
             data.velocities[_indexA].v = vA;
             data.velocities[_indexA].w = wA;
@@ -382,23 +391,23 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             float length = u.Length();
             u.Normalize();
-            float C = length - Length;
-            C = MathUtils.Clamp(C, -Settings.MaxLinearCorrection, Settings.MaxLinearCorrection);
+            float c = length - Length;
+            c = MathUtils.Clamp(c, -Settings.MaxLinearCorrection, Settings.MaxLinearCorrection);
 
-            float impulse = -_mass * C;
-            Vector2 P = impulse * u;
+            float impulse = -_mass * c;
+            Vector2 p = impulse * u;
 
-            cA -= _invMassA * P;
-            aA -= _invIA * MathUtils.Cross(ref rA, ref P);
-            cB += _invMassB * P;
-            aB += _invIB * MathUtils.Cross(ref rB, ref P);
+            cA -= _invMassA * p;
+            aA -= invIa * MathUtils.Cross(ref rA, ref p);
+            cB += _invMassB * p;
+            aB += invIb * MathUtils.Cross(ref rB, ref p);
 
             data.positions[_indexA].c = cA;
             data.positions[_indexA].a = aA;
             data.positions[_indexB].c = cB;
             data.positions[_indexB].a = aB;
 
-            return Math.Abs(C) < Settings.LinearSlop;
+            return Math.Abs(c) < Settings.LinearSlop;
         }
     }
 }
