@@ -1,4 +1,4 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -156,7 +156,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
 
             TurnAdvancingFrontConvex(tcx, n1, n2);
 
-            // TODO: implement ConvexHull for lower right and left boundary
+            
 
             // Lets remove triangles connected to the two "algorithm" points
 
@@ -205,7 +205,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             t2 = t1.NeighborCW(tcx.aFront.Head.Point);
             t1.Clear();
             t1 = t2;
-            while (p1 != first) //TODO: Port note. This was do while before.
+            while (p1 != first) 
             {
                 tcx.RemoveFromList(t1);
                 p1 = t1.PointCCW(p1);
@@ -342,7 +342,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 }
 
                 // For now we will do all needed filling
-                // TODO: integrate with flip process might give some better performance 
+                
                 //       but for now this avoid the issue with cases that needs both flips and fills
                 FillEdgeEvent(tcx, edge, node);
 
@@ -721,7 +721,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                     if ((eq == tcx.EdgeEvent.ConstrainedEdge.Q)
                         && (ep == tcx.EdgeEvent.ConstrainedEdge.P))
                     {
-                        Debug.WriteLine("[FLIP] - constrained edge done"); // TODO: remove
+                        Debug.WriteLine("[FLIP] - constrained edge done"); 
                         t.MarkConstrainedEdge(ep, eq);
                         ot.MarkConstrainedEdge(ep, eq);
                         Legalize(tcx, t);
@@ -729,13 +729,13 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                     }
                     else
                     {
-                        Debug.WriteLine("[FLIP] - subedge done"); // TODO: remove
+                        Debug.WriteLine("[FLIP] - subedge done"); 
                         // XXX: I think one of the triangles should be legalized here?
                     }
                 }
                 else
                 {
-                    Debug.WriteLine("[FLIP] - flipping and continuing with triangle still crossing edge"); // TODO: remove
+                    Debug.WriteLine("[FLIP] - flipping and continuing with triangle still crossing edge"); 
                     Orientation o = TriangulationUtil.Orient2d(eq, op, ep);
                     t = NextFlipTriangle(tcx, o, t, ot, p, op);
                     FlipEdgeEvent(tcx, ep, eq, t, p);
@@ -769,7 +769,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 return ot.PointCW(op);
             }
 
-            // TODO: implement support for point on constraint edge
+            
             throw new PointOnEdgeException("Point on constrained edge not supported yet");
         }
 
@@ -834,7 +834,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             {
                 // flip with new edge op->eq
                 FlipEdgeEvent(tcx, eq, op, ot, op);
-                // TODO: Actually I just figured out that it should be possible to 
+                
                 //       improve this by getting the next ot and op before the the above 
                 //       flip and continue the flipScanEdgeEvent here
                 // set new ot and op here and loop back to inScanArea test
@@ -1156,7 +1156,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         private static void Fill(DTSweepContext tcx, AdvancingFrontNode node)
         {
             DelaunayTriangle triangle = new DelaunayTriangle(node.Prev.Point, node.Point, node.Next.Point);
-            // TODO: should copy the cEdge value from neighbor triangles
+            
             //       for now cEdge values are copied during the legalize 
             triangle.MarkNeighbor(node.Prev.Triangle);
             triangle.MarkNeighbor(node.Triangle);
@@ -1183,7 +1183,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             // violate the Delaunay condition
             for (int i = 0; i < 3; i++)
             {
-                // TODO: fix so that cEdge is always valid when creating new triangles then we can check it here
+                
                 //       instead of below with ot
                 if (t.EdgeIsDelaunay[i])
                 {

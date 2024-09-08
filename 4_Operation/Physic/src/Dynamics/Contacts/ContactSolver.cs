@@ -462,7 +462,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     else
                     {
                         // The constraints are redundant, just use one.
-                        // TODO_ERIN use deepest?
+                        
                         vc.pointCount = 1;
                     }
                 }

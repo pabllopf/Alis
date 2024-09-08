@@ -149,7 +149,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         {
             MainBody = World.CreateBody(position, rotation, BodyType.Dynamic);
 
-            //TODO: Implement a Voronoi diagram algorithm to split up the vertices
+            
             List<Vertices> triangles = Triangulate.ConvexPartition(vertices, TriangulationAlgorithm.Earclip);
 
             foreach (Vertices part in triangles)
