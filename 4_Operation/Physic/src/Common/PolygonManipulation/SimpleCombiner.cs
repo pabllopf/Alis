@@ -28,9 +28,7 @@
 //  --------------------------------------------------------------------------
 
 
-
-
-
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
@@ -70,7 +68,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 Vector2 b = triangle[1];
                 Vector2 c = triangle[2];
 
-                if (((a.X == b.X) && (a.Y == b.Y)) || ((b.X == c.X) && (b.Y == c.Y)) || ((a.X == c.X) && (a.Y == c.Y)))
+                if (((Math.Abs(a.X - b.X) < float.Epsilon) && (Math.Abs(a.Y - b.Y) < float.Epsilon)) || ((Math.Abs(b.X - c.X) < float.Epsilon) && (Math.Abs(b.Y - c.Y) < float.Epsilon)) || ((Math.Abs(a.X - c.X) < float.Epsilon) && (Math.Abs(a.Y - c.Y) < float.Epsilon)))
                     covered[i] = true;
             }
 
@@ -172,7 +170,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             int secondT = -1;
             for (int i = 0; i < vertices.Count; i++)
             {
-                if ((t[0].X == vertices[i].X) && (t[0].Y == vertices[i].Y))
+                if ((Math.Abs(t[0].X - vertices[i].X) < float.Epsilon) && (Math.Abs(t[0].Y - vertices[i].Y) < float.Epsilon))
                 {
                     if (firstP == -1)
                     {
@@ -185,7 +183,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                         secondT = 0;
                     }
                 }
-                else if ((t[1].X == vertices[i].X) && (t[1].Y == vertices[i].Y))
+                else if ((Math.Abs(t[1].X - vertices[i].X) < float.Epsilon) && (Math.Abs(t[1].Y - vertices[i].Y) < float.Epsilon))
                 {
                     if (firstP == -1)
                     {
@@ -198,7 +196,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                         secondT = 1;
                     }
                 }
-                else if ((t[2].X == vertices[i].X) && (t[2].Y == vertices[i].Y))
+                else if ((Math.Abs(t[2].X - vertices[i].X) < float.Epsilon) && (Math.Abs(t[2].Y - vertices[i].Y) < float.Epsilon))
                 {
                     if (firstP == -1)
                     {
