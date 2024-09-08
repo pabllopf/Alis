@@ -520,15 +520,15 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             if ((_count >= _velocityConstraintsMultithreadThreshold) && (Environment.ProcessorCount > 1))
             {
                 if (_count == 0) return;
-                var batchSize = (int) Math.Ceiling((float) _count / Environment.ProcessorCount);
-                var batches = (int) Math.Ceiling((float) _count / batchSize);
+                int batchSize = (int) Math.Ceiling((float) _count / Environment.ProcessorCount);
+                int batches = (int) Math.Ceiling((float) _count / batchSize);
 
 #if NET40 || NET45 || NETSTANDARD2_0_OR_GREATER
                 SolveVelocityConstraintsWaitLock.Reset(batches);
                 for (int i = 0; i < batches; i++)
                 {
-                    var start = i * batchSize;
-                    var end = Math.Min(start + batchSize, _count);
+                    int start = i * batchSize;
+                    int end = Math.Min(start + batchSize, _count);
                     ThreadPool.QueueUserWorkItem(SolveVelocityConstraintsCallback, SolveVelocityConstraintsState.Get(this, start, end));
                 }
 
@@ -918,19 +918,16 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             if ((_count >= _positionConstraintsMultithreadThreshold) && (Environment.ProcessorCount > 1))
             {
                 if (_count == 0) return true;
-                var batchSize = (int) Math.Ceiling((float) _count / Environment.ProcessorCount);
-                var batches = (int) Math.Ceiling((float) _count / batchSize);
+                int batchSize = (int) Math.Ceiling((float) _count / Environment.ProcessorCount);
+                int batches = (int) Math.Ceiling((float) _count / batchSize);
 
 #if NET40 || NET45 || NETSTANDARD2_0_OR_GREATER
                 Parallel.For(0, batches, i =>
                 {
-                    var start = i * batchSize;
-                    var end = Math.Min(start + batchSize, _count);
-                    var res = SolvePositionConstraints(start, end);
-                    lock (this)
-                    {
-                        contactsOkay = contactsOkay || res;
-                    }
+                    int start = i * batchSize;
+                    int end = Math.Min(start + batchSize, _count);
+                    bool res = SolvePositionConstraints(start, end);
+                    contactsOkay = contactsOkay || res;
                 });
 #else
                 contactsOkay = SolvePositionConstraints(0, _count);
@@ -1307,7 +1304,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
         private static void SolveVelocityConstraintsCallback(object state)
         {
-            var svcState = (SolveVelocityConstraintsState) state;
+            SolveVelocityConstraintsState svcState = (SolveVelocityConstraintsState) state;
 
             svcState.ContactSolver.SolveVelocityConstraints(svcState.Start, svcState.End);
             SolveVelocityConstraintsState.Return(svcState);
