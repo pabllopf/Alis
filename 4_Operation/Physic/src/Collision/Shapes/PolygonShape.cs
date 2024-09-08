@@ -353,7 +353,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             aabb = new AABB();
 
             // OPT: aabb.LowerBound = Transform.Multiply(Vertices[0], ref transform);
-            var vert = Vertices[0];
+            Vector2 vert = Vertices[0];
             aabb.LowerBound.X = vert.X * transform.q.R - vert.Y * transform.q.i + transform.p.X;
             aabb.LowerBound.Y = vert.Y * transform.q.R + vert.X * transform.q.i + transform.p.Y;
             aabb.UpperBound = aabb.LowerBound;
