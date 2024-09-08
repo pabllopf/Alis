@@ -60,9 +60,8 @@ namespace Alis.Core.Physic.Collision
             _sweepA = sweepA;
             _sweepB = sweepB;
 
-            Transform xfA, xfB;
-            _sweepA.GetTransform(out xfA, t1);
-            _sweepB.GetTransform(out xfB, t1);
+            _sweepA.GetTransform(out Transform xfA, t1);
+            _sweepB.GetTransform(out Transform xfB, t1);
 
             if (count == 1)
             {
@@ -133,9 +132,8 @@ namespace Alis.Core.Physic.Collision
         /// <returns>The float</returns>
         public static float FindMinSeparation(out int indexA, out int indexB, float t)
         {
-            Transform xfA, xfB;
-            _sweepA.GetTransform(out xfA, t);
-            _sweepB.GetTransform(out xfB, t);
+            _sweepA.GetTransform(out Transform xfA, t);
+            _sweepB.GetTransform(out Transform xfB, t);
 
             switch (_type)
             {
@@ -208,9 +206,8 @@ namespace Alis.Core.Physic.Collision
         /// <returns>The float</returns>
         public static float Evaluate(int indexA, int indexB, float t)
         {
-            Transform xfA, xfB;
-            _sweepA.GetTransform(out xfA, t);
-            _sweepB.GetTransform(out xfB, t);
+            _sweepA.GetTransform(out Transform xfA, t);
+            _sweepB.GetTransform(out Transform xfB, t);
 
             switch (_type)
             {

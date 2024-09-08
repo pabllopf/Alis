@@ -153,8 +153,7 @@ namespace Alis.Core.Physic.Controllers
 
                     Shape shape = fixture.Shape;
 
-                    Vector2 sc;
-                    float sarea = shape.ComputeSubmergedArea(ref _normal, _offset, ref body._xf, out sc);
+                    float sarea = shape.ComputeSubmergedArea(ref _normal, _offset, ref body._xf, out Vector2 sc);
                     area += sarea;
                     areac.X += sarea * sc.X;
                     areac.Y += sarea * sc.Y;

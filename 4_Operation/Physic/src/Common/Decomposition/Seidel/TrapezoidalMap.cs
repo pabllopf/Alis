@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 
-
+using System;
 using System.Collections.Generic;
 
 namespace Alis.Core.Physic.Common.Decomposition.Seidel
@@ -117,7 +117,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         public Trapezoid[] Case2(Trapezoid t, Edge e)
         {
             Point rp;
-            if (e.Q.X == t.RightPoint.X)
+            if (Math.Abs(e.Q.X - t.RightPoint.X) < float.Epsilon)
                 rp = e.Q;
             else
                 rp = t.RightPoint;
@@ -150,13 +150,13 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         public Trapezoid[] Case3(Trapezoid t, Edge e)
         {
             Point lp;
-            if (e.P.X == t.LeftPoint.X)
+            if (Math.Abs(e.P.X - t.LeftPoint.X) < float.Epsilon)
                 lp = e.P;
             else
                 lp = t.LeftPoint;
 
             Point rp;
-            if (e.Q.X == t.RightPoint.X)
+            if (Math.Abs(e.Q.X - t.RightPoint.X) < float.Epsilon)
                 rp = e.Q;
             else
                 rp = t.RightPoint;
@@ -207,7 +207,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         public Trapezoid[] Case4(Trapezoid t, Edge e)
         {
             Point lp;
-            if (e.P.X == t.LeftPoint.X)
+            if (Math.Abs(e.P.X - t.LeftPoint.X) < float.Epsilon)
                 lp = e.P;
             else
                 lp = t.LeftPoint;

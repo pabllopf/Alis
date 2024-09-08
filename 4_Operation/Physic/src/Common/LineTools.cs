@@ -317,8 +317,7 @@ namespace Alis.Core.Physic.Common
 
             for (int i = 0; i < vertices.Count; i++)
             {
-                Vector2 point;
-                if (LineIntersect(vertices[i], vertices[vertices.NextIndex(i)], point1, point2, true, true, out point))
+                if (LineIntersect(vertices[i], vertices[vertices.NextIndex(i)], point1, point2, true, true, out Vector2 point))
                 {
                     intersectionPoints.Add(point);
                 }
@@ -333,6 +332,6 @@ namespace Alis.Core.Physic.Common
         /// <param name="point1">The first point of the line segment to test</param>
         /// <param name="point2">The second point of the line segment to test.</param>
         /// <param name="aabb">The AABB that is used for testing intersection.</param>
-        public static Vertices LineSegmentAABBIntersect(ref Vector2 point1, ref Vector2 point2, AABB aabb) => LineSegmentVerticesIntersect(ref point1, ref point2, aabb.Vertices);
+        public static Vertices LineSegmentAabbIntersect(ref Vector2 point1, ref Vector2 point2, AABB aabb) => LineSegmentVerticesIntersect(ref point1, ref point2, aabb.Vertices);
     }
 }

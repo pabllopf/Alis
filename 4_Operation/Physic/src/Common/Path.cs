@@ -309,9 +309,9 @@ namespace Alis.Core.Physic.Common
             Vector2 a = GetPosition(time);
             Vector2 b = GetPosition(offsetTime);
 
-            Vector2 output, temp;
+            Vector2 output;
 
-            Vector2.Subtract(ref a, ref b, out temp);
+            Vector2.Subtract(ref a, ref b, out Vector2 temp);
 
             output = new Vector2(temp.Y, -temp.X);
 
