@@ -100,7 +100,7 @@ namespace Alis.Core.Physic.Common
         /// <returns>The complex</returns>
         public static Complex FromAngle(float angle)
         {
-            if (angle == 0)
+            if (Math.Abs(angle) < float.Epsilon)
                 return One;
 
             return new Complex(
