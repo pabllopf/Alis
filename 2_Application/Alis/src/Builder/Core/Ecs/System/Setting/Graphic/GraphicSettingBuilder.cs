@@ -65,12 +65,22 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Graphic
             return this;
         }
 
+        /// <summary>
+        /// Targets the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The graphic setting builder</returns>
         public GraphicSettingBuilder Target(string value)
         {
             graphicSetting.Target = value;
             return this;
         }
         
+        /// <summary>
+        /// Frames the rate using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The graphic setting builder</returns>
         public GraphicSettingBuilder FrameRate(double value)
         {
             graphicSetting.TargetFrames = value;

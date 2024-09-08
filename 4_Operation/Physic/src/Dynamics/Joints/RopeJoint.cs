@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -259,7 +259,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float crB = MathUtils.Cross(ref _rB, ref _u);
             float invMass = _invMassA + invIa * crA * crA + _invMassB + invIb * crB * crB;
 
-            _mass = invMass != 0.0f ? 1.0f / invMass : 0.0f;
+            _mass = Math.Abs(invMass) >= float.Epsilon ? 1.0f / invMass : 0.0f;
 
             if (data.step.warmStarting)
             {

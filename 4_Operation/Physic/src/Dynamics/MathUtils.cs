@@ -313,6 +313,9 @@ namespace Alis.Core.Physic.Dynamics
         /// </returns>
         public static bool FloatInRange(float value, float min, float max) => (value >= min) && (value <= max);
 
+        /// <summary>
+        /// Gets or sets the value of the epsilon
+        /// </summary>
         public static float Epsilon { get; set; } = 1e-6f;
     }
 }

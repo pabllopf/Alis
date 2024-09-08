@@ -65,6 +65,9 @@ namespace Alis.Core.Ecs.System.Setting.Graphic
         [JsonPropertyName("_TargetFrames_")]
         public double TargetFrames { get; set; } = 60;
 
+        /// <summary>
+        /// Gets or sets the value of the target
+        /// </summary>
         [JsonPropertyName("_Target_")]
         public string Target { get; set; } = "OpenGL";
         
