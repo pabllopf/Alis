@@ -64,5 +64,17 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Graphic
             graphicSetting.Window = value(new WindowBuilder());
             return this;
         }
+
+        public GraphicSettingBuilder Target(string value)
+        {
+            graphicSetting.Target = value;
+            return this;
+        }
+        
+        public GraphicSettingBuilder FrameRate(double value)
+        {
+            graphicSetting.TargetFrames = value;
+            return this;
+        }
     }
 }

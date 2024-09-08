@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -65,6 +65,10 @@
 
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
 {
+    /// <summary>
+    /// The dt sweep constraint class
+    /// </summary>
+    /// <seealso cref="TriangulationConstraint"/>
     internal class DTSweepConstraint : TriangulationConstraint
     {
         /// <summary>

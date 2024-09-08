@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -72,7 +72,13 @@ namespace Alis.Core.Physic.Collision
     /// </summary>
     public struct DistanceProxy
     {
+        /// <summary>
+        /// The radius
+        /// </summary>
         internal float Radius;
+        /// <summary>
+        /// The vertices
+        /// </summary>
         internal Vertices Vertices;
 
         // GJK using Voronoi regions (Christer Ericson) and Barycentric coordinates.
@@ -206,6 +212,9 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         public FixedArray3<byte> IndexB;
 
+        /// <summary>
+        /// The metric
+        /// </summary>
         public float Metric;
     }
 
@@ -215,10 +224,25 @@ namespace Alis.Core.Physic.Collision
     /// </summary>
     public struct DistanceInput
     {
+        /// <summary>
+        /// The proxy
+        /// </summary>
         public DistanceProxy ProxyA;
+        /// <summary>
+        /// The proxy
+        /// </summary>
         public DistanceProxy ProxyB;
+        /// <summary>
+        /// The transform
+        /// </summary>
         public Transform TransformA;
+        /// <summary>
+        /// The transform
+        /// </summary>
         public Transform TransformB;
+        /// <summary>
+        /// The use radii
+        /// </summary>
         public bool UseRadii;
     }
 
@@ -227,6 +251,9 @@ namespace Alis.Core.Physic.Collision
     /// </summary>
     public struct DistanceOutput
     {
+        /// <summary>
+        /// The distance
+        /// </summary>
         public float Distance;
 
         /// <summary>
@@ -245,6 +272,9 @@ namespace Alis.Core.Physic.Collision
         public Vector2 PointB;
     }
 
+    /// <summary>
+    /// The simplex vertex
+    /// </summary>
     internal struct SimplexVertex
     {
         /// <summary>
@@ -278,11 +308,28 @@ namespace Alis.Core.Physic.Collision
         public Vector2 WB;
     }
 
+    /// <summary>
+    /// The simplex
+    /// </summary>
     internal struct Simplex
     {
+        /// <summary>
+        /// The count
+        /// </summary>
         internal int Count;
+        /// <summary>
+        /// The 
+        /// </summary>
         internal FixedArray3<SimplexVertex> V;
 
+        /// <summary>
+        /// Reads the cache using the specified cache
+        /// </summary>
+        /// <param name="cache">The cache</param>
+        /// <param name="proxyA">The proxy</param>
+        /// <param name="transformA">The transform</param>
+        /// <param name="proxyB">The proxy</param>
+        /// <param name="transformB">The transform</param>
         internal void ReadCache(ref SimplexCache cache, ref DistanceProxy proxyA, ref Transform transformA, ref DistanceProxy proxyB, ref Transform transformB)
         {
             Debug.Assert(cache.Count <= 3);
@@ -333,6 +380,10 @@ namespace Alis.Core.Physic.Collision
             }
         }
 
+        /// <summary>
+        /// Writes the cache using the specified cache
+        /// </summary>
+        /// <param name="cache">The cache</param>
         internal void WriteCache(ref SimplexCache cache)
         {
             cache.Metric = GetMetric();
@@ -344,6 +395,10 @@ namespace Alis.Core.Physic.Collision
             }
         }
 
+        /// <summary>
+        /// Gets the search direction
+        /// </summary>
+        /// <returns>The vector</returns>
         internal Vector2 GetSearchDirection()
         {
             switch (Count)
@@ -371,6 +426,10 @@ namespace Alis.Core.Physic.Collision
             }
         }
 
+        /// <summary>
+        /// Gets the closest point
+        /// </summary>
+        /// <returns>The vector</returns>
         internal Vector2 GetClosestPoint()
         {
             switch (Count)
@@ -394,6 +453,12 @@ namespace Alis.Core.Physic.Collision
             }
         }
 
+        /// <summary>
+        /// Gets the witness points using the specified p a
+        /// </summary>
+        /// <param name="pA">The </param>
+        /// <param name="pB">The </param>
+        /// <exception cref="Exception"></exception>
         internal void GetWitnessPoints(out Vector2 pA, out Vector2 pB)
         {
             switch (Count)
@@ -424,6 +489,10 @@ namespace Alis.Core.Physic.Collision
             }
         }
 
+        /// <summary>
+        /// Gets the metric
+        /// </summary>
+        /// <returns>The float</returns>
         internal float GetMetric()
         {
             switch (Count)
@@ -470,6 +539,9 @@ namespace Alis.Core.Physic.Collision
         // a1 = d12_1 / d12
         // a2 = d12_2 / d12
 
+        /// <summary>
+        /// Solves the 2
+        /// </summary>
         internal void Solve2()
         {
             Vector2 w1 = V[0].W;
@@ -517,6 +589,9 @@ namespace Alis.Core.Physic.Collision
         // - edge points[0]-points[2]
         // - edge points[1]-points[2]
         // - inside the triangle
+        /// <summary>
+        /// Solves the 3
+        /// </summary>
         internal void Solve3()
         {
             Vector2 w1 = V[0].W;
@@ -674,6 +749,12 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         [ThreadStatic] public static int GJKMaxIters;
 
+        /// <summary>
+        /// Computes the distance using the specified output
+        /// </summary>
+        /// <param name="output">The output</param>
+        /// <param name="cache">The cache</param>
+        /// <param name="input">The input</param>
         public static void ComputeDistance(out DistanceOutput output, out SimplexCache cache, DistanceInput input)
         {
             cache = new SimplexCache();

@@ -48,10 +48,22 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
     // Original Code by Steven Lu - see http://www.box2d.org/forum/viewtopic.php?f=3&t=1688
     // Ported to Farseer 3.0 by Nicol�s Hormaz�bal
 
+    /// <summary>
+    /// The shape data
+    /// </summary>
     internal struct ShapeData
     {
+        /// <summary>
+        /// The body
+        /// </summary>
         public Body Body;
+        /// <summary>
+        /// The max
+        /// </summary>
         public float Max;
+        /// <summary>
+        /// The min
+        /// </summary>
         public float Min; // absolute angles
     }
 
@@ -63,6 +75,12 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
     {
         #region IComparer<float> Members
 
+        /// <summary>
+        /// Compares the a
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <param name="b">The </param>
+        /// <returns>The int</returns>
         int IComparer<float>.Compare(float a, float b)
         {
             float diff = a - b;
@@ -103,7 +121,13 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         /// </summary>
         private const float MaxEdgeOffset = Constant.Pi / 90;
 
+        /// <summary>
+        /// The shape data
+        /// </summary>
         private readonly List<ShapeData> _data = new List<ShapeData>();
+        /// <summary>
+        /// The rdc
+        /// </summary>
         private readonly RayDataComparer _rdc;
 
         /// <summary>
@@ -136,6 +160,10 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         /// </summary>
         public int MinRays = 5;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RealExplosion"/> class
+        /// </summary>
+        /// <param name="world">The world</param>
         public RealExplosion(World world) : base(world)
         {
             _rdc = new RayDataComparer();

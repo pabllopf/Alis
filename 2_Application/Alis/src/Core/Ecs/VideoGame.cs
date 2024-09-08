@@ -53,10 +53,7 @@ namespace Alis.Core.Ecs
         ///     The instancie
         /// </summary>
         [JsonIgnore] public static VideoGame _instancie;
-
-
-        public static double targetframes = 30;
-
+        
         /// <summary>
         ///     The accumulator
         /// </summary>
@@ -95,8 +92,8 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The target frame duration
         /// </summary>
-        public double TargetFrameDuration = 1 / targetframes;
-
+        private double targetFrameDuration;
+        
         /// <summary>
         ///     The total time
         /// </summary>
@@ -162,6 +159,8 @@ namespace Alis.Core.Ecs
             OnInit();
             OnAwake();
             OnStart();
+            
+            targetFrameDuration = 1 / Context.Settings.Graphic.TargetFrames;
 
             currentTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
             accumulator = 0;
@@ -179,43 +178,7 @@ namespace Alis.Core.Ecs
             lastDeltaTime = 0f;
             smoothDeltaTimeSum = 0f;
             smoothDeltaTimeCount = 0;
-
-            float timeStepPhysics = 1f / 20f;
-            if (targetframes <= 240)
-            {
-                timeStepPhysics = 1f / 80f;
-            }
-
-            if (targetframes <= 200)
-            {
-                timeStepPhysics = 1f / 60f;
-            }
-
-            if (targetframes <= 120)
-            {
-                timeStepPhysics = 1f / 40f;
-            }
-
-            if (targetframes <= 60)
-            {
-                timeStepPhysics = 1f / 30f;
-            }
-
-            if (targetframes <= 30)
-            {
-                timeStepPhysics = 1f / 15f;
-            }
-
-            if (targetframes <= 15)
-            {
-                timeStepPhysics = 1f / 10f;
-            }
-
-            if (targetframes <= 5)
-            {
-                timeStepPhysics = 1f / 5f;
-            }
-
+            
             
             // Variable for log output
             lastLogTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
@@ -257,8 +220,8 @@ namespace Alis.Core.Ecs
 
                 OnDispatchEvents();
 
-                Context.PhysicManager.World.Step(timeStepPhysics);
-
+                OnPhysicUpdate();
+                
                 OnBeforeUpdate();
                 OnUpdate();
                 OnAfterUpdate();
@@ -302,14 +265,22 @@ namespace Alis.Core.Ecs
                 // Calculate frame duration and sleep if necessary
                 double frameEndTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
                 double frameDuration = frameEndTime - frameStartTime;
-                if (frameDuration < TargetFrameDuration)
+                if (frameDuration < targetFrameDuration)
                 {
-                    Thread.Sleep((int) ((TargetFrameDuration - frameDuration) * 1000));
+                    Thread.Sleep((int) ((targetFrameDuration - frameDuration) * 1000));
                 }
             }
 
             OnStop();
             OnExit();
+        }
+
+        /// <summary>
+        /// Ons the physic update
+        /// </summary>
+        private void OnPhysicUpdate()
+        {
+            Context.OnPhysicUpdate();
         }
 
         /// <summary>

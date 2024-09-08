@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -78,32 +78,65 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public float inv_dt;
 
+        /// <summary>
+        /// The position iterations
+        /// </summary>
         public int positionIterations;
+        /// <summary>
+        /// The velocity iterations
+        /// </summary>
         public int velocityIterations;
 
+        /// <summary>
+        /// The warm starting
+        /// </summary>
         public bool warmStarting;
     }
 
     /// This is an internal structure.
     internal struct SolverPosition
     {
+        /// <summary>
+        /// The 
+        /// </summary>
         public Vector2 c;
+        /// <summary>
+        /// The 
+        /// </summary>
         public float a;
     }
 
     /// This is an internal structure.
     internal struct SolverVelocity
     {
+        /// <summary>
+        /// The 
+        /// </summary>
         public Vector2 v;
+        /// <summary>
+        /// The 
+        /// </summary>
         public float w;
     }
 
     /// Solver Data
     internal struct SolverData
     {
+        /// <summary>
+        /// The step
+        /// </summary>
         internal TimeStep step;
+        /// <summary>
+        /// The positions
+        /// </summary>
         internal SolverPosition[] positions;
+        /// <summary>
+        /// The velocities
+        /// </summary>
         internal SolverVelocity[] velocities;
+        /// <summary>
+        /// The locks
+        /// </summary>
         internal int[] locks;
     }
 }

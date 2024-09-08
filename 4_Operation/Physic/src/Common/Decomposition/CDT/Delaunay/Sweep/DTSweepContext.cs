@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -72,22 +72,50 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
     {
         // Inital triangle factor, seed triangle will extend 30% of 
         // PointSet width to both left and right.
+        /// <summary>
+        /// The alpha
+        /// </summary>
         private const float ALPHA = 0.3f;
 
+        /// <summary>
+        /// The dt sweep point comparator
+        /// </summary>
         private readonly DTSweepPointComparator _comparator = new DTSweepPointComparator();
+        /// <summary>
+        /// The front
+        /// </summary>
         public AdvancingFront aFront;
 
+        /// <summary>
+        /// The dt sweep basin
+        /// </summary>
         public DTSweepBasin Basin = new DTSweepBasin();
+        /// <summary>
+        /// The dt sweep edge event
+        /// </summary>
         public DTSweepEdgeEvent EdgeEvent = new DTSweepEdgeEvent();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DTSweepContext"/> class
+        /// </summary>
         public DTSweepContext()
         {
             Clear();
         }
 
+        /// <summary>
+        /// Gets or sets the value of the head
+        /// </summary>
         public TriangulationPoint Head { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the tail
+        /// </summary>
         public TriangulationPoint Tail { get; set; }
 
+        /// <summary>
+        /// Removes the from list using the specified triangle
+        /// </summary>
+        /// <param name="triangle">The triangle</param>
         public void RemoveFromList(DelaunayTriangle triangle)
         {
             Triangles.Remove(triangle);
@@ -102,11 +130,19 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             //        triangle.clearNeighbors();
         }
 
+        /// <summary>
+        /// Meshes the clean using the specified triangle
+        /// </summary>
+        /// <param name="triangle">The triangle</param>
         public void MeshClean(DelaunayTriangle triangle)
         {
             MeshCleanReq(triangle);
         }
 
+        /// <summary>
+        /// Meshes the clean req using the specified triangle
+        /// </summary>
+        /// <param name="triangle">The triangle</param>
         private void MeshCleanReq(DelaunayTriangle triangle)
         {
             if ((triangle != null) && !triangle.IsInterior)
@@ -123,12 +159,19 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             }
         }
 
+        /// <summary>
+        /// Clears this instance
+        /// </summary>
         public override void Clear()
         {
             base.Clear();
             Triangles.Clear();
         }
 
+        /// <summary>
+        /// Adds the node using the specified node
+        /// </summary>
+        /// <param name="node">The node</param>
         public void AddNode(AdvancingFrontNode node)
         {
             //        Console.WriteLine( "add:" + node.key + ":" + System.identityHashCode(node.key));
@@ -136,6 +179,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             aFront.AddNode(node);
         }
 
+        /// <summary>
+        /// Removes the node using the specified node
+        /// </summary>
+        /// <param name="node">The node</param>
         public void RemoveNode(AdvancingFrontNode node)
         {
             //        Console.WriteLine( "remove:" + node.key + ":" + System.identityHashCode(node.key));
@@ -143,8 +190,16 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             aFront.RemoveNode(node);
         }
 
+        /// <summary>
+        /// Locates the node using the specified point
+        /// </summary>
+        /// <param name="point">The point</param>
+        /// <returns>The advancing front node</returns>
         public AdvancingFrontNode LocateNode(TriangulationPoint point) => aFront.LocateNode(point);
 
+        /// <summary>
+        /// Creates the advancing front
+        /// </summary>
         public void CreateAdvancingFront()
         {
             AdvancingFrontNode head, tail, middle;
@@ -189,6 +244,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             }
         }
 
+        /// <summary>
+        /// Prepares the triangulation using the specified t
+        /// </summary>
+        /// <param name="t">The </param>
         public override void PrepareTriangulation(Triangulatable t)
         {
             base.PrepareTriangulation(t);
@@ -227,22 +286,49 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
 
+        /// <summary>
+        /// Finalizes the triangulation
+        /// </summary>
         public void FinalizeTriangulation()
         {
             Triangulatable.AddTriangles(Triangles);
             Triangles.Clear();
         }
 
+        /// <summary>
+        /// News the constraint using the specified a
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <param name="b">The </param>
+        /// <returns>The triangulation constraint</returns>
         public override TriangulationConstraint NewConstraint(TriangulationPoint a, TriangulationPoint b) => new DTSweepConstraint(a, b);
 
         #region Nested type: DTSweepBasin
 
+        /// <summary>
+        /// The dt sweep basin class
+        /// </summary>
         public class DTSweepBasin
         {
+            /// <summary>
+            /// The bottom node
+            /// </summary>
             public AdvancingFrontNode bottomNode;
+            /// <summary>
+            /// The left highest
+            /// </summary>
             public bool leftHighest;
+            /// <summary>
+            /// The left node
+            /// </summary>
             public AdvancingFrontNode leftNode;
+            /// <summary>
+            /// The right node
+            /// </summary>
             public AdvancingFrontNode rightNode;
+            /// <summary>
+            /// The width
+            /// </summary>
             public double width;
         }
 
@@ -250,9 +336,18 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
 
         #region Nested type: DTSweepEdgeEvent
 
+        /// <summary>
+        /// The dt sweep edge event class
+        /// </summary>
         public class DTSweepEdgeEvent
         {
+            /// <summary>
+            /// The constrained edge
+            /// </summary>
             public DTSweepConstraint ConstrainedEdge;
+            /// <summary>
+            /// The right
+            /// </summary>
             public bool Right;
         }
 

@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -41,6 +41,9 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace Alis.Core.Physic.Common
 {
+    /// <summary>
+    /// The polygon tools class
+    /// </summary>
     public static class PolygonTools
     {
         /// <summary>
@@ -192,6 +195,13 @@ namespace Alis.Core.Physic.Common
             return vertices;
         }
 
+        /// <summary>
+        /// Creates the arc using the specified radians
+        /// </summary>
+        /// <param name="radians">The radians</param>
+        /// <param name="sides">The sides</param>
+        /// <param name="radius">The radius</param>
+        /// <returns>The vertices</returns>
         public static Vertices CreateArc(float radians, int sides, float radius)
         {
             Debug.Assert(radians > 0, "The arc needs to be larger than 0");

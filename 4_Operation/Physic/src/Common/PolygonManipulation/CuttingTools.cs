@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -43,6 +43,9 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace Alis.Core.Physic.Common.PolygonManipulation
 {
+    /// <summary>
+    /// The cutting tools class
+    /// </summary>
     public static class CuttingTools
     {
         //Cutting a shape into two is based on the work of Daid and his prototype BoxCutter: http://www.box2d.org/forum/viewtopic.php?f=3&t=1473

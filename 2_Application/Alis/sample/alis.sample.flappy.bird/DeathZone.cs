@@ -54,6 +54,9 @@ namespace Alis.Sample.Flappy.Bird
         /// </summary>
         public static float CounterTimeDeath = 3.0f;
         
+        /// <summary>
+        /// Gets or sets the value of the bird
+        /// </summary>
         public GameObject Bird { get; set; }
 
         /// <summary>
@@ -86,6 +89,9 @@ namespace Alis.Sample.Flappy.Bird
             }
         }
 
+        /// <summary>
+        /// Deadthings this instance
+        /// </summary>
         public void Deadthing()
         {
             Bird.Get<AudioSource>().AudioClip = new AudioClip("die.wav");
@@ -106,6 +112,9 @@ namespace Alis.Sample.Flappy.Bird
             IsDeadthing = false;
         }
 
+        /// <summary>
+        /// Gets or sets the value of the is deadthing
+        /// </summary>
         public bool IsDeadthing { get; set; } = false;
 
         /// <summary>

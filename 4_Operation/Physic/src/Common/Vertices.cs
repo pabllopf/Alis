@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -50,6 +50,9 @@ using Matrix = Microsoft.Xna.Framework.Matrix;
 
 namespace Alis.Core.Physic.Common
 {
+    /// <summary>
+    /// The polygon error enum
+    /// </summary>
     public enum PolygonError
     {
         /// <summary>
@@ -88,22 +91,40 @@ namespace Alis.Core.Physic.Common
         SideTooSmall
     }
 
+    /// <summary>
+    /// The vertices class
+    /// </summary>
+    /// <seealso cref="List{Vector2}"/>
     [DebuggerDisplay("Count = {Count} Vertices = {ToString()}")]
     public class Vertices : List<Vector2>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Vertices"/> class
+        /// </summary>
         public Vertices()
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Vertices"/> class
+        /// </summary>
+        /// <param name="capacity">The capacity</param>
         public Vertices(int capacity) : base(capacity)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Vertices"/> class
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
         public Vertices(IEnumerable<Vector2> vertices)
         {
             AddRange(vertices);
         }
 
+        /// <summary>
+        /// Gets or sets the value of the attached to body
+        /// </summary>
         internal bool AttachedToBody { get; set; }
 
         /// <summary>
@@ -600,6 +621,10 @@ namespace Alis.Core.Physic.Common
         }
 #endif
 
+        /// <summary>
+        /// Returns the string
+        /// </summary>
+        /// <returns>The string</returns>
         public override string ToString()
         {
             StringBuilder builder = new StringBuilder();

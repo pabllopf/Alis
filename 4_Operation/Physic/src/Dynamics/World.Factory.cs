@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -46,8 +46,18 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace Alis.Core.Physic.Dynamics
 {
+    /// <summary>
+    /// The world class
+    /// </summary>
     public partial class World
     {
+        /// <summary>
+        /// Creates the body using the specified position
+        /// </summary>
+        /// <param name="position">The position</param>
+        /// <param name="rotation">The rotation</param>
+        /// <param name="bodyType">The body type</param>
+        /// <returns>The body</returns>
         public virtual Body CreateBody(Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static)
         {
             Body body = new Body();
@@ -64,6 +74,12 @@ namespace Alis.Core.Physic.Dynamics
             return body;
         }
 
+        /// <summary>
+        /// Creates the edge using the specified start
+        /// </summary>
+        /// <param name="start">The start</param>
+        /// <param name="end">The end</param>
+        /// <returns>The body</returns>
         public Body CreateEdge(Vector2 start, Vector2 end)
         {
             Body body = CreateBody();
@@ -72,6 +88,12 @@ namespace Alis.Core.Physic.Dynamics
             return body;
         }
 
+        /// <summary>
+        /// Creates the chain shape using the specified vertices
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
+        /// <param name="position">The position</param>
+        /// <returns>The body</returns>
         public Body CreateChainShape(Vertices vertices, Vector2 position = new Vector2())
         {
             Body body = CreateBody(position);
@@ -80,6 +102,12 @@ namespace Alis.Core.Physic.Dynamics
             return body;
         }
 
+        /// <summary>
+        /// Creates the loop shape using the specified vertices
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
+        /// <param name="position">The position</param>
+        /// <returns>The body</returns>
         public Body CreateLoopShape(Vertices vertices, Vector2 position = new Vector2())
         {
             Body body = CreateBody(position);
@@ -88,6 +116,18 @@ namespace Alis.Core.Physic.Dynamics
             return body;
         }
 
+        /// <summary>
+        /// Creates the rectangle using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="density">The density</param>
+        /// <param name="position">The position</param>
+        /// <param name="rotation">The rotation</param>
+        /// <param name="bodyType">The body type</param>
+        /// <exception cref="ArgumentOutOfRangeException">height Height must be more than 0 meters</exception>
+        /// <exception cref="ArgumentOutOfRangeException">width Width must be more than 0 meters</exception>
+        /// <returns>The body</returns>
         public Body CreateRectangle(float width, float height, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static)
         {
             if (width <= 0)
@@ -104,6 +144,14 @@ namespace Alis.Core.Physic.Dynamics
             return body;
         }
 
+        /// <summary>
+        /// Creates the circle using the specified radius
+        /// </summary>
+        /// <param name="radius">The radius</param>
+        /// <param name="density">The density</param>
+        /// <param name="position">The position</param>
+        /// <param name="bodyType">The body type</param>
+        /// <returns>The body</returns>
         public Body CreateCircle(float radius, float density, Vector2 position = new Vector2(), BodyType bodyType = BodyType.Static)
         {
             Body body = CreateBody(position, 0, bodyType);
@@ -111,6 +159,17 @@ namespace Alis.Core.Physic.Dynamics
             return body;
         }
 
+        /// <summary>
+        /// Creates the ellipse using the specified x radius
+        /// </summary>
+        /// <param name="xRadius">The radius</param>
+        /// <param name="yRadius">The radius</param>
+        /// <param name="edges">The edges</param>
+        /// <param name="density">The density</param>
+        /// <param name="position">The position</param>
+        /// <param name="rotation">The rotation</param>
+        /// <param name="bodyType">The body type</param>
+        /// <returns>The body</returns>
         public Body CreateEllipse(float xRadius, float yRadius, int edges, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static)
         {
             Body body = CreateBody(position, rotation, bodyType);
@@ -118,6 +177,15 @@ namespace Alis.Core.Physic.Dynamics
             return body;
         }
 
+        /// <summary>
+        /// Creates the polygon using the specified vertices
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
+        /// <param name="density">The density</param>
+        /// <param name="position">The position</param>
+        /// <param name="rotation">The rotation</param>
+        /// <param name="bodyType">The body type</param>
+        /// <returns>The body</returns>
         public Body CreatePolygon(Vertices vertices, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static)
         {
             Body body = CreateBody(position, rotation, bodyType);
@@ -125,6 +193,15 @@ namespace Alis.Core.Physic.Dynamics
             return body;
         }
 
+        /// <summary>
+        /// Creates the compound polygon using the specified list
+        /// </summary>
+        /// <param name="list">The list</param>
+        /// <param name="density">The density</param>
+        /// <param name="position">The position</param>
+        /// <param name="rotation">The rotation</param>
+        /// <param name="bodyType">The body type</param>
+        /// <returns>The body</returns>
         public Body CreateCompoundPolygon(List<Vertices> list, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static)
         {
             //We create a single body
@@ -133,6 +210,18 @@ namespace Alis.Core.Physic.Dynamics
             return body;
         }
 
+        /// <summary>
+        /// Creates the gear using the specified radius
+        /// </summary>
+        /// <param name="radius">The radius</param>
+        /// <param name="numberOfTeeth">The number of teeth</param>
+        /// <param name="tipPercentage">The tip percentage</param>
+        /// <param name="toothHeight">The tooth height</param>
+        /// <param name="density">The density</param>
+        /// <param name="position">The position</param>
+        /// <param name="rotation">The rotation</param>
+        /// <param name="bodyType">The body type</param>
+        /// <returns>The body</returns>
         public Body CreateGear(float radius, int numberOfTeeth, float tipPercentage, float toothHeight, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static)
         {
             Vertices gearPolygon = PolygonTools.CreateGear(radius, numberOfTeeth, tipPercentage, toothHeight);
@@ -149,6 +238,19 @@ namespace Alis.Core.Physic.Dynamics
             return CreatePolygon(gearPolygon, density, position, rotation, bodyType);
         }
 
+        /// <summary>
+        /// Creates the capsule using the specified height
+        /// </summary>
+        /// <param name="height">The height</param>
+        /// <param name="topRadius">The top radius</param>
+        /// <param name="topEdges">The top edges</param>
+        /// <param name="bottomRadius">The bottom radius</param>
+        /// <param name="bottomEdges">The bottom edges</param>
+        /// <param name="density">The density</param>
+        /// <param name="position">The position</param>
+        /// <param name="rotation">The rotation</param>
+        /// <param name="bodyType">The body type</param>
+        /// <returns>The body</returns>
         public Body CreateCapsule(float height, float topRadius, int topEdges, float bottomRadius, int bottomEdges, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static)
         {
             Vertices verts = PolygonTools.CreateCapsule(height, topRadius, topEdges, bottomRadius, bottomEdges);
@@ -163,6 +265,16 @@ namespace Alis.Core.Physic.Dynamics
             return CreatePolygon(verts, density, position, rotation, bodyType);
         }
 
+        /// <summary>
+        /// Creates the capsule using the specified height
+        /// </summary>
+        /// <param name="height">The height</param>
+        /// <param name="endRadius">The end radius</param>
+        /// <param name="density">The density</param>
+        /// <param name="position">The position</param>
+        /// <param name="rotation">The rotation</param>
+        /// <param name="bodyType">The body type</param>
+        /// <returns>The body</returns>
         public Body CreateCapsule(float height, float endRadius, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static)
         {
             //Create the middle rectangle
@@ -186,6 +298,19 @@ namespace Alis.Core.Physic.Dynamics
             return body;
         }
 
+        /// <summary>
+        /// Creates the rounded rectangle using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="xRadius">The radius</param>
+        /// <param name="yRadius">The radius</param>
+        /// <param name="segments">The segments</param>
+        /// <param name="density">The density</param>
+        /// <param name="position">The position</param>
+        /// <param name="rotation">The rotation</param>
+        /// <param name="bodyType">The body type</param>
+        /// <returns>The body</returns>
         public Body CreateRoundedRectangle(float width, float height, float xRadius, float yRadius, int segments, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static)
         {
             Vertices verts = PolygonTools.CreateRoundedRectangle(width, height, xRadius, yRadius, segments);
@@ -200,6 +325,17 @@ namespace Alis.Core.Physic.Dynamics
             return CreatePolygon(verts, density, position, rotation, bodyType);
         }
 
+        /// <summary>
+        /// Creates the line arc using the specified radians
+        /// </summary>
+        /// <param name="radians">The radians</param>
+        /// <param name="sides">The sides</param>
+        /// <param name="radius">The radius</param>
+        /// <param name="closed">The closed</param>
+        /// <param name="position">The position</param>
+        /// <param name="rotation">The rotation</param>
+        /// <param name="bodyType">The body type</param>
+        /// <returns>The body</returns>
         public Body CreateLineArc(float radians, int sides, float radius, bool closed = false, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static)
         {
             Body body = CreateBody(position, rotation, bodyType);
@@ -207,6 +343,17 @@ namespace Alis.Core.Physic.Dynamics
             return body;
         }
 
+        /// <summary>
+        /// Creates the solid arc using the specified density
+        /// </summary>
+        /// <param name="density">The density</param>
+        /// <param name="radians">The radians</param>
+        /// <param name="sides">The sides</param>
+        /// <param name="radius">The radius</param>
+        /// <param name="position">The position</param>
+        /// <param name="rotation">The rotation</param>
+        /// <param name="bodyType">The body type</param>
+        /// <returns>The body</returns>
         public Body CreateSolidArc(float density, float radians, int sides, float radius, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static)
         {
             Body body = CreateBody(position, rotation, bodyType);

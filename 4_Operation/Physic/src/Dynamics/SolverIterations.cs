@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -29,6 +29,9 @@
 
 namespace Alis.Core.Physic.Dynamics
 {
+    /// <summary>
+    /// The solver iterations
+    /// </summary>
     public struct SolverIterations
     {
         /// <summary>The number of velocity iterations used in the solver.</summary>

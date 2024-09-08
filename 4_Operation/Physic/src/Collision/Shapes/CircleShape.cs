@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -70,6 +70,9 @@ namespace Alis.Core.Physic.Collision.Shapes
     /// </summary>
     public class CircleShape : Shape
     {
+        /// <summary>
+        /// The position
+        /// </summary>
         internal Vector2 _position;
 
         /// <summary>
@@ -88,6 +91,9 @@ namespace Alis.Core.Physic.Collision.Shapes
             Radius = radius; // The Radius property cache 2radius and calls ComputeProperties(). So no need to call ComputeProperties() here.
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CircleShape"/> class
+        /// </summary>
         internal CircleShape()
             : base(0)
         {
@@ -96,6 +102,9 @@ namespace Alis.Core.Physic.Collision.Shapes
             _position = Vector2.Zero;
         }
 
+        /// <summary>
+        /// Gets the value of the child count
+        /// </summary>
         public override int ChildCount => 1;
 
         /// <summary>
@@ -111,6 +120,12 @@ namespace Alis.Core.Physic.Collision.Shapes
             }
         }
 
+        /// <summary>
+        /// Describes whether this instance test point
+        /// </summary>
+        /// <param name="transform">The transform</param>
+        /// <param name="point">The point</param>
+        /// <returns>The bool</returns>
         public override bool TestPoint(ref Transform transform, ref Vector2 point)
         {
             Vector2 center = transform.p + Complex.Multiply(ref _position, ref transform.q);
@@ -118,6 +133,14 @@ namespace Alis.Core.Physic.Collision.Shapes
             return Vector2.Dot(d, d) <= _2radius;
         }
 
+        /// <summary>
+        /// Describes whether this instance ray cast
+        /// </summary>
+        /// <param name="output">The output</param>
+        /// <param name="input">The input</param>
+        /// <param name="transform">The transform</param>
+        /// <param name="childIndex">The child index</param>
+        /// <returns>The bool</returns>
         public override bool RayCast(out RayCastOutput output, ref RayCastInput input, ref Transform transform, int childIndex)
         {
             // Collision Detection in Interactive 3D Environments by Gino van den Bergen
@@ -161,6 +184,12 @@ namespace Alis.Core.Physic.Collision.Shapes
             return false;
         }
 
+        /// <summary>
+        /// Computes the aabb using the specified aabb
+        /// </summary>
+        /// <param name="aabb">The aabb</param>
+        /// <param name="transform">The transform</param>
+        /// <param name="childIndex">The child index</param>
         public override void ComputeAABB(out AABB aabb, ref Transform transform, int childIndex)
         {
             // OPT: Vector2 p = transform.p + Complex.Multiply(ref _position, ref transform.q);
@@ -174,6 +203,9 @@ namespace Alis.Core.Physic.Collision.Shapes
             aabb.UpperBound = new Vector2(pX + Radius, pY + Radius);
         }
 
+        /// <summary>
+        /// Computes the properties
+        /// </summary>
         protected sealed override void ComputeProperties()
         {
             float area = Constant.Pi * _2radius;
@@ -185,6 +217,14 @@ namespace Alis.Core.Physic.Collision.Shapes
             MassData.Inertia = MassData.Mass * (0.5f * _2radius + Vector2.Dot(Position, Position));
         }
 
+        /// <summary>
+        /// Computes the submerged area using the specified normal
+        /// </summary>
+        /// <param name="normal">The normal</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="xf">The xf</param>
+        /// <param name="sc">The sc</param>
+        /// <returns>The area</returns>
         public override float ComputeSubmergedArea(ref Vector2 normal, float offset, ref Transform xf, out Vector2 sc)
         {
             sc = Vector2.Zero;
@@ -222,6 +262,10 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <returns>True if the two circles are the same size and have the same position</returns>
         public bool CompareTo(CircleShape shape) => (Radius == shape.Radius) && (Position == shape.Position);
 
+        /// <summary>
+        /// Clones this instance
+        /// </summary>
+        /// <returns>The clone</returns>
         public override Shape Clone()
         {
             CircleShape clone = new CircleShape();

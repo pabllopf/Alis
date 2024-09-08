@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -70,6 +70,9 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
      */
     internal class TriangulationUtil
     {
+        /// <summary>
+        /// The epsilon
+        /// </summary>
         public static double EPSILON = 1e-12;
 
         /// <summary>
@@ -167,6 +170,14 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
         }
         */
 
+        /// <summary>
+        /// Describes whether in scan area
+        /// </summary>
+        /// <param name="pa">The pa</param>
+        /// <param name="pb">The pb</param>
+        /// <param name="pc">The pc</param>
+        /// <param name="pd">The pd</param>
+        /// <returns>The bool</returns>
         public static bool InScanArea(TriangulationPoint pa, TriangulationPoint pb, TriangulationPoint pc, TriangulationPoint pd)
         {
             double oadb = (pa.X - pb.X) * (pd.Y - pb.Y) - (pd.X - pb.X) * (pa.Y - pb.Y);

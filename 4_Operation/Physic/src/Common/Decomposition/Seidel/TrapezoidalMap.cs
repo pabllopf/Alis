@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -36,20 +36,38 @@ using System.Collections.Generic;
 
 namespace Alis.Core.Physic.Common.Decomposition.Seidel
 {
+    /// <summary>
+    /// The trapezoidal map class
+    /// </summary>
     internal class TrapezoidalMap
     {
         // Bottom segment that spans multiple trapezoids
+        /// <summary>
+        /// The cross
+        /// </summary>
         private Edge _bCross;
 
         // Top segment that spans multiple trapezoids
+        /// <summary>
+        /// The cross
+        /// </summary>
         private Edge _cross;
 
         // AABB margin
+        /// <summary>
+        /// The margin
+        /// </summary>
         private readonly float _margin;
 
         // Trapezoid container
+        /// <summary>
+        /// The map
+        /// </summary>
         public HashSet<Trapezoid> Map;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TrapezoidalMap"/> class
+        /// </summary>
         public TrapezoidalMap()
         {
             Map = new HashSet<Trapezoid>();
@@ -58,6 +76,9 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             _cross = null;
         }
 
+        /// <summary>
+        /// Clears this instance
+        /// </summary>
         public void Clear()
         {
             _bCross = null;
@@ -66,6 +87,12 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
 
         // Case 1: segment completely enclosed by trapezoid
         //         break trapezoid into 4 smaller trapezoids
+        /// <summary>
+        /// Cases the 1 using the specified t
+        /// </summary>
+        /// <param name="t">The </param>
+        /// <param name="e">The </param>
+        /// <returns>The trapezoids</returns>
         public Trapezoid[] Case1(Trapezoid t, Edge e)
         {
             Trapezoid[] trapezoids = new Trapezoid[4];
@@ -84,6 +111,12 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
 
         // Case 2: Trapezoid contains point p, q lies outside
         //         break trapezoid into 3 smaller trapezoids
+        /// <summary>
+        /// Cases the 2 using the specified t
+        /// </summary>
+        /// <param name="t">The </param>
+        /// <param name="e">The </param>
+        /// <returns>The trapezoids</returns>
         public Trapezoid[] Case2(Trapezoid t, Edge e)
         {
             Point rp;
@@ -111,6 +144,12 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         }
 
         // Case 3: Trapezoid is bisected
+        /// <summary>
+        /// Cases the 3 using the specified t
+        /// </summary>
+        /// <param name="t">The </param>
+        /// <param name="e">The </param>
+        /// <returns>The trapezoids</returns>
         public Trapezoid[] Case3(Trapezoid t, Edge e)
         {
             Point lp;
@@ -162,6 +201,12 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
 
         // Case 4: Trapezoid contains point q, p lies outside
         //         break trapezoid into 3 smaller trapezoids
+        /// <summary>
+        /// Cases the 4 using the specified t
+        /// </summary>
+        /// <param name="t">The </param>
+        /// <param name="e">The </param>
+        /// <returns>The trapezoids</returns>
         public Trapezoid[] Case4(Trapezoid t, Edge e)
         {
             Point lp;
@@ -201,6 +246,11 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         }
 
         // Create an AABB around segments
+        /// <summary>
+        /// Boundings the box using the specified edges
+        /// </summary>
+        /// <param name="edges">The edges</param>
+        /// <returns>The trapezoid</returns>
         public Trapezoid BoundingBox(List<Edge> edges)
         {
             Point max = edges[0].P + _margin;

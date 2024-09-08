@@ -83,23 +83,65 @@ namespace Alis.Core.Physic.Dynamics.Joints
     /// </summary>
     public class FixedMouseJoint : Joint
     {
+        /// <summary>
+        /// The beta
+        /// </summary>
         private float _beta;
+        /// <summary>
+        /// The 
+        /// </summary>
         private Vector2 _C;
+        /// <summary>
+        /// The damping ratio
+        /// </summary>
         private float _dampingRatio;
+        /// <summary>
+        /// The frequency
+        /// </summary>
         private float _frequency;
+        /// <summary>
+        /// The gamma
+        /// </summary>
         private float _gamma;
 
         // Solver shared
+        /// <summary>
+        /// The impulse
+        /// </summary>
         private Vector2 _impulse;
 
         // Solver temp
+        /// <summary>
+        /// The index
+        /// </summary>
         private int _indexA;
+        /// <summary>
+        /// The inv ia
+        /// </summary>
         private float _invIA;
+        /// <summary>
+        /// The inv mass
+        /// </summary>
         private float _invMassA;
+        /// <summary>
+        /// The local center
+        /// </summary>
         private Vector2 _localCenterA;
+        /// <summary>
+        /// The mass
+        /// </summary>
         private Mat22 _mass;
+        /// <summary>
+        /// The max force
+        /// </summary>
         private float _maxForce;
+        /// <summary>
+        /// The 
+        /// </summary>
         private Vector2 _rA;
+        /// <summary>
+        /// The world anchor
+        /// </summary>
         private Vector2 _worldAnchor;
 
         /// <summary>
@@ -127,12 +169,18 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         public Vector2 LocalAnchorA { get; set; }
 
+        /// <summary>
+        /// Gets or sets the value of the world anchor a
+        /// </summary>
         public override Vector2 WorldAnchorA
         {
             get => BodyA.GetWorldPoint(LocalAnchorA);
             set => LocalAnchorA = BodyA.GetLocalPoint(value);
         }
 
+        /// <summary>
+        /// Gets or sets the value of the world anchor b
+        /// </summary>
         public override Vector2 WorldAnchorB
         {
             get => _worldAnchor;
@@ -184,10 +232,24 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
         }
 
+        /// <summary>
+        /// Gets the reaction force using the specified inv dt
+        /// </summary>
+        /// <param name="invDt">The inv dt</param>
+        /// <returns>The vector</returns>
         public override Vector2 GetReactionForce(float invDt) => invDt * _impulse;
 
+        /// <summary>
+        /// Gets the reaction torque using the specified inv dt
+        /// </summary>
+        /// <param name="invDt">The inv dt</param>
+        /// <returns>The float</returns>
         public override float GetReactionTorque(float invDt) => invDt * 0.0f;
 
+        /// <summary>
+        /// Inits the velocity constraints using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
         {
             _indexA = BodyA.IslandIndex;
@@ -260,6 +322,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.velocities[_indexA].w = wA;
         }
 
+        /// <summary>
+        /// Solves the velocity constraints using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(ref SolverData data)
         {
             Vector2 vA = data.velocities[_indexA].v;
@@ -286,6 +352,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.velocities[_indexA].w = wA;
         }
 
+        /// <summary>
+        /// Describes whether this instance solve position constraints
+        /// </summary>
+        /// <param name="data">The data</param>
+        /// <returns>The bool</returns>
         internal override bool SolvePositionConstraints(ref SolverData data) => true;
     }
 }

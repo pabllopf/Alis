@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -52,8 +52,17 @@ namespace Alis.Core.Physic.Common.Decomposition
     /// </summary>
     internal static class FlipcodeDecomposer
     {
+        /// <summary>
+        /// The tmp
+        /// </summary>
         private static Vector2 _tmpA;
+        /// <summary>
+        /// The tmp
+        /// </summary>
         private static Vector2 _tmpB;
+        /// <summary>
+        /// The tmp
+        /// </summary>
         private static Vector2 _tmpC;
 
         /// <summary>

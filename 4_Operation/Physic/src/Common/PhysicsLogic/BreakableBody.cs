@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -50,16 +50,37 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
     /// </summary>
     public class BreakableBody
     {
+        /// <summary>
+        /// The breakable body state enum
+        /// </summary>
         public enum BreakableBodyState
         {
+            /// <summary>
+            /// The unbroken breakable body state
+            /// </summary>
             Unbroken,
+            /// <summary>
+            /// The should break breakable body state
+            /// </summary>
             ShouldBreak,
+            /// <summary>
+            /// The broken breakable body state
+            /// </summary>
             Broken
         }
 
+        /// <summary>
+        /// The angular velocities cache
+        /// </summary>
         private float[] _angularVelocitiesCache = new float[8];
+        /// <summary>
+        /// The vector
+        /// </summary>
         private Vector2[] _velocitiesCache = new Vector2[8];
 
+        /// <summary>
+        /// The fixture
+        /// </summary>
         public List<Fixture> Parts = new List<Fixture>(8);
 
         /// <summary>
@@ -68,6 +89,10 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         /// </summary>
         public float Strength = 500.0f;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BreakableBody"/> class
+        /// </summary>
+        /// <param name="world">The world</param>
         private BreakableBody(World world)
         {
             World = world;
@@ -76,6 +101,14 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
             State = BreakableBodyState.Unbroken;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BreakableBody"/> class
+        /// </summary>
+        /// <param name="world">The world</param>
+        /// <param name="vertices">The vertices</param>
+        /// <param name="density">The density</param>
+        /// <param name="position">The position</param>
+        /// <param name="rotation">The rotation</param>
         public BreakableBody(World world, IEnumerable<Vertices> vertices, float density, Vector2 position = new Vector2(), float rotation = 0) : this(world)
         {
             MainBody = World.CreateBody(position, rotation, BodyType.Dynamic);
@@ -88,6 +121,13 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BreakableBody"/> class
+        /// </summary>
+        /// <param name="world">The world</param>
+        /// <param name="shapes">The shapes</param>
+        /// <param name="position">The position</param>
+        /// <param name="rotation">The rotation</param>
         public BreakableBody(World world, IEnumerable<Shape> shapes, Vector2 position = new Vector2(), float rotation = 0) : this(world)
         {
             MainBody = World.CreateBody(position, rotation, BodyType.Dynamic);
@@ -99,6 +139,14 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BreakableBody"/> class
+        /// </summary>
+        /// <param name="world">The world</param>
+        /// <param name="vertices">The vertices</param>
+        /// <param name="density">The density</param>
+        /// <param name="position">The position</param>
+        /// <param name="rotation">The rotation</param>
         public BreakableBody(World world, Vertices vertices, float density, Vector2 position = new Vector2(), float rotation = 0) : this(world)
         {
             MainBody = World.CreateBody(position, rotation, BodyType.Dynamic);
@@ -114,11 +162,25 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
             }
         }
 
+        /// <summary>
+        /// Gets the value of the world
+        /// </summary>
         public World World { get; }
+        /// <summary>
+        /// Gets the value of the main body
+        /// </summary>
         public Body MainBody { get; }
 
+        /// <summary>
+        /// Gets or sets the value of the state
+        /// </summary>
         public BreakableBodyState State { get; private set; }
 
+        /// <summary>
+        /// Posts the solve using the specified contact
+        /// </summary>
+        /// <param name="contact">The contact</param>
+        /// <param name="impulse">The impulse</param>
         private void PostSolve(Contact contact, ContactVelocityConstraint impulse)
         {
             if (State != BreakableBodyState.Broken)
@@ -142,6 +204,9 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
             }
         }
 
+        /// <summary>
+        /// Updates this instance
+        /// </summary>
         public void Update()
         {
             switch (State)
@@ -156,6 +221,9 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         }
 
         // Cache velocities to improve movement on breakage.
+        /// <summary>
+        /// Caches the velocities
+        /// </summary>
         private void CacheVelocities()
         {
             //Enlarge the cache if needed
@@ -173,6 +241,10 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
             }
         }
 
+        /// <summary>
+        /// Decomposes this instance
+        /// </summary>
+        /// <exception cref="InvalidOperationException">BreakableBody is allready broken</exception>
         private void Decompose()
         {
             if (State == BreakableBodyState.Broken)

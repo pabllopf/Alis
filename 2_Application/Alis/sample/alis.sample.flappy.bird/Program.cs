@@ -64,6 +64,8 @@ namespace Alis.Sample.Flappy.Bird
                     .Audio(audio => audio
                         .Build())
                     .Graphic(graphic => graphic
+                        .Target("OpenGL")
+                        .FrameRate(30)
                         .Window(window => window
                             .Resolution(288, 512)
                             .Background(Color.Black)
@@ -73,7 +75,7 @@ namespace Alis.Sample.Flappy.Bird
                     .Physic(physic => physic
                         .Debug(true)
                         .DebugColor(Color.Red)
-                        .Gravity(0.0f, -9.8f)
+                        .Gravity(0.0f, -4.5f)
                         .Build())
                     .Build())
                 .World(sceneManager => sceneManager

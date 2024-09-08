@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -37,21 +37,53 @@ using System.Collections.Generic;
 
 namespace Alis.Core.Physic.Common.Decomposition.Seidel
 {
+    /// <summary>
+    /// The triangulator class
+    /// </summary>
     internal class Triangulator
     {
         // Initialize trapezoidal map and query structure
+        /// <summary>
+        /// The bounding box
+        /// </summary>
         private readonly Trapezoid _boundingBox;
+        /// <summary>
+        /// The edge list
+        /// </summary>
         private readonly List<Edge> _edgeList;
+        /// <summary>
+        /// The query graph
+        /// </summary>
         private readonly QueryGraph _queryGraph;
+        /// <summary>
+        /// The sheer
+        /// </summary>
         private readonly float _sheer = 0.001f;
+        /// <summary>
+        /// The trapezoidal map
+        /// </summary>
         private readonly TrapezoidalMap _trapezoidalMap;
 
+        /// <summary>
+        /// The mono poly
+        /// </summary>
         private readonly List<MonotoneMountain> _xMonoPoly;
 
         // Trapezoid decomposition list
+        /// <summary>
+        /// The trapezoids
+        /// </summary>
         public List<Trapezoid> Trapezoids;
+        /// <summary>
+        /// The triangles
+        /// </summary>
         public List<List<Point>> Triangles;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Triangulator"/> class
+        /// </summary>
+        /// <param name="polyLine">The poly line</param>
+        /// <param name="sheer">The sheer</param>
         public Triangulator(List<Point> polyLine, float sheer)
         {
             _sheer = sheer;
@@ -67,6 +99,9 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         }
 
         // Build the trapezoidal map and query graph
+        /// <summary>
+        /// Processes this instance
+        /// </summary>
         private void Process()
         {
             foreach (Edge edge in _edgeList)
@@ -134,6 +169,9 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         }
 
         // Build a list of x-monotone mountains
+        /// <summary>
+        /// Creates the mountains
+        /// </summary>
         private void CreateMountains()
         {
             foreach (Edge edge in _edgeList)
@@ -170,6 +208,10 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         }
 
         // Mark the outside trapezoids surrounding the polygon
+        /// <summary>
+        /// Marks the outside using the specified t
+        /// </summary>
+        /// <param name="t">The </param>
         private void MarkOutside(Trapezoid t)
         {
             if (t.Top == _boundingBox.Top || t.Bottom == _boundingBox.Bottom)
@@ -177,6 +219,11 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         }
 
         // Create segments and connect end points; update edge event pointer
+        /// <summary>
+        /// Inits the edges using the specified points
+        /// </summary>
+        /// <param name="points">The points</param>
+        /// <returns>A list of edge</returns>
         private List<Edge> InitEdges(List<Point> points)
         {
             List<Edge> edges = new List<Edge>();
@@ -190,6 +237,11 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             return OrderSegments(edges);
         }
 
+        /// <summary>
+        /// Orders the segments using the specified edge input
+        /// </summary>
+        /// <param name="edgeInput">The edge input</param>
+        /// <returns>The edges</returns>
         private List<Edge> OrderSegments(List<Edge> edgeInput)
         {
             // Ignore vertical segments!
@@ -217,6 +269,11 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             return edges;
         }
 
+        /// <summary>
+        /// Shuffles the list
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="list">The list</param>
         private static void Shuffle<T>(IList<T> list)
         {
             Random rng = new Random();
@@ -233,6 +290,11 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
 
         // Prevents any two distinct endpoints from lying on a common vertical line, and avoiding
         // the degenerate case. See Mark de Berg et al, Chapter 6.3
+        /// <summary>
+        /// Shears the transform using the specified point
+        /// </summary>
+        /// <param name="point">The point</param>
+        /// <returns>The point</returns>
         private Point ShearTransform(Point point) => new Point(point.X + _sheer * point.Y, point.Y);
     }
 }

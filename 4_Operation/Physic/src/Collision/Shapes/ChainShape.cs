@@ -72,8 +72,17 @@ namespace Alis.Core.Physic.Collision.Shapes
     /// </summary>
     public class ChainShape : Shape
     {
+        /// <summary>
+        /// The edge shape
+        /// </summary>
         private static readonly EdgeShape _edgeShape = new EdgeShape();
+        /// <summary>
+        /// The has next vertex
+        /// </summary>
         private bool _hasPrevVertex, _hasNextVertex;
+        /// <summary>
+        /// The next vertex
+        /// </summary>
         private Vector2 _prevVertex, _nextVertex;
 
         /// <summary>
@@ -127,6 +136,9 @@ namespace Alis.Core.Physic.Collision.Shapes
             }
         }
 
+        /// <summary>
+        /// Gets the value of the child count
+        /// </summary>
         public override int ChildCount =>
             // edge count = vertex count - 1
             Vertices.Count - 1;
@@ -213,8 +225,22 @@ namespace Alis.Core.Physic.Collision.Shapes
             return edgeShape;
         }
 
+        /// <summary>
+        /// Describes whether this instance test point
+        /// </summary>
+        /// <param name="transform">The transform</param>
+        /// <param name="point">The point</param>
+        /// <returns>The bool</returns>
         public override bool TestPoint(ref Transform transform, ref Vector2 point) => false;
 
+        /// <summary>
+        /// Describes whether this instance ray cast
+        /// </summary>
+        /// <param name="output">The output</param>
+        /// <param name="input">The input</param>
+        /// <param name="transform">The transform</param>
+        /// <param name="childIndex">The child index</param>
+        /// <returns>The bool</returns>
         public override bool RayCast(out RayCastOutput output, ref RayCastInput input, ref Transform transform, int childIndex)
         {
             Debug.Assert(childIndex < Vertices.Count);
@@ -232,6 +258,12 @@ namespace Alis.Core.Physic.Collision.Shapes
             return _edgeShape.RayCast(out output, ref input, ref transform, 0);
         }
 
+        /// <summary>
+        /// Computes the aabb using the specified aabb
+        /// </summary>
+        /// <param name="aabb">The aabb</param>
+        /// <param name="transform">The transform</param>
+        /// <param name="childIndex">The child index</param>
         public override void ComputeAABB(out AABB aabb, ref Transform transform, int childIndex)
         {
             Debug.Assert(childIndex < Vertices.Count);
@@ -250,11 +282,22 @@ namespace Alis.Core.Physic.Collision.Shapes
             Vector2.Max(ref v1, ref v2, out aabb.UpperBound);
         }
 
+        /// <summary>
+        /// Computes the properties
+        /// </summary>
         protected override void ComputeProperties()
         {
             //Does nothing. Chain shapes don't have properties.
         }
 
+        /// <summary>
+        /// Computes the submerged area using the specified normal
+        /// </summary>
+        /// <param name="normal">The normal</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="xf">The xf</param>
+        /// <param name="sc">The sc</param>
+        /// <returns>The float</returns>
         public override float ComputeSubmergedArea(ref Vector2 normal, float offset, ref Transform xf, out Vector2 sc)
         {
             sc = Vector2.Zero;
@@ -280,6 +323,10 @@ namespace Alis.Core.Physic.Collision.Shapes
             return (PrevVertex == shape.PrevVertex) && (NextVertex == shape.NextVertex);
         }
 
+        /// <summary>
+        /// Clones this instance
+        /// </summary>
+        /// <returns>The clone</returns>
         public override Shape Clone()
         {
             ChainShape clone = new ChainShape();

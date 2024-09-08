@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -92,22 +92,64 @@ namespace Alis.Core.Physic.Dynamics
 
         #endregion
 
+        /// <summary>
+        /// The gravity
+        /// </summary>
         private Vector2 _gravity;
 
+        /// <summary>
+        /// The step complete
+        /// </summary>
         private bool _stepComplete = true;
 
+        /// <summary>
+        /// The inv dt
+        /// </summary>
         private float _invDt0;
+        /// <summary>
+        /// The body
+        /// </summary>
         private Body[] _stack = new Body[64];
+        /// <summary>
+        /// The query delegate tmp
+        /// </summary>
         private QueryReportFixtureDelegate _queryDelegateTmp;
+        /// <summary>
+        /// The query callback cache
+        /// </summary>
         private readonly BroadPhaseQueryCallback _queryCallbackCache;
+        /// <summary>
+        /// The toi input
+        /// </summary>
         private TOIInput _input = new TOIInput();
+        /// <summary>
+        /// The test point point tmp
+        /// </summary>
         private Vector2 _testPointPointTmp;
+        /// <summary>
+        /// The test point fixture tmp
+        /// </summary>
         private Fixture _testPointFixtureTmp;
+        /// <summary>
+        /// The test point delegate cache
+        /// </summary>
         private readonly QueryReportFixtureDelegate _testPointDelegateCache;
+        /// <summary>
+        /// The stopwatch
+        /// </summary>
         private readonly Stopwatch _watch = new Stopwatch();
+        /// <summary>
+        /// The ray cast delegate tmp
+        /// </summary>
         private RayCastReportFixtureDelegate _rayCastDelegateTmp;
+        /// <summary>
+        /// The ray cast callback cache
+        /// </summary>
         private readonly BroadPhaseRayCastCallback _rayCastCallbackCache;
 
+        /// <summary>
+        /// The world has new fixture
+        /// </summary>
         internal bool _worldHasNewFixture;
 
 
@@ -207,6 +249,10 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public World(IBroadPhase broadPhase) : this() => ContactManager = new ContactManager(broadPhase);
 
+        /// <summary>
+        /// Solves the step
+        /// </summary>
+        /// <param name="step">The step</param>
         private void Solve(ref TimeStep step)
         {
             // Size the island for the worst case.
@@ -464,6 +510,11 @@ namespace Alis.Core.Physic.Dynamics
 #endif
         }
 
+        /// <summary>
+        /// Solves the toi using the specified step
+        /// </summary>
+        /// <param name="step">The step</param>
+        /// <param name="iterations">The iterations</param>
         private void SolveTOI(ref TimeStep step, ref SolverIterations iterations)
         {
             Island.Reset(2 * Settings.MaxTOIContacts, Settings.MaxTOIContacts, 0, ContactManager);
@@ -827,14 +878,38 @@ namespace Alis.Core.Physic.Dynamics
 #endif
         }
 
+        /// <summary>
+        /// The controller list
+        /// </summary>
         public readonly ControllerCollection ControllerList;
 
+        /// <summary>
+        /// Gets or sets the value of the update time
+        /// </summary>
         public TimeSpan UpdateTime { get; private set; }
+        /// <summary>
+        /// Gets or sets the value of the continuous physics time
+        /// </summary>
         public TimeSpan ContinuousPhysicsTime { get; private set; }
+        /// <summary>
+        /// Gets or sets the value of the controllers update time
+        /// </summary>
         public TimeSpan ControllersUpdateTime { get; private set; }
+        /// <summary>
+        /// Gets the value of the add remove time
+        /// </summary>
         public TimeSpan AddRemoveTime { get; }
+        /// <summary>
+        /// Gets or sets the value of the new contacts time
+        /// </summary>
         public TimeSpan NewContactsTime { get; private set; }
+        /// <summary>
+        /// Gets or sets the value of the contacts update time
+        /// </summary>
         public TimeSpan ContactsUpdateTime { get; private set; }
+        /// <summary>
+        /// Gets or sets the value of the solve update time
+        /// </summary>
         public TimeSpan SolveUpdateTime { get; private set; }
 
         /// <summary>
@@ -912,6 +987,9 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public bool Enabled { get; set; }
 
+        /// <summary>
+        /// Gets the value of the island
+        /// </summary>
         public Island Island { get; }
 
         /// <summary>
@@ -1533,6 +1611,11 @@ namespace Alis.Core.Physic.Dynamics
             _queryDelegateTmp = null;
         }
 
+        /// <summary>
+        /// Describes whether this instance query aabb callback
+        /// </summary>
+        /// <param name="proxyId">The proxy id</param>
+        /// <returns>The bool</returns>
         private bool QueryAABBCallback(int proxyId)
         {
             FixtureProxy proxy = ContactManager.BroadPhase.GetProxy(proxyId);
@@ -1564,6 +1647,12 @@ namespace Alis.Core.Physic.Dynamics
             _rayCastDelegateTmp = null;
         }
 
+        /// <summary>
+        /// Rays the cast callback using the specified ray cast input
+        /// </summary>
+        /// <param name="rayCastInput">The ray cast input</param>
+        /// <param name="proxyId">The proxy id</param>
+        /// <returns>The float</returns>
         private float RayCastCallback(ref RayCastInput rayCastInput, int proxyId)
         {
             FixtureProxy proxy = ContactManager.BroadPhase.GetProxy(proxyId);
@@ -1628,6 +1717,11 @@ namespace Alis.Core.Physic.Dynamics
                 controllerRemovedHandler(this, controller);
         }
 
+        /// <summary>
+        /// Tests the point using the specified point
+        /// </summary>
+        /// <param name="point">The point</param>
+        /// <returns>The test point fixture tmp</returns>
         public Fixture TestPoint(Vector2 point)
         {
             AABB aabb;
@@ -1644,6 +1738,11 @@ namespace Alis.Core.Physic.Dynamics
             return _testPointFixtureTmp;
         }
 
+        /// <summary>
+        /// Describes whether this instance test point callback
+        /// </summary>
+        /// <param name="fixture">The fixture</param>
+        /// <returns>The bool</returns>
         private bool TestPointCallback(Fixture fixture)
         {
             bool inside = fixture.TestPoint(ref _testPointPointTmp);

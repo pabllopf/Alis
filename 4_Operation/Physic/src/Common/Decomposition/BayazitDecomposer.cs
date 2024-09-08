@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -67,6 +67,11 @@ namespace Alis.Core.Physic.Common.Decomposition
             return TriangulatePolygon(vertices);
         }
 
+        /// <summary>
+        /// Triangulates the polygon using the specified vertices
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
+        /// <returns>The list</returns>
         private static List<Vertices> TriangulatePolygon(Vertices vertices)
         {
             List<Vertices> list = new List<Vertices>();
@@ -187,12 +192,25 @@ namespace Alis.Core.Physic.Common.Decomposition
             return list;
         }
 
+        /// <summary>
+        /// Ats the i
+        /// </summary>
+        /// <param name="i">The </param>
+        /// <param name="vertices">The vertices</param>
+        /// <returns>The vector</returns>
         private static Vector2 At(int i, Vertices vertices)
         {
             int s = vertices.Count;
             return vertices[i < 0 ? s - 1 - (-i - 1) % s : i % s];
         }
 
+        /// <summary>
+        /// Copies the i
+        /// </summary>
+        /// <param name="i">The </param>
+        /// <param name="j">The </param>
+        /// <param name="vertices">The vertices</param>
+        /// <returns>The </returns>
         private static Vertices Copy(int i, int j, Vertices vertices)
         {
             while (j < i)
@@ -208,6 +226,13 @@ namespace Alis.Core.Physic.Common.Decomposition
             return p;
         }
 
+        /// <summary>
+        /// Describes whether can see
+        /// </summary>
+        /// <param name="i">The </param>
+        /// <param name="j">The </param>
+        /// <param name="vertices">The vertices</param>
+        /// <returns>The bool</returns>
         private static bool CanSee(int i, int j, Vertices vertices)
         {
             if (Reflex(i, vertices))
@@ -246,18 +271,64 @@ namespace Alis.Core.Physic.Common.Decomposition
             return true;
         }
 
+        /// <summary>
+        /// Describes whether reflex
+        /// </summary>
+        /// <param name="i">The </param>
+        /// <param name="vertices">The vertices</param>
+        /// <returns>The bool</returns>
         private static bool Reflex(int i, Vertices vertices) => Right(i, vertices);
 
+        /// <summary>
+        /// Describes whether right
+        /// </summary>
+        /// <param name="i">The </param>
+        /// <param name="vertices">The vertices</param>
+        /// <returns>The bool</returns>
         private static bool Right(int i, Vertices vertices) => Right(At(i - 1, vertices), At(i, vertices), At(i + 1, vertices));
 
+        /// <summary>
+        /// Describes whether left
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <param name="b">The </param>
+        /// <param name="c">The </param>
+        /// <returns>The bool</returns>
         private static bool Left(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) > 0;
 
+        /// <summary>
+        /// Describes whether left on
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <param name="b">The </param>
+        /// <param name="c">The </param>
+        /// <returns>The bool</returns>
         private static bool LeftOn(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) >= 0;
 
+        /// <summary>
+        /// Describes whether right
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <param name="b">The </param>
+        /// <param name="c">The </param>
+        /// <returns>The bool</returns>
         private static bool Right(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) < 0;
 
+        /// <summary>
+        /// Describes whether right on
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <param name="b">The </param>
+        /// <param name="c">The </param>
+        /// <returns>The bool</returns>
         private static bool RightOn(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) <= 0;
 
+        /// <summary>
+        /// Squares the dist using the specified a
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <param name="b">The </param>
+        /// <returns>The float</returns>
         private static float SquareDist(Vector2 a, Vector2 b)
         {
             float dx = b.X - a.X;

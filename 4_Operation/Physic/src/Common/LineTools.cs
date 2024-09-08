@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -47,6 +47,13 @@ namespace Alis.Core.Physic.Common
     /// </summary>
     public static class LineTools
     {
+        /// <summary>
+        /// Distances the between point and line segment using the specified point
+        /// </summary>
+        /// <param name="point">The point</param>
+        /// <param name="start">The start</param>
+        /// <param name="end">The end</param>
+        /// <returns>The float</returns>
         public static float DistanceBetweenPointAndLineSegment(ref Vector2 point, ref Vector2 start, ref Vector2 end)
         {
             if (start == end)
@@ -119,6 +126,14 @@ namespace Alis.Core.Physic.Common
         }
 
         //From Mark Bayazit's convex decomposition algorithm
+        /// <summary>
+        /// Lines the intersect using the specified p 1
+        /// </summary>
+        /// <param name="p1">The </param>
+        /// <param name="p2">The </param>
+        /// <param name="q1">The </param>
+        /// <param name="q2">The </param>
+        /// <returns>The </returns>
         public static Vector2 LineIntersect(Vector2 p1, Vector2 p2, Vector2 q1, Vector2 q2)
         {
             Vector2 i = Vector2.Zero;

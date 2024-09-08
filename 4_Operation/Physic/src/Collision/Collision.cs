@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -68,9 +68,18 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace Alis.Core.Physic.Collision
 {
+    /// <summary>
+    /// The contact feature type enum
+    /// </summary>
     internal enum ContactFeatureType : byte
     {
+        /// <summary>
+        /// The vertex contact feature type
+        /// </summary>
         Vertex = 0,
+        /// <summary>
+        /// The face contact feature type
+        /// </summary>
         Face = 1
     }
 
@@ -153,10 +162,22 @@ namespace Alis.Core.Physic.Collision
         public float TangentImpulse;
     }
 
+    /// <summary>
+    /// The manifold type enum
+    /// </summary>
     public enum ManifoldType
     {
+        /// <summary>
+        /// The circles manifold type
+        /// </summary>
         Circles,
+        /// <summary>
+        /// The face manifold type
+        /// </summary>
         FaceA,
+        /// <summary>
+        /// The face manifold type
+        /// </summary>
         FaceB
     }
 
@@ -200,6 +221,9 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         public FixedArray2<ManifoldPoint> Points;
 
+        /// <summary>
+        /// The type
+        /// </summary>
         public ManifoldType Type;
     }
 
@@ -234,7 +258,13 @@ namespace Alis.Core.Physic.Collision
     /// </summary>
     public struct ClipVertex
     {
+        /// <summary>
+        /// The id
+        /// </summary>
         public ContactID ID;
+        /// <summary>
+        /// The 
+        /// </summary>
         public Vector2 V;
     }
 
@@ -293,25 +323,47 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         public Vector2 UpperBound;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AABB"/> class
+        /// </summary>
+        /// <param name="min">The min</param>
+        /// <param name="max">The max</param>
         public AABB(Vector2 min, Vector2 max)
             : this(ref min, ref max)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AABB"/> class
+        /// </summary>
+        /// <param name="min">The min</param>
+        /// <param name="max">The max</param>
         public AABB(ref Vector2 min, ref Vector2 max)
         {
             LowerBound = min;
             UpperBound = max;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AABB"/> class
+        /// </summary>
+        /// <param name="center">The center</param>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
         public AABB(Vector2 center, float width, float height)
         {
             LowerBound = center - new Vector2(width / 2, height / 2);
             UpperBound = center + new Vector2(width / 2, height / 2);
         }
 
+        /// <summary>
+        /// Gets the value of the width
+        /// </summary>
         public float Width => UpperBound.X - LowerBound.X;
 
+        /// <summary>
+        /// Gets the value of the height
+        /// </summary>
         public float Height => UpperBound.Y - LowerBound.Y;
 
         /// <summary>
@@ -552,8 +604,17 @@ namespace Alis.Core.Physic.Collision
     /// </summary>
     public struct EPAxis
     {
+        /// <summary>
+        /// The index
+        /// </summary>
         public int Index;
+        /// <summary>
+        /// The separation
+        /// </summary>
         public float Separation;
+        /// <summary>
+        /// The type
+        /// </summary>
         public EPAxisType Type;
     }
 
@@ -562,23 +623,56 @@ namespace Alis.Core.Physic.Collision
     /// </summary>
     public struct ReferenceFace
     {
+        /// <summary>
+        /// The 
+        /// </summary>
         public int i1, i2;
 
+        /// <summary>
+        /// The 
+        /// </summary>
         public Vector2 v1, v2;
 
+        /// <summary>
+        /// The normal
+        /// </summary>
         public Vector2 normal;
 
+        /// <summary>
+        /// The side normal
+        /// </summary>
         public Vector2 sideNormal1;
+        /// <summary>
+        /// The side offset
+        /// </summary>
         public float sideOffset1;
 
+        /// <summary>
+        /// The side normal
+        /// </summary>
         public Vector2 sideNormal2;
+        /// <summary>
+        /// The side offset
+        /// </summary>
         public float sideOffset2;
     }
 
+    /// <summary>
+    /// The ep axis type enum
+    /// </summary>
     public enum EPAxisType
     {
+        /// <summary>
+        /// The unknown ep axis type
+        /// </summary>
         Unknown,
+        /// <summary>
+        /// The edge ep axis type
+        /// </summary>
         EdgeA,
+        /// <summary>
+        /// The edge ep axis type
+        /// </summary>
         EdgeB
     }
 
@@ -613,6 +707,13 @@ namespace Alis.Core.Physic.Collision
             return output.Distance < 10.0f * Settings.Epsilon;
         }
 
+        /// <summary>
+        /// Gets the point states using the specified state 1
+        /// </summary>
+        /// <param name="state1">The state</param>
+        /// <param name="state2">The state</param>
+        /// <param name="manifold1">The manifold</param>
+        /// <param name="manifold2">The manifold</param>
         public static void GetPointStates(out FixedArray2<PointState> state1, out FixedArray2<PointState> state2, ref Manifold manifold1, ref Manifold manifold2)
         {
             state1 = new FixedArray2<PointState>();
@@ -1313,6 +1414,15 @@ namespace Alis.Core.Physic.Collision
             return bestSeparation;
         }
 
+        /// <summary>
+        /// Finds the incident edge using the specified c
+        /// </summary>
+        /// <param name="c">The </param>
+        /// <param name="poly1">The poly</param>
+        /// <param name="xf1">The xf</param>
+        /// <param name="edge1">The edge</param>
+        /// <param name="poly2">The poly</param>
+        /// <param name="xf2">The xf</param>
         private static void FindIncidentEdge(out FixedArray2<ClipVertex> c, PolygonShape poly1, ref Transform xf1, int edge1, PolygonShape poly2, ref Transform xf2)
         {
             c = new FixedArray2<ClipVertex>();
@@ -1365,8 +1475,19 @@ namespace Alis.Core.Physic.Collision
             c[1] = cv1;
         }
 
+        /// <summary>
+        /// The ep collider class
+        /// </summary>
         private static class EPCollider
         {
+            /// <summary>
+            /// Collides the manifold
+            /// </summary>
+            /// <param name="manifold">The manifold</param>
+            /// <param name="edgeA">The edge</param>
+            /// <param name="xfA">The xf</param>
+            /// <param name="polygonB">The polygon</param>
+            /// <param name="xfB">The xf</param>
             public static void Collide(ref Manifold manifold, EdgeShape edgeA, ref Transform xfA, PolygonShape polygonB, ref Transform xfB)
             {
                 // Algorithm:
@@ -1783,6 +1904,14 @@ namespace Alis.Core.Physic.Collision
                 manifold.PointCount = pointCount;
             }
 
+            /// <summary>
+            /// Computes the edge separation using the specified polygon b
+            /// </summary>
+            /// <param name="polygonB">The polygon</param>
+            /// <param name="normal">The normal</param>
+            /// <param name="v1">The </param>
+            /// <param name="front">The front</param>
+            /// <returns>The axis</returns>
             private static EPAxis ComputeEdgeSeparation(ref TempPolygon polygonB, ref Vector2 normal, ref Vector2 v1, bool front)
             {
                 EPAxis axis;
@@ -1802,6 +1931,17 @@ namespace Alis.Core.Physic.Collision
                 return axis;
             }
 
+            /// <summary>
+            /// Computes the polygon separation using the specified polygon b
+            /// </summary>
+            /// <param name="polygonB">The polygon</param>
+            /// <param name="normal">The normal</param>
+            /// <param name="v1">The </param>
+            /// <param name="v2">The </param>
+            /// <param name="lowerLimit">The lower limit</param>
+            /// <param name="upperLimit">The upper limit</param>
+            /// <param name="radius">The radius</param>
+            /// <returns>The axis</returns>
             private static EPAxis ComputePolygonSeparation(ref TempPolygon polygonB, ref Vector2 normal, ref Vector2 v1, ref Vector2 v2, ref Vector2 lowerLimit, ref Vector2 upperLimit, float radius)
             {
                 EPAxis axis;
@@ -1860,10 +2000,23 @@ namespace Alis.Core.Physic.Collision
             /// </summary>
             internal struct TempPolygon
             {
+                /// <summary>
+                /// The vertices
+                /// </summary>
                 public readonly Vector2[] Vertices;
+                /// <summary>
+                /// The normals
+                /// </summary>
                 public readonly Vector2[] Normals;
+                /// <summary>
+                /// The count
+                /// </summary>
                 public int Count;
 
+                /// <summary>
+                /// Initializes a new instance of the <see cref="TempPolygon"/> class
+                /// </summary>
+                /// <param name="maxPolygonVertices">The max polygon vertices</param>
                 internal TempPolygon(int maxPolygonVertices)
                 {
                     Vertices = new Vector2[maxPolygonVertices];

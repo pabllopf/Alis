@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -39,6 +39,9 @@ using Alis.Core.Physic.Common.ConvexHull;
 
 namespace Alis.Core.Physic.Common.Decomposition
 {
+    /// <summary>
+    /// The triangulation algorithm enum
+    /// </summary>
     public enum TriangulationAlgorithm
     {
         /// <summary>
@@ -81,6 +84,9 @@ namespace Alis.Core.Physic.Common.Decomposition
         ///     - Does not care about winding order.
         /// </summary>
         Seidel,
+        /// <summary>
+        /// The seidel trapezoids triangulation algorithm
+        /// </summary>
         SeidelTrapezoids,
 
         /// <summary>
@@ -96,6 +102,9 @@ namespace Alis.Core.Physic.Common.Decomposition
         Delauny
     }
 
+    /// <summary>
+    /// The triangulate class
+    /// </summary>
     public static class Triangulate
     {
         /// <param name="skipSanityChecks">
@@ -175,6 +184,11 @@ namespace Alis.Core.Physic.Common.Decomposition
             return results;
         }
 
+        /// <summary>
+        /// Describes whether validate polygon
+        /// </summary>
+        /// <param name="polygon">The polygon</param>
+        /// <returns>The bool</returns>
         private static bool ValidatePolygon(Vertices polygon)
         {
             PolygonError errorCode = polygon.CheckPolygon();

@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -41,31 +41,85 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace Alis.Core.Physic.Common.PolygonManipulation
 {
+    /// <summary>
+    /// The poly clip type enum
+    /// </summary>
     internal enum PolyClipType
     {
+        /// <summary>
+        /// The intersect poly clip type
+        /// </summary>
         Intersect,
+        /// <summary>
+        /// The union poly clip type
+        /// </summary>
         Union,
+        /// <summary>
+        /// The difference poly clip type
+        /// </summary>
         Difference
     }
 
+    /// <summary>
+    /// The poly clip error enum
+    /// </summary>
     public enum PolyClipError
     {
+        /// <summary>
+        /// The none poly clip error
+        /// </summary>
         None,
+        /// <summary>
+        /// The degenerated output poly clip error
+        /// </summary>
         DegeneratedOutput,
+        /// <summary>
+        /// The non simple input poly clip error
+        /// </summary>
         NonSimpleInput,
+        /// <summary>
+        /// The broken result poly clip error
+        /// </summary>
         BrokenResult
     }
 
     //Clipper contributed by Helge Backhaus
 
+    /// <summary>
+    /// The yu peng clipper class
+    /// </summary>
     public static class YuPengClipper
     {
+        /// <summary>
+        /// The clipper epsilon squared
+        /// </summary>
         private const float ClipperEpsilonSquared = 1.192092896e-07f;
 
+        /// <summary>
+        /// Unions the polygon 1
+        /// </summary>
+        /// <param name="polygon1">The polygon</param>
+        /// <param name="polygon2">The polygon</param>
+        /// <param name="error">The error</param>
+        /// <returns>A list of vertices</returns>
         public static List<Vertices> Union(Vertices polygon1, Vertices polygon2, out PolyClipError error) => Execute(polygon1, polygon2, PolyClipType.Union, out error);
 
+        /// <summary>
+        /// Differences the polygon 1
+        /// </summary>
+        /// <param name="polygon1">The polygon</param>
+        /// <param name="polygon2">The polygon</param>
+        /// <param name="error">The error</param>
+        /// <returns>A list of vertices</returns>
         public static List<Vertices> Difference(Vertices polygon1, Vertices polygon2, out PolyClipError error) => Execute(polygon1, polygon2, PolyClipType.Difference, out error);
 
+        /// <summary>
+        /// Intersects the polygon 1
+        /// </summary>
+        /// <param name="polygon1">The polygon</param>
+        /// <param name="polygon2">The polygon</param>
+        /// <param name="error">The error</param>
+        /// <returns>A list of vertices</returns>
         public static List<Vertices> Intersect(Vertices polygon1, Vertices polygon2, out PolyClipError error) => Execute(polygon1, polygon2, PolyClipType.Intersect, out error);
 
         /// <summary>
@@ -499,6 +553,12 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                    (Vector2.Dot(point - end, segment) <= 0f);
         }
 
+        /// <summary>
+        /// Describes whether vector equal
+        /// </summary>
+        /// <param name="vec1">The vec</param>
+        /// <param name="vec2">The vec</param>
+        /// <returns>The bool</returns>
         private static bool VectorEqual(Vector2 vec1, Vector2 vec2) => (vec2 - vec1).LengthSquared() <= ClipperEpsilonSquared;
 
         #region Nested type: Edge
@@ -506,19 +566,39 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         /// <summary>Specifies an Edge. Edges are used to represent simplicies in simplical chains</summary>
         private sealed class Edge
         {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="Edge"/> class
+            /// </summary>
+            /// <param name="edgeStart">The edge start</param>
+            /// <param name="edgeEnd">The edge end</param>
             public Edge(Vector2 edgeStart, Vector2 edgeEnd)
             {
                 EdgeStart = edgeStart;
                 EdgeEnd = edgeEnd;
             }
 
+            /// <summary>
+            /// Gets the value of the edge start
+            /// </summary>
             public Vector2 EdgeStart { get; }
+            /// <summary>
+            /// Gets the value of the edge end
+            /// </summary>
             public Vector2 EdgeEnd { get; }
 
+            /// <summary>
+            /// Gets the center
+            /// </summary>
+            /// <returns>The vector</returns>
             public Vector2 GetCenter() => (EdgeStart + EdgeEnd) / 2f;
 
             public static Edge operator -(Edge e) => new Edge(e.EdgeEnd, e.EdgeStart);
 
+            /// <summary>
+            /// Describes whether this instance equals
+            /// </summary>
+            /// <param name="obj">The obj</param>
+            /// <returns>The bool</returns>
             public override bool Equals(object obj)
             {
                 // If parameter is null return false.
@@ -531,6 +611,11 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 return Equals(obj as Edge);
             }
 
+            /// <summary>
+            /// Describes whether this instance equals
+            /// </summary>
+            /// <param name="e">The </param>
+            /// <returns>The bool</returns>
             public bool Equals(Edge e)
             {
                 // If parameter is null return false:
@@ -543,6 +628,10 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 return VectorEqual(EdgeStart, e.EdgeStart) && VectorEqual(EdgeEnd, e.EdgeEnd);
             }
 
+            /// <summary>
+            /// Gets the hash code
+            /// </summary>
+            /// <returns>The int</returns>
             public override int GetHashCode() => EdgeStart.GetHashCode() ^ EdgeEnd.GetHashCode();
         }
 

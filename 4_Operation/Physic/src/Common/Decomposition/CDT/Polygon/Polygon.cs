@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -79,12 +79,31 @@ using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay;
 
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
 {
+    /// <summary>
+    /// The polygon class
+    /// </summary>
+    /// <seealso cref="Triangulatable"/>
     internal class Polygon : Triangulatable
     {
+        /// <summary>
+        /// The holes
+        /// </summary>
         protected List<Polygon> _holes;
+        /// <summary>
+        /// The last
+        /// </summary>
         protected PolygonPoint _last;
+        /// <summary>
+        /// The triangulation point
+        /// </summary>
         protected List<TriangulationPoint> _points = new List<TriangulationPoint>();
+        /// <summary>
+        /// The steiner points
+        /// </summary>
         protected List<TriangulationPoint> _steinerPoints;
+        /// <summary>
+        /// The triangles
+        /// </summary>
         protected List<DelaunayTriangle> _triangles;
 
         /// <summary>
@@ -110,12 +129,22 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Polygon"/> class
+        /// </summary>
         public Polygon()
         {
         }
 
+        /// <summary>
+        /// Gets the value of the holes
+        /// </summary>
         public IList<Polygon> Holes => _holes;
 
+        /// <summary>
+        /// Adds the steiner point using the specified point
+        /// </summary>
+        /// <param name="point">The point</param>
         public void AddSteinerPoint(TriangulationPoint point)
         {
             if (_steinerPoints == null)
@@ -126,6 +155,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
             _steinerPoints.Add(point);
         }
 
+        /// <summary>
+        /// Adds the steiner points using the specified points
+        /// </summary>
+        /// <param name="points">The points</param>
         public void AddSteinerPoints(List<TriangulationPoint> points)
         {
             if (_steinerPoints == null)
@@ -136,6 +169,9 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
             _steinerPoints.AddRange(points);
         }
 
+        /// <summary>
+        /// Clears the steiner points
+        /// </summary>
         public void ClearSteinerPoints()
         {
             if (_steinerPoints != null)
@@ -229,22 +265,42 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
 
         #region Triangulatable Members
 
+        /// <summary>
+        /// Gets the value of the triangulation mode
+        /// </summary>
         public TriangulationMode TriangulationMode => TriangulationMode.Polygon;
 
+        /// <summary>
+        /// Gets the value of the points
+        /// </summary>
         public IList<TriangulationPoint> Points => _points;
 
+        /// <summary>
+        /// Gets the value of the triangles
+        /// </summary>
         public IList<DelaunayTriangle> Triangles => _triangles;
 
+        /// <summary>
+        /// Adds the triangle using the specified t
+        /// </summary>
+        /// <param name="t">The </param>
         public void AddTriangle(DelaunayTriangle t)
         {
             _triangles.Add(t);
         }
 
+        /// <summary>
+        /// Adds the triangles using the specified list
+        /// </summary>
+        /// <param name="list">The list</param>
         public void AddTriangles(IEnumerable<DelaunayTriangle> list)
         {
             _triangles.AddRange(list);
         }
 
+        /// <summary>
+        /// Clears the triangles
+        /// </summary>
         public void ClearTriangles()
         {
             if (_triangles != null) _triangles.Clear();

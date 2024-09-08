@@ -137,33 +137,108 @@ namespace Alis.Core.Physic.Dynamics.Joints
     /// </summary>
     public class PrismaticJoint : Joint
     {
+        /// <summary>
+        /// The 
+        /// </summary>
         private float _a1, _a2;
+        /// <summary>
+        /// The perp
+        /// </summary>
         private Vector2 _axis, _perp;
+        /// <summary>
+        /// The axis
+        /// </summary>
         private Vector2 _axis1;
+        /// <summary>
+        /// The enable limit
+        /// </summary>
         private bool _enableLimit;
+        /// <summary>
+        /// The enable motor
+        /// </summary>
         private bool _enableMotor;
+        /// <summary>
+        /// The impulse
+        /// </summary>
         private Vector3 _impulse;
 
         // Solver temp
+        /// <summary>
+        /// The index
+        /// </summary>
         private int _indexA;
+        /// <summary>
+        /// The index
+        /// </summary>
         private int _indexB;
+        /// <summary>
+        /// The inv ia
+        /// </summary>
         private float _invIA;
+        /// <summary>
+        /// The inv ib
+        /// </summary>
         private float _invIB;
+        /// <summary>
+        /// The inv mass
+        /// </summary>
         private float _invMassA;
+        /// <summary>
+        /// The inv mass
+        /// </summary>
         private float _invMassB;
+        /// <summary>
+        /// The 
+        /// </summary>
         private Mat33 _K;
+        /// <summary>
+        /// The limit state
+        /// </summary>
         private LimitState _limitState;
+        /// <summary>
+        /// The local center
+        /// </summary>
         private Vector2 _localCenterA;
+        /// <summary>
+        /// The local center
+        /// </summary>
         private Vector2 _localCenterB;
+        /// <summary>
+        /// The local axis
+        /// </summary>
         private Vector2 _localXAxis;
+        /// <summary>
+        /// The local axis
+        /// </summary>
         private Vector2 _localYAxisA;
+        /// <summary>
+        /// The lower translation
+        /// </summary>
         private float _lowerTranslation;
+        /// <summary>
+        /// The max motor force
+        /// </summary>
         private float _maxMotorForce;
+        /// <summary>
+        /// The motor mass
+        /// </summary>
         private float _motorMass;
+        /// <summary>
+        /// The motor speed
+        /// </summary>
         private float _motorSpeed;
+        /// <summary>
+        /// The 
+        /// </summary>
         private float _s1, _s2;
+        /// <summary>
+        /// The upper translation
+        /// </summary>
         private float _upperTranslation;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PrismaticJoint"/> class
+        /// </summary>
         internal PrismaticJoint() => JointType = JointType.Prismatic;
 
         /// <summary>
@@ -186,6 +261,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Initialize(anchorA, anchorB, axis, useWorldCoordinates);
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PrismaticJoint"/> class
+        /// </summary>
+        /// <param name="bodyA">The body</param>
+        /// <param name="bodyB">The body</param>
+        /// <param name="anchor">The anchor</param>
+        /// <param name="axis">The axis</param>
+        /// <param name="useWorldCoordinates">The use world coordinates</param>
         public PrismaticJoint(Body bodyA, Body bodyB, Vector2 anchor, Vector2 axis, bool useWorldCoordinates = false)
             : base(bodyA, bodyB)
         {
@@ -202,12 +285,18 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         public Vector2 LocalAnchorB { get; set; }
 
+        /// <summary>
+        /// Gets or sets the value of the world anchor a
+        /// </summary>
         public override Vector2 WorldAnchorA
         {
             get => BodyA.GetWorldPoint(LocalAnchorA);
             set => LocalAnchorA = BodyA.GetLocalPoint(value);
         }
 
+        /// <summary>
+        /// Gets or sets the value of the world anchor b
+        /// </summary>
         public override Vector2 WorldAnchorB
         {
             get => BodyB.GetWorldPoint(LocalAnchorB);
@@ -386,6 +475,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         public float ReferenceAngle { get; set; }
 
+        /// <summary>
+        /// Initializes the local anchor a
+        /// </summary>
+        /// <param name="localAnchorA">The local anchor</param>
+        /// <param name="localAnchorB">The local anchor</param>
+        /// <param name="axis">The axis</param>
+        /// <param name="useWorldCoordinates">The use world coordinates</param>
         private void Initialize(Vector2 localAnchorA, Vector2 localAnchorB, Vector2 axis, bool useWorldCoordinates)
         {
             JointType = JointType.Prismatic;
@@ -429,10 +525,24 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="invDt">The inverse delta time</param>
         public float GetMotorForce(float invDt) => invDt * MotorImpulse;
 
+        /// <summary>
+        /// Gets the reaction force using the specified inv dt
+        /// </summary>
+        /// <param name="invDt">The inv dt</param>
+        /// <returns>The vector</returns>
         public override Vector2 GetReactionForce(float invDt) => invDt * (_impulse.X * _perp + (MotorImpulse + _impulse.Z) * _axis);
 
+        /// <summary>
+        /// Gets the reaction torque using the specified inv dt
+        /// </summary>
+        /// <param name="invDt">The inv dt</param>
+        /// <returns>The float</returns>
         public override float GetReactionTorque(float invDt) => invDt * _impulse.Y;
 
+        /// <summary>
+        /// Inits the velocity constraints using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
         {
             _indexA = BodyA.IslandIndex;
@@ -572,6 +682,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.velocities[_indexB].w = wB;
         }
 
+        /// <summary>
+        /// Solves the velocity constraints using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(ref SolverData data)
         {
             Vector2 vA = data.velocities[_indexA].v;
@@ -669,6 +783,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.velocities[_indexB].w = wB;
         }
 
+        /// <summary>
+        /// Describes whether this instance solve position constraints
+        /// </summary>
+        /// <param name="data">The data</param>
+        /// <returns>The bool</returns>
         internal override bool SolvePositionConstraints(ref SolverData data)
         {
             Vector2 cA = data.positions[_indexA].c;

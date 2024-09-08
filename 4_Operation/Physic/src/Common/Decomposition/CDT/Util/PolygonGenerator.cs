@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -68,12 +68,27 @@ using Alis.Core.Physic.Common.Decomposition.CDT.Polygon;
 
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
 {
+    /// <summary>
+    /// The polygon generator class
+    /// </summary>
     internal class PolygonGenerator
     {
+        /// <summary>
+        /// The random
+        /// </summary>
         private static readonly Random RNG = new Random();
 
+        /// <summary>
+        /// The pi
+        /// </summary>
         private static readonly double PI_2 = 2.0 * Math.PI;
 
+        /// <summary>
+        /// Randoms the circle sweep using the specified scale
+        /// </summary>
+        /// <param name="scale">The scale</param>
+        /// <param name="vertexCount">The vertex count</param>
+        /// <returns>The polygon polygon</returns>
         public static Polygon.Polygon RandomCircleSweep(double scale, int vertexCount)
         {
             PolygonPoint point;
@@ -110,6 +125,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
             return new Polygon.Polygon(points);
         }
 
+        /// <summary>
+        /// Randoms the circle sweep 2 using the specified scale
+        /// </summary>
+        /// <param name="scale">The scale</param>
+        /// <param name="vertexCount">The vertex count</param>
+        /// <returns>The polygon polygon</returns>
         public static Polygon.Polygon RandomCircleSweep2(double scale, int vertexCount)
         {
             PolygonPoint point;

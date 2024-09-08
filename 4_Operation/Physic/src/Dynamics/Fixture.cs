@@ -74,11 +74,29 @@ namespace Alis.Core.Physic.Dynamics
     /// </summary>
     public class Fixture
     {
+        /// <summary>
+        /// The collides with
+        /// </summary>
         internal Category _collidesWith;
+        /// <summary>
+        /// The collision categories
+        /// </summary>
         internal Category _collisionCategories;
+        /// <summary>
+        /// The collision group
+        /// </summary>
         internal short _collisionGroup;
+        /// <summary>
+        /// The friction
+        /// </summary>
         private float _friction;
+        /// <summary>
+        /// The is sensor
+        /// </summary>
         private bool _isSensor;
+        /// <summary>
+        /// The restitution
+        /// </summary>
         private float _restitution;
 
         /// <summary>
@@ -111,6 +129,9 @@ namespace Alis.Core.Physic.Dynamics
         /// <value>The user data.</value>
         public object Tag;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Fixture"/> class
+        /// </summary>
         internal Fixture() // Note: This is internal because it's used by Deserialization.
         {
             _collisionCategories = Category.Cat1;
@@ -122,6 +143,10 @@ namespace Alis.Core.Physic.Dynamics
             Restitution = 0f;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Fixture"/> class
+        /// </summary>
+        /// <param name="shape">The shape</param>
         public Fixture(Shape shape) : this()
         {
             Shape = shape.Clone();
@@ -131,7 +156,13 @@ namespace Alis.Core.Physic.Dynamics
             ProxyCount = 0;
         }
 
+        /// <summary>
+        /// Gets the value of the proxies
+        /// </summary>
         public FixtureProxy[] Proxies { get; }
+        /// <summary>
+        /// Gets or sets the value of the proxy count
+        /// </summary>
         public int ProxyCount { get; private set; }
 
         /// <summary>
@@ -321,6 +352,12 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         // These support body activation/deactivation.
+        /// <summary>
+        /// Creates the proxies using the specified broad phase
+        /// </summary>
+        /// <param name="broadPhase">The broad phase</param>
+        /// <param name="xf">The xf</param>
+        /// <exception cref="InvalidOperationException">Proxies allready created for this Fixture.</exception>
         internal void CreateProxies(IBroadPhase broadPhase, ref Transform xf)
         {
             if (ProxyCount != 0)
@@ -342,6 +379,10 @@ namespace Alis.Core.Physic.Dynamics
             }
         }
 
+        /// <summary>
+        /// Destroys the proxies using the specified broad phase
+        /// </summary>
+        /// <param name="broadPhase">The broad phase</param>
         internal void DestroyProxies(IBroadPhase broadPhase)
         {
             // Destroy proxies in the broad-phase.
@@ -354,6 +395,12 @@ namespace Alis.Core.Physic.Dynamics
             ProxyCount = 0;
         }
 
+        /// <summary>
+        /// Synchronizes the broad phase
+        /// </summary>
+        /// <param name="broadPhase">The broad phase</param>
+        /// <param name="transform1">The transform</param>
+        /// <param name="transform2">The transform</param>
         internal void Synchronize(IBroadPhase broadPhase, ref Transform transform1, ref Transform transform2)
         {
             for (int i = 0; i < ProxyCount; ++i)

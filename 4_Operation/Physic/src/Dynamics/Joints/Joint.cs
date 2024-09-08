@@ -63,38 +63,113 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
+    /// <summary>
+    /// The joint type enum
+    /// </summary>
     public enum JointType
     {
+        /// <summary>
+        /// The unknown joint type
+        /// </summary>
         Unknown,
+        /// <summary>
+        /// The revolute joint type
+        /// </summary>
         Revolute,
+        /// <summary>
+        /// The prismatic joint type
+        /// </summary>
         Prismatic,
+        /// <summary>
+        /// The distance joint type
+        /// </summary>
         Distance,
+        /// <summary>
+        /// The pulley joint type
+        /// </summary>
         Pulley,
 
         //Mouse, <- We have fixed mouse
+        /// <summary>
+        /// The gear joint type
+        /// </summary>
         Gear,
+        /// <summary>
+        /// The wheel joint type
+        /// </summary>
         Wheel,
+        /// <summary>
+        /// The weld joint type
+        /// </summary>
         Weld,
+        /// <summary>
+        /// The friction joint type
+        /// </summary>
         Friction,
+        /// <summary>
+        /// The rope joint type
+        /// </summary>
         Rope,
+        /// <summary>
+        /// The motor joint type
+        /// </summary>
         Motor,
 
         //FPE note: From here on and down, it is only FPE joints
+        /// <summary>
+        /// The angle joint type
+        /// </summary>
         Angle,
+        /// <summary>
+        /// The fixed mouse joint type
+        /// </summary>
         FixedMouse,
+        /// <summary>
+        /// The fixed revolute joint type
+        /// </summary>
         FixedRevolute,
+        /// <summary>
+        /// The fixed distance joint type
+        /// </summary>
         FixedDistance,
+        /// <summary>
+        /// The fixed line joint type
+        /// </summary>
         FixedLine,
+        /// <summary>
+        /// The fixed prismatic joint type
+        /// </summary>
         FixedPrismatic,
+        /// <summary>
+        /// The fixed angle joint type
+        /// </summary>
         FixedAngle,
+        /// <summary>
+        /// The fixed friction joint type
+        /// </summary>
         FixedFriction
     }
 
+    /// <summary>
+    /// The limit state enum
+    /// </summary>
     public enum LimitState
     {
+        /// <summary>
+        /// The inactive limit state
+        /// </summary>
         Inactive,
+        /// <summary>
+        /// The at lower limit state
+        /// </summary>
         AtLower,
+        /// <summary>
+        /// The at upper limit state
+        /// </summary>
         AtUpper,
+        /// <summary>
+        /// The equal limit state
+        /// </summary>
         Equal
     }
 
@@ -128,13 +203,31 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public JointEdge Prev;
     }
 
+    /// <summary>
+    /// The joint class
+    /// </summary>
     public abstract class Joint
     {
+        /// <summary>
+        /// The breakpoint
+        /// </summary>
         private float _breakpoint;
+        /// <summary>
+        /// The breakpoint squared
+        /// </summary>
         private double _breakpointSquared;
+        /// <summary>
+        /// The world
+        /// </summary>
         internal World _world;
 
+        /// <summary>
+        /// The joint edge
+        /// </summary>
         internal JointEdge EdgeA = new JointEdge();
+        /// <summary>
+        /// The joint edge
+        /// </summary>
         internal JointEdge EdgeB = new JointEdge();
 
         /// <summary>
@@ -143,6 +236,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         public bool Enabled = true;
 
+        /// <summary>
+        /// The island flag
+        /// </summary>
         internal bool IslandFlag;
 
         /// <summary>
@@ -151,6 +247,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <value>The data.</value>
         public object Tag;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Joint"/> class
+        /// </summary>
         protected Joint()
         {
             Breakpoint = float.MaxValue;
@@ -159,6 +258,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
             CollideConnected = false;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Joint"/> class
+        /// </summary>
+        /// <param name="bodyA">The body</param>
+        /// <param name="bodyB">The body</param>
         protected Joint(Body bodyA, Body bodyB) : this()
         {
             //Can't connect a joint to the same body twice.
@@ -242,6 +346,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="invDt">The inverse delta time.</param>
         public abstract float GetReactionTorque(float invDt);
 
+        /// <summary>
+        /// Wakes the bodies
+        /// </summary>
         protected void WakeBodies()
         {
             if (BodyA != null)
@@ -262,8 +369,16 @@ namespace Alis.Core.Physic.Dynamics.Joints
                                      JointType == JointType.FixedAngle ||
                                      JointType == JointType.FixedFriction;
 
+        /// <summary>
+        /// Inits the velocity constraints using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
         internal abstract void InitVelocityConstraints(ref SolverData data);
 
+        /// <summary>
+        /// Validates the inv dt
+        /// </summary>
+        /// <param name="invDt">The inv dt</param>
         internal void Validate(float invDt)
         {
             if (!Enabled)
@@ -280,6 +395,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 Broke(this, (float) Math.Sqrt(jointErrorSquared));
         }
 
+        /// <summary>
+        /// Solves the velocity constraints using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
         internal abstract void SolveVelocityConstraints(ref SolverData data);
 
         /// <summary>

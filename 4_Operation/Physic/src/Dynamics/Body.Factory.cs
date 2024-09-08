@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -45,6 +45,9 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 namespace Alis.Core.Physic.Dynamics
 {
     // An easy to use factory for creating bodies
+    /// <summary>
+    /// The body class
+    /// </summary>
     public partial class Body
     {
         /// <summary>
@@ -63,24 +66,48 @@ namespace Alis.Core.Physic.Dynamics
             return fixture;
         }
 
+        /// <summary>
+        /// Creates the edge using the specified start
+        /// </summary>
+        /// <param name="start">The start</param>
+        /// <param name="end">The end</param>
+        /// <returns>The fixture</returns>
         public Fixture CreateEdge(Vector2 start, Vector2 end)
         {
             EdgeShape edgeShape = new EdgeShape(start, end);
             return CreateFixture(edgeShape);
         }
 
+        /// <summary>
+        /// Creates the chain shape using the specified vertices
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
+        /// <returns>The fixture</returns>
         public Fixture CreateChainShape(Vertices vertices)
         {
             ChainShape shape = new ChainShape(vertices);
             return CreateFixture(shape);
         }
 
+        /// <summary>
+        /// Creates the loop shape using the specified vertices
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
+        /// <returns>The fixture</returns>
         public Fixture CreateLoopShape(Vertices vertices)
         {
             ChainShape shape = new ChainShape(vertices, true);
             return CreateFixture(shape);
         }
 
+        /// <summary>
+        /// Creates the rectangle using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="density">The density</param>
+        /// <param name="offset">The offset</param>
+        /// <returns>The fixture</returns>
         public Fixture CreateRectangle(float width, float height, float density, Vector2 offset)
         {
             Vertices rectangleVertices = PolygonTools.CreateRectangle(width / 2, height / 2);
@@ -89,6 +116,13 @@ namespace Alis.Core.Physic.Dynamics
             return CreateFixture(rectangleShape);
         }
 
+        /// <summary>
+        /// Creates the circle using the specified radius
+        /// </summary>
+        /// <param name="radius">The radius</param>
+        /// <param name="density">The density</param>
+        /// <exception cref="ArgumentOutOfRangeException">radius Radius must be more than 0 meters</exception>
+        /// <returns>The fixture</returns>
         public Fixture CreateCircle(float radius, float density)
         {
             if (radius <= 0)
@@ -98,6 +132,14 @@ namespace Alis.Core.Physic.Dynamics
             return CreateFixture(circleShape);
         }
 
+        /// <summary>
+        /// Creates the circle using the specified radius
+        /// </summary>
+        /// <param name="radius">The radius</param>
+        /// <param name="density">The density</param>
+        /// <param name="offset">The offset</param>
+        /// <exception cref="ArgumentOutOfRangeException">radius Radius must be more than 0 meters</exception>
+        /// <returns>The fixture</returns>
         public Fixture CreateCircle(float radius, float density, Vector2 offset)
         {
             if (radius <= 0)
@@ -108,6 +150,13 @@ namespace Alis.Core.Physic.Dynamics
             return CreateFixture(circleShape);
         }
 
+        /// <summary>
+        /// Creates the polygon using the specified vertices
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
+        /// <param name="density">The density</param>
+        /// <exception cref="ArgumentOutOfRangeException">vertices Too few points to be a polygon</exception>
+        /// <returns>The fixture</returns>
         public Fixture CreatePolygon(Vertices vertices, float density)
         {
             if (vertices.Count <= 1)
@@ -117,6 +166,16 @@ namespace Alis.Core.Physic.Dynamics
             return CreateFixture(polygon);
         }
 
+        /// <summary>
+        /// Creates the ellipse using the specified x radius
+        /// </summary>
+        /// <param name="xRadius">The radius</param>
+        /// <param name="yRadius">The radius</param>
+        /// <param name="edges">The edges</param>
+        /// <param name="density">The density</param>
+        /// <exception cref="ArgumentOutOfRangeException">xRadius X-radius must be more than 0</exception>
+        /// <exception cref="ArgumentOutOfRangeException">yRadius Y-radius must be more than 0</exception>
+        /// <returns>The fixture</returns>
         public Fixture CreateEllipse(float xRadius, float yRadius, int edges, float density)
         {
             if (xRadius <= 0)
@@ -130,6 +189,12 @@ namespace Alis.Core.Physic.Dynamics
             return CreateFixture(polygonShape);
         }
 
+        /// <summary>
+        /// Creates the compound polygon using the specified list
+        /// </summary>
+        /// <param name="list">The list</param>
+        /// <param name="density">The density</param>
+        /// <returns>The res</returns>
         public List<Fixture> CreateCompoundPolygon(List<Vertices> list, float density)
         {
             List<Fixture> res = new List<Fixture>(list.Count);
@@ -152,6 +217,14 @@ namespace Alis.Core.Physic.Dynamics
             return res;
         }
 
+        /// <summary>
+        /// Creates the line arc using the specified radians
+        /// </summary>
+        /// <param name="radians">The radians</param>
+        /// <param name="sides">The sides</param>
+        /// <param name="radius">The radius</param>
+        /// <param name="closed">The closed</param>
+        /// <returns>The fixture</returns>
         public Fixture CreateLineArc(float radians, int sides, float radius, bool closed)
         {
             Vertices arc = PolygonTools.CreateArc(radians, sides, radius);
@@ -159,6 +232,14 @@ namespace Alis.Core.Physic.Dynamics
             return closed ? CreateLoopShape(arc) : CreateChainShape(arc);
         }
 
+        /// <summary>
+        /// Creates the solid arc using the specified density
+        /// </summary>
+        /// <param name="density">The density</param>
+        /// <param name="radians">The radians</param>
+        /// <param name="sides">The sides</param>
+        /// <param name="radius">The radius</param>
+        /// <returns>A list of fixture</returns>
         public List<Fixture> CreateSolidArc(float density, float radians, int sides, float radius)
         {
             Vertices arc = PolygonTools.CreateArc(radians, sides, radius);

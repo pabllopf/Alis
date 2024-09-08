@@ -36,6 +36,7 @@ using Alis.Core.Ecs.System.Manager.Network;
 using Alis.Core.Ecs.System.Manager.Physic;
 using Alis.Core.Ecs.System.Manager.Scene;
 using Alis.Core.Ecs.System.Setting;
+using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Core.Ecs.System
 {
@@ -368,5 +369,18 @@ namespace Alis.Core.Ecs.System
         /// </summary>
         /// <param name="sceneManager">The scene manager</param>
         public void SetSceneManager(SceneManager sceneManager) => SceneManager = sceneManager;
+
+        /// <summary>
+        /// Ons the physic update
+        /// </summary>
+        public void OnPhysicUpdate()
+        {
+            AudioManager.OnPhysicUpdate();
+            GraphicManager.OnPhysicUpdate();
+            InputManager.OnPhysicUpdate();
+            NetworkManager.OnPhysicUpdate();
+            PhysicManager.OnPhysicUpdate();
+            SceneManager.OnPhysicUpdate();
+        }
     }
 }

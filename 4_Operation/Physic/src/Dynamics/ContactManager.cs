@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -63,6 +63,9 @@ using Alis.Core.Physic.Dynamics.Contacts;
 
 namespace Alis.Core.Physic.Dynamics
 {
+    /// <summary>
+    /// The contact manager class
+    /// </summary>
     public class ContactManager
     {
         #region Settings
@@ -99,10 +102,22 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public BeginContactDelegate BeginContact;
 
+        /// <summary>
+        /// The broad phase
+        /// </summary>
         public readonly IBroadPhase BroadPhase;
 
+        /// <summary>
+        /// The contact list
+        /// </summary>
         public readonly ContactListHead ContactList;
+        /// <summary>
+        /// Gets or sets the value of the contact count
+        /// </summary>
         public int ContactCount { get; private set; }
+        /// <summary>
+        /// The contact pool list
+        /// </summary>
         internal readonly ContactListHead _contactPoolList;
 
         /// <summary>
@@ -145,6 +160,10 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public PreSolveDelegate PreSolve;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ContactManager"/> class
+        /// </summary>
+        /// <param name="broadPhase">The broad phase</param>
         internal ContactManager(IBroadPhase broadPhase)
         {
             ContactList = new ContactListHead();
@@ -156,6 +175,11 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         // Broad-phase callback.
+        /// <summary>
+        /// Adds the pair using the specified proxy id a
+        /// </summary>
+        /// <param name="proxyIdA">The proxy id</param>
+        /// <param name="proxyIdB">The proxy id</param>
         private void AddPair(int proxyIdA, int proxyIdB)
         {
             FixtureProxy proxyA = BroadPhase.GetProxy(proxyIdA);
@@ -283,11 +307,18 @@ namespace Alis.Core.Physic.Dynamics
             }
         }
 
+        /// <summary>
+        /// Finds the new contacts
+        /// </summary>
         internal void FindNewContacts()
         {
             BroadPhase.UpdatePairs(OnBroadphaseCollision);
         }
 
+        /// <summary>
+        /// Destroys the contact
+        /// </summary>
+        /// <param name="contact">The contact</param>
         internal void Destroy(Contact contact)
         {
             Fixture fixtureA = contact.FixtureA;
@@ -358,6 +389,9 @@ namespace Alis.Core.Physic.Dynamics
             _contactPoolList.Next = contact;
         }
 
+        /// <summary>
+        /// Collides this instance
+        /// </summary>
         internal void Collide()
         {
 #if NET40 || NET45 || NETSTANDARD2_0_OR_GREATER
@@ -626,6 +660,12 @@ namespace Alis.Core.Physic.Dynamics
         }
 #endif
 
+        /// <summary>
+        /// Describes whether should collide
+        /// </summary>
+        /// <param name="fixtureA">The fixture</param>
+        /// <param name="fixtureB">The fixture</param>
+        /// <returns>The collide</returns>
         private static bool ShouldCollide(Fixture fixtureA, Fixture fixtureB)
         {
             if ((fixtureA.CollisionGroup != 0) && (fixtureA.CollisionGroup == fixtureB.CollisionGroup))

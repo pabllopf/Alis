@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -71,6 +71,9 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace Alis.Core.Physic.Dynamics
 {
+    /// <summary>
+    /// The body class
+    /// </summary>
     public partial class Body
     {
         /// <summary>
@@ -79,34 +82,109 @@ namespace Alis.Core.Physic.Dynamics
         /// <value>The fixture list.</value>
         public readonly FixtureCollection FixtureList;
 
+        /// <summary>
+        /// The angular damping
+        /// </summary>
         private float _angularDamping;
+        /// <summary>
+        /// The angular velocity
+        /// </summary>
         internal float _angularVelocity;
+        /// <summary>
+        /// The awake
+        /// </summary>
         private bool _awake;
+        /// <summary>
+        /// The body type
+        /// </summary>
         private BodyType _bodyType;
 
+        /// <summary>
+        /// The enabled
+        /// </summary>
         internal bool _enabled;
+        /// <summary>
+        /// The fixed rotation
+        /// </summary>
         private bool _fixedRotation;
+        /// <summary>
+        /// The force
+        /// </summary>
         internal Vector2 _force;
+        /// <summary>
+        /// The inertia
+        /// </summary>
         private float _inertia;
+        /// <summary>
+        /// The inv
+        /// </summary>
         internal float _invI;
+        /// <summary>
+        /// The inv mass
+        /// </summary>
         internal float _invMass;
+        /// <summary>
+        /// The island
+        /// </summary>
         internal bool _island;
+        /// <summary>
+        /// The linear damping
+        /// </summary>
         private float _linearDamping;
+        /// <summary>
+        /// The linear velocity
+        /// </summary>
         internal Vector2 _linearVelocity;
+        /// <summary>
+        /// The lock
+        /// </summary>
         internal int _lock;
+        /// <summary>
+        /// The lock order
+        /// </summary>
         internal int _lockOrder;
+        /// <summary>
+        /// The mass
+        /// </summary>
         private float _mass;
+        /// <summary>
+        /// The sleeping allowed
+        /// </summary>
         private bool _sleepingAllowed;
+        /// <summary>
+        /// The sleep time
+        /// </summary>
         internal float _sleepTime;
+        /// <summary>
+        /// The sweep
+        /// </summary>
         internal Sweep _sweep; // the swept motion for CCD
+        /// <summary>
+        /// The torque
+        /// </summary>
         internal float _torque;
+        /// <summary>
+        /// The world
+        /// </summary>
         internal World _world;
+        /// <summary>
+        /// The xf
+        /// </summary>
         internal Transform _xf; // the body origin transform
 
+        /// <summary>
+        /// The all
+        /// </summary>
         public ControllerFilter ControllerFilter = new ControllerFilter(ControllerCategory.All);
 
+        /// <summary>
+        /// The on collision event handler
+        /// </summary>
         internal OnCollisionEventHandler onCollisionEventHandler;
 
+        /// <summary>
+        /// The on separation event handler
+        /// </summary>
         internal OnSeparationEventHandler onSeparationEventHandler;
 
         /// <summary>
@@ -115,6 +193,9 @@ namespace Alis.Core.Physic.Dynamics
         /// <value>The user data.</value>
         public object Tag;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Body"/> class
+        /// </summary>
         public Body()
         {
             FixtureList = new FixtureCollection(this);
@@ -556,6 +637,9 @@ namespace Alis.Core.Physic.Dynamics
             }
         }
 
+        /// <summary>
+        /// Gets or sets the value of the ignore ccd
+        /// </summary>
         public bool IgnoreCCD { get; set; }
 
         /// <summary>
@@ -1113,6 +1197,9 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>The world velocity of a point.</returns>
         public Vector2 GetLinearVelocityFromLocalPoint(ref Vector2 localPoint) => GetLinearVelocityFromWorldPoint(GetWorldPoint(ref localPoint));
 
+        /// <summary>
+        /// Synchronizes the fixtures
+        /// </summary>
         internal void SynchronizeFixtures()
         {
             Transform xf1 = new Transform(Vector2.Zero, _sweep.A0);
@@ -1125,6 +1212,9 @@ namespace Alis.Core.Physic.Dynamics
             }
         }
 
+        /// <summary>
+        /// Synchronizes the transform
+        /// </summary>
         internal void SynchronizeTransform()
         {
             _xf.q.Phase = _sweep.A;
@@ -1160,6 +1250,10 @@ namespace Alis.Core.Physic.Dynamics
             return true;
         }
 
+        /// <summary>
+        /// Advances the alpha
+        /// </summary>
+        /// <param name="alpha">The alpha</param>
         internal void Advance(float alpha)
         {
             // Advance to the new safe time. This doesn't sync the broad-phase.
@@ -1170,12 +1264,18 @@ namespace Alis.Core.Physic.Dynamics
             _xf.p = _sweep.C - Complex.Multiply(ref _sweep.LocalCenter, ref _xf.q);
         }
 
+        /// <summary>
+        /// The on collision
+        /// </summary>
         public event OnCollisionEventHandler OnCollision
         {
             add => onCollisionEventHandler += value;
             remove => onCollisionEventHandler -= value;
         }
 
+        /// <summary>
+        /// The on separation
+        /// </summary>
         public event OnSeparationEventHandler OnSeparation
         {
             add => onSeparationEventHandler += value;

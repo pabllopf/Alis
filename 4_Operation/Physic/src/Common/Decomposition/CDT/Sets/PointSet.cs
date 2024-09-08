@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -68,32 +68,64 @@ using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay;
 
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
 {
+    /// <summary>
+    /// The point set class
+    /// </summary>
+    /// <seealso cref="Triangulatable"/>
     internal class PointSet : Triangulatable
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PointSet"/> class
+        /// </summary>
+        /// <param name="points">The points</param>
         public PointSet(List<TriangulationPoint> points) => Points = new List<TriangulationPoint>(points);
 
         #region Triangulatable Members
 
+        /// <summary>
+        /// Gets the value of the points
+        /// </summary>
         public IList<TriangulationPoint> Points { get; }
+        /// <summary>
+        /// Gets or sets the value of the triangles
+        /// </summary>
         public IList<DelaunayTriangle> Triangles { get; private set; }
 
+        /// <summary>
+        /// Gets the value of the triangulation mode
+        /// </summary>
         public virtual TriangulationMode TriangulationMode => TriangulationMode.Unconstrained;
 
+        /// <summary>
+        /// Adds the triangle using the specified t
+        /// </summary>
+        /// <param name="t">The </param>
         public void AddTriangle(DelaunayTriangle t)
         {
             Triangles.Add(t);
         }
 
+        /// <summary>
+        /// Adds the triangles using the specified list
+        /// </summary>
+        /// <param name="list">The list</param>
         public void AddTriangles(IEnumerable<DelaunayTriangle> list)
         {
             foreach (DelaunayTriangle tri in list) Triangles.Add(tri);
         }
 
+        /// <summary>
+        /// Clears the triangles
+        /// </summary>
         public void ClearTriangles()
         {
             Triangles.Clear();
         }
 
+        /// <summary>
+        /// Prepares the triangulation using the specified tcx
+        /// </summary>
+        /// <param name="tcx">The tcx</param>
         public virtual void PrepareTriangulation(TriangulationContext tcx)
         {
             if (Triangles == null)

@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -49,6 +49,9 @@ namespace Alis.Core.Physic.Common.ConvexHull
     {
         //Copyright 2001, softSurfer (www.softsurfer.com)
 
+        /// <summary>
+        /// The point comparer
+        /// </summary>
         private static readonly PointComparer _pointComparer = new PointComparer();
 
         /// <summary>
@@ -169,8 +172,18 @@ namespace Alis.Core.Physic.Common.ConvexHull
             return res;
         }
 
+        /// <summary>
+        /// The point comparer class
+        /// </summary>
+        /// <seealso cref="Comparer{Vector2}"/>
         private class PointComparer : Comparer<Vector2>
         {
+            /// <summary>
+            /// Compares the a
+            /// </summary>
+            /// <param name="a">The </param>
+            /// <param name="b">The </param>
+            /// <returns>The int</returns>
             public override int Compare(Vector2 a, Vector2 b)
             {
                 int f = a.X.CompareTo(b.X);

@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -65,10 +65,25 @@ using Vector3 = Microsoft.Xna.Framework.Vector3;
 
 namespace Alis.Core.Physic.Common
 {
+    /// <summary>
+    /// The math utils class
+    /// </summary>
     public static class MathUtils
     {
+        /// <summary>
+        /// Crosses the a
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <param name="b">The </param>
+        /// <returns>The float</returns>
         public static float Cross(ref Vector2 a, ref Vector2 b) => a.X * b.Y - a.Y * b.X;
 
+        /// <summary>
+        /// Crosses the a
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <param name="b">The </param>
+        /// <returns>The float</returns>
         public static float Cross(Vector2 a, Vector2 b) => Cross(ref a, ref b);
 
         /// Perform the cross product on two vectors.
@@ -76,28 +91,85 @@ namespace Alis.Core.Physic.Common
             a.Z * b.X - a.X * b.Z,
             a.X * b.Y - a.Y * b.X);
 
+        /// <summary>
+        /// Crosses the a
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <param name="s">The </param>
+        /// <returns>The vector</returns>
         public static Vector2 Cross(Vector2 a, float s) => new Vector2(s * a.Y, -s * a.X);
 
+        /// <summary>
+        /// Rots the 270 using the specified a
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <returns>The vector</returns>
         public static Vector2 Rot270(ref Vector2 a) => new Vector2(a.Y, -a.X);
 
+        /// <summary>
+        /// Crosses the s
+        /// </summary>
+        /// <param name="s">The </param>
+        /// <param name="a">The </param>
+        /// <returns>The vector</returns>
         public static Vector2 Cross(float s, ref Vector2 a) => new Vector2(-s * a.Y, s * a.X);
 
+        /// <summary>
+        /// Rots the 90 using the specified a
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <returns>The vector</returns>
         public static Vector2 Rot90(ref Vector2 a) => new Vector2(-a.Y, a.X);
 
+        /// <summary>
+        /// Abses the v
+        /// </summary>
+        /// <param name="v">The </param>
+        /// <returns>The vector</returns>
         public static Vector2 Abs(Vector2 v) => new Vector2(Math.Abs(v.X), Math.Abs(v.Y));
 
+        /// <summary>
+        /// Muls the a
+        /// </summary>
+        /// <param name="A">The </param>
+        /// <param name="v">The </param>
+        /// <returns>The vector</returns>
         public static Vector2 Mul(ref Mat22 A, Vector2 v) => Mul(ref A, ref v);
 
+        /// <summary>
+        /// Muls the a
+        /// </summary>
+        /// <param name="A">The </param>
+        /// <param name="v">The </param>
+        /// <returns>The vector</returns>
         public static Vector2 Mul(ref Mat22 A, ref Vector2 v) => new Vector2(A.ex.X * v.X + A.ey.X * v.Y, A.ex.Y * v.X + A.ey.Y * v.Y);
 
+        /// <summary>
+        /// Muls the t using the specified a
+        /// </summary>
+        /// <param name="A">The </param>
+        /// <param name="v">The </param>
+        /// <returns>The vector</returns>
         public static Vector2 MulT(ref Mat22 A, Vector2 v) => MulT(ref A, ref v);
 
+        /// <summary>
+        /// Muls the t using the specified a
+        /// </summary>
+        /// <param name="A">The </param>
+        /// <param name="v">The </param>
+        /// <returns>The vector</returns>
         public static Vector2 MulT(ref Mat22 A, ref Vector2 v) => new Vector2(v.X * A.ex.X + v.Y * A.ex.Y, v.X * A.ey.X + v.Y * A.ey.Y);
 
 
         /// Multiply a matrix times a vector.
         public static Vector3 Mul(Mat33 A, Vector3 v) => v.X * A.ex + v.Y * A.ey + v.Z * A.ez;
 
+        /// <summary>
+        /// Swaps the a
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="a">The </param>
+        /// <param name="b">The </param>
         public static void Swap<T>(ref T a, ref T b)
         {
             T tmp = a;
@@ -130,12 +202,38 @@ namespace Alis.Core.Physic.Common
             return !float.IsInfinity(x);
         }
 
+        /// <summary>
+        /// Describes whether is valid
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <returns>The bool</returns>
         public static bool IsValid(this Vector2 x) => IsValid(x.X) && IsValid(x.Y);
 
+        /// <summary>
+        /// Clamps the a
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <param name="low">The low</param>
+        /// <param name="high">The high</param>
+        /// <returns>The int</returns>
         public static int Clamp(int a, int low, int high) => Math.Max(low, Math.Min(a, high));
 
+        /// <summary>
+        /// Clamps the a
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <param name="low">The low</param>
+        /// <param name="high">The high</param>
+        /// <returns>The float</returns>
         public static float Clamp(float a, float low, float high) => Math.Max(low, Math.Min(a, high));
 
+        /// <summary>
+        /// Clamps the a
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <param name="low">The low</param>
+        /// <param name="high">The high</param>
+        /// <returns>The </returns>
         public static Vector2 Clamp(Vector2 a, Vector2 low, Vector2 high)
         {
             a.X = Math.Max(low.X, Math.Min(a.X, high.X));
@@ -143,6 +241,12 @@ namespace Alis.Core.Physic.Common
             return a;
         }
 
+        /// <summary>
+        /// Crosses the a
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <param name="b">The </param>
+        /// <param name="c">The </param>
         public static void Cross(ref Vector2 a, ref Vector2 b, out float c)
         {
             c = a.X * b.Y - a.Y * b.X;
@@ -172,6 +276,12 @@ namespace Alis.Core.Physic.Common
         /// Perform the dot product on two vectors.
         public static float Dot(Vector2 a, ref Vector2 b) => a.X * b.X + a.Y * b.Y;
 
+        /// <summary>
+        /// Vectors the angle using the specified p 1
+        /// </summary>
+        /// <param name="p1">The </param>
+        /// <param name="p2">The </param>
+        /// <returns>The double</returns>
         public static double VectorAngle(Vector2 p1, Vector2 p2) => VectorAngle(ref p1, ref p2);
 
         /// <summary>
@@ -203,6 +313,12 @@ namespace Alis.Core.Physic.Common
         public static bool IsCollinear(ref Vector2 a, ref Vector2 b, ref Vector2 c, float tolerance = 0) => FloatInRange(Area(ref a, ref b, ref c), -tolerance, tolerance);
 
 
+        /// <summary>
+        /// Describes whether float equals
+        /// </summary>
+        /// <param name="value1">The value</param>
+        /// <param name="value2">The value</param>
+        /// <returns>The bool</returns>
         public static bool FloatEquals(float value1, float value2) => Math.Abs(value1 - value2) <= Settings.Epsilon;
 
         /// <summary>
@@ -234,6 +350,9 @@ namespace Alis.Core.Physic.Common
     /// </summary>
     public struct Mat22
     {
+        /// <summary>
+        /// The ey
+        /// </summary>
         public Vector2 ex, ey;
 
         /// <summary>
@@ -260,6 +379,9 @@ namespace Alis.Core.Physic.Common
             ey = new Vector2(a12, a22);
         }
 
+        /// <summary>
+        /// Gets the value of the inverse
+        /// </summary>
         public Mat22 Inverse
         {
             get
@@ -330,6 +452,12 @@ namespace Alis.Core.Physic.Common
             return new Vector2(det * (a22 * b.X - a12 * b.Y), det * (a11 * b.Y - a21 * b.X));
         }
 
+        /// <summary>
+        /// Adds the a
+        /// </summary>
+        /// <param name="A">The </param>
+        /// <param name="B">The </param>
+        /// <param name="R">The </param>
         public static void Add(ref Mat22 A, ref Mat22 B, out Mat22 R)
         {
             R.ex = A.ex + B.ex;
@@ -342,6 +470,9 @@ namespace Alis.Core.Physic.Common
     /// </summary>
     public struct Mat33
     {
+        /// <summary>
+        /// The ez
+        /// </summary>
         public Vector3 ex, ey, ez;
 
         /// <summary>
@@ -461,9 +592,18 @@ namespace Alis.Core.Physic.Common
     /// </summary>
     public struct Transform
     {
+        /// <summary>
+        /// The 
+        /// </summary>
         public Complex q;
+        /// <summary>
+        /// The 
+        /// </summary>
         public Vector2 p;
 
+        /// <summary>
+        /// Gets the value of the identity
+        /// </summary>
         public static Transform Identity { get; } = new Transform(Vector2.Zero, Complex.One);
 
         /// <summary>
@@ -487,16 +627,40 @@ namespace Alis.Core.Physic.Common
         {
         }
 
+        /// <summary>
+        /// Multiplies the left
+        /// </summary>
+        /// <param name="left">The left</param>
+        /// <param name="right">The right</param>
+        /// <returns>The vector</returns>
         public static Vector2 Multiply(Vector2 left, ref Transform right) => Multiply(ref left, ref right);
 
+        /// <summary>
+        /// Multiplies the left
+        /// </summary>
+        /// <param name="left">The left</param>
+        /// <param name="right">The right</param>
+        /// <returns>The vector</returns>
         public static Vector2 Multiply(ref Vector2 left, ref Transform right) =>
             // Opt: var result = Complex.Multiply(left, right.q) + right.p;
             new Vector2(
                 left.X * right.q.R - left.Y * right.q.i + right.p.X,
                 left.Y * right.q.R + left.X * right.q.i + right.p.Y);
 
+        /// <summary>
+        /// Divides the left
+        /// </summary>
+        /// <param name="left">The left</param>
+        /// <param name="right">The right</param>
+        /// <returns>The vector</returns>
         public static Vector2 Divide(Vector2 left, ref Transform right) => Divide(ref left, ref right);
 
+        /// <summary>
+        /// Divides the left
+        /// </summary>
+        /// <param name="left">The left</param>
+        /// <param name="right">The right</param>
+        /// <returns>The vector</returns>
         public static Vector2 Divide(ref Vector2 left, ref Transform right)
         {
             // Opt: var result = Complex.Divide(left - right.p, right);
@@ -507,6 +671,12 @@ namespace Alis.Core.Physic.Common
                 py * right.q.R - px * right.q.i);
         }
 
+        /// <summary>
+        /// Divides the left
+        /// </summary>
+        /// <param name="left">The left</param>
+        /// <param name="right">The right</param>
+        /// <param name="result">The result</param>
         public static void Divide(Vector2 left, ref Transform right, out Vector2 result)
         {
             // Opt: var result = Complex.Divide(left - right.p, right);
@@ -517,26 +687,56 @@ namespace Alis.Core.Physic.Common
                 py * right.q.R - px * right.q.i);
         }
 
+        /// <summary>
+        /// Multiplies the left
+        /// </summary>
+        /// <param name="left">The left</param>
+        /// <param name="right">The right</param>
+        /// <returns>The transform</returns>
         public static Transform Multiply(ref Transform left, ref Transform right) => new Transform(
             Complex.Multiply(ref left.p, ref right.q) + right.p,
             Complex.Multiply(ref left.q, ref right.q));
 
+        /// <summary>
+        /// Divides the left
+        /// </summary>
+        /// <param name="left">The left</param>
+        /// <param name="right">The right</param>
+        /// <returns>The transform</returns>
         public static Transform Divide(ref Transform left, ref Transform right) => new Transform(
             Complex.Divide(left.p - right.p, ref right.q),
             Complex.Divide(ref left.q, ref right.q));
 
+        /// <summary>
+        /// Divides the left
+        /// </summary>
+        /// <param name="left">The left</param>
+        /// <param name="right">The right</param>
+        /// <param name="result">The result</param>
         public static void Divide(ref Transform left, ref Transform right, out Transform result)
         {
             Complex.Divide(left.p - right.p, ref right.q, out result.p);
             Complex.Divide(ref left.q, ref right.q, out result.q);
         }
 
+        /// <summary>
+        /// Multiplies the left
+        /// </summary>
+        /// <param name="left">The left</param>
+        /// <param name="right">The right</param>
+        /// <param name="result">The result</param>
         public static void Multiply(ref Transform left, Complex right, out Transform result)
         {
             result.p = Complex.Multiply(ref left.p, ref right);
             result.q = Complex.Multiply(ref left.q, ref right);
         }
 
+        /// <summary>
+        /// Divides the left
+        /// </summary>
+        /// <param name="left">The left</param>
+        /// <param name="right">The right</param>
+        /// <param name="result">The result</param>
         public static void Divide(ref Transform left, Complex right, out Transform result)
         {
             result.p = Complex.Divide(ref left.p, ref right);
@@ -557,6 +757,9 @@ namespace Alis.Core.Physic.Common
         /// </summary>
         public float A;
 
+        /// <summary>
+        /// The 
+        /// </summary>
         public float A0;
 
         /// <summary>
@@ -570,6 +773,9 @@ namespace Alis.Core.Physic.Common
         /// </summary>
         public Vector2 C;
 
+        /// <summary>
+        /// The 
+        /// </summary>
         public Vector2 C0;
 
         /// <summary>

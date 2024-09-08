@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -37,12 +37,29 @@ using System.Collections.Generic;
 namespace Alis.Core.Physic.Common.Decomposition.Seidel
 {
     // Node for a Directed Acyclic graph (DAG)
+    /// <summary>
+    /// The node class
+    /// </summary>
     internal abstract class Node
     {
+        /// <summary>
+        /// The left child
+        /// </summary>
         protected Node LeftChild;
+        /// <summary>
+        /// The parent list
+        /// </summary>
         public List<Node> ParentList;
+        /// <summary>
+        /// The right child
+        /// </summary>
         protected Node RightChild;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Node"/> class
+        /// </summary>
+        /// <param name="left">The left</param>
+        /// <param name="right">The right</param>
         protected Node(Node left, Node right)
         {
             ParentList = new List<Node>();
@@ -55,10 +72,19 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                 right.ParentList.Add(this);
         }
 
+        /// <summary>
+        /// Locates the s
+        /// </summary>
+        /// <param name="s">The </param>
+        /// <returns>The sink</returns>
         public abstract Sink Locate(Edge s);
 
         // Replace a node in the graph with this node
         // Make sure parent pointers are updated
+        /// <summary>
+        /// Replaces the node
+        /// </summary>
+        /// <param name="node">The node</param>
         public void Replace(Node node)
         {
             foreach (Node parent in node.ParentList)

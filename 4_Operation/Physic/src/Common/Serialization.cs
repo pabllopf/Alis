@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -70,10 +70,21 @@ namespace Alis.Core.Physic.Common
         public static World Deserialize(Stream stream) => WorldXmlDeserializer.Deserialize(stream);
     }
 
+    /// <summary>
+    /// The world xml serializer class
+    /// </summary>
     internal static class WorldXmlSerializer
     {
+        /// <summary>
+        /// The writer
+        /// </summary>
         private static XmlWriter _writer;
 
+        /// <summary>
+        /// Serializes the shape using the specified shape
+        /// </summary>
+        /// <param name="shape">The shape</param>
+        /// <exception cref="Exception"></exception>
         private static void SerializeShape(Shape shape)
         {
             _writer.WriteStartElement("Shape");
@@ -130,6 +141,11 @@ namespace Alis.Core.Physic.Common
             _writer.WriteEndElement();
         }
 
+        /// <summary>
+        /// Serializes the fixture using the specified fixtures
+        /// </summary>
+        /// <param name="fixtures">The fixtures</param>
+        /// <param name="fixture">The fixture</param>
         private static void SerializeFixture(List<Fixture> fixtures, Fixture fixture)
         {
             _writer.WriteStartElement("Fixture");
@@ -155,6 +171,12 @@ namespace Alis.Core.Physic.Common
             _writer.WriteEndElement();
         }
 
+        /// <summary>
+        /// Serializes the body using the specified fixtures
+        /// </summary>
+        /// <param name="fixtures">The fixtures</param>
+        /// <param name="shapes">The shapes</param>
+        /// <param name="body">The body</param>
         private static void SerializeBody(List<Fixture> fixtures, List<Shape> shapes, Body body)
         {
             _writer.WriteStartElement("Body");
@@ -191,6 +213,13 @@ namespace Alis.Core.Physic.Common
             _writer.WriteEndElement();
         }
 
+        /// <summary>
+        /// Serializes the joint using the specified bodies
+        /// </summary>
+        /// <param name="bodies">The bodies</param>
+        /// <param name="joint">The joint</param>
+        /// <exception cref="Exception">Gear joint not supported by serialization</exception>
+        /// <exception cref="Exception">Joint not supported</exception>
         private static void SerializeJoint(List<Body> bodies, Joint joint)
         {
             _writer.WriteStartElement("Joint");
@@ -333,6 +362,11 @@ namespace Alis.Core.Physic.Common
             _writer.WriteEndElement();
         }
 
+        /// <summary>
+        /// Writes the dynamic type using the specified type
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <param name="val">The val</param>
         private static void WriteDynamicType(Type type, object val)
         {
             _writer.WriteElementString("Type", type.AssemblyQualifiedName);
@@ -343,28 +377,58 @@ namespace Alis.Core.Physic.Common
             _writer.WriteEndElement();
         }
 
+        /// <summary>
+        /// Writes the element using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="vec">The vec</param>
         private static void WriteElement(string name, Vector2 vec)
         {
             _writer.WriteElementString(name, FloatToString(vec.X) + " " + FloatToString(vec.Y));
         }
 
+        /// <summary>
+        /// Writes the element using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="val">The val</param>
         private static void WriteElement(string name, int val)
         {
             _writer.WriteElementString(name, val.ToString());
         }
 
+        /// <summary>
+        /// Writes the element using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="val">The val</param>
         private static void WriteElement(string name, bool val)
         {
             _writer.WriteElementString(name, val.ToString());
         }
 
+        /// <summary>
+        /// Writes the element using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="val">The val</param>
         private static void WriteElement(string name, float val)
         {
             _writer.WriteElementString(name, FloatToString(val));
         }
 
+        /// <summary>
+        /// Floats the to string using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The string</returns>
         private static string FloatToString(float value) => value.ToString(CultureInfo.InvariantCulture);
 
+        /// <summary>
+        /// Serializes the world
+        /// </summary>
+        /// <param name="world">The world</param>
+        /// <param name="stream">The stream</param>
         internal static void Serialize(World world, Stream stream)
         {
             List<Body> bodies = new List<Body>();
@@ -435,8 +499,16 @@ namespace Alis.Core.Physic.Common
         }
     }
 
+    /// <summary>
+    /// The world xml deserializer class
+    /// </summary>
     internal static class WorldXmlDeserializer
     {
+        /// <summary>
+        /// Deserializes the stream
+        /// </summary>
+        /// <param name="stream">The stream</param>
+        /// <returns>The world</returns>
         internal static World Deserialize(Stream stream)
         {
             World world = new World(Vector2.Zero);
@@ -444,6 +516,22 @@ namespace Alis.Core.Physic.Common
             return world;
         }
 
+        /// <summary>
+        /// Deserializes the world
+        /// </summary>
+        /// <param name="world">The world</param>
+        /// <param name="stream">The stream</param>
+        /// <exception cref="Exception"></exception>
+        /// <exception cref="Exception"></exception>
+        /// <exception cref="Exception"></exception>
+        /// <exception cref="Exception"></exception>
+        /// <exception cref="Exception"></exception>
+        /// <exception cref="Exception"></exception>
+        /// <exception cref="Exception"></exception>
+        /// <exception cref="Exception"></exception>
+        /// <exception cref="Exception">Gear joint is unsupported</exception>
+        /// <exception cref="Exception">GearJoint is not supported.</exception>
+        /// <exception cref="Exception">Invalid or unsupported joint.</exception>
         private static void Deserialize(World world, Stream stream)
         {
             List<Body> bodies = new List<Body>();
@@ -1106,12 +1194,24 @@ namespace Alis.Core.Physic.Common
 #endif
         }
 
+        /// <summary>
+        /// Reads the vector using the specified node
+        /// </summary>
+        /// <param name="node">The node</param>
+        /// <returns>The vector</returns>
         private static Vector2 ReadVector(XMLFragmentElement node)
         {
             string[] values = node.Value.Split(' ');
             return new Vector2(ParseFloat(values[0]), ParseFloat(values[1]));
         }
 
+        /// <summary>
+        /// Reads the simple type using the specified node
+        /// </summary>
+        /// <param name="node">The node</param>
+        /// <param name="type">The type</param>
+        /// <param name="outer">The outer</param>
+        /// <returns>The object</returns>
         private static object ReadSimpleType(XMLFragmentElement node, Type type, bool outer)
         {
             if (type == null)
@@ -1134,42 +1234,98 @@ namespace Alis.Core.Physic.Common
             }
         }
 
+        /// <summary>
+        /// Parses the float using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The float</returns>
         private static float ParseFloat(string value) => float.Parse(value, CultureInfo.InvariantCulture);
     }
 
     #region XMLFragment
 
+    /// <summary>
+    /// The xml fragment attribute class
+    /// </summary>
     internal class XMLFragmentAttribute
     {
+        /// <summary>
+        /// Gets or sets the value of the name
+        /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the value
+        /// </summary>
         public string Value { get; set; }
     }
 
+    /// <summary>
+    /// The xml fragment element class
+    /// </summary>
     internal class XMLFragmentElement
     {
+        /// <summary>
+        /// The xml fragment attribute
+        /// </summary>
         private readonly List<XMLFragmentAttribute> _attributes = new List<XMLFragmentAttribute>();
+        /// <summary>
+        /// The xml fragment element
+        /// </summary>
         private readonly List<XMLFragmentElement> _elements = new List<XMLFragmentElement>();
 
+        /// <summary>
+        /// Gets the value of the elements
+        /// </summary>
         public IList<XMLFragmentElement> Elements => _elements;
 
+        /// <summary>
+        /// Gets the value of the attributes
+        /// </summary>
         public IList<XMLFragmentAttribute> Attributes => _attributes;
 
+        /// <summary>
+        /// Gets or sets the value of the name
+        /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the value
+        /// </summary>
         public string Value { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the outer xml
+        /// </summary>
         public string OuterXml { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the inner xml
+        /// </summary>
         public string InnerXml { get; set; }
     }
 
+    /// <summary>
+    /// The xml fragment exception class
+    /// </summary>
+    /// <seealso cref="Exception"/>
     internal class XMLFragmentException : Exception
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XMLFragmentException"/> class
+        /// </summary>
+        /// <param name="message">The message</param>
         public XMLFragmentException(string message)
             : base(message)
         {
         }
     }
 
+    /// <summary>
+    /// The file buffer class
+    /// </summary>
     internal class FileBuffer
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FileBuffer"/> class
+        /// </summary>
+        /// <param name="stream">The stream</param>
         public FileBuffer(Stream stream)
         {
             using (StreamReader sr = new StreamReader(stream))
@@ -1178,12 +1334,24 @@ namespace Alis.Core.Physic.Common
             Position = 0;
         }
 
+        /// <summary>
+        /// Gets or sets the value of the buffer
+        /// </summary>
         public string Buffer { get; set; }
 
+        /// <summary>
+        /// Gets or sets the value of the position
+        /// </summary>
         public int Position { get; set; }
 
+        /// <summary>
+        /// Gets the value of the length
+        /// </summary>
         private int Length => Buffer.Length;
 
+        /// <summary>
+        /// Gets the value of the next
+        /// </summary>
         public char Next
         {
             get
@@ -1194,26 +1362,54 @@ namespace Alis.Core.Physic.Common
             }
         }
 
+        /// <summary>
+        /// Gets the value of the end of buffer
+        /// </summary>
         public bool EndOfBuffer => Position == Length;
     }
 
+    /// <summary>
+    /// The xml fragment parser class
+    /// </summary>
     internal class XMLFragmentParser
     {
+        /// <summary>
+        /// The list
+        /// </summary>
         private static readonly List<char> _punctuation = new List<char> {'/', '<', '>', '='};
+        /// <summary>
+        /// The buffer
+        /// </summary>
         private FileBuffer _buffer;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XMLFragmentParser"/> class
+        /// </summary>
+        /// <param name="stream">The stream</param>
         public XMLFragmentParser(Stream stream)
         {
             Load(stream);
         }
 
+        /// <summary>
+        /// Gets or sets the value of the root node
+        /// </summary>
         public XMLFragmentElement RootNode { get; private set; }
 
+        /// <summary>
+        /// Loads the stream
+        /// </summary>
+        /// <param name="stream">The stream</param>
         public void Load(Stream stream)
         {
             _buffer = new FileBuffer(stream);
         }
 
+        /// <summary>
+        /// Loads the from stream using the specified stream
+        /// </summary>
+        /// <param name="stream">The stream</param>
+        /// <returns>The xml fragment element</returns>
         public static XMLFragmentElement LoadFromStream(Stream stream)
         {
             XMLFragmentParser x = new XMLFragmentParser(stream);
@@ -1221,6 +1417,10 @@ namespace Alis.Core.Physic.Common
             return x.RootNode;
         }
 
+        /// <summary>
+        /// Nexts the token
+        /// </summary>
+        /// <returns>The str</returns>
         private string NextToken()
         {
             string str = "";
@@ -1265,6 +1465,10 @@ namespace Alis.Core.Physic.Common
             return str;
         }
 
+        /// <summary>
+        /// Peeks the token
+        /// </summary>
+        /// <returns>The str</returns>
         private string PeekToken()
         {
             int oldPos = _buffer.Position;
@@ -1273,6 +1477,11 @@ namespace Alis.Core.Physic.Common
             return str;
         }
 
+        /// <summary>
+        /// Reads the until using the specified c
+        /// </summary>
+        /// <param name="c">The </param>
+        /// <returns>The str</returns>
         private string ReadUntil(char c)
         {
             string str = "";
@@ -1300,6 +1509,11 @@ namespace Alis.Core.Physic.Common
             return str;
         }
 
+        /// <summary>
+        /// Trims the control using the specified str
+        /// </summary>
+        /// <param name="str">The str</param>
+        /// <returns>The new str</returns>
         private string TrimControl(string str)
         {
             string newStr = str;
@@ -1320,6 +1534,11 @@ namespace Alis.Core.Physic.Common
             return newStr;
         }
 
+        /// <summary>
+        /// Trims the tags using the specified outer
+        /// </summary>
+        /// <param name="outer">The outer</param>
+        /// <returns>The string</returns>
         private string TrimTags(string outer)
         {
             int start = outer.IndexOf('>') + 1;
@@ -1328,6 +1547,13 @@ namespace Alis.Core.Physic.Common
             return TrimControl(outer.Substring(start, end - start));
         }
 
+        /// <summary>
+        /// Tries the parse node
+        /// </summary>
+        /// <exception cref="XMLFragmentException"></exception>
+        /// <exception cref="XMLFragmentException"></exception>
+        /// <exception cref="XMLFragmentException"></exception>
+        /// <returns>The element</returns>
         public XMLFragmentElement TryParseNode()
         {
             if (_buffer.EndOfBuffer)
@@ -1407,6 +1633,10 @@ namespace Alis.Core.Physic.Common
             return element;
         }
 
+        /// <summary>
+        /// Parses this instance
+        /// </summary>
+        /// <exception cref="XMLFragmentException">Unable to load root node</exception>
         private void Parse()
         {
             RootNode = TryParseNode();

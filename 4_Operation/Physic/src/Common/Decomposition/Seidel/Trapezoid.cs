@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -36,23 +36,63 @@ using System.Collections.Generic;
 
 namespace Alis.Core.Physic.Common.Decomposition.Seidel
 {
+    /// <summary>
+    /// The trapezoid class
+    /// </summary>
     internal class Trapezoid
     {
+        /// <summary>
+        /// The bottom
+        /// </summary>
         public Edge Bottom;
+        /// <summary>
+        /// The inside
+        /// </summary>
         public bool Inside;
+        /// <summary>
+        /// The left point
+        /// </summary>
         public Point LeftPoint;
 
         // Neighbor pointers
+        /// <summary>
+        /// The lower left
+        /// </summary>
         public Trapezoid LowerLeft;
+        /// <summary>
+        /// The lower right
+        /// </summary>
         public Trapezoid LowerRight;
 
+        /// <summary>
+        /// The right point
+        /// </summary>
         public Point RightPoint;
+        /// <summary>
+        /// The sink
+        /// </summary>
         public Sink Sink;
 
+        /// <summary>
+        /// The top
+        /// </summary>
         public Edge Top;
+        /// <summary>
+        /// The upper left
+        /// </summary>
         public Trapezoid UpperLeft;
+        /// <summary>
+        /// The upper right
+        /// </summary>
         public Trapezoid UpperRight;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Trapezoid"/> class
+        /// </summary>
+        /// <param name="leftPoint">The left point</param>
+        /// <param name="rightPoint">The right point</param>
+        /// <param name="top">The top</param>
+        /// <param name="bottom">The bottom</param>
         public Trapezoid(Point leftPoint, Point rightPoint, Edge top, Edge bottom)
         {
             LeftPoint = leftPoint;
@@ -68,6 +108,11 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         }
 
         // Update neighbors to the left
+        /// <summary>
+        /// Updates the left using the specified ul
+        /// </summary>
+        /// <param name="ul">The ul</param>
+        /// <param name="ll">The ll</param>
         public void UpdateLeft(Trapezoid ul, Trapezoid ll)
         {
             UpperLeft = ul;
@@ -77,6 +122,11 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         }
 
         // Update neighbors to the right
+        /// <summary>
+        /// Updates the right using the specified ur
+        /// </summary>
+        /// <param name="ur">The ur</param>
+        /// <param name="lr">The lr</param>
         public void UpdateRight(Trapezoid ur, Trapezoid lr)
         {
             UpperRight = ur;
@@ -86,6 +136,13 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         }
 
         // Update neighbors on both sides
+        /// <summary>
+        /// Updates the left right using the specified ul
+        /// </summary>
+        /// <param name="ul">The ul</param>
+        /// <param name="ll">The ll</param>
+        /// <param name="ur">The ur</param>
+        /// <param name="lr">The lr</param>
         public void UpdateLeftRight(Trapezoid ul, Trapezoid ll, Trapezoid ur, Trapezoid lr)
         {
             UpperLeft = ul;
@@ -99,6 +156,9 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         }
 
         // Recursively trim outside neighbors
+        /// <summary>
+        /// Trims the neighbors
+        /// </summary>
         public void TrimNeighbors()
         {
             if (Inside)
@@ -112,8 +172,17 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         }
 
         // Determines if this point lies inside the trapezoid
+        /// <summary>
+        /// Describes whether this instance contains
+        /// </summary>
+        /// <param name="point">The point</param>
+        /// <returns>The bool</returns>
         public bool Contains(Point point) => (point.X > LeftPoint.X) && (point.X < RightPoint.X) && Top.IsAbove(point) && Bottom.IsBelow(point);
 
+        /// <summary>
+        /// Gets the vertices
+        /// </summary>
+        /// <returns>The verts</returns>
         public List<Point> GetVertices()
         {
             List<Point> verts = new List<Point>(4);
@@ -124,6 +193,12 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             return verts;
         }
 
+        /// <summary>
+        /// Lines the intersect using the specified edge
+        /// </summary>
+        /// <param name="edge">The edge</param>
+        /// <param name="x">The </param>
+        /// <returns>The point</returns>
         private Point LineIntersect(Edge edge, float x)
         {
             float y = edge.Slope * x + edge.B;
@@ -131,6 +206,9 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         }
 
         // Add points to monotone mountain
+        /// <summary>
+        /// Adds the points
+        /// </summary>
         public void AddPoints()
         {
             if (LeftPoint != Bottom.P)

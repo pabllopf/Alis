@@ -70,48 +70,153 @@ using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Dynamics.Contacts
 {
+    /// <summary>
+    /// The contact position constraint class
+    /// </summary>
     public sealed class ContactPositionConstraint
     {
+        /// <summary>
+        /// The index
+        /// </summary>
         public int indexA;
+        /// <summary>
+        /// The index
+        /// </summary>
         public int indexB;
+        /// <summary>
+        /// The inv ib
+        /// </summary>
         public float invIA, invIB;
+        /// <summary>
+        /// The inv mass
+        /// </summary>
         public float invMassA, invMassB;
+        /// <summary>
+        /// The local center
+        /// </summary>
         public Vector2 localCenterA, localCenterB;
+        /// <summary>
+        /// The local normal
+        /// </summary>
         public Vector2 localNormal;
+        /// <summary>
+        /// The local point
+        /// </summary>
         public Vector2 localPoint;
+        /// <summary>
+        /// The max manifold points
+        /// </summary>
         public Vector2[] localPoints = new Vector2[Settings.MaxManifoldPoints];
+        /// <summary>
+        /// The point count
+        /// </summary>
         public int pointCount;
+        /// <summary>
+        /// The radius
+        /// </summary>
         public float radiusA, radiusB;
+        /// <summary>
+        /// The type
+        /// </summary>
         public ManifoldType type;
     }
 
+    /// <summary>
+    /// The velocity constraint point class
+    /// </summary>
     public sealed class VelocityConstraintPoint
     {
+        /// <summary>
+        /// The normal impulse
+        /// </summary>
         public float normalImpulse;
+        /// <summary>
+        /// The normal mass
+        /// </summary>
         public float normalMass;
+        /// <summary>
+        /// The 
+        /// </summary>
         public Vector2 rA;
+        /// <summary>
+        /// The 
+        /// </summary>
         public Vector2 rB;
+        /// <summary>
+        /// The tangent impulse
+        /// </summary>
         public float tangentImpulse;
+        /// <summary>
+        /// The tangent mass
+        /// </summary>
         public float tangentMass;
+        /// <summary>
+        /// The velocity bias
+        /// </summary>
         public float velocityBias;
     }
 
+    /// <summary>
+    /// The contact velocity constraint class
+    /// </summary>
     public sealed class ContactVelocityConstraint
     {
+        /// <summary>
+        /// The contact index
+        /// </summary>
         public int contactIndex;
+        /// <summary>
+        /// The friction
+        /// </summary>
         public float friction;
+        /// <summary>
+        /// The index
+        /// </summary>
         public int indexA;
+        /// <summary>
+        /// The index
+        /// </summary>
         public int indexB;
+        /// <summary>
+        /// The inv ib
+        /// </summary>
         public float invIA, invIB;
+        /// <summary>
+        /// The inv mass
+        /// </summary>
         public float invMassA, invMassB;
+        /// <summary>
+        /// The 
+        /// </summary>
         public Mat22 K;
+        /// <summary>
+        /// The normal
+        /// </summary>
         public Vector2 normal;
+        /// <summary>
+        /// The normal mass
+        /// </summary>
         public Mat22 normalMass;
+        /// <summary>
+        /// The point count
+        /// </summary>
         public int pointCount;
+        /// <summary>
+        /// The max manifold points
+        /// </summary>
         public VelocityConstraintPoint[] points = new VelocityConstraintPoint[Settings.MaxManifoldPoints];
+        /// <summary>
+        /// The restitution
+        /// </summary>
         public float restitution;
+        /// <summary>
+        /// The tangent speed
+        /// </summary>
         public float tangentSpeed;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ContactVelocityConstraint"/> class
+        /// </summary>
         public ContactVelocityConstraint()
         {
             for (int i = 0; i < Settings.MaxManifoldPoints; i++)
@@ -121,18 +226,59 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         }
     }
 
+    /// <summary>
+    /// The contact solver class
+    /// </summary>
     public class ContactSolver
     {
+        /// <summary>
+        /// The contacts
+        /// </summary>
         public Contact[] _contacts;
+        /// <summary>
+        /// The count
+        /// </summary>
         public int _count;
+        /// <summary>
+        /// The locks
+        /// </summary>
         internal int[] _locks;
+        /// <summary>
+        /// The position constraints
+        /// </summary>
         public ContactPositionConstraint[] _positionConstraints;
+        /// <summary>
+        /// The position constraints multithread threshold
+        /// </summary>
         private int _positionConstraintsMultithreadThreshold;
+        /// <summary>
+        /// The positions
+        /// </summary>
         internal SolverPosition[] _positions;
+        /// <summary>
+        /// The velocities
+        /// </summary>
         internal SolverVelocity[] _velocities;
+        /// <summary>
+        /// The velocity constraints
+        /// </summary>
         public ContactVelocityConstraint[] _velocityConstraints;
+        /// <summary>
+        /// The velocity constraints multithread threshold
+        /// </summary>
         private int _velocityConstraintsMultithreadThreshold;
 
+        /// <summary>
+        /// Resets the step
+        /// </summary>
+        /// <param name="step">The step</param>
+        /// <param name="count">The count</param>
+        /// <param name="contacts">The contacts</param>
+        /// <param name="positions">The positions</param>
+        /// <param name="velocities">The velocities</param>
+        /// <param name="locks">The locks</param>
+        /// <param name="velocityConstraintsMultithreadThreshold">The velocity constraints multithread threshold</param>
+        /// <param name="positionConstraintsMultithreadThreshold">The position constraints multithread threshold</param>
         internal void Reset(ref TimeStep step, int count, Contact[] contacts, SolverPosition[] positions, SolverVelocity[] velocities,
             int[] locks, int velocityConstraintsMultithreadThreshold, int positionConstraintsMultithreadThreshold)
         {
@@ -237,6 +383,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             }
         }
 
+        /// <summary>
+        /// Initializes the velocity constraints
+        /// </summary>
         public void InitializeVelocityConstraints()
         {
             for (int i = 0; i < _count; ++i)
@@ -348,6 +497,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             }
         }
 
+        /// <summary>
+        /// Warms the start
+        /// </summary>
         public void WarmStart()
         {
             // Warm start.
@@ -388,6 +540,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             }
         }
 
+        /// <summary>
+        /// Solves the velocity constraints
+        /// </summary>
         public void SolveVelocityConstraints()
         {
             if ((_count >= _velocityConstraintsMultithreadThreshold) && (Environment.ProcessorCount > 1))
@@ -418,6 +573,11 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             }
         }
 
+        /// <summary>
+        /// Solves the velocity constraints using the specified start
+        /// </summary>
+        /// <param name="start">The start</param>
+        /// <param name="end">The end</param>
         private void SolveVelocityConstraints(int start, int end)
         {
             for (int i = start; i < end; ++i)
@@ -753,6 +913,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             }
         }
 
+        /// <summary>
+        /// Stores the impulses
+        /// </summary>
         public void StoreImpulses()
         {
             for (int i = 0; i < _count; ++i)
@@ -772,6 +935,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             }
         }
 
+        /// <summary>
+        /// Describes whether this instance solve position constraints
+        /// </summary>
+        /// <returns>The contacts okay</returns>
         public bool SolvePositionConstraints()
         {
             bool contactsOkay = false;
@@ -805,6 +972,12 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             return contactsOkay;
         }
 
+        /// <summary>
+        /// Describes whether this instance solve position constraints
+        /// </summary>
+        /// <param name="start">The start</param>
+        /// <param name="end">The end</param>
+        /// <returns>The bool</returns>
         private bool SolvePositionConstraints(int start, int end)
         {
             float minSeparation = 0.0f;
@@ -911,6 +1084,12 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         }
 
         // Sequential position solver for position constraints.
+        /// <summary>
+        /// Describes whether this instance solve toi position constraints
+        /// </summary>
+        /// <param name="toiIndexA">The toi index</param>
+        /// <param name="toiIndexB">The toi index</param>
+        /// <returns>The bool</returns>
         public bool SolveTOIPositionConstraints(int toiIndexA, int toiIndexB)
         {
             float minSeparation = 0.0f;
@@ -999,6 +1178,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             return minSeparation >= -1.5f * Settings.LinearSlop;
         }
 
+        /// <summary>
+        /// The world manifold class
+        /// </summary>
         public static class WorldManifold
         {
             /// <summary>
@@ -1079,8 +1261,21 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             }
         }
 
+        /// <summary>
+        /// The position solver manifold class
+        /// </summary>
         private static class PositionSolverManifold
         {
+            /// <summary>
+            /// Initializes the pc
+            /// </summary>
+            /// <param name="pc">The pc</param>
+            /// <param name="xfA">The xf</param>
+            /// <param name="xfB">The xf</param>
+            /// <param name="index">The index</param>
+            /// <param name="normal">The normal</param>
+            /// <param name="point">The point</param>
+            /// <param name="separation">The separation</param>
             public static void Initialize(ContactPositionConstraint pc, ref Transform xfA, ref Transform xfB, int index, out Vector2 normal, out Vector2 point, out float separation)
             {
                 Debug.Assert(pc.pointCount > 0);

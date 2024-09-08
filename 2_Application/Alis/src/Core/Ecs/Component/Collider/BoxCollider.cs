@@ -49,6 +49,9 @@ namespace Alis.Core.Ecs.Component.Collider
     /// <seealso cref="ACollider" />
     public class BoxCollider : ACollider, IBuilder<BoxColliderBuilder>
     {
+        /// <summary>
+        /// The rectangle
+        /// </summary>
         private RectangleI Rectangle;
 
         /// <summary>
@@ -165,11 +168,18 @@ namespace Alis.Core.Ecs.Component.Collider
             Body.SetIsSensor(IsTrigger);
             Body.Tag = GameObject;
             Context.GraphicManager.Attach(this);
-            
+
             Body.OnCollision += OnCollision;
             Body.OnSeparation += OnSeparation;
         }
 
+        /// <summary>
+        /// Describes whether this instance on collision
+        /// </summary>
+        /// <param name="fixtureA">The fixture</param>
+        /// <param name="fixtureB">The fixture</param>
+        /// <param name="contact">The contact</param>
+        /// <returns>The bool</returns>
         private bool OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
             GameObject fixtureGameObject = (GameObject) fixtureA.Body.Tag;
@@ -183,10 +193,16 @@ namespace Alis.Core.Ecs.Component.Collider
             {
                 fixtureGameObject.Components.ForEach(i => i.OnCollisionEnter(GameObject));
             }
-            
+
             return true;
         }
 
+        /// <summary>
+        /// Ons the separation using the specified fixture a
+        /// </summary>
+        /// <param name="fixtureA">The fixture</param>
+        /// <param name="fixtureB">The fixture</param>
+        /// <param name="contact">The contact</param>
         private void OnSeparation(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
             GameObject fixtureGameObject = (GameObject) fixtureA.Body.Tag;
@@ -249,6 +265,14 @@ namespace Alis.Core.Ecs.Component.Collider
             Context.PhysicManager.World.Remove(Body);
         }
 
+        /// <summary>
+        /// Renders the renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="cameraPosition">The camera position</param>
+        /// <param name="cameraResolution">The camera resolution</param>
+        /// <param name="pixelsPerMeter">The pixels per meter</param>
+        /// <param name="debugColor">The debug color</param>
         public void Render(IntPtr renderer, Vector2 cameraPosition, Vector2 cameraResolution, float pixelsPerMeter, Color debugColor)
         {
             Vector2 colliderPosition = GameObject.Transform.Position;
@@ -275,10 +299,18 @@ namespace Alis.Core.Ecs.Component.Collider
             Sdl.RenderCopyEx(renderer, IntPtr.Zero, IntPtr.Zero, ref Rectangle, colliderRotation, IntPtr.Zero, RendererFlips.None);
         }
 
+        /// <summary>
+        /// Describes whether this instance is visible
+        /// </summary>
+        /// <param name="cameraPosition">The camera position</param>
+        /// <param name="cameraResolution">The camera resolution</param>
+        /// <param name="pixelsPerMeter">The pixels per meter</param>
+        /// <returns>The bool</returns>
         public bool IsVisible(Vector2 cameraPosition, Vector2 cameraResolution, float pixelsPerMeter)
         {
             Vector2 colliderPosition = GameObject.Transform.Position;
             Vector2 colliderSize = new Vector2(Width, Height);
+            float colliderRotation = GameObject.Transform.Rotation;
 
             float colliderPosX = colliderPosition.X * pixelsPerMeter;
             float colliderPosY = colliderPosition.Y * pixelsPerMeter;
@@ -288,12 +320,70 @@ namespace Alis.Core.Ecs.Component.Collider
             float cameraTop = cameraPosition.Y * pixelsPerMeter - cameraResolution.Y / 2;
             float cameraBottom = cameraPosition.Y * pixelsPerMeter + cameraResolution.Y / 2;
 
-            float colliderLeft = colliderPosX - colliderSize.X / 2;
-            float colliderRight = colliderPosX + colliderSize.X / 2;
-            float colliderTop = colliderPosY - colliderSize.Y / 2;
-            float colliderBottom = colliderPosY + colliderSize.Y / 2;
+            // Calculate the bounding box of the rotated collider
+            float halfWidth = colliderSize.X / 2;
+            float halfHeight = colliderSize.Y / 2;
+            float cos = (float)Math.Cos(colliderRotation);
+            float sin = (float)Math.Sin(colliderRotation);
+
+            float[] cornersX = new float[4];
+            float[] cornersY = new float[4];
+
+            cornersX[0] = colliderPosX + (-halfWidth * cos - -halfHeight * sin);
+            cornersY[0] = colliderPosY + (-halfWidth * sin + -halfHeight * cos);
+            cornersX[1] = colliderPosX + (halfWidth * cos - -halfHeight * sin);
+            cornersY[1] = colliderPosY + (halfWidth * sin + -halfHeight * cos);
+            cornersX[2] = colliderPosX + (halfWidth * cos - halfHeight * sin);
+            cornersY[2] = colliderPosY + (halfWidth * sin + halfHeight * cos);
+            cornersX[3] = colliderPosX + (-halfWidth * cos - halfHeight * sin);
+            cornersY[3] = colliderPosY + (-halfWidth * sin + halfHeight * cos);
+
+            float colliderLeft = Min(cornersX);
+            float colliderRight = Max(cornersX);
+            float colliderTop = Min(cornersY);
+            float colliderBottom = Max(cornersY);
 
             return (colliderRight > cameraLeft) && (colliderLeft < cameraRight) && (colliderBottom > cameraTop) && (colliderTop < cameraBottom);
+        }
+
+        /// <summary>
+        /// Mins the corners x
+        /// </summary>
+        /// <param name="cornersX">The corners</param>
+        /// <returns>The min</returns>
+        private float Min(float[] cornersX)
+        {
+            float min = cornersX[0];
+
+            for (int i = 1; i < cornersX.Length; i++)
+            {
+                if (cornersX[i] < min)
+                {
+                    min = cornersX[i];
+                }
+            }
+
+            return min;
+        }
+        
+        /// <summary>
+        /// Maxes the corners x
+        /// </summary>
+        /// <param name="cornersX">The corners</param>
+        /// <returns>The max</returns>
+        private float Max(float[] cornersX)
+        {
+            float max = cornersX[0];
+
+            for (int i = 1; i < cornersX.Length; i++)
+            {
+                if (cornersX[i] > max)
+                {
+                    max = cornersX[i];
+                }
+            }
+
+            return max;
         }
     }
 }

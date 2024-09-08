@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -105,6 +105,14 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             return simplified;
         }
 
+        /// <summary>
+        /// Simplifies the section using the specified vertices
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
+        /// <param name="i">The </param>
+        /// <param name="j">The </param>
+        /// <param name="usePoint">The use point</param>
+        /// <param name="distanceTolerance">The distance tolerance</param>
         private static void SimplifySection(Vertices vertices, int i, int j, bool[] usePoint, float distanceTolerance)
         {
             if (i + 1 == j)

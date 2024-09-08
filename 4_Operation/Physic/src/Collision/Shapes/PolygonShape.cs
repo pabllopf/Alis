@@ -71,6 +71,9 @@ namespace Alis.Core.Physic.Collision.Shapes
     /// </summary>
     public class PolygonShape : Shape
     {
+        /// <summary>
+        /// The vertices
+        /// </summary>
         private Vertices _vertices;
 
         /// <summary>
@@ -102,6 +105,9 @@ namespace Alis.Core.Physic.Collision.Shapes
             Normals = new Vertices(Settings.MaxPolygonVertices);
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PolygonShape"/> class
+        /// </summary>
         internal PolygonShape()
             : base(0)
         {
@@ -156,10 +162,19 @@ namespace Alis.Core.Physic.Collision.Shapes
             }
         }
 
+        /// <summary>
+        /// Gets or sets the value of the normals
+        /// </summary>
         public Vertices Normals { get; private set; }
 
+        /// <summary>
+        /// Gets the value of the child count
+        /// </summary>
         public override int ChildCount => 1;
 
+        /// <summary>
+        /// Computes the properties
+        /// </summary>
         protected override void ComputeProperties()
         {
             // Polygon mass, centroid, and inertia.
@@ -254,6 +269,12 @@ namespace Alis.Core.Physic.Collision.Shapes
             MassData.Inertia += MassData.Mass * (Vector2.Dot(MassData.Centroid, MassData.Centroid) - Vector2.Dot(center, center));
         }
 
+        /// <summary>
+        /// Describes whether this instance test point
+        /// </summary>
+        /// <param name="transform">The transform</param>
+        /// <param name="point">The point</param>
+        /// <returns>The bool</returns>
         public override bool TestPoint(ref Transform transform, ref Vector2 point)
         {
             Vector2 pLocal = Complex.Divide(point - transform.p, ref transform.q);
@@ -270,6 +291,14 @@ namespace Alis.Core.Physic.Collision.Shapes
             return true;
         }
 
+        /// <summary>
+        /// Describes whether this instance ray cast
+        /// </summary>
+        /// <param name="output">The output</param>
+        /// <param name="input">The input</param>
+        /// <param name="transform">The transform</param>
+        /// <param name="childIndex">The child index</param>
+        /// <returns>The bool</returns>
         public override bool RayCast(out RayCastOutput output, ref RayCastInput input, ref Transform transform, int childIndex)
         {
             output = new RayCastOutput();
@@ -383,6 +412,14 @@ namespace Alis.Core.Physic.Collision.Shapes
             aabb.UpperBound.Y += Radius;
         }
 
+        /// <summary>
+        /// Computes the submerged area using the specified normal
+        /// </summary>
+        /// <param name="normal">The normal</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="xf">The xf</param>
+        /// <param name="sc">The sc</param>
+        /// <returns>The area</returns>
         public override float ComputeSubmergedArea(ref Vector2 normal, float offset, ref Transform xf, out Vector2 sc)
         {
             sc = Vector2.Zero;
@@ -502,6 +539,11 @@ namespace Alis.Core.Physic.Collision.Shapes
             return area;
         }
 
+        /// <summary>
+        /// Describes whether this instance compare to
+        /// </summary>
+        /// <param name="shape">The shape</param>
+        /// <returns>The bool</returns>
         public bool CompareTo(PolygonShape shape)
         {
             if (Vertices.Count != shape.Vertices.Count)
@@ -516,6 +558,10 @@ namespace Alis.Core.Physic.Collision.Shapes
             return (Radius == shape.Radius) && (MassData == shape.MassData);
         }
 
+        /// <summary>
+        /// Clones this instance
+        /// </summary>
+        /// <returns>The clone</returns>
         public override Shape Clone()
         {
             PolygonShape clone = new PolygonShape();

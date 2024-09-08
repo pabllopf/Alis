@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -84,22 +84,64 @@ namespace Alis.Core.Physic.Dynamics.Joints
     public class RopeJoint : Joint
     {
         // Solver shared
+        /// <summary>
+        /// The impulse
+        /// </summary>
         private float _impulse;
 
         // Solver temp
+        /// <summary>
+        /// The index
+        /// </summary>
         private int _indexA;
+        /// <summary>
+        /// The index
+        /// </summary>
         private int _indexB;
+        /// <summary>
+        /// The inv ia
+        /// </summary>
         private float _invIA;
+        /// <summary>
+        /// The inv ib
+        /// </summary>
         private float _invIB;
+        /// <summary>
+        /// The inv mass
+        /// </summary>
         private float _invMassA;
+        /// <summary>
+        /// The inv mass
+        /// </summary>
         private float _invMassB;
+        /// <summary>
+        /// The length
+        /// </summary>
         private float _length;
+        /// <summary>
+        /// The local center
+        /// </summary>
         private Vector2 _localCenterA;
+        /// <summary>
+        /// The local center
+        /// </summary>
         private Vector2 _localCenterB;
+        /// <summary>
+        /// The mass
+        /// </summary>
         private float _mass;
+        /// <summary>
+        /// The 
+        /// </summary>
         private Vector2 _rA, _rB;
+        /// <summary>
+        /// The 
+        /// </summary>
         private Vector2 _u;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RopeJoint"/> class
+        /// </summary>
         internal RopeJoint() => JointType = JointType.Rope;
 
         /// <summary>
@@ -141,12 +183,18 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         public Vector2 LocalAnchorB { get; set; }
 
+        /// <summary>
+        /// Gets or sets the value of the world anchor a
+        /// </summary>
         public sealed override Vector2 WorldAnchorA
         {
             get => BodyA.GetWorldPoint(LocalAnchorA);
             set => LocalAnchorA = BodyA.GetLocalPoint(value);
         }
 
+        /// <summary>
+        /// Gets or sets the value of the world anchor b
+        /// </summary>
         public sealed override Vector2 WorldAnchorB
         {
             get => BodyB.GetWorldPoint(LocalAnchorB);
@@ -164,10 +212,24 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         public LimitState State { get; private set; }
 
+        /// <summary>
+        /// Gets the reaction force using the specified inv dt
+        /// </summary>
+        /// <param name="invDt">The inv dt</param>
+        /// <returns>The vector</returns>
         public override Vector2 GetReactionForce(float invDt) => invDt * _impulse * _u;
 
+        /// <summary>
+        /// Gets the reaction torque using the specified inv dt
+        /// </summary>
+        /// <param name="invDt">The inv dt</param>
+        /// <returns>The float</returns>
         public override float GetReactionTorque(float invDt) => 0;
 
+        /// <summary>
+        /// Inits the velocity constraints using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
         {
             _indexA = BodyA.IslandIndex;
@@ -249,6 +311,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.velocities[_indexB].w = wB;
         }
 
+        /// <summary>
+        /// Solves the velocity constraints using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(ref SolverData data)
         {
             Vector2 vA = data.velocities[_indexA].v;
@@ -285,6 +351,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.velocities[_indexB].w = wB;
         }
 
+        /// <summary>
+        /// Describes whether this instance solve position constraints
+        /// </summary>
+        /// <param name="data">The data</param>
+        /// <returns>The bool</returns>
         internal override bool SolvePositionConstraints(ref SolverData data)
         {
             Vector2 cA = data.positions[_indexA].c;
