@@ -580,7 +580,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 float k12 = iA * _s1 + iB * _s2;
                 float k13 = iA * _s1 * _a1 + iB * _s2 * _a2;
                 float k22 = iA + iB;
-                if (k22 == 0.0f)
+                if (Math.Abs(k22) < float.Epsilon)
                 {
                     // For bodies with fixed rotation.
                     k22 = 1.0f;
