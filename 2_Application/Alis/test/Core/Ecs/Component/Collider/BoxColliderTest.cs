@@ -71,7 +71,7 @@ namespace Alis.Test.Core.Ecs.Component.Collider
 
             Assert.NotNull(boxColliderBuilder);
         }
-        
+
         /// <summary>
         ///     Tests that on awake valid input
         /// </summary>
@@ -93,7 +93,7 @@ namespace Alis.Test.Core.Ecs.Component.Collider
 
             boxCollider.OnStart();
         }
-        
+
         /// <summary>
         ///     Tests that is trigger property set get returns correct value
         /// </summary>

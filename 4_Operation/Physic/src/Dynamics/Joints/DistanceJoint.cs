@@ -27,105 +27,113 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 
-
 namespace Alis.Core.Physic.Dynamics.Joints
 {
-/// <summary>
-///     A distance joint rains two points on two bodies
-///     to remain at a fixed distance from each other. You can view
-///     this as a massless, rigid rod.
-/// </summary>
-/// <remarks>
-/// 1-D rained system
-/// m (v2 - v1) = lambda
-/// v2 + (beta/h) * x1 + gamma * lambda = 0, gamma has units of inverse mass.
-/// x2 = x1 + h * v2
-///
-/// 1-D mass-damper-spring system
-/// m (v2 - v1) + h * d * v2 + h * k * 
-///
-/// C = norm(p2 - p1) - L
-/// u = (p2 - p1) / norm(p2 - p1)
-/// Cdot = dot(u, v2 + cross(w2, r2) - v1 - cross(w1, r1))
-/// J = [-u -cross(r1, u) u cross(r2, u)]
-/// K = J * invM * JT
-///   = invMass1 + invI1 * cross(r1, u)^2 + invMass2 + invI2 * cross(r2, u)^2
-/// </remarks>
+    /// <summary>
+    ///     A distance joint rains two points on two bodies
+    ///     to remain at a fixed distance from each other. You can view
+    ///     this as a massless, rigid rod.
+    /// </summary>
+    /// <remarks>
+    ///     1-D rained system
+    ///     m (v2 - v1) = lambda
+    ///     v2 + (beta/h) * x1 + gamma * lambda = 0, gamma has units of inverse mass.
+    ///     x2 = x1 + h * v2
+    ///     1-D mass-damper-spring system
+    ///     m (v2 - v1) + h * d * v2 + h * k *
+    ///     C = norm(p2 - p1) - L
+    ///     u = (p2 - p1) / norm(p2 - p1)
+    ///     Cdot = dot(u, v2 + cross(w2, r2) - v1 - cross(w1, r1))
+    ///     J = [-u -cross(r1, u) u cross(r2, u)]
+    ///     K = J * invM * JT
+    ///     = invMass1 + invI1 * cross(r1, u)^2 + invMass2 + invI2 * cross(r2, u)^2
+    /// </remarks>
     public class DistanceJoint : Joint
     {
         // Solver shared
         /// <summary>
-        /// The bias
+        ///     The bias
         /// </summary>
         private float _bias;
+
         /// <summary>
-        /// The gamma
+        ///     The gamma
         /// </summary>
         private float _gamma;
+
         /// <summary>
-        /// The impulse
+        ///     The impulse
         /// </summary>
         private float _impulse;
 
         // Solver temp
         /// <summary>
-        /// The index
+        ///     The index
         /// </summary>
         private int _indexA;
+
         /// <summary>
-        /// The index
+        ///     The index
         /// </summary>
         private int _indexB;
+
         /// <summary>
-        /// The inv ia
-        /// </summary>
-        private float invIa;
-        /// <summary>
-        /// The inv ib
-        /// </summary>
-        private float invIb;
-        /// <summary>
-        /// The inv mass
+        ///     The inv mass
         /// </summary>
         private float _invMassA;
+
         /// <summary>
-        /// The inv mass
+        ///     The inv mass
         /// </summary>
         private float _invMassB;
+
         /// <summary>
-        /// The local center
+        ///     The local center
         /// </summary>
         private Vector2 _localCenterA;
+
         /// <summary>
-        /// The local center
+        ///     The local center
         /// </summary>
         private Vector2 _localCenterB;
+
         /// <summary>
-        /// The mass
+        ///     The mass
         /// </summary>
         private float _mass;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         private Vector2 _rA;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         private Vector2 _rB;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         private Vector2 _u;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DistanceJoint"/> class
+        ///     The inv ia
+        /// </summary>
+        private float invIa;
+
+        /// <summary>
+        ///     The inv ib
+        /// </summary>
+        private float invIb;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="DistanceJoint" /> class
         /// </summary>
         internal DistanceJoint() => JointType = JointType.Distance;
 
@@ -172,7 +180,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public Vector2 LocalAnchorB { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the world anchor a
+        ///     Gets or sets the value of the world anchor a
         /// </summary>
         public sealed override Vector2 WorldAnchorA
         {
@@ -185,7 +193,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Gets or sets the value of the world anchor b
+        ///     Gets or sets the value of the world anchor b
         /// </summary>
         public sealed override Vector2 WorldAnchorB
         {
@@ -234,7 +242,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public override float GetReactionTorque(float invDt) => 0.0f;
 
         /// <summary>
-        /// Inits the velocity constraints using the specified data
+        ///     Inits the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
@@ -334,7 +342,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Solves the velocity constraints using the specified data
+        ///     Solves the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(ref SolverData data)
@@ -365,7 +373,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Describes whether this instance solve position constraints
+        ///     Describes whether this instance solve position constraints
         /// </summary>
         /// <param name="data">The data</param>
         /// <returns>The bool</returns>

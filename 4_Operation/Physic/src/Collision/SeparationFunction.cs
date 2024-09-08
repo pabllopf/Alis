@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:SeparationFunction.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
@@ -6,42 +35,42 @@ using Alis.Core.Physic.Common;
 namespace Alis.Core.Physic.Collision
 {
     /// <summary>
-    /// The separation function class
+    ///     The separation function class
     /// </summary>
     public static class SeparationFunction
     {
         /// <summary>
-        /// The axis
+        ///     The axis
         /// </summary>
         [ThreadStatic] private static Vector2 _axis;
 
         /// <summary>
-        /// The local point
+        ///     The local point
         /// </summary>
         [ThreadStatic] private static Vector2 _localPoint;
 
         /// <summary>
-        /// The proxy
+        ///     The proxy
         /// </summary>
         [ThreadStatic] private static DistanceProxy _proxyA;
 
         /// <summary>
-        /// The proxy
+        ///     The proxy
         /// </summary>
         [ThreadStatic] private static DistanceProxy _proxyB;
 
         /// <summary>
-        /// The sweep
+        ///     The sweep
         /// </summary>
         [ThreadStatic] private static Sweep _sweepA, _sweepB;
 
         /// <summary>
-        /// The type
+        ///     The type
         /// </summary>
         [ThreadStatic] private static SeparationFunctionType _type;
 
         /// <summary>
-        /// Sets the cache
+        ///     Sets the cache
         /// </summary>
         /// <param name="cache">The cache</param>
         /// <param name="proxyA">The proxy</param>
@@ -124,7 +153,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Finds the min separation using the specified index a
+        ///     Finds the min separation using the specified index a
         /// </summary>
         /// <param name="indexA">The index</param>
         /// <param name="indexB">The index</param>
@@ -198,7 +227,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Evaluates the index a
+        ///     Evaluates the index a
         /// </summary>
         /// <param name="indexA">The index</param>
         /// <param name="indexB">The index</param>

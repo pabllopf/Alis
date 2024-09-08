@@ -1,4 +1,4 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -27,13 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
-
 
 namespace Alis.Core.Physic.Collision
 {
@@ -61,7 +58,7 @@ namespace Alis.Core.Physic.Collision
         [ThreadStatic] public static int GJKMaxIters;
 
         /// <summary>
-        /// Computes the distance using the specified output
+        ///     Computes the distance using the specified output
         /// </summary>
         /// <param name="output">The output</param>
         /// <param name="cache">The cache</param>

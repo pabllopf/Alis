@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using Alis.Core.Physic.Collision;
 
 namespace Alis.Core.Physic.Dynamics
@@ -39,19 +37,22 @@ namespace Alis.Core.Physic.Dynamics
     public struct FixtureProxy
     {
         /// <summary>
-        /// The aabb
+        ///     The aabb
         /// </summary>
         public AABB AABB;
+
         /// <summary>
-        /// The child index
+        ///     The child index
         /// </summary>
         public int ChildIndex;
+
         /// <summary>
-        /// The fixture
+        ///     The fixture
         /// </summary>
         public Fixture Fixture;
+
         /// <summary>
-        /// The proxy id
+        ///     The proxy id
         /// </summary>
         public int ProxyId;
     }

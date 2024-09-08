@@ -27,16 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 
-
 namespace Alis.Core.Physic.Dynamics.Joints
 {
-   /// <summary>
+    /// <summary>
     ///     A mouse joint is used to make a point on a body track a
     ///     specified world point. This a soft constraint with a maximum
     ///     force. This allows the constraint to stretch and without
@@ -46,74 +44,85 @@ namespace Alis.Core.Physic.Dynamics.Joints
     ///     use the mouse joint, look at the testbed.
     /// </summary>
     /// <remarks>
-    /// p = attached point, m = mouse point
-    /// C = p - m
-    /// Cdot = v
-    ///      = v + cross(w, r)
-    /// J = [I r_skew]
-    /// Identity used:
-    /// w k % (rx i + ry j) = w * (-ry i + rx j)
+    ///     p = attached point, m = mouse point
+    ///     C = p - m
+    ///     Cdot = v
+    ///     = v + cross(w, r)
+    ///     J = [I r_skew]
+    ///     Identity used:
+    ///     w k % (rx i + ry j) = w * (-ry i + rx j)
     /// </remarks>
     public class FixedMouseJoint : Joint
     {
         /// <summary>
-        /// The beta
+        ///     The beta
         /// </summary>
         private float _beta;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         private Vector2 _C;
+
         /// <summary>
-        /// The damping ratio
+        ///     The damping ratio
         /// </summary>
         private float _dampingRatio;
+
         /// <summary>
-        /// The frequency
+        ///     The frequency
         /// </summary>
         private float _frequency;
+
         /// <summary>
-        /// The gamma
+        ///     The gamma
         /// </summary>
         private float _gamma;
 
         // Solver shared
         /// <summary>
-        /// The impulse
+        ///     The impulse
         /// </summary>
         private Vector2 _impulse;
 
         // Solver temp
         /// <summary>
-        /// The index
+        ///     The index
         /// </summary>
         private int _indexA;
+
         /// <summary>
-        /// The inv ia
+        ///     The inv ia
         /// </summary>
         private float _invIA;
+
         /// <summary>
-        /// The inv mass
+        ///     The inv mass
         /// </summary>
         private float _invMassA;
+
         /// <summary>
-        /// The local center
+        ///     The local center
         /// </summary>
         private Vector2 _localCenterA;
+
         /// <summary>
-        /// The mass
+        ///     The mass
         /// </summary>
         private Mat22 _mass;
+
         /// <summary>
-        /// The max force
+        ///     The max force
         /// </summary>
         private float _maxForce;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         private Vector2 _rA;
+
         /// <summary>
-        /// The world anchor
+        ///     The world anchor
         /// </summary>
         private Vector2 _worldAnchor;
 
@@ -143,7 +152,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public Vector2 LocalAnchorA { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the world anchor a
+        ///     Gets or sets the value of the world anchor a
         /// </summary>
         public override Vector2 WorldAnchorA
         {
@@ -152,7 +161,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Gets or sets the value of the world anchor b
+        ///     Gets or sets the value of the world anchor b
         /// </summary>
         public override Vector2 WorldAnchorB
         {
@@ -206,21 +215,21 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Gets the reaction force using the specified inv dt
+        ///     Gets the reaction force using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vector</returns>
         public override Vector2 GetReactionForce(float invDt) => invDt * _impulse;
 
         /// <summary>
-        /// Gets the reaction torque using the specified inv dt
+        ///     Gets the reaction torque using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The float</returns>
         public override float GetReactionTorque(float invDt) => invDt * 0.0f;
 
         /// <summary>
-        /// Inits the velocity constraints using the specified data
+        ///     Inits the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
@@ -296,7 +305,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Solves the velocity constraints using the specified data
+        ///     Solves the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(ref SolverData data)
@@ -326,7 +335,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Describes whether this instance solve position constraints
+        ///     Describes whether this instance solve position constraints
         /// </summary>
         /// <param name="data">The data</param>
         /// <returns>The bool</returns>

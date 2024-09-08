@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 /*
  * Original source Box2D:
  * Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
@@ -71,16 +69,17 @@ namespace Alis.Core.Physic.Dynamics
         public float inv_dt;
 
         /// <summary>
-        /// The position iterations
+        ///     The position iterations
         /// </summary>
         public int positionIterations;
+
         /// <summary>
-        /// The velocity iterations
+        ///     The velocity iterations
         /// </summary>
         public int velocityIterations;
 
         /// <summary>
-        /// The warm starting
+        ///     The warm starting
         /// </summary>
         public bool warmStarting;
     }

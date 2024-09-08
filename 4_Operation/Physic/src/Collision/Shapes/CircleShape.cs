@@ -27,14 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Dynamics;
-
 
 namespace Alis.Core.Physic.Collision.Shapes
 {
@@ -44,7 +41,7 @@ namespace Alis.Core.Physic.Collision.Shapes
     public class CircleShape : Shape
     {
         /// <summary>
-        /// The position
+        ///     The position
         /// </summary>
         internal Vector2 _position;
 
@@ -65,7 +62,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CircleShape"/> class
+        ///     Initializes a new instance of the <see cref="CircleShape" /> class
         /// </summary>
         internal CircleShape()
             : base(0)
@@ -76,7 +73,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>
-        /// Gets the value of the child count
+        ///     Gets the value of the child count
         /// </summary>
         public override int ChildCount => 1;
 
@@ -89,12 +86,12 @@ namespace Alis.Core.Physic.Collision.Shapes
             set
             {
                 _position = value;
-                ComputeProperties(); 
+                ComputeProperties();
             }
         }
 
         /// <summary>
-        /// Describes whether this instance test point
+        ///     Describes whether this instance test point
         /// </summary>
         /// <param name="transform">The transform</param>
         /// <param name="point">The point</param>
@@ -107,7 +104,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>
-        /// Describes whether this instance ray cast
+        ///     Describes whether this instance ray cast
         /// </summary>
         /// <param name="output">The output</param>
         /// <param name="input">The input</param>
@@ -148,7 +145,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                 a /= rr;
                 output.Fraction = a;
 
-                
+
                 output.Normal = s + a * r;
                 output.Normal.Normalize();
                 return true;
@@ -158,7 +155,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>
-        /// Computes the aabb using the specified aabb
+        ///     Computes the aabb using the specified aabb
         /// </summary>
         /// <param name="aabb">The aabb</param>
         /// <param name="transform">The transform</param>
@@ -177,7 +174,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>
-        /// Computes the properties
+        ///     Computes the properties
         /// </summary>
         protected sealed override void ComputeProperties()
         {
@@ -191,7 +188,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>
-        /// Computes the submerged area using the specified normal
+        ///     Computes the submerged area using the specified normal
         /// </summary>
         /// <param name="normal">The normal</param>
         /// <param name="offset">The offset</param>
@@ -236,7 +233,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         public bool CompareTo(CircleShape shape) => (Math.Abs(Radius - shape.Radius) < MathUtils.Epsilon) && (Position == shape.Position);
 
         /// <summary>
-        /// Clones this instance
+        ///     Clones this instance
         /// </summary>
         /// <returns>The clone</returns>
         public override Shape Clone()

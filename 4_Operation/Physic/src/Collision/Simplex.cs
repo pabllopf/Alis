@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Simplex.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
@@ -8,21 +37,22 @@ using Transform = Alis.Core.Physic.Common.Transform;
 namespace Alis.Core.Physic.Collision
 {
     /// <summary>
-    /// The simplex
+    ///     The simplex
     /// </summary>
     internal struct Simplex
     {
         /// <summary>
-        /// The count
+        ///     The count
         /// </summary>
         internal int Count;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         internal FixedArray3<SimplexVertex> V;
 
         /// <summary>
-        /// Reads the cache using the specified cache
+        ///     Reads the cache using the specified cache
         /// </summary>
         /// <param name="cache">The cache</param>
         /// <param name="proxyA">The proxy</param>
@@ -80,7 +110,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Writes the cache using the specified cache
+        ///     Writes the cache using the specified cache
         /// </summary>
         /// <param name="cache">The cache</param>
         internal void WriteCache(ref SimplexCache cache)
@@ -95,7 +125,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Gets the search direction
+        ///     Gets the search direction
         /// </summary>
         /// <returns>The vector</returns>
         internal Vector2 GetSearchDirection()
@@ -126,7 +156,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Gets the closest point
+        ///     Gets the closest point
         /// </summary>
         /// <returns>The vector</returns>
         internal Vector2 GetClosestPoint()
@@ -153,7 +183,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Gets the witness points using the specified p a
+        ///     Gets the witness points using the specified p a
         /// </summary>
         /// <param name="pA">The </param>
         /// <param name="pB">The </param>
@@ -189,7 +219,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Gets the metric
+        ///     Gets the metric
         /// </summary>
         /// <returns>The float</returns>
         internal float GetMetric()
@@ -239,7 +269,7 @@ namespace Alis.Core.Physic.Collision
         // a2 = d12_2 / d12
 
         /// <summary>
-        /// Solves the 2
+        ///     Solves the 2
         /// </summary>
         internal void Solve2()
         {
@@ -289,7 +319,7 @@ namespace Alis.Core.Physic.Collision
         // - edge points[1]-points[2]
         // - inside the triangle
         /// <summary>
-        /// Solves the 3
+        ///     Solves the 3
         /// </summary>
         internal void Solve3()
         {

@@ -27,27 +27,25 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
-
-
 namespace Alis.Core.Physic.Common.Decomposition.CDT
 {
     /// <summary>
-    /// The orientation enum
+    ///     The orientation enum
     /// </summary>
     internal enum Orientation
     {
         /// <summary>
-        /// The cw orientation
+        ///     The cw orientation
         /// </summary>
         CW,
+
         /// <summary>
-        /// The ccw orientation
+        ///     The ccw orientation
         /// </summary>
         CCW,
+
         /// <summary>
-        /// The collinear orientation
+        ///     The collinear orientation
         /// </summary>
         Collinear
     }

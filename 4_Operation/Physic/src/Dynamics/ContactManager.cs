@@ -1,4 +1,4 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -39,7 +37,7 @@ using Alis.Core.Physic.Dynamics.Contacts;
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    /// The contact manager class
+    ///     The contact manager class
     /// </summary>
     public class ContactManager
     {
@@ -78,20 +76,22 @@ namespace Alis.Core.Physic.Dynamics
         public BeginContactDelegate BeginContact;
 
         /// <summary>
-        /// The broad phase
+        ///     The broad phase
         /// </summary>
         public readonly IBroadPhase BroadPhase;
 
         /// <summary>
-        /// The contact list
+        ///     The contact list
         /// </summary>
         public readonly ContactListHead ContactList;
+
         /// <summary>
-        /// Gets or sets the value of the contact count
+        ///     Gets or sets the value of the contact count
         /// </summary>
         public int ContactCount { get; private set; }
+
         /// <summary>
-        /// The contact pool list
+        ///     The contact pool list
         /// </summary>
         internal readonly ContactListHead _contactPoolList;
 
@@ -136,7 +136,7 @@ namespace Alis.Core.Physic.Dynamics
         public PreSolveDelegate PreSolve;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ContactManager"/> class
+        ///     Initializes a new instance of the <see cref="ContactManager" /> class
         /// </summary>
         /// <param name="broadPhase">The broad phase</param>
         internal ContactManager(IBroadPhase broadPhase)
@@ -151,7 +151,7 @@ namespace Alis.Core.Physic.Dynamics
 
         // Broad-phase callback.
         /// <summary>
-        /// Adds the pair using the specified proxy id a
+        ///     Adds the pair using the specified proxy id a
         /// </summary>
         /// <param name="proxyIdA">The proxy id</param>
         /// <param name="proxyIdB">The proxy id</param>
@@ -283,7 +283,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Finds the new contacts
+        ///     Finds the new contacts
         /// </summary>
         internal void FindNewContacts()
         {
@@ -291,7 +291,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Destroys the contact
+        ///     Destroys the contact
         /// </summary>
         /// <param name="contact">The contact</param>
         internal void Destroy(Contact contact)
@@ -365,7 +365,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Collides this instance
+        ///     Collides this instance
         /// </summary>
         internal void Collide()
         {
@@ -636,7 +636,7 @@ namespace Alis.Core.Physic.Dynamics
 #endif
 
         /// <summary>
-        /// Describes whether should collide
+        ///     Describes whether should collide
         /// </summary>
         /// <param name="fixtureA">The fixture</param>
         /// <param name="fixtureB">The fixture</param>

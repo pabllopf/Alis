@@ -27,33 +27,33 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System.Collections.Generic;
 
 namespace Alis.Core.Physic.Common.Decomposition.Seidel
 {
     // Node for a Directed Acyclic graph (DAG)
     /// <summary>
-    /// The node class
+    ///     The node class
     /// </summary>
     internal abstract class Node
     {
         /// <summary>
-        /// The left child
+        ///     The left child
         /// </summary>
         protected Node LeftChild;
+
         /// <summary>
-        /// The parent list
+        ///     The parent list
         /// </summary>
         public List<Node> ParentList;
+
         /// <summary>
-        /// The right child
+        ///     The right child
         /// </summary>
         protected Node RightChild;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Node"/> class
+        ///     Initializes a new instance of the <see cref="Node" /> class
         /// </summary>
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
@@ -70,7 +70,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         }
 
         /// <summary>
-        /// Locates the s
+        ///     Locates the s
         /// </summary>
         /// <param name="s">The </param>
         /// <returns>The sink</returns>
@@ -79,7 +79,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         // Replace a node in the graph with this node
         // Make sure parent pointers are updated
         /// <summary>
-        /// Replaces the node
+        ///     Replaces the node
         /// </summary>
         /// <param name="node">The node</param>
         public void Replace(Node node)

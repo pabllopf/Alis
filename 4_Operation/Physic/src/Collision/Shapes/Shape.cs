@@ -27,11 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
-
 
 namespace Alis.Core.Physic.Collision.Shapes
 {
@@ -43,15 +41,17 @@ namespace Alis.Core.Physic.Collision.Shapes
     public abstract class Shape
     {
         /// <summary>
-        /// The 2radius
+        ///     The 2radius
         /// </summary>
         internal float _2radius;
+
         /// <summary>
-        /// The density
+        ///     The density
         /// </summary>
         internal float _density;
+
         /// <summary>
-        /// The radius
+        ///     The radius
         /// </summary>
         internal float _radius;
 
@@ -65,7 +65,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         public MassData MassData;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Shape"/> class
+        ///     Initializes a new instance of the <see cref="Shape" /> class
         /// </summary>
         /// <param name="density">The density</param>
         protected Shape(float density)

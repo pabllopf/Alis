@@ -224,7 +224,7 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
 
 
         /// <summary>
-        /// Ignores the gravity using the specified value
+        ///     Ignores the gravity using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The box collider builder</returns>

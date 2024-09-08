@@ -27,103 +27,109 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 
-
 namespace Alis.Core.Physic.Dynamics.Joints
 {
-        /// <summary>
-        ///     A weld joint essentially glues two bodies together. A weld joint may
-        ///     distort somewhat because the island constraint solver is approximate.
-        ///     The joint is soft constraint based, which means the two bodies will move
-        ///     relative to each other, when a force is applied. To combine two bodies
-        ///     in a rigid fashion, combine the fixtures to a single body instead.
-        /// </summary>
-        /// <remarks>
-        /// Point-to-point constraint
-        /// C = p2 - p1
-        /// Cdot = v2 - v1
-        ///      = v2 + cross(w2, r2) - v1 - cross(w1, r1)
-        /// J = [-I -r1_skew I r2_skew ]
-        /// Identity used:
-        /// w k % (rx i + ry j) = w * (-ry i + rx j)
-        ///
-        /// Angle constraint
-        /// C = angle2 - angle1 - referenceAngle
-        /// Cdot = w2 - w1
-        /// J = [0 0 -1 0 0 1]
-        /// K = invI1 + invI2
-        /// </remarks>
+    /// <summary>
+    ///     A weld joint essentially glues two bodies together. A weld joint may
+    ///     distort somewhat because the island constraint solver is approximate.
+    ///     The joint is soft constraint based, which means the two bodies will move
+    ///     relative to each other, when a force is applied. To combine two bodies
+    ///     in a rigid fashion, combine the fixtures to a single body instead.
+    /// </summary>
+    /// <remarks>
+    ///     Point-to-point constraint
+    ///     C = p2 - p1
+    ///     Cdot = v2 - v1
+    ///     = v2 + cross(w2, r2) - v1 - cross(w1, r1)
+    ///     J = [-I -r1_skew I r2_skew ]
+    ///     Identity used:
+    ///     w k % (rx i + ry j) = w * (-ry i + rx j)
+    ///     Angle constraint
+    ///     C = angle2 - angle1 - referenceAngle
+    ///     Cdot = w2 - w1
+    ///     J = [0 0 -1 0 0 1]
+    ///     K = invI1 + invI2
+    /// </remarks>
     public class WeldJoint : Joint
     {
         /// <summary>
-        /// The bias
+        ///     The bias
         /// </summary>
         private float _bias;
 
         /// <summary>
-        /// The gamma
+        ///     The gamma
         /// </summary>
         private float _gamma;
 
         // Solver shared
         /// <summary>
-        /// The impulse
+        ///     The impulse
         /// </summary>
         private Vector3 _impulse;
 
         // Solver temp
         /// <summary>
-        /// The index
+        ///     The index
         /// </summary>
         private int _indexA;
+
         /// <summary>
-        /// The index
+        ///     The index
         /// </summary>
         private int _indexB;
+
         /// <summary>
-        /// The inv ia
+        ///     The inv ia
         /// </summary>
         private float _invIA;
+
         /// <summary>
-        /// The inv ib
+        ///     The inv ib
         /// </summary>
         private float _invIB;
+
         /// <summary>
-        /// The inv mass
+        ///     The inv mass
         /// </summary>
         private float _invMassA;
+
         /// <summary>
-        /// The inv mass
+        ///     The inv mass
         /// </summary>
         private float _invMassB;
+
         /// <summary>
-        /// The local center
+        ///     The local center
         /// </summary>
         private Vector2 _localCenterA;
+
         /// <summary>
-        /// The local center
+        ///     The local center
         /// </summary>
         private Vector2 _localCenterB;
+
         /// <summary>
-        /// The mass
+        ///     The mass
         /// </summary>
         private Mat33 _mass;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         private Vector2 _rA;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         private Vector2 _rB;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="WeldJoint"/> class
+        ///     Initializes a new instance of the <see cref="WeldJoint" /> class
         /// </summary>
         internal WeldJoint() => JointType = JointType.Weld;
 
@@ -166,7 +172,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public Vector2 LocalAnchorB { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the world anchor a
+        ///     Gets or sets the value of the world anchor a
         /// </summary>
         public override Vector2 WorldAnchorA
         {
@@ -175,7 +181,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Gets or sets the value of the world anchor b
+        ///     Gets or sets the value of the world anchor b
         /// </summary>
         public override Vector2 WorldAnchorB
         {
@@ -202,21 +208,21 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public float DampingRatio { get; set; }
 
         /// <summary>
-        /// Gets the reaction force using the specified inv dt
+        ///     Gets the reaction force using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vector</returns>
         public override Vector2 GetReactionForce(float invDt) => invDt * new Vector2(_impulse.X, _impulse.Y);
 
         /// <summary>
-        /// Gets the reaction torque using the specified inv dt
+        ///     Gets the reaction torque using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The float</returns>
         public override float GetReactionTorque(float invDt) => invDt * _impulse.Z;
 
         /// <summary>
-        /// Inits the velocity constraints using the specified data
+        ///     Inits the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
@@ -243,7 +249,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             _rA = Complex.Multiply(LocalAnchorA - _localCenterA, ref qA);
             _rB = Complex.Multiply(LocalAnchorB - _localCenterB, ref qB);
-            
+
             float mA = _invMassA, mB = _invMassB;
             float iA = _invIA, iB = _invIB;
 
@@ -279,13 +285,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 // magic formulas
                 float h = data.step.dt;
                 _gamma = h * (d + h * k);
-                _gamma = Math.Abs(_gamma) <float.Epsilon ? 1.0f / _gamma : 0.0f;
+                _gamma = Math.Abs(_gamma) < float.Epsilon ? 1.0f / _gamma : 0.0f;
                 _bias = C * h * k * _gamma;
 
                 invM += _gamma;
-                _mass.Ez.Z = Math.Abs(invM) <float.Epsilon  ? 1.0f / invM : 0.0f;
+                _mass.Ez.Z = Math.Abs(invM) < float.Epsilon ? 1.0f / invM : 0.0f;
             }
-            else if (Math.Abs(K.Ez.Z) <float.Epsilon)
+            else if (Math.Abs(K.Ez.Z) < float.Epsilon)
             {
                 K.GetInverse22(ref _mass);
                 _gamma = 0.0f;
@@ -323,7 +329,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Solves the velocity constraints using the specified data
+        ///     Solves the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(ref SolverData data)
@@ -385,7 +391,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Describes whether this instance solve position constraints
+        ///     Describes whether this instance solve position constraints
         /// </summary>
         /// <param name="data">The data</param>
         /// <returns>The bool</returns>

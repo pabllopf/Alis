@@ -1,24 +1,54 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:XMLFragmentParser.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System.Collections.Generic;
 using System.IO;
 
 namespace Alis.Core.Physic.Common
 {
     /// <summary>
-    /// The xml fragment parser class
+    ///     The xml fragment parser class
     /// </summary>
     internal class XMLFragmentParser
     {
         /// <summary>
-        /// The list
+        ///     The list
         /// </summary>
         private static readonly List<char> _punctuation = new List<char> {'/', '<', '>', '='};
+
         /// <summary>
-        /// The buffer
+        ///     The buffer
         /// </summary>
         private FileBuffer _buffer;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="XMLFragmentParser"/> class
+        ///     Initializes a new instance of the <see cref="XMLFragmentParser" /> class
         /// </summary>
         /// <param name="stream">The stream</param>
         public XMLFragmentParser(Stream stream)
@@ -27,12 +57,12 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Gets or sets the value of the root node
+        ///     Gets or sets the value of the root node
         /// </summary>
         public XMLFragmentElement RootNode { get; private set; }
 
         /// <summary>
-        /// Loads the stream
+        ///     Loads the stream
         /// </summary>
         /// <param name="stream">The stream</param>
         public void Load(Stream stream)
@@ -41,7 +71,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Loads the from stream using the specified stream
+        ///     Loads the from stream using the specified stream
         /// </summary>
         /// <param name="stream">The stream</param>
         /// <returns>The xml fragment element</returns>
@@ -53,7 +83,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Nexts the token
+        ///     Nexts the token
         /// </summary>
         /// <returns>The str</returns>
         private string NextToken()
@@ -101,7 +131,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Peeks the token
+        ///     Peeks the token
         /// </summary>
         /// <returns>The str</returns>
         private string PeekToken()
@@ -113,7 +143,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Reads the until using the specified c
+        ///     Reads the until using the specified c
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The str</returns>
@@ -145,7 +175,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Trims the control using the specified str
+        ///     Trims the control using the specified str
         /// </summary>
         /// <param name="str">The str</param>
         /// <returns>The new str</returns>
@@ -170,7 +200,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Trims the tags using the specified outer
+        ///     Trims the tags using the specified outer
         /// </summary>
         /// <param name="outer">The outer</param>
         /// <returns>The string</returns>
@@ -183,7 +213,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Tries the parse node
+        ///     Tries the parse node
         /// </summary>
         /// <exception cref="XMLFragmentException"></exception>
         /// <exception cref="XMLFragmentException"></exception>
@@ -269,7 +299,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Parses this instance
+        ///     Parses this instance
         /// </summary>
         /// <exception cref="XMLFragmentException">Unable to load root node</exception>
         private void Parse()

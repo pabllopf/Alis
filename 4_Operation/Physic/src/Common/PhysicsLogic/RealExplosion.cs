@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +34,6 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Dynamics;
-
 
 namespace Alis.Core.Physic.Common.PhysicsLogic
 {
@@ -71,11 +68,12 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         private const float MaxEdgeOffset = Constant.Pi / 90;
 
         /// <summary>
-        /// The shape data
+        ///     The shape data
         /// </summary>
         private readonly List<ShapeData> _data;
+
         /// <summary>
-        /// The rdc
+        ///     The rdc
         /// </summary>
         private readonly RayDataComparer _rdc;
 
@@ -110,7 +108,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         public int MinRays = 5;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RealExplosion"/> class
+        ///     Initializes a new instance of the <see cref="RealExplosion" /> class
         /// </summary>
         /// <param name="world">The world</param>
         public RealExplosion(World world) : base(world)

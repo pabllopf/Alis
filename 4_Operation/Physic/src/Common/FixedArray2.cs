@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:FixedArray.cs
+//  File:FixedArray2.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,28 +27,27 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System;
 
 namespace Alis.Core.Physic.Common
 {
     /// <summary>
-    /// The fixed array
+    ///     The fixed array
     /// </summary>
     public struct FixedArray2<T>
     {
         /// <summary>
-        /// The value
+        ///     The value
         /// </summary>
         private T _value0;
+
         /// <summary>
-        /// The value
+        ///     The value
         /// </summary>
         private T _value1;
 
         /// <summary>
-        /// The index out of range exception
+        ///     The index out of range exception
         /// </summary>
         public T this[int index]
         {

@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -37,7 +35,7 @@ using Alis.Core.Physic.Common.ConvexHull;
 namespace Alis.Core.Physic.Common.Decomposition
 {
     /// <summary>
-    /// The triangulate class
+    ///     The triangulate class
     /// </summary>
     public static class Triangulate
     {
@@ -119,7 +117,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         }
 
         /// <summary>
-        /// Describes whether validate polygon
+        ///     Describes whether validate polygon
         /// </summary>
         /// <param name="polygon">The polygon</param>
         /// <returns>The bool</returns>

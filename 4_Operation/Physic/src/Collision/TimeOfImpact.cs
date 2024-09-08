@@ -27,17 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System;
 using System.Diagnostics;
 using Alis.Core.Physic.Common;
 
-
 namespace Alis.Core.Physic.Collision
 {
     /// <summary>
-    /// The time of impact class
+    ///     The time of impact class
     /// </summary>
     public static class TimeOfImpact
     {
@@ -45,12 +42,12 @@ namespace Alis.Core.Physic.Collision
         // by computing the largest time at which separation is maintained.
 
         /// <summary>
-        /// The toi max iters
+        ///     The toi max iters
         /// </summary>
         [ThreadStatic] public static int TOICalls, TOIIters, TOIMaxIters;
 
         /// <summary>
-        /// The toi max root iters
+        ///     The toi max root iters
         /// </summary>
         [ThreadStatic] public static int TOIRootIters, TOIMaxRootIters;
 

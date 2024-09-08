@@ -27,15 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Common.Decomposition;
 using Alis.Core.Physic.Common.PolygonManipulation;
 using Alis.Core.Physic.Dynamics;
-
 
 namespace Alis.Core.Physic.Common.TextureTools
 {
@@ -50,16 +47,17 @@ namespace Alis.Core.Physic.Common.TextureTools
         private List<Body>[,] _bodyMap;
 
         /// <summary>
-        /// The dirty area
+        ///     The dirty area
         /// </summary>
         private AABB _dirtyArea;
+
         /// <summary>
-        /// The local height
+        ///     The local height
         /// </summary>
         private float _localHeight;
 
         /// <summary>
-        /// The local width
+        ///     The local width
         /// </summary>
         private float _localWidth;
 
@@ -69,15 +67,17 @@ namespace Alis.Core.Physic.Common.TextureTools
         private sbyte[,] _terrainMap;
 
         /// <summary>
-        /// The top left
+        ///     The top left
         /// </summary>
         private Vector2 _topLeft;
+
         /// <summary>
-        /// The xnum
+        ///     The xnum
         /// </summary>
         private int _xnum;
+
         /// <summary>
-        /// The ynum
+        ///     The ynum
         /// </summary>
         private int _ynum;
 
@@ -259,7 +259,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         }
 
         /// <summary>
-        /// Removes the old data using the specified x start
+        ///     Removes the old data using the specified x start
         /// </summary>
         /// <param name="xStart">The start</param>
         /// <param name="xEnd">The end</param>
@@ -289,7 +289,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         }
 
         /// <summary>
-        /// Generates the terrain using the specified gx
+        ///     Generates the terrain using the specified gx
         /// </summary>
         /// <param name="gx">The gx</param>
         /// <param name="gy">The gy</param>

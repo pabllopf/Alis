@@ -34,16 +34,17 @@ using System.Diagnostics;
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
 {
     /// <summary>
-    /// The dt sweep class
+    ///     The dt sweep class
     /// </summary>
     internal static class DtSweep
     {
         /// <summary>
-        /// The pi
+        ///     The pi
         /// </summary>
         private const double PiDiv2 = Math.PI / 2;
+
         /// <summary>
-        /// The pi
+        ///     The pi
         /// </summary>
         private const double Pi3Div4 = 3 * Math.PI / 4;
 
@@ -104,7 +105,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
 
             TurnAdvancingFrontConvex(tcx, n1, n2);
 
-            
 
             // Lets remove triangles connected to the two "algorithm" points
 
@@ -153,7 +153,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             t2 = t1.NeighborCW(tcx.aFront.Head.Point);
             t1.Clear();
             t1 = t2;
-            while (p1 != first) 
+            while (p1 != first)
             {
                 tcx.RemoveFromList(t1);
                 p1 = t1.PointCCW(p1);
@@ -206,7 +206,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Finalizations the polygon using the specified tcx
+        ///     Finalizations the polygon using the specified tcx
         /// </summary>
         /// <param name="tcx">The tcx</param>
         private static void FinalizationPolygon(DTSweepContext tcx)
@@ -272,7 +272,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Edges the event using the specified tcx
+        ///     Edges the event using the specified tcx
         /// </summary>
         /// <param name="tcx">The tcx</param>
         /// <param name="edge">The edge</param>
@@ -290,7 +290,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 }
 
                 // For now we will do all needed filling
-                
+
                 //       but for now this avoid the issue with cases that needs both flips and fills
                 FillEdgeEvent(tcx, edge, node);
 
@@ -303,7 +303,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Fills the edge event using the specified tcx
+        ///     Fills the edge event using the specified tcx
         /// </summary>
         /// <param name="tcx">The tcx</param>
         /// <param name="edge">The edge</param>
@@ -321,7 +321,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Fills the right concave edge event using the specified tcx
+        ///     Fills the right concave edge event using the specified tcx
         /// </summary>
         /// <param name="tcx">The tcx</param>
         /// <param name="edge">The edge</param>
@@ -347,7 +347,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Fills the right convex edge event using the specified tcx
+        ///     Fills the right convex edge event using the specified tcx
         /// </summary>
         /// <param name="tcx">The tcx</param>
         /// <param name="edge">The edge</param>
@@ -375,7 +375,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Fills the right below edge event using the specified tcx
+        ///     Fills the right below edge event using the specified tcx
         /// </summary>
         /// <param name="tcx">The tcx</param>
         /// <param name="edge">The edge</param>
@@ -400,7 +400,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Fills the right above edge event using the specified tcx
+        ///     Fills the right above edge event using the specified tcx
         /// </summary>
         /// <param name="tcx">The tcx</param>
         /// <param name="edge">The edge</param>
@@ -423,7 +423,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Fills the left convex edge event using the specified tcx
+        ///     Fills the left convex edge event using the specified tcx
         /// </summary>
         /// <param name="tcx">The tcx</param>
         /// <param name="edge">The edge</param>
@@ -451,7 +451,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Fills the left concave edge event using the specified tcx
+        ///     Fills the left concave edge event using the specified tcx
         /// </summary>
         /// <param name="tcx">The tcx</param>
         /// <param name="edge">The edge</param>
@@ -476,7 +476,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Fills the left below edge event using the specified tcx
+        ///     Fills the left below edge event using the specified tcx
         /// </summary>
         /// <param name="tcx">The tcx</param>
         /// <param name="edge">The edge</param>
@@ -501,7 +501,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Fills the left above edge event using the specified tcx
+        ///     Fills the left above edge event using the specified tcx
         /// </summary>
         /// <param name="tcx">The tcx</param>
         /// <param name="edge">The edge</param>
@@ -524,7 +524,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Describes whether is edge side of triangle
+        ///     Describes whether is edge side of triangle
         /// </summary>
         /// <param name="triangle">The triangle</param>
         /// <param name="ep">The ep</param>
@@ -549,7 +549,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Edges the event using the specified tcx
+        ///     Edges the event using the specified tcx
         /// </summary>
         /// <param name="tcx">The tcx</param>
         /// <param name="ep">The ep</param>
@@ -630,7 +630,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Flips the edge event using the specified tcx
+        ///     Flips the edge event using the specified tcx
         /// </summary>
         /// <param name="tcx">The tcx</param>
         /// <param name="ep">The ep</param>
@@ -662,7 +662,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                     if ((eq == tcx.EdgeEvent.ConstrainedEdge.Q)
                         && (ep == tcx.EdgeEvent.ConstrainedEdge.P))
                     {
-                        Debug.WriteLine("[FLIP] - constrained edge done"); 
+                        Debug.WriteLine("[FLIP] - constrained edge done");
                         t.MarkConstrainedEdge(ep, eq);
                         ot.MarkConstrainedEdge(ep, eq);
                         Legalize(tcx, t);
@@ -670,13 +670,13 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                     }
                     else
                     {
-                        Debug.WriteLine("[FLIP] - subedge done"); 
+                        Debug.WriteLine("[FLIP] - subedge done");
                         // XXX: I think one of the triangles should be legalized here?
                     }
                 }
                 else
                 {
-                    Debug.WriteLine("[FLIP] - flipping and continuing with triangle still crossing edge"); 
+                    Debug.WriteLine("[FLIP] - flipping and continuing with triangle still crossing edge");
                     Orientation o = TriangulationUtil.Orient2d(eq, op, ep);
                     t = NextFlipTriangle(tcx, o, t, ot, p, op);
                     FlipEdgeEvent(tcx, ep, eq, t, p);
@@ -710,7 +710,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 return ot.PointCW(op);
             }
 
-            
+
             throw new PointOnEdgeException("Point on constrained edge not supported yet");
         }
 
@@ -775,7 +775,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             {
                 // flip with new edge op->eq
                 FlipEdgeEvent(tcx, eq, op, ot, op);
-                
+
                 //       improve this by getting the next ot and op before the the above 
                 //       flip and continue the flipScanEdgeEvent here
                 // set new ot and op here and loop back to inScanArea test
@@ -840,7 +840,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
 
         // True if HoleAngle exceeds 90 degrees.
         /// <summary>
-        /// Describes whether large hole dont fill
+        ///     Describes whether large hole dont fill
         /// </summary>
         /// <param name="node">The node</param>
         /// <returns>The bool</returns>
@@ -866,7 +866,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Describes whether angle exceeds 90 degrees
+        ///     Describes whether angle exceeds 90 degrees
         /// </summary>
         /// <param name="origin">The origin</param>
         /// <param name="pa">The pa</param>
@@ -880,7 +880,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Describes whether angle exceeds plus 90 degrees or is negative
+        ///     Describes whether angle exceeds plus 90 degrees or is negative
         /// </summary>
         /// <param name="origin">The origin</param>
         /// <param name="pa">The pa</param>
@@ -894,7 +894,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Angles the origin
+        ///     Angles the origin
         /// </summary>
         /// <param name="origin">The origin</param>
         /// <param name="pa">The pa</param>
@@ -1027,7 +1027,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Describes whether is shallow
+        ///     Describes whether is shallow
         /// </summary>
         /// <param name="tcx">The tcx</param>
         /// <param name="node">The node</param>
@@ -1097,7 +1097,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         private static void Fill(DTSweepContext tcx, AdvancingFrontNode node)
         {
             DelaunayTriangle triangle = new DelaunayTriangle(node.Prev.Point, node.Point, node.Next.Point);
-            
+
             //       for now cEdge values are copied during the legalize 
             triangle.MarkNeighbor(node.Prev.Triangle);
             triangle.MarkNeighbor(node.Triangle);
@@ -1124,7 +1124,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             // violate the Delaunay condition
             for (int i = 0; i < 3; i++)
             {
-                
                 //       instead of below with ot
                 if (t.EdgeIsDelaunay[i])
                 {

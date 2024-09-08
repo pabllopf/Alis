@@ -27,19 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Dynamics;
 
-
 namespace Alis.Core.Physic.Common.PolygonManipulation
 {
     /// <summary>
-    /// The cutting tools class
+    ///     The cutting tools class
     /// </summary>
     public static class CuttingTools
     {

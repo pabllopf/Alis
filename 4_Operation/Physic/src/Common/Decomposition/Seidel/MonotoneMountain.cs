@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -36,52 +34,56 @@ using System.Diagnostics;
 namespace Alis.Core.Physic.Common.Decomposition.Seidel
 {
     /// <summary>
-    /// The monotone mountain class
+    ///     The monotone mountain class
     /// </summary>
     internal class MonotoneMountain
     {
         // Almost Pi!
         /// <summary>
-        /// The pi slop
+        ///     The pi slop
         /// </summary>
         private const float PiSlop = 3.1f;
+
         /// <summary>
-        /// The convex points
+        ///     The convex points
         /// </summary>
         private readonly HashSet<Point> _convexPoints;
-        /// <summary>
-        /// The head
-        /// </summary>
-        private Point _head;
 
         // Monotone mountain points
         /// <summary>
-        /// The mono poly
+        ///     The mono poly
         /// </summary>
         private readonly List<Point> _monoPoly;
 
+        /// <summary>
+        ///     The head
+        /// </summary>
+        private Point _head;
+
         // Used to track which side of the line we are on
         /// <summary>
-        /// The positive
+        ///     The positive
         /// </summary>
         private bool _positive;
+
         /// <summary>
-        /// The size
+        ///     The size
         /// </summary>
         private int _size;
+
         /// <summary>
-        /// The tail
+        ///     The tail
         /// </summary>
         private Point _tail;
 
         // Triangles that constitute the mountain
         /// <summary>
-        /// The triangles
+        ///     The triangles
         /// </summary>
         public List<List<Point>> Triangles;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MonotoneMountain"/> class
+        ///     Initializes a new instance of the <see cref="MonotoneMountain" /> class
         /// </summary>
         public MonotoneMountain()
         {
@@ -96,7 +98,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
 
         // Append a point to the list
         /// <summary>
-        /// Adds the point
+        ///     Adds the point
         /// </summary>
         /// <param name="point">The point</param>
         public void Add(Point point)
@@ -126,7 +128,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
 
         // Remove a point from the list
         /// <summary>
-        /// Removes the point
+        ///     Removes the point
         /// </summary>
         /// <param name="point">The point</param>
         public void Remove(Point point)
@@ -141,7 +143,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         // Partition a x-monotone mountain into triangles O(n)
         // See "Computational Geometry in C", 2nd edition, by Joseph O'Rourke, page 52
         /// <summary>
-        /// Processes this instance
+        ///     Processes this instance
         /// </summary>
         public void Process()
         {
@@ -168,7 +170,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         }
 
         /// <summary>
-        /// Triangulates this instance
+        ///     Triangulates this instance
         /// </summary>
         private void Triangulate()
         {
@@ -201,7 +203,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         }
 
         /// <summary>
-        /// Describes whether this instance valid
+        ///     Describes whether this instance valid
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
@@ -209,7 +211,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
 
         // Create the monotone polygon
         /// <summary>
-        /// Gens the mono poly
+        ///     Gens the mono poly
         /// </summary>
         private void GenMonoPoly()
         {
@@ -222,7 +224,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         }
 
         /// <summary>
-        /// Angles the p
+        ///     Angles the p
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The float</returns>
@@ -234,7 +236,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         }
 
         /// <summary>
-        /// Describes whether this instance angle sign
+        ///     Describes whether this instance angle sign
         /// </summary>
         /// <returns>The bool</returns>
         private bool AngleSign()
@@ -246,7 +248,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
 
         // Determines if the inslide angle is convex or reflex
         /// <summary>
-        /// Describes whether this instance is convex
+        ///     Describes whether this instance is convex
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>

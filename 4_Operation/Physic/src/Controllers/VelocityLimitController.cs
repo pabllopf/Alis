@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System;
 using System.Collections.Generic;
 using Alis.Core.Physic.Dynamics;
@@ -42,31 +40,37 @@ namespace Alis.Core.Physic.Controllers
     public class VelocityLimitController : Controller
     {
         /// <summary>
-        /// The body
+        ///     The body
         /// </summary>
         private readonly List<Body> _bodies = new List<Body>();
+
         /// <summary>
-        /// The max angular sqared
+        ///     The max angular sqared
         /// </summary>
         private float _maxAngularSqared;
+
         /// <summary>
-        /// The max angular velocity
+        ///     The max angular velocity
         /// </summary>
         private float _maxAngularVelocity;
+
         /// <summary>
-        /// The max linear sqared
+        ///     The max linear sqared
         /// </summary>
         private float _maxLinearSqared;
+
         /// <summary>
-        /// The max linear velocity
+        ///     The max linear velocity
         /// </summary>
         private float _maxLinearVelocity;
+
         /// <summary>
-        /// The limit angular velocity
+        ///     The limit angular velocity
         /// </summary>
         public bool LimitAngularVelocity = true;
+
         /// <summary>
-        /// The limit linear velocity
+        ///     The limit linear velocity
         /// </summary>
         public bool LimitLinearVelocity = true;
 
@@ -129,7 +133,7 @@ namespace Alis.Core.Physic.Controllers
         }
 
         /// <summary>
-        /// Updates the dt
+        ///     Updates the dt
         /// </summary>
         /// <param name="dt">The dt</param>
         public override void Update(float dt)
@@ -171,7 +175,7 @@ namespace Alis.Core.Physic.Controllers
         }
 
         /// <summary>
-        /// Adds the body using the specified body
+        ///     Adds the body using the specified body
         /// </summary>
         /// <param name="body">The body</param>
         public void AddBody(Body body)
@@ -180,7 +184,7 @@ namespace Alis.Core.Physic.Controllers
         }
 
         /// <summary>
-        /// Removes the body using the specified body
+        ///     Removes the body using the specified body
         /// </summary>
         /// <param name="body">The body</param>
         public void RemoveBody(Body body)

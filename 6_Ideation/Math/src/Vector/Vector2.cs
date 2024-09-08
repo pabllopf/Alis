@@ -530,7 +530,7 @@ namespace Alis.Core.Aspect.Math.Vector
         }
 
         /// <summary>
-        /// Normalizes this instance
+        ///     Normalizes this instance
         /// </summary>
         public void Normalize()
         {
@@ -543,7 +543,7 @@ namespace Alis.Core.Aspect.Math.Vector
         #region Fast ref methods
 
         /// <summary>
-        /// Dots the left
+        ///     Dots the left
         /// </summary>
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
@@ -554,7 +554,7 @@ namespace Alis.Core.Aspect.Math.Vector
         }
 
         /// <summary>
-        /// Mins the v 1
+        ///     Mins the v 1
         /// </summary>
         /// <param name="v1">The </param>
         /// <param name="v2">The </param>
@@ -568,7 +568,7 @@ namespace Alis.Core.Aspect.Math.Vector
         }
 
         /// <summary>
-        /// Maxes the v 1
+        ///     Maxes the v 1
         /// </summary>
         /// <param name="v1">The </param>
         /// <param name="v2">The </param>
@@ -579,7 +579,7 @@ namespace Alis.Core.Aspect.Math.Vector
         }
 
         /// <summary>
-        /// Distances the v 1
+        ///     Distances the v 1
         /// </summary>
         /// <param name="v1">The </param>
         /// <param name="v2">The </param>
@@ -592,7 +592,7 @@ namespace Alis.Core.Aspect.Math.Vector
         }
 
         /// <summary>
-        /// Distances the squared using the specified v 1
+        ///     Distances the squared using the specified v 1
         /// </summary>
         /// <param name="v1">The </param>
         /// <param name="v2">The </param>
@@ -605,7 +605,7 @@ namespace Alis.Core.Aspect.Math.Vector
         }
 
         /// <summary>
-        /// Adds the left
+        ///     Adds the left
         /// </summary>
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
@@ -616,7 +616,7 @@ namespace Alis.Core.Aspect.Math.Vector
         }
 
         /// <summary>
-        /// Subtracts the left
+        ///     Subtracts the left
         /// </summary>
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
@@ -627,7 +627,7 @@ namespace Alis.Core.Aspect.Math.Vector
         }
 
         /// <summary>
-        /// Multiplies the left
+        ///     Multiplies the left
         /// </summary>
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
@@ -638,7 +638,7 @@ namespace Alis.Core.Aspect.Math.Vector
         }
 
         /// <summary>
-        /// Multiplies the left
+        ///     Multiplies the left
         /// </summary>
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
@@ -649,7 +649,7 @@ namespace Alis.Core.Aspect.Math.Vector
         }
 
         /// <summary>
-        /// Divides the left
+        ///     Divides the left
         /// </summary>
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
@@ -663,7 +663,7 @@ namespace Alis.Core.Aspect.Math.Vector
         #endregion Fast ref methods
 
         /// <summary>
-        /// Returns the string using the specified f 2
+        ///     Returns the string using the specified f 2
         /// </summary>
         /// <param name="f2">The </param>
         /// <param name="cultureInfo">The culture info</param>

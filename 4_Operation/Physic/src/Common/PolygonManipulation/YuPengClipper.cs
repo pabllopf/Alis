@@ -27,30 +27,28 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 
-
 namespace Alis.Core.Physic.Common.PolygonManipulation
 {
     //Clipper contributed by Helge Backhaus
 
     /// <summary>
-    /// The yu peng clipper class
+    ///     The yu peng clipper class
     /// </summary>
     public static class YuPengClipper
     {
         /// <summary>
-        /// The clipper epsilon squared
+        ///     The clipper epsilon squared
         /// </summary>
         private const float ClipperEpsilonSquared = 1.192092896e-07f;
 
         /// <summary>
-        /// Unions the polygon 1
+        ///     Unions the polygon 1
         /// </summary>
         /// <param name="polygon1">The polygon</param>
         /// <param name="polygon2">The polygon</param>
@@ -59,7 +57,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         public static List<Vertices> Union(Vertices polygon1, Vertices polygon2, out PolyClipError error) => Execute(polygon1, polygon2, PolyClipType.Union, out error);
 
         /// <summary>
-        /// Differences the polygon 1
+        ///     Differences the polygon 1
         /// </summary>
         /// <param name="polygon1">The polygon</param>
         /// <param name="polygon2">The polygon</param>
@@ -68,7 +66,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         public static List<Vertices> Difference(Vertices polygon1, Vertices polygon2, out PolyClipError error) => Execute(polygon1, polygon2, PolyClipType.Difference, out error);
 
         /// <summary>
-        /// Intersects the polygon 1
+        ///     Intersects the polygon 1
         /// </summary>
         /// <param name="polygon1">The polygon</param>
         /// <param name="polygon2">The polygon</param>
@@ -497,7 +495,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         }
 
         /// <summary>
-        /// Describes whether vector equal
+        ///     Describes whether vector equal
         /// </summary>
         /// <param name="vec1">The vec</param>
         /// <param name="vec2">The vec</param>
@@ -510,7 +508,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         private sealed class Edge
         {
             /// <summary>
-            /// Initializes a new instance of the <see cref="Edge"/> class
+            ///     Initializes a new instance of the <see cref="Edge" /> class
             /// </summary>
             /// <param name="edgeStart">The edge start</param>
             /// <param name="edgeEnd">The edge end</param>
@@ -521,16 +519,17 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             }
 
             /// <summary>
-            /// Gets the value of the edge start
+            ///     Gets the value of the edge start
             /// </summary>
             public Vector2 EdgeStart { get; }
+
             /// <summary>
-            /// Gets the value of the edge end
+            ///     Gets the value of the edge end
             /// </summary>
             public Vector2 EdgeEnd { get; }
 
             /// <summary>
-            /// Gets the center
+            ///     Gets the center
             /// </summary>
             /// <returns>The vector</returns>
             public Vector2 GetCenter() => (EdgeStart + EdgeEnd) / 2f;
@@ -538,7 +537,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             public static Edge operator -(Edge e) => new Edge(e.EdgeEnd, e.EdgeStart);
 
             /// <summary>
-            /// Describes whether this instance equals
+            ///     Describes whether this instance equals
             /// </summary>
             /// <param name="obj">The obj</param>
             /// <returns>The bool</returns>
@@ -555,7 +554,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             }
 
             /// <summary>
-            /// Describes whether this instance equals
+            ///     Describes whether this instance equals
             /// </summary>
             /// <param name="e">The </param>
             /// <returns>The bool</returns>
@@ -572,7 +571,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             }
 
             /// <summary>
-            /// Gets the hash code
+            ///     Gets the hash code
             /// </summary>
             /// <returns>The int</returns>
             public override int GetHashCode() => EdgeStart.GetHashCode() ^ EdgeEnd.GetHashCode();

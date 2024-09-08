@@ -27,24 +27,21 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 
-
 namespace Alis.Core.Physic.Controllers
 {
     /// <summary>
-    /// The gravity controller class
+    ///     The gravity controller class
     /// </summary>
-    /// <seealso cref="Controller"/>
+    /// <seealso cref="Controller" />
     public class GravityController : Controller
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GravityController"/> class
+        ///     Initializes a new instance of the <see cref="GravityController" /> class
         /// </summary>
         /// <param name="strength">The strength</param>
         public GravityController(float strength)
@@ -57,7 +54,7 @@ namespace Alis.Core.Physic.Controllers
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GravityController"/> class
+        ///     Initializes a new instance of the <see cref="GravityController" /> class
         /// </summary>
         /// <param name="strength">The strength</param>
         /// <param name="maxRadius">The max radius</param>
@@ -73,32 +70,37 @@ namespace Alis.Core.Physic.Controllers
         }
 
         /// <summary>
-        /// Gets or sets the value of the min radius
+        ///     Gets or sets the value of the min radius
         /// </summary>
         public float MinRadius { get; set; }
+
         /// <summary>
-        /// Gets or sets the value of the max radius
+        ///     Gets or sets the value of the max radius
         /// </summary>
         public float MaxRadius { get; set; }
+
         /// <summary>
-        /// Gets or sets the value of the strength
+        ///     Gets or sets the value of the strength
         /// </summary>
         public float Strength { get; set; }
+
         /// <summary>
-        /// Gets or sets the value of the gravity type
+        ///     Gets or sets the value of the gravity type
         /// </summary>
         public GravityType GravityType { get; set; }
+
         /// <summary>
-        /// Gets or sets the value of the bodies
+        ///     Gets or sets the value of the bodies
         /// </summary>
         public List<Body> Bodies { get; set; }
+
         /// <summary>
-        /// Gets or sets the value of the points
+        ///     Gets or sets the value of the points
         /// </summary>
         public List<Vector2> Points { get; set; }
 
         /// <summary>
-        /// Updates the dt
+        ///     Updates the dt
         /// </summary>
         /// <param name="dt">The dt</param>
         public override void Update(float dt)
@@ -158,7 +160,7 @@ namespace Alis.Core.Physic.Controllers
         }
 
         /// <summary>
-        /// Adds the body using the specified body
+        ///     Adds the body using the specified body
         /// </summary>
         /// <param name="body">The body</param>
         public void AddBody(Body body)
@@ -167,7 +169,7 @@ namespace Alis.Core.Physic.Controllers
         }
 
         /// <summary>
-        /// Adds the point using the specified point
+        ///     Adds the point using the specified point
         /// </summary>
         /// <param name="point">The point</param>
         public void AddPoint(Vector2 point)

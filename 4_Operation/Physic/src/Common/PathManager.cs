@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
@@ -36,7 +34,6 @@ using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Common.Decomposition;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
-
 
 namespace Alis.Core.Physic.Common
 {
@@ -48,16 +45,17 @@ namespace Alis.Core.Physic.Common
         #region LinkType enum
 
         /// <summary>
-        /// The link type enum
+        ///     The link type enum
         /// </summary>
         public enum LinkType
         {
             /// <summary>
-            /// The revolute link type
+            ///     The revolute link type
             /// </summary>
             Revolute,
+
             /// <summary>
-            /// The slider link type
+            ///     The slider link type
             /// </summary>
             Slider
         }

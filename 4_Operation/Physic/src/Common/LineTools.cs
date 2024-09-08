@@ -27,13 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Dynamics;
-
 
 namespace Alis.Core.Physic.Common
 {
@@ -44,7 +41,7 @@ namespace Alis.Core.Physic.Common
     public static class LineTools
     {
         /// <summary>
-        /// Distances the between point and line segment using the specified point
+        ///     Distances the between point and line segment using the specified point
         /// </summary>
         /// <param name="point">The point</param>
         /// <param name="start">The start</param>
@@ -123,7 +120,7 @@ namespace Alis.Core.Physic.Common
 
         //From Mark Bayazit's convex decomposition algorithm
         /// <summary>
-        /// Lines the intersect using the specified p 1
+        ///     Lines the intersect using the specified p 1
         /// </summary>
         /// <param name="p1">The </param>
         /// <param name="p2">The </param>

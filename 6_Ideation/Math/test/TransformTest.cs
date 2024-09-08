@@ -75,7 +75,7 @@ namespace Alis.Core.Aspect.Math.Test
             Assert.Equal(rotation, transform.Rotation);
             Assert.Equal(scale, transform.Scale);
         }
-        
+
         /// <summary>
         ///     Tests that set sets position and angle correctly
         /// </summary>
@@ -91,6 +91,5 @@ namespace Alis.Core.Aspect.Math.Test
             Assert.Equal(newPosition, transform.Position);
             Assert.Equal(newAngle, transform.Rotation);
         }
-        
     }
 }

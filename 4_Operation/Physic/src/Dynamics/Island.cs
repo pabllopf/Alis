@@ -27,14 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Alis.Core.Physic.Dynamics.Joints;
-
 
 namespace Alis.Core.Physic.Dynamics
 {
@@ -44,83 +41,97 @@ namespace Alis.Core.Physic.Dynamics
     public class Island
     {
         /// <summary>
-        /// The linear sleep tolerance
+        ///     The linear sleep tolerance
         /// </summary>
         private const float LinTolSqr = Settings.LinearSleepTolerance * Settings.LinearSleepTolerance;
-        /// <summary>
-        /// The angular sleep tolerance
-        /// </summary>
-        private const float AngTolSqr = Settings.AngularSleepTolerance * Settings.AngularSleepTolerance;
-        /// <summary>
-        /// The contact manager
-        /// </summary>
-        private ContactManager _contactManager;
-        /// <summary>
-        /// The contacts
-        /// </summary>
-        private Contact[] _contacts;
-        /// <summary>
-        /// The contact solver
-        /// </summary>
-        private readonly ContactSolver _contactSolver = new ContactSolver();
-        /// <summary>
-        /// The joints
-        /// </summary>
-        private Joint[] _joints;
-        /// <summary>
-        /// The locks
-        /// </summary>
-        internal int[] _locks;
-        /// <summary>
-        /// The positions
-        /// </summary>
-        internal SolverPosition[] _positions;
 
         /// <summary>
-        /// The velocities
+        ///     The angular sleep tolerance
         /// </summary>
-        internal SolverVelocity[] _velocities;
+        private const float AngTolSqr = Settings.AngularSleepTolerance * Settings.AngularSleepTolerance;
+
         /// <summary>
-        /// The stopwatch
+        ///     The contact solver
+        /// </summary>
+        private readonly ContactSolver _contactSolver = new ContactSolver();
+
+        /// <summary>
+        ///     The stopwatch
         /// </summary>
         private readonly Stopwatch _watch = new Stopwatch();
 
         /// <summary>
-        /// The bodies
+        ///     The contact manager
+        /// </summary>
+        private ContactManager _contactManager;
+
+        /// <summary>
+        ///     The contacts
+        /// </summary>
+        private Contact[] _contacts;
+
+        /// <summary>
+        ///     The joints
+        /// </summary>
+        private Joint[] _joints;
+
+        /// <summary>
+        ///     The locks
+        /// </summary>
+        internal int[] _locks;
+
+        /// <summary>
+        ///     The positions
+        /// </summary>
+        internal SolverPosition[] _positions;
+
+        /// <summary>
+        ///     The velocities
+        /// </summary>
+        internal SolverVelocity[] _velocities;
+
+        /// <summary>
+        ///     The bodies
         /// </summary>
         public Body[] Bodies;
 
         /// <summary>
-        /// The body capacity
+        ///     The body capacity
         /// </summary>
         public int BodyCapacity;
+
         /// <summary>
-        /// The body count
+        ///     The body count
         /// </summary>
         public int BodyCount;
+
         /// <summary>
-        /// The contact capacity
+        ///     The contact capacity
         /// </summary>
         public int ContactCapacity;
+
         /// <summary>
-        /// The contact count
+        ///     The contact count
         /// </summary>
         public int ContactCount;
+
         /// <summary>
-        /// The joint capacity
+        ///     The joint capacity
         /// </summary>
         public int JointCapacity;
+
         /// <summary>
-        /// The joint count
+        ///     The joint count
         /// </summary>
         public int JointCount;
+
         /// <summary>
-        /// The joint update time
+        ///     The joint update time
         /// </summary>
         public TimeSpan JointUpdateTime;
 
         /// <summary>
-        /// Resets the body capacity
+        ///     Resets the body capacity
         /// </summary>
         /// <param name="bodyCapacity">The body capacity</param>
         /// <param name="contactCapacity">The contact capacity</param>
@@ -164,7 +175,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Clears this instance
+        ///     Clears this instance
         /// </summary>
         public void Clear()
         {
@@ -174,7 +185,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Solves the step
+        ///     Solves the step
         /// </summary>
         /// <param name="step">The step</param>
         /// <param name="gravity">The gravity</param>
@@ -400,7 +411,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Solves the toi using the specified sub step
+        ///     Solves the toi using the specified sub step
         /// </summary>
         /// <param name="subStep">The sub step</param>
         /// <param name="toiIndexA">The toi index</param>
@@ -499,7 +510,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Adds the body
+        ///     Adds the body
         /// </summary>
         /// <param name="body">The body</param>
         public void Add(Body body)
@@ -510,7 +521,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Adds the contact
+        ///     Adds the contact
         /// </summary>
         /// <param name="contact">The contact</param>
         public void Add(Contact contact)
@@ -520,7 +531,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Adds the joint
+        ///     Adds the joint
         /// </summary>
         /// <param name="joint">The joint</param>
         public void Add(Joint joint)
@@ -530,7 +541,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Reports the constraints
+        ///     Reports the constraints
         /// </summary>
         /// <param name="constraints">The constraints</param>
         private void Report(ContactVelocityConstraint[] constraints)

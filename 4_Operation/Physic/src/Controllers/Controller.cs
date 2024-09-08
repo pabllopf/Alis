@@ -27,36 +27,34 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using Alis.Core.Physic.Common.PhysicsLogic;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Physic.Controllers
 {
     /// <summary>
-    /// The controller class
+    ///     The controller class
     /// </summary>
-    /// <seealso cref="FilterData"/>
+    /// <seealso cref="FilterData" />
     public abstract class Controller : FilterData
     {
         /// <summary>
-        /// The cat 01
+        ///     The cat 01
         /// </summary>
         public ControllerCategory ControllerCategory = ControllerCategory.Cat01;
 
         /// <summary>
-        /// The enabled
+        ///     The enabled
         /// </summary>
         public bool Enabled = true;
 
         /// <summary>
-        /// Gets or sets the value of the world
+        ///     Gets or sets the value of the world
         /// </summary>
         public World World { get; internal set; }
 
         /// <summary>
-        /// Describes whether this instance is active on
+        ///     Describes whether this instance is active on
         /// </summary>
         /// <param name="body">The body</param>
         /// <returns>The bool</returns>
@@ -69,7 +67,7 @@ namespace Alis.Core.Physic.Controllers
         }
 
         /// <summary>
-        /// Updates the dt
+        ///     Updates the dt
         /// </summary>
         /// <param name="dt">The dt</param>
         public abstract void Update(float dt);

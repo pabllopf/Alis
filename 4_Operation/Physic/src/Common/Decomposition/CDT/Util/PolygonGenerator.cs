@@ -27,32 +27,28 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
-
-
 using System;
 using Alis.Core.Physic.Common.Decomposition.CDT.Polygon;
 
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
 {
     /// <summary>
-    /// The polygon generator class
+    ///     The polygon generator class
     /// </summary>
     internal class PolygonGenerator
     {
         /// <summary>
-        /// The random
+        ///     The random
         /// </summary>
         private static readonly Random RNG = new Random();
 
         /// <summary>
-        /// The pi
+        ///     The pi
         /// </summary>
         private static readonly double PI_2 = 2.0 * Math.PI;
 
         /// <summary>
-        /// Randoms the circle sweep using the specified scale
+        ///     Randoms the circle sweep using the specified scale
         /// </summary>
         /// <param name="scale">The scale</param>
         /// <param name="vertexCount">The vertex count</param>
@@ -94,7 +90,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
         }
 
         /// <summary>
-        /// Randoms the circle sweep 2 using the specified scale
+        ///     Randoms the circle sweep 2 using the specified scale
         /// </summary>
         /// <param name="scale">The scale</param>
         /// <param name="vertexCount">The vertex count</param>

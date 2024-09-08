@@ -27,13 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
-
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
@@ -44,194 +41,184 @@ namespace Alis.Core.Physic.Dynamics.Joints
     ///     drive the motion or to model joint friction.
     /// </summary>
     /// <remarks>
-    /// Linear constraint (point-to-line)
-    /// d = p2 - p1 = x2 + r2 - x1 - r1
-    /// C = dot(perp, d)
-    /// Cdot = dot(d, cross(w1, perp)) + dot(perp, v2 + cross(w2, r2) - v1 - cross(w1, r1))
-    ///      = -dot(perp, v1) - dot(cross(d + r1, perp), w1) + dot(perp, v2) + dot(cross(r2, perp), v2)
-    /// J = [-perp, -cross(d + r1, perp), perp, cross(r2,perp)]
-    ///
-    /// Angular constraint
-    /// C = a2 - a1 + a_initial
-    /// Cdot = w2 - w1
-    /// J = [0 0 -1 0 0 1]
-    ///
-    /// K = J * invM * JT
-    ///
-    /// J = [-a -s1 a s2]
+    ///     Linear constraint (point-to-line)
+    ///     d = p2 - p1 = x2 + r2 - x1 - r1
+    ///     C = dot(perp, d)
+    ///     Cdot = dot(d, cross(w1, perp)) + dot(perp, v2 + cross(w2, r2) - v1 - cross(w1, r1))
+    ///     = -dot(perp, v1) - dot(cross(d + r1, perp), w1) + dot(perp, v2) + dot(cross(r2, perp), v2)
+    ///     J = [-perp, -cross(d + r1, perp), perp, cross(r2,perp)]
+    ///     Angular constraint
+    ///     C = a2 - a1 + a_initial
+    ///     Cdot = w2 - w1
+    ///     J = [0 0 -1 0 0 1]
+    ///     K = J * invM * JT
+    ///     J = [-a -s1 a s2]
     ///     [0  -1  0  1]
-    /// a = perp
-    /// s1 = cross(d + r1, a) = cross(p2 - x1, a)
-    /// s2 = cross(r2, a) = cross(p2 - x2, a)
-    /// Motor/Limit linear constraint
-    /// C = dot(ax1, d)
-    /// Cdot = = -dot(ax1, v1) - dot(cross(d + r1, ax1), w1) + dot(ax1, v2) + dot(cross(r2, ax1), v2)
-    /// J = [-ax1 -cross(d+r1,ax1) ax1 cross(r2,ax1)]
-    /// Block Solver
-    /// We develop a block solver that includes the joint limit. This makes the limit stiff (inelastic) even
-    /// when the mass has poor distribution (leading to large torques about the joint anchor points).
-    ///
-    /// The Jacobian has 3 rows:
-    /// J = [-uT -s1 uT s2] // linear
+    ///     a = perp
+    ///     s1 = cross(d + r1, a) = cross(p2 - x1, a)
+    ///     s2 = cross(r2, a) = cross(p2 - x2, a)
+    ///     Motor/Limit linear constraint
+    ///     C = dot(ax1, d)
+    ///     Cdot = = -dot(ax1, v1) - dot(cross(d + r1, ax1), w1) + dot(ax1, v2) + dot(cross(r2, ax1), v2)
+    ///     J = [-ax1 -cross(d+r1,ax1) ax1 cross(r2,ax1)]
+    ///     Block Solver
+    ///     We develop a block solver that includes the joint limit. This makes the limit stiff (inelastic) even
+    ///     when the mass has poor distribution (leading to large torques about the joint anchor points).
+    ///     The Jacobian has 3 rows:
+    ///     J = [-uT -s1 uT s2] // linear
     ///     [0   -1   0  1] // angular
     ///     [-vT -a1 vT a2] // limit
-    ///
-    /// u = perp
-    /// v = axis
-    /// s1 = cross(d + r1, u), s2 = cross(r2, u)
-    /// a1 = cross(d + r1, v), a2 = cross(r2, v)
-    /// M * (v2 - v1) = JT * df
-    /// J * v2 = bias
-    ///
-    /// v2 = v1 + invM * JT * df
-    /// J * (v1 + invM * JT * df) = bias
-    /// K * df = bias - J * v1 = -Cdot
-    /// K = J * invM * JT
-    /// Cdot = J * v1 - bias
-    ///
-    /// Now solve for f2.
-    /// df = f2 - f1
-    /// K * (f2 - f1) = -Cdot
-    /// f2 = invK * (-Cdot) + f1
-    ///
-    /// Clamp accumulated limit impulse.
-    /// lower: f2(3) = max(f2(3), 0)
-    /// upper: f2(3) = min(f2(3), 0)
-    ///
-    /// Solve for correct f2(1:2)
-    /// K(1:2, 1:2) * f2(1:2) = -Cdot(1:2) - K(1:2,3) * f2(3) + K(1:2,1:3) * f1
-    ///                       = -Cdot(1:2) - K(1:2,3) * f2(3) + K(1:2,1:2) * f1(1:2) + K(1:2,3) * f1(3)
-    /// K(1:2, 1:2) * f2(1:2) = -Cdot(1:2) - K(1:2,3) * (f2(3) - f1(3)) + K(1:2,1:2) * f1(1:2)
-    /// f2(1:2) = invK(1:2,1:2) * (-Cdot(1:2) - K(1:2,3) * (f2(3) - f1(3))) + f1(1:2)
-    ///
-    /// Now compute impulse to be applied:
-    /// df = f2 - f1
+    ///     u = perp
+    ///     v = axis
+    ///     s1 = cross(d + r1, u), s2 = cross(r2, u)
+    ///     a1 = cross(d + r1, v), a2 = cross(r2, v)
+    ///     M * (v2 - v1) = JT * df
+    ///     J * v2 = bias
+    ///     v2 = v1 + invM * JT * df
+    ///     J * (v1 + invM * JT * df) = bias
+    ///     K * df = bias - J * v1 = -Cdot
+    ///     K = J * invM * JT
+    ///     Cdot = J * v1 - bias
+    ///     Now solve for f2.
+    ///     df = f2 - f1
+    ///     K * (f2 - f1) = -Cdot
+    ///     f2 = invK * (-Cdot) + f1
+    ///     Clamp accumulated limit impulse.
+    ///     lower: f2(3) = max(f2(3), 0)
+    ///     upper: f2(3) = min(f2(3), 0)
+    ///     Solve for correct f2(1:2)
+    ///     K(1:2, 1:2) * f2(1:2) = -Cdot(1:2) - K(1:2,3) * f2(3) + K(1:2,1:3) * f1
+    ///     = -Cdot(1:2) - K(1:2,3) * f2(3) + K(1:2,1:2) * f1(1:2) + K(1:2,3) * f1(3)
+    ///     K(1:2, 1:2) * f2(1:2) = -Cdot(1:2) - K(1:2,3) * (f2(3) - f1(3)) + K(1:2,1:2) * f1(1:2)
+    ///     f2(1:2) = invK(1:2,1:2) * (-Cdot(1:2) - K(1:2,3) * (f2(3) - f1(3))) + f1(1:2)
+    ///     Now compute impulse to be applied:
+    ///     df = f2 - f1
     /// </remarks>
     public class PrismaticJoint : Joint
     {
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         private float _a1, _a2;
 
         /// <summary>
-        /// The perp
+        ///     The perp
         /// </summary>
         private Vector2 _axis, _perp;
 
         /// <summary>
-        /// The axis
+        ///     The axis
         /// </summary>
         private Vector2 _axis1;
 
         /// <summary>
-        /// The enable limit
+        ///     The enable limit
         /// </summary>
         private bool _enableLimit;
 
         /// <summary>
-        /// The enable motor
+        ///     The enable motor
         /// </summary>
         private bool _enableMotor;
 
         /// <summary>
-        /// The impulse
+        ///     The impulse
         /// </summary>
         private Vector3 _impulse;
 
         // Solver temp
         /// <summary>
-        /// The index
+        ///     The index
         /// </summary>
         private int _indexA;
 
         /// <summary>
-        /// The index
+        ///     The index
         /// </summary>
         private int _indexB;
 
         /// <summary>
-        /// The inv ia
-        /// </summary>
-        private float invIa;
-
-        /// <summary>
-        /// The inv ib
-        /// </summary>
-        private float invIb;
-
-        /// <summary>
-        /// The inv mass
+        ///     The inv mass
         /// </summary>
         private float _invMassA;
 
         /// <summary>
-        /// The inv mass
+        ///     The inv mass
         /// </summary>
         private float _invMassB;
 
         /// <summary>
-        /// The 
-        /// </summary>
-        private Mat33 k;
-
-        /// <summary>
-        /// The limit state
+        ///     The limit state
         /// </summary>
         private LimitState _limitState;
 
         /// <summary>
-        /// The local center
+        ///     The local center
         /// </summary>
         private Vector2 _localCenterA;
 
         /// <summary>
-        /// The local center
+        ///     The local center
         /// </summary>
         private Vector2 _localCenterB;
 
         /// <summary>
-        /// The local axis
+        ///     The local axis
         /// </summary>
         private Vector2 _localXAxis;
 
         /// <summary>
-        /// The local axis
+        ///     The local axis
         /// </summary>
         private Vector2 _localYAxisA;
 
         /// <summary>
-        /// The lower translation
+        ///     The lower translation
         /// </summary>
         private float _lowerTranslation;
 
         /// <summary>
-        /// The max motor force
+        ///     The max motor force
         /// </summary>
         private float _maxMotorForce;
 
         /// <summary>
-        /// The motor mass
+        ///     The motor mass
         /// </summary>
         private float _motorMass;
 
         /// <summary>
-        /// The motor speed
+        ///     The motor speed
         /// </summary>
         private float _motorSpeed;
 
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         private float _s1, _s2;
 
         /// <summary>
-        /// The upper translation
+        ///     The upper translation
         /// </summary>
         private float _upperTranslation;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PrismaticJoint"/> class
+        ///     The inv ia
+        /// </summary>
+        private float invIa;
+
+        /// <summary>
+        ///     The inv ib
+        /// </summary>
+        private float invIb;
+
+        /// <summary>
+        ///     The
+        /// </summary>
+        private Mat33 k;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="PrismaticJoint" /> class
         /// </summary>
         internal PrismaticJoint() => JointType = JointType.Prismatic;
 
@@ -256,7 +243,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PrismaticJoint"/> class
+        ///     Initializes a new instance of the <see cref="PrismaticJoint" /> class
         /// </summary>
         /// <param name="bodyA">The body</param>
         /// <param name="bodyB">The body</param>
@@ -280,7 +267,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public Vector2 LocalAnchorB { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the world anchor a
+        ///     Gets or sets the value of the world anchor a
         /// </summary>
         public override Vector2 WorldAnchorA
         {
@@ -289,7 +276,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Gets or sets the value of the world anchor b
+        ///     Gets or sets the value of the world anchor b
         /// </summary>
         public override Vector2 WorldAnchorB
         {
@@ -387,7 +374,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             get => _upperTranslation;
             set
             {
-                if (Math.Abs(value - _upperTranslation) >float.Epsilon)
+                if (Math.Abs(value - _upperTranslation) > float.Epsilon)
                 {
                     WakeBodies();
                     _upperTranslation = value;
@@ -458,7 +445,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _localYAxisA = MathUtils.Cross(1.0f, ref _localXAxis);
             }
         }
-                
+
         /// <summary>
         ///     The axis in local coordinates relative to BodyA
         /// </summary>
@@ -470,7 +457,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public float ReferenceAngle { get; set; }
 
         /// <summary>
-        /// Initializes the local anchor a
+        ///     Initializes the local anchor a
         /// </summary>
         /// <param name="localAnchorA">The local anchor</param>
         /// <param name="localAnchorB">The local anchor</param>
@@ -520,21 +507,21 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public float GetMotorForce(float invDt) => invDt * MotorImpulse;
 
         /// <summary>
-        /// Gets the reaction force using the specified inv dt
+        ///     Gets the reaction force using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vector</returns>
         public override Vector2 GetReactionForce(float invDt) => invDt * (_impulse.X * _perp + (MotorImpulse + _impulse.Z) * _axis);
 
         /// <summary>
-        /// Gets the reaction torque using the specified inv dt
+        ///     Gets the reaction torque using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The float</returns>
         public override float GetReactionTorque(float invDt) => invDt * _impulse.Y;
 
         /// <summary>
-        /// Inits the velocity constraints using the specified data
+        ///     Inits the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
@@ -677,7 +664,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Solves the velocity constraints using the specified data
+        ///     Solves the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(ref SolverData data)
@@ -778,7 +765,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Describes whether this instance solve position constraints
+        ///     Describes whether this instance solve position constraints
         /// </summary>
         /// <param name="data">The data</param>
         /// <returns>The bool</returns>

@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -72,7 +70,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Gets the point states using the specified state 1
+        ///     Gets the point states using the specified state 1
         /// </summary>
         /// <param name="state1">The state</param>
         /// <param name="state2">The state</param>
@@ -770,7 +768,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Finds the incident edge using the specified c
+        ///     Finds the incident edge using the specified c
         /// </summary>
         /// <param name="c">The </param>
         /// <param name="poly1">The poly</param>
@@ -831,12 +829,12 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// The ep collider class
+        ///     The ep collider class
         /// </summary>
         private static class EPCollider
         {
             /// <summary>
-            /// Collides the manifold
+            ///     Collides the manifold
             /// </summary>
             /// <param name="manifold">The manifold</param>
             /// <param name="edgeA">The edge</param>
@@ -1257,7 +1255,7 @@ namespace Alis.Core.Physic.Collision
             }
 
             /// <summary>
-            /// Computes the edge separation using the specified polygon b
+            ///     Computes the edge separation using the specified polygon b
             /// </summary>
             /// <param name="polygonB">The polygon</param>
             /// <param name="normal">The normal</param>
@@ -1284,7 +1282,7 @@ namespace Alis.Core.Physic.Collision
             }
 
             /// <summary>
-            /// Computes the polygon separation using the specified polygon b
+            ///     Computes the polygon separation using the specified polygon b
             /// </summary>
             /// <param name="polygonB">The polygon</param>
             /// <param name="normal">The normal</param>
@@ -1353,20 +1351,22 @@ namespace Alis.Core.Physic.Collision
             internal struct TempPolygon
             {
                 /// <summary>
-                /// The vertices
+                ///     The vertices
                 /// </summary>
                 public readonly Vector2[] Vertices;
+
                 /// <summary>
-                /// The normals
+                ///     The normals
                 /// </summary>
                 public readonly Vector2[] Normals;
+
                 /// <summary>
-                /// The count
+                ///     The count
                 /// </summary>
                 public int Count;
 
                 /// <summary>
-                /// Initializes a new instance of the <see cref="TempPolygon"/> class
+                ///     Initializes a new instance of the <see cref="TempPolygon" /> class
                 /// </summary>
                 /// <param name="maxPolygonVertices">The max polygon vertices</param>
                 internal TempPolygon(int maxPolygonVertices)

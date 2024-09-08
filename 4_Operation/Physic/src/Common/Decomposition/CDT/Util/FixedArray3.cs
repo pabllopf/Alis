@@ -27,10 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
-
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -38,17 +34,17 @@ using System.Collections.Generic;
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
 {
     /// <summary>
-    /// The fixed array
+    ///     The fixed array
     /// </summary>
     internal struct FixedArray3<T> : IEnumerable<T> where T : class
     {
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public T _0, _1, _2;
 
         /// <summary>
-        /// The index out of range exception
+        ///     The index out of range exception
         /// </summary>
         public T this[int index]
         {
@@ -88,13 +84,13 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
         #region IEnumerable<T> Members
 
         /// <summary>
-        /// Gets the enumerator
+        ///     Gets the enumerator
         /// </summary>
         /// <returns>An enumerator of t</returns>
         public IEnumerator<T> GetEnumerator() => Enumerate().GetEnumerator();
 
         /// <summary>
-        /// Gets the enumerator
+        ///     Gets the enumerator
         /// </summary>
         /// <returns>The enumerator</returns>
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
@@ -102,7 +98,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
         #endregion
 
         /// <summary>
-        /// Describes whether this instance contains
+        ///     Describes whether this instance contains
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
@@ -115,7 +111,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
         }
 
         /// <summary>
-        /// Indexes the of using the specified value
+        ///     Indexes the of using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The int</returns>
@@ -128,7 +124,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
         }
 
         /// <summary>
-        /// Clears this instance
+        ///     Clears this instance
         /// </summary>
         public void Clear()
         {
@@ -136,7 +132,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
         }
 
         /// <summary>
-        /// Clears the value
+        ///     Clears the value
         /// </summary>
         /// <param name="value">The value</param>
         public void Clear(T value)
@@ -147,7 +143,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
         }
 
         /// <summary>
-        /// Enumerates this instance
+        ///     Enumerates this instance
         /// </summary>
         /// <returns>An enumerable of t</returns>
         private IEnumerable<T> Enumerate()

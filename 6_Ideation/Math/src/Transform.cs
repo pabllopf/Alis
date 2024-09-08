@@ -55,7 +55,7 @@ namespace Alis.Core.Aspect.Math
         ///     The scale
         /// </summary>
         public Vector2 Scale;
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="Transform" /> class
         /// </summary>

@@ -27,12 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
-
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
@@ -68,109 +65,126 @@ namespace Alis.Core.Physic.Dynamics.Joints
     public class GearJoint : Joint
     {
         /// <summary>
-        /// The body
+        ///     The body
         /// </summary>
         private readonly Body _bodyA;
+
         /// <summary>
-        /// The body
+        ///     The body
         /// </summary>
         private readonly Body _bodyB;
+
         /// <summary>
-        /// The body
+        ///     The body
         /// </summary>
         private readonly Body _bodyC;
+
         /// <summary>
-        /// The body
+        ///     The body
         /// </summary>
         private readonly Body _bodyD;
 
         /// <summary>
-        /// The constant
+        ///     The constant
         /// </summary>
         private readonly float _constant;
+
+        // Solver shared
         /// <summary>
-        /// The 
+        ///     The local anchor
+        /// </summary>
+        private readonly Vector2 _localAnchorA;
+
+        /// <summary>
+        ///     The local anchor
+        /// </summary>
+        private readonly Vector2 _localAnchorB;
+
+        /// <summary>
+        ///     The local anchor
+        /// </summary>
+        private readonly Vector2 _localAnchorC;
+
+        /// <summary>
+        ///     The local anchor
+        /// </summary>
+        private readonly Vector2 _localAnchorD;
+
+        /// <summary>
+        ///     The reference angle
+        /// </summary>
+        private readonly float _referenceAngleA;
+
+        /// <summary>
+        ///     The reference angle
+        /// </summary>
+        private readonly float _referenceAngleB;
+
+        /// <summary>
+        ///     The type
+        /// </summary>
+        private readonly JointType _typeA;
+
+        /// <summary>
+        ///     The type
+        /// </summary>
+        private readonly JointType _typeB;
+
+        /// <summary>
+        ///     The
         /// </summary>
         private float _iA, _iB, _iC, _iD;
 
         /// <summary>
-        /// The impulse
+        ///     The impulse
         /// </summary>
         private float _impulse;
 
         // Solver temp
         /// <summary>
-        /// The index
+        ///     The index
         /// </summary>
         private int _indexA, _indexB, _indexC, _indexD;
+
         /// <summary>
-        /// The jv bd
+        ///     The jv bd
         /// </summary>
         private Vector2 _JvAC, _JvBD;
+
         /// <summary>
-        /// The jw
+        ///     The jw
         /// </summary>
         private float _JwA, _JwB, _JwC, _JwD;
+
         /// <summary>
-        /// The lc
+        ///     The lc
         /// </summary>
         private Vector2 _lcA, _lcB, _lcC, _lcD;
 
-        // Solver shared
         /// <summary>
-        /// The local anchor
-        /// </summary>
-        private readonly Vector2 _localAnchorA;
-        /// <summary>
-        /// The local anchor
-        /// </summary>
-        private readonly Vector2 _localAnchorB;
-        /// <summary>
-        /// The local anchor
-        /// </summary>
-        private readonly Vector2 _localAnchorC;
-        /// <summary>
-        /// The local anchor
-        /// </summary>
-        private readonly Vector2 _localAnchorD;
-
-        /// <summary>
-        /// The local axis
+        ///     The local axis
         /// </summary>
         private Vector2 _localAxisC;
-        /// <summary>
-        /// The local axis
-        /// </summary>
-        private Vector2 _localAxisD;
-        /// <summary>
-        /// The 
-        /// </summary>
-        private float _mA, _mB, _mC, _mD;
-        /// <summary>
-        /// The mass
-        /// </summary>
-        private float _mass;
-        /// <summary>
-        /// The ratio
-        /// </summary>
-        private float _ratio;
 
         /// <summary>
-        /// The reference angle
+        ///     The local axis
         /// </summary>
-        private readonly float _referenceAngleA;
+        private Vector2 _localAxisD;
+
         /// <summary>
-        /// The reference angle
+        ///     The
         /// </summary>
-        private readonly float _referenceAngleB;
+        private float _mA, _mB, _mC, _mD;
+
         /// <summary>
-        /// The type
+        ///     The mass
         /// </summary>
-        private readonly JointType _typeA;
+        private float _mass;
+
         /// <summary>
-        /// The type
+        ///     The ratio
         /// </summary>
-        private readonly JointType _typeB;
+        private float _ratio;
 
         /// <summary>
         ///     Requires two existing revolute or prismatic joints (any combination will work).
@@ -198,7 +212,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             float coordinateA, coordinateB;
 
-            
 
             _bodyC = JointA.BodyA;
             _bodyA = JointA.BodyB;
@@ -270,7 +283,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Gets or sets the value of the world anchor a
+        ///     Gets or sets the value of the world anchor a
         /// </summary>
         public override Vector2 WorldAnchorA
         {
@@ -279,7 +292,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Gets or sets the value of the world anchor b
+        ///     Gets or sets the value of the world anchor b
         /// </summary>
         public override Vector2 WorldAnchorB
         {
@@ -311,7 +324,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public Joint JointB { get; }
 
         /// <summary>
-        /// Gets the reaction force using the specified inv dt
+        ///     Gets the reaction force using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vector</returns>
@@ -322,7 +335,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Gets the reaction torque using the specified inv dt
+        ///     Gets the reaction torque using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The float</returns>
@@ -333,7 +346,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Inits the velocity constraints using the specified data
+        ///     Inits the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
@@ -444,7 +457,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Solves the velocity constraints using the specified data
+        ///     Solves the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(ref SolverData data)
@@ -484,7 +497,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Describes whether this instance solve position constraints
+        ///     Describes whether this instance solve position constraints
         /// </summary>
         /// <param name="data">The data</param>
         /// <returns>The bool</returns>
@@ -586,7 +599,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.positions[_indexD].c = cD;
             data.positions[_indexD].a = aD;
 
-            
+
             return linearError < Settings.LinearSlop;
         }
     }

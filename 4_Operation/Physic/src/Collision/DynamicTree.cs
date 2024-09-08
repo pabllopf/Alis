@@ -33,7 +33,6 @@ using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 
-
 namespace Alis.Core.Physic.Collision
 {
     /// <summary>
@@ -47,35 +46,42 @@ namespace Alis.Core.Physic.Collision
     public class DynamicTree<TNode>
     {
         /// <summary>
-        /// The null node
+        ///     The null node
         /// </summary>
         internal const int NullNode = -1;
+
         /// <summary>
-        /// The free list
-        /// </summary>
-        private int _freeList;
-        /// <summary>
-        /// The node capacity
-        /// </summary>
-        private int _nodeCapacity;
-        /// <summary>
-        /// The node count
-        /// </summary>
-        private int _nodeCount;
-        /// <summary>
-        /// The nodes
-        /// </summary>
-        private TreeNode<TNode>[] _nodes;
-        /// <summary>
-        /// The stack
+        ///     The stack
         /// </summary>
         private readonly Stack<int> _queryStack = new Stack<int>(256);
+
         /// <summary>
-        /// The stack
+        ///     The stack
         /// </summary>
         private readonly Stack<int> _raycastStack = new Stack<int>(256);
+
         /// <summary>
-        /// The root
+        ///     The free list
+        /// </summary>
+        private int _freeList;
+
+        /// <summary>
+        ///     The node capacity
+        /// </summary>
+        private int _nodeCapacity;
+
+        /// <summary>
+        ///     The node count
+        /// </summary>
+        private int _nodeCount;
+
+        /// <summary>
+        ///     The nodes
+        /// </summary>
+        private TreeNode<TNode>[] _nodes;
+
+        /// <summary>
+        ///     The root
         /// </summary>
         private int _root;
 
@@ -463,7 +469,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Allocates the node
+        ///     Allocates the node
         /// </summary>
         /// <returns>The node id</returns>
         private int AllocateNode()
@@ -506,7 +512,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Frees the node using the specified node id
+        ///     Frees the node using the specified node id
         /// </summary>
         /// <param name="nodeId">The node id</param>
         private void FreeNode(int nodeId)
@@ -520,7 +526,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Inserts the leaf using the specified leaf
+        ///     Inserts the leaf using the specified leaf
         /// </summary>
         /// <param name="leaf">The leaf</param>
         private void InsertLeaf(int leaf)
@@ -662,7 +668,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Removes the leaf using the specified leaf
+        ///     Removes the leaf using the specified leaf
         /// </summary>
         /// <param name="leaf">The leaf</param>
         private void RemoveLeaf(int leaf)
@@ -908,7 +914,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Validates the structure using the specified index
+        ///     Validates the structure using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         public void ValidateStructure(int index)
@@ -947,7 +953,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Validates the metrics using the specified index
+        ///     Validates the metrics using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         public void ValidateMetrics(int index)

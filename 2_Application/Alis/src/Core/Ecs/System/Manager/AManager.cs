@@ -150,11 +150,6 @@ namespace Alis.Core.Ecs.System.Manager
         ///     Ons the dispatch events
         /// </summary>
         public virtual void OnDispatchEvents() => Logger.Trace("Manager dispatch events.");
-        
-        /// <summary>
-        /// Ons the physics update
-        /// </summary>
-        public virtual void OnPhysicUpdate() => Logger.Trace("Manager physics update.");
 
         /// <summary>
         ///     Ons the calculate
@@ -195,5 +190,10 @@ namespace Alis.Core.Ecs.System.Manager
         ///     Ons the destroy
         /// </summary>
         public virtual void OnDestroy() => Logger.Trace("Manager destroyed.");
+
+        /// <summary>
+        ///     Ons the physics update
+        /// </summary>
+        public virtual void OnPhysicUpdate() => Logger.Trace("Manager physics update.");
     }
 }

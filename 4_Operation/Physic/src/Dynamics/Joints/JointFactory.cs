@@ -27,10 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using Alis.Core.Aspect.Math.Vector;
-
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
@@ -40,7 +37,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
     public static class JointFactory
     {
         /// <summary>
-        /// Creates the motor joint using the specified world
+        ///     Creates the motor joint using the specified world
         /// </summary>
         /// <param name="world">The world</param>
         /// <param name="bodyA">The body</param>
@@ -55,7 +52,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Creates the revolute joint using the specified world
+        ///     Creates the revolute joint using the specified world
         /// </summary>
         /// <param name="world">The world</param>
         /// <param name="bodyA">The body</param>
@@ -72,7 +69,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Creates the revolute joint using the specified world
+        ///     Creates the revolute joint using the specified world
         /// </summary>
         /// <param name="world">The world</param>
         /// <param name="bodyA">The body</param>
@@ -88,7 +85,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Creates the rope joint using the specified world
+        ///     Creates the rope joint using the specified world
         /// </summary>
         /// <param name="world">The world</param>
         /// <param name="bodyA">The body</param>
@@ -105,7 +102,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Creates the weld joint using the specified world
+        ///     Creates the weld joint using the specified world
         /// </summary>
         /// <param name="world">The world</param>
         /// <param name="bodyA">The body</param>
@@ -122,7 +119,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Creates the prismatic joint using the specified world
+        ///     Creates the prismatic joint using the specified world
         /// </summary>
         /// <param name="world">The world</param>
         /// <param name="bodyA">The body</param>
@@ -139,7 +136,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Creates the wheel joint using the specified world
+        ///     Creates the wheel joint using the specified world
         /// </summary>
         /// <param name="world">The world</param>
         /// <param name="bodyA">The body</param>
@@ -156,7 +153,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Creates the wheel joint using the specified world
+        ///     Creates the wheel joint using the specified world
         /// </summary>
         /// <param name="world">The world</param>
         /// <param name="bodyA">The body</param>
@@ -166,7 +163,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public static WheelJoint CreateWheelJoint(World world, Body bodyA, Body bodyB, Vector2 axis) => CreateWheelJoint(world, bodyA, bodyB, Vector2.Zero, axis);
 
         /// <summary>
-        /// Creates the angle joint using the specified world
+        ///     Creates the angle joint using the specified world
         /// </summary>
         /// <param name="world">The world</param>
         /// <param name="bodyA">The body</param>
@@ -180,7 +177,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Creates the distance joint using the specified world
+        ///     Creates the distance joint using the specified world
         /// </summary>
         /// <param name="world">The world</param>
         /// <param name="bodyA">The body</param>
@@ -197,7 +194,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Creates the distance joint using the specified world
+        ///     Creates the distance joint using the specified world
         /// </summary>
         /// <param name="world">The world</param>
         /// <param name="bodyA">The body</param>
@@ -206,7 +203,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public static DistanceJoint CreateDistanceJoint(World world, Body bodyA, Body bodyB) => CreateDistanceJoint(world, bodyA, bodyB, Vector2.Zero, Vector2.Zero);
 
         /// <summary>
-        /// Creates the friction joint using the specified world
+        ///     Creates the friction joint using the specified world
         /// </summary>
         /// <param name="world">The world</param>
         /// <param name="bodyA">The body</param>
@@ -222,7 +219,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Creates the friction joint using the specified world
+        ///     Creates the friction joint using the specified world
         /// </summary>
         /// <param name="world">The world</param>
         /// <param name="bodyA">The body</param>
@@ -231,7 +228,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public static FrictionJoint CreateFrictionJoint(World world, Body bodyA, Body bodyB) => CreateFrictionJoint(world, bodyA, bodyB, Vector2.Zero);
 
         /// <summary>
-        /// Creates the gear joint using the specified world
+        ///     Creates the gear joint using the specified world
         /// </summary>
         /// <param name="world">The world</param>
         /// <param name="bodyA">The body</param>
@@ -248,7 +245,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Creates the pulley joint using the specified world
+        ///     Creates the pulley joint using the specified world
         /// </summary>
         /// <param name="world">The world</param>
         /// <param name="bodyA">The body</param>
@@ -268,7 +265,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Creates the fixed mouse joint using the specified world
+        ///     Creates the fixed mouse joint using the specified world
         /// </summary>
         /// <param name="world">The world</param>
         /// <param name="body">The body</param>

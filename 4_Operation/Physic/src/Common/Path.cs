@@ -27,13 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System;
 using System.Collections.Generic;
 using System.Text;
 using Alis.Core.Aspect.Math.Vector;
-
 
 namespace Alis.Core.Physic.Common
 {
@@ -49,7 +46,7 @@ namespace Alis.Core.Physic.Common
     public class Path
     {
         /// <summary>
-        /// The delta
+        ///     The delta
         /// </summary>
         private float _deltaT;
 
@@ -159,7 +156,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Returns the string
+        ///     Returns the string
         /// </summary>
         /// <returns>The string</returns>
         public override string ToString()
@@ -199,7 +196,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Gets the position using the specified time
+        ///     Gets the position using the specified time
         /// </summary>
         /// <param name="time">The time</param>
         /// <exception cref="Exception">You need at least 2 control points to calculate a position.</exception>
@@ -268,7 +265,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Calcs the catmull rom using the specified p 0
+        ///     Calcs the catmull rom using the specified p 0
         /// </summary>
         /// <param name="p0">The </param>
         /// <param name="p1">The </param>
@@ -321,7 +318,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Adds the point
+        ///     Adds the point
         /// </summary>
         /// <param name="point">The point</param>
         public void Add(Vector2 point)
@@ -331,7 +328,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Removes the point
+        ///     Removes the point
         /// </summary>
         /// <param name="point">The point</param>
         public void Remove(Vector2 point)
@@ -341,7 +338,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Removes the at using the specified index
+        ///     Removes the at using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         public void RemoveAt(int index)
@@ -351,7 +348,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Gets the length
+        ///     Gets the length
         /// </summary>
         /// <returns>The length</returns>
         public float GetLength()
@@ -371,7 +368,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Subdivides the evenly using the specified divisions
+        ///     Subdivides the evenly using the specified divisions
         /// </summary>
         /// <param name="divisions">The divisions</param>
         /// <returns>The verts</returns>

@@ -27,10 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
-
-
 using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
@@ -38,7 +34,6 @@ using Alis.Core.Physic.Common.Decomposition.CDT;
 using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay;
 using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep;
 using Alis.Core.Physic.Common.Decomposition.CDT.Polygon;
-
 
 namespace Alis.Core.Physic.Common.Decomposition
 {

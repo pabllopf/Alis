@@ -1,4 +1,4 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -38,7 +38,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
     public class ContactListHead : Contact, IEnumerable<Contact>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ContactListHead"/> class
+        ///     Initializes a new instance of the <see cref="ContactListHead" /> class
         /// </summary>
         internal ContactListHead() : base(null, 0, null, 0)
         {
@@ -47,13 +47,13 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Gets the enumerator
+        ///     Gets the enumerator
         /// </summary>
         /// <returns>An enumerator of contact</returns>
         IEnumerator<Contact> IEnumerable<Contact>.GetEnumerator() => new ContactEnumerator(this);
 
         /// <summary>
-        /// Gets the enumerator
+        ///     Gets the enumerator
         /// </summary>
         /// <returns>The enumerator</returns>
         IEnumerator IEnumerable.GetEnumerator() => new ContactEnumerator(this);
@@ -62,28 +62,28 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         #region Nested type: ContactEnumerator
 
         /// <summary>
-        /// The contact enumerator
+        ///     The contact enumerator
         /// </summary>
         private struct ContactEnumerator : IEnumerator<Contact>
         {
             /// <summary>
-            /// The head
+            ///     The head
             /// </summary>
             private ContactListHead _head;
 
             /// <summary>
-            /// Gets or sets the value of the current
+            ///     Gets or sets the value of the current
             /// </summary>
             public Contact Current { get; private set; }
 
             /// <summary>
-            /// Gets the value of the current
+            ///     Gets the value of the current
             /// </summary>
             object IEnumerator.Current => Current;
 
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="ContactEnumerator"/> class
+            ///     Initializes a new instance of the <see cref="ContactEnumerator" /> class
             /// </summary>
             /// <param name="contact">The contact</param>
             public ContactEnumerator(ContactListHead contact)
@@ -93,7 +93,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             }
 
             /// <summary>
-            /// Resets this instance
+            ///     Resets this instance
             /// </summary>
             public void Reset()
             {
@@ -101,7 +101,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             }
 
             /// <summary>
-            /// Describes whether this instance move next
+            ///     Describes whether this instance move next
             /// </summary>
             /// <returns>The bool</returns>
             public bool MoveNext()
@@ -111,7 +111,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             }
 
             /// <summary>
-            /// Disposes this instance
+            ///     Disposes this instance
             /// </summary>
             public void Dispose()
             {

@@ -27,23 +27,21 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 namespace Alis.Core.Physic.Common.Decomposition.Seidel
 {
     /// <summary>
-    /// The sink class
+    ///     The sink class
     /// </summary>
-    /// <seealso cref="Node"/>
+    /// <seealso cref="Node" />
     internal class Sink : Node
     {
         /// <summary>
-        /// The trapezoid
+        ///     The trapezoid
         /// </summary>
         public Trapezoid Trapezoid;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Sink"/> class
+        ///     Initializes a new instance of the <see cref="Sink" /> class
         /// </summary>
         /// <param name="trapezoid">The trapezoid</param>
         private Sink(Trapezoid trapezoid)
@@ -54,7 +52,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         }
 
         /// <summary>
-        /// Isinks the trapezoid
+        ///     Isinks the trapezoid
         /// </summary>
         /// <param name="trapezoid">The trapezoid</param>
         /// <returns>The sink</returns>
@@ -67,7 +65,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         }
 
         /// <summary>
-        /// Locates the edge
+        ///     Locates the edge
         /// </summary>
         /// <param name="edge">The edge</param>
         /// <returns>The sink</returns>

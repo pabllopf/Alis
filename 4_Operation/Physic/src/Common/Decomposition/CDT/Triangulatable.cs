@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ITriangulatable.cs
+//  File:Triangulatable.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,50 +27,51 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
-
-
 using System.Collections.Generic;
 using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay;
 
 namespace Alis.Core.Physic.Common.Decomposition.CDT
 {
     /// <summary>
-    /// The triangulatable interface
+    ///     The triangulatable interface
     /// </summary>
     internal interface Triangulatable
     {
         /// <summary>
-        /// Gets the value of the points
+        ///     Gets the value of the points
         /// </summary>
         IList<TriangulationPoint> Points { get; } // MM: Neither of these are used via interface (yet?)
+
         /// <summary>
-        /// Gets the value of the triangles
+        ///     Gets the value of the triangles
         /// </summary>
         IList<DelaunayTriangle> Triangles { get; }
+
         /// <summary>
-        /// Gets the value of the triangulation mode
+        ///     Gets the value of the triangulation mode
         /// </summary>
         TriangulationMode TriangulationMode { get; }
+
         /// <summary>
-        /// Prepares the triangulation using the specified tcx
+        ///     Prepares the triangulation using the specified tcx
         /// </summary>
         /// <param name="tcx">The tcx</param>
         void PrepareTriangulation(TriangulationContext tcx);
 
         /// <summary>
-        /// Adds the triangle using the specified t
+        ///     Adds the triangle using the specified t
         /// </summary>
         /// <param name="t">The </param>
         void AddTriangle(DelaunayTriangle t);
+
         /// <summary>
-        /// Adds the triangles using the specified list
+        ///     Adds the triangles using the specified list
         /// </summary>
         /// <param name="list">The list</param>
         void AddTriangles(IEnumerable<DelaunayTriangle> list);
+
         /// <summary>
-        /// Clears the triangles
+        ///     Clears the triangles
         /// </summary>
         void ClearTriangles();
     }

@@ -27,25 +27,23 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System;
 using System.Collections.Generic;
 
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
 {
     /// <summary>
-    /// The point generator class
+    ///     The point generator class
     /// </summary>
     internal class PointGenerator
     {
         /// <summary>
-        /// The random
+        ///     The random
         /// </summary>
         private static readonly Random RNG = new Random();
 
         /// <summary>
-        /// Uniforms the distribution using the specified n
+        ///     Uniforms the distribution using the specified n
         /// </summary>
         /// <param name="n">The </param>
         /// <param name="scale">The scale</param>
@@ -62,7 +60,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
         }
 
         /// <summary>
-        /// Uniforms the grid using the specified n
+        ///     Uniforms the grid using the specified n
         /// </summary>
         /// <param name="n">The </param>
         /// <param name="scale">The scale</param>

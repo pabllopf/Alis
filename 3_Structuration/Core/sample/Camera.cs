@@ -1,4 +1,4 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -37,41 +37,42 @@ using Color = Alis.Core.Aspect.Math.Definition.Color;
 namespace Alis.Core.Sample
 {
     /// <summary>
-    /// The camera class
+    ///     The camera class
     /// </summary>
     public class Camera
     {
         /// <summary>
-        /// The background color
+        ///     The background color
         /// </summary>
         public Color BackgroundColor;
 
         /// <summary>
-        /// The camera border
+        ///     The camera border
         /// </summary>
         public float CameraBorder;
 
         /// <summary>
-        /// The position
+        ///     The position
         /// </summary>
         public Vector2 Position;
 
         /// <summary>
-        /// The resolution
+        ///     The resolution
         /// </summary>
         public Vector2 Resolution;
 
         /// <summary>
-        /// The texture target
+        ///     The texture target
         /// </summary>
         public IntPtr TextureTarget;
+
         /// <summary>
-        /// The viewport
+        ///     The viewport
         /// </summary>
         public RectangleI Viewport;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Camera"/> class
+        ///     Initializes a new instance of the <see cref="Camera" /> class
         /// </summary>
         /// <param name="renderer">The renderer</param>
         public Camera(IntPtr renderer)
@@ -93,7 +94,7 @@ namespace Alis.Core.Sample
         }
 
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public void OnUpdate()
         {

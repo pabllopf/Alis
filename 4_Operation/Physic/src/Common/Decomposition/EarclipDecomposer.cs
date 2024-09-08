@@ -27,16 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
-
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
-
 
 namespace Alis.Core.Physic.Common.Decomposition
 {
@@ -96,7 +91,7 @@ namespace Alis.Core.Physic.Common.Decomposition
             {
                 List<Vertices> mergeA = TriangulatePolygon(pA, tolerance);
                 List<Vertices> mergeB = TriangulatePolygon(pB, tolerance);
-                
+
                 for (int i = 0; i < mergeA.Count; ++i)
                 {
                     results.Add(new Vertices(mergeA[i]));
@@ -358,14 +353,14 @@ namespace Alis.Core.Physic.Common.Decomposition
         }
 
         /// <summary>
-        /// The triangle class
+        ///     The triangle class
         /// </summary>
-        /// <seealso cref="Vertices"/>
+        /// <seealso cref="Vertices" />
         private class Triangle : Vertices
         {
             //Constructor automatically fixes orientation to ccw
             /// <summary>
-            /// Initializes a new instance of the <see cref="Triangle"/> class
+            ///     Initializes a new instance of the <see cref="Triangle" /> class
             /// </summary>
             /// <param name="x1">The </param>
             /// <param name="y1">The </param>
@@ -391,7 +386,7 @@ namespace Alis.Core.Physic.Common.Decomposition
             }
 
             /// <summary>
-            /// Describes whether this instance is inside
+            ///     Describes whether this instance is inside
             /// </summary>
             /// <param name="x">The </param>
             /// <param name="y">The </param>

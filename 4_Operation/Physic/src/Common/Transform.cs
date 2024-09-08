@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Transform.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Physic.Common
@@ -9,16 +38,17 @@ namespace Alis.Core.Physic.Common
     public struct Transform
     {
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public Complex q;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public Vector2 p;
 
         /// <summary>
-        /// Gets the value of the identity
+        ///     Gets the value of the identity
         /// </summary>
         public static Transform Identity { get; } = new Transform(Vector2.Zero, Complex.One);
 
@@ -44,7 +74,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Multiplies the left
+        ///     Multiplies the left
         /// </summary>
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
@@ -52,7 +82,7 @@ namespace Alis.Core.Physic.Common
         public static Vector2 Multiply(Vector2 left, ref Transform right) => Multiply(ref left, ref right);
 
         /// <summary>
-        /// Multiplies the left
+        ///     Multiplies the left
         /// </summary>
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
@@ -64,7 +94,7 @@ namespace Alis.Core.Physic.Common
                 left.Y * right.q.R + left.X * right.q.i + right.p.Y);
 
         /// <summary>
-        /// Divides the left
+        ///     Divides the left
         /// </summary>
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
@@ -72,7 +102,7 @@ namespace Alis.Core.Physic.Common
         public static Vector2 Divide(Vector2 left, ref Transform right) => Divide(ref left, ref right);
 
         /// <summary>
-        /// Divides the left
+        ///     Divides the left
         /// </summary>
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
@@ -88,7 +118,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Divides the left
+        ///     Divides the left
         /// </summary>
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
@@ -104,7 +134,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Multiplies the left
+        ///     Multiplies the left
         /// </summary>
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
@@ -114,7 +144,7 @@ namespace Alis.Core.Physic.Common
             Complex.Multiply(ref left.q, ref right.q));
 
         /// <summary>
-        /// Divides the left
+        ///     Divides the left
         /// </summary>
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
@@ -124,7 +154,7 @@ namespace Alis.Core.Physic.Common
             Complex.Divide(ref left.q, ref right.q));
 
         /// <summary>
-        /// Divides the left
+        ///     Divides the left
         /// </summary>
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
@@ -136,7 +166,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Multiplies the left
+        ///     Multiplies the left
         /// </summary>
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
@@ -148,7 +178,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Divides the left
+        ///     Divides the left
         /// </summary>
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>

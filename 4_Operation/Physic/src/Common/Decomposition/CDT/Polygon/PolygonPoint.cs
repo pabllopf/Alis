@@ -27,10 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
-
-
 // Changes from the Java version
 //   Replaced get/set Next/Previous with attributes
 // Future possibilities
@@ -39,13 +35,13 @@
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
 {
     /// <summary>
-    /// The polygon point class
+    ///     The polygon point class
     /// </summary>
-    /// <seealso cref="TriangulationPoint"/>
+    /// <seealso cref="TriangulationPoint" />
     internal class PolygonPoint : TriangulationPoint
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PolygonPoint"/> class
+        ///     Initializes a new instance of the <see cref="PolygonPoint" /> class
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
@@ -54,11 +50,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         }
 
         /// <summary>
-        /// Gets or sets the value of the next
+        ///     Gets or sets the value of the next
         /// </summary>
         public PolygonPoint Next { get; set; }
+
         /// <summary>
-        /// Gets or sets the value of the previous
+        ///     Gets or sets the value of the previous
         /// </summary>
         public PolygonPoint Previous { get; set; }
     }

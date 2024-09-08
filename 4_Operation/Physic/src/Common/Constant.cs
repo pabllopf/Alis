@@ -1,4 +1,4 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -32,16 +32,17 @@ using System;
 namespace Alis.Core.Physic.Common
 {
     /// <summary>
-    /// The constant class
+    ///     The constant class
     /// </summary>
     internal static class Constant
     {
         /// <summary>
-        /// The pi
+        ///     The pi
         /// </summary>
         public const float Pi = (float) Math.PI;
+
         /// <summary>
-        /// The pi
+        ///     The pi
         /// </summary>
         public const float Tau = (float) (Math.PI * 2.0);
     }

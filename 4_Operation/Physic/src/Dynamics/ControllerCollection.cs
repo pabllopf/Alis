@@ -1,4 +1,4 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -35,29 +35,31 @@ using Alis.Core.Physic.Controllers;
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    /// The controller collection class
+    ///     The controller collection class
     /// </summary>
-    /// <seealso cref="IEnumerable{Controller}"/>
-    /// <seealso cref="ICollection{Controller}"/>
-    /// <seealso cref="IList{Controller}"/>
+    /// <seealso cref="IEnumerable{Controller}" />
+    /// <seealso cref="ICollection{Controller}" />
+    /// <seealso cref="IList{Controller}" />
     public class ControllerCollection : IEnumerable<Controller>
         , ICollection<Controller>, IList<Controller>
     {
         /// <summary>
-        /// The controller
+        ///     The controller
         /// </summary>
         internal readonly List<Controller> _list = new List<Controller>(32);
+
         /// <summary>
-        /// The world
+        ///     The world
         /// </summary>
         private readonly World _world;
+
         /// <summary>
-        /// The generation stamp
+        ///     The generation stamp
         /// </summary>
         internal int _generationStamp = 0;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ControllerCollection"/> class
+        ///     Initializes a new instance of the <see cref="ControllerCollection" /> class
         /// </summary>
         /// <param name="world">The world</param>
         public ControllerCollection(World world) => _world = world;
@@ -66,7 +68,7 @@ namespace Alis.Core.Physic.Dynamics
         #region IEnumerable<Controller>
 
         /// <summary>
-        /// Gets the enumerator
+        ///     Gets the enumerator
         /// </summary>
         /// <returns>An enumerator of controller</returns>
         IEnumerator<Controller> IEnumerable<Controller>.GetEnumerator() => new ControllerEnumerator(this, _list);
@@ -77,7 +79,7 @@ namespace Alis.Core.Physic.Dynamics
         #region IEnumerable
 
         /// <summary>
-        /// Gets the enumerator
+        ///     Gets the enumerator
         /// </summary>
         /// <returns>The enumerator</returns>
         IEnumerator IEnumerable.GetEnumerator() => new ControllerEnumerator(this, _list);
@@ -85,36 +87,39 @@ namespace Alis.Core.Physic.Dynamics
         #endregion IEnumerable
 
         /// <summary>
-        /// Gets the enumerator
+        ///     Gets the enumerator
         /// </summary>
         /// <returns>The controller enumerator</returns>
         public ControllerEnumerator GetEnumerator() => new ControllerEnumerator(this, _list);
 
 
         /// <summary>
-        /// The controller enumerator
+        ///     The controller enumerator
         /// </summary>
         public struct ControllerEnumerator : IEnumerator<Controller>
         {
             /// <summary>
-            /// The collection
+            ///     The collection
             /// </summary>
             private ControllerCollection _collection;
+
             /// <summary>
-            /// The list
+            ///     The list
             /// </summary>
             private List<Controller> _list;
+
             /// <summary>
-            /// The generation stamp
+            ///     The generation stamp
             /// </summary>
             private readonly int _generationStamp;
+
             /// <summary>
-            /// The 
+            ///     The
             /// </summary>
             private int i;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="ControllerEnumerator"/> class
+            ///     Initializes a new instance of the <see cref="ControllerEnumerator" /> class
             /// </summary>
             /// <param name="collection">The collection</param>
             /// <param name="list">The list</param>
@@ -127,7 +132,7 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             /// <summary>
-            /// Gets the value of the current
+            ///     Gets the value of the current
             /// </summary>
             public Controller Current
             {
@@ -142,7 +147,7 @@ namespace Alis.Core.Physic.Dynamics
             #region IEnumerator<Controller>
 
             /// <summary>
-            /// Gets the value of the current
+            ///     Gets the value of the current
             /// </summary>
             Controller IEnumerator<Controller>.Current
             {
@@ -159,7 +164,7 @@ namespace Alis.Core.Physic.Dynamics
             #region IEnumerator
 
             /// <summary>
-            /// Describes whether this instance move next
+            ///     Describes whether this instance move next
             /// </summary>
             /// <exception cref="InvalidOperationException">Collection was modified.</exception>
             /// <returns>The bool</returns>
@@ -173,7 +178,7 @@ namespace Alis.Core.Physic.Dynamics
 
 
             /// <summary>
-            /// Gets the value of the current
+            ///     Gets the value of the current
             /// </summary>
             object IEnumerator.Current
             {
@@ -186,7 +191,7 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             /// <summary>
-            /// Disposes this instance
+            ///     Disposes this instance
             /// </summary>
             void IDisposable.Dispose()
             {
@@ -196,7 +201,7 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             /// <summary>
-            /// Resets this instance
+            ///     Resets this instance
             /// </summary>
             void IEnumerator.Reset()
             {
@@ -210,7 +215,7 @@ namespace Alis.Core.Physic.Dynamics
         #region IList<Controller>
 
         /// <summary>
-        /// The not supported exception
+        ///     The not supported exception
         /// </summary>
         public Controller this[int index]
         {
@@ -219,14 +224,14 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Indexes the of using the specified item
+        ///     Indexes the of using the specified item
         /// </summary>
         /// <param name="item">The item</param>
         /// <returns>The int</returns>
         public int IndexOf(Controller item) => _list.IndexOf(item);
 
         /// <summary>
-        /// Inserts the index
+        ///     Inserts the index
         /// </summary>
         /// <param name="index">The index</param>
         /// <param name="item">The item</param>
@@ -237,7 +242,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Removes the at using the specified index
+        ///     Removes the at using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         /// <exception cref="NotSupportedException"></exception>
@@ -252,17 +257,17 @@ namespace Alis.Core.Physic.Dynamics
         #region ICollection<Controller>
 
         /// <summary>
-        /// Gets the value of the is read only
+        ///     Gets the value of the is read only
         /// </summary>
         public bool IsReadOnly => true;
 
         /// <summary>
-        /// Gets the value of the count
+        ///     Gets the value of the count
         /// </summary>
         public int Count => _list.Count;
 
         /// <summary>
-        /// Adds the item
+        ///     Adds the item
         /// </summary>
         /// <param name="item">The item</param>
         /// <exception cref="NotSupportedException"></exception>
@@ -272,14 +277,14 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Describes whether this instance remove
+        ///     Describes whether this instance remove
         /// </summary>
         /// <param name="item">The item</param>
         /// <returns>The bool</returns>
         bool ICollection<Controller>.Remove(Controller item) => throw new NotSupportedException();
 
         /// <summary>
-        /// Clears this instance
+        ///     Clears this instance
         /// </summary>
         /// <exception cref="NotSupportedException"></exception>
         void ICollection<Controller>.Clear()
@@ -288,14 +293,14 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Describes whether this instance contains
+        ///     Describes whether this instance contains
         /// </summary>
         /// <param name="item">The item</param>
         /// <returns>The bool</returns>
         public bool Contains(Controller item) => _list.Contains(item);
 
         /// <summary>
-        /// Copies the to using the specified array
+        ///     Copies the to using the specified array
         /// </summary>
         /// <param name="array">The array</param>
         /// <param name="arrayIndex">The array index</param>

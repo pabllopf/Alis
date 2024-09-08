@@ -27,28 +27,28 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 
 namespace Alis.Core.Physic.Common.Decomposition.Seidel
 {
     /// <summary>
-    /// The point class
+    ///     The point class
     /// </summary>
     internal class Point
     {
         // Pointers to next and previous points in Monontone Mountain
         /// <summary>
-        /// The prev
+        ///     The prev
         /// </summary>
         public Point Next, Prev;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public float X, Y;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Point"/> class
+        ///     Initializes a new instance of the <see cref="Point" /> class
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
@@ -69,28 +69,28 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         public static Point operator +(Point p1, float f) => new Point(p1.X + f, p1.Y + f);
 
         /// <summary>
-        /// Crosses the p
+        ///     Crosses the p
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The float</returns>
         public float Cross(Point p) => X * p.Y - Y * p.X;
 
         /// <summary>
-        /// Dots the p
+        ///     Dots the p
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The float</returns>
         public float Dot(Point p) => X * p.X + Y * p.Y;
 
         /// <summary>
-        /// Describes whether this instance neq
+        ///     Describes whether this instance neq
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
         public bool Neq(Point p) => Math.Abs(p.X - X) > float.Epsilon || Math.Abs(p.Y - Y) > float.Epsilon;
 
         /// <summary>
-        /// Orients the 2 d using the specified pb
+        ///     Orients the 2 d using the specified pb
         /// </summary>
         /// <param name="pb">The pb</param>
         /// <param name="pc">The pc</param>

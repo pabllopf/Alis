@@ -27,14 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
-
 
 namespace Alis.Core.Physic.Common.PolygonManipulation
 {
@@ -102,7 +99,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         }
 
         /// <summary>
-        /// Simplifies the section using the specified vertices
+        ///     Simplifies the section using the specified vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <param name="i">The </param>

@@ -27,12 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
-
 
 namespace Alis.Core.Physic.Common.ConvexHull
 {
@@ -46,7 +44,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
         //Copyright 2001, softSurfer (www.softsurfer.com)
 
         /// <summary>
-        /// The point comparer
+        ///     The point comparer
         /// </summary>
         private static readonly PointComparer _pointComparer = new PointComparer();
 
@@ -169,13 +167,13 @@ namespace Alis.Core.Physic.Common.ConvexHull
         }
 
         /// <summary>
-        /// The point comparer class
+        ///     The point comparer class
         /// </summary>
-        /// <seealso cref="Comparer{Vector2}"/>
+        /// <seealso cref="Comparer{Vector2}" />
         private class PointComparer : Comparer<Vector2>
         {
             /// <summary>
-            /// Compares the a
+            ///     Compares the a
             /// </summary>
             /// <param name="a">The </param>
             /// <param name="b">The </param>

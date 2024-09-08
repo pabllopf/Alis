@@ -27,10 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
-
-
 // Changes from the Java version
 //   Polygon constructors sprused up, checks for 3+ polys
 //   Naming of everything
@@ -48,29 +44,33 @@ using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay;
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
 {
     /// <summary>
-    /// The polygon class
+    ///     The polygon class
     /// </summary>
-    /// <seealso cref="Triangulatable"/>
+    /// <seealso cref="Triangulatable" />
     internal class Polygon : Triangulatable
     {
         /// <summary>
-        /// The holes
+        ///     The holes
         /// </summary>
         protected List<Polygon> _holes;
+
         /// <summary>
-        /// The last
+        ///     The last
         /// </summary>
         protected PolygonPoint _last;
+
         /// <summary>
-        /// The triangulation point
+        ///     The triangulation point
         /// </summary>
         protected List<TriangulationPoint> _points = new List<TriangulationPoint>();
+
         /// <summary>
-        /// The steiner points
+        ///     The steiner points
         /// </summary>
         protected List<TriangulationPoint> _steinerPoints;
+
         /// <summary>
-        /// The triangles
+        ///     The triangles
         /// </summary>
         protected List<DelaunayTriangle> _triangles;
 
@@ -98,19 +98,19 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Polygon"/> class
+        ///     Initializes a new instance of the <see cref="Polygon" /> class
         /// </summary>
         public Polygon()
         {
         }
 
         /// <summary>
-        /// Gets the value of the holes
+        ///     Gets the value of the holes
         /// </summary>
         public IList<Polygon> Holes => _holes;
 
         /// <summary>
-        /// Adds the steiner point using the specified point
+        ///     Adds the steiner point using the specified point
         /// </summary>
         /// <param name="point">The point</param>
         public void AddSteinerPoint(TriangulationPoint point)
@@ -124,7 +124,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         }
 
         /// <summary>
-        /// Adds the steiner points using the specified points
+        ///     Adds the steiner points using the specified points
         /// </summary>
         /// <param name="points">The points</param>
         public void AddSteinerPoints(List<TriangulationPoint> points)
@@ -138,7 +138,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         }
 
         /// <summary>
-        /// Clears the steiner points
+        ///     Clears the steiner points
         /// </summary>
         public void ClearSteinerPoints()
         {
@@ -234,22 +234,22 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         #region Triangulatable Members
 
         /// <summary>
-        /// Gets the value of the triangulation mode
+        ///     Gets the value of the triangulation mode
         /// </summary>
         public TriangulationMode TriangulationMode => TriangulationMode.Polygon;
 
         /// <summary>
-        /// Gets the value of the points
+        ///     Gets the value of the points
         /// </summary>
         public IList<TriangulationPoint> Points => _points;
 
         /// <summary>
-        /// Gets the value of the triangles
+        ///     Gets the value of the triangles
         /// </summary>
         public IList<DelaunayTriangle> Triangles => _triangles;
 
         /// <summary>
-        /// Adds the triangle using the specified t
+        ///     Adds the triangle using the specified t
         /// </summary>
         /// <param name="t">The </param>
         public void AddTriangle(DelaunayTriangle t)
@@ -258,7 +258,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         }
 
         /// <summary>
-        /// Adds the triangles using the specified list
+        ///     Adds the triangles using the specified list
         /// </summary>
         /// <param name="list">The list</param>
         public void AddTriangles(IEnumerable<DelaunayTriangle> list)
@@ -267,7 +267,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         }
 
         /// <summary>
-        /// Clears the triangles
+        ///     Clears the triangles
         /// </summary>
         public void ClearTriangles()
         {
