@@ -602,9 +602,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 float k23 = iA * _a1 + iB * _a2;
                 float k33 = mA + mB + iA * _a1 * _a1 + iB * _a2 * _a2;
 
-                k.ex = new Vector3(k11, k12, k13);
-                k.ey = new Vector3(k12, k22, k23);
-                k.ez = new Vector3(k13, k23, k33);
+                k.Ex = new Vector3(k11, k12, k13);
+                k.Ey = new Vector3(k12, k22, k23);
+                k.Ez = new Vector3(k13, k23, k33);
             }
 
             // Compute motor and limit terms.
@@ -736,7 +736,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 }
 
                 // f2(1:2) = invK(1:2,1:2) * (-Cdot(1:2) - K(1:2,3) * (f2(3) - f1(3))) + f1(1:2)
-                Vector2 b = -cdot1 - (_impulse.Z - f1.Z) * new Vector2(k.ez.X, k.ez.Y);
+                Vector2 b = -cdot1 - (_impulse.Z - f1.Z) * new Vector2(k.Ez.X, k.Ez.Y);
                 Vector2 f2R = k.Solve22(b) + new Vector2(f1.X, f1.Y);
                 _impulse.X = f2R.X;
                 _impulse.Y = f2R.Y;
@@ -860,9 +860,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 float k33 = mA + mB + iA * a1 * a1 + iB * a2 * a2;
 
                 Mat33 kTe = new Mat33();
-                kTe.ex = new Vector3(k11, k12, k13);
-                kTe.ey = new Vector3(k12, k22, k23);
-                kTe.ez = new Vector3(k13, k23, k33);
+                kTe.Ex = new Vector3(k11, k12, k13);
+                kTe.Ey = new Vector3(k12, k22, k23);
+                kTe.Ez = new Vector3(k13, k23, k33);
 
                 Vector3 c = new Vector3();
                 c.X = c1.X;

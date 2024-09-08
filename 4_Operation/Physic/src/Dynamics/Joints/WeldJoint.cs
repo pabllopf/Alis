@@ -248,15 +248,15 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float iA = _invIA, iB = _invIB;
 
             Mat33 K = new Mat33();
-            K.ex.X = mA + mB + _rA.Y * _rA.Y * iA + _rB.Y * _rB.Y * iB;
-            K.ey.X = -_rA.Y * _rA.X * iA - _rB.Y * _rB.X * iB;
-            K.ez.X = -_rA.Y * iA - _rB.Y * iB;
-            K.ex.Y = K.ey.X;
-            K.ey.Y = mA + mB + _rA.X * _rA.X * iA + _rB.X * _rB.X * iB;
-            K.ez.Y = _rA.X * iA + _rB.X * iB;
-            K.ex.Z = K.ez.X;
-            K.ey.Z = K.ez.Y;
-            K.ez.Z = iA + iB;
+            K.Ex.X = mA + mB + _rA.Y * _rA.Y * iA + _rB.Y * _rB.Y * iB;
+            K.Ey.X = -_rA.Y * _rA.X * iA - _rB.Y * _rB.X * iB;
+            K.Ez.X = -_rA.Y * iA - _rB.Y * iB;
+            K.Ex.Y = K.Ey.X;
+            K.Ey.Y = mA + mB + _rA.X * _rA.X * iA + _rB.X * _rB.X * iB;
+            K.Ez.Y = _rA.X * iA + _rB.X * iB;
+            K.Ex.Z = K.Ez.X;
+            K.Ey.Z = K.Ez.Y;
+            K.Ez.Z = iA + iB;
 
             if (FrequencyHz > 0.0f)
             {
@@ -283,9 +283,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _bias = C * h * k * _gamma;
 
                 invM += _gamma;
-                _mass.ez.Z = Math.Abs(invM) <float.Epsilon  ? 1.0f / invM : 0.0f;
+                _mass.Ez.Z = Math.Abs(invM) <float.Epsilon  ? 1.0f / invM : 0.0f;
             }
-            else if (Math.Abs(K.ez.Z) <float.Epsilon)
+            else if (Math.Abs(K.Ez.Z) <float.Epsilon)
             {
                 K.GetInverse22(ref _mass);
                 _gamma = 0.0f;
@@ -340,7 +340,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             {
                 float cdot2 = wB - wA;
 
-                float impulse2 = -_mass.ez.Z * (cdot2 + _bias + _gamma * _impulse.Z);
+                float impulse2 = -_mass.Ez.Z * (cdot2 + _bias + _gamma * _impulse.Z);
                 _impulse.Z += impulse2;
 
                 wA -= iA * impulse2;
@@ -408,15 +408,15 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float positionError, angularError;
 
             Mat33 k = new Mat33();
-            k.ex.X = mA + mB + rA.Y * rA.Y * iA + rB.Y * rB.Y * iB;
-            k.ey.X = -rA.Y * rA.X * iA - rB.Y * rB.X * iB;
-            k.ez.X = -rA.Y * iA - rB.Y * iB;
-            k.ex.Y = k.ey.X;
-            k.ey.Y = mA + mB + rA.X * rA.X * iA + rB.X * rB.X * iB;
-            k.ez.Y = rA.X * iA + rB.X * iB;
-            k.ex.Z = k.ez.X;
-            k.ey.Z = k.ez.Y;
-            k.ez.Z = iA + iB;
+            k.Ex.X = mA + mB + rA.Y * rA.Y * iA + rB.Y * rB.Y * iB;
+            k.Ey.X = -rA.Y * rA.X * iA - rB.Y * rB.X * iB;
+            k.Ez.X = -rA.Y * iA - rB.Y * iB;
+            k.Ex.Y = k.Ey.X;
+            k.Ey.Y = mA + mB + rA.X * rA.X * iA + rB.X * rB.X * iB;
+            k.Ez.Y = rA.X * iA + rB.X * iB;
+            k.Ex.Z = k.Ez.X;
+            k.Ey.Z = k.Ez.Y;
+            k.Ez.Z = iA + iB;
 
             if (FrequencyHz > 0.0f)
             {
@@ -444,7 +444,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 Vector3 c = new Vector3(c1.X, c1.Y, c2);
 
                 Vector3 impulse;
-                if (k.ez.Z <= 0.0f)
+                if (k.Ez.Z <= 0.0f)
                 {
                     Vector2 impulse2 = -k.Solve22(c1);
                     impulse = new Vector3(impulse2.X, impulse2.Y, 0.0f);

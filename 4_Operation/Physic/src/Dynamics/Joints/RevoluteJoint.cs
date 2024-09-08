@@ -426,15 +426,15 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             bool fixedRotation = iA + iB == 0.0f;
 
-            _mass.ex.X = mA + mB + _rA.Y * _rA.Y * iA + _rB.Y * _rB.Y * iB;
-            _mass.ey.X = -_rA.Y * _rA.X * iA - _rB.Y * _rB.X * iB;
-            _mass.ez.X = -_rA.Y * iA - _rB.Y * iB;
-            _mass.ex.Y = _mass.ey.X;
-            _mass.ey.Y = mA + mB + _rA.X * _rA.X * iA + _rB.X * _rB.X * iB;
-            _mass.ez.Y = _rA.X * iA + _rB.X * iB;
-            _mass.ex.Z = _mass.ez.X;
-            _mass.ey.Z = _mass.ez.Y;
-            _mass.ez.Z = iA + iB;
+            _mass.Ex.X = mA + mB + _rA.Y * _rA.Y * iA + _rB.Y * _rB.Y * iB;
+            _mass.Ey.X = -_rA.Y * _rA.X * iA - _rB.Y * _rB.X * iB;
+            _mass.Ez.X = -_rA.Y * iA - _rB.Y * iB;
+            _mass.Ex.Y = _mass.Ey.X;
+            _mass.Ey.Y = mA + mB + _rA.X * _rA.X * iA + _rB.X * _rB.X * iB;
+            _mass.Ez.Y = _rA.X * iA + _rB.X * iB;
+            _mass.Ex.Z = _mass.Ez.X;
+            _mass.Ey.Z = _mass.Ez.Y;
+            _mass.Ez.Z = iA + iB;
 
             _motorMass = iA + iB;
             if (_motorMass > 0.0f)
@@ -557,7 +557,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     float newImpulse = _impulse.Z + impulse.Z;
                     if (newImpulse < 0.0f)
                     {
-                        Vector2 rhs = -cdot1 + _impulse.Z * new Vector2(_mass.ez.X, _mass.ez.Y);
+                        Vector2 rhs = -cdot1 + _impulse.Z * new Vector2(_mass.Ez.X, _mass.Ez.Y);
                         Vector2 reduced = _mass.Solve22(rhs);
                         impulse.X = reduced.X;
                         impulse.Y = reduced.Y;
@@ -576,7 +576,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     float newImpulse = _impulse.Z + impulse.Z;
                     if (newImpulse > 0.0f)
                     {
-                        Vector2 rhs = -cdot1 + _impulse.Z * new Vector2(_mass.ez.X, _mass.ez.Y);
+                        Vector2 rhs = -cdot1 + _impulse.Z * new Vector2(_mass.Ez.X, _mass.Ez.Y);
                         Vector2 reduced = _mass.Solve22(rhs);
                         impulse.X = reduced.X;
                         impulse.Y = reduced.Y;

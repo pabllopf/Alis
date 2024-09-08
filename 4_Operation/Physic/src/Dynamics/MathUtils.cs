@@ -131,7 +131,7 @@ namespace Alis.Core.Physic.Dynamics
 
 
         /// Multiply a matrix times a vector.
-        public static Vector3 Mul(Mat33 A, Vector3 v) => v.X * A.ex + v.Y * A.ey + v.Z * A.ez;
+        public static Vector3 Mul(Mat33 A, Vector3 v) => v.X * A.Ex + v.Y * A.Ey + v.Z * A.Ez;
 
         /// <summary>
         /// Swaps the a
@@ -147,7 +147,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// Multiply a matrix times a vector.
-        public static Vector2 Mul22(Mat33 A, Vector2 v) => new Vector2(A.ex.X * v.X + A.ey.X * v.Y, A.ex.Y * v.X + A.ey.Y * v.Y);
+        public static Vector2 Mul22(Mat33 A, Vector2 v) => new Vector2(A.Ex.X * v.X + A.Ey.X * v.Y, A.Ex.Y * v.X + A.Ey.Y * v.Y);
 
         /// Get the skew vector such that dot(skew_vec, other) == cross(vec, other)
         public static Vector2 Skew(Vector2 input) => new Vector2(-input.Y, input.X);
