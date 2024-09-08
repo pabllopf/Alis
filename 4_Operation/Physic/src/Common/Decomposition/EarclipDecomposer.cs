@@ -96,10 +96,7 @@ namespace Alis.Core.Physic.Common.Decomposition
             {
                 List<Vertices> mergeA = TriangulatePolygon(pA, tolerance);
                 List<Vertices> mergeB = TriangulatePolygon(pB, tolerance);
-
-                if (mergeA.Count == -1 || mergeB.Count == -1)
-                    throw new Exception("Can't triangulate your polygon.");
-
+                
                 for (int i = 0; i < mergeA.Count; ++i)
                 {
                     results.Add(new Vertices(mergeA[i]));
