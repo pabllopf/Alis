@@ -91,7 +91,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
                     }
 
                     // Collinearity check
-                    if ((c == 0.0f) && (v.LengthSquared() > r.LengthSquared()))
+                    if ((Math.Abs(c) < float.Epsilon) && (v.LengthSquared() > r.LengthSquared()))
                     {
                         ie = j;
                     }
