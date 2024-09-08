@@ -291,7 +291,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 }
                 else
                 {
-                    if (edgeCharacter == 0f)
+                    if (Math.Abs(edgeCharacter) < float.Epsilon)
                     {
                         resultSimplices.Add(poly1Simplicies[i]);
                     }
@@ -329,7 +329,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                         }
                         else
                         {
-                            if (edgeCharacter == 0f)
+                            if (Math.Abs(edgeCharacter) < float.Epsilon)
                             {
                                 resultSimplices.Add(poly2Simplicies[i]);
                             }
@@ -489,7 +489,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         private static bool PointOnLineSegment(Vector2 start, Vector2 end, Vector2 point)
         {
             Vector2 segment = end - start;
-            return (MathUtils.Area(ref start, ref end, ref point) == 0f) &&
+            return (Math.Abs(MathUtils.Area(ref start, ref end, ref point)) < float.Epsilon) &&
                    (Vector2.Dot(point - start, segment) >= 0f) &&
                    (Vector2.Dot(point - end, segment) <= 0f);
         }
