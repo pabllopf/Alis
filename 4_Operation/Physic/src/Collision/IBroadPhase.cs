@@ -138,19 +138,4 @@ namespace Alis.Core.Physic.Collision
         /// <param name="newOrigin">The new origin</param>
         void ShiftOrigin(Vector2 newOrigin);
     }
-
-    /// <summary>
-    /// The broadphase delegate
-    /// </summary>
-    public delegate void BroadphaseDelegate(int proxyIdA, int proxyIdB);
-
-    /// <summary>
-    /// The broad phase query callback
-    /// </summary>
-    public delegate bool BroadPhaseQueryCallback(int proxyId);
-
-    /// <summary>
-    /// The broad phase ray cast callback
-    /// </summary>
-    public delegate float BroadPhaseRayCastCallback(ref RayCastInput input, int proxyId);
 }

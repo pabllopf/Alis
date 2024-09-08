@@ -184,7 +184,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             float numerator = Vector2.Dot(normal, v1 - p1);
             float denominator = Vector2.Dot(normal, d);
 
-            if (denominator == 0.0f)
+            if (Math.Abs(denominator) < Common.MathUtils.Epsilon)
             {
                 return false;
             }

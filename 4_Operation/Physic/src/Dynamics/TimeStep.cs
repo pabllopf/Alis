@@ -51,9 +51,6 @@
  * 3. This notice may not be removed or altered from any source distribution.
  */
 
-using Alis.Core.Aspect.Math.Vector;
-
-
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
@@ -89,52 +86,5 @@ namespace Alis.Core.Physic.Dynamics
         /// The warm starting
         /// </summary>
         public bool warmStarting;
-    }
-
-    /// This is an internal structure.
-    internal struct SolverPosition
-    {
-        /// <summary>
-        /// The 
-        /// </summary>
-        public Vector2 c;
-        /// <summary>
-        /// The 
-        /// </summary>
-        public float a;
-    }
-
-    /// This is an internal structure.
-    internal struct SolverVelocity
-    {
-        /// <summary>
-        /// The 
-        /// </summary>
-        public Vector2 v;
-        /// <summary>
-        /// The 
-        /// </summary>
-        public float w;
-    }
-
-    /// Solver Data
-    internal struct SolverData
-    {
-        /// <summary>
-        /// The step
-        /// </summary>
-        internal TimeStep step;
-        /// <summary>
-        /// The positions
-        /// </summary>
-        internal SolverPosition[] positions;
-        /// <summary>
-        /// The velocities
-        /// </summary>
-        internal SolverVelocity[] velocities;
-        /// <summary>
-        /// The locks
-        /// </summary>
-        internal int[] locks;
     }
 }

@@ -46,52 +46,6 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
     // Original Code by Steven Lu - see http://www.box2d.org/forum/viewtopic.php?f=3&t=1688
     // Ported to Farseer 3.0 by Nicol�s Hormaz�bal
 
-    /// <summary>
-    /// The shape data
-    /// </summary>
-    internal struct ShapeData
-    {
-        /// <summary>
-        /// The body
-        /// </summary>
-        public Body Body;
-        /// <summary>
-        /// The max
-        /// </summary>
-        public float Max;
-        /// <summary>
-        /// The min
-        /// </summary>
-        public float Min; // absolute angles
-    }
-
-    /// <summary>
-    ///     This is a comprarer used for
-    ///     detecting angle difference between rays
-    /// </summary>
-    internal class RayDataComparer : IComparer<float>
-    {
-        #region IComparer<float> Members
-
-        /// <summary>
-        /// Compares the a
-        /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
-        /// <returns>The int</returns>
-        int IComparer<float>.Compare(float a, float b)
-        {
-            float diff = a - b;
-            if (diff > 0)
-                return 1;
-            if (diff < 0)
-                return -1;
-            return 0;
-        }
-
-        #endregion
-    }
-
     /* Methodology:
      * Force applied at a ray is inversely proportional to the square of distance from source
      * AABB is used to query for shapes that may be affected
