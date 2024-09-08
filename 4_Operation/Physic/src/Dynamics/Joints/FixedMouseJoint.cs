@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 
-
+using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
@@ -36,15 +36,7 @@ using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
-    // p = attached point, m = mouse point
-    // C = p - m
-    // Cdot = v
-    //      = v + cross(w, r)
-    // J = [I r_skew]
-    // Identity used:
-    // w k % (rx i + ry j) = w * (-ry i + rx j)
-
-    /// <summary>
+   /// <summary>
     ///     A mouse joint is used to make a point on a body track a
     ///     specified world point. This a soft constraint with a maximum
     ///     force. This allows the constraint to stretch and without
@@ -53,6 +45,15 @@ namespace Alis.Core.Physic.Dynamics.Joints
     ///     developed to be used in the testbed. If you want to learn how to
     ///     use the mouse joint, look at the testbed.
     /// </summary>
+    /// <remarks>
+    /// p = attached point, m = mouse point
+    /// C = p - m
+    /// Cdot = v
+    ///      = v + cross(w, r)
+    /// J = [I r_skew]
+    /// Identity used:
+    /// w k % (rx i + ry j) = w * (-ry i + rx j)
+    /// </remarks>
     public class FixedMouseJoint : Joint
     {
         /// <summary>
@@ -253,7 +254,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float h = data.step.dt;
             Debug.Assert(d + h * k > Settings.Epsilon);
             _gamma = h * (d + h * k);
-            if (_gamma != 0.0f)
+            if (Math.Abs(_gamma) > Settings.Epsilon)
             {
                 _gamma = 1.0f / _gamma;
             }
