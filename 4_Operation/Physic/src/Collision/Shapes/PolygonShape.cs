@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 
-
+using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
@@ -292,7 +292,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                 float numerator = Vector2.Dot(Normals[i], Vertices[i] - p1);
                 float denominator = Vector2.Dot(Normals[i], d);
 
-                if (denominator == 0.0f)
+                if (Math.Abs(denominator) < Settings.Epsilon)
                 {
                     if (numerator < 0.0f)
                     {
