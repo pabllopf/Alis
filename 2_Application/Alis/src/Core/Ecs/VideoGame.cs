@@ -216,6 +216,7 @@ namespace Alis.Core.Ecs
                 timeStepPhysics = 1f / 5f;
             }
 
+            
             // Variable for log output
             lastLogTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
 
