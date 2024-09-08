@@ -636,8 +636,7 @@ namespace Alis.Core.Physic.Dynamics
                         _input.SweepB = bB._sweep;
                         _input.TMax = 1.0f;
 
-                        TOIOutput output;
-                        TimeOfImpact.CalculateTimeOfImpact(out output, ref _input);
+                        TimeOfImpact.CalculateTimeOfImpact(out TOIOutput output, ref _input);
 
                         // Beta is the fraction of the remaining portion of the .
                         float beta = output.T;
@@ -1631,8 +1630,7 @@ namespace Alis.Core.Physic.Dynamics
             FixtureProxy proxy = ContactManager.BroadPhase.GetProxy(proxyId);
             Fixture fixture = proxy.Fixture;
             int index = proxy.ChildIndex;
-            RayCastOutput output;
-            bool hit = fixture.RayCast(out output, ref rayCastInput, index);
+            bool hit = fixture.RayCast(out RayCastOutput output, ref rayCastInput, index);
 
             if (hit)
             {

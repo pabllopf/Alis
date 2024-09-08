@@ -240,9 +240,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 xfA.p = cA - Complex.Multiply(ref localCenterA, ref xfA.q);
                 xfB.p = cB - Complex.Multiply(ref localCenterB, ref xfB.q);
 
-                Vector2 normal;
-                FixedArray2<Vector2> points;
-                WorldManifold.Initialize(ref manifold, ref xfA, radiusA, ref xfB, radiusB, out normal, out points);
+                WorldManifold.Initialize(ref manifold, ref xfA, radiusA, ref xfB, radiusB, out Vector2 normal, out FixedArray2<Vector2> points);
 
                 vc.normal = normal;
                 Vector2 tangent = MathUtils.Rot270(ref vc.normal);
@@ -847,11 +845,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     xfA.p = cA - Complex.Multiply(ref localCenterA, ref xfA.q);
                     xfB.p = cB - Complex.Multiply(ref localCenterB, ref xfB.q);
 
-                    Vector2 normal;
-                    Vector2 point;
-                    float separation;
-
-                    PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, j, out normal, out point, out separation);
+                    PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, j, out Vector2 normal, out Vector2 point, out float separation);
 
                     Vector2 rA = point - cA;
                     Vector2 rB = point - cB;
@@ -947,11 +941,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     xfA.p = cA - Complex.Multiply(ref localCenterA, ref xfA.q);
                     xfB.p = cB - Complex.Multiply(ref localCenterB, ref xfB.q);
 
-                    Vector2 normal;
-                    Vector2 point;
-                    float separation;
-
-                    PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, j, out normal, out point, out separation);
+                    PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, j, out Vector2 normal, out Vector2 point, out float separation);
 
                     Vector2 rA = point - cA;
                     Vector2 rB = point - cB;
@@ -1170,8 +1160,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
             internal static object Get(ContactSolver contactSolver, int start, int end)
             {
-                SolveVelocityConstraintsState result;
-                if (!_queue.TryDequeue(out result))
+                if (!_queue.TryDequeue(out SolveVelocityConstraintsState result))
                     result = new SolveVelocityConstraintsState();
 
                 result.ContactSolver = contactSolver;

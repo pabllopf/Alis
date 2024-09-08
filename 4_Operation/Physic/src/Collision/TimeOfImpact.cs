@@ -101,17 +101,14 @@ namespace Alis.Core.Physic.Collision
             // This loop terminates when an axis is repeated (no progress is made).
             for (;;)
             {
-                Transform xfA, xfB;
-                sweepA.GetTransform(out xfA, t1);
-                sweepB.GetTransform(out xfB, t1);
+                sweepA.GetTransform(out Transform xfA, t1);
+                sweepB.GetTransform(out Transform xfB, t1);
 
                 // Get the distance between shapes. We can also use the results
                 // to get a separating axis.
                 distanceInput.TransformA = xfA;
                 distanceInput.TransformB = xfB;
-                DistanceOutput distanceOutput;
-                SimplexCache cache;
-                Distance.ComputeDistance(out distanceOutput, out cache, distanceInput);
+                Distance.ComputeDistance(out DistanceOutput distanceOutput, out SimplexCache cache, distanceInput);
 
                 // If the shapes are overlapped, we give up on continuous collision.
                 if (distanceOutput.Distance <= 0.0f)
@@ -140,8 +137,7 @@ namespace Alis.Core.Physic.Collision
                 for (;;)
                 {
                     // Find the deepest point at t2. Store the witness point indices.
-                    int indexA, indexB;
-                    float s2 = SeparationFunction.FindMinSeparation(out indexA, out indexB, t2);
+                    float s2 = SeparationFunction.FindMinSeparation(out int indexA, out int indexB, t2);
 
                     // Is the final configuration separated?
                     if (s2 > target + tolerance)
