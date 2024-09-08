@@ -390,7 +390,7 @@ namespace Alis.Core.Physic.Dynamics
             //Use PathManager to create all the chainlinks based on the chainlink created before.
             List<Body> chainLinks = PathManager.EvenlyDistributeShapesAlongPath(this, path, shape, BodyType.Dynamic, numberOfLinks);
 
-            //TODO
+            
             //if (fixStart)
             //{
             //    //Fix the first chainlink to the world

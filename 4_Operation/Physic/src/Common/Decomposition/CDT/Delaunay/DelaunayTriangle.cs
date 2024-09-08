@@ -1,4 +1,4 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -137,7 +137,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
             return i;
         }
 
-        //TODO: Port note - different implementation
+        
         /// <summary>
         /// Indexes the cw using the specified p
         /// </summary>
@@ -157,7 +157,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
             }
         }
 
-        //TODO: Port note - different implementation
+        
         /// <summary>
         /// Indexes the ccw using the specified p
         /// </summary>

@@ -1,4 +1,4 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -148,7 +148,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         ///     Removed an overload that depended on this being exact
         /// </summary>
         private AdvancingFrontNode FindSearchNode(double x) =>
-            // TODO: implement BST index 
+            
             Search;
 
         /// <summary>

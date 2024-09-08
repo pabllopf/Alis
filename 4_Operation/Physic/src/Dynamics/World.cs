@@ -1279,7 +1279,7 @@ namespace Alis.Core.Physic.Dynamics
             if (body == null)
                 throw new ArgumentNullException("body");
 
-            // TODO: check body.World to see if body belongs to another world,
+            
             //       or if it's allready added to this World.
 
             if (IsLocked)
@@ -1744,7 +1744,7 @@ namespace Alis.Core.Physic.Dynamics
 
             foreach (Joint joint in JointList)
             {
-                //joint.ShiftOrigin(newOrigin); //TODO: uncomment
+                //joint.ShiftOrigin(newOrigin); 
             }
 
             ContactManager.BroadPhase.ShiftOrigin(newOrigin);

@@ -142,7 +142,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vector</returns>
         public override Vector2 GetReactionForce(float invDt) =>
-            //TODO
+            
             //return _inv_dt * _impulse;
             Vector2.Zero;
 

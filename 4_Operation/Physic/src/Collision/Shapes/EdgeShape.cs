@@ -174,7 +174,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             Vector2 v1 = _vertex1;
             Vector2 v2 = _vertex2;
             Vector2 e = v2 - v1;
-            Vector2 normal = new Vector2(e.Y, -e.X); //TODO: Could possibly cache the normal.
+            Vector2 normal = new Vector2(e.Y, -e.X); 
             normal.Normalize();
 
             // q = p1 + t * d
