@@ -150,7 +150,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             AdvancingFrontNode node = FindSearchNode(px);
             double nx = node.Point.X;
 
-            if (px == nx)
+            if (Math.Abs(px - nx) < float.Epsilon)
             {
                 if (point != node.Point)
                 {

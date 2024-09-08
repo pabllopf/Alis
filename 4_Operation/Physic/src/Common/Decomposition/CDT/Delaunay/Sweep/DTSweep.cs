@@ -27,26 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
-
-
-/*
- * Sweep-line, Constrained Delauney Triangulation (CDT) See: Domiter, V. and
- * Zalik, B.(2008)'Sweep-line algorithm for constrained Delaunay triangulation',
- * International Journal of Geographical Information Science
- *
- * "FlipScan" Constrained Edge Algorithm invented by author of this code.
- *
- * Author: Thomas Åhlén, thahlen@gmail.com
- */
-
-// Changes from the Java version
-//   Turned DTSweep into a static class
-//   Lots of deindentation via early bailout
-// Future possibilities
-//   Comments!
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -56,16 +36,16 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
     /// <summary>
     /// The dt sweep class
     /// </summary>
-    internal static class DTSweep
+    internal static class DtSweep
     {
         /// <summary>
         /// The pi
         /// </summary>
-        private const double PI_div2 = Math.PI / 2;
+        private const double PiDiv2 = Math.PI / 2;
         /// <summary>
         /// The pi
         /// </summary>
-        private const double PI_3div4 = 3 * Math.PI / 4;
+        private const double Pi3Div4 = 3 * Math.PI / 4;
 
         /// <summary>
         ///     Triangulate simple polygon with holes
@@ -663,14 +643,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         {
             DelaunayTriangle ot = t.NeighborAcross(p);
             TriangulationPoint op = ot.OppositePoint(t, p);
-
-            if (ot == null)
-            {
-                // If we want to integrate the fillEdgeEvent do it here
-                // With current implementation we should never get here
-                throw new InvalidOperationException("[BUG:FIXME] FLIP failed due to missing triangle");
-            }
-
+            
             if (t.GetConstrainedEdgeAcross(p))
             {
                 throw new Exception("Intersecting Constraints");
@@ -845,7 +818,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                     break;
 
                 angle = HoleAngle(node);
-                if (angle > PI_div2 || angle < -PI_div2)
+                if (angle > PiDiv2 || angle < -PiDiv2)
                 {
                     break;
                 }
@@ -858,7 +831,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             if (n.HasNext && n.Next.HasNext)
             {
                 angle = BasinAngle(n);
-                if (angle < PI_3div4)
+                if (angle < Pi3Div4)
                 {
                     FillBasin(tcx, n);
                 }
@@ -902,7 +875,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         private static bool AngleExceeds90Degrees(TriangulationPoint origin, TriangulationPoint pa, TriangulationPoint pb)
         {
             double angle = Angle(origin, pa, pb);
-            bool exceeds90Degrees = angle > PI_div2 || angle < -PI_div2;
+            bool exceeds90Degrees = angle > PiDiv2 || angle < -PiDiv2;
             return exceeds90Degrees;
         }
 
@@ -916,7 +889,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         private static bool AngleExceedsPlus90DegreesOrIsNegative(TriangulationPoint origin, TriangulationPoint pa, TriangulationPoint pb)
         {
             double angle = Angle(origin, pa, pb);
-            bool exceedsPlus90DegreesOrIsNegative = angle > PI_div2 || angle < 0;
+            bool exceedsPlus90DegreesOrIsNegative = angle > PiDiv2 || angle < 0;
             return exceedsPlus90DegreesOrIsNegative;
         }
 
