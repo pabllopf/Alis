@@ -36,7 +36,6 @@ using Alis.Core.Ecs.System.Manager.Network;
 using Alis.Core.Ecs.System.Manager.Physic;
 using Alis.Core.Ecs.System.Manager.Scene;
 using Alis.Core.Ecs.System.Setting;
-using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Core.Ecs.System
 {

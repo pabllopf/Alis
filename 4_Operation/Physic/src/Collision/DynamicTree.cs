@@ -30,9 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Dynamics;
 
 
