@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 
-
+using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;
@@ -94,9 +94,9 @@ namespace Alis.Core.Physic.Common.TextureTools
             GeomPoly gp;
 
             int xn = (int) (domain.Extents.X * 2 / cellWidth);
-            bool xp = xn == domain.Extents.X * 2 / cellWidth;
+            bool xp = Math.Abs(xn - domain.Extents.X * 2 / cellWidth) < float.Epsilon;
             int yn = (int) (domain.Extents.Y * 2 / cellHeight);
-            bool yp = yn == domain.Extents.Y * 2 / cellHeight;
+            bool yp = Math.Abs(yn - domain.Extents.Y * 2 / cellHeight) < float.Epsilon;
             if (!xp) xn++;
             if (!yp) yn++;
 
