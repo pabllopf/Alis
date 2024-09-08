@@ -65,7 +65,7 @@ namespace Alis.Core.Physic.Common
             get => (float) Math.Atan2(i, R);
             set
             {
-                if (value == 0)
+                if (Math.Abs(value) < float.Epsilon)
                 {
                     this = One;
                     return;
