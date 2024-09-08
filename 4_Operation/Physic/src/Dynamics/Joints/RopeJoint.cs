@@ -36,22 +36,23 @@ using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
-    // Limit:
-    // C = norm(pB - pA) - L
-    // u = (pB - pA) / norm(pB - pA)
-    // Cdot = dot(u, vB + cross(wB, rB) - vA - cross(wA, rA))
-    // J = [-u -cross(rA, u) u cross(rB, u)]
-    // K = J * invM * JT
-    //   = invMassA + invIA * cross(rA, u)^2 + invMassB + invIB * cross(rB, u)^2
-
     /// <summary>
-    ///     A rope joint enforces a maximum distance between two points on two bodies. It has no other effect.
-    ///     It can be used on ropes that are made up of several connected bodies, and if there is a need to support a heavy
-    ///     body.
-    ///     This joint is used for stabiliation of heavy objects on soft constraint joints.
-    ///     Warning: if you attempt to change the maximum length during the simulation you will get some non-physical behavior.
-    ///     Use the DistanceJoint instead if you want to dynamically control the length.
-    /// </summary>
+///     A rope joint enforces a maximum distance between two points on two bodies. It has no other effect.
+///     It can be used on ropes that are made up of several connected bodies, and if there is a need to support a heavy
+///     body.
+///     This joint is used for stabiliation of heavy objects on soft constraint joints.
+///     Warning: if you attempt to change the maximum length during the simulation you will get some non-physical behavior.
+///     Use the DistanceJoint instead if you want to dynamically control the length.
+/// </summary>
+/// <remarks>
+/// Limit:
+/// C = norm(pB - pA) - L
+/// u = (pB - pA) / norm(pB - pA)
+/// Cdot = dot(u, vB + cross(wB, rB) - vA - cross(wA, rA))
+/// J = [-u -cross(rA, u) u cross(rB, u)]
+/// K = J * invM * JT
+///   = invMassA + invIA * cross(rA, u)^2 + invMassB + invIB * cross(rB, u)^2
+/// </remarks>
     public class RopeJoint : Joint
     {
         // Solver shared
@@ -72,11 +73,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         /// The inv ia
         /// </summary>
-        private float _invIA;
+        private float invIa;
         /// <summary>
         /// The inv ib
         /// </summary>
-        private float _invIB;
+        private float invIb;
         /// <summary>
         /// The inv mass
         /// </summary>
@@ -209,8 +210,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _localCenterB = BodyB._sweep.LocalCenter;
             _invMassA = BodyA._invMass;
             _invMassB = BodyB._invMass;
-            _invIA = BodyA._invI;
-            _invIB = BodyB._invI;
+            invIa = BodyA._invI;
+            invIb = BodyB._invI;
 
             Vector2 cA = data.positions[_indexA].c;
             float aA = data.positions[_indexA].a;
@@ -231,8 +232,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             _length = _u.Length();
 
-            float C = _length - MaxLength;
-            if (C > 0.0f)
+            float c = _length - MaxLength;
+            if (c > 0.0f)
             {
                 State = LimitState.AtUpper;
             }
@@ -256,7 +257,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             // Compute effective mass.
             float crA = MathUtils.Cross(ref _rA, ref _u);
             float crB = MathUtils.Cross(ref _rB, ref _u);
-            float invMass = _invMassA + _invIA * crA * crA + _invMassB + _invIB * crB * crB;
+            float invMass = _invMassA + invIa * crA * crA + _invMassB + invIb * crB * crB;
 
             _mass = invMass != 0.0f ? 1.0f / invMass : 0.0f;
 
@@ -265,11 +266,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 // Scale the impulse to support a variable time step.
                 _impulse *= data.step.dtRatio;
 
-                Vector2 P = _impulse * _u;
-                vA -= _invMassA * P;
-                wA -= _invIA * MathUtils.Cross(ref _rA, ref P);
-                vB += _invMassB * P;
-                wB += _invIB * MathUtils.Cross(ref _rB, ref P);
+                Vector2 p = _impulse * _u;
+                vA -= _invMassA * p;
+                wA -= invIa * MathUtils.Cross(ref _rA, ref p);
+                vB += _invMassB * p;
+                wB += invIb * MathUtils.Cross(ref _rB, ref p);
             }
             else
             {
@@ -296,25 +297,25 @@ namespace Alis.Core.Physic.Dynamics.Joints
             // Cdot = dot(u, v + cross(w, r))
             Vector2 vpA = vA + MathUtils.Cross(wA, ref _rA);
             Vector2 vpB = vB + MathUtils.Cross(wB, ref _rB);
-            float C = _length - MaxLength;
-            float Cdot = Vector2.Dot(_u, vpB - vpA);
+            float c = _length - MaxLength;
+            float cdot = Vector2.Dot(_u, vpB - vpA);
 
             // Predictive constraint.
-            if (C < 0.0f)
+            if (c < 0.0f)
             {
-                Cdot += data.step.inv_dt * C;
+                cdot += data.step.inv_dt * c;
             }
 
-            float impulse = -_mass * Cdot;
+            float impulse = -_mass * cdot;
             float oldImpulse = _impulse;
             _impulse = Math.Min(0.0f, _impulse + impulse);
             impulse = _impulse - oldImpulse;
 
-            Vector2 P = impulse * _u;
-            vA -= _invMassA * P;
-            wA -= _invIA * MathUtils.Cross(ref _rA, ref P);
-            vB += _invMassB * P;
-            wB += _invIB * MathUtils.Cross(ref _rB, ref P);
+            Vector2 p = impulse * _u;
+            vA -= _invMassA * p;
+            wA -= invIa * MathUtils.Cross(ref _rA, ref p);
+            vB += _invMassB * p;
+            wB += invIb * MathUtils.Cross(ref _rB, ref p);
 
             data.velocities[_indexA].v = vA;
             data.velocities[_indexA].w = wA;
@@ -343,17 +344,17 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             float length = u.Length();
             u.Normalize();
-            float C = length - MaxLength;
+            float c = length - MaxLength;
 
-            C = MathUtils.Clamp(C, 0.0f, Settings.MaxLinearCorrection);
+            c = MathUtils.Clamp(c, 0.0f, Settings.MaxLinearCorrection);
 
-            float impulse = -_mass * C;
-            Vector2 P = impulse * u;
+            float impulse = -_mass * c;
+            Vector2 p = impulse * u;
 
-            cA -= _invMassA * P;
-            aA -= _invIA * MathUtils.Cross(ref rA, ref P);
-            cB += _invMassB * P;
-            aB += _invIB * MathUtils.Cross(ref rB, ref P);
+            cA -= _invMassA * p;
+            aA -= invIa * MathUtils.Cross(ref rA, ref p);
+            cB += _invMassB * p;
+            aB += invIb * MathUtils.Cross(ref rB, ref p);
 
             data.positions[_indexA].c = cA;
             data.positions[_indexA].a = aA;
