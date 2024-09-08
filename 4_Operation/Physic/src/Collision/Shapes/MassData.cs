@@ -34,7 +34,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public static bool operator ==(MassData left, MassData right) => (left.Area == right.Area) && (left.Mass == right.Mass) && (left.Centroid == right.Centroid) && (left.Inertia == right.Inertia);
+        public static bool operator ==(MassData left, MassData right) => (Math.Abs(left.Area - right.Area) < Settings.Epsilon) && (Math.Abs(left.Mass - right.Mass) < Settings.Epsilon) && (left.Centroid == right.Centroid) && (Math.Abs(left.Inertia - right.Inertia) < Settings.Epsilon);
 
         /// <summary>
         ///     The not equal operator
