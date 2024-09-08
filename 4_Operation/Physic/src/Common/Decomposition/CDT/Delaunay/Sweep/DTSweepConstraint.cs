@@ -28,8 +28,7 @@
 //  --------------------------------------------------------------------------
 
 
-
-
+using System;
 
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
 {
@@ -37,13 +36,13 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
     /// The dt sweep constraint class
     /// </summary>
     /// <seealso cref="TriangulationConstraint"/>
-    internal class DTSweepConstraint : TriangulationConstraint
+    internal class DtSweepConstraint : TriangulationConstraint
     {
         /// <summary>
         ///     Give two points in any order. Will always be ordered so
         ///     that q.y > p.y and q.x > p.x if same y value
         /// </summary>
-        public DTSweepConstraint(TriangulationPoint p1, TriangulationPoint p2)
+        public DtSweepConstraint(TriangulationPoint p1, TriangulationPoint p2)
         {
             P = p1;
             Q = p2;
@@ -52,14 +51,14 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 Q = p1;
                 P = p2;
             }
-            else if (p1.Y == p2.Y)
+            else if (Math.Abs(p1.Y - p2.Y) < float.Epsilon)
             {
                 if (p1.X > p2.X)
                 {
                     Q = p1;
                     P = p2;
                 }
-                else if (p1.X == p2.X)
+                else if (Math.Abs(p1.X - p2.X) < float.Epsilon)
                 {
                     //                logger.info( "Failed to create constraint {}={}", p1, p2 );
                     //                throw new DuplicatePointException( p1 + "=" + p2 );

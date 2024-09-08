@@ -62,7 +62,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
         /// <summary>
         /// Gets or sets the value of the edges
         /// </summary>
-        public List<DTSweepConstraint> Edges { get; private set; }
+        public List<DtSweepConstraint> Edges { get; private set; }
 
         /// <summary>
         /// Gets or sets the value of the xf
@@ -97,11 +97,11 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
         /// Adds the edge using the specified e
         /// </summary>
         /// <param name="e">The </param>
-        public void AddEdge(DTSweepConstraint e)
+        public void AddEdge(DtSweepConstraint e)
         {
             if (Edges == null)
             {
-                Edges = new List<DTSweepConstraint>();
+                Edges = new List<DtSweepConstraint>();
             }
 
             Edges.Add(e);
