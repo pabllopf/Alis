@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 
-
+using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
@@ -72,11 +72,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         /// The inv ia
         /// </summary>
-        private float _invIA;
+        private float invIa;
         /// <summary>
         /// The inv ib
         /// </summary>
-        private float _invIB;
+        private float invIb;
         /// <summary>
         /// The inv mass
         /// </summary>
@@ -147,10 +147,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             Vector2 xB = BodyB.Position;
 
-            if (useWorldCoordinates)
-                _linearOffset = BodyA.GetLocalPoint(xB);
-            else
-                _linearOffset = xB;
+            _linearOffset = useWorldCoordinates ? BodyA.GetLocalPoint(xB) : xB;
 
             //Defaults
             _angularOffset = 0.0f;
@@ -167,7 +164,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public override Vector2 WorldAnchorA
         {
             get => BodyA.Position;
-            set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
+            set
+            {
+                _linearError = value;
+                Debug.Assert(false, "You can't set the world anchor on this joint type.");
+            }
         }
 
         /// <summary>
@@ -176,7 +177,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public override Vector2 WorldAnchorB
         {
             get => BodyB.Position;
-            set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
+            set
+            {
+                _linearError = value;
+                Debug.Assert(false, "You can't set the world anchor on this joint type.");
+            }
         }
 
         /// <summary>
@@ -212,7 +217,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         {
             set
             {
-                if (_linearOffset.X != value.X || _linearOffset.Y != value.Y)
+                if (Math.Abs(_linearOffset.X - value.X) > float.Epsilon || Math.Abs(_linearOffset.Y - value.Y) > float.Epsilon)
                 {
                     WakeBodies();
                     _linearOffset = value;
@@ -228,7 +233,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         {
             set
             {
-                if (_angularOffset != value)
+                if (Math.Abs(_angularOffset - value) > float.Epsilon)
                 {
                     WakeBodies();
                     _angularOffset = value;
@@ -269,8 +274,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _localCenterB = BodyB._sweep.LocalCenter;
             _invMassA = BodyA._invMass;
             _invMassB = BodyB._invMass;
-            _invIA = BodyA._invI;
-            _invIB = BodyB._invI;
+            invIa = BodyA._invI;
+            invIb = BodyB._invI;
 
             Vector2 cA = data.positions[_indexA].c;
             float aA = data.positions[_indexA].a;
@@ -299,15 +304,15 @@ namespace Alis.Core.Physic.Dynamics.Joints
             //     [          -r1y*iA-r2y*iB,           r1x*iA+r2x*iB,                   iA+iB]
 
             float mA = _invMassA, mB = _invMassB;
-            float iA = _invIA, iB = _invIB;
+            float iA = invIa, iB = invIb;
 
-            Mat22 K = new Mat22();
-            K.ex.X = mA + mB + iA * _rA.Y * _rA.Y + iB * _rB.Y * _rB.Y;
-            K.ex.Y = -iA * _rA.X * _rA.Y - iB * _rB.X * _rB.Y;
-            K.ey.X = K.ex.Y;
-            K.ey.Y = mA + mB + iA * _rA.X * _rA.X + iB * _rB.X * _rB.X;
+            Mat22 k = new Mat22();
+            k.ex.X = mA + mB + iA * _rA.Y * _rA.Y + iB * _rB.Y * _rB.Y;
+            k.ex.Y = -iA * _rA.X * _rA.Y - iB * _rB.X * _rB.Y;
+            k.ey.X = k.ex.Y;
+            k.ey.Y = mA + mB + iA * _rA.X * _rA.X + iB * _rB.X * _rB.X;
 
-            _linearMass = K.Inverse;
+            _linearMass = k.Inverse;
 
             _angularMass = iA + iB;
             if (_angularMass > 0.0f)
@@ -324,12 +329,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _linearImpulse *= data.step.dtRatio;
                 _angularImpulse *= data.step.dtRatio;
 
-                Vector2 P = new Vector2(_linearImpulse.X, _linearImpulse.Y);
+                Vector2 p = new Vector2(_linearImpulse.X, _linearImpulse.Y);
 
-                vA -= mA * P;
-                wA -= iA * (MathUtils.Cross(ref _rA, ref P) + _angularImpulse);
-                vB += mB * P;
-                wB += iB * (MathUtils.Cross(ref _rB, ref P) + _angularImpulse);
+                vA -= mA * p;
+                wA -= iA * (MathUtils.Cross(ref _rA, ref p) + _angularImpulse);
+                vB += mB * p;
+                wB += iB * (MathUtils.Cross(ref _rB, ref p) + _angularImpulse);
             }
             else
             {
@@ -355,15 +360,15 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float wB = data.velocities[_indexB].w;
 
             float mA = _invMassA, mB = _invMassB;
-            float iA = _invIA, iB = _invIB;
+            float iA = invIa, iB = invIb;
 
             float h = data.step.dt;
-            float inv_h = data.step.inv_dt;
+            float invH = data.step.inv_dt;
 
             // Solve angular friction
             {
-                float Cdot = wB - wA + inv_h * CorrectionFactor * _angularError;
-                float impulse = -_angularMass * Cdot;
+                float cdot = wB - wA + invH * CorrectionFactor * _angularError;
+                float impulse = -_angularMass * cdot;
 
                 float oldImpulse = _angularImpulse;
                 float maxImpulse = h * _maxTorque;
@@ -376,9 +381,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             // Solve linear friction
             {
-                Vector2 Cdot = vB + MathUtils.Cross(wB, ref _rB) - vA - MathUtils.Cross(wA, ref _rA) + inv_h * CorrectionFactor * _linearError;
+                Vector2 cdot = vB + MathUtils.Cross(wB, ref _rB) - vA - MathUtils.Cross(wA, ref _rA) + invH * CorrectionFactor * _linearError;
 
-                Vector2 impulse = -MathUtils.Mul(ref _linearMass, ref Cdot);
+                Vector2 impulse = -MathUtils.Mul(ref _linearMass, ref cdot);
                 Vector2 oldImpulse = _linearImpulse;
                 _linearImpulse += impulse;
 
