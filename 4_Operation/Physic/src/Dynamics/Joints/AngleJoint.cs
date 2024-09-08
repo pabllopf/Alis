@@ -102,7 +102,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             get => _targetAngle;
             set
             {
-                if (value != _targetAngle)
+                if (Math.Abs(value - _targetAngle) > float.Epsilon)
                 {
                     _targetAngle = value;
                     WakeBodies();
