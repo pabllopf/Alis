@@ -36,27 +36,28 @@ using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
-    // Point-to-point constraint
-    // C = p2 - p1
-    // Cdot = v2 - v1
-    //      = v2 + cross(w2, r2) - v1 - cross(w1, r1)
-    // J = [-I -r1_skew I r2_skew ]
-    // Identity used:
-    // w k % (rx i + ry j) = w * (-ry i + rx j)
-
-    // Angle constraint
-    // C = angle2 - angle1 - referenceAngle
-    // Cdot = w2 - w1
-    // J = [0 0 -1 0 0 1]
-    // K = invI1 + invI2
-
-    /// <summary>
-    ///     A weld joint essentially glues two bodies together. A weld joint may
-    ///     distort somewhat because the island constraint solver is approximate.
-    ///     The joint is soft constraint based, which means the two bodies will move
-    ///     relative to each other, when a force is applied. To combine two bodies
-    ///     in a rigid fashion, combine the fixtures to a single body instead.
-    /// </summary>
+        /// <summary>
+        ///     A weld joint essentially glues two bodies together. A weld joint may
+        ///     distort somewhat because the island constraint solver is approximate.
+        ///     The joint is soft constraint based, which means the two bodies will move
+        ///     relative to each other, when a force is applied. To combine two bodies
+        ///     in a rigid fashion, combine the fixtures to a single body instead.
+        /// </summary>
+        /// <remarks>
+        /// Point-to-point constraint
+        /// C = p2 - p1
+        /// Cdot = v2 - v1
+        ///      = v2 + cross(w2, r2) - v1 - cross(w1, r1)
+        /// J = [-I -r1_skew I r2_skew ]
+        /// Identity used:
+        /// w k % (rx i + ry j) = w * (-ry i + rx j)
+        ///
+        /// Angle constraint
+        /// C = angle2 - angle1 - referenceAngle
+        /// Cdot = w2 - w1
+        /// J = [0 0 -1 0 0 1]
+        /// K = invI1 + invI2
+        /// </remarks>
     public class WeldJoint : Joint
     {
         /// <summary>
@@ -242,16 +243,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             _rA = Complex.Multiply(LocalAnchorA - _localCenterA, ref qA);
             _rB = Complex.Multiply(LocalAnchorB - _localCenterB, ref qB);
-
-            // J = [-I -r1_skew I r2_skew]
-            //     [ 0       -1 0       1]
-            // r_skew = [-ry; rx]
-
-            // Matlab
-            // K = [ mA+r1y^2*iA+mB+r2y^2*iB,  -r1y*iA*r1x-r2y*iB*r2x,          -r1y*iA-r2y*iB]
-            //     [  -r1y*iA*r1x-r2y*iB*r2x, mA+r1x^2*iA+mB+r2x^2*iB,           r1x*iA+r2x*iB]
-            //     [          -r1y*iA-r2y*iB,           r1x*iA+r2x*iB,                   iA+iB]
-
+            
             float mA = _invMassA, mB = _invMassB;
             float iA = _invIA, iB = _invIB;
 
@@ -287,13 +279,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 // magic formulas
                 float h = data.step.dt;
                 _gamma = h * (d + h * k);
-                _gamma = _gamma != 0.0f ? 1.0f / _gamma : 0.0f;
+                _gamma = Math.Abs(_gamma) <float.Epsilon ? 1.0f / _gamma : 0.0f;
                 _bias = C * h * k * _gamma;
 
                 invM += _gamma;
-                _mass.ez.Z = invM != 0.0f ? 1.0f / invM : 0.0f;
+                _mass.ez.Z = Math.Abs(invM) <float.Epsilon  ? 1.0f / invM : 0.0f;
             }
-            else if (K.ez.Z == 0.0f)
+            else if (Math.Abs(K.ez.Z) <float.Epsilon)
             {
                 K.GetInverse22(ref _mass);
                 _gamma = 0.0f;
@@ -346,44 +338,44 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             if (FrequencyHz > 0.0f)
             {
-                float Cdot2 = wB - wA;
+                float cdot2 = wB - wA;
 
-                float impulse2 = -_mass.ez.Z * (Cdot2 + _bias + _gamma * _impulse.Z);
+                float impulse2 = -_mass.ez.Z * (cdot2 + _bias + _gamma * _impulse.Z);
                 _impulse.Z += impulse2;
 
                 wA -= iA * impulse2;
                 wB += iB * impulse2;
 
-                Vector2 Cdot1 = vB + MathUtils.Cross(wB, ref _rB) - vA - MathUtils.Cross(wA, ref _rA);
+                Vector2 cdot1 = vB + MathUtils.Cross(wB, ref _rB) - vA - MathUtils.Cross(wA, ref _rA);
 
-                Vector2 impulse1 = -MathUtils.Mul22(_mass, Cdot1);
+                Vector2 impulse1 = -MathUtils.Mul22(_mass, cdot1);
                 _impulse.X += impulse1.X;
                 _impulse.Y += impulse1.Y;
 
-                Vector2 P = impulse1;
+                Vector2 p = impulse1;
 
-                vA -= mA * P;
-                wA -= iA * MathUtils.Cross(ref _rA, ref P);
+                vA -= mA * p;
+                wA -= iA * MathUtils.Cross(ref _rA, ref p);
 
-                vB += mB * P;
-                wB += iB * MathUtils.Cross(ref _rB, ref P);
+                vB += mB * p;
+                wB += iB * MathUtils.Cross(ref _rB, ref p);
             }
             else
             {
-                Vector2 Cdot1 = vB + MathUtils.Cross(wB, ref _rB) - vA - MathUtils.Cross(wA, ref _rA);
-                float Cdot2 = wB - wA;
-                Vector3 Cdot = new Vector3(Cdot1.X, Cdot1.Y, Cdot2);
+                Vector2 cdot1 = vB + MathUtils.Cross(wB, ref _rB) - vA - MathUtils.Cross(wA, ref _rA);
+                float cdot2 = wB - wA;
+                Vector3 cdot = new Vector3(cdot1.X, cdot1.Y, cdot2);
 
-                Vector3 impulse = -MathUtils.Mul(_mass, Cdot);
+                Vector3 impulse = -MathUtils.Mul(_mass, cdot);
                 _impulse += impulse;
 
-                Vector2 P = new Vector2(impulse.X, impulse.Y);
+                Vector2 p = new Vector2(impulse.X, impulse.Y);
 
-                vA -= mA * P;
-                wA -= iA * (MathUtils.Cross(ref _rA, ref P) + impulse.Z);
+                vA -= mA * p;
+                wA -= iA * (MathUtils.Cross(ref _rA, ref p) + impulse.Z);
 
-                vB += mB * P;
-                wB += iB * (MathUtils.Cross(ref _rB, ref P) + impulse.Z);
+                vB += mB * p;
+                wB += iB * (MathUtils.Cross(ref _rB, ref p) + impulse.Z);
             }
 
             data.velocities[_indexA].v = vA;
@@ -415,60 +407,60 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             float positionError, angularError;
 
-            Mat33 K = new Mat33();
-            K.ex.X = mA + mB + rA.Y * rA.Y * iA + rB.Y * rB.Y * iB;
-            K.ey.X = -rA.Y * rA.X * iA - rB.Y * rB.X * iB;
-            K.ez.X = -rA.Y * iA - rB.Y * iB;
-            K.ex.Y = K.ey.X;
-            K.ey.Y = mA + mB + rA.X * rA.X * iA + rB.X * rB.X * iB;
-            K.ez.Y = rA.X * iA + rB.X * iB;
-            K.ex.Z = K.ez.X;
-            K.ey.Z = K.ez.Y;
-            K.ez.Z = iA + iB;
+            Mat33 k = new Mat33();
+            k.ex.X = mA + mB + rA.Y * rA.Y * iA + rB.Y * rB.Y * iB;
+            k.ey.X = -rA.Y * rA.X * iA - rB.Y * rB.X * iB;
+            k.ez.X = -rA.Y * iA - rB.Y * iB;
+            k.ex.Y = k.ey.X;
+            k.ey.Y = mA + mB + rA.X * rA.X * iA + rB.X * rB.X * iB;
+            k.ez.Y = rA.X * iA + rB.X * iB;
+            k.ex.Z = k.ez.X;
+            k.ey.Z = k.ez.Y;
+            k.ez.Z = iA + iB;
 
             if (FrequencyHz > 0.0f)
             {
-                Vector2 C1 = cB + rB - cA - rA;
+                Vector2 c1 = cB + rB - cA - rA;
 
-                positionError = C1.Length();
+                positionError = c1.Length();
                 angularError = 0.0f;
 
-                Vector2 P = -K.Solve22(C1);
+                Vector2 p = -k.Solve22(c1);
 
-                cA -= mA * P;
-                aA -= iA * MathUtils.Cross(ref rA, ref P);
+                cA -= mA * p;
+                aA -= iA * MathUtils.Cross(ref rA, ref p);
 
-                cB += mB * P;
-                aB += iB * MathUtils.Cross(ref rB, ref P);
+                cB += mB * p;
+                aB += iB * MathUtils.Cross(ref rB, ref p);
             }
             else
             {
-                Vector2 C1 = cB + rB - cA - rA;
-                float C2 = aB - aA - ReferenceAngle;
+                Vector2 c1 = cB + rB - cA - rA;
+                float c2 = aB - aA - ReferenceAngle;
 
-                positionError = C1.Length();
-                angularError = Math.Abs(C2);
+                positionError = c1.Length();
+                angularError = Math.Abs(c2);
 
-                Vector3 C = new Vector3(C1.X, C1.Y, C2);
+                Vector3 c = new Vector3(c1.X, c1.Y, c2);
 
                 Vector3 impulse;
-                if (K.ez.Z <= 0.0f)
+                if (k.ez.Z <= 0.0f)
                 {
-                    Vector2 impulse2 = -K.Solve22(C1);
+                    Vector2 impulse2 = -k.Solve22(c1);
                     impulse = new Vector3(impulse2.X, impulse2.Y, 0.0f);
                 }
                 else
                 {
-                    impulse = -K.Solve33(C);
+                    impulse = -k.Solve33(c);
                 }
 
-                Vector2 P = new Vector2(impulse.X, impulse.Y);
+                Vector2 p = new Vector2(impulse.X, impulse.Y);
 
-                cA -= mA * P;
-                aA -= iA * (MathUtils.Cross(ref rA, ref P) + impulse.Z);
+                cA -= mA * p;
+                aA -= iA * (MathUtils.Cross(ref rA, ref p) + impulse.Z);
 
-                cB += mB * P;
-                aB += iB * (MathUtils.Cross(ref rB, ref P) + impulse.Z);
+                cB += mB * p;
+                aB += iB * (MathUtils.Cross(ref rB, ref p) + impulse.Z);
             }
 
             data.positions[_indexA].c = cA;
