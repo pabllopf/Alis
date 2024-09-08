@@ -94,10 +94,10 @@ namespace Alis.Core.Physic.Controllers
         /// <param name="maxAngularVelocity">The max angular velocity.</param>
         public VelocityLimitController(float maxLinearVelocity, float maxAngularVelocity)
         {
-            if (maxLinearVelocity == 0 || Math.Abs(maxLinearVelocity - float.MaxValue) < float.Epsilon)
+            if (Math.Abs(maxLinearVelocity) < float.Epsilon || Math.Abs(maxLinearVelocity - float.MaxValue) < float.Epsilon)
                 LimitLinearVelocity = false;
 
-            if (maxAngularVelocity == 0 || Math.Abs(maxAngularVelocity - float.MaxValue) < float.Epsilon)
+            if (Math.Abs(maxAngularVelocity) < float.Epsilon|| Math.Abs(maxAngularVelocity - float.MaxValue) < float.Epsilon)
                 LimitAngularVelocity = false;
 
             MaxLinearVelocity = maxLinearVelocity;
