@@ -689,10 +689,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 float iA = invIa, iB = invIb;
 
                 Mat22 k = new Mat22();
-                k.ex.X = mA + mB + iA * rA.Y * rA.Y + iB * rB.Y * rB.Y;
-                k.ex.Y = -iA * rA.X * rA.Y - iB * rB.X * rB.Y;
-                k.ey.X = k.ex.Y;
-                k.ey.Y = mA + mB + iA * rA.X * rA.X + iB * rB.X * rB.X;
+                k.Ex.X = mA + mB + iA * rA.Y * rA.Y + iB * rB.Y * rB.Y;
+                k.Ex.Y = -iA * rA.X * rA.Y - iB * rB.X * rB.Y;
+                k.Ey.X = k.Ex.Y;
+                k.Ey.Y = mA + mB + iA * rA.X * rA.X + iB * rB.X * rB.X;
 
                 Vector2 impulse = -k.Solve(c);
 

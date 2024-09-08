@@ -111,7 +111,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="A">The </param>
         /// <param name="v">The </param>
         /// <returns>The vector</returns>
-        public static Vector2 Mul(ref Mat22 A, ref Vector2 v) => new Vector2(A.ex.X * v.X + A.ey.X * v.Y, A.ex.Y * v.X + A.ey.Y * v.Y);
+        public static Vector2 Mul(ref Mat22 A, ref Vector2 v) => new Vector2(A.Ex.X * v.X + A.Ey.X * v.Y, A.Ex.Y * v.X + A.Ey.Y * v.Y);
 
         /// <summary>
         /// Muls the t using the specified a
@@ -127,7 +127,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="A">The </param>
         /// <param name="v">The </param>
         /// <returns>The vector</returns>
-        public static Vector2 MulT(ref Mat22 A, ref Vector2 v) => new Vector2(v.X * A.ex.X + v.Y * A.ex.Y, v.X * A.ey.X + v.Y * A.ey.Y);
+        public static Vector2 MulT(ref Mat22 A, ref Vector2 v) => new Vector2(v.X * A.Ex.X + v.Y * A.Ex.Y, v.X * A.Ey.X + v.Y * A.Ey.Y);
 
 
         /// Multiply a matrix times a vector.

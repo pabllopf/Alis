@@ -882,8 +882,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 }
 
                 Mat22 kTe = new Mat22();
-                kTe.ex = new Vector2(k11, k12);
-                kTe.ey = new Vector2(k12, k22);
+                kTe.Ex = new Vector2(k11, k12);
+                kTe.Ey = new Vector2(k12, k22);
 
                 Vector2 impulse1 = kTe.Solve(-c1);
                 impulse = new Vector3();

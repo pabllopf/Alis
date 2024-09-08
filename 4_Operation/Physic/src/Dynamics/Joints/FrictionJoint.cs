@@ -239,10 +239,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float iA = _invIA, iB = _invIB;
 
             Mat22 K = new Mat22();
-            K.ex.X = mA + mB + iA * _rA.Y * _rA.Y + iB * _rB.Y * _rB.Y;
-            K.ex.Y = -iA * _rA.X * _rA.Y - iB * _rB.X * _rB.Y;
-            K.ey.X = K.ex.Y;
-            K.ey.Y = mA + mB + iA * _rA.X * _rA.X + iB * _rB.X * _rB.X;
+            K.Ex.X = mA + mB + iA * _rA.Y * _rA.Y + iB * _rB.Y * _rB.Y;
+            K.Ex.Y = -iA * _rA.X * _rA.Y - iB * _rB.X * _rB.Y;
+            K.Ey.X = K.Ex.Y;
+            K.Ey.Y = mA + mB + iA * _rA.X * _rA.X + iB * _rB.X * _rB.X;
 
             _linearMass = K.Inverse;
 
