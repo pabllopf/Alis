@@ -447,7 +447,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The axis at which the joint moves.
         /// </summary>
-        public Vector2 Axis
+        public Vector2 Axis1
         {
             get => _axis1;
             set
@@ -458,7 +458,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _localYAxisA = MathUtils.Cross(1.0f, ref _localXAxis);
             }
         }
-
+                
         /// <summary>
         ///     The axis in local coordinates relative to BodyA
         /// </summary>
@@ -491,7 +491,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 LocalAnchorB = localAnchorB;
             }
 
-            Axis = axis; //FPE only: store the orignal value for use in Serialization
+            Axis1 = axis; //FPE only: store the orignal value for use in Serialization
             ReferenceAngle = BodyB.Rotation - BodyA.Rotation;
 
             _limitState = LimitState.Inactive;

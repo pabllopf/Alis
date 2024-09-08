@@ -282,7 +282,7 @@ namespace Alis.Core.Physic.Common
                     WriteElement("EnableMotor", prismaticJoint.MotorEnabled);
                     WriteElement("LocalAnchorA", prismaticJoint.LocalAnchorA);
                     WriteElement("LocalAnchorB", prismaticJoint.LocalAnchorB);
-                    WriteElement("Axis", prismaticJoint.Axis);
+                    WriteElement("Axis", prismaticJoint.Axis1);
                     WriteElement("LowerTranslation", prismaticJoint.LowerLimit);
                     WriteElement("UpperTranslation", prismaticJoint.UpperLimit);
                     WriteElement("MaxMotorForce", prismaticJoint.MaxMotorForce);
@@ -1025,7 +1025,7 @@ namespace Alis.Core.Physic.Common
                                             ((PrismaticJoint) joint).LocalAnchorB = ReadVector(sn);
                                             break;
                                         case "axis":
-                                            ((PrismaticJoint) joint).Axis = ReadVector(sn);
+                                            ((PrismaticJoint) joint).Axis1 = ReadVector(sn);
                                             break;
                                         case "maxmotorforce":
                                             ((PrismaticJoint) joint).MaxMotorForce = ParseFloat(sn.Value);
