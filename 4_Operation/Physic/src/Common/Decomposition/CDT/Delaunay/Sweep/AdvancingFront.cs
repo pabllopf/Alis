@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -32,6 +32,9 @@ using System.Text;
 
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
 {
+    /// <summary>
+    /// The advancing front class
+    /// </summary>
     internal class AdvancingFront
     {
         /// <summary>

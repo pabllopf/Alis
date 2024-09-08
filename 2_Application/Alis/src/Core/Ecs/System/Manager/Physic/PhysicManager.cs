@@ -42,6 +42,9 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         /// </summary>
         public World World = new World();
 
+        /// <summary>
+        /// The time step physics
+        /// </summary>
         private float timeStepPhysics;
 
         /// <summary>
@@ -52,6 +55,9 @@ namespace Alis.Core.Ecs.System.Manager.Physic
             World = new World(Context.Settings.Physic.Gravity);
         }
 
+        /// <summary>
+        /// Ons the awake
+        /// </summary>
         public override void OnAwake()
         {
             timeStepPhysics = 1f / 20f;
@@ -91,6 +97,9 @@ namespace Alis.Core.Ecs.System.Manager.Physic
             }
         }
 
+        /// <summary>
+        /// Ons the physic update
+        /// </summary>
         public override void OnPhysicUpdate()
         {
             World.Step(timeStepPhysics);
