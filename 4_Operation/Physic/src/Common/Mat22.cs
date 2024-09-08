@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Physic.Common
@@ -74,7 +75,7 @@ namespace Alis.Core.Physic.Common
             {
                 float a = Ex.X, b = Ey.X, c = Ex.Y, d = Ey.Y;
                 float det = a * d - b * c;
-                if (det != 0.0f)
+                 if (Math.Abs(det) > float.Epsilon)
                 {
                     det = 1.0f / det;
                 }
@@ -130,7 +131,7 @@ namespace Alis.Core.Physic.Common
         {
             float a11 = Ex.X, a12 = Ey.X, a21 = Ex.Y, a22 = Ey.Y;
             float det = a11 * a22 - a12 * a21;
-            if (det != 0.0f)
+             if (Math.Abs(det) > float.Epsilon)
             {
                 det = 1.0f / det;
             }
