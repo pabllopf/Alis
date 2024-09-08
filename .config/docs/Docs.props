@@ -2,6 +2,7 @@
 <Project>
     <ItemGroup Condition="
         $(AssemblyName.Contains('Test')) == false AND 
+        $(AssemblyName.Contains('Benchmark')) == false AND
         $(AssemblyName.Contains('Sample')) == false AND
         $(AssemblyName.Contains('Template')) == false">
         <None Include="$(SolutionDir)license.md" LinkBase="." Pack="true" Visible="false" PackagePath="." CopyToOutputDirectory="Always"/>
