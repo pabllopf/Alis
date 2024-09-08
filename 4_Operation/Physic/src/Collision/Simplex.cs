@@ -1,7 +1,10 @@
 using System;
 using System.Diagnostics;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
+using Alis.Core.Physic.Dynamics;
+using Transform = Alis.Core.Physic.Common.Transform;
 
 namespace Alis.Core.Physic.Collision
 {
