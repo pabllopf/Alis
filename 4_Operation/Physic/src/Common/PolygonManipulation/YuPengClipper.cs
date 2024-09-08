@@ -39,48 +39,6 @@ using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Physic.Common.PolygonManipulation
 {
-    /// <summary>
-    /// The poly clip type enum
-    /// </summary>
-    internal enum PolyClipType
-    {
-        /// <summary>
-        /// The intersect poly clip type
-        /// </summary>
-        Intersect,
-        /// <summary>
-        /// The union poly clip type
-        /// </summary>
-        Union,
-        /// <summary>
-        /// The difference poly clip type
-        /// </summary>
-        Difference
-    }
-
-    /// <summary>
-    /// The poly clip error enum
-    /// </summary>
-    public enum PolyClipError
-    {
-        /// <summary>
-        /// The none poly clip error
-        /// </summary>
-        None,
-        /// <summary>
-        /// The degenerated output poly clip error
-        /// </summary>
-        DegeneratedOutput,
-        /// <summary>
-        /// The non simple input poly clip error
-        /// </summary>
-        NonSimpleInput,
-        /// <summary>
-        /// The broken result poly clip error
-        /// </summary>
-        BrokenResult
-    }
-
     //Clipper contributed by Helge Backhaus
 
     /// <summary>

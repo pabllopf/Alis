@@ -232,7 +232,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// </summary>
         /// <param name="shape">The other circle</param>
         /// <returns>True if the two circles are the same size and have the same position</returns>
-        public bool CompareTo(CircleShape shape) => (Radius == shape.Radius) && (Position == shape.Position);
+        public bool CompareTo(CircleShape shape) => (Math.Abs(Radius - shape.Radius) < MathUtils.Epsilon) && (Position == shape.Position);
 
         /// <summary>
         /// Clones this instance

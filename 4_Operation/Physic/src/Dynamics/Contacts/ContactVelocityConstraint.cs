@@ -1,0 +1,75 @@
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Common;
+
+namespace Alis.Core.Physic.Dynamics.Contacts
+{
+    /// <summary>
+    /// The contact velocity constraint class
+    /// </summary>
+    public sealed class ContactVelocityConstraint
+    {
+        /// <summary>
+        /// The contact index
+        /// </summary>
+        public int contactIndex;
+        /// <summary>
+        /// The friction
+        /// </summary>
+        public float friction;
+        /// <summary>
+        /// The index
+        /// </summary>
+        public int indexA;
+        /// <summary>
+        /// The index
+        /// </summary>
+        public int indexB;
+        /// <summary>
+        /// The inv ib
+        /// </summary>
+        public float invIA, invIB;
+        /// <summary>
+        /// The inv mass
+        /// </summary>
+        public float invMassA, invMassB;
+        /// <summary>
+        /// The 
+        /// </summary>
+        public Mat22 K;
+        /// <summary>
+        /// The normal
+        /// </summary>
+        public Vector2 normal;
+        /// <summary>
+        /// The normal mass
+        /// </summary>
+        public Mat22 normalMass;
+        /// <summary>
+        /// The point count
+        /// </summary>
+        public int pointCount;
+        /// <summary>
+        /// The max manifold points
+        /// </summary>
+        public VelocityConstraintPoint[] points = new VelocityConstraintPoint[Settings.MaxManifoldPoints];
+        /// <summary>
+        /// The restitution
+        /// </summary>
+        public float restitution;
+        /// <summary>
+        /// The tangent speed
+        /// </summary>
+        public float tangentSpeed;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ContactVelocityConstraint"/> class
+        /// </summary>
+        public ContactVelocityConstraint()
+        {
+            for (int i = 0; i < Settings.MaxManifoldPoints; i++)
+            {
+                points[i] = new VelocityConstraintPoint();
+            }
+        }
+    }
+}
