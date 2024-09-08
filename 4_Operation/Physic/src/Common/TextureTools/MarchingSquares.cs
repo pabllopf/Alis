@@ -802,40 +802,6 @@ namespace Alis.Core.Physic.Common.TextureTools
 
         #region Nested type: CxFastListNode
 
-        /// <summary>
-        ///     The cx fast list node class
-        /// </summary>
-        internal class CxFastListNode<T>
-        {
-            /// <summary>
-            ///     The elt
-            /// </summary>
-            internal T _elt;
-
-            /// <summary>
-            ///     The next
-            /// </summary>
-            internal CxFastListNode<T> _next;
-
-            /// <summary>
-            ///     Initializes a new instance of the <see cref="CxFastListNode" /> class
-            /// </summary>
-            /// <param name="obj">The obj</param>
-            public CxFastListNode(T obj) => _elt = obj;
-
-            /// <summary>
-            ///     Elems this instance
-            /// </summary>
-            /// <returns>The</returns>
-            public T Elem() => _elt;
-
-            /// <summary>
-            ///     Nexts this instance
-            /// </summary>
-            /// <returns>A cx fast list node of t</returns>
-            public CxFastListNode<T> Next() => _next;
-        }
-
         #endregion
 
         #endregion
@@ -872,32 +838,6 @@ namespace Alis.Core.Physic.Common.TextureTools
         #endregion
 
         #region Nested type: GeomPolyVal
-
-        /// <summary>
-        ///     The geom poly val class
-        /// </summary>
-        private class GeomPolyVal
-        {
-            /** Associated polygon at coordinate **/
-            /** Key of original sub-polygon **/
-            public readonly int Key;
-
-            /// <summary>
-            ///     The geom
-            /// </summary>
-            public GeomPoly GeomP;
-
-            /// <summary>
-            ///     Initializes a new instance of the <see cref="GeomPolyVal" /> class
-            /// </summary>
-            /// <param name="geomP">The geom</param>
-            /// <param name="K">The </param>
-            public GeomPolyVal(GeomPoly geomP, int K)
-            {
-                GeomP = geomP;
-                Key = K;
-            }
-        }
 
         #endregion
 
