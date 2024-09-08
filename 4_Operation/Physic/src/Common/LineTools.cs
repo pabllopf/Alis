@@ -1,4 +1,4 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -35,9 +35,7 @@
 using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;
-#if XNAAPI
-using Vector2 = Microsoft.Xna.Framework.Vector2;
-#endif
+
 
 namespace Alis.Core.Physic.Common
 {

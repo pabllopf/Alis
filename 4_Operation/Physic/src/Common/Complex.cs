@@ -1,4 +1,4 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -29,10 +29,7 @@
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
-#if XNAAPI
-using Complex = nkast.Aether.Physics2D.Common.Complex;
-using Vector2 = Microsoft.Xna.Framework.Vector2;
-#endif
+
 
 namespace Alis.Core.Physic.Common
 {

@@ -39,10 +39,7 @@ using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Common.PhysicsLogic;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Alis.Core.Physic.Dynamics.Joints;
-#if XNAAPI
-using Complex = nkast.Aether.Physics2D.Common.Complex;
-using Vector2 = Microsoft.Xna.Framework.Vector2;
-#endif
+
 
 namespace Alis.Core.Physic.Dynamics
 {

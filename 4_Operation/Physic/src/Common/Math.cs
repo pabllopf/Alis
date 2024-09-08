@@ -32,11 +32,7 @@
 using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
-#if XNAAPI
-using Complex = nkast.Aether.Physics2D.Common.Complex;
-using Vector2 = Microsoft.Xna.Framework.Vector2;
-using Vector3 = Microsoft.Xna.Framework.Vector3;
-#endif
+
 
 namespace Alis.Core.Physic.Common
 {

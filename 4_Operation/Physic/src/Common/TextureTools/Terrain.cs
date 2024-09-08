@@ -1,4 +1,4 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -38,9 +38,7 @@ using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Common.Decomposition;
 using Alis.Core.Physic.Common.PolygonManipulation;
 using Alis.Core.Physic.Dynamics;
-#if XNAAPI
-using Vector2 = Microsoft.Xna.Framework.Vector2;
-#endif
+
 
 namespace Alis.Core.Physic.Common.TextureTools
 {

@@ -29,10 +29,7 @@
 
 
 
-#if XNAAPI
-using Complex = nkast.Aether.Physics2D.Common.Complex;
-using Vector2 = Microsoft.Xna.Framework.Vector2;
-#endif
+
 using System;
 using System.Collections.Concurrent;
 using System.Diagnostics;
