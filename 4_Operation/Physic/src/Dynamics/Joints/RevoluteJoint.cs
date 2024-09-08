@@ -74,11 +74,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         /// The inv ia
         /// </summary>
-        private float _invIA;
+        private float invIa;
         /// <summary>
         /// The inv ib
         /// </summary>
-        private float _invIB;
+        private float invIb;
         /// <summary>
         /// The inv mass
         /// </summary>
@@ -264,7 +264,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             get => _lowerAngle;
             set
             {
-                if (_lowerAngle != value)
+                if (Math.Abs(_lowerAngle - value) > float.Epsilon)
                 {
                     WakeBodies();
                     _lowerAngle = value;
@@ -281,7 +281,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             get => _upperAngle;
             set
             {
-                if (_upperAngle != value)
+                if (Math.Abs(_upperAngle - value) > float.Epsilon)
                 {
                     WakeBodies();
                     _upperAngle = value;
@@ -350,7 +350,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="upper">The upper limit</param>
         public void SetLimits(float lower, float upper)
         {
-            if (lower != _lowerAngle || upper != _upperAngle)
+            if (Math.Abs(lower - _lowerAngle) > float.Epsilon || Math.Abs(upper - _upperAngle) > float.Epsilon)
             {
                 WakeBodies();
                 _upperAngle = upper;
@@ -395,8 +395,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _localCenterB = BodyB._sweep.LocalCenter;
             _invMassA = BodyA._invMass;
             _invMassB = BodyB._invMass;
-            _invIA = BodyA._invI;
-            _invIB = BodyB._invI;
+            invIa = BodyA._invI;
+            invIb = BodyB._invI;
 
             float aA = data.positions[_indexA].a;
             Vector2 vA = data.velocities[_indexA].v;
@@ -422,7 +422,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             //     [          -r1y*iA-r2y*iB,           r1x*iA+r2x*iB,                   iA+iB]
 
             float mA = _invMassA, mB = _invMassB;
-            float iA = _invIA, iB = _invIB;
+            float iA = invIa, iB = invIb;
 
             bool fixedRotation = iA + iB == 0.0f;
 
@@ -489,13 +489,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _impulse *= data.step.dtRatio;
                 _motorImpulse *= data.step.dtRatio;
 
-                Vector2 P = new Vector2(_impulse.X, _impulse.Y);
+                Vector2 p = new Vector2(_impulse.X, _impulse.Y);
 
-                vA -= mA * P;
-                wA -= iA * (MathUtils.Cross(ref _rA, ref P) + MotorImpulse + _impulse.Z);
+                vA -= mA * p;
+                wA -= iA * (MathUtils.Cross(ref _rA, ref p) + MotorImpulse + _impulse.Z);
 
-                vB += mB * P;
-                wB += iB * (MathUtils.Cross(ref _rB, ref P) + MotorImpulse + _impulse.Z);
+                vB += mB * p;
+                wB += iB * (MathUtils.Cross(ref _rB, ref p) + MotorImpulse + _impulse.Z);
             }
             else
             {
@@ -521,15 +521,15 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float wB = data.velocities[_indexB].w;
 
             float mA = _invMassA, mB = _invMassB;
-            float iA = _invIA, iB = _invIB;
+            float iA = invIa, iB = invIb;
 
             bool fixedRotation = iA + iB == 0.0f;
 
             // Solve motor constraint.
             if (_enableMotor && (_limitState != LimitState.Equal) && (fixedRotation == false))
             {
-                float Cdot = wB - wA - _motorSpeed;
-                float impulse = _motorMass * -Cdot;
+                float cdot = wB - wA - _motorSpeed;
+                float impulse = _motorMass * -cdot;
                 float oldImpulse = _motorImpulse;
                 float maxImpulse = data.step.dt * _maxMotorTorque;
                 _motorImpulse = MathUtils.Clamp(_motorImpulse + impulse, -maxImpulse, maxImpulse);
@@ -542,11 +542,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
             // Solve limit constraint.
             if (_enableLimit && (_limitState != LimitState.Inactive) && (fixedRotation == false))
             {
-                Vector2 Cdot1 = vB + MathUtils.Cross(wB, ref _rB) - vA - MathUtils.Cross(wA, ref _rA);
-                float Cdot2 = wB - wA;
-                Vector3 Cdot = new Vector3(Cdot1.X, Cdot1.Y, Cdot2);
+                Vector2 cdot1 = vB + MathUtils.Cross(wB, ref _rB) - vA - MathUtils.Cross(wA, ref _rA);
+                float cdot2 = wB - wA;
+                Vector3 cdot = new Vector3(cdot1.X, cdot1.Y, cdot2);
 
-                Vector3 impulse = -_mass.Solve33(Cdot);
+                Vector3 impulse = -_mass.Solve33(cdot);
 
                 if (_limitState == LimitState.Equal)
                 {
@@ -557,7 +557,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     float newImpulse = _impulse.Z + impulse.Z;
                     if (newImpulse < 0.0f)
                     {
-                        Vector2 rhs = -Cdot1 + _impulse.Z * new Vector2(_mass.ez.X, _mass.ez.Y);
+                        Vector2 rhs = -cdot1 + _impulse.Z * new Vector2(_mass.ez.X, _mass.ez.Y);
                         Vector2 reduced = _mass.Solve22(rhs);
                         impulse.X = reduced.X;
                         impulse.Y = reduced.Y;
@@ -576,7 +576,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     float newImpulse = _impulse.Z + impulse.Z;
                     if (newImpulse > 0.0f)
                     {
-                        Vector2 rhs = -Cdot1 + _impulse.Z * new Vector2(_mass.ez.X, _mass.ez.Y);
+                        Vector2 rhs = -cdot1 + _impulse.Z * new Vector2(_mass.ez.X, _mass.ez.Y);
                         Vector2 reduced = _mass.Solve22(rhs);
                         impulse.X = reduced.X;
                         impulse.Y = reduced.Y;
@@ -591,19 +591,19 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     }
                 }
 
-                Vector2 P = new Vector2(impulse.X, impulse.Y);
+                Vector2 p = new Vector2(impulse.X, impulse.Y);
 
-                vA -= mA * P;
-                wA -= iA * (MathUtils.Cross(ref _rA, ref P) + impulse.Z);
+                vA -= mA * p;
+                wA -= iA * (MathUtils.Cross(ref _rA, ref p) + impulse.Z);
 
-                vB += mB * P;
-                wB += iB * (MathUtils.Cross(ref _rB, ref P) + impulse.Z);
+                vB += mB * p;
+                wB += iB * (MathUtils.Cross(ref _rB, ref p) + impulse.Z);
             }
             else
             {
                 // Solve point-to-point constraint
-                Vector2 Cdot = vB + MathUtils.Cross(wB, ref _rB) - vA - MathUtils.Cross(wA, ref _rA);
-                Vector2 impulse = _mass.Solve22(-Cdot);
+                Vector2 cdot = vB + MathUtils.Cross(wB, ref _rB) - vA - MathUtils.Cross(wA, ref _rA);
+                Vector2 impulse = _mass.Solve22(-cdot);
 
                 _impulse.X += impulse.X;
                 _impulse.Y += impulse.Y;
@@ -637,7 +637,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float angularError = 0.0f;
             float positionError;
 
-            bool fixedRotation = _invIA + _invIB == 0.0f;
+            bool fixedRotation = invIa + invIb == 0.0f;
 
             // Solve angular limit constraint.
             if (_enableLimit && (_limitState != LimitState.Inactive) && (fixedRotation == false))
@@ -648,31 +648,31 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 if (_limitState == LimitState.Equal)
                 {
                     // Prevent large angular corrections
-                    float C = MathUtils.Clamp(angle - _lowerAngle, -Settings.MaxAngularCorrection, Settings.MaxAngularCorrection);
-                    limitImpulse = -_motorMass * C;
-                    angularError = Math.Abs(C);
+                    float c = MathUtils.Clamp(angle - _lowerAngle, -Settings.MaxAngularCorrection, Settings.MaxAngularCorrection);
+                    limitImpulse = -_motorMass * c;
+                    angularError = Math.Abs(c);
                 }
                 else if (_limitState == LimitState.AtLower)
                 {
-                    float C = angle - _lowerAngle;
-                    angularError = -C;
+                    float c = angle - _lowerAngle;
+                    angularError = -c;
 
                     // Prevent large angular corrections and allow some slop.
-                    C = MathUtils.Clamp(C + Settings.AngularSlop, -Settings.MaxAngularCorrection, 0.0f);
-                    limitImpulse = -_motorMass * C;
+                    c = MathUtils.Clamp(c + Settings.AngularSlop, -Settings.MaxAngularCorrection, 0.0f);
+                    limitImpulse = -_motorMass * c;
                 }
                 else if (_limitState == LimitState.AtUpper)
                 {
-                    float C = angle - _upperAngle;
-                    angularError = C;
+                    float c = angle - _upperAngle;
+                    angularError = c;
 
                     // Prevent large angular corrections and allow some slop.
-                    C = MathUtils.Clamp(C - Settings.AngularSlop, 0.0f, Settings.MaxAngularCorrection);
-                    limitImpulse = -_motorMass * C;
+                    c = MathUtils.Clamp(c - Settings.AngularSlop, 0.0f, Settings.MaxAngularCorrection);
+                    limitImpulse = -_motorMass * c;
                 }
 
-                aA -= _invIA * limitImpulse;
-                aB += _invIB * limitImpulse;
+                aA -= invIa * limitImpulse;
+                aB += invIb * limitImpulse;
             }
 
             // Solve point-to-point constraint.
@@ -682,19 +682,19 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 Vector2 rA = Complex.Multiply(LocalAnchorA - _localCenterA, ref qA);
                 Vector2 rB = Complex.Multiply(LocalAnchorB - _localCenterB, ref qB);
 
-                Vector2 C = cB + rB - cA - rA;
-                positionError = C.Length();
+                Vector2 c = cB + rB - cA - rA;
+                positionError = c.Length();
 
                 float mA = _invMassA, mB = _invMassB;
-                float iA = _invIA, iB = _invIB;
+                float iA = invIa, iB = invIb;
 
-                Mat22 K = new Mat22();
-                K.ex.X = mA + mB + iA * rA.Y * rA.Y + iB * rB.Y * rB.Y;
-                K.ex.Y = -iA * rA.X * rA.Y - iB * rB.X * rB.Y;
-                K.ey.X = K.ex.Y;
-                K.ey.Y = mA + mB + iA * rA.X * rA.X + iB * rB.X * rB.X;
+                Mat22 k = new Mat22();
+                k.ex.X = mA + mB + iA * rA.Y * rA.Y + iB * rB.Y * rB.Y;
+                k.ex.Y = -iA * rA.X * rA.Y - iB * rB.X * rB.Y;
+                k.ey.X = k.ex.Y;
+                k.ey.Y = mA + mB + iA * rA.X * rA.X + iB * rB.X * rB.X;
 
-                Vector2 impulse = -K.Solve(C);
+                Vector2 impulse = -k.Solve(c);
 
                 cA -= mA * impulse;
                 aA -= iA * MathUtils.Cross(ref rA, ref impulse);
