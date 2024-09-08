@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 
-
+using System;
 using Alis.Core.Aspect.Math.Vector;
 
 
@@ -66,7 +66,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
             //Start by placing first 3 vertices in convex CCW order
             int startIndex = 3;
             float k = MathUtils.Area(vertices[0], vertices[1], vertices[2]);
-            if (k == 0)
+            if (Math.Abs(k) < float.Epsilon)
             {
                 //Vertices are collinear.
                 deque[0] = vertices[0];
@@ -78,7 +78,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
                 for (startIndex = 3; startIndex < vertices.Count; startIndex++)
                 {
                     Vector2 tmp = vertices[startIndex];
-                    if (MathUtils.Area(ref deque[0], ref deque[1], ref tmp) == 0) //This point is also collinear
+                    if (Math.Abs(MathUtils.Area(ref deque[0], ref deque[1], ref tmp))< float.Epsilon) //This point is also collinear
                         deque[1] = vertices[startIndex];
                     else break;
                 }
@@ -100,7 +100,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
                 }
             }
 
-            int qfm1 = qf == 0 ? deque.Length - 1 : qf - 1;
+            int qfm1 = qf - 1;
             int qbm1 = qb == deque.Length - 1 ? 0 : qb + 1;
 
             //Add vertices one at a time and adjust convex hull as needed
