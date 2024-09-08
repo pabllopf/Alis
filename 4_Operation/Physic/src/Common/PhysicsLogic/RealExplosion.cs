@@ -73,7 +73,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         /// <summary>
         /// The shape data
         /// </summary>
-        private readonly List<ShapeData> _data = new List<ShapeData>();
+        private readonly List<ShapeData> _data;
         /// <summary>
         /// The rdc
         /// </summary>
@@ -177,8 +177,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
             for (int i = 0; i < shapeCount; ++i)
             {
                 PolygonShape ps;
-                CircleShape cs = shapes[i].Shape as CircleShape;
-                if (cs != null)
+                if (shapes[i].Shape is CircleShape cs)
                 {
                     // We create a "diamond" approximation of the circle
                     Vertices v = new Vertices();
@@ -251,7 +250,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                 float midpt;
 
                 int iplus = i == valIndex - 1 ? 0 : i + 1;
-                if (vals[i] == vals[iplus])
+                if (Math.Abs(vals[i] - vals[iplus]) < float.Epsilon)
                     continue;
 
                 if (i == valIndex - 1)
@@ -306,7 +305,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                     if ((_data.Count > 1)
                         && (i == valIndex - 1)
                         && (_data.Last().Body == _data.First().Body)
-                        && (_data.Last().Max == _data.First().Min))
+                        && (Math.Abs(_data.Last().Max - _data.First().Min) < float.Epsilon))
                     {
                         ShapeData fi = _data[0];
                         fi.Min = _data.Last().Min;
@@ -409,8 +408,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                 float impulse = MinRays * maxForce * 180.0f / Constant.Pi;
                 Vector2 hitPoint;
 
-                CircleShape circShape = fix.Shape as CircleShape;
-                if (circShape != null)
+                if (fix.Shape is CircleShape circShape)
                 {
                     hitPoint = fix.Body.GetWorldPoint(circShape.Position);
                 }
