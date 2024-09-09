@@ -9,13 +9,32 @@ using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Sample.Snake
 {
+    /// <summary>
+    /// The spawner class
+    /// </summary>
+    /// <seealso cref="AComponent"/>
     public class Spawner : AComponent
     {
+        /// <summary>
+        /// The food pool
+        /// </summary>
         private List<GameObject> _foodPool;
+        /// <summary>
+        /// The current food index
+        /// </summary>
         private int _currentFoodIndex;
+        /// <summary>
+        /// The spawn interval
+        /// </summary>
         private float _spawnInterval = 1.0f; // Time in seconds between spawns
+        /// <summary>
+        /// The timer
+        /// </summary>
         private float _timer;
 
+        /// <summary>
+        /// Ons the start
+        /// </summary>
         public override void OnStart()
         {
             _foodPool = new List<GameObject>();
@@ -53,6 +72,9 @@ namespace Alis.Sample.Snake
             _timer = _spawnInterval;
         }
 
+        /// <summary>
+        /// Ons the update
+        /// </summary>
         public override void OnUpdate()
         {
             _timer += Context.TimeManager.DeltaTime;
@@ -63,6 +85,9 @@ namespace Alis.Sample.Snake
             }
         }
 
+        /// <summary>
+        /// Spawns the food
+        /// </summary>
         private void SpawnFood()
         {
             GameObject food = _foodPool[_currentFoodIndex];

@@ -127,6 +127,9 @@ namespace Alis.Core.Ecs.Entity
         [JsonPropertyName("_GameObjects_")]
         public List<GameObject> GameObjects { get; set; }
         
+        /// <summary>
+        /// The game objects to add
+        /// </summary>
         [JsonPropertyName("GameObjectsToAdd", true, true)]
         private List<GameObject> _gameObjectsToAdd;
 
@@ -354,6 +357,9 @@ namespace Alis.Core.Ecs.Entity
             GameObjects.Clear();
         }
         
+        /// <summary>
+        /// Adds the pending game objects
+        /// </summary>
         private void AddPendingGameObjects()
         {
             if (_gameObjectsToAdd.Count > 0)
