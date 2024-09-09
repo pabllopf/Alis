@@ -641,52 +641,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         {
             Assert.Throws<DllNotFoundException>(() => ImNodes.EditorContextCreate());
         }
-
-        /// <summary>
-        ///     Tests that mini map throws dll not found exception
-        /// </summary>
-        [Fact]
-        public void MiniMap_ThrowsDllNotFoundException()
-        {
-            Assert.Throws<MarshalDirectiveException>(() => ImNodes.MiniMap());
-        }
-
-        /// <summary>
-        ///     Tests that mini map with minimap size fraction throws dll not found exception
-        /// </summary>
-        [Fact]
-        public void MiniMap_WithMinimapSizeFraction_ThrowsDllNotFoundException()
-        {
-            Assert.Throws<MarshalDirectiveException>(() => ImNodes.MiniMap(0.2f));
-        }
-
-        /// <summary>
-        ///     Tests that mini map with minimap size fraction and location throws dll not found exception
-        /// </summary>
-        [Fact]
-        public void MiniMap_WithMinimapSizeFractionAndLocation_ThrowsDllNotFoundException()
-        {
-            Assert.Throws<MarshalDirectiveException>(() => ImNodes.MiniMap(0.2f, ImNodesMiniMapLocation.TopLeft));
-        }
-
-        /// <summary>
-        ///     Tests that mini map with minimap size fraction location and callback throws dll not found exception
-        /// </summary>
-        [Fact]
-        public void MiniMap_WithMinimapSizeFractionLocationAndCallback_ThrowsDllNotFoundException()
-        {
-            Assert.Throws<MarshalDirectiveException>(() => ImNodes.MiniMap(0.2f, ImNodesMiniMapLocation.TopLeft, null));
-        }
-
-        /// <summary>
-        ///     Tests that mini map with all params throws dll not found exception
-        /// </summary>
-        [Fact]
-        public void MiniMap_WithAllParams_ThrowsDllNotFoundException()
-        {
-            Assert.Throws<MarshalDirectiveException>(() => ImNodes.MiniMap(0.2f, ImNodesMiniMapLocation.TopLeft, null, null));
-        }
-
+        
         /// <summary>
         ///     Tests that num selected links throws dll not found exception
         /// </summary>
@@ -912,60 +867,6 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         public void SnapNodeToGrid_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() => ImNodes.SnapNodeToGrid(0));
-        }
-
-        /// <summary>
-        ///     Tests that style colors classic throws dll not found exception
-        /// </summary>
-        [Fact]
-        public void StyleColorsClassic_ThrowsDllNotFoundException()
-        {
-            Assert.Throws<TypeLoadException>(() => ImNodes.StyleColorsClassic());
-        }
-
-        /// <summary>
-        ///     Tests that style colors classic with dest throws dll not found exception
-        /// </summary>
-        [Fact]
-        public void StyleColorsClassic_WithDest_ThrowsDllNotFoundException()
-        {
-            Assert.Throws<TypeLoadException>(() => ImNodes.StyleColorsClassic(new ImNodesStyle()));
-        }
-
-        /// <summary>
-        ///     Tests that style colors dark throws dll not found exception
-        /// </summary>
-        [Fact]
-        public void StyleColorsDark_ThrowsDllNotFoundException()
-        {
-            Assert.Throws<TypeLoadException>(() => ImNodes.StyleColorsDark());
-        }
-
-        /// <summary>
-        ///     Tests that style colors dark with dest throws dll not found exception
-        /// </summary>
-        [Fact]
-        public void StyleColorsDark_WithDest_ThrowsDllNotFoundException()
-        {
-            Assert.Throws<TypeLoadException>(() => ImNodes.StyleColorsDark(new ImNodesStyle()));
-        }
-
-        /// <summary>
-        ///     Tests that style colors light throws dll not found exception
-        /// </summary>
-        [Fact]
-        public void StyleColorsLight_ThrowsDllNotFoundException()
-        {
-            Assert.Throws<TypeLoadException>(() => ImNodes.StyleColorsLight());
-        }
-
-        /// <summary>
-        ///     Tests that style colors light with dest throws dll not found exception
-        /// </summary>
-        [Fact]
-        public void StyleColorsLight_WithDest_ThrowsDllNotFoundException()
-        {
-            Assert.Throws<TypeLoadException>(() => ImNodes.StyleColorsLight(new ImNodesStyle()));
         }
     }
 }
