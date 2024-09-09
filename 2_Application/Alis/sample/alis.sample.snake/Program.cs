@@ -62,7 +62,7 @@ namespace Alis.Sample.Snake
                         .Build())
                     .Graphic(graphic => graphic
                         .Window(window => window
-                            .Resolution(1024, 640)
+                            .Resolution(640, 640)
                             .IsResizable(false)
                             .Background(Color.Black)
                             .Build())
@@ -80,9 +80,10 @@ namespace Alis.Sample.Snake
                             .WithTag("Camera")
                             .AddComponent<Camera>(camera => camera
                                 .Builder()
-                                .Resolution(1024, 640)
+                                .Resolution(640, 640)
                                 .BackgroundColor(Color.Black)
                                 .Build())
+                            .AddComponent(new Spawner())
                             .Build())
                         .Add<GameObject>(soundTrack => soundTrack
                             .Name("Soundtrack")
@@ -96,53 +97,8 @@ namespace Alis.Sample.Snake
                                 .Build())
                             .Build())
                         .Add<GameObject>(player => player
-                            .Name("Player 1")
-                            .Transform(transform => transform
-                                .Position(-15, 0)
-                                .Scale(1, 1)
-                                .Rotation(0)
-                                .Build())
-                            .AddComponent<BoxCollider>(boxCollider => boxCollider
-                                .Builder()
-                                .IsActive(true)
-                                .BodyType(BodyType.Kinematic)
-                                .IsTrigger(false)
-                                .AutoTilling(false)
-                                .Size(0.5f, 2.5f)
-                                .Rotation(0.0f)
-                                .RelativePosition(0, 0)
-                                .Mass(10.0f)
-                                .Restitution(1f)
-                                .Friction(0f)
-                                .FixedRotation(true)
-                                .IgnoreGravity(true)
-                                .Build())
-                            .Build())
-                        .Add<GameObject>(player => player
-                            .Name("Player 2")
-                            .Transform(transform => transform
-                                .Position(15, 0)
-                                .Scale(1, 1)
-                                .Rotation(0)
-                                .Build())
-                            .AddComponent<BoxCollider>(boxCollider => boxCollider
-                                .Builder()
-                                .IsActive(true)
-                                .BodyType(BodyType.Kinematic)
-                                .IsTrigger(false)
-                                .AutoTilling(false)
-                                .Size(0.5f, 2.5f)
-                                .Rotation(0.0f)
-                                .RelativePosition(0, 0)
-                                .Mass(10.0f)
-                                .Restitution(1.0f)
-                                .Friction(0f)
-                                .FixedRotation(true)
-                                .IgnoreGravity(true)
-                                .Build())
-                            .Build())
-                        .Add<GameObject>(ball => ball
-                            .Name("Ball")
+                            .Name("Player")
+                            .WithTag("Player")
                             .Transform(transform => transform
                                 .Position(0, 0)
                                 .Scale(1, 1)
@@ -154,16 +110,16 @@ namespace Alis.Sample.Snake
                                 .BodyType(BodyType.Dynamic)
                                 .IsTrigger(false)
                                 .AutoTilling(false)
-                                .Size(1, 1)
+                                .Size(1f, 1f)
                                 .Rotation(0.0f)
                                 .RelativePosition(0, 0)
-                                .LinearVelocity(-5.5f, -5)
-                                .Mass(10.0f)
-                                .Restitution(1.0f)
+                                .Mass(1.0f)
+                                .Restitution(1f)
                                 .Friction(0f)
                                 .FixedRotation(true)
                                 .IgnoreGravity(true)
                                 .Build())
+                            .AddComponent(new PlayerController())
                             .Build())
                         .Add<GameObject>(downWall => downWall
                             .Name("downWall")
@@ -213,7 +169,7 @@ namespace Alis.Sample.Snake
                             .Name("leftWall")
                             .IsStatic()
                             .Transform(transform => transform
-                                .Position(-16, 0)
+                                .Position(-10, 0)
                                 .Build())
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
@@ -235,7 +191,7 @@ namespace Alis.Sample.Snake
                             .Name("rightWall")
                             .IsStatic()
                             .Transform(transform => transform
-                                .Position(16, 0)
+                                .Position(10, 0)
                                 .Build())
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
