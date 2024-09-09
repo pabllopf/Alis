@@ -94,8 +94,8 @@ namespace Alis.Sample.Snake
             if (!food.IsEnable)
             {
                 Random random = new Random();
-                float x = (float)(random.NextDouble() * 20 - 9);
-                float y = (float)(random.NextDouble() * 20 - 9);
+                float x = (float)(random.NextDouble() * 15 - 7);
+                float y = (float)(random.NextDouble() * 15 - 7);
 
                 BoxCollider collider = food.Get<BoxCollider>();
                 collider.Body.Position = new Vector2(x, y);
