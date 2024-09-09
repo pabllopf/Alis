@@ -39,6 +39,8 @@ namespace Alis.Core.Ecs.Entity
     /// </summary>
     public class Scene : IScene<GameObject>
     {
+       
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="Scene" /> class
         /// </summary>
@@ -49,6 +51,7 @@ namespace Alis.Core.Ecs.Entity
             Id = Guid.NewGuid().ToString();
             Tag = GetType().Name;
             GameObjects = new List<GameObject>();
+            _gameObjectsToAdd = new List<GameObject>();
         }
 
         /// <summary>
@@ -65,6 +68,8 @@ namespace Alis.Core.Ecs.Entity
             Name = name;
             Id = id;
             Tag = tag;
+            GameObjects = new List<GameObject>();
+            _gameObjectsToAdd = new List<GameObject>();
         }
 
         /// <summary>
@@ -82,6 +87,7 @@ namespace Alis.Core.Ecs.Entity
             Id = id;
             Tag = tag;
             GameObjects = gameObjects;
+            _gameObjectsToAdd = new List<GameObject>();
         }
 
         /// <summary>
@@ -120,6 +126,9 @@ namespace Alis.Core.Ecs.Entity
 
         [JsonPropertyName("_GameObjects_")]
         public List<GameObject> GameObjects { get; set; }
+        
+        [JsonPropertyName("GameObjectsToAdd", true, true)]
+        private List<GameObject> _gameObjectsToAdd;
 
         /// <summary>
         ///     Ons the enable
@@ -128,6 +137,7 @@ namespace Alis.Core.Ecs.Entity
         {
             IsEnable = true;
             GameObjects.ForEach(i => i.OnEnable());
+            AddPendingGameObjects();
         }
 
         /// <summary>
@@ -136,67 +146,116 @@ namespace Alis.Core.Ecs.Entity
         public void OnInit()
         {
             GameObjects.ForEach(i => i.OnInit());
+            AddPendingGameObjects();
         }
 
         /// <summary>
         ///     Ons the awake
         /// </summary>
-        public void OnAwake() => GameObjects.ForEach(i => i.OnAwake());
+        public void OnAwake()
+        {
+            GameObjects.ForEach(i => i.OnAwake());
+            AddPendingGameObjects();
+        }
 
         /// <summary>
         ///     Ons the start
         /// </summary>
-        public void OnStart() => GameObjects.ForEach(i => i.OnStart());
+        public void OnStart()
+        {
+            GameObjects.ForEach(i => i.OnStart());
+            AddPendingGameObjects();
+        }
 
         /// <summary>
         ///     Ons the before update
         /// </summary>
-        public void OnBeforeUpdate() => GameObjects.ForEach(i => i.OnBeforeUpdate());
+        public void OnBeforeUpdate()
+        {
+            GameObjects.ForEach(i => i.OnBeforeUpdate());
+            AddPendingGameObjects();
+        }
 
         /// <summary>
         ///     Ons the update
         /// </summary>
-        public void OnUpdate() => GameObjects.ForEach(i => i.OnUpdate());
+        public void OnUpdate()
+        {
+            GameObjects.ForEach(i => i.OnUpdate());
+            AddPendingGameObjects();
+        }
 
         /// <summary>
         ///     Ons the after update
         /// </summary>
-        public void OnAfterUpdate() => GameObjects.ForEach(i => i.OnAfterUpdate());
+        public void OnAfterUpdate()
+        {
+            GameObjects.ForEach(i => i.OnAfterUpdate());
+            AddPendingGameObjects();
+        }
 
         /// <summary>
         ///     Ons the before fixed update
         /// </summary>
-        public void OnBeforeFixedUpdate() => GameObjects.ForEach(i => i.OnBeforeFixedUpdate());
+        public void OnBeforeFixedUpdate()
+        {
+            GameObjects.ForEach(i => i.OnBeforeFixedUpdate());
+            AddPendingGameObjects();
+        }
 
         /// <summary>
         ///     Ons the fixed update
         /// </summary>
-        public void OnFixedUpdate() => GameObjects.ForEach(i => i.OnFixedUpdate());
+        public void OnFixedUpdate()
+        {
+            GameObjects.ForEach(i => i.OnFixedUpdate());
+            AddPendingGameObjects();
+        }
 
         /// <summary>
         ///     Ons the after fixed update
         /// </summary>
-        public void OnAfterFixedUpdate() => GameObjects.ForEach(i => i.OnAfterFixedUpdate());
+        public void OnAfterFixedUpdate()
+        {
+            GameObjects.ForEach(i => i.OnAfterFixedUpdate());
+            AddPendingGameObjects();
+        }
 
         /// <summary>
         ///     Ons the dispatch events
         /// </summary>
-        public void OnDispatchEvents() => GameObjects.ForEach(i => i.OnDispatchEvents());
+        public void OnDispatchEvents()
+        {
+            GameObjects.ForEach(i => i.OnDispatchEvents());
+            AddPendingGameObjects();
+        }
 
         /// <summary>
         ///     Ons the calculate
         /// </summary>
-        public void OnCalculate() => GameObjects.ForEach(i => i.OnCalculate());
+        public void OnCalculate()
+        {
+            GameObjects.ForEach(i => i.OnCalculate());
+            AddPendingGameObjects();
+        }
 
         /// <summary>
         ///     Ons the draw
         /// </summary>
-        public void OnDraw() => GameObjects.ForEach(i => i.OnDraw());
+        public void OnDraw()
+        {
+            GameObjects.ForEach(i => i.OnDraw());
+            AddPendingGameObjects();
+        }
 
         /// <summary>
         ///     Ons the gui
         /// </summary>
-        public void OnGui() => GameObjects.ForEach(i => i.OnGui());
+        public void OnGui()
+        {
+            GameObjects.ForEach(i => i.OnGui());
+            AddPendingGameObjects();
+        }
 
         /// <summary>
         ///     Ons the disable
@@ -205,6 +264,7 @@ namespace Alis.Core.Ecs.Entity
         {
             IsEnable = false;
             GameObjects.ForEach(i => i.OnDisable());
+            AddPendingGameObjects();
         }
 
         /// <summary>
@@ -212,54 +272,95 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         public void OnReset()
         {
+            GameObjects.ForEach(i => i.OnReset());
+            AddPendingGameObjects();
         }
 
         /// <summary>
         ///     Ons the stop
         /// </summary>
-        public void OnStop() => GameObjects.ForEach(i => i.OnStop());
+        public void OnStop()
+        {
+            GameObjects.ForEach(i => i.OnStop());
+            AddPendingGameObjects();
+        }
 
         /// <summary>
         ///     Ons the exit
         /// </summary>
-        public void OnExit() => GameObjects.ForEach(i => i.OnExit());
+        public void OnExit()
+        {
+            GameObjects.ForEach(i => i.OnExit());
+            AddPendingGameObjects();
+        }
 
         /// <summary>
         ///     Ons the destroy
         /// </summary>
-        public void OnDestroy() => GameObjects.ForEach(i => i.OnDestroy());
+        public void OnDestroy()
+        {
+            GameObjects.ForEach(i => i.OnDestroy());
+            AddPendingGameObjects();
+        }
 
         /// <summary>
         ///     Adds the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
-        public virtual void Add<T>(T component) where T : GameObject => GameObjects.Add(component);
+        public virtual void Add<T>(T component) where T : GameObject
+        {
+            _gameObjectsToAdd.Add(component);
+            component.OnInit();
+            component.OnAwake();
+            component.OnStart();
+        }
 
         /// <summary>
         ///     Removes the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
-        public virtual void Remove<T>(T component) where T : GameObject => GameObjects.Remove(component);
+        public virtual void Remove<T>(T component) where T : GameObject
+        {
+            GameObjects.Remove(component);
+        }
 
         /// <summary>
         ///     Gets this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The</returns>
-        public virtual T Get<T>() where T : GameObject => GameObjects.Find(i => i is T) as T;
+        public virtual T Get<T>() where T : GameObject
+        {
+            return GameObjects.Find(i => i is T) as T;
+        }
 
         /// <summary>
         ///     Describes whether this instance contains
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The bool</returns>
-        public virtual bool Contains<T>() where T : GameObject => GameObjects.Contains(Get<T>());
+        public virtual bool Contains<T>() where T : GameObject
+        {
+            return GameObjects.Contains(Get<T>());
+        }
 
         /// <summary>
         ///     Clears this instance
         /// </summary>
-        public virtual void Clear() => GameObjects.Clear();
+        public virtual void Clear()
+        {
+            GameObjects.Clear();
+        }
+        
+        private void AddPendingGameObjects()
+        {
+            if (_gameObjectsToAdd.Count > 0)
+            {
+                GameObjects.AddRange(_gameObjectsToAdd);
+                _gameObjectsToAdd.Clear();
+            }
+        }
     }
 }
