@@ -48,7 +48,6 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         {
             int id = 1;
             Assert.Throws<DllNotFoundException>(() => ImNodes.BeginInputAttribute(id));
-            // Add assertions to verify the behavior
         }
 
         /// <summary>
