@@ -31,7 +31,7 @@ namespace Alis.Sample.Snake
         public void Consume()
         {
             GameObject.IsEnable = false;
-            //_player.Get<PlayerController>().Grow();
+            _player.Get<PlayerController>().Grow();
         }
 
         /// <summary>

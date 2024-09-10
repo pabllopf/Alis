@@ -156,12 +156,13 @@ namespace Alis.Core.Ecs.Entity
         ///     Adds the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
-        /// <param name="component">The component</param>
-        public void Add<T>(T component) where T : AComponent
+        /// <param name="value">The component</param>
+        public void Add<T>(T value) where T : AComponent
         {
-            if (!Components.Contains(component))
+            if (!Components.Contains(value))
             {
-                Components.Add(component);
+                Components.Add(value);
+                value.Attach(this);
             }
         }
 
@@ -169,12 +170,12 @@ namespace Alis.Core.Ecs.Entity
         ///     Removes the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
-        /// <param name="component">The component</param>
-        public void Remove<T>(T component) where T : AComponent
+        /// <param name="value">The component</param>
+        public void Remove<T>(T value) where T : AComponent
         {
-            if (Components.Contains(component))
+            if (Components.Contains(value))
             {
-                Components.Remove(component);
+                Components.Remove(value);
             }
         }
 

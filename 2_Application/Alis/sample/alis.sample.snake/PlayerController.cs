@@ -94,8 +94,12 @@ namespace Alis.Sample.Snake
             
             for (int i = _snakeBody.Count - 1; i > 0; i--)
             {
-                BoxCollider segmentCollider = _snakeBody[i].Get<BoxCollider>();
-                segmentCollider.Body.Position = _snakeBody[i - 1].Get<BoxCollider>().Body.Position;
+                if (_snakeBody[i].Get<BoxCollider>().Body != null && _snakeBody[i - 1].Get<BoxCollider>().Body != null)
+                {
+                    BoxCollider segmentCollider = _snakeBody[i].Get<BoxCollider>();
+                    segmentCollider.GameObject.IsEnable = true;
+                    segmentCollider.Body.Position = _snakeBody[i - 1].Get<BoxCollider>().Body.Position;
+                }
             }
             
             _boxCollider.Body.Position = newPosition;
@@ -106,7 +110,13 @@ namespace Alis.Sample.Snake
         /// </summary>
         public void Grow()
         {
-            BoxCollider lastSegmentCollider = _snakeBody[_snakeBody.Count - 1].Get<BoxCollider>();
+            // Get the position of the last segment
+            Vector2 lastSegmentPosition = _snakeBody[_snakeBody.Count - 1].Get<BoxCollider>().Body.Position;
+
+            // Create a new GameObject for the new segment
+            GameObject newSegment = new GameObject();
+
+            // Create and configure the BoxCollider for the new segment
             BoxCollider newSegmentCollider = new BoxCollider()
                 .Builder()
                 .IsActive(true)
@@ -122,8 +132,18 @@ namespace Alis.Sample.Snake
                 .FixedRotation(true)
                 .IgnoreGravity(true)
                 .Build();
-            GameObject.Add(newSegmentCollider);
-            _snakeBody.Add(GameObject);
+            
+            // Add the BoxCollider to the new segment
+            newSegment.Add(newSegmentCollider);
+
+            // Add the new segment to the scene
+            Context.SceneManager.CurrentScene.Add(newSegment);
+
+            // Add the new segment to the snake body list
+            _snakeBody.Add(newSegment);
+            
+            newSegment.Tag = "SnakeSegment";
+            newSegment.IsEnable = false;
         }
     }
 }
