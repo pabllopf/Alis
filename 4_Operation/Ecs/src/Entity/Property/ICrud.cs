@@ -38,15 +38,15 @@ namespace Alis.Core.Ecs.Entity.Property
         ///     Adds the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
-        /// <param name="component">The component</param>
-        public void Add<T>(T component) where T : TItem;
+        /// <param name="value">The component</param>
+        public void Add<T>(T value) where T : TItem;
 
         /// <summary>
         ///     Removes the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
-        /// <param name="component">The component</param>
-        public void Remove<T>(T component) where T : TItem;
+        /// <param name="value">The component</param>
+        public void Remove<T>(T value) where T : TItem;
 
         /// <summary>
         ///     Gets this instance

@@ -44,7 +44,7 @@ namespace Alis.Sample.Snake
                 food.Name = $"Food_{i}";
 
                 Transform transform = food.Transform;
-                transform.Position = new Vector2(0, 0); // Initial off-screen position
+                transform.Position = new Vector2(-15, -15); // Initial off-screen position
                 food.Transform = transform;
 
                 food.Add<BoxCollider>(new BoxCollider()

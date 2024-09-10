@@ -39,8 +39,6 @@ namespace Alis.Core.Ecs.Entity
     /// </summary>
     public class Scene : IScene<GameObject>
     {
-       
-
         /// <summary>
         ///     Initializes a new instance of the <see cref="Scene" /> class
         /// </summary>
@@ -310,23 +308,20 @@ namespace Alis.Core.Ecs.Entity
         ///     Adds the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
-        /// <param name="component">The component</param>
-        public virtual void Add<T>(T component) where T : GameObject
+        /// <param name="value">The component</param>
+        public virtual void Add<T>(T value) where T : GameObject
         {
-            _gameObjectsToAdd.Add(component);
-            component.OnInit();
-            component.OnAwake();
-            component.OnStart();
+            _gameObjectsToAdd.Add(value);
         }
 
         /// <summary>
         ///     Removes the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
-        /// <param name="component">The component</param>
-        public virtual void Remove<T>(T component) where T : GameObject
+        /// <param name="value">The component</param>
+        public virtual void Remove<T>(T value) where T : GameObject
         {
-            GameObjects.Remove(component);
+            GameObjects.Remove(value);
         }
 
         /// <summary>
@@ -364,6 +359,12 @@ namespace Alis.Core.Ecs.Entity
         {
             if (_gameObjectsToAdd.Count > 0)
             {
+                foreach (var gameObject in _gameObjectsToAdd.ToArray())
+                {
+                    gameObject.OnInit();
+                    gameObject.OnAwake();
+                    gameObject.OnStart();
+                }
                 GameObjects.AddRange(_gameObjectsToAdd);
                 _gameObjectsToAdd.Clear();
             }
