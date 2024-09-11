@@ -772,11 +772,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         }
 
         #endregion
-
-        #region Nested type: CxFastListNode
-
-        #endregion
-
+        
         #endregion
 
         #region Internal Stuff
