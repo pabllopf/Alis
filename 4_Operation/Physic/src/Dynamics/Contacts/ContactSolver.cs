@@ -587,19 +587,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                             // Accumulate
                             cp1.normalImpulse = x.X;
                             cp2.normalImpulse = x.Y;
-
-#if B2_DEBUG_SOLVER
-                            // Postconditions
-                            dv1 = vB + MathUtils.Cross(wB, cp1.rB) - vA - MathUtils.Cross(wA, cp1.rA);
-                            dv2 = vB + MathUtils.Cross(wB, cp2.rB) - vA - MathUtils.Cross(wA, cp2.rA);
-
-                            // Compute normal velocity
-                            vn1 = Vector2.Dot(dv1, normal);
-                            vn2 = Vector2.Dot(dv2, normal);
-
-                            b2Assert(b2Abs(vn1 - cp1.velocityBias) < k_errorTol);
-                            b2Assert(b2Abs(vn2 - cp2.velocityBias) < k_errorTol);
-#endif
+                            
                             break;
                         }
 
@@ -631,16 +619,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                             // Accumulate
                             cp1.normalImpulse = x.X;
                             cp2.normalImpulse = x.Y;
-
-#if B2_DEBUG_SOLVER
-                            // Postconditions
-                            dv1 = vB + MathUtils.Cross(wB, cp1.rB) - vA - MathUtils.Cross(wA, cp1.rA);
-
-                            // Compute normal velocity
-                            vn1 = Vector2.Dot(dv1, normal);
-
-                            b2Assert(b2Abs(vn1 - cp1.velocityBias) < k_errorTol);
-#endif
+                            
                             break;
                         }
 
@@ -673,16 +652,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                             // Accumulate
                             cp1.normalImpulse = x.X;
                             cp2.normalImpulse = x.Y;
-
-#if B2_DEBUG_SOLVER
-                            // Postconditions
-                            dv2 = vB + MathUtils.Cross(wB, cp2.rB) - vA - MathUtils.Cross(wA, cp2.rA);
-
-                            // Compute normal velocity
-                            vn2 = Vector2.Dot(dv2, normal);
-
-                            b2Assert(b2Abs(vn2 - cp2.velocityBias) < k_errorTol);
-#endif
+                            
                             break;
                         }
 
@@ -715,7 +685,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                             cp2.normalImpulse = x.Y;
                         }
 
-                        // No solution, give up. This is hit sometimes, but it doesn't seem to matter.
                         break;
                     }
                 }
