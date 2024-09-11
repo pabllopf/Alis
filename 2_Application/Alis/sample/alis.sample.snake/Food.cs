@@ -15,6 +15,9 @@ namespace Alis.Sample.Snake
         /// </summary>
         private BoxCollider _boxCollider;
         
+        /// <summary>
+        /// The player
+        /// </summary>
         private GameObject _player;
 
         /// <summary>
