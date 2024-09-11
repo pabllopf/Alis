@@ -139,6 +139,9 @@ namespace Alis.Core.Physic.Controllers
                 return true;
             }, ref _container);
 
+            if (_uniqueBodies.Count == 0)
+                return;
+            
             foreach (Body body in _uniqueBodies)
             {
                 Vector2 areac = Vector2.Zero;
