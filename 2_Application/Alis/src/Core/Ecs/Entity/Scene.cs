@@ -359,7 +359,7 @@ namespace Alis.Core.Ecs.Entity
         {
             if (_gameObjectsToAdd.Count > 0)
             {
-                foreach (var gameObject in _gameObjectsToAdd.ToArray())
+                foreach (GameObject gameObject in _gameObjectsToAdd.ToArray())
                 {
                     gameObject.OnInit();
                     gameObject.OnAwake();

@@ -20,18 +20,22 @@ namespace Alis.Sample.Snake
         /// The box collider
         /// </summary>
         private BoxCollider _boxCollider;
+        
         /// <summary>
         /// The snake body
         /// </summary>
         private List<GameObject> _snakeBody;
+        
         /// <summary>
         /// The move timer
         /// </summary>
         private float _moveTimer;
+        
         /// <summary>
         /// The move interval
         /// </summary>
         private float _moveInterval = 0.2f; 
+        
         /// <summary>
         /// The vector
         /// </summary>
@@ -110,9 +114,6 @@ namespace Alis.Sample.Snake
         /// </summary>
         public void Grow()
         {
-            // Get the position of the last segment
-            Vector2 lastSegmentPosition = _snakeBody[_snakeBody.Count - 1].Get<BoxCollider>().Body.Position;
-
             // Create a new GameObject for the new segment
             GameObject newSegment = new GameObject();
 
@@ -120,7 +121,7 @@ namespace Alis.Sample.Snake
             BoxCollider newSegmentCollider = new BoxCollider()
                 .Builder()
                 .IsActive(true)
-                .BodyType(BodyType.Dynamic)
+                .BodyType(BodyType.Kinematic)
                 .IsTrigger(false)
                 .AutoTilling(false)
                 .Size(1f, 1f)
