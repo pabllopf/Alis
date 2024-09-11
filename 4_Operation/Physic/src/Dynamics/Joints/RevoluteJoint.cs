@@ -439,7 +439,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float mA = _invMassA, mB = _invMassB;
             float iA = invIa, iB = invIb;
 
-            bool fixedRotation = iA + iB == 0.0f;
+            bool fixedRotation = iA + Math.Abs(iB) < float.Epsilon;
 
             _mass.Ex.X = mA + mB + _rA.Y * _rA.Y * iA + _rB.Y * _rB.Y * iB;
             _mass.Ey.X = -_rA.Y * _rA.X * iA - _rB.Y * _rB.X * iB;
@@ -652,7 +652,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float angularError = 0.0f;
             float positionError;
 
-            bool fixedRotation = invIa + invIb == 0.0f;
+            bool fixedRotation = invIa + Math.Abs(invIb) < float.Epsilon;
 
             // Solve angular limit constraint.
             if (_enableLimit && (_limitState != LimitState.Inactive) && (fixedRotation == false))
