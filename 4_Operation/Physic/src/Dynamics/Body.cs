@@ -48,7 +48,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Gets all the fixtures attached to this body.
         /// </summary>
         /// <value>The fixture list.</value>
-        public readonly FixtureCollection FixtureList;
+        internal readonly FixtureCollection FixtureList;
 
         /// <summary>
         ///     The angular damping
