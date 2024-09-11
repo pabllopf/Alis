@@ -49,15 +49,16 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
     /// </summary>
     internal class DelaunayTriangle
     {
-        /**
-         * Neighbor pointers
-         * Flags to determine if an edge is a Delauney edge
-         */
+        
+        /// <summary>
+        /// The edge is constrained
+        /// </summary>
         public FixedBitArray3 EdgeIsConstrained;
 
-        /**
-         * Flags to determine if an edge is a Constrained edge
-         */
+        
+        /// <summary>
+        /// The edge is delaunay
+        /// </summary>
         public FixedBitArray3 EdgeIsDelaunay;
 
         /// <summary>
@@ -65,9 +66,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
         /// </summary>
         public Util.FixedArray3<DelaunayTriangle> Neighbors;
 
-        /**
-         * Has this triangle been marked as an interior triangle?
-         */
+        
+        /// <summary>
+        /// The points
+        /// </summary>
         public Util.FixedArray3<TriangulationPoint> Points;
 
         /// <summary>
@@ -244,9 +246,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
             }
         }
 
-        /**
-         * Clears all references to all other triangles and points
-         */
+        
+        /// <summary>
+        /// Clears this instance
+        /// </summary>
         public void Clear()
         {
             DelaunayTriangle t;

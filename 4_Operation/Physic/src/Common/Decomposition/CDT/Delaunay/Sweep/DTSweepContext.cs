@@ -29,9 +29,11 @@
 
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
 {
-    /**
-     * @author Thomas Åhlén, thahlen@gmail.com
-     */
+    
+    /// <summary>
+    /// The dt sweep context class
+    /// </summary>
+    /// <seealso cref="TriangulationContext"/>
     internal class DTSweepContext : TriangulationContext
     {
         // Inital triangle factor, seed triangle will extend 30% of 
