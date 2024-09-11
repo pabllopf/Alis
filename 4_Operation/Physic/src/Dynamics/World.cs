@@ -785,19 +785,19 @@ namespace Alis.Core.Physic.Dynamics
         ///     Get the contact manager for testing.
         /// </summary>
         /// <value>The contact manager.</value>
-        public readonly ContactManager ContactManager;
+        internal readonly ContactManager ContactManager;
 
         /// <summary>
         ///     Get the world body list.
         /// </summary>
         /// <value>The head of the world body list.</value>
-        public readonly BodyCollection BodyList;
+        internal readonly BodyCollection BodyList;
         
         /// <summary>
         ///     Get the world joint list.
         /// </summary>
         /// <value>The joint list.</value>
-        public readonly JointCollection JointList;
+        internal readonly JointCollection JointList;
 
         /// <summary>
         ///     Get the world contact list.
