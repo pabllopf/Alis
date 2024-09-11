@@ -712,7 +712,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The controller list
         /// </summary>
-        public readonly ControllerCollection ControllerList;
+        internal readonly ControllerCollection ControllerList;
 
         /// <summary>
         ///     Gets or sets the value of the update time
