@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;
 
@@ -492,18 +493,25 @@ namespace Alis.Core.Physic.Common.TextureTools
                     ai = ai.Next();
                     if (ai == ap.End()) ai = ap.Begin();
                     Vector2 a2 = ai.Elem();
-                    Vector2 a00 = preb.Elem();
-                    Vector2 uu = a1 - a00;
-                    //vec_new(u); vec_sub(a1.p, a0.p, u);
-                    Vector2 vv = a2 - a1;
-                    //vec_new(v); vec_sub(a2.p, a1.p, v);
-                    float dot1 = VecCross(uu, vv);
-                    if (dot1 * dot1 < Settings.Epsilon)
+                    if (preb != null)
                     {
-                        ap.Erase(preb, preb.Next());
-                        polya.Length--;
+                        Vector2 a00 = preb.Elem();
+                        Vector2 uu = a1 - a00;
+                        //vec_new(u); vec_sub(a1.p, a0.p, u);
+                        Vector2 vv = a2 - a1;
+                        //vec_new(v); vec_sub(a2.p, a1.p, v);
+                        float dot1 = VecCross(uu, vv);
+                        if (dot1 * dot1 < Settings.Epsilon)
+                        {
+                            ap.Erase(preb, preb.Next());
+                            polya.Length--;
+                        }
                     }
-
+                    else
+                    {
+                        throw new Exception("preb is null");
+                    }
+                    
                     return;
                 }
 
