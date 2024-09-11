@@ -606,7 +606,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float k = _invMassA + _invMassB + invIa * _sAy * _sAy + invIb * _sBy * _sBy;
 
             float impulse;
-            if (k != 0.0f)
+            if (Math.Abs(k) > float.Epsilon)
             {
                 impulse = -c / k;
             }
