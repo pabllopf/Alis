@@ -1425,12 +1425,7 @@ namespace Alis.Core.Physic.Dynamics
                 b._sweep.C0 -= newOrigin;
                 b._sweep.C -= newOrigin;
             }
-
-            foreach (Joint joint in JointList)
-            {
-                //joint.ShiftOrigin(newOrigin); 
-            }
-
+            
             ContactManager.BroadPhase.ShiftOrigin(newOrigin);
         }
 
