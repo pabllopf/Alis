@@ -276,9 +276,6 @@ namespace Alis.Core.Physic.Collision
                     ++i;
                 }
             }
-
-            // Try to keep the tree balanced.
-            //_tree.Rebalance(4);
         }
 
         /// <summary>
