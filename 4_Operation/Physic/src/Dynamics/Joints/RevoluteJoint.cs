@@ -538,7 +538,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float mA = _invMassA, mB = _invMassB;
             float iA = invIa, iB = invIb;
 
-            bool fixedRotation = iA + iB == 0.0f;
+            bool fixedRotation = iA + Math.Abs(iB) < float.Epsilon;
 
             // Solve motor constraint.
             if (_enableMotor && (_limitState != LimitState.Equal) && (fixedRotation == false))
