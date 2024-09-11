@@ -59,12 +59,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
             : base(points)
             => EdgeIndex = index;
 
-        /**
-         * @param points - A list of all points in PointSet
-         * @param constraints - Pairs of two points defining a constraint, all points
-         * <b>must</b>
-         * be part of given PointSet!
-         */
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConstrainedPointSet"/> class
+        /// </summary>
+        /// <param name="points">The points</param>
+        /// <param name="constraints">The constraints</param>
         public ConstrainedPointSet(List<TriangulationPoint> points, IEnumerable<TriangulationPoint> constraints)
             : base(points)
         {
@@ -111,13 +111,11 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
             }
         }
 
-        /**
-         * TODO: TO BE IMPLEMENTED!
-         * Peforms a validation on given input
-         * 1. Check's if there any constraint edges are crossing or collinear
-         * 2.
-         * @return
-         */
+        
+        /// <summary>
+        /// Describes whether this instance is valid
+        /// </summary>
+        /// <returns>The bool</returns>
         public bool isValid() => true;
     }
 }

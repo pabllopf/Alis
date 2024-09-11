@@ -282,11 +282,10 @@ namespace Alis.Core.Physic.Common.TextureTools
 
         //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-        /**
-         * Linearly interpolate between (x0 to x1) given a value at these coordinates (v0 and v1)
-         * such as to approximate value(return) = 0
-         * *
-         */
+        
+        /// <summary>
+        /// The look march
+        /// </summary>
         private static readonly int[] _lookMarch =
         {
             0x00, 0xE0, 0x38, 0xD8, 0x0E, 0xEE, 0x36, 0xD6, 0x83, 0x63, 0xBB, 0x5B, 0x8D,
@@ -366,16 +365,21 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// <returns>The float</returns>
         private static float VecCross(Vector2 a, Vector2 b) => a.X * b.Y - a.Y * b.X;
 
-        /**
-         * Look-up table to relate polygon key with the vertices that should be used for
-         * the sub polygon in marching squares
-         * *
-         * Perform a single celled marching square for for the given cell defined by (x0,y0) (x1,y1)
-         * using the function f for recursive interpolation, given the look-up table 'fs' of
-         * the values of 'f' at cell vertices with the result to be stored in 'poly' given the actual
-         * coordinates of 'ax' 'ay' in the marching squares mesh.
-         * *
-         */
+        
+        /// <summary>
+        /// Marches the square using the specified f
+        /// </summary>
+        /// <param name="f">The </param>
+        /// <param name="fs">The fs</param>
+        /// <param name="poly">The poly</param>
+        /// <param name="ax">The ax</param>
+        /// <param name="ay">The ay</param>
+        /// <param name="x0">The </param>
+        /// <param name="y0">The </param>
+        /// <param name="x1">The </param>
+        /// <param name="y1">The </param>
+        /// <param name="bin">The bin</param>
+        /// <returns>The key</returns>
         private static int MarchSquare(sbyte[,] f, sbyte[,] fs, ref GeomPoly poly, int ax, int ay, float x0, float y0,
             float x1, float y1, int bin)
         {
@@ -426,11 +430,12 @@ namespace Alis.Core.Physic.Common.TextureTools
             return key;
         }
 
-        /**
-         * Used in polygon composition to composit polygons into scan lines
-         * Combining polya and polyb into one super-polygon stored in polya.
-         * *
-         */
+        
+        /// <summary>
+        /// Combs the left using the specified polya
+        /// </summary>
+        /// <param name="polya">The polya</param>
+        /// <param name="polyb">The polyb</param>
         private static void combLeft(ref GeomPoly polya, ref GeomPoly polyb)
         {
             CxFastList<Vector2> ap = polya.Points;

@@ -29,9 +29,10 @@
 
 namespace Alis.Core.Physic.Common.Decomposition.CDT
 {
-    /**
-     * @author Thomas Åhlén, thahlen@gmail.com
-     */
+    
+    /// <summary>
+    /// The triangulation util class
+    /// </summary>
     internal class TriangulationUtil
     {
         /// <summary>
