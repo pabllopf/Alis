@@ -27,14 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-// Inactive objects optimizations. 
-// See: id:9178 at https://farseerphysics.codeplex.com/SourceControl/list/patches
-// See: http://blog.boundingboxgames.com/2011/04/farseer-inactive-object-optimizations.html
-// USE_ACTIVE_CONTACT_SET
-// USE_AWAKE_BODY_SET
-// USE_ISLAND_SET
-// OPTIMIZE_TOI
-
 using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
@@ -52,16 +44,12 @@ namespace Alis.Core.Physic.Dynamics
     /// </summary>
     public partial class World
     {
-        #region These are for debugging the solver.
-
         /// <summary>This is only for debugging the solver</summary>
         private const bool _warmStarting = true;
 
         /// <summary>This is only for debugging the solver</summary>
         private const bool _subStepping = false;
-
-        #endregion
-
+        
         /// <summary>
         ///     The gravity
         /// </summary>
@@ -131,16 +119,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     The world has new fixture
         /// </summary>
         internal bool _worldHasNewFixture;
-
-
-#if LEGACY_ASYNCADDREMOVE
-        private HashSet<Body> _bodyAddList = new HashSet<Body>();
-        private HashSet<Body> _bodyRemoveList = new HashSet<Body>();
-        private HashSet<Joint> _jointAddList = new HashSet<Joint>();
-        private HashSet<Joint> _jointRemoveList = new HashSet<Joint>();
-#endif
-
-
+        
         /// <summary>
         ///     Set the user data. Use this to store your application specific data.
         /// </summary>
@@ -197,18 +176,7 @@ namespace Alis.Core.Physic.Dynamics
             BodyList = new BodyCollection(this);
             JointList = new JointCollection(this);
             ControllerList = new ControllerCollection(this);
-
-#if USE_AWAKE_BODY_SET
-            AwakeBodySet = new HashSet<Body>();
-            AwakeBodyList = new List<Body>(32);
-#endif
-#if USE_ISLAND_SET
-            IslandSet = new HashSet<Body>();
-#endif
-#if OPTIMIZE_TOI
-            TOISet = new HashSet<Body>();
-#endif
-
+            
             _queryCallbackCache = QueryAABBCallback;
             _rayCastCallbackCache = RayCastCallback;
             _testPointDelegateCache = TestPointCallback;
@@ -242,27 +210,16 @@ namespace Alis.Core.Physic.Dynamics
                 ContactManager);
 
             // Clear all the island flags.
-#if USE_ISLAND_SET
-            Debug.Assert(IslandSet.Count == 0);
-#else
             foreach (Body b in BodyList)
             {
                 b._island = false;
             }
-#endif
-
-#if USE_ACTIVE_CONTACT_SET
-            foreach (var c in ContactManager.ActiveContacts)
-            {
-                //c.Flags &= ~ContactFlags.Island;
-                c.IslandFlag = false;
-            }
-#else
+            
             for (Contact c = ContactManager.ContactList.Next; c != ContactManager.ContactList; c = c.Next)
             {
                 c.IslandFlag = false;
             }
-#endif
+
             foreach (Joint j in JointList)
             {
                 j.IslandFlag = false;
@@ -273,21 +230,10 @@ namespace Alis.Core.Physic.Dynamics
             if (stackSize > _stack.Length)
                 _stack = new Body[Math.Max(_stack.Length * 2, stackSize)];
 
-#if USE_AWAKE_BODY_SET
-            // If AwakeBodyList is empty, the Island code will not have a chance
-            // to update the diagnostics timer so reset the timer here. 
-            Island.JointUpdateTime = 0;
-
-            Debug.Assert(AwakeBodyList.Count == 0);
-            AwakeBodyList.AddRange(AwakeBodySet);
-
-            foreach (var seed in AwakeBodyList)
-            {
-#else
             for (int index = BodyList._list.Count - 1; index >= 0; index--)
             {
                 Body seed = BodyList._list[index];
-#endif
+                
                 if (seed._island)
                 {
                     continue;
@@ -308,11 +254,7 @@ namespace Alis.Core.Physic.Dynamics
                 Island.Clear();
                 int stackCount = 0;
                 _stack[stackCount++] = seed;
-
-#if USE_ISLAND_SET
-                if (!IslandSet.Contains(body))
-                    IslandSet.Add(body);
-#endif
+                
                 seed._island = true;
 
                 // Perform a depth first search (DFS) on the constraint graph.
@@ -371,11 +313,7 @@ namespace Alis.Core.Physic.Dynamics
 
                         Debug.Assert(stackCount < stackSize);
                         _stack[stackCount++] = other;
-
-#if USE_ISLAND_SET
-                        if (!IslandSet.Contains(body))
-                            IslandSet.Add(body);
-#endif
+                        
                         other._island = true;
                     }
 
@@ -409,10 +347,7 @@ namespace Alis.Core.Physic.Dynamics
 
                             Debug.Assert(stackCount < stackSize);
                             _stack[stackCount++] = other;
-#if USE_ISLAND_SET
-                            if (!IslandSet.Contains(body))
-                                IslandSet.Add(body);
-#endif
+                            
                             other._island = true;
                         }
                         else
@@ -436,23 +371,7 @@ namespace Alis.Core.Physic.Dynamics
                     }
                 }
             }
-
-            // Synchronize fixtures, check for out of range bodies.
-#if USE_ISLAND_SET
-            foreach (var b in IslandSet)
-            {
-                // If a body was not in an island then it did not move.
-                if (!b._island)
-                {
-                    continue;
-                }
-
-                Debug.Assert(b.BodyType != BodyType.Static);
-
-                // Update fixtures (for broad-phase).
-                b.SynchronizeFixtures();
-            }
-#else
+            
             foreach (Body b in BodyList)
             {
                 // If a body was not in an island then it did not move.
@@ -469,25 +388,10 @@ namespace Alis.Core.Physic.Dynamics
                 // Update fixtures (for broad-phase).
                 b.SynchronizeFixtures();
             }
-#endif
-
-#if OPTIMIZE_TOI
-            foreach (var b in IslandSet)
-            {
-                if (!TOISet.Contains(b))
-                    TOISet.Add(b);
-            }
-#endif
-#if USE_ISLAND_SET
-            IslandSet.Clear();
-#endif
-
+            
             // Look for new contacts.
             ContactManager.FindNewContacts();
-
-#if USE_AWAKE_BODY_SET
-            AwakeBodyList.Clear();
-#endif
+            
         }
 
         /// <summary>
@@ -498,32 +402,17 @@ namespace Alis.Core.Physic.Dynamics
         private void SolveTOI(ref TimeStep step, ref SolverIterations iterations)
         {
             Island.Reset(2 * Settings.MaxTOIContacts, Settings.MaxTOIContacts, 0, ContactManager);
-
-#if OPTIMIZE_TOI
-            bool wasStepComplete = _stepComplete;
-#endif
+            
             if (_stepComplete)
             {
-#if OPTIMIZE_TOI
-                foreach (var b in TOISet)
-                {
-                    b.Flags &= ~BodyFlags.Island;
-                    b.Sweep.Alpha0 = 0.0f;
-                }
-#else
                 for (int i = 0; i < BodyList._list.Count; i++)
                 {
                     BodyList._list[i]._island = false;
                     BodyList._list[i]._sweep.Alpha0 = 0.0f;
                 }
-#endif
-#if USE_ACTIVE_CONTACT_SET
-                foreach (var c in ContactManager.ActiveContacts)
-                {
-#else
+                
                 for (Contact c = ContactManager.ContactList.Next; c != ContactManager.ContactList; c = c.Next)
                 {
-#endif
                     // Invalidate TOI
                     c.IslandFlag = false;
                     c.TOIFlag = false;
@@ -539,14 +428,10 @@ namespace Alis.Core.Physic.Dynamics
                 Contact minContact = null;
                 float minAlpha = 1.0f;
 
-#if USE_ACTIVE_CONTACT_SET
-                foreach (var c in ContactManager.ActiveContacts)
-                {
-#else
+
                 for (Contact c = ContactManager.ContactList.Next; c != ContactManager.ContactList; c = c.Next)
                 {
-#endif
-
+                    
                     // Is this contact disabled?
                     if (c.Enabled == false)
                     {
@@ -600,25 +485,7 @@ namespace Alis.Core.Physic.Dynamics
                         {
                             continue;
                         }
-
-#if OPTIMIZE_TOI
-                        if (_stepComplete)
-                        {
-                            if (!TOISet.Contains(bA))
-                            {
-                                TOISet.Add(bA);
-                                bA.Flags &= ~BodyFlags.Island;
-                                bA.Sweep.Alpha0 = 0.0f;
-                            }
-
-                            if (!TOISet.Contains(bB))
-                            {
-                                TOISet.Add(bB);
-                                bB.Flags &= ~BodyFlags.Island;
-                                bB.Sweep.Alpha0 = 0.0f;
-                            }
-                        }
-#endif
+                        
                         // Compute the TOI for this contact.
                         // Put the sweeps onto the same time interval.
                         float alpha0 = bA._sweep.Alpha0;
@@ -801,16 +668,6 @@ namespace Alis.Core.Physic.Dynamics
                             {
                                 other.Awake = true;
                             }
-#if OPTIMIZE_TOI
-                            if (_stepComplete)
-                            {
-                                if (!TOISet.Contains(other))
-                                {
-                                    TOISet.Add(other);
-                                    other.Sweep.Alpha0 = 0.0f;
-                                }
-                            }
-#endif
                             Island.Add(other);
                         }
                     }
@@ -850,11 +707,6 @@ namespace Alis.Core.Physic.Dynamics
                 // Also, some contacts can be destroyed.
                 ContactManager.FindNewContacts();
             }
-
-#if OPTIMIZE_TOI
-            if (wasStepComplete)
-                TOISet.Clear();
-#endif
         }
 
         /// <summary>
@@ -940,18 +792,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <value>The head of the world body list.</value>
         public readonly BodyCollection BodyList;
-
-#if USE_AWAKE_BODY_SET
-        public HashSet<Body> AwakeBodySet { get; private set; }
-        List<Body> AwakeBodyList;
-#endif
-#if USE_ISLAND_SET
-        HashSet<Body> IslandSet;
-#endif
-#if OPTIMIZE_TOI
-        HashSet<Body> TOISet;
-#endif
-
+        
         /// <summary>
         ///     Get the world joint list.
         /// </summary>
@@ -992,21 +833,7 @@ namespace Alis.Core.Physic.Dynamics
                 throw new ArgumentException("You are adding the same body more than once.", "body");
             if (body._world != null)
                 throw new ArgumentException("body belongs to another world.", "body");
-
-#if USE_AWAKE_BODY_SET
-            Debug.Assert(!body.IsDisposed);
-            if (body.Awake)
-            {
-                if (!AwakeBodySet.Contains(body))
-                    AwakeBodySet.Add(body);
-            }
-            else
-            {
-                if (AwakeBodySet.Contains(body))
-                    AwakeBodySet.Remove(body);
-            }
-#endif
-
+            
             body._world = this;
             BodyList._list.Add(body);
             BodyList._generationStamp++;
@@ -1049,11 +876,7 @@ namespace Alis.Core.Physic.Dynamics
                 throw new ArgumentNullException("body");
             if (body.World != this)
                 throw new ArgumentException("You are removing a body that is not in the simulation.", "body");
-
-#if USE_AWAKE_BODY_SET
-            Debug.Assert(!AwakeBodySet.Contains(body));
-#endif
-
+            
             // Delete the attached joints.
             JointEdge je = body.JointList;
             while (je != null)
@@ -1095,10 +918,7 @@ namespace Alis.Core.Physic.Dynamics
             BodyDelegate bodyRemovedHandler = BodyRemoved;
             if (bodyRemovedHandler != null)
                 bodyRemovedHandler(this, body);
-
-#if USE_AWAKE_BODY_SET
-            Debug.Assert(!AwakeBodySet.Contains(body));
-#endif
+            
         }
 
         /// <summary>
@@ -1277,148 +1097,7 @@ namespace Alis.Core.Physic.Dynamics
             if (jointRemovedHandler != null)
                 jointRemovedHandler(this, joint);
         }
-
-
-        #region LEGACY_ASYNCADDREMOVE
-
-#if LEGACY_ASYNCADDREMOVE
-        /// <summary>
-        /// Add a rigid body.
-        /// </summary>
-        /// <returns></returns>
-        public void AddAsync(Body body)
-        {
-            if (body == null)
-                throw new ArgumentNullException("body");
-
-
-            //       or if it's allready added to this World.
-
-            if (IsLocked)
-            {
-                if (!_bodyAddList.Contains(body))
-                    _bodyAddList.Add(body);
-                else
-                    Debug.WriteLine("You are adding the same body more than once.");
-            }
-            else
-                Add(body);
-        }
-
-        /// <summary>
-        /// Destroy a rigid body.
-        /// Warning: This automatically deletes all associated shapes and joints.
-        /// </summary>
-        /// <param name="body">The body.</param>
-        public void RemoveAsync(Body body)
-        {
-            if (body == null)
-                throw new ArgumentNullException("body");
-
-            if (IsLocked)
-            {
-                if (!_bodyRemoveList.Contains(body))
-                    _bodyRemoveList.Add(body);
-                else
-                    Debug.WriteLine("The body is already marked for removal. You are removing the body more than once.");
-            }
-            else
-                Remove(body);
-
-#if USE_AWAKE_BODY_SET
-            if (AwakeBodySet.Contains(body))
-                AwakeBodySet.Remove(body);
-#endif
-        }
-
-        /// <summary>
-        /// Create a joint to constrain bodies together. This may cause the connected bodies to cease colliding.
-        /// </summary>
-        /// <param name="joint">The joint.</param>
-        public void AddAsync(Joint joint)
-        {
-            if (joint == null)
-                throw new ArgumentNullException("joint");
-
-            if (IsLocked)
-            {
-                if (!_jointAddList.Contains(joint))
-                    _jointAddList.Add(joint);
-                else
-                    Debug.WriteLine("You are adding the same joint more than once.");
-            }
-            else
-                Add(joint);
-        }
-
-        /// <summary>
-        /// Destroy a joint. This may cause the connected bodies to begin colliding.
-        /// </summary>
-        /// <param name="joint">The joint.</param>
-        public void RemoveAsync(Joint joint)
-        {
-            if (joint == null)
-                throw new ArgumentNullException("joint");
-
-            if (IsLocked)
-            {
-                if (!_jointRemoveList.Contains(joint))
-                    _jointRemoveList.Add(joint);
-                else
-                    Debug.WriteLine("The joint is already marked for removal. You are removing the joint more than once.");
-            }
-            else
-                Remove(joint);
-        }
-
-        /// <summary>
-        /// All Async adds and removes are cached by the World during a World step.
-        /// To process the changes before the world updates again, call this method.
-        /// </summary>
-        public void ProcessChanges()
-        {
-            // ProcessAddedBodies
-            if (_bodyAddList.Count > 0)
-            {
-                foreach (Body body in _bodyAddList)
-                    Add(body);
-                _bodyAddList.Clear();
-            }
-
-            // ProcessAddedJoints
-            if (_jointAddList.Count > 0)
-            {
-                foreach (Joint joint in _jointAddList)
-                    Add(joint);
-                _jointAddList.Clear();
-            }
-
-            // ProcessRemovedBodies
-            if (_bodyRemoveList.Count > 0)
-            {
-                foreach (Body body in _bodyRemoveList)
-                    Remove(body);
-                _bodyRemoveList.Clear();
-            }
-
-            // ProcessRemovedJoints
-            if (_jointRemoveList.Count > 0)
-            {
-                foreach (Joint joint in _jointRemoveList)
-                    Remove(joint);
-                _jointRemoveList.Clear();
-            }
-
-#if DEBUG && USE_AWAKE_BODY_SET
-            foreach (var b in AwakeBodySet)
-                Debug.Assert(BodyList.Contains(b));
-#endif
-        }
-#endif
-
-        #endregion // LEGACY_ASYNCADDREMOVE
-
-
+        
         /// <summary>
         ///     Take a time step. This performs collision detection, integration,
         ///     and consraint solution.
@@ -1473,13 +1152,7 @@ namespace Alis.Core.Physic.Dynamics
 
             if (Settings.EnableDiagnostics)
                 _watch.Start();
-
-#if LEGACY_ASYNCADDREMOVE
-            ProcessChanges();
-            if (Settings.EnableDiagnostics)
-                AddRemoveTime = TimeSpan.FromTicks(_watch.ElapsedTicks);
-#endif
-
+            
             // If new fixtures were added, we need to find the new contacts.
             if (_worldHasNewFixture)
             {
@@ -1769,11 +1442,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             if (IsLocked)
                 throw new InvalidOperationException("The World is locked.");
-
-#if LEGACY_ASYNCADDREMOVE
-            ProcessChanges();
-#endif
-
+            
             for (int i = BodyList._list.Count - 1; i >= 0; i--)
             {
                 Remove(BodyList._list[i]);

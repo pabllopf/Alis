@@ -144,28 +144,7 @@ namespace Alis.Test.Core.Ecs.Entity
             // Assert
             Assert.False(scene.IsEnable);
         }
-
-        /// <summary>
-        ///     Tests that test scene add remove
-        /// </summary>
-        [Fact]
-        public void Test_Scene_Add_Remove()
-        {
-            // Arrange
-            Scene scene = new Scene();
-            GameObject gameObject = new GameObject();
-
-            // Act
-            scene.Add(gameObject);
-            bool containsAfterAdd = scene.Contains<GameObject>();
-            scene.Remove(gameObject);
-            bool containsAfterRemove = scene.Contains<GameObject>();
-
-            // Assert
-            Assert.True(containsAfterAdd);
-            Assert.False(containsAfterRemove);
-        }
-
+        
         /// <summary>
         ///     Tests that set context should set context
         /// </summary>

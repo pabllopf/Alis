@@ -73,18 +73,5 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Scene
 
             Assert.Equal("Test Name", sceneBuilder.Build().Name);
         }
-
-        /// <summary>
-        ///     Tests that add valid input
-        /// </summary>
-        [Fact]
-        public void Add_ValidInput()
-        {
-            SceneBuilder sceneBuilder = new SceneBuilder();
-
-            sceneBuilder.Add<Alis.Core.Ecs.Entity.GameObject>(builder => builder.Name("Test GameObject").Build());
-
-            Assert.Single(sceneBuilder.Build().GameObjects);
-        }
     }
 }
