@@ -85,7 +85,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{18D887C5
 	ProjectSection(SolutionItems) = preProject
 		changelog.md = changelog.md
 		code_of_conduct.md = code_of_conduct.md
-		licence.md = licence.md
 		readme.md = readme.md
 		docs\nuget\readme_nuget.md = docs\nuget\readme_nuget.md
 		docs\documentation\donate.md = docs\documentation\donate.md
@@ -95,6 +94,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{18D887C5
 		docs\documentation\quick_start.md = docs\documentation\quick_start.md
 		docs\documentation\showcases.md = docs\documentation\showcases.md
 		docs\documentation\support.md = docs\documentation\support.md
+		license.md = license.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{6E102FFE-9727-458C-9361-4588C4157572}"
