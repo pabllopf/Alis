@@ -38,6 +38,11 @@ namespace Alis.Core.Ecs
         ///     Runs this instance
         /// </summary>
         public void Run();
+        
+        /// <summary>
+        /// Runs the preview
+        /// </summary>
+        public void RunPreview();
 
         /// <summary>
         ///     Exits this instance

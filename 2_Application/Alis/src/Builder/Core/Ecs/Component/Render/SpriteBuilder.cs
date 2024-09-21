@@ -45,7 +45,7 @@ namespace Alis.Builder.Core.Ecs.Component.Render
         /// <summary>
         ///     The sprite
         /// </summary>
-        private readonly Sprite sprite = new Sprite(new Image());
+        private readonly Sprite sprite = new Sprite("");
 
         /// <summary>
         ///     Builds this instance
@@ -71,7 +71,7 @@ namespace Alis.Builder.Core.Ecs.Component.Render
         /// <returns>The sprite builder</returns>
         public SpriteBuilder SetTexture(string value)
         {
-            sprite.Image.NameFile = value;
+            sprite.NameFile = value;
             return this;
         }
     }

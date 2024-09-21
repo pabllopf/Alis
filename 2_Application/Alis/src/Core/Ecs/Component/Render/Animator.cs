@@ -140,7 +140,7 @@ namespace Alis.Core.Ecs.Component.Render
             {
                 if (currentAnimation.HasNext())
                 {
-                    Sprite.Image = new Image(currentAnimation.NextTexture().NameFile);
+                    Sprite = new Sprite(currentAnimation.NextTexture().NameFile);
                 }
 
                 Timer.Restart();

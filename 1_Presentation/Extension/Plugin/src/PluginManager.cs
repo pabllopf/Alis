@@ -33,6 +33,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager;
 
 namespace Alis.Extension.Plugin
@@ -61,7 +62,7 @@ namespace Alis.Extension.Plugin
         /// <summary>
         ///     Initializes a new instance of the <see cref="PluginManager" /> class
         /// </summary>
-        public PluginManager()
+        public PluginManager(Context context) : base(context)
         {
             LoadedPlugins = new List<IPlugin>();
             LoadedAssemblies = new List<Assembly>();
@@ -72,7 +73,8 @@ namespace Alis.Extension.Plugin
         ///     Initializes a new instance of the <see cref="PluginManager" /> class
         /// </summary>
         /// <param name="platformDetector">The platform detector</param>
-        public PluginManager(IPlatformDetector platformDetector)
+        /// <param name="context"></param>
+        public PluginManager(IPlatformDetector platformDetector, Context context) : base(context)
         {
             LoadedPlugins = new List<IPlugin>();
             LoadedAssemblies = new List<Assembly>();

@@ -61,7 +61,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// <summary>
         ///     Initializes a new instance of the <see cref="GraphicManager" /> class
         /// </summary>
-        public GraphicManager()
+        public GraphicManager(Context context) : base(context)
         {
             ColliderBases = new List<BoxCollider>();
             Sprites = new List<Sprite>();
@@ -80,8 +80,9 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// <param name="renderer">The renderer</param>
         /// <param name="sprites">The sprites</param>
         /// <param name="cameras">The cameras</param>
+        /// <param name="context"></param>
         [JsonConstructor]
-        public GraphicManager(List<BoxCollider> colliderBases, IntPtr window, Vector2 defaultSize, IntPtr renderer, List<Sprite> sprites, List<Camera> cameras)
+        public GraphicManager(List<BoxCollider> colliderBases, IntPtr window, Vector2 defaultSize, IntPtr renderer, List<Sprite> sprites, List<Camera> cameras, Context context) : base(context)
         {
             ColliderBases = colliderBases;
             Window = window;

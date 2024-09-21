@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AudioManagerBuilder.cs
+//  File:IHasContext.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,21 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Fluent;
-using Alis.Core.Ecs.System.Manager.Audio;
-
-namespace Alis.Builder.Core.Ecs.System.Manager.Audio
+namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The scene manager builder class
+    /// The has context interface
     /// </summary>
-    public class AudioManagerBuilder :
-        IBuild<AudioManager>
+    public interface IHasContext<out T>
     {
         /// <summary>
-        ///     Builds this instance
+        /// Gets the value of the context
         /// </summary>
-        /// <returns>The audio manager</returns>
-        public AudioManager Build() => new AudioManager();
+        public T Context { get; }
     }
 }

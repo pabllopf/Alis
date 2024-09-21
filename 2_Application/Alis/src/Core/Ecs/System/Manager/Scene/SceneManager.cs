@@ -44,7 +44,8 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         /// <summary>
         ///     Initializes a new instance of the <see cref="SceneManager" /> class
         /// </summary>
-        public SceneManager()
+        /// <param name="context"></param>
+        public SceneManager(Context context) : base(context)
         {
             Scenes = new List<Entity.Scene>();
             CurrentScene = new Entity.Scene();
@@ -79,6 +80,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
             if (Scenes.Count > 0)
             {
                 CurrentScene = Scenes[0];
+                CurrentScene.SetContext(Context);
                 CurrentScene.OnInit();
             }
         }
@@ -102,6 +104,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
             string versionCurrent = Assembly.GetExecutingAssembly().GetName().Version.ToString().Replace('.', '_');
             foreach (Entity.Scene scene in Scenes)
             {
+                scene.SetContext(Context);
                 string gameJson = JsonSerializer.Serialize(scene, new JsonOptions
                 {
                     DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
@@ -243,11 +246,11 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         ///     Adds the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
-        /// <param name="component">The component</param>
-        public void Add<T>(T component) where T : Entity.Scene
+        /// <param name="scene">The component</param>
+        public void Add<T>(T scene) where T : Entity.Scene
         {
-            Scenes ??= new List<Entity.Scene>();
-            Scenes.Add(component);
+            scene.SetContext(Context);
+            Scenes.Add(scene);
         }
 
         /// <summary>
@@ -321,6 +324,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
                     DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
                     SerializationOptions = JsonSerializationOptions.Default
                 });
+            CurrentScene.SetContext(Context);
             CurrentScene.OnInit();
             CurrentScene.OnAwake();
             CurrentScene.OnStart();

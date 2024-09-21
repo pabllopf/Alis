@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Data.Mapping;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
@@ -65,44 +66,28 @@ namespace Alis.Sample.SplitCamera
         /// <param name="key">The key</param>
         public override void OnPressDownKey(KeyCodes key)
         {
-            if (key == KeyCodes.W)
+            if (key == KeyCodes.D)
             {
-                GameObject.Transform = new Transform
-                {
-                    Position = new Vector2(GameObject.Transform.Position.X, GameObject.Transform.Position.Y - Speed),
-                    Scale = new Vector2(GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y),
-                    Rotation = GameObject.Transform.Rotation
-                };
-            }
-
-            if (key == KeyCodes.S)
-            {
-                GameObject.Transform = new Transform
-                {
-                    Position = new Vector2(GameObject.Transform.Position.X, GameObject.Transform.Position.Y + Speed),
-                    Scale = new Vector2(GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y),
-                    Rotation = GameObject.Transform.Rotation
-                };
+                GameObject.Transform = new Transform(new Vector2(GameObject.Transform.Position.X + 1, GameObject.Transform.Position.Y), GameObject.Transform.Rotation, GameObject.Transform.Scale);
+                Logger.Info(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation);
             }
 
             if (key == KeyCodes.A)
             {
-                GameObject.Transform = new Transform
-                {
-                    Position = new Vector2(GameObject.Transform.Position.X - Speed, GameObject.Transform.Position.Y),
-                    Scale = new Vector2(GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y),
-                    Rotation = GameObject.Transform.Rotation
-                };
+                GameObject.Transform = new Transform(new Vector2(GameObject.Transform.Position.X - 1, GameObject.Transform.Position.Y), GameObject.Transform.Rotation, GameObject.Transform.Scale);
+                Logger.Info(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation);
             }
 
-            if (key == KeyCodes.D)
+            if (key == KeyCodes.W)
             {
-                GameObject.Transform = new Transform
-                {
-                    Position = new Vector2(GameObject.Transform.Position.X + Speed, GameObject.Transform.Position.Y),
-                    Scale = new Vector2(GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y),
-                    Rotation = GameObject.Transform.Rotation
-                };
+                GameObject.Transform = new Transform(new Vector2(GameObject.Transform.Position.X, GameObject.Transform.Position.Y - 1), GameObject.Transform.Rotation, GameObject.Transform.Scale);
+                Logger.Info(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation);
+            }
+
+            if (key == KeyCodes.S)
+            {
+                GameObject.Transform = new Transform(new Vector2(GameObject.Transform.Position.X, GameObject.Transform.Position.Y + 1), GameObject.Transform.Rotation, GameObject.Transform.Scale);
+                Logger.Info(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation);
             }
         }
     }

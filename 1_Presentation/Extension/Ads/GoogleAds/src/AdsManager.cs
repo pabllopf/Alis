@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager;
 
 namespace Alis.Extension.Ads.GoogleAds
@@ -38,5 +39,12 @@ namespace Alis.Extension.Ads.GoogleAds
     /// <seealso cref="IAdsManager" />
     public class AdsManager : AManager
     {
+        public AdsManager(Context context) : base(context)
+        {
+        }
+
+        public AdsManager(string id, string name, string tag, bool isEnable, Context context) : base(id, name, tag, isEnable, context)
+        {
+        }
     }
 }

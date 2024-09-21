@@ -33,6 +33,7 @@ using Alis.Builder.Core.Ecs.System.Setting;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Ecs;
+using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager.Scene;
 using Alis.Core.Ecs.System.Setting;
 using Alis.Core.Graphic.Sdl2;
@@ -51,11 +52,11 @@ namespace Alis.Builder.Core.Ecs.System
     {
         /// <summary>Gets or sets the video game.</summary>
         /// <value>The video game.</value>
-        private readonly VideoGame videoGame = new VideoGame();
-
+        private readonly Context context = new Context(new Settings());
+        
         /// <summary>Builds this instance.</summary>
         /// <returns></returns>
-        public VideoGame Build() => videoGame;
+        public VideoGame Build() => new VideoGame(context);
 
         /// <summary>
         ///     Setting the value
@@ -64,7 +65,7 @@ namespace Alis.Builder.Core.Ecs.System
         /// <returns>The video game builder</returns>
         public VideoGameBuilder Settings(Func<SettingsBuilder, Settings> value)
         {
-            VideoGame.GetContext().Settings = value.Invoke(new SettingsBuilder());
+            context.Settings = value.Invoke(new SettingsBuilder());
             return this;
         }
 
@@ -75,25 +76,10 @@ namespace Alis.Builder.Core.Ecs.System
         /// <returns>The video game builder</returns>
         public VideoGameBuilder World(Func<SceneManagerBuilder, SceneManager> value)
         {
-            VideoGame.GetContext().SetSceneManager(value.Invoke(new SceneManagerBuilder()));
+            SceneManager sceneManager = value.Invoke(new SceneManagerBuilder(context));
+            context.SceneManager.Scenes = sceneManager.Scenes;
+            context.SceneManager.CurrentScene = sceneManager.CurrentScene;
             return this;
-        }
-
-        /// <summary>
-        ///     Builds the preview
-        /// </summary>
-        /// <returns>The video game</returns>
-        public VideoGame BuildPreview()
-        {
-            WindowSettings flags = WindowSettings.WindowHidden;
-            videoGame.Context.GraphicManager.Window = Sdl.CreateWindow(videoGame.Context.Settings.General.Name,
-                (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered,
-                (int) videoGame.Context.GraphicManager.DefaultSize.X, (int) videoGame.Context.GraphicManager.DefaultSize.Y, flags);
-
-            // Create the renderer
-            videoGame.Context.GraphicManager.Renderer = Sdl.CreateRenderer(videoGame.Context.GraphicManager.Window, -1, Renderers.SdlRendererAccelerated | Renderers.SdlRendererTargetTexture);
-
-            return videoGame;
         }
     }
 }

@@ -48,7 +48,7 @@ namespace Alis.Core.Ecs.Component
         ///     Gets or sets the value of the game object
         /// </summary>
         [JsonPropertyName("_Context_", true, true)]
-        public Context Context => VideoGame.GetContext();
+        public Context Context => GameObject.Context;
 
         /// <summary>
         ///     Gets or sets the value of the is enable

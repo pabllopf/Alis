@@ -91,7 +91,7 @@ namespace Alis.Sample.Flappy.Bird
         /// <param name="gameObject">The game object</param>
         public override void OnCollisionEnter(GameObject gameObject)
         {
-            if ((gameObject.Tag == "Player") && !isEnter)
+             if ((gameObject.Tag == "Player") && !isEnter)
             {
                 Increment();
                 audioSource.Play();

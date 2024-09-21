@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager;
 
 namespace Alis.Extension.Payment.Stripe
@@ -37,5 +38,12 @@ namespace Alis.Extension.Payment.Stripe
     /// <seealso />
     public class StoreManager : AManager
     {
+        public StoreManager(Context context) : base(context)
+        {
+        }
+
+        public StoreManager(string id, string name, string tag, bool isEnable, Context context) : base(id, name, tag, isEnable, context)
+        {
+        }
     }
 }

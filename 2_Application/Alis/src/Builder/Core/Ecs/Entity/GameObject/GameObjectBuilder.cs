@@ -32,6 +32,7 @@ using Alis.Builder.Core.Ecs.Entity.Transform;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Ecs.Component;
+using Alis.Core.Ecs.System;
 
 namespace Alis.Builder.Core.Ecs.Entity.GameObject
 {
@@ -51,6 +52,13 @@ namespace Alis.Builder.Core.Ecs.Entity.GameObject
         /// </summary>
         private readonly Alis.Core.Ecs.Entity.GameObject gameObject = new Alis.Core.Ecs.Entity.GameObject();
 
+        private Context context;
+        
+        public GameObjectBuilder(Context context)
+        {
+            this.context = context;
+        }
+
 
         /// <summary>
         ///     Adds the component using the specified value
@@ -62,6 +70,7 @@ namespace Alis.Builder.Core.Ecs.Entity.GameObject
         {
             AComponent aComponent = value.Invoke((T) Activator.CreateInstance(typeof(T)));
             gameObject.Add(aComponent);
+            gameObject.SetContext(context);
             aComponent.Attach(gameObject);
             return this;
         }
@@ -76,6 +85,7 @@ namespace Alis.Builder.Core.Ecs.Entity.GameObject
         {
             gameObject.Add(value);
             value.Attach(gameObject);
+            gameObject.SetContext(context);
             return this;
         }
 
