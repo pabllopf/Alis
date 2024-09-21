@@ -40,6 +40,6 @@ namespace Alis.Sample.Desktop
         ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
-        public static void Main(string[] args) => VideoGame.Builder().Build().Run();
+        public static void Main(string[] args) => VideoGame.Create().Build().Run();
     }
 }

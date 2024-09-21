@@ -46,7 +46,7 @@ namespace Alis.Sample.SplitCamera
         public static void Main(string[] args)
         {
             VideoGame
-                .Builder()
+                .Create()
                 .Settings(setting => setting
                     .General(general => general
                         .Name("Camera sample")
@@ -84,7 +84,7 @@ namespace Alis.Sample.SplitCamera
                         .Add<GameObject>(gameObject => gameObject
                             .Name("tree-001")
                             .Transform(transform => transform
-                                .Position(100, 100)
+                                .Position(-2, -2)
                                 .Scale(2, 2)
                                 .Rotation(0)
                                 .Build())
@@ -98,7 +98,7 @@ namespace Alis.Sample.SplitCamera
                             .Name("tree-002")
                             .IsStatic()
                             .Transform(transform => transform
-                                .Position(400, 400)
+                                .Position(2, 2)
                                 .Scale(2, 2)
                                 .Rotation(0)
                                 .Build())
@@ -110,7 +110,7 @@ namespace Alis.Sample.SplitCamera
                             .Name("tree-001")
                             .IsStatic()
                             .Transform(transform => transform
-                                .Position(-100, -100)
+                                .Position(0, 0)
                                 .Scale(2, 2)
                                 .Rotation(0)
                                 .Build())
@@ -122,7 +122,7 @@ namespace Alis.Sample.SplitCamera
                             .Name("tree-001")
                             .IsStatic()
                             .Transform(transform => transform
-                                .Position(-200, -200)
+                                .Position(3, 3)
                                 .Scale(2, 2)
                                 .Rotation(0)
                                 .Build())

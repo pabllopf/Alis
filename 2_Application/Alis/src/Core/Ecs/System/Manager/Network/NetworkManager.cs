@@ -35,5 +35,12 @@ namespace Alis.Core.Ecs.System.Manager.Network
     /// <seealso cref="AManager" />
     public class NetworkManager : AManager
     {
+        public NetworkManager(Context context) : base(context)
+        {
+        }
+
+        public NetworkManager(string id, string name, string tag, bool isEnable, Context context) : base(id, name, tag, isEnable, context)
+        {
+        }
     }
 }

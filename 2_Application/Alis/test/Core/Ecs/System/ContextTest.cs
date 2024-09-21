@@ -35,6 +35,7 @@ using Alis.Core.Ecs.System.Manager.Input;
 using Alis.Core.Ecs.System.Manager.Network;
 using Alis.Core.Ecs.System.Manager.Physic;
 using Alis.Core.Ecs.System.Manager.Scene;
+using Alis.Core.Ecs.System.Manager.Time;
 using Alis.Core.Ecs.System.Setting;
 using Xunit;
 

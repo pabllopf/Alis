@@ -47,6 +47,14 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         /// </summary>
         public World World = new World();
 
+        public PhysicManager(Context context) : base(context)
+        {
+        }
+        
+        public PhysicManager(Context context, float timeStepPhysics) : base(context) => this.timeStepPhysics = timeStepPhysics;
+
+        public PhysicManager(string id, string name, string tag, bool isEnable, Context context, float timeStepPhysics) : base(id, name, tag, isEnable, context) => this.timeStepPhysics = timeStepPhysics;
+
         /// <summary>
         ///     Ons the init
         /// </summary>

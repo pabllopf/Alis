@@ -31,6 +31,7 @@ using System;
 using Alis.Builder.Core.Ecs.Entity.Scene;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager.Scene;
 
 namespace Alis.Builder.Core.Ecs.System.Manager.Scene
@@ -45,7 +46,15 @@ namespace Alis.Builder.Core.Ecs.System.Manager.Scene
         /// <summary>
         ///     Gets the value of the scene manager
         /// </summary>
-        private readonly SceneManager sceneManager = new SceneManager();
+        private readonly SceneManager sceneManager;
+
+        private readonly Context context;
+
+        public SceneManagerBuilder(Context context)
+        {
+            this.context = context;
+            sceneManager = new SceneManager(context);
+        }
 
         /// <summary>
         ///     Adds the value
@@ -55,7 +64,7 @@ namespace Alis.Builder.Core.Ecs.System.Manager.Scene
         /// <returns>The scene builder</returns>
         public SceneManagerBuilder Add<T>(Func<SceneBuilder, Alis.Core.Ecs.Entity.Scene> value)
         {
-            sceneManager.Add(value.Invoke(new SceneBuilder()));
+            sceneManager.Add(value.Invoke(new SceneBuilder(context)));
             sceneManager.CurrentScene = sceneManager.Scenes[0];
             return this;
         }

@@ -30,6 +30,7 @@
 using System;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Data.Json;
+using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
@@ -48,11 +49,6 @@ namespace Alis.Core.Ecs.Component.Render
         IBuilder<SpriteBuilder>
     {
         /// <summary>
-        ///     The dst rect
-        /// </summary>
-        private RectangleI dstRect;
-
-        /// <summary>
         ///     The
         /// </summary>
         private int h;
@@ -60,30 +56,25 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     The rectangle
         /// </summary>
-        private RectangleI Rectangle;
+        private RectangleI rectangle;
 
         /// <summary>
         ///     The
         /// </summary>
         private int w;
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Sprite" /> class
-        /// </summary>
         public Sprite()
         {
-            Image = new Image();
+            NameFile = "";
+            Path = "";
             Depth = 0;
             Flips = RendererFlips.None;
         }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Sprite" /> class
-        /// </summary>
-        /// <param name="image">The image</param>
-        public Sprite(Image image)
+        
+        public Sprite(string nameFile)
         {
-            Image = image;
+            NameFile = nameFile;
+            Path = "";
             Depth = 0;
             Flips = RendererFlips.None;
         }
@@ -94,20 +85,16 @@ namespace Alis.Core.Ecs.Component.Render
         /// <param name="image">The image</param>
         /// <param name="depth">The depth</param>
         /// <param name="flips">The flips</param>
+        /// <param name="nameFile"></param>
         [JsonConstructor]
-        public Sprite(Image image, int depth, RendererFlips flips)
+        public Sprite(string nameFile, int depth, RendererFlips flips)
         {
-            Image = image;
             Depth = depth;
             Flips = flips;
+            Path = AssetManager.Find(nameFile);
+            NameFile = nameFile;
         }
-
-        /// <summary>
-        ///     The image
-        /// </summary>
-        [JsonPropertyName("_Image_")]
-        public Image Image { get; set; }
-
+        
         /// <summary>
         ///     The level
         /// </summary>
@@ -119,6 +106,30 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         [JsonPropertyName("_Flips_")]
         public RendererFlips Flips { get; set; }
+        
+        /// <summary>
+        ///     Gets or sets the value of the path
+        /// </summary>
+        [JsonIgnore]
+        public string Path { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the name file
+        /// </summary>
+        [JsonPropertyName("_NameFile_")]
+        public string NameFile { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the texture
+        /// </summary>
+        [JsonIgnore]
+        public IntPtr Texture { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the size
+        /// </summary>
+        [JsonPropertyName("_Size_")]
+        public Vector2 Size { get; set; }
 
         /// <summary>
         ///     Builders this instance
@@ -131,7 +142,17 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public override void OnInit()
         {
-            Image.Load();
+            if (!string.IsNullOrEmpty(NameFile))
+            {
+                Path = AssetManager.Find(NameFile);
+
+                Texture = Sdl.CreateTextureFromSurface(Context.GraphicManager.Renderer, Sdl.LoadBmp(Path));
+
+                // get the size of sprite.Texture
+                Sdl.QueryTexture(Texture, out _, out _, out int w, out int h);
+
+                Size = new Vector2(w, h);
+            }
         }
 
         /// <summary>
@@ -147,9 +168,9 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public override void OnStart()
         {
-            Sdl.QueryTexture(Image.Texture, out _, out _, out w, out h);
+            Sdl.QueryTexture(Texture, out _, out _, out w, out h);
 
-            dstRect = new RectangleI((int) GameObject.Transform.Position.X, (int) GameObject.Transform.Position.Y, w, h);
+            new RectangleI((int) GameObject.Transform.Position.X, (int) GameObject.Transform.Position.Y, w, h);
         }
 
         /// <summary>
@@ -177,7 +198,7 @@ namespace Alis.Core.Ecs.Component.Render
         public void Render(IntPtr renderer, Vector2 cameraPosition, Vector2 cameraResolution, float pixelsPerMeter)
         {
             Vector2 spritePosition = GameObject.Transform.Position;
-            Vector2 spriteSize = Image.Size;
+            Vector2 spriteSize = Size;
             Vector2 spriteScale = GameObject.Transform.Scale;
             float spriteRotation = GameObject.Transform.Rotation;
 
@@ -190,7 +211,7 @@ namespace Alis.Core.Ecs.Component.Render
             int x = (int) (spritePosX - cameraPosition.X * pixelsPerMeter + cameraResolution.X / 2 - scaledWidth / 2);
             int y = (int) (spritePosY - cameraPosition.Y * pixelsPerMeter + cameraResolution.Y / 2 - scaledHeight / 2);
 
-            Rectangle = new RectangleI
+            rectangle = new RectangleI
             {
                 X = x,
                 Y = y,
@@ -198,7 +219,7 @@ namespace Alis.Core.Ecs.Component.Render
                 H = scaledHeight
             };
 
-            Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref Rectangle, spriteRotation, IntPtr.Zero, RendererFlips.FlipVertical);
+            Sdl.RenderCopyEx(renderer, Texture, IntPtr.Zero, ref rectangle, spriteRotation, IntPtr.Zero, RendererFlips.FlipVertical);
         }
 
         /// <summary>
@@ -211,7 +232,7 @@ namespace Alis.Core.Ecs.Component.Render
         public bool IsVisible(Vector2 cameraPosition, Vector2 cameraResolution, float pixelsPerMeter)
         {
             Vector2 spritePosition = GameObject.Transform.Position;
-            Vector2 spriteSize = Image.Size;
+            Vector2 spriteSize = Size;
             float spriteRotation = GameObject.Transform.Rotation;
 
             float spritePosX = spritePosition.X * pixelsPerMeter;

@@ -31,6 +31,7 @@ using System;
 using Alis.Builder.Core.Ecs.Entity.GameObject;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Ecs.System;
 
 namespace Alis.Builder.Core.Ecs.Entity.Scene
 {
@@ -43,6 +44,13 @@ namespace Alis.Builder.Core.Ecs.Entity.Scene
         IName<SceneBuilder, string>,
         IAdd<SceneBuilder, Func<GameObjectBuilder, Alis.Core.Ecs.Entity.GameObject>>
     {
+        private readonly Context context;
+        
+        public SceneBuilder(Context context)
+        { 
+            this.context    = context;    
+        }
+
         /// <summary>
         ///     Gets the value of the scene
         /// </summary>
@@ -56,7 +64,7 @@ namespace Alis.Builder.Core.Ecs.Entity.Scene
         /// <returns>The scene builder</returns>
         public SceneBuilder Add<T>(Func<GameObjectBuilder, Alis.Core.Ecs.Entity.GameObject> value)
         {
-            Scene.Add(value.Invoke(new GameObjectBuilder()));
+            Scene.Add(value.Invoke(new GameObjectBuilder(context)));
             return this;
         }
 

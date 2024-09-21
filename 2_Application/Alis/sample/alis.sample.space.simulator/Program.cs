@@ -46,7 +46,7 @@ namespace Alis.Sample.Space.Simulator
         public static void Main(string[] args)
         {
             VideoGame
-                .Builder()
+                .Create()
                 .Settings(setting => setting
                     .General(general => general
                         .Name("Space Simulator")

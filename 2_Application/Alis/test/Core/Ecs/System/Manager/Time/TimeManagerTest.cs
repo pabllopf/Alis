@@ -27,10 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Threading;
+using Alis.Core.Aspect.Time;
+using Alis.Core.Ecs.System.Manager.Time;
 using Xunit;
 
-namespace Alis.Core.Aspect.Time.Test
+namespace Alis.Test.Core.Ecs.System.Manager.Time
 {
     /// <summary>
     ///     The time manager test class
@@ -96,7 +97,7 @@ namespace Alis.Core.Aspect.Time.Test
             // Arrange & Act
             TimeManager timeManager = new TimeManager();
 
-            Thread.Sleep(1000); // Sleep for 1 second
+            Alis.Core.Aspect.Thread.Sleep(1000); // Sleep for 1 second
 
             // Assert
             Assert.True(timeManager.Clock.ElapsedMilliseconds > 0);

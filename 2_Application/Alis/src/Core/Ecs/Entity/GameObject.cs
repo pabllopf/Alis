@@ -47,6 +47,8 @@ namespace Alis.Core.Ecs.Entity
     /// <seealso cref="ISerializable" />
     public class GameObject : IGameObject<AComponent>, IBuilder<GameObjectBuilder>
     {
+        private Context _context;
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="GameObject" /> class
         /// </summary>
@@ -96,13 +98,14 @@ namespace Alis.Core.Ecs.Entity
             Tag = tag;
             Transform = transform;
             Components = components;
+            components.ForEach(i => i.Attach(this));
         }
 
         /// <summary>
         ///     Gets or sets the value of the context
         /// </summary>
         [JsonIgnore]
-        public Context Context => VideoGame.GetContext();
+        public Context Context => _context;
 
         /// <summary>
         ///     Gets or sets the value of the transform
@@ -114,7 +117,7 @@ namespace Alis.Core.Ecs.Entity
         ///     Builders this instance
         /// </summary>
         /// <returns>The game object builder</returns>
-        public GameObjectBuilder Builder() => new GameObjectBuilder();
+        public GameObjectBuilder Builder() => new GameObjectBuilder(_context);
 
         /// <summary>
         ///     Gets or sets the value of the is enable
@@ -161,8 +164,8 @@ namespace Alis.Core.Ecs.Entity
         {
             if (!Components.Contains(value))
             {
-                Components.Add(value);
                 value.Attach(this);
+                Components.Add(value);
             }
         }
 
@@ -412,11 +415,10 @@ namespace Alis.Core.Ecs.Entity
                 component.OnDestroy();
             }
         }
-
-        /// <summary>
-        ///     Creates
-        /// </summary>
-        /// <returns>The game object builder</returns>
-        public static GameObjectBuilder Create() => new GameObjectBuilder();
+        
+        public void SetContext(Context context)
+        {
+            _context = context;
+        }
     }
 }

@@ -49,7 +49,6 @@ namespace Alis.Core.Ecs.Entity
             Id = Guid.NewGuid().ToString();
             Tag = GetType().Name;
             GameObjects = new List<GameObject>();
-            _gameObjectsToAdd = new List<GameObject>();
         }
 
         /// <summary>
@@ -67,7 +66,6 @@ namespace Alis.Core.Ecs.Entity
             Id = id;
             Tag = tag;
             GameObjects = new List<GameObject>();
-            _gameObjectsToAdd = new List<GameObject>();
         }
 
         /// <summary>
@@ -85,15 +83,9 @@ namespace Alis.Core.Ecs.Entity
             Id = id;
             Tag = tag;
             GameObjects = gameObjects;
-            _gameObjectsToAdd = new List<GameObject>();
+            GameObjects.ForEach(i => i.SetContext(_context));
         }
-
-        /// <summary>
-        ///     Gets or sets the value of the context
-        /// </summary>
-        [JsonPropertyName("_Context_", true, true)]
-        protected internal Context Context => VideoGame.GetContext();
-
+        
         /// <summary>
         ///     Gets or sets the value of the is enable
         /// </summary>
@@ -125,11 +117,7 @@ namespace Alis.Core.Ecs.Entity
         [JsonPropertyName("_GameObjects_")]
         public List<GameObject> GameObjects { get; set; }
         
-        /// <summary>
-        /// The game objects to add
-        /// </summary>
-        [JsonPropertyName("GameObjectsToAdd", true, true)]
-        private List<GameObject> _gameObjectsToAdd;
+        private Context _context;
 
         /// <summary>
         ///     Ons the enable
@@ -138,7 +126,7 @@ namespace Alis.Core.Ecs.Entity
         {
             IsEnable = true;
             GameObjects.ForEach(i => i.OnEnable());
-            AddPendingGameObjects();
+            
         }
 
         /// <summary>
@@ -147,7 +135,7 @@ namespace Alis.Core.Ecs.Entity
         public void OnInit()
         {
             GameObjects.ForEach(i => i.OnInit());
-            AddPendingGameObjects();
+            
         }
 
         /// <summary>
@@ -156,7 +144,7 @@ namespace Alis.Core.Ecs.Entity
         public void OnAwake()
         {
             GameObjects.ForEach(i => i.OnAwake());
-            AddPendingGameObjects();
+            
         }
 
         /// <summary>
@@ -165,7 +153,7 @@ namespace Alis.Core.Ecs.Entity
         public void OnStart()
         {
             GameObjects.ForEach(i => i.OnStart());
-            AddPendingGameObjects();
+            
         }
 
         /// <summary>
@@ -174,7 +162,7 @@ namespace Alis.Core.Ecs.Entity
         public void OnBeforeUpdate()
         {
             GameObjects.ForEach(i => i.OnBeforeUpdate());
-            AddPendingGameObjects();
+            
         }
 
         /// <summary>
@@ -183,7 +171,7 @@ namespace Alis.Core.Ecs.Entity
         public void OnUpdate()
         {
             GameObjects.ForEach(i => i.OnUpdate());
-            AddPendingGameObjects();
+            
         }
 
         /// <summary>
@@ -192,7 +180,7 @@ namespace Alis.Core.Ecs.Entity
         public void OnAfterUpdate()
         {
             GameObjects.ForEach(i => i.OnAfterUpdate());
-            AddPendingGameObjects();
+            
         }
 
         /// <summary>
@@ -201,7 +189,7 @@ namespace Alis.Core.Ecs.Entity
         public void OnBeforeFixedUpdate()
         {
             GameObjects.ForEach(i => i.OnBeforeFixedUpdate());
-            AddPendingGameObjects();
+            
         }
 
         /// <summary>
@@ -210,7 +198,7 @@ namespace Alis.Core.Ecs.Entity
         public void OnFixedUpdate()
         {
             GameObjects.ForEach(i => i.OnFixedUpdate());
-            AddPendingGameObjects();
+            
         }
 
         /// <summary>
@@ -219,7 +207,7 @@ namespace Alis.Core.Ecs.Entity
         public void OnAfterFixedUpdate()
         {
             GameObjects.ForEach(i => i.OnAfterFixedUpdate());
-            AddPendingGameObjects();
+            
         }
 
         /// <summary>
@@ -228,7 +216,7 @@ namespace Alis.Core.Ecs.Entity
         public void OnDispatchEvents()
         {
             GameObjects.ForEach(i => i.OnDispatchEvents());
-            AddPendingGameObjects();
+            
         }
 
         /// <summary>
@@ -237,7 +225,7 @@ namespace Alis.Core.Ecs.Entity
         public void OnCalculate()
         {
             GameObjects.ForEach(i => i.OnCalculate());
-            AddPendingGameObjects();
+            
         }
 
         /// <summary>
@@ -246,7 +234,7 @@ namespace Alis.Core.Ecs.Entity
         public void OnDraw()
         {
             GameObjects.ForEach(i => i.OnDraw());
-            AddPendingGameObjects();
+            
         }
 
         /// <summary>
@@ -255,7 +243,7 @@ namespace Alis.Core.Ecs.Entity
         public void OnGui()
         {
             GameObjects.ForEach(i => i.OnGui());
-            AddPendingGameObjects();
+            
         }
 
         /// <summary>
@@ -265,7 +253,7 @@ namespace Alis.Core.Ecs.Entity
         {
             IsEnable = false;
             GameObjects.ForEach(i => i.OnDisable());
-            AddPendingGameObjects();
+            
         }
 
         /// <summary>
@@ -274,7 +262,7 @@ namespace Alis.Core.Ecs.Entity
         public void OnReset()
         {
             GameObjects.ForEach(i => i.OnReset());
-            AddPendingGameObjects();
+            
         }
 
         /// <summary>
@@ -283,7 +271,7 @@ namespace Alis.Core.Ecs.Entity
         public void OnStop()
         {
             GameObjects.ForEach(i => i.OnStop());
-            AddPendingGameObjects();
+            
         }
 
         /// <summary>
@@ -292,7 +280,7 @@ namespace Alis.Core.Ecs.Entity
         public void OnExit()
         {
             GameObjects.ForEach(i => i.OnExit());
-            AddPendingGameObjects();
+            
         }
 
         /// <summary>
@@ -301,7 +289,6 @@ namespace Alis.Core.Ecs.Entity
         public void OnDestroy()
         {
             GameObjects.ForEach(i => i.OnDestroy());
-            AddPendingGameObjects();
         }
 
         /// <summary>
@@ -311,7 +298,8 @@ namespace Alis.Core.Ecs.Entity
         /// <param name="value">The component</param>
         public virtual void Add<T>(T value) where T : GameObject
         {
-            _gameObjectsToAdd.Add(value);
+            value.SetContext(_context);
+            GameObjects.Add(value);
         }
 
         /// <summary>
@@ -352,22 +340,10 @@ namespace Alis.Core.Ecs.Entity
             GameObjects.Clear();
         }
         
-        /// <summary>
-        /// Adds the pending game objects
-        /// </summary>
-        private void AddPendingGameObjects()
+        public void SetContext(Context context)
         {
-            if (_gameObjectsToAdd.Count > 0)
-            {
-                foreach (GameObject gameObject in _gameObjectsToAdd.ToArray())
-                {
-                    gameObject.OnInit();
-                    gameObject.OnAwake();
-                    gameObject.OnStart();
-                }
-                GameObjects.AddRange(_gameObjectsToAdd);
-                _gameObjectsToAdd.Clear();
-            }
+            _context = context;
+            GameObjects.ForEach(i => i.SetContext(context));
         }
     }
 }

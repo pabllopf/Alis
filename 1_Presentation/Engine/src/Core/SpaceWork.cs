@@ -121,7 +121,7 @@ namespace Alis.App.Engine.Core
             BottomMenu = new BottomMenu(this);
 
             VideoGame = VideoGame
-                .Builder()
+                .Create()
                 .Settings(setting => setting
                     .General(general => general
                         .Name("Rogue Legacy")

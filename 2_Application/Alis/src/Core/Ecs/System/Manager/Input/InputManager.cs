@@ -65,6 +65,10 @@ namespace Alis.Core.Ecs.System.Manager.Input
         /// </summary>
         internal List<KeyCodes> tempListOfKeys = new List<KeyCodes>();
 
+        public InputManager(Context context) : base(context){}
+
+        public InputManager(string id, string name, string tag, bool isEnable, Context context, Event sdlEvent) : base(id, name, tag, isEnable, context) => this.sdlEvent = sdlEvent;
+
         /// <summary>
         ///     Ons the init
         /// </summary>

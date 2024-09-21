@@ -49,7 +49,7 @@ namespace Alis.Sample.Snake
         public static void Main(string[] args)
         {
             VideoGame
-                .Builder()
+                .Create()
                 .Settings(setting => setting
                     .General(general => general
                         .Name("Pong")

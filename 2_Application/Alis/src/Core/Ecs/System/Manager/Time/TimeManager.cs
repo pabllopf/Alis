@@ -27,17 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Time
+using Alis.Core.Aspect.Time;
+
+namespace Alis.Core.Ecs.System.Manager.Time
 {
     /// <summary>
     ///     Provides an interface to get time information.
     /// </summary>
-    public class TimeManager
+    public class TimeManager: AManager
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="TimeManager" /> class
         /// </summary>
-        public TimeManager()
+        public TimeManager(Context context) : base(context)
         {
             Clock = new Clock();
             Clock.Start();

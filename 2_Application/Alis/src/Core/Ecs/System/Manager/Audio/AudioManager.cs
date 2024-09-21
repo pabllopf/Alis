@@ -35,5 +35,12 @@ namespace Alis.Core.Ecs.System.Manager.Audio
     /// <seealso cref="AManager" />
     public class AudioManager : AManager
     {
+        public AudioManager(Context context) : base(context)
+        {
+        }
+
+        public AudioManager(string id, string name, string tag, bool isEnable, Context context) : base(id, name, tag, isEnable, context)
+        {
+        }
     }
 }

@@ -72,7 +72,7 @@ namespace Alis.Test.Core.Ecs
         [Fact]
         public void Builder_ShouldReturnVideoGameBuilder()
         {
-            VideoGameBuilder result = VideoGame.Builder();
+            VideoGameBuilder result = VideoGame.Create();
 
             Assert.IsType<VideoGameBuilder>(result);
         }

@@ -39,11 +39,14 @@ namespace Alis.Core.Ecs.System.Manager
     /// <seealso cref="IManager" />
     public abstract class AManager : IManager
     {
+        private readonly Context _context;
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="AManager" /> class
         /// </summary>
-        protected AManager()
+        protected AManager(Context context)
         {
+            _context = context;
             Id = Guid.NewGuid().ToString();
             Name = GetType().Name;
             Tag = GetType().Name;
@@ -57,20 +60,22 @@ namespace Alis.Core.Ecs.System.Manager
         /// <param name="name">The name</param>
         /// <param name="tag">The tag</param>
         /// <param name="isEnable">The is enable</param>
+        /// <param name="context"></param>
         [JsonConstructor]
-        protected AManager(string id, string name, string tag, bool isEnable)
+        protected AManager(string id, string name, string tag, bool isEnable, Context context)
         {
             Id = id;
             Name = name;
             Tag = tag;
             IsEnable = isEnable;
+            _context = context;
         }
 
         /// <summary>
         ///     Gets or sets the value of the context
         /// </summary>
         [JsonPropertyName("_Context_", true, true)]
-        protected Context Context => VideoGame.GetContext();
+        protected Context Context => _context;
 
         /// <summary>
         ///     Gets or sets the value of the is enable

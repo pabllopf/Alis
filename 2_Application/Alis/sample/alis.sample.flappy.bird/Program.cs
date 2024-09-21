@@ -51,7 +51,7 @@ namespace Alis.Sample.Flappy.Bird
         public static void Main(string[] args)
         {
             VideoGame game = VideoGame
-                .Builder()
+                .Create()
                 .Settings(setting => setting
                     .General(general => general
                         .Name("Flappy Bird 2")

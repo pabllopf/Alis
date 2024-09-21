@@ -27,14 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Threading;
 using Alis.Core.Aspect.Data.Json;
-using Alis.Core.Aspect.Time;
 using Alis.Core.Ecs.System.Manager.Audio;
 using Alis.Core.Ecs.System.Manager.Graphic;
 using Alis.Core.Ecs.System.Manager.Input;
 using Alis.Core.Ecs.System.Manager.Network;
 using Alis.Core.Ecs.System.Manager.Physic;
 using Alis.Core.Ecs.System.Manager.Scene;
+using Alis.Core.Ecs.System.Manager.Time;
 using Alis.Core.Ecs.System.Setting;
 
 namespace Alis.Core.Ecs.System
@@ -51,13 +53,13 @@ namespace Alis.Core.Ecs.System
         public Context()
         {
             Settings = new Settings();
-            TimeManager = new TimeManager();
-            AudioManager = new AudioManager();
-            GraphicManager = new GraphicManager();
-            InputManager = new InputManager();
-            NetworkManager = new NetworkManager();
-            PhysicManager = new PhysicManager();
-            SceneManager = new SceneManager();
+            TimeManager = new TimeManager(this);
+            AudioManager = new AudioManager(this);
+            GraphicManager = new GraphicManager(this);
+            InputManager = new InputManager(this);
+            NetworkManager = new NetworkManager(this);
+            PhysicManager = new PhysicManager(this);
+            SceneManager = new SceneManager(this);
         }
 
         /// <summary>
@@ -67,13 +69,13 @@ namespace Alis.Core.Ecs.System
         public Context(Settings settings)
         {
             Settings = settings;
-            TimeManager = new TimeManager();
-            AudioManager = new AudioManager();
-            GraphicManager = new GraphicManager();
-            InputManager = new InputManager();
-            NetworkManager = new NetworkManager();
-            PhysicManager = new PhysicManager();
-            SceneManager = new SceneManager();
+            TimeManager = new TimeManager(this);
+            AudioManager = new AudioManager(this);
+            GraphicManager = new GraphicManager(this);
+            InputManager = new InputManager(this);
+            NetworkManager = new NetworkManager(this);
+            PhysicManager = new PhysicManager(this);
+            SceneManager = new SceneManager(this);
         }
 
         /// <summary>
@@ -85,70 +87,49 @@ namespace Alis.Core.Ecs.System
         public Context(Settings settings, SceneManager sceneManager)
         {
             Settings = settings;
-            TimeManager = new TimeManager();
-            AudioManager = new AudioManager();
-            GraphicManager = new GraphicManager();
-            InputManager = new InputManager();
-            NetworkManager = new NetworkManager();
-            PhysicManager = new PhysicManager();
+            TimeManager = new TimeManager(this);
+            AudioManager = new AudioManager(this);
+            GraphicManager = new GraphicManager(this);
+            InputManager = new InputManager(this);
+            NetworkManager = new NetworkManager(this);
+            PhysicManager = new PhysicManager(this);
             SceneManager = sceneManager;
         }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Context" /> class
-        /// </summary>
-        /// <param name="settings">The settings</param>
-        /// <param name="audioManager">The audio manager</param>
-        /// <param name="graphicManager">The graphic manager</param>
-        /// <param name="inputManager">The input manager</param>
-        /// <param name="networkManager">The network manager</param>
-        /// <param name="physicManager">The physic manager</param>
-        /// <param name="sceneManager">The scene manager</param>
-        public Context(Settings settings, AudioManager audioManager, GraphicManager graphicManager, InputManager inputManager, NetworkManager networkManager, PhysicManager physicManager, SceneManager sceneManager)
-        {
-            Settings = settings;
-            AudioManager = audioManager;
-            GraphicManager = graphicManager;
-            InputManager = inputManager;
-            NetworkManager = networkManager;
-            PhysicManager = physicManager;
-            SceneManager = sceneManager;
-        }
-
+        
         /// <summary>
         ///     Gets the value of the audio manager
         /// </summary>
-        [JsonPropertyName("_AudioManager_", true, true)]
+        [JsonIgnore]
         public AudioManager AudioManager { get; set; }
 
         /// <summary>
         ///     Gets the value of the graphic manager
         /// </summary>
-        [JsonPropertyName("_GraphicManager_", true, true)]
+        [JsonIgnore]
         public GraphicManager GraphicManager { get; set; }
 
         /// <summary>
         ///     Gets the value of the input manager
         /// </summary>
-        [JsonPropertyName("_InputManager_", true, true)]
+        [JsonIgnore]
         public InputManager InputManager { get; set; }
 
         /// <summary>
         ///     Gets the value of the network manager
         /// </summary>
-        [JsonPropertyName("_NetworkManager_", true, true)]
+        [JsonIgnore]
         public NetworkManager NetworkManager { get; set; }
 
         /// <summary>
         ///     Gets the value of the physic manager
         /// </summary>
-        [JsonPropertyName("_PhysicManager_", true, true)]
+        [JsonIgnore]
         public PhysicManager PhysicManager { get; set; }
 
         /// <summary>
         ///     Gets the value of the time manager
         /// </summary>
-        [JsonPropertyName("_TimeManager_", true, true)]
+        [JsonIgnore]
         public TimeManager TimeManager { get; set; }
 
         /// <summary>
@@ -162,202 +143,7 @@ namespace Alis.Core.Ecs.System
         /// </summary>
         [JsonPropertyName("_SceneManager_")]
         public SceneManager SceneManager { get; set; }
-
-        /// <summary>
-        ///     Ons the exit
-        /// </summary>
-        public void OnExit()
-        {
-            AudioManager.OnExit();
-            GraphicManager.OnExit();
-            InputManager.OnExit();
-            NetworkManager.OnExit();
-            PhysicManager.OnExit();
-            SceneManager.OnExit();
-        }
-
-        /// <summary>
-        ///     Ons the stop
-        /// </summary>
-        public void OnStop()
-        {
-            AudioManager.OnStop();
-            GraphicManager.OnStop();
-            InputManager.OnStop();
-            NetworkManager.OnStop();
-            PhysicManager.OnStop();
-            SceneManager.OnStop();
-        }
-
-        /// <summary>
-        ///     Ons the init
-        /// </summary>
-        public void OnInit()
-        {
-            AudioManager.OnInit();
-            GraphicManager.OnInit();
-            InputManager.OnInit();
-            NetworkManager.OnInit();
-            PhysicManager.OnInit();
-            SceneManager.OnInit();
-        }
-
-        /// <summary>
-        ///     Ons the awake
-        /// </summary>
-        public void OnAwake()
-        {
-            AudioManager.OnAwake();
-            GraphicManager.OnAwake();
-            InputManager.OnAwake();
-            NetworkManager.OnAwake();
-            PhysicManager.OnAwake();
-            SceneManager.OnAwake();
-        }
-
-        /// <summary>
-        ///     Ons the start
-        /// </summary>
-        public void OnStart()
-        {
-            AudioManager.OnStart();
-            GraphicManager.OnStart();
-            InputManager.OnStart();
-            NetworkManager.OnStart();
-            PhysicManager.OnStart();
-            SceneManager.OnStart();
-        }
-
-        /// <summary>
-        ///     Ons the dispatch events
-        /// </summary>
-        public void OnDispatchEvents()
-        {
-            AudioManager.OnDispatchEvents();
-            GraphicManager.OnDispatchEvents();
-            InputManager.OnDispatchEvents();
-            NetworkManager.OnDispatchEvents();
-            PhysicManager.OnDispatchEvents();
-            SceneManager.OnDispatchEvents();
-        }
-
-        /// <summary>
-        ///     Ons the before update
-        /// </summary>
-        public void OnBeforeUpdate()
-        {
-            AudioManager.OnBeforeUpdate();
-            GraphicManager.OnBeforeUpdate();
-            InputManager.OnBeforeUpdate();
-            NetworkManager.OnBeforeUpdate();
-            PhysicManager.OnBeforeUpdate();
-            SceneManager.OnBeforeUpdate();
-        }
-
-        /// <summary>
-        ///     Ons the update
-        /// </summary>
-        public void OnUpdate()
-        {
-            AudioManager.OnUpdate();
-            GraphicManager.OnUpdate();
-            InputManager.OnUpdate();
-            NetworkManager.OnUpdate();
-            PhysicManager.OnUpdate();
-            SceneManager.OnUpdate();
-        }
-
-        /// <summary>
-        ///     Ons the after update
-        /// </summary>
-        public void OnAfterUpdate()
-        {
-            AudioManager.OnAfterUpdate();
-            GraphicManager.OnAfterUpdate();
-            InputManager.OnAfterUpdate();
-            NetworkManager.OnAfterUpdate();
-            PhysicManager.OnAfterUpdate();
-            SceneManager.OnAfterUpdate();
-        }
-
-        /// <summary>
-        ///     Ons the before fixed update
-        /// </summary>
-        public void OnBeforeFixedUpdate()
-        {
-            AudioManager.OnBeforeFixedUpdate();
-            GraphicManager.OnBeforeFixedUpdate();
-            InputManager.OnBeforeFixedUpdate();
-            NetworkManager.OnBeforeFixedUpdate();
-            PhysicManager.OnBeforeFixedUpdate();
-            SceneManager.OnBeforeFixedUpdate();
-        }
-
-        /// <summary>
-        ///     Ons the fixed update
-        /// </summary>
-        public void OnFixedUpdate()
-        {
-            AudioManager.OnFixedUpdate();
-            GraphicManager.OnFixedUpdate();
-            InputManager.OnFixedUpdate();
-            NetworkManager.OnFixedUpdate();
-            PhysicManager.OnFixedUpdate();
-            SceneManager.OnFixedUpdate();
-        }
-
-        /// <summary>
-        ///     Ons the after fixed update
-        /// </summary>
-        public void OnAfterFixedUpdate()
-        {
-            AudioManager.OnAfterFixedUpdate();
-            GraphicManager.OnAfterFixedUpdate();
-            InputManager.OnAfterFixedUpdate();
-            NetworkManager.OnAfterFixedUpdate();
-            PhysicManager.OnAfterFixedUpdate();
-            SceneManager.OnAfterFixedUpdate();
-        }
-
-        /// <summary>
-        ///     Ons the draw
-        /// </summary>
-        public void OnDraw()
-        {
-            AudioManager.OnDraw();
-            GraphicManager.OnDraw();
-            InputManager.OnDraw();
-            NetworkManager.OnDraw();
-            PhysicManager.OnDraw();
-            SceneManager.OnDraw();
-        }
-
-        /// <summary>
-        ///     Ons the gui
-        /// </summary>
-        public void OnGui()
-        {
-            AudioManager.OnGui();
-            GraphicManager.OnGui();
-            InputManager.OnGui();
-            NetworkManager.OnGui();
-            PhysicManager.OnGui();
-            SceneManager.OnGui();
-        }
-
-        /// <summary>
-        ///     Ons the calculate
-        /// </summary>
-        public void OnCalculate()
-        {
-            AudioManager.OnCalculate();
-            GraphicManager.OnCalculate();
-            InputManager.OnCalculate();
-            NetworkManager.OnCalculate();
-            PhysicManager.OnCalculate();
-            SceneManager.OnCalculate();
-        }
-
+        
         /// <summary>
         ///     Exits this instance
         /// </summary>
@@ -368,18 +154,252 @@ namespace Alis.Core.Ecs.System
         /// </summary>
         /// <param name="sceneManager">The scene manager</param>
         public void SetSceneManager(SceneManager sceneManager) => SceneManager = sceneManager;
+        
+          /// <summary>
+        ///     Run program
+        /// </summary>
+        public void Run()
+        {
+            TimeManager.OnInit();
+            AudioManager.OnInit();
+            GraphicManager.OnInit();
+            InputManager.OnInit();
+            NetworkManager.OnInit();
+            PhysicManager.OnInit();
+            SceneManager.OnInit();
+            
+           
+            TimeManager.OnAwake();
+            AudioManager.OnAwake();
+            GraphicManager.OnAwake();
+            InputManager.OnAwake(); 
+            NetworkManager.OnAwake();
+            PhysicManager.OnAwake();
+            SceneManager.OnAwake();
+            
+   
+            TimeManager.OnStart();
+            AudioManager.OnStart();
+            GraphicManager.OnStart();
+            InputManager.OnStart();
+            NetworkManager.OnStart();
+            PhysicManager.OnStart();
+            SceneManager.OnStart();
+
+            double targetFrameDuration = 1 / Settings.Graphic.TargetFrames;
+
+            double currentTime = TimeManager.Clock.Elapsed.TotalSeconds;
+            float accumulator = 0;
+
+            // Variables for calculating FPS
+            double lastTime = TimeManager.Clock.Elapsed.TotalSeconds;
+            TimeManager.FrameCount = 0;
+            TimeManager.TotalFrames = 0;
+            TimeManager.AverageFrames = 0;
+
+            // Variables for calculating average FPS
+            double totalTime = 0;
+
+            // Variables for SmoothDeltaTime
+            float lastDeltaTime = 0f;
+            float smoothDeltaTimeSum = 0f;
+            int smoothDeltaTimeCount = 0;
+            
+            while (TimeManager.IsRunning)
+            {
+                double frameStartTime = TimeManager.Clock.Elapsed.TotalSeconds;
+                double newTime = frameStartTime;
+                TimeManager.DeltaTime = (float) (newTime - currentTime);
+
+                // Update TimeManager properties
+                TimeManager.UnscaledDeltaTime = (float) (newTime - currentTime);
+                TimeManager.UnscaledTime += TimeManager.UnscaledDeltaTime;
+                TimeManager.UnscaledTimeAsDouble += TimeManager.UnscaledDeltaTime;
+                TimeManager.Time = TimeManager.UnscaledTime * TimeManager.TimeScale;
+                TimeManager.TimeAsDouble = TimeManager.UnscaledTimeAsDouble * TimeManager.TimeScale;
+
+                // Update MaximumDeltaTime
+                TimeManager.MaximumDeltaTime = Math.Max(TimeManager.MaximumDeltaTime, TimeManager.DeltaTime);
+
+                currentTime = newTime;
+                accumulator += TimeManager.DeltaTime;
+
+                // Increment frame counter
+                TimeManager.FrameCount++;
+                TimeManager.TotalFrames++;
+
+                // If a second has passed since the last FPS calculation
+                if (newTime - lastTime >= 1.0)
+                {
+                    // Calculate average FPS
+                    totalTime += newTime - lastTime;
+                    TimeManager.AverageFrames = (int) (TimeManager.TotalFrames / totalTime);
+
+                    // Reset frame counter and update last time
+                    TimeManager.FrameCount = 0;
+                    lastTime = newTime;
+                }
+
+                TimeManager.OnDispatchEvents();
+                AudioManager.OnDispatchEvents();
+                GraphicManager.OnDispatchEvents();
+                InputManager.OnDispatchEvents();
+                NetworkManager.OnDispatchEvents();
+                PhysicManager.OnDispatchEvents();
+                SceneManager.OnDispatchEvents();
+                
+
+                
+                TimeManager.OnPhysicUpdate();
+                AudioManager.OnPhysicUpdate();
+                GraphicManager.OnPhysicUpdate();
+                InputManager.OnPhysicUpdate();
+                NetworkManager.OnPhysicUpdate();
+                PhysicManager.OnPhysicUpdate();
+                SceneManager.OnPhysicUpdate();
+
+                
+                TimeManager.OnBeforeUpdate();
+                AudioManager.OnBeforeUpdate();
+                GraphicManager.OnBeforeUpdate();
+                InputManager.OnBeforeUpdate();
+                NetworkManager.OnBeforeUpdate();
+                PhysicManager.OnBeforeUpdate();
+                SceneManager.OnBeforeUpdate();
+                
+             
+                TimeManager.OnUpdate();
+                AudioManager.OnUpdate();
+                GraphicManager.OnUpdate();
+                InputManager.OnUpdate();
+                NetworkManager.OnUpdate();
+                PhysicManager.OnUpdate();
+                SceneManager.OnUpdate();
+                
+           
+                TimeManager.OnAfterUpdate();
+                AudioManager.OnAfterUpdate();
+                GraphicManager.OnAfterUpdate();
+                InputManager.OnAfterUpdate();
+                NetworkManager.OnAfterUpdate();
+                PhysicManager.OnAfterUpdate();
+                SceneManager.OnAfterUpdate();
+                
+
+
+                // Run fixed methods
+                while (accumulator >= TimeManager.Configuration.FixedTimeStep)
+                {
+                    TimeManager.InFixedTimeStep = true;
+
+                    TimeManager.FixedTime += TimeManager.Configuration.FixedTimeStep;
+                    TimeManager.FixedTimeAsDouble += TimeManager.Configuration.FixedTimeStep;
+                    TimeManager.FixedDeltaTime = TimeManager.Configuration.FixedTimeStep;
+                    TimeManager.FixedUnscaledDeltaTime = TimeManager.Configuration.FixedTimeStep / TimeManager.TimeScale;
+
+                    // Update FixedUnscaledTime and FixedUnscaledTimeAsDouble
+                    TimeManager.FixedUnscaledTime += TimeManager.FixedUnscaledDeltaTime;
+                    TimeManager.FixedUnscaledTimeAsDouble += TimeManager.FixedUnscaledDeltaTime;
+
+                    
+                    TimeManager.OnBeforeFixedUpdate();
+                    AudioManager.OnBeforeFixedUpdate();
+                    GraphicManager.OnBeforeFixedUpdate();
+                    InputManager.OnBeforeFixedUpdate();
+                    NetworkManager.OnBeforeFixedUpdate();
+                    PhysicManager.OnBeforeFixedUpdate();
+                    SceneManager.OnBeforeFixedUpdate();
+                    
+                    
+                    TimeManager.OnFixedUpdate();
+                    AudioManager.OnFixedUpdate();
+                    GraphicManager.OnFixedUpdate();
+                    InputManager.OnFixedUpdate();
+                    NetworkManager.OnFixedUpdate();
+                    PhysicManager.OnFixedUpdate();
+                    SceneManager.OnFixedUpdate();
+                    
+                    
+                    TimeManager.OnAfterFixedUpdate();
+                    AudioManager.OnAfterFixedUpdate();
+                    GraphicManager.OnAfterFixedUpdate();
+                    InputManager.OnAfterFixedUpdate();
+                    NetworkManager.OnAfterFixedUpdate();
+                    PhysicManager.OnAfterFixedUpdate();
+                    SceneManager.OnAfterFixedUpdate();
+                    
+
+                    accumulator %= TimeManager.Configuration.FixedTimeStep;
+
+                    TimeManager.InFixedTimeStep = false;
+                }
+
+           
+                TimeManager.OnCalculate();
+                AudioManager.OnCalculate();
+                GraphicManager.OnCalculate();
+                InputManager.OnCalculate();
+                NetworkManager.OnCalculate();
+                PhysicManager.OnCalculate();
+                SceneManager.OnCalculate();
+                
+                TimeManager.OnDraw();
+                AudioManager.OnDraw();
+                GraphicManager.OnDraw();
+                InputManager.OnDraw();
+                NetworkManager.OnDraw();
+                PhysicManager.OnDraw();
+                SceneManager.OnDraw();
+                
+          
+                TimeManager.OnGui();
+                AudioManager.OnGui();
+                GraphicManager.OnGui();
+                InputManager.OnGui();
+                NetworkManager.OnGui();
+                PhysicManager.OnGui();
+                SceneManager.OnGui();
+
+                // Update SmoothDeltaTime
+                smoothDeltaTimeSum += TimeManager.DeltaTime - lastDeltaTime;
+                smoothDeltaTimeCount++;
+                TimeManager.SmoothDeltaTime = smoothDeltaTimeSum / smoothDeltaTimeCount;
+                lastDeltaTime = TimeManager.DeltaTime;
+                
+                // Calculate frame duration and sleep if necessary
+                double frameEndTime = TimeManager.Clock.Elapsed.TotalSeconds;
+                double frameDuration = frameEndTime - frameStartTime;
+                if (frameDuration < targetFrameDuration)
+                {
+                    Thread.Sleep((int) ((targetFrameDuration - frameDuration) * 1000));
+                }
+            }
+
+
+            TimeManager.OnStop();
+            AudioManager.OnStop();
+            GraphicManager.OnStop();
+            InputManager.OnStop();
+            NetworkManager.OnStop();
+            PhysicManager.OnStop();
+            SceneManager.OnStop();
+
+            
+            TimeManager.OnExit();
+            AudioManager.OnExit();
+            GraphicManager.OnExit();
+            InputManager.OnExit();
+            NetworkManager.OnExit();
+            PhysicManager.OnExit();
+            SceneManager.OnExit();
+        }
 
         /// <summary>
-        ///     Ons the physic update
+        /// Runs the preview
         /// </summary>
-        public void OnPhysicUpdate()
+        /// <exception cref="NotImplementedException"></exception>
+        public void RunPreview()
         {
-            AudioManager.OnPhysicUpdate();
-            GraphicManager.OnPhysicUpdate();
-            InputManager.OnPhysicUpdate();
-            NetworkManager.OnPhysicUpdate();
-            PhysicManager.OnPhysicUpdate();
-            SceneManager.OnPhysicUpdate();
         }
     }
 }

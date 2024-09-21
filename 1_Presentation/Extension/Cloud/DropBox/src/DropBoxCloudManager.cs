@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager;
 
 namespace Alis.Extension.Cloud.DropBox
@@ -38,5 +39,12 @@ namespace Alis.Extension.Cloud.DropBox
     /// <seealso cref="ICloudManager" />
     public class DropBoxCloudManager : AManager, ICloudManager
     {
+        public DropBoxCloudManager(Context context) : base(context)
+        {
+        }
+
+        public DropBoxCloudManager(string id, string name, string tag, bool isEnable, Context context) : base(id, name, tag, isEnable, context)
+        {
+        }
     }
 }
