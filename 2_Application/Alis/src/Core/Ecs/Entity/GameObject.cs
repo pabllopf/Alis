@@ -47,6 +47,9 @@ namespace Alis.Core.Ecs.Entity
     /// <seealso cref="ISerializable" />
     public class GameObject : IGameObject<AComponent>, IBuilder<GameObjectBuilder>
     {
+        /// <summary>
+        /// The context
+        /// </summary>
         private Context _context;
 
         /// <summary>
@@ -250,6 +253,14 @@ namespace Alis.Core.Ecs.Entity
             }
         }
 
+        public void OnPhysicUpdate()
+        {
+            foreach (AComponent component in Components)
+            {
+                component.OnPhysicUpdate();
+            }
+        }
+
         /// <summary>
         ///     Ons the before update
         /// </summary>
@@ -416,6 +427,10 @@ namespace Alis.Core.Ecs.Entity
             }
         }
         
+        /// <summary>
+        /// Sets the context using the specified context
+        /// </summary>
+        /// <param name="context">The context</param>
         public void SetContext(Context context)
         {
             _context = context;

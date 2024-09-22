@@ -48,8 +48,15 @@ namespace Alis.Builder.Core.Ecs.System.Manager.Scene
         /// </summary>
         private readonly SceneManager sceneManager;
 
+        /// <summary>
+        /// The context
+        /// </summary>
         private readonly Context context;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SceneManagerBuilder"/> class
+        /// </summary>
+        /// <param name="context">The context</param>
         public SceneManagerBuilder(Context context)
         {
             this.context = context;

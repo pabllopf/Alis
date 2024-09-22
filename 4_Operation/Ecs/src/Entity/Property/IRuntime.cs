@@ -53,6 +53,11 @@ namespace Alis.Core.Ecs.Entity.Property
         ///     Starts this instance
         /// </summary>
         public void OnStart();
+        
+        /// <summary>
+        /// Ons the physic update
+        /// </summary>
+        public void OnPhysicUpdate();
 
         /// <summary>
         ///     Before run the update

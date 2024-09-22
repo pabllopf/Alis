@@ -117,6 +117,9 @@ namespace Alis.Core.Ecs.Entity
         [JsonPropertyName("_GameObjects_")]
         public List<GameObject> GameObjects { get; set; }
         
+        /// <summary>
+        /// The context
+        /// </summary>
         private Context _context;
 
         /// <summary>
@@ -154,6 +157,11 @@ namespace Alis.Core.Ecs.Entity
         {
             GameObjects.ForEach(i => i.OnStart());
             
+        }
+
+        public void OnPhysicUpdate()
+        {
+            GameObjects.ForEach(i => i.OnPhysicUpdate());
         }
 
         /// <summary>
@@ -340,6 +348,10 @@ namespace Alis.Core.Ecs.Entity
             GameObjects.Clear();
         }
         
+        /// <summary>
+        /// Sets the context using the specified context
+        /// </summary>
+        /// <param name="context">The context</param>
         public void SetContext(Context context)
         {
             _context = context;

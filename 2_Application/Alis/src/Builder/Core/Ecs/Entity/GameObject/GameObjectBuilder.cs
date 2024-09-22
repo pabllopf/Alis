@@ -52,8 +52,15 @@ namespace Alis.Builder.Core.Ecs.Entity.GameObject
         /// </summary>
         private readonly Alis.Core.Ecs.Entity.GameObject gameObject = new Alis.Core.Ecs.Entity.GameObject();
 
+        /// <summary>
+        /// The context
+        /// </summary>
         private Context context;
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameObjectBuilder"/> class
+        /// </summary>
+        /// <param name="context">The context</param>
         public GameObjectBuilder(Context context)
         {
             this.context = context;
