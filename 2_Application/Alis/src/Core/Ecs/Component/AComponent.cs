@@ -101,6 +101,11 @@ namespace Alis.Core.Ecs.Component
         public virtual void OnStart() => Logger.Trace();
 
         /// <summary>
+        /// Ons the physic update
+        /// </summary>
+        public virtual void OnPhysicUpdate()=> Logger.Trace();
+
+        /// <summary>
         ///     Ons the before update
         /// </summary>
         public virtual void OnBeforeUpdate() => Logger.Trace();

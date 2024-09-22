@@ -63,6 +63,9 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         private int w;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Sprite"/> class
+        /// </summary>
         public Sprite()
         {
             NameFile = "";
@@ -71,6 +74,10 @@ namespace Alis.Core.Ecs.Component.Render
             Flips = RendererFlips.None;
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Sprite"/> class
+        /// </summary>
+        /// <param name="nameFile">The name file</param>
         public Sprite(string nameFile)
         {
             NameFile = nameFile;

@@ -46,13 +46,7 @@ namespace Alis.Core.Ecs
         /// The context
         /// </summary>
         private readonly Context _context;
-
-        /// <summary>
-        ///     Gets or sets the value of the context
-        /// </summary>
-        [JsonPropertyName("_Context_")]
-        public Context Context => _context;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="VideoGame" /> class
         /// </summary>
@@ -70,6 +64,12 @@ namespace Alis.Core.Ecs
         /// <param name="context">The context</param>
         [JsonConstructor]
         public VideoGame(Context context) => _context = context;
+        
+        /// <summary>
+        ///     Gets or sets the value of the context
+        /// </summary>
+        [JsonPropertyName("_Context_")]
+        public Context Context => _context;
 
         /// <summary>
         /// Runs this instance

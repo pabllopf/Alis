@@ -47,12 +47,30 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         /// </summary>
         public World World = new World();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PhysicManager"/> class
+        /// </summary>
+        /// <param name="context">The context</param>
         public PhysicManager(Context context) : base(context)
         {
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PhysicManager"/> class
+        /// </summary>
+        /// <param name="context">The context</param>
+        /// <param name="timeStepPhysics">The time step physics</param>
         public PhysicManager(Context context, float timeStepPhysics) : base(context) => this.timeStepPhysics = timeStepPhysics;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PhysicManager"/> class
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="name">The name</param>
+        /// <param name="tag">The tag</param>
+        /// <param name="isEnable">The is enable</param>
+        /// <param name="context">The context</param>
+        /// <param name="timeStepPhysics">The time step physics</param>
         public PhysicManager(string id, string name, string tag, bool isEnable, Context context, float timeStepPhysics) : base(id, name, tag, isEnable, context) => this.timeStepPhysics = timeStepPhysics;
 
         /// <summary>

@@ -39,6 +39,9 @@ namespace Alis.Core.Ecs.System.Manager
     /// <seealso cref="IManager" />
     public abstract class AManager : IManager
     {
+        /// <summary>
+        /// The context
+        /// </summary>
         private readonly Context _context;
         
         /// <summary>

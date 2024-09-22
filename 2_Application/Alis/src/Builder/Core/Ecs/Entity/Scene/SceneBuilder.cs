@@ -44,8 +44,15 @@ namespace Alis.Builder.Core.Ecs.Entity.Scene
         IName<SceneBuilder, string>,
         IAdd<SceneBuilder, Func<GameObjectBuilder, Alis.Core.Ecs.Entity.GameObject>>
     {
+        /// <summary>
+        /// The context
+        /// </summary>
         private readonly Context context;
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SceneBuilder"/> class
+        /// </summary>
+        /// <param name="context">The context</param>
         public SceneBuilder(Context context)
         { 
             this.context    = context;    

@@ -128,11 +128,6 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public override void OnStart()
         {
-            if (GameObject == null || Context == null)
-            {
-                return;
-            }
-
             Viewport = new RectangleI(0, 0, (int) Resolution.X, (int) Resolution.Y);
             TextureTarget = Sdl.CreateTexture(Context.GraphicManager.Renderer, Sdl.PixelFormatRgba8888, (int) TextureAccess.SdlTextureAccessTarget, Viewport.W, Viewport.H);
 

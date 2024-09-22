@@ -39,10 +39,22 @@ namespace Alis.Extension.Cloud.DropBox
     /// <seealso cref="ICloudManager" />
     public class DropBoxCloudManager : AManager, ICloudManager
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DropBoxCloudManager"/> class
+        /// </summary>
+        /// <param name="context">The context</param>
         public DropBoxCloudManager(Context context) : base(context)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DropBoxCloudManager"/> class
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="name">The name</param>
+        /// <param name="tag">The tag</param>
+        /// <param name="isEnable">The is enable</param>
+        /// <param name="context">The context</param>
         public DropBoxCloudManager(string id, string name, string tag, bool isEnable, Context context) : base(id, name, tag, isEnable, context)
         {
         }

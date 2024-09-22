@@ -36,8 +36,6 @@ using Alis.Core.Ecs;
 using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager.Scene;
 using Alis.Core.Ecs.System.Setting;
-using Alis.Core.Graphic.Sdl2;
-using Alis.Core.Graphic.Sdl2.Enums;
 
 namespace Alis.Builder.Core.Ecs.System
 {
