@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GameStub.cs
+//  File:IRunner.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,45 +27,23 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Ecs.Test
+namespace Alis.Core.Ecs.System.Operator
 {
     /// <summary>
-    ///     The game stub class
+    /// The runner interface
     /// </summary>
-    /// <seealso cref="IGame" />
-    internal class GameStub : IGame
+    public interface IRunner
     {
         /// <summary>
-        ///     Gets or sets the value of the run invoked
+        /// Runs the context
         /// </summary>
-        public bool RunInvoked { get; private set; }
-
+        /// <param name="context">The context</param>
+        void Run(Context context);
+        
         /// <summary>
-        ///     Gets or sets the value of the exit invoked
+        /// Runs the preview using the specified context
         /// </summary>
-        public bool ExitInvoked { get; private set; }
-
-        /// <summary>
-        ///     Runs this instance
-        /// </summary>
-        public void Run()
-        {
-            RunInvoked = true;
-        }
-
-        /// <summary>
-        /// Runs the preview
-        /// </summary>
-        public void RunPreview()
-        {
-        }
-
-        /// <summary>
-        ///     Exits this instance
-        /// </summary>
-        public void Exit()
-        {
-            ExitInvoked = true;
-        }
+        /// <param name="context">The context</param>
+        void RunPreview(Context context);
     }
 }

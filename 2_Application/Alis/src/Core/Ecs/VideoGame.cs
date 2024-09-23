@@ -32,6 +32,7 @@ using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Ecs.System;
+using Alis.Core.Ecs.System.Operator;
 using Alis.Core.Ecs.System.Setting;
 
 namespace Alis.Core.Ecs
@@ -46,6 +47,11 @@ namespace Alis.Core.Ecs
         /// The context
         /// </summary>
         private readonly Context _context;
+        
+        /// <summary>
+        /// The runner
+        /// </summary>
+        private readonly Runner runner = new Runner();
         
         /// <summary>
         ///     Initializes a new instance of the <see cref="VideoGame" /> class
@@ -74,12 +80,12 @@ namespace Alis.Core.Ecs
         /// <summary>
         /// Runs this instance
         /// </summary>
-        public void Run() => _context.Run();
+        public void Run() => runner.Run(_context);
 
         /// <summary>
         /// Runs the preview
         /// </summary>
-        public void RunPreview() => _context.RunPreview();
+        public void RunPreview() => runner.RunPreview(_context);
 
         /// <summary>
         /// Exits this instance
