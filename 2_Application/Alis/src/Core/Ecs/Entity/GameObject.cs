@@ -253,6 +253,9 @@ namespace Alis.Core.Ecs.Entity
             }
         }
 
+        /// <summary>
+        /// Ons the physic update
+        /// </summary>
         public void OnPhysicUpdate()
         {
             foreach (AComponent component in Components)
