@@ -111,10 +111,7 @@ namespace Alis.Core.Aspect.Sample
 
             // Create a new TimeConfiguration instance
             TimeConfiguration timeConfig = new TimeConfiguration();
-
-            // Create a new TimeManager instance
-            TimeManager timeManager = new TimeManager();
-
+            
             int i = 0;
             while (i < 1000)
             {
@@ -127,7 +124,6 @@ namespace Alis.Core.Aspect.Sample
             Logger.Info($"Elapsed time: {clock.ElapsedMilliseconds} ms");
 
             // Print some TimeManager properties
-            Logger.Info($"DeltaTime: {timeManager.DeltaTime}");
             Logger.Info($"TimeScale: {timeConfig.TimeScale}");
 
 
