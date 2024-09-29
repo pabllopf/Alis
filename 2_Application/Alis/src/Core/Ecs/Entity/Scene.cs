@@ -83,7 +83,7 @@ namespace Alis.Core.Ecs.Entity
             Id = id;
             Tag = tag;
             GameObjects = gameObjects;
-            GameObjects.ForEach(i => i.SetContext(_context));
+            GameObjects.ForEach(i => i.SetContext(Context));
         }
         
         /// <summary>
@@ -120,7 +120,8 @@ namespace Alis.Core.Ecs.Entity
         /// <summary>
         /// The context
         /// </summary>
-        private Context _context;
+        [JsonIgnore]
+        public Context Context { get; private set; }
 
         /// <summary>
         ///     Ons the enable
@@ -309,7 +310,7 @@ namespace Alis.Core.Ecs.Entity
         /// <param name="value">The component</param>
         public virtual void Add<T>(T value) where T : GameObject
         {
-            value.SetContext(_context);
+            value.SetContext(Context);
             GameObjects.Add(value);
         }
 
@@ -357,7 +358,7 @@ namespace Alis.Core.Ecs.Entity
         /// <param name="context">The context</param>
         public void SetContext(Context context)
         {
-            _context = context;
+            Context = context;
             GameObjects.ForEach(i => i.SetContext(context));
         }
     }

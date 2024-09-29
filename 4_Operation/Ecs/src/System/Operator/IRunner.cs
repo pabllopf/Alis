@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PhysicManagerBuilderTest.cs
+//  File:IRunner.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,39 +27,23 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Ecs.System.Manager.Physic;
-using Alis.Core.Ecs.System.Manager.Physic;
-using Xunit;
-
-namespace Alis.Test.Builder.Core.Ecs.System.Manager.Physic
+namespace Alis.Core.Ecs.System.Operator
 {
     /// <summary>
-    ///     The physic manager builder test class
+    /// The runner interface
     /// </summary>
-    public class PhysicManagerBuilderTest
+    public interface IRunner<in T>
     {
         /// <summary>
-        ///     Tests that physic manager builder default constructor valid input
+        /// Runs the context
         /// </summary>
-        [Fact]
-        public void PhysicManagerBuilder_DefaultConstructor_ValidInput()
-        {
-            PhysicManagerBuilder physicManagerBuilder = new PhysicManagerBuilder();
-
-            Assert.NotNull(physicManagerBuilder);
-        }
-
+        /// <param name="context">The context</param>
+        void Run(T context);
+        
         /// <summary>
-        ///     Tests that build valid input
+        /// Runs the preview using the specified context
         /// </summary>
-        [Fact]
-        public void Build_ValidInput()
-        {
-            PhysicManagerBuilder physicManagerBuilder = new PhysicManagerBuilder();
-
-            PhysicManager physicManager = physicManagerBuilder.Build();
-
-            Assert.NotNull(physicManager);
-        }
+        /// <param name="context">The context</param>
+        void RunPreview(T context);
     }
 }

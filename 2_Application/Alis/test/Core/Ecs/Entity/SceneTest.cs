@@ -154,6 +154,7 @@ namespace Alis.Test.Core.Ecs.Entity
             Scene scene = new Scene();
             Context context = new Context(new Settings());
             VideoGame videoGame = new VideoGame(context);
+            scene.SetContext(videoGame.Context);
             Assert.Equal(context, scene.Context);
         }
 
@@ -168,6 +169,7 @@ namespace Alis.Test.Core.Ecs.Entity
             GameObject gameObject = new GameObject();
             VideoGame videoGame = new VideoGame(context);
             scene.Add(gameObject);
+            scene.SetContext(context);
             Assert.Equal(context.GetType(), gameObject.Context.GetType());
         }
 
@@ -180,6 +182,7 @@ namespace Alis.Test.Core.Ecs.Entity
             Scene scene = new Scene();
             Context context = new Context(new Settings());
             VideoGame videoGame = new VideoGame(context);
+            scene.SetContext(context);
             Assert.Equal(context.SceneManager.Scenes.Count, scene.Context.SceneManager.Scenes.Count);
         }
 

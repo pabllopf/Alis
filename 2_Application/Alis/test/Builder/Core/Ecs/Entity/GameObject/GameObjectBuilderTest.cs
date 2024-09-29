@@ -28,7 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Builder.Core.Ecs.Entity.GameObject;
+using Alis.Builder.Core.Ecs.Entity.Scene;
 using Alis.Builder.Core.Ecs.Entity.Transform;
+using Alis.Builder.Core.Ecs.System;
 using Alis.Test.Builder.Core.Ecs.Entity.GameObject.Sample;
 using Xunit;
 
@@ -45,7 +47,8 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
         [Fact]
         public void GameObjectBuilder_DefaultConstructor_ValidInput()
         {
-            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder();
+            VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
+            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder(videoGameBuilder.context);
 
             Assert.NotNull(gameObjectBuilder);
         }
@@ -56,7 +59,8 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
         [Fact]
         public void Build_ValidInput()
         {
-            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder();
+            VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
+            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder(videoGameBuilder.context);
 
             Alis.Core.Ecs.Entity.GameObject gameObject = gameObjectBuilder.Build();
 
@@ -69,7 +73,8 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
         [Fact]
         public void Name_ValidInput()
         {
-            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder();
+            VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
+            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder(videoGameBuilder.context);
 
             gameObjectBuilder.Name("Test Name");
 
@@ -82,7 +87,8 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
         [Fact]
         public void Transform_ValidInput()
         {
-            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder();
+            VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
+            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder(videoGameBuilder.context);
 
             gameObjectBuilder.Transform(builder => builder.Position(1.0f, 2.0f).Rotation(45.0f).Scale(3.0f, 4.0f).Build());
         }
@@ -93,7 +99,8 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
         [Fact]
         public void WithTag_ValidInput()
         {
-            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder();
+            VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
+            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder(videoGameBuilder.context);
 
             gameObjectBuilder.WithTag("Test Tag");
 
@@ -106,7 +113,8 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
         [Fact]
         public void AddComponent_ValidInput()
         {
-            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder();
+            VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
+            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder(videoGameBuilder.context);
 
             gameObjectBuilder.AddComponent(new TestComponent());
 
@@ -119,7 +127,8 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
         [Fact]
         public void Name_ShouldSetNameOfGameObject()
         {
-            GameObjectBuilder builder = new GameObjectBuilder();
+            VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
+            GameObjectBuilder builder = new GameObjectBuilder(videoGameBuilder.context);
             string name = "TestName";
 
             builder.Name(name);
@@ -133,7 +142,8 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
         [Fact]
         public void Transform_ShouldSetTransformOfGameObject()
         {
-            GameObjectBuilder builder = new GameObjectBuilder();
+            VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
+            GameObjectBuilder builder = new GameObjectBuilder(videoGameBuilder.context);
             Alis.Core.Aspect.Math.Transform transform = new TransformBuilder().Build();
 
             builder.Transform(_ => transform);
@@ -147,7 +157,8 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
         [Fact]
         public void WithTag_ShouldSetTagOfGameObject()
         {
-            GameObjectBuilder builder = new GameObjectBuilder();
+            VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
+            GameObjectBuilder builder = new GameObjectBuilder(videoGameBuilder.context);
             string tag = "TestTag";
 
             builder.WithTag(tag);

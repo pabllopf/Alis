@@ -32,6 +32,7 @@ using System.Net.Mime;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Component.Render;
+using Alis.Core.Ecs.Entity;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Xunit;
 
@@ -49,7 +50,11 @@ namespace Alis.Test.Core.Ecs.Component.Render
         public void OnInit_ValidInput()
         {
             VideoGame videoGame = new VideoGame();
-            Sprite sprite = new Sprite(new MediaTypeNames.Image("dino_assets.png"));
+            Sprite sprite = new Sprite("dino_assets.png");
+            GameObject gameObject = new GameObject();
+            gameObject.SetContext(videoGame.Context);
+            sprite.Attach(gameObject);
+            sprite.OnStart();
             sprite.OnInit();
         }
 
@@ -60,7 +65,11 @@ namespace Alis.Test.Core.Ecs.Component.Render
         public void OnAwake_ValidInput()
         {
             VideoGame videoGame = new VideoGame();
-            Sprite sprite = new Sprite(new MediaTypeNames.Image("dino_assets.png"));
+            Sprite sprite = new Sprite("dino_assets.png");
+            GameObject gameObject = new GameObject();
+            gameObject.SetContext(videoGame.Context);
+            sprite.Attach(gameObject);
+            sprite.OnStart();
             sprite.OnAwake();
         }
 
@@ -71,7 +80,11 @@ namespace Alis.Test.Core.Ecs.Component.Render
         public void OnExit_ValidInput()
         {
             VideoGame videoGame = new VideoGame();
-            Sprite sprite = new Sprite(new MediaTypeNames.Image("dino_assets.png"));
+            Sprite sprite = new Sprite("dino_assets.png");
+            GameObject gameObject = new GameObject();
+            gameObject.SetContext(videoGame.Context);
+            sprite.Attach(gameObject);
+            sprite.OnStart();
             sprite.OnExit();
         }
 
@@ -82,7 +95,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
         public void Render_ValidInput()
         {
             VideoGame videoGame = new VideoGame();
-            Sprite sprite = new Sprite(new MediaTypeNames.Image("dino_assets.png"));
+            Sprite sprite = new Sprite("dino_assets.png");
             IntPtr renderer = IntPtr.Zero; // You would need to initialize a valid renderer here
             Camera camera = new Camera(); // You would need to initialize a valid camera here
         }
@@ -94,7 +107,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
         public void RenderWithoutCamera_ValidInput()
         {
             VideoGame videoGame = new VideoGame();
-            Sprite sprite = new Sprite(new MediaTypeNames.Image("dino_assets.png"));
+            Sprite sprite = new Sprite("dino_assets.png");
             IntPtr renderer = IntPtr.Zero;
         }
 

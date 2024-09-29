@@ -52,14 +52,7 @@ namespace Alis.Test.Core.Ecs
         [Fact]
         public void IsRunning_SetValue_ShouldChangeIsRunning()
         {
-            VideoGame videoGame = new VideoGame(
-                new Settings(),
-                new AudioManager(),
-                new GraphicManager(),
-                new InputManager(),
-                new NetworkManager(),
-                new PhysicManager(),
-                new SceneManager());
+            VideoGame videoGame = new VideoGame();
 
             videoGame.Context.TimeManager.IsRunning = false;
 
@@ -83,17 +76,9 @@ namespace Alis.Test.Core.Ecs
         [Fact]
         public void SetContext_ShouldSetContext()
         {
-            VideoGame videoGame = new VideoGame(
-                new Settings(),
-                new AudioManager(),
-                new GraphicManager(),
-                new InputManager(),
-                new NetworkManager(),
-                new PhysicManager(),
-                new SceneManager());
             Context newContext = new Context(new Settings());
 
-            VideoGame.SetContext(newContext);
+            VideoGame videoGame = new VideoGame(newContext);
 
             Assert.Equal(newContext.GetType(), videoGame.Context.GetType());
         }

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Builder.Core.Ecs.Entity.Scene;
+using Alis.Builder.Core.Ecs.System;
 using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.Entity.Scene
@@ -43,7 +44,8 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Scene
         [Fact]
         public void SceneBuilder_DefaultConstructor_ValidInput()
         {
-            SceneBuilder sceneBuilder = new SceneBuilder();
+            VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
+            SceneBuilder sceneBuilder = new SceneBuilder(videoGameBuilder.context);
 
             Assert.NotNull(sceneBuilder);
         }
@@ -54,7 +56,8 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Scene
         [Fact]
         public void Build_ValidInput()
         {
-            SceneBuilder sceneBuilder = new SceneBuilder();
+            VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
+            SceneBuilder sceneBuilder = new SceneBuilder(videoGameBuilder.context);
 
             Alis.Core.Ecs.Entity.Scene scene = sceneBuilder.Build();
 
@@ -67,7 +70,8 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Scene
         [Fact]
         public void Name_ValidInput()
         {
-            SceneBuilder sceneBuilder = new SceneBuilder();
+            VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
+            SceneBuilder sceneBuilder = new SceneBuilder(videoGameBuilder.context);
 
             sceneBuilder.Name("Test Name");
 

@@ -30,6 +30,7 @@
 using System;
 using Alis.Builder.Core.Ecs.Entity.Scene;
 using Alis.Builder.Core.Ecs.System.Manager.Scene;
+using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager.Scene;
 using Xunit;
 
@@ -46,7 +47,7 @@ namespace Alis.Test.Builder.Core.Ecs.System.Manager.Scene
         [Fact]
         public void SceneManagerBuilder_DefaultConstructor_ValidInput()
         {
-            SceneManagerBuilder sceneManagerBuilder = new SceneManagerBuilder();
+            SceneManagerBuilder sceneManagerBuilder = new SceneManagerBuilder(new Context());
 
             Assert.NotNull(sceneManagerBuilder);
         }
@@ -57,7 +58,7 @@ namespace Alis.Test.Builder.Core.Ecs.System.Manager.Scene
         [Fact]
         public void Add_ValidInput()
         {
-            SceneManagerBuilder sceneManagerBuilder = new SceneManagerBuilder();
+            SceneManagerBuilder sceneManagerBuilder = new SceneManagerBuilder(new Context());
             Func<SceneBuilder, Alis.Core.Ecs.Entity.Scene> sceneFunc = sb => sb.Build();
 
             sceneManagerBuilder.Add<SceneManagerBuilder>(sceneFunc);
@@ -73,7 +74,7 @@ namespace Alis.Test.Builder.Core.Ecs.System.Manager.Scene
         [Fact]
         public void Build_ValidInput()
         {
-            SceneManagerBuilder sceneManagerBuilder = new SceneManagerBuilder();
+            SceneManagerBuilder sceneManagerBuilder = new SceneManagerBuilder(new Context());
 
             SceneManager sceneManager = sceneManagerBuilder.Build();
 

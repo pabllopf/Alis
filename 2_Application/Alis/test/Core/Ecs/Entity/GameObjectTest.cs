@@ -108,8 +108,11 @@ namespace Alis.Test.Core.Ecs.Entity
         [Fact]
         public void Test_GameObject_SetContext()
         {
+            VideoGame videoGame = new VideoGame();
             // Arrange
             GameObject gameObject = new GameObject();
+            
+            gameObject.SetContext(videoGame.Context);
 
             // Assert
             Assert.NotNull(gameObject.Context);
@@ -240,16 +243,8 @@ namespace Alis.Test.Core.Ecs.Entity
         public void SetContext_ShouldSetContext()
         {
             GameObject gameObject = new GameObject();
-            Context context = new Context(
-                new Settings(),
-                new AudioManager(),
-                new GraphicManager(),
-                new InputManager(),
-                new NetworkManager(),
-                new PhysicManager(),
-                new SceneManager()
-            );
-            VideoGame game = new VideoGame(context);
+            VideoGame game = new VideoGame();
+            gameObject.SetContext(game.Context);
 
             Assert.NotNull(gameObject.Context);
         }

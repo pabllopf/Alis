@@ -51,6 +51,16 @@ namespace Alis.Core.Ecs.System.Manager.Time
         public TimeConfiguration Configuration { get; } = new TimeConfiguration();
 
         /// <summary>
+        /// The one second
+        /// </summary>
+        public const double OneSecond = 1.0;
+        
+        /// <summary>
+        /// The milliseconds in second
+        /// </summary>
+        public const int MillisecondsInSecond = 1000;
+        
+        /// <summary>
         ///     Gets the value of the clock
         /// </summary>
         public Clock Clock { get; set; }

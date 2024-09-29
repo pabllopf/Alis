@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs;
 using Alis.Test.Core.Ecs.System.Manager.Samples;
 using Xunit;
 
@@ -43,7 +44,8 @@ namespace Alis.Test.Core.Ecs.System.Manager
         [Fact]
         public void Test_OnEnable()
         {
-            MockManager manager = new MockManager();
+            VideoGame videoGame = new VideoGame();
+            MockManager manager = new MockManager(videoGame.Context);
             manager.OnEnable();
         }
 
@@ -53,7 +55,8 @@ namespace Alis.Test.Core.Ecs.System.Manager
         [Fact]
         public void Test_OnInit()
         {
-            MockManager manager = new MockManager();
+           VideoGame videoGame = new VideoGame();
+            MockManager manager = new MockManager(videoGame.Context);
             manager.OnInit();
         }
 
@@ -63,7 +66,8 @@ namespace Alis.Test.Core.Ecs.System.Manager
         [Fact]
         public void Test_OnAwake()
         {
-            MockManager manager = new MockManager();
+           VideoGame videoGame = new VideoGame();
+            MockManager manager = new MockManager(videoGame.Context);
             manager.OnAwake();
         }
 
@@ -73,7 +77,8 @@ namespace Alis.Test.Core.Ecs.System.Manager
         [Fact]
         public void Test_OnStart()
         {
-            MockManager manager = new MockManager();
+           VideoGame videoGame = new VideoGame();
+            MockManager manager = new MockManager(videoGame.Context);
             manager.OnStart();
         }
 
@@ -83,7 +88,8 @@ namespace Alis.Test.Core.Ecs.System.Manager
         [Fact]
         public void Test_OnBeforeUpdate()
         {
-            MockManager manager = new MockManager();
+           VideoGame videoGame = new VideoGame();
+            MockManager manager = new MockManager(videoGame.Context);
             manager.OnBeforeUpdate();
         }
 
@@ -93,7 +99,8 @@ namespace Alis.Test.Core.Ecs.System.Manager
         [Fact]
         public void Test_OnUpdate()
         {
-            MockManager manager = new MockManager();
+           VideoGame videoGame = new VideoGame();
+            MockManager manager = new MockManager(videoGame.Context);
             manager.OnUpdate();
         }
 
@@ -103,7 +110,8 @@ namespace Alis.Test.Core.Ecs.System.Manager
         [Fact]
         public void Test_OnAfterUpdate()
         {
-            MockManager manager = new MockManager();
+           VideoGame videoGame = new VideoGame();
+            MockManager manager = new MockManager(videoGame.Context);
             manager.OnAfterUpdate();
         }
 
@@ -113,7 +121,8 @@ namespace Alis.Test.Core.Ecs.System.Manager
         [Fact]
         public void Test_OnBeforeFixedUpdate()
         {
-            MockManager manager = new MockManager();
+           VideoGame videoGame = new VideoGame();
+            MockManager manager = new MockManager(videoGame.Context);
             manager.OnBeforeFixedUpdate();
         }
 
@@ -123,7 +132,8 @@ namespace Alis.Test.Core.Ecs.System.Manager
         [Fact]
         public void Test_OnFixedUpdate()
         {
-            MockManager manager = new MockManager();
+           VideoGame videoGame = new VideoGame();
+            MockManager manager = new MockManager(videoGame.Context);
             manager.OnFixedUpdate();
         }
 
@@ -133,7 +143,8 @@ namespace Alis.Test.Core.Ecs.System.Manager
         [Fact]
         public void Test_OnAfterFixedUpdate()
         {
-            MockManager manager = new MockManager();
+           VideoGame videoGame = new VideoGame();
+            MockManager manager = new MockManager(videoGame.Context);
             manager.OnAfterFixedUpdate();
         }
 
@@ -143,7 +154,8 @@ namespace Alis.Test.Core.Ecs.System.Manager
         [Fact]
         public void Test_OnDispatchEvents()
         {
-            MockManager manager = new MockManager();
+           VideoGame videoGame = new VideoGame();
+            MockManager manager = new MockManager(videoGame.Context);
             manager.OnDispatchEvents();
         }
 
@@ -153,7 +165,8 @@ namespace Alis.Test.Core.Ecs.System.Manager
         [Fact]
         public void Test_OnCalculate()
         {
-            MockManager manager = new MockManager();
+           VideoGame videoGame = new VideoGame();
+            MockManager manager = new MockManager(videoGame.Context);
             manager.OnCalculate();
         }
 
@@ -163,7 +176,8 @@ namespace Alis.Test.Core.Ecs.System.Manager
         [Fact]
         public void Test_OnDraw()
         {
-            MockManager manager = new MockManager();
+           VideoGame videoGame = new VideoGame();
+            MockManager manager = new MockManager(videoGame.Context);
             manager.OnDraw();
         }
 
@@ -173,7 +187,8 @@ namespace Alis.Test.Core.Ecs.System.Manager
         [Fact]
         public void Test_OnGui()
         {
-            MockManager manager = new MockManager();
+           VideoGame videoGame = new VideoGame();
+            MockManager manager = new MockManager(videoGame.Context);
             manager.OnGui();
         }
 
@@ -183,7 +198,8 @@ namespace Alis.Test.Core.Ecs.System.Manager
         [Fact]
         public void Test_OnDisable()
         {
-            MockManager manager = new MockManager();
+           VideoGame videoGame = new VideoGame();
+            MockManager manager = new MockManager(videoGame.Context);
             manager.OnDisable();
         }
 
@@ -193,7 +209,8 @@ namespace Alis.Test.Core.Ecs.System.Manager
         [Fact]
         public void Test_OnReset()
         {
-            MockManager manager = new MockManager();
+           VideoGame videoGame = new VideoGame();
+            MockManager manager = new MockManager(videoGame.Context);
             manager.OnReset();
         }
 
@@ -203,7 +220,8 @@ namespace Alis.Test.Core.Ecs.System.Manager
         [Fact]
         public void Test_OnStop()
         {
-            MockManager manager = new MockManager();
+           VideoGame videoGame = new VideoGame();
+            MockManager manager = new MockManager(videoGame.Context);
             manager.OnStop();
         }
 
@@ -213,7 +231,8 @@ namespace Alis.Test.Core.Ecs.System.Manager
         [Fact]
         public void Test_OnExit()
         {
-            MockManager manager = new MockManager();
+           VideoGame videoGame = new VideoGame();
+            MockManager manager = new MockManager(videoGame.Context);
             manager.OnExit();
         }
 
@@ -223,7 +242,8 @@ namespace Alis.Test.Core.Ecs.System.Manager
         [Fact]
         public void Test_OnDestroy()
         {
-            MockManager manager = new MockManager();
+           VideoGame videoGame = new VideoGame();
+            MockManager manager = new MockManager(videoGame.Context);
             manager.OnDestroy();
         }
 
@@ -233,7 +253,8 @@ namespace Alis.Test.Core.Ecs.System.Manager
         [Fact]
         public void IsEnable_PropertySet_GetReturnsCorrectValue()
         {
-            MockManager manager = new MockManager();
+           VideoGame videoGame = new VideoGame();
+            MockManager manager = new MockManager(videoGame.Context);
             manager.IsEnable = true;
             Assert.True(manager.IsEnable);
         }
@@ -244,7 +265,8 @@ namespace Alis.Test.Core.Ecs.System.Manager
         [Fact]
         public void Name_PropertySet_GetReturnsCorrectValue()
         {
-            MockManager manager = new MockManager();
+           VideoGame videoGame = new VideoGame();
+            MockManager manager = new MockManager(videoGame.Context);
             manager.Name = "TestManager";
             Assert.Equal("TestManager", manager.Name);
         }
@@ -255,7 +277,8 @@ namespace Alis.Test.Core.Ecs.System.Manager
         [Fact]
         public void Id_PropertySet_GetReturnsCorrectValue()
         {
-            MockManager manager = new MockManager();
+           VideoGame videoGame = new VideoGame();
+            MockManager manager = new MockManager(videoGame.Context);
             manager.Id = "TestId";
             Assert.Equal("TestId", manager.Id);
         }
@@ -266,7 +289,8 @@ namespace Alis.Test.Core.Ecs.System.Manager
         [Fact]
         public void Tag_PropertySet_GetReturnsCorrectValue()
         {
-            MockManager manager = new MockManager();
+           VideoGame videoGame = new VideoGame();
+            MockManager manager = new MockManager(videoGame.Context);
             manager.Tag = "TestTag";
             Assert.Equal("TestTag", manager.Tag);
         }

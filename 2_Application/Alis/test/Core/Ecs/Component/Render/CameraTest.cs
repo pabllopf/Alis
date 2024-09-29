@@ -60,7 +60,11 @@ namespace Alis.Test.Core.Ecs.Component.Render
         [Fact]
         public void OnStart_InitializesCorrectly()
         {
+            VideoGame videoGame = new VideoGame();
             Camera camera = new Camera();
+            GameObject gameObject = new GameObject();
+            gameObject.SetContext(videoGame.Context);
+            camera.Attach(gameObject);
             camera.OnStart();
         }
 
@@ -70,8 +74,11 @@ namespace Alis.Test.Core.Ecs.Component.Render
         [Fact]
         public void OnUpdate_UpdatesViewportPosition()
         {
+            VideoGame videoGame = new VideoGame();
             Camera camera = new Camera();
-            camera.GameObject = new GameObject();
+            GameObject gameObject = new GameObject();
+            gameObject.SetContext(videoGame.Context);
+            camera.Attach(gameObject);
             camera.OnStart();
             camera.OnUpdate();
             Assert.Equal(0, camera.Viewport.X);
@@ -86,6 +93,9 @@ namespace Alis.Test.Core.Ecs.Component.Render
         {
             VideoGame videoGame = new VideoGame();
             Camera camera = new Camera();
+            GameObject gameObject = new GameObject();
+            gameObject.SetContext(videoGame.Context);
+            camera.Attach(gameObject);
             camera.OnStart();
             camera.OnExit();
         }

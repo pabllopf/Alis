@@ -50,7 +50,7 @@ namespace Alis.Builder.Core.Ecs.System
     {
         /// <summary>Gets or sets the video game.</summary>
         /// <value>The video game.</value>
-        private readonly Context context = new Context(new Settings());
+        public readonly Context context = new Context(new Settings());
         
         /// <summary>Builds this instance.</summary>
         /// <returns></returns>

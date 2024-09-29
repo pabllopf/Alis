@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs;
 using Alis.Core.Ecs.System.Manager.Scene;
 using Xunit;
 
@@ -43,7 +44,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void OnEnable_ValidInput()
         {
-            SceneManager sceneManager = new SceneManager();
+           VideoGame videoGame = new VideoGame();
+            SceneManager sceneManager = new SceneManager(videoGame.Context);
             sceneManager.OnEnable();
         }
 
@@ -53,7 +55,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void OnInit_ValidInput()
         {
-            SceneManager sceneManager = new SceneManager();
+           VideoGame videoGame = new VideoGame();
+            SceneManager sceneManager = new SceneManager(videoGame.Context);
             sceneManager.OnInit();
         }
 
@@ -63,7 +66,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void OnAwake_ValidInput()
         {
-            SceneManager sceneManager = new SceneManager();
+           VideoGame videoGame = new VideoGame();
+            SceneManager sceneManager = new SceneManager(videoGame.Context);
             sceneManager.OnAwake();
         }
 
@@ -73,7 +77,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void OnStart_ValidInput()
         {
-            SceneManager sceneManager = new SceneManager();
+           VideoGame videoGame = new VideoGame();
+            SceneManager sceneManager = new SceneManager(videoGame.Context);
             sceneManager.OnStart();
         }
 
@@ -83,7 +88,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void OnBeforeUpdate_ValidInput()
         {
-            SceneManager sceneManager = new SceneManager();
+           VideoGame videoGame = new VideoGame();
+            SceneManager sceneManager = new SceneManager(videoGame.Context);
             sceneManager.OnBeforeUpdate();
         }
 
@@ -93,7 +99,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void OnUpdate_ValidInput()
         {
-            SceneManager sceneManager = new SceneManager();
+           VideoGame videoGame = new VideoGame();
+            SceneManager sceneManager = new SceneManager(videoGame.Context);
             sceneManager.OnUpdate();
         }
 
@@ -103,7 +110,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void OnAfterUpdate_ValidInput()
         {
-            SceneManager sceneManager = new SceneManager();
+           VideoGame videoGame = new VideoGame();
+            SceneManager sceneManager = new SceneManager(videoGame.Context);
             sceneManager.OnAfterUpdate();
         }
 
@@ -113,7 +121,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void OnBeforeFixedUpdate_ValidInput()
         {
-            SceneManager sceneManager = new SceneManager();
+           VideoGame videoGame = new VideoGame();
+            SceneManager sceneManager = new SceneManager(videoGame.Context);
             sceneManager.OnBeforeFixedUpdate();
         }
 
@@ -123,7 +132,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void OnFixedUpdate_ValidInput()
         {
-            SceneManager sceneManager = new SceneManager();
+           VideoGame videoGame = new VideoGame();
+            SceneManager sceneManager = new SceneManager(videoGame.Context);
             sceneManager.OnFixedUpdate();
         }
 
@@ -133,7 +143,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void OnAfterFixedUpdate_ValidInput()
         {
-            SceneManager sceneManager = new SceneManager();
+           VideoGame videoGame = new VideoGame();
+            SceneManager sceneManager = new SceneManager(videoGame.Context);
             sceneManager.OnAfterFixedUpdate();
         }
 
@@ -143,7 +154,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void OnDispatchEvents_ValidInput()
         {
-            SceneManager sceneManager = new SceneManager();
+           VideoGame videoGame = new VideoGame();
+            SceneManager sceneManager = new SceneManager(videoGame.Context);
             sceneManager.OnDispatchEvents();
         }
 
@@ -153,7 +165,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void OnCalculate_ValidInput()
         {
-            SceneManager sceneManager = new SceneManager();
+           VideoGame videoGame = new VideoGame();
+            SceneManager sceneManager = new SceneManager(videoGame.Context);
             sceneManager.OnCalculate();
         }
 
@@ -163,7 +176,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void OnDraw_ValidInput()
         {
-            SceneManager sceneManager = new SceneManager();
+           VideoGame videoGame = new VideoGame();
+            SceneManager sceneManager = new SceneManager(videoGame.Context);
             sceneManager.OnDraw();
         }
 
@@ -173,7 +187,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void OnGui_ValidInput()
         {
-            SceneManager sceneManager = new SceneManager();
+           VideoGame videoGame = new VideoGame();
+            SceneManager sceneManager = new SceneManager(videoGame.Context);
             sceneManager.OnGui();
         }
 
@@ -183,7 +198,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void OnDisable_ValidInput()
         {
-            SceneManager sceneManager = new SceneManager();
+           VideoGame videoGame = new VideoGame();
+            SceneManager sceneManager = new SceneManager(videoGame.Context);
             sceneManager.OnDisable();
         }
 
@@ -193,7 +209,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void OnReset_ValidInput()
         {
-            SceneManager sceneManager = new SceneManager();
+           VideoGame videoGame = new VideoGame();
+            SceneManager sceneManager = new SceneManager(videoGame.Context);
             sceneManager.OnReset();
         }
 
@@ -203,7 +220,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void OnStop_ValidInput()
         {
-            SceneManager sceneManager = new SceneManager();
+           VideoGame videoGame = new VideoGame();
+            SceneManager sceneManager = new SceneManager(videoGame.Context);
             sceneManager.OnStop();
         }
 
@@ -213,7 +231,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void OnExit_ValidInput()
         {
-            SceneManager sceneManager = new SceneManager();
+           VideoGame videoGame = new VideoGame();
+            SceneManager sceneManager = new SceneManager(videoGame.Context);
             sceneManager.OnExit();
         }
 
@@ -223,7 +242,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void OnDestroy_ValidInput()
         {
-            SceneManager sceneManager = new SceneManager();
+           VideoGame videoGame = new VideoGame();
+            SceneManager sceneManager = new SceneManager(videoGame.Context);
             sceneManager.OnDestroy();
         }
 
@@ -233,7 +253,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void Remove_ValidInput_RemovesScene()
         {
-            SceneManager sceneManager = new SceneManager();
+           VideoGame videoGame = new VideoGame();
+            SceneManager sceneManager = new SceneManager(videoGame.Context);
             Alis.Core.Ecs.Entity.Scene scene = new Alis.Core.Ecs.Entity.Scene();
             sceneManager.Scenes.Add(scene);
             sceneManager.Remove(scene);
@@ -246,7 +267,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void Get_ValidInput_ReturnsScene()
         {
-            SceneManager sceneManager = new SceneManager();
+           VideoGame videoGame = new VideoGame();
+            SceneManager sceneManager = new SceneManager(videoGame.Context);
             Alis.Core.Ecs.Entity.Scene scene = new Alis.Core.Ecs.Entity.Scene();
             sceneManager.Scenes.Add(scene);
             Alis.Core.Ecs.Entity.Scene result = sceneManager.Get<Alis.Core.Ecs.Entity.Scene>();
@@ -259,7 +281,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void Contains_ValidInput_ReturnsTrue()
         {
-            SceneManager sceneManager = new SceneManager();
+           VideoGame videoGame = new VideoGame();
+            SceneManager sceneManager = new SceneManager(videoGame.Context);
             Alis.Core.Ecs.Entity.Scene scene = new Alis.Core.Ecs.Entity.Scene();
             sceneManager.Scenes.Add(scene);
             bool result = sceneManager.Contains<Alis.Core.Ecs.Entity.Scene>();
@@ -272,7 +295,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void Clear_ValidInput_ClearsScenes()
         {
-            SceneManager sceneManager = new SceneManager();
+           VideoGame videoGame = new VideoGame();
+            SceneManager sceneManager = new SceneManager(videoGame.Context);
             Alis.Core.Ecs.Entity.Scene scene = new Alis.Core.Ecs.Entity.Scene();
             sceneManager.Scenes.Add(scene);
             sceneManager.Clear<Alis.Core.Ecs.Entity.Scene>();
@@ -285,7 +309,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void LoadScene_ValidScene_SetsCurrentScene()
         {
-            SceneManager sceneManager = new SceneManager();
+           VideoGame videoGame = new VideoGame();
+            SceneManager sceneManager = new SceneManager(videoGame.Context);
             Alis.Core.Ecs.Entity.Scene scene = new Alis.Core.Ecs.Entity.Scene();
             sceneManager.LoadScene(scene);
             Assert.Equal(scene, sceneManager.CurrentScene);
@@ -297,7 +322,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
         [Fact]
         public void ReloadScene_ValidScene_SetsCurrentScene()
         {
-            SceneManager sceneManager = new SceneManager();
+           VideoGame videoGame = new VideoGame();
+            SceneManager sceneManager = new SceneManager(videoGame.Context);
             Alis.Core.Ecs.Entity.Scene scene = new Alis.Core.Ecs.Entity.Scene();
             sceneManager.ReloadScene(scene);
             Assert.Equal(scene, sceneManager.CurrentScene);
