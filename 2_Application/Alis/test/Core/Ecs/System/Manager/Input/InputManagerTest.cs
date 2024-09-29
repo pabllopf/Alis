@@ -47,7 +47,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
         public void OnInit_ValidInput()
         {
             VideoGame videoGame = new VideoGame();
-            InputManager inputManager = new InputManager();
+            InputManager inputManager = new InputManager(videoGame.Context);
             inputManager.OnInit();
         }
 
@@ -58,7 +58,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
         public void OnDispatchEvents_ValidInput()
         {
             VideoGame videoGame = new VideoGame();
-            InputManager inputManager = new InputManager();
+            InputManager inputManager = new InputManager(videoGame.Context);
             inputManager.OnDispatchEvents();
         }
 
@@ -69,7 +69,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
         public void HandleSdlQuitEvent_ValidInput()
         {
             VideoGame videoGame = new VideoGame();
-            InputManager inputManager = new InputManager();
+            InputManager inputManager = new InputManager(videoGame.Context);
             // You would need to simulate an SDL Quit event here
         }
 
@@ -80,7 +80,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
         public void HandleSdlKeyupEvent_ValidInput()
         {
             VideoGame videoGame = new VideoGame();
-            InputManager inputManager = new InputManager();
+            InputManager inputManager = new InputManager(videoGame.Context);
             // You would need to simulate an SDL Keyup event here
         }
 
@@ -91,7 +91,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
         public void HandleSdlKeydownEvent_ValidInput()
         {
             VideoGame videoGame = new VideoGame();
-            InputManager inputManager = new InputManager();
+            InputManager inputManager = new InputManager(videoGame.Context);
             // You would need to simulate an SDL Keydown event here
         }
 
@@ -102,7 +102,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
         public void HandleSdlJoyButtonDownEvent_ValidInput()
         {
             VideoGame videoGame = new VideoGame();
-            InputManager inputManager = new InputManager();
+            InputManager inputManager = new InputManager(videoGame.Context);
             // You would need to simulate an SDL JoyButtonDown event here
         }
 
@@ -113,7 +113,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
         public void HandleSdlJoyAxisMotionEvent_ValidInput()
         {
             VideoGame videoGame = new VideoGame();
-            InputManager inputManager = new InputManager();
+            InputManager inputManager = new InputManager(videoGame.Context);
             // You would need to simulate an SDL JoyAxisMotion event here
         }
 
@@ -124,7 +124,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
         public void NotifyKeyHold_ValidInput()
         {
             VideoGame videoGame = new VideoGame();
-            InputManager inputManager = new InputManager();
+            InputManager inputManager = new InputManager(videoGame.Context);
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
         public void NotifyKeyPress_ValidInput()
         {
             VideoGame videoGame = new VideoGame();
-            InputManager inputManager = new InputManager();
+            InputManager inputManager = new InputManager(videoGame.Context);
             // You would need to simulate a key press here
         }
 
@@ -145,7 +145,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
         public void NotifyKeyRelease_ValidInput()
         {
             VideoGame videoGame = new VideoGame();
-            InputManager inputManager = new InputManager();
+            InputManager inputManager = new InputManager(videoGame.Context);
             // You would need to simulate a key release here
         }
 
@@ -156,7 +156,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
         public void NotifyKeyHold_ValidInput_v2()
         {
             VideoGame videoGame = new VideoGame();
-            InputManager inputManager = new InputManager();
+            InputManager inputManager = new InputManager(videoGame.Context);
             inputManager.tempListOfKeys = new List<KeyCodes> {KeyCodes.A, KeyCodes.B};
             inputManager.NotifyKeyHold();
         }
@@ -168,7 +168,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
         public void NotifyKeyPress_ValidInput_v2()
         {
             VideoGame videoGame = new VideoGame();
-            InputManager inputManager = new InputManager();
+            InputManager inputManager = new InputManager(videoGame.Context);
             inputManager.NotifyKeyPress(KeyCodes.A);
         }
 
@@ -179,7 +179,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
         public void NotifyKeyRelease_ValidInput_v2()
         {
             VideoGame videoGame = new VideoGame();
-            InputManager inputManager = new InputManager();
+            InputManager inputManager = new InputManager(videoGame.Context);
             inputManager.NotifyKeyRelease(KeyCodes.A);
         }
 
@@ -190,7 +190,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
         public void NotifyKeyHoldWithKey_ValidInput()
         {
             VideoGame videoGame = new VideoGame();
-            InputManager inputManager = new InputManager();
+            InputManager inputManager = new InputManager(videoGame.Context);
             inputManager.NotifyKeyHold(KeyCodes.A);
         }
     }

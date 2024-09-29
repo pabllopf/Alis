@@ -46,7 +46,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Graphic
         public void OnEnable_ValidInput()
         {
             VideoGame videoGame = new VideoGame();
-            GraphicManager graphicManager = new GraphicManager();
+            GraphicManager graphicManager = new GraphicManager(videoGame.Context);
             graphicManager.OnEnable();
 
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
@@ -58,8 +58,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Graphic
         [Fact]
         public void OnInit_ValidInput()
         {
-            //VideoGame videoGame = new VideoGame();
-            GraphicManager graphicManager = new GraphicManager();
+            VideoGame videoGame = new VideoGame();
+            GraphicManager graphicManager = new GraphicManager(videoGame.Context);
 
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
@@ -71,7 +71,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Graphic
         public void OnStart_ValidInput()
         {
             VideoGame videoGame = new VideoGame();
-            GraphicManager graphicManager = new GraphicManager();
+            GraphicManager graphicManager = new GraphicManager(videoGame.Context);
             graphicManager.OnStart();
 
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
@@ -84,7 +84,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Graphic
         public void OnUpdate_ValidInput()
         {
             VideoGame videoGame = new VideoGame();
-            GraphicManager graphicManager = new GraphicManager();
+            GraphicManager graphicManager = new GraphicManager(videoGame.Context);
             graphicManager.OnUpdate();
 
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
@@ -97,7 +97,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Graphic
         public void OnExit_ValidInput()
         {
             VideoGame videoGame = new VideoGame();
-            GraphicManager graphicManager = new GraphicManager();
+            GraphicManager graphicManager = new GraphicManager(videoGame.Context);
             graphicManager.OnExit();
 
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
@@ -110,7 +110,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Graphic
         public void Attach_ValidInput()
         {
             VideoGame videoGame = new VideoGame();
-            GraphicManager graphicManager = new GraphicManager();
+            GraphicManager graphicManager = new GraphicManager(videoGame.Context);
             Sprite sprite = new Sprite();
             graphicManager.Attach(sprite);
 
@@ -124,7 +124,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Graphic
         public void UnAttach_ValidInput()
         {
             VideoGame videoGame = new VideoGame();
-            GraphicManager graphicManager = new GraphicManager();
+            GraphicManager graphicManager = new GraphicManager(videoGame.Context);
             Sprite sprite = new Sprite();
             graphicManager.Attach(sprite);
             graphicManager.UnAttach(sprite);

@@ -27,7 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Threading;
 using Alis.Core.Aspect.Time;
+using Alis.Core.Ecs;
 using Alis.Core.Ecs.System.Manager.Time;
 using Xunit;
 
@@ -44,8 +46,10 @@ namespace Alis.Test.Core.Ecs.System.Manager.Time
         [Fact]
         public void Constructor_ShouldInitializeProperties()
         {
+            VideoGame videoGame = new VideoGame();
+            
             // Arrange & Act
-            TimeManager timeManager = new TimeManager();
+            TimeManager timeManager = videoGame.Context.TimeManager;
 
             // Assert
             Assert.NotNull(timeManager.Configuration);
@@ -77,8 +81,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Time
         [Fact]
         public void TimeScale_ShouldBeSetCorrectly()
         {
+            VideoGame videoGame = new VideoGame();
             // Arrange
-            TimeManager timeManager = new TimeManager
+            TimeManager timeManager = new TimeManager(videoGame.Context)
             {
                 // Act
                 TimeScale = 2f
@@ -94,10 +99,11 @@ namespace Alis.Test.Core.Ecs.System.Manager.Time
         [Fact]
         public void Clock_ShouldBeStarted()
         {
+            VideoGame videoGame = new VideoGame();
             // Arrange & Act
-            TimeManager timeManager = new TimeManager();
+            TimeManager timeManager = new TimeManager(videoGame.Context);
 
-            Alis.Core.Aspect.Thread.Sleep(1000); // Sleep for 1 second
+            Thread.Sleep(1000); // Sleep for 1 second
 
             // Assert
             Assert.True(timeManager.Clock.ElapsedMilliseconds > 0);
@@ -109,8 +115,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Time
         [Fact]
         public void DeltaTime_SetValue_ShouldUpdateDeltaTime()
         {
+            VideoGame videoGame = new VideoGame();
             // Arrange
-            TimeManager timeManager = new TimeManager
+            TimeManager timeManager = new TimeManager(videoGame.Context)
             {
                 // Act
                 DeltaTime = 0.5f
@@ -126,8 +133,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Time
         [Fact]
         public void FixedDeltaTime_SetValue_ShouldUpdateFixedDeltaTime()
         {
+            VideoGame videoGame = new VideoGame();
             // Arrange
-            TimeManager timeManager = new TimeManager
+            TimeManager timeManager = new TimeManager(videoGame.Context)
             {
                 // Act
                 FixedDeltaTime = 0.1f
@@ -143,8 +151,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Time
         [Fact]
         public void Clock_SetValue_ShouldUpdateClock()
         {
+            VideoGame videoGame = new VideoGame();
             // Arrange
-            TimeManager timeManager = new TimeManager();
+            TimeManager timeManager = new TimeManager(videoGame.Context);
             Clock newClock = new Clock();
 
             // Act
@@ -160,8 +169,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Time
         [Fact]
         public void FixedTime_SetValue_ShouldUpdateFixedTime()
         {
+            VideoGame videoGame = new VideoGame();
             // Arrange
-            TimeManager timeManager = new TimeManager
+            TimeManager timeManager = new TimeManager(videoGame.Context)
             {
                 // Act
                 FixedTime = 5f
@@ -179,8 +189,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Time
         [Fact]
         public void MaximumDeltaTime_SetValue_ShouldUpdateMaximumDeltaTime()
         {
+            VideoGame videoGame = new VideoGame();
             // Arrange
-            TimeManager timeManager = new TimeManager
+            TimeManager timeManager = new TimeManager(videoGame.Context)
             {
                 // Act
                 MaximumDeltaTime = 1f
@@ -196,8 +207,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Time
         [Fact]
         public void Time_SetValue_ShouldUpdateTime()
         {
+            VideoGame videoGame = new VideoGame();
             // Arrange
-            TimeManager timeManager = new TimeManager
+            TimeManager timeManager = new TimeManager(videoGame.Context)
             {
                 // Act
                 Time = 10f
@@ -214,8 +226,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Time
         [Fact]
         public void FrameCount_SetValue_ShouldUpdateFrameCount()
         {
+            VideoGame videoGame = new VideoGame();
             // Arrange
-            TimeManager timeManager = new TimeManager
+            TimeManager timeManager = new TimeManager(videoGame.Context)
             {
                 // Act
                 FrameCount = 100
@@ -231,8 +244,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Time
         [Fact]
         public void InFixedTimeStep_SetValue_ShouldUpdateInFixedTimeStep()
         {
+            VideoGame videoGame = new VideoGame();
             // Arrange
-            TimeManager timeManager = new TimeManager
+            TimeManager timeManager = new TimeManager(videoGame.Context)
             {
                 // Act
                 InFixedTimeStep = true
@@ -248,8 +262,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Time
         [Fact]
         public void SmoothDeltaTime_SetValue_ShouldUpdateSmoothDeltaTime()
         {
+            VideoGame videoGame = new VideoGame();
             // Arrange
-            TimeManager timeManager = new TimeManager
+            TimeManager timeManager = new TimeManager(videoGame.Context)
             {
                 // Act
                 SmoothDeltaTime = 0.2f
@@ -265,8 +280,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Time
         [Fact]
         public void TimeScale_SetValue_ShouldUpdateTimeScale()
         {
+            VideoGame videoGame = new VideoGame();
             // Arrange
-            TimeManager timeManager = new TimeManager
+            TimeManager timeManager = new TimeManager(videoGame.Context)
             {
                 // Act
                 TimeScale = 2.0f
@@ -282,8 +298,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Time
         [Fact]
         public void AverageFrames_SetValue_ShouldUpdateAverageFrames()
         {
+            VideoGame videoGame = new VideoGame();
             // Arrange
-            TimeManager timeManager = new TimeManager
+            TimeManager timeManager = new TimeManager(videoGame.Context)
             {
                 // Act
                 AverageFrames = 2
@@ -299,8 +316,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Time
         [Fact]
         public void TotalFrames_SetValue_ShouldUpdateTotalFrames()
         {
+            VideoGame videoGame = new VideoGame();
             // Arrange
-            TimeManager timeManager = new TimeManager
+            TimeManager timeManager = new TimeManager(videoGame.Context)
             {
                 // Act
                 TotalFrames = 2
@@ -316,8 +334,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Time
         [Fact]
         public void UnscaledDeltaTime_SetValue_ShouldUpdateUnscaledDeltaTime()
         {
+            VideoGame videoGame = new VideoGame();
             // Arrange
-            TimeManager timeManager = new TimeManager
+            TimeManager timeManager = new TimeManager(videoGame.Context)
             {
                 // Act
                 UnscaledDeltaTime = 0.15f
@@ -333,8 +352,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Time
         [Fact]
         public void FixedTimeAsDouble_SetValue_ShouldUpdateFixedTimeAsDouble()
         {
+            VideoGame videoGame = new VideoGame();
             // Arrange
-            TimeManager timeManager = new TimeManager
+            TimeManager timeManager = new TimeManager(videoGame.Context)
             {
                 // Act
                 FixedTimeAsDouble = 30.5
@@ -350,8 +370,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Time
         [Fact]
         public void FixedUnscaledDeltaTime_SetValue_ShouldUpdateFixedUnscaledDeltaTime()
         {
+            VideoGame videoGame = new VideoGame();
             // Arrange
-            TimeManager timeManager = new TimeManager
+            TimeManager timeManager = new TimeManager(videoGame.Context)
             {
                 // Act
                 FixedUnscaledDeltaTime = 0.02f
@@ -367,8 +388,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Time
         [Fact]
         public void FixedUnscaledTime_SetValue_ShouldUpdateFixedUnscaledTime()
         {
+            VideoGame videoGame = new VideoGame();
             // Arrange
-            TimeManager timeManager = new TimeManager
+            TimeManager timeManager = new TimeManager(videoGame.Context)
             {
                 // Act
                 FixedUnscaledTime = 15.0f
@@ -384,8 +406,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Time
         [Fact]
         public void FixedUnscaledTimeAsDouble_SetValue_ShouldUpdateFixedUnscaledTimeAsDouble()
         {
+            VideoGame videoGame = new VideoGame();
             // Arrange
-            TimeManager timeManager = new TimeManager
+            TimeManager timeManager = new TimeManager(videoGame.Context)
             {
                 // Act
                 FixedUnscaledTimeAsDouble = 25.5
@@ -401,8 +424,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Time
         [Fact]
         public void UnscaledTime_SetValue_ShouldUpdateUnscaledTime()
         {
+            VideoGame videoGame = new VideoGame();
             // Arrange
-            TimeManager timeManager = new TimeManager
+            TimeManager timeManager = new TimeManager(videoGame.Context)
             {
                 // Act
                 UnscaledTime = 10.0f
@@ -418,8 +442,10 @@ namespace Alis.Test.Core.Ecs.System.Manager.Time
         [Fact]
         public void UnscaledTimeAsDouble_SetValue_ShouldUpdateUnscaledTimeAsDouble()
         {
+            VideoGame videoGame = new VideoGame();
+            
             // Arrange
-            TimeManager timeManager = new TimeManager
+            TimeManager timeManager = new TimeManager(videoGame.Context)
             {
                 // Act
                 UnscaledTimeAsDouble = 20.5
@@ -435,8 +461,10 @@ namespace Alis.Test.Core.Ecs.System.Manager.Time
         [Fact]
         public void TimeAsDouble_SetValue_ShouldUpdateTimeAsDouble()
         {
+            VideoGame videoGame = new VideoGame();
+            
             // Arrange
-            TimeManager timeManager = new TimeManager
+            TimeManager timeManager = new TimeManager(videoGame.Context)
             {
                 // Act
                 TimeAsDouble = 30.75

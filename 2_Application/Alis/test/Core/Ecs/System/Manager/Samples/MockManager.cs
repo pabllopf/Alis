@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager;
 
 namespace Alis.Test.Core.Ecs.System.Manager.Samples
@@ -37,5 +38,12 @@ namespace Alis.Test.Core.Ecs.System.Manager.Samples
     /// <seealso cref="AManager" />
     public class MockManager : AManager
     {
+        public MockManager(Context context) : base(context)
+        {
+        }
+
+        public MockManager(string id, string name, string tag, bool isEnable, Context context) : base(id, name, tag, isEnable, context)
+        {
+        }
     }
 }
