@@ -27,6 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs;
+using Alis.Core.Ecs.System;
+
 namespace Alis.Extension.Plugin.Sample
 {
     /// <summary>
@@ -40,7 +43,8 @@ namespace Alis.Extension.Plugin.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            PluginManager pluginManager = new PluginManager();
+            Context context = new Context();
+            PluginManager pluginManager = new PluginManager(context);
             pluginManager.LoadPlugins("Assets/Plugins");
 
             pluginManager.Initialize();
