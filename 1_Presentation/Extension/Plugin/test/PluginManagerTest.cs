@@ -32,6 +32,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using Alis.Core.Ecs.System;
 using Alis.Extension.Plugin.Test.Fakes;
 using Alis.Extension.Plugin.Test.Mocks;
 using Alis.Extension.Plugin.Test.PlatformAttributes;
@@ -51,7 +52,7 @@ namespace Alis.Extension.Plugin.Test
         public void LoadPlugins_LoadsPluginsFromDirectory()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string pluginsDirectory = "path/to/plugins";
 
             // Act
@@ -78,7 +79,7 @@ namespace Alis.Extension.Plugin.Test
         public void Initialize_CallsInitializeOnEachPlugin()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string pluginsDirectory = "path/to/plugins";
 
             Assert.Throws<DirectoryNotFoundException>(() => pluginManager.LoadPlugins(pluginsDirectory));
@@ -96,7 +97,7 @@ namespace Alis.Extension.Plugin.Test
         public void Update_v2_CallsUpdateOnEachPlugin()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string pluginsDirectory = "path/to/plugins";
             Assert.Throws<DirectoryNotFoundException>(() => pluginManager.LoadPlugins(pluginsDirectory));
 
@@ -114,7 +115,7 @@ namespace Alis.Extension.Plugin.Test
         public void Render_v2_CallsRenderOnEachPlugin()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string pluginsDirectory = "path/to/plugins";
             Assert.Throws<DirectoryNotFoundException>(() => pluginManager.LoadPlugins(pluginsDirectory));
 
@@ -132,7 +133,7 @@ namespace Alis.Extension.Plugin.Test
         public void Shutdown_v3_CallsShutdownOnEachPlugin()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string pluginsDirectory = "path/to/plugins";
             Assert.Throws<DirectoryNotFoundException>(() => pluginManager.LoadPlugins(pluginsDirectory));
 
@@ -150,7 +151,7 @@ namespace Alis.Extension.Plugin.Test
         public void UnloadPlugins_UnloadsPlugins()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
 
             // Act
             pluginManager.UnloadPlugins();
@@ -166,7 +167,7 @@ namespace Alis.Extension.Plugin.Test
         public void Initialize_v2CallsInitializeOnEachPlugin()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
 
             // Act
             pluginManager.Initialize();
@@ -182,7 +183,7 @@ namespace Alis.Extension.Plugin.Test
         public void Update_CallsUpdateOnEachPlugin()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             // Act
             pluginManager.Update();
 
@@ -197,7 +198,7 @@ namespace Alis.Extension.Plugin.Test
         public void Render_CallsRenderOnEachPlugin()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             // Act
             pluginManager.Render();
 
@@ -212,7 +213,7 @@ namespace Alis.Extension.Plugin.Test
         public void Shutdown_CallsShutdownOnEachPlugin()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
 
             // Act
             pluginManager.Shutdown();
@@ -228,7 +229,7 @@ namespace Alis.Extension.Plugin.Test
         public void LoadPlugins_v3_LoadsPluginsFromDirectory()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string pluginsDirectory = "path/to/plugins";
 
             // Act
@@ -246,7 +247,7 @@ namespace Alis.Extension.Plugin.Test
         public void Dispose_v3_UnloadsPlugins()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string pluginsDirectory = "path/to/plugins";
 
             Assert.Throws<DirectoryNotFoundException>(() => pluginManager.LoadPlugins(pluginsDirectory));
@@ -266,7 +267,7 @@ namespace Alis.Extension.Plugin.Test
         public void Initialize_v3_CallsInitializeOnEachPlugin()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string pluginsDirectory = "path/to/plugins";
 
             Assert.Throws<DirectoryNotFoundException>(() => pluginManager.LoadPlugins(pluginsDirectory));
@@ -286,7 +287,7 @@ namespace Alis.Extension.Plugin.Test
         public void Update_v3_CallsUpdateOnEachPlugin()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string pluginsDirectory = "path/to/plugins";
 
             Assert.Throws<DirectoryNotFoundException>(() => pluginManager.LoadPlugins(pluginsDirectory));
@@ -306,7 +307,7 @@ namespace Alis.Extension.Plugin.Test
         public void Render_v3_CallsRenderOnEachPlugin()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string pluginsDirectory = "path/to/plugins";
 
             Assert.Throws<DirectoryNotFoundException>(() => pluginManager.LoadPlugins(pluginsDirectory));
@@ -326,7 +327,7 @@ namespace Alis.Extension.Plugin.Test
         public void Shutdown_v2_CallsShutdownOnEachPlugin()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string pluginsDirectory = "path/to/plugins";
 
             Assert.Throws<DirectoryNotFoundException>(() => pluginManager.LoadPlugins(pluginsDirectory));
@@ -346,7 +347,7 @@ namespace Alis.Extension.Plugin.Test
         public void LoadPluginFromFile_LoadsPluginCorrectly()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string pluginFile = Path.Combine(Environment.CurrentDirectory, "Assets", "Invalid", "windows", "Sum.dll"); // Replace with the actual path to your plugin file
 
             // Act
@@ -363,7 +364,7 @@ namespace Alis.Extension.Plugin.Test
             // No arrangement necessary for static method
 
             // Act
-            bool result = new PluginManager().IsRunningOniOS();
+            bool result = new PluginManager(new Context()).IsRunningOniOS();
 
             // Assert
             if (result)
@@ -386,7 +387,7 @@ namespace Alis.Extension.Plugin.Test
             // No arrangement necessary for static method
 
             // Act
-            bool result = new PluginManager().IsRunningOnAndroid();
+            bool result = new PluginManager(new Context()).IsRunningOnAndroid();
 
             // Assert
             if (result)
@@ -406,7 +407,7 @@ namespace Alis.Extension.Plugin.Test
         public void GetPluginFiles_ReturnsCorrectFiles()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string pluginsDirectory = "path/to/plugins"; // Replace with the actual path to your plugins directory
 
             // Act
@@ -467,7 +468,7 @@ namespace Alis.Extension.Plugin.Test
         public void LoadAssembly_LoadsCorrectAssembly()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string platformFolder = pluginManager.GetPlatformFolder();
             string platformPluginsDirectory = pluginManager.GetPlatformPluginsDirectory("Assets/Plugins", platformFolder);
 
@@ -488,7 +489,7 @@ namespace Alis.Extension.Plugin.Test
         public void CreatePluginInstance_CreatesCorrectPluginInstance()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             Type pluginType = typeof(PluginSample); // Replace with the actual type of your plugin
 
             // Act
@@ -522,7 +523,7 @@ namespace Alis.Extension.Plugin.Test
         public void UnloadPlugins_UnloadsAllPlugins()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             // Load some plugins here
 
             // Act
@@ -543,7 +544,7 @@ namespace Alis.Extension.Plugin.Test
             // No arrangement necessary for static method
 
             // Act
-            bool result = new PluginManager().IsRunningOniOS();
+            bool result = new PluginManager(new Context()).IsRunningOniOS();
 
             // Assert
             Assert.False(result);
@@ -559,7 +560,7 @@ namespace Alis.Extension.Plugin.Test
             // No arrangement necessary for static method
 
             // Act
-            bool result = new PluginManager().IsRunningOnAndroid();
+            bool result = new PluginManager(new Context()).IsRunningOnAndroid();
 
             // Assert
             Assert.False(result);
@@ -572,7 +573,7 @@ namespace Alis.Extension.Plugin.Test
         public void LoadPluginsFromFiles_LoadsCorrectNumberOfPlugins()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             IEnumerable<string> pluginFiles = new List<string> {"path/to/plugin1.dll", "path/to/plugin2.dll"}; // Replace with the actual plugin files
 
             // Act
@@ -586,7 +587,7 @@ namespace Alis.Extension.Plugin.Test
         public void LoadPluginsFromFiles_LoadsCorrectPluginInstances()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             IEnumerable<string> pluginFiles = new List<string> {"path/to/plugin1.dll", "path/to/plugin2.dll"}; // Replace with the actual plugin files
 
             // Act
@@ -600,7 +601,7 @@ namespace Alis.Extension.Plugin.Test
         public void LoadPluginsFromFiles_AddsPluginsToLoadedPlugins()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             IEnumerable<string> pluginFiles = new List<string> {"path/to/plugin1.dll", "path/to/plugin2.dll"}; // Replace with the actual plugin files
 
 
@@ -615,7 +616,7 @@ namespace Alis.Extension.Plugin.Test
         public void LoadPlugins_v1_LoadsPluginsFromDirectory()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string pluginsDirectory = "path/to/plugins";
 
             // Act
@@ -632,7 +633,7 @@ namespace Alis.Extension.Plugin.Test
         public void Dispose_v1_UnloadsPlugins()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string pluginsDirectory = "path/to/plugins";
             Assert.False(PluginManager.ValidatePluginsDirectory(pluginsDirectory));
 
@@ -651,7 +652,7 @@ namespace Alis.Extension.Plugin.Test
         public void LoadPluginFromFile__v1LoadsPluginCorrectly()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string pluginFile = "path/to/plugin.dll"; // Replace with the actual path to your plugin file
 
             // Act
@@ -665,7 +666,7 @@ namespace Alis.Extension.Plugin.Test
         public void LoadAssembly_vq_LoadsCorrectAssembly()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string platformFolder = pluginManager.GetPlatformFolder();
             string platformPluginsDirectory = pluginManager.GetPlatformPluginsDirectory("Assets/Plugins", platformFolder);
 
@@ -686,7 +687,7 @@ namespace Alis.Extension.Plugin.Test
         public void CreatePluginInstance_v1_CreatesCorrectPluginInstance()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             Type pluginType = typeof(PluginSample); // Replace with the actual type of your plugin
 
             // Act
@@ -703,7 +704,7 @@ namespace Alis.Extension.Plugin.Test
         public void LoadPluginsFromFiles_v1_LoadsCorrectNumberOfPlugins()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             IEnumerable<string> pluginFiles = new List<string> {"path/to/plugin1.dll", "path/to/plugin2.dll"}; // Replace with the actual plugin files
 
             // Act
@@ -717,7 +718,7 @@ namespace Alis.Extension.Plugin.Test
         public void LoadPluginsFromFiles_v1_AddsPluginsToLoadedPlugins()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             IEnumerable<string> pluginFiles = new List<string> {"path/to/plugin1.dll", "path/to/plugin2.dll"}; // Replace with the actual plugin files
 
             Assert.Throws<FileNotFoundException>(() => pluginManager.LoadPluginsFromFiles(pluginFiles));
@@ -730,7 +731,7 @@ namespace Alis.Extension.Plugin.Test
         public void LoadPluginFromFile_v1_LoadsPluginCorrectly()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string pluginFile = "path/to/plugin.dll"; // Replace with the actual path to your plugin file
 
             Assert.Throws<FileNotFoundException>(() => pluginManager.LoadPluginFromFile(pluginFile));
@@ -743,7 +744,7 @@ namespace Alis.Extension.Plugin.Test
         public void UnloadPlugins_v1_UnloadsAllPlugins()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             // Load some plugins here
 
             // Act
@@ -761,7 +762,7 @@ namespace Alis.Extension.Plugin.Test
         public void GetPlatformFolder_ReturnsCorrectFolder()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
 
             // Act
             string platformFolder = pluginManager.GetPlatformFolder();
@@ -792,7 +793,7 @@ namespace Alis.Extension.Plugin.Test
         public void LoadPlugins_ThrowsExceptionWhenDirectoryIsInvalid()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string invalidPluginsDirectory = Path.Combine(Environment.CurrentDirectory, "invalid", "Plugins");
 
             // Act and Assert
@@ -806,7 +807,7 @@ namespace Alis.Extension.Plugin.Test
         public void GetPlatformFolder_ReturnsAndroid_WhenRunningOnAndroid()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
 
             // Act
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) && pluginManager.IsRunningOnAndroid())
@@ -825,7 +826,7 @@ namespace Alis.Extension.Plugin.Test
         public void GetPlatformFolder_ThrowsException_WhenPlatformIsUnsupported()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
 
             // Act and Assert
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows) &&
@@ -843,7 +844,7 @@ namespace Alis.Extension.Plugin.Test
         public void InstantiatePlugins_ShouldAddLoadedPlugins()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             Assembly assembly = Assembly.GetExecutingAssembly(); // Assuming the assembly contains at least one IPlugin implementation
 
             // Act
@@ -860,7 +861,7 @@ namespace Alis.Extension.Plugin.Test
         public void InstantiatePlugins_ShouldNotAddNonIPluginTypes()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             Assembly assembly = Assembly.GetExecutingAssembly(); // Assuming the assembly contains types not implementing IPlugin
 
             // Act
@@ -877,7 +878,7 @@ namespace Alis.Extension.Plugin.Test
         public void InstantiatePlugins_ShouldHandleEmptyAssembly()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             Assembly assembly = Assembly.Load(new AssemblyName("System.Runtime")); // An assembly unlikely to contain IPlugin implementations
 
             // Act
@@ -894,7 +895,7 @@ namespace Alis.Extension.Plugin.Test
         public void LoadPluginsFromFiles_ShouldCallLoadPluginFromFileForEachFile()
         {
             // Arrange
-            TestablePluginManager pluginManager = new TestablePluginManager();
+            TestablePluginManager pluginManager = new TestablePluginManager(new Context(), 0);
             List<string> pluginFiles = new List<string>();
 
             // Act
@@ -911,7 +912,7 @@ namespace Alis.Extension.Plugin.Test
         public void UnloadPlugins_ShouldClearLoadedPluginsAndAssemblies()
         {
             // Arrange
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             pluginManager.LoadedPlugins.Add(new MockPlugin());
             pluginManager.LoadedAssemblies.Add(typeof(PluginManager).Assembly);
 
@@ -929,7 +930,7 @@ namespace Alis.Extension.Plugin.Test
         [Fact]
         public void LoadPlugins_InvalidDirectory_ShouldThrowDirectoryNotFoundException()
         {
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string invalidPluginsDirectory = Path.Combine(Environment.CurrentDirectory, "invalid", "Plugins");
             Assert.Throws<DirectoryNotFoundException>(() => pluginManager.LoadPlugins(invalidPluginsDirectory));
         }
@@ -940,7 +941,7 @@ namespace Alis.Extension.Plugin.Test
         [Fact]
         public void GetPlatformPluginsDirectory_ValidInputs_ShouldReturnCorrectPath()
         {
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string pluginsDirectory = Path.Combine("path", "to", "plugins");
             string platformFolder = "windows";
             string result = pluginManager.GetPlatformPluginsDirectory(pluginsDirectory, platformFolder);
@@ -953,7 +954,7 @@ namespace Alis.Extension.Plugin.Test
         [Fact]
         public void GetPlatformFolder_SupportedPlatform_ShouldReturnPlatformFolder()
         {
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string result = pluginManager.GetPlatformFolder();
             Assert.NotNull(result);
         }
@@ -975,7 +976,7 @@ namespace Alis.Extension.Plugin.Test
         [Fact]
         public void GetPluginFiles_ValidDirectory_ShouldReturnFiles()
         {
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string directory = Path.Combine(Environment.CurrentDirectory, "Assets", "Plugins", "windows");
             IEnumerable<string> result = pluginManager.GetPluginFiles(directory);
             Assert.NotEmpty(result);
@@ -987,7 +988,7 @@ namespace Alis.Extension.Plugin.Test
         [Fact]
         public void LoadAssembly_ValidPluginFile_ShouldReturnAssembly()
         {
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string pluginFile = Path.Combine(Environment.CurrentDirectory, "Assets", "Plugins", "windows", "Sum.dll");
             Assembly result = pluginManager.LoadAssembly(pluginFile);
             Assert.NotNull(result);
@@ -999,7 +1000,7 @@ namespace Alis.Extension.Plugin.Test
         [Fact]
         public void InstantiatePlugins_ValidAssembly_ShouldAddPlugins()
         {
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             Assembly assembly = Assembly.GetExecutingAssembly();
             pluginManager.InstantiatePlugins(assembly);
             Assert.NotEmpty(pluginManager.LoadedPlugins);
@@ -1011,7 +1012,7 @@ namespace Alis.Extension.Plugin.Test
         [Fact]
         public void GetPluginTypes_ValidAssembly_ShouldReturnPluginTypes()
         {
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             Assembly assembly = Assembly.GetExecutingAssembly();
             Type[] result = pluginManager.GetPluginTypes(assembly);
             Assert.NotEmpty(result);
@@ -1023,7 +1024,7 @@ namespace Alis.Extension.Plugin.Test
         [Fact]
         public void CreatePluginInstance_ValidType_ShouldReturnPluginInstance()
         {
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             Type type = typeof(MockPlugin);
             IPlugin result = pluginManager.CreatePluginInstance(type);
             Assert.NotNull(result);
@@ -1046,7 +1047,7 @@ namespace Alis.Extension.Plugin.Test
         [Fact]
         public void UnloadPlugins_LoadedPlugins_ShouldClearPlugins()
         {
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             pluginManager.LoadedPlugins.Add(new MockPlugin());
             pluginManager.UnloadPlugins();
             Assert.Empty(pluginManager.LoadedPlugins);
@@ -1058,7 +1059,7 @@ namespace Alis.Extension.Plugin.Test
         [WindowsOnlyFact]
         public void GetPlatformFolder_ReturnsWindows_WhenOnWindows()
         {
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string result = pluginManager.GetPlatformFolder();
             Assert.Equal("windows", result);
         }
@@ -1069,7 +1070,7 @@ namespace Alis.Extension.Plugin.Test
         [OsxOnlyFact]
         public void GetPlatformFolder_ReturnsOsx_WhenOnMacOS()
         {
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string result = pluginManager.GetPlatformFolder();
             Assert.Equal("osx", result);
         }
@@ -1080,7 +1081,7 @@ namespace Alis.Extension.Plugin.Test
         [IosOnlyFact]
         public void GetPlatformFolder_ReturnsIos_WhenOnIos()
         {
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string result = pluginManager.GetPlatformFolder();
             Assert.Equal("ios", result);
         }
@@ -1091,7 +1092,7 @@ namespace Alis.Extension.Plugin.Test
         [LinuxOnlyFact]
         public void GetPlatformFolder_ReturnsLinux_WhenOnLinux()
         {
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string result = pluginManager.GetPlatformFolder();
             Assert.Equal("linux", result);
         }
@@ -1102,7 +1103,7 @@ namespace Alis.Extension.Plugin.Test
         [AndroidOnlyFact]
         public void GetPlatformFolder_ReturnsAndroid_WhenOnAndroid()
         {
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string result = pluginManager.GetPlatformFolder();
             Assert.Equal("android", result);
         }
@@ -1113,7 +1114,7 @@ namespace Alis.Extension.Plugin.Test
         [NotPlatformOnlyFact]
         public void GetPlatformFolder_ThrowsNotSupportedException_WhenOnUnsupportedPlatform()
         {
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             Assert.Throws<NotSupportedException>(() => pluginManager.GetPlatformFolder());
         }
 
@@ -1123,7 +1124,7 @@ namespace Alis.Extension.Plugin.Test
         [IosOnlyFact]
         public void IsiOS_ReturnsTrue_WhenOniOS()
         {
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             Assert.True(pluginManager.IsRunningOniOS());
         }
 
@@ -1133,7 +1134,7 @@ namespace Alis.Extension.Plugin.Test
         [AndroidOnlyFact]
         public void IsAndroid_ReturnsTrue_WhenOnAndroid()
         {
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             Assert.True(pluginManager.IsRunningOnAndroid());
         }
 
@@ -1144,7 +1145,7 @@ namespace Alis.Extension.Plugin.Test
         [Fact]
         public void GetPlatformFolder_ReturnsCorrectPlatform_OrAssertsDifference()
         {
-            PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager(new Context());
             string expectedPlatform = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "Windows" :
                 RuntimeInformation.IsOSPlatform(OSPlatform.OSX) && !pluginManager.IsRunningOniOS() ? "osx" :
                 RuntimeInformation.IsOSPlatform(OSPlatform.Linux) && !pluginManager.IsRunningOnAndroid() ? "linux" :
@@ -1171,7 +1172,7 @@ namespace Alis.Extension.Plugin.Test
         public void GetPlatformFolder_ReturnsWindows_WhenOnWindows_v2()
         {
             FakeWinPlatformDetector platformDetector = new FakeWinPlatformDetector();
-            PluginManager pluginManager = new PluginManager(platformDetector);
+            PluginManager pluginManager = new PluginManager(platformDetector, new Context());
             string result = pluginManager.GetPlatformFolder();
             Assert.Equal("windows", result);
         }
@@ -1183,7 +1184,7 @@ namespace Alis.Extension.Plugin.Test
         public void GetPlatformFolder_ReturnsWindows_WhenOnWindows_v3()
         {
             FakeWinPlatformDetector platformDetector = new FakeWinPlatformDetector();
-            PluginManager pluginManager = new PluginManager(platformDetector);
+            PluginManager pluginManager = new PluginManager(platformDetector, new Context());
             string result = pluginManager.GetPlatformFolder();
             Assert.Equal("windows", result);
         }
@@ -1195,7 +1196,7 @@ namespace Alis.Extension.Plugin.Test
         public void GetPlatformFolder_ReturnsWindows_WhenOnOsx()
         {
             FakeOsxPlatformDetector platformDetector = new FakeOsxPlatformDetector();
-            PluginManager pluginManager = new PluginManager(platformDetector);
+            PluginManager pluginManager = new PluginManager(platformDetector, new Context());
             string result = pluginManager.GetPlatformFolder();
             Assert.Equal("osx", result);
         }
@@ -1207,7 +1208,7 @@ namespace Alis.Extension.Plugin.Test
         public void GetPlatformFolder_ReturnsWindows_WhenOnLinux()
         {
             FakeLinuxPlatformDetector platformDetector = new FakeLinuxPlatformDetector();
-            PluginManager pluginManager = new PluginManager(platformDetector);
+            PluginManager pluginManager = new PluginManager(platformDetector, new Context());
             string result = pluginManager.GetPlatformFolder();
             Assert.Equal("linux", result);
         }
@@ -1219,7 +1220,7 @@ namespace Alis.Extension.Plugin.Test
         public void GetPlatformFolder_ReturnsWindows_WhenOnIos()
         {
             FakeIosPlatformDetector platformDetector = new FakeIosPlatformDetector();
-            PluginManager pluginManager = new PluginManager(platformDetector);
+            PluginManager pluginManager = new PluginManager(platformDetector, new Context());
             string result = pluginManager.GetPlatformFolder();
             Assert.Equal("ios", result);
         }
@@ -1231,7 +1232,7 @@ namespace Alis.Extension.Plugin.Test
         public void GetPlatformFolder_ReturnsWindows_WhenOnAndroid()
         {
             FakeAndroidPlatformDetector platformDetector = new FakeAndroidPlatformDetector();
-            PluginManager pluginManager = new PluginManager(platformDetector);
+            PluginManager pluginManager = new PluginManager(platformDetector, new Context());
             string result = pluginManager.GetPlatformFolder();
             Assert.Equal("android", result);
         }
@@ -1243,7 +1244,7 @@ namespace Alis.Extension.Plugin.Test
         public void GetPlatformFolder_ThrowsNotSupportedException_WhenOnUnsupportedPlatform_v2()
         {
             FakeUnsupportedPlatformPlatformDetector platformDetector = new FakeUnsupportedPlatformPlatformDetector();
-            PluginManager pluginManager = new PluginManager(platformDetector);
+            PluginManager pluginManager = new PluginManager(platformDetector, new Context());
             Assert.Throws<NotSupportedException>(() => pluginManager.GetPlatformFolder());
         }
 
@@ -1253,7 +1254,7 @@ namespace Alis.Extension.Plugin.Test
         [Fact]
         public void Initialize_WithEmptyList_DoesNotThrow()
         {
-            PluginManager manager = new PluginManager();
+            PluginManager manager = new PluginManager(new Context());
             manager.LoadedPlugins.Clear(); // Ensure list is empty
             Exception exception = Record.Exception(() => manager.Initialize());
             Assert.Null(exception);
@@ -1265,7 +1266,7 @@ namespace Alis.Extension.Plugin.Test
         [Fact]
         public void Initialize_WithPopulatedList_CallsInitializeOnEachPlugin()
         {
-            PluginManager manager = new PluginManager();
+            PluginManager manager = new PluginManager(new Context());
             MockPlugin2 mockPlugin = new MockPlugin2();
             manager.LoadedPlugins.Add(mockPlugin);
             manager.Initialize();
@@ -1278,7 +1279,7 @@ namespace Alis.Extension.Plugin.Test
         [Fact]
         public void Initialize_WithNullList_DoesNotThrow()
         {
-            PluginManager manager = new PluginManager();
+            PluginManager manager = new PluginManager(new Context());
             manager.LoadedPlugins = null; // Set list to null
             Exception exception = Record.Exception(() => manager.Initialize());
             Assert.NotNull(exception);
@@ -1290,7 +1291,7 @@ namespace Alis.Extension.Plugin.Test
         [Fact]
         public void Update_WithEmptyList_DoesNotThrow()
         {
-            PluginManager manager = new PluginManager();
+            PluginManager manager = new PluginManager(new Context());
             manager.LoadedPlugins.Clear(); // Ensure list is empty
             Exception exception = Record.Exception(() => manager.Update());
             Assert.Null(exception);
@@ -1302,7 +1303,7 @@ namespace Alis.Extension.Plugin.Test
         [Fact]
         public void Update_WithPopulatedList_CallsUpdateOnEachPlugin()
         {
-            PluginManager manager = new PluginManager();
+            PluginManager manager = new PluginManager(new Context());
             MockPlugin2 mockPlugin = new MockPlugin2();
             manager.LoadedPlugins.Add(mockPlugin);
             manager.Update();
@@ -1315,7 +1316,7 @@ namespace Alis.Extension.Plugin.Test
         [Fact]
         public void Update_WithNullList_DoesNotThrow()
         {
-            PluginManager manager = new PluginManager();
+            PluginManager manager = new PluginManager(new Context());
             manager.LoadedPlugins = null; // Set list to null
             Exception exception = Record.Exception(() => manager.Update());
             Assert.NotNull(exception);
@@ -1327,7 +1328,7 @@ namespace Alis.Extension.Plugin.Test
         [Fact]
         public void Render_WithEmptyList_DoesNotThrow()
         {
-            PluginManager manager = new PluginManager();
+            PluginManager manager = new PluginManager(new Context());
             manager.LoadedPlugins.Clear(); // Ensure list is empty
             Exception exception = Record.Exception(() => manager.Render());
             Assert.Null(exception);
@@ -1339,7 +1340,7 @@ namespace Alis.Extension.Plugin.Test
         [Fact]
         public void Render_WithPopulatedList_CallsRenderOnEachPlugin()
         {
-            PluginManager manager = new PluginManager();
+            PluginManager manager = new PluginManager(new Context());
             MockPlugin2 mockPlugin = new MockPlugin2();
             manager.LoadedPlugins.Add(mockPlugin);
             manager.Render();
@@ -1352,7 +1353,7 @@ namespace Alis.Extension.Plugin.Test
         [Fact]
         public void Render_WithNullList_DoesNotThrow()
         {
-            PluginManager manager = new PluginManager();
+            PluginManager manager = new PluginManager(new Context());
             manager.LoadedPlugins = null; // Set list to null
             Exception exception = Record.Exception(() => manager.Render());
             Assert.NotNull(exception);
@@ -1364,7 +1365,7 @@ namespace Alis.Extension.Plugin.Test
         [Fact]
         public void Shutdown_WithEmptyList_DoesNotThrow()
         {
-            PluginManager manager = new PluginManager();
+            PluginManager manager = new PluginManager(new Context());
             manager.LoadedPlugins.Clear(); // Ensure list is empty
             Exception exception = Record.Exception(() => manager.Shutdown());
             Assert.Null(exception);
@@ -1376,7 +1377,7 @@ namespace Alis.Extension.Plugin.Test
         [Fact]
         public void Shutdown_WithPopulatedList_CallsShutdownOnEachPlugin()
         {
-            PluginManager manager = new PluginManager();
+            PluginManager manager = new PluginManager(new Context());
             MockPlugin2 mockPlugin = new MockPlugin2();
             manager.LoadedPlugins.Add(mockPlugin);
             manager.Shutdown();
@@ -1389,7 +1390,7 @@ namespace Alis.Extension.Plugin.Test
         [Fact]
         public void Shutdown_WithNullList_DoesNotThrow()
         {
-            PluginManager manager = new PluginManager();
+            PluginManager manager = new PluginManager(new Context());
             manager.LoadedPlugins = null; // Set list to null
             Exception exception = Record.Exception(() => manager.Shutdown());
             Assert.NotNull(exception);

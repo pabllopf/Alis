@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.System;
 using Xunit;
 
 namespace Alis.Extension.Plugin.Test.PlatformAttributes
@@ -42,7 +43,7 @@ namespace Alis.Extension.Plugin.Test.PlatformAttributes
         /// </summary>
         public AndroidOnlyFactAttribute()
         {
-            if (!new PluginManager().IsRunningOnAndroid())
+            if (!new PluginManager(new Context()).IsRunningOnAndroid())
             {
                 Skip = "This test is only applicable on Android";
             }

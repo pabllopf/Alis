@@ -38,10 +38,22 @@ namespace Alis.Test.Core.Ecs.System.Manager.Samples
     /// <seealso cref="AManager" />
     public class MockManager : AManager
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MockManager"/> class
+        /// </summary>
+        /// <param name="context">The context</param>
         public MockManager(Context context) : base(context)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MockManager"/> class
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="name">The name</param>
+        /// <param name="tag">The tag</param>
+        /// <param name="isEnable">The is enable</param>
+        /// <param name="context">The context</param>
         public MockManager(string id, string name, string tag, bool isEnable, Context context) : base(id, name, tag, isEnable, context)
         {
         }

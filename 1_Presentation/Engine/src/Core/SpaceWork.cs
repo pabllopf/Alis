@@ -232,7 +232,7 @@ namespace Alis.App.Engine.Core
                             .Build())
                         .Build())
                     .Build())
-                .BuildPreview();
+                .Build();
         }
 
         /// <summary>
@@ -300,8 +300,6 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public void Initialize()
         {
-            VideoGame.InitPreview();
-
             imGuiDemo.Initialize();
             imPlotDemo.Initialize();
             imGuizmoDemo.Initialize();
