@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.InteropServices;
+using Alis.Core.Ecs.System;
 using Xunit;
 
 namespace Alis.Extension.Plugin.Test.PlatformAttributes
@@ -43,7 +44,7 @@ namespace Alis.Extension.Plugin.Test.PlatformAttributes
         /// </summary>
         public LinuxOnlyFactAttribute()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux) && !new PluginManager().IsRunningOnAndroid())
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux) && !new PluginManager(new Context()).IsRunningOnAndroid())
             {
                 Skip = "This test is only applicable on Linux";
             }

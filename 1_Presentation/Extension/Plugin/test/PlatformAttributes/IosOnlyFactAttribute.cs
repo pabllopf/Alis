@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.System;
 using Xunit;
 
 namespace Alis.Extension.Plugin.Test.PlatformAttributes
@@ -42,7 +43,7 @@ namespace Alis.Extension.Plugin.Test.PlatformAttributes
         /// </summary>
         public IosOnlyFactAttribute()
         {
-            if (!new PluginManager().IsRunningOniOS())
+            if (!new PluginManager(new Context()).IsRunningOniOS())
             {
                 Skip = "This test is only applicable on iOS";
             }
