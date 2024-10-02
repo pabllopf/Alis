@@ -43,8 +43,7 @@ namespace Alis.Core.Aspect.Security
         ///     The value
         /// </summary>
         private int _value;
-
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="SecureInt" /> class
         /// </summary>
@@ -165,6 +164,6 @@ namespace Alis.Core.Aspect.Security
         /// </summary>
         /// <param name="obj">The obj</param>
         /// <returns>The bool</returns>
-        public override bool Equals(object obj) => Value.Equals((obj as SecureInt).Value);
+        public override bool Equals(object? obj) => Value.Equals(((obj as SecureInt)!).Value);
     }
 }
