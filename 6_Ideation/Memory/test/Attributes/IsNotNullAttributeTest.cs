@@ -46,10 +46,10 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
         {
             // Arrange
             IsNotNullAttribute attribute = new IsNotNullAttribute();
-            object nullValue = null;
+            object nullValue = null!;
 
             // Act and Assert
-            Assert.Throws<NotNullException>(() => attribute.Validate(null, nameof(nullValue)));
+            Assert.Throws<NotNullException>(() => attribute.Validate(null!, nameof(nullValue)));
         }
     }
 }

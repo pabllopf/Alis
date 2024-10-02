@@ -50,6 +50,7 @@ namespace Alis.Core.Aspect.Security
         /// <param name="value">The value</param>
         public SecureString(string value)
         {
+            encryptedValue = string.Empty;
             secret = GenerateKey();
             SetValue(value);
         }
