@@ -48,7 +48,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     Initializes a new instance of the <see cref="JsonPropertyNameAttribute" /> class.
         /// </summary>
         /// <param name="name">The name to use for JSON serialization and deserialization.</param>
-        public JsonPropertyNameAttribute(string name) => Name = name;
+        public JsonPropertyNameAttribute(string? name) => Name = name;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="JsonPropertyNameAttribute" /> class
@@ -56,7 +56,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="name">The name</param>
         /// <param name="ignoreWhenSerializing">The ignore when serializing</param>
         /// <param name="ignoreWhenDeserializing">The ignore when deserializing</param>
-        public JsonPropertyNameAttribute(string name, bool ignoreWhenSerializing, bool ignoreWhenDeserializing)
+        public JsonPropertyNameAttribute(string? name, bool ignoreWhenSerializing, bool ignoreWhenDeserializing)
         {
             Name = name;
             IgnoreWhenSerializing = ignoreWhenSerializing;
@@ -69,7 +69,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <value>
         ///     The name.
         /// </value>
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         ///     Gets or sets a value indicating whether to ignore this instance's owner when serializing.
@@ -93,7 +93,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <value>
         ///     The default value.
         /// </value>
-        public object DefaultValue { get; set; }
+        public object? DefaultValue { get; set; }
 
         /// <summary>
         ///     Gets or sets a value indicating whether this instance has a default value. In this case, it's defined by the

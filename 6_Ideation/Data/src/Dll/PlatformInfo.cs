@@ -62,7 +62,7 @@ namespace Alis.Core.Aspect.Data.Dll
         /// </summary>
         /// <param name="obj">The obj</param>
         /// <returns>The bool</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (obj is PlatformInfo other)
             {

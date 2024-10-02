@@ -41,12 +41,12 @@ namespace Alis.Core.Aspect.Data.Json
         /// <summary>
         ///     The get
         /// </summary>
-        private readonly JFunc<TComponent, TMember> _get;
+        private readonly JFunc<TComponent, TMember> _get = null!;
 
         /// <summary>
         ///     The set
         /// </summary>
-        private readonly JAction<TComponent, TMember> _set;
+        private readonly JAction<TComponent, TMember> _set = null!;
 
         /// <summary>
         ///     Initializes a new instance
@@ -72,16 +72,16 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="component">The component</param>
         /// <returns>The object</returns>
-        public object Get(object component) => _get((TComponent) component);
+        public object? Get(object? component) => _get((TComponent) component!);
 
         /// <summary>
         ///     Sets the component
         /// </summary>
         /// <param name="component">The component</param>
         /// <param name="value">The value</param>
-        public void Set(object component, object value)
+        public void Set(object? component, object? value)
         {
-            _set((TComponent) component, (TMember) value);
+            _set((TComponent) component!, (TMember) value!);
         }
     }
 }

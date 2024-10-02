@@ -61,7 +61,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="defaultValue">The default value</param>
         /// <param name="provider">The provider</param>
         /// <returns>The value</returns>
-        public static T ChangeType<T>(object input, T defaultValue = default(T), IFormatProvider provider = null) => !TryChangeType(input, provider, out T value) ? defaultValue : value;
+        public static T ChangeType<T>(object? input, T defaultValue = default(T), IFormatProvider provider = null!) => !TryChangeType(input, provider, out T value) ? defaultValue : value;
 
         /// <summary>
         ///     Describes whether try change type
@@ -70,7 +70,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="input">The input</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        public static bool TryChangeType<T>(object input, out T value) => TryChangeType(input, null, out value);
+        public static bool TryChangeType<T>(object? input, out T value) => TryChangeType(input, null!, out value);
 
         /// <summary>
         ///     Describes whether try change type
@@ -80,15 +80,15 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="provider">The provider</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        internal static bool TryChangeType<T>(object input, IFormatProvider provider, out T value)
+        internal static bool TryChangeType<T>(object? input, IFormatProvider provider, out T value)
         {
-            if (!TryChangeType(input, typeof(T), provider, out object tValue))
+            if (!TryChangeType(input, typeof(T), provider, out object? tValue))
             {
-                value = default(T);
+                value = default(T)!;
                 return false;
             }
 
-            value = (T) tValue;
+            value = (T) tValue!;
             return true;
         }
 
@@ -100,16 +100,16 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="defaultValue">The default value</param>
         /// <param name="provider">The provider</param>
         /// <returns>The value</returns>
-        public static object ChangeType(object input, Type conversionType, object defaultValue = null, IFormatProvider provider = null)
+        public static object? ChangeType(object? input, Type? conversionType, object? defaultValue = null, IFormatProvider provider = null!)
         {
-            if (!TryChangeType(input, conversionType, provider, out object value))
+            if (!TryChangeType(input, conversionType, provider, out object? value))
             {
-                if (TryChangeType(defaultValue, conversionType, provider, out object def))
+                if (TryChangeType(defaultValue, conversionType, provider, out object? def))
                 {
                     return def;
                 }
 
-                return IsReallyValueType(conversionType) ? Activator.CreateInstance(conversionType) : null;
+                return IsReallyValueType(conversionType) ? Activator.CreateInstance(conversionType!) : null;
             }
 
             return value;
@@ -122,7 +122,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="conversionType">The conversion type</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        public static bool TryChangeType(object input, Type conversionType, out object value) => TryChangeType(input, conversionType, null, out value);
+        public static bool TryChangeType(object? input, Type? conversionType, out object? value) => TryChangeType(input, conversionType, null!, out value);
 
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="value">The value</param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <returns>The bool</returns>
-        internal static bool TryChangeType(object input, Type conversionType, IFormatProvider provider, out object value)
+        internal static bool TryChangeType(object? input, Type? conversionType, IFormatProvider provider, out object? value)
         {
             if (conversionType == null)
             {
@@ -177,9 +177,9 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="inputType">The input type</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        internal static bool TryChangeTypeBasedOnInputType(object input, Type conversionType, IFormatProvider provider, Type inputType, out object value)
+        internal static bool TryChangeTypeBasedOnInputType(object? input, Type? conversionType, IFormatProvider provider, Type inputType, out object? value)
         {
-            if (conversionType.IsEnum)
+            if (conversionType!.IsEnum)
             {
                 return TryChangeToEnum(conversionType, input, out value);
             }
@@ -201,7 +201,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="inputType">The input type</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        internal static bool TryChangeBasedOnConversionType(object input, Type conversionType, IFormatProvider provider, Type inputType, out object value)
+        internal static bool TryChangeBasedOnConversionType(object? input, Type? conversionType, IFormatProvider provider, Type inputType, out object? value)
         {
             if (conversionType == typeof(Guid))
             {
@@ -210,7 +210,7 @@ namespace Alis.Core.Aspect.Data.Json
 
             if (conversionType == typeof(Uri))
             {
-                return TryConvertToUri(input.ToString(), out value);
+                return TryConvertToUri(input!.ToString()!, out value);
             }
 
             if (conversionType == typeof(IntPtr))
@@ -245,7 +245,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="inputType">The input type</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        internal static bool TryChangeBasedOnOtherTypes(object input, Type conversionType, IFormatProvider provider, Type inputType, out object value)
+        internal static bool TryChangeBasedOnOtherTypes(object? input, Type? conversionType, IFormatProvider provider, Type inputType, out object? value)
         {
             if (IsArrayOrGenericList(conversionType, out Type elementType))
             {
@@ -276,10 +276,10 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="conversionType">The conversion type</param>
         /// <param name="elementType">The element type</param>
         /// <returns>The bool</returns>
-        internal static bool IsArrayOrGenericList(Type conversionType, out Type elementType)
+        internal static bool IsArrayOrGenericList(Type? conversionType, out Type elementType)
         {
-            elementType = null;
-            return conversionType.IsArray || IsGenericList(conversionType, out elementType);
+            elementType = null!;
+            return conversionType!.IsArray || IsGenericList(conversionType, out elementType);
         }
 
         /// <summary>
@@ -287,14 +287,14 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="conversionType">The conversion type</param>
         /// <returns>The bool</returns>
-        internal static bool IsCultureInfoOrFormatProvider(Type conversionType) => conversionType == typeof(CultureInfo) || conversionType == typeof(IFormatProvider);
+        internal static bool IsCultureInfoOrFormatProvider(Type? conversionType) => conversionType == typeof(CultureInfo) || conversionType == typeof(IFormatProvider);
 
         /// <summary>
         ///     Describes whether is bool
         /// </summary>
         /// <param name="conversionType">The conversion type</param>
         /// <returns>The bool</returns>
-        internal static bool IsBool(Type conversionType) => conversionType == typeof(bool);
+        internal static bool IsBool(Type? conversionType) => conversionType == typeof(bool);
 
         /// <summary>
         ///     Describes whether is convertible
@@ -302,9 +302,9 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="input">The input</param>
         /// <param name="convertible">The convertible</param>
         /// <returns>The bool</returns>
-        internal static bool IsConvertible(object input, out IConvertible convertible)
+        internal static bool IsConvertible(object? input, out IConvertible convertible)
         {
-            convertible = input as IConvertible;
+            convertible = (input as IConvertible)!;
             return convertible != null;
         }
 
@@ -313,14 +313,14 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="conversionType">The conversion type</param>
         /// <returns>The bool</returns>
-        internal static bool IsNumericType(Type conversionType) => conversionType == typeof(int) || conversionType == typeof(long) || conversionType == typeof(short) || conversionType == typeof(sbyte) || conversionType == typeof(uint) || conversionType == typeof(ulong) || conversionType == typeof(ushort) || conversionType == typeof(byte);
+        internal static bool IsNumericType(Type? conversionType) => conversionType == typeof(int) || conversionType == typeof(long) || conversionType == typeof(short) || conversionType == typeof(sbyte) || conversionType == typeof(uint) || conversionType == typeof(ulong) || conversionType == typeof(ushort) || conversionType == typeof(byte);
 
         /// <summary>
         ///     Describes whether is date time type
         /// </summary>
         /// <param name="conversionType">The conversion type</param>
         /// <returns>The bool</returns>
-        internal static bool IsDateTimeType(Type conversionType) => conversionType == typeof(DateTime) || conversionType == typeof(DateTimeOffset);
+        internal static bool IsDateTimeType(Type? conversionType) => conversionType == typeof(DateTime) || conversionType == typeof(DateTimeOffset);
 
         /// <summary>
         ///     Attempts to convert the input to a nullable type.
@@ -330,7 +330,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="provider">The format provider to use for conversion.</param>
         /// <param name="value">The converted value.</param>
         /// <returns>True if the conversion was successful, otherwise false.</returns>
-        internal static bool TryChangeToNullable(object input, Type conversionType, IFormatProvider provider, out object value)
+        internal static bool TryChangeToNullable(object? input, Type? conversionType, IFormatProvider provider, out object? value)
         {
             value = null;
 
@@ -339,7 +339,7 @@ namespace Alis.Core.Aspect.Data.Json
                 return true;
             }
 
-            Type nullableUnderlyingType = Nullable.GetUnderlyingType(conversionType);
+            Type nullableUnderlyingType = Nullable.GetUnderlyingType(conversionType!)!;
             if (nullableUnderlyingType != null)
             {
                 value = Convert.ChangeType(input, nullableUnderlyingType, provider);
@@ -356,11 +356,11 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="input">The input</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        internal static bool TryChangeToEnum(Type conversionType, object input, out object value)
+        internal static bool TryChangeToEnum(Type? conversionType, object? input, out object? value)
         {
-            if (Enum.IsDefined(conversionType, input))
+            if (Enum.IsDefined(conversionType!, input!))
             {
-                value = Enum.Parse(conversionType, input.ToString());
+                value = Enum.Parse(conversionType!, input!.ToString()!);
                 return true;
             }
 
@@ -375,11 +375,11 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="input">The input</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        internal static bool TryChangeFromEnum(Type conversionType, object input, out object value)
+        internal static bool TryChangeFromEnum(Type? conversionType, object? input, out object? value)
         {
             if (input is Enum)
             {
-                value = Convert.ChangeType(input, conversionType);
+                value = Convert.ChangeType(input, conversionType!);
                 return true;
             }
 
@@ -394,9 +394,9 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="provider">The provider</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        internal static bool TryChangeToGuid(object input, IFormatProvider provider, out object value)
+        internal static bool TryChangeToGuid(object? input, IFormatProvider provider, out object? value)
         {
-            if (Guid.TryParse(input.ToString(), out Guid guid))
+            if (Guid.TryParse(input!.ToString(), out Guid guid))
             {
                 value = guid;
                 return true;
@@ -412,7 +412,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="inputString">The input string</param>
         /// <param name="result">The result</param>
         /// <returns>The is uri created</returns>
-        internal static bool TryConvertToUri(string inputString, out object result)
+        internal static bool TryConvertToUri(string inputString, out object? result)
         {
             result = null;
 
@@ -421,7 +421,7 @@ namespace Alis.Core.Aspect.Data.Json
                 return false;
             }
 
-            bool isUriCreated = Uri.TryCreate(inputString, UriKind.RelativeOrAbsolute, out Uri uri);
+            bool isUriCreated = Uri.TryCreate(inputString, UriKind.RelativeOrAbsolute, out Uri? uri);
 
             if (isUriCreated)
             {
@@ -437,9 +437,9 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="input">The input</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        internal static bool TryChangeToIntPtr(object input, out object value)
+        internal static bool TryChangeToIntPtr(object? input, out object? value)
         {
-            if (int.TryParse(input.ToString(), out int intResult))
+            if (int.TryParse(input!.ToString(), out int intResult))
             {
                 value = new IntPtr(intResult);
                 return true;
@@ -456,11 +456,11 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="conversionType">The conversion type</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        internal static bool TryChangeToNumeric(object input, Type conversionType, out object value)
+        internal static bool TryChangeToNumeric(object? input, Type? conversionType, out object? value)
         {
             try
             {
-                value = Convert.ChangeType(input, conversionType);
+                value = Convert.ChangeType(input, conversionType!);
             }
             catch (Exception)
             {
@@ -479,9 +479,9 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="inputType">The input type</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        internal static bool TryChangeToDateTime(object input, Type conversionType, Type inputType, out object value)
+        internal static bool TryChangeToDateTime(object? input, Type? conversionType, Type inputType, out object? value)
         {
-            if (DateTime.TryParse(input.ToString(), out DateTime dateTime))
+            if (DateTime.TryParse(input!.ToString(), out DateTime dateTime))
             {
                 value = dateTime;
                 return true;
@@ -498,9 +498,9 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="provider">The provider</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        internal static bool TryChangeToTimeSpan(object input, IFormatProvider provider, out object value)
+        internal static bool TryChangeToTimeSpan(object? input, IFormatProvider provider, out object? value)
         {
-            if (TimeSpan.TryParse(input.ToString(), out TimeSpan timeSpan))
+            if (TimeSpan.TryParse(input!.ToString(), out TimeSpan timeSpan))
             {
                 value = timeSpan;
                 return true;
@@ -518,14 +518,14 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="elementType">The element type</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        internal static bool TryChangeToCollection(object input, Type conversionType, Type elementType, out object value)
+        internal static bool TryChangeToCollection(object? input, Type? conversionType, Type elementType, out object? value)
         {
             if (input is IList list)
             {
-                IList result = (IList) Activator.CreateInstance(conversionType);
+                IList? result = (IList) Activator.CreateInstance(conversionType!)!;
                 foreach (object item in list)
                 {
-                    result.Add(Convert.ChangeType(item, elementType));
+                    result!.Add(Convert.ChangeType(item, elementType));
                 }
 
                 value = result;
@@ -542,11 +542,11 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="input">The input</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        internal static bool TryChangeToCultureInfo(object input, out object value)
+        internal static bool TryChangeToCultureInfo(object? input, out object? value)
         {
-            if (CultureInfo.GetCultures(CultureTypes.AllCultures).Any(c => c.Name == input.ToString()))
+            if (CultureInfo.GetCultures(CultureTypes.AllCultures).Any(c => c.Name == input!.ToString()))
             {
-                value = new CultureInfo(input.ToString());
+                value = new CultureInfo(input!.ToString()!);
                 return true;
             }
 
@@ -561,9 +561,9 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="provider">The provider</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        internal static bool TryChangeToBool(object input, IFormatProvider provider, out object value)
+        internal static bool TryChangeToBool(object? input, IFormatProvider provider, out object? value)
         {
-            if (bool.TryParse(input.ToString(), out bool boolValue))
+            if (bool.TryParse(input!.ToString(), out bool boolValue))
             {
                 value = boolValue;
                 return true;
@@ -581,11 +581,11 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="provider">The provider</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        internal static bool TryChangeWithIConvertible(IConvertible input, Type conversionType, IFormatProvider provider, out object value)
+        internal static bool TryChangeWithIConvertible(IConvertible input, Type? conversionType, IFormatProvider provider, out object? value)
         {
             try
             {
-                value = input.ToType(conversionType, provider);
+                value = input.ToType(conversionType!, provider);
                 return true;
             }
             catch
@@ -603,13 +603,13 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="source">The source type of the value.</param>
         /// <param name="result">The result of the conversion.</param>
         /// <returns>True if the conversion was successful, false otherwise.</returns>
-        internal static bool TryConvert(object value, Type target, Type source, out object result)
+        internal static bool TryConvert(object? value, Type? target, Type source, out object? result)
         {
             TypeConverter converter = GetConverter(target);
 
             if (converter.CanConvertFrom(source))
             {
-                result = converter.ConvertFrom(value);
+                result = converter.ConvertFrom(value!);
                 return true;
             }
 
@@ -622,7 +622,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="type">The type to get the converter for.</param>
         /// <returns>The type converter for the specified type.</returns>
-        internal static TypeConverter GetConverter(Type type) => TypeDescriptor.GetConverter(type);
+        internal static TypeConverter GetConverter(Type? type) => TypeDescriptor.GetConverter(type!);
 
         /// <summary>
         ///     Enums the to u int 64 using the specified value
@@ -630,7 +630,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="value">The value</param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <returns>The ulong</returns>
-        internal static ulong EnumToUInt64(object value)
+        internal static ulong EnumToUInt64(object? value)
         {
             if (value == null)
             {
@@ -680,7 +680,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     type.
         /// </param>
         /// <returns>True if the conversion is successful, otherwise false.</returns>
-        internal static bool TryStringToEnum(Type type, string[] names, Array values, string input, out object value)
+        internal static bool TryStringToEnum(Type type, string[] names, Array values, string? input, out object? value)
         {
             if (TryMatchNames(names, values, input, out value) ||
                 TryMatchValues(values, input, out value) ||
@@ -701,7 +701,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="input">The input</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        internal static bool TryMatchNames(string[] names, Array values, string input, out object value)
+        internal static bool TryMatchNames(string[] names, Array values, string? input, out object? value)
         {
             for (int i = 0; i < names.Length; i++)
             {
@@ -723,11 +723,11 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="input">The input</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        internal static bool TryMatchValues(Array values, string input, out object value)
+        internal static bool TryMatchValues(Array values, string? input, out object? value)
         {
             for (int i = 0; i < values.GetLength(0); i++)
             {
-                object valueI = values.GetValue(i);
+                object? valueI = values.GetValue(i);
                 if (IsInputNegative(input))
                 {
                     if (MatchNegativeInput(input, valueI))
@@ -755,7 +755,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="input">The input</param>
         /// <returns>The bool</returns>
-        internal static bool IsInputNegative(string input) => (input.Length > 0) && (input[0] == '-');
+        internal static bool IsInputNegative(string? input) => (input!.Length > 0) && (input[0] == '-');
 
         /// <summary>
         ///     Describes whether match negative input
@@ -763,7 +763,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="input">The input</param>
         /// <param name="valueI">The value</param>
         /// <returns>The bool</returns>
-        internal static bool MatchNegativeInput(string input, object valueI)
+        internal static bool MatchNegativeInput(string? input, object? valueI)
         {
             long ul = (long) EnumToUInt64(valueI);
             return ul.ToString().EqualsIgnoreCase(input);
@@ -775,7 +775,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="input">The input</param>
         /// <param name="valueI">The value</param>
         /// <returns>The bool</returns>
-        internal static bool MatchPositiveInput(string input, object valueI)
+        internal static bool MatchPositiveInput(string? input, object? valueI)
         {
             ulong ul = EnumToUInt64(valueI);
             return ul.ToString().EqualsIgnoreCase(input);
@@ -788,7 +788,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="input">The input</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        internal static bool TryHandleDigitOrSignStart(Type type, string input, out object value)
+        internal static bool TryHandleDigitOrSignStart(Type type, string? input, out object? value)
         {
             if (!StartsWithDigitOrSign(input))
             {
@@ -806,7 +806,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="input">The input to convert.</param>
         /// <param name="value">The output value.</param>
         /// <returns>True if the conversion was successful, false otherwise.</returns>
-        internal static bool TryConvertToEnumAndAssignValue(Type type, string input, out object value)
+        internal static bool TryConvertToEnumAndAssignValue(Type type, string? input, out object? value)
         {
             value = ConvertToEnum(type, input);
             if (value == null)
@@ -823,14 +823,14 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="input">The input</param>
         /// <returns>The bool</returns>
-        internal static bool StartsWithDigitOrSign(string input) => char.IsDigit(input[0]) || input[0] == '-' || input[0] == '+';
+        internal static bool StartsWithDigitOrSign(string? input) => char.IsDigit(input![0]) || input[0] == '-' || input[0] == '+';
 
         /// <summary>
         ///     Creates the instance using the specified type
         /// </summary>
         /// <param name="type">The type</param>
         /// <returns>The object</returns>
-        internal static object CreateInstance(Type type) => Activator.CreateInstance(type);
+        internal static object? CreateInstance(Type type) => Activator.CreateInstance(type);
 
         /// <summary>
         ///     Converts the to enum using the specified type
@@ -838,7 +838,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="type">The type</param>
         /// <param name="input">The input</param>
         /// <returns>The object</returns>
-        internal static object ConvertToEnum(Type type, string input) => EnumToObject(type, input);
+        internal static object? ConvertToEnum(Type type, string? input) => EnumToObject(type, input);
 
         /// <summary>
         ///     Enums the to object using the specified enum type
@@ -846,7 +846,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="enumType">The enum type</param>
         /// <param name="value">The value</param>
         /// <returns>The object</returns>
-        internal static object EnumToObject(Type enumType, object value)
+        internal static object? EnumToObject(Type enumType, object? value)
         {
             if (IsInvalid(enumType, value))
             {
@@ -867,7 +867,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="enumType">The enum type</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        internal static bool IsInvalid(Type enumType, object value) => enumType == null || value == null || !enumType.IsEnum;
+        internal static bool IsInvalid(Type enumType, object? value) => enumType == null || value == null || !enumType.IsEnum;
 
         /// <summary>
         ///     Parses the enum using the specified enum type
@@ -875,7 +875,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="enumType">The enum type</param>
         /// <param name="stringValue">The string value</param>
         /// <returns>The object</returns>
-        internal static object ParseEnum(Type enumType, string stringValue) => Enum.Parse(enumType, stringValue);
+        internal static object? ParseEnum(Type enumType, string stringValue) => Enum.Parse(enumType, stringValue);
 
         /// <summary>
         ///     Converts the to enum using the specified enum type
@@ -883,7 +883,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="enumType">The enum type</param>
         /// <param name="value">The value</param>
         /// <returns>The object</returns>
-        internal static object ConvertToEnum(Type enumType, object value)
+        internal static object? ConvertToEnum(Type enumType, object? value)
         {
             return Type.GetTypeCode(Enum.GetUnderlyingType(enumType)) switch
             {
@@ -905,14 +905,14 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="enumType">The enum type</param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <returns>The value</returns>
-        internal static object ToEnum(string text, Type enumType)
+        internal static object? ToEnum(string text, Type enumType)
         {
             if (enumType == null)
             {
                 throw new ArgumentNullException(nameof(enumType));
             }
 
-            EnumTryParse(enumType, text, out object value);
+            EnumTryParse(enumType, text, out object? value);
             return value;
         }
 
@@ -924,7 +924,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="input">The input</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        internal static bool EnumTryParse(Type type, object input, out object value)
+        internal static bool EnumTryParse(Type type, object input, out object? value)
         {
             if (!IsValidInput(type, input))
             {
@@ -932,7 +932,7 @@ namespace Alis.Core.Aspect.Data.Json
                 return false;
             }
 
-            string stringInput = FormatInput(input);
+            string? stringInput = FormatInput(input);
 
             if (IsHexadecimalAndCanBeParsed(stringInput, type, out value))
             {
@@ -964,10 +964,10 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="type">The type</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        internal static bool IsHexadecimalAndCanBeParsed(string input, Type type, out object value)
+        internal static bool IsHexadecimalAndCanBeParsed(string? input, Type type, out object? value)
         {
             value = null;
-            return input.StartsWith("0x") && TryParseHexadecimal(input, type, out value);
+            return input!.StartsWith("0x") && TryParseHexadecimal(input, type, out value);
         }
 
         /// <summary>
@@ -980,7 +980,7 @@ namespace Alis.Core.Aspect.Data.Json
         internal static bool CanGetEnumNamesAndValues(Type type, out string[] names, out Array values)
         {
             names = new string[] { };
-            values = null;
+            values = null!;
             return type.IsEnum && TryGetEnumNamesAndValues(type, out names, out values);
         }
 
@@ -993,14 +993,14 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="values">The values</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        internal static bool CanParseTokens(string input, Type type, string[] names, Array values, out object value) => TryParseTokens(input, type, names, values, out value);
+        internal static bool CanParseTokens(string? input, Type type, string[] names, Array values, out object? value) => TryParseTokens(input, type, names, values, out value);
 
         /// <summary>
         ///     Formats the input using the specified input
         /// </summary>
         /// <param name="input">The input</param>
         /// <returns>The string</returns>
-        internal static string FormatInput(object input) => string.Format(CultureInfo.InvariantCulture, "{0}", input).Nullify();
+        internal static string? FormatInput(object input) => string.Format(CultureInfo.InvariantCulture, "{0}", input).Nullify();
 
         /// <summary>
         ///     Describes whether try parse hexadecimal
@@ -1009,9 +1009,9 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="type">The type</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        internal static bool TryParseHexadecimal(string input, Type type, out object value)
+        internal static bool TryParseHexadecimal(string? input, Type type, out object? value)
         {
-            if (input.StartsWith("0x", StringComparison.OrdinalIgnoreCase))
+            if (input!.StartsWith("0x", StringComparison.OrdinalIgnoreCase))
             {
                 if (ulong.TryParse(input.Substring(2), NumberStyles.HexNumber, null, out ulong ulx))
                 {
@@ -1048,14 +1048,14 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="values">The values</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        internal static bool TryParseTokens(string input, Type type, string[] names, Array values, out object value)
+        internal static bool TryParseTokens(string? input, Type type, string[] names, Array values, out object? value)
         {
-            if (!type.IsDefined(typeof(FlagsAttribute), true) && (input.IndexOfAny(EnumSeparators) < 0))
+            if (!type.IsDefined(typeof(FlagsAttribute), true) && (input!.IndexOfAny(EnumSeparators) < 0))
             {
                 return TryStringToEnum(type, names, values, input, out value);
             }
 
-            string[] tokens = input.Split(EnumSeparators, StringSplitOptions.RemoveEmptyEntries);
+            string[] tokens = input!.Split(EnumSeparators, StringSplitOptions.RemoveEmptyEntries);
             if (tokens.Length == 0)
             {
                 value = Activator.CreateInstance(type);
@@ -1074,13 +1074,13 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="values">The values</param>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
-        internal static bool TryParseTokenValues(string[] tokens, Type type, string[] names, Array values, out object value)
+        internal static bool TryParseTokenValues(string[] tokens, Type type, string[] names, Array values, out object? value)
         {
             ulong parsedValue = 0;
 
             foreach (string token in tokens)
             {
-                if (!TryParseToken(token, type, names, values, out object tokenValue))
+                if (!TryParseToken(token, type, names, values, out object? tokenValue))
                 {
                     value = Activator.CreateInstance(type);
                     return false;
@@ -1102,9 +1102,9 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="values">The values</param>
         /// <param name="tokenValue">The token value</param>
         /// <returns>The bool</returns>
-        internal static bool TryParseToken(string token, Type type, string[] names, Array values, out object tokenValue)
+        internal static bool TryParseToken(string token, Type type, string[] names, Array values, out object? tokenValue)
         {
-            string sanitizedToken = SanitizeToken(token);
+            string? sanitizedToken = SanitizeToken(token);
 
             if (IsTokenNull(sanitizedToken))
             {
@@ -1120,14 +1120,14 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="token">The token</param>
         /// <returns>The string</returns>
-        internal static string SanitizeToken(string token) => token.Nullify();
+        internal static string? SanitizeToken(string token) => token.Nullify();
 
         /// <summary>
         ///     Describes whether is token null
         /// </summary>
         /// <param name="sanitizedToken">The sanitized token</param>
         /// <returns>The bool</returns>
-        internal static bool IsTokenNull(string sanitizedToken) => sanitizedToken == null;
+        internal static bool IsTokenNull(string? sanitizedToken) => sanitizedToken == null;
 
         /// <summary>
         ///     Describes whether try convert token to enum value
@@ -1138,14 +1138,14 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="token">The token</param>
         /// <param name="tokenValue">The token value</param>
         /// <returns>The bool</returns>
-        internal static bool TryConvertTokenToEnumValue(Type type, string[] names, Array values, string token, out object tokenValue) => TryStringToEnum(type, names, values, token, out tokenValue);
+        internal static bool TryConvertTokenToEnumValue(Type type, string[] names, Array values, string? token, out object? tokenValue) => TryStringToEnum(type, names, values, token, out tokenValue);
 
         /// <summary>
         ///     Converts the token value to ulong using the specified token value
         /// </summary>
         /// <param name="tokenValue">The token value</param>
         /// <returns>The ulong</returns>
-        internal static ulong ConvertTokenValueToUlong(object tokenValue)
+        internal static ulong ConvertTokenValueToUlong(object? tokenValue)
         {
             switch (Convert.GetTypeCode(tokenValue))
             {
@@ -1167,7 +1167,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="elementType">The element type</param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <returns>The bool</returns>
-        internal static bool IsGenericList(Type type, out Type elementType)
+        internal static bool IsGenericList(Type? type, out Type elementType)
         {
             if (type == null)
             {
@@ -1180,7 +1180,7 @@ namespace Alis.Core.Aspect.Data.Json
                 return true;
             }
 
-            elementType = null;
+            elementType = null!;
             return false;
         }
 
@@ -1190,7 +1190,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="type">The type</param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <returns>The bool</returns>
-        internal static bool IsReallyValueType(Type type)
+        internal static bool IsReallyValueType(Type? type)
         {
             if (type == null)
             {
@@ -1206,7 +1206,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="type">The type</param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <returns>The bool</returns>
-        internal static bool IsNullable(Type type)
+        internal static bool IsNullable(Type? type)
         {
             if (type == null)
             {
