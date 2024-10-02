@@ -52,12 +52,12 @@ namespace Alis.Core.Aspect.Data.Json
         /// <summary>
         ///     The key prop
         /// </summary>
-        private PropertyInfo keyProp;
+        private PropertyInfo? keyProp;
 
         /// <summary>
         ///     The value prop
         /// </summary>
-        private PropertyInfo valueProp;
+        private PropertyInfo? valueProp;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="KeyValueTypeEnumerator" /> class
@@ -91,7 +91,7 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     if (keyProp != null)
                     {
-                        return new DictionaryEntry(keyProp.GetValue(enumerator.Current, null), valueProp.GetValue(enumerator.Current, null));
+                        return new DictionaryEntry(keyProp.GetValue(enumerator.Current, null)!, valueProp.GetValue(enumerator.Current, null));
                     }
                 }
 
@@ -107,7 +107,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <summary>
         ///     Gets the value of the value
         /// </summary>
-        public object Value => Entry.Value;
+        public object Value => Entry.Value!;
 
         /// <summary>
         ///     Gets the value of the current

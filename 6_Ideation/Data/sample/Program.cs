@@ -43,7 +43,7 @@ namespace Alis.Core.Aspect.Data.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            Music musicInfo2 = new Music
+            Music? musicInfo2 = new Music
             {
                 Name = "Prince Charming",
                 Artist = "Metallica",

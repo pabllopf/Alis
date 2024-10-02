@@ -47,7 +47,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         /// <param name="context"></param>
         public SceneManager(Context context) : base(context)
         {
-            Scenes = new List<Entity.Scene>();
+            Scenes = new List<Entity.Scene?>();
             CurrentScene = new Entity.Scene();
         }
 
@@ -55,14 +55,14 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         ///     Gets or sets the value of the current scene
         /// </summary>
         [JsonPropertyName("_CurrentScene_", true, true)]
-        public Entity.Scene CurrentScene { get; set; }
+        public Entity.Scene? CurrentScene { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the scenes
         /// </summary>
 
         [JsonPropertyName("_Scenes_")]
-        public List<Entity.Scene> Scenes { get; set; }
+        public List<Entity.Scene?> Scenes { get; set; }
 
         /// <summary>
         ///     Ons the enable
@@ -101,8 +101,8 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene.OnStart();
 
-            string versionCurrent = Assembly.GetExecutingAssembly().GetName().Version.ToString().Replace('.', '_');
-            foreach (Entity.Scene scene in Scenes)
+            string versionCurrent = Assembly.GetExecutingAssembly().GetName().Version?.ToString().Replace('.', '_') ?? throw new InvalidOperationException();
+            foreach (Entity.Scene? scene in Scenes)
             {
                 scene.SetContext(Context);
                 string gameJson = JsonSerializer.Serialize(scene, new JsonOptions
@@ -258,17 +258,17 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
-        public void Remove<T>(T component) where T : Entity.Scene
+        public void Remove<T>(T? component) where T : Entity.Scene
         {
             Scenes.Remove(component);
         }
-
+        
         /// <summary>
         ///     Gets this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The</returns>
-        public T Get<T>() where T : Entity.Scene => (T) Scenes.Find(i => i.GetType() == typeof(T));
+        public T Get<T>() where T : Entity.Scene => (T) Scenes.Find(i => i.GetType() == typeof(T))!;
 
         /// <summary>
         ///     Describes whether this instance contains
@@ -290,7 +290,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         ///     Loads the scene using the specified scene
         /// </summary>
         /// <param name="scene">The scene</param>
-        public void LoadScene(Entity.Scene scene)
+        public void LoadScene(Entity.Scene? scene)
         {
             CurrentScene = scene;
         }
@@ -299,7 +299,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         ///     Reloads the scene using the specified scene
         /// </summary>
         /// <param name="scene">The scene</param>
-        public void ReloadScene(Entity.Scene scene)
+        public void ReloadScene(Entity.Scene? scene)
         {
             CurrentScene = scene;
         }
@@ -313,8 +313,8 @@ namespace Alis.Core.Ecs.System.Manager.Scene
             CurrentScene.OnStop();
             CurrentScene.OnExit();
 
-            Entity.Scene selectedScene = Scenes.Find(i => i.Name.Equals(name));
-            string versionCurrent = Assembly.GetExecutingAssembly().GetName().Version.ToString().Replace('.', '_');
+            Entity.Scene selectedScene = Scenes.Find(i => i.Name.Equals(name)) ?? throw new InvalidOperationException();
+            string versionCurrent = Assembly.GetExecutingAssembly().GetName().Version?.ToString().Replace('.', '_') ?? throw new InvalidOperationException();
             string fileCurrentScene = Path.Combine(Path.Combine(Environment.CurrentDirectory, ".Data"), $"Alis_{versionCurrent}_Scene_{selectedScene.Name}.json");
 
             CurrentScene = JsonSerializer.Deserialize<Entity.Scene>(
@@ -338,9 +338,9 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene.OnStop();
             CurrentScene.OnExit();
-            Entity.Scene selectedScene = Scenes[index];
+            Entity.Scene? selectedScene = Scenes[index];
 
-            string versionCurrent = Assembly.GetExecutingAssembly().GetName().Version.ToString().Replace('.', '_');
+            string versionCurrent = Assembly.GetExecutingAssembly().GetName().Version?.ToString().Replace('.', '_') ?? throw new InvalidOperationException();
             string fileCurrentScene = Path.Combine(Path.Combine(Environment.CurrentDirectory, ".Data"), $"Alis_{versionCurrent}_Scene_{selectedScene.Name}.json");
 
             CurrentScene = JsonSerializer.Deserialize<Entity.Scene>(File.ReadAllText(fileCurrentScene), new JsonOptions

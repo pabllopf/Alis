@@ -38,6 +38,6 @@ namespace Alis.Core.Aspect.Data.Json
         ///     Gets or sets the options.
         /// </summary>
         /// <value>The options.</value>
-        JsonOptions Options { get; set; }
+        JsonOptions? Options { get; set; }
     }
 }

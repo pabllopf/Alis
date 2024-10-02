@@ -42,7 +42,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <value>
         ///     The list.
         /// </value>
-        public virtual object List { get; set; }
+        public virtual object? List { get; set; }
 
         /// <summary>
         ///     Gets the current context.
@@ -50,7 +50,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <value>
         ///     The context. May be null.
         /// </value>
-        public IDictionary<string, object> Context { get; set; } = new Dictionary<string, object>();
+        public IDictionary<string, object?> Context { get; set; } = new Dictionary<string, object?>();
 
         /// <summary>
         ///     Clears the list object.
@@ -62,6 +62,6 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="value">The value.</param>
         /// <param name="options">The options.</param>
-        public abstract void Add(object value, JsonOptions options = null);
+        public abstract void Add(object? value, JsonOptions? options = null);
     }
 }
