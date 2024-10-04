@@ -87,7 +87,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <summary>
         ///     The not supported exception
         /// </summary>
-        public object? this[object key]
+        public object this[object key]
         {
             get => throw new NotSupportedException();
             set => throw new NotSupportedException();
@@ -98,7 +98,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="key">The key</param>
         /// <param name="value">The value</param>
-        public void Add(object key, object? value) => throw new NotSupportedException();
+        public void Add(object key, object value) => throw new NotSupportedException();
 
         /// <summary>
         ///     Clears this instance

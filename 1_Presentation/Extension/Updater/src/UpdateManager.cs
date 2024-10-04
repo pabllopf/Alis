@@ -76,8 +76,6 @@ namespace Alis.Extension.Updater
             _gitHubApiService = gitHubApiService;
             _fileService = fileService;
             _programFolder = programFolder;
-            Message = "";
-            UpdateProgressChanged += (progress, message) => { };
         }
 
         /// <summary>
@@ -135,8 +133,8 @@ namespace Alis.Extension.Updater
                     return false;
                 }
 
-                string downloadUrl = selectedAsset["browser_download_url"].ToString() ?? throw new InvalidOperationException();
-                string version = latestRelease["tag_name"].ToString() ?? throw new InvalidOperationException();
+                string downloadUrl = selectedAsset["browser_download_url"]?.ToString();
+                string version = latestRelease["tag_name"]?.ToString();
                 Logger.Info($"The latest version available is {version}");
                 OnUpdateProgressChanged(0.2f, $"The latest version available is {version}");
 
@@ -169,9 +167,7 @@ namespace Alis.Extension.Updater
                 OnUpdateProgressChanged(0.5f, $"Downloading the latest version '{version}'");
                 Logger.Info($"Downloading the latest version '{version}'");
                 WaitForContinue();
-                
-                Debug.Assert(downloadUrl != null, nameof(downloadUrl) + " != null");
-                
+
                 string fileAsync = await DownloadFileAsync(downloadUrl);
                 if (string.IsNullOrEmpty(fileAsync))
                 {
@@ -280,14 +276,15 @@ namespace Alis.Extension.Updater
         {
             foreach (Dictionary<string, object> asset in assets)
             {
-                string assetName = asset["name"]?.ToString() ?? string.Empty;
+                string assetName = asset["name"]?.ToString();
+                if (assetName == null) continue;
                 if (assetName.Contains(platform) && assetName.Contains(architecture))
                 {
                     return asset;
                 }
             }
 
-            throw new InvalidOperationException("No compatible package found.");
+            return null;
         }
 
         /// <summary>

@@ -41,27 +41,27 @@ namespace Alis.Core.Aspect.Data.Json
         /// <summary>
         ///     The accessor
         /// </summary>
-        private IMemberAccessor _accessor = null!;
+        private IMemberAccessor _accessor;
 
         /// <summary>
         ///     The escaped wire name
         /// </summary>
-        private string? _escapedWireName;
+        private string _escapedWireName;
 
         /// <summary>
         ///     The name
         /// </summary>
-        private string _name = null!;
+        private string _name;
 
         /// <summary>
         ///     The type
         /// </summary>
-        private Type? _type;
+        private Type _type;
 
         /// <summary>
         ///     The wire name
         /// </summary>
-        private string _wireName = null!;
+        private string _wireName;
 
         /// <summary>
         ///     Gets or sets the member name.
@@ -109,7 +109,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <value>
         ///     The escaped name used during serialization and des-serialization.
         /// </value>
-        public string? EscapedWireName
+        public string EscapedWireName
         {
             get => _escapedWireName;
             set
@@ -137,8 +137,8 @@ namespace Alis.Core.Aspect.Data.Json
         /// <value>
         ///     The default value.
         /// </value>
-        public object? DefaultValue { get; set; } = null!;
-        
+        public object DefaultValue { get; set; }
+
         /// <summary>
         ///     Gets or sets the accessor.
         /// </summary>
@@ -157,7 +157,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <value>
         ///     The type.
         /// </value>
-        public Type? Type
+        public Type Type
         {
             get => _type;
             set => _type = value ?? throw new ArgumentNullException(nameof(value));
@@ -178,9 +178,9 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="elementsCount">The elements count.</param>
         /// <param name="options">The options.</param>
         /// <returns>A new or existing instance.</returns>
-        private object? GetOrCreateInstance(object? target, int elementsCount, JsonOptions? options = null)
+        private object GetOrCreateInstance(object target, int elementsCount, JsonOptions options = null)
         {
-            object? targetValue;
+            object targetValue;
             if ((options != null) && options.SerializationOptions.HasFlag(JsonSerializationOptions.ContinueOnValueError))
             {
                 try
@@ -200,7 +200,7 @@ namespace Alis.Core.Aspect.Data.Json
             // sufficient array?
             if (targetValue == null || (targetValue is Array array && (array.GetLength(0) < elementsCount)))
             {
-                if (Type!.IsInterface)
+                if (Type.IsInterface)
                 {
                     return null;
                 }
@@ -223,17 +223,17 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="key">The entry key.</param>
         /// <param name="value">The entry value.</param>
         /// <param name="options">The options.</param>
-        public void ApplyEntry(IDictionary? dictionary, object? target, string key, object? value, JsonOptions? options = null)
+        public void ApplyEntry(IDictionary dictionary, object target, string key, object value, JsonOptions options = null)
         {
             if (options is {ApplyEntryCallback: { }})
             {
-                Dictionary<object, object?> og = new Dictionary<object, object?>
+                Dictionary<object, object> og = new Dictionary<object, object>
                 {
                     ["dictionary"] = dictionary,
                     ["member"] = this
                 };
 
-                JsonEventArgs e = new JsonEventArgs(null!, value, og!, options, key, target)
+                JsonEventArgs e = new JsonEventArgs(null, value, og, options, key, target)
                 {
                     EventType = JsonEventType.ApplyEntry
                 };
@@ -248,12 +248,12 @@ namespace Alis.Core.Aspect.Data.Json
 
             if (value is IDictionary dic)
             {
-                object? targetValue = GetOrCreateInstance(target, dic.Count, options);
+                object targetValue = GetOrCreateInstance(target, dic.Count, options);
                 JsonSerializer.Apply(dic, targetValue, options);
                 return;
             }
 
-            ListObject? lo = JsonSerializer.GetListObject(Type, options, target, value, dictionary, key);
+            ListObject lo = JsonSerializer.GetListObject(Type, options, target, value, dictionary, key);
             if (lo != null)
             {
                 if (value is IEnumerable enumerable)
@@ -265,7 +265,7 @@ namespace Alis.Core.Aspect.Data.Json
             }
 
 
-            object? changeValue = JsonSerializer.ChangeType(target, value, Type, options);
+            object changeValue = JsonSerializer.ChangeType(target, value, Type, options);
             Accessor.Set(target, changeValue);
         }
 
@@ -274,14 +274,14 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>true if the specified value is equal to the zero value.</returns>
-        public bool IsNullDateTimeValue(object? value) => value == null || DateTime.MinValue.Equals(value);
+        public bool IsNullDateTimeValue(object value) => value == null || DateTime.MinValue.Equals(value);
 
         /// <summary>
         ///     Determines whether the specified value is equal to the zero value for its type.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>true if the specified value is equal to the zero value.</returns>
-        public bool IsZeroValue(object? value)
+        public bool IsZeroValue(object value)
         {
             if (value == null)
             {
@@ -297,7 +297,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="value">The value to compare.</param>
         /// <returns>true if both values are equal; false otherwise.</returns>
-        public bool EqualsDefaultValue(object? value) => JsonSerializer.AreValuesEqual(DefaultValue, value);
+        public bool EqualsDefaultValue(object value) => JsonSerializer.AreValuesEqual(DefaultValue, value);
 
         /// <summary>
         ///     Removes a deserialization member.
@@ -306,7 +306,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="options">The options. May be null.</param>
         /// <param name="member">The member. May not be null.</param>
         /// <returns>true if item is successfully removed; otherwise, false.</returns>
-        public static bool RemoveDeserializationMember(Type type, JsonOptions? options, MemberDefinition member)
+        public static bool RemoveDeserializationMember(Type type, JsonOptions options, MemberDefinition member)
         {
             if (type == null)
             {
@@ -329,7 +329,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="options">The options. May be null.</param>
         /// <param name="member">The member. May not be null.</param>
         /// <returns>true if item is successfully removed; otherwise, false.</returns>
-        public static bool RemoveSerializationMember(Type type, JsonOptions? options, MemberDefinition member)
+        public static bool RemoveSerializationMember(Type type, JsonOptions options, MemberDefinition member)
         {
             if (type == null)
             {
@@ -352,7 +352,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="options">The options. May be null.</param>
         /// <param name="member">The member. May not be null.</param>
         /// <returns>true if item is successfully added; otherwise, false.</returns>
-        public static void AddDeserializationMember(Type type, JsonOptions? options, MemberDefinition member)
+        public static void AddDeserializationMember(Type type, JsonOptions options, MemberDefinition member)
         {
             if (type == null)
             {
@@ -375,7 +375,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="options">The options. May be null.</param>
         /// <param name="member">The member. May not be null.</param>
         /// <returns>true if item is successfully added; otherwise, false.</returns>
-        public static void AddSerializationMember(Type type, JsonOptions? options, MemberDefinition member)
+        public static void AddSerializationMember(Type type, JsonOptions options, MemberDefinition member)
         {
             if (type == null)
             {
@@ -397,7 +397,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="type">The type. May not be null.</param>
         /// <param name="options">The options. May be null.</param>
         /// <returns>A list of serialization members.</returns>
-        public static MemberDefinition[] GetSerializationMembers(Type type, JsonOptions? options = null)
+        public static MemberDefinition[] GetSerializationMembers(Type type, JsonOptions options = null)
         {
             if (type == null)
             {
@@ -414,7 +414,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="type">The type. May not be null.</param>
         /// <param name="options">The options. May be null.</param>
         /// <returns>A list of deserialization members.</returns>
-        public static MemberDefinition[] GetDeserializationMembers(Type type, JsonOptions? options = null)
+        public static MemberDefinition[] GetDeserializationMembers(Type type, JsonOptions options = null)
         {
             if (type == null)
             {

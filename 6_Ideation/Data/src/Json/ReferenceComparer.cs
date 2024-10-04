@@ -55,7 +55,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The bool</returns>
-        bool IEqualityComparer<object>.Equals(object? x, object? y) => ReferenceEquals(x, y);
+        bool IEqualityComparer<object>.Equals(object x, object y) => ReferenceEquals(x, y);
 
         /// <summary>
         ///     Gets the hash code using the specified obj

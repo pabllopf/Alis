@@ -53,14 +53,14 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="component">The component</param>
         /// <returns>The object</returns>
-        public object? Get(object? component) => _pd.GetValue(component);
+        public object Get(object component) => _pd.GetValue(component);
 
         /// <summary>
         ///     Sets the component
         /// </summary>
         /// <param name="component">The component</param>
         /// <param name="value">The value</param>
-        public void Set(object? component, object? value)
+        public void Set(object component, object value)
         {
             if (_pd.IsReadOnly)
             {
