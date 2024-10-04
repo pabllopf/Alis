@@ -45,13 +45,13 @@ namespace Alis.Core.Aspect.Data.Json
         /// <summary>
         ///     Gets or sets the value of the list
         /// </summary>
-        public override object? List
+        public override object List
         {
             get => base.List;
             set
             {
                 base.List = value;
-                _list = ((IList) value!)!;
+                _list = (IList) value;
             }
         }
 
@@ -65,6 +65,6 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="value">The value</param>
         /// <param name="options">The options</param>
-        public override void Add(object? value, JsonOptions? options = null) => _list.Add(value);
+        public override void Add(object value, JsonOptions options = null) => _list.Add(value);
     }
 }

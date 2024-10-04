@@ -668,6 +668,6 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="f2">The </param>
         /// <param name="cultureInfo">The culture info</param>
         /// <returns>The string</returns>
-        public string ToString(string f2, CultureInfo cultureInfo) => $"{{X: {X.ToString(f2, cultureInfo)} Y: {Y.ToString(f2, cultureInfo)}}}";
+        public string ToString(string f2, CultureInfo cultureInfo) => string.Format("{{X: {0} Y: {1}}}", X.ToString(f2, cultureInfo), Y.ToString(f2, cultureInfo));
     }
 }

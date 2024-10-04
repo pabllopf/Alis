@@ -95,32 +95,32 @@ namespace Alis.Core.Aspect.Data.Json
         /// <value>
         ///     The JSONP callback name.
         /// </value>
-        public string JsonPCallback { get; set; } = null!;
-        
+        public string JsonPCallback { get; set; }
+
         /// <summary>
         ///     Gets or sets the guid format.
         /// </summary>
         /// <value>
         ///     The guid format.
         /// </value>
-        public string GuidFormat { get; set; } = null!;
-        
+        public string GuidFormat { get; set; }
+
         /// <summary>
         ///     Gets or sets the date time format.
         /// </summary>
         /// <value>
         ///     The date time format.
         /// </value>
-        public string DateTimeFormat { get; set; } = null!;
-        
+        public string DateTimeFormat { get; set; }
+
         /// <summary>
         ///     Gets or sets the date time offset format.
         /// </summary>
         /// <value>
         ///     The date time offset format.
         /// </value>
-        public string DateTimeOffsetFormat { get; set; } = null!;
-        
+        public string DateTimeOffsetFormat { get; set; }
+
         /// <summary>
         ///     Gets or sets the date time styles.
         /// </summary>
@@ -163,58 +163,58 @@ namespace Alis.Core.Aspect.Data.Json
         ///     Gets or sets a write value callback.
         /// </summary>
         /// <value>The callback.</value>
-        public JsonCallback WriteValueCallback { get; internal set; } = null!;
-        
+        public JsonCallback WriteValueCallback { get; internal set; }
+
         /// <summary>
         ///     Gets or sets a callback that is called before an object (not a value) is serialized.
         /// </summary>
         /// <value>The callback.</value>
-        public JsonCallback BeforeWriteObjectCallback { get; internal set; } = null!;
-        
+        public JsonCallback BeforeWriteObjectCallback { get; internal set; }
+
         /// <summary>
         ///     Gets or sets a callback that is called before an object (not a value) is serialized.
         /// </summary>
         /// <value>The callback.</value>
-        public JsonCallback AfterWriteObjectCallback { get; internal set; } = null!;
-        
+        public JsonCallback AfterWriteObjectCallback { get; internal set; }
+
         /// <summary>
         ///     Gets or sets a callback that is called before an object field or property is serialized.
         /// </summary>
         /// <value>The callback.</value>
-        public JsonCallback WriteNamedValueObjectCallback { get; internal set; } = null!;
-        
+        public JsonCallback WriteNamedValueObjectCallback { get; internal set; }
+
         /// <summary>
         ///     Gets or sets a callback that is called before an instance of an object is created.
         /// </summary>
         /// <value>The callback.</value>
-        public JsonCallback CreateInstanceCallback { get; internal set; } = null!;
-        
+        public JsonCallback CreateInstanceCallback { get; internal set; }
+
         /// <summary>
         ///     Gets or sets a callback that is called during deserialization, before a dictionary entry is mapped to a target
         ///     object.
         /// </summary>
         /// <value>The callback.</value>
-        public JsonCallback MapEntryCallback { get; internal set; } = null!;
-        
+        public JsonCallback MapEntryCallback { get; internal set; }
+
         /// <summary>
         ///     Gets or sets a callback that is called during deserialization, before a dictionary entry is applied to a target
         ///     object.
         /// </summary>
         /// <value>The callback.</value>
-        public JsonCallback ApplyEntryCallback { get; private set; } = null!;
-        
+        public JsonCallback ApplyEntryCallback { get; private set; }
+
         /// <summary>
         ///     Gets or sets a callback that is called during deserialization, to deserialize a list object.
         /// </summary>
         /// <value>The callback.</value>
-        public JsonCallback GetListObjectCallback { get; internal set; } = null!;
-        
+        public JsonCallback GetListObjectCallback { get; internal set; }
+
         /// <summary>
         ///     Gets or sets a utility class that will store an object graph to avoid serialization cycles.
         ///     If null, a Dictionary&lt;object, object&gt; using an object reference comparer will be used.
         /// </summary>
         /// <value>The object graph instance.</value>
-        internal IDictionary<object?, object>? ObjectGraph { get; set; }
+        internal IDictionary<object, object> ObjectGraph { get; set; }
 
         /// <summary>
         ///     Gets the value of the final streaming buffer chunk size
@@ -224,7 +224,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <summary>
         ///     Gets the value of the final object graph
         /// </summary>
-        internal IDictionary<object?, object>? FinalObjectGraph => ObjectGraph ?? new Dictionary<object?, object>(ReferenceComparer.Instance!);
+        internal IDictionary<object, object> FinalObjectGraph => ObjectGraph ?? new Dictionary<object, object>(ReferenceComparer.Instance);
 
         /// <summary>
         ///     Maxes the val 1

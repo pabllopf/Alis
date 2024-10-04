@@ -45,8 +45,8 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="value">The value on the stack.</param>
         /// <param name="objectGraph">The current serialization object graph.</param>
         /// <param name="options">The options currently in use.</param>
-        public JsonEventArgs(TextWriter writer, object? value, IDictionary<object?, object>? objectGraph, JsonOptions? options)
-            : this(writer, value, objectGraph, options, null!, null)
+        public JsonEventArgs(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
+            : this(writer, value, objectGraph, options, null, null)
         {
         }
 
@@ -59,7 +59,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="options">The options currently in use.</param>
         /// <param name="name">The field or property name.</param>
         /// <param name="component">The component holding the value.</param>
-        public JsonEventArgs(TextWriter writer, object? value, IDictionary<object?, object>? objectGraph, JsonOptions? options, string name, object? component)
+        public JsonEventArgs(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options, string name, object component)
         {
             Options = options;
             Writer = writer;
@@ -73,7 +73,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     Gets the options currently in use.
         /// </summary>
         /// <value>The options.</value>
-        public JsonOptions? Options { get; }
+        public JsonOptions Options { get; }
 
         /// <summary>
         ///     Gets the writer currently in use.
@@ -85,13 +85,13 @@ namespace Alis.Core.Aspect.Data.Json
         ///     Gets the current serialization object graph.
         /// </summary>
         /// <value>The object graph.</value>
-        public IDictionary<object?, object>? ObjectGraph { get; }
+        public IDictionary<object, object> ObjectGraph { get; }
 
         /// <summary>
         ///     Gets the component holding the value. May be null.
         /// </summary>
         /// <value>The component.</value>
-        public object? Component { get; }
+        public object Component { get; }
 
         /// <summary>
         ///     Gets or sets the type of the event.
@@ -121,7 +121,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     Gets or sets the value on the stack.
         /// </summary>
         /// <value>The value.</value>
-        public object? Value { get; set; }
+        public object Value { get; set; }
 
         /// <summary>
         ///     Gets or sets the name on the stack. The Name can be a property or field name when serializing objects. May be null.

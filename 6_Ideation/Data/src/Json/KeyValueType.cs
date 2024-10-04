@@ -39,11 +39,11 @@ namespace Alis.Core.Aspect.Data.Json
         /// <summary>
         ///     The key type
         /// </summary>
-        public Type KeyType = null!;
+        public Type KeyType;
 
         /// <summary>
         ///     The value type
         /// </summary>
-        public Type ValueType = null!;
+        public Type ValueType;
     }
 }
