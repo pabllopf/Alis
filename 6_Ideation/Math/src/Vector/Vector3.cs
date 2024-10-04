@@ -256,7 +256,7 @@ namespace Alis.Core.Aspect.Math.Vector
         ///     <see cref="Vector3" /> object and their corresponding elements are equal.
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public readonly override bool Equals(object? obj) => obj is Vector3 other && Equals(other);
+        public readonly override bool Equals(object obj) => obj is Vector3 other && Equals(other);
 
         /// <summary>Returns a value that indicates whether this instance and another vector are equal.</summary>
         /// <param name="other">The other vector.</param>
@@ -329,7 +329,7 @@ namespace Alis.Core.Aspect.Math.Vector
         ///     Strings
         /// </related>
         /// <related type="Article" href="/dotnet/standard/base-types/custom-numeric-format-strings">Custom Numeric Format Strings</related>
-        public readonly string ToString(string? format, IFormatProvider? formatProvider)
+        public readonly string ToString(string format, IFormatProvider formatProvider)
         {
             StringBuilder sb = new StringBuilder();
             string separator = NumberFormatInfo.GetInstance(formatProvider).NumberGroupSeparator;

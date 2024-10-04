@@ -43,7 +43,7 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
         /// <summary>
         ///     The empty concurrent bag
         /// </summary>
-        [IsNotEmpty] private ConcurrentBag<int> emptyConcurrentBag1 = new ConcurrentBag<int>();
+        [IsNotEmpty] private ConcurrentBag<int> emptyConcurrentBag1;
 
         /// <summary>
         ///     Tests that validate with empty string should throw exception

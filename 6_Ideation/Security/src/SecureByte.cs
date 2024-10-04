@@ -165,6 +165,6 @@ namespace Alis.Core.Aspect.Security
         /// </summary>
         /// <param name="obj">The obj</param>
         /// <returns>The bool</returns>
-        public override bool Equals(object? obj) => Value.Equals(((SecureByte) obj!)!.Value);
+        public override bool Equals(object obj) => Value.Equals(((SecureByte) obj)!.Value);
     }
 }

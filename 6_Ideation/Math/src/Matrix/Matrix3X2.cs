@@ -128,7 +128,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </summary>
         /// <param name="obj">The obj</param>
         /// <returns>The bool</returns>
-        public override bool Equals(object? obj)
+        public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj))
             {
