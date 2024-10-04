@@ -281,7 +281,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         ///     <see cref="Matrix4X4" /> object and the corresponding elements of each matrix are equal.
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override bool Equals(object? obj) => obj is Matrix4X4 other && Equals(other);
+        public override bool Equals(object obj) => obj is Matrix4X4 other && Equals(other);
 
         /// <summary>Returns a value that indicates whether this instance and another 4x4 matrix are equal.</summary>
         /// <param name="other">The other matrix.</param>

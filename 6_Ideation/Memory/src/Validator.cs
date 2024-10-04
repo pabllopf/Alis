@@ -49,18 +49,12 @@ namespace Alis.Core.Aspect.Memory
         public static void Validate<T>(T value, string name)
         {
             StackTrace stackTrace = new StackTrace();
-            MethodBase methodBase = stackTrace.GetFrame(1)?.GetMethod() ?? throw new InvalidOperationException();
-            if (methodBase.ReflectedType != null)
-            {
-                Type callingType = methodBase.ReflectedType;
-                
-                if (callingType != null)
-                {
-                    ValidateParameter(value, name, callingType, methodBase);
-                    ValidateField(value, name, callingType);
-                    ValidateProperty(value, name, callingType);
-                }
-            }
+            MethodBase methodBase = stackTrace.GetFrame(1).GetMethod();
+            Type callingType = methodBase.ReflectedType;
+
+            ValidateParameter(value, name, callingType, methodBase);
+            ValidateField(value, name, callingType);
+            ValidateProperty(value, name, callingType);
         }
 
         /// <summary>
@@ -89,10 +83,7 @@ namespace Alis.Core.Aspect.Memory
                     {
                         if (attribute is IsValidationAttribute validationAttribute)
                         {
-                            if (value != null)
-                            {
-                                validationAttribute.Validate(value, $"type='{callingType}' property='{property.Name}'");
-                            }
+                            validationAttribute.Validate(value, $"type='{callingType}' property='{property.Name}'");
                         }
                     }
                 }
@@ -125,10 +116,7 @@ namespace Alis.Core.Aspect.Memory
                     {
                         if (attribute is IsValidationAttribute validationAttribute)
                         {
-                            if (value != null)
-                            {
-                                validationAttribute.Validate(value, $"type='{callingType}' field='{field.Name}'");
-                            }
+                            validationAttribute.Validate(value, $"type='{callingType}' field='{field.Name}'");
                         }
                     }
                 }
@@ -161,10 +149,7 @@ namespace Alis.Core.Aspect.Memory
                     {
                         if (attribute is IsValidationAttribute validationAttribute)
                         {
-                            if (value != null)
-                            {
-                                validationAttribute.Validate(value, $"type='{callingType}' method='{methodBase.Name}' param='{parameter.Name}'");
-                            }
+                            validationAttribute.Validate(value, $"type='{callingType}' method='{methodBase.Name}' param='{parameter.Name}'");
                         }
                     }
                 }

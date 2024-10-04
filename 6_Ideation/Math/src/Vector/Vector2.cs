@@ -458,7 +458,7 @@ namespace Alis.Core.Aspect.Math.Vector
         ///     <see cref="Vector2" /> object and their <see cref="X" /> and <see cref="Y" /> elements are equal.
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override bool Equals(object? obj) => obj is Vector2 other && Equals(other);
+        public override bool Equals(object obj) => obj is Vector2 other && Equals(other);
 
         /// <summary>Returns a value that indicates whether this instance and another vector are equal.</summary>
         /// <param name="other">The other vector.</param>
@@ -516,7 +516,7 @@ namespace Alis.Core.Aspect.Math.Vector
         ///     Standard Numeric Format
         ///     Strings
         /// </related>
-        public string ToString(string? format, IFormatProvider? formatProvider)
+        public string ToString(string format, IFormatProvider formatProvider)
         {
             StringBuilder sb = new StringBuilder();
             string separator = NumberFormatInfo.GetInstance(formatProvider).NumberGroupSeparator;

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IsNotNullAttributeTest.cs
+//  File:ValidatorTestClass.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,28 +28,59 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Memory.Attributes;
-using Alis.Core.Aspect.Memory.Exceptions;
-using Xunit;
 
-namespace Alis.Core.Aspect.Memory.Test.Attributes
+namespace Alis.Core.Aspect.Memory.Test
 {
     /// <summary>
-    ///     The not null attribute test class
+    ///     The validator test class
     /// </summary>
-    public class IsNotNullAttributeTest
+    public class ValidatorTestClass
     {
         /// <summary>
-        ///     Tests that validate with null value should throw exception
+        ///     The test field
         /// </summary>
-        [Fact]
-        public void Validate_WithNullValue_ShouldThrowException()
-        {
-            // Arrange
-            IsNotNullAttribute attribute = new IsNotNullAttribute();
-            object nullValue = null;
+        [IsNotEmpty]
+        public string TestField { get; set; }
 
-            // Act and Assert
-            Assert.Throws<NotNullException>(() => attribute.Validate(null, nameof(nullValue)));
+        /// <summary>
+        ///     Gets or sets the value of the test property
+        /// </summary>
+        [IsNotEmpty]
+        public string TestProperty { get; set; }
+
+        /// <summary>
+        ///     Tests the method using the specified test param
+        /// </summary>
+        /// <param name="testParam">The test param</param>
+        public void TestMethod([IsNotEmpty] string testParam)
+        {
+            Sum(1, 2);
         }
+
+        /// <summary>
+        ///     Tests the method 2
+        /// </summary>
+        public void TestMethod2()
+        {
+            Sum(1, 2);
+        }
+
+        /// <summary>
+        ///     Tests the method 3 using the specified test param
+        /// </summary>
+        /// <param name="testParam">The test param</param>
+        /// <param name="testParam2">The test param</param>
+        public void TestMethod3([IsNotEmpty] string testParam, [IsNotNull] string testParam2)
+        {
+            Sum(1, 2);
+        }
+
+        /// <summary>
+        ///     Sums the a
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <param name="b">The </param>
+        /// <returns>The int</returns>
+        public int Sum(int a, int b) => a + b;
     }
 }

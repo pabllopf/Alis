@@ -277,7 +277,7 @@ namespace Alis.Core.Aspect.Math.Util
         ///     The current instance and <paramref name="obj" /> are equal if <paramref name="obj" /> is a
         ///     <see cref="Quaternion" /> object and the corresponding components of each matrix are equal.
         /// </remarks>
-        public readonly override bool Equals(object? obj) => obj is Quaternion other && Equals(other);
+        public readonly override bool Equals(object obj) => obj is Quaternion other && Equals(other);
 
         /// <summary>Returns a value that indicates whether this instance and another quaternion are equal.</summary>
         /// <param name="other">The other quaternion.</param>
