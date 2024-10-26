@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.System;
+
 namespace Alis.Core.Ecs.Test
 {
     /// <summary>

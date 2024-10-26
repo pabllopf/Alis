@@ -600,7 +600,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.positions[_indexD].a = aD;
 
 
-            return linearError < Settings.LinearSlop;
+            return linearError < SettingEnv.LinearSlop;
         }
     }
 }

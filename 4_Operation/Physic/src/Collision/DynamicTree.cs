@@ -200,7 +200,7 @@ namespace Alis.Core.Physic.Collision
             int proxyId = AllocateNode();
 
             // Fatten the aabb.
-            Vector2 r = new Vector2(Settings.AABBExtension, Settings.AABBExtension);
+            Vector2 r = new Vector2(SettingEnv.AABBExtension, SettingEnv.AABBExtension);
             _nodes[proxyId].AABB.LowerBound = aabb.LowerBound - r;
             _nodes[proxyId].AABB.UpperBound = aabb.UpperBound + r;
             _nodes[proxyId].Height = 0;
@@ -247,12 +247,12 @@ namespace Alis.Core.Physic.Collision
 
             // Extend AABB.
             AABB b = aabb;
-            Vector2 r = new Vector2(Settings.AABBExtension, Settings.AABBExtension);
+            Vector2 r = new Vector2(SettingEnv.AABBExtension, SettingEnv.AABBExtension);
             b.LowerBound = b.LowerBound - r;
             b.UpperBound = b.UpperBound + r;
 
             // Predict AABB displacement.
-            Vector2 d = Settings.AABBMultiplier * displacement;
+            Vector2 d = SettingEnv.AABBMultiplier * displacement;
 
             if (d.X < 0.0f)
             {
@@ -1047,7 +1047,7 @@ namespace Alis.Core.Physic.Collision
 
             while (count > 1)
             {
-                float minCost = Settings.MaxFloat;
+                float minCost = SettingEnv.MaxFloat;
                 int iMin = -1, jMin = -1;
                 for (int i = 0; i < count; ++i)
                 {

@@ -33,6 +33,7 @@ using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
+using Alis.Core.Ecs.System;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Xunit;
 

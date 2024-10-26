@@ -69,7 +69,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             : base(0)
         {
             ShapeType = ShapeType.Chain;
-            _radius = Settings.PolygonRadius;
+            _radius = SettingEnv.PolygonRadius;
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             : base(0)
         {
             ShapeType = ShapeType.Chain;
-            _radius = Settings.PolygonRadius;
+            _radius = SettingEnv.PolygonRadius;
 
             Debug.Assert((vertices != null) && (vertices.Count >= 3));
             Debug.Assert(vertices[0] != vertices[vertices.Count - 1]); // FPE. See http://www.box2d.org/forum/viewtopic.php?f=4&t=7973&p=35363
@@ -95,7 +95,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                 Vector2 v2 = vertices[i];
 
                 // If the code crashes here, it means your vertices are too close together.
-                Debug.Assert(Vector2.DistanceSquared(v1, v2) > Settings.LinearSlop * Settings.LinearSlop);
+                Debug.Assert(Vector2.DistanceSquared(v1, v2) > SettingEnv.LinearSlop * SettingEnv.LinearSlop);
             }
 
             Vertices = new Vertices(vertices);

@@ -30,13 +30,14 @@
 using Alis.Builder.Core.Ecs.System;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.System;
+using Alis.Core.Ecs.System.Configuration;
 using Alis.Core.Ecs.System.Manager.Audio;
 using Alis.Core.Ecs.System.Manager.Graphic;
 using Alis.Core.Ecs.System.Manager.Input;
 using Alis.Core.Ecs.System.Manager.Network;
 using Alis.Core.Ecs.System.Manager.Physic;
 using Alis.Core.Ecs.System.Manager.Scene;
-using Alis.Core.Ecs.System.Setting;
+using Alis.Core.Ecs.System.Scope;
 using Xunit;
 
 namespace Alis.Test.Core.Ecs
@@ -54,9 +55,9 @@ namespace Alis.Test.Core.Ecs
         {
             VideoGame videoGame = new VideoGame();
 
-            videoGame.Context.TimeManager.IsRunning = false;
+            videoGame.Context.IsRunning = false;
 
-            Assert.False(videoGame.Context.TimeManager.IsRunning);
+            Assert.False(videoGame.Context.IsRunning);
         }
 
         /// <summary>
@@ -76,7 +77,7 @@ namespace Alis.Test.Core.Ecs
         [Fact]
         public void SetContext_ShouldSetContext()
         {
-            Context newContext = new Context(new Settings());
+            Context newContext = new Context(new Setting());
 
             VideoGame videoGame = new VideoGame(newContext);
 

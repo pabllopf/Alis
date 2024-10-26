@@ -31,7 +31,6 @@ using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Entity;
 using Alis.Core.Ecs.System;
-using Alis.Core.Ecs.System.Setting;
 using Alis.Test.Builder.Core.Ecs.Entity.GameObject.Sample;
 using Alis.Test.Core.Ecs.Component.Sample;
 using Xunit;

@@ -36,8 +36,9 @@ using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
-using Alis.Core.Ecs.System.Setting;
-using Alis.Core.Ecs.System.Setting.Physic;
+using Alis.Core.Ecs.System.Configuration;
+using Alis.Core.Ecs.System.Configuration.Physic;
+using Alis.Core.Ecs.System.Scope;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf;
@@ -148,7 +149,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
             Logger.Log("init::graphic:new");
 
-            DefaultSize = new Vector2(Context.Settings.Graphic.Window.Resolution.X, Context.Settings.Graphic.Window.Resolution.Y);
+            DefaultSize = new Vector2(Context.Setting.Graphic.Window.Resolution.X, Context.Setting.Graphic.Window.Resolution.Y);
 
             if (Sdl.Init(InitSettings.InitEverything) < 0)
             {
@@ -167,13 +168,13 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             // create the window which should be able to have a valid OpenGL context and is resizable
             WindowSettings flags = WindowSettings.WindowShown;
 
-            if (Context.Settings.Graphic.Window.IsWindowResizable)
+            if (Context.Setting.Graphic.Window.IsWindowResizable)
             {
                 flags |= WindowSettings.WindowResizable;
             }
 
             // Creates a new SDL window at the center of the screen with the given width and height.
-            Window = Sdl.CreateWindow(Context.Settings.General.Name, (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered, (int) DefaultSize.X, (int) DefaultSize.Y, flags);
+            Window = Sdl.CreateWindow(Context.Setting.General.Name, (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered, (int) DefaultSize.X, (int) DefaultSize.Y, flags);
 
             // Check if the window was created successfully.
             Logger.Info(Window == IntPtr.Zero ? $"There was an issue creating the renderer. {Sdl.GetError()}" : "Window created");
@@ -254,9 +255,9 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Sdl.SetWindowDisplayMode(Window, ref displayMode2);
 
 
-            if (!string.IsNullOrEmpty(Context.Settings.General.Icon))
+            if (!string.IsNullOrEmpty(Context.Setting.General.Icon))
             {
-                IntPtr icon = Sdl.LoadBmp(Context.Settings.General.Icon);
+                IntPtr icon = Sdl.LoadBmp(Context.Setting.General.Icon);
                 Sdl.SetWindowIcon(Window, icon);
             }
 
@@ -290,8 +291,8 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
             float pixelsPerMeter = PixelsPerMeter;
             IntPtr renderer = Renderer;
-            Settings contextSettings = Context.Settings;
-            PhysicSetting physicSettings = contextSettings.Physic;
+            Setting contextSetting = Context.Setting;
+            PhysicSetting physicSettings = contextSetting.Physic;
             Color debugColor = physicSettings.DebugColor;
 
             foreach (Camera camera in Cameras)

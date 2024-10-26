@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Ecs;
+using Alis.Core.Ecs.System;
 
 namespace Alis.Sample.Desktop
 {

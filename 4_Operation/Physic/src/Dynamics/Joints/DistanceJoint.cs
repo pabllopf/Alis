@@ -275,7 +275,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             // Handle singularity.
             float length = _u.Length();
-            if (length > Settings.LinearSlop)
+            if (length > SettingEnv.LinearSlop)
             {
                 _u *= 1.0f / length;
             }
@@ -400,7 +400,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float length = u.Length();
             u.Normalize();
             float c = length - Length;
-            c = MathUtils.Clamp(c, -Settings.MaxLinearCorrection, Settings.MaxLinearCorrection);
+            c = MathUtils.Clamp(c, -SettingEnv.MaxLinearCorrection, SettingEnv.MaxLinearCorrection);
 
             float impulse = -_mass * c;
             Vector2 p = impulse * u;
@@ -415,7 +415,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.positions[_indexB].c = cB;
             data.positions[_indexB].a = aB;
 
-            return Math.Abs(c) < Settings.LinearSlop;
+            return Math.Abs(c) < SettingEnv.LinearSlop;
         }
     }
 }

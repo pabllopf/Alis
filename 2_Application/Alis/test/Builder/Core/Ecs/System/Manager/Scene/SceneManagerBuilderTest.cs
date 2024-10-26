@@ -32,6 +32,7 @@ using Alis.Builder.Core.Ecs.Entity.Scene;
 using Alis.Builder.Core.Ecs.System.Manager.Scene;
 using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager.Scene;
+using Alis.Core.Ecs.System.Scope;
 using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.System.Manager.Scene

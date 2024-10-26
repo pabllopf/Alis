@@ -112,7 +112,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                         if (newP == null)
                             continue; // is this right
 
-                        if (newP.Count > Settings.MaxPolygonVertices)
+                        if (newP.Count > SettingEnv.MaxPolygonVertices)
                             continue;
 
                         if (newP.IsConvex())

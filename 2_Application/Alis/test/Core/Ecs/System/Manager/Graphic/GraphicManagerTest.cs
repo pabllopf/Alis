@@ -29,6 +29,7 @@
 
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Component.Render;
+using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager.Graphic;
 using Xunit;
 

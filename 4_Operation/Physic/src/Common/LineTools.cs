@@ -99,7 +99,7 @@ namespace Alis.Core.Physic.Common
             float ua = (x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3);
             float ub = (x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3);
             float denom = (y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1);
-            if (Math.Abs(denom) < Settings.Epsilon)
+            if (Math.Abs(denom) < SettingEnv.Epsilon)
             {
                 //Lines are too close to parallel to call
                 return false;
@@ -194,7 +194,7 @@ namespace Alis.Core.Physic.Common
             float denom = a * b - c * d;
 
             // if denominator is 0, then lines are parallel
-            if (!((denom >= -Settings.Epsilon) && (denom <= Settings.Epsilon)))
+            if (!((denom >= -SettingEnv.Epsilon) && (denom <= SettingEnv.Epsilon)))
             {
                 float e = point1.Y - point3.Y;
                 float f = point1.X - point3.X;
@@ -217,7 +217,7 @@ namespace Alis.Core.Physic.Common
                     if (!secondIsSegment || ((ub >= 0.0f) && (ub <= 1.0f)))
                     {
                         // check if they are coincident (no collision in this case)
-                        if (Math.Abs(ua) > Settings.Epsilon && Math.Abs(ub) > Settings.Epsilon)
+                        if (Math.Abs(ua) > SettingEnv.Epsilon && Math.Abs(ub) > SettingEnv.Epsilon)
                         {
                             //There is an intersection
                             point.X = point1.X + ua * b;

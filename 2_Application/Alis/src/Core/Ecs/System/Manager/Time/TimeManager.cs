@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Time;
+using Alis.Core.Ecs.System.Scope;
 
 namespace Alis.Core.Ecs.System.Manager.Time
 {
@@ -179,10 +180,5 @@ namespace Alis.Core.Ecs.System.Manager.Time
         ///     This is the time in seconds since the start of the game.
         /// </summary>
         public double UnscaledTimeAsDouble { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the value of the is running
-        /// </summary>
-        public bool IsRunning { get; set; } = true;
     }
 }

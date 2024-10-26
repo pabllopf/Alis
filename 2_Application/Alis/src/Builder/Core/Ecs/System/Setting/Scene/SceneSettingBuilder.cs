@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Ecs.System.Setting.Scene;
+using Alis.Core.Ecs.System.Configuration.Scene;
 
 namespace Alis.Builder.Core.Ecs.System.Setting.Scene
 {

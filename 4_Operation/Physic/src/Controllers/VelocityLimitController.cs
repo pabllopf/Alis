@@ -81,8 +81,8 @@ namespace Alis.Core.Physic.Controllers
         /// </summary>
         public VelocityLimitController()
         {
-            MaxLinearVelocity = Settings.MaxTranslation;
-            MaxAngularVelocity = Settings.MaxRotation;
+            MaxLinearVelocity = SettingEnv.MaxTranslation;
+            MaxAngularVelocity = SettingEnv.MaxRotation;
         }
 
         /// <summary>

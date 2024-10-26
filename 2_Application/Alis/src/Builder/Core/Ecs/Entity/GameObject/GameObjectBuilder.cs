@@ -33,6 +33,7 @@ using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.System;
+using Alis.Core.Ecs.System.Scope;
 
 namespace Alis.Builder.Core.Ecs.Entity.GameObject
 {

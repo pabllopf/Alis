@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Ecs;
+using Alis.Core.Ecs.System;
 using Alis.Test.Core.Ecs.System.Manager.Samples;
 using Xunit;
 

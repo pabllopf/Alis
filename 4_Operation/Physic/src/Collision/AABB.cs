@@ -213,8 +213,8 @@ namespace Alis.Core.Physic.Collision
         /// </returns>
         public bool Contains(ref Vector2 point) =>
             //using epsilon to try and gaurd against float rounding errors.
-            (point.X > LowerBound.X + Settings.Epsilon) && (point.X < UpperBound.X - Settings.Epsilon) &&
-            (point.Y > LowerBound.Y + Settings.Epsilon) && (point.Y < UpperBound.Y - Settings.Epsilon);
+            (point.X > LowerBound.X + SettingEnv.Epsilon) && (point.X < UpperBound.X - SettingEnv.Epsilon) &&
+            (point.Y > LowerBound.Y + SettingEnv.Epsilon) && (point.Y < UpperBound.Y - SettingEnv.Epsilon);
 
         /// <summary>
         ///     Test if the two AABBs overlap.
@@ -245,8 +245,8 @@ namespace Alis.Core.Physic.Collision
 
             output = new RayCastOutput();
 
-            float tmin = -Settings.MaxFloat;
-            float tmax = Settings.MaxFloat;
+            float tmin = -SettingEnv.MaxFloat;
+            float tmax = SettingEnv.MaxFloat;
 
             Vector2 p = input.Point1;
             Vector2 d = input.Point2 - input.Point1;
@@ -261,7 +261,7 @@ namespace Alis.Core.Physic.Collision
                 float upperBound_i = i == 0 ? UpperBound.X : UpperBound.Y;
                 float p_i = i == 0 ? p.X : p.Y;
 
-                if (absD_i < Settings.Epsilon)
+                if (absD_i < SettingEnv.Epsilon)
                 {
                     // Parallel.
                     if (p_i < lowerBound_i || upperBound_i < p_i)

@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     The max manifold points
         /// </summary>
-        public VelocityConstraintPoint[] points = new VelocityConstraintPoint[Settings.MaxManifoldPoints];
+        public VelocityConstraintPoint[] points = new VelocityConstraintPoint[SettingEnv.MaxManifoldPoints];
 
         /// <summary>
         ///     The restitution
@@ -107,7 +107,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// </summary>
         public ContactVelocityConstraint()
         {
-            for (int i = 0; i < Settings.MaxManifoldPoints; i++)
+            for (int i = 0; i < SettingEnv.MaxManifoldPoints; i++)
             {
                 points[i] = new VelocityConstraintPoint();
             }

@@ -261,9 +261,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
             // gamma has units of inverse mass.
             // beta has units of inverse time.
             float h = data.step.dt;
-            Debug.Assert(d + h * k > Settings.Epsilon);
+            Debug.Assert(d + h * k > SettingEnv.Epsilon);
             _gamma = h * (d + h * k);
-            if (Math.Abs(_gamma) > Settings.Epsilon)
+            if (Math.Abs(_gamma) > SettingEnv.Epsilon)
             {
                 _gamma = 1.0f / _gamma;
             }

@@ -248,7 +248,7 @@ namespace Alis.Core.Physic.Dynamics
             Vertices verts = PolygonTools.CreateCapsule(height, topRadius, topEdges, bottomRadius, bottomEdges);
 
             //There are too many vertices in the capsule. We decompose it.
-            if (verts.Count >= Settings.MaxPolygonVertices)
+            if (verts.Count >= SettingEnv.MaxPolygonVertices)
             {
                 List<Vertices> vertList = Triangulate.ConvexPartition(verts, TriangulationAlgorithm.Earclip);
                 return CreateCompoundPolygon(vertList, density, position, rotation, bodyType);
@@ -308,7 +308,7 @@ namespace Alis.Core.Physic.Dynamics
             Vertices verts = PolygonTools.CreateRoundedRectangle(width, height, xRadius, yRadius, segments);
 
             //There are too many vertices in the capsule. We decompose it.
-            if (verts.Count >= Settings.MaxPolygonVertices)
+            if (verts.Count >= SettingEnv.MaxPolygonVertices)
             {
                 List<Vertices> vertList = Triangulate.ConvexPartition(verts, TriangulationAlgorithm.Earclip);
                 return CreateCompoundPolygon(vertList, density, position, rotation, bodyType);

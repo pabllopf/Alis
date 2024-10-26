@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.System.Configuration;
 using Alis.Core.Ecs.System.Manager;
-using Alis.Core.Ecs.System.Setting;
 
 namespace Alis.Extension.Plugin
 {

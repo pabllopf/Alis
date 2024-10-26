@@ -37,14 +37,13 @@ using Alis.Builder.Core.Ecs.System.Setting.Physic;
 using Alis.Builder.Core.Ecs.System.Setting.Scene;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Ecs.System.Setting;
-using Alis.Core.Ecs.System.Setting.Audio;
-using Alis.Core.Ecs.System.Setting.General;
-using Alis.Core.Ecs.System.Setting.Graphic;
-using Alis.Core.Ecs.System.Setting.Input;
-using Alis.Core.Ecs.System.Setting.Network;
-using Alis.Core.Ecs.System.Setting.Physic;
-using Alis.Core.Ecs.System.Setting.Scene;
+using Alis.Core.Ecs.System.Configuration.Audio;
+using Alis.Core.Ecs.System.Configuration.General;
+using Alis.Core.Ecs.System.Configuration.Graphic;
+using Alis.Core.Ecs.System.Configuration.Input;
+using Alis.Core.Ecs.System.Configuration.Network;
+using Alis.Core.Ecs.System.Configuration.Physic;
+using Alis.Core.Ecs.System.Configuration.Scene;
 
 namespace Alis.Builder.Core.Ecs.System.Setting
 {
@@ -52,7 +51,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting
     ///     Setting builder
     /// </summary>
     public class SettingsBuilder :
-        IBuild<Settings>,
+        IBuild<Alis.Core.Ecs.System.Configuration.Setting>,
         IAudio<SettingsBuilder, Func<AudioSettingBuilder, AudioSetting>>,
         IGeneral<SettingsBuilder, Func<GeneralSettingBuilder, GeneralSetting>>,
         IGraphic<SettingsBuilder, Func<GraphicSettingBuilder, GraphicSetting>>,
@@ -64,7 +63,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting
         /// <summary>
         ///     The setting base
         /// </summary>
-        private readonly Settings settingBase = new Settings();
+        private readonly Alis.Core.Ecs.System.Configuration.Setting settingBase = new Alis.Core.Ecs.System.Configuration.Setting();
 
         /// <summary>
         ///     Audio the value
@@ -81,7 +80,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting
         ///     Build setting
         /// </summary>
         /// <returns></returns>
-        public Settings Build() => settingBase;
+        public Alis.Core.Ecs.System.Configuration.Setting Build() => settingBase;
 
         /// <summary>
         ///     Generals the value

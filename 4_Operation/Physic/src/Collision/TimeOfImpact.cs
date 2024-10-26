@@ -62,7 +62,7 @@ namespace Alis.Core.Physic.Collision
         /// <param name="input">The input.</param>
         public static void CalculateTimeOfImpact(out TOIOutput output, ref TOIInput input)
         {
-            if (Settings.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
+            if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
                 ++TOICalls;
 
             output = new TOIOutput();
@@ -80,8 +80,8 @@ namespace Alis.Core.Physic.Collision
             float tMax = input.TMax;
 
             float totalRadius = input.ProxyA.Radius + input.ProxyB.Radius;
-            float target = Math.Max(Settings.LinearSlop, totalRadius - 3.0f * Settings.LinearSlop);
-            const float tolerance = 0.25f * Settings.LinearSlop;
+            float target = Math.Max(SettingEnv.LinearSlop, totalRadius - 3.0f * SettingEnv.LinearSlop);
+            const float tolerance = 0.25f * SettingEnv.LinearSlop;
             Debug.Assert(target > tolerance);
 
             float t1 = 0.0f;
@@ -197,7 +197,7 @@ namespace Alis.Core.Physic.Collision
 
                         ++rootIterCount;
 
-                        if (Settings.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
+                        if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
                             ++TOIRootIters;
 
                         float s = SeparationFunction.Evaluate(indexA, indexB, t);
@@ -227,12 +227,12 @@ namespace Alis.Core.Physic.Collision
                         }
                     }
 
-                    if (Settings.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
+                    if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
                         TOIMaxRootIters = Math.Max(TOIMaxRootIters, rootIterCount);
 
                     ++pushBackIter;
 
-                    if (pushBackIter == Settings.MaxPolygonVertices)
+                    if (pushBackIter == SettingEnv.MaxPolygonVertices)
                     {
                         break;
                     }
@@ -240,7 +240,7 @@ namespace Alis.Core.Physic.Collision
 
                 ++iter;
 
-                if (Settings.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
+                if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
                     ++TOIIters;
 
                 if (done)
@@ -257,7 +257,7 @@ namespace Alis.Core.Physic.Collision
                 }
             }
 
-            if (Settings.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
+            if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
                 TOIMaxIters = Math.Max(TOIMaxIters, iter);
         }
     }

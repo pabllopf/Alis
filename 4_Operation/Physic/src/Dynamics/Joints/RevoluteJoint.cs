@@ -465,7 +465,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             if (_enableLimit && (fixedRotation == false))
             {
                 float jointAngle = aB - aA - ReferenceAngle;
-                if (Math.Abs(_upperAngle - _lowerAngle) < 2.0f * Settings.AngularSlop)
+                if (Math.Abs(_upperAngle - _lowerAngle) < 2.0f * SettingEnv.AngularSlop)
                 {
                     _limitState = LimitState.Equal;
                 }
@@ -663,7 +663,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 if (_limitState == LimitState.Equal)
                 {
                     // Prevent large angular corrections
-                    float c = MathUtils.Clamp(angle - _lowerAngle, -Settings.MaxAngularCorrection, Settings.MaxAngularCorrection);
+                    float c = MathUtils.Clamp(angle - _lowerAngle, -SettingEnv.MaxAngularCorrection, SettingEnv.MaxAngularCorrection);
                     limitImpulse = -_motorMass * c;
                     angularError = Math.Abs(c);
                 }
@@ -673,7 +673,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     angularError = -c;
 
                     // Prevent large angular corrections and allow some slop.
-                    c = MathUtils.Clamp(c + Settings.AngularSlop, -Settings.MaxAngularCorrection, 0.0f);
+                    c = MathUtils.Clamp(c + SettingEnv.AngularSlop, -SettingEnv.MaxAngularCorrection, 0.0f);
                     limitImpulse = -_motorMass * c;
                 }
                 else if (_limitState == LimitState.AtUpper)
@@ -682,7 +682,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     angularError = c;
 
                     // Prevent large angular corrections and allow some slop.
-                    c = MathUtils.Clamp(c - Settings.AngularSlop, 0.0f, Settings.MaxAngularCorrection);
+                    c = MathUtils.Clamp(c - SettingEnv.AngularSlop, 0.0f, SettingEnv.MaxAngularCorrection);
                     limitImpulse = -_motorMass * c;
                 }
 
@@ -723,7 +723,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.positions[_indexB].c = cB;
             data.positions[_indexB].a = aB;
 
-            return (positionError <= Settings.LinearSlop) && (angularError <= Settings.AngularSlop);
+            return (positionError <= SettingEnv.LinearSlop) && (angularError <= SettingEnv.AngularSlop);
         }
     }
 }

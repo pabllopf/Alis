@@ -67,7 +67,7 @@ namespace Alis.Core.Physic.Collision
         {
             cache = new SimplexCache();
 
-            if (Settings.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
+            if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
                 ++GJKCalls;
 
             // Initialize the simplex.
@@ -83,7 +83,7 @@ namespace Alis.Core.Physic.Collision
 
             // Main iteration loop.
             int iter = 0;
-            while (iter < Settings.MaxGJKIterations)
+            while (iter < SettingEnv.MaxGJKIterations)
             {
                 // Copy simplex so we can identify duplicates.
                 int saveCount = simplex.Count;
@@ -130,7 +130,7 @@ namespace Alis.Core.Physic.Collision
                 Vector2 d = simplex.GetSearchDirection();
 
                 // Ensure the search direction is numerically fit.
-                if (d.LengthSquared() < Settings.Epsilon * Settings.Epsilon)
+                if (d.LengthSquared() < SettingEnv.Epsilon * SettingEnv.Epsilon)
                 {
                     // The origin is probably contained by a line segment
                     // or triangle. Thus the shapes are overlapped.
@@ -154,7 +154,7 @@ namespace Alis.Core.Physic.Collision
                 // Iteration count is equated to the number of support point calls.
                 ++iter;
 
-                if (Settings.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
+                if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
                     ++GJKIters;
 
                 // Check for duplicate support points. This is the main termination criteria.
@@ -178,7 +178,7 @@ namespace Alis.Core.Physic.Collision
                 ++simplex.Count;
             }
 
-            if (Settings.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
+            if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
                 GJKMaxIters = Math.Max(GJKMaxIters, iter);
 
             // Prepare output.
@@ -195,7 +195,7 @@ namespace Alis.Core.Physic.Collision
                 float rA = input.ProxyA.Radius;
                 float rB = input.ProxyB.Radius;
 
-                if ((output.Distance > rA + rB) && (output.Distance > Settings.Epsilon))
+                if ((output.Distance > rA + rB) && (output.Distance > SettingEnv.Epsilon))
                 {
                     // Shapes are still no overlapped.
                     // Move the witness points to the outer surface.

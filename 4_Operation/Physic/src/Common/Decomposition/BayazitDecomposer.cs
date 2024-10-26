@@ -172,7 +172,7 @@ namespace Alis.Core.Physic.Common.Decomposition
             }
 
             // polygon is already convex
-            if (vertices.Count > Settings.MaxPolygonVertices)
+            if (vertices.Count > SettingEnv.MaxPolygonVertices)
             {
                 lowerPoly = Copy(0, vertices.Count / 2, vertices);
                 upperPoly = Copy(vertices.Count / 2, 0, vertices);

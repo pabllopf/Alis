@@ -474,7 +474,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.positions[_indexB].c = cB;
             data.positions[_indexB].a = aB;
 
-            return (positionError <= Settings.LinearSlop) && (angularError <= Settings.AngularSlop);
+            return (positionError <= SettingEnv.LinearSlop) && (angularError <= SettingEnv.AngularSlop);
         }
     }
 }

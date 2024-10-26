@@ -171,7 +171,7 @@ namespace Alis.Core.Physic.Controllers
                 massc.X /= mass;
                 massc.Y /= mass;
 
-                if (area < Settings.Epsilon)
+                if (area < SettingEnv.Epsilon)
                     continue;
 
                 //Buoyancy
