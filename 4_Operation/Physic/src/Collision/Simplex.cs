@@ -85,7 +85,7 @@ namespace Alis.Core.Physic.Collision
             {
                 float metric1 = cache.Metric;
                 float metric2 = GetMetric();
-                if (metric2 < 0.5f * metric1 || 2.0f * metric1 < metric2 || metric2 < Settings.Epsilon)
+                if (metric2 < 0.5f * metric1 || 2.0f * metric1 < metric2 || metric2 < SettingEnv.Epsilon)
                 {
                     // Reset the simplex.
                     Count = 0;

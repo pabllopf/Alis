@@ -30,7 +30,7 @@
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Ecs.System.Setting.General;
+using Alis.Core.Ecs.System.Configuration.General;
 
 namespace Alis.Builder.Core.Ecs.System.Setting.General
 {

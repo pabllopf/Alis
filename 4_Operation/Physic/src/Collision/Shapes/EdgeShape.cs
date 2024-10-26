@@ -60,7 +60,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             : base(0)
         {
             ShapeType = ShapeType.Edge;
-            _radius = Settings.PolygonRadius;
+            _radius = SettingEnv.PolygonRadius;
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             : base(0)
         {
             ShapeType = ShapeType.Edge;
-            _radius = Settings.PolygonRadius;
+            _radius = SettingEnv.PolygonRadius;
             Set(start, end);
         }
 

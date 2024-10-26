@@ -97,7 +97,7 @@ namespace Alis.Core.Physic.Common
                 throw new Exception("Segments must be zero or more.");
 
             //We need at least 8 vertices to create a rounded rectangle
-            Debug.Assert(Settings.MaxPolygonVertices >= 8);
+            Debug.Assert(SettingEnv.MaxPolygonVertices >= 8);
 
             Vertices vertices = new Vertices();
             if (segments == 0)

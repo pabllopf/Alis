@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.System.Scope;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Ecs.System.Manager.Physic
@@ -78,7 +79,7 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         /// </summary>
         public override void OnInit()
         {
-            World = new World(Context.Settings.Physic.Gravity);
+            World = new World(Context.Setting.Physic.Gravity);
         }
 
         /// <summary>
@@ -87,37 +88,37 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         public override void OnAwake()
         {
             timeStepPhysics = 1f / 20f;
-            if (Context.Settings.Graphic.TargetFrames <= 240)
+            if (Context.Setting.Graphic.TargetFrames <= 240)
             {
                 timeStepPhysics = 1f / 80f;
             }
 
-            if (Context.Settings.Graphic.TargetFrames <= 200)
+            if (Context.Setting.Graphic.TargetFrames <= 200)
             {
                 timeStepPhysics = 1f / 60f;
             }
 
-            if (Context.Settings.Graphic.TargetFrames <= 120)
+            if (Context.Setting.Graphic.TargetFrames <= 120)
             {
                 timeStepPhysics = 1f / 40f;
             }
 
-            if (Context.Settings.Graphic.TargetFrames <= 60)
+            if (Context.Setting.Graphic.TargetFrames <= 60)
             {
                 timeStepPhysics = 1f / 30f;
             }
 
-            if (Context.Settings.Graphic.TargetFrames <= 30)
+            if (Context.Setting.Graphic.TargetFrames <= 30)
             {
                 timeStepPhysics = 1f / 15f;
             }
 
-            if (Context.Settings.Graphic.TargetFrames <= 15)
+            if (Context.Setting.Graphic.TargetFrames <= 15)
             {
                 timeStepPhysics = 1f / 10f;
             }
 
-            if (Context.Settings.Graphic.TargetFrames <= 5)
+            if (Context.Setting.Graphic.TargetFrames <= 5)
             {
                 timeStepPhysics = 1f / 5f;
             }

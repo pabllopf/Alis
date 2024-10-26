@@ -66,7 +66,7 @@ namespace Alis.Core.Physic.Collision
             SimplexCache cache;
             Distance.ComputeDistance(out DistanceOutput output, out cache, _input);
 
-            return output.Distance < 10.0f * Settings.Epsilon;
+            return output.Distance < 10.0f * SettingEnv.Epsilon;
         }
 
         /// <summary>
@@ -165,7 +165,7 @@ namespace Alis.Core.Physic.Collision
 
             // Find the min separating edge.
             int normalIndex = 0;
-            float separation = -Settings.MaxFloat;
+            float separation = -SettingEnv.MaxFloat;
             float radius = polygonA.Radius + circleB.Radius;
             int vertexCount = polygonA.Vertices.Count;
 
@@ -195,7 +195,7 @@ namespace Alis.Core.Physic.Collision
             Vector2 v2 = polygonA.Vertices[vertIndex2];
 
             // If the center is inside the polygon ...
-            if (separation < Settings.Epsilon)
+            if (separation < SettingEnv.Epsilon)
             {
                 manifold.PointCount = 1;
                 manifold.Type = ManifoldType.FaceA;
@@ -395,7 +395,7 @@ namespace Alis.Core.Physic.Collision
             manifold.LocalPoint = planePoint;
 
             int pointCount = 0;
-            for (int i = 0; i < Settings.MaxManifoldPoints; ++i)
+            for (int i = 0; i < SettingEnv.MaxManifoldPoints; ++i)
             {
                 Vector2 value = clipPoints2[i].V;
                 float separation = normalx * value.X + normaly * value.Y - frontOffset;
@@ -657,7 +657,7 @@ namespace Alis.Core.Physic.Collision
 
             // Find support vertex on poly2 for -normal.
             int index = 0;
-            float minDot = Settings.MaxFloat;
+            float minDot = SettingEnv.MaxFloat;
 
             for (int i = 0; i < count2; ++i)
             {
@@ -698,7 +698,7 @@ namespace Alis.Core.Physic.Collision
 
             // Find edge normal on poly1 that has the largest projection onto d.
             int edge = 0;
-            float maxDot = -Settings.MaxFloat;
+            float maxDot = -SettingEnv.MaxFloat;
             for (int i = 0; i < count1; ++i)
             {
                 float dot = MathUtils.Dot(normals1[i], ref dLocal1);
@@ -793,7 +793,7 @@ namespace Alis.Core.Physic.Collision
 
             // Find the incident edge on poly2.
             int index = 0;
-            float minDot = Settings.MaxFloat;
+            float minDot = SettingEnv.MaxFloat;
             for (int i = 0; i < count2; ++i)
             {
                 float dot = Vector2.Dot(normal1, normals2[i]);
@@ -853,7 +853,7 @@ namespace Alis.Core.Physic.Collision
                 // 7. Return if _any_ axis indicates separation
                 // 8. Clip
 
-                TempPolygon tempPolygonB = new TempPolygon(Settings.MaxPolygonVertices);
+                TempPolygon tempPolygonB = new TempPolygon(SettingEnv.MaxPolygonVertices);
                 Vector2 centroidB;
                 Vector2 normal0 = new Vector2();
                 Vector2 normal1;
@@ -1065,7 +1065,7 @@ namespace Alis.Core.Physic.Collision
                     tempPolygonB.Normals[i] = Complex.Multiply(polygonB.Normals[i], ref xf.q);
                 }
 
-                radius = 2.0f * Settings.PolygonRadius;
+                radius = 2.0f * SettingEnv.PolygonRadius;
 
                 manifold.PointCount = 0;
 
@@ -1198,7 +1198,7 @@ namespace Alis.Core.Physic.Collision
                 // Clip to box side 1
                 np = ClipSegmentToLine(out FixedArray2<ClipVertex> clipPoints1, ref ie, rf.sideNormal1, rf.sideOffset1, rf.i1);
 
-                if (np < Settings.MaxManifoldPoints)
+                if (np < SettingEnv.MaxManifoldPoints)
                 {
                     return;
                 }
@@ -1206,7 +1206,7 @@ namespace Alis.Core.Physic.Collision
                 // Clip to negative box side 1
                 np = ClipSegmentToLine(out FixedArray2<ClipVertex> clipPoints2, ref clipPoints1, rf.sideNormal2, rf.sideOffset2, rf.i2);
 
-                if (np < Settings.MaxManifoldPoints)
+                if (np < SettingEnv.MaxManifoldPoints)
                 {
                     return;
                 }
@@ -1224,7 +1224,7 @@ namespace Alis.Core.Physic.Collision
                 }
 
                 int pointCount = 0;
-                for (int i = 0; i < Settings.MaxManifoldPoints; ++i)
+                for (int i = 0; i < SettingEnv.MaxManifoldPoints; ++i)
                 {
                     float separation = Vector2.Dot(rf.normal, clipPoints2[i].V - rf.v1);
 
@@ -1267,7 +1267,7 @@ namespace Alis.Core.Physic.Collision
                 EPAxis axis;
                 axis.Type = EPAxisType.EdgeA;
                 axis.Index = front ? 0 : 1;
-                axis.Separation = Settings.MaxFloat;
+                axis.Separation = SettingEnv.MaxFloat;
 
                 for (int i = 0; i < polygonB.Count; ++i)
                 {
@@ -1297,7 +1297,7 @@ namespace Alis.Core.Physic.Collision
                 EPAxis axis;
                 axis.Type = EPAxisType.Unknown;
                 axis.Index = -1;
-                axis.Separation = -Settings.MaxFloat;
+                axis.Separation = -SettingEnv.MaxFloat;
 
                 Vector2 perp = new Vector2(-normal.Y, normal.X);
 
@@ -1321,14 +1321,14 @@ namespace Alis.Core.Physic.Collision
                     // Adjacency
                     if (Vector2.Dot(n, perp) >= 0.0f)
                     {
-                        if (Vector2.Dot(n - upperLimit, normal) < -Settings.AngularSlop)
+                        if (Vector2.Dot(n - upperLimit, normal) < -SettingEnv.AngularSlop)
                         {
                             continue;
                         }
                     }
                     else
                     {
-                        if (Vector2.Dot(n - lowerLimit, normal) < -Settings.AngularSlop)
+                        if (Vector2.Dot(n - lowerLimit, normal) < -SettingEnv.AngularSlop)
                         {
                             continue;
                         }

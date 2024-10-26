@@ -598,7 +598,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             if (_enableLimit)
             {
                 float jointTranslation = Vector2.Dot(_axis, d);
-                if (Math.Abs(_upperTranslation - _lowerTranslation) < 2.0f * Settings.LinearSlop)
+                if (Math.Abs(_upperTranslation - _lowerTranslation) < 2.0f * SettingEnv.LinearSlop)
                 {
                     _limitState = LimitState.Equal;
                 }
@@ -808,24 +808,24 @@ namespace Alis.Core.Physic.Dynamics.Joints
             if (_enableLimit)
             {
                 float translation = Vector2.Dot(axis, d);
-                if (Math.Abs(_upperTranslation - _lowerTranslation) < 2.0f * Settings.LinearSlop)
+                if (Math.Abs(_upperTranslation - _lowerTranslation) < 2.0f * SettingEnv.LinearSlop)
                 {
                     // Prevent large angular corrections
-                    c2 = MathUtils.Clamp(translation, -Settings.MaxLinearCorrection, Settings.MaxLinearCorrection);
+                    c2 = MathUtils.Clamp(translation, -SettingEnv.MaxLinearCorrection, SettingEnv.MaxLinearCorrection);
                     linearError = Math.Max(linearError, Math.Abs(translation));
                     active = true;
                 }
                 else if (translation <= _lowerTranslation)
                 {
                     // Prevent large linear corrections and allow some slop.
-                    c2 = MathUtils.Clamp(translation - _lowerTranslation + Settings.LinearSlop, -Settings.MaxLinearCorrection, 0.0f);
+                    c2 = MathUtils.Clamp(translation - _lowerTranslation + SettingEnv.LinearSlop, -SettingEnv.MaxLinearCorrection, 0.0f);
                     linearError = Math.Max(linearError, _lowerTranslation - translation);
                     active = true;
                 }
                 else if (translation >= _upperTranslation)
                 {
                     // Prevent large linear corrections and allow some slop.
-                    c2 = MathUtils.Clamp(translation - _upperTranslation - Settings.LinearSlop, 0.0f, Settings.MaxLinearCorrection);
+                    c2 = MathUtils.Clamp(translation - _upperTranslation - SettingEnv.LinearSlop, 0.0f, SettingEnv.MaxLinearCorrection);
                     linearError = Math.Max(linearError, translation - _upperTranslation);
                     active = true;
                 }
@@ -893,7 +893,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.positions[_indexB].c = cB;
             data.positions[_indexB].a = aB;
 
-            return (linearError <= Settings.LinearSlop) && (angularError <= Settings.AngularSlop);
+            return (linearError <= SettingEnv.LinearSlop) && (angularError <= SettingEnv.AngularSlop);
         }
     }
 }

@@ -30,6 +30,7 @@
 using System.Collections.Generic;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Ecs;
+using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager.Input;
 using Xunit;
 

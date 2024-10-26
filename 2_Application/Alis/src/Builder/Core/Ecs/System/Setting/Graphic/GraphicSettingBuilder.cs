@@ -31,7 +31,7 @@ using System;
 using Alis.Builder.Core.Graphic;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Ecs.System.Setting.Graphic;
+using Alis.Core.Ecs.System.Configuration.Graphic;
 using Alis.Core.Graphic;
 
 namespace Alis.Builder.Core.Ecs.System.Setting.Graphic

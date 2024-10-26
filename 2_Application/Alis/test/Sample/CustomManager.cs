@@ -29,6 +29,7 @@
 
 using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager;
+using Alis.Core.Ecs.System.Scope;
 
 namespace Alis.Test.Sample
 {

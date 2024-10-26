@@ -30,6 +30,7 @@
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Component.Render;
+using Alis.Core.Ecs.System;
 using Xunit;
 
 namespace Alis.Test.Core.Ecs.Component.Render

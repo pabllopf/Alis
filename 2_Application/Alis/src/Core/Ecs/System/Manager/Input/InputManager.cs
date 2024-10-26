@@ -33,6 +33,7 @@ using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Entity;
+using Alis.Core.Ecs.System.Scope;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Sdl = Alis.Core.Graphic.Sdl2.Sdl;

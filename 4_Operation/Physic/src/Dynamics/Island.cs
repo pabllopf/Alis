@@ -43,12 +43,12 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The linear sleep tolerance
         /// </summary>
-        private const float LinTolSqr = Settings.LinearSleepTolerance * Settings.LinearSleepTolerance;
+        private const float LinTolSqr = SettingEnv.LinearSleepTolerance * SettingEnv.LinearSleepTolerance;
 
         /// <summary>
         ///     The angular sleep tolerance
         /// </summary>
-        private const float AngTolSqr = Settings.AngularSleepTolerance * Settings.AngularSleepTolerance;
+        private const float AngTolSqr = SettingEnv.AngularSleepTolerance * SettingEnv.AngularSleepTolerance;
 
         /// <summary>
         ///     The contact solver
@@ -252,7 +252,7 @@ namespace Alis.Core.Physic.Dynamics
                 _contactSolver.WarmStart();
             }
 
-            if (Settings.EnableDiagnostics)
+            if (SettingEnv.EnableDiagnostics)
                 _watch.Start();
 
             for (int i = 0; i < JointCount; ++i)
@@ -261,7 +261,7 @@ namespace Alis.Core.Physic.Dynamics
                     _joints[i].InitVelocityConstraints(ref solverData);
             }
 
-            if (Settings.EnableDiagnostics)
+            if (SettingEnv.EnableDiagnostics)
                 _watch.Stop();
 
             // Solve velocity constraints.
@@ -274,13 +274,13 @@ namespace Alis.Core.Physic.Dynamics
                     if (!joint.Enabled)
                         continue;
 
-                    if (Settings.EnableDiagnostics)
+                    if (SettingEnv.EnableDiagnostics)
                         _watch.Start();
 
                     joint.SolveVelocityConstraints(ref solverData);
                     joint.Validate(step.inv_dt);
 
-                    if (Settings.EnableDiagnostics)
+                    if (SettingEnv.EnableDiagnostics)
                         _watch.Stop();
                 }
 
@@ -300,16 +300,16 @@ namespace Alis.Core.Physic.Dynamics
 
                 // Check for large velocities
                 Vector2 translation = h * v;
-                if (Vector2.Dot(translation, translation) > Settings.MaxTranslationSquared)
+                if (Vector2.Dot(translation, translation) > SettingEnv.MaxTranslationSquared)
                 {
-                    float ratio = Settings.MaxTranslation / translation.Length();
+                    float ratio = SettingEnv.MaxTranslation / translation.Length();
                     v *= ratio;
                 }
 
                 float rotation = h * w;
-                if (rotation * rotation > Settings.MaxRotationSquared)
+                if (rotation * rotation > SettingEnv.MaxRotationSquared)
                 {
-                    float ratio = Settings.MaxRotation / Math.Abs(rotation);
+                    float ratio = SettingEnv.MaxRotation / Math.Abs(rotation);
                     w *= ratio;
                 }
 
@@ -338,12 +338,12 @@ namespace Alis.Core.Physic.Dynamics
                     if (!joint.Enabled)
                         continue;
 
-                    if (Settings.EnableDiagnostics)
+                    if (SettingEnv.EnableDiagnostics)
                         _watch.Start();
 
                     bool jointOkay = joint.SolvePositionConstraints(ref solverData);
 
-                    if (Settings.EnableDiagnostics)
+                    if (SettingEnv.EnableDiagnostics)
                         _watch.Stop();
 
                     jointsOkay = jointsOkay && jointOkay;
@@ -357,7 +357,7 @@ namespace Alis.Core.Physic.Dynamics
                 }
             }
 
-            if (Settings.EnableDiagnostics)
+            if (SettingEnv.EnableDiagnostics)
             {
                 JointUpdateTime = TimeSpan.FromTicks(_watch.ElapsedTicks);
                 _watch.Reset();
@@ -376,9 +376,9 @@ namespace Alis.Core.Physic.Dynamics
 
             Report(_contactSolver._velocityConstraints);
 
-            if (Settings.AllowSleep)
+            if (SettingEnv.AllowSleep)
             {
-                float minSleepTime = Settings.MaxFloat;
+                float minSleepTime = SettingEnv.MaxFloat;
 
                 for (int i = 0; i < BodyCount; ++i)
                 {
@@ -399,7 +399,7 @@ namespace Alis.Core.Physic.Dynamics
                     }
                 }
 
-                if ((minSleepTime >= Settings.TimeToSleep) && positionSolved)
+                if ((minSleepTime >= SettingEnv.TimeToSleep) && positionSolved)
                 {
                     for (int i = 0; i < BodyCount; ++i)
                     {
@@ -475,16 +475,16 @@ namespace Alis.Core.Physic.Dynamics
 
                 // Check for large velocities
                 Vector2 translation = h * v;
-                if (Vector2.Dot(translation, translation) > Settings.MaxTranslationSquared)
+                if (Vector2.Dot(translation, translation) > SettingEnv.MaxTranslationSquared)
                 {
-                    float ratio = Settings.MaxTranslation / translation.Length();
+                    float ratio = SettingEnv.MaxTranslation / translation.Length();
                     v *= ratio;
                 }
 
                 float rotation = h * w;
-                if (rotation * rotation > Settings.MaxRotationSquared)
+                if (rotation * rotation > SettingEnv.MaxRotationSquared)
                 {
-                    float ratio = Settings.MaxRotation / Math.Abs(rotation);
+                    float ratio = SettingEnv.MaxRotation / Math.Abs(rotation);
                     w *= ratio;
                 }
 

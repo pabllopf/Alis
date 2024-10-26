@@ -58,7 +58,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             : base(density)
         {
             ShapeType = ShapeType.Polygon;
-            _radius = Settings.PolygonRadius;
+            _radius = SettingEnv.PolygonRadius;
 
             Vertices = vertices;
         }
@@ -73,9 +73,9 @@ namespace Alis.Core.Physic.Collision.Shapes
             Debug.Assert(density >= 0f);
 
             ShapeType = ShapeType.Polygon;
-            _radius = Settings.PolygonRadius;
-            _vertices = new Vertices(Settings.MaxPolygonVertices);
-            Normals = new Vertices(Settings.MaxPolygonVertices);
+            _radius = SettingEnv.PolygonRadius;
+            _vertices = new Vertices(SettingEnv.MaxPolygonVertices);
+            Normals = new Vertices(SettingEnv.MaxPolygonVertices);
         }
 
         /// <summary>
@@ -85,9 +85,9 @@ namespace Alis.Core.Physic.Collision.Shapes
             : base(0)
         {
             ShapeType = ShapeType.Polygon;
-            _radius = Settings.PolygonRadius;
-            _vertices = new Vertices(Settings.MaxPolygonVertices);
-            Normals = new Vertices(Settings.MaxPolygonVertices);
+            _radius = SettingEnv.PolygonRadius;
+            _vertices = new Vertices(SettingEnv.MaxPolygonVertices);
+            Normals = new Vertices(SettingEnv.MaxPolygonVertices);
         }
 
         /// <summary>
@@ -103,9 +103,9 @@ namespace Alis.Core.Physic.Collision.Shapes
             {
                 _vertices = new Vertices(value);
 
-                Debug.Assert((_vertices.Count >= 3) && (_vertices.Count <= Settings.MaxPolygonVertices));
+                Debug.Assert((_vertices.Count >= 3) && (_vertices.Count <= SettingEnv.MaxPolygonVertices));
 
-                if (Settings.UseConvexHullPolygons)
+                if (SettingEnv.UseConvexHullPolygons)
                 {
                     //FPE note: This check is required as the GiftWrap algorithm early exits on triangles
                     //So instead of giftwrapping a triangle, we just force it to be clock wise.
@@ -122,7 +122,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                 {
                     int next = i + 1 < _vertices.Count ? i + 1 : 0;
                     Vector2 edge = _vertices[next] - _vertices[i];
-                    Debug.Assert(edge.LengthSquared() > Settings.Epsilon * Settings.Epsilon);
+                    Debug.Assert(edge.LengthSquared() > SettingEnv.Epsilon * SettingEnv.Epsilon);
 
                     //FPE optimization: Normals.Add(MathUtils.Cross(edge, 1.0f));
                     Vector2 temp = new Vector2(edge.Y, -edge.X);
@@ -223,7 +223,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             }
 
             //The area is too small for the engine to handle.
-            Debug.Assert(area > Settings.Epsilon);
+            Debug.Assert(area > SettingEnv.Epsilon);
 
             // We save the area
             MassData.Area = area;
@@ -293,7 +293,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                 float numerator = Vector2.Dot(Normals[i], Vertices[i] - p1);
                 float denominator = Vector2.Dot(Normals[i], d);
 
-                if (Math.Abs(denominator) < Settings.Epsilon)
+                if (Math.Abs(denominator) < SettingEnv.Epsilon)
                 {
                     if (numerator < 0.0f)
                     {
@@ -401,7 +401,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             Vector2 normalL = Complex.Divide(ref normal, ref xf.q);
             float offsetL = offset - Vector2.Dot(normal, xf.p);
 
-            float[] depths = new float[Settings.MaxPolygonVertices];
+            float[] depths = new float[SettingEnv.MaxPolygonVertices];
             int diveCount = 0;
             int intoIndex = -1;
             int outoIndex = -1;
@@ -411,7 +411,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             for (i = 0; i < Vertices.Count; i++)
             {
                 depths[i] = Vector2.Dot(normalL, Vertices[i]) - offsetL;
-                bool isSubmerged = depths[i] < -Settings.Epsilon;
+                bool isSubmerged = depths[i] < -SettingEnv.Epsilon;
                 if (i > 0)
                 {
                     if (isSubmerged)
@@ -528,7 +528,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                     return false;
             }
 
-            return (Math.Abs(Radius - shape.Radius) < Settings.Epsilon) && (MassData == shape.MassData);
+            return (Math.Abs(Radius - shape.Radius) < SettingEnv.Epsilon) && (MassData == shape.MassData);
         }
 
         /// <summary>

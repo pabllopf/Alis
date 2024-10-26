@@ -31,8 +31,9 @@ using Alis.Builder.Core.Ecs.System;
 using Alis.Builder.Core.Ecs.System.Manager.Scene;
 using Alis.Builder.Core.Ecs.System.Setting;
 using Alis.Core.Ecs;
+using Alis.Core.Ecs.System;
+using Alis.Core.Ecs.System.Configuration;
 using Alis.Core.Ecs.System.Manager.Scene;
-using Alis.Core.Ecs.System.Setting;
 using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.System
@@ -61,11 +62,11 @@ namespace Alis.Test.Builder.Core.Ecs.System
         {
             VideoGame videoGame = new VideoGame();
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
-            Settings settings = new Settings();
+            Setting setting = new Setting();
 
-            videoGameBuilder.Settings(s => settings);
+            videoGameBuilder.Settings(s => setting);
 
-            Assert.Equal(settings.Scene.MaxNumberOfScenes, videoGameBuilder.Build().Context.Settings.Scene.MaxNumberOfScenes);
+            Assert.Equal(setting.Scene.MaxNumberOfScenes, videoGameBuilder.Build().Context.Setting.Scene.MaxNumberOfScenes);
         }
 
         /// <summary>
@@ -131,7 +132,7 @@ namespace Alis.Test.Builder.Core.Ecs.System
 
             videoGameBuilder.Settings(s => settingsBuilder.Build());
 
-            Assert.NotNull(videoGameBuilder.Build().Context.Settings);
+            Assert.NotNull(videoGameBuilder.Build().Context.Setting);
         }
 
         /// <summary>

@@ -629,7 +629,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.positions[_indexB].c = cB;
             data.positions[_indexB].a = aB;
 
-            return Math.Abs(c) <= Settings.LinearSlop;
+            return Math.Abs(c) <= SettingEnv.LinearSlop;
         }
     }
 }

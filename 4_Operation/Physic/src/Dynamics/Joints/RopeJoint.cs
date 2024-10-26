@@ -250,7 +250,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 State = LimitState.Inactive;
             }
 
-            if (_length > Settings.LinearSlop)
+            if (_length > SettingEnv.LinearSlop)
             {
                 _u *= 1.0f / _length;
             }
@@ -354,7 +354,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             u.Normalize();
             float c = length - MaxLength;
 
-            c = MathUtils.Clamp(c, 0.0f, Settings.MaxLinearCorrection);
+            c = MathUtils.Clamp(c, 0.0f, SettingEnv.MaxLinearCorrection);
 
             float impulse = -_mass * c;
             Vector2 p = impulse * u;
@@ -369,7 +369,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.positions[_indexB].c = cB;
             data.positions[_indexB].a = aB;
 
-            return length - MaxLength < Settings.LinearSlop;
+            return length - MaxLength < SettingEnv.LinearSlop;
         }
     }
 }

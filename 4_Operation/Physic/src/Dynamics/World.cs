@@ -401,7 +401,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="iterations">The iterations</param>
         private void SolveTOI(ref TimeStep step, ref SolverIterations iterations)
         {
-            Island.Reset(2 * Settings.MaxTOIContacts, Settings.MaxTOIContacts, 0, ContactManager);
+            Island.Reset(2 * SettingEnv.MaxTOIContacts, SettingEnv.MaxTOIContacts, 0, ContactManager);
             
             if (_stepComplete)
             {
@@ -439,7 +439,7 @@ namespace Alis.Core.Physic.Dynamics
                     }
 
                     // Prevent excessive sub-stepping.
-                    if (c._toiCount > Settings.MaxSubSteps)
+                    if (c._toiCount > SettingEnv.MaxSubSteps)
                     {
                         continue;
                     }
@@ -535,7 +535,7 @@ namespace Alis.Core.Physic.Dynamics
                     }
                 }
 
-                if (minContact == null || 1.0f - 10.0f * Settings.Epsilon < minAlpha)
+                if (minContact == null || 1.0f - 10.0f * SettingEnv.Epsilon < minAlpha)
                 {
                     // No more TOI events. Done!
                     _stepComplete = true;
@@ -1128,10 +1128,10 @@ namespace Alis.Core.Physic.Dynamics
         public void Step(float dt)
         {
             SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = Settings.PositionIterations;
-            iterations.VelocityIterations = Settings.VelocityIterations;
-            iterations.TOIPositionIterations = Settings.TOIPositionIterations;
-            iterations.TOIVelocityIterations = Settings.TOIVelocityIterations;
+            iterations.PositionIterations = SettingEnv.PositionIterations;
+            iterations.VelocityIterations = SettingEnv.VelocityIterations;
+            iterations.TOIPositionIterations = SettingEnv.TOIPositionIterations;
+            iterations.TOIVelocityIterations = SettingEnv.TOIVelocityIterations;
             Step(dt, ref iterations);
         }
 
@@ -1150,7 +1150,7 @@ namespace Alis.Core.Physic.Dynamics
             if (!Enabled)
                 return;
 
-            if (Settings.EnableDiagnostics)
+            if (SettingEnv.EnableDiagnostics)
                 _watch.Start();
             
             // If new fixtures were added, we need to find the new contacts.
@@ -1160,7 +1160,7 @@ namespace Alis.Core.Physic.Dynamics
                 _worldHasNewFixture = false;
             }
 
-            if (Settings.EnableDiagnostics)
+            if (SettingEnv.EnableDiagnostics)
                 NewContactsTime = TimeSpan.FromTicks(_watch.ElapsedTicks) - AddRemoveTime;
 
             //FPE only: moved position and velocity iterations into Settings.cs
@@ -1181,12 +1181,12 @@ namespace Alis.Core.Physic.Dynamics
                     ControllerList._list[i].Update(dt);
                 }
 
-                if (Settings.EnableDiagnostics)
+                if (SettingEnv.EnableDiagnostics)
                     ControllersUpdateTime = TimeSpan.FromTicks(_watch.ElapsedTicks) - (AddRemoveTime + NewContactsTime);
 
                 // Update contacts. This is where some contacts are destroyed.
                 ContactManager.Collide();
-                if (Settings.EnableDiagnostics)
+                if (SettingEnv.EnableDiagnostics)
                     ContactsUpdateTime = TimeSpan.FromTicks(_watch.ElapsedTicks) - (AddRemoveTime + NewContactsTime + ControllersUpdateTime);
 
                 // Integrate velocities, solve velocity constraints, and integrate positions.
@@ -1195,19 +1195,19 @@ namespace Alis.Core.Physic.Dynamics
                     Solve(ref step);
                 }
 
-                if (Settings.EnableDiagnostics)
+                if (SettingEnv.EnableDiagnostics)
                     SolveUpdateTime = TimeSpan.FromTicks(_watch.ElapsedTicks) - (AddRemoveTime + NewContactsTime + ControllersUpdateTime + ContactsUpdateTime);
 
                 // Handle TOI events.
-                if (Settings.ContinuousPhysics && (step.dt > 0.0f))
+                if (SettingEnv.ContinuousPhysics && (step.dt > 0.0f))
                 {
                     SolveTOI(ref step, ref iterations);
                 }
 
-                if (Settings.EnableDiagnostics)
+                if (SettingEnv.EnableDiagnostics)
                     ContinuousPhysicsTime = TimeSpan.FromTicks(_watch.ElapsedTicks) - (AddRemoveTime + NewContactsTime + ControllersUpdateTime + ContactsUpdateTime + SolveUpdateTime);
 
-                if (Settings.AutoClearForces)
+                if (SettingEnv.AutoClearForces)
                     ClearForces();
             }
             finally
@@ -1218,7 +1218,7 @@ namespace Alis.Core.Physic.Dynamics
             if (step.dt > 0.0f)
                 _invDt0 = step.inv_dt;
 
-            if (Settings.EnableDiagnostics)
+            if (SettingEnv.EnableDiagnostics)
             {
                 _watch.Stop();
                 UpdateTime = TimeSpan.FromTicks(_watch.ElapsedTicks);
@@ -1382,7 +1382,7 @@ namespace Alis.Core.Physic.Dynamics
         public Fixture TestPoint(Vector2 point)
         {
             AABB aabb;
-            Vector2 d = new Vector2(Settings.Epsilon, Settings.Epsilon);
+            Vector2 d = new Vector2(SettingEnv.Epsilon, SettingEnv.Epsilon);
             aabb.LowerBound = point - d;
             aabb.UpperBound = point + d;
 

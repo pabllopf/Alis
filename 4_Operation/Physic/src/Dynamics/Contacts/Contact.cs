@@ -209,7 +209,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// </summary>
         public void ResetRestitution()
         {
-            Restitution = Settings.MixRestitution(FixtureA.Restitution, FixtureB.Restitution);
+            Restitution = SettingEnv.MixRestitution(FixtureA.Restitution, FixtureB.Restitution);
         }
 
         /// <summary>
@@ -217,7 +217,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// </summary>
         public void ResetFriction()
         {
-            Friction = Settings.MixFriction(FixtureA.Friction, FixtureB.Friction);
+            Friction = SettingEnv.MixFriction(FixtureA.Friction, FixtureB.Friction);
         }
 
         /// <summary>
@@ -274,8 +274,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             //FPE: We only set the friction and restitution if we are not destroying the contact
             if ((FixtureA != null) && (FixtureB != null))
             {
-                Friction = Settings.MixFriction(FixtureA.Friction, FixtureB.Friction);
-                Restitution = Settings.MixRestitution(FixtureA.Restitution, FixtureB.Restitution);
+                Friction = SettingEnv.MixFriction(FixtureA.Friction, FixtureB.Friction);
+                Restitution = SettingEnv.MixRestitution(FixtureA.Restitution, FixtureB.Restitution);
             }
 
             TangentSpeed = 0;

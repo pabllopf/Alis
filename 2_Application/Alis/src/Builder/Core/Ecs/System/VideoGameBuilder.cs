@@ -35,7 +35,7 @@ using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager.Scene;
-using Alis.Core.Ecs.System.Setting;
+using Alis.Core.Ecs.System.Scope;
 
 namespace Alis.Builder.Core.Ecs.System
 {
@@ -46,11 +46,11 @@ namespace Alis.Builder.Core.Ecs.System
     public class VideoGameBuilder :
         IBuild<VideoGame>,
         IWorld<VideoGameBuilder, Func<SceneManagerBuilder, SceneManager>>,
-        ISettings<VideoGameBuilder, Func<SettingsBuilder, Settings>>
+        ISettings<VideoGameBuilder, Func<SettingsBuilder, Alis.Core.Ecs.System.Configuration.Setting>>
     {
         /// <summary>Gets or sets the video game.</summary>
         /// <value>The video game.</value>
-        public readonly Context context = new Context(new Settings());
+        public readonly Context context = new Context(new Alis.Core.Ecs.System.Configuration.Setting());
         
         /// <summary>Builds this instance.</summary>
         /// <returns></returns>
@@ -61,9 +61,9 @@ namespace Alis.Builder.Core.Ecs.System
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The video game builder</returns>
-        public VideoGameBuilder Settings(Func<SettingsBuilder, Settings> value)
+        public VideoGameBuilder Settings(Func<SettingsBuilder, Alis.Core.Ecs.System.Configuration.Setting> value)
         {
-            context.Settings = value.Invoke(new SettingsBuilder());
+            context.Setting = value.Invoke(new SettingsBuilder());
             return this;
         }
 

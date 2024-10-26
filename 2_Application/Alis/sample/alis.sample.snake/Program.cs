@@ -33,6 +33,7 @@ using Alis.Core.Ecs.Component.Audio;
 using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
+using Alis.Core.Ecs.System;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Sample.Snake

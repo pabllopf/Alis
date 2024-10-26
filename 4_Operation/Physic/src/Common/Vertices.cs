@@ -406,13 +406,13 @@ namespace Alis.Core.Physic.Common
         /// <returns>PolygonError.NoError if there were no error.</returns>
         public PolygonError CheckPolygon()
         {
-            if (Count < 3 || Count > Settings.MaxPolygonVertices)
+            if (Count < 3 || Count > SettingEnv.MaxPolygonVertices)
                 return PolygonError.InvalidAmountOfVertices;
 
             if (!IsSimple())
                 return PolygonError.NotSimple;
 
-            if (GetArea() <= Settings.Epsilon)
+            if (GetArea() <= SettingEnv.Epsilon)
                 return PolygonError.AreaTooSmall;
 
             if (!IsConvex())
@@ -423,7 +423,7 @@ namespace Alis.Core.Physic.Common
             {
                 int next = i + 1 < Count ? i + 1 : 0;
                 Vector2 edge = this[next] - this[i];
-                if (edge.LengthSquared() <= Settings.Epsilon * Settings.Epsilon)
+                if (edge.LengthSquared() <= SettingEnv.Epsilon * SettingEnv.Epsilon)
                 {
                     return PolygonError.SideTooSmall;
                 }

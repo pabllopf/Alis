@@ -174,8 +174,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 LengthB = dB.Length();
             }
 
-            Debug.Assert(Math.Abs(ratio) > Settings.Epsilon);
-            Debug.Assert(ratio > Settings.Epsilon);
+            Debug.Assert(Math.Abs(ratio) > SettingEnv.Epsilon);
+            Debug.Assert(ratio > SettingEnv.Epsilon);
 
             Ratio = ratio;
             Constant = LengthA + ratio * LengthB;
@@ -312,7 +312,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float lengthA = _uA.Length();
             float lengthB = _uB.Length();
 
-            if (lengthA > 10.0f * Settings.LinearSlop)
+            if (lengthA > 10.0f * SettingEnv.LinearSlop)
             {
                 _uA *= 1.0f / lengthA;
             }
@@ -321,7 +321,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _uA = Vector2.Zero;
             }
 
-            if (lengthB > 10.0f * Settings.LinearSlop)
+            if (lengthB > 10.0f * SettingEnv.LinearSlop)
             {
                 _uB *= 1.0f / lengthB;
             }
@@ -425,7 +425,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float lengthA = uA.Length();
             float lengthB = uB.Length();
 
-            if (lengthA > 10.0f * Settings.LinearSlop)
+            if (lengthA > 10.0f * SettingEnv.LinearSlop)
             {
                 uA *= 1.0f / lengthA;
             }
@@ -434,7 +434,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 uA = Vector2.Zero;
             }
 
-            if (lengthB > 10.0f * Settings.LinearSlop)
+            if (lengthB > 10.0f * SettingEnv.LinearSlop)
             {
                 uB *= 1.0f / lengthB;
             }
@@ -475,7 +475,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.positions[_indexB].c = cB;
             data.positions[_indexB].a = aB;
 
-            return linearError < Settings.LinearSlop;
+            return linearError < SettingEnv.LinearSlop;
         }
     }
 }

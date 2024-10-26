@@ -276,7 +276,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     // Setup a velocity bias for restitution.
                     vcp.velocityBias = 0.0f;
                     float vRel = Vector2.Dot(vc.normal, vB + MathUtils.Cross(wB, ref vcp.rB) - vA - MathUtils.Cross(wA, ref vcp.rA));
-                    if (vRel < -Settings.VelocityThreshold)
+                    if (vRel < -SettingEnv.VelocityThreshold)
                     {
                         vcp.velocityBias = -vc.restitution * vRel;
                     }
@@ -828,7 +828,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     minSeparation = Math.Min(minSeparation, separation);
 
                     // Prevent large corrections and allow slop.
-                    float C = MathUtils.Clamp(Settings.Baumgarte * (separation + Settings.LinearSlop), -Settings.MaxLinearCorrection, 0.0f);
+                    float C = MathUtils.Clamp(SettingEnv.Baumgarte * (separation + SettingEnv.LinearSlop), -SettingEnv.MaxLinearCorrection, 0.0f);
 
                     // Compute the effective mass.
                     float rnA = MathUtils.Cross(ref rA, ref normal);
@@ -861,7 +861,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
             // We can't expect minSpeparation >= -b2_linearSlop because we don't
             // push the separation above -b2_linearSlop.
-            return minSeparation >= -3.0f * Settings.LinearSlop;
+            return minSeparation >= -3.0f * SettingEnv.LinearSlop;
         }
 
         // Sequential position solver for position constraints.
@@ -924,7 +924,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     minSeparation = Math.Min(minSeparation, separation);
 
                     // Prevent large corrections and allow slop.
-                    float C = MathUtils.Clamp(Settings.Baumgarte * (separation + Settings.LinearSlop), -Settings.MaxLinearCorrection, 0.0f);
+                    float C = MathUtils.Clamp(SettingEnv.Baumgarte * (separation + SettingEnv.LinearSlop), -SettingEnv.MaxLinearCorrection, 0.0f);
 
                     // Compute the effective mass.
                     float rnA = MathUtils.Cross(ref rA, ref normal);
@@ -952,7 +952,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
             // We can't expect minSpeparation >= -b2_linearSlop because we don't
             // push the separation above -b2_linearSlop.
-            return minSeparation >= -1.5f * Settings.LinearSlop;
+            return minSeparation >= -1.5f * SettingEnv.LinearSlop;
         }
 
         /// <summary>
@@ -990,7 +990,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                         normal = new Vector2(1.0f, 0.0f);
                         Vector2 pointA = Transform.Multiply(ref manifold.LocalPoint, ref xfA);
                         Vector2 pointB = Transform.Multiply(manifold.Points[0].LocalPoint, ref xfB);
-                        if (Vector2.DistanceSquared(pointA, pointB) > Settings.Epsilon * Settings.Epsilon)
+                        if (Vector2.DistanceSquared(pointA, pointB) > SettingEnv.Epsilon * SettingEnv.Epsilon)
                         {
                             normal = pointB - pointA;
                             normal.Normalize();

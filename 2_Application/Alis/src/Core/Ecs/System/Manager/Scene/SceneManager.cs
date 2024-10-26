@@ -32,6 +32,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using Alis.Core.Aspect.Data.Json;
+using Alis.Core.Ecs.System.Scope;
 
 namespace Alis.Core.Ecs.System.Manager.Scene
 {

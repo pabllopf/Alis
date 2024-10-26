@@ -120,7 +120,7 @@ namespace Alis.Core.Physic.Controllers
                     Vector2 d = controllerBody.Position - worldBody.Position;
                     float r2 = d.LengthSquared();
 
-                    if (r2 <= Settings.Epsilon || r2 > MaxRadius * MaxRadius || r2 < MinRadius * MinRadius)
+                    if (r2 <= SettingEnv.Epsilon || r2 > MaxRadius * MaxRadius || r2 < MinRadius * MinRadius)
                         continue;
 
                     switch (GravityType)
@@ -141,7 +141,7 @@ namespace Alis.Core.Physic.Controllers
                     Vector2 d = point - worldBody.Position;
                     float r2 = d.LengthSquared();
 
-                    if (r2 <= Settings.Epsilon || r2 > MaxRadius * MaxRadius || r2 < MinRadius * MinRadius)
+                    if (r2 <= SettingEnv.Epsilon || r2 > MaxRadius * MaxRadius || r2 < MinRadius * MinRadius)
                         continue;
 
                     switch (GravityType)

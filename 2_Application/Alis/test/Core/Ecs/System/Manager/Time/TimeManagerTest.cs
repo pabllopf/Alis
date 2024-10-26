@@ -30,6 +30,7 @@
 using System.Threading;
 using Alis.Core.Aspect.Time;
 using Alis.Core.Ecs;
+using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager.Time;
 using Xunit;
 

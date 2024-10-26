@@ -37,7 +37,7 @@ using Alis.Core.Ecs.System.Manager.Input;
 using Alis.Core.Ecs.System.Manager.Network;
 using Alis.Core.Ecs.System.Manager.Physic;
 using Alis.Core.Ecs.System.Manager.Scene;
-using Alis.Core.Ecs.System.Setting;
+using Alis.Core.Ecs.System.Scope;
 using Alis.Test.Builder.Core.Ecs.Entity.GameObject.Sample;
 using Xunit;
 

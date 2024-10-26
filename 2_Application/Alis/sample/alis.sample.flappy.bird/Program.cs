@@ -35,6 +35,7 @@ using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Component.Ui;
 using Alis.Core.Ecs.Entity;
+using Alis.Core.Ecs.System;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Sample.Flappy.Bird

@@ -67,10 +67,10 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             foreach (Vector2 vertex in shape.Vertices)
             {
                 if (vertex.Equals(localEntryPoint))
-                    localEntryPoint -= new Vector2(0, Settings.Epsilon);
+                    localEntryPoint -= new Vector2(0, SettingEnv.Epsilon);
 
                 if (vertex.Equals(localExitPoint))
-                    localExitPoint += new Vector2(0, Settings.Epsilon);
+                    localExitPoint += new Vector2(0, SettingEnv.Epsilon);
             }
 
             Vertices vertices = new Vertices(shape.Vertices);
@@ -87,7 +87,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             {
                 int n;
                 //Find out if this vertex is on the old or new shape.
-                if (Vector2.Dot(MathUtils.Cross(localExitPoint - localEntryPoint, 1), vertices[i] - localEntryPoint) > Settings.Epsilon)
+                if (Vector2.Dot(MathUtils.Cross(localExitPoint - localEntryPoint, 1), vertices[i] - localEntryPoint) > SettingEnv.Epsilon)
                     n = 0;
                 else
                     n = 1;
@@ -148,7 +148,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 if (!offset.IsValid())
                     offset = Vector2.One;
 
-                newPolygon[n][cutAdded[n]] += Settings.Epsilon * offset;
+                newPolygon[n][cutAdded[n]] += SettingEnv.Epsilon * offset;
 
                 if (cutAdded[n] < newPolygon[n].Count - 2)
                 {
@@ -164,7 +164,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 if (!offset.IsValid())
                     offset = Vector2.One;
 
-                newPolygon[n][cutAdded[n] + 1] += Settings.Epsilon * offset;
+                newPolygon[n][cutAdded[n] + 1] += SettingEnv.Epsilon * offset;
             }
 
             first = newPolygon[0];

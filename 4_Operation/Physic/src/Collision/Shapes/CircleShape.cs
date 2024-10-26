@@ -131,7 +131,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             float sigma = c * c - rr * b;
 
             // Check for negative discriminant and short segment.
-            if (sigma < 0.0f || rr < Settings.Epsilon)
+            if (sigma < 0.0f || rr < SettingEnv.Epsilon)
             {
                 return false;
             }
@@ -201,7 +201,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 
             Vector2 p = Transform.Multiply(ref _position, ref xf);
             float l = -(Vector2.Dot(normal, p) - offset);
-            if (l < -Radius + Settings.Epsilon)
+            if (l < -Radius + SettingEnv.Epsilon)
             {
                 //Completely dry
                 return 0;

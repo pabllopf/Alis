@@ -28,7 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Data.Mapping;
-using Alis.Core.Ecs.Entity.Property;
+using Alis.Core.Ecs.System.Common;
+using Alis.Core.Ecs.System.Execution;
 
 namespace Alis.Core.Ecs.Component
 {
