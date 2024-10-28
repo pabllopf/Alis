@@ -59,6 +59,19 @@ namespace Alis.Test.Core.Ecs
 
             Assert.False(videoGame.Context.IsRunning);
         }
+        
+        /// <summary>
+        ///     Tests that is running set value should change is running
+        /// </summary>
+        [Fact]
+        public void IsRunning_SetValue_ShouldChangeIsRunning_v2()
+        {
+            VideoGame videoGame = new VideoGame(new Setting());
+
+            videoGame.Context.IsRunning = false;
+
+            Assert.False(videoGame.Context.IsRunning);
+        }
 
         /// <summary>
         ///     Tests that builder should return video game builder

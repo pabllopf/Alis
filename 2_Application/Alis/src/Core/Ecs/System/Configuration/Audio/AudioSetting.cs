@@ -37,10 +37,10 @@ namespace Alis.Core.Ecs.System.Configuration.Audio
     ///     The audio setting class
     /// </summary>
     /// <seealso cref="IAudioSetting" />
-    /// <seealso cref="IBuilder{AudioSettingBuilder}" />
+    /// <seealso cref="IHasBuilder{TOut}" />
     public class AudioSetting :
         IAudioSetting,
-        IBuilder<AudioSettingBuilder>
+        IHasBuilder<AudioSettingBuilder>
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioSetting" /> class

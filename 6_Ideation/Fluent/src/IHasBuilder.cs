@@ -32,7 +32,7 @@ namespace Alis.Core.Aspect.Fluent
     /// <summary>
     ///     The builder interface
     /// </summary>
-    public interface IBuilder<out TOut>
+    public interface IHasBuilder<out TOut>
     {
         /// <summary>
         ///     Builders

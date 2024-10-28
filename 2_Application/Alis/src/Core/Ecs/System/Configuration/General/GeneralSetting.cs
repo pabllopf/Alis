@@ -38,10 +38,10 @@ namespace Alis.Core.Ecs.System.Configuration.General
     ///     The general setting class
     /// </summary>
     /// <seealso cref="IGeneralSetting" />
-    /// <seealso cref="IBuilder{TOut}" />
+    /// <seealso cref="IHasBuilder{TOut}" />
     public class GeneralSetting :
         IGeneralSetting,
-        IBuilder<GeneralSettingBuilder>
+        IHasBuilder<GeneralSettingBuilder>
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="GeneralSetting" /> class

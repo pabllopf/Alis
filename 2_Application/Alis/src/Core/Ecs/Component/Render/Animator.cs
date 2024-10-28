@@ -40,7 +40,7 @@ namespace Alis.Core.Ecs.Component.Render
     /// <summary>
     ///     The animator class
     /// </summary>
-    public class Animator : AComponent, IBuilder<AnimatorBuilder>
+    public class Animator : AComponent, IHasBuilder<AnimatorBuilder>
     {
         /// <summary>
         ///     The current animation

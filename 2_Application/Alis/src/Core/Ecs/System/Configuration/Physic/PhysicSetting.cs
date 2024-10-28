@@ -39,10 +39,10 @@ namespace Alis.Core.Ecs.System.Configuration.Physic
     ///     The physic setting class
     /// </summary>
     /// <seealso cref="IPhysicSetting" />
-    /// <seealso cref="IBuilder{PhysicSettingBuilder}" />
+    /// <seealso cref="IHasBuilder{TOut}" />
     public class PhysicSetting :
         IPhysicSetting,
-        IBuilder<PhysicSettingBuilder>
+        IHasBuilder<PhysicSettingBuilder>
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="PhysicSetting" /> class

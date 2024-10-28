@@ -39,7 +39,7 @@ namespace Alis.Core.Ecs.System.Configuration.Network
     /// <seealso cref="INetworkSetting" />
     public class NetworkSetting :
         INetworkSetting,
-        IBuilder<NetworkSettingBuilder>
+        IHasBuilder<NetworkSettingBuilder>
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="NetworkSetting" /> class

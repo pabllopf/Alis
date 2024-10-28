@@ -37,7 +37,7 @@ namespace Alis.Core.Ecs.Component.Ui
     /// </summary>
     /// <seealso cref="AComponent" />
     public class Canvas : AComponent,
-        IBuilder<CanvasBuilder>
+        IHasBuilder<CanvasBuilder>
     {
         /// <summary>
         ///     Gets or sets the value of the width

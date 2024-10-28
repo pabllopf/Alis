@@ -11,7 +11,7 @@ namespace Alis.Core.Ecs.System.Scope
     /// The context handler class
     /// </summary>
     /// <seealso cref="IContextHandler{Context}"/>
-    internal class ContextHandler : IContextHandler<Context>
+    public class ContextHandler : IContextHandler<Context>
     {
         /// <summary>
         /// The context

@@ -48,5 +48,10 @@ namespace Alis.Core.Ecs.System.Scope
         /// Runs the preview
         /// </summary>
         void RunPreview();
+
+        /// <summary>
+        /// Exits this instance
+        /// </summary>
+        void Exit();
     }
 }

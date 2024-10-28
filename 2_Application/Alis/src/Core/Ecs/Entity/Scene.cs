@@ -30,7 +30,6 @@
 using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Data.Json;
-using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Scope;
 
 namespace Alis.Core.Ecs.Entity

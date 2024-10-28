@@ -32,7 +32,6 @@ using Alis.Builder.Core.Ecs.System.Manager.Scene;
 using Alis.Builder.Core.Ecs.System.Setting;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Ecs;
 using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager.Scene;
 using Alis.Core.Ecs.System.Scope;
@@ -54,7 +53,7 @@ namespace Alis.Builder.Core.Ecs.System
         
         /// <summary>Builds this instance.</summary>
         /// <returns></returns>
-        public VideoGame Build() => new VideoGame(context);
+        public VideoGame Build() => new VideoGame(new ContextHandler(context));
 
         /// <summary>
         ///     Setting the value

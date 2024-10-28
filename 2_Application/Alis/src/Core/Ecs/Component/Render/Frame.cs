@@ -38,7 +38,7 @@ namespace Alis.Core.Ecs.Component.Render
     ///     The frame class
     /// </summary>
     public class Frame :
-        IBuilder<FrameBuilder>
+        IHasBuilder<FrameBuilder>
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="Frame" /> class

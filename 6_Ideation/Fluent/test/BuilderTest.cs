@@ -43,10 +43,10 @@ namespace Alis.Core.Aspect.Fluent.Test
         public void Builder_ReturnsExpectedValue()
         {
             // Arrange
-            TestBuilder testBuilder = new TestBuilder();
+            TestHasBuilder testHasBuilder = new TestHasBuilder();
 
             // Act
-            string result = testBuilder.Builder();
+            string result = testHasBuilder.Builder();
 
             // Assert
             Assert.Equal("Test", result);
@@ -59,10 +59,10 @@ namespace Alis.Core.Aspect.Fluent.Test
         public void Builder_DoesNotReturnNull()
         {
             // Arrange
-            TestBuilder testBuilder = new TestBuilder();
+            TestHasBuilder testHasBuilder = new TestHasBuilder();
 
             // Act
-            string result = testBuilder.Builder();
+            string result = testHasBuilder.Builder();
 
             // Assert
             Assert.NotNull(result);
@@ -75,10 +75,10 @@ namespace Alis.Core.Aspect.Fluent.Test
         public void Builder_ReturnsCorrectType()
         {
             // Arrange
-            TestBuilder testBuilder = new TestBuilder();
+            TestHasBuilder testHasBuilder = new TestHasBuilder();
 
             // Act
-            string result = testBuilder.Builder();
+            string result = testHasBuilder.Builder();
 
             // Assert
             Assert.IsType<string>(result);

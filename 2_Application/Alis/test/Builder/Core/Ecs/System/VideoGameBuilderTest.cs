@@ -34,6 +34,7 @@ using Alis.Core.Ecs;
 using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Configuration;
 using Alis.Core.Ecs.System.Manager.Scene;
+using Alis.Core.Ecs.System.Scope;
 using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.System
@@ -60,7 +61,7 @@ namespace Alis.Test.Builder.Core.Ecs.System
         [Fact]
         public void Settings_ValidInput()
         {
-            VideoGame videoGame = new VideoGame();
+            VideoGame videoGame = new VideoGame(new Context());
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
             Setting setting = new Setting();
 
@@ -75,7 +76,7 @@ namespace Alis.Test.Builder.Core.Ecs.System
         [Fact]
         public void World_ValidInput()
         {
-            VideoGame videoGame = new VideoGame();
+            VideoGame videoGame = new VideoGame(new Context());
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
             SceneManager sceneManager = new SceneManager(videoGameBuilder.context);
 

@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.System.Scope;
+
 namespace Alis.Core.Ecs.System
 {
     /// <summary>

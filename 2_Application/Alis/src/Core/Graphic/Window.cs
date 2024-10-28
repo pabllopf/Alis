@@ -38,10 +38,10 @@ namespace Alis.Core.Graphic
     /// <summary>
     ///     The window class
     /// </summary>
-    /// <seealso cref="IBuilder{WindowBuilder}" />
+    /// <seealso cref="IHasBuilder{TOut}" />
     public class Window :
         IWindow,
-        IBuilder<WindowBuilder>
+        IHasBuilder<WindowBuilder>
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="Window" /> class

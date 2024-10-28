@@ -33,7 +33,6 @@ using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Entity;
-using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Scope;
 
 namespace Alis.Core.Ecs.Component

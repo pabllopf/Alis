@@ -39,7 +39,7 @@ namespace Alis.Core.Ecs.System.Configuration.Input
     /// <seealso cref="IInputSetting" />
     public class InputSetting :
         IInputSetting,
-        IBuilder<InputSettingBuilder>
+        IHasBuilder<InputSettingBuilder>
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="InputSetting" /> class

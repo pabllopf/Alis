@@ -38,7 +38,7 @@ namespace Alis.Core.Ecs.Component.Audio
     /// <summary>
     ///     The audio source class
     /// </summary>
-    public class AudioSource : AComponent, IBuilder<AudioSourceBuilder>
+    public class AudioSource : AComponent, IHasBuilder<AudioSourceBuilder>
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioSource" /> class

@@ -38,8 +38,8 @@ namespace Alis.Core.Ecs.System.Configuration.Graphic
     ///     The graphic setting class
     /// </summary>
     /// <seealso cref="IGraphicSetting" />
-    /// <seealso cref="IBuilder{GraphicSettingBuilder}" />
-    public class GraphicSetting : IGraphicSetting, IBuilder<GraphicSettingBuilder>
+    /// <seealso cref="IHasBuilder{TOut}" />
+    public class GraphicSetting : IGraphicSetting, IHasBuilder<GraphicSettingBuilder>
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="GraphicSetting" /> class

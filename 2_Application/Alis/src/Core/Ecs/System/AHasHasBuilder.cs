@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AudioRecorder.cs
+//  File:AHasBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,20 +27,26 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Ecs.Component.Audio;
 using Alis.Core.Aspect.Fluent;
 
-namespace Alis.Core.Ecs.Component.Audio
+namespace Alis.Core.Ecs.System
 {
     /// <summary>
-    ///     The audio recorder class
+    /// The has builder class
     /// </summary>
-    public class AudioRecorder : AComponent, IHasBuilder<AudioRecorderBuilder>
+    /// <seealso cref="IHasBuilder{TOut}"/>
+    public abstract class AHasHasBuilder<T> : IHasBuilder<T> where T : new()
     {
         /// <summary>
-        ///     Builders this instance
+        /// Builders this instance
         /// </summary>
-        /// <returns>The audio recorder builder</returns>
-        public AudioRecorderBuilder Builder() => new AudioRecorderBuilder();
+        /// <returns>The</returns>
+        public  T Builder() => new T();
+        
+        /// <summary>
+        /// Creates
+        /// </summary>
+        /// <returns>The</returns>
+        public static T Create() => new T();
     }
 }

@@ -36,7 +36,6 @@ using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
-using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Scope;
 
 namespace Alis.Core.Ecs.Entity
@@ -46,7 +45,7 @@ namespace Alis.Core.Ecs.Entity
     /// </summary>
     /// <seealso cref="IGameObject{AComponent}" />
     /// <seealso cref="ISerializable" />
-    public class GameObject : IGameObject<AComponent>, IBuilder<GameObjectBuilder>
+    public class GameObject : IGameObject<AComponent>, IHasBuilder<GameObjectBuilder>
     {
         /// <summary>
         /// The context

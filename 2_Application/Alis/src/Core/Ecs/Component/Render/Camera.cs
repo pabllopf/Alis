@@ -45,7 +45,7 @@ namespace Alis.Core.Ecs.Component.Render
     /// <seealso cref="AComponent" />
     public class Camera :
         AComponent,
-        IBuilder<CameraBuilder>
+        IHasBuilder<CameraBuilder>
     {
         /// <summary>
         ///     The position

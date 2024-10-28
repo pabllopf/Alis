@@ -39,7 +39,7 @@ namespace Alis.Core.Ecs.System.Configuration.Scene
     /// <seealso cref="ISceneSetting" />
     public class SceneSetting :
         ISceneSetting,
-        IBuilder<SceneSettingBuilder>
+        IHasBuilder<SceneSettingBuilder>
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="SceneSetting" /> class

@@ -34,8 +34,8 @@ namespace Alis.Core.Aspect.Sample.Fluent
     /// <summary>
     ///     The car class
     /// </summary>
-    /// <seealso cref="IBuilder{CarBuilder}" />
-    public class Car : IBuilder<CarBuilder>
+    /// <seealso cref="IHasBuilder{TOut}" />
+    public class Car : IHasBuilder<CarBuilder>
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="Car" /> class

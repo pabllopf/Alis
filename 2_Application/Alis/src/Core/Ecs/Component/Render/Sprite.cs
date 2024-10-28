@@ -43,10 +43,10 @@ namespace Alis.Core.Ecs.Component.Render
     ///     The sprite class
     /// </summary>
     /// <seealso cref="AComponent" />
-    /// <seealso cref="IBuilder{SpriteBuilder}" />
+    /// <seealso cref="IHasBuilder{TOut}" />
     public class Sprite :
         AComponent,
-        IBuilder<SpriteBuilder>
+        IHasBuilder<SpriteBuilder>
     {
         /// <summary>
         ///     The
