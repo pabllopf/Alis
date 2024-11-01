@@ -123,26 +123,5 @@ namespace Alis.Core.Graphic.Properties
             {OsxArm64, $"{ResourcePath}.osx_arm64.osx-arm64_sdl2.zip"},
             {OsxArm, $"{ResourcePath}.osx_arm.osx-arm_sdl2.zip"}
         };
-
-        /// <summary>
-        ///     The sdl2 ttf
-        /// </summary>
-        internal static readonly Dictionary<PlatformInfo, string> GlSdlTtfDllBytes = new Dictionary<PlatformInfo, string>
-        {
-            {WinX86, $"{ResourcePath}.win_x86.win-x86_sdl2_ttf.zip"},
-            {WinX64, $"{ResourcePath}.win_x64.win-x64_sdl2_ttf.zip"},
-            {WinArm64, $"{ResourcePath}.win_arm.win-arm_sdl2_ttf.zip"},
-            {WinArm, $"{ResourcePath}.win_arm64.win-arm64_sdl2_ttf.zip"},
-
-            {LinuxX86, $"{ResourcePath}.linux_x86.linux-x86_sdl2_ttf.zip"},
-            {LinuxX64, $"{ResourcePath}.linux_x64.linux-x64_sdl2_ttf.zip"},
-            {LinuxArm, $"{ResourcePath}.linux_arm.linux-arm_sdl2_ttf.zip"},
-            {LinuxArm64, $"{ResourcePath}.linux_arm64.linux-arm64_sdl2_ttf.zip"},
-
-            {OsxX86, $"{ResourcePath}.osx_x86.osx-x86_sdl2_ttf.zip"},
-            {OsxX64, $"{ResourcePath}.osx_x64.osx-x64_sdl2_ttf.zip"},
-            {OsxArm, $"{ResourcePath}.osx_arm.osx-arm_sdl2_ttf.zip"},
-            {OsxArm64, $"{ResourcePath}.osx_arm64.osx-arm64_sdl2_ttf.zip"}
-        };
     }
 }

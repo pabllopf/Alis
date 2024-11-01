@@ -41,7 +41,6 @@ using Alis.Core.Ecs.System.Configuration.Physic;
 using Alis.Core.Ecs.System.Scope;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
-using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Color = Alis.Core.Aspect.Math.Definition.Color;
 using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
@@ -260,13 +259,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 IntPtr icon = Sdl.LoadBmp(Context.Setting.General.Icon);
                 Sdl.SetWindowIcon(Window, icon);
             }
-
-            // INIT SDL_TTF
-            Logger.Info(SdlTtf.Init() < 0 ? $"There was an issue initializing SDL_TTF. {Sdl.GetError()}" : "SDL_TTF Initialized");
-
-            // GET VERSION SDL_TTF
-            Logger.Info($"SDL_TTF Version: {SdlTtf.GetVersion().major}.{SdlTtf.GetVersion().minor}.{SdlTtf.GetVersion().patch}");
-
+            
             Logger.Info("End config SDL2");
         }
 
