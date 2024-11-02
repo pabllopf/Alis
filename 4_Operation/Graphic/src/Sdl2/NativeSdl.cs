@@ -3620,5 +3620,14 @@ namespace Alis.Core.Graphic.Sdl2
 
         [DllImport(NativeLibName, EntryPoint = "SDL_MapRGB", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static extern uint InternalMapRGB(IntPtr surfaceObjectFormat, int r, int g, int b);
+
+        [DllImport(NativeLibName, EntryPoint = "SDL_UnlockTexture", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static extern void InternalUnlockTexture(IntPtr fontTexture);
+
+        [DllImport(NativeLibName, EntryPoint = "SDL_LockTexture", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static extern void InternalLockSurface(IntPtr surface);
+        
+        [DllImport(NativeLibName, EntryPoint = "SDL_UnlockSurface", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static extern void InternalUnlockSurface(IntPtr surface);
     }
 }

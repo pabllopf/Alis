@@ -136,6 +136,7 @@ namespace Alis.Core.Sample
         private static readonly int frameDuration = 1000 / targetFps;
 
         private static IntPtr _renderer;
+        private static IntPtr _surface;
 
         /// <summary>
         ///     Runs
@@ -232,7 +233,7 @@ namespace Alis.Core.Sample
                 W = 32,
                 H = 64
             };
-            
+
             // Load the image from the specified path.
             IntPtr imageTilePtr = Sdl.LoadBmp("Assets/tile000.bmp");
 
@@ -317,7 +318,7 @@ namespace Alis.Core.Sample
             {
                 timeStepPhysics = 1f / 5f;
             }
-            
+
             LoadFontTexture();
 
             while (_running)
@@ -484,18 +485,18 @@ namespace Alis.Core.Sample
                 };
                 Sdl.RenderDrawRect(_renderer, ref boxRect);
 
-                RenderText("0123456789", 10, 10, Color.Red, Color.Red);
+                RenderText("0123456789", 10, 10, Color.White, Color.Red);
 
                 RenderText("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 10, 40, Color.Red, Color.Red);
 
-                RenderText("abcdefghijklmnopqrstuvwxyz", 10, 70, Color.Red, Color.Red);
+                RenderText("abcdefghijklmnopqrstuvwxyz", 10, 70, Color.Brown, Color.Red);
 
 
-                RenderText("0123456789", 320, 10, Color.White, Color.White);
+                RenderText("0123456789", 320, 10, Color.White, Color.Transparent);
 
-                RenderText("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 320, 40, Color.White, Color.White);
+                RenderText("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 320, 40, Color.Green, Color.White);
 
-                RenderText("abcdefghijklmnopqrstuvwxyz", 320, 70, Color.White, Color.White);
+                RenderText("abcdefghijklmnopqrstuvwxyz", 320, 70, Color.DarkGreen, Color.White);
 
                 // render the texture box
                 Sdl.SetRenderDrawColor(_renderer, 0, 0, 255, 255);
@@ -717,8 +718,8 @@ namespace Alis.Core.Sample
         private static void LoadFontTexture()
         {
             string fontPath = $"{Environment.CurrentDirectory}/Assets/MONO_V5.bmp";
-            IntPtr surface = Sdl.LoadBmp(fontPath);
-            if (surface == IntPtr.Zero)
+            _surface = Sdl.LoadBmp(fontPath);
+            if (_surface == IntPtr.Zero)
             {
                 Logger.Exception($"Failed to load BMP file: {Sdl.GetError()}");
                 return;
@@ -730,7 +731,7 @@ namespace Alis.Core.Sample
             //uint colorHint = Sdl.MapRgb(surfaceObject.Format, 255, 255, 255);
             //Sdl.SetColorKey(surface, 1, colorHint);
 
-            _fontTexture = Sdl.CreateTextureFromSurface(_renderer, surface);
+            _fontTexture = Sdl.CreateTextureFromSurface(_renderer, _surface);
             if (_fontTexture == IntPtr.Zero)
             {
                 Logger.Exception($"Failed to create texture from surface: {Sdl.GetError()}");
@@ -781,7 +782,7 @@ namespace Alis.Core.Sample
             }
 
         }
-
+        
         public static void RenderText(string text, int x, int y, Color textColor, Color backgroundColor)
         {
             int posX = x;
@@ -795,13 +796,39 @@ namespace Alis.Core.Sample
                     Sdl.SetRenderDrawColor(_renderer, backgroundColor.R, backgroundColor.G, backgroundColor.B, backgroundColor.A);
                     Sdl.RenderFillRect(_renderer, ref backgroundRect);
 
-                    // Set the color modulation to convert black to the desired text color
-                    Sdl.SetTextureColorMod(_fontTexture, textColor.R, textColor.G, textColor.B);
+                    // Lock the surface to access pixel data
+                    Sdl.LockSurface(_surface);
+
+                    // Get the pixel data from the surface
+                    Surface surfaceObject = Marshal.PtrToStructure<Surface>(_surface);
+                    IntPtr pixels = surfaceObject.Pixels;
+                    int pitch = surfaceObject.pitch;
+
+                    // Iterate through the pixels and change the color
+                    for (int py = 0; py < srcRect.H; py++)
+                    {
+                        for (int px = 0; px < srcRect.W; px++)
+                        {
+                            int index = (srcRect.Y + py) * pitch + (srcRect.X + px) * 4; // 4 bytes per pixel (RGBA)
+                            byte alpha = Marshal.ReadByte(pixels, index + 3);
+                            if (alpha > 0) // Only modify non-transparent pixels
+                            {
+                                Marshal.WriteByte(pixels, index, textColor.R);
+                                Marshal.WriteByte(pixels, index + 1, textColor.G);
+                                Marshal.WriteByte(pixels, index + 2, textColor.B);
+                            }
+                        }
+                    }
+
+                    // Unlock the surface
+                    Sdl.UnlockSurface(_surface);
+                    
+                    _fontTexture = Sdl.CreateTextureFromSurface(_renderer, _surface);
 
                     // Draw text character
                     RectangleI dstRect = new RectangleI() { X = posX, Y = y, W = srcRect.W, H = srcRect.H };
                     Sdl.RenderCopyEx(_renderer, _fontTexture, ref srcRect, ref dstRect, 0, IntPtr.Zero, RendererFlips.FlipVertical);
-            
+
                     posX += srcRect.W; // Move the X position for the next character
                 }
             }

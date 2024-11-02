@@ -5023,5 +5023,11 @@ namespace Alis.Core.Graphic.Sdl2
         public static void QueueAudio(int deviceId, byte[] audioData, uint wavLength) => NativeSdl.InternalQueueAudio(deviceId, audioData, wavLength);
 
         public static uint MapRgb(IntPtr surfaceObjectFormat, int r, int g, int b) => NativeSdl.InternalMapRGB(surfaceObjectFormat, r, g, b);
+
+        public static void UnlockTexture(IntPtr fontTexture) => NativeSdl.InternalUnlockTexture(fontTexture);
+
+        public static void LockSurface(IntPtr surface) => NativeSdl.InternalLockSurface(surface);
+
+        public static void UnlockSurface(IntPtr surface) => NativeSdl.InternalUnlockSurface(surface);
     }
 }
