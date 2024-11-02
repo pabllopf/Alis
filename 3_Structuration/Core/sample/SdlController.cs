@@ -40,6 +40,7 @@ using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Graphic.Fonts;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Alis.Core.Physic.Dynamics;
@@ -78,10 +79,7 @@ namespace Alis.Core.Sample
         /// </summary>
         private static readonly List<GameControllerButton> Buttons = new List<GameControllerButton>((GameControllerButton[]) Enum.GetValues(typeof(GameControllerButton)));
 
-        private static Dictionary<char, RectangleI> _characterRects;
-
-        private static IntPtr _fontTexture;
-
+        private static FontManager _fontManager;
 
         /// <summary>
         ///     The blue
@@ -136,7 +134,6 @@ namespace Alis.Core.Sample
         private static readonly int frameDuration = 1000 / targetFps;
 
         private static IntPtr _renderer;
-        private static IntPtr _surface;
 
         /// <summary>
         ///     Runs
@@ -318,8 +315,9 @@ namespace Alis.Core.Sample
             {
                 timeStepPhysics = 1f / 5f;
             }
-
-            LoadFontTexture();
+            
+            _fontManager = new FontManager(_renderer);
+            _fontManager.LoadFont("MONO", 16, Color.White, Color.Black, $"{Environment.CurrentDirectory}/Assets/MONO_V5.bmp");
 
             while (_running)
             {
@@ -485,19 +483,23 @@ namespace Alis.Core.Sample
                 };
                 Sdl.RenderDrawRect(_renderer, ref boxRect);
 
-                RenderText("0123456789", 10, 10, Color.White, Color.Red);
 
-                RenderText("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 10, 40, Color.Red, Color.Red);
+                _fontManager.RenderText("MONO", "0123456789", 10, 10);
+                
+                _fontManager.RenderText("MONO","ABCDEFGHIJKLMNOPQRSTUVWXYZ", 10, 40);
 
-                RenderText("abcdefghijklmnopqrstuvwxyz", 10, 70, Color.Brown, Color.Red);
+                _fontManager.RenderText("MONO", "abcdefghijklmnopqrstuvwxyz", 10, 70, Color.Brown, Color.White);
 
 
-                RenderText("0123456789", 320, 10, Color.White, Color.Transparent);
+                _fontManager.RenderText("MONO", "0123456789", 320, 10, Color.White, Color.Transparent);
 
-                RenderText("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 320, 40, Color.Green, Color.White);
+                _fontManager.RenderText("MONO", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", 320, 40, Color.Green, Color.White);
+                
+                _fontManager.RenderText("MONO", "abcdefghijklmnopqrstuvwxyz", 320, 70, Color.DarkGreen, Color.White);
 
-                RenderText("abcdefghijklmnopqrstuvwxyz", 320, 70, Color.DarkGreen, Color.White);
-
+                
+                _fontManager.RenderText("MONO", "0123456789", 10, 100, Color.White, Color.Transparent, 32);
+                
                 // render the texture box
                 Sdl.SetRenderDrawColor(_renderer, 0, 0, 255, 255);
                 RectangleI textureBoxRect = new RectangleI
@@ -712,129 +714,7 @@ namespace Alis.Core.Sample
                 _blue = 0;
             }
         }
-
-
-
-        private static void LoadFontTexture()
-        {
-            string fontPath = $"{Environment.CurrentDirectory}/Assets/MONO_V5.bmp";
-            _surface = Sdl.LoadBmp(fontPath);
-            if (_surface == IntPtr.Zero)
-            {
-                Logger.Exception($"Failed to load BMP file: {Sdl.GetError()}");
-                return;
-            }
-
-            // Set the color key (transparent pixel) in a surface.
-            // Here, the color key is white (255, 255, 255).
-            //Surface surfaceObject = Marshal.PtrToStructure<Surface>(surface);
-            //uint colorHint = Sdl.MapRgb(surfaceObject.Format, 255, 255, 255);
-            //Sdl.SetColorKey(surface, 1, colorHint);
-
-            _fontTexture = Sdl.CreateTextureFromSurface(_renderer, _surface);
-            if (_fontTexture == IntPtr.Zero)
-            {
-                Logger.Exception($"Failed to create texture from surface: {Sdl.GetError()}");
-                return;
-            }
-
-            _characterRects = new Dictionary<char, RectangleI>();
-            string lowercase = "abcdefghijklmnopqrstuvwxyz";
-            string uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            string special = "0123456789";
-
-            int charWidth = 10; // Width of each character in the bitmap
-            int charHeight = 16; // Height of each character in the bitmap
-
-            int charsPerRow = 28; // Number of characters per row in the bitmap
-
-            int xSpacing = 1; // Horizontal spacing between characters
-            int ySpacing = 0; // Vertical spacing between rows
-
-            // Iterate over lowercase characters
-            for (int i = 0; i < lowercase.Length; i++)
-            {
-                char c = lowercase[i];
-                int x = (i % charsPerRow) * (charWidth + xSpacing);
-                int y = (i / charsPerRow) * (charHeight + ySpacing);
-
-                _characterRects[c] = new RectangleI() {X = x, Y = y, W = charWidth, H = charHeight};
-            }
-
-            // Iterate over uppercase characters
-            for (int i = 0; i < uppercase.Length; i++)
-            {
-                char c = uppercase[i];
-                int x = (i % charsPerRow) * (charWidth + xSpacing);
-                int y = ((i / charsPerRow) + 1) * (charHeight + ySpacing); // Move to the next row
-
-                _characterRects[c] = new RectangleI() {X = x, Y = y, W = charWidth, H = charHeight};
-            }
-
-            // Iterate over special characters
-            for (int i = 0; i < special.Length; i++)
-            {
-                char c = special[i];
-                int x = (i % charsPerRow) * (charWidth + xSpacing);
-                int y = ((i / charsPerRow) + 2) * (charHeight + ySpacing); // Move to the next row
-
-                _characterRects[c] = new RectangleI() {X = x, Y = y, W = charWidth, H = charHeight};
-            }
-
-        }
         
-        public static void RenderText(string text, int x, int y, Color textColor, Color backgroundColor)
-        {
-            int posX = x;
-
-            foreach (char c in text)
-            {
-                if (_characterRects.TryGetValue(c, out RectangleI srcRect))
-                {
-                    // Draw background rectangle
-                    RectangleI backgroundRect = new RectangleI() { X = posX, Y = y, W = srcRect.W, H = srcRect.H };
-                    Sdl.SetRenderDrawColor(_renderer, backgroundColor.R, backgroundColor.G, backgroundColor.B, backgroundColor.A);
-                    Sdl.RenderFillRect(_renderer, ref backgroundRect);
-
-                    // Lock the surface to access pixel data
-                    Sdl.LockSurface(_surface);
-
-                    // Get the pixel data from the surface
-                    Surface surfaceObject = Marshal.PtrToStructure<Surface>(_surface);
-                    IntPtr pixels = surfaceObject.Pixels;
-                    int pitch = surfaceObject.pitch;
-
-                    // Iterate through the pixels and change the color
-                    for (int py = 0; py < srcRect.H; py++)
-                    {
-                        for (int px = 0; px < srcRect.W; px++)
-                        {
-                            int index = (srcRect.Y + py) * pitch + (srcRect.X + px) * 4; // 4 bytes per pixel (RGBA)
-                            byte alpha = Marshal.ReadByte(pixels, index + 3);
-                            if (alpha > 0) // Only modify non-transparent pixels
-                            {
-                                Marshal.WriteByte(pixels, index, textColor.R);
-                                Marshal.WriteByte(pixels, index + 1, textColor.G);
-                                Marshal.WriteByte(pixels, index + 2, textColor.B);
-                            }
-                        }
-                    }
-
-                    // Unlock the surface
-                    Sdl.UnlockSurface(_surface);
-                    
-                    _fontTexture = Sdl.CreateTextureFromSurface(_renderer, _surface);
-
-                    // Draw text character
-                    RectangleI dstRect = new RectangleI() { X = posX, Y = y, W = srcRect.W, H = srcRect.H };
-                    Sdl.RenderCopyEx(_renderer, _fontTexture, ref srcRect, ref dstRect, 0, IntPtr.Zero, RendererFlips.FlipVertical);
-
-                    posX += srcRect.W; // Move the X position for the next character
-                }
-            }
-        }
-
-
         /// <summary>
         ///     Sdlinputs
         /// </summary>
