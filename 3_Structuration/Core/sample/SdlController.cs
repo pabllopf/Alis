@@ -316,7 +316,7 @@ namespace Alis.Core.Sample
                 timeStepPhysics = 1f / 5f;
             }
             
-            _fontManager = new FontManager(_renderer);
+            _fontManager = new FontManager(_renderer, RendererFlips.FlipVertical);
             _fontManager.LoadFont("MONO", 16, Color.White, Color.Black, $"{Environment.CurrentDirectory}/Assets/MONO_V5.bmp");
 
             while (_running)

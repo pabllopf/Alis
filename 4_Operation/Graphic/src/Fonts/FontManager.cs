@@ -14,10 +14,12 @@ namespace Alis.Core.Graphic.Fonts
     {
         private Dictionary<string, Font> _fonts = new Dictionary<string, Font>();
         private IntPtr _renderer;
+        private RendererFlips _rendererFlips;
 
-        public FontManager(IntPtr renderer)
+        public FontManager(IntPtr renderer, RendererFlips rendererFlips)
         {
             _renderer = renderer;
+            _rendererFlips = rendererFlips;
         }
 
         public void LoadFont(string fontName, int fontSize, Color fontColor, Color backgroundColor, string fontPath)
@@ -117,7 +119,7 @@ namespace Alis.Core.Graphic.Fonts
 
                     // Draw text character
                     RectangleI dstRect = new RectangleI() {X = posX, Y = y, W = srcRect.W, H = srcRect.H};
-                    Sdl.RenderCopyEx(_renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, RendererFlips.FlipVertical);
+                    Sdl.RenderCopyEx(_renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, _rendererFlips);
 
                     posX += srcRect.W; // Move the X position for the next character
                 }
@@ -142,7 +144,7 @@ namespace Alis.Core.Graphic.Fonts
 
                     // Draw text character
                     RectangleI dstRect = new RectangleI() {X = posX, Y = y, W = srcRect.W, H = srcRect.H};
-                    Sdl.RenderCopyEx(_renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, RendererFlips.FlipVertical);
+                    Sdl.RenderCopyEx(_renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, _rendererFlips);
 
                     posX += srcRect.W; // Move the X position for the next character
                 }
@@ -189,7 +191,7 @@ namespace Alis.Core.Graphic.Fonts
 
                     // Draw text character
                     RectangleI dstRect = new RectangleI() {X = posX, Y = y, W = srcRect.W, H = srcRect.H};
-                    Sdl.RenderCopyEx(_renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, RendererFlips.FlipVertical);
+                    Sdl.RenderCopyEx(_renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, _rendererFlips);
 
                     posX += srcRect.W; // Move the X position for the next character
                 }
@@ -214,7 +216,7 @@ namespace Alis.Core.Graphic.Fonts
 
                     // Draw text character
                     RectangleI dstRect = new RectangleI() {X = posX, Y = y, W = srcRect.W, H = srcRect.H};
-                    Sdl.RenderCopyEx(_renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, RendererFlips.FlipVertical);
+                    Sdl.RenderCopyEx(_renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, _rendererFlips);
 
                     posX += srcRect.W; // Move the X position for the next character
                 }
@@ -261,7 +263,7 @@ namespace Alis.Core.Graphic.Fonts
 
                     // Draw text character with scaling
                     RectangleI dstRect = new RectangleI() {X = posX, Y = y, W = srcRect.W * fontSize / font.Size, H = srcRect.H * fontSize / font.Size};
-                    Sdl.RenderCopyEx(_renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, RendererFlips.FlipVertical);
+                    Sdl.RenderCopyEx(_renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, _rendererFlips);
 
                     posX += dstRect.W; // Move the X position for the next character
                 }
@@ -286,7 +288,7 @@ namespace Alis.Core.Graphic.Fonts
 
                     // Draw text character with scaling
                     RectangleI dstRect = new RectangleI() {X = posX, Y = y, W = srcRect.W * fontSize / font.Size, H = srcRect.H * fontSize / font.Size};
-                    Sdl.RenderCopyEx(_renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, RendererFlips.FlipVertical);
+                    Sdl.RenderCopyEx(_renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, _rendererFlips);
 
                     posX += dstRect.W; // Move the X position for the next character
                 }
