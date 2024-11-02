@@ -78,6 +78,11 @@ namespace Alis.Core.Sample
         /// </summary>
         private static readonly List<GameControllerButton> Buttons = new List<GameControllerButton>((GameControllerButton[]) Enum.GetValues(typeof(GameControllerButton)));
 
+        private static Dictionary<char, RectangleI> _characterRects;
+
+        private static IntPtr _fontTexture;
+
+
         /// <summary>
         ///     The blue
         /// </summary>
@@ -107,7 +112,7 @@ namespace Alis.Core.Sample
         ///     The sdl event
         /// </summary>
         private static Event _sdlEvent;
-        
+
         /// <summary>
         ///     The player body
         /// </summary>
@@ -129,6 +134,8 @@ namespace Alis.Core.Sample
         ///     The target fps
         /// </summary>
         private static readonly int frameDuration = 1000 / targetFps;
+
+        private static IntPtr _renderer;
 
         /// <summary>
         ///     Runs
@@ -180,12 +187,12 @@ namespace Alis.Core.Sample
             }
 
             // Creates a new SDL hardware renderer using the default graphics device with VSYNC enabled.
-            IntPtr renderer = Sdl.CreateRenderer(
+            _renderer = Sdl.CreateRenderer(
                 window,
                 -1,
                 Renderers.SdlRendererAccelerated);
 
-            if (renderer == IntPtr.Zero)
+            if (_renderer == IntPtr.Zero)
             {
                 Logger.Exception($"There was an issue creating the renderer. {Sdl.GetError()}");
             }
@@ -194,7 +201,7 @@ namespace Alis.Core.Sample
                 Logger.Info("Renderer created");
             }
 
-          
+
             IntPtr icon = Sdl.LoadBmp(AssetManager.Find("logo.bmp"));
             Sdl.SetWindowIcon(window, icon);
 
@@ -225,12 +232,12 @@ namespace Alis.Core.Sample
                 W = 32,
                 H = 64
             };
-
+            
             // Load the image from the specified path.
             IntPtr imageTilePtr = Sdl.LoadBmp("Assets/tile000.bmp");
 
             // Create a new texture from the image.
-            IntPtr textureTile = Sdl.CreateTextureFromSurface(renderer, imageTilePtr);
+            IntPtr textureTile = Sdl.CreateTextureFromSurface(_renderer, imageTilePtr);
 
             World world = new World();
             //float PIXELS_PER_METER = 32f;
@@ -266,7 +273,7 @@ namespace Alis.Core.Sample
             Transform boxTransform = new Transform();
             Transform textureTransform = new Transform();
 
-            Camera camera = new Camera(renderer);
+            Camera camera = new Camera(_renderer);
 
 
             Stopwatch stopwatch = new Stopwatch();
@@ -310,6 +317,8 @@ namespace Alis.Core.Sample
             {
                 timeStepPhysics = 1f / 5f;
             }
+            
+            LoadFontTexture();
 
             while (_running)
             {
@@ -442,9 +451,9 @@ namespace Alis.Core.Sample
                 Color bgColor = camera.BackgroundColor;
 
                 // Set render target to camera texture
-                Sdl.SetRenderTarget(renderer, cameraTexture);
-                Sdl.SetRenderDrawColor(renderer, bgColor.R, bgColor.G, bgColor.B, bgColor.A);
-                Sdl.RenderClear(renderer);
+                Sdl.SetRenderTarget(_renderer, cameraTexture);
+                Sdl.SetRenderDrawColor(_renderer, bgColor.R, bgColor.G, bgColor.B, bgColor.A);
+                Sdl.RenderClear(_renderer);
 
                 // RENDER:
 
@@ -459,13 +468,13 @@ namespace Alis.Core.Sample
                 // Draw the player circle:
                 int circleX = (int) (playerPosX - camera.Position.X + camera.Resolution.X / 2);
                 int circleY = (int) (playerPosY - camera.Position.Y + camera.Resolution.Y / 2);
-                Sdl.SetRenderDrawColor(renderer, 0, 255, 0, 255);
-                DrawCircleWithLine(renderer, circleX, circleY, (int) (_playerBodyRadius * PIXELS_PER_METER), playerTransform.Rotation * 180 / MathF.PI);
+                Sdl.SetRenderDrawColor(_renderer, 0, 255, 0, 255);
+                DrawCircleWithLine(_renderer, circleX, circleY, (int) (_playerBodyRadius * PIXELS_PER_METER), playerTransform.Rotation * 180 / MathF.PI);
 
                 // Draw the box:
                 int boxX = (int) (boxPosX - camera.Position.X + camera.Resolution.X / 2);
                 int boxY = (int) (boxPosY - camera.Position.Y + camera.Resolution.Y / 2);
-                Sdl.SetRenderDrawColor(renderer, 255, 0, 0, 255);
+                Sdl.SetRenderDrawColor(_renderer, 255, 0, 0, 255);
                 RectangleI boxRect = new RectangleI
                 {
                     X = (int) (boxX - boxWidth / 2),
@@ -473,10 +482,23 @@ namespace Alis.Core.Sample
                     W = (int) boxWidth,
                     H = (int) boxHeight
                 };
-                Sdl.RenderDrawRect(renderer, ref boxRect);
+                Sdl.RenderDrawRect(_renderer, ref boxRect);
+
+                RenderText("0123456789", 10, 10, Color.Red, Color.Red);
+
+                RenderText("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 10, 40, Color.Red, Color.Red);
+
+                RenderText("abcdefghijklmnopqrstuvwxyz", 10, 70, Color.Red, Color.Red);
+
+
+                RenderText("0123456789", 320, 10, Color.White, Color.White);
+
+                RenderText("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 320, 40, Color.White, Color.White);
+
+                RenderText("abcdefghijklmnopqrstuvwxyz", 320, 70, Color.White, Color.White);
 
                 // render the texture box
-                Sdl.SetRenderDrawColor(renderer, 0, 0, 255, 255);
+                Sdl.SetRenderDrawColor(_renderer, 0, 0, 255, 255);
                 RectangleI textureBoxRect = new RectangleI
                 {
                     X = (int) (textureTransform.Position.X * PIXELS_PER_METER - camera.Position.X + camera.Resolution.X / 2 - tileRectangleI.W / 2),
@@ -484,18 +506,18 @@ namespace Alis.Core.Sample
                     W = tileRectangleI.W,
                     H = tileRectangleI.H
                 };
-                Sdl.RenderDrawRect(renderer, ref textureBoxRect);
-                Sdl.RenderCopyEx(renderer, textureTile, IntPtr.Zero, ref textureBoxRect, textureTransform.Rotation * 180 / MathF.PI, IntPtr.Zero, RendererFlips.FlipVertical);
+                Sdl.RenderDrawRect(_renderer, ref textureBoxRect);
+                Sdl.RenderCopyEx(_renderer, textureTile, IntPtr.Zero, ref textureBoxRect, textureTransform.Rotation * 180 / MathF.PI, IntPtr.Zero, RendererFlips.FlipVertical);
 
 
                 // RENDER THE CAMERA
                 // Reset the render target to the default SDL backbuffer
-                Sdl.SetRenderTarget(renderer, IntPtr.Zero);
+                Sdl.SetRenderTarget(_renderer, IntPtr.Zero);
 
                 // Copy the custom backbuffer to the SDL backbuffer with vertical flip
-                Sdl.RenderCopyEx(renderer, cameraTexture, IntPtr.Zero, IntPtr.Zero, 0, IntPtr.Zero, RendererFlips.FlipVertical);
+                Sdl.RenderCopyEx(_renderer, cameraTexture, IntPtr.Zero, IntPtr.Zero, 0, IntPtr.Zero, RendererFlips.FlipVertical);
 
-                Sdl.RenderPresent(renderer);
+                Sdl.RenderPresent(_renderer);
 
 
                 stopwatch.Stop();
@@ -518,7 +540,7 @@ namespace Alis.Core.Sample
                 }
             }
 
-            Sdl.DestroyRenderer(renderer);
+            Sdl.DestroyRenderer(_renderer);
             Sdl.DestroyWindow(window);
             Sdl.Quit();
         }
@@ -687,6 +709,101 @@ namespace Alis.Core.Sample
                 _red = 0;
                 _green = 0;
                 _blue = 0;
+            }
+        }
+
+
+
+        private static void LoadFontTexture()
+        {
+            string fontPath = $"{Environment.CurrentDirectory}/Assets/MONO_V5.bmp";
+            IntPtr surface = Sdl.LoadBmp(fontPath);
+            if (surface == IntPtr.Zero)
+            {
+                Logger.Exception($"Failed to load BMP file: {Sdl.GetError()}");
+                return;
+            }
+
+            // Set the color key (transparent pixel) in a surface.
+            // Here, the color key is white (255, 255, 255).
+            //Surface surfaceObject = Marshal.PtrToStructure<Surface>(surface);
+            //uint colorHint = Sdl.MapRgb(surfaceObject.Format, 255, 255, 255);
+            //Sdl.SetColorKey(surface, 1, colorHint);
+
+            _fontTexture = Sdl.CreateTextureFromSurface(_renderer, surface);
+            if (_fontTexture == IntPtr.Zero)
+            {
+                Logger.Exception($"Failed to create texture from surface: {Sdl.GetError()}");
+                return;
+            }
+
+            _characterRects = new Dictionary<char, RectangleI>();
+            string lowercase = "abcdefghijklmnopqrstuvwxyz";
+            string uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            string special = "0123456789";
+
+            int charWidth = 10; // Width of each character in the bitmap
+            int charHeight = 16; // Height of each character in the bitmap
+
+            int charsPerRow = 28; // Number of characters per row in the bitmap
+
+            int xSpacing = 1; // Horizontal spacing between characters
+            int ySpacing = 0; // Vertical spacing between rows
+
+            // Iterate over lowercase characters
+            for (int i = 0; i < lowercase.Length; i++)
+            {
+                char c = lowercase[i];
+                int x = (i % charsPerRow) * (charWidth + xSpacing);
+                int y = (i / charsPerRow) * (charHeight + ySpacing);
+
+                _characterRects[c] = new RectangleI() {X = x, Y = y, W = charWidth, H = charHeight};
+            }
+
+            // Iterate over uppercase characters
+            for (int i = 0; i < uppercase.Length; i++)
+            {
+                char c = uppercase[i];
+                int x = (i % charsPerRow) * (charWidth + xSpacing);
+                int y = ((i / charsPerRow) + 1) * (charHeight + ySpacing); // Move to the next row
+
+                _characterRects[c] = new RectangleI() {X = x, Y = y, W = charWidth, H = charHeight};
+            }
+
+            // Iterate over special characters
+            for (int i = 0; i < special.Length; i++)
+            {
+                char c = special[i];
+                int x = (i % charsPerRow) * (charWidth + xSpacing);
+                int y = ((i / charsPerRow) + 2) * (charHeight + ySpacing); // Move to the next row
+
+                _characterRects[c] = new RectangleI() {X = x, Y = y, W = charWidth, H = charHeight};
+            }
+
+        }
+
+        public static void RenderText(string text, int x, int y, Color textColor, Color backgroundColor)
+        {
+            int posX = x;
+
+            foreach (char c in text)
+            {
+                if (_characterRects.TryGetValue(c, out RectangleI srcRect))
+                {
+                    // Draw background rectangle
+                    RectangleI backgroundRect = new RectangleI() { X = posX, Y = y, W = srcRect.W, H = srcRect.H };
+                    Sdl.SetRenderDrawColor(_renderer, backgroundColor.R, backgroundColor.G, backgroundColor.B, backgroundColor.A);
+                    Sdl.RenderFillRect(_renderer, ref backgroundRect);
+
+                    // Set the color modulation to convert black to the desired text color
+                    Sdl.SetTextureColorMod(_fontTexture, textColor.R, textColor.G, textColor.B);
+
+                    // Draw text character
+                    RectangleI dstRect = new RectangleI() { X = posX, Y = y, W = srcRect.W, H = srcRect.H };
+                    Sdl.RenderCopyEx(_renderer, _fontTexture, ref srcRect, ref dstRect, 0, IntPtr.Zero, RendererFlips.FlipVertical);
+            
+                    posX += srcRect.W; // Move the X position for the next character
+                }
             }
         }
 

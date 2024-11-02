@@ -59,6 +59,8 @@ namespace Alis.Core.Aspect.Math.Definition
         /// </summary>
         public byte A { get; set; }
 
+       
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="Color" /> class
         /// </summary>
@@ -93,11 +95,15 @@ namespace Alis.Core.Aspect.Math.Definition
         ///     Gets the value of the black
         /// </summary>
         public static Color Black => new Color(0, 0, 0, 255);
-
+        
+        public static Color White => new Color(255, 255, 255, 255);
+        
         /// <summary>
         ///     Gets the value of the red
         /// </summary>
         public static Color Red => new Color(255, 0, 0, 255);
+        
+        public static Color Transparent => new Color(0, 0, 0, 0);
 
         /// <summary>
         ///     Gets the value of the green

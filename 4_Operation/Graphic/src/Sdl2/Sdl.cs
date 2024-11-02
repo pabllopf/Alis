@@ -5021,5 +5021,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="audioData">The audio data</param>
         /// <param name="wavLength">The wav length</param>
         public static void QueueAudio(int deviceId, byte[] audioData, uint wavLength) => NativeSdl.InternalQueueAudio(deviceId, audioData, wavLength);
+
+        public static uint MapRgb(IntPtr surfaceObjectFormat, int r, int g, int b) => NativeSdl.InternalMapRGB(surfaceObjectFormat, r, g, b);
     }
 }

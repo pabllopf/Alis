@@ -3617,5 +3617,8 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_QueueAudio", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
         internal static extern void InternalQueueAudio(int deviceId, byte[] audioData, uint wavLength);
+
+        [DllImport(NativeLibName, EntryPoint = "SDL_MapRGB", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static extern uint InternalMapRGB(IntPtr surfaceObjectFormat, int r, int g, int b);
     }
 }
