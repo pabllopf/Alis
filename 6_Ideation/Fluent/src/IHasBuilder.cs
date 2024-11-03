@@ -40,4 +40,5 @@ namespace Alis.Core.Aspect.Fluent
         /// <returns>The</returns>
         public TOut Builder();
     }
+    
 }
