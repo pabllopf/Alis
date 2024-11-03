@@ -352,6 +352,14 @@ namespace Alis.Core.Ecs.Entity
             }
         }
 
+        public void OnBeforeDraw()
+        {
+            foreach (AComponent component in Components)
+            {
+                component.OnBeforeDraw();
+            }
+        }
+
         /// <summary>
         ///     Ons the draw
         /// </summary>
@@ -363,6 +371,14 @@ namespace Alis.Core.Ecs.Entity
             }
         }
 
+        public void OnAfterDraw()
+        {
+            foreach (AComponent component in Components)
+            {
+                component.OnAfterDraw();
+            }
+        }
+
         /// <summary>
         ///     Ons the gui
         /// </summary>
@@ -371,6 +387,14 @@ namespace Alis.Core.Ecs.Entity
             foreach (AComponent component in Components)
             {
                 component.OnGui();
+            }
+        }
+
+        public void OnRenderPresent()
+        {
+            foreach (AComponent component in Components)
+            {
+                component.OnRenderPresent();
             }
         }
 

@@ -25,5 +25,14 @@ namespace Alis.Core.Graphic.Fonts
             Surface = surface;
             CharacterRects = characterRects;
         }
+
+        public Font(string fontName, int fontSize, IntPtr texture, IntPtr surface, Dictionary<char, RectangleI> characterRects)
+        {
+            Name = fontName;
+            Size = fontSize;
+            Texture = texture;
+            Surface = surface;
+            CharacterRects = characterRects;
+        }
     }
 }

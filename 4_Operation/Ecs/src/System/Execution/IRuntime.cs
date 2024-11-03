@@ -99,15 +99,21 @@ namespace Alis.Core.Ecs.System.Execution
         /// </summary>
         public void OnCalculate();
 
+        public void OnBeforeDraw();
+        
         /// <summary>
         ///     Draws this instance
         /// </summary>
         public void OnDraw();
-
+        
+        public void OnAfterDraw();
+        
         /// <summary>
         ///     Ons the gui
         /// </summary>
         public void OnGui();
+        
+        public void OnRenderPresent();
 
         /// <summary>
         ///     Ons the disable

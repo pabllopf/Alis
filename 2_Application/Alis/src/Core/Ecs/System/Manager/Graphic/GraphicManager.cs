@@ -31,6 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Alis.Core.Aspect.Data.Json;
+using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
@@ -39,6 +40,7 @@ using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.System.Configuration;
 using Alis.Core.Ecs.System.Configuration.Physic;
 using Alis.Core.Ecs.System.Scope;
+using Alis.Core.Graphic.Fonts;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
@@ -57,6 +59,8 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         ///     The pixels per meter
         /// </summary>
         private const float PixelsPerMeter = 32.0f;
+        
+        public FontManager FontManager { get; set; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="GraphicManager" /> class
@@ -261,27 +265,21 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             }
             
             Logger.Info("End config SDL2");
+            
+            FontManager = new FontManager(Renderer, RendererFlips.None);
         }
 
         /// <summary>
         ///     Ons the start
         /// </summary>
-        public override void OnStart()
+        public override void OnStart() => Sprites = Sprites.OrderBy(o => o.Depth).ToList();
+
+        public override void OnBeforeDraw()
         {
-            Logger.Trace();
-            Sprites = Sprites.OrderBy(o => o.Depth).ToList();
         }
 
-        /// <summary>
-        ///     Ons the update
-        /// </summary>
-        public override void OnUpdate()
+        public override void OnDraw()
         {
-            if (Context is null)
-            {
-                return;
-            }
-
             float pixelsPerMeter = PixelsPerMeter;
             IntPtr renderer = Renderer;
             Setting contextSetting = Context.Setting;
@@ -309,7 +307,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                         sprite.Render(renderer, cameraPosition, cameraResolution, pixelsPerMeter);
                     }
                 }
-
+                
                 // Render colliders
                 Sdl.SetRenderDrawColor(renderer, debugColor.R, debugColor.G, debugColor.B, debugColor.A);
 
@@ -326,10 +324,12 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 // Copy the custom backbuffer to the SDL backbuffer with vertical flip
                 Sdl.RenderCopyEx(renderer, cameraTexture, IntPtr.Zero, IntPtr.Zero, 0, IntPtr.Zero, RendererFlips.FlipVertical);
             }
-
-            Sdl.RenderPresent(renderer);
         }
 
+        public override void OnRenderPresent()
+        {
+            Sdl.RenderPresent(Renderer);
+        }
 
         /// <summary>
         ///     Attaches the sprite

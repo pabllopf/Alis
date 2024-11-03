@@ -240,6 +240,11 @@ namespace Alis.Core.Ecs.Entity
             
         }
 
+        public void OnBeforeDraw()
+        {
+            GameObjects.ForEach(i => i.OnBeforeDraw());
+        }
+
         /// <summary>
         ///     Ons the draw
         /// </summary>
@@ -249,6 +254,11 @@ namespace Alis.Core.Ecs.Entity
             
         }
 
+        public void OnAfterDraw()
+        {
+            GameObjects.ForEach(i => i.OnAfterDraw());
+        }
+
         /// <summary>
         ///     Ons the gui
         /// </summary>
@@ -256,6 +266,11 @@ namespace Alis.Core.Ecs.Entity
         {
             GameObjects.ForEach(i => i.OnGui());
             
+        }
+
+        public void OnRenderPresent()
+        {
+            GameObjects.ForEach(i => i.OnRenderPresent());
         }
 
         /// <summary>

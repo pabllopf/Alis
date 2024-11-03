@@ -102,8 +102,15 @@ namespace Alis.Core.Ecs.System.Scope
                 }
 
                 runtime.OnCalculate();
+                
+                // Render game:
+                runtime.OnBeforeDraw();
                 runtime.OnDraw();
+                runtime.OnAfterDraw();
                 runtime.OnGui();
+                runtime.OnRenderPresent();
+                
+                
 
                 smoothDeltaTimeSum += timeManager.DeltaTime - lastDeltaTime;
                 smoothDeltaTimeCount++;

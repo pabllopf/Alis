@@ -145,15 +145,21 @@ namespace Alis.Core.Ecs.Component
         /// </summary>
         public virtual void OnCalculate() => Logger.Trace();
 
+        public virtual void OnBeforeDraw() => Logger.Trace();
+
         /// <summary>
         ///     Ons the draw
         /// </summary>
         public virtual void OnDraw() => Logger.Trace();
 
+        public virtual void OnAfterDraw() => Logger.Trace();
+
         /// <summary>
         ///     Ons the gui
         /// </summary>
         public virtual void OnGui() => Logger.Trace();
+
+        public virtual void OnRenderPresent() => Logger.Trace();
 
         /// <summary>
         ///     Ons the disable

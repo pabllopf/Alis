@@ -27,10 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Component.Audio;
 using Alis.Core.Ecs.Entity;
+using Alis.Core.Graphic.Fonts;
 
 namespace Alis.Sample.Flappy.Bird
 {
@@ -44,7 +47,9 @@ namespace Alis.Sample.Flappy.Bird
         ///     The audio source
         /// </summary>
         private AudioSource audioSource;
-
+        
+        private FontManager fontManager;
+        
         /// <summary>
         ///     The is enter
         /// </summary>
@@ -83,6 +88,13 @@ namespace Alis.Sample.Flappy.Bird
         public override void OnInit()
         {
             audioSource = GameObject.Get<AudioSource>();
+            fontManager = Context.GraphicManager.FontManager;
+            fontManager.LoadFont("MONO", 16, AssetManager.Find("mono.bmp"));
+        }
+
+        public override void OnGui()
+        {
+            fontManager.RenderText("MONO", $"{Counter}", 128, 15, Color.White, 32);
         }
 
         /// <summary>

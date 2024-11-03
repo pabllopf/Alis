@@ -165,15 +165,21 @@ namespace Alis.Core.Ecs.System.Manager
         /// </summary>
         public virtual void OnCalculate() => Logger.Trace("Manager calculate.");
 
+        public virtual void OnBeforeDraw() => Logger.Trace("Manager before draw.");
+
         /// <summary>
         ///     Ons the draw
         /// </summary>
         public virtual void OnDraw() => Logger.Trace("Manager draw.");
 
+        public virtual void OnAfterDraw() => Logger.Trace("Manager after draw.");
+
         /// <summary>
         ///     Ons the gui
         /// </summary>
         public virtual void OnGui() => Logger.Trace("Manager GUI.");
+
+        public virtual void OnRenderPresent() => Logger.Trace("Manager render present.");
 
         /// <summary>
         ///     Ons the disable
