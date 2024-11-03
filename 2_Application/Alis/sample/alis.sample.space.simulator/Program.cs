@@ -54,7 +54,6 @@ namespace Alis.Sample.Space.Simulator
                         .Author("Pablo Perdomo Falcón")
                         .Description("Space simulator")
                         .License("GNU General Public License v3.0")
-                        .Icon("app.bmp")
                         .Build())
                     .Audio(audio => audio
                         .Build())
