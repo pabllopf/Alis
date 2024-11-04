@@ -45,13 +45,13 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector2 v1 = new Vector2(1, 2);
             Vector2 v2 = new Vector2(3, 4);
-
+            
             Vector2 result = v1 + v2;
-
+            
             Assert.Equal(4, result.X);
             Assert.Equal(6, result.Y);
         }
-
+        
         /// <summary>
         ///     Tests that vector 2 subtraction
         /// </summary>
@@ -60,13 +60,13 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector2 v1 = new Vector2(3, 4);
             Vector2 v2 = new Vector2(1, 2);
-
+            
             Vector2 result = v1 - v2;
-
+            
             Assert.Equal(2, result.X);
             Assert.Equal(2, result.Y);
         }
-
+        
         /// <summary>
         ///     Tests that vector 2 division
         /// </summary>
@@ -75,13 +75,13 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector2 v1 = new Vector2(6, 8);
             float scalar = 2;
-
+            
             Vector2 result = v1 / scalar;
-
+            
             Assert.Equal(3, result.X);
             Assert.Equal(4, result.Y);
         }
-
+        
         /// <summary>
         ///     Tests that vector 2 distance
         /// </summary>
@@ -90,12 +90,12 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector2 v1 = new Vector2(1, 2);
             Vector2 v2 = new Vector2(4, 6);
-
+            
             float distance = Vector2.Distance(v1, v2);
-
+            
             Assert.Equal(5, distance);
         }
-
+        
         /// <summary>
         ///     Tests that vector 2 length
         /// </summary>
@@ -103,12 +103,12 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         public void Vector2_Length()
         {
             Vector2 vector = new Vector2(3, 4);
-
+            
             float length = vector.Length();
-
+            
             Assert.Equal(5, length);
         }
-
+        
         /// <summary>
         ///     Tests that vector 2 normalize
         /// </summary>
@@ -116,13 +116,13 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         public void Vector2_Normalize()
         {
             Vector2 vector = new Vector2(3, 4);
-
+            
             Vector2 normalized = Vector2.Normalize(vector);
-
+            
             Assert.Equal(0.6f, normalized.X, 2);
             Assert.Equal(0.8f, normalized.Y, 2);
         }
-
+        
         /// <summary>
         ///     Tests that test equals method
         /// </summary>
@@ -133,13 +133,13 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Vector2 vectorA = new Vector2(1.0f, 2.0f);
             Vector2 vectorB = new Vector2(1.0f, 2.0f);
             Vector2 vectorC = new Vector2(2.0f, 3.0f);
-
+            
             // Act & Assert
             Assert.True(vectorA.Equals(vectorB)); // Vector A should be equal to Vector B
             Assert.False(vectorA.Equals(vectorC)); // Vector A should not be equal to Vector C
         }
-
-
+        
+        
         /// <summary>
         ///     Tests that test static addition method
         /// </summary>
@@ -149,14 +149,14 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             // Arrange
             Vector2 vectorA = new Vector2(1.0f, 2.0f);
             Vector2 vectorB = new Vector2(3.0f, 4.0f);
-
+            
             // Act
             Vector2 result = Vector2.Add(vectorA, vectorB);
-
+            
             // Assert
             Assert.Equal(new Vector2(4.0f, 6.0f), result);
         }
-
+        
         /// <summary>
         ///     Tests that test dot product method
         /// </summary>
@@ -166,14 +166,14 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             // Arrange
             Vector2 vectorA = new Vector2(2.0f, 3.0f);
             Vector2 vectorB = new Vector2(4.0f, 1.0f);
-
+            
             // Act
             float dotProduct = Vector2.Dot(vectorA, vectorB);
-
+            
             // Assert
             Assert.Equal(11.0f, dotProduct); // (2 * 4) + (3 * 1) = 11
         }
-
+        
         /// <summary>
         ///     Tests that test equals method
         /// </summary>
@@ -184,12 +184,12 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Vector2 vector1 = new Vector2(10.0f, 20.0f);
             Vector2 vector2 = new Vector2(10.0f, 20.0f);
             Vector2 vector3 = new Vector2(5.0f, 10.0f);
-
+            
             // Act & Assert
             Assert.True(vector1.Equals(vector2));
             Assert.False(vector1.Equals(vector3));
         }
-
+        
         /// <summary>
         ///     Tests that test get hash code method
         /// </summary>
@@ -198,15 +198,15 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             // Arrange
             Vector2 vector = new Vector2(10.0f, 20.0f);
-
+            
             // Act
             int hashCode = vector.GetHashCode();
-
+            
             // Assert
             // You can add specific assertions based on your implementation
             Assert.NotEqual(0, hashCode);
         }
-
+        
         /// <summary>
         ///     Tests that test length method
         /// </summary>
@@ -215,14 +215,14 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             // Arrange
             Vector2 vector = new Vector2(3.0f, 4.0f); // A 3-4-5 right triangle
-
+            
             // Act
             float length = vector.Length();
-
+            
             // Assert
             Assert.Equal(5.0f, length);
         }
-
+        
         /// <summary>
         ///     Tests that test min method
         /// </summary>
@@ -232,16 +232,16 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             // Arrange
             Vector2 vector1 = new Vector2(5.0f, 10.0f);
             Vector2 vector2 = new Vector2(8.0f, 7.0f);
-
+            
             // Act
             Vector2 result = Vector2.Min(vector1, vector2);
-
+            
             // Assert
             Assert.Equal(5.0f, result.X);
             Assert.Equal(7.0f, result.Y);
         }
-
-
+        
+        
         /// <summary>
         ///     Tests that test distance method
         /// </summary>
@@ -251,14 +251,14 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             // Arrange
             Vector2 point1 = new Vector2(1.0f, 2.0f);
             Vector2 point2 = new Vector2(4.0f, 6.0f);
-
+            
             // Act
             float distance = Vector2.Distance(point1, point2);
-
+            
             // Assert
             Assert.Equal(5.0f, distance); // Distance between (1,2) and (4,6) is 5
         }
-
+        
         /// <summary>
         ///     Tests that test equals same instance returns true
         /// </summary>
@@ -267,14 +267,14 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             // Arrange
             Vector2 vector = new Vector2(2.0f, 3.0f);
-
+            
             // Act
             bool result = vector.Equals(vector);
-
+            
             // Assert
             Assert.True(result);
         }
-
+        
         /// <summary>
         ///     Tests that test equals equal vectors returns true
         /// </summary>
@@ -284,14 +284,14 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             // Arrange
             Vector2 vector1 = new Vector2(2.0f, 3.0f);
             Vector2 vector2 = new Vector2(2.0f, 3.0f);
-
+            
             // Act
             bool result = vector1.Equals(vector2);
-
+            
             // Assert
             Assert.True(result);
         }
-
+        
         /// <summary>
         ///     Tests that test equals null object returns false
         /// </summary>
@@ -300,14 +300,14 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             // Arrange
             Vector2 vector = new Vector2(2.0f, 3.0f);
-
+            
             // Act
             bool result = vector.Equals(null);
-
+            
             // Assert
             Assert.False(result);
         }
-
+        
         /// <summary>
         ///     Tests that test equals different vectors returns false
         /// </summary>
@@ -317,14 +317,14 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             // Arrange
             Vector2 vector1 = new Vector2(2.0f, 3.0f);
             Vector2 vector2 = new Vector2(4.0f, 5.0f);
-
+            
             // Act
             bool result = vector1.Equals(vector2);
-
+            
             // Assert
             Assert.False(result);
         }
-
+        
         /// <summary>
         ///     Tests that test inequality equal vectors returns false
         /// </summary>
@@ -334,14 +334,14 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             // Arrange
             Vector2 vector1 = new Vector2(2.0f, 3.0f);
             Vector2 vector2 = new Vector2(2.0f, 3.0f);
-
+            
             // Act
             bool result = vector1 != vector2;
-
+            
             // Assert
             Assert.False(result);
         }
-
+        
         /// <summary>
         ///     Tests that test inequality different vectors returns true
         /// </summary>
@@ -351,14 +351,14 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             // Arrange
             Vector2 vector1 = new Vector2(2.0f, 3.0f);
             Vector2 vector2 = new Vector2(4.0f, 5.0f);
-
+            
             // Act
             bool result = vector1 != vector2;
-
+            
             // Assert
             Assert.True(result);
         }
-
+        
         /// <summary>
         ///     Tests that test inequality different precision vectors returns true
         /// </summary>
@@ -368,10 +368,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             // Arrange
             Vector2 vector1 = new Vector2(2.0f, 3.0f);
             Vector2 vector2 = new Vector2(2.1f + float.Epsilon, 3.1f + float.Epsilon);
-
+            
             // Act
             bool result = vector1 != vector2;
-
+            
             // Assert
             Assert.True(result);
         }

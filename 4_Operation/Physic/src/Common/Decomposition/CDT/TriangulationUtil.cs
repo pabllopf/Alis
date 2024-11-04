@@ -29,9 +29,8 @@
 
 namespace Alis.Core.Physic.Common.Decomposition.CDT
 {
-    
     /// <summary>
-    /// The triangulation util class
+    ///     The triangulation util class
     /// </summary>
     internal class TriangulationUtil
     {
@@ -39,7 +38,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
         ///     The epsilon
         /// </summary>
         public static double EPSILON = 1e-12;
-
+        
         /// <summary>
         ///     Requirements:
         ///     1. a,b and c form a triangle.
@@ -73,31 +72,31 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
             double ady = pa.Y - pdy;
             double bdx = pb.X - pdx;
             double bdy = pb.Y - pdy;
-
+            
             double adxbdy = adx * bdy;
             double bdxady = bdx * ady;
             double oabd = adxbdy - bdxady;
             //        oabd = orient2d(pa,pb,pd);
             if (oabd <= 0) return false;
-
+            
             double cdx = pc.X - pdx;
             double cdy = pc.Y - pdy;
-
+            
             double cdxady = cdx * ady;
             double adxcdy = adx * cdy;
             double ocad = cdxady - adxcdy;
             //      ocad = orient2d(pc,pa,pd);
             if (ocad <= 0) return false;
-
+            
             double bdxcdy = bdx * cdy;
             double cdxbdy = cdx * bdy;
-
+            
             double alift = adx * adx + ady * ady;
             double blift = bdx * bdx + bdy * bdy;
             double clift = cdx * cdx + cdy * cdy;
-
+            
             double det = alift * (bdxcdy - cdxbdy) + blift * ocad + clift * oabd;
-
+            
             return det > 0;
         }
         /*
@@ -110,7 +109,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
             double ady = pa.Y - pdy;
             double bdx = pb.X - pdx;
             double bdy = pb.Y - pdy;
-
+        
             double adxbdy = adx*bdy;
             double bdxady = bdx*ady;
             double oabd = adxbdy - bdxady;
@@ -119,10 +118,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
             {
                 return false;
             }
-
+        
             double cdx = pc.X - pdx;
             double cdy = pc.Y - pdy;
-
+        
             double cdxady = cdx*ady;
             double adxcdy = adx*cdy;
             double ocad = cdxady - adxcdy;
@@ -134,7 +133,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
             return true;
         }
         */
-
+        
         /// <summary>
         ///     Describes whether in scan area
         /// </summary>
@@ -150,16 +149,16 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
             {
                 return false;
             }
-
+            
             double oadc = (pa.X - pc.X) * (pd.Y - pc.Y) - (pd.X - pc.X) * (pa.Y - pc.Y);
             if (oadc <= EPSILON)
             {
                 return false;
             }
-
+            
             return true;
         }
-
+        
         /// Forumla to calculate signed area
         /// Positive if CCW
         /// Negative if CW
@@ -175,12 +174,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
             {
                 return Orientation.Collinear;
             }
-
+            
             if (val > 0)
             {
                 return Orientation.CCW;
             }
-
+            
             return Orientation.CW;
         }
     }

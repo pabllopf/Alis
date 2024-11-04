@@ -48,7 +48,7 @@ namespace Alis.Test.Core.Ecs.Component.Collider
         public void BoxCollider_DefaultConstructor_ValidInput()
         {
             BoxCollider boxCollider = new BoxCollider();
-
+            
             Assert.NotNull(boxCollider);
             Assert.Equal(10.0f, boxCollider.Width);
             Assert.Equal(10.0f, boxCollider.Height);
@@ -59,7 +59,7 @@ namespace Alis.Test.Core.Ecs.Component.Collider
             Assert.False(boxCollider.IgnoreGravity);
             Assert.Equal(Vector2.Zero, boxCollider.LinearVelocity);
         }
-
+        
         /// <summary>
         ///     Tests that box collider builder valid input
         /// </summary>
@@ -68,10 +68,10 @@ namespace Alis.Test.Core.Ecs.Component.Collider
         {
             BoxCollider boxCollider = new BoxCollider();
             BoxColliderBuilder boxColliderBuilder = boxCollider.Builder();
-
+            
             Assert.NotNull(boxColliderBuilder);
         }
-
+        
         /// <summary>
         ///     Tests that on awake valid input
         /// </summary>
@@ -79,10 +79,10 @@ namespace Alis.Test.Core.Ecs.Component.Collider
         public void OnAwake_ValidInput()
         {
             BoxCollider boxCollider = new BoxCollider();
-
+            
             Assert.Throws<NullReferenceException>(() => boxCollider.OnAwake());
         }
-
+        
         /// <summary>
         ///     Tests that on start valid input
         /// </summary>
@@ -90,10 +90,10 @@ namespace Alis.Test.Core.Ecs.Component.Collider
         public void OnStart_ValidInput()
         {
             BoxCollider boxCollider = new BoxCollider();
-
+            
             boxCollider.OnStart();
         }
-
+        
         /// <summary>
         ///     Tests that is trigger property set get returns correct value
         /// </summary>
@@ -104,7 +104,7 @@ namespace Alis.Test.Core.Ecs.Component.Collider
             boxCollider.IsTrigger = true;
             Assert.True(boxCollider.IsTrigger);
         }
-
+        
         /// <summary>
         ///     Tests that width property set get returns correct value
         /// </summary>
@@ -115,7 +115,7 @@ namespace Alis.Test.Core.Ecs.Component.Collider
             boxCollider.Width = 10.0f;
             Assert.Equal(10.0f, boxCollider.Width);
         }
-
+        
         /// <summary>
         ///     Tests that height property set get returns correct value
         /// </summary>
@@ -126,7 +126,7 @@ namespace Alis.Test.Core.Ecs.Component.Collider
             boxCollider.Height = 20.0f;
             Assert.Equal(20.0f, boxCollider.Height);
         }
-
+        
         /// <summary>
         ///     Tests that rotation property set get returns correct value
         /// </summary>
@@ -137,7 +137,7 @@ namespace Alis.Test.Core.Ecs.Component.Collider
             boxCollider.Rotation = 1.0f;
             Assert.Equal(1.0f, boxCollider.Rotation);
         }
-
+        
         /// <summary>
         ///     Tests that relative position property set get returns correct value
         /// </summary>
@@ -148,7 +148,7 @@ namespace Alis.Test.Core.Ecs.Component.Collider
             boxCollider.RelativePosition = new Vector2(10, 20);
             Assert.Equal(new Vector2(10, 20), boxCollider.RelativePosition);
         }
-
+        
         /// <summary>
         ///     Tests that auto tilling property set get returns correct value
         /// </summary>
@@ -159,7 +159,7 @@ namespace Alis.Test.Core.Ecs.Component.Collider
             boxCollider.AutoTilling = true;
             Assert.True(boxCollider.AutoTilling);
         }
-
+        
         /// <summary>
         ///     Tests that body type property set get returns correct value
         /// </summary>
@@ -170,7 +170,7 @@ namespace Alis.Test.Core.Ecs.Component.Collider
             boxCollider.BodyType = BodyType.Dynamic;
             Assert.Equal(BodyType.Dynamic, boxCollider.BodyType);
         }
-
+        
         /// <summary>
         ///     Tests that restitution property set get returns correct value
         /// </summary>
@@ -181,7 +181,7 @@ namespace Alis.Test.Core.Ecs.Component.Collider
             boxCollider.Restitution = 0.5f;
             Assert.Equal(0.5f, boxCollider.Restitution);
         }
-
+        
         /// <summary>
         ///     Tests that friction property set get returns correct value
         /// </summary>
@@ -192,7 +192,7 @@ namespace Alis.Test.Core.Ecs.Component.Collider
             boxCollider.Friction = 0.5f;
             Assert.Equal(0.5f, boxCollider.Friction);
         }
-
+        
         /// <summary>
         ///     Tests that fixed rotation property set get returns correct value
         /// </summary>
@@ -203,7 +203,7 @@ namespace Alis.Test.Core.Ecs.Component.Collider
             boxCollider.FixedRotation = true;
             Assert.True(boxCollider.FixedRotation);
         }
-
+        
         /// <summary>
         ///     Tests that mass property set get returns correct value
         /// </summary>
@@ -214,7 +214,7 @@ namespace Alis.Test.Core.Ecs.Component.Collider
             boxCollider.Mass = 10.0f;
             Assert.Equal(10.0f, boxCollider.Mass);
         }
-
+        
         /// <summary>
         ///     Tests that gravity scale property set get returns correct value
         /// </summary>
@@ -225,7 +225,7 @@ namespace Alis.Test.Core.Ecs.Component.Collider
             boxCollider.IgnoreGravity = false;
             Assert.False(boxCollider.IgnoreGravity);
         }
-
+        
         /// <summary>
         ///     Tests that linear velocity property set get returns correct value
         /// </summary>
@@ -236,7 +236,7 @@ namespace Alis.Test.Core.Ecs.Component.Collider
             boxCollider.LinearVelocity = new Vector2(10, 20);
             Assert.Equal(new Vector2(10, 20), boxCollider.LinearVelocity);
         }
-
+        
         /// <summary>
         ///     Tests that angular velocity property set get returns correct value
         /// </summary>

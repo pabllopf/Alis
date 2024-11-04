@@ -50,7 +50,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="range">The range</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref byte xs, ref byte ys, int count, int xBins, int yBins, ImPlotRect range) => ImPlotNative.ImPlot_PlotHistogram2D_U8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, 0);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -64,7 +64,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref byte xs, ref byte ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags) => ImPlotNative.ImPlot_PlotHistogram2D_U8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, flags);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -74,7 +74,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref short xs, ref short ys, int count) => ImPlotNative.ImPlot_PlotHistogram2D_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, (int) ImPlotBin.Sturges, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -85,7 +85,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xBins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref short xs, ref short ys, int count, int xBins) => ImPlotNative.ImPlot_PlotHistogram2D_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -97,7 +97,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="yBins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref short xs, ref short ys, int count, int xBins, int yBins) => ImPlotNative.ImPlot_PlotHistogram2D_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, new ImPlotRect(), 0);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -110,7 +110,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="range">The range</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref short xs, ref short ys, int count, int xBins, int yBins, ImPlotRect range) => ImPlotNative.ImPlot_PlotHistogram2D_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, 0);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -124,7 +124,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref short xs, ref short ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags) => ImPlotNative.ImPlot_PlotHistogram2D_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, flags);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -134,7 +134,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref ushort xs, ref ushort ys, int count) => ImPlotNative.ImPlot_PlotHistogram2D_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, (int) ImPlotBin.Sturges, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -145,7 +145,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xBins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref ushort xs, ref ushort ys, int count, int xBins) => ImPlotNative.ImPlot_PlotHistogram2D_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -157,7 +157,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="yBins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref ushort xs, ref ushort ys, int count, int xBins, int yBins) => ImPlotNative.ImPlot_PlotHistogram2D_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, new ImPlotRect(), 0);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -170,7 +170,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="range">The range</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref ushort xs, ref ushort ys, int count, int xBins, int yBins, ImPlotRect range) => ImPlotNative.ImPlot_PlotHistogram2D_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, 0);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -184,7 +184,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref ushort xs, ref ushort ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags) => ImPlotNative.ImPlot_PlotHistogram2D_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, flags);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -194,7 +194,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref int xs, ref int ys, int count) => ImPlotNative.ImPlot_PlotHistogram2D_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, (int) ImPlotBin.Sturges, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -205,7 +205,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xBins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref int xs, ref int ys, int count, int xBins) => ImPlotNative.ImPlot_PlotHistogram2D_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -217,7 +217,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="yBins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref int xs, ref int ys, int count, int xBins, int yBins) => ImPlotNative.ImPlot_PlotHistogram2D_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, new ImPlotRect(), 0);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -230,7 +230,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="range">The range</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref int xs, ref int ys, int count, int xBins, int yBins, ImPlotRect range) => ImPlotNative.ImPlot_PlotHistogram2D_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, 0);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -244,7 +244,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref int xs, ref int ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags) => ImPlotNative.ImPlot_PlotHistogram2D_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, flags);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -254,7 +254,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref uint xs, ref uint ys, int count) => ImPlotNative.ImPlot_PlotHistogram2D_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, (int) ImPlotBin.Sturges, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -265,7 +265,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xBins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref uint xs, ref uint ys, int count, int xBins) => ImPlotNative.ImPlot_PlotHistogram2D_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -277,7 +277,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="yBins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref uint xs, ref uint ys, int count, int xBins, int yBins) => ImPlotNative.ImPlot_PlotHistogram2D_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, new ImPlotRect(), 0);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -290,7 +290,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="range">The range</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref uint xs, ref uint ys, int count, int xBins, int yBins, ImPlotRect range) => ImPlotNative.ImPlot_PlotHistogram2D_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, 0);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -304,7 +304,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref uint xs, ref uint ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags) => ImPlotNative.ImPlot_PlotHistogram2D_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, flags);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -314,7 +314,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref long xs, ref long ys, int count) => ImPlotNative.ImPlot_PlotHistogram2D_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, (int) ImPlotBin.Sturges, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -325,7 +325,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xBins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref long xs, ref long ys, int count, int xBins) => ImPlotNative.ImPlot_PlotHistogram2D_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -337,7 +337,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="yBins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref long xs, ref long ys, int count, int xBins, int yBins) => ImPlotNative.ImPlot_PlotHistogram2D_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, new ImPlotRect(), 0);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -350,7 +350,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="range">The range</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref long xs, ref long ys, int count, int xBins, int yBins, ImPlotRect range) => ImPlotNative.ImPlot_PlotHistogram2D_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, 0);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -364,7 +364,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref long xs, ref long ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags) => ImPlotNative.ImPlot_PlotHistogram2D_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, flags);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -374,7 +374,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref ulong xs, ref ulong ys, int count) => ImPlotNative.ImPlot_PlotHistogram2D_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, (int) ImPlotBin.Sturges, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -385,7 +385,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xBins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref ulong xs, ref ulong ys, int count, int xBins) => ImPlotNative.ImPlot_PlotHistogram2D_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -397,7 +397,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="yBins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref ulong xs, ref ulong ys, int count, int xBins, int yBins) => ImPlotNative.ImPlot_PlotHistogram2D_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, new ImPlotRect(), 0);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -410,7 +410,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="range">The range</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref ulong xs, ref ulong ys, int count, int xBins, int yBins, ImPlotRect range) => ImPlotNative.ImPlot_PlotHistogram2D_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, 0);
-
+        
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -424,7 +424,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref ulong xs, ref ulong ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags) => ImPlotNative.ImPlot_PlotHistogram2D_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, flags);
-
+        
         /// <summary>
         ///     Plots the image using the specified label id
         /// </summary>
@@ -436,7 +436,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotImage(Encoding.UTF8.GetBytes(labelId), userTextureId, boundsMin, boundsMax, new Vector2(0, 0), new Vector2(1, 1), new Vector4(1, 1, 1, 1), 0);
         }
-
+        
         /// <summary>
         ///     Plots the image using the specified label id
         /// </summary>
@@ -449,7 +449,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotImage(Encoding.UTF8.GetBytes(labelId), userTextureId, boundsMin, boundsMax, uv0, new Vector2(1, 1), new Vector4(1, 1, 1, 1), 0);
         }
-
+        
         /// <summary>
         ///     Plots the image using the specified label id
         /// </summary>
@@ -463,7 +463,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotImage(Encoding.UTF8.GetBytes(labelId), userTextureId, boundsMin, boundsMax, uv0, uv1, new Vector4(1, 1, 1, 1), 0);
         }
-
+        
         /// <summary>
         ///     Plots the image using the specified label id
         /// </summary>
@@ -478,7 +478,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotImage(Encoding.UTF8.GetBytes(labelId), userTextureId, boundsMin, boundsMax, uv0, uv1, tintCol, 0);
         }
-
+        
         /// <summary>
         ///     Plots the image using the specified label id
         /// </summary>
@@ -494,7 +494,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotImage(Encoding.UTF8.GetBytes(labelId), userTextureId, boundsMin, boundsMax, uv0, uv1, tintCol, flags);
         }
-
+        
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -505,7 +505,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, count, 0, 0, sizeof(float));
         }
-
+        
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -517,7 +517,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, count, flags, 0, sizeof(float));
         }
-
+        
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -530,7 +530,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, sizeof(float));
         }
-
+        
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -544,7 +544,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, stride);
         }
-
+        
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -555,7 +555,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_doublePtr(Encoding.UTF8.GetBytes(labelId), values, count, 0, 0, sizeof(double));
         }
-
+        
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -567,7 +567,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_doublePtr(Encoding.UTF8.GetBytes(labelId), values, count, flags, 0, sizeof(double));
         }
-
+        
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -580,7 +580,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_doublePtr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, sizeof(double));
         }
-
+        
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -594,7 +594,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_doublePtr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, stride);
         }
-
+        
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -608,7 +608,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             int stride = sizeof(sbyte);
             ImPlotNative.ImPlot_PlotInfLines_S8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, stride);
         }
-
+        
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -620,7 +620,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_S8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, 0, sizeof(sbyte));
         }
-
+        
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -634,7 +634,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             int stride = sizeof(sbyte);
             ImPlotNative.ImPlot_PlotInfLines_S8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, stride);
         }
-
+        
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -648,7 +648,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_S8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, stride);
         }
-
+        
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -662,7 +662,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             int stride = sizeof(byte);
             ImPlotNative.ImPlot_PlotInfLines_U8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, stride);
         }
-
+        
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
@@ -674,7 +674,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotInfLines_U8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, 0, sizeof(byte));
         }
-
+        
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>

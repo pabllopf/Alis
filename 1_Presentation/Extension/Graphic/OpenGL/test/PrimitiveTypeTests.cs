@@ -44,7 +44,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test
         {
             Assert.Equal(0x0000, (int) PrimitiveType.Points);
         }
-
+        
         /// <summary>
         ///     Tests that lines has value 0x 0001
         /// </summary>
@@ -53,7 +53,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test
         {
             Assert.Equal(0x0001, (int) PrimitiveType.Lines);
         }
-
+        
         /// <summary>
         ///     Tests that line loop has value 0x 0002
         /// </summary>
@@ -62,7 +62,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test
         {
             Assert.Equal(0x0002, (int) PrimitiveType.LineLoop);
         }
-
+        
         /// <summary>
         ///     Tests that line strip has value 0x 0003
         /// </summary>
@@ -71,7 +71,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test
         {
             Assert.Equal(0x0003, (int) PrimitiveType.LineStrip);
         }
-
+        
         /// <summary>
         ///     Tests that triangles has value 0x 0004
         /// </summary>
@@ -80,7 +80,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test
         {
             Assert.Equal(0x0004, (int) PrimitiveType.Triangles);
         }
-
+        
         /// <summary>
         ///     Tests that triangle strip has value 0x 0005
         /// </summary>
@@ -89,7 +89,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test
         {
             Assert.Equal(0x0005, (int) PrimitiveType.TriangleStrip);
         }
-
+        
         /// <summary>
         ///     Tests that triangle fan has value 0x 0006
         /// </summary>

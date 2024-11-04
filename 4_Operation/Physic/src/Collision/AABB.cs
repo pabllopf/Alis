@@ -43,12 +43,12 @@ namespace Alis.Core.Physic.Collision
         ///     The lower vertex
         /// </summary>
         public Vector2 LowerBound;
-
+        
         /// <summary>
         ///     The upper vertex
         /// </summary>
         public Vector2 UpperBound;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="AABB" /> class
         /// </summary>
@@ -58,7 +58,7 @@ namespace Alis.Core.Physic.Collision
             : this(ref min, ref max)
         {
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="AABB" /> class
         /// </summary>
@@ -69,7 +69,7 @@ namespace Alis.Core.Physic.Collision
             LowerBound = min;
             UpperBound = max;
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="AABB" /> class
         /// </summary>
@@ -81,27 +81,27 @@ namespace Alis.Core.Physic.Collision
             LowerBound = center - new Vector2(width / 2, height / 2);
             UpperBound = center + new Vector2(width / 2, height / 2);
         }
-
+        
         /// <summary>
         ///     Gets the value of the width
         /// </summary>
         public float Width => UpperBound.X - LowerBound.X;
-
+        
         /// <summary>
         ///     Gets the value of the height
         /// </summary>
         public float Height => UpperBound.Y - LowerBound.Y;
-
+        
         /// <summary>
         ///     Get the center of the AABB.
         /// </summary>
         public Vector2 Center => 0.5f * (LowerBound + UpperBound);
-
+        
         /// <summary>
         ///     Get the extents of the AABB (half-widths).
         /// </summary>
         public Vector2 Extents => 0.5f * (UpperBound - LowerBound);
-
+        
         /// <summary>
         ///     Get the perimeter length
         /// </summary>
@@ -114,7 +114,7 @@ namespace Alis.Core.Physic.Collision
                 return 2.0f * (wx + wy);
             }
         }
-
+        
         /// <summary>
         ///     Gets the vertices of the AABB.
         /// </summary>
@@ -131,27 +131,27 @@ namespace Alis.Core.Physic.Collision
                 return vertices;
             }
         }
-
+        
         /// <summary>
         ///     First quadrant
         /// </summary>
         public AABB Q1 => new AABB(Center, UpperBound);
-
+        
         /// <summary>
         ///     Second quadrant
         /// </summary>
         public AABB Q2 => new AABB(new Vector2(LowerBound.X, Center.Y), new Vector2(Center.X, UpperBound.Y));
-
+        
         /// <summary>
         ///     Third quadrant
         /// </summary>
         public AABB Q3 => new AABB(LowerBound, Center);
-
+        
         /// <summary>
         ///     Forth quadrant
         /// </summary>
         public AABB Q4 => new AABB(new Vector2(Center.X, LowerBound.Y), new Vector2(UpperBound.X, Center.Y));
-
+        
         /// <summary>
         ///     Verify that the bounds are sorted. And the bounds are valid numbers (not NaN).
         /// </summary>
@@ -165,7 +165,7 @@ namespace Alis.Core.Physic.Collision
             valid = valid && LowerBound.IsValid() && UpperBound.IsValid();
             return valid;
         }
-
+        
         /// <summary>
         ///     Combine an AABB into this one.
         /// </summary>
@@ -175,7 +175,7 @@ namespace Alis.Core.Physic.Collision
             Vector2.Min(ref LowerBound, ref aabb.LowerBound, out LowerBound);
             Vector2.Max(ref UpperBound, ref aabb.UpperBound, out UpperBound);
         }
-
+        
         /// <summary>
         ///     Combine two AABBs into this one.
         /// </summary>
@@ -186,7 +186,7 @@ namespace Alis.Core.Physic.Collision
             Vector2.Min(ref aabb1.LowerBound, ref aabb2.LowerBound, out LowerBound);
             Vector2.Max(ref aabb1.UpperBound, ref aabb2.UpperBound, out UpperBound);
         }
-
+        
         /// <summary>
         ///     Does this aabb contain the provided AABB.
         /// </summary>
@@ -203,7 +203,7 @@ namespace Alis.Core.Physic.Collision
             result = result && (aabb.UpperBound.Y <= UpperBound.Y);
             return result;
         }
-
+        
         /// <summary>
         ///     Determines whether the AAABB contains the specified point.
         /// </summary>
@@ -215,7 +215,7 @@ namespace Alis.Core.Physic.Collision
             //using epsilon to try and gaurd against float rounding errors.
             (point.X > LowerBound.X + SettingEnv.Epsilon) && (point.X < UpperBound.X - SettingEnv.Epsilon) &&
             (point.Y > LowerBound.Y + SettingEnv.Epsilon) && (point.Y < UpperBound.Y - SettingEnv.Epsilon);
-
+        
         /// <summary>
         ///     Test if the two AABBs overlap.
         /// </summary>
@@ -226,13 +226,13 @@ namespace Alis.Core.Physic.Collision
         {
             if (b.LowerBound.X > a.UpperBound.X || b.LowerBound.Y > a.UpperBound.Y)
                 return false;
-
+            
             if (a.LowerBound.X > b.UpperBound.X || a.LowerBound.Y > b.UpperBound.Y)
                 return false;
-
+            
             return true;
         }
-
+        
         /// <summary>
         ///     Raycast against this AABB using the specificed points and maxfraction (found in input)
         /// </summary>
@@ -242,25 +242,25 @@ namespace Alis.Core.Physic.Collision
         public bool RayCast(out RayCastOutput output, ref RayCastInput input, bool doInteriorCheck = true)
         {
             // From Real-time Collision Detection, p179.
-
+            
             output = new RayCastOutput();
-
+            
             float tmin = -SettingEnv.MaxFloat;
             float tmax = SettingEnv.MaxFloat;
-
+            
             Vector2 p = input.Point1;
             Vector2 d = input.Point2 - input.Point1;
             Vector2 absD = MathUtils.Abs(d);
-
+            
             Vector2 normal = Vector2.Zero;
-
+            
             for (int i = 0; i < 2; ++i)
             {
                 float absD_i = i == 0 ? absD.X : absD.Y;
                 float lowerBound_i = i == 0 ? LowerBound.X : LowerBound.Y;
                 float upperBound_i = i == 0 ? UpperBound.X : UpperBound.Y;
                 float p_i = i == 0 ? p.X : p.Y;
-
+                
                 if (absD_i < SettingEnv.Epsilon)
                 {
                     // Parallel.
@@ -272,20 +272,20 @@ namespace Alis.Core.Physic.Collision
                 else
                 {
                     float d_i = i == 0 ? d.X : d.Y;
-
+                    
                     float inv_d = 1.0f / d_i;
                     float t1 = (lowerBound_i - p_i) * inv_d;
                     float t2 = (upperBound_i - p_i) * inv_d;
-
+                    
                     // Sign of the normal vector.
                     float s = -1.0f;
-
+                    
                     if (t1 > t2)
                     {
                         MathUtils.Swap(ref t1, ref t2);
                         s = 1.0f;
                     }
-
+                    
                     // Push the min up
                     if (t1 > tmin)
                     {
@@ -297,27 +297,27 @@ namespace Alis.Core.Physic.Collision
                         {
                             normal.Y = s;
                         }
-
+                        
                         tmin = t1;
                     }
-
+                    
                     // Pull the max down
                     tmax = Math.Min(tmax, t2);
-
+                    
                     if (tmin > tmax)
                     {
                         return false;
                     }
                 }
             }
-
+            
             // Does the ray start inside the box?
             // Does the ray intersect beyond the max fraction?
             if (doInteriorCheck && (tmin < 0.0f || input.MaxFraction < tmin))
             {
                 return false;
             }
-
+            
             // Intersection.
             output.Fraction = tmin;
             output.Normal = normal;

@@ -47,7 +47,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", new uint[] {1, 2, 3}, 3, 0.5, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars u int array with flags
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", new uint[] {1, 2, 3}, 3, 0.5, 0, ImPlotBarsFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars u int array with flags and offset
         /// </summary>
@@ -65,7 +65,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", new uint[] {1, 2, 3}, 3, 0.5, 0, ImPlotBarsFlags.None, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars u int array with flags offset and stride
         /// </summary>
@@ -74,7 +74,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", new uint[] {1, 2, 3}, 3, 0.5, 0, ImPlotBarsFlags.None, 1, 2));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars long array no flags
         /// </summary>
@@ -83,7 +83,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", new long[] {1, 2, 3}, 3));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars long array with bar size
         /// </summary>
@@ -92,7 +92,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", new long[] {1, 2, 3}, 3, 0.5));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars long array with bar size and shift
         /// </summary>
@@ -101,7 +101,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", new long[] {1, 2, 3}, 3, 0.5, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars long array with flags
         /// </summary>
@@ -110,7 +110,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", new long[] {1, 2, 3}, 3, 0.5, 0, ImPlotBarsFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars long array with flags and offset
         /// </summary>
@@ -119,7 +119,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", new long[] {1, 2, 3}, 3, 0.5, 0, ImPlotBarsFlags.None, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars long array with flags offset and stride
         /// </summary>
@@ -128,7 +128,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", new long[] {1, 2, 3}, 3, 0.5, 0, ImPlotBarsFlags.None, 1, 2));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars u long array no flags
         /// </summary>
@@ -137,7 +137,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", new ulong[] {1, 2, 3}, 3));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars u long array with bar size
         /// </summary>
@@ -146,7 +146,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", new ulong[] {1, 2, 3}, 3, 0.5));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars u long array with bar size and shift
         /// </summary>
@@ -155,7 +155,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", new ulong[] {1, 2, 3}, 3, 0.5, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars u long array with flags
         /// </summary>
@@ -164,7 +164,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", new ulong[] {1, 2, 3}, 3, 0.5, 0, ImPlotBarsFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars u long array with flags and offset
         /// </summary>
@@ -173,7 +173,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", new ulong[] {1, 2, 3}, 3, 0.5, 0, ImPlotBarsFlags.None, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars u long array with flags offset and stride
         /// </summary>
@@ -182,7 +182,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", new ulong[] {1, 2, 3}, 3, 0.5, 0, ImPlotBarsFlags.None, 1, 2));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars float ref no flags
         /// </summary>
@@ -192,7 +192,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars float ref with flags
         /// </summary>
@@ -202,7 +202,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5, ImPlotBarsFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars float ref with flags and offset
         /// </summary>
@@ -212,7 +212,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5, ImPlotBarsFlags.None, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars float ref with flags offset and stride
         /// </summary>
@@ -222,7 +222,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5, ImPlotBarsFlags.None, 1, 2));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars double ref no flags
         /// </summary>
@@ -232,7 +232,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars double ref with flags
         /// </summary>
@@ -242,7 +242,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5, ImPlotBarsFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars double ref with flags and offset
         /// </summary>
@@ -252,7 +252,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5, ImPlotBarsFlags.None, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars double ref with flags offset and stride
         /// </summary>
@@ -262,7 +262,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5, ImPlotBarsFlags.None, 1, 2));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars s byte ref no flags
         /// </summary>
@@ -272,7 +272,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             sbyte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars s byte ref with flags
         /// </summary>
@@ -282,7 +282,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             sbyte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5, ImPlotBarsFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars s byte ref with flags and offset
         /// </summary>
@@ -292,7 +292,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             sbyte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5, ImPlotBarsFlags.None, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars s byte ref with flags offset and stride
         /// </summary>
@@ -302,7 +302,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             sbyte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5, ImPlotBarsFlags.None, 1, 2));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars byte ref no flags
         /// </summary>
@@ -312,7 +312,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             byte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars byte ref with flags
         /// </summary>
@@ -322,7 +322,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             byte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5, ImPlotBarsFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars byte ref with flags and offset
         /// </summary>
@@ -332,7 +332,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             byte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5, ImPlotBarsFlags.None, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars byte ref with flags offset and stride
         /// </summary>
@@ -342,7 +342,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             byte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5, ImPlotBarsFlags.None, 1, 2));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars short ref no flags
         /// </summary>
@@ -352,7 +352,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             short xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars short ref with flags
         /// </summary>
@@ -362,7 +362,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             short xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5, ImPlotBarsFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars short ref with flags and offset
         /// </summary>
@@ -372,7 +372,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             short xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5, ImPlotBarsFlags.None, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars short ref with flags offset and stride
         /// </summary>
@@ -382,7 +382,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             short xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5, ImPlotBarsFlags.None, 1, 2));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars u short ref no flags
         /// </summary>
@@ -392,7 +392,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ushort xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars u short ref with flags
         /// </summary>
@@ -402,7 +402,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ushort xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5, ImPlotBarsFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars u short ref with flags and offset
         /// </summary>
@@ -412,7 +412,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ushort xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5, ImPlotBarsFlags.None, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars u short ref with flags offset and stride
         /// </summary>
@@ -422,7 +422,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ushort xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5, ImPlotBarsFlags.None, 1, 2));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars int ref no flags
         /// </summary>
@@ -432,7 +432,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             int xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars int ref with flags
         /// </summary>
@@ -442,7 +442,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             int xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5, ImPlotBarsFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars int ref with flags and offset
         /// </summary>
@@ -452,7 +452,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             int xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5, ImPlotBarsFlags.None, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars int ref with flags offset and stride
         /// </summary>
@@ -462,7 +462,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             int xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5, ImPlotBarsFlags.None, 1, 2));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars u int ref no flags
         /// </summary>
@@ -472,7 +472,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             uint xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars u int ref with flags
         /// </summary>
@@ -482,7 +482,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             uint xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5, ImPlotBarsFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars u int ref with flags and offset
         /// </summary>
@@ -492,7 +492,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             uint xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5, ImPlotBarsFlags.None, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars u int ref with flags offset and stride
         /// </summary>
@@ -502,7 +502,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             uint xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5, ImPlotBarsFlags.None, 1, 2));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars long ref no flags
         /// </summary>
@@ -512,7 +512,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             long xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars long ref with flags
         /// </summary>
@@ -522,7 +522,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             long xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5, ImPlotBarsFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars long ref with flags and offset
         /// </summary>
@@ -532,7 +532,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             long xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 3, 0.5, ImPlotBarsFlags.None, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars long ref with flags offset and stride
         /// </summary>

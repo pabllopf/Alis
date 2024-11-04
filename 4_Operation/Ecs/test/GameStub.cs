@@ -41,12 +41,12 @@ namespace Alis.Core.Ecs.Test
         ///     Gets or sets the value of the run invoked
         /// </summary>
         public bool RunInvoked { get; private set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the exit invoked
         /// </summary>
         public bool ExitInvoked { get; private set; }
-
+        
         /// <summary>
         ///     Runs this instance
         /// </summary>
@@ -54,14 +54,14 @@ namespace Alis.Core.Ecs.Test
         {
             RunInvoked = true;
         }
-
+        
         /// <summary>
-        /// Runs the preview
+        ///     Runs the preview
         /// </summary>
         public void RunPreview()
         {
         }
-
+        
         /// <summary>
         ///     Exits this instance
         /// </summary>

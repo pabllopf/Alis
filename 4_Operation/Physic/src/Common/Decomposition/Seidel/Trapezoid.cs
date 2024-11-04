@@ -40,53 +40,53 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         ///     The bottom
         /// </summary>
         public Edge Bottom;
-
+        
         /// <summary>
         ///     The inside
         /// </summary>
         public bool Inside;
-
+        
         /// <summary>
         ///     The left point
         /// </summary>
         public Point LeftPoint;
-
+        
         // Neighbor pointers
         /// <summary>
         ///     The lower left
         /// </summary>
         public Trapezoid LowerLeft;
-
+        
         /// <summary>
         ///     The lower right
         /// </summary>
         public Trapezoid LowerRight;
-
+        
         /// <summary>
         ///     The right point
         /// </summary>
         public Point RightPoint;
-
+        
         /// <summary>
         ///     The sink
         /// </summary>
         public Sink Sink;
-
+        
         /// <summary>
         ///     The top
         /// </summary>
         public Edge Top;
-
+        
         /// <summary>
         ///     The upper left
         /// </summary>
         public Trapezoid UpperLeft;
-
+        
         /// <summary>
         ///     The upper right
         /// </summary>
         public Trapezoid UpperRight;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Trapezoid" /> class
         /// </summary>
@@ -107,7 +107,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             Inside = true;
             Sink = null;
         }
-
+        
         // Update neighbors to the left
         /// <summary>
         ///     Updates the left using the specified ul
@@ -121,7 +121,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             LowerLeft = ll;
             if (ll != null) ll.LowerRight = this;
         }
-
+        
         // Update neighbors to the right
         /// <summary>
         ///     Updates the right using the specified ur
@@ -135,7 +135,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             LowerRight = lr;
             if (lr != null) lr.LowerLeft = this;
         }
-
+        
         // Update neighbors on both sides
         /// <summary>
         ///     Updates the left right using the specified ul
@@ -155,7 +155,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             LowerRight = lr;
             if (lr != null) lr.LowerLeft = this;
         }
-
+        
         // Recursively trim outside neighbors
         /// <summary>
         ///     Trims the neighbors
@@ -171,7 +171,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                 if (LowerRight != null) LowerRight.TrimNeighbors();
             }
         }
-
+        
         // Determines if this point lies inside the trapezoid
         /// <summary>
         ///     Describes whether this instance contains
@@ -179,7 +179,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
         public bool Contains(Point point) => (point.X > LeftPoint.X) && (point.X < RightPoint.X) && Top.IsAbove(point) && Bottom.IsBelow(point);
-
+        
         /// <summary>
         ///     Gets the vertices
         /// </summary>
@@ -193,7 +193,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             verts.Add(LineIntersect(Top, RightPoint.X));
             return verts;
         }
-
+        
         /// <summary>
         ///     Lines the intersect using the specified edge
         /// </summary>
@@ -205,7 +205,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             float y = edge.Slope * x + edge.B;
             return new Point(x, y);
         }
-
+        
         // Add points to monotone mountain
         /// <summary>
         ///     Adds the points
@@ -216,17 +216,17 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             {
                 Bottom.AddMpoint(LeftPoint);
             }
-
+            
             if (RightPoint != Bottom.Q)
             {
                 Bottom.AddMpoint(RightPoint);
             }
-
+            
             if (LeftPoint != Top.P)
             {
                 Top.AddMpoint(LeftPoint);
             }
-
+            
             if (RightPoint != Top.Q)
             {
                 Top.AddMpoint(RightPoint);

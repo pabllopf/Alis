@@ -58,7 +58,7 @@ namespace Alis.Core.Network.Internal
             {
                 return;
             }
-
+            
             if (buffer.Count < length)
             {
                 // This will happen if the calling function supplied a buffer that was too small to fit the payload of the websocket frame.
@@ -66,7 +66,7 @@ namespace Alis.Core.Network.Internal
                 throw new InternalBufferOverflowException(
                     $"Unable to read {length} bytes into buffer (offset: {buffer.Offset} size: {buffer.Count}). Use a larger read buffer");
             }
-
+            
             int offset = 0;
             do
             {
@@ -77,11 +77,11 @@ namespace Alis.Core.Network.Internal
                     throw new EndOfStreamException(string.Format(
                         "Unexpected end of stream encountered whilst attempting to read {0:#,##0} bytes", length));
                 }
-
+                
                 offset += bytesRead;
             } while (offset < length);
         }
-
+        
         /// <summary>
         ///     Reads the u short exactly using the specified stream
         /// </summary>
@@ -94,15 +94,15 @@ namespace Alis.Core.Network.Internal
             ArraySegment<byte> buffer, CancellationToken cancellationToken)
         {
             await ReadExactly(2, stream, buffer, cancellationToken);
-
+            
             if (!isLittleEndian)
             {
                 Array.Reverse(buffer.Array, buffer.Offset, 2); // big endian
             }
-
+            
             return BitConverter.ToUInt16(buffer.Array, buffer.Offset);
         }
-
+        
         /// <summary>
         ///     Reads the u long exactly using the specified stream
         /// </summary>
@@ -115,15 +115,15 @@ namespace Alis.Core.Network.Internal
             CancellationToken cancellationToken)
         {
             await ReadExactly(8, stream, buffer, cancellationToken);
-
+            
             if (!isLittleEndian)
             {
                 Array.Reverse(buffer.Array, buffer.Offset, 8); // big endian
             }
-
+            
             return BitConverter.ToUInt64(buffer.Array, buffer.Offset);
         }
-
+        
         /// <summary>
         ///     Reads the long exactly using the specified stream
         /// </summary>
@@ -139,7 +139,7 @@ namespace Alis.Core.Network.Internal
             HandleEndianness(isLittleEndian, buffer);
             return ConvertToLong(buffer);
         }
-
+        
         /// <summary>
         ///     Handles the endianness using the specified is little endian
         /// </summary>
@@ -152,7 +152,7 @@ namespace Alis.Core.Network.Internal
                 ReverseBuffer(buffer);
             }
         }
-
+        
         /// <summary>
         ///     Reverses the buffer using the specified buffer
         /// </summary>
@@ -161,14 +161,14 @@ namespace Alis.Core.Network.Internal
         {
             Array.Reverse(buffer.Array, buffer.Offset, 8); // big endian
         }
-
+        
         /// <summary>
         ///     Converts the to long using the specified buffer
         /// </summary>
         /// <param name="buffer">The buffer</param>
         /// <returns>The long</returns>
         internal static long ConvertToLong(ArraySegment<byte> buffer) => BitConverter.ToInt64(buffer.Array, buffer.Offset);
-
+        
         /// <summary>
         ///     Writes the int using the specified value
         /// </summary>
@@ -180,7 +180,7 @@ namespace Alis.Core.Network.Internal
             byte[] buffer = GetBytesInCorrectEndianness(value, isLittleEndian);
             WriteToStream(buffer, stream);
         }
-
+        
         /// <summary>
         ///     Gets the bytes in correct endianness using the specified value
         /// </summary>
@@ -194,10 +194,10 @@ namespace Alis.Core.Network.Internal
             {
                 Array.Reverse(buffer);
             }
-
+            
             return buffer;
         }
-
+        
         /// <summary>
         ///     Writes the to stream using the specified buffer
         /// </summary>
@@ -207,7 +207,7 @@ namespace Alis.Core.Network.Internal
         {
             stream.Write(buffer, 0, buffer.Length);
         }
-
+        
         /// <summary>
         ///     Writes the u long using the specified value
         /// </summary>
@@ -221,10 +221,10 @@ namespace Alis.Core.Network.Internal
             {
                 Array.Reverse(buffer);
             }
-
+            
             stream.Write(buffer, 0, buffer.Length);
         }
-
+        
         /// <summary>
         ///     Writes the long using the specified value
         /// </summary>
@@ -238,10 +238,10 @@ namespace Alis.Core.Network.Internal
             {
                 Array.Reverse(buffer);
             }
-
+            
             stream.Write(buffer, 0, buffer.Length);
         }
-
+        
         /// <summary>
         ///     Writes the u short using the specified value
         /// </summary>
@@ -255,7 +255,7 @@ namespace Alis.Core.Network.Internal
             {
                 Array.Reverse(buffer);
             }
-
+            
             stream.Write(buffer, 0, buffer.Length);
         }
     }

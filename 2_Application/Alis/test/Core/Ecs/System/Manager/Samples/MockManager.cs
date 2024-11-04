@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager;
 using Alis.Core.Ecs.System.Scope;
 
@@ -40,15 +39,15 @@ namespace Alis.Test.Core.Ecs.System.Manager.Samples
     public class MockManager : AManager
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MockManager"/> class
+        ///     Initializes a new instance of the <see cref="MockManager" /> class
         /// </summary>
         /// <param name="context">The context</param>
         public MockManager(Context context) : base(context)
         {
         }
-
+        
         /// <summary>
-        /// Initializes a new instance of the <see cref="MockManager"/> class
+        ///     Initializes a new instance of the <see cref="MockManager" /> class
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="name">The name</param>

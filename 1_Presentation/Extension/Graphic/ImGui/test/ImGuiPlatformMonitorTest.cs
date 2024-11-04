@@ -45,14 +45,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiPlatformMonitor monitor = new ImGuiPlatformMonitor {MainPos = new Vector2(1, 2)};
-
+            
             // Act
             Vector2 result = monitor.MainPos;
-
+            
             // Assert
             Assert.Equal(new Vector2(1, 2), result);
         }
-
+        
         /// <summary>
         ///     Tests that main size should be initialized correctly
         /// </summary>
@@ -61,14 +61,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiPlatformMonitor monitor = new ImGuiPlatformMonitor {MainSize = new Vector2(3, 4)};
-
+            
             // Act
             Vector2 result = monitor.MainSize;
-
+            
             // Assert
             Assert.Equal(new Vector2(3, 4), result);
         }
-
+        
         /// <summary>
         ///     Tests that work pos should be initialized correctly
         /// </summary>
@@ -77,14 +77,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiPlatformMonitor monitor = new ImGuiPlatformMonitor {WorkPos = new Vector2(5, 6)};
-
+            
             // Act
             Vector2 result = monitor.WorkPos;
-
+            
             // Assert
             Assert.Equal(new Vector2(5, 6), result);
         }
-
+        
         /// <summary>
         ///     Tests that work size should be initialized correctly
         /// </summary>
@@ -93,14 +93,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiPlatformMonitor monitor = new ImGuiPlatformMonitor {WorkSize = new Vector2(7, 8)};
-
+            
             // Act
             Vector2 result = monitor.WorkSize;
-
+            
             // Assert
             Assert.Equal(new Vector2(7, 8), result);
         }
-
+        
         /// <summary>
         ///     Tests that dpi scale should be initialized correctly
         /// </summary>
@@ -109,10 +109,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiPlatformMonitor monitor = new ImGuiPlatformMonitor {DpiScale = 1.5f};
-
+            
             // Act
             float result = monitor.DpiScale;
-
+            
             // Assert
             Assert.Equal(1.5f, result);
         }

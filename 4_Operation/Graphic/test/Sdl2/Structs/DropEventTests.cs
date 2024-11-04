@@ -49,12 +49,12 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             uint expectedTimestamp = 0;
             uint expectedWindowID = 0;
             IntPtr expectedFile = new IntPtr(123456);
-
+            
             DropEvent dropEvent = new DropEvent
             {
                 File = expectedFile
             };
-
+            
             Assert.Equal(expectedType, dropEvent.type);
             Assert.Equal(expectedTimestamp, dropEvent.timestamp);
             Assert.Equal(expectedWindowID, dropEvent.windowID);

@@ -34,15 +34,17 @@ namespace Alis.Core.Physic.Common.TextureTools
     /// </summary>
     internal class GeomPolyVal
     {
-        /** Associated polygon at coordinate **/
-        /** Key of original sub-polygon **/
+        /**
+         * Associated polygon at coordinate *
+         * Key of original sub-polygon *
+         */
         public readonly int Key;
-
+        
         /// <summary>
         ///     The geom
         /// </summary>
         public MarchingSquares.GeomPoly GeomP;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="GeomPolyVal" /> class
         /// </summary>

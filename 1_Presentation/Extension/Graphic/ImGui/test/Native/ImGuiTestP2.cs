@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt("label", ref v, 1.0f));
         }
-
+        
         /// <summary>
         ///     Tests that drag int with min throws dll not found exception
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt("label", ref v, 1.0f, 0));
         }
-
+        
         /// <summary>
         ///     Tests that drag int with min max throws dll not found exception
         /// </summary>
@@ -66,7 +66,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt("label", ref v, 1.0f, 0, 100));
         }
-
+        
         /// <summary>
         ///     Tests that drag int with format throws dll not found exception
         /// </summary>
@@ -76,7 +76,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt("label", ref v, 1.0f, 0, 100, "%d"));
         }
-
+        
         /// <summary>
         ///     Tests that drag int with format and flags throws dll not found exception
         /// </summary>
@@ -86,7 +86,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt("label", ref v, 1.0f, 0, 100, "%d", ImGuiSliderFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that drag int 2 throws dll not found exception
         /// </summary>
@@ -96,7 +96,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt2("label", ref v));
         }
-
+        
         /// <summary>
         ///     Tests that drag int 2 with speed throws dll not found exception
         /// </summary>
@@ -106,7 +106,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt2("label", ref v, 1.0f));
         }
-
+        
         /// <summary>
         ///     Tests that drag int 2 with min throws dll not found exception
         /// </summary>
@@ -116,7 +116,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt2("label", ref v, 1.0f, 0));
         }
-
+        
         /// <summary>
         ///     Tests that drag int 2 with min max throws dll not found exception
         /// </summary>
@@ -126,7 +126,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt2("label", ref v, 1.0f, 0, 100));
         }
-
+        
         /// <summary>
         ///     Tests that drag int 2 with format throws dll not found exception
         /// </summary>
@@ -136,7 +136,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt2("label", ref v, 1.0f, 0, 100, "%d"));
         }
-
+        
         /// <summary>
         ///     Tests that drag int 2 with format and flags throws dll not found exception
         /// </summary>
@@ -146,7 +146,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt2("label", ref v, 1.0f, 0, 100, "%d", ImGuiSliderFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that drag int 3 throws dll not found exception
         /// </summary>
@@ -156,7 +156,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt3("label", ref v));
         }
-
+        
         /// <summary>
         ///     Tests that drag int 3 with speed throws dll not found exception
         /// </summary>
@@ -166,7 +166,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt3("label", ref v, 1.0f));
         }
-
+        
         /// <summary>
         ///     Tests that drag int 3 with min throws dll not found exception
         /// </summary>
@@ -176,7 +176,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt3("label", ref v, 1.0f, 0));
         }
-
+        
         /// <summary>
         ///     Tests that drag int 3 with min max throws dll not found exception
         /// </summary>
@@ -186,7 +186,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt3("label", ref v, 1.0f, 0, 100));
         }
-
+        
         /// <summary>
         ///     Tests that drag int 3 with format throws dll not found exception
         /// </summary>
@@ -196,7 +196,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt3("label", ref v, 1.0f, 0, 100, "%d"));
         }
-
+        
         /// <summary>
         ///     Tests that drag int 3 with format and flags throws dll not found exception
         /// </summary>
@@ -206,7 +206,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt3("label", ref v, 1.0f, 0, 100, "%d", ImGuiSliderFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that drag int 4 throws dll not found exception
         /// </summary>
@@ -216,7 +216,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt4("label", ref v));
         }
-
+        
         /// <summary>
         ///     Tests that drag int 4 with speed throws dll not found exception
         /// </summary>
@@ -226,7 +226,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt4("label", ref v, 1.0f));
         }
-
+        
         /// <summary>
         ///     Tests that drag int 4 with min throws dll not found exception
         /// </summary>
@@ -236,7 +236,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt4("label", ref v, 1.0f, 0));
         }
-
+        
         /// <summary>
         ///     Tests that drag int 4 with min max throws dll not found exception
         /// </summary>
@@ -246,7 +246,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt4("label", ref v, 1.0f, 0, 100));
         }
-
+        
         /// <summary>
         ///     Tests that drag int 4 with format throws dll not found exception
         /// </summary>
@@ -256,7 +256,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt4("label", ref v, 1.0f, 0, 100, "%d"));
         }
-
+        
         /// <summary>
         ///     Tests that drag int 4 with format and flags throws dll not found exception
         /// </summary>
@@ -266,7 +266,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt4("label", ref v, 1.0f, 0, 100, "%d", ImGuiSliderFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that drag int range 2 throws dll not found exception
         /// </summary>
@@ -276,7 +276,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int min = 0, max = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragIntRange2("label", ref min, ref max));
         }
-
+        
         /// <summary>
         ///     Tests that drag int range 2 with speed throws dll not found exception
         /// </summary>
@@ -286,7 +286,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int min = 0, max = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragIntRange2("label", ref min, ref max, 1.0f));
         }
-
+        
         /// <summary>
         ///     Tests that drag int range 2 with min throws dll not found exception
         /// </summary>
@@ -296,7 +296,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int min = 0, max = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragIntRange2("label", ref min, ref max, 1.0f, 0));
         }
-
+        
         /// <summary>
         ///     Tests that drag int range 2 with min max throws dll not found exception
         /// </summary>
@@ -306,7 +306,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int min = 0, max = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragIntRange2("label", ref min, ref max, 1.0f, 0, 100));
         }
-
+        
         /// <summary>
         ///     Tests that drag int range 2 with format throws dll not found exception
         /// </summary>
@@ -316,7 +316,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int min = 0, max = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragIntRange2("label", ref min, ref max, 1.0f, 0, 100, "%d"));
         }
-
+        
         /// <summary>
         ///     Tests that drag int range 2 with format and flags throws dll not found exception
         /// </summary>
@@ -326,7 +326,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int min = 0, max = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragIntRange2("label", ref min, ref max, 1.0f, 0, 100, "%d", ""));
         }
-
+        
         /// <summary>
         ///     Tests that drag scalar throws dll not found exception
         /// </summary>
@@ -336,7 +336,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             IntPtr pData = IntPtr.Zero;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragScalar("label", ImGuiDataType.S32, pData));
         }
-
+        
         /// <summary>
         ///     Tests that drag scalar with speed throws dll not found exception
         /// </summary>
@@ -346,7 +346,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             IntPtr pData = IntPtr.Zero;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragScalar("label", ImGuiDataType.S32, pData, 1.0f));
         }
-
+        
         /// <summary>
         ///     Tests that drag scalar with min throws dll not found exception
         /// </summary>
@@ -356,7 +356,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             IntPtr pData = IntPtr.Zero;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragScalar("label", ImGuiDataType.S32, pData, 1.0f, IntPtr.Zero));
         }
-
+        
         /// <summary>
         ///     Tests that drag scalar with min max throws dll not found exception
         /// </summary>
@@ -366,7 +366,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             IntPtr pData = IntPtr.Zero;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragScalar("label", ImGuiDataType.S32, pData, 1.0f, IntPtr.Zero, IntPtr.Zero));
         }
-
+        
         /// <summary>
         ///     Tests that drag scalar with format throws dll not found exception
         /// </summary>
@@ -376,7 +376,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             IntPtr pData = IntPtr.Zero;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragScalar("label", ImGuiDataType.S32, pData, 1.0f, IntPtr.Zero, IntPtr.Zero, "%d"));
         }
-
+        
         /// <summary>
         ///     Tests that drag scalar with format and flags throws dll not found exception
         /// </summary>
@@ -386,7 +386,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             IntPtr pData = IntPtr.Zero;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragScalar("label", ImGuiDataType.S32, pData, 1.0f, IntPtr.Zero, IntPtr.Zero, "%d", ImGuiSliderFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that drag scalar n throws dll not found exception
         /// </summary>
@@ -396,7 +396,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             IntPtr pData = IntPtr.Zero;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragScalarN("label", ImGuiDataType.S32, pData, 1));
         }
-
+        
         /// <summary>
         ///     Tests that drag scalar n with speed throws dll not found exception
         /// </summary>
@@ -406,7 +406,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             IntPtr pData = IntPtr.Zero;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragScalarN("label", ImGuiDataType.S32, pData, 1, 1.0f));
         }
-
+        
         /// <summary>
         ///     Tests that drag scalar n with min throws dll not found exception
         /// </summary>

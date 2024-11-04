@@ -45,22 +45,22 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             Prev = this;
             Next = this;
         }
-
+        
         /// <summary>
         ///     Gets the enumerator
         /// </summary>
         /// <returns>An enumerator of contact</returns>
         IEnumerator<Contact> IEnumerable<Contact>.GetEnumerator() => new ContactEnumerator(this);
-
+        
         /// <summary>
         ///     Gets the enumerator
         /// </summary>
         /// <returns>The enumerator</returns>
         IEnumerator IEnumerable.GetEnumerator() => new ContactEnumerator(this);
-
-
+        
+        
         #region Nested type: ContactEnumerator
-
+        
         /// <summary>
         ///     The contact enumerator
         /// </summary>
@@ -70,18 +70,18 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             ///     The head
             /// </summary>
             private ContactListHead _head;
-
+            
             /// <summary>
             ///     Gets or sets the value of the current
             /// </summary>
             public Contact Current { get; private set; }
-
+            
             /// <summary>
             ///     Gets the value of the current
             /// </summary>
             object IEnumerator.Current => Current;
-
-
+            
+            
             /// <summary>
             ///     Initializes a new instance of the <see cref="ContactEnumerator" /> class
             /// </summary>
@@ -91,7 +91,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 _head = contact;
                 Current = _head;
             }
-
+            
             /// <summary>
             ///     Resets this instance
             /// </summary>
@@ -99,7 +99,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             {
                 Current = _head;
             }
-
+            
             /// <summary>
             ///     Describes whether this instance move next
             /// </summary>
@@ -109,7 +109,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 Current = Current.Next;
                 return Current != _head;
             }
-
+            
             /// <summary>
             ///     Disposes this instance
             /// </summary>
@@ -119,7 +119,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 Current = null;
             }
         }
-
+        
         #endregion
     }
 }

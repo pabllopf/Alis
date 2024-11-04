@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AHasBuilder.cs
+//  File:AHasHasBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,19 +32,19 @@ using Alis.Core.Aspect.Fluent;
 namespace Alis.Core.Ecs.System
 {
     /// <summary>
-    /// The has builder class
+    ///     The has builder class
     /// </summary>
-    /// <seealso cref="IHasBuilder{TOut}"/>
+    /// <seealso cref="IHasBuilder{TOut}" />
     public abstract class AHasHasBuilder<T> : IHasBuilder<T> where T : new()
     {
         /// <summary>
-        /// Builders this instance
+        ///     Builders this instance
         /// </summary>
         /// <returns>The</returns>
-        public  T Builder() => new T();
+        public T Builder() => new T();
         
         /// <summary>
-        /// Creates
+        ///     Creates
         /// </summary>
         /// <returns>The</returns>
         public static T Create() => new T();

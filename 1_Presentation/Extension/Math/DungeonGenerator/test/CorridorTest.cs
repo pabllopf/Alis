@@ -49,17 +49,17 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             int yPos = 10;
             int width = 15;
             int height = 20;
-
+            
             // Act
             Room room = Room.SetUpFirstRoom(xPos, yPos, width, height);
-
+            
             // Assert
             Assert.Equal(xPos, room.XPos);
             Assert.Equal(yPos, room.YPos);
             Assert.Equal(width, room.Width);
             Assert.Equal(height, room.Height);
         }
-
+        
         /// <summary>
         ///     Tests that set up should initialize room with correct parameters when direction is north
         /// </summary>
@@ -70,10 +70,10 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             int width = 10;
             int height = 5;
             Corridor corridor = new Corridor(5, 5, 10, 2, Direction.North);
-
+            
             // Act
             Room room = Room.SetUp(width, height, corridor);
-
+            
             // Assert
             Assert.Equal(5, room.XPos);
             Assert.Equal(7, room.YPos);
@@ -81,7 +81,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             Assert.Equal(height, room.Height);
             Assert.Equal(Direction.North, room.Direction);
         }
-
+        
         /// <summary>
         ///     Tests that set up should initialize room with correct parameters when direction is south
         /// </summary>
@@ -92,10 +92,10 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             int width = 10;
             int height = 5;
             Corridor corridor = new Corridor(5, 5, 10, 2, Direction.South);
-
+            
             // Act
             Room room = Room.SetUp(width, height, corridor);
-
+            
             // Assert
             Assert.Equal(5, room.XPos);
             Assert.Equal(0, room.YPos);
@@ -103,7 +103,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             Assert.Equal(height, room.Height);
             Assert.Equal(Direction.South, room.Direction);
         }
-
+        
         /// <summary>
         ///     Tests that set up should initialize room with correct parameters when direction is east
         /// </summary>
@@ -114,10 +114,10 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             int width = 10;
             int height = 5;
             Corridor corridor = new Corridor(5, 5, 2, 10, Direction.East);
-
+            
             // Act
             Room room = Room.SetUp(width, height, corridor);
-
+            
             // Assert
             Assert.True(room.XPos >= 0);
             Assert.True(room.YPos >= 0);
@@ -125,7 +125,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             Assert.Equal(width, room.Height);
             Assert.Equal(Direction.East, room.Direction);
         }
-
+        
         /// <summary>
         ///     Tests that set up should initialize room with correct parameters when direction is west
         /// </summary>
@@ -136,10 +136,10 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             int width = 10;
             int height = 5;
             Corridor corridor = new Corridor(5, 5, 2, 10, Direction.West);
-
+            
             // Act
             Room room = Room.SetUp(width, height, corridor);
-
+            
             // Assert
             Assert.True(room.XPos > 0);
             Assert.True(room.YPos > 0);
@@ -147,7 +147,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             Assert.Equal(width, room.Height);
             Assert.Equal(Direction.West, room.Direction);
         }
-
+        
         /// <summary>
         ///     Tests that set up first room should initialize room with given parameters v 2
         /// </summary>
@@ -159,17 +159,17 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             int yPos = 10;
             int width = 15;
             int height = 20;
-
+            
             // Act
             Room room = Room.SetUpFirstRoom(xPos, yPos, width, height);
-
+            
             // Assert
             Assert.Equal(xPos, room.XPos);
             Assert.Equal(yPos, room.YPos);
             Assert.Equal(width, room.Width);
             Assert.Equal(height, room.Height);
         }
-
+        
         /// <summary>
         ///     Tests that set up should initialize room with correct parameters when direction is north v 2
         /// </summary>
@@ -180,10 +180,10 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             int width = 10;
             int height = 5;
             Corridor corridor = new Corridor(5, 5, 10, 2, Direction.North);
-
+            
             // Act
             Room room = Room.SetUp(width, height, corridor);
-
+            
             // Assert
             Assert.Equal(5, room.XPos);
             Assert.Equal(7, room.YPos);
@@ -191,7 +191,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             Assert.Equal(height, room.Height);
             Assert.Equal(Direction.North, room.Direction);
         }
-
+        
         /// <summary>
         ///     Tests that set up should initialize room with correct parameters when direction is south v 2
         /// </summary>
@@ -202,10 +202,10 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             int width = 10;
             int height = 5;
             Corridor corridor = new Corridor(5, 5, 10, 2, Direction.South);
-
+            
             // Act
             Room room = Room.SetUp(width, height, corridor);
-
+            
             // Assert
             Assert.Equal(5, room.XPos);
             Assert.Equal(0, room.YPos);
@@ -213,7 +213,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             Assert.Equal(height, room.Height);
             Assert.Equal(Direction.South, room.Direction);
         }
-
+        
         /// <summary>
         ///     Tests that set up should initialize room with correct parameters when direction is east v 2
         /// </summary>
@@ -224,10 +224,10 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             int width = 10;
             int height = 5;
             Corridor corridor = new Corridor(5, 5, 2, 10, Direction.East);
-
+            
             // Act
             Room room = Room.SetUp(width, height, corridor);
-
+            
             // Assert
             Assert.True(room.XPos >= 0);
             Assert.True(room.YPos >= 0);
@@ -235,7 +235,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             Assert.Equal(width, room.Height);
             Assert.Equal(Direction.East, room.Direction);
         }
-
+        
         /// <summary>
         ///     Tests that set up should initialize room with correct parameters when direction is west v 2
         /// </summary>
@@ -246,10 +246,10 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             int width = 10;
             int height = 5;
             Corridor corridor = new Corridor(5, 5, 2, 10, Direction.West);
-
+            
             // Act
             Room room = Room.SetUp(width, height, corridor);
-
+            
             // Assert
             Assert.True(room.XPos >= 0);
             Assert.True(room.YPos >= 0);
@@ -257,7 +257,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             Assert.Equal(width, room.Height);
             Assert.Equal(Direction.West, room.Direction);
         }
-
+        
         /// <summary>
         ///     Tests that set up should initialize room with correct parameters when direction is none
         /// </summary>
@@ -268,11 +268,11 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             int width = 10;
             int height = 5;
             Corridor corridor = new Corridor(5, 5, 2, 10, Direction.None);
-
+            
             // Act & Assert
             Assert.Throws<ArgumentOutOfRangeException>(() => Room.SetUp(width, height, corridor));
         }
-
+        
         /// <summary>
         ///     Tests that set up first corridor should initialize corridor with correct parameters when direction is north
         /// </summary>
@@ -283,10 +283,10 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             int width = 10;
             int height = 5;
             Room room = new Room(5, 5, 10, 10, Direction.North);
-
+            
             // Act
             Corridor corridor = Corridor.SetUpFirstCorridor(width, height, room);
-
+            
             // Assert
             Assert.True(room.XPos >= 0);
             Assert.True(room.YPos >= 0);
@@ -294,7 +294,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             Assert.True(corridor.Height >= 5);
             Assert.NotEqual(Direction.None, corridor.Direction);
         }
-
+        
         /// <summary>
         ///     Tests that set up first corridor should initialize corridor with correct parameters when direction is south
         /// </summary>
@@ -305,10 +305,10 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             int width = 10;
             int height = 5;
             Room room = new Room(5, 5, 10, 10, Direction.South);
-
+            
             // Act
             Corridor corridor = Corridor.SetUpFirstCorridor(width, height, room);
-
+            
             // Assert
             Assert.True(room.XPos >= 0);
             Assert.True(room.YPos >= 0);
@@ -316,7 +316,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             Assert.True(corridor.Height >= 5);
             Assert.NotEqual(Direction.None, corridor.Direction);
         }
-
+        
         /// <summary>
         ///     Tests that set up first corridor should initialize corridor with correct parameters when direction is east
         /// </summary>
@@ -327,10 +327,10 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             int width = 10;
             int height = 5;
             Room room = new Room(5, 5, width, height, Direction.East);
-
+            
             // Act
             Corridor corridor = Corridor.SetUpFirstCorridor(width, height, room);
-
+            
             // Assert
             Assert.True(room.XPos >= 0);
             Assert.True(room.YPos >= 0);
@@ -338,7 +338,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             Assert.True(corridor.Height >= 5);
             Assert.NotEqual(Direction.None, corridor.Direction);
         }
-
+        
         /// <summary>
         ///     Tests that set up first corridor should initialize corridor with correct parameters when direction is west
         /// </summary>
@@ -349,10 +349,10 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             int width = 10;
             int height = 5;
             Room room = new Room(5, 5, width, height, Direction.West);
-
+            
             // Act
             Corridor corridor = Corridor.SetUpFirstCorridor(width, height, room);
-
+            
             // Assert
             Assert.True(room.XPos >= 0);
             Assert.True(room.YPos >= 0);

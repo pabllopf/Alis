@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             EmulateThreeButtonMouse emulateThreeButtonMouse = new EmulateThreeButtonMouse();
             Assert.Null(emulateThreeButtonMouse.Modifier);
         }
-
+        
         /// <summary>
         ///     Tests that modifier should set and get correctly
         /// </summary>

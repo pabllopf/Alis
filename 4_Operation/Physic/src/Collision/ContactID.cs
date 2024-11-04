@@ -41,7 +41,7 @@ namespace Alis.Core.Physic.Collision
         ///     The features that intersect to form the contact point
         /// </summary>
         [FieldOffset(0)] public ContactFeature Features;
-
+        
         /// <summary>
         ///     Used to quickly compare contact ids.
         /// </summary>

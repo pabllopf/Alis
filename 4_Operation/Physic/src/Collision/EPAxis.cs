@@ -38,12 +38,12 @@ namespace Alis.Core.Physic.Collision
         ///     The index
         /// </summary>
         public int Index;
-
+        
         /// <summary>
         ///     The separation
         /// </summary>
         public float Separation;
-
+        
         /// <summary>
         ///     The type
         /// </summary>

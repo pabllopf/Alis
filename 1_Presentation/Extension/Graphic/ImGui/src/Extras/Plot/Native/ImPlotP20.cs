@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotHeatmap_S32Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, 0);
         }
-
+        
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
@@ -70,7 +70,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotHeatmap_S32Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, flags);
         }
-
+        
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
@@ -82,7 +82,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, 0, 0, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
         }
-
+        
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
@@ -95,7 +95,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, 0, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
         }
-
+        
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
@@ -109,7 +109,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
         }
-
+        
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
@@ -124,7 +124,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
         }
-
+        
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
@@ -140,7 +140,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, new ImPlotPoint {X = 1, Y = 1}, 0);
         }
-
+        
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
@@ -157,7 +157,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, 0);
         }
-
+        
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
@@ -175,7 +175,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, flags);
         }
-
+        
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
@@ -187,7 +187,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, 0, 0, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
         }
-
+        
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
@@ -200,7 +200,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, 0, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
         }
-
+        
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
@@ -214,7 +214,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
         }
-
+        
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
@@ -229,7 +229,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
         }
-
+        
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
@@ -245,7 +245,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, new ImPlotPoint {X = 1, Y = 1}, 0);
         }
-
+        
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
@@ -262,7 +262,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, 0);
         }
-
+        
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
@@ -280,7 +280,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, flags);
         }
-
+        
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
@@ -292,7 +292,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, 0, 0, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
         }
-
+        
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
@@ -305,7 +305,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, 0, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
         }
-
+        
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
@@ -319,7 +319,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
         }
-
+        
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
@@ -334,7 +334,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
         }
-
+        
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
@@ -350,7 +350,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, new ImPlotPoint {X = 1, Y = 1}, 0);
         }
-
+        
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
@@ -367,7 +367,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, 0);
         }
-
+        
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
@@ -385,7 +385,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, flags);
         }
-
+        
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -394,7 +394,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, float[] values, int count) => ImPlotNative.ImPlot_PlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
-
+        
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -404,7 +404,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="bins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, float[] values, int count, int bins) => ImPlotNative.ImPlot_PlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, count, bins, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
-
+        
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -415,7 +415,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="barScale">The bar scale</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, float[] values, int count, int bins, double barScale) => ImPlotNative.ImPlot_PlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, new ImPlotRange {Min = 0, Max = 0}, 0);
-
+        
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -427,7 +427,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="range">The range</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, float[] values, int count, int bins, double barScale, ImPlotRange range) => ImPlotNative.ImPlot_PlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, 0);
-
+        
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -440,7 +440,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, float[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags) => ImPlotNative.ImPlot_PlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, flags);
-
+        
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -449,7 +449,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, double[] values, int count) => ImPlotNative.ImPlot_PlotHistogram_doublePtr(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
-
+        
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -459,7 +459,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="bins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, double[] values, int count, int bins) => ImPlotNative.ImPlot_PlotHistogram_doublePtr(Encoding.UTF8.GetBytes(labelId), values, count, bins, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
-
+        
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -470,7 +470,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="barScale">The bar scale</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, double[] values, int count, int bins, double barScale) => ImPlotNative.ImPlot_PlotHistogram_doublePtr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, new ImPlotRange {Min = 0, Max = 0}, 0);
-
+        
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -482,7 +482,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="range">The range</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, double[] values, int count, int bins, double barScale, ImPlotRange range) => ImPlotNative.ImPlot_PlotHistogram_doublePtr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, 0);
-
+        
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -495,7 +495,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, double[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags) => ImPlotNative.ImPlot_PlotHistogram_doublePtr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, flags);
-
+        
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -504,7 +504,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, sbyte[] values, int count) => ImPlotNative.ImPlot_PlotHistogram_S8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
-
+        
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -514,7 +514,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="bins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, sbyte[] values, int count, int bins) => ImPlotNative.ImPlot_PlotHistogram_S8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
-
+        
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -525,7 +525,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="barScale">The bar scale</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, sbyte[] values, int count, int bins, double barScale) => ImPlotNative.ImPlot_PlotHistogram_S8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, new ImPlotRange {Min = 0, Max = 0}, 0);
-
+        
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -537,7 +537,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="range">The range</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, sbyte[] values, int count, int bins, double barScale, ImPlotRange range) => ImPlotNative.ImPlot_PlotHistogram_S8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, 0);
-
+        
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -550,7 +550,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, sbyte[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags) => ImPlotNative.ImPlot_PlotHistogram_S8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, flags);
-
+        
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -559,7 +559,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, byte[] values, int count) => ImPlotNative.ImPlot_PlotHistogram_U8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
-
+        
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -569,7 +569,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="bins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, byte[] values, int count, int bins) => ImPlotNative.ImPlot_PlotHistogram_U8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
-
+        
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>

@@ -41,7 +41,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
         ///     The random
         /// </summary>
         private static readonly Random RNG = new Random();
-
+        
         /// <summary>
         ///     Uniforms the distribution using the specified n
         /// </summary>
@@ -55,10 +55,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
             {
                 points.Add(new TriangulationPoint(scale * (0.5 - RNG.NextDouble()), scale * (0.5 - RNG.NextDouble())));
             }
-
+            
             return points;
         }
-
+        
         /// <summary>
         ///     Uniforms the grid using the specified n
         /// </summary>
@@ -70,7 +70,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
             double x = 0;
             double size = scale / n;
             double halfScale = 0.5 * scale;
-
+            
             List<TriangulationPoint> points = new List<TriangulationPoint>();
             for (int i = 0; i < n + 1; i++)
             {
@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
                     points.Add(new TriangulationPoint(x, halfScale - j * size));
                 }
             }
-
+            
             return points;
         }
     }

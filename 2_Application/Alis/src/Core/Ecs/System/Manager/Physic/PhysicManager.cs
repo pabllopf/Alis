@@ -42,14 +42,14 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         ///     The time step physics
         /// </summary>
         private float timeStepPhysics;
-
+        
         /// <summary>
         ///     The vector
         /// </summary>
         public World World = new World();
-
+        
         /// <summary>
-        /// Initializes a new instance of the <see cref="PhysicManager"/> class
+        ///     Initializes a new instance of the <see cref="PhysicManager" /> class
         /// </summary>
         /// <param name="context">The context</param>
         public PhysicManager(Context context) : base(context)
@@ -57,14 +57,14 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         }
         
         /// <summary>
-        /// Initializes a new instance of the <see cref="PhysicManager"/> class
+        ///     Initializes a new instance of the <see cref="PhysicManager" /> class
         /// </summary>
         /// <param name="context">The context</param>
         /// <param name="timeStepPhysics">The time step physics</param>
         public PhysicManager(Context context, float timeStepPhysics) : base(context) => this.timeStepPhysics = timeStepPhysics;
-
+        
         /// <summary>
-        /// Initializes a new instance of the <see cref="PhysicManager"/> class
+        ///     Initializes a new instance of the <see cref="PhysicManager" /> class
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="name">The name</param>
@@ -73,7 +73,7 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         /// <param name="context">The context</param>
         /// <param name="timeStepPhysics">The time step physics</param>
         public PhysicManager(string id, string name, string tag, bool isEnable, Context context, float timeStepPhysics) : base(id, name, tag, isEnable, context) => this.timeStepPhysics = timeStepPhysics;
-
+        
         /// <summary>
         ///     Ons the init
         /// </summary>
@@ -81,7 +81,7 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         {
             World = new World(Context.Setting.Physic.Gravity);
         }
-
+        
         /// <summary>
         ///     Ons the awake
         /// </summary>
@@ -92,38 +92,38 @@ namespace Alis.Core.Ecs.System.Manager.Physic
             {
                 timeStepPhysics = 1f / 80f;
             }
-
+            
             if (Context.Setting.Graphic.TargetFrames <= 200)
             {
                 timeStepPhysics = 1f / 60f;
             }
-
+            
             if (Context.Setting.Graphic.TargetFrames <= 120)
             {
                 timeStepPhysics = 1f / 40f;
             }
-
+            
             if (Context.Setting.Graphic.TargetFrames <= 60)
             {
                 timeStepPhysics = 1f / 30f;
             }
-
+            
             if (Context.Setting.Graphic.TargetFrames <= 30)
             {
                 timeStepPhysics = 1f / 15f;
             }
-
+            
             if (Context.Setting.Graphic.TargetFrames <= 15)
             {
                 timeStepPhysics = 1f / 10f;
             }
-
+            
             if (Context.Setting.Graphic.TargetFrames <= 5)
             {
                 timeStepPhysics = 1f / 5f;
             }
         }
-
+        
         /// <summary>
         ///     Ons the physic update
         /// </summary>
@@ -131,7 +131,7 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         {
             World.Step(timeStepPhysics);
         }
-
+        
         /// <summary>
         ///     Ons the update
         /// </summary>
@@ -141,8 +141,8 @@ namespace Alis.Core.Ecs.System.Manager.Physic
             {
             }
         }
-
-
+        
+        
         /// <summary>
         ///     Uns the attach using the specified body
         /// </summary>

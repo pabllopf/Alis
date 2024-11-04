@@ -44,11 +44,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiModFlags flag = ImGuiModFlags.None;
-
+            
             // Act & Assert
             Assert.Equal(0, (int) flag);
         }
-
+        
         /// <summary>
         ///     Tests that ctrl should be initialized correctly
         /// </summary>
@@ -57,11 +57,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiModFlags flag = ImGuiModFlags.Ctrl;
-
+            
             // Act & Assert
             Assert.Equal(1, (int) flag);
         }
-
+        
         /// <summary>
         ///     Tests that shift should be initialized correctly
         /// </summary>
@@ -70,11 +70,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiModFlags flag = ImGuiModFlags.Shift;
-
+            
             // Act & Assert
             Assert.Equal(2, (int) flag);
         }
-
+        
         /// <summary>
         ///     Tests that alt should be initialized correctly
         /// </summary>
@@ -83,11 +83,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiModFlags flag = ImGuiModFlags.Alt;
-
+            
             // Act & Assert
             Assert.Equal(4, (int) flag);
         }
-
+        
         /// <summary>
         ///     Tests that super should be initialized correctly
         /// </summary>
@@ -96,7 +96,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiModFlags flag = ImGuiModFlags.Super;
-
+            
             // Act & Assert
             Assert.Equal(8, (int) flag);
         }

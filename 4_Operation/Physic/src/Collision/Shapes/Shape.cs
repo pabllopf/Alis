@@ -44,17 +44,17 @@ namespace Alis.Core.Physic.Collision.Shapes
         ///     The 2radius
         /// </summary>
         internal float _2radius;
-
+        
         /// <summary>
         ///     The density
         /// </summary>
         internal float _density;
-
+        
         /// <summary>
         ///     The radius
         /// </summary>
         internal float _radius;
-
+        
         /// <summary>
         ///     Contains the properties of the shape such as:
         ///     - Area of the shape
@@ -63,7 +63,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         ///     - Mass
         /// </summary>
         public MassData MassData;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Shape" /> class
         /// </summary>
@@ -73,19 +73,19 @@ namespace Alis.Core.Physic.Collision.Shapes
             _density = density;
             ShapeType = ShapeType.Unknown;
         }
-
+        
         /// <summary>
         ///     Get the type of this shape.
         /// </summary>
         /// <value>The type of the shape.</value>
         public ShapeType ShapeType { get; internal set; }
-
+        
         /// <summary>
         ///     Get the number of child primitives.
         /// </summary>
         /// <value></value>
         public abstract int ChildCount { get; }
-
+        
         /// <summary>
         ///     Gets or sets the density.
         ///     Changing the density causes a recalculation of shape properties.
@@ -97,12 +97,12 @@ namespace Alis.Core.Physic.Collision.Shapes
             set
             {
                 Debug.Assert(value >= 0);
-
+                
                 _density = value;
                 ComputeProperties();
             }
         }
-
+        
         /// <summary>
         ///     Radius of the Shape
         ///     Changing the radius causes a recalculation of shape properties.
@@ -113,20 +113,20 @@ namespace Alis.Core.Physic.Collision.Shapes
             set
             {
                 Debug.Assert(value >= 0);
-
+                
                 _radius = value;
                 _2radius = _radius * _radius;
-
+                
                 ComputeProperties();
             }
         }
-
+        
         /// <summary>
         ///     Clone the concrete shape
         /// </summary>
         /// <returns>A clone of the shape</returns>
         public abstract Shape Clone();
-
+        
         /// <summary>
         ///     Test a point for containment in this shape.
         ///     Note: This only works for convex shapes.
@@ -135,7 +135,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="point">A point in world coordinates.</param>
         /// <returns>True if the point is inside the shape</returns>
         public abstract bool TestPoint(ref Transform transform, ref Vector2 point);
-
+        
         /// <summary>
         ///     Cast a ray against a child shape.
         /// </summary>
@@ -145,7 +145,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="childIndex">The child shape index.</param>
         /// <returns>True if the ray-cast hits the shape</returns>
         public abstract bool RayCast(out RayCastOutput output, ref RayCastInput input, ref Transform transform, int childIndex);
-
+        
         /// <summary>
         ///     Given a transform, compute the associated axis aligned bounding box for a child shape.
         /// </summary>
@@ -153,13 +153,13 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="transform">The world transform of the shape.</param>
         /// <param name="childIndex">The child shape index.</param>
         public abstract void ComputeAABB(out AABB aabb, ref Transform transform, int childIndex);
-
+        
         /// <summary>
         ///     Compute the mass properties of this shape using its dimensions and density.
         ///     The inertia tensor is computed about the local origin, not the centroid.
         /// </summary>
         protected abstract void ComputeProperties();
-
+        
         /// <summary>
         ///     Used for the buoyancy controller
         /// </summary>

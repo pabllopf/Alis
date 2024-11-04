@@ -72,11 +72,11 @@ namespace Alis.Extension.Multimedia.FFmpeg.Test
                 await video.LoadMetadataAsync();
                 
                 Assert.True(video.Metadata.Codec == "h264");
-                Assert.True((bool)(video.Metadata.AvgFramerate == reader.Metadata.AvgFramerate));
-                Assert.True(Math.Abs((double)(video.Metadata.Duration - reader.Metadata.Duration)) < 0.01);
-                Assert.True((bool)(video.Metadata.Width == reader.Metadata.Width));
-                Assert.True((bool)(video.Metadata.Height == reader.Metadata.Height));
-                Assert.True((bool)(video.Metadata.BitDepth == reader.Metadata.BitDepth));
+                Assert.True(video.Metadata.AvgFramerate == reader.Metadata.AvgFramerate);
+                Assert.True(Math.Abs(video.Metadata.Duration - reader.Metadata.Duration) < 0.01);
+                Assert.True(video.Metadata.Width == reader.Metadata.Width);
+                Assert.True(video.Metadata.Height == reader.Metadata.Height);
+                Assert.True(video.Metadata.BitDepth == reader.Metadata.BitDepth);
                 Assert.True(video.Metadata.Streams.Length == 1); // only video
             }
             finally
@@ -127,11 +127,11 @@ namespace Alis.Extension.Multimedia.FFmpeg.Test
                 await video.LoadMetadataAsync();
                 
                 Assert.True(video.Metadata.Codec == "h264");
-                Assert.True((bool)(video.Metadata.AvgFramerate == reader.Metadata.AvgFramerate));
-                Assert.True(Math.Abs((double)(video.Metadata.Duration - reader.Metadata.Duration)) < 0.2);
-                Assert.True((bool)(video.Metadata.Width == reader.Metadata.Width));
-                Assert.True((bool)(video.Metadata.Height == reader.Metadata.Height));
-                Assert.True((bool)(video.Metadata.BitDepth == reader.Metadata.BitDepth));
+                Assert.True(video.Metadata.AvgFramerate == reader.Metadata.AvgFramerate);
+                Assert.True(Math.Abs(video.Metadata.Duration - reader.Metadata.Duration) < 0.2);
+                Assert.True(video.Metadata.Width == reader.Metadata.Width);
+                Assert.True(video.Metadata.Height == reader.Metadata.Height);
+                Assert.True(video.Metadata.BitDepth == reader.Metadata.BitDepth);
                 Assert.True(video.Metadata.Streams.Length == 1); // only video
             }
             finally
@@ -180,10 +180,10 @@ namespace Alis.Extension.Multimedia.FFmpeg.Test
                 await video.LoadMetadataAsync();
                 
                 Assert.True(video.Metadata.Codec == "vp9");
-                Assert.True((bool)(video.Metadata.AvgFramerate == reader.Metadata.AvgFramerate));
-                Assert.True(Math.Abs((double)(video.Metadata.Duration - reader.Metadata.Duration)) < 0.01);
-                Assert.True((bool)(video.Metadata.Width == reader.Metadata.Width));
-                Assert.True((bool)(video.Metadata.Height == reader.Metadata.Height));
+                Assert.True(video.Metadata.AvgFramerate == reader.Metadata.AvgFramerate);
+                Assert.True(Math.Abs(video.Metadata.Duration - reader.Metadata.Duration) < 0.01);
+                Assert.True(video.Metadata.Width == reader.Metadata.Width);
+                Assert.True(video.Metadata.Height == reader.Metadata.Height);
                 Assert.True(video.Metadata.Streams.Length == 1); // only video
             }
             finally

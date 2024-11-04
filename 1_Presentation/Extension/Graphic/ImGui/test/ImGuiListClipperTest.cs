@@ -47,7 +47,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             listClipper.DisplayStart = 5;
             Assert.Equal(5, listClipper.DisplayStart);
         }
-
+        
         /// <summary>
         ///     Tests that display end should set and get correctly
         /// </summary>
@@ -58,7 +58,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             listClipper.DisplayEnd = 10;
             Assert.Equal(10, listClipper.DisplayEnd);
         }
-
+        
         /// <summary>
         ///     Tests that items count should set and get correctly
         /// </summary>
@@ -69,7 +69,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             listClipper.ItemsCount = 20;
             Assert.Equal(20, listClipper.ItemsCount);
         }
-
+        
         /// <summary>
         ///     Tests that items height should set and get correctly
         /// </summary>
@@ -80,7 +80,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             listClipper.ItemsHeight = 25.5f;
             Assert.Equal(25.5f, listClipper.ItemsHeight);
         }
-
+        
         /// <summary>
         ///     Tests that start pos y should set and get correctly
         /// </summary>
@@ -91,7 +91,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             listClipper.StartPosY = 30.0f;
             Assert.Equal(30.0f, listClipper.StartPosY);
         }
-
+        
         /// <summary>
         ///     Tests that temp data should set and get correctly
         /// </summary>

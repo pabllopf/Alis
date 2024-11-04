@@ -43,45 +43,45 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         ///     The pi slop
         /// </summary>
         private const float PiSlop = 3.1f;
-
+        
         /// <summary>
         ///     The convex points
         /// </summary>
         private readonly HashSet<Point> _convexPoints;
-
+        
         // Monotone mountain points
         /// <summary>
         ///     The mono poly
         /// </summary>
         private readonly List<Point> _monoPoly;
-
+        
         /// <summary>
         ///     The head
         /// </summary>
         private Point _head;
-
+        
         // Used to track which side of the line we are on
         /// <summary>
         ///     The positive
         /// </summary>
         private bool _positive;
-
+        
         /// <summary>
         ///     The size
         /// </summary>
         private int _size;
-
+        
         /// <summary>
         ///     The tail
         /// </summary>
         private Point _tail;
-
+        
         // Triangles that constitute the mountain
         /// <summary>
         ///     The triangles
         /// </summary>
         public List<List<Point>> Triangles;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="MonotoneMountain" /> class
         /// </summary>
@@ -95,7 +95,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             _monoPoly = new List<Point>();
             Triangles = new List<List<Point>>();
         }
-
+        
         // Append a point to the list
         /// <summary>
         ///     Adds the point
@@ -125,7 +125,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                 _size += 1;
             }
         }
-
+        
         // Remove a point from the list
         /// <summary>
         ///     Removes the point
@@ -139,7 +139,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             point.Next.Prev = prev;
             _size -= 1;
         }
-
+        
         // Partition a x-monotone mountain into triangles O(n)
         // See "Computational Geometry in C", 2nd edition, by Joseph O'Rourke, page 52
         /// <summary>
@@ -151,7 +151,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             _positive = AngleSign();
             // create monotone polygon - for dubug purposes
             GenMonoPoly();
-
+            
             // Initialize internal angles at each nonbase vertex
             // Link strictly convex vertices into a list, ignore reflex vertices
             Point p = _head.Next;
@@ -165,10 +165,10 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                     _convexPoints.Add(p);
                 p = p.Next;
             }
-
+            
             Triangulate();
         }
-
+        
         /// <summary>
         ///     Triangulates this instance
         /// </summary>
@@ -179,7 +179,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                 IEnumerator<Point> e = _convexPoints.GetEnumerator();
                 e.MoveNext();
                 Point ear = e.Current;
-
+                
                 _convexPoints.Remove(ear);
                 Point a = ear.Prev;
                 Point b = ear;
@@ -188,9 +188,9 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                 triangle.Add(a);
                 triangle.Add(b);
                 triangle.Add(c);
-
+                
                 Triangles.Add(triangle);
-
+                
                 // Remove ear, update angles and convex list
                 Remove(ear);
                 if (Valid(a))
@@ -198,17 +198,17 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                 if (Valid(c))
                     _convexPoints.Add(c);
             }
-
+            
             Debug.Assert(_size <= 3, "Triangulation bug, please report");
         }
-
+        
         /// <summary>
         ///     Describes whether this instance valid
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
         private bool Valid(Point p) => p.Neq(_head) && p.Neq(_tail) && IsConvex(p);
-
+        
         // Create the monotone polygon
         /// <summary>
         ///     Gens the mono poly
@@ -222,7 +222,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                 p = p.Next;
             }
         }
-
+        
         /// <summary>
         ///     Angles the p
         /// </summary>
@@ -234,7 +234,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             Point b = p.Prev - p;
             return (float) Math.Atan2(a.Cross(b), a.Dot(b));
         }
-
+        
         /// <summary>
         ///     Describes whether this instance angle sign
         /// </summary>
@@ -245,7 +245,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             Point b = _tail - _head;
             return Math.Atan2(a.Cross(b), a.Dot(b)) >= 0;
         }
-
+        
         // Determines if the inslide angle is convex or reflex
         /// <summary>
         ///     Describes whether this instance is convex

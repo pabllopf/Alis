@@ -60,79 +60,79 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The bias
         /// </summary>
         private float _bias;
-
+        
         /// <summary>
         ///     The gamma
         /// </summary>
         private float _gamma;
-
+        
         // Solver shared
         /// <summary>
         ///     The impulse
         /// </summary>
         private Vector3 _impulse;
-
+        
         // Solver temp
         /// <summary>
         ///     The index
         /// </summary>
         private int _indexA;
-
+        
         /// <summary>
         ///     The index
         /// </summary>
         private int _indexB;
-
+        
         /// <summary>
         ///     The inv ia
         /// </summary>
         private float _invIA;
-
+        
         /// <summary>
         ///     The inv ib
         /// </summary>
         private float _invIB;
-
+        
         /// <summary>
         ///     The inv mass
         /// </summary>
         private float _invMassA;
-
+        
         /// <summary>
         ///     The inv mass
         /// </summary>
         private float _invMassB;
-
+        
         /// <summary>
         ///     The local center
         /// </summary>
         private Vector2 _localCenterA;
-
+        
         /// <summary>
         ///     The local center
         /// </summary>
         private Vector2 _localCenterB;
-
+        
         /// <summary>
         ///     The mass
         /// </summary>
         private Mat33 _mass;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         private Vector2 _rA;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         private Vector2 _rB;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="WeldJoint" /> class
         /// </summary>
         internal WeldJoint() => JointType = JointType.Weld;
-
+        
         /// <summary>
         ///     You need to specify an anchor point where they are attached.
         ///     The position of the anchor point is important for computing the reaction torque.
@@ -146,7 +146,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             : base(bodyA, bodyB)
         {
             JointType = JointType.Weld;
-
+            
             if (useWorldCoordinates)
             {
                 LocalAnchorA = bodyA.GetLocalPoint(anchorA);
@@ -157,20 +157,20 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 LocalAnchorA = anchorA;
                 LocalAnchorB = anchorB;
             }
-
+            
             ReferenceAngle = BodyB.Rotation - BodyA.Rotation;
         }
-
+        
         /// <summary>
         ///     The local anchor point on BodyA
         /// </summary>
         public Vector2 LocalAnchorA { get; set; }
-
+        
         /// <summary>
         ///     The local anchor point on BodyB
         /// </summary>
         public Vector2 LocalAnchorB { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the world anchor a
         /// </summary>
@@ -179,7 +179,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             get => BodyA.GetWorldPoint(LocalAnchorA);
             set => LocalAnchorA = BodyA.GetLocalPoint(value);
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the world anchor b
         /// </summary>
@@ -188,39 +188,39 @@ namespace Alis.Core.Physic.Dynamics.Joints
             get => BodyB.GetWorldPoint(LocalAnchorB);
             set => LocalAnchorB = BodyB.GetLocalPoint(value);
         }
-
+        
         /// <summary>
         ///     The bodyB angle minus bodyA angle in the reference state (radians).
         /// </summary>
         public float ReferenceAngle { get; set; }
-
+        
         /// <summary>
         ///     The frequency of the joint. A higher frequency means a stiffer joint, but
         ///     a too high value can cause the joint to oscillate.
         ///     Default is 0, which means the joint does no spring calculations.
         /// </summary>
         public float FrequencyHz { get; set; }
-
+        
         /// <summary>
         ///     The damping on the joint. The damping is only used when
         ///     the joint has a frequency (> 0). A higher value means more damping.
         /// </summary>
         public float DampingRatio { get; set; }
-
+        
         /// <summary>
         ///     Gets the reaction force using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vector</returns>
         public override Vector2 GetReactionForce(float invDt) => invDt * new Vector2(_impulse.X, _impulse.Y);
-
+        
         /// <summary>
         ///     Gets the reaction torque using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The float</returns>
         public override float GetReactionTorque(float invDt) => invDt * _impulse.Z;
-
+        
         /// <summary>
         ///     Inits the velocity constraints using the specified data
         /// </summary>
@@ -235,24 +235,24 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _invMassB = BodyB._invMass;
             _invIA = BodyA._invI;
             _invIB = BodyB._invI;
-
+            
             float aA = data.positions[_indexA].a;
             Vector2 vA = data.velocities[_indexA].v;
             float wA = data.velocities[_indexA].w;
-
+            
             float aB = data.positions[_indexB].a;
             Vector2 vB = data.velocities[_indexB].v;
             float wB = data.velocities[_indexB].w;
-
+            
             Complex qA = Complex.FromAngle(aA);
             Complex qB = Complex.FromAngle(aB);
-
+            
             _rA = Complex.Multiply(LocalAnchorA - _localCenterA, ref qA);
             _rB = Complex.Multiply(LocalAnchorB - _localCenterB, ref qB);
-
+            
             float mA = _invMassA, mB = _invMassB;
             float iA = _invIA, iB = _invIB;
-
+            
             Mat33 K = new Mat33();
             K.Ex.X = mA + mB + _rA.Y * _rA.Y * iA + _rB.Y * _rB.Y * iB;
             K.Ey.X = -_rA.Y * _rA.X * iA - _rB.Y * _rB.X * iB;
@@ -263,31 +263,31 @@ namespace Alis.Core.Physic.Dynamics.Joints
             K.Ex.Z = K.Ez.X;
             K.Ey.Z = K.Ez.Y;
             K.Ez.Z = iA + iB;
-
+            
             if (FrequencyHz > 0.0f)
             {
                 K.GetInverse22(ref _mass);
-
+                
                 float invM = iA + iB;
                 float m = invM > 0.0f ? 1.0f / invM : 0.0f;
-
+                
                 float C = aB - aA - ReferenceAngle;
-
+                
                 // Frequency
                 float omega = Constant.Tau * FrequencyHz;
-
+                
                 // Damping coefficient
                 float d = 2.0f * m * DampingRatio * omega;
-
+                
                 // Spring stiffness
                 float k = m * omega * omega;
-
+                
                 // magic formulas
                 float h = data.step.dt;
                 _gamma = h * (d + h * k);
                 _gamma = Math.Abs(_gamma) < float.Epsilon ? 1.0f / _gamma : 0.0f;
                 _bias = C * h * k * _gamma;
-
+                
                 invM += _gamma;
                 _mass.Ez.Z = Math.Abs(invM) < float.Epsilon ? 1.0f / invM : 0.0f;
             }
@@ -303,17 +303,17 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _gamma = 0.0f;
                 _bias = 0.0f;
             }
-
+            
             if (data.step.warmStarting)
             {
                 // Scale impulses to support a variable time step.
                 _impulse *= data.step.dtRatio;
-
+                
                 Vector2 P = new Vector2(_impulse.X, _impulse.Y);
-
+                
                 vA -= mA * P;
                 wA -= iA * (MathUtils.Cross(ref _rA, ref P) + _impulse.Z);
-
+                
                 vB += mB * P;
                 wB += iB * (MathUtils.Cross(ref _rB, ref P) + _impulse.Z);
             }
@@ -321,13 +321,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
             {
                 _impulse = Vector3.Zero;
             }
-
+            
             data.velocities[_indexA].v = vA;
             data.velocities[_indexA].w = wA;
             data.velocities[_indexB].v = vB;
             data.velocities[_indexB].w = wB;
         }
-
+        
         /// <summary>
         ///     Solves the velocity constraints using the specified data
         /// </summary>
@@ -338,31 +338,31 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float wA = data.velocities[_indexA].w;
             Vector2 vB = data.velocities[_indexB].v;
             float wB = data.velocities[_indexB].w;
-
+            
             float mA = _invMassA, mB = _invMassB;
             float iA = _invIA, iB = _invIB;
-
+            
             if (FrequencyHz > 0.0f)
             {
                 float cdot2 = wB - wA;
-
+                
                 float impulse2 = -_mass.Ez.Z * (cdot2 + _bias + _gamma * _impulse.Z);
                 _impulse.Z += impulse2;
-
+                
                 wA -= iA * impulse2;
                 wB += iB * impulse2;
-
+                
                 Vector2 cdot1 = vB + MathUtils.Cross(wB, ref _rB) - vA - MathUtils.Cross(wA, ref _rA);
-
+                
                 Vector2 impulse1 = -MathUtils.Mul22(_mass, cdot1);
                 _impulse.X += impulse1.X;
                 _impulse.Y += impulse1.Y;
-
+                
                 Vector2 p = impulse1;
-
+                
                 vA -= mA * p;
                 wA -= iA * MathUtils.Cross(ref _rA, ref p);
-
+                
                 vB += mB * p;
                 wB += iB * MathUtils.Cross(ref _rB, ref p);
             }
@@ -371,25 +371,25 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 Vector2 cdot1 = vB + MathUtils.Cross(wB, ref _rB) - vA - MathUtils.Cross(wA, ref _rA);
                 float cdot2 = wB - wA;
                 Vector3 cdot = new Vector3(cdot1.X, cdot1.Y, cdot2);
-
+                
                 Vector3 impulse = -MathUtils.Mul(_mass, cdot);
                 _impulse += impulse;
-
+                
                 Vector2 p = new Vector2(impulse.X, impulse.Y);
-
+                
                 vA -= mA * p;
                 wA -= iA * (MathUtils.Cross(ref _rA, ref p) + impulse.Z);
-
+                
                 vB += mB * p;
                 wB += iB * (MathUtils.Cross(ref _rB, ref p) + impulse.Z);
             }
-
+            
             data.velocities[_indexA].v = vA;
             data.velocities[_indexA].w = wA;
             data.velocities[_indexB].v = vB;
             data.velocities[_indexB].w = wB;
         }
-
+        
         /// <summary>
         ///     Describes whether this instance solve position constraints
         /// </summary>
@@ -401,18 +401,18 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float aA = data.positions[_indexA].a;
             Vector2 cB = data.positions[_indexB].c;
             float aB = data.positions[_indexB].a;
-
+            
             Complex qA = Complex.FromAngle(aA);
             Complex qB = Complex.FromAngle(aB);
-
+            
             float mA = _invMassA, mB = _invMassB;
             float iA = _invIA, iB = _invIB;
-
+            
             Vector2 rA = Complex.Multiply(LocalAnchorA - _localCenterA, ref qA);
             Vector2 rB = Complex.Multiply(LocalAnchorB - _localCenterB, ref qB);
-
+            
             float positionError, angularError;
-
+            
             Mat33 k = new Mat33();
             k.Ex.X = mA + mB + rA.Y * rA.Y * iA + rB.Y * rB.Y * iB;
             k.Ey.X = -rA.Y * rA.X * iA - rB.Y * rB.X * iB;
@@ -423,19 +423,19 @@ namespace Alis.Core.Physic.Dynamics.Joints
             k.Ex.Z = k.Ez.X;
             k.Ey.Z = k.Ez.Y;
             k.Ez.Z = iA + iB;
-
+            
             if (FrequencyHz > 0.0f)
             {
                 Vector2 c1 = cB + rB - cA - rA;
-
+                
                 positionError = c1.Length();
                 angularError = 0.0f;
-
+                
                 Vector2 p = -k.Solve22(c1);
-
+                
                 cA -= mA * p;
                 aA -= iA * MathUtils.Cross(ref rA, ref p);
-
+                
                 cB += mB * p;
                 aB += iB * MathUtils.Cross(ref rB, ref p);
             }
@@ -443,12 +443,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
             {
                 Vector2 c1 = cB + rB - cA - rA;
                 float c2 = aB - aA - ReferenceAngle;
-
+                
                 positionError = c1.Length();
                 angularError = Math.Abs(c2);
-
+                
                 Vector3 c = new Vector3(c1.X, c1.Y, c2);
-
+                
                 Vector3 impulse;
                 if (k.Ez.Z <= 0.0f)
                 {
@@ -459,21 +459,21 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 {
                     impulse = -k.Solve33(c);
                 }
-
+                
                 Vector2 p = new Vector2(impulse.X, impulse.Y);
-
+                
                 cA -= mA * p;
                 aA -= iA * (MathUtils.Cross(ref rA, ref p) + impulse.Z);
-
+                
                 cB += mB * p;
                 aB += iB * (MathUtils.Cross(ref rB, ref p) + impulse.Z);
             }
-
+            
             data.positions[_indexA].c = cA;
             data.positions[_indexA].a = aA;
             data.positions[_indexB].c = cB;
             data.positions[_indexB].a = aB;
-
+            
             return (positionError <= SettingEnv.LinearSlop) && (angularError <= SettingEnv.AngularSlop);
         }
     }

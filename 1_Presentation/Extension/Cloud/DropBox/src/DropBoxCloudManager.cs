@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager;
 using Alis.Core.Ecs.System.Scope;
 
@@ -41,15 +40,15 @@ namespace Alis.Extension.Cloud.DropBox
     public class DropBoxCloudManager : AManager, ICloudManager
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DropBoxCloudManager"/> class
+        ///     Initializes a new instance of the <see cref="DropBoxCloudManager" /> class
         /// </summary>
         /// <param name="context">The context</param>
         public DropBoxCloudManager(Context context) : base(context)
         {
         }
-
+        
         /// <summary>
-        /// Initializes a new instance of the <see cref="DropBoxCloudManager"/> class
+        ///     Initializes a new instance of the <see cref="DropBoxCloudManager" /> class
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="name">The name</param>

@@ -45,51 +45,51 @@ namespace Alis.Core.Physic.Controllers
         ///     The gravity
         /// </summary>
         private readonly Vector2 _gravity;
-
+        
         /// <summary>
         ///     The body
         /// </summary>
         private readonly ICollection<Body> _uniqueBodies = new List<Body>();
-
+        
         /// <summary>
         ///     The container
         /// </summary>
         private AABB _container;
-
+        
         /// <summary>
         ///     The normal
         /// </summary>
         private Vector2 _normal;
-
+        
         /// <summary>
         ///     The offset
         /// </summary>
         private float _offset;
-
+        
         /// <summary>
         ///     Controls the rotational drag that the fluid exerts on the bodies within it. Use higher values will simulate thick
         ///     fluid, like honey, lower values to
         ///     simulate water-like fluids.
         /// </summary>
         public float AngularDragCoefficient;
-
+        
         /// <summary>
         ///     Density of the fluid. Higher values will make things more buoyant, lower values will cause things to sink.
         /// </summary>
         public float Density;
-
+        
         /// <summary>
         ///     Controls the linear drag that the fluid exerts on the bodies within it.  Use higher values will simulate thick
         ///     fluid, like honey, lower values to
         ///     simulate water-like fluids.
         /// </summary>
         public float LinearDragCoefficient;
-
+        
         /// <summary>
         ///     Acts like waterflow. Defaults to 0,0.
         /// </summary>
         public Vector2 Velocity;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="BuoyancyController" /> class.
         /// </summary>
@@ -107,7 +107,7 @@ namespace Alis.Core.Physic.Controllers
             AngularDragCoefficient = rotationalDragCoefficient;
             _gravity = gravity;
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the container
         /// </summary>
@@ -120,7 +120,7 @@ namespace Alis.Core.Physic.Controllers
                 _offset = _container.UpperBound.Y;
             }
         }
-
+        
         /// <summary>
         ///     Updates the dt
         /// </summary>
@@ -132,13 +132,13 @@ namespace Alis.Core.Physic.Controllers
             {
                 if (fixture.Body.BodyType == BodyType.Static || !fixture.Body.Awake)
                     return true;
-
+                
                 if (!_uniqueBodies.Contains(fixture.Body))
                     _uniqueBodies.Add(fixture.Body);
-
+                
                 return true;
             }, ref _container);
-
+            
             if (_uniqueBodies.Count == 0)
                 return;
             
@@ -148,41 +148,41 @@ namespace Alis.Core.Physic.Controllers
                 Vector2 massc = Vector2.Zero;
                 float area = 0;
                 float mass = 0;
-
+                
                 foreach (Fixture fixture in body.FixtureList)
                 {
                     if ((fixture.Shape.ShapeType != ShapeType.Polygon) && (fixture.Shape.ShapeType != ShapeType.Circle))
                         continue;
-
+                    
                     Shape shape = fixture.Shape;
-
+                    
                     float sarea = shape.ComputeSubmergedArea(ref _normal, _offset, ref body._xf, out Vector2 sc);
                     area += sarea;
                     areac.X += sarea * sc.X;
                     areac.Y += sarea * sc.Y;
-
+                    
                     mass += sarea * shape.Density;
                     massc.X += sarea * sc.X * shape.Density;
                     massc.Y += sarea * sc.Y * shape.Density;
                 }
-
+                
                 areac.X /= area;
                 areac.Y /= area;
                 massc.X /= mass;
                 massc.Y /= mass;
-
+                
                 if (area < SettingEnv.Epsilon)
                     continue;
-
+                
                 //Buoyancy
                 Vector2 buoyancyForce = -Density * area * _gravity;
                 body.ApplyForce(buoyancyForce, massc);
-
+                
                 //Linear drag
                 Vector2 dragVelocity = body.GetLinearVelocityFromWorldPoint(areac) - Velocity;
                 Vector2 dragForce = dragVelocity * (-LinearDragCoefficient * area);
                 body.ApplyForce(dragForce, areac);
-
+                
                 //Angular drag
                 body.ApplyTorque(-body.Inertia / body.Mass * area * body.AngularVelocity * AngularDragCoefficient);
             }

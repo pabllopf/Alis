@@ -38,7 +38,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
     internal class DTSweepPointComparator : IComparer<TriangulationPoint>
     {
         #region IComparer<TriangulationPoint> Members
-
+        
         /// <summary>
         ///     Compares the p 1
         /// </summary>
@@ -51,25 +51,25 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             {
                 return -1;
             }
-
+            
             if (p1.Y > p2.Y)
             {
                 return 1;
             }
-
+            
             if (p1.X < p2.X)
             {
                 return -1;
             }
-
+            
             if (p1.X > p2.X)
             {
                 return 1;
             }
-
+            
             return 0;
         }
-
+        
         #endregion
     }
 }

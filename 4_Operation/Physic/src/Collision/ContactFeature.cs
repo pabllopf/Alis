@@ -39,17 +39,17 @@ namespace Alis.Core.Physic.Collision
         ///     Feature index on ShapeA
         /// </summary>
         public byte IndexA;
-
+        
         /// <summary>
         ///     Feature index on ShapeB
         /// </summary>
         public byte IndexB;
-
+        
         /// <summary>
         ///     The feature type on ShapeA
         /// </summary>
         public byte TypeA;
-
+        
         /// <summary>
         ///     The feature type on ShapeB
         /// </summary>

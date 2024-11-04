@@ -49,7 +49,7 @@ namespace Alis.Core.Physic.Common
         ///     The writer
         /// </summary>
         private static XmlWriter _writer;
-
+        
         /// <summary>
         ///     Serializes the shape using the specified shape
         /// </summary>
@@ -60,27 +60,27 @@ namespace Alis.Core.Physic.Common
             _writer.WriteStartElement("Shape");
             _writer.WriteAttributeString("Type", shape.ShapeType.ToString());
             _writer.WriteAttributeString("Density", FloatToString(shape.Density));
-
+            
             switch (shape.ShapeType)
             {
                 case ShapeType.Circle:
                 {
                     CircleShape circle = (CircleShape) shape;
-
+                    
                     WriteElement("Radius", circle.Radius);
-
+                    
                     WriteElement("Position", circle.Position);
                 }
                     break;
                 case ShapeType.Polygon:
                 {
                     PolygonShape poly = (PolygonShape) shape;
-
+                    
                     _writer.WriteStartElement("Vertices");
                     foreach (Vector2 v in poly.Vertices)
                         WriteElement("Vertex", v);
                     _writer.WriteEndElement();
-
+                    
                     WriteElement("Centroid", poly.MassData.Centroid);
                 }
                     break;
@@ -94,12 +94,12 @@ namespace Alis.Core.Physic.Common
                 case ShapeType.Chain:
                 {
                     ChainShape chain = (ChainShape) shape;
-
+                    
                     _writer.WriteStartElement("Vertices");
                     foreach (Vector2 v in chain.Vertices)
                         WriteElement("Vertex", v);
                     _writer.WriteEndElement();
-
+                    
                     WriteElement("NextVertex", chain.NextVertex);
                     WriteElement("PrevVertex", chain.PrevVertex);
                 }
@@ -107,10 +107,10 @@ namespace Alis.Core.Physic.Common
                 default:
                     throw new Exception();
             }
-
+            
             _writer.WriteEndElement();
         }
-
+        
         /// <summary>
         ///     Serializes the fixture using the specified fixtures
         /// </summary>
@@ -120,27 +120,27 @@ namespace Alis.Core.Physic.Common
         {
             _writer.WriteStartElement("Fixture");
             _writer.WriteAttributeString("Id", fixtures.IndexOf(fixture).ToString());
-
+            
             _writer.WriteStartElement("FilterData");
             _writer.WriteElementString("CategoryBits", ((int) fixture.CollisionCategories).ToString());
             _writer.WriteElementString("MaskBits", ((int) fixture.CollidesWith).ToString());
             _writer.WriteElementString("GroupIndex", fixture.CollisionGroup.ToString());
             _writer.WriteEndElement();
-
+            
             WriteElement("Friction", fixture.Friction);
             _writer.WriteElementString("IsSensor", fixture.IsSensor.ToString());
             WriteElement("Restitution", fixture.Restitution);
-
+            
             if (fixture.Tag != null)
             {
                 _writer.WriteStartElement("Tag");
                 WriteDynamicType(fixture.Tag.GetType(), fixture.Tag);
                 _writer.WriteEndElement();
             }
-
+            
             _writer.WriteEndElement();
         }
-
+        
         /// <summary>
         ///     Serializes the body using the specified fixtures
         /// </summary>
@@ -162,14 +162,14 @@ namespace Alis.Core.Physic.Common
             WriteElement("LinearDamping", body.LinearDamping);
             WriteElement("LinearVelocity", body.LinearVelocity);
             WriteElement("Position", body.Position);
-
+            
             if (body.Tag != null)
             {
                 _writer.WriteStartElement("Tag");
                 WriteDynamicType(body.Tag.GetType(), body.Tag);
                 _writer.WriteEndElement();
             }
-
+            
             _writer.WriteStartElement("Bindings");
             for (int i = 0; i < body.FixtureList._list.Count; i++)
             {
@@ -178,11 +178,11 @@ namespace Alis.Core.Physic.Common
                 _writer.WriteAttributeString("ShapeId", shapes.IndexOf(body.FixtureList._list[i].Shape).ToString());
                 _writer.WriteEndElement();
             }
-
+            
             _writer.WriteEndElement();
             _writer.WriteEndElement();
         }
-
+        
         /// <summary>
         ///     Serializes the joint using the specified bodies
         /// </summary>
@@ -194,21 +194,21 @@ namespace Alis.Core.Physic.Common
         {
             _writer.WriteStartElement("Joint");
             _writer.WriteAttributeString("Type", joint.JointType.ToString());
-
+            
             WriteElement("BodyA", bodies.IndexOf(joint.BodyA));
             WriteElement("BodyB", bodies.IndexOf(joint.BodyB));
-
+            
             WriteElement("CollideConnected", joint.CollideConnected);
-
+            
             WriteElement("Breakpoint", joint.Breakpoint);
-
+            
             if (joint.Tag != null)
             {
                 _writer.WriteStartElement("Tag");
                 WriteDynamicType(joint.Tag.GetType(), joint.Tag);
                 _writer.WriteEndElement();
             }
-
+            
             switch (joint.JointType)
             {
                 case JointType.Distance:
@@ -248,7 +248,7 @@ namespace Alis.Core.Physic.Common
                 case JointType.Prismatic:
                 {
                     //NOTE: Does not conform with Box2DScene
-
+                    
                     PrismaticJoint prismaticJoint = (PrismaticJoint) joint;
                     WriteElement("EnableLimit", prismaticJoint.LimitEnabled);
                     WriteElement("EnableMotor", prismaticJoint.MotorEnabled);
@@ -328,10 +328,10 @@ namespace Alis.Core.Physic.Common
                 default:
                     throw new Exception("Joint not supported");
             }
-
+            
             _writer.WriteEndElement();
         }
-
+        
         /// <summary>
         ///     Writes the dynamic type using the specified type
         /// </summary>
@@ -340,13 +340,13 @@ namespace Alis.Core.Physic.Common
         private static void WriteDynamicType(Type type, object val)
         {
             _writer.WriteElementString("Type", type.AssemblyQualifiedName);
-
+            
             _writer.WriteStartElement("Value");
             XmlSerializer serializer = new XmlSerializer(type);
             serializer.Serialize(_writer, val);
             _writer.WriteEndElement();
         }
-
+        
         /// <summary>
         ///     Writes the element using the specified name
         /// </summary>
@@ -356,7 +356,7 @@ namespace Alis.Core.Physic.Common
         {
             _writer.WriteElementString(name, FloatToString(vec.X) + " " + FloatToString(vec.Y));
         }
-
+        
         /// <summary>
         ///     Writes the element using the specified name
         /// </summary>
@@ -366,7 +366,7 @@ namespace Alis.Core.Physic.Common
         {
             _writer.WriteElementString(name, val.ToString());
         }
-
+        
         /// <summary>
         ///     Writes the element using the specified name
         /// </summary>
@@ -376,7 +376,7 @@ namespace Alis.Core.Physic.Common
         {
             _writer.WriteElementString(name, val.ToString());
         }
-
+        
         /// <summary>
         ///     Writes the element using the specified name
         /// </summary>
@@ -386,14 +386,14 @@ namespace Alis.Core.Physic.Common
         {
             _writer.WriteElementString(name, FloatToString(val));
         }
-
+        
         /// <summary>
         ///     Floats the to string using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The string</returns>
         private static string FloatToString(float value) => value.ToString(CultureInfo.InvariantCulture);
-
+        
         /// <summary>
         ///     Serializes the world
         /// </summary>
@@ -404,20 +404,20 @@ namespace Alis.Core.Physic.Common
             List<Body> bodies = new List<Body>();
             List<Fixture> fixtures = new List<Fixture>();
             List<Shape> shapes = new List<Shape>();
-
+            
             XmlWriterSettings settings = new XmlWriterSettings();
             settings.Indent = true;
             settings.NewLineOnAttributes = false;
             settings.OmitXmlDeclaration = true;
-
+            
             _writer = XmlWriter.Create(stream, settings);
-
+            
             _writer.WriteStartElement("World");
             _writer.WriteAttributeString("Version", "3");
             WriteElement("Gravity", world.Gravity);
-
+            
             _writer.WriteStartElement("Shapes");
-
+            
             foreach (Body body in world.BodyList)
             {
                 foreach (Fixture fixture in body.FixtureList)
@@ -429,10 +429,10 @@ namespace Alis.Core.Physic.Common
                     }
                 }
             }
-
+            
             _writer.WriteEndElement();
             _writer.WriteStartElement("Fixtures");
-
+            
             foreach (Body body in world.BodyList)
             {
                 foreach (Fixture fixture in body.FixtureList)
@@ -444,27 +444,27 @@ namespace Alis.Core.Physic.Common
                     }
                 }
             }
-
+            
             _writer.WriteEndElement();
             _writer.WriteStartElement("Bodies");
-
+            
             foreach (Body body in world.BodyList)
             {
                 bodies.Add(body);
                 SerializeBody(fixtures, shapes, body);
             }
-
+            
             _writer.WriteEndElement();
             _writer.WriteStartElement("Joints");
-
+            
             foreach (Joint joint in world.JointList)
             {
                 SerializeJoint(bodies, joint);
             }
-
+            
             _writer.WriteEndElement();
             _writer.WriteEndElement();
-
+            
             _writer.Flush();
         }
     }

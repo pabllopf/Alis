@@ -38,15 +38,15 @@ namespace Alis.Core.Ecs.System.Manager.Network
     public class NetworkManager : AManager
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="NetworkManager"/> class
+        ///     Initializes a new instance of the <see cref="NetworkManager" /> class
         /// </summary>
         /// <param name="context">The context</param>
         public NetworkManager(Context context) : base(context)
         {
         }
-
+        
         /// <summary>
-        /// Initializes a new instance of the <see cref="NetworkManager"/> class
+        ///     Initializes a new instance of the <see cref="NetworkManager" /> class
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="name">The name</param>

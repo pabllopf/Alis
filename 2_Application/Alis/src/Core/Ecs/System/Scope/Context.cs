@@ -48,17 +48,6 @@ namespace Alis.Core.Ecs.System.Scope
     public class Context : IContext
     {
         /// <summary>
-        /// The runtime
-        /// </summary>
-        [JsonIgnore]
-        public Runtime<AManager> Runtime { get; }
-
-        /// <summary>
-        /// Gets or sets the value of the is running
-        /// </summary>
-        public bool IsRunning { get; internal set; }
-
-        /// <summary>
         ///     Initializes a new instance of the <see cref="Context" /> class
         /// </summary>
         public Context()
@@ -75,7 +64,7 @@ namespace Alis.Core.Ecs.System.Scope
                 new TimeManager(this)
             );
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Context" /> class
         /// </summary>
@@ -94,7 +83,7 @@ namespace Alis.Core.Ecs.System.Scope
                 new TimeManager(this)
             );
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Context" /> class
         /// </summary>
@@ -115,49 +104,60 @@ namespace Alis.Core.Ecs.System.Scope
                 new TimeManager(this)
             );
         }
-
+        
+        /// <summary>
+        ///     The runtime
+        /// </summary>
+        [JsonIgnore]
+        public Runtime<AManager> Runtime { get; }
+        
+        /// <summary>
+        ///     Gets or sets the value of the is running
+        /// </summary>
+        public bool IsRunning { get; internal set; }
+        
         /// <summary>
         ///     Gets the value of the audio manager
         /// </summary>
         [JsonIgnore]
         public AudioManager AudioManager => Runtime.Get<AudioManager>();
-
+        
         /// <summary>
         ///     Gets the value of the graphic manager
         /// </summary>
         [JsonIgnore]
         public GraphicManager GraphicManager => Runtime.Get<GraphicManager>();
-
+        
         /// <summary>
         ///     Gets the value of the input manager
         /// </summary>
         [JsonIgnore]
         public InputManager InputManager => Runtime.Get<InputManager>();
-
+        
         /// <summary>
         ///     Gets the value of the network manager
         /// </summary>
         [JsonIgnore]
         public NetworkManager NetworkManager => Runtime.Get<NetworkManager>();
-
+        
         /// <summary>
         ///     Gets the value of the physic manager
         /// </summary>
         [JsonIgnore]
         public PhysicManager PhysicManager => Runtime.Get<PhysicManager>();
-
+        
         /// <summary>
         ///     Gets the value of the time manager
         /// </summary>
         [JsonIgnore]
         public TimeManager TimeManager => Runtime.Get<TimeManager>();
-
+        
         /// <summary>
         ///     The settings
         /// </summary>
         [JsonPropertyName("_Settings_")]
         public Setting Setting { get; set; }
-
+        
         /// <summary>
         ///     Gets the value of the scene manager
         /// </summary>
@@ -165,7 +165,7 @@ namespace Alis.Core.Ecs.System.Scope
         public SceneManager SceneManager => Runtime.Get<SceneManager>();
         
         /// <summary>
-        /// Exits this instance
+        ///     Exits this instance
         /// </summary>
         public void Exit() => IsRunning = false;
     }

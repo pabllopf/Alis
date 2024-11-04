@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs;
-using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Scope;
 
 namespace Alis.Extension.Plugin.Sample
@@ -47,7 +45,7 @@ namespace Alis.Extension.Plugin.Sample
             Context context = new Context();
             PluginManager pluginManager = new PluginManager(context);
             pluginManager.LoadPlugins("Assets/Plugins");
-
+            
             pluginManager.Initialize();
         }
     }

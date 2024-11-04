@@ -28,15 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Builder.Core.Ecs.System;
-using Alis.Core.Ecs;
 using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Configuration;
-using Alis.Core.Ecs.System.Manager.Audio;
-using Alis.Core.Ecs.System.Manager.Graphic;
-using Alis.Core.Ecs.System.Manager.Input;
-using Alis.Core.Ecs.System.Manager.Network;
-using Alis.Core.Ecs.System.Manager.Physic;
-using Alis.Core.Ecs.System.Manager.Scene;
 using Alis.Core.Ecs.System.Scope;
 using Xunit;
 
@@ -54,9 +47,9 @@ namespace Alis.Test.Core.Ecs
         public void IsRunning_SetValue_ShouldChangeIsRunning()
         {
             VideoGame videoGame = new VideoGame();
-
+            
             videoGame.Context.IsRunning = false;
-
+            
             Assert.False(videoGame.Context.IsRunning);
         }
         
@@ -67,12 +60,12 @@ namespace Alis.Test.Core.Ecs
         public void IsRunning_SetValue_ShouldChangeIsRunning_v2()
         {
             VideoGame videoGame = new VideoGame(new Setting());
-
+            
             videoGame.Context.IsRunning = false;
-
+            
             Assert.False(videoGame.Context.IsRunning);
         }
-
+        
         /// <summary>
         ///     Tests that builder should return video game builder
         /// </summary>
@@ -80,10 +73,10 @@ namespace Alis.Test.Core.Ecs
         public void Builder_ShouldReturnVideoGameBuilder()
         {
             VideoGameBuilder result = VideoGame.Create();
-
+            
             Assert.IsType<VideoGameBuilder>(result);
         }
-
+        
         /// <summary>
         ///     Tests that set context should set context
         /// </summary>
@@ -91,9 +84,9 @@ namespace Alis.Test.Core.Ecs
         public void SetContext_ShouldSetContext()
         {
             Context newContext = new Context(new Setting());
-
+            
             VideoGame videoGame = new VideoGame(newContext);
-
+            
             Assert.Equal(newContext.GetType(), videoGame.Context.GetType());
         }
     }

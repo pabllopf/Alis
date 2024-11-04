@@ -38,7 +38,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
      *
      * @author Thomas Åhlén, thahlen@gmail.com
      */
-
+    
     /// <summary>
     ///     The constrained point set class
     /// </summary>
@@ -49,7 +49,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
         ///     The constrained point list
         /// </summary>
         private readonly List<TriangulationPoint> _constrainedPointList;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="ConstrainedPointSet" /> class
         /// </summary>
@@ -58,10 +58,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
         public ConstrainedPointSet(List<TriangulationPoint> points, int[] index)
             : base(points)
             => EdgeIndex = index;
-
+        
         
         /// <summary>
-        /// Initializes a new instance of the <see cref="ConstrainedPointSet"/> class
+        ///     Initializes a new instance of the <see cref="ConstrainedPointSet" /> class
         /// </summary>
         /// <param name="points">The points</param>
         /// <param name="constraints">The constraints</param>
@@ -71,17 +71,17 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
             _constrainedPointList = new List<TriangulationPoint>();
             _constrainedPointList.AddRange(constraints);
         }
-
+        
         /// <summary>
         ///     Gets the value of the edge index
         /// </summary>
         public int[] EdgeIndex { get; }
-
+        
         /// <summary>
         ///     Gets the value of the triangulation mode
         /// </summary>
         public override TriangulationMode TriangulationMode => TriangulationMode.Constrained;
-
+        
         /// <summary>
         ///     Prepares the triangulation using the specified tcx
         /// </summary>
@@ -110,10 +110,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
                 }
             }
         }
-
+        
         
         /// <summary>
-        /// Describes whether this instance is valid
+        ///     Describes whether this instance is valid
         /// </summary>
         /// <returns>The bool</returns>
         public bool isValid() => true;

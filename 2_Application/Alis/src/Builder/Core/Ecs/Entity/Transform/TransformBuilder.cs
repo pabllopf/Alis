@@ -47,13 +47,13 @@ namespace Alis.Builder.Core.Ecs.Entity.Transform
         ///     The transform
         /// </summary>
         private Alis.Core.Aspect.Math.Transform transform = new Alis.Core.Aspect.Math.Transform(new Vector2(0, 0), 0, new Vector2(1, 1));
-
+        
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The transform</returns>
         public Alis.Core.Aspect.Math.Transform Build() => transform;
-
+        
         /// <summary>
         ///     Positions the x
         /// </summary>
@@ -65,7 +65,7 @@ namespace Alis.Builder.Core.Ecs.Entity.Transform
             transform = new Alis.Core.Aspect.Math.Transform(new Vector2(x, y), transform.Rotation, transform.Scale);
             return this;
         }
-
+        
         /// <summary>
         ///     Rotations the angle
         /// </summary>
@@ -76,7 +76,7 @@ namespace Alis.Builder.Core.Ecs.Entity.Transform
             transform.Rotation = angle;
             return this;
         }
-
+        
         /// <summary>
         ///     Scales the x
         /// </summary>
@@ -88,7 +88,7 @@ namespace Alis.Builder.Core.Ecs.Entity.Transform
             transform.Scale = new Vector2(x, y);
             return this;
         }
-
+        
         /// <summary>
         ///     Positions the vector
         /// </summary>

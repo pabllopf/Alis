@@ -51,39 +51,39 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
             ///     The unbroken breakable body state
             /// </summary>
             Unbroken,
-
+            
             /// <summary>
             ///     The should break breakable body state
             /// </summary>
             ShouldBreak,
-
+            
             /// <summary>
             ///     The broken breakable body state
             /// </summary>
             Broken
         }
-
+        
         /// <summary>
         ///     The angular velocities cache
         /// </summary>
         private float[] _angularVelocitiesCache = new float[8];
-
+        
         /// <summary>
         ///     The vector
         /// </summary>
         private Vector2[] _velocitiesCache = new Vector2[8];
-
+        
         /// <summary>
         ///     The fixture
         /// </summary>
         public List<Fixture> Parts = new List<Fixture>(8);
-
+        
         /// <summary>
         ///     The force needed to break the body apart.
         ///     Default: 500
         /// </summary>
         public float Strength = 500.0f;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="BreakableBody" /> class
         /// </summary>
@@ -92,10 +92,10 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         {
             World = world;
             World.ContactManager.PostSolve += PostSolve;
-
+            
             State = BreakableBodyState.Unbroken;
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="BreakableBody" /> class
         /// </summary>
@@ -107,7 +107,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         public BreakableBody(World world, IEnumerable<Vertices> vertices, float density, Vector2 position = new Vector2(), float rotation = 0) : this(world)
         {
             MainBody = World.CreateBody(position, rotation, BodyType.Dynamic);
-
+            
             foreach (Vertices part in vertices)
             {
                 PolygonShape polygonShape = new PolygonShape(part, density);
@@ -115,7 +115,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                 Parts.Add(fixture);
             }
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="BreakableBody" /> class
         /// </summary>
@@ -126,14 +126,14 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         public BreakableBody(World world, IEnumerable<Shape> shapes, Vector2 position = new Vector2(), float rotation = 0) : this(world)
         {
             MainBody = World.CreateBody(position, rotation, BodyType.Dynamic);
-
+            
             foreach (Shape part in shapes)
             {
                 Fixture fixture = MainBody.CreateFixture(part);
                 Parts.Add(fixture);
             }
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="BreakableBody" /> class
         /// </summary>
@@ -145,10 +145,10 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         public BreakableBody(World world, Vertices vertices, float density, Vector2 position = new Vector2(), float rotation = 0) : this(world)
         {
             MainBody = World.CreateBody(position, rotation, BodyType.Dynamic);
-
-
+            
+            
             List<Vertices> triangles = Triangulate.ConvexPartition(vertices, TriangulationAlgorithm.Earclip);
-
+            
             foreach (Vertices part in triangles)
             {
                 PolygonShape polygonShape = new PolygonShape(part, density);
@@ -156,22 +156,22 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                 Parts.Add(fixture);
             }
         }
-
+        
         /// <summary>
         ///     Gets the value of the world
         /// </summary>
         public World World { get; }
-
+        
         /// <summary>
         ///     Gets the value of the main body
         /// </summary>
         public Body MainBody { get; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the state
         /// </summary>
         public BreakableBodyState State { get; private set; }
-
+        
         /// <summary>
         ///     Posts the solve using the specified contact
         /// </summary>
@@ -185,12 +185,12 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                 {
                     float maxImpulse = 0.0f;
                     int count = contact.Manifold.PointCount;
-
+                    
                     for (int i = 0; i < count; ++i)
                     {
                         maxImpulse = Math.Max(maxImpulse, impulse.points[i].normalImpulse);
                     }
-
+                    
                     if (maxImpulse > Strength)
                     {
                         // Flag the body for breaking.
@@ -199,7 +199,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                 }
             }
         }
-
+        
         /// <summary>
         ///     Updates this instance
         /// </summary>
@@ -215,7 +215,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                     break;
             }
         }
-
+        
         // Cache velocities to improve movement on breakage.
         /// <summary>
         ///     Caches the velocities
@@ -228,7 +228,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                 _velocitiesCache = new Vector2[Parts.Count];
                 _angularVelocitiesCache = new float[Parts.Count];
             }
-
+            
             //Cache the linear and angular velocities.
             for (int i = 0; i < Parts.Count; i++)
             {
@@ -236,7 +236,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                 _angularVelocitiesCache[i] = Parts[i].Body.AngularVelocity;
             }
         }
-
+        
         /// <summary>
         ///     Decomposes this instance
         /// </summary>
@@ -245,32 +245,32 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         {
             if (State == BreakableBodyState.Broken)
                 throw new InvalidOperationException("BreakableBody is allready broken");
-
+            
             //Unsubsribe from the PostSolve delegate
             World.ContactManager.PostSolve -= PostSolve;
-
+            
             for (int i = 0; i < Parts.Count; i++)
             {
                 Fixture oldFixture = Parts[i];
-
+                
                 Shape shape = oldFixture.Shape.Clone();
                 object fixtureTag = oldFixture.Tag;
-
+                
                 MainBody.Remove(oldFixture);
-
+                
                 Body body = World.CreateBody(MainBody.Position, MainBody.Rotation, BodyType.Dynamic);
                 body.Tag = MainBody.Tag;
-
+                
                 Fixture newFixture = body.CreateFixture(shape);
                 newFixture.Tag = fixtureTag;
                 Parts[i] = newFixture;
-
+                
                 body.AngularVelocity = _angularVelocitiesCache[i];
                 body.LinearVelocity = _velocitiesCache[i];
             }
-
+            
             World.Remove(MainBody);
-
+            
             State = BreakableBodyState.Broken;
         }
     }

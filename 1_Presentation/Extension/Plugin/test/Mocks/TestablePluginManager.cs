@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Scope;
 
 namespace Alis.Extension.Plugin.Test.Mocks
@@ -42,22 +41,22 @@ namespace Alis.Extension.Plugin.Test.Mocks
         ///     The load plugin from file call count
         /// </summary>
         public int LoadPluginFromFileCallCount;
-
+        
         /// <summary>
-        /// Initializes a new instance of the <see cref="TestablePluginManager"/> class
+        ///     Initializes a new instance of the <see cref="TestablePluginManager" /> class
         /// </summary>
         /// <param name="context">The context</param>
         /// <param name="loadPluginFromFileCallCount">The load plugin from file call count</param>
         public TestablePluginManager(Context context, int loadPluginFromFileCallCount) : base(context) => LoadPluginFromFileCallCount = loadPluginFromFileCallCount;
-
+        
         /// <summary>
-        /// Initializes a new instance of the <see cref="TestablePluginManager"/> class
+        ///     Initializes a new instance of the <see cref="TestablePluginManager" /> class
         /// </summary>
         /// <param name="platformDetector">The platform detector</param>
         /// <param name="context">The context</param>
         /// <param name="loadPluginFromFileCallCount">The load plugin from file call count</param>
         public TestablePluginManager(IPlatformDetector platformDetector, Context context, int loadPluginFromFileCallCount) : base(platformDetector, context) => LoadPluginFromFileCallCount = loadPluginFromFileCallCount;
-
+        
         /// <summary>
         ///     Loads the plugin from file using the specified plugin file
         /// </summary>

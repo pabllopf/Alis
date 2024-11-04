@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Definition;
-using Alis.Core.Ecs;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
 using Alis.Core.Ecs.System;
@@ -109,7 +108,7 @@ namespace Alis.Sample.Rogue
                                 .Build())
                             .AddComponent(new PlayerMovement())
                             .Build())
-
+                        
                         // Decoration tree-001
                         .Add<GameObject>(gameObject => gameObject
                             .Name("tree-001")
@@ -123,7 +122,7 @@ namespace Alis.Sample.Rogue
                                 .SetTexture("tree-001.bmp")
                                 .Build())
                             .Build())
-
+                        
                         // Decoration tree-001
                         .Add<GameObject>(gameObject => gameObject
                             .Name("tree-002")

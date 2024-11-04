@@ -46,10 +46,10 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Scene
         {
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
             SceneBuilder sceneBuilder = new SceneBuilder(videoGameBuilder.context);
-
+            
             Assert.NotNull(sceneBuilder);
         }
-
+        
         /// <summary>
         ///     Tests that build valid input
         /// </summary>
@@ -58,12 +58,12 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Scene
         {
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
             SceneBuilder sceneBuilder = new SceneBuilder(videoGameBuilder.context);
-
+            
             Alis.Core.Ecs.Entity.Scene scene = sceneBuilder.Build();
-
+            
             Assert.NotNull(scene);
         }
-
+        
         /// <summary>
         ///     Tests that name valid input
         /// </summary>
@@ -72,9 +72,9 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Scene
         {
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
             SceneBuilder sceneBuilder = new SceneBuilder(videoGameBuilder.context);
-
+            
             sceneBuilder.Name("Test Name");
-
+            
             Assert.Equal("Test Name", sceneBuilder.Build().Name);
         }
     }

@@ -40,14 +40,14 @@ namespace Alis.Core.Physic.Collision
         ///     The proxy id
         /// </summary>
         public int ProxyIdA;
-
+        
         /// <summary>
         ///     The proxy id
         /// </summary>
         public int ProxyIdB;
-
+        
         #region IComparable<Pair> Members
-
+        
         /// <summary>
         ///     Compares the to using the specified other
         /// </summary>
@@ -59,23 +59,23 @@ namespace Alis.Core.Physic.Collision
             {
                 return -1;
             }
-
+            
             if (ProxyIdB == other.ProxyIdB)
             {
                 if (ProxyIdA < other.ProxyIdA)
                 {
                     return -1;
                 }
-
+                
                 if (ProxyIdA == other.ProxyIdA)
                 {
                     return 0;
                 }
             }
-
+            
             return 1;
         }
-
+        
         #endregion
     }
 }

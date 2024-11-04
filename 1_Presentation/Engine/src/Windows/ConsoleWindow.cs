@@ -45,27 +45,27 @@ namespace Alis.App.Engine.Windows
         ///     The name window
         /// </summary>
         private const string NameWindow = "Console";
-
+        
         /// <summary>
         ///     The command ptr
         /// </summary>
         private readonly IntPtr commandPtr;
-
+        
         /// <summary>
         ///     The no collapse
         /// </summary>
         private readonly ImGuiWindowFlags flags = ImGuiWindowFlags.NoCollapse;
-
+        
         /// <summary>
         ///     The command
         /// </summary>
         private byte[] command = new byte[256];
-
+        
         /// <summary>
         ///     The is open
         /// </summary>
         private bool isOpen = true;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="ConsoleWindow" /> class
         /// </summary>
@@ -75,33 +75,33 @@ namespace Alis.App.Engine.Windows
             SpaceWork = spaceWork;
             commandPtr = Marshal.AllocHGlobal(256);
         }
-
+        
         /// <summary>
         ///     Gets the value of the space work
         /// </summary>
         public SpaceWork SpaceWork { get; }
-
+        
         /// <summary>
         ///     Initializes this instance
         /// </summary>
         public void Initialize()
         {
         }
-
+        
         /// <summary>
         ///     Starts this instance
         /// </summary>
         public void Start()
         {
         }
-
+        
         /// <summary>
         ///     Renders this instance
         /// </summary>
         public void Render()
         {
             if (!isOpen) return;
-
+            
             if (ImGui.Begin(NameWindow, ref isOpen, flags))
             {
                 ImGui.Button("Clear");
@@ -115,16 +115,16 @@ namespace Alis.App.Engine.Windows
                 ImGui.Button($"{FontAwesome5.ExclamationTriangle}");
                 ImGui.SameLine();
                 ImGui.Button($"{FontAwesome5.Bug}");
-
+                
                 for (int i = 0; i < 10; i++)
                 {
                     ImGui.Text($"{FontAwesome5.Bug} [{DateTime.Now}] Line {i}");
                 }
             }
-
+            
             ImGui.End();
         }
-
+        
         /// <summary>
         ///     Gets the terminal output
         /// </summary>

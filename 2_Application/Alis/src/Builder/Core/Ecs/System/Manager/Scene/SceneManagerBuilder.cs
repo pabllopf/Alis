@@ -44,17 +44,17 @@ namespace Alis.Builder.Core.Ecs.System.Manager.Scene
         IAdd<SceneManagerBuilder, Func<SceneBuilder, Alis.Core.Ecs.Entity.Scene>>
     {
         /// <summary>
+        ///     The context
+        /// </summary>
+        private readonly Context context;
+        
+        /// <summary>
         ///     Gets the value of the scene manager
         /// </summary>
         private readonly SceneManager sceneManager;
-
+        
         /// <summary>
-        /// The context
-        /// </summary>
-        private readonly Context context;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SceneManagerBuilder"/> class
+        ///     Initializes a new instance of the <see cref="SceneManagerBuilder" /> class
         /// </summary>
         /// <param name="context">The context</param>
         public SceneManagerBuilder(Context context)
@@ -62,7 +62,7 @@ namespace Alis.Builder.Core.Ecs.System.Manager.Scene
             this.context = context;
             sceneManager = new SceneManager(context);
         }
-
+        
         /// <summary>
         ///     Adds the value
         /// </summary>
@@ -75,7 +75,7 @@ namespace Alis.Builder.Core.Ecs.System.Manager.Scene
             sceneManager.CurrentScene = sceneManager.Scenes[0];
             return this;
         }
-
+        
         /// <summary>
         ///     Builds this instance
         /// </summary>

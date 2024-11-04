@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotRect rect = new ImPlotRect();
             Assert.Equal(default(ImPlotRange), rect.X);
         }
-
+        
         /// <summary>
         ///     Tests that y should be initialized
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotRect rect = new ImPlotRect();
             Assert.Equal(default(ImPlotRange), rect.Y);
         }
-
+        
         /// <summary>
         ///     Tests that x should set and get correctly
         /// </summary>
@@ -68,7 +68,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             rect.X = range;
             Assert.Equal(range, rect.X);
         }
-
+        
         /// <summary>
         ///     Tests that y should set and get correctly
         /// </summary>

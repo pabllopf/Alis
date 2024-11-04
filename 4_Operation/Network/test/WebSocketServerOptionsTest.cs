@@ -49,7 +49,7 @@ namespace Alis.Core.Network.Test
             Assert.False(options.IncludeExceptionInCloseResponse);
             Assert.Equal("", options.SubProtocol);
         }
-
+        
         /// <summary>
         ///     Tests that web socket server options constructor with parameters
         /// </summary>
@@ -62,7 +62,7 @@ namespace Alis.Core.Network.Test
             Assert.True(options.IncludeExceptionInCloseResponse);
             Assert.Equal("test", options.SubProtocol);
         }
-
+        
         /// <summary>
         ///     Tests that web socket server options constructor with time span and sub protocol
         /// </summary>

@@ -47,14 +47,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
             // Arrange
             ImVector vector = new ImVector {Size = 10, Capacity = 20, Data = IntPtr.Zero};
             ImVectorG<int> imVectorG = new ImVectorG<int>(vector);
-
+            
             // Act
             int size = imVectorG.Size;
-
+            
             // Assert
             Assert.Equal(10, size);
         }
-
+        
         /// <summary>
         ///     Tests that capacity should be initialized correctly
         /// </summary>
@@ -64,14 +64,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
             // Arrange
             ImVector vector = new ImVector {Size = 10, Capacity = 20, Data = IntPtr.Zero};
             ImVectorG<int> imVectorG = new ImVectorG<int>(vector);
-
+            
             // Act
             int capacity = imVectorG.Capacity;
-
+            
             // Assert
             Assert.Equal(20, capacity);
         }
-
+        
         /// <summary>
         ///     Tests that data should be initialized correctly
         /// </summary>
@@ -82,14 +82,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr data = new IntPtr(123);
             ImVector vector = new ImVector {Size = 10, Capacity = 20, Data = data};
             ImVectorG<int> imVectorG = new ImVectorG<int>(vector);
-
+            
             // Act
             IntPtr result = imVectorG.Data;
-
+            
             // Assert
             Assert.Equal(data, result);
         }
-
+        
         /// <summary>
         ///     Tests that indexer should return correct value
         /// </summary>
@@ -101,17 +101,17 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr ptr = Marshal.AllocHGlobal(Marshal.SizeOf<int>() * data.Length);
             Marshal.Copy(data, 0, ptr, data.Length);
             ImVectorG<int> imVectorG = new ImVectorG<int>(data.Length, data.Length, ptr);
-
+            
             // Act
             int result = imVectorG[2];
-
+            
             // Assert
             Assert.Equal(3, result);
-
+            
             // Cleanup
             Marshal.FreeHGlobal(ptr);
         }
-
+        
         /// <summary>
         ///     Tests that indexer should throw index out of range exception
         /// </summary>
@@ -120,7 +120,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImVectorG<int> imVectorG = new ImVectorG<int>(10, 20, IntPtr.Zero);
-
+            
             // Act & Assert
             Assert.Throws<NullReferenceException>(() => imVectorG[10]);
         }

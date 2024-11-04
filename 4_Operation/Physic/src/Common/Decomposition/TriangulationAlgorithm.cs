@@ -42,7 +42,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         ///     - Running time is O(n^2), n = number of vertices.
         /// </summary>
         Earclip,
-
+        
         /// <summary>
         ///     Convex decomposition algorithm created by Mark Bayazit (http://mnbayazit.com/)
         ///     Properties:
@@ -52,7 +52,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         ///     - Does not support holes.
         /// </summary>
         Bayazit,
-
+        
         /// <summary>
         ///     Convex decomposition algorithm created by unknown
         ///     Properties:
@@ -62,7 +62,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         ///     - Only works on counter clockwise polygons
         /// </summary>
         Flipcode,
-
+        
         /// <summary>
         ///     Convex decomposition algorithm created by Raimund Seidel
         ///     Properties:
@@ -74,12 +74,12 @@ namespace Alis.Core.Physic.Common.Decomposition
         ///     - Does not care about winding order.
         /// </summary>
         Seidel,
-
+        
         /// <summary>
         ///     The seidel trapezoids triangulation algorithm
         /// </summary>
         SeidelTrapezoids,
-
+        
         /// <summary>
         ///     2D constrained Delaunay triangulation algorithm.
         ///     Based on the paper "Sweep-line algorithm for constrained Delaunay triangulation" by V. Domiter and and B. Zalik

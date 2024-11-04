@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SettingsTest.cs
+//  File:SettingTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -26,7 +26,6 @@
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
-
 
 using Alis.Core.Ecs.System.Configuration;
 using Alis.Core.Ecs.System.Configuration.Audio;
@@ -53,15 +52,15 @@ namespace Alis.Test.Core.Ecs.System.Configuration
         {
             // Arrange
             Setting setting = new Setting();
-
+            
             // Act
             GeneralSetting general = setting.General;
-
+            
             // Assert
             Assert.NotNull(general);
             Assert.IsType<GeneralSetting>(general);
         }
-
+        
         /// <summary>
         ///     Tests that test settings audio
         /// </summary>
@@ -70,15 +69,15 @@ namespace Alis.Test.Core.Ecs.System.Configuration
         {
             // Arrange
             Setting setting = new Setting();
-
+            
             // Act
             IAudioSetting audio = setting.Audio;
-
+            
             // Assert
             Assert.NotNull(audio);
             Assert.IsType<AudioSetting>(audio);
         }
-
+        
         /// <summary>
         ///     Tests that test settings graphic
         /// </summary>
@@ -87,15 +86,15 @@ namespace Alis.Test.Core.Ecs.System.Configuration
         {
             // Arrange
             Setting setting = new Setting();
-
+            
             // Act
             GraphicSetting graphic = setting.Graphic;
-
+            
             // Assert
             Assert.NotNull(graphic);
             Assert.IsType<GraphicSetting>(graphic);
         }
-
+        
         /// <summary>
         ///     Tests that test settings input
         /// </summary>
@@ -104,15 +103,15 @@ namespace Alis.Test.Core.Ecs.System.Configuration
         {
             // Arrange
             Setting setting = new Setting();
-
+            
             // Act
             InputSetting input = setting.Input;
-
+            
             // Assert
             Assert.NotNull(input);
             Assert.IsType<InputSetting>(input);
         }
-
+        
         /// <summary>
         ///     Tests that test settings network
         /// </summary>
@@ -121,15 +120,15 @@ namespace Alis.Test.Core.Ecs.System.Configuration
         {
             // Arrange
             Setting setting = new Setting();
-
+            
             // Act
             NetworkSetting network = setting.Network;
-
+            
             // Assert
             Assert.NotNull(network);
             Assert.IsType<NetworkSetting>(network);
         }
-
+        
         /// <summary>
         ///     Tests that test settings physic
         /// </summary>
@@ -138,16 +137,16 @@ namespace Alis.Test.Core.Ecs.System.Configuration
         {
             // Arrange
             Setting setting = new Setting();
-
+            
             // Act
             PhysicSetting physic = setting.Physic;
-
+            
             // Assert
             Assert.NotNull(physic);
             Assert.IsType<PhysicSetting>(physic);
         }
-
-
+        
+        
         /// <summary>
         ///     Tests that test settings scene
         /// </summary>
@@ -156,15 +155,15 @@ namespace Alis.Test.Core.Ecs.System.Configuration
         {
             // Arrange
             Setting setting = new Setting();
-
+            
             // Act
             SceneSetting scene = setting.Scene;
-
+            
             // Assert
             Assert.NotNull(scene);
             Assert.IsType<SceneSetting>(scene);
         }
-
+        
         /// <summary>
         ///     Tests that test settings general v 2
         /// </summary>
@@ -173,17 +172,17 @@ namespace Alis.Test.Core.Ecs.System.Configuration
         {
             // Arrange
             Setting setting = new Setting();
-
+            
             // Act
             setting.General = new GeneralSetting();
             GeneralSetting result = setting.General;
-
+            
             // Assert
             Assert.NotNull(setting);
             Assert.NotNull(result);
             Assert.IsType<GeneralSetting>(result);
         }
-
+        
         /// <summary>
         ///     Tests that test settings audio v 2
         /// </summary>
@@ -192,17 +191,17 @@ namespace Alis.Test.Core.Ecs.System.Configuration
         {
             // Arrange
             Setting setting = new Setting();
-
+            
             // Act
             setting.Audio = new AudioSetting();
             IAudioSetting result = setting.Audio;
-
+            
             // Assert
             Assert.NotNull(setting);
             Assert.NotNull(result);
             Assert.IsType<AudioSetting>(result);
         }
-
+        
         /// <summary>
         ///     Tests that test settings graphic v 2
         /// </summary>
@@ -211,17 +210,17 @@ namespace Alis.Test.Core.Ecs.System.Configuration
         {
             // Arrange
             Setting setting = new Setting();
-
+            
             // Act
             setting.Graphic = new GraphicSetting();
             GraphicSetting result = setting.Graphic;
-
+            
             // Assert
             Assert.NotNull(setting);
             Assert.NotNull(result);
             Assert.IsType<GraphicSetting>(result);
         }
-
+        
         /// <summary>
         ///     Tests that test settings input v 2
         /// </summary>
@@ -230,17 +229,17 @@ namespace Alis.Test.Core.Ecs.System.Configuration
         {
             // Arrange
             Setting setting = new Setting();
-
+            
             // Act
             setting.Input = new InputSetting();
             InputSetting result = setting.Input;
-
+            
             // Assert
             Assert.NotNull(setting);
             Assert.NotNull(result);
             Assert.IsType<InputSetting>(result);
         }
-
+        
         /// <summary>
         ///     Tests that test settings network v 2
         /// </summary>
@@ -249,17 +248,17 @@ namespace Alis.Test.Core.Ecs.System.Configuration
         {
             // Arrange
             Setting setting = new Setting();
-
+            
             // Act
             setting.Network = new NetworkSetting();
             NetworkSetting result = setting.Network;
-
+            
             // Assert
             Assert.NotNull(setting);
             Assert.NotNull(result);
             Assert.IsType<NetworkSetting>(result);
         }
-
+        
         /// <summary>
         ///     Tests that test settings physic v 2
         /// </summary>
@@ -268,17 +267,17 @@ namespace Alis.Test.Core.Ecs.System.Configuration
         {
             // Arrange
             Setting setting = new Setting();
-
+            
             // Act
             setting.Physic = new PhysicSetting();
             PhysicSetting result = setting.Physic;
-
+            
             // Assert
             Assert.NotNull(setting);
             Assert.NotNull(result);
             Assert.IsType<PhysicSetting>(result);
         }
-
+        
         /// <summary>
         ///     Tests that test settings scene v 2
         /// </summary>
@@ -287,11 +286,11 @@ namespace Alis.Test.Core.Ecs.System.Configuration
         {
             // Arrange
             Setting setting = new Setting();
-
+            
             // Act
             setting.Scene = new SceneSetting();
             SceneSetting result = setting.Scene;
-
+            
             // Assert
             Assert.NotNull(setting);
             Assert.NotNull(result);

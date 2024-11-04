@@ -38,17 +38,17 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         ///     The sqrt im plot bin
         /// </summary>
         Sqrt = -1,
-
+        
         /// <summary>
         ///     The sturges im plot bin
         /// </summary>
         Sturges = -2,
-
+        
         /// <summary>
         ///     The rice im plot bin
         /// </summary>
         Rice = -3,
-
+        
         /// <summary>
         ///     The scott im plot bin
         /// </summary>

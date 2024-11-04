@@ -52,19 +52,19 @@ namespace Alis.Core.Ecs.Component.Render
         ///     The
         /// </summary>
         private int h;
-
+        
         /// <summary>
         ///     The rectangle
         /// </summary>
         private RectangleI rectangle;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         private int w;
-
+        
         /// <summary>
-        /// Initializes a new instance of the <see cref="Sprite"/> class
+        ///     Initializes a new instance of the <see cref="Sprite" /> class
         /// </summary>
         public Sprite()
         {
@@ -75,7 +75,7 @@ namespace Alis.Core.Ecs.Component.Render
         }
         
         /// <summary>
-        /// Initializes a new instance of the <see cref="Sprite"/> class
+        ///     Initializes a new instance of the <see cref="Sprite" /> class
         /// </summary>
         /// <param name="nameFile">The name file</param>
         public Sprite(string nameFile)
@@ -85,7 +85,7 @@ namespace Alis.Core.Ecs.Component.Render
             Depth = 0;
             Flips = RendererFlips.None;
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Sprite" /> class
         /// </summary>
@@ -107,7 +107,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         [JsonPropertyName("_Depth_")]
         public int Depth { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the flip
         /// </summary>
@@ -119,31 +119,31 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         [JsonIgnore]
         public string Path { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the name file
         /// </summary>
         [JsonPropertyName("_NameFile_")]
         public string NameFile { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the texture
         /// </summary>
         [JsonIgnore]
         public IntPtr Texture { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the size
         /// </summary>
         [JsonPropertyName("_Size_")]
         public Vector2 Size { get; set; }
-
+        
         /// <summary>
         ///     Builders this instance
         /// </summary>
         /// <returns>The sprite builder</returns>
         public SpriteBuilder Builder() => new SpriteBuilder();
-
+        
         /// <summary>
         ///     Inits this instance
         /// </summary>
@@ -152,16 +152,16 @@ namespace Alis.Core.Ecs.Component.Render
             if (!string.IsNullOrEmpty(NameFile))
             {
                 Path = AssetManager.Find(NameFile);
-
+                
                 Texture = Sdl.CreateTextureFromSurface(Context.GraphicManager.Renderer, Sdl.LoadBmp(Path));
-
+                
                 // get the size of sprite.Texture
                 Sdl.QueryTexture(Texture, out _, out _, out int w, out int h);
-
+                
                 Size = new Vector2(w, h);
             }
         }
-
+        
         /// <summary>
         ///     Awakes this instance
         /// </summary>
@@ -169,24 +169,24 @@ namespace Alis.Core.Ecs.Component.Render
         {
             Context.GraphicManager.Attach(this);
         }
-
+        
         /// <summary>
         ///     Ons the start
         /// </summary>
         public override void OnStart()
         {
             Sdl.QueryTexture(Texture, out _, out _, out w, out h);
-
+            
             new RectangleI((int) GameObject.Transform.Position.X, (int) GameObject.Transform.Position.Y, w, h);
         }
-
+        
         /// <summary>
         ///     Ons the update
         /// </summary>
         public override void OnUpdate()
         {
         }
-
+        
         /// <summary>
         ///     Exits this instance
         /// </summary>
@@ -194,7 +194,7 @@ namespace Alis.Core.Ecs.Component.Render
         {
             Context.GraphicManager.UnAttach(this);
         }
-
+        
         /// <summary>
         ///     Renders the renderer
         /// </summary>
@@ -208,16 +208,16 @@ namespace Alis.Core.Ecs.Component.Render
             Vector2 spriteSize = Size;
             Vector2 spriteScale = GameObject.Transform.Scale;
             float spriteRotation = GameObject.Transform.Rotation;
-
+            
             float spritePosX = spritePosition.X * pixelsPerMeter;
             float spritePosY = spritePosition.Y * pixelsPerMeter;
-
+            
             int scaledWidth = (int) (spriteSize.X * spriteScale.X);
             int scaledHeight = (int) (spriteSize.Y * spriteScale.Y);
-
+            
             int x = (int) (spritePosX - cameraPosition.X * pixelsPerMeter + cameraResolution.X / 2 - scaledWidth / 2);
             int y = (int) (spritePosY - cameraPosition.Y * pixelsPerMeter + cameraResolution.Y / 2 - scaledHeight / 2);
-
+            
             rectangle = new RectangleI
             {
                 X = x,
@@ -225,10 +225,10 @@ namespace Alis.Core.Ecs.Component.Render
                 W = scaledWidth,
                 H = scaledHeight
             };
-
+            
             Sdl.RenderCopyEx(renderer, Texture, IntPtr.Zero, ref rectangle, spriteRotation, IntPtr.Zero, RendererFlips.FlipVertical);
         }
-
+        
         /// <summary>
         ///     Describes whether this instance is visible
         /// </summary>
@@ -241,24 +241,24 @@ namespace Alis.Core.Ecs.Component.Render
             Vector2 spritePosition = GameObject.Transform.Position;
             Vector2 spriteSize = Size;
             float spriteRotation = GameObject.Transform.Rotation;
-
+            
             float spritePosX = spritePosition.X * pixelsPerMeter;
             float spritePosY = spritePosition.Y * pixelsPerMeter;
-
+            
             float cameraLeft = cameraPosition.X * pixelsPerMeter - cameraResolution.X / 2;
             float cameraRight = cameraPosition.X * pixelsPerMeter + cameraResolution.X / 2;
             float cameraTop = cameraPosition.Y * pixelsPerMeter - cameraResolution.Y / 2;
             float cameraBottom = cameraPosition.Y * pixelsPerMeter + cameraResolution.Y / 2;
-
+            
             // Calculate the bounding box of the rotated sprite
             float halfWidth = spriteSize.X / 2;
             float halfHeight = spriteSize.Y / 2;
             float cos = (float) Math.Cos(spriteRotation);
             float sin = (float) Math.Sin(spriteRotation);
-
+            
             float[] cornersX = new float[4];
             float[] cornersY = new float[4];
-
+            
             cornersX[0] = spritePosX + (-halfWidth * cos - -halfHeight * sin);
             cornersY[0] = spritePosY + (-halfWidth * sin + -halfHeight * cos);
             cornersX[1] = spritePosX + (halfWidth * cos - -halfHeight * sin);
@@ -267,15 +267,15 @@ namespace Alis.Core.Ecs.Component.Render
             cornersY[2] = spritePosY + (halfWidth * sin + halfHeight * cos);
             cornersX[3] = spritePosX + (-halfWidth * cos - halfHeight * sin);
             cornersY[3] = spritePosY + (-halfWidth * sin + halfHeight * cos);
-
+            
             float spriteLeft = Min(cornersX);
             float spriteRight = Max(cornersX);
             float spriteTop = Min(cornersY);
             float spriteBottom = Max(cornersY);
-
+            
             return (spriteRight > cameraLeft) && (spriteLeft < cameraRight) && (spriteBottom > cameraTop) && (spriteTop < cameraBottom);
         }
-
+        
         /// <summary>
         ///     Mins the corners x
         /// </summary>
@@ -291,10 +291,10 @@ namespace Alis.Core.Ecs.Component.Render
                     min = cornersX[i];
                 }
             }
-
+            
             return min;
         }
-
+        
         /// <summary>
         ///     Maxes the corners x
         /// </summary>
@@ -310,7 +310,7 @@ namespace Alis.Core.Ecs.Component.Render
                     max = cornersX[i];
                 }
             }
-
+            
             return max;
         }
     }

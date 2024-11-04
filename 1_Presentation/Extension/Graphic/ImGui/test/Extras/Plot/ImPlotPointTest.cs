@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotPoint point = new ImPlotPoint();
             Assert.Equal(default(double), point.X);
         }
-
+        
         /// <summary>
         ///     Tests that y should be initialized
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotPoint point = new ImPlotPoint();
             Assert.Equal(default(double), point.Y);
         }
-
+        
         /// <summary>
         ///     Tests that x should set and get correctly
         /// </summary>
@@ -68,7 +68,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             point.X = value;
             Assert.Equal(value, point.X);
         }
-
+        
         /// <summary>
         ///     Tests that y should set and get correctly
         /// </summary>

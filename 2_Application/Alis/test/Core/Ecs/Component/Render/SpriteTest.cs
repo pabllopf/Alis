@@ -28,9 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Net.Mime;
 using Alis.Builder.Core.Ecs.Component.Render;
-using Alis.Core.Ecs;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
 using Alis.Core.Ecs.System;
@@ -58,7 +56,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
             sprite.OnStart();
             sprite.OnInit();
         }
-
+        
         /// <summary>
         ///     Tests that on awake valid input
         /// </summary>
@@ -73,7 +71,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
             sprite.OnStart();
             sprite.OnAwake();
         }
-
+        
         /// <summary>
         ///     Tests that on exit valid input
         /// </summary>
@@ -88,7 +86,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
             sprite.OnStart();
             sprite.OnExit();
         }
-
+        
         /// <summary>
         ///     Tests that render valid input
         /// </summary>
@@ -100,7 +98,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
             IntPtr renderer = IntPtr.Zero; // You would need to initialize a valid renderer here
             Camera camera = new Camera(); // You would need to initialize a valid camera here
         }
-
+        
         /// <summary>
         ///     Tests that render without camera valid input
         /// </summary>
@@ -111,7 +109,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
             Sprite sprite = new Sprite("dino_assets.png");
             IntPtr renderer = IntPtr.Zero;
         }
-
+        
         /// <summary>
         ///     Tests that builder should return sprite builder
         /// </summary>
@@ -123,8 +121,8 @@ namespace Alis.Test.Core.Ecs.Component.Render
             Assert.NotNull(result);
             Assert.IsType<SpriteBuilder>(result);
         }
-
-
+        
+        
         /// <summary>
         ///     Tests that flips set value should change value
         /// </summary>
@@ -134,10 +132,10 @@ namespace Alis.Test.Core.Ecs.Component.Render
             Sprite sprite = new Sprite();
             sprite.Flips = RendererFlips.FlipHorizontal;
             Assert.Equal(RendererFlips.FlipHorizontal, sprite.Flips);
-
+            
             sprite.Flips = RendererFlips.FlipVertical;
             Assert.Equal(RendererFlips.FlipVertical, sprite.Flips);
-
+            
             sprite.Flips = RendererFlips.None;
             Assert.Equal(RendererFlips.None, sprite.Flips);
         }

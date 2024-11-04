@@ -38,15 +38,15 @@ namespace Alis.Core.Ecs.System.Manager.Audio
     public class AudioManager : AManager
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AudioManager"/> class
+        ///     Initializes a new instance of the <see cref="AudioManager" /> class
         /// </summary>
         /// <param name="context">The context</param>
         public AudioManager(Context context) : base(context)
         {
         }
-
+        
         /// <summary>
-        /// Initializes a new instance of the <see cref="AudioManager"/> class
+        ///     Initializes a new instance of the <see cref="AudioManager" /> class
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="name">The name</param>

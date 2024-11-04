@@ -57,7 +57,7 @@ namespace Alis.Core.Physic.Dynamics
             Add(fixture);
             return fixture;
         }
-
+        
         /// <summary>
         ///     Creates the edge using the specified start
         /// </summary>
@@ -69,7 +69,7 @@ namespace Alis.Core.Physic.Dynamics
             EdgeShape edgeShape = new EdgeShape(start, end);
             return CreateFixture(edgeShape);
         }
-
+        
         /// <summary>
         ///     Creates the chain shape using the specified vertices
         /// </summary>
@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Dynamics
             ChainShape shape = new ChainShape(vertices);
             return CreateFixture(shape);
         }
-
+        
         /// <summary>
         ///     Creates the loop shape using the specified vertices
         /// </summary>
@@ -91,7 +91,7 @@ namespace Alis.Core.Physic.Dynamics
             ChainShape shape = new ChainShape(vertices, true);
             return CreateFixture(shape);
         }
-
+        
         /// <summary>
         ///     Creates the rectangle using the specified width
         /// </summary>
@@ -107,7 +107,7 @@ namespace Alis.Core.Physic.Dynamics
             PolygonShape rectangleShape = new PolygonShape(rectangleVertices, density);
             return CreateFixture(rectangleShape);
         }
-
+        
         /// <summary>
         ///     Creates the circle using the specified radius
         /// </summary>
@@ -119,11 +119,11 @@ namespace Alis.Core.Physic.Dynamics
         {
             if (radius <= 0)
                 throw new ArgumentOutOfRangeException("radius", "Radius must be more than 0 meters");
-
+            
             CircleShape circleShape = new CircleShape(radius, density);
             return CreateFixture(circleShape);
         }
-
+        
         /// <summary>
         ///     Creates the circle using the specified radius
         /// </summary>
@@ -136,12 +136,12 @@ namespace Alis.Core.Physic.Dynamics
         {
             if (radius <= 0)
                 throw new ArgumentOutOfRangeException("radius", "Radius must be more than 0 meters");
-
+            
             CircleShape circleShape = new CircleShape(radius, density);
             circleShape.Position = offset;
             return CreateFixture(circleShape);
         }
-
+        
         /// <summary>
         ///     Creates the polygon using the specified vertices
         /// </summary>
@@ -153,11 +153,11 @@ namespace Alis.Core.Physic.Dynamics
         {
             if (vertices.Count <= 1)
                 throw new ArgumentOutOfRangeException("vertices", "Too few points to be a polygon");
-
+            
             PolygonShape polygon = new PolygonShape(vertices, density);
             return CreateFixture(polygon);
         }
-
+        
         /// <summary>
         ///     Creates the ellipse using the specified x radius
         /// </summary>
@@ -172,15 +172,15 @@ namespace Alis.Core.Physic.Dynamics
         {
             if (xRadius <= 0)
                 throw new ArgumentOutOfRangeException("xRadius", "X-radius must be more than 0");
-
+            
             if (yRadius <= 0)
                 throw new ArgumentOutOfRangeException("yRadius", "Y-radius must be more than 0");
-
+            
             Vertices ellipseVertices = PolygonTools.CreateEllipse(xRadius, yRadius, edges);
             PolygonShape polygonShape = new PolygonShape(ellipseVertices, density);
             return CreateFixture(polygonShape);
         }
-
+        
         /// <summary>
         ///     Creates the compound polygon using the specified list
         /// </summary>
@@ -190,7 +190,7 @@ namespace Alis.Core.Physic.Dynamics
         public List<Fixture> CreateCompoundPolygon(List<Vertices> list, float density)
         {
             List<Fixture> res = new List<Fixture>(list.Count);
-
+            
             //Then we create several fixtures using the body
             foreach (Vertices vertices in list)
             {
@@ -205,10 +205,10 @@ namespace Alis.Core.Physic.Dynamics
                     res.Add(CreateFixture(shape));
                 }
             }
-
+            
             return res;
         }
-
+        
         /// <summary>
         ///     Creates the line arc using the specified radians
         /// </summary>
@@ -223,7 +223,7 @@ namespace Alis.Core.Physic.Dynamics
             arc.Rotate((Constant.Pi - radians) / 2);
             return closed ? CreateLoopShape(arc) : CreateChainShape(arc);
         }
-
+        
         /// <summary>
         ///     Creates the solid arc using the specified density
         /// </summary>
@@ -236,12 +236,12 @@ namespace Alis.Core.Physic.Dynamics
         {
             Vertices arc = PolygonTools.CreateArc(radians, sides, radius);
             arc.Rotate((Constant.Pi - radians) / 2);
-
+            
             //Close the arc
             arc.Add(arc[0]);
-
+            
             List<Vertices> triangles = Triangulate.ConvexPartition(arc, TriangulationAlgorithm.Earclip);
-
+            
             return CreateCompoundPolygon(triangles, density);
         }
     }

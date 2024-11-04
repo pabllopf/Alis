@@ -41,12 +41,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
         ///     The random
         /// </summary>
         private static readonly Random RNG = new Random();
-
+        
         /// <summary>
         ///     The pi
         /// </summary>
         private static readonly double PI_2 = 2.0 * Math.PI;
-
+        
         /// <summary>
         ///     Randoms the circle sweep using the specified scale
         /// </summary>
@@ -58,7 +58,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
             PolygonPoint point;
             PolygonPoint[] points;
             double radius = scale / 4;
-
+            
             points = new PolygonPoint[vertexCount];
             for (int i = 0; i < vertexCount; i++)
             {
@@ -76,19 +76,19 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
                     {
                         radius += 25 * scale / vertexCount * (0.5 - RNG.NextDouble());
                     }
-
+                    
                     radius = radius > scale / 2 ? scale / 2 : radius;
                     radius = radius < scale / 10 ? scale / 10 : radius;
                 } while (radius < scale / 10 || radius > scale / 2);
-
+                
                 point = new PolygonPoint(radius * Math.Cos(PI_2 * i / vertexCount),
                     radius * Math.Sin(PI_2 * i / vertexCount));
                 points[i] = point;
             }
-
+            
             return new Polygon.Polygon(points);
         }
-
+        
         /// <summary>
         ///     Randoms the circle sweep 2 using the specified scale
         /// </summary>
@@ -100,7 +100,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
             PolygonPoint point;
             PolygonPoint[] points;
             double radius = scale / 4;
-
+            
             points = new PolygonPoint[vertexCount];
             for (int i = 0; i < vertexCount; i++)
             {
@@ -110,12 +110,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
                     radius = radius > scale / 2 ? scale / 2 : radius;
                     radius = radius < scale / 10 ? scale / 10 : radius;
                 } while (radius < scale / 10 || radius > scale / 2);
-
+                
                 point = new PolygonPoint(radius * Math.Cos(PI_2 * i / vertexCount),
                     radius * Math.Sin(PI_2 * i / vertexCount));
                 points[i] = point;
             }
-
+            
             return new Polygon.Polygon(points);
         }
     }

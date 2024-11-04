@@ -46,13 +46,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
         {
             EventType expectedType = EventType.Quit;
             uint expectedTimestamp = 123456789;
-
+            
             GenericEvent genericEvent = new GenericEvent
             {
                 type = expectedType,
                 timestamp = expectedTimestamp
             };
-
+            
             Assert.Equal(expectedType, genericEvent.type);
             Assert.Equal(expectedTimestamp, genericEvent.timestamp);
         }

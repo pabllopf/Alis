@@ -46,82 +46,82 @@ namespace Alis.Core.Network.Internal
         ///     The max ping pong payload len
         /// </summary>
         internal const int PingPongPayloadLen = 125;
-
+        
         /// <summary>
         ///     The guid
         /// </summary>
         internal readonly Guid _guid;
-
+        
         /// <summary>
         ///     The include exception in close response
         /// </summary>
         internal readonly bool _includeExceptionInCloseResponse;
-
+        
         /// <summary>
         ///     The internal read cts
         /// </summary>
         internal readonly CancellationTokenSource _internalReadCts = new CancellationTokenSource();
-
+        
         /// <summary>
         ///     The is client
         /// </summary>
         internal readonly bool _isClient;
-
+        
         /// <summary>
         ///     The recycled stream factory
         /// </summary>
         internal readonly Func<MemoryStream> _recycledStreamFactory;
-
+        
         /// <summary>
         ///     The semaphore slim
         /// </summary>
         internal readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1);
-
+        
         /// <summary>
         ///     The stream
         /// </summary>
         internal readonly Stream _stream;
-
+        
         /// <summary>
         ///     The use per message deflate
         /// </summary>
         internal readonly bool _usePerMessageDeflate;
-
+        
         /// <summary>
         ///     The close status
         /// </summary>
         internal WebSocketCloseStatus? _closeStatus;
-
+        
         /// <summary>
         ///     The close status description
         /// </summary>
         internal string _closeStatusDescription;
-
+        
         /// <summary>
         ///     The binary
         /// </summary>
         internal WebSocketMessageType _continuationFrameMessageType = WebSocketMessageType.Binary;
-
+        
         /// <summary>
         ///     The is continuation frame
         /// </summary>
         internal bool _isContinuationFrame;
-
+        
         /// <summary>
         ///     The read cursor
         /// </summary>
         internal WebSocketReadCursor _readCursor;
-
+        
         /// <summary>
         ///     The state
         /// </summary>
         internal WebSocketState _state;
-
+        
         /// <summary>
         ///     The try get buffer failure logged
         /// </summary>
         internal bool _tryGetBufferFailureLogged;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="WebSocketImplementation" /> class
         /// </summary>
@@ -145,7 +145,7 @@ namespace Alis.Core.Network.Internal
             SubProtocol = subProtocol;
             _state = WebSocketState.Open;
             _readCursor = new WebSocketReadCursor(null, 0, 0);
-
+            
             if (secWebSocketExtensions?.IndexOf("permessage-deflate") >= 0)
             {
                 _usePerMessageDeflate = true;
@@ -155,48 +155,48 @@ namespace Alis.Core.Network.Internal
             {
                 Events.Log.NoMessageCompression(guid);
             }
-
+            
             KeepAliveInterval = keepAliveInterval;
             _includeExceptionInCloseResponse = includeExceptionInCloseResponse;
             if (keepAliveInterval.Ticks < 0)
             {
                 throw new InvalidOperationException("KeepAliveInterval must be Zero or positive");
             }
-
-
+            
+            
             if (keepAliveInterval == TimeSpan.Zero)
             {
                 Events.Log.KeepAliveIntervalZero(guid);
             }
         }
-
+        
         /// <summary>
         ///     Gets the value of the close status
         /// </summary>
         public override WebSocketCloseStatus? CloseStatus => _closeStatus;
-
+        
         /// <summary>
         ///     Gets the value of the close status description
         /// </summary>
         public override string CloseStatusDescription => _closeStatusDescription;
-
+        
         /// <summary>
         ///     Gets the value of the state
         /// </summary>
         public override WebSocketState State => _state;
-
+        
         /// <summary>
         ///     Gets the value of the sub protocol
         /// </summary>
         public override string SubProtocol { get; }
-
+        
         /// <summary>
         ///     Gets the value of the keep alive interval
         /// </summary>
         public TimeSpan KeepAliveInterval { get; }
-
+        
         public event EventHandler<PongEventArgs> Pong;
-
+        
         /// <summary>
         ///     Receives the buffer
         /// </summary>
@@ -212,7 +212,7 @@ namespace Alis.Core.Network.Internal
                 using CancellationTokenSource linkedCts =
                     CancellationTokenSource.CreateLinkedTokenSource(_internalReadCts.Token, cancellationToken);
                 WebSocketFrame frame = await ReadWebSocketFrame(buffer, linkedCts.Token);
-
+                
                 bool endOfMessage = frame.IsFinBitSet && (_readCursor.NumBytesLeftToRead == 0);
                 return await HandleWebSocketOpCodes(frame, buffer, linkedCts, endOfMessage);
             }
@@ -221,7 +221,7 @@ namespace Alis.Core.Network.Internal
                 return await HandleExceptions(catchAll);
             }
         }
-
+        
         /// <summary>
         ///     Reads the web socket frame using the specified buffer
         /// </summary>
@@ -237,7 +237,7 @@ namespace Alis.Core.Network.Internal
                     _readCursor = await WebSocketFrameReader.ReadFromCursorAsync(_stream, buffer, _readCursor, cancellationToken);
                     return _readCursor.WebSocketFrame;
                 }
-
+                
                 _readCursor = await WebSocketFrameReader.ReadAsync(_stream, buffer, cancellationToken);
                 WebSocketFrame frame = _readCursor.WebSocketFrame;
                 Events.Log.ReceivedFrame(_guid, frame.OpCode, frame.IsFinBitSet, frame.Count);
@@ -249,7 +249,7 @@ namespace Alis.Core.Network.Internal
                 throw;
             }
         }
-
+        
         /// <summary>
         ///     Handles the web socket op codes using the specified frame
         /// </summary>
@@ -278,7 +278,7 @@ namespace Alis.Core.Network.Internal
                     return await HandleDefault(frame);
             }
         }
-
+        
         /// <summary>
         ///     Handles the connection close using the specified frame
         /// </summary>
@@ -287,7 +287,7 @@ namespace Alis.Core.Network.Internal
         /// <param name="token">The token</param>
         /// <returns>A task containing the web socket receive result</returns>
         internal async Task<WebSocketReceiveResult> HandleConnectionClose(WebSocketFrame frame, ArraySegment<byte> buffer, CancellationToken token) => await RespondToCloseFrame(frame, buffer, token);
-
+        
         /// <summary>
         ///     Handles the ping using the specified frame
         /// </summary>
@@ -302,10 +302,10 @@ namespace Alis.Core.Network.Internal
                 ArraySegment<byte> pingPayload = new ArraySegment<byte>(buffer.Array, buffer.Offset, _readCursor.NumBytesRead);
                 await SendPongAsync(pingPayload, linkedCts.Token);
             }
-
+            
             return null;
         }
-
+        
         /// <summary>
         ///     Handles the pong using the specified frame
         /// </summary>
@@ -319,10 +319,10 @@ namespace Alis.Core.Network.Internal
                 ArraySegment<byte> pongBuffer = new ArraySegment<byte>(buffer.Array, _readCursor.NumBytesRead, buffer.Offset);
                 Pong?.Invoke(this, new PongEventArgs(pongBuffer));
             }
-
+            
             return null;
         }
-
+        
         /// <summary>
         ///     Handles the text frame using the specified frame
         /// </summary>
@@ -335,10 +335,10 @@ namespace Alis.Core.Network.Internal
             {
                 _continuationFrameMessageType = WebSocketMessageType.Text;
             }
-
+            
             return new WebSocketReceiveResult(_readCursor.NumBytesRead, WebSocketMessageType.Text, endOfMessage);
         }
-
+        
         /// <summary>
         ///     Handles the binary frame using the specified frame
         /// </summary>
@@ -351,10 +351,10 @@ namespace Alis.Core.Network.Internal
             {
                 _continuationFrameMessageType = WebSocketMessageType.Binary;
             }
-
+            
             return new WebSocketReceiveResult(_readCursor.NumBytesRead, WebSocketMessageType.Binary, endOfMessage);
         }
-
+        
         /// <summary>
         ///     Handles the continuation frame using the specified frame
         /// </summary>
@@ -362,7 +362,7 @@ namespace Alis.Core.Network.Internal
         /// <param name="endOfMessage">The end of message</param>
         /// <returns>The web socket receive result</returns>
         internal WebSocketReceiveResult HandleContinuationFrame(WebSocketFrame frame, bool endOfMessage) => new WebSocketReceiveResult(_readCursor.NumBytesRead, _continuationFrameMessageType, endOfMessage);
-
+        
         /// <summary>
         ///     Handles the default using the specified frame
         /// </summary>
@@ -374,7 +374,7 @@ namespace Alis.Core.Network.Internal
             await CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.ProtocolError, ex.Message, ex);
             throw ex;
         }
-
+        
         /// <summary>
         ///     Handles the exceptions using the specified catch all
         /// </summary>
@@ -386,10 +386,10 @@ namespace Alis.Core.Network.Internal
             {
                 await CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.InternalServerError, "Unexpected error reading from WebSocket", catchAll);
             }
-
+            
             throw catchAll;
         }
-
+        
         /// <summary>
         ///     Send data to the web socket
         /// </summary>
@@ -405,7 +405,7 @@ namespace Alis.Core.Network.Internal
         {
             using MemoryStream stream = _recycledStreamFactory();
             WebSocketOpCode opCode = GetOppCode(messageType);
-
+            
             if (_usePerMessageDeflate)
             {
                 using MemoryStream temp = new MemoryStream();
@@ -414,7 +414,7 @@ namespace Alis.Core.Network.Internal
                 {
                     await deflateStream.WriteAsync(buffer.Array, buffer.Offset, buffer.Count);
                 }
-
+                
                 await deflateStream.FlushAsync();
                 ArraySegment<byte> compressedBuffer = new ArraySegment<byte>(temp.ToArray());
                 WebSocketFrameWriter.Write(opCode, compressedBuffer, stream, endOfMessage, _isClient);
@@ -425,11 +425,11 @@ namespace Alis.Core.Network.Internal
                 WebSocketFrameWriter.Write(opCode, buffer, stream, endOfMessage, _isClient);
                 Events.Log.SendingFrame(_guid, opCode, endOfMessage, buffer.Count, false);
             }
-
+            
             await WriteStreamToNetwork(stream, cancellationToken);
             _isContinuationFrame = !endOfMessage;
         }
-
+        
         /// <summary>
         ///     Sends the ping using the specified payload
         /// </summary>
@@ -446,7 +446,7 @@ namespace Alis.Core.Network.Internal
                 throw new InvalidOperationException(
                     $"Cannot send Ping: Max ping message size {PingPongPayloadLen} exceeded: {payload.Count}");
             }
-
+            
             if (_state == WebSocketState.Open)
             {
                 using MemoryStream stream = _recycledStreamFactory();
@@ -455,7 +455,7 @@ namespace Alis.Core.Network.Internal
                 await WriteStreamToNetwork(stream, cancellationToken);
             }
         }
-
+        
         /// <summary>
         ///     Aborts the WebSocket without sending a Close frame
         /// </summary>
@@ -464,7 +464,7 @@ namespace Alis.Core.Network.Internal
             _state = WebSocketState.Aborted;
             _internalReadCts.Cancel();
         }
-
+        
         /// <summary>
         ///     Closes the close status
         /// </summary>
@@ -489,8 +489,8 @@ namespace Alis.Core.Network.Internal
                 Events.Log.InvalidStateBeforeClose(_guid, _state);
             }
         }
-
-
+        
+        
         /// <summary>
         ///     Closes the output using the specified close status
         /// </summary>
@@ -503,7 +503,7 @@ namespace Alis.Core.Network.Internal
             if (_state == WebSocketState.Open)
             {
                 _state = WebSocketState.Closed; // set this before we write to the network because the write may fail
-
+                
                 using MemoryStream stream = _recycledStreamFactory();
                 ArraySegment<byte> buffer = BuildClosePayload(closeStatus, statusDescription);
                 WebSocketFrameWriter.Write(WebSocketOpCode.ConnectionClose, buffer, stream, true, _isClient);
@@ -515,18 +515,18 @@ namespace Alis.Core.Network.Internal
             {
                 Events.Log.InvalidStateBeforeCloseOutput(_guid, _state);
             }
-
+            
             // cancel pending reads
             _internalReadCts.Cancel();
         }
-
+        
         /// <summary>
         ///     Dispose will send a close frame if the connection is still open
         /// </summary>
         public override void Dispose()
         {
             Events.Log.WebSocketDispose(_guid, _state);
-
+            
             try
             {
                 if (_state == WebSocketState.Open)
@@ -543,7 +543,7 @@ namespace Alis.Core.Network.Internal
                         Events.Log.WebSocketDisposeCloseTimeout(_guid, _state);
                     }
                 }
-
+                
                 // cancel pending reads - usually does nothing
                 _internalReadCts.Cancel();
                 _stream.Close();
@@ -555,7 +555,7 @@ namespace Alis.Core.Network.Internal
                 Events.Log.WebSocketDisposeError(_guid, _state, ex.ToString());
             }
         }
-
+        
         /// <summary>
         ///     Called when a Pong frame is received
         /// </summary>
@@ -564,7 +564,7 @@ namespace Alis.Core.Network.Internal
         {
             Pong?.Invoke(this, e);
         }
-
+        
         /// <summary>
         ///     As per the spec, write the close status followed by the close reason
         /// </summary>
@@ -575,19 +575,19 @@ namespace Alis.Core.Network.Internal
         {
             byte[] statusBuffer = BitConverter.GetBytes((ushort) closeStatus);
             Array.Reverse(statusBuffer); // network byte order (big endian)
-
+            
             if (statusDescription == null)
             {
                 return new ArraySegment<byte>(statusBuffer);
             }
-
+            
             byte[] descBuffer = Encoding.UTF8.GetBytes(statusDescription);
             byte[] payload = new byte[statusBuffer.Length + descBuffer.Length];
             Buffer.BlockCopy(statusBuffer, 0, payload, 0, statusBuffer.Length);
             Buffer.BlockCopy(descBuffer, 0, payload, statusBuffer.Length, descBuffer.Length);
             return new ArraySegment<byte>(payload);
         }
-
+        
         /// <summary>
         ///     Sends the pong using the specified payload
         /// </summary>
@@ -596,13 +596,13 @@ namespace Alis.Core.Network.Internal
         internal async Task SendPongAsync(ArraySegment<byte> payload, CancellationToken cancellationToken)
         {
             ValidatePayloadSize(payload);
-
+            
             if (_state == WebSocketState.Open)
             {
                 await SendPongFrame(payload, cancellationToken);
             }
         }
-
+        
         /// <summary>
         ///     Validates the payload size using the specified payload
         /// </summary>
@@ -615,7 +615,7 @@ namespace Alis.Core.Network.Internal
                 throw new InvalidOperationException($"Max ping message size {PingPongPayloadLen} exceeded: {payload.Count}");
             }
         }
-
+        
         /// <summary>
         ///     Sends the pong frame using the specified payload
         /// </summary>
@@ -636,7 +636,7 @@ namespace Alis.Core.Network.Internal
                 throw;
             }
         }
-
+        
         /// <summary>
         ///     Called when a Close frame is received
         ///     Send a response close frame if applicable
@@ -646,7 +646,7 @@ namespace Alis.Core.Network.Internal
         {
             _closeStatus = frame.CloseStatus;
             _closeStatusDescription = frame.CloseStatusDescription;
-
+            
             if (_state == WebSocketState.CloseSent)
             {
                 // this is a response to close handshake initiated by this instance
@@ -660,7 +660,7 @@ namespace Alis.Core.Network.Internal
                 ArraySegment<byte> closePayload = new ArraySegment<byte>(new byte[0], 0, 0);
                 _state = WebSocketState.CloseReceived;
                 Events.Log.CloseHandshakeRespond(_guid, frame.CloseStatus, frame.CloseStatusDescription);
-
+                
                 using MemoryStream stream = _recycledStreamFactory();
                 WebSocketFrameWriter.Write(WebSocketOpCode.ConnectionClose, closePayload, stream, true, _isClient);
                 Events.Log.SendingFrame(_guid, WebSocketOpCode.ConnectionClose, true, closePayload.Count, false);
@@ -671,11 +671,11 @@ namespace Alis.Core.Network.Internal
                 Events.Log.CloseFrameReceivedInUnexpectedState(_guid, _state, frame.CloseStatus,
                     frame.CloseStatusDescription);
             }
-
+            
             return new WebSocketReceiveResult(frame.Count, WebSocketMessageType.Close, frame.IsFinBitSet,
                 frame.CloseStatus, frame.CloseStatusDescription);
         }
-
+        
         /// <summary>
         ///     Note that the way in which the stream buffer is accessed can lead to significant performance problems
         ///     You want to avoid a call to stream.ToArray to avoid extra memory allocation
@@ -693,15 +693,15 @@ namespace Alis.Core.Network.Internal
                     Events.Log.TryGetBufferNotSupported(_guid, stream?.GetType()?.ToString());
                     _tryGetBufferFailureLogged = true;
                 }
-
+                
                 // internal buffer not suppoted, fall back to ToArray()
                 byte[] array = stream.ToArray();
                 buffer = new ArraySegment<byte>(array, 0, array.Length);
             }
-
+            
             return new ArraySegment<byte>(buffer.Array, buffer.Offset, (int) stream.Position);
         }
-
+        
         /// <summary>
         ///     Puts data on the wire
         /// </summary>
@@ -721,7 +721,7 @@ namespace Alis.Core.Network.Internal
                 _semaphore.Release();
             }
         }
-
+        
         /// <summary>
         ///     Turns a spec websocket frame opcode into a WebSocketMessageType
         /// </summary>
@@ -731,7 +731,7 @@ namespace Alis.Core.Network.Internal
             {
                 return WebSocketOpCode.ContinuationFrame;
             }
-
+            
             switch (messageType)
             {
                 case WebSocketMessageType.Binary:
@@ -745,8 +745,8 @@ namespace Alis.Core.Network.Internal
                     throw new NotSupportedException($"MessageType {messageType} not supported");
             }
         }
-
-
+        
+        
         /// <summary>
         ///     Automatic WebSocket close in response to some invalid data from the remote websocket host
         /// </summary>
@@ -758,7 +758,7 @@ namespace Alis.Core.Network.Internal
         {
             TimeSpan timeSpan = TimeSpan.FromSeconds(5);
             Events.Log.CloseOutputAutoTimeout(_guid, closeStatus, statusDescription, ex.ToString());
-
+            
             try
             {
                 // we may not want to send sensitive information to the client / server
@@ -766,7 +766,7 @@ namespace Alis.Core.Network.Internal
                 {
                     statusDescription = statusDescription + "\r\n\r\n" + ex;
                 }
-
+                
                 using CancellationTokenSource autoCancel = new CancellationTokenSource(timeSpan);
                 await CloseOutputAsync(closeStatus, statusDescription, autoCancel.Token);
             }

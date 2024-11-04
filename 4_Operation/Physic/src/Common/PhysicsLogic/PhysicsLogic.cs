@@ -41,18 +41,18 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         ///     The cat 01
         /// </summary>
         public ControllerCategory ControllerCategory = ControllerCategory.Cat01;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="PhysicsLogic" /> class
         /// </summary>
         /// <param name="world">The world</param>
         public PhysicsLogic(World world) => World = world;
-
+        
         /// <summary>
         ///     Gets or sets the value of the world
         /// </summary>
         public World World { get; internal set; }
-
+        
         /// <summary>
         ///     Describes whether this instance is active on
         /// </summary>
@@ -62,7 +62,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         {
             if (body.ControllerFilter.IsControllerIgnored(ControllerCategory))
                 return false;
-
+            
             return base.IsActiveOn(body);
         }
     }

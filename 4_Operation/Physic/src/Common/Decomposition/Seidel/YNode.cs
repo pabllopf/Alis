@@ -39,7 +39,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         ///     The edge
         /// </summary>
         private readonly Edge _edge;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="YNode" /> class
         /// </summary>
@@ -49,7 +49,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         public YNode(Edge edge, Node lChild, Node rChild)
             : base(lChild, rChild)
             => _edge = edge;
-
+        
         /// <summary>
         ///     Locates the edge
         /// </summary>
@@ -59,14 +59,14 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         {
             if (_edge.IsAbove(edge.P))
                 return RightChild.Locate(edge); // Move down the graph
-
+            
             if (_edge.IsBelow(edge.P))
                 return LeftChild.Locate(edge); // Move up the graph
-
+            
             // s and segment share the same endpoint, p
             if (edge.Slope < _edge.Slope)
                 return RightChild.Locate(edge); // Move down the graph
-
+            
             // Move up the graph
             return LeftChild.Locate(edge);
         }

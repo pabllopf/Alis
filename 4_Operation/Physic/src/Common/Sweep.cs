@@ -45,33 +45,33 @@ namespace Alis.Core.Physic.Common
         ///     World angles
         /// </summary>
         public float A;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public float A0;
-
+        
         /// <summary>
         ///     Fraction of the current time step in the range [0,1]
         ///     c0 and a0 are the positions at alpha0.
         /// </summary>
         public float Alpha0;
-
+        
         /// <summary>
         ///     Center world positions
         /// </summary>
         public Vector2 C;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public Vector2 C0;
-
+        
         /// <summary>
         ///     Local center of mass position
         /// </summary>
         public Vector2 LocalCenter;
-
+        
         /// <summary>
         ///     Get the interpolated transform at a specific time.
         /// </summary>
@@ -82,11 +82,11 @@ namespace Alis.Core.Physic.Common
             xfb.p = new Vector2((1.0f - beta) * C0.X + beta * C.X, (1.0f - beta) * C0.Y + beta * C.Y);
             float angle = (1.0f - beta) * A0 + beta * A;
             xfb.q = Complex.FromAngle(angle);
-
+            
             // Shift to origin
             xfb.p -= Complex.Multiply(ref LocalCenter, ref xfb.q);
         }
-
+        
         /// <summary>
         ///     Advance the sweep forward, yielding a new initial state.
         /// </summary>
@@ -99,7 +99,7 @@ namespace Alis.Core.Physic.Common
             A0 += beta * (A - A0);
             Alpha0 = alpha;
         }
-
+        
         /// <summary>
         ///     Normalize the angles.
         /// </summary>

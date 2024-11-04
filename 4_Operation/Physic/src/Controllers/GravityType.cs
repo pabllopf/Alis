@@ -38,7 +38,7 @@ namespace Alis.Core.Physic.Controllers
         ///     The linear gravity type
         /// </summary>
         Linear,
-
+        
         /// <summary>
         ///     The distance squared gravity type
         /// </summary>

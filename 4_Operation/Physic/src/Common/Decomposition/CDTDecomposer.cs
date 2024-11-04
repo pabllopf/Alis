@@ -56,31 +56,31 @@ namespace Alis.Core.Physic.Common.Decomposition
         public static List<Vertices> ConvexPartition(Vertices vertices)
         {
             Debug.Assert(vertices.Count > 3);
-
+            
             Polygon poly = new Polygon();
-
+            
             foreach (Vector2 vertex in vertices)
                 poly.Points.Add(new TriangulationPoint(vertex.X, vertex.Y));
-
+            
             if (vertices.Holes != null)
             {
                 foreach (Vertices holeVertices in vertices.Holes)
                 {
                     Polygon hole = new Polygon();
-
+                    
                     foreach (Vector2 vertex in holeVertices)
                         hole.Points.Add(new TriangulationPoint(vertex.X, vertex.Y));
-
+                    
                     poly.AddHole(hole);
                 }
             }
-
+            
             DTSweepContext tcx = new DTSweepContext();
             tcx.PrepareTriangulation(poly);
             DtSweep.Triangulate(tcx);
-
+            
             List<Vertices> results = new List<Vertices>();
-
+            
             foreach (DelaunayTriangle triangle in poly.Triangles)
             {
                 Vertices v = new Vertices();
@@ -88,10 +88,10 @@ namespace Alis.Core.Physic.Common.Decomposition
                 {
                     v.Add(new Vector2((float) p.X, (float) p.Y));
                 }
-
+                
                 results.Add(v);
             }
-
+            
             return results;
         }
     }

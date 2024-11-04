@@ -45,12 +45,12 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
         public void InternalWinrtWmInfo_InitializesPropertiesCorrectly()
         {
             IntPtr expectedWindow = new IntPtr(123);
-
+            
             InternalWinrtWmInfo info = new InternalWinrtWmInfo
             {
                 Window = expectedWindow
             };
-
+            
             Assert.Equal(expectedWindow, info.Window);
         }
     }

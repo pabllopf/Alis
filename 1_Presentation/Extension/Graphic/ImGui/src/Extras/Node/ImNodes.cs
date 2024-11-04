@@ -48,7 +48,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             ImNodesPinShape shape = ImNodesPinShape.CircleFilled;
             ImNodesNative.ImNodes_BeginInputAttribute(id, shape);
         }
-
+        
         /// <summary>
         ///     Begins the input attribute using the specified id
         /// </summary>
@@ -58,7 +58,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_BeginInputAttribute(id, shape);
         }
-
+        
         /// <summary>
         ///     Begins the node using the specified id
         /// </summary>
@@ -67,7 +67,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_BeginNode(id);
         }
-
+        
         /// <summary>
         ///     Begins the node editor
         /// </summary>
@@ -75,7 +75,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_BeginNodeEditor();
         }
-
+        
         /// <summary>
         ///     Begins the node title bar
         /// </summary>
@@ -83,7 +83,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_BeginNodeTitleBar();
         }
-
+        
         /// <summary>
         ///     Begins the output attribute using the specified id
         /// </summary>
@@ -93,7 +93,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             ImNodesPinShape shape = ImNodesPinShape.CircleFilled;
             ImNodesNative.ImNodes_BeginOutputAttribute(id, shape);
         }
-
+        
         /// <summary>
         ///     Begins the output attribute using the specified id
         /// </summary>
@@ -103,7 +103,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_BeginOutputAttribute(id, shape);
         }
-
+        
         /// <summary>
         ///     Begins the static attribute using the specified id
         /// </summary>
@@ -112,7 +112,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_BeginStaticAttribute(id);
         }
-
+        
         /// <summary>
         ///     Clears the link selection
         /// </summary>
@@ -120,7 +120,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_ClearLinkSelection_Nil();
         }
-
+        
         /// <summary>
         ///     Clears the link selection using the specified link id
         /// </summary>
@@ -129,7 +129,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_ClearLinkSelection_Int(linkId);
         }
-
+        
         /// <summary>
         ///     Clears the node selection
         /// </summary>
@@ -137,7 +137,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_ClearNodeSelection_Nil();
         }
-
+        
         /// <summary>
         ///     Clears the node selection using the specified node id
         /// </summary>
@@ -146,13 +146,13 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_ClearNodeSelection_Int(nodeId);
         }
-
+        
         /// <summary>
         ///     Creates the context
         /// </summary>
         /// <returns>The im nodes context ptr</returns>
         public static ImNodesContext CreateContext() => ImNodesNative.ImNodes_CreateContext();
-
+        
         /// <summary>
         ///     Destroys the context
         /// </summary>
@@ -160,7 +160,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_DestroyContext(new ImNodesContext());
         }
-
+        
         /// <summary>
         ///     Destroys the context using the specified ctx
         /// </summary>
@@ -169,13 +169,13 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_DestroyContext(new ImNodesContext());
         }
-
+        
         /// <summary>
         ///     Editors the context create
         /// </summary>
         /// <returns>The im nodes editor context ptr</returns>
         public static ImNodesEditorContext EditorContextCreate() => ImNodesNative.ImNodes_EditorContextCreate();
-
+        
         /// <summary>
         ///     Editors the context free using the specified noname 1
         /// </summary>
@@ -184,7 +184,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_EditorContextFree(noname1);
         }
-
+        
         /// <summary>
         ///     Editors the context get panning
         /// </summary>
@@ -194,7 +194,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             ImNodesNative.ImNodes_EditorContextGetPanning(out Vector2 retval);
             return retval;
         }
-
+        
         /// <summary>
         ///     Editors the context move to node using the specified node id
         /// </summary>
@@ -203,7 +203,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_EditorContextMoveToNode(nodeId);
         }
-
+        
         /// <summary>
         ///     Editors the context reset panning using the specified pos
         /// </summary>
@@ -212,7 +212,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_EditorContextResetPanning(pos);
         }
-
+        
         /// <summary>
         ///     Editors the context set using the specified noname 1
         /// </summary>
@@ -221,7 +221,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_EditorContextSet(noname1);
         }
-
+        
         /// <summary>
         ///     Ends the input attribute
         /// </summary>
@@ -229,7 +229,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_EndInputAttribute();
         }
-
+        
         /// <summary>
         ///     Ends the node
         /// </summary>
@@ -237,7 +237,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_EndNode();
         }
-
+        
         /// <summary>
         ///     Ends the node editor
         /// </summary>
@@ -245,7 +245,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_EndNodeEditor();
         }
-
+        
         /// <summary>
         ///     Ends the node title bar
         /// </summary>
@@ -253,7 +253,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_EndNodeTitleBar();
         }
-
+        
         /// <summary>
         ///     Ends the output attribute
         /// </summary>
@@ -261,7 +261,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_EndOutputAttribute();
         }
-
+        
         /// <summary>
         ///     Ends the static attribute
         /// </summary>
@@ -269,19 +269,19 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_EndStaticAttribute();
         }
-
+        
         /// <summary>
         ///     Gets the current context
         /// </summary>
         /// <returns>The im nodes context ptr</returns>
         public static ImNodesContext GetCurrentContext() => ImNodesNative.ImNodes_GetCurrentContext();
-
+        
         /// <summary>
         ///     Gets the io
         /// </summary>
         /// <returns>The im nodes io ptr</returns>
         public static ImNodesIo GetIo() => ImNodesNative.ImNodes_GetIO();
-
+        
         /// <summary>
         ///     Gets the node dimensions using the specified id
         /// </summary>
@@ -292,7 +292,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             ImNodesNative.ImNodes_GetNodeDimensions(out Vector2 retval, id);
             return retval;
         }
-
+        
         /// <summary>
         ///     Gets the node editor space pos using the specified node id
         /// </summary>
@@ -303,7 +303,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             ImNodesNative.ImNodes_GetNodeEditorSpacePos(out Vector2 retval, nodeId);
             return retval;
         }
-
+        
         /// <summary>
         ///     Gets the node grid space pos using the specified node id
         /// </summary>
@@ -314,7 +314,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             ImNodesNative.ImNodes_GetNodeGridSpacePos(out Vector2 retval, nodeId);
             return retval;
         }
-
+        
         /// <summary>
         ///     Gets the node screen space pos using the specified node id
         /// </summary>
@@ -325,7 +325,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             ImNodesNative.ImNodes_GetNodeScreenSpacePos(out Vector2 retval, nodeId);
             return retval;
         }
-
+        
         /// <summary>
         ///     Gets the selected links using the specified link ids
         /// </summary>
@@ -334,7 +334,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_GetSelectedLinks(linkIds);
         }
-
+        
         /// <summary>
         ///     Gets the selected nodes using the specified node ids
         /// </summary>
@@ -343,13 +343,13 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_GetSelectedNodes(nodeIds);
         }
-
+        
         /// <summary>
         ///     Gets the style
         /// </summary>
         /// <returns>The im nodes style ptr</returns>
         public static ImNodesStyle GetStyle() => ImNodesNative.ImNodes_GetStyle();
-
+        
         /// <summary>
         ///     Describes whether is any attribute active
         /// </summary>
@@ -359,7 +359,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             byte ret = ImNodesNative.ImNodes_IsAnyAttributeActive(0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is any attribute active
         /// </summary>
@@ -370,7 +370,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             byte ret = ImNodesNative.ImNodes_IsAnyAttributeActive(attributeId);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is attribute active
         /// </summary>
@@ -380,7 +380,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             byte ret = ImNodesNative.ImNodes_IsAttributeActive();
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is editor hovered
         /// </summary>
@@ -390,7 +390,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             byte ret = ImNodesNative.ImNodes_IsEditorHovered();
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is link created
         /// </summary>
@@ -403,7 +403,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             byte ret = ImNodesNative.ImNodes_IsLinkCreated_BoolPtr(startedAtAttributeId, endedAtAttributeId, createdFromSnap);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is link created
         /// </summary>
@@ -418,7 +418,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             createdFromSnap = createdFromSnapArray[0] != 0;
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is link created
         /// </summary>
@@ -432,7 +432,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             byte ret = ImNodesNative.ImNodes_IsLinkCreated_IntPtr(startedAtNodeId, startedAtAttributeId, endedAtNodeId, endedAtAttributeId, 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is link created
         /// </summary>
@@ -449,7 +449,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             createdFromSnap = nativeCreatedFromSnapVal != 0;
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is link destroyed
         /// </summary>
@@ -460,7 +460,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             byte ret = ImNodesNative.ImNodes_IsLinkDestroyed(linkId);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is link dropped
         /// </summary>
@@ -472,7 +472,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             byte ret = ImNodesNative.ImNodes_IsLinkDropped(startedAtAttributeId, includingDetachedLinks);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is link dropped
         /// </summary>
@@ -484,7 +484,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             byte ret = ImNodesNative.ImNodes_IsLinkDropped(includingDetachedLinks, includingDetachedLinks);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is link dropped
         /// </summary>
@@ -497,7 +497,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             byte ret = ImNodesNative.ImNodes_IsLinkDropped(nativeIncludingDetachedLinks, nativeIncludingDetachedLinks);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is link hovered
         /// </summary>
@@ -508,7 +508,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             byte ret = ImNodesNative.ImNodes_IsLinkHovered(linkId);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is link selected
         /// </summary>
@@ -519,7 +519,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             byte ret = ImNodesNative.ImNodes_IsLinkSelected(linkId);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is link started
         /// </summary>
@@ -530,7 +530,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             byte ret = ImNodesNative.ImNodes_IsLinkStarted(startedAtAttributeId);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is node hovered
         /// </summary>
@@ -541,7 +541,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             byte ret = ImNodesNative.ImNodes_IsNodeHovered(nodeId);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is node selected
         /// </summary>
@@ -552,7 +552,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             byte ret = ImNodesNative.ImNodes_IsNodeSelected(nodeId);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether is pin hovered
         /// </summary>
@@ -563,7 +563,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             byte ret = ImNodesNative.ImNodes_IsPinHovered(attributeId);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Links the id
         /// </summary>
@@ -574,7 +574,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_Link(id, startAttributeId, endAttributeId);
         }
-
+        
         /// <summary>
         ///     Loads the current editor state from ini file using the specified file name
         /// </summary>
@@ -591,7 +591,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
                 ImNodesNative.ImNodes_LoadCurrentEditorStateFromIniFile(null);
             }
         }
-
+        
         /// <summary>
         ///     Loads the current editor state from ini string using the specified data
         /// </summary>
@@ -609,7 +609,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
                 ImNodesNative.ImNodes_LoadCurrentEditorStateFromIniString(null, dataSize);
             }
         }
-
+        
         /// <summary>
         ///     Loads the editor state from ini file using the specified editor
         /// </summary>
@@ -627,7 +627,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
                 ImNodesNative.ImNodes_LoadEditorStateFromIniFile(editor, null);
             }
         }
-
+        
         /// <summary>
         ///     Loads the editor state from ini string using the specified editor
         /// </summary>
@@ -646,7 +646,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
                 ImNodesNative.ImNodes_LoadEditorStateFromIniString(editor, null, dataSize);
             }
         }
-
+        
         /// <summary>
         ///     Minis the map
         /// </summary>
@@ -658,7 +658,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             ImNodesMiniMapNodeHoveringCallbackUserData nodeHoveringCallbackData = null;
             ImNodesNative.ImNodes_MiniMap(minimapSizeFraction, location, nodeHoveringCallback, nodeHoveringCallbackData);
         }
-
+        
         /// <summary>
         ///     Minis the map using the specified minimap size fraction
         /// </summary>
@@ -670,7 +670,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             ImNodesMiniMapNodeHoveringCallbackUserData nodeHoveringCallbackData = null;
             ImNodesNative.ImNodes_MiniMap(minimapSizeFraction, location, nodeHoveringCallback, nodeHoveringCallbackData);
         }
-
+        
         /// <summary>
         ///     Minis the map using the specified minimap size fraction
         /// </summary>
@@ -682,7 +682,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             ImNodesMiniMapNodeHoveringCallbackUserData nodeHoveringCallbackData = null;
             ImNodesNative.ImNodes_MiniMap(minimapSizeFraction, location, nodeHoveringCallback, nodeHoveringCallbackData);
         }
-
+        
         /// <summary>
         ///     Minis the map using the specified minimap size fraction
         /// </summary>
@@ -694,7 +694,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             ImNodesMiniMapNodeHoveringCallbackUserData nodeHoveringCallbackData = null;
             ImNodesNative.ImNodes_MiniMap(minimapSizeFraction, location, nodeHoveringCallback, nodeHoveringCallbackData);
         }
-
+        
         /// <summary>
         ///     Minis the map using the specified minimap size fraction
         /// </summary>
@@ -706,7 +706,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_MiniMap(minimapSizeFraction, location, nodeHoveringCallback, nodeHoveringCallbackData);
         }
-
+        
         /// <summary>
         ///     Nums the selected links
         /// </summary>
@@ -716,7 +716,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             int ret = ImNodesNative.ImNodes_NumSelectedLinks();
             return ret;
         }
-
+        
         /// <summary>
         ///     Nums the selected nodes
         /// </summary>
@@ -726,7 +726,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             int ret = ImNodesNative.ImNodes_NumSelectedNodes();
             return ret;
         }
-
+        
         /// <summary>
         ///     Pops the attribute flag
         /// </summary>
@@ -734,7 +734,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_PopAttributeFlag();
         }
-
+        
         /// <summary>
         ///     Pops the color style
         /// </summary>
@@ -742,7 +742,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_PopColorStyle();
         }
-
+        
         /// <summary>
         ///     Pops the style var
         /// </summary>
@@ -751,7 +751,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             int count = 1;
             ImNodesNative.ImNodes_PopStyleVar(count);
         }
-
+        
         /// <summary>
         ///     Pops the style var using the specified count
         /// </summary>
@@ -760,7 +760,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_PopStyleVar(count);
         }
-
+        
         /// <summary>
         ///     Pushes the attribute flag using the specified flag
         /// </summary>
@@ -769,7 +769,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_PushAttributeFlag(flag);
         }
-
+        
         /// <summary>
         ///     Pushes the color style using the specified item
         /// </summary>
@@ -779,7 +779,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_PushColorStyle(item, color);
         }
-
+        
         /// <summary>
         ///     Pushes the style var using the specified style item
         /// </summary>
@@ -789,7 +789,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_PushStyleVar_Float(styleItem, value);
         }
-
+        
         /// <summary>
         ///     Pushes the style var using the specified style item
         /// </summary>
@@ -799,7 +799,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_PushStyleVar_Vec2(styleItem, value);
         }
-
+        
         /// <summary>
         ///     Saves the current editor state to ini file using the specified file name
         /// </summary>
@@ -816,7 +816,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
                 ImNodesNative.ImNodes_SaveCurrentEditorStateToIniFile(null);
             }
         }
-
+        
         /// <summary>
         ///     Saves the current editor state to ini string
         /// </summary>
@@ -836,7 +836,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
                 gch.Free();
             }
         }
-
+        
         /// <summary>
         ///     Saves the current editor state to ini string using the specified data size
         /// </summary>
@@ -856,7 +856,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
                 gch.Free();
             }
         }
-
+        
         /// <summary>
         ///     Saves the editor state to ini file using the specified editor
         /// </summary>
@@ -874,7 +874,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
                 ImNodesNative.ImNodes_SaveEditorStateToIniFile(editor, null);
             }
         }
-
+        
         /// <summary>
         ///     Saves the editor state to ini string using the specified editor
         /// </summary>
@@ -886,7 +886,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             // transform byte array to string
             return Encoding.UTF8.GetString(ret);
         }
-
+        
         /// <summary>
         ///     Saves the editor state to ini string using the specified native editor
         /// </summary>
@@ -899,7 +899,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             // transform byte array to string
             return Encoding.UTF8.GetString(ret);
         }
-
+        
         /// <summary>
         ///     Selects the link using the specified link id
         /// </summary>
@@ -908,7 +908,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_SelectLink(linkId);
         }
-
+        
         /// <summary>
         ///     Selects the node using the specified node id
         /// </summary>
@@ -917,7 +917,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_SelectNode(nodeId);
         }
-
+        
         /// <summary>
         ///     Sets the current context using the specified ctx
         /// </summary>
@@ -926,7 +926,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_SetCurrentContext(ctx);
         }
-
+        
         /// <summary>
         ///     Sets the im gui context using the specified ctx
         /// </summary>
@@ -935,7 +935,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_SetImGuiContext(ctx);
         }
-
+        
         /// <summary>
         ///     Sets the node draggable using the specified node id
         /// </summary>
@@ -946,7 +946,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
             byte nativeDraggable = draggable ? (byte) 1 : (byte) 0;
             ImNodesNative.ImNodes_SetNodeDraggable(nodeId, nativeDraggable);
         }
-
+        
         /// <summary>
         ///     Sets the node editor space pos using the specified node id
         /// </summary>
@@ -956,7 +956,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_SetNodeEditorSpacePos(nodeId, editorSpacePos);
         }
-
+        
         /// <summary>
         ///     Sets the node grid space pos using the specified node id
         /// </summary>
@@ -966,7 +966,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_SetNodeGridSpacePos(nodeId, gridPos);
         }
-
+        
         /// <summary>
         ///     Sets the node screen space pos using the specified node id
         /// </summary>
@@ -976,7 +976,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_SetNodeScreenSpacePos(nodeId, screenSpacePos);
         }
-
+        
         /// <summary>
         ///     Snaps the node to grid using the specified node id
         /// </summary>
@@ -985,7 +985,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_SnapNodeToGrid(nodeId);
         }
-
+        
         /// <summary>
         ///     Styles the colors classic
         /// </summary>
@@ -993,7 +993,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_StyleColorsClassic(new ImNodesStyle());
         }
-
+        
         /// <summary>
         ///     Styles the colors classic using the specified dest
         /// </summary>
@@ -1002,7 +1002,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_StyleColorsClassic(dest);
         }
-
+        
         /// <summary>
         ///     Styles the colors dark
         /// </summary>
@@ -1010,7 +1010,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_StyleColorsDark(new ImNodesStyle());
         }
-
+        
         /// <summary>
         ///     Styles the colors dark using the specified dest
         /// </summary>
@@ -1019,7 +1019,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_StyleColorsDark(dest);
         }
-
+        
         /// <summary>
         ///     Styles the colors light
         /// </summary>
@@ -1027,7 +1027,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         {
             ImNodesNative.ImNodes_StyleColorsLight(new ImNodesStyle());
         }
-
+        
         /// <summary>
         ///     Styles the colors light using the specified dest
         /// </summary>

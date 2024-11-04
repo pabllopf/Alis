@@ -48,22 +48,22 @@ namespace Alis.Sample.Flappy.Bird
         ///     The is death
         /// </summary>
         public static bool IsDeath;
-
+        
         /// <summary>
         ///     The time delta
         /// </summary>
         public static float CounterTimeDeath = 3.0f;
-
+        
         /// <summary>
         ///     Gets or sets the value of the bird
         /// </summary>
         public GameObject Bird { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the is deadthing
         /// </summary>
         public bool IsDeadthing { get; set; }
-
+        
         /// <summary>
         ///     Ons the init
         /// </summary>
@@ -72,7 +72,7 @@ namespace Alis.Sample.Flappy.Bird
             IsDeath = false;
             CounterTimeDeath = 3.0f;
         }
-
+        
         /// <summary>
         ///     Ons the update
         /// </summary>
@@ -84,7 +84,7 @@ namespace Alis.Sample.Flappy.Bird
                 {
                     Deadthing();
                 }
-
+                
                 CounterTimeDeath -= 1f * Context.TimeManager.DeltaTime;
                 if (CounterTimeDeath <= 0.0f)
                 {
@@ -93,7 +93,7 @@ namespace Alis.Sample.Flappy.Bird
                 }
             }
         }
-
+        
         /// <summary>
         ///     Deadthings this instance
         /// </summary>
@@ -101,22 +101,22 @@ namespace Alis.Sample.Flappy.Bird
         {
             Bird.Get<AudioSource>().AudioClip = new AudioClip("die.wav");
             Bird.Get<AudioSource>().Play();
-
+            
             Bird.Remove(Bird.Get<BirdController>());
             Logger.Info("Player remove bird controller");
-
+            
             Bird.Get<BoxCollider>().Body.Rotation = -45f;
             Bird.Get<BoxCollider>().Body.LinearVelocity = new Vector2(0, -3);
             Bird.Get<BoxCollider>().IsTrigger = true;
             Bird.Get<BoxCollider>().Body.BodyType = BodyType.Kinematic;
-
+            
             Bird.Remove(Bird.Get<Animator>());
-
+            
             PipelineController.IsStop = true;
-
+            
             IsDeadthing = false;
         }
-
+        
         /// <summary>
         ///     Ons the collision enter using the specified game object
         /// </summary>
@@ -126,7 +126,7 @@ namespace Alis.Sample.Flappy.Bird
             if (gameObject.Tag == "Player")
             {
                 Logger.Info($"Player dead by '{GameObject.Name}'");
-
+                
                 if (gameObject.Contains<BirdController>() && !gameObject.Get<BirdController>().IsDead)
                 {
                     IsDeath = true;

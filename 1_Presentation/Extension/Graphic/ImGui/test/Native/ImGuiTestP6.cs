@@ -47,7 +47,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.LogToClipboard(-1));
         }
-
+        
         /// <summary>
         ///     Tests that log to file throws dll not found exception 4
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.LogToFile(-1));
         }
-
+        
         /// <summary>
         ///     Tests that log to file with filename throws dll not found exception
         /// </summary>
@@ -65,7 +65,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.LogToFile(-1, "test.log"));
         }
-
+        
         /// <summary>
         ///     Tests that log to tty throws dll not found exception
         /// </summary>
@@ -74,7 +74,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.LogToTty(-1));
         }
-
+        
         /// <summary>
         ///     Tests that mem alloc throws dll not found exception
         /// </summary>
@@ -83,7 +83,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.MemAlloc(1024));
         }
-
+        
         /// <summary>
         ///     Tests that mem free throws dll not found exception
         /// </summary>
@@ -92,7 +92,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.MemFree(IntPtr.Zero));
         }
-
+        
         /// <summary>
         ///     Tests that menu item throws dll not found exception
         /// </summary>
@@ -101,7 +101,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.MenuItem("File"));
         }
-
+        
         /// <summary>
         ///     Tests that menu item with shortcut throws dll not found exception
         /// </summary>
@@ -110,7 +110,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.MenuItem("File", "Ctrl+F"));
         }
-
+        
         /// <summary>
         ///     Tests that menu item with selected throws dll not found exception
         /// </summary>
@@ -119,7 +119,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.MenuItem("File", "Ctrl+F", true));
         }
-
+        
         /// <summary>
         ///     Tests that menu item with selected and enabled throws dll not found exception
         /// </summary>
@@ -128,7 +128,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.MenuItem("File", "Ctrl+F", true, true));
         }
-
+        
         /// <summary>
         ///     Tests that menu item with ref selected throws dll not found exception
         /// </summary>
@@ -138,7 +138,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             bool selected = false;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.MenuItem("File", "Ctrl+F", ref selected));
         }
-
+        
         /// <summary>
         ///     Tests that input float 4 throws dll not found exception
         /// </summary>
@@ -148,7 +148,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             Vector4 v = new Vector4();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputFloat4("Label", ref v, "%.3f"));
         }
-
+        
         /// <summary>
         ///     Tests that input float 4 with flags throws dll not found exception
         /// </summary>
@@ -158,7 +158,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             Vector4 v = new Vector4();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputFloat4("Label", ref v, "%.3f", ImGuiInputTextFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that input int throws dll not found exception
         /// </summary>
@@ -168,7 +168,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputInt("Label", ref v));
         }
-
+        
         /// <summary>
         ///     Tests that input int with step throws dll not found exception
         /// </summary>
@@ -178,7 +178,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputInt("Label", ref v, 1));
         }
-
+        
         /// <summary>
         ///     Tests that input int with step and step fast throws dll not found exception
         /// </summary>
@@ -188,7 +188,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputInt("Label", ref v, 1, 100));
         }
-
+        
         /// <summary>
         ///     Tests that input int with step step fast and flags throws dll not found exception
         /// </summary>
@@ -198,7 +198,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputInt("Label", ref v, 1, 100, ImGuiInputTextFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that input int 2 throws dll not found exception
         /// </summary>
@@ -208,7 +208,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputInt2("Label", ref v));
         }
-
+        
         /// <summary>
         ///     Tests that input int 2 with flags throws dll not found exception
         /// </summary>
@@ -218,7 +218,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputInt2("Label", ref v, ImGuiInputTextFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that input int 3 throws dll not found exception
         /// </summary>
@@ -228,7 +228,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputInt3("Label", ref v));
         }
-
+        
         /// <summary>
         ///     Tests that input int 3 with flags throws dll not found exception
         /// </summary>
@@ -238,7 +238,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputInt3("Label", ref v, ImGuiInputTextFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that input int 4 throws dll not found exception
         /// </summary>
@@ -248,7 +248,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputInt4("Label", ref v));
         }
-
+        
         /// <summary>
         ///     Tests that input int 4 with flags throws dll not found exception
         /// </summary>
@@ -258,7 +258,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputInt4("Label", ref v, ImGuiInputTextFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that input scalar throws dll not found exception
         /// </summary>
@@ -267,7 +267,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputScalar("Label", ImGuiDataType.S32, IntPtr.Zero));
         }
-
+        
         /// <summary>
         ///     Tests that input scalar with step throws dll not found exception
         /// </summary>
@@ -276,7 +276,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputScalar("Label", ImGuiDataType.S32, IntPtr.Zero, IntPtr.Zero));
         }
-
+        
         /// <summary>
         ///     Tests that input scalar with step and step fast throws dll not found exception
         /// </summary>
@@ -285,7 +285,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputScalar("Label", ImGuiDataType.S32, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero));
         }
-
+        
         /// <summary>
         ///     Tests that input scalar with step step fast and format throws dll not found exception
         /// </summary>
@@ -294,7 +294,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputScalar("Label", ImGuiDataType.S32, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, "%.3f"));
         }
-
+        
         /// <summary>
         ///     Tests that input scalar with step step fast format and flags throws dll not found exception
         /// </summary>
@@ -303,7 +303,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputScalar("Label", ImGuiDataType.S32, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, "%.3f", ImGuiInputTextFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that input scalar n throws dll not found exception
         /// </summary>
@@ -312,7 +312,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputScalarN("Label", ImGuiDataType.S32, IntPtr.Zero, 4));
         }
-
+        
         /// <summary>
         ///     Tests that input scalar n with step throws dll not found exception
         /// </summary>
@@ -321,7 +321,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputScalarN("Label", ImGuiDataType.S32, IntPtr.Zero, 4, IntPtr.Zero));
         }
-
+        
         /// <summary>
         ///     Tests that input scalar n with step and step fast throws dll not found exception
         /// </summary>
@@ -330,7 +330,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputScalarN("Label", ImGuiDataType.S32, IntPtr.Zero, 4, IntPtr.Zero, IntPtr.Zero));
         }
-
+        
         /// <summary>
         ///     Tests that input scalar n with step step fast and format throws dll not found exception
         /// </summary>
@@ -339,7 +339,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputScalarN("Label", ImGuiDataType.S32, IntPtr.Zero, 4, IntPtr.Zero, IntPtr.Zero, "%.3f"));
         }
-
+        
         /// <summary>
         ///     Tests that input scalar n with step step fast format and flags throws dll not found exception
         /// </summary>
@@ -348,7 +348,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputScalarN("Label", ImGuiDataType.S32, IntPtr.Zero, 4, IntPtr.Zero, IntPtr.Zero, "%.3f", ImGuiInputTextFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that invisible button throws dll not found exception
         /// </summary>
@@ -357,7 +357,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InvisibleButton("Button", new Vector2(100, 50)));
         }
-
+        
         /// <summary>
         ///     Tests that invisible button with flags throws dll not found exception
         /// </summary>
@@ -366,7 +366,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InvisibleButton("Button", new Vector2(100, 50), ImGuiButtonFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that is any item active throws dll not found exception
         /// </summary>
@@ -375,7 +375,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsAnyItemActive());
         }
-
+        
         /// <summary>
         ///     Tests that is any item focused throws dll not found exception
         /// </summary>
@@ -384,7 +384,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsAnyItemFocused());
         }
-
+        
         /// <summary>
         ///     Tests that is any item hovered throws dll not found exception
         /// </summary>
@@ -393,7 +393,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsAnyItemHovered());
         }
-
+        
         /// <summary>
         ///     Tests that is any mouse down throws dll not found exception
         /// </summary>
@@ -402,7 +402,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsAnyMouseDown());
         }
-
+        
         /// <summary>
         ///     Tests that is item activated throws dll not found exception
         /// </summary>
@@ -411,7 +411,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsItemActivated());
         }
-
+        
         /// <summary>
         ///     Tests that is item active throws dll not found exception
         /// </summary>
@@ -420,7 +420,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsItemActive());
         }
-
+        
         /// <summary>
         ///     Tests that is item clicked throws dll not found exception
         /// </summary>
@@ -429,7 +429,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsItemClicked());
         }
-
+        
         /// <summary>
         ///     Tests that is item clicked with mouse button throws dll not found exception
         /// </summary>
@@ -438,7 +438,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsItemClicked(ImGuiMouseButton.Left));
         }
-
+        
         /// <summary>
         ///     Tests that is item deactivated throws dll not found exception
         /// </summary>
@@ -447,7 +447,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsItemDeactivated());
         }
-
+        
         /// <summary>
         ///     Tests that is item deactivated after edit throws dll not found exception
         /// </summary>
@@ -456,7 +456,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsItemDeactivatedAfterEdit());
         }
-
+        
         /// <summary>
         ///     Tests that is item edited throws dll not found exception
         /// </summary>
@@ -465,7 +465,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsItemEdited());
         }
-
+        
         /// <summary>
         ///     Tests that is item focused throws dll not found exception
         /// </summary>
@@ -474,7 +474,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsItemFocused());
         }
-
+        
         /// <summary>
         ///     Tests that is item hovered throws dll not found exception
         /// </summary>
@@ -483,7 +483,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsItemHovered());
         }
-
+        
         /// <summary>
         ///     Tests that is item hovered with flags throws dll not found exception
         /// </summary>
@@ -492,7 +492,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsItemHovered(ImGuiHoveredFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that is item toggled open throws dll not found exception
         /// </summary>
@@ -501,7 +501,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsItemToggledOpen());
         }
-
+        
         /// <summary>
         ///     Tests that is item visible throws dll not found exception
         /// </summary>
@@ -510,7 +510,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsItemVisible());
         }
-
+        
         /// <summary>
         ///     Tests that is key down throws dll not found exception
         /// </summary>
@@ -519,7 +519,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsKeyDown(ImGuiKey.A));
         }
-
+        
         /// <summary>
         ///     Tests that is key pressed throws dll not found exception
         /// </summary>
@@ -528,7 +528,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsKeyPressed(ImGuiKey.A));
         }
-
+        
         /// <summary>
         ///     Tests that is key pressed with repeat throws dll not found exception
         /// </summary>
@@ -537,7 +537,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsKeyPressed(ImGuiKey.A, true));
         }
-
+        
         /// <summary>
         ///     Tests that is key released throws dll not found exception
         /// </summary>
@@ -546,7 +546,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsKeyReleased(ImGuiKey.A));
         }
-
+        
         /// <summary>
         ///     Tests that is mouse clicked throws dll not found exception
         /// </summary>
@@ -555,7 +555,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsMouseClicked(ImGuiMouseButton.Left));
         }
-
+        
         /// <summary>
         ///     Tests that is mouse clicked with repeat throws dll not found exception
         /// </summary>
@@ -564,7 +564,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsMouseClicked(ImGuiMouseButton.Left, true));
         }
-
+        
         /// <summary>
         ///     Tests that is mouse double clicked throws dll not found exception
         /// </summary>
@@ -573,7 +573,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left));
         }
-
+        
         /// <summary>
         ///     Tests that is mouse down throws dll not found exception
         /// </summary>
@@ -582,7 +582,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsMouseDown(ImGuiMouseButton.Left));
         }
-
+        
         /// <summary>
         ///     Tests that is mouse dragging throws dll not found exception
         /// </summary>
@@ -591,7 +591,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsMouseDragging(ImGuiMouseButton.Left));
         }
-
+        
         /// <summary>
         ///     Tests that is mouse dragging with lock threshold throws dll not found exception
         /// </summary>
@@ -600,7 +600,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsMouseDragging(ImGuiMouseButton.Left, 0.5f));
         }
-
+        
         /// <summary>
         ///     Tests that is mouse hovering rect throws dll not found exception
         /// </summary>
@@ -609,7 +609,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsMouseHoveringRect(new Vector2(0, 0), new Vector2(100, 100)));
         }
-
+        
         /// <summary>
         ///     Tests that is mouse hovering rect with clip throws dll not found exception
         /// </summary>
@@ -618,7 +618,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsMouseHoveringRect(new Vector2(0, 0), new Vector2(100, 100), true));
         }
-
+        
         /// <summary>
         ///     Tests that is mouse pos valid throws dll not found exception
         /// </summary>
@@ -627,7 +627,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsMousePosValid());
         }
-
+        
         /// <summary>
         ///     Tests that is mouse pos valid with mouse pos throws dll not found exception
         /// </summary>
@@ -637,7 +637,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             Vector2 mousePos = new Vector2();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsMousePosValid(ref mousePos));
         }
-
+        
         /// <summary>
         ///     Tests that is mouse released throws dll not found exception
         /// </summary>
@@ -646,7 +646,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsMouseReleased(ImGuiMouseButton.Left));
         }
-
+        
         /// <summary>
         ///     Tests that is popup open throws dll not found exception
         /// </summary>
@@ -655,7 +655,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsPopupOpen("Popup"));
         }
-
+        
         /// <summary>
         ///     Tests that is popup open with flags throws dll not found exception
         /// </summary>
@@ -664,7 +664,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsPopupOpen("Popup", ImGuiPopupFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that is rect visible throws dll not found exception
         /// </summary>
@@ -673,7 +673,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsRectVisible(new Vector2(100, 100)));
         }
-
+        
         /// <summary>
         ///     Tests that is rect visible with rect min and rect max throws dll not found exception
         /// </summary>
@@ -682,7 +682,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsRectVisible(new Vector2(0, 0), new Vector2(100, 100)));
         }
-
+        
         /// <summary>
         ///     Tests that is window appearing throws dll not found exception
         /// </summary>
@@ -691,7 +691,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsWindowAppearing());
         }
-
+        
         /// <summary>
         ///     Tests that is window collapsed throws dll not found exception
         /// </summary>
@@ -700,7 +700,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsWindowCollapsed());
         }
-
+        
         /// <summary>
         ///     Tests that is window docked throws dll not found exception
         /// </summary>
@@ -709,7 +709,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsWindowDocked());
         }
-
+        
         /// <summary>
         ///     Tests that is window focused throws dll not found exception
         /// </summary>
@@ -718,7 +718,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsWindowFocused());
         }
-
+        
         /// <summary>
         ///     Tests that is window focused with flags throws dll not found exception
         /// </summary>
@@ -727,7 +727,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsWindowFocused(ImGuiFocusedFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that is window hovered throws dll not found exception
         /// </summary>
@@ -736,7 +736,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsWindowHovered());
         }
-
+        
         /// <summary>
         ///     Tests that is window hovered with flags throws dll not found exception
         /// </summary>
@@ -745,7 +745,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsWindowHovered(ImGuiHoveredFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that label text throws dll not found exception
         /// </summary>
@@ -754,7 +754,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.LabelText("Label", "Text"));
         }
-
+        
         /// <summary>
         ///     Tests that list box throws dll not found exception
         /// </summary>
@@ -765,7 +765,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             string[] items = {"Item1", "Item2"};
             Assert.Throws<MarshalDirectiveException>(() => ImGui.Native.ImGui.ListBox("Label", ref currentItem, items, items.Length));
         }
-
+        
         /// <summary>
         ///     Tests that list box with height in items throws dll not found exception
         /// </summary>
@@ -776,7 +776,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             string[] items = {"Item1", "Item2"};
             Assert.Throws<MarshalDirectiveException>(() => ImGui.Native.ImGui.ListBox("Label", ref currentItem, items, items.Length, 5));
         }
-
+        
         /// <summary>
         ///     Tests that load ini settings from disk throws dll not found exception
         /// </summary>
@@ -785,7 +785,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.LoadIniSettingsFromDisk("settings.ini"));
         }
-
+        
         /// <summary>
         ///     Tests that load ini settings from memory throws dll not found exception
         /// </summary>
@@ -794,7 +794,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.LoadIniSettingsFromMemory("iniData"));
         }
-
+        
         /// <summary>
         ///     Tests that load ini settings from memory with ini size throws dll not found exception
         /// </summary>
@@ -803,7 +803,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.LoadIniSettingsFromMemory("iniData", 1024));
         }
-
+        
         /// <summary>
         ///     Tests that log buttons throws dll not found exception
         /// </summary>
@@ -812,7 +812,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.LogButtons());
         }
-
+        
         /// <summary>
         ///     Tests that log finish throws dll not found exception
         /// </summary>
@@ -821,7 +821,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.LogFinish());
         }
-
+        
         /// <summary>
         ///     Tests that log text throws dll not found exception
         /// </summary>
@@ -830,7 +830,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.LogText("Log message"));
         }
-
+        
         /// <summary>
         ///     Tests that log to clipboard throws dll not found exception
         /// </summary>
@@ -839,7 +839,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.LogToClipboard());
         }
-
+        
         /// <summary>
         ///     Tests that log to clipboard with auto open depth throws dll not found exception
         /// </summary>
@@ -848,7 +848,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.LogToClipboard(-1));
         }
-
+        
         /// <summary>
         ///     Tests that log to file throws dll not found exception
         /// </summary>
@@ -857,7 +857,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.LogToFile());
         }
-
+        
         /// <summary>
         ///     Tests that log to file with auto open depth throws dll not found exception
         /// </summary>
@@ -866,7 +866,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.LogToFile(-1));
         }
-
+        
         /// <summary>
         ///     Tests that log to file with auto open depth and filename throws dll not found exception
         /// </summary>
@@ -875,7 +875,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.LogToFile(-1, "log.txt"));
         }
-
+        
         /// <summary>
         ///     Tests that log to tty throws dll not found exception v 3
         /// </summary>
@@ -884,7 +884,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.LogToTty());
         }
-
+        
         /// <summary>
         ///     Tests that log to tty with auto open depth throws dll not found exception
         /// </summary>

@@ -41,17 +41,17 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         ///     The head
         /// </summary>
         public AdvancingFrontNode Head;
-
+        
         /// <summary>
         ///     The search
         /// </summary>
         protected AdvancingFrontNode Search;
-
+        
         /// <summary>
         ///     The tail
         /// </summary>
         public AdvancingFrontNode Tail;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="AdvancingFront" /> class
         /// </summary>
@@ -65,7 +65,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             AddNode(head);
             AddNode(tail);
         }
-
+        
         /// <summary>
         ///     Adds the node using the specified node
         /// </summary>
@@ -74,7 +74,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         {
             //_searchTree.put(node.key, node);
         }
-
+        
         /// <summary>
         ///     Removes the node using the specified node
         /// </summary>
@@ -83,7 +83,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         {
             //_searchTree.delete( node.key );
         }
-
+        
         /// <summary>
         ///     Returns the string
         /// </summary>
@@ -97,11 +97,11 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 sb.Append(node.Point.X).Append("->");
                 node = node.Next;
             }
-
+            
             sb.Append(Tail.Point.X);
             return sb.ToString();
         }
-
+        
         /// <summary>
         ///     MM:  This seems to be used by LocateNode to guess a position in the implicit linked list of AdvancingFrontNodes
         ///     near x
@@ -109,12 +109,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// </summary>
         private AdvancingFrontNode FindSearchNode(double x) =>
             Search;
-
+        
         /// <summary>
         ///     We use a balancing tree to locate a node smaller or equal to given key value
         /// </summary>
         public AdvancingFrontNode LocateNode(TriangulationPoint point) => LocateNode(point.X);
-
+        
         /// <summary>
         ///     Locates the node using the specified x
         /// </summary>
@@ -141,10 +141,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                         return node.Prev;
                     }
             }
-
+            
             return null;
         }
-
+        
         /// <summary>
         ///     This implementation will use simple node traversal algorithm to find a point on the front
         /// </summary>
@@ -153,7 +153,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             double px = point.X;
             AdvancingFrontNode node = FindSearchNode(px);
             double nx = node.Point.X;
-
+            
             if (Math.Abs(px - nx) < float.Epsilon)
             {
                 if (point != node.Point)
@@ -194,7 +194,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                     }
                 }
             }
-
+            
             Search = node;
             return node;
         }

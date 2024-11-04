@@ -42,17 +42,17 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The type
         /// </summary>
         public EventType type;
-
+        
         /// <summary>
         ///     The timestamp
         /// </summary>
         public uint timestamp;
-
+        
         /// <summary>
         ///     The display
         /// </summary>
         public uint display;
-
+        
         /// <summary>
         ///     The display event
         /// </summary>

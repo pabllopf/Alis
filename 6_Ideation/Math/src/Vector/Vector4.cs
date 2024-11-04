@@ -53,7 +53,7 @@ namespace Alis.Core.Aspect.Math.Vector
             Z = z;
             W = w;
         }
-
+        
         /// <summary>
         ///     Gets the v
         /// </summary>
@@ -71,19 +71,19 @@ namespace Alis.Core.Aspect.Math.Vector
                 default: return 0; // error case
             }
         }
-
+        
         /// <summary>Horizontal component of the vector</summary>
         public float X { get; set; }
-
+        
         /// <summary>Vertical component of the vector</summary>
         public float Y { get; set; }
-
+        
         /// <summary>Depth component of the vector</summary>
         public float Z { get; set; }
-
+        
         /// <summary>Projective/Homogenous component of the vector</summary>
         public float W { get; set; }
-
+        
         /// <summary>
         ///     Gets the object data using the specified info
         /// </summary>

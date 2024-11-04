@@ -46,12 +46,12 @@ namespace Alis.Sample.SplitCamera
         ///     The speed
         /// </summary>
         private const float Speed = 1.0f;
-
+        
         /// <summary>
         ///     The camera
         /// </summary>
         private Camera _camera;
-
+        
         /// <summary>
         ///     Ons the start
         /// </summary>
@@ -59,7 +59,7 @@ namespace Alis.Sample.SplitCamera
         {
             _camera = GameObject.Get<Camera>();
         }
-
+        
         /// <summary>
         ///     Ons the press down key using the specified key
         /// </summary>
@@ -71,19 +71,19 @@ namespace Alis.Sample.SplitCamera
                 GameObject.Transform = new Transform(new Vector2(GameObject.Transform.Position.X + 1, GameObject.Transform.Position.Y), GameObject.Transform.Rotation, GameObject.Transform.Scale);
                 Logger.Info(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation);
             }
-
+            
             if (key == KeyCodes.A)
             {
                 GameObject.Transform = new Transform(new Vector2(GameObject.Transform.Position.X - 1, GameObject.Transform.Position.Y), GameObject.Transform.Rotation, GameObject.Transform.Scale);
                 Logger.Info(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation);
             }
-
+            
             if (key == KeyCodes.W)
             {
                 GameObject.Transform = new Transform(new Vector2(GameObject.Transform.Position.X, GameObject.Transform.Position.Y - 1), GameObject.Transform.Rotation, GameObject.Transform.Scale);
                 Logger.Info(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation);
             }
-
+            
             if (key == KeyCodes.S)
             {
                 GameObject.Transform = new Transform(new Vector2(GameObject.Transform.Position.X, GameObject.Transform.Position.Y + 1), GameObject.Transform.Rotation, GameObject.Transform.Scale);

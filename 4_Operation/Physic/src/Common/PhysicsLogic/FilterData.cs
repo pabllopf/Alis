@@ -41,23 +41,23 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         ///     Category.None by default.
         /// </summary>
         public Category DisabledOnCategories = Category.None;
-
+        
         /// <summary>
         ///     Disable the logic on specific groups
         /// </summary>
         public int DisabledOnGroup;
-
+        
         /// <summary>
         ///     Enable the logic on specific categories
         ///     Category.All by default.
         /// </summary>
         public Category EnabledOnCategories = Category.All;
-
+        
         /// <summary>
         ///     Enable the logic on specific groups.
         /// </summary>
         public int EnabledOnGroup;
-
+        
         /// <summary>
         /// </summary>
         /// <param name="body"></param>
@@ -66,22 +66,22 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         {
             if (body == null || !body.Enabled || body.BodyType == BodyType.Static)
                 return false;
-
+            
             foreach (Fixture fixture in body.FixtureList)
             {
                 //Disable
                 if ((fixture.CollisionGroup == DisabledOnGroup) && (fixture.CollisionGroup != 0) && (DisabledOnGroup != 0))
                     return false;
-
+                
                 if ((fixture.CollisionCategories & DisabledOnCategories) != Category.None)
                     return false;
-
+                
                 if (EnabledOnGroup != 0 || EnabledOnCategories != Category.All)
                 {
                     //Enable
                     if ((fixture.CollisionGroup == EnabledOnGroup) && (fixture.CollisionGroup != 0) && (EnabledOnGroup != 0))
                         return true;
-
+                    
                     if (((fixture.CollisionCategories & EnabledOnCategories) != Category.None) &&
                         (EnabledOnCategories != Category.All))
                         return true;
@@ -91,10 +91,10 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                     return true;
                 }
             }
-
+            
             return false;
         }
-
+        
         /// <summary>
         ///     Adds the category.
         /// </summary>
@@ -103,7 +103,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         {
             DisabledOnCategories |= category;
         }
-
+        
         /// <summary>
         ///     Removes the category.
         /// </summary>
@@ -112,7 +112,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         {
             DisabledOnCategories &= ~category;
         }
-
+        
         /// <summary>
         ///     Determines whether this body ignores the the specified controller.
         /// </summary>
@@ -121,7 +121,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         ///     <c>true</c> if the object has the specified category; otherwise, <c>false</c>.
         /// </returns>
         public bool IsInDisabledCategory(Category category) => (DisabledOnCategories & category) == category;
-
+        
         /// <summary>
         ///     Adds the category.
         /// </summary>
@@ -130,7 +130,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         {
             EnabledOnCategories |= category;
         }
-
+        
         /// <summary>
         ///     Removes the category.
         /// </summary>
@@ -139,7 +139,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         {
             EnabledOnCategories &= ~category;
         }
-
+        
         /// <summary>
         ///     Determines whether this body ignores the the specified controller.
         /// </summary>

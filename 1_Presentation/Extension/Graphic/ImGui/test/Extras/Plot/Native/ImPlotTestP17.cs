@@ -48,7 +48,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             long xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 1, 1.0, ImPlotBarsFlags.None, 0, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars throws dll not found exception v 2
         /// </summary>
@@ -58,7 +58,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ulong xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 1, 1.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars throws dll not found exception v 3
         /// </summary>
@@ -68,7 +68,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ulong xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 1, 1.0, ImPlotBarsFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars throws dll not found exception v 4
         /// </summary>
@@ -78,7 +78,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ulong xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label", ref xs, ref ys, 1, 1.0, ImPlotBarsFlags.None, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars g throws dll not found exception
         /// </summary>
@@ -87,7 +87,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBarsG("label", IntPtr.Zero, IntPtr.Zero, 1, 1.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot bars g throws dll not found exception v 2
         /// </summary>
@@ -96,7 +96,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBarsG("label", IntPtr.Zero, IntPtr.Zero, 1, 1.0, ImPlotBarsFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception
         /// </summary>
@@ -106,7 +106,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 2
         /// </summary>
@@ -116,7 +116,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1, ImPlotDigitalFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 3
         /// </summary>
@@ -126,7 +126,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1, ImPlotDigitalFlags.None, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 4
         /// </summary>
@@ -136,7 +136,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1, ImPlotDigitalFlags.None, 0, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 5
         /// </summary>
@@ -146,7 +146,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 6
         /// </summary>
@@ -156,7 +156,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1, ImPlotDigitalFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 7
         /// </summary>
@@ -166,7 +166,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1, ImPlotDigitalFlags.None, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 8
         /// </summary>
@@ -176,7 +176,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1, ImPlotDigitalFlags.None, 0, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 9
         /// </summary>
@@ -186,7 +186,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             sbyte xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 10
         /// </summary>
@@ -196,7 +196,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             sbyte xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1, ImPlotDigitalFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 11
         /// </summary>
@@ -206,7 +206,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             sbyte xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1, ImPlotDigitalFlags.None, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 12
         /// </summary>
@@ -216,7 +216,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             sbyte xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1, ImPlotDigitalFlags.None, 0, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 13
         /// </summary>
@@ -226,7 +226,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             byte xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 14
         /// </summary>
@@ -236,7 +236,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             byte xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1, ImPlotDigitalFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 15
         /// </summary>
@@ -246,7 +246,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             byte xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1, ImPlotDigitalFlags.None, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 16
         /// </summary>
@@ -256,7 +256,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             byte xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1, ImPlotDigitalFlags.None, 0, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 17
         /// </summary>
@@ -266,7 +266,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             short xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 18
         /// </summary>
@@ -276,7 +276,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             short xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1, ImPlotDigitalFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 19
         /// </summary>
@@ -286,7 +286,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             short xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1, ImPlotDigitalFlags.None, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 20
         /// </summary>
@@ -296,7 +296,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             short xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1, ImPlotDigitalFlags.None, 0, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 21
         /// </summary>
@@ -306,7 +306,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ushort xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 22
         /// </summary>
@@ -316,7 +316,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ushort xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1, ImPlotDigitalFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 23
         /// </summary>
@@ -326,7 +326,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ushort xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1, ImPlotDigitalFlags.None, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 24
         /// </summary>
@@ -336,7 +336,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ushort xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1, ImPlotDigitalFlags.None, 0, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 25
         /// </summary>
@@ -346,7 +346,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             int xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 26
         /// </summary>
@@ -356,7 +356,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             int xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1, ImPlotDigitalFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 27
         /// </summary>
@@ -366,7 +366,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             int xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1, ImPlotDigitalFlags.None, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 28
         /// </summary>
@@ -376,7 +376,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             int xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1, ImPlotDigitalFlags.None, 0, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 29
         /// </summary>
@@ -386,7 +386,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             uint xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 30
         /// </summary>
@@ -396,7 +396,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             uint xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1, ImPlotDigitalFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 31
         /// </summary>
@@ -406,7 +406,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             uint xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1, ImPlotDigitalFlags.None, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 32
         /// </summary>
@@ -416,7 +416,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             uint xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1, ImPlotDigitalFlags.None, 0, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 33
         /// </summary>
@@ -426,7 +426,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             long xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 34
         /// </summary>
@@ -436,7 +436,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             long xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1, ImPlotDigitalFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 35
         /// </summary>
@@ -446,7 +446,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             long xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1, ImPlotDigitalFlags.None, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 36
         /// </summary>
@@ -456,7 +456,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             long xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1, ImPlotDigitalFlags.None, 0, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 37
         /// </summary>
@@ -466,7 +466,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ulong xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 38
         /// </summary>
@@ -476,7 +476,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ulong xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1, ImPlotDigitalFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 39
         /// </summary>
@@ -486,7 +486,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ulong xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1, ImPlotDigitalFlags.None, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital throws dll not found exception v 40
         /// </summary>
@@ -496,7 +496,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ulong xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigital("label", ref xs, ref ys, 1, ImPlotDigitalFlags.None, 0, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital g throws dll not found exception
         /// </summary>
@@ -505,7 +505,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigitalG("label", IntPtr.Zero, IntPtr.Zero, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot digital g throws dll not found exception v 2
         /// </summary>
@@ -514,7 +514,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDigitalG("label", IntPtr.Zero, IntPtr.Zero, 1, ImPlotDigitalFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot dummy throws dll not found exception
         /// </summary>
@@ -523,7 +523,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDummy("label"));
         }
-
+        
         /// <summary>
         ///     Tests that plot dummy throws dll not found exception v 2
         /// </summary>
@@ -532,7 +532,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotDummy("label", ImPlotDummyFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars throws dll not found exception
         /// </summary>
@@ -542,7 +542,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float xs = 0, ys = 0, err = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref err, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars throws dll not found exception v 2
         /// </summary>

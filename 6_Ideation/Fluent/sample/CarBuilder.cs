@@ -44,13 +44,13 @@ namespace Alis.Core.Aspect.Fluent.Sample
         ///     The car
         /// </summary>
         private readonly Car _car = new Car("default", "default", "default");
-
+        
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The car</returns>
         public Car Build() => _car;
-
+        
         /// <summary>
         ///     Adds the color using the specified value
         /// </summary>
@@ -61,7 +61,7 @@ namespace Alis.Core.Aspect.Fluent.Sample
             _car.Model = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Adds the model using the specified value
         /// </summary>
@@ -72,7 +72,7 @@ namespace Alis.Core.Aspect.Fluent.Sample
             _car.Color = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Adds the name using the specified value
         /// </summary>

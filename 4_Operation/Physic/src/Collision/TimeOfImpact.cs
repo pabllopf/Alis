@@ -40,17 +40,17 @@ namespace Alis.Core.Physic.Collision
     {
         // CCD via the local separating axis method. This seeks progression
         // by computing the largest time at which separation is maintained.
-
+        
         /// <summary>
         ///     The toi max iters
         /// </summary>
         [ThreadStatic] public static int TOICalls, TOIIters, TOIMaxIters;
-
+        
         /// <summary>
         ///     The toi max root iters
         /// </summary>
         [ThreadStatic] public static int TOIRootIters, TOIMaxRootIters;
-
+        
         /// <summary>
         ///     Compute the upper bound on time before two shapes penetrate. Time is represented as
         ///     a fraction between [0,tMax]. This uses a swept separating axis and may miss some intermediate,
@@ -64,49 +64,49 @@ namespace Alis.Core.Physic.Collision
         {
             if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
                 ++TOICalls;
-
+            
             output = new TOIOutput();
             output.State = TOIOutputState.Unknown;
             output.T = input.TMax;
-
+            
             Sweep sweepA = input.SweepA;
             Sweep sweepB = input.SweepB;
-
+            
             // Large rotations can make the root finder fail, so we normalize the
             // sweep angles.
             sweepA.Normalize();
             sweepB.Normalize();
-
+            
             float tMax = input.TMax;
-
+            
             float totalRadius = input.ProxyA.Radius + input.ProxyB.Radius;
             float target = Math.Max(SettingEnv.LinearSlop, totalRadius - 3.0f * SettingEnv.LinearSlop);
             const float tolerance = 0.25f * SettingEnv.LinearSlop;
             Debug.Assert(target > tolerance);
-
+            
             float t1 = 0.0f;
             const int k_maxIterations = 20;
             int iter = 0;
-
+            
             // Prepare input for distance query.
             DistanceInput distanceInput = new DistanceInput();
             distanceInput.ProxyA = input.ProxyA;
             distanceInput.ProxyB = input.ProxyB;
             distanceInput.UseRadii = false;
-
+            
             // The outer loop progressively attempts to compute new separating axes.
             // This loop terminates when an axis is repeated (no progress is made).
             for (;;)
             {
                 sweepA.GetTransform(out Transform xfA, t1);
                 sweepB.GetTransform(out Transform xfB, t1);
-
+                
                 // Get the distance between shapes. We can also use the results
                 // to get a separating axis.
                 distanceInput.TransformA = xfA;
                 distanceInput.TransformB = xfB;
                 Distance.ComputeDistance(out DistanceOutput distanceOutput, out SimplexCache cache, distanceInput);
-
+                
                 // If the shapes are overlapped, we give up on continuous collision.
                 if (distanceOutput.Distance <= 0.0f)
                 {
@@ -115,7 +115,7 @@ namespace Alis.Core.Physic.Collision
                     output.T = 0.0f;
                     break;
                 }
-
+                
                 if (distanceOutput.Distance < target + tolerance)
                 {
                     // Victory!
@@ -123,9 +123,9 @@ namespace Alis.Core.Physic.Collision
                     output.T = t1;
                     break;
                 }
-
+                
                 SeparationFunction.Set(ref cache, ref input.ProxyA, ref sweepA, ref input.ProxyB, ref sweepB, t1);
-
+                
                 // Compute the TOI on the separating axis. We do this by successively
                 // resolving the deepest point. This loop is bounded by the number of vertices.
                 bool done = false;
@@ -135,7 +135,7 @@ namespace Alis.Core.Physic.Collision
                 {
                     // Find the deepest point at t2. Store the witness point indices.
                     float s2 = SeparationFunction.FindMinSeparation(out int indexA, out int indexB, t2);
-
+                    
                     // Is the final configuration separated?
                     if (s2 > target + tolerance)
                     {
@@ -145,7 +145,7 @@ namespace Alis.Core.Physic.Collision
                         done = true;
                         break;
                     }
-
+                    
                     // Has the separation reached tolerance?
                     if (s2 > target - tolerance)
                     {
@@ -153,10 +153,10 @@ namespace Alis.Core.Physic.Collision
                         t1 = t2;
                         break;
                     }
-
+                    
                     // Compute the initial separation of the witness points.
                     float s1 = SeparationFunction.Evaluate(indexA, indexB, t1);
-
+                    
                     // Check for initial overlap. This might happen if the root finder
                     // runs out of iterations.
                     if (s1 < target - tolerance)
@@ -166,7 +166,7 @@ namespace Alis.Core.Physic.Collision
                         done = true;
                         break;
                     }
-
+                    
                     // Check for touching
                     if (s1 <= target + tolerance)
                     {
@@ -176,7 +176,7 @@ namespace Alis.Core.Physic.Collision
                         done = true;
                         break;
                     }
-
+                    
                     // Compute 1D root of: f(x) - target = 0
                     int rootIterCount = 0;
                     float a1 = t1, a2 = t2;
@@ -194,21 +194,21 @@ namespace Alis.Core.Physic.Collision
                             // Bisection to guarantee progress.
                             t = 0.5f * (a1 + a2);
                         }
-
+                        
                         ++rootIterCount;
-
+                        
                         if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
                             ++TOIRootIters;
-
+                        
                         float s = SeparationFunction.Evaluate(indexA, indexB, t);
-
+                        
                         if (Math.Abs(s - target) < tolerance)
                         {
                             // t2 holds a tentative value for t1
                             t2 = t;
                             break;
                         }
-
+                        
                         // Ensure we continue to bracket the root.
                         if (s > target)
                         {
@@ -220,34 +220,34 @@ namespace Alis.Core.Physic.Collision
                             a2 = t;
                             s2 = s;
                         }
-
+                        
                         if (rootIterCount == 50)
                         {
                             break;
                         }
                     }
-
+                    
                     if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
                         TOIMaxRootIters = Math.Max(TOIMaxRootIters, rootIterCount);
-
+                    
                     ++pushBackIter;
-
+                    
                     if (pushBackIter == SettingEnv.MaxPolygonVertices)
                     {
                         break;
                     }
                 }
-
+                
                 ++iter;
-
+                
                 if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
                     ++TOIIters;
-
+                
                 if (done)
                 {
                     break;
                 }
-
+                
                 if (iter == k_maxIterations)
                 {
                     // Root finder got stuck. Semi-victory.
@@ -256,7 +256,7 @@ namespace Alis.Core.Physic.Collision
                     break;
                 }
             }
-
+            
             if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
                 TOIMaxIters = Math.Max(TOIMaxIters, iter);
         }

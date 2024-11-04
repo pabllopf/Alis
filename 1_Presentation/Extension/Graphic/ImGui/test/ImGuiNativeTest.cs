@@ -47,7 +47,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr self = new IntPtr(1);
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiInputTextCallbackData_ClearSelection(self));
         }
-
+        
         /// <summary>
         ///     Tests that im gui input text callback data delete chars should invoke native method
         /// </summary>
@@ -59,7 +59,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             int bytesCount = 5;
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiInputTextCallbackData_DeleteChars(self, pos, bytesCount));
         }
-
+        
         /// <summary>
         ///     Tests that im gui input text callback data has selection should return byte
         /// </summary>
@@ -69,7 +69,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr self = new IntPtr(1);
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiInputTextCallbackData_HasSelection(self));
         }
-
+        
         /// <summary>
         ///     Tests that im gui input text callback data im gui input text callback data should return int ptr
         /// </summary>
@@ -78,7 +78,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiInputTextCallbackData_ImGuiInputTextCallbackData());
         }
-
+        
         /// <summary>
         ///     Tests that im gui input text callback data insert chars should invoke native method
         /// </summary>
@@ -91,7 +91,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             byte[] textEnd = {68, 69, 70};
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiInputTextCallbackData_InsertChars(self, pos, text, textEnd));
         }
-
+        
         /// <summary>
         ///     Tests that im gui input text callback data select all should invoke native method
         /// </summary>
@@ -101,7 +101,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr self = new IntPtr(1);
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiInputTextCallbackData_SelectAll(self));
         }
-
+        
         /// <summary>
         ///     Tests that im gui io add focus event should invoke native method
         /// </summary>
@@ -112,7 +112,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             byte focused = 1;
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_AddFocusEvent(self, focused));
         }
-
+        
         /// <summary>
         ///     Tests that im gui io add input character should invoke native method
         /// </summary>
@@ -123,7 +123,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             uint c = 65;
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_AddInputCharacter(self, c));
         }
-
+        
         /// <summary>
         ///     Tests that im gui io add input characters utf 8 should invoke native method
         /// </summary>
@@ -134,7 +134,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             byte[] str = {65, 66, 67};
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_AddInputCharactersUTF8(self, str));
         }
-
+        
         /// <summary>
         ///     Tests that im gui io add input character utf 16 should invoke native method
         /// </summary>
@@ -145,7 +145,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ushort c = 65;
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_AddInputCharacterUTF16(self, c));
         }
-
+        
         /// <summary>
         ///     Tests that im gui io add key analog event should invoke native method
         /// </summary>
@@ -158,7 +158,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             float v = 0.5f;
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_AddKeyAnalogEvent(self, key, down, v));
         }
-
+        
         /// <summary>
         ///     Tests that im gui io add key event should invoke native method
         /// </summary>
@@ -170,7 +170,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             byte down = 1;
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_AddKeyEvent(self, key, down));
         }
-
+        
         /// <summary>
         ///     Tests that im gui io add mouse button event should invoke native method
         /// </summary>
@@ -182,7 +182,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             byte down = 1;
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_AddMouseButtonEvent(self, button, down));
         }
-
+        
         /// <summary>
         ///     Tests that im gui io add mouse pos event should invoke native method
         /// </summary>
@@ -194,7 +194,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             float y = 200.0f;
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_AddMousePosEvent(self, x, y));
         }
-
+        
         /// <summary>
         ///     Tests that im gui io add mouse viewport event should invoke native method
         /// </summary>
@@ -205,7 +205,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             uint id = 1;
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_AddMouseViewportEvent(self, id));
         }
-
+        
         /// <summary>
         ///     Tests that im gui io add mouse wheel event should invoke native method
         /// </summary>
@@ -217,7 +217,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             float whY = 1.0f;
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_AddMouseWheelEvent(self, whX, whY));
         }
-
+        
         /// <summary>
         ///     Tests that im gui io clear input characters should invoke native method
         /// </summary>
@@ -227,7 +227,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr self = new IntPtr(1);
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_ClearInputCharacters(self));
         }
-
+        
         /// <summary>
         ///     Tests that im gui io clear input keys should invoke native method
         /// </summary>
@@ -237,7 +237,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr self = new IntPtr(1);
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_ClearInputKeys(self));
         }
-
+        
         /// <summary>
         ///     Tests that im gui io im gui io should return int ptr
         /// </summary>
@@ -246,7 +246,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_ImGuiIO());
         }
-
+        
         /// <summary>
         ///     Tests that im gui io set app accepting events should invoke native method
         /// </summary>
@@ -257,7 +257,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             byte acceptingEvents = 1;
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_SetAppAcceptingEvents(self, acceptingEvents));
         }
-
+        
         /// <summary>
         ///     Tests that im gui io set key event native data should invoke native method
         /// </summary>
@@ -271,7 +271,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             int nativeLegacyIndex = 67;
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_SetKeyEventNativeData(self, key, nativeKeycode, nativeScancode, nativeLegacyIndex));
         }
-
+        
         /// <summary>
         ///     Tests that im gui list clipper begin should invoke native method
         /// </summary>
@@ -283,7 +283,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             float itemsHeight = 20.0f;
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiListClipper_Begin(self, itemsCount, itemsHeight));
         }
-
+        
         /// <summary>
         ///     Tests that im gui list clipper end should invoke native method
         /// </summary>
@@ -293,7 +293,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr self = new IntPtr(1);
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiListClipper_End(self));
         }
-
+        
         /// <summary>
         ///     Tests that im gui list clipper force display range by indices should invoke native method
         /// </summary>
@@ -305,7 +305,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             int itemMax = 10;
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiListClipper_ForceDisplayRangeByIndices(self, itemMin, itemMax));
         }
-
+        
         /// <summary>
         ///     Tests that im gui list clipper im gui list clipper should return int ptr
         /// </summary>
@@ -314,7 +314,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiListClipper_ImGuiListClipper());
         }
-
+        
         /// <summary>
         ///     Tests that im gui list clipper step should return byte
         /// </summary>
@@ -324,7 +324,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr self = new IntPtr(1);
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiListClipper_Step(self));
         }
-
+        
         /// <summary>
         ///     Tests that im gui once upon a frame im gui once upon a frame should return int ptr
         /// </summary>
@@ -333,7 +333,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiOnceUponAFrame_ImGuiOnceUponAFrame());
         }
-
+        
         /// <summary>
         ///     Tests that im gui payload clear should invoke native method
         /// </summary>
@@ -343,7 +343,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPayload self = new ImGuiPayload();
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiPayload_Clear(ref self));
         }
-
+        
         /// <summary>
         ///     Tests that im gui payload im gui payload should return im gui payload
         /// </summary>
@@ -352,7 +352,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiPayload_ImGuiPayload());
         }
-
+        
         /// <summary>
         ///     Tests that im gui payload is data type should return byte
         /// </summary>
@@ -363,7 +363,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             byte[] type = {65, 66, 67};
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiPayload_IsDataType(ref self, type));
         }
-
+        
         /// <summary>
         ///     Tests that im gui payload is delivery should return byte
         /// </summary>
@@ -373,7 +373,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPayload self = new ImGuiPayload();
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiPayload_IsDelivery(ref self));
         }
-
+        
         /// <summary>
         ///     Tests that im gui payload is preview should return byte
         /// </summary>
@@ -383,7 +383,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPayload self = new ImGuiPayload();
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiPayload_IsPreview(ref self));
         }
-
+        
         /// <summary>
         ///     Tests that im gui platform ime data im gui platform ime data should return int ptr
         /// </summary>
@@ -392,8 +392,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiPlatformImeData_ImGuiPlatformImeData());
         }
-
-
+        
+        
         /// <summary>
         ///     Tests that im gui platform io im gui platform io should return int ptr
         /// </summary>
@@ -402,7 +402,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiPlatformIO_ImGuiPlatformIO());
         }
-
+        
         /// <summary>
         ///     Tests that im gui platform monitor im gui platform monitor should return int ptr
         /// </summary>
@@ -411,7 +411,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiPlatformMonitor_ImGuiPlatformMonitor());
         }
-
+        
         /// <summary>
         ///     Tests that im gui storage build sort by key should invoke native method
         /// </summary>
@@ -421,7 +421,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiStorage self = new ImGuiStorage();
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStorage_BuildSortByKey(self));
         }
-
+        
         /// <summary>
         ///     Tests that im gui storage clear should invoke native method
         /// </summary>
@@ -431,7 +431,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiStorage self = new ImGuiStorage();
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStorage_Clear(self));
         }
-
+        
         /// <summary>
         ///     Tests that im gui storage get bool should return byte
         /// </summary>
@@ -443,7 +443,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             byte defaultVal = 0;
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStorage_GetBool(self, key, defaultVal));
         }
-
+        
         /// <summary>
         ///     Tests that im gui storage get bool ref should return byte array
         /// </summary>
@@ -455,7 +455,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             byte defaultVal = 0;
             Assert.Throws<MarshalDirectiveException>(() => ImGuiNative.ImGuiStorage_GetBoolRef(self, key, defaultVal));
         }
-
+        
         /// <summary>
         ///     Tests that im gui storage get float should return float
         /// </summary>
@@ -467,7 +467,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             float defaultVal = 0.0f;
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStorage_GetFloat(self, key, defaultVal));
         }
-
+        
         /// <summary>
         ///     Tests that im gui storage get float ref should return int ptr
         /// </summary>
@@ -479,7 +479,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             float defaultVal = 0.0f;
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStorage_GetFloatRef(self, key, defaultVal));
         }
-
+        
         /// <summary>
         ///     Tests that im gui storage get int should return int
         /// </summary>
@@ -491,7 +491,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             int defaultVal = 0;
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStorage_GetInt(self, key, defaultVal));
         }
-
+        
         /// <summary>
         ///     Tests that im gui storage get int ref should return int ptr
         /// </summary>
@@ -503,7 +503,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             int defaultVal = 0;
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStorage_GetIntRef(self, key, defaultVal));
         }
-
+        
         /// <summary>
         ///     Tests that im gui storage get void ptr should return int ptr
         /// </summary>
@@ -514,7 +514,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             uint key = 1;
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStorage_GetVoidPtr(self, key));
         }
-
+        
         /// <summary>
         ///     Tests that im gui storage get void ptr ref should return int ptr
         /// </summary>
@@ -526,7 +526,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr defaultVal = new IntPtr(1);
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStorage_GetVoidPtrRef(self, key, defaultVal));
         }
-
+        
         /// <summary>
         ///     Tests that im gui storage set all int should invoke native method
         /// </summary>
@@ -537,7 +537,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             int val = 1;
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStorage_SetAllInt(self, val));
         }
-
+        
         /// <summary>
         ///     Tests that im gui storage set bool should invoke native method
         /// </summary>
@@ -549,7 +549,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             byte val = 1;
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStorage_SetBool(self, key, val));
         }
-
+        
         /// <summary>
         ///     Tests that im gui storage set float should invoke native method
         /// </summary>
@@ -561,7 +561,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             float val = 1.0f;
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStorage_SetFloat(self, key, val));
         }
-
+        
         /// <summary>
         ///     Tests that im gui storage set int should invoke native method
         /// </summary>
@@ -573,7 +573,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             int val = 1;
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStorage_SetInt(self, key, val));
         }
-
+        
         /// <summary>
         ///     Tests that im gui storage set void ptr should invoke native method
         /// </summary>
@@ -585,7 +585,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr val = new IntPtr(1);
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStorage_SetVoidPtr(self, key, val));
         }
-
+        
         /// <summary>
         ///     Tests that im gui storage pair im gui storage pair int should return int ptr
         /// </summary>
@@ -596,7 +596,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             int valI = 1;
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStoragePair_ImGuiStoragePair_Int(key, valI));
         }
-
+        
         /// <summary>
         ///     Tests that im gui storage pair im gui storage pair float should return int ptr
         /// </summary>
@@ -607,7 +607,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             float valF = 1.0f;
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStoragePair_ImGuiStoragePair_Float(key, valF));
         }
-
+        
         /// <summary>
         ///     Tests that im gui storage pair im gui storage pair ptr should return int ptr
         /// </summary>
@@ -618,7 +618,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr valP = new IntPtr(1);
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStoragePair_ImGuiStoragePair_Ptr(key, valP));
         }
-
+        
         /// <summary>
         ///     Tests that im gui style im gui style should return int ptr
         /// </summary>
@@ -627,7 +627,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStyle_ImGuiStyle());
         }
-
+        
         /// <summary>
         ///     Tests that im gui style scale all sizes should invoke native method
         /// </summary>

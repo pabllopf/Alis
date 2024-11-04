@@ -44,37 +44,37 @@ namespace Alis.App.Engine.Menus
         ///     The size menu down
         /// </summary>
         private const int SizeMenuDown = 25;
-
+        
         /// <summary>
         ///     The menu down state
         /// </summary>
         private bool menuDownState = true;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="BottomMenu" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
         public BottomMenu(SpaceWork spaceWork) => SpaceWork = spaceWork;
-
+        
         /// <summary>
         ///     Gets the value of the space work
         /// </summary>
         public SpaceWork SpaceWork { get; }
-
+        
         /// <summary>
         ///     Initializes this instance
         /// </summary>
         public void Initialize()
         {
         }
-
+        
         /// <summary>
         ///     Updates this instance
         /// </summary>
         public void Update()
         {
         }
-
+        
         /// <summary>
         ///     Renders this instance
         /// </summary>
@@ -87,11 +87,11 @@ namespace Alis.App.Engine.Menus
                 ImGuiWindowFlags.NoSavedSettings |
                 ImGuiWindowFlags.NoBringToFrontOnFocus | ImGuiWindowFlags.NoBackground |
                 ImGuiWindowFlags.MenuBar;
-
+            
             ImGui.PushStyleVar(ImGuiStyleVar.WindowRounding, 0.0f);
             ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0.0f);
             ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2(0.0f, 0.0f));
-
+            
             ImGui.SetNextWindowPos(new Vector2(SpaceWork.Viewport.Pos.X, SpaceWork.Viewport.Pos.Y + (SpaceWork.Viewport.Size.Y - SizeMenuDown)));
             ImGui.SetNextWindowSize(new Vector2(SpaceWork.Viewport.Size.X, SizeMenuDown));
             if (ImGui.Begin("##MenuDown", ref menuDownState, styleGlagsMenuDown))
@@ -100,17 +100,17 @@ namespace Alis.App.Engine.Menus
                 if (ImGui.BeginMenuBar())
                 {
                     ImGui.Text("Hello world from menu down");
-
+                    
                     ImGui.Button("sample");
-
+                    
                     ImGui.EndMenuBar();
                 }
-
-
+                
+                
                 ImGui.End();
             }
         }
-
+        
         /// <summary>
         ///     Starts this instance
         /// </summary>

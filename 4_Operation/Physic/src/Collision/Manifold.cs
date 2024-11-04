@@ -56,22 +56,22 @@ namespace Alis.Core.Physic.Collision
         ///     Not use for Type.SeparationFunction.Points
         /// </summary>
         public Vector2 LocalNormal;
-
+        
         /// <summary>
         ///     Usage depends on manifold type
         /// </summary>
         public Vector2 LocalPoint;
-
+        
         /// <summary>
         ///     The number of manifold points
         /// </summary>
         public int PointCount;
-
+        
         /// <summary>
         ///     The points of contact
         /// </summary>
         public FixedArray2<ManifoldPoint> Points;
-
+        
         /// <summary>
         ///     The type
         /// </summary>

@@ -45,7 +45,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
         public void PixelFormat_InitializesWithDefaultValues()
         {
             PixelFormat pixelFormat = new PixelFormat();
-
+            
             Assert.Equal(default(uint), pixelFormat.format);
             Assert.Equal(IntPtr.Zero, pixelFormat.Palette);
             Assert.Equal(default(byte), pixelFormat.BitsPerPixel);
@@ -65,7 +65,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             Assert.Equal(default(int), pixelFormat.refCount);
             Assert.Equal(IntPtr.Zero, pixelFormat.Next);
         }
-
+        
         /// <summary>
         ///     Tests that pixel format set palette updates value correctly
         /// </summary>
@@ -77,10 +77,10 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             {
                 Palette = palettePtr
             };
-
+            
             Assert.Equal(palettePtr, pixelFormat.Palette);
         }
-
+        
         /// <summary>
         ///     Tests that pixel format set next updates value correctly
         /// </summary>
@@ -92,7 +92,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             {
                 Next = nextPtr
             };
-
+            
             Assert.Equal(nextPtr, pixelFormat.Next);
         }
     }

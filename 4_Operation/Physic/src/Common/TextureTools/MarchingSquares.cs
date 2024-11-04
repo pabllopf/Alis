@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;
 
@@ -58,23 +57,23 @@ namespace Alis.Core.Physic.Common.TextureTools
             int lerpCount, bool combine)
         {
             CxFastList<GeomPoly> ret = new CxFastList<GeomPoly>();
-
+            
             List<Vertices> verticesList = new List<Vertices>();
-
+            
             //NOTE: removed assignments as they were not used.
             List<GeomPoly> polyList;
             GeomPoly gp;
-
+            
             int xn = (int) (domain.Extents.X * 2 / cellWidth);
             bool xp = Math.Abs(xn - domain.Extents.X * 2 / cellWidth) < float.Epsilon;
             int yn = (int) (domain.Extents.Y * 2 / cellHeight);
             bool yp = Math.Abs(yn - domain.Extents.Y * 2 / cellHeight) < float.Epsilon;
             if (!xp) xn++;
             if (!yp) yn++;
-
+            
             sbyte[,] fs = new sbyte[xn + 1, yn + 1];
             GeomPolyVal[,] ps = new GeomPolyVal[xn + 1, yn + 1];
-
+            
             //populate shared function lookups.
             for (int x = 0; x < xn + 1; x++)
             {
@@ -89,7 +88,7 @@ namespace Alis.Core.Physic.Common.TextureTools
                     fs[x, y] = f[x0, y0];
                 }
             }
-
+            
             //generate sub-polys and combine to scan lines
             for (int y = 0; y < yn; y++)
             {
@@ -104,9 +103,9 @@ namespace Alis.Core.Physic.Common.TextureTools
                     float x1;
                     if (x == xn - 1) x1 = domain.UpperBound.X;
                     else x1 = x0 + cellWidth;
-
+                    
                     gp = new GeomPoly();
-
+                    
                     int key = MarchSquare(f, fs, ref gp, x, y, x0, y0, x1, y1, lerpCount);
                     if (gp.Length != 0)
                     {
@@ -117,28 +116,28 @@ namespace Alis.Core.Physic.Common.TextureTools
                         }
                         else
                             ret.Add(gp);
-
+                        
                         ps[x, y] = new GeomPolyVal(gp, key);
                     }
                     else
                         gp = null;
-
+                    
                     pre = gp;
                 }
             }
-
+            
             if (!combine)
             {
                 polyList = ret.GetListOfElements();
-
+                
                 foreach (GeomPoly poly in polyList)
                 {
                     verticesList.Add(new Vertices(poly.Points.GetListOfElements()));
                 }
-
+                
                 return verticesList;
             }
-
+            
             //combine scan lines together
             for (int y = 1; y < yn; y++)
             {
@@ -146,21 +145,21 @@ namespace Alis.Core.Physic.Common.TextureTools
                 while (x < xn)
                 {
                     GeomPolyVal p = ps[x, y];
-
+                    
                     //skip along scan line if no polygon exists at this point
                     if (p == null)
                     {
                         x++;
                         continue;
                     }
-
+                    
                     //skip along if current polygon cannot be combined above.
                     if ((p.Key & 12) == 0)
                     {
                         x++;
                         continue;
                     }
-
+                    
                     //skip along if no polygon exists above.
                     GeomPolyVal u = ps[x, y - 1];
                     if (u == null)
@@ -168,31 +167,31 @@ namespace Alis.Core.Physic.Common.TextureTools
                         x++;
                         continue;
                     }
-
+                    
                     //skip along if polygon above cannot be combined with.
                     if ((u.Key & 3) == 0)
                     {
                         x++;
                         continue;
                     }
-
+                    
                     float ax = x * cellWidth + domain.LowerBound.X;
                     float ay = y * cellHeight + domain.LowerBound.Y;
-
+                    
                     CxFastList<Vector2> bp = p.GeomP.Points;
                     CxFastList<Vector2> ap = u.GeomP.Points;
-
+                    
                     //skip if it's already been combined with above polygon
                     if (u.GeomP == p.GeomP)
                     {
                         x++;
                         continue;
                     }
-
+                    
                     //combine above (but disallow the hole thingies
                     CxFastListNode<Vector2> bi = bp.Begin();
                     while (Square(bi.Elem().Y - ay) > SettingEnv.Epsilon || bi.Elem().X < ax) bi = bi.Next();
-
+                    
                     //NOTE: Unused
                     //Vector2 b0 = bi.elem();
                     Vector2 b1 = bi.Next().Elem();
@@ -201,7 +200,7 @@ namespace Alis.Core.Physic.Common.TextureTools
                         x++;
                         continue;
                     }
-
+                    
                     bool brk = true;
                     CxFastListNode<Vector2> ai = ap.Begin();
                     while (ai != ap.End())
@@ -211,16 +210,16 @@ namespace Alis.Core.Physic.Common.TextureTools
                             brk = false;
                             break;
                         }
-
+                        
                         ai = ai.Next();
                     }
-
+                    
                     if (brk)
                     {
                         x++;
                         continue;
                     }
-
+                    
                     CxFastListNode<Vector2> bj = bi.Next().Next();
                     if (bj == bp.End()) bj = bp.Begin();
                     while (bj != bi)
@@ -230,7 +229,7 @@ namespace Alis.Core.Physic.Common.TextureTools
                         if (bj == bp.End()) bj = bp.Begin();
                         u.GeomP.Length++;
                     }
-
+                    
                     //u.p.simplify(float.Epsilon,float.Epsilon);
                     //
                     ax = x + 1;
@@ -242,11 +241,11 @@ namespace Alis.Core.Physic.Common.TextureTools
                             ax++;
                             continue;
                         }
-
+                        
                         p2.GeomP = u.GeomP;
                         ax++;
                     }
-
+                    
                     ax = x - 1;
                     while (ax >= 0)
                     {
@@ -256,43 +255,346 @@ namespace Alis.Core.Physic.Common.TextureTools
                             ax--;
                             continue;
                         }
-
+                        
                         p2.GeomP = u.GeomP;
                         ax--;
                     }
-
+                    
                     ret.Remove(p.GeomP);
                     p.GeomP = u.GeomP;
-
+                    
                     x = (int) ((bi.Next().Elem().X - domain.LowerBound.X) / cellWidth) + 1;
                     //x++; this was already commented out!
                 }
             }
-
+            
             polyList = ret.GetListOfElements();
-
+            
             foreach (GeomPoly poly in polyList)
             {
                 verticesList.Add(new Vertices(poly.Points.GetListOfElements()));
             }
-
+            
             return verticesList;
         }
-
-        #region Private Methods
-
-        //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
+        
+        #region CxFastList from nape physics
+        
+        #region Nested type: CxFastList
         
         /// <summary>
-        /// The look march
+        ///     Designed as a complete port of CxFastList from CxStd.
+        /// </summary>
+        internal class CxFastList<T>
+        {
+            /// <summary>
+            ///     The count
+            /// </summary>
+            private int _count;
+            
+            // first node in the list
+            /// <summary>
+            ///     The head
+            /// </summary>
+            private CxFastListNode<T> _head;
+            
+            /// <summary>
+            ///     Iterator to start of list (O(1))
+            /// </summary>
+            public CxFastListNode<T> Begin() => _head;
+            
+            /// <summary>
+            ///     Iterator to end of list (O(1))
+            /// </summary>
+            public CxFastListNode<T> End() => null;
+            
+            /// <summary>
+            ///     Returns first element of list (O(1))
+            /// </summary>
+            public T Front() => _head.Elem();
+            
+            /// <summary>
+            ///     add object to list (O(1))
+            /// </summary>
+            public CxFastListNode<T> Add(T value)
+            {
+                CxFastListNode<T> newNode = new CxFastListNode<T>(value);
+                if (_head == null)
+                {
+                    newNode._next = null;
+                    _head = newNode;
+                    _count++;
+                    return newNode;
+                }
+                
+                newNode._next = _head;
+                _head = newNode;
+                
+                _count++;
+                
+                return newNode;
+            }
+            
+            /// <summary>
+            ///     remove object from list, returns true if an element was removed (O(n))
+            /// </summary>
+            public bool Remove(T value)
+            {
+                CxFastListNode<T> head = _head;
+                CxFastListNode<T> prev = _head;
+                
+                EqualityComparer<T> comparer = EqualityComparer<T>.Default;
+                
+                if (head != null)
+                {
+                    if (!EqualityComparer<T>.Default.Equals(value, default(T)))
+                    {
+                        do
+                        {
+                            // if we are on the value to be removed
+                            if (comparer.Equals(head._elt, value))
+                            {
+                                // then we need to patch the list
+                                // check to see if we are removing the _head
+                                if (head == _head)
+                                {
+                                    _head = head._next;
+                                    _count--;
+                                    return true;
+                                }
+                                
+                                // were not at the head
+                                prev._next = head._next;
+                                _count--;
+                                return true;
+                            }
+                            
+                            // cache the current as the previous for the next go around
+                            prev = head;
+                            head = head._next;
+                        } while (head != null);
+                    }
+                }
+                
+                return false;
+            }
+            
+            /// <summary>
+            ///     pop element from head of list (O(1)) Note: this does not return the object popped!
+            ///     There is good reason to this, and it regards the Alloc list variants which guarantee
+            ///     objects are released to the object pool. You do not want to retrieve an element
+            ///     through pop or else that object may suddenly be used by another piece of code which
+            ///     retrieves it from the object pool.
+            /// </summary>
+            public CxFastListNode<T> Pop() => Erase(null, _head);
+            
+            /// <summary>
+            ///     insert object after 'node' returning an iterator to the inserted object.
+            /// </summary>
+            public CxFastListNode<T> Insert(CxFastListNode<T> node, T value)
+            {
+                if (node == null)
+                {
+                    return Add(value);
+                }
+                
+                CxFastListNode<T> newNode = new CxFastListNode<T>(value);
+                CxFastListNode<T> nextNode = node._next;
+                newNode._next = nextNode;
+                node._next = newNode;
+                
+                _count++;
+                
+                return newNode;
+            }
+            
+            /// <summary>
+            ///     removes the element pointed to by 'node' with 'prev' being the previous iterator,
+            ///     returning an iterator to the element following that of 'node' (O(1))
+            /// </summary>
+            public CxFastListNode<T> Erase(CxFastListNode<T> prev, CxFastListNode<T> node)
+            {
+                // cache the node after the node to be removed
+                CxFastListNode<T> nextNode = node._next;
+                if (prev != null)
+                    prev._next = nextNode;
+                else if (_head != null)
+                    _head = _head._next;
+                else
+                    return null;
+                
+                _count--;
+                return nextNode;
+            }
+            
+            /// <summary>
+            ///     whether the list is empty (O(1))
+            /// </summary>
+            public bool Empty()
+            {
+                if (_head == null)
+                    return true;
+                return false;
+            }
+            
+            /// <summary>
+            ///     computes size of list (O(n))
+            /// </summary>
+            public int Size()
+            {
+                CxFastListNode<T> i = Begin();
+                int count = 0;
+                
+                do
+                {
+                    count++;
+                } while (i.Next() != null);
+                
+                return count;
+            }
+            
+            /// <summary>
+            ///     empty the list (O(1) if CxMixList, O(n) otherwise)
+            /// </summary>
+            public void Clear()
+            {
+                CxFastListNode<T> head = _head;
+                while (head != null)
+                {
+                    CxFastListNode<T> node2 = head;
+                    head = head._next;
+                    node2._next = null;
+                }
+                
+                _head = null;
+                _count = 0;
+            }
+            
+            /// <summary>
+            ///     returns true if 'value' is an element of the list (O(n))
+            /// </summary>
+            public bool Has(T value) => Find(value) != null;
+            
+            // Non CxFastList Methods 
+            /// <summary>
+            ///     Finds the value
+            /// </summary>
+            /// <param name="value">The value</param>
+            /// <returns>A cx fast list node of t</returns>
+            public CxFastListNode<T> Find(T value)
+            {
+                // start at head
+                CxFastListNode<T> head = _head;
+                EqualityComparer<T> comparer = EqualityComparer<T>.Default;
+                if (head != null)
+                {
+                    if (!EqualityComparer<T>.Default.Equals(value, default(T)))
+                    {
+                        do
+                        {
+                            if (comparer.Equals(head._elt, value))
+                            {
+                                return head;
+                            }
+                            
+                            head = head._next;
+                        } while (head != _head);
+                    }
+                    else
+                    {
+                        do
+                        {
+                            if (EqualityComparer<T>.Default.Equals(head._elt, default(T)))
+                            {
+                                return head;
+                            }
+                            
+                            head = head._next;
+                        } while (head != _head);
+                    }
+                }
+                
+                return null;
+            }
+            
+            /// <summary>
+            ///     Gets the list of elements
+            /// </summary>
+            /// <returns>The list</returns>
+            public List<T> GetListOfElements()
+            {
+                List<T> list = new List<T>();
+                
+                CxFastListNode<T> iter = Begin();
+                
+                if (iter != null)
+                {
+                    do
+                    {
+                        list.Add(iter._elt);
+                        iter = iter._next;
+                    } while (iter != null);
+                }
+                
+                return list;
+            }
+        }
+        
+        #endregion
+        
+        #endregion
+        
+        #region Internal Stuff
+        
+        #region Nested type: GeomPoly
+        
+        /// <summary>
+        ///     The geom poly class
+        /// </summary>
+        internal class GeomPoly
+        {
+            /// <summary>
+            ///     The length
+            /// </summary>
+            public int Length;
+            
+            /// <summary>
+            ///     The points
+            /// </summary>
+            public CxFastList<Vector2> Points;
+            
+            /// <summary>
+            ///     Initializes a new instance of the <see cref="GeomPoly" /> class
+            /// </summary>
+            public GeomPoly()
+            {
+                Points = new CxFastList<Vector2>();
+                Length = 0;
+            }
+        }
+        
+        #endregion
+        
+        #region Nested type: GeomPolyVal
+        
+        #endregion
+        
+        #endregion
+        
+        #region Private Methods
+        
+        //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+        
+        
+        /// <summary>
+        ///     The look march
         /// </summary>
         private static readonly int[] _lookMarch =
         {
             0x00, 0xE0, 0x38, 0xD8, 0x0E, 0xEE, 0x36, 0xD6, 0x83, 0x63, 0xBB, 0x5B, 0x8D,
             0x6D, 0xB5, 0x55
         };
-
+        
         /// <summary>
         ///     Lerps the x 0
         /// </summary>
@@ -310,42 +612,42 @@ namespace Alis.Core.Physic.Common.TextureTools
             else t = v0 / dv;
             return x0 + t * (x1 - x0);
         }
-
+        
         //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
+        
         /** Recursive linear interpolation for use in marching squares **/
         private static float Xlerp(float x0, float x1, float y, float v0, float v1, sbyte[,] f, int c)
         {
             float xm = Lerp(x0, x1, v0, v1);
             if (c == 0)
                 return xm;
-
+            
             sbyte vm = f[(int) xm, (int) y];
-
+            
             if (v0 * vm < 0)
                 return Xlerp(x0, xm, y, v0, vm, f, c - 1);
-
+            
             return Xlerp(xm, x1, y, vm, v1, f, c - 1);
         }
-
+        
         /** Recursive linear interpolation for use in marching squares **/
         private static float Ylerp(float y0, float y1, float x, float v0, float v1, sbyte[,] f, int c)
         {
             float ym = Lerp(y0, y1, v0, v1);
             if (c == 0)
                 return ym;
-
+            
             sbyte vm = f[(int) x, (int) ym];
-
+            
             if (v0 * vm < 0)
                 return Ylerp(y0, ym, x, v0, vm, f, c - 1);
-
+            
             return Ylerp(ym, y1, x, vm, v1, f, c - 1);
         }
-
+        
         /** Square value for use in marching squares **/
         private static float Square(float x) => x * x;
-
+        
         /// <summary>
         ///     Vecs the dsq using the specified a
         /// </summary>
@@ -357,7 +659,7 @@ namespace Alis.Core.Physic.Common.TextureTools
             Vector2 d = a - b;
             return d.X * d.X + d.Y * d.Y;
         }
-
+        
         /// <summary>
         ///     Vecs the cross using the specified a
         /// </summary>
@@ -365,10 +667,10 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// <param name="b">The </param>
         /// <returns>The float</returns>
         private static float VecCross(Vector2 a, Vector2 b) => a.X * b.Y - a.Y * b.X;
-
+        
         
         /// <summary>
-        /// Marches the square using the specified f
+        ///     Marches the square using the specified f
         /// </summary>
         /// <param name="f">The </param>
         /// <param name="fs">The fs</param>
@@ -394,7 +696,7 @@ namespace Alis.Core.Physic.Common.TextureTools
             if (v2 < 0) key |= 2;
             sbyte v3 = fs[ax, ay + 1];
             if (v3 < 0) key |= 1;
-
+            
             int val = _lookMarch[key];
             if (val != 0)
             {
@@ -412,28 +714,28 @@ namespace Alis.Core.Physic.Common.TextureTools
                             else if (i == 2) p = new Vector2(x1, y0);
                             else if (i == 4) p = new Vector2(x1, y1);
                             else if (i == 6) p = new Vector2(x0, y1);
-
+                            
                             else if (i == 1) p = new Vector2(Xlerp(x0, x1, y0, v0, v1, f, bin), y0);
                             else if (i == 5) p = new Vector2(Xlerp(x0, x1, y1, v3, v2, f, bin), y1);
-
+                            
                             else if (i == 3) p = new Vector2(x1, Ylerp(y0, y1, x1, v1, v2, f, bin));
                             else p = new Vector2(x0, Ylerp(y0, y1, x0, v0, v3, f, bin));
-
+                            
                             pi = poly.Points.Insert(pi, p);
                         }
-
+                        
                         poly.Length++;
                     }
                 }
                 //poly.simplify(float.Epsilon,float.Epsilon);
             }
-
+            
             return key;
         }
-
+        
         
         /// <summary>
-        /// Combs the left using the specified polya
+        ///     Combs the left using the specified polya
         /// </summary>
         /// <param name="polya">The polya</param>
         /// <param name="polyb">The polyb</param>
@@ -443,7 +745,7 @@ namespace Alis.Core.Physic.Common.TextureTools
             CxFastList<Vector2> bp = polyb.Points;
             CxFastListNode<Vector2> ai = ap.Begin();
             CxFastListNode<Vector2> bi = bp.Begin();
-
+            
             Vector2 b = bi.Elem();
             CxFastListNode<Vector2> prea = null;
             while (ai != ap.End())
@@ -456,7 +758,7 @@ namespace Alis.Core.Physic.Common.TextureTools
                     {
                         Vector2 a0 = prea.Elem();
                         b = bi.Next().Elem();
-
+                        
                         Vector2 u = a - a0;
                         //vec_new(u); vec_sub(a.p.p, a0.p.p, u);
                         Vector2 v = b - a;
@@ -469,7 +771,7 @@ namespace Alis.Core.Physic.Common.TextureTools
                             ai = prea;
                         }
                     }
-
+                    
                     //insert polyb into polya
                     bool fst = true;
                     CxFastListNode<Vector2> preb = null;
@@ -483,10 +785,10 @@ namespace Alis.Core.Physic.Common.TextureTools
                             polya.Length++;
                             preb = ai;
                         }
-
+                        
                         fst = false;
                     }
-
+                    
                     //ignore shared vertex if parallel
                     ai = ai.Next();
                     Vector2 a1 = ai.Elem();
@@ -514,315 +816,12 @@ namespace Alis.Core.Physic.Common.TextureTools
                     
                     return;
                 }
-
+                
                 prea = ai;
                 ai = ai.Next();
             }
         }
-
-        #endregion
-
-        #region CxFastList from nape physics
-
-        #region Nested type: CxFastList
-
-        /// <summary>
-        ///     Designed as a complete port of CxFastList from CxStd.
-        /// </summary>
-        internal class CxFastList<T>
-        {
-            /// <summary>
-            ///     The count
-            /// </summary>
-            private int _count;
-
-            // first node in the list
-            /// <summary>
-            ///     The head
-            /// </summary>
-            private CxFastListNode<T> _head;
-
-            /// <summary>
-            ///     Iterator to start of list (O(1))
-            /// </summary>
-            public CxFastListNode<T> Begin() => _head;
-
-            /// <summary>
-            ///     Iterator to end of list (O(1))
-            /// </summary>
-            public CxFastListNode<T> End() => null;
-
-            /// <summary>
-            ///     Returns first element of list (O(1))
-            /// </summary>
-            public T Front() => _head.Elem();
-
-            /// <summary>
-            ///     add object to list (O(1))
-            /// </summary>
-            public CxFastListNode<T> Add(T value)
-            {
-                CxFastListNode<T> newNode = new CxFastListNode<T>(value);
-                if (_head == null)
-                {
-                    newNode._next = null;
-                    _head = newNode;
-                    _count++;
-                    return newNode;
-                }
-
-                newNode._next = _head;
-                _head = newNode;
-
-                _count++;
-
-                return newNode;
-            }
-
-            /// <summary>
-            ///     remove object from list, returns true if an element was removed (O(n))
-            /// </summary>
-            public bool Remove(T value)
-            {
-                CxFastListNode<T> head = _head;
-                CxFastListNode<T> prev = _head;
-
-                EqualityComparer<T> comparer = EqualityComparer<T>.Default;
-
-                if (head != null)
-                {
-                    if (!EqualityComparer<T>.Default.Equals(value, default(T)))
-                    {
-                        do
-                        {
-                            // if we are on the value to be removed
-                            if (comparer.Equals(head._elt, value))
-                            {
-                                // then we need to patch the list
-                                // check to see if we are removing the _head
-                                if (head == _head)
-                                {
-                                    _head = head._next;
-                                    _count--;
-                                    return true;
-                                }
-
-                                // were not at the head
-                                prev._next = head._next;
-                                _count--;
-                                return true;
-                            }
-
-                            // cache the current as the previous for the next go around
-                            prev = head;
-                            head = head._next;
-                        } while (head != null);
-                    }
-                }
-
-                return false;
-            }
-
-            /// <summary>
-            ///     pop element from head of list (O(1)) Note: this does not return the object popped!
-            ///     There is good reason to this, and it regards the Alloc list variants which guarantee
-            ///     objects are released to the object pool. You do not want to retrieve an element
-            ///     through pop or else that object may suddenly be used by another piece of code which
-            ///     retrieves it from the object pool.
-            /// </summary>
-            public CxFastListNode<T> Pop() => Erase(null, _head);
-
-            /// <summary>
-            ///     insert object after 'node' returning an iterator to the inserted object.
-            /// </summary>
-            public CxFastListNode<T> Insert(CxFastListNode<T> node, T value)
-            {
-                if (node == null)
-                {
-                    return Add(value);
-                }
-
-                CxFastListNode<T> newNode = new CxFastListNode<T>(value);
-                CxFastListNode<T> nextNode = node._next;
-                newNode._next = nextNode;
-                node._next = newNode;
-
-                _count++;
-
-                return newNode;
-            }
-
-            /// <summary>
-            ///     removes the element pointed to by 'node' with 'prev' being the previous iterator,
-            ///     returning an iterator to the element following that of 'node' (O(1))
-            /// </summary>
-            public CxFastListNode<T> Erase(CxFastListNode<T> prev, CxFastListNode<T> node)
-            {
-                // cache the node after the node to be removed
-                CxFastListNode<T> nextNode = node._next;
-                if (prev != null)
-                    prev._next = nextNode;
-                else if (_head != null)
-                    _head = _head._next;
-                else
-                    return null;
-
-                _count--;
-                return nextNode;
-            }
-
-            /// <summary>
-            ///     whether the list is empty (O(1))
-            /// </summary>
-            public bool Empty()
-            {
-                if (_head == null)
-                    return true;
-                return false;
-            }
-
-            /// <summary>
-            ///     computes size of list (O(n))
-            /// </summary>
-            public int Size()
-            {
-                CxFastListNode<T> i = Begin();
-                int count = 0;
-
-                do
-                {
-                    count++;
-                } while (i.Next() != null);
-
-                return count;
-            }
-
-            /// <summary>
-            ///     empty the list (O(1) if CxMixList, O(n) otherwise)
-            /// </summary>
-            public void Clear()
-            {
-                CxFastListNode<T> head = _head;
-                while (head != null)
-                {
-                    CxFastListNode<T> node2 = head;
-                    head = head._next;
-                    node2._next = null;
-                }
-
-                _head = null;
-                _count = 0;
-            }
-
-            /// <summary>
-            ///     returns true if 'value' is an element of the list (O(n))
-            /// </summary>
-            public bool Has(T value) => Find(value) != null;
-
-            // Non CxFastList Methods 
-            /// <summary>
-            ///     Finds the value
-            /// </summary>
-            /// <param name="value">The value</param>
-            /// <returns>A cx fast list node of t</returns>
-            public CxFastListNode<T> Find(T value)
-            {
-                // start at head
-                CxFastListNode<T> head = _head;
-                EqualityComparer<T> comparer = EqualityComparer<T>.Default;
-                if (head != null)
-                {
-                    if (!EqualityComparer<T>.Default.Equals(value, default(T)))
-                    {
-                        do
-                        {
-                            if (comparer.Equals(head._elt, value))
-                            {
-                                return head;
-                            }
-
-                            head = head._next;
-                        } while (head != _head);
-                    }
-                    else
-                    {
-                        do
-                        {
-                            if (EqualityComparer<T>.Default.Equals(head._elt, default(T)))
-                            {
-                                return head;
-                            }
-
-                            head = head._next;
-                        } while (head != _head);
-                    }
-                }
-
-                return null;
-            }
-
-            /// <summary>
-            ///     Gets the list of elements
-            /// </summary>
-            /// <returns>The list</returns>
-            public List<T> GetListOfElements()
-            {
-                List<T> list = new List<T>();
-
-                CxFastListNode<T> iter = Begin();
-
-                if (iter != null)
-                {
-                    do
-                    {
-                        list.Add(iter._elt);
-                        iter = iter._next;
-                    } while (iter != null);
-                }
-
-                return list;
-            }
-        }
-
-        #endregion
         
-        #endregion
-
-        #region Internal Stuff
-
-        #region Nested type: GeomPoly
-
-        /// <summary>
-        ///     The geom poly class
-        /// </summary>
-        internal class GeomPoly
-        {
-            /// <summary>
-            ///     The length
-            /// </summary>
-            public int Length;
-
-            /// <summary>
-            ///     The points
-            /// </summary>
-            public CxFastList<Vector2> Points;
-
-            /// <summary>
-            ///     Initializes a new instance of the <see cref="GeomPoly" /> class
-            /// </summary>
-            public GeomPoly()
-            {
-                Points = new CxFastList<Vector2>();
-                Length = 0;
-            }
-        }
-
-        #endregion
-
-        #region Nested type: GeomPolyVal
-
-        #endregion
-
         #endregion
     }
 }

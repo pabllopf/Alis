@@ -53,27 +53,27 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         ///     The holes
         /// </summary>
         protected List<Polygon> _holes;
-
+        
         /// <summary>
         ///     The last
         /// </summary>
         protected PolygonPoint _last;
-
+        
         /// <summary>
         ///     The triangulation point
         /// </summary>
         protected List<TriangulationPoint> _points = new List<TriangulationPoint>();
-
+        
         /// <summary>
         ///     The steiner points
         /// </summary>
         protected List<TriangulationPoint> _steinerPoints;
-
+        
         /// <summary>
         ///     The triangles
         /// </summary>
         protected List<DelaunayTriangle> _triangles;
-
+        
         /// <summary>
         ///     Create a polygon from a list of at least 3 points with no duplicates.
         /// </summary>
@@ -81,14 +81,14 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         public Polygon(IList<PolygonPoint> points)
         {
             if (points.Count < 3) throw new ArgumentException("List has fewer than 3 points", "points");
-
+            
             // Lets do one sanity check that first and last point hasn't got same position
             // Its something that often happen when importing polygon data from other formats
             if (points[0].Equals(points[points.Count - 1])) points.RemoveAt(points.Count - 1);
-
+            
             _points.AddRange(points);
         }
-
+        
         /// <summary>
         ///     Create a polygon from a list of at least 3 points with no duplicates.
         /// </summary>
@@ -96,19 +96,19 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         public Polygon(IEnumerable<PolygonPoint> points) : this(points as IList<PolygonPoint> ?? points.ToArray())
         {
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Polygon" /> class
         /// </summary>
         public Polygon()
         {
         }
-
+        
         /// <summary>
         ///     Gets the value of the holes
         /// </summary>
         public IList<Polygon> Holes => _holes;
-
+        
         /// <summary>
         ///     Adds the steiner point using the specified point
         /// </summary>
@@ -119,10 +119,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
             {
                 _steinerPoints = new List<TriangulationPoint>();
             }
-
+            
             _steinerPoints.Add(point);
         }
-
+        
         /// <summary>
         ///     Adds the steiner points using the specified points
         /// </summary>
@@ -133,10 +133,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
             {
                 _steinerPoints = new List<TriangulationPoint>();
             }
-
+            
             _steinerPoints.AddRange(points);
         }
-
+        
         /// <summary>
         ///     Clears the steiner points
         /// </summary>
@@ -147,7 +147,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
                 _steinerPoints.Clear();
             }
         }
-
+        
         /// <summary>
         ///     Add a hole to the polygon.
         /// </summary>
@@ -159,7 +159,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
             // XXX: tests could be made here to be sure it is fully inside
             //        addSubtraction( poly.getPoints() );
         }
-
+        
         /// <summary>
         ///     Inserts newPoint after point.
         /// </summary>
@@ -178,7 +178,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
             point.Next = newPoint;
             _points.Insert(index + 1, newPoint);
         }
-
+        
         /// <summary>
         ///     Inserts list (after last point in polygon?)
         /// </summary>
@@ -194,16 +194,16 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
                     p.Next = _last.Next;
                     _last.Next = p;
                 }
-
+                
                 _last = p;
                 _points.Add(p);
             }
-
+            
             first = (PolygonPoint) _points[0];
             _last.Next = first;
             first.Previous = _last;
         }
-
+        
         /// <summary>
         ///     Adds a point after the last in the polygon.
         /// </summary>
@@ -215,7 +215,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
             _last.Next = p;
             _points.Add(p);
         }
-
+        
         /// <summary>
         ///     Removes a point from the polygon.
         /// </summary>
@@ -223,31 +223,31 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         public void RemovePoint(PolygonPoint p)
         {
             PolygonPoint next, prev;
-
+            
             next = p.Next;
             prev = p.Previous;
             prev.Next = next;
             next.Previous = prev;
             _points.Remove(p);
         }
-
+        
         #region Triangulatable Members
-
+        
         /// <summary>
         ///     Gets the value of the triangulation mode
         /// </summary>
         public TriangulationMode TriangulationMode => TriangulationMode.Polygon;
-
+        
         /// <summary>
         ///     Gets the value of the points
         /// </summary>
         public IList<TriangulationPoint> Points => _points;
-
+        
         /// <summary>
         ///     Gets the value of the triangles
         /// </summary>
         public IList<DelaunayTriangle> Triangles => _triangles;
-
+        
         /// <summary>
         ///     Adds the triangle using the specified t
         /// </summary>
@@ -256,7 +256,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         {
             _triangles.Add(t);
         }
-
+        
         /// <summary>
         ///     Adds the triangles using the specified list
         /// </summary>
@@ -265,7 +265,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         {
             _triangles.AddRange(list);
         }
-
+        
         /// <summary>
         ///     Clears the triangles
         /// </summary>
@@ -273,7 +273,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         {
             if (_triangles != null) _triangles.Clear();
         }
-
+        
         /// <summary>
         ///     Creates constraints and populates the context with points
         /// </summary>
@@ -288,16 +288,16 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
             {
                 _triangles.Clear();
             }
-
+            
             // Outer constraints
             for (int i = 0; i < _points.Count - 1; i++)
             {
                 tcx.NewConstraint(_points[i], _points[i + 1]);
             }
-
+            
             tcx.NewConstraint(_points[0], _points[_points.Count - 1]);
             tcx.Points.AddRange(_points);
-
+            
             // Hole constraints
             if (_holes != null)
             {
@@ -307,18 +307,18 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
                     {
                         tcx.NewConstraint(p._points[i], p._points[i + 1]);
                     }
-
+                    
                     tcx.NewConstraint(p._points[0], p._points[p._points.Count - 1]);
                     tcx.Points.AddRange(p._points);
                 }
             }
-
+            
             if (_steinerPoints != null)
             {
                 tcx.Points.AddRange(_steinerPoints);
             }
         }
-
+        
         #endregion
     }
 }

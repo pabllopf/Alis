@@ -49,7 +49,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             int id = 1;
             Assert.Throws<DllNotFoundException>(() => ImNodes.BeginInputAttribute(id));
         }
-
+        
         /// <summary>
         ///     Tests that BeginInputAttribute starts an input attribute with specified shape
         /// </summary>
@@ -61,7 +61,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.BeginInputAttribute(id, shape));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that BeginNode starts a node with the specified id
         /// </summary>
@@ -72,7 +72,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.BeginNode(id));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that BeginNodeEditor starts the node editor
         /// </summary>
@@ -82,7 +82,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.BeginNodeEditor());
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that BeginNodeTitleBar starts the node title bar
         /// </summary>
@@ -92,7 +92,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.BeginNodeTitleBar());
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that BeginOutputAttribute starts an output attribute with default shape
         /// </summary>
@@ -103,7 +103,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.BeginOutputAttribute(id));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that BeginOutputAttribute starts an output attribute with specified shape
         /// </summary>
@@ -115,7 +115,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.BeginOutputAttribute(id, shape));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that BeginStaticAttribute starts a static attribute with the specified id
         /// </summary>
@@ -126,7 +126,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.BeginStaticAttribute(id));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that ClearLinkSelection clears the link selection
         /// </summary>
@@ -136,7 +136,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.ClearLinkSelection());
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that ClearLinkSelection clears the link selection with specified link id
         /// </summary>
@@ -147,7 +147,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.ClearLinkSelection(linkId));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that ClearNodeSelection clears the node selection
         /// </summary>
@@ -157,7 +157,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.ClearNodeSelection());
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that ClearNodeSelection clears the node selection with specified node id
         /// </summary>
@@ -168,7 +168,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.ClearNodeSelection(nodeId));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that CreateContext creates a new context
         /// </summary>
@@ -177,7 +177,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         {
             Assert.Throws<DllNotFoundException>(() => ImNodes.CreateContext());
         }
-
+        
         /// <summary>
         ///     Tests that DestroyContext destroys the context
         /// </summary>
@@ -187,7 +187,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.CreateContext());
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that EditorContextCreate creates a new editor context
         /// </summary>
@@ -196,7 +196,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         {
             Assert.Throws<DllNotFoundException>(() => ImNodes.EditorContextCreate());
         }
-
+        
         /// <summary>
         ///     Tests that EditorContextFree frees the editor context
         /// </summary>
@@ -206,7 +206,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.EditorContextCreate());
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that EditorContextGetPanning gets the panning of the editor context
         /// </summary>
@@ -216,7 +216,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.EditorContextGetPanning());
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that EditorContextMoveToNode moves the editor context to the specified node
         /// </summary>
@@ -227,7 +227,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.EditorContextMoveToNode(nodeId));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that EditorContextResetPanning resets the panning of the editor context
         /// </summary>
@@ -236,7 +236,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         {
             Assert.Throws<DllNotFoundException>(() => ImNodes.EditorContextResetPanning(new Vector2(0, 0)));
         }
-
+        
         /// <summary>
         ///     Tests that EditorContextSet sets the editor context
         /// </summary>
@@ -245,7 +245,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         {
             Assert.Throws<DllNotFoundException>(() => ImNodes.EditorContextCreate());
         }
-
+        
         /// <summary>
         ///     Tests that EndInputAttribute ends the input attribute
         /// </summary>
@@ -255,7 +255,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.EndInputAttribute());
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that EndNode ends the node
         /// </summary>
@@ -265,7 +265,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.EndNode());
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that EndNodeEditor ends the node editor
         /// </summary>
@@ -275,7 +275,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.EndNodeEditor());
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that EndNodeTitleBar ends the node title bar
         /// </summary>
@@ -285,7 +285,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.EndNodeTitleBar());
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that EndOutputAttribute ends the output attribute
         /// </summary>
@@ -295,7 +295,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.EndOutputAttribute());
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that EndStaticAttribute ends the static attribute
         /// </summary>
@@ -305,7 +305,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.EndStaticAttribute());
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that GetCurrentContext gets the current context
         /// </summary>
@@ -314,7 +314,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         {
             Assert.Throws<DllNotFoundException>(() => ImNodes.GetCurrentContext());
         }
-
+        
         /// <summary>
         ///     Tests that GetNodeDimensions gets the dimensions of the node
         /// </summary>
@@ -324,7 +324,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.GetNodeDimensions(1));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that GetNodeEditorSpacePos gets the editor space position of the node
         /// </summary>
@@ -335,7 +335,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.GetNodeEditorSpacePos(nodeId));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that GetNodeGridSpacePos gets the grid space position of the node
         /// </summary>
@@ -346,7 +346,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.GetNodeGridSpacePos(nodeId));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that GetNodeScreenSpacePos gets the screen space position of the node
         /// </summary>
@@ -357,7 +357,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.GetNodeScreenSpacePos(nodeId));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that GetSelectedLinks gets the selected links
         /// </summary>
@@ -368,7 +368,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.GetSelectedLinks(ref linkIds));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that GetSelectedNodes gets the selected nodes
         /// </summary>
@@ -379,7 +379,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.GetSelectedNodes(ref nodeIds));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that IsAnyAttributeActive returns whether any attribute is active
         /// </summary>
@@ -389,8 +389,8 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.IsAnyAttributeActive());
             // Add assertions to verify the behavior
         }
-
-
+        
+        
         /// <summary>
         ///     Tests that IsAnyAttributeActive returns whether any attribute is active with specified attribute id
         /// </summary>
@@ -401,7 +401,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.IsAnyAttributeActive(ref attributeId));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that IsAttributeActive returns whether the attribute is active
         /// </summary>
@@ -411,7 +411,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.IsAttributeActive());
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that IsEditorHovered returns whether the editor is hovered
         /// </summary>
@@ -421,7 +421,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.IsEditorHovered());
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that IsLinkCreated returns whether a link is created
         /// </summary>
@@ -433,7 +433,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.IsLinkCreated(ref startedAtAttributeId, ref endedAtAttributeId));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that IsLinkCreated returns whether a link is created with specified snap
         /// </summary>
@@ -446,7 +446,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.IsLinkCreated(ref startedAtAttributeId, ref endedAtAttributeId, ref createdFromSnap));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that IsLinkCreated returns whether a link is created with specified node and attribute ids
         /// </summary>
@@ -460,7 +460,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.IsLinkCreated(ref startedAtNodeId, ref startedAtAttributeId, ref endedAtNodeId, ref endedAtAttributeId));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that IsLinkCreated returns whether a link is created with specified node and attribute ids and snap
         /// </summary>
@@ -475,7 +475,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.IsLinkCreated(ref startedAtNodeId, ref startedAtAttributeId, ref endedAtNodeId, ref endedAtAttributeId, ref createdFromSnap));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that IsLinkDestroyed returns whether a link is destroyed
         /// </summary>
@@ -486,7 +486,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.IsLinkDestroyed(ref linkId));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that IsLinkDropped returns whether a link is dropped
         /// </summary>
@@ -496,7 +496,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.IsLinkDropped());
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that IsLinkDropped returns whether a link is dropped with specified attribute id
         /// </summary>
@@ -507,7 +507,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.IsLinkDropped(ref startedAtAttributeId));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that IsLinkDropped returns whether a link is dropped with specified attribute id and detached links
         /// </summary>
@@ -519,7 +519,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.IsLinkDropped(ref startedAtAttributeId, includingDetachedLinks));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that IsLinkHovered returns whether a link is hovered
         /// </summary>
@@ -530,7 +530,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.IsLinkHovered(ref linkId));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that IsLinkSelected returns whether a link is selected
         /// </summary>
@@ -541,7 +541,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.IsLinkSelected(linkId));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that IsLinkStarted returns whether a link is started
         /// </summary>
@@ -552,7 +552,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.IsLinkStarted(ref startedAtAttributeId));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that IsNodeHovered returns whether a node is hovered
         /// </summary>
@@ -563,7 +563,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.IsNodeHovered(ref nodeId));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that IsNodeSelected returns whether a node is selected
         /// </summary>
@@ -574,7 +574,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.IsNodeSelected(nodeId));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that IsPinHovered returns whether a pin is hovered
         /// </summary>
@@ -585,7 +585,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.IsPinHovered(ref attributeId));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that Link links the specified attributes
         /// </summary>
@@ -598,7 +598,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.Link(id, startAttributeId, endAttributeId));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that LoadCurrentEditorStateFromIniFile loads the current editor state from ini file
         /// </summary>
@@ -609,7 +609,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.LoadCurrentEditorStateFromIniFile(fileName));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that LoadCurrentEditorStateFromIniString loads the current editor state from ini string
         /// </summary>
@@ -621,7 +621,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.LoadCurrentEditorStateFromIniString(data, dataSize));
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that LoadEditorStateFromIniFile loads the editor state from ini file
         /// </summary>
@@ -631,7 +631,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>(() => ImNodes.EditorContextCreate());
             // Add assertions to verify the behavior
         }
-
+        
         /// <summary>
         ///     Tests that LoadEditorStateFromIniString loads the editor state from ini string
         /// </summary>
@@ -649,7 +649,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         {
             Assert.Throws<DllNotFoundException>(() => ImNodes.NumSelectedLinks());
         }
-
+        
         /// <summary>
         ///     Tests that num selected nodes throws dll not found exception
         /// </summary>
@@ -658,7 +658,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         {
             Assert.Throws<DllNotFoundException>(() => ImNodes.NumSelectedNodes());
         }
-
+        
         /// <summary>
         ///     Tests that pop attribute flag throws dll not found exception
         /// </summary>
@@ -667,7 +667,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         {
             Assert.Throws<DllNotFoundException>(() => ImNodes.PopAttributeFlag());
         }
-
+        
         /// <summary>
         ///     Tests that pop color style throws dll not found exception
         /// </summary>
@@ -676,7 +676,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         {
             Assert.Throws<DllNotFoundException>(() => ImNodes.PopColorStyle());
         }
-
+        
         /// <summary>
         ///     Tests that pop style var throws dll not found exception
         /// </summary>
@@ -685,7 +685,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         {
             Assert.Throws<DllNotFoundException>(() => ImNodes.PopStyleVar());
         }
-
+        
         /// <summary>
         ///     Tests that pop style var with count throws dll not found exception
         /// </summary>
@@ -694,7 +694,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         {
             Assert.Throws<DllNotFoundException>(() => ImNodes.PopStyleVar(1));
         }
-
+        
         /// <summary>
         ///     Tests that push attribute flag throws dll not found exception
         /// </summary>
@@ -703,7 +703,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         {
             Assert.Throws<DllNotFoundException>(() => ImNodes.PushAttributeFlag(ImNodesConfig.None));
         }
-
+        
         /// <summary>
         ///     Tests that push color style throws dll not found exception
         /// </summary>
@@ -712,7 +712,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         {
             Assert.Throws<DllNotFoundException>(() => ImNodes.PushColorStyle(ImNodesCol.NodeBackground, 0));
         }
-
+        
         /// <summary>
         ///     Tests that push style var float throws dll not found exception
         /// </summary>
@@ -721,7 +721,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         {
             Assert.Throws<DllNotFoundException>(() => ImNodes.PushStyleVar(ImNodesStyleVar.NodePadding, 0.0f));
         }
-
+        
         /// <summary>
         ///     Tests that push style var vector 2 throws dll not found exception
         /// </summary>
@@ -730,7 +730,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         {
             Assert.Throws<DllNotFoundException>(() => ImNodes.PushStyleVar(ImNodesStyleVar.NodePadding, new Vector2(0, 0)));
         }
-
+        
         /// <summary>
         ///     Tests that save current editor state to ini file throws dll not found exception
         /// </summary>
@@ -739,7 +739,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         {
             Assert.Throws<DllNotFoundException>(() => ImNodes.SaveCurrentEditorStateToIniFile("fileName"));
         }
-
+        
         /// <summary>
         ///     Tests that save current editor state to ini string throws dll not found exception
         /// </summary>
@@ -748,7 +748,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         {
             Assert.Throws<MarshalDirectiveException>(() => ImNodes.SaveCurrentEditorStateToIniString());
         }
-
+        
         /// <summary>
         ///     Tests that save current editor state to ini string with data size throws dll not found exception
         /// </summary>
@@ -758,7 +758,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             uint dataSize = 0;
             Assert.Throws<MarshalDirectiveException>(() => ImNodes.SaveCurrentEditorStateToIniString(ref dataSize));
         }
-
+        
         /// <summary>
         ///     Tests that save editor state to ini file throws dll not found exception
         /// </summary>
@@ -767,7 +767,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         {
             Assert.Throws<DllNotFoundException>(() => ImNodes.SaveEditorStateToIniFile(new ImNodesEditorContext(), "fileName"));
         }
-
+        
         /// <summary>
         ///     Tests that save editor state to ini string throws dll not found exception
         /// </summary>
@@ -776,7 +776,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         {
             Assert.Throws<MarshalDirectiveException>(() => ImNodes.SaveEditorStateToIniString(new ImNodesEditorContext()));
         }
-
+        
         /// <summary>
         ///     Tests that save editor state to ini string with data size throws dll not found exception
         /// </summary>
@@ -786,7 +786,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             uint dataSize = 0;
             Assert.Throws<MarshalDirectiveException>(() => ImNodes.SaveEditorStateToIniString(new ImNodesEditorContext(), ref dataSize));
         }
-
+        
         /// <summary>
         ///     Tests that select link throws dll not found exception
         /// </summary>
@@ -795,7 +795,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         {
             Assert.Throws<DllNotFoundException>(() => ImNodes.SelectLink(0));
         }
-
+        
         /// <summary>
         ///     Tests that select node throws dll not found exception
         /// </summary>
@@ -804,7 +804,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         {
             Assert.Throws<DllNotFoundException>(() => ImNodes.SelectNode(0));
         }
-
+        
         /// <summary>
         ///     Tests that set current context throws dll not found exception
         /// </summary>
@@ -813,7 +813,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         {
             Assert.Throws<DllNotFoundException>(() => ImNodes.SetCurrentContext(new ImNodesContext()));
         }
-
+        
         /// <summary>
         ///     Tests that set im gui context throws dll not found exception
         /// </summary>
@@ -822,7 +822,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         {
             Assert.Throws<DllNotFoundException>(() => ImNodes.SetImGuiContext(IntPtr.Zero));
         }
-
+        
         /// <summary>
         ///     Tests that set node draggable throws dll not found exception
         /// </summary>
@@ -831,7 +831,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         {
             Assert.Throws<DllNotFoundException>(() => ImNodes.SetNodeDraggable(0, true));
         }
-
+        
         /// <summary>
         ///     Tests that set node editor space pos throws dll not found exception
         /// </summary>
@@ -840,7 +840,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         {
             Assert.Throws<DllNotFoundException>(() => ImNodes.SetNodeEditorSpacePos(0, new Vector2(0, 0)));
         }
-
+        
         /// <summary>
         ///     Tests that set node grid space pos throws dll not found exception
         /// </summary>
@@ -849,7 +849,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         {
             Assert.Throws<DllNotFoundException>(() => ImNodes.SetNodeGridSpacePos(0, new Vector2(0, 0)));
         }
-
+        
         /// <summary>
         ///     Tests that set node screen space pos throws dll not found exception
         /// </summary>
@@ -858,7 +858,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         {
             Assert.Throws<DllNotFoundException>(() => ImNodes.SetNodeScreenSpacePos(0, new Vector2(0, 0)));
         }
-
+        
         /// <summary>
         ///     Tests that snap node to grid throws dll not found exception
         /// </summary>

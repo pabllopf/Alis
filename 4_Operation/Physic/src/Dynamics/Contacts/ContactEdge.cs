@@ -42,17 +42,17 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         ///     The contact
         /// </summary>
         public Contact Contact { get; internal set; }
-
+        
         /// <summary>
         ///     Provides quick access to the other body attached.
         /// </summary>
         public Body Other { get; internal set; }
-
+        
         /// <summary>
         ///     The next contact edge in the body's contact list
         /// </summary>
         public ContactEdge Next { get; internal set; }
-
+        
         /// <summary>
         ///     The previous contact edge in the body's contact list
         /// </summary>

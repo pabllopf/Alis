@@ -41,17 +41,17 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The size
         /// </summary>
         public int Size;
-
+        
         /// <summary>
         ///     The capacity
         /// </summary>
         public int Capacity;
-
+        
         /// <summary>
         ///     The data
         /// </summary>
         public IntPtr Data;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImVector" /> class
         /// </summary>
@@ -64,7 +64,7 @@ namespace Alis.Extension.Graphic.ImGui
             Capacity = capacity;
             Data = data;
         }
-
+        
         /// <summary>
         ///     Refs the index
         /// </summary>
@@ -85,7 +85,7 @@ namespace Alis.Extension.Graphic.ImGui
                 handle.Free();
             }
         }
-
+        
         /// <summary>
         ///     Addresses the index
         /// </summary>

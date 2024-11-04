@@ -42,18 +42,18 @@ namespace Alis.Core.Aspect.Memory.Sample
         ///     Gets or sets the value of the non zero value
         /// </summary>
         [IsNotZero] private static int _nonZeroValue;
-
+        
         /// <summary>
         ///     Gets or sets the value of the non zero value
         /// </summary>
         private static int _nonZeroValuev2;
-
+        
         /// <summary>
         ///     Gets or sets the value of the sample
         /// </summary>
         [IsNotZero]
         private static int Sample { get; set; }
-
+        
         /// <summary>
         ///     Samples the method using the specified value
         /// </summary>
@@ -63,7 +63,7 @@ namespace Alis.Core.Aspect.Memory.Sample
             Validator.Validate(value, nameof(value));
             Console.WriteLine("The value of value is " + value);
         }
-
+        
         /// <summary>
         ///     Main the args
         /// </summary>
@@ -79,7 +79,7 @@ namespace Alis.Core.Aspect.Memory.Sample
             {
                 Console.WriteLine(e);
             }
-
+            
             try
             {
                 SampleMethod(0);
@@ -88,11 +88,11 @@ namespace Alis.Core.Aspect.Memory.Sample
             {
                 Console.WriteLine(e);
             }
-
+            
             _nonZeroValuev2 = 0;
             Validator.Validate(_nonZeroValuev2, nameof(_nonZeroValuev2));
-
-
+            
+            
             try
             {
                 _nonZeroValue = 0;
@@ -102,7 +102,7 @@ namespace Alis.Core.Aspect.Memory.Sample
             {
                 Console.WriteLine(ex);
             }
-
+            
             try
             {
                 _nonZeroValue = 5;

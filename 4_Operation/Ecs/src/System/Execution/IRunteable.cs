@@ -30,10 +30,9 @@
 namespace Alis.Core.Ecs.System.Execution
 {
     /// <summary>
-    /// The runteable interface
+    ///     The runteable interface
     /// </summary>
     public interface IRunteable
     {
-        
     }
 }

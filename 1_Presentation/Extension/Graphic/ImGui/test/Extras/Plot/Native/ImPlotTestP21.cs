@@ -51,7 +51,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref ys1, ref ys1, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded s 8 ptr s 8 ptr int double throws dll not found exception
         /// </summary>
@@ -64,7 +64,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded s 8 ptr s 8 ptr int double flags throws dll not found exception
         /// </summary>
@@ -74,7 +74,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             sbyte xs = default(sbyte);
             Assert.Throws<DllNotFoundException>(() => { ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0, default(ImPlotShadedFlags)); });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded s 8 ptr s 8 ptr int double flags int throws dll not found exception
         /// </summary>
@@ -87,7 +87,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0, default(ImPlotShadedFlags), 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded s 8 ptr s 8 ptr int double flags int int throws dll not found exception
         /// </summary>
@@ -100,7 +100,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0, default(ImPlotShadedFlags), 0, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u 8 ptr u 8 ptr int throws dll not found exception
         /// </summary>
@@ -115,7 +115,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                     ys1, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u 8 ptr u 8 ptr int double throws dll not found exception
         /// </summary>
@@ -128,7 +128,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u 8 ptr u 8 ptr int double flags throws dll not found exception
         /// </summary>
@@ -141,7 +141,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0, default(ImPlotShadedFlags));
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u 8 ptr u 8 ptr int double flags int throws dll not found exception
         /// </summary>
@@ -154,7 +154,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0, default(ImPlotShadedFlags), 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u 8 ptr u 8 ptr int double flags int int throws dll not found exception
         /// </summary>
@@ -168,7 +168,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                     xs, 0, 0.0, default(ImPlotShadedFlags), 0, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded s 16 ptr s 16 ptr int throws dll not found exception
         /// </summary>
@@ -181,7 +181,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref ys1, ref ys1, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded s 16 ptr s 16 ptr int double throws dll not found exception
         /// </summary>
@@ -191,7 +191,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             short xs = default(short);
             Assert.Throws<DllNotFoundException>(() => { ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0); });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded s 16 ptr s 16 ptr int double flags throws dll not found exception
         /// </summary>
@@ -204,7 +204,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0, default(ImPlotShadedFlags));
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded s 16 ptr s 16 ptr int double flags int throws dll not found exception
         /// </summary>
@@ -217,7 +217,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0, default(ImPlotShadedFlags), 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded s 16 ptr s 16 ptr int double flags int int throws dll not found exception
         /// </summary>
@@ -230,7 +230,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0, default(ImPlotShadedFlags), 0, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u 16 ptr u 16 ptr int throws dll not found exception
         /// </summary>
@@ -243,7 +243,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref ys1, ref ys1, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u 16 ptr u 16 ptr int double throws dll not found exception
         /// </summary>
@@ -253,7 +253,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ushort xs = default(ushort);
             Assert.Throws<DllNotFoundException>(() => { ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0); });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u 16 ptr u 16 ptr int double flags throws dll not found exception
         /// </summary>
@@ -263,7 +263,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ushort xs = default(ushort);
             Assert.Throws<DllNotFoundException>(() => { ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0, default(ImPlotShadedFlags)); });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u 16 ptr u 16 ptr int double flags int throws dll not found exception
         /// </summary>
@@ -276,7 +276,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0, default(ImPlotShadedFlags), 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u 16 ptr u 16 ptr int double flags int int throws dll not found exception
         /// </summary>
@@ -289,7 +289,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0, default(ImPlotShadedFlags), 0, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded s 32 ptr s 32 ptr int throws dll not found exception
         /// </summary>
@@ -302,7 +302,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref ys1, ref ys1, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded s 32 ptr s 32 ptr int double throws dll not found exception
         /// </summary>
@@ -315,7 +315,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded s 32 ptr s 32 ptr int double flags throws dll not found exception
         /// </summary>
@@ -328,7 +328,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0, default(ImPlotShadedFlags));
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded s 32 ptr s 32 ptr int double flags int throws dll not found exception
         /// </summary>
@@ -341,7 +341,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0, default(ImPlotShadedFlags), 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded s 32 ptr s 32 ptr int double flags int int throws dll not found exception
         /// </summary>
@@ -354,7 +354,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0, default(ImPlotShadedFlags), 0, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u 32 ptr u 32 ptr int throws dll not found exception
         /// </summary>
@@ -367,7 +367,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref ys1, ref ys1, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u 32 ptr u 32 ptr int double throws dll not found exception
         /// </summary>
@@ -380,7 +380,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u 32 ptr u 32 ptr int double flags throws dll not found exception
         /// </summary>
@@ -393,7 +393,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0, default(ImPlotShadedFlags));
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u 32 ptr u 32 ptr int double flags int throws dll not found exception
         /// </summary>
@@ -406,7 +406,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0, default(ImPlotShadedFlags), 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u 32 ptr u 32 ptr int double flags int int throws dll not found exception
         /// </summary>
@@ -419,7 +419,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0, default(ImPlotShadedFlags), 0, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded s 64 ptr s 64 ptr int throws dll not found exception
         /// </summary>
@@ -432,7 +432,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref ys1, ref ys1, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded s 64 ptr s 64 ptr int double throws dll not found exception
         /// </summary>
@@ -445,7 +445,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded s 64 ptr s 64 ptr int double flags throws dll not found exception
         /// </summary>
@@ -458,7 +458,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0, default(ImPlotShadedFlags));
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded s 64 ptr s 64 ptr int double flags int throws dll not found exception
         /// </summary>
@@ -471,7 +471,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0, default(ImPlotShadedFlags), 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded s 64 ptr s 64 ptr int double flags int int throws dll not found exception
         /// </summary>
@@ -484,7 +484,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0, default(ImPlotShadedFlags), 0, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u 64 ptr u 64 ptr int throws dll not found exception
         /// </summary>
@@ -497,7 +497,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref ys1, ref ys1, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u 64 ptr u 64 ptr int double throws dll not found exception
         /// </summary>
@@ -510,7 +510,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u 64 ptr u 64 ptr int double flags throws dll not found exception
         /// </summary>
@@ -523,7 +523,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0, default(ImPlotShadedFlags));
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u 64 ptr u 64 ptr int double flags int throws dll not found exception
         /// </summary>
@@ -536,7 +536,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0, default(ImPlotShadedFlags), 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u 64 ptr u 64 ptr int double flags int int throws dll not found exception
         /// </summary>
@@ -549,7 +549,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0, default(ImPlotShadedFlags), 0, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded float ptr float ptr float ptr throws dll not found exception
         /// </summary>
@@ -562,7 +562,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref ys1, ref ys1, ref ys1, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded float ptr float ptr float ptr flags throws dll not found exception
         /// </summary>
@@ -575,7 +575,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref ys1, ref ys1, ref ys1, 0, default(ImPlotShadedFlags));
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded float ptr float ptr float ptr flags int throws dll not found exception
         /// </summary>
@@ -588,7 +588,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref ys1, ref ys1, ref ys1, 0, default(ImPlotShadedFlags), 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded float ptr float ptr float ptr flags int int throws dll not found exception
         /// </summary>
@@ -601,7 +601,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref ys1, ref ys1, ref ys1, 0, default(ImPlotShadedFlags), 0, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded double ptrdouble ptrdouble ptr throws dll not found exception
         /// </summary>
@@ -614,7 +614,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref ys1, ref ys1, ref ys1, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded double ptrdouble ptrdouble ptr flags throws dll not found exception
         /// </summary>
@@ -627,7 +627,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref ys1, ref ys1, ref ys1, 0, default(ImPlotShadedFlags));
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded double ptrdouble ptrdouble ptr flags int throws dll not found exception
         /// </summary>
@@ -640,7 +640,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref ys1, ref ys1, ref ys1, 0, default(ImPlotShadedFlags), 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded double ptrdouble ptrdouble ptr flags int int throws dll not found exception
         /// </summary>
@@ -653,7 +653,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref ys1, ref ys1, ref ys1, 0, default(ImPlotShadedFlags), 0, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded s 8 ptr s 8 ptr s 8 ptr throws dll not found exception
         /// </summary>
@@ -666,7 +666,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref ys1, ref ys1, ref ys1, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded s 8 ptr s 8 ptr s 8 ptr flags throws dll not found exception
         /// </summary>

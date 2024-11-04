@@ -48,7 +48,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.NotNull(ex);
             Assert.Equal("JSO0001: JSON exception.", ex.Message);
         }
-
+        
         /// <summary>
         ///     Tests that test constructor with message
         /// </summary>
@@ -60,7 +60,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.NotNull(ex);
             Assert.Equal(message, ex.Message);
         }
-
+        
         /// <summary>
         ///     Tests that test constructor with message and inner exception
         /// </summary>
@@ -74,7 +74,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(message, ex.Message);
             Assert.Equal(innerException, ex.InnerException);
         }
-
+        
         /// <summary>
         ///     Tests that test constructor with inner exception
         /// </summary>
@@ -86,7 +86,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.NotNull(ex);
             Assert.Equal(innerException, ex.InnerException);
         }
-
+        
         /// <summary>
         ///     Tests that test get code method
         /// </summary>
@@ -97,7 +97,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonException ex = new JsonException(message);
             Assert.Equal(15, ex.Code);
         }
-
+        
         /// <summary>
         ///     Tests that test get code method with invalid message
         /// </summary>
@@ -108,8 +108,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonException ex = new JsonException(message);
             Assert.Equal(-1, ex.Code);
         }
-
-
+        
+        
         /// <summary>
         ///     Tests that get code null message returns minus one
         /// </summary>
@@ -119,7 +119,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             int result = JsonException.GetCode(null);
             Assert.Equal(-1, result);
         }
-
+        
         /// <summary>
         ///     Tests that get code message without prefix returns minus one
         /// </summary>
@@ -129,7 +129,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             int result = JsonException.GetCode("Some message without prefix");
             Assert.Equal(-1, result);
         }
-
+        
         /// <summary>
         ///     Tests that get code message with prefix but without colon returns minus one
         /// </summary>
@@ -139,7 +139,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             int result = JsonException.GetCode("JSO1234 Some message with prefix but without colon");
             Assert.Equal(-1, result);
         }
-
+        
         /// <summary>
         ///     Tests that get code message with prefix and colon but invalid number returns minus one
         /// </summary>
@@ -149,7 +149,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             int result = JsonException.GetCode("JSOABC: Some message with prefix and colon but invalid number");
             Assert.Equal(-1, result);
         }
-
+        
         /// <summary>
         ///     Tests that get code valid message returns correct number
         /// </summary>

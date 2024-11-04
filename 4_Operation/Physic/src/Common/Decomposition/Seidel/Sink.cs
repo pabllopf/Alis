@@ -39,7 +39,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         ///     The trapezoid
         /// </summary>
         public Trapezoid Trapezoid;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Sink" /> class
         /// </summary>
@@ -50,7 +50,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             Trapezoid = trapezoid;
             trapezoid.Sink = this;
         }
-
+        
         /// <summary>
         ///     Isinks the trapezoid
         /// </summary>
@@ -60,10 +60,10 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         {
             if (trapezoid.Sink == null)
                 return new Sink(trapezoid);
-
+            
             return trapezoid.Sink;
         }
-
+        
         /// <summary>
         ///     Locates the edge
         /// </summary>

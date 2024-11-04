@@ -44,14 +44,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImDrawChannel drawChannel = new ImDrawChannel();
-
+            
             // Act
             ImVector cmdBuffer = drawChannel.CmdBuffer;
-
+            
             // Assert
             Assert.Equal(0, cmdBuffer.Size);
         }
-
+        
         /// <summary>
         ///     Tests that idx buffer should be initialized correctly
         /// </summary>
@@ -60,14 +60,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImDrawChannel drawChannel = new ImDrawChannel();
-
+            
             // Act
             ImVector idxBuffer = drawChannel.IdxBuffer;
-
+            
             // Assert
             Assert.Equal(0, idxBuffer.Size);
         }
-
+        
         /// <summary>
         ///     Tests that cmd buffer ptr should return correct value
         /// </summary>
@@ -79,14 +79,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
             {
                 CmdBuffer = new ImVector()
             };
-
+            
             // Act
             ImVectorG<ImDrawCmd> cmdBufferPtr = drawChannel.CmdBufferPtr;
-
+            
             // Assert
             Assert.Equal(0, cmdBufferPtr.Size);
         }
-
+        
         /// <summary>
         ///     Tests that idx buffer ptr should return correct value
         /// </summary>
@@ -98,10 +98,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
             {
                 IdxBuffer = new ImVector()
             };
-
+            
             // Act
             ImVectorG<ushort> idxBufferPtr = drawChannel.IdxBufferPtr;
-
+            
             // Assert
             Assert.Equal(0, idxBufferPtr.Size);
         }

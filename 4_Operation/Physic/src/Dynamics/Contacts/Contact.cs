@@ -46,7 +46,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         ///     The edge shape
         /// </summary>
         private static readonly EdgeShape _edge = new EdgeShape();
-
+        
         /// <summary>
         ///     The not supported
         /// </summary>
@@ -81,39 +81,39 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 // 3,3 is invalid (no ContactType.Loop)
             }
         };
-
+        
         // Nodes for connecting bodies.
         /// <summary>
         ///     The contact edge
         /// </summary>
         internal ContactEdge _nodeA = new ContactEdge();
-
+        
         /// <summary>
         ///     The contact edge
         /// </summary>
         internal ContactEdge _nodeB = new ContactEdge();
-
+        
         /// <summary>
         ///     The toi
         /// </summary>
         internal float _toi;
-
+        
         /// <summary>
         ///     The toi count
         /// </summary>
         internal int _toiCount;
-
+        
         /// <summary>
         ///     The type
         /// </summary>
         private ContactType _type;
-
+        
         /// <summary>
         ///     Get the contact manifold. Do not modify the manifold unless you understand the
         ///     internals of Box2D.
         /// </summary>
         public Manifold Manifold;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Contact" /> class
         /// </summary>
@@ -125,30 +125,30 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         {
             Reset(fA, indexA, fB, indexB);
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the fixture a
         /// </summary>
         public Fixture FixtureA { get; internal set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the fixture b
         /// </summary>
         public Fixture FixtureB { get; internal set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the friction
         /// </summary>
         public float Friction { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the restitution
         /// </summary>
         public float Restitution { get; set; }
-
+        
         /// Get or set the desired tangent speed for a conveyor belt behavior. In meters per second.
         public float TangentSpeed { get; set; }
-
+        
         /// Enable/disable this contact. This can be used inside the pre-solve
         /// contact listener. The contact is only disabled for the current
         /// time step (or sub-step in continuous collisions).
@@ -156,31 +156,31 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// use the explicit Enable() or Disable() functions instead to 
         /// save the CPU from doing a branch operation.
         public bool Enabled { get; set; }
-
+        
         /// <summary>
         ///     Get the child primitive index for fixture A.
         /// </summary>
         /// <value>The child index A.</value>
         public int ChildIndexA { get; internal set; }
-
+        
         /// <summary>
         ///     Get the child primitive index for fixture B.
         /// </summary>
         /// <value>The child index B.</value>
         public int ChildIndexB { get; internal set; }
-
+        
         /// <summary>
         ///     Get the next contact in the world's contact list.
         /// </summary>
         /// <value>The next.</value>
         public Contact Next { get; internal set; }
-
+        
         /// <summary>
         ///     Get the previous contact in the world's contact list.
         /// </summary>
         /// <value>The prev.</value>
         public Contact Prev { get; internal set; }
-
+        
         /// <summary>
         ///     Determines whether this contact is touching.
         /// </summary>
@@ -188,22 +188,22 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         ///     <c>true</c> if this instance is touching; otherwise, <c>false</c>.
         /// </returns>
         public bool IsTouching { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the island flag
         /// </summary>
         internal bool IslandFlag { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the toi flag
         /// </summary>
         internal bool TOIFlag { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the filter flag
         /// </summary>
         internal bool FilterFlag { get; set; }
-
+        
         /// <summary>
         ///     Resets the restitution
         /// </summary>
@@ -211,7 +211,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         {
             Restitution = SettingEnv.MixRestitution(FixtureA.Restitution, FixtureB.Restitution);
         }
-
+        
         /// <summary>
         ///     Resets the friction
         /// </summary>
@@ -219,7 +219,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         {
             Friction = SettingEnv.MixFriction(FixtureA.Friction, FixtureB.Friction);
         }
-
+        
         /// <summary>
         ///     Gets the world manifold.
         /// </summary>
@@ -229,10 +229,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             Body bodyB = FixtureB.Body;
             Shape shapeA = FixtureA.Shape;
             Shape shapeB = FixtureB.Shape;
-
+            
             ContactSolver.WorldManifold.Initialize(ref Manifold, ref bodyA._xf, shapeA.Radius, ref bodyB._xf, shapeB.Radius, out normal, out points);
         }
-
+        
         /// <summary>
         ///     Resets the f a
         /// </summary>
@@ -247,40 +247,40 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             IslandFlag = false;
             FilterFlag = false;
             TOIFlag = false;
-
+            
             FixtureA = fA;
             FixtureB = fB;
-
+            
             ChildIndexA = indexA;
             ChildIndexB = indexB;
-
+            
             Manifold.PointCount = 0;
-
+            
             Next = null;
             Prev = null;
-
+            
             _nodeA.Contact = null;
             _nodeA.Other = null;
             _nodeA.Next = null;
             _nodeA.Prev = null;
-
+            
             _nodeB.Contact = null;
             _nodeB.Other = null;
             _nodeB.Next = null;
             _nodeB.Prev = null;
-
+            
             _toiCount = 0;
-
+            
             //FPE: We only set the friction and restitution if we are not destroying the contact
             if ((FixtureA != null) && (FixtureB != null))
             {
                 Friction = SettingEnv.MixFriction(FixtureA.Friction, FixtureB.Friction);
                 Restitution = SettingEnv.MixRestitution(FixtureA.Restitution, FixtureB.Restitution);
             }
-
+            
             TangentSpeed = 0;
         }
-
+        
         /// <summary>
         ///     Update the contact manifold and touching status.
         ///     Note: do not assume the fixture AABBs are overlapping or are valid.
@@ -290,24 +290,24 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         {
             Body bodyA = FixtureA.Body;
             Body bodyB = FixtureB.Body;
-
+            
             Manifold oldManifold = Manifold;
-
+            
             // Re-enable this contact.
             Enabled = true;
-
+            
             bool touching;
             bool wasTouching = IsTouching;
-
+            
             bool sensor = FixtureA.IsSensor || FixtureB.IsSensor;
-
+            
             // Is this contact a sensor?
             if (sensor)
             {
                 Shape shapeA = FixtureA.Shape;
                 Shape shapeB = FixtureB.Shape;
                 touching = Collision.Collision.TestOverlap(shapeA, ChildIndexA, shapeB, ChildIndexB, ref bodyA._xf, ref bodyB._xf);
-
+                
                 // Sensors don't generate manifolds.
                 Manifold.PointCount = 0;
             }
@@ -315,7 +315,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             {
                 Evaluate(ref Manifold, ref bodyA._xf, ref bodyB._xf);
                 touching = Manifold.PointCount > 0;
-
+                
                 // Match old contact ids to new contact ids and copy the
                 // stored impulses to warm start the solver.
                 for (int i = 0; i < Manifold.PointCount; ++i)
@@ -324,11 +324,11 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     mp2.NormalImpulse = 0.0f;
                     mp2.TangentImpulse = 0.0f;
                     ContactID id2 = mp2.Id;
-
+                    
                     for (int j = 0; j < oldManifold.PointCount; ++j)
                     {
                         ManifoldPoint mp1 = oldManifold.Points[j];
-
+                        
                         if (mp1.Id.Key == id2.Key)
                         {
                             mp2.NormalImpulse = mp1.NormalImpulse;
@@ -336,60 +336,60 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                             break;
                         }
                     }
-
+                    
                     Manifold.Points[i] = mp2;
                 }
-
+                
                 if (touching != wasTouching)
                 {
                     bodyA.Awake = true;
                     bodyB.Awake = true;
                 }
             }
-
+            
             IsTouching = touching;
-
+            
             if (wasTouching == false)
             {
                 if (touching)
                 {
                     bool enabledA = true, enabledB = true;
-
+                    
                     // Report the collision to both participants. Track which ones returned true so we can
                     // later call OnSeparation if the contact is disabled for a different reason.
                     OnCollisionEventHandler onFixtureCollisionHandlerA = FixtureA.OnCollision;
                     if (onFixtureCollisionHandlerA != null)
                         foreach (OnCollisionEventHandler handler in onFixtureCollisionHandlerA.GetInvocationList())
                             enabledA = handler(FixtureA, FixtureB, this) && enabledA;
-
+                    
                     // Reverse the order of the reported fixtures. The first fixture is always the one that the
                     // user subscribed to.
                     OnCollisionEventHandler onFixtureCollisionHandlerB = FixtureB.OnCollision;
                     if (onFixtureCollisionHandlerB != null)
                         foreach (OnCollisionEventHandler handler in onFixtureCollisionHandlerB.GetInvocationList())
                             enabledB = handler(FixtureB, FixtureA, this) && enabledB;
-
+                    
                     // Report the collision to both bodies:
                     OnCollisionEventHandler onBodyCollisionHandlerA = bodyA.onCollisionEventHandler;
                     if (onBodyCollisionHandlerA != null)
                         foreach (OnCollisionEventHandler handler in onBodyCollisionHandlerA.GetInvocationList())
                             enabledA = handler(FixtureA, FixtureB, this) && enabledA;
-
+                    
                     // Reverse the order of the reported fixtures. The first fixture is always the one that the
                     // user subscribed to.
                     OnCollisionEventHandler onBodyCollisionHandlerB = bodyB.onCollisionEventHandler;
                     if (onBodyCollisionHandlerB != null)
                         foreach (OnCollisionEventHandler handler in onBodyCollisionHandlerB.GetInvocationList())
                             enabledB = handler(FixtureB, FixtureA, this) && enabledB;
-
-
+                    
+                    
                     Enabled = enabledA && enabledB;
-
+                    
                     // BeginContact can also return false and disable the contact
                     BeginContactDelegate beginContactHandler = contactManager.BeginContact;
                     if (enabledA && enabledB && (beginContactHandler != null))
                         Enabled = beginContactHandler(this);
-
+                    
                     // If the user disabled the contact (needed to exclude it in TOI solver) at any point by
                     // any of the callbacks, we need to mark it as not touching and call any separation
                     // callbacks for fixtures that didn't explicitly disable the collision.
@@ -405,38 +405,38 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     OnSeparationEventHandler onFixtureSeparationHandlerA = FixtureA.OnSeparation;
                     if (onFixtureSeparationHandlerA != null)
                         onFixtureSeparationHandlerA(FixtureA, FixtureB, this);
-
+                    
                     //Reverse the order of the reported fixtures. The first fixture is always the one that the
                     //user subscribed to.
                     OnSeparationEventHandler onFixtureSeparationHandlerB = FixtureB.OnSeparation;
                     if (onFixtureSeparationHandlerB != null)
                         onFixtureSeparationHandlerB(FixtureB, FixtureA, this);
-
+                    
                     //Report the separation to both bodies:
                     OnSeparationEventHandler onBodySeparationHandlerA = bodyA.onSeparationEventHandler;
                     if (onBodySeparationHandlerA != null)
                         onBodySeparationHandlerA(FixtureA, FixtureB, this);
-
+                    
                     //Reverse the order of the reported fixtures. The first fixture is always the one that the
                     //user subscribed to.
                     OnSeparationEventHandler onBodySeparationHandlerB = bodyB.onSeparationEventHandler;
                     if (onBodySeparationHandlerB != null)
                         onBodySeparationHandlerB(FixtureB, FixtureA, this);
-
+                    
                     EndContactDelegate endContactHandler = contactManager.EndContact;
                     if (endContactHandler != null)
                         endContactHandler(this);
                 }
             }
-
+            
             if (sensor)
                 return;
-
+            
             PreSolveDelegate preSolveHandler = contactManager.PreSolve;
             if (preSolveHandler != null)
                 preSolveHandler(this, ref oldManifold);
         }
-
+        
         /// <summary>
         ///     Evaluate this contact with your own manifold and transforms.
         /// </summary>
@@ -474,7 +474,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     break;
             }
         }
-
+        
         /// <summary>
         ///     Creates the contact manager
         /// </summary>
@@ -488,10 +488,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         {
             ShapeType type1 = fixtureA.Shape.ShapeType;
             ShapeType type2 = fixtureB.Shape.ShapeType;
-
+            
             Debug.Assert((ShapeType.Unknown < type1) && (type1 < ShapeType.TypeCount));
             Debug.Assert((ShapeType.Unknown < type2) && (type2 < ShapeType.TypeCount));
-
+            
             Contact c = null;
             ContactListHead contactPoolList = contactManager._contactPoolList;
             if (contactPoolList.Next != contactPoolList)
@@ -502,7 +502,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 contactPoolList.Next = c.Next;
                 c.Next = null;
             }
-
+            
             // Edge+Polygon is non-symetrical due to the way Erin handles collision type registration.
             if ((type1 >= type2 || ((type1 == ShapeType.Edge) && (type2 == ShapeType.Polygon))) && !((type2 == ShapeType.Edge) && (type1 == ShapeType.Polygon)))
             {
@@ -518,13 +518,13 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 else
                     c.Reset(fixtureB, indexB, fixtureA, indexA);
             }
-
-
+            
+            
             c._type = _registers[(int) type1, (int) type2];
-
+            
             return c;
         }
-
+        
         /// <summary>
         ///     Destroys this instance
         /// </summary>
@@ -535,12 +535,12 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 FixtureA.Body.Awake = true;
                 FixtureB.Body.Awake = true;
             }
-
+            
             Reset(null, 0, null, 0);
         }
-
+        
         #region Nested type: ContactType
-
+        
         /// <summary>
         ///     The contact type enum
         /// </summary>
@@ -550,43 +550,43 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             ///     The not supported contact type
             /// </summary>
             NotSupported,
-
+            
             /// <summary>
             ///     The polygon contact type
             /// </summary>
             Polygon,
-
+            
             /// <summary>
             ///     The polygon and circle contact type
             /// </summary>
             PolygonAndCircle,
-
+            
             /// <summary>
             ///     The circle contact type
             /// </summary>
             Circle,
-
+            
             /// <summary>
             ///     The edge and polygon contact type
             /// </summary>
             EdgeAndPolygon,
-
+            
             /// <summary>
             ///     The edge and circle contact type
             /// </summary>
             EdgeAndCircle,
-
+            
             /// <summary>
             ///     The chain and polygon contact type
             /// </summary>
             ChainAndPolygon,
-
+            
             /// <summary>
             ///     The chain and circle contact type
             /// </summary>
             ChainAndCircle
         }
-
+        
         #endregion
     }
 }

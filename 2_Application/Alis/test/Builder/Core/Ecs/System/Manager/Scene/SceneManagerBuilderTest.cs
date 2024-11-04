@@ -30,7 +30,6 @@
 using System;
 using Alis.Builder.Core.Ecs.Entity.Scene;
 using Alis.Builder.Core.Ecs.System.Manager.Scene;
-using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager.Scene;
 using Alis.Core.Ecs.System.Scope;
 using Xunit;
@@ -49,10 +48,10 @@ namespace Alis.Test.Builder.Core.Ecs.System.Manager.Scene
         public void SceneManagerBuilder_DefaultConstructor_ValidInput()
         {
             SceneManagerBuilder sceneManagerBuilder = new SceneManagerBuilder(new Context());
-
+            
             Assert.NotNull(sceneManagerBuilder);
         }
-
+        
         /// <summary>
         ///     Tests that add valid input
         /// </summary>
@@ -61,14 +60,14 @@ namespace Alis.Test.Builder.Core.Ecs.System.Manager.Scene
         {
             SceneManagerBuilder sceneManagerBuilder = new SceneManagerBuilder(new Context());
             Func<SceneBuilder, Alis.Core.Ecs.Entity.Scene> sceneFunc = sb => sb.Build();
-
+            
             sceneManagerBuilder.Add<SceneManagerBuilder>(sceneFunc);
-
+            
             SceneManager sceneManager = sceneManagerBuilder.Build();
             Assert.Single(sceneManager.Scenes);
             Assert.Equal(sceneManager.Scenes[0], sceneManager.CurrentScene);
         }
-
+        
         /// <summary>
         ///     Tests that build valid input
         /// </summary>
@@ -76,9 +75,9 @@ namespace Alis.Test.Builder.Core.Ecs.System.Manager.Scene
         public void Build_ValidInput()
         {
             SceneManagerBuilder sceneManagerBuilder = new SceneManagerBuilder(new Context());
-
+            
             SceneManager sceneManager = sceneManagerBuilder.Build();
-
+            
             Assert.NotNull(sceneManager);
         }
     }

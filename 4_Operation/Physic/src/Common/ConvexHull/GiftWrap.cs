@@ -41,7 +41,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
     public static class GiftWrap
     {
         //Extracted from Box2D
-
+        
         /// <summary>
         ///     Returns the convex hull from the given vertices.
         /// </summary>
@@ -50,7 +50,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
         {
             if (vertices.Count <= 3)
                 return vertices;
-
+            
             // Find the right most point on the hull
             int i0 = 0;
             float x0 = vertices[0].X;
@@ -63,15 +63,15 @@ namespace Alis.Core.Physic.Common.ConvexHull
                     x0 = x;
                 }
             }
-
+            
             int[] hull = new int[vertices.Count];
             int m = 0;
             int ih = i0;
-
+            
             for (;;)
             {
                 hull[m] = ih;
-
+                
                 int ie = 0;
                 for (int j = 1; j < vertices.Count; ++j)
                 {
@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
                         ie = j;
                         continue;
                     }
-
+                    
                     Vector2 r = vertices[ie] - vertices[hull[m]];
                     Vector2 v = vertices[j] - vertices[hull[m]];
                     float c = MathUtils.Cross(ref r, ref v);
@@ -88,31 +88,31 @@ namespace Alis.Core.Physic.Common.ConvexHull
                     {
                         ie = j;
                     }
-
+                    
                     // Collinearity check
                     if ((Math.Abs(c) < float.Epsilon) && (v.LengthSquared() > r.LengthSquared()))
                     {
                         ie = j;
                     }
                 }
-
+                
                 ++m;
                 ih = ie;
-
+                
                 if (ie == i0)
                 {
                     break;
                 }
             }
-
+            
             Vertices result = new Vertices(m);
-
+            
             // Copy vertices.
             for (int i = 0; i < m; ++i)
             {
                 result.Add(vertices[hull[i]]);
             }
-
+            
             return result;
         }
     }

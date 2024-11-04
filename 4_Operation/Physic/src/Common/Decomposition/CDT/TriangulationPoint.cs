@@ -38,12 +38,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
     internal class TriangulationPoint
     {
         // List of edges this point constitutes an upper ending point (CDT)
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public double X, Y;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="TriangulationPoint" /> class
         /// </summary>
@@ -54,12 +54,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
             X = x;
             Y = y;
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the edges
         /// </summary>
         public List<DtSweepConstraint> Edges { get; private set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the xf
         /// </summary>
@@ -68,7 +68,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
             get => (float) X;
             set => X = value;
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the yf
         /// </summary>
@@ -77,18 +77,18 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
             get => (float) Y;
             set => Y = value;
         }
-
+        
         /// <summary>
         ///     Gets the value of the has edges
         /// </summary>
         public bool HasEdges => Edges != null;
-
+        
         /// <summary>
         ///     Returns the string
         /// </summary>
         /// <returns>The string</returns>
         public override string ToString() => "[" + X + "," + Y + "]";
-
+        
         /// <summary>
         ///     Adds the edge using the specified e
         /// </summary>
@@ -99,7 +99,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
             {
                 Edges = new List<DtSweepConstraint>();
             }
-
+            
             Edges.Add(e);
         }
     }

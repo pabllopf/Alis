@@ -41,7 +41,7 @@ namespace Alis.Core.Physic.Common
         ///     The ey
         /// </summary>
         public Vector2 Ex, Ey;
-
+        
         /// <summary>
         ///     Construct this matrix using columns.
         /// </summary>
@@ -52,7 +52,7 @@ namespace Alis.Core.Physic.Common
             Ex = c1;
             Ey = c2;
         }
-
+        
         /// <summary>
         ///     Construct this matrix using scalars.
         /// </summary>
@@ -65,7 +65,7 @@ namespace Alis.Core.Physic.Common
             Ex = new Vector2(a11, a21);
             Ey = new Vector2(a12, a22);
         }
-
+        
         /// <summary>
         ///     Gets the value of the inverse
         /// </summary>
@@ -75,19 +75,19 @@ namespace Alis.Core.Physic.Common
             {
                 float a = Ex.X, b = Ey.X, c = Ex.Y, d = Ey.Y;
                 float det = a * d - b * c;
-                 if (Math.Abs(det) > float.Epsilon)
+                if (Math.Abs(det) > float.Epsilon)
                 {
                     det = 1.0f / det;
                 }
-
+                
                 Mat22 result;
                 result.Ex = new Vector2(det * d, -det * c);
                 result.Ey = new Vector2(-det * b, det * a);
-
+                
                 return result;
             }
         }
-
+        
         /// <summary>
         ///     Initialize this matrix using columns.
         /// </summary>
@@ -98,7 +98,7 @@ namespace Alis.Core.Physic.Common
             Ex = c1;
             Ey = c2;
         }
-
+        
         /// <summary>
         ///     Set this to the identity matrix.
         /// </summary>
@@ -109,7 +109,7 @@ namespace Alis.Core.Physic.Common
             Ex.Y = 0.0f;
             Ey.Y = 1.0f;
         }
-
+        
         /// <summary>
         ///     Set this matrix to all zeros.
         /// </summary>
@@ -120,7 +120,7 @@ namespace Alis.Core.Physic.Common
             Ex.Y = 0.0f;
             Ey.Y = 0.0f;
         }
-
+        
         /// <summary>
         ///     Solve A * x = b, where b is a column vector. This is more efficient
         ///     than computing the inverse in one-shot cases.
@@ -131,14 +131,14 @@ namespace Alis.Core.Physic.Common
         {
             float a11 = Ex.X, a12 = Ey.X, a21 = Ex.Y, a22 = Ey.Y;
             float det = a11 * a22 - a12 * a21;
-             if (Math.Abs(det) > float.Epsilon)
+            if (Math.Abs(det) > float.Epsilon)
             {
                 det = 1.0f / det;
             }
-
+            
             return new Vector2(det * (a22 * b.X - a12 * b.Y), det * (a11 * b.Y - a21 * b.X));
         }
-
+        
         /// <summary>
         ///     Adds the a
         /// </summary>

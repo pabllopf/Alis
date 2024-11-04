@@ -58,7 +58,7 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
         ///     The box collider
         /// </summary>
         private readonly BoxCollider boxCollider = new BoxCollider();
-
+        
         /// <summary>
         ///     Angular the velocity using the specified value
         /// </summary>
@@ -69,7 +69,7 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
             boxCollider.AngularVelocity = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Auto the tilling using the specified value
         /// </summary>
@@ -80,7 +80,7 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
             boxCollider.AutoTilling = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Bodies the type using the specified value
         /// </summary>
@@ -91,13 +91,13 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
             boxCollider.BodyType = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The box collider</returns>
         public BoxCollider Build() => boxCollider;
-
+        
         /// <summary>
         ///     Fixed the rotation using the specified value
         /// </summary>
@@ -108,7 +108,7 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
             boxCollider.FixedRotation = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Frictions the value
         /// </summary>
@@ -119,7 +119,7 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
             boxCollider.Friction = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Is the active using the specified value
         /// </summary>
@@ -130,7 +130,7 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
             boxCollider.IsEnable = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Is the trigger
         /// </summary>
@@ -140,7 +140,7 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
             boxCollider.IsTrigger = true;
             return this;
         }
-
+        
         /// <summary>
         ///     Is the trigger using the specified value
         /// </summary>
@@ -151,7 +151,7 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
             boxCollider.IsTrigger = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Linear the velocity using the specified x
         /// </summary>
@@ -163,7 +163,7 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
             boxCollider.LinearVelocity = new Vector2(x, y);
             return this;
         }
-
+        
         /// <summary>
         ///     Masses the value
         /// </summary>
@@ -174,7 +174,7 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
             boxCollider.Mass = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Relatives the position using the specified x
         /// </summary>
@@ -186,7 +186,7 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
             boxCollider.RelativePosition = new Vector2(x, y);
             return this;
         }
-
+        
         /// <summary>
         ///     Restitutions the value
         /// </summary>
@@ -197,7 +197,7 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
             boxCollider.Restitution = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Rotations the angle
         /// </summary>
@@ -208,7 +208,7 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
             boxCollider.Rotation = angle;
             return this;
         }
-
+        
         /// <summary>
         ///     Sizes the x
         /// </summary>
@@ -221,8 +221,8 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
             boxCollider.Height = y;
             return this;
         }
-
-
+        
+        
         /// <summary>
         ///     Ignores the gravity using the specified value
         /// </summary>

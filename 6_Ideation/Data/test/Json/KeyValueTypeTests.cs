@@ -47,14 +47,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             KeyValueType keyValueType = new KeyValueType();
             Type expectedType = typeof(int);
-
+            
             // Act
             keyValueType.KeyType = expectedType;
-
+            
             // Assert
             Assert.Equal(expectedType, keyValueType.KeyType);
         }
-
+        
         /// <summary>
         ///     Tests that value type set get
         /// </summary>
@@ -64,10 +64,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             KeyValueType keyValueType = new KeyValueType();
             Type expectedType = typeof(string);
-
+            
             // Act
             keyValueType.ValueType = expectedType;
-
+            
             // Assert
             Assert.Equal(expectedType, keyValueType.ValueType);
         }

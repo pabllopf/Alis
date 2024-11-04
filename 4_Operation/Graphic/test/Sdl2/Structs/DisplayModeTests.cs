@@ -49,7 +49,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             int expectedHeight = 1080;
             int expectedRefreshRate = 60;
             IntPtr expectedDriverData = new IntPtr(123456);
-
+            
             DisplayMode displayMode = new DisplayMode
             {
                 format = expectedFormat,
@@ -58,7 +58,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
                 refresh_rate = expectedRefreshRate,
                 DriverData = expectedDriverData
             };
-
+            
             Assert.Equal(expectedFormat, displayMode.format);
             Assert.Equal(expectedWidth, displayMode.w);
             Assert.Equal(expectedHeight, displayMode.h);

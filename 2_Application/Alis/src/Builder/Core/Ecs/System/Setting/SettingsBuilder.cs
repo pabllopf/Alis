@@ -64,7 +64,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting
         ///     The setting base
         /// </summary>
         private readonly Alis.Core.Ecs.System.Configuration.Setting settingBase = new Alis.Core.Ecs.System.Configuration.Setting();
-
+        
         /// <summary>
         ///     Audio the value
         /// </summary>
@@ -75,13 +75,13 @@ namespace Alis.Builder.Core.Ecs.System.Setting
             settingBase.Audio = value.Invoke(new AudioSettingBuilder());
             return this;
         }
-
+        
         /// <summary>
         ///     Build setting
         /// </summary>
         /// <returns></returns>
         public Alis.Core.Ecs.System.Configuration.Setting Build() => settingBase;
-
+        
         /// <summary>
         ///     Generals the value
         /// </summary>
@@ -92,7 +92,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting
             settingBase.General = value.Invoke(new GeneralSettingBuilder());
             return this;
         }
-
+        
         /// <summary>
         ///     Graphics the value
         /// </summary>
@@ -103,8 +103,8 @@ namespace Alis.Builder.Core.Ecs.System.Setting
             settingBase.Graphic = value.Invoke(new GraphicSettingBuilder());
             return this;
         }
-
-
+        
+        
         /// <summary>
         ///     Inputs the value
         /// </summary>
@@ -115,7 +115,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting
             settingBase.Input = value.Invoke(new InputSettingBuilder());
             return this;
         }
-
+        
         /// <summary>
         ///     Networks the value
         /// </summary>
@@ -126,7 +126,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting
             settingBase.Network = value.Invoke(new NetworkSettingBuilder());
             return this;
         }
-
+        
         /// <summary>
         ///     Physics the value
         /// </summary>
@@ -137,7 +137,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting
             settingBase.Physic = value.Invoke(new PhysicSettingBuilder());
             return this;
         }
-
+        
         /// <summary>
         ///     Scenes the value
         /// </summary>

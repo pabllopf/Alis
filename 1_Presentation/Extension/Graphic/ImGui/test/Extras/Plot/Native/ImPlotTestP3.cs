@@ -51,7 +51,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotErrorBars("label", ref err, ref err, ref err, 1);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars double with flags throws dll not found exception
         /// </summary>
@@ -64,7 +64,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotErrorBars("label", ref err, ref err, ref err, 1, ImPlotErrorBarsFlags.None);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars s byte throws dll not found exception
         /// </summary>
@@ -77,7 +77,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotErrorBars("label", ref @sbyte, ref @sbyte, ref @sbyte, 1);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars byte throws dll not found exception
         /// </summary>
@@ -90,7 +90,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotErrorBars("label", ref b, ref b, ref b, 1);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars short throws dll not found exception
         /// </summary>
@@ -103,7 +103,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotErrorBars("label", ref s, ref s, ref s, 1);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars u short throws dll not found exception
         /// </summary>
@@ -116,7 +116,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotErrorBars("label", ref @ushort, ref @ushort, ref @ushort, 1);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars int throws dll not found exception
         /// </summary>
@@ -129,7 +129,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotErrorBars("label", ref err, ref err, ref err, 1);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars u int throws dll not found exception
         /// </summary>
@@ -142,7 +142,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotErrorBars("label", ref err, ref err, ref err, 1);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars long throws dll not found exception
         /// </summary>
@@ -155,7 +155,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotErrorBars("label", ref err, ref err, ref err, 1);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars u long throws dll not found exception
         /// </summary>
@@ -168,7 +168,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotErrorBars("label", ref err, ref err, ref err, 1);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars float neg pos throws dll not found exception
         /// </summary>
@@ -181,7 +181,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotErrorBars("label", ref neg, ref neg, ref neg, ref neg, 1);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars double neg pos throws dll not found exception
         /// </summary>
@@ -194,7 +194,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotErrorBars("label", ref neg, ref neg, ref neg, ref neg, 1);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars s byte neg pos throws dll not found exception
         /// </summary>
@@ -207,7 +207,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotErrorBars("label", ref @sbyte, ref @sbyte, ref @sbyte, ref @sbyte, 1);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars float throws dll not found exception
         /// </summary>
@@ -217,7 +217,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float xs = 0, ys = 0, err = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref err, 1, ImPlotErrorBarsFlags.None, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars float with stride throws dll not found exception
         /// </summary>
@@ -227,7 +227,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float xs = 0, ys = 0, err = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref err, 1, ImPlotErrorBarsFlags.None, 0, 4));
         }
-
+        
         /// <summary>
         ///     Tests that v 2 plot error bars double throws dll not found exception
         /// </summary>
@@ -237,7 +237,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 0, ys = 0, err = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref err, 1));
         }
-
+        
         /// <summary>
         ///     Tests that v 2 plot error bars double with flags throws dll not found exception
         /// </summary>
@@ -247,7 +247,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 0, ys = 0, err = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref err, 1, ImPlotErrorBarsFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that v 2 plot error bars s byte throws dll not found exception
         /// </summary>
@@ -257,7 +257,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             sbyte xs = 0, ys = 0, err = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref err, 1));
         }
-
+        
         /// <summary>
         ///     Tests that v 2 plot error bars byte throws dll not found exception
         /// </summary>
@@ -267,7 +267,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             byte xs = 0, ys = 0, err = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref err, 1));
         }
-
+        
         /// <summary>
         ///     Tests that v 2 plot error bars short throws dll not found exception
         /// </summary>
@@ -277,7 +277,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             short xs = 0, ys = 0, err = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref err, 1));
         }
-
+        
         /// <summary>
         ///     Tests that v 2 plot error bars u short throws dll not found exception
         /// </summary>
@@ -287,7 +287,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ushort xs = 0, ys = 0, err = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref err, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars int throws dll not found exception
         /// </summary>
@@ -297,7 +297,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             int xs = 0, ys = 0, err = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref err, 1));
         }
-
+        
         /// <summary>
         ///     Tests that v 2 plot error bars u int throws dll not found exception
         /// </summary>
@@ -307,7 +307,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             uint xs = 0, ys = 0, err = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref err, 1));
         }
-
+        
         /// <summary>
         ///     Tests that v 2 plot error bars long throws dll not found exception
         /// </summary>
@@ -317,7 +317,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             long xs = 0, ys = 0, err = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref err, 1));
         }
-
+        
         /// <summary>
         ///     Tests that v 2 plot error bars u long throws dll not found exception
         /// </summary>
@@ -327,7 +327,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ulong xs = 0, ys = 0, err = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref err, 1));
         }
-
+        
         /// <summary>
         ///     Tests that v 2 plot error bars float neg pos throws dll not found exception
         /// </summary>
@@ -337,7 +337,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float xs = 0, ys = 0, neg = 0, pos = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, 1));
         }
-
+        
         /// <summary>
         ///     Tests that v 2 plot error bars double neg pos throws dll not found exception
         /// </summary>
@@ -347,7 +347,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 0, ys = 0, neg = 0, pos = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, 1));
         }
-
+        
         /// <summary>
         ///     Tests that v 2 plot error bars s byte neg pos throws dll not found exception
         /// </summary>

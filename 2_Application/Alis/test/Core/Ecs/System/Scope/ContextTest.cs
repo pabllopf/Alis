@@ -53,14 +53,14 @@ namespace Alis.Test.Core.Ecs.System.Scope
         {
             // Arrange
             Setting setting = new Setting();
-
+            
             // Act
             Context context = new Context(setting);
-
+            
             // Assert
             Assert.NotNull(context);
         }
-
+        
         /// <summary>
         ///     Tests that test context audio manager
         /// </summary>
@@ -70,14 +70,14 @@ namespace Alis.Test.Core.Ecs.System.Scope
             // Arrange
             Setting setting = new Setting();
             Context context = new Context(setting);
-
+            
             // Act
             AudioManager audioManager = context.AudioManager;
-
+            
             // Assert
             Assert.NotNull(audioManager);
         }
-
+        
         /// <summary>
         ///     Tests that test context exit
         /// </summary>
@@ -87,12 +87,12 @@ namespace Alis.Test.Core.Ecs.System.Scope
             // Arrange
             Setting setting = new Setting();
             Context context = new Context(setting);
-
+            
             // Act
             context.Exit();
         }
-
-
+        
+        
         /// <summary>
         ///     Tests that test context graphic manager
         /// </summary>
@@ -102,15 +102,15 @@ namespace Alis.Test.Core.Ecs.System.Scope
             // Arrange
             Setting setting = new Setting();
             Context context = new Context(setting);
-
+            
             // Act
             GraphicManager result = context.GraphicManager;
-
+            
             // Assert
             Assert.NotNull(result);
             Assert.IsType<GraphicManager>(result);
         }
-
+        
         /// <summary>
         ///     Tests that test context input manager
         /// </summary>
@@ -120,15 +120,15 @@ namespace Alis.Test.Core.Ecs.System.Scope
             // Arrange
             Setting setting = new Setting();
             Context context = new Context(setting);
-
+            
             // Act
             InputManager result = context.InputManager;
-
+            
             // Assert
             Assert.NotNull(result);
             Assert.IsType<InputManager>(result);
         }
-
+        
         /// <summary>
         ///     Tests that test context network manager
         /// </summary>
@@ -138,15 +138,15 @@ namespace Alis.Test.Core.Ecs.System.Scope
             // Arrange
             Setting setting = new Setting();
             Context context = new Context(setting);
-
+            
             // Act
             NetworkManager result = context.NetworkManager;
-
+            
             // Assert
             Assert.NotNull(result);
             Assert.IsType<NetworkManager>(result);
         }
-
+        
         /// <summary>
         ///     Tests that test context physic manager
         /// </summary>
@@ -156,15 +156,15 @@ namespace Alis.Test.Core.Ecs.System.Scope
             // Arrange
             Setting setting = new Setting();
             Context context = new Context(setting);
-
+            
             // Act
             PhysicManager result = context.PhysicManager;
-
+            
             // Assert
             Assert.NotNull(result);
             Assert.IsType<PhysicManager>(result);
         }
-
+        
         /// <summary>
         ///     Tests that test context time manager
         /// </summary>
@@ -174,15 +174,15 @@ namespace Alis.Test.Core.Ecs.System.Scope
             // Arrange
             Setting setting = new Setting();
             Context context = new Context(setting);
-
+            
             // Act
             TimeManager result = context.TimeManager;
-
+            
             // Assert
             Assert.NotNull(result);
             Assert.IsType<TimeManager>(result);
         }
-
+        
         /// <summary>
         ///     Tests that test context scene manager
         /// </summary>
@@ -192,10 +192,10 @@ namespace Alis.Test.Core.Ecs.System.Scope
             // Arrange
             Setting setting = new Setting();
             Context context = new Context(setting);
-
+            
             // Act
             SceneManager result = context.SceneManager;
-
+            
             // Assert
             Assert.NotNull(result);
             Assert.IsType<SceneManager>(result);

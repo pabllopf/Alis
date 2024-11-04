@@ -38,7 +38,7 @@ namespace Alis.Core.Physic.Common
         ///     Gets or sets the value of the name
         /// </summary>
         public string Name { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the value
         /// </summary>

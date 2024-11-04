@@ -51,7 +51,7 @@ namespace Alis.Core.Network.Internal
             Count = count;
             MaskKey = maskKey;
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="WebSocketFrame" /> class
         /// </summary>
@@ -68,32 +68,32 @@ namespace Alis.Core.Network.Internal
             CloseStatus = closeStatus;
             CloseStatusDescription = closeStatusDescription;
         }
-
+        
         /// <summary>
         ///     Gets the value of the is fin bit set
         /// </summary>
         public bool IsFinBitSet { get; }
-
+        
         /// <summary>
         ///     Gets the value of the op code
         /// </summary>
         public WebSocketOpCode OpCode { get; }
-
+        
         /// <summary>
         ///     Gets the value of the count
         /// </summary>
         public int Count { get; }
-
+        
         /// <summary>
         ///     Gets the value of the close status
         /// </summary>
         public WebSocketCloseStatus? CloseStatus { get; }
-
+        
         /// <summary>
         ///     Gets the value of the close status description
         /// </summary>
         public string CloseStatusDescription { get; }
-
+        
         /// <summary>
         ///     Gets the value of the mask key
         /// </summary>

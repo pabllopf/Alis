@@ -40,12 +40,12 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         ///     The body
         /// </summary>
         public Body Body;
-
+        
         /// <summary>
         ///     The max
         /// </summary>
         public float Max;
-
+        
         /// <summary>
         ///     The min
         /// </summary>

@@ -45,37 +45,37 @@ namespace Alis.Sample.King.Platform
         ///     The jump force
         /// </summary>
         private const float JumpForce = 30;
-
+        
         /// <summary>
         ///     The velocity player
         /// </summary>
         private const float VelocityPlayer = 5f;
-
+        
         /// <summary>
         ///     The reset cool down jump
         /// </summary>
         private const float ResetCoolDownJump = 0.8f;
-
+        
         /// <summary>
         ///     The animator
         /// </summary>
         private Animator animator;
-
+        
         /// <summary>
         ///     The box collider
         /// </summary>
         private BoxCollider boxCollider;
-
+        
         /// <summary>
         ///     The vector
         /// </summary>
         private Vector2 directionPlayer = new Vector2(0, 0);
-
+        
         /// <summary>
         ///     The sprite
         /// </summary>
         private Sprite sprite;
-
+        
         /// <summary>
         ///     Ons the start
         /// </summary>
@@ -85,14 +85,14 @@ namespace Alis.Sample.King.Platform
             boxCollider = GameObject.Get<BoxCollider>();
             sprite = GameObject.Get<Sprite>();
         }
-
+        
         /// <summary>
         ///     Ons the update
         /// </summary>
         public override void OnUpdate()
         {
         }
-
+        
         /// <summary>
         ///     Ons the release key using the specified key
         /// </summary>
@@ -104,7 +104,7 @@ namespace Alis.Sample.King.Platform
                 boxCollider.Body.LinearVelocity = new Vector2(0, boxCollider.Body.LinearVelocity.Y);
             }
         }
-
+        
         /// <summary>
         ///     Ons the press key using the specified key
         /// </summary>
@@ -115,12 +115,12 @@ namespace Alis.Sample.King.Platform
             {
                 boxCollider.Body.ApplyLinearImpulse(new Vector2(0, 10));
             }
-
+            
             if (key == KeyCodes.A)
             {
                 boxCollider.Body.LinearVelocity = new Vector2(-VelocityPlayer, boxCollider.Body.LinearVelocity.Y);
             }
-
+            
             if (key == KeyCodes.D)
             {
                 boxCollider.Body.ApplyLinearImpulse(new Vector2(VelocityPlayer, boxCollider.Body.LinearVelocity.Y));

@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             splitter.Current = 1;
             Assert.Equal(1, splitter.Current);
         }
-
+        
         /// <summary>
         ///     Tests that count should set and get correctly
         /// </summary>
@@ -57,7 +57,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             splitter.Count = 2;
             Assert.Equal(2, splitter.Count);
         }
-
+        
         /// <summary>
         ///     Tests that channels should set and get correctly
         /// </summary>

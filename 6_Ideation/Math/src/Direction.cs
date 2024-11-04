@@ -36,16 +36,16 @@ namespace Alis.Core.Aspect.Math
         ///     The none direction
         /// </summary>
         None,
-
+        
         /// <summary>The north</summary>
         North,
-
+        
         /// <summary>The east</summary>
         East,
-
+        
         /// <summary>The south</summary>
         South,
-
+        
         /// <summary>The west</summary>
         West
     }

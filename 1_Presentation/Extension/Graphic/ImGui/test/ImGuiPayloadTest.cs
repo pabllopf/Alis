@@ -46,14 +46,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiPayload payload = new ImGuiPayload {Data = IntPtr.Zero};
-
+            
             // Act
             IntPtr result = payload.Data;
-
+            
             // Assert
             Assert.Equal(IntPtr.Zero, result);
         }
-
+        
         /// <summary>
         ///     Tests that data size should be initialized correctly
         /// </summary>
@@ -62,14 +62,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiPayload payload = new ImGuiPayload {DataSize = 100};
-
+            
             // Act
             int result = payload.DataSize;
-
+            
             // Assert
             Assert.Equal(100, result);
         }
-
+        
         /// <summary>
         ///     Tests that source id should be initialized correctly
         /// </summary>
@@ -78,14 +78,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiPayload payload = new ImGuiPayload {SourceId = 123};
-
+            
             // Act
             uint result = payload.SourceId;
-
+            
             // Assert
             Assert.Equal(123u, result);
         }
-
+        
         /// <summary>
         ///     Tests that source parent id should be initialized correctly
         /// </summary>
@@ -94,14 +94,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiPayload payload = new ImGuiPayload {SourceParentId = 456};
-
+            
             // Act
             uint result = payload.SourceParentId;
-
+            
             // Assert
             Assert.Equal(456u, result);
         }
-
+        
         /// <summary>
         ///     Tests that data frame count should be initialized correctly
         /// </summary>
@@ -110,14 +110,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiPayload payload = new ImGuiPayload {DataFrameCount = 789};
-
+            
             // Act
             int result = payload.DataFrameCount;
-
+            
             // Assert
             Assert.Equal(789, result);
         }
-
+        
         /// <summary>
         ///     Tests that data type should be initialized correctly
         /// </summary>
@@ -126,14 +126,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiPayload payload = new ImGuiPayload {DataType = new byte[33]};
-
+            
             // Act
             byte[] result = payload.DataType;
-
+            
             // Assert
             Assert.Equal(new byte[33], result);
         }
-
+        
         /// <summary>
         ///     Tests that preview should be initialized correctly
         /// </summary>
@@ -142,14 +142,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiPayload payload = new ImGuiPayload {Preview = 1};
-
+            
             // Act
             byte result = payload.Preview;
-
+            
             // Assert
             Assert.Equal(1, result);
         }
-
+        
         /// <summary>
         ///     Tests that delivery should be initialized correctly
         /// </summary>
@@ -158,14 +158,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiPayload payload = new ImGuiPayload {Delivery = 1};
-
+            
             // Act
             byte result = payload.Delivery;
-
+            
             // Assert
             Assert.Equal(1, result);
         }
-
+        
         /// <summary>
         ///     Tests that clear should clear payload
         /// </summary>
@@ -174,11 +174,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiPayload payload = new ImGuiPayload {Data = new IntPtr(123), DataSize = 100};
-
+            
             // Act
             Assert.Throws<DllNotFoundException>(() => payload.Clear());
         }
-
+        
         /// <summary>
         ///     Tests that clear calls im gui native clear
         /// </summary>
@@ -188,7 +188,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPayload payload = new ImGuiPayload();
             Assert.Throws<DllNotFoundException>(() => payload.Clear());
         }
-
+        
         /// <summary>
         ///     Tests that is data type returns true for matching type
         /// </summary>
@@ -198,7 +198,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPayload payload = new ImGuiPayload();
             Assert.Throws<DllNotFoundException>(() => payload.IsDataType("test"));
         }
-
+        
         /// <summary>
         ///     Tests that is data type returns false for non matching type
         /// </summary>
@@ -208,7 +208,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPayload payload = new ImGuiPayload();
             Assert.Throws<DllNotFoundException>(() => payload.IsDataType("non-matching"));
         }
-
+        
         /// <summary>
         ///     Tests that is delivery returns true when delivery
         /// </summary>
@@ -218,7 +218,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPayload payload = new ImGuiPayload();
             Assert.Throws<DllNotFoundException>(() => payload.IsDelivery());
         }
-
+        
         /// <summary>
         ///     Tests that is preview returns true when preview
         /// </summary>
@@ -228,7 +228,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPayload payload = new ImGuiPayload();
             Assert.Throws<DllNotFoundException>(() => payload.IsPreview());
         }
-
+        
         /// <summary>
         ///     Tests that is data type should return true for matching type
         /// </summary>
@@ -237,11 +237,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiPayload payload = new ImGuiPayload {DataType = Encoding.UTF8.GetBytes("test\0")};
-
+            
             // Act
             Assert.Throws<DllNotFoundException>(() => payload.IsDataType("test"));
         }
-
+        
         /// <summary>
         ///     Tests that is data type should return false for non matching type
         /// </summary>
@@ -250,12 +250,12 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiPayload payload = new ImGuiPayload {DataType = Encoding.UTF8.GetBytes("test\0")};
-
-
+            
+            
             // Act
             Assert.Throws<DllNotFoundException>(() => payload.IsDataType("test1"));
         }
-
+        
         /// <summary>
         ///     Tests that is delivery should return true when delivery is set
         /// </summary>
@@ -264,11 +264,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiPayload payload = new ImGuiPayload {Delivery = 1};
-
+            
             // Act
             Assert.Throws<DllNotFoundException>(() => payload.IsDelivery());
         }
-
+        
         /// <summary>
         ///     Tests that is delivery should return false when delivery is not set
         /// </summary>
@@ -277,11 +277,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiPayload payload = new ImGuiPayload {Delivery = 0};
-
+            
             // Act
             Assert.Throws<DllNotFoundException>(() => payload.IsDelivery());
         }
-
+        
         /// <summary>
         ///     Tests that is preview should return true when preview is set
         /// </summary>
@@ -290,11 +290,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiPayload payload = new ImGuiPayload {Preview = 1};
-
+            
             // Act
             Assert.Throws<DllNotFoundException>(() => payload.IsPreview());
         }
-
+        
         /// <summary>
         ///     Tests that is preview should return false when preview is not set
         /// </summary>
@@ -303,7 +303,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImGuiPayload payload = new ImGuiPayload {Preview = 0};
-
+            
             // Act
             Assert.Throws<DllNotFoundException>(() => payload.IsPreview());
         }

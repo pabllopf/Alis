@@ -46,37 +46,37 @@ namespace Alis.App.Engine.Windows
         ///     The window name
         /// </summary>
         private const string WindowName = "Audio Player";
-
+        
         /// <summary>
         ///     The current time
         /// </summary>
         private readonly TimeSpan currentTime;
-
+        
         /// <summary>
         ///     The no collapse
         /// </summary>
         private readonly ImGuiWindowFlags flags = ImGuiWindowFlags.NoCollapse;
-
+        
         /// <summary>
         ///     The progress
         /// </summary>
         private readonly float progress;
-
+        
         /// <summary>
         ///     The total time
         /// </summary>
         private readonly TimeSpan totalTime;
-
+        
         /// <summary>
         ///     The is open
         /// </summary>
         private bool isOpen = true;
-
+        
         /// <summary>
         ///     The is playing
         /// </summary>
         private bool isPlaying;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioPlayerWindow" /> class
         /// </summary>
@@ -84,33 +84,33 @@ namespace Alis.App.Engine.Windows
         public AudioPlayerWindow(SpaceWork spaceWork)
         {
             SpaceWork = spaceWork;
-
+            
             // mock sample:
             progress = 1f;
             isPlaying = true;
             currentTime = new TimeSpan(0);
             totalTime = new TimeSpan(0, 0, 10);
         }
-
+        
         /// <summary>
         ///     Gets the value of the space work
         /// </summary>
         public SpaceWork SpaceWork { get; }
-
+        
         /// <summary>
         ///     Initializes this instance
         /// </summary>
         public void Initialize()
         {
         }
-
+        
         /// <summary>
         ///     Starts this instance
         /// </summary>
         public void Start()
         {
         }
-
+        
         /// <summary>
         ///     Renders this instance
         /// </summary>
@@ -121,22 +121,22 @@ namespace Alis.App.Engine.Windows
                 Console.WriteLine("Audio Player Window is closed");
                 return;
             }
-
+            
             if (ImGui.Begin(WindowName, ref isOpen, flags))
             {
                 if (ImGui.Button($"{FontAwesome5.Play}", new Vector2(25, 25)))
                 {
                     isPlaying = true;
                 }
-
+                
                 ImGui.SameLine();
-
+                
                 if (isPlaying)
                 {
                     ImGui.ProgressBar(progress, new Vector2(-1, 0), $"{currentTime} / {totalTime} ");
                 }
             }
-
+            
             ImGui.End();
         }
     }

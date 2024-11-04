@@ -41,12 +41,12 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The clip rect
         /// </summary>
         public Vector4 ClipRect { get; set; }
-
+        
         /// <summary>
         ///     The texture id
         /// </summary>
         public IntPtr TextureId { get; set; }
-
+        
         /// <summary>
         ///     The vtx offset
         /// </summary>

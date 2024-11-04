@@ -41,17 +41,17 @@ namespace Alis.Core.Graphic.Sdl2.Enums
         ///     The sdl window pos undefined mask
         /// </summary>
         WindowPosUndefinedMask = 0x1FFF0000,
-
+        
         /// <summary>
         ///     The sdl window pos centered mask
         /// </summary>
         WindowPosCenteredMask = 0x2FFF0000,
-
+        
         /// <summary>
         ///     The sdl window pos undefined
         /// </summary>
         WindowPosUndefined = 0x1FFF0000,
-
+        
         /// <summary>
         ///     The sdl window pos centered
         /// </summary>

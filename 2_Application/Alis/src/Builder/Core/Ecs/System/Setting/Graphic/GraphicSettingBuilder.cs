@@ -47,13 +47,13 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Graphic
         ///     The graphic setting
         /// </summary>
         private readonly GraphicSetting graphicSetting = new GraphicSetting();
-
+        
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The graphic setting</returns>
         public GraphicSetting Build() => graphicSetting;
-
+        
         /// <summary>
         ///     Windows the value
         /// </summary>
@@ -64,7 +64,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Graphic
             graphicSetting.Window = value(new WindowBuilder());
             return this;
         }
-
+        
         /// <summary>
         ///     Targets the value
         /// </summary>
@@ -75,7 +75,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Graphic
             graphicSetting.Target = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Frames the rate using the specified value
         /// </summary>

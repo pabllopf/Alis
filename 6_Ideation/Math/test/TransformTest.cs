@@ -47,15 +47,15 @@ namespace Alis.Core.Aspect.Math.Test
             Transform transform = new Transform();
             Vector2 position = new Vector2(1, 1);
             float angle = 45;
-
+            
             // Act
             transform.Set(position, angle);
-
+            
             // Assert
             Assert.Equal(position, transform.Position);
             Assert.Equal(angle, transform.Rotation);
         }
-
+        
         /// <summary>
         ///     Tests that constructor should set position rotation and scale
         /// </summary>
@@ -66,16 +66,16 @@ namespace Alis.Core.Aspect.Math.Test
             Vector2 position = new Vector2(1, 1);
             float rotation = 45;
             Vector2 scale = new Vector2(2, 2);
-
+            
             // Act
             Transform transform = new Transform(position, rotation, scale);
-
+            
             // Assert
             Assert.Equal(position, transform.Position);
             Assert.Equal(rotation, transform.Rotation);
             Assert.Equal(scale, transform.Scale);
         }
-
+        
         /// <summary>
         ///     Tests that set sets position and angle correctly
         /// </summary>
@@ -85,9 +85,9 @@ namespace Alis.Core.Aspect.Math.Test
             Transform transform = new Transform();
             Vector2 newPosition = new Vector2(5, 6);
             float newAngle = 30;
-
+            
             transform.Set(newPosition, newAngle);
-
+            
             Assert.Equal(newPosition, transform.Position);
             Assert.Equal(newAngle, transform.Rotation);
         }

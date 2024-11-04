@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IRunner.cs
+//  File:IContextHandler.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,27 +30,27 @@
 namespace Alis.Core.Ecs.System.Scope
 {
     /// <summary>
-    /// The runner interface
+    ///     The runner interface
     /// </summary>
     public interface IContextHandler<T>
     {
         /// <summary>
-        /// Gets the value of the context
+        ///     Gets the value of the context
         /// </summary>
-        T Context {  get; }
-
+        T Context { get; }
+        
         /// <summary>
-        /// Runs this instance
+        ///     Runs this instance
         /// </summary>
         void Run();
         
         /// <summary>
-        /// Runs the preview
+        ///     Runs the preview
         /// </summary>
         void RunPreview();
-
+        
         /// <summary>
-        /// Exits this instance
+        ///     Exits this instance
         /// </summary>
         void Exit();
     }

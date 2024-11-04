@@ -40,17 +40,17 @@ namespace Alis.Extension.Plugin
         ///     Initializes this instance
         /// </summary>
         void Initialize();
-
+        
         /// <summary>
         ///     Updates this instance
         /// </summary>
         void Update();
-
+        
         /// <summary>
         ///     Renders this instance
         /// </summary>
         void Render();
-
+        
         /// <summary>
         ///     Shutdowns this instance
         /// </summary>

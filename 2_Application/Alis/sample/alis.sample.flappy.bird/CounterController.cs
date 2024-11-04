@@ -54,12 +54,12 @@ namespace Alis.Sample.Flappy.Bird
         ///     The is enter
         /// </summary>
         private bool isEnter;
-
+        
         /// <summary>
         ///     Gets or sets the value of the counter
         /// </summary>
         public int Counter { get; set; }
-
+        
         /// <summary>
         ///     Increments this instance
         /// </summary>
@@ -67,7 +67,7 @@ namespace Alis.Sample.Flappy.Bird
         {
             Counter++;
         }
-
+        
         /// <summary>
         ///     Resets this instance
         /// </summary>
@@ -75,13 +75,13 @@ namespace Alis.Sample.Flappy.Bird
         {
             Counter = 0;
         }
-
+        
         /// <summary>
         ///     Returns the string
         /// </summary>
         /// <returns>The string</returns>
         public override string ToString() => Counter.ToString();
-
+        
         /// <summary>
         ///     Ons the init
         /// </summary>
@@ -91,19 +91,19 @@ namespace Alis.Sample.Flappy.Bird
             fontManager = Context.GraphicManager.FontManager;
             fontManager.LoadFont("MONO", 16, AssetManager.Find("mono.bmp"));
         }
-
+        
         public override void OnGui()
         {
             fontManager.RenderText("MONO", $"{Counter}", 128, 15, Color.White, 32);
         }
-
+        
         /// <summary>
         ///     Ons the collision enter using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public override void OnCollisionEnter(GameObject gameObject)
         {
-             if ((gameObject.Tag == "Player") && !isEnter)
+            if ((gameObject.Tag == "Player") && !isEnter)
             {
                 Increment();
                 audioSource.Play();
@@ -111,7 +111,7 @@ namespace Alis.Sample.Flappy.Bird
                 isEnter = true;
             }
         }
-
+        
         /// <summary>
         ///     Ons the collision exit using the specified game object
         /// </summary>

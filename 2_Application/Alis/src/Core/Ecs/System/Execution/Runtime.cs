@@ -34,22 +34,22 @@ using System.Collections.Generic;
 namespace Alis.Core.Ecs.System.Execution
 {
     /// <summary>
-    /// The runtime class
+    ///     The runtime class
     /// </summary>
     public class Runtime<T> where T : IRuntime
     {
         /// <summary>
-        /// The dictionary
-        /// </summary>
-        private readonly List<T> runtimes;
-
-        /// <summary>
-        /// The type
+        ///     The type
         /// </summary>
         private readonly ConcurrentDictionary<Type, T> _cachedItems;
         
         /// <summary>
-        /// Initializes a new instance of the <see cref="Runtime"/> class
+        ///     The dictionary
+        /// </summary>
+        private readonly List<T> runtimes;
+        
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Runtime" /> class
         /// </summary>
         /// <param name="array">The array</param>
         public Runtime(params T[] array)
@@ -61,9 +61,9 @@ namespace Alis.Core.Ecs.System.Execution
                 _cachedItems[runtime.GetType()] = runtime;
             }
         }
-
+        
         /// <summary>
-        /// Gets this instance
+        ///     Gets this instance
         /// </summary>
         /// <typeparam name="TGet">The get</typeparam>
         /// <exception cref="InvalidOperationException">No item of type {type} found.</exception>
@@ -72,95 +72,95 @@ namespace Alis.Core.Ecs.System.Execution
         {
             if (_cachedItems.TryGetValue(typeof(TGet), out T item))
             {
-                return (TGet)item;
+                return (TGet) item;
             }
-
+            
             throw new InvalidOperationException($"No item of type {typeof(TGet)} found.");
         }
         
         /// <summary>
-        /// Ons the init
+        ///     Ons the init
         /// </summary>
         public void OnInit() => runtimes.ForEach(x => x.OnInit());
         
         /// <summary>
-        /// Ons the awake
+        ///     Ons the awake
         /// </summary>
         public void OnAwake() => runtimes.ForEach(x => x.OnAwake());
         
         /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
         public void OnStart() => runtimes.ForEach(x => x.OnStart());
-
+        
         /// <summary>
-        /// Ons the physic update
+        ///     Ons the physic update
         /// </summary>
         public void OnPhysicUpdate() => runtimes.ForEach(x => x.OnPhysicUpdate());
         
         /// <summary>
-        /// Ons the before update
+        ///     Ons the before update
         /// </summary>
         public void OnBeforeUpdate() => runtimes.ForEach(x => x.OnBeforeUpdate());
         
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public void OnUpdate() => runtimes.ForEach(x => x.OnUpdate());
         
         /// <summary>
-        /// Ons the after update
+        ///     Ons the after update
         /// </summary>
         public void OnAfterUpdate() => runtimes.ForEach(x => x.OnAfterUpdate());
-
+        
         /// <summary>
-        /// Ons the before fixed update
+        ///     Ons the before fixed update
         /// </summary>
         public void OnBeforeFixedUpdate() => runtimes.ForEach(x => x.OnBeforeFixedUpdate());
-
+        
         /// <summary>
-        /// Ons the fixed update
+        ///     Ons the fixed update
         /// </summary>
         public void OnFixedUpdate() => runtimes.ForEach(x => x.OnFixedUpdate());
         
         /// <summary>
-        /// Ons the after fixed update
+        ///     Ons the after fixed update
         /// </summary>
         public void OnAfterFixedUpdate() => runtimes.ForEach(x => x.OnAfterFixedUpdate());
-
+        
         /// <summary>
-        /// Ons the dispatch events
+        ///     Ons the dispatch events
         /// </summary>
         public void OnDispatchEvents() => runtimes.ForEach(x => x.OnDispatchEvents());
-
+        
         /// <summary>
-        /// Ons the calculate
+        ///     Ons the calculate
         /// </summary>
         public void OnCalculate() => runtimes.ForEach(x => x.OnCalculate());
         
         public void OnBeforeDraw() => runtimes.ForEach(x => x.OnBeforeDraw());
         
         /// <summary>
-        /// Ons the draw
+        ///     Ons the draw
         /// </summary>
         public void OnDraw() => runtimes.ForEach(x => x.OnDraw());
         
         public void OnAfterDraw() => runtimes.ForEach(x => x.OnAfterDraw());
         
         public void OnRenderPresent() => runtimes.ForEach(x => x.OnRenderPresent());
-
+        
         /// <summary>
-        /// Ons the gui
+        ///     Ons the gui
         /// </summary>
         public void OnGui() => runtimes.ForEach(x => x.OnGui());
         
         /// <summary>
-        /// Ons the stop
+        ///     Ons the stop
         /// </summary>
         public void OnStop() => runtimes.ForEach(x => x.OnStop());
-
+        
         /// <summary>
-        /// Ons the exit
+        ///     Ons the exit
         /// </summary>
         public void OnExit() => runtimes.ForEach(x => x.OnExit());
     }

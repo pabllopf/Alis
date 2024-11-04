@@ -31,7 +31,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Alis.Core.Aspect.Data.Json;
-using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
@@ -60,8 +59,6 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// </summary>
         private const float PixelsPerMeter = 32.0f;
         
-        public FontManager FontManager { get; set; }
-
         /// <summary>
         ///     Initializes a new instance of the <see cref="GraphicManager" /> class
         /// </summary>
@@ -74,7 +71,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Renderer = IntPtr.Zero;
             DefaultSize = new Vector2(640, 480);
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="GraphicManager" /> class
         /// </summary>
@@ -95,43 +92,45 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Sprites = sprites;
             Cameras = cameras;
         }
-
+        
+        public FontManager FontManager { get; set; }
+        
         /// <summary>
         ///     The box collider
         /// </summary>
         [JsonPropertyName("_ColliderBases_")]
         public List<BoxCollider> ColliderBases { get; set; }
-
+        
         /// <summary>
         ///     The window
         /// </summary>
         [JsonPropertyName("_Window_", true, true)]
         public IntPtr Window { get; set; }
-
+        
         /// <summary>
         ///     The default size
         /// </summary>
         [JsonPropertyName("_DefaultSize_")]
         public Vector2 DefaultSize { get; set; }
-
+        
         /// <summary>
         ///     The renderWindow
         /// </summary>
         [JsonPropertyName("_Renderer_", true, true)]
         public IntPtr Renderer { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the sprites
         /// </summary>
         [JsonPropertyName("_Sprites_")]
         public List<Sprite> Sprites { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the cameras
         /// </summary>
         [JsonPropertyName("_Cameras_")]
         public List<Camera> Cameras { get; }
-
+        
         /// <summary>
         ///     Ons the enable
         /// </summary>
@@ -139,7 +138,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         {
             Logger.Trace();
         }
-
+        
         /// <summary>
         ///     Ons the init
         /// </summary>
@@ -149,69 +148,69 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             {
                 return;
             }
-
+            
             Logger.Log("init::graphic:new");
-
+            
             DefaultSize = new Vector2(Context.Setting.Graphic.Window.Resolution.X, Context.Setting.Graphic.Window.Resolution.Y);
-
+            
             if (Sdl.Init(InitSettings.InitEverything) < 0)
             {
                 Logger.Info($@"There was an issue initializing SDL. {Sdl.GetError()}");
             }
-
+            
             // GET VERSION SDL2
             Version version = Sdl.GetVersion();
             Logger.Info(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
-
+            
             // Enable vsync
             Sdl.SetSwapInterval(1);
             Sdl.SetHint(Hint.HintRenderDriver, "opengl");
-
+            
             // Create the window
             // create the window which should be able to have a valid OpenGL context and is resizable
             WindowSettings flags = WindowSettings.WindowShown;
-
+            
             if (Context.Setting.Graphic.Window.IsWindowResizable)
             {
                 flags |= WindowSettings.WindowResizable;
             }
-
+            
             // Creates a new SDL window at the center of the screen with the given width and height.
             Window = Sdl.CreateWindow(Context.Setting.General.Name, (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered, (int) DefaultSize.X, (int) DefaultSize.Y, flags);
-
+            
             // Check if the window was created successfully.
             Logger.Info(Window == IntPtr.Zero ? $"There was an issue creating the renderer. {Sdl.GetError()}" : "Window created");
-
+            
             // Create the renderer
             Renderer = Sdl.CreateRenderer(
                 Window,
                 -1,
                 Renderers.SdlRendererAccelerated);
-
+            
             // Check if the renderer was created successfully.
             Logger.Info(Renderer == IntPtr.Zero ? $"There was an issue creating the renderer. {Sdl.GetError()}" : "Renderer created");
-
+            
             int totalDisplays = Sdl.GetNumVideoDisplays();
             Logger.Info($"Total Displays: {totalDisplays}");
-
+            
             for (int i = 0; i < totalDisplays; ++i)
             {
                 string displayName = Sdl.GetDisplayName(i + 1);
                 Logger.Info($"Display {i}: {displayName}");
-
+                
                 // GET DISPLAY BOUNDS
                 Sdl.GetDisplayBounds(i, out RectangleI displayBounds);
                 Logger.Info($"Display [{i}] Bounds: {displayBounds.X}, {displayBounds.Y}, {displayBounds.W}, {displayBounds.H}");
             }
-
+            
             int totalDrivers = Sdl.GetNumRenderDrivers();
             Logger.Info($"Total Render Drivers: {totalDrivers}");
-
+            
             for (int i = 0; i < totalDrivers; ++i)
             {
                 Logger.Info($"Driver {i}: {Sdl.GetVideoDriver(i)}");
             }
-
+            
             // GET RENDERER INFO
             Sdl.GetRendererInfo(Renderer, out RendererInfo rendererInfo);
             Logger.Info($"Renderer Name: {rendererInfo.GetName()} \n" +
@@ -220,44 +219,44 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                         $"Max Texture Height: {rendererInfo.maxTextureHeight} + \n" +
                         $"Max Texture Width: {rendererInfo.maxTextureWidth} \n" +
                         $"Max Texture Height: {rendererInfo.maxTextureHeight}");
-
+            
             // GET RENDERER OUTPUT SIZE
             Sdl.GetRendererOutputSize(Renderer, out int w, out int h);
             Logger.Info($"Renderer Output Size: {w}, {h}");
-
+            
             // GET RENDERER LOGICAL SIZE
             Sdl.RenderGetLogicalSize(Renderer, out int w2, out int h2);
             Logger.Info($"Renderer Logical Size: {w2}, {h2}");
-
+            
             // GET RENDERER SCALE
             Sdl.RenderGetScale(Renderer, out float scaleX, out float scaleY);
             Logger.Info($"Renderer Scale: {scaleX}, {scaleY}");
-
-
+            
+            
             uint windowHandle = Sdl.GetWindowId(Window);
             Logger.Info($"Window Handle: {windowHandle}");
-
+            
             int numberOfDisplays = Sdl.GetNumVideoDisplays();
             Logger.Info($"Number of Displays: {numberOfDisplays}");
-
+            
             int displayIndex = Sdl.GetWindowDisplayIndex(Window);
             Logger.Info($"Display Index: {displayIndex}");
-
+            
             int numOfTypeDisplaysModes = Sdl.GetNumDisplayModes(displayIndex);
             Logger.Info($"Number of Type Displays Modes: {numOfTypeDisplaysModes}");
-
+            
             for (int i = 0; i < numOfTypeDisplaysModes; ++i)
             {
                 Sdl.GetDisplayMode(displayIndex, i, out DisplayMode displayMode);
                 Logger.Info($"Display {displayIndex} Mode [{i}]: {displayMode.format}, {displayMode.w}, {displayMode.h}, {displayMode.refresh_rate}");
             }
-
+            
             // SET DISPLAY MODE
             Sdl.GetDisplayMode(displayIndex, 0, out DisplayMode displayMode2);
             Logger.Info($"Display {displayIndex} SELECTED Mode: {displayMode2.format}, {displayMode2.w}, {displayMode2.h}, {displayMode2.refresh_rate}");
             Sdl.SetWindowDisplayMode(Window, ref displayMode2);
-
-
+            
+            
             if (!string.IsNullOrEmpty(Context.Setting.General.Icon))
             {
                 IntPtr icon = Sdl.LoadBmp(Context.Setting.General.Icon);
@@ -268,16 +267,16 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             
             FontManager = new FontManager(Renderer, RendererFlips.None);
         }
-
+        
         /// <summary>
         ///     Ons the start
         /// </summary>
         public override void OnStart() => Sprites = Sprites.OrderBy(o => o.Depth).ToList();
-
+        
         public override void OnBeforeDraw()
         {
         }
-
+        
         public override void OnDraw()
         {
             float pixelsPerMeter = PixelsPerMeter;
@@ -285,20 +284,20 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Setting contextSetting = Context.Setting;
             PhysicSetting physicSettings = contextSetting.Physic;
             Color debugColor = physicSettings.DebugColor;
-
+            
             foreach (Camera camera in Cameras)
             {
                 if (!camera.IsEnable) continue;
-
+                
                 IntPtr cameraTexture = camera.TextureTarget;
                 Color bgColor = camera.BackgroundColor;
                 Vector2 cameraPosition = camera.Position;
                 Vector2 cameraResolution = camera.Resolution;
-
+                
                 Sdl.SetRenderTarget(renderer, cameraTexture);
                 Sdl.SetRenderDrawColor(renderer, bgColor.R, bgColor.G, bgColor.B, bgColor.A);
                 Sdl.RenderClear(renderer);
-
+                
                 // Render sprites
                 foreach (Sprite sprite in Sprites)
                 {
@@ -310,7 +309,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 
                 // Render colliders
                 Sdl.SetRenderDrawColor(renderer, debugColor.R, debugColor.G, debugColor.B, debugColor.A);
-
+                
                 foreach (BoxCollider collider in ColliderBases)
                 {
                     if (collider.IsEnable && collider.GameObject.IsEnable && collider.IsVisible(cameraPosition, cameraResolution, pixelsPerMeter))
@@ -318,19 +317,19 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                         collider.Render(renderer, cameraPosition, cameraResolution, pixelsPerMeter, debugColor);
                     }
                 }
-
+                
                 Sdl.SetRenderTarget(renderer, IntPtr.Zero);
-
+                
                 // Copy the custom backbuffer to the SDL backbuffer with vertical flip
                 Sdl.RenderCopyEx(renderer, cameraTexture, IntPtr.Zero, IntPtr.Zero, 0, IntPtr.Zero, RendererFlips.FlipVertical);
             }
         }
-
+        
         public override void OnRenderPresent()
         {
             Sdl.RenderPresent(Renderer);
         }
-
+        
         /// <summary>
         ///     Attaches the sprite
         /// </summary>
@@ -340,7 +339,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Sprites.Add(sprite);
             Sprites = Sprites.OrderBy(o => o.Depth).ToList();
         }
-
+        
         /// <summary>
         ///     Uns the attach using the specified sprite
         /// </summary>
@@ -350,7 +349,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Sprites.Remove(sprite);
             Sprites = Sprites.OrderBy(o => o.Depth).ToList();
         }
-
+        
         /// <summary>
         ///     Attaches the collider
         /// </summary>
@@ -359,7 +358,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         {
             ColliderBases.Add(collider);
         }
-
+        
         /// <summary>
         ///     Attaches the camera
         /// </summary>
@@ -368,7 +367,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         {
             Cameras.Add(camera);
         }
-
+        
         /// <summary>
         ///     Uns the attach using the specified collider
         /// </summary>
@@ -377,7 +376,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         {
             ColliderBases.Remove(collider);
         }
-
+        
         /// <summary>
         ///     Uns the attach using the specified camera
         /// </summary>

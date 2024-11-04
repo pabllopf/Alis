@@ -41,47 +41,47 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The valid
         /// </summary>
         public byte Valid { get; set; }
-
+        
         /// <summary>
         ///     The cmd lists count
         /// </summary>
         public int CmdListsCount { get; set; }
-
+        
         /// <summary>
         ///     The total idx count
         /// </summary>
         public int TotalIdxCount { get; set; }
-
+        
         /// <summary>
         ///     The total vtx count
         /// </summary>
         public int TotalVtxCount { get; set; }
-
+        
         /// <summary>
         ///     The cmd lists
         /// </summary>
         public IntPtr CmdListsPtr { get; set; }
-
+        
         /// <summary>
         ///     The display pos
         /// </summary>
         public Vector2 DisplayPos { get; set; }
-
+        
         /// <summary>
         ///     The display size
         /// </summary>
         public Vector2 DisplaySize { get; set; }
-
+        
         /// <summary>
         ///     The framebuffer scale
         /// </summary>
         public Vector2 FramebufferScale { get; set; }
-
+        
         /// <summary>
         ///     The owner viewport
         /// </summary>
         public IntPtr OwnerViewportPtr { get; set; }
-
+        
         /// <summary>
         ///     Clears this instance
         /// </summary>
@@ -89,7 +89,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.ImDrawData_Clear(ref this);
         }
-
+        
         /// <summary>
         ///     Des the index all buffers
         /// </summary>
@@ -97,7 +97,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.ImDrawData_DeIndexAllBuffers(ref this);
         }
-
+        
         /// <summary>
         ///     Scales the clip rects using the specified fb scale
         /// </summary>
@@ -106,7 +106,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.ImDrawData_ScaleClipRects(ref this, fbScale);
         }
-
+        
         /// <summary>
         ///     Gets the value of the cmd lists range
         /// </summary>

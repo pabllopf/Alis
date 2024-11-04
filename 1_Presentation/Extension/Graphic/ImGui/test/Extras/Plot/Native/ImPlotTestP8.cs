@@ -51,7 +51,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref minValue, ref minValue, ref minValue, 1);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded byte 6 params v 1
         /// </summary>
@@ -64,7 +64,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref minValue, ref minValue, ref minValue, 1, ImPlotShadedFlags.None);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded byte 7 params v 1
         /// </summary>
@@ -77,7 +77,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref minValue, ref minValue, ref minValue, 1, ImPlotShadedFlags.None, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded byte 8 params v 1
         /// </summary>
@@ -90,7 +90,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref minValue, ref minValue, ref minValue, 1, ImPlotShadedFlags.None, 0, 1);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded short 5 params v 1
         /// </summary>
@@ -103,7 +103,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref minValue, ref minValue, ref minValue, 1);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded short 6 params v 1
         /// </summary>
@@ -116,7 +116,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref minValue, ref minValue, ref minValue, 1, ImPlotShadedFlags.None);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded short 7 params v 1
         /// </summary>
@@ -129,7 +129,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref minValue, ref minValue, ref minValue, 1, ImPlotShadedFlags.None, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded short 8 params v 1
         /// </summary>
@@ -142,7 +142,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref minValue, ref minValue, ref minValue, 1, ImPlotShadedFlags.None, 0, 1);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u short 5 params v 1
         /// </summary>
@@ -155,7 +155,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref minValue, ref minValue, ref minValue, 1);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u short 6 params v 1
         /// </summary>
@@ -168,7 +168,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref minValue, ref minValue, ref minValue, 1, ImPlotShadedFlags.None);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u short 7 params v 1
         /// </summary>
@@ -181,7 +181,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref minValue, ref minValue, ref minValue, 1, ImPlotShadedFlags.None, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u short 8 params v 1
         /// </summary>
@@ -194,7 +194,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref minValue, ref minValue, ref minValue, 1, ImPlotShadedFlags.None, 0, 1);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded int 5 params v 1
         /// </summary>
@@ -207,7 +207,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref minValue, ref minValue, ref minValue, 1);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded int 6 params v 1
         /// </summary>
@@ -220,7 +220,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref minValue, ref minValue, ref minValue, 1, ImPlotShadedFlags.None);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded int 7 params v 1
         /// </summary>
@@ -233,7 +233,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref minValue, ref minValue, ref minValue, 1, ImPlotShadedFlags.None, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded int 8 params v 1
         /// </summary>
@@ -246,7 +246,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref minValue, ref minValue, ref minValue, 1, ImPlotShadedFlags.None, 0, 1);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u int 5 params v 1
         /// </summary>
@@ -259,7 +259,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref minValue, ref minValue, ref minValue, 1);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u int 6 params v 1
         /// </summary>
@@ -272,7 +272,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref minValue, ref minValue, ref minValue, 1, ImPlotShadedFlags.None);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u int 7 params v 1
         /// </summary>
@@ -285,7 +285,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref minValue, ref minValue, ref minValue, 1, ImPlotShadedFlags.None, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u int 8 params v 1
         /// </summary>
@@ -298,7 +298,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref minValue, ref minValue, ref minValue, 1, ImPlotShadedFlags.None, 0, 1);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded long 5 params v 1
         /// </summary>
@@ -311,7 +311,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref minValue, ref minValue, ref minValue, 1);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded long 6 params v 1
         /// </summary>
@@ -324,7 +324,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref minValue, ref minValue, ref minValue, 1, ImPlotShadedFlags.None);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded long 7 params v 1
         /// </summary>
@@ -337,7 +337,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref minValue, ref minValue, ref minValue, 1, ImPlotShadedFlags.None, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded long 8 params v 1
         /// </summary>
@@ -350,7 +350,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref minValue, ref minValue, ref minValue, 1, ImPlotShadedFlags.None, 0, 1);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u long 5 params v 1
         /// </summary>
@@ -363,7 +363,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref minValue, ref minValue, ref minValue, 1);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u long 6 params v 1
         /// </summary>
@@ -376,7 +376,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref minValue, ref minValue, ref minValue, 1, ImPlotShadedFlags.None);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u long 7 params v 1
         /// </summary>
@@ -389,7 +389,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref minValue, ref minValue, ref minValue, 1, ImPlotShadedFlags.None, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u long 8 params v 1
         /// </summary>
@@ -402,7 +402,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotShaded("label", ref minValue, ref minValue, ref minValue, 1, ImPlotShadedFlags.None, 0, 1);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded g 6 params v 1
         /// </summary>
@@ -411,7 +411,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShadedG("label", IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded g 7 params v 1
         /// </summary>
@@ -420,7 +420,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShadedG("label", IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, 1, ImPlotShadedFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot stairs float 3 params v 1
         /// </summary>
@@ -429,7 +429,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new float[1], 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot stairs float 4 params v 1
         /// </summary>
@@ -438,7 +438,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new float[1], 1, 1.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot stairs float 5 params v 1
         /// </summary>
@@ -447,7 +447,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new float[1], 1, 1.0, 1.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot stairs float 6 params v 1
         /// </summary>
@@ -456,7 +456,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new float[1], 1, 1.0, 1.0, ImPlotStairsFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot stairs float 7 params v 1
         /// </summary>
@@ -465,7 +465,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new float[1], 1, 1.0, 1.0, ImPlotStairsFlags.None, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot stairs float 8 params v 1
         /// </summary>
@@ -474,7 +474,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new float[1], 1, 1.0, 1.0, ImPlotStairsFlags.None, 0, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot stairs double 3 params v 1
         /// </summary>
@@ -483,7 +483,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new double[1], 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot stairs double 4 params v 1
         /// </summary>
@@ -492,7 +492,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new double[1], 1, 1.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot stairs double 5 params v 1
         /// </summary>
@@ -501,7 +501,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new double[1], 1, 1.0, 1.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot stairs double 6 params v 1
         /// </summary>
@@ -510,7 +510,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new double[1], 1, 1.0, 1.0, ImPlotStairsFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot stairs double 7 params v 1
         /// </summary>
@@ -519,7 +519,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new double[1], 1, 1.0, 1.0, ImPlotStairsFlags.None, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot stairs double 8 params v 1
         /// </summary>
@@ -528,7 +528,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new double[1], 1, 1.0, 1.0, ImPlotStairsFlags.None, 0, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot stairs s byte 3 params v 1
         /// </summary>
@@ -537,7 +537,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new sbyte[1], 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot stairs s byte 4 params v 1
         /// </summary>
@@ -546,7 +546,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new sbyte[1], 1, 1.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot stairs s byte 5 params v 1
         /// </summary>
@@ -555,7 +555,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new sbyte[1], 1, 1.0, 1.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot stairs s byte 6 params v 1
         /// </summary>
@@ -564,7 +564,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new sbyte[1], 1, 1.0, 1.0, ImPlotStairsFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot stairs s byte 7 params v 1
         /// </summary>
@@ -573,7 +573,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new sbyte[1], 1, 1.0, 1.0, ImPlotStairsFlags.None, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot stairs s byte 8 params v 1
         /// </summary>
@@ -582,7 +582,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new sbyte[1], 1, 1.0, 1.0, ImPlotStairsFlags.None, 0, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot stairs byte 3 params v 1
         /// </summary>
@@ -591,7 +591,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new byte[1], 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot stairs byte 4 params v 1
         /// </summary>
@@ -600,7 +600,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStairs("label", new byte[1], 1, 1.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot stairs byte 5 params v 1
         /// </summary>

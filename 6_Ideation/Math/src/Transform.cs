@@ -44,18 +44,18 @@ namespace Alis.Core.Aspect.Math
         ///     The
         /// </summary>
         public Vector2 Position;
-
-
+        
+        
         /// <summary>
         ///     The
         /// </summary>
         public float Rotation;
-
+        
         /// <summary>
         ///     The scale
         /// </summary>
         public Vector2 Scale;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Transform" /> class
         /// </summary>
@@ -68,7 +68,7 @@ namespace Alis.Core.Aspect.Math
             Rotation = rotation;
             Scale = scale;
         }
-
+        
         /// <summary>
         ///     Gets the object data using the specified info
         /// </summary>
@@ -80,14 +80,14 @@ namespace Alis.Core.Aspect.Math
             info.AddValue("scale", Scale);
             info.AddValue("rotation", Rotation);
         }
-
+        
         /// <summary>Set this to the identity transform.</summary>
         public void SetIdentity()
         {
             Position = Vector2.Zero;
             Rotation = 0.0f;
         }
-
+        
         /// <summary>Set this based on the position and angle.</summary>
         /// <param name="position">The position.</param>
         /// <param name="angle">The angle.</param>

@@ -49,29 +49,28 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
     /// </summary>
     internal class DelaunayTriangle
     {
-        
         /// <summary>
-        /// The edge is constrained
+        ///     The edge is constrained
         /// </summary>
         public FixedBitArray3 EdgeIsConstrained;
-
+        
         
         /// <summary>
-        /// The edge is delaunay
+        ///     The edge is delaunay
         /// </summary>
         public FixedBitArray3 EdgeIsDelaunay;
-
+        
         /// <summary>
         ///     The neighbors
         /// </summary>
         public Util.FixedArray3<DelaunayTriangle> Neighbors;
-
+        
         
         /// <summary>
-        /// The points
+        ///     The points
         /// </summary>
         public Util.FixedArray3<TriangulationPoint> Points;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="DelaunayTriangle" /> class
         /// </summary>
@@ -84,12 +83,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
             Points[1] = p2;
             Points[2] = p3;
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the is interior
         /// </summary>
         public bool IsInterior { get; set; }
-
+        
         /// <summary>
         ///     Indexes the of using the specified p
         /// </summary>
@@ -102,8 +101,8 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
             if (i == -1) throw new Exception("Calling index with a point that doesn't exist in triangle");
             return i;
         }
-
-
+        
+        
         /// <summary>
         ///     Indexes the cw using the specified p
         /// </summary>
@@ -122,8 +121,8 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
                     return 1;
             }
         }
-
-
+        
+        
         /// <summary>
         ///     Indexes the ccw using the specified p
         /// </summary>
@@ -142,21 +141,21 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
                     return 0;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether this instance contains
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
         public bool Contains(TriangulationPoint p) => p == Points[0] || p == Points[1] || p == Points[2];
-
+        
         /// <summary>
         ///     Describes whether this instance contains
         /// </summary>
         /// <param name="e">The </param>
         /// <returns>The bool</returns>
         public bool Contains(DtSweepConstraint e) => Contains(e.P) && Contains(e.Q);
-
+        
         /// <summary>
         ///     Describes whether this instance contains
         /// </summary>
@@ -164,7 +163,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
         /// <param name="q">The </param>
         /// <returns>The bool</returns>
         public bool Contains(TriangulationPoint p, TriangulationPoint q) => Contains(p) && Contains(q);
-
+        
         /// <summary>
         ///     Update neighbor pointers
         /// </summary>
@@ -191,7 +190,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
                 // throw new Exception("Neighbor error, please report!");
             }
         }
-
+        
         /// <summary>
         ///     Exhaustive search to update neighbor pointers
         /// </summary>
@@ -217,7 +216,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
                 Debug.WriteLine("markNeighbor failed");
             }
         }
-
+        
         /// <summary>
         ///     Clears the neighbors
         /// </summary>
@@ -225,7 +224,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
         {
             Neighbors[0] = Neighbors[1] = Neighbors[2] = null;
         }
-
+        
         /// <summary>
         ///     Clears the neighbor using the specified triangle
         /// </summary>
@@ -245,10 +244,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
                 Neighbors[2] = null;
             }
         }
-
+        
         
         /// <summary>
-        /// Clears this instance
+        ///     Clears this instance
         /// </summary>
         public void Clear()
         {
@@ -261,11 +260,11 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
                     t.ClearNeighbor(this);
                 }
             }
-
+            
             ClearNeighbors();
             Points[0] = Points[1] = Points[2] = null;
         }
-
+        
         /// <param name="t">Opposite triangle</param>
         /// <param name="p">The point in t that isn't shared between the triangles</param>
         public TriangulationPoint OppositePoint(DelaunayTriangle t, TriangulationPoint p)
@@ -273,42 +272,42 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
             Debug.Assert(t != this, "self-pointer error");
             return PointCW(t.PointCW(p));
         }
-
+        
         /// <summary>
         ///     Neighbors the cw using the specified point
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The delaunay triangle</returns>
         public DelaunayTriangle NeighborCW(TriangulationPoint point) => Neighbors[(Points.IndexOf(point) + 1) % 3];
-
+        
         /// <summary>
         ///     Neighbors the ccw using the specified point
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The delaunay triangle</returns>
         public DelaunayTriangle NeighborCCW(TriangulationPoint point) => Neighbors[(Points.IndexOf(point) + 2) % 3];
-
+        
         /// <summary>
         ///     Neighbors the across using the specified point
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The delaunay triangle</returns>
         public DelaunayTriangle NeighborAcross(TriangulationPoint point) => Neighbors[Points.IndexOf(point)];
-
+        
         /// <summary>
         ///     Points the ccw using the specified point
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The triangulation point</returns>
         public TriangulationPoint PointCCW(TriangulationPoint point) => Points[(IndexOf(point) + 1) % 3];
-
+        
         /// <summary>
         ///     Points the cw using the specified point
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The triangulation point</returns>
         public TriangulationPoint PointCW(TriangulationPoint point) => Points[(IndexOf(point) + 2) % 3];
-
+        
         /// <summary>
         ///     Rotates the cw
         /// </summary>
@@ -319,7 +318,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
             Points[1] = Points[0];
             Points[0] = t;
         }
-
+        
         /// <summary>
         ///     Legalize triangle by rotating clockwise around oPoint
         /// </summary>
@@ -330,13 +329,13 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
             RotateCW();
             Points[IndexCCW(oPoint)] = nPoint;
         }
-
+        
         /// <summary>
         ///     Returns the string
         /// </summary>
         /// <returns>The string</returns>
         public override string ToString() => Points[0] + "," + Points[1] + "," + Points[2];
-
+        
         /// <summary>
         ///     Finalize edge marking
         /// </summary>
@@ -348,7 +347,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
                     Neighbors[i].MarkConstrainedEdge(Points[(i + 1) % 3], Points[(i + 2) % 3]);
                 }
         }
-
+        
         /// <summary>
         ///     Marks the edge using the specified triangle
         /// </summary>
@@ -361,7 +360,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
                     triangle.MarkConstrainedEdge(Points[(i + 1) % 3], Points[(i + 2) % 3]);
                 }
         }
-
+        
         /// <summary>
         ///     Marks the edge using the specified t list
         /// </summary>
@@ -375,7 +374,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
                         MarkConstrainedEdge(t.Points[(i + 1) % 3], t.Points[(i + 2) % 3]);
                     }
         }
-
+        
         /// <summary>
         ///     Marks the constrained edge using the specified index
         /// </summary>
@@ -384,7 +383,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
         {
             EdgeIsConstrained[index] = true;
         }
-
+        
         /// <summary>
         ///     Marks the constrained edge using the specified edge
         /// </summary>
@@ -393,7 +392,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
         {
             MarkConstrainedEdge(edge.P, edge.Q);
         }
-
+        
         /// <summary>
         ///     Mark edge as constrained
         /// </summary>
@@ -402,7 +401,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
             int i = EdgeIndex(p, q);
             if (i != -1) EdgeIsConstrained[i] = true;
         }
-
+        
         /// <summary>
         ///     Areas this instance
         /// </summary>
@@ -411,10 +410,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
         {
             double b = Points[0].X - Points[1].X;
             double h = Points[2].Y - Points[1].Y;
-
+            
             return Math.Abs(b * h * 0.5f);
         }
-
+        
         /// <summary>
         ///     Centroids this instance
         /// </summary>
@@ -425,7 +424,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
             double cy = (Points[0].Y + Points[1].Y + Points[2].Y) / 3f;
             return new TriangulationPoint(cx, cy);
         }
-
+        
         /// <summary>
         ///     Get the index of the neighbor that shares this edge (or -1 if it isn't shared)
         /// </summary>
@@ -434,39 +433,39 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
         {
             int i1 = Points.IndexOf(p1);
             int i2 = Points.IndexOf(p2);
-
+            
             // Points of this triangle in the edge p1-p2
             bool a = i1 == 0 || i2 == 0;
             bool b = i1 == 1 || i2 == 1;
             bool c = i1 == 2 || i2 == 2;
-
+            
             if (b && c) return 0;
             if (a && c) return 1;
             if (a && b) return 2;
             return -1;
         }
-
+        
         /// <summary>
         ///     Describes whether this instance get constrained edge ccw
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
         public bool GetConstrainedEdgeCCW(TriangulationPoint p) => EdgeIsConstrained[(IndexOf(p) + 2) % 3];
-
+        
         /// <summary>
         ///     Describes whether this instance get constrained edge cw
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
         public bool GetConstrainedEdgeCW(TriangulationPoint p) => EdgeIsConstrained[(IndexOf(p) + 1) % 3];
-
+        
         /// <summary>
         ///     Describes whether this instance get constrained edge across
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
         public bool GetConstrainedEdgeAcross(TriangulationPoint p) => EdgeIsConstrained[IndexOf(p)];
-
+        
         /// <summary>
         ///     Sets the constrained edge ccw using the specified p
         /// </summary>
@@ -476,7 +475,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
         {
             EdgeIsConstrained[(IndexOf(p) + 2) % 3] = ce;
         }
-
+        
         /// <summary>
         ///     Sets the constrained edge cw using the specified p
         /// </summary>
@@ -486,7 +485,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
         {
             EdgeIsConstrained[(IndexOf(p) + 1) % 3] = ce;
         }
-
+        
         /// <summary>
         ///     Sets the constrained edge across using the specified p
         /// </summary>
@@ -496,28 +495,28 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
         {
             EdgeIsConstrained[IndexOf(p)] = ce;
         }
-
+        
         /// <summary>
         ///     Describes whether this instance get delaunay edge ccw
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
         public bool GetDelaunayEdgeCCW(TriangulationPoint p) => EdgeIsDelaunay[(IndexOf(p) + 2) % 3];
-
+        
         /// <summary>
         ///     Describes whether this instance get delaunay edge cw
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
         public bool GetDelaunayEdgeCW(TriangulationPoint p) => EdgeIsDelaunay[(IndexOf(p) + 1) % 3];
-
+        
         /// <summary>
         ///     Describes whether this instance get delaunay edge across
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
         public bool GetDelaunayEdgeAcross(TriangulationPoint p) => EdgeIsDelaunay[IndexOf(p)];
-
+        
         /// <summary>
         ///     Sets the delaunay edge ccw using the specified p
         /// </summary>
@@ -527,7 +526,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
         {
             EdgeIsDelaunay[(IndexOf(p) + 2) % 3] = ce;
         }
-
+        
         /// <summary>
         ///     Sets the delaunay edge cw using the specified p
         /// </summary>
@@ -537,7 +536,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
         {
             EdgeIsDelaunay[(IndexOf(p) + 1) % 3] = ce;
         }
-
+        
         /// <summary>
         ///     Sets the delaunay edge across using the specified p
         /// </summary>

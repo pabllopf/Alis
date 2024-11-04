@@ -45,14 +45,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImFont font = new ImFont {IndexAdvanceX = new ImVector()};
-
+            
             // Act
             ImVector result = font.IndexAdvanceX;
-
+            
             // Assert
             Assert.Equal(new ImVector(), result);
         }
-
+        
         /// <summary>
         ///     Tests that fallback advance x should be initialized correctly
         /// </summary>
@@ -61,14 +61,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImFont font = new ImFont {FallbackAdvanceX = 1.0f};
-
+            
             // Act
             float result = font.FallbackAdvanceX;
-
+            
             // Assert
             Assert.Equal(1.0f, result);
         }
-
+        
         /// <summary>
         ///     Tests that font size should be initialized correctly
         /// </summary>
@@ -77,14 +77,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImFont font = new ImFont {FontSize = 12.0f};
-
+            
             // Act
             float result = font.FontSize;
-
+            
             // Assert
             Assert.Equal(12.0f, result);
         }
-
+        
         /// <summary>
         ///     Tests that index lookup should be initialized correctly
         /// </summary>
@@ -93,14 +93,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImFont font = new ImFont {IndexLookup = new ImVector()};
-
+            
             // Act
             ImVector result = font.IndexLookup;
-
+            
             // Assert
             Assert.Equal(new ImVector(), result);
         }
-
+        
         /// <summary>
         ///     Tests that glyphs should be initialized correctly
         /// </summary>
@@ -109,14 +109,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImFont font = new ImFont {Glyphs = new ImVector()};
-
+            
             // Act
             ImVector result = font.Glyphs;
-
+            
             // Assert
             Assert.Equal(new ImVector(), result);
         }
-
+        
         /// <summary>
         ///     Tests that fallback glyph should be initialized correctly
         /// </summary>
@@ -125,14 +125,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImFont font = new ImFont {FallbackGlyph = IntPtr.Zero};
-
+            
             // Act
             IntPtr result = font.FallbackGlyph;
-
+            
             // Assert
             Assert.Equal(IntPtr.Zero, result);
         }
-
+        
         /// <summary>
         ///     Tests that container atlas should be initialized correctly
         /// </summary>
@@ -141,14 +141,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImFont font = new ImFont {ContainerAtlas = IntPtr.Zero};
-
+            
             // Act
             IntPtr result = font.ContainerAtlas;
-
+            
             // Assert
             Assert.Equal(IntPtr.Zero, result);
         }
-
+        
         /// <summary>
         ///     Tests that config data should be initialized correctly
         /// </summary>
@@ -157,14 +157,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImFont font = new ImFont {ConfigData = IntPtr.Zero};
-
+            
             // Act
             IntPtr result = font.ConfigData;
-
+            
             // Assert
             Assert.Equal(IntPtr.Zero, result);
         }
-
+        
         /// <summary>
         ///     Tests that config data count should be initialized correctly
         /// </summary>
@@ -173,14 +173,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImFont font = new ImFont {ConfigDataCount = 10};
-
+            
             // Act
             short result = font.ConfigDataCount;
-
+            
             // Assert
             Assert.Equal(10, result);
         }
-
+        
         /// <summary>
         ///     Tests that fallback char should be initialized correctly
         /// </summary>
@@ -189,14 +189,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImFont font = new ImFont {FallbackChar = 65};
-
+            
             // Act
             ushort result = font.FallbackChar;
-
+            
             // Assert
             Assert.Equal(65, result);
         }
-
+        
         /// <summary>
         ///     Tests that ellipsis char should be initialized correctly
         /// </summary>
@@ -205,14 +205,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImFont font = new ImFont {EllipsisChar = 46};
-
+            
             // Act
             ushort result = font.EllipsisChar;
-
+            
             // Assert
             Assert.Equal(46, result);
         }
-
+        
         /// <summary>
         ///     Tests that dot char should be initialized correctly
         /// </summary>
@@ -221,14 +221,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImFont font = new ImFont {DotChar = 46};
-
+            
             // Act
             ushort result = font.DotChar;
-
+            
             // Assert
             Assert.Equal(46, result);
         }
-
+        
         /// <summary>
         ///     Tests that dirty lookup tables should be initialized correctly
         /// </summary>
@@ -237,14 +237,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImFont font = new ImFont {DirtyLookupTables = 1};
-
+            
             // Act
             byte result = font.DirtyLookupTables;
-
+            
             // Assert
             Assert.Equal(1, result);
         }
-
+        
         /// <summary>
         ///     Tests that scale should be initialized correctly
         /// </summary>
@@ -253,14 +253,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImFont font = new ImFont {Scale = 1.0f};
-
+            
             // Act
             float result = font.Scale;
-
+            
             // Assert
             Assert.Equal(1.0f, result);
         }
-
+        
         /// <summary>
         ///     Tests that ascent should be initialized correctly
         /// </summary>
@@ -269,14 +269,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImFont font = new ImFont {Ascent = 1.0f};
-
+            
             // Act
             float result = font.Ascent;
-
+            
             // Assert
             Assert.Equal(1.0f, result);
         }
-
+        
         /// <summary>
         ///     Tests that descent should be initialized correctly
         /// </summary>
@@ -285,14 +285,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImFont font = new ImFont {Descent = 1.0f};
-
+            
             // Act
             float result = font.Descent;
-
+            
             // Assert
             Assert.Equal(1.0f, result);
         }
-
+        
         /// <summary>
         ///     Tests that metrics total surface should be initialized correctly
         /// </summary>
@@ -301,14 +301,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImFont font = new ImFont {MetricsTotalSurface = 100};
-
+            
             // Act
             int result = font.MetricsTotalSurface;
-
+            
             // Assert
             Assert.Equal(100, result);
         }
-
+        
         /// <summary>
         ///     Tests that used 4 k pages map should be initialized correctly
         /// </summary>
@@ -317,10 +317,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImFont font = new ImFont {Used4KPagesMap = new byte[] {1, 2}};
-
+            
             // Act
             byte[] result = font.Used4KPagesMap;
-
+            
             // Assert
             Assert.Equal(new byte[] {1, 2}, result);
         }

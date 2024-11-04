@@ -42,7 +42,7 @@ namespace Alis.Core.Physic.Common
         ///     The ez
         /// </summary>
         public Vector3 Ex, Ey, Ez;
-
+        
         /// <summary>
         ///     Construct this matrix using columns.
         /// </summary>
@@ -55,7 +55,7 @@ namespace Alis.Core.Physic.Common
             Ey = c2;
             Ez = c3;
         }
-
+        
         /// <summary>
         ///     Set this matrix to all zeros.
         /// </summary>
@@ -65,7 +65,7 @@ namespace Alis.Core.Physic.Common
             Ey = Vector3.Zero;
             Ez = Vector3.Zero;
         }
-
+        
         /// <summary>
         ///     Solve A * x = b, where b is a column vector. This is more efficient
         ///     than computing the inverse in one-shot cases.
@@ -75,14 +75,14 @@ namespace Alis.Core.Physic.Common
         public Vector3 Solve33(Vector3 b)
         {
             float det = Vector3.Dot(Ex, Vector3.Cross(Ey, Ez));
-             if (Math.Abs(det) > float.Epsilon)
+            if (Math.Abs(det) > float.Epsilon)
             {
                 det = 1.0f / det;
             }
-
+            
             return new Vector3(det * Vector3.Dot(b, Vector3.Cross(Ey, Ez)), det * Vector3.Dot(Ex, Vector3.Cross(b, Ez)), det * Vector3.Dot(Ex, Vector3.Cross(Ey, b)));
         }
-
+        
         /// <summary>
         ///     Solve A * x = b, where b is a column vector. This is more efficient
         ///     than computing the inverse in one-shot cases. Solve only the upper
@@ -94,26 +94,26 @@ namespace Alis.Core.Physic.Common
         {
             float a11 = Ex.X, a12 = Ey.X, a21 = Ex.Y, a22 = Ey.Y;
             float det = a11 * a22 - a12 * a21;
-
-             if (Math.Abs(det) > float.Epsilon)
+            
+            if (Math.Abs(det) > float.Epsilon)
             {
                 det = 1.0f / det;
             }
-
+            
             return new Vector2(det * (a22 * b.X - a12 * b.Y), det * (a11 * b.Y - a21 * b.X));
         }
-
+        
         /// Get the inverse of this matrix as a 2-by-2.
         /// Returns the zero matrix if singular.
         public void GetInverse22(ref Mat33 m)
         {
             float a = Ex.X, b = Ey.X, c = Ex.Y, d = Ey.Y;
             float det = a * d - b * c;
-             if (Math.Abs(det) > float.Epsilon)
+            if (Math.Abs(det) > float.Epsilon)
             {
                 det = 1.0f / det;
             }
-
+            
             m.Ex.X = det * d;
             m.Ey.X = -det * b;
             m.Ex.Z = 0.0f;
@@ -124,7 +124,7 @@ namespace Alis.Core.Physic.Common
             m.Ez.Y = 0.0f;
             m.Ez.Z = 0.0f;
         }
-
+        
         /// Get the symmetric inverse of this matrix as a 3-by-3.
         /// Returns the zero matrix if singular.
         public void GetSymInverse33(ref Mat33 m)
@@ -134,19 +134,19 @@ namespace Alis.Core.Physic.Common
             {
                 det = 1.0f / det;
             }
-
+            
             float a11 = Ex.X, a12 = Ey.X, a13 = Ez.X;
             float a22 = Ey.Y, a23 = Ez.Y;
             float a33 = Ez.Z;
-
+            
             m.Ex.X = det * (a22 * a33 - a23 * a23);
             m.Ex.Y = det * (a13 * a23 - a12 * a33);
             m.Ex.Z = det * (a12 * a23 - a13 * a22);
-
+            
             m.Ey.X = m.Ex.Y;
             m.Ey.Y = det * (a11 * a33 - a13 * a13);
             m.Ey.Z = det * (a13 * a12 - a11 * a23);
-
+            
             m.Ez.X = m.Ex.Z;
             m.Ez.Y = m.Ey.Z;
             m.Ez.Z = det * (a11 * a22 - a12 * a12);

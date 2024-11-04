@@ -43,37 +43,37 @@ namespace Alis.Core.Physic.Controllers
         ///     The body
         /// </summary>
         private readonly List<Body> _bodies = new List<Body>();
-
+        
         /// <summary>
         ///     The max angular sqared
         /// </summary>
         private float _maxAngularSqared;
-
+        
         /// <summary>
         ///     The max angular velocity
         /// </summary>
         private float _maxAngularVelocity;
-
+        
         /// <summary>
         ///     The max linear sqared
         /// </summary>
         private float _maxLinearSqared;
-
+        
         /// <summary>
         ///     The max linear velocity
         /// </summary>
         private float _maxLinearVelocity;
-
+        
         /// <summary>
         ///     The limit angular velocity
         /// </summary>
         public bool LimitAngularVelocity = true;
-
+        
         /// <summary>
         ///     The limit linear velocity
         /// </summary>
         public bool LimitLinearVelocity = true;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="VelocityLimitController" /> class.
         ///     Sets the max linear velocity to Settings.MaxTranslation
@@ -84,7 +84,7 @@ namespace Alis.Core.Physic.Controllers
             MaxLinearVelocity = SettingEnv.MaxTranslation;
             MaxAngularVelocity = SettingEnv.MaxRotation;
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="VelocityLimitController" /> class.
         ///     Pass in 0 or float.MaxValue to disable the limit.
@@ -96,14 +96,14 @@ namespace Alis.Core.Physic.Controllers
         {
             if (Math.Abs(maxLinearVelocity) < float.Epsilon || Math.Abs(maxLinearVelocity - float.MaxValue) < float.Epsilon)
                 LimitLinearVelocity = false;
-
-            if (Math.Abs(maxAngularVelocity) < float.Epsilon|| Math.Abs(maxAngularVelocity - float.MaxValue) < float.Epsilon)
+            
+            if (Math.Abs(maxAngularVelocity) < float.Epsilon || Math.Abs(maxAngularVelocity - float.MaxValue) < float.Epsilon)
                 LimitAngularVelocity = false;
-
+            
             MaxLinearVelocity = maxLinearVelocity;
             MaxAngularVelocity = maxAngularVelocity;
         }
-
+        
         /// <summary>
         ///     Gets or sets the max angular velocity.
         /// </summary>
@@ -117,7 +117,7 @@ namespace Alis.Core.Physic.Controllers
                 _maxAngularSqared = _maxAngularVelocity * _maxAngularVelocity;
             }
         }
-
+        
         /// <summary>
         ///     Gets or sets the max linear velocity.
         /// </summary>
@@ -131,7 +131,7 @@ namespace Alis.Core.Physic.Controllers
                 _maxLinearSqared = _maxLinearVelocity * _maxLinearVelocity;
             }
         }
-
+        
         /// <summary>
         ///     Updates the dt
         /// </summary>
@@ -142,7 +142,7 @@ namespace Alis.Core.Physic.Controllers
             {
                 if (!IsActiveOn(body))
                     continue;
-
+                
                 if (LimitLinearVelocity)
                 {
                     //Translation
@@ -150,17 +150,17 @@ namespace Alis.Core.Physic.Controllers
                     float translationX = dt * body._linearVelocity.X;
                     float translationY = dt * body._linearVelocity.Y;
                     float result = translationX * translationX + translationY * translationY;
-
+                    
                     if (result > dt * _maxLinearSqared)
                     {
                         float sq = (float) Math.Sqrt(result);
-
+                        
                         float ratio = _maxLinearVelocity / sq;
                         body._linearVelocity.X *= ratio;
                         body._linearVelocity.Y *= ratio;
                     }
                 }
-
+                
                 if (LimitAngularVelocity)
                 {
                     //Rotation
@@ -173,7 +173,7 @@ namespace Alis.Core.Physic.Controllers
                 }
             }
         }
-
+        
         /// <summary>
         ///     Adds the body using the specified body
         /// </summary>
@@ -182,7 +182,7 @@ namespace Alis.Core.Physic.Controllers
         {
             _bodies.Add(body);
         }
-
+        
         /// <summary>
         ///     Removes the body using the specified body
         /// </summary>

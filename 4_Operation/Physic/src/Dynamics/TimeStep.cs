@@ -57,27 +57,27 @@ namespace Alis.Core.Physic.Dynamics
         ///     Time step (Delta time)
         /// </summary>
         public float dt;
-
+        
         /// <summary>
         ///     dt * inv_dt0
         /// </summary>
         public float dtRatio;
-
+        
         /// <summary>
         ///     Inverse time step (0 if dt == 0).
         /// </summary>
         public float inv_dt;
-
+        
         /// <summary>
         ///     The position iterations
         /// </summary>
         public int positionIterations;
-
+        
         /// <summary>
         ///     The velocity iterations
         /// </summary>
         public int velocityIterations;
-
+        
         /// <summary>
         ///     The warm starting
         /// </summary>

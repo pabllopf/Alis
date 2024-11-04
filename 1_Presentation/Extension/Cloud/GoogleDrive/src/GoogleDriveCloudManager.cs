@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager;
 using Alis.Core.Ecs.System.Scope;
 
@@ -41,15 +40,15 @@ namespace Alis.Extension.Cloud.GoogleDrive
     public class GoogleDriveCloudManager : AManager, ICloudManager
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GoogleDriveCloudManager"/> class
+        ///     Initializes a new instance of the <see cref="GoogleDriveCloudManager" /> class
         /// </summary>
         /// <param name="context">The context</param>
         public GoogleDriveCloudManager(Context context) : base(context)
         {
         }
-
+        
         /// <summary>
-        /// Initializes a new instance of the <see cref="GoogleDriveCloudManager"/> class
+        ///     Initializes a new instance of the <see cref="GoogleDriveCloudManager" /> class
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="name">The name</param>

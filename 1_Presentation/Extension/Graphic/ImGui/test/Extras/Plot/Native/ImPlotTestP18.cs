@@ -49,7 +49,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             uint xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 10, 10, 10, new ImPlotRect()));
         }
-
+        
         /// <summary>
         ///     Tests that plot histogram 2 d u int 32 with flags throws dll not found exception
         /// </summary>
@@ -59,7 +59,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             uint xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 10, 10, 10, new ImPlotRect(), ImPlotHistogramFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot histogram 2 d int 64 throws dll not found exception
         /// </summary>
@@ -69,7 +69,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             long xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 10));
         }
-
+        
         /// <summary>
         ///     Tests that plot histogram 2 d int 64 with x bins throws dll not found exception
         /// </summary>
@@ -79,7 +79,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             long xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 10, 10));
         }
-
+        
         /// <summary>
         ///     Tests that plot histogram 2 d int 64 with x bins y bins throws dll not found exception
         /// </summary>
@@ -89,7 +89,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             long xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 10, 10, 10));
         }
-
+        
         /// <summary>
         ///     Tests that plot histogram 2 d int 64 with range throws dll not found exception
         /// </summary>
@@ -99,7 +99,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             long xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 10, 10, 10, new ImPlotRect()));
         }
-
+        
         /// <summary>
         ///     Tests that plot histogram 2 d int 64 with flags throws dll not found exception
         /// </summary>
@@ -109,7 +109,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             long xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 10, 10, 10, new ImPlotRect(), ImPlotHistogramFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot histogram 2 d u int 64 throws dll not found exception
         /// </summary>
@@ -119,7 +119,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ulong xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 10));
         }
-
+        
         /// <summary>
         ///     Tests that plot histogram 2 d u int 64 with x bins throws dll not found exception
         /// </summary>
@@ -129,7 +129,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ulong xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 10, 10));
         }
-
+        
         /// <summary>
         ///     Tests that plot histogram 2 d u int 64 with x bins y bins throws dll not found exception
         /// </summary>
@@ -139,7 +139,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ulong xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 10, 10, 10));
         }
-
+        
         /// <summary>
         ///     Tests that plot histogram 2 d u int 64 with range throws dll not found exception
         /// </summary>
@@ -149,7 +149,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ulong xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 10, 10, 10, new ImPlotRect()));
         }
-
+        
         /// <summary>
         ///     Tests that plot histogram 2 d u int 64 with flags throws dll not found exception
         /// </summary>
@@ -159,7 +159,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ulong xs = 0, ys = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 10, 10, 10, new ImPlotRect(), ImPlotHistogramFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot image throws dll not found exception
         /// </summary>
@@ -168,7 +168,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotImage("label", IntPtr.Zero, new ImPlotPoint(), new ImPlotPoint()));
         }
-
+        
         /// <summary>
         ///     Tests that plot image with uv 0 throws dll not found exception
         /// </summary>
@@ -177,7 +177,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotImage("label", IntPtr.Zero, new ImPlotPoint(), new ImPlotPoint(), new Vector2()));
         }
-
+        
         /// <summary>
         ///     Tests that plot image with uv 0 uv 1 throws dll not found exception
         /// </summary>
@@ -186,7 +186,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotImage("label", IntPtr.Zero, new ImPlotPoint(), new ImPlotPoint(), new Vector2(), new Vector2()));
         }
-
+        
         /// <summary>
         ///     Tests that plot image throws dll not found exception v 2
         /// </summary>
@@ -195,7 +195,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotImage("label", IntPtr.Zero, new ImPlotPoint(), new ImPlotPoint(), new Vector2(), new Vector2(), new Vector4()));
         }
-
+        
         /// <summary>
         ///     Tests that plot image with flags throws dll not found exception
         /// </summary>
@@ -204,7 +204,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotImage("label", IntPtr.Zero, new ImPlotPoint(), new ImPlotPoint(), new Vector2(), new Vector2(), new Vector4(), ImPlotImageFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot inf lines float throws dll not found exception
         /// </summary>
@@ -213,7 +213,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotInfLines("label", new float[0], 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot inf lines float with flags throws dll not found exception
         /// </summary>
@@ -222,7 +222,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotInfLines("label", new float[0], 0, ImPlotInfLinesFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot inf lines float with offset throws dll not found exception
         /// </summary>
@@ -231,7 +231,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotInfLines("label", new float[0], 0, ImPlotInfLinesFlags.None, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot inf lines float with stride throws dll not found exception
         /// </summary>
@@ -240,7 +240,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotInfLines("label", new float[0], 0, ImPlotInfLinesFlags.None, 0, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot inf lines double throws dll not found exception
         /// </summary>
@@ -249,7 +249,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotInfLines("label", new double[0], 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot inf lines double with flags throws dll not found exception
         /// </summary>
@@ -258,7 +258,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotInfLines("label", new double[0], 0, ImPlotInfLinesFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot inf lines double with offset throws dll not found exception
         /// </summary>
@@ -267,7 +267,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotInfLines("label", new double[0], 0, ImPlotInfLinesFlags.None, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot inf lines double with stride throws dll not found exception
         /// </summary>
@@ -276,7 +276,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotInfLines("label", new double[0], 0, ImPlotInfLinesFlags.None, 0, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot inf lines s byte throws dll not found exception
         /// </summary>
@@ -285,7 +285,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotInfLines("label", new sbyte[0], 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot inf lines s byte with flags throws dll not found exception
         /// </summary>
@@ -294,7 +294,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotInfLines("label", new sbyte[0], 0, ImPlotInfLinesFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot inf lines s byte with offset throws dll not found exception
         /// </summary>
@@ -303,7 +303,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotInfLines("label", new sbyte[0], 0, ImPlotInfLinesFlags.None, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot inf lines s byte with stride throws dll not found exception
         /// </summary>
@@ -312,7 +312,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotInfLines("label", new sbyte[0], 0, ImPlotInfLinesFlags.None, 0, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot inf lines byte throws dll not found exception
         /// </summary>
@@ -321,7 +321,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotInfLines("label", new byte[0], 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot inf lines byte with flags throws dll not found exception
         /// </summary>
@@ -330,7 +330,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotInfLines("label", new byte[0], 0, ImPlotInfLinesFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot inf lines byte with offset throws dll not found exception
         /// </summary>
@@ -339,7 +339,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotInfLines("label", new byte[0], 0, ImPlotInfLinesFlags.None, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot inf lines byte with stride throws dll not found exception
         /// </summary>

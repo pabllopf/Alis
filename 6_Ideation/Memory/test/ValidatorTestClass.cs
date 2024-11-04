@@ -41,13 +41,13 @@ namespace Alis.Core.Aspect.Memory.Test
         /// </summary>
         [IsNotEmpty]
         public string TestField { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the test property
         /// </summary>
         [IsNotEmpty]
         public string TestProperty { get; set; }
-
+        
         /// <summary>
         ///     Tests the method using the specified test param
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Core.Aspect.Memory.Test
         {
             Sum(1, 2);
         }
-
+        
         /// <summary>
         ///     Tests the method 2
         /// </summary>
@@ -64,7 +64,7 @@ namespace Alis.Core.Aspect.Memory.Test
         {
             Sum(1, 2);
         }
-
+        
         /// <summary>
         ///     Tests the method 3 using the specified test param
         /// </summary>
@@ -74,7 +74,7 @@ namespace Alis.Core.Aspect.Memory.Test
         {
             Sum(1, 2);
         }
-
+        
         /// <summary>
         ///     Sums the a
         /// </summary>

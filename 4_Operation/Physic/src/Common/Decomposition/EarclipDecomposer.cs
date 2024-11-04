@@ -46,7 +46,7 @@ namespace Alis.Core.Physic.Common.Decomposition
     internal static class EarclipDecomposer
     {
         //box2D rev 32 - for details, see http://www.box2d.org/forum/viewtopic.php?f=4&t=83&start=50 
-
+        
         /// <summary>
         ///     Decompose the polygon into several smaller non-concave polygon.
         ///     Each resulting polygon will have no more than Settings.MaxPolygonVertices vertices.
@@ -57,10 +57,10 @@ namespace Alis.Core.Physic.Common.Decomposition
         {
             Debug.Assert(vertices.Count > 3);
             Debug.Assert(!vertices.IsCounterClockWise());
-
+            
             return TriangulatePolygon(vertices, tolerance);
         }
-
+        
         /// <summary>
         ///     Triangulates a polygon using simple ear-clipping algorithm. Returns
         ///     size of Triangle array unless the polygon can't be triangulated.
@@ -82,29 +82,29 @@ namespace Alis.Core.Physic.Common.Decomposition
             //FPE note: Check is needed as invalid triangles can be returned in recursive calls.
             if (vertices.Count < 3)
                 return new List<Vertices>();
-
+            
             List<Vertices> results = new List<Vertices>();
-
+            
             //Recurse and split on pinch points
             Vertices pin = new Vertices(vertices);
             if (ResolvePinchPoint(pin, out Vertices pA, out Vertices pB, tolerance))
             {
                 List<Vertices> mergeA = TriangulatePolygon(pA, tolerance);
                 List<Vertices> mergeB = TriangulatePolygon(pB, tolerance);
-
+                
                 for (int i = 0; i < mergeA.Count; ++i)
                 {
                     results.Add(new Vertices(mergeA[i]));
                 }
-
+                
                 for (int i = 0; i < mergeB.Count; ++i)
                 {
                     results.Add(new Vertices(mergeB[i]));
                 }
-
+                
                 return results;
             }
-
+            
             Vertices[] buffer = new Vertices[vertices.Count - 2];
             int bufferSize = 0;
             float[] xrem = new float[vertices.Count];
@@ -114,9 +114,9 @@ namespace Alis.Core.Physic.Common.Decomposition
                 xrem[i] = vertices[i].X;
                 yrem[i] = vertices[i].Y;
             }
-
+            
             int vNum = vertices.Count;
-
+            
             while (vNum > 3)
             {
                 // Find an ear
@@ -131,19 +131,19 @@ namespace Alis.Core.Physic.Common.Decomposition
                         Vector2 d1 = new Vector2(xrem[upper] - xrem[i], yrem[upper] - yrem[i]);
                         Vector2 d2 = new Vector2(xrem[i] - xrem[lower], yrem[i] - yrem[lower]);
                         Vector2 d3 = new Vector2(xrem[lower] - xrem[upper], yrem[lower] - yrem[upper]);
-
+                        
                         d1.Normalize();
                         d2.Normalize();
                         d3.Normalize();
                         MathUtils.Cross(ref d1, ref d2, out float cross12);
                         cross12 = Math.Abs(cross12);
-
+                        
                         MathUtils.Cross(ref d2, ref d3, out float cross23);
                         cross23 = Math.Abs(cross23);
-
+                        
                         MathUtils.Cross(ref d3, ref d1, out float cross31);
                         cross31 = Math.Abs(cross31);
-
+                        
                         //Find the maximum minimum angle
                         float minCross = Math.Min(cross12, Math.Min(cross23, cross31));
                         if (minCross > earMaxMinCross)
@@ -153,7 +153,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                         }
                     }
                 }
-
+                
                 // If we still haven't found an ear, we're screwed.
                 // Note: sometimes this is happening because the
                 // remaining points are collinear.  Really these
@@ -164,13 +164,13 @@ namespace Alis.Core.Physic.Common.Decomposition
                     {
                         results.Add(buffer[i]);
                     }
-
+                    
                     return results;
                 }
-
+                
                 // Clip off the ear:
                 // - remove the ear tip from the list
-
+                
                 --vNum;
                 float[] newx = new float[vNum];
                 float[] newy = new float[vNum];
@@ -182,7 +182,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                     newy[i] = yrem[currDest];
                     ++currDest;
                 }
-
+                
                 // - add the clipped triangle to the triangle list
                 int under = earIndex == 0 ? vNum : earIndex - 1;
                 int over = earIndex == vNum ? 0 : earIndex + 1;
@@ -190,24 +190,24 @@ namespace Alis.Core.Physic.Common.Decomposition
                     yrem[under]);
                 buffer[bufferSize] = toAdd;
                 ++bufferSize;
-
+                
                 // - replace the old list with the new one
                 xrem = newx;
                 yrem = newy;
             }
-
+            
             Triangle tooAdd = new Triangle(xrem[1], yrem[1], xrem[2], yrem[2], xrem[0], yrem[0]);
             buffer[bufferSize] = tooAdd;
             ++bufferSize;
-
+            
             for (int i = 0; i < bufferSize; i++)
             {
                 results.Add(new Vertices(buffer[i]));
             }
-
+            
             return results;
         }
-
+        
         /// <summary>
         ///     Finds and fixes "pinch points," points where two polygon
         ///     vertices are at the same point.
@@ -224,10 +224,10 @@ namespace Alis.Core.Physic.Common.Decomposition
         {
             poutA = new Vertices();
             poutB = new Vertices();
-
+            
             if (pin.Count < 3)
                 return false;
-
+            
             bool hasPinchPoint = false;
             int pinchIndexA = -1;
             int pinchIndexB = -1;
@@ -245,10 +245,10 @@ namespace Alis.Core.Physic.Common.Decomposition
                         break;
                     }
                 }
-
+                
                 if (hasPinchPoint) break;
             }
-
+            
             if (hasPinchPoint)
             {
                 int sizeA = pinchIndexB - pinchIndexA;
@@ -258,7 +258,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                     int ind = Remainder(pinchIndexA + i, pin.Count); // is this right
                     poutA.Add(pin[ind]);
                 }
-
+                
                 int sizeB = pin.Count - sizeA;
                 for (int i = 0; i < sizeB; ++i)
                 {
@@ -266,10 +266,10 @@ namespace Alis.Core.Physic.Common.Decomposition
                     poutB.Add(pin[ind]);
                 }
             }
-
+            
             return hasPinchPoint;
         }
-
+        
         /// <summary>
         ///     Fix for obnoxious behavior for the % operator for negative numbers...
         /// </summary>
@@ -283,10 +283,10 @@ namespace Alis.Core.Physic.Common.Decomposition
             {
                 rem += modulus;
             }
-
+            
             return rem;
         }
-
+        
         /// <summary>
         ///     Checks if vertex i is the tip of an ear in polygon defined by xv[] and  yv[].
         /// </summary>
@@ -307,7 +307,7 @@ namespace Alis.Core.Physic.Common.Decomposition
             {
                 return false;
             }
-
+            
             int upper = i + 1;
             int lower = i - 1;
             if (i == 0)
@@ -333,14 +333,14 @@ namespace Alis.Core.Physic.Common.Decomposition
                 dx1 = xv[i + 1] - xv[i];
                 dy1 = yv[i + 1] - yv[i];
             }
-
+            
             float cross = dx0 * dy1 - dx1 * dy0;
-
+            
             if (cross > 0)
                 return false;
-
+            
             Triangle myTri = new Triangle(xv[i], yv[i], xv[upper], yv[upper], xv[lower], yv[lower]);
-
+            
             for (int j = 0; j < xvLength; ++j)
             {
                 if (j == i || j == lower || j == upper)
@@ -348,10 +348,10 @@ namespace Alis.Core.Physic.Common.Decomposition
                 if (myTri.IsInside(xv[j], yv[j]))
                     return false;
             }
-
+            
             return true;
         }
-
+        
         /// <summary>
         ///     The triangle class
         /// </summary>
@@ -384,7 +384,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                     Add(new Vector2(x2, y2));
                 }
             }
-
+            
             /// <summary>
             ///     Describes whether this instance is inside
             /// </summary>
@@ -396,19 +396,19 @@ namespace Alis.Core.Physic.Common.Decomposition
                 Vector2 a = this[0];
                 Vector2 b = this[1];
                 Vector2 c = this[2];
-
+                
                 if ((x < a.X) && (x < b.X) && (x < c.X)) return false;
                 if ((x > a.X) && (x > b.X) && (x > c.X)) return false;
                 if ((y < a.Y) && (y < b.Y) && (y < c.Y)) return false;
                 if ((y > a.Y) && (y > b.Y) && (y > c.Y)) return false;
-
+                
                 float vx2 = x - a.X;
                 float vy2 = y - a.Y;
                 float vx1 = b.X - a.X;
                 float vy1 = b.Y - a.Y;
                 float vx0 = c.X - a.X;
                 float vy0 = c.Y - a.Y;
-
+                
                 float dot00 = vx0 * vx0 + vy0 * vy0;
                 float dot01 = vx0 * vx1 + vy0 * vy1;
                 float dot02 = vx0 * vx2 + vy0 * vy2;
@@ -417,7 +417,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                 float invDenom = 1.0f / (dot00 * dot11 - dot01 * dot01);
                 float u = (dot11 * dot02 - dot01 * dot12) * invDenom;
                 float v = (dot00 * dot12 - dot01 * dot02) * invDenom;
-
+                
                 return (u > 0) && (v > 0) && (u + v < 1);
             }
         }

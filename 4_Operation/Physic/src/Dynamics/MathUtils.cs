@@ -42,7 +42,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Gets or sets the value of the epsilon
         /// </summary>
         public static float Epsilon { get; set; } = 1e-6f;
-
+        
         /// <summary>
         ///     Crosses the a
         /// </summary>
@@ -50,7 +50,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="b">The </param>
         /// <returns>The float</returns>
         public static float Cross(ref Vector2 a, ref Vector2 b) => a.X * b.Y - a.Y * b.X;
-
+        
         /// <summary>
         ///     Crosses the a
         /// </summary>
@@ -58,12 +58,12 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="b">The </param>
         /// <returns>The float</returns>
         public static float Cross(Vector2 a, Vector2 b) => Cross(ref a, ref b);
-
+        
         /// Perform the cross product on two vectors.
         public static Vector3 Cross(ref Vector3 a, ref Vector3 b) => new Vector3(a.Y * b.Z - a.Z * b.Y,
             a.Z * b.X - a.X * b.Z,
             a.X * b.Y - a.Y * b.X);
-
+        
         /// <summary>
         ///     Crosses the a
         /// </summary>
@@ -71,14 +71,14 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="s">The </param>
         /// <returns>The vector</returns>
         public static Vector2 Cross(Vector2 a, float s) => new Vector2(s * a.Y, -s * a.X);
-
+        
         /// <summary>
         ///     Rots the 270 using the specified a
         /// </summary>
         /// <param name="a">The </param>
         /// <returns>The vector</returns>
         public static Vector2 Rot270(ref Vector2 a) => new Vector2(a.Y, -a.X);
-
+        
         /// <summary>
         ///     Crosses the s
         /// </summary>
@@ -86,21 +86,21 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="a">The </param>
         /// <returns>The vector</returns>
         public static Vector2 Cross(float s, ref Vector2 a) => new Vector2(-s * a.Y, s * a.X);
-
+        
         /// <summary>
         ///     Rots the 90 using the specified a
         /// </summary>
         /// <param name="a">The </param>
         /// <returns>The vector</returns>
         public static Vector2 Rot90(ref Vector2 a) => new Vector2(-a.Y, a.X);
-
+        
         /// <summary>
         ///     Abses the v
         /// </summary>
         /// <param name="v">The </param>
         /// <returns>The vector</returns>
         public static Vector2 Abs(Vector2 v) => new Vector2(Math.Abs(v.X), Math.Abs(v.Y));
-
+        
         /// <summary>
         ///     Muls the a
         /// </summary>
@@ -108,7 +108,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="v">The </param>
         /// <returns>The vector</returns>
         public static Vector2 Mul(ref Mat22 A, Vector2 v) => Mul(ref A, ref v);
-
+        
         /// <summary>
         ///     Muls the a
         /// </summary>
@@ -116,7 +116,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="v">The </param>
         /// <returns>The vector</returns>
         public static Vector2 Mul(ref Mat22 A, ref Vector2 v) => new Vector2(A.Ex.X * v.X + A.Ey.X * v.Y, A.Ex.Y * v.X + A.Ey.Y * v.Y);
-
+        
         /// <summary>
         ///     Muls the t using the specified a
         /// </summary>
@@ -124,7 +124,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="v">The </param>
         /// <returns>The vector</returns>
         public static Vector2 MulT(ref Mat22 A, Vector2 v) => MulT(ref A, ref v);
-
+        
         /// <summary>
         ///     Muls the t using the specified a
         /// </summary>
@@ -132,11 +132,11 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="v">The </param>
         /// <returns>The vector</returns>
         public static Vector2 MulT(ref Mat22 A, ref Vector2 v) => new Vector2(v.X * A.Ex.X + v.Y * A.Ex.Y, v.X * A.Ey.X + v.Y * A.Ey.Y);
-
-
+        
+        
         /// Multiply a matrix times a vector.
         public static Vector3 Mul(Mat33 A, Vector3 v) => v.X * A.Ex + v.Y * A.Ey + v.Z * A.Ez;
-
+        
         /// <summary>
         ///     Swaps the a
         /// </summary>
@@ -149,13 +149,13 @@ namespace Alis.Core.Physic.Dynamics
             a = b;
             b = tmp;
         }
-
+        
         /// Multiply a matrix times a vector.
         public static Vector2 Mul22(Mat33 A, Vector2 v) => new Vector2(A.Ex.X * v.X + A.Ey.X * v.Y, A.Ex.Y * v.X + A.Ey.Y * v.Y);
-
+        
         /// Get the skew vector such that dot(skew_vec, other) == cross(vec, other)
         public static Vector2 Skew(Vector2 input) => new Vector2(-input.Y, input.X);
-
+        
         /// <summary>
         ///     This function is used to ensure that a floating point number is
         ///     not a NaN or infinity.
@@ -171,17 +171,17 @@ namespace Alis.Core.Physic.Dynamics
                 // NaN.
                 return false;
             }
-
+            
             return !float.IsInfinity(x);
         }
-
+        
         /// <summary>
         ///     Describes whether is valid
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The bool</returns>
         public static bool IsValid(this Vector2 x) => IsValid(x.X) && IsValid(x.Y);
-
+        
         /// <summary>
         ///     Clamps the a
         /// </summary>
@@ -190,7 +190,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="high">The high</param>
         /// <returns>The int</returns>
         public static int Clamp(int a, int low, int high) => Math.Max(low, Math.Min(a, high));
-
+        
         /// <summary>
         ///     Clamps the a
         /// </summary>
@@ -199,7 +199,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="high">The high</param>
         /// <returns>The float</returns>
         public static float Clamp(float a, float low, float high) => Math.Max(low, Math.Min(a, high));
-
+        
         /// <summary>
         ///     Clamps the a
         /// </summary>
@@ -213,7 +213,7 @@ namespace Alis.Core.Physic.Dynamics
             a.Y = Math.Max(low.Y, Math.Min(a.Y, high.Y));
             return a;
         }
-
+        
         /// <summary>
         ///     Crosses the a
         /// </summary>
@@ -224,7 +224,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             c = a.X * b.Y - a.Y * b.X;
         }
-
+        
         /// <summary>
         ///     Return the angle between two vectors on a plane
         ///     The angle is from vector 1 to vector 2, positive anticlockwise
@@ -239,16 +239,16 @@ namespace Alis.Core.Physic.Dynamics
                 dtheta -= 2 * Math.PI;
             while (dtheta < -Math.PI)
                 dtheta += 2 * Math.PI;
-
+            
             return dtheta;
         }
-
+        
         /// Perform the dot product on two vectors.
         public static float Dot(Vector3 a, Vector3 b) => a.X * b.X + a.Y * b.Y + a.Z * b.Z;
-
+        
         /// Perform the dot product on two vectors.
         public static float Dot(Vector2 a, ref Vector2 b) => a.X * b.X + a.Y * b.Y;
-
+        
         /// <summary>
         ///     Vectors the angle using the specified p 1
         /// </summary>
@@ -256,7 +256,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="p2">The </param>
         /// <returns>The double</returns>
         public static double VectorAngle(Vector2 p1, Vector2 p2) => VectorAngle(ref p1, ref p2);
-
+        
         /// <summary>
         ///     Returns a positive number if c is to the left of the line going from a to b.
         /// </summary>
@@ -265,7 +265,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     and 0 if points are collinear.
         /// </returns>
         public static float Area(Vector2 a, Vector2 b, Vector2 c) => Area(ref a, ref b, ref c);
-
+        
         /// <summary>
         ///     Returns a positive number if c is to the left of the line going from a to b.
         /// </summary>
@@ -274,7 +274,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     and 0 if points are collinear.
         /// </returns>
         public static float Area(ref Vector2 a, ref Vector2 b, ref Vector2 c) => a.X * (b.Y - c.Y) + b.X * (c.Y - a.Y) + c.X * (a.Y - b.Y);
-
+        
         /// <summary>
         ///     Determines if three vertices are collinear (ie. on a straight line)
         /// </summary>
@@ -284,8 +284,8 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="tolerance">The tolerance</param>
         /// <returns></returns>
         public static bool IsCollinear(ref Vector2 a, ref Vector2 b, ref Vector2 c, float tolerance = 0) => FloatInRange(Area(ref a, ref b, ref c), -tolerance, tolerance);
-
-
+        
+        
         /// <summary>
         ///     Describes whether float equals
         /// </summary>
@@ -293,7 +293,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="value2">The value</param>
         /// <returns>The bool</returns>
         public static bool FloatEquals(float value1, float value2) => Math.Abs(value1 - value2) <= float.Epsilon;
-
+        
         /// <summary>
         ///     Checks if a floating point Value is equal to another,
         ///     within a certain tolerance.
@@ -303,7 +303,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="delta">The floating point tolerance.</param>
         /// <returns>True if the values are "equal", false otherwise.</returns>
         public static bool FloatEquals(float value1, float value2, float delta) => FloatInRange(value1, value2 - delta, value2 + delta);
-
+        
         /// <summary>
         ///     Checks if a floating point Value is within a specified
         ///     range of values (inclusive).

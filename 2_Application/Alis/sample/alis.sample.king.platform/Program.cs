@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Definition;
-using Alis.Core.Ecs;
 using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
@@ -75,7 +74,7 @@ namespace Alis.Sample.King.Platform
                     .Build())
                 .World(sceneManager => sceneManager
                     .Add<Scene>(gameScene => gameScene
-
+                        
                         // PLAYER
                         .Add<GameObject>(player => player
                             .Name("King")
@@ -155,7 +154,7 @@ namespace Alis.Sample.King.Platform
                                 .Resolution(640, 480)
                                 .Build())
                             .Build())
-
+                        
                         // FLOOR
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Floor")

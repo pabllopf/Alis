@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontGlyphRangesBuilder builder = new ImFontGlyphRangesBuilder();
             Assert.Equal(default(ImVector), builder.UsedChars);
         }
-
+        
         /// <summary>
         ///     Tests that add char should not throw
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontGlyphRangesBuilder builder = new ImFontGlyphRangesBuilder();
             Assert.Throws<DllNotFoundException>(() => builder.AddChar(65));
         }
-
+        
         /// <summary>
         ///     Tests that clear should not throw
         /// </summary>
@@ -66,7 +66,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontGlyphRangesBuilder builder = new ImFontGlyphRangesBuilder();
             Assert.Throws<DllNotFoundException>(() => builder.Clear());
         }
-
+        
         /// <summary>
         ///     Tests that get bit should return bool
         /// </summary>
@@ -76,7 +76,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontGlyphRangesBuilder builder = new ImFontGlyphRangesBuilder();
             Assert.Throws<DllNotFoundException>(() => builder.GetBit(1));
         }
-
+        
         /// <summary>
         ///     Tests that set bit should not throw
         /// </summary>

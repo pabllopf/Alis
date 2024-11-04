@@ -45,7 +45,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiTableColumnSortSpecs specs = new ImGuiTableColumnSortSpecs();
             Assert.Equal(0u, specs.ColumnUserId);
         }
-
+        
         /// <summary>
         ///     Tests that column index should be initialized
         /// </summary>
@@ -55,7 +55,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiTableColumnSortSpecs specs = new ImGuiTableColumnSortSpecs();
             Assert.Equal((short) 0, specs.ColumnIndex);
         }
-
+        
         /// <summary>
         ///     Tests that sort order should be initialized
         /// </summary>
@@ -65,7 +65,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiTableColumnSortSpecs specs = new ImGuiTableColumnSortSpecs();
             Assert.Equal((short) 0, specs.SortOrder);
         }
-
+        
         /// <summary>
         ///     Tests that sort direction should be initialized
         /// </summary>
@@ -75,7 +75,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiTableColumnSortSpecs specs = new ImGuiTableColumnSortSpecs();
             Assert.Equal(default(ImGuiSortDirection), specs.SortDirection);
         }
-
+        
         /// <summary>
         ///     Tests that column user id should set and get correctly
         /// </summary>
@@ -86,7 +86,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             specs.ColumnUserId = 123u;
             Assert.Equal(123u, specs.ColumnUserId);
         }
-
+        
         /// <summary>
         ///     Tests that column index should set and get correctly
         /// </summary>
@@ -97,7 +97,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             specs.ColumnIndex = 1;
             Assert.Equal((short) 1, specs.ColumnIndex);
         }
-
+        
         /// <summary>
         ///     Tests that sort order should set and get correctly
         /// </summary>
@@ -108,7 +108,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             specs.SortOrder = 2;
             Assert.Equal((short) 2, specs.SortOrder);
         }
-
+        
         /// <summary>
         ///     Tests that sort direction should set and get correctly
         /// </summary>

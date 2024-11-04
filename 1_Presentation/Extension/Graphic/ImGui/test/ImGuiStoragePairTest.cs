@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             storagePair.Key = 123u;
             Assert.Equal(123u, storagePair.Key);
         }
-
+        
         /// <summary>
         ///     Tests that value should set and get correctly
         /// </summary>

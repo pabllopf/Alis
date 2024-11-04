@@ -46,52 +46,52 @@ namespace Alis.Core.Physic.Dynamics
         ///     The body
         /// </summary>
         private readonly Body _body;
-
+        
         /// <summary>
         ///     The fixture
         /// </summary>
         internal readonly List<Fixture> _list = new List<Fixture>(32);
-
+        
         /// <summary>
         ///     The generation stamp
         /// </summary>
         internal int _generationStamp = 0;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="FixtureCollection" /> class
         /// </summary>
         /// <param name="body">The body</param>
         public FixtureCollection(Body body) => _body = body;
-
-
+        
+        
         #region IEnumerable<Fixture>
-
+        
         /// <summary>
         ///     Gets the enumerator
         /// </summary>
         /// <returns>An enumerator of fixture</returns>
         IEnumerator<Fixture> IEnumerable<Fixture>.GetEnumerator() => new FixtureEnumerator(this, _list);
-
+        
         #endregion IEnumerable<Fixture>
-
-
+        
+        
         #region IEnumerable
-
+        
         /// <summary>
         ///     Gets the enumerator
         /// </summary>
         /// <returns>The enumerator</returns>
         IEnumerator IEnumerable.GetEnumerator() => new FixtureEnumerator(this, _list);
-
+        
         #endregion IEnumerable
-
+        
         /// <summary>
         ///     Gets the enumerator
         /// </summary>
         /// <returns>The fixture enumerator</returns>
         public FixtureEnumerator GetEnumerator() => new FixtureEnumerator(this, _list);
-
-
+        
+        
         /// <summary>
         ///     The fixture enumerator
         /// </summary>
@@ -101,22 +101,22 @@ namespace Alis.Core.Physic.Dynamics
             ///     The collection
             /// </summary>
             private FixtureCollection _collection;
-
+            
             /// <summary>
             ///     The list
             /// </summary>
             private List<Fixture> _list;
-
+            
             /// <summary>
             ///     The generation stamp
             /// </summary>
             private readonly int _generationStamp;
-
+            
             /// <summary>
             ///     The
             /// </summary>
             private int i;
-
+            
             /// <summary>
             ///     Initializes a new instance of the <see cref="FixtureEnumerator" /> class
             /// </summary>
@@ -129,7 +129,7 @@ namespace Alis.Core.Physic.Dynamics
                 _generationStamp = collection._generationStamp;
                 i = -1;
             }
-
+            
             /// <summary>
             ///     Gets the value of the current
             /// </summary>
@@ -142,9 +142,9 @@ namespace Alis.Core.Physic.Dynamics
                     throw new InvalidOperationException("Collection was modified.");
                 }
             }
-
+            
             #region IEnumerator<Body>
-
+            
             /// <summary>
             ///     Gets the value of the current
             /// </summary>
@@ -157,11 +157,11 @@ namespace Alis.Core.Physic.Dynamics
                     throw new InvalidOperationException("Collection was modified.");
                 }
             }
-
+            
             #endregion IEnumerator<Fixture>
-
+            
             #region IEnumerator
-
+            
             /// <summary>
             ///     Describes whether this instance move next
             /// </summary>
@@ -171,11 +171,11 @@ namespace Alis.Core.Physic.Dynamics
             {
                 if (_generationStamp != _collection._generationStamp)
                     throw new InvalidOperationException("Collection was modified.");
-
+                
                 return ++i < _list.Count;
             }
-
-
+            
+            
             /// <summary>
             ///     Gets the value of the current
             /// </summary>
@@ -188,7 +188,7 @@ namespace Alis.Core.Physic.Dynamics
                     throw new InvalidOperationException();
                 }
             }
-
+            
             /// <summary>
             ///     Disposes this instance
             /// </summary>
@@ -198,7 +198,7 @@ namespace Alis.Core.Physic.Dynamics
                 _list = null;
                 i = -1;
             }
-
+            
             /// <summary>
             ///     Resets this instance
             /// </summary>
@@ -206,13 +206,13 @@ namespace Alis.Core.Physic.Dynamics
             {
                 i = -1;
             }
-
+            
             #endregion IEnumerator
         }
-
-
+        
+        
         #region IList<Fixture>
-
+        
         /// <summary>
         ///     The not supported exception
         /// </summary>
@@ -221,14 +221,14 @@ namespace Alis.Core.Physic.Dynamics
             get => _list[index];
             set => throw new NotSupportedException();
         }
-
+        
         /// <summary>
         ///     Indexes the of using the specified item
         /// </summary>
         /// <param name="item">The item</param>
         /// <returns>The int</returns>
         public int IndexOf(Fixture item) => _list.IndexOf(item);
-
+        
         /// <summary>
         ///     Inserts the index
         /// </summary>
@@ -239,7 +239,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             throw new NotSupportedException();
         }
-
+        
         /// <summary>
         ///     Removes the at using the specified index
         /// </summary>
@@ -249,22 +249,22 @@ namespace Alis.Core.Physic.Dynamics
         {
             throw new NotSupportedException();
         }
-
+        
         #endregion IList<Fixture>
-
-
+        
+        
         #region ICollection<Fixture>
-
+        
         /// <summary>
         ///     Gets the value of the is read only
         /// </summary>
         public bool IsReadOnly => true;
-
+        
         /// <summary>
         ///     Gets the value of the count
         /// </summary>
         public int Count => _list.Count;
-
+        
         /// <summary>
         ///     Adds the item
         /// </summary>
@@ -274,14 +274,14 @@ namespace Alis.Core.Physic.Dynamics
         {
             throw new NotSupportedException();
         }
-
+        
         /// <summary>
         ///     Describes whether this instance remove
         /// </summary>
         /// <param name="item">The item</param>
         /// <returns>The bool</returns>
         bool ICollection<Fixture>.Remove(Fixture item) => throw new NotSupportedException();
-
+        
         /// <summary>
         ///     Clears this instance
         /// </summary>
@@ -290,14 +290,14 @@ namespace Alis.Core.Physic.Dynamics
         {
             throw new NotSupportedException();
         }
-
+        
         /// <summary>
         ///     Describes whether this instance contains
         /// </summary>
         /// <param name="item">The item</param>
         /// <returns>The bool</returns>
         public bool Contains(Fixture item) => _list.Contains(item);
-
+        
         /// <summary>
         ///     Copies the to using the specified array
         /// </summary>
@@ -307,7 +307,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             _list.CopyTo(array, arrayIndex);
         }
-
+        
         #endregion ICollection<Fixture>
     }
 }

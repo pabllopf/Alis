@@ -36,7 +36,7 @@ using Alis.Core.Physic.Dynamics;
 namespace Alis.Core.Physic.Common.PolygonManipulation
 {
     //Clipper contributed by Helge Backhaus
-
+    
     /// <summary>
     ///     The yu peng clipper class
     /// </summary>
@@ -46,7 +46,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         ///     The clipper epsilon squared
         /// </summary>
         private const float ClipperEpsilonSquared = 1.192092896e-07f;
-
+        
         /// <summary>
         ///     Unions the polygon 1
         /// </summary>
@@ -55,7 +55,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         /// <param name="error">The error</param>
         /// <returns>A list of vertices</returns>
         public static List<Vertices> Union(Vertices polygon1, Vertices polygon2, out PolyClipError error) => Execute(polygon1, polygon2, PolyClipType.Union, out error);
-
+        
         /// <summary>
         ///     Differences the polygon 1
         /// </summary>
@@ -64,7 +64,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         /// <param name="error">The error</param>
         /// <returns>A list of vertices</returns>
         public static List<Vertices> Difference(Vertices polygon1, Vertices polygon2, out PolyClipError error) => Execute(polygon1, polygon2, PolyClipType.Difference, out error);
-
+        
         /// <summary>
         ///     Intersects the polygon 1
         /// </summary>
@@ -73,7 +73,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         /// <param name="error">The error</param>
         /// <returns>A list of vertices</returns>
         public static List<Vertices> Intersect(Vertices polygon1, Vertices polygon2, out PolyClipError error) => Execute(polygon1, polygon2, PolyClipType.Intersect, out error);
-
+        
         /// <summary>
         ///     Implements "A new algorithm for Boolean operations on general polygons"
         ///     available here: http://liama.ia.ac.cn/wiki/_media/user:dong:dong_cg_05.pdf
@@ -98,12 +98,12 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         private static List<Vertices> Execute(Vertices subject, Vertices clip, PolyClipType clipType, out PolyClipError error)
         {
             Debug.Assert(subject.IsSimple() && clip.IsSimple(), "Non simple input! Input polygons must be simple (cannot intersect themselves).");
-
+            
             // Copy polygons
             // Calculate the intersection and touch points between
             // subject and clip and add them to both
             CalculateIntersections(subject, clip, out Vertices slicedSubject, out Vertices slicedClip);
-
+            
             // Translate polygons into upper right quadrant
             // as the algorithm depends on it
             Vector2 lbSubject = subject.GetAABB().LowerBound;
@@ -115,25 +115,25 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 slicedSubject.Translate(ref translate);
                 slicedClip.Translate(ref translate);
             }
-
+            
             // Enforce counterclockwise contours
             slicedSubject.ForceCounterClockWise();
             slicedClip.ForceCounterClockWise();
-
+            
             // Build simplical chains from the polygons and calculate the
             // the corresponding coefficients
             CalculateSimplicalChain(slicedSubject, out List<float> subjectCoeff, out List<Edge> subjectSimplices);
             CalculateSimplicalChain(slicedClip, out List<float> clipCoeff, out List<Edge> clipSimplices);
-
+            
             // Determine the characteristics function for all non-original edges
             // in subject and clip simplical chain and combine the edges contributing
             // to the result, depending on the clipType
             CalculateResultChain(subjectCoeff, subjectSimplices, clipCoeff, clipSimplices, clipType,
                 out List<Edge> resultSimplices);
-
+            
             // Convert result chain back to polygon(s)
             error = BuildPolygonsFromChain(resultSimplices, out List<Vertices> result);
-
+            
             // Reverse the polygon translation from the beginning
             // and remove collinear points from output
             translate *= -1f;
@@ -142,10 +142,10 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 result[i].Translate(ref translate);
                 SimplifyTools.CollinearSimplify(result[i]);
             }
-
+            
             return result;
         }
-
+        
         /// <summary>
         ///     Calculates all intersections between two polygons.
         /// </summary>
@@ -158,20 +158,20 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         {
             slicedPoly1 = new Vertices(polygon1);
             slicedPoly2 = new Vertices(polygon2);
-
+            
             // Iterate through polygon1's edges
             for (int i = 0; i < polygon1.Count; i++)
             {
                 // Get edge vertices
                 Vector2 a = polygon1[i];
                 Vector2 b = polygon1[polygon1.NextIndex(i)];
-
+                
                 // Get intersections between this edge and polygon2
                 for (int j = 0; j < polygon2.Count; j++)
                 {
                     Vector2 c = polygon2[j];
                     Vector2 d = polygon2[polygon2.NextIndex(j)];
-
+                    
                     // Check if the edges intersect
                     if (LineTools.LineIntersect(a, b, c, d, out Vector2 intersectionPoint))
                     {
@@ -187,10 +187,10 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                             {
                                 ++index;
                             }
-
+                            
                             slicedPoly1.Insert(index, intersectionPoint);
                         }
-
+                        
                         // Insert intersection point into second polygon
                         alpha = GetAlpha(c, d, intersectionPoint);
                         if ((alpha > 0f) && (alpha < 1f))
@@ -201,13 +201,13 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                             {
                                 ++index;
                             }
-
+                            
                             slicedPoly2.Insert(index, intersectionPoint);
                         }
                     }
                 }
             }
-
+            
             // Check for very small edges
             for (int i = 0; i < slicedPoly1.Count; ++i)
             {
@@ -219,7 +219,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                     --i;
                 }
             }
-
+            
             for (int i = 0; i < slicedPoly2.Count; ++i)
             {
                 int iNext = slicedPoly2.NextIndex(i);
@@ -231,7 +231,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 }
             }
         }
-
+        
         /// <summary>
         ///     Calculates the simplical chain corresponding to the input polygon.
         /// </summary>
@@ -247,7 +247,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 coeff.Add(CalculateSimplexCoefficient(Vector2.Zero, poly[i], poly[poly.NextIndex(i)]));
             }
         }
-
+        
         /// <summary>
         ///     Calculates the characteristics function for all edges of
         ///     the given simplical chains and builds the result chain.
@@ -258,7 +258,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             PolyClipType clipType, out List<Edge> resultSimplices)
         {
             resultSimplices = new List<Edge>();
-
+            
             for (int i = 0; i < poly1Simplicies.Count; ++i)
             {
                 float edgeCharacter = 0;
@@ -281,7 +281,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                         }
                     }
                 }
-
+                
                 if (clipType == PolyClipType.Intersect)
                 {
                     if (Math.Abs(edgeCharacter - 1f) < float.Epsilon)
@@ -297,7 +297,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                     }
                 }
             }
-
+            
             for (int i = 0; i < poly2Simplicies.Count; ++i)
             {
                 float edgeCharacter = 0f;
@@ -319,7 +319,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                                     poly1Simplicies[j], poly1Coeff[j]);
                             }
                         }
-
+                        
                         if (clipType == PolyClipType.Intersect || clipType == PolyClipType.Difference)
                         {
                             if (Math.Abs(edgeCharacter - 1f) < float.Epsilon)
@@ -338,7 +338,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 }
             }
         }
-
+        
         /// <summary>
         ///     Calculates the polygon(s) from the result simplical chain.
         /// </summary>
@@ -347,7 +347,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         {
             result = new List<Vertices>();
             PolyClipError errVal = PolyClipError.None;
-
+            
             while (simplicies.Count > 0)
             {
                 Vertices output = new Vertices();
@@ -369,7 +369,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                         {
                             output.Add(simplicies[index].EdgeEnd);
                         }
-
+                        
                         simplicies.RemoveAt(index);
                         --index;
                     }
@@ -383,11 +383,11 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                         {
                             output.Add(simplicies[index].EdgeStart);
                         }
-
+                        
                         simplicies.RemoveAt(index);
                         --index;
                     }
-
+                    
                     if (!closed)
                     {
                         if (++index == simplicies.Count)
@@ -398,25 +398,25 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                                 Debug.WriteLine("Undefined error while building result polygon(s).");
                                 return PolyClipError.BrokenResult;
                             }
-
+                            
                             index = 0;
                             count = simplicies.Count;
                         }
                     }
                 }
-
+                
                 if (output.Count < 3)
                 {
                     errVal = PolyClipError.DegeneratedOutput;
                     Debug.WriteLine("Degenerated output polygon produced (vertices < 3).");
                 }
-
+                
                 result.Add(output);
             }
-
+            
             return errVal;
         }
-
+        
         /// <summary>
         ///     Needed to calculate the characteristics function of a simplex.
         /// </summary>
@@ -428,22 +428,22 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             {
                 result = coefficient;
             }
-
+            
             if (PointOnLineSegment(Vector2.Zero, e.EdgeStart, point) ||
                 PointOnLineSegment(Vector2.Zero, e.EdgeEnd, point))
             {
                 result = .5f * coefficient;
             }
-
+            
             return result;
         }
-
+        
         /// <summary>
         ///     Needed for sorting multiple intersections points on the same edge.
         /// </summary>
         /// <remarks>Used by method <c>CalculateIntersections()</c>.</remarks>
         private static float GetAlpha(Vector2 start, Vector2 end, Vector2 point) => (point - start).LengthSquared() / (end - start).LengthSquared();
-
+        
         /// <summary>
         ///     Returns the coefficient of a simplex.
         /// </summary>
@@ -455,15 +455,15 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             {
                 return -1f;
             }
-
+            
             if (isLeft > 0f)
             {
                 return 1f;
             }
-
+            
             return 0f;
         }
-
+        
         /// <summary>
         ///     Winding number test for a point in a simplex.
         /// </summary>
@@ -481,7 +481,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             polygon.Add(edge.EdgeEnd);
             return polygon.PointInPolygon(ref point) == 1;
         }
-
+        
         /// <summary>
         ///     Tests if a point lies on a line segment.
         /// </summary>
@@ -493,7 +493,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                    (Vector2.Dot(point - start, segment) >= 0f) &&
                    (Vector2.Dot(point - end, segment) <= 0f);
         }
-
+        
         /// <summary>
         ///     Describes whether vector equal
         /// </summary>
@@ -501,9 +501,9 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         /// <param name="vec2">The vec</param>
         /// <returns>The bool</returns>
         private static bool VectorEqual(Vector2 vec1, Vector2 vec2) => (vec2 - vec1).LengthSquared() <= ClipperEpsilonSquared;
-
+        
         #region Nested type: Edge
-
+        
         /// <summary>Specifies an Edge. Edges are used to represent simplicies in simplical chains</summary>
         private sealed class Edge
         {
@@ -517,25 +517,25 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 EdgeStart = edgeStart;
                 EdgeEnd = edgeEnd;
             }
-
+            
             /// <summary>
             ///     Gets the value of the edge start
             /// </summary>
             public Vector2 EdgeStart { get; }
-
+            
             /// <summary>
             ///     Gets the value of the edge end
             /// </summary>
             public Vector2 EdgeEnd { get; }
-
+            
             /// <summary>
             ///     Gets the center
             /// </summary>
             /// <returns>The vector</returns>
             public Vector2 GetCenter() => (EdgeStart + EdgeEnd) / 2f;
-
+            
             public static Edge operator -(Edge e) => new Edge(e.EdgeEnd, e.EdgeStart);
-
+            
             /// <summary>
             ///     Describes whether this instance equals
             /// </summary>
@@ -548,11 +548,11 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 {
                     return false;
                 }
-
+                
                 // If parameter cannot be cast to Point return false.
                 return Equals(obj as Edge);
             }
-
+            
             /// <summary>
             ///     Describes whether this instance equals
             /// </summary>
@@ -565,18 +565,18 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 {
                     return false;
                 }
-
+                
                 // Return true if the fields match
                 return VectorEqual(EdgeStart, e.EdgeStart) && VectorEqual(EdgeEnd, e.EdgeEnd);
             }
-
+            
             /// <summary>
             ///     Gets the hash code
             /// </summary>
             /// <returns>The int</returns>
             public override int GetHashCode() => EdgeStart.GetHashCode() ^ EdgeEnd.GetHashCode();
         }
-
+        
         #endregion
     }
 }

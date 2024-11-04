@@ -42,7 +42,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
         ///     The
         /// </summary>
         public T _0, _1, _2;
-
+        
         /// <summary>
         ///     The index out of range exception
         /// </summary>
@@ -80,23 +80,23 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
                 }
             }
         }
-
+        
         #region IEnumerable<T> Members
-
+        
         /// <summary>
         ///     Gets the enumerator
         /// </summary>
         /// <returns>An enumerator of t</returns>
         public IEnumerator<T> GetEnumerator() => Enumerate().GetEnumerator();
-
+        
         /// <summary>
         ///     Gets the enumerator
         /// </summary>
         /// <returns>The enumerator</returns>
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-
+        
         #endregion
-
+        
         /// <summary>
         ///     Describes whether this instance contains
         /// </summary>
@@ -109,7 +109,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
                     return true;
             return false;
         }
-
+        
         /// <summary>
         ///     Indexes the of using the specified value
         /// </summary>
@@ -122,7 +122,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
                     return i;
             return -1;
         }
-
+        
         /// <summary>
         ///     Clears this instance
         /// </summary>
@@ -130,7 +130,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
         {
             _0 = _1 = _2 = null;
         }
-
+        
         /// <summary>
         ///     Clears the value
         /// </summary>
@@ -141,7 +141,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
                 if (this[i] == value)
                     this[i] = null;
         }
-
+        
         /// <summary>
         ///     Enumerates this instance
         /// </summary>

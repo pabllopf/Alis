@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The has context interface
+    ///     The has context interface
     /// </summary>
     public interface IHasContext<out T>
     {
         /// <summary>
-        /// Gets the value of the context
+        ///     Gets the value of the context
         /// </summary>
         public T Context { get; }
     }

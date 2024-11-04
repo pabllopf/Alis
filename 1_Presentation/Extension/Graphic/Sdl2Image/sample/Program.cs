@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
 namespace Alis.Extension.Graphic.Sdl2Image.Sample
 {
     /// <summary>

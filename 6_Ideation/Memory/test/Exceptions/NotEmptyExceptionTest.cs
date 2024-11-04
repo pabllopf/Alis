@@ -45,10 +45,10 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
         {
             // Arrange
             string message = "Test message";
-
+            
             // Act
             NotEmptyException exception = new NotEmptyException(message);
-
+            
             // Assert
             Assert.Equal(message, exception.Message);
         }

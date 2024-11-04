@@ -44,7 +44,7 @@ namespace Alis.Core.Aspect.Thread.Sample
         public static void Main(string[] args)
         {
             ThreadManager threadManager = new ThreadManager();
-
+            
             CancellationTokenSource cts1 = new CancellationTokenSource();
             ThreadTask task1 = new ThreadTask(token =>
             {
@@ -54,7 +54,7 @@ namespace Alis.Core.Aspect.Thread.Sample
                     System.Threading.Thread.Sleep(1000);
                 }
             }, cts1.Token);
-
+            
             CancellationTokenSource cts2 = new CancellationTokenSource();
             ThreadTask task2 = new ThreadTask(token =>
             {
@@ -64,15 +64,15 @@ namespace Alis.Core.Aspect.Thread.Sample
                     System.Threading.Thread.Sleep(1000);
                 }
             }, cts2.Token);
-
+            
             threadManager.StartThread(task1);
             threadManager.StartThread(task2);
-
+            
             Console.WriteLine("Press any key to stop threads...");
             Console.ReadKey();
-
+            
             threadManager.StopAllThreads();
-
+            
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
         }

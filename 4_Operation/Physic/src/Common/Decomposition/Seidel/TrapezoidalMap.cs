@@ -42,25 +42,25 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         ///     The margin
         /// </summary>
         private readonly float _margin;
-
+        
         // Bottom segment that spans multiple trapezoids
         /// <summary>
         ///     The cross
         /// </summary>
         private Edge _bCross;
-
+        
         // Top segment that spans multiple trapezoids
         /// <summary>
         ///     The cross
         /// </summary>
         private Edge _cross;
-
+        
         // Trapezoid container
         /// <summary>
         ///     The map
         /// </summary>
         public HashSet<Trapezoid> Map;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="TrapezoidalMap" /> class
         /// </summary>
@@ -71,7 +71,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             _bCross = null;
             _cross = null;
         }
-
+        
         /// <summary>
         ///     Clears this instance
         /// </summary>
@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             _bCross = null;
             _cross = null;
         }
-
+        
         // Case 1: segment completely enclosed by trapezoid
         //         break trapezoid into 4 smaller trapezoids
         /// <summary>
@@ -96,15 +96,15 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             trapezoids[1] = new Trapezoid(e.P, e.Q, t.Top, e);
             trapezoids[2] = new Trapezoid(e.P, e.Q, e, t.Bottom);
             trapezoids[3] = new Trapezoid(e.Q, t.RightPoint, t.Top, t.Bottom);
-
+            
             trapezoids[0].UpdateLeft(t.UpperLeft, t.LowerLeft);
             trapezoids[1].UpdateLeftRight(trapezoids[0], null, trapezoids[3], null);
             trapezoids[2].UpdateLeftRight(null, trapezoids[0], null, trapezoids[3]);
             trapezoids[3].UpdateRight(t.UpperRight, t.LowerRight);
-
+            
             return trapezoids;
         }
-
+        
         // Case 2: Trapezoid contains point p, q lies outside
         //         break trapezoid into 3 smaller trapezoids
         /// <summary>
@@ -120,25 +120,25 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                 rp = e.Q;
             else
                 rp = t.RightPoint;
-
+            
             Trapezoid[] trapezoids = new Trapezoid[3];
             trapezoids[0] = new Trapezoid(t.LeftPoint, e.P, t.Top, t.Bottom);
             trapezoids[1] = new Trapezoid(e.P, rp, t.Top, e);
             trapezoids[2] = new Trapezoid(e.P, rp, e, t.Bottom);
-
+            
             trapezoids[0].UpdateLeft(t.UpperLeft, t.LowerLeft);
             trapezoids[1].UpdateLeftRight(trapezoids[0], null, t.UpperRight, null);
             trapezoids[2].UpdateLeftRight(null, trapezoids[0], null, t.LowerRight);
-
+            
             _bCross = t.Bottom;
             _cross = t.Top;
-
+            
             e.Above = trapezoids[1];
             e.Below = trapezoids[2];
-
+            
             return trapezoids;
         }
-
+        
         // Case 3: Trapezoid is bisected
         /// <summary>
         ///     Cases the 3 using the specified t
@@ -153,15 +153,15 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                 lp = e.P;
             else
                 lp = t.LeftPoint;
-
+            
             Point rp;
             if (Math.Abs(e.Q.X - t.RightPoint.X) < float.Epsilon)
                 rp = e.Q;
             else
                 rp = t.RightPoint;
-
+            
             Trapezoid[] trapezoids = new Trapezoid[2];
-
+            
             if (_cross == t.Top)
             {
                 trapezoids[0] = t.UpperLeft;
@@ -173,7 +173,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                 trapezoids[0] = new Trapezoid(lp, rp, t.Top, e);
                 trapezoids[0].UpdateLeftRight(t.UpperLeft, e.Above, t.UpperRight, null);
             }
-
+            
             if (_bCross == t.Bottom)
             {
                 trapezoids[1] = t.LowerLeft;
@@ -185,16 +185,16 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                 trapezoids[1] = new Trapezoid(lp, rp, e, t.Bottom);
                 trapezoids[1].UpdateLeftRight(e.Below, t.LowerLeft, null, t.LowerRight);
             }
-
+            
             _bCross = t.Bottom;
             _cross = t.Top;
-
+            
             e.Above = trapezoids[0];
             e.Below = trapezoids[1];
-
+            
             return trapezoids;
         }
-
+        
         // Case 4: Trapezoid contains point q, p lies outside
         //         break trapezoid into 3 smaller trapezoids
         /// <summary>
@@ -210,9 +210,9 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                 lp = e.P;
             else
                 lp = t.LeftPoint;
-
+            
             Trapezoid[] trapezoids = new Trapezoid[3];
-
+            
             if (_cross == t.Top)
             {
                 trapezoids[0] = t.UpperLeft;
@@ -223,7 +223,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                 trapezoids[0] = new Trapezoid(lp, e.Q, t.Top, e);
                 trapezoids[0].UpdateLeft(t.UpperLeft, e.Above);
             }
-
+            
             if (_bCross == t.Bottom)
             {
                 trapezoids[1] = t.LowerLeft;
@@ -234,13 +234,13 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                 trapezoids[1] = new Trapezoid(lp, e.Q, e, t.Bottom);
                 trapezoids[1].UpdateLeft(e.Below, t.LowerLeft);
             }
-
+            
             trapezoids[2] = new Trapezoid(e.Q, t.RightPoint, t.Top, t.Bottom);
             trapezoids[2].UpdateLeftRight(trapezoids[0], trapezoids[1], t.UpperRight, t.LowerRight);
-
+            
             return trapezoids;
         }
-
+        
         // Create an AABB around segments
         /// <summary>
         ///     Boundings the box using the specified edges
@@ -251,7 +251,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         {
             Point max = edges[0].P + _margin;
             Point min = edges[0].Q - _margin;
-
+            
             foreach (Edge e in edges)
             {
                 if (e.P.X > max.X) max = new Point(e.P.X + _margin, max.Y);
@@ -263,12 +263,12 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                 if (e.Q.X < min.X) min = new Point(e.Q.X - _margin, min.Y);
                 if (e.Q.Y < min.Y) min = new Point(min.X, e.Q.Y - _margin);
             }
-
+            
             Edge top = new Edge(new Point(min.X, max.Y), new Point(max.X, max.Y));
             Edge bottom = new Edge(new Point(min.X, min.Y), new Point(max.X, min.Y));
             Point left = bottom.P;
             Point right = top.Q;
-
+            
             return new Trapezoid(left, right, top, bottom);
         }
     }

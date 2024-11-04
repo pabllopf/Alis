@@ -50,27 +50,27 @@ namespace Alis.Core.Network.Sample.Server
         ///     The buffer size
         /// </summary>
         private const int BufferSize = 4 * 1024 * 1024; // 4MB
-
+        
         /// <summary>
         ///     The supported sub protocols
         /// </summary>
         private readonly HashSet<string> _supportedSubProtocols;
-
+        
         /// <summary>
         ///     The web socket server factory
         /// </summary>
         private readonly IWebSocketServerFactory _webSocketServerFactory;
-
+        
         /// <summary>
         ///     The is disposed
         /// </summary>
         private bool _isDisposed;
-
+        
         /// <summary>
         ///     The listener
         /// </summary>
         private TcpListener _listener;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="WebServer" /> class
         /// </summary>
@@ -81,7 +81,7 @@ namespace Alis.Core.Network.Sample.Server
             _webSocketServerFactory = webSocketServerFactory;
             _supportedSubProtocols = new HashSet<string>(supportedSubProtocols ?? new string[0]);
         }
-
+        
         /// <summary>
         ///     Disposes this instance
         /// </summary>
@@ -90,7 +90,7 @@ namespace Alis.Core.Network.Sample.Server
             if (!_isDisposed)
             {
                 _isDisposed = true;
-
+                
                 // safely attempt to shut down the listener
                 try
                 {
@@ -100,7 +100,7 @@ namespace Alis.Core.Network.Sample.Server
                         {
                             _listener.Server.Close();
                         }
-
+                        
                         _listener.Stop();
                     }
                 }
@@ -108,11 +108,11 @@ namespace Alis.Core.Network.Sample.Server
                 {
                     Debug.Print(ex.ToString());
                 }
-
+                
                 Debug.Print("Web Server disposed");
             }
         }
-
+        
         /// <summary>
         ///     Processes the tcp client using the specified tcp client
         /// </summary>
@@ -121,7 +121,7 @@ namespace Alis.Core.Network.Sample.Server
         {
             Task.Run(() => ProcessTcpClientAsync(tcpClient));
         }
-
+        
         /// <summary>
         ///     Gets the sub protocol using the specified requested sub protocols
         /// </summary>
@@ -135,20 +135,20 @@ namespace Alis.Core.Network.Sample.Server
                 if (_supportedSubProtocols.Contains(subProtocol))
                 {
                     Debug.Print($"Http header has requested sub protocol {subProtocol} which is supported");
-
+                    
                     return subProtocol;
                 }
             }
-
+            
             if (requestedSubProtocols.Count > 0)
             {
                 Debug.Print(
                     $"Http header has requested the following sub protocols: {string.Join(", ", requestedSubProtocols)}. There are no supported protocols configured that match.");
             }
-
+            
             return null;
         }
-
+        
         /// <summary>
         ///     Processes the tcp client using the specified tcp client
         /// </summary>
@@ -162,13 +162,13 @@ namespace Alis.Core.Network.Sample.Server
                 {
                     return;
                 }
-
+                
                 // this worker thread stays alive until either of the following happens:
                 // Client sends a close conection request OR
                 // An unhandled exception is thrown OR
                 // The server is disposed
                 Debug.Print("Server: Connection opened. Reading Http header from stream");
-
+                
                 // get a secure or insecure stream
                 Stream stream = tcpClient.GetStream();
                 WebSocketHttpContext context = await _webSocketServerFactory.ReadHttpHeaderFromStreamAsync(stream);
@@ -180,9 +180,9 @@ namespace Alis.Core.Network.Sample.Server
                             subProtocol);
                     Debug.Print(
                         "Http header has requested an upgrade to Web Socket protocol. Negotiating Web Socket handshake");
-
+                    
                     WebSocket webSocket = await _webSocketServerFactory.AcceptWebSocketAsync(context, options);
-
+                    
                     Debug.Print("Web Socket handshake response sent. Stream ready.");
                     await RespondToWebSocketRequestAsync(webSocket, source.Token);
                 }
@@ -190,7 +190,7 @@ namespace Alis.Core.Network.Sample.Server
                 {
                     Debug.Print("Http header contains no web socket upgrade request. Ignoring");
                 }
-
+                
                 Debug.Print("Server: Connection closed");
             }
             catch (ObjectDisposedException)
@@ -215,7 +215,7 @@ namespace Alis.Core.Network.Sample.Server
                 }
             }
         }
-
+        
         /// <summary>
         ///     Responds the to web socket request using the specified web socket
         /// </summary>
@@ -224,7 +224,7 @@ namespace Alis.Core.Network.Sample.Server
         public async Task RespondToWebSocketRequestAsync(WebSocket webSocket, CancellationToken token)
         {
             ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[BufferSize]);
-
+            
             while (true)
             {
                 WebSocketReceiveResult result = await webSocket.ReceiveAsync(buffer, token);
@@ -234,7 +234,7 @@ namespace Alis.Core.Network.Sample.Server
                         $"Client initiated close. Status: {result.CloseStatus} Description: {result.CloseStatusDescription}");
                     break;
                 }
-
+                
                 if (result.Count > BufferSize)
                 {
                     await webSocket.CloseAsync(WebSocketCloseStatus.MessageTooBig,
@@ -242,13 +242,13 @@ namespace Alis.Core.Network.Sample.Server
                         token);
                     break;
                 }
-
+                
                 // just echo the message back to the client
                 ArraySegment<byte> toSend = new ArraySegment<byte>(buffer.Array, buffer.Offset, result.Count);
                 await webSocket.SendAsync(toSend, WebSocketMessageType.Binary, true, token);
             }
         }
-
+        
         /// <summary>
         ///     Listens the port
         /// </summary>

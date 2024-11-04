@@ -45,32 +45,32 @@ namespace Alis.Core.Sample
         ///     The background color
         /// </summary>
         public Color BackgroundColor;
-
+        
         /// <summary>
         ///     The camera border
         /// </summary>
         public float CameraBorder;
-
+        
         /// <summary>
         ///     The position
         /// </summary>
         public Vector2 Position;
-
+        
         /// <summary>
         ///     The resolution
         /// </summary>
         public Vector2 Resolution;
-
+        
         /// <summary>
         ///     The texture target
         /// </summary>
         public IntPtr TextureTarget;
-
+        
         /// <summary>
         ///     The viewport
         /// </summary>
         public RectangleI Viewport;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Camera" /> class
         /// </summary>
@@ -83,16 +83,16 @@ namespace Alis.Core.Sample
             BackgroundColor = Color.Black;
             CameraBorder = 1f;
             TextureTarget = IntPtr.Zero;
-
+            
             int x = (int) Math.Truncate(Position.X);
             int y = (int) Math.Truncate(Position.Y);
             int w = (int) Math.Truncate(Resolution.X);
             int h = (int) Math.Truncate(Resolution.Y);
-
+            
             Viewport = new RectangleI(x, y, w, h);
             TextureTarget = Sdl.CreateTexture(renderer, Sdl.PixelFormatRgba8888, (int) TextureAccess.SdlTextureAccessTarget, Viewport.W, Viewport.H);
         }
-
+        
         /// <summary>
         ///     Ons the update
         /// </summary>

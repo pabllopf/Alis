@@ -51,7 +51,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
     // Cdot = dot(v + cross(w, r), ug)
     // J = [ug cross(r, ug)]
     // K = J * invM * JT = invMass + invI * cross(r, ug)^2
-
+    
     /// <summary>
     ///     A gear joint is used to connect two joints together.
     ///     Either joint can be a revolute or prismatic joint.
@@ -68,124 +68,124 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The body
         /// </summary>
         private readonly Body _bodyA;
-
+        
         /// <summary>
         ///     The body
         /// </summary>
         private readonly Body _bodyB;
-
+        
         /// <summary>
         ///     The body
         /// </summary>
         private readonly Body _bodyC;
-
+        
         /// <summary>
         ///     The body
         /// </summary>
         private readonly Body _bodyD;
-
+        
         /// <summary>
         ///     The constant
         /// </summary>
         private readonly float _constant;
-
+        
         // Solver shared
         /// <summary>
         ///     The local anchor
         /// </summary>
         private readonly Vector2 _localAnchorA;
-
+        
         /// <summary>
         ///     The local anchor
         /// </summary>
         private readonly Vector2 _localAnchorB;
-
+        
         /// <summary>
         ///     The local anchor
         /// </summary>
         private readonly Vector2 _localAnchorC;
-
+        
         /// <summary>
         ///     The local anchor
         /// </summary>
         private readonly Vector2 _localAnchorD;
-
+        
         /// <summary>
         ///     The reference angle
         /// </summary>
         private readonly float _referenceAngleA;
-
+        
         /// <summary>
         ///     The reference angle
         /// </summary>
         private readonly float _referenceAngleB;
-
+        
         /// <summary>
         ///     The type
         /// </summary>
         private readonly JointType _typeA;
-
+        
         /// <summary>
         ///     The type
         /// </summary>
         private readonly JointType _typeB;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         private float _iA, _iB, _iC, _iD;
-
+        
         /// <summary>
         ///     The impulse
         /// </summary>
         private float _impulse;
-
+        
         // Solver temp
         /// <summary>
         ///     The index
         /// </summary>
         private int _indexA, _indexB, _indexC, _indexD;
-
+        
         /// <summary>
         ///     The jv bd
         /// </summary>
         private Vector2 _JvAC, _JvBD;
-
+        
         /// <summary>
         ///     The jw
         /// </summary>
         private float _JwA, _JwB, _JwC, _JwD;
-
+        
         /// <summary>
         ///     The lc
         /// </summary>
         private Vector2 _lcA, _lcB, _lcC, _lcD;
-
+        
         /// <summary>
         ///     The local axis
         /// </summary>
         private Vector2 _localAxisC;
-
+        
         /// <summary>
         ///     The local axis
         /// </summary>
         private Vector2 _localAxisD;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         private float _mA, _mB, _mC, _mD;
-
+        
         /// <summary>
         ///     The mass
         /// </summary>
         private float _mass;
-
+        
         /// <summary>
         ///     The ratio
         /// </summary>
         private float _ratio;
-
+        
         /// <summary>
         ///     Requires two existing revolute or prismatic joints (any combination will work).
         ///     The provided joints must attach a dynamic body to a static body.
@@ -203,25 +203,25 @@ namespace Alis.Core.Physic.Dynamics.Joints
             JointA = jointA;
             JointB = jointB;
             Ratio = ratio;
-
+            
             _typeA = jointA.JointType;
             _typeB = jointB.JointType;
-
+            
             Debug.Assert(_typeA == JointType.Revolute || _typeA == JointType.Prismatic || _typeA == JointType.FixedRevolute || _typeA == JointType.FixedPrismatic);
             Debug.Assert(_typeB == JointType.Revolute || _typeB == JointType.Prismatic || _typeB == JointType.FixedRevolute || _typeB == JointType.FixedPrismatic);
-
+            
             float coordinateA, coordinateB;
-
-
+            
+            
             _bodyC = JointA.BodyA;
             _bodyA = JointA.BodyB;
-
+            
             // Get geometry of joint1
             Transform xfA = _bodyA._xf;
             float aA = _bodyA._sweep.A;
             Transform xfC = _bodyC._xf;
             float aC = _bodyC._sweep.A;
-
+            
             if (_typeA == JointType.Revolute)
             {
                 RevoluteJoint revolute = (RevoluteJoint) jointA;
@@ -229,7 +229,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _localAnchorA = revolute.LocalAnchorB;
                 _referenceAngleA = revolute.ReferenceAngle;
                 _localAxisC = Vector2.Zero;
-
+                
                 coordinateA = aA - aC - _referenceAngleA;
             }
             else
@@ -239,21 +239,21 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _localAnchorA = prismatic.LocalAnchorB;
                 _referenceAngleA = prismatic.ReferenceAngle;
                 _localAxisC = prismatic.LocalXAxis;
-
+                
                 Vector2 pC = _localAnchorC;
                 Vector2 pA = Complex.Divide(Complex.Multiply(ref _localAnchorA, ref xfA.q) + (xfA.p - xfC.p), ref xfC.q);
                 coordinateA = Vector2.Dot(pA - pC, _localAxisC);
             }
-
+            
             _bodyD = JointB.BodyA;
             _bodyB = JointB.BodyB;
-
+            
             // Get geometry of joint2
             Transform xfB = _bodyB._xf;
             float aB = _bodyB._sweep.A;
             Transform xfD = _bodyD._xf;
             float aD = _bodyD._sweep.A;
-
+            
             if (_typeB == JointType.Revolute)
             {
                 RevoluteJoint revolute = (RevoluteJoint) jointB;
@@ -261,7 +261,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _localAnchorB = revolute.LocalAnchorB;
                 _referenceAngleB = revolute.ReferenceAngle;
                 _localAxisD = Vector2.Zero;
-
+                
                 coordinateB = aB - aD - _referenceAngleB;
             }
             else
@@ -271,17 +271,17 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _localAnchorB = prismatic.LocalAnchorB;
                 _referenceAngleB = prismatic.ReferenceAngle;
                 _localAxisD = prismatic.LocalXAxis;
-
+                
                 Vector2 pD = _localAnchorD;
                 Vector2 pB = Complex.Divide(Complex.Multiply(ref _localAnchorB, ref xfB.q) + (xfB.p - xfD.p), ref xfD.q);
                 coordinateB = Vector2.Dot(pB - pD, _localAxisD);
             }
-
+            
             _ratio = ratio;
             _constant = coordinateA + _ratio * coordinateB;
             _impulse = 0.0f;
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the world anchor a
         /// </summary>
@@ -290,7 +290,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             get => _bodyA.GetWorldPoint(_localAnchorA);
             set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the world anchor b
         /// </summary>
@@ -299,7 +299,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             get => _bodyB.GetWorldPoint(_localAnchorB);
             set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
         }
-
+        
         /// <summary>
         ///     The gear ratio.
         /// </summary>
@@ -312,17 +312,17 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _ratio = value;
             }
         }
-
+        
         /// <summary>
         ///     The first revolute/prismatic joint attached to the gear joint.
         /// </summary>
         public Joint JointA { get; }
-
+        
         /// <summary>
         ///     The second revolute/prismatic joint attached to the gear joint.
         /// </summary>
         public Joint JointB { get; }
-
+        
         /// <summary>
         ///     Gets the reaction force using the specified inv dt
         /// </summary>
@@ -333,7 +333,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Vector2 P = _impulse * _JvAC;
             return invDt * P;
         }
-
+        
         /// <summary>
         ///     Gets the reaction torque using the specified inv dt
         /// </summary>
@@ -344,7 +344,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float L = _impulse * _JwA;
             return invDt * L;
         }
-
+        
         /// <summary>
         ///     Inits the velocity constraints using the specified data
         /// </summary>
@@ -367,30 +367,30 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _iB = _bodyB._invI;
             _iC = _bodyC._invI;
             _iD = _bodyD._invI;
-
+            
             float aA = data.positions[_indexA].a;
             Vector2 vA = data.velocities[_indexA].v;
             float wA = data.velocities[_indexA].w;
-
+            
             float aB = data.positions[_indexB].a;
             Vector2 vB = data.velocities[_indexB].v;
             float wB = data.velocities[_indexB].w;
-
+            
             float aC = data.positions[_indexC].a;
             Vector2 vC = data.velocities[_indexC].v;
             float wC = data.velocities[_indexC].w;
-
+            
             float aD = data.positions[_indexD].a;
             Vector2 vD = data.velocities[_indexD].v;
             float wD = data.velocities[_indexD].w;
-
+            
             Complex qA = Complex.FromAngle(aA);
             Complex qB = Complex.FromAngle(aB);
             Complex qC = Complex.FromAngle(aC);
             Complex qD = Complex.FromAngle(aD);
-
+            
             _mass = 0.0f;
-
+            
             if (_typeA == JointType.Revolute)
             {
                 _JvAC = Vector2.Zero;
@@ -408,7 +408,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _JwA = MathUtils.Cross(ref rA, ref u);
                 _mass += _mC + _mA + _iC * _JwC * _JwC + _iA * _JwA * _JwA;
             }
-
+            
             if (_typeB == JointType.Revolute)
             {
                 _JvBD = Vector2.Zero;
@@ -426,10 +426,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _JwB = _ratio * MathUtils.Cross(ref rB, ref u);
                 _mass += _ratio * _ratio * (_mD + _mB) + _iD * _JwD * _JwD + _iB * _JwB * _JwB;
             }
-
+            
             // Compute effective mass.
             _mass = _mass > 0.0f ? 1.0f / _mass : 0.0f;
-
+            
             if (data.step.warmStarting)
             {
                 vA += _mA * _impulse * _JvAC;
@@ -445,7 +445,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             {
                 _impulse = 0.0f;
             }
-
+            
             data.velocities[_indexA].v = vA;
             data.velocities[_indexA].w = wA;
             data.velocities[_indexB].v = vB;
@@ -455,7 +455,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.velocities[_indexD].v = vD;
             data.velocities[_indexD].w = wD;
         }
-
+        
         /// <summary>
         ///     Solves the velocity constraints using the specified data
         /// </summary>
@@ -470,13 +470,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float wC = data.velocities[_indexC].w;
             Vector2 vD = data.velocities[_indexD].v;
             float wD = data.velocities[_indexD].w;
-
+            
             float Cdot = Vector2.Dot(_JvAC, vA - vC) + Vector2.Dot(_JvBD, vB - vD);
             Cdot += _JwA * wA - _JwC * wC + (_JwB * wB - _JwD * wD);
-
+            
             float impulse = -_mass * Cdot;
             _impulse += impulse;
-
+            
             vA += _mA * impulse * _JvAC;
             wA += _iA * impulse * _JwA;
             vB += _mB * impulse * _JvBD;
@@ -485,7 +485,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             wC -= _iC * impulse * _JwC;
             vD -= _mD * impulse * _JvBD;
             wD -= _iD * impulse * _JwD;
-
+            
             data.velocities[_indexA].v = vA;
             data.velocities[_indexA].w = wA;
             data.velocities[_indexB].v = vB;
@@ -495,7 +495,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.velocities[_indexD].v = vD;
             data.velocities[_indexD].w = wD;
         }
-
+        
         /// <summary>
         ///     Describes whether this instance solve position constraints
         /// </summary>
@@ -511,27 +511,27 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float aC = data.positions[_indexC].a;
             Vector2 cD = data.positions[_indexD].c;
             float aD = data.positions[_indexD].a;
-
+            
             Complex qA = Complex.FromAngle(aA);
             Complex qB = Complex.FromAngle(aB);
             Complex qC = Complex.FromAngle(aC);
             Complex qD = Complex.FromAngle(aD);
-
+            
             const float linearError = 0.0f;
-
+            
             float coordinateA, coordinateB;
-
+            
             Vector2 JvAC, JvBD;
             float JwA, JwB, JwC, JwD;
             float mass = 0.0f;
-
+            
             if (_typeA == JointType.Revolute)
             {
                 JvAC = Vector2.Zero;
                 JwA = 1.0f;
                 JwC = 1.0f;
                 mass += _iA + _iC;
-
+                
                 coordinateA = aA - aC - _referenceAngleA;
             }
             else
@@ -543,19 +543,19 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 JwC = MathUtils.Cross(ref rC, ref u);
                 JwA = MathUtils.Cross(ref rA, ref u);
                 mass += _mC + _mA + _iC * JwC * JwC + _iA * JwA * JwA;
-
+                
                 Vector2 pC = _localAnchorC - _lcC;
                 Vector2 pA = Complex.Divide(rA + (cA - cC), ref qC);
                 coordinateA = Vector2.Dot(pA - pC, _localAxisC);
             }
-
+            
             if (_typeB == JointType.Revolute)
             {
                 JvBD = Vector2.Zero;
                 JwB = _ratio;
                 JwD = _ratio;
                 mass += _ratio * _ratio * (_iB + _iD);
-
+                
                 coordinateB = aB - aD - _referenceAngleB;
             }
             else
@@ -567,20 +567,20 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 JwD = _ratio * MathUtils.Cross(ref rD, ref u);
                 JwB = _ratio * MathUtils.Cross(ref rB, ref u);
                 mass += _ratio * _ratio * (_mD + _mB) + _iD * JwD * JwD + _iB * JwB * JwB;
-
+                
                 Vector2 pD = _localAnchorD - _lcD;
                 Vector2 pB = Complex.Divide(rB + (cB - cD), ref qD);
                 coordinateB = Vector2.Dot(pB - pD, _localAxisD);
             }
-
+            
             float C = coordinateA + _ratio * coordinateB - _constant;
-
+            
             float impulse = 0.0f;
             if (mass > 0.0f)
             {
                 impulse = -C / mass;
             }
-
+            
             cA += _mA * impulse * JvAC;
             aA += _iA * impulse * JwA;
             cB += _mB * impulse * JvBD;
@@ -589,7 +589,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             aC -= _iC * impulse * JwC;
             cD -= _mD * impulse * JvBD;
             aD -= _iD * impulse * JwD;
-
+            
             data.positions[_indexA].c = cA;
             data.positions[_indexA].a = aA;
             data.positions[_indexB].c = cB;
@@ -598,8 +598,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.positions[_indexC].a = aC;
             data.positions[_indexD].c = cD;
             data.positions[_indexD].a = aD;
-
-
+            
+            
             return linearError < SettingEnv.LinearSlop;
         }
     }

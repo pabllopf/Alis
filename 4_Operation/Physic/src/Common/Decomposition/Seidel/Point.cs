@@ -41,12 +41,12 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         ///     The prev
         /// </summary>
         public Point Next, Prev;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public float X, Y;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Point" /> class
         /// </summary>
@@ -59,36 +59,36 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             Next = null;
             Prev = null;
         }
-
+        
         public static Point operator -(Point p1, Point p2) => new Point(p1.X - p2.X, p1.Y - p2.Y);
-
+        
         public static Point operator +(Point p1, Point p2) => new Point(p1.X + p2.X, p1.Y + p2.Y);
-
+        
         public static Point operator -(Point p1, float f) => new Point(p1.X - f, p1.Y - f);
-
+        
         public static Point operator +(Point p1, float f) => new Point(p1.X + f, p1.Y + f);
-
+        
         /// <summary>
         ///     Crosses the p
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The float</returns>
         public float Cross(Point p) => X * p.Y - Y * p.X;
-
+        
         /// <summary>
         ///     Dots the p
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The float</returns>
         public float Dot(Point p) => X * p.X + Y * p.Y;
-
+        
         /// <summary>
         ///     Describes whether this instance neq
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
         public bool Neq(Point p) => Math.Abs(p.X - X) > float.Epsilon || Math.Abs(p.Y - Y) > float.Epsilon;
-
+        
         /// <summary>
         ///     Orients the 2 d using the specified pb
         /// </summary>

@@ -46,16 +46,16 @@ namespace Alis.Test.Core.Ecs.System.Configuration.Scene
         {
             // Arrange
             SceneSetting sceneSetting = new SceneSetting();
-
+            
             // Act
             sceneSetting.MaxNumberOfScenes = 500;
             int result = sceneSetting.MaxNumberOfScenes;
-
+            
             // Assert
             Assert.NotNull(sceneSetting);
             Assert.Equal(500, result);
         }
-
+        
         /// <summary>
         ///     Tests that test scene setting builder
         /// </summary>
@@ -64,10 +64,10 @@ namespace Alis.Test.Core.Ecs.System.Configuration.Scene
         {
             // Arrange
             SceneSetting sceneSetting = new SceneSetting();
-
+            
             // Act
             SceneSettingBuilder result = sceneSetting.Builder();
-
+            
             // Assert
             Assert.NotNull(result);
             Assert.IsType<SceneSettingBuilder>(result);

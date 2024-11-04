@@ -52,26 +52,26 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         {
             if (triangles.Count <= 0)
                 return triangles;
-
+            
             List<Vertices> polys = new List<Vertices>();
-
+            
             bool[] covered = new bool[triangles.Count];
             for (int i = 0; i < triangles.Count; ++i)
             {
                 covered[i] = false;
-
+                
                 //Check here for degenerate triangles
                 Vertices triangle = triangles[i];
                 Vector2 a = triangle[0];
                 Vector2 b = triangle[1];
                 Vector2 c = triangle[2];
-
+                
                 if (((Math.Abs(a.X - b.X) < float.Epsilon) && (Math.Abs(a.Y - b.Y) < float.Epsilon)) || ((Math.Abs(b.X - c.X) < float.Epsilon) && (Math.Abs(b.Y - c.Y) < float.Epsilon)) || ((Math.Abs(a.X - c.X) < float.Epsilon) && (Math.Abs(a.Y - c.Y) < float.Epsilon)))
                     covered[i] = true;
             }
-
+            
             int polyIndex = 0;
-
+            
             bool notDone = true;
             while (notDone)
             {
@@ -80,11 +80,11 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 {
                     if (covered[i])
                         continue;
-
+                    
                     currTri = i;
                     break;
                 }
-
+                
                 if (currTri == -1)
                 {
                     notDone = false;
@@ -92,12 +92,12 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 else
                 {
                     Vertices poly = new Vertices(3);
-
+                    
                     for (int i = 0; i < 3; i++)
                     {
                         poly.Add(triangles[currTri][i]);
                     }
-
+                    
                     covered[currTri] = true;
                     int index = 0;
                     for (int i = 0; i < 2 * triangles.Count; ++i, ++index)
@@ -107,14 +107,14 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                         {
                             continue;
                         }
-
+                        
                         Vertices newP = AddTriangle(triangles[index], poly);
                         if (newP == null)
                             continue; // is this right
-
+                        
                         if (newP.Count > SettingEnv.MaxPolygonVertices)
                             continue;
-
+                        
                         if (newP.IsConvex())
                         {
                             //Or should it be IsUsable?  Maybe re-write IsConvex to apply the angle threshold from Box2d
@@ -122,12 +122,12 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                             covered[index] = true;
                         }
                     }
-
+                    
                     //We have a maximum of polygons that we need to keep under.
                     if (polyIndex < maxPolys)
                     {
                         SimplifyTools.MergeParallelEdges(poly, tolerance);
-
+                        
                         //If identical points are present, a triangle gets
                         //borked by the MergeParallelEdges function, hence
                         //the vertex number check
@@ -136,23 +136,23 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                         else
                             Debug.WriteLine("Skipping corrupt poly.");
                     }
-
+                    
                     if (poly.Count >= 3)
                         polyIndex++; //Must be outside (polyIndex < polysLength) test
                 }
             }
-
-
+            
+            
             //Remove empty vertice collections
             for (int i = polys.Count - 1; i >= 0; i--)
             {
                 if (polys[i].Count == 0)
                     polys.RemoveAt(i);
             }
-
+            
             return polys;
         }
-
+        
         /// <summary>
         ///     Adds the triangle using the specified t
         /// </summary>
@@ -208,36 +208,36 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                     }
                 }
             }
-
+            
             // Fix ordering if first should be last vertex of poly
             if ((firstP == 0) && (secondP == vertices.Count - 1))
             {
                 firstP = vertices.Count - 1;
                 secondP = 0;
             }
-
+            
             // Didn't find it
             if (secondP == -1)
             {
                 return null;
             }
-
+            
             // Find tip index on triangle
             int tipT = 0;
             if (tipT == firstT || tipT == secondT)
                 tipT = 1;
             if (tipT == firstT || tipT == secondT)
                 tipT = 2;
-
+            
             Vertices result = new Vertices(vertices.Count + 1);
             for (int i = 0; i < vertices.Count; i++)
             {
                 result.Add(vertices[i]);
-
+                
                 if (i == firstP)
                     result.Add(t[tipT]);
             }
-
+            
             return result;
         }
     }

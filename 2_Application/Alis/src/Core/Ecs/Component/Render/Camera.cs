@@ -51,12 +51,12 @@ namespace Alis.Core.Ecs.Component.Render
         ///     The position
         /// </summary>
         [JsonPropertyName("_Position_")] public Vector2 Position;
-
+        
         /// <summary>
         ///     The viewport
         /// </summary>
         [JsonPropertyName("_Viewport_")] public RectangleI Viewport;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Camera" /> class
         /// </summary>
@@ -68,7 +68,7 @@ namespace Alis.Core.Ecs.Component.Render
             BackgroundColor = Color.Black;
             CameraBorder = 1f;
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Camera" /> class
         /// </summary>
@@ -92,37 +92,37 @@ namespace Alis.Core.Ecs.Component.Render
             BackgroundColor = backgroundColor;
             CameraBorder = cameraBorder;
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the texture target
         /// </summary>
         [JsonPropertyName("_TextureTarget_", true, true)]
         public IntPtr TextureTarget { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the resolution
         /// </summary>
         [JsonPropertyName("_Resolution_")]
         public Vector2 Resolution { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the background color
         /// </summary>
         [JsonPropertyName("_BackgroundColor_")]
         public Color BackgroundColor { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the camera border
         /// </summary>
         [JsonPropertyName("_CameraBorder_")]
         public float CameraBorder { get; set; }
-
+        
         /// <summary>
         ///     Builders this instance
         /// </summary>
         /// <returns>The camera builder</returns>
         public CameraBuilder Builder() => new CameraBuilder();
-
+        
         /// <summary>
         ///     Starts this instance
         /// </summary>
@@ -130,10 +130,10 @@ namespace Alis.Core.Ecs.Component.Render
         {
             Viewport = new RectangleI(0, 0, (int) Resolution.X, (int) Resolution.Y);
             TextureTarget = Sdl.CreateTexture(Context.GraphicManager.Renderer, Sdl.PixelFormatRgba8888, (int) TextureAccess.SdlTextureAccessTarget, Viewport.W, Viewport.H);
-
+            
             Context.GraphicManager.Attach(this);
         }
-
+        
         /// <summary>
         ///     Ons the update
         /// </summary>
@@ -142,10 +142,10 @@ namespace Alis.Core.Ecs.Component.Render
             if (GameObject == null || Context == null)
             {
             }
-
+            
             //Viewport = new RectangleI((int) GameObject.Transform.Position.X, (int) GameObject.Transform.Position.Y, Viewport.W, Viewport.H);
         }
-
+        
         /// <summary>
         ///     Ons the exit
         /// </summary>

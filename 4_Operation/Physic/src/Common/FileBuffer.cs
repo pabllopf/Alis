@@ -44,25 +44,25 @@ namespace Alis.Core.Physic.Common
         {
             using (StreamReader sr = new StreamReader(stream))
                 Buffer = sr.ReadToEnd();
-
+            
             Position = 0;
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the buffer
         /// </summary>
         public string Buffer { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the position
         /// </summary>
         public int Position { get; set; }
-
+        
         /// <summary>
         ///     Gets the value of the length
         /// </summary>
         private int Length => Buffer.Length;
-
+        
         /// <summary>
         ///     Gets the value of the next
         /// </summary>
@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Common
                 return c;
             }
         }
-
+        
         /// <summary>
         ///     Gets the value of the end of buffer
         /// </summary>

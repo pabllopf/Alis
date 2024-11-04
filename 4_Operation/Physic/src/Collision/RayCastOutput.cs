@@ -41,7 +41,7 @@ namespace Alis.Core.Physic.Collision
         ///     Contains the actual fraction of the ray where it has the intersection point.
         /// </summary>
         public float Fraction;
-
+        
         /// <summary>
         ///     The normal of the face of the shape the ray has hit.
         /// </summary>

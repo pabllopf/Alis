@@ -46,15 +46,15 @@ namespace Alis.Core.Physic.Common
         {
             WorldXmlSerializer.Serialize(world, stream);
         }
-
+        
         /// <summary>
         ///     Deserialize the world from a stream XML
         /// </summary>
         /// <param name="stream"></param>
         public static World Deserialize(Stream stream) => WorldXmlDeserializer.Deserialize(stream);
     }
-
+    
     #region XMLFragment
-
+    
     #endregion
 }

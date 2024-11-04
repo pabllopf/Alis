@@ -45,24 +45,21 @@ namespace Alis.Builder.Core.Ecs.Entity.Scene
         IAdd<SceneBuilder, Func<GameObjectBuilder, Alis.Core.Ecs.Entity.GameObject>>
     {
         /// <summary>
-        /// The context
+        ///     The context
         /// </summary>
         private readonly Context context;
         
         /// <summary>
-        /// Initializes a new instance of the <see cref="SceneBuilder"/> class
+        ///     Initializes a new instance of the <see cref="SceneBuilder" /> class
         /// </summary>
         /// <param name="context">The context</param>
-        public SceneBuilder(Context context)
-        { 
-            this.context    = context;    
-        }
-
+        public SceneBuilder(Context context) => this.context = context;
+        
         /// <summary>
         ///     Gets the value of the scene
         /// </summary>
         private Alis.Core.Ecs.Entity.Scene Scene { get; } = new Alis.Core.Ecs.Entity.Scene();
-
+        
         /// <summary>
         ///     Adds the value
         /// </summary>
@@ -74,13 +71,13 @@ namespace Alis.Builder.Core.Ecs.Entity.Scene
             Scene.Add(value.Invoke(new GameObjectBuilder(context)));
             return this;
         }
-
+        
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The scene</returns>
         public Alis.Core.Ecs.Entity.Scene Build() => Scene;
-
+        
         /// <summary>
         ///     Names the value
         /// </summary>

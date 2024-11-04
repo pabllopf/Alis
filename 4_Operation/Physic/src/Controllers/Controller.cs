@@ -42,17 +42,17 @@ namespace Alis.Core.Physic.Controllers
         ///     The cat 01
         /// </summary>
         public ControllerCategory ControllerCategory = ControllerCategory.Cat01;
-
+        
         /// <summary>
         ///     The enabled
         /// </summary>
         public bool Enabled = true;
-
+        
         /// <summary>
         ///     Gets or sets the value of the world
         /// </summary>
         public World World { get; internal set; }
-
+        
         /// <summary>
         ///     Describes whether this instance is active on
         /// </summary>
@@ -62,10 +62,10 @@ namespace Alis.Core.Physic.Controllers
         {
             if (body.ControllerFilter.IsControllerIgnored(ControllerCategory))
                 return false;
-
+            
             return base.IsActiveOn(body);
         }
-
+        
         /// <summary>
         ///     Updates the dt
         /// </summary>

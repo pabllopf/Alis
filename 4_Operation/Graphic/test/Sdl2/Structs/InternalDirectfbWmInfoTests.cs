@@ -47,14 +47,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             IntPtr expectedDfb = new IntPtr(123);
             IntPtr expectedWindow = new IntPtr(456);
             IntPtr expectedSurface = new IntPtr(789);
-
+            
             InternalDirectfbWmInfo info = new InternalDirectfbWmInfo
             {
                 Dfb = expectedDfb,
                 Window = expectedWindow,
                 Surface = expectedSurface
             };
-
+            
             Assert.Equal(expectedDfb, info.Dfb);
             Assert.Equal(expectedWindow, info.Window);
             Assert.Equal(expectedSurface, info.Surface);

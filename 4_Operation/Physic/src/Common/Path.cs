@@ -35,7 +35,7 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Core.Physic.Common
 {
     //Contributed by Matthew Bettcher
-
+    
     /// <summary>
     ///     Path:
     ///     Very similar to Vertices, but this
@@ -49,17 +49,17 @@ namespace Alis.Core.Physic.Common
         ///     The delta
         /// </summary>
         private float _deltaT;
-
+        
         /// <summary>
         ///     All the points that makes up the curve
         /// </summary>
         public List<Vector2> ControlPoints;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Path" /> class.
         /// </summary>
         public Path() => ControlPoints = new List<Vector2>();
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Path" /> class.
         /// </summary>
@@ -67,13 +67,13 @@ namespace Alis.Core.Physic.Common
         public Path(Vector2[] vertices)
         {
             ControlPoints = new List<Vector2>(vertices.Length);
-
+            
             for (int i = 0; i < vertices.Length; i++)
             {
                 Add(vertices[i]);
             }
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Path" /> class.
         /// </summary>
@@ -86,13 +86,13 @@ namespace Alis.Core.Physic.Common
                 Add(vertices[i]);
             }
         }
-
+        
         /// <summary>
         ///     True if the curve is closed.
         /// </summary>
         /// <value><c>true</c> if closed; otherwise, <c>false</c>.</value>
         public bool Closed { get; set; }
-
+        
         /// <summary>
         ///     Gets the next index of a controlpoint
         /// </summary>
@@ -104,10 +104,10 @@ namespace Alis.Core.Physic.Common
             {
                 return 0;
             }
-
+            
             return index + 1;
         }
-
+        
         /// <summary>
         ///     Gets the previous index of a controlpoint
         /// </summary>
@@ -119,10 +119,10 @@ namespace Alis.Core.Physic.Common
             {
                 return ControlPoints.Count - 1;
             }
-
+            
             return index - 1;
         }
-
+        
         /// <summary>
         ///     Translates the control points by the specified vector.
         /// </summary>
@@ -132,7 +132,7 @@ namespace Alis.Core.Physic.Common
             for (int i = 0; i < ControlPoints.Count; i++)
                 ControlPoints[i] = ControlPoints[i] + vector;
         }
-
+        
         /// <summary>
         ///     Scales the control points by the specified vector.
         /// </summary>
@@ -142,7 +142,7 @@ namespace Alis.Core.Physic.Common
             for (int i = 0; i < ControlPoints.Count; i++)
                 ControlPoints[i] = ControlPoints[i] * value;
         }
-
+        
         /// <summary>
         ///     Rotate the control points by the defined value in radians.
         /// </summary>
@@ -150,11 +150,11 @@ namespace Alis.Core.Physic.Common
         public void Rotate(float value)
         {
             Complex rotation = Complex.FromAngle(value);
-
+            
             for (int i = 0; i < ControlPoints.Count; i++)
                 ControlPoints[i] = Complex.Multiply(ControlPoints[i], ref rotation);
         }
-
+        
         /// <summary>
         ///     Returns the string
         /// </summary>
@@ -170,10 +170,10 @@ namespace Alis.Core.Physic.Common
                     builder.Append(" ");
                 }
             }
-
+            
             return builder.ToString();
         }
-
+        
         /// <summary>
         ///     Returns a set of points defining the
         ///     curve with the specifed number of divisions
@@ -184,17 +184,17 @@ namespace Alis.Core.Physic.Common
         public Vertices GetVertices(int divisions)
         {
             Vertices verts = new Vertices();
-
+            
             float timeStep = 1f / divisions;
-
+            
             for (float i = 0; i < 1f; i += timeStep)
             {
                 verts.Add(GetPosition(i));
             }
-
+            
             return verts;
         }
-
+        
         /// <summary>
         ///     Gets the position using the specified time
         /// </summary>
@@ -204,18 +204,18 @@ namespace Alis.Core.Physic.Common
         public Vector2 GetPosition(float time)
         {
             Vector2 temp;
-
+            
             if (ControlPoints.Count < 2)
                 throw new Exception("You need at least 2 control points to calculate a position.");
-
+            
             if (Closed)
             {
                 Add(ControlPoints[0]);
-
+                
                 _deltaT = 1f / (ControlPoints.Count - 1);
-
+                
                 int p = (int) (time / _deltaT);
-
+                
                 // use a circular indexing system
                 int p0 = p - 1;
                 if (p0 < 0) p0 = p0 + (ControlPoints.Count - 1);
@@ -229,18 +229,18 @@ namespace Alis.Core.Physic.Common
                 int p3 = p + 2;
                 if (p3 < 0) p3 = p3 + (ControlPoints.Count - 1);
                 else if (p3 >= ControlPoints.Count - 1) p3 = p3 - (ControlPoints.Count - 1);
-
+                
                 // relative time
                 float lt = (time - _deltaT * p) / _deltaT;
-
+                
                 CalcCatmullRom(ControlPoints[p0], ControlPoints[p1], ControlPoints[p2], ControlPoints[p3], lt, out temp);
-
+                
                 RemoveAt(ControlPoints.Count - 1);
             }
             else
             {
                 int p = (int) (time / _deltaT);
-
+                
                 // 
                 int p0 = p - 1;
                 if (p0 < 0) p0 = 0;
@@ -254,16 +254,16 @@ namespace Alis.Core.Physic.Common
                 int p3 = p + 2;
                 if (p3 < 0) p3 = 0;
                 else if (p3 >= ControlPoints.Count - 1) p3 = ControlPoints.Count - 1;
-
+                
                 // relative time
                 float lt = (time - _deltaT * p) / _deltaT;
-
+                
                 CalcCatmullRom(ControlPoints[p0], ControlPoints[p1], ControlPoints[p2], ControlPoints[p3], lt, out temp);
             }
-
+            
             return temp;
         }
-
+        
         /// <summary>
         ///     Calcs the catmull rom using the specified p 0
         /// </summary>
@@ -277,7 +277,7 @@ namespace Alis.Core.Physic.Common
         {
             double sqAmount = amount * amount;
             double cuAmount = sqAmount * amount;
-
+            
             double x;
             double y;
             x = 2.0 * p1.X;
@@ -290,10 +290,10 @@ namespace Alis.Core.Physic.Common
             y += (3.0 * p1.Y - p0.Y - 3.0 * p2.Y + p3.Y) * cuAmount;
             x *= 0.5;
             y *= 0.5;
-
+            
             result = new Vector2((float) x, (float) y);
         }
-
+        
         /// <summary>
         ///     Gets the normal for the given time.
         /// </summary>
@@ -302,21 +302,21 @@ namespace Alis.Core.Physic.Common
         public Vector2 GetPositionNormal(float time)
         {
             float offsetTime = time + 0.0001f;
-
+            
             Vector2 a = GetPosition(time);
             Vector2 b = GetPosition(offsetTime);
-
+            
             Vector2 output;
-
+            
             Vector2.Subtract(ref a, ref b, out Vector2 temp);
-
+            
             output = new Vector2(temp.Y, -temp.X);
-
+            
             output.Normalize();
-
+            
             return output;
         }
-
+        
         /// <summary>
         ///     Adds the point
         /// </summary>
@@ -326,7 +326,7 @@ namespace Alis.Core.Physic.Common
             ControlPoints.Add(point);
             _deltaT = 1f / (ControlPoints.Count - 1);
         }
-
+        
         /// <summary>
         ///     Removes the point
         /// </summary>
@@ -336,7 +336,7 @@ namespace Alis.Core.Physic.Common
             ControlPoints.Remove(point);
             _deltaT = 1f / (ControlPoints.Count - 1);
         }
-
+        
         /// <summary>
         ///     Removes the at using the specified index
         /// </summary>
@@ -346,7 +346,7 @@ namespace Alis.Core.Physic.Common
             ControlPoints.RemoveAt(index);
             _deltaT = 1f / (ControlPoints.Count - 1);
         }
-
+        
         /// <summary>
         ///     Gets the length
         /// </summary>
@@ -355,18 +355,18 @@ namespace Alis.Core.Physic.Common
         {
             List<Vector2> verts = GetVertices(ControlPoints.Count * 25);
             float length = 0;
-
+            
             for (int i = 1; i < verts.Count; i++)
             {
                 length += Vector2.Distance(verts[i - 1], verts[i]);
             }
-
+            
             if (Closed)
                 length += Vector2.Distance(verts[ControlPoints.Count - 1], verts[0]);
-
+            
             return length;
         }
-
+        
         /// <summary>
         ///     Subdivides the evenly using the specified divisions
         /// </summary>
@@ -375,52 +375,52 @@ namespace Alis.Core.Physic.Common
         public List<Vector3> SubdivideEvenly(int divisions)
         {
             List<Vector3> verts = new List<Vector3>();
-
+            
             float length = GetLength();
-
+            
             float deltaLength = length / divisions + 0.001f;
             float t = 0.000f;
-
+            
             // we always start at the first control point
             Vector2 start = ControlPoints[0];
             Vector2 end = GetPosition(t);
-
+            
             // increment t until we are at half the distance
             while (deltaLength * 0.5f >= Vector2.Distance(start, end))
             {
                 end = GetPosition(t);
                 t += 0.0001f;
-
+                
                 if (t >= 1f)
                     break;
             }
-
+            
             start = end;
-
+            
             // for each box
             for (int i = 1; i < divisions; i++)
             {
                 Vector2 normal = GetPositionNormal(t);
                 float angle = (float) Math.Atan2(normal.Y, normal.X);
-
+                
                 verts.Add(new Vector3(end.X, end.Y, angle));
-
+                
                 // until we reach the correct distance down the curve
                 while (deltaLength >= Vector2.Distance(start, end))
                 {
                     end = GetPosition(t);
                     t += 0.00001f;
-
+                    
                     if (t >= 1f)
                         break;
                 }
-
+                
                 if (t >= 1f)
                     break;
-
+                
                 start = end;
             }
-
+            
             return verts;
         }
     }

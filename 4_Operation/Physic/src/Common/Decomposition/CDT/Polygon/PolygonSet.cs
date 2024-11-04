@@ -46,14 +46,14 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         ///     The polygon
         /// </summary>
         protected List<Polygon> _polygons = new List<Polygon>();
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="PolygonSet" /> class
         /// </summary>
         public PolygonSet()
         {
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="PolygonSet" /> class
         /// </summary>
@@ -62,12 +62,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         {
             _polygons.Add(poly);
         }
-
+        
         /// <summary>
         ///     Gets the value of the polygons
         /// </summary>
         public IEnumerable<Polygon> Polygons => _polygons;
-
+        
         /// <summary>
         ///     Adds the p
         /// </summary>

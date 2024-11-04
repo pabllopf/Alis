@@ -48,10 +48,10 @@ namespace Alis.Core.Ecs.Entity
     public class GameObject : IGameObject<AComponent>, IHasBuilder<GameObjectBuilder>
     {
         /// <summary>
-        /// The context
+        ///     The context
         /// </summary>
         private Context _context;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="GameObject" /> class
         /// </summary>
@@ -64,7 +64,7 @@ namespace Alis.Core.Ecs.Entity
             Transform = new Transform(new Vector2(0, 0), 0, new Vector2(1, 1));
             Components = new List<AComponent>();
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="GameObject" /> class
         /// </summary>
@@ -83,7 +83,7 @@ namespace Alis.Core.Ecs.Entity
             Transform = transform;
             Components = new List<AComponent>();
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="GameObject" /> class
         /// </summary>
@@ -103,61 +103,55 @@ namespace Alis.Core.Ecs.Entity
             Components = components;
             components.ForEach(i => i.Attach(this));
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the context
         /// </summary>
         [JsonIgnore]
         public Context Context => _context;
-
+        
         /// <summary>
         ///     Gets or sets the value of the transform
         /// </summary>
         [JsonPropertyName("_Transform_")]
         public Transform Transform { get; set; }
-
-        /// <summary>
-        ///     Builders this instance
-        /// </summary>
-        /// <returns>The game object builder</returns>
-        public GameObjectBuilder Builder() => new GameObjectBuilder(_context);
-
+        
         /// <summary>
         ///     Gets or sets the value of the is enable
         /// </summary>
         [JsonPropertyName("_IsEnable_")]
         public bool IsEnable { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the name
         /// </summary>
         [JsonPropertyName("_Name_")]
         public string Name { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the id
         /// </summary>
         [JsonPropertyName("_Id_")]
         public string Id { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the tag
         /// </summary>
         [JsonPropertyName("_Tag_")]
         public string Tag { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the components
         /// </summary>
         [JsonPropertyName("_Components_")]
         public List<AComponent> Components { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the is static
         /// </summary>
         [JsonPropertyName("_IsStatic_")]
         public bool IsStatic { get; set; } = false;
-
+        
         /// <summary>
         ///     Adds the component
         /// </summary>
@@ -171,7 +165,7 @@ namespace Alis.Core.Ecs.Entity
                 Components.Add(value);
             }
         }
-
+        
         /// <summary>
         ///     Removes the component
         /// </summary>
@@ -184,7 +178,7 @@ namespace Alis.Core.Ecs.Entity
                 Components.Remove(value);
             }
         }
-
+        
         /// <summary>
         ///     Gets this instance
         /// </summary>
@@ -194,19 +188,19 @@ namespace Alis.Core.Ecs.Entity
         {
             return Components.Find(i => i is T) as T;
         }
-
+        
         /// <summary>
         ///     Describes whether this instance contains
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The bool</returns>
         public bool Contains<T>() where T : AComponent => Components.Contains(Get<T>());
-
+        
         /// <summary>
         ///     Clears this instance
         /// </summary>
         public void Clear() => Components.Clear();
-
+        
         /// <summary>
         ///     Ons the enable
         /// </summary>
@@ -218,7 +212,7 @@ namespace Alis.Core.Ecs.Entity
                 component.OnEnable();
             }
         }
-
+        
         /// <summary>
         ///     Ons the init
         /// </summary>
@@ -230,7 +224,7 @@ namespace Alis.Core.Ecs.Entity
                 component.OnInit();
             }
         }
-
+        
         /// <summary>
         ///     Ons the awake
         /// </summary>
@@ -241,7 +235,7 @@ namespace Alis.Core.Ecs.Entity
                 component.OnAwake();
             }
         }
-
+        
         /// <summary>
         ///     Ons the start
         /// </summary>
@@ -252,9 +246,9 @@ namespace Alis.Core.Ecs.Entity
                 component.OnStart();
             }
         }
-
+        
         /// <summary>
-        /// Ons the physic update
+        ///     Ons the physic update
         /// </summary>
         public void OnPhysicUpdate()
         {
@@ -263,7 +257,7 @@ namespace Alis.Core.Ecs.Entity
                 component.OnPhysicUpdate();
             }
         }
-
+        
         /// <summary>
         ///     Ons the before update
         /// </summary>
@@ -274,7 +268,7 @@ namespace Alis.Core.Ecs.Entity
                 component.OnBeforeUpdate();
             }
         }
-
+        
         /// <summary>
         ///     Ons the update
         /// </summary>
@@ -285,7 +279,7 @@ namespace Alis.Core.Ecs.Entity
                 component.OnUpdate();
             }
         }
-
+        
         /// <summary>
         ///     Ons the after update
         /// </summary>
@@ -296,7 +290,7 @@ namespace Alis.Core.Ecs.Entity
                 component.OnAfterUpdate();
             }
         }
-
+        
         /// <summary>
         ///     Ons the before fixed update
         /// </summary>
@@ -307,7 +301,7 @@ namespace Alis.Core.Ecs.Entity
                 component.OnBeforeFixedUpdate();
             }
         }
-
+        
         /// <summary>
         ///     Ons the fixed update
         /// </summary>
@@ -318,7 +312,7 @@ namespace Alis.Core.Ecs.Entity
                 component.OnFixedUpdate();
             }
         }
-
+        
         /// <summary>
         ///     Ons the after fixed update
         /// </summary>
@@ -329,7 +323,7 @@ namespace Alis.Core.Ecs.Entity
                 component.OnAfterFixedUpdate();
             }
         }
-
+        
         /// <summary>
         ///     Ons the dispatch events
         /// </summary>
@@ -340,7 +334,7 @@ namespace Alis.Core.Ecs.Entity
                 component.OnDispatchEvents();
             }
         }
-
+        
         /// <summary>
         ///     Ons the calculate
         /// </summary>
@@ -351,7 +345,7 @@ namespace Alis.Core.Ecs.Entity
                 component.OnCalculate();
             }
         }
-
+        
         public void OnBeforeDraw()
         {
             foreach (AComponent component in Components)
@@ -359,7 +353,7 @@ namespace Alis.Core.Ecs.Entity
                 component.OnBeforeDraw();
             }
         }
-
+        
         /// <summary>
         ///     Ons the draw
         /// </summary>
@@ -370,7 +364,7 @@ namespace Alis.Core.Ecs.Entity
                 component.OnDraw();
             }
         }
-
+        
         public void OnAfterDraw()
         {
             foreach (AComponent component in Components)
@@ -378,7 +372,7 @@ namespace Alis.Core.Ecs.Entity
                 component.OnAfterDraw();
             }
         }
-
+        
         /// <summary>
         ///     Ons the gui
         /// </summary>
@@ -389,7 +383,7 @@ namespace Alis.Core.Ecs.Entity
                 component.OnGui();
             }
         }
-
+        
         public void OnRenderPresent()
         {
             foreach (AComponent component in Components)
@@ -397,7 +391,7 @@ namespace Alis.Core.Ecs.Entity
                 component.OnRenderPresent();
             }
         }
-
+        
         /// <summary>
         ///     Ons the disable
         /// </summary>
@@ -409,7 +403,7 @@ namespace Alis.Core.Ecs.Entity
                 component.OnDisable();
             }
         }
-
+        
         /// <summary>
         ///     Ons the reset
         /// </summary>
@@ -420,7 +414,7 @@ namespace Alis.Core.Ecs.Entity
                 component.OnReset();
             }
         }
-
+        
         /// <summary>
         ///     Ons the stop
         /// </summary>
@@ -431,7 +425,7 @@ namespace Alis.Core.Ecs.Entity
                 component.OnStop();
             }
         }
-
+        
         /// <summary>
         ///     Ons the exit
         /// </summary>
@@ -442,7 +436,7 @@ namespace Alis.Core.Ecs.Entity
                 component.OnExit();
             }
         }
-
+        
         /// <summary>
         ///     Ons the destroy
         /// </summary>
@@ -455,7 +449,13 @@ namespace Alis.Core.Ecs.Entity
         }
         
         /// <summary>
-        /// Sets the context using the specified context
+        ///     Builders this instance
+        /// </summary>
+        /// <returns>The game object builder</returns>
+        public GameObjectBuilder Builder() => new GameObjectBuilder(_context);
+        
+        /// <summary>
+        ///     Sets the context using the specified context
         /// </summary>
         /// <param name="context">The context</param>
         public void SetContext(Context context)

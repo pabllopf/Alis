@@ -45,7 +45,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Sample
             Logger.Log("Starting dungeon generation");
             Dungeon dungeon = new Dungeon();
             dungeon.Start();
-
+            
             // print the dungeon into the console
             BoardSquare[,] map = dungeon.Board;
             for (int y = 0; y < map.GetLength(1); y++)
@@ -57,85 +57,85 @@ namespace Alis.Extension.Math.DungeonGenerator.Sample
                         Console.Write(" ");
                         continue;
                     }
-
+                    
                     if (map[x, y] == BoardSquare.WallTop)
                     {
                         Console.Write("─");
                         continue;
                     }
-
+                    
                     if (map[x, y] == BoardSquare.WallDown)
                     {
                         Console.Write("─");
                         continue;
                     }
-
+                    
                     if (map[x, y] == BoardSquare.WallLeft)
                     {
                         Console.Write("│");
                         continue;
                     }
-
+                    
                     if (map[x, y] == BoardSquare.WallRight)
                     {
                         Console.Write("│");
                         continue;
                     }
-
+                    
                     if (map[x, y] == BoardSquare.CornerLeftUp)
                     {
                         Console.Write("└");
                         continue;
                     }
-
+                    
                     if (map[x, y] == BoardSquare.CornerRightUp)
                     {
                         Console.Write("┘");
                         continue;
                     }
-
+                    
                     if (map[x, y] == BoardSquare.CornerLeftDown)
                     {
                         Console.Write("┌");
                         continue;
                     }
-
+                    
                     if (map[x, y] == BoardSquare.CornerRightDown)
                     {
                         Console.Write("┐");
                         continue;
                     }
-
+                    
                     if (map[x, y] == BoardSquare.CornerInternalLeftDown)
                     {
                         Console.Write("┘");
                         continue;
                     }
-
+                    
                     if (map[x, y] == BoardSquare.CornerInternalLeftUp)
                     {
                         Console.Write("┐");
                         continue;
                     }
-
+                    
                     if (map[x, y] == BoardSquare.CornerInternalRightDown)
                     {
                         Console.Write("└");
                         continue;
                     }
-
+                    
                     if (map[x, y] == BoardSquare.CornerInternalRightUp)
                     {
                         Console.Write("┌");
                         continue;
                     }
-
+                    
                     Console.Write("█");
                 }
-
+                
                 Console.WriteLine();
             }
-
+            
             Logger.Log("Dungeon generated");
         }
     }

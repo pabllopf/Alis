@@ -31,9 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Reflection;
 using System.Text.RegularExpressions;
-using Alis.Core.Aspect.Data.Dll;
 
 namespace Alis.Extension.Multimedia.FFmpeg
 {

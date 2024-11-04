@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotRange range = new ImPlotRange();
             Assert.Equal(default(double), range.Min);
         }
-
+        
         /// <summary>
         ///     Tests that max should be initialized
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotRange range = new ImPlotRange();
             Assert.Equal(default(double), range.Max);
         }
-
+        
         /// <summary>
         ///     Tests that min should set and get correctly
         /// </summary>
@@ -68,7 +68,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             range.Min = value;
             Assert.Equal(value, range.Min);
         }
-
+        
         /// <summary>
         ///     Tests that max should set and get correctly
         /// </summary>

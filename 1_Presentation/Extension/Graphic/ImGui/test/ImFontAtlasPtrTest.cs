@@ -48,7 +48,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr ptr = new ImFontAtlasPtr(atlas);
             Assert.NotEqual(IntPtr.Zero, ptr.NativePtr);
         }
-
+        
         /// <summary>
         ///     Tests that flags should be initialized
         /// </summary>
@@ -59,7 +59,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr ptr = new ImFontAtlasPtr(atlas);
             Assert.Equal(atlas.Flags, ptr.Flags);
         }
-
+        
         /// <summary>
         ///     Tests that tex id should be initialized
         /// </summary>
@@ -70,7 +70,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr ptr = new ImFontAtlasPtr(atlas);
             Assert.Equal(atlas.TexId, ptr.TexId);
         }
-
+        
         /// <summary>
         ///     Tests that tex desired width should be initialized
         /// </summary>
@@ -81,7 +81,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr ptr = new ImFontAtlasPtr(atlas);
             Assert.Equal(atlas.TexDesiredWidth, ptr.TexDesiredWidth);
         }
-
+        
         /// <summary>
         ///     Tests that tex glyph padding should be initialized
         /// </summary>
@@ -92,7 +92,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr ptr = new ImFontAtlasPtr(atlas);
             Assert.Equal(atlas.TexGlyphPadding, ptr.TexGlyphPadding);
         }
-
+        
         /// <summary>
         ///     Tests that locked should be initialized
         /// </summary>
@@ -101,10 +101,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             ImFontAtlas atlas = new ImFontAtlas();
             ImFontAtlasPtr ptr = new ImFontAtlasPtr(atlas);
-
+            
             Assert.Equal(atlas.Locked != 0, ptr.Locked);
         }
-
+        
         /// <summary>
         ///     Tests that tex ready should be initialized
         /// </summary>
@@ -113,10 +113,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             ImFontAtlas atlas = new ImFontAtlas();
             ImFontAtlasPtr ptr = new ImFontAtlasPtr(atlas);
-
+            
             Assert.Equal(atlas.TexReady != 0, ptr.TexReady);
         }
-
+        
         /// <summary>
         ///     Tests that tex pixels use colors should be initialized
         /// </summary>
@@ -125,10 +125,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             ImFontAtlas atlas = new ImFontAtlas();
             ImFontAtlasPtr ptr = new ImFontAtlasPtr(atlas);
-
+            
             Assert.Equal(atlas.TexPixelsUseColors != 0, ptr.TexPixelsUseColors);
         }
-
+        
         /// <summary>
         ///     Tests that tex pixels alpha 8 should be initialized
         /// </summary>
@@ -137,10 +137,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             ImFontAtlas atlas = new ImFontAtlas();
             ImFontAtlasPtr ptr = new ImFontAtlasPtr(atlas);
-
+            
             Assert.Equal(atlas.TexPixelsAlpha8, ptr.TexPixelsAlpha8);
         }
-
+        
         /// <summary>
         ///     Tests that tex pixels rgba 32 should be initialized
         /// </summary>
@@ -149,10 +149,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             ImFontAtlas atlas = new ImFontAtlas();
             ImFontAtlasPtr ptr = new ImFontAtlasPtr(atlas);
-
+            
             Assert.Equal(atlas.TexPixelsRgba32, ptr.TexPixelsRgba32);
         }
-
+        
         /// <summary>
         ///     Tests that tex width should be initialized
         /// </summary>
@@ -161,10 +161,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             ImFontAtlas atlas = new ImFontAtlas();
             ImFontAtlasPtr ptr = new ImFontAtlasPtr(atlas);
-
+            
             Assert.Equal(atlas.TexWidth, ptr.TexWidth);
         }
-
+        
         /// <summary>
         ///     Tests that tex height should be initialized
         /// </summary>
@@ -173,10 +173,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             ImFontAtlas atlas = new ImFontAtlas();
             ImFontAtlasPtr ptr = new ImFontAtlasPtr(atlas);
-
+            
             Assert.Equal(atlas.TexHeight, ptr.TexHeight);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv scale should be initialized
         /// </summary>
@@ -185,10 +185,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             ImFontAtlas atlas = new ImFontAtlas();
             ImFontAtlasPtr ptr = new ImFontAtlasPtr(atlas);
-
+            
             Assert.Equal(atlas.TexUvScale, ptr.TexUvScale);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv white pixel should be initialized
         /// </summary>
@@ -197,10 +197,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             ImFontAtlas atlas = new ImFontAtlas();
             ImFontAtlasPtr ptr = new ImFontAtlasPtr(atlas);
-
+            
             Assert.Equal(atlas.TexUvWhitePixel, ptr.TexUvWhitePixel);
         }
-
+        
         /// <summary>
         ///     Tests that fonts should be initialized
         /// </summary>
@@ -209,10 +209,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             ImFontAtlas atlas = new ImFontAtlas();
             ImFontAtlasPtr ptr = new ImFontAtlasPtr(atlas);
-
+            
             Assert.Equal(atlas.Fonts.Data, ptr.Fonts.Data);
         }
-
+        
         /// <summary>
         ///     Tests that custom rects should be initialized
         /// </summary>
@@ -221,10 +221,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             ImFontAtlas atlas = new ImFontAtlas();
             ImFontAtlasPtr ptr = new ImFontAtlasPtr(atlas);
-
+            
             Assert.Equal(atlas.CustomRects.Data, ptr.CustomRects.Data);
         }
-
+        
         /// <summary>
         ///     Tests that config data should be initialized
         /// </summary>
@@ -233,10 +233,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             ImFontAtlas atlas = new ImFontAtlas();
             ImFontAtlasPtr ptr = new ImFontAtlasPtr(atlas);
-
+            
             Assert.Equal(atlas.ConfigData.Data, ptr.ConfigData.Data);
         }
-
+        
         /// <summary>
         ///     Tests that font builder io should be initialized
         /// </summary>
@@ -245,10 +245,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             ImFontAtlas atlas = new ImFontAtlas();
             ImFontAtlasPtr ptr = new ImFontAtlasPtr(atlas);
-
+            
             Assert.Equal(atlas.FontBuilderIo, ptr.FontBuilderIo);
         }
-
+        
         /// <summary>
         ///     Tests that font builder flags should be initialized
         /// </summary>
@@ -257,10 +257,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             ImFontAtlas atlas = new ImFontAtlas();
             ImFontAtlasPtr ptr = new ImFontAtlasPtr(atlas);
-
+            
             Assert.Equal(atlas.FontBuilderFlags, ptr.FontBuilderFlags);
         }
-
+        
         /// <summary>
         ///     Tests that pack id mouse cursors should be initialized
         /// </summary>
@@ -269,10 +269,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             ImFontAtlas atlas = new ImFontAtlas();
             ImFontAtlasPtr ptr = new ImFontAtlasPtr(atlas);
-
+            
             Assert.Equal(atlas.PackIdMouseCursors, ptr.PackIdMouseCursors);
         }
-
+        
         /// <summary>
         ///     Tests that pack id lines should be initialized
         /// </summary>
@@ -281,10 +281,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             ImFontAtlas atlas = new ImFontAtlas();
             ImFontAtlasPtr ptr = new ImFontAtlasPtr(atlas);
-
+            
             Assert.Equal(atlas.PackIdLines, ptr.PackIdLines);
         }
-
+        
         /// <summary>
         ///     Tests that flags should set and get correctly
         /// </summary>
@@ -295,7 +295,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.Flags = ImFontAtlasFlags.NoPowerOfTwoHeight;
             Assert.Equal(ImFontAtlasFlags.NoPowerOfTwoHeight, atlas.Flags);
         }
-
+        
         /// <summary>
         ///     Tests that tex id should set and get correctly
         /// </summary>
@@ -307,7 +307,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexId = texId;
             Assert.Equal(texId, atlas.TexId);
         }
-
+        
         /// <summary>
         ///     Tests that tex desired width should set and get correctly
         /// </summary>
@@ -318,7 +318,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexDesiredWidth = 512;
             Assert.Equal(512, atlas.TexDesiredWidth);
         }
-
+        
         /// <summary>
         ///     Tests that tex glyph padding should set and get correctly
         /// </summary>
@@ -329,7 +329,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexGlyphPadding = 1;
             Assert.Equal(1, atlas.TexGlyphPadding);
         }
-
+        
         /// <summary>
         ///     Tests that locked should set and get correctly
         /// </summary>
@@ -340,7 +340,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.Locked = 1;
             Assert.Equal((byte) 1, atlas.Locked);
         }
-
+        
         /// <summary>
         ///     Tests that tex ready should set and get correctly
         /// </summary>
@@ -351,7 +351,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexReady = 1;
             Assert.Equal((byte) 1, atlas.TexReady);
         }
-
+        
         /// <summary>
         ///     Tests that tex pixels use colors should set and get correctly
         /// </summary>
@@ -362,7 +362,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexPixelsUseColors = 1;
             Assert.Equal((byte) 1, atlas.TexPixelsUseColors);
         }
-
+        
         /// <summary>
         ///     Tests that tex pixels alpha 8 should set and get correctly
         /// </summary>
@@ -374,7 +374,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexPixelsAlpha8 = ptr;
             Assert.Equal(ptr, atlas.TexPixelsAlpha8);
         }
-
+        
         /// <summary>
         ///     Tests that tex pixels rgba 32 should set and get correctly
         /// </summary>
@@ -386,7 +386,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexPixelsRgba32 = ptr;
             Assert.Equal(ptr, atlas.TexPixelsRgba32);
         }
-
+        
         /// <summary>
         ///     Tests that tex width should set and get correctly
         /// </summary>
@@ -397,7 +397,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexWidth = 1024;
             Assert.Equal(1024, atlas.TexWidth);
         }
-
+        
         /// <summary>
         ///     Tests that tex height should set and get correctly
         /// </summary>
@@ -408,7 +408,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexHeight = 1024;
             Assert.Equal(1024, atlas.TexHeight);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv scale should set and get correctly
         /// </summary>
@@ -420,7 +420,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvScale = scale;
             Assert.Equal(scale, atlas.TexUvScale);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv white pixel should set and get correctly
         /// </summary>
@@ -432,7 +432,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvWhitePixel = whitePixel;
             Assert.Equal(whitePixel, atlas.TexUvWhitePixel);
         }
-
+        
         /// <summary>
         ///     Tests that fonts should set and get correctly
         /// </summary>
@@ -444,7 +444,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.Fonts = fonts;
             Assert.Equal(fonts, atlas.Fonts);
         }
-
+        
         /// <summary>
         ///     Tests that custom rects should set and get correctly
         /// </summary>
@@ -456,7 +456,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.CustomRects = rects;
             Assert.Equal(rects, atlas.CustomRects);
         }
-
+        
         /// <summary>
         ///     Tests that config data should set and get correctly
         /// </summary>
@@ -468,7 +468,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.ConfigData = configData;
             Assert.Equal(configData, atlas.ConfigData);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines should set and get correctly
         /// </summary>
@@ -480,7 +480,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines0 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines0);
         }
-
+        
         /// <summary>
         ///     Tests that font builder io should set and get correctly
         /// </summary>
@@ -492,7 +492,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.FontBuilderIo = ptr;
             Assert.Equal(ptr, atlas.FontBuilderIo);
         }
-
+        
         /// <summary>
         ///     Tests that font builder flags should set and get correctly
         /// </summary>
@@ -503,7 +503,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.FontBuilderFlags = 1;
             Assert.Equal((uint) 1, atlas.FontBuilderFlags);
         }
-
+        
         /// <summary>
         ///     Tests that pack id mouse cursors should set and get correctly
         /// </summary>
@@ -514,7 +514,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.PackIdMouseCursors = 1;
             Assert.Equal(1, atlas.PackIdMouseCursors);
         }
-
+        
         /// <summary>
         ///     Tests that pack id lines should set and get correctly
         /// </summary>
@@ -525,7 +525,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.PackIdLines = 1;
             Assert.Equal(1, atlas.PackIdLines);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 30 should set and get correctly
         /// </summary>
@@ -537,7 +537,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines30 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines30);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 31 should set and get correctly
         /// </summary>
@@ -549,7 +549,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines31 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines31);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 32 should set and get correctly
         /// </summary>
@@ -561,7 +561,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines32 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines32);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 33 should set and get correctly
         /// </summary>
@@ -573,7 +573,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines33 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines33);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 34 should set and get correctly
         /// </summary>
@@ -585,7 +585,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines34 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines34);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 35 should set and get correctly
         /// </summary>
@@ -597,7 +597,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines35 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines35);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 36 should set and get correctly
         /// </summary>
@@ -609,7 +609,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines36 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines36);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 37 should set and get correctly
         /// </summary>
@@ -621,7 +621,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines37 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines37);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 38 should set and get correctly
         /// </summary>
@@ -633,7 +633,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines38 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines38);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 39 should set and get correctly
         /// </summary>
@@ -645,7 +645,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines39 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines39);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 40 should set and get correctly
         /// </summary>
@@ -657,7 +657,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines40 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines40);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 41 should set and get correctly
         /// </summary>
@@ -669,7 +669,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines41 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines41);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 42 should set and get correctly
         /// </summary>
@@ -681,7 +681,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines42 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines42);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 43 should set and get correctly
         /// </summary>
@@ -693,7 +693,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines43 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines43);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 44 should set and get correctly
         /// </summary>
@@ -705,7 +705,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines44 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines44);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 45 should set and get correctly
         /// </summary>
@@ -717,7 +717,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines45 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines45);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 46 should set and get correctly
         /// </summary>
@@ -729,7 +729,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines46 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines46);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 47 should set and get correctly
         /// </summary>
@@ -741,7 +741,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines47 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines47);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 48 should set and get correctly
         /// </summary>
@@ -753,7 +753,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines48 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines48);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 49 should set and get correctly
         /// </summary>
@@ -765,7 +765,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines49 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines49);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 50 should set and get correctly
         /// </summary>
@@ -777,7 +777,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines50 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines50);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 51 should set and get correctly
         /// </summary>
@@ -789,7 +789,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines51 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines51);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 52 should set and get correctly
         /// </summary>
@@ -801,7 +801,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines52 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines52);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 53 should set and get correctly
         /// </summary>
@@ -813,7 +813,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines53 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines53);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 54 should set and get correctly
         /// </summary>
@@ -825,7 +825,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines54 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines54);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 55 should set and get correctly
         /// </summary>
@@ -837,7 +837,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines55 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines55);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 56 should set and get correctly
         /// </summary>
@@ -849,7 +849,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines56 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines56);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 57 should set and get correctly
         /// </summary>
@@ -861,7 +861,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines57 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines57);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 58 should set and get correctly
         /// </summary>
@@ -873,7 +873,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines58 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines58);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 59 should set and get correctly
         /// </summary>
@@ -885,7 +885,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines59 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines59);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 60 should set and get correctly
         /// </summary>
@@ -897,7 +897,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines60 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines60);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 61 should set and get correctly
         /// </summary>
@@ -909,7 +909,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines61 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines61);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 62 should set and get correctly
         /// </summary>
@@ -921,7 +921,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines62 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines62);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 63 should set and get correctly
         /// </summary>
@@ -933,7 +933,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines63 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines63);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 1 should set and get correctly
         /// </summary>
@@ -945,7 +945,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines1 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines1);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 2 should set and get correctly
         /// </summary>
@@ -957,7 +957,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines2 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines2);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 3 should set and get correctly
         /// </summary>
@@ -969,7 +969,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines3 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines3);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 4 should set and get correctly
         /// </summary>
@@ -981,7 +981,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines4 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines4);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 5 should set and get correctly
         /// </summary>
@@ -993,7 +993,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines5 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines5);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 6 should set and get correctly
         /// </summary>
@@ -1005,7 +1005,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines6 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines6);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 7 should set and get correctly
         /// </summary>
@@ -1017,7 +1017,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines7 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines7);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 8 should set and get correctly
         /// </summary>
@@ -1029,7 +1029,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines8 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines8);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 9 should set and get correctly
         /// </summary>
@@ -1041,7 +1041,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines9 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines9);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 10 should set and get correctly
         /// </summary>
@@ -1053,7 +1053,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines10 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines10);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 11 should set and get correctly
         /// </summary>
@@ -1065,7 +1065,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines11 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines11);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 12 should set and get correctly
         /// </summary>
@@ -1077,7 +1077,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines12 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines12);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 13 should set and get correctly
         /// </summary>
@@ -1089,7 +1089,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines13 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines13);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 14 should set and get correctly
         /// </summary>
@@ -1101,7 +1101,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines14 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines14);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 15 should set and get correctly
         /// </summary>
@@ -1113,7 +1113,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines15 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines15);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 16 should set and get correctly
         /// </summary>
@@ -1125,7 +1125,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines16 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines16);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 17 should set and get correctly
         /// </summary>
@@ -1137,7 +1137,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines17 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines17);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 18 should set and get correctly
         /// </summary>
@@ -1149,7 +1149,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines18 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines18);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 19 should set and get correctly
         /// </summary>
@@ -1161,7 +1161,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines19 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines19);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 20 should set and get correctly
         /// </summary>
@@ -1173,7 +1173,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines20 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines20);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 21 should set and get correctly
         /// </summary>
@@ -1185,7 +1185,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines21 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines21);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 22 should set and get correctly
         /// </summary>
@@ -1197,7 +1197,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines22 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines22);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 23 should set and get correctly
         /// </summary>
@@ -1209,7 +1209,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines23 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines23);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 24 should set and get correctly
         /// </summary>
@@ -1221,7 +1221,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines24 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines24);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 25 should set and get correctly
         /// </summary>
@@ -1233,7 +1233,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines25 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines25);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 26 should set and get correctly
         /// </summary>
@@ -1245,7 +1245,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines26 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines26);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 27 should set and get correctly
         /// </summary>
@@ -1257,7 +1257,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines27 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines27);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 28 should set and get correctly
         /// </summary>
@@ -1269,7 +1269,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines28 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines28);
         }
-
+        
         /// <summary>
         ///     Tests that tex uv lines 29 should set and get correctly
         /// </summary>
@@ -1281,7 +1281,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines29 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines29);
         }
-
+        
         /// <summary>
         ///     Tests that add font default returns im font ptr
         /// </summary>
@@ -1291,7 +1291,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.AddFontDefault());
         }
-
+        
         /// <summary>
         ///     Tests that add font default with font cfg returns im font ptr
         /// </summary>
@@ -1302,7 +1302,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr fontCfg = new ImFontConfigPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.AddFontDefault(fontCfg));
         }
-
+        
         /// <summary>
         ///     Tests that add font from file ttf returns im font ptr
         /// </summary>
@@ -1312,7 +1312,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.AddFontFromFileTtf("test.ttf", 16.0f));
         }
-
+        
         /// <summary>
         ///     Tests that add font from file ttf with font cfg returns im font ptr
         /// </summary>
@@ -1323,7 +1323,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr fontCfg = new ImFontConfigPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.AddFontFromFileTtf("test.ttf", 16.0f, fontCfg));
         }
-
+        
         /// <summary>
         ///     Tests that add font from file ttf with font cfg and glyph ranges returns im font ptr
         /// </summary>
@@ -1335,7 +1335,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr glyphRanges = new IntPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.AddFontFromFileTtf("test.ttf", 16.0f, fontCfg, glyphRanges));
         }
-
+        
         /// <summary>
         ///     Tests that add font from memory compressed base 85 ttf returns im font ptr
         /// </summary>
@@ -1345,7 +1345,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.AddFontFromMemoryCompressedBase85Ttf("compressedData", 16.0f));
         }
-
+        
         /// <summary>
         ///     Tests that add font from memory compressed base 85 ttf with font cfg returns im font ptr
         /// </summary>
@@ -1356,7 +1356,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr fontCfg = new ImFontConfigPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.AddFontFromMemoryCompressedBase85Ttf("compressedData", 16.0f, fontCfg));
         }
-
+        
         /// <summary>
         ///     Tests that add font from memory compressed base 85 ttf with font cfg and glyph ranges returns im font ptr
         /// </summary>
@@ -1368,7 +1368,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr glyphRanges = new IntPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.AddFontFromMemoryCompressedBase85Ttf("compressedData", 16.0f, fontCfg, glyphRanges));
         }
-
+        
         /// <summary>
         ///     Tests that add font from memory compressed ttf returns im font ptr
         /// </summary>
@@ -1379,7 +1379,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr compressedFontData = new IntPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.AddFontFromMemoryCompressedTtf(compressedFontData, 100, 16.0f));
         }
-
+        
         /// <summary>
         ///     Tests that add font from memory compressed ttf with font cfg returns im font ptr
         /// </summary>
@@ -1391,7 +1391,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr fontCfg = new ImFontConfigPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.AddFontFromMemoryCompressedTtf(compressedFontData, 100, 16.0f, fontCfg));
         }
-
+        
         /// <summary>
         ///     Tests that add font from memory compressed ttf with font cfg and glyph ranges returns im font ptr
         /// </summary>
@@ -1404,7 +1404,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr glyphRanges = new IntPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.AddFontFromMemoryCompressedTtf(compressedFontData, 100, 16.0f, fontCfg, glyphRanges));
         }
-
+        
         /// <summary>
         ///     Tests that add font from memory ttf returns im font ptr
         /// </summary>
@@ -1415,7 +1415,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr fontData = new IntPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.AddFontFromMemoryTtf(fontData, 100, 16.0f));
         }
-
+        
         /// <summary>
         ///     Tests that add font from memory ttf with font cfg returns im font ptr
         /// </summary>
@@ -1427,7 +1427,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfigPtr fontCfg = new ImFontConfigPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.AddFontFromMemoryTtf(fontData, 100, 16.0f, fontCfg));
         }
-
+        
         /// <summary>
         ///     Tests that add font from memory ttf with font cfg and glyph ranges returns im font ptr
         /// </summary>
@@ -1440,7 +1440,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr glyphRanges = new IntPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.AddFontFromMemoryTtf(fontData, 100, 16.0f, fontCfg, glyphRanges));
         }
-
+        
         /// <summary>
         ///     Tests that build returns true
         /// </summary>
@@ -1450,7 +1450,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.Build());
         }
-
+        
         /// <summary>
         ///     Tests that calc custom rect uv sets out parameters
         /// </summary>
@@ -1461,7 +1461,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
             Assert.Throws<DllNotFoundException>(() => atlas.CalcCustomRectUv(rect, out Vector2 _, out Vector2 _));
         }
-
+        
         /// <summary>
         ///     Tests that clear clears instance
         /// </summary>
@@ -1472,7 +1472,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Throws<DllNotFoundException>(() => atlas.Clear());
             // Assuming some way to verify the instance is cleared
         }
-
+        
         /// <summary>
         ///     Tests that clear fonts clears fonts
         /// </summary>
@@ -1483,7 +1483,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Throws<DllNotFoundException>(() => atlas.ClearFonts());
             // Assuming some way to verify the fonts are cleared
         }
-
+        
         /// <summary>
         ///     Tests that clear input data clears input data
         /// </summary>
@@ -1494,7 +1494,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Throws<DllNotFoundException>(() => atlas.ClearInputData());
             // Assuming some way to verify the input data is cleared
         }
-
+        
         /// <summary>
         ///     Tests that clear tex data clears tex data
         /// </summary>
@@ -1505,7 +1505,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Assert.Throws<DllNotFoundException>(() => atlas.ClearTexData());
             // Assuming some way to verify the tex data is cleared
         }
-
+        
         /// <summary>
         ///     Tests that get custom rect by index returns custom rect
         /// </summary>
@@ -1515,7 +1515,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.GetCustomRectByIndex(0));
         }
-
+        
         /// <summary>
         ///     Tests that get glyph ranges chinese full returns int ptr
         /// </summary>
@@ -1525,7 +1525,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.GetGlyphRangesChineseFull());
         }
-
+        
         /// <summary>
         ///     Tests that get glyph ranges chinese simplified common returns int ptr
         /// </summary>
@@ -1535,7 +1535,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.GetGlyphRangesChineseSimplifiedCommon());
         }
-
+        
         /// <summary>
         ///     Tests that get glyph ranges cyrillic returns int ptr
         /// </summary>
@@ -1545,7 +1545,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.GetGlyphRangesCyrillic());
         }
-
+        
         /// <summary>
         ///     Tests that get glyph ranges default returns int ptr
         /// </summary>
@@ -1555,7 +1555,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.GetGlyphRangesDefault());
         }
-
+        
         /// <summary>
         ///     Tests that get glyph ranges greek returns int ptr
         /// </summary>
@@ -1565,7 +1565,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.GetGlyphRangesGreek());
         }
-
+        
         /// <summary>
         ///     Tests that get glyph ranges japanese returns int ptr
         /// </summary>
@@ -1575,7 +1575,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.GetGlyphRangesJapanese());
         }
-
+        
         /// <summary>
         ///     Tests that get glyph ranges korean returns int ptr
         /// </summary>
@@ -1585,7 +1585,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.GetGlyphRangesKorean());
         }
-
+        
         /// <summary>
         ///     Tests that get glyph ranges thai returns int ptr
         /// </summary>
@@ -1595,7 +1595,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.GetGlyphRangesThai());
         }
-
+        
         /// <summary>
         ///     Tests that get glyph ranges vietnamese returns int ptr
         /// </summary>
@@ -1605,7 +1605,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.GetGlyphRangesVietnamese());
         }
-
+        
         /// <summary>
         ///     Tests that get mouse cursor tex data returns true
         /// </summary>
@@ -1615,7 +1615,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.GetMouseCursorTexData(ImGuiMouseCursor.Arrow, out Vector2 _, out Vector2 _, out Vector2 _, out Vector2 _));
         }
-
+        
         /// <summary>
         ///     Tests that get tex data as alpha 8 returns data
         /// </summary>
@@ -1625,7 +1625,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.GetTexDataAsAlpha8(out byte[] _, out int _, out int _));
         }
-
+        
         /// <summary>
         ///     Tests that get tex data as alpha 8 with bytes per pixel returns data
         /// </summary>
@@ -1635,7 +1635,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.GetTexDataAsAlpha8(out byte[] _, out int _, out int _, out int _));
         }
-
+        
         /// <summary>
         ///     Tests that get tex data as alpha 8 with int ptr returns data
         /// </summary>
@@ -1645,7 +1645,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.GetTexDataAsAlpha8(out IntPtr _, out int _, out int _));
         }
-
+        
         /// <summary>
         ///     Tests that get tex data as alpha 8 with int ptr and bytes per pixel returns data
         /// </summary>
@@ -1655,7 +1655,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.GetTexDataAsAlpha8(out IntPtr _, out int _, out int _, out int _));
         }
-
+        
         /// <summary>
         ///     Tests that get tex data as rgba 32 returns data
         /// </summary>
@@ -1665,7 +1665,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.GetTexDataAsRgba32(out byte[] _, out int _, out int _, out int _));
         }
-
+        
         /// <summary>
         ///     Tests that get tex data as rgba 32 with int ptr returns data
         /// </summary>
@@ -1675,7 +1675,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.GetTexDataAsRgba32(out IntPtr _, out int _, out int _));
         }
-
+        
         /// <summary>
         ///     Tests that get tex data as rgba 32 with int ptr and bytes per pixel returns data
         /// </summary>
@@ -1685,7 +1685,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.GetTexDataAsRgba32(out IntPtr _, out int _, out int _, out int _));
         }
-
+        
         /// <summary>
         ///     Tests that is built returns true
         /// </summary>
@@ -1695,7 +1695,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             Assert.Throws<DllNotFoundException>(() => atlas.IsBuilt());
         }
-
+        
         /// <summary>
         ///     Tests that set tex id sets id
         /// </summary>

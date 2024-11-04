@@ -46,16 +46,16 @@ namespace Alis.Test.Core.Ecs.System.Configuration.Network
         {
             // Arrange
             NetworkSetting networkSetting = new NetworkSetting();
-
+            
             // Act
             networkSetting.Port = 8080;
             int result = networkSetting.Port;
-
+            
             // Assert
             Assert.NotNull(networkSetting);
             Assert.Equal(8080, result);
         }
-
+        
         /// <summary>
         ///     Tests that test network setting ip
         /// </summary>
@@ -64,16 +64,16 @@ namespace Alis.Test.Core.Ecs.System.Configuration.Network
         {
             // Arrange
             NetworkSetting networkSetting = new NetworkSetting();
-
+            
             // Act
             networkSetting.Ip = "192.168.1.1";
             string result = networkSetting.Ip;
-
+            
             // Assert
             Assert.NotNull(networkSetting);
             Assert.Equal("192.168.1.1", result);
         }
-
+        
         /// <summary>
         ///     Tests that test network setting host
         /// </summary>
@@ -82,16 +82,16 @@ namespace Alis.Test.Core.Ecs.System.Configuration.Network
         {
             // Arrange
             NetworkSetting networkSetting = new NetworkSetting();
-
+            
             // Act
             networkSetting.Host = "localhost";
             string result = networkSetting.Host;
-
+            
             // Assert
             Assert.NotNull(networkSetting);
             Assert.Equal("localhost", result);
         }
-
+        
         /// <summary>
         ///     Tests that test network setting protocol
         /// </summary>
@@ -100,16 +100,16 @@ namespace Alis.Test.Core.Ecs.System.Configuration.Network
         {
             // Arrange
             NetworkSetting networkSetting = new NetworkSetting();
-
+            
             // Act
             networkSetting.Protocol = "TCP";
             string result = networkSetting.Protocol;
-
+            
             // Assert
             Assert.NotNull(networkSetting);
             Assert.Equal("TCP", result);
         }
-
+        
         /// <summary>
         ///     Tests that test network setting builder
         /// </summary>
@@ -118,10 +118,10 @@ namespace Alis.Test.Core.Ecs.System.Configuration.Network
         {
             // Arrange
             NetworkSetting networkSetting = new NetworkSetting();
-
+            
             // Act
             NetworkSettingBuilder result = networkSetting.Builder();
-
+            
             // Assert
             Assert.NotNull(result);
             Assert.IsType<NetworkSettingBuilder>(result);

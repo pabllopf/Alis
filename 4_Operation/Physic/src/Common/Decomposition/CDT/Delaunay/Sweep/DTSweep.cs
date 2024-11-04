@@ -42,21 +42,21 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         ///     The pi
         /// </summary>
         private const double PiDiv2 = Math.PI / 2;
-
+        
         /// <summary>
         ///     The pi
         /// </summary>
         private const double Pi3Div4 = 3 * Math.PI / 4;
-
+        
         /// <summary>
         ///     Triangulate simple polygon with holes
         /// </summary>
         public static void Triangulate(DTSweepContext tcx)
         {
             tcx.CreateAdvancingFront();
-
+            
             Sweep(tcx);
-
+            
             // Finalize triangulation
             if (tcx.TriangulationMode == TriangulationMode.Polygon)
             {
@@ -66,23 +66,23 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             {
                 FinalizationConvexHull(tcx);
             }
-
+            
             tcx.Done();
         }
-
+        
         /// <summary>
         ///     Start sweeping the Y-sorted point set from bottom to top
         /// </summary>
         private static void Sweep(DTSweepContext tcx)
         {
             List<TriangulationPoint> points = tcx.Points;
-
+            
             for (int i = 1; i < points.Count; i++)
             {
                 TriangulationPoint point = points[i];
-
+                
                 AdvancingFrontNode node = PointEvent(tcx, point);
-
+                
                 if (point.HasEdges)
                 {
                     foreach (DtSweepConstraint e in point.Edges)
@@ -92,22 +92,22 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 }
             }
         }
-
+        
         /// <summary>
         ///     If this is a Delaunay Triangulation of a pointset we need to fill so the triangle mesh gets a ConvexHull
         /// </summary>
         private static void FinalizationConvexHull(DTSweepContext tcx)
         {
             DelaunayTriangle t1, t2;
-
+            
             AdvancingFrontNode n1 = tcx.aFront.Head.Next;
             AdvancingFrontNode n2 = n1.Next;
-
+            
             TurnAdvancingFrontConvex(tcx, n1, n2);
-
-
+            
+            
             // Lets remove triangles connected to the two "algorithm" points
-
+            
             // XXX: When the first the nodes are points in a triangle we need to do a flip before 
             //      removing triangles or we will lose a valid triangle.
             //      Same for last three nodes!
@@ -121,7 +121,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 tcx.MapTriangleToNodes(n1.Triangle);
                 tcx.MapTriangleToNodes(t1);
             }
-
+            
             n1 = tcx.aFront.Head.Next;
             if (n1.Triangle.Contains(n1.Prev.Point) && n1.Triangle.Contains(n1.Next.Point))
             {
@@ -130,7 +130,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 tcx.MapTriangleToNodes(n1.Triangle);
                 tcx.MapTriangleToNodes(t1);
             }
-
+            
             // Lower right boundary 
             TriangulationPoint first = tcx.aFront.Head.Point;
             n2 = tcx.aFront.Tail.Prev;
@@ -146,7 +146,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 t1.Clear();
                 t1 = t2;
             } while (true);
-
+            
             // Lower left boundary
             first = tcx.aFront.Head.Next.Point;
             p1 = t1.PointCW(tcx.aFront.Head.Point);
@@ -161,17 +161,17 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 t1.Clear();
                 t1 = t2;
             }
-
+            
             // Remove current head and tail node now that we have removed all triangles attached
             // to them. Then set new head and tail node points
             tcx.aFront.Head = tcx.aFront.Head.Next;
             tcx.aFront.Head.Prev = null;
             tcx.aFront.Tail = tcx.aFront.Tail.Prev;
             tcx.aFront.Tail.Next = null;
-
+            
             tcx.FinalizeTriangulation();
         }
-
+        
         /// <summary>
         ///     We will traverse the entire advancing front and fill it to form a convex hull.
         /// </summary>
@@ -204,7 +204,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 }
             }
         }
-
+        
         /// <summary>
         ///     Finalizations the polygon using the specified tcx
         /// </summary>
@@ -218,11 +218,11 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             {
                 t = t.NeighborCCW(p);
             }
-
+            
             // Collect interior triangles constrained by edges
             tcx.MeshClean(t);
         }
-
+        
         /// <summary>
         ///     Find closes node to the left of the new point and
         ///     create a new triangle. If needed new holes and basins
@@ -232,20 +232,20 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         {
             AdvancingFrontNode node = tcx.LocateNode(point);
             AdvancingFrontNode newNode = NewFrontTriangle(tcx, point, node);
-
+            
             // Only need to check +epsilon since point never have smaller 
             // x value than node due to how we fetch nodes from the front
             if (point.X <= node.Point.X + TriangulationUtil.EPSILON)
             {
                 Fill(tcx, node);
             }
-
+            
             tcx.AddNode(newNode);
-
+            
             FillAdvancingFront(tcx, newNode);
             return newNode;
         }
-
+        
         /// <summary>
         ///     Creates a new front triangle and legalize it
         /// </summary>
@@ -254,23 +254,23 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             DelaunayTriangle triangle = new DelaunayTriangle(point, node.Point, node.Next.Point);
             triangle.MarkNeighbor(node.Triangle);
             tcx.Triangles.Add(triangle);
-
+            
             AdvancingFrontNode newNode = new AdvancingFrontNode(point);
             newNode.Next = node.Next;
             newNode.Prev = node;
             node.Next.Prev = newNode;
             node.Next = newNode;
-
+            
             tcx.AddNode(newNode); // XXX: BST
-
+            
             if (!Legalize(tcx, triangle))
             {
                 tcx.MapTriangleToNodes(triangle);
             }
-
+            
             return newNode;
         }
-
+        
         /// <summary>
         ///     Edges the event using the specified tcx
         /// </summary>
@@ -283,17 +283,17 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             {
                 tcx.EdgeEvent.ConstrainedEdge = edge;
                 tcx.EdgeEvent.Right = edge.P.X > edge.Q.X;
-
+                
                 if (IsEdgeSideOfTriangle(node.Triangle, edge.P, edge.Q))
                 {
                     return;
                 }
-
+                
                 // For now we will do all needed filling
-
+                
                 //       but for now this avoid the issue with cases that needs both flips and fills
                 FillEdgeEvent(tcx, edge, node);
-
+                
                 EdgeEvent(tcx, edge.P, edge.Q, node.Triangle, edge.Q);
             }
             catch (PointOnEdgeException e)
@@ -301,7 +301,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 Debug.WriteLine("Skipping Edge: {0}", e.Message);
             }
         }
-
+        
         /// <summary>
         ///     Fills the edge event using the specified tcx
         /// </summary>
@@ -319,7 +319,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 FillLeftAboveEdgeEvent(tcx, edge, node);
             }
         }
-
+        
         /// <summary>
         ///     Fills the right concave edge event using the specified tcx
         /// </summary>
@@ -345,7 +345,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 }
             }
         }
-
+        
         /// <summary>
         ///     Fills the right convex edge event using the specified tcx
         /// </summary>
@@ -373,7 +373,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 // Above
             }
         }
-
+        
         /// <summary>
         ///     Fills the right below edge event using the specified tcx
         /// </summary>
@@ -398,7 +398,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 }
             }
         }
-
+        
         /// <summary>
         ///     Fills the right above edge event using the specified tcx
         /// </summary>
@@ -421,7 +421,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 }
             }
         }
-
+        
         /// <summary>
         ///     Fills the left convex edge event using the specified tcx
         /// </summary>
@@ -449,7 +449,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 // Above
             }
         }
-
+        
         /// <summary>
         ///     Fills the left concave edge event using the specified tcx
         /// </summary>
@@ -474,7 +474,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 }
             }
         }
-
+        
         /// <summary>
         ///     Fills the left below edge event using the specified tcx
         /// </summary>
@@ -499,7 +499,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 }
             }
         }
-
+        
         /// <summary>
         ///     Fills the left above edge event using the specified tcx
         /// </summary>
@@ -522,7 +522,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 }
             }
         }
-
+        
         /// <summary>
         ///     Describes whether is edge side of triangle
         /// </summary>
@@ -541,13 +541,13 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 {
                     triangle.MarkConstrainedEdge(ep, eq);
                 }
-
+                
                 return true;
             }
-
+            
             return false;
         }
-
+        
         /// <summary>
         ///     Edges the event using the specified tcx
         /// </summary>
@@ -562,7 +562,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         {
             if (IsEdgeSideOfTriangle(triangle, ep, eq))
                 return;
-
+            
             TriangulationPoint p1 = triangle.PointCCW(point);
             Orientation o1 = TriangulationUtil.Orient2d(eq, p1, ep);
             if (o1 == Orientation.Collinear)
@@ -580,11 +580,11 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 {
                     throw new PointOnEdgeException("EdgeEvent - Point on constrained edge not supported yet");
                 }
-
+                
                 Debug.WriteLine("EdgeEvent - Point on constrained edge");
                 return;
             }
-
+            
             TriangulationPoint p2 = triangle.PointCW(point);
             Orientation o2 = TriangulationUtil.Orient2d(eq, p2, ep);
             if (o2 == Orientation.Collinear)
@@ -602,11 +602,11 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 {
                     throw new PointOnEdgeException("EdgeEvent - Point on constrained edge not supported yet");
                 }
-
+                
                 Debug.WriteLine("EdgeEvent - Point on constrained edge");
                 return;
             }
-
+            
             if (o1 == o2)
             {
                 // Need to decide if we are rotating CW or CCW to get to a triangle
@@ -619,7 +619,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 {
                     triangle = triangle.NeighborCW(point);
                 }
-
+                
                 EdgeEvent(tcx, ep, eq, triangle, point);
             }
             else
@@ -628,7 +628,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 FlipEdgeEvent(tcx, ep, eq, triangle, point);
             }
         }
-
+        
         /// <summary>
         ///     Flips the edge event using the specified tcx
         /// </summary>
@@ -643,12 +643,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         {
             DelaunayTriangle ot = t.NeighborAcross(p);
             TriangulationPoint op = ot.OppositePoint(t, p);
-
+            
             if (t.GetConstrainedEdgeAcross(p))
             {
                 throw new Exception("Intersecting Constraints");
             }
-
+            
             bool inScanArea = TriangulationUtil.InScanArea(p, t.PointCCW(p), t.PointCW(p), op);
             if (inScanArea)
             {
@@ -656,7 +656,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 RotateTrianglePair(t, p, ot, op);
                 tcx.MapTriangleToNodes(t);
                 tcx.MapTriangleToNodes(ot);
-
+                
                 if ((p == eq) && (op == ep))
                 {
                     if ((eq == tcx.EdgeEvent.ConstrainedEdge.Q)
@@ -689,7 +689,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 EdgeEvent(tcx, ep, eq, t, p);
             }
         }
-
+        
         /// <summary>
         ///     When we need to traverse from one triangle to the next we need
         ///     the point in current triangle that is the opposite point to the next
@@ -703,17 +703,17 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 // Right
                 return ot.PointCCW(op);
             }
-
+            
             if (o2d == Orientation.CCW)
             {
                 // Left
                 return ot.PointCW(op);
             }
-
-
+            
+            
             throw new PointOnEdgeException("Point on constrained edge not supported yet");
         }
-
+        
         /// <summary>
         ///     After a flip we have two triangles and know that only one will still be
         ///     intersecting the edge. So decide which to contiune with and legalize the other
@@ -737,7 +737,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 ot.EdgeIsDelaunay.Clear();
                 return t;
             }
-
+            
             // t is not crossing edge after flip
             edgeIndex = t.EdgeIndex(p, op);
             t.EdgeIsDelaunay[edgeIndex] = true;
@@ -745,7 +745,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             t.EdgeIsDelaunay.Clear();
             return ot;
         }
-
+        
         /// <summary>
         ///     Scan part of the FlipScan algorithm
         ///     When a triangle pair isn't flippable we will scan for the next
@@ -768,7 +768,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             {
                 // flip with new edge op->eq
                 FlipEdgeEvent(tcx, eq, op, ot, op);
-
+                
                 //       improve this by getting the next ot and op before the the above 
                 //       flip and continue the flipScanEdgeEvent here
                 // set new ot and op here and loop back to inScanArea test
@@ -782,14 +782,14 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 FlipScanEdgeEvent(tcx, ep, eq, flipTriangle, ot, newP);
             }
         }
-
+        
         /// <summary>
         ///     Fills holes in the Advancing Front
         /// </summary>
         private static void FillAdvancingFront(DTSweepContext tcx, AdvancingFrontNode n)
         {
             double angle;
-
+            
             // Fill right holes
             AdvancingFrontNode node = n.Next;
             while (node.HasNext)
@@ -797,11 +797,11 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 // if HoleAngle exceeds 90 degrees then break.
                 if (LargeHole_DontFill(node))
                     break;
-
+                
                 Fill(tcx, node);
                 node = node.Next;
             }
-
+            
             // Fill left holes
             node = n.Prev;
             while (node.HasPrev)
@@ -809,17 +809,17 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 // if HoleAngle exceeds 90 degrees then break.
                 if (LargeHole_DontFill(node))
                     break;
-
+                
                 angle = HoleAngle(node);
                 if (angle > PiDiv2 || angle < -PiDiv2)
                 {
                     break;
                 }
-
+                
                 Fill(tcx, node);
                 node = node.Prev;
             }
-
+            
             // Fill right basins
             if (n.HasNext && n.Next.HasNext)
             {
@@ -830,7 +830,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 }
             }
         }
-
+        
         // True if HoleAngle exceeds 90 degrees.
         /// <summary>
         ///     Describes whether large hole dont fill
@@ -843,21 +843,21 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             AdvancingFrontNode prevNode = node.Prev;
             if (!AngleExceeds90Degrees(node.Point, nextNode.Point, prevNode.Point))
                 return false;
-
+            
             // Check additional points on front.
             AdvancingFrontNode next2Node = nextNode.Next;
             // "..Plus.." because only want angles on same side as point being added.
             if ((next2Node != null) && !AngleExceedsPlus90DegreesOrIsNegative(node.Point, next2Node.Point, prevNode.Point))
                 return false;
-
+            
             AdvancingFrontNode prev2Node = prevNode.Prev;
             // "..Plus.." because only want angles on same side as point being added.
             if ((prev2Node != null) && !AngleExceedsPlus90DegreesOrIsNegative(node.Point, nextNode.Point, prev2Node.Point))
                 return false;
-
+            
             return true;
         }
-
+        
         /// <summary>
         ///     Describes whether angle exceeds 90 degrees
         /// </summary>
@@ -871,7 +871,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             bool exceeds90Degrees = angle > PiDiv2 || angle < -PiDiv2;
             return exceeds90Degrees;
         }
-
+        
         /// <summary>
         ///     Describes whether angle exceeds plus 90 degrees or is negative
         /// </summary>
@@ -885,7 +885,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             bool exceedsPlus90DegreesOrIsNegative = angle > PiDiv2 || angle < 0;
             return exceedsPlus90DegreesOrIsNegative;
         }
-
+        
         /// <summary>
         ///     Angles the origin
         /// </summary>
@@ -914,7 +914,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             double angle = Math.Atan2(x, y);
             return angle;
         }
-
+        
         /// <summary>
         ///     Fills a basin that has formed on the Advancing Front to the right
         ///     of given node.
@@ -934,38 +934,38 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             {
                 tcx.Basin.leftNode = node.Next;
             }
-
+            
             // Find the bottom and right node
             tcx.Basin.bottomNode = tcx.Basin.leftNode;
             while (tcx.Basin.bottomNode.HasNext && (tcx.Basin.bottomNode.Point.Y >= tcx.Basin.bottomNode.Next.Point.Y))
             {
                 tcx.Basin.bottomNode = tcx.Basin.bottomNode.Next;
             }
-
+            
             if (tcx.Basin.bottomNode == tcx.Basin.leftNode)
             {
                 // No valid basins
                 return;
             }
-
+            
             tcx.Basin.rightNode = tcx.Basin.bottomNode;
             while (tcx.Basin.rightNode.HasNext && (tcx.Basin.rightNode.Point.Y < tcx.Basin.rightNode.Next.Point.Y))
             {
                 tcx.Basin.rightNode = tcx.Basin.rightNode.Next;
             }
-
+            
             if (tcx.Basin.rightNode == tcx.Basin.bottomNode)
             {
                 // No valid basins
                 return;
             }
-
+            
             tcx.Basin.width = tcx.Basin.rightNode.Point.X - tcx.Basin.leftNode.Point.X;
             tcx.Basin.leftHighest = tcx.Basin.leftNode.Point.Y > tcx.Basin.rightNode.Point.Y;
-
+            
             FillBasinReq(tcx, tcx.Basin.bottomNode);
         }
-
+        
         /// <summary>
         ///     Recursive algorithm to fill a Basin with triangles
         /// </summary>
@@ -976,13 +976,13 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             {
                 return;
             }
-
+            
             Fill(tcx, node);
             if ((node.Prev == tcx.Basin.leftNode) && (node.Next == tcx.Basin.rightNode))
             {
                 return;
             }
-
+            
             if (node.Prev == tcx.Basin.leftNode)
             {
                 Orientation o = TriangulationUtil.Orient2d(node.Point, node.Next.Point, node.Next.Next.Point);
@@ -990,7 +990,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 {
                     return;
                 }
-
+                
                 node = node.Next;
             }
             else if (node.Next == tcx.Basin.rightNode)
@@ -1000,7 +1000,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 {
                     return;
                 }
-
+                
                 node = node.Prev;
             }
             else
@@ -1015,10 +1015,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                     node = node.Next;
                 }
             }
-
+            
             FillBasinReq(tcx, node);
         }
-
+        
         /// <summary>
         ///     Describes whether is shallow
         /// </summary>
@@ -1028,7 +1028,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         private static bool IsShallow(DTSweepContext tcx, AdvancingFrontNode node)
         {
             double height;
-
+            
             if (tcx.Basin.leftHighest)
             {
                 height = tcx.Basin.leftNode.Point.Y - node.Point.Y;
@@ -1037,15 +1037,15 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             {
                 height = tcx.Basin.rightNode.Point.Y - node.Point.Y;
             }
-
+            
             if (tcx.Basin.width > height)
             {
                 return true;
             }
-
+            
             return false;
         }
-
+        
         /// <summary>
         ///     ???
         /// </summary>
@@ -1071,7 +1071,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             double by = node.Prev.Point.Y - py;
             return Math.Atan2(ax * by - ay * bx, ax * bx + ay * by);
         }
-
+        
         /// <summary>
         ///     The basin angle is decided against the horizontal line [1,0]
         /// </summary>
@@ -1081,7 +1081,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             double ay = node.Point.Y - node.Next.Next.Point.Y;
             return Math.Atan2(ay, ax);
         }
-
+        
         /// <summary>
         ///     Adds a triangle to the advancing front to fill a hole.
         /// </summary>
@@ -1090,24 +1090,24 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         private static void Fill(DTSweepContext tcx, AdvancingFrontNode node)
         {
             DelaunayTriangle triangle = new DelaunayTriangle(node.Prev.Point, node.Point, node.Next.Point);
-
+            
             //       for now cEdge values are copied during the legalize 
             triangle.MarkNeighbor(node.Prev.Triangle);
             triangle.MarkNeighbor(node.Triangle);
             tcx.Triangles.Add(triangle);
-
+            
             // Update the advancing front
             node.Prev.Next = node.Next;
             node.Next.Prev = node.Prev;
             tcx.RemoveNode(node);
-
+            
             // If it was legalized the triangle has already been mapped
             if (!Legalize(tcx, triangle))
             {
                 tcx.MapTriangleToNodes(triangle);
             }
         }
-
+        
         /// <summary>
         ///     Returns true if triangle was legalized
         /// </summary>
@@ -1122,7 +1122,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 {
                     continue;
                 }
-
+                
                 DelaunayTriangle ot = t.Neighbors[i];
                 if (ot != null)
                 {
@@ -1137,52 +1137,52 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                         // XXX: have no good way of setting this property when creating new triangles so lets set it here
                         continue;
                     }
-
+                    
                     bool inside = TriangulationUtil.SmartIncircle(p, t.PointCCW(p), t.PointCW(p), op);
-
+                    
                     if (inside)
                     {
                         // Lets mark this shared edge as Delaunay 
                         t.EdgeIsDelaunay[i] = true;
                         ot.EdgeIsDelaunay[oi] = true;
-
+                        
                         // Lets rotate shared edge one vertex CW to legalize it
                         RotateTrianglePair(t, p, ot, op);
-
+                        
                         // We now got one valid Delaunay Edge shared by two triangles
                         // This gives us 4 new edges to check for Delaunay
-
+                        
                         // Make sure that triangle to node mapping is done only one time for a specific triangle
                         bool notLegalized = !Legalize(tcx, t);
-
+                        
                         if (notLegalized)
                         {
                             tcx.MapTriangleToNodes(t);
                         }
-
+                        
                         notLegalized = !Legalize(tcx, ot);
                         if (notLegalized)
                         {
                             tcx.MapTriangleToNodes(ot);
                         }
-
+                        
                         // Reset the Delaunay edges, since they only are valid Delaunay edges
                         // until we add a new triangle or point.
                         // XXX: need to think about this. Can these edges be tried after we 
                         //      return to previous recursive level?
                         t.EdgeIsDelaunay[i] = false;
                         ot.EdgeIsDelaunay[oi] = false;
-
+                        
                         // If triangle have been legalized no need to check the other edges since
                         // the recursive legalization will handles those so we can end here.
                         return true;
                     }
                 }
             }
-
+            
             return false;
         }
-
+        
         /// <summary>
         ///     Rotates a triangle pair one vertex CW
         ///     n2                    n2
@@ -1201,32 +1201,32 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             DelaunayTriangle n2 = t.NeighborCW(p);
             DelaunayTriangle n3 = ot.NeighborCCW(op);
             DelaunayTriangle n4 = ot.NeighborCW(op);
-
+            
             bool ce1 = t.GetConstrainedEdgeCCW(p);
             bool ce2 = t.GetConstrainedEdgeCW(p);
             bool ce3 = ot.GetConstrainedEdgeCCW(op);
             bool ce4 = ot.GetConstrainedEdgeCW(op);
-
+            
             bool de1 = t.GetDelaunayEdgeCCW(p);
             bool de2 = t.GetDelaunayEdgeCW(p);
             bool de3 = ot.GetDelaunayEdgeCCW(op);
             bool de4 = ot.GetDelaunayEdgeCW(op);
-
+            
             t.Legalize(p, op);
             ot.Legalize(op, p);
-
+            
             // Remap dEdge
             ot.SetDelaunayEdgeCCW(p, de1);
             t.SetDelaunayEdgeCW(p, de2);
             t.SetDelaunayEdgeCCW(op, de3);
             ot.SetDelaunayEdgeCW(op, de4);
-
+            
             // Remap cEdge
             ot.SetConstrainedEdgeCCW(p, ce1);
             t.SetConstrainedEdgeCW(p, ce2);
             t.SetConstrainedEdgeCCW(op, ce3);
             ot.SetConstrainedEdgeCW(op, ce4);
-
+            
             // Remap neighbors
             // XXX: might optimize the markNeighbor by keeping track of
             //      what side should be assigned to what neighbor after the 

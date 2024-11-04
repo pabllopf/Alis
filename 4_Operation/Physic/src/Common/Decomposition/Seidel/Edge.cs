@@ -42,40 +42,40 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         ///     The above
         /// </summary>
         public Trapezoid Above;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public float B;
-
+        
         /// <summary>
         ///     The below
         /// </summary>
         public Trapezoid Below;
-
+        
         // Montone mountain points
         /// <summary>
         ///     The points
         /// </summary>
         public HashSet<Point> MPoints;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public Point P;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public Point Q;
-
+        
         // Slope of the line (m)
         /// <summary>
         ///     The slope
         /// </summary>
         public float Slope;
-
-
+        
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Edge" /> class
         /// </summary>
@@ -85,12 +85,12 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         {
             P = p;
             Q = q;
-
+            
             if (Math.Abs(q.X - p.X) > float.Epsilon)
                 Slope = (q.Y - p.Y) / (q.X - p.X);
             else
                 Slope = 0;
-
+            
             B = p.Y - p.X * Slope;
             Above = null;
             Below = null;
@@ -98,21 +98,21 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             MPoints.Add(p);
             MPoints.Add(q);
         }
-
+        
         /// <summary>
         ///     Describes whether this instance is above
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
         public bool IsAbove(Point point) => P.Orient2D(Q, point) < 0;
-
+        
         /// <summary>
         ///     Describes whether this instance is below
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
         public bool IsBelow(Point point) => P.Orient2D(Q, point) > 0;
-
+        
         /// <summary>
         ///     Adds the mpoint using the specified point
         /// </summary>
@@ -124,7 +124,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                 if (!mp.Neq(point))
                     return;
             }
-
+            
             MPoints.Add(point);
         }
     }

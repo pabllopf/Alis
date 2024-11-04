@@ -42,25 +42,25 @@ namespace Alis.Extension.Plugin
         /// </summary>
         /// <returns>The bool</returns>
         public bool IsWindows() => RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
-
+        
         /// <summary>
         ///     Describes whether this instance is osx
         /// </summary>
         /// <returns>The bool</returns>
         public bool IsOSX() => RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
-
+        
         /// <summary>
         ///     Describes whether this instance is linux
         /// </summary>
         /// <returns>The bool</returns>
         public bool IsLinux() => RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
-
+        
         /// <summary>
         ///     Describes whether this instance isi os
         /// </summary>
         /// <returns>The bool</returns>
         public bool IsiOS() => RuntimeInformation.IsOSPlatform(OSPlatform.OSX) && (RuntimeInformation.OSDescription.Contains("iPhone") || RuntimeInformation.OSDescription.Contains("iPad"));
-
+        
         /// <summary>
         ///     Describes whether this instance is android
         /// </summary>

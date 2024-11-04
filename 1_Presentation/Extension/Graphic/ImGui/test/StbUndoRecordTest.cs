@@ -44,14 +44,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             StbUndoRecord undoRecord = new StbUndoRecord {Where = 10};
-
+            
             // Act
             int where = undoRecord.Where;
-
+            
             // Assert
             Assert.Equal(10, where);
         }
-
+        
         /// <summary>
         ///     Tests that insert length should be initialized correctly
         /// </summary>
@@ -60,14 +60,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             StbUndoRecord undoRecord = new StbUndoRecord {InsertLength = 20};
-
+            
             // Act
             int insertLength = undoRecord.InsertLength;
-
+            
             // Assert
             Assert.Equal(20, insertLength);
         }
-
+        
         /// <summary>
         ///     Tests that delete length should be initialized correctly
         /// </summary>
@@ -76,14 +76,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             StbUndoRecord undoRecord = new StbUndoRecord {DeleteLength = 30};
-
+            
             // Act
             int deleteLength = undoRecord.DeleteLength;
-
+            
             // Assert
             Assert.Equal(30, deleteLength);
         }
-
+        
         /// <summary>
         ///     Tests that char storage should be initialized correctly
         /// </summary>
@@ -92,10 +92,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             StbUndoRecord undoRecord = new StbUndoRecord {CharStorage = 40};
-
+            
             // Act
             int charStorage = undoRecord.CharStorage;
-
+            
             // Assert
             Assert.Equal(40, charStorage);
         }

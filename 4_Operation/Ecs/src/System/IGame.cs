@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.System.Scope;
-
 namespace Alis.Core.Ecs.System
 {
     /// <summary>
@@ -42,10 +40,10 @@ namespace Alis.Core.Ecs.System
         public void Run();
         
         /// <summary>
-        /// Runs the preview
+        ///     Runs the preview
         /// </summary>
         public void RunPreview();
-
+        
         /// <summary>
         ///     Exits this instance
         /// </summary>

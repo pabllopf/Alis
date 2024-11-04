@@ -58,74 +58,74 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The beta
         /// </summary>
         private float _beta;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         private Vector2 _C;
-
+        
         /// <summary>
         ///     The damping ratio
         /// </summary>
         private float _dampingRatio;
-
+        
         /// <summary>
         ///     The frequency
         /// </summary>
         private float _frequency;
-
+        
         /// <summary>
         ///     The gamma
         /// </summary>
         private float _gamma;
-
+        
         // Solver shared
         /// <summary>
         ///     The impulse
         /// </summary>
         private Vector2 _impulse;
-
+        
         // Solver temp
         /// <summary>
         ///     The index
         /// </summary>
         private int _indexA;
-
+        
         /// <summary>
         ///     The inv ia
         /// </summary>
         private float _invIA;
-
+        
         /// <summary>
         ///     The inv mass
         /// </summary>
         private float _invMassA;
-
+        
         /// <summary>
         ///     The local center
         /// </summary>
         private Vector2 _localCenterA;
-
+        
         /// <summary>
         ///     The mass
         /// </summary>
         private Mat22 _mass;
-
+        
         /// <summary>
         ///     The max force
         /// </summary>
         private float _maxForce;
-
+        
         /// <summary>
         ///     The
         /// </summary>
         private Vector2 _rA;
-
+        
         /// <summary>
         ///     The world anchor
         /// </summary>
         private Vector2 _worldAnchor;
-
+        
         /// <summary>
         ///     This requires a world target point,
         ///     tuning parameters, and the time step.
@@ -139,18 +139,18 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Frequency = 5.0f;
             DampingRatio = 0.7f;
             MaxForce = 1000 * body.Mass;
-
+            
             Debug.Assert(worldAnchor.IsValid());
-
+            
             _worldAnchor = worldAnchor;
             LocalAnchorA = Transform.Divide(ref worldAnchor, ref BodyA._xf);
         }
-
+        
         /// <summary>
         ///     The local anchor point on BodyA
         /// </summary>
         public Vector2 LocalAnchorA { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the world anchor a
         /// </summary>
@@ -159,7 +159,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             get => BodyA.GetWorldPoint(LocalAnchorA);
             set => LocalAnchorA = BodyA.GetLocalPoint(value);
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the world anchor b
         /// </summary>
@@ -172,7 +172,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _worldAnchor = value;
             }
         }
-
+        
         /// <summary>
         ///     The maximum constraint force that can be exerted
         ///     to move the candidate body. Usually you will express
@@ -187,7 +187,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _maxForce = value;
             }
         }
-
+        
         /// <summary>
         ///     The response speed.
         /// </summary>
@@ -200,7 +200,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _frequency = value;
             }
         }
-
+        
         /// <summary>
         ///     The damping ratio. 0 = no damping, 1 = critical damping.
         /// </summary>
@@ -213,21 +213,21 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _dampingRatio = value;
             }
         }
-
+        
         /// <summary>
         ///     Gets the reaction force using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vector</returns>
         public override Vector2 GetReactionForce(float invDt) => invDt * _impulse;
-
+        
         /// <summary>
         ///     Gets the reaction torque using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The float</returns>
         public override float GetReactionTorque(float invDt) => invDt * 0.0f;
-
+        
         /// <summary>
         ///     Inits the velocity constraints using the specified data
         /// </summary>
@@ -238,25 +238,25 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _localCenterA = BodyA._sweep.LocalCenter;
             _invMassA = BodyA._invMass;
             _invIA = BodyA._invI;
-
+            
             Vector2 cA = data.positions[_indexA].c;
             float aA = data.positions[_indexA].a;
             Vector2 vA = data.velocities[_indexA].v;
             float wA = data.velocities[_indexA].w;
-
+            
             Complex qA = Complex.FromAngle(aA);
-
+            
             float mass = BodyA.Mass;
-
+            
             // Frequency
             float omega = Constant.Tau * Frequency;
-
+            
             // Damping coefficient
             float d = 2.0f * mass * DampingRatio * omega;
-
+            
             // Spring stiffness
             float k = mass * (omega * omega);
-
+            
             // magic formulas
             // gamma has units of inverse mass.
             // beta has units of inverse time.
@@ -267,9 +267,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
             {
                 _gamma = 1.0f / _gamma;
             }
-
+            
             _beta = h * k * _gamma;
-
+            
             // Compute the effective mass matrix.
             _rA = Complex.Multiply(LocalAnchorA - _localCenterA, ref qA);
             // K    = [(1/m1 + 1/m2) * eye(2) - skew(r1) * invI1 * skew(r1) - skew(r2) * invI2 * skew(r2)]
@@ -280,15 +280,15 @@ namespace Alis.Core.Physic.Dynamics.Joints
             K.Ex.Y = -_invIA * _rA.X * _rA.Y;
             K.Ey.X = K.Ex.Y;
             K.Ey.Y = _invMassA + _invIA * _rA.X * _rA.X + _gamma;
-
+            
             _mass = K.Inverse;
-
+            
             _C = cA + _rA - _worldAnchor;
             _C *= _beta;
-
+            
             // Cheat with some damping
             wA *= 0.98f;
-
+            
             if (data.step.warmStarting)
             {
                 _impulse *= data.step.dtRatio;
@@ -299,11 +299,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
             {
                 _impulse = Vector2.Zero;
             }
-
+            
             data.velocities[_indexA].v = vA;
             data.velocities[_indexA].w = wA;
         }
-
+        
         /// <summary>
         ///     Solves the velocity constraints using the specified data
         /// </summary>
@@ -312,11 +312,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
         {
             Vector2 vA = data.velocities[_indexA].v;
             float wA = data.velocities[_indexA].w;
-
+            
             // Cdot = v + cross(w, r)
             Vector2 Cdot = vA + MathUtils.Cross(wA, ref _rA);
             Vector2 impulse = MathUtils.Mul(ref _mass, -(Cdot + _C + _gamma * _impulse));
-
+            
             Vector2 oldImpulse = _impulse;
             _impulse += impulse;
             float maxImpulse = data.step.dt * MaxForce;
@@ -324,16 +324,16 @@ namespace Alis.Core.Physic.Dynamics.Joints
             {
                 _impulse *= maxImpulse / _impulse.Length();
             }
-
+            
             impulse = _impulse - oldImpulse;
-
+            
             vA += _invMassA * impulse;
             wA += _invIA * MathUtils.Cross(ref _rA, ref impulse);
-
+            
             data.velocities[_indexA].v = vA;
             data.velocities[_indexA].w = wA;
         }
-
+        
         /// <summary>
         ///     Describes whether this instance solve position constraints
         /// </summary>

@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Common
             Deserialize(world, stream);
             return world;
         }
-
+        
         /// <summary>
         ///     Deserializes the world
         /// </summary>
@@ -77,15 +77,15 @@ namespace Alis.Core.Physic.Common
         {
             List<Body> bodies = new List<Body>();
             List<Fixture> fixtures = new List<Fixture>();
-
+            
             List<Joint> joints = new List<Joint>();
             List<Shape> shapes = new List<Shape>();
-
+            
             XMLFragmentElement root = XMLFragmentParser.LoadFromStream(stream);
-
+            
             if (root.Name.ToLower() != "world")
                 throw new Exception();
-
+            
             //Read gravity
             foreach (XMLFragmentElement element in root.Elements)
             {
@@ -95,7 +95,7 @@ namespace Alis.Core.Physic.Common
                     break;
                 }
             }
-
+            
             //Read shapes
             foreach (XMLFragmentElement shapeElement in root.Elements)
             {
@@ -105,17 +105,17 @@ namespace Alis.Core.Physic.Common
                     {
                         if (element.Name.ToLower() != "shape")
                             throw new Exception();
-
+                        
                         ShapeType type = (ShapeType) Enum.Parse(typeof(ShapeType), element.Attributes[0].Value, true);
                         float density = ParseFloat(element.Attributes[1].Value);
-
+                        
                         switch (type)
                         {
                             case ShapeType.Circle:
                             {
                                 CircleShape shape = new CircleShape();
                                 shape._density = density;
-
+                                
                                 foreach (XMLFragmentElement sn in element.Elements)
                                 {
                                     switch (sn.Name.ToLower())
@@ -130,7 +130,7 @@ namespace Alis.Core.Physic.Common
                                             throw new Exception();
                                     }
                                 }
-
+                                
                                 shapes.Add(shape);
                             }
                                 break;
@@ -138,7 +138,7 @@ namespace Alis.Core.Physic.Common
                             {
                                 PolygonShape shape = new PolygonShape();
                                 shape._density = density;
-
+                                
                                 foreach (XMLFragmentElement sn in element.Elements)
                                 {
                                     switch (sn.Name.ToLower())
@@ -146,10 +146,10 @@ namespace Alis.Core.Physic.Common
                                         case "vertices":
                                         {
                                             List<Vector2> verts = new List<Vector2>(sn.Elements.Count);
-
+                                            
                                             foreach (XMLFragmentElement vert in sn.Elements)
                                                 verts.Add(ReadVector(vert));
-
+                                            
                                             shape.Vertices = new Vertices(verts);
                                         }
                                             break;
@@ -158,7 +158,7 @@ namespace Alis.Core.Physic.Common
                                             break;
                                     }
                                 }
-
+                                
                                 shapes.Add(shape);
                             }
                                 break;
@@ -166,7 +166,7 @@ namespace Alis.Core.Physic.Common
                             {
                                 EdgeShape shape = new EdgeShape();
                                 shape._density = density;
-
+                                
                                 foreach (XMLFragmentElement sn in element.Elements)
                                 {
                                     switch (sn.Name.ToLower())
@@ -193,7 +193,7 @@ namespace Alis.Core.Physic.Common
                                             throw new Exception();
                                     }
                                 }
-
+                                
                                 shapes.Add(shape);
                             }
                                 break;
@@ -201,7 +201,7 @@ namespace Alis.Core.Physic.Common
                             {
                                 ChainShape shape = new ChainShape();
                                 shape._density = density;
-
+                                
                                 foreach (XMLFragmentElement sn in element.Elements)
                                 {
                                     switch (sn.Name.ToLower())
@@ -209,10 +209,10 @@ namespace Alis.Core.Physic.Common
                                         case "vertices":
                                         {
                                             List<Vector2> verts = new List<Vector2>(sn.Elements.Count);
-
+                                            
                                             foreach (XMLFragmentElement vert in sn.Elements)
                                                 verts.Add(ReadVector(vert));
-
+                                            
                                             shape.Vertices = new Vertices(verts);
                                         }
                                             break;
@@ -222,12 +222,12 @@ namespace Alis.Core.Physic.Common
                                         case "prevvertex":
                                             shape.PrevVertex = ReadVector(sn);
                                             break;
-
+                                        
                                         default:
                                             throw new Exception();
                                     }
                                 }
-
+                                
                                 shapes.Add(shape);
                             }
                                 break;
@@ -235,7 +235,7 @@ namespace Alis.Core.Physic.Common
                     }
                 }
             }
-
+            
             //Read fixtures
             foreach (XMLFragmentElement fixtureElement in root.Elements)
             {
@@ -244,12 +244,12 @@ namespace Alis.Core.Physic.Common
                     foreach (XMLFragmentElement element in fixtureElement.Elements)
                     {
                         Fixture fixture = new Fixture();
-
+                        
                         if (element.Name.ToLower() != "fixture")
                             throw new Exception();
-
+                        
                         int fixtureId = int.Parse(element.Attributes[0].Value);
-
+                        
                         foreach (XMLFragmentElement sn in element.Elements)
                         {
                             switch (sn.Name.ToLower())
@@ -270,7 +270,7 @@ namespace Alis.Core.Physic.Common
                                                 break;
                                         }
                                     }
-
+                                    
                                     break;
                                 case "friction":
                                     fixture.Friction = ParseFloat(sn.Value);
@@ -286,12 +286,12 @@ namespace Alis.Core.Physic.Common
                                     break;
                             }
                         }
-
+                        
                         fixtures.Add(fixture);
                     }
                 }
             }
-
+            
             //Read bodies
             Dictionary<Fixture, Fixture> mapFixtureClones = new Dictionary<Fixture, Fixture>();
             foreach (XMLFragmentElement bodyElement in root.Elements)
@@ -301,12 +301,12 @@ namespace Alis.Core.Physic.Common
                     foreach (XMLFragmentElement element in bodyElement.Elements)
                     {
                         Body body = world.CreateBody();
-
+                        
                         if (element.Name.ToLower() != "body")
                             throw new Exception();
-
+                        
                         body.BodyType = (BodyType) Enum.Parse(typeof(BodyType), element.Attributes[0].Value, true);
-
+                        
                         foreach (XMLFragmentElement sn in element.Elements)
                         {
                             switch (sn.Name.ToLower())
@@ -363,17 +363,17 @@ namespace Alis.Core.Physic.Common
                                         Fixture clone = fix.CloneOnto(body, shape);
                                         mapFixtureClones[fix] = clone;
                                     }
-
+                                    
                                     break;
                                 }
                             }
                         }
-
+                        
                         bodies.Add(body);
                     }
                 }
             }
-
+            
             //Read joints
             foreach (XMLFragmentElement jointElement in root.Elements)
             {
@@ -382,16 +382,16 @@ namespace Alis.Core.Physic.Common
                     foreach (XMLFragmentElement n in jointElement.Elements)
                     {
                         Joint joint;
-
+                        
                         if (n.Name.ToLower() != "joint")
                             throw new Exception();
-
+                        
                         JointType type = (JointType) Enum.Parse(typeof(JointType), n.Attributes[0].Value, true);
-
+                        
                         int bodyAIndex = -1, bodyBIndex = -1;
                         bool collideConnected = false;
                         object jointTag = null;
-
+                        
                         foreach (XMLFragmentElement sn in n.Elements)
                         {
                             switch (sn.Name.ToLower())
@@ -410,10 +410,10 @@ namespace Alis.Core.Physic.Common
                                     break;
                             }
                         }
-
+                        
                         Body bodyA = bodies[bodyAIndex];
                         Body bodyB = bodies[bodyBIndex];
-
+                        
                         switch (type)
                         {
                             //case JointType.FixedMouse:
@@ -466,14 +466,14 @@ namespace Alis.Core.Physic.Common
                             default:
                                 throw new Exception("Invalid or unsupported joint.");
                         }
-
+                        
                         joint.CollideConnected = collideConnected;
                         joint.Tag = jointTag;
                         joint.BodyA = bodyA;
                         joint.BodyB = bodyB;
                         joints.Add(joint);
                         world.Add(joint);
-
+                        
                         foreach (XMLFragmentElement sn in n.Elements)
                         {
                             // check for specific nodes
@@ -722,19 +722,19 @@ namespace Alis.Core.Physic.Common
                                             ((MotorJoint) joint).CorrectionFactor = ParseFloat(sn.Value);
                                             break;
                                     }
-
+                                    
                                     break;
                             }
                         }
                     }
                 }
             }
-
+            
 #if LEGACY_ASYNCADDREMOVE
             world.ProcessChanges();
 #endif
         }
-
+        
         /// <summary>
         ///     Reads the vector using the specified node
         /// </summary>
@@ -745,7 +745,7 @@ namespace Alis.Core.Physic.Common
             string[] values = node.Value.Split(' ');
             return new Vector2(ParseFloat(values[0]), ParseFloat(values[1]));
         }
-
+        
         /// <summary>
         ///     Reads the simple type using the specified node
         /// </summary>
@@ -757,9 +757,9 @@ namespace Alis.Core.Physic.Common
         {
             if (type == null)
                 return ReadSimpleType(node.Elements[1], Type.GetType(node.Elements[0].Value), outer);
-
+            
             XmlSerializer serializer = new XmlSerializer(type);
-
+            
             using (MemoryStream stream = new MemoryStream())
             {
                 StreamWriter writer = new StreamWriter(stream);
@@ -770,11 +770,11 @@ namespace Alis.Core.Physic.Common
                 }
                 XmlReaderSettings settings = new XmlReaderSettings();
                 settings.ConformanceLevel = ConformanceLevel.Fragment;
-
+                
                 return serializer.Deserialize(XmlReader.Create(stream, settings));
             }
         }
-
+        
         /// <summary>
         ///     Parses the float using the specified value
         /// </summary>

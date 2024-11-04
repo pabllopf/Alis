@@ -48,7 +48,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             tableSortSpecs.Specs = specs;
             Assert.Equal(specs, tableSortSpecs.Specs);
         }
-
+        
         /// <summary>
         ///     Tests that specs count should set and get correctly
         /// </summary>
@@ -59,7 +59,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             tableSortSpecs.SpecsCount = 3;
             Assert.Equal(3, tableSortSpecs.SpecsCount);
         }
-
+        
         /// <summary>
         ///     Tests that specs dirty should set and get correctly
         /// </summary>

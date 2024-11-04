@@ -51,22 +51,19 @@ namespace Alis.Builder.Core.Ecs.Entity.GameObject
         ///     Gets or sets the value of the game object
         /// </summary>
         private readonly Alis.Core.Ecs.Entity.GameObject gameObject = new Alis.Core.Ecs.Entity.GameObject();
-
-        /// <summary>
-        /// The context
-        /// </summary>
-        private Context context;
         
         /// <summary>
-        /// Initializes a new instance of the <see cref="GameObjectBuilder"/> class
+        ///     The context
+        /// </summary>
+        private readonly Context context;
+        
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="GameObjectBuilder" /> class
         /// </summary>
         /// <param name="context">The context</param>
-        public GameObjectBuilder(Context context)
-        {
-            this.context = context;
-        }
-
-
+        public GameObjectBuilder(Context context) => this.context = context;
+        
+        
         /// <summary>
         ///     Adds the component using the specified value
         /// </summary>
@@ -81,7 +78,7 @@ namespace Alis.Builder.Core.Ecs.Entity.GameObject
             aComponent.Attach(gameObject);
             return this;
         }
-
+        
         /// <summary>
         ///     Adds the component using the specified value
         /// </summary>
@@ -95,13 +92,13 @@ namespace Alis.Builder.Core.Ecs.Entity.GameObject
             gameObject.SetContext(context);
             return this;
         }
-
+        
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The game object</returns>
         public Alis.Core.Ecs.Entity.GameObject Build() => gameObject;
-
+        
         /// <summary>
         ///     Ises the static
         /// </summary>
@@ -111,7 +108,7 @@ namespace Alis.Builder.Core.Ecs.Entity.GameObject
             gameObject.IsStatic = true;
             return this;
         }
-
+        
         /// <summary>
         ///     Ises the static using the specified value
         /// </summary>
@@ -122,7 +119,7 @@ namespace Alis.Builder.Core.Ecs.Entity.GameObject
             gameObject.IsStatic = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Names the value
         /// </summary>
@@ -133,7 +130,7 @@ namespace Alis.Builder.Core.Ecs.Entity.GameObject
             gameObject.Name = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Transforms the value
         /// </summary>
@@ -144,7 +141,7 @@ namespace Alis.Builder.Core.Ecs.Entity.GameObject
             gameObject.Transform = value.Invoke(new TransformBuilder());
             return this;
         }
-
+        
         /// <summary>
         ///     Adds the tag using the specified value
         /// </summary>

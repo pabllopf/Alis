@@ -39,7 +39,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         ///     The point
         /// </summary>
         private readonly Point _point;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="XNode" /> class
         /// </summary>
@@ -49,7 +49,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         public XNode(Point point, Node lChild, Node rChild)
             : base(lChild, rChild)
             => _point = point;
-
+        
         /// <summary>
         ///     Locates the edge
         /// </summary>
@@ -59,7 +59,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         {
             if (edge.P.X >= _point.X)
                 return RightChild.Locate(edge); // Move to the right in the graph
-
+            
             return LeftChild.Locate(edge); // Move to the left in the graph
         }
     }

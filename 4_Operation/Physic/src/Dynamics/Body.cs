@@ -49,168 +49,168 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <value>The fixture list.</value>
         internal readonly FixtureCollection FixtureList;
-
+        
         /// <summary>
         ///     The angular damping
         /// </summary>
         private float _angularDamping;
-
+        
         /// <summary>
         ///     The angular velocity
         /// </summary>
         internal float _angularVelocity;
-
+        
         /// <summary>
         ///     The awake
         /// </summary>
         private bool _awake;
-
+        
         /// <summary>
         ///     The body type
         /// </summary>
         private BodyType _bodyType;
-
+        
         /// <summary>
         ///     The enabled
         /// </summary>
         internal bool _enabled;
-
+        
         /// <summary>
         ///     The fixed rotation
         /// </summary>
         private bool _fixedRotation;
-
+        
         /// <summary>
         ///     The force
         /// </summary>
         internal Vector2 _force;
-
+        
         /// <summary>
         ///     The inertia
         /// </summary>
         private float _inertia;
-
+        
         /// <summary>
         ///     The inv
         /// </summary>
         internal float _invI;
-
+        
         /// <summary>
         ///     The inv mass
         /// </summary>
         internal float _invMass;
-
+        
         /// <summary>
         ///     The island
         /// </summary>
         internal bool _island;
-
+        
         /// <summary>
         ///     The linear damping
         /// </summary>
         private float _linearDamping;
-
+        
         /// <summary>
         ///     The linear velocity
         /// </summary>
         internal Vector2 _linearVelocity;
-
+        
         /// <summary>
         ///     The lock
         /// </summary>
         internal int _lock;
-
+        
         /// <summary>
         ///     The lock order
         /// </summary>
         internal int _lockOrder;
-
+        
         /// <summary>
         ///     The mass
         /// </summary>
         private float _mass;
-
+        
         /// <summary>
         ///     The sleeping allowed
         /// </summary>
         private bool _sleepingAllowed;
-
+        
         /// <summary>
         ///     The sleep time
         /// </summary>
         internal float _sleepTime;
-
+        
         /// <summary>
         ///     The sweep
         /// </summary>
         internal Sweep _sweep; // the swept motion for CCD
-
+        
         /// <summary>
         ///     The torque
         /// </summary>
         internal float _torque;
-
+        
         /// <summary>
         ///     The world
         /// </summary>
         internal World _world;
-
+        
         /// <summary>
         ///     The xf
         /// </summary>
         internal Transform _xf; // the body origin transform
-
+        
         /// <summary>
         ///     The all
         /// </summary>
         public ControllerFilter ControllerFilter = new ControllerFilter(ControllerCategory.All);
-
+        
         /// <summary>
         ///     The on collision event handler
         /// </summary>
         internal OnCollisionEventHandler onCollisionEventHandler;
-
+        
         /// <summary>
         ///     The on separation event handler
         /// </summary>
         internal OnSeparationEventHandler onSeparationEventHandler;
-
+        
         /// <summary>
         ///     Set the user data. Use this to store your application specific data.
         /// </summary>
         /// <value>The user data.</value>
         public object Tag;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Body" /> class
         /// </summary>
         public Body()
         {
             FixtureList = new FixtureCollection(this);
-
+            
             _enabled = true;
             _awake = true;
             _sleepingAllowed = true;
             _xf.q = Complex.One;
-
+            
             BodyType = BodyType.Static;
         }
-
+        
         /// <summary>
         ///     Get the parent World of this body. This is null if the body is not attached.
         /// </summary>
         public World World => _world;
-
+        
         /// <remarks>Deprecated in version 1.6</remarks>
-
+        
         public int IslandIndex { get; internal set; }
-
+        
         /// <summary>
         ///     Gets the total number revolutions the body has made.
         /// </summary>
         /// <value>The revolutions.</value>
         public float Revolutions => Rotation / (2 * (float) Math.PI);
-
+        
         /// <summary>
         ///     Gets or sets the body type.
         ///     Warning: This property is readonly during callbacks.
@@ -224,14 +224,14 @@ namespace Alis.Core.Physic.Dynamics
             {
                 if ((World != null) && World.IsLocked)
                     throw new InvalidOperationException("The World is locked.");
-
+                
                 if (_bodyType == value)
                     return;
-
+                
                 _bodyType = value;
-
+                
                 ResetMassData();
-
+                
                 if (_bodyType == BodyType.Static)
                 {
                     _linearVelocity = Vector2.Zero;
@@ -240,12 +240,12 @@ namespace Alis.Core.Physic.Dynamics
                     _sweep.C0 = _sweep.C;
                     SynchronizeFixtures();
                 }
-
+                
                 Awake = true;
-
+                
                 _force = Vector2.Zero;
                 _torque = 0.0f;
-
+                
                 // Delete the attached contacts.
                 ContactEdge ce = ContactList;
                 while (ce != null)
@@ -254,9 +254,9 @@ namespace Alis.Core.Physic.Dynamics
                     ce = ce.Next;
                     World.ContactManager.Destroy(ce0.Contact);
                 }
-
+                
                 ContactList = null;
-
+                
                 if (World != null)
                 {
                     // Touch the proxies so that new contacts will be created (when appropriate)
@@ -266,7 +266,7 @@ namespace Alis.Core.Physic.Dynamics
                 }
             }
         }
-
+        
         /// <summary>
         ///     Get or sets the linear velocity of the center of mass. Property has no effect on <see cref="BodyType.Static" />
         ///     bodies.
@@ -277,18 +277,18 @@ namespace Alis.Core.Physic.Dynamics
             set
             {
                 Debug.Assert(!float.IsNaN(value.X) && !float.IsNaN(value.Y));
-
+                
                 if (_bodyType == BodyType.Static)
                     return;
-
+                
                 if (Vector2.Dot(value, value) > 0.0f)
                     Awake = true;
-
+                
                 _linearVelocity = value;
             }
             get => _linearVelocity;
         }
-
+        
         /// <summary>
         ///     Gets or sets the angular velocity. Radians/second.
         /// </summary>
@@ -298,18 +298,18 @@ namespace Alis.Core.Physic.Dynamics
             set
             {
                 Debug.Assert(!float.IsNaN(value));
-
+                
                 if (_bodyType == BodyType.Static)
                     return;
-
+                
                 if (value * value > 0.0f)
                     Awake = true;
-
+                
                 _angularVelocity = value;
             }
             get => _angularVelocity;
         }
-
+        
         /// <summary>
         ///     Gets or sets the linear damping.
         /// </summary>
@@ -320,11 +320,11 @@ namespace Alis.Core.Physic.Dynamics
             set
             {
                 Debug.Assert(!float.IsNaN(value));
-
+                
                 _linearDamping = value;
             }
         }
-
+        
         /// <summary>
         ///     Gets or sets the angular damping.
         /// </summary>
@@ -335,17 +335,17 @@ namespace Alis.Core.Physic.Dynamics
             set
             {
                 Debug.Assert(!float.IsNaN(value));
-
+                
                 _angularDamping = value;
             }
         }
-
+        
         /// <summary>
         ///     Gets or sets a value indicating whether this body should be included in the CCD solver.
         /// </summary>
         /// <value><c>true</c> if this instance is included in CCD; otherwise, <c>false</c>.</value>
         public bool IsBullet { get; set; }
-
+        
         /// <summary>
         ///     You can disable sleeping on this body. If you disable sleeping, the
         ///     body will be woken.
@@ -357,12 +357,12 @@ namespace Alis.Core.Physic.Dynamics
             {
                 if (!value)
                     Awake = true;
-
+                
                 _sleepingAllowed = value;
             }
             get => _sleepingAllowed;
         }
-
+        
         /// <summary>
         ///     Set the sleep state of the body. A sleeping body has very
         ///     low CPU cost.
@@ -377,11 +377,11 @@ namespace Alis.Core.Physic.Dynamics
                     if (!_awake)
                     {
                         _sleepTime = 0.0f;
-
+                        
 #if USE_ACTIVE_CONTACT_SET
                         World.ContactManager.UpdateActiveContacts(ContactList, true);
 #endif
-
+                        
 #if USE_AWAKE_BODY_SET
                         if (InWorld && !World.AwakeBodySet.Contains(this))
                             World.AwakeBodySet.Add(this);
@@ -398,17 +398,17 @@ namespace Alis.Core.Physic.Dynamics
 #endif
                     ResetDynamics();
                     _sleepTime = 0.0f;
-
+                    
 #if USE_ACTIVE_CONTACT_SET
                     World.ContactManager.UpdateActiveContacts(ContactList, false);
 #endif
                 }
-
+                
                 _awake = value;
             }
             get { return _awake; }
         }
-
+        
         /// <summary>
         ///     Set the active state of the body. An inactive body is not
         ///     simulated and cannot be collided with or woken up.
@@ -434,17 +434,17 @@ namespace Alis.Core.Physic.Dynamics
             {
                 if ((World != null) && World.IsLocked)
                     throw new InvalidOperationException("The World is locked.");
-
+                
                 if (value == _enabled)
                     return;
-
+                
                 _enabled = value;
-
+                
                 if (Enabled)
                 {
                     if (World != null)
                         CreateProxies();
-
+                    
                     // Contacts are created the next time step.
                 }
                 else
@@ -457,8 +457,8 @@ namespace Alis.Core.Physic.Dynamics
                 }
             }
         }
-
-
+        
+        
         /// <summary>
         ///     Set this body to have fixed rotation. This causes the mass
         ///     to be reset.
@@ -470,21 +470,21 @@ namespace Alis.Core.Physic.Dynamics
             {
                 if (_fixedRotation == value)
                     return;
-
+                
                 _fixedRotation = value;
-
+                
                 _angularVelocity = 0f;
                 ResetMassData();
             }
             get => _fixedRotation;
         }
-
+        
         /// <summary>
         ///     Get the list of all joints attached to this body.
         /// </summary>
         /// <value>The joint list.</value>
         public JointEdge JointList { get; internal set; }
-
+        
         /// <summary>
         ///     Get the list of all contacts attached to this body.
         ///     Warning: this list changes during the time step and you may
@@ -492,7 +492,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <value>The contact list.</value>
         public ContactEdge ContactList { get; internal set; }
-
+        
         /// <summary>
         ///     Get the world body origin position.
         /// </summary>
@@ -503,14 +503,14 @@ namespace Alis.Core.Physic.Dynamics
             set
             {
                 Debug.Assert(!float.IsNaN(value.X) && !float.IsNaN(value.Y));
-
+                
                 if (World == null)
                     _xf.p = value;
                 else
                     SetTransform(ref value, Rotation);
             }
         }
-
+        
         /// <summary>
         ///     Get the angle in radians.
         /// </summary>
@@ -521,26 +521,26 @@ namespace Alis.Core.Physic.Dynamics
             set
             {
                 Debug.Assert(!float.IsNaN(value));
-
+                
                 if (World == null)
                     _sweep.A = value;
                 else
                     SetTransform(ref _xf.p, value);
             }
         }
-
+        
         /// <summary>
         ///     Gets or sets a value indicating whether this body ignores gravity.
         /// </summary>
         /// <value><c>true</c> if  it ignores gravity; otherwise, <c>false</c>.</value>
         public bool IgnoreGravity { get; set; }
-
+        
         /// <summary>
         ///     Get the world position of the center of mass.
         /// </summary>
         /// <value>The world position.</value>
         public Vector2 WorldCenter => _sweep.C;
-
+        
         /// <summary>
         ///     Get the local position of the center of mass.
         ///     Warning: This property is readonly during callbacks.
@@ -554,21 +554,21 @@ namespace Alis.Core.Physic.Dynamics
             {
                 if ((World != null) && World.IsLocked)
                     throw new InvalidOperationException("The World is locked.");
-
+                
                 if (_bodyType != BodyType.Dynamic)
                     return;
-
+                
                 // Move center of mass.
                 Vector2 oldCenter = _sweep.C;
                 _sweep.LocalCenter = value;
                 _sweep.C0 = _sweep.C = Transform.Multiply(ref _sweep.LocalCenter, ref _xf);
-
+                
                 // Update center of mass velocity.
                 Vector2 a = _sweep.C - oldCenter;
                 _linearVelocity += new Vector2(-_angularVelocity * a.Y, _angularVelocity * a.X);
             }
         }
-
+        
         /// <summary>
         ///     Gets or sets the mass. Usually in kilograms (kg).
         ///     Warning: This property is readonly during callbacks.
@@ -582,21 +582,21 @@ namespace Alis.Core.Physic.Dynamics
             {
                 if ((World != null) && World.IsLocked)
                     throw new InvalidOperationException("The World is locked.");
-
+                
                 Debug.Assert(!float.IsNaN(value));
-
+                
                 if (_bodyType != BodyType.Dynamic) //Make an assert
                     return;
-
+                
                 _mass = value;
-
+                
                 if (_mass <= 0.0f)
                     _mass = 1.0f;
-
+                
                 _invMass = 1.0f / _mass;
             }
         }
-
+        
         /// <summary>
         ///     Get or set the rotational inertia of the body about the local origin. usually in kg-m^2.
         ///     Warning: This property is readonly during callbacks.
@@ -610,12 +610,12 @@ namespace Alis.Core.Physic.Dynamics
             {
                 if ((World != null) && World.IsLocked)
                     throw new InvalidOperationException("The World is locked.");
-
+                
                 Debug.Assert(!float.IsNaN(value));
-
+                
                 if (_bodyType != BodyType.Dynamic) //Make an assert
                     return;
-
+                
                 if ((value > 0.0f) && !_fixedRotation) //Make an assert
                 {
                     _inertia = value - Mass * Vector2.Dot(LocalCenter, LocalCenter);
@@ -624,12 +624,12 @@ namespace Alis.Core.Physic.Dynamics
                 }
             }
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the ignore ccd
         /// </summary>
         public bool IgnoreCCD { get; set; }
-
+        
         /// <summary>
         ///     Create all proxies.
         /// </summary>
@@ -639,7 +639,7 @@ namespace Alis.Core.Physic.Dynamics
             for (int i = 0; i < FixtureList._list.Count; i++)
                 FixtureList._list[i].CreateProxies(broadPhase, ref _xf);
         }
-
+        
         /// <summary>
         ///     Destroy all proxies.
         /// </summary>
@@ -649,7 +649,7 @@ namespace Alis.Core.Physic.Dynamics
             for (int i = 0; i < FixtureList._list.Count; i++)
                 FixtureList._list[i].DestroyProxies(broadPhase);
         }
-
+        
         /// <summary>
         ///     Destroy the attached contacts.
         /// </summary>
@@ -662,10 +662,10 @@ namespace Alis.Core.Physic.Dynamics
                 ce = ce.Next;
                 World.ContactManager.Destroy(ce0.Contact);
             }
-
+            
             ContactList = null;
         }
-
+        
         /// <summary>
         ///     Resets the dynamics of this body.
         ///     Sets torque, force and linear/angular velocity to 0
@@ -677,7 +677,7 @@ namespace Alis.Core.Physic.Dynamics
             _force = Vector2.Zero;
             _linearVelocity = Vector2.Zero;
         }
-
+        
         /// <summary>
         ///     Warning: This method is locked during callbacks.
         /// </summary>
@@ -695,7 +695,7 @@ namespace Alis.Core.Physic.Dynamics
                     throw new ArgumentException("You are adding the same fixture more than once.", "fixture");
                 throw new ArgumentException("fixture belongs to another body.", "fixture");
             }
-
+            
             fixture.Body = this;
             FixtureList._list.Add(fixture);
             FixtureList._generationStamp++;
@@ -703,11 +703,11 @@ namespace Alis.Core.Physic.Dynamics
             if (fixture.Shape.ShapeType == ShapeType.Polygon)
                 ((PolygonShape) fixture.Shape).Vertices.AttachedToBody = true;
 #endif
-
+            
             // Adjust mass properties if needed.
             if (fixture.Shape._density > 0.0f)
                 ResetMassData();
-
+            
             if (World != null)
             {
                 if (Enabled)
@@ -715,17 +715,17 @@ namespace Alis.Core.Physic.Dynamics
                     IBroadPhase broadPhase = World.ContactManager.BroadPhase;
                     fixture.CreateProxies(broadPhase, ref _xf);
                 }
-
+                
                 // Let the world know we have a new fixture. This will cause new contacts
                 // to be created at the beginning of the next time step.
                 World._worldHasNewFixture = true;
-
+                
                 FixtureDelegate fixtureAddedHandler = World.FixtureAdded;
                 if (fixtureAddedHandler != null)
                     fixtureAddedHandler(World, this, fixture);
             }
         }
-
+        
         /// <summary>
         ///     Destroy a fixture. This removes the fixture from the broad-phase and
         ///     destroys all contacts associated with this fixture. This will
@@ -744,17 +744,17 @@ namespace Alis.Core.Physic.Dynamics
                 throw new ArgumentNullException("fixture");
             if (fixture.Body != this)
                 throw new ArgumentException("You are removing a fixture that does not belong to this Body.", "fixture");
-
+            
             // Destroy any contacts associated with the fixture.
             ContactEdge edge = ContactList;
             while (edge != null)
             {
                 Contact c = edge.Contact;
                 edge = edge.Next;
-
+                
                 Fixture fixtureA = c.FixtureA;
                 Fixture fixtureB = c.FixtureB;
-
+                
                 if (fixture == fixtureA || fixture == fixtureB)
                 {
                     // This destroys the contact and removes it from
@@ -762,13 +762,13 @@ namespace Alis.Core.Physic.Dynamics
                     World.ContactManager.Destroy(c);
                 }
             }
-
+            
             if (Enabled)
             {
                 IBroadPhase broadPhase = World.ContactManager.BroadPhase;
                 fixture.DestroyProxies(broadPhase);
             }
-
+            
             fixture.Body = null;
             FixtureList._list.Remove(fixture);
             FixtureList._generationStamp++;
@@ -776,14 +776,14 @@ namespace Alis.Core.Physic.Dynamics
             if (fixture.Shape.ShapeType == ShapeType.Polygon)
                 ((PolygonShape) fixture.Shape).Vertices.AttachedToBody = false;
 #endif
-
+            
             FixtureDelegate fixtureRemovedHandler = World.FixtureRemoved;
             if (fixtureRemovedHandler != null)
                 fixtureRemovedHandler(World, this, fixture);
-
+            
             ResetMassData();
         }
-
+        
         /// <summary>
         ///     Set the position of the body's origin and rotation.
         ///     This breaks any contacts and wakes the other bodies.
@@ -796,10 +796,10 @@ namespace Alis.Core.Physic.Dynamics
         public void SetTransform(ref Vector2 position, float rotation)
         {
             SetTransformIgnoreContacts(ref position, rotation);
-
+            
             World.ContactManager.FindNewContacts();
         }
-
+        
         /// <summary>
         ///     Set the position of the body's origin and rotation.
         ///     This breaks any contacts and wakes the other bodies.
@@ -813,7 +813,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             SetTransform(ref position, rotation);
         }
-
+        
         /// <summary>
         ///     For teleporting a body without considering new contacts immediately.
         ///     Warning: This method is locked during callbacks.
@@ -826,27 +826,27 @@ namespace Alis.Core.Physic.Dynamics
             Debug.Assert(World != null);
             if (World.IsLocked)
                 throw new InvalidOperationException("The World is locked.");
-
+            
             _xf.q.Phase = angle;
             _xf.p = position;
-
+            
             _sweep.C = Transform.Multiply(ref _sweep.LocalCenter, ref _xf);
             _sweep.A = angle;
-
+            
             _sweep.C0 = _sweep.C;
             _sweep.A0 = angle;
-
+            
             IBroadPhase broadPhase = World.ContactManager.BroadPhase;
             for (int i = 0; i < FixtureList._list.Count; i++)
                 FixtureList._list[i].Synchronize(broadPhase, ref _xf, ref _xf);
         }
-
+        
         /// <summary>
         ///     Get the body transform for the body's origin.
         /// </summary>
         /// <param name="transform">The transform of the body's origin.</param>
         public Transform GetTransform() => _xf;
-
+        
         /// <summary>
         ///     Get the body transform for the body's origin.
         /// </summary>
@@ -855,7 +855,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             transform = _xf;
         }
-
+        
         /// <summary>
         ///     Apply a force at a world point. If the force is not
         ///     applied at the center of mass, it will generate a torque and
@@ -867,7 +867,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             ApplyForce(ref force, ref point);
         }
-
+        
         /// <summary>
         ///     Applies a force at the center of mass.
         /// </summary>
@@ -876,7 +876,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             ApplyForce(ref force, ref _xf.p);
         }
-
+        
         /// <summary>
         ///     Applies a force at the center of mass.
         /// </summary>
@@ -885,7 +885,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             ApplyForce(ref force, ref _xf.p);
         }
-
+        
         /// <summary>
         ///     Apply a force at a world point. If the force is not
         ///     applied at the center of mass, it will generate a torque and
@@ -899,17 +899,17 @@ namespace Alis.Core.Physic.Dynamics
             Debug.Assert(!float.IsNaN(force.Y));
             Debug.Assert(!float.IsNaN(point.X));
             Debug.Assert(!float.IsNaN(point.Y));
-
+            
             if (_bodyType == BodyType.Dynamic)
             {
                 if (Awake == false)
                     Awake = true;
-
+                
                 _force += force;
                 _torque += (point.X - _sweep.C.X) * force.Y - (point.Y - _sweep.C.Y) * force.X;
             }
         }
-
+        
         /// <summary>
         ///     Apply a torque. This affects the angular velocity
         ///     without affecting the linear velocity of the center of mass.
@@ -919,16 +919,16 @@ namespace Alis.Core.Physic.Dynamics
         public void ApplyTorque(float torque)
         {
             Debug.Assert(!float.IsNaN(torque));
-
+            
             if (_bodyType == BodyType.Dynamic)
             {
                 if (Awake == false)
                     Awake = true;
-
+                
                 _torque += torque;
             }
         }
-
+        
         /// <summary>
         ///     Apply an impulse at a point. This immediately modifies the velocity.
         ///     This wakes up the body.
@@ -938,7 +938,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             ApplyLinearImpulse(ref impulse);
         }
-
+        
         /// <summary>
         ///     Apply an impulse at a point. This immediately modifies the velocity.
         ///     It also modifies the angular velocity if the point of application
@@ -951,7 +951,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             ApplyLinearImpulse(ref impulse, ref point);
         }
-
+        
         /// <summary>
         ///     Apply an impulse at a point. This immediately modifies the velocity.
         ///     This wakes up the body.
@@ -963,15 +963,15 @@ namespace Alis.Core.Physic.Dynamics
             {
                 return;
             }
-
+            
             if (Awake == false)
             {
                 Awake = true;
             }
-
+            
             _linearVelocity += _invMass * impulse;
         }
-
+        
         /// <summary>
         ///     Apply an impulse at a point. This immediately modifies the velocity.
         ///     It also modifies the angular velocity if the point of application
@@ -984,14 +984,14 @@ namespace Alis.Core.Physic.Dynamics
         {
             if (_bodyType != BodyType.Dynamic)
                 return;
-
+            
             if (Awake == false)
                 Awake = true;
-
+            
             _linearVelocity += _invMass * impulse;
             _angularVelocity += _invI * ((point.X - _sweep.C.X) * impulse.Y - (point.Y - _sweep.C.Y) * impulse.X);
         }
-
+        
         /// <summary>
         ///     Apply an angular impulse.
         /// </summary>
@@ -1002,15 +1002,15 @@ namespace Alis.Core.Physic.Dynamics
             {
                 return;
             }
-
+            
             if (Awake == false)
             {
                 Awake = true;
             }
-
+            
             _angularVelocity += _invI * impulse;
         }
-
+        
         /// <summary>
         ///     This resets the mass properties to the sum of the mass properties of the fixtures.
         ///     This normally does not need to be called unless you called SetMassData to override
@@ -1024,7 +1024,7 @@ namespace Alis.Core.Physic.Dynamics
             _inertia = 0.0f;
             _invI = 0.0f;
             _sweep.LocalCenter = Vector2.Zero;
-
+            
             // Kinematic bodies have zero mass.
             if (BodyType == BodyType.Kinematic)
             {
@@ -1033,9 +1033,9 @@ namespace Alis.Core.Physic.Dynamics
                 _sweep.A0 = _sweep.A;
                 return;
             }
-
+            
             Debug.Assert(BodyType == BodyType.Dynamic || BodyType == BodyType.Static);
-
+            
             // Accumulate mass over all fixtures.
             Vector2 localCenter = Vector2.Zero;
             foreach (Fixture f in FixtureList)
@@ -1044,20 +1044,20 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     continue;
                 }
-
+                
                 MassData massData = f.Shape.MassData;
                 _mass += massData.Mass;
                 localCenter += massData.Mass * massData.Centroid;
                 _inertia += massData.Inertia;
             }
-
+            
             //FPE: Static bodies only have mass, they don't have other properties. A little hacky tho...
             if (BodyType == BodyType.Static)
             {
                 _sweep.C0 = _sweep.C = _xf.p;
                 return;
             }
-
+            
             // Compute center of mass.
             if (_mass > 0.0f)
             {
@@ -1070,12 +1070,12 @@ namespace Alis.Core.Physic.Dynamics
                 _mass = 1.0f;
                 _invMass = 1.0f;
             }
-
+            
             if ((_inertia > 0.0f) && !_fixedRotation)
             {
                 // Center the inertia about the center of mass.
                 _inertia -= _mass * Vector2.Dot(localCenter, localCenter);
-
+                
                 Debug.Assert(_inertia > 0.0f);
                 _invI = 1.0f / _inertia;
             }
@@ -1084,31 +1084,31 @@ namespace Alis.Core.Physic.Dynamics
                 _inertia = 0.0f;
                 _invI = 0.0f;
             }
-
+            
             // Move center of mass.
             Vector2 oldCenter = _sweep.C;
             _sweep.LocalCenter = localCenter;
             _sweep.C0 = _sweep.C = Transform.Multiply(ref _sweep.LocalCenter, ref _xf);
-
+            
             // Update center of mass velocity.
             Vector2 a = _sweep.C - oldCenter;
             _linearVelocity += new Vector2(-_angularVelocity * a.Y, _angularVelocity * a.X);
         }
-
+        
         /// <summary>
         ///     Get the world coordinates of a point given the local coordinates.
         /// </summary>
         /// <param name="localPoint">A point on the body measured relative the the body's origin.</param>
         /// <returns>The same point expressed in world coordinates.</returns>
         public Vector2 GetWorldPoint(ref Vector2 localPoint) => Transform.Multiply(ref localPoint, ref _xf);
-
+        
         /// <summary>
         ///     Get the world coordinates of a point given the local coordinates.
         /// </summary>
         /// <param name="localPoint">A point on the body measured relative the the body's origin.</param>
         /// <returns>The same point expressed in world coordinates.</returns>
         public Vector2 GetWorldPoint(Vector2 localPoint) => GetWorldPoint(ref localPoint);
-
+        
         /// <summary>
         ///     Get the world coordinates of a vector given the local coordinates.
         ///     Note that the vector only takes the rotation into account, not the position.
@@ -1116,14 +1116,14 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="localVector">A vector fixed in the body.</param>
         /// <returns>The same vector expressed in world coordinates.</returns>
         public Vector2 GetWorldVector(ref Vector2 localVector) => Complex.Multiply(ref localVector, ref _xf.q);
-
+        
         /// <summary>
         ///     Get the world coordinates of a vector given the local coordinates.
         /// </summary>
         /// <param name="localVector">A vector fixed in the body.</param>
         /// <returns>The same vector expressed in world coordinates.</returns>
         public Vector2 GetWorldVector(Vector2 localVector) => GetWorldVector(ref localVector);
-
+        
         /// <summary>
         ///     Gets a local point relative to the body's origin given a world point.
         ///     Note that the vector only takes the rotation into account, not the position.
@@ -1131,14 +1131,14 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="worldPoint">A point in world coordinates.</param>
         /// <returns>The corresponding local point relative to the body's origin.</returns>
         public Vector2 GetLocalPoint(ref Vector2 worldPoint) => Transform.Divide(ref worldPoint, ref _xf);
-
+        
         /// <summary>
         ///     Gets a local point relative to the body's origin given a world point.
         /// </summary>
         /// <param name="worldPoint">A point in world coordinates.</param>
         /// <returns>The corresponding local point relative to the body's origin.</returns>
         public Vector2 GetLocalPoint(Vector2 worldPoint) => GetLocalPoint(ref worldPoint);
-
+        
         /// <summary>
         ///     Gets a local vector given a world vector.
         ///     Note that the vector only takes the rotation into account, not the position.
@@ -1146,7 +1146,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="worldVector">A vector in world coordinates.</param>
         /// <returns>The corresponding local vector.</returns>
         public Vector2 GetLocalVector(ref Vector2 worldVector) => Complex.Divide(ref worldVector, ref _xf.q);
-
+        
         /// <summary>
         ///     Gets a local vector given a world vector.
         ///     Note that the vector only takes the rotation into account, not the position.
@@ -1154,14 +1154,14 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="worldVector">A vector in world coordinates.</param>
         /// <returns>The corresponding local vector.</returns>
         public Vector2 GetLocalVector(Vector2 worldVector) => GetLocalVector(ref worldVector);
-
+        
         /// <summary>
         ///     Get the world linear velocity of a world point attached to this body.
         /// </summary>
         /// <param name="worldPoint">A point in world coordinates.</param>
         /// <returns>The world velocity of a point.</returns>
         public Vector2 GetLinearVelocityFromWorldPoint(Vector2 worldPoint) => GetLinearVelocityFromWorldPoint(ref worldPoint);
-
+        
         /// <summary>
         ///     Get the world linear velocity of a world point attached to this body.
         /// </summary>
@@ -1170,21 +1170,21 @@ namespace Alis.Core.Physic.Dynamics
         public Vector2 GetLinearVelocityFromWorldPoint(ref Vector2 worldPoint) => _linearVelocity +
                                                                                   new Vector2(-_angularVelocity * (worldPoint.Y - _sweep.C.Y),
                                                                                       _angularVelocity * (worldPoint.X - _sweep.C.X));
-
+        
         /// <summary>
         ///     Get the world velocity of a local point.
         /// </summary>
         /// <param name="localPoint">A point in local coordinates.</param>
         /// <returns>The world velocity of a point.</returns>
         public Vector2 GetLinearVelocityFromLocalPoint(Vector2 localPoint) => GetLinearVelocityFromLocalPoint(ref localPoint);
-
+        
         /// <summary>
         ///     Get the world velocity of a local point.
         /// </summary>
         /// <param name="localPoint">A point in local coordinates.</param>
         /// <returns>The world velocity of a point.</returns>
         public Vector2 GetLinearVelocityFromLocalPoint(ref Vector2 localPoint) => GetLinearVelocityFromWorldPoint(GetWorldPoint(ref localPoint));
-
+        
         /// <summary>
         ///     Synchronizes the fixtures
         /// </summary>
@@ -1192,14 +1192,14 @@ namespace Alis.Core.Physic.Dynamics
         {
             Transform xf1 = new Transform(Vector2.Zero, _sweep.A0);
             xf1.p = _sweep.C0 - Complex.Multiply(ref _sweep.LocalCenter, ref xf1.q);
-
+            
             IBroadPhase broadPhase = World.ContactManager.BroadPhase;
             for (int i = 0; i < FixtureList._list.Count; i++)
             {
                 FixtureList._list[i].Synchronize(broadPhase, ref xf1, ref _xf);
             }
         }
-
+        
         /// <summary>
         ///     Synchronizes the transform
         /// </summary>
@@ -1208,7 +1208,7 @@ namespace Alis.Core.Physic.Dynamics
             _xf.q.Phase = _sweep.A;
             _xf.p = _sweep.C - Complex.Multiply(ref _sweep.LocalCenter, ref _xf.q);
         }
-
+        
         /// <summary>
         ///     This is used to prevent connected bodies from colliding.
         ///     It may lie, depending on the collideConnected flag.
@@ -1222,7 +1222,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 return false;
             }
-
+            
             // Does a joint prevent collision?
             for (JointEdge jn = JointList; jn != null; jn = jn.Next)
             {
@@ -1234,10 +1234,10 @@ namespace Alis.Core.Physic.Dynamics
                     }
                 }
             }
-
+            
             return true;
         }
-
+        
         /// <summary>
         ///     Advances the alpha
         /// </summary>
@@ -1251,7 +1251,7 @@ namespace Alis.Core.Physic.Dynamics
             _xf.q.Phase = _sweep.A;
             _xf.p = _sweep.C - Complex.Multiply(ref _sweep.LocalCenter, ref _xf.q);
         }
-
+        
         /// <summary>
         ///     The on collision
         /// </summary>
@@ -1260,7 +1260,7 @@ namespace Alis.Core.Physic.Dynamics
             add => onCollisionEventHandler += value;
             remove => onCollisionEventHandler -= value;
         }
-
+        
         /// <summary>
         ///     The on separation
         /// </summary>
@@ -1269,8 +1269,8 @@ namespace Alis.Core.Physic.Dynamics
             add => onSeparationEventHandler += value;
             remove => onSeparationEventHandler -= value;
         }
-
-
+        
+        
         /// <summary>
         ///     Set restitution on all fixtures.
         ///     Warning: This method applies the value on existing Fixtures. It's not a property of Body.
@@ -1282,7 +1282,7 @@ namespace Alis.Core.Physic.Dynamics
             for (int i = 0; i < FixtureList._list.Count; i++)
                 FixtureList._list[i].Restitution = restitution;
         }
-
+        
         /// <summary>
         ///     Set friction on all fixtures.
         ///     Warning: This method applies the value on existing Fixtures. It's not a property of Body.
@@ -1294,7 +1294,7 @@ namespace Alis.Core.Physic.Dynamics
             for (int i = 0; i < FixtureList._list.Count; i++)
                 FixtureList._list[i].Friction = friction;
         }
-
+        
         /// <summary>
         ///     Warning: This method applies the value on existing Fixtures. It's not a property of Body.
         /// </summary>
@@ -1304,7 +1304,7 @@ namespace Alis.Core.Physic.Dynamics
             for (int i = 0; i < FixtureList._list.Count; i++)
                 FixtureList._list[i].CollisionCategories = category;
         }
-
+        
         /// <summary>
         ///     Warning: This method applies the value on existing Fixtures. It's not a property of Body.
         /// </summary>
@@ -1314,7 +1314,7 @@ namespace Alis.Core.Physic.Dynamics
             for (int i = 0; i < FixtureList._list.Count; i++)
                 FixtureList._list[i].CollidesWith = category;
         }
-
+        
         /// <summary>
         ///     Warning: This method applies the value on existing Fixtures. It's not a property of Body.
         /// </summary>
@@ -1324,7 +1324,7 @@ namespace Alis.Core.Physic.Dynamics
             for (int i = 0; i < FixtureList._list.Count; i++)
                 FixtureList._list[i].CollisionGroup = collisionGroup;
         }
-
+        
         /// <summary>
         ///     Warning: This method applies the value on existing Fixtures. It's not a property of Body.
         /// </summary>
@@ -1334,7 +1334,7 @@ namespace Alis.Core.Physic.Dynamics
             for (int i = 0; i < FixtureList._list.Count; i++)
                 FixtureList._list[i].IsSensor = isSensor;
         }
-
+        
         /// <summary>
         ///     Makes a clone of the body. Fixtures and therefore shapes are not included.
         ///     Use DeepClone() to clone the body, as well as fixtures and shapes.
@@ -1359,10 +1359,10 @@ namespace Alis.Core.Physic.Dynamics
             body.IgnoreCCD = IgnoreCCD;
             body.IgnoreGravity = IgnoreGravity;
             body._torque = _torque;
-
+            
             return body;
         }
-
+        
         /// <summary>
         ///     Clones the body and all attached fixtures and shapes. Simply said, it makes a complete copy of the body.
         /// </summary>
@@ -1371,13 +1371,13 @@ namespace Alis.Core.Physic.Dynamics
         public Body DeepClone(World world = null)
         {
             Body body = Clone(world ?? World);
-
+            
             int count = FixtureList._list.Count; //Make a copy of the count. Otherwise it causes an infinite loop.
             for (int i = 0; i < count; i++)
             {
                 FixtureList._list[i].CloneOnto(body);
             }
-
+            
             return body;
         }
     }

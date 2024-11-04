@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotLine("label", ref xs, ref xs, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot line s 32 ptr s 32 ptr int flags throws dll not found exception
         /// </summary>
@@ -65,7 +65,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotLine("label", ref xs, ref xs, 0, default(ImPlotLineFlags));
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot line s 32 ptr s 32 ptr int flags offset throws dll not found exception
         /// </summary>
@@ -78,7 +78,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotLine("label", ref xs, ref xs, 0, default(ImPlotLineFlags), 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot line s 32 ptr s 32 ptr int flags offset stride throws dll not found exception
         /// </summary>
@@ -91,7 +91,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotLine("label", ref xs, ref xs, 0, default(ImPlotLineFlags), 0, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot line u 32 ptr u 32 ptr int throws dll not found exception
         /// </summary>
@@ -104,7 +104,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotLine("label", ref xs, ref xs, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot line u 32 ptr u 32 ptr int flags throws dll not found exception
         /// </summary>
@@ -117,7 +117,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotLine("label", ref xs, ref xs, 0, default(ImPlotLineFlags));
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot line u 32 ptr u 32 ptr int flags offset throws dll not found exception
         /// </summary>
@@ -130,7 +130,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotLine("label", ref xs, ref xs, 0, default(ImPlotLineFlags), 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot line u 32 ptr u 32 ptr int flags offset stride throws dll not found exception
         /// </summary>
@@ -143,7 +143,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotLine("label", ref xs, ref xs, 0, default(ImPlotLineFlags), 0, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot line s 64 ptr s 64 ptr int throws dll not found exception
         /// </summary>
@@ -156,7 +156,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotLine("label", ref xs, ref xs, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot line s 64 ptr s 64 ptr int flags throws dll not found exception
         /// </summary>
@@ -169,7 +169,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotLine("label", ref xs, ref xs, 0, default(ImPlotLineFlags));
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot line s 64 ptr s 64 ptr int flags offset throws dll not found exception
         /// </summary>
@@ -182,7 +182,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotLine("label", ref xs, ref xs, 0, default(ImPlotLineFlags), 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot line s 64 ptr s 64 ptr int flags offset stride throws dll not found exception
         /// </summary>
@@ -195,7 +195,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotLine("label", ref xs, ref xs, 0, default(ImPlotLineFlags), 0, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot line u 64 ptr u 64 ptr int throws dll not found exception
         /// </summary>
@@ -208,7 +208,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotLine("label", ref xs, ref xs, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot line u 64 ptr u 64 ptr int flags throws dll not found exception
         /// </summary>
@@ -221,7 +221,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotLine("label", ref xs, ref xs, 0, default(ImPlotLineFlags));
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot line u 64 ptr u 64 ptr int flags offset throws dll not found exception
         /// </summary>
@@ -234,7 +234,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotLine("label", ref xs, ref xs, 0, default(ImPlotLineFlags), 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot line u 64 ptr u 64 ptr int flags offset stride throws dll not found exception
         /// </summary>
@@ -247,7 +247,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 ImPlot.PlotLine("label", ref xs, ref xs, 0, default(ImPlotLineFlags), 0, 0);
             });
         }
-
+        
         /// <summary>
         ///     Tests that plot line g int ptr int ptr int throws dll not found exception
         /// </summary>
@@ -256,7 +256,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotLineG("label", IntPtr.Zero, IntPtr.Zero, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot line g int ptr int ptr int flags throws dll not found exception
         /// </summary>
@@ -265,7 +265,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotLineG("label", IntPtr.Zero, IntPtr.Zero, 0, default(ImPlotLineFlags)));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart float ptr throws dll not found exception
         /// </summary>
@@ -274,7 +274,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[0], new float[0], 0, 0, 0, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart float ptr label fmt throws dll not found exception
         /// </summary>
@@ -283,7 +283,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[0], new float[0], 0, 0, 0, 0, "labelFmt"));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart float ptr label fmt angle 0 throws dll not found exception
         /// </summary>
@@ -292,7 +292,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[0], new float[0], 0, 0, 0, 0, "labelFmt", 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart float ptr label fmt angle 0 flags throws dll not found exception
         /// </summary>
@@ -301,7 +301,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[0], new float[0], 0, 0, 0, 0, "labelFmt", 0, default(ImPlotPieChartFlags)));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart double ptr throws dll not found exception
         /// </summary>
@@ -310,7 +310,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[0], new double[0], 0, 0, 0, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart double ptr label fmt throws dll not found exception
         /// </summary>
@@ -319,7 +319,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[0], new double[0], 0, 0, 0, 0, "labelFmt"));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart double ptr label fmt angle 0 throws dll not found exception
         /// </summary>
@@ -328,7 +328,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[0], new double[0], 0, 0, 0, 0, "labelFmt", 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart double ptr label fmt angle 0 flags throws dll not found exception
         /// </summary>
@@ -337,7 +337,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[0], new double[0], 0, 0, 0, 0, "labelFmt", 0, default(ImPlotPieChartFlags)));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart s 8 ptr throws dll not found exception
         /// </summary>
@@ -346,7 +346,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[0], new sbyte[0], 0, 0, 0, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart s 8 ptr label fmt throws dll not found exception
         /// </summary>
@@ -355,7 +355,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[0], new sbyte[0], 0, 0, 0, 0, "labelFmt"));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart s 8 ptr label fmt angle 0 throws dll not found exception
         /// </summary>
@@ -364,7 +364,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[0], new sbyte[0], 0, 0, 0, 0, "labelFmt", 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart s 8 ptr label fmt angle 0 flags throws dll not found exception
         /// </summary>
@@ -373,7 +373,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[0], new sbyte[0], 0, 0, 0, 0, "labelFmt", 0, default(ImPlotPieChartFlags)));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart u 8 ptr throws dll not found exception
         /// </summary>
@@ -382,7 +382,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[0], new byte[0], 0, 0, 0, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart u 8 ptr label fmt throws dll not found exception
         /// </summary>
@@ -391,7 +391,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[0], new byte[0], 0, 0, 0, 0, "labelFmt"));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart u 8 ptr label fmt angle 0 throws dll not found exception
         /// </summary>
@@ -400,7 +400,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[0], new byte[0], 0, 0, 0, 0, "labelFmt", 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart u 8 ptr label fmt angle 0 flags throws dll not found exception
         /// </summary>
@@ -409,7 +409,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[0], new byte[0], 0, 0, 0, 0, "labelFmt", 0, default(ImPlotPieChartFlags)));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart s 16 ptr throws dll not found exception
         /// </summary>
@@ -418,7 +418,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[0], new short[0], 0, 0, 0, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart s 16 ptr label fmt throws dll not found exception
         /// </summary>
@@ -427,7 +427,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[0], new short[0], 0, 0, 0, 0, "labelFmt"));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart s 16 ptr label fmt angle 0 throws dll not found exception
         /// </summary>
@@ -436,7 +436,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[0], new short[0], 0, 0, 0, 0, "labelFmt", 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart s 16 ptr label fmt angle 0 flags throws dll not found exception
         /// </summary>
@@ -445,7 +445,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[0], new short[0], 0, 0, 0, 0, "labelFmt", 0, default(ImPlotPieChartFlags)));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart u 16 ptr throws dll not found exception
         /// </summary>

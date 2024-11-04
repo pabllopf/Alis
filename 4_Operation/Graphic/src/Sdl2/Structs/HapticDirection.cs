@@ -41,7 +41,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The type
         /// </summary>
         public readonly byte type;
-
+        
         /// <summary>
         ///     The dir
         /// </summary>

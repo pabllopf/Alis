@@ -50,7 +50,7 @@ namespace Alis.Core.Ecs.Entity
             Tag = GetType().Name;
             GameObjects = new List<GameObject>();
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Scene" /> class
         /// </summary>
@@ -67,7 +67,7 @@ namespace Alis.Core.Ecs.Entity
             Tag = tag;
             GameObjects = new List<GameObject>();
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Scene" /> class
         /// </summary>
@@ -87,42 +87,42 @@ namespace Alis.Core.Ecs.Entity
         }
         
         /// <summary>
+        ///     The context
+        /// </summary>
+        [JsonIgnore]
+        public Context Context { get; private set; }
+        
+        /// <summary>
         ///     Gets or sets the value of the is enable
         /// </summary>
         [JsonPropertyName("_IsEnable_")]
         public bool IsEnable { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the name
         /// </summary>
         [JsonPropertyName("_Name_")]
         public string Name { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the id
         /// </summary>
         [JsonPropertyName("_Id_")]
         public string Id { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the tag
         /// </summary>
         [JsonPropertyName("_Tag_")]
         public string Tag { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the game objects
         /// </summary>
-
+        
         [JsonPropertyName("_GameObjects_")]
         public List<GameObject> GameObjects { get; set; }
         
-        /// <summary>
-        /// The context
-        /// </summary>
-        [JsonIgnore]
-        public Context Context { get; private set; }
-
         /// <summary>
         ///     Ons the enable
         /// </summary>
@@ -130,149 +130,135 @@ namespace Alis.Core.Ecs.Entity
         {
             IsEnable = true;
             GameObjects.ForEach(i => i.OnEnable());
-            
         }
-
+        
         /// <summary>
         ///     Ons the init
         /// </summary>
         public void OnInit()
         {
             GameObjects.ForEach(i => i.OnInit());
-            
         }
-
+        
         /// <summary>
         ///     Ons the awake
         /// </summary>
         public void OnAwake()
         {
             GameObjects.ForEach(i => i.OnAwake());
-            
         }
-
+        
         /// <summary>
         ///     Ons the start
         /// </summary>
         public void OnStart()
         {
             GameObjects.ForEach(i => i.OnStart());
-            
         }
-
+        
         /// <summary>
-        /// Ons the physic update
+        ///     Ons the physic update
         /// </summary>
         public void OnPhysicUpdate()
         {
             GameObjects.ForEach(i => i.OnPhysicUpdate());
         }
-
+        
         /// <summary>
         ///     Ons the before update
         /// </summary>
         public void OnBeforeUpdate()
         {
             GameObjects.ForEach(i => i.OnBeforeUpdate());
-            
         }
-
+        
         /// <summary>
         ///     Ons the update
         /// </summary>
         public void OnUpdate()
         {
             GameObjects.ForEach(i => i.OnUpdate());
-            
         }
-
+        
         /// <summary>
         ///     Ons the after update
         /// </summary>
         public void OnAfterUpdate()
         {
             GameObjects.ForEach(i => i.OnAfterUpdate());
-            
         }
-
+        
         /// <summary>
         ///     Ons the before fixed update
         /// </summary>
         public void OnBeforeFixedUpdate()
         {
             GameObjects.ForEach(i => i.OnBeforeFixedUpdate());
-            
         }
-
+        
         /// <summary>
         ///     Ons the fixed update
         /// </summary>
         public void OnFixedUpdate()
         {
             GameObjects.ForEach(i => i.OnFixedUpdate());
-            
         }
-
+        
         /// <summary>
         ///     Ons the after fixed update
         /// </summary>
         public void OnAfterFixedUpdate()
         {
             GameObjects.ForEach(i => i.OnAfterFixedUpdate());
-            
         }
-
+        
         /// <summary>
         ///     Ons the dispatch events
         /// </summary>
         public void OnDispatchEvents()
         {
             GameObjects.ForEach(i => i.OnDispatchEvents());
-            
         }
-
+        
         /// <summary>
         ///     Ons the calculate
         /// </summary>
         public void OnCalculate()
         {
             GameObjects.ForEach(i => i.OnCalculate());
-            
         }
-
+        
         public void OnBeforeDraw()
         {
             GameObjects.ForEach(i => i.OnBeforeDraw());
         }
-
+        
         /// <summary>
         ///     Ons the draw
         /// </summary>
         public void OnDraw()
         {
             GameObjects.ForEach(i => i.OnDraw());
-            
         }
-
+        
         public void OnAfterDraw()
         {
             GameObjects.ForEach(i => i.OnAfterDraw());
         }
-
+        
         /// <summary>
         ///     Ons the gui
         /// </summary>
         public void OnGui()
         {
             GameObjects.ForEach(i => i.OnGui());
-            
         }
-
+        
         public void OnRenderPresent()
         {
             GameObjects.ForEach(i => i.OnRenderPresent());
         }
-
+        
         /// <summary>
         ///     Ons the disable
         /// </summary>
@@ -280,36 +266,32 @@ namespace Alis.Core.Ecs.Entity
         {
             IsEnable = false;
             GameObjects.ForEach(i => i.OnDisable());
-            
         }
-
+        
         /// <summary>
         ///     Ons the reset
         /// </summary>
         public void OnReset()
         {
             GameObjects.ForEach(i => i.OnReset());
-            
         }
-
+        
         /// <summary>
         ///     Ons the stop
         /// </summary>
         public void OnStop()
         {
             GameObjects.ForEach(i => i.OnStop());
-            
         }
-
+        
         /// <summary>
         ///     Ons the exit
         /// </summary>
         public void OnExit()
         {
             GameObjects.ForEach(i => i.OnExit());
-            
         }
-
+        
         /// <summary>
         ///     Ons the destroy
         /// </summary>
@@ -317,7 +299,7 @@ namespace Alis.Core.Ecs.Entity
         {
             GameObjects.ForEach(i => i.OnDestroy());
         }
-
+        
         /// <summary>
         ///     Adds the component
         /// </summary>
@@ -328,7 +310,7 @@ namespace Alis.Core.Ecs.Entity
             value.SetContext(Context);
             GameObjects.Add(value);
         }
-
+        
         /// <summary>
         ///     Removes the component
         /// </summary>
@@ -338,7 +320,7 @@ namespace Alis.Core.Ecs.Entity
         {
             GameObjects.Remove(value);
         }
-
+        
         /// <summary>
         ///     Gets this instance
         /// </summary>
@@ -348,17 +330,14 @@ namespace Alis.Core.Ecs.Entity
         {
             return GameObjects.Find(i => i is T) as T;
         }
-
+        
         /// <summary>
         ///     Describes whether this instance contains
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The bool</returns>
-        public virtual bool Contains<T>() where T : GameObject
-        {
-            return GameObjects.Contains(Get<T>());
-        }
-
+        public virtual bool Contains<T>() where T : GameObject => GameObjects.Contains(Get<T>());
+        
         /// <summary>
         ///     Clears this instance
         /// </summary>
@@ -368,7 +347,7 @@ namespace Alis.Core.Ecs.Entity
         }
         
         /// <summary>
-        /// Sets the context using the specified context
+        ///     Sets the context using the specified context
         /// </summary>
         /// <param name="context">The context</param>
         public void SetContext(Context context)

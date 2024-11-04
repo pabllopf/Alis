@@ -48,12 +48,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         public PolygonPoint(double x, double y) : base(x, y)
         {
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the next
         /// </summary>
         public PolygonPoint Next { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the previous
         /// </summary>

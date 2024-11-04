@@ -51,7 +51,7 @@ namespace Alis.Core.Ecs.System.Configuration.Network
             Host = "localhost";
             Protocol = "http";
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="NetworkSetting" /> class
         /// </summary>
@@ -67,31 +67,31 @@ namespace Alis.Core.Ecs.System.Configuration.Network
             Host = host;
             Protocol = protocol;
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the port
         /// </summary>
         [JsonPropertyName("_Port_")]
         public int Port { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the ip
         /// </summary>
         [JsonPropertyName("_Ip_")]
         public string Ip { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the host
         /// </summary>
         [JsonPropertyName("_Host_")]
         public string Host { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the protocol
         /// </summary>
         [JsonPropertyName("_Protocol_")]
         public string Protocol { get; set; }
-
+        
         /// <summary>
         ///     Builders this instance
         /// </summary>

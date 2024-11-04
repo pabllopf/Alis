@@ -38,12 +38,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
         ///     The cw orientation
         /// </summary>
         CW,
-
+        
         /// <summary>
         ///     The ccw orientation
         /// </summary>
         CCW,
-
+        
         /// <summary>
         ///     The collinear orientation
         /// </summary>

@@ -42,43 +42,43 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         ///     The bounding box
         /// </summary>
         private readonly Trapezoid _boundingBox;
-
+        
         /// <summary>
         ///     The edge list
         /// </summary>
         private readonly List<Edge> _edgeList;
-
+        
         /// <summary>
         ///     The query graph
         /// </summary>
         private readonly QueryGraph _queryGraph;
-
+        
         /// <summary>
         ///     The sheer
         /// </summary>
         private readonly float _sheer = 0.001f;
-
+        
         /// <summary>
         ///     The trapezoidal map
         /// </summary>
         private readonly TrapezoidalMap _trapezoidalMap;
-
+        
         /// <summary>
         ///     The mono poly
         /// </summary>
         private readonly List<MonotoneMountain> _xMonoPoly;
-
+        
         // Trapezoid decomposition list
         /// <summary>
         ///     The trapezoids
         /// </summary>
         public List<Trapezoid> Trapezoids;
-
+        
         /// <summary>
         ///     The triangles
         /// </summary>
         public List<List<Point>> Triangles;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Triangulator" /> class
         /// </summary>
@@ -94,10 +94,10 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             _trapezoidalMap = new TrapezoidalMap();
             _boundingBox = _trapezoidalMap.BoundingBox(_edgeList);
             _queryGraph = new QueryGraph(Sink.Isink(_boundingBox));
-
+            
             Process();
         }
-
+        
         // Build the trapezoidal map and query graph
         /// <summary>
         ///     Processes this instance
@@ -107,16 +107,16 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             foreach (Edge edge in _edgeList)
             {
                 List<Trapezoid> traps = _queryGraph.FollowEdge(edge);
-
+                
                 // Remove trapezoids from trapezoidal Map
                 foreach (Trapezoid t in traps)
                 {
                     _trapezoidalMap.Map.Remove(t);
-
+                    
                     bool cp = t.Contains(edge.P);
                     bool cq = t.Contains(edge.Q);
                     Trapezoid[] tList;
-
+                    
                     if (cp && cq)
                     {
                         tList = _trapezoidalMap.Case1(t, edge);
@@ -137,23 +137,23 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                         tList = _trapezoidalMap.Case4(t, edge);
                         _queryGraph.Case4(t.Sink, edge, tList);
                     }
-
+                    
                     // Add new trapezoids to map
                     foreach (Trapezoid y in tList)
                     {
                         _trapezoidalMap.Map.Add(y);
                     }
                 }
-
+                
                 _trapezoidalMap.Clear();
             }
-
+            
             // Mark outside trapezoids
             foreach (Trapezoid t in _trapezoidalMap.Map)
             {
                 MarkOutside(t);
             }
-
+            
             // Collect interior trapezoids
             foreach (Trapezoid t in _trapezoidalMap.Map)
             {
@@ -163,11 +163,11 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                     t.AddPoints();
                 }
             }
-
+            
             // Generate the triangles
             CreateMountains();
         }
-
+        
         // Build a list of x-monotone mountains
         /// <summary>
         ///     Creates the mountains
@@ -179,34 +179,34 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                 if (edge.MPoints.Count > 2)
                 {
                     MonotoneMountain mountain = new MonotoneMountain();
-
+                    
                     // Sorting is a perfromance hit. Literature says this can be accomplised in
                     // linear time, although I don't see a way around using traditional methods
                     // when using a randomized incremental algorithm
-
+                    
                     // Insertion sort is one of the fastest algorithms for sorting arrays containing 
                     // fewer than ten elements, or for lists that are already mostly sorted.
-
+                    
                     List<Point> points = new List<Point>(edge.MPoints);
                     points.Sort((p1, p2) => p1.X.CompareTo(p2.X));
-
+                    
                     foreach (Point p in points)
                         mountain.Add(p);
-
+                    
                     // Triangulate monotone mountain
                     mountain.Process();
-
+                    
                     // Extract the triangles into a single list
                     foreach (List<Point> t in mountain.Triangles)
                     {
                         Triangles.Add(t);
                     }
-
+                    
                     _xMonoPoly.Add(mountain);
                 }
             }
         }
-
+        
         // Mark the outside trapezoids surrounding the polygon
         /// <summary>
         ///     Marks the outside using the specified t
@@ -217,7 +217,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             if (t.Top == _boundingBox.Top || t.Bottom == _boundingBox.Bottom)
                 t.TrimNeighbors();
         }
-
+        
         // Create segments and connect end points; update edge event pointer
         /// <summary>
         ///     Inits the edges using the specified points
@@ -227,16 +227,16 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         private List<Edge> InitEdges(List<Point> points)
         {
             List<Edge> edges = new List<Edge>();
-
+            
             for (int i = 0; i < points.Count - 1; i++)
             {
                 edges.Add(new Edge(points[i], points[i + 1]));
             }
-
+            
             edges.Add(new Edge(points[0], points[points.Count - 1]));
             return OrderSegments(edges);
         }
-
+        
         /// <summary>
         ///     Orders the segments using the specified edge input
         /// </summary>
@@ -246,12 +246,12 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         {
             // Ignore vertical segments!
             List<Edge> edges = new List<Edge>();
-
+            
             foreach (Edge e in edgeInput)
             {
                 Point p = ShearTransform(e.P);
                 Point q = ShearTransform(e.Q);
-
+                
                 // Point p must be to the left of point q
                 if (p.X > q.X)
                 {
@@ -262,13 +262,13 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                     edges.Add(new Edge(p, q));
                 }
             }
-
+            
             // Randomized triangulation improves performance
             // See Seidel's paper, or O'Rourke's book, p. 57 
             Shuffle(edges);
             return edges;
         }
-
+        
         /// <summary>
         ///     Shuffles the list
         /// </summary>
@@ -287,7 +287,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                 list[n] = value;
             }
         }
-
+        
         // Prevents any two distinct endpoints from lying on a common vertical line, and avoiding
         // the degenerate case. See Mark de Berg et al, Chapter 6.3
         /// <summary>

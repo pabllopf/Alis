@@ -32,7 +32,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using Alis.Extension.Multimedia.FFmpeg.Audio;
-using Alis.Extension.Multimedia.FFmpeg.Encoding.Builders;
 using Xunit;
 
 namespace Alis.Extension.Multimedia.FFmpeg.Test

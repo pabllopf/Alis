@@ -42,177 +42,177 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The type
         /// </summary>
         public EventType type;
-
+        
         /// <summary>
         ///     The timestamp
         /// </summary>
         public uint timestamp;
-
+        
         /// <summary>
         ///     The window id
         /// </summary>
         public uint windowID;
-
+        
         /// <summary>
         ///     The byte
         /// </summary>
         internal byte byte0;
-
+        
         /// <summary>
         ///     The byte
         /// </summary>
         internal byte byte1;
-
+        
         /// <summary>
         ///     The byte
         /// </summary>
         internal byte byte2;
-
+        
         /// <summary>
         ///     The byte
         /// </summary>
         internal byte byte3;
-
+        
         /// <summary>
         ///     The byte
         /// </summary>
         internal byte byte4;
-
+        
         /// <summary>
         ///     The byte
         /// </summary>
         internal byte byte5;
-
+        
         /// <summary>
         ///     The byte
         /// </summary>
         internal byte byte6;
-
+        
         /// <summary>
         ///     The byte
         /// </summary>
         internal byte byte7;
-
+        
         /// <summary>
         ///     The byte
         /// </summary>
         internal byte byte8;
-
+        
         /// <summary>
         ///     The byte
         /// </summary>
         internal byte byte9;
-
+        
         /// <summary>
         ///     The byte 10
         /// </summary>
         internal byte byte10;
-
+        
         /// <summary>
         ///     The byte 11
         /// </summary>
         internal byte byte11;
-
+        
         /// <summary>
         ///     The byte 12
         /// </summary>
         internal byte byte12;
-
+        
         /// <summary>
         ///     The byte 13
         /// </summary>
         internal byte byte13;
-
+        
         /// <summary>
         ///     The byte 14
         /// </summary>
         internal byte byte14;
-
+        
         /// <summary>
         ///     The byte 15
         /// </summary>
         internal byte byte15;
-
+        
         /// <summary>
         ///     The byte 16
         /// </summary>
         internal byte byte16;
-
+        
         /// <summary>
         ///     The byte 17
         /// </summary>
         internal byte byte17;
-
+        
         /// <summary>
         ///     The byte 18
         /// </summary>
         internal byte byte18;
-
+        
         /// <summary>
         ///     The byte 19
         /// </summary>
         internal byte byte19;
-
+        
         /// <summary>
         ///     The byte 20
         /// </summary>
         internal byte byte20;
-
+        
         /// <summary>
         ///     The byte 21
         /// </summary>
         internal byte byte21;
-
+        
         /// <summary>
         ///     The byte 22
         /// </summary>
         internal byte byte22;
-
+        
         /// <summary>
         ///     The byte 23
         /// </summary>
         internal byte byte23;
-
+        
         /// <summary>
         ///     The byte 24
         /// </summary>
         internal byte byte24;
-
+        
         /// <summary>
         ///     The byte 25
         /// </summary>
         internal byte byte25;
-
+        
         /// <summary>
         ///     The byte 26
         /// </summary>
         internal byte byte26;
-
+        
         /// <summary>
         ///     The byte 27
         /// </summary>
         internal byte byte27;
-
+        
         /// <summary>
         ///     The byte 28
         /// </summary>
         internal byte byte28;
-
+        
         /// <summary>
         ///     The byte 29
         /// </summary>
         internal byte byte29;
-
+        
         /// <summary>
         ///     The byte 30
         /// </summary>
         internal byte byte30;
-
+        
         /// <summary>
         ///     The byte 31
         /// </summary>
         internal byte byte31;
-
+        
         /// <summary>
         ///     Gets or sets the value of the text
         /// </summary>
@@ -255,7 +255,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
                     byte30,
                     byte31
                 };
-
+                
                 return textBytes;
             }
         }

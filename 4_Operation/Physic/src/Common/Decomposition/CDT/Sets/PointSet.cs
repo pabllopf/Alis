@@ -43,24 +43,24 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
         /// </summary>
         /// <param name="points">The points</param>
         public PointSet(List<TriangulationPoint> points) => Points = new List<TriangulationPoint>(points);
-
+        
         #region Triangulatable Members
-
+        
         /// <summary>
         ///     Gets the value of the points
         /// </summary>
         public IList<TriangulationPoint> Points { get; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the triangles
         /// </summary>
         public IList<DelaunayTriangle> Triangles { get; private set; }
-
+        
         /// <summary>
         ///     Gets the value of the triangulation mode
         /// </summary>
         public virtual TriangulationMode TriangulationMode => TriangulationMode.Unconstrained;
-
+        
         /// <summary>
         ///     Adds the triangle using the specified t
         /// </summary>
@@ -69,7 +69,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
         {
             Triangles.Add(t);
         }
-
+        
         /// <summary>
         ///     Adds the triangles using the specified list
         /// </summary>
@@ -78,7 +78,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
         {
             foreach (DelaunayTriangle tri in list) Triangles.Add(tri);
         }
-
+        
         /// <summary>
         ///     Clears the triangles
         /// </summary>
@@ -86,7 +86,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
         {
             Triangles.Clear();
         }
-
+        
         /// <summary>
         ///     Prepares the triangulation using the specified tcx
         /// </summary>
@@ -101,10 +101,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
             {
                 Triangles.Clear();
             }
-
+            
             tcx.Points.AddRange(Points);
         }
-
+        
         #endregion
     }
 }

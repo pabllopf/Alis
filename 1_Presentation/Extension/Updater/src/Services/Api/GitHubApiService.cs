@@ -44,12 +44,12 @@ namespace Alis.Extension.Updater.Services.Api
         ///     The http client
         /// </summary>
         private readonly HttpClient _httpClient;
-
+        
         /// <summary>
         ///     The api url
         /// </summary>
         private readonly string apiUrl;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="GitHubApiService" /> class
         /// </summary>
@@ -59,7 +59,7 @@ namespace Alis.Extension.Updater.Services.Api
             _httpClient = new HttpClient();
             this.apiUrl = apiUrl;
         }
-
+        
         /// <summary>
         ///     Gets the latest release
         /// </summary>

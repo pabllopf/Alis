@@ -44,7 +44,7 @@ namespace Alis.Core.Network.Exceptions
         public SecWebSocketKeyMissingException()
         {
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="SecWebSocketKeyMissingException" /> class
         /// </summary>
@@ -52,7 +52,7 @@ namespace Alis.Core.Network.Exceptions
         public SecWebSocketKeyMissingException(string message) : base(message)
         {
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="SecWebSocketKeyMissingException" /> class
         /// </summary>

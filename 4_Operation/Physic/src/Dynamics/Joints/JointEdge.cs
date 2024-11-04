@@ -42,17 +42,17 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The joint.
         /// </summary>
         public Joint Joint;
-
+        
         /// <summary>
         ///     The next joint edge in the body's joint list.
         /// </summary>
         public JointEdge Next;
-
+        
         /// <summary>
         ///     Provides quick access to the other body attached.
         /// </summary>
         public Body Other;
-
+        
         /// <summary>
         ///     The previous joint edge in the body's joint list.
         /// </summary>

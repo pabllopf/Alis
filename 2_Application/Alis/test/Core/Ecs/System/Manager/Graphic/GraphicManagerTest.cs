@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager.Graphic;
@@ -49,10 +48,10 @@ namespace Alis.Test.Core.Ecs.System.Manager.Graphic
             VideoGame videoGame = new VideoGame();
             GraphicManager graphicManager = new GraphicManager(videoGame.Context);
             graphicManager.OnEnable();
-
+            
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
-
+        
         /// <summary>
         ///     Tests that on init valid input
         /// </summary>
@@ -61,10 +60,10 @@ namespace Alis.Test.Core.Ecs.System.Manager.Graphic
         {
             VideoGame videoGame = new VideoGame();
             GraphicManager graphicManager = new GraphicManager(videoGame.Context);
-
+            
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
-
+        
         /// <summary>
         ///     Tests that on start valid input
         /// </summary>
@@ -74,10 +73,10 @@ namespace Alis.Test.Core.Ecs.System.Manager.Graphic
             VideoGame videoGame = new VideoGame();
             GraphicManager graphicManager = new GraphicManager(videoGame.Context);
             graphicManager.OnStart();
-
+            
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
-
+        
         /// <summary>
         ///     Tests that on update valid input
         /// </summary>
@@ -87,10 +86,10 @@ namespace Alis.Test.Core.Ecs.System.Manager.Graphic
             VideoGame videoGame = new VideoGame();
             GraphicManager graphicManager = new GraphicManager(videoGame.Context);
             graphicManager.OnUpdate();
-
+            
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
-
+        
         /// <summary>
         ///     Tests that on exit valid input
         /// </summary>
@@ -100,10 +99,10 @@ namespace Alis.Test.Core.Ecs.System.Manager.Graphic
             VideoGame videoGame = new VideoGame();
             GraphicManager graphicManager = new GraphicManager(videoGame.Context);
             graphicManager.OnExit();
-
+            
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
-
+        
         /// <summary>
         ///     Tests that attach valid input
         /// </summary>
@@ -114,10 +113,10 @@ namespace Alis.Test.Core.Ecs.System.Manager.Graphic
             GraphicManager graphicManager = new GraphicManager(videoGame.Context);
             Sprite sprite = new Sprite();
             graphicManager.Attach(sprite);
-
+            
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
-
+        
         /// <summary>
         ///     Tests that un attach valid input
         /// </summary>
@@ -129,7 +128,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Graphic
             Sprite sprite = new Sprite();
             graphicManager.Attach(sprite);
             graphicManager.UnAttach(sprite);
-
+            
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
     }

@@ -42,12 +42,12 @@ namespace Alis.Core.Physic.Collision
         ///     A max fraction of 0.5 makes the ray go from p1 and half way to p2.
         /// </summary>
         public float MaxFraction;
-
+        
         /// <summary>
         ///     The starting point of the ray.
         /// </summary>
         public Vector2 Point1;
-
+        
         /// <summary>
         ///     The ending point of the ray.
         /// </summary>

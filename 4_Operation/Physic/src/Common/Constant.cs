@@ -40,7 +40,7 @@ namespace Alis.Core.Physic.Common
         ///     The pi
         /// </summary>
         public const float Pi = (float) Math.PI;
-
+        
         /// <summary>
         ///     The pi
         /// </summary>

@@ -48,7 +48,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new[] {"A"}, new ushort[] {1}, 1, 0.0, 0.0, 1.0, "%.1f"));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart u short throws dll not found exception v 2
         /// </summary>
@@ -57,7 +57,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new[] {"A"}, new ushort[] {1}, 1, 0.0, 0.0, 1.0, "%.1f", 90.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart u short throws dll not found exception v 3
         /// </summary>
@@ -66,7 +66,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new[] {"A"}, new ushort[] {1}, 1, 0.0, 0.0, 1.0, "%.1f", 90.0, ImPlotPieChartFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart int throws dll not found exception
         /// </summary>
@@ -75,7 +75,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new[] {"A"}, new[] {1}, 1, 0.0, 0.0, 1.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart int throws dll not found exception v 2
         /// </summary>
@@ -84,7 +84,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new[] {"A"}, new[] {1}, 1, 0.0, 0.0, 1.0, "%.1f"));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart int throws dll not found exception v 3
         /// </summary>
@@ -93,7 +93,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new[] {"A"}, new[] {1}, 1, 0.0, 0.0, 1.0, "%.1f", 90.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart u int throws dll not found exception
         /// </summary>
@@ -102,7 +102,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new[] {"A"}, new uint[] {1}, 1, 0.0, 0.0, 1.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart u int throws dll not found exception v 2
         /// </summary>
@@ -111,7 +111,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new[] {"A"}, new uint[] {1}, 1, 0.0, 0.0, 1.0, "%.1f"));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart u int throws dll not found exception v 3
         /// </summary>
@@ -120,7 +120,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new[] {"A"}, new uint[] {1}, 1, 0.0, 0.0, 1.0, "%.1f", 90.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart long throws dll not found exception
         /// </summary>
@@ -129,7 +129,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new[] {"A"}, new long[] {1}, 1, 0.0, 0.0, 1.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart long throws dll not found exception v 2
         /// </summary>
@@ -138,7 +138,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new[] {"A"}, new long[] {1}, 1, 0.0, 0.0, 1.0, "%.1f"));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart long throws dll not found exception v 3
         /// </summary>
@@ -147,7 +147,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new[] {"A"}, new long[] {1}, 1, 0.0, 0.0, 1.0, "%.1f", 90.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart u long throws dll not found exception
         /// </summary>
@@ -156,7 +156,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new[] {"A"}, new ulong[] {1}, 1, 0.0, 0.0, 1.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart u long throws dll not found exception v 2
         /// </summary>
@@ -165,7 +165,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new[] {"A"}, new ulong[] {1}, 1, 0.0, 0.0, 1.0, "%.1f"));
         }
-
+        
         /// <summary>
         ///     Tests that plot pie chart u long throws dll not found exception v 3
         /// </summary>
@@ -174,7 +174,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new[] {"A"}, new ulong[] {1}, 1, 0.0, 0.0, 1.0, "%.1f", 90.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot scatter float throws dll not found exception
         /// </summary>
@@ -183,7 +183,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("A", new[] {1.0f}, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot scatter float throws dll not found exception v 2
         /// </summary>
@@ -192,7 +192,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("A", new[] {1.0f}, 1, 1.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot scatter float throws dll not found exception v 3
         /// </summary>
@@ -201,7 +201,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("A", new[] {1.0f}, 1, 1.0, 0.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot scatter double throws dll not found exception
         /// </summary>
@@ -210,7 +210,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("A", new[] {1.0}, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot scatter double throws dll not found exception v 2
         /// </summary>
@@ -219,7 +219,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("A", new[] {1.0}, 1, 1.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot scatter double throws dll not found exception v 3
         /// </summary>
@@ -228,7 +228,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("A", new[] {1.0}, 1, 1.0, 0.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot scatter s byte throws dll not found exception
         /// </summary>
@@ -237,7 +237,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("A", new sbyte[] {1}, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot scatter s byte throws dll not found exception v 2
         /// </summary>
@@ -246,7 +246,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("A", new sbyte[] {1}, 1, 1.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot scatter s byte throws dll not found exception v 3
         /// </summary>
@@ -255,7 +255,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("A", new sbyte[] {1}, 1, 1.0, 0.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot scatter byte throws dll not found exception
         /// </summary>
@@ -264,7 +264,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("A", new byte[] {1}, 1));
         }
-
+        
         /// <summary>
         ///     Tests that plot scatter byte throws dll not found exception v 2
         /// </summary>
@@ -273,7 +273,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("A", new byte[] {1}, 1, 1.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot scatter byte throws dll not found exception v 3
         /// </summary>

@@ -38,27 +38,27 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         ///     The next
         /// </summary>
         public AdvancingFrontNode Next;
-
+        
         /// <summary>
         ///     The point
         /// </summary>
         public TriangulationPoint Point;
-
+        
         /// <summary>
         ///     The prev
         /// </summary>
         public AdvancingFrontNode Prev;
-
+        
         /// <summary>
         ///     The triangle
         /// </summary>
         public DelaunayTriangle Triangle;
-
+        
         /// <summary>
         ///     The value
         /// </summary>
         public double Value;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="AdvancingFrontNode" /> class
         /// </summary>
@@ -68,12 +68,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             Point = point;
             Value = point.X;
         }
-
+        
         /// <summary>
         ///     Gets the value of the has next
         /// </summary>
         public bool HasNext => Next != null;
-
+        
         /// <summary>
         ///     Gets the value of the has prev
         /// </summary>

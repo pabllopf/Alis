@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.InteropServices;
-using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Scope;
 using Xunit;
 

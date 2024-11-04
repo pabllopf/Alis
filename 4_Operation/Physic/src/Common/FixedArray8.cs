@@ -40,42 +40,42 @@ namespace Alis.Core.Physic.Common
         ///     The value
         /// </summary>
         private T _value0;
-
+        
         /// <summary>
         ///     The value
         /// </summary>
         private T _value1;
-
+        
         /// <summary>
         ///     The value
         /// </summary>
         private T _value2;
-
+        
         /// <summary>
         ///     The value
         /// </summary>
         private T _value3;
-
+        
         /// <summary>
         ///     The value
         /// </summary>
         private T _value4;
-
+        
         /// <summary>
         ///     The value
         /// </summary>
         private T _value5;
-
+        
         /// <summary>
         ///     The value
         /// </summary>
         private T _value6;
-
+        
         /// <summary>
         ///     The value
         /// </summary>
         private T _value7;
-
+        
         /// <summary>
         ///     The index out of range exception
         /// </summary>

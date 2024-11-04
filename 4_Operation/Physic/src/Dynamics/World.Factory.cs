@@ -56,16 +56,16 @@ namespace Alis.Core.Physic.Dynamics
             body.Position = position;
             body.Rotation = rotation;
             body.BodyType = bodyType;
-
+            
 #if LEGACY_ASYNCADDREMOVE
             AddAsync(body);
 #else
             Add(body);
 #endif
-
+            
             return body;
         }
-
+        
         /// <summary>
         ///     Creates the edge using the specified start
         /// </summary>
@@ -75,11 +75,11 @@ namespace Alis.Core.Physic.Dynamics
         public Body CreateEdge(Vector2 start, Vector2 end)
         {
             Body body = CreateBody();
-
+            
             body.CreateEdge(start, end);
             return body;
         }
-
+        
         /// <summary>
         ///     Creates the chain shape using the specified vertices
         /// </summary>
@@ -89,11 +89,11 @@ namespace Alis.Core.Physic.Dynamics
         public Body CreateChainShape(Vertices vertices, Vector2 position = new Vector2())
         {
             Body body = CreateBody(position);
-
+            
             body.CreateChainShape(vertices);
             return body;
         }
-
+        
         /// <summary>
         ///     Creates the loop shape using the specified vertices
         /// </summary>
@@ -103,11 +103,11 @@ namespace Alis.Core.Physic.Dynamics
         public Body CreateLoopShape(Vertices vertices, Vector2 position = new Vector2())
         {
             Body body = CreateBody(position);
-
+            
             body.CreateLoopShape(vertices);
             return body;
         }
-
+        
         /// <summary>
         ///     Creates the rectangle using the specified width
         /// </summary>
@@ -124,18 +124,18 @@ namespace Alis.Core.Physic.Dynamics
         {
             if (width <= 0)
                 throw new ArgumentOutOfRangeException("width", "Width must be more than 0 meters");
-
+            
             if (height <= 0)
                 throw new ArgumentOutOfRangeException("height", "Height must be more than 0 meters");
-
+            
             Body body = CreateBody(position, rotation, bodyType);
-
+            
             Vertices rectangleVertices = PolygonTools.CreateRectangle(width / 2, height / 2);
             body.CreatePolygon(rectangleVertices, density);
-
+            
             return body;
         }
-
+        
         /// <summary>
         ///     Creates the circle using the specified radius
         /// </summary>
@@ -150,7 +150,7 @@ namespace Alis.Core.Physic.Dynamics
             body.CreateCircle(radius, density);
             return body;
         }
-
+        
         /// <summary>
         ///     Creates the ellipse using the specified x radius
         /// </summary>
@@ -168,7 +168,7 @@ namespace Alis.Core.Physic.Dynamics
             body.CreateEllipse(xRadius, yRadius, edges, density);
             return body;
         }
-
+        
         /// <summary>
         ///     Creates the polygon using the specified vertices
         /// </summary>
@@ -184,7 +184,7 @@ namespace Alis.Core.Physic.Dynamics
             body.CreatePolygon(vertices, density);
             return body;
         }
-
+        
         /// <summary>
         ///     Creates the compound polygon using the specified list
         /// </summary>
@@ -201,7 +201,7 @@ namespace Alis.Core.Physic.Dynamics
             body.CreateCompoundPolygon(list, density);
             return body;
         }
-
+        
         /// <summary>
         ///     Creates the gear using the specified radius
         /// </summary>
@@ -217,19 +217,19 @@ namespace Alis.Core.Physic.Dynamics
         public Body CreateGear(float radius, int numberOfTeeth, float tipPercentage, float toothHeight, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static)
         {
             Vertices gearPolygon = PolygonTools.CreateGear(radius, numberOfTeeth, tipPercentage, toothHeight);
-
+            
             //Gears can in some cases be convex
             if (!gearPolygon.IsConvex())
             {
                 //Decompose the gear:
                 List<Vertices> list = Triangulate.ConvexPartition(gearPolygon, TriangulationAlgorithm.Earclip);
-
+                
                 return CreateCompoundPolygon(list, density, position, rotation, bodyType);
             }
-
+            
             return CreatePolygon(gearPolygon, density, position, rotation, bodyType);
         }
-
+        
         /// <summary>
         ///     Creates the capsule using the specified height
         /// </summary>
@@ -246,17 +246,17 @@ namespace Alis.Core.Physic.Dynamics
         public Body CreateCapsule(float height, float topRadius, int topEdges, float bottomRadius, int bottomEdges, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static)
         {
             Vertices verts = PolygonTools.CreateCapsule(height, topRadius, topEdges, bottomRadius, bottomEdges);
-
+            
             //There are too many vertices in the capsule. We decompose it.
             if (verts.Count >= SettingEnv.MaxPolygonVertices)
             {
                 List<Vertices> vertList = Triangulate.ConvexPartition(verts, TriangulationAlgorithm.Earclip);
                 return CreateCompoundPolygon(vertList, density, position, rotation, bodyType);
             }
-
+            
             return CreatePolygon(verts, density, position, rotation, bodyType);
         }
-
+        
         /// <summary>
         ///     Creates the capsule using the specified height
         /// </summary>
@@ -271,25 +271,25 @@ namespace Alis.Core.Physic.Dynamics
         {
             //Create the middle rectangle
             Vertices rectangle = PolygonTools.CreateRectangle(endRadius, height / 2);
-
+            
             List<Vertices> list = new List<Vertices>();
             list.Add(rectangle);
-
+            
             Body body = CreateCompoundPolygon(list, density, position, rotation, bodyType);
             body.CreateCircle(endRadius, density, new Vector2(0, height / 2));
             body.CreateCircle(endRadius, density, new Vector2(0, -(height / 2)));
-
+            
             //Create the two circles
             //CircleShape topCircle = new CircleShape(endRadius, density);
             //topCircle.Position = new Vector2(0, height / 2);
             //body.CreateFixture(topCircle);
-
+            
             //CircleShape bottomCircle = new CircleShape(endRadius, density);
             //bottomCircle.Position = new Vector2(0, -(height / 2));
             //body.CreateFixture(bottomCircle);
             return body;
         }
-
+        
         /// <summary>
         ///     Creates the rounded rectangle using the specified width
         /// </summary>
@@ -306,17 +306,17 @@ namespace Alis.Core.Physic.Dynamics
         public Body CreateRoundedRectangle(float width, float height, float xRadius, float yRadius, int segments, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static)
         {
             Vertices verts = PolygonTools.CreateRoundedRectangle(width, height, xRadius, yRadius, segments);
-
+            
             //There are too many vertices in the capsule. We decompose it.
             if (verts.Count >= SettingEnv.MaxPolygonVertices)
             {
                 List<Vertices> vertList = Triangulate.ConvexPartition(verts, TriangulationAlgorithm.Earclip);
                 return CreateCompoundPolygon(vertList, density, position, rotation, bodyType);
             }
-
+            
             return CreatePolygon(verts, density, position, rotation, bodyType);
         }
-
+        
         /// <summary>
         ///     Creates the line arc using the specified radians
         /// </summary>
@@ -334,7 +334,7 @@ namespace Alis.Core.Physic.Dynamics
             body.CreateLineArc(radians, sides, radius, closed);
             return body;
         }
-
+        
         /// <summary>
         ///     Creates the solid arc using the specified density
         /// </summary>
@@ -350,10 +350,10 @@ namespace Alis.Core.Physic.Dynamics
         {
             Body body = CreateBody(position, rotation, bodyType);
             body.CreateSolidArc(density, radians, sides, radius);
-
+            
             return body;
         }
-
+        
         /// <summary>
         ///     Creates a chain.
         /// </summary>
@@ -372,26 +372,26 @@ namespace Alis.Core.Physic.Dynamics
         public Path CreateChain(Vector2 start, Vector2 end, float linkWidth, float linkHeight, int numberOfLinks, float linkDensity, bool attachRopeJoint)
         {
             Debug.Assert(numberOfLinks >= 2);
-
+            
             //Chain start / end
             Path path = new Path();
             path.Add(start);
             path.Add(end);
-
+            
             //A single chainlink
             PolygonShape shape = new PolygonShape(PolygonTools.CreateRectangle(linkWidth, linkHeight), linkDensity);
-
+            
             //Use PathManager to create all the chainlinks based on the chainlink created before.
             List<Body> chainLinks = PathManager.EvenlyDistributeShapesAlongPath(this, path, shape, BodyType.Dynamic, numberOfLinks);
-
-
+            
+            
             //if (fixStart)
             //{
             //    //Fix the first chainlink to the world
             //    JointFactory.CreateFixedRevoluteJoint(this, chainLinks[0], new Vector2(0, -(linkHeight / 2)),
             //                                          chainLinks[0].Position);
             //}
-
+            
             //if (fixEnd)
             //{
             //    //Fix the last chainlink to the world
@@ -399,13 +399,13 @@ namespace Alis.Core.Physic.Dynamics
             //                                          new Vector2(0, (linkHeight / 2)),
             //                                          chainLinks[chainLinks.Count - 1].Position);
             //}
-
+            
             //Attach all the chainlinks together with a revolute joint
             PathManager.AttachBodiesWithRevoluteJoint(this, chainLinks, new Vector2(0, -linkHeight), new Vector2(0, linkHeight), false, false);
-
+            
             if (attachRopeJoint)
                 JointFactory.CreateRopeJoint(this, chainLinks[0], chainLinks[chainLinks.Count - 1], Vector2.Zero, Vector2.Zero);
-
+            
             return path;
         }
     }

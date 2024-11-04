@@ -52,7 +52,7 @@ namespace Alis.Core.Physic.Controllers
             Points = new List<Vector2>();
             Bodies = new List<Body>();
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="GravityController" /> class
         /// </summary>
@@ -68,37 +68,37 @@ namespace Alis.Core.Physic.Controllers
             Points = new List<Vector2>();
             Bodies = new List<Body>();
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the min radius
         /// </summary>
         public float MinRadius { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the max radius
         /// </summary>
         public float MaxRadius { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the strength
         /// </summary>
         public float Strength { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the gravity type
         /// </summary>
         public GravityType GravityType { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the bodies
         /// </summary>
         public List<Body> Bodies { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the points
         /// </summary>
         public List<Vector2> Points { get; set; }
-
+        
         /// <summary>
         ///     Updates the dt
         /// </summary>
@@ -106,23 +106,23 @@ namespace Alis.Core.Physic.Controllers
         public override void Update(float dt)
         {
             Vector2 f = Vector2.Zero;
-
+            
             foreach (Body worldBody in World.BodyList)
             {
                 if (!IsActiveOn(worldBody))
                     continue;
-
+                
                 foreach (Body controllerBody in Bodies)
                 {
                     if (worldBody == controllerBody || ((worldBody.BodyType == BodyType.Static) && (controllerBody.BodyType == BodyType.Static)) || !controllerBody.Enabled)
                         continue;
-
+                    
                     Vector2 d = controllerBody.Position - worldBody.Position;
                     float r2 = d.LengthSquared();
-
+                    
                     if (r2 <= SettingEnv.Epsilon || r2 > MaxRadius * MaxRadius || r2 < MinRadius * MinRadius)
                         continue;
-
+                    
                     switch (GravityType)
                     {
                         case GravityType.DistanceSquared:
@@ -132,18 +132,18 @@ namespace Alis.Core.Physic.Controllers
                             f = Strength / (float) Math.Sqrt(r2) * worldBody.Mass * controllerBody.Mass * d;
                             break;
                     }
-
+                    
                     worldBody.ApplyForce(ref f);
                 }
-
+                
                 foreach (Vector2 point in Points)
                 {
                     Vector2 d = point - worldBody.Position;
                     float r2 = d.LengthSquared();
-
+                    
                     if (r2 <= SettingEnv.Epsilon || r2 > MaxRadius * MaxRadius || r2 < MinRadius * MinRadius)
                         continue;
-
+                    
                     switch (GravityType)
                     {
                         case GravityType.DistanceSquared:
@@ -153,12 +153,12 @@ namespace Alis.Core.Physic.Controllers
                             f = Strength / (float) Math.Sqrt(r2) * worldBody.Mass * d;
                             break;
                     }
-
+                    
                     worldBody.ApplyForce(ref f);
                 }
             }
         }
-
+        
         /// <summary>
         ///     Adds the body using the specified body
         /// </summary>
@@ -167,7 +167,7 @@ namespace Alis.Core.Physic.Controllers
         {
             Bodies.Add(body);
         }
-
+        
         /// <summary>
         ///     Adds the point using the specified point
         /// </summary>

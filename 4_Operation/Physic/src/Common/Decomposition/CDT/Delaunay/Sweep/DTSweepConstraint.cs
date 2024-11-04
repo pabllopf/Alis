@@ -64,7 +64,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                     //                return;
                 }
             }
-
+            
             Q.AddEdge(this);
         }
     }

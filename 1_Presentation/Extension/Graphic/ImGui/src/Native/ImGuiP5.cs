@@ -53,19 +53,19 @@ namespace Alis.Extension.Graphic.ImGui.Native
             {
                 return;
             }
-
+            
             string assemblyCalling = Assembly.GetCallingAssembly().FullName;
             if (assemblyCalling.Contains("Test"))
             {
                 return;
             }
-
+            
             string assemblyEntry = Assembly.GetEntryAssembly()?.FullName;
             if ((assemblyEntry != null) && assemblyEntry.Contains("Test"))
             {
                 return;
             }
-
+            
             Assembly currentAssembly = Assembly.GetExecutingAssembly();
             IEnumerable<Assembly> callerAssemblies = new StackTrace().GetFrames()
                 .Select(x => x.GetMethod().ReflectedType.Assembly).Distinct()
@@ -75,17 +75,17 @@ namespace Alis.Extension.Graphic.ImGui.Native
             {
                 return;
             }
-
+            
             EmbeddedDllClass.ExtractEmbeddedDlls("cimgui", DllType.Lib, ImGuiDlls.ImGuiDllBytes, Assembly.GetExecutingAssembly());
         }
-
+        
         /// <summary>
         ///     Accepts the drag drop payload using the specified type
         /// </summary>
         /// <param name="type">The type</param>
         /// <returns>The im gui payload ptr</returns>
         public static ImGuiPayload AcceptDragDropPayload(string type) => ImGuiNative.igAcceptDragDropPayload(Encoding.UTF8.GetBytes(type), ImGuiDragDropFlags.None);
-
+        
         /// <summary>
         ///     Accepts the drag drop payload using the specified type
         /// </summary>
@@ -97,7 +97,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiPayload ret = ImGuiNative.igAcceptDragDropPayload(Encoding.UTF8.GetBytes(type), flags);
             return ret;
         }
-
+        
         /// <summary>
         ///     Aligns the text to frame padding
         /// </summary>
@@ -105,7 +105,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igAlignTextToFramePadding();
         }
-
+        
         /// <summary>
         ///     Describes whether arrow button
         /// </summary>
@@ -115,10 +115,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool ArrowButton(string strId, ImGuiDir dir)
         {
             byte ret = ImGuiNative.igArrowButton(Encoding.UTF8.GetBytes(strId), dir);
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin
         /// </summary>
@@ -128,10 +128,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             bool isOpen = true;
             byte ret = ImGuiNative.igBegin(Encoding.UTF8.GetBytes(name), ref isOpen, 0);
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin
         /// </summary>
@@ -143,7 +143,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBegin(Encoding.UTF8.GetBytes(name), ref pOpen, 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin
         /// </summary>
@@ -156,7 +156,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBegin(Encoding.UTF8.GetBytes(name), ref pOpen, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin child
         /// </summary>
@@ -167,7 +167,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBeginChild_Str(Encoding.UTF8.GetBytes(strId), new Vector2(), 0, 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin child
         /// </summary>
@@ -179,7 +179,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBeginChild_Str(Encoding.UTF8.GetBytes(strId), size, 0, 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin child
         /// </summary>
@@ -192,7 +192,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBeginChild_Str(Encoding.UTF8.GetBytes(strId), size, border ? (byte) 1 : (byte) 0, 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin child
         /// </summary>
@@ -206,7 +206,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBeginChild_Str(Encoding.UTF8.GetBytes(strId), size, border ? (byte) 1 : (byte) 0, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin child
         /// </summary>
@@ -220,7 +220,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBeginChild_ID(id, size, border, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin child
         /// </summary>
@@ -234,7 +234,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBeginChild_ID(id, size, border, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin child
         /// </summary>
@@ -249,7 +249,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBeginChild_ID(id, size, nativeBorder, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin child
         /// </summary>
@@ -264,7 +264,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBeginChild_ID(id, size, nativeBorder, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin child frame
         /// </summary>
@@ -277,7 +277,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBeginChildFrame(id, size, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin child frame
         /// </summary>
@@ -290,7 +290,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBeginChildFrame(id, size, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin combo
         /// </summary>
@@ -300,10 +300,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool BeginCombo(string label, string previewValue)
         {
             byte ret = ImGuiNative.igBeginCombo(Encoding.UTF8.GetBytes(label), Encoding.UTF8.GetBytes(previewValue), ImGuiComboFlags.None);
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin combo
         /// </summary>
@@ -314,10 +314,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool BeginCombo(string label, string previewValue, ImGuiComboFlags flags)
         {
             byte ret = ImGuiNative.igBeginCombo(Encoding.UTF8.GetBytes(label), Encoding.UTF8.GetBytes(previewValue), flags);
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Begins the disabled
         /// </summary>
@@ -326,7 +326,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte disabled = 1;
             ImGuiNative.igBeginDisabled(disabled);
         }
-
+        
         /// <summary>
         ///     Begins the disabled using the specified disabled
         /// </summary>
@@ -336,7 +336,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte nativeDisabled = disabled ? (byte) 1 : (byte) 0;
             ImGuiNative.igBeginDisabled(nativeDisabled);
         }
-
+        
         /// <summary>
         ///     Describes whether begin drag drop source
         /// </summary>
@@ -347,7 +347,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBeginDragDropSource(flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin drag drop source
         /// </summary>
@@ -358,7 +358,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBeginDragDropSource(flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin drag drop target
         /// </summary>
@@ -368,7 +368,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBeginDragDropTarget();
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Begins the group
         /// </summary>
@@ -376,7 +376,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igBeginGroup();
         }
-
+        
         /// <summary>
         ///     Describes whether begin list box
         /// </summary>
@@ -387,7 +387,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBeginListBox(Encoding.UTF8.GetBytes(label), new Vector2());
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin list box
         /// </summary>
@@ -397,10 +397,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool BeginListBox(string label, Vector2 size)
         {
             byte ret = ImGuiNative.igBeginListBox(Encoding.UTF8.GetBytes(label), size);
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin main menu bar
         /// </summary>
@@ -410,7 +410,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBeginMainMenuBar();
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin menu
         /// </summary>
@@ -419,10 +419,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool BeginMenu(string label)
         {
             byte ret = ImGuiNative.igBeginMenu(Encoding.UTF8.GetBytes(label), true);
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin menu
         /// </summary>
@@ -432,10 +432,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool BeginMenu(string label, bool enabled)
         {
             byte ret = ImGuiNative.igBeginMenu(Encoding.UTF8.GetBytes(label), enabled);
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin menu bar
         /// </summary>
@@ -445,7 +445,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBeginMenuBar();
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin popup
         /// </summary>
@@ -456,7 +456,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBeginPopup(Encoding.UTF8.GetBytes(strId), ImGuiWindowFlags.None);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin popup
         /// </summary>
@@ -468,7 +468,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBeginPopup(Encoding.UTF8.GetBytes(strId), flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin popup context item
         /// </summary>
@@ -479,7 +479,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBeginPopupContextItem(Encoding.UTF8.GetBytes(""), popupFlags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin popup context item
         /// </summary>
@@ -488,10 +488,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool BeginPopupContextItem(string strId)
         {
             byte ret = ImGuiNative.igBeginPopupContextItem(Encoding.UTF8.GetBytes(strId), ImGuiPopupFlags.None);
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin popup context item
         /// </summary>
@@ -501,10 +501,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool BeginPopupContextItem(string strId, ImGuiPopupFlags popupFlags)
         {
             byte ret = ImGuiNative.igBeginPopupContextItem(Encoding.UTF8.GetBytes(strId), popupFlags);
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin popup context void
         /// </summary>
@@ -515,7 +515,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBeginPopupContextVoid(Encoding.UTF8.GetBytes(""), popupFlags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin popup context void
         /// </summary>
@@ -524,10 +524,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool BeginPopupContextVoid(string strId)
         {
             byte ret = ImGuiNative.igBeginPopupContextVoid(Encoding.UTF8.GetBytes(strId), ImGuiPopupFlags.None);
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin popup context void
         /// </summary>
@@ -537,10 +537,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool BeginPopupContextVoid(string strId, ImGuiPopupFlags popupFlags)
         {
             byte ret = ImGuiNative.igBeginPopupContextVoid(Encoding.UTF8.GetBytes(strId), popupFlags);
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin popup context window
         /// </summary>
@@ -551,7 +551,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBeginPopupContextWindow(Encoding.UTF8.GetBytes(""), popupFlags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin popup context window
         /// </summary>
@@ -560,10 +560,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool BeginPopupContextWindow(string strId)
         {
             byte ret = ImGuiNative.igBeginPopupContextWindow(Encoding.UTF8.GetBytes(strId), ImGuiPopupFlags.None);
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin popup context window
         /// </summary>
@@ -573,10 +573,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool BeginPopupContextWindow(string strId, ImGuiPopupFlags popupFlags)
         {
             byte ret = ImGuiNative.igBeginPopupContextWindow(Encoding.UTF8.GetBytes(strId), popupFlags);
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin popup modal
         /// </summary>
@@ -587,7 +587,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBeginPopupModal(Encoding.UTF8.GetBytes(name), true, 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin popup modal
         /// </summary>
@@ -599,7 +599,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBeginPopupModal(Encoding.UTF8.GetBytes(name), pOpen, 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin popup modal
         /// </summary>
@@ -612,7 +612,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBeginPopupModal(Encoding.UTF8.GetBytes(name), pOpen, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin tab bar
         /// </summary>
@@ -623,7 +623,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBeginTabBar(Encoding.UTF8.GetBytes(strId), ImGuiTabBarFlags.None);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin tab bar
         /// </summary>
@@ -633,10 +633,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool BeginTabBar(string strId, ImGuiTabBarFlags flags)
         {
             byte ret = ImGuiNative.igBeginTabBar(Encoding.UTF8.GetBytes(strId), flags);
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin tab item
         /// </summary>
@@ -647,7 +647,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBeginTabItem(Encoding.UTF8.GetBytes(label), true, 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin tab item
         /// </summary>
@@ -659,7 +659,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBeginTabItem(Encoding.UTF8.GetBytes(label), pOpen, 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin tab item
         /// </summary>
@@ -672,7 +672,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBeginTabItem(Encoding.UTF8.GetBytes(label), pOpen, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin table
         /// </summary>
@@ -682,10 +682,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool BeginTable(string strId, int column)
         {
             byte ret = ImGuiNative.igBeginTable(Encoding.UTF8.GetBytes(strId), column, ImGuiTableFlags.None, new Vector2(), 0.0f);
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin table
         /// </summary>
@@ -696,10 +696,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool BeginTable(string strId, int column, ImGuiTableFlags flags)
         {
             byte ret = ImGuiNative.igBeginTable(Encoding.UTF8.GetBytes(strId), column, flags, new Vector2(), 0.0f);
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin table
         /// </summary>
@@ -713,7 +713,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igBeginTable(Encoding.UTF8.GetBytes(strId), column, flags, outerSize, 0.0f);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin table
         /// </summary>
@@ -726,10 +726,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool BeginTable(string strId, int column, ImGuiTableFlags flags, Vector2 outerSize, float innerWidth)
         {
             byte ret = ImGuiNative.igBeginTable(Encoding.UTF8.GetBytes(strId), column, flags, outerSize, innerWidth);
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Begins the tooltip
         /// </summary>
@@ -737,7 +737,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igBeginTooltip();
         }
-
+        
         /// <summary>
         ///     Bullets
         /// </summary>
@@ -745,7 +745,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igBullet();
         }
-
+        
         /// <summary>
         ///     Bullets the text using the specified fmt
         /// </summary>
@@ -754,7 +754,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igBulletText(Encoding.UTF8.GetBytes(fmt));
         }
-
+        
         /// <summary>
         ///     Describes whether button
         /// </summary>
@@ -765,7 +765,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igButton(Encoding.UTF8.GetBytes(label), new Vector2());
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether button
         /// </summary>
@@ -777,7 +777,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igButton(Encoding.UTF8.GetBytes(label), size);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Calcs the item width
         /// </summary>
@@ -787,7 +787,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float ret = ImGuiNative.igCalcItemWidth();
             return ret;
         }
-
+        
         /// <summary>
         ///     Describes whether checkbox
         /// </summary>
@@ -799,7 +799,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igCheckbox(Encoding.UTF8.GetBytes(label), v);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether checkbox flags
         /// </summary>
@@ -812,7 +812,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igCheckboxFlags_IntPtr(Encoding.UTF8.GetBytes(label), flags, flagsValue);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether checkbox flags
         /// </summary>
@@ -825,7 +825,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igCheckboxFlags_UintPtr(Encoding.UTF8.GetBytes(label), flags, flagsValue);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Closes the current popup
         /// </summary>
@@ -833,7 +833,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igCloseCurrentPopup();
         }
-
+        
         /// <summary>
         ///     Describes whether collapsing header
         /// </summary>
@@ -844,7 +844,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igCollapsingHeader_TreeNodeFlags(Encoding.UTF8.GetBytes(label), ImGuiTreeNodeFlags.None);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether collapsing header
         /// </summary>
@@ -854,10 +854,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool CollapsingHeader(string label, ImGuiTreeNodeFlags flags)
         {
             byte ret = ImGuiNative.igCollapsingHeader_TreeNodeFlags(Encoding.UTF8.GetBytes(label), flags);
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether collapsing header
         /// </summary>
@@ -869,7 +869,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igCollapsingHeader_BoolPtr(Encoding.UTF8.GetBytes(label), pVisible, ImGuiTreeNodeFlags.None);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether collapsing header
         /// </summary>
@@ -882,7 +882,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igCollapsingHeader_BoolPtr(Encoding.UTF8.GetBytes(label), pVisible, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether color button
         /// </summary>
@@ -894,7 +894,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igColorButton(Encoding.UTF8.GetBytes(descId), col, ImGuiColorEditFlags.None, new Vector2());
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether color button
         /// </summary>
@@ -907,7 +907,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igColorButton(Encoding.UTF8.GetBytes(descId), col, flags, new Vector2());
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether color button
         /// </summary>
@@ -921,7 +921,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igColorButton(Encoding.UTF8.GetBytes(descId), col, flags, size);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Colors the convert float 4 to u 32 using the specified in
         /// </summary>
@@ -932,7 +932,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             uint ret = ImGuiNative.igColorConvertFloat4ToU32(@in);
             return ret;
         }
-
+        
         /// <summary>
         ///     Colors the convert hs vto rgb using the specified h
         /// </summary>
@@ -946,7 +946,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igColorConvertHSVtoRGB(h, s, v, out outR, out outG, out outB);
         }
-
+        
         /// <summary>
         ///     Colors the convert rg bto hsv using the specified r
         /// </summary>
@@ -960,7 +960,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igColorConvertRGBtoHSV(r, g, b, out outH, out outS, out outV);
         }
-
+        
         /// <summary>
         ///     Colors the convert u 32 to float 4 using the specified in
         /// </summary>
@@ -971,7 +971,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiNative.igColorConvertU32ToFloat4(out Vector4 retval, @in);
             return retval;
         }
-
+        
         /// <summary>
         ///     Describes whether color edit 3
         /// </summary>
@@ -981,10 +981,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool ColorEdit3(string label, ref Vector3 col)
         {
             byte ret = ImGuiNative.igColorEdit3(Encoding.UTF8.GetBytes(label), col, ImGuiColorEditFlags.None);
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether color edit 3
         /// </summary>
@@ -997,7 +997,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igColorEdit3(Encoding.UTF8.GetBytes(label), col, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether color edit 4
         /// </summary>
@@ -1007,10 +1007,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool ColorEdit4(string label, ref Vector4 col)
         {
             byte ret = ImGuiNative.igColorEdit4(Encoding.UTF8.GetBytes(label), col, ImGuiColorEditFlags.None);
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether color edit 4
         /// </summary>
@@ -1023,7 +1023,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igColorEdit4(Encoding.UTF8.GetBytes(label), col, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether color picker 3
         /// </summary>
@@ -1033,10 +1033,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool ColorPicker3(string label, ref Vector3 col)
         {
             byte ret = ImGuiNative.igColorPicker3(Encoding.UTF8.GetBytes(label), col, ImGuiColorEditFlags.None);
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether color picker 3
         /// </summary>
@@ -1049,7 +1049,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igColorPicker3(Encoding.UTF8.GetBytes(label), col, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether color picker 4
         /// </summary>
@@ -1059,10 +1059,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool ColorPicker4(string label, ref Vector4 col)
         {
             byte ret = ImGuiNative.igColorPicker4(Encoding.UTF8.GetBytes(label), col, ImGuiColorEditFlags.None, 0);
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether color picker 4
         /// </summary>
@@ -1075,7 +1075,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igColorPicker4(Encoding.UTF8.GetBytes(label), col, flags, 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether color picker 4
         /// </summary>
@@ -1087,10 +1087,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool ColorPicker4(string label, ref Vector4 col, ImGuiColorEditFlags flags, ref float refCol)
         {
             byte ret = ImGuiNative.igColorPicker4(Encoding.UTF8.GetBytes(label), col, flags, refCol);
-
+            
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Columnses
         /// </summary>
@@ -1098,7 +1098,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igColumns(1, null, 1);
         }
-
+        
         /// <summary>
         ///     Columnses the count
         /// </summary>
@@ -1107,7 +1107,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igColumns(count, null, 1);
         }
-
+        
         /// <summary>
         ///     Columnses the count
         /// </summary>
@@ -1117,7 +1117,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igColumns(count, Encoding.UTF8.GetBytes(id), 1);
         }
-
+        
         /// <summary>
         ///     Columnses the count
         /// </summary>
@@ -1128,7 +1128,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igColumns(count, Encoding.UTF8.GetBytes(id), border ? (byte) 1 : (byte) 0);
         }
-
+        
         /// <summary>
         ///     Describes whether combo
         /// </summary>
@@ -1144,11 +1144,11 @@ namespace Alis.Extension.Graphic.ImGui.Native
             {
                 itemsNative[i] = Encoding.UTF8.GetBytes(items[i]);
             }
-
+            
             byte ret = ImGuiNative.igCombo_Str_arr(Encoding.UTF8.GetBytes(label), ref currentItem, itemsNative, itemsCount, -1);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether combo
         /// </summary>
@@ -1165,7 +1165,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             {
                 itemsNative[i] = Encoding.UTF8.GetBytes(items[i]);
             }
-
+            
             byte ret = ImGuiNative.igCombo_Str_arr(Encoding.UTF8.GetBytes(label), ref currentItem, itemsNative, itemsCount, popupMaxHeightInItems);
             return ret != 0;
         }

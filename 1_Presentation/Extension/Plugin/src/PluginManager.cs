@@ -33,7 +33,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager;
 using Alis.Core.Ecs.System.Scope;
 
@@ -49,17 +48,17 @@ namespace Alis.Extension.Plugin
         ///     The platform detector
         /// </summary>
         private readonly IPlatformDetector _platformDetector;
-
+        
         /// <summary>
         ///     The loaded assemblies
         /// </summary>
         internal readonly List<Assembly> LoadedAssemblies;
-
+        
         /// <summary>
         ///     The loaded plugins
         /// </summary>
         internal List<IPlugin> LoadedPlugins;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="PluginManager" /> class
         /// </summary>
@@ -69,7 +68,7 @@ namespace Alis.Extension.Plugin
             LoadedAssemblies = new List<Assembly>();
             _platformDetector = new PlatformDetector();
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="PluginManager" /> class
         /// </summary>
@@ -81,7 +80,7 @@ namespace Alis.Extension.Plugin
             LoadedAssemblies = new List<Assembly>();
             _platformDetector = platformDetector;
         }
-
+        
         /// <summary>
         ///     Disposes this instance
         /// </summary>
@@ -89,7 +88,7 @@ namespace Alis.Extension.Plugin
         {
             UnloadPlugins();
         }
-
+        
         /// <summary>
         ///     Loads the plugins using the specified plugins directory
         /// </summary>
@@ -98,7 +97,7 @@ namespace Alis.Extension.Plugin
         {
             string platformFolder = GetPlatformFolder();
             string platformPluginsDirectory = GetPlatformPluginsDirectory(pluginsDirectory, platformFolder);
-
+            
             if (ValidatePluginsDirectory(platformPluginsDirectory))
             {
                 IEnumerable<string> pluginFiles = GetPluginFiles(platformPluginsDirectory);
@@ -109,7 +108,7 @@ namespace Alis.Extension.Plugin
                 throw new DirectoryNotFoundException("Plugins directory not found.");
             }
         }
-
+        
         /// <summary>
         ///     Gets the platform plugins directory
         /// </summary>
@@ -123,7 +122,7 @@ namespace Alis.Extension.Plugin
             Logger.Info("directory: " + platformPluginsDirectory);
             return platformPluginsDirectory;
         }
-
+        
         /// <summary>
         ///     Loads the plugins from the specified files
         /// </summary>
@@ -135,7 +134,7 @@ namespace Alis.Extension.Plugin
                 LoadPluginFromFile(pluginFile);
             }
         }
-
+        
         /// <summary>
         ///     Gets the platform folder
         /// </summary>
@@ -147,49 +146,49 @@ namespace Alis.Extension.Plugin
             {
                 return "linux";
             }
-
+            
             if (_platformDetector.IsWindows())
             {
                 return "windows";
             }
-
+            
             if (_platformDetector.IsOSX())
             {
                 return "osx";
             }
-
+            
             if (_platformDetector.IsiOS())
             {
                 return "ios";
             }
-
+            
             if (_platformDetector.IsAndroid())
             {
                 return "android";
             }
-
+            
             throw new NotSupportedException("Unsupported platform. Plugins will not be loaded.");
         }
-
+        
         /// <summary>
         ///     Describes whether this instance is running on android
         /// </summary>
         /// <returns>The bool</returns>
         public bool IsRunningOnAndroid() => _platformDetector.IsAndroid();
-
+        
         /// <summary>
         ///     Describes whether this instance is running oni os
         /// </summary>
         /// <returns>The bool</returns>
         public bool IsRunningOniOS() => _platformDetector.IsiOS();
-
+        
         /// <summary>
         ///     Validates the plugins directory using the specified directory
         /// </summary>
         /// <param name="directory">The directory</param>
         /// <returns>True if the directory exists, false otherwise</returns>
         internal static bool ValidatePluginsDirectory(string directory) => Directory.Exists(directory);
-
+        
         /// <summary>
         ///     Gets the plugin files using the specified directory
         /// </summary>
@@ -198,7 +197,7 @@ namespace Alis.Extension.Plugin
         internal IEnumerable<string> GetPluginFiles(string directory) => Directory.GetFiles(directory)
             .Where(IsPluginFile)
             .ToArray();
-
+        
         /// <summary>
         ///     Loads the plugin from file using the specified plugin file
         /// </summary>
@@ -207,7 +206,7 @@ namespace Alis.Extension.Plugin
         {
             InstantiatePlugins(LoadAssembly(pluginFile));
         }
-
+        
         /// <summary>
         ///     Loads the assembly from the specified file
         /// </summary>
@@ -220,7 +219,7 @@ namespace Alis.Extension.Plugin
             LoadedAssemblies.Add(assembly);
             return assembly;
         }
-
+        
         /// <summary>
         ///     Instantiates the plugins from the specified assembly
         /// </summary>
@@ -228,14 +227,14 @@ namespace Alis.Extension.Plugin
         internal void InstantiatePlugins(Assembly assembly)
         {
             Type[] pluginTypes = GetPluginTypes(assembly);
-
+            
             foreach (Type type in pluginTypes)
             {
                 IPlugin plugin = CreatePluginInstance(type);
                 LoadedPlugins.Add(plugin);
             }
         }
-
+        
         /// <summary>
         ///     Gets the plugin types from the specified assembly
         /// </summary>
@@ -247,15 +246,15 @@ namespace Alis.Extension.Plugin
                 .Where(type => typeof(IPlugin).IsAssignableFrom(type))
                 .ToArray();
         }
-
+        
         /// <summary>
         ///     Creates a plugin instance from the specified type
         /// </summary>
         /// <param name="type">The type</param>
         /// <returns>A plugin instance</returns>
         internal IPlugin CreatePluginInstance(Type type) => (IPlugin) Activator.CreateInstance(type);
-
-
+        
+        
         /// <summary>
         ///     Describes whether this instance is plugin file
         /// </summary>
@@ -266,7 +265,7 @@ namespace Alis.Extension.Plugin
             string extension = Path.GetExtension(filePath);
             return extension == ".dll" || extension == ".so" || extension == ".dylib";
         }
-
+        
         /// <summary>
         ///     Unloads the plugins
         /// </summary>
@@ -276,11 +275,11 @@ namespace Alis.Extension.Plugin
             {
                 plugin.Dispose();
             }
-
+            
             LoadedPlugins.Clear();
             LoadedAssemblies.Clear();
         }
-
+        
         /// <summary>
         ///     Initializes this instance
         /// </summary>
@@ -291,7 +290,7 @@ namespace Alis.Extension.Plugin
                 plugin.Initialize();
             }
         }
-
+        
         /// <summary>
         ///     Updates this instance
         /// </summary>
@@ -302,7 +301,7 @@ namespace Alis.Extension.Plugin
                 plugin.Update();
             }
         }
-
+        
         /// <summary>
         ///     Renders this instance
         /// </summary>
@@ -313,7 +312,7 @@ namespace Alis.Extension.Plugin
                 plugin.Render();
             }
         }
-
+        
         /// <summary>
         ///     Shutdowns this instance
         /// </summary>

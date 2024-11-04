@@ -45,20 +45,20 @@ namespace Alis.Core.Ecs.System.Configuration.Scene
         ///     Initializes a new instance of the <see cref="SceneSetting" /> class
         /// </summary>
         public SceneSetting() => MaxNumberOfScenes = 256;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="SceneSetting" /> class
         /// </summary>
         /// <param name="maxNumberOfScenes">The max number of scenes</param>
         [JsonConstructor]
         public SceneSetting(int maxNumberOfScenes) => MaxNumberOfScenes = maxNumberOfScenes;
-
+        
         /// <summary>
         ///     Gets or sets the value of the max number of scenes
         /// </summary>
         [JsonPropertyName("_MaxNumberOfScenes_")]
         public int MaxNumberOfScenes { get; set; }
-
+        
         /// <summary>
         ///     Builders this instance
         /// </summary>

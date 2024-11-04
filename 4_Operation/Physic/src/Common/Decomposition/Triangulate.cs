@@ -48,9 +48,9 @@ namespace Alis.Core.Physic.Common.Decomposition
         {
             if (vertices.Count <= 3)
                 return new List<Vertices> {vertices};
-
+            
             List<Vertices> results;
-
+            
             switch (algorithm)
             {
                 case TriangulationAlgorithm.Earclip:
@@ -62,7 +62,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                         temp.Reverse();
                         vertices = temp;
                     }
-
+                    
                     results = EarclipDecomposer.ConvexPartition(vertices, tolerance);
                     break;
                 case TriangulationAlgorithm.Bayazit:
@@ -74,7 +74,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                         temp.Reverse();
                         vertices = temp;
                     }
-
+                    
                     results = BayazitDecomposer.ConvexPartition(vertices);
                     break;
                 case TriangulationAlgorithm.Flipcode:
@@ -86,7 +86,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                         temp.Reverse();
                         vertices = temp;
                     }
-
+                    
                     results = FlipcodeDecomposer.ConvexPartition(vertices);
                     break;
                 case TriangulationAlgorithm.Seidel:
@@ -101,21 +101,21 @@ namespace Alis.Core.Physic.Common.Decomposition
                 default:
                     throw new ArgumentOutOfRangeException("algorithm");
             }
-
+            
             if (discardAndFixInvalid)
             {
                 for (int i = results.Count - 1; i >= 0; i--)
                 {
                     Vertices polygon = results[i];
-
+                    
                     if (!ValidatePolygon(polygon))
                         results.RemoveAt(i);
                 }
             }
-
+            
             return results;
         }
-
+        
         /// <summary>
         ///     Describes whether validate polygon
         /// </summary>
@@ -124,19 +124,19 @@ namespace Alis.Core.Physic.Common.Decomposition
         private static bool ValidatePolygon(Vertices polygon)
         {
             PolygonError errorCode = polygon.CheckPolygon();
-
+            
             if (errorCode == PolygonError.InvalidAmountOfVertices || errorCode == PolygonError.AreaTooSmall || errorCode == PolygonError.SideTooSmall || errorCode == PolygonError.NotSimple)
                 return false;
-
+            
             if (errorCode == PolygonError.NotCounterClockWise) //NotCounterCloseWise is the last check in CheckPolygon(), thus we don't need to call ValidatePolygon again.
                 polygon.Reverse();
-
+            
             if (errorCode == PolygonError.NotConvex)
             {
                 polygon = GiftWrap.GetConvexHull(polygon);
                 return ValidatePolygon(polygon);
             }
-
+            
             return true;
         }
     }

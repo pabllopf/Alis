@@ -43,12 +43,12 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The position
         /// </summary>
         public PointF Position { get; set; }
-
+        
         /// <summary>
         ///     The color
         /// </summary>
         public Color Color { get; set; }
-
+        
         /// <summary>
         ///     The text coordinate
         /// </summary>

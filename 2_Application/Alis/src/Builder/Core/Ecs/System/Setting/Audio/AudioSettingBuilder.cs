@@ -42,7 +42,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Audio
         ///     The audio setting
         /// </summary>
         private readonly AudioSetting audioSetting = new AudioSetting();
-
+        
         /// <summary>
         ///     Builds this instance
         /// </summary>

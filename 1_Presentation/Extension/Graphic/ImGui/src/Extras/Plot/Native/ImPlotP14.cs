@@ -51,7 +51,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, offset, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -68,7 +68,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, offset, stride);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -79,7 +79,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1, 0, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -91,7 +91,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, 1, 0, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -104,7 +104,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, 0, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -118,7 +118,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -133,7 +133,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -149,7 +149,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, offset, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -166,7 +166,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, offset, stride);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -177,7 +177,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1, 0, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -189,7 +189,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, 1, 0, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -202,7 +202,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, 0, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -216,7 +216,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -231,7 +231,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -247,7 +247,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, offset, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -264,7 +264,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, offset, stride);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -275,7 +275,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1, 0, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -287,7 +287,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, 1, 0, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -300,7 +300,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, 0, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -314,7 +314,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -329,7 +329,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -345,7 +345,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, offset, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -362,7 +362,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, offset, stride);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -373,7 +373,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1, 0, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -385,7 +385,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, 1, 0, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -398,7 +398,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, 0, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -412,7 +412,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -427,7 +427,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -443,7 +443,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, offset, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -460,7 +460,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, offset, stride);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -471,7 +471,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1, 0, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -483,7 +483,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, 1, 0, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -496,7 +496,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, 0, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -510,7 +510,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -525,7 +525,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -541,7 +541,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, offset, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -558,7 +558,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, offset, stride);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -569,7 +569,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1, 0, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -581,7 +581,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, 1, 0, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -594,7 +594,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, 0, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -608,7 +608,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -623,7 +623,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -639,7 +639,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, offset, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -656,7 +656,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, flags, offset, stride);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -669,7 +669,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_FloatPtrFloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -683,7 +683,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_FloatPtrFloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -698,7 +698,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_FloatPtrFloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, offset, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -714,7 +714,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_FloatPtrFloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, offset, stride);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -726,7 +726,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_doublePtrdoublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -739,7 +739,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_doublePtrdoublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -753,7 +753,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_doublePtrdoublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -768,7 +768,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_doublePtrdoublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, offset, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -784,7 +784,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_doublePtrdoublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, offset, stride);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -796,7 +796,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S8PtrS8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -809,7 +809,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S8PtrS8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -823,7 +823,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S8PtrS8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -838,7 +838,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S8PtrS8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, offset, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -854,7 +854,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S8PtrS8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, offset, stride);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -866,7 +866,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U8PtrU8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -879,7 +879,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U8PtrU8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -893,7 +893,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U8PtrU8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -908,7 +908,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U8PtrU8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, offset, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -924,7 +924,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U8PtrU8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, offset, stride);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -936,7 +936,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -949,7 +949,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -963,7 +963,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -978,7 +978,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, offset, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -994,7 +994,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, offset, stride);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -1006,7 +1006,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U16PtrU16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, 0, 0);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>

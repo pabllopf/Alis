@@ -41,7 +41,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
     public static class CuttingTools
     {
         //Cutting a shape into two is based on the work of Daid and his prototype BoxCutter: http://www.box2d.org/forum/viewtopic.php?f=3&t=1473
-
+        
         /// <summary>
         ///     Split a fixture into 2 vertice collections using the given entry and exit-point.
         /// </summary>
@@ -54,7 +54,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         {
             Vector2 localEntryPoint = fixture.Body.GetLocalPoint(ref entryPoint);
             Vector2 localExitPoint = fixture.Body.GetLocalPoint(ref exitPoint);
-
+            
             //We can only cut polygons at the moment
             if (!(fixture.Shape is PolygonShape shape))
             {
@@ -62,25 +62,25 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 second = new Vertices();
                 return;
             }
-
+            
             //Offset the entry and exit points if they are too close to the vertices
             foreach (Vector2 vertex in shape.Vertices)
             {
                 if (vertex.Equals(localEntryPoint))
                     localEntryPoint -= new Vector2(0, SettingEnv.Epsilon);
-
+                
                 if (vertex.Equals(localExitPoint))
                     localExitPoint += new Vector2(0, SettingEnv.Epsilon);
             }
-
+            
             Vertices vertices = new Vertices(shape.Vertices);
             Vertices[] newPolygon = new Vertices[2];
-
+            
             for (int i = 0; i < newPolygon.Length; i++)
             {
                 newPolygon[i] = new Vertices(vertices.Count);
             }
-
+            
             int[] cutAdded = {-1, -1};
             int last = -1;
             for (int i = 0; i < vertices.Count; i++)
@@ -91,7 +91,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                     n = 0;
                 else
                     n = 1;
-
+                
                 if (last != n)
                 {
                     //If we switch from one shape to the other add the cut vertices.
@@ -102,7 +102,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                         newPolygon[last].Add(localExitPoint);
                         newPolygon[last].Add(localEntryPoint);
                     }
-
+                    
                     if (last == 1)
                     {
                         Debug.Assert(cutAdded[last] == -1);
@@ -111,11 +111,11 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                         newPolygon[last].Add(localExitPoint);
                     }
                 }
-
+                
                 newPolygon[n].Add(vertices[i]);
                 last = n;
             }
-
+            
             //Add the cut in case it has not been added yet.
             if (cutAdded[0] == -1)
             {
@@ -123,14 +123,14 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 newPolygon[0].Add(localExitPoint);
                 newPolygon[0].Add(localEntryPoint);
             }
-
+            
             if (cutAdded[1] == -1)
             {
                 cutAdded[1] = newPolygon[1].Count;
                 newPolygon[1].Add(localEntryPoint);
                 newPolygon[1].Add(localExitPoint);
             }
-
+            
             for (int n = 0; n < 2; n++)
             {
                 Vector2 offset;
@@ -142,14 +142,14 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 {
                     offset = newPolygon[n][newPolygon[n].Count - 1] - newPolygon[n][0];
                 }
-
+                
                 offset.Normalize();
-
+                
                 if (!offset.IsValid())
                     offset = Vector2.One;
-
+                
                 newPolygon[n][cutAdded[n]] += SettingEnv.Epsilon * offset;
-
+                
                 if (cutAdded[n] < newPolygon[n].Count - 2)
                 {
                     offset = newPolygon[n][cutAdded[n] + 2] - newPolygon[n][cutAdded[n] + 1];
@@ -158,19 +158,19 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 {
                     offset = newPolygon[n][0] - newPolygon[n][newPolygon[n].Count - 1];
                 }
-
+                
                 offset.Normalize();
-
+                
                 if (!offset.IsValid())
                     offset = Vector2.One;
-
+                
                 newPolygon[n][cutAdded[n] + 1] += SettingEnv.Epsilon * offset;
             }
-
+            
             first = newPolygon[0];
             second = newPolygon[1];
         }
-
+        
         /// <summary>
         ///     This is a high-level function to cuts fixtures inside the given world, using the start and end points.
         ///     Note: We don't support cutting when the start or end is inside a shape.
@@ -184,11 +184,11 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             List<Fixture> fixtures = new List<Fixture>();
             List<Vector2> entryPoints = new List<Vector2>();
             List<Vector2> exitPoints = new List<Vector2>();
-
+            
             //We don't support cutting when the start or end is inside a shape.
             if (world.TestPoint(start) != null || world.TestPoint(end) != null)
                 return false;
-
+            
             //Get the entry points
             world.RayCast((f, p, n, fr) =>
             {
@@ -196,29 +196,29 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 entryPoints.Add(p);
                 return 1;
             }, start, end);
-
+            
             //Reverse the ray to get the exitpoints
             world.RayCast((f, p, n, fr) =>
             {
                 exitPoints.Add(p);
                 return 1;
             }, end, start);
-
+            
             //We only have a single point. We need at least 2
             if (entryPoints.Count + exitPoints.Count < 2)
                 return false;
-
+            
             for (int i = 0; i < fixtures.Count; i++)
             {
                 // can't cut circles or edges yet !
                 if (fixtures[i].Shape.ShapeType != ShapeType.Polygon)
                     continue;
-
+                
                 if (fixtures[i].Body.BodyType != BodyType.Static)
                 {
                     //Split the shape up into two shapes
                     SplitShape(fixtures[i], entryPoints[i], exitPoints[i], out Vertices first, out Vertices second);
-
+                    
                     //Delete the original shape and create two new. Retain the properties of the body.
                     if (first.CheckPolygon() == PolygonError.NoError)
                     {
@@ -228,7 +228,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                         firstFixture.AngularVelocity = fixtures[i].Body.AngularVelocity;
                         firstFixture.BodyType = BodyType.Dynamic;
                     }
-
+                    
                     if (second.CheckPolygon() == PolygonError.NoError)
                     {
                         Body secondFixture = world.CreatePolygon(second, fixtures[i].Shape.Density, fixtures[i].Body.Position);
@@ -237,11 +237,11 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                         secondFixture.AngularVelocity = fixtures[i].Body.AngularVelocity;
                         secondFixture.BodyType = BodyType.Dynamic;
                     }
-
+                    
                     world.Remove(fixtures[i].Body);
                 }
             }
-
+            
             return true;
         }
     }

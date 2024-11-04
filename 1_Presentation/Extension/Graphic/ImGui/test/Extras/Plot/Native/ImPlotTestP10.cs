@@ -47,7 +47,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new short[] {1, 2, 3}, 3, 0.0, 1.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded short array 6 params
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new short[] {1, 2, 3}, 3, 0.0, 1.0, 0.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded short array 7 params
         /// </summary>
@@ -65,7 +65,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new short[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded short array 8 params
         /// </summary>
@@ -74,7 +74,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new short[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded short array 9 params
         /// </summary>
@@ -83,7 +83,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new short[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None, 0, 2));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u short array 3 params
         /// </summary>
@@ -92,7 +92,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new ushort[] {1, 2, 3}, 3));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u short array 4 params
         /// </summary>
@@ -101,7 +101,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new ushort[] {1, 2, 3}, 3, 0.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u short array 5 params
         /// </summary>
@@ -110,7 +110,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new ushort[] {1, 2, 3}, 3, 0.0, 1.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u short array 6 params
         /// </summary>
@@ -119,7 +119,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new ushort[] {1, 2, 3}, 3, 0.0, 1.0, 0.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u short array 7 params
         /// </summary>
@@ -128,7 +128,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new ushort[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u short array 8 params
         /// </summary>
@@ -137,7 +137,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new ushort[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u short array 9 params
         /// </summary>
@@ -146,7 +146,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new ushort[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None, 0, 2));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded int array 3 params
         /// </summary>
@@ -155,7 +155,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new[] {1, 2, 3}, 3));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded int array 4 params
         /// </summary>
@@ -164,7 +164,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new[] {1, 2, 3}, 3, 0.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded int array 5 params
         /// </summary>
@@ -173,7 +173,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new[] {1, 2, 3}, 3, 0.0, 1.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded int array 6 params
         /// </summary>
@@ -182,7 +182,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new[] {1, 2, 3}, 3, 0.0, 1.0, 0.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded int array 7 params
         /// </summary>
@@ -191,7 +191,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded int array 8 params
         /// </summary>
@@ -200,7 +200,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded int array 9 params
         /// </summary>
@@ -209,7 +209,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None, 0, 2));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u int array 3 params
         /// </summary>
@@ -218,7 +218,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new uint[] {1, 2, 3}, 3));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u int array 4 params
         /// </summary>
@@ -227,7 +227,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new uint[] {1, 2, 3}, 3, 0.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u int array 5 params
         /// </summary>
@@ -236,7 +236,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new uint[] {1, 2, 3}, 3, 0.0, 1.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u int array 6 params
         /// </summary>
@@ -245,7 +245,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new uint[] {1, 2, 3}, 3, 0.0, 1.0, 0.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u int array 7 params
         /// </summary>
@@ -254,7 +254,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new uint[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u int array 8 params
         /// </summary>
@@ -263,7 +263,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new uint[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u int array 9 params
         /// </summary>
@@ -272,7 +272,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new uint[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None, 0, 2));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded long array 3 params
         /// </summary>
@@ -281,7 +281,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new long[] {1, 2, 3}, 3));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded long array 4 params
         /// </summary>
@@ -290,7 +290,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new long[] {1, 2, 3}, 3, 0.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded long array 5 params
         /// </summary>
@@ -299,7 +299,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new long[] {1, 2, 3}, 3, 0.0, 1.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded long array 6 params
         /// </summary>
@@ -308,7 +308,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new long[] {1, 2, 3}, 3, 0.0, 1.0, 0.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded long array 7 params
         /// </summary>
@@ -317,7 +317,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new long[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded long array 8 params
         /// </summary>
@@ -326,7 +326,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new long[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded long array 9 params
         /// </summary>
@@ -335,7 +335,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new long[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None, 0, 2));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u long array 3 params
         /// </summary>
@@ -344,7 +344,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new ulong[] {1, 2, 3}, 3));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u long array 4 params
         /// </summary>
@@ -353,7 +353,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new ulong[] {1, 2, 3}, 3, 0.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u long array 5 params
         /// </summary>
@@ -362,7 +362,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new ulong[] {1, 2, 3}, 3, 0.0, 1.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u long array 6 params
         /// </summary>
@@ -371,7 +371,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new ulong[] {1, 2, 3}, 3, 0.0, 1.0, 0.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u long array 7 params
         /// </summary>
@@ -380,7 +380,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new ulong[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u long array 8 params
         /// </summary>
@@ -389,7 +389,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new ulong[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded u long array 9 params
         /// </summary>
@@ -398,7 +398,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new ulong[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None, 0, 2));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded float ref 3 params
         /// </summary>
@@ -408,7 +408,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float xs = 1.0f, ys = 2.0f;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", ref xs, ref ys, 3));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded float ref 4 params
         /// </summary>
@@ -418,7 +418,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float xs = 1.0f, ys = 2.0f;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", ref xs, ref ys, 3, 0.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded float ref 5 params
         /// </summary>
@@ -428,7 +428,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float xs = 1.0f, ys = 2.0f;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", ref xs, ref ys, 3, 0.0, ImPlotShadedFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded float ref 6 params
         /// </summary>
@@ -438,7 +438,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float xs = 1.0f, ys = 2.0f;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", ref xs, ref ys, 3, 0.0, ImPlotShadedFlags.None, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded float ref 7 params
         /// </summary>
@@ -448,7 +448,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float xs = 1.0f, ys = 2.0f;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", ref xs, ref ys, 3, 0.0, ImPlotShadedFlags.None, 0, 2));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded double ref 3 params
         /// </summary>
@@ -458,7 +458,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 1.0, ys = 2.0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", ref xs, ref ys, 3));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded double ref 4 params
         /// </summary>
@@ -468,7 +468,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 1.0, ys = 2.0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", ref xs, ref ys, 3, 0.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded double ref 5 params
         /// </summary>
@@ -478,7 +478,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 1.0, ys = 2.0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", ref xs, ref ys, 3, 0.0, ImPlotShadedFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded double ref 6 params
         /// </summary>
@@ -488,7 +488,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 1.0, ys = 2.0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", ref xs, ref ys, 3, 0.0, ImPlotShadedFlags.None, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded double ref 7 params
         /// </summary>
@@ -498,7 +498,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 1.0, ys = 2.0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", ref xs, ref ys, 3, 0.0, ImPlotShadedFlags.None, 0, 2));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded byte throws dll not found exception
         /// </summary>
@@ -507,7 +507,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new byte[0], 0, 0.0, 0.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded byte with x start throws dll not found exception
         /// </summary>
@@ -516,7 +516,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new byte[0], 0, 0.0, 0.0, 0.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded byte with flags throws dll not found exception
         /// </summary>
@@ -525,7 +525,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new byte[0], 0, 0.0, 0.0, 0.0, ImPlotShadedFlags.None));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded byte with offset throws dll not found exception
         /// </summary>
@@ -534,7 +534,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new byte[0], 0, 0.0, 0.0, 0.0, ImPlotShadedFlags.None, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded byte with stride throws dll not found exception
         /// </summary>
@@ -543,7 +543,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new byte[0], 0, 0.0, 0.0, 0.0, ImPlotShadedFlags.None, 0, 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded short throws dll not found exception
         /// </summary>
@@ -552,7 +552,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new short[0], 0));
         }
-
+        
         /// <summary>
         ///     Tests that plot shaded short with y ref throws dll not found exception
         /// </summary>

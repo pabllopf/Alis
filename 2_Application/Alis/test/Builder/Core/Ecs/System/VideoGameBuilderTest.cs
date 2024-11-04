@@ -30,7 +30,6 @@
 using Alis.Builder.Core.Ecs.System;
 using Alis.Builder.Core.Ecs.System.Manager.Scene;
 using Alis.Builder.Core.Ecs.System.Setting;
-using Alis.Core.Ecs;
 using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Configuration;
 using Alis.Core.Ecs.System.Manager.Scene;
@@ -51,10 +50,10 @@ namespace Alis.Test.Builder.Core.Ecs.System
         public void VideoGameBuilder_DefaultConstructor_ValidInput()
         {
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
-
+            
             Assert.NotNull(videoGameBuilder);
         }
-
+        
         /// <summary>
         ///     Tests that settings valid input
         /// </summary>
@@ -64,12 +63,12 @@ namespace Alis.Test.Builder.Core.Ecs.System
             VideoGame videoGame = new VideoGame(new Context());
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
             Setting setting = new Setting();
-
+            
             videoGameBuilder.Settings(s => setting);
-
+            
             Assert.Equal(setting.Scene.MaxNumberOfScenes, videoGameBuilder.Build().Context.Setting.Scene.MaxNumberOfScenes);
         }
-
+        
         /// <summary>
         ///     Tests that world valid input
         /// </summary>
@@ -79,12 +78,12 @@ namespace Alis.Test.Builder.Core.Ecs.System
             VideoGame videoGame = new VideoGame(new Context());
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
             SceneManager sceneManager = new SceneManager(videoGameBuilder.context);
-
+            
             videoGameBuilder.World(s => sceneManager);
-
+            
             Assert.Equal(sceneManager.Scenes.Count, videoGameBuilder.Build().Context.SceneManager.Scenes.Count);
         }
-
+        
         /// <summary>
         ///     Tests that build valid input
         /// </summary>
@@ -92,12 +91,12 @@ namespace Alis.Test.Builder.Core.Ecs.System
         public void Build_ValidInput_v2()
         {
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
-
+            
             VideoGame videoGame = videoGameBuilder.Build();
-
+            
             Assert.NotNull(videoGame);
         }
-
+        
         /// <summary>
         ///     Tests that video game builder default constructor valid input v 2
         /// </summary>
@@ -105,10 +104,10 @@ namespace Alis.Test.Builder.Core.Ecs.System
         public void VideoGameBuilder_DefaultConstructor_ValidInput_v2()
         {
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
-
+            
             Assert.NotNull(videoGameBuilder);
         }
-
+        
         /// <summary>
         ///     Tests that build valid input
         /// </summary>
@@ -116,12 +115,12 @@ namespace Alis.Test.Builder.Core.Ecs.System
         public void Build_ValidInput()
         {
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
-
+            
             VideoGame videoGame = videoGameBuilder.Build();
-
+            
             Assert.NotNull(videoGame);
         }
-
+        
         /// <summary>
         ///     Tests that settings valid input v 2
         /// </summary>
@@ -130,12 +129,12 @@ namespace Alis.Test.Builder.Core.Ecs.System
         {
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
             SettingsBuilder settingsBuilder = new SettingsBuilder();
-
+            
             videoGameBuilder.Settings(s => settingsBuilder.Build());
-
+            
             Assert.NotNull(videoGameBuilder.Build().Context.Setting);
         }
-
+        
         /// <summary>
         ///     Tests that world valid input v 2
         /// </summary>
@@ -144,9 +143,9 @@ namespace Alis.Test.Builder.Core.Ecs.System
         {
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
             SceneManagerBuilder sceneManagerBuilder = new SceneManagerBuilder(videoGameBuilder.context);
-
+            
             videoGameBuilder.World(s => sceneManagerBuilder.Build());
-
+            
             Assert.NotNull(videoGameBuilder.Build().Context.SceneManager);
         }
     }

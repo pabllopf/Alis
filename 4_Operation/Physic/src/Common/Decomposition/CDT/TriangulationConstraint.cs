@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 namespace Alis.Core.Physic.Common.Decomposition.CDT
 {
     /// <summary>
@@ -40,7 +38,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
         ///     The
         /// </summary>
         public TriangulationPoint P;
-
+        
         /// <summary>
         ///     The
         /// </summary>

@@ -48,7 +48,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             NullTerminatedString nts = new NullTerminatedString(data);
             Assert.Equal(data, nts.Data);
         }
-
+        
         /// <summary>
         ///     Tests that data should set and get correctly with byte array
         /// </summary>
@@ -60,7 +60,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             string expectedString = "ABC";
             Assert.Equal(expectedString, nts.ToString());
         }
-
+        
         /// <summary>
         ///     Tests that to string should return empty string when data is null
         /// </summary>
@@ -70,7 +70,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             NullTerminatedString nts = new NullTerminatedString(IntPtr.Zero);
             Assert.Equal(string.Empty, nts.ToString());
         }
-
+        
         /// <summary>
         ///     Tests that to string should return correct string
         /// </summary>
@@ -81,7 +81,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             NullTerminatedString nts = new NullTerminatedString(byteArray);
             Assert.Equal("Hello", nts.ToString());
         }
-
+        
         /// <summary>
         ///     Tests that implicit conversion should return correct string
         /// </summary>
@@ -93,7 +93,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             string result = nts;
             Assert.Equal("World", result);
         }
-
+        
         /// <summary>
         ///     Tests that to string data is null returns empty string
         /// </summary>
@@ -103,7 +103,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             NullTerminatedString nts = new NullTerminatedString(IntPtr.Zero);
             Assert.Equal(string.Empty, nts.ToString());
         }
-
+        
         /// <summary>
         ///     Tests that to string data is empty returns empty string
         /// </summary>
@@ -114,7 +114,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             NullTerminatedString nts = new NullTerminatedString(data);
             Assert.Equal(string.Empty, nts.ToString());
         }
-
+        
         /// <summary>
         ///     Tests that to string data is not empty returns string
         /// </summary>
@@ -125,7 +125,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             NullTerminatedString nts = new NullTerminatedString(data);
             Assert.Equal("test", nts.ToString());
         }
-
+        
         /// <summary>
         ///     Tests that to string data has null terminator returns string
         /// </summary>
@@ -136,7 +136,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             NullTerminatedString nts = new NullTerminatedString(data);
             Assert.Equal("test", nts.ToString());
         }
-
+        
         /// <summary>
         ///     Tests that to string data has multiple null terminators returns string up to first null
         /// </summary>

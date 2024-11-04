@@ -41,17 +41,17 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The user data
         /// </summary>
         public IntPtr UserData { get; set; }
-
+        
         /// <summary>
         ///     The pos
         /// </summary>
         public Vector2 Pos { get; set; }
-
+        
         /// <summary>
         ///     The current size
         /// </summary>
         public Vector2 CurrentSize { get; set; }
-
+        
         /// <summary>
         ///     The desired size
         /// </summary>

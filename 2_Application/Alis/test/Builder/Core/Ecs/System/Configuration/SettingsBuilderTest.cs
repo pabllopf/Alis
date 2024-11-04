@@ -60,10 +60,10 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration
         public void SettingsBuilder_DefaultConstructor_ValidInput()
         {
             SettingsBuilder settingsBuilder = new SettingsBuilder();
-
+            
             Assert.NotNull(settingsBuilder);
         }
-
+        
         /// <summary>
         ///     Tests that build valid input
         /// </summary>
@@ -71,12 +71,12 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration
         public void Build_ValidInput()
         {
             SettingsBuilder settingsBuilder = new SettingsBuilder();
-
+            
             Setting setting = settingsBuilder.Build();
-
+            
             Assert.NotNull(setting);
         }
-
+        
         /// <summary>
         ///     Tests that audio valid input
         /// </summary>
@@ -85,12 +85,12 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration
         {
             SettingsBuilder settingsBuilder = new SettingsBuilder();
             Func<AudioSettingBuilder, AudioSetting> audioSettingFunc = asb => asb.Build();
-
+            
             settingsBuilder.Audio(audioSettingFunc);
-
+            
             Assert.NotNull(settingsBuilder.Build().Audio);
         }
-
+        
         /// <summary>
         ///     Tests that general valid input
         /// </summary>
@@ -99,12 +99,12 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration
         {
             SettingsBuilder settingsBuilder = new SettingsBuilder();
             Func<GeneralSettingBuilder, GeneralSetting> generalSettingFunc = gsb => gsb.Build();
-
+            
             settingsBuilder.General(generalSettingFunc);
-
+            
             Assert.NotNull(settingsBuilder.Build().General);
         }
-
+        
         /// <summary>
         ///     Tests that graphic valid input
         /// </summary>
@@ -113,12 +113,12 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration
         {
             SettingsBuilder settingsBuilder = new SettingsBuilder();
             Func<GraphicSettingBuilder, GraphicSetting> graphicSettingFunc = gsb => gsb.Build();
-
+            
             settingsBuilder.Graphic(graphicSettingFunc);
-
+            
             Assert.NotNull(settingsBuilder.Build().Graphic);
         }
-
+        
         /// <summary>
         ///     Tests that input valid input
         /// </summary>
@@ -127,12 +127,12 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration
         {
             SettingsBuilder settingsBuilder = new SettingsBuilder();
             Func<InputSettingBuilder, InputSetting> inputSettingFunc = isb => isb.Build();
-
+            
             settingsBuilder.Input(inputSettingFunc);
-
+            
             Assert.NotNull(settingsBuilder.Build().Input);
         }
-
+        
         /// <summary>
         ///     Tests that network valid input
         /// </summary>
@@ -141,12 +141,12 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration
         {
             SettingsBuilder settingsBuilder = new SettingsBuilder();
             Func<NetworkSettingBuilder, NetworkSetting> networkSettingFunc = nsb => nsb.Build();
-
+            
             settingsBuilder.Network(networkSettingFunc);
-
+            
             Assert.NotNull(settingsBuilder.Build().Network);
         }
-
+        
         /// <summary>
         ///     Tests that physic valid input
         /// </summary>
@@ -155,12 +155,12 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration
         {
             SettingsBuilder settingsBuilder = new SettingsBuilder();
             Func<PhysicSettingBuilder, PhysicSetting> physicSettingFunc = psb => psb.Build();
-
+            
             settingsBuilder.Physic(physicSettingFunc);
-
+            
             Assert.NotNull(settingsBuilder.Build().Physic);
         }
-
+        
         /// <summary>
         ///     Tests that scene valid input
         /// </summary>
@@ -169,9 +169,9 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration
         {
             SettingsBuilder settingsBuilder = new SettingsBuilder();
             Func<SceneSettingBuilder, SceneSetting> sceneSettingFunc = ssb => ssb.Build();
-
+            
             settingsBuilder.Scene(sceneSettingFunc);
-
+            
             Assert.NotNull(settingsBuilder.Build().Scene);
         }
     }

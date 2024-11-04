@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
 namespace Alis.Extension.Graphic.Sdl2Ttf.Sample
 {
     /// <summary>

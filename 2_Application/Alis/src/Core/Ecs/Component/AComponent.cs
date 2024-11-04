@@ -49,197 +49,197 @@ namespace Alis.Core.Ecs.Component
         /// </summary>
         [JsonPropertyName("_Context_", true, true)]
         public Context Context => GameObject.Context;
-
+        
         /// <summary>
         ///     Gets or sets the value of the is enable
         /// </summary>
         [JsonPropertyName("_IsEnable_")]
         public bool IsEnable { get; set; } = true;
-
+        
         /// <summary>
         ///     Gets or sets the value of the name
         /// </summary>
         [JsonPropertyName("_Name_")]
         public string Name { get; set; } = string.Empty;
-
+        
         /// <summary>
         ///     Gets or sets the value of the id
         /// </summary>
         [JsonPropertyName("_Id_")]
         public string Id { get; set; } = Guid.NewGuid().ToString();
-
+        
         /// <summary>
         ///     Gets or sets the value of the tag
         /// </summary>
         [JsonPropertyName("_Tag_")]
         public string Tag { get; set; } = string.Empty;
-
+        
         /// <summary>
         ///     Gets or sets the value of the game object
         /// </summary>
         [JsonPropertyName("_GameObject_", true, true)]
         public GameObject GameObject { get; set; }
-
+        
         /// <summary>
         ///     Ons the enable
         /// </summary>
         public virtual void OnEnable() => Logger.Trace();
-
+        
         /// <summary>
         ///     Ons the init
         /// </summary>
         public virtual void OnInit() => Logger.Trace();
-
+        
         /// <summary>
         ///     Ons the awake
         /// </summary>
         public virtual void OnAwake() => Logger.Trace();
-
+        
         /// <summary>
         ///     Ons the start
         /// </summary>
         public virtual void OnStart() => Logger.Trace();
-
+        
         /// <summary>
-        /// Ons the physic update
+        ///     Ons the physic update
         /// </summary>
-        public virtual void OnPhysicUpdate()=> Logger.Trace();
-
+        public virtual void OnPhysicUpdate() => Logger.Trace();
+        
         /// <summary>
         ///     Ons the before update
         /// </summary>
         public virtual void OnBeforeUpdate() => Logger.Trace();
-
+        
         /// <summary>
         ///     Ons the update
         /// </summary>
         public virtual void OnUpdate() => Logger.Trace();
-
+        
         /// <summary>
         ///     Ons the after update
         /// </summary>
         public virtual void OnAfterUpdate() => Logger.Trace();
-
+        
         /// <summary>
         ///     Ons the before fixed update
         /// </summary>
         public virtual void OnBeforeFixedUpdate() => Logger.Trace();
-
+        
         /// <summary>
         ///     Ons the fixed update
         /// </summary>
         public virtual void OnFixedUpdate() => Logger.Trace();
-
+        
         /// <summary>
         ///     Ons the after fixed update
         /// </summary>
         public virtual void OnAfterFixedUpdate() => Logger.Trace();
-
+        
         /// <summary>
         ///     Ons the dispatch events
         /// </summary>
         public virtual void OnDispatchEvents() => Logger.Trace();
-
+        
         /// <summary>
         ///     Ons the calculate
         /// </summary>
         public virtual void OnCalculate() => Logger.Trace();
-
+        
         public virtual void OnBeforeDraw() => Logger.Trace();
-
+        
         /// <summary>
         ///     Ons the draw
         /// </summary>
         public virtual void OnDraw() => Logger.Trace();
-
+        
         public virtual void OnAfterDraw() => Logger.Trace();
-
+        
         /// <summary>
         ///     Ons the gui
         /// </summary>
         public virtual void OnGui() => Logger.Trace();
-
+        
         public virtual void OnRenderPresent() => Logger.Trace();
-
+        
         /// <summary>
         ///     Ons the disable
         /// </summary>
         public virtual void OnDisable() => Logger.Trace();
-
+        
         /// <summary>
         ///     Ons the reset
         /// </summary>
         public virtual void OnReset() => Logger.Trace();
-
+        
         /// <summary>
         ///     Ons the stop
         /// </summary>
         public virtual void OnStop() => Logger.Trace();
-
+        
         /// <summary>
         ///     Ons the exit
         /// </summary>
         public virtual void OnExit() => Logger.Trace();
-
+        
         /// <summary>
         ///     Ons the destroy
         /// </summary>
         public virtual void OnDestroy() => Logger.Trace();
-
+        
         /// <summary>
         ///     Attaches the game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public void Attach(GameObject gameObject) => GameObject = gameObject;
-
+        
         /// <summary>
         ///     Ons the press down key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public virtual void OnPressDownKey(KeyCodes key) => Logger.Trace();
-
+        
         /// <summary>
         ///     Ons the release key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public virtual void OnReleaseKey(KeyCodes key) => Logger.Trace();
-
+        
         /// <summary>
         ///     Ons the press key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public virtual void OnPressKey(KeyCodes key) => Logger.Trace();
-
+        
         /// <summary>
         ///     Ons the collision enter using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public virtual void OnCollisionEnter(GameObject gameObject) => Logger.Trace();
-
+        
         /// <summary>
         ///     Ons the collision exit using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public virtual void OnCollisionExit(GameObject gameObject) => Logger.Trace();
-
+        
         /// <summary>
         ///     Ons the collision stay using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public virtual void OnCollisionStay(GameObject gameObject) => Logger.Trace();
-
+        
         /// <summary>
         ///     Ons the trigger enter using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public virtual void OnTriggerEnter(GameObject gameObject) => Logger.Trace();
-
+        
         /// <summary>
         ///     Ons the trigger exit using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public virtual void OnTriggerExit(GameObject gameObject) => Logger.Trace();
-
+        
         /// <summary>
         ///     Ons the trigger stay using the specified game object
         /// </summary>

@@ -54,7 +54,7 @@ namespace Alis.Builder.Core.Ecs.System
         /// <summary>Builds this instance.</summary>
         /// <returns></returns>
         public VideoGame Build() => new VideoGame(new ContextHandler(context));
-
+        
         /// <summary>
         ///     Setting the value
         /// </summary>
@@ -65,7 +65,7 @@ namespace Alis.Builder.Core.Ecs.System
             context.Setting = value.Invoke(new SettingsBuilder());
             return this;
         }
-
+        
         /// <summary>
         ///     Worlds the value
         /// </summary>

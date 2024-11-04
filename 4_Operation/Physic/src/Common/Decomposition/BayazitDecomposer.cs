@@ -35,7 +35,7 @@ using Alis.Core.Physic.Dynamics;
 namespace Alis.Core.Physic.Common.Decomposition
 {
     //From phed rev 36: http://code.google.com/p/phed/source/browse/trunk/Polygon.cpp
-
+    
     /// <summary>
     ///     Convex decomposition algorithm created by Mark Bayazit (http://mnbayazit.com/)
     ///     Properties:
@@ -56,10 +56,10 @@ namespace Alis.Core.Physic.Common.Decomposition
         {
             Debug.Assert(vertices.Count > 3);
             Debug.Assert(vertices.IsCounterClockWise());
-
+            
             return TriangulatePolygon(vertices);
         }
-
+        
         /// <summary>
         ///     Triangulates the polygon using the specified vertices
         /// </summary>
@@ -72,7 +72,7 @@ namespace Alis.Core.Physic.Common.Decomposition
             Vector2 upperInt = new Vector2(); // intersection points
             int lowerIndex = 0, upperIndex = 0;
             Vertices lowerPoly, upperPoly;
-
+            
             for (int i = 0; i < vertices.Count; ++i)
             {
                 if (Reflex(i, vertices))
@@ -88,7 +88,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                         {
                             // find the point of intersection
                             p = LineTools.LineIntersect(At(i - 1, vertices), At(i, vertices), At(j, vertices), At(j - 1, vertices));
-
+                            
                             if (Right(At(i + 1, vertices), At(i, vertices), p))
                             {
                                 // make sure it's inside the poly
@@ -102,11 +102,11 @@ namespace Alis.Core.Physic.Common.Decomposition
                                 }
                             }
                         }
-
+                        
                         if (Left(At(i + 1, vertices), At(i, vertices), At(j + 1, vertices)) && RightOn(At(i + 1, vertices), At(i, vertices), At(j, vertices)))
                         {
                             p = LineTools.LineIntersect(At(i + 1, vertices), At(i, vertices), At(j, vertices), At(j + 1, vertices));
-
+                            
                             if (Left(At(i - 1, vertices), At(i, vertices), p))
                             {
                                 d = SquareDist(At(i, vertices), p);
@@ -119,12 +119,12 @@ namespace Alis.Core.Physic.Common.Decomposition
                             }
                         }
                     }
-
+                    
                     // if there are no vertices to connect to, choose a point in the middle
                     if (lowerIndex == (upperIndex + 1) % vertices.Count)
                     {
                         Vector2 p = (lowerInt + upperInt) / 2;
-
+                        
                         lowerPoly = Copy(i, upperIndex, vertices);
                         lowerPoly.Add(p);
                         upperPoly = Copy(lowerIndex, i, vertices);
@@ -135,7 +135,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                         double highestScore = 0, bestIndex = lowerIndex;
                         while (upperIndex < lowerIndex)
                             upperIndex += vertices.Count;
-
+                        
                         for (int j = lowerIndex; j <= upperIndex; ++j)
                         {
                             if (CanSee(i, j, vertices))
@@ -152,7 +152,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                                 {
                                     score += 1;
                                 }
-
+                                
                                 if (score > highestScore)
                                 {
                                     bestIndex = j;
@@ -160,17 +160,17 @@ namespace Alis.Core.Physic.Common.Decomposition
                                 }
                             }
                         }
-
+                        
                         lowerPoly = Copy(i, (int) bestIndex, vertices);
                         upperPoly = Copy((int) bestIndex, i, vertices);
                     }
-
+                    
                     list.AddRange(TriangulatePolygon(lowerPoly));
                     list.AddRange(TriangulatePolygon(upperPoly));
                     return list;
                 }
             }
-
+            
             // polygon is already convex
             if (vertices.Count > SettingEnv.MaxPolygonVertices)
             {
@@ -181,10 +181,10 @@ namespace Alis.Core.Physic.Common.Decomposition
             }
             else
                 list.Add(vertices);
-
+            
             return list;
         }
-
+        
         /// <summary>
         ///     Ats the i
         /// </summary>
@@ -196,7 +196,7 @@ namespace Alis.Core.Physic.Common.Decomposition
             int s = vertices.Count;
             return vertices[i < 0 ? s - 1 - (-i - 1) % s : i % s];
         }
-
+        
         /// <summary>
         ///     Copies the i
         /// </summary>
@@ -208,17 +208,17 @@ namespace Alis.Core.Physic.Common.Decomposition
         {
             while (j < i)
                 j += vertices.Count;
-
+            
             Vertices p = new Vertices(j);
-
+            
             for (; i <= j; ++i)
             {
                 p.Add(At(i, vertices));
             }
-
+            
             return p;
         }
-
+        
         /// <summary>
         ///     Describes whether can see
         /// </summary>
@@ -238,7 +238,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                 if (RightOn(At(i, vertices), At(i + 1, vertices), At(j, vertices)) || LeftOn(At(i, vertices), At(i - 1, vertices), At(j, vertices)))
                     return false;
             }
-
+            
             if (Reflex(j, vertices))
             {
                 if (LeftOn(At(j, vertices), At(j - 1, vertices), At(i, vertices)) && RightOn(At(j, vertices), At(j + 1, vertices), At(i, vertices)))
@@ -249,21 +249,21 @@ namespace Alis.Core.Physic.Common.Decomposition
                 if (RightOn(At(j, vertices), At(j + 1, vertices), At(i, vertices)) || LeftOn(At(j, vertices), At(j - 1, vertices), At(i, vertices)))
                     return false;
             }
-
+            
             for (int k = 0; k < vertices.Count; ++k)
             {
                 if ((k + 1) % vertices.Count == i || k == i || (k + 1) % vertices.Count == j || k == j)
                     continue; // ignore incident edges
-
+                
                 Vector2 intersectionPoint;
-
+                
                 if (LineTools.LineIntersect(At(i, vertices), At(j, vertices), At(k, vertices), At(k + 1, vertices), out intersectionPoint))
                     return false;
             }
-
+            
             return true;
         }
-
+        
         /// <summary>
         ///     Describes whether reflex
         /// </summary>
@@ -271,7 +271,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <param name="vertices">The vertices</param>
         /// <returns>The bool</returns>
         private static bool Reflex(int i, Vertices vertices) => Right(i, vertices);
-
+        
         /// <summary>
         ///     Describes whether right
         /// </summary>
@@ -279,7 +279,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <param name="vertices">The vertices</param>
         /// <returns>The bool</returns>
         private static bool Right(int i, Vertices vertices) => Right(At(i - 1, vertices), At(i, vertices), At(i + 1, vertices));
-
+        
         /// <summary>
         ///     Describes whether left
         /// </summary>
@@ -288,7 +288,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
         private static bool Left(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) > 0;
-
+        
         /// <summary>
         ///     Describes whether left on
         /// </summary>
@@ -297,7 +297,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
         private static bool LeftOn(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) >= 0;
-
+        
         /// <summary>
         ///     Describes whether right
         /// </summary>
@@ -306,7 +306,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
         private static bool Right(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) < 0;
-
+        
         /// <summary>
         ///     Describes whether right on
         /// </summary>
@@ -315,7 +315,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
         private static bool RightOn(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) <= 0;
-
+        
         /// <summary>
         ///     Squares the dist using the specified a
         /// </summary>

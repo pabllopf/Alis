@@ -44,7 +44,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         ///     The position
         /// </summary>
         internal Vector2 _position;
-
+        
         /// <summary>
         ///     Create a new circle with the desired radius and density.
         /// </summary>
@@ -55,12 +55,12 @@ namespace Alis.Core.Physic.Collision.Shapes
         {
             Debug.Assert(radius >= 0);
             Debug.Assert(density >= 0);
-
+            
             ShapeType = ShapeType.Circle;
             _position = Vector2.Zero;
             Radius = radius; // The Radius property cache 2radius and calls ComputeProperties(). So no need to call ComputeProperties() here.
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="CircleShape" /> class
         /// </summary>
@@ -71,12 +71,12 @@ namespace Alis.Core.Physic.Collision.Shapes
             _radius = 0.0f;
             _position = Vector2.Zero;
         }
-
+        
         /// <summary>
         ///     Gets the value of the child count
         /// </summary>
         public override int ChildCount => 1;
-
+        
         /// <summary>
         ///     Get or set the position of the circle
         /// </summary>
@@ -89,7 +89,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                 ComputeProperties();
             }
         }
-
+        
         /// <summary>
         ///     Describes whether this instance test point
         /// </summary>
@@ -102,7 +102,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             Vector2 d = point - center;
             return Vector2.Dot(d, d) <= _2radius;
         }
-
+        
         /// <summary>
         ///     Describes whether this instance ray cast
         /// </summary>
@@ -117,43 +117,43 @@ namespace Alis.Core.Physic.Collision.Shapes
             // From Section 3.1.2
             // x = s + a * r
             // norm(x) = radius
-
+            
             output = new RayCastOutput();
-
+            
             Vector2 position = transform.p + Complex.Multiply(ref _position, ref transform.q);
             Vector2 s = input.Point1 - position;
             float b = Vector2.Dot(s, s) - _2radius;
-
+            
             // Solve quadratic equation.
             Vector2 r = input.Point2 - input.Point1;
             float c = Vector2.Dot(s, r);
             float rr = Vector2.Dot(r, r);
             float sigma = c * c - rr * b;
-
+            
             // Check for negative discriminant and short segment.
             if (sigma < 0.0f || rr < SettingEnv.Epsilon)
             {
                 return false;
             }
-
+            
             // Find the point of intersection of the line with the circle.
             float a = -(c + (float) Math.Sqrt(sigma));
-
+            
             // Is the intersection point on the segment?
             if ((0.0f <= a) && (a <= input.MaxFraction * rr))
             {
                 a /= rr;
                 output.Fraction = a;
-
-
+                
+                
                 output.Normal = s + a * r;
                 output.Normal.Normalize();
                 return true;
             }
-
+            
             return false;
         }
-
+        
         /// <summary>
         ///     Computes the aabb using the specified aabb
         /// </summary>
@@ -165,14 +165,14 @@ namespace Alis.Core.Physic.Collision.Shapes
             // OPT: Vector2 p = transform.p + Complex.Multiply(ref _position, ref transform.q);
             float pX = _position.X * transform.q.R - _position.Y * transform.q.i + transform.p.X;
             float pY = _position.Y * transform.q.R + _position.X * transform.q.i + transform.p.Y;
-
+            
             // OPT: aabb.LowerBound = new Vector2(p.X - Radius, p.Y - Radius);
             // OPT: aabb.UpperBound = new Vector2(p.X + Radius, p.Y + Radius);
             aabb.LowerBound = new Vector2(pX - Radius, pY - Radius);
-
+            
             aabb.UpperBound = new Vector2(pX + Radius, pY + Radius);
         }
-
+        
         /// <summary>
         ///     Computes the properties
         /// </summary>
@@ -182,11 +182,11 @@ namespace Alis.Core.Physic.Collision.Shapes
             MassData.Area = area;
             MassData.Mass = Density * area;
             MassData.Centroid = Position;
-
+            
             // inertia about the local origin
             MassData.Inertia = MassData.Mass * (0.5f * _2radius + Vector2.Dot(Position, Position));
         }
-
+        
         /// <summary>
         ///     Computes the submerged area using the specified normal
         /// </summary>
@@ -198,7 +198,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         public override float ComputeSubmergedArea(ref Vector2 normal, float offset, ref Transform xf, out Vector2 sc)
         {
             sc = Vector2.Zero;
-
+            
             Vector2 p = Transform.Multiply(ref _position, ref xf);
             float l = -(Vector2.Dot(normal, p) - offset);
             if (l < -Radius + SettingEnv.Epsilon)
@@ -206,32 +206,32 @@ namespace Alis.Core.Physic.Collision.Shapes
                 //Completely dry
                 return 0;
             }
-
+            
             if (l > Radius)
             {
                 //Completely wet
                 sc = p;
                 return Constant.Pi * _2radius;
             }
-
+            
             //Magic
             float l2 = l * l;
             float area = _2radius * (float) (Math.Asin(l / Radius) + Constant.Pi / 2 + l * Math.Sqrt(_2radius - l2));
             float com = -2.0f / 3.0f * (float) Math.Pow(_2radius - l2, 1.5f) / area;
-
+            
             sc.X = p.X + normal.X * com;
             sc.Y = p.Y + normal.Y * com;
-
+            
             return area;
         }
-
+        
         /// <summary>
         ///     Compare the circle to another circle
         /// </summary>
         /// <param name="shape">The other circle</param>
         /// <returns>True if the two circles are the same size and have the same position</returns>
         public bool CompareTo(CircleShape shape) => (Math.Abs(Radius - shape.Radius) < MathUtils.Epsilon) && (Position == shape.Position);
-
+        
         /// <summary>
         ///     Clones this instance
         /// </summary>

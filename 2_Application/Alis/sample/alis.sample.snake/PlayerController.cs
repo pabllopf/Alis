@@ -1,7 +1,35 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:PlayerController.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Data.Mapping;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Component.Collider;
@@ -11,48 +39,48 @@ using Alis.Core.Physic.Dynamics;
 namespace Alis.Sample.Snake
 {
     /// <summary>
-    /// The player controller class
+    ///     The player controller class
     /// </summary>
-    /// <seealso cref="AComponent"/>
+    /// <seealso cref="AComponent" />
     public class PlayerController : AComponent
     {
         /// <summary>
-        /// The box collider
+        ///     The box collider
         /// </summary>
         private BoxCollider _boxCollider;
         
         /// <summary>
-        /// The snake body
+        ///     The vector
         /// </summary>
-        private List<GameObject> _snakeBody;
+        private Vector2 _direction = new Vector2(1, 0);
         
         /// <summary>
-        /// The move timer
+        ///     The move interval
+        /// </summary>
+        private readonly float _moveInterval = 0.2f;
+        
+        /// <summary>
+        ///     The move timer
         /// </summary>
         private float _moveTimer;
         
         /// <summary>
-        /// The move interval
+        ///     The snake body
         /// </summary>
-        private float _moveInterval = 0.2f; 
+        private List<GameObject> _snakeBody;
         
         /// <summary>
-        /// The vector
-        /// </summary>
-        private Vector2 _direction = new Vector2(1, 0); 
-
-        /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
         public override void OnStart()
         {
             Console.WriteLine("PlayerController started");
             _boxCollider = GameObject.Get<BoxCollider>();
-            _snakeBody = new List<GameObject> { GameObject };
+            _snakeBody = new List<GameObject> {GameObject};
         }
-
+        
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public override void OnUpdate()
         {
@@ -63,9 +91,9 @@ namespace Alis.Sample.Snake
                 _moveTimer = 0;
             }
         }
-
+        
         /// <summary>
-        /// Ons the press key using the specified key
+        ///     Ons the press key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public override void OnPressKey(KeyCodes key)
@@ -79,9 +107,9 @@ namespace Alis.Sample.Snake
             else if (key == KeyCodes.D && _direction != new Vector2(-1, 0))
                 _direction = new Vector2(1, 0);
         }
-
+        
         /// <summary>
-        /// Ons the release key using the specified key
+        ///     Ons the release key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public override void OnReleaseKey(KeyCodes key)
@@ -89,10 +117,10 @@ namespace Alis.Sample.Snake
             // No action needed on key release for this game
         }
         
-       /// <summary>
-       /// Moves this instance
-       /// </summary>
-       private void Move()
+        /// <summary>
+        ///     Moves this instance
+        /// </summary>
+        private void Move()
         {
             Vector2 newPosition = _boxCollider.Body.Position + _direction * 1; // Move by 1 meter (32 pixels)
             
@@ -108,15 +136,15 @@ namespace Alis.Sample.Snake
             
             _boxCollider.Body.Position = newPosition;
         }
-
+        
         /// <summary>
-        /// Grows this instance
+        ///     Grows this instance
         /// </summary>
         public void Grow()
         {
             // Create a new GameObject for the new segment
             GameObject newSegment = new GameObject();
-
+            
             // Create and configure the BoxCollider for the new segment
             BoxCollider newSegmentCollider = new BoxCollider()
                 .Builder()
@@ -136,10 +164,10 @@ namespace Alis.Sample.Snake
             
             // Add the BoxCollider to the new segment
             newSegment.Add(newSegmentCollider);
-
+            
             // Add the new segment to the scene
             Context.SceneManager.CurrentScene.Add(newSegment);
-
+            
             // Add the new segment to the snake body list
             _snakeBody.Add(newSegment);
             

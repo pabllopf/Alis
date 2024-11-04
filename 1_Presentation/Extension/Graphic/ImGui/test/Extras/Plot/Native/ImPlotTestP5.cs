@@ -50,7 +50,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars sbyte offset throws dll not found exception
         /// </summary>
@@ -62,7 +62,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars sbyte offset stride throws dll not found exception
         /// </summary>
@@ -74,7 +74,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset, stride));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars byte throws dll not found exception
         /// </summary>
@@ -85,7 +85,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             int count = 1;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars byte flags throws dll not found exception
         /// </summary>
@@ -97,7 +97,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars byte offset throws dll not found exception
         /// </summary>
@@ -109,7 +109,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars byte offset stride throws dll not found exception
         /// </summary>
@@ -121,7 +121,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset, stride));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars short throws dll not found exception
         /// </summary>
@@ -132,7 +132,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             int count = 1;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars short flags throws dll not found exception
         /// </summary>
@@ -144,7 +144,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars short offset throws dll not found exception
         /// </summary>
@@ -156,7 +156,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars short offset stride throws dll not found exception
         /// </summary>
@@ -168,7 +168,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset, stride));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars u short throws dll not found exception
         /// </summary>
@@ -179,7 +179,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             int count = 1;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars u short flags throws dll not found exception
         /// </summary>
@@ -191,7 +191,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars u short offset throws dll not found exception
         /// </summary>
@@ -203,7 +203,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars u short offset stride throws dll not found exception
         /// </summary>
@@ -215,7 +215,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset, stride));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars int throws dll not found exception
         /// </summary>
@@ -226,7 +226,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             int count = 1;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars int flags throws dll not found exception
         /// </summary>
@@ -238,7 +238,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars int offset throws dll not found exception
         /// </summary>
@@ -250,7 +250,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars int offset stride throws dll not found exception
         /// </summary>
@@ -262,7 +262,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset, stride));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars u int throws dll not found exception
         /// </summary>
@@ -273,7 +273,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             int count = 1;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars u int flags throws dll not found exception
         /// </summary>
@@ -285,7 +285,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars u int offset throws dll not found exception
         /// </summary>
@@ -297,7 +297,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars u int offset stride throws dll not found exception
         /// </summary>
@@ -309,7 +309,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset, stride));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars long throws dll not found exception
         /// </summary>
@@ -320,7 +320,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             int count = 1;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars long flags throws dll not found exception
         /// </summary>
@@ -332,7 +332,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars long offset throws dll not found exception
         /// </summary>
@@ -344,7 +344,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars long offset stride throws dll not found exception
         /// </summary>
@@ -356,7 +356,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset, stride));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars u long throws dll not found exception
         /// </summary>
@@ -367,7 +367,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             int count = 1;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars u long flags throws dll not found exception
         /// </summary>
@@ -379,7 +379,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars u long offset throws dll not found exception
         /// </summary>
@@ -391,7 +391,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars u long offset stride throws dll not found exception
         /// </summary>
@@ -403,7 +403,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset, stride));
         }
-
+        
         /// <summary>
         ///     Tests that plot heatmap float throws dll not found exception
         /// </summary>
@@ -414,7 +414,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             int rows = 1, cols = 1;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", values, rows, cols));
         }
-
+        
         /// <summary>
         ///     Tests that plot heatmap float scale min throws dll not found exception
         /// </summary>
@@ -426,7 +426,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double scaleMin = 0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", values, rows, cols, scaleMin));
         }
-
+        
         /// <summary>
         ///     Tests that plot heatmap float scale min scale max throws dll not found exception
         /// </summary>
@@ -438,7 +438,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double scaleMin = 0, scaleMax = 1;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", values, rows, cols, scaleMin, scaleMax));
         }
-
+        
         /// <summary>
         ///     Tests that plot heatmap float scale min scale max label fmt throws dll not found exception
         /// </summary>
@@ -451,7 +451,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             string labelFmt = "%.1f";
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", values, rows, cols, scaleMin, scaleMax, labelFmt));
         }
-
+        
         /// <summary>
         ///     Tests that plot heatmap float scale min scale max label fmt bounds min throws dll not found exception
         /// </summary>
@@ -465,7 +465,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ImPlotPoint boundsMin = new ImPlotPoint {X = 0, Y = 0};
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", values, rows, cols, scaleMin, scaleMax, labelFmt, boundsMin));
         }
-
+        
         /// <summary>
         ///     Tests that plot heatmap float scale min scale max label fmt bounds min bounds max throws dll not found exception
         /// </summary>
@@ -480,7 +480,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ImPlotPoint boundsMax = new ImPlotPoint {X = 1, Y = 1};
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", values, rows, cols, scaleMin, scaleMax, labelFmt, boundsMin, boundsMax));
         }
-
+        
         /// <summary>
         ///     Tests that plot heatmap float scale min scale max label fmt bounds min bounds max flags throws dll not found
         ///     exception
@@ -497,7 +497,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ImPlotHeatmapFlags flags = ImPlotHeatmapFlags.None;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", values, rows, cols, scaleMin, scaleMax, labelFmt, boundsMin, boundsMax, flags));
         }
-
+        
         /// <summary>
         ///     Tests that plot heatmap double throws dll not found exception
         /// </summary>
@@ -508,7 +508,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             int rows = 1, cols = 1;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", values, rows, cols));
         }
-
+        
         /// <summary>
         ///     Tests that plot heatmap with scale min throws dll not found exception
         /// </summary>
@@ -517,7 +517,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new double[0], 0, 0, 0.0));
         }
-
+        
         /// <summary>
         ///     Tests that plot heatmap with scale min max throws dll not found exception
         /// </summary>
@@ -526,7 +526,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new double[0], 0, 0, 0.0, 1.0));
         }
-
+        
         /// <summary>
         ///     Tests that v 2 plot error bars sbyte throws dll not found exception
         /// </summary>
@@ -536,10 +536,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             sbyte xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1;
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars sbyte with offset throws dll not found exception
         /// </summary>
@@ -549,10 +549,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             sbyte xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1, offset = 0;
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars sbyte with offset and stride throws dll not found exception
         /// </summary>
@@ -562,10 +562,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             sbyte xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1, offset = 0, stride = 1;
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset, stride));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars byte throws dll not found exception
         /// </summary>
@@ -574,10 +574,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             byte xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars byte with flags throws dll not found exception
         /// </summary>
@@ -587,10 +587,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             byte xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1;
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars byte with offset throws dll not found exception
         /// </summary>
@@ -600,10 +600,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             byte xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1, offset = 0;
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars byte with offset and stride throws dll not found exception
         /// </summary>
@@ -613,10 +613,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             byte xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1, offset = 0, stride = 1;
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset, stride));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars short throws dll not found exception
         /// </summary>
@@ -625,10 +625,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             short xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars short with flags throws dll not found exception
         /// </summary>
@@ -638,10 +638,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             short xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1;
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars short with offset throws dll not found exception
         /// </summary>
@@ -651,10 +651,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             short xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1, offset = 0;
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars short with offset and stride throws dll not found exception
         /// </summary>
@@ -664,10 +664,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             short xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1, offset = 0, stride = 1;
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset, stride));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars u short throws dll not found exception
         /// </summary>
@@ -676,10 +676,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             ushort xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars u short with flags throws dll not found exception
         /// </summary>
@@ -689,10 +689,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ushort xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1;
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars u short with offset throws dll not found exception
         /// </summary>
@@ -702,10 +702,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ushort xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1, offset = 0;
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars u short with offset and stride throws dll not found exception
         /// </summary>
@@ -715,10 +715,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ushort xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1, offset = 0, stride = 1;
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset, stride));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars int throws dll not found exception
         /// </summary>
@@ -727,10 +727,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             int xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars int with flags throws dll not found exception
         /// </summary>
@@ -740,10 +740,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             int xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1;
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars int with offset throws dll not found exception
         /// </summary>
@@ -753,10 +753,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             int xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1, offset = 0;
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars int with offset and stride throws dll not found exception
         /// </summary>
@@ -766,10 +766,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             int xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1, offset = 0, stride = 1;
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset, stride));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars u int throws dll not found exception
         /// </summary>
@@ -778,10 +778,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             uint xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars u int with flags throws dll not found exception
         /// </summary>
@@ -791,10 +791,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             uint xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1;
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars u int with offset throws dll not found exception
         /// </summary>
@@ -804,10 +804,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             uint xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1, offset = 0;
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars u int with offset and stride throws dll not found exception
         /// </summary>
@@ -817,10 +817,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             uint xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1, offset = 0, stride = 1;
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset, stride));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars long throws dll not found exception
         /// </summary>
@@ -829,10 +829,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             long xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars long with flags throws dll not found exception
         /// </summary>
@@ -842,10 +842,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             long xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1;
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars long with offset throws dll not found exception
         /// </summary>
@@ -855,10 +855,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             long xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1, offset = 0;
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars long with offset and stride throws dll not found exception
         /// </summary>
@@ -868,10 +868,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             long xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1, offset = 0, stride = 1;
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset, stride));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars u long throws dll not found exception
         /// </summary>
@@ -880,10 +880,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             ulong xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars u long with flags throws dll not found exception
         /// </summary>
@@ -893,10 +893,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ulong xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1;
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars u long with offset throws dll not found exception
         /// </summary>
@@ -906,10 +906,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ulong xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1, offset = 0;
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset));
         }
-
+        
         /// <summary>
         ///     Tests that plot error bars u long with offset and stride throws dll not found exception
         /// </summary>
@@ -919,10 +919,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ulong xs = 0, ys = 0, neg = 0, pos = 0;
             int count = 1, offset = 0, stride = 1;
             ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset, stride));
         }
-
+        
         /// <summary>
         ///     Tests that v 2 plot heatmap float throws dll not found exception
         /// </summary>
@@ -931,10 +931,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             float[] values = new float[1];
             int rows = 1, cols = 1;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", values, rows, cols));
         }
-
+        
         /// <summary>
         ///     Tests that plot heatmap float with scale min throws dll not found exception
         /// </summary>
@@ -944,10 +944,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float[] values = new float[1];
             int rows = 1, cols = 1;
             double scaleMin = 0;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", values, rows, cols, scaleMin));
         }
-
+        
         /// <summary>
         ///     Tests that plot heatmap float with scale min and max throws dll not found exception
         /// </summary>
@@ -957,10 +957,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float[] values = new float[1];
             int rows = 1, cols = 1;
             double scaleMin = 0, scaleMax = 1;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", values, rows, cols, scaleMin, scaleMax));
         }
-
+        
         /// <summary>
         ///     Tests that plot heatmap float with label fmt throws dll not found exception
         /// </summary>
@@ -971,10 +971,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             int rows = 1, cols = 1;
             double scaleMin = 0, scaleMax = 1;
             string labelFmt = "%.1f";
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", values, rows, cols, scaleMin, scaleMax, labelFmt));
         }
-
+        
         /// <summary>
         ///     Tests that plot heatmap float with bounds min throws dll not found exception
         /// </summary>
@@ -986,10 +986,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double scaleMin = 0, scaleMax = 1;
             string labelFmt = "%.1f";
             ImPlotPoint boundsMin = new ImPlotPoint {X = 0, Y = 0};
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", values, rows, cols, scaleMin, scaleMax, labelFmt, boundsMin));
         }
-
+        
         /// <summary>
         ///     Tests that plot heatmap float with bounds max throws dll not found exception
         /// </summary>
@@ -1002,10 +1002,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             string labelFmt = "%.1f";
             ImPlotPoint boundsMin = new ImPlotPoint {X = 0, Y = 0};
             ImPlotPoint boundsMax = new ImPlotPoint {X = 1, Y = 1};
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", values, rows, cols, scaleMin, scaleMax, labelFmt, boundsMin, boundsMax));
         }
-
+        
         /// <summary>
         ///     Tests that plot heatmap float with flags throws dll not found exception
         /// </summary>
@@ -1019,10 +1019,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ImPlotPoint boundsMin = new ImPlotPoint {X = 0, Y = 0};
             ImPlotPoint boundsMax = new ImPlotPoint {X = 1, Y = 1};
             ImPlotHeatmapFlags flags = ImPlotHeatmapFlags.None;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", values, rows, cols, scaleMin, scaleMax, labelFmt, boundsMin, boundsMax, flags));
         }
-
+        
         /// <summary>
         ///     Tests that v 2 plot heatmap double throws dll not found exception
         /// </summary>
@@ -1031,10 +1031,10 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             double[] values = new double[1];
             int rows = 1, cols = 1;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", values, rows, cols));
         }
-
+        
         /// <summary>
         ///     Tests that plot heatmap double with scale min throws dll not found exception
         /// </summary>
@@ -1044,7 +1044,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double[] values = new double[1];
             int rows = 1, cols = 1;
             double scaleMin = 0;
-
+            
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", values, rows, cols, scaleMin));
         }
     }

@@ -44,14 +44,14 @@ namespace Alis.App.Engine.Demos
         public void Initialize()
         {
         }
-
+        
         /// <summary>
         ///     Starts this instance
         /// </summary>
         public void Start()
         {
         }
-
+        
         /// <summary>
         ///     Runs this instance
         /// </summary>
@@ -59,7 +59,7 @@ namespace Alis.App.Engine.Demos
         {
             DefaultDemo();
         }
-
+        
         /// <summary>
         ///     Defaults the demo
         /// </summary>

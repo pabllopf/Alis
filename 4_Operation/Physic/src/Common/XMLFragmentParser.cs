@@ -41,12 +41,12 @@ namespace Alis.Core.Physic.Common
         ///     The list
         /// </summary>
         private static readonly List<char> _punctuation = new List<char> {'/', '<', '>', '='};
-
+        
         /// <summary>
         ///     The buffer
         /// </summary>
         private FileBuffer _buffer;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="XMLFragmentParser" /> class
         /// </summary>
@@ -55,12 +55,12 @@ namespace Alis.Core.Physic.Common
         {
             Load(stream);
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the root node
         /// </summary>
         public XMLFragmentElement RootNode { get; private set; }
-
+        
         /// <summary>
         ///     Loads the stream
         /// </summary>
@@ -69,7 +69,7 @@ namespace Alis.Core.Physic.Common
         {
             _buffer = new FileBuffer(stream);
         }
-
+        
         /// <summary>
         ///     Loads the from stream using the specified stream
         /// </summary>
@@ -81,7 +81,7 @@ namespace Alis.Core.Physic.Common
             x.Parse();
             return x.RootNode;
         }
-
+        
         /// <summary>
         ///     Nexts the token
         /// </summary>
@@ -90,11 +90,11 @@ namespace Alis.Core.Physic.Common
         {
             string str = "";
             bool _done = false;
-
+            
             while (true)
             {
                 char c = _buffer.Next;
-
+                
                 if (_punctuation.Contains(c))
                 {
                     if (str != "")
@@ -102,7 +102,7 @@ namespace Alis.Core.Physic.Common
                         _buffer.Position--;
                         break;
                     }
-
+                    
                     _done = true;
                 }
                 else if (char.IsWhiteSpace(c))
@@ -111,25 +111,25 @@ namespace Alis.Core.Physic.Common
                         break;
                     continue;
                 }
-
+                
                 str += c;
-
+                
                 if (_done)
                     break;
             }
-
+            
             str = TrimControl(str);
-
+            
             // Trim quotes from start and end
             if (str[0] == '\"')
                 str = str.Remove(0, 1);
-
+            
             if (str[str.Length - 1] == '\"')
                 str = str.Remove(str.Length - 1, 1);
-
+            
             return str;
         }
-
+        
         /// <summary>
         ///     Peeks the token
         /// </summary>
@@ -141,7 +141,7 @@ namespace Alis.Core.Physic.Common
             _buffer.Position = oldPos;
             return str;
         }
-
+        
         /// <summary>
         ///     Reads the until using the specified c
         /// </summary>
@@ -150,30 +150,30 @@ namespace Alis.Core.Physic.Common
         private string ReadUntil(char c)
         {
             string str = "";
-
+            
             while (true)
             {
                 char ch = _buffer.Next;
-
+                
                 if (ch == c)
                 {
                     _buffer.Position--;
                     break;
                 }
-
+                
                 str += ch;
             }
-
+            
             // Trim quotes from start and end
             if (str[0] == '\"')
                 str = str.Remove(0, 1);
-
+            
             if (str[str.Length - 1] == '\"')
                 str = str.Remove(str.Length - 1, 1);
-
+            
             return str;
         }
-
+        
         /// <summary>
         ///     Trims the control using the specified str
         /// </summary>
@@ -182,23 +182,23 @@ namespace Alis.Core.Physic.Common
         private string TrimControl(string str)
         {
             string newStr = str;
-
+            
             // Trim control characters
             int i = 0;
             while (true)
             {
                 if (i == newStr.Length)
                     break;
-
+                
                 if (char.IsControl(newStr[i]))
                     newStr = newStr.Remove(i, 1);
                 else
                     i++;
             }
-
+            
             return newStr;
         }
-
+        
         /// <summary>
         ///     Trims the tags using the specified outer
         /// </summary>
@@ -208,10 +208,10 @@ namespace Alis.Core.Physic.Common
         {
             int start = outer.IndexOf('>') + 1;
             int end = outer.LastIndexOf('<');
-
+            
             return TrimControl(outer.Substring(start, end - start));
         }
-
+        
         /// <summary>
         ///     Tries the parse node
         /// </summary>
@@ -223,67 +223,67 @@ namespace Alis.Core.Physic.Common
         {
             if (_buffer.EndOfBuffer)
                 return null;
-
+            
             int startOuterXml = _buffer.Position;
             string token = NextToken();
-
+            
             if (token != "<")
                 throw new XMLFragmentException("Expected \"<\", got " + token);
-
+            
             XMLFragmentElement element = new XMLFragmentElement();
             element.Name = NextToken();
-
+            
             while (true)
             {
                 token = NextToken();
-
+                
                 if (token == ">")
                     break;
                 if (token == "/") // quick-exit case
                 {
                     NextToken();
-
+                    
                     element.OuterXml =
                         TrimControl(_buffer.Buffer.Substring(startOuterXml, _buffer.Position - startOuterXml)).Trim();
                     element.InnerXml = "";
-
+                    
                     return element;
                 }
-
+                
                 XMLFragmentAttribute attribute = new XMLFragmentAttribute();
                 attribute.Name = token;
                 if ((token = NextToken()) != "=")
                     throw new XMLFragmentException("Expected \"=\", got " + token);
                 attribute.Value = NextToken();
-
+                
                 element.Attributes.Add(attribute);
             }
-
+            
             while (true)
             {
                 int oldPos = _buffer.Position; // for restoration below
                 token = NextToken();
-
+                
                 if (token == "<")
                 {
                     token = PeekToken();
-
+                    
                     if (token == "/") // finish element
                     {
                         NextToken(); // skip the / again
                         token = NextToken();
                         NextToken(); // skip >
-
+                        
                         element.OuterXml = TrimControl(_buffer.Buffer.Substring(startOuterXml, _buffer.Position - startOuterXml)).Trim();
                         element.InnerXml = TrimTags(element.OuterXml);
-
+                        
                         if (token != element.Name)
                             throw new XMLFragmentException("Mismatched element pairs: \"" + element.Name + "\" vs \"" +
                                                            token + "\"");
-
+                        
                         break;
                     }
-
+                    
                     _buffer.Position = oldPos;
                     element.Elements.Add(TryParseNode());
                 }
@@ -294,10 +294,10 @@ namespace Alis.Core.Physic.Common
                     element.Value = ReadUntil('<');
                 }
             }
-
+            
             return element;
         }
-
+        
         /// <summary>
         ///     Parses this instance
         /// </summary>
@@ -305,7 +305,7 @@ namespace Alis.Core.Physic.Common
         private void Parse()
         {
             RootNode = TryParseNode();
-
+            
             if (RootNode == null)
                 throw new XMLFragmentException("Unable to load root node");
         }

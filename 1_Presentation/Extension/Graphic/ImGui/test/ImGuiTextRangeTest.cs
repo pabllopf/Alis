@@ -48,7 +48,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             textRange.B = ptr;
             Assert.Equal(ptr, textRange.B);
         }
-
+        
         /// <summary>
         ///     Tests that e should set and get correctly
         /// </summary>

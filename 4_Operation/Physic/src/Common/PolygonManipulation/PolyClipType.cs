@@ -38,12 +38,12 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         ///     The intersect poly clip type
         /// </summary>
         Intersect,
-
+        
         /// <summary>
         ///     The union poly clip type
         /// </summary>
         Union,
-
+        
         /// <summary>
         ///     The difference poly clip type
         /// </summary>

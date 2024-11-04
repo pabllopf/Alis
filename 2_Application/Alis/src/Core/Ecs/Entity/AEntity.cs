@@ -30,10 +30,9 @@
 namespace Alis.Core.Ecs.Entity
 {
     /// <summary>
-    /// The entity class
+    ///     The entity class
     /// </summary>
     public class AEntity
     {
-        
     }
 }

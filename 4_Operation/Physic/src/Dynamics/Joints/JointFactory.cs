@@ -50,7 +50,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             world.Add(joint);
             return joint;
         }
-
+        
         /// <summary>
         ///     Creates the revolute joint using the specified world
         /// </summary>
@@ -67,7 +67,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             world.Add(joint);
             return joint;
         }
-
+        
         /// <summary>
         ///     Creates the revolute joint using the specified world
         /// </summary>
@@ -83,7 +83,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             world.Add(joint);
             return joint;
         }
-
+        
         /// <summary>
         ///     Creates the rope joint using the specified world
         /// </summary>
@@ -100,7 +100,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             world.Add(ropeJoint);
             return ropeJoint;
         }
-
+        
         /// <summary>
         ///     Creates the weld joint using the specified world
         /// </summary>
@@ -117,7 +117,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             world.Add(weldJoint);
             return weldJoint;
         }
-
+        
         /// <summary>
         ///     Creates the prismatic joint using the specified world
         /// </summary>
@@ -134,7 +134,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             world.Add(joint);
             return joint;
         }
-
+        
         /// <summary>
         ///     Creates the wheel joint using the specified world
         /// </summary>
@@ -151,7 +151,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             world.Add(joint);
             return joint;
         }
-
+        
         /// <summary>
         ///     Creates the wheel joint using the specified world
         /// </summary>
@@ -161,7 +161,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="axis">The axis</param>
         /// <returns>The wheel joint</returns>
         public static WheelJoint CreateWheelJoint(World world, Body bodyA, Body bodyB, Vector2 axis) => CreateWheelJoint(world, bodyA, bodyB, Vector2.Zero, axis);
-
+        
         /// <summary>
         ///     Creates the angle joint using the specified world
         /// </summary>
@@ -175,7 +175,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             world.Add(angleJoint);
             return angleJoint;
         }
-
+        
         /// <summary>
         ///     Creates the distance joint using the specified world
         /// </summary>
@@ -192,7 +192,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             world.Add(distanceJoint);
             return distanceJoint;
         }
-
+        
         /// <summary>
         ///     Creates the distance joint using the specified world
         /// </summary>
@@ -201,7 +201,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="bodyB">The body</param>
         /// <returns>The distance joint</returns>
         public static DistanceJoint CreateDistanceJoint(World world, Body bodyA, Body bodyB) => CreateDistanceJoint(world, bodyA, bodyB, Vector2.Zero, Vector2.Zero);
-
+        
         /// <summary>
         ///     Creates the friction joint using the specified world
         /// </summary>
@@ -217,7 +217,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             world.Add(frictionJoint);
             return frictionJoint;
         }
-
+        
         /// <summary>
         ///     Creates the friction joint using the specified world
         /// </summary>
@@ -226,7 +226,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="bodyB">The body</param>
         /// <returns>The friction joint</returns>
         public static FrictionJoint CreateFrictionJoint(World world, Body bodyA, Body bodyB) => CreateFrictionJoint(world, bodyA, bodyB, Vector2.Zero);
-
+        
         /// <summary>
         ///     Creates the gear joint using the specified world
         /// </summary>
@@ -243,7 +243,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             world.Add(gearJoint);
             return gearJoint;
         }
-
+        
         /// <summary>
         ///     Creates the pulley joint using the specified world
         /// </summary>
@@ -263,7 +263,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             world.Add(pulleyJoint);
             return pulleyJoint;
         }
-
+        
         /// <summary>
         ///     Creates the fixed mouse joint using the specified world
         /// </summary>

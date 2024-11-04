@@ -38,12 +38,12 @@ namespace Alis.App.Engine.Demos
         ///     Initializes this instance
         /// </summary>
         public void Initialize();
-
+        
         /// <summary>
         ///     Starts this instance
         /// </summary>
         public void Start();
-
+        
         /// <summary>
         ///     Runs this instance
         /// </summary>

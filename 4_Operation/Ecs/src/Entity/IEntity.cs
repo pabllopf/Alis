@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IE.cs
+//  File:IEntity.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,10 +30,9 @@
 namespace Alis.Core.Ecs.Entity
 {
     /// <summary>
-    /// The entity interface
+    ///     The entity interface
     /// </summary>
     public interface IEntity
     {
-        
     }
 }

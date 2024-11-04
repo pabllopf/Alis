@@ -45,32 +45,32 @@ namespace Alis.Core.Ecs.System.Configuration.Graphic
         ///     Initializes a new instance of the <see cref="GraphicSetting" /> class
         /// </summary>
         public GraphicSetting() => Window = new Window();
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="GraphicSetting" /> class
         /// </summary>
         /// <param name="window">The window</param>
         [JsonConstructor]
         public GraphicSetting(Window window) => Window = window;
-
+        
         /// <summary>
         ///     Gets or sets the value of the window
         /// </summary>
         [JsonPropertyName("_Window_")]
         public Window Window { get; set; }
-
+        
         /// <summary>
         ///     The targetframes
         /// </summary>
         [JsonPropertyName("_TargetFrames_")]
         public double TargetFrames { get; set; } = 60;
-
+        
         /// <summary>
         ///     Gets or sets the value of the target
         /// </summary>
         [JsonPropertyName("_Target_")]
         public string Target { get; set; } = "OpenGL";
-
+        
         /// <summary>
         ///     Builders this instance
         /// </summary>

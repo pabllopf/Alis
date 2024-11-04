@@ -45,10 +45,10 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration.General
         public void GeneralSettingBuilder_DefaultConstructor_ValidInput()
         {
             GeneralSettingBuilder generalSettingBuilder = new GeneralSettingBuilder();
-
+            
             Assert.NotNull(generalSettingBuilder);
         }
-
+        
         /// <summary>
         ///     Tests that build valid input
         /// </summary>
@@ -56,12 +56,12 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration.General
         public void Build_ValidInput()
         {
             GeneralSettingBuilder generalSettingBuilder = new GeneralSettingBuilder();
-
+            
             GeneralSetting generalSetting = generalSettingBuilder.Build();
-
+            
             Assert.NotNull(generalSetting);
         }
-
+        
         /// <summary>
         ///     Tests that author valid input
         /// </summary>
@@ -69,12 +69,12 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration.General
         public void Author_ValidInput()
         {
             GeneralSettingBuilder generalSettingBuilder = new GeneralSettingBuilder();
-
+            
             generalSettingBuilder.Author("Test Author");
-
+            
             Assert.Equal("Test Author", generalSettingBuilder.Build().Author);
         }
-
+        
         /// <summary>
         ///     Tests that debug valid input
         /// </summary>
@@ -82,12 +82,12 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration.General
         public void Debug_ValidInput()
         {
             GeneralSettingBuilder generalSettingBuilder = new GeneralSettingBuilder();
-
+            
             generalSettingBuilder.Debug(true);
-
+            
             Assert.True(generalSettingBuilder.Build().Debug);
         }
-
+        
         /// <summary>
         ///     Tests that description valid input
         /// </summary>
@@ -95,12 +95,12 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration.General
         public void Description_ValidInput()
         {
             GeneralSettingBuilder generalSettingBuilder = new GeneralSettingBuilder();
-
+            
             generalSettingBuilder.Description("Test Description");
-
+            
             Assert.Equal("Test Description", generalSettingBuilder.Build().Description);
         }
-
+        
         /// <summary>
         ///     Tests that license valid input
         /// </summary>
@@ -108,12 +108,12 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration.General
         public void License_ValidInput()
         {
             GeneralSettingBuilder generalSettingBuilder = new GeneralSettingBuilder();
-
+            
             generalSettingBuilder.License("Test License");
-
+            
             Assert.Equal("Test License", generalSettingBuilder.Build().License);
         }
-
+        
         /// <summary>
         ///     Tests that name valid input
         /// </summary>
@@ -121,12 +121,12 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration.General
         public void Name_ValidInput()
         {
             GeneralSettingBuilder generalSettingBuilder = new GeneralSettingBuilder();
-
+            
             generalSettingBuilder.Name("Test Name");
-
+            
             Assert.Equal("Test Name", generalSettingBuilder.Build().Name);
         }
-
+        
         /// <summary>
         ///     Tests that version valid input
         /// </summary>
@@ -134,9 +134,9 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration.General
         public void Version_ValidInput()
         {
             GeneralSettingBuilder generalSettingBuilder = new GeneralSettingBuilder();
-
+            
             generalSettingBuilder.Version("Test Version");
-
+            
             Assert.Equal("Test Version", generalSettingBuilder.Build().Version);
         }
     }

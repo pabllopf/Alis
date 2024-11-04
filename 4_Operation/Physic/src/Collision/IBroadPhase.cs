@@ -39,7 +39,7 @@ namespace Alis.Core.Physic.Collision
     public interface IBroadPhase : IBroadPhase<FixtureProxy>
     {
     }
-
+    
     /// <summary>
     ///     The broad phase interface
     /// </summary>
@@ -50,13 +50,13 @@ namespace Alis.Core.Physic.Collision
         ///     Gets the value of the proxy count
         /// </summary>
         int ProxyCount { get; }
-
+        
         /// <summary>
         ///     Updates the pairs using the specified callback
         /// </summary>
         /// <param name="callback">The callback</param>
         void UpdatePairs(BroadphaseDelegate callback);
-
+        
         /// <summary>
         ///     Describes whether this instance test overlap
         /// </summary>
@@ -64,20 +64,20 @@ namespace Alis.Core.Physic.Collision
         /// <param name="proxyIdB">The proxy id</param>
         /// <returns>The bool</returns>
         bool TestOverlap(int proxyIdA, int proxyIdB);
-
+        
         /// <summary>
         ///     Adds the proxy using the specified aabb
         /// </summary>
         /// <param name="aabb">The aabb</param>
         /// <returns>The int</returns>
         int AddProxy(ref AABB aabb);
-
+        
         /// <summary>
         ///     Removes the proxy using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         void RemoveProxy(int proxyId);
-
+        
         /// <summary>
         ///     Moves the proxy using the specified proxy id
         /// </summary>
@@ -85,48 +85,48 @@ namespace Alis.Core.Physic.Collision
         /// <param name="aabb">The aabb</param>
         /// <param name="displacement">The displacement</param>
         void MoveProxy(int proxyId, ref AABB aabb, Vector2 displacement);
-
+        
         /// <summary>
         ///     Sets the proxy using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         /// <param name="proxy">The proxy</param>
         void SetProxy(int proxyId, ref TNode proxy);
-
+        
         /// <summary>
         ///     Gets the proxy using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         /// <returns>The node</returns>
         TNode GetProxy(int proxyId);
-
+        
         /// <summary>
         ///     Touches the proxy using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         void TouchProxy(int proxyId);
-
+        
         /// <summary>
         ///     Gets the fat aabb using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         /// <param name="aabb">The aabb</param>
         void GetFatAABB(int proxyId, out AABB aabb);
-
+        
         /// <summary>
         ///     Queries the callback
         /// </summary>
         /// <param name="callback">The callback</param>
         /// <param name="aabb">The aabb</param>
         void Query(BroadPhaseQueryCallback callback, ref AABB aabb);
-
+        
         /// <summary>
         ///     Rays the cast using the specified callback
         /// </summary>
         /// <param name="callback">The callback</param>
         /// <param name="input">The input</param>
         void RayCast(BroadPhaseRayCastCallback callback, ref RayCastInput input);
-
+        
         /// <summary>
         ///     Shifts the origin using the specified new origin
         /// </summary>

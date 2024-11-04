@@ -44,14 +44,14 @@ namespace Alis.Core.Network.Exceptions
         public EntityTooLargeException()
         {
         }
-
+        
         /// <summary>
         ///     Http header too large to fit in buffer
         /// </summary>
         public EntityTooLargeException(string message) : base(message)
         {
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="EntityTooLargeException" /> class
         /// </summary>

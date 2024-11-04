@@ -41,17 +41,17 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         ///     The left child
         /// </summary>
         protected Node LeftChild;
-
+        
         /// <summary>
         ///     The parent list
         /// </summary>
         public List<Node> ParentList;
-
+        
         /// <summary>
         ///     The right child
         /// </summary>
         protected Node RightChild;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Node" /> class
         /// </summary>
@@ -62,20 +62,20 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             ParentList = new List<Node>();
             LeftChild = left;
             RightChild = right;
-
+            
             if (left != null)
                 left.ParentList.Add(this);
             if (right != null)
                 right.ParentList.Add(this);
         }
-
+        
         /// <summary>
         ///     Locates the s
         /// </summary>
         /// <param name="s">The </param>
         /// <returns>The sink</returns>
         public abstract Sink Locate(Edge s);
-
+        
         // Replace a node in the graph with this node
         // Make sure parent pointers are updated
         /// <summary>
@@ -92,7 +92,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                 else
                     parent.RightChild = this;
             }
-
+            
             ParentList.AddRange(node.ParentList);
         }
     }

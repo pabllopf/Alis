@@ -39,42 +39,42 @@ namespace Alis.Extension.Plugin.Test.Mocks
         ///     Gets or sets the value of the initialize calls
         /// </summary>
         public int InitializeCalls { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the update calls
         /// </summary>
         public int UpdateCalls { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the render calls
         /// </summary>
         public int RenderCalls { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the shutdown calls
         /// </summary>
         public int ShutdownCalls { get; set; }
-
+        
         /// <summary>
         ///     Initializes this instance
         /// </summary>
         public void Initialize() => InitializeCalls++;
-
+        
         /// <summary>
         ///     Updates this instance
         /// </summary>
         public void Update() => UpdateCalls++;
-
+        
         /// <summary>
         ///     Renders this instance
         /// </summary>
         public void Render() => RenderCalls++;
-
+        
         /// <summary>
         ///     Shutdowns this instance
         /// </summary>
         public void Shutdown() => ShutdownCalls++;
-
+        
         /// <summary>
         ///     Disposes this instance
         /// </summary>

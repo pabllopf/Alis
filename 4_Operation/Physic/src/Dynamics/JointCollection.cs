@@ -47,52 +47,52 @@ namespace Alis.Core.Physic.Dynamics
         ///     The joint
         /// </summary>
         internal readonly List<Joint> _list = new List<Joint>(32);
-
+        
         /// <summary>
         ///     The world
         /// </summary>
         private readonly World _world;
-
+        
         /// <summary>
         ///     The generation stamp
         /// </summary>
         internal int _generationStamp = 0;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="JointCollection" /> class
         /// </summary>
         /// <param name="world">The world</param>
         public JointCollection(World world) => _world = world;
-
-
+        
+        
         #region IEnumerable<Joint>
-
+        
         /// <summary>
         ///     Gets the enumerator
         /// </summary>
         /// <returns>An enumerator of joint</returns>
         IEnumerator<Joint> IEnumerable<Joint>.GetEnumerator() => new JointEnumerator(this, _list);
-
+        
         #endregion IEnumerable<Joint>
-
-
+        
+        
         #region IEnumerable
-
+        
         /// <summary>
         ///     Gets the enumerator
         /// </summary>
         /// <returns>The enumerator</returns>
         IEnumerator IEnumerable.GetEnumerator() => new JointEnumerator(this, _list);
-
+        
         #endregion IEnumerable
-
+        
         /// <summary>
         ///     Gets the enumerator
         /// </summary>
         /// <returns>The joint enumerator</returns>
         public JointEnumerator GetEnumerator() => new JointEnumerator(this, _list);
-
-
+        
+        
         /// <summary>
         ///     The joint enumerator
         /// </summary>
@@ -102,22 +102,22 @@ namespace Alis.Core.Physic.Dynamics
             ///     The collection
             /// </summary>
             private JointCollection _collection;
-
+            
             /// <summary>
             ///     The list
             /// </summary>
             private List<Joint> _list;
-
+            
             /// <summary>
             ///     The generation stamp
             /// </summary>
             private readonly int _generationStamp;
-
+            
             /// <summary>
             ///     The
             /// </summary>
             private int i;
-
+            
             /// <summary>
             ///     Initializes a new instance of the <see cref="JointEnumerator" /> class
             /// </summary>
@@ -130,7 +130,7 @@ namespace Alis.Core.Physic.Dynamics
                 _generationStamp = collection._generationStamp;
                 i = -1;
             }
-
+            
             /// <summary>
             ///     Gets the value of the current
             /// </summary>
@@ -143,9 +143,9 @@ namespace Alis.Core.Physic.Dynamics
                     throw new InvalidOperationException("Collection was modified.");
                 }
             }
-
+            
             #region IEnumerator<Joint>
-
+            
             /// <summary>
             ///     Gets the value of the current
             /// </summary>
@@ -158,11 +158,11 @@ namespace Alis.Core.Physic.Dynamics
                     throw new InvalidOperationException("Collection was modified.");
                 }
             }
-
+            
             #endregion IEnumerator<Joint>
-
+            
             #region IEnumerator
-
+            
             /// <summary>
             ///     Describes whether this instance move next
             /// </summary>
@@ -172,11 +172,11 @@ namespace Alis.Core.Physic.Dynamics
             {
                 if (_generationStamp != _collection._generationStamp)
                     throw new InvalidOperationException("Collection was modified.");
-
+                
                 return ++i < _list.Count;
             }
-
-
+            
+            
             /// <summary>
             ///     Gets the value of the current
             /// </summary>
@@ -189,7 +189,7 @@ namespace Alis.Core.Physic.Dynamics
                     throw new InvalidOperationException();
                 }
             }
-
+            
             /// <summary>
             ///     Disposes this instance
             /// </summary>
@@ -199,7 +199,7 @@ namespace Alis.Core.Physic.Dynamics
                 _list = null;
                 i = -1;
             }
-
+            
             /// <summary>
             ///     Resets this instance
             /// </summary>
@@ -207,13 +207,13 @@ namespace Alis.Core.Physic.Dynamics
             {
                 i = -1;
             }
-
+            
             #endregion IEnumerator
         }
-
-
+        
+        
         #region IList<Joint>
-
+        
         /// <summary>
         ///     The not supported exception
         /// </summary>
@@ -222,14 +222,14 @@ namespace Alis.Core.Physic.Dynamics
             get => _list[index];
             set => throw new NotSupportedException();
         }
-
+        
         /// <summary>
         ///     Indexes the of using the specified item
         /// </summary>
         /// <param name="item">The item</param>
         /// <returns>The int</returns>
         public int IndexOf(Joint item) => _list.IndexOf(item);
-
+        
         /// <summary>
         ///     Inserts the index
         /// </summary>
@@ -240,7 +240,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             throw new NotSupportedException();
         }
-
+        
         /// <summary>
         ///     Removes the at using the specified index
         /// </summary>
@@ -250,22 +250,22 @@ namespace Alis.Core.Physic.Dynamics
         {
             throw new NotSupportedException();
         }
-
+        
         #endregion IList<Joint>
-
-
+        
+        
         #region ICollection<Joint>
-
+        
         /// <summary>
         ///     Gets the value of the is read only
         /// </summary>
         public bool IsReadOnly => true;
-
+        
         /// <summary>
         ///     Gets the value of the count
         /// </summary>
         public int Count => _list.Count;
-
+        
         /// <summary>
         ///     Adds the item
         /// </summary>
@@ -275,14 +275,14 @@ namespace Alis.Core.Physic.Dynamics
         {
             throw new NotSupportedException();
         }
-
+        
         /// <summary>
         ///     Describes whether this instance remove
         /// </summary>
         /// <param name="item">The item</param>
         /// <returns>The bool</returns>
         bool ICollection<Joint>.Remove(Joint item) => throw new NotSupportedException();
-
+        
         /// <summary>
         ///     Clears this instance
         /// </summary>
@@ -291,14 +291,14 @@ namespace Alis.Core.Physic.Dynamics
         {
             throw new NotSupportedException();
         }
-
+        
         /// <summary>
         ///     Describes whether this instance contains
         /// </summary>
         /// <param name="item">The item</param>
         /// <returns>The bool</returns>
         public bool Contains(Joint item) => _list.Contains(item);
-
+        
         /// <summary>
         ///     Copies the to using the specified array
         /// </summary>
@@ -308,7 +308,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             _list.CopyTo(array, arrayIndex);
         }
-
+        
         #endregion ICollection<Joint>
     }
 }
