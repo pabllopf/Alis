@@ -28,7 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Concurrent;
 using System.Diagnostics;
+using System.Threading;
+using System.Threading.Tasks;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Collision.Shapes;
@@ -367,7 +370,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 int batchSize = (int) Math.Ceiling((float) _count / Environment.ProcessorCount);
                 int batches = (int) Math.Ceiling((float) _count / batchSize);
                 
-#if NET40 || NET45 || NETSTANDARD2_0_OR_GREATER
+
                 SolveVelocityConstraintsWaitLock.Reset(batches);
                 for (int i = 0; i < batches; i++)
                 {
@@ -379,9 +382,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 // We avoid SolveVelocityConstraintsWaitLock.Wait(); because it spins a few milliseconds before going into sleep. Going into sleep(0) directly in a while loop is faster.
                 while (SolveVelocityConstraintsWaitLock.CurrentCount > 0)
                     Thread.Sleep(0);
-#else
+
                 SolveVelocityConstraints(0, _count);
-#endif
+
             }
             else
             {
@@ -400,7 +403,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             {
                 ContactVelocityConstraint vc = _velocityConstraints[i];
                 
-#if NET40 || NET45 || NETSTANDARD2_0_OR_GREATER
+
                 // find lower order item
                 int orderedIndexA = vc.indexA;
                 int orderedIndexB = vc.indexB;
@@ -421,7 +424,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                     Thread.Sleep(0);
                 }
-#endif
+
                 
                 int indexA = vc.indexA;
                 int indexB = vc.indexB;
@@ -691,10 +694,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 _velocities[indexB].v = vB;
                 _velocities[indexB].w = wB;
                 
-#if NET40 || NET45 || NETSTANDARD2_0_OR_GREATER
+
                 Interlocked.Exchange(ref _locks[orderedIndexB], 0);
                 Interlocked.Exchange(ref _locks[orderedIndexA], 0);
-#endif
+
             }
         }
         
@@ -734,7 +737,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 int batchSize = (int) Math.Ceiling((float) _count / Environment.ProcessorCount);
                 int batches = (int) Math.Ceiling((float) _count / batchSize);
                 
-#if NET40 || NET45 || NETSTANDARD2_0_OR_GREATER
+
                 Parallel.For(0, batches, i =>
                 {
                     int start = i * batchSize;
@@ -742,9 +745,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     bool res = SolvePositionConstraints(start, end);
                     contactsOkay = contactsOkay || res;
                 });
-#else
+
                 contactsOkay = SolvePositionConstraints(0, _count);
-#endif
+
             }
             else
             {
@@ -768,7 +771,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             {
                 ContactPositionConstraint pc = _positionConstraints[i];
                 
-#if NET40 || NET45 || NETSTANDARD2_0_OR_GREATER
+
                 // Find lower order item.
                 int orderedIndexA = pc.indexA;
                 int orderedIndexB = pc.indexB;
@@ -790,7 +793,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                     Thread.Sleep(0);
                 }
-#endif
+
                 
                 
                 int indexA = pc.indexA;
@@ -849,11 +852,11 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 _positions[indexB].c = cB;
                 _positions[indexB].a = aB;
                 
-#if NET40 || NET45 || NETSTANDARD2_0_OR_GREATER
+
                 // Unlock bodies.
                 Interlocked.Exchange(ref _locks[orderedIndexB], 0);
                 Interlocked.Exchange(ref _locks[orderedIndexA], 0);
-#endif
+
             }
             
             // We can't expect minSpeparation >= -b2_linearSlop because we don't
@@ -1104,7 +1107,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             }
         }
         
-#if NET40 || NET45 || NETSTANDARD2_0_OR_GREATER
+
         private readonly CountdownEvent SolveVelocityConstraintsWaitLock = new CountdownEvent(0);
 
         private static void SolveVelocityConstraintsCallback(object state)
@@ -1146,6 +1149,5 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 _queue.Enqueue((SolveVelocityConstraintsState) state);
             }
         }
-#endif
     }
 }

@@ -729,10 +729,6 @@ namespace Alis.Core.Physic.Common
                     }
                 }
             }
-            
-#if LEGACY_ASYNCADDREMOVE
-            world.ProcessChanges();
-#endif
         }
         
         /// <summary>

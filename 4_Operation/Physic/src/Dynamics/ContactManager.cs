@@ -27,7 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Dynamics.Contacts;
 
@@ -98,19 +101,7 @@ namespace Alis.Core.Physic.Dynamics
         public CollisionFilterDelegate ContactFilter;
         
         
-#if USE_ACTIVE_CONTACT_SET
-        /// <summary>
-        /// The set of active contacts.
-        /// </summary>
-        public HashSet<Contact> ActiveContacts = new HashSet<Contact>();
 
-        /// <summary>
-        /// A temporary copy of active contacts that is used during updates so
-        /// the hash set can have members added/removed during the update.
-        /// This list is cleared after every update.
-        /// </summary>
-        List<Contact> ActiveList = new List<Contact>();
-#endif
         
         /// <summary>
         ///     Fires when a contact is deleted
@@ -240,9 +231,7 @@ namespace Alis.Core.Physic.Dynamics
             c.Next.Prev = c;
             ContactCount++;
             
-#if USE_ACTIVE_CONTACT_SET
-            ActiveContacts.Add(c);
-#endif
+
             // Connect to island graph.
             
             // Connect to body A
@@ -350,10 +339,6 @@ namespace Alis.Core.Physic.Dynamics
             if (contact._nodeB.Next != null)
                 contact._nodeB.Next.Prev = contact._nodeB.Prev;
             
-#if USE_ACTIVE_CONTACT_SET
-            if (ActiveContacts.Contains(contact))
-                ActiveContacts.Remove(contact);
-#endif
             contact.Destroy();
             
             // Insert into the pool.
@@ -366,24 +351,17 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         internal void Collide()
         {
-#if NET40 || NET45 || NETSTANDARD2_0_OR_GREATER
+
             if ((ContactCount > CollideMultithreadThreshold) && (Environment.ProcessorCount > 1))
             {
                 CollideMultiCore();
                 return;
             }
-#endif
             
             // Update awake contacts.
-#if USE_ACTIVE_CONTACT_SET
-            ActiveList.AddRange(ActiveContacts);
-            foreach (var tmpc in ActiveList)
-            {
-                Contact c = tmpc;
-#else
+
             for (Contact c = ContactList.Next; c != ContactList;)
             {
-#endif
                 Fixture fixtureA = c.FixtureA;
                 Fixture fixtureB = c.FixtureB;
                 int indexA = c.ChildIndexA;
@@ -442,9 +420,6 @@ namespace Alis.Core.Physic.Dynamics
                 // At least one body must be awake and it must be dynamic or kinematic.
                 if ((activeA == false) && (activeB == false))
                 {
-#if USE_ACTIVE_CONTACT_SET
-                    ActiveContacts.Remove(c);
-#endif
                     c = c.Next;
                     continue;
                 }
@@ -469,9 +444,6 @@ namespace Alis.Core.Physic.Dynamics
                 c = c.Next;
             }
             
-#if USE_ACTIVE_CONTACT_SET
-            ActiveList.Clear();
-#endif
         }
         
         /// <summary>
@@ -479,21 +451,15 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         private readonly List<Contact> updateList = new List<Contact>();
         
-#if NET40 || NET45 || NETSTANDARD2_0_OR_GREATER
+
         internal void CollideMultiCore()
         {
             int lockOrder = 0;
 
             // Update awake contacts.
-#if USE_ACTIVE_CONTACT_SET
-            ActiveList.AddRange(ActiveContacts);
-            foreach (var tmpc in ActiveList)
-            {
-                Contact c = tmpc;
-#else
             for (Contact c = ContactList.Next; c != ContactList;)
             {
-#endif
+
                 Fixture fixtureA = c.FixtureA;
                 Fixture fixtureB = c.FixtureB;
                 int indexA = c.ChildIndexA;
@@ -552,9 +518,6 @@ namespace Alis.Core.Physic.Dynamics
                 // At least one body must be awake and it must be dynamic or kinematic.
                 if ((activeA == false) && (activeB == false))
                 {
-#if USE_ACTIVE_CONTACT_SET
-                    ActiveContacts.Remove(c);
-#endif
                     c = c.Next;
                     continue;
                 }
@@ -582,10 +545,7 @@ namespace Alis.Core.Physic.Dynamics
 
                 c = c.Next;
             }
-
-#if USE_ACTIVE_CONTACT_SET
-            ActiveList.Clear();
-#endif
+            
 
             // update contacts
             Parallel.ForEach(updateList, c =>
@@ -617,9 +577,9 @@ namespace Alis.Core.Physic.Dynamics
                             break;
                         Interlocked.Exchange(ref orderedBodyA._lock, 0);
                     }
-#if NET40 || NET45 || NETSTANDARD2_0_OR_GREATER
+
                     Thread.Sleep(0);
-#endif
+
                 }
 
                 c.Update(this);
@@ -630,7 +590,7 @@ namespace Alis.Core.Physic.Dynamics
 
             updateList.Clear();
         }
-#endif
+
         
         /// <summary>
         ///     Describes whether should collide
@@ -650,30 +610,5 @@ namespace Alis.Core.Physic.Dynamics
             
             return collide;
         }
-        
-#if USE_ACTIVE_CONTACT_SET
-        internal void UpdateActiveContacts(ContactEdge ContactList, bool value)
-        {
-            if (value)
-            {
-                for (var contactEdge = ContactList; contactEdge != null; contactEdge = contactEdge.Next)
-                {
-                    if (!ActiveContacts.Contains(contactEdge.Contact))
-                        ActiveContacts.Add(contactEdge.Contact);
-                }
-            }
-            else
-            {
-                for (var contactEdge = ContactList; contactEdge != null; contactEdge = contactEdge.Next)
-                {
-                    if (!contactEdge.Other.Awake)
-                    {
-                        if (ActiveContacts.Contains(contactEdge.Contact))
-                            ActiveContacts.Remove(contactEdge.Contact);
-                    }
-                }
-            }
-        }
-#endif
     }
 }

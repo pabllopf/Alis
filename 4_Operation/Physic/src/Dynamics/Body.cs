@@ -378,30 +378,12 @@ namespace Alis.Core.Physic.Dynamics
                     {
                         _sleepTime = 0.0f;
                         
-#if USE_ACTIVE_CONTACT_SET
-                        World.ContactManager.UpdateActiveContacts(ContactList, true);
-#endif
-                        
-#if USE_AWAKE_BODY_SET
-                        if (InWorld && !World.AwakeBodySet.Contains(this))
-                            World.AwakeBodySet.Add(this);
-#endif
                     }
                 }
                 else
                 {
-#if USE_AWAKE_BODY_SET
-                    // Check even for BodyType.Static because if this body had just been changed to Static it will have
-                    // set Awake = false in the process.
-                    if (InWorld && World.AwakeBodySet.Contains(this))
-                        World.AwakeBodySet.Remove(this);
-#endif
                     ResetDynamics();
                     _sleepTime = 0.0f;
-                    
-#if USE_ACTIVE_CONTACT_SET
-                    World.ContactManager.UpdateActiveContacts(ContactList, false);
-#endif
                 }
                 
                 _awake = value;

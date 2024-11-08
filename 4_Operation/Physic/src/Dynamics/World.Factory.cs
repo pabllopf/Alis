@@ -57,12 +57,9 @@ namespace Alis.Core.Physic.Dynamics
             body.Rotation = rotation;
             body.BodyType = bodyType;
             
-#if LEGACY_ASYNCADDREMOVE
-            AddAsync(body);
-#else
+
             Add(body);
-#endif
-            
+    
             return body;
         }
         
