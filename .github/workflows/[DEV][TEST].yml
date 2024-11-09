@@ -30,8 +30,7 @@ jobs:
 
       - name: Install dependencies with Homebrew
         run: |
-          brew install sdl2 sdl2_image sdl2_ttf ffmpeg fprobe 
-          brew install ffmpeg --force
+          brew install sdl2 sdl2_image sdl2_ttf ffmpeg
           brew link ffmpeg
 
       - name: Dotnet test Debug
@@ -39,9 +38,9 @@ jobs:
 
       - uses: dorny/test-reporter@v1
         with:
-          name: MacOs 12 x64 Test Report                  # Name of the check run which will be created
-          path: '.test/**/**/*.trx'                     # Path to test results (inside artifact .zip)
-          reporter: dotnet-trx              # Format of test results
+          name: MacOs 12 x64 Test Report
+          path: '.test/**/**/*.trx'
+          reporter: dotnet-trx
   
   windows_2022_x64:
     if: "contains(github.event.head_commit.message, 'test:')"
@@ -54,6 +53,10 @@ jobs:
         with:
           ref: master
           fetch-depth: 0
+
+      - name: Install dependencies with Chocolatey
+        run: |
+          choco install sdl2 sdl2-image sdl2-ttf ffmpeg
 
       - name: clean_bin_sln
         shell: cmd
@@ -80,9 +83,9 @@ jobs:
 
       - uses: dorny/test-reporter@v1
         with:
-          name: Windows 2022 x64 Test Report                  # Name of the check run which will be created
-          path: '.test/**/**/*.trx'                     # Path to test results (inside artifact .zip)
-          reporter: dotnet-trx              # Format of test results
+          name: Windows 2022 x64 Test Report
+          path: '.test/**/**/*.trx'
+          reporter: dotnet-trx
   
   ubuntu_22_04_x64:
     if: "contains(github.event.head_commit.message, 'test:')"
@@ -95,6 +98,11 @@ jobs:
         with:
           ref: master
           fetch-depth: 0
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev ffmpeg
 
       - name: setup
         uses: actions/setup-dotnet@v4
@@ -112,6 +120,6 @@ jobs:
 
       - uses: dorny/test-reporter@v1
         with:
-          name: Ubuntu 22_04 x64 Test Report                 # Name of the check run which will be created
-          path: '.test/**/**/*.trx'                     # Path to test results (inside artifact .zip)
-          reporter: dotnet-trx              # Format of test results
+          name: Ubuntu 22_04 x64 Test Report
+          path: '.test/**/**/*.trx'
+          reporter: dotnet-trx
