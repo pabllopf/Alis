@@ -28,6 +28,10 @@ jobs:
             7.0.408
             8.0.202
 
+      - name: Install dependencies with Homebrew
+        run: |
+          brew install sdl2 sdl2_image sdl2_ttf ffmpeg 
+
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
 
