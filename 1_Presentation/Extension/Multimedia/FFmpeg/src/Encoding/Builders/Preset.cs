@@ -37,46 +37,46 @@ namespace Alis.Extension.Multimedia.FFmpeg.Encoding.Builders
         /// <summary>
         ///     The ultra fast preset
         /// </summary>
-        UltraFast,
+        UltraFast = 0,
         
         /// <summary>
         ///     The super fast preset
         /// </summary>
-        SuperFast,
+        SuperFast = 1,
         
         /// <summary>
         ///     The very fast preset
         /// </summary>
-        VeryFast,
+        VeryFast = 2,
         
         /// <summary>
         ///     The faster preset
         /// </summary>
-        Faster,
+        Faster = 3,
         
         /// <summary>
         ///     The fast preset
         /// </summary>
-        Fast,
+        Fast = 4,
         
         /// <summary>
         ///     The medium preset
         /// </summary>
-        Medium,
+        Medium = 5,
         
         /// <summary>
         ///     The slow preset
         /// </summary>
-        Slow,
+        Slow = 6,
         
         /// <summary>
         ///     The slower preset
         /// </summary>
-        Slower,
+        Slower = 7,
         
         /// <summary>
         ///     The very slow preset
         /// </summary>
-        VerySlow
+        VerySlow = 8
     }
 }

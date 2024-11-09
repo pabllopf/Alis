@@ -43,17 +43,17 @@ namespace Alis.Extension.Multimedia.FFmpeg.Encoding.Builders
             /// <summary>
             ///     Favor improved speech intelligibility.
             /// </summary>
-            VoIP,
+            VoIP = 0,
             
             /// <summary>
             ///     Favor faithfulness to the input
             /// </summary>
-            Audio,
+            Audio = 1,
             
             /// <summary>
             ///     Restrict to only the lowest delay modes.
             /// </summary>
-            LowDelay
+            LowDelay = 2
         }
         
         /// <summary>

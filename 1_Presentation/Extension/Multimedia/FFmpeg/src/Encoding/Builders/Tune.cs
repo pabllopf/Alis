@@ -37,36 +37,36 @@ namespace Alis.Extension.Multimedia.FFmpeg.Encoding.Builders
         /// <summary>
         ///     The auto tune
         /// </summary>
-        Auto,
+        Auto = 0,
         
         /// <summary>
         ///     Use for high quality movie content; lowers deblocking
         /// </summary>
-        Film,
+        Film = 1,
         
         /// <summary>
         ///     Good for cartoons; uses higher deblocking and more reference frames
         /// </summary>
-        Animation,
+        Animation = 2,
         
         /// <summary>
         ///     Preserves the grain structure in old, grainy film material
         /// </summary>
-        Grain,
+        Grain = 3,
         
         /// <summary>
         ///     Good for slideshow-like content
         /// </summary>
-        StillImage,
+        StillImage = 4,
         
         /// <summary>
         ///     Allows faster decoding by disabling certain filters
         /// </summary>
-        FastDecode,
+        FastDecode = 5,
         
         /// <summary>
         ///     Good for fast encoding and low-latency streaming
         /// </summary>
-        ZeroLatency
+        ZeroLatency = 6
     }
 }

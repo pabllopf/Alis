@@ -37,36 +37,36 @@ namespace Alis.Extension.Multimedia.FFmpeg.Encoding.Builders
         /// <summary>
         ///     Automatically pick the appropriate profile
         /// </summary>
-        Auto,
+        Auto = 0,
         
         /// <summary>
         ///     Maximum compatibility on older devices. Least demanding.
         /// </summary>
-        Baseline,
+        Baseline = 1,
         
         /// <summary>
         ///     Good compatibility even on older devices
         /// </summary>
-        Main,
+        Main = 2,
         
         /// <summary>
         ///     Supported by most modern devices
         /// </summary>
-        High,
+        High = 3,
         
         /// <summary>
         ///     Support for 10-bit depth
         /// </summary>
-        High10,
+        High10 = 4,
         
         /// <summary>
         ///     Support for 4:2:2 chroma subsampling
         /// </summary>
-        High442,
+        High442 = 5,
         
         /// <summary>
         ///     Support for 4:4:4 chroma subsampling
         /// </summary>
-        High444
+        High444 = 6
     }
 }

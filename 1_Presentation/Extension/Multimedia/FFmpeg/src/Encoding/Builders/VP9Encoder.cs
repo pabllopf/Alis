@@ -43,17 +43,17 @@ namespace Alis.Extension.Multimedia.FFmpeg.Encoding.Builders
             /// <summary>
             ///     Default and recommended for most applications
             /// </summary>
-            Good,
+            Good = 0,
             
             /// <summary>
             ///     Recommended if you have lots of time and want the best compression efficiency.
             /// </summary>
-            Best,
+            Best = 1,
             
             /// <summary>
             ///     Recommended for live/fast encoding.
             /// </summary>
-            RealTime
+            RealTime = 2
         }
         
         /// <summary>
@@ -64,17 +64,17 @@ namespace Alis.Extension.Multimedia.FFmpeg.Encoding.Builders
             /// <summary>
             ///     The default tune
             /// </summary>
-            Default,
+            Default = 0,
             
             /// <summary>
             ///     Screen capture content
             /// </summary>
-            Screen,
+            Screen = 1,
             
             /// <summary>
             ///     Film content; improves grain retention
             /// </summary>
-            Film
+            Film = 2
         }
         
         /// <summary>

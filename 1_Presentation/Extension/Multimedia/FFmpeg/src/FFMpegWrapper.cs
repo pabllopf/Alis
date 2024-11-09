@@ -41,27 +41,6 @@ namespace Alis.Extension.Multimedia.FFmpeg
     public static class FfMpegWrapper
     {
         /// <summary>
-        ///     The media type enum
-        /// </summary>
-        public enum MediaType
-        {
-            /// <summary>
-            ///     The video media type
-            /// </summary>
-            Video,
-            
-            /// <summary>
-            ///     The audio media type
-            /// </summary>
-            Audio,
-            
-            /// <summary>
-            ///     The subtitle media type
-            /// </summary>
-            Subtitle
-        }
-        
-        /// <summary>
         ///     The muxing support enum
         /// </summary>
         public enum MuxingSupport
@@ -69,17 +48,17 @@ namespace Alis.Extension.Multimedia.FFmpeg
             /// <summary>
             ///     The mux demux muxing support
             /// </summary>
-            MuxDemux,
+            MuxDemux = 0,
             
             /// <summary>
             ///     The mux muxing support
             /// </summary>
-            Mux,
+            Mux = 1,
             
             /// <summary>
             ///     The demux muxing support
             /// </summary>
-            Demux
+            Demux = 2
         }
         
         /// <summary>
@@ -90,37 +69,37 @@ namespace Alis.Extension.Multimedia.FFmpeg
             /// <summary>
             ///     Show nothing at all; be silent.
             /// </summary>
-            Quiet,
+            Quiet = 0,
             
             /// <summary>
             ///     Show informative messages during processing. This is in addition to warnings and errors. This is the default value.
             /// </summary>
-            Info,
+            Info = 1,
             
             /// <summary>
             ///     Same as info, except more verbose.
             /// </summary>
-            Verbose,
+            Verbose = 2,
             
             /// <summary>
             ///     Show everything, including debugging information.
             /// </summary>
-            Debug,
+            Debug = 3,
             
             /// <summary>
             ///     Show all warnings and errors. Any message related to possibly incorrect or unexpected events will be shown.
             /// </summary>
-            Warning,
+            Warning = 4,
             
             /// <summary>
             ///     Show all errors, including ones which can be recovered from.
             /// </summary>
-            Error,
+            Error = 5,
             
             /// <summary>
             ///     Only show fatal errors. These are errors after which the process absolutely cannot continue.
             /// </summary>
-            Fatal
+            Fatal = 6
         }
         
         /// <summary>
