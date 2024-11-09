@@ -5022,12 +5022,32 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="wavLength">The wav length</param>
         public static void QueueAudio(int deviceId, byte[] audioData, uint wavLength) => NativeSdl.InternalQueueAudio(deviceId, audioData, wavLength);
         
+        /// <summary>
+        /// Maps the rgb using the specified surface object format
+        /// </summary>
+        /// <param name="surfaceObjectFormat">The surface object format</param>
+        /// <param name="r">The </param>
+        /// <param name="g">The </param>
+        /// <param name="b">The </param>
+        /// <returns>The uint</returns>
         public static uint MapRgb(IntPtr surfaceObjectFormat, int r, int g, int b) => NativeSdl.InternalMapRGB(surfaceObjectFormat, r, g, b);
         
+        /// <summary>
+        /// Unlocks the texture using the specified font texture
+        /// </summary>
+        /// <param name="fontTexture">The font texture</param>
         public static void UnlockTexture(IntPtr fontTexture) => NativeSdl.InternalUnlockTexture(fontTexture);
         
+        /// <summary>
+        /// Locks the surface using the specified surface
+        /// </summary>
+        /// <param name="surface">The surface</param>
         public static void LockSurface(IntPtr surface) => NativeSdl.InternalLockSurface(surface);
         
+        /// <summary>
+        /// Unlocks the surface using the specified surface
+        /// </summary>
+        /// <param name="surface">The surface</param>
         public static void UnlockSurface(IntPtr surface) => NativeSdl.InternalUnlockSurface(surface);
     }
 }

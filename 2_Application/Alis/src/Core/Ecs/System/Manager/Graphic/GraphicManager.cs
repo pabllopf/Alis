@@ -93,6 +93,9 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Cameras = cameras;
         }
         
+        /// <summary>
+        /// Gets or sets the value of the font manager
+        /// </summary>
         public FontManager FontManager { get; set; }
         
         /// <summary>
@@ -273,10 +276,16 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// </summary>
         public override void OnStart() => Sprites = Sprites.OrderBy(o => o.Depth).ToList();
         
+        /// <summary>
+        /// Ons the before draw
+        /// </summary>
         public override void OnBeforeDraw()
         {
         }
         
+        /// <summary>
+        /// Ons the draw
+        /// </summary>
         public override void OnDraw()
         {
             float pixelsPerMeter = PixelsPerMeter;
@@ -328,6 +337,9 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             }
         }
         
+        /// <summary>
+        /// Ons the render present
+        /// </summary>
         public override void OnRenderPresent()
         {
             Sdl.RenderPresent(Renderer);

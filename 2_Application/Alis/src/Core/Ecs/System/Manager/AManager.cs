@@ -165,6 +165,9 @@ namespace Alis.Core.Ecs.System.Manager
         /// </summary>
         public virtual void OnCalculate() => Logger.Trace("Manager calculate.");
         
+        /// <summary>
+        /// Ons the before draw
+        /// </summary>
         public virtual void OnBeforeDraw() => Logger.Trace("Manager before draw.");
         
         /// <summary>
@@ -172,6 +175,9 @@ namespace Alis.Core.Ecs.System.Manager
         /// </summary>
         public virtual void OnDraw() => Logger.Trace("Manager draw.");
         
+        /// <summary>
+        /// Ons the after draw
+        /// </summary>
         public virtual void OnAfterDraw() => Logger.Trace("Manager after draw.");
         
         /// <summary>
@@ -179,6 +185,9 @@ namespace Alis.Core.Ecs.System.Manager
         /// </summary>
         public virtual void OnGui() => Logger.Trace("Manager GUI.");
         
+        /// <summary>
+        /// Ons the render present
+        /// </summary>
         public virtual void OnRenderPresent() => Logger.Trace("Manager render present.");
         
         /// <summary>

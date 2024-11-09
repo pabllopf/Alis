@@ -29,6 +29,9 @@
 
 namespace Alis.Core.Physic.Test.Controllers
 {
+    /// <summary>
+    /// The buoyancy controller test class
+    /// </summary>
     public class BuoyancyControllerTest
     {
         

@@ -48,6 +48,9 @@ namespace Alis.Sample.Flappy.Bird
         /// </summary>
         private AudioSource audioSource;
         
+        /// <summary>
+        /// The font manager
+        /// </summary>
         private FontManager fontManager;
         
         /// <summary>
@@ -92,6 +95,9 @@ namespace Alis.Sample.Flappy.Bird
             fontManager.LoadFont("MONO", 16, AssetManager.Find("mono.bmp"));
         }
         
+        /// <summary>
+        /// Ons the gui
+        /// </summary>
         public override void OnGui()
         {
             fontManager.RenderText("MONO", $"{Counter}", 128, 15, Color.White, 32);

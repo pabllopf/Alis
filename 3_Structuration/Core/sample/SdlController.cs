@@ -79,6 +79,9 @@ namespace Alis.Core.Sample
         /// </summary>
         private static readonly List<GameControllerButton> Buttons = new List<GameControllerButton>((GameControllerButton[]) Enum.GetValues(typeof(GameControllerButton)));
         
+        /// <summary>
+        /// The font manager
+        /// </summary>
         private static FontManager _fontManager;
         
         /// <summary>
@@ -133,6 +136,9 @@ namespace Alis.Core.Sample
         /// </summary>
         private static readonly int frameDuration = 1000 / targetFps;
         
+        /// <summary>
+        /// The renderer
+        /// </summary>
         private static IntPtr _renderer;
         
         /// <summary>

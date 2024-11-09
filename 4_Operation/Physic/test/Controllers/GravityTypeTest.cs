@@ -29,6 +29,9 @@
 
 namespace Alis.Core.Physic.Test.Controllers
 {
+    /// <summary>
+    /// The gravity type test class
+    /// </summary>
     public class GravityTypeTest
     {
         

@@ -29,6 +29,9 @@
 
 namespace Alis.Core.Physic.Test.Collision.Shapes
 {
+    /// <summary>
+    /// The polygon shape test class
+    /// </summary>
     public class PolygonShapeTest
     {
         

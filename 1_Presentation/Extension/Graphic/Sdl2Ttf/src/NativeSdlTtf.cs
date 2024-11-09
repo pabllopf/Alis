@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.Sdl2Ttf
         /// <summary>
         ///     Initializes a new instance of the <see cref="SdlTtf" /> class
         /// </summary>
-        static NativeSdlTtf() => EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_ttf", DllType.Lib, Sdl2Dlls.GlSdlTtfDllBytes, Assembly.GetAssembly(typeof(Sdl2Dlls)));
+        static NativeSdlTtf() => EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_ttf", DllType.Lib, Sdl2TtfDlls.GlSdlTtfDllBytes, Assembly.GetAssembly(typeof(Sdl2TtfDlls)));
         
         
         /// <summary>

@@ -39,18 +39,43 @@ using Alis.Core.Graphic.Sdl2.Structs;
 
 namespace Alis.Core.Graphic.Fonts
 {
+    /// <summary>
+    /// The font manager class
+    /// </summary>
     public class FontManager
     {
+        /// <summary>
+        /// The font
+        /// </summary>
         private readonly Dictionary<string, Font> _fonts = new Dictionary<string, Font>();
+        /// <summary>
+        /// The renderer
+        /// </summary>
         private readonly IntPtr _renderer;
+        /// <summary>
+        /// The renderer flips
+        /// </summary>
         private readonly RendererFlips _rendererFlips;
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FontManager"/> class
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="rendererFlips">The renderer flips</param>
         public FontManager(IntPtr renderer, RendererFlips rendererFlips)
         {
             _renderer = renderer;
             _rendererFlips = rendererFlips;
         }
         
+        /// <summary>
+        /// Loads the font using the specified font name
+        /// </summary>
+        /// <param name="fontName">The font name</param>
+        /// <param name="fontSize">The font size</param>
+        /// <param name="fontColor">The font color</param>
+        /// <param name="backgroundColor">The background color</param>
+        /// <param name="fontPath">The font path</param>
         public void LoadFont(string fontName, int fontSize, Color fontColor, Color backgroundColor, string fontPath)
         {
             IntPtr surface = Sdl.LoadBmp(fontPath);
@@ -118,6 +143,12 @@ namespace Alis.Core.Graphic.Fonts
             _fonts[fontName] = new Font(fontName, fontSize, fontColor, backgroundColor, texture, surface, characterRects);
         }
         
+        /// <summary>
+        /// Loads the font using the specified font name
+        /// </summary>
+        /// <param name="fontName">The font name</param>
+        /// <param name="fontSize">The font size</param>
+        /// <param name="fontPath">The font path</param>
         public void LoadFont(string fontName, int fontSize, string fontPath)
         {
             IntPtr surface = Sdl.LoadBmp(fontPath);
@@ -185,6 +216,13 @@ namespace Alis.Core.Graphic.Fonts
             _fonts[fontName] = new Font(fontName, fontSize, texture, surface, characterRects);
         }
         
+        /// <summary>
+        /// Renders the text using the specified font name
+        /// </summary>
+        /// <param name="fontName">The font name</param>
+        /// <param name="text">The text</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
         public void RenderText(string fontName, string text, int x, int y)
         {
             if (!_fonts.TryGetValue(fontName, out Font font))
@@ -262,6 +300,14 @@ namespace Alis.Core.Graphic.Fonts
             }
         }
         
+        /// <summary>
+        /// Renders the text using the specified font name
+        /// </summary>
+        /// <param name="fontName">The font name</param>
+        /// <param name="text">The text</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="colorFont">The color font</param>
         public void RenderText(string fontName, string text, int x, int y, Color colorFont)
         {
             if (!_fonts.TryGetValue(fontName, out Font font))
@@ -332,6 +378,15 @@ namespace Alis.Core.Graphic.Fonts
         }
         
         
+        /// <summary>
+        /// Renders the text using the specified font name
+        /// </summary>
+        /// <param name="fontName">The font name</param>
+        /// <param name="text">The text</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="colorFont">The color font</param>
+        /// <param name="backgroundColor">The background color</param>
         public void RenderText(string fontName, string text, int x, int y, Color colorFont, Color backgroundColor)
         {
             if (!_fonts.TryGetValue(fontName, out Font font))
@@ -407,6 +462,16 @@ namespace Alis.Core.Graphic.Fonts
             }
         }
         
+        /// <summary>
+        /// Renders the text using the specified font name
+        /// </summary>
+        /// <param name="fontName">The font name</param>
+        /// <param name="text">The text</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="colorFont">The color font</param>
+        /// <param name="backgroundColor">The background color</param>
+        /// <param name="fontSize">The font size</param>
         public void RenderText(string fontName, string text, int x, int y, Color colorFont, Color backgroundColor, int fontSize)
         {
             if (!_fonts.TryGetValue(fontName, out Font font))
@@ -482,6 +547,15 @@ namespace Alis.Core.Graphic.Fonts
             }
         }
         
+        /// <summary>
+        /// Renders the text using the specified font name
+        /// </summary>
+        /// <param name="fontName">The font name</param>
+        /// <param name="text">The text</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="colorFont">The color font</param>
+        /// <param name="fontSize">The font size</param>
         public void RenderText(string fontName, string text, int x, int y, Color colorFont, int fontSize)
         {
             if (!_fonts.TryGetValue(fontName, out Font font))

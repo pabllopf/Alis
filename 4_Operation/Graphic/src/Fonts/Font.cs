@@ -34,8 +34,21 @@ using Alis.Core.Aspect.Math.Shape.Rectangle;
 
 namespace Alis.Core.Graphic.Fonts
 {
+    /// <summary>
+    /// The font class
+    /// </summary>
     public class Font
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Font"/> class
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="size">The size</param>
+        /// <param name="color">The color</param>
+        /// <param name="backgroundColor">The background color</param>
+        /// <param name="texture">The texture</param>
+        /// <param name="surface">The surface</param>
+        /// <param name="characterRects">The character rects</param>
         public Font(string name, int size, Color color, Color backgroundColor, IntPtr texture, IntPtr surface, Dictionary<char, RectangleI> characterRects)
         {
             Name = name;
@@ -47,6 +60,14 @@ namespace Alis.Core.Graphic.Fonts
             CharacterRects = characterRects;
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Font"/> class
+        /// </summary>
+        /// <param name="fontName">The font name</param>
+        /// <param name="fontSize">The font size</param>
+        /// <param name="texture">The texture</param>
+        /// <param name="surface">The surface</param>
+        /// <param name="characterRects">The character rects</param>
         public Font(string fontName, int fontSize, IntPtr texture, IntPtr surface, Dictionary<char, RectangleI> characterRects)
         {
             Name = fontName;
@@ -56,12 +77,33 @@ namespace Alis.Core.Graphic.Fonts
             CharacterRects = characterRects;
         }
         
+        /// <summary>
+        /// Gets or sets the value of the name
+        /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the size
+        /// </summary>
         public int Size { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the color
+        /// </summary>
         public Color Color { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the background color
+        /// </summary>
         public Color BackgroundColor { get; set; }
+        /// <summary>
+        /// Gets the value of the texture
+        /// </summary>
         public IntPtr Texture { get; }
+        /// <summary>
+        /// Gets the value of the surface
+        /// </summary>
         public IntPtr Surface { get; }
+        /// <summary>
+        /// Gets the value of the character rects
+        /// </summary>
         public Dictionary<char, RectangleI> CharacterRects { get; }
     }
 }

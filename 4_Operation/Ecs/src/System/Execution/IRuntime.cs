@@ -99,6 +99,9 @@ namespace Alis.Core.Ecs.System.Execution
         /// </summary>
         public void OnCalculate();
         
+        /// <summary>
+        /// Ons the before draw
+        /// </summary>
         public void OnBeforeDraw();
         
         /// <summary>
@@ -106,6 +109,9 @@ namespace Alis.Core.Ecs.System.Execution
         /// </summary>
         public void OnDraw();
         
+        /// <summary>
+        /// Ons the after draw
+        /// </summary>
         public void OnAfterDraw();
         
         /// <summary>
@@ -113,6 +119,9 @@ namespace Alis.Core.Ecs.System.Execution
         /// </summary>
         public void OnGui();
         
+        /// <summary>
+        /// Ons the render present
+        /// </summary>
         public void OnRenderPresent();
         
         /// <summary>

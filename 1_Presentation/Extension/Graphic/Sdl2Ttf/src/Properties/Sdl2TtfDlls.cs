@@ -36,7 +36,7 @@ namespace Alis.Extension.Graphic.Sdl2Ttf.Properties
     /// <summary>
     ///     The im gui dlls class
     /// </summary>
-    public static class Sdl2Dlls
+    public static class Sdl2TtfDlls
     {
         /// <summary>
         ///     The resource path

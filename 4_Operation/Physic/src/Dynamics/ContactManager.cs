@@ -496,6 +496,10 @@ namespace Alis.Core.Physic.Dynamics
         private readonly List<Contact> updateList = new List<Contact>();
         
 
+        /// <summary>
+        /// Collides the multi core
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         internal void CollideMultiCore()
         {
             int lockOrder = 0;

@@ -145,6 +145,9 @@ namespace Alis.Core.Ecs.Component
         /// </summary>
         public virtual void OnCalculate() => Logger.Trace();
         
+        /// <summary>
+        /// Ons the before draw
+        /// </summary>
         public virtual void OnBeforeDraw() => Logger.Trace();
         
         /// <summary>
@@ -152,6 +155,9 @@ namespace Alis.Core.Ecs.Component
         /// </summary>
         public virtual void OnDraw() => Logger.Trace();
         
+        /// <summary>
+        /// Ons the after draw
+        /// </summary>
         public virtual void OnAfterDraw() => Logger.Trace();
         
         /// <summary>
@@ -159,6 +165,9 @@ namespace Alis.Core.Ecs.Component
         /// </summary>
         public virtual void OnGui() => Logger.Trace();
         
+        /// <summary>
+        /// Ons the render present
+        /// </summary>
         public virtual void OnRenderPresent() => Logger.Trace();
         
         /// <summary>

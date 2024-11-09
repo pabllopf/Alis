@@ -29,6 +29,9 @@
 
 namespace Alis.Core.Physic.Test.Collision.Shapes
 {
+    /// <summary>
+    /// The edge shape test class
+    /// </summary>
     public class EdgeShapeTest
     {
         

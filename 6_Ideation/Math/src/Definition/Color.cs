@@ -95,6 +95,9 @@ namespace Alis.Core.Aspect.Math.Definition
         /// </summary>
         public static Color Black => new Color(0, 0, 0, 255);
         
+        /// <summary>
+        /// Gets the value of the white
+        /// </summary>
         public static Color White => new Color(255, 255, 255, 255);
         
         /// <summary>
@@ -102,6 +105,9 @@ namespace Alis.Core.Aspect.Math.Definition
         /// </summary>
         public static Color Red => new Color(255, 0, 0, 255);
         
+        /// <summary>
+        /// Gets the value of the transparent
+        /// </summary>
         public static Color Transparent => new Color(0, 0, 0, 0);
         
         /// <summary>

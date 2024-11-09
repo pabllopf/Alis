@@ -1124,8 +1124,15 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         }
         
 
+        /// <summary>
+        /// The countdown event
+        /// </summary>
         private readonly CountdownEvent SolveVelocityConstraintsWaitLock = new CountdownEvent(0);
 
+        /// <summary>
+        /// Solves the velocity constraints callback using the specified state
+        /// </summary>
+        /// <param name="state">The state</param>
         private static void SolveVelocityConstraintsCallback(object state)
         {
             SolveVelocityConstraintsState svcState = (SolveVelocityConstraintsState) state;
@@ -1135,19 +1142,44 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             svcState.ContactSolver.SolveVelocityConstraintsWaitLock.Signal();
         }
 
+        /// <summary>
+        /// The solve velocity constraints state class
+        /// </summary>
         private class SolveVelocityConstraintsState
         {
+            /// <summary>
+            /// The solve velocity constraints state
+            /// </summary>
             private static readonly ConcurrentQueue<SolveVelocityConstraintsState> _queue = new ConcurrentQueue<SolveVelocityConstraintsState>(); // pool
 
+            /// <summary>
+            /// The contact solver
+            /// </summary>
             public ContactSolver ContactSolver;
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="SolveVelocityConstraintsState"/> class
+            /// </summary>
             private SolveVelocityConstraintsState()
             {
             }
 
+            /// <summary>
+            /// Gets or sets the value of the start
+            /// </summary>
             public int Start { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the end
+            /// </summary>
             public int End { get; private set; }
 
+            /// <summary>
+            /// Gets the contact solver
+            /// </summary>
+            /// <param name="contactSolver">The contact solver</param>
+            /// <param name="start">The start</param>
+            /// <param name="end">The end</param>
+            /// <returns>The result</returns>
             internal static object Get(ContactSolver contactSolver, int start, int end)
             {
                 if (!_queue.TryDequeue(out SolveVelocityConstraintsState result))
@@ -1162,6 +1194,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 return result;
             }
 
+            /// <summary>
+            /// Returns the state
+            /// </summary>
+            /// <param name="state">The state</param>
             internal static void Return(object state)
             {
                 _queue.Enqueue((SolveVelocityConstraintsState) state);

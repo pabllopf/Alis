@@ -138,6 +138,9 @@ namespace Alis.Core.Ecs.System.Execution
         /// </summary>
         public void OnCalculate() => runtimes.ForEach(x => x.OnCalculate());
         
+        /// <summary>
+        /// Ons the before draw
+        /// </summary>
         public void OnBeforeDraw() => runtimes.ForEach(x => x.OnBeforeDraw());
         
         /// <summary>
@@ -145,8 +148,14 @@ namespace Alis.Core.Ecs.System.Execution
         /// </summary>
         public void OnDraw() => runtimes.ForEach(x => x.OnDraw());
         
+        /// <summary>
+        /// Ons the after draw
+        /// </summary>
         public void OnAfterDraw() => runtimes.ForEach(x => x.OnAfterDraw());
         
+        /// <summary>
+        /// Ons the render present
+        /// </summary>
         public void OnRenderPresent() => runtimes.ForEach(x => x.OnRenderPresent());
         
         /// <summary>
