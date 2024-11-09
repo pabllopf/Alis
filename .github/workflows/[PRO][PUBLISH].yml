@@ -26,6 +26,12 @@ jobs:
             6.0.x
             7.0.x
             8.0.x
+      
+      - name: Install dependencies with Homebrew
+        run: |
+          brew update
+          brew upgrade
+          brew install sdl2 sdl2_image sdl2_ttf ffmpeg 
 
       - name: Define file name to update version
         run: echo "FILENAME=$(echo './Directory.Build.props')" >> $GITHUB_ENV
