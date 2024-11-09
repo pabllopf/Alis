@@ -30,7 +30,9 @@ jobs:
 
       - name: Install dependencies with Homebrew
         run: |
-          brew install sdl2 sdl2_image sdl2_ttf ffmpeg 
+          brew install sdl2 sdl2_image sdl2_ttf ffmpeg fprobe 
+          brew install ffmpeg --force
+          brew link ffmpeg
 
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
