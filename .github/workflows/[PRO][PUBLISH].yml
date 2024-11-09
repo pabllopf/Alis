@@ -29,8 +29,6 @@ jobs:
       
       - name: Install dependencies with Homebrew
         run: |
-          brew update
-          brew upgrade
           brew install sdl2 sdl2_image sdl2_ttf ffmpeg 
 
       - name: Define file name to update version
