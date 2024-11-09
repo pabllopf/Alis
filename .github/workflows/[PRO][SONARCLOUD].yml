@@ -16,7 +16,7 @@ jobs:
         run: |
           brew update
           brew upgrade
-          brew install sdl2 sdl2_image sdl2_ttf ffmpeg ffmpegplay 
+          brew install sdl2 sdl2_image sdl2_ttf ffmpeg 
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
