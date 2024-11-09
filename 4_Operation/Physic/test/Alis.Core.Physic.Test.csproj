@@ -4,4 +4,13 @@
     <PropertyGroup>
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/</OutDir>
     </PropertyGroup>
+    <ItemGroup>
+      <Folder Include="Common\ConvexHull\" />
+      <Folder Include="Common\Decomposition\Seidel\" />
+      <Folder Include="Common\PhysicsLogic\" />
+      <Folder Include="Common\PolygonManipulation\" />
+      <Folder Include="Common\TextureTools\" />
+      <Folder Include="Dynamics\Contacts\" />
+      <Folder Include="Dynamics\Joints\" />
+    </ItemGroup>
 </Project>
