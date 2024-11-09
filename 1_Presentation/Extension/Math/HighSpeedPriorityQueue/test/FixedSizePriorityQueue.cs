@@ -66,8 +66,10 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         public void Enqueue(TItem item, TPriority priority)
         {
             if (_items.Count == MaxSize)
+            {
                 throw new InvalidOperationException("Queue has reached its maximum size.");
-            
+            }
+
             _items.Add((item, priority));
             _items.Sort((x, y) => x.priority.CompareTo(y.priority));
         }
@@ -80,8 +82,10 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         public TItem Dequeue()
         {
             if (_items.Count == 0)
+            {
                 throw new InvalidOperationException("Queue is empty.");
-            
+            }
+
             TItem item = _items[0].item;
             _items.RemoveAt(0);
             return item;

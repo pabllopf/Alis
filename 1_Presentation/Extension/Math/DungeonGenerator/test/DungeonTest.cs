@@ -300,13 +300,24 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
                     if (dungeon.Board[x, y] == BoardSquare.Floor)
                     {
                         if (dungeon.Board[x, y - 1] == BoardSquare.Empty)
+                        {
                             Assert.Equal(BoardSquare.WallDown, dungeon.Board[x, y]);
+                        }
+
                         if (dungeon.Board[x - 1, y] == BoardSquare.Empty)
+                        {
                             Assert.Equal(BoardSquare.WallLeft, dungeon.Board[x, y]);
+                        }
+
                         if (dungeon.Board[x + 1, y] == BoardSquare.Empty)
+                        {
                             Assert.Equal(BoardSquare.WallRight, dungeon.Board[x, y]);
+                        }
+
                         if (dungeon.Board[x, y + 1] == BoardSquare.Empty)
+                        {
                             Assert.Equal(BoardSquare.WallTop, dungeon.Board[x, y]);
+                        }
                     }
                 }
             }

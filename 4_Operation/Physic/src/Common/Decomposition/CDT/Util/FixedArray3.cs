@@ -106,7 +106,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
         {
             for (int i = 0; i < 3; ++i)
                 if (this[i] == value)
+                {
                     return true;
+                }
+
             return false;
         }
         
@@ -119,7 +122,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
         {
             for (int i = 0; i < 3; ++i)
                 if (this[i] == value)
+                {
                     return i;
+                }
+
             return -1;
         }
         
@@ -139,7 +145,9 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
         {
             for (int i = 0; i < 3; ++i)
                 if (this[i] == value)
+                {
                     this[i] = null;
+                }
         }
         
         /// <summary>

@@ -49,8 +49,10 @@ namespace Alis.Core.Physic.Common.ConvexHull
         public static Vertices GetConvexHull(Vertices vertices)
         {
             if (vertices.Count <= 3)
+            {
                 return vertices;
-            
+            }
+
             // Find the right most point on the hull
             int i0 = 0;
             float x0 = vertices[0].X;

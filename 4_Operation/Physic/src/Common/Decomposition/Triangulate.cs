@@ -47,15 +47,19 @@ namespace Alis.Core.Physic.Common.Decomposition
         public static List<Vertices> ConvexPartition(Vertices vertices, TriangulationAlgorithm algorithm, bool discardAndFixInvalid = true, float tolerance = 0.001f, bool skipSanityChecks = false)
         {
             if (vertices.Count <= 3)
+            {
                 return new List<Vertices> {vertices};
-            
+            }
+
             List<Vertices> results;
             
             switch (algorithm)
             {
                 case TriangulationAlgorithm.Earclip:
                     if (skipSanityChecks)
+                    {
                         Debug.Assert(!vertices.IsCounterClockWise(), "The Earclip algorithm expects the polygon to be clockwise.");
+                    }
                     else if (vertices.IsCounterClockWise())
                     {
                         Vertices temp = new Vertices(vertices);
@@ -67,7 +71,9 @@ namespace Alis.Core.Physic.Common.Decomposition
                     break;
                 case TriangulationAlgorithm.Bayazit:
                     if (skipSanityChecks)
+                    {
                         Debug.Assert(vertices.IsCounterClockWise(), "The polygon is not counter clockwise. This is needed for Bayazit to work correctly.");
+                    }
                     else if (!vertices.IsCounterClockWise())
                     {
                         Vertices temp = new Vertices(vertices);
@@ -79,7 +85,9 @@ namespace Alis.Core.Physic.Common.Decomposition
                     break;
                 case TriangulationAlgorithm.Flipcode:
                     if (skipSanityChecks)
+                    {
                         Debug.Assert(vertices.IsCounterClockWise(), "The polygon is not counter clockwise. This is needed for Bayazit to work correctly.");
+                    }
                     else if (!vertices.IsCounterClockWise())
                     {
                         Vertices temp = new Vertices(vertices);
@@ -109,7 +117,9 @@ namespace Alis.Core.Physic.Common.Decomposition
                     Vertices polygon = results[i];
                     
                     if (!ValidatePolygon(polygon))
+                    {
                         results.RemoveAt(i);
+                    }
                 }
             }
             
@@ -126,11 +136,15 @@ namespace Alis.Core.Physic.Common.Decomposition
             PolygonError errorCode = polygon.CheckPolygon();
             
             if (errorCode == PolygonError.InvalidAmountOfVertices || errorCode == PolygonError.AreaTooSmall || errorCode == PolygonError.SideTooSmall || errorCode == PolygonError.NotSimple)
+            {
                 return false;
-            
+            }
+
             if (errorCode == PolygonError.NotCounterClockWise) //NotCounterCloseWise is the last check in CheckPolygon(), thus we don't need to call ValidatePolygon again.
+            {
                 polygon.Reverse();
-            
+            }
+
             if (errorCode == PolygonError.NotConvex)
             {
                 polygon = GiftWrap.GetConvexHull(polygon);

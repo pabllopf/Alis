@@ -366,7 +366,11 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         {
             if ((_count >= _velocityConstraintsMultithreadThreshold) && (Environment.ProcessorCount > 1))
             {
-                if (_count == 0) return;
+                if (_count == 0)
+                {
+                    return;
+                }
+
                 int batchSize = (int) Math.Ceiling((float) _count / Environment.ProcessorCount);
                 int batches = (int) Math.Ceiling((float) _count / batchSize);
                 
@@ -418,7 +422,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     if (Interlocked.CompareExchange(ref _locks[orderedIndexA], 1, 0) == 0)
                     {
                         if (Interlocked.CompareExchange(ref _locks[orderedIndexB], 1, 0) == 0)
+                        {
                             break;
+                        }
+
                         Interlocked.Exchange(ref _locks[orderedIndexA], 0);
                     }
 
@@ -733,7 +740,11 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             
             if ((_count >= _positionConstraintsMultithreadThreshold) && (Environment.ProcessorCount > 1))
             {
-                if (_count == 0) return true;
+                if (_count == 0)
+                {
+                    return true;
+                }
+
                 int batchSize = (int) Math.Ceiling((float) _count / Environment.ProcessorCount);
                 int batches = (int) Math.Ceiling((float) _count / batchSize);
                 
@@ -787,7 +798,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     if (Interlocked.CompareExchange(ref _locks[orderedIndexA], 1, 0) == 0)
                     {
                         if (Interlocked.CompareExchange(ref _locks[orderedIndexB], 1, 0) == 0)
+                        {
                             break;
+                        }
+
                         Interlocked.Exchange(ref _locks[orderedIndexA], 0);
                     }
 
@@ -1067,8 +1081,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                         
                         // Handle zero normalization
                         if (normal != Vector2.Zero)
+                        {
                             normal.Normalize();
-                        
+                        }
+
                         point = 0.5f * (pointA + pointB);
                         separation = Vector2.Dot(pointB - pointA, normal) - pc.radiusA - pc.radiusB;
                     }
@@ -1135,7 +1151,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             internal static object Get(ContactSolver contactSolver, int start, int end)
             {
                 if (!_queue.TryDequeue(out SolveVelocityConstraintsState result))
+                {
                     result = new SolveVelocityConstraintsState();
+                }
 
                 result.ContactSolver = contactSolver;
                 result.Start = start;

@@ -160,9 +160,14 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                 float a = Angle(p);
                 // If the point is almost colinear with it's neighbor, remove it!
                 if (a >= PiSlop || a <= -PiSlop || Math.Abs(a) < float.Epsilon)
+                {
                     Remove(p);
+                }
                 else if (IsConvex(p))
+                {
                     _convexPoints.Add(p);
+                }
+
                 p = p.Next;
             }
             
@@ -194,9 +199,14 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                 // Remove ear, update angles and convex list
                 Remove(ear);
                 if (Valid(a))
+                {
                     _convexPoints.Add(a);
+                }
+
                 if (Valid(c))
+                {
                     _convexPoints.Add(c);
+                }
             }
             
             Debug.Assert(_size <= 3, "Triangulation bug, please report");
@@ -255,7 +265,10 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         private bool IsConvex(Point p)
         {
             if (_positive != Angle(p) >= 0)
+            {
                 return false;
+            }
+
             return true;
         }
     }

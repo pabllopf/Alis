@@ -359,42 +359,54 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     // later call OnSeparation if the contact is disabled for a different reason.
                     OnCollisionEventHandler onFixtureCollisionHandlerA = FixtureA.OnCollision;
                     if (onFixtureCollisionHandlerA != null)
+                    {
                         foreach (OnCollisionEventHandler handler in onFixtureCollisionHandlerA.GetInvocationList())
                             enabledA = handler(FixtureA, FixtureB, this) && enabledA;
-                    
+                    }
+
                     // Reverse the order of the reported fixtures. The first fixture is always the one that the
                     // user subscribed to.
                     OnCollisionEventHandler onFixtureCollisionHandlerB = FixtureB.OnCollision;
                     if (onFixtureCollisionHandlerB != null)
+                    {
                         foreach (OnCollisionEventHandler handler in onFixtureCollisionHandlerB.GetInvocationList())
                             enabledB = handler(FixtureB, FixtureA, this) && enabledB;
-                    
+                    }
+
                     // Report the collision to both bodies:
                     OnCollisionEventHandler onBodyCollisionHandlerA = bodyA.onCollisionEventHandler;
                     if (onBodyCollisionHandlerA != null)
+                    {
                         foreach (OnCollisionEventHandler handler in onBodyCollisionHandlerA.GetInvocationList())
                             enabledA = handler(FixtureA, FixtureB, this) && enabledA;
-                    
+                    }
+
                     // Reverse the order of the reported fixtures. The first fixture is always the one that the
                     // user subscribed to.
                     OnCollisionEventHandler onBodyCollisionHandlerB = bodyB.onCollisionEventHandler;
                     if (onBodyCollisionHandlerB != null)
+                    {
                         foreach (OnCollisionEventHandler handler in onBodyCollisionHandlerB.GetInvocationList())
                             enabledB = handler(FixtureB, FixtureA, this) && enabledB;
-                    
-                    
+                    }
+
+
                     Enabled = enabledA && enabledB;
                     
                     // BeginContact can also return false and disable the contact
                     BeginContactDelegate beginContactHandler = contactManager.BeginContact;
                     if (enabledA && enabledB && (beginContactHandler != null))
+                    {
                         Enabled = beginContactHandler(this);
-                    
+                    }
+
                     // If the user disabled the contact (needed to exclude it in TOI solver) at any point by
                     // any of the callbacks, we need to mark it as not touching and call any separation
                     // callbacks for fixtures that didn't explicitly disable the collision.
                     if (!Enabled)
+                    {
                         IsTouching = false;
+                    }
                 }
             }
             else
@@ -404,37 +416,51 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     //Report the separation to both participants:
                     OnSeparationEventHandler onFixtureSeparationHandlerA = FixtureA.OnSeparation;
                     if (onFixtureSeparationHandlerA != null)
+                    {
                         onFixtureSeparationHandlerA(FixtureA, FixtureB, this);
-                    
+                    }
+
                     //Reverse the order of the reported fixtures. The first fixture is always the one that the
                     //user subscribed to.
                     OnSeparationEventHandler onFixtureSeparationHandlerB = FixtureB.OnSeparation;
                     if (onFixtureSeparationHandlerB != null)
+                    {
                         onFixtureSeparationHandlerB(FixtureB, FixtureA, this);
-                    
+                    }
+
                     //Report the separation to both bodies:
                     OnSeparationEventHandler onBodySeparationHandlerA = bodyA.onSeparationEventHandler;
                     if (onBodySeparationHandlerA != null)
+                    {
                         onBodySeparationHandlerA(FixtureA, FixtureB, this);
-                    
+                    }
+
                     //Reverse the order of the reported fixtures. The first fixture is always the one that the
                     //user subscribed to.
                     OnSeparationEventHandler onBodySeparationHandlerB = bodyB.onSeparationEventHandler;
                     if (onBodySeparationHandlerB != null)
+                    {
                         onBodySeparationHandlerB(FixtureB, FixtureA, this);
-                    
+                    }
+
                     EndContactDelegate endContactHandler = contactManager.EndContact;
                     if (endContactHandler != null)
+                    {
                         endContactHandler(this);
+                    }
                 }
             }
             
             if (sensor)
+            {
                 return;
-            
+            }
+
             PreSolveDelegate preSolveHandler = contactManager.PreSolve;
             if (preSolveHandler != null)
+            {
                 preSolveHandler(this, ref oldManifold);
+            }
         }
         
         /// <summary>
@@ -507,16 +533,24 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             if ((type1 >= type2 || ((type1 == ShapeType.Edge) && (type2 == ShapeType.Polygon))) && !((type2 == ShapeType.Edge) && (type1 == ShapeType.Polygon)))
             {
                 if (c == null)
+                {
                     c = new Contact(fixtureA, indexA, fixtureB, indexB);
+                }
                 else
+                {
                     c.Reset(fixtureA, indexA, fixtureB, indexB);
+                }
             }
             else
             {
                 if (c == null)
+                {
                     c = new Contact(fixtureB, indexB, fixtureA, indexA);
+                }
                 else
+                {
                     c.Reset(fixtureB, indexB, fixtureA, indexA);
+                }
             }
             
             

@@ -61,8 +61,10 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         public override bool IsActiveOn(Body body)
         {
             if (body.ControllerFilter.IsControllerIgnored(ControllerCategory))
+            {
                 return false;
-            
+            }
+
             return base.IsActiveOn(body);
         }
     }

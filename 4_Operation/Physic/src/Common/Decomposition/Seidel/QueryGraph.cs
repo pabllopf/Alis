@@ -92,9 +92,13 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         private void Replace(Sink sink, Node node)
         {
             if (sink.ParentList.Count == 0)
+            {
                 _head = node;
+            }
             else
+            {
                 node.Replace(sink);
+            }
         }
         
         /// <summary>

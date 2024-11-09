@@ -206,8 +206,10 @@ namespace Alis.Core.Physic.Common
             Vector2 temp;
             
             if (ControlPoints.Count < 2)
+            {
                 throw new Exception("You need at least 2 control points to calculate a position.");
-            
+            }
+
             if (Closed)
             {
                 Add(ControlPoints[0]);
@@ -218,18 +220,45 @@ namespace Alis.Core.Physic.Common
                 
                 // use a circular indexing system
                 int p0 = p - 1;
-                if (p0 < 0) p0 = p0 + (ControlPoints.Count - 1);
-                else if (p0 >= ControlPoints.Count - 1) p0 = p0 - (ControlPoints.Count - 1);
+                if (p0 < 0)
+                {
+                    p0 = p0 + (ControlPoints.Count - 1);
+                }
+                else if (p0 >= ControlPoints.Count - 1)
+                {
+                    p0 = p0 - (ControlPoints.Count - 1);
+                }
+
                 int p1 = p;
-                if (p1 < 0) p1 = p1 + (ControlPoints.Count - 1);
-                else if (p1 >= ControlPoints.Count - 1) p1 = p1 - (ControlPoints.Count - 1);
+                if (p1 < 0)
+                {
+                    p1 = p1 + (ControlPoints.Count - 1);
+                }
+                else if (p1 >= ControlPoints.Count - 1)
+                {
+                    p1 = p1 - (ControlPoints.Count - 1);
+                }
+
                 int p2 = p + 1;
-                if (p2 < 0) p2 = p2 + (ControlPoints.Count - 1);
-                else if (p2 >= ControlPoints.Count - 1) p2 = p2 - (ControlPoints.Count - 1);
+                if (p2 < 0)
+                {
+                    p2 = p2 + (ControlPoints.Count - 1);
+                }
+                else if (p2 >= ControlPoints.Count - 1)
+                {
+                    p2 = p2 - (ControlPoints.Count - 1);
+                }
+
                 int p3 = p + 2;
-                if (p3 < 0) p3 = p3 + (ControlPoints.Count - 1);
-                else if (p3 >= ControlPoints.Count - 1) p3 = p3 - (ControlPoints.Count - 1);
-                
+                if (p3 < 0)
+                {
+                    p3 = p3 + (ControlPoints.Count - 1);
+                }
+                else if (p3 >= ControlPoints.Count - 1)
+                {
+                    p3 = p3 - (ControlPoints.Count - 1);
+                }
+
                 // relative time
                 float lt = (time - _deltaT * p) / _deltaT;
                 
@@ -243,18 +272,45 @@ namespace Alis.Core.Physic.Common
                 
                 // 
                 int p0 = p - 1;
-                if (p0 < 0) p0 = 0;
-                else if (p0 >= ControlPoints.Count - 1) p0 = ControlPoints.Count - 1;
+                if (p0 < 0)
+                {
+                    p0 = 0;
+                }
+                else if (p0 >= ControlPoints.Count - 1)
+                {
+                    p0 = ControlPoints.Count - 1;
+                }
+
                 int p1 = p;
-                if (p1 < 0) p1 = 0;
-                else if (p1 >= ControlPoints.Count - 1) p1 = ControlPoints.Count - 1;
+                if (p1 < 0)
+                {
+                    p1 = 0;
+                }
+                else if (p1 >= ControlPoints.Count - 1)
+                {
+                    p1 = ControlPoints.Count - 1;
+                }
+
                 int p2 = p + 1;
-                if (p2 < 0) p2 = 0;
-                else if (p2 >= ControlPoints.Count - 1) p2 = ControlPoints.Count - 1;
+                if (p2 < 0)
+                {
+                    p2 = 0;
+                }
+                else if (p2 >= ControlPoints.Count - 1)
+                {
+                    p2 = ControlPoints.Count - 1;
+                }
+
                 int p3 = p + 2;
-                if (p3 < 0) p3 = 0;
-                else if (p3 >= ControlPoints.Count - 1) p3 = ControlPoints.Count - 1;
-                
+                if (p3 < 0)
+                {
+                    p3 = 0;
+                }
+                else if (p3 >= ControlPoints.Count - 1)
+                {
+                    p3 = ControlPoints.Count - 1;
+                }
+
                 // relative time
                 float lt = (time - _deltaT * p) / _deltaT;
                 
@@ -362,8 +418,10 @@ namespace Alis.Core.Physic.Common
             }
             
             if (Closed)
+            {
                 length += Vector2.Distance(verts[ControlPoints.Count - 1], verts[0]);
-            
+            }
+
             return length;
         }
         
@@ -392,7 +450,9 @@ namespace Alis.Core.Physic.Common
                 t += 0.0001f;
                 
                 if (t >= 1f)
+                {
                     break;
+                }
             }
             
             start = end;
@@ -412,12 +472,16 @@ namespace Alis.Core.Physic.Common
                     t += 0.00001f;
                     
                     if (t >= 1f)
+                    {
                         break;
+                    }
                 }
                 
                 if (t >= 1f)
+                {
                     break;
-                
+                }
+
                 start = end;
             }
             

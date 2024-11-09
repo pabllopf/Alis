@@ -100,8 +100,10 @@ namespace Alis.Core.Physic.Common
         public static void ConvertPathToPolygon(Path path, Body body, float density, int subdivisions)
         {
             if (!path.Closed)
+            {
                 throw new Exception("The path must be closed to convert to a polygon.");
-            
+            }
+
             List<Vector2> verts = path.GetVertices(subdivisions);
             
             List<Vertices> decomposedVerts = Triangulate.ConvexPartition(new Vertices(verts), TriangulationAlgorithm.Bayazit);

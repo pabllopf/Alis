@@ -110,19 +110,25 @@ namespace Alis.Core.Physic.Controllers
             foreach (Body worldBody in World.BodyList)
             {
                 if (!IsActiveOn(worldBody))
+                {
                     continue;
-                
+                }
+
                 foreach (Body controllerBody in Bodies)
                 {
                     if (worldBody == controllerBody || ((worldBody.BodyType == BodyType.Static) && (controllerBody.BodyType == BodyType.Static)) || !controllerBody.Enabled)
+                    {
                         continue;
-                    
+                    }
+
                     Vector2 d = controllerBody.Position - worldBody.Position;
                     float r2 = d.LengthSquared();
                     
                     if (r2 <= SettingEnv.Epsilon || r2 > MaxRadius * MaxRadius || r2 < MinRadius * MinRadius)
+                    {
                         continue;
-                    
+                    }
+
                     switch (GravityType)
                     {
                         case GravityType.DistanceSquared:
@@ -142,8 +148,10 @@ namespace Alis.Core.Physic.Controllers
                     float r2 = d.LengthSquared();
                     
                     if (r2 <= SettingEnv.Epsilon || r2 > MaxRadius * MaxRadius || r2 < MinRadius * MinRadius)
+                    {
                         continue;
-                    
+                    }
+
                     switch (GravityType)
                     {
                         case GravityType.DistanceSquared:

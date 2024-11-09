@@ -223,11 +223,15 @@ namespace Alis.Core.Physic.Dynamics
             set
             {
                 if ((World != null) && World.IsLocked)
+                {
                     throw new InvalidOperationException("The World is locked.");
-                
+                }
+
                 if (_bodyType == value)
+                {
                     return;
-                
+                }
+
                 _bodyType = value;
                 
                 ResetMassData();
@@ -279,11 +283,15 @@ namespace Alis.Core.Physic.Dynamics
                 Debug.Assert(!float.IsNaN(value.X) && !float.IsNaN(value.Y));
                 
                 if (_bodyType == BodyType.Static)
+                {
                     return;
-                
+                }
+
                 if (Vector2.Dot(value, value) > 0.0f)
+                {
                     Awake = true;
-                
+                }
+
                 _linearVelocity = value;
             }
             get => _linearVelocity;
@@ -300,11 +308,15 @@ namespace Alis.Core.Physic.Dynamics
                 Debug.Assert(!float.IsNaN(value));
                 
                 if (_bodyType == BodyType.Static)
+                {
                     return;
-                
+                }
+
                 if (value * value > 0.0f)
+                {
                     Awake = true;
-                
+                }
+
                 _angularVelocity = value;
             }
             get => _angularVelocity;
@@ -356,8 +368,10 @@ namespace Alis.Core.Physic.Dynamics
             set
             {
                 if (!value)
+                {
                     Awake = true;
-                
+                }
+
                 _sleepingAllowed = value;
             }
             get => _sleepingAllowed;
@@ -415,18 +429,24 @@ namespace Alis.Core.Physic.Dynamics
             set
             {
                 if ((World != null) && World.IsLocked)
+                {
                     throw new InvalidOperationException("The World is locked.");
-                
+                }
+
                 if (value == _enabled)
+                {
                     return;
-                
+                }
+
                 _enabled = value;
                 
                 if (Enabled)
                 {
                     if (World != null)
+                    {
                         CreateProxies();
-                    
+                    }
+
                     // Contacts are created the next time step.
                 }
                 else
@@ -451,8 +471,10 @@ namespace Alis.Core.Physic.Dynamics
             set
             {
                 if (_fixedRotation == value)
+                {
                     return;
-                
+                }
+
                 _fixedRotation = value;
                 
                 _angularVelocity = 0f;
@@ -487,9 +509,13 @@ namespace Alis.Core.Physic.Dynamics
                 Debug.Assert(!float.IsNaN(value.X) && !float.IsNaN(value.Y));
                 
                 if (World == null)
+                {
                     _xf.p = value;
+                }
                 else
+                {
                     SetTransform(ref value, Rotation);
+                }
             }
         }
         
@@ -505,9 +531,13 @@ namespace Alis.Core.Physic.Dynamics
                 Debug.Assert(!float.IsNaN(value));
                 
                 if (World == null)
+                {
                     _sweep.A = value;
+                }
                 else
+                {
                     SetTransform(ref _xf.p, value);
+                }
             }
         }
         
@@ -535,11 +565,15 @@ namespace Alis.Core.Physic.Dynamics
             set
             {
                 if ((World != null) && World.IsLocked)
+                {
                     throw new InvalidOperationException("The World is locked.");
-                
+                }
+
                 if (_bodyType != BodyType.Dynamic)
+                {
                     return;
-                
+                }
+
                 // Move center of mass.
                 Vector2 oldCenter = _sweep.C;
                 _sweep.LocalCenter = value;
@@ -563,18 +597,24 @@ namespace Alis.Core.Physic.Dynamics
             set
             {
                 if ((World != null) && World.IsLocked)
+                {
                     throw new InvalidOperationException("The World is locked.");
-                
+                }
+
                 Debug.Assert(!float.IsNaN(value));
                 
                 if (_bodyType != BodyType.Dynamic) //Make an assert
+                {
                     return;
-                
+                }
+
                 _mass = value;
                 
                 if (_mass <= 0.0f)
+                {
                     _mass = 1.0f;
-                
+                }
+
                 _invMass = 1.0f / _mass;
             }
         }
@@ -591,13 +631,17 @@ namespace Alis.Core.Physic.Dynamics
             set
             {
                 if ((World != null) && World.IsLocked)
+                {
                     throw new InvalidOperationException("The World is locked.");
-                
+                }
+
                 Debug.Assert(!float.IsNaN(value));
                 
                 if (_bodyType != BodyType.Dynamic) //Make an assert
+                {
                     return;
-                
+                }
+
                 if ((value > 0.0f) && !_fixedRotation) //Make an assert
                 {
                     _inertia = value - Mass * Vector2.Dot(LocalCenter, LocalCenter);
@@ -668,13 +712,22 @@ namespace Alis.Core.Physic.Dynamics
         public void Add(Fixture fixture)
         {
             if ((World != null) && World.IsLocked)
+            {
                 throw new InvalidOperationException("The World is locked.");
+            }
+
             if (fixture == null)
+            {
                 throw new ArgumentNullException("fixture");
+            }
+
             if (fixture.Body != null)
             {
                 if (fixture.Body == this)
+                {
                     throw new ArgumentException("You are adding the same fixture more than once.", "fixture");
+                }
+
                 throw new ArgumentException("fixture belongs to another body.", "fixture");
             }
             
@@ -683,13 +736,17 @@ namespace Alis.Core.Physic.Dynamics
             FixtureList._generationStamp++;
 #if DEBUG
             if (fixture.Shape.ShapeType == ShapeType.Polygon)
+            {
                 ((PolygonShape) fixture.Shape).Vertices.AttachedToBody = true;
+            }
 #endif
             
             // Adjust mass properties if needed.
             if (fixture.Shape._density > 0.0f)
+            {
                 ResetMassData();
-            
+            }
+
             if (World != null)
             {
                 if (Enabled)
@@ -704,7 +761,9 @@ namespace Alis.Core.Physic.Dynamics
                 
                 FixtureDelegate fixtureAddedHandler = World.FixtureAdded;
                 if (fixtureAddedHandler != null)
+                {
                     fixtureAddedHandler(World, this, fixture);
+                }
             }
         }
         
@@ -721,12 +780,20 @@ namespace Alis.Core.Physic.Dynamics
         public virtual void Remove(Fixture fixture)
         {
             if ((World != null) && World.IsLocked)
+            {
                 throw new InvalidOperationException("The World is locked.");
+            }
+
             if (fixture == null)
+            {
                 throw new ArgumentNullException("fixture");
+            }
+
             if (fixture.Body != this)
+            {
                 throw new ArgumentException("You are removing a fixture that does not belong to this Body.", "fixture");
-            
+            }
+
             // Destroy any contacts associated with the fixture.
             ContactEdge edge = ContactList;
             while (edge != null)
@@ -756,13 +823,17 @@ namespace Alis.Core.Physic.Dynamics
             FixtureList._generationStamp++;
 #if DEBUG
             if (fixture.Shape.ShapeType == ShapeType.Polygon)
+            {
                 ((PolygonShape) fixture.Shape).Vertices.AttachedToBody = false;
+            }
 #endif
             
             FixtureDelegate fixtureRemovedHandler = World.FixtureRemoved;
             if (fixtureRemovedHandler != null)
+            {
                 fixtureRemovedHandler(World, this, fixture);
-            
+            }
+
             ResetMassData();
         }
         
@@ -807,8 +878,10 @@ namespace Alis.Core.Physic.Dynamics
         {
             Debug.Assert(World != null);
             if (World.IsLocked)
+            {
                 throw new InvalidOperationException("The World is locked.");
-            
+            }
+
             _xf.q.Phase = angle;
             _xf.p = position;
             
@@ -885,8 +958,10 @@ namespace Alis.Core.Physic.Dynamics
             if (_bodyType == BodyType.Dynamic)
             {
                 if (Awake == false)
+                {
                     Awake = true;
-                
+                }
+
                 _force += force;
                 _torque += (point.X - _sweep.C.X) * force.Y - (point.Y - _sweep.C.Y) * force.X;
             }
@@ -905,8 +980,10 @@ namespace Alis.Core.Physic.Dynamics
             if (_bodyType == BodyType.Dynamic)
             {
                 if (Awake == false)
+                {
                     Awake = true;
-                
+                }
+
                 _torque += torque;
             }
         }
@@ -965,11 +1042,15 @@ namespace Alis.Core.Physic.Dynamics
         public void ApplyLinearImpulse(ref Vector2 impulse, ref Vector2 point)
         {
             if (_bodyType != BodyType.Dynamic)
+            {
                 return;
-            
+            }
+
             if (Awake == false)
+            {
                 Awake = true;
-            
+            }
+
             _linearVelocity += _invMass * impulse;
             _angularVelocity += _invI * ((point.X - _sweep.C.X) * impulse.Y - (point.Y - _sweep.C.Y) * impulse.X);
         }

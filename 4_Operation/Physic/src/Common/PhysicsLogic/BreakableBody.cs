@@ -43,27 +43,6 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
     public class BreakableBody
     {
         /// <summary>
-        ///     The breakable body state enum
-        /// </summary>
-        public enum BreakableBodyState
-        {
-            /// <summary>
-            ///     The unbroken breakable body state
-            /// </summary>
-            Unbroken,
-            
-            /// <summary>
-            ///     The should break breakable body state
-            /// </summary>
-            ShouldBreak,
-            
-            /// <summary>
-            ///     The broken breakable body state
-            /// </summary>
-            Broken
-        }
-        
-        /// <summary>
         ///     The angular velocities cache
         /// </summary>
         private float[] _angularVelocitiesCache = new float[8];
@@ -244,8 +223,10 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         private void Decompose()
         {
             if (State == BreakableBodyState.Broken)
+            {
                 throw new InvalidOperationException("BreakableBody is allready broken");
-            
+            }
+
             //Unsubsribe from the PostSolve delegate
             World.ContactManager.PostSolve -= PostSolve;
             

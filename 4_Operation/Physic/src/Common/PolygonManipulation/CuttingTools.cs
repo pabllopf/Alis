@@ -67,10 +67,14 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             foreach (Vector2 vertex in shape.Vertices)
             {
                 if (vertex.Equals(localEntryPoint))
+                {
                     localEntryPoint -= new Vector2(0, SettingEnv.Epsilon);
-                
+                }
+
                 if (vertex.Equals(localExitPoint))
+                {
                     localExitPoint += new Vector2(0, SettingEnv.Epsilon);
+                }
             }
             
             Vertices vertices = new Vertices(shape.Vertices);
@@ -88,10 +92,14 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 int n;
                 //Find out if this vertex is on the old or new shape.
                 if (Vector2.Dot(MathUtils.Cross(localExitPoint - localEntryPoint, 1), vertices[i] - localEntryPoint) > SettingEnv.Epsilon)
+                {
                     n = 0;
+                }
                 else
+                {
                     n = 1;
-                
+                }
+
                 if (last != n)
                 {
                     //If we switch from one shape to the other add the cut vertices.
@@ -146,8 +154,10 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 offset.Normalize();
                 
                 if (!offset.IsValid())
+                {
                     offset = Vector2.One;
-                
+                }
+
                 newPolygon[n][cutAdded[n]] += SettingEnv.Epsilon * offset;
                 
                 if (cutAdded[n] < newPolygon[n].Count - 2)
@@ -162,8 +172,10 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 offset.Normalize();
                 
                 if (!offset.IsValid())
+                {
                     offset = Vector2.One;
-                
+                }
+
                 newPolygon[n][cutAdded[n] + 1] += SettingEnv.Epsilon * offset;
             }
             
@@ -187,8 +199,10 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             
             //We don't support cutting when the start or end is inside a shape.
             if (world.TestPoint(start) != null || world.TestPoint(end) != null)
+            {
                 return false;
-            
+            }
+
             //Get the entry points
             world.RayCast((f, p, n, fr) =>
             {
@@ -206,14 +220,18 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             
             //We only have a single point. We need at least 2
             if (entryPoints.Count + exitPoints.Count < 2)
+            {
                 return false;
-            
+            }
+
             for (int i = 0; i < fixtures.Count; i++)
             {
                 // can't cut circles or edges yet !
                 if (fixtures[i].Shape.ShapeType != ShapeType.Polygon)
+                {
                     continue;
-                
+                }
+
                 if (fixtures[i].Body.BodyType != BodyType.Static)
                 {
                     //Split the shape up into two shapes

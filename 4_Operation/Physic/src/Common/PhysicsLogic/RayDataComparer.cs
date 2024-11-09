@@ -49,9 +49,15 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         {
             float diff = a - b;
             if (diff > 0)
+            {
                 return 1;
+            }
+
             if (diff < 0)
+            {
                 return -1;
+            }
+
             return 0;
         }
         

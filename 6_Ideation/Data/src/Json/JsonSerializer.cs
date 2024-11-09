@@ -2192,8 +2192,11 @@ namespace Alis.Core.Aspect.Data.Json
         internal static ISerializable ReadSerializable(TextReader reader, JsonOptions options, string typeName, Dictionary<string, object> values)
         {
             Type type = GetTypeFromName(reader, typeName, options);
-            if (type == null) return null;
-            
+            if (type == null)
+            {
+                return null;
+            }
+
             return CreateSerializableObject(type, values, options);
         }
         

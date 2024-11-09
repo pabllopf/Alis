@@ -230,13 +230,24 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             foreach (TriangulationPoint p in Points)
             {
                 if (p.X > xmax)
+                {
                     xmax = p.X;
+                }
+
                 if (p.X < xmin)
+                {
                     xmin = p.X;
+                }
+
                 if (p.Y > ymax)
+                {
                     ymax = p.Y;
+                }
+
                 if (p.Y < ymin)
+                {
                     ymin = p.Y;
+                }
             }
             
             double deltaX = ALPHA * (xmax - xmin);

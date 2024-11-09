@@ -99,13 +99,21 @@ namespace Alis.Sample.Snake
         public override void OnPressKey(KeyCodes key)
         {
             if (key == KeyCodes.W && _direction != new Vector2(0, -1))
+            {
                 _direction = new Vector2(0, 1);
+            }
             else if (key == KeyCodes.S && _direction != new Vector2(0, 1))
+            {
                 _direction = new Vector2(0, -1);
+            }
             else if (key == KeyCodes.A && _direction != new Vector2(1, 0))
+            {
                 _direction = new Vector2(-1, 0);
+            }
             else if (key == KeyCodes.D && _direction != new Vector2(-1, 0))
+            {
                 _direction = new Vector2(1, 0);
+            }
         }
         
         /// <summary>

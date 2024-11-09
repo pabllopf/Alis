@@ -138,7 +138,10 @@ namespace Alis.Core.Physic.Dynamics
                 get
                 {
                     if (_generationStamp == _collection._generationStamp)
+                    {
                         return _list[i];
+                    }
+
                     throw new InvalidOperationException("Collection was modified.");
                 }
             }
@@ -153,7 +156,10 @@ namespace Alis.Core.Physic.Dynamics
                 get
                 {
                     if (_generationStamp == _collection._generationStamp)
+                    {
                         return _list[i];
+                    }
+
                     throw new InvalidOperationException("Collection was modified.");
                 }
             }
@@ -170,8 +176,10 @@ namespace Alis.Core.Physic.Dynamics
             public bool MoveNext()
             {
                 if (_generationStamp != _collection._generationStamp)
+                {
                     throw new InvalidOperationException("Collection was modified.");
-                
+                }
+
                 return ++i < _list.Count;
             }
             
@@ -184,7 +192,10 @@ namespace Alis.Core.Physic.Dynamics
                 get
                 {
                     if (_generationStamp == _collection._generationStamp)
+                    {
                         return _list[i];
+                    }
+
                     throw new InvalidOperationException();
                 }
             }

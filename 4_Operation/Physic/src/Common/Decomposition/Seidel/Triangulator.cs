@@ -215,7 +215,9 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         private void MarkOutside(Trapezoid t)
         {
             if (t.Top == _boundingBox.Top || t.Bottom == _boundingBox.Bottom)
+            {
                 t.TrimNeighbors();
+            }
         }
         
         // Create segments and connect end points; update edge event pointer

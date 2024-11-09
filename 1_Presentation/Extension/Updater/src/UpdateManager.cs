@@ -114,8 +114,11 @@ namespace Alis.Extension.Updater
             try
             {
                 Dictionary<string, object> latestRelease = await GetLatestReleaseAsync();
-                if (latestRelease == null) return false;
-                
+                if (latestRelease == null)
+                {
+                    return false;
+                }
+
                 string platform = GetPlatform();
                 string architecture = RuntimeInformation.OSArchitecture.ToString().ToLower();
                 
@@ -258,9 +261,21 @@ namespace Alis.Extension.Updater
         /// <returns>The string</returns>
         private string GetPlatform()
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) return "win";
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) return "linux";
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) return "osx";
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return "win";
+            }
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                return "linux";
+            }
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                return "osx";
+            }
+
             throw new PlatformNotSupportedException("Platform not supported.");
         }
         
@@ -277,7 +292,11 @@ namespace Alis.Extension.Updater
             foreach (Dictionary<string, object> asset in assets)
             {
                 string assetName = asset["name"]?.ToString();
-                if (assetName == null) continue;
+                if (assetName == null)
+                {
+                    continue;
+                }
+
                 if (assetName.Contains(platform) && assetName.Contains(architecture))
                 {
                     return asset;

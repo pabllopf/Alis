@@ -95,14 +95,22 @@ namespace Alis.Core.Physic.Common.Decomposition
                 // Three consecutive vertices in current polygon, <u,v,w>
                 int u = v;
                 if (nv <= u)
+                {
                     u = 0; // Previous 
+                }
+
                 v = u + 1;
                 if (nv <= v)
+                {
                     v = 0; // New v   
+                }
+
                 int w = v + 1;
                 if (nv <= w)
+                {
                     w = 0; // Next 
-                
+                }
+
                 _tmpA = vertices[polygon[u]];
                 _tmpB = vertices[polygon[v]];
                 _tmpC = vertices[polygon[w]];
@@ -171,17 +179,23 @@ namespace Alis.Core.Physic.Common.Decomposition
         private static bool Snip(Vertices contour, int u, int v, int w, int n, int[] V)
         {
             if (SettingEnv.Epsilon > MathUtils.Area(ref _tmpA, ref _tmpB, ref _tmpC))
+            {
                 return false;
-            
+            }
+
             for (int p = 0; p < n; p++)
             {
                 if (p == u || p == v || p == w)
+                {
                     continue;
-                
+                }
+
                 Vector2 point = contour[V[p]];
                 
                 if (InsideTriangle(ref _tmpA, ref _tmpB, ref _tmpC, ref point))
+                {
                     return false;
+                }
             }
             
             return true;

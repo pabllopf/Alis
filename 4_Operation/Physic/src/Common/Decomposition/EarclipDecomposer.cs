@@ -81,8 +81,10 @@ namespace Alis.Core.Physic.Common.Decomposition
         {
             //FPE note: Check is needed as invalid triangles can be returned in recursive calls.
             if (vertices.Count < 3)
+            {
                 return new List<Vertices>();
-            
+            }
+
             List<Vertices> results = new List<Vertices>();
             
             //Recurse and split on pinch points
@@ -177,7 +179,11 @@ namespace Alis.Core.Physic.Common.Decomposition
                 int currDest = 0;
                 for (int i = 0; i < vNum; ++i)
                 {
-                    if (currDest == earIndex) ++currDest;
+                    if (currDest == earIndex)
+                    {
+                        ++currDest;
+                    }
+
                     newx[i] = xrem[currDest];
                     newy[i] = yrem[currDest];
                     ++currDest;
@@ -226,8 +232,10 @@ namespace Alis.Core.Physic.Common.Decomposition
             poutB = new Vertices();
             
             if (pin.Count < 3)
+            {
                 return false;
-            
+            }
+
             bool hasPinchPoint = false;
             int pinchIndexA = -1;
             int pinchIndexB = -1;
@@ -246,13 +254,20 @@ namespace Alis.Core.Physic.Common.Decomposition
                     }
                 }
                 
-                if (hasPinchPoint) break;
+                if (hasPinchPoint)
+                {
+                    break;
+                }
             }
             
             if (hasPinchPoint)
             {
                 int sizeA = pinchIndexB - pinchIndexA;
-                if (sizeA == pin.Count) return false; //has dupe points at wraparound, not a problem here
+                if (sizeA == pin.Count)
+                {
+                    return false; //has dupe points at wraparound, not a problem here
+                }
+
                 for (int i = 0; i < sizeA; ++i)
                 {
                     int ind = Remainder(pinchIndexA + i, pin.Count); // is this right
@@ -337,16 +352,23 @@ namespace Alis.Core.Physic.Common.Decomposition
             float cross = dx0 * dy1 - dx1 * dy0;
             
             if (cross > 0)
+            {
                 return false;
-            
+            }
+
             Triangle myTri = new Triangle(xv[i], yv[i], xv[upper], yv[upper], xv[lower], yv[lower]);
             
             for (int j = 0; j < xvLength; ++j)
             {
                 if (j == i || j == lower || j == upper)
+                {
                     continue;
+                }
+
                 if (myTri.IsInside(xv[j], yv[j]))
+                {
                     return false;
+                }
             }
             
             return true;
@@ -397,11 +419,26 @@ namespace Alis.Core.Physic.Common.Decomposition
                 Vector2 b = this[1];
                 Vector2 c = this[2];
                 
-                if ((x < a.X) && (x < b.X) && (x < c.X)) return false;
-                if ((x > a.X) && (x > b.X) && (x > c.X)) return false;
-                if ((y < a.Y) && (y < b.Y) && (y < c.Y)) return false;
-                if ((y > a.Y) && (y > b.Y) && (y > c.Y)) return false;
-                
+                if ((x < a.X) && (x < b.X) && (x < c.X))
+                {
+                    return false;
+                }
+
+                if ((x > a.X) && (x > b.X) && (x > c.X))
+                {
+                    return false;
+                }
+
+                if ((y < a.Y) && (y < b.Y) && (y < c.Y))
+                {
+                    return false;
+                }
+
+                if ((y > a.Y) && (y > b.Y) && (y > c.Y))
+                {
+                    return false;
+                }
+
                 float vx2 = x - a.X;
                 float vy2 = y - a.Y;
                 float vx1 = b.X - a.X;

@@ -288,16 +288,22 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             while (true)
             {
                 int childLeftIndex = 2 * finalQueueIndex;
-                if (childLeftIndex > _numNodes) break; // If leaf node, we're done
-                
+                if (childLeftIndex > _numNodes)
+                {
+                    break; // If leaf node, we're done
+                }
+
                 int childRightIndex = childLeftIndex + 1;
                 T childLeft = _nodes[childLeftIndex];
                 T childRight = childRightIndex <= _numNodes ? _nodes[childRightIndex] : null;
                 
                 int swapIndex = GetSwapIndex(finalQueueIndex, childLeftIndex, childRightIndex, childLeft, childRight);
                 
-                if (swapIndex == finalQueueIndex) break; // If no swap needed, we're done
-                
+                if (swapIndex == finalQueueIndex)
+                {
+                    break; // If no swap needed, we're done
+                }
+
                 Swap(finalQueueIndex, swapIndex);
                 finalQueueIndex = swapIndex; // Update the index for next iteration
             }

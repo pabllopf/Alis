@@ -213,10 +213,14 @@ namespace Alis.Core.Physic.Dynamics
                     
                     // FPE: Only apply gravity if the body wants it.
                     if (b.IgnoreGravity)
+                    {
                         v += h * (b._invMass * b._force);
+                    }
                     else
+                    {
                         v += h * (gravity + b._invMass * b._force);
-                    
+                    }
+
                     w += h * b._invI * b._torque;
                     
                     // Apply damping.
@@ -253,17 +257,23 @@ namespace Alis.Core.Physic.Dynamics
             }
             
             if (SettingEnv.EnableDiagnostics)
+            {
                 _watch.Start();
-            
+            }
+
             for (int i = 0; i < JointCount; ++i)
             {
                 if (_joints[i].Enabled)
+                {
                     _joints[i].InitVelocityConstraints(ref solverData);
+                }
             }
             
             if (SettingEnv.EnableDiagnostics)
+            {
                 _watch.Stop();
-            
+            }
+
             // Solve velocity constraints.
             for (int i = 0; i < step.velocityIterations; ++i)
             {
@@ -272,16 +282,22 @@ namespace Alis.Core.Physic.Dynamics
                     Joint joint = _joints[j];
                     
                     if (!joint.Enabled)
+                    {
                         continue;
-                    
+                    }
+
                     if (SettingEnv.EnableDiagnostics)
+                    {
                         _watch.Start();
-                    
+                    }
+
                     joint.SolveVelocityConstraints(ref solverData);
                     joint.Validate(step.inv_dt);
                     
                     if (SettingEnv.EnableDiagnostics)
+                    {
                         _watch.Stop();
+                    }
                 }
                 
                 _contactSolver.SolveVelocityConstraints();
@@ -336,16 +352,22 @@ namespace Alis.Core.Physic.Dynamics
                     Joint joint = _joints[j];
                     
                     if (!joint.Enabled)
+                    {
                         continue;
-                    
+                    }
+
                     if (SettingEnv.EnableDiagnostics)
+                    {
                         _watch.Start();
-                    
+                    }
+
                     bool jointOkay = joint.SolvePositionConstraints(ref solverData);
                     
                     if (SettingEnv.EnableDiagnostics)
+                    {
                         _watch.Stop();
-                    
+                    }
+
                     jointsOkay = jointsOkay && jointOkay;
                 }
                 
@@ -385,8 +407,10 @@ namespace Alis.Core.Physic.Dynamics
                     Body b = Bodies[i];
                     
                     if (b.BodyType == BodyType.Static)
+                    {
                         continue;
-                    
+                    }
+
                     if (!b.SleepingAllowed || b._angularVelocity * b._angularVelocity > AngTolSqr || Vector2.Dot(b._linearVelocity, b._linearVelocity) > LinTolSqr)
                     {
                         b._sleepTime = 0.0f;
@@ -547,8 +571,10 @@ namespace Alis.Core.Physic.Dynamics
         private void Report(ContactVelocityConstraint[] constraints)
         {
             if (_contactManager == null)
+            {
                 return;
-            
+            }
+
             for (int i = 0; i < ContactCount; ++i)
             {
                 Contact c = _contacts[i];
@@ -557,15 +583,21 @@ namespace Alis.Core.Physic.Dynamics
                 //FPE feature: added after collision
                 AfterCollisionEventHandler afterCollisionHandlerA = c.FixtureA.AfterCollision;
                 if (afterCollisionHandlerA != null)
+                {
                     afterCollisionHandlerA(c.FixtureA, c.FixtureB, c, constraints[i]);
-                
+                }
+
                 AfterCollisionEventHandler afterCollisionHandlerB = c.FixtureB.AfterCollision;
                 if (afterCollisionHandlerB != null)
+                {
                     afterCollisionHandlerB(c.FixtureB, c.FixtureA, c, constraints[i]);
-                
+                }
+
                 PostSolveDelegate postSolveHandler = _contactManager.PostSolve;
                 if (postSolveHandler != null)
+                {
                     postSolveHandler(c, constraints[i]);
+                }
             }
         }
     }

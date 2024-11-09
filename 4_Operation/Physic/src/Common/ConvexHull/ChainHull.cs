@@ -54,8 +54,10 @@ namespace Alis.Core.Physic.Common.ConvexHull
         public static Vertices GetConvexHull(Vertices vertices)
         {
             if (vertices.Count <= 3)
+            {
                 return vertices;
-            
+            }
+
             Vertices pointSet = new Vertices(vertices);
             
             //Sort by X-axis
@@ -73,7 +75,9 @@ namespace Alis.Core.Physic.Common.ConvexHull
             for (i = 1; i < pointSet.Count; i++)
             {
                 if (Math.Abs(pointSet[i].X - xmin) > float.Epsilon)
+                {
                     break;
+                }
             }
             
             // degenerate case: all x-coords == xmin
@@ -83,8 +87,10 @@ namespace Alis.Core.Physic.Common.ConvexHull
                 h[++top] = pointSet[minmin];
                 
                 if (Math.Abs(pointSet[minmax].Y - pointSet[minmin].Y) > float.Epsilon) // a nontrivial segment
+                {
                     h[++top] = pointSet[minmax];
-                
+                }
+
                 h[++top] = pointSet[minmin]; // add polygon endpoint
                 
                 res = new Vertices(top + 1);
@@ -104,7 +110,9 @@ namespace Alis.Core.Physic.Common.ConvexHull
             for (i = pointSet.Count - 2; i >= 0; i--)
             {
                 if (Math.Abs(pointSet[i].X - xmax) > float.Epsilon)
+                {
                     break;
+                }
             }
             
             int maxmin = i + 1;
@@ -116,14 +124,18 @@ namespace Alis.Core.Physic.Common.ConvexHull
             {
                 // the lower line joins P[minmin] with P[maxmin]
                 if ((MathUtils.Area(pointSet[minmin], pointSet[maxmin], pointSet[i]) >= 0) && (i < maxmin))
+                {
                     continue; // ignore P[i] above or on the lower line
-                
+                }
+
                 while (top > 0) // there are at least 2 points on the stack
                 {
                     // test if P[i] is left of the line at the stack top
                     if (MathUtils.Area(h[top - 1], h[top], pointSet[i]) > 0)
+                    {
                         break; // P[i] is a new hull vertex
-                    
+                    }
+
                     top--; // pop top point off stack
                 }
                 
@@ -132,21 +144,28 @@ namespace Alis.Core.Physic.Common.ConvexHull
             
             // Next, compute the upper hull on the stack H above the bottom hull
             if (maxmax != maxmin) // if distinct xmax points
+            {
                 h[++top] = pointSet[maxmax]; // push maxmax point onto stack
+            }
+
             int bot = top;
             i = maxmin;
             while (--i >= minmax)
             {
                 // the upper line joins P[maxmax] with P[minmax]
                 if ((MathUtils.Area(pointSet[maxmax], pointSet[minmax], pointSet[i]) >= 0) && (i > minmax))
+                {
                     continue; // ignore P[i] below or on the upper line
-                
+                }
+
                 while (top > bot) // at least 2 points on the upper stack
                 {
                     // test if P[i] is left of the line at the stack top
                     if (MathUtils.Area(h[top - 1], h[top], pointSet[i]) > 0)
+                    {
                         break; // P[i] is a new hull vertex
-                    
+                    }
+
                     top--; // pop top point off stack
                 }
                 
@@ -154,8 +173,10 @@ namespace Alis.Core.Physic.Common.ConvexHull
             }
             
             if (minmax != minmin)
+            {
                 h[++top] = pointSet[minmin]; // push joining endpoint onto stack
-            
+            }
+
             res = new Vertices(top + 1);
             
             for (int j = 0; j < top + 1; j++)

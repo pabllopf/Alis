@@ -92,10 +92,15 @@ namespace Alis.Core.Physic.Common
             int segments)
         {
             if (yRadius > height / 2 || xRadius > width / 2)
+            {
                 throw new Exception("Rounding amount can't be more than half the height and width respectively.");
+            }
+
             if (segments < 0)
+            {
                 throw new Exception("Segments must be zero or more.");
-            
+            }
+
             //We need at least 8 vertices to create a rounded rectangle
             Debug.Assert(SettingEnv.MaxPolygonVertices >= 8);
             
@@ -226,10 +231,12 @@ namespace Alis.Core.Physic.Common
         public static Vertices CreateCapsule(float height, float endRadius, int edges)
         {
             if (endRadius >= height / 2)
+            {
                 throw new ArgumentException(
                     "The radius must be lower than height / 2. Higher values of radius would create a circle, and not a half circle.",
                     "endRadius");
-            
+            }
+
             return CreateCapsule(height, endRadius, edges, endRadius, edges);
         }
         
@@ -247,30 +254,44 @@ namespace Alis.Core.Physic.Common
             int bottomEdges)
         {
             if (height <= 0)
+            {
                 throw new ArgumentException("Height must be longer than 0", "height");
-            
+            }
+
             if (topRadius <= 0)
+            {
                 throw new ArgumentException("The top radius must be more than 0", "topRadius");
-            
+            }
+
             if (topEdges <= 0)
+            {
                 throw new ArgumentException("Top edges must be more than 0", "topEdges");
-            
+            }
+
             if (bottomRadius <= 0)
+            {
                 throw new ArgumentException("The bottom radius must be more than 0", "bottomRadius");
-            
+            }
+
             if (bottomEdges <= 0)
+            {
                 throw new ArgumentException("Bottom edges must be more than 0", "bottomEdges");
-            
+            }
+
             if (topRadius >= height / 2)
+            {
                 throw new ArgumentException(
                     "The top radius must be lower than height / 2. Higher values of top radius would create a circle, and not a half circle.",
                     "topRadius");
-            
+            }
+
             if (bottomRadius >= height / 2)
+            {
                 throw new ArgumentException(
                     "The bottom radius must be lower than height / 2. Higher values of bottom radius would create a circle, and not a half circle.",
                     "bottomRadius");
-            
+            }
+
             Vertices vertices = new Vertices();
             
             float newHeight = (height - topRadius - bottomRadius) * 0.5f;

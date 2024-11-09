@@ -100,8 +100,11 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         public void Render()
         {
-            if (!isOpen) return;
-            
+            if (!isOpen)
+            {
+                return;
+            }
+
             if (ImGui.Begin(NameWindow, ref isOpen, flags))
             {
                 ImGui.Button("Clear");

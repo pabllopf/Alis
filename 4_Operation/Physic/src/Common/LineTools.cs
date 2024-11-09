@@ -50,17 +50,25 @@ namespace Alis.Core.Physic.Common
         public static float DistanceBetweenPointAndLineSegment(ref Vector2 point, ref Vector2 start, ref Vector2 end)
         {
             if (start == end)
+            {
                 return Vector2.Distance(point, start);
-            
+            }
+
             Vector2 v = end - start;
             Vector2 w = point - start;
             
             float c1 = Vector2.Dot(w, v);
-            if (c1 <= 0) return Vector2.Distance(point, start);
-            
+            if (c1 <= 0)
+            {
+                return Vector2.Distance(point, start);
+            }
+
             float c2 = Vector2.Dot(v, v);
-            if (c2 <= c1) return Vector2.Distance(point, end);
-            
+            if (c2 <= c1)
+            {
+                return Vector2.Distance(point, end);
+            }
+
             float b = c1 / c2;
             Vector2 pointOnLine = start + v * b;
             return Vector2.Distance(point, pointOnLine);
@@ -78,8 +86,10 @@ namespace Alis.Core.Physic.Common
             intersectionPoint = Vector2.Zero;
             
             if (a0 == b0 || a0 == b1 || a1 == b0 || a1 == b1)
+            {
                 return false;
-            
+            }
+
             float x1 = a0.X;
             float y1 = a0.Y;
             float x2 = a1.X;
@@ -91,11 +101,15 @@ namespace Alis.Core.Physic.Common
             
             //AABB early exit
             if (Math.Max(x1, x2) < Math.Min(x3, x4) || Math.Max(x3, x4) < Math.Min(x1, x2))
+            {
                 return false;
-            
+            }
+
             if (Math.Max(y1, y2) < Math.Min(y3, y4) || Math.Max(y3, y4) < Math.Min(y1, y2))
+            {
                 return false;
-            
+            }
+
             float ua = (x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3);
             float ub = (x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3);
             float denom = (y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1);

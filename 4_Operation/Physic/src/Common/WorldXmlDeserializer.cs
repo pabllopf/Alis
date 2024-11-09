@@ -84,8 +84,10 @@ namespace Alis.Core.Physic.Common
             XMLFragmentElement root = XMLFragmentParser.LoadFromStream(stream);
             
             if (root.Name.ToLower() != "world")
+            {
                 throw new Exception();
-            
+            }
+
             //Read gravity
             foreach (XMLFragmentElement element in root.Elements)
             {
@@ -104,8 +106,10 @@ namespace Alis.Core.Physic.Common
                     foreach (XMLFragmentElement element in shapeElement.Elements)
                     {
                         if (element.Name.ToLower() != "shape")
+                        {
                             throw new Exception();
-                        
+                        }
+
                         ShapeType type = (ShapeType) Enum.Parse(typeof(ShapeType), element.Attributes[0].Value, true);
                         float density = ParseFloat(element.Attributes[1].Value);
                         
@@ -246,8 +250,10 @@ namespace Alis.Core.Physic.Common
                         Fixture fixture = new Fixture();
                         
                         if (element.Name.ToLower() != "fixture")
+                        {
                             throw new Exception();
-                        
+                        }
+
                         int fixtureId = int.Parse(element.Attributes[0].Value);
                         
                         foreach (XMLFragmentElement sn in element.Elements)
@@ -303,8 +309,10 @@ namespace Alis.Core.Physic.Common
                         Body body = world.CreateBody();
                         
                         if (element.Name.ToLower() != "body")
+                        {
                             throw new Exception();
-                        
+                        }
+
                         body.BodyType = (BodyType) Enum.Parse(typeof(BodyType), element.Attributes[0].Value, true);
                         
                         foreach (XMLFragmentElement sn in element.Elements)
@@ -384,8 +392,10 @@ namespace Alis.Core.Physic.Common
                         Joint joint;
                         
                         if (n.Name.ToLower() != "joint")
+                        {
                             throw new Exception();
-                        
+                        }
+
                         JointType type = (JointType) Enum.Parse(typeof(JointType), n.Attributes[0].Value, true);
                         
                         int bodyAIndex = -1, bodyBIndex = -1;
@@ -752,8 +762,10 @@ namespace Alis.Core.Physic.Common
         private static object ReadSimpleType(XMLFragmentElement node, Type type, bool outer)
         {
             if (type == null)
+            {
                 return ReadSimpleType(node.Elements[1], Type.GetType(node.Elements[0].Value), outer);
-            
+            }
+
             XmlSerializer serializer = new XmlSerializer(type);
             
             using (MemoryStream stream = new MemoryStream())

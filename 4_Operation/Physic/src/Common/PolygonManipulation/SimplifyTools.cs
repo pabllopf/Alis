@@ -49,8 +49,10 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         public static Vertices CollinearSimplify(Vertices vertices, float collinearityTolerance = 0)
         {
             if (vertices.Count <= 3)
+            {
                 return vertices;
-            
+            }
+
             Vertices simplified = new Vertices(vertices.Count);
             
             for (int i = 0; i < vertices.Count; i++)
@@ -61,8 +63,10 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 
                 //If they collinear, continue
                 if (MathUtils.IsCollinear(ref prev, ref current, ref next, collinearityTolerance))
+                {
                     continue;
-                
+                }
+
                 simplified.Add(current);
             }
             
@@ -78,8 +82,10 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         public static Vertices DouglasPeuckerSimplify(Vertices vertices, float distanceTolerance)
         {
             if (vertices.Count <= 3)
+            {
                 return vertices;
-            
+            }
+
             bool[] usePoint = new bool[vertices.Count];
             
             for (int i = 0; i < vertices.Count; i++)
@@ -92,7 +98,9 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             for (int i = 0; i < vertices.Count; i++)
             {
                 if (usePoint[i])
+                {
                     simplified.Add(vertices[i]);
+                }
             }
             
             return simplified;
@@ -109,8 +117,10 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         private static void SimplifySection(Vertices vertices, int i, int j, bool[] usePoint, float distanceTolerance)
         {
             if (i + 1 == j)
+            {
                 return;
-            
+            }
+
             Vector2 a = vertices[i];
             Vector2 b = vertices[j];
             
@@ -153,8 +163,10 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             //From Eric Jordan's convex decomposition library
             
             if (vertices.Count <= 3)
+            {
                 return vertices; //Can't do anything useful here to a triangle
-            
+            }
+
             bool[] mergeMe = new bool[vertices.Count];
             int newNVertices = vertices.Count;
             
@@ -192,12 +204,16 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                     --newNVertices;
                 }
                 else
+                {
                     mergeMe[i] = false;
+                }
             }
             
             if (newNVertices == vertices.Count || newNVertices == 0)
+            {
                 return vertices;
-            
+            }
+
             int currIndex = 0;
             
             //Copy the vertices to a new list and clear the old
@@ -206,8 +222,10 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             for (int i = 0; i < vertices.Count; ++i)
             {
                 if (mergeMe[i] || newNVertices == 0 || currIndex == newNVertices)
+                {
                     continue;
-                
+                }
+
                 Debug.Assert(currIndex < newNVertices);
                 
                 newVertices.Add(vertices[i]);
@@ -241,8 +259,10 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         public static Vertices ReduceByDistance(Vertices vertices, float distance)
         {
             if (vertices.Count <= 3)
+            {
                 return vertices;
-            
+            }
+
             float distance2 = distance * distance;
             
             Vertices simplified = new Vertices(vertices.Count);
@@ -254,8 +274,10 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 
                 //If they are closer than the distance, continue
                 if ((next - current).LengthSquared() <= distance2)
+                {
                     continue;
-                
+                }
+
                 simplified.Add(current);
             }
             
@@ -271,18 +293,24 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         public static Vertices ReduceByNth(Vertices vertices, int nth)
         {
             if (vertices.Count <= 3)
+            {
                 return vertices;
-            
+            }
+
             if (nth == 0)
+            {
                 return vertices;
-            
+            }
+
             Vertices simplified = new Vertices(vertices.Count);
             
             for (int i = 0; i < vertices.Count; i++)
             {
                 if (i % nth == 0)
+                {
                     continue;
-                
+                }
+
                 simplified.Add(vertices[i]);
             }
             
@@ -301,11 +329,15 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             //From physics2d.net
             
             if (vertices.Count <= 3)
+            {
                 return vertices;
-            
+            }
+
             if (areaTolerance < 0)
+            {
                 throw new ArgumentOutOfRangeException("areaTolerance", "must be equal to or greater than zero.");
-            
+            }
+
             Vertices simplified = new Vertices(vertices.Count);
             Vector2 v3;
             Vector2 v1 = vertices[vertices.Count - 2];

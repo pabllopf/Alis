@@ -152,8 +152,10 @@ namespace Alis.Core.Physic.Dynamics
             set
             {
                 if (_collisionGroup == value)
+                {
                     return;
-                
+                }
+
                 _collisionGroup = value;
                 Refilter();
             }
@@ -172,8 +174,10 @@ namespace Alis.Core.Physic.Dynamics
             set
             {
                 if (_collidesWith == value)
+                {
                     return;
-                
+                }
+
                 _collidesWith = value;
                 Refilter();
             }
@@ -190,8 +194,10 @@ namespace Alis.Core.Physic.Dynamics
             set
             {
                 if (_collisionCategories == value)
+                {
                     return;
-                
+                }
+
                 _collisionCategories = value;
                 Refilter();
             }
@@ -213,8 +219,10 @@ namespace Alis.Core.Physic.Dynamics
             set
             {
                 if (Body != null)
+                {
                     Body.Awake = true;
-                
+                }
+
                 _isSensor = value;
             }
         }
@@ -281,8 +289,10 @@ namespace Alis.Core.Physic.Dynamics
             World world = Body.World;
             
             if (world == null)
+            {
                 return;
-            
+            }
+
             // Touch each proxy so that new pairs may be created
             IBroadPhase broadPhase = world.ContactManager.BroadPhase;
             TouchProxies(broadPhase);
@@ -337,8 +347,10 @@ namespace Alis.Core.Physic.Dynamics
         internal void CreateProxies(IBroadPhase broadPhase, ref Transform xf)
         {
             if (ProxyCount != 0)
+            {
                 throw new InvalidOperationException("Proxies allready created for this Fixture.");
-            
+            }
+
             // Create proxies in the broad-phase.
             ProxyCount = Shape.ChildCount;
             

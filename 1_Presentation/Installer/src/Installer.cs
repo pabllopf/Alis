@@ -485,8 +485,11 @@ namespace Alis.App.Installer
                 {
                     // Actualizar el estado de la animación
                     animationState++;
-                    if (animationState > 3) animationState = 0;
-                    
+                    if (animationState > 3)
+                    {
+                        animationState = 0;
+                    }
+
                     // Reiniciar el tiempo de la última actualización
                     lastUpdateTime = clock.ElapsedMilliseconds;
                 }

@@ -88,11 +88,15 @@ namespace Alis.Core.Physic.Collision.Shapes
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj))
+            {
                 return false;
-            
+            }
+
             if (obj.GetType() != typeof(MassData))
+            {
                 return false;
-            
+            }
+
             return Equals((MassData) obj);
         }
         

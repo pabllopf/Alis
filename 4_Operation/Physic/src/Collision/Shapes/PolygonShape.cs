@@ -110,9 +110,13 @@ namespace Alis.Core.Physic.Collision.Shapes
                     //FPE note: This check is required as the GiftWrap algorithm early exits on triangles
                     //So instead of giftwrapping a triangle, we just force it to be clock wise.
                     if (_vertices.Count <= 3)
+                    {
                         _vertices.ForceCounterClockWise();
+                    }
                     else
+                    {
                         _vertices = GiftWrap.GetConvexHull(_vertices);
+                    }
                 }
                 
                 Normals = new Vertices(_vertices.Count);
@@ -178,8 +182,10 @@ namespace Alis.Core.Physic.Collision.Shapes
             
             //FPE optimization: Early exit as polygons with 0 density does not have any properties.
             if (_density <= 0)
+            {
                 return;
-            
+            }
+
             //FPE optimization: Consolidated the calculate centroid and mass code to a single method.
             Vector2 center = Vector2.Zero;
             float area = 0.0f;
@@ -369,11 +375,24 @@ namespace Alis.Core.Physic.Collision.Shapes
                 // OPT: Vector2.Min(ref aabb.LowerBound, ref v, out aabb.LowerBound);
                 // OPT: Vector2.Max(ref aabb.UpperBound, ref v, out aabb.UpperBound);
                 Debug.Assert(aabb.LowerBound.X <= aabb.UpperBound.X);
-                if (vX < aabb.LowerBound.X) aabb.LowerBound.X = vX;
-                else if (vX > aabb.UpperBound.X) aabb.UpperBound.X = vX;
+                if (vX < aabb.LowerBound.X)
+                {
+                    aabb.LowerBound.X = vX;
+                }
+                else if (vX > aabb.UpperBound.X)
+                {
+                    aabb.UpperBound.X = vX;
+                }
+
                 Debug.Assert(aabb.LowerBound.Y <= aabb.UpperBound.Y);
-                if (vY < aabb.LowerBound.Y) aabb.LowerBound.Y = vY;
-                else if (vY > aabb.UpperBound.Y) aabb.UpperBound.Y = vY;
+                if (vY < aabb.LowerBound.Y)
+                {
+                    aabb.LowerBound.Y = vY;
+                }
+                else if (vY > aabb.UpperBound.Y)
+                {
+                    aabb.UpperBound.Y = vY;
+                }
             }
             
             // OPT: Vector2 r = new Vector2(Radius, Radius);
@@ -483,9 +502,14 @@ namespace Alis.Core.Physic.Collision.Shapes
                 i = (i + 1) % Vertices.Count;
                 Vector2 p3;
                 if (i == outoIndex2)
+                {
                     p3 = outoVec;
+                }
                 else
+                {
                     p3 = Vertices[i];
+                }
+
                 //Add the triangle formed by intoVec,p2,p3
                 {
                     Vector2 e1 = p2 - intoVec;
@@ -520,12 +544,16 @@ namespace Alis.Core.Physic.Collision.Shapes
         public bool CompareTo(PolygonShape shape)
         {
             if (Vertices.Count != shape.Vertices.Count)
+            {
                 return false;
-            
+            }
+
             for (int i = 0; i < Vertices.Count; i++)
             {
                 if (Vertices[i] != shape.Vertices[i])
+                {
                     return false;
+                }
             }
             
             return (Math.Abs(Radius - shape.Radius) < SettingEnv.Epsilon) && (MassData == shape.MassData);

@@ -145,9 +145,20 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
             }
             finally
             {
-                if (viewHandle.IsAllocated) viewHandle.Free();
-                if (projectionHandle.IsAllocated) projectionHandle.Free();
-                if (matrixHandle.IsAllocated) matrixHandle.Free();
+                if (viewHandle.IsAllocated)
+                {
+                    viewHandle.Free();
+                }
+
+                if (projectionHandle.IsAllocated)
+                {
+                    projectionHandle.Free();
+                }
+
+                if (matrixHandle.IsAllocated)
+                {
+                    matrixHandle.Free();
+                }
             }
         }
         

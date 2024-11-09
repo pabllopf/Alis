@@ -141,7 +141,11 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             {
                 tcx.RemoveFromList(t1);
                 p1 = t1.PointCCW(p1);
-                if (p1 == first) break;
+                if (p1 == first)
+                {
+                    break;
+                }
+
                 t2 = t1.NeighborCCW(p1);
                 t1.Clear();
                 t1 = t2;
@@ -561,8 +565,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         private static void EdgeEvent(DTSweepContext tcx, TriangulationPoint ep, TriangulationPoint eq, DelaunayTriangle triangle, TriangulationPoint point)
         {
             if (IsEdgeSideOfTriangle(triangle, ep, eq))
+            {
                 return;
-            
+            }
+
             TriangulationPoint p1 = triangle.PointCCW(point);
             Orientation o1 = TriangulationUtil.Orient2d(eq, p1, ep);
             if (o1 == Orientation.Collinear)
@@ -796,8 +802,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             {
                 // if HoleAngle exceeds 90 degrees then break.
                 if (LargeHole_DontFill(node))
+                {
                     break;
-                
+                }
+
                 Fill(tcx, node);
                 node = node.Next;
             }
@@ -808,8 +816,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             {
                 // if HoleAngle exceeds 90 degrees then break.
                 if (LargeHole_DontFill(node))
+                {
                     break;
-                
+                }
+
                 angle = HoleAngle(node);
                 if (angle > PiDiv2 || angle < -PiDiv2)
                 {
@@ -842,19 +852,25 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             AdvancingFrontNode nextNode = node.Next;
             AdvancingFrontNode prevNode = node.Prev;
             if (!AngleExceeds90Degrees(node.Point, nextNode.Point, prevNode.Point))
+            {
                 return false;
-            
+            }
+
             // Check additional points on front.
             AdvancingFrontNode next2Node = nextNode.Next;
             // "..Plus.." because only want angles on same side as point being added.
             if ((next2Node != null) && !AngleExceedsPlus90DegreesOrIsNegative(node.Point, next2Node.Point, prevNode.Point))
+            {
                 return false;
-            
+            }
+
             AdvancingFrontNode prev2Node = prevNode.Prev;
             // "..Plus.." because only want angles on same side as point being added.
             if ((prev2Node != null) && !AngleExceedsPlus90DegreesOrIsNegative(node.Point, nextNode.Point, prev2Node.Point))
+            {
                 return false;
-            
+            }
+
             return true;
         }
         
@@ -1234,10 +1250,26 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             //      the right side.
             t.Neighbors.Clear();
             ot.Neighbors.Clear();
-            if (n1 != null) ot.MarkNeighbor(n1);
-            if (n2 != null) t.MarkNeighbor(n2);
-            if (n3 != null) t.MarkNeighbor(n3);
-            if (n4 != null) ot.MarkNeighbor(n4);
+            if (n1 != null)
+            {
+                ot.MarkNeighbor(n1);
+            }
+
+            if (n2 != null)
+            {
+                t.MarkNeighbor(n2);
+            }
+
+            if (n3 != null)
+            {
+                t.MarkNeighbor(n3);
+            }
+
+            if (n4 != null)
+            {
+                ot.MarkNeighbor(n4);
+            }
+
             t.MarkNeighbor(ot);
         }
     }

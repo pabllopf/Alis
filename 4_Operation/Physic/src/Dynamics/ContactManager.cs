@@ -189,35 +189,53 @@ namespace Alis.Core.Physic.Dynamics
             
             // Does a joint override collision? Is at least one body dynamic?
             if (bodyB.ShouldCollide(bodyA) == false)
+            {
                 return;
-            
+            }
+
             //Check default filter
             if (ShouldCollide(fixtureA, fixtureB) == false)
+            {
                 return;
-            
+            }
+
             // Check user filtering.
             CollisionFilterDelegate contactFilterHandler = ContactFilter;
             if (contactFilterHandler != null)
+            {
                 if (contactFilterHandler(fixtureA, fixtureB) == false)
+                {
                     return;
-            
+                }
+            }
+
             //FPE feature: BeforeCollision delegate
             BeforeCollisionEventHandler beforeCollisionHandlerA = fixtureA.BeforeCollision;
             if (beforeCollisionHandlerA != null)
+            {
                 if (beforeCollisionHandlerA(fixtureA, fixtureB) == false)
+                {
                     return;
-            
+                }
+            }
+
             BeforeCollisionEventHandler beforeCollisionHandlerB = fixtureB.BeforeCollision;
             if (beforeCollisionHandlerB != null)
+            {
                 if (beforeCollisionHandlerB(fixtureB, fixtureA) == false)
+                {
                     return;
-            
+                }
+            }
+
             // Call the factory.
             Contact c = Contact.Create(this, fixtureA, indexA, fixtureB, indexB);
             
             if (c == null)
+            {
                 return;
-            
+            }
+
             // Contact creation may swap fixtures.
             fixtureA = c.FixtureA;
             fixtureB = c.FixtureB;
@@ -292,28 +310,38 @@ namespace Alis.Core.Physic.Dynamics
                 //Report the separation to both participants:
                 OnSeparationEventHandler onFixtureSeparationHandlerA = fixtureA.OnSeparation;
                 if (onFixtureSeparationHandlerA != null)
+                {
                     onFixtureSeparationHandlerA(fixtureA, fixtureB, contact);
-                
+                }
+
                 //Reverse the order of the reported fixtures. The first fixture is always the one that the
                 //user subscribed to.
                 OnSeparationEventHandler onFixtureSeparationHandlerB = fixtureB.OnSeparation;
                 if (onFixtureSeparationHandlerB != null)
+                {
                     onFixtureSeparationHandlerB(fixtureB, fixtureA, contact);
-                
+                }
+
                 //Report the separation to both bodies:
                 OnSeparationEventHandler onBodySeparationHandlerA = bodyA.onSeparationEventHandler;
                 if (onBodySeparationHandlerA != null)
+                {
                     onBodySeparationHandlerA(fixtureA, fixtureB, contact);
-                
+                }
+
                 //Reverse the order of the reported fixtures. The first fixture is always the one that the
                 //user subscribed to.
                 OnSeparationEventHandler onBodySeparationHandlerB = bodyB.onSeparationEventHandler;
                 if (onBodySeparationHandlerB != null)
+                {
                     onBodySeparationHandlerB(fixtureB, fixtureA, contact);
-                
+                }
+
                 EndContactDelegate endContactHandler = EndContact;
                 if (endContactHandler != null)
+                {
                     endContactHandler(contact);
+                }
             }
             
             // Remove from the world.
@@ -325,20 +353,36 @@ namespace Alis.Core.Physic.Dynamics
             
             // Remove from body 1
             if (contact._nodeA == bodyA.ContactList)
+            {
                 bodyA.ContactList = contact._nodeA.Next;
+            }
+
             if (contact._nodeA.Prev != null)
+            {
                 contact._nodeA.Prev.Next = contact._nodeA.Next;
+            }
+
             if (contact._nodeA.Next != null)
+            {
                 contact._nodeA.Next.Prev = contact._nodeA.Prev;
-            
+            }
+
             // Remove from body 2
             if (contact._nodeB == bodyB.ContactList)
+            {
                 bodyB.ContactList = contact._nodeB.Next;
+            }
+
             if (contact._nodeB.Prev != null)
+            {
                 contact._nodeB.Prev.Next = contact._nodeB.Next;
+            }
+
             if (contact._nodeB.Next != null)
+            {
                 contact._nodeB.Next.Prev = contact._nodeB.Prev;
-            
+            }
+
             contact.Destroy();
             
             // Insert into the pool.
@@ -560,7 +604,9 @@ namespace Alis.Core.Physic.Dynamics
                 int idA = orderedBodyA._lockOrder;
                 int idB = orderedBodyB._lockOrder;
                 if (idA == idB)
+                {
                     throw new Exception();
+                }
 
                 if (idA > idB)
                 {
@@ -574,7 +620,10 @@ namespace Alis.Core.Physic.Dynamics
                     if (Interlocked.CompareExchange(ref orderedBodyA._lock, 1, 0) == 0)
                     {
                         if (Interlocked.CompareExchange(ref orderedBodyB._lock, 1, 0) == 0)
+                        {
                             break;
+                        }
+
                         Interlocked.Exchange(ref orderedBodyA._lock, 0);
                     }
 

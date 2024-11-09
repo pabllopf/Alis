@@ -112,8 +112,10 @@ namespace Alis.Core.Physic.Common
         {
             //The simplest polygon which can exist in the Euclidean plane has 3 sides.
             if (Count < 3)
+            {
                 return 0;
-            
+            }
+
             int i;
             float area = 0;
             
@@ -150,8 +152,10 @@ namespace Alis.Core.Physic.Common
         {
             //The simplest polygon which can exist in the Euclidean plane has 3 sides.
             if (Count < 3)
+            {
                 return new Vector2(float.NaN, float.NaN);
-            
+            }
+
             // Same algorithm is used by Box2D
             Vector2 c = Vector2.Zero;
             float area = 0.0f;
@@ -313,12 +317,16 @@ namespace Alis.Core.Physic.Common
         {
             //The simplest polygon which can exist in the Euclidean plane has 3 sides.
             if (Count < 3)
+            {
                 return false;
-            
+            }
+
             //Triangles are always convex
             if (Count == 3)
+            {
                 return true;
-            
+            }
+
             // Checks the polygon is convex and the interior is to the left of each edge.
             for (int i = 0; i < Count; ++i)
             {
@@ -329,14 +337,18 @@ namespace Alis.Core.Physic.Common
                 {
                     // Don't check vertices on the current edge.
                     if (j == i || j == next)
+                    {
                         continue;
-                    
+                    }
+
                     Vector2 r = this[j] - this[i];
                     
                     float s = edge.X * r.Y - edge.Y * r.X;
                     
                     if (s <= 0.0f)
+                    {
                         return false;
+                    }
                 }
             }
             
@@ -351,8 +363,10 @@ namespace Alis.Core.Physic.Common
         {
             //The simplest polygon which can exist in the Euclidean plane has 3 sides.
             if (Count < 3)
+            {
                 return false;
-            
+            }
+
             return GetSignedArea() > 0.0f;
         }
         
@@ -363,10 +377,14 @@ namespace Alis.Core.Physic.Common
         {
             //The simplest polygon which can exist in the Euclidean plane has 3 sides.
             if (Count < 3)
+            {
                 return;
-            
+            }
+
             if (!IsCounterClockWise())
+            {
                 Reverse();
+            }
         }
         
         /// <summary>
@@ -376,8 +394,10 @@ namespace Alis.Core.Physic.Common
         {
             //The simplest polygon which can exist in the Euclidean plane has 3 sides.
             if (Count < 3)
+            {
                 return false;
-            
+            }
+
             for (int i = 0; i < Count; ++i)
             {
                 Vector2 a1 = this[i];
@@ -390,7 +410,9 @@ namespace Alis.Core.Physic.Common
                     Vector2 temp;
                     
                     if (LineTools.LineIntersect2(ref a1, ref a2, ref b1, ref b2, out temp))
+                    {
                         return false;
+                    }
                 }
             }
             
@@ -407,17 +429,25 @@ namespace Alis.Core.Physic.Common
         public PolygonError CheckPolygon()
         {
             if (Count < 3 || Count > SettingEnv.MaxPolygonVertices)
+            {
                 return PolygonError.InvalidAmountOfVertices;
-            
+            }
+
             if (!IsSimple())
+            {
                 return PolygonError.NotSimple;
-            
+            }
+
             if (GetArea() <= SettingEnv.Epsilon)
+            {
                 return PolygonError.AreaTooSmall;
-            
+            }
+
             if (!IsConvex())
+            {
                 return PolygonError.NotConvex;
-            
+            }
+
             //Check if the sides are of adequate length.
             for (int i = 0; i < Count; ++i)
             {
@@ -430,8 +460,10 @@ namespace Alis.Core.Physic.Common
             }
             
             if (!IsCounterClockWise())
+            {
                 return PolygonError.NotCounterClockWise;
-            
+            }
+
             return PolygonError.NoError;
         }
         

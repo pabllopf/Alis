@@ -74,7 +74,9 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                 if (Vector2.Distance(fixture.Body.Position, pos) <= radius)
                 {
                     if (!affectedBodies.Contains(fixture.Body))
+                    {
                         affectedBodies.Add(fixture.Body);
+                    }
                 }
                 
                 return true;
@@ -128,8 +130,10 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
             float percent = (float) Math.Pow(1 - (distance - radius) / radius, Power) - 1;
             
             if (float.IsNaN(percent))
+            {
                 return 0f;
-            
+            }
+
             return MathUtils.Clamp(percent, 0f, 1f);
         }
     }

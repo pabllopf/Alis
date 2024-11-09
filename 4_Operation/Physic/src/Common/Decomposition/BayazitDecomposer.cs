@@ -144,9 +144,13 @@ namespace Alis.Core.Physic.Common.Decomposition
                                 if (Reflex(j, vertices))
                                 {
                                     if (RightOn(At(j - 1, vertices), At(j, vertices), At(i, vertices)) && LeftOn(At(j + 1, vertices), At(j, vertices), At(i, vertices)))
+                                    {
                                         score += 3;
+                                    }
                                     else
+                                    {
                                         score += 2;
+                                    }
                                 }
                                 else
                                 {
@@ -180,8 +184,10 @@ namespace Alis.Core.Physic.Common.Decomposition
                 list.AddRange(TriangulatePolygon(upperPoly));
             }
             else
+            {
                 list.Add(vertices);
-            
+            }
+
             return list;
         }
         
@@ -231,34 +237,46 @@ namespace Alis.Core.Physic.Common.Decomposition
             if (Reflex(i, vertices))
             {
                 if (LeftOn(At(i, vertices), At(i - 1, vertices), At(j, vertices)) && RightOn(At(i, vertices), At(i + 1, vertices), At(j, vertices)))
+                {
                     return false;
+                }
             }
             else
             {
                 if (RightOn(At(i, vertices), At(i + 1, vertices), At(j, vertices)) || LeftOn(At(i, vertices), At(i - 1, vertices), At(j, vertices)))
+                {
                     return false;
+                }
             }
             
             if (Reflex(j, vertices))
             {
                 if (LeftOn(At(j, vertices), At(j - 1, vertices), At(i, vertices)) && RightOn(At(j, vertices), At(j + 1, vertices), At(i, vertices)))
+                {
                     return false;
+                }
             }
             else
             {
                 if (RightOn(At(j, vertices), At(j + 1, vertices), At(i, vertices)) || LeftOn(At(j, vertices), At(j - 1, vertices), At(i, vertices)))
+                {
                     return false;
+                }
             }
             
             for (int k = 0; k < vertices.Count; ++k)
             {
                 if ((k + 1) % vertices.Count == i || k == i || (k + 1) % vertices.Count == j || k == j)
+                {
                     continue; // ignore incident edges
-                
+                }
+
                 Vector2 intersectionPoint;
                 
                 if (LineTools.LineIntersect(At(i, vertices), At(j, vertices), At(k, vertices), At(k + 1, vertices), out intersectionPoint))
+                {
                     return false;
+                }
             }
             
             return true;

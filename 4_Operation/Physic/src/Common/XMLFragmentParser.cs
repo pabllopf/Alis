@@ -108,25 +108,34 @@ namespace Alis.Core.Physic.Common
                 else if (char.IsWhiteSpace(c))
                 {
                     if (str != "")
+                    {
                         break;
+                    }
+
                     continue;
                 }
                 
                 str += c;
                 
                 if (_done)
+                {
                     break;
+                }
             }
             
             str = TrimControl(str);
             
             // Trim quotes from start and end
             if (str[0] == '\"')
+            {
                 str = str.Remove(0, 1);
-            
+            }
+
             if (str[str.Length - 1] == '\"')
+            {
                 str = str.Remove(str.Length - 1, 1);
-            
+            }
+
             return str;
         }
         
@@ -166,11 +175,15 @@ namespace Alis.Core.Physic.Common
             
             // Trim quotes from start and end
             if (str[0] == '\"')
+            {
                 str = str.Remove(0, 1);
-            
+            }
+
             if (str[str.Length - 1] == '\"')
+            {
                 str = str.Remove(str.Length - 1, 1);
-            
+            }
+
             return str;
         }
         
@@ -188,12 +201,18 @@ namespace Alis.Core.Physic.Common
             while (true)
             {
                 if (i == newStr.Length)
+                {
                     break;
-                
+                }
+
                 if (char.IsControl(newStr[i]))
+                {
                     newStr = newStr.Remove(i, 1);
+                }
                 else
+                {
                     i++;
+                }
             }
             
             return newStr;
@@ -222,14 +241,18 @@ namespace Alis.Core.Physic.Common
         public XMLFragmentElement TryParseNode()
         {
             if (_buffer.EndOfBuffer)
+            {
                 return null;
-            
+            }
+
             int startOuterXml = _buffer.Position;
             string token = NextToken();
             
             if (token != "<")
+            {
                 throw new XMLFragmentException("Expected \"<\", got " + token);
-            
+            }
+
             XMLFragmentElement element = new XMLFragmentElement();
             element.Name = NextToken();
             
@@ -238,7 +261,10 @@ namespace Alis.Core.Physic.Common
                 token = NextToken();
                 
                 if (token == ">")
+                {
                     break;
+                }
+
                 if (token == "/") // quick-exit case
                 {
                     NextToken();
@@ -253,7 +279,10 @@ namespace Alis.Core.Physic.Common
                 XMLFragmentAttribute attribute = new XMLFragmentAttribute();
                 attribute.Name = token;
                 if ((token = NextToken()) != "=")
+                {
                     throw new XMLFragmentException("Expected \"=\", got " + token);
+                }
+
                 attribute.Value = NextToken();
                 
                 element.Attributes.Add(attribute);
@@ -278,9 +307,11 @@ namespace Alis.Core.Physic.Common
                         element.InnerXml = TrimTags(element.OuterXml);
                         
                         if (token != element.Name)
+                        {
                             throw new XMLFragmentException("Mismatched element pairs: \"" + element.Name + "\" vs \"" +
                                                            token + "\"");
-                        
+                        }
+
                         break;
                     }
                     
@@ -307,7 +338,9 @@ namespace Alis.Core.Physic.Common
             RootNode = TryParseNode();
             
             if (RootNode == null)
+            {
                 throw new XMLFragmentException("Unable to load root node");
+            }
         }
     }
 }

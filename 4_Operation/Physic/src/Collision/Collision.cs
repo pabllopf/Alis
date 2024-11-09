@@ -308,12 +308,16 @@ namespace Alis.Core.Physic.Collision
             
             float separationA = FindMaxSeparation(out int edgeA, polyA, ref transformA, polyB, ref transformB);
             if (separationA > totalRadius)
+            {
                 return;
-            
+            }
+
             float separationB = FindMaxSeparation(out int edgeB, polyB, ref transformB, polyA, ref transformA);
             if (separationB > totalRadius)
+            {
                 return;
-            
+            }
+
             PolygonShape poly1; // reference polygon
             PolygonShape poly2; // incident polygon
             Transform xf1, xf2;
@@ -380,8 +384,10 @@ namespace Alis.Core.Physic.Collision
             int np = ClipSegmentToLine(out FixedArray2<ClipVertex> clipPoints1, ref incidentEdge, -tangent, sideOffset1, iv1);
             
             if (np < 2)
+            {
                 return;
-            
+            }
+
             // Clip to negative box side 1
             np = ClipSegmentToLine(out FixedArray2<ClipVertex> clipPoints2, ref clipPoints1, tangent, sideOffset2, iv2);
             
@@ -605,9 +611,16 @@ namespace Alis.Core.Physic.Collision
             float distance1 = normal.X * v1.V.X + normal.Y * v1.V.Y - offset;
             
             // If the points are behind the plane
-            if (distance0 <= 0.0f) vOut[numOut++] = v0;
-            if (distance1 <= 0.0f) vOut[numOut++] = v1;
-            
+            if (distance0 <= 0.0f)
+            {
+                vOut[numOut++] = v0;
+            }
+
+            if (distance1 <= 0.0f)
+            {
+                vOut[numOut++] = v1;
+            }
+
             // If the points are on different sides of the plane
             if (distance0 * distance1 < 0.0f)
             {
@@ -746,10 +759,14 @@ namespace Alis.Core.Physic.Collision
             for (;;)
             {
                 if (increment == -1)
+                {
                     edge = bestEdge - 1 >= 0 ? bestEdge - 1 : count1 - 1;
+                }
                 else
+                {
                     edge = bestEdge + 1 < count1 ? bestEdge + 1 : 0;
-                
+                }
+
                 s = EdgeSeparation(poly1, ref xf1To2, edge, poly2);
                 
                 if (s > bestSeparation)

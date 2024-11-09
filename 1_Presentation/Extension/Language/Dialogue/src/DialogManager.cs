@@ -66,8 +66,11 @@ namespace Alis.Extension.Language.Dialogue
         public void ShowDialog(string id)
         {
             Dialog dialog = GetDialog(id);
-            if (dialog == null) return;
-            
+            if (dialog == null)
+            {
+                return;
+            }
+
             Console.WriteLine(dialog.Text);
             for (int i = 0; i < dialog.Options.Count; i++)
             {

@@ -68,8 +68,10 @@ namespace Alis.Core.Physic.Collision
             cache = new SimplexCache();
             
             if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
+            {
                 ++GJKCalls;
-            
+            }
+
             // Initialize the simplex.
             Simplex simplex = new Simplex();
             simplex.ReadCache(ref cache, ref input.ProxyA, ref input.TransformA, ref input.ProxyB, ref input.TransformB);
@@ -155,8 +157,10 @@ namespace Alis.Core.Physic.Collision
                 ++iter;
                 
                 if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
+                {
                     ++GJKIters;
-                
+                }
+
                 // Check for duplicate support points. This is the main termination criteria.
                 bool duplicate = false;
                 for (int i = 0; i < saveCount; ++i)
@@ -179,8 +183,10 @@ namespace Alis.Core.Physic.Collision
             }
             
             if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
+            {
                 GJKMaxIters = Math.Max(GJKMaxIters, iter);
-            
+            }
+
             // Prepare output.
             simplex.GetWitnessPoints(out output.PointA, out output.PointB);
             output.Distance = (output.PointA - output.PointB).Length();

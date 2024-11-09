@@ -87,10 +87,14 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             Q = q;
             
             if (Math.Abs(q.X - p.X) > float.Epsilon)
+            {
                 Slope = (q.Y - p.Y) / (q.X - p.X);
+            }
             else
+            {
                 Slope = 0;
-            
+            }
+
             B = p.Y - p.X * Slope;
             Above = null;
             Below = null;
@@ -122,7 +126,9 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             foreach (Point mp in MPoints)
             {
                 if (!mp.Neq(point))
+                {
                     return;
+                }
             }
             
             MPoints.Add(point);

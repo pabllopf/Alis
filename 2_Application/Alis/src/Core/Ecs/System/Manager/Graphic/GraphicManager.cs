@@ -287,8 +287,11 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             
             foreach (Camera camera in Cameras)
             {
-                if (!camera.IsEnable) continue;
-                
+                if (!camera.IsEnable)
+                {
+                    continue;
+                }
+
                 IntPtr cameraTexture = camera.TextureTarget;
                 Color bgColor = camera.BackgroundColor;
                 Vector2 cameraPosition = camera.Position;

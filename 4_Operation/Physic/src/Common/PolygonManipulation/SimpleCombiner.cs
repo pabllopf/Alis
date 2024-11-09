@@ -51,8 +51,10 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         public static List<Vertices> PolygonizeTriangles(List<Vertices> triangles, int maxPolys = int.MaxValue, float tolerance = 0.001f)
         {
             if (triangles.Count <= 0)
+            {
                 return triangles;
-            
+            }
+
             List<Vertices> polys = new List<Vertices>();
             
             bool[] covered = new bool[triangles.Count];
@@ -67,7 +69,9 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 Vector2 c = triangle[2];
                 
                 if (((Math.Abs(a.X - b.X) < float.Epsilon) && (Math.Abs(a.Y - b.Y) < float.Epsilon)) || ((Math.Abs(b.X - c.X) < float.Epsilon) && (Math.Abs(b.Y - c.Y) < float.Epsilon)) || ((Math.Abs(a.X - c.X) < float.Epsilon) && (Math.Abs(a.Y - c.Y) < float.Epsilon)))
+                {
                     covered[i] = true;
+                }
             }
             
             int polyIndex = 0;
@@ -79,8 +83,10 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 for (int i = 0; i < triangles.Count; ++i)
                 {
                     if (covered[i])
+                    {
                         continue;
-                    
+                    }
+
                     currTri = i;
                     break;
                 }
@@ -110,11 +116,15 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                         
                         Vertices newP = AddTriangle(triangles[index], poly);
                         if (newP == null)
+                        {
                             continue; // is this right
-                        
+                        }
+
                         if (newP.Count > SettingEnv.MaxPolygonVertices)
+                        {
                             continue;
-                        
+                        }
+
                         if (newP.IsConvex())
                         {
                             //Or should it be IsUsable?  Maybe re-write IsConvex to apply the angle threshold from Box2d
@@ -132,13 +142,19 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                         //borked by the MergeParallelEdges function, hence
                         //the vertex number check
                         if (poly.Count >= 3)
+                        {
                             polys.Add(new Vertices(poly));
+                        }
                         else
+                        {
                             Debug.WriteLine("Skipping corrupt poly.");
+                        }
                     }
                     
                     if (poly.Count >= 3)
+                    {
                         polyIndex++; //Must be outside (polyIndex < polysLength) test
+                    }
                 }
             }
             
@@ -147,7 +163,9 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             for (int i = polys.Count - 1; i >= 0; i--)
             {
                 if (polys[i].Count == 0)
+                {
                     polys.RemoveAt(i);
+                }
             }
             
             return polys;
@@ -225,17 +243,24 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             // Find tip index on triangle
             int tipT = 0;
             if (tipT == firstT || tipT == secondT)
+            {
                 tipT = 1;
+            }
+
             if (tipT == firstT || tipT == secondT)
+            {
                 tipT = 2;
-            
+            }
+
             Vertices result = new Vertices(vertices.Count + 1);
             for (int i = 0; i < vertices.Count; i++)
             {
                 result.Add(vertices[i]);
                 
                 if (i == firstP)
+                {
                     result.Add(t[tipT]);
+                }
             }
             
             return result;

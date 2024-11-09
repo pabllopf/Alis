@@ -54,8 +54,10 @@ namespace Alis.Core.Physic.Common.ConvexHull
         public static Vertices GetConvexHull(Vertices vertices)
         {
             if (vertices.Count <= 3)
+            {
                 return vertices;
-            
+            }
+
             //We'll never need a queue larger than the current number of Vertices +1
             //Create double-ended queue
             Vector2[] deque = new Vector2[vertices.Count + 1];
@@ -77,8 +79,13 @@ namespace Alis.Core.Physic.Common.ConvexHull
                 {
                     Vector2 tmp = vertices[startIndex];
                     if (Math.Abs(MathUtils.Area(ref deque[0], ref deque[1], ref tmp)) < float.Epsilon) //This point is also collinear
+                    {
                         deque[1] = vertices[startIndex];
-                    else break;
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
             }
             else
@@ -108,8 +115,10 @@ namespace Alis.Core.Physic.Common.ConvexHull
                 
                 //Ignore if it is already within the convex hull we have constructed
                 if ((MathUtils.Area(ref deque[qfm1], ref deque[qf], ref nextPt) > 0) && (MathUtils.Area(ref deque[qb], ref deque[qbm1], ref nextPt) > 0))
+                {
                     continue;
-                
+                }
+
                 //Pop front until convex
                 while (!(MathUtils.Area(ref deque[qfm1], ref deque[qf], ref nextPt) > 0))
                 {

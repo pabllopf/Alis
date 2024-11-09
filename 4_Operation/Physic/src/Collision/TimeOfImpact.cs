@@ -63,8 +63,10 @@ namespace Alis.Core.Physic.Collision
         public static void CalculateTimeOfImpact(out TOIOutput output, ref TOIInput input)
         {
             if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
+            {
                 ++TOICalls;
-            
+            }
+
             output = new TOIOutput();
             output.State = TOIOutputState.Unknown;
             output.T = input.TMax;
@@ -198,8 +200,10 @@ namespace Alis.Core.Physic.Collision
                         ++rootIterCount;
                         
                         if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
+                        {
                             ++TOIRootIters;
-                        
+                        }
+
                         float s = SeparationFunction.Evaluate(indexA, indexB, t);
                         
                         if (Math.Abs(s - target) < tolerance)
@@ -228,8 +232,10 @@ namespace Alis.Core.Physic.Collision
                     }
                     
                     if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
+                    {
                         TOIMaxRootIters = Math.Max(TOIMaxRootIters, rootIterCount);
-                    
+                    }
+
                     ++pushBackIter;
                     
                     if (pushBackIter == SettingEnv.MaxPolygonVertices)
@@ -241,8 +247,10 @@ namespace Alis.Core.Physic.Collision
                 ++iter;
                 
                 if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
+                {
                     ++TOIIters;
-                
+                }
+
                 if (done)
                 {
                     break;
@@ -258,7 +266,9 @@ namespace Alis.Core.Physic.Collision
             }
             
             if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
+            {
                 TOIMaxIters = Math.Max(TOIMaxIters, iter);
+            }
         }
     }
 }

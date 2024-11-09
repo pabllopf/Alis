@@ -101,8 +101,10 @@ namespace Alis.Core.Physic.Common
         public static Complex FromAngle(float angle)
         {
             if (Math.Abs(angle) < float.Epsilon)
+            {
                 return One;
-            
+            }
+
             return new Complex(
                 (float) Math.Cos(angle),
                 (float) Math.Sin(angle));

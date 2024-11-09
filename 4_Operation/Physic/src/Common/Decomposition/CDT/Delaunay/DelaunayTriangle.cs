@@ -98,7 +98,11 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
         public int IndexOf(TriangulationPoint p)
         {
             int i = Points.IndexOf(p);
-            if (i == -1) throw new Exception("Calling index with a point that doesn't exist in triangle");
+            if (i == -1)
+            {
+                throw new Exception("Calling index with a point that doesn't exist in triangle");
+            }
+
             return i;
         }
         
@@ -399,7 +403,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
         public void MarkConstrainedEdge(TriangulationPoint p, TriangulationPoint q)
         {
             int i = EdgeIndex(p, q);
-            if (i != -1) EdgeIsConstrained[i] = true;
+            if (i != -1)
+            {
+                EdgeIsConstrained[i] = true;
+            }
         }
         
         /// <summary>
@@ -439,9 +446,21 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
             bool b = i1 == 1 || i2 == 1;
             bool c = i1 == 2 || i2 == 2;
             
-            if (b && c) return 0;
-            if (a && c) return 1;
-            if (a && b) return 2;
+            if (b && c)
+            {
+                return 0;
+            }
+
+            if (a && c)
+            {
+                return 1;
+            }
+
+            if (a && b)
+            {
+                return 2;
+            }
+
             return -1;
         }
         

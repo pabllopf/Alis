@@ -277,7 +277,10 @@ namespace Alis.Core.Physic.Dynamics
             set
             {
                 if (IsLocked)
+                {
                     throw new InvalidOperationException("The World is locked.");
+                }
+
                 _gravity = value;
             }
         }
@@ -337,8 +340,10 @@ namespace Alis.Core.Physic.Dynamics
             // Build and simulate all awake islands.
             int stackSize = BodyList.Count;
             if (stackSize > _stack.Length)
+            {
                 _stack = new Body[Math.Max(_stack.Length * 2, stackSize)];
-            
+            }
+
             for (int index = BodyList._list.Count - 1; index >= 0; index--)
             {
                 Body seed = BodyList._list[index];
@@ -825,14 +830,25 @@ namespace Alis.Core.Physic.Dynamics
         public virtual void Add(Body body)
         {
             if (IsLocked)
+            {
                 throw new InvalidOperationException("The World is locked.");
+            }
+
             if (body == null)
+            {
                 throw new ArgumentNullException("body");
+            }
+
             if (body._world == this)
+            {
                 throw new ArgumentException("You are adding the same body more than once.", "body");
+            }
+
             if (body._world != null)
+            {
                 throw new ArgumentException("body belongs to another world.", "body");
-            
+            }
+
             body._world = this;
             BodyList._list.Add(body);
             BodyList._generationStamp++;
@@ -843,8 +859,10 @@ namespace Alis.Core.Physic.Dynamics
             
             // Create proxies
             if (Enabled)
+            {
                 body.CreateProxies();
-            
+            }
+
             ContactManager.FindNewContacts();
             
             
@@ -852,12 +870,16 @@ namespace Alis.Core.Physic.Dynamics
             
             BodyDelegate bodyAddedHandler = BodyAdded;
             if (bodyAddedHandler != null)
+            {
                 bodyAddedHandler(this, body);
-            
+            }
+
             FixtureDelegate fixtureAddedHandler = FixtureAdded;
             if (fixtureAddedHandler != null)
+            {
                 for (int i = 0; i < body.FixtureList._list.Count; i++)
                     fixtureAddedHandler(this, body, body.FixtureList._list[i]);
+            }
         }
         
         /// <summary>
@@ -870,12 +892,20 @@ namespace Alis.Core.Physic.Dynamics
         public virtual void Remove(Body body)
         {
             if (IsLocked)
+            {
                 throw new InvalidOperationException("The World is locked.");
+            }
+
             if (body == null)
+            {
                 throw new ArgumentNullException("body");
+            }
+
             if (body.World != this)
+            {
                 throw new ArgumentException("You are removing a body that is not in the simulation.", "body");
-            
+            }
+
             // Delete the attached joints.
             JointEdge je = body.JointList;
             while (je != null)
@@ -907,16 +937,20 @@ namespace Alis.Core.Physic.Dynamics
             body.DestroyProxies();
             FixtureDelegate fixtureRemovedHandler = FixtureRemoved;
             if (fixtureRemovedHandler != null)
+            {
                 for (int i = 0; i < body.FixtureList._list.Count; i++)
                     fixtureRemovedHandler(this, body, body.FixtureList._list[i]);
-            
+            }
+
             body._world = null;
             BodyList._list.Remove(body);
             BodyList._generationStamp++;
             
             BodyDelegate bodyRemovedHandler = BodyRemoved;
             if (bodyRemovedHandler != null)
+            {
                 bodyRemovedHandler(this, body);
+            }
         }
         
         /// <summary>
@@ -928,14 +962,25 @@ namespace Alis.Core.Physic.Dynamics
         public void Add(Joint joint)
         {
             if (IsLocked)
+            {
                 throw new InvalidOperationException("The World is locked.");
+            }
+
             if (joint == null)
+            {
                 throw new ArgumentNullException("joint");
+            }
+
             if (joint._world == this)
+            {
                 throw new ArgumentException("You are adding the same joint more than once.", "joint");
+            }
+
             if (joint._world != null)
+            {
                 throw new ArgumentException("joint belongs to another world.", "joint");
-            
+            }
+
             // Connect to the world list.
             joint._world = this;
             JointList._list.Add(joint);
@@ -948,8 +993,10 @@ namespace Alis.Core.Physic.Dynamics
             joint.EdgeA.Next = joint.BodyA.JointList;
             
             if (joint.BodyA.JointList != null)
+            {
                 joint.BodyA.JointList.Prev = joint.EdgeA;
-            
+            }
+
             joint.BodyA.JointList = joint.EdgeA;
             
             // WIP David
@@ -961,8 +1008,10 @@ namespace Alis.Core.Physic.Dynamics
                 joint.EdgeB.Next = joint.BodyB.JointList;
                 
                 if (joint.BodyB.JointList != null)
+                {
                     joint.BodyB.JointList.Prev = joint.EdgeB;
-                
+                }
+
                 joint.BodyB.JointList = joint.EdgeB;
                 
                 Body bodyA = joint.BodyA;
@@ -988,8 +1037,10 @@ namespace Alis.Core.Physic.Dynamics
             
             JointDelegate jointAddedHandler = JointAdded;
             if (jointAddedHandler != null)
+            {
                 jointAddedHandler(this, joint);
-            
+            }
+
             // Note: creating a joint doesn't wake the bodies.
         }
         
@@ -1002,12 +1053,20 @@ namespace Alis.Core.Physic.Dynamics
         public void Remove(Joint joint)
         {
             if (IsLocked)
+            {
                 throw new InvalidOperationException("The World is locked.");
+            }
+
             if (joint == null)
+            {
                 throw new ArgumentNullException("joint");
+            }
+
             if (joint.World != this)
+            {
                 throw new ArgumentException("You are removing a joint that is not in the simulation.", "joint");
-            
+            }
+
             bool collideConnected = joint.CollideConnected;
             
             // Remove from the world list.
@@ -1093,7 +1152,9 @@ namespace Alis.Core.Physic.Dynamics
             
             JointDelegate jointRemovedHandler = JointRemoved;
             if (jointRemovedHandler != null)
+            {
                 jointRemovedHandler(this, joint);
+            }
         }
         
         /// <summary>
@@ -1143,14 +1204,20 @@ namespace Alis.Core.Physic.Dynamics
         public void Step(float dt, ref SolverIterations iterations)
         {
             if (IsLocked)
+            {
                 throw new InvalidOperationException("The World is locked.");
-            
+            }
+
             if (!Enabled)
+            {
                 return;
-            
+            }
+
             if (SettingEnv.EnableDiagnostics)
+            {
                 _watch.Start();
-            
+            }
+
             // If new fixtures were added, we need to find the new contacts.
             if (_worldHasNewFixture)
             {
@@ -1159,8 +1226,10 @@ namespace Alis.Core.Physic.Dynamics
             }
             
             if (SettingEnv.EnableDiagnostics)
+            {
                 NewContactsTime = TimeSpan.FromTicks(_watch.ElapsedTicks) - AddRemoveTime;
-            
+            }
+
             //FPE only: moved position and velocity iterations into Settings.cs
             TimeStep step;
             step.positionIterations = iterations.PositionIterations;
@@ -1180,13 +1249,17 @@ namespace Alis.Core.Physic.Dynamics
                 }
                 
                 if (SettingEnv.EnableDiagnostics)
+                {
                     ControllersUpdateTime = TimeSpan.FromTicks(_watch.ElapsedTicks) - (AddRemoveTime + NewContactsTime);
-                
+                }
+
                 // Update contacts. This is where some contacts are destroyed.
                 ContactManager.Collide();
                 if (SettingEnv.EnableDiagnostics)
+                {
                     ContactsUpdateTime = TimeSpan.FromTicks(_watch.ElapsedTicks) - (AddRemoveTime + NewContactsTime + ControllersUpdateTime);
-                
+                }
+
                 // Integrate velocities, solve velocity constraints, and integrate positions.
                 if (_stepComplete && (step.dt > 0.0f))
                 {
@@ -1194,8 +1267,10 @@ namespace Alis.Core.Physic.Dynamics
                 }
                 
                 if (SettingEnv.EnableDiagnostics)
+                {
                     SolveUpdateTime = TimeSpan.FromTicks(_watch.ElapsedTicks) - (AddRemoveTime + NewContactsTime + ControllersUpdateTime + ContactsUpdateTime);
-                
+                }
+
                 // Handle TOI events.
                 if (SettingEnv.ContinuousPhysics && (step.dt > 0.0f))
                 {
@@ -1203,10 +1278,14 @@ namespace Alis.Core.Physic.Dynamics
                 }
                 
                 if (SettingEnv.EnableDiagnostics)
+                {
                     ContinuousPhysicsTime = TimeSpan.FromTicks(_watch.ElapsedTicks) - (AddRemoveTime + NewContactsTime + ControllersUpdateTime + ContactsUpdateTime + SolveUpdateTime);
-                
+                }
+
                 if (SettingEnv.AutoClearForces)
+                {
                     ClearForces();
+                }
             }
             finally
             {
@@ -1214,8 +1293,10 @@ namespace Alis.Core.Physic.Dynamics
             }
             
             if (step.dt > 0.0f)
+            {
                 _invDt0 = step.inv_dt;
-            
+            }
+
             if (SettingEnv.EnableDiagnostics)
             {
                 _watch.Stop();
@@ -1333,21 +1414,34 @@ namespace Alis.Core.Physic.Dynamics
         public void Add(Controller controller)
         {
             if (IsLocked)
+            {
                 throw new InvalidOperationException("The World is locked.");
+            }
+
             if (controller == null)
+            {
                 throw new ArgumentNullException("controller");
+            }
+
             if (controller.World == this)
+            {
                 throw new ArgumentException("You are adding the same controller more than once.", "controller");
+            }
+
             if (controller.World != null)
+            {
                 throw new ArgumentException("Controller belongs to another world.", "controller");
-            
+            }
+
             controller.World = this;
             ControllerList._list.Add(controller);
             ControllerList._generationStamp++;
             
             ControllerDelegate controllerAddedHandler = ControllerAdded;
             if (controllerAddedHandler != null)
+            {
                 controllerAddedHandler(this, controller);
+            }
         }
         
         /// <summary>
@@ -1357,19 +1451,29 @@ namespace Alis.Core.Physic.Dynamics
         public void Remove(Controller controller)
         {
             if (IsLocked)
+            {
                 throw new InvalidOperationException("The World is locked.");
+            }
+
             if (controller == null)
+            {
                 throw new ArgumentNullException("controller");
+            }
+
             if (controller.World != this)
+            {
                 throw new ArgumentException("You are removing a controller that is not in the simulation.", "controller");
-            
+            }
+
             controller.World = null;
             ControllerList._list.Remove(controller);
             ControllerList._generationStamp++;
             
             ControllerDelegate controllerRemovedHandler = ControllerRemoved;
             if (controllerRemovedHandler != null)
+            {
                 controllerRemovedHandler(this, controller);
+            }
         }
         
         /// <summary>
@@ -1434,8 +1538,10 @@ namespace Alis.Core.Physic.Dynamics
         public void Clear()
         {
             if (IsLocked)
+            {
                 throw new InvalidOperationException("The World is locked.");
-            
+            }
+
             for (int i = BodyList._list.Count - 1; i >= 0; i--)
             {
                 Remove(BodyList._list[i]);

@@ -59,8 +59,10 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         public static Sink Isink(Trapezoid trapezoid)
         {
             if (trapezoid.Sink == null)
+            {
                 return new Sink(trapezoid);
-            
+            }
+
             return trapezoid.Sink;
         }
         

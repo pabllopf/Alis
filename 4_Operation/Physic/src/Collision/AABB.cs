@@ -225,11 +225,15 @@ namespace Alis.Core.Physic.Collision
         public static bool TestOverlap(ref AABB a, ref AABB b)
         {
             if (b.LowerBound.X > a.UpperBound.X || b.LowerBound.Y > a.UpperBound.Y)
+            {
                 return false;
-            
+            }
+
             if (a.LowerBound.X > b.UpperBound.X || a.LowerBound.Y > b.UpperBound.Y)
+            {
                 return false;
-            
+            }
+
             return true;
         }
         

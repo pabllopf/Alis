@@ -185,10 +185,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
         protected void WakeBodies()
         {
             if (BodyA != null)
+            {
                 BodyA.Awake = true;
-            
+            }
+
             if (BodyB != null)
+            {
                 BodyB.Awake = true;
+            }
         }
         
         /// <summary>
@@ -215,17 +219,23 @@ namespace Alis.Core.Physic.Dynamics.Joints
         internal void Validate(float invDt)
         {
             if (!Enabled)
+            {
                 return;
-            
+            }
+
             float jointErrorSquared = GetReactionForce(invDt).LengthSquared();
             
             if (Math.Abs(jointErrorSquared) <= _breakpointSquared)
+            {
                 return;
-            
+            }
+
             Enabled = false;
             
             if (Broke != null)
+            {
                 Broke(this, (float) Math.Sqrt(jointErrorSquared));
+            }
         }
         
         /// <summary>

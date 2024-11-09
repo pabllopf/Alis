@@ -95,11 +95,15 @@ namespace Alis.Core.Physic.Controllers
         public VelocityLimitController(float maxLinearVelocity, float maxAngularVelocity)
         {
             if (Math.Abs(maxLinearVelocity) < float.Epsilon || Math.Abs(maxLinearVelocity - float.MaxValue) < float.Epsilon)
+            {
                 LimitLinearVelocity = false;
-            
+            }
+
             if (Math.Abs(maxAngularVelocity) < float.Epsilon || Math.Abs(maxAngularVelocity - float.MaxValue) < float.Epsilon)
+            {
                 LimitAngularVelocity = false;
-            
+            }
+
             MaxLinearVelocity = maxLinearVelocity;
             MaxAngularVelocity = maxAngularVelocity;
         }
@@ -141,8 +145,10 @@ namespace Alis.Core.Physic.Controllers
             foreach (Body body in _bodies)
             {
                 if (!IsActiveOn(body))
+                {
                     continue;
-                
+                }
+
                 if (LimitLinearVelocity)
                 {
                     //Translation

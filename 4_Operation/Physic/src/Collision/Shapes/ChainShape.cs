@@ -284,12 +284,16 @@ namespace Alis.Core.Physic.Collision.Shapes
         public bool CompareTo(ChainShape shape)
         {
             if (Vertices.Count != shape.Vertices.Count)
+            {
                 return false;
-            
+            }
+
             for (int i = 0; i < Vertices.Count; i++)
             {
                 if (Vertices[i] != shape.Vertices[i])
+                {
                     return false;
+                }
             }
             
             return (PrevVertex == shape.PrevVertex) && (NextVertex == shape.NextVertex);

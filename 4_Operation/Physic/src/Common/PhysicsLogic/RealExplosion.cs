@@ -165,8 +165,10 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                 }, ref aabb);
             
             if (exit)
+            {
                 return new Dictionary<Fixture, Vector2>();
-            
+            }
+
             Dictionary<Fixture, Vector2> exploded = new Dictionary<Fixture, Vector2>(shapeCount + containedShapeCount);
             
             // Per shape max/min angles for now.
@@ -190,8 +192,10 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                     ps = new PolygonShape(v, 0);
                 }
                 else
+                {
                     ps = shapes[i].Shape as PolygonShape;
-                
+                }
+
                 if ((shapes[i].Body.BodyType == BodyType.Dynamic) && (ps != null))
                 {
                     Vector2 toCentroid = shapes[i].Body.GetWorldPoint(ps.MassData.Centroid) - pos;
@@ -211,13 +215,17 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                         // the minus pi is important. It means cutoff for going other direction is at 180 deg where it needs to be
                         
                         if (diff < 0.0f)
+                        {
                             diff += 2 * Constant.Pi; // correction for not handling negs
-                        
+                        }
+
                         diff -= Constant.Pi;
                         
                         if (Math.Abs(diff) > Constant.Pi)
+                        {
                             continue; // Something's wrong, point not in shape but exists angle diff > 180
-                        
+                        }
+
                         if (diff > max)
                         {
                             max = diff;
@@ -249,8 +257,10 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                 
                 int iplus = i == valIndex - 1 ? 0 : i + 1;
                 if (Math.Abs(vals[i] - vals[iplus]) < float.Epsilon)
+                {
                     continue;
-                
+                }
+
                 if (i == valIndex - 1)
                 {
                     // the single edgecase
@@ -273,8 +283,10 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                     Body body = f.Body;
                     
                     if (!IsActiveOn(body))
+                    {
                         return 0;
-                    
+                    }
+
                     hitClosest = true;
                     fixture = f;
                     return fr;
@@ -336,16 +348,20 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
             for (int i = 0; i < _data.Count; ++i)
             {
                 if (!IsActiveOn(_data[i].Body))
+                {
                     continue;
-                
+                }
+
                 float arclen = _data[i].Max - _data[i].Min;
                 
                 float first = Math.Min(MaxEdgeOffset, EdgeRatio * arclen);
                 int insertedRays = (int) Math.Ceiling((arclen - 2.0f * first - (MinRays - 1) * MaxAngle) / MaxAngle);
                 
                 if (insertedRays < 0)
+                {
                     insertedRays = 0;
-                
+                }
+
                 float offset = (arclen - first * 2.0f) / ((float) MinRays + insertedRays - 1);
                 
                 //Note: This loop can go into infinite as it operates on floats.
@@ -385,12 +401,18 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                         
                         // We gather the fixtures for returning them
                         if (exploded.ContainsKey(f))
+                        {
                             exploded[f] += vectImp;
+                        }
                         else
+                        {
                             exploded.Add(f, vectImp);
-                        
+                        }
+
                         if (minlambda > 1.0f)
+                        {
                             hitpoint = p2;
+                        }
                     }
                 }
             }
@@ -401,8 +423,10 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                 Fixture fix = containedShapes[i];
                 
                 if (!IsActiveOn(fix.Body))
+                {
                     continue;
-                
+                }
+
                 float impulse = MinRays * maxForce * 180.0f / Constant.Pi;
                 Vector2 hitPoint;
                 
@@ -421,7 +445,9 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                 fix.Body.ApplyLinearImpulse(ref vectImp, ref hitPoint);
                 
                 if (!exploded.ContainsKey(fix))
+                {
                     exploded.Add(fix, vectImp);
+                }
             }
             
             return exploded;

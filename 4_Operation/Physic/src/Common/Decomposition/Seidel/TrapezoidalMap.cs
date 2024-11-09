@@ -117,10 +117,14 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         {
             Point rp;
             if (Math.Abs(e.Q.X - t.RightPoint.X) < float.Epsilon)
+            {
                 rp = e.Q;
+            }
             else
+            {
                 rp = t.RightPoint;
-            
+            }
+
             Trapezoid[] trapezoids = new Trapezoid[3];
             trapezoids[0] = new Trapezoid(t.LeftPoint, e.P, t.Top, t.Bottom);
             trapezoids[1] = new Trapezoid(e.P, rp, t.Top, e);
@@ -150,16 +154,24 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         {
             Point lp;
             if (Math.Abs(e.P.X - t.LeftPoint.X) < float.Epsilon)
+            {
                 lp = e.P;
+            }
             else
+            {
                 lp = t.LeftPoint;
-            
+            }
+
             Point rp;
             if (Math.Abs(e.Q.X - t.RightPoint.X) < float.Epsilon)
+            {
                 rp = e.Q;
+            }
             else
+            {
                 rp = t.RightPoint;
-            
+            }
+
             Trapezoid[] trapezoids = new Trapezoid[2];
             
             if (_cross == t.Top)
@@ -207,10 +219,14 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         {
             Point lp;
             if (Math.Abs(e.P.X - t.LeftPoint.X) < float.Epsilon)
+            {
                 lp = e.P;
+            }
             else
+            {
                 lp = t.LeftPoint;
-            
+            }
+
             Trapezoid[] trapezoids = new Trapezoid[3];
             
             if (_cross == t.Top)
@@ -254,14 +270,45 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             
             foreach (Edge e in edges)
             {
-                if (e.P.X > max.X) max = new Point(e.P.X + _margin, max.Y);
-                if (e.P.Y > max.Y) max = new Point(max.X, e.P.Y + _margin);
-                if (e.Q.X > max.X) max = new Point(e.Q.X + _margin, max.Y);
-                if (e.Q.Y > max.Y) max = new Point(max.X, e.Q.Y + _margin);
-                if (e.P.X < min.X) min = new Point(e.P.X - _margin, min.Y);
-                if (e.P.Y < min.Y) min = new Point(min.X, e.P.Y - _margin);
-                if (e.Q.X < min.X) min = new Point(e.Q.X - _margin, min.Y);
-                if (e.Q.Y < min.Y) min = new Point(min.X, e.Q.Y - _margin);
+                if (e.P.X > max.X)
+                {
+                    max = new Point(e.P.X + _margin, max.Y);
+                }
+
+                if (e.P.Y > max.Y)
+                {
+                    max = new Point(max.X, e.P.Y + _margin);
+                }
+
+                if (e.Q.X > max.X)
+                {
+                    max = new Point(e.Q.X + _margin, max.Y);
+                }
+
+                if (e.Q.Y > max.Y)
+                {
+                    max = new Point(max.X, e.Q.Y + _margin);
+                }
+
+                if (e.P.X < min.X)
+                {
+                    min = new Point(e.P.X - _margin, min.Y);
+                }
+
+                if (e.P.Y < min.Y)
+                {
+                    min = new Point(min.X, e.P.Y - _margin);
+                }
+
+                if (e.Q.X < min.X)
+                {
+                    min = new Point(e.Q.X - _margin, min.Y);
+                }
+
+                if (e.Q.Y < min.Y)
+                {
+                    min = new Point(min.X, e.Q.Y - _margin);
+                }
             }
             
             Edge top = new Edge(new Point(min.X, max.Y), new Point(max.X, max.Y));

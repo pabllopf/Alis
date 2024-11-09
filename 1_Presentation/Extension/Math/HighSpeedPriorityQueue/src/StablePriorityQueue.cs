@@ -290,8 +290,11 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             while (true)
             {
                 int childLeftIndex = 2 * finalQueueIndex;
-                if (IsLeafNode(childLeftIndex)) break;
-                
+                if (IsLeafNode(childLeftIndex))
+                {
+                    break;
+                }
+
                 int childRightIndex = childLeftIndex + 1;
                 T childLeft = _nodes[childLeftIndex];
                 T childRight = childRightIndex <= _numNodes ? _nodes[childRightIndex] : null;
@@ -299,8 +302,11 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                 int higherPriorityChildIndex = GetHigherPriorityChildIndex(childLeft, childRight, childLeftIndex, childRightIndex);
                 T higherPriorityChild = _nodes[higherPriorityChildIndex];
                 
-                if (HasHigherPriority(node, higherPriorityChild)) break;
-                
+                if (HasHigherPriority(node, higherPriorityChild))
+                {
+                    break;
+                }
+
                 Swap(node, higherPriorityChild, finalQueueIndex, higherPriorityChildIndex);
                 finalQueueIndex = higherPriorityChildIndex;
             }
@@ -326,7 +332,11 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// <returns>The int</returns>
         private int GetHigherPriorityChildIndex(T childLeft, T childRight, int childLeftIndex, int childRightIndex)
         {
-            if (childRight == null) return childLeftIndex;
+            if (childRight == null)
+            {
+                return childLeftIndex;
+            }
+
             return HasHigherPriority(childLeft, childRight) ? childLeftIndex : childRightIndex;
         }
         

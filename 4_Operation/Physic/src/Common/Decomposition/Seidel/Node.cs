@@ -64,9 +64,14 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             RightChild = right;
             
             if (left != null)
+            {
                 left.ParentList.Add(this);
+            }
+
             if (right != null)
+            {
                 right.ParentList.Add(this);
+            }
         }
         
         /// <summary>
@@ -88,9 +93,13 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             {
                 // Select the correct node to replace (left or right child)
                 if (parent.LeftChild == node)
+                {
                     parent.LeftChild = this;
+                }
                 else
+                {
                     parent.RightChild = this;
+                }
             }
             
             ParentList.AddRange(node.ParentList);

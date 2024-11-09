@@ -131,17 +131,23 @@ namespace Alis.Core.Physic.Controllers
             World.QueryAABB(fixture =>
             {
                 if (fixture.Body.BodyType == BodyType.Static || !fixture.Body.Awake)
+                {
                     return true;
-                
+                }
+
                 if (!_uniqueBodies.Contains(fixture.Body))
+                {
                     _uniqueBodies.Add(fixture.Body);
-                
+                }
+
                 return true;
             }, ref _container);
             
             if (_uniqueBodies.Count == 0)
+            {
                 return;
-            
+            }
+
             foreach (Body body in _uniqueBodies)
             {
                 Vector2 areac = Vector2.Zero;
@@ -152,8 +158,10 @@ namespace Alis.Core.Physic.Controllers
                 foreach (Fixture fixture in body.FixtureList)
                 {
                     if ((fixture.Shape.ShapeType != ShapeType.Polygon) && (fixture.Shape.ShapeType != ShapeType.Circle))
+                    {
                         continue;
-                    
+                    }
+
                     Shape shape = fixture.Shape;
                     
                     float sarea = shape.ComputeSubmergedArea(ref _normal, _offset, ref body._xf, out Vector2 sc);
@@ -172,8 +180,10 @@ namespace Alis.Core.Physic.Controllers
                 massc.Y /= mass;
                 
                 if (area < SettingEnv.Epsilon)
+                {
                     continue;
-                
+                }
+
                 //Buoyancy
                 Vector2 buoyancyForce = -Density * area * _gravity;
                 body.ApplyForce(buoyancyForce, massc);
