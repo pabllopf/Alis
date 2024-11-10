@@ -32,6 +32,7 @@ using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Ecs.System.Configuration;
 using Alis.Core.Ecs.System.Scope;
+using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Core.Ecs.System
 {
@@ -92,6 +93,8 @@ namespace Alis.Core.Ecs.System
         ///     Runs the game in preview mode.
         /// </summary>
         public void RunPreview() => _contextHandler.RunPreview();
+        
+        public void StartPreview() => _contextHandler.StartPreview();
         
         /// <summary>
         ///     Exits the game.

@@ -44,6 +44,8 @@ namespace Alis.Core.Ecs.System.Scope
         /// </summary>
         void Run();
         
+        void StartPreview();
+        
         /// <summary>
         ///     Runs the preview
         /// </summary>

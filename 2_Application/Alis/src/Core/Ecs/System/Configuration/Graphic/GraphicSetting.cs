@@ -70,7 +70,10 @@ namespace Alis.Core.Ecs.System.Configuration.Graphic
         /// </summary>
         [JsonPropertyName("_Target_")]
         public string Target { get; set; } = "OpenGL";
-        
+
+        [JsonPropertyName("_PreviewMode_")]
+        public bool PreviewMode { get; set; } = false;
+
         /// <summary>
         ///     Builders this instance
         /// </summary>

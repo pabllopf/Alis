@@ -147,6 +147,14 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// </summary>
         public override void OnInit()
         {
+            /*
+            _context.GraphicManager.Window = Sdl.CreateWindow("Game Preview",
+                0, 0,
+                800, 600,
+                WindowSettings.WindowResizable | WindowSettings.WindowHidden );
+            _context.GraphicManager.Renderer = Sdl.CreateRenderer(_context.GraphicManager.Window, -1,
+                Renderers.SdlRendererAccelerated | Renderers.SdlRendererTargetTexture);*/
+            
             if (Context is null)
             {
                 return;
@@ -166,8 +174,8 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Logger.Info(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
             
             // Enable vsync
-            Sdl.SetSwapInterval(1);
-            Sdl.SetHint(Hint.HintRenderDriver, "opengl");
+            //Sdl.SetSwapInterval(1);
+            //Sdl.SetHint(Hint.HintRenderDriver, "opengl");
             
             // Create the window
             // create the window which should be able to have a valid OpenGL context and is resizable
@@ -177,6 +185,11 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             {
                 flags |= WindowSettings.WindowResizable;
             }
+
+            if (Context.Setting.Graphic.PreviewMode)
+            {
+                flags = WindowSettings.WindowHidden;
+            }
             
             // Creates a new SDL window at the center of the screen with the given width and height.
             Window = Sdl.CreateWindow(Context.Setting.General.Name, (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered, (int) DefaultSize.X, (int) DefaultSize.Y, flags);
@@ -184,11 +197,18 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             // Check if the window was created successfully.
             Logger.Info(Window == IntPtr.Zero ? $"There was an issue creating the renderer. {Sdl.GetError()}" : "Window created");
             
+            Renderers renderFlags = Renderers.SdlRendererAccelerated;
+            
+            if (Context.Setting.Graphic.PreviewMode)
+            {
+                renderFlags |= Renderers.SdlRendererTargetTexture;
+            }
+            
             // Create the renderer
             Renderer = Sdl.CreateRenderer(
                 Window,
                 -1,
-                Renderers.SdlRendererAccelerated);
+                renderFlags);
             
             // Check if the renderer was created successfully.
             Logger.Info(Renderer == IntPtr.Zero ? $"There was an issue creating the renderer. {Sdl.GetError()}" : "Renderer created");
