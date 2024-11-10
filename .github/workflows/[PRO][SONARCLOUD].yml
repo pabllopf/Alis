@@ -5,6 +5,7 @@ on:
       - master
     paths:
       - '**.cs'
+      - '**.yml'
 
 jobs:
   build:
@@ -13,7 +14,8 @@ jobs:
     steps:
       - name: Install dependencies with Homebrew
         run: |
-          brew install sdl2 sdl2_image sdl2_ttf ffmpeg 
+          brew install sdl2 sdl2_image sdl2_ttf ffmpeg
+          brew link ffmpeg
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
