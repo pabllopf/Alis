@@ -34,7 +34,7 @@ jobs:
           brew link ffmpeg
 
       - name: Dotnet test Debug
-        run: dotnet test alis.sln -c Debug --nologo -nowarn 2>/dev/null
+        run: dotnet test alis.sln -f net6.0 -c Debug -v m 
 
       - uses: dorny/test-reporter@v1
         with:
@@ -81,7 +81,7 @@ jobs:
 
       - name: Dotnet test Debug
         shell: cmd
-        run: dotnet test alis.sln -c Debug --nologo -nowarn 2>nul
+        run: dotnet test alis.sln -f net6.0 -c Debug -v m 
 
       - uses: dorny/test-reporter@v1
         with:
@@ -118,7 +118,7 @@ jobs:
             8.0.202
   
       - name: Dotnet test Debug
-        run: dotnet test alis.sln -c Debug --nologo -nowarn 2>/dev/null
+        run: dotnet test alis.sln -f net6.0 -c Debug -v m 
   
       - uses: dorny/test-reporter@v1
         with:
