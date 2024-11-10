@@ -34,7 +34,7 @@ jobs:
           brew link ffmpeg
 
       - name: Dotnet test Debug
-        run: dotnet test alis.sln -c Debug
+        run: dotnet test alis.sln -c Debug --nologo --no-restore -warnaserror 2>/dev/null
 
       - uses: dorny/test-reporter@v1
         with:
@@ -89,7 +89,7 @@ jobs:
 
       - name: Dotnet test Debug
         shell: cmd
-        run: dotnet test alis.sln -c Debug
+        run: dotnet test alis.sln -c Debug --nologo --no-restore -warnaserror 2>nul
 
       - uses: dorny/test-reporter@v1
         with:
@@ -108,12 +108,12 @@ jobs:
         with:
           ref: master
           fetch-depth: 0
-
-      - name: Install dependencies
+  
+      - name: Install SDL dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev ffmpeg
-
+  
       - name: setup
         uses: actions/setup-dotnet@v4
         with:
@@ -124,12 +124,13 @@ jobs:
             6.0.420
             7.0.408
             8.0.202
-
+  
       - name: Dotnet test Debug
-        run: dotnet test alis.sln -c Debug
-
+        run: dotnet test alis.sln -c Debug --nologo --no-restore -warnaserror 2>/dev/null
+  
       - uses: dorny/test-reporter@v1
         with:
           name: Ubuntu 22_04 x64 Test Report
           path: '.test/**/**/*.trx'
           reporter: dotnet-trx
+
