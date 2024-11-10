@@ -63,6 +63,9 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         private uint textureopenGlId;
 
+        /// <summary>
+        /// The video game
+        /// </summary>
         private VideoGame videoGame;
 
         /// <summary>

@@ -94,6 +94,9 @@ namespace Alis.Core.Ecs.System
         /// </summary>
         public void RunPreview() => _contextHandler.RunPreview();
         
+        /// <summary>
+        /// Starts the preview
+        /// </summary>
         public void StartPreview() => _contextHandler.StartPreview();
         
         /// <summary>

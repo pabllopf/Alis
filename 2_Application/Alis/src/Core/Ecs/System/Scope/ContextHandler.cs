@@ -157,6 +157,9 @@ namespace Alis.Core.Ecs.System.Scope
         }
 
 
+        /// <summary>
+        /// Starts the preview
+        /// </summary>
         public void StartPreview()
         {
             Runtime<AManager> runtime = _context.Runtime;

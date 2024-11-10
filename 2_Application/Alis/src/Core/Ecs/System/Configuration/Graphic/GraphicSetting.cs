@@ -71,6 +71,9 @@ namespace Alis.Core.Ecs.System.Configuration.Graphic
         [JsonPropertyName("_Target_")]
         public string Target { get; set; } = "OpenGL";
 
+        /// <summary>
+        /// Gets or sets the value of the preview mode
+        /// </summary>
         [JsonPropertyName("_PreviewMode_")]
         public bool PreviewMode { get; set; } = false;
 
