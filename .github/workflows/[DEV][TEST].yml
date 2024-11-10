@@ -34,7 +34,7 @@ jobs:
           brew link ffmpeg
 
       - name: Dotnet test Debug
-        run: dotnet test alis.sln -c Debug --nologo --no-restore -warnaserror 2>/dev/null
+        run: dotnet test alis.sln -c Debug --nologo -warnaserror 2>/dev/null
 
       - uses: dorny/test-reporter@v1
         with:
@@ -89,7 +89,7 @@ jobs:
 
       - name: Dotnet test Debug
         shell: cmd
-        run: dotnet test alis.sln -c Debug --nologo --no-restore -warnaserror 2>nul
+        run: dotnet test alis.sln -c Debug --nologo -warnaserror 2>nul
 
       - uses: dorny/test-reporter@v1
         with:
@@ -112,7 +112,7 @@ jobs:
       - name: Install SDL dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev ffmpeg
+          sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev ffmpeg libsdl2 libsdl2-image libsdl2-ttf
   
       - name: setup
         uses: actions/setup-dotnet@v4
@@ -126,7 +126,7 @@ jobs:
             8.0.202
   
       - name: Dotnet test Debug
-        run: dotnet test alis.sln -c Debug --nologo --no-restore -warnaserror 2>/dev/null
+        run: dotnet test alis.sln -c Debug --nologo -warnaserror 2>/dev/null
   
       - uses: dorny/test-reporter@v1
         with:
