@@ -67,7 +67,7 @@ namespace Alis.App.Installer
     /// </summary>
     public class Installer
     {
-        
+       
         /// <summary>
         ///     The name engine
         /// </summary>
