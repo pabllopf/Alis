@@ -54,9 +54,19 @@ jobs:
           ref: master
           fetch-depth: 0
 
-      - name: Install dependencies with Chocolatey
+      - name: Download and Install SDL2
         run: |
-          choco install sdl2 sdl2-image sdl2-ttf ffmpeg
+          curl -LO https://www.libsdl.org/release/SDL2-devel-2.0.22-VC.zip
+          curl -LO https://www.libsdl.org/projects/SDL_image/release/SDL2_image-devel-2.0.5-VC.zip
+          curl -LO https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-devel-2.0.15-VC.zip
+          Expand-Archive -Path SDL2-devel-2.0.22-VC.zip -DestinationPath $env:USERPROFILE\sdl2
+          Expand-Archive -Path SDL2_image-devel-2.0.5-VC.zip -DestinationPath $env:USERPROFILE\sdl2
+          Expand-Archive -Path SDL2_ttf-devel-2.0.15-VC.zip -DestinationPath $env:USERPROFILE\sdl2
+          setx /M PATH "%PATH%;$env:USERPROFILE\sdl2\SDL2-2.0.22\lib\x64;$env:USERPROFILE\sdl2\SDL2_image-2.0.5\lib\x64;$env:USERPROFILE\sdl2\SDL2_ttf-2.0.15\lib\x64"
+  
+      - name: Install ffmpeg
+        run: |
+          choco install ffmpeg -y
 
       - name: clean_bin_sln
         shell: cmd
