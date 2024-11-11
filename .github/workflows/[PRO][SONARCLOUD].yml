@@ -61,6 +61,8 @@ jobs:
         run: |
           mkdir -p ./.sonar/scanner
           dotnet tool update dotnet-sonarscanner --tool-path ./.sonar/scanner
+          dotnet tool install --global dotnet-coverage
+          dotnet tool install --global coverlet.console
 
       - name: Build and analyze
         env:
@@ -68,9 +70,6 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           PATH: $PATH:~/.dotnet/tools
         run: |
-          dotnet tool install --global dotnet-coverage
-          dotnet tool install --global coverlet.console
-          
           # Ruta a la solución (.sln)
           dotnet build alis.sln --no-incremental -c Release -f net6.0 -p:WarningLevel=3 -nowarn:CS8604,CS86031701;0809;NETSDK1138;NETSDK1057;CS0618;SYSLIB0050;8633;8622;8714;8605;8769;8618;8625;8601;8602;8604;8765;8603;8767;8600;0433;0436;1701;1702;0618;1570
 
