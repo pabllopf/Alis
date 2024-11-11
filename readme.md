@@ -1,6 +1,5 @@
 [![](https://raw.githubusercontent.com/pabllopf/Alis/master/docs/banner/Alis_Banner_970x250.png)](https://pabllopf.github.io/Alis/index.html)
 
-
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_Alis&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pabllopf_Alis)
 [![Test](https://gist.githubusercontent.com/pabllopf/46071d4896642c7fad2dc67a5abebb5c/raw/badge.svg)](https://gist.githubusercontent.com/pabllopf/46071d4896642c7fad2dc67a5abebb5c/raw/badge.svg)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_Alis&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=pabllopf_Alis)
