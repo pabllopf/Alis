@@ -45,6 +45,7 @@ namespace Alis.Extension.Graphic.Sdl2Image.Test
         [Fact]
         public void ImgInitFlags_ShouldContainJpgFlag()
         {
+            SdlImage.Init(ImgInitFlags.ImgInitPng);
             Assert.Equal(0x00000001, (int) ImgInitFlags.ImgInitJpg);
         }
 
@@ -54,6 +55,7 @@ namespace Alis.Extension.Graphic.Sdl2Image.Test
         [Fact]
         public void ImgInitFlags_ShouldContainPngFlag()
         {
+            SdlImage.Init(ImgInitFlags.ImgInitPng);
             Assert.Equal(0x00000002, (int) ImgInitFlags.ImgInitPng);
         }
 
@@ -63,6 +65,7 @@ namespace Alis.Extension.Graphic.Sdl2Image.Test
         [Fact]
         public void ImgInitFlags_ShouldContainTifFlag()
         {
+            SdlImage.Init(ImgInitFlags.ImgInitPng);
             Assert.Equal(0x00000004, (int) ImgInitFlags.ImgInitTif);
         }
 
@@ -72,6 +75,7 @@ namespace Alis.Extension.Graphic.Sdl2Image.Test
         [Fact]
         public void ImgInitFlags_ShouldContainWebpFlag()
         {
+            SdlImage.Init(ImgInitFlags.ImgInitPng);
             Assert.Equal(0x00000008, (int) ImgInitFlags.ImgInitWebp);
         }
     }

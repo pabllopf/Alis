@@ -43,6 +43,8 @@ namespace Alis.Extension.Graphic.Sdl2Image.Test
         [Fact]
         public void ImgAnimation_ShouldInitializeCorrectly()
         {
+            SdlImage.Init(ImgInitFlags.ImgInitPng);
+            
             ImgAnimation animation = new ImgAnimation
             {
                 W = 100,
@@ -63,6 +65,7 @@ namespace Alis.Extension.Graphic.Sdl2Image.Test
         [Fact]
         public void ImgAnimation_ShouldSetFramesCorrectly()
         {
+            SdlImage.Init(ImgInitFlags.ImgInitPng);
             IntPtr frames = new IntPtr(123);
             ImgAnimation animation = new ImgAnimation
             {
@@ -78,6 +81,7 @@ namespace Alis.Extension.Graphic.Sdl2Image.Test
         [Fact]
         public void ImgAnimation_ShouldSetDelaysCorrectly()
         {
+            SdlImage.Init(ImgInitFlags.ImgInitPng);
             IntPtr delays = new IntPtr(456);
             ImgAnimation animation = new ImgAnimation
             {

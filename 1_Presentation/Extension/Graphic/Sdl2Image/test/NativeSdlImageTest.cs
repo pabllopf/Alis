@@ -45,6 +45,7 @@ namespace Alis.Extension.Graphic.Sdl2Image.Test
         [Fact]
         public void Version_ShouldReturnCorrectVersion()
         {
+            SdlImage.Init(ImgInitFlags.ImgInitPng);
             Version version = SdlImage.Version();
             Assert.Equal(new Version(2, 0, 6), version);
         }
@@ -55,6 +56,7 @@ namespace Alis.Extension.Graphic.Sdl2Image.Test
         [Fact]
         public void LoadImg_ShouldReturnValidPointer()
         {
+            SdlImage.Init(ImgInitFlags.ImgInitPng);
             string file = AssetManager.Find("test_image.png");
             IntPtr ptr = SdlImage.LoadImg(file);
             Assert.NotEqual(IntPtr.Zero, ptr);
@@ -66,6 +68,7 @@ namespace Alis.Extension.Graphic.Sdl2Image.Test
         [Fact]
         public void GetError_ShouldReturnErrorMessage()
         {
+            SdlImage.Init(ImgInitFlags.ImgInitPng);
             string errorMessage = "Test error";
             SdlImage.SetError(errorMessage);
             string result = SdlImage.GetError();
@@ -78,6 +81,7 @@ namespace Alis.Extension.Graphic.Sdl2Image.Test
         [Fact]
         public void IMG_Linked_Version_ShouldReturnValidPointer()
         {
+            SdlImage.Init(ImgInitFlags.ImgInitPng);
             IntPtr ptr = NativeSdlImage.InternalVersion();
             Assert.NotEqual(IntPtr.Zero, ptr);
         }
@@ -88,6 +92,7 @@ namespace Alis.Extension.Graphic.Sdl2Image.Test
         [Fact]
         public void IMG_LoadAnimation_ShouldReturnValidPointer()
         {
+            SdlImage.Init(ImgInitFlags.ImgInitPng);
             string file = AssetManager.Find("test_animation.gif");
             IntPtr ptr = NativeSdlImage.InternalLoadAnimation(file);
             Assert.NotEqual(IntPtr.Zero, ptr);
@@ -100,6 +105,7 @@ namespace Alis.Extension.Graphic.Sdl2Image.Test
         [Fact]
         public void IMG_Init_ShouldReturnNonZero()
         {
+            SdlImage.Init(ImgInitFlags.ImgInitPng);
             int result = NativeSdlImage.InternalInternalInit(ImgInitFlags.ImgInitJpg);
             Assert.NotEqual(0, result);
         }
@@ -110,6 +116,7 @@ namespace Alis.Extension.Graphic.Sdl2Image.Test
         [Fact]
         public void IMG_Quit_ShouldNotThrowException()
         {
+            SdlImage.Init(ImgInitFlags.ImgInitPng);
             NativeSdlImage.InternalQuit();
         }
 
@@ -119,6 +126,7 @@ namespace Alis.Extension.Graphic.Sdl2Image.Test
         [Fact]
         public void INTERNAL_IMG_Load_ShouldReturnValidPointer()
         {
+            SdlImage.Init(ImgInitFlags.ImgInitPng);
             IntPtr file = Marshal.StringToHGlobalAnsi(AssetManager.Find("test_image.png"));
             try
             {

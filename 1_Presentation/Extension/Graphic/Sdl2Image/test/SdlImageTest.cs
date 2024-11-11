@@ -45,6 +45,7 @@ namespace Alis.Extension.Graphic.Sdl2Image.Test
         [Fact]
         public void Version_ShouldReturnCorrectVersion()
         {
+            SdlImage.Init(ImgInitFlags.ImgInitPng);
             Version version = SdlImage.Version();
             Assert.Equal(new Version(2, 0, 6), version);
         }
@@ -55,6 +56,7 @@ namespace Alis.Extension.Graphic.Sdl2Image.Test
         [Fact]
         public void LoadImg_ShouldReturnValidPointer()
         {
+            SdlImage.Init(ImgInitFlags.ImgInitPng);
             string file = AssetManager.Find("test_image.png");
             IntPtr ptr = SdlImage.LoadImg(file);
             Assert.NotEqual(IntPtr.Zero, ptr);
@@ -66,6 +68,7 @@ namespace Alis.Extension.Graphic.Sdl2Image.Test
         [Fact]
         public void GetError_ShouldReturnErrorMessage()
         {
+            SdlImage.Init(ImgInitFlags.ImgInitPng);
             string errorMessage = "Test error";
             SdlImage.SetError(errorMessage);
             string result = SdlImage.GetError();
