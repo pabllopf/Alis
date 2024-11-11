@@ -2,6 +2,7 @@
 
 Thank you for your interest in contributing to Alis! Your contributions help make this project better for everyone. Whether you're fixing bugs, adding new features, improving documentation, or helping out in any other way, we're excited to have you on board.
 
+
 ## Table of Contents
 
 1. [Code of Conduct](#code-of-conduct)
