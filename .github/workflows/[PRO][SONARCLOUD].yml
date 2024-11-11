@@ -29,7 +29,7 @@ jobs:
           ref: master
           fetch-depth: 0
 
-      - name: Setup .NET
+      - name: setup
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: |
@@ -51,14 +51,15 @@ jobs:
         id: cache-sonar-scanner
         uses: actions/cache@v4
         with:
-          path: ~/.dotnet/tools/.store/dotnet-sonarscanner
+          path: ./.sonar/scanner
           key: ${{ runner.os }}-sonar-scanner
           restore-keys: ${{ runner.os }}-sonar-scanner
 
-      - name: Install SonarCloud scanner if not cached
+      - name: Install SonarCloud scanner
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
         run: |
-          dotnet tool install -g dotnet-sonarscanner
+          mkdir -p ./.sonar/scanner
+          dotnet tool update dotnet-sonarscanner --tool-path ./.sonar/scanner
 
       - name: Build and analyze
         env:
@@ -70,12 +71,12 @@ jobs:
           dotnet tool install --global coverlet.console
           
           # Ruta a la solución (.sln)
-          dotnet build -c Release -f net6.0 ./alis.sln
+          dotnet build -c Release -f net6.0 -v m ./alis.sln
           
           # Ejecutar cobertura
-          dotnet-coverage collect "dotnet test -c Release -f net6.0 ./alis.sln" -f xml -o "coverage.xml"
+          dotnet-coverage collect "dotnet test -c Release -f net6.0 -v m ./alis.sln" -f xml -o "coverage.xml"
           
           # Inicio del análisis SonarCloud
           dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml /d:sonar.scanner.scanAll=false
-          dotnet build -c Release -f net6.0 ./alis.sln
+          dotnet build -c Release -f net6.0 -v m ./alis.sln
           dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
