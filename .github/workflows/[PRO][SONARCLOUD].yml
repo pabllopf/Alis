@@ -64,6 +64,11 @@ jobs:
           dotnet tool install --global dotnet-coverage
           dotnet tool install --global coverlet.console
 
+      - name: Install global tools
+        run: |
+          dotnet tool install --global dotnet-coverage
+          dotnet tool install --global coverlet.console
+
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
