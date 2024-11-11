@@ -2,6 +2,6 @@
 <Project>
     <PropertyGroup>
         <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
-        <Nullable>enable</Nullable>
+        <Nullable>disable</Nullable>
     </PropertyGroup>
 </Project>
