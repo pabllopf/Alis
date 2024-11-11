@@ -23,13 +23,13 @@ jobs:
           java-version: 17
           distribution: 'zulu'
 
-      - name: Check
+      - name: Checkout code
         uses: actions/checkout@v4
         with:
           ref: master
           fetch-depth: 0
 
-      - name: setup
+      - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: |
@@ -51,20 +51,20 @@ jobs:
         id: cache-sonar-scanner
         uses: actions/cache@v4
         with:
-          path: ./.sonar/scanner
+          path: ~/.dotnet/tools/.store/dotnet-sonarscanner
           key: ${{ runner.os }}-sonar-scanner
           restore-keys: ${{ runner.os }}-sonar-scanner
 
-      - name: Install SonarCloud scanner
+      - name: Install SonarCloud scanner if not cached
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
         run: |
-          mkdir -p ./.sonar/scanner
-          dotnet tool update dotnet-sonarscanner --tool-path ./.sonar/scanner
+          dotnet tool install -g dotnet-sonarscanner
 
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          PATH: $PATH:~/.dotnet/tools
         run: |
           dotnet tool install --global dotnet-coverage
           dotnet tool install --global coverlet.console
@@ -75,6 +75,7 @@ jobs:
           # Ejecutar cobertura
           dotnet-coverage collect "dotnet test -c Release -f net6.0 ./alis.sln" -f xml -o "coverage.xml"
           
-          ./.sonar/scanner/dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
+          # Inicio del análisis SonarCloud
+          dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml /d:sonar.scanner.scanAll=false
           dotnet build -c Release -f net6.0 ./alis.sln
-          ./.sonar/scanner/dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+          dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
