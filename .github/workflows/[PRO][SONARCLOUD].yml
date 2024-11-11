@@ -76,12 +76,12 @@ jobs:
           PATH: $PATH:~/.dotnet/tools
         run: |
           # Ruta a la solución (.sln)
-          dotnet build alis.sln --no-incremental -c Release -f net6.0 -p:WarningLevel=3 -nowarn:CS8604;CS8605;CS86031701;0809;NETSDK1138;NETSDK1057;CS0618;SYSLIB0050;CS8633;CS8622;CS8714;CS8605;CS8769;CS8618;CS8625;CS8601;CS8602;CS8604;CS8765;CS8603;CS8767;CS8600;CS0433;CS0436;CS1701;CS1702;CS0618;CS1570
+          dotnet build alis.sln --no-incremental -c Release -f net6.0 -p:WarningLevel=3 
 
           # Ejecutar cobertura
-          dotnet-coverage collect "dotnet test alis.sln -c Release -f net6.0 -p:WarningLevel=3 -nowarn:CS8604;CS8605;CS86031701;0809;NETSDK1138;NETSDK1057;CS0618;SYSLIB0050;CS8633;CS8622;CS8714;CS8605;CS8769;CS8618;CS8625;CS8601;CS8602;CS8604;CS8765;CS8603;CS8767;CS8600;CS0433;CS0436;CS1701;CS1702;CS0618;CS1570" -f xml -o "coverage.xml"
+          dotnet-coverage collect "dotnet test alis.sln -c Release -f net6.0 -p:WarningLevel=3" -f xml -o "coverage.xml"
           
           # Inicio del análisis SonarCloud
           dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml /d:sonar.scanner.scanAll=false
-          dotnet build alis.sln --no-incremental -c Release -f net6.0 -p:WarningLevel=3 -nowarn:CS8604;CS8605CS86031701;0809;NETSDK1138;NETSDK1057;CS0618;SYSLIB0050;CS8633;CS8622;CS8714;CS8605;CS8769;CS8618;CS8625;CS8601;CS8602;CS8604;CS8765;CS8603;CS8767;CS8600;CS0433;CS0436;CS1701;CS1702;CS0618;CS1570
+          dotnet build alis.sln --no-incremental -c Release -f net6.0 -p:WarningLevel=3
           dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
