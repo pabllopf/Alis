@@ -5,6 +5,84 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.4.5] - 2024-11-10
+
+### ✨ New Features
+- `cf130b3` - New complete SDL2_image module (commit by @pabllopf)
+
+### 🐛 Bug Fixes
+- `541ee6e` - Delete default app icon (commit by @pabllopf)
+- `e05ef20` - Delete unnecessary DLLs in resources (commit by @pabllopf)
+- `2870d57` - Target frameworks on compile (commit by @pabllopf)
+- `d328e98` - The builder (commit by @pabllopf)
+- `95025e0` - Delete `#if` code (commit by @pabllopf)
+- `950bff2` - Add brackets to all code (commit by @pabllopf)
+- `f0c93e5` - Render preview on engine (commit by @pabllopf)
+- `9d0601e` - Adjust spaces in installer (commit by @pabllopf)
+
+### ✅ Tests
+- `372ac7a` - Adding tests to Physics module (commit by @pabllopf)
+- `672c95a` - Update tests (commit by @pabllopf)
+- `840b4d3` - Update macOS test (commit by @pabllopf)
+- `480d747` - Check cross-platform compatibility (commit by @pabllopf)
+- `085bb79` - Update `[DEV][TEST].yml` (commit by @pabllopf)
+- `1dc4009` - Update `[DEV][TEST].yml` (commit by @pabllopf)
+- `5bf0334` - Update `[DEV][TEST].yml` (commit by @pabllopf)
+- `162f548` - Update `[DEV][TEST].yml` (commit by @pabllopf)
+- `8f8e484` - Update `[DEV][TEST].yml` (commit by @pabllopf)
+- `7b3acc7` - Update `[DEV][TEST].yml` (commit by @pabllopf)
+- `94ab3c4` - Update `[DEV][TEST].yml` (commit by @pabllopf)
+
+### 📝 Documentation Changes
+- `68474c0` - Add comments (commit by @pabllopf)
+
+### 🎨 Code Style Changes
+- `0a74975` - Refactor solution to improve cleanliness (commit by @pabllopf)
+
+## [v0.4.4] - 2024-11-01
+
+### :sparkles: New Features
+- [`b7ceeb0`](https://github.com/pabllopf/Alis/commit/b7ceeb0c1b4273facc1817749473810798d0021d) - add new snake sample *(commit by @pabllopf)*
+- [`62c18a4`](https://github.com/pabllopf/Alis/commit/62c18a459173d88a2df26d17aadead98de72d276) - add sample snake game *(commit by @pabllopf)*
+- [`d4e7027`](https://github.com/pabllopf/Alis/commit/d4e70276cc018d2a968316f69e02bc63e8929419) - complete the snake move *(commit by @pabllopf)*
+- [`c225381`](https://github.com/pabllopf/Alis/commit/c2253819cdc85ed92de13c31ea772e91cf9dfe88) - add simple sln file without tests and samples *(commit by @pabllopf)*
+- [`36a3327`](https://github.com/pabllopf/Alis/commit/36a33270f607ec583f02612733aae043ad46a11c) - <Nullable>enable</Nullable> *(commit by @pabllopf)*
+- [`87d2ae4`](https://github.com/pabllopf/Alis/commit/87d2ae41e19bb87a3fa28d0432f40658fe36ede9) - delete static context and fix references *(commit by @pabllopf)*
+- [`154f9ee`](https://github.com/pabllopf/Alis/commit/154f9eef508eddf334ee85a3a35cc2e292de6ced) - implement the runtime *(commit by @pabllopf)*
+- [`6bff17a`](https://github.com/pabllopf/Alis/commit/6bff17aff0ac6ebfb482751ed2827b0a99268ecf) - render custom fonts with code and not external libs *(commit by @pabllopf)*
+- [`a861a07`](https://github.com/pabllopf/Alis/commit/a861a0799b7b714b82d108f89ed4e44bf52db02d) - change color of background and text on font of alis *(commit by @pabllopf)*
+- [`da60ae7`](https://github.com/pabllopf/Alis/commit/da60ae7b9bc9f131608d9c879abd0b0e28d5e232) - add new feature with fonts *(commit by @pabllopf)*
+
+### :bug: Bug Fixes
+- [`ff72f78`](https://github.com/pabllopf/Alis/commit/ff72f78da877f61a9a49964159d5f995cfc97ad7) - 16 issues *(commit by @pabllopf)*
+- [`78abd42`](https://github.com/pabllopf/Alis/commit/78abd425eac5e2de130cac58a87cc788111b56c2) - sample pos *(commit by @pabllopf)*
+- [`702b06f`](https://github.com/pabllopf/Alis/commit/702b06f8078ba51f72494493024deb30a3ff12d9) - simple test *(commit by @pabllopf)*
+- [`ae3522c`](https://github.com/pabllopf/Alis/commit/ae3522cf0f179bf04c2bc5e98454990fb80be056) - warnings *(commit by @pabllopf)*
+- [`21bd3c8`](https://github.com/pabllopf/Alis/commit/21bd3c86b3313502763e24306c4a867b6ab6a0aa) - delete timemanager from program sample *(commit by @pabllopf)*
+- [`7888054`](https://github.com/pabllopf/Alis/commit/7888054e2e4c84cd1b8c740cad820957417e6f32) - add new class runner to control the main loop *(commit by @pabllopf)*
+- [`080adb5`](https://github.com/pabllopf/Alis/commit/080adb5e51b6d2bf64a1d99d09c945d1f5dc6f88) - names and methods builds *(commit by @pabllopf)*
+- [`2d09511`](https://github.com/pabllopf/Alis/commit/2d095117fa73e3bfdc67a2cb9da39a47d569974f) - null enable on security and math modules *(commit by @pabllopf)*
+- [`c9d4906`](https://github.com/pabllopf/Alis/commit/c9d49066fef95a7aa7b4a796efafc14bd26d7f05) - null references on json module *(commit by @pabllopf)*
+- [`7d075a9`](https://github.com/pabllopf/Alis/commit/7d075a90f153236d59339a33ef9533be9bb0fd28) - update the samples of core *(commit by @pabllopf)*
+
+### :white_check_mark: Tests
+- [`7d5b42e`](https://github.com/pabllopf/Alis/commit/7d5b42e8d88bbd2a984fa17c9e520085a1aaa2ec) - check all test *(commit by @pabllopf)*
+- [`85d999b`](https://github.com/pabllopf/Alis/commit/85d999b3d849aaec8ac5cf634723b334a0d7acdc) - no more paralles test *(commit by @pabllopf)*
+- [`3862d52`](https://github.com/pabllopf/Alis/commit/3862d52b402eef9a653151c2b34ddbe98e862d10) - add new cases *(commit by @pabllopf)*
+- [`c1e7b16`](https://github.com/pabllopf/Alis/commit/c1e7b1686505c924e83043ad69683522a9d4a709) - fix unit testing *(commit by @pabllopf)*
+- [`0872b17`](https://github.com/pabllopf/Alis/commit/0872b178be493f66676e093cffa3b825dcb14ae1) - check unit tests *(commit by @pabllopf)*
+- [`b40e80d`](https://github.com/pabllopf/Alis/commit/b40e80d4c0c29cc2c4329084a383c537e84c2f68) - check new config *(commit by @pabllopf)*
+- [`7a99ed4`](https://github.com/pabllopf/Alis/commit/7a99ed481126a28c6bd91f0263ad646bbe514faa) - add all audio tests *(commit by @pabllopf)*
+- [`fe73dc4`](https://github.com/pabllopf/Alis/commit/fe73dc4696de259108e0723665c1367f02955302) - fix alis tests *(commit by @pabllopf)*
+
+### :memo: Documentation Changes
+- [`0309b64`](https://github.com/pabllopf/Alis/commit/0309b6449c207c3c901bedc90aaa7fdbff32c05b) - add font to samples of alis *(commit by @pabllopf)*
+
+### :art: Code Style Changes
+- [`dc37681`](https://github.com/pabllopf/Alis/commit/dc37681b08544ba5c0340f91ad3a806bd7472704) - big refactor on videogame class and ecs module *(commit by @pabllopf)*
+- [`e0b69c3`](https://github.com/pabllopf/Alis/commit/e0b69c3beb78ee296a47576008a2adcd7499740e) - change ihasbuilder interrface *(commit by @pabllopf)*
+- [`e0e65d9`](https://github.com/pabllopf/Alis/commit/e0e65d923b00d868b0d3fc2b08da5489f30a1e4f) - refactor main sln *(commit by @pabllopf)*
+
 ## [v0.4.3] - 2024-09-08
 
 ### :sparkles: New Features
@@ -3494,3 +3572,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.4.2]: https://github.com/pabllopf/Alis/compare/v0.4.1...v0.4.2
 
 [v0.4.3]: https://github.com/pabllopf/Alis/compare/v0.4.2...v0.4.3
+
+[v0.4.4]: https://github.com/pabllopf/Alis/compare/v0.4.3...v0.4.4
+
+[v0.4.5]: https://github.com/pabllopf/Alis/compare/v0.4.4...v0.4.5
