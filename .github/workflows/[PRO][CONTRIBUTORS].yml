@@ -1,0 +1,18 @@
+name: "[PRO][CONTRIBUTORS]"
+on:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  CreateFiles:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "readme.md"
+        uses: akhilmhdh/contributors-readme-action@v2.3.10
+        with:
+          image_size: 75
+          readme_path: "readme.md"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+            
+          
