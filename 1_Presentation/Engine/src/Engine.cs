@@ -33,7 +33,9 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using Alis.App.Engine.Core;
+using Alis.App.Engine.Entity;
 using Alis.App.Engine.Fonts;
+using Alis.App.Engine.Hub;
 using Alis.App.Engine.Shaders;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Data.Resource;
@@ -65,7 +67,7 @@ namespace Alis.App.Engine
         /// <summary>
         ///     The name engine
         /// </summary>
-        private const string NameEngine = "Alis";
+        private const string NameEngine = "Welcome to Alis by @pabllopf";
 
         /// <summary>
         ///     The vertex shader
@@ -88,20 +90,20 @@ namespace Alis.App.Engine
         private readonly bool fullscreen = false;
 
         /// <summary>
+        ///     The width window
+        /// </summary>
+        private readonly int widthWindow = 1025;
+        
+        /// <summary>
         ///     The height window
         /// </summary>
-        private readonly int heightWindow = 1920;
+        private readonly int heightWindow = 575;
 
         /// <summary>
         ///     The high dpi
         /// </summary>
         private readonly bool highDpi = false;
-
-        /// <summary>
-        ///     The width window
-        /// </summary>
-        private readonly int widthWindow = 1080;
-
+        
         /// <summary>
         ///     The font texture id
         /// </summary>
@@ -153,10 +155,15 @@ namespace Alis.App.Engine
         private SpaceWork spaceWork = new SpaceWork();
 
         /// <summary>
+        /// The hub menu
+        /// </summary>
+        private HubMenu hubMenu;
+
+        /// <summary>
         ///     Starts this instance
         /// </summary>
         /// <returns>The int</returns>
-        public void Start()
+        public void Run()
         {
             // initialize SDL and set a few defaults for the OpenGL context
             if (Sdl.Init(InitSettings.InitEverything) != 0)
@@ -191,10 +198,15 @@ namespace Alis.App.Engine
             Sdl.SetSwapInterval(1);
 
             // create the window which should be able to have a valid OpenGL context and is resizable
-            WindowSettings flags = WindowSettings.WindowOpengl | WindowSettings.WindowResizable | WindowSettings.WindowMaximized;
+            WindowSettings flags = WindowSettings.WindowOpengl | WindowSettings.WindowResizable;
             if (fullscreen)
             {
                 flags |= WindowSettings.WindowFullscreen;
+            }
+
+            if (spaceWork.ProjectSelected)
+            {
+                flags |= WindowSettings.WindowMaximized;
             }
 
             if (highDpi)
@@ -202,7 +214,10 @@ namespace Alis.App.Engine
                 flags |= WindowSettings.WindowAllowHighDpi;
             }
 
-            spaceWork.Window = Sdl.CreateWindow(NameEngine, (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered, widthWindow, heightWindow, flags);
+            spaceWork.Window = Sdl.CreateWindow(NameEngine, 
+                (int) WindowPos.WindowPosCentered, 
+                (int) WindowPos.WindowPosCentered, 
+                widthWindow, heightWindow, flags);
             _glContext = CreateGlContext(spaceWork.Window);
 
             // compile the shader program
@@ -212,22 +227,25 @@ namespace Alis.App.Engine
 
             spaceWork.Io = ImGui.GetIo();
 
-            spaceWork.Io.DisplaySize = new Vector2(800, 600);
+            spaceWork.Io.DisplaySize = new Vector2(widthWindow, heightWindow);
 
             Logger.Info($@"IMGUI VERSION {ImGui.GetVersion()}");
 
             // active plot renders
-            spaceWork.Io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset | ImGuiBackendFlags.PlatformHasViewports | ImGuiBackendFlags.HasGamepad | ImGuiBackendFlags.HasMouseHoveredViewport | ImGuiBackendFlags.HasMouseCursors;
+            spaceWork.Io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset | 
+                                         ImGuiBackendFlags.PlatformHasViewports | 
+                                         ImGuiBackendFlags.HasGamepad |
+                                         ImGuiBackendFlags.HasMouseHoveredViewport | 
+                                         ImGuiBackendFlags.HasMouseCursors;
 
 
             // Enable Keyboard Controls
-            spaceWork.Io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard;
-            spaceWork.Io.ConfigFlags |= ImGuiConfigFlags.NavEnableGamepad;
-
+            spaceWork.Io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard | 
+                                        ImGuiConfigFlags.NavEnableGamepad;
+            
             // CONFIG DOCKSPACE 
-
-            spaceWork.Io.ConfigFlags |= ImGuiConfigFlags.DockingEnable;
-            spaceWork.Io.ConfigFlags |= ImGuiConfigFlags.ViewportsEnable;
+            spaceWork.Io.ConfigFlags |= ImGuiConfigFlags.DockingEnable | 
+                                        ImGuiConfigFlags.ViewportsEnable;
 
             ImNodes.CreateContext();
             ImPlot.CreateContext();
@@ -243,7 +261,7 @@ namespace Alis.App.Engine
             float fontSizeIcon = 18;
 
             string fontFileSolid = AssetManager.Find("JetBrainsMono-Bold.ttf");
-            ImFontPtr fontLoaded16Solid = fonts.AddFontFromFileTtf(fontFileSolid, fontSize);
+            spaceWork.fontLoaded16Solid = fonts.AddFontFromFileTtf(fontFileSolid, fontSize);
             try
             {
                 ImFontConfigPtr icons_config = ImGui.ImFontConfig();
@@ -271,8 +289,8 @@ namespace Alis.App.Engine
                 return;
             }
 
-            string fontAwesomeRegular = AssetManager.Find("JetBrainsMonoNL-Regular.ttf");
-            ImFontPtr fontLoaded16Regular = fonts.AddFontFromFileTtf(fontAwesomeRegular, fontSize);
+            string fontAwesomeRegular = AssetManager.Find("JetBrainsMono-Bold.ttf");
+            spaceWork.fontLoaded30Bold = fonts.AddFontFromFileTtf(fontAwesomeRegular, 30);
             try
             {
                 ImFontConfigPtr icons_config = ImGui.ImFontConfig();
@@ -300,7 +318,7 @@ namespace Alis.App.Engine
             }
 
             string fontAwesomeLight = AssetManager.Find("JetBrainsMonoNL-Regular.ttf");
-            ImFontPtr fontLoaded16Light = fonts.AddFontFromFileTtf(fontAwesomeLight, fontSize);
+            spaceWork.fontLoaded16Light = fonts.AddFontFromFileTtf(fontAwesomeLight, fontSize);
             try
             {
                 ImFontConfigPtr icons_config = ImGui.ImFontConfig();
@@ -388,6 +406,9 @@ namespace Alis.App.Engine
             }
 
             spaceWork.Start();
+            
+            hubMenu = new HubMenu(spaceWork);
+            
             while (!_quit)
             {
                 while (Sdl.PollEvent(out Event e) != 0)
@@ -441,40 +462,22 @@ namespace Alis.App.Engine
                 {
                     spaceWork.Io.DeltaTime = 0.016f;
                 }
+                
+                Logger.Warning($"displayW: {displayW} displayH: {displayH} windowSize.X: {windowSize.X} windowSize.Y: {windowSize.Y}");
 
                 _time = currentTime;
 
                 UpdateMousePosAndButtons();
 
-                //ImGui.PushFont(fontLoaded);
-
-                int sizeMenuDown = 25;
-                Vector2 sizeDock = spaceWork.Viewport.Size - new Vector2(0, sizeMenuDown * 2);
-
-
-                ImGui.SetNextWindowPos(spaceWork.Viewport.WorkPos);
-                ImGui.SetNextWindowSize(sizeDock);
-                //ImGui.SetNextWindowViewport(spaceWork.Viewport .ID);
-                ImGui.PushStyleVar(ImGuiStyleVar.WindowRounding, 0.0f);
-                ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0.0f);
-                ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2(0.0f, 0.0f));
-
-
-                ImGui.Begin("DockSpace Demo", dockspaceflags);
-                // Submit the DockSpace
-
-                ImGui.PopStyleVar(3);
-
-                uint dockSpaceId = ImGui.GetId("MyDockSpace");
-                ImGui.DockSpace(dockSpaceId, sizeDock);
-
-
-                // RENDER SAMPLES AND CODE
-                spaceWork.Update();
-
-                ImGui.End();
-                //ImGui.PopFont();
-
+                if (spaceWork.ProjectSelected)
+                {
+                    RenderProject();
+                }
+                else
+                {
+                    hubMenu.Render();
+                }
+                
                 Sdl.MakeCurrent(spaceWork.Window, _glContext);
                 ImGui.Render();
 
@@ -508,8 +511,44 @@ namespace Alis.App.Engine
             Sdl.DestroyWindow(spaceWork.Window);
             Sdl.Quit();
         }
+        
+       
+
+        /// <summary>
+        /// Renders the project
+        /// </summary>
+        public void RenderProject()
+        {
+            //ImGui.PushFont(fontLoaded);
+
+            int sizeMenuDown = 25;
+            Vector2 sizeDock = spaceWork.Viewport.Size - new Vector2(0, sizeMenuDown * 2);
 
 
+            ImGui.SetNextWindowPos(spaceWork.Viewport.WorkPos);
+            ImGui.SetNextWindowSize(sizeDock);
+            //ImGui.SetNextWindowViewport(spaceWork.Viewport .ID);
+            ImGui.PushStyleVar(ImGuiStyleVar.WindowRounding, 0.0f);
+            ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0.0f);
+            ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2(0.0f, 0.0f));
+
+
+            ImGui.Begin("DockSpace Demo", dockspaceflags);
+            // Submit the DockSpace
+
+            ImGui.PopStyleVar(3);
+
+            uint dockSpaceId = ImGui.GetId("MyDockSpace");
+            ImGui.DockSpace(dockSpaceId, sizeDock);
+
+
+            // RENDER SAMPLES AND CODE
+            spaceWork.Update();
+            
+            ImGui.End();
+            //ImGui.PopFont();
+        }
+        
         /// <summary>
         ///     Processes the event using the specified evt
         /// </summary>
