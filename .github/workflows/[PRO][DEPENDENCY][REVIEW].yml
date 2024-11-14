@@ -1,0 +1,17 @@
+name: "[PRO][DEPENDENCY][REVIEW]"
+on: [ pull_request ]
+
+permissions:
+  contents: read
+
+jobs:
+  dependency-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout Repository'
+        uses: actions/checkout@v3
+        with:
+          ref: master
+
+      - name: 'Dependency Review'
+        uses: actions/dependency-review-action@v4

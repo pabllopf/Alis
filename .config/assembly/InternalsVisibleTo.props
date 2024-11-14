@@ -1,0 +1,8 @@
+<Project>
+    <ItemGroup Condition="
+        $(AssemblyName.Contains('Test')) == false AND 
+        $(AssemblyName.Contains('Sample')) == false
+        ">
+        <InternalsVisibleTo Include="$(AssemblyName).Test"/>
+    </ItemGroup>
+</Project>

@@ -1,0 +1,14 @@
+<Project>
+    <PropertyGroup Label="BasePath">
+        <SolutionDir Condition="'$(SolutionDir)'==''">$(MSBuildThisFileDirectory)</SolutionDir>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <VSTestLogger>trx%3bLogFileName=$(MSBuildProjectName).trx</VSTestLogger>
+        <VSTestResultsDirectory>$(SolutionDir).test/$(TargetFramework)</VSTestResultsDirectory>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <AssemblyVersion>0.4.5</AssemblyVersion>
+    </PropertyGroup>
+</Project>

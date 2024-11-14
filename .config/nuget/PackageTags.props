@@ -1,0 +1,5 @@
+<Project>
+    <PropertyGroup>
+        <PackageTags>game framework windows macos linux ios android</PackageTags>
+    </PropertyGroup>
+</Project>
