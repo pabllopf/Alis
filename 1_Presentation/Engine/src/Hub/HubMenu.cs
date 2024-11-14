@@ -214,11 +214,291 @@ namespace Alis.App.Engine.Hub
         {
             ImGui.PushStyleColor(ImGuiCol.ChildBg, new Vector4(0.15f, 0.15f, 0.15f, 1.0f));
             if (selectedMenuItem == 0) RenderProjectsSection();
-            if (selectedMenuItem == 1) RenderProjectsSection();
-            if (selectedMenuItem == 2) RenderProjectsSection();
+            if (selectedMenuItem == 1) InstallsEditorSection();
+            if (selectedMenuItem == 2) LearnSection();
             if (selectedMenuItem == 3) RenderCommunitySection();
             ImGui.PopStyleColor();
         }
+
+        private bool showTutorials = false;
+private bool showDocumentation = false;
+private bool showVideos = false;
+private bool showTips = false;
+
+private void LearnSection()
+{
+    // Header for the section
+    ImGui.Text("Learn and Explore");
+    ImGui.Separator();
+
+    // Apply custom styles for the buttons
+    ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0.2f, 0.6f, 0.8f, 1.0f));  // Custom color for the button
+    ImGui.PushStyleColor(ImGuiCol.ButtonHovered, new Vector4(0.4f, 0.8f, 1.0f, 1.0f));  // Hover color
+    ImGui.PushStyleColor(ImGuiCol.ButtonActive, new Vector4(0.1f, 0.4f, 0.7f, 1.0f));  // Active color
+
+    // Create buttons as tabs for each section
+    if (ImGui.Button("📚 Tutorials"))
+    {
+        // Handle "Tutorials" tab logic
+        showTutorials = true;
+        showDocumentation = false;
+        showVideos = false;
+        showTips = false;
+    }
+
+    ImGui.SameLine();  // Place the next button on the same line
+
+    if (ImGui.Button("📖 Documentation"))
+    {
+        // Handle "Documentation" tab logic
+        showTutorials = false;
+        showDocumentation = true;
+        showVideos = false;
+        showTips = false;
+    }
+
+    ImGui.SameLine();  // Place the next button on the same line
+
+    if (ImGui.Button("🎥 Videos"))
+    {
+        // Handle "Videos" tab logic
+        showTutorials = false;
+        showDocumentation = false;
+        showVideos = true;
+        showTips = false;
+    }
+
+    ImGui.SameLine();  // Place the next button on the same line
+
+    if (ImGui.Button("💡 Tips"))
+    {
+        // Handle "Tips" tab logic
+        showTutorials = false;
+        showDocumentation = false;
+        showVideos = false;
+        showTips = true;
+    }
+
+    ImGui.PopStyleColor(3);  // Reset to default button styles
+
+    // Add a separator
+    ImGui.Separator();
+
+    // Display content based on the selected "tab" (button)
+    if (showTutorials)
+    {
+        DisplayTutorials();
+    }
+    if (showDocumentation)
+    {
+        DisplayDocumentation();
+    }
+    if (showVideos)
+    {
+        DisplayVideos();
+    }
+    if (showTips)
+    {
+        DisplayTips();
+    }
+}
+
+// Display tutorials in a card-style layout
+        private void DisplayTutorials()
+        {
+            ImGui.Text("Step-by-Step Tutorials");
+            ImGui.Separator();
+
+            var tutorials = new List<LearningResource>
+            {
+                new LearningResource("Getting Started", "Learn the basics of the platform", "tutorials/getting_started.html"),
+                new LearningResource("Advanced Features", "Dive into advanced functionality", "tutorials/advanced_features.html"),
+                new LearningResource("Customization", "Tailor the platform to your needs", "tutorials/customization.html")
+            };
+
+            foreach (var tutorial in tutorials)
+            {
+                ImGui.BulletText($"{tutorial.Title}: {tutorial.Description}");
+                if (ImGui.Button($"Open##{tutorial.Title}"))
+                {
+                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(tutorial.Url) {UseShellExecute = true});
+                }
+            }
+        }
+
+// Display documentation with a search bar
+        private void DisplayDocumentation()
+        {
+            string searchQuery = string.Empty;
+
+            ImGui.Text("Search Documentation");
+            ImGui.InputText("Search", ref searchQuery, 100);
+
+            ImGui.NewLine();
+            ImGui.Text("Popular Topics:");
+            ImGui.BulletText("API Reference");
+            ImGui.BulletText("Configuration Guide");
+            ImGui.BulletText("Deployment Guide");
+
+            if (!string.IsNullOrEmpty(searchQuery))
+            {
+                ImGui.NewLine();
+                ImGui.Text($"Search results for: {searchQuery}");
+                ImGui.BulletText("Result 1");
+                ImGui.BulletText("Result 2");
+                ImGui.BulletText("Result 3");
+            }
+        }
+
+// Display videos as clickable thumbnails
+        private void DisplayVideos()
+        {
+            ImGui.Text("Learning Videos");
+            ImGui.Separator();
+
+            var videos = new List<LearningResource>
+            {
+                new LearningResource("Introduction Video", "A quick introduction to the platform", "videos/introduction.mp4"),
+                new LearningResource("Feature Overview", "Detailed explanation of features", "videos/features.mp4"),
+                new LearningResource("Webinar Replay", "Watch a recent webinar", "videos/webinar.mp4")
+            };
+
+            foreach (var video in videos)
+            {
+                if (ImGui.Button($"▶ {video.Title}"))
+                {
+                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(video.Url) {UseShellExecute = true});
+                }
+            }
+        }
+
+// Display random tips
+        private void DisplayTips()
+        {
+            var tips = new List<string>
+            {
+                "Use keyboard shortcuts to speed up your workflow.",
+                "Regularly check for updates to stay up-to-date.",
+                "Explore community forums for additional support.",
+                "Customize your settings for better performance."
+            };
+
+            ImGui.Text("Quick Tips");
+            ImGui.Separator();
+
+            var random = new Random();
+            ImGui.TextWrapped(tips[random.Next(tips.Count)]);
+        }
+
+// Helper class for learning resources
+
+
+private void InstallsEditorSection()
+        {
+            // Display a header for the section
+            ImGui.Text("Installed Versions");
+            ImGui.Separator();
+
+            // Button to install new versions
+            if (ImGui.Button("Install New Version"))
+            {
+                // Implement the logic to handle new version installation
+                InstallNewVersion();
+            }
+
+            ImGui.NewLine();
+
+            // Display a table for installed versions
+            if (ImGui.BeginTable("InstallsTable", 3, ImGuiTableFlags.Borders | ImGuiTableFlags.RowBg))
+            {
+                // Setup table columns
+                ImGui.TableSetupColumn("Version", ImGuiTableColumnFlags.WidthFixed, 100);
+                ImGui.TableSetupColumn("Release Date", ImGuiTableColumnFlags.WidthFixed, 150);
+                ImGui.TableSetupColumn("Actions", ImGuiTableColumnFlags.WidthStretch);
+                ImGui.TableHeadersRow();
+
+                // Example installed versions data
+                var installedVersions = new List<InstalledVersion>
+                {
+                    new InstalledVersion("1.0.0", "2023-01-15", "/path/to/version1"),
+                    new InstalledVersion("1.1.0", "2023-06-10", "/path/to/version2"),
+                    new InstalledVersion("2.0.0", "2024-03-05", "/path/to/version3")
+                };
+
+                // Iterate through each installed version and display in the table
+                foreach (var version in installedVersions)
+                {
+                    ImGui.TableNextRow();
+
+                    // Version column
+                    ImGui.TableSetColumnIndex(0);
+                    ImGui.Text(version.Version);
+
+                    // Release date column
+                    ImGui.TableSetColumnIndex(1);
+                    ImGui.Text(version.ReleaseDate);
+
+                    // Actions column
+                    ImGui.TableSetColumnIndex(2);
+
+                    // Context menu for actions
+                    if (ImGui.Button($"Actions##{version.Version}"))
+                    {
+                        ImGui.OpenPopup($"ActionsPopup##{version.Version}");
+                    }
+
+                    if (ImGui.BeginPopup($"ActionsPopup##{version.Version}"))
+                    {
+                        if (ImGui.MenuItem("Reveal in Finder"))
+                        {
+                            RevealInFinder(version.InstallPath);
+                        }
+
+                        if (ImGui.MenuItem("Open in Terminal"))
+                        {
+                            OpenInTerminal(version.InstallPath);
+                        }
+
+                        if (ImGui.MenuItem("Delete"))
+                        {
+                            DeleteInstallation(version.InstallPath);
+                        }
+
+                        ImGui.EndPopup();
+                    }
+                }
+
+                ImGui.EndTable();
+            }
+        }
+
+// Helper methods
+        private void InstallNewVersion()
+        {
+            // Logic to handle installing new versions
+            Console.WriteLine("Install New Version button clicked.");
+        }
+
+        private void RevealInFinder(string path)
+        {
+            // Open the installation path in Finder
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("open", path) {UseShellExecute = true});
+        }
+
+        private void OpenInTerminal(string path)
+        {
+            // Open the installation path in Terminal
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("open", "-a Terminal " + path) {UseShellExecute = true});
+        }
+
+        private void DeleteInstallation(string path)
+        {
+            // Logic to delete the installation
+            Console.WriteLine($"Delete installation at: {path}");
+        }
+
+// InstalledVersion class
+
 
         /// <summary>
         /// Renders the projects section
@@ -363,157 +643,76 @@ namespace Alis.App.Engine.Hub
 
         Gallery2 gallery = new Gallery2();
 
-       private void RenderCommunitySection()
-{
-    // Crear el menú de navegación horizontal
-    if (ImGui.BeginMenuBar())
-    {
-        // Opción "Samples"
-        if (ImGui.BeginMenu("Samples"))
-        {
-            // Aquí agregas las acciones o la visualización de los recursos de la sección Samples
-            ImGui.EndMenu();
-        }
-
-        // Opción "Web"
-        if (ImGui.BeginMenu("Web"))
-        {
-            // Aquí agregas las acciones o la visualización de la sección Web
-            ImGui.EndMenu();
-        }
-
-        // Opción "Templates"
-        if (ImGui.BeginMenu("Templates"))
-        {
-            // Aquí agregas las acciones o la visualización de la sección Templates
-            ImGui.EndMenu();
-        }
-
-        ImGui.EndMenuBar();
-    }
-
-    // Espaciado entre el menú y la tabla
-    ImGui.NewLine();
-
-    // Crear la tabla para mostrar los recursos
-    if (ImGui.BeginTable("ResourceTable", 4, ImGuiTableFlags.Borders | ImGuiTableFlags.RowBg))
-    {
-        // Definir las columnas de la tabla
-        ImGui.TableSetupColumn("Image", ImGuiTableColumnFlags.WidthFixed, 100);
-        ImGui.TableSetupColumn("Name", ImGuiTableColumnFlags.WidthStretch);
-        ImGui.TableSetupColumn("Description", ImGuiTableColumnFlags.WidthStretch);
-        ImGui.TableSetupColumn("Access", ImGuiTableColumnFlags.WidthFixed, 100);
-        ImGui.TableHeadersRow();
-
-        // Generar filas con los recursos (suponiendo que tienes una lista de recursos llamada 'Items')
-        foreach (var item in gallery.Items)
-        {
-            ImGui.TableNextRow();
-
-            // Columna de la imagen
-            ImGui.TableSetColumnIndex(0);
-            ImGui.Image(LoadTextureFromFile(item.ImagePath), new Vector2(100, 100));
-
-            // Columna del nombre
-            ImGui.TableSetColumnIndex(1);
-            ImGui.Text(item.Title);
-
-            // Columna de la descripción
-            ImGui.TableSetColumnIndex(2);
-            ImGui.Text(item.Description);
-
-            // Columna del botón para acceder al recurso web
-            ImGui.TableSetColumnIndex(3);
-            if (ImGui.Button("Open"))
-            {
-                // Aquí puedes implementar la acción para abrir el recurso web
-                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(item.Url) { UseShellExecute = true });
-            }
-        }
-
-        ImGui.EndTable();
-    }
-}
-
-
-
-
-/*
-        Gallery gallery = new Gallery();
-
         private void RenderCommunitySection()
         {
-            // Establecer el estilo para la galería
-            ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2(20, 20)); // Espaciado entre elementos
-            ImGui.PushStyleVar(ImGuiStyleVar.FrameRounding, 8.0f); // Bordes redondeados
-
-            // Contenedor de la galería con scroll
-            ImGui.BeginChild("Gallery", new Vector2(0, 0), true, ImGuiWindowFlags.AlwaysUseWindowPadding);
-
-            float availableWidth = ImGui.GetContentRegionAvail().X; // Obtener el ancho disponible para las cajas
-            Logger.Warning(availableWidth.ToString());
-            float spacing = 20f; // Espaciado entre tarjetas
-            int numColumns = (int) (availableWidth / (100 + spacing)); // Número de columnas que caben en la pantalla, con el tamaño mínimo
-
-            if (numColumns == 0) numColumns = 1; // Asegurarse de que haya al menos 1 columna
-
-            float currentX = 0;
-            float currentY = 0;
-            float maxHeightInRow = 0;
-
-            // Recorrer los recursos para mostrar cada tarjeta
-            for (int i = 0; i < gallery.Items.Count; i++)
+            // Crear el menú de navegación horizontal
+            if (ImGui.BeginMenuBar())
             {
-                GalleryItem item = gallery.Items[i];
-
-                // Ajustar la altura y el ancho para que la caja sea cuadrada
-                float cardWidth = item.Width; // El ancho de la tarjeta es el definido aleatoriamente
-                float cardHeight = item.Height; // La altura de la tarjeta también es el valor aleatorio
-
-                // Verificar si es necesario iniciar una nueva línea
-                if (currentX + cardWidth + spacing > availableWidth) // Si no cabe en la misma línea
+                // Opción "Samples"
+                if (ImGui.BeginMenu("Samples"))
                 {
-                    currentX = 0; // Restablecer la posición X
-                    currentY += maxHeightInRow + spacing; // Mover a la siguiente línea
-                    maxHeightInRow = 0; // Restablecer la altura máxima de la fila
+                    // Aquí agregas las acciones o la visualización de los recursos de la sección Samples
+                    ImGui.EndMenu();
                 }
 
-                // Comenzar a renderizar el item
-                ImGui.SetCursorPos(new Vector2(currentX, currentY)); // Posicionar la tarjeta en la posición actual
-                ImGui.BeginGroup();
-                ImGui.PushStyleColor(ImGuiCol.ChildBg, new Vector4(0.15f, 0.15f, 0.15f, 1.0f)); // Fondo oscuro para cada tarjeta
-                ImGui.BeginChild($"##Card_{item.Title}", new Vector2(cardWidth, cardHeight), true);
-
-                // Imagen del recurso
-                if (File.Exists(item.ImagePath))
+                // Opción "Web"
+                if (ImGui.BeginMenu("Web"))
                 {
-                    IntPtr textureId = LoadTextureFromFile(item.ImagePath);
-                    ImGui.Image(textureId, new Vector2(cardWidth - 20, cardHeight - 20)); // Ajustar el tamaño de la imagen para que ocupe toda la caja
-                }
-                else
-                {
-                    ImGui.Text("Image not found");
+                    // Aquí agregas las acciones o la visualización de la sección Web
+                    ImGui.EndMenu();
                 }
 
-                // Texto del título
-                //ImGui.TextColored(new Vector4(1.0f, 1.0f, 1.0f, 1.0f), item.Title); // Título en blanco
+                // Opción "Templates"
+                if (ImGui.BeginMenu("Templates"))
+                {
+                    // Aquí agregas las acciones o la visualización de la sección Templates
+                    ImGui.EndMenu();
+                }
 
-                // Cerrar la tarjeta
-                ImGui.EndChild();
-                ImGui.PopStyleColor();
-                ImGui.EndGroup();
-
-                // Ajustar la posición X para el siguiente elemento
-                currentX += cardWidth + spacing;
-
-                // Actualizar la altura máxima de la fila
-                maxHeightInRow = Math.Max(maxHeightInRow, cardHeight);
+                ImGui.EndMenuBar();
             }
 
-            // Cerrar el contenedor de la galería
-            ImGui.EndChild();
+            // Espaciado entre el menú y la tabla
+            ImGui.NewLine();
 
-            ImGui.PopStyleVar(2); // Restaurar los estilos
-        }*/
+            // Crear la tabla para mostrar los recursos
+            if (ImGui.BeginTable("ResourceTable", 4, ImGuiTableFlags.Borders | ImGuiTableFlags.RowBg))
+            {
+                // Definir las columnas de la tabla
+                ImGui.TableSetupColumn("Image", ImGuiTableColumnFlags.WidthFixed, 100);
+                ImGui.TableSetupColumn("Name", ImGuiTableColumnFlags.WidthStretch);
+                ImGui.TableSetupColumn("Description", ImGuiTableColumnFlags.WidthStretch);
+                ImGui.TableSetupColumn("Access", ImGuiTableColumnFlags.WidthFixed, 100);
+                ImGui.TableHeadersRow();
+
+                // Generar filas con los recursos (suponiendo que tienes una lista de recursos llamada 'Items')
+                foreach (var item in gallery.Items)
+                {
+                    ImGui.TableNextRow();
+
+                    // Columna de la imagen
+                    ImGui.TableSetColumnIndex(0);
+                    ImGui.Image(LoadTextureFromFile(item.ImagePath), new Vector2(100, 100));
+
+                    // Columna del nombre
+                    ImGui.TableSetColumnIndex(1);
+                    ImGui.Text(item.Title);
+
+                    // Columna de la descripción
+                    ImGui.TableSetColumnIndex(2);
+                    ImGui.Text(item.Description);
+
+                    // Columna del botón para acceder al recurso web
+                    ImGui.TableSetColumnIndex(3);
+                    if (ImGui.Button("Open"))
+                    {
+                        // Aquí puedes implementar la acción para abrir el recurso web
+                        System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(item.Url) {UseShellExecute = true});
+                    }
+                }
+
+                ImGui.EndTable();
+            }
+        }
     }
 }
