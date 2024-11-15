@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+    <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+        <TargetFrameworks>net6.0;netstandard2.0;</TargetFrameworks>
+        <TargetFrameworks Condition="$(AssemblyName.Contains('App')) == true OR $(AssemblyName.Contains('Template')) == true OR $(AssemblyName.Contains('Sample')) == true OR $(AssemblyName.Contains('Benchmark')) == true OR $(AssemblyName.Contains('Test')) == true">net6.0;</TargetFrameworks>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="$(Configuration) == 'Release'">
+        <TargetFrameworks>netcoreapp3.0;netcoreapp3.1;net5.0;net6.0;net7.0;net8.0;netstandard2.0;netstandard2.1</TargetFrameworks>
+
+        <TargetFrameworks Condition="$(AssemblyName.Contains('Sample')) == true OR $(AssemblyName.Contains('Benchmark')) == true">net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
+
+        <TargetFrameworks Condition="$(AssemblyName.Contains('Test')) == true">netcoreapp3.0;netcoreapp3.1;net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
+
+        <TargetFrameworks Condition="$(AssemblyName.Contains('App')) == true">net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
+
+        <TargetFrameworks Condition="$(AssemblyName.Contains('App')) == true AND $(RuntimeIdentifier.Contains('osx')) == true">net7.0;net8.0</TargetFrameworks>
+    </PropertyGroup>
+
+
+    <!-- Import all the props files in the application folder -->
+    <Import Project="$(SolutionDir).config/application/Runtimes.props"/>
+    <Import Project="$(SolutionDir).config/application/LangVersion.props"/>
+    <Import Project="$(SolutionDir).config/application/Optimize.props"/>
+    <Import Project="$(SolutionDir).config/application/AllowUnsafeBlocks.props"/>
+    <Import Project="$(SolutionDir).config/application/SelfContained.props"/>
+    <Import Project="$(SolutionDir).config/application/OutputType.props"/>
+
+    <!-- Import all the props files in the assembly folder -->
+    <Import Project="$(SolutionDir).config/assembly/Company.props"/>
+    <Import Project="$(SolutionDir).config/assembly/FileVersion.props"/>
+    <Import Project="$(SolutionDir).config/assembly/InternalsVisibleTo.props"/>
+    <Import Project="$(SolutionDir).config/assembly/NeutralLanguage.props"/>
+    <Import Project="$(SolutionDir).config/assembly/Product.props"/>
+
+    <!-- Import all the props files in the build folder -->
+    <Import Project="$(SolutionDir).config/builds/NoWarn.props"/>
+    <Import Project="$(SolutionDir).config/builds/PublishTrimmed.props"/>
+    <Import Project="$(SolutionDir).config/builds/SuppressTfmSupportBuildWarnings.props"/>
+    <Import Project="$(SolutionDir).config/builds/TreatWarningsAsErrors.props"/>
+    <Import Project="$(SolutionDir).config/builds/WarningLevel.props"/>
+    <Import Project="$(SolutionDir).config/builds/WarningsAsErrors.props"/>
+
+    <!-- Import all the props files in the code folder -->
+    <Import Project="$(SolutionDir).config/docs/Docs.props"/>
+
+    <!-- Import all the props files in the nuget folder -->
+    <Import Project="$(SolutionDir).config/nuget/Packable.props"/>
+    <Import Project="$(SolutionDir).config/nuget/Authors.props"/>
+    <Import Project="$(SolutionDir).config/nuget/Copyright.props"/>
+    <Import Project="$(SolutionDir).config/nuget/Description.props"/>
+    <Import Project="$(SolutionDir).config/nuget/DocumentationFile.props"/>
+    <Import Project="$(SolutionDir).config/nuget/FileVersion.props"/>
+    <Import Project="$(SolutionDir).config/nuget/InformationalVersion.props"/>
+    <Import Project="$(SolutionDir).config/nuget/PackageIcon.props"/>
+    <Import Project="$(SolutionDir).config/nuget/PackageLicenseFile.props"/>
+    <Import Project="$(SolutionDir).config/nuget/PackageProjectUrl.props"/>
+    <Import Project="$(SolutionDir).config/nuget/PackageReleaseNotes.props"/>
+    <Import Project="$(SolutionDir).config/nuget/PackageRequireLicenseAcceptance.props"/>
+    <Import Project="$(SolutionDir).config/nuget/PackageTags.props"/>
+    <Import Project="$(SolutionDir).config/nuget/PackageVersion.props"/>
+    <Import Project="$(SolutionDir).config/nuget/RepositoryType.props"/>
+    <Import Project="$(SolutionDir).config/nuget/RepositoryUrl.props"/>
+    <Import Project="$(SolutionDir).config/nuget/Title.props"/>
+    <Import Project="$(SolutionDir).config/nuget/Version.props"/>
+
+    <!-- Import all the props files in the reference folder -->
+    <Import Project="$(SolutionDir).config/reference/AssetFolder.props"/>
+    <Import Project="$(SolutionDir).config/reference/ContentFiles.props"/>
+    <Import Project="$(SolutionDir).config/reference/EmbeddedResources.props"/>
+    <Import Project="$(SolutionDir).config/reference/Projects.props"/>
+    <Import Project="$(SolutionDir).config/reference/Packages.props"/>
+
+    <!-- Import all the props files in the target folder -->
+    <Import Project="$(SolutionDir).config/target/BeforeBuild.props"/>
+    <Import Project="$(SolutionDir).config/target/AfterBuild.props"/>
+
+    <!-- Import all the props files in the test folder -->
+    <Import Project="$(SolutionDir).config/test/ExcludeFromCodeCoverage.props"/>
+    <Import Project="$(SolutionDir).config/test/InternalsVisibleTo.props"/>
+    <Import Project="$(SolutionDir).config/test/ParallelExe.props"/>
+    <Import Project="$(SolutionDir).config/test/SonarQubeExclude.props"/>
+</Project>
