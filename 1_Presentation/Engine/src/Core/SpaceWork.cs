@@ -96,6 +96,19 @@ namespace Alis.App.Engine.Core
         public IntPtr Window;
 
         /// <summary>
+        /// The font loaded 16 solid
+        /// </summary>
+        public ImFontPtr fontLoaded16Solid;
+        /// <summary>
+        /// The font loaded 30 bold
+        /// </summary>
+        public ImFontPtr fontLoaded30Bold;
+        /// <summary>
+        /// The font loaded 16 light
+        /// </summary>
+        public ImFontPtr fontLoaded16Light;
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="SpaceWork" /> class
         /// </summary>
         public SpaceWork()
@@ -166,6 +179,11 @@ namespace Alis.App.Engine.Core
         ///     Gets or sets the value of the fps
         /// </summary>
         public int Fps { get; set; } = 60;
+
+        /// <summary>
+        /// Gets or sets the value of the project selected
+        /// </summary>
+        public bool ProjectSelected { get; set; } = false;
 
         /// <summary>
         ///     Initializes this instance
