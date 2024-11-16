@@ -183,7 +183,7 @@ namespace Alis.App.Engine.Core
         /// <summary>
         /// Gets or sets the value of the project selected
         /// </summary>
-        public bool ProjectSelected { get; set; } = false;
+        public bool ProjectSelected { get; set; } = true;
 
         /// <summary>
         ///     Initializes this instance

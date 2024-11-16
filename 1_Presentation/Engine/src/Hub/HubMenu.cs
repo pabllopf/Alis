@@ -74,12 +74,11 @@ namespace Alis.App.Engine.Hub
 
             ImGui.SetNextWindowPos(Vector2.Zero);
             ImGui.SetNextWindowSize(screenSize);
-            ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4(0.12f, 0.12f, 0.12f, 1.0f));
+            
             ImGui.Begin("##MainWindow", ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove);
 
             ImGui.BeginChild("Sidebar", new Vector2(220, screenSize.Y - 20), true);
-
-            ImGui.PushStyleColor(ImGuiCol.ChildBg, new Vector4(0.10f, 0.10f, 0.10f, 1.0f));
+            
             ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(10, 10));
             ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2(10, 10));
 
@@ -109,8 +108,7 @@ namespace Alis.App.Engine.Hub
 
             ImGui.Separator();
             ImGui.PopStyleVar(2);
-            ImGui.PopStyleColor();
-
+            
             ButtonsLeftMenu();
 
             ImGui.SetCursorPosY(screenSize.Y - 70);
@@ -126,9 +124,8 @@ namespace Alis.App.Engine.Hub
             ImGui.EndChild();
 
             ImGui.End();
-            ImGui.PopStyleColor();
         }
-
+        
         /// <summary>
         /// Buttonses the left menu
         /// </summary>
@@ -139,19 +136,8 @@ namespace Alis.App.Engine.Hub
                 // Definir los estilos antes de cada botón
                 ImGui.PushStyleVar(ImGuiStyleVar.FrameRounding, 5.0f); // Redondear las esquinas
                 ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2(10, 10)); // Espaciado entre los items
-
-                // Si el botón está seleccionado, aplicamos un fondo de color
-                if (selectedMenuItem == i)
-                {
-                    ImGui.PushStyleVar(ImGuiStyleVar.ButtonTextAlign, new Vector2(0, 0.5f));
-                    ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(46, 66, 111, 0.5f)); // Fondo azul para el botón seleccionado
-                }
-                else
-                {
-                    ImGui.PushStyleVar(ImGuiStyleVar.ButtonTextAlign, new Vector2(0, 0.5f));
-                    ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0.0f, 0.0f, 0.0f, 0.0f)); // Fondo transparente para los demás botones
-                }
-
+                ImGui.PushStyleVar(ImGuiStyleVar.ButtonTextAlign, new Vector2(0, 0.5f));
+                
                 // Crear el botón con la alineación adecuada
                 if (ImGui.Button(menuItems[i], new Vector2(200, 40)))
                 {
@@ -160,7 +146,6 @@ namespace Alis.App.Engine.Hub
 
                 // Restaurar los estilos después de cada botón
                 ImGui.PopStyleVar(3); // Restaurar ItemSpacing y FrameRounding
-                ImGui.PopStyleColor(); // Restaurar el color del botón
             }
         }
 
@@ -232,9 +217,9 @@ private void LearnSection()
     ImGui.Separator();
 
     // Apply custom styles for the buttons
-    ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0.2f, 0.6f, 0.8f, 1.0f));  // Custom color for the button
-    ImGui.PushStyleColor(ImGuiCol.ButtonHovered, new Vector4(0.4f, 0.8f, 1.0f, 1.0f));  // Hover color
-    ImGui.PushStyleColor(ImGuiCol.ButtonActive, new Vector4(0.1f, 0.4f, 0.7f, 1.0f));  // Active color
+    //ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0.2f, 0.6f, 0.8f, 1.0f));  // Custom color for the button
+    //ImGui.PushStyleColor(ImGuiCol.ButtonHovered, new Vector4(0.4f, 0.8f, 1.0f, 1.0f));  // Hover color
+    //ImGui.PushStyleColor(ImGuiCol.ButtonActive, new Vector4(0.1f, 0.4f, 0.7f, 1.0f));  // Active color
 
     // Create buttons as tabs for each section
     if (ImGui.Button("📚 Tutorials"))
@@ -279,7 +264,7 @@ private void LearnSection()
         showTips = true;
     }
 
-    ImGui.PopStyleColor(3);  // Reset to default button styles
+    //ImGui.PopStyleColor(3);  // Reset to default button styles
 
     // Add a separator
     ImGui.Separator();
@@ -472,7 +457,6 @@ private void InstallsEditorSection()
             }
         }
 
-// Helper methods
         private void InstallNewVersion()
         {
             // Logic to handle installing new versions
@@ -496,10 +480,7 @@ private void InstallsEditorSection()
             // Logic to delete the installation
             Console.WriteLine($"Delete installation at: {path}");
         }
-
-// InstalledVersion class
-
-
+        
         /// <summary>
         /// Renders the projects section
         /// </summary>
@@ -544,8 +525,8 @@ private void InstallsEditorSection()
             ImGui.SameLine(); // Asegurarse de que los botones están alineados después de la barra de búsqueda
 
             // Cambiar estilo de los botones a gris y redondear las esquinas
-            ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0.5f, 0.5f, 0.5f, 1.0f));
-            ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(1.0f, 1.0f, 1.0f, 1.0f));
+            //ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0.5f, 0.5f, 0.5f, 1.0f));
+            //ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(1.0f, 1.0f, 1.0f, 1.0f));
 
             // Establecer el radio de las esquinas de los botones
             ImGui.PushStyleVar(ImGuiStyleVar.FrameRounding, 5.0f); // Aquí estableces el radio de las esquinas
@@ -572,7 +553,7 @@ private void InstallsEditorSection()
             }
 
             // Restaurar el estilo de los botones
-            ImGui.PopStyleColor(2); // Restaurar el estilo de los botones
+            //ImGui.PopStyleColor(2); // Restaurar el estilo de los botones
             ImGui.PopStyleVar(); // Restaurar el estilo de FrameRounding
 
             ImGui.SetCursorPosY(ImGui.GetCursorPosY() - verticalOffset);
