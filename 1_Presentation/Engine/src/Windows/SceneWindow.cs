@@ -30,6 +30,7 @@
 using System;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
+using Alis.App.Engine.Fonts;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
@@ -49,10 +50,7 @@ namespace Alis.App.Engine.Windows
     /// </summary>
     public class SceneWindow : IWindow
     {
-        /// <summary>
-        ///     The name window
-        /// </summary>
-        private const string NameWindow = "Scene";
+        private static readonly string NameWindow = $"{FontAwesome5.Hashtag} Scene";
 
         /// <summary>
         ///     The pixel ptr
@@ -242,7 +240,7 @@ namespace Alis.App.Engine.Windows
             Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Linear);
             Gl.GlBindTexture(TextureTarget.Texture2D, 0);
 
-            if (ImGui.Begin("Scene Sample"))
+            if (ImGui.Begin(NameWindow))
             {
                 ImGui.Image(
                     (IntPtr) textureopenGlId,

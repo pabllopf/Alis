@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.App.Engine.Core;
+using Alis.App.Engine.Fonts;
 using Alis.Extension.Graphic.ImGui.Native;
 
 namespace Alis.App.Engine.Windows
@@ -38,10 +39,7 @@ namespace Alis.App.Engine.Windows
     /// <seealso cref="IWindow" />
     public class InspectorWindow : IWindow
     {
-        /// <summary>
-        ///     The name window
-        /// </summary>
-        private const string NameWindow = "Inspector";
+        private static readonly string NameWindow = $"{FontAwesome5.Eye} Inspector";
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="InspectorWindow" /> class

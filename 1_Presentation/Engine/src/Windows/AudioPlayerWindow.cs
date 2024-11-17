@@ -42,10 +42,7 @@ namespace Alis.App.Engine.Windows
     /// <seealso cref="IWindow" />
     public class AudioPlayerWindow : IWindow
     {
-        /// <summary>
-        ///     The window name
-        /// </summary>
-        private const string WindowName = "Audio Player";
+        private static readonly string WindowName = $"{FontAwesome5.Music} Audio Player";
 
         /// <summary>
         ///     The current time
@@ -124,7 +121,7 @@ namespace Alis.App.Engine.Windows
 
             if (ImGui.Begin(WindowName, ref isOpen, flags))
             {
-                if (ImGui.Button($"{FontAwesome5.Play}", new Vector2(25, 25)))
+                if (ImGui.Button($"{FontAwesome5.Play}"))
                 {
                     isPlaying = true;
                 }
@@ -133,7 +130,7 @@ namespace Alis.App.Engine.Windows
 
                 if (isPlaying)
                 {
-                    ImGui.ProgressBar(progress, new Vector2(-1, 0), $"{currentTime} / {totalTime} ");
+                    ImGui.ProgressBar(progress, new Vector2(-10, 0), $"{currentTime} / {totalTime} ");
                 }
             }
 

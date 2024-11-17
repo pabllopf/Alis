@@ -41,10 +41,7 @@ namespace Alis.App.Engine.Windows
     /// <seealso cref="IWindow" />
     public class AssetsWindow : IWindow
     {
-        /// <summary>
-        ///     The window name
-        /// </summary>
-        private const string WindowName = "Assets";
+        private static readonly string WindowName = $"{FontAwesome5.FolderOpen} Assets";
 
         /// <summary>
         ///     The command ptr

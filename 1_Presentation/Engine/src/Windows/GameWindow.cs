@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.App.Engine.Core;
+using Alis.App.Engine.Fonts;
 using Alis.Extension.Graphic.ImGui.Native;
 
 namespace Alis.App.Engine.Windows
@@ -37,10 +38,7 @@ namespace Alis.App.Engine.Windows
     /// </summary>
     internal class GameWindow : IWindow
     {
-        /// <summary>
-        ///     The name window
-        /// </summary>
-        private const string NameWindow = "Game";
+        private static readonly string NameWindow = $"{FontAwesome5.Gamepad} Game";
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="GameWindow" /> class
