@@ -196,8 +196,8 @@ namespace Alis.App.Engine.Core
             imNodeDemo.Initialize();
             iconDemo.Initialize();
 
-            TopMenu.Initialize();
-            BottomMenu.Initialize();
+            //TopMenu.Initialize();
+            //BottomMenu.Initialize();
             ConsoleWindow.Initialize();
             GameWindow.Initialize();
             InspectorWindow.Initialize();
@@ -219,8 +219,8 @@ namespace Alis.App.Engine.Core
             imNodeDemo.Start();
             iconDemo.Start();
 
-            TopMenu.Start();
-            BottomMenu.Start();
+            //TopMenu.Start();
+            //BottomMenu.Start();
             ConsoleWindow.Start();
             GameWindow.Start();
             InspectorWindow.Start();
@@ -242,8 +242,8 @@ namespace Alis.App.Engine.Core
             imNodeDemo.Run();
             iconDemo.Run();
 
-            TopMenu.Render();
-            BottomMenu.Render();
+            //TopMenu.Render();
+            //BottomMenu.Render();
             ConsoleWindow.Render();
             GameWindow.Render();
             InspectorWindow.Render();
