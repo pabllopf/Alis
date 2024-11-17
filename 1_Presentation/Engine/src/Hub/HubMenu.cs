@@ -493,6 +493,7 @@ private void InstallsEditorSection()
 
             // Añadir un campo de búsqueda en lugar de "Projects"
             ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2(spaceBetween, 20));
+            ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(10, 0));
 
             // Establecer el ancho de la barra de búsqueda para que ocupe el espacio restante
             float searchBarWidth = ImGui.GetContentRegionAvail().X - ((buttonWidth * 4) + (spaceBetween * 2));
@@ -515,8 +516,10 @@ private void InstallsEditorSection()
             ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(5, (elementHeight - iconHeight) / 2)); // Ajustar el padding para igualar la altura
 
             // Campo de búsqueda
-            string searchQuery = "";
-            ImGui.InputTextWithHint("##Search", "Search...", ref searchQuery, 256, ImGuiInputTextFlags.CallbackCharFilter);
+            if (ImGui.InputTextWithHint("##Search", "Search...", ref searchQuery, 256))
+            {   
+                Console.WriteLine("Search query: " + searchQuery);
+            }
 
             // Restaurar estilo
             ImGui.PopStyleVar(1); // Eliminar el estilo adicional
@@ -533,14 +536,14 @@ private void InstallsEditorSection()
 
             // Botones
             ImGui.SetCursorPosY(ImGui.GetCursorPosY() - verticalOffset);
-            if (ImGui.Button("New", new Vector2(buttonWidth, elementHeight)))
+            if (ImGui.Button("Create", new Vector2(buttonWidth, elementHeight)))
             {
                 // Acción para "New"
             }
 
             ImGui.SameLine();
             ImGui.SetCursorPosY(ImGui.GetCursorPosY() - verticalOffset);
-            if (ImGui.Button("Add", new Vector2(buttonWidth, elementHeight)))
+            if (ImGui.Button("Import", new Vector2(buttonWidth, elementHeight)))
             {
                 // Acción para "Add"
             }
@@ -554,52 +557,70 @@ private void InstallsEditorSection()
 
             // Restaurar el estilo de los botones
             //ImGui.PopStyleColor(2); // Restaurar el estilo de los botones
-            ImGui.PopStyleVar(); // Restaurar el estilo de FrameRounding
+            ImGui.PopStyleVar(2); // Restaurar el estilo de FrameRounding
 
             ImGui.SetCursorPosY(ImGui.GetCursorPosY() - verticalOffset);
             ImGui.Separator();
+            
+            ImGui.PushStyleVar(ImGuiStyleVar.CellPadding, new Vector2(10, 15));
 
-            // Tabla de proyectos
-            if (ImGui.BeginTable("ProjectTable", 4, ImGuiTableFlags.RowBg | ImGuiTableFlags.Borders | ImGuiTableFlags.Resizable))
+             if (ImGui.BeginTable("ProjectTable", 4, ImGuiTableFlags.RowBg | ImGuiTableFlags.Borders | ImGuiTableFlags.Resizable))
             {
-                ImGui.TableSetupColumn("NAME & PATH", ImGuiTableColumnFlags.WidthStretch);
+                ImGui.TableSetupColumn("NAME", ImGuiTableColumnFlags.WidthStretch);
+                ImGui.TableSetupColumn("PATH", ImGuiTableColumnFlags.WidthStretch);
                 ImGui.TableSetupColumn("MODIFIED", ImGuiTableColumnFlags.WidthFixed, 120);
                 ImGui.TableSetupColumn("EDITOR VERSION", ImGuiTableColumnFlags.WidthFixed, 150);
-                ImGui.TableSetupColumn("ACTIONS", ImGuiTableColumnFlags.WidthFixed, 50);
                 ImGui.TableHeadersRow();
 
                 for (int i = 0; i < projects.Count; i++)
                 {
                     Project project = projects[i];
                     ImGui.TableNextRow();
-
-                    ImGui.TableSetColumnIndex(0);
-                    ImGui.TextColored(new Vector4(1.0f, 1.0f, 1.0f, 1.0f), project.Name);
-                    ImGui.TextColored(new Vector4(0.7f, 0.7f, 0.7f, 1.0f), project.Path); // Path con estilo menos destacado
-
-                    ImGui.TableSetColumnIndex(1);
-                    ImGui.TextColored(new Vector4(0.8f, 0.8f, 0.8f, 1.0f), project.ModifiedDate);
-
-                    ImGui.TableSetColumnIndex(2);
-                    ImGui.TextColored(new Vector4(0.8f, 0.8f, 0.8f, 1.0f), project.EditorVersion);
-
-                    // Botón "..." con menú emergente
-                    ImGui.TableSetColumnIndex(3);
-                    if (ImGui.Button($"...##{i}"))
+                    
+                    // Selección de fila completa
+                    ImGui.TableNextColumn();
+                    if (ImGui.Selectable($"##Row{i}", selectedProjectIndex == i, ImGuiSelectableFlags.SpanAllColumns | ImGuiSelectableFlags.AllowDoubleClick))
                     {
-                        ImGui.OpenPopup($"ActionsMenu##{i}");
+                        selectedProjectIndex = i;
+
+                        if (ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left))
+                        {
+                            OpenProject(project);
+                        }
+                    }
+                    
+                    // Menú contextual para la fila seleccionada
+                    if (ImGui.IsItemHovered() && ImGui.IsMouseClicked(ImGuiMouseButton.Right))
+                    {
+                        ImGui.OpenPopup($"ContextMenu##{i}");
+                        Console.WriteLine("Right-clicked on project: " + project.Name);
                     }
 
-                    if (ImGui.BeginPopup($"ActionsMenu##{i}"))
+                    ImGui.SameLine(); // Permite que el texto siga en la misma línea
+                    ImGui.TextColored(new Vector4(1.0f, 1.0f, 1.0f, 1.0f), project.Name);
+
+                    // Columna 2: Ruta
+                    ImGui.TableNextColumn();
+                    ImGui.TextColored(new Vector4(0.7f, 0.7f, 0.7f, 1.0f), project.Path);
+
+                    // Columna 3: Fecha de modificación
+                    ImGui.TableNextColumn();
+                    ImGui.TextColored(new Vector4(0.8f, 0.8f, 0.8f, 1.0f), project.ModifiedDate);
+
+                    // Columna 4: Versión del editor
+                    ImGui.TableNextColumn();
+                    ImGui.TextColored(new Vector4(0.8f, 0.8f, 0.8f, 1.0f), project.EditorVersion);
+
+                    if (ImGui.BeginPopup($"ContextMenu##{i}"))
                     {
                         if (ImGui.MenuItem("Reveal in Finder"))
                         {
-                            // Acción: Abrir en Finder
+                            // Acción: Reveal in Finder
                         }
 
                         if (ImGui.MenuItem("Open in Terminal"))
                         {
-                            // Acción: Abrir en Terminal
+                            // Acción: Open in Terminal
                         }
 
                         if (ImGui.MenuItem("Duplicate Project"))
@@ -619,10 +640,17 @@ private void InstallsEditorSection()
                 ImGui.EndTable();
             }
 
-            ImGui.PopStyleVar(); // Restaurar estilo
+            ImGui.PopStyleVar(2); // Restaurar estilo
+        }
+
+        private void OpenProject(Project project)
+        {
+            Console.WriteLine($"Opening project: {project.Name}");
         }
 
         Gallery2 gallery = new Gallery2();
+        private int selectedProjectIndex = -1;
+        private string searchQuery = "";
 
         private void RenderCommunitySection()
         {
