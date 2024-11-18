@@ -475,7 +475,7 @@ namespace Alis.App.Engine
                 else
                 {
                     hubMenu.Render();
-                    //ImGui.ShowDemoWindow();
+                    ImGui.ShowDemoWindow();
                 }
                 
                 Sdl.MakeCurrent(spaceWork.Window, _glContext);
@@ -661,22 +661,30 @@ namespace Alis.App.Engine
             style[(int)ImGuiCol.ModalWindowDimBg] = new Vector4(0.2f, 0.2f, 0.2f, 0.6f);
                         
             // SETTING STYLE
-            
-            // Window rounding radius
+            // WindowRounding
             style.WindowRounding = 0.0f;
-
-            // Frame rounding radius
-            style.FrameRounding = 0.0f;
-
-            // Scrollbar rounding radius
-            style.ScrollbarRounding = 0.0f;
-
-            // Grab rounding radius
-            style.GrabRounding = 0.0f;
-
-            // Tab rounding radius
-            style.TabRounding = 0.0f;
-
+            
+            // ChildRounding
+            style.ChildRounding = 0.0f;
+            
+            // FrameRounding
+            style.FrameRounding = 1.0f;
+            
+            // PopupRounding
+            style.PopupRounding = 1.0f;
+            
+            // ScrollbarRounding
+            style.ScrollbarRounding = 2.0f;
+            
+            // GrabRounding
+            style.GrabRounding = 1.0f;
+            
+            // logSliderDeadzone
+            style.LogSliderDeadzone = 4.0f;
+            
+            // TabRounding
+            style.TabRounding = 1.0f;
+            
             // Window border size
             style.WindowBorderSize = 0.0f;
 
@@ -747,31 +755,12 @@ namespace Alis.App.Engine
             style.CurveTessellationTol = 1.25f;
 
             // Circle tessellation max error
-            style.CircleTessellationMaxError = 1.60f;
+            style.CircleTessellationMaxError = 0.2f;
             
-            // WindowRounding
-            style.WindowRounding = 0.0f;
-            
-            // ChildRounding
-            style.ChildRounding = 0.0f;
-            
-            // FrameRounding
-            style.FrameRounding = 1.0f;
-            
-            // PopupRounding
-            style.PopupRounding = 1.0f;
-            
-            // ScrollbarRounding
-            style.ScrollbarRounding = 2.0f;
-            
-            // GrabRounding
-            style.GrabRounding = 1.0f;
-            
-            // logSliderDeadzone
-            style.LogSliderDeadzone = 2.0f;
-            
-            // TabRounding
-            style.TabRounding = 1.0f;
+            // Circle tessellation max error
+            style.Alpha = 1.0f;
+
+            style.DisabledAlpha = 0.6f;
         }
 
 
