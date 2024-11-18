@@ -64,10 +64,36 @@ namespace Alis.App.Engine.Menus
         public void Render()
         {
             ImGui.BeginMainMenuBar();
-            if (ImGui.BeginMenu("Sample main menu"))
+            if (ImGui.BeginMenu("File"))
             {
-                ImGui.Separator();
-                ImGui.Text("Sample text");
+                if (ImGui.MenuItem("Open")) 
+                {
+                    // Acción al seleccionar "Open"
+                }
+
+                if (ImGui.MenuItem("Save")) 
+                {
+                    // Acción al seleccionar "Save"
+                }
+
+                if (ImGui.MenuItem("Exit")) 
+                {
+                    // Acción al seleccionar "Exit"
+                }
+                ImGui.EndMenu();
+            }
+
+            if (ImGui.BeginMenu("Edit"))
+            {
+                if (ImGui.MenuItem("Undo")) 
+                {
+                    // Acción al seleccionar "Undo"
+                }
+
+                if (ImGui.MenuItem("Redo")) 
+                {
+                    // Acción al seleccionar "Redo"
+                }
                 ImGui.EndMenu();
             }
 

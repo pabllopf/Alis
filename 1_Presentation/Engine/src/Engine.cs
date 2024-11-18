@@ -36,6 +36,7 @@ using Alis.App.Engine.Core;
 using Alis.App.Engine.Entity;
 using Alis.App.Engine.Fonts;
 using Alis.App.Engine.Hub;
+using Alis.App.Engine.Menus;
 using Alis.App.Engine.Shaders;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Data.Resource;
@@ -764,9 +765,10 @@ namespace Alis.App.Engine
         }
 
 
-        // Variable que controla la altura del menú inferior
-        private float bottomMenuHeight = 30.0f;
+    
 
+        private DockSpaceMenu dockSpaceMenu = new DockSpaceMenu();
+        
         /// <summary>
         /// Renders the project
         /// </summary>
@@ -777,6 +779,9 @@ namespace Alis.App.Engine
             ImGui.SetNextWindowSize(spaceWork.Viewport.Size);
             ImGui.Begin("DockSpace Demo", dockspaceflags);
 
+            
+            dockSpaceMenu.Update();
+
             // Calcular el tamaño del DockSpace restante
             Vector2 dockSize = spaceWork.Viewport.Size - new Vector2(5, 95);
             uint dockSpaceId = ImGui.GetId("MyDockSpace");
@@ -785,112 +790,9 @@ namespace Alis.App.Engine
             // Renderizar el contenido principal del espacio de trabajo
             spaceWork.Update();
 
-            // Menú inferior
-            Vector2 menuSize = new Vector2(spaceWork.Viewport.Size.X, bottomMenuHeight);
-            ImGui.SetNextWindowPos(new Vector2(spaceWork.Viewport.WorkPos.X, spaceWork.Viewport.WorkPos.Y + dockSize.Y + 20 + bottomMenuHeight / 2));
-            ImGui.SetNextWindowSize(menuSize);
-
-            // Configuración de estilo
-            ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2(0, 0));
-            ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(0, 0));
-
-            
-            if (ImGui.Begin("Bottom Menu", ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove))
-            {
-                
-                ImGui.Columns(5, "MenuColumns", false); // Cinco columnas para botones pequeños
-
-                // Botón del primer menú
-                if (ImGui.Button($"{FontAwesome5.DigitalTachograph}##bottom1", new Vector2(32, 32)))
-                {
-                    ImGui.OpenPopup("PopupMenu1");
-                }
-
-                // Opciones del primer menú (Popup)
-                if (ImGui.BeginPopup("PopupMenu1"))
-                {
-                    if (ImGui.MenuItem("Option 1"))
-                    {
-                        // Acción para la opción 1
-                    }
-
-                    if (ImGui.MenuItem("Option 2"))
-                    {
-                        // Acción para la opción 2
-                    }
-
-                    if (ImGui.MenuItem("Option 3"))
-                    {
-                        // Acción para la opción 3
-                    }
-
-                    ImGui.EndPopup();
-                }
-
-                ImGui.NextColumn();
-
-                // Botón del segundo menú
-                if (ImGui.Button($"{FontAwesome5.DigitalTachograph}##bottom2", new Vector2(32, 32)))
-                {
-                    ImGui.OpenPopup("PopupMenu2");
-                }
-
-                // Opciones del segundo menú (Popup)
-                if (ImGui.BeginPopup("PopupMenu2"))
-                {
-                    if (ImGui.MenuItem("Option A"))
-                    {
-                        // Acción para la opción A
-                    }
-
-                    if (ImGui.MenuItem("Option B"))
-                    {
-                        // Acción para la opción B
-                    }
-
-                    if (ImGui.MenuItem("Option C"))
-                    {
-                        // Acción para la opción C
-                    }
-
-                    ImGui.EndPopup();
-                }
-
-                ImGui.NextColumn();
-                ImGui.NextColumn();
-                ImGui.NextColumn();
-
-                // Botón del tercer menú
-                if (ImGui.Button($"{FontAwesome5.DigitalTachograph}##bottom3",  new Vector2(32, 32)))
-                {
-                    ImGui.OpenPopup("PopupMenu3");
-                }
-
-                // Opciones del tercer menú (Popup)
-                if (ImGui.BeginPopup("PopupMenu3"))
-                {
-                    if (ImGui.MenuItem("Action 1"))
-                    {
-                        // Acción para la opción 1
-                    }
-
-                    if (ImGui.MenuItem("Action 2"))
-                    {
-                        // Acción para la opción 2
-                    }
-
-                    ImGui.EndPopup();
-                }
-
-                ImGui.End();
-            }
-            
-            // Restaurar el estilo
-            ImGui.PopStyleVar(2);
-
             ImGui.End();
         }
-        
+
         /// <summary>
         ///     Processes the event using the specified evt
         /// </summary>

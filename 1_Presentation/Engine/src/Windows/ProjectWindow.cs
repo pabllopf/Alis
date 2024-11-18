@@ -38,7 +38,7 @@ namespace Alis.App.Engine.Windows
     /// </summary>
     public class ProjectWindow : IWindow
     {
-        private static readonly string NameWindow = $"{FontAwesome5.LaptopCode} Project";
+        private static readonly string NameWindow = $"{FontAwesome5.Stream} Project";
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ProjectWindow" /> class
