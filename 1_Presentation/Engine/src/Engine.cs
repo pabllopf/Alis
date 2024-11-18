@@ -475,7 +475,7 @@ namespace Alis.App.Engine
                 else
                 {
                     hubMenu.Render();
-                    ImGui.ShowDemoWindow();
+                    //ImGui.ShowDemoWindow();
                 }
                 
                 Sdl.MakeCurrent(spaceWork.Window, _glContext);
@@ -784,15 +784,9 @@ namespace Alis.App.Engine
 
             int sizeMenuDown = 25;
             Vector2 sizeDock = spaceWork.Viewport.Size - new Vector2(0, sizeMenuDown * 2);
-
-
+            
             ImGui.SetNextWindowPos(spaceWork.Viewport.WorkPos);
             ImGui.SetNextWindowSize(sizeDock);
-            //ImGui.SetNextWindowViewport(spaceWork.Viewport .ID);
-            //ImGui.PushStyleVar(ImGuiStyleVar.WindowRounding, 0.0f);
-            //ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0.0f);
-            //ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2(0.0f, 0.0f));
-
 
             ImGui.Begin("DockSpace Demo", dockspaceflags);
             // Submit the DockSpace
