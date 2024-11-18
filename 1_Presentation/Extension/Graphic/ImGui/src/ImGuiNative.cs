@@ -1243,7 +1243,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <returns>The im gui style</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetStyle")]
-        public static extern ImGuiStyle igGetStyle();
+        public static extern ref ImGuiStyle igGetStyle();
 
         /// <summary>
         ///     Igs the get style color name using the specified idx

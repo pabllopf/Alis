@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Extension.Graphic.ImGui
@@ -510,5 +511,143 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The colors 54
         /// </summary>
         public Vector4 Colors54 { get; set; }
+
+        public Vector4 this[int index]
+        {
+            get
+            {
+                if (index < 0 || index >= 55)
+                {
+                    throw new IndexOutOfRangeException("Index out of range");
+                }
+
+                return index switch
+                {
+                    0 => Colors0,
+                    1 => Colors1,
+                    2 => Colors2,
+                    3 => Colors3,
+                    4 => Colors4,
+                    5 => Colors5,
+                    6 => Colors6,
+                    7 => Colors7,
+                    8 => Colors8,
+                    9 => Colors9,
+                    10 => Colors10,
+                    11 => Colors11,
+                    12 => Colors12,
+                    13 => Colors13,
+                    14 => Colors14,
+                    15 => Colors15,
+                    16 => Colors16,
+                    17 => Colors17,
+                    18 => Colors18,
+                    19 => Colors19,
+                    20 => Colors20,
+                    21 => Colors21,
+                    22 => Colors22,
+                    23 => Colors23,
+                    24 => Colors24,
+                    25 => Colors25,
+                    26 => Colors26,
+                    27 => Colors27,
+                    28 => Colors28,
+                    29 => Colors29,
+                    30 => Colors30,
+                    31 => Colors31,
+                    32 => Colors32,
+                    33 => Colors33,
+                    34 => Colors34,
+                    35 => Colors35,
+                    36 => Colors36,
+                    37 => Colors37,
+                    38 => Colors38,
+                    39 => Colors39,
+                    40 => Colors40,
+                    41 => Colors41,
+                    42 => Colors42,
+                    43 => Colors43,
+                    44 => Colors44,
+                    45 => Colors45,
+                    46 => Colors46,
+                    47 => Colors47,
+                    48 => Colors48,
+                    49 => Colors49,
+                    50 => Colors50,
+                    51 => Colors51,
+                    52 => Colors52,
+                    53 => Colors53,
+                    54 => Colors54,
+                    _ => throw new IndexOutOfRangeException("Index out of range")
+                };
+            }
+            set
+            {
+                if (index < 0 || index >= 55)
+                {
+                    throw new IndexOutOfRangeException("Index out of range");
+                }
+
+                switch (index)
+                {
+                    case 0: Colors0 = value; break;
+                    case 1: Colors1 = value; break;
+                    case 2: Colors2 = value; break;
+                    case 3: Colors3 = value; break;
+                    case 4: Colors4 = value; break;
+                    case 5: Colors5 = value; break;
+                    case 6: Colors6 = value; break;
+                    case 7: Colors7 = value; break;
+                    case 8: Colors8 = value; break;
+                    case 9: Colors9 = value; break;
+                    case 10: Colors10 = value; break;
+                    case 11: Colors11 = value; break;
+                    case 12: Colors12 = value; break;
+                    case 13: Colors13 = value; break;
+                    case 14: Colors14 = value; break;
+                    case 15: Colors15 = value; break;
+                    case 16: Colors16 = value; break;
+                    case 17: Colors17 = value; break;
+                    case 18: Colors18 = value; break;
+                    case 19: Colors19 = value; break;
+                    case 20: Colors20 = value; break;
+                    case 21: Colors21 = value; break;
+                    case 22: Colors22 = value; break;
+                    case 23: Colors23 = value; break;
+                    case 24: Colors24 = value; break;
+                    case 25: Colors25 = value; break;
+                    case 26: Colors26 = value; break;
+                    case 27: Colors27 = value; break;
+                    case 28: Colors28 = value; break;
+                    case 29: Colors29 = value; break;
+                    case 30: Colors30 = value; break;
+                    case 31: Colors31 = value; break;
+                    case 32: Colors32 = value; break;
+                    case 33: Colors33 = value; break;
+                    case 34: Colors34 = value; break;
+                    case 35: Colors35 = value; break;
+                    case 36: Colors36 = value; break;
+                    case 37: Colors37 = value; break;
+                    case 38: Colors38 = value; break;
+                    case 39: Colors39 = value; break;
+                    case 40: Colors40 = value; break;
+                    case 41: Colors41 = value; break;
+                    case 42: Colors42 = value; break;
+                    case 43: Colors43 = value; break;
+                    case 44: Colors44 = value; break;
+                    case 45: Colors45 = value; break;
+                    case 46: Colors46 = value; break;
+                    case 47: Colors47 = value; break;
+                    case 48: Colors48 = value; break;
+                    case 49: Colors49 = value; break;
+                    case 50: Colors50 = value; break;
+                    case 51: Colors51 = value; break;
+                    case 52: Colors52 = value; break;
+                    case 53: Colors53 = value; break;
+                    case 54: Colors54 = value; break;
+                    default: throw new IndexOutOfRangeException("Index out of range");
+                }
+            }
+        }
     }
 }

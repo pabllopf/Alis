@@ -814,7 +814,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Gets the style
         /// </summary>
         /// <returns>The im gui style ptr</returns>
-        public static ImGuiStyle GetStyle() => ImGuiNative.igGetStyle();
+        public static ref ImGuiStyle GetStyle() => ref ImGuiNative.igGetStyle();
 
         /// <summary>
         ///     Gets the style color name using the specified idx
