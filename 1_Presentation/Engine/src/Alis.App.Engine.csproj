@@ -4,7 +4,4 @@
     <PropertyGroup>
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/</OutDir>
     </PropertyGroup>
-    <ItemGroup>
-      <Folder Include="Assets\Resources\" />
-    </ItemGroup>
 </Project>
