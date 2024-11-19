@@ -769,29 +769,17 @@ namespace Alis.App.Engine
         /// </summary>
         public void RenderProject()
         {
-            //ImGui.PushFont(fontLoaded);
-
-            int sizeMenuDown = 25;
-            Vector2 sizeDock = spaceWork.Viewport.Size - new Vector2(0, sizeMenuDown * 2);
-            
             ImGui.SetNextWindowPos(spaceWork.Viewport.WorkPos);
-            ImGui.SetNextWindowSize(sizeDock);
-
             ImGui.Begin("DockSpace Demo", dockspaceflags);
-            // Submit the DockSpace
-
-            //ImGui.PopStyleVar(3);
 
             uint dockSpaceId = ImGui.GetId("MyDockSpace");
-            ImGui.DockSpace(dockSpaceId, sizeDock);
-
-
-            // RENDER SAMPLES AND CODE
-            spaceWork.Update();
+            ImGui.DockSpace(dockSpaceId, spaceWork.Viewport.Size - new Vector2(10, 50));
             
+            spaceWork.Update();
+
             ImGui.End();
-            //ImGui.PopFont();
         }
+
         
         /// <summary>
         ///     Processes the event using the specified evt
