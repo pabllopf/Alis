@@ -462,7 +462,7 @@ namespace Alis.App.Engine
                     spaceWork.Io.DeltaTime = 0.016f;
                 }
                 
-                Logger.Warning($"displayW: {displayW} displayH: {displayH} windowSize.X: {windowSize.X} windowSize.Y: {windowSize.Y}");
+                //Logger.Warning($"displayW: {displayW} displayH: {displayH} windowSize.X: {windowSize.X} windowSize.Y: {windowSize.Y}");
 
                 _time = currentTime;
 
