@@ -41,10 +41,7 @@ namespace Alis.App.Engine.Windows
     /// </summary>
     public class ConsoleWindow : IWindow
     {
-        /// <summary>
-        ///     The name window
-        /// </summary>
-        private const string NameWindow = "Console";
+        private static readonly string NameWindow = $"{FontAwesome5.Terminal} Console";
 
         /// <summary>
         ///     The command ptr

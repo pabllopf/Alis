@@ -258,7 +258,7 @@ namespace Alis.App.Engine
             //fonts.AddFontDefault();
 
             float fontSize = 14;
-            float fontSizeIcon = 18;
+            float fontSizeIcon = 13.5f;
 
             string fontFileSolid = AssetManager.Find("JetBrainsMono-Bold.ttf");
             spaceWork.fontLoaded16Solid = fonts.AddFontFromFileTtf(fontFileSolid, fontSize);
@@ -665,10 +665,10 @@ namespace Alis.App.Engine
             style.WindowRounding = 0.0f;
             
             // ChildRounding
-            style.ChildRounding = 0.0f;
+            style.ChildRounding = 3.0f;
             
             // FrameRounding
-            style.FrameRounding = 1.0f;
+            style.FrameRounding = 3.0f;
             
             // PopupRounding
             style.PopupRounding = 1.0f;
@@ -683,19 +683,19 @@ namespace Alis.App.Engine
             style.LogSliderDeadzone = 4.0f;
             
             // TabRounding
-            style.TabRounding = 1.0f;
+            style.TabRounding = 3.0f;
             
             // Window border size
-            style.WindowBorderSize = 0.0f;
+            style.WindowBorderSize = 1.0f;
 
             // Child window border size
-            style.ChildBorderSize = 0.0f;
+            style.ChildBorderSize = 1.0f;
 
             // Popup border size
             style.PopupBorderSize = 1.0f;
 
             // Frame border size
-            style.FrameBorderSize = 0.0f;
+            style.FrameBorderSize = 1.0f;
 
             // Tab border size
             style.TabBorderSize = 0.0f;
@@ -704,7 +704,7 @@ namespace Alis.App.Engine
             style.WindowPadding = new Vector2(8, 8);
 
             // Frame padding
-            style.FramePadding = new Vector2(6, 6);
+            style.FramePadding = new Vector2(6, 7);
 
             // Item spacing
             style.ItemSpacing = new Vector2(6, 6);
@@ -713,7 +713,7 @@ namespace Alis.App.Engine
             style.ItemInnerSpacing = new Vector2(6, 6);
             
             // Cell padding
-            style.CellPadding = new Vector2(6, 6);
+            style.CellPadding = new Vector2(10, 10);
 
             // Touch extra padding
             style.TouchExtraPadding = new Vector2(0, 0);
@@ -722,7 +722,7 @@ namespace Alis.App.Engine
             style.IndentSpacing = 21;
 
             // Scrollbar size
-            style.ScrollbarSize = 14;
+            style.ScrollbarSize = 12;
 
             // Minimum grab size
             style.GrabMinSize = 12;

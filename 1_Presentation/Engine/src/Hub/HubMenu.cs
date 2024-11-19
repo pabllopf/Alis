@@ -490,10 +490,13 @@ private void InstallsEditorSection()
             float buttonWidth = 75;
             float elementHeight = 30; // Altura común para todos los elementos
             float spaceBetween = 10;
+            
+            ImGui.Separator();
+            ImGui.Spacing();
 
             // Añadir un campo de búsqueda en lugar de "Projects"
             ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2(spaceBetween, 20));
-            ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(10, 0));
+            //ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(10, 0));
 
             // Establecer el ancho de la barra de búsqueda para que ocupe el espacio restante
             float searchBarWidth = ImGui.GetContentRegionAvail().X - ((buttonWidth * 4) + (spaceBetween * 2));
@@ -561,10 +564,12 @@ private void InstallsEditorSection()
 
             ImGui.SetCursorPosY(ImGui.GetCursorPosY() - verticalOffset);
             ImGui.Separator();
+            //ImGui.Spacing();
+            //ImGui.Spacing();
             
             ImGui.PushStyleVar(ImGuiStyleVar.CellPadding, new Vector2(10, 15));
 
-             if (ImGui.BeginTable("ProjectTable", 4, ImGuiTableFlags.RowBg | ImGuiTableFlags.Borders | ImGuiTableFlags.Resizable))
+             if (ImGui.BeginTable("ProjectTable", 4,  ImGuiTableFlags.Borders | ImGuiTableFlags.Resizable))
             {
                 ImGui.TableSetupColumn("NAME", ImGuiTableColumnFlags.WidthStretch);
                 ImGui.TableSetupColumn("PATH", ImGuiTableColumnFlags.WidthStretch);
@@ -579,7 +584,12 @@ private void InstallsEditorSection()
                     
                     // Selección de fila completa
                     ImGui.TableNextColumn();
-                    if (ImGui.Selectable($"##Row{i}", selectedProjectIndex == i, ImGuiSelectableFlags.SpanAllColumns | ImGuiSelectableFlags.AllowDoubleClick))
+                    
+                    // Ajustar el alto de la celda
+                    float rowHeight = 50;
+                    ImGui.SetCursorPosY(ImGui.GetCursorPosY() + (elementHeight - rowHeight) / 2);
+                    
+                    if (ImGui.Selectable($"##Row{i}", selectedProjectIndex == i, ImGuiSelectableFlags.SpanAllColumns | ImGuiSelectableFlags.AllowDoubleClick, new Vector2(0, rowHeight)))
                     {
                         selectedProjectIndex = i;
 
@@ -595,6 +605,8 @@ private void InstallsEditorSection()
                         ImGui.OpenPopup($"ContextMenu##{i}");
                         Console.WriteLine("Right-clicked on project: " + project.Name);
                     }
+                    
+                    ImGui.SetCursorPosY(ImGui.GetCursorPosY() + (rowHeight - elementHeight) / 2);
 
                     ImGui.SameLine(); // Permite que el texto siga en la misma línea
                     ImGui.TextColored(new Vector4(1.0f, 1.0f, 1.0f, 1.0f), project.Name);
@@ -640,7 +652,7 @@ private void InstallsEditorSection()
                 ImGui.EndTable();
             }
 
-            ImGui.PopStyleVar(2); // Restaurar estilo
+            ImGui.PopStyleVar(1); // Restaurar estilo
         }
 
         private void OpenProject(Project project)

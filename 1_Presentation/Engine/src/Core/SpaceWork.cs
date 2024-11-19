@@ -183,7 +183,7 @@ namespace Alis.App.Engine.Core
         /// <summary>
         /// Gets or sets the value of the project selected
         /// </summary>
-        public bool ProjectSelected { get; set; } = false;
+        public bool ProjectSelected { get; set; } = true;
 
         /// <summary>
         ///     Initializes this instance
@@ -201,7 +201,7 @@ namespace Alis.App.Engine.Core
             ConsoleWindow.Initialize();
             GameWindow.Initialize();
             InspectorWindow.Initialize();
-            SolutionWindow.Initialize();
+            //SolutionWindow.Initialize();
             SceneWindow.Initialize();
             ProjectWindow.Initialize();
             AudioPlayerWindow.Initialize();
@@ -224,7 +224,7 @@ namespace Alis.App.Engine.Core
             ConsoleWindow.Start();
             GameWindow.Start();
             InspectorWindow.Start();
-            SolutionWindow.Start();
+            //SolutionWindow.Start();
             SceneWindow.Start();
             ProjectWindow.Start();
             AudioPlayerWindow.Start();
@@ -247,7 +247,7 @@ namespace Alis.App.Engine.Core
             ConsoleWindow.Render();
             GameWindow.Render();
             InspectorWindow.Render();
-            SolutionWindow.Render();
+            //SolutionWindow.Render();
             SceneWindow.Render();
             ProjectWindow.Render();
             AudioPlayerWindow.Render();
