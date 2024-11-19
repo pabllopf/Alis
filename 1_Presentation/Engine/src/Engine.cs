@@ -701,10 +701,10 @@ namespace Alis.App.Engine
             style.TabBorderSize = 0.0f;
 
             // Window padding
-            style.WindowPadding = new Vector2(8, 8);
+            style.WindowPadding = new Vector2(4, 4);
 
             // Frame padding
-            style.FramePadding = new Vector2(6, 7);
+            style.FramePadding = new Vector2(7, 7);
 
             // Item spacing
             style.ItemSpacing = new Vector2(6, 6);
@@ -765,7 +765,7 @@ namespace Alis.App.Engine
 
 
         // Variable que controla la altura del menú inferior
-        private float bottomMenuHeight = 50.0f;
+        private float bottomMenuHeight = 30.0f;
 
         /// <summary>
         /// Renders the project
@@ -778,24 +778,30 @@ namespace Alis.App.Engine
             ImGui.Begin("DockSpace Demo", dockspaceflags);
 
             // Calcular el tamaño del DockSpace restante
-            Vector2 dockSize = spaceWork.Viewport.Size - new Vector2(0, bottomMenuHeight);
+            Vector2 dockSize = spaceWork.Viewport.Size - new Vector2(5, 95);
             uint dockSpaceId = ImGui.GetId("MyDockSpace");
             ImGui.DockSpace(dockSpaceId, dockSize);
 
             // Renderizar el contenido principal del espacio de trabajo
             spaceWork.Update();
 
-            // Menú inferior dentro del DockSpace
+            // Menú inferior
             Vector2 menuSize = new Vector2(spaceWork.Viewport.Size.X, bottomMenuHeight);
-            ImGui.SetNextWindowPos(new Vector2(spaceWork.Viewport.WorkPos.X, spaceWork.Viewport.WorkPos.Y + dockSize.Y));
+            ImGui.SetNextWindowPos(new Vector2(spaceWork.Viewport.WorkPos.X, spaceWork.Viewport.WorkPos.Y + dockSize.Y + 20 + bottomMenuHeight / 2));
             ImGui.SetNextWindowSize(menuSize);
 
+            // Configuración de estilo
+            ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2(0, 0));
+            ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(0, 0));
+
+            
             if (ImGui.Begin("Bottom Menu", ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove))
             {
-                ImGui.Columns(2, "MenuColumns", false);
+                
+                ImGui.Columns(5, "MenuColumns", false); // Cinco columnas para botones pequeños
 
                 // Botón del primer menú
-                if (ImGui.Button("Menu 1"))
+                if (ImGui.Button($"{FontAwesome5.DigitalTachograph}##bottom1", new Vector2(32, 32)))
                 {
                     ImGui.OpenPopup("PopupMenu1");
                 }
@@ -824,7 +830,7 @@ namespace Alis.App.Engine
                 ImGui.NextColumn();
 
                 // Botón del segundo menú
-                if (ImGui.Button("Menu 2"))
+                if (ImGui.Button($"{FontAwesome5.DigitalTachograph}##bottom2", new Vector2(32, 32)))
                 {
                     ImGui.OpenPopup("PopupMenu2");
                 }
@@ -849,16 +855,42 @@ namespace Alis.App.Engine
 
                     ImGui.EndPopup();
                 }
-                
+
+                ImGui.NextColumn();
+                ImGui.NextColumn();
+                ImGui.NextColumn();
+
+                // Botón del tercer menú
+                if (ImGui.Button($"{FontAwesome5.DigitalTachograph}##bottom3",  new Vector2(32, 32)))
+                {
+                    ImGui.OpenPopup("PopupMenu3");
+                }
+
+                // Opciones del tercer menú (Popup)
+                if (ImGui.BeginPopup("PopupMenu3"))
+                {
+                    if (ImGui.MenuItem("Action 1"))
+                    {
+                        // Acción para la opción 1
+                    }
+
+                    if (ImGui.MenuItem("Action 2"))
+                    {
+                        // Acción para la opción 2
+                    }
+
+                    ImGui.EndPopup();
+                }
+
                 ImGui.End();
             }
+            
+            // Restaurar el estilo
+            ImGui.PopStyleVar(2);
 
             ImGui.End();
         }
-
-
-
-
+        
         /// <summary>
         ///     Processes the event using the specified evt
         /// </summary>

@@ -106,7 +106,7 @@ namespace Alis.App.Engine.Windows
             {
                 ImGui.Button("Clear");
                 ImGui.SameLine();
-                ImGui.Button($"{FontAwesome5.Search}");
+                ImGui.Text($"{FontAwesome5.Search}");
                 ImGui.SameLine();
                 ImGui.InputText("##input", commandPtr, 256, ImGuiInputTextFlags.NoHorizontalScroll);
                 ImGui.SameLine();
