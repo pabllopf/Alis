@@ -38,6 +38,7 @@ using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
 using Alis.Core.Ecs.System;
 using Alis.Core.Graphic.Sdl2;
+using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Native;
 using Alis.Extension.Graphic.OpenGL;
 using Alis.Extension.Graphic.OpenGL.Enums;
@@ -224,33 +225,107 @@ namespace Alis.App.Engine.Windows
             Console.WriteLine($"Imgui Version: {ImGui.GetVersion()}");
         }
 
-        /// <summary>
-        ///     Renders this instance
-        /// </summary>
         public void Render()
         {
+            // Ejecutar el método de vista previa del videojuego
             videoGame.RunPreview();
 
+            // Leer los píxeles del renderer de SDL
             RectangleI rect = new RectangleI(0, 0, 800, 600);
             Sdl.RenderReadPixels(SpaceWork.rendererGame, ref rect, Sdl.PixelFormatABgr8888, pixelPtr, 800 * 4);
 
+            // Actualizar la textura de OpenGL con los píxeles renderizados
             Gl.GlBindTexture(TextureTarget.Texture2D, textureopenGlId);
             Gl.GlTexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba8, 800, 600, 0, PixelFormat.Rgba, PixelType.UnsignedByte, pixelPtr);
             Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Linear);
             Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Linear);
             Gl.GlBindTexture(TextureTarget.Texture2D, 0);
 
-            if (ImGui.Begin(NameWindow))
+            // Iniciar la ventana de ImGui
+            if (ImGui.Begin(NameWindow, ImGuiWindowFlags.MenuBar))
             {
+                // Renderizar el menú principal
+                if (ImGui.BeginMenuBar())
+                {
+                    if (ImGui.BeginMenu("File"))
+                    {
+                        if (ImGui.MenuItem("Open"))
+                        {
+                            // Acción para abrir un archivo
+                            Console.WriteLine("Open selected");
+                        }
+
+                        if (ImGui.MenuItem("Save"))
+                        {
+                            // Acción para guardar
+                            Console.WriteLine("Save selected");
+                        }
+
+                        if (ImGui.MenuItem("Exit"))
+                        {
+                            // Acción para salir
+                            Console.WriteLine("Exit selected");
+                        }
+
+                        ImGui.EndMenu();
+                    }
+
+                    if (ImGui.BeginMenu("Edit"))
+                    {
+                        if (ImGui.MenuItem("Undo", "Ctrl+Z"))
+                        {
+                            // Acción para deshacer
+                            Console.WriteLine("Undo selected");
+                        }
+
+                        if (ImGui.MenuItem("Redo", "Ctrl+Y"))
+                        {
+                            // Acción para rehacer
+                            Console.WriteLine("Redo selected");
+                        }
+
+                        ImGui.EndMenu();
+                    }
+
+                    ImGui.EndMenuBar();
+                }
+                
+                // Obtener el tamaño disponible en el contenedor de ImGui
+                Vector2 availableSize = ImGui.GetContentRegionAvail();
+
+                // Aspect ratio del juego
+                float gameAspectRatio = 800f / 600f;
+
+                // Tamaño final ajustado manteniendo el aspect ratio
+                float width = availableSize.X;
+                float height = availableSize.X / gameAspectRatio;
+
+                // Si el alto ajustado es mayor al espacio disponible, recalcular usando el alto
+                if (height > availableSize.Y)
+                {
+                    height = availableSize.Y;
+                    width = availableSize.Y * gameAspectRatio;
+                }
+
+                // Calcular la posición centrada dentro del área disponible
+                Vector2 offset = new Vector2(
+                    (availableSize.X - width) * 0.5f,
+                    (availableSize.Y - height) * 0.5f);
+
+                // Ajustar el cursor de ImGui para centrar la imagen
+                ImGui.SetCursorPos(ImGui.GetCursorPos() + offset);
+
+                // Dibujar la textura ajustada al tamaño calculado
                 ImGui.Image(
                     (IntPtr) textureopenGlId,
-                    new Vector2(800, 600),
-                    new Vector2(0, 0),
-                    new Vector2(1, 1),
-                    new Vector4(1, 1, 1, 1),
-                    new Vector4(255, 0, 0, 255));
+                    new Vector2(width, height), // Tamaño ajustado
+                    new Vector2(0, 0), // Coordenada de inicio (UV)
+                    new Vector2(1, 1), // Coordenada final (UV)
+                    new Vector4(1, 1, 1, 1), // Color del multiplicador de la textura
+                    new Vector4(0, 0, 0, 0)); // Sin borde
             }
 
+            // Terminar la ventana de ImGui
             ImGui.End();
         }
     }
