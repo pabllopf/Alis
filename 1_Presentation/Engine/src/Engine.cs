@@ -93,7 +93,7 @@ namespace Alis.App.Engine
         ///     The width window
         /// </summary>
         private readonly int widthWindow = 1025;
-        
+
         /// <summary>
         ///     The height window
         /// </summary>
@@ -103,7 +103,7 @@ namespace Alis.App.Engine
         ///     The high dpi
         /// </summary>
         private readonly bool highDpi = false;
-        
+
         /// <summary>
         ///     The font texture id
         /// </summary>
@@ -214,9 +214,9 @@ namespace Alis.App.Engine
                 flags |= WindowSettings.WindowAllowHighDpi;
             }
 
-            spaceWork.Window = Sdl.CreateWindow(NameEngine, 
-                (int) WindowPos.WindowPosCentered, 
-                (int) WindowPos.WindowPosCentered, 
+            spaceWork.Window = Sdl.CreateWindow(NameEngine,
+                (int) WindowPos.WindowPosCentered,
+                (int) WindowPos.WindowPosCentered,
                 widthWindow, heightWindow, flags);
             _glContext = CreateGlContext(spaceWork.Window);
 
@@ -232,19 +232,19 @@ namespace Alis.App.Engine
             Logger.Info($@"IMGUI VERSION {ImGui.GetVersion()}");
 
             // active plot renders
-            spaceWork.Io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset | 
-                                         ImGuiBackendFlags.PlatformHasViewports | 
+            spaceWork.Io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset |
+                                         ImGuiBackendFlags.PlatformHasViewports |
                                          ImGuiBackendFlags.HasGamepad |
-                                         ImGuiBackendFlags.HasMouseHoveredViewport | 
+                                         ImGuiBackendFlags.HasMouseHoveredViewport |
                                          ImGuiBackendFlags.HasMouseCursors;
 
 
             // Enable Keyboard Controls
-            spaceWork.Io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard | 
+            spaceWork.Io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard |
                                         ImGuiConfigFlags.NavEnableGamepad;
-            
+
             // CONFIG DOCKSPACE 
-            spaceWork.Io.ConfigFlags |= ImGuiConfigFlags.DockingEnable | 
+            spaceWork.Io.ConfigFlags |= ImGuiConfigFlags.DockingEnable |
                                         ImGuiConfigFlags.ViewportsEnable;
 
             ImNodes.CreateContext();
@@ -405,9 +405,9 @@ namespace Alis.App.Engine
             }
 
             spaceWork.Start();
-            
+
             hubMenu = new HubMenu(spaceWork);
-            
+
             while (!_quit)
             {
                 while (Sdl.PollEvent(out Event e) != 0)
@@ -461,7 +461,7 @@ namespace Alis.App.Engine
                 {
                     spaceWork.Io.DeltaTime = 0.016f;
                 }
-                
+
                 //Logger.Warning($"displayW: {displayW} displayH: {displayH} windowSize.X: {windowSize.X} windowSize.Y: {windowSize.Y}");
 
                 _time = currentTime;
@@ -477,7 +477,7 @@ namespace Alis.App.Engine
                     hubMenu.Render();
                     ImGui.ShowDemoWindow();
                 }
-                
+
                 Sdl.MakeCurrent(spaceWork.Window, _glContext);
                 ImGui.Render();
 
@@ -517,174 +517,174 @@ namespace Alis.App.Engine
             ref ImGuiStyle style = ref ImGui.GetStyle();
 
             // Main text color:
-            style[(int)ImGuiCol.Text] = new Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+            style[(int) ImGuiCol.Text] = new Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 
             // Disabled text color:
-            style[(int)ImGuiCol.TextDisabled] = new Vector4(0.5f, 0.5f, 0.5f, 1.0f);
+            style[(int) ImGuiCol.TextDisabled] = new Vector4(0.5f, 0.5f, 0.5f, 1.0f);
 
             // Main background color for windows
-            style[(int)ImGuiCol.WindowBg] = new Vector4(0.13f, 0.14f, 0.15f, 1.0f);
+            style[(int) ImGuiCol.WindowBg] = new Vector4(0.13f, 0.14f, 0.15f, 1.0f);
 
             // Main background color for child windows
-            style[(int)ImGuiCol.ChildBg] = new Vector4(0.13f, 0.14f, 0.15f, 1.0f);
+            style[(int) ImGuiCol.ChildBg] = new Vector4(0.13f, 0.14f, 0.15f, 1.0f);
 
             // Background color for tooltips
-            style[(int)ImGuiCol.PopupBg] = new Vector4(0.13f, 0.14f, 0.15f, 1.0f);
+            style[(int) ImGuiCol.PopupBg] = new Vector4(0.13f, 0.14f, 0.15f, 1.0f);
 
             // Border colors
-            style[(int)ImGuiCol.Border] = new Vector4(0.25f, 0.25f, 0.25f, 1.0f);
+            style[(int) ImGuiCol.Border] = new Vector4(0.25f, 0.25f, 0.25f, 1.0f);
 
             // Border shadow color
-            style[(int)ImGuiCol.BorderShadow] = new Vector4(0.0f, 0.0f, 0.0f, 0.0f);
+            style[(int) ImGuiCol.BorderShadow] = new Vector4(0.0f, 0.0f, 0.0f, 0.0f);
 
             // Frame background color
-            style[(int)ImGuiCol.FrameBg] = new Vector4(0.2f, 0.2f, 0.2f, 1.0f);
+            style[(int) ImGuiCol.FrameBg] = new Vector4(0.2f, 0.2f, 0.2f, 1.0f);
 
             // Frame background color when hovered
-            style[(int)ImGuiCol.FrameBgHovered] = new Vector4(0.3f, 0.3f, 0.3f, 1.0f);
+            style[(int) ImGuiCol.FrameBgHovered] = new Vector4(0.3f, 0.3f, 0.3f, 1.0f);
 
             // Frame background color when active
-            style[(int)ImGuiCol.FrameBgActive] = new Vector4(0.4f, 0.4f, 0.4f, 1.0f);
+            style[(int) ImGuiCol.FrameBgActive] = new Vector4(0.4f, 0.4f, 0.4f, 1.0f);
 
             // Title bar background color
-            style[(int)ImGuiCol.TitleBg] = new Vector4(0.1f, 0.1f, 0.1f, 1.0f);
+            style[(int) ImGuiCol.TitleBg] = new Vector4(0.1f, 0.1f, 0.1f, 1.0f);
 
             // Title bar background color when active
-            style[(int)ImGuiCol.TitleBgActive] = new Vector4(0.1f, 0.1f, 0.1f, 1.0f);
+            style[(int) ImGuiCol.TitleBgActive] = new Vector4(0.1f, 0.1f, 0.1f, 1.0f);
 
             // Title bar background color when collapsed
-            style[(int)ImGuiCol.TitleBgCollapsed] = new Vector4(0.1f, 0.1f, 0.1f, 1.0f);
+            style[(int) ImGuiCol.TitleBgCollapsed] = new Vector4(0.1f, 0.1f, 0.1f, 1.0f);
 
             // Menu bar background color
-            style[(int)ImGuiCol.MenuBarBg] = new Vector4(0.15f, 0.15f, 0.15f, 1.0f);
+            style[(int) ImGuiCol.MenuBarBg] = new Vector4(0.15f, 0.15f, 0.15f, 1.0f);
 
             // Scrollbar background color
-            style[(int)ImGuiCol.ScrollbarBg] = new Vector4(0.1f, 0.1f, 0.1f, 1.0f);
+            style[(int) ImGuiCol.ScrollbarBg] = new Vector4(0.1f, 0.1f, 0.1f, 1.0f);
 
             // Scrollbar grab color
-            style[(int)ImGuiCol.ScrollbarGrab] = new Vector4(0.3f, 0.3f, 0.3f, 1.0f);
+            style[(int) ImGuiCol.ScrollbarGrab] = new Vector4(0.3f, 0.3f, 0.3f, 1.0f);
 
             // Scrollbar grab color when hovered
-            style[(int)ImGuiCol.ScrollbarGrabHovered] = new Vector4(0.4f, 0.4f, 0.4f, 1.0f);
+            style[(int) ImGuiCol.ScrollbarGrabHovered] = new Vector4(0.4f, 0.4f, 0.4f, 1.0f);
 
             // Scrollbar grab color when active
-            style[(int)ImGuiCol.ScrollbarGrabActive] = new Vector4(0.5f, 0.5f, 0.5f, 1.0f);
+            style[(int) ImGuiCol.ScrollbarGrabActive] = new Vector4(0.5f, 0.5f, 0.5f, 1.0f);
 
             // Checkmark color
-            style[(int)ImGuiCol.CheckMark] = new Vector4(0.26f, 0.59f, 0.98f, 1.0f);
+            style[(int) ImGuiCol.CheckMark] = new Vector4(0.26f, 0.59f, 0.98f, 1.0f);
 
             // Slider grab color
-            style[(int)ImGuiCol.SliderGrab] = new Vector4(0.26f, 0.59f, 0.98f, 1.0f);
+            style[(int) ImGuiCol.SliderGrab] = new Vector4(0.26f, 0.59f, 0.98f, 1.0f);
 
             // Slider grab color when active
-            style[(int)ImGuiCol.SliderGrabActive] = new Vector4(0.26f, 0.59f, 0.98f, 1.0f);
+            style[(int) ImGuiCol.SliderGrabActive] = new Vector4(0.26f, 0.59f, 0.98f, 1.0f);
 
             // Button color
-            style[(int)ImGuiCol.Button] = new Vector4(0.2f, 0.2f, 0.2f, 1.0f);
+            style[(int) ImGuiCol.Button] = new Vector4(0.2f, 0.2f, 0.2f, 1.0f);
 
             // Button color when hovered
-            style[(int)ImGuiCol.ButtonHovered] = new Vector4(0.3f, 0.3f, 0.3f, 1.0f);
+            style[(int) ImGuiCol.ButtonHovered] = new Vector4(0.3f, 0.3f, 0.3f, 1.0f);
 
             // Button color when active
-            style[(int)ImGuiCol.ButtonActive] = new Vector4(0.4f, 0.4f, 0.4f, 1.0f);
+            style[(int) ImGuiCol.ButtonActive] = new Vector4(0.4f, 0.4f, 0.4f, 1.0f);
 
             // Header color
-            style[(int)ImGuiCol.Header] = new Vector4(0.2f, 0.2f, 0.2f, 1.0f);
+            style[(int) ImGuiCol.Header] = new Vector4(0.2f, 0.2f, 0.2f, 1.0f);
 
             // Header color when hovered
-            style[(int)ImGuiCol.HeaderHovered] = new Vector4(0.3f, 0.3f, 0.3f, 1.0f);
+            style[(int) ImGuiCol.HeaderHovered] = new Vector4(0.3f, 0.3f, 0.3f, 1.0f);
 
             // Header color when active
-            style[(int)ImGuiCol.HeaderActive] = new Vector4(0.4f, 0.4f, 0.4f, 1.0f);
+            style[(int) ImGuiCol.HeaderActive] = new Vector4(0.4f, 0.4f, 0.4f, 1.0f);
 
             // Separator color
-            style[(int)ImGuiCol.Separator] = new Vector4(0.25f, 0.25f, 0.25f, 1.0f);
+            style[(int) ImGuiCol.Separator] = new Vector4(0.25f, 0.25f, 0.25f, 1.0f);
 
             // Separator color when hovered
-            style[(int)ImGuiCol.SeparatorHovered] = new Vector4(0.3f, 0.3f, 0.3f, 1.0f);
+            style[(int) ImGuiCol.SeparatorHovered] = new Vector4(0.3f, 0.3f, 0.3f, 1.0f);
 
             // Separator color when active
-            style[(int)ImGuiCol.SeparatorActive] = new Vector4(0.4f, 0.4f, 0.4f, 1.0f);
+            style[(int) ImGuiCol.SeparatorActive] = new Vector4(0.4f, 0.4f, 0.4f, 1.0f);
 
             // Resize grip color
-            style[(int)ImGuiCol.ResizeGrip] = new Vector4(0.2f, 0.2f, 0.2f, 1.0f);
+            style[(int) ImGuiCol.ResizeGrip] = new Vector4(0.2f, 0.2f, 0.2f, 1.0f);
 
             // Resize grip color when hovered
-            style[(int)ImGuiCol.ResizeGripHovered] = new Vector4(0.3f, 0.3f, 0.3f, 1.0f);
+            style[(int) ImGuiCol.ResizeGripHovered] = new Vector4(0.3f, 0.3f, 0.3f, 1.0f);
 
             // Resize grip color when active
-            style[(int)ImGuiCol.ResizeGripActive] = new Vector4(0.4f, 0.4f, 0.4f, 1.0f);
+            style[(int) ImGuiCol.ResizeGripActive] = new Vector4(0.4f, 0.4f, 0.4f, 1.0f);
 
             // Tab color
-            style[(int)ImGuiCol.Tab] = new Vector4(0.1f, 0.1f, 0.1f, 1.0f);
+            style[(int) ImGuiCol.Tab] = new Vector4(0.1f, 0.1f, 0.1f, 1.0f);
 
             // Tab color when hovered
-            style[(int)ImGuiCol.TabHovered] = new Vector4(0.3f, 0.3f, 0.3f, 1.0f);
+            style[(int) ImGuiCol.TabHovered] = new Vector4(0.3f, 0.3f, 0.3f, 1.0f);
 
             // Tab color when active
-            style[(int)ImGuiCol.TabActive] = new Vector4(0.4f, 0.4f, 0.4f, 1.0f);
-            
+            style[(int) ImGuiCol.TabActive] = new Vector4(0.4f, 0.4f, 0.4f, 1.0f);
+
             // Tab color when active
-            style[(int)ImGuiCol.TabUnfocused] = new Vector4(0.1f, 0.1f, 0.1f, 1.0f);
-            
+            style[(int) ImGuiCol.TabUnfocused] = new Vector4(0.1f, 0.1f, 0.1f, 1.0f);
+
             // Tab color when active
-            style[(int)ImGuiCol.TabUnfocusedActive] = new Vector4(0.4f, 0.4f, 0.4f, 1.0f);
+            style[(int) ImGuiCol.TabUnfocusedActive] = new Vector4(0.4f, 0.4f, 0.4f, 1.0f);
 
             // Plot lines color
-            style[(int)ImGuiCol.PlotLines] = new Vector4(0.61f, 0.61f, 0.61f, 1.0f);
+            style[(int) ImGuiCol.PlotLines] = new Vector4(0.61f, 0.61f, 0.61f, 1.0f);
 
             // Plot lines color when hovered
-            style[(int)ImGuiCol.PlotLinesHovered] = new Vector4(0.7f, 0.7f, 0.7f, 1.0f);
+            style[(int) ImGuiCol.PlotLinesHovered] = new Vector4(0.7f, 0.7f, 0.7f, 1.0f);
 
             // Plot histogram color
-            style[(int)ImGuiCol.PlotHistogram] = new Vector4(0.61f, 0.61f, 0.61f, 1.0f);
+            style[(int) ImGuiCol.PlotHistogram] = new Vector4(0.61f, 0.61f, 0.61f, 1.0f);
 
             // Plot histogram color when hovered
-            style[(int)ImGuiCol.PlotHistogramHovered] = new Vector4(0.7f, 0.7f, 0.7f, 1.0f);
+            style[(int) ImGuiCol.PlotHistogramHovered] = new Vector4(0.7f, 0.7f, 0.7f, 1.0f);
 
             // Text selected color
-            style[(int)ImGuiCol.TextSelectedBg] = new Vector4(0.26f, 0.59f, 0.98f, 1.0f);
+            style[(int) ImGuiCol.TextSelectedBg] = new Vector4(0.26f, 0.59f, 0.98f, 1.0f);
 
             // Drag and drop target color
-            style[(int)ImGuiCol.DragDropTarget] = new Vector4(0.26f, 0.59f, 0.98f, 1.0f);
+            style[(int) ImGuiCol.DragDropTarget] = new Vector4(0.26f, 0.59f, 0.98f, 1.0f);
 
             // Nav highlight color
-            style[(int)ImGuiCol.NavHighlight] = new Vector4(0.26f, 0.59f, 0.98f, 1.0f);
+            style[(int) ImGuiCol.NavHighlight] = new Vector4(0.26f, 0.59f, 0.98f, 1.0f);
 
             // Nav windowing highlight color
-            style[(int)ImGuiCol.NavWindowingHighlight] = new Vector4(0.26f, 0.59f, 0.98f, 1.0f);
+            style[(int) ImGuiCol.NavWindowingHighlight] = new Vector4(0.26f, 0.59f, 0.98f, 1.0f);
 
             // Nav windowing dim background color
-            style[(int)ImGuiCol.NavWindowingDimBg] = new Vector4(0.2f, 0.2f, 0.2f, 0.6f);
+            style[(int) ImGuiCol.NavWindowingDimBg] = new Vector4(0.2f, 0.2f, 0.2f, 0.6f);
 
             // Modal window dim background color
-            style[(int)ImGuiCol.ModalWindowDimBg] = new Vector4(0.2f, 0.2f, 0.2f, 0.6f);
-                        
+            style[(int) ImGuiCol.ModalWindowDimBg] = new Vector4(0.2f, 0.2f, 0.2f, 0.6f);
+
             // SETTING STYLE
             // WindowRounding
             style.WindowRounding = 0.0f;
-            
+
             // ChildRounding
             style.ChildRounding = 3.0f;
-            
+
             // FrameRounding
             style.FrameRounding = 3.0f;
-            
+
             // PopupRounding
             style.PopupRounding = 1.0f;
-            
+
             // ScrollbarRounding
             style.ScrollbarRounding = 2.0f;
-            
+
             // GrabRounding
             style.GrabRounding = 1.0f;
-            
+
             // logSliderDeadzone
             style.LogSliderDeadzone = 4.0f;
-            
+
             // TabRounding
             style.TabRounding = 3.0f;
-            
+
             // Window border size
             style.WindowBorderSize = 1.0f;
 
@@ -711,7 +711,7 @@ namespace Alis.App.Engine
 
             // Inner item spacing
             style.ItemInnerSpacing = new Vector2(6, 6);
-            
+
             // Cell padding
             style.CellPadding = new Vector2(10, 10);
 
@@ -756,7 +756,7 @@ namespace Alis.App.Engine
 
             // Circle tessellation max error
             style.CircleTessellationMaxError = 0.2f;
-            
+
             // Circle tessellation max error
             style.Alpha = 1.0f;
 
@@ -764,23 +764,101 @@ namespace Alis.App.Engine
         }
 
 
+        // Variable que controla la altura del menú inferior
+        private float bottomMenuHeight = 50.0f;
+
         /// <summary>
         /// Renders the project
         /// </summary>
         public void RenderProject()
         {
+            // Configurar la ventana principal (DockSpace)
             ImGui.SetNextWindowPos(spaceWork.Viewport.WorkPos);
+            ImGui.SetNextWindowSize(spaceWork.Viewport.Size);
             ImGui.Begin("DockSpace Demo", dockspaceflags);
 
+            // Calcular el tamaño del DockSpace restante
+            Vector2 dockSize = spaceWork.Viewport.Size - new Vector2(0, bottomMenuHeight);
             uint dockSpaceId = ImGui.GetId("MyDockSpace");
-            ImGui.DockSpace(dockSpaceId, spaceWork.Viewport.Size - new Vector2(10, 50));
-            
+            ImGui.DockSpace(dockSpaceId, dockSize);
+
+            // Renderizar el contenido principal del espacio de trabajo
             spaceWork.Update();
+
+            // Menú inferior dentro del DockSpace
+            Vector2 menuSize = new Vector2(spaceWork.Viewport.Size.X, bottomMenuHeight);
+            ImGui.SetNextWindowPos(new Vector2(spaceWork.Viewport.WorkPos.X, spaceWork.Viewport.WorkPos.Y + dockSize.Y));
+            ImGui.SetNextWindowSize(menuSize);
+
+            if (ImGui.Begin("Bottom Menu", ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove))
+            {
+                ImGui.Columns(2, "MenuColumns", false);
+
+                // Botón del primer menú
+                if (ImGui.Button("Menu 1"))
+                {
+                    ImGui.OpenPopup("PopupMenu1");
+                }
+
+                // Opciones del primer menú (Popup)
+                if (ImGui.BeginPopup("PopupMenu1"))
+                {
+                    if (ImGui.MenuItem("Option 1"))
+                    {
+                        // Acción para la opción 1
+                    }
+
+                    if (ImGui.MenuItem("Option 2"))
+                    {
+                        // Acción para la opción 2
+                    }
+
+                    if (ImGui.MenuItem("Option 3"))
+                    {
+                        // Acción para la opción 3
+                    }
+
+                    ImGui.EndPopup();
+                }
+
+                ImGui.NextColumn();
+
+                // Botón del segundo menú
+                if (ImGui.Button("Menu 2"))
+                {
+                    ImGui.OpenPopup("PopupMenu2");
+                }
+
+                // Opciones del segundo menú (Popup)
+                if (ImGui.BeginPopup("PopupMenu2"))
+                {
+                    if (ImGui.MenuItem("Option A"))
+                    {
+                        // Acción para la opción A
+                    }
+
+                    if (ImGui.MenuItem("Option B"))
+                    {
+                        // Acción para la opción B
+                    }
+
+                    if (ImGui.MenuItem("Option C"))
+                    {
+                        // Acción para la opción C
+                    }
+
+                    ImGui.EndPopup();
+                }
+                
+                ImGui.End();
+            }
 
             ImGui.End();
         }
 
-        
+
+
+
         /// <summary>
         ///     Processes the event using the specified evt
         /// </summary>
