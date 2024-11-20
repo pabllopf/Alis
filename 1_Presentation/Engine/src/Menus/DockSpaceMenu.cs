@@ -28,8 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.IO;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
+using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Native;
@@ -69,6 +71,7 @@ namespace Alis.App.Engine.Menus
         {
             // Lógica para retroceder
             Console.WriteLine("Retrocediendo...");
+            ImGui.LoadIniSettingsFromDisk(AssetManager.Find("default_config.ini"));
         }
         ImGui.SameLine();
 
@@ -76,6 +79,7 @@ namespace Alis.App.Engine.Menus
         {
             // Lógica para avanzar
             Console.WriteLine("Avanzando...");
+            ImGui.LoadIniSettingsFromDisk(AssetManager.Find("tall_config.ini"));
         }
         ImGui.SameLine();
 
