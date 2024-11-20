@@ -27,7 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.App.Engine.Core;
+using Alis.App.Engine.Fonts;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Native;
@@ -40,16 +42,9 @@ namespace Alis.App.Engine.Menus
     /// <seealso cref="IMenu" />
     public class BottomMenu : IMenu
     {
-        /// <summary>
-        ///     The size menu down
-        /// </summary>
-        private const int SizeMenuDown = 25;
-
-        /// <summary>
-        ///     The menu down state
-        /// </summary>
-        private bool menuDownState = true;
-
+        // Variable que controla la altura del menú inferior
+        private float bottomMenuHeight = 37.0f;
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="BottomMenu" /> class
         /// </summary>
@@ -80,35 +75,157 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         public void Render()
         {
-            // Add menu bar flag and disable everything else
-            ImGuiWindowFlags styleGlagsMenuDown =
-                ImGuiWindowFlags.NoDecoration | ImGuiWindowFlags.NoInputs |
-                ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoScrollWithMouse |
-                ImGuiWindowFlags.NoSavedSettings |
-                ImGuiWindowFlags.NoBringToFrontOnFocus | ImGuiWindowFlags.NoBackground |
-                ImGuiWindowFlags.MenuBar;
+            Vector2 dockSize = SpaceWork.Viewport.Size - new Vector2(5, 105);
 
-            ImGui.PushStyleVar(ImGuiStyleVar.WindowRounding, 0.0f);
-            ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0.0f);
-            ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2(0.0f, 0.0f));
+            // Menú inferior
+            Vector2 menuSize = new Vector2(SpaceWork.Viewport.Size.X, bottomMenuHeight);
+            ImGui.SetNextWindowPos(new Vector2(SpaceWork.Viewport.WorkPos.X, SpaceWork.Viewport.WorkPos.Y + dockSize.Y + 23 + bottomMenuHeight / 2));
+            ImGui.SetNextWindowSize(menuSize);
 
-            ImGui.SetNextWindowPos(new Vector2(SpaceWork.Viewport.Pos.X, SpaceWork.Viewport.Pos.Y + (SpaceWork.Viewport.Size.Y - SizeMenuDown)));
-            ImGui.SetNextWindowSize(new Vector2(SpaceWork.Viewport.Size.X, SizeMenuDown));
-            if (ImGui.Begin("##MenuDown", ref menuDownState, styleGlagsMenuDown))
+            // Configuración de estilo
+            //ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2(0, 0));
+            //ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(0, 0));
+
+            if (ImGui.Begin("Bottom Menu", ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoScrollbar))
             {
-                ImGui.PopStyleVar(3);
-                if (ImGui.BeginMenuBar())
+                // Dividir el área en columnas flexibles
+                ImGui.Columns(6, "MenuColumns", false); // Seis columnas para más botones
+                
+                // Botón de notificaciones
+                if (ImGui.Button($"{FontAwesome5.Bell}##notifications"))
                 {
-                    ImGui.Text("Hello world from menu down");
+                    Console.WriteLine("Abriendo notificaciones...");
+                    // Lógica para abrir notificaciones
+                }
+                
+                ImGui.SameLine();
+                
+                // Selector de rama Git
+                if (ImGui.BeginCombo($"{FontAwesome5.CodeBranch}##branchSelector", "master", ImGuiComboFlags.HeightLarge))
+                {
+                    if (ImGui.Selectable("master"))
+                    {
+                        Console.WriteLine("Cambiando a la rama master...");
+                        // Lógica para cambiar a la rama master
+                    }
 
-                    ImGui.Button("sample");
+                    if (ImGui.Selectable("develop"))
+                    {
+                        Console.WriteLine("Cambiando a la rama develop...");
+                        // Lógica para cambiar a la rama develop
+                    }
 
-                    ImGui.EndMenuBar();
+                    if (ImGui.Selectable("feature/new-feature"))
+                    {
+                        Console.WriteLine("Cambiando a la rama feature/new-feature...");
+                        // Lógica para cambiar a la rama feature/new-feature
+                    }
+
+                    ImGui.EndCombo();
+                }
+                
+                /*
+                // Botón de guardar
+                if (ImGui.Button($"{FontAwesome5.Save}##save", new Vector2(32, 32)))
+                {
+                    Console.WriteLine("Guardando...");
+                    // Lógica para guardar el proyecto
+                }*/
+
+                //ImGui.BeginTooltip();
+                //ImGui.Text("Guardar");
+                //ImGui.EndTooltip();
+
+                ImGui.NextColumn();
+
+                /*
+                // Botón de deshacer
+                if (ImGui.Button($"{FontAwesome5.Undo}##undo", new Vector2(32, 32)))
+                {
+                    Console.WriteLine("Deshaciendo...");
+                    // Lógica para deshacer
                 }
 
+                //ImGui.BeginTooltip();
+                //ImGui.Text("Deshacer");
+                //ImGui.EndTooltip();
+
+                // Botón de rehacer
+                if (ImGui.Button($"{FontAwesome5.Redo}##redo", new Vector2(32, 32)))
+                {
+                    Console.WriteLine("Rehaciendo...");
+                    // Lógica para rehacer
+                }
+
+                //ImGui.BeginTooltip();
+                //ImGui.Text("Rehacer");
+                //ImGui.EndTooltip();
+                */
+
+                ImGui.NextColumn();
+
+                
+
+                //ImGui.BeginTooltip();
+                
+                //ImGui.Text("Seleccionar rama de Git");
+                
+                //ImGui.EndTooltip();
+
+                ImGui.NextColumn();
+
+                /*
+                // Botón de herramientas rápidas
+                if (ImGui.Button($"{FontAwesome5.Tools}##tools", new Vector2(32, 32)))
+                {
+                    ImGui.OpenPopup("ToolsMenu");
+                }*/
+
+                // ImGui.BeginTooltip();
+                
+                //ImGui.Text("Herramientas rápidas");
+                
+                //ImGui.EndTooltip();
+
+                /*
+                if (ImGui.BeginPopup("ToolsMenu"))
+                {
+                    if (ImGui.MenuItem("Configurar entorno"))
+                    {
+                        Console.WriteLine("Abriendo configuración del entorno...");
+                        // Lógica para configurar entorno
+                    }
+
+                    if (ImGui.MenuItem("Reparar proyecto"))
+                    {
+                        Console.WriteLine("Reparando proyecto...");
+                        // Lógica para reparar proyecto
+                    }
+
+                    ImGui.EndPopup();
+                }*/
+
+                ImGui.NextColumn();
+
+                //ImGui.BeginTooltip();
+                
+                //ImGui.Text("Notificaciones");
+                
+                //ImGui.EndTooltip();
+
+                ImGui.NextColumn();
+
+                // Barra de carga alineada a la derecha
+                ImGui.SetCursorPosX(ImGui.GetContentRegionMax().X - 150); // Ajustar según el tamaño de la barra
+                ImGui.ProgressBar(0.65f, new Vector2(150, 25), "3/15"); // Ejemplo de barra al 65%
 
                 ImGui.End();
             }
+
+            // Restaurar el estilo
+            //ImGui.PopStyleVar(1);
+
+
         }
 
         /// <summary>

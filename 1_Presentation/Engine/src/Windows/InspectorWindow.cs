@@ -39,7 +39,7 @@ namespace Alis.App.Engine.Windows
     /// <seealso cref="IWindow" />
     public class InspectorWindow : IWindow
     {
-        private static readonly string NameWindow = $"{FontAwesome5.Eye} Inspector";
+        private static readonly string NameWindow = $"{FontAwesome5.InfoCircle} Inspector";
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="InspectorWindow" /> class

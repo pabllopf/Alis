@@ -197,7 +197,7 @@ namespace Alis.App.Engine.Core
             iconDemo.Initialize();
 
             TopMenu.Initialize();
-            //BottomMenu.Initialize();
+            BottomMenu.Initialize();
             ConsoleWindow.Initialize();
             GameWindow.Initialize();
             InspectorWindow.Initialize();
@@ -220,7 +220,7 @@ namespace Alis.App.Engine.Core
             iconDemo.Start();
 
             TopMenu.Start();
-            //BottomMenu.Start();
+            BottomMenu.Start();
             ConsoleWindow.Start();
             GameWindow.Start();
             InspectorWindow.Start();
@@ -243,7 +243,7 @@ namespace Alis.App.Engine.Core
             iconDemo.Run();
 
             TopMenu.Render();
-            //BottomMenu.Render();
+            BottomMenu.Render();
             ConsoleWindow.Render();
             GameWindow.Render();
             InspectorWindow.Render();
