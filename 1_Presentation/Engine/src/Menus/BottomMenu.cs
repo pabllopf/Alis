@@ -44,7 +44,7 @@ namespace Alis.App.Engine.Menus
     public class BottomMenu : IMenu
     {
         // Variable que controla la altura del menú inferior
-        private float bottomMenuHeight = 37.0f;
+        private float bottomMenuHeight = 10.0f;
         
         /// <summary>
         ///     Initializes a new instance of the <see cref="BottomMenu" /> class
@@ -76,13 +76,20 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         public void Render()
         {
+            ImGui.PushStyleColor(ImGuiCol.Button,  new Vector4(0.13f, 0.14f, 0.15f, 1.0f));
+            ImGui.PushStyleColor(ImGuiCol.FrameBg,  new Vector4(0.13f, 0.14f, 0.15f, 1.0f));
+            
+            ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize,0.0f);
+            ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(4, 3));
+
+            
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
                 Vector2 dockSize = SpaceWork.Viewport.Size - new Vector2(5, 105);
 
                 // Menú inferior
                 Vector2 menuSize = new Vector2(SpaceWork.Viewport.Size.X, bottomMenuHeight);
-                ImGui.SetNextWindowPos(new Vector2(SpaceWork.Viewport.WorkPos.X, SpaceWork.Viewport.WorkPos.Y + dockSize.Y + 23 + bottomMenuHeight / 2));
+                ImGui.SetNextWindowPos(new Vector2(SpaceWork.Viewport.WorkPos.X, SpaceWork.Viewport.WorkPos.Y + dockSize.Y + 31 + bottomMenuHeight / 2));
                 ImGui.SetNextWindowSize(menuSize);
             }
             else
@@ -91,7 +98,7 @@ namespace Alis.App.Engine.Menus
                 
                 // Menú inferior
                 Vector2 menuSize = new Vector2(SpaceWork.Viewport.Size.X, bottomMenuHeight);
-                ImGui.SetNextWindowPos(new Vector2(SpaceWork.Viewport.WorkPos.X, SpaceWork.Viewport.WorkPos.Y + dockSize.Y));
+                ImGui.SetNextWindowPos(new Vector2(SpaceWork.Viewport.WorkPos.X, SpaceWork.Viewport.WorkPos.Y + dockSize.Y + 8));
                 ImGui.SetNextWindowSize(menuSize);
             }
 
@@ -105,17 +112,21 @@ namespace Alis.App.Engine.Menus
                 // Dividir el área en columnas flexibles
                 ImGui.Columns(6, "MenuColumns", false); // Seis columnas para más botones
                 
+              
                 // Botón de notificaciones
-                if (ImGui.Button($"{FontAwesome5.Bell}##notifications"))
+                if (ImGui.Button($"{FontAwesome5.Bell}##notifications" ))
                 {
                     Console.WriteLine("Abriendo notificaciones...");
                     // Lógica para abrir notificaciones
                 }
                 
+               
+                
                 ImGui.SameLine();
                 
                 // Selector de rama Git
-                if (ImGui.BeginCombo($"{FontAwesome5.CodeBranch}##branchSelector", "master", ImGuiComboFlags.HeightLarge))
+                ImGui.SetNextItemWidth(90);
+                if (ImGui.BeginCombo($"##branchSelector", $"{FontAwesome5.CodeBranch}Master", ImGuiComboFlags.HeightLarge))
                 {
                     if (ImGui.Selectable("master"))
                     {
@@ -137,6 +148,7 @@ namespace Alis.App.Engine.Menus
 
                     ImGui.EndCombo();
                 }
+        
                 
                 /*
                 // Botón de guardar
@@ -227,17 +239,22 @@ namespace Alis.App.Engine.Menus
                 
                 //ImGui.EndTooltip();
 
+               
+                ImGui.PopStyleVar(2);
                 ImGui.NextColumn();
 
                 // Barra de carga alineada a la derecha
                 ImGui.SetCursorPosX(ImGui.GetContentRegionMax().X - 150); // Ajustar según el tamaño de la barra
-                ImGui.ProgressBar(0.65f, new Vector2(150, 25), "3/15"); // Ejemplo de barra al 65%
+                ImGui.ProgressBar(0.65f, new Vector2(150, 20), "3/15"); // Ejemplo de barra al 65%
 
                 ImGui.End();
             }
 
             // Restaurar el estilo
             //ImGui.PopStyleVar(1);
+            ImGui.PopStyleColor(2);
+            
+           
 
 
         }
