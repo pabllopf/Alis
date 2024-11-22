@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
 using Alis.Core.Aspect.Math.Vector;
@@ -75,14 +76,27 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         public void Render()
         {
-            Vector2 dockSize = SpaceWork.Viewport.Size - new Vector2(5, 105);
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                Vector2 dockSize = SpaceWork.Viewport.Size - new Vector2(5, 105);
 
-            // Menú inferior
-            Vector2 menuSize = new Vector2(SpaceWork.Viewport.Size.X, bottomMenuHeight);
-            ImGui.SetNextWindowPos(new Vector2(SpaceWork.Viewport.WorkPos.X, SpaceWork.Viewport.WorkPos.Y + dockSize.Y + 23 + bottomMenuHeight / 2));
-            ImGui.SetNextWindowSize(menuSize);
+                // Menú inferior
+                Vector2 menuSize = new Vector2(SpaceWork.Viewport.Size.X, bottomMenuHeight);
+                ImGui.SetNextWindowPos(new Vector2(SpaceWork.Viewport.WorkPos.X, SpaceWork.Viewport.WorkPos.Y + dockSize.Y + 23 + bottomMenuHeight / 2));
+                ImGui.SetNextWindowSize(menuSize);
+            }
+            else
+            {
+                Vector2 dockSize = SpaceWork.Viewport.Size - new Vector2(5, 35);
+                
+                // Menú inferior
+                Vector2 menuSize = new Vector2(SpaceWork.Viewport.Size.X, bottomMenuHeight);
+                ImGui.SetNextWindowPos(new Vector2(SpaceWork.Viewport.WorkPos.X, SpaceWork.Viewport.WorkPos.Y + dockSize.Y));
+                ImGui.SetNextWindowSize(menuSize);
+            }
 
-            // Configuración de estilo
+
+    // Configuración de estilo
             //ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2(0, 0));
             //ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(0, 0));
 

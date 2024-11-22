@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Alis.App.Engine.Demos;
 using Alis.App.Engine.Menus;
 using Alis.App.Engine.Windows;
@@ -196,7 +197,13 @@ namespace Alis.App.Engine.Core
             imNodeDemo.Initialize();
             iconDemo.Initialize();
 
-            TopMenu.Initialize();
+            // if is macos system:
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                TopMenu.Initialize();
+            }
+            
+            
             BottomMenu.Initialize();
             ConsoleWindow.Initialize();
             GameWindow.Initialize();
@@ -219,7 +226,13 @@ namespace Alis.App.Engine.Core
             imNodeDemo.Start();
             iconDemo.Start();
 
-            TopMenu.Start();
+            // if is macos system:
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                TopMenu.Start();
+            }
+            
+            
             BottomMenu.Start();
             ConsoleWindow.Start();
             GameWindow.Start();
@@ -242,7 +255,14 @@ namespace Alis.App.Engine.Core
             imNodeDemo.Run();
             iconDemo.Run();
 
-            TopMenu.Render();
+            // if is macos system:
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                TopMenu.Render();
+            }
+            
+            
+            
             BottomMenu.Render();
             ConsoleWindow.Render();
             GameWindow.Render();
