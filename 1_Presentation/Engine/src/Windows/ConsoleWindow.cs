@@ -31,6 +31,7 @@ using System;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Native;
 
@@ -104,25 +105,57 @@ namespace Alis.App.Engine.Windows
 
             if (ImGui.Begin(NameWindow, ref isOpen, flags))
             {
-                ImGui.Button("Clear");
+                ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0.13f, 0.14f, 0.15f, 1.0f));
+                ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4(0.13f, 0.14f, 0.15f, 1.0f));
+
+                ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0.0f);
+                // Barra superior con botones y filtro
+                ImGui.Button($"{FontAwesome5.TrashAlt}");
+                
+                
+                ImGui.PopStyleVar(1);
+                ImGui.PopStyleColor(2);
+                
                 ImGui.SameLine();
-                ImGui.Text($"{FontAwesome5.Search}");
+
+                // Ajuste dinámico del ancho del filtro
+                // Calculamos el ancho disponible menos el espacio ocupado por los botones finales
+                float buttonWidth = 32 + ImGui.GetStyle().ItemSpacing.X;
+                float remainingButtonsWidth = buttonWidth * 4f; // 3 botones a la derecha
+                float filterWidth = ImGui.GetContentRegionAvail().X - remainingButtonsWidth;
+                if (filterWidth > 0)
+                {
+                    ImGui.SetNextItemWidth(filterWidth);
+                }
+                
+                ImGui.InputText($"{FontAwesome5.Search}", commandPtr, 256);
+
                 ImGui.SameLine();
-                ImGui.InputText("##input", commandPtr, 256, ImGuiInputTextFlags.NoHorizontalScroll);
+                
+                ImGui.Spacing();
                 ImGui.SameLine();
+                ImGui.Spacing();
+                ImGui.SameLine();
+                
                 ImGui.Button($"{FontAwesome5.ExclamationCircle}");
                 ImGui.SameLine();
                 ImGui.Button($"{FontAwesome5.ExclamationTriangle}");
                 ImGui.SameLine();
                 ImGui.Button($"{FontAwesome5.Bug}");
 
-                for (int i = 0; i < 10; i++)
+                // Espacio para el área de scroll
+                ImGui.Separator(); // Opcional: para separar visualmente las secciones
+
+                // Contenedor con scroll
+                ImGui.BeginChild("ScrollingRegion", ImGui.GetContentRegionAvail(), false, ImGuiWindowFlags.HorizontalScrollbar);
+                for (int i = 0; i < 100; i++)
                 {
                     ImGui.Text($"{FontAwesome5.Bug} [{DateTime.Now}] Line {i}");
                 }
+                ImGui.EndChild();
             }
-
             ImGui.End();
+
         }
 
         /// <summary>

@@ -29,11 +29,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using Alis.App.Engine.Core;
-using Alis.App.Engine.Entity;
 using Alis.App.Engine.Fonts;
 using Alis.App.Engine.Hub;
 using Alis.App.Engine.Menus;
@@ -159,13 +159,19 @@ namespace Alis.App.Engine
         /// The hub menu
         /// </summary>
         private HubMenu hubMenu;
-
+        
         /// <summary>
         ///     Starts this instance
         /// </summary>
         /// <returns>The int</returns>
         public void Run()
         {
+            // Ejecutar la aplicación
+            //
+            
+            // Establecer el delegado de la aplicación (menú nativo)
+            //NSApplication.SharedApplication.Delegate = new AppDelegate();
+            
             // initialize SDL and set a few defaults for the OpenGL context
             if (Sdl.Init(InitSettings.InitEverything) != 0)
             {
@@ -409,8 +415,11 @@ namespace Alis.App.Engine
 
             hubMenu = new HubMenu(spaceWork);
 
+            ConfigureMenu();
+            
             while (!_quit)
             {
+                
                 while (Sdl.PollEvent(out Event e) != 0)
                 {
                     ProcessEvent(e);
@@ -431,7 +440,6 @@ namespace Alis.App.Engine
                             switch (e.key.KeySym.sym)
                             {
                                 case KeyCodes.Escape:
-                                case KeyCodes.Q:
                                     _quit = true;
                                     break;
                             }
@@ -512,6 +520,52 @@ namespace Alis.App.Engine
             Sdl.DestroyWindow(spaceWork.Window);
             Sdl.Quit();
         }
+
+        [Conditional("OSX")]
+        static void ConfigureMenu()
+        {
+#if OSX
+            MonoMac.AppKit.NSApplication.Init();
+            
+            // Configuración del menú principal
+            MonoMac.AppKit.NSMenu mainMenu = new MonoMac.AppKit.NSMenu();
+
+            // Crea un ítem para el menú de la aplicación
+            MonoMac.AppKit.NSMenuItem appMenuItem = new MonoMac.AppKit.NSMenuItem();
+            mainMenu.AddItem(appMenuItem);
+
+            MonoMac.AppKit.NSMenu appMenu = new MonoMac.AppKit.NSMenu();
+            appMenuItem.Submenu = appMenu;
+
+            // "Acerca de" (About)
+            MonoMac.AppKit.NSMenuItem aboutMenuItem = new MonoMac.AppKit.NSMenuItem("About", (sender, e) =>
+            {
+                MonoMac.AppKit.NSAlert alert = new MonoMac.AppKit.NSAlert
+                {
+                    AlertStyle = MonoMac.AppKit.NSAlertStyle.Informational,
+                    MessageText = "About My App",
+                    InformativeText = "This is a .NET macOS app configured before launch!"
+                };
+                alert.RunModal();
+            });
+            appMenu.AddItem(aboutMenuItem);
+
+            // "Salir" (Quit)
+            MonoMac.AppKit.NSMenuItem quitMenuItem = new MonoMac.AppKit.NSMenuItem("Quit", (sender, e) =>
+            {
+                MonoMac.AppKit.NSApplication.SharedApplication.Terminate(null);
+            })
+            {
+                KeyEquivalent = "q" // Atajo de teclado: Command + Q
+            };
+            appMenu.AddItem(quitMenuItem);
+
+            // Asigna el menú configurado a la aplicación
+            MonoMac.AppKit.NSApplication.SharedApplication.MainMenu = mainMenu;
+# endif
+        }
+
+
 
         private void SetStyle()
         {
@@ -787,7 +841,7 @@ namespace Alis.App.Engine
             // Calcular el tamaño del DockSpace restante
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                dockSize = spaceWork.Viewport.Size - new Vector2(5, 65);
+                dockSize = spaceWork.Viewport.Size - new Vector2(5, 60);
             }
 
             uint dockSpaceId = ImGui.GetId("MyDockSpace");
