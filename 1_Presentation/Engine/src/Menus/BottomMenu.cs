@@ -85,7 +85,7 @@ namespace Alis.App.Engine.Menus
             
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                Vector2 dockSize = SpaceWork.Viewport.Size - new Vector2(5, 105);
+                Vector2 dockSize = SpaceWork.Viewport.Size - new Vector2(5, 90);
 
                 // Menú inferior
                 Vector2 menuSize = new Vector2(SpaceWork.Viewport.Size.X, bottomMenuHeight);
