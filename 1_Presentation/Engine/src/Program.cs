@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Threading;
+
 namespace Alis.App.Engine
 {
     /// <summary>
@@ -39,11 +39,6 @@ namespace Alis.App.Engine
         ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
-        //public static void Main(string[] args) => new Engine().Run();
-
-        public static void Main(string[] args)
-        {
-            new Engine().Run();
-        }
+        public static void Main(string[] args) => new Engine().Run();
     }
 }

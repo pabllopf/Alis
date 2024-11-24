@@ -415,7 +415,9 @@ namespace Alis.App.Engine
 
             hubMenu = new HubMenu(spaceWork);
 
+#if OSX
             ConfigureMenu();
+#endif
             
             while (!_quit)
             {
@@ -521,10 +523,10 @@ namespace Alis.App.Engine
             Sdl.Quit();
         }
 
+#if OSX
         [Conditional("OSX")]
         static void ConfigureMenu()
         {
-#if OSX
             MonoMac.AppKit.NSApplication.Init();
             
             // Configuración del menú principal
@@ -562,9 +564,8 @@ namespace Alis.App.Engine
 
             // Asigna el menú configurado a la aplicación
             MonoMac.AppKit.NSApplication.SharedApplication.MainMenu = mainMenu;
-# endif
         }
-
+#endif
 
 
         private void SetStyle()

@@ -1,20 +1,16 @@
 <Project>
     <ItemGroup Condition="$(AssemblyName.Contains('Test')) == true">
-
-        <!-- benchmark -->
-        <PackageReference Include="BenchmarkDotNet" Version="0.14.0"/>
-
         <!-- Test packs -->
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1"/>
-        <PackageReference Include="xunit" Version="2.6.6"/>
-        <PackageReference Include="Xunit.StaFact" Version="1.1.11"/>
-        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0"/>
+        <PackageReference Include="xunit" Version="2.9.2"/>
+        <PackageReference Include="Xunit.StaFact" Version="1.0.37"/>
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
 
 
-        <PackageReference Include="coverlet.collector" Version="6.0.0">
+        <PackageReference Include="coverlet.collector" Version="6.0.2">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
@@ -42,10 +38,10 @@
         <PackageReference Include="Dropbox.Api" Version="6.37.0"/>
     </ItemGroup>
 
-    <!---
-    <ItemGroup Condition="($(AssemblyName.Contains('App')) == true OR $(AssemblyName.Contains('Sample')) == true)">
-        <PackageReference Include="MonoMac.NetStandard" Version="0.0.4" />
+    
+    <ItemGroup Condition="($(AssemblyName.Contains('App')) == true OR $(AssemblyName.Contains('Sample')) == true) AND $(IsOSX) == true">
+        <PackageReference Include="Eto.Platform.Mac64" Version="2.8.3" />
     </ItemGroup>
-    -->
+    
     
 </Project>
