@@ -23,7 +23,7 @@
     </ItemGroup>
     
     <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Payment.Stripe'))">
-        <PackageReference Include="Stripe.net" Version="43.20.0"/>
+        <PackageReference Include="Stripe.net" Version="43.23.0"/>
     </ItemGroup>
 
     <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Ads.GoogleAds'))">
@@ -37,11 +37,8 @@
     <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Cloud.DropBox'))">
         <PackageReference Include="Dropbox.Api" Version="6.37.0"/>
     </ItemGroup>
-
     
     <ItemGroup Condition="($(AssemblyName.Contains('App')) == true OR $(AssemblyName.Contains('Sample')) == true) AND $(IsOSX) == true">
         <PackageReference Include="Eto.Platform.Mac64" Version="2.8.3" />
     </ItemGroup>
-    
-    
 </Project>
