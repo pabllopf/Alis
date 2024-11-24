@@ -415,6 +415,7 @@ namespace Alis.App.Engine
 
             hubMenu = new HubMenu(spaceWork);
 
+            
 #if OSX
             ConfigureMenu();
 #endif
