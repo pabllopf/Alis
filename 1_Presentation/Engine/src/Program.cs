@@ -28,8 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Threading;
-using MonoMac.AppKit;
-
 namespace Alis.App.Engine
 {
     /// <summary>
@@ -46,12 +44,6 @@ namespace Alis.App.Engine
         public static void Main(string[] args)
         {
             new Engine().Run();
-        }
-        
-        // Este método maneja el ciclo de eventos de macOS (menú nativo)
-        private static void RunMacOS()
-        {
-            
         }
     }
 }
