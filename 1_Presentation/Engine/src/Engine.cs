@@ -836,7 +836,7 @@ namespace Alis.App.Engine
             
             dockSpaceMenu.Update();
 
-            Vector2 dockSize = spaceWork.Viewport.Size - new Vector2(5, 95);
+            Vector2 dockSize = spaceWork.Viewport.Size - new Vector2(5, 85);
             
             // Calcular el tamaño del DockSpace restante
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
