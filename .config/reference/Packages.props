@@ -25,11 +25,7 @@
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
     </ItemGroup>
-
-    <ItemGroup Condition="$(AssemblyName.Contains('Benchmark'))">
-        <PackageReference Include="BenchmarkDotNet" Version="0.13.2"/>
-    </ItemGroup>
-
+    
     <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Payment.Stripe'))">
         <PackageReference Include="Stripe.net" Version="43.20.0"/>
     </ItemGroup>
