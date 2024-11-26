@@ -382,10 +382,10 @@ namespace Alis.Core.Sample
                 Console.WriteLine("Botón presionado, llamando a .NET");
             });*/
             
-#if OSX      
             // Crea y configura el menú
-            ConfigureMenu();
             
+#if OSX
+            ConfigureMenu();
 #endif
 
             while (_running)
@@ -618,8 +618,6 @@ namespace Alis.Core.Sample
         }
         
 #if OSX
-
-
         [Conditional("OSX")]
         static void ConfigureMenu()
         {
@@ -661,9 +659,8 @@ namespace Alis.Core.Sample
             // Asigna el menú configurado a la aplicación
             MonoMac.AppKit.NSApplication.SharedApplication.MainMenu = mainMenu;
         }
-        
-        
 #endif
+
 
         /// <summary>
         ///     Draws the circle using the specified renderer
