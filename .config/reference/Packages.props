@@ -39,6 +39,6 @@
     </ItemGroup>
     
     <ItemGroup Condition="($(AssemblyName.Contains('App')) == true OR $(AssemblyName.Contains('Sample')) == true) AND $(IsOSX) == true">
-        <PackageReference Include="Eto.Platform.Mac64" Version="2.8.3" />
+        <PackageReference Include="MonoMac.NetStandard" Version="0.0.4" />
     </ItemGroup>
 </Project>
