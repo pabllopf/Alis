@@ -325,7 +325,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="v">The </param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igCheckbox")]
-        public static extern byte igCheckbox(byte[] label, bool v);
+        public static extern byte igCheckbox(byte[] label, ref bool v);
 
         /// <summary>
         ///     Igs the checkbox flags int ptr using the specified label

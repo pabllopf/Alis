@@ -294,14 +294,14 @@ private void LearnSection()
             ImGui.Text("Step-by-Step Tutorials");
             ImGui.Separator();
 
-            var tutorials = new List<LearningResource>
+            List<LearningResource> tutorials = new List<LearningResource>
             {
                 new LearningResource("Getting Started", "Learn the basics of the platform", "tutorials/getting_started.html"),
                 new LearningResource("Advanced Features", "Dive into advanced functionality", "tutorials/advanced_features.html"),
                 new LearningResource("Customization", "Tailor the platform to your needs", "tutorials/customization.html")
             };
 
-            foreach (var tutorial in tutorials)
+            foreach (LearningResource tutorial in tutorials)
             {
                 ImGui.BulletText($"{tutorial.Title}: {tutorial.Description}");
                 if (ImGui.Button($"Open##{tutorial.Title}"))
@@ -341,14 +341,14 @@ private void LearnSection()
             ImGui.Text("Learning Videos");
             ImGui.Separator();
 
-            var videos = new List<LearningResource>
+            List<LearningResource> videos = new List<LearningResource>
             {
                 new LearningResource("Introduction Video", "A quick introduction to the platform", "videos/introduction.mp4"),
                 new LearningResource("Feature Overview", "Detailed explanation of features", "videos/features.mp4"),
                 new LearningResource("Webinar Replay", "Watch a recent webinar", "videos/webinar.mp4")
             };
 
-            foreach (var video in videos)
+            foreach (LearningResource video in videos)
             {
                 if (ImGui.Button($"▶ {video.Title}"))
                 {
@@ -360,7 +360,7 @@ private void LearnSection()
 // Display random tips
         private void DisplayTips()
         {
-            var tips = new List<string>
+            List<string> tips = new List<string>
             {
                 "Use keyboard shortcuts to speed up your workflow.",
                 "Regularly check for updates to stay up-to-date.",
@@ -371,7 +371,7 @@ private void LearnSection()
             ImGui.Text("Quick Tips");
             ImGui.Separator();
 
-            var random = new Random();
+            Random random = new Random();
             ImGui.TextWrapped(tips[random.Next(tips.Count)]);
         }
 
@@ -403,7 +403,7 @@ private void InstallsEditorSection()
                 ImGui.TableHeadersRow();
 
                 // Example installed versions data
-                var installedVersions = new List<InstalledVersion>
+                List<InstalledVersion> installedVersions = new List<InstalledVersion>
                 {
                     new InstalledVersion("1.0.0", "2023-01-15", "/path/to/version1"),
                     new InstalledVersion("1.1.0", "2023-06-10", "/path/to/version2"),
@@ -411,7 +411,7 @@ private void InstallsEditorSection()
                 };
 
                 // Iterate through each installed version and display in the table
-                foreach (var version in installedVersions)
+                foreach (InstalledVersion version in installedVersions)
                 {
                     ImGui.TableNextRow();
 
@@ -707,7 +707,7 @@ private void InstallsEditorSection()
                 ImGui.TableHeadersRow();
 
                 // Generar filas con los recursos (suponiendo que tienes una lista de recursos llamada 'Items')
-                foreach (var item in gallery.Items)
+                foreach (GalleryItem item in gallery.Items)
                 {
                     ImGui.TableNextRow();
 

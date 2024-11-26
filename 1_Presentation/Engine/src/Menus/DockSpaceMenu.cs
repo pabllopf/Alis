@@ -28,11 +28,13 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Ecs.Entity;
 using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Native;
 
@@ -40,6 +42,11 @@ namespace Alis.App.Engine.Menus
 {
     internal class DockSpaceMenu : IMenu
     {
+        public DockSpaceMenu(SpaceWork spaceWork)
+        {
+            SpaceWork = spaceWork;
+        }
+        
         public void Initialize()
         {
            
@@ -124,15 +131,28 @@ namespace Alis.App.Engine.Menus
 
 
                 // Segundo conjunto de botones: en el centro
-                ImGui.SetNextItemWidth(120);
-                if (ImGui.BeginCombo("##Scene", $"{FontAwesome5.Cube} Main Menu"))
+                
+                Scene scene = SpaceWork.VideoGame.Context.SceneManager.CurrentScene;
+                List<Scene> scenes = SpaceWork.VideoGame.Context.SceneManager.Scenes;
+                
+                int numberCharsName = scene.Name.Length;
+                ImGui.SetNextItemWidth(32 + numberCharsName * 10);
+                
+                if (ImGui.BeginCombo($"##{scene.Id}", $"{FontAwesome5.Cube} {scene.Name}"))
                 {
-                    if (ImGui.Selectable("Main Menu"))
+                    // Show the scenes of game: 
+                    foreach (Scene s in scenes)
                     {
+                        if (ImGui.Selectable($"{FontAwesome5.Cube} {s.Name}"))
+                        {
+                            SpaceWork.VideoGame.Context.SceneManager.CurrentScene = s;
+                        }
                     }
-
+                    
                     ImGui.EndCombo();
                 }
+                
+               
 
                 ImGui.SameLine();
 

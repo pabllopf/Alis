@@ -18,7 +18,7 @@ namespace Alis.App.Engine.Hub
             int containerWidth = 750;  // Ancho total del espacio
             int containerHeight = 1500; // Altura total del espacio
 
-            var board = new Board(containerWidth, containerHeight); // Tablero para gestionar huecos
+            Board board = new Board(containerWidth, containerHeight); // Tablero para gestionar huecos
 
             // Primera vuelta: Generar cajas aleatorias de tamaño 200x200, 200x100, 100x200
             while (board.HasSpace())
@@ -26,7 +26,7 @@ namespace Alis.App.Engine.Hub
                 int width = rand.Next(0, 2) == 0 ? 100 : (rand.Next(0, 2) == 0 ? 200 : 100); // 100, 200, o 100
                 int height = rand.Next(0, 2) == 0 ? 100 : (rand.Next(0, 2) == 0 ? 200 : 100); // 100, 200, o 100
 
-                if (board.TryPlaceItem(width, height, out var position))
+                if (board.TryPlaceItem(width, height, out (int x, int y) position))
                 {
                     Items.Add(new GalleryItem(
                         GetRandomImagePath(imageOptions, rand),
@@ -57,7 +57,7 @@ namespace Alis.App.Engine.Hub
             while (board.HasSpace())
             {
                 // Intentar colocar una caja de 100x100 en el primer hueco encontrado
-                if (board.TryPlaceItem(100, 100, out var position))
+                if (board.TryPlaceItem(100, 100, out (int x, int y) position))
                 {
                     Items.Add(new GalleryItem(
                         GetRandomImagePath(imageOptions, rand),
@@ -82,7 +82,7 @@ namespace Alis.App.Engine.Hub
             while (board.HasSpace())
             {
                 // Intentar colocar una caja de 50x50 en el primer hueco encontrado
-                if (board.TryPlaceItem(50, 50, out var position))
+                if (board.TryPlaceItem(50, 50, out (int x, int y) position))
                 {
                     Items.Add(new GalleryItem(
                         GetRandomImagePath(imageOptions, rand),

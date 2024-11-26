@@ -796,7 +796,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool Checkbox(string label, ref bool v)
         {
-            byte ret = ImGuiNative.igCheckbox(Encoding.UTF8.GetBytes(label), v);
+            byte ret = ImGuiNative.igCheckbox(Encoding.UTF8.GetBytes(label), ref v);
             return ret != 0;
         }
 
