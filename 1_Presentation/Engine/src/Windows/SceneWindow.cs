@@ -240,37 +240,37 @@ namespace Alis.App.Engine.Windows
             // Iniciar la ventana de ImGui
             if (ImGui.Begin(NameWindow, ImGuiWindowFlags.MenuBar))
             {
-                // Renderizar el menú principal
+               // Renderizar el menú principal
                 if (ImGui.BeginMenuBar())
                 {
-                    if (ImGui.BeginMenu($"{FontAwesome5.HandSpock}"))
+                    if (ImGui.Button($"{FontAwesome5.HandSpock}"))
                     {
-                        ImGui.EndMenu();
+                        // Acción del botón HandSpock
                     }
 
-                    if (ImGui.BeginMenu($"{FontAwesome5.ArrowsAlt}"))
+                    if (ImGui.Button($"{FontAwesome5.ArrowsAlt}"))
                     {
-                        ImGui.EndMenu();
+                        // Acción del botón ArrowsAlt
                     }
                     
-                    if (ImGui.BeginMenu($"{FontAwesome5.Cogs}"))
+                    if (ImGui.Button($"{FontAwesome5.Cogs}"))
                     {
-                        ImGui.EndMenu();
+                        // Acción del botón Cogs
                     }
                     
-                    if (ImGui.BeginMenu($"{FontAwesome5.InfoCircle}"))
+                    if (ImGui.Button($"{FontAwesome5.InfoCircle}"))
                     {
-                        ImGui.EndMenu();
+                        // Acción del botón InfoCircle
                     }
                     
-                    if (ImGui.BeginMenu($"{FontAwesome5.Tools}"))
+                    if (ImGui.Button($"{FontAwesome5.Tools}"))
                     {
-                        ImGui.EndMenu();
+                        // Acción del botón Tools
                     }
                     
-                    if (ImGui.BeginMenu($"{FontAwesome5.User}"))
+                    if (ImGui.Button($"{FontAwesome5.User}"))
                     {
-                        ImGui.EndMenu();
+                        // Acción del botón User
                     }
 
                     ImGui.EndMenuBar();
