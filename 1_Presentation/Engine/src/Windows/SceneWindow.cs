@@ -276,6 +276,7 @@ namespace Alis.App.Engine.Windows
                     ImGui.EndMenuBar();
                 }
                 
+                
                 // Obtener el tamaño disponible en el contenedor de ImGui
                 Vector2 availableSize = ImGui.GetContentRegionAvail();
 
