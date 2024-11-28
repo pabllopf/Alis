@@ -819,11 +819,6 @@ namespace Alis.App.Engine
 
             style.DisabledAlpha = 0.6f;
         }
-
-
-    
-
-        private DockSpaceMenu dockSpaceMenu = new DockSpaceMenu();
         
         /// <summary>
         /// Renders the project
@@ -836,7 +831,7 @@ namespace Alis.App.Engine
             ImGui.Begin("DockSpace Demo", dockspaceflags);
 
             
-            dockSpaceMenu.Update();
+            spaceWork.DockSpaceMenu.Update();
 
             Vector2 dockSize = spaceWork.Viewport.Size - new Vector2(5, 85);
             

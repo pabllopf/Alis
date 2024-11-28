@@ -32,6 +32,7 @@ using System.Runtime.InteropServices;
 using Alis.App.Engine.Demos;
 using Alis.App.Engine.Menus;
 using Alis.App.Engine.Windows;
+using Alis.Core.Ecs.System;
 using Alis.Extension.Graphic.ImGui;
 
 namespace Alis.App.Engine.Core
@@ -80,6 +81,11 @@ namespace Alis.App.Engine.Core
         ///     The renderer game
         /// </summary>
         public IntPtr rendererGame;
+        
+        /// <summary>
+        ///     The video game
+        /// </summary>
+        public VideoGame VideoGame;
 
         /// <summary>
         ///     The style
@@ -114,6 +120,7 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public SpaceWork()
         {
+            DockSpaceMenu = new DockSpaceMenu(this);
             ConsoleWindow = new ConsoleWindow(this);
             GameWindow = new GameWindow(this);
             InspectorWindow = new InspectorWindow(this);
@@ -160,6 +167,8 @@ namespace Alis.App.Engine.Core
         ///     Gets the value of the top menu
         /// </summary>
         internal TopMenu TopMenu { get; }
+        
+        internal DockSpaceMenu DockSpaceMenu { get; }
 
         /// <summary>
         ///     Gets the value of the bottom menu

@@ -27,8 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
+using Alis.Core.Ecs.Entity;
+using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Native;
 
 namespace Alis.App.Engine.Windows
@@ -39,37 +42,95 @@ namespace Alis.App.Engine.Windows
     public class ProjectWindow : IWindow
     {
         private static readonly string NameWindow = $"{FontAwesome5.Stream} Project";
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="ProjectWindow" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
         public ProjectWindow(SpaceWork spaceWork) => SpaceWork = spaceWork;
-
+        
         /// <summary>
         ///     Initializes this instance
         /// </summary>
         public void Initialize()
         {
         }
-
+        
         /// <summary>
         ///     Starts this instance
         /// </summary>
         public void Start()
         {
         }
-
-        /// <summary>
-        ///     Renders this instance
-        /// </summary>
+        
         public void Render()
         {
             ImGui.Begin(NameWindow);
-
+            
+            Scene scene = SpaceWork.VideoGame.Context.SceneManager.CurrentScene;
+            
+            List<GameObject> gameObjects = scene.GameObjects;
+            
+            foreach (GameObject gameObject in gameObjects)
+            {
+                RenderGameObjectHierarchy(gameObject);
+                
+                if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
+                {
+                    ImGui.OpenPopup($"context_menu_{gameObject.Id}");
+                }
+                
+                if (ImGui.BeginPopup($"context_menu_{gameObject.Id}"))
+                {
+                    if (ImGui.Selectable($"{FontAwesome5.Clone} Duplicate"))
+                    {
+                        DuplicateGameObject(gameObject);
+                    }
+                    
+                    if (ImGui.Selectable($"{FontAwesome5.Trash} Delete"))
+                    {
+                        DeleteGameObject(gameObject);
+                    }
+                    
+                    if (ImGui.Selectable($"{FontAwesome5.Pen} Rename"))
+                    {
+                        RenameGameObject(gameObject);
+                    }
+                    
+                    ImGui.EndPopup();
+                }
+            }
+            
             ImGui.End();
         }
-
+        
+        private void RenderGameObjectHierarchy(GameObject gameObject)
+        {
+            // Render leaf GameObject without children
+            ImGui.Selectable($"{FontAwesome5.Cube} {gameObject.Name} ##{gameObject.Id}", false);
+            
+            if (ImGui.IsItemClicked(ImGuiMouseButton.Left))
+            {
+                SpaceWork.InspectorWindow.SelectGameObject(gameObject);
+            }
+        }
+        
+        private void DuplicateGameObject(GameObject gameObject)
+        {
+            // Logic to duplicate the game object
+        }
+        
+        private void DeleteGameObject(GameObject gameObject)
+        {
+            // Logic to delete the game object
+        }
+        
+        private void RenameGameObject(GameObject gameObject)
+        {
+            // Logic to rename the game object
+        }
+        
+        
         /// <summary>
         ///     Gets the value of the space work
         /// </summary>

@@ -41,19 +41,19 @@ namespace Alis.App.Engine.Hub
         public Gallery2()
         {
             Items = new List<GalleryItem>();
-            var random = new Random();
+            Random random = new Random();
 
             // Lista de posibles imágenes
-            var imageOptions = new[] { "computer.png", "news.png", "cubes.png", "shop.png" };
+            string[] imageOptions = new[] { "computer.png", "news.png", "cubes.png", "shop.png" };
 
             // Generar 10 elementos de la galería
             for (int i = 0; i < 10; i++)
             {
                 // Seleccionar una imagen aleatoria
-                var imagePath = AssetManager.Find(imageOptions[random.Next(imageOptions.Length)]);
+                string imagePath = AssetManager.Find(imageOptions[random.Next(imageOptions.Length)]);
 
                 // Crear un nuevo GalleryItem con datos aleatorios
-                var item = new GalleryItem(
+                GalleryItem item = new GalleryItem(
                     imagePath, 
                     $"Item {i + 1}", 
                     $"Description for Item {i + 1}", 

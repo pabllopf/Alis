@@ -62,12 +62,7 @@ namespace Alis.App.Engine.Windows
         ///     The textureopen gl id
         /// </summary>
         private uint textureopenGlId;
-
-        /// <summary>
-        ///     The video game
-        /// </summary>
-        private VideoGame videoGame;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="SceneWindow" /> class
         /// </summary>
@@ -84,7 +79,7 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         public void Initialize()
         {
-            videoGame = VideoGame
+            SpaceWork.VideoGame = VideoGame
                 .Create()
                 .Settings(setting => setting
                     .General(general => general
@@ -111,6 +106,7 @@ namespace Alis.App.Engine.Windows
                     .Build())
                 .World(sceneManager => sceneManager
                     .Add<Scene>(gameScene => gameScene
+                        .Name("Main Scene")
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Player")
                             .WithTag("Player")
@@ -198,9 +194,9 @@ namespace Alis.App.Engine.Windows
                     .Build())
                 .Build();
 
-            videoGame.StartPreview();
+            SpaceWork.VideoGame.StartPreview();
 
-            SpaceWork.rendererGame = videoGame.Context.GraphicManager.Renderer;
+            SpaceWork.rendererGame = SpaceWork.VideoGame.Context.GraphicManager.Renderer;
         }
 
         /// <summary>
@@ -228,7 +224,7 @@ namespace Alis.App.Engine.Windows
         public void Render()
         {
             // Ejecutar el método de vista previa del videojuego
-            videoGame.RunPreview();
+            SpaceWork.VideoGame.RunPreview();
 
             // Leer los píxeles del renderer de SDL
             RectangleI rect = new RectangleI(0, 0, 800, 600);
@@ -247,43 +243,33 @@ namespace Alis.App.Engine.Windows
                 // Renderizar el menú principal
                 if (ImGui.BeginMenuBar())
                 {
-                    if (ImGui.BeginMenu("File"))
+                    if (ImGui.BeginMenu($"{FontAwesome5.HandSpock}"))
                     {
-                        if (ImGui.MenuItem("Open"))
-                        {
-                            // Acción para abrir un archivo
-                            Console.WriteLine("Open selected");
-                        }
-
-                        if (ImGui.MenuItem("Save"))
-                        {
-                            // Acción para guardar
-                            Console.WriteLine("Save selected");
-                        }
-
-                        if (ImGui.MenuItem("Exit"))
-                        {
-                            // Acción para salir
-                            Console.WriteLine("Exit selected");
-                        }
-
                         ImGui.EndMenu();
                     }
 
-                    if (ImGui.BeginMenu("Edit"))
+                    if (ImGui.BeginMenu($"{FontAwesome5.ArrowsAlt}"))
                     {
-                        if (ImGui.MenuItem("Undo", "Ctrl+Z"))
-                        {
-                            // Acción para deshacer
-                            Console.WriteLine("Undo selected");
-                        }
-
-                        if (ImGui.MenuItem("Redo", "Ctrl+Y"))
-                        {
-                            // Acción para rehacer
-                            Console.WriteLine("Redo selected");
-                        }
-
+                        ImGui.EndMenu();
+                    }
+                    
+                    if (ImGui.BeginMenu($"{FontAwesome5.Cogs}"))
+                    {
+                        ImGui.EndMenu();
+                    }
+                    
+                    if (ImGui.BeginMenu($"{FontAwesome5.InfoCircle}"))
+                    {
+                        ImGui.EndMenu();
+                    }
+                    
+                    if (ImGui.BeginMenu($"{FontAwesome5.Tools}"))
+                    {
+                        ImGui.EndMenu();
+                    }
+                    
+                    if (ImGui.BeginMenu($"{FontAwesome5.User}"))
+                    {
                         ImGui.EndMenu();
                     }
 
