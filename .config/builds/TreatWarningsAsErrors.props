@@ -4,6 +4,6 @@
 
         <!-- Need to delete this line from the project file (ALL)-->
         <!-- Nulleable true =>  8622;8714;8605;8769;8618;8625;8601;8602;8604;8765;8603;8767;8600; -->
-        <WarningsNotAsErrors>8633;8622;8714;8605;8769;8618;8625;8601;8602;8604;8765;8603;8767;8600;0433;0436;1701;1702;0618;1570</WarningsNotAsErrors>
+        <WarningsNotAsErrors>NU1903;8633;8622;8714;8605;8769;8618;8625;8601;8602;8604;8765;8603;8767;8600;0433;0436;1701;1702;0618;1570</WarningsNotAsErrors>
     </PropertyGroup>
 </Project>
