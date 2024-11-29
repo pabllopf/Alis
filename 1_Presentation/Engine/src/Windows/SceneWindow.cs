@@ -143,6 +143,7 @@ namespace Alis.App.Engine.Windows
                                 .Build())
                             .Build())
 
+                        
                         // Decoration tree-001
                         .Add<GameObject>(gameObject => gameObject
                             .Name("tree-001")
