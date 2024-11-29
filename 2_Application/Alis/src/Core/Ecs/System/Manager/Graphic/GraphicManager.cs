@@ -314,6 +314,12 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             PhysicSetting physicSettings = contextSetting.Physic;
             Color debugColor = physicSettings.DebugColor;
 
+            if (Cameras.Count == 0)
+            {
+                Logger.Warning($"There are no cameras to render on the screen in the graphic manager for scene {Context.SceneManager.CurrentScene.Name}");
+                return;
+            }
+            
             foreach (Camera camera in Cameras)
             {
                 if (!camera.IsEnable)
