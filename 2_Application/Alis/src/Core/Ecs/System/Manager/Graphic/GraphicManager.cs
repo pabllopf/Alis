@@ -319,7 +319,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 Logger.Warning($"There are no cameras to render on the screen in the graphic manager for scene {Context.SceneManager.CurrentScene.Name}");
                 return;
             }
-            
+
             foreach (Camera camera in Cameras)
             {
                 if (!camera.IsEnable)

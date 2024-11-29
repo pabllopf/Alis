@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
 using Alis.Core.Aspect.Math.Vector;
@@ -44,8 +43,8 @@ namespace Alis.App.Engine.Menus
     public class BottomMenu : IMenu
     {
         // Variable que controla la altura del menú inferior
-        private float bottomMenuHeight = 10.0f;
-        
+        private readonly float bottomMenuHeight = 10.0f;
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="BottomMenu" /> class
         /// </summary>
@@ -76,13 +75,13 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         public void Render()
         {
-            ImGui.PushStyleColor(ImGuiCol.Button,  new Vector4(0.13f, 0.14f, 0.15f, 1.0f));
-            ImGui.PushStyleColor(ImGuiCol.FrameBg,  new Vector4(0.13f, 0.14f, 0.15f, 1.0f));
-            
-            ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize,0.0f);
+            ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0.13f, 0.14f, 0.15f, 1.0f));
+            ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4(0.13f, 0.14f, 0.15f, 1.0f));
+
+            ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0.0f);
             ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(4, 3));
 
-            
+
             if (!SpaceWork.IsMacOs)
             {
                 Vector2 dockSize = SpaceWork.Viewport.Size - new Vector2(5, 90);
@@ -95,7 +94,7 @@ namespace Alis.App.Engine.Menus
             else
             {
                 Vector2 dockSize = SpaceWork.Viewport.Size - new Vector2(5, 35);
-                
+
                 // Menú inferior
                 Vector2 menuSize = new Vector2(SpaceWork.Viewport.Size.X, bottomMenuHeight);
                 ImGui.SetNextWindowPos(new Vector2(SpaceWork.Viewport.WorkPos.X, SpaceWork.Viewport.WorkPos.Y + dockSize.Y + 8));
@@ -103,7 +102,7 @@ namespace Alis.App.Engine.Menus
             }
 
 
-    // Configuración de estilo
+            // Configuración de estilo
             //ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2(0, 0));
             //ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(0, 0));
 
@@ -111,22 +110,21 @@ namespace Alis.App.Engine.Menus
             {
                 // Dividir el área en columnas flexibles
                 ImGui.Columns(6, "MenuColumns", false); // Seis columnas para más botones
-                
-              
+
+
                 // Botón de notificaciones
-                if (ImGui.Button($"{FontAwesome5.Bell}##notifications" ))
+                if (ImGui.Button($"{FontAwesome5.Bell}##notifications"))
                 {
                     Console.WriteLine("Abriendo notificaciones...");
                     // Lógica para abrir notificaciones
                 }
-                
-               
-                
+
+
                 ImGui.SameLine();
-                
+
                 // Selector de rama Git
                 ImGui.SetNextItemWidth(90);
-                if (ImGui.BeginCombo($"##branchSelector", $"{FontAwesome5.CodeBranch}Master", ImGuiComboFlags.HeightLarge))
+                if (ImGui.BeginCombo("##branchSelector", $"{FontAwesome5.CodeBranch}Master", ImGuiComboFlags.HeightLarge))
                 {
                     if (ImGui.Selectable("master"))
                     {
@@ -148,8 +146,8 @@ namespace Alis.App.Engine.Menus
 
                     ImGui.EndCombo();
                 }
-        
-                
+
+
                 /*
                 // Botón de guardar
                 if (ImGui.Button($"{FontAwesome5.Save}##save", new Vector2(32, 32)))
@@ -190,12 +188,11 @@ namespace Alis.App.Engine.Menus
 
                 ImGui.NextColumn();
 
-                
 
                 //ImGui.BeginTooltip();
-                
+
                 //ImGui.Text("Seleccionar rama de Git");
-                
+
                 //ImGui.EndTooltip();
 
                 ImGui.NextColumn();
@@ -208,9 +205,9 @@ namespace Alis.App.Engine.Menus
                 }*/
 
                 // ImGui.BeginTooltip();
-                
+
                 //ImGui.Text("Herramientas rápidas");
-                
+
                 //ImGui.EndTooltip();
 
                 /*
@@ -234,12 +231,12 @@ namespace Alis.App.Engine.Menus
                 ImGui.NextColumn();
 
                 //ImGui.BeginTooltip();
-                
+
                 //ImGui.Text("Notificaciones");
-                
+
                 //ImGui.EndTooltip();
 
-               
+
                 ImGui.PopStyleVar(2);
                 ImGui.NextColumn();
 
@@ -253,10 +250,6 @@ namespace Alis.App.Engine.Menus
             // Restaurar el estilo
             //ImGui.PopStyleVar(1);
             ImGui.PopStyleColor(2);
-            
-           
-
-
         }
 
         /// <summary>

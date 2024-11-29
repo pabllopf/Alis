@@ -111,11 +111,11 @@ namespace Alis.App.Engine.Windows
                 ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0.0f);
                 // Barra superior con botones y filtro
                 ImGui.Button($"{FontAwesome5.TrashAlt}");
-                
-                
+
+
                 ImGui.PopStyleVar(1);
                 ImGui.PopStyleColor(2);
-                
+
                 ImGui.SameLine();
 
                 // Ajuste dinámico del ancho del filtro
@@ -127,16 +127,16 @@ namespace Alis.App.Engine.Windows
                 {
                     ImGui.SetNextItemWidth(filterWidth);
                 }
-                
+
                 ImGui.InputText($"{FontAwesome5.Search}", commandPtr, 256);
 
                 ImGui.SameLine();
-                
+
                 ImGui.Spacing();
                 ImGui.SameLine();
                 ImGui.Spacing();
                 ImGui.SameLine();
-                
+
                 ImGui.Button($"{FontAwesome5.ExclamationCircle}");
                 ImGui.SameLine();
                 ImGui.Button($"{FontAwesome5.ExclamationTriangle}");
@@ -152,10 +152,11 @@ namespace Alis.App.Engine.Windows
                 {
                     ImGui.Text($"{FontAwesome5.Bug} [{DateTime.Now}] Line {i}");
                 }
+
                 ImGui.EndChild();
             }
-            ImGui.End();
 
+            ImGui.End();
         }
 
         /// <summary>

@@ -62,7 +62,7 @@ namespace Alis.App.Engine.Windows
         ///     The textureopen gl id
         /// </summary>
         private uint textureopenGlId;
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="SceneWindow" /> class
         /// </summary>
@@ -143,7 +143,6 @@ namespace Alis.App.Engine.Windows
                                 .Build())
                             .Build())
 
-                        
                         // Decoration tree-001
                         .Add<GameObject>(gameObject => gameObject
                             .Name("tree-001")
@@ -192,12 +191,10 @@ namespace Alis.App.Engine.Windows
                                 .Build())
                             .Build())
                         .Build())
-                    
-                    
+
                     // OTHER SCENE
-                     .Add<Scene>(gameScene => gameScene
+                    .Add<Scene>(gameScene => gameScene
                         .Name("Other Scene")
-                        
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Camera")
                             .WithTag("Camera")
@@ -211,7 +208,7 @@ namespace Alis.App.Engine.Windows
                                 .BackgroundColor(Color.DarkGreen)
                                 .Build())
                             .Build())
-                        
+
                         // Decoration tree-001
                         .Add<GameObject>(gameObject => gameObject
                             .Name("tree-001")
@@ -309,7 +306,7 @@ namespace Alis.App.Engine.Windows
             // Iniciar la ventana de ImGui
             if (ImGui.Begin(NameWindow, ImGuiWindowFlags.MenuBar))
             {
-               // Renderizar el menú principal
+                // Renderizar el menú principal
                 if (ImGui.BeginMenuBar())
                 {
                     if (ImGui.Button($"{FontAwesome5.HandSpock}"))
@@ -321,22 +318,22 @@ namespace Alis.App.Engine.Windows
                     {
                         // Acción del botón ArrowsAlt
                     }
-                    
+
                     if (ImGui.Button($"{FontAwesome5.Cogs}"))
                     {
                         // Acción del botón Cogs
                     }
-                    
+
                     if (ImGui.Button($"{FontAwesome5.InfoCircle}"))
                     {
                         // Acción del botón InfoCircle
                     }
-                    
+
                     if (ImGui.Button($"{FontAwesome5.Tools}"))
                     {
                         // Acción del botón Tools
                     }
-                    
+
                     if (ImGui.Button($"{FontAwesome5.User}"))
                     {
                         // Acción del botón User
@@ -344,8 +341,8 @@ namespace Alis.App.Engine.Windows
 
                     ImGui.EndMenuBar();
                 }
-                
-                
+
+
                 // Obtener el tamaño disponible en el contenedor de ImGui
                 Vector2 availableSize = ImGui.GetContentRegionAvail();
 

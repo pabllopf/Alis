@@ -1,12 +1,41 @@
- using System;
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:HubMenu.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Entity;
 using Alis.App.Engine.Fonts;
 using Alis.Core.Aspect.Data.Resource;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Structs;
@@ -20,28 +49,16 @@ using PixelFormat = Alis.Extension.Graphic.OpenGL.Enums.PixelFormat;
 namespace Alis.App.Engine.Hub
 {
     /// <summary>
-    /// The hub menu class
+    ///     The hub menu class
     /// </summary>
     public class HubMenu
     {
-        /// <summary>
-        /// The project
-        /// </summary>
-        private List<Project> projects = new List<Project>
-        {
-            new Project("My project", "/Users/pablopf/My project", "NOT CONNECTED", "3 days ago", "v0.4.5"),
-            new Project("My project 2", "/Users/pablopf/My project", "NOT CONNECTED", "5 minutes", "v0.4.4"),
-        };
+        private readonly Gallery2 gallery = new Gallery2();
 
         /// <summary>
-        /// The selected menu item
+        ///     The gamepad
         /// </summary>
-        private int selectedMenuItem = 0;
-
-        /// <summary>
-        /// The gamepad
-        /// </summary>
-        private string[] menuItems =
+        private readonly string[] menuItems =
         {
             $"{FontAwesome5.Cube} Projects",
             $"{FontAwesome5.Download} Installs",
@@ -50,22 +67,43 @@ namespace Alis.App.Engine.Hub
         };
 
         /// <summary>
-        /// The space work
+        ///     The project
         /// </summary>
-        private SpaceWork spaceWork;
+        private readonly List<Project> projects = new List<Project>
+        {
+            new Project("My project", "/Users/pablopf/My project", "NOT CONNECTED", "3 days ago", "v0.4.5"),
+            new Project("My project 2", "/Users/pablopf/My project", "NOT CONNECTED", "5 minutes", "v0.4.4")
+        };
+
+        /// <summary>
+        ///     The space work
+        /// </summary>
+        private readonly SpaceWork spaceWork;
+
+        private string searchQuery = "";
+
+        /// <summary>
+        ///     The selected menu item
+        /// </summary>
+        private int selectedMenuItem;
+
+        private int selectedProjectIndex = -1;
+        private bool showDocumentation;
+        private bool showTips;
+
+        private bool showTutorials;
+
+        private bool showVideos;
         //private string searchQuery = " ";  // Variable para el buscador
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HubMenu"/> class
+        ///     Initializes a new instance of the <see cref="HubMenu" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
-        public HubMenu(SpaceWork spaceWork)
-        {
-            this.spaceWork = spaceWork;
-        }
+        public HubMenu(SpaceWork spaceWork) => this.spaceWork = spaceWork;
 
         /// <summary>
-        /// Renders this instance
+        ///     Renders this instance
         /// </summary>
         public void Render()
         {
@@ -74,11 +112,11 @@ namespace Alis.App.Engine.Hub
 
             ImGui.SetNextWindowPos(Vector2.Zero);
             ImGui.SetNextWindowSize(screenSize);
-            
+
             ImGui.Begin("##MainWindow", ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove);
 
             ImGui.BeginChild("Sidebar", new Vector2(220, screenSize.Y - 20), true);
-            
+
             ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(10, 10));
             ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2(10, 10));
 
@@ -108,7 +146,7 @@ namespace Alis.App.Engine.Hub
 
             ImGui.Separator();
             ImGui.PopStyleVar(2);
-            
+
             ButtonsLeftMenu();
 
             ImGui.SetCursorPosY(screenSize.Y - 70);
@@ -125,9 +163,9 @@ namespace Alis.App.Engine.Hub
 
             ImGui.End();
         }
-        
+
         /// <summary>
-        /// Buttonses the left menu
+        ///     Buttonses the left menu
         /// </summary>
         private void ButtonsLeftMenu()
         {
@@ -137,7 +175,7 @@ namespace Alis.App.Engine.Hub
                 ImGui.PushStyleVar(ImGuiStyleVar.FrameRounding, 5.0f); // Redondear las esquinas
                 ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2(10, 10)); // Espaciado entre los items
                 ImGui.PushStyleVar(ImGuiStyleVar.ButtonTextAlign, new Vector2(0, 0.5f));
-                
+
                 // Crear el botón con la alineación adecuada
                 if (ImGui.Button(menuItems[i], new Vector2(200, 40)))
                 {
@@ -150,10 +188,8 @@ namespace Alis.App.Engine.Hub
         }
 
 
-
-
         /// <summary>
-        /// Loads the texture from file using the specified file path
+        ///     Loads the texture from file using the specified file path
         /// </summary>
         /// <param name="filePath">The file path</param>
         /// <exception cref="Exception">Failed to load image: {Sdl.GetError()}</exception>
@@ -193,7 +229,7 @@ namespace Alis.App.Engine.Hub
 
 
         /// <summary>
-        /// Renders the main content
+        ///     Renders the main content
         /// </summary>
         private void RenderMainContent()
         {
@@ -205,88 +241,86 @@ namespace Alis.App.Engine.Hub
             ImGui.PopStyleColor();
         }
 
-        private bool showTutorials = false;
-private bool showDocumentation = false;
-private bool showVideos = false;
-private bool showTips = false;
+        private void LearnSection()
+        {
+            // Header for the section
+            ImGui.Text("Learn and Explore");
+            ImGui.Separator();
 
-private void LearnSection()
-{
-    // Header for the section
-    ImGui.Text("Learn and Explore");
-    ImGui.Separator();
+            // Apply custom styles for the buttons
+            //ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0.2f, 0.6f, 0.8f, 1.0f));  // Custom color for the button
+            //ImGui.PushStyleColor(ImGuiCol.ButtonHovered, new Vector4(0.4f, 0.8f, 1.0f, 1.0f));  // Hover color
+            //ImGui.PushStyleColor(ImGuiCol.ButtonActive, new Vector4(0.1f, 0.4f, 0.7f, 1.0f));  // Active color
 
-    // Apply custom styles for the buttons
-    //ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0.2f, 0.6f, 0.8f, 1.0f));  // Custom color for the button
-    //ImGui.PushStyleColor(ImGuiCol.ButtonHovered, new Vector4(0.4f, 0.8f, 1.0f, 1.0f));  // Hover color
-    //ImGui.PushStyleColor(ImGuiCol.ButtonActive, new Vector4(0.1f, 0.4f, 0.7f, 1.0f));  // Active color
+            // Create buttons as tabs for each section
+            if (ImGui.Button("📚 Tutorials"))
+            {
+                // Handle "Tutorials" tab logic
+                showTutorials = true;
+                showDocumentation = false;
+                showVideos = false;
+                showTips = false;
+            }
 
-    // Create buttons as tabs for each section
-    if (ImGui.Button("📚 Tutorials"))
-    {
-        // Handle "Tutorials" tab logic
-        showTutorials = true;
-        showDocumentation = false;
-        showVideos = false;
-        showTips = false;
-    }
+            ImGui.SameLine(); // Place the next button on the same line
 
-    ImGui.SameLine();  // Place the next button on the same line
+            if (ImGui.Button("📖 Documentation"))
+            {
+                // Handle "Documentation" tab logic
+                showTutorials = false;
+                showDocumentation = true;
+                showVideos = false;
+                showTips = false;
+            }
 
-    if (ImGui.Button("📖 Documentation"))
-    {
-        // Handle "Documentation" tab logic
-        showTutorials = false;
-        showDocumentation = true;
-        showVideos = false;
-        showTips = false;
-    }
+            ImGui.SameLine(); // Place the next button on the same line
 
-    ImGui.SameLine();  // Place the next button on the same line
+            if (ImGui.Button("🎥 Videos"))
+            {
+                // Handle "Videos" tab logic
+                showTutorials = false;
+                showDocumentation = false;
+                showVideos = true;
+                showTips = false;
+            }
 
-    if (ImGui.Button("🎥 Videos"))
-    {
-        // Handle "Videos" tab logic
-        showTutorials = false;
-        showDocumentation = false;
-        showVideos = true;
-        showTips = false;
-    }
+            ImGui.SameLine(); // Place the next button on the same line
 
-    ImGui.SameLine();  // Place the next button on the same line
+            if (ImGui.Button("💡 Tips"))
+            {
+                // Handle "Tips" tab logic
+                showTutorials = false;
+                showDocumentation = false;
+                showVideos = false;
+                showTips = true;
+            }
 
-    if (ImGui.Button("💡 Tips"))
-    {
-        // Handle "Tips" tab logic
-        showTutorials = false;
-        showDocumentation = false;
-        showVideos = false;
-        showTips = true;
-    }
+            //ImGui.PopStyleColor(3);  // Reset to default button styles
 
-    //ImGui.PopStyleColor(3);  // Reset to default button styles
+            // Add a separator
+            ImGui.Separator();
 
-    // Add a separator
-    ImGui.Separator();
+            // Display content based on the selected "tab" (button)
+            if (showTutorials)
+            {
+                DisplayTutorials();
+            }
 
-    // Display content based on the selected "tab" (button)
-    if (showTutorials)
-    {
-        DisplayTutorials();
-    }
-    if (showDocumentation)
-    {
-        DisplayDocumentation();
-    }
-    if (showVideos)
-    {
-        DisplayVideos();
-    }
-    if (showTips)
-    {
-        DisplayTips();
-    }
-}
+            if (showDocumentation)
+            {
+                DisplayDocumentation();
+            }
+
+            if (showVideos)
+            {
+                DisplayVideos();
+            }
+
+            if (showTips)
+            {
+                DisplayTips();
+            }
+        }
 
 // Display tutorials in a card-style layout
         private void DisplayTutorials()
@@ -306,7 +340,7 @@ private void LearnSection()
                 ImGui.BulletText($"{tutorial.Title}: {tutorial.Description}");
                 if (ImGui.Button($"Open##{tutorial.Title}"))
                 {
-                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(tutorial.Url) {UseShellExecute = true});
+                    Process.Start(new ProcessStartInfo(tutorial.Url) {UseShellExecute = true});
                 }
             }
         }
@@ -352,7 +386,7 @@ private void LearnSection()
             {
                 if (ImGui.Button($"▶ {video.Title}"))
                 {
-                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(video.Url) {UseShellExecute = true});
+                    Process.Start(new ProcessStartInfo(video.Url) {UseShellExecute = true});
                 }
             }
         }
@@ -378,7 +412,7 @@ private void LearnSection()
 // Helper class for learning resources
 
 
-private void InstallsEditorSection()
+        private void InstallsEditorSection()
         {
             // Display a header for the section
             ImGui.Text("Installed Versions");
@@ -466,13 +500,13 @@ private void InstallsEditorSection()
         private void RevealInFinder(string path)
         {
             // Open the installation path in Finder
-            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("open", path) {UseShellExecute = true});
+            Process.Start(new ProcessStartInfo("open", path) {UseShellExecute = true});
         }
 
         private void OpenInTerminal(string path)
         {
             // Open the installation path in Terminal
-            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("open", "-a Terminal " + path) {UseShellExecute = true});
+            Process.Start(new ProcessStartInfo("open", "-a Terminal " + path) {UseShellExecute = true});
         }
 
         private void DeleteInstallation(string path)
@@ -480,9 +514,9 @@ private void InstallsEditorSection()
             // Logic to delete the installation
             Console.WriteLine($"Delete installation at: {path}");
         }
-        
+
         /// <summary>
-        /// Renders the projects section
+        ///     Renders the projects section
         /// </summary>
         private void RenderProjectsSection()
         {
@@ -490,7 +524,7 @@ private void InstallsEditorSection()
             float buttonWidth = 75;
             float elementHeight = 30; // Altura común para todos los elementos
             float spaceBetween = 10;
-            
+
             ImGui.Separator();
             ImGui.Spacing();
 
@@ -499,7 +533,7 @@ private void InstallsEditorSection()
             //ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(10, 0));
 
             // Establecer el ancho de la barra de búsqueda para que ocupe el espacio restante
-            float searchBarWidth = ImGui.GetContentRegionAvail().X - ((buttonWidth * 4) + (spaceBetween * 2));
+            float searchBarWidth = ImGui.GetContentRegionAvail().X - (buttonWidth * 4 + spaceBetween * 2);
 
             // Centrar el icono verticalmente respecto a la altura del elemento
             float iconHeight = ImGui.GetTextLineHeight(); // Obtener la altura del icono
@@ -520,7 +554,7 @@ private void InstallsEditorSection()
 
             // Campo de búsqueda
             if (ImGui.InputTextWithHint("##Search", "Search...", ref searchQuery, 256))
-            {   
+            {
                 Console.WriteLine("Search query: " + searchQuery);
             }
 
@@ -566,10 +600,10 @@ private void InstallsEditorSection()
             ImGui.Separator();
             //ImGui.Spacing();
             //ImGui.Spacing();
-            
+
             ImGui.PushStyleVar(ImGuiStyleVar.CellPadding, new Vector2(10, 15));
 
-             if (ImGui.BeginTable("ProjectTable", 4,  ImGuiTableFlags.Borders | ImGuiTableFlags.Resizable))
+            if (ImGui.BeginTable("ProjectTable", 4, ImGuiTableFlags.Borders | ImGuiTableFlags.Resizable))
             {
                 ImGui.TableSetupColumn("NAME", ImGuiTableColumnFlags.WidthStretch);
                 ImGui.TableSetupColumn("PATH", ImGuiTableColumnFlags.WidthStretch);
@@ -581,14 +615,14 @@ private void InstallsEditorSection()
                 {
                     Project project = projects[i];
                     ImGui.TableNextRow();
-                    
+
                     // Selección de fila completa
                     ImGui.TableNextColumn();
-                    
+
                     // Ajustar el alto de la celda
                     float rowHeight = 50;
                     ImGui.SetCursorPosY(ImGui.GetCursorPosY() + (elementHeight - rowHeight) / 2);
-                    
+
                     if (ImGui.Selectable($"##Row{i}", selectedProjectIndex == i, ImGuiSelectableFlags.SpanAllColumns | ImGuiSelectableFlags.AllowDoubleClick, new Vector2(0, rowHeight)))
                     {
                         selectedProjectIndex = i;
@@ -598,14 +632,14 @@ private void InstallsEditorSection()
                             OpenProject(project);
                         }
                     }
-                    
+
                     // Menú contextual para la fila seleccionada
                     if (ImGui.IsItemHovered() && ImGui.IsMouseClicked(ImGuiMouseButton.Right))
                     {
                         ImGui.OpenPopup($"ContextMenu##{i}");
                         Console.WriteLine("Right-clicked on project: " + project.Name);
                     }
-                    
+
                     ImGui.SetCursorPosY(ImGui.GetCursorPosY() + (rowHeight - elementHeight) / 2);
 
                     ImGui.SameLine(); // Permite que el texto siga en la misma línea
@@ -659,10 +693,6 @@ private void InstallsEditorSection()
         {
             Console.WriteLine($"Opening project: {project.Name}");
         }
-
-        Gallery2 gallery = new Gallery2();
-        private int selectedProjectIndex = -1;
-        private string searchQuery = "";
 
         private void RenderCommunitySection()
         {
@@ -728,7 +758,7 @@ private void InstallsEditorSection()
                     if (ImGui.Button("Open"))
                     {
                         // Aquí puedes implementar la acción para abrir el recurso web
-                        System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(item.Url) {UseShellExecute = true});
+                        Process.Start(new ProcessStartInfo(item.Url) {UseShellExecute = true});
                     }
                 }
 

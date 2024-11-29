@@ -29,7 +29,6 @@
 
 namespace Alis.App.Engine.Core
 {
-    
     /// <summary>
     ///     The renderable interface
     /// </summary>

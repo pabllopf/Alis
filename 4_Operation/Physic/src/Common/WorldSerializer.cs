@@ -53,8 +53,4 @@ namespace Alis.Core.Physic.Common
         /// <param name="stream"></param>
         public static World Deserialize(Stream stream) => WorldXmlDeserializer.Deserialize(stream);
     }
-
-    #region XMLFragment
-
-    #endregion
 }

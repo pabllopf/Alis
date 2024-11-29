@@ -630,10 +630,6 @@ namespace Alis.Core.Physic.Common.TextureTools
 
         #endregion
 
-        #region Nested type: GeomPolyVal
-
-        #endregion
-
         #endregion
 
         #region Private Methods

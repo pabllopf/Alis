@@ -1,16 +1,42 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:TopMenuMac.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System.Diagnostics;
 using Alis.App.Engine.Core;
+using MonoMac.AppKit;
 
 namespace Alis.App.Engine.Menus
 {
     public class TopMenuMac : IMenu
     {
+        public TopMenuMac(SpaceWork spaceWork) => SpaceWork = spaceWork;
         public SpaceWork SpaceWork { get; }
-
-        public TopMenuMac(SpaceWork spaceWork)
-        {
-            SpaceWork = spaceWork;
-        }
 
         public void Initialize()
         {
@@ -19,18 +45,26 @@ namespace Alis.App.Engine.Menus
 #endif
         }
 
-        public void Start() { }
-        public void Update() { }
-        public void Render() { }
+        public void Start()
+        {
+        }
+
+        public void Update()
+        {
+        }
+
+        public void Render()
+        {
+        }
 
 #if OSX
         [Conditional("OSX")]
-        static void ConfigureMenu()
+        private static void ConfigureMenu()
         {
-            MonoMac.AppKit.NSApplication.Init();
+            NSApplication.Init();
 
             // Configuración del menú principal
-            MonoMac.AppKit.NSMenu mainMenu = new MonoMac.AppKit.NSMenu();
+            NSMenu mainMenu = new NSMenu();
 
             // Submenús principales adaptados a Alis
             AddMenu(mainMenu, "Alis", new[]
@@ -180,13 +214,13 @@ namespace Alis.App.Engine.Menus
             });
 
             // Asignar el menú principal configurado
-            MonoMac.AppKit.NSApplication.SharedApplication.MainMenu = mainMenu;
+            NSApplication.SharedApplication.MainMenu = mainMenu;
         }
 
-        static void AddMenu(MonoMac.AppKit.NSMenu mainMenu, string title, string[] items)
+        private static void AddMenu(NSMenu mainMenu, string title, string[] items)
         {
-            MonoMac.AppKit.NSMenuItem menuItem = new MonoMac.AppKit.NSMenuItem(title);
-            MonoMac.AppKit.NSMenu submenu = new MonoMac.AppKit.NSMenu(title);
+            NSMenuItem menuItem = new NSMenuItem(title);
+            NSMenu submenu = new NSMenu(title);
 
             foreach (string item in items)
             {
@@ -196,11 +230,11 @@ namespace Alis.App.Engine.Menus
 
                 if (itemName == "-")
                 {
-                    submenu.AddItem(MonoMac.AppKit.NSMenuItem.SeparatorItem);
+                    submenu.AddItem(NSMenuItem.SeparatorItem);
                 }
                 else
                 {
-                    MonoMac.AppKit.NSMenuItem menuOption = new MonoMac.AppKit.NSMenuItem(itemName, (sender, e) =>
+                    NSMenuItem menuOption = new NSMenuItem(itemName, (sender, e) =>
                     {
                         Debug.WriteLine($"Clicked on {itemName}");
                         TopMenuAction.ExecuteMenuAction(itemName); // Llama a la lógica

@@ -44,6 +44,7 @@ using Alis.Core.Graphic.Fonts;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Alis.Core.Physic.Dynamics;
+using MonoMac.AppKit;
 using Action = System.Action;
 using Sdl = Alis.Core.Graphic.Sdl2.Sdl;
 using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
@@ -164,23 +165,23 @@ namespace Alis.Core.Sample
 
         [DllImport("libCustomMenu.dylib", CallingConvention = CallingConvention.Cdecl)]
         public static extern void viewZoomOutAction();
-        
+
         // Declarar la librería compartida .dylib
         [DllImport("libCustomMenu.dylib")]
         public static extern void setDotNetCallback(Action callback);
-    
+
         // Método que se ejecutará cuando el botón en Cocoa sea presionado
         public static void SampleAction()
         {
             Console.WriteLine("Called from .NET");
         }
-        
-        
+
+
         // Declaración de la función C expuesta para definir el callback
         [DllImport("libCustomMenu.dylib", CallingConvention = CallingConvention.Cdecl)]
         public static extern void setTestCallback(Action callback);
-        
-        
+
+
         /// <summary>
         ///     Runs
         /// </summary>
@@ -188,7 +189,7 @@ namespace Alis.Core.Sample
         {
             // Ejecutar la aplicación gráfica
 
-            
+
             if (Sdl.Init(InitSettings.InitEverything) < 0)
             {
                 Logger.Exception($@"There was an issue initializing SDL. {Sdl.GetError()}");
@@ -367,23 +368,23 @@ namespace Alis.Core.Sample
 
             _fontManager = new FontManager(_renderer, RendererFlips.FlipVertical);
             _fontManager.LoadFont("MONO", 16, Color.White, Color.Black, $"{Environment.CurrentDirectory}/Assets/MONO_V5.bmp");
-            
+
             // Llama al método que inicializa el menú
             //createCustomMenu();
-            
+
             // Definir el callback en .NET y pasarlo a Objective-C
-            /*setTestCallback(() => 
+            /*setTestCallback(() =>
             {
                 Console.WriteLine("Callback ejecutado desde .NET!");
             });*/
-            
+
             /*
             setDotNetCallback(() => {
                 Console.WriteLine("Botón presionado, llamando a .NET");
             });*/
-            
+
             // Crea y configura el menú
-            
+
 #if OSX
             ConfigureMenu();
 #endif
@@ -616,29 +617,29 @@ namespace Alis.Core.Sample
             Sdl.DestroyWindow(window);
             Sdl.Quit();
         }
-        
+
 #if OSX
         [Conditional("OSX")]
-        static void ConfigureMenu()
+        private static void ConfigureMenu()
         {
-            MonoMac.AppKit.NSApplication.Init();
-            
+            NSApplication.Init();
+
             // Configuración del menú principal
-            MonoMac.AppKit.NSMenu mainMenu = new MonoMac.AppKit.NSMenu();
+            NSMenu mainMenu = new NSMenu();
 
             // Crea un ítem para el menú de la aplicación
-            MonoMac.AppKit.NSMenuItem appMenuItem = new MonoMac.AppKit.NSMenuItem();
+            NSMenuItem appMenuItem = new NSMenuItem();
             mainMenu.AddItem(appMenuItem);
 
-            MonoMac.AppKit.NSMenu appMenu = new MonoMac.AppKit.NSMenu();
+            NSMenu appMenu = new NSMenu();
             appMenuItem.Submenu = appMenu;
 
             // "Acerca de" (About)
-            MonoMac.AppKit.NSMenuItem aboutMenuItem = new MonoMac.AppKit.NSMenuItem("About", (sender, e) =>
+            NSMenuItem aboutMenuItem = new NSMenuItem("About", (sender, e) =>
             {
-                MonoMac.AppKit.NSAlert alert = new MonoMac.AppKit.NSAlert
+                NSAlert alert = new NSAlert
                 {
-                    AlertStyle = MonoMac.AppKit.NSAlertStyle.Informational,
+                    AlertStyle = NSAlertStyle.Informational,
                     MessageText = "About My App",
                     InformativeText = "This is a .NET macOS app configured before launch!"
                 };
@@ -647,17 +648,14 @@ namespace Alis.Core.Sample
             appMenu.AddItem(aboutMenuItem);
 
             // "Salir" (Quit)
-            MonoMac.AppKit.NSMenuItem quitMenuItem = new MonoMac.AppKit.NSMenuItem("Quit", (sender, e) =>
-            {
-                MonoMac.AppKit.NSApplication.SharedApplication.Terminate(null);
-            })
+            NSMenuItem quitMenuItem = new NSMenuItem("Quit", (sender, e) => { NSApplication.SharedApplication.Terminate(null); })
             {
                 KeyEquivalent = "q" // Atajo de teclado: Command + Q
             };
             appMenu.AddItem(quitMenuItem);
 
             // Asigna el menú configurado a la aplicación
-            MonoMac.AppKit.NSApplication.SharedApplication.MainMenu = mainMenu;
+            NSApplication.SharedApplication.MainMenu = mainMenu;
         }
 #endif
 

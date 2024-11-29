@@ -30,10 +30,9 @@
 namespace Alis.App.Engine.Controller
 {
     /// <summary>
-    /// The gl controller class
+    ///     The gl controller class
     /// </summary>
     public class GlController
     {
-        
     }
 }
