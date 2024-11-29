@@ -416,10 +416,6 @@ namespace Alis.App.Engine
             hubMenu = new HubMenu(spaceWork);
 
             
-#if OSX
-            ConfigureMenu();
-#endif
-            
             while (!_quit)
             {
                 
@@ -524,49 +520,6 @@ namespace Alis.App.Engine
             Sdl.Quit();
         }
 
-#if OSX
-        [Conditional("OSX")]
-        static void ConfigureMenu()
-        {
-            MonoMac.AppKit.NSApplication.Init();
-            
-            // Configuración del menú principal
-            MonoMac.AppKit.NSMenu mainMenu = new MonoMac.AppKit.NSMenu();
-
-            // Crea un ítem para el menú de la aplicación
-            MonoMac.AppKit.NSMenuItem appMenuItem = new MonoMac.AppKit.NSMenuItem();
-            mainMenu.AddItem(appMenuItem);
-
-            MonoMac.AppKit.NSMenu appMenu = new MonoMac.AppKit.NSMenu();
-            appMenuItem.Submenu = appMenu;
-
-            // "Acerca de" (About)
-            MonoMac.AppKit.NSMenuItem aboutMenuItem = new MonoMac.AppKit.NSMenuItem("About", (sender, e) =>
-            {
-                MonoMac.AppKit.NSAlert alert = new MonoMac.AppKit.NSAlert
-                {
-                    AlertStyle = MonoMac.AppKit.NSAlertStyle.Informational,
-                    MessageText = "About My App",
-                    InformativeText = "This is a .NET macOS app configured before launch!"
-                };
-                alert.RunModal();
-            });
-            appMenu.AddItem(aboutMenuItem);
-
-            // "Salir" (Quit)
-            MonoMac.AppKit.NSMenuItem quitMenuItem = new MonoMac.AppKit.NSMenuItem("Quit", (sender, e) =>
-            {
-                MonoMac.AppKit.NSApplication.SharedApplication.Terminate(null);
-            })
-            {
-                KeyEquivalent = "q" // Atajo de teclado: Command + Q
-            };
-            appMenu.AddItem(quitMenuItem);
-
-            // Asigna el menú configurado a la aplicación
-            MonoMac.AppKit.NSApplication.SharedApplication.MainMenu = mainMenu;
-        }
-#endif
 
 
         private void SetStyle()
@@ -836,7 +789,7 @@ namespace Alis.App.Engine
             Vector2 dockSize = spaceWork.Viewport.Size - new Vector2(5, 85);
             
             // Calcular el tamaño del DockSpace restante
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            if (spaceWork.IsMacOs)
             {
                 dockSize = spaceWork.Viewport.Size - new Vector2(5, 60);
             }
