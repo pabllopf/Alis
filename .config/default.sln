@@ -85,16 +85,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{18D887C5
 	ProjectSection(SolutionItems) = preProject
 		changelog.md = changelog.md
 		code_of_conduct.md = code_of_conduct.md
-		licence.md = licence.md
 		readme.md = readme.md
 		docs\nuget\readme_nuget.md = docs\nuget\readme_nuget.md
-		docs\documentation\donate.md = docs\documentation\donate.md
-		docs\documentation\features.md = docs\documentation\features.md
-		docs\documentation\privacy_policy.md = docs\documentation\privacy_policy.md
-		docs\documentation\purpose.md = docs\documentation\purpose.md
-		docs\documentation\quick_start.md = docs\documentation\quick_start.md
-		docs\documentation\showcases.md = docs\documentation\showcases.md
-		docs\documentation\support.md = docs\documentation\support.md
+		contributing.md = contributing.md
+		license.md = license.md
+		security.md = security.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{6E102FFE-9727-458C-9361-4588C4157572}"
@@ -111,7 +106,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\[PRO][PUBLISH].yml = .github\workflows\[PRO][PUBLISH].yml
 		.github\workflows\[PRO][SONARCLOUD].yml = .github\workflows\[PRO][SONARCLOUD].yml
 		.github\workflows\[PRO][TEST].yml = .github\workflows\[PRO][TEST].yml
-		.github\workflows\[DEV][TEST].yml = .github\workflows\[DEV][TEST].yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "issue_template", "issue_template", "{063D29E8-51CF-4155-B23F-8510CA62512A}"
@@ -124,43 +118,46 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".scripts", ".scripts", "{53
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "macos", "macos", "{CF7DBB5E-6C12-4E8D-AA2D-F862A024CDFB}"
 	ProjectSection(SolutionItems) = preProject
-		docs\scripts\macos\run_tests.sh = docs\scripts\macos\run_tests.sh
-		docs\scripts\macos\restart_sln.sh = docs\scripts\macos\restart_sln.sh
-		docs\scripts\macos\restart_permissions.sh = docs\scripts\macos\restart_permissions.sh
-		docs\scripts\macos\restart_nuget.sh = docs\scripts\macos\restart_nuget.sh
-		docs\scripts\macos\install_env.sh = docs\scripts\macos\install_env.sh
-		docs\scripts\macos\generate_comments.sh = docs\scripts\macos\generate_comments.sh
 		docs\scripts\macos\build_all.sh = docs\scripts\macos\build_all.sh
 		docs\scripts\macos\clean_sln.sh = docs\scripts\macos\clean_sln.sh
+		docs\scripts\macos\generate_comments.sh = docs\scripts\macos\generate_comments.sh
+		docs\scripts\macos\generate_test.sh = docs\scripts\macos\generate_test.sh
+		docs\scripts\macos\install_env.sh = docs\scripts\macos\install_env.sh
+		docs\scripts\macos\reset_repository.sh = docs\scripts\macos\reset_repository.sh
+		docs\scripts\macos\reset_tags.sh = docs\scripts\macos\reset_tags.sh
+		docs\scripts\macos\restart_nuget.sh = docs\scripts\macos\restart_nuget.sh
+		docs\scripts\macos\restart_permissions.sh = docs\scripts\macos\restart_permissions.sh
+		docs\scripts\macos\restart_sln_design.sh = docs\scripts\macos\restart_sln_design.sh
+		docs\scripts\macos\restart_sln.sh = docs\scripts\macos\restart_sln.sh
+		docs\scripts\macos\run_tests.sh = docs\scripts\macos\run_tests.sh
 		docs\scripts\macos\test_repository_size.sh = docs\scripts\macos\test_repository_size.sh
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux", "linux", "{020BC1B3-A88C-4938-AF9C-E35A4BEBDF72}"
 	ProjectSection(SolutionItems) = preProject
-		docs\scripts\linux\run_tests.sh = docs\scripts\linux\run_tests.sh
-		docs\scripts\linux\restart_sln.sh = docs\scripts\linux\restart_sln.sh
-		docs\scripts\linux\restart_permissions.sh = docs\scripts\linux\restart_permissions.sh
-		docs\scripts\linux\restart_nuget.sh = docs\scripts\linux\restart_nuget.sh
-		docs\scripts\linux\install_env.sh = docs\scripts\linux\install_env.sh
 		docs\scripts\linux\generate_comments.sh = docs\scripts\linux\generate_comments.sh
+		docs\scripts\linux\install_env.sh = docs\scripts\linux\install_env.sh
+		docs\scripts\linux\restart_nuget.sh = docs\scripts\linux\restart_nuget.sh
+		docs\scripts\linux\restart_permissions.sh = docs\scripts\linux\restart_permissions.sh
+		docs\scripts\linux\restart_sln.sh = docs\scripts\linux\restart_sln.sh
+		docs\scripts\linux\run_tests.sh = docs\scripts\linux\run_tests.sh
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "windows", "windows", "{015EBC6B-559D-4454-9DB0-8E2D42CBBE34}"
 	ProjectSection(SolutionItems) = preProject
-		docs\scripts\windows\run_tests.bat = docs\scripts\windows\run_tests.bat
-		docs\scripts\windows\restart_sln.bat = docs\scripts\windows\restart_sln.bat
-		docs\scripts\windows\restart_permissions.bat = docs\scripts\windows\restart_permissions.bat
-		docs\scripts\windows\restart_nuget.bat = docs\scripts\windows\restart_nuget.bat
-		docs\scripts\windows\install_env.bat = docs\scripts\windows\install_env.bat
-		docs\scripts\windows\generate_comments.bat = docs\scripts\windows\generate_comments.bat
 		docs\scripts\windows\create_dashboard.bat = docs\scripts\windows\create_dashboard.bat
+		docs\scripts\windows\generate_comments.bat = docs\scripts\windows\generate_comments.bat
+		docs\scripts\windows\install_env.bat = docs\scripts\windows\install_env.bat
+		docs\scripts\windows\restart_nuget.bat = docs\scripts\windows\restart_nuget.bat
+		docs\scripts\windows\restart_permissions.bat = docs\scripts\windows\restart_permissions.bat
+		docs\scripts\windows\restart_sln.bat = docs\scripts\windows\restart_sln.bat
+		docs\scripts\windows\run_tests.bat = docs\scripts\windows\run_tests.bat
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sln", ".sln", "{2D95A184-CC32-4BFE-838E-4A2E1764DAF4}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
-		nuget.config = nuget.config
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{7D733040-0257-4FA9-885A-58637AFE5652}"
