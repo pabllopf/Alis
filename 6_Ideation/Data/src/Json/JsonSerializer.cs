@@ -3854,7 +3854,12 @@ namespace Alis.Core.Aspect.Data.Json
             if (value is Stream stream)
             {
                 byte[] buffer = new byte[stream.Length];
+                # if NET9_0_OR_GREATER
+                stream.ReadExactly(buffer);
+                # else
                 stream.Read(buffer, 0, buffer.Length);
+                #endif
+                
                 writer.Write(Convert.ToBase64String(buffer));
                 return true;
             }
