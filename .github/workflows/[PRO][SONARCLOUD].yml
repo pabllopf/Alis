@@ -31,7 +31,7 @@ jobs:
             6.0.420
             7.0.408
             8.0.202
-            9.0.0
+            9.x.x
 
       - name: Cache SonarCloud packages
         uses: actions/cache@v4
