@@ -38,7 +38,7 @@
         <PackageReference Include="Dropbox.Api" Version="7.0.0"/>
     </ItemGroup>
 
-    <ItemGroup Condition="($(AssemblyName.Contains('App')) == true OR $(AssemblyName.Contains('Sample')) == true) AND $(IsOSX) == true">
+    <ItemGroup Condition="$(AssemblyName.Contains('App')) == true OR $(AssemblyName.Contains('Sample')) == true">
         <PackageReference Include="MonoMac.NetStandard" Version="0.0.4"/>
     </ItemGroup>
 </Project>
