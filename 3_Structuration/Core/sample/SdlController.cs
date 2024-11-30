@@ -44,7 +44,6 @@ using Alis.Core.Graphic.Fonts;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Alis.Core.Physic.Dynamics;
-using MonoMac.AppKit;
 using Action = System.Action;
 using Sdl = Alis.Core.Graphic.Sdl2.Sdl;
 using Version = Alis.Core.Graphic.Sdl2.Structs.Version;

@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics;
 using Alis.App.Engine.Core;
-using MonoMac.AppKit;
 
 namespace Alis.App.Engine.Menus
 {
