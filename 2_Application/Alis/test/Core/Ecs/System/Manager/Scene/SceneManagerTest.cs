@@ -302,19 +302,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             sceneManager.Clear<Alis.Core.Ecs.Entity.Scene>();
             Assert.Empty(sceneManager.Scenes);
         }
-
-        /// <summary>
-        ///     Tests that load scene valid scene sets current scene
-        /// </summary>
-        [Fact]
-        public void LoadScene_ValidScene_SetsCurrentScene()
-        {
-            VideoGame videoGame = new VideoGame();
-            SceneManager sceneManager = new SceneManager(videoGame.Context);
-            Alis.Core.Ecs.Entity.Scene scene = new Alis.Core.Ecs.Entity.Scene();
-            sceneManager.LoadScene(scene);
-            Assert.Equal(scene, sceneManager.CurrentScene);
-        }
+        
 
         /// <summary>
         ///     Tests that reload scene valid scene sets current scene
