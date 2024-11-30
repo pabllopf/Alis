@@ -3866,6 +3866,7 @@ namespace Alis.Core.Aspect.Data.Json
 
             return false;
         }
+        
 
         /// <summary>
         ///     Writes the base 64 stream using the specified writer
