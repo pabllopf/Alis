@@ -3,11 +3,7 @@ on:
   push:
     branches:
       - master
-    paths:
-      - '**.cs'
-      - '**.yml'
-      - '**.md'
-
+      
 jobs:
   build:
     name: Build and analyze
