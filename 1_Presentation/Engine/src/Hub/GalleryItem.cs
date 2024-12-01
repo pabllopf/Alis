@@ -30,38 +30,13 @@
 namespace Alis.App.Engine.Hub
 {
     /// <summary>
-    /// The gallery item class
+    ///     The gallery item class
     /// </summary>
     public class GalleryItem
     {
-        /// <summary>
-        /// Gets or sets the value of the image path
-        /// </summary>
-        public string ImagePath { get; set; }
-        /// <summary>
-        /// Gets or sets the value of the title
-        /// </summary>
-        public string Title { get; set; }
-        /// <summary>
-        /// Gets or sets the value of the description
-        /// </summary>
-        public string Description { get; set; }
-        /// <summary>
-        /// Gets or sets the value of the url
-        /// </summary>
-        public string Url { get; set; }
-        /// <summary>
-        /// Gets or sets the value of the height
-        /// </summary>
-        public int Height { get; set; }
-        /// <summary>
-        /// Gets or sets the value of the width
-        /// </summary>
-        public int Width { get; set; }
-
         // Constructor para inicializar los valores
         /// <summary>
-        /// Initializes a new instance of the <see cref="GalleryItem"/> class
+        ///     Initializes a new instance of the <see cref="GalleryItem" /> class
         /// </summary>
         /// <param name="imagePath">The image path</param>
         /// <param name="title">The title</param>
@@ -78,5 +53,35 @@ namespace Alis.App.Engine.Hub
             Height = height;
             Width = width;
         }
+
+        /// <summary>
+        ///     Gets or sets the value of the image path
+        /// </summary>
+        public string ImagePath { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the title
+        /// </summary>
+        public string Title { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the description
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the url
+        /// </summary>
+        public string Url { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the height
+        /// </summary>
+        public int Height { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the width
+        /// </summary>
+        public int Width { get; set; }
     }
 }

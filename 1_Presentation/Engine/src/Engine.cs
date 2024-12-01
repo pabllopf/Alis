@@ -29,14 +29,12 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
 using Alis.App.Engine.Hub;
-using Alis.App.Engine.Menus;
 using Alis.App.Engine.Shaders;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Data.Resource;
@@ -91,11 +89,6 @@ namespace Alis.App.Engine
         private readonly bool fullscreen = false;
 
         /// <summary>
-        ///     The width window
-        /// </summary>
-        private readonly int widthWindow = 1025;
-
-        /// <summary>
         ///     The height window
         /// </summary>
         private readonly int heightWindow = 575;
@@ -104,6 +97,11 @@ namespace Alis.App.Engine
         ///     The high dpi
         /// </summary>
         private readonly bool highDpi = false;
+
+        /// <summary>
+        ///     The width window
+        /// </summary>
+        private readonly int widthWindow = 1025;
 
         /// <summary>
         ///     The font texture id
@@ -151,15 +149,15 @@ namespace Alis.App.Engine
         private ImGuiWindowFlags dockspaceflags;
 
         /// <summary>
+        ///     The hub menu
+        /// </summary>
+        private HubMenu hubMenu;
+
+        /// <summary>
         ///     The windows
         /// </summary>
         private SpaceWork spaceWork = new SpaceWork();
 
-        /// <summary>
-        /// The hub menu
-        /// </summary>
-        private HubMenu hubMenu;
-        
         /// <summary>
         ///     Starts this instance
         /// </summary>
@@ -168,10 +166,10 @@ namespace Alis.App.Engine
         {
             // Ejecutar la aplicación
             //
-            
+
             // Establecer el delegado de la aplicación (menú nativo)
             //NSApplication.SharedApplication.Delegate = new AppDelegate();
-            
+
             // initialize SDL and set a few defaults for the OpenGL context
             if (Sdl.Init(InitSettings.InitEverything) != 0)
             {
@@ -415,10 +413,9 @@ namespace Alis.App.Engine
 
             hubMenu = new HubMenu(spaceWork);
 
-            
+
             while (!_quit)
             {
-                
                 while (Sdl.PollEvent(out Event e) != 0)
                 {
                     ProcessEvent(e);
@@ -519,7 +516,6 @@ namespace Alis.App.Engine
             Sdl.DestroyWindow(spaceWork.Window);
             Sdl.Quit();
         }
-
 
 
         private void SetStyle()
@@ -772,9 +768,9 @@ namespace Alis.App.Engine
 
             style.DisabledAlpha = 0.6f;
         }
-        
+
         /// <summary>
-        /// Renders the project
+        ///     Renders the project
         /// </summary>
         public void RenderProject()
         {
@@ -783,11 +779,11 @@ namespace Alis.App.Engine
             ImGui.SetNextWindowSize(spaceWork.Viewport.Size);
             ImGui.Begin("DockSpace Demo", dockspaceflags);
 
-            
+
             spaceWork.DockSpaceMenu.Update();
 
             Vector2 dockSize = spaceWork.Viewport.Size - new Vector2(5, 85);
-            
+
             // Calcular el tamaño del DockSpace restante
             if (spaceWork.IsMacOs)
             {
@@ -963,9 +959,9 @@ namespace Alis.App.Engine
             int uvOffset = 8; // Offset of Uv is 8 bytes from the start (after Pos)
             int colOffset = 16; // Offset of Col is 16 bytes from the start (after Pos and Uv)
 
-            Gl.VertexAttribPointer(_shader["Position"].Location, 2, VertexAttribPointerType.Float, false, drawVertSize, (IntPtr) posOffset);
-            Gl.VertexAttribPointer(_shader["UV"].Location, 2, VertexAttribPointerType.Float, false, drawVertSize, (IntPtr) uvOffset);
-            Gl.VertexAttribPointer(_shader["Color"].Location, 4, VertexAttribPointerType.UnsignedByte, true, drawVertSize, (IntPtr) colOffset);
+            Gl.VertexAttribPointer(_shader["Position"].Location, 2, VertexAttribPointerType.Float, false, drawVertSize, posOffset);
+            Gl.VertexAttribPointer(_shader["UV"].Location, 2, VertexAttribPointerType.Float, false, drawVertSize, uvOffset);
+            Gl.VertexAttribPointer(_shader["Color"].Location, 4, VertexAttribPointerType.UnsignedByte, true, drawVertSize, colOffset);
         }
 
 
@@ -1049,8 +1045,8 @@ namespace Alis.App.Engine
                 ImDrawListPtr cmdList = drawData.CmdListsRange[n];
 
                 // Upload vertex/index buffers
-                Gl.GlBufferData(BufferTarget.ArrayBuffer, (IntPtr) (cmdList.VtxBuffer.Size * drawVertSize), cmdList.VtxBuffer.Data, BufferUsageHint.StreamDraw);
-                Gl.GlBufferData(BufferTarget.ElementArrayBuffer, (IntPtr) (cmdList.IdxBuffer.Size * drawIdxSize), cmdList.IdxBuffer.Data, BufferUsageHint.StreamDraw);
+                Gl.GlBufferData(BufferTarget.ArrayBuffer, cmdList.VtxBuffer.Size * drawVertSize, cmdList.VtxBuffer.Data, BufferUsageHint.StreamDraw);
+                Gl.GlBufferData(BufferTarget.ElementArrayBuffer, cmdList.IdxBuffer.Size * drawIdxSize, cmdList.IdxBuffer.Data, BufferUsageHint.StreamDraw);
 
                 for (int cmdI = 0; cmdI < cmdList.CmdBuffer.Size; cmdI++)
                 {

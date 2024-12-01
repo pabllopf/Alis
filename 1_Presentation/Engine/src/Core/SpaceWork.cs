@@ -73,6 +73,21 @@ namespace Alis.App.Engine.Core
         public IntPtr ContextGui;
 
         /// <summary>
+        ///     The font loaded 16 light
+        /// </summary>
+        public ImFontPtr fontLoaded16Light;
+
+        /// <summary>
+        ///     The font loaded 16 solid
+        /// </summary>
+        public ImFontPtr fontLoaded16Solid;
+
+        /// <summary>
+        ///     The font loaded 30 bold
+        /// </summary>
+        public ImFontPtr fontLoaded30Bold;
+
+        /// <summary>
         ///     The io
         /// </summary>
         public ImGuiIoPtr Io;
@@ -81,16 +96,16 @@ namespace Alis.App.Engine.Core
         ///     The renderer game
         /// </summary>
         public IntPtr rendererGame;
-        
-        /// <summary>
-        ///     The video game
-        /// </summary>
-        public VideoGame VideoGame;
 
         /// <summary>
         ///     The style
         /// </summary>
         public ImGuiStyle Style;
+
+        /// <summary>
+        ///     The video game
+        /// </summary>
+        public VideoGame VideoGame;
 
         /// <summary>
         ///     Gets or sets the value of the viewport
@@ -102,19 +117,6 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public IntPtr Window;
 
-        /// <summary>
-        /// The font loaded 16 solid
-        /// </summary>
-        public ImFontPtr fontLoaded16Solid;
-        /// <summary>
-        /// The font loaded 30 bold
-        /// </summary>
-        public ImFontPtr fontLoaded30Bold;
-        /// <summary>
-        /// The font loaded 16 light
-        /// </summary>
-        public ImFontPtr fontLoaded16Light;
-        
         /// <summary>
         ///     Initializes a new instance of the <see cref="SpaceWork" /> class
         /// </summary>
@@ -135,7 +137,7 @@ namespace Alis.App.Engine.Core
         }
 
         public bool IsMacOs => RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
-        
+
         public TopMenuMac TopMenuMac { get; set; }
 
         /// <summary>
@@ -172,7 +174,7 @@ namespace Alis.App.Engine.Core
         ///     Gets the value of the top menu
         /// </summary>
         internal TopMenu TopMenu { get; }
-        
+
         internal DockSpaceMenu DockSpaceMenu { get; }
 
         /// <summary>
@@ -196,7 +198,7 @@ namespace Alis.App.Engine.Core
         public int Fps { get; set; } = 60;
 
         /// <summary>
-        /// Gets or sets the value of the project selected
+        ///     Gets or sets the value of the project selected
         /// </summary>
         public bool ProjectSelected { get; set; } = true;
 
@@ -220,8 +222,8 @@ namespace Alis.App.Engine.Core
             {
                 TopMenuMac.Initialize();
             }
-            
-            
+
+
             BottomMenu.Initialize();
             ConsoleWindow.Initialize();
             GameWindow.Initialize();
@@ -248,12 +250,13 @@ namespace Alis.App.Engine.Core
             if (!IsMacOs)
             {
                 TopMenu.Start();
-            }else
+            }
+            else
             {
                 TopMenuMac.Start();
             }
-            
-            
+
+
             BottomMenu.Start();
             ConsoleWindow.Start();
             GameWindow.Start();
@@ -280,11 +283,12 @@ namespace Alis.App.Engine.Core
             if (!IsMacOs)
             {
                 TopMenu.Render();
-            }else
+            }
+            else
             {
                 TopMenuMac.Render();
             }
-            
+
             BottomMenu.Render();
             ConsoleWindow.Render();
             GameWindow.Render();

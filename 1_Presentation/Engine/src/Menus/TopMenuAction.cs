@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:TopMenuAction.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,7 +42,7 @@ namespace Alis.App.Engine.Menus
         static TopMenuAction()
         {
             if (MenuActions.Count > 0) return;
-            
+
             // Inicializando el diccionario con las acciones del menú usando Add
             MenuActions.Add("About Alis", AboutAlis);
             MenuActions.Add("Preferences", Preferences);
@@ -122,98 +151,341 @@ namespace Alis.App.Engine.Menus
         {
             Logger.Info("About Alis");
         }
-        
-        private static void Preferences() { }
-        private static void QuitAlis() { }
 
-        private static void NewScene() { }
-        private static void OpenScene() { }
-        private static void OpenRecentScene() { }
-        private static void SaveScene() { }
-        private static void SaveAsScene() { }
-        private static void SaveAsSceneTemplate() { }
-        private static void NewProject() { }
-        private static void OpenProject() { }
-        private static void SaveProject() { }
-        private static void BuildProfiles() { }
-        private static void BuildAndRun() { }
-        private static void Close() { }
+        private static void Preferences()
+        {
+        }
 
-        private static void Undo() { }
-        private static void Redo() { }
-        private static void UndoHistory() { }
-        private static void SelectAll() { }
-        private static void DeselectAll() { }
-        private static void SelectChildren() { }
-        private static void SelectPrefabRoot() { }
-        private static void InvertSelection() { }
-        private static void SelectionGroups() { }
-        private static void Cut() { }
-        private static void Copy() { }
-        private static void Paste() { }
-        private static void PasteSpecial() { }
-        private static void Duplicate() { }
-        private static void Rename() { }
-        private static void Delete() { }
-        private static void FrameSelectedInScene() { }
-        private static void FrameSelectedInWindow() { }
-        private static void LockViewToSelected() { }
-        private static void Search() { }
-        private static void Play() { }
-        private static void Pause() { }
-        private static void Step() { }
-        private static void ProjectSettings() { }
-        private static void ClearAllPlayerPrefs() { }
-        private static void Lighting() { }
-        private static void GraphicsTier() { }
-        private static void Rendering() { }
+        private static void QuitAlis()
+        {
+        }
 
-        private static void Create() { }
-        private static void ImportNewAsset() { }
-        private static void ImportPackage() { }
-        private static void ExportPackage() { }
-        private static void FindReferencesInScene() { }
-        private static void OpenAsset() { }
-        private static void Reimport() { }
-        private static void ReimportAll() { }
-        private static void Refresh() { }
-        private static void RemoveUnusedAssets() { }
+        private static void NewScene()
+        {
+        }
 
-        private static void CreateEmpty() { }
-        private static void CreateEmptyChild() { }
-        private static void Create2DObject() { }
-        private static void CreateUI() { }
-        private static void CreateLight() { }
-        private static void CreateAudio() { }
-        private static void CreateTilemap() { }
-        private static void AlignWithView() { }
-        private static void AlignViewToSelected() { }
-        private static void MoveToView() { }
-        private static void RenameGameObject() { }
-        private static void DuplicateGameObject() { }
-        private static void DeleteGameObject() { }
+        private static void OpenScene()
+        {
+        }
 
-        private static void AddComponent() { }
-        private static void Physics2D() { }
-        private static void Rendering2D() { }
-        private static void AudioComponent() { }
-        private static void UIComponent() { }
-        private static void ScriptsComponent() { }
+        private static void OpenRecentScene()
+        {
+        }
 
-        private static void SpriteEditor() { }
-        private static void TilemapEditor() { }
-        private static void AnimationEditor() { }
-        private static void CustomTools() { }
+        private static void SaveScene()
+        {
+        }
 
-        private static void GeneralWindow() { }
-        private static void SceneViewWindow() { }
-        private static void GameViewWindow() { }
-        private static void InspectorWindow() { }
-        private static void HierarchyWindow() { }
-        private static void ConsoleWindow() { }
+        private static void SaveAsScene()
+        {
+        }
 
-        private static void AlisManual() { }
-        private static void APIReference() { }
-        private static void ReportBug() { }
+        private static void SaveAsSceneTemplate()
+        {
+        }
+
+        private static void NewProject()
+        {
+        }
+
+        private static void OpenProject()
+        {
+        }
+
+        private static void SaveProject()
+        {
+        }
+
+        private static void BuildProfiles()
+        {
+        }
+
+        private static void BuildAndRun()
+        {
+        }
+
+        private static void Close()
+        {
+        }
+
+        private static void Undo()
+        {
+        }
+
+        private static void Redo()
+        {
+        }
+
+        private static void UndoHistory()
+        {
+        }
+
+        private static void SelectAll()
+        {
+        }
+
+        private static void DeselectAll()
+        {
+        }
+
+        private static void SelectChildren()
+        {
+        }
+
+        private static void SelectPrefabRoot()
+        {
+        }
+
+        private static void InvertSelection()
+        {
+        }
+
+        private static void SelectionGroups()
+        {
+        }
+
+        private static void Cut()
+        {
+        }
+
+        private static void Copy()
+        {
+        }
+
+        private static void Paste()
+        {
+        }
+
+        private static void PasteSpecial()
+        {
+        }
+
+        private static void Duplicate()
+        {
+        }
+
+        private static void Rename()
+        {
+        }
+
+        private static void Delete()
+        {
+        }
+
+        private static void FrameSelectedInScene()
+        {
+        }
+
+        private static void FrameSelectedInWindow()
+        {
+        }
+
+        private static void LockViewToSelected()
+        {
+        }
+
+        private static void Search()
+        {
+        }
+
+        private static void Play()
+        {
+        }
+
+        private static void Pause()
+        {
+        }
+
+        private static void Step()
+        {
+        }
+
+        private static void ProjectSettings()
+        {
+        }
+
+        private static void ClearAllPlayerPrefs()
+        {
+        }
+
+        private static void Lighting()
+        {
+        }
+
+        private static void GraphicsTier()
+        {
+        }
+
+        private static void Rendering()
+        {
+        }
+
+        private static void Create()
+        {
+        }
+
+        private static void ImportNewAsset()
+        {
+        }
+
+        private static void ImportPackage()
+        {
+        }
+
+        private static void ExportPackage()
+        {
+        }
+
+        private static void FindReferencesInScene()
+        {
+        }
+
+        private static void OpenAsset()
+        {
+        }
+
+        private static void Reimport()
+        {
+        }
+
+        private static void ReimportAll()
+        {
+        }
+
+        private static void Refresh()
+        {
+        }
+
+        private static void RemoveUnusedAssets()
+        {
+        }
+
+        private static void CreateEmpty()
+        {
+        }
+
+        private static void CreateEmptyChild()
+        {
+        }
+
+        private static void Create2DObject()
+        {
+        }
+
+        private static void CreateUI()
+        {
+        }
+
+        private static void CreateLight()
+        {
+        }
+
+        private static void CreateAudio()
+        {
+        }
+
+        private static void CreateTilemap()
+        {
+        }
+
+        private static void AlignWithView()
+        {
+        }
+
+        private static void AlignViewToSelected()
+        {
+        }
+
+        private static void MoveToView()
+        {
+        }
+
+        private static void RenameGameObject()
+        {
+        }
+
+        private static void DuplicateGameObject()
+        {
+        }
+
+        private static void DeleteGameObject()
+        {
+        }
+
+        private static void AddComponent()
+        {
+        }
+
+        private static void Physics2D()
+        {
+        }
+
+        private static void Rendering2D()
+        {
+        }
+
+        private static void AudioComponent()
+        {
+        }
+
+        private static void UIComponent()
+        {
+        }
+
+        private static void ScriptsComponent()
+        {
+        }
+
+        private static void SpriteEditor()
+        {
+        }
+
+        private static void TilemapEditor()
+        {
+        }
+
+        private static void AnimationEditor()
+        {
+        }
+
+        private static void CustomTools()
+        {
+        }
+
+        private static void GeneralWindow()
+        {
+        }
+
+        private static void SceneViewWindow()
+        {
+        }
+
+        private static void GameViewWindow()
+        {
+        }
+
+        private static void InspectorWindow()
+        {
+        }
+
+        private static void HierarchyWindow()
+        {
+        }
+
+        private static void ConsoleWindow()
+        {
+        }
+
+        private static void AlisManual()
+        {
+        }
+
+        private static void APIReference()
+        {
+        }
+
+        private static void ReportBug()
+        {
+        }
     }
 }

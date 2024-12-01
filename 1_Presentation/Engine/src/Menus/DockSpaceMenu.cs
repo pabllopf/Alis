@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
 using Alis.Core.Aspect.Data.Resource;
@@ -42,14 +41,10 @@ namespace Alis.App.Engine.Menus
 {
     internal class DockSpaceMenu : IMenu
     {
-        public DockSpaceMenu(SpaceWork spaceWork)
-        {
-            SpaceWork = spaceWork;
-        }
-        
+        public DockSpaceMenu(SpaceWork spaceWork) => SpaceWork = spaceWork;
+
         public void Initialize()
         {
-           
         }
 
         public void Update()
@@ -61,8 +56,7 @@ namespace Alis.App.Engine.Menus
 
             // Set height of the menu bar
             //ImGui.SetWindowSize(new Vector2(0, 5), ImGuiCond.Always);
-            
-            
+
 
             // Crear barra de menú
             if (ImGui.BeginMenuBar())
@@ -71,7 +65,7 @@ namespace Alis.App.Engine.Menus
                 //float contentHeight = ImGui.GetContentRegionAvail().Y;  // Obtiene el espacio disponible en la ventana
                 //float centerOffsetY = contentHeight * 0.5f;  // Calcula el centro vertical
 
-                
+
                 // Establece la posición de la ventana de manera que se centre verticalmente
                 //ImGui.SetCursorPosY(2.5f); // Ajuste para alinear mejor el contenido
                 //ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(4, 5f)); // Ajustar el espaciado si es necesario
@@ -81,7 +75,7 @@ namespace Alis.App.Engine.Menus
                 ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4(0.15f, 0.15f, 0.15f, 1.0f));
                 // quit border:
                 ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0);
-                
+
                 // Primer conjunto de botones: izquierda
                 if (ImGui.Button($"{FontAwesome5.ArrowLeft}"))
                 {
@@ -100,10 +94,8 @@ namespace Alis.App.Engine.Menus
                 }
 
                 ImGui.SameLine();
-                
-               
-                
-                
+
+
                 // Selector de solución
                 ImGui.SetNextItemWidth(100);
                 if (ImGui.BeginCombo("##Solution Name", $"{FontAwesome5.Font} Sample", ImGuiComboFlags.HeightLarge))
@@ -119,7 +111,7 @@ namespace Alis.App.Engine.Menus
 
                     ImGui.Separator();
                     ImGui.TextDisabled("Recent Solutions");
-                    if (ImGui.Selectable($"Sample Solution"))
+                    if (ImGui.Selectable("Sample Solution"))
                     {
                     }
 
@@ -129,15 +121,14 @@ namespace Alis.App.Engine.Menus
                 ImGui.SameLine();
 
 
-
                 // Segundo conjunto de botones: en el centro
-                
+
                 Scene scene = SpaceWork.VideoGame.Context.SceneManager.CurrentScene;
                 List<Scene> scenes = SpaceWork.VideoGame.Context.SceneManager.Scenes;
-                
+
                 int numberCharsName = scene.Name.Length;
                 ImGui.SetNextItemWidth(32 + numberCharsName * 10);
-                
+
                 if (ImGui.BeginCombo($"##{scene.Id}", $"{FontAwesome5.Cube} {scene.Name}"))
                 {
                     // Show the scenes of game: 
@@ -148,11 +139,10 @@ namespace Alis.App.Engine.Menus
                             SpaceWork.VideoGame.Context.SceneManager.LoadScene(s.Name);
                         }
                     }
-                    
+
                     ImGui.EndCombo();
                 }
-                
-               
+
 
                 ImGui.SameLine();
 
@@ -236,7 +226,7 @@ namespace Alis.App.Engine.Menus
 
                 ImGui.PopStyleColor(2);
                 ImGui.PopStyleVar();
-                
+
                 //ImGui.PopStyleVar();
                 ImGui.EndMenuBar();
             }
@@ -244,24 +234,19 @@ namespace Alis.App.Engine.Menus
             // Restaurar los valores de estilo anteriores
             //ImGui.PopStyleVar(2);
             //ImGui.PopStyleVar();
-            
-            
         }
 
 
         void IRuntime.Render()
         {
-           
         }
 
         public void Start()
         {
-           
         }
 
         void IRenderable.Render()
         {
-            
         }
 
         public SpaceWork SpaceWork { get; }

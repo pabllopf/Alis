@@ -44,7 +44,7 @@ namespace Alis.App.Engine.Hub
             Random random = new Random();
 
             // Lista de posibles imágenes
-            string[] imageOptions = new[] { "computer.png", "news.png", "cubes.png", "shop.png" };
+            string[] imageOptions = {"computer.png", "news.png", "cubes.png", "shop.png"};
 
             // Generar 10 elementos de la galería
             for (int i = 0; i < 10; i++)
@@ -54,12 +54,12 @@ namespace Alis.App.Engine.Hub
 
                 // Crear un nuevo GalleryItem con datos aleatorios
                 GalleryItem item = new GalleryItem(
-                    imagePath, 
-                    $"Item {i + 1}", 
-                    $"Description for Item {i + 1}", 
-                    $"https://www.example.com/{i + 1}", 
+                    imagePath,
+                    $"Item {i + 1}",
+                    $"Description for Item {i + 1}",
+                    $"https://www.example.com/{i + 1}",
                     100, // Altura de la imagen
-                    100  // Ancho de la imagen
+                    100 // Ancho de la imagen
                 );
 
                 // Agregar el item a la lista

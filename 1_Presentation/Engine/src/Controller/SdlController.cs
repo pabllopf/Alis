@@ -30,10 +30,9 @@
 namespace Alis.App.Engine.Controller
 {
     /// <summary>
-    /// The sdl controller class
+    ///     The sdl controller class
     /// </summary>
     public class SdlController
     {
-        
     }
 }
