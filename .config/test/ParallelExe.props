@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
     <ItemGroup Condition="
-        $(AssemblyName.Contains('Graphic.Test')) == True
+        $(AssemblyName.Contains('Graphic.Test')) == True OR
+        $(AssemblyName.Contains('Network.Test')) == True
     ">
         <Content Include="$(SolutionDir).config/xunit.runner.json" LinkBase="." Pack="true" Visible="true" PackagePath=".">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
