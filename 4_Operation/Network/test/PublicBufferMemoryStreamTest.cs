@@ -107,7 +107,7 @@ namespace Alis.Core.Network.Test
             stream.Position = 0;
             byte[] readBuffer = new byte[2];
 # if NET9_0_OR_GREATER
-            stream.ReadExactly(readBuffer);
+            stream.ReadExactly(readBuffer, 0, 2);
 # else
                 stream.Read(readBuffer, 0, 2);
 #endif
