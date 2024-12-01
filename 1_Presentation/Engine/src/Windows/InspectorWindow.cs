@@ -124,8 +124,7 @@ namespace Alis.App.Engine.Windows
         ///     Gets the value of the space work
         /// </summary>
         public SpaceWork SpaceWork { get; }
-
-
+        
         private void RenderComponentProperties(AComponent component)
         {
             Type typeP = component.GetType();
