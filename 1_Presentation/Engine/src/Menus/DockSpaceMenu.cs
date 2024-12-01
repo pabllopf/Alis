@@ -145,7 +145,7 @@ namespace Alis.App.Engine.Menus
                     {
                         if (ImGui.Selectable($"{FontAwesome5.Cube} {s.Name}"))
                         {
-                            SpaceWork.VideoGame.Context.SceneManager.CurrentScene = s;
+                            SpaceWork.VideoGame.Context.SceneManager.LoadScene(s.Name);
                         }
                     }
                     

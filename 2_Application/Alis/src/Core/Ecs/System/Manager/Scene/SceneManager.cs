@@ -293,7 +293,24 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         /// <param name="scene">The scene</param>
         public void LoadScene(Entity.Scene scene)
         {
-            CurrentScene = scene;
+            CurrentScene.OnStop();
+            CurrentScene.OnExit();
+
+            Entity.Scene selectedScene = Scenes.Find(i => i.Name.Equals(scene.Name));
+            string versionCurrent = Assembly.GetExecutingAssembly().GetName().Version.ToString().Replace('.', '_');
+            string fileCurrentScene = Path.Combine(Path.Combine(Environment.CurrentDirectory, ".Data"), $"Alis_{versionCurrent}_Scene_{selectedScene.Name}.json");
+
+            CurrentScene = JsonSerializer.Deserialize<Entity.Scene>(
+                File.ReadAllText(fileCurrentScene)
+                , new JsonOptions
+                {
+                    DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
+                    SerializationOptions = JsonSerializationOptions.Default
+                });
+            CurrentScene.SetContext(Context);
+            CurrentScene.OnInit();
+            CurrentScene.OnAwake();
+            CurrentScene.OnStart();
         }
 
         /// <summary>

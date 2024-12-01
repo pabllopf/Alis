@@ -191,6 +191,74 @@ namespace Alis.App.Engine.Windows
                                 .Build())
                             .Build())
                         .Build())
+                    
+                    
+                    // OTHER SCENE
+                     .Add<Scene>(gameScene => gameScene
+                        .Name("Other Scene")
+                        
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("Camera")
+                            .WithTag("Camera")
+                            .Transform(transform => transform
+                                .Position(0, 0)
+                                .Scale(2, 2)
+                                .Rotation(0)
+                                .Build())
+                            .AddComponent<Camera>(camera => camera.Builder()
+                                .Resolution(1024, 640)
+                                .BackgroundColor(Color.DarkGreen)
+                                .Build())
+                            .Build())
+                        
+                        // Decoration tree-001
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("tree-001")
+                            .Transform(transform => transform
+                                .Position(100, 100)
+                                .Scale(2, 2)
+                                .Rotation(0)
+                                .Build())
+                            .AddComponent<Sprite>(sprite => sprite.Builder()
+                                .SetTexture("tree-001.bmp")
+                                .Build())
+                            .Build())
+
+                        // Decoration tree-001
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("tree-002")
+                            .Transform(transform => transform
+                                .Position(400, 400)
+                                .Scale(2, 2)
+                                .Rotation(0)
+                                .Build())
+                            .AddComponent<Sprite>(sprite => sprite.Builder()
+                                .SetTexture("tree-001.bmp")
+                                .Build())
+                            .Build())
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("tree-001")
+                            .Transform(transform => transform
+                                .Position(-100, -100)
+                                .Scale(2, 2)
+                                .Rotation(0)
+                                .Build())
+                            .AddComponent<Sprite>(sprite => sprite.Builder()
+                                .SetTexture("tree-001.bmp")
+                                .Build())
+                            .Build())
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("tree-001")
+                            .Transform(transform => transform
+                                .Position(-200, -200)
+                                .Scale(2, 2)
+                                .Rotation(0)
+                                .Build())
+                            .AddComponent<Sprite>(sprite => sprite.Builder()
+                                .SetTexture("tree-001.bmp")
+                                .Build())
+                            .Build())
+                        .Build())
                     .Build())
                 .Build();
 

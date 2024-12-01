@@ -177,7 +177,7 @@ namespace Alis.Core.Ecs.Component.Render
         {
             Sdl.QueryTexture(Texture, out _, out _, out w, out h);
 
-            new RectangleI((int) GameObject.Transform.Position.X, (int) GameObject.Transform.Position.Y, w, h);
+            //new RectangleI((int) GameObject.Transform.Position.X, (int) GameObject.Transform.Position.Y, w, h);
         }
 
         /// <summary>
