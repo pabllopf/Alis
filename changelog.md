@@ -5,6 +5,63 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.4.6] - 2024-12-01
+### :sparkles: New Features
+- [`14d5645`](https://github.com/pabllopf/Alis/commit/14d5645d089b75a5fa41840ff347a6ae34a3b243) - crete simple hub to engine *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6de6bdd`](https://github.com/pabllopf/Alis/commit/6de6bdd54013e9eaef18556e4aa65f3c3f549cda) - simple learn section *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ca76546`](https://github.com/pabllopf/Alis/commit/ca765468e3d9c22164d7c0f5c746fcbca61ab2fd) - new dark mode *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`72202f1`](https://github.com/pabllopf/Alis/commit/72202f10009354eeab183af478c9eb7a26a99e2f) - add new table to hub *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9a5b3d2`](https://github.com/pabllopf/Alis/commit/9a5b3d2d209ea3732cdd0189ac826f165f2ff13b) - add icons and refactor style dark *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8589406`](https://github.com/pabllopf/Alis/commit/8589406943933060b5bc53660e4aeac2a91fe08a) - add down menu *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d3bfa11`](https://github.com/pabllopf/Alis/commit/d3bfa1103a2c13228a3643e339eb1c9e3b2060c7) - add new custom bottons *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`afe769e`](https://github.com/pabllopf/Alis/commit/afe769ea11afeb351937101aa88a57777edb020a) - add simples layouts to engine *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`40c3262`](https://github.com/pabllopf/Alis/commit/40c326258f842f8646def9845892d42dadba78f6) - add menu bar *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7f59cd5`](https://github.com/pabllopf/Alis/commit/7f59cd59ffb8500ebff521776a4125bd973abf19) - custom bar menu for macos apps *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fb602c0`](https://github.com/pabllopf/Alis/commit/fb602c06e7006b41baf8a72c3ec9b2157b3356fa) - add new way to check the elements of the inspector *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`39bb07f`](https://github.com/pabllopf/Alis/commit/39bb07f905f7b84dd335e3e5ffc83207673e7ddf) - can change main scenes on engine *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`752e2e5`](https://github.com/pabllopf/Alis/commit/752e2e5a1962c732b3ce410b154255b60578d652) - config file *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`23b8083`](https://github.com/pabllopf/Alis/commit/23b80838f890deaf4fb68aaca3ebca8f1119fbe2) - Config.props *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`38f692f`](https://github.com/pabllopf/Alis/commit/38f692fe1be389e41cc8dd7ef112e25375ed9c0a) - tests of alis module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9573412`](https://github.com/pabllopf/Alis/commit/95734120c7927bb016330430f154534e6cab75bf) - check all rules *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4c08c47`](https://github.com/pabllopf/Alis/commit/4c08c47b7f7401af9c31f6607ae844944d935eb0) - init windows *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`504b858`](https://github.com/pabllopf/Alis/commit/504b85830f716e0f60fb552e8c74e1d3e0c5a564) - dockspace *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b3f7e0a`](https://github.com/pabllopf/Alis/commit/b3f7e0a94f71fc37d885a7d3e22c6af9d65e566f) - adjust the main menu to macos system *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c54ba0a`](https://github.com/pabllopf/Alis/commit/c54ba0afca68192dd56cc1595d5a24bc4cebc6de) - botton menu windows *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ffc0b40`](https://github.com/pabllopf/Alis/commit/ffc0b40520f20c8fc09240558b7512c86f140028) - delete appdelegate *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0e63d1f`](https://github.com/pabllopf/Alis/commit/0e63d1ff8583d2c454345f1e5624c20145fbcb08) - reset the sln *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c551ecf`](https://github.com/pabllopf/Alis/commit/c551ecf4bc76a6e9abd8e4039b9804af02ecfb11) - delete old dependency *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`19a0953`](https://github.com/pabllopf/Alis/commit/19a09534a10638c679197b5fee53a2b9f5e54d8a) - dependencies *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`52e91a1`](https://github.com/pabllopf/Alis/commit/52e91a1cb4ff24ff32c3248ca1427819510d606a) - the version of stripe *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`aba0004`](https://github.com/pabllopf/Alis/commit/aba0004e68d28ddb3aeb0d3483051c7a18111a87) - spaces and tabs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`13bc69e`](https://github.com/pabllopf/Alis/commit/13bc69eef93c2e35457aac438c66ed9ae563fc41) - Packages.props *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`58d61ce`](https://github.com/pabllopf/Alis/commit/58d61cefaaf51e28b22e293e5b9dbdfc20a68581) - Renderable.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ef1f82b`](https://github.com/pabllopf/Alis/commit/ef1f82b9f98f6f8fc7bebe29ec89cdb939e20e50) - Packages *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f5f3192`](https://github.com/pabllopf/Alis/commit/f5f319234ca56a1cbfdcd24b889263611f6f1eb2) - Update SceneWindow.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`14b0bf0`](https://github.com/pabllopf/Alis/commit/14b0bf02c89e79d96979b7a30aebe2d679ad9aca) - the TargetFrameworks *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a214c60`](https://github.com/pabllopf/Alis/commit/a214c6067c6c9d51ee6f4e2bb3cdb466a1a4be9f) - SceneWindow *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2586d1d`](https://github.com/pabllopf/Alis/commit/2586d1dc416c7889d4f69c06f896ad86fbf4c4b4) - Update Packages.props *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6e419f1`](https://github.com/pabllopf/Alis/commit/6e419f17694b99899c7abe39b36324afe25f9a25) - the dependencies *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8f35e00`](https://github.com/pabllopf/Alis/commit/8f35e000b9e12e6c70d5265823b94cf52fe4e435) - SONARCLOUD *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`018b023`](https://github.com/pabllopf/Alis/commit/018b0236c73fb28081b25e4b8c6224d3607abf5c) - update to .net7.0 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`227e878`](https://github.com/pabllopf/Alis/commit/227e8785a8983cdf98b511af36d3a9e138ce8cfd) - SONARCLOUD *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d301e6f`](https://github.com/pabllopf/Alis/commit/d301e6fe59b35fa41b3537bf504f904f653a9dce) - SONARCLOUD net 7 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c05eddf`](https://github.com/pabllopf/Alis/commit/c05eddf083d19800620679096ea653e3b403504a) - NU1903 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`af08115`](https://github.com/pabllopf/Alis/commit/af08115decf1d722614100fd4281a48ea0143df4) - update to .net 8 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7c492a3`](https://github.com/pabllopf/Alis/commit/7c492a3d4700cb35bf9efec8d86cd630c6a9b0d1) - TreatWarningsAsErrors *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`a938174`](https://github.com/pabllopf/Alis/commit/a938174513f7f64000e394342fe13f8e1b32b19c) - pro check all platforms *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`a24817d`](https://github.com/pabllopf/Alis/commit/a24817df77d5557cd13f58c54be914081d9123b0) - **contributor**: contrib-readme-action has updated readme *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+- [`fe76c2e`](https://github.com/pabllopf/Alis/commit/fe76c2eadf7f6932879c5dd1989ff6d7e940fb94) - **contributor**: contrib-readme-action has updated readme *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+### :art: Code Style Changes
+- [`c200ddb`](https://github.com/pabllopf/Alis/commit/c200ddb0ee1a1b54e1a926ed2fc9456e07b4afe4) - clean sln and delete benchmark references *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.4.5] - 2024-11-10
 
 ### ✨ New Features
@@ -3618,3 +3675,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.4.4]: https://github.com/pabllopf/Alis/compare/v0.4.3...v0.4.4
 
 [v0.4.5]: https://github.com/pabllopf/Alis/compare/v0.4.4...v0.4.5
+[v0.4.6]: https://github.com/pabllopf/Alis/compare/v0.4.5...v0.4.6
