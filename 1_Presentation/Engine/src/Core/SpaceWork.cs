@@ -114,7 +114,7 @@ namespace Alis.App.Engine.Core
         /// The font loaded 16 light
         /// </summary>
         public ImFontPtr fontLoaded16Light;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="SpaceWork" /> class
         /// </summary>
@@ -130,8 +130,13 @@ namespace Alis.App.Engine.Core
             AudioPlayerWindow = new AudioPlayerWindow(this);
             AssetsWindow = new AssetsWindow(this);
             TopMenu = new TopMenu(this);
+            TopMenuMac = new TopMenuMac(this);
             BottomMenu = new BottomMenu(this);
         }
+
+        public bool IsMacOs => RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
+        
+        public TopMenuMac TopMenuMac { get; set; }
 
         /// <summary>
         ///     Gets the value of the console window
@@ -207,9 +212,13 @@ namespace Alis.App.Engine.Core
             iconDemo.Initialize();
 
             // if is macos system:
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            if (!IsMacOs)
             {
                 TopMenu.Initialize();
+            }
+            else
+            {
+                TopMenuMac.Initialize();
             }
             
             
@@ -236,9 +245,12 @@ namespace Alis.App.Engine.Core
             iconDemo.Start();
 
             // if is macos system:
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            if (!IsMacOs)
             {
                 TopMenu.Start();
+            }else
+            {
+                TopMenuMac.Start();
             }
             
             
@@ -265,12 +277,13 @@ namespace Alis.App.Engine.Core
             iconDemo.Run();
 
             // if is macos system:
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            if (!IsMacOs)
             {
                 TopMenu.Render();
+            }else
+            {
+                TopMenuMac.Render();
             }
-            
-            
             
             BottomMenu.Render();
             ConsoleWindow.Render();

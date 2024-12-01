@@ -83,7 +83,7 @@ namespace Alis.App.Engine.Menus
             ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(4, 3));
 
             
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            if (!SpaceWork.IsMacOs)
             {
                 Vector2 dockSize = SpaceWork.Viewport.Size - new Vector2(5, 90);
 
