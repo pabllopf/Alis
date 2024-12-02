@@ -27,7 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics;
 using Alis.App.Engine.Core;
+using MonoMac.AppKit;
 
 namespace Alis.App.Engine.Menus
 {
@@ -38,9 +40,8 @@ namespace Alis.App.Engine.Menus
 
         public void Initialize()
         {
-#if OSX
+
             ConfigureMenu();
-#endif
         }
 
         public void Start()
@@ -54,8 +55,7 @@ namespace Alis.App.Engine.Menus
         public void Render()
         {
         }
-
-#if OSX
+        
         [Conditional("OSX")]
         private static void ConfigureMenu()
         {
@@ -215,6 +215,7 @@ namespace Alis.App.Engine.Menus
             NSApplication.SharedApplication.MainMenu = mainMenu;
         }
 
+        [Conditional("OSX")]
         private static void AddMenu(NSMenu mainMenu, string title, string[] items)
         {
             NSMenuItem menuItem = new NSMenuItem(title);
@@ -251,6 +252,5 @@ namespace Alis.App.Engine.Menus
             menuItem.Submenu = submenu;
             mainMenu.AddItem(menuItem);
         }
-#endif
     }
 }
