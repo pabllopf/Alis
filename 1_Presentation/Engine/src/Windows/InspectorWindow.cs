@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Reflection;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
@@ -35,6 +36,7 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Entity;
 using Alis.Extension.Graphic.ImGui.Native;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.App.Engine.Windows
 {
@@ -123,9 +125,11 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         public SpaceWork SpaceWork { get; }
 
+
         private void RenderComponentProperties(AComponent component)
         {
-            PropertyInfo[] properties = component.GetType().GetProperties();
+            Type typeP = component.GetType();
+            PropertyInfo[] properties = typeP.GetProperties();
             foreach (PropertyInfo property in properties)
             {
                 if (property.CanRead && property.CanWrite)
