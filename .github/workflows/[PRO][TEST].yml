@@ -24,7 +24,7 @@ jobs:
             6.0.420
             7.0.408
             8.0.202
-            9.0.0
+            9.x.x
 
       - name: install
         run: |
@@ -61,6 +61,7 @@ jobs:
             6.0.420
             7.0.408
             8.0.202
+            9.x.x
 
       - name: install
         run: |
@@ -97,6 +98,7 @@ jobs:
             6.0.420
             7.0.408
             8.0.202
+            9.x.x
 
       - name: install
         run: |
