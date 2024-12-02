@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.App.Engine.Core;
+using Alis.App.Engine.Shortcut;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Native;
@@ -72,62 +73,29 @@ namespace Alis.App.Engine.Menus
             ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0);
 
             ImGui.BeginMainMenuBar();
-
-            // Menú "Alis"
-            if (ImGui.BeginMenu("Alis"))
-            {
-                if (ImGui.MenuItem("About Alis"))
-                {
-                    TopMenuAction.ExecuteMenuAction("About Alis");
-                }
-
-                ImGui.Separator();
-                if (ImGui.MenuItem("Preferences"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Preferences");
-                }
-
-                ImGui.Separator();
-                if (ImGui.MenuItem("Quit Alis"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Quit Alis");
-                }
-
-                ImGui.EndMenu();
-            }
-
+            
             // Menú "File"
             if (ImGui.BeginMenu("File"))
             {
-                if (ImGui.MenuItem("New Scene\tCmd+N"))
+                if (ImGui.MenuItem("New Scene", Shortcuts.NewScene))
                 {
                     TopMenuAction.ExecuteMenuAction("New Scene");
                 }
 
-                if (ImGui.MenuItem("Open Scene...\tCmd+O"))
+                if (ImGui.MenuItem("Open Scene...", Shortcuts.OpenScene))
                 {
                     TopMenuAction.ExecuteMenuAction("Open Scene...");
                 }
-
-                if (ImGui.MenuItem("Open Recent Scene"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Open Recent Scene");
-                }
-
+                
                 ImGui.Separator();
-                if (ImGui.MenuItem("Save\tCmd+S"))
+                if (ImGui.MenuItem("Save", Shortcuts.Save))
                 {
                     TopMenuAction.ExecuteMenuAction("Save");
                 }
 
-                if (ImGui.MenuItem("Save As...\tCmd+Shift+S"))
+                if (ImGui.MenuItem("Save As...", Shortcuts.SaveAs))
                 {
                     TopMenuAction.ExecuteMenuAction("Save As...");
-                }
-
-                if (ImGui.MenuItem("Save As Scene Template..."))
-                {
-                    TopMenuAction.ExecuteMenuAction("Save As Scene Template...");
                 }
 
                 ImGui.Separator();
@@ -169,12 +137,12 @@ namespace Alis.App.Engine.Menus
             // Menú "Edit"
             if (ImGui.BeginMenu("Edit"))
             {
-                if (ImGui.MenuItem("Undo\tCmd+Z"))
+                if (ImGui.MenuItem("Undo", Shortcuts.Undo))
                 {
                     TopMenuAction.ExecuteMenuAction("Undo");
                 }
 
-                if (ImGui.MenuItem("Redo\tCmd+Shift+Z"))
+                if (ImGui.MenuItem("Redo", Shortcuts.Redo))
                 {
                     TopMenuAction.ExecuteMenuAction("Redo");
                 }
@@ -186,7 +154,7 @@ namespace Alis.App.Engine.Menus
                 }
 
                 ImGui.Separator();
-                if (ImGui.MenuItem("Select All\tCmd+A"))
+                if (ImGui.MenuItem("Select All"))
                 {
                     TopMenuAction.ExecuteMenuAction("Select All");
                 }
@@ -217,17 +185,17 @@ namespace Alis.App.Engine.Menus
                 }
 
                 ImGui.Separator();
-                if (ImGui.MenuItem("Cut\tCmd+X"))
+                if (ImGui.MenuItem("Cut"))
                 {
                     TopMenuAction.ExecuteMenuAction("Cut");
                 }
 
-                if (ImGui.MenuItem("Copy\tCmd+C"))
+                if (ImGui.MenuItem("Copy"))
                 {
                     TopMenuAction.ExecuteMenuAction("Copy");
                 }
 
-                if (ImGui.MenuItem("Paste\tCmd+V"))
+                if (ImGui.MenuItem("Paste"))
                 {
                     TopMenuAction.ExecuteMenuAction("Paste");
                 }
@@ -237,7 +205,7 @@ namespace Alis.App.Engine.Menus
                     TopMenuAction.ExecuteMenuAction("Paste Special");
                 }
 
-                if (ImGui.MenuItem("Duplicate\tCmd+D"))
+                if (ImGui.MenuItem("Duplicate"))
                 {
                     TopMenuAction.ExecuteMenuAction("Duplicate");
                 }
@@ -275,12 +243,12 @@ namespace Alis.App.Engine.Menus
                 }
 
                 ImGui.Separator();
-                if (ImGui.MenuItem("Play\tCmd+P"))
+                if (ImGui.MenuItem("Play", Shortcuts.Play))
                 {
                     TopMenuAction.ExecuteMenuAction("Play");
                 }
 
-                if (ImGui.MenuItem("Pause\tCmd+Shift+P"))
+                if (ImGui.MenuItem("Pause", Shortcuts.Pause))
                 {
                     TopMenuAction.ExecuteMenuAction("Pause");
                 }
@@ -557,6 +525,18 @@ namespace Alis.App.Engine.Menus
             // Menú "Help"
             if (ImGui.BeginMenu("Help"))
             {
+                
+                if (ImGui.MenuItem("About Alis", Shortcuts.AboutAlis))
+                {
+                    TopMenuAction.ExecuteMenuAction("About Alis");
+                }
+                
+                ImGui.Separator();
+                if (ImGui.MenuItem("Preferences", Shortcuts.Preferences))
+                {
+                    TopMenuAction.ExecuteMenuAction("Preferences");
+                }
+                
                 if (ImGui.MenuItem("Alis Manual"))
                 {
                     TopMenuAction.ExecuteMenuAction("Alis Manual");
@@ -572,10 +552,11 @@ namespace Alis.App.Engine.Menus
                 {
                     TopMenuAction.ExecuteMenuAction("Report Bug");
                 }
-
-                if (ImGui.MenuItem("About Alis"))
+                
+                ImGui.Separator();
+                if (ImGui.MenuItem("Quit Alis", Shortcuts.QuitAlis))
                 {
-                    TopMenuAction.ExecuteMenuAction("About Alis");
+                    TopMenuAction.ExecuteMenuAction("Quit Alis");
                 }
 
                 ImGui.EndMenu();
