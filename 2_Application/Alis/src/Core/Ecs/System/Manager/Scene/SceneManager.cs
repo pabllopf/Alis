@@ -146,6 +146,11 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene.OnAfterUpdate();
         }
+        
+        public override void OnProcessPendingChanges()
+        {
+            CurrentScene.OnProcessPendingChanges();
+        }
 
         /// <summary>
         ///     Ons the before fixed update

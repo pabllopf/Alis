@@ -120,6 +120,8 @@ namespace Alis.Core.Ecs.Component
         /// </summary>
         public virtual void OnAfterUpdate() => Logger.Trace();
 
+        public virtual void OnProcessPendingChanges() => Logger.Trace();
+
         /// <summary>
         ///     Ons the before fixed update
         /// </summary>

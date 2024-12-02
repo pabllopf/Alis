@@ -49,6 +49,8 @@ namespace Alis.Core.Ecs.Entity
             Id = Guid.NewGuid().ToString();
             Tag = GetType().Name;
             GameObjects = new List<GameObject>();
+            PendingGameObjectsToAdd = new Stack<GameObject>();
+            PendingGameObjectsToRemove = new Stack<GameObject>();
         }
 
         /// <summary>
@@ -66,6 +68,8 @@ namespace Alis.Core.Ecs.Entity
             Id = id;
             Tag = tag;
             GameObjects = new List<GameObject>();
+            PendingGameObjectsToAdd = new Stack<GameObject>();
+            PendingGameObjectsToRemove = new Stack<GameObject>();
         }
 
         /// <summary>
@@ -84,6 +88,8 @@ namespace Alis.Core.Ecs.Entity
             Tag = tag;
             GameObjects = gameObjects;
             GameObjects.ForEach(i => i.SetContext(Context));
+            PendingGameObjectsToAdd = new Stack<GameObject>();
+            PendingGameObjectsToRemove = new Stack<GameObject>();
         }
 
         /// <summary>
@@ -122,7 +128,13 @@ namespace Alis.Core.Ecs.Entity
 
         [JsonPropertyName("_GameObjects_")]
         public List<GameObject> GameObjects { get; set; }
+        
+        [JsonIgnore]
+        public Stack<GameObject> PendingGameObjectsToAdd { get; }
 
+        [JsonIgnore]
+        public Stack<GameObject> PendingGameObjectsToRemove  { get; }
+        
         /// <summary>
         ///     Ons the enable
         /// </summary>
@@ -186,6 +198,24 @@ namespace Alis.Core.Ecs.Entity
         public void OnAfterUpdate()
         {
             GameObjects.ForEach(i => i.OnAfterUpdate());
+        }
+
+        public void OnProcessPendingChanges()
+        {
+            while (PendingGameObjectsToAdd.Count > 0)
+            {
+                GameObject gameObject = PendingGameObjectsToAdd.Pop();
+                gameObject.SetContext(Context);
+                GameObjects.Add(gameObject);
+            }
+            
+            while (PendingGameObjectsToRemove.Count > 0)
+            {
+                GameObject gameObject = PendingGameObjectsToRemove.Pop();
+                GameObjects.Remove(gameObject);
+            }
+            
+            GameObjects.ForEach(i => i.OnProcessPendingChanges());
         }
 
         /// <summary>
@@ -316,8 +346,11 @@ namespace Alis.Core.Ecs.Entity
         /// <param name="value">The component</param>
         public virtual void Add<T>(T value) where T : GameObject
         {
-            value.SetContext(Context);
-            GameObjects.Add(value);
+            if (!PendingGameObjectsToAdd.Contains(value) && !GameObjects.Contains(value))
+            {
+                value.SetContext(Context);
+                PendingGameObjectsToAdd.Push(value);
+            }
         }
 
         /// <summary>
@@ -327,7 +360,10 @@ namespace Alis.Core.Ecs.Entity
         /// <param name="value">The component</param>
         public virtual void Remove<T>(T value) where T : GameObject
         {
-            GameObjects.Remove(value);
+            if (GameObjects.Contains(value) && !PendingGameObjectsToRemove.Contains(value))
+            {
+                PendingGameObjectsToRemove.Push(value);
+            }
         }
 
         /// <summary>
