@@ -41,6 +41,9 @@ namespace Alis.App.Engine.Windows
     /// </summary>
     public class ProjectWindow : IWindow
     {
+        /// <summary>
+        /// The stream
+        /// </summary>
         private static readonly string NameWindow = $"{FontAwesome5.Stream} Project";
 
         /// <summary>
@@ -63,6 +66,9 @@ namespace Alis.App.Engine.Windows
         {
         }
 
+        /// <summary>
+        /// Renders this instance
+        /// </summary>
         public void Render()
         {
             ImGui.Begin(NameWindow);
@@ -110,6 +116,10 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         public SpaceWork SpaceWork { get; }
 
+        /// <summary>
+        /// Renders the game object hierarchy using the specified game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
         private void RenderGameObjectHierarchy(GameObject gameObject)
         {
             // Render leaf GameObject without children
@@ -121,16 +131,28 @@ namespace Alis.App.Engine.Windows
             }
         }
 
+        /// <summary>
+        /// Duplicates the game object using the specified game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
         private void DuplicateGameObject(GameObject gameObject)
         {
             // Logic to duplicate the game object
         }
 
+        /// <summary>
+        /// Deletes the game object using the specified game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
         private void DeleteGameObject(GameObject gameObject)
         {
             // Logic to delete the game object
         }
 
+        /// <summary>
+        /// Renames the game object using the specified game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
         private void RenameGameObject(GameObject gameObject)
         {
             // Logic to rename the game object

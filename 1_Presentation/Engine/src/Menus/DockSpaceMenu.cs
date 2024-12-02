@@ -39,14 +39,28 @@ using Alis.Extension.Graphic.ImGui.Native;
 
 namespace Alis.App.Engine.Menus
 {
+    /// <summary>
+    /// The dock space menu class
+    /// </summary>
+    /// <seealso cref="IMenu"/>
     internal class DockSpaceMenu : IMenu
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DockSpaceMenu"/> class
+        /// </summary>
+        /// <param name="spaceWork">The space work</param>
         public DockSpaceMenu(SpaceWork spaceWork) => SpaceWork = spaceWork;
 
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
         public void Initialize()
         {
         }
 
+        /// <summary>
+        /// Updates this instance
+        /// </summary>
         public void Update()
         {
             // Establece el padding de la ventana
@@ -237,18 +251,30 @@ namespace Alis.App.Engine.Menus
         }
 
 
+        /// <summary>
+        /// Renders this instance
+        /// </summary>
         void IRuntime.Render()
         {
         }
 
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
         public void Start()
         {
         }
 
+        /// <summary>
+        /// Renders this instance
+        /// </summary>
         void IRenderable.Render()
         {
         }
 
+        /// <summary>
+        /// Gets the value of the space work
+        /// </summary>
         public SpaceWork SpaceWork { get; }
     }
 }

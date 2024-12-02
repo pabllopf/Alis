@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -31,27 +31,84 @@ using System;
 
 namespace Alis.App.Engine.Shortcut
 {
+    /// <summary>
+    /// The shortcuts class
+    /// </summary>
     public static class Shortcuts
     {
+        /// <summary>
+        /// Gets or sets the value of the new scene
+        /// </summary>
         public static string NewScene { get; private set; }
+        /// <summary>
+        /// Gets or sets the value of the open scene
+        /// </summary>
         public static string OpenScene { get; private set; }
+        /// <summary>
+        /// Gets or sets the value of the save
+        /// </summary>
         public static string Save { get; private set; }
+        /// <summary>
+        /// Gets or sets the value of the save as
+        /// </summary>
         public static string SaveAs { get; private set; }
+        /// <summary>
+        /// Gets or sets the value of the undo
+        /// </summary>
         public static string Undo { get; private set; }
+        /// <summary>
+        /// Gets or sets the value of the redo
+        /// </summary>
         public static string Redo { get; private set; }
+        /// <summary>
+        /// Gets or sets the value of the play
+        /// </summary>
         public static string Play { get; private set; }
+        /// <summary>
+        /// Gets or sets the value of the pause
+        /// </summary>
         public static string Pause { get; private set; }
+        /// <summary>
+        /// Gets or sets the value of the cut
+        /// </summary>
         public static string Cut { get; private set; }
+        /// <summary>
+        /// Gets or sets the value of the copy
+        /// </summary>
         public static string Copy { get; private set; }
+        /// <summary>
+        /// Gets or sets the value of the paste
+        /// </summary>
         public static string Paste { get; private set; }
+        /// <summary>
+        /// Gets or sets the value of the duplicate
+        /// </summary>
         public static string Duplicate { get; private set; }
+        /// <summary>
+        /// Gets or sets the value of the delete
+        /// </summary>
         public static string Delete { get; private set; }
+        /// <summary>
+        /// Gets or sets the value of the search
+        /// </summary>
         public static string Search { get; private set; }
         
+        /// <summary>
+        /// Gets or sets the value of the about alis
+        /// </summary>
         public static string AboutAlis { get; private set; }
+        /// <summary>
+        /// Gets or sets the value of the preferences
+        /// </summary>
         public static string Preferences { get; private set; }
+        /// <summary>
+        /// Gets or sets the value of the quit alis
+        /// </summary>
         public static string QuitAlis { get; private set; }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Shortcuts"/> class
+        /// </summary>
         static Shortcuts()
         {
             if (OperatingSystem.IsMacOS())

@@ -512,6 +512,9 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public Vector4 Colors54 { get; set; }
 
+        /// <summary>
+        /// The index out of range exception
+        /// </summary>
         public Vector4 this[int index]
         {
             get

@@ -144,33 +144,61 @@ namespace Alis.Core.Sample
         private static IntPtr _renderer;
 
         // Importa la función para crear el menú desde la biblioteca compartida
+        /// <summary>
+        /// Creates the custom menu
+        /// </summary>
         [DllImport("libCustomMenu.dylib", EntryPoint = "createMenu", CallingConvention = CallingConvention.Cdecl)]
         public static extern void createCustomMenu();
 
         // Importa las funciones de acción
+        /// <summary>
+        /// Files the new action
+        /// </summary>
         [DllImport("libCustomMenu.dylib", CallingConvention = CallingConvention.Cdecl)]
         public static extern void fileNewAction();
 
+        /// <summary>
+        /// Files the open action
+        /// </summary>
         [DllImport("libCustomMenu.dylib", CallingConvention = CallingConvention.Cdecl)]
         public static extern void fileOpenAction();
 
+        /// <summary>
+        /// Edits the undo action
+        /// </summary>
         [DllImport("libCustomMenu.dylib", CallingConvention = CallingConvention.Cdecl)]
         public static extern void editUndoAction();
 
+        /// <summary>
+        /// Edits the redo action
+        /// </summary>
         [DllImport("libCustomMenu.dylib", CallingConvention = CallingConvention.Cdecl)]
         public static extern void editRedoAction();
 
+        /// <summary>
+        /// Views the zoom in action
+        /// </summary>
         [DllImport("libCustomMenu.dylib", CallingConvention = CallingConvention.Cdecl)]
         public static extern void viewZoomInAction();
 
+        /// <summary>
+        /// Views the zoom out action
+        /// </summary>
         [DllImport("libCustomMenu.dylib", CallingConvention = CallingConvention.Cdecl)]
         public static extern void viewZoomOutAction();
 
         // Declarar la librería compartida .dylib
+        /// <summary>
+        /// Sets the dot net callback using the specified callback
+        /// </summary>
+        /// <param name="callback">The callback</param>
         [DllImport("libCustomMenu.dylib")]
         public static extern void setDotNetCallback(Action callback);
 
         // Método que se ejecutará cuando el botón en Cocoa sea presionado
+        /// <summary>
+        /// Samples the action
+        /// </summary>
         public static void SampleAction()
         {
             Console.WriteLine("Called from .NET");
@@ -178,6 +206,10 @@ namespace Alis.Core.Sample
 
 
         // Declaración de la función C expuesta para definir el callback
+        /// <summary>
+        /// Sets the test callback using the specified callback
+        /// </summary>
+        /// <param name="callback">The callback</param>
         [DllImport("libCustomMenu.dylib", CallingConvention = CallingConvention.Cdecl)]
         public static extern void setTestCallback(Action callback);
 
@@ -619,6 +651,9 @@ namespace Alis.Core.Sample
         }
 
 
+        /// <summary>
+        /// Configures the menu
+        /// </summary>
         [Conditional("OSX")]
         private static void ConfigureMenu()
         {

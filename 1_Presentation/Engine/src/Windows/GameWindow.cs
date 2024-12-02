@@ -38,6 +38,9 @@ namespace Alis.App.Engine.Windows
     /// </summary>
     internal class GameWindow : IWindow
     {
+        /// <summary>
+        /// The gamepad
+        /// </summary>
         private static readonly string NameWindow = $"{FontAwesome5.Gamepad} Game";
 
         /// <summary>

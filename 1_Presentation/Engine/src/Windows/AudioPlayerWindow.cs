@@ -42,6 +42,9 @@ namespace Alis.App.Engine.Windows
     /// <seealso cref="IWindow" />
     public class AudioPlayerWindow : IWindow
     {
+        /// <summary>
+        /// The music
+        /// </summary>
         private static readonly string WindowName = $"{FontAwesome5.Music} Audio Player";
 
         /// <summary>

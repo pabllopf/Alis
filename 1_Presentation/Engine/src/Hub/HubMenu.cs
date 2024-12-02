@@ -53,6 +53,9 @@ namespace Alis.App.Engine.Hub
     /// </summary>
     public class HubMenu
     {
+        /// <summary>
+        /// The gallery
+        /// </summary>
         private readonly Gallery2 gallery = new Gallery2();
 
         /// <summary>
@@ -80,6 +83,9 @@ namespace Alis.App.Engine.Hub
         /// </summary>
         private readonly SpaceWork spaceWork;
 
+        /// <summary>
+        /// The search query
+        /// </summary>
         private string searchQuery = "";
 
         /// <summary>
@@ -87,12 +93,27 @@ namespace Alis.App.Engine.Hub
         /// </summary>
         private int selectedMenuItem;
 
+        /// <summary>
+        /// The selected project index
+        /// </summary>
         private int selectedProjectIndex = -1;
+        /// <summary>
+        /// The show documentation
+        /// </summary>
         private bool showDocumentation;
+        /// <summary>
+        /// The show tips
+        /// </summary>
         private bool showTips;
 
+        /// <summary>
+        /// The show tutorials
+        /// </summary>
         private bool showTutorials;
 
+        /// <summary>
+        /// The show videos
+        /// </summary>
         private bool showVideos;
         //private string searchQuery = " ";  // Variable para el buscador
 
@@ -241,6 +262,9 @@ namespace Alis.App.Engine.Hub
             ImGui.PopStyleColor();
         }
 
+        /// <summary>
+        /// Learns the section
+        /// </summary>
         private void LearnSection()
         {
             // Header for the section
@@ -323,6 +347,9 @@ namespace Alis.App.Engine.Hub
         }
 
 // Display tutorials in a card-style layout
+        /// <summary>
+        /// Displays the tutorials
+        /// </summary>
         private void DisplayTutorials()
         {
             ImGui.Text("Step-by-Step Tutorials");
@@ -346,6 +373,9 @@ namespace Alis.App.Engine.Hub
         }
 
 // Display documentation with a search bar
+        /// <summary>
+        /// Displays the documentation
+        /// </summary>
         private void DisplayDocumentation()
         {
             string searchQuery = string.Empty;
@@ -370,6 +400,9 @@ namespace Alis.App.Engine.Hub
         }
 
 // Display videos as clickable thumbnails
+        /// <summary>
+        /// Displays the videos
+        /// </summary>
         private void DisplayVideos()
         {
             ImGui.Text("Learning Videos");
@@ -392,6 +425,9 @@ namespace Alis.App.Engine.Hub
         }
 
 // Display random tips
+        /// <summary>
+        /// Displays the tips
+        /// </summary>
         private void DisplayTips()
         {
             List<string> tips = new List<string>
@@ -412,6 +448,9 @@ namespace Alis.App.Engine.Hub
 // Helper class for learning resources
 
 
+        /// <summary>
+        /// Installses the editor section
+        /// </summary>
         private void InstallsEditorSection()
         {
             // Display a header for the section
@@ -491,24 +530,39 @@ namespace Alis.App.Engine.Hub
             }
         }
 
+        /// <summary>
+        /// Installs the new version
+        /// </summary>
         private void InstallNewVersion()
         {
             // Logic to handle installing new versions
             Console.WriteLine("Install New Version button clicked.");
         }
 
+        /// <summary>
+        /// Reveals the in finder using the specified path
+        /// </summary>
+        /// <param name="path">The path</param>
         private void RevealInFinder(string path)
         {
             // Open the installation path in Finder
             Process.Start(new ProcessStartInfo("open", path) {UseShellExecute = true});
         }
 
+        /// <summary>
+        /// Opens the in terminal using the specified path
+        /// </summary>
+        /// <param name="path">The path</param>
         private void OpenInTerminal(string path)
         {
             // Open the installation path in Terminal
             Process.Start(new ProcessStartInfo("open", "-a Terminal " + path) {UseShellExecute = true});
         }
 
+        /// <summary>
+        /// Deletes the installation using the specified path
+        /// </summary>
+        /// <param name="path">The path</param>
         private void DeleteInstallation(string path)
         {
             // Logic to delete the installation
@@ -689,11 +743,18 @@ namespace Alis.App.Engine.Hub
             ImGui.PopStyleVar(1); // Restaurar estilo
         }
 
+        /// <summary>
+        /// Opens the project using the specified project
+        /// </summary>
+        /// <param name="project">The project</param>
         private void OpenProject(Project project)
         {
             Console.WriteLine($"Opening project: {project.Name}");
         }
 
+        /// <summary>
+        /// Renders the community section
+        /// </summary>
         private void RenderCommunitySection()
         {
             // Crear el menú de navegación horizontal

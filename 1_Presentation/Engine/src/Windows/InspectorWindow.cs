@@ -46,8 +46,14 @@ namespace Alis.App.Engine.Windows
     /// <seealso cref="IWindow" />
     public class InspectorWindow : IWindow
     {
+        /// <summary>
+        /// The info circle
+        /// </summary>
         private static readonly string NameWindow = $"{FontAwesome5.InfoCircle} Inspector";
 
+        /// <summary>
+        /// The selected game object
+        /// </summary>
         private GameObject _selectedGameObject;
 
         /// <summary>
@@ -125,6 +131,10 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         public SpaceWork SpaceWork { get; }
         
+        /// <summary>
+        /// Renders the component properties using the specified component
+        /// </summary>
+        /// <param name="component">The component</param>
         private void RenderComponentProperties(AComponent component)
         {
             Type typeP = component.GetType();
@@ -170,6 +180,10 @@ namespace Alis.App.Engine.Windows
             }
         }
 
+        /// <summary>
+        /// Selects the game object using the specified game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
         public void SelectGameObject(GameObject gameObject)
         {
             _selectedGameObject = gameObject;

@@ -42,6 +42,9 @@ namespace Alis.App.Engine.Windows
     /// </summary>
     public class ConsoleWindow : IWindow
     {
+        /// <summary>
+        /// The terminal
+        /// </summary>
         private static readonly string NameWindow = $"{FontAwesome5.Terminal} Console";
 
         /// <summary>
