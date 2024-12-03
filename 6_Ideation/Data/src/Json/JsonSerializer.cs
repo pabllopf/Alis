@@ -3855,7 +3855,7 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 byte[] buffer = new byte[stream.Length];
                 # if NET9_0_OR_GREATER
-                stream.ReadExactly(buffer);
+                stream.ReadExactly(buffer, 0, buffer.Length);
                 # else
                 stream.Read(buffer, 0, buffer.Length);
                 #endif
@@ -3868,6 +3868,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
 
+        
         /// <summary>
         ///     Writes the base 64 stream using the specified writer
         /// </summary>
