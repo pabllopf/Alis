@@ -769,6 +769,7 @@ namespace Alis.App.Engine
             style.DisabledAlpha = 0.6f;
         }
 
+        
         /// <summary>
         ///     Renders the project
         /// </summary>
