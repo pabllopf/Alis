@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.4.7] - 2024-12-03
+### :sparkles: New Features
+- [`229012f`](https://github.com/pabllopf/Alis/commit/229012f584358973b3d5c33474f03cfd15e7a484) - add new main menus *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7e02036`](https://github.com/pabllopf/Alis/commit/7e020367d0d263d9b00e03618d6be35323f26f7a) - add shortcut *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`b066cfa`](https://github.com/pabllopf/Alis/commit/b066cfa0e48b91a65ee5316773bc46e10238fdb9) - refactor sln with clean refactor *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0ec841d`](https://github.com/pabllopf/Alis/commit/0ec841dff04f27ff5bb05afb2e3bd6e12dd767d9) - new menu on windows. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0f23bcc`](https://github.com/pabllopf/Alis/commit/0f23bccbff5609a2c9fa44d44002e00682afe64a) - pro check *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4878d9e`](https://github.com/pabllopf/Alis/commit/4878d9eac592abd20311f2d879520f2edd87ac03) - add compabilty to .net9.0 *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`3f35540`](https://github.com/pabllopf/Alis/commit/3f35540849d682e29403e21cbb011774c2d26422) - pro check *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`38395ec`](https://github.com/pabllopf/Alis/commit/38395eca2cb949827d00de04d8f82030012ae99e) - pro check all platforms *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e32b0f7`](https://github.com/pabllopf/Alis/commit/e32b0f73e26a00c8c3b5ab17843dcbd458cd8021) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e780477`](https://github.com/pabllopf/Alis/commit/e7804774beeefc51827e0e5cfe814185eacf47df) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`eed3672`](https://github.com/pabllopf/Alis/commit/eed367224ba3e3c2f55c1f0086ac6046a8048454) - pro check ReadExactly method *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1f5135e`](https://github.com/pabllopf/Alis/commit/1f5135e3d6eab41324440caac351180c9afcd464) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`753c25a`](https://github.com/pabllopf/Alis/commit/753c25aa7512751193be09d4058443591b77a032) - pro check all and fix .net warning *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`73784b1`](https://github.com/pabllopf/Alis/commit/73784b1727b12a3f8839bceb6fbf0277ebcf4c55) - pro check windows network *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.4.6] - 2024-12-01
 ### :sparkles: New Features
 - [`14d5645`](https://github.com/pabllopf/Alis/commit/14d5645d089b75a5fa41840ff347a6ae34a3b243) - crete simple hub to engine *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -3676,3 +3698,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [v0.4.5]: https://github.com/pabllopf/Alis/compare/v0.4.4...v0.4.5
 [v0.4.6]: https://github.com/pabllopf/Alis/compare/v0.4.5...v0.4.6
+[v0.4.7]: https://github.com/pabllopf/Alis/compare/v0.4.6...v0.4.7
