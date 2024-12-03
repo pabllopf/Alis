@@ -52,9 +52,9 @@ namespace Alis.Sample.Snake
                 .Create()
                 .Settings(setting => setting
                     .General(general => general
-                        .Name("Pong")
+                        .Name("Snake")
                         .Author("Pablo Perdomo Falcón")
-                        .Description("Pong game")
+                        .Description("A simple snake game")
                         .License("GNU General Public License v3.0")
                         .Icon("app.bmp")
                         .Build())
