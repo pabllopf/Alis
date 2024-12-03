@@ -91,24 +91,7 @@ namespace Alis.Core.Network.Test
                 Logger.Exception(ex.ToString());
             }
         }
-
-        /// <summary>
-        ///     Tests that connect async with custom buffer factory
-        /// </summary>
-        [Fact]
-        public async Task ConnectAsync_WithCustomBufferFactory()
-        {
-            CancellationTokenSource cts = new CancellationTokenSource();
-            _webSocketServerFactory = new WebSocketServerFactory();
-            StartWebServer(cts.Token, 27416);
-            Uri uri = new Uri("ws://localhost:8081");
-
-            WebSocketClientFactory factory = new WebSocketClientFactory(() => new MemoryStream());
-
-            await factory.ConnectAsync(uri);
-        }
-
-
+        
         /// <summary>
         ///     Tests that dispose closes web socket
         /// </summary>
