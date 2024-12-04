@@ -214,6 +214,8 @@ namespace Alis.Core.Ecs.System.Scope
             }
 
             runtime.OnDispatchEvents();
+            runtime.OnProcessPendingChanges();
+            
             runtime.OnPhysicUpdate();
             runtime.OnBeforeUpdate();
             runtime.OnUpdate();
