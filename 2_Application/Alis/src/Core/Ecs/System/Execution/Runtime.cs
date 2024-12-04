@@ -112,6 +112,8 @@ namespace Alis.Core.Ecs.System.Execution
         ///     Ons the after update
         /// </summary>
         public void OnAfterUpdate() => runtimes.ForEach(x => x.OnAfterUpdate());
+        
+        public void OnProcessPendingChanges() => runtimes.ForEach(x => x.OnProcessPendingChanges());
 
         /// <summary>
         ///     Ons the before fixed update

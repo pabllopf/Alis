@@ -73,6 +73,8 @@ namespace Alis.Core.Ecs.System.Execution
         ///     Afters the update
         /// </summary>
         public void OnAfterUpdate();
+        
+        public void OnProcessPendingChanges();
 
         /// <summary>
         ///     Ons the before fixed update

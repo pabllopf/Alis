@@ -106,11 +106,13 @@ namespace Alis.Core.Ecs.System.Scope
                 }
 
                 runtime.OnDispatchEvents();
+                runtime.OnProcessPendingChanges();
+                
                 runtime.OnPhysicUpdate();
                 runtime.OnBeforeUpdate();
                 runtime.OnUpdate();
                 runtime.OnAfterUpdate();
-
+                
                 while (accumulator >= timeManager.Configuration.FixedTimeStep)
                 {
                     timeManager.InFixedTimeStep = true;

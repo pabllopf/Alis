@@ -63,6 +63,8 @@ namespace Alis.Core.Ecs.Entity
             Tag = GetType().Name;
             Transform = new Transform(new Vector2(0, 0), 0, new Vector2(1, 1));
             Components = new List<AComponent>();
+            PendingComponentsToAdd = new Stack<AComponent>();
+            PendingComponentsToRemove = new Stack<AComponent>();
         }
 
         /// <summary>
@@ -82,6 +84,8 @@ namespace Alis.Core.Ecs.Entity
             Tag = tag;
             Transform = transform;
             Components = new List<AComponent>();
+            PendingComponentsToAdd = new Stack<AComponent>();
+            PendingComponentsToRemove = new Stack<AComponent>();
         }
 
         /// <summary>
@@ -102,6 +106,8 @@ namespace Alis.Core.Ecs.Entity
             Transform = transform;
             Components = components;
             components.ForEach(i => i.Attach(this));
+            PendingComponentsToAdd = new Stack<AComponent>();
+            PendingComponentsToRemove = new Stack<AComponent>();
         }
 
         /// <summary>
@@ -145,7 +151,13 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         [JsonPropertyName("_Components_")]
         public List<AComponent> Components { get; set; }
-
+        
+        [JsonIgnore]
+        public Stack<AComponent> PendingComponentsToAdd { get; }
+        
+        [JsonIgnore]
+        public Stack<AComponent> PendingComponentsToRemove { get; }
+        
         /// <summary>
         ///     Gets or sets the value of the is static
         /// </summary>
@@ -159,10 +171,9 @@ namespace Alis.Core.Ecs.Entity
         /// <param name="value">The component</param>
         public void Add<T>(T value) where T : AComponent
         {
-            if (!Components.Contains(value))
+            if (!PendingComponentsToAdd.Contains(value) && !Components.Contains(value))
             {
-                value.Attach(this);
-                Components.Add(value);
+                PendingComponentsToAdd.Push(value);
             }
         }
 
@@ -173,12 +184,12 @@ namespace Alis.Core.Ecs.Entity
         /// <param name="value">The component</param>
         public void Remove<T>(T value) where T : AComponent
         {
-            if (Components.Contains(value))
+            if (Components.Contains(value) && !PendingComponentsToRemove.Contains(value))
             {
-                Components.Remove(value);
+                PendingComponentsToRemove.Push(value);
             }
         }
-
+        
         /// <summary>
         ///     Gets this instance
         /// </summary>
@@ -289,6 +300,44 @@ namespace Alis.Core.Ecs.Entity
             {
                 component.OnAfterUpdate();
             }
+        }
+
+        public void OnProcessPendingChanges()
+        {
+            int count = PendingComponentsToAdd.Count;
+            
+            while (PendingComponentsToAdd.Count > 0)
+            {
+                AComponent component = PendingComponentsToAdd.Pop();
+                component.Attach(this);
+                Components.Add(component);
+            }
+            
+            while (PendingComponentsToRemove.Count > 0)
+            {
+                AComponent component = PendingComponentsToRemove.Pop();
+                component.OnStop();
+                component.OnExit();
+                Components.Remove(component);
+            }
+            
+            if (count > 0)
+            {
+                foreach (AComponent component in Components)
+                {
+                    component.OnInit();
+                }
+                foreach (AComponent component in Components)
+                {
+                    component.OnAwake();
+                }
+
+                foreach (AComponent component in Components)
+                {
+                    component.OnStart();
+                }
+            }
+            
         }
 
         /// <summary>

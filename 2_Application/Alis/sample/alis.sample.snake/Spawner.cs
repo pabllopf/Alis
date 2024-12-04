@@ -130,10 +130,14 @@ namespace Alis.Sample.Snake
                 float y = (float) (random.NextDouble() * 15 - 7);
 
                 BoxCollider collider = food.Get<BoxCollider>();
-                collider.Body.Position = new Vector2(x, y);
+                if (collider != null)
+                {
+                    collider.Body.Position = new Vector2(x, y);
 
-                food.IsEnable = true;
-                _currentFoodIndex = (_currentFoodIndex + 1) % _foodPool.Count;
+                    food.IsEnable = true;
+                    _currentFoodIndex = (_currentFoodIndex + 1) % _foodPool.Count;
+                }
+                
             }
         }
     }

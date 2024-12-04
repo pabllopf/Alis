@@ -140,6 +140,8 @@ namespace Alis.Core.Ecs.System.Manager
         /// </summary>
         public virtual void OnAfterUpdate() => Logger.Trace("Manager after update.");
 
+        public virtual void OnProcessPendingChanges() => Logger.Trace("Manager process pending changes.");
+        
         /// <summary>
         ///     Ons the before fixed update
         /// </summary>
