@@ -43,6 +43,9 @@ namespace Alis.App.Engine.Menus
     public class BottomMenu : IMenu
     {
         // Variable que controla la altura del menú inferior
+        /// <summary>
+        /// The bottom menu height
+        /// </summary>
         private readonly float bottomMenuHeight = 10.0f;
 
         /// <summary>

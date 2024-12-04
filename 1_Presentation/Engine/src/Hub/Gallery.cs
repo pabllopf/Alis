@@ -33,8 +33,14 @@ using Alis.Core.Aspect.Data.Resource;
 
 namespace Alis.App.Engine.Hub
 {
+    /// <summary>
+    /// The gallery class
+    /// </summary>
     public class Gallery
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Gallery"/> class
+        /// </summary>
         public Gallery()
         {
             Random rand = new Random();
@@ -77,9 +83,20 @@ namespace Alis.App.Engine.Hub
             FillSmallRemainingGaps(containerWidth, containerHeight, rand, imageOptions, board);
         }
 
+        /// <summary>
+        /// Gets or sets the value of the items
+        /// </summary>
         public List<GalleryItem> Items { get; set; }
 
         // Método para rellenar huecos con cajas de 100x100
+        /// <summary>
+        /// Fills the remaining gaps using the specified container width
+        /// </summary>
+        /// <param name="containerWidth">The container width</param>
+        /// <param name="containerHeight">The container height</param>
+        /// <param name="rand">The rand</param>
+        /// <param name="imageOptions">The image options</param>
+        /// <param name="board">The board</param>
         private void FillRemainingGaps(int containerWidth, int containerHeight, Random rand, string[] imageOptions, Board board)
         {
             // Seguir buscando huecos mientras haya espacio
@@ -105,6 +122,14 @@ namespace Alis.App.Engine.Hub
         }
 
         // Método para rellenar huecos con cajas de 50x50
+        /// <summary>
+        /// Fills the small remaining gaps using the specified container width
+        /// </summary>
+        /// <param name="containerWidth">The container width</param>
+        /// <param name="containerHeight">The container height</param>
+        /// <param name="rand">The rand</param>
+        /// <param name="imageOptions">The image options</param>
+        /// <param name="board">The board</param>
         private void FillSmallRemainingGaps(int containerWidth, int containerHeight, Random rand, string[] imageOptions, Board board)
         {
             // Seguir buscando huecos mientras haya espacio
@@ -130,6 +155,12 @@ namespace Alis.App.Engine.Hub
         }
 
         // Función para obtener una imagen aleatoria
+        /// <summary>
+        /// Gets the random image path using the specified image options
+        /// </summary>
+        /// <param name="imageOptions">The image options</param>
+        /// <param name="rand">The rand</param>
+        /// <returns>The string</returns>
         private static string GetRandomImagePath(string[] imageOptions, Random rand)
         {
             int index = rand.Next(imageOptions.Length);

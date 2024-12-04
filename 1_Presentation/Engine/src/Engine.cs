@@ -518,6 +518,9 @@ namespace Alis.App.Engine
         }
 
 
+        /// <summary>
+        /// Sets the style
+        /// </summary>
         private void SetStyle()
         {
             ref ImGuiStyle style = ref ImGui.GetStyle();

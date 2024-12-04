@@ -137,8 +137,14 @@ namespace Alis.App.Engine.Core
             BottomMenu = new BottomMenu(this);
         }
 
+        /// <summary>
+        /// Gets the value of the is mac os
+        /// </summary>
         public bool IsMacOs => RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
 
+        /// <summary>
+        /// Gets or sets the value of the top menu mac
+        /// </summary>
         public TopMenuMac TopMenuMac { get; set; }
 
         /// <summary>
@@ -176,6 +182,9 @@ namespace Alis.App.Engine.Core
         /// </summary>
         internal TopMenu TopMenu { get; }
 
+        /// <summary>
+        /// Gets the value of the dock space menu
+        /// </summary>
         internal DockSpaceMenu DockSpaceMenu { get; }
 
         /// <summary>

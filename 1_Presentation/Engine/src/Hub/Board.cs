@@ -29,12 +29,29 @@
 
 namespace Alis.App.Engine.Hub
 {
+    /// <summary>
+    /// The board class
+    /// </summary>
     public class Board
     {
+        /// <summary>
+        /// The grid
+        /// </summary>
         private readonly bool[,] grid;
+        /// <summary>
+        /// The height
+        /// </summary>
         private readonly int height;
+        /// <summary>
+        /// The width
+        /// </summary>
         private readonly int width;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Board"/> class
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
         public Board(int width, int height)
         {
             this.width = width;
@@ -43,6 +60,10 @@ namespace Alis.App.Engine.Hub
         }
 
         // Verifica si hay espacio disponible en el tablero
+        /// <summary>
+        /// Describes whether this instance has space
+        /// </summary>
+        /// <returns>The bool</returns>
         public bool HasSpace()
         {
             for (int y = 0; y < height; y++)
@@ -60,6 +81,13 @@ namespace Alis.App.Engine.Hub
         }
 
         // Intenta colocar un item en el tablero, si es posible
+        /// <summary>
+        /// Describes whether this instance try place item
+        /// </summary>
+        /// <param name="itemWidth">The item width</param>
+        /// <param name="itemHeight">The item height</param>
+        /// <param name="position">The position</param>
+        /// <returns>The bool</returns>
         public bool TryPlaceItem(int itemWidth, int itemHeight, out (int x, int y) position)
         {
             position = (-1, -1);
@@ -83,6 +111,14 @@ namespace Alis.App.Engine.Hub
         }
 
         // Verifica si se puede colocar un item en la posición dada
+        /// <summary>
+        /// Describes whether this instance can place item
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="itemWidth">The item width</param>
+        /// <param name="itemHeight">The item height</param>
+        /// <returns>The bool</returns>
         private bool CanPlaceItem(int x, int y, int itemWidth, int itemHeight)
         {
             for (int i = 0; i < itemHeight; i++)
@@ -100,6 +136,13 @@ namespace Alis.App.Engine.Hub
         }
 
         // Coloca un item en la posición dada
+        /// <summary>
+        /// Places the item using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="itemWidth">The item width</param>
+        /// <param name="itemHeight">The item height</param>
         private void PlaceItem(int x, int y, int itemWidth, int itemHeight)
         {
             for (int i = 0; i < itemHeight; i++)

@@ -43,6 +43,9 @@ namespace Alis.App.Engine.Windows
     /// <seealso cref="IWindow" />
     public class AssetsWindow : IWindow
     {
+        /// <summary>
+        /// The folder open
+        /// </summary>
         private static readonly string WindowName = $"{FontAwesome5.FolderOpen} Assets";
 
         /// <summary>

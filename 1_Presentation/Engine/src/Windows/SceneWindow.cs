@@ -51,6 +51,9 @@ namespace Alis.App.Engine.Windows
     /// </summary>
     public class SceneWindow : IWindow
     {
+        /// <summary>
+        /// The hashtag
+        /// </summary>
         private static readonly string NameWindow = $"{FontAwesome5.Hashtag} Scene";
 
         /// <summary>
@@ -287,6 +290,9 @@ namespace Alis.App.Engine.Windows
             Console.WriteLine($"Imgui Version: {ImGui.GetVersion()}");
         }
 
+        /// <summary>
+        /// Renders this instance
+        /// </summary>
         public void Render()
         {
             // Ejecutar el método de vista previa del videojuego

@@ -33,11 +33,20 @@ using Alis.Core.Aspect.Data.Resource;
 
 namespace Alis.App.Engine.Hub
 {
+    /// <summary>
+    /// The gallery class
+    /// </summary>
     public class Gallery2
     {
+        /// <summary>
+        /// The items
+        /// </summary>
         public List<GalleryItem> Items;
 
         // Método para generar una lista de 10 elementos de tipo GalleryItem
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Gallery2"/> class
+        /// </summary>
         public Gallery2()
         {
             Items = new List<GalleryItem>();

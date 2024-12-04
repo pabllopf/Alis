@@ -34,11 +34,20 @@ using Alis.Core.Aspect.Logging;
 
 namespace Alis.App.Engine.Menus
 {
+    /// <summary>
+    /// The top menu action class
+    /// </summary>
     public static class TopMenuAction
     {
         // Diccionario para mapear las acciones del menú con sus métodos
+        /// <summary>
+        /// The action
+        /// </summary>
         private static readonly Dictionary<string, Action> MenuActions = new Dictionary<string, Action>();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TopMenuAction"/> class
+        /// </summary>
         static TopMenuAction()
         {
             if (MenuActions.Count > 0) return;
@@ -134,6 +143,10 @@ namespace Alis.App.Engine.Menus
             MenuActions.Add("Report Bug", ReportBug);
         }
 
+        /// <summary>
+        /// Executes the menu action using the specified action
+        /// </summary>
+        /// <param name="action">The action</param>
         public static void ExecuteMenuAction(string action)
         {
             if (MenuActions.TryGetValue(action, out var menuAction))
@@ -147,343 +160,598 @@ namespace Alis.App.Engine.Menus
         }
 
         // Métodos de las acciones del menú
+        /// <summary>
+        /// Abouts the alis
+        /// </summary>
         private static void AboutAlis()
         {
             Logger.Info("About Alis");
         }
 
+        /// <summary>
+        /// Preferenceses
+        /// </summary>
         private static void Preferences()
         {
         }
 
+        /// <summary>
+        /// Quits the alis
+        /// </summary>
         private static void QuitAlis()
         {
         }
 
+        /// <summary>
+        /// News the scene
+        /// </summary>
         private static void NewScene()
         {
         }
 
+        /// <summary>
+        /// Opens the scene
+        /// </summary>
         private static void OpenScene()
         {
         }
 
+        /// <summary>
+        /// Opens the recent scene
+        /// </summary>
         private static void OpenRecentScene()
         {
         }
 
+        /// <summary>
+        /// Saves the scene
+        /// </summary>
         private static void SaveScene()
         {
         }
 
+        /// <summary>
+        /// Saves the as scene
+        /// </summary>
         private static void SaveAsScene()
         {
         }
 
+        /// <summary>
+        /// Saves the as scene template
+        /// </summary>
         private static void SaveAsSceneTemplate()
         {
         }
 
+        /// <summary>
+        /// News the project
+        /// </summary>
         private static void NewProject()
         {
         }
 
+        /// <summary>
+        /// Opens the project
+        /// </summary>
         private static void OpenProject()
         {
         }
 
+        /// <summary>
+        /// Saves the project
+        /// </summary>
         private static void SaveProject()
         {
         }
 
+        /// <summary>
+        /// Builds the profiles
+        /// </summary>
         private static void BuildProfiles()
         {
         }
 
+        /// <summary>
+        /// Builds the and run
+        /// </summary>
         private static void BuildAndRun()
         {
         }
 
+        /// <summary>
+        /// Closes
+        /// </summary>
         private static void Close()
         {
         }
 
+        /// <summary>
+        /// Undoes
+        /// </summary>
         private static void Undo()
         {
         }
 
+        /// <summary>
+        /// Redoes
+        /// </summary>
         private static void Redo()
         {
         }
 
+        /// <summary>
+        /// Undoes the history
+        /// </summary>
         private static void UndoHistory()
         {
         }
 
+        /// <summary>
+        /// Selects the all
+        /// </summary>
         private static void SelectAll()
         {
         }
 
+        /// <summary>
+        /// Deselects the all
+        /// </summary>
         private static void DeselectAll()
         {
         }
 
+        /// <summary>
+        /// Selects the children
+        /// </summary>
         private static void SelectChildren()
         {
         }
 
+        /// <summary>
+        /// Selects the prefab root
+        /// </summary>
         private static void SelectPrefabRoot()
         {
         }
 
+        /// <summary>
+        /// Inverts the selection
+        /// </summary>
         private static void InvertSelection()
         {
         }
 
+        /// <summary>
+        /// Selections the groups
+        /// </summary>
         private static void SelectionGroups()
         {
         }
 
+        /// <summary>
+        /// Cuts
+        /// </summary>
         private static void Cut()
         {
         }
 
+        /// <summary>
+        /// Copies
+        /// </summary>
         private static void Copy()
         {
         }
 
+        /// <summary>
+        /// Pastes
+        /// </summary>
         private static void Paste()
         {
         }
 
+        /// <summary>
+        /// Pastes the special
+        /// </summary>
         private static void PasteSpecial()
         {
         }
 
+        /// <summary>
+        /// Duplicates
+        /// </summary>
         private static void Duplicate()
         {
         }
 
+        /// <summary>
+        /// Renames
+        /// </summary>
         private static void Rename()
         {
         }
 
+        /// <summary>
+        /// Deletes
+        /// </summary>
         private static void Delete()
         {
         }
 
+        /// <summary>
+        /// Frames the selected in scene
+        /// </summary>
         private static void FrameSelectedInScene()
         {
         }
 
+        /// <summary>
+        /// Frames the selected in window
+        /// </summary>
         private static void FrameSelectedInWindow()
         {
         }
 
+        /// <summary>
+        /// Locks the view to selected
+        /// </summary>
         private static void LockViewToSelected()
         {
         }
 
+        /// <summary>
+        /// Searches
+        /// </summary>
         private static void Search()
         {
         }
 
+        /// <summary>
+        /// Plays
+        /// </summary>
         private static void Play()
         {
         }
 
+        /// <summary>
+        /// Pauses
+        /// </summary>
         private static void Pause()
         {
         }
 
+        /// <summary>
+        /// Steps
+        /// </summary>
         private static void Step()
         {
         }
 
+        /// <summary>
+        /// Projects the settings
+        /// </summary>
         private static void ProjectSettings()
         {
         }
 
+        /// <summary>
+        /// Clears the all player prefs
+        /// </summary>
         private static void ClearAllPlayerPrefs()
         {
         }
 
+        /// <summary>
+        /// Lightings
+        /// </summary>
         private static void Lighting()
         {
         }
 
+        /// <summary>
+        /// Graphicses the tier
+        /// </summary>
         private static void GraphicsTier()
         {
         }
 
+        /// <summary>
+        /// Renderings
+        /// </summary>
         private static void Rendering()
         {
         }
 
+        /// <summary>
+        /// Creates
+        /// </summary>
         private static void Create()
         {
         }
 
+        /// <summary>
+        /// Imports the new asset
+        /// </summary>
         private static void ImportNewAsset()
         {
         }
 
+        /// <summary>
+        /// Imports the package
+        /// </summary>
         private static void ImportPackage()
         {
         }
 
+        /// <summary>
+        /// Exports the package
+        /// </summary>
         private static void ExportPackage()
         {
         }
 
+        /// <summary>
+        /// Finds the references in scene
+        /// </summary>
         private static void FindReferencesInScene()
         {
         }
 
+        /// <summary>
+        /// Opens the asset
+        /// </summary>
         private static void OpenAsset()
         {
         }
 
+        /// <summary>
+        /// Reimports
+        /// </summary>
         private static void Reimport()
         {
         }
 
+        /// <summary>
+        /// Reimports the all
+        /// </summary>
         private static void ReimportAll()
         {
         }
 
+        /// <summary>
+        /// Refreshes
+        /// </summary>
         private static void Refresh()
         {
         }
 
+        /// <summary>
+        /// Removes the unused assets
+        /// </summary>
         private static void RemoveUnusedAssets()
         {
         }
 
+        /// <summary>
+        /// Creates the empty
+        /// </summary>
         private static void CreateEmpty()
         {
         }
 
+        /// <summary>
+        /// Creates the empty child
+        /// </summary>
         private static void CreateEmptyChild()
         {
         }
 
+        /// <summary>
+        /// Creates the 2 d object
+        /// </summary>
         private static void Create2DObject()
         {
         }
 
+        /// <summary>
+        /// Creates the ui
+        /// </summary>
         private static void CreateUI()
         {
         }
 
+        /// <summary>
+        /// Creates the light
+        /// </summary>
         private static void CreateLight()
         {
         }
 
+        /// <summary>
+        /// Creates the audio
+        /// </summary>
         private static void CreateAudio()
         {
         }
 
+        /// <summary>
+        /// Creates the tilemap
+        /// </summary>
         private static void CreateTilemap()
         {
         }
 
+        /// <summary>
+        /// Aligns the with view
+        /// </summary>
         private static void AlignWithView()
         {
         }
 
+        /// <summary>
+        /// Aligns the view to selected
+        /// </summary>
         private static void AlignViewToSelected()
         {
         }
 
+        /// <summary>
+        /// Moves the to view
+        /// </summary>
         private static void MoveToView()
         {
         }
 
+        /// <summary>
+        /// Renames the game object
+        /// </summary>
         private static void RenameGameObject()
         {
         }
 
+        /// <summary>
+        /// Duplicates the game object
+        /// </summary>
         private static void DuplicateGameObject()
         {
         }
 
+        /// <summary>
+        /// Deletes the game object
+        /// </summary>
         private static void DeleteGameObject()
         {
         }
 
+        /// <summary>
+        /// Adds the component
+        /// </summary>
         private static void AddComponent()
         {
         }
 
+        /// <summary>
+        /// Physicses the 2 d
+        /// </summary>
         private static void Physics2D()
         {
         }
 
+        /// <summary>
+        /// Renderings the 2 d
+        /// </summary>
         private static void Rendering2D()
         {
         }
 
+        /// <summary>
+        /// Audioes the component
+        /// </summary>
         private static void AudioComponent()
         {
         }
 
+        /// <summary>
+        /// Uis the component
+        /// </summary>
         private static void UIComponent()
         {
         }
 
+        /// <summary>
+        /// Scriptses the component
+        /// </summary>
         private static void ScriptsComponent()
         {
         }
 
+        /// <summary>
+        /// Sprites the editor
+        /// </summary>
         private static void SpriteEditor()
         {
         }
 
+        /// <summary>
+        /// Tilemaps the editor
+        /// </summary>
         private static void TilemapEditor()
         {
         }
 
+        /// <summary>
+        /// Animations the editor
+        /// </summary>
         private static void AnimationEditor()
         {
         }
 
+        /// <summary>
+        /// Customs the tools
+        /// </summary>
         private static void CustomTools()
         {
         }
 
+        /// <summary>
+        /// Generals the window
+        /// </summary>
         private static void GeneralWindow()
         {
         }
 
+        /// <summary>
+        /// Scenes the view window
+        /// </summary>
         private static void SceneViewWindow()
         {
         }
 
+        /// <summary>
+        /// Games the view window
+        /// </summary>
         private static void GameViewWindow()
         {
         }
 
+        /// <summary>
+        /// Inspectors the window
+        /// </summary>
         private static void InspectorWindow()
         {
         }
 
+        /// <summary>
+        /// Hierarchies the window
+        /// </summary>
         private static void HierarchyWindow()
         {
         }
 
+        /// <summary>
+        /// Consoles the window
+        /// </summary>
         private static void ConsoleWindow()
         {
         }
 
+        /// <summary>
+        /// Alises the manual
+        /// </summary>
         private static void AlisManual()
         {
         }
 
+        /// <summary>
+        /// Apis the reference
+        /// </summary>
         private static void APIReference()
         {
         }
 
+        /// <summary>
+        /// Reports the bug
+        /// </summary>
         private static void ReportBug()
         {
         }
