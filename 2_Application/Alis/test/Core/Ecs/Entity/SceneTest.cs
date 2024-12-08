@@ -169,6 +169,7 @@ namespace Alis.Test.Core.Ecs.Entity
             GameObject gameObject = new GameObject();
             VideoGame videoGame = new VideoGame(context);
             scene.Add(gameObject);
+            scene.OnProcessPendingChanges();
             scene.SetContext(context);
             Assert.Equal(context.GetType(), gameObject.Context.GetType());
         }
