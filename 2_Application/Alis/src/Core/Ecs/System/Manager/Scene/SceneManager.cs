@@ -371,6 +371,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
                 DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
                 SerializationOptions = JsonSerializationOptions.Default
             });
+            CurrentScene.SetContext(Context);
             CurrentScene.OnInit();
             CurrentScene.OnAwake();
             CurrentScene.OnStart();

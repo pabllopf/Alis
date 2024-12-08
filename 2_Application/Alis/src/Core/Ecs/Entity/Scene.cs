@@ -49,8 +49,8 @@ namespace Alis.Core.Ecs.Entity
             Id = Guid.NewGuid().ToString();
             Tag = GetType().Name;
             GameObjects = new List<GameObject>();
-            PendingGameObjectsToAdd = new Stack<GameObject>();
-            PendingGameObjectsToRemove = new Stack<GameObject>();
+            PendingGameObjectsToAdd = new List<GameObject>();
+            PendingGameObjectsToRemove = new List<GameObject>();
         }
 
         /// <summary>
@@ -68,8 +68,8 @@ namespace Alis.Core.Ecs.Entity
             Id = id;
             Tag = tag;
             GameObjects = new List<GameObject>();
-            PendingGameObjectsToAdd = new Stack<GameObject>();
-            PendingGameObjectsToRemove = new Stack<GameObject>();
+            PendingGameObjectsToAdd = new List<GameObject>();
+            PendingGameObjectsToRemove = new List<GameObject>();
         }
 
         /// <summary>
@@ -88,8 +88,8 @@ namespace Alis.Core.Ecs.Entity
             Tag = tag;
             GameObjects = gameObjects;
             GameObjects.ForEach(i => i.SetContext(Context));
-            PendingGameObjectsToAdd = new Stack<GameObject>();
-            PendingGameObjectsToRemove = new Stack<GameObject>();
+            PendingGameObjectsToAdd = new List<GameObject>();
+            PendingGameObjectsToRemove = new List<GameObject>();
         }
 
         /// <summary>
@@ -129,11 +129,11 @@ namespace Alis.Core.Ecs.Entity
         [JsonPropertyName("_GameObjects_")]
         public List<GameObject> GameObjects { get; set; }
         
-        [JsonIgnore]
-        public Stack<GameObject> PendingGameObjectsToAdd { get; }
+        [JsonPropertyName("_PendingGameObjectsToAdd_")]
+        public List<GameObject> PendingGameObjectsToAdd { get; }
 
-        [JsonIgnore]
-        public Stack<GameObject> PendingGameObjectsToRemove  { get; }
+        [JsonPropertyName("_PendingGameObjectsToRemove_")]
+        public List<GameObject> PendingGameObjectsToRemove  { get; }
         
         /// <summary>
         ///     Ons the enable
@@ -204,14 +204,16 @@ namespace Alis.Core.Ecs.Entity
         {
             while (PendingGameObjectsToAdd.Count > 0)
             {
-                GameObject gameObject = PendingGameObjectsToAdd.Pop();
+                GameObject gameObject = PendingGameObjectsToAdd[0];
+                PendingGameObjectsToAdd.RemoveAt(0);
                 gameObject.SetContext(Context);
                 GameObjects.Add(gameObject);
             }
             
             while (PendingGameObjectsToRemove.Count > 0)
             {
-                GameObject gameObject = PendingGameObjectsToRemove.Pop();
+                GameObject gameObject = PendingGameObjectsToRemove[0];
+                PendingGameObjectsToRemove.RemoveAt(0);
                 GameObjects.Remove(gameObject);
             }
             
@@ -349,7 +351,7 @@ namespace Alis.Core.Ecs.Entity
             if (!PendingGameObjectsToAdd.Contains(value) && !GameObjects.Contains(value))
             {
                 value.SetContext(Context);
-                PendingGameObjectsToAdd.Push(value);
+                PendingGameObjectsToAdd.Add(value);
             }
         }
 
@@ -362,7 +364,7 @@ namespace Alis.Core.Ecs.Entity
         {
             if (GameObjects.Contains(value) && !PendingGameObjectsToRemove.Contains(value))
             {
-                PendingGameObjectsToRemove.Push(value);
+                PendingGameObjectsToRemove.Remove(value);
             }
         }
 
