@@ -63,8 +63,8 @@ namespace Alis.Core.Ecs.Entity
             Tag = GetType().Name;
             Transform = new Transform(new Vector2(0, 0), 0, new Vector2(1, 1));
             Components = new List<AComponent>();
-            PendingComponentsToAdd = new Stack<AComponent>();
-            PendingComponentsToRemove = new Stack<AComponent>();
+            PendingComponentsToAdd = new List<AComponent>();
+            PendingComponentsToRemove = new List<AComponent>();
         }
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Alis.Core.Ecs.Entity
             Tag = tag;
             Transform = transform;
             Components = new List<AComponent>();
-            PendingComponentsToAdd = new Stack<AComponent>();
-            PendingComponentsToRemove = new Stack<AComponent>();
+            PendingComponentsToAdd = new List<AComponent>();
+            PendingComponentsToRemove = new List<AComponent>();
         }
 
         /// <summary>
@@ -106,8 +106,8 @@ namespace Alis.Core.Ecs.Entity
             Transform = transform;
             Components = components;
             components.ForEach(i => i.Attach(this));
-            PendingComponentsToAdd = new Stack<AComponent>();
-            PendingComponentsToRemove = new Stack<AComponent>();
+            PendingComponentsToAdd = new List<AComponent>();
+            PendingComponentsToRemove = new List<AComponent>();
         }
 
         /// <summary>
@@ -152,11 +152,11 @@ namespace Alis.Core.Ecs.Entity
         [JsonPropertyName("_Components_")]
         public List<AComponent> Components { get; set; }
         
-        [JsonIgnore]
-        public Stack<AComponent> PendingComponentsToAdd { get; }
+        [JsonPropertyName("_PendingComponentsToAdd_")]
+        public List<AComponent> PendingComponentsToAdd { get; }
         
-        [JsonIgnore]
-        public Stack<AComponent> PendingComponentsToRemove { get; }
+        [JsonPropertyName("_PendingComponentsToRemove_")]
+        public List<AComponent> PendingComponentsToRemove { get; }
         
         /// <summary>
         ///     Gets or sets the value of the is static
@@ -173,7 +173,7 @@ namespace Alis.Core.Ecs.Entity
         {
             if (!PendingComponentsToAdd.Contains(value) && !Components.Contains(value))
             {
-                PendingComponentsToAdd.Push(value);
+                PendingComponentsToAdd.Add(value);
             }
         }
 
@@ -186,7 +186,7 @@ namespace Alis.Core.Ecs.Entity
         {
             if (Components.Contains(value) && !PendingComponentsToRemove.Contains(value))
             {
-                PendingComponentsToRemove.Push(value);
+                PendingComponentsToRemove.Remove(value);
             }
         }
         
@@ -305,28 +305,31 @@ namespace Alis.Core.Ecs.Entity
         public void OnProcessPendingChanges()
         {
             int count = PendingComponentsToAdd.Count;
-            
+
             while (PendingComponentsToAdd.Count > 0)
             {
-                AComponent component = PendingComponentsToAdd.Pop();
+                AComponent component = PendingComponentsToAdd[0];
+                PendingComponentsToAdd.RemoveAt(0);
                 component.Attach(this);
                 Components.Add(component);
             }
-            
+
             while (PendingComponentsToRemove.Count > 0)
             {
-                AComponent component = PendingComponentsToRemove.Pop();
+                AComponent component = PendingComponentsToRemove[0];
+                PendingComponentsToRemove.RemoveAt(0);
                 component.OnStop();
                 component.OnExit();
                 Components.Remove(component);
             }
-            
+
             if (count > 0)
             {
                 foreach (AComponent component in Components)
                 {
                     component.OnInit();
                 }
+
                 foreach (AComponent component in Components)
                 {
                     component.OnAwake();
@@ -337,7 +340,6 @@ namespace Alis.Core.Ecs.Entity
                     component.OnStart();
                 }
             }
-            
         }
 
         /// <summary>
