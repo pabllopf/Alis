@@ -149,7 +149,7 @@ namespace Alis.App.Engine.Menus
         /// <param name="action">The action</param>
         public static void ExecuteMenuAction(string action)
         {
-            if (MenuActions.TryGetValue(action, out var menuAction))
+            if (MenuActions.TryGetValue(action, out Action menuAction))
             {
                 menuAction.Invoke();
             }

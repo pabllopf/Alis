@@ -377,6 +377,31 @@ namespace Alis.Core.Ecs.Entity
         {
             return GameObjects.Find(i => i is T) as T;
         }
+        
+        public GameObject Get(string name)
+        {
+            return GameObjects.Find(i => i.Name == name);
+        }
+        
+        public GameObject Get(Guid id)
+        {
+            return GameObjects.Find(i => i.Id == id.ToString());
+        }
+        
+        public GameObject Get(int index)
+        {
+            return GameObjects[index];
+        }
+        
+        public List<GameObject> GetAll()
+        {
+            return GameObjects;
+        }
+        
+        public GameObject GetByTag(string tag)
+        {
+            return GameObjects.Find(i => i.Tag == tag);
+        }
 
         /// <summary>
         ///     Describes whether this instance contains

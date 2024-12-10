@@ -28,9 +28,11 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
@@ -56,6 +58,9 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         private static readonly string NameWindow = $"{FontAwesome5.Hashtag} Scene";
 
+        private bool isDragging = false;
+        private Vector2 previousMousePosition;
+
         /// <summary>
         ///     The pixel ptr
         /// </summary>
@@ -65,6 +70,9 @@ namespace Alis.App.Engine.Windows
         ///     The textureopen gl id
         /// </summary>
         private uint textureopenGlId;
+
+        private ActiveButton activeButton = ActiveButton.HandSpock;
+
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="SceneWindow" /> class
@@ -150,7 +158,7 @@ namespace Alis.App.Engine.Windows
                         .Add<GameObject>(gameObject => gameObject
                             .Name("tree-001")
                             .Transform(transform => transform
-                                .Position(100, 100)
+                                .Position(2, 2)
                                 .Scale(2, 2)
                                 .Rotation(0)
                                 .Build())
@@ -163,7 +171,7 @@ namespace Alis.App.Engine.Windows
                         .Add<GameObject>(gameObject => gameObject
                             .Name("tree-002")
                             .Transform(transform => transform
-                                .Position(400, 400)
+                                .Position(4, 4)
                                 .Scale(2, 2)
                                 .Rotation(0)
                                 .Build())
@@ -174,7 +182,7 @@ namespace Alis.App.Engine.Windows
                         .Add<GameObject>(gameObject => gameObject
                             .Name("tree-001")
                             .Transform(transform => transform
-                                .Position(-100, -100)
+                                .Position(-3, -3)
                                 .Scale(2, 2)
                                 .Rotation(0)
                                 .Build())
@@ -185,7 +193,7 @@ namespace Alis.App.Engine.Windows
                         .Add<GameObject>(gameObject => gameObject
                             .Name("tree-001")
                             .Transform(transform => transform
-                                .Position(-200, -200)
+                                .Position(-2, -2)
                                 .Scale(2, 2)
                                 .Rotation(0)
                                 .Build())
@@ -216,7 +224,7 @@ namespace Alis.App.Engine.Windows
                         .Add<GameObject>(gameObject => gameObject
                             .Name("tree-001")
                             .Transform(transform => transform
-                                .Position(100, 100)
+                                .Position(3, 3)
                                 .Scale(2, 2)
                                 .Rotation(0)
                                 .Build())
@@ -229,7 +237,7 @@ namespace Alis.App.Engine.Windows
                         .Add<GameObject>(gameObject => gameObject
                             .Name("tree-002")
                             .Transform(transform => transform
-                                .Position(400, 400)
+                                .Position(5, 5)
                                 .Scale(2, 2)
                                 .Rotation(0)
                                 .Build())
@@ -240,7 +248,7 @@ namespace Alis.App.Engine.Windows
                         .Add<GameObject>(gameObject => gameObject
                             .Name("tree-001")
                             .Transform(transform => transform
-                                .Position(-100, -100)
+                                .Position(-1, -1)
                                 .Scale(2, 2)
                                 .Rotation(0)
                                 .Build())
@@ -251,7 +259,7 @@ namespace Alis.App.Engine.Windows
                         .Add<GameObject>(gameObject => gameObject
                             .Name("tree-001")
                             .Transform(transform => transform
-                                .Position(-200, -200)
+                                .Position(-4, -4)
                                 .Scale(2, 2)
                                 .Rotation(0)
                                 .Build())
@@ -315,38 +323,123 @@ namespace Alis.App.Engine.Windows
                 // Renderizar el menú principal
                 if (ImGui.BeginMenuBar())
                 {
-                    if (ImGui.Button($"{FontAwesome5.HandSpock}"))
+                    // Botón HandSpock
+                    if (activeButton == ActiveButton.HandSpock)
                     {
-                        // Acción del botón HandSpock
+                        ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(0.2f, 0.5f, 0.8f, 1.0f)); // Color azul claro
+                        if (ImGui.Button($"{FontAwesome5.HandSpock}"))
+                        {
+                            activeButton = ActiveButton.None;
+                        }
+
+                        ImGui.PopStyleColor();
+                    }
+                    else
+                    {
+                        if (ImGui.Button($"{FontAwesome5.HandSpock}"))
+                        {
+                            activeButton = ActiveButton.HandSpock;
+                        }
                     }
 
-                    if (ImGui.Button($"{FontAwesome5.ArrowsAlt}"))
+                    // Botón ArrowsAlt
+                    if (activeButton == ActiveButton.ArrowsAlt)
                     {
-                        // Acción del botón ArrowsAlt
+                        ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(0.2f, 0.5f, 0.8f, 1.0f)); // Color azul claro
+                        if (ImGui.Button($"{FontAwesome5.ArrowsAlt}"))
+                        {
+                            activeButton = ActiveButton.None;
+                        }
+
+                        ImGui.PopStyleColor();
+                    }
+                    else
+                    {
+                        if (ImGui.Button($"{FontAwesome5.ArrowsAlt}"))
+                        {
+                            activeButton = ActiveButton.ArrowsAlt;
+                        }
                     }
 
-                    if (ImGui.Button($"{FontAwesome5.Cogs}"))
+                    // Botón Cogs
+                    if (activeButton == ActiveButton.Cogs)
                     {
-                        // Acción del botón Cogs
+                        ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(0.2f, 0.5f, 0.8f, 1.0f)); // Color azul claro
+                        if (ImGui.Button($"{FontAwesome5.Cogs}"))
+                        {
+                            activeButton = ActiveButton.None;
+                        }
+
+                        ImGui.PopStyleColor();
+                    }
+                    else
+                    {
+                        if (ImGui.Button($"{FontAwesome5.Cogs}"))
+                        {
+                            activeButton = ActiveButton.Cogs;
+                        }
                     }
 
-                    if (ImGui.Button($"{FontAwesome5.InfoCircle}"))
+                    // Botón InfoCircle
+                    if (activeButton == ActiveButton.InfoCircle)
                     {
-                        // Acción del botón InfoCircle
+                        ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(0.2f, 0.5f, 0.8f, 1.0f)); // Color azul claro
+                        if (ImGui.Button($"{FontAwesome5.InfoCircle}"))
+                        {
+                            activeButton = ActiveButton.None;
+                        }
+
+                        ImGui.PopStyleColor();
+                    }
+                    else
+                    {
+                        if (ImGui.Button($"{FontAwesome5.InfoCircle}"))
+                        {
+                            activeButton = ActiveButton.InfoCircle;
+                        }
                     }
 
-                    if (ImGui.Button($"{FontAwesome5.Tools}"))
+                    // Botón Tools
+                    if (activeButton == ActiveButton.Tools)
                     {
-                        // Acción del botón Tools
+                        ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(0.2f, 0.5f, 0.8f, 1.0f)); // Color azul claro
+                        if (ImGui.Button($"{FontAwesome5.Tools}"))
+                        {
+                            activeButton = ActiveButton.None;
+                        }
+
+                        ImGui.PopStyleColor();
+                    }
+                    else
+                    {
+                        if (ImGui.Button($"{FontAwesome5.Tools}"))
+                        {
+                            activeButton = ActiveButton.Tools;
+                        }
                     }
 
-                    if (ImGui.Button($"{FontAwesome5.User}"))
+                    // Botón User
+                    if (activeButton == ActiveButton.User)
                     {
-                        // Acción del botón User
+                        ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(0.2f, 0.5f, 0.8f, 1.0f)); // Color azul claro
+                        if (ImGui.Button($"{FontAwesome5.User}"))
+                        {
+                            activeButton = ActiveButton.None;
+                        }
+
+                        ImGui.PopStyleColor();
+                    }
+                    else
+                    {
+                        if (ImGui.Button($"{FontAwesome5.User}"))
+                        {
+                            activeButton = ActiveButton.User;
+                        }
                     }
 
                     ImGui.EndMenuBar();
                 }
+
 
 
                 // Obtener el tamaño disponible en el contenedor de ImGui
@@ -382,6 +475,52 @@ namespace Alis.App.Engine.Windows
                     new Vector2(1, 1), // Coordenada final (UV)
                     new Vector4(1, 1, 1, 1), // Color del multiplicador de la textura
                     new Vector4(0, 0, 0, 0)); // Sin borde
+            }
+
+            if (activeButton == ActiveButton.HandSpock)
+            {
+
+                // Detectar si estamos en la región de la escena
+                if (ImGui.IsItemHovered() && ImGui.IsMouseDown(ImGuiMouseButton.Right))
+                {
+                    Vector2 currentMousePosition = new Vector2(ImGui.GetMousePos().X, ImGui.GetMousePos().Y);
+
+                    if (!isDragging)
+                    {
+                        // Comenzar a arrastrar
+                        isDragging = true;
+                        previousMousePosition = currentMousePosition;
+                    }
+                    else
+                    {
+                        // Calcular el desplazamiento
+                        Vector2 delta = currentMousePosition - previousMousePosition;
+
+                        // Actualizar la cámara
+                        List<GameObject> gameObjects = SpaceWork.VideoGame.Context.SceneManager.CurrentScene.GameObjects;
+                        Camera camera = null;
+                        foreach (GameObject gameObject in gameObjects)
+                        {
+                            if (gameObject.Contains<Camera>())
+                            {
+                                camera = gameObject.Get<Camera>();
+                            }
+                        }
+
+                        if (camera != null)
+                        {
+                            camera.Position += new Vector2(-delta.X, delta.Y) * 0.1f; // Escalar para ajustar sensibilidad
+                        }
+
+                        // Actualizar posición anterior
+                        previousMousePosition = currentMousePosition;
+                    }
+                }
+                else if (!ImGui.IsMouseDown(ImGuiMouseButton.Right))
+                {
+                    // Finalizar el arrastre cuando se suelta el botón derecho
+                    isDragging = false;
+                }
             }
 
             // Terminar la ventana de ImGui
