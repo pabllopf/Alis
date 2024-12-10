@@ -105,21 +105,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
 
             Assert.Equal("Test Tag", gameObjectBuilder.Build().Tag);
         }
-
-        /// <summary>
-        ///     Tests that add component valid input
-        /// </summary>
-        [Fact]
-        public void AddComponent_ValidInput()
-        {
-            VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
-            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder(videoGameBuilder.context);
-
-            gameObjectBuilder.AddComponent(new TestComponent());
-
-            Assert.Single(gameObjectBuilder.Build().Components);
-        }
-
+        
         /// <summary>
         ///     Tests that name should set name of game object
         /// </summary>

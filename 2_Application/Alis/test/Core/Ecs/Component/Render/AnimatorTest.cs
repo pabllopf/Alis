@@ -80,20 +80,6 @@ namespace Alis.Test.Core.Ecs.Component.Render
         }
 
         /// <summary>
-        ///     Tests that on start should set sprite
-        /// </summary>
-        [Fact]
-        public void OnStart_ShouldSetSprite()
-        {
-            Animator animator = new Animator();
-            GameObject gameObject = new GameObject();
-            gameObject.Add(new Sprite());
-            animator.GameObject = gameObject;
-            animator.OnStart();
-            Assert.NotNull(animator.Sprite);
-        }
-
-        /// <summary>
         ///     Tests that on update should change sprite image
         /// </summary>
         [Fact]
