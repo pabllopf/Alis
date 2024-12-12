@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Aspect.Math.Shape.Rectangle
 {
@@ -70,6 +71,11 @@ namespace Alis.Core.Aspect.Math.Shape.Rectangle
             Y = y;
             W = w;
             H = h;
+        }
+
+        public bool Contains(Vector2 pos)
+        {
+            return pos.X >= X && pos.X <= X + W && pos.Y >= Y && pos.Y <= Y + H;
         }
     }
 }

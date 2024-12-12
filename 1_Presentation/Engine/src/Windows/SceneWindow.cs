@@ -36,6 +36,7 @@ using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
 using Alis.Core.Ecs.System;
@@ -60,6 +61,9 @@ namespace Alis.App.Engine.Windows
 
         private bool isDragging = false;
         private Vector2 previousMousePosition;
+        
+        
+        private GameObject selectedGameObject;
 
         /// <summary>
         ///     The pixel ptr
@@ -72,6 +76,8 @@ namespace Alis.App.Engine.Windows
         private uint textureopenGlId;
 
         private ActiveButton activeButton = ActiveButton.HandSpock;
+        private float widthTexture;
+        private float heightTexture;
 
 
         /// <summary>
@@ -180,7 +186,7 @@ namespace Alis.App.Engine.Windows
                                 .Build())
                             .Build())
                         .Add<GameObject>(gameObject => gameObject
-                            .Name("tree-001")
+                            .Name("tree-003")
                             .Transform(transform => transform
                                 .Position(-3, -3)
                                 .Scale(2, 2)
@@ -191,7 +197,7 @@ namespace Alis.App.Engine.Windows
                                 .Build())
                             .Build())
                         .Add<GameObject>(gameObject => gameObject
-                            .Name("tree-001")
+                            .Name("tree-004")
                             .Transform(transform => transform
                                 .Position(-2, -2)
                                 .Scale(2, 2)
@@ -449,20 +455,20 @@ namespace Alis.App.Engine.Windows
                 float gameAspectRatio = 800f / 600f;
 
                 // Tamaño final ajustado manteniendo el aspect ratio
-                float width = availableSize.X;
-                float height = availableSize.X / gameAspectRatio;
+                widthTexture = availableSize.X;
+                heightTexture = availableSize.X / gameAspectRatio;
 
                 // Si el alto ajustado es mayor al espacio disponible, recalcular usando el alto
-                if (height > availableSize.Y)
+                if (heightTexture > availableSize.Y)
                 {
-                    height = availableSize.Y;
-                    width = availableSize.Y * gameAspectRatio;
+                    heightTexture = availableSize.Y;
+                    widthTexture = availableSize.Y * gameAspectRatio;
                 }
 
                 // Calcular la posición centrada dentro del área disponible
                 Vector2 offset = new Vector2(
-                    (availableSize.X - width) * 0.5f,
-                    (availableSize.Y - height) * 0.5f);
+                    (availableSize.X - widthTexture) * 0.5f,
+                    (availableSize.Y - heightTexture) * 0.5f);
 
                 // Ajustar el cursor de ImGui para centrar la imagen
                 ImGui.SetCursorPos(ImGui.GetCursorPos() + offset);
@@ -470,7 +476,7 @@ namespace Alis.App.Engine.Windows
                 // Dibujar la textura ajustada al tamaño calculado
                 ImGui.Image(
                     (IntPtr) textureopenGlId,
-                    new Vector2(width, height), // Tamaño ajustado
+                    new Vector2(widthTexture, heightTexture), // Tamaño ajustado
                     new Vector2(0, 0), // Coordenada de inicio (UV)
                     new Vector2(1, 1), // Coordenada final (UV)
                     new Vector4(1, 1, 1, 1), // Color del multiplicador de la textura
@@ -479,7 +485,18 @@ namespace Alis.App.Engine.Windows
 
             if (activeButton == ActiveButton.HandSpock)
             {
-
+                if (selectedGameObject != null)
+                {
+                    DrawSelectionRectangle(selectedGameObject);
+                }
+                
+                if (ImGui.IsItemHovered() && ImGui.IsMouseClicked(0))
+                {
+                    Vector2 mousePos = GetMouseWorldPosition();
+                    selectedGameObject = FindGameObjectUnderMouse(mousePos);
+                    Console.WriteLine($"Selected GameObject: {selectedGameObject?.Name}");
+                }
+                
                 // Detectar si estamos en la región de la escena
                 if (ImGui.IsItemHovered() && ImGui.IsMouseDown(ImGuiMouseButton.Right))
                 {
@@ -525,6 +542,160 @@ namespace Alis.App.Engine.Windows
 
             // Terminar la ventana de ImGui
             ImGui.End();
+        }
+
+        
+        private Vector2 GetMouseWorldPosition()
+        {
+            // Obtener la posición del ratón en coordenadas de pantalla
+            ImGuiIoPtr io = ImGui.GetIo();
+            
+            Vector2 mousePosition = io.MousePos;
+            Console.WriteLine($"Mouse Position: {mousePosition.X}, {mousePosition.Y}");
+            Vector2 windowPosition = ImGui.GetWindowPos();
+            Console.WriteLine($"Window Position: {windowPosition.X}, {windowPosition.Y}");
+            Vector2 windowSize = ImGui.GetWindowSize();
+            Console.WriteLine($"Window Size: {windowSize.X}, {windowSize.Y}");
+            Vector2 textureSize = new Vector2(widthTexture, heightTexture);
+            Console.WriteLine($"Texture Size: {textureSize.X}, {textureSize.Y}");
+            
+            Vector2 mousePositionRelativeToWindow = mousePosition - windowPosition; // (542, 248)
+            Console.WriteLine($"Mouse Position Relative To Window: {mousePositionRelativeToWindow.X}, {mousePositionRelativeToWindow.Y}");
+            Vector2 mousePositionRelativeToTexture = mousePositionRelativeToWindow - (windowSize - textureSize) / 2; // (431, 216)
+            Console.WriteLine($"Mouse Position Relative To Texture: {mousePositionRelativeToTexture.X}, {mousePositionRelativeToTexture.Y}");
+            
+            Vector2 ajustMouse = new Vector2(0, 0);
+            Console.WriteLine($"Ajust Mouse: {ajustMouse.X}, {ajustMouse.Y}");
+            
+            mousePositionRelativeToTexture -= ajustMouse;
+            Console.WriteLine($"Mouse Position Relative To Texture: {mousePositionRelativeToTexture.X}, {mousePositionRelativeToTexture.Y}");
+            
+            
+            /*
+            Mouse Position: 434, 195
+            Window Position: 319, 60
+            Window Size: 823, 514
+            Texture Size: 600, 450
+            Mouse Position Relative To Window: 115, 135
+            Mouse Position Relative To Texture: 3,5, 103
+            Ajust Mouse: 0, 0
+            Mouse Position Relative To Texture: 3,5, 103
+            World Position: -15,890625, 6,78125
+            World Position: -15,890625, 6,78125
+            */
+            
+            // Convertir la posición del ratón en coordenadas de pantalla a coordenadas del mundo
+            Vector2 worldPos = SpaceWork.VideoGame.Context.GraphicManager.ScreenToWorld(mousePositionRelativeToTexture);
+            Console.WriteLine($"World Position: {worldPos.X}, {worldPos.Y}");
+
+            return worldPos;
+        }
+        
+        /*
+        private Vector2 GetMouseWorldPosition()
+        {
+            // Obtener la posición del ratón en coordenadas de pantalla
+            ImGuiIoPtr io = ImGui.GetIo();
+
+            Vector2 mousePosition = io.MousePos;
+            Console.WriteLine($"Mouse Position: {mousePosition.X}, {mousePosition.Y}");
+            Vector2 windowPosition = ImGui.GetWindowPos();
+            Console.WriteLine($"Window Position: {windowPosition.X}, {windowPosition.Y}");
+            Vector2 windowSize = ImGui.GetWindowSize();
+            Console.WriteLine($"Window Position: {windowPosition.X}, {windowPosition.Y}");
+            Vector2 textureSize = new Vector2(widthTexture, heightTexture);
+            Console.WriteLine($"textureSize: {textureSize.X}, {textureSize.Y}");
+
+            Vector2 mousePositionRelativeToWindow = mousePosition - windowPosition;
+            Console.WriteLine($"Mouse Position Relative To Window: {mousePositionRelativeToWindow.X}, {mousePositionRelativeToWindow.Y}");
+            Vector2 mousePositionRelativeToTexture = mousePositionRelativeToWindow - (windowSize - textureSize) / 2;
+            Console.WriteLine($"Mouse Position Relative To Texture: {mousePositionRelativeToTexture.X}, {mousePositionRelativeToTexture.Y}");
+
+            // Ajustar la posición del ratón relativa a la textura para que el centro de la textura sea el origen (0,0)
+            Vector2 ajustMouse = new Vector2(0, 0);
+            Console.WriteLine($"Ajust Mouse: {ajustMouse.X}, {ajustMouse.Y}");
+            mousePositionRelativeToTexture -= ajustMouse;
+            
+            Console.WriteLine($"Mouse Position Relative To Texture Adjusted: {mousePositionRelativeToTexture.X}, {mousePositionRelativeToTexture.Y}");
+
+            // Convertir la posición del ratón en coordenadas de pantalla a coordenadas del mundo
+            Vector2 worldPos = SpaceWork.VideoGame.Context.GraphicManager.ScreenToWorld(mousePositionRelativeToTexture);
+
+            return worldPos;
+        }*/
+        
+        /*
+        private Vector2 GetMouseWorldPosition()
+        {
+            // Obtener la posición del ratón en coordenadas de pantalla
+            ImGuiIoPtr io = ImGui.GetIo();
+
+            Vector2 mousePosition = io.MousePos;
+            Vector2 windowPosition = ImGui.GetWindowPos();
+            Vector2 windowSize = ImGui.GetWindowSize();
+            Vector2 textureSize = new Vector2(widthTexture, heightTexture);
+
+            Vector2 mousePositionRelativeToWindow = mousePosition - windowPosition;
+            Vector2 mousePositionRelativeToTexture = mousePositionRelativeToWindow - (windowSize - textureSize) / 2;
+
+            //mousePositionRelativeToTexture.Y = -mousePositionRelativeToTexture.Y;
+            
+            // Convertir la posición del ratón en coordenadas de pantalla a coordenadas del mundo
+            Vector2 worldPos = SpaceWork.VideoGame.Context.GraphicManager.ScreenToWorld(mousePositionRelativeToTexture, textureSize);
+            
+            return worldPos;
+        }*/
+        
+        
+        private GameObject FindGameObjectUnderMouse(Vector2 mousePos)
+        {
+            // Iterar sobre todos los GameObjects en la escena y encontrar si el ratón está sobre alguno
+            foreach (var gameObject in SpaceWork.VideoGame.Context.SceneManager.CurrentScene.GameObjects)
+            {
+                RectangleF bounds = GetGameObjectBounds(gameObject);
+                if (bounds.Contains(mousePos))
+                {
+                    return gameObject;
+                }
+            }
+            return null;
+        }
+
+        private RectangleF GetGameObjectBounds(GameObject gameObject)
+        {
+            // Calcular los límites del GameObject basado en su posición y escala
+            Vector2 position = gameObject.Transform.Position;
+            Vector2 scale = gameObject.Transform.Scale;
+            return new RectangleF(
+                position.X - scale.X / 2, 
+                position.Y - scale.Y / 2, 
+                scale.X, 
+                scale.Y
+            );
+        }
+
+        private void DrawSelectionRectangle(GameObject gameObject)
+        {
+            if (!gameObject.Contains<BoxCollider>())
+            {
+                //gameObject.Add(new BoxCollider());
+            }
+        }
+
+        private void HandleObjectManipulation()
+        {
+            ImGuiIoPtr io = ImGui.GetIo();
+            Vector2 mousePos = GetMouseWorldPosition();
+
+            if (ImGui.IsMouseDragging(0) && selectedGameObject != null)
+            {
+                Vector2 delta = io.MouseDelta;
+                var transform = selectedGameObject.Transform;
+                transform.Position += delta;
+                selectedGameObject.Transform = transform;
+            }
+
+            // Agregar lógica para rotación o redimensionado según inputs adicionales
         }
     }
 }

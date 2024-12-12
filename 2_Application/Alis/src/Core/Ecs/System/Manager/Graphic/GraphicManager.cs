@@ -36,6 +36,7 @@ using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
+using Alis.Core.Ecs.Entity;
 using Alis.Core.Ecs.System.Configuration;
 using Alis.Core.Ecs.System.Configuration.Physic;
 using Alis.Core.Ecs.System.Scope;
@@ -54,6 +55,8 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
     /// <seealso cref="AManager" />
     public class GraphicManager : AManager
     {
+        private Vector2 worldPosition;
+
         /// <summary>
         ///     The pixels per meter
         /// </summary>
@@ -356,10 +359,55 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                     }
                 }
 
+                RenderCircleAtWorldPosition(new Vector2(0, 0), 2);
+
+                RenderCircleAtWorldPosition(new Vector2(2, 2), 2);
+
+                RenderCircleAtWorldPosition(new Vector2(-2, -2), 2);
+
+                // draw a circle of radius 2 at the mouse position:
+                RenderCircleAtWorldPosition(worldPosition, 2);
+
+
                 Sdl.SetRenderTarget(renderer, IntPtr.Zero);
 
                 // Copy the custom backbuffer to the SDL backbuffer with vertical flip
                 Sdl.RenderCopyEx(renderer, cameraTexture, IntPtr.Zero, IntPtr.Zero, 0, IntPtr.Zero, RendererFlips.FlipVertical);
+            }
+        }
+
+        public void RenderCircleAtWorldPosition(Vector2 worldPosition, float radius)
+        {
+            if (Cameras.Count == 0)
+            {
+                throw new InvalidOperationException("No cameras available to perform the rendering.");
+            }
+
+            Camera camera = Cameras[0]; // Assuming the first camera is the main camera
+            Vector2 cameraPosition = camera.Position;
+            Vector2 cameraResolution = camera.Resolution;
+
+            // Convert world position to screen position
+            Vector2 screenPosition = new Vector2(
+                (worldPosition.X + (cameraResolution.X / 2 / PixelsPerMeter) - cameraPosition.X) * PixelsPerMeter,
+                (worldPosition.Y + (cameraResolution.Y / 2 / PixelsPerMeter) - cameraPosition.Y) * PixelsPerMeter
+            );
+
+            // Set the color for the circle
+            Sdl.SetRenderDrawColor(Renderer, 255, 0, 0, 255); // Red color
+
+            // Draw the circle
+            for (int w = 0; w < radius * 2; w++)
+            {
+                for (int h = 0; h < radius * 2; h++)
+                {
+                    int dx = (int) radius - w; // horizontal offset
+                    int dy = (int) radius - h; // vertical offset
+                    if ((dx * dx + dy * dy) <= (radius * radius))
+                    {
+                        Sdl.RenderDrawPoint(Renderer, (int) screenPosition.X + dx, (int) screenPosition.Y + dy);
+                    }
+                }
             }
         }
 
@@ -426,5 +474,95 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         {
             Cameras.Remove(camera);
         }
+
+
+        
+        public Vector2 ScreenToWorld(Vector2 screenPos, Vector2 windowPos, Vector2 windowSize, Vector2 textureSize)
+        {
+            if (Cameras.Count == 0)
+            {
+                throw new InvalidOperationException("No cameras available to perform the conversion.");
+            }
+
+            Camera camera = Cameras[0]; // Assuming the first camera is the main camera
+            Console.WriteLine("Camera: " + camera.GameObject.Name);
+            Vector2 cameraPosition = camera.Position;
+            Console.WriteLine("Camera Position: " + cameraPosition.X + ", " + cameraPosition.Y);
+            Vector2 cameraResolution = camera.Resolution;
+            Console.WriteLine("Camera Resolution: " + cameraResolution.X + ", " + cameraResolution.Y);
+
+            float pixelsPerMeter = PixelsPerMeter;
+            Console.WriteLine("Pixels Per Meter: " + pixelsPerMeter);
+
+            // Adjust screen position relative to the ImGui window
+            Vector2 adjustedScreenPos = screenPos - windowPos;
+            Console.WriteLine("Adjusted Screen Position: " + adjustedScreenPos.X + ", " + adjustedScreenPos.Y);
+
+            // Convert screen coordinates to world coordinates
+            Vector2 worldPos = new Vector2(
+                (adjustedScreenPos.X / windowSize.X) * cameraResolution.X / pixelsPerMeter + cameraPosition.X - (cameraResolution.X / 2 / pixelsPerMeter),
+                (adjustedScreenPos.Y / windowSize.Y) * cameraResolution.Y / pixelsPerMeter + cameraPosition.Y - (cameraResolution.Y / 2 / pixelsPerMeter)
+            );
+
+            Console.WriteLine("World Position: " + worldPos.X + ", " + worldPos.Y);
+
+            return worldPos;
+        }
+
+        /*
+        public Vector2 ScreenToWorld(Vector2 mousePositionRelativeToTexture)
+        {
+            if (Cameras.Count == 0)
+            {
+                throw new InvalidOperationException("No cameras available to perform the conversion.");
+            }
+
+            Camera camera = Cameras[0]; // Assuming the first camera is the main camera
+            Vector2 cameraPosition = camera.Position;
+            Vector2 cameraResolution = camera.Resolution;
+
+            worldPosition = new Vector2(
+                ((mousePositionRelativeToTexture.X / PixelsPerMeter) + cameraPosition.X) - (cameraResolution.X / PixelsPerMeter / 2),
+                (cameraResolution.Y / PixelsPerMeter / 2) - ((mousePositionRelativeToTexture.Y / PixelsPerMeter) + cameraPosition.Y)
+            );
+
+            // worldPosition debería ser cercano a (2.5f, 2.5f)
+            Console.WriteLine($"World Position: {worldPosition.X}, {worldPosition.Y}");
+
+            return worldPosition;
+        }*/
+        
+        /*
+        public Vector2 ScreenToWorld(Vector2 mousePositionRelativeToTexture, Vector2 textureSize)
+        {
+            if (Cameras.Count == 0)
+            {
+                throw new InvalidOperationException("No cameras available to perform the conversion.");
+            }
+
+            Camera camera = Cameras[0]; // Assuming the first camera is the main camera
+            Vector2 cameraPosition = camera.Position;
+            Vector2 cameraResolution = camera.Resolution;
+
+            // Convertir la posición relativa de la textura a coordenadas del mundo
+            worldPosition = new Vector2(
+                ((mousePositionRelativeToTexture.X / PixelsPerMeter) + cameraPosition.X) - (cameraResolution.X / PixelsPerMeter / 2),
+                ((mousePositionRelativeToTexture.Y / PixelsPerMeter) + cameraPosition.Y) - ((cameraResolution.Y / PixelsPerMeter) / 2)
+            );
+            
+            worldPosition.X = worldPosition.X;
+            worldPosition.Y = -worldPosition.Y;
+
+            worldPosition.X -= 0.2f;
+            worldPosition.Y += 1f;
+            
+            
+            //worldPosition.X -= PixelsPerMeter / 2;
+            //worldPosition.Y -= PixelsPerMeter / 2;
+            
+            Console.WriteLine($"World Position: {worldPosition.X}, {worldPosition.Y}");
+            
+            return worldPosition;
+        }*/
     }
 }
