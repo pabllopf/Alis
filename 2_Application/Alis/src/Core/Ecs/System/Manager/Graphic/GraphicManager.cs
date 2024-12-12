@@ -482,7 +482,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
         
         
-        public Vector2 ScreenToWorld(Vector2 mousePositionRelativeToTextureCentered)
+        public Vector2 ScreenToWorld(Vector2 mousePositionRelativeToTextureCentered, Vector2 textureSize)
         {
             if (Cameras.Count == 0)
             {
@@ -497,6 +497,11 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             
             Vector2 cameraResolution = camera.Resolution;
             Console.WriteLine($"Camera Resolution: {cameraResolution.X}, {cameraResolution.Y}");
+            
+            // Calculate factor conversion textureSize to cameraResolution
+            float factorX = cameraResolution.X / textureSize.X;
+            float factorY = cameraResolution.Y / textureSize.Y;
+            Console.WriteLine($"Factor X: {factorX}, Factor Y: {factorY}");
 
             // Convert the mouse position relative to the texture to world coordinates
             worldPosition = new Vector2(0, 0);
@@ -507,8 +512,8 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Console.WriteLine($"Mouse Position on Game Units: {mousePositionOnGameUnits.X}, {mousePositionOnGameUnits.Y}");
             
             // Convert the mouse position to world coordinates
-            float x = (mousePositionOnGameUnits.X + cameraPosition.X);
-            float y = (mousePositionOnGameUnits.Y + cameraPosition.Y);
+            float x = (mousePositionOnGameUnits.X + cameraPosition.X) * factorX;
+            float y = (mousePositionOnGameUnits.Y + cameraPosition.Y) * factorY;
             Console.WriteLine($"Mouse Position on World: {x}, {y}");
             
             worldPosition = new Vector2(x, y);
