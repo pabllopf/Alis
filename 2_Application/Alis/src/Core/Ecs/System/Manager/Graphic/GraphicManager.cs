@@ -55,7 +55,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
     /// <seealso cref="AManager" />
     public class GraphicManager : AManager
     {
-        private Vector2 worldPosition;
+        public Vector2 worldPosition;
 
         /// <summary>
         ///     The pixels per meter
@@ -359,9 +359,13 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                     }
                 }
 
-                RenderCircleAtWorldPosition(new Vector2(0, 0), 2);
+                //RenderCircleAtWorldPosition(new Vector2(0, 0), 2);
 
                 RenderCircleAtWorldPosition(new Vector2(2, 2), 2);
+                
+                RenderCircleAtWorldPosition(new Vector2(7, -7), 2);
+                
+                RenderCircleAtWorldPosition(new Vector2(-7, 7), 2);
 
                 RenderCircleAtWorldPosition(new Vector2(-2, -2), 2);
 
@@ -477,92 +481,39 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
 
         
-        public Vector2 ScreenToWorld(Vector2 screenPos, Vector2 windowPos, Vector2 windowSize, Vector2 textureSize)
-        {
-            if (Cameras.Count == 0)
-            {
-                throw new InvalidOperationException("No cameras available to perform the conversion.");
-            }
-
-            Camera camera = Cameras[0]; // Assuming the first camera is the main camera
-            Console.WriteLine("Camera: " + camera.GameObject.Name);
-            Vector2 cameraPosition = camera.Position;
-            Console.WriteLine("Camera Position: " + cameraPosition.X + ", " + cameraPosition.Y);
-            Vector2 cameraResolution = camera.Resolution;
-            Console.WriteLine("Camera Resolution: " + cameraResolution.X + ", " + cameraResolution.Y);
-
-            float pixelsPerMeter = PixelsPerMeter;
-            Console.WriteLine("Pixels Per Meter: " + pixelsPerMeter);
-
-            // Adjust screen position relative to the ImGui window
-            Vector2 adjustedScreenPos = screenPos - windowPos;
-            Console.WriteLine("Adjusted Screen Position: " + adjustedScreenPos.X + ", " + adjustedScreenPos.Y);
-
-            // Convert screen coordinates to world coordinates
-            Vector2 worldPos = new Vector2(
-                (adjustedScreenPos.X / windowSize.X) * cameraResolution.X / pixelsPerMeter + cameraPosition.X - (cameraResolution.X / 2 / pixelsPerMeter),
-                (adjustedScreenPos.Y / windowSize.Y) * cameraResolution.Y / pixelsPerMeter + cameraPosition.Y - (cameraResolution.Y / 2 / pixelsPerMeter)
-            );
-
-            Console.WriteLine("World Position: " + worldPos.X + ", " + worldPos.Y);
-
-            return worldPos;
-        }
-
-        /*
-        public Vector2 ScreenToWorld(Vector2 mousePositionRelativeToTexture)
-        {
-            if (Cameras.Count == 0)
-            {
-                throw new InvalidOperationException("No cameras available to perform the conversion.");
-            }
-
-            Camera camera = Cameras[0]; // Assuming the first camera is the main camera
-            Vector2 cameraPosition = camera.Position;
-            Vector2 cameraResolution = camera.Resolution;
-
-            worldPosition = new Vector2(
-                ((mousePositionRelativeToTexture.X / PixelsPerMeter) + cameraPosition.X) - (cameraResolution.X / PixelsPerMeter / 2),
-                (cameraResolution.Y / PixelsPerMeter / 2) - ((mousePositionRelativeToTexture.Y / PixelsPerMeter) + cameraPosition.Y)
-            );
-
-            // worldPosition debería ser cercano a (2.5f, 2.5f)
-            Console.WriteLine($"World Position: {worldPosition.X}, {worldPosition.Y}");
-
-            return worldPosition;
-        }*/
         
-        /*
-        public Vector2 ScreenToWorld(Vector2 mousePositionRelativeToTexture, Vector2 textureSize)
+        public Vector2 ScreenToWorld(Vector2 mousePositionRelativeToTextureCentered)
         {
             if (Cameras.Count == 0)
             {
                 throw new InvalidOperationException("No cameras available to perform the conversion.");
             }
-
+            
             Camera camera = Cameras[0]; // Assuming the first camera is the main camera
+            Console.WriteLine($"Camera GameObject: {camera.GameObject.Name}");
+            
             Vector2 cameraPosition = camera.Position;
+            Console.WriteLine($"Camera Position: {cameraPosition.X}, {cameraPosition.Y}");
+            
             Vector2 cameraResolution = camera.Resolution;
+            Console.WriteLine($"Camera Resolution: {cameraResolution.X}, {cameraResolution.Y}");
 
-            // Convertir la posición relativa de la textura a coordenadas del mundo
-            worldPosition = new Vector2(
-                ((mousePositionRelativeToTexture.X / PixelsPerMeter) + cameraPosition.X) - (cameraResolution.X / PixelsPerMeter / 2),
-                ((mousePositionRelativeToTexture.Y / PixelsPerMeter) + cameraPosition.Y) - ((cameraResolution.Y / PixelsPerMeter) / 2)
-            );
+            // Convert the mouse position relative to the texture to world coordinates
+            worldPosition = new Vector2(0, 0);
+            Console.WriteLine($"Init World Position: {worldPosition.X}, {worldPosition.Y}");
             
-            worldPosition.X = worldPosition.X;
-            worldPosition.Y = -worldPosition.Y;
-
-            worldPosition.X -= 0.2f;
-            worldPosition.Y += 1f;
+            // Convert coordinates mouse position to unit coordinates
+            Vector2 mousePositionOnGameUnits = new Vector2(mousePositionRelativeToTextureCentered.X / PixelsPerMeter, -mousePositionRelativeToTextureCentered.Y / PixelsPerMeter);
+            Console.WriteLine($"Mouse Position on Game Units: {mousePositionOnGameUnits.X}, {mousePositionOnGameUnits.Y}");
             
+            // Convert the mouse position to world coordinates
+            float x = (mousePositionOnGameUnits.X + cameraPosition.X);
+            float y = (mousePositionOnGameUnits.Y + cameraPosition.Y);
+            Console.WriteLine($"Mouse Position on World: {x}, {y}");
             
-            //worldPosition.X -= PixelsPerMeter / 2;
-            //worldPosition.Y -= PixelsPerMeter / 2;
-            
-            Console.WriteLine($"World Position: {worldPosition.X}, {worldPosition.Y}");
+            worldPosition = new Vector2(x, y);
             
             return worldPosition;
-        }*/
+        }
     }
 }

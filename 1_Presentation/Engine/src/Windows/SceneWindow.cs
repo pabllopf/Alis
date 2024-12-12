@@ -78,6 +78,7 @@ namespace Alis.App.Engine.Windows
         private ActiveButton activeButton = ActiveButton.HandSpock;
         private float widthTexture;
         private float heightTexture;
+        private Vector2 offsetTexture;
 
 
         /// <summary>
@@ -111,7 +112,7 @@ namespace Alis.App.Engine.Windows
                         .Build())
                     .Graphic(graphic => graphic
                         .Window(window => window
-                            .Resolution(1024, 640)
+                            .Resolution(800, 600)
                             .Background(Color.Black)
                             .Build())
                         .Build())
@@ -154,12 +155,17 @@ namespace Alis.App.Engine.Windows
                                         .Build())
                                     .Build())
                                 .Build())
-                            .AddComponent<Camera>(camera => camera.Builder()
-                                .Resolution(1024, 640)
+                            .Build())
+
+                        .Add<GameObject>(camera => camera
+                            .Name("Camera")
+                            .AddComponent<Camera>(component => component
+                                .Builder()
+                                .Resolution(800, 600)
                                 .BackgroundColor(Color.DarkGreen)
                                 .Build())
                             .Build())
-
+                        
                         // Decoration tree-001
                         .Add<GameObject>(gameObject => gameObject
                             .Name("tree-001")
@@ -466,12 +472,12 @@ namespace Alis.App.Engine.Windows
                 }
 
                 // Calcular la posición centrada dentro del área disponible
-                Vector2 offset = new Vector2(
+                offsetTexture = new Vector2(
                     (availableSize.X - widthTexture) * 0.5f,
                     (availableSize.Y - heightTexture) * 0.5f);
 
                 // Ajustar el cursor de ImGui para centrar la imagen
-                ImGui.SetCursorPos(ImGui.GetCursorPos() + offset);
+                ImGui.SetCursorPos(ImGui.GetCursorPos() + offsetTexture);
 
                 // Dibujar la textura ajustada al tamaño calculado
                 ImGui.Image(
@@ -544,7 +550,7 @@ namespace Alis.App.Engine.Windows
             ImGui.End();
         }
 
-        
+        /*
         private Vector2 GetMouseWorldPosition()
         {
             // Obtener la posición del ratón en coordenadas de pantalla
@@ -571,7 +577,7 @@ namespace Alis.App.Engine.Windows
             Console.WriteLine($"Mouse Position Relative To Texture: {mousePositionRelativeToTexture.X}, {mousePositionRelativeToTexture.Y}");
             
             
-            /*
+            
             Mouse Position: 434, 195
             Window Position: 319, 60
             Window Size: 823, 514
@@ -582,14 +588,14 @@ namespace Alis.App.Engine.Windows
             Mouse Position Relative To Texture: 3,5, 103
             World Position: -15,890625, 6,78125
             World Position: -15,890625, 6,78125
-            */
+            
             
             // Convertir la posición del ratón en coordenadas de pantalla a coordenadas del mundo
             Vector2 worldPos = SpaceWork.VideoGame.Context.GraphicManager.ScreenToWorld(mousePositionRelativeToTexture);
             Console.WriteLine($"World Position: {worldPos.X}, {worldPos.Y}");
 
             return worldPos;
-        }
+        }*/
         
         /*
         private Vector2 GetMouseWorldPosition()
@@ -624,10 +630,9 @@ namespace Alis.App.Engine.Windows
             return worldPos;
         }*/
         
-        /*
+        
         private Vector2 GetMouseWorldPosition()
         {
-            // Obtener la posición del ratón en coordenadas de pantalla
             ImGuiIoPtr io = ImGui.GetIo();
 
             Vector2 mousePosition = io.MousePos;
@@ -637,15 +642,65 @@ namespace Alis.App.Engine.Windows
 
             Vector2 mousePositionRelativeToWindow = mousePosition - windowPosition;
             Vector2 mousePositionRelativeToTexture = mousePositionRelativeToWindow - (windowSize - textureSize) / 2;
-
-            //mousePositionRelativeToTexture.Y = -mousePositionRelativeToTexture.Y;
+          
+            mousePositionRelativeToTexture.Y -= 30.0f;
             
-            // Convertir la posición del ratón en coordenadas de pantalla a coordenadas del mundo
-            Vector2 worldPos = SpaceWork.VideoGame.Context.GraphicManager.ScreenToWorld(mousePositionRelativeToTexture, textureSize);
+            Console.WriteLine("--------------------");
+            Console.WriteLine($"Mouse Position: {mousePosition.X}, {mousePosition.Y}");
+            Console.WriteLine($"Window Position: {windowPosition.X}, {windowPosition.Y}");
+            Console.WriteLine($"Window Size: {windowSize.X}, {windowSize.Y}");
+            Console.WriteLine($"Texture Size: {textureSize.X}, {textureSize.Y}");
+            Console.WriteLine($"Mouse Position Relative To Window: {mousePositionRelativeToWindow.X}, {mousePositionRelativeToWindow.Y}");
+            Console.WriteLine($"Mouse Position Relative To Texture: {mousePositionRelativeToTexture.X}, {mousePositionRelativeToTexture.Y}");
+            Console.WriteLine("--------------------");
+            Console.WriteLine();
+            // Adjust mouse position to center the texture
+            Vector2 errorPosition = new Vector2(0, 0);
+            
+            // Check if the mouse position is outside the texture
+            if (mousePositionRelativeToTexture.X >= textureSize.X)
+            {
+                errorPosition.X = mousePositionRelativeToTexture.X - textureSize.X;
+                Console.WriteLine($"Error Position X: {errorPosition.X}");
+            }
+            if (mousePositionRelativeToTexture.X < 0)
+            {
+                errorPosition.X = -mousePositionRelativeToTexture.X;
+                Console.WriteLine($"Error Position X: {errorPosition.X}");
+            }
+
+            // Check if the mouse position is outside the texture
+            if (mousePositionRelativeToTexture.Y >= textureSize.Y)
+            {
+                errorPosition.Y = mousePositionRelativeToTexture.Y - textureSize.Y;
+                Console.WriteLine($"Error Position Y: {errorPosition.Y}");
+            }
+            
+            if (mousePositionRelativeToTexture.Y < 0)
+            {
+                errorPosition.Y = -mousePositionRelativeToTexture.Y;
+                Console.WriteLine($"Error Position Y: {errorPosition.Y}");
+            }
+            
+            Vector2 mousePositionRelativeToTextureAdjusted = mousePositionRelativeToTexture - errorPosition;
+           
+            // Delete the decimal part of mousePositionRelativeToTextureAdjusted:
+            mousePositionRelativeToTextureAdjusted.X = (float) Math.Floor(mousePositionRelativeToTextureAdjusted.X);
+            mousePositionRelativeToTextureAdjusted.Y = (float) Math.Floor(mousePositionRelativeToTextureAdjusted.Y);
+            
+            Console.WriteLine($"Mouse Position Relative To Texture Adjusted: {mousePositionRelativeToTextureAdjusted.X}, {mousePositionRelativeToTextureAdjusted.Y}");
+            
+            // Calculate the mouse position thinking that the center of the texture is the origin (0,0)
+            Vector2 mousePositionRelativeToTextureCentered = new Vector2(0, 0);
+            mousePositionRelativeToTextureCentered.X = mousePositionRelativeToTextureAdjusted.X - textureSize.X / 2;
+            mousePositionRelativeToTextureCentered.Y = mousePositionRelativeToTextureAdjusted.Y - textureSize.Y / 2;
+            
+            Console.WriteLine($"Mouse Position Relative To Texture Centered: {mousePositionRelativeToTextureCentered.X}, {mousePositionRelativeToTextureCentered.Y}");
+
+            Vector2 worldPos = SpaceWork.VideoGame.Context.GraphicManager.ScreenToWorld(mousePositionRelativeToTextureCentered);
             
             return worldPos;
-        }*/
-        
+        }
         
         private GameObject FindGameObjectUnderMouse(Vector2 mousePos)
         {
