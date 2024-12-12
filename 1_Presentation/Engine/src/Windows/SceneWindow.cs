@@ -625,7 +625,7 @@ namespace Alis.App.Engine.Windows
         private GameObject FindGameObjectUnderMouse(Vector2 mousePos)
         {
             // Iterar sobre todos los GameObjects en la escena y encontrar si el ratón está sobre alguno
-            foreach (var gameObject in SpaceWork.VideoGame.Context.SceneManager.CurrentScene.GameObjects)
+            foreach (GameObject gameObject in SpaceWork.VideoGame.Context.SceneManager.CurrentScene.GameObjects)
             {
                 RectangleF bounds = GetGameObjectBounds(gameObject);
                 if (bounds.Contains(mousePos))
@@ -688,7 +688,7 @@ namespace Alis.App.Engine.Windows
             if (ImGui.IsMouseDragging(0) && selectedGameObject != null)
             {
                 Vector2 delta = io.MouseDelta;
-                var transform = selectedGameObject.Transform;
+                Transform transform = selectedGameObject.Transform;
                 transform.Position += delta;
                 selectedGameObject.Transform = transform;
             }
