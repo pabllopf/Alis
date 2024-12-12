@@ -703,8 +703,8 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool InputTextWithHint(
             string label,
             string hint,
-            ref string input,
-            uint maxLength) => InputTextWithHint(label, hint, ref input, maxLength, 0, null, IntPtr.Zero);
+            string input,
+            uint maxLength) => InputTextWithHint(label, hint,  input, maxLength, 0, null, IntPtr.Zero);
 
         /// <summary>
         ///     Describes whether input text with hint
@@ -718,9 +718,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool InputTextWithHint(
             string label,
             string hint,
-            ref string input,
+            string input,
             uint maxLength,
-            ImGuiInputTextFlags flags) => InputTextWithHint(label, hint, ref input, maxLength, flags, null, IntPtr.Zero);
+            ImGuiInputTextFlags flags) => InputTextWithHint(label, hint,  input, maxLength, flags, null, IntPtr.Zero);
 
         /// <summary>
         ///     Describes whether input text with hint
@@ -735,10 +735,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool InputTextWithHint(
             string label,
             string hint,
-            ref string input,
+            string input,
             uint maxLength,
             ImGuiInputTextFlags flags,
-            ImGuiInputTextCallback callback) => InputTextWithHint(label, hint, ref input, maxLength, flags, callback, IntPtr.Zero);
+            ImGuiInputTextCallback callback) => InputTextWithHint(label, hint,  input, maxLength, flags, callback, IntPtr.Zero);
 
         /// <summary>
         ///     Describes whether input text with hint
@@ -754,7 +754,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool InputTextWithHint(
             string label,
             string hint,
-            ref string input,
+            string input,
             uint maxLength,
             ImGuiInputTextFlags flag,
             ImGuiInputTextCallback callback,

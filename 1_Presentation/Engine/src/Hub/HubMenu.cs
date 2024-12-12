@@ -86,7 +86,7 @@ namespace Alis.App.Engine.Hub
         /// <summary>
         /// The search query
         /// </summary>
-        private string searchQuery = "";
+        private string searchQuery = string.Empty;
 
         /// <summary>
         ///     The selected menu item
@@ -151,7 +151,7 @@ namespace Alis.App.Engine.Hub
                 ImGui.SameLine();
 
                 // Cambiar el tamaño de la fuente para que el texto sea más grande
-                ImGui.PushFont(spaceWork.fontLoaded30Bold); // Asegúrate de usar una fuente adecuada
+                ImGui.PushFont(spaceWork.fontLoaded45Bold); // Asegúrate de usar una fuente adecuada
 
                 // Centrar el texto "ALIS" vertical y horizontalmente con la imagen
                 Vector2 textSize = ImGui.CalcTextSize("ALIS");
@@ -607,7 +607,7 @@ namespace Alis.App.Engine.Hub
             ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(5, (elementHeight - iconHeight) / 2)); // Ajustar el padding para igualar la altura
 
             // Campo de búsqueda
-            if (ImGui.InputTextWithHint("##Search", "Search...", ref searchQuery, 256))
+            if (ImGui.InputTextWithHint("##Search", "Search...",  searchQuery, 256))
             {
                 Console.WriteLine("Search query: " + searchQuery);
             }

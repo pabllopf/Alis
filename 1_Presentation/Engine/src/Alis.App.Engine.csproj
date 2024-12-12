@@ -4,4 +4,11 @@
     <PropertyGroup>
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/</OutDir>
     </PropertyGroup>
+    <ItemGroup>
+      <None Update="Assets\Sample\Assets\Sprites\sample_2.bmp">
+        <LinkBase>Assets/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+    </ItemGroup>
 </Project>
