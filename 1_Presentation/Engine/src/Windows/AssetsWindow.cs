@@ -28,8 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.IO;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
+using Alis.App.Engine.Entity;
 using Alis.App.Engine.Fonts;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.ImGui;
@@ -230,7 +232,17 @@ namespace Alis.App.Engine.Windows
                 ImGui.PopStyleVar(1);
                 ImGui.PopStyleColor(2);
 
-                ImGui.SameLine();
+                RenderAssets();
+
+                //ImGui.EndColumns(); // Finalizar las columnas
+            }
+
+            ImGui.End();
+        }
+
+        private void RenderAssets()
+        {
+             ImGui.SameLine();
                 ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X - 30);
                 ImGui.InputText($"{FontAwesome5.Search}", commandPtr, 256);
                 ImGui.Separator();
@@ -277,29 +289,48 @@ namespace Alis.App.Engine.Windows
                 ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(0, 7));
                 ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2(2, 5));
 
-                ImGui.Button("Assets");
-                ImGui.SameLine();
-                ImGui.Text(">");
-                ImGui.SameLine();
-                ImGui.Button("Textures");
+                RenderPathOfFolder();
 
                 ImGui.PopStyleVar(3);
                 ImGui.PopStyleColor(2);
 
                 ImGui.BeginChild("ScrollingRegion", ImGui.GetContentRegionAvail(), false, ImGuiWindowFlags.HorizontalScrollbar);
 
-                ImGui.Text("Files");
-                for (int i = 0; i < 5; i++)
-                {
-                    ImGui.Text($"Texture {i}");
-                }
-
+                RenderFilesOnFolder();
+                
                 ImGui.EndChild();
+        }
 
-                //ImGui.EndColumns(); // Finalizar las columnas
+        private void RenderPathOfFolder()
+        {
+            string path = "Assets/Models/Characters/Player";
+            
+            // Divide the path into folders:
+            string[] folders = path.Split(Path.DirectorySeparatorChar);
+            for (int i = 0; i < folders.Length; i++)
+            {
+                ImGui.Button(folders[i]);
+                if (i < folders.Length - 1)
+                {
+                    ImGui.SameLine();
+                    ImGui.Text(">");
+                    ImGui.SameLine();
+                }
             }
+        }
 
-            ImGui.End();
+        private void RenderFilesOnFolder()
+        {
+            Project project = SpaceWork.Project;
+            string path = project.Path;
+            
+            // Get all files in the directory
+            string[] files = Directory.GetFiles(path);
+            
+            foreach (string file in files)
+            {
+                ImGui.Text(file);
+            }
         }
     }
 }

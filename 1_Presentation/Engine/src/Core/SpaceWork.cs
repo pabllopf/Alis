@@ -29,8 +29,10 @@
 
 
 using System;
+using System.IO;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Demos;
+using Alis.App.Engine.Entity;
 using Alis.App.Engine.Menus;
 using Alis.App.Engine.Windows;
 using Alis.Core.Ecs.System;
@@ -211,6 +213,8 @@ namespace Alis.App.Engine.Core
         ///     Gets or sets the value of the project selected
         /// </summary>
         public bool ProjectSelected { get; set; } = true;
+        
+        public Project Project { get; set; } = new Project("Sample Alis", Path.Combine(Environment.CurrentDirectory, "Assets", "Sample", "Assets"), "Not Synced", "Never", "2021.1.0");
 
         /// <summary>
         ///     Initializes this instance
