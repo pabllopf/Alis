@@ -1145,7 +1145,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
                 itemsNative[i] = Encoding.UTF8.GetBytes(items[i]);
             }
 
-            byte ret = ImGuiNative.igCombo_Str_arr(Encoding.UTF8.GetBytes(label), ref currentItem, itemsNative, itemsCount, -1);
+            byte ret = ImGuiNative.igCombo_Str_arr(Encoding.UTF8.GetBytes(label), currentItem, itemsNative, itemsCount, -1);
             return ret != 0;
         }
 
@@ -1166,7 +1166,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
                 itemsNative[i] = Encoding.UTF8.GetBytes(items[i]);
             }
 
-            byte ret = ImGuiNative.igCombo_Str_arr(Encoding.UTF8.GetBytes(label), ref currentItem, itemsNative, itemsCount, popupMaxHeightInItems);
+            byte ret = ImGuiNative.igCombo_Str_arr(Encoding.UTF8.GetBytes(label), currentItem, itemsNative, itemsCount, popupMaxHeightInItems);
             return ret != 0;
         }
     }

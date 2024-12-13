@@ -164,6 +164,9 @@ namespace Alis.Core.Ecs.Entity
         [JsonPropertyName("_IsStatic_")]
         public bool IsStatic { get; set; } = false;
 
+        [JsonPropertyName("_Layer_")]
+        public string Layer { get; set; }
+
         /// <summary>
         ///     Adds the component
         /// </summary>

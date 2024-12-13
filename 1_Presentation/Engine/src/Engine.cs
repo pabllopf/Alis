@@ -323,8 +323,8 @@ namespace Alis.App.Engine
                 return;
             }
 
-            string fontFileSolid30 = AssetManager.Find("JetBrainsMono-Bold.ttf");
-            spaceWork.fontLoaded45Bold = fonts.AddFontFromFileTtf(fontFileSolid30, 40);
+            string fontFileSolid45 = AssetManager.Find("JetBrainsMono-Bold.ttf");
+            spaceWork.fontLoaded45Bold = fonts.AddFontFromFileTtf(fontFileSolid45, 40);
             try
             {
                 ImFontConfigPtr icons_config = ImGui.ImFontConfig();
@@ -344,6 +344,34 @@ namespace Alis.App.Engine
                 
                 string fontAwesome = AssetManager.Find(FontAwesome5.NameSolid);
                 fonts.AddFontFromFileTtf(fontAwesome, 40, icons_config, rangePtr);
+            }
+            catch (Exception e)
+            {
+                Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {FontAwesome5.NameSolid} {e.Message}");
+                return;
+            }
+            
+            string fontFileSolid30 = AssetManager.Find("JetBrainsMono-Bold.ttf");
+            spaceWork.fontLoaded30Bold = fonts.AddFontFromFileTtf(fontFileSolid30, 28);
+            try
+            {
+                ImFontConfigPtr icons_config = ImGui.ImFontConfig();
+                icons_config.MergeMode = true;
+                icons_config.SnapH = true;
+                icons_config.GlyphMinAdvanceX = 18;
+
+                ushort[] IconRanges = new ushort[3];
+                IconRanges[0] = FontAwesome5.IconMin;
+                IconRanges[1] = FontAwesome5.IconMax;
+                IconRanges[2] = 0;
+
+                // Allocate GCHandle to pin IconRanges in memory
+                GCHandle iconRangesHandle = GCHandle.Alloc(IconRanges, GCHandleType.Pinned);
+
+                IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
+                
+                string fontAwesome = AssetManager.Find(FontAwesome5.NameSolid);
+                fonts.AddFontFromFileTtf(fontAwesome, 28, icons_config, rangePtr);
             }
             catch (Exception e)
             {

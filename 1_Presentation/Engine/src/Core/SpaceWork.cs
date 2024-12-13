@@ -122,6 +122,7 @@ namespace Alis.App.Engine.Core
         public IntPtr Window;
 
         public ImFontPtr fontLoaded10Solid;
+        public ImFontPtr fontLoaded30Bold;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="SpaceWork" /> class
