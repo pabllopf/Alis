@@ -337,6 +337,9 @@ namespace Alis.App.Engine.Windows
                 Console.WriteLine(searchText);
             }
             
+            ImGui.SameLine();
+            ImGui.Text($"{FontAwesome5.Search}");
+            
             ImGui.Separator();
         }
 
