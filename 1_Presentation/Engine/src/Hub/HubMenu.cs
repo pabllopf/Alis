@@ -74,8 +74,8 @@ namespace Alis.App.Engine.Hub
         /// </summary>
         private readonly List<Project> projects = new List<Project>
         {
-            new Project("My project", "/Users/pablopf/My project", "NOT CONNECTED", "3 days ago", "v0.4.5"),
-            new Project("My project 2", "/Users/pablopf/My project", "NOT CONNECTED", "5 minutes", "v0.4.4")
+            new Project("MacOS Project", "/Users/pabllopf/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", "NOT CONNECTED", "3 days ago", "v0.4.5"),
+            new Project("Windows Project", "C:/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", "NOT CONNECTED", "5 minutes", "v0.4.4")
         };
 
         /// <summary>
@@ -716,16 +716,13 @@ namespace Alis.App.Engine.Hub
                         if (ImGui.MenuItem("Reveal in Finder"))
                         {
                             // Acción: Reveal in Finder
+                            RevealInFinder(project.Path);
                         }
 
                         if (ImGui.MenuItem("Open in Terminal"))
                         {
                             // Acción: Open in Terminal
-                        }
-
-                        if (ImGui.MenuItem("Duplicate Project"))
-                        {
-                            // Acción: Duplicar proyecto
+                            OpenInTerminal(project.Path);
                         }
 
                         if (ImGui.MenuItem("Remove from List"))
@@ -750,6 +747,8 @@ namespace Alis.App.Engine.Hub
         private void OpenProject(Project project)
         {
             Console.WriteLine($"Opening project: {project.Name}");
+            spaceWork.Project = project;
+            spaceWork.ProjectSelected = true;
         }
 
         /// <summary>
