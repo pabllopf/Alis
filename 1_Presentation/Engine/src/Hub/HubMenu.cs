@@ -719,6 +719,7 @@ namespace Alis.App.Engine.Hub
                             RevealInFinder(project.Path);
                         }
 
+                        
                         if (ImGui.MenuItem("Open in Terminal"))
                         {
                             // Acción: Open in Terminal
