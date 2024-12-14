@@ -556,29 +556,36 @@ namespace Alis.App.Engine.Windows
 
                 if (subDirectories.Length > 0)
                 {
-                    ImGui.TreeNodeEx($"{FontAwesome5.Folder} {folderName}", ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.OpenOnArrow);
+                    if (ImGui.TreeNodeEx($"{FontAwesome5.Folder} {folderName}", ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.OpenOnArrow))
+                    {
+                        if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left) && !IsMoveDirectory)
+                        {
+                            string relativePath = path.Replace(SpaceWork.Project.Path, "").Replace("\\", "/");
+                            CurrentPath = relativePath.StartsWith("/") ? relativePath : $"/{relativePath}";
+                            IsMoveDirectory = true;
+                        }
+                        
+                        RenderSubDirectories(path);
+                        ImGui.TreePop();
+                    }
+                   
+                    
+                    
+                   
+
+                }
+                else
+                {
+                    ImGui.TreeNodeEx($"{FontAwesome5.Folder} {folderName}", ImGuiTreeNodeFlags.Leaf | ImGuiTreeNodeFlags.NoTreePushOnOpen);
                     if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left) && !IsMoveDirectory)
                     {
                         string relativePath = path.Replace(SpaceWork.Project.Path, "").Replace("\\", "/");
                         CurrentPath = relativePath.StartsWith("/") ? relativePath : $"/{relativePath}";
                         IsMoveDirectory = true;
                     }
-
-                    RenderSubDirectories(path);
-                    ImGui.TreePop();
-
-                }
-                else
-                {
-                    ImGui.TreeNodeEx($"{FontAwesome5.Folder} {folderName}", ImGuiTreeNodeFlags.Leaf | ImGuiTreeNodeFlags.NoTreePushOnOpen);
                 }
 
-                if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left) && !IsMoveDirectory)
-                {
-                    string relativePath = path.Replace(SpaceWork.Project.Path, "").Replace("\\", "/");
-                    CurrentPath = relativePath.StartsWith("/") ? relativePath : $"/{relativePath}";
-                    IsMoveDirectory = true;
-                }
+                
             }
         }
 
