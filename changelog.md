@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.4.9] - 2024-12-16
+### :sparkles: New Features
+- [`042d4bb`](https://github.com/pabllopf/Alis/commit/042d4bb89e5a5f1cd6e279e61d673c9b5b321e41) - add new form to select project. *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`7863e17`](https://github.com/pabllopf/Alis/commit/7863e179280384db57edeef8be60aa9b2f23d4a6) - path system and add group by tag *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.4.8] - 2024-12-15
 ### :sparkles: New Features
 - [`b327d57`](https://github.com/pabllopf/Alis/commit/b327d578c4801d5fd0a85a85fc1addda5241429a) - add move on scene *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -3727,3 +3735,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.4.6]: https://github.com/pabllopf/Alis/compare/v0.4.5...v0.4.6
 [v0.4.7]: https://github.com/pabllopf/Alis/compare/v0.4.6...v0.4.7
 [v0.4.8]: https://github.com/pabllopf/Alis/compare/v0.4.7...v0.4.8
+[v0.4.9]: https://github.com/pabllopf/Alis/compare/v0.4.8...v0.4.9
