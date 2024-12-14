@@ -36,6 +36,7 @@ using Alis.App.Engine.Entity;
 using Alis.App.Engine.Menus;
 using Alis.App.Engine.Windows;
 using Alis.Core.Ecs.System;
+using Alis.Core.Graphic.Sdl2.Structs;
 using Alis.Extension.Graphic.ImGui;
 
 namespace Alis.App.Engine.Core
@@ -88,7 +89,7 @@ namespace Alis.App.Engine.Core
         /// <summary>
         ///     The font loaded 30 bold
         /// </summary>
-        public ImFontPtr fontLoaded30Bold;
+        public ImFontPtr fontLoaded45Bold;
 
         /// <summary>
         ///     The io
@@ -119,6 +120,8 @@ namespace Alis.App.Engine.Core
         ///     The window
         /// </summary>
         public IntPtr Window;
+
+        public ImFontPtr fontLoaded10Solid;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="SpaceWork" /> class
@@ -214,7 +217,9 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public bool ProjectSelected { get; set; } = true;
         
-        public Project Project { get; set; } = new Project("Sample Alis", Path.Combine(Environment.CurrentDirectory, "Assets", "Sample", "Assets"), "Not Synced", "Never", "2021.1.0");
+        public Project Project { get; set; } = new Project("Sample Alis", Path.Combine("/Users/pabllopf/Repositorios/Alis/1_Presentation/Engine/sample"), "Not Synced", "Never", "2021.1.0");
+        
+        public Event Event { get; set; }
 
         /// <summary>
         ///     Initializes this instance

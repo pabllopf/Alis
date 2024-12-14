@@ -1,9 +1,10 @@
 <Project>
-    <ItemGroup>
-        <None Condition="Exists('$(ProjectDir)/Assets/') == True"
-              Update="$(ProjectDir)/Assets/**"
-              LinkBase="Assets/"
+    <ItemGroup Condition="Exists('$(ProjectDir)Assets/') == True">
+        <None 
+              Update="$(ProjectDir)Assets/**"
+              LinkBase="Assets"
               CopyToOutputDirectory="Always"
               CopyToPublishDirectory="Always"/>
+        <Compile Remove="$(ProjectDir)Assets/**/*.cs" />
     </ItemGroup>
 </Project>

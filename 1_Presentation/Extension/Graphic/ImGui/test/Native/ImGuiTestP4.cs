@@ -509,7 +509,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         public void InputTextWithHint_ThrowsDllNotFoundException()
         {
             string input = string.Empty;
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputTextWithHint("label", "hint", ref input, 0u));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputTextWithHint("label", "hint", input, 0u));
         }
 
         /// <summary>
@@ -519,7 +519,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         public void InputTextWithHint_WithFlags_ThrowsDllNotFoundException()
         {
             string input = string.Empty;
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputTextWithHint("label", "hint", ref input, 0u, ImGuiInputTextFlags.None));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputTextWithHint("label", "hint", input, 0u, ImGuiInputTextFlags.None));
         }
 
         /// <summary>
@@ -529,7 +529,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         public void InputTextWithHint_WithFlagsAndCallback_ThrowsDllNotFoundException()
         {
             string input = string.Empty;
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputTextWithHint("label", "hint", ref input, 0u, ImGuiInputTextFlags.None, null));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputTextWithHint("label", "hint", input, 0u, ImGuiInputTextFlags.None, null));
         }
 
         /// <summary>
@@ -539,7 +539,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         public void InputTextWithHint_WithFlagsCallbackAndUserData_ThrowsDllNotFoundException()
         {
             string input = string.Empty;
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputTextWithHint("label", "hint", ref input, 0u, ImGuiInputTextFlags.None, null, IntPtr.Zero));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputTextWithHint("label", "hint", input, 0u, ImGuiInputTextFlags.None, null, IntPtr.Zero));
         }
 
         /// <summary>
