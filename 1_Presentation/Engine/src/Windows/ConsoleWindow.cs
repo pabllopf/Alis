@@ -28,6 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Concurrent;
+using System.IO;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
@@ -56,7 +58,10 @@ namespace Alis.App.Engine.Windows
         ///     The no collapse
         /// </summary>
         private readonly ImGuiWindowFlags flags = ImGuiWindowFlags.NoCollapse;
-
+        
+        private readonly ConcurrentQueue<string> consoleOutputQueue = new ConcurrentQueue<string>();
+        private readonly StringWriter stringWriter = new StringWriter();
+        
         /// <summary>
         ///     The command
         /// </summary>
@@ -75,6 +80,7 @@ namespace Alis.App.Engine.Windows
         {
             SpaceWork = spaceWork;
             commandPtr = Marshal.AllocHGlobal(256);
+            Console.SetOut(stringWriter);
         }
 
         /// <summary>
@@ -149,23 +155,66 @@ namespace Alis.App.Engine.Windows
                 // Espacio para el área de scroll
                 ImGui.Separator(); // Opcional: para separar visualmente las secciones
 
-                // Contenedor con scroll
-                ImGui.BeginChild("ScrollingRegion", ImGui.GetContentRegionAvail(), false, ImGuiWindowFlags.HorizontalScrollbar);
-                for (int i = 0; i < 100; i++)
-                {
-                    ImGui.Text($"{FontAwesome5.Bug} [{DateTime.Now}] Line {i}");
-                }
-
-                ImGui.EndChild();
+                RenderConsoleOutput();
             }
 
             ImGui.End();
         }
 
-        /// <summary>
-        ///     Gets the terminal output
-        /// </summary>
-        /// <returns>The string array</returns>
-        private string[] GetTerminalOutput() => new string[0];
+        private void RenderConsoleOutput()
+        {
+            ImGui.BeginChild("ScrollingRegion", ImGui.GetContentRegionAvail(), false, ImGuiWindowFlags.HorizontalScrollbar);
+
+            string consoleOutput = stringWriter.ToString();
+            string[] consoleLines = consoleOutput.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+
+            foreach (string line in consoleLines)
+            {
+                ImGui.PushId(line.GetHashCode());
+                
+                if (line.Contains("Trace:"))
+                {
+                    ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(0.5f, 0.5f, 0.5f, 1.0f));
+                }
+                if (line.Contains("Info:"))
+                {
+                    ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(0.0f, 1.0f, 0.0f, 1.0f));
+                }
+                
+                if (line.Contains("Log:") || line.Contains("Message:"))
+                {
+                    ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(1.0f, 1.0f, 1.0f, 1.0f));
+                }
+                
+                if (line.Contains("Warning:", StringComparison.OrdinalIgnoreCase))
+                {
+                    ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(1.0f, 1.0f, 0.0f, 1.0f));
+                }
+                
+                if (line.Contains("Error:", StringComparison.OrdinalIgnoreCase) || line.Contains("Exception:", StringComparison.OrdinalIgnoreCase))
+                {
+                    ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(1.0f, 0.0f, 0.0f, 1.0f));
+                }
+                
+                if (!line.Contains("Trace:") && !line.Contains("Log:", StringComparison.OrdinalIgnoreCase) && !line.Contains("message", StringComparison.OrdinalIgnoreCase) && !line.Contains("Warning:", StringComparison.OrdinalIgnoreCase) && !line.Contains("Error:", StringComparison.OrdinalIgnoreCase) && !line.Contains("Exception:", StringComparison.OrdinalIgnoreCase) && !line.Contains("Info:"))
+                {
+                    ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(1.0f, 1.0f, 1.0f, 1.0f));
+                }
+                
+                if (ImGui.Selectable(line, false, ImGuiSelectableFlags.AllowDoubleClick))
+                {
+                    if (ImGui.IsMouseDoubleClicked(0))
+                    {
+                        // Handle double-click action here
+                        Console.WriteLine($"Double-clicked on: {line}");
+                    }
+                }
+
+                ImGui.PopStyleColor();
+                ImGui.PopId();
+            }
+
+            ImGui.EndChild();
+        }
     }
 }
