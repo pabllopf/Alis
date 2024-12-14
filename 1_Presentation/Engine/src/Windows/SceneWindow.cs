@@ -697,7 +697,7 @@ namespace Alis.App.Engine.Windows
             
             Console.WriteLine($"Mouse Position Relative To Texture Centered: {mousePositionRelativeToTextureCentered.X}, {mousePositionRelativeToTextureCentered.Y}");
 
-            Vector2 worldPos = SpaceWork.VideoGame.Context.GraphicManager.ScreenToWorld(mousePositionRelativeToTextureCentered);
+            Vector2 worldPos = SpaceWork.VideoGame.Context.GraphicManager.ScreenToWorld(mousePositionRelativeToTextureCentered, textureSize);
             
             return worldPos;
         }
