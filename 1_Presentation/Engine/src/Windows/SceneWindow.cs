@@ -32,6 +32,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
+using Alis.Builder.Core.Ecs.Entity.Transform;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
@@ -650,10 +651,33 @@ namespace Alis.App.Engine.Windows
 
         private void DrawSelectionRectangle(GameObject gameObject)
         {
-            if (!gameObject.Contains<BoxCollider>())
+            // CHECK IF OBJECT EXISTS
+            if(!gameObject.Context.SceneManager.CurrentScene.GameObjects.Exists(x => x.Name == "Preview Selection"))
             {
-                //gameObject.Add(new BoxCollider());
+                // Create a new GameObject with a collider component of the same size as the selected GameObject
+                GameObject selectionRectangle = new GameObject().Builder()
+                    .Name("Preview Selection")
+                    .Transform(transform => transform
+                        .Position(gameObject.Transform.Position.X, gameObject.Transform.Position.Y)
+                        .Scale(gameObject.Transform.Scale.X, gameObject.Transform.Scale.Y)
+                        .Rotation(gameObject.Transform.Rotation)
+                        .Build())
+                    .AddComponent<BoxCollider>(collider => collider.Builder()
+                        .Size(2, 2)
+                        .IsTrigger()
+                        .Build())
+                    .Build();
+                
+                // Add the GameObject to the scene
+                gameObject.Context.SceneManager.CurrentScene.Add(selectionRectangle);
+            }else
+            {
+                // Update the position and scale of the selection rectangle
+                GameObject selectionRectangle = gameObject.Context.SceneManager.CurrentScene.GameObjects.Find(x => x.Name == "Preview Selection");
+                selectionRectangle.Get<BoxCollider>().Body.Position = gameObject.Transform.Position;
+                selectionRectangle.Get<BoxCollider>().Body.Rotation = gameObject.Transform.Rotation;
             }
+            
         }
 
         private void HandleObjectManipulation()
