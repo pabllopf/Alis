@@ -218,7 +218,7 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public bool ProjectSelected { get; set; } = true;
         
-        public Project Project { get; set; } = new Project("Sample Alis", Path.Combine("/Users/pabllopf/Repositorios/Alis/1_Presentation/Engine/sample"), "Not Synced", "Never", "2021.1.0");
+        public Project Project { get; set; } = new Project("Sample Alis", Path.Combine("C:/Repositorios/Alis/1_Presentation/Engine/sample"), "Not Synced", "Never", "2021.1.0");
         
         public Event Event { get; set; }
 

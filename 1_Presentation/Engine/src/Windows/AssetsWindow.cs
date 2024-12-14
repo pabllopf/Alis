@@ -66,7 +66,7 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         private bool isOpen = true;
 
-        private string CurrentPath = "/Assets";
+        private string CurrentPath = $"{Path.DirectorySeparatorChar}Assets";
 
         private Dictionary<string, string> fileIcons = new Dictionary<string, string>
         {
@@ -545,7 +545,7 @@ namespace Alis.App.Engine.Windows
                 ImGui.TreeNodeEx($"{FontAwesome5.FolderOpen} Assets", ImGuiTreeNodeFlags.Leaf | ImGuiTreeNodeFlags.DefaultOpen);
                 if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left))
                 {
-                    CurrentPath = "/Assets";
+                    CurrentPath = $"{Path.DirectorySeparatorChar}Assets";
                 }
 
                 RenderSubDirectories(path);
@@ -563,27 +563,22 @@ namespace Alis.App.Engine.Windows
                     {
                         if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left) && !IsMoveDirectory)
                         {
-                            string relativePath = path.Replace(SpaceWork.Project.Path, "").Replace("\\", "/");
-                            CurrentPath = relativePath.StartsWith("/") ? relativePath : $"/{relativePath}";
+                            string relativePath = path.Replace(SpaceWork.Project.Path, "");
+                            CurrentPath = relativePath.StartsWith($"{Path.DirectorySeparatorChar}") ? relativePath : $"{Path.DirectorySeparatorChar}{relativePath}";
                             IsMoveDirectory = true;
                         }
                         
                         RenderSubDirectories(path);
                         ImGui.TreePop();
                     }
-                   
-                    
-                    
-                   
-
                 }
                 else
                 {
                     ImGui.TreeNodeEx($"{FontAwesome5.Folder} {folderName}", ImGuiTreeNodeFlags.Leaf | ImGuiTreeNodeFlags.NoTreePushOnOpen);
                     if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left) && !IsMoveDirectory)
                     {
-                        string relativePath = path.Replace(SpaceWork.Project.Path, "").Replace("\\", "/");
-                        CurrentPath = relativePath.StartsWith("/") ? relativePath : $"/{relativePath}";
+                        string relativePath = path.Replace(SpaceWork.Project.Path, "");
+                        CurrentPath = relativePath.StartsWith($"{Path.DirectorySeparatorChar}") ? relativePath : $"{Path.DirectorySeparatorChar}{relativePath}";
                         IsMoveDirectory = true;
                     }
                 }
@@ -612,7 +607,7 @@ namespace Alis.App.Engine.Windows
             {
                 if (ImGui.Button("Assets"))
                 {
-                    CurrentPath = "/Assets";
+                    CurrentPath = $"{Path.DirectorySeparatorChar}Assets";
                 }
             }
             else
@@ -624,7 +619,7 @@ namespace Alis.App.Engine.Windows
 
                     if (ImGui.Button(folders[i]))
                     {
-                        CurrentPath = $"/{path}";
+                        CurrentPath = $"{Path.DirectorySeparatorChar}{path}";
                     }
 
                     if (i < folders.Length - 1)
@@ -649,96 +644,98 @@ namespace Alis.App.Engine.Windows
             files = files.Where(file => !ignorePatterns.Any(pattern => Path.GetFileName(file).Equals(pattern, StringComparison.OrdinalIgnoreCase))).ToArray();
 
             // Create a child window for scrolling
-            ImGui.BeginChild("FilesAndFoldersRegion", ImGui.GetContentRegionAvail(), true, ImGuiWindowFlags.HorizontalScrollbar);
-
-            // Set the width and height of each item (button + icon)
-            float itemWidth = 50.0f; // Width of each item
-            float itemHeight = 50.0f; // Height of each item
-            float itemPadding = 20.0f; // Padding between items
-            int minColumns = 1; // Número mínimo de columnas
-            int columns = Math.Max(minColumns, (int) (ImGui.GetContentRegionAvail().X / (itemWidth + itemPadding))); // Número de columnas
-
-            // Create a table to render items in multiple lines
-            if (ImGui.BeginTable("FilesAndFoldersTable", columns, ImGuiTableFlags.SizingStretchProp))
+            if (ImGui.BeginChild("FilesAndFoldersRegion", ImGui.GetContentRegionAvail(), true, ImGuiWindowFlags.HorizontalScrollbar))
             {
-                // Render directories
-                foreach (string directory in directories)
+
+                // Set the width and height of each item (button + icon)
+                float itemWidth = 50.0f; // Width of each item
+                float itemHeight = 50.0f; // Height of each item
+                float itemPadding = 20.0f; // Padding between items
+                int minColumns = 1; // Número mínimo de columnas
+                int columns = Math.Max(minColumns, (int) (ImGui.GetContentRegionAvail().X / (itemWidth + itemPadding))); // Número de columnas
+
+                // Create a table to render items in multiple lines
+                if (ImGui.BeginTable("FilesAndFoldersTable", columns, ImGuiTableFlags.SizingStretchProp))
                 {
-                    ImGui.TableNextColumn();
-                    string folderName = Path.GetFileName(directory);
-
-                    ImGui.PushFont(SpaceWork.fontLoaded45Bold);
-                    ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0, 0, 0, 0)); // Transparent background
-                    ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(0, 0)); // No padding
-                    ImGui.PushStyleVar(ImGuiStyleVar.SelectableTextAlign, new Vector2(0.5f, 0.5f)); // Center text
-                    ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0.0f); // No border
-
-                    if (ImGui.Selectable($"{FontAwesome5.Folder}##{folderName}", false, ImGuiSelectableFlags.AllowDoubleClick, new Vector2(itemWidth, itemHeight)))
-                    {
-                        if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left))
-                        {
-                            CurrentPath = Path.Combine(CurrentPath, folderName);
-                        }
-                    }
-
-                    ImGui.PopStyleVar(3);
-                    ImGui.PopStyleColor();
-                    ImGui.PopFont();
-
-                    ImGui.PushFont(SpaceWork.fontLoaded10Solid);
-                    float textWidth = ImGui.CalcTextSize(folderName).X;
-                    ImGui.SetCursorPosX(ImGui.GetCursorPosX() + (itemWidth - textWidth) * 0.05f);
-                    ImGui.TextWrapped(folderName);
-                    ImGui.Dummy(new Vector2(0, itemPadding)); // Add padding between items
-                    ImGui.PopFont();
-                }
-
-                // Render files
-                foreach (string file in files)
-                {
-                    ImGui.TableNextColumn();
-                    string extension = Path.GetExtension(file).ToLower();
-                    string icon = fileIcons.ContainsKey(extension) ? fileIcons[extension] : FontAwesome5.File;
-
-                    ImGui.PushFont(SpaceWork.fontLoaded45Bold);
-                    ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0, 0, 0, 0)); // Transparent background
-                    ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(0, 0)); // No padding
-                    ImGui.PushStyleVar(ImGuiStyleVar.SelectableTextAlign, new Vector2(0.5f, 0.5f)); // Center text
-                    ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0.0f); // No border
-
-                    if (ImGui.Selectable($"{icon}##{Path.GetFileName(file)}", false, ImGuiSelectableFlags.AllowDoubleClick, new Vector2(itemWidth, itemHeight)))
-                    {
-                        if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left))
-                        {
-                            // Acción a realizar al hacer doble clic en el archivo
-                        }
-                    }
-
-                    ImGui.PopStyleVar(3);
-                    ImGui.PopStyleColor();
-                    ImGui.PopFont();
-
-                    ImGui.PushFont(SpaceWork.fontLoaded10Solid);
-                    float textWidth = ImGui.CalcTextSize(Path.GetFileName(file)).X;
-                    ImGui.SetCursorPosX(ImGui.GetCursorPosX() + (itemWidth - textWidth) * 0.05f);
-                    ImGui.TextWrapped(Path.GetFileNameWithoutExtension(file));
-                    ImGui.Dummy(new Vector2(0, itemPadding)); // Add padding between items
-                    ImGui.PopFont();
-                }
-
-                // Fill remaining columns with invisible items
-                int totalItems = directories.Length + files.Length;
-                int emptyItems = columns - (totalItems % columns);
-                if (emptyItems < columns)
-                {
-                    for (int i = 0; i < emptyItems; i++)
+                    // Render directories
+                    foreach (string directory in directories)
                     {
                         ImGui.TableNextColumn();
-                        ImGui.Dummy(new Vector2(itemWidth, itemHeight)); // Invisible item to fill space
-                    }
-                }
+                        string folderName = Path.GetFileName(directory);
 
-                ImGui.EndTable();
+                        ImGui.PushFont(SpaceWork.fontLoaded45Bold);
+                        ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0, 0, 0, 0)); // Transparent background
+                        ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(0, 0)); // No padding
+                        ImGui.PushStyleVar(ImGuiStyleVar.SelectableTextAlign, new Vector2(0.5f, 0.5f)); // Center text
+                        ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0.0f); // No border
+
+                        if (ImGui.Selectable($"{FontAwesome5.Folder}##{folderName}", false, ImGuiSelectableFlags.AllowDoubleClick, new Vector2(itemWidth, itemHeight)))
+                        {
+                            if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left))
+                            {
+                                CurrentPath = Path.Combine(CurrentPath, folderName);
+                            }
+                        }
+
+                        ImGui.PopStyleVar(3);
+                        ImGui.PopStyleColor();
+                        ImGui.PopFont();
+
+                        ImGui.PushFont(SpaceWork.fontLoaded10Solid);
+                        float textWidth = ImGui.CalcTextSize(folderName).X;
+                        ImGui.SetCursorPosX(ImGui.GetCursorPosX() + (itemWidth - textWidth) * 0.05f);
+                        ImGui.TextWrapped(folderName);
+                        ImGui.Dummy(new Vector2(0, itemPadding)); // Add padding between items
+                        ImGui.PopFont();
+                    }
+
+                    // Render files
+                    foreach (string file in files)
+                    {
+                        ImGui.TableNextColumn();
+                        string extension = Path.GetExtension(file).ToLower();
+                        string icon = fileIcons.ContainsKey(extension) ? fileIcons[extension] : FontAwesome5.File;
+
+                        ImGui.PushFont(SpaceWork.fontLoaded45Bold);
+                        ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0, 0, 0, 0)); // Transparent background
+                        ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(0, 0)); // No padding
+                        ImGui.PushStyleVar(ImGuiStyleVar.SelectableTextAlign, new Vector2(0.5f, 0.5f)); // Center text
+                        ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0.0f); // No border
+
+                        if (ImGui.Selectable($"{icon}##{Path.GetFileName(file)}", false, ImGuiSelectableFlags.AllowDoubleClick, new Vector2(itemWidth, itemHeight)))
+                        {
+                            if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left))
+                            {
+                                // Acción a realizar al hacer doble clic en el archivo
+                            }
+                        }
+
+                        ImGui.PopStyleVar(3);
+                        ImGui.PopStyleColor();
+                        ImGui.PopFont();
+
+                        ImGui.PushFont(SpaceWork.fontLoaded10Solid);
+                        float textWidth = ImGui.CalcTextSize(Path.GetFileName(file)).X;
+                        ImGui.SetCursorPosX(ImGui.GetCursorPosX() + (itemWidth - textWidth) * 0.05f);
+                        ImGui.TextWrapped(Path.GetFileNameWithoutExtension(file));
+                        ImGui.Dummy(new Vector2(0, itemPadding)); // Add padding between items
+                        ImGui.PopFont();
+                    }
+
+                    // Fill remaining columns with invisible items
+                    int totalItems = directories.Length + files.Length;
+                    int emptyItems = columns - (totalItems % columns);
+                    if (emptyItems < columns)
+                    {
+                        for (int i = 0; i < emptyItems; i++)
+                        {
+                            ImGui.TableNextColumn();
+                            ImGui.Dummy(new Vector2(itemWidth, itemHeight)); // Invisible item to fill space
+                        }
+                    }
+
+                    ImGui.EndTable();
+                }
             }
 
             ImGui.EndChild();
