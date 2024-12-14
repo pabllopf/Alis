@@ -362,9 +362,9 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 //RenderCircleAtWorldPosition(new Vector2(0, 0), 2);
 
                 RenderCircleAtWorldPosition(new Vector2(2, 2), 2);
-                
+
                 RenderCircleAtWorldPosition(new Vector2(7, -7), 2);
-                
+
                 RenderCircleAtWorldPosition(new Vector2(-7, 7), 2);
 
                 RenderCircleAtWorldPosition(new Vector2(-2, -2), 2);
@@ -480,44 +480,44 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         }
 
 
-        
-        
+
+
         public Vector2 ScreenToWorld(Vector2 mousePositionRelativeToTextureCentered, Vector2 textureSize)
         {
             if (Cameras.Count == 0)
             {
                 throw new InvalidOperationException("No cameras available to perform the conversion.");
             }
-            
+
             Camera camera = Cameras[0]; // Assuming the first camera is the main camera
             Console.WriteLine($"Camera GameObject: {camera.GameObject.Name}");
-            
+
             Vector2 cameraPosition = camera.Position;
             Console.WriteLine($"Camera Position: {cameraPosition.X}, {cameraPosition.Y}");
-            
+
             Vector2 cameraResolution = camera.Resolution;
             Console.WriteLine($"Camera Resolution: {cameraResolution.X}, {cameraResolution.Y}");
-            
+
             // Calculate factor conversion textureSize to cameraResolution
             float factorX = cameraResolution.X / textureSize.X;
             float factorY = cameraResolution.Y / textureSize.Y;
             Console.WriteLine($"Factor X: {factorX}, Factor Y: {factorY}");
 
-            // Convert the mouse position relative to the texture to world coordinates
-            worldPosition = new Vector2(0, 0);
-            Console.WriteLine($"Init World Position: {worldPosition.X}, {worldPosition.Y}");
-            
             // Convert coordinates mouse position to unit coordinates
             Vector2 mousePositionOnGameUnits = new Vector2(mousePositionRelativeToTextureCentered.X / PixelsPerMeter, -mousePositionRelativeToTextureCentered.Y / PixelsPerMeter);
             Console.WriteLine($"Mouse Position on Game Units: {mousePositionOnGameUnits.X}, {mousePositionOnGameUnits.Y}");
-            
+
+            // Adjust the mouse position based on the camera position
+            float adjustedX = mousePositionOnGameUnits.X;
+            float adjustedY = mousePositionOnGameUnits.Y;
+
             // Convert the mouse position to world coordinates
-            float x = (mousePositionOnGameUnits.X + cameraPosition.X) * factorX;
-            float y = (mousePositionOnGameUnits.Y + cameraPosition.Y) * factorY;
+            float x = (adjustedX * factorX) + cameraPosition.X;
+            float y = (adjustedY * factorY) + cameraPosition.Y;
             Console.WriteLine($"Mouse Position on World: {x}, {y}");
-            
+
             worldPosition = new Vector2(x, y);
-            
+
             return worldPosition;
         }
     }
