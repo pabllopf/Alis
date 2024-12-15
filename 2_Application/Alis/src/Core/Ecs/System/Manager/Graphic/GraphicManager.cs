@@ -340,7 +340,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 Sdl.RenderClear(renderer);
 
                 // Render sprites
-                foreach (Sprite sprite in Sprites)
+                foreach (Sprite sprite in Sprites.OrderBy(o => o.Depth))
                 {
                     if (sprite.IsEnable && sprite.GameObject.IsEnable && sprite.IsVisible(cameraPosition, cameraResolution, pixelsPerMeter))
                     {

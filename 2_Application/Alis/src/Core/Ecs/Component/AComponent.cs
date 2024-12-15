@@ -60,7 +60,7 @@ namespace Alis.Core.Ecs.Component
         ///     Gets or sets the value of the name
         /// </summary>
         [JsonPropertyName("_Name_")]
-        public string Name { get; set; } = string.Empty;
+        public string Name { get; set; } = nameof(AComponent);
 
         /// <summary>
         ///     Gets or sets the value of the id
@@ -72,7 +72,7 @@ namespace Alis.Core.Ecs.Component
         ///     Gets or sets the value of the tag
         /// </summary>
         [JsonPropertyName("_Tag_")]
-        public string Tag { get; set; } = string.Empty;
+        public string Tag { get; set; } = nameof(AComponent);
 
         /// <summary>
         ///     Gets or sets the value of the game object
