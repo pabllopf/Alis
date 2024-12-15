@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:LearningResource.cs
+//  File:GalleryItem.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,37 +27,61 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.App.Hub.Hub
+namespace Alis.App.Hub.Windows
 {
     /// <summary>
-    /// The learning resource class
+    ///     The gallery item class
     /// </summary>
-    public class LearningResource
+    public class GalleryItem
     {
+        // Constructor para inicializar los valores
         /// <summary>
-        /// Initializes a new instance of the <see cref="LearningResource"/> class
+        ///     Initializes a new instance of the <see cref="GalleryItem" /> class
         /// </summary>
+        /// <param name="imagePath">The image path</param>
         /// <param name="title">The title</param>
         /// <param name="description">The description</param>
         /// <param name="url">The url</param>
-        public LearningResource(string title, string description, string url)
+        /// <param name="height">The height</param>
+        /// <param name="width">The width</param>
+        public GalleryItem(string imagePath, string title, string description, string url, int height, int width)
         {
+            ImagePath = imagePath;
             Title = title;
             Description = description;
             Url = url;
+            Height = height;
+            Width = width;
         }
 
         /// <summary>
-        /// Gets the value of the title
+        ///     Gets or sets the value of the image path
         /// </summary>
-        public string Title { get; }
+        public string ImagePath { get; set; }
+
         /// <summary>
-        /// Gets the value of the description
+        ///     Gets or sets the value of the title
         /// </summary>
-        public string Description { get; }
+        public string Title { get; set; }
+
         /// <summary>
-        /// Gets the value of the url
+        ///     Gets or sets the value of the description
         /// </summary>
-        public string Url { get; }
+        public string Description { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the url
+        /// </summary>
+        public string Url { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the height
+        /// </summary>
+        public int Height { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the width
+        /// </summary>
+        public int Width { get; set; }
     }
 }

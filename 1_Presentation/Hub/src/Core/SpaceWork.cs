@@ -154,5 +154,6 @@ namespace Alis.App.Hub.Core
         public void Update()
         {
         }
+        
     }
 }

@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.App.Hub.Hub
+namespace Alis.App.Hub.Windows
 {
     /// <summary>
     /// The board class

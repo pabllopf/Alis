@@ -31,7 +31,7 @@ using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Data.Resource;
 
-namespace Alis.App.Hub.Hub
+namespace Alis.App.Hub.Windows
 {
     /// <summary>
     /// The gallery class
