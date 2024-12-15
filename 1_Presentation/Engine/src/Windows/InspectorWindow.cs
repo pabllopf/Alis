@@ -260,6 +260,7 @@ namespace Alis.App.Engine.Windows
             }
         }
 
+        
         /// <summary>
         ///     Gets the value of the space work
         /// </summary>
