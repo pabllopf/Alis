@@ -60,10 +60,19 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         private static readonly string NameWindow = $"{FontAwesome5.Hashtag} Scene";
 
+        /// <summary>
+        /// The is dragging
+        /// </summary>
         private bool isDragging = false;
+        /// <summary>
+        /// The previous mouse position
+        /// </summary>
         private Vector2 previousMousePosition;
         
         
+        /// <summary>
+        /// The selected game object
+        /// </summary>
         private GameObject selectedGameObject;
 
         /// <summary>
@@ -76,9 +85,21 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         private uint textureopenGlId;
 
+        /// <summary>
+        /// The hand spock
+        /// </summary>
         private ActiveButton activeButton = ActiveButton.HandSpock;
+        /// <summary>
+        /// The width texture
+        /// </summary>
         private float widthTexture;
+        /// <summary>
+        /// The height texture
+        /// </summary>
         private float heightTexture;
+        /// <summary>
+        /// The offset texture
+        /// </summary>
         private Vector2 offsetTexture;
 
 
@@ -551,6 +572,10 @@ namespace Alis.App.Engine.Windows
             ImGui.End();
         }
 
+        /// <summary>
+        /// Gets the mouse world position
+        /// </summary>
+        /// <returns>The world pos</returns>
         private Vector2 GetMouseWorldPosition()
         {
             ImGuiIoPtr io = ImGui.GetIo();
@@ -622,6 +647,11 @@ namespace Alis.App.Engine.Windows
             return worldPos;
         }
         
+        /// <summary>
+        /// Finds the game object under mouse using the specified mouse pos
+        /// </summary>
+        /// <param name="mousePos">The mouse pos</param>
+        /// <returns>The game object</returns>
         private GameObject FindGameObjectUnderMouse(Vector2 mousePos)
         {
             // Iterar sobre todos los GameObjects en la escena y encontrar si el ratón está sobre alguno
@@ -636,6 +666,11 @@ namespace Alis.App.Engine.Windows
             return null;
         }
 
+        /// <summary>
+        /// Gets the game object bounds using the specified game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
+        /// <returns>The rectangle</returns>
         private RectangleF GetGameObjectBounds(GameObject gameObject)
         {
             // Calcular los límites del GameObject basado en su posición y escala
@@ -649,6 +684,10 @@ namespace Alis.App.Engine.Windows
             );
         }
 
+        /// <summary>
+        /// Draws the selection rectangle using the specified game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
         private void DrawSelectionRectangle(GameObject gameObject)
         {
             // CHECK IF OBJECT EXISTS
@@ -680,6 +719,9 @@ namespace Alis.App.Engine.Windows
             
         }
 
+        /// <summary>
+        /// Handles the object manipulation
+        /// </summary>
         private void HandleObjectManipulation()
         {
             ImGuiIoPtr io = ImGui.GetIo();

@@ -70,6 +70,9 @@ namespace Alis.App.Engine.Windows
         public InspectorWindow(SpaceWork spaceWork) => SpaceWork = spaceWork;
 
         // Define a dictionary to map component types to icons
+        /// <summary>
+        /// The play
+        /// </summary>
         private readonly Dictionary<Type, string> _componentIcons = new Dictionary<Type, string>
         {
             { typeof(Sprite), FontAwesome5.PaintBrush },
@@ -81,6 +84,9 @@ namespace Alis.App.Engine.Windows
             { typeof(Animation), FontAwesome5.Play}
         };
         
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
         public void Initialize()
         {
         }
@@ -111,9 +117,18 @@ namespace Alis.App.Engine.Windows
             ImGui.End();
         }
         
+        /// <summary>
+        /// The zero
+        /// </summary>
         private IntPtr commandBufferName = IntPtr.Zero;
+        /// <summary>
+        /// The zero
+        /// </summary>
         private IntPtr commandBufferTag = IntPtr.Zero;
         
+        /// <summary>
+        /// The tags
+        /// </summary>
         private string[] tags = { "Player", "Enemy", "NPC", "Item" };
         
         /// <summary>
@@ -187,6 +202,9 @@ namespace Alis.App.Engine.Windows
             ImGui.EndChild();
         }
 
+        /// <summary>
+        /// Renders the transform
+        /// </summary>
         private void RenderTransform()
         {
             // Transform
@@ -218,6 +236,9 @@ namespace Alis.App.Engine.Windows
             }
         }
 
+        /// <summary>
+        /// Renders the components
+        /// </summary>
         private void RenderComponents()
         {
             // Show the components of the selected game object
@@ -266,6 +287,10 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         public SpaceWork SpaceWork { get; }
 
+        /// <summary>
+        /// Renders the component properties using the specified component
+        /// </summary>
+        /// <param name="component">The component</param>
         private void RenderComponentProperties(AComponent component)
         {
             Type typeP = component.GetType();

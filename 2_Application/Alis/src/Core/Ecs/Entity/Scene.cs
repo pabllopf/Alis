@@ -129,9 +129,15 @@ namespace Alis.Core.Ecs.Entity
         [JsonPropertyName("_GameObjects_")]
         public List<GameObject> GameObjects { get; set; }
         
+        /// <summary>
+        /// Gets the value of the pending game objects to add
+        /// </summary>
         [JsonPropertyName("_PendingGameObjectsToAdd_")]
         public List<GameObject> PendingGameObjectsToAdd { get; }
 
+        /// <summary>
+        /// Gets the value of the pending game objects to remove
+        /// </summary>
         [JsonPropertyName("_PendingGameObjectsToRemove_")]
         public List<GameObject> PendingGameObjectsToRemove  { get; }
         
@@ -200,6 +206,9 @@ namespace Alis.Core.Ecs.Entity
             GameObjects.ForEach(i => i.OnAfterUpdate());
         }
 
+        /// <summary>
+        /// Ons the process pending changes
+        /// </summary>
         public void OnProcessPendingChanges()
         {
             while (PendingGameObjectsToAdd.Count > 0)
@@ -378,26 +387,50 @@ namespace Alis.Core.Ecs.Entity
             return GameObjects.Find(i => i is T) as T;
         }
         
+        /// <summary>
+        /// Gets the name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <returns>The game object</returns>
         public GameObject Get(string name)
         {
             return GameObjects.Find(i => i.Name == name);
         }
         
+        /// <summary>
+        /// Gets the id
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <returns>The game object</returns>
         public GameObject Get(Guid id)
         {
             return GameObjects.Find(i => i.Id == id.ToString());
         }
         
+        /// <summary>
+        /// Gets the index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <returns>The game object</returns>
         public GameObject Get(int index)
         {
             return GameObjects[index];
         }
         
+        /// <summary>
+        /// Gets the all
+        /// </summary>
+        /// <returns>The game objects</returns>
         public List<GameObject> GetAll()
         {
             return GameObjects;
         }
         
+        /// <summary>
+        /// Gets the by tag using the specified tag
+        /// </summary>
+        /// <param name="tag">The tag</param>
+        /// <returns>The game object</returns>
         public GameObject GetByTag(string tag)
         {
             return GameObjects.Find(i => i.Tag == tag);

@@ -74,6 +74,9 @@ namespace Alis.Core.Ecs.System.Execution
         /// </summary>
         public void OnAfterUpdate();
         
+        /// <summary>
+        /// Ons the process pending changes
+        /// </summary>
         public void OnProcessPendingChanges();
 
         /// <summary>

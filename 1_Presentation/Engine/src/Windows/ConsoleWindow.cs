@@ -59,7 +59,13 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         private readonly ImGuiWindowFlags flags = ImGuiWindowFlags.NoCollapse;
         
+        /// <summary>
+        /// The concurrent queue
+        /// </summary>
         private readonly ConcurrentQueue<string> consoleOutputQueue = new ConcurrentQueue<string>();
+        /// <summary>
+        /// The string writer
+        /// </summary>
         private readonly StringWriter stringWriter = new StringWriter();
         
         /// <summary>
@@ -161,6 +167,9 @@ namespace Alis.App.Engine.Windows
             ImGui.End();
         }
 
+        /// <summary>
+        /// Renders the console output
+        /// </summary>
         private void RenderConsoleOutput()
         {
             ImGui.BeginChild("ScrollingRegion", ImGui.GetContentRegionAvail(), false, ImGuiWindowFlags.HorizontalScrollbar);

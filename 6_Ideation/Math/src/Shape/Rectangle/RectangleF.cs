@@ -73,6 +73,11 @@ namespace Alis.Core.Aspect.Math.Shape.Rectangle
             H = h;
         }
 
+        /// <summary>
+        /// Describes whether this instance contains
+        /// </summary>
+        /// <param name="pos">The pos</param>
+        /// <returns>The bool</returns>
         public bool Contains(Vector2 pos)
         {
             return pos.X >= X && pos.X <= X + W && pos.Y >= Y && pos.Y <= Y + H;

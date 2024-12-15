@@ -147,6 +147,9 @@ namespace Alis.Core.Ecs.System.Manager.Scene
             CurrentScene.OnAfterUpdate();
         }
         
+        /// <summary>
+        /// Ons the process pending changes
+        /// </summary>
         public override void OnProcessPendingChanges()
         {
             CurrentScene.OnProcessPendingChanges();
