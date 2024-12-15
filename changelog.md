@@ -5,6 +5,33 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.4.8] - 2024-12-15
+### :sparkles: New Features
+- [`b327d57`](https://github.com/pabllopf/Alis/commit/b327d578c4801d5fd0a85a85fc1addda5241429a) - add move on scene *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f0d006d`](https://github.com/pabllopf/Alis/commit/f0d006db2538d39258fc59bf8a820a0ba45254ed) - add point control on scene view *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7edc856`](https://github.com/pabllopf/Alis/commit/7edc8560fde02e0b5dfaebf4861125aaf695fa7c) - add simple colllider object to indicate object selected *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0159f0a`](https://github.com/pabllopf/Alis/commit/0159f0a0eae0e42ccba3780a1c964d3884f0f54a) - show real console on engine *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b996729`](https://github.com/pabllopf/Alis/commit/b9967295e04843776914ab5d434ab34ad7b4b911) - simple render files of assets folder *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f08f1f1`](https://github.com/pabllopf/Alis/commit/f08f1f1c71a209d1468063b560414f6941a48857) - add new features and style to inspector *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`decbacf`](https://github.com/pabllopf/Alis/commit/decbacf4423854756f2740c699333619035db0b3) - add and remove items on runtime *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5d580a4`](https://github.com/pabllopf/Alis/commit/5d580a4e8cb35260c167c10f55ac3b2a09f8ae12) - ContextHandler *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`11c1276`](https://github.com/pabllopf/Alis/commit/11c1276534136c6fe23a078bcf246efd9d31a9cc) - change the logo and name snake game *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a19fada`](https://github.com/pabllopf/Alis/commit/a19fada7d6159482d7fa36d53f25f0fba01b13cd) - save and load scenes *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4f833d8`](https://github.com/pabllopf/Alis/commit/4f833d846d5e9348d96a81bb49eec9bb851e817f) - pointer view *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4a40c8d`](https://github.com/pabllopf/Alis/commit/4a40c8dbf4f404ce6a17652fe05d16758057d029) - pos pointer on change pos camera *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6074a18`](https://github.com/pabllopf/Alis/commit/6074a18a5124e9e8891361ac5ad1c2b9b501c251) - correction to search on inputtext *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`56120d5`](https://github.com/pabllopf/Alis/commit/56120d59471f5ada6a336ea823721a736c1dca1f) - menu input *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8ed3a0a`](https://github.com/pabllopf/Alis/commit/8ed3a0a8b3fd3432745701aa54d3d2fddb6a831f) - icon search *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`e28c688`](https://github.com/pabllopf/Alis/commit/e28c6889f8307774c274789eedd49e1daaba62c3) - pro fis the async client factory *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`70276cd`](https://github.com/pabllopf/Alis/commit/70276cdf1e46b05af963450452a8bebc29df2d75) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d6d6895`](https://github.com/pabllopf/Alis/commit/d6d6895581a1eca8d68b2956dee5397d544f9b06) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6c83fc6`](https://github.com/pabllopf/Alis/commit/6c83fc6fcdc65bb65224e7b4a1dd9e838dde0d74) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.4.7] - 2024-12-03
 ### :sparkles: New Features
 - [`229012f`](https://github.com/pabllopf/Alis/commit/229012f584358973b3d5c33474f03cfd15e7a484) - add new main menus *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -3699,3 +3726,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.4.5]: https://github.com/pabllopf/Alis/compare/v0.4.4...v0.4.5
 [v0.4.6]: https://github.com/pabllopf/Alis/compare/v0.4.5...v0.4.6
 [v0.4.7]: https://github.com/pabllopf/Alis/compare/v0.4.6...v0.4.7
+[v0.4.8]: https://github.com/pabllopf/Alis/compare/v0.4.7...v0.4.8
