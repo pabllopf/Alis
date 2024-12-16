@@ -216,9 +216,9 @@ namespace Alis.App.Engine.Core
         /// <summary>
         ///     Gets or sets the value of the project selected
         /// </summary>
-        public bool ProjectSelected { get; set; } = true;
+        public bool ProjectSelected { get; set; } = false;
         
-        public Project Project { get; set; } = new Project("Sample Alis", Path.Combine("C:/Repositorios/Alis/1_Presentation/Engine/sample"), "Not Synced", "Never", "2021.1.0");
+        public Project Project { get; set; } = new Project("", "" , "", "Never", "2021.1.0");
         
         public Event Event { get; set; }
 
