@@ -60,7 +60,7 @@ namespace Alis.Core.Ecs.Entity
             IsEnable = true;
             Name = GetType().Name;
             Id = Guid.NewGuid().ToString();
-            Tag = GetType().Name;
+            Tag = "Default";
             Transform = new Transform(new Vector2(0, 0), 0, new Vector2(1, 1));
             Components = new List<AComponent>();
             PendingComponentsToAdd = new List<AComponent>();
@@ -144,7 +144,7 @@ namespace Alis.Core.Ecs.Entity
         ///     Gets or sets the value of the tag
         /// </summary>
         [JsonPropertyName("_Tag_")]
-        public string Tag { get; set; }
+        public string Tag { get; set; } = "Default";
 
         /// <summary>
         ///     Gets or sets the value of the components
@@ -165,7 +165,7 @@ namespace Alis.Core.Ecs.Entity
         public bool IsStatic { get; set; } = false;
 
         [JsonPropertyName("_Layer_")]
-        public string Layer { get; set; }
+        public string Layer { get; set; } = "Default";
 
         /// <summary>
         ///     Adds the component
