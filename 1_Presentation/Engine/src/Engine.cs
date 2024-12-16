@@ -208,11 +208,9 @@ namespace Alis.App.Engine
             {
                 flags |= WindowSettings.WindowFullscreen;
             }
-
-            if (spaceWork.ProjectSelected)
-            {
-                flags |= WindowSettings.WindowMaximized;
-            }
+            
+            
+            flags |= WindowSettings.WindowMaximized;
 
             if (highDpi)
             {
@@ -531,15 +529,7 @@ namespace Alis.App.Engine
 
                 UpdateMousePosAndButtons();
 
-                if (spaceWork.ProjectSelected)
-                {
-                    RenderProject();
-                }
-                else
-                {
-                    hubMenu.Render();
-                    ImGui.ShowDemoWindow();
-                }
+                RenderProject();
 
                 Sdl.MakeCurrent(spaceWork.Window, _glContext);
                 ImGui.Render();

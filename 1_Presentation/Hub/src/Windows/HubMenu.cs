@@ -35,6 +35,7 @@ using System.Runtime.InteropServices;
 using Alis.App.Engine.Fonts;
 using Alis.App.Hub.Core;
 using Alis.App.Hub.Entity;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.Sdl2;
@@ -75,6 +76,7 @@ namespace Alis.App.Hub.Windows
         private readonly List<Project> projects = new List<Project>
         {
             new Project("MacOS Project", "/Users/pabllopf/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", "NOT CONNECTED", "3 days ago", "v0.4.5"),
+            new Project("MacOS Project(latest)", "/Users/pabllopf/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", "NOT CONNECTED", "3 days ago", "latest"),
             new Project("Windows Project", "C:/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", "NOT CONNECTED", "5 minutes", "v0.4.4")
         };
 
@@ -740,16 +742,35 @@ namespace Alis.App.Hub.Windows
 
             ImGui.PopStyleVar(1); // Restaurar estilo
         }
-
-        /// <summary>
-        /// Opens the project using the specified project
-        /// </summary>
-        /// <param name="project">The project</param>
         private void OpenProject(Project project)
         {
             Console.WriteLine($"Opening project: {project.Name}");
-            spaceWork.Project = project;
-            spaceWork.ProjectSelected = true;
+
+            // Crear el JSON con la configuración del proyecto
+            string projectConfig = JsonSerializer.Serialize(project);
+            string configFilePath = Path.Combine(Path.GetTempPath(), "projectConfig.json");
+            File.WriteAllText(configFilePath, projectConfig);
+
+            // Determinar la ruta del ejecutable del engine
+            string enginePath;
+        #if DEBUG
+            enginePath = @"C:\repositorios\Alis\1_Presentation\Engine\src\bin\Debug\lib\net8.0\Alis.App.Engine.exe";
+        #else
+            enginePath = "Alis.App.Engine";
+        #endif
+
+            // Iniciar el proceso Alis.App.Engine con el archivo JSON como argumento
+            ProcessStartInfo startInfo = new ProcessStartInfo
+            {
+                FileName = enginePath,
+                Arguments = configFilePath,
+                UseShellExecute = true,
+                CreateNoWindow = true
+            };
+            
+            spaceWork._quit = true;
+            
+            Process.Start(startInfo);
         }
 
         /// <summary>

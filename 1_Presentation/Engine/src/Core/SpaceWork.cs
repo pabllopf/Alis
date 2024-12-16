@@ -35,6 +35,7 @@ using Alis.App.Engine.Demos;
 using Alis.App.Engine.Entity;
 using Alis.App.Engine.Menus;
 using Alis.App.Engine.Windows;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Ecs.System;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Alis.Extension.Graphic.ImGui;
@@ -147,6 +148,8 @@ namespace Alis.App.Engine.Core
             TopMenu = new TopMenu(this);
             TopMenuMac = new TopMenuMac(this);
             BottomMenu = new BottomMenu(this);
+            
+            Project = JsonSerializer.Deserialize<Project>(File.ReadAllText(Path.Combine(Path.GetTempPath(), "projectConfig.json")));
         }
 
         /// <summary>
@@ -218,16 +221,11 @@ namespace Alis.App.Engine.Core
         ///     Gets or sets the value of the fps
         /// </summary>
         public int Fps { get; set; } = 60;
-
-        /// <summary>
-        ///     Gets or sets the value of the project selected
-        /// </summary>
-        public bool ProjectSelected { get; set; } = false;
         
         /// <summary>
         /// Gets or sets the value of the project
         /// </summary>
-        public Project Project { get; set; } = new Project("", "" , "", "Never", "2021.1.0");
+        public Project Project { get; set; }
         
         /// <summary>
         /// Gets or sets the value of the event

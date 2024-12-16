@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Data.Json;
+
 namespace Alis.App.Engine.Entity
 {
     /// <summary>
@@ -42,6 +44,7 @@ namespace Alis.App.Engine.Entity
         /// <param name="cloudStatus">The cloud status</param>
         /// <param name="modifiedDate">The modified date</param>
         /// <param name="editorVersion">The editor version</param>
+        [JsonConstructor]
         public Project(string name, string path, string cloudStatus, string modifiedDate, string editorVersion)
         {
             Name = name;
@@ -54,36 +57,43 @@ namespace Alis.App.Engine.Entity
         /// <summary>
         ///     Gets the value of the name
         /// </summary>
+        [JsonPropertyName("_name_")]
         public string Name { get; } = "Not Set";
 
         /// <summary>
         ///     Gets the value of the path
         /// </summary>
+        [JsonPropertyName("_path_")]
         public string Path { get; } = "Not Set";
 
         /// <summary>
         ///     Gets the value of the cloud status
         /// </summary>
+        [JsonPropertyName("_cloudStatus_")]
         public string CloudStatus { get; } = "Not Synced";
 
         /// <summary>
         ///     Gets the value of the modified date
         /// </summary>
+        [JsonPropertyName("_modifiedDate_")]
         public string ModifiedDate { get; } = "Never";
 
         /// <summary>
         ///     Gets the value of the editor version
         /// </summary>
+        [JsonPropertyName("_editorVersion_")]
         public string EditorVersion { get; } = "2021.1.0";
 
         /// <summary>
         ///     Gets or sets the value of the version
         /// </summary>
+        [JsonPropertyName("_version_")]
         public string Version { get; set; } = "1.0.0";
 
         /// <summary>
         ///     Gets or sets the value of the last modified
         /// </summary>
+        [JsonPropertyName("_lastModified_")]
         public string LastModified { get; set; } = "Never";
     }
 }

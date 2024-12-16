@@ -749,7 +749,6 @@ namespace Alis.App.Engine.Hub
         {
             Console.WriteLine($"Opening project: {project.Name}");
             spaceWork.Project = project;
-            spaceWork.ProjectSelected = true;
         }
 
         /// <summary>

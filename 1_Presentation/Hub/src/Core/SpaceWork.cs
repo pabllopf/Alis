@@ -129,6 +129,11 @@ namespace Alis.App.Hub.Core
         public Project Project { get; set; } = new Project("", "" , "", "Never", "2021.1.0");
         
         /// <summary>
+        ///     The quit
+        /// </summary>
+        public bool _quit;
+        
+        /// <summary>
         /// Gets or sets the value of the event
         /// </summary>
         public Event Event { get; set; }
