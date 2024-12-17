@@ -38,7 +38,7 @@ namespace Alis.Core.Aspect.Math
     ///     frames.
     /// </summary>
     [Serializable]
-    public struct Transform : ISerializable
+    public struct Transform : ISerializable, ICloneable
     {
         /// <summary>
         ///     The
@@ -95,6 +95,11 @@ namespace Alis.Core.Aspect.Math
         {
             Position = position;
             Rotation = angle;
+        }
+
+        public object Clone()
+        {
+            return new Transform(Position, Rotation, Scale);
         }
     }
 }

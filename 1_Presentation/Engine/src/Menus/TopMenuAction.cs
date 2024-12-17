@@ -30,7 +30,10 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Alis.App.Engine.Core;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Ecs.Component.Render;
+using Alis.Core.Ecs.Entity;
 
 namespace Alis.App.Engine.Menus
 {
@@ -39,6 +42,11 @@ namespace Alis.App.Engine.Menus
     /// </summary>
     public static class TopMenuAction
     {
+        /// <summary>
+        /// The space work
+        /// </summary>
+        private static SpaceWork spaceWork;
+
         // Diccionario para mapear las acciones del menú con sus métodos
         /// <summary>
         /// The action
@@ -58,11 +66,6 @@ namespace Alis.App.Engine.Menus
             MenuActions.Add("Quit Alis", QuitAlis);
 
             MenuActions.Add("New Scene", NewScene);
-            MenuActions.Add("Open Scene...", OpenScene);
-            MenuActions.Add("Open Recent Scene", OpenRecentScene);
-            MenuActions.Add("Save", SaveScene);
-            MenuActions.Add("Save As...", SaveAsScene);
-            MenuActions.Add("Save As Scene Template...", SaveAsSceneTemplate);
             MenuActions.Add("New Project", NewProject);
             MenuActions.Add("Open Project", OpenProject);
             MenuActions.Add("Save Project", SaveProject);
@@ -187,41 +190,25 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void NewScene()
         {
+            Scene scene = new Scene().Builder()
+                .Name("New Scene")
+                .Add<GameObject>(camera => camera
+                    .Name("Main Camera")
+                    .AddComponent(new Camera()) 
+                    .Build())
+                .Build();
+            spaceWork.VideoGame.Context.SceneManager.Add(scene);
+            spaceWork.VideoGame.Context.SceneManager.CurrentScene = scene;
+            spaceWork.VideoGame.Save();
+            spaceWork.VideoGame.Context.SceneManager.LoadScene(scene);
         }
-
-        /// <summary>
-        /// Opens the scene
-        /// </summary>
-        private static void OpenScene()
-        {
-        }
-
-        /// <summary>
-        /// Opens the recent scene
-        /// </summary>
-        private static void OpenRecentScene()
-        {
-        }
-
-        /// <summary>
-        /// Saves the scene
-        /// </summary>
-        private static void SaveScene()
-        {
-        }
-
-        /// <summary>
-        /// Saves the as scene
-        /// </summary>
-        private static void SaveAsScene()
-        {
-        }
-
+        
         /// <summary>
         /// Saves the as scene template
         /// </summary>
         private static void SaveAsSceneTemplate()
         {
+            
         }
 
         /// <summary>
@@ -243,6 +230,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void SaveProject()
         {
+            spaceWork.VideoGame.Save();
         }
 
         /// <summary>
@@ -264,6 +252,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void Close()
         {
+            spaceWork._quit = true;
         }
 
         /// <summary>
@@ -754,6 +743,15 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void ReportBug()
         {
+        }
+
+        /// <summary>
+        /// Sets the space work using the specified space
+        /// </summary>
+        /// <param name="space">The space</param>
+        public static void SetSpaceWork(SpaceWork space)
+        {
+            spaceWork = space;
         }
     }
 }

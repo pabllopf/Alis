@@ -42,7 +42,7 @@ namespace Alis.Core.Ecs.Component
     /// </summary>
     /// <seealso cref="IComponent{GameObject}" />
     /// <seealso cref="ISerializable" />
-    public abstract class AComponent : IComponent<GameObject>
+    public abstract class AComponent : IComponent<GameObject>, ICloneable
     {
         /// <summary>
         ///     Gets or sets the value of the game object
@@ -201,6 +201,16 @@ namespace Alis.Core.Ecs.Component
         public virtual void OnDestroy() => Logger.Trace();
 
         /// <summary>
+        /// Ons the save
+        /// </summary>
+        public virtual void OnSave() => Logger.Trace();
+
+        /// <summary>
+        /// Ons the load
+        /// </summary>
+        public virtual void OnLoad() => Logger.Trace();
+
+        /// <summary>
         ///     Attaches the game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
@@ -259,5 +269,7 @@ namespace Alis.Core.Ecs.Component
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public virtual void OnTriggerStay(GameObject gameObject) => Logger.Trace();
+
+        public virtual object Clone() => MemberwiseClone();
     }
 }

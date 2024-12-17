@@ -45,7 +45,7 @@ namespace Alis.Core.Ecs.Entity
     /// </summary>
     /// <seealso cref="IGameObject{AComponent}" />
     /// <seealso cref="ISerializable" />
-    public class GameObject : IGameObject<AComponent>, IHasBuilder<GameObjectBuilder>
+    public class GameObject : IGameObject<AComponent>, IHasBuilder<GameObjectBuilder>, ICloneable
     {
         /// <summary>
         ///     The context
@@ -198,7 +198,7 @@ namespace Alis.Core.Ecs.Entity
         {
             if (Components.Contains(value) && !PendingComponentsToRemove.Contains(value))
             {
-                PendingComponentsToRemove.Remove(value);
+                PendingComponentsToRemove.Add(value);
             }
         }
         
@@ -320,12 +320,34 @@ namespace Alis.Core.Ecs.Entity
         public void OnProcessPendingChanges()
         {
             int count = PendingComponentsToAdd.Count;
+            
+            if (count > 0)
+            {
+                foreach (AComponent component in PendingComponentsToAdd)
+                {
+                    component.Attach(this);
+                }
+                
+                foreach (AComponent component in PendingComponentsToAdd)
+                {
+                    component.OnInit();
+                }
+
+                foreach (AComponent component in PendingComponentsToAdd)
+                {
+                    component.OnAwake();
+                }
+
+                foreach (AComponent component in PendingComponentsToAdd)
+                {
+                    component.OnStart();
+                }
+            }
 
             while (PendingComponentsToAdd.Count > 0)
             {
                 AComponent component = PendingComponentsToAdd[0];
                 PendingComponentsToAdd.RemoveAt(0);
-                component.Attach(this);
                 Components.Add(component);
             }
 
@@ -336,24 +358,6 @@ namespace Alis.Core.Ecs.Entity
                 component.OnStop();
                 component.OnExit();
                 Components.Remove(component);
-            }
-
-            if (count > 0)
-            {
-                foreach (AComponent component in Components)
-                {
-                    component.OnInit();
-                }
-
-                foreach (AComponent component in Components)
-                {
-                    component.OnAwake();
-                }
-
-                foreach (AComponent component in Components)
-                {
-                    component.OnStart();
-                }
             }
         }
 
@@ -524,6 +528,16 @@ namespace Alis.Core.Ecs.Entity
         }
 
         /// <summary>
+        /// Ons the save
+        /// </summary>
+        public void OnSave() => Components.ForEach(i => i.OnSave());
+
+        /// <summary>
+        /// Ons the load
+        /// </summary>
+        public void OnLoad() => Components.ForEach(i => i.OnLoad());
+
+        /// <summary>
         ///     Builders this instance
         /// </summary>
         /// <returns>The game object builder</returns>
@@ -536,6 +550,19 @@ namespace Alis.Core.Ecs.Entity
         public void SetContext(Context context)
         {
             _context = context;
+        }
+
+        public object Clone()
+        {
+            List<AComponent> componentsCloned = new List<AComponent>();
+            for (int i = 0; i < Components.Count; i++)
+            {
+                componentsCloned.Add((AComponent) Components[i].Clone());
+            }
+            
+            Guid guid = Guid.NewGuid();
+            
+            return new GameObject(IsEnable, Name,guid.ToString() , Tag, (Transform) Transform.Clone(), componentsCloned);
         }
     }
 }

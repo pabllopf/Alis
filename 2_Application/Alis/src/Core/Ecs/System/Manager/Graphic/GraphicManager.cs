@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Logging;
@@ -361,20 +362,9 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                         collider.Render(renderer, cameraPosition, cameraResolution, pixelsPerMeter, debugColor);
                     }
                 }
-
-                //RenderCircleAtWorldPosition(new Vector2(0, 0), 2);
-
-                RenderCircleAtWorldPosition(new Vector2(2, 2), 2);
-
-                RenderCircleAtWorldPosition(new Vector2(7, -7), 2);
-
-                RenderCircleAtWorldPosition(new Vector2(-7, 7), 2);
-
-                RenderCircleAtWorldPosition(new Vector2(-2, -2), 2);
-
+                
                 // draw a circle of radius 2 at the mouse position:
                 RenderCircleAtWorldPosition(worldPosition, 2);
-
 
                 Sdl.SetRenderTarget(renderer, IntPtr.Zero);
 
@@ -389,6 +379,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// <param name="worldPosition">The world position</param>
         /// <param name="radius">The radius</param>
         /// <exception cref="InvalidOperationException">No cameras available to perform the rendering.</exception>
+        [Conditional("DEBUG")]
         public void RenderCircleAtWorldPosition(Vector2 worldPosition, float radius)
         {
             if (Cameras.Count == 0)

@@ -742,6 +742,10 @@ namespace Alis.App.Hub.Windows
 
             ImGui.PopStyleVar(1); // Restaurar estilo
         }
+        /// <summary>
+        /// Opens the project using the specified project
+        /// </summary>
+        /// <param name="project">The project</param>
         private void OpenProject(Project project)
         {
             Console.WriteLine($"Opening project: {project.Name}");

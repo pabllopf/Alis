@@ -29,7 +29,9 @@
 
 using System;
 using System.Collections.Generic;
+using Alis.Builder.Core.Ecs.Entity.Scene;
 using Alis.Core.Aspect.Data.Json;
+using Alis.Core.Aspect.Fluent;
 using Alis.Core.Ecs.System.Scope;
 
 namespace Alis.Core.Ecs.Entity
@@ -37,7 +39,7 @@ namespace Alis.Core.Ecs.Entity
     /// <summary>
     ///     The scene class
     /// </summary>
-    public class Scene : IScene<GameObject>
+    public class Scene : IScene<GameObject>, IHasBuilder<SceneBuilder>
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="Scene" /> class
@@ -91,7 +93,7 @@ namespace Alis.Core.Ecs.Entity
             PendingGameObjectsToAdd = new List<GameObject>();
             PendingGameObjectsToRemove = new List<GameObject>();
         }
-
+        
         /// <summary>
         ///     The context
         /// </summary>
@@ -211,11 +213,35 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         public void OnProcessPendingChanges()
         {
+            int count = PendingGameObjectsToAdd.Count;
+            
+            if (count > 0)
+            {
+                foreach (GameObject gameObject in PendingGameObjectsToAdd)
+                {
+                    gameObject.SetContext(Context);
+                }
+                
+                foreach (GameObject gameObject in PendingGameObjectsToAdd)
+                {
+                    gameObject.OnInit();
+                }
+
+                foreach (GameObject gameObject in PendingGameObjectsToAdd)
+                {
+                    gameObject.OnAwake();
+                }
+
+                foreach (GameObject gameObject in PendingGameObjectsToAdd)
+                {
+                    gameObject.OnStart();
+                }
+            }
+            
             while (PendingGameObjectsToAdd.Count > 0)
             {
                 GameObject gameObject = PendingGameObjectsToAdd[0];
                 PendingGameObjectsToAdd.RemoveAt(0);
-                gameObject.SetContext(Context);
                 GameObjects.Add(gameObject);
             }
             
@@ -223,6 +249,8 @@ namespace Alis.Core.Ecs.Entity
             {
                 GameObject gameObject = PendingGameObjectsToRemove[0];
                 PendingGameObjectsToRemove.RemoveAt(0);
+                gameObject.OnStop();
+                gameObject.OnExit();
                 GameObjects.Remove(gameObject);
             }
             
@@ -351,6 +379,16 @@ namespace Alis.Core.Ecs.Entity
         }
 
         /// <summary>
+        /// Ons the save
+        /// </summary>
+        public void OnSave() => GameObjects.ForEach(i => i.OnSave());
+
+        /// <summary>
+        /// Ons the load
+        /// </summary>
+        public void OnLoad() => GameObjects.ForEach(i => i.OnLoad());
+
+        /// <summary>
         ///     Adds the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
@@ -373,7 +411,7 @@ namespace Alis.Core.Ecs.Entity
         {
             if (GameObjects.Contains(value) && !PendingGameObjectsToRemove.Contains(value))
             {
-                PendingGameObjectsToRemove.Remove(value);
+                PendingGameObjectsToRemove.Add(value);
             }
         }
 
@@ -460,5 +498,7 @@ namespace Alis.Core.Ecs.Entity
             Context = context;
             GameObjects.ForEach(i => i.SetContext(context));
         }
+
+        public SceneBuilder Builder() => new SceneBuilder(this.Context);
     }
 }

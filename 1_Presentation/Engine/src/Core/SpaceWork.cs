@@ -153,6 +153,11 @@ namespace Alis.App.Engine.Core
         }
 
         /// <summary>
+        ///     The quit
+        /// </summary>
+        public bool _quit = false;
+        
+        /// <summary>
         /// Gets the value of the is mac os
         /// </summary>
         public bool IsMacOs => RuntimeInformation.IsOSPlatform(OSPlatform.OSX);

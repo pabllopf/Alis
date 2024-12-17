@@ -108,6 +108,16 @@ namespace Alis.Core.Ecs.System
         ///     Starts the preview
         /// </summary>
         public void StartPreview() => _contextHandler.StartPreview();
+        
+        /// <summary>
+        /// Saves this instance
+        /// </summary>
+        public void Save() => _contextHandler.Save();
+        
+        /// <summary>
+        /// Loads this instance
+        /// </summary>
+        public void Load() => _contextHandler.Load();
 
         /// <summary>
         ///     Creates a new instance of the <see cref="VideoGameBuilder" />.

@@ -177,5 +177,15 @@ namespace Alis.Core.Ecs.System.Execution
         ///     Ons the exit
         /// </summary>
         public void OnExit() => runtimes.ForEach(x => x.OnExit());
+
+        /// <summary>
+        /// Ons the save
+        /// </summary>
+        public void OnSave() => runtimes.ForEach(x => x.OnSave());
+        
+        /// <summary>
+        /// Ons the load
+        /// </summary>
+        public void OnLoad() => runtimes.ForEach(x => x.OnLoad());
     }
 }
