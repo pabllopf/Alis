@@ -46,7 +46,7 @@ using Alis.Extension.Graphic.OpenGL.Enums;
 using Alis.Extension.Graphic.Sdl2Image;
 using PixelFormat = Alis.Extension.Graphic.OpenGL.Enums.PixelFormat;
 
-namespace Alis.App.Hub.Hub
+namespace Alis.App.Hub.Windows
 {
     /// <summary>
     ///     The hub menu class
