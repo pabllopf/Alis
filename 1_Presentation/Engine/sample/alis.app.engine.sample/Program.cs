@@ -31,8 +31,15 @@ using System;
 
 namespace Alis.App.Engine.Sample
 {
+    /// <summary>
+    /// The program class
+    /// </summary>
     public static class Program
     {
+        /// <summary>
+        /// Main the args
+        /// </summary>
+        /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");

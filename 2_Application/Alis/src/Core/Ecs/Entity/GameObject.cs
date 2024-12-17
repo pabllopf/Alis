@@ -152,9 +152,15 @@ namespace Alis.Core.Ecs.Entity
         [JsonPropertyName("_Components_")]
         public List<AComponent> Components { get; set; }
         
+        /// <summary>
+        /// Gets the value of the pending components to add
+        /// </summary>
         [JsonPropertyName("_PendingComponentsToAdd_")]
         public List<AComponent> PendingComponentsToAdd { get; }
         
+        /// <summary>
+        /// Gets the value of the pending components to remove
+        /// </summary>
         [JsonPropertyName("_PendingComponentsToRemove_")]
         public List<AComponent> PendingComponentsToRemove { get; }
         
@@ -164,6 +170,9 @@ namespace Alis.Core.Ecs.Entity
         [JsonPropertyName("_IsStatic_")]
         public bool IsStatic { get; set; } = false;
 
+        /// <summary>
+        /// Gets or sets the value of the layer
+        /// </summary>
         [JsonPropertyName("_Layer_")]
         public string Layer { get; set; } = "Default";
 
@@ -305,6 +314,9 @@ namespace Alis.Core.Ecs.Entity
             }
         }
 
+        /// <summary>
+        /// Ons the process pending changes
+        /// </summary>
         public void OnProcessPendingChanges()
         {
             int count = PendingComponentsToAdd.Count;

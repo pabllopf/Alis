@@ -66,8 +66,14 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         private bool isOpen = true;
 
+        /// <summary>
+        /// The directory separator char
+        /// </summary>
         private string CurrentPath = $"{Path.DirectorySeparatorChar}Assets";
 
+        /// <summary>
+        /// The file audio
+        /// </summary>
         private Dictionary<string, string> fileIcons = new Dictionary<string, string>
         {
             {".png", FontAwesome5.FileImage},
@@ -140,6 +146,9 @@ namespace Alis.App.Engine.Windows
             {".midi", FontAwesome5.FileAudio},
         };
 
+        /// <summary>
+        /// The ignore patterns
+        /// </summary>
         private string[] ignorePatterns = new[] {"*.meta", "*.tmp", ".DS_Store"};
 
         /// <summary>
@@ -323,6 +332,9 @@ namespace Alis.App.Engine.Windows
         }
 
 
+        /// <summary>
+        /// Renders the search bar
+        /// </summary>
         private void RenderSearchBar()
         {
             ImGui.SameLine();
@@ -344,6 +356,10 @@ namespace Alis.App.Engine.Windows
         }
 
 
+        /// <summary>
+        /// Renders the files on folder using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
         private void RenderFilesOnFolder(string text)
         {
             string path = $"{SpaceWork.Project.Path}{CurrentPath}";
@@ -456,6 +472,9 @@ namespace Alis.App.Engine.Windows
         }
 
 
+        /// <summary>
+        /// Renders the assets
+        /// </summary>
         private void RenderAssets()
         {
             ImGui.SameLine();
@@ -521,8 +540,14 @@ namespace Alis.App.Engine.Windows
             ImGui.EndChild();
         }
 
+        /// <summary>
+        /// Gets or sets the value of the is default size
+        /// </summary>
         public bool IsDefaultSize { get; set; } = true;
 
+        /// <summary>
+        /// Renders the folders
+        /// </summary>
         private void RenderFolders()
         {
             string path = Path.Combine(SpaceWork.Project.Path, "Assets");
@@ -535,9 +560,20 @@ namespace Alis.App.Engine.Windows
             ImGui.EndChild();
         }
 
+        /// <summary>
+        /// The is move directory
+        /// </summary>
         private bool IsMoveDirectory = false;
+        /// <summary>
+        /// The search text
+        /// </summary>
         private string searchText = "";
 
+        /// <summary>
+        /// Renders the directory using the specified path
+        /// </summary>
+        /// <param name="path">The path</param>
+        /// <param name="isRoot">The is root</param>
         private void RenderDirectory(string path, bool isRoot = false)
         {
             if (isRoot)
@@ -587,6 +623,10 @@ namespace Alis.App.Engine.Windows
             }
         }
 
+        /// <summary>
+        /// Renders the sub directories using the specified path
+        /// </summary>
+        /// <param name="path">The path</param>
         private void RenderSubDirectories(string path)
         {
             string[] folders = Directory.GetDirectories(path, "*", SearchOption.TopDirectoryOnly);
@@ -597,6 +637,9 @@ namespace Alis.App.Engine.Windows
             }
         }
 
+        /// <summary>
+        /// Renders the path of folder
+        /// </summary>
         private void RenderPathOfFolder()
         {
             // Divide the path into folders:
@@ -632,6 +675,9 @@ namespace Alis.App.Engine.Windows
             }
         }
 
+        /// <summary>
+        /// Renders the files on folder
+        /// </summary>
         private void RenderFilesOnFolder()
         {
             string path = $"{SpaceWork.Project.Path}{CurrentPath}";

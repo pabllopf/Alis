@@ -121,7 +121,13 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public IntPtr Window;
 
+        /// <summary>
+        /// The font loaded 10 solid
+        /// </summary>
         public ImFontPtr fontLoaded10Solid;
+        /// <summary>
+        /// The font loaded 30 bold
+        /// </summary>
         public ImFontPtr fontLoaded30Bold;
 
         /// <summary>
@@ -218,8 +224,14 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public bool ProjectSelected { get; set; } = false;
         
+        /// <summary>
+        /// Gets or sets the value of the project
+        /// </summary>
         public Project Project { get; set; } = new Project("", "" , "", "Never", "2021.1.0");
         
+        /// <summary>
+        /// Gets or sets the value of the event
+        /// </summary>
         public Event Event { get; set; }
 
         /// <summary>

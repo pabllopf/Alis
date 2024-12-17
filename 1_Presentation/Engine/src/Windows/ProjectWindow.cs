@@ -8,17 +8,40 @@ using Alis.Extension.Graphic.ImGui.Native;
 
 namespace Alis.App.Engine.Windows
 {
+    /// <summary>
+    /// The project window class
+    /// </summary>
+    /// <seealso cref="IWindow"/>
     public class ProjectWindow : IWindow
     {
+        /// <summary>
+        /// The stream
+        /// </summary>
         private static readonly string NameWindow = $"{FontAwesome5.Stream} Project";
+        /// <summary>
+        /// The group by
+        /// </summary>
         private string _groupBy = "None";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ProjectWindow"/> class
+        /// </summary>
+        /// <param name="spaceWork">The space work</param>
         public ProjectWindow(SpaceWork spaceWork) => SpaceWork = spaceWork;
 
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
         public void Initialize() { }
 
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
         public void Start() { }
 
+        /// <summary>
+        /// Renders this instance
+        /// </summary>
         public void Render()
         {
             if (ImGui.Begin(NameWindow, ImGuiWindowFlags.MenuBar))
@@ -68,6 +91,10 @@ namespace Alis.App.Engine.Windows
             ImGui.End();
         }
 
+        /// <summary>
+        /// Renders the grouped by tag using the specified game objects
+        /// </summary>
+        /// <param name="gameObjects">The game objects</param>
         private void RenderGroupedByTag(List<GameObject> gameObjects)
         {
             Dictionary<string, List<GameObject>> groupedByTag = new Dictionary<string, List<GameObject>>();
@@ -96,6 +123,10 @@ namespace Alis.App.Engine.Windows
             }
         }
 
+        /// <summary>
+        /// Renders the grouped by layer using the specified game objects
+        /// </summary>
+        /// <param name="gameObjects">The game objects</param>
         private void RenderGroupedByLayer(List<GameObject> gameObjects)
         {
             Dictionary<string, List<GameObject>> groupedByLayer = new Dictionary<string, List<GameObject>>();
@@ -126,6 +157,10 @@ namespace Alis.App.Engine.Windows
             }
         }
 
+        /// <summary>
+        /// Renders the game objects using the specified game objects
+        /// </summary>
+        /// <param name="gameObjects">The game objects</param>
         private void RenderGameObjects(List<GameObject> gameObjects)
         {
             foreach (GameObject gameObject in gameObjects)
@@ -134,6 +169,10 @@ namespace Alis.App.Engine.Windows
             }
         }
 
+        /// <summary>
+        /// Renders the game object hierarchy using the specified game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
         private void RenderGameObjectHierarchy(GameObject gameObject)
         {
             ImGui.Selectable($"{FontAwesome5.Cube} {gameObject.Name} ##{gameObject.Id}", false);
@@ -169,21 +208,36 @@ namespace Alis.App.Engine.Windows
             }
         }
 
+        /// <summary>
+        /// Duplicates the game object using the specified game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
         private void DuplicateGameObject(GameObject gameObject)
         {
             // Logic to duplicate the game object
         }
 
+        /// <summary>
+        /// Deletes the game object using the specified game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
         private void DeleteGameObject(GameObject gameObject)
         {
             // Logic to delete the game object
         }
 
+        /// <summary>
+        /// Renames the game object using the specified game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
         private void RenameGameObject(GameObject gameObject)
         {
             // Logic to rename the game object
         }
 
+        /// <summary>
+        /// Gets the value of the space work
+        /// </summary>
         public SpaceWork SpaceWork { get; }
     }
 }

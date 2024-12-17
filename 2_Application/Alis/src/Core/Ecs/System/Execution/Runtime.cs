@@ -113,6 +113,9 @@ namespace Alis.Core.Ecs.System.Execution
         /// </summary>
         public void OnAfterUpdate() => runtimes.ForEach(x => x.OnAfterUpdate());
         
+        /// <summary>
+        /// Ons the process pending changes
+        /// </summary>
         public void OnProcessPendingChanges() => runtimes.ForEach(x => x.OnProcessPendingChanges());
 
         /// <summary>

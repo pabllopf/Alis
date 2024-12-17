@@ -55,6 +55,9 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
     /// <seealso cref="AManager" />
     public class GraphicManager : AManager
     {
+        /// <summary>
+        /// The world position
+        /// </summary>
         public Vector2 worldPosition;
 
         /// <summary>
@@ -380,6 +383,12 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             }
         }
 
+        /// <summary>
+        /// Renders the circle at world position using the specified world position
+        /// </summary>
+        /// <param name="worldPosition">The world position</param>
+        /// <param name="radius">The radius</param>
+        /// <exception cref="InvalidOperationException">No cameras available to perform the rendering.</exception>
         public void RenderCircleAtWorldPosition(Vector2 worldPosition, float radius)
         {
             if (Cameras.Count == 0)
@@ -482,6 +491,13 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
 
 
+        /// <summary>
+        /// Screens the to world using the specified mouse position relative to texture centered
+        /// </summary>
+        /// <param name="mousePositionRelativeToTextureCentered">The mouse position relative to texture centered</param>
+        /// <param name="textureSize">The texture size</param>
+        /// <exception cref="InvalidOperationException">No cameras available to perform the conversion.</exception>
+        /// <returns>The world position</returns>
         public Vector2 ScreenToWorld(Vector2 mousePositionRelativeToTextureCentered, Vector2 textureSize)
         {
             if (Cameras.Count == 0)
