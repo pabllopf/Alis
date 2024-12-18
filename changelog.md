@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.5.0] - 2024-12-20
+### :sparkles: New Features
+- [`ded7106`](https://github.com/pabllopf/Alis/commit/ded710638451974e898f934f60095d8545c0a002) - add new project with hub *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5cf7037`](https://github.com/pabllopf/Alis/commit/5cf703787b79493683485244e678f82c313429d4) - add new hub control and project creation tool *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`77733b9`](https://github.com/pabllopf/Alis/commit/77733b9e4481c9a1d3391786311d187bdab56232) - add new system of load scenes, clone, duplicate and remove object of scenes. *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`a36567b`](https://github.com/pabllopf/Alis/commit/a36567ba7706bc5a78e153a3c5e3db34d87929f2) - delete unless class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`72c6afb`](https://github.com/pabllopf/Alis/commit/72c6afb5ab0e50ae8ce676c4df4ddb3ba94db534) - icons on projects *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5981e1a`](https://github.com/pabllopf/Alis/commit/5981e1a64699bcd8ce531e039521e890a8aef5dc) - add new correction to serialice physics *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`07f927d`](https://github.com/pabllopf/Alis/commit/07f927d61ff6f169c5af18db55142ab59be93d21) - init with rotation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cdb6e0e`](https://github.com/pabllopf/Alis/commit/cdb6e0ef57e26fca2d70f397ab152ba83d159923) - the contextSetting.Physic.DebugMode *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`4bd0c06`](https://github.com/pabllopf/Alis/commit/4bd0c06099207ee2c2a7998f07a494333c126823) - pro check all process *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c70be5a`](https://github.com/pabllopf/Alis/commit/c70be5af7cdee4628712dd13cc1c46eeaf925a4f) - pro check and fix all tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.4.9] - 2024-12-16
 ### :sparkles: New Features
 - [`042d4bb`](https://github.com/pabllopf/Alis/commit/042d4bb89e5a5f1cd6e279e61d673c9b5b321e41) - add new form to select project. *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -3736,3 +3754,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.4.7]: https://github.com/pabllopf/Alis/compare/v0.4.6...v0.4.7
 [v0.4.8]: https://github.com/pabllopf/Alis/compare/v0.4.7...v0.4.8
 [v0.4.9]: https://github.com/pabllopf/Alis/compare/v0.4.8...v0.4.9
+[v0.5.0]: https://github.com/pabllopf/Alis/compare/v0.4.9...v0.5.0
