@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
     <PropertyGroup Condition="
-        ($(AssemblyName.Contains('Template')) == true OR
         $(AssemblyName.Contains('Sample')) == true OR
-        $(AssemblyName.Contains('Test')) == true OR 
-        $(AssemblyName.Contains('Benchmark')) == true)">
+        $(AssemblyName.Contains('Test')) == true">
         <SonarQubeExclude>true</SonarQubeExclude>
     </PropertyGroup>
 </Project>
