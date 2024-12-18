@@ -30,10 +30,15 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
+using Alis.Extension.Graphic.ImGui;
+using Alis.Extension.Graphic.ImGui.Native;
+using MonoMac.AppKit;
 
 namespace Alis.App.Engine.Menus
 {
@@ -168,7 +173,31 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void AboutAlis()
         {
-            Logger.Info("About Alis");
+            string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            if (OperatingSystem.IsMacOS())
+            {
+                NSAlert alert = new NSAlert
+                {
+                    AlertStyle = NSAlertStyle.Informational,
+                    MessageText = "About Alis",
+                    InformativeText = $"Version v{version} \nby Pablo Perdomo Falcón"
+                };
+                alert.RunModal();
+            }
+            if (OperatingSystem.IsWindows() || OperatingSystem.IsLinux())
+            {
+                ImGui.OpenPopup("About Alis");
+                if (ImGui.BeginPopupModal("About Alis"))
+                {
+                    ImGui.Text($"Version {version}");
+                    ImGui.Text("by Pablo Perdomo Falcón");
+                    if (ImGui.Button("OK"))
+                    {
+                        ImGui.CloseCurrentPopup();
+                    }
+                    ImGui.EndPopup();
+                }
+            }
         }
 
         /// <summary>
@@ -197,8 +226,8 @@ namespace Alis.App.Engine.Menus
                     .AddComponent(new Camera()) 
                     .Build())
                 .Build();
+            
             spaceWork.VideoGame.Context.SceneManager.Add(scene);
-            spaceWork.VideoGame.Context.SceneManager.CurrentScene = scene;
             spaceWork.VideoGame.Save();
             spaceWork.VideoGame.Context.SceneManager.LoadScene(scene);
         }
@@ -729,6 +758,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void AlisManual()
         {
+            OpenUrl("https://www.alisengine.com");
         }
 
         /// <summary>
@@ -736,6 +766,38 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void APIReference()
         {
+            // open url on browser:
+            // https://www.alisengine.com/en/v0.4.0/api/Alis.html
+            OpenUrl("https://www.alisengine.com/en/v0.4.0/api/Alis.html");
+        }
+        
+        private static void OpenUrl(string url)
+        {
+            try
+            {
+                Process.Start(url);
+            }
+            catch
+            {
+                // hack because of this: https://github.com/dotnet/corefx/issues/10361
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    url = url.Replace("&", "^&");
+                    Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
+                }
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                {
+                    Process.Start("xdg-open", url);
+                }
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
+                    Process.Start("open", url);
+                }
+                else
+                {
+                    throw;
+                }
+            }
         }
 
         /// <summary>
@@ -743,6 +805,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void ReportBug()
         {
+            OpenUrl("https://github.com/pabllopf/Alis/issues/new?assignees=&labels=&projects=&template=bug_report.md&title=");
         }
 
         /// <summary>

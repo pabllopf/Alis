@@ -32,6 +32,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Threading;
+using System.Threading.Tasks;
 using Alis.App.Engine.Fonts;
 using Alis.App.Hub.Core;
 using Alis.App.Hub.Entity;
@@ -75,9 +77,9 @@ namespace Alis.App.Hub.Windows
         /// </summary>
         private readonly List<Project> projects = new List<Project>
         {
-            new Project("MacOS Project", "/Users/pabllopf/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", "NOT CONNECTED", "3 days ago", "v0.4.5"),
+            new Project("MacOS Project", "/Users/pabllopf/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", "NOT CONNECTED", "3 days ago", "0.4.5"),
             new Project("MacOS Project(latest)", "/Users/pabllopf/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", "NOT CONNECTED", "3 days ago", "latest"),
-            new Project("Windows Project", "C:/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", "NOT CONNECTED", "5 minutes", "v0.4.4")
+            new Project("Windows Project", "C:/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", "NOT CONNECTED", "5 minutes", "0.4.4")
         };
 
         /// <summary>
@@ -756,13 +758,21 @@ namespace Alis.App.Hub.Windows
             File.WriteAllText(configFilePath, projectConfig);
 
             // Determinar la ruta del ejecutable del engine
-            string enginePath;
+            string enginePath = string.Empty;
         #if DEBUG
-            enginePath = @"C:\repositorios\Alis\1_Presentation\Engine\src\bin\Debug\lib\net8.0\Alis.App.Engine.exe";
+            if (OperatingSystem.IsWindows())
+            {
+                enginePath = @"C:\repositorios\Alis\1_Presentation\Engine\src\bin\Debug\lib\net8.0/Alis.App.Engine.exe";
+            }
+            
+            if (OperatingSystem.IsMacOS())
+            {
+                enginePath = @"/Users/pabllopf/Repositorios/Alis/1_Presentation/Engine/src/bin/Debug/lib/net8.0/Alis.App.Engine";
+            }
         #else
-            enginePath = "Alis.App.Engine";
+                    enginePath = $"Editor/{project.EditorVersion}/Alis.App.Engine";
         #endif
-
+            
             // Iniciar el proceso Alis.App.Engine con el archivo JSON como argumento
             ProcessStartInfo startInfo = new ProcessStartInfo
             {
@@ -772,9 +782,16 @@ namespace Alis.App.Hub.Windows
                 CreateNoWindow = true
             };
             
-            spaceWork._quit = true;
-            
-            Process.Start(startInfo);
+            Task.Run(() =>
+            {
+                using (Process process = Process.Start(startInfo))
+                {
+                    if (process != null)
+                    {
+                        process.WaitForExit();
+                    }
+                }
+            });
         }
 
         /// <summary>
