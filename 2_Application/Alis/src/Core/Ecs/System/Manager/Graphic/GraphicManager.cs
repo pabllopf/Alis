@@ -352,19 +352,22 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                     }
                 }
 
-                // Render colliders
-                Sdl.SetRenderDrawColor(renderer, debugColor.R, debugColor.G, debugColor.B, debugColor.A);
-
-                foreach (BoxCollider collider in ColliderBases)
+                if (contextSetting.Physic.DebugMode)
                 {
-                    if (collider.IsEnable && collider.GameObject.IsEnable && collider.IsVisible(cameraPosition, cameraResolution, pixelsPerMeter))
+                    // Render colliders
+                    Sdl.SetRenderDrawColor(renderer, debugColor.R, debugColor.G, debugColor.B, debugColor.A);
+
+                    foreach (BoxCollider collider in ColliderBases)
                     {
-                        collider.Render(renderer, cameraPosition, cameraResolution, pixelsPerMeter, debugColor);
+                        if (collider.IsEnable && collider.GameObject.IsEnable && collider.IsVisible(cameraPosition, cameraResolution, pixelsPerMeter))
+                        {
+                            collider.Render(renderer, cameraPosition, cameraResolution, pixelsPerMeter, debugColor);
+                        }
                     }
+
+                    // draw a circle of radius 2 at the mouse position:
+                    RenderCircleAtWorldPosition(worldPosition, 2);
                 }
-                
-                // draw a circle of radius 2 at the mouse position:
-                RenderCircleAtWorldPosition(worldPosition, 2);
 
                 Sdl.SetRenderTarget(renderer, IntPtr.Zero);
 
