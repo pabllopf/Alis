@@ -8,6 +8,11 @@
         <OutputType>Exe</OutputType>
     </PropertyGroup>
 
+    <PropertyGroup Condition="
+    $(AssemblyName.Contains('App')) == true AND
+    $(IsWindows) == true">
+        <OutputType>WinExe</OutputType>
+    </PropertyGroup>
 
     <PropertyGroup Condition="
     $(AssemblyName.Contains('Test')) == false AND
@@ -17,4 +22,5 @@
     $(AssemblyName.Contains('Sample')) == false">
         <OutputType>Library</OutputType>
     </PropertyGroup>
+    
 </Project>
