@@ -316,7 +316,6 @@ namespace Alis.Core.Ecs.Entity
 
         public void OnProcessPendingChanges()
         {
-            Components.ForEach(i => i.OnProcessPendingChanges());
             AddPendingComponents();
             RemovePendingComponents();
         }
@@ -560,6 +559,7 @@ namespace Alis.Core.Ecs.Entity
         public void SetContext(Context context)
         {
             _context = context;
+            Components.ForEach(i => i.Attach(this));
         }
 
         public object Clone()

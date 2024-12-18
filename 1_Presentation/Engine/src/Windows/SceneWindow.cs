@@ -42,6 +42,7 @@ using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
 using Alis.Core.Ecs.System;
 using Alis.Core.Graphic.Sdl2;
+using Alis.Core.Physic.Dynamics;
 using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Native;
 using Alis.Extension.Graphic.OpenGL;
@@ -704,11 +705,16 @@ namespace Alis.App.Engine.Windows
                     .AddComponent<BoxCollider>(collider => collider.Builder()
                         .Size(2, 2)
                         .IsTrigger()
+                        .BodyType(BodyType.Static)
+                        .IgnoreGravity(true)
+                        .Rotation(0)
+                        .FixedRotation(true)
                         .Build())
                     .Build();
                 
                 // Add the GameObject to the scene
                 gameObject.Context.SceneManager.CurrentScene.Add(selectionRectangle);
+                gameObject.Context.SceneManager.CurrentScene.OnProcessPendingChanges();
             }else
             {
                 // Update the position and scale of the selection rectangle

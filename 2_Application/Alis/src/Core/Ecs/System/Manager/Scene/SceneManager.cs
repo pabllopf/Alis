@@ -141,7 +141,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
             {
                 CurrentScene = Scenes[0];
                 CurrentScene.SetContext(Context);
-                CurrentScene.OnProcessPendingChanges();
+                CurrentScene.OnInit();
             }
         }
 
@@ -152,8 +152,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene.OnAwake();
         }
-
-
+        
         /// <summary>
         ///     Ons the start
         /// </summary>
@@ -162,8 +161,6 @@ namespace Alis.Core.Ecs.System.Manager.Scene
             CurrentScene.OnStart();
         }
         
-        
-
         /// <summary>
         /// Saves this instance
         /// </summary>
