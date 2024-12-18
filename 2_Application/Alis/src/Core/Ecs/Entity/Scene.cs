@@ -208,53 +208,63 @@ namespace Alis.Core.Ecs.Entity
             GameObjects.ForEach(i => i.OnAfterUpdate());
         }
 
-        /// <summary>
-        /// Ons the process pending changes
-        /// </summary>
         public void OnProcessPendingChanges()
         {
-            int count = PendingGameObjectsToAdd.Count;
-            
-            if (count > 0)
+            GameObjects.ForEach(i => i.OnProcessPendingChanges());
+            AddPendingGameObjects();
+            RemovePendingGameObjects();
+        }
+
+        private void AddPendingGameObjects()
+        {
+            if (PendingGameObjectsToAdd.Count == 0) return;
+
+            foreach (GameObject gameObject in PendingGameObjectsToAdd)
             {
-                foreach (GameObject gameObject in PendingGameObjectsToAdd)
-                {
-                    gameObject.SetContext(Context);
-                }
-                
-                foreach (GameObject gameObject in PendingGameObjectsToAdd)
-                {
-                    gameObject.OnInit();
-                }
-
-                foreach (GameObject gameObject in PendingGameObjectsToAdd)
-                {
-                    gameObject.OnAwake();
-                }
-
-                foreach (GameObject gameObject in PendingGameObjectsToAdd)
-                {
-                    gameObject.OnStart();
-                }
+                gameObject.SetContext(Context);
             }
             
-            while (PendingGameObjectsToAdd.Count > 0)
+            foreach (GameObject gameObject in PendingGameObjectsToAdd)
             {
-                GameObject gameObject = PendingGameObjectsToAdd[0];
-                PendingGameObjectsToAdd.RemoveAt(0);
+                gameObject.OnInit();
+            }
+            
+            foreach (GameObject gameObject in PendingGameObjectsToAdd)
+            {
+                gameObject.OnAwake();
+            }
+            
+            foreach (GameObject gameObject in PendingGameObjectsToAdd)
+            {
+                gameObject.OnStart();
+            }
+            
+            foreach (GameObject gameObject in PendingGameObjectsToAdd)
+            {
                 GameObjects.Add(gameObject);
             }
             
-            while (PendingGameObjectsToRemove.Count > 0)
+            PendingGameObjectsToAdd.Clear();
+        }
+
+        private void RemovePendingGameObjects()
+        {
+            if (PendingGameObjectsToRemove.Count == 0) return;
+            
+            foreach (GameObject gameObject in PendingGameObjectsToRemove)
             {
-                GameObject gameObject = PendingGameObjectsToRemove[0];
-                PendingGameObjectsToRemove.RemoveAt(0);
                 gameObject.OnStop();
+            }
+            foreach (GameObject gameObject in PendingGameObjectsToRemove)
+            {
                 gameObject.OnExit();
+            }
+            foreach (GameObject gameObject in PendingGameObjectsToRemove)
+            {
                 GameObjects.Remove(gameObject);
             }
-            
-            GameObjects.ForEach(i => i.OnProcessPendingChanges());
+
+            PendingGameObjectsToRemove.Clear();
         }
 
         /// <summary>

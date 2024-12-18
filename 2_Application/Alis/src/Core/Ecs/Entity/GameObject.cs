@@ -151,19 +151,19 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         [JsonPropertyName("_Components_")]
         public List<AComponent> Components { get; set; }
-        
+
         /// <summary>
         /// Gets the value of the pending components to add
         /// </summary>
         [JsonPropertyName("_PendingComponentsToAdd_")]
         public List<AComponent> PendingComponentsToAdd { get; }
-        
+
         /// <summary>
         /// Gets the value of the pending components to remove
         /// </summary>
         [JsonPropertyName("_PendingComponentsToRemove_")]
         public List<AComponent> PendingComponentsToRemove { get; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the is static
         /// </summary>
@@ -201,7 +201,7 @@ namespace Alis.Core.Ecs.Entity
                 PendingComponentsToRemove.Add(value);
             }
         }
-        
+
         /// <summary>
         ///     Gets this instance
         /// </summary>
@@ -314,51 +314,61 @@ namespace Alis.Core.Ecs.Entity
             }
         }
 
-        /// <summary>
-        /// Ons the process pending changes
-        /// </summary>
         public void OnProcessPendingChanges()
         {
-            int count = PendingComponentsToAdd.Count;
-            
-            if (count > 0)
+            Components.ForEach(i => i.OnProcessPendingChanges());
+            AddPendingComponents();
+            RemovePendingComponents();
+        }
+
+        private void AddPendingComponents()
+        {
+            if (PendingComponentsToAdd.Count == 0) return;
+
+            PendingComponentsToAdd.Sort((x, y) => x.GetType().Name.CompareTo(y.GetType().Name));
+
+            foreach (AComponent component in PendingComponentsToAdd)
             {
-                foreach (AComponent component in PendingComponentsToAdd)
-                {
-                    component.Attach(this);
-                }
-                
-                foreach (AComponent component in PendingComponentsToAdd)
-                {
-                    component.OnInit();
-                }
-
-                foreach (AComponent component in PendingComponentsToAdd)
-                {
-                    component.OnAwake();
-                }
-
-                foreach (AComponent component in PendingComponentsToAdd)
-                {
-                    component.OnStart();
-                }
-            }
-
-            while (PendingComponentsToAdd.Count > 0)
-            {
-                AComponent component = PendingComponentsToAdd[0];
-                PendingComponentsToAdd.RemoveAt(0);
                 Components.Add(component);
             }
-
-            while (PendingComponentsToRemove.Count > 0)
+            foreach (AComponent component in PendingComponentsToAdd)
             {
-                AComponent component = PendingComponentsToRemove[0];
-                PendingComponentsToRemove.RemoveAt(0);
+                component.Attach(this);
+            }
+            foreach (AComponent component in PendingComponentsToAdd)
+            {
+                component.OnInit();
+            }
+            foreach (AComponent component in PendingComponentsToAdd)
+            {
+                component.OnAwake();
+            }
+            foreach (AComponent component in PendingComponentsToAdd)
+            {
+                component.OnStart();
+            }
+
+            PendingComponentsToAdd.Clear();
+        }
+
+        private void RemovePendingComponents()
+        {
+            if (PendingComponentsToRemove.Count == 0) return;
+            
+            foreach (AComponent component in PendingComponentsToRemove)
+            {
                 component.OnStop();
+            }
+            foreach (AComponent component in PendingComponentsToRemove)
+            {
                 component.OnExit();
+            }
+            foreach (AComponent component in PendingComponentsToRemove)
+            {
                 Components.Remove(component);
             }
+
+            PendingComponentsToRemove.Clear();
         }
 
         /// <summary>
@@ -559,10 +569,10 @@ namespace Alis.Core.Ecs.Entity
             {
                 componentsCloned.Add((AComponent) Components[i].Clone());
             }
-            
+
             Guid guid = Guid.NewGuid();
-            
-            return new GameObject(IsEnable, Name,guid.ToString() , Tag, (Transform) Transform.Clone(), componentsCloned);
+
+            return new GameObject(IsEnable, Name, guid.ToString(), Tag, (Transform) Transform.Clone(), componentsCloned);
         }
     }
 }
