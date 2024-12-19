@@ -217,7 +217,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         public void Quaternion_Equals_ShouldReturnFalse_WhenComparedWithDifferentType()
         {
             Quaternion quaternion = new Quaternion(1.0f, 2.0f, 3.0f, 4.0f);
-            Vector3 vector = new Vector3(1.0f, 2.0f, 3.0f);
+            Vector3F vector = new Vector3F(1.0f, 2.0f, 3.0f);
 
             Assert.False(quaternion.Equals(vector));
         }

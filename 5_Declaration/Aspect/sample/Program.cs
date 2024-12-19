@@ -100,7 +100,7 @@ namespace Alis.Core.Aspect.Sample
             Logger.Info("Math sample");
             Logger.Info("--------------------------\n");
 
-            Logger.Info(new Vector2(3.0f, 2.0f).ToString());
+            Logger.Info(new Vector2F(3.0f, 2.0f).ToString());
 
             // SAMPLE ASPECT TIME
             Logger.Info("--------------------------");

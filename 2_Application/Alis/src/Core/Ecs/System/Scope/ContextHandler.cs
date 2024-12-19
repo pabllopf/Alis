@@ -273,6 +273,12 @@ namespace Alis.Core.Ecs.System.Scope
         /// </summary>
         public void Load() => _context.Runtime.OnLoad();
 
+        public void LoadAndRun()
+        {
+            _context.Runtime.OnLoad();
+            Run();
+        }
+        
         public void Save(string path) => _context.Runtime.OnSave(path);
 
         public void Load(string path) => _context.Runtime.OnLoad(path);

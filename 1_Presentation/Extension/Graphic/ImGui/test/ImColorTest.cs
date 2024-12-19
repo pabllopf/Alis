@@ -45,13 +45,13 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Value_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            ImColor color = new ImColor {Value = new Vector4(1.0f, 0.5f, 0.25f, 1.0f)};
+            ImColor color = new ImColor {Value = new Vector4F(1.0f, 0.5f, 0.25f, 1.0f)};
 
             // Act
-            Vector4 value = color.Value;
+            Vector4F value = color.Value;
 
             // Assert
-            Assert.Equal(new Vector4(1.0f, 0.5f, 0.25f, 1.0f), value);
+            Assert.Equal(new Vector4F(1.0f, 0.5f, 0.25f, 1.0f), value);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Value_Should_SetAndGetCorrectly()
         {
             ImColor color = new ImColor();
-            Vector4 value = new Vector4(1, 2, 3, 4);
+            Vector4F value = new Vector4F(1, 2, 3, 4);
             color.Value = value;
             Assert.Equal(value, color.Value);
         }

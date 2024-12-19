@@ -101,7 +101,7 @@ namespace Alis.Core.Aspect.Math.Matrix
 
         /// <summary>Gets or sets the translation component of this matrix.</summary>
         /// <value>The translation component of the current instance.</value>
-        public Vector2 Translation
+        public Vector2F Translation
         {
             set
             {
@@ -291,7 +291,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <summary>Creates a scaling matrix from the specified vector scale.</summary>
         /// <param name="scales">The scale to use.</param>
         /// <returns>The scaling matrix.</returns>
-        public static Matrix3X2 CreateScale(Vector2 scales)
+        public static Matrix3X2 CreateScale(Vector2F scales)
         {
             Matrix3X2 result = Identity;
 

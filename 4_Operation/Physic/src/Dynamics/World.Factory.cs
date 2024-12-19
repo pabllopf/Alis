@@ -50,7 +50,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="rotation">The rotation</param>
         /// <param name="bodyType">The body type</param>
         /// <returns>The body</returns>
-        public virtual Body CreateBody(Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static)
+        public virtual Body CreateBody(Vector2F position = new Vector2F(), float rotation = 0, BodyType bodyType = BodyType.Static)
         {
             Body body = new Body();
             body.Position = position;
@@ -69,7 +69,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="start">The start</param>
         /// <param name="end">The end</param>
         /// <returns>The body</returns>
-        public Body CreateEdge(Vector2 start, Vector2 end)
+        public Body CreateEdge(Vector2F start, Vector2F end)
         {
             Body body = CreateBody();
 
@@ -83,7 +83,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="vertices">The vertices</param>
         /// <param name="position">The position</param>
         /// <returns>The body</returns>
-        public Body CreateChainShape(Vertices vertices, Vector2 position = new Vector2())
+        public Body CreateChainShape(Vertices vertices, Vector2F position = new Vector2F())
         {
             Body body = CreateBody(position);
 
@@ -97,7 +97,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="vertices">The vertices</param>
         /// <param name="position">The position</param>
         /// <returns>The body</returns>
-        public Body CreateLoopShape(Vertices vertices, Vector2 position = new Vector2())
+        public Body CreateLoopShape(Vertices vertices, Vector2F position = new Vector2F())
         {
             Body body = CreateBody(position);
 
@@ -117,7 +117,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <exception cref="ArgumentOutOfRangeException">height Height must be more than 0 meters</exception>
         /// <exception cref="ArgumentOutOfRangeException">width Width must be more than 0 meters</exception>
         /// <returns>The body</returns>
-        public Body CreateRectangle(float width, float height, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static)
+        public Body CreateRectangle(float width, float height, float density, Vector2F position = new Vector2F(), float rotation = 0, BodyType bodyType = BodyType.Static)
         {
             if (width <= 0)
             {
@@ -145,7 +145,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="position">The position</param>
         /// <param name="bodyType">The body type</param>
         /// <returns>The body</returns>
-        public Body CreateCircle(float radius, float density, Vector2 position = new Vector2(), BodyType bodyType = BodyType.Static)
+        public Body CreateCircle(float radius, float density, Vector2F position = new Vector2F(), BodyType bodyType = BodyType.Static)
         {
             Body body = CreateBody(position, 0, bodyType);
             body.CreateCircle(radius, density);
@@ -163,7 +163,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="rotation">The rotation</param>
         /// <param name="bodyType">The body type</param>
         /// <returns>The body</returns>
-        public Body CreateEllipse(float xRadius, float yRadius, int edges, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static)
+        public Body CreateEllipse(float xRadius, float yRadius, int edges, float density, Vector2F position = new Vector2F(), float rotation = 0, BodyType bodyType = BodyType.Static)
         {
             Body body = CreateBody(position, rotation, bodyType);
             body.CreateEllipse(xRadius, yRadius, edges, density);
@@ -179,7 +179,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="rotation">The rotation</param>
         /// <param name="bodyType">The body type</param>
         /// <returns>The body</returns>
-        public Body CreatePolygon(Vertices vertices, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static)
+        public Body CreatePolygon(Vertices vertices, float density, Vector2F position = new Vector2F(), float rotation = 0, BodyType bodyType = BodyType.Static)
         {
             Body body = CreateBody(position, rotation, bodyType);
             body.CreatePolygon(vertices, density);
@@ -195,7 +195,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="rotation">The rotation</param>
         /// <param name="bodyType">The body type</param>
         /// <returns>The body</returns>
-        public Body CreateCompoundPolygon(List<Vertices> list, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static)
+        public Body CreateCompoundPolygon(List<Vertices> list, float density, Vector2F position = new Vector2F(), float rotation = 0, BodyType bodyType = BodyType.Static)
         {
             //We create a single body
             Body body = CreateBody(position, rotation, bodyType);
@@ -215,7 +215,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="rotation">The rotation</param>
         /// <param name="bodyType">The body type</param>
         /// <returns>The body</returns>
-        public Body CreateGear(float radius, int numberOfTeeth, float tipPercentage, float toothHeight, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static)
+        public Body CreateGear(float radius, int numberOfTeeth, float tipPercentage, float toothHeight, float density, Vector2F position = new Vector2F(), float rotation = 0, BodyType bodyType = BodyType.Static)
         {
             Vertices gearPolygon = PolygonTools.CreateGear(radius, numberOfTeeth, tipPercentage, toothHeight);
 
@@ -244,7 +244,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="rotation">The rotation</param>
         /// <param name="bodyType">The body type</param>
         /// <returns>The body</returns>
-        public Body CreateCapsule(float height, float topRadius, int topEdges, float bottomRadius, int bottomEdges, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static)
+        public Body CreateCapsule(float height, float topRadius, int topEdges, float bottomRadius, int bottomEdges, float density, Vector2F position = new Vector2F(), float rotation = 0, BodyType bodyType = BodyType.Static)
         {
             Vertices verts = PolygonTools.CreateCapsule(height, topRadius, topEdges, bottomRadius, bottomEdges);
 
@@ -268,7 +268,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="rotation">The rotation</param>
         /// <param name="bodyType">The body type</param>
         /// <returns>The body</returns>
-        public Body CreateCapsule(float height, float endRadius, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static)
+        public Body CreateCapsule(float height, float endRadius, float density, Vector2F position = new Vector2F(), float rotation = 0, BodyType bodyType = BodyType.Static)
         {
             //Create the middle rectangle
             Vertices rectangle = PolygonTools.CreateRectangle(endRadius, height / 2);
@@ -277,16 +277,16 @@ namespace Alis.Core.Physic.Dynamics
             list.Add(rectangle);
 
             Body body = CreateCompoundPolygon(list, density, position, rotation, bodyType);
-            body.CreateCircle(endRadius, density, new Vector2(0, height / 2));
-            body.CreateCircle(endRadius, density, new Vector2(0, -(height / 2)));
+            body.CreateCircle(endRadius, density, new Vector2F(0, height / 2));
+            body.CreateCircle(endRadius, density, new Vector2F(0, -(height / 2)));
 
             //Create the two circles
             //CircleShape topCircle = new CircleShape(endRadius, density);
-            //topCircle.Position = new Vector2(0, height / 2);
+            //topCircle.Position = new Vector2F(0, height / 2);
             //body.CreateFixture(topCircle);
 
             //CircleShape bottomCircle = new CircleShape(endRadius, density);
-            //bottomCircle.Position = new Vector2(0, -(height / 2));
+            //bottomCircle.Position = new Vector2F(0, -(height / 2));
             //body.CreateFixture(bottomCircle);
             return body;
         }
@@ -304,7 +304,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="rotation">The rotation</param>
         /// <param name="bodyType">The body type</param>
         /// <returns>The body</returns>
-        public Body CreateRoundedRectangle(float width, float height, float xRadius, float yRadius, int segments, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static)
+        public Body CreateRoundedRectangle(float width, float height, float xRadius, float yRadius, int segments, float density, Vector2F position = new Vector2F(), float rotation = 0, BodyType bodyType = BodyType.Static)
         {
             Vertices verts = PolygonTools.CreateRoundedRectangle(width, height, xRadius, yRadius, segments);
 
@@ -329,7 +329,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="rotation">The rotation</param>
         /// <param name="bodyType">The body type</param>
         /// <returns>The body</returns>
-        public Body CreateLineArc(float radians, int sides, float radius, bool closed = false, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static)
+        public Body CreateLineArc(float radians, int sides, float radius, bool closed = false, Vector2F position = new Vector2F(), float rotation = 0, BodyType bodyType = BodyType.Static)
         {
             Body body = CreateBody(position, rotation, bodyType);
             body.CreateLineArc(radians, sides, radius, closed);
@@ -347,7 +347,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="rotation">The rotation</param>
         /// <param name="bodyType">The body type</param>
         /// <returns>The body</returns>
-        public Body CreateSolidArc(float density, float radians, int sides, float radius, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static)
+        public Body CreateSolidArc(float density, float radians, int sides, float radius, Vector2F position = new Vector2F(), float rotation = 0, BodyType bodyType = BodyType.Static)
         {
             Body body = CreateBody(position, rotation, bodyType);
             body.CreateSolidArc(density, radians, sides, radius);
@@ -370,7 +370,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     another way: it makes the rope less bouncy.
         /// </param>
         /// <returns></returns>
-        public Path CreateChain(Vector2 start, Vector2 end, float linkWidth, float linkHeight, int numberOfLinks, float linkDensity, bool attachRopeJoint)
+        public Path CreateChain(Vector2F start, Vector2F end, float linkWidth, float linkHeight, int numberOfLinks, float linkDensity, bool attachRopeJoint)
         {
             Debug.Assert(numberOfLinks >= 2);
 
@@ -389,7 +389,7 @@ namespace Alis.Core.Physic.Dynamics
             //if (fixStart)
             //{
             //    //Fix the first chainlink to the world
-            //    JointFactory.CreateFixedRevoluteJoint(this, chainLinks[0], new Vector2(0, -(linkHeight / 2)),
+            //    JointFactory.CreateFixedRevoluteJoint(this, chainLinks[0], new Vector2F(0, -(linkHeight / 2)),
             //                                          chainLinks[0].Position);
             //}
 
@@ -397,16 +397,16 @@ namespace Alis.Core.Physic.Dynamics
             //{
             //    //Fix the last chainlink to the world
             //    JointFactory.CreateFixedRevoluteJoint(this, chainLinks[chainLinks.Count - 1],
-            //                                          new Vector2(0, (linkHeight / 2)),
+            //                                          new Vector2F(0, (linkHeight / 2)),
             //                                          chainLinks[chainLinks.Count - 1].Position);
             //}
 
             //Attach all the chainlinks together with a revolute joint
-            PathManager.AttachBodiesWithRevoluteJoint(this, chainLinks, new Vector2(0, -linkHeight), new Vector2(0, linkHeight), false, false);
+            PathManager.AttachBodiesWithRevoluteJoint(this, chainLinks, new Vector2F(0, -linkHeight), new Vector2F(0, linkHeight), false, false);
 
             if (attachRopeJoint)
             {
-                JointFactory.CreateRopeJoint(this, chainLinks[0], chainLinks[chainLinks.Count - 1], Vector2.Zero, Vector2.Zero);
+                JointFactory.CreateRopeJoint(this, chainLinks[0], chainLinks[chainLinks.Count - 1], Vector2F.Zero, Vector2F.Zero);
             }
 
             return path;

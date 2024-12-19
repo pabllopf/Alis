@@ -65,7 +65,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         public void NodePadding_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
-            Assert.Equal(default(Vector2), style.NodePadding);
+            Assert.Equal(default(Vector2F), style.NodePadding);
         }
 
         /// <summary>
@@ -175,7 +175,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         public void MiniMapPadding_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
-            Assert.Equal(default(Vector2), style.MiniMapPadding);
+            Assert.Equal(default(Vector2F), style.MiniMapPadding);
         }
 
         /// <summary>
@@ -185,7 +185,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         public void MiniMapOffset_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
-            Assert.Equal(default(Vector2), style.MiniMapOffset);
+            Assert.Equal(default(Vector2F), style.MiniMapOffset);
         }
 
         /// <summary>
@@ -239,7 +239,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         public void NodePadding_Should_SetAndGetCorrectly()
         {
             ImNodesStyle style = new ImNodesStyle();
-            Vector2 value = new Vector2(1.0f, 2.0f);
+            Vector2F value = new Vector2F(1.0f, 2.0f);
             style.NodePadding = value;
             Assert.Equal(value, style.NodePadding);
         }
@@ -371,7 +371,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         public void MiniMapPadding_Should_SetAndGetCorrectly()
         {
             ImNodesStyle style = new ImNodesStyle();
-            Vector2 value = new Vector2(3.0f, 4.0f);
+            Vector2F value = new Vector2F(3.0f, 4.0f);
             style.MiniMapPadding = value;
             Assert.Equal(value, style.MiniMapPadding);
         }
@@ -383,7 +383,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         public void MiniMapOffset_Should_SetAndGetCorrectly()
         {
             ImNodesStyle style = new ImNodesStyle();
-            Vector2 value = new Vector2(5.0f, 6.0f);
+            Vector2F value = new Vector2F(5.0f, 6.0f);
             style.MiniMapOffset = value;
             Assert.Equal(value, style.MiniMapOffset);
         }

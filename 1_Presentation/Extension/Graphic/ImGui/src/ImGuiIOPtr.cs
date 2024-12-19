@@ -106,18 +106,18 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the display size
         /// </summary>
-        public Vector2 DisplaySize
+        public Vector2F DisplaySize
         {
             get
             {
                 ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
-                return new Vector2(io.DisplaySize.X, io.DisplaySize.Y);
+                return new Vector2F(io.DisplaySize.X, io.DisplaySize.Y);
             }
             set
             {
                 // Write x and y values to the DisplaySize field
                 ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
-                io.DisplaySize = new Vector2(value.X, value.Y);
+                io.DisplaySize = new Vector2F(value.X, value.Y);
                 Marshal.StructureToPtr(io, NativePtr, false);
             }
         }
@@ -225,14 +225,14 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the display framebuffer scale
         /// </summary>
-        public Vector2 DisplayFramebufferScale
+        public Vector2F DisplayFramebufferScale
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).DisplayFramebufferScale;
             set
             {
                 // Write x and y values to the DisplayFramebufferScale field
                 ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
-                io.DisplayFramebufferScale = new Vector2(value.X, value.Y);
+                io.DisplayFramebufferScale = new Vector2F(value.X, value.Y);
                 Marshal.StructureToPtr(io, NativePtr, false);
             }
         }
@@ -638,13 +638,13 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the mouse delta
         /// </summary>
-        public Vector2 MouseDelta
+        public Vector2F MouseDelta
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MouseDelta;
             set
             {
                 ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
-                io.MouseDelta = new Vector2(value.X, value.Y);
+                io.MouseDelta = new Vector2F(value.X, value.Y);
                 Marshal.StructureToPtr(io, NativePtr, false);
             }
         }
@@ -762,14 +762,14 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the mouse pos
         /// </summary>
-        public Vector2 MousePos
+        public Vector2F MousePos
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MousePos;
             set
             {
                 // Write x and y values to the MousePos field
                 ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
-                io.MousePos = new Vector2(value.X, value.Y);
+                io.MousePos = new Vector2F(value.X, value.Y);
                 Marshal.StructureToPtr(io, NativePtr, false);
             }
         }
@@ -963,13 +963,13 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the mouse pos prev
         /// </summary>
-        public Vector2 MousePosPrev
+        public Vector2F MousePosPrev
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MousePosPrev;
             set
             {
                 ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
-                io.MousePosPrev = new Vector2(value.X, value.Y);
+                io.MousePosPrev = new Vector2F(value.X, value.Y);
                 Marshal.StructureToPtr(io, NativePtr, false);
             }
         }
@@ -977,7 +977,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the mouse clicked pos
         /// </summary>
-        public List<Vector2> MouseClickedPos
+        public List<Vector2F> MouseClickedPos
         {
             get
             {
@@ -986,10 +986,10 @@ namespace Alis.Extension.Graphic.ImGui
                 IntPtr mouseClickedPosPtr = IntPtr.Add(NativePtr, offsetToMouseClickedPos);
 
                 // Assuming the size of the mouse clicked pos is known to be 5
-                List<Vector2> pos = new List<Vector2>(5);
+                List<Vector2F> pos = new List<Vector2F>(5);
                 for (int i = 0; i < 5; i++)
                 {
-                    pos.Add(Marshal.PtrToStructure<Vector2>(IntPtr.Add(mouseClickedPosPtr, i * Marshal.SizeOf<Vector2>())));
+                    pos.Add(Marshal.PtrToStructure<Vector2F>(IntPtr.Add(mouseClickedPosPtr, i * Marshal.SizeOf<Vector2F>())));
                 }
 
                 return pos;
@@ -1339,7 +1339,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the mouse drag max distance abs
         /// </summary>
-        public List<Vector2> MouseDragMaxDistanceAbs
+        public List<Vector2F> MouseDragMaxDistanceAbs
         {
             get
             {
@@ -1348,10 +1348,10 @@ namespace Alis.Extension.Graphic.ImGui
                 IntPtr mouseDragMaxDistanceAbsPtr = IntPtr.Add(NativePtr, offsetToMouseDragMaxDistanceAbs);
 
                 // Assuming the size of the mouse drag max distance abs is known to be 5
-                List<Vector2> distanceAbs = new List<Vector2>(5);
+                List<Vector2F> distanceAbs = new List<Vector2F>(5);
                 for (int i = 0; i < 5; i++)
                 {
-                    distanceAbs.Add(Marshal.PtrToStructure<Vector2>(IntPtr.Add(mouseDragMaxDistanceAbsPtr, i * Marshal.SizeOf<Vector2>())));
+                    distanceAbs.Add(Marshal.PtrToStructure<Vector2F>(IntPtr.Add(mouseDragMaxDistanceAbsPtr, i * Marshal.SizeOf<Vector2F>())));
                 }
 
                 return distanceAbs;

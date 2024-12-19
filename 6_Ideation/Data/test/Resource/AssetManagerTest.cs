@@ -48,7 +48,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         {
             // Arrange
             const string assetName = "Find_ValidAssetName_ShouldReturnCorrectPath.txt";
-            string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
+            string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets");
             string expectedPath = Path.Combine(directory, assetName);
 
             if (!Directory.Exists(directory))
@@ -74,7 +74,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         [Fact]
         public void Find_NullAssetName_ShouldThrowArgumentNullException()
         {
-            string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
+            string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets");
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
@@ -96,7 +96,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
             const string assetName = "Find_ShouldReturnCorrectPath_WhenAssetExists.txt";
 
             // Create file 1
-            string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
+            string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets");
             string expectedPath1 = Path.Combine(directory, assetName);
 
             if (!Directory.Exists(directory))
@@ -126,7 +126,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
             const string assetName = "Find_ShouldThrowInvalidOperationException_WhenMultipleAssetsExist.txt";
 
             // Create file 1
-            string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
+            string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets");
             string expectedPath1 = Path.Combine(directory, assetName);
             if (!Directory.Exists(directory))
             {
@@ -164,7 +164,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
             // Arrange
             const string assetName = "Find_ShouldReturnEmptyString_WhenAssetDoesNotExist.txt";
 
-            string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
+            string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets");
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
@@ -187,7 +187,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
             // Arrange
             string assetName = string.Empty;
 
-            string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
+            string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets");
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
@@ -204,7 +204,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         [Fact]
         public void Find_NullAssetName_v2_ShouldThrowArgumentNullException()
         {
-            string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
+            string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets");
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
@@ -224,7 +224,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
             // Arrange
             string assetName = "invali€?3*'¡1d:asset:namestxt";
 
-            string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
+            string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets");
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
@@ -244,7 +244,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
             // Arrange
             string assetName = "asset.txt";
 
-            string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
+            string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets");
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
@@ -267,7 +267,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
             // Arrange
             string assetName = "   ";
 
-            string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
+            string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets");
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
@@ -287,7 +287,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
             // Arrange
             string assetName = "invali€?3*'¡1d:asset:nametxt";
 
-            string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
+            string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets");
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
@@ -307,7 +307,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
             // Arrange
             string assetName = "invali€?3*'¡1d:asset:nametxt";
 
-            string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
+            string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets");
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
@@ -327,7 +327,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
             // Arrange
             string assetName = " invalid:assettxt ";
 
-            string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
+            string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets");
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
@@ -347,7 +347,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
             // Arrange
             string assetName = " invalid:assettxt ";
 
-            string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
+            string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets");
 
             if (!Directory.Exists(directory))
             {
@@ -368,7 +368,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
             // Arrange
             string assetName = ":validasset:";
 
-            string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
+            string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets");
 
             if (!Directory.Exists(directory))
             {
@@ -389,7 +389,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
             // Arrange
             string assetName = " validasset .txt";
 
-            string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
+            string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets");
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
@@ -412,7 +412,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
             // Arrange
             string assetName = " :invalidasset: ";
 
-            string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
+            string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets");
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
@@ -432,7 +432,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
             // Arrange
             string assetName = " :validasset: ";
 
-            string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
+            string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets");
 
             if (!Directory.Exists(directory))
             {
@@ -453,7 +453,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
             // Arrange
             string assetName = ": validasset :";
 
-            string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
+            string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets");
 
             if (!Directory.Exists(directory))
             {
@@ -474,7 +474,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
             // Arrange
             string assetName = "validasset :invalidasset: validasset";
 
-            string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
+            string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets");
 
             if (!Directory.Exists(directory))
             {
@@ -495,7 +495,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
             // Arrange
             string assetName = "validasset: :validasset";
 
-            string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
+            string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets");
 
             if (!Directory.Exists(directory))
             {
@@ -516,7 +516,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
             // Arrange
             string assetName = ":validasset :validasset:";
 
-            string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
+            string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets");
 
             if (!Directory.Exists(directory))
             {
@@ -537,7 +537,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
             // Arrange
             string assetName = " validasset:invalidasset:validasset ";
 
-            string directory = Path.Combine(Environment.CurrentDirectory, "Assets");
+            string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets");
 
             if (!Directory.Exists(directory))
             {

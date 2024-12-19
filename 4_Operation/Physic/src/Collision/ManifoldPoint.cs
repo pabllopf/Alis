@@ -53,7 +53,7 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     Usage depends on manifold type
         /// </summary>
-        public Vector2 LocalPoint;
+        public Vector2F LocalPoint;
 
         /// <summary>
         ///     The non-penetration impulse

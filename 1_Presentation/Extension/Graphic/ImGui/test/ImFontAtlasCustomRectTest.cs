@@ -105,7 +105,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void GlyphOffset_ShouldBeInitialized()
         {
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
-            Assert.Equal(default(Vector2), rect.GlyphOffset);
+            Assert.Equal(default(Vector2F), rect.GlyphOffset);
         }
 
         /// <summary>
@@ -191,7 +191,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void GlyphOffset_Should_SetAndGetCorrectly()
         {
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
-            Vector2 offset = new Vector2(1.0f, 2.0f);
+            Vector2F offset = new Vector2F(1.0f, 2.0f);
             rect.GlyphOffset = offset;
             Assert.Equal(offset, rect.GlyphOffset);
         }

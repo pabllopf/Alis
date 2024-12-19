@@ -371,7 +371,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="y">The </param>
         public static void PlotText(string text, double x, double y)
         {
-            ImPlotNative.ImPlot_PlotText(Encoding.UTF8.GetBytes(text), x, y, new Vector2(0, 0), ImPlotTextFlags.None);
+            ImPlotNative.ImPlot_PlotText(Encoding.UTF8.GetBytes(text), x, y, new Vector2F(0, 0), ImPlotTextFlags.None);
         }
 
         /// <summary>
@@ -381,7 +381,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <param name="pixOffset">The pix offset</param>
-        public static void PlotText(string text, double x, double y, Vector2 pixOffset)
+        public static void PlotText(string text, double x, double y, Vector2F pixOffset)
         {
             ImPlotNative.ImPlot_PlotText(Encoding.UTF8.GetBytes(text), x, y, pixOffset, ImPlotTextFlags.None);
         }
@@ -394,7 +394,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="y">The </param>
         /// <param name="pixOffset">The pix offset</param>
         /// <param name="flags">The flags</param>
-        public static void PlotText(string text, double x, double y, Vector2 pixOffset, ImPlotTextFlags flags)
+        public static void PlotText(string text, double x, double y, Vector2F pixOffset, ImPlotTextFlags flags)
         {
             ImPlotNative.ImPlot_PlotText(Encoding.UTF8.GetBytes(text), x, y, pixOffset, flags);
         }
@@ -404,11 +404,11 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// </summary>
         /// <param name="plt">The plt</param>
         /// <returns>The retval</returns>
-        public static Vector2 PlotToPixels(ImPlotPoint plt)
+        public static Vector2F PlotToPixels(ImPlotPoint plt)
         {
             ImAxis xAxis = (ImAxis) (-1);
             ImAxis yAxis = (ImAxis) (-1);
-            ImPlotNative.ImPlot_PlotToPixels_PlotPoInt(out Vector2 retval, plt, xAxis, yAxis);
+            ImPlotNative.ImPlot_PlotToPixels_PlotPoInt(out Vector2F retval, plt, xAxis, yAxis);
             return retval;
         }
 
@@ -418,10 +418,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="plt">The plt</param>
         /// <param name="xAxis">The axis</param>
         /// <returns>The retval</returns>
-        public static Vector2 PlotToPixels(ImPlotPoint plt, ImAxis xAxis)
+        public static Vector2F PlotToPixels(ImPlotPoint plt, ImAxis xAxis)
         {
             ImAxis yAxis = (ImAxis) (-1);
-            ImPlotNative.ImPlot_PlotToPixels_PlotPoInt(out Vector2 retval, plt, xAxis, yAxis);
+            ImPlotNative.ImPlot_PlotToPixels_PlotPoInt(out Vector2F retval, plt, xAxis, yAxis);
             return retval;
         }
 
@@ -432,9 +432,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xAxis">The axis</param>
         /// <param name="yAxis">The axis</param>
         /// <returns>The retval</returns>
-        public static Vector2 PlotToPixels(ImPlotPoint plt, ImAxis xAxis, ImAxis yAxis)
+        public static Vector2F PlotToPixels(ImPlotPoint plt, ImAxis xAxis, ImAxis yAxis)
         {
-            ImPlotNative.ImPlot_PlotToPixels_PlotPoInt(out Vector2 retval, plt, xAxis, yAxis);
+            ImPlotNative.ImPlot_PlotToPixels_PlotPoInt(out Vector2F retval, plt, xAxis, yAxis);
             return retval;
         }
 
@@ -444,11 +444,11 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The retval</returns>
-        public static Vector2 PlotToPixels(double x, double y)
+        public static Vector2F PlotToPixels(double x, double y)
         {
             ImAxis xAxis = (ImAxis) (-1);
             ImAxis yAxis = (ImAxis) (-1);
-            ImPlotNative.ImPlot_PlotToPixels_double(out Vector2 retval, x, y, xAxis, yAxis);
+            ImPlotNative.ImPlot_PlotToPixels_double(out Vector2F retval, x, y, xAxis, yAxis);
             return retval;
         }
 
@@ -459,10 +459,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="y">The </param>
         /// <param name="xAxis">The axis</param>
         /// <returns>The retval</returns>
-        public static Vector2 PlotToPixels(double x, double y, ImAxis xAxis)
+        public static Vector2F PlotToPixels(double x, double y, ImAxis xAxis)
         {
             ImAxis yAxis = (ImAxis) (-1);
-            ImPlotNative.ImPlot_PlotToPixels_double(out Vector2 retval, x, y, xAxis, yAxis);
+            ImPlotNative.ImPlot_PlotToPixels_double(out Vector2F retval, x, y, xAxis, yAxis);
             return retval;
         }
 
@@ -474,9 +474,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xAxis">The axis</param>
         /// <param name="yAxis">The axis</param>
         /// <returns>The retval</returns>
-        public static Vector2 PlotToPixels(double x, double y, ImAxis xAxis, ImAxis yAxis)
+        public static Vector2F PlotToPixels(double x, double y, ImAxis xAxis, ImAxis yAxis)
         {
-            ImPlotNative.ImPlot_PlotToPixels_double(out Vector2 retval, x, y, xAxis, yAxis);
+            ImPlotNative.ImPlot_PlotToPixels_double(out Vector2F retval, x, y, xAxis, yAxis);
             return retval;
         }
 
@@ -593,7 +593,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// </summary>
         /// <param name="idx">The idx</param>
         /// <param name="col">The col</param>
-        public static void PushStyleColor(ImPlotCol idx, Vector4 col)
+        public static void PushStyleColor(ImPlotCol idx, Vector4F col)
         {
             ImPlotNative.ImPlot_PushStyleColor_Vec4(idx, col);
         }
@@ -623,7 +623,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// </summary>
         /// <param name="idx">The idx</param>
         /// <param name="val">The val</param>
-        public static void PushStyleVar(ImPlotStyleVar idx, Vector2 val)
+        public static void PushStyleVar(ImPlotStyleVar idx, Vector2F val)
         {
             ImPlotNative.ImPlot_PushStyleVar_Vec2(idx, val);
         }
@@ -633,10 +633,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// </summary>
         /// <param name="t">The </param>
         /// <returns>The retval</returns>
-        public static Vector4 SampleColormap(float t)
+        public static Vector4F SampleColormap(float t)
         {
             ImPlotColormap cmap = (ImPlotColormap) (-1);
-            ImPlotNative.ImPlot_SampleColormap(out Vector4 retval, t, cmap);
+            ImPlotNative.ImPlot_SampleColormap(out Vector4F retval, t, cmap);
             return retval;
         }
 
@@ -646,9 +646,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="t">The </param>
         /// <param name="cmap">The cmap</param>
         /// <returns>The retval</returns>
-        public static Vector4 SampleColormap(float t, ImPlotColormap cmap)
+        public static Vector4F SampleColormap(float t, ImPlotColormap cmap)
         {
-            ImPlotNative.ImPlot_SampleColormap(out Vector4 retval, t, cmap);
+            ImPlotNative.ImPlot_SampleColormap(out Vector4F retval, t, cmap);
             return retval;
         }
 
@@ -772,7 +772,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// </summary>
         public static void SetNextErrorBarStyle()
         {
-            Vector4 col = new Vector4(0, 0, 0, -1);
+            Vector4F col = new Vector4F(0, 0, 0, -1);
             float size = -1;
             float weight = -1;
             ImPlotNative.ImPlot_SetNextErrorBarStyle(col, size, weight);
@@ -782,7 +782,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         ///     Sets the next error bar style using the specified col
         /// </summary>
         /// <param name="col">The col</param>
-        public static void SetNextErrorBarStyle(Vector4 col)
+        public static void SetNextErrorBarStyle(Vector4F col)
         {
             float size = -1;
             float weight = -1;
@@ -794,7 +794,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// </summary>
         /// <param name="col">The col</param>
         /// <param name="size">The size</param>
-        public static void SetNextErrorBarStyle(Vector4 col, float size)
+        public static void SetNextErrorBarStyle(Vector4F col, float size)
         {
             float weight = -1;
             ImPlotNative.ImPlot_SetNextErrorBarStyle(col, size, weight);
@@ -806,7 +806,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="col">The col</param>
         /// <param name="size">The size</param>
         /// <param name="weight">The weight</param>
-        public static void SetNextErrorBarStyle(Vector4 col, float size, float weight)
+        public static void SetNextErrorBarStyle(Vector4F col, float size, float weight)
         {
             ImPlotNative.ImPlot_SetNextErrorBarStyle(col, size, weight);
         }
@@ -816,7 +816,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// </summary>
         public static void SetNextFillStyle()
         {
-            Vector4 col = new Vector4(0, 0, 0, -1);
+            Vector4F col = new Vector4F(0, 0, 0, -1);
             float alphaMod = -1;
             ImPlotNative.ImPlot_SetNextFillStyle(col, alphaMod);
         }
@@ -825,7 +825,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         ///     Sets the next fill style using the specified col
         /// </summary>
         /// <param name="col">The col</param>
-        public static void SetNextFillStyle(Vector4 col)
+        public static void SetNextFillStyle(Vector4F col)
         {
             float alphaMod = -1;
             ImPlotNative.ImPlot_SetNextFillStyle(col, alphaMod);
@@ -836,7 +836,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// </summary>
         /// <param name="col">The col</param>
         /// <param name="alphaMod">The alpha mod</param>
-        public static void SetNextFillStyle(Vector4 col, float alphaMod)
+        public static void SetNextFillStyle(Vector4F col, float alphaMod)
         {
             ImPlotNative.ImPlot_SetNextFillStyle(col, alphaMod);
         }
@@ -846,7 +846,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// </summary>
         public static void SetNextLineStyle()
         {
-            Vector4 col = new Vector4(0, 0, 0, -1);
+            Vector4F col = new Vector4F(0, 0, 0, -1);
             float weight = -1;
             ImPlotNative.ImPlot_SetNextLineStyle(col, weight);
         }
@@ -855,7 +855,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         ///     Sets the next line style using the specified col
         /// </summary>
         /// <param name="col">The col</param>
-        public static void SetNextLineStyle(Vector4 col)
+        public static void SetNextLineStyle(Vector4F col)
         {
             float weight = -1;
             ImPlotNative.ImPlot_SetNextLineStyle(col, weight);
@@ -866,7 +866,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// </summary>
         /// <param name="col">The col</param>
         /// <param name="weight">The weight</param>
-        public static void SetNextLineStyle(Vector4 col, float weight)
+        public static void SetNextLineStyle(Vector4F col, float weight)
         {
             ImPlotNative.ImPlot_SetNextLineStyle(col, weight);
         }
@@ -878,9 +878,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotMarker marker = (ImPlotMarker) (-1);
             float size = -1;
-            Vector4 fill = new Vector4(0, 0, 0, -1);
+            Vector4F fill = new Vector4F(0, 0, 0, -1);
             float weight = -1;
-            Vector4 outline = new Vector4(0, 0, 0, -1);
+            Vector4F outline = new Vector4F(0, 0, 0, -1);
             ImPlotNative.ImPlot_SetNextMarkerStyle(marker, size, fill, weight, outline);
         }
 
@@ -891,9 +891,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         public static void SetNextMarkerStyle(ImPlotMarker marker)
         {
             float size = -1;
-            Vector4 fill = new Vector4(0, 0, 0, -1);
+            Vector4F fill = new Vector4F(0, 0, 0, -1);
             float weight = -1;
-            Vector4 outline = new Vector4(0, 0, 0, -1);
+            Vector4F outline = new Vector4F(0, 0, 0, -1);
             ImPlotNative.ImPlot_SetNextMarkerStyle(marker, size, fill, weight, outline);
         }
 
@@ -904,9 +904,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="size">The size</param>
         public static void SetNextMarkerStyle(ImPlotMarker marker, float size)
         {
-            Vector4 fill = new Vector4(0, 0, 0, -1);
+            Vector4F fill = new Vector4F(0, 0, 0, -1);
             float weight = -1;
-            Vector4 outline = new Vector4(0, 0, 0, -1);
+            Vector4F outline = new Vector4F(0, 0, 0, -1);
             ImPlotNative.ImPlot_SetNextMarkerStyle(marker, size, fill, weight, outline);
         }
 
@@ -916,10 +916,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="marker">The marker</param>
         /// <param name="size">The size</param>
         /// <param name="fill">The fill</param>
-        public static void SetNextMarkerStyle(ImPlotMarker marker, float size, Vector4 fill)
+        public static void SetNextMarkerStyle(ImPlotMarker marker, float size, Vector4F fill)
         {
             float weight = -1;
-            Vector4 outline = new Vector4(0, 0, 0, -1);
+            Vector4F outline = new Vector4F(0, 0, 0, -1);
             ImPlotNative.ImPlot_SetNextMarkerStyle(marker, size, fill, weight, outline);
         }
 
@@ -930,9 +930,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="size">The size</param>
         /// <param name="fill">The fill</param>
         /// <param name="weight">The weight</param>
-        public static void SetNextMarkerStyle(ImPlotMarker marker, float size, Vector4 fill, float weight)
+        public static void SetNextMarkerStyle(ImPlotMarker marker, float size, Vector4F fill, float weight)
         {
-            Vector4 outline = new Vector4(0, 0, 0, -1);
+            Vector4F outline = new Vector4F(0, 0, 0, -1);
             ImPlotNative.ImPlot_SetNextMarkerStyle(marker, size, fill, weight, outline);
         }
 
@@ -944,7 +944,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="fill">The fill</param>
         /// <param name="weight">The weight</param>
         /// <param name="outline">The outline</param>
-        public static void SetNextMarkerStyle(ImPlotMarker marker, float size, Vector4 fill, float weight, Vector4 outline)
+        public static void SetNextMarkerStyle(ImPlotMarker marker, float size, Vector4F fill, float weight, Vector4F outline)
         {
             ImPlotNative.ImPlot_SetNextMarkerStyle(marker, size, fill, weight, outline);
         }
@@ -1451,7 +1451,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="col">The col</param>
-        public static void TagX(double x, Vector4 col)
+        public static void TagX(double x, Vector4F col)
         {
             byte round = 0;
             ImPlotNative.ImPlot_TagX_Bool(x, col, round);
@@ -1463,7 +1463,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="x">The </param>
         /// <param name="col">The col</param>
         /// <param name="round">The round</param>
-        public static void TagX(double x, Vector4 col, bool round)
+        public static void TagX(double x, Vector4F col, bool round)
         {
             byte nativeRound = round ? (byte) 1 : (byte) 0;
             ImPlotNative.ImPlot_TagX_Bool(x, col, nativeRound);
@@ -1475,7 +1475,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="x">The </param>
         /// <param name="col">The col</param>
         /// <param name="fmt">The fmt</param>
-        public static void TagX(double x, Vector4 col, string fmt)
+        public static void TagX(double x, Vector4F col, string fmt)
         {
             ImPlotNative.ImPlot_TagX_Str(x, col, Encoding.UTF8.GetBytes(fmt));
         }
@@ -1485,7 +1485,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// </summary>
         /// <param name="y">The </param>
         /// <param name="col">The col</param>
-        public static void TagY(double y, Vector4 col)
+        public static void TagY(double y, Vector4F col)
         {
             byte round = 0;
             ImPlotNative.ImPlot_TagY_Bool(y, col, round);
@@ -1497,7 +1497,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="y">The </param>
         /// <param name="col">The col</param>
         /// <param name="round">The round</param>
-        public static void TagY(double y, Vector4 col, bool round)
+        public static void TagY(double y, Vector4F col, bool round)
         {
             byte nativeRound = round ? (byte) 1 : (byte) 0;
             ImPlotNative.ImPlot_TagY_Bool(y, col, nativeRound);
@@ -1509,7 +1509,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="y">The </param>
         /// <param name="col">The col</param>
         /// <param name="fmt">The fmt</param>
-        public static void TagY(double y, Vector4 col, string fmt)
+        public static void TagY(double y, Vector4F col, string fmt)
         {
             ImPlotNative.ImPlot_TagY_Str(y, col, Encoding.UTF8.GetBytes(fmt));
         }

@@ -169,7 +169,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvScale_Should_SetAndGetCorrectly()
         {
             ImFontAtlas fontAtlas = new ImFontAtlas();
-            Vector2 texUvScale = new Vector2(1.0f, 1.0f);
+            Vector2F texUvScale = new Vector2F(1.0f, 1.0f);
             fontAtlas.TexUvScale = texUvScale;
             Assert.Equal(texUvScale, fontAtlas.TexUvScale);
         }
@@ -181,7 +181,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvWhitePixel_Should_SetAndGetCorrectly()
         {
             ImFontAtlas fontAtlas = new ImFontAtlas();
-            Vector2 texUvWhitePixel = new Vector2(1.0f, 1.0f);
+            Vector2F texUvWhitePixel = new Vector2F(1.0f, 1.0f);
             fontAtlas.TexUvWhitePixel = texUvWhitePixel;
             Assert.Equal(texUvWhitePixel, fontAtlas.TexUvWhitePixel);
         }
@@ -229,7 +229,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines_Should_SetAndGetCorrectly()
         {
             ImFontAtlas fontAtlas = new ImFontAtlas();
-            Vector4 texUvLines = new Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+            Vector4F texUvLines = new Vector4F(1.0f, 1.0f, 1.0f, 1.0f);
             fontAtlas.TexUvLines0 = texUvLines;
             Assert.Equal(texUvLines, fontAtlas.TexUvLines0);
         }

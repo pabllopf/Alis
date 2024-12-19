@@ -44,17 +44,17 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     The
         /// </summary>
-        public Vector2 v1, v2;
+        public Vector2F v1, v2;
 
         /// <summary>
         ///     The normal
         /// </summary>
-        public Vector2 normal;
+        public Vector2F normal;
 
         /// <summary>
         ///     The side normal
         /// </summary>
-        public Vector2 sideNormal1;
+        public Vector2F sideNormal1;
 
         /// <summary>
         ///     The side offset
@@ -64,7 +64,7 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     The side normal
         /// </summary>
-        public Vector2 sideNormal2;
+        public Vector2F sideNormal2;
 
         /// <summary>
         ///     The side offset

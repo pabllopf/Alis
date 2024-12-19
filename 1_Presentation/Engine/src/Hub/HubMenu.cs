@@ -129,17 +129,17 @@ namespace Alis.App.Engine.Hub
         public void Render()
         {
             ImGuiIoPtr io = ImGui.GetIo();
-            Vector2 screenSize = io.DisplaySize;
+            Vector2F screenSize = io.DisplaySize;
 
-            ImGui.SetNextWindowPos(Vector2.Zero);
+            ImGui.SetNextWindowPos(Vector2F.Zero);
             ImGui.SetNextWindowSize(screenSize);
 
             ImGui.Begin("##MainWindow", ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove);
 
-            ImGui.BeginChild("Sidebar", new Vector2(220, screenSize.Y - 20), true);
+            ImGui.BeginChild("Sidebar", new Vector2F(220, screenSize.Y - 20), true);
 
-            ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(10, 10));
-            ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2(10, 10));
+            ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(10, 10));
+            ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2F(10, 10));
 
             // Mostrar el logo y el texto "ALIS"
             if (File.Exists(AssetManager.Find("logo.bmp")))
@@ -147,14 +147,14 @@ namespace Alis.App.Engine.Hub
                 // Cargar y mostrar la imagen a una resolución más alta
                 IntPtr textureId = LoadTextureFromFile(AssetManager.Find("logo.bmp"));
                 float iconSize = 50; // Aumenta el tamaño de la imagen
-                ImGui.Image(textureId, new Vector2(iconSize, iconSize)); // Mostrar imagen más grande
+                ImGui.Image(textureId, new Vector2F(iconSize, iconSize)); // Mostrar imagen más grande
                 ImGui.SameLine();
 
                 // Cambiar el tamaño de la fuente para que el texto sea más grande
                 ImGui.PushFont(spaceWork.fontLoaded45Bold); // Asegúrate de usar una fuente adecuada
 
                 // Centrar el texto "ALIS" vertical y horizontalmente con la imagen
-                Vector2 textSize = ImGui.CalcTextSize("ALIS");
+                Vector2F textSize = ImGui.CalcTextSize("ALIS");
                 float textX = (iconSize - textSize.X) / 2; // Centrado horizontal
                 float textY = (iconSize - textSize.Y) / 2; // Centrado vertical
 
@@ -171,14 +171,14 @@ namespace Alis.App.Engine.Hub
             ButtonsLeftMenu();
 
             ImGui.SetCursorPosY(screenSize.Y - 70);
-            if (ImGui.Button($"{FontAwesome5.Cog} Preferences", new Vector2(200, 40)))
+            if (ImGui.Button($"{FontAwesome5.Cog} Preferences", new Vector2F(200, 40)))
             {
             }
 
             ImGui.EndChild();
 
             ImGui.SameLine();
-            ImGui.BeginChild("MainContent", new Vector2(screenSize.X - 220, screenSize.Y - 20), false);
+            ImGui.BeginChild("MainContent", new Vector2F(screenSize.X - 220, screenSize.Y - 20), false);
             RenderMainContent();
             ImGui.EndChild();
 
@@ -194,11 +194,11 @@ namespace Alis.App.Engine.Hub
             {
                 // Definir los estilos antes de cada botón
                 ImGui.PushStyleVar(ImGuiStyleVar.FrameRounding, 5.0f); // Redondear las esquinas
-                ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2(10, 10)); // Espaciado entre los items
-                ImGui.PushStyleVar(ImGuiStyleVar.ButtonTextAlign, new Vector2(0, 0.5f));
+                ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2F(10, 10)); // Espaciado entre los items
+                ImGui.PushStyleVar(ImGuiStyleVar.ButtonTextAlign, new Vector2F(0, 0.5f));
 
                 // Crear el botón con la alineación adecuada
-                if (ImGui.Button(menuItems[i], new Vector2(200, 40)))
+                if (ImGui.Button(menuItems[i], new Vector2F(200, 40)))
                 {
                     selectedMenuItem = i; // Establecer el botón como seleccionado
                 }
@@ -254,7 +254,7 @@ namespace Alis.App.Engine.Hub
         /// </summary>
         private void RenderMainContent()
         {
-            ImGui.PushStyleColor(ImGuiCol.ChildBg, new Vector4(0.15f, 0.15f, 0.15f, 1.0f));
+            ImGui.PushStyleColor(ImGuiCol.ChildBg, new Vector4F(0.15f, 0.15f, 0.15f, 1.0f));
             if (selectedMenuItem == 0) RenderProjectsSection();
             if (selectedMenuItem == 1) InstallsEditorSection();
             if (selectedMenuItem == 2) LearnSection();
@@ -272,9 +272,9 @@ namespace Alis.App.Engine.Hub
             ImGui.Separator();
 
             // Apply custom styles for the buttons
-            //ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0.2f, 0.6f, 0.8f, 1.0f));  // Custom color for the button
-            //ImGui.PushStyleColor(ImGuiCol.ButtonHovered, new Vector4(0.4f, 0.8f, 1.0f, 1.0f));  // Hover color
-            //ImGui.PushStyleColor(ImGuiCol.ButtonActive, new Vector4(0.1f, 0.4f, 0.7f, 1.0f));  // Active color
+            //ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.2f, 0.6f, 0.8f, 1.0f));  // Custom color for the button
+            //ImGui.PushStyleColor(ImGuiCol.ButtonHovered, new Vector4F(0.4f, 0.8f, 1.0f, 1.0f));  // Hover color
+            //ImGui.PushStyleColor(ImGuiCol.ButtonActive, new Vector4F(0.1f, 0.4f, 0.7f, 1.0f));  // Active color
 
             // Create buttons as tabs for each section
             if (ImGui.Button("📚 Tutorials"))
@@ -583,8 +583,8 @@ namespace Alis.App.Engine.Hub
             ImGui.Spacing();
 
             // Añadir un campo de búsqueda en lugar de "Projects"
-            ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2(spaceBetween, 20));
-            //ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(10, 0));
+            ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2F(spaceBetween, 20));
+            //ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(10, 0));
 
             // Establecer el ancho de la barra de búsqueda para que ocupe el espacio restante
             float searchBarWidth = ImGui.GetContentRegionAvail().X - (buttonWidth * 4 + spaceBetween * 2);
@@ -604,7 +604,7 @@ namespace Alis.App.Engine.Hub
             ImGui.SetNextItemWidth(searchBarWidth);
 
             // Ajustar la altura de la barra de búsqueda para que coincida con la de los botones
-            ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(5, (elementHeight - iconHeight) / 2)); // Ajustar el padding para igualar la altura
+            ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(5, (elementHeight - iconHeight) / 2)); // Ajustar el padding para igualar la altura
 
             // Campo de búsqueda
             if (ImGui.InputTextWithHint("##Search", "Search...",  searchQuery, 256))
@@ -619,29 +619,29 @@ namespace Alis.App.Engine.Hub
             ImGui.SameLine(); // Asegurarse de que los botones están alineados después de la barra de búsqueda
 
             // Cambiar estilo de los botones a gris y redondear las esquinas
-            //ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0.5f, 0.5f, 0.5f, 1.0f));
-            //ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(1.0f, 1.0f, 1.0f, 1.0f));
+            //ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.5f, 0.5f, 0.5f, 1.0f));
+            //ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(1.0f, 1.0f, 1.0f, 1.0f));
 
             // Establecer el radio de las esquinas de los botones
             ImGui.PushStyleVar(ImGuiStyleVar.FrameRounding, 5.0f); // Aquí estableces el radio de las esquinas
 
             // Botones
             ImGui.SetCursorPosY(ImGui.GetCursorPosY() - verticalOffset);
-            if (ImGui.Button("Create", new Vector2(buttonWidth, elementHeight)))
+            if (ImGui.Button("Create", new Vector2F(buttonWidth, elementHeight)))
             {
                 // Acción para "New"
             }
 
             ImGui.SameLine();
             ImGui.SetCursorPosY(ImGui.GetCursorPosY() - verticalOffset);
-            if (ImGui.Button("Import", new Vector2(buttonWidth, elementHeight)))
+            if (ImGui.Button("Import", new Vector2F(buttonWidth, elementHeight)))
             {
                 // Acción para "Add"
             }
 
             ImGui.SameLine();
             ImGui.SetCursorPosY(ImGui.GetCursorPosY() - verticalOffset);
-            if (ImGui.Button("Clone", new Vector2(buttonWidth, elementHeight)))
+            if (ImGui.Button("Clone", new Vector2F(buttonWidth, elementHeight)))
             {
                 // Acción para "Clone"
             }
@@ -655,7 +655,7 @@ namespace Alis.App.Engine.Hub
             //ImGui.Spacing();
             //ImGui.Spacing();
 
-            ImGui.PushStyleVar(ImGuiStyleVar.CellPadding, new Vector2(10, 15));
+            ImGui.PushStyleVar(ImGuiStyleVar.CellPadding, new Vector2F(10, 15));
 
             if (ImGui.BeginTable("ProjectTable", 4, ImGuiTableFlags.Borders | ImGuiTableFlags.Resizable))
             {
@@ -677,7 +677,7 @@ namespace Alis.App.Engine.Hub
                     float rowHeight = 50;
                     ImGui.SetCursorPosY(ImGui.GetCursorPosY() + (elementHeight - rowHeight) / 2);
 
-                    if (ImGui.Selectable($"##Row{i}", selectedProjectIndex == i, ImGuiSelectableFlags.SpanAllColumns | ImGuiSelectableFlags.AllowDoubleClick, new Vector2(0, rowHeight)))
+                    if (ImGui.Selectable($"##Row{i}", selectedProjectIndex == i, ImGuiSelectableFlags.SpanAllColumns | ImGuiSelectableFlags.AllowDoubleClick, new Vector2F(0, rowHeight)))
                     {
                         selectedProjectIndex = i;
 
@@ -697,19 +697,19 @@ namespace Alis.App.Engine.Hub
                     ImGui.SetCursorPosY(ImGui.GetCursorPosY() + (rowHeight - elementHeight) / 2);
 
                     ImGui.SameLine(); // Permite que el texto siga en la misma línea
-                    ImGui.TextColored(new Vector4(1.0f, 1.0f, 1.0f, 1.0f), project.Name);
+                    ImGui.TextColored(new Vector4F(1.0f, 1.0f, 1.0f, 1.0f), project.Name);
 
                     // Columna 2: Ruta
                     ImGui.TableNextColumn();
-                    ImGui.TextColored(new Vector4(0.7f, 0.7f, 0.7f, 1.0f), project.Path);
+                    ImGui.TextColored(new Vector4F(0.7f, 0.7f, 0.7f, 1.0f), project.Path);
 
                     // Columna 3: Fecha de modificación
                     ImGui.TableNextColumn();
-                    ImGui.TextColored(new Vector4(0.8f, 0.8f, 0.8f, 1.0f), project.ModifiedDate);
+                    ImGui.TextColored(new Vector4F(0.8f, 0.8f, 0.8f, 1.0f), project.ModifiedDate);
 
                     // Columna 4: Versión del editor
                     ImGui.TableNextColumn();
-                    ImGui.TextColored(new Vector4(0.8f, 0.8f, 0.8f, 1.0f), project.EditorVersion);
+                    ImGui.TextColored(new Vector4F(0.8f, 0.8f, 0.8f, 1.0f), project.EditorVersion);
 
                     if (ImGui.BeginPopup($"ContextMenu##{i}"))
                     {
@@ -803,7 +803,7 @@ namespace Alis.App.Engine.Hub
 
                     // Columna de la imagen
                     ImGui.TableSetColumnIndex(0);
-                    ImGui.Image(LoadTextureFromFile(item.ImagePath), new Vector2(100, 100));
+                    ImGui.Image(LoadTextureFromFile(item.ImagePath), new Vector2F(100, 100));
 
                     // Columna del nombre
                     ImGui.TableSetColumnIndex(1);

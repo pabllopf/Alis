@@ -123,11 +123,11 @@ namespace Alis.Core.Physic.Collision
         {
             manifold.PointCount = 0;
 
-            Vector2 pA = Transform.Multiply(ref circleA._position, ref xfA);
-            Vector2 pB = Transform.Multiply(ref circleB._position, ref xfB);
+            Vector2F pA = Transform.Multiply(ref circleA._position, ref xfA);
+            Vector2F pB = Transform.Multiply(ref circleB._position, ref xfB);
 
-            Vector2 d = pB - pA;
-            float distSqr = Vector2.Dot(d, d);
+            Vector2F d = pB - pA;
+            float distSqr = Vector2F.Dot(d, d);
             float radius = circleA.Radius + circleB.Radius;
             if (distSqr > radius * radius)
             {
@@ -136,7 +136,7 @@ namespace Alis.Core.Physic.Collision
 
             manifold.Type = ManifoldType.Circles;
             manifold.LocalPoint = circleA.Position;
-            manifold.LocalNormal = Vector2.Zero;
+            manifold.LocalNormal = Vector2F.Zero;
             manifold.PointCount = 1;
 
             ManifoldPoint p0 = manifold.Points[0];
@@ -160,8 +160,8 @@ namespace Alis.Core.Physic.Collision
             manifold.PointCount = 0;
 
             // Compute circle position in the frame of the polygon.
-            Vector2 c = Transform.Multiply(ref circleB._position, ref xfB);
-            Vector2 cLocal = Transform.Divide(ref c, ref xfA);
+            Vector2F c = Transform.Multiply(ref circleB._position, ref xfB);
+            Vector2F cLocal = Transform.Divide(ref c, ref xfA);
 
             // Find the min separating edge.
             int normalIndex = 0;
@@ -171,8 +171,8 @@ namespace Alis.Core.Physic.Collision
 
             for (int i = 0; i < vertexCount; ++i)
             {
-                Vector2 value1 = polygonA.Normals[i];
-                Vector2 value2 = cLocal - polygonA.Vertices[i];
+                Vector2F value1 = polygonA.Normals[i];
+                Vector2F value2 = cLocal - polygonA.Vertices[i];
                 float s = value1.X * value2.X + value1.Y * value2.Y;
 
                 if (s > radius)
@@ -191,8 +191,8 @@ namespace Alis.Core.Physic.Collision
             // Vertices that subtend the incident face.
             int vertIndex1 = normalIndex;
             int vertIndex2 = vertIndex1 + 1 < vertexCount ? vertIndex1 + 1 : 0;
-            Vector2 v1 = polygonA.Vertices[vertIndex1];
-            Vector2 v2 = polygonA.Vertices[vertIndex2];
+            Vector2F v1 = polygonA.Vertices[vertIndex1];
+            Vector2F v2 = polygonA.Vertices[vertIndex2];
 
             // If the center is inside the polygon ...
             if (separation < SettingEnv.Epsilon)
@@ -270,9 +270,9 @@ namespace Alis.Core.Physic.Collision
             }
             else
             {
-                Vector2 faceCenter = 0.5f * (v1 + v2);
-                Vector2 value1 = cLocal - faceCenter;
-                Vector2 value2 = polygonA.Normals[vertIndex1];
+                Vector2F faceCenter = 0.5f * (v1 + v2);
+                Vector2F value1 = cLocal - faceCenter;
+                Vector2F value2 = polygonA.Normals[vertIndex1];
                 float separation2 = value1.X * value2.X + value1.Y * value2.Y;
                 if (separation2 > radius)
                 {
@@ -354,16 +354,16 @@ namespace Alis.Core.Physic.Collision
             int iv1 = edge1;
             int iv2 = edge1 + 1 < count1 ? edge1 + 1 : 0;
 
-            Vector2 v11 = poly1.Vertices[iv1];
-            Vector2 v12 = poly1.Vertices[iv2];
+            Vector2F v11 = poly1.Vertices[iv1];
+            Vector2F v12 = poly1.Vertices[iv2];
 
-            Vector2 localTangent = v12 - v11;
+            Vector2F localTangent = v12 - v11;
             localTangent.Normalize();
 
-            Vector2 localNormal = new Vector2(localTangent.Y, -localTangent.X);
-            Vector2 planePoint = 0.5f * (v11 + v12);
+            Vector2F localNormal = new Vector2F(localTangent.Y, -localTangent.X);
+            Vector2F planePoint = 0.5f * (v11 + v12);
 
-            Vector2 tangent = Complex.Multiply(ref localTangent, ref xf1.q);
+            Vector2F tangent = Complex.Multiply(ref localTangent, ref xf1.q);
 
             float normalx = tangent.Y;
             float normaly = -tangent.X;
@@ -403,7 +403,7 @@ namespace Alis.Core.Physic.Collision
             int pointCount = 0;
             for (int i = 0; i < SettingEnv.MaxManifoldPoints; ++i)
             {
-                Vector2 value = clipPoints2[i].V;
+                Vector2F value = clipPoints2[i].V;
                 float separation = normalx * value.X + normaly * value.Y - frontOffset;
 
                 if (separation <= totalRadius)
@@ -445,14 +445,14 @@ namespace Alis.Core.Physic.Collision
             manifold.PointCount = 0;
 
             // Compute circle in frame of edge
-            Vector2 Q = Transform.Divide(Transform.Multiply(ref circleB._position, ref transformB), ref transformA);
+            Vector2F Q = Transform.Divide(Transform.Multiply(ref circleB._position, ref transformB), ref transformA);
 
-            Vector2 A = edgeA.Vertex1, B = edgeA.Vertex2;
-            Vector2 e = B - A;
+            Vector2F A = edgeA.Vertex1, B = edgeA.Vertex2;
+            Vector2F e = B - A;
 
             // Barycentric coordinates
-            float u = Vector2.Dot(e, B - Q);
-            float v = Vector2.Dot(e, Q - A);
+            float u = Vector2F.Dot(e, B - Q);
+            float v = Vector2F.Dot(e, Q - A);
 
             float radius = edgeA.Radius + circleB.Radius;
 
@@ -460,14 +460,14 @@ namespace Alis.Core.Physic.Collision
             cf.IndexB = 0;
             cf.TypeB = (byte) ContactFeatureType.Vertex;
 
-            Vector2 P, d;
+            Vector2F P, d;
 
             // Region A
             if (v <= 0.0f)
             {
                 P = A;
                 d = Q - P;
-                Vector2.Dot(ref d, ref d, out float dd);
+                Vector2F.Dot(ref d, ref d, out float dd);
                 if (dd > radius * radius)
                 {
                     return;
@@ -476,10 +476,10 @@ namespace Alis.Core.Physic.Collision
                 // Is there an edge connected to A?
                 if (edgeA.HasVertex0)
                 {
-                    Vector2 A1 = edgeA.Vertex0;
-                    Vector2 B1 = A;
-                    Vector2 e1 = B1 - A1;
-                    float u1 = Vector2.Dot(e1, B1 - Q);
+                    Vector2F A1 = edgeA.Vertex0;
+                    Vector2F B1 = A;
+                    Vector2F e1 = B1 - A1;
+                    float u1 = Vector2F.Dot(e1, B1 - Q);
 
                     // Is the circle in Region AB of the previous edge?
                     if (u1 > 0.0f)
@@ -492,7 +492,7 @@ namespace Alis.Core.Physic.Collision
                 cf.TypeA = (byte) ContactFeatureType.Vertex;
                 manifold.PointCount = 1;
                 manifold.Type = ManifoldType.Circles;
-                manifold.LocalNormal = Vector2.Zero;
+                manifold.LocalNormal = Vector2F.Zero;
                 manifold.LocalPoint = P;
                 ManifoldPoint mp = new ManifoldPoint();
                 mp.Id.Key = 0;
@@ -507,7 +507,7 @@ namespace Alis.Core.Physic.Collision
             {
                 P = B;
                 d = Q - P;
-                Vector2.Dot(ref d, ref d, out float dd);
+                Vector2F.Dot(ref d, ref d, out float dd);
                 if (dd > radius * radius)
                 {
                     return;
@@ -516,10 +516,10 @@ namespace Alis.Core.Physic.Collision
                 // Is there an edge connected to B?
                 if (edgeA.HasVertex3)
                 {
-                    Vector2 B2 = edgeA.Vertex3;
-                    Vector2 A2 = B;
-                    Vector2 e2 = B2 - A2;
-                    float v2 = Vector2.Dot(e2, Q - A2);
+                    Vector2F B2 = edgeA.Vertex3;
+                    Vector2F A2 = B;
+                    Vector2F e2 = B2 - A2;
+                    float v2 = Vector2F.Dot(e2, Q - A2);
 
                     // Is the circle in Region AB of the next edge?
                     if (v2 > 0.0f)
@@ -532,7 +532,7 @@ namespace Alis.Core.Physic.Collision
                 cf.TypeA = (byte) ContactFeatureType.Vertex;
                 manifold.PointCount = 1;
                 manifold.Type = ManifoldType.Circles;
-                manifold.LocalNormal = Vector2.Zero;
+                manifold.LocalNormal = Vector2F.Zero;
                 manifold.LocalPoint = P;
                 ManifoldPoint mp = new ManifoldPoint();
                 mp.Id.Key = 0;
@@ -543,20 +543,20 @@ namespace Alis.Core.Physic.Collision
             }
 
             // Region AB
-            Vector2.Dot(ref e, ref e, out float den);
+            Vector2F.Dot(ref e, ref e, out float den);
             Debug.Assert(den > 0.0f);
             P = 1.0f / den * (u * A + v * B);
             d = Q - P;
-            Vector2.Dot(ref d, ref d, out float dd2);
+            Vector2F.Dot(ref d, ref d, out float dd2);
             if (dd2 > radius * radius)
             {
                 return;
             }
 
-            Vector2 n = new Vector2(-e.Y, e.X);
-            if (Vector2.Dot(n, Q - A) < 0.0f)
+            Vector2F n = new Vector2F(-e.Y, e.X);
+            if (Vector2F.Dot(n, Q - A) < 0.0f)
             {
-                n = new Vector2(-n.X, -n.Y);
+                n = new Vector2F(-n.X, -n.Y);
             }
 
             n.Normalize();
@@ -596,7 +596,7 @@ namespace Alis.Core.Physic.Collision
         /// <param name="offset">The offset.</param>
         /// <param name="vertexIndexA">The vertex index A.</param>
         /// <returns></returns>
-        private static int ClipSegmentToLine(out FixedArray2<ClipVertex> vOut, ref FixedArray2<ClipVertex> vIn, Vector2 normal, float offset, int vertexIndexA)
+        private static int ClipSegmentToLine(out FixedArray2<ClipVertex> vOut, ref FixedArray2<ClipVertex> vIn, Vector2F normal, float offset, int vertexIndexA)
         {
             vOut = new FixedArray2<ClipVertex>();
 
@@ -657,16 +657,16 @@ namespace Alis.Core.Physic.Collision
         /// <returns></returns>
         private static float EdgeSeparation(PolygonShape poly1, ref Transform xf1To2, int edge1, PolygonShape poly2)
         {
-            List<Vector2> vertices1 = poly1.Vertices;
-            List<Vector2> normals1 = poly1.Normals;
+            List<Vector2F> vertices1 = poly1.Vertices;
+            List<Vector2F> normals1 = poly1.Normals;
 
             int count2 = poly2.Vertices.Count;
-            List<Vector2> vertices2 = poly2.Vertices;
+            List<Vector2F> vertices2 = poly2.Vertices;
 
             Debug.Assert((0 <= edge1) && (edge1 < poly1.Vertices.Count));
 
             // Convert normal from poly1's frame into poly2's frame.
-            Vector2 normal1 = Complex.Multiply(normals1[edge1], ref xf1To2.q);
+            Vector2F normal1 = Complex.Multiply(normals1[edge1], ref xf1To2.q);
 
             // Find support vertex on poly2 for -normal.
             int index = 0;
@@ -682,8 +682,8 @@ namespace Alis.Core.Physic.Collision
                 }
             }
 
-            Vector2 v1 = Transform.Multiply(vertices1[edge1], ref xf1To2);
-            Vector2 v2 = vertices2[index];
+            Vector2F v1 = Transform.Multiply(vertices1[edge1], ref xf1To2);
+            Vector2F v2 = vertices2[index];
             float separation = MathUtils.Dot(v2 - v1, ref normal1);
 
             return separation;
@@ -701,13 +701,13 @@ namespace Alis.Core.Physic.Collision
         private static float FindMaxSeparation(out int edgeIndex, PolygonShape poly1, ref Transform xf1, PolygonShape poly2, ref Transform xf2)
         {
             int count1 = poly1.Vertices.Count;
-            List<Vector2> normals1 = poly1.Normals;
+            List<Vector2F> normals1 = poly1.Normals;
 
             Transform xf1To2 = Transform.Divide(ref xf1, ref xf2);
 
             // Vector pointing from the centroid of poly1 to the centroid of poly2.
-            Vector2 c2local = Transform.Divide(poly2.MassData.Centroid, ref xf1To2);
-            Vector2 dLocal1 = c2local - poly1.MassData.Centroid;
+            Vector2F c2local = Transform.Divide(poly2.MassData.Centroid, ref xf1To2);
+            Vector2F dLocal1 = c2local - poly1.MassData.Centroid;
 
             // Find edge normal on poly1 that has the largest projection onto d.
             int edge = 0;
@@ -805,7 +805,7 @@ namespace Alis.Core.Physic.Collision
             Debug.Assert((0 <= edge1) && (edge1 < poly1.Vertices.Count));
 
             // Get the normal of the reference edge in poly2's frame.
-            Vector2 normal1 = Complex.Divide(Complex.Multiply(normals1[edge1], ref xf1.q), ref xf2.q);
+            Vector2F normal1 = Complex.Divide(Complex.Multiply(normals1[edge1], ref xf1.q), ref xf2.q);
 
 
             // Find the incident edge on poly2.
@@ -813,7 +813,7 @@ namespace Alis.Core.Physic.Collision
             float minDot = SettingEnv.MaxFloat;
             for (int i = 0; i < count2; ++i)
             {
-                float dot = Vector2.Dot(normal1, normals2[i]);
+                float dot = Vector2F.Dot(normal1, normals2[i]);
                 if (dot < minDot)
                 {
                     minDot = dot;
@@ -871,12 +871,12 @@ namespace Alis.Core.Physic.Collision
                 // 8. Clip
 
                 TempPolygon tempPolygonB = new TempPolygon(SettingEnv.MaxPolygonVertices);
-                Vector2 centroidB;
-                Vector2 normal0 = new Vector2();
-                Vector2 normal1;
-                Vector2 normal2 = new Vector2();
-                Vector2 normal;
-                Vector2 lowerLimit, upperLimit;
+                Vector2F centroidB;
+                Vector2F normal0 = new Vector2F();
+                Vector2F normal1;
+                Vector2F normal2 = new Vector2F();
+                Vector2F normal;
+                Vector2F lowerLimit, upperLimit;
                 float radius;
                 bool front;
 
@@ -884,39 +884,39 @@ namespace Alis.Core.Physic.Collision
 
                 centroidB = Transform.Multiply(polygonB.MassData.Centroid, ref xf);
 
-                Vector2 v0 = edgeA.Vertex0;
-                Vector2 v1 = edgeA._vertex1;
-                Vector2 v2 = edgeA._vertex2;
-                Vector2 v3 = edgeA.Vertex3;
+                Vector2F v0 = edgeA.Vertex0;
+                Vector2F v1 = edgeA._vertex1;
+                Vector2F v2 = edgeA._vertex2;
+                Vector2F v3 = edgeA.Vertex3;
 
                 bool hasVertex0 = edgeA.HasVertex0;
                 bool hasVertex3 = edgeA.HasVertex3;
 
-                Vector2 edge1 = v2 - v1;
+                Vector2F edge1 = v2 - v1;
                 edge1.Normalize();
-                normal1 = new Vector2(edge1.Y, -edge1.X);
-                float offset1 = Vector2.Dot(normal1, centroidB - v1);
+                normal1 = new Vector2F(edge1.Y, -edge1.X);
+                float offset1 = Vector2F.Dot(normal1, centroidB - v1);
                 float offset0 = 0.0f, offset2 = 0.0f;
                 bool convex1 = false, convex2 = false;
 
                 // Is there a preceding edge?
                 if (hasVertex0)
                 {
-                    Vector2 edge0 = v1 - v0;
+                    Vector2F edge0 = v1 - v0;
                     edge0.Normalize();
-                    normal0 = new Vector2(edge0.Y, -edge0.X);
+                    normal0 = new Vector2F(edge0.Y, -edge0.X);
                     convex1 = MathUtils.Cross(ref edge0, ref edge1) >= 0.0f;
-                    offset0 = Vector2.Dot(normal0, centroidB - v0);
+                    offset0 = Vector2F.Dot(normal0, centroidB - v0);
                 }
 
                 // Is there a following edge?
                 if (hasVertex3)
                 {
-                    Vector2 edge2 = v3 - v2;
+                    Vector2F edge2 = v3 - v2;
                     edge2.Normalize();
-                    normal2 = new Vector2(edge2.Y, -edge2.X);
+                    normal2 = new Vector2F(edge2.Y, -edge2.X);
                     convex2 = MathUtils.Cross(ref edge1, ref edge2) > 0.0f;
-                    offset2 = Vector2.Dot(normal2, centroidB - v2);
+                    offset2 = Vector2F.Dot(normal2, centroidB - v2);
                 }
 
                 // Determine front or back collision. Determine collision normal limits.
@@ -1131,10 +1131,10 @@ namespace Alis.Core.Physic.Collision
 
                     // Search for the polygon normal that is most anti-parallel to the edge normal.
                     int bestIndex = 0;
-                    float bestValue = Vector2.Dot(normal, tempPolygonB.Normals[0]);
+                    float bestValue = Vector2F.Dot(normal, tempPolygonB.Normals[0]);
                     for (int i = 1; i < tempPolygonB.Count; ++i)
                     {
-                        float value = Vector2.Dot(normal, tempPolygonB.Normals[i]);
+                        float value = Vector2F.Dot(normal, tempPolygonB.Normals[i]);
                         if (value < bestValue)
                         {
                             bestValue = value;
@@ -1204,10 +1204,10 @@ namespace Alis.Core.Physic.Collision
                     rf.normal = tempPolygonB.Normals[rf.i1];
                 }
 
-                rf.sideNormal1 = new Vector2(rf.normal.Y, -rf.normal.X);
+                rf.sideNormal1 = new Vector2F(rf.normal.Y, -rf.normal.X);
                 rf.sideNormal2 = -rf.sideNormal1;
-                rf.sideOffset1 = Vector2.Dot(rf.sideNormal1, rf.v1);
-                rf.sideOffset2 = Vector2.Dot(rf.sideNormal2, rf.v2);
+                rf.sideOffset1 = Vector2F.Dot(rf.sideNormal1, rf.v1);
+                rf.sideOffset2 = Vector2F.Dot(rf.sideNormal2, rf.v2);
 
                 // Clip incident edge against extruded edge1 side edges.
                 int np;
@@ -1243,7 +1243,7 @@ namespace Alis.Core.Physic.Collision
                 int pointCount = 0;
                 for (int i = 0; i < SettingEnv.MaxManifoldPoints; ++i)
                 {
-                    float separation = Vector2.Dot(rf.normal, clipPoints2[i].V - rf.v1);
+                    float separation = Vector2F.Dot(rf.normal, clipPoints2[i].V - rf.v1);
 
                     if (separation <= radius)
                     {
@@ -1279,7 +1279,7 @@ namespace Alis.Core.Physic.Collision
             /// <param name="v1">The </param>
             /// <param name="front">The front</param>
             /// <returns>The axis</returns>
-            private static EPAxis ComputeEdgeSeparation(ref TempPolygon polygonB, ref Vector2 normal, ref Vector2 v1, bool front)
+            private static EPAxis ComputeEdgeSeparation(ref TempPolygon polygonB, ref Vector2F normal, ref Vector2F v1, bool front)
             {
                 EPAxis axis;
                 axis.Type = EPAxisType.EdgeA;
@@ -1288,7 +1288,7 @@ namespace Alis.Core.Physic.Collision
 
                 for (int i = 0; i < polygonB.Count; ++i)
                 {
-                    float s = Vector2.Dot(normal, polygonB.Vertices[i] - v1);
+                    float s = Vector2F.Dot(normal, polygonB.Vertices[i] - v1);
                     if (s < axis.Separation)
                     {
                         axis.Separation = s;
@@ -1309,21 +1309,21 @@ namespace Alis.Core.Physic.Collision
             /// <param name="upperLimit">The upper limit</param>
             /// <param name="radius">The radius</param>
             /// <returns>The axis</returns>
-            private static EPAxis ComputePolygonSeparation(ref TempPolygon polygonB, ref Vector2 normal, ref Vector2 v1, ref Vector2 v2, ref Vector2 lowerLimit, ref Vector2 upperLimit, float radius)
+            private static EPAxis ComputePolygonSeparation(ref TempPolygon polygonB, ref Vector2F normal, ref Vector2F v1, ref Vector2F v2, ref Vector2F lowerLimit, ref Vector2F upperLimit, float radius)
             {
                 EPAxis axis;
                 axis.Type = EPAxisType.Unknown;
                 axis.Index = -1;
                 axis.Separation = -SettingEnv.MaxFloat;
 
-                Vector2 perp = new Vector2(-normal.Y, normal.X);
+                Vector2F perp = new Vector2F(-normal.Y, normal.X);
 
                 for (int i = 0; i < polygonB.Count; ++i)
                 {
-                    Vector2 n = -polygonB.Normals[i];
+                    Vector2F n = -polygonB.Normals[i];
 
-                    float s1 = Vector2.Dot(n, polygonB.Vertices[i] - v1);
-                    float s2 = Vector2.Dot(n, polygonB.Vertices[i] - v2);
+                    float s1 = Vector2F.Dot(n, polygonB.Vertices[i] - v1);
+                    float s2 = Vector2F.Dot(n, polygonB.Vertices[i] - v2);
                     float s = Math.Min(s1, s2);
 
                     if (s > radius)
@@ -1336,16 +1336,16 @@ namespace Alis.Core.Physic.Collision
                     }
 
                     // Adjacency
-                    if (Vector2.Dot(n, perp) >= 0.0f)
+                    if (Vector2F.Dot(n, perp) >= 0.0f)
                     {
-                        if (Vector2.Dot(n - upperLimit, normal) < -SettingEnv.AngularSlop)
+                        if (Vector2F.Dot(n - upperLimit, normal) < -SettingEnv.AngularSlop)
                         {
                             continue;
                         }
                     }
                     else
                     {
-                        if (Vector2.Dot(n - lowerLimit, normal) < -SettingEnv.AngularSlop)
+                        if (Vector2F.Dot(n - lowerLimit, normal) < -SettingEnv.AngularSlop)
                         {
                             continue;
                         }
@@ -1370,12 +1370,12 @@ namespace Alis.Core.Physic.Collision
                 /// <summary>
                 ///     The vertices
                 /// </summary>
-                public readonly Vector2[] Vertices;
+                public readonly Vector2F[] Vertices;
 
                 /// <summary>
                 ///     The normals
                 /// </summary>
-                public readonly Vector2[] Normals;
+                public readonly Vector2F[] Normals;
 
                 /// <summary>
                 ///     The count
@@ -1388,8 +1388,8 @@ namespace Alis.Core.Physic.Collision
                 /// <param name="maxPolygonVertices">The max polygon vertices</param>
                 internal TempPolygon(int maxPolygonVertices)
                 {
-                    Vertices = new Vector2[maxPolygonVertices];
-                    Normals = new Vector2[maxPolygonVertices];
+                    Vertices = new Vector2F[maxPolygonVertices];
+                    Normals = new Vector2F[maxPolygonVertices];
                     Count = 0;
                 }
             }

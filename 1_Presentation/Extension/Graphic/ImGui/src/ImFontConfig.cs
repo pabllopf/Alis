@@ -82,12 +82,12 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The glyph extra spacing
         /// </summary>
-        public Vector2 GlyphExtraSpacing;
+        public Vector2F GlyphExtraSpacing;
 
         /// <summary>
         ///     The glyph offset
         /// </summary>
-        public Vector2 GlyphOffset;
+        public Vector2F GlyphOffset;
 
         /// <summary>
         ///     The glyph ranges

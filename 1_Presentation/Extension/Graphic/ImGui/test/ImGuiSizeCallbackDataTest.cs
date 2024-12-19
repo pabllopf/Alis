@@ -55,7 +55,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Pos_ShouldBeInitialized()
         {
             ImGuiSizeCallbackData data = new ImGuiSizeCallbackData();
-            Assert.Equal(default(Vector2), data.Pos);
+            Assert.Equal(default(Vector2F), data.Pos);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void CurrentSize_ShouldBeInitialized()
         {
             ImGuiSizeCallbackData data = new ImGuiSizeCallbackData();
-            Assert.Equal(default(Vector2), data.CurrentSize);
+            Assert.Equal(default(Vector2F), data.CurrentSize);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void DesiredSize_ShouldBeInitialized()
         {
             ImGuiSizeCallbackData data = new ImGuiSizeCallbackData();
-            Assert.Equal(default(Vector2), data.DesiredSize);
+            Assert.Equal(default(Vector2F), data.DesiredSize);
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Pos_Should_SetAndGetCorrectly()
         {
             ImGuiSizeCallbackData data = new ImGuiSizeCallbackData();
-            Vector2 pos = new Vector2(1, 2);
+            Vector2F pos = new Vector2F(1, 2);
             data.Pos = pos;
             Assert.Equal(pos, data.Pos);
         }
@@ -109,7 +109,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void CurrentSize_Should_SetAndGetCorrectly()
         {
             ImGuiSizeCallbackData data = new ImGuiSizeCallbackData();
-            Vector2 currentSize = new Vector2(3, 4);
+            Vector2F currentSize = new Vector2F(3, 4);
             data.CurrentSize = currentSize;
             Assert.Equal(currentSize, data.CurrentSize);
         }
@@ -121,7 +121,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void DesiredSize_Should_SetAndGetCorrectly()
         {
             ImGuiSizeCallbackData data = new ImGuiSizeCallbackData();
-            Vector2 desiredSize = new Vector2(5, 6);
+            Vector2F desiredSize = new Vector2F(5, 6);
             data.DesiredSize = desiredSize;
             Assert.Equal(desiredSize, data.DesiredSize);
         }

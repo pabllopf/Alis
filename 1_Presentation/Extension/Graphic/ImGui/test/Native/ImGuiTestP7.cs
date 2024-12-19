@@ -91,7 +91,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void ProgressBar_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igProgressBar(0.5f, new Vector2(-float.MinValue, 0.0f), null));
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igProgressBar(0.5f, new Vector2F(-float.MinValue, 0.0f), null));
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void ProgressBar_WithSizeArg_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igProgressBar(0.5f, new Vector2(100, 50), null));
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igProgressBar(0.5f, new Vector2F(100, 50), null));
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void v3_ProgressBar_WithSizeArgAndOverlay_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igProgressBar(0.5f, new Vector2(100, 50), Encoding.UTF8.GetBytes("Overlay")));
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igProgressBar(0.5f, new Vector2F(100, 50), Encoding.UTF8.GetBytes("Overlay")));
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void v3_PushClipRect_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igPushClipRect(new Vector2(0, 0), new Vector2(100, 100), 1));
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igPushClipRect(new Vector2F(0, 0), new Vector2F(100, 100), 1));
         }
 
         /// <summary>
@@ -199,7 +199,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void PushStyleColor_WithVec4_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igPushStyleColor_Vec4(ImGuiCol.Text, new Vector4(1, 1, 1, 1)));
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igPushStyleColor_Vec4(ImGuiCol.Text, new Vector4F(1, 1, 1, 1)));
         }
 
         /// <summary>
@@ -217,7 +217,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void PushStyleVar_WithVec2_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igPushStyleVar_Vec2(ImGuiStyleVar.WindowPadding, new Vector2(1, 1)));
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igPushStyleVar_Vec2(ImGuiStyleVar.WindowPadding, new Vector2F(1, 1)));
         }
 
         /// <summary>
@@ -363,7 +363,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void Selectable_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSelectable_Bool(Encoding.UTF8.GetBytes("Selectable"), false, 0, new Vector2()));
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSelectable_Bool(Encoding.UTF8.GetBytes("Selectable"), false, 0, new Vector2F()));
         }
 
         /// <summary>
@@ -372,7 +372,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void Selectable_WithSelected_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSelectable_Bool(Encoding.UTF8.GetBytes("Selectable"), true, 0, new Vector2()));
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSelectable_Bool(Encoding.UTF8.GetBytes("Selectable"), true, 0, new Vector2F()));
         }
 
         /// <summary>
@@ -381,7 +381,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void Selectable_WithSelectedAndFlags_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSelectable_Bool(Encoding.UTF8.GetBytes("Selectable"), true, ImGuiSelectableFlags.DontClosePopups, new Vector2()));
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSelectable_Bool(Encoding.UTF8.GetBytes("Selectable"), true, ImGuiSelectableFlags.DontClosePopups, new Vector2F()));
         }
 
         /// <summary>
@@ -390,7 +390,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void Selectable_WithSelectedFlagsAndSize_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSelectable_Bool(Encoding.UTF8.GetBytes("Selectable"), true, ImGuiSelectableFlags.DontClosePopups, new Vector2(100, 50)));
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSelectable_Bool(Encoding.UTF8.GetBytes("Selectable"), true, ImGuiSelectableFlags.DontClosePopups, new Vector2F(100, 50)));
         }
 
         /// <summary>
@@ -400,7 +400,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         public void Selectable_WithRefBool_ThrowsDllNotFoundException()
         {
             bool selected = false;
-            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSelectable_BoolPtr(Encoding.UTF8.GetBytes("Selectable"), selected, 0, new Vector2()));
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSelectable_BoolPtr(Encoding.UTF8.GetBytes("Selectable"), selected, 0, new Vector2F()));
         }
 
         /// <summary>
@@ -410,7 +410,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         public void Selectable_WithRefBoolAndFlags_ThrowsDllNotFoundException()
         {
             bool selected = false;
-            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSelectable_BoolPtr(Encoding.UTF8.GetBytes("Selectable"), selected, ImGuiSelectableFlags.DontClosePopups, new Vector2()));
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSelectable_BoolPtr(Encoding.UTF8.GetBytes("Selectable"), selected, ImGuiSelectableFlags.DontClosePopups, new Vector2F()));
         }
 
         /// <summary>
@@ -420,7 +420,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         public void Selectable_WithRefBoolFlagsAndSize_ThrowsDllNotFoundException()
         {
             bool selected = false;
-            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSelectable_BoolPtr(Encoding.UTF8.GetBytes("Selectable"), selected, ImGuiSelectableFlags.DontClosePopups, new Vector2(100, 50)));
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSelectable_BoolPtr(Encoding.UTF8.GetBytes("Selectable"), selected, ImGuiSelectableFlags.DontClosePopups, new Vector2F(100, 50)));
         }
 
         /// <summary>
@@ -492,7 +492,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void SetCursorPos_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSetCursorPos(new Vector2(100, 100)));
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSetCursorPos(new Vector2F(100, 100)));
         }
 
         /// <summary>
@@ -519,7 +519,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void SetCursorScreenPos_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSetCursorScreenPos(new Vector2(100, 100)));
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSetCursorScreenPos(new Vector2F(100, 100)));
         }
 
         /// <summary>
@@ -672,7 +672,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void SetNextWindowContentSize_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSetNextWindowContentSize(new Vector2(100, 100)));
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSetNextWindowContentSize(new Vector2F(100, 100)));
         }
 
         /// <summary>
@@ -708,7 +708,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void SetNextWindowPos_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSetNextWindowPos(new Vector2(100, 100), ImGuiCond.None, new Vector2()));
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSetNextWindowPos(new Vector2F(100, 100), ImGuiCond.None, new Vector2F()));
         }
 
         /// <summary>
@@ -717,7 +717,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void v2_SetNextWindowPos_WithCond_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSetNextWindowPos(new Vector2(100, 100), ImGuiCond.Always, new Vector2()));
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSetNextWindowPos(new Vector2F(100, 100), ImGuiCond.Always, new Vector2F()));
         }
 
         /// <summary>
@@ -726,7 +726,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void SetNextWindowPos_WithCondAndPivot_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSetNextWindowPos(new Vector2(100, 100), ImGuiCond.Always, new Vector2(0.5f, 0.5f)));
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSetNextWindowPos(new Vector2F(100, 100), ImGuiCond.Always, new Vector2F(0.5f, 0.5f)));
         }
 
         /// <summary>
@@ -735,7 +735,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void SetNextWindowScroll_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSetNextWindowScroll(new Vector2(100, 100)));
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSetNextWindowScroll(new Vector2F(100, 100)));
         }
 
         /// <summary>
@@ -744,7 +744,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void SetNextWindowSize_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSetNextWindowSize(new Vector2(100, 100), ImGuiCond.None));
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSetNextWindowSize(new Vector2F(100, 100), ImGuiCond.None));
         }
 
         /// <summary>
@@ -753,7 +753,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void SetNextWindowSize_WithCond_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSetNextWindowSize(new Vector2(100, 100), ImGuiCond.Always));
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSetNextWindowSize(new Vector2F(100, 100), ImGuiCond.Always));
         }
 
         /// <summary>
@@ -762,7 +762,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void SetNextWindowSizeConstraints_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSetNextWindowSizeConstraints(new Vector2(100, 100), new Vector2(200, 200), null, IntPtr.Zero));
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSetNextWindowSizeConstraints(new Vector2F(100, 100), new Vector2F(200, 200), null, IntPtr.Zero));
         }
 
         /// <summary>
@@ -771,7 +771,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void SetNextWindowSizeConstraints_WithCallback_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSetNextWindowSizeConstraints(new Vector2(100, 100), new Vector2(200, 200), (out ImGuiSizeCallbackData data) =>
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSetNextWindowSizeConstraints(new Vector2F(100, 100), new Vector2F(200, 200), (out ImGuiSizeCallbackData data) =>
             {
                 data = default(ImGuiSizeCallbackData);
                 Callback(data);
@@ -792,7 +792,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void SetNextWindowSizeConstraints_WithCallbackAndData_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSetNextWindowSizeConstraints(new Vector2(100, 100), new Vector2(200, 200), (out ImGuiSizeCallbackData data) =>
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSetNextWindowSizeConstraints(new Vector2F(100, 100), new Vector2F(200, 200), (out ImGuiSizeCallbackData data) =>
             {
                 data = default(ImGuiSizeCallbackData);
                 CustomCallback(data);
@@ -876,7 +876,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void v2_ProgressBar_WithSizeArg_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ProgressBar(0.5f, new Vector2(100, 20)));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ProgressBar(0.5f, new Vector2F(100, 20)));
         }
 
         /// <summary>
@@ -885,7 +885,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void v2_ProgressBar_WithSizeArgAndOverlay_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ProgressBar(0.5f, new Vector2(100, 20), "Overlay"));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ProgressBar(0.5f, new Vector2F(100, 20), "Overlay"));
         }
 
         /// <summary>
@@ -912,7 +912,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void v2_PushClipRect_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PushClipRect(new Vector2(0, 0), new Vector2(100, 100), true));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PushClipRect(new Vector2F(0, 0), new Vector2F(100, 100), true));
         }
 
         /// <summary>
@@ -975,7 +975,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void PushStyleColor_WithVector4_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(1, 1, 1, 1)));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(1, 1, 1, 1)));
         }
 
         /// <summary>
@@ -993,7 +993,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void PushStyleVar_WithVector2_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2(1, 1)));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2F(1, 1)));
         }
 
         /// <summary>
@@ -1176,7 +1176,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void v2_Selectable_WithSelectedFlagsAndSize_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Selectable("label", true, ImGuiSelectableFlags.None, new Vector2(100, 20)));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Selectable("label", true, ImGuiSelectableFlags.None, new Vector2F(100, 20)));
         }
 
         /// <summary>
@@ -1206,7 +1206,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         public void Selectable_WithRefSelectedFlagsAndSize_ThrowsDllNotFoundException()
         {
             bool selected = true;
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Selectable("label", ref selected, ImGuiSelectableFlags.None, new Vector2(100, 20)));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Selectable("label", ref selected, ImGuiSelectableFlags.None, new Vector2F(100, 20)));
         }
 
         /// <summary>
@@ -1287,7 +1287,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void v2_SetCursorPos_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetCursorPos(new Vector2(100, 100)));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetCursorPos(new Vector2F(100, 100)));
         }
 
         /// <summary>
@@ -1314,7 +1314,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void v2_SetCursorScreenPos_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetCursorScreenPos(new Vector2(100, 100)));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetCursorScreenPos(new Vector2F(100, 100)));
         }
 
         /// <summary>
@@ -1467,7 +1467,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void v2_SetNextWindowContentSize_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowContentSize(new Vector2(100, 100)));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowContentSize(new Vector2F(100, 100)));
         }
 
         /// <summary>
@@ -1503,7 +1503,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void v2_SetNextWindowPos_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowPos(new Vector2(100, 100)));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowPos(new Vector2F(100, 100)));
         }
 
         /// <summary>
@@ -1512,7 +1512,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void SetNextWindowPos_WithCond_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowPos(new Vector2(100, 100), ImGuiCond.None));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowPos(new Vector2F(100, 100), ImGuiCond.None));
         }
 
         /// <summary>
@@ -1521,7 +1521,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void v2_SetNextWindowPos_WithCondAndPivot_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowPos(new Vector2(100, 100), ImGuiCond.None, new Vector2(0.5f, 0.5f)));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowPos(new Vector2F(100, 100), ImGuiCond.None, new Vector2F(0.5f, 0.5f)));
         }
 
         /// <summary>
@@ -1530,7 +1530,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void v2_SetNextWindowScroll_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowScroll(new Vector2(100, 100)));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowScroll(new Vector2F(100, 100)));
         }
 
         /// <summary>
@@ -1539,7 +1539,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void v2_SetNextWindowSize_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowSize(new Vector2(100, 100)));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowSize(new Vector2F(100, 100)));
         }
 
         /// <summary>
@@ -1548,7 +1548,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void v2_SetNextWindowSize_WithCond_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowSize(new Vector2(100, 100), ImGuiCond.None));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowSize(new Vector2F(100, 100), ImGuiCond.None));
         }
 
         /// <summary>
@@ -1557,7 +1557,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void v2_SetNextWindowSizeConstraints_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowSizeConstraints(new Vector2(100, 100), new Vector2(200, 200)));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowSizeConstraints(new Vector2F(100, 100), new Vector2F(200, 200)));
         }
 
         /// <summary>
@@ -1566,7 +1566,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void v2_SetNextWindowSizeConstraints_WithCallback_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowSizeConstraints(new Vector2(100, 100), new Vector2(200, 200), null));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowSizeConstraints(new Vector2F(100, 100), new Vector2F(200, 200), null));
         }
 
         /// <summary>
@@ -1575,7 +1575,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void v2_SetNextWindowSizeConstraints_WithCallbackAndData_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowSizeConstraints(new Vector2(100, 100), new Vector2(200, 200), null, IntPtr.Zero));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowSizeConstraints(new Vector2F(100, 100), new Vector2F(200, 200), null, IntPtr.Zero));
         }
 
         /// <summary>
@@ -1773,7 +1773,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void V3_ProgressBar_WithSizeArg_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ProgressBar(0.5f, new Vector2(100, 20)));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ProgressBar(0.5f, new Vector2F(100, 20)));
         }
 
         /// <summary>
@@ -1782,7 +1782,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void ProgressBar_WithSizeArgAndOverlay_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ProgressBar(0.5f, new Vector2(100, 20), "Overlay"));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ProgressBar(0.5f, new Vector2F(100, 20), "Overlay"));
         }
 
         /// <summary>
@@ -1809,7 +1809,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void PushClipRect_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PushClipRect(new Vector2(0, 0), new Vector2(100, 100), true));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PushClipRect(new Vector2F(0, 0), new Vector2F(100, 100), true));
         }
 
         /// <summary>
@@ -1872,7 +1872,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void V3_PushStyleColor_WithVec4_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(1, 1, 1, 1)));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(1, 1, 1, 1)));
         }
 
         /// <summary>
@@ -1890,7 +1890,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void V3_V3_PushStyleVar_WithVec2_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2(1, 1)));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2F(1, 1)));
         }
 
         /// <summary>
@@ -2072,7 +2072,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void V3_Selectable_WithSelectedFlagsAndSize_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Selectable("label", true, ImGuiSelectableFlags.None, new Vector2(100, 20)));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Selectable("label", true, ImGuiSelectableFlags.None, new Vector2F(100, 20)));
         }
 
         /// <summary>
@@ -2102,7 +2102,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         public void V3_Selectable_WithRefSelectedFlagsAndSize_ThrowsDllNotFoundException()
         {
             bool selected = false;
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Selectable("label", ref selected, ImGuiSelectableFlags.None, new Vector2(100, 20)));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Selectable("label", ref selected, ImGuiSelectableFlags.None, new Vector2F(100, 20)));
         }
 
         /// <summary>
@@ -2183,7 +2183,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void V3_SetCursorPos_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetCursorPos(new Vector2(100, 100)));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetCursorPos(new Vector2F(100, 100)));
         }
 
         /// <summary>
@@ -2210,7 +2210,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void V3_SetCursorScreenPos_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetCursorScreenPos(new Vector2(100, 100)));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetCursorScreenPos(new Vector2F(100, 100)));
         }
 
         /// <summary>
@@ -2363,7 +2363,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void V3_SetNextWindowContentSize_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowContentSize(new Vector2(100, 100)));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowContentSize(new Vector2F(100, 100)));
         }
 
         /// <summary>
@@ -2399,7 +2399,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void V3_SetNextWindowPos_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowPos(new Vector2(100, 100)));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowPos(new Vector2F(100, 100)));
         }
 
         /// <summary>
@@ -2408,7 +2408,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void V3_SetNextWindowPos_WithCond_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowPos(new Vector2(100, 100), ImGuiCond.None));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowPos(new Vector2F(100, 100), ImGuiCond.None));
         }
 
         /// <summary>
@@ -2417,7 +2417,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void V3_SetNextWindowPos_WithCondAndPivot_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowPos(new Vector2(100, 100), ImGuiCond.None, new Vector2(0.5f, 0.5f)));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowPos(new Vector2F(100, 100), ImGuiCond.None, new Vector2F(0.5f, 0.5f)));
         }
 
         /// <summary>
@@ -2426,7 +2426,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void V3_SetNextWindowScroll_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowScroll(new Vector2(100, 100)));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowScroll(new Vector2F(100, 100)));
         }
 
         /// <summary>
@@ -2435,7 +2435,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void V3_SetNextWindowSize_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowSize(new Vector2(100, 100)));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowSize(new Vector2F(100, 100)));
         }
 
         /// <summary>
@@ -2444,7 +2444,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void V3_SetNextWindowSize_WithCond_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowSize(new Vector2(100, 100), ImGuiCond.None));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowSize(new Vector2F(100, 100), ImGuiCond.None));
         }
 
         /// <summary>
@@ -2453,7 +2453,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void V3_SetNextWindowSizeConstraints_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowSizeConstraints(new Vector2(100, 100), new Vector2(200, 200)));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowSizeConstraints(new Vector2F(100, 100), new Vector2F(200, 200)));
         }
 
         /// <summary>
@@ -2462,7 +2462,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void V3_SetNextWindowSizeConstraints_WithCallback_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowSizeConstraints(new Vector2(100, 100), new Vector2(200, 200), null));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowSizeConstraints(new Vector2F(100, 100), new Vector2F(200, 200), null));
         }
 
         /// <summary>
@@ -2471,7 +2471,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void V3_SetNextWindowSizeConstraints_WithCallbackAndData_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowSizeConstraints(new Vector2(100, 100), new Vector2(200, 200), null, IntPtr.Zero));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowSizeConstraints(new Vector2F(100, 100), new Vector2F(200, 200), null, IntPtr.Zero));
         }
 
         /// <summary>
@@ -2660,7 +2660,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void SetWindowPos_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetWindowPos(new Vector2()));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetWindowPos(new Vector2F()));
         }
 
         /// <summary>
@@ -2669,7 +2669,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void SetWindowPos_WithCond_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetWindowPos(new Vector2(), ImGuiCond.None));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetWindowPos(new Vector2F(), ImGuiCond.None));
         }
 
         /// <summary>
@@ -2678,7 +2678,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void SetWindowPos_WithName_ThrowsDllNotFoundException()
         {
-            Assert.Throws<ArgumentNullException>(() => ImGui.Native.ImGui.SetWindowPos(null, new Vector2()));
+            Assert.Throws<ArgumentNullException>(() => ImGui.Native.ImGui.SetWindowPos(null, new Vector2F()));
         }
 
         /// <summary>
@@ -2687,7 +2687,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void SetWindowPos_WithNameAndCond_ThrowsDllNotFoundException()
         {
-            Assert.Throws<ArgumentNullException>(() => ImGui.Native.ImGui.SetWindowPos(null, new Vector2(), ImGuiCond.None));
+            Assert.Throws<ArgumentNullException>(() => ImGui.Native.ImGui.SetWindowPos(null, new Vector2F(), ImGuiCond.None));
         }
 
         /// <summary>
@@ -2696,7 +2696,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void SetWindowSize_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetWindowSize(new Vector2()));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetWindowSize(new Vector2F()));
         }
 
         /// <summary>
@@ -2705,7 +2705,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void SetWindowSize_WithCond_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetWindowSize(new Vector2(), ImGuiCond.None));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetWindowSize(new Vector2F(), ImGuiCond.None));
         }
 
         /// <summary>
@@ -2714,7 +2714,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void SetWindowSize_WithName_ThrowsDllNotFoundException()
         {
-            Assert.Throws<ArgumentNullException>(() => ImGui.Native.ImGui.SetWindowSize(null, new Vector2()));
+            Assert.Throws<ArgumentNullException>(() => ImGui.Native.ImGui.SetWindowSize(null, new Vector2F()));
         }
 
         /// <summary>
@@ -2723,7 +2723,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void SetWindowSize_WithNameAndCond_ThrowsDllNotFoundException()
         {
-            Assert.Throws<ArgumentNullException>(() => ImGui.Native.ImGui.SetWindowSize(null, new Vector2(), ImGuiCond.None));
+            Assert.Throws<ArgumentNullException>(() => ImGui.Native.ImGui.SetWindowSize(null, new Vector2F(), ImGuiCond.None));
         }
 
         /// <summary>
@@ -2883,7 +2883,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         public void PlotHistogram_LabelWithGraphSize_ThrowsDllNotFoundException()
         {
             float values = 0;
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotHistogram("label", ref values, 1, 0, "overlay", 0.0f, 1.0f, new Vector2()));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotHistogram("label", ref values, 1, 0, "overlay", 0.0f, 1.0f, new Vector2F()));
         }
 
         /// <summary>
@@ -2893,7 +2893,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         public void PlotHistogram_LabelWithStride_ThrowsDllNotFoundException()
         {
             float values = 0;
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotHistogram("label", ref values, 1, 0, "overlay", 0.0f, 1.0f, new Vector2(), 4));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotHistogram("label", ref values, 1, 0, "overlay", 0.0f, 1.0f, new Vector2F(), 4));
         }
 
         /// <summary>
@@ -2953,7 +2953,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         public void PlotLines_LabelWithGraphSize_ThrowsDllNotFoundException()
         {
             float values = 0;
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotLines("label", ref values, 1, 0, "overlay", 0.0f, 1.0f, new Vector2()));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotLines("label", ref values, 1, 0, "overlay", 0.0f, 1.0f, new Vector2F()));
         }
 
         /// <summary>
@@ -2963,7 +2963,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         public void PlotLines_LabelWithStride_ThrowsDllNotFoundException()
         {
             float values = 0;
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotLines("label", ref values, 1, 0, "overlay", 0.0f, 1.0f, new Vector2(), 4));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotLines("label", ref values, 1, 0, "overlay", 0.0f, 1.0f, new Vector2F(), 4));
         }
 
         /// <summary>

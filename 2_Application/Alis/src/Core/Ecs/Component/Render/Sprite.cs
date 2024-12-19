@@ -136,7 +136,7 @@ namespace Alis.Core.Ecs.Component.Render
         ///     Gets or sets the value of the size
         /// </summary>
         [JsonPropertyName("_Size_")]
-        public Vector2 Size { get; set; }
+        public Vector2F Size { get; set; }
 
         /// <summary>
         ///     Builders this instance
@@ -158,7 +158,7 @@ namespace Alis.Core.Ecs.Component.Render
                 // get the size of sprite.Texture
                 Sdl.QueryTexture(Texture, out _, out _, out int w, out int h);
 
-                Size = new Vector2(w, h);
+                Size = new Vector2F(w, h);
             }
         }
 
@@ -202,11 +202,11 @@ namespace Alis.Core.Ecs.Component.Render
         /// <param name="cameraPosition">The camera position</param>
         /// <param name="cameraResolution">The camera resolution</param>
         /// <param name="pixelsPerMeter">The pixels per meter</param>
-        public void Render(IntPtr renderer, Vector2 cameraPosition, Vector2 cameraResolution, float pixelsPerMeter)
+        public void Render(IntPtr renderer, Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
         {
-            Vector2 spritePosition = GameObject.Transform.Position;
-            Vector2 spriteSize = Size;
-            Vector2 spriteScale = GameObject.Transform.Scale;
+            Vector2F spritePosition = GameObject.Transform.Position;
+            Vector2F spriteSize = Size;
+            Vector2F spriteScale = GameObject.Transform.Scale;
             float spriteRotation = GameObject.Transform.Rotation;
 
             float spritePosX = spritePosition.X * pixelsPerMeter;
@@ -236,10 +236,10 @@ namespace Alis.Core.Ecs.Component.Render
         /// <param name="cameraResolution">The camera resolution</param>
         /// <param name="pixelsPerMeter">The pixels per meter</param>
         /// <returns>The bool</returns>
-        public bool IsVisible(Vector2 cameraPosition, Vector2 cameraResolution, float pixelsPerMeter)
+        public bool IsVisible(Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
         {
-            Vector2 spritePosition = GameObject.Transform.Position;
-            Vector2 spriteSize = Size;
+            Vector2F spritePosition = GameObject.Transform.Position;
+            Vector2F spriteSize = Size;
             float spriteRotation = GameObject.Transform.Rotation;
 
             float spritePosX = spritePosition.X * pixelsPerMeter;

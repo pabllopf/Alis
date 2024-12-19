@@ -64,7 +64,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="start">The start</param>
         /// <param name="end">The end</param>
         /// <returns>The fixture</returns>
-        public Fixture CreateEdge(Vector2 start, Vector2 end)
+        public Fixture CreateEdge(Vector2F start, Vector2F end)
         {
             EdgeShape edgeShape = new EdgeShape(start, end);
             return CreateFixture(edgeShape);
@@ -100,7 +100,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="density">The density</param>
         /// <param name="offset">The offset</param>
         /// <returns>The fixture</returns>
-        public Fixture CreateRectangle(float width, float height, float density, Vector2 offset)
+        public Fixture CreateRectangle(float width, float height, float density, Vector2F offset)
         {
             Vertices rectangleVertices = PolygonTools.CreateRectangle(width / 2, height / 2);
             rectangleVertices.Translate(ref offset);
@@ -134,7 +134,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="offset">The offset</param>
         /// <exception cref="ArgumentOutOfRangeException">radius Radius must be more than 0 meters</exception>
         /// <returns>The fixture</returns>
-        public Fixture CreateCircle(float radius, float density, Vector2 offset)
+        public Fixture CreateCircle(float radius, float density, Vector2F offset)
         {
             if (radius <= 0)
             {

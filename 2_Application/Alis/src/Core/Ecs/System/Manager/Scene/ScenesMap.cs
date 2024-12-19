@@ -48,7 +48,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
 
         public ScenesMap Load()
         {
-            string pathFile =  Path.Combine(Environment.CurrentDirectory, "Data", "ScenesMap.json");
+            string pathFile =  Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "ScenesMap.json");
             if (!File.Exists(pathFile))
             {
                 string json = JsonSerializer.Serialize(this, new JsonOptions
@@ -57,9 +57,9 @@ namespace Alis.Core.Ecs.System.Manager.Scene
                     SerializationOptions = JsonSerializationOptions.Default
                 });
                 
-                if (!Directory.Exists(Path.Combine(Environment.CurrentDirectory, "Data")))
+                if (!Directory.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data")))
                 {
-                    Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "Data"));
+                    Directory.CreateDirectory(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data"));
                 }
                 
                 File.WriteAllText(pathFile, json);
@@ -76,11 +76,11 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         
         public void Save()
         {
-            string pathFile =  Path.Combine(Environment.CurrentDirectory, "Data", "ScenesMap.json");
+            string pathFile =  Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "ScenesMap.json");
             
-            if (!Directory.Exists(Path.Combine(Environment.CurrentDirectory, "Data")))
+            if (!Directory.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data")))
             {
-                Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "Data"));
+                Directory.CreateDirectory(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data"));
             }
             
             string json = JsonSerializer.Serialize(this, new JsonOptions

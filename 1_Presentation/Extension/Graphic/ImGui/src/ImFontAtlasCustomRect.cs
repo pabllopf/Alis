@@ -70,7 +70,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The glyph offset
         /// </summary>
-        public Vector2 GlyphOffset { get; set; }
+        public Vector2F GlyphOffset { get; set; }
 
         /// <summary>
         ///     The font

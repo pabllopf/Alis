@@ -218,7 +218,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         [Fact]
         public void ItemIcon_WithVector4_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.ItemIcon(new Vector4()));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.ItemIcon(new Vector4F()));
         }
 
         /// <summary>
@@ -281,7 +281,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         [Fact]
         public void PixelsToPlot_WithVector2_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PixelsToPlot(new Vector2()));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PixelsToPlot(new Vector2F()));
         }
 
         /// <summary>
@@ -290,7 +290,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         [Fact]
         public void PixelsToPlot_WithVector2AndXAxis_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PixelsToPlot(new Vector2(), 0));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PixelsToPlot(new Vector2F(), 0));
         }
 
         /// <summary>
@@ -299,7 +299,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         [Fact]
         public void PixelsToPlot_WithVector2XAxisAndYAxis_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PixelsToPlot(new Vector2(), 0, 0));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PixelsToPlot(new Vector2F(), 0, 0));
         }
 
         /// <summary>

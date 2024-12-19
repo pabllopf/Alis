@@ -43,7 +43,7 @@ namespace Alis.Core.Aspect.Math.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            Console.WriteLine(new Vector2(3.0f, 2.0f).ToString());
+            Console.WriteLine(new Vector2F(3.0f, 2.0f).ToString());
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
         }

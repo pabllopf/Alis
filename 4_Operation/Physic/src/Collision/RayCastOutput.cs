@@ -45,6 +45,6 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     The normal of the face of the shape the ray has hit.
         /// </summary>
-        public Vector2 Normal;
+        public Vector2F Normal;
     }
 }

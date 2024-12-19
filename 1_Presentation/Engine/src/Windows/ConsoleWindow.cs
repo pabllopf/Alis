@@ -120,8 +120,8 @@ namespace Alis.App.Engine.Windows
 
             if (ImGui.Begin(NameWindow, ref isOpen, flags))
             {
-                ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0.13f, 0.14f, 0.15f, 1.0f));
-                ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4(0.13f, 0.14f, 0.15f, 1.0f));
+                ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.13f, 0.14f, 0.15f, 1.0f));
+                ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.13f, 0.14f, 0.15f, 1.0f));
 
                 ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0.0f);
                 // Barra superior con botones y filtro
@@ -183,31 +183,31 @@ namespace Alis.App.Engine.Windows
                 
                 if (line.Contains("Trace:"))
                 {
-                    ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(0.5f, 0.5f, 0.5f, 1.0f));
+                    ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(0.5f, 0.5f, 0.5f, 1.0f));
                 }
                 if (line.Contains("Info:"))
                 {
-                    ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(0.0f, 1.0f, 0.0f, 1.0f));
+                    ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(0.0f, 1.0f, 0.0f, 1.0f));
                 }
                 
                 if (line.Contains("Log:") || line.Contains("Message:"))
                 {
-                    ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(1.0f, 1.0f, 1.0f, 1.0f));
+                    ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(1.0f, 1.0f, 1.0f, 1.0f));
                 }
                 
                 if (line.Contains("Warning:", StringComparison.OrdinalIgnoreCase))
                 {
-                    ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(1.0f, 1.0f, 0.0f, 1.0f));
+                    ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(1.0f, 1.0f, 0.0f, 1.0f));
                 }
                 
                 if (line.Contains("Error:", StringComparison.OrdinalIgnoreCase) || line.Contains("Exception:", StringComparison.OrdinalIgnoreCase))
                 {
-                    ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(1.0f, 0.0f, 0.0f, 1.0f));
+                    ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(1.0f, 0.0f, 0.0f, 1.0f));
                 }
                 
                 if (!line.Contains("Trace:") && !line.Contains("Log:", StringComparison.OrdinalIgnoreCase) && !line.Contains("message", StringComparison.OrdinalIgnoreCase) && !line.Contains("Warning:", StringComparison.OrdinalIgnoreCase) && !line.Contains("Error:", StringComparison.OrdinalIgnoreCase) && !line.Contains("Exception:", StringComparison.OrdinalIgnoreCase) && !line.Contains("Info:"))
                 {
-                    ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(1.0f, 1.0f, 1.0f, 1.0f));
+                    ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(1.0f, 1.0f, 1.0f, 1.0f));
                 }
                 
                 if (ImGui.Selectable(line, false, ImGuiSelectableFlags.AllowDoubleClick))

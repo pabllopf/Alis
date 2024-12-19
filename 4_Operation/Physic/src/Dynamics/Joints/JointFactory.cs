@@ -61,7 +61,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="anchorB">The anchor</param>
         /// <param name="useWorldCoordinates">The use world coordinates</param>
         /// <returns>The joint</returns>
-        public static RevoluteJoint CreateRevoluteJoint(World world, Body bodyA, Body bodyB, Vector2 anchorA, Vector2 anchorB, bool useWorldCoordinates = false)
+        public static RevoluteJoint CreateRevoluteJoint(World world, Body bodyA, Body bodyB, Vector2F anchorA, Vector2F anchorB, bool useWorldCoordinates = false)
         {
             RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, anchorA, anchorB, useWorldCoordinates);
             world.Add(joint);
@@ -76,9 +76,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="bodyB">The body</param>
         /// <param name="anchor">The anchor</param>
         /// <returns>The joint</returns>
-        public static RevoluteJoint CreateRevoluteJoint(World world, Body bodyA, Body bodyB, Vector2 anchor)
+        public static RevoluteJoint CreateRevoluteJoint(World world, Body bodyA, Body bodyB, Vector2F anchor)
         {
-            Vector2 localanchorA = bodyA.GetLocalPoint(bodyB.GetWorldPoint(anchor));
+            Vector2F localanchorA = bodyA.GetLocalPoint(bodyB.GetWorldPoint(anchor));
             RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, localanchorA, anchor);
             world.Add(joint);
             return joint;
@@ -94,7 +94,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="anchorB">The anchor</param>
         /// <param name="useWorldCoordinates">The use world coordinates</param>
         /// <returns>The rope joint</returns>
-        public static RopeJoint CreateRopeJoint(World world, Body bodyA, Body bodyB, Vector2 anchorA, Vector2 anchorB, bool useWorldCoordinates = false)
+        public static RopeJoint CreateRopeJoint(World world, Body bodyA, Body bodyB, Vector2F anchorA, Vector2F anchorB, bool useWorldCoordinates = false)
         {
             RopeJoint ropeJoint = new RopeJoint(bodyA, bodyB, anchorA, anchorB, useWorldCoordinates);
             world.Add(ropeJoint);
@@ -111,7 +111,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="anchorB">The anchor</param>
         /// <param name="useWorldCoordinates">The use world coordinates</param>
         /// <returns>The weld joint</returns>
-        public static WeldJoint CreateWeldJoint(World world, Body bodyA, Body bodyB, Vector2 anchorA, Vector2 anchorB, bool useWorldCoordinates = false)
+        public static WeldJoint CreateWeldJoint(World world, Body bodyA, Body bodyB, Vector2F anchorA, Vector2F anchorB, bool useWorldCoordinates = false)
         {
             WeldJoint weldJoint = new WeldJoint(bodyA, bodyB, anchorA, anchorB, useWorldCoordinates);
             world.Add(weldJoint);
@@ -128,7 +128,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="axis">The axis</param>
         /// <param name="useWorldCoordinates">The use world coordinates</param>
         /// <returns>The joint</returns>
-        public static PrismaticJoint CreatePrismaticJoint(World world, Body bodyA, Body bodyB, Vector2 anchor, Vector2 axis, bool useWorldCoordinates = false)
+        public static PrismaticJoint CreatePrismaticJoint(World world, Body bodyA, Body bodyB, Vector2F anchor, Vector2F axis, bool useWorldCoordinates = false)
         {
             PrismaticJoint joint = new PrismaticJoint(bodyA, bodyB, anchor, axis, useWorldCoordinates);
             world.Add(joint);
@@ -145,7 +145,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="axis">The axis</param>
         /// <param name="useWorldCoordinates">The use world coordinates</param>
         /// <returns>The joint</returns>
-        public static WheelJoint CreateWheelJoint(World world, Body bodyA, Body bodyB, Vector2 anchor, Vector2 axis, bool useWorldCoordinates = false)
+        public static WheelJoint CreateWheelJoint(World world, Body bodyA, Body bodyB, Vector2F anchor, Vector2F axis, bool useWorldCoordinates = false)
         {
             WheelJoint joint = new WheelJoint(bodyA, bodyB, anchor, axis, useWorldCoordinates);
             world.Add(joint);
@@ -160,7 +160,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="bodyB">The body</param>
         /// <param name="axis">The axis</param>
         /// <returns>The wheel joint</returns>
-        public static WheelJoint CreateWheelJoint(World world, Body bodyA, Body bodyB, Vector2 axis) => CreateWheelJoint(world, bodyA, bodyB, Vector2.Zero, axis);
+        public static WheelJoint CreateWheelJoint(World world, Body bodyA, Body bodyB, Vector2F axis) => CreateWheelJoint(world, bodyA, bodyB, Vector2F.Zero, axis);
 
         /// <summary>
         ///     Creates the angle joint using the specified world
@@ -186,7 +186,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="anchorB">The anchor</param>
         /// <param name="useWorldCoordinates">The use world coordinates</param>
         /// <returns>The distance joint</returns>
-        public static DistanceJoint CreateDistanceJoint(World world, Body bodyA, Body bodyB, Vector2 anchorA, Vector2 anchorB, bool useWorldCoordinates = false)
+        public static DistanceJoint CreateDistanceJoint(World world, Body bodyA, Body bodyB, Vector2F anchorA, Vector2F anchorB, bool useWorldCoordinates = false)
         {
             DistanceJoint distanceJoint = new DistanceJoint(bodyA, bodyB, anchorA, anchorB, useWorldCoordinates);
             world.Add(distanceJoint);
@@ -200,7 +200,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="bodyA">The body</param>
         /// <param name="bodyB">The body</param>
         /// <returns>The distance joint</returns>
-        public static DistanceJoint CreateDistanceJoint(World world, Body bodyA, Body bodyB) => CreateDistanceJoint(world, bodyA, bodyB, Vector2.Zero, Vector2.Zero);
+        public static DistanceJoint CreateDistanceJoint(World world, Body bodyA, Body bodyB) => CreateDistanceJoint(world, bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
 
         /// <summary>
         ///     Creates the friction joint using the specified world
@@ -211,7 +211,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="anchor">The anchor</param>
         /// <param name="useWorldCoordinates">The use world coordinates</param>
         /// <returns>The friction joint</returns>
-        public static FrictionJoint CreateFrictionJoint(World world, Body bodyA, Body bodyB, Vector2 anchor, bool useWorldCoordinates = false)
+        public static FrictionJoint CreateFrictionJoint(World world, Body bodyA, Body bodyB, Vector2F anchor, bool useWorldCoordinates = false)
         {
             FrictionJoint frictionJoint = new FrictionJoint(bodyA, bodyB, anchor, useWorldCoordinates);
             world.Add(frictionJoint);
@@ -225,7 +225,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="bodyA">The body</param>
         /// <param name="bodyB">The body</param>
         /// <returns>The friction joint</returns>
-        public static FrictionJoint CreateFrictionJoint(World world, Body bodyA, Body bodyB) => CreateFrictionJoint(world, bodyA, bodyB, Vector2.Zero);
+        public static FrictionJoint CreateFrictionJoint(World world, Body bodyA, Body bodyB) => CreateFrictionJoint(world, bodyA, bodyB, Vector2F.Zero);
 
         /// <summary>
         ///     Creates the gear joint using the specified world
@@ -257,7 +257,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="ratio">The ratio</param>
         /// <param name="useWorldCoordinates">The use world coordinates</param>
         /// <returns>The pulley joint</returns>
-        public static PulleyJoint CreatePulleyJoint(World world, Body bodyA, Body bodyB, Vector2 anchorA, Vector2 anchorB, Vector2 worldAnchorA, Vector2 worldAnchorB, float ratio, bool useWorldCoordinates = false)
+        public static PulleyJoint CreatePulleyJoint(World world, Body bodyA, Body bodyB, Vector2F anchorA, Vector2F anchorB, Vector2F worldAnchorA, Vector2F worldAnchorB, float ratio, bool useWorldCoordinates = false)
         {
             PulleyJoint pulleyJoint = new PulleyJoint(bodyA, bodyB, anchorA, anchorB, worldAnchorA, worldAnchorB, ratio, useWorldCoordinates);
             world.Add(pulleyJoint);
@@ -271,7 +271,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="body">The body</param>
         /// <param name="worldAnchor">The world anchor</param>
         /// <returns>The joint</returns>
-        public static FixedMouseJoint CreateFixedMouseJoint(World world, Body body, Vector2 worldAnchor)
+        public static FixedMouseJoint CreateFixedMouseJoint(World world, Body body, Vector2F worldAnchor)
         {
             FixedMouseJoint joint = new FixedMouseJoint(body, worldAnchor);
             world.Add(joint);

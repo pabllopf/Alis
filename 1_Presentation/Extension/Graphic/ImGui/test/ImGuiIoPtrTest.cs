@@ -195,7 +195,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             ImGuiIo io = new ImGuiIo();
             ImGuiIoPtr ioPtr = new ImGuiIoPtr(io);
-            Vector2 expected = new Vector2(1.0f, 2.0f);
+            Vector2F expected = new Vector2F(1.0f, 2.0f);
             ioPtr.MouseDelta = expected;
             Assert.Equal(expected, ioPtr.MouseDelta);
         }
@@ -247,7 +247,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             ImGuiIo io = new ImGuiIo();
             ImGuiIoPtr ioPtr = new ImGuiIoPtr(io);
-            Vector2 expected = new Vector2(3.0f, 4.0f);
+            Vector2F expected = new Vector2F(3.0f, 4.0f);
             ioPtr.MousePos = expected;
             Assert.Equal(expected, ioPtr.MousePos);
         }
@@ -395,7 +395,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             ImGuiIo io = new ImGuiIo();
             ImGuiIoPtr ioPtr = new ImGuiIoPtr(io);
-            Vector2 expected = new Vector2(5.0f, 6.0f);
+            Vector2F expected = new Vector2F(5.0f, 6.0f);
             ioPtr.MousePosPrev = expected;
             Assert.Equal(expected, ioPtr.MousePosPrev);
         }
@@ -1228,7 +1228,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void MouseDelta_Should_SetAndGet()
         {
             ImGuiIo io = new ImGuiIo();
-            Vector2 delta = new Vector2(1.0f, 1.0f);
+            Vector2F delta = new Vector2F(1.0f, 1.0f);
             io.MouseDelta = delta;
             Assert.Equal(delta, io.MouseDelta);
         }
@@ -1240,7 +1240,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void MousePos_Should_SetAndGet()
         {
             ImGuiIo io = new ImGuiIo();
-            Vector2 pos = new Vector2(100.0f, 200.0f);
+            Vector2F pos = new Vector2F(100.0f, 200.0f);
             io.MousePos = pos;
             Assert.Equal(pos, io.MousePos);
         }
@@ -5709,7 +5709,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void MouseClickedPos1_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
-            Vector2 value = new Vector2();
+            Vector2F value = new Vector2F();
             obj.MouseClickedPos1 = value;
             Assert.Equal(value, obj.MouseClickedPos1);
         }
@@ -5721,7 +5721,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void MouseClickedPos2_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
-            Vector2 value = new Vector2();
+            Vector2F value = new Vector2F();
             obj.MouseClickedPos2 = value;
             Assert.Equal(value, obj.MouseClickedPos2);
         }
@@ -5733,7 +5733,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void MouseClickedPos3_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
-            Vector2 value = new Vector2();
+            Vector2F value = new Vector2F();
             obj.MouseClickedPos3 = value;
             Assert.Equal(value, obj.MouseClickedPos3);
         }
@@ -5745,7 +5745,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void MouseClickedPos4_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
-            Vector2 value = new Vector2();
+            Vector2F value = new Vector2F();
             obj.MouseClickedPos4 = value;
             Assert.Equal(value, obj.MouseClickedPos4);
         }
@@ -5889,7 +5889,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void MouseDragMaxDistanceAbs0_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
-            Vector2 value = new Vector2();
+            Vector2F value = new Vector2F();
             obj.MouseDragMaxDistanceAbs0 = value;
             Assert.Equal(value, obj.MouseDragMaxDistanceAbs0);
         }
@@ -5901,7 +5901,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void MouseDragMaxDistanceAbs1_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
-            Vector2 value = new Vector2();
+            Vector2F value = new Vector2F();
             obj.MouseDragMaxDistanceAbs1 = value;
             Assert.Equal(value, obj.MouseDragMaxDistanceAbs1);
         }
@@ -5913,7 +5913,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void MouseDragMaxDistanceAbs2_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
-            Vector2 value = new Vector2();
+            Vector2F value = new Vector2F();
             obj.MouseDragMaxDistanceAbs2 = value;
             Assert.Equal(value, obj.MouseDragMaxDistanceAbs2);
         }
@@ -5925,7 +5925,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void MouseDragMaxDistanceAbs3_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
-            Vector2 value = new Vector2();
+            Vector2F value = new Vector2F();
             obj.MouseDragMaxDistanceAbs3 = value;
             Assert.Equal(value, obj.MouseDragMaxDistanceAbs3);
         }
@@ -5937,7 +5937,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void MouseDragMaxDistanceAbs4_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
-            Vector2 value = new Vector2();
+            Vector2F value = new Vector2F();
             obj.MouseDragMaxDistanceAbs4 = value;
             Assert.Equal(value, obj.MouseDragMaxDistanceAbs4);
         }

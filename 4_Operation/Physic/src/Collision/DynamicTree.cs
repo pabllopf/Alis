@@ -200,7 +200,7 @@ namespace Alis.Core.Physic.Collision
             int proxyId = AllocateNode();
 
             // Fatten the aabb.
-            Vector2 r = new Vector2(SettingEnv.AABBExtension, SettingEnv.AABBExtension);
+            Vector2F r = new Vector2F(SettingEnv.AABBExtension, SettingEnv.AABBExtension);
             _nodes[proxyId].AABB.LowerBound = aabb.LowerBound - r;
             _nodes[proxyId].AABB.UpperBound = aabb.UpperBound + r;
             _nodes[proxyId].Height = 0;
@@ -232,7 +232,7 @@ namespace Alis.Core.Physic.Collision
         /// <param name="aabb">The aabb.</param>
         /// <param name="displacement">The displacement.</param>
         /// <returns>true if the proxy was re-inserted.</returns>
-        public bool MoveProxy(int proxyId, ref AABB aabb, Vector2 displacement)
+        public bool MoveProxy(int proxyId, ref AABB aabb, Vector2F displacement)
         {
             Debug.Assert((0 <= proxyId) && (proxyId < _nodeCapacity));
 
@@ -247,12 +247,12 @@ namespace Alis.Core.Physic.Collision
 
             // Extend AABB.
             AABB b = aabb;
-            Vector2 r = new Vector2(SettingEnv.AABBExtension, SettingEnv.AABBExtension);
+            Vector2F r = new Vector2F(SettingEnv.AABBExtension, SettingEnv.AABBExtension);
             b.LowerBound = b.LowerBound - r;
             b.UpperBound = b.UpperBound + r;
 
             // Predict AABB displacement.
-            Vector2 d = SettingEnv.AABBMultiplier * displacement;
+            Vector2F d = SettingEnv.AABBMultiplier * displacement;
 
             if (d.X < 0.0f)
             {
@@ -386,14 +386,14 @@ namespace Alis.Core.Physic.Collision
         /// <param name="input">The ray-cast input data. The ray extends from p1 to p1 + maxFraction * (p2 - p1).</param>
         public void RayCast(BroadPhaseRayCastCallback callback, ref RayCastInput input)
         {
-            Vector2 p1 = input.Point1;
-            Vector2 p2 = input.Point2;
-            Vector2 r = p2 - p1;
+            Vector2F p1 = input.Point1;
+            Vector2F p2 = input.Point2;
+            Vector2F r = p2 - p1;
             Debug.Assert(r.LengthSquared() > 0.0f);
             r.Normalize();
 
             // v is perpendicular to the segment.
-            Vector2 absV = MathUtils.Abs(new Vector2(-r.Y, r.X)); //FPE: Inlined the 'v' variable
+            Vector2F absV = MathUtils.Abs(new Vector2F(-r.Y, r.X)); //FPE: Inlined the 'v' variable
 
             // Separating axis for segment (Gino, p80).
             // |dot(v, p1 - c)| > dot(|v|, h)
@@ -403,9 +403,9 @@ namespace Alis.Core.Physic.Collision
             // Build a bounding box for the segment.
             AABB segmentAABB = new AABB();
             {
-                Vector2 t = p1 + maxFraction * (p2 - p1);
-                Vector2.Min(ref p1, ref t, out segmentAABB.LowerBound);
-                Vector2.Max(ref p1, ref t, out segmentAABB.UpperBound);
+                Vector2F t = p1 + maxFraction * (p2 - p1);
+                Vector2F.Min(ref p1, ref t, out segmentAABB.LowerBound);
+                Vector2F.Max(ref p1, ref t, out segmentAABB.UpperBound);
             }
 
             _raycastStack.Clear();
@@ -428,9 +428,9 @@ namespace Alis.Core.Physic.Collision
 
                 // Separating axis for segment (Gino, p80).
                 // |dot(v, p1 - c)| > dot(|v|, h)
-                Vector2 c = _nodes[nodeId].AABB.Center;
-                Vector2 h = _nodes[nodeId].AABB.Extents;
-                float separation = Math.Abs(Vector2.Dot(new Vector2(-r.Y, r.X), p1 - c)) - Vector2.Dot(absV, h);
+                Vector2F c = _nodes[nodeId].AABB.Center;
+                Vector2F h = _nodes[nodeId].AABB.Extents;
+                float separation = Math.Abs(Vector2F.Dot(new Vector2F(-r.Y, r.X), p1 - c)) - Vector2F.Dot(absV, h);
                 if (separation > 0.0f)
                 {
                     continue;
@@ -455,9 +455,9 @@ namespace Alis.Core.Physic.Collision
                     {
                         // Update segment bounding box.
                         maxFraction = value;
-                        Vector2 t = p1 + maxFraction * (p2 - p1);
-                        Vector2.Min(ref p1, ref t, out segmentAABB.LowerBound);
-                        Vector2.Max(ref p1, ref t, out segmentAABB.UpperBound);
+                        Vector2F t = p1 + maxFraction * (p2 - p1);
+                        Vector2F.Min(ref p1, ref t, out segmentAABB.LowerBound);
+                        Vector2F.Max(ref p1, ref t, out segmentAABB.UpperBound);
                     }
                 }
                 else
@@ -1098,7 +1098,7 @@ namespace Alis.Core.Physic.Collision
         ///     Shift the origin of the nodes
         /// </summary>
         /// <param name="newOrigin">The displacement to use.</param>
-        public void ShiftOrigin(Vector2 newOrigin)
+        public void ShiftOrigin(Vector2F newOrigin)
         {
             // Build array of leaves. Free the rest.
             for (int i = 0; i < _nodeCapacity; ++i)

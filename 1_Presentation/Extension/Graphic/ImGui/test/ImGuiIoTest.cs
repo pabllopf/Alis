@@ -77,7 +77,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void MousePosPrev_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
-            Assert.Equal(default(Vector2), io.MousePosPrev);
+            Assert.Equal(default(Vector2F), io.MousePosPrev);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void MouseClickedPos0_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
-            Assert.Equal(default(Vector2), io.MouseClickedPos0);
+            Assert.Equal(default(Vector2F), io.MouseClickedPos0);
         }
 
 // Repeat similar tests for all MouseClickedPos properties
@@ -199,7 +199,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void MouseDragMaxDistanceAbs0_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
-            Assert.Equal(default(Vector2), io.MouseDragMaxDistanceAbs0);
+            Assert.Equal(default(Vector2F), io.MouseDragMaxDistanceAbs0);
         }
 
         /// <summary>
@@ -313,7 +313,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void DisplaySize_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
-            Vector2 value = new Vector2();
+            Vector2F value = new Vector2F();
             obj.DisplaySize = value;
             Assert.Equal(value, obj.DisplaySize);
         }
@@ -517,7 +517,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void DisplayFramebufferScale_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
-            Vector2 value = new Vector2();
+            Vector2F value = new Vector2F();
             obj.DisplayFramebufferScale = value;
             Assert.Equal(value, obj.DisplayFramebufferScale);
         }

@@ -234,7 +234,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         [Fact]
         public void EditorContextResetPanning_ShouldResetPanningOfEditorContext()
         {
-            Assert.Throws<DllNotFoundException>(() => ImNodes.EditorContextResetPanning(new Vector2(0, 0)));
+            Assert.Throws<DllNotFoundException>(() => ImNodes.EditorContextResetPanning(new Vector2F(0, 0)));
         }
 
         /// <summary>
@@ -728,7 +728,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         [Fact]
         public void PushStyleVar_Vector2_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImNodes.PushStyleVar(ImNodesStyleVar.NodePadding, new Vector2(0, 0)));
+            Assert.Throws<DllNotFoundException>(() => ImNodes.PushStyleVar(ImNodesStyleVar.NodePadding, new Vector2F(0, 0)));
         }
 
         /// <summary>
@@ -838,7 +838,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         [Fact]
         public void SetNodeEditorSpacePos_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImNodes.SetNodeEditorSpacePos(0, new Vector2(0, 0)));
+            Assert.Throws<DllNotFoundException>(() => ImNodes.SetNodeEditorSpacePos(0, new Vector2F(0, 0)));
         }
 
         /// <summary>
@@ -847,7 +847,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         [Fact]
         public void SetNodeGridSpacePos_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImNodes.SetNodeGridSpacePos(0, new Vector2(0, 0)));
+            Assert.Throws<DllNotFoundException>(() => ImNodes.SetNodeGridSpacePos(0, new Vector2F(0, 0)));
         }
 
         /// <summary>
@@ -856,7 +856,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         [Fact]
         public void SetNodeScreenSpacePos_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImNodes.SetNodeScreenSpacePos(0, new Vector2(0, 0)));
+            Assert.Throws<DllNotFoundException>(() => ImNodes.SetNodeScreenSpacePos(0, new Vector2F(0, 0)));
         }
 
         /// <summary>

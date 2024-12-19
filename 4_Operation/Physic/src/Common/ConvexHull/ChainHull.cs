@@ -63,7 +63,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
             //Sort by X-axis
             pointSet.Sort(_pointComparer);
 
-            Vector2[] h = new Vector2[pointSet.Count];
+            Vector2F[] h = new Vector2F[pointSet.Count];
             Vertices res;
 
             int top = -1; // indices for bottom and top of the stack
@@ -190,8 +190,8 @@ namespace Alis.Core.Physic.Common.ConvexHull
         /// <summary>
         ///     The point comparer class
         /// </summary>
-        /// <seealso cref="Comparer{Vector2}" />
-        private class PointComparer : Comparer<Vector2>
+        /// <seealso cref="Comparer{Vector2F}" />
+        private class PointComparer : Comparer<Vector2F>
         {
             /// <summary>
             ///     Compares the a
@@ -199,7 +199,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
             /// <param name="a">The </param>
             /// <param name="b">The </param>
             /// <returns>The int</returns>
-            public override int Compare(Vector2 a, Vector2 b)
+            public override int Compare(Vector2F a, Vector2F b)
             {
                 int f = a.X.CompareTo(b.X);
                 return f != 0 ? f : a.Y.CompareTo(b.Y);

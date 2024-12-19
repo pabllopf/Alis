@@ -64,9 +64,9 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
 
                 //Check here for degenerate triangles
                 Vertices triangle = triangles[i];
-                Vector2 a = triangle[0];
-                Vector2 b = triangle[1];
-                Vector2 c = triangle[2];
+                Vector2F a = triangle[0];
+                Vector2F b = triangle[1];
+                Vector2F c = triangle[2];
 
                 if (((Math.Abs(a.X - b.X) < float.Epsilon) && (Math.Abs(a.Y - b.Y) < float.Epsilon)) || ((Math.Abs(b.X - c.X) < float.Epsilon) && (Math.Abs(b.Y - c.Y) < float.Epsilon)) || ((Math.Abs(a.X - c.X) < float.Epsilon) && (Math.Abs(a.Y - c.Y) < float.Epsilon)))
                 {

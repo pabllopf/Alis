@@ -55,7 +55,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void InputPos_Should_SetAndGetCorrectly()
         {
             ImGuiPlatformImeData platformImeData = new ImGuiPlatformImeData();
-            Vector2 inputPos = new Vector2(1.0f, 2.0f);
+            Vector2F inputPos = new Vector2F(1.0f, 2.0f);
             platformImeData.InputPos = inputPos;
             Assert.Equal(inputPos, platformImeData.InputPos);
         }

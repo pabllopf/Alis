@@ -28,7 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Data.Dll;
 
 namespace Alis.Core.Aspect.Data.Resource
 {
@@ -45,7 +48,7 @@ namespace Alis.Core.Aspect.Data.Resource
         public static string Find(string assetName)
         {
             ValidateAssetName(assetName);
-            string assetsDirectory = GetAssetsDirectory();
+            string[] assetsDirectory = GetAssetsDirectory();
             string[] files = GetFilesInAssetsDirectory(assetsDirectory, assetName);
             ValidateFileCount(files, assetName);
             return GetFilePath(files);
@@ -126,10 +129,22 @@ namespace Alis.Core.Aspect.Data.Resource
         ///     Gets the assets directory
         /// </summary>
         /// <returns>The string</returns>
-        internal static string GetAssetsDirectory()
+        internal static string[] GetAssetsDirectory()
         {
-            string baseDirectory = Environment.CurrentDirectory;
-            return Path.Combine(baseDirectory, "Assets");
+            string[] baseDirectories = new[]
+            {
+                Environment.CurrentDirectory,
+                Path.GetDirectoryName(typeof(AssetManager).Assembly.Location),
+                AppDomain.CurrentDomain.BaseDirectory
+            };
+            
+            for (int i = 0; i < baseDirectories.Length; i++)
+            {
+                baseDirectories[i] = baseDirectories[i].TrimEnd('/', '\\');
+                baseDirectories[i] = Path.Combine(baseDirectories[i], "Assets");
+            }
+            
+            return baseDirectories;
         }
 
         /// <summary>
@@ -138,7 +153,26 @@ namespace Alis.Core.Aspect.Data.Resource
         /// <param name="assetsDirectory">The assets directory</param>
         /// <param name="assetName">The asset name</param>
         /// <returns>The string array</returns>
-        internal static string[] GetFilesInAssetsDirectory(string assetsDirectory, string assetName) => Directory.GetFiles(assetsDirectory, assetName, SearchOption.AllDirectories);
+        internal static string[] GetFilesInAssetsDirectory(string[] assetsDirectory, string assetName)
+        {
+            List<string> files = new List<string>();
+            foreach (string directory in assetsDirectory)
+            {
+                if (Directory.Exists(directory))
+                {
+                    string[] filesInDirectory = Directory.GetFiles(directory, assetName, SearchOption.AllDirectories);
+                    foreach (string file in filesInDirectory)
+                    {
+                        if (!files.Contains(file))
+                        {
+                            files.Add(file);
+                        }
+                    }
+                }
+            }
+            
+            return files.ToArray();
+        }
 
         /// <summary>
         ///     Validates the file count using the specified files

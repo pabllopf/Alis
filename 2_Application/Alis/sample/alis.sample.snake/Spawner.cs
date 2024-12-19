@@ -76,7 +76,7 @@ namespace Alis.Sample.Snake
                 food.Name = $"Food_{i}";
 
                 Transform transform = food.Transform;
-                transform.Position = new Vector2(-15, -15); // Initial off-screen position
+                transform.Position = new Vector2F(-15, -15); // Initial off-screen position
                 food.Transform = transform;
 
                 food.Add(new BoxCollider()
@@ -132,7 +132,7 @@ namespace Alis.Sample.Snake
                 BoxCollider collider = food.Get<BoxCollider>();
                 if (collider != null)
                 {
-                    collider.Body.Position = new Vector2(x, y);
+                    collider.Body.Position = new Vector2F(x, y);
 
                     food.IsEnable = true;
                     _currentFoodIndex = (_currentFoodIndex + 1) % _foodPool.Count;

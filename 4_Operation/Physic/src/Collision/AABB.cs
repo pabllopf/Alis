@@ -42,19 +42,19 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     The lower vertex
         /// </summary>
-        public Vector2 LowerBound;
+        public Vector2F LowerBound;
 
         /// <summary>
         ///     The upper vertex
         /// </summary>
-        public Vector2 UpperBound;
+        public Vector2F UpperBound;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="AABB" /> class
         /// </summary>
         /// <param name="min">The min</param>
         /// <param name="max">The max</param>
-        public AABB(Vector2 min, Vector2 max)
+        public AABB(Vector2F min, Vector2F max)
             : this(ref min, ref max)
         {
         }
@@ -64,7 +64,7 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         /// <param name="min">The min</param>
         /// <param name="max">The max</param>
-        public AABB(ref Vector2 min, ref Vector2 max)
+        public AABB(ref Vector2F min, ref Vector2F max)
         {
             LowerBound = min;
             UpperBound = max;
@@ -76,10 +76,10 @@ namespace Alis.Core.Physic.Collision
         /// <param name="center">The center</param>
         /// <param name="width">The width</param>
         /// <param name="height">The height</param>
-        public AABB(Vector2 center, float width, float height)
+        public AABB(Vector2F center, float width, float height)
         {
-            LowerBound = center - new Vector2(width / 2, height / 2);
-            UpperBound = center + new Vector2(width / 2, height / 2);
+            LowerBound = center - new Vector2F(width / 2, height / 2);
+            UpperBound = center + new Vector2F(width / 2, height / 2);
         }
 
         /// <summary>
@@ -95,12 +95,12 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     Get the center of the AABB.
         /// </summary>
-        public Vector2 Center => 0.5f * (LowerBound + UpperBound);
+        public Vector2F Center => 0.5f * (LowerBound + UpperBound);
 
         /// <summary>
         ///     Get the extents of the AABB (half-widths).
         /// </summary>
-        public Vector2 Extents => 0.5f * (UpperBound - LowerBound);
+        public Vector2F Extents => 0.5f * (UpperBound - LowerBound);
 
         /// <summary>
         ///     Get the perimeter length
@@ -125,9 +125,9 @@ namespace Alis.Core.Physic.Collision
             {
                 Vertices vertices = new Vertices(4);
                 vertices.Add(UpperBound);
-                vertices.Add(new Vector2(UpperBound.X, LowerBound.Y));
+                vertices.Add(new Vector2F(UpperBound.X, LowerBound.Y));
                 vertices.Add(LowerBound);
-                vertices.Add(new Vector2(LowerBound.X, UpperBound.Y));
+                vertices.Add(new Vector2F(LowerBound.X, UpperBound.Y));
                 return vertices;
             }
         }
@@ -140,7 +140,7 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     Second quadrant
         /// </summary>
-        public AABB Q2 => new AABB(new Vector2(LowerBound.X, Center.Y), new Vector2(Center.X, UpperBound.Y));
+        public AABB Q2 => new AABB(new Vector2F(LowerBound.X, Center.Y), new Vector2F(Center.X, UpperBound.Y));
 
         /// <summary>
         ///     Third quadrant
@@ -150,7 +150,7 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     Forth quadrant
         /// </summary>
-        public AABB Q4 => new AABB(new Vector2(Center.X, LowerBound.Y), new Vector2(UpperBound.X, Center.Y));
+        public AABB Q4 => new AABB(new Vector2F(Center.X, LowerBound.Y), new Vector2F(UpperBound.X, Center.Y));
 
         /// <summary>
         ///     Verify that the bounds are sorted. And the bounds are valid numbers (not NaN).
@@ -160,7 +160,7 @@ namespace Alis.Core.Physic.Collision
         /// </returns>
         public bool IsValid()
         {
-            Vector2 d = UpperBound - LowerBound;
+            Vector2F d = UpperBound - LowerBound;
             bool valid = (d.X >= 0.0f) && (d.Y >= 0.0f);
             valid = valid && LowerBound.IsValid() && UpperBound.IsValid();
             return valid;
@@ -172,8 +172,8 @@ namespace Alis.Core.Physic.Collision
         /// <param name="aabb">The aabb.</param>
         public void Combine(ref AABB aabb)
         {
-            Vector2.Min(ref LowerBound, ref aabb.LowerBound, out LowerBound);
-            Vector2.Max(ref UpperBound, ref aabb.UpperBound, out UpperBound);
+            Vector2F.Min(ref LowerBound, ref aabb.LowerBound, out LowerBound);
+            Vector2F.Max(ref UpperBound, ref aabb.UpperBound, out UpperBound);
         }
 
         /// <summary>
@@ -183,8 +183,8 @@ namespace Alis.Core.Physic.Collision
         /// <param name="aabb2">The aabb2.</param>
         public void Combine(ref AABB aabb1, ref AABB aabb2)
         {
-            Vector2.Min(ref aabb1.LowerBound, ref aabb2.LowerBound, out LowerBound);
-            Vector2.Max(ref aabb1.UpperBound, ref aabb2.UpperBound, out UpperBound);
+            Vector2F.Min(ref aabb1.LowerBound, ref aabb2.LowerBound, out LowerBound);
+            Vector2F.Max(ref aabb1.UpperBound, ref aabb2.UpperBound, out UpperBound);
         }
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace Alis.Core.Physic.Collision
         /// <returns>
         ///     <c>true</c> if it contains the specified point; otherwise, <c>false</c>.
         /// </returns>
-        public bool Contains(ref Vector2 point) =>
+        public bool Contains(ref Vector2F point) =>
             //using epsilon to try and gaurd against float rounding errors.
             (point.X > LowerBound.X + SettingEnv.Epsilon) && (point.X < UpperBound.X - SettingEnv.Epsilon) &&
             (point.Y > LowerBound.Y + SettingEnv.Epsilon) && (point.Y < UpperBound.Y - SettingEnv.Epsilon);
@@ -252,11 +252,11 @@ namespace Alis.Core.Physic.Collision
             float tmin = -SettingEnv.MaxFloat;
             float tmax = SettingEnv.MaxFloat;
 
-            Vector2 p = input.Point1;
-            Vector2 d = input.Point2 - input.Point1;
-            Vector2 absD = MathUtils.Abs(d);
+            Vector2F p = input.Point1;
+            Vector2F d = input.Point2 - input.Point1;
+            Vector2F absD = MathUtils.Abs(d);
 
-            Vector2 normal = Vector2.Zero;
+            Vector2F normal = Vector2F.Zero;
 
             for (int i = 0; i < 2; ++i)
             {

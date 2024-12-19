@@ -95,7 +95,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// </summary>
         /// <param name="col">The col</param>
         /// <param name="fmt">The fmt</param>
-        public static void TextColored(Vector4 col, string fmt)
+        public static void TextColored(Vector4F col, string fmt)
         {
             ImGuiNative.igTextColored(col, Encoding.UTF8.GetBytes(fmt));
         }
@@ -325,7 +325,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <returns>The bool</returns>
-        public static bool VSliderFloat(string label, Vector2 size, ref float v, float vMin, float vMax)
+        public static bool VSliderFloat(string label, Vector2F size, ref float v, float vMin, float vMax)
         {
             byte ret = ImGuiNative.igVSliderFloat(Encoding.UTF8.GetBytes(label), size, ref v, vMin, vMax, null, 0);
             return ret != 0;
@@ -341,7 +341,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
         /// <returns>The bool</returns>
-        public static bool VSliderFloat(string label, Vector2 size, ref float v, float vMin, float vMax, string format)
+        public static bool VSliderFloat(string label, Vector2F size, ref float v, float vMin, float vMax, string format)
         {
             byte ret = ImGuiNative.igVSliderFloat(Encoding.UTF8.GetBytes(label), size, ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
 
@@ -359,7 +359,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The bool</returns>
-        public static bool VSliderFloat(string label, Vector2 size, ref float v, float vMin, float vMax, string format, ImGuiSliderFlags flags)
+        public static bool VSliderFloat(string label, Vector2F size, ref float v, float vMin, float vMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igVSliderFloat(Encoding.UTF8.GetBytes(label), size, ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
 
@@ -375,7 +375,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <returns>The bool</returns>
-        public static bool VSliderInt(string label, Vector2 size, ref int v, int vMin, int vMax)
+        public static bool VSliderInt(string label, Vector2F size, ref int v, int vMin, int vMax)
         {
             byte ret = ImGuiNative.igVSliderInt(Encoding.UTF8.GetBytes(label), size, ref v, vMin, vMax, null, 0);
 
@@ -392,7 +392,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
         /// <returns>The bool</returns>
-        public static bool VSliderInt(string label, Vector2 size, ref int v, int vMin, int vMax, string format)
+        public static bool VSliderInt(string label, Vector2F size, ref int v, int vMin, int vMax, string format)
         {
             byte ret = ImGuiNative.igVSliderInt(Encoding.UTF8.GetBytes(label), size, ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
             return ret != 0;
@@ -409,7 +409,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The bool</returns>
-        public static bool VSliderInt(string label, Vector2 size, ref int v, int vMin, int vMax, string format, ImGuiSliderFlags flags)
+        public static bool VSliderInt(string label, Vector2F size, ref int v, int vMin, int vMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igVSliderInt(Encoding.UTF8.GetBytes(label), size, ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
             return ret != 0;
@@ -425,7 +425,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="pMin">The min</param>
         /// <param name="pMax">The max</param>
         /// <returns>The bool</returns>
-        public static bool VSliderScalar(string label, Vector2 size, ImGuiDataType dataType, IntPtr pData, IntPtr pMin, IntPtr pMax)
+        public static bool VSliderScalar(string label, Vector2F size, ImGuiDataType dataType, IntPtr pData, IntPtr pMin, IntPtr pMax)
         {
             byte ret = ImGuiNative.igVSliderScalar(Encoding.UTF8.GetBytes(label), size, dataType, pData, pMin, pMax, null, 0);
             return ret != 0;
@@ -442,7 +442,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="pMax">The max</param>
         /// <param name="format">The format</param>
         /// <returns>The bool</returns>
-        public static bool VSliderScalar(string label, Vector2 size, ImGuiDataType dataType, IntPtr pData, IntPtr pMin, IntPtr pMax, string format)
+        public static bool VSliderScalar(string label, Vector2F size, ImGuiDataType dataType, IntPtr pData, IntPtr pMin, IntPtr pMax, string format)
         {
             byte ret = ImGuiNative.igVSliderScalar(Encoding.UTF8.GetBytes(label), size, dataType, pData, pMin, pMax, Encoding.UTF8.GetBytes(format), 0);
             return ret != 0;
@@ -460,7 +460,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The bool</returns>
-        public static bool VSliderScalar(string label, Vector2 size, ImGuiDataType dataType, IntPtr pData, IntPtr pMin, IntPtr pMax, string format, ImGuiSliderFlags flags)
+        public static bool VSliderScalar(string label, Vector2F size, ImGuiDataType dataType, IntPtr pData, IntPtr pMin, IntPtr pMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igVSliderScalar(Encoding.UTF8.GetBytes(label), size, dataType, pData, pMin, pMax, Encoding.UTF8.GetBytes(format), flags);
             return ret != 0;
@@ -624,7 +624,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             string label,
             ref string input,
             uint maxLength,
-            Vector2 size) => InputTextMultiline(label, ref input, maxLength, size, 0, null, IntPtr.Zero);
+            Vector2F size) => InputTextMultiline(label, ref input, maxLength, size, 0, null, IntPtr.Zero);
 
         /// <summary>
         ///     Describes whether input text multiline
@@ -639,7 +639,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             string label,
             ref string input,
             uint maxLength,
-            Vector2 size,
+            Vector2F size,
             ImGuiInputTextFlags flags) => InputTextMultiline(label, ref input, maxLength, size, flags, null, IntPtr.Zero);
 
         /// <summary>
@@ -656,7 +656,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             string label,
             ref string input,
             uint maxLength,
-            Vector2 size,
+            Vector2F size,
             ImGuiInputTextFlags flags,
             ImGuiInputTextCallback callback) => InputTextMultiline(label, ref input, maxLength, size, flags, callback, IntPtr.Zero);
 
@@ -675,7 +675,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             string label,
             ref string input,
             uint maxLength,
-            Vector2 size,
+            Vector2F size,
             ImGuiInputTextFlags flag,
             ImGuiInputTextCallback callback,
             IntPtr userData)
@@ -776,7 +776,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// </summary>
         /// <param name="text">The text</param>
         /// <returns>The vector</returns>
-        public static Vector2 CalcTextSize(string text)
+        public static Vector2F CalcTextSize(string text)
             => CalcTextSizeImpl(text);
 
         /// <summary>
@@ -785,7 +785,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="text">The text</param>
         /// <param name="start">The start</param>
         /// <returns>The vector</returns>
-        public static Vector2 CalcTextSize(string text, int start)
+        public static Vector2F CalcTextSize(string text, int start)
             => CalcTextSizeImpl(text, start);
 
         /// <summary>
@@ -794,7 +794,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="text">The text</param>
         /// <param name="wrapWidth">The wrap width</param>
         /// <returns>The vector</returns>
-        public static Vector2 CalcTextSize(string text, float wrapWidth)
+        public static Vector2F CalcTextSize(string text, float wrapWidth)
             => CalcTextSizeImpl(text, wrapWidth: wrapWidth);
 
         /// <summary>
@@ -803,7 +803,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="text">The text</param>
         /// <param name="hideTextAfterDoubleHash">The hide text after double hash</param>
         /// <returns>The vector</returns>
-        public static Vector2 CalcTextSize(string text, bool hideTextAfterDoubleHash)
+        public static Vector2F CalcTextSize(string text, bool hideTextAfterDoubleHash)
             => CalcTextSizeImpl(text, hideTextAfterDoubleHash: hideTextAfterDoubleHash);
 
         /// <summary>
@@ -813,7 +813,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="start">The start</param>
         /// <param name="length">The length</param>
         /// <returns>The vector</returns>
-        public static Vector2 CalcTextSize(string text, int start, int length)
+        public static Vector2F CalcTextSize(string text, int start, int length)
             => CalcTextSizeImpl(text, start, length);
 
         /// <summary>
@@ -823,7 +823,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="start">The start</param>
         /// <param name="hideTextAfterDoubleHash">The hide text after double hash</param>
         /// <returns>The vector</returns>
-        public static Vector2 CalcTextSize(string text, int start, bool hideTextAfterDoubleHash)
+        public static Vector2F CalcTextSize(string text, int start, bool hideTextAfterDoubleHash)
             => CalcTextSizeImpl(text, start, hideTextAfterDoubleHash: hideTextAfterDoubleHash);
 
         /// <summary>
@@ -833,7 +833,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="start">The start</param>
         /// <param name="wrapWidth">The wrap width</param>
         /// <returns>The vector</returns>
-        public static Vector2 CalcTextSize(string text, int start, float wrapWidth)
+        public static Vector2F CalcTextSize(string text, int start, float wrapWidth)
             => CalcTextSizeImpl(text, start, wrapWidth: wrapWidth);
 
         /// <summary>
@@ -843,7 +843,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="hideTextAfterDoubleHash">The hide text after double hash</param>
         /// <param name="wrapWidth">The wrap width</param>
         /// <returns>The vector</returns>
-        public static Vector2 CalcTextSize(string text, bool hideTextAfterDoubleHash, float wrapWidth)
+        public static Vector2F CalcTextSize(string text, bool hideTextAfterDoubleHash, float wrapWidth)
             => CalcTextSizeImpl(text, hideTextAfterDoubleHash: hideTextAfterDoubleHash, wrapWidth: wrapWidth);
 
         /// <summary>
@@ -854,7 +854,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="length">The length</param>
         /// <param name="hideTextAfterDoubleHash">The hide text after double hash</param>
         /// <returns>The vector</returns>
-        public static Vector2 CalcTextSize(string text, int start, int length, bool hideTextAfterDoubleHash)
+        public static Vector2F CalcTextSize(string text, int start, int length, bool hideTextAfterDoubleHash)
             => CalcTextSizeImpl(text, start, length, hideTextAfterDoubleHash);
 
         /// <summary>
@@ -865,7 +865,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="length">The length</param>
         /// <param name="wrapWidth">The wrap width</param>
         /// <returns>The vector</returns>
-        public static Vector2 CalcTextSize(string text, int start, int length, float wrapWidth)
+        public static Vector2F CalcTextSize(string text, int start, int length, float wrapWidth)
             => CalcTextSizeImpl(text, start, length, wrapWidth: wrapWidth);
 
         /// <summary>
@@ -877,7 +877,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="hideTextAfterDoubleHash">The hide text after double hash</param>
         /// <param name="wrapWidth">The wrap width</param>
         /// <returns>The vector</returns>
-        public static Vector2 CalcTextSize(string text, int start, int length, bool hideTextAfterDoubleHash, float wrapWidth)
+        public static Vector2F CalcTextSize(string text, int start, int length, bool hideTextAfterDoubleHash, float wrapWidth)
             => CalcTextSizeImpl(text, start, length, hideTextAfterDoubleHash, wrapWidth);
 
         /// <summary>
@@ -889,14 +889,14 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="hideTextAfterDoubleHash">The hide text after double hash</param>
         /// <param name="wrapWidth">The wrap width</param>
         /// <returns>The ret</returns>
-        private static Vector2 CalcTextSizeImpl(
+        private static Vector2F CalcTextSizeImpl(
             string text,
             int start = 0,
             int? length = null,
             bool hideTextAfterDoubleHash = false,
             float wrapWidth = -1.0f)
         {
-            ImGuiNative.igCalcTextSize(out Vector2 ret, Encoding.UTF8.GetBytes(text), (byte) text.Length, hideTextAfterDoubleHash, wrapWidth);
+            ImGuiNative.igCalcTextSize(out Vector2F ret, Encoding.UTF8.GetBytes(text), (byte) text.Length, hideTextAfterDoubleHash, wrapWidth);
             return ret;
         }
 

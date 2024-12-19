@@ -70,8 +70,8 @@ namespace Alis.Core.Physic.Collision
                 SimplexVertex v = V[i];
                 v.IndexA = cache.IndexA[i];
                 v.IndexB = cache.IndexB[i];
-                Vector2 wALocal = proxyA.Vertices[v.IndexA];
-                Vector2 wBLocal = proxyB.Vertices[v.IndexB];
+                Vector2F wALocal = proxyA.Vertices[v.IndexA];
+                Vector2F wBLocal = proxyB.Vertices[v.IndexB];
                 v.WA = Transform.Multiply(ref wALocal, ref transformA);
                 v.WB = Transform.Multiply(ref wBLocal, ref transformB);
                 v.W = v.WB - v.WA;
@@ -98,8 +98,8 @@ namespace Alis.Core.Physic.Collision
                 SimplexVertex v = V[0];
                 v.IndexA = 0;
                 v.IndexB = 0;
-                Vector2 wALocal = proxyA.Vertices[0];
-                Vector2 wBLocal = proxyB.Vertices[0];
+                Vector2F wALocal = proxyA.Vertices[0];
+                Vector2F wBLocal = proxyB.Vertices[0];
                 v.WA = Transform.Multiply(ref wALocal, ref transformA);
                 v.WB = Transform.Multiply(ref wBLocal, ref transformB);
                 v.W = v.WB - v.WA;
@@ -128,7 +128,7 @@ namespace Alis.Core.Physic.Collision
         ///     Gets the search direction
         /// </summary>
         /// <returns>The vector</returns>
-        internal Vector2 GetSearchDirection()
+        internal Vector2F GetSearchDirection()
         {
             switch (Count)
             {
@@ -137,21 +137,21 @@ namespace Alis.Core.Physic.Collision
 
                 case 2:
                 {
-                    Vector2 e12 = V[1].W - V[0].W;
+                    Vector2F e12 = V[1].W - V[0].W;
                     float sgn = MathUtils.Cross(e12, -V[0].W);
                     if (sgn > 0.0f)
                     {
                         // Origin is left of e12.
-                        return new Vector2(-e12.Y, e12.X);
+                        return new Vector2F(-e12.Y, e12.X);
                     }
 
                     // Origin is right of e12.
-                    return new Vector2(e12.Y, -e12.X);
+                    return new Vector2F(e12.Y, -e12.X);
                 }
 
                 default:
                     Debug.Assert(false);
-                    return Vector2.Zero;
+                    return Vector2F.Zero;
             }
         }
 
@@ -159,13 +159,13 @@ namespace Alis.Core.Physic.Collision
         ///     Gets the closest point
         /// </summary>
         /// <returns>The vector</returns>
-        internal Vector2 GetClosestPoint()
+        internal Vector2F GetClosestPoint()
         {
             switch (Count)
             {
                 case 0:
                     Debug.Assert(false);
-                    return Vector2.Zero;
+                    return Vector2F.Zero;
 
                 case 1:
                     return V[0].W;
@@ -174,11 +174,11 @@ namespace Alis.Core.Physic.Collision
                     return V[0].A * V[0].W + V[1].A * V[1].W;
 
                 case 3:
-                    return Vector2.Zero;
+                    return Vector2F.Zero;
 
                 default:
                     Debug.Assert(false);
-                    return Vector2.Zero;
+                    return Vector2F.Zero;
             }
         }
 
@@ -188,13 +188,13 @@ namespace Alis.Core.Physic.Collision
         /// <param name="pA">The </param>
         /// <param name="pB">The </param>
         /// <exception cref="Exception"></exception>
-        internal void GetWitnessPoints(out Vector2 pA, out Vector2 pB)
+        internal void GetWitnessPoints(out Vector2F pA, out Vector2F pB)
         {
             switch (Count)
             {
                 case 0:
-                    pA = Vector2.Zero;
-                    pB = Vector2.Zero;
+                    pA = Vector2F.Zero;
+                    pB = Vector2F.Zero;
                     Debug.Assert(false);
                     break;
 
@@ -273,12 +273,12 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         internal void Solve2()
         {
-            Vector2 w1 = V[0].W;
-            Vector2 w2 = V[1].W;
-            Vector2 e12 = w2 - w1;
+            Vector2F w1 = V[0].W;
+            Vector2F w2 = V[1].W;
+            Vector2F e12 = w2 - w1;
 
             // w1 region
-            float d12_2 = -Vector2.Dot(w1, e12);
+            float d12_2 = -Vector2F.Dot(w1, e12);
             if (d12_2 <= 0.0f)
             {
                 // a2 <= 0, so we clamp it to 0
@@ -290,7 +290,7 @@ namespace Alis.Core.Physic.Collision
             }
 
             // w2 region
-            float d12_1 = Vector2.Dot(w2, e12);
+            float d12_1 = Vector2F.Dot(w2, e12);
             if (d12_1 <= 0.0f)
             {
                 // a1 <= 0, so we clamp it to 0
@@ -323,17 +323,17 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         internal void Solve3()
         {
-            Vector2 w1 = V[0].W;
-            Vector2 w2 = V[1].W;
-            Vector2 w3 = V[2].W;
+            Vector2F w1 = V[0].W;
+            Vector2F w2 = V[1].W;
+            Vector2F w3 = V[2].W;
 
             // Edge12
             // [1      1     ][a1] = [1]
             // [w1.e12 w2.e12][a2] = [0]
             // a3 = 0
-            Vector2 e12 = w2 - w1;
-            float w1e12 = Vector2.Dot(w1, e12);
-            float w2e12 = Vector2.Dot(w2, e12);
+            Vector2F e12 = w2 - w1;
+            float w1e12 = Vector2F.Dot(w1, e12);
+            float w2e12 = Vector2F.Dot(w2, e12);
             float d12_1 = w2e12;
             float d12_2 = -w1e12;
 
@@ -341,9 +341,9 @@ namespace Alis.Core.Physic.Collision
             // [1      1     ][a1] = [1]
             // [w1.e13 w3.e13][a3] = [0]
             // a2 = 0
-            Vector2 e13 = w3 - w1;
-            float w1e13 = Vector2.Dot(w1, e13);
-            float w3e13 = Vector2.Dot(w3, e13);
+            Vector2F e13 = w3 - w1;
+            float w1e13 = Vector2F.Dot(w1, e13);
+            float w3e13 = Vector2F.Dot(w3, e13);
             float d13_1 = w3e13;
             float d13_2 = -w1e13;
 
@@ -351,9 +351,9 @@ namespace Alis.Core.Physic.Collision
             // [1      1     ][a2] = [1]
             // [w2.e23 w3.e23][a3] = [0]
             // a1 = 0
-            Vector2 e23 = w3 - w2;
-            float w2e23 = Vector2.Dot(w2, e23);
-            float w3e23 = Vector2.Dot(w3, e23);
+            Vector2F e23 = w3 - w2;
+            float w2e23 = Vector2F.Dot(w2, e23);
+            float w3e23 = Vector2F.Dot(w3, e23);
             float d23_1 = w3e23;
             float d23_2 = -w2e23;
 

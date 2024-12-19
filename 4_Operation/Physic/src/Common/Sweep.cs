@@ -60,17 +60,17 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         ///     Center world positions
         /// </summary>
-        public Vector2 C;
+        public Vector2F C;
 
         /// <summary>
         ///     The
         /// </summary>
-        public Vector2 C0;
+        public Vector2F C0;
 
         /// <summary>
         ///     Local center of mass position
         /// </summary>
-        public Vector2 LocalCenter;
+        public Vector2F LocalCenter;
 
         /// <summary>
         ///     Get the interpolated transform at a specific time.
@@ -79,7 +79,7 @@ namespace Alis.Core.Physic.Common
         /// <param name="beta">beta is a factor in [0,1], where 0 indicates alpha0.</param>
         public void GetTransform(out Transform xfb, float beta)
         {
-            xfb.p = new Vector2((1.0f - beta) * C0.X + beta * C.X, (1.0f - beta) * C0.Y + beta * C.Y);
+            xfb.p = new Vector2F((1.0f - beta) * C0.X + beta * C.X, (1.0f - beta) * C0.Y + beta * C.Y);
             float angle = (1.0f - beta) * A0 + beta * A;
             xfb.q = Complex.FromAngle(angle);
 

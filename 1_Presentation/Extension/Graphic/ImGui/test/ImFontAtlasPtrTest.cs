@@ -416,7 +416,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvScale_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector2 scale = new Vector2(1.0f, 1.0f);
+            Vector2F scale = new Vector2F(1.0f, 1.0f);
             atlas.TexUvScale = scale;
             Assert.Equal(scale, atlas.TexUvScale);
         }
@@ -428,7 +428,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvWhitePixel_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector2 whitePixel = new Vector2(0.5f, 0.5f);
+            Vector2F whitePixel = new Vector2F(0.5f, 0.5f);
             atlas.TexUvWhitePixel = whitePixel;
             Assert.Equal(whitePixel, atlas.TexUvWhitePixel);
         }
@@ -476,7 +476,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines0 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines0);
         }
@@ -533,7 +533,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines30_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines30 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines30);
         }
@@ -545,7 +545,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines31_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines31 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines31);
         }
@@ -557,7 +557,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines32_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines32 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines32);
         }
@@ -569,7 +569,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines33_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines33 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines33);
         }
@@ -581,7 +581,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines34_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines34 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines34);
         }
@@ -593,7 +593,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines35_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines35 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines35);
         }
@@ -605,7 +605,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines36_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines36 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines36);
         }
@@ -617,7 +617,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines37_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines37 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines37);
         }
@@ -629,7 +629,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines38_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines38 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines38);
         }
@@ -641,7 +641,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines39_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines39 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines39);
         }
@@ -653,7 +653,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines40_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines40 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines40);
         }
@@ -665,7 +665,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines41_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines41 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines41);
         }
@@ -677,7 +677,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines42_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines42 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines42);
         }
@@ -689,7 +689,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines43_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines43 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines43);
         }
@@ -701,7 +701,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines44_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines44 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines44);
         }
@@ -713,7 +713,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines45_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines45 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines45);
         }
@@ -725,7 +725,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines46_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines46 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines46);
         }
@@ -737,7 +737,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines47_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines47 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines47);
         }
@@ -749,7 +749,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines48_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines48 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines48);
         }
@@ -761,7 +761,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines49_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines49 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines49);
         }
@@ -773,7 +773,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines50_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines50 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines50);
         }
@@ -785,7 +785,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines51_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines51 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines51);
         }
@@ -797,7 +797,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines52_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines52 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines52);
         }
@@ -809,7 +809,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines53_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines53 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines53);
         }
@@ -821,7 +821,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines54_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines54 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines54);
         }
@@ -833,7 +833,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines55_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines55 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines55);
         }
@@ -845,7 +845,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines56_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines56 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines56);
         }
@@ -857,7 +857,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines57_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines57 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines57);
         }
@@ -869,7 +869,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines58_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines58 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines58);
         }
@@ -881,7 +881,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines59_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines59 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines59);
         }
@@ -893,7 +893,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines60_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines60 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines60);
         }
@@ -905,7 +905,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines61_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines61 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines61);
         }
@@ -917,7 +917,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines62_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines62 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines62);
         }
@@ -929,7 +929,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines63_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines63 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines63);
         }
@@ -941,7 +941,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines1_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines1 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines1);
         }
@@ -953,7 +953,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines2_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines2 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines2);
         }
@@ -965,7 +965,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines3_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines3 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines3);
         }
@@ -977,7 +977,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines4_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines4 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines4);
         }
@@ -989,7 +989,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines5_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines5 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines5);
         }
@@ -1001,7 +1001,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines6_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines6 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines6);
         }
@@ -1013,7 +1013,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines7_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines7 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines7);
         }
@@ -1025,7 +1025,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines8_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines8 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines8);
         }
@@ -1037,7 +1037,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines9_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines9 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines9);
         }
@@ -1049,7 +1049,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines10_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines10 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines10);
         }
@@ -1061,7 +1061,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines11_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines11 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines11);
         }
@@ -1073,7 +1073,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines12_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines12 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines12);
         }
@@ -1085,7 +1085,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines13_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines13 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines13);
         }
@@ -1097,7 +1097,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines14_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines14 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines14);
         }
@@ -1109,7 +1109,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines15_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines15 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines15);
         }
@@ -1121,7 +1121,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines16_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines16 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines16);
         }
@@ -1133,7 +1133,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines17_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines17 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines17);
         }
@@ -1145,7 +1145,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines18_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines18 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines18);
         }
@@ -1157,7 +1157,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines19_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines19 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines19);
         }
@@ -1169,7 +1169,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines20_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines20 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines20);
         }
@@ -1181,7 +1181,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines21_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines21 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines21);
         }
@@ -1193,7 +1193,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines22_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines22 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines22);
         }
@@ -1205,7 +1205,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines23_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines23 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines23);
         }
@@ -1217,7 +1217,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines24_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines24 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines24);
         }
@@ -1229,7 +1229,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines25_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines25 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines25);
         }
@@ -1241,7 +1241,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines26_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines26 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines26);
         }
@@ -1253,7 +1253,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines27_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines27 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines27);
         }
@@ -1265,7 +1265,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines28_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines28 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines28);
         }
@@ -1277,7 +1277,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TexUvLines29_Should_SetAndGetCorrectly()
         {
             ImFontAtlas atlas = new ImFontAtlas();
-            Vector4 uvLine = new Vector4(1, 2, 3, 4);
+            Vector4F uvLine = new Vector4F(1, 2, 3, 4);
             atlas.TexUvLines29 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines29);
         }
@@ -1459,7 +1459,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
-            Assert.Throws<DllNotFoundException>(() => atlas.CalcCustomRectUv(rect, out Vector2 _, out Vector2 _));
+            Assert.Throws<DllNotFoundException>(() => atlas.CalcCustomRectUv(rect, out Vector2F _, out Vector2F _));
         }
 
         /// <summary>
@@ -1613,7 +1613,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void GetMouseCursorTexData_ReturnsTrue()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(() => atlas.GetMouseCursorTexData(ImGuiMouseCursor.Arrow, out Vector2 _, out Vector2 _, out Vector2 _, out Vector2 _));
+            Assert.Throws<DllNotFoundException>(() => atlas.GetMouseCursorTexData(ImGuiMouseCursor.Arrow, out Vector2F _, out Vector2F _, out Vector2F _, out Vector2F _));
         }
 
         /// <summary>

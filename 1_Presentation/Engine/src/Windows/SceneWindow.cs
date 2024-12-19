@@ -68,7 +68,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         /// The previous mouse position
         /// </summary>
-        private Vector2 previousMousePosition;
+        private Vector2F previousMousePosition;
         
         
         /// <summary>
@@ -101,7 +101,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         /// The offset texture
         /// </summary>
-        private Vector2 offsetTexture;
+        private Vector2F offsetTexture;
 
 
         /// <summary>
@@ -362,7 +362,7 @@ namespace Alis.App.Engine.Windows
                     // Botón HandSpock
                     if (activeButton == ActiveButton.HandSpock)
                     {
-                        ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(0.2f, 0.5f, 0.8f, 1.0f)); // Color azul claro
+                        ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(0.2f, 0.5f, 0.8f, 1.0f)); // Color azul claro
                         if (ImGui.Button($"{FontAwesome5.HandSpock}"))
                         {
                             activeButton = ActiveButton.None;
@@ -381,7 +381,7 @@ namespace Alis.App.Engine.Windows
                     // Botón ArrowsAlt
                     if (activeButton == ActiveButton.ArrowsAlt)
                     {
-                        ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(0.2f, 0.5f, 0.8f, 1.0f)); // Color azul claro
+                        ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(0.2f, 0.5f, 0.8f, 1.0f)); // Color azul claro
                         if (ImGui.Button($"{FontAwesome5.ArrowsAlt}"))
                         {
                             activeButton = ActiveButton.None;
@@ -400,7 +400,7 @@ namespace Alis.App.Engine.Windows
                     // Botón Cogs
                     if (activeButton == ActiveButton.Cogs)
                     {
-                        ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(0.2f, 0.5f, 0.8f, 1.0f)); // Color azul claro
+                        ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(0.2f, 0.5f, 0.8f, 1.0f)); // Color azul claro
                         if (ImGui.Button($"{FontAwesome5.Cogs}"))
                         {
                             activeButton = ActiveButton.None;
@@ -419,7 +419,7 @@ namespace Alis.App.Engine.Windows
                     // Botón InfoCircle
                     if (activeButton == ActiveButton.InfoCircle)
                     {
-                        ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(0.2f, 0.5f, 0.8f, 1.0f)); // Color azul claro
+                        ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(0.2f, 0.5f, 0.8f, 1.0f)); // Color azul claro
                         if (ImGui.Button($"{FontAwesome5.InfoCircle}"))
                         {
                             activeButton = ActiveButton.None;
@@ -438,7 +438,7 @@ namespace Alis.App.Engine.Windows
                     // Botón Tools
                     if (activeButton == ActiveButton.Tools)
                     {
-                        ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(0.2f, 0.5f, 0.8f, 1.0f)); // Color azul claro
+                        ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(0.2f, 0.5f, 0.8f, 1.0f)); // Color azul claro
                         if (ImGui.Button($"{FontAwesome5.Tools}"))
                         {
                             activeButton = ActiveButton.None;
@@ -457,7 +457,7 @@ namespace Alis.App.Engine.Windows
                     // Botón User
                     if (activeButton == ActiveButton.User)
                     {
-                        ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(0.2f, 0.5f, 0.8f, 1.0f)); // Color azul claro
+                        ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(0.2f, 0.5f, 0.8f, 1.0f)); // Color azul claro
                         if (ImGui.Button($"{FontAwesome5.User}"))
                         {
                             activeButton = ActiveButton.None;
@@ -479,7 +479,7 @@ namespace Alis.App.Engine.Windows
 
 
                 // Obtener el tamaño disponible en el contenedor de ImGui
-                Vector2 availableSize = ImGui.GetContentRegionAvail();
+                Vector2F availableSize = ImGui.GetContentRegionAvail();
 
                 // Aspect ratio del juego
                 float gameAspectRatio = 800f / 600f;
@@ -496,7 +496,7 @@ namespace Alis.App.Engine.Windows
                 }
 
                 // Calcular la posición centrada dentro del área disponible
-                offsetTexture = new Vector2(
+                offsetTexture = new Vector2F(
                     (availableSize.X - widthTexture) * 0.5f,
                     (availableSize.Y - heightTexture) * 0.5f);
 
@@ -506,11 +506,11 @@ namespace Alis.App.Engine.Windows
                 // Dibujar la textura ajustada al tamaño calculado
                 ImGui.Image(
                     (IntPtr) textureopenGlId,
-                    new Vector2(widthTexture, heightTexture), // Tamaño ajustado
-                    new Vector2(0, 0), // Coordenada de inicio (UV)
-                    new Vector2(1, 1), // Coordenada final (UV)
-                    new Vector4(1, 1, 1, 1), // Color del multiplicador de la textura
-                    new Vector4(0, 0, 0, 0)); // Sin borde
+                    new Vector2F(widthTexture, heightTexture), // Tamaño ajustado
+                    new Vector2F(0, 0), // Coordenada de inicio (UV)
+                    new Vector2F(1, 1), // Coordenada final (UV)
+                    new Vector4F(1, 1, 1, 1), // Color del multiplicador de la textura
+                    new Vector4F(0, 0, 0, 0)); // Sin borde
             }
 
             if (activeButton == ActiveButton.HandSpock)
@@ -522,7 +522,7 @@ namespace Alis.App.Engine.Windows
                 
                 if (ImGui.IsItemHovered() && ImGui.IsMouseClicked(0))
                 {
-                    Vector2 mousePos = GetMouseWorldPosition();
+                    Vector2F mousePos = GetMouseWorldPosition();
                     selectedGameObject = FindGameObjectUnderMouse(mousePos);
                     Console.WriteLine($"Selected GameObject: {selectedGameObject?.Name}");
                 }
@@ -530,7 +530,7 @@ namespace Alis.App.Engine.Windows
                 // Detectar si estamos en la región de la escena
                 if (ImGui.IsItemHovered() && ImGui.IsMouseDown(ImGuiMouseButton.Right))
                 {
-                    Vector2 currentMousePosition = new Vector2(ImGui.GetMousePos().X, ImGui.GetMousePos().Y);
+                    Vector2F currentMousePosition = new Vector2F(ImGui.GetMousePos().X, ImGui.GetMousePos().Y);
 
                     if (!isDragging)
                     {
@@ -541,7 +541,7 @@ namespace Alis.App.Engine.Windows
                     else
                     {
                         // Calcular el desplazamiento
-                        Vector2 delta = currentMousePosition - previousMousePosition;
+                        Vector2F delta = currentMousePosition - previousMousePosition;
 
                         // Actualizar la cámara
                         List<GameObject> gameObjects = SpaceWork.VideoGame.Context.SceneManager.CurrentScene.GameObjects;
@@ -556,7 +556,7 @@ namespace Alis.App.Engine.Windows
 
                         if (camera != null)
                         {
-                            camera.Position += new Vector2(-delta.X, delta.Y) * 0.1f; // Escalar para ajustar sensibilidad
+                            camera.Position += new Vector2F(-delta.X, delta.Y) * 0.1f; // Escalar para ajustar sensibilidad
                         }
 
                         // Actualizar posición anterior
@@ -578,17 +578,17 @@ namespace Alis.App.Engine.Windows
         /// Gets the mouse world position
         /// </summary>
         /// <returns>The world pos</returns>
-        private Vector2 GetMouseWorldPosition()
+        private Vector2F GetMouseWorldPosition()
         {
             ImGuiIoPtr io = ImGui.GetIo();
 
-            Vector2 mousePosition = io.MousePos;
-            Vector2 windowPosition = ImGui.GetWindowPos();
-            Vector2 windowSize = ImGui.GetWindowSize();
-            Vector2 textureSize = new Vector2(widthTexture, heightTexture);
+            Vector2F mousePosition = io.MousePos;
+            Vector2F windowPosition = ImGui.GetWindowPos();
+            Vector2F windowSize = ImGui.GetWindowSize();
+            Vector2F textureSize = new Vector2F(widthTexture, heightTexture);
 
-            Vector2 mousePositionRelativeToWindow = mousePosition - windowPosition;
-            Vector2 mousePositionRelativeToTexture = mousePositionRelativeToWindow - (windowSize - textureSize) / 2;
+            Vector2F mousePositionRelativeToWindow = mousePosition - windowPosition;
+            Vector2F mousePositionRelativeToTexture = mousePositionRelativeToWindow - (windowSize - textureSize) / 2;
           
             mousePositionRelativeToTexture.Y -= 30.0f;
             
@@ -602,7 +602,7 @@ namespace Alis.App.Engine.Windows
             Console.WriteLine("--------------------");
             Console.WriteLine();
             // Adjust mouse position to center the texture
-            Vector2 errorPosition = new Vector2(0, 0);
+            Vector2F errorPosition = new Vector2F(0, 0);
             
             // Check if the mouse position is outside the texture
             if (mousePositionRelativeToTexture.X >= textureSize.X)
@@ -629,7 +629,7 @@ namespace Alis.App.Engine.Windows
                 Console.WriteLine($"Error Position Y: {errorPosition.Y}");
             }
             
-            Vector2 mousePositionRelativeToTextureAdjusted = mousePositionRelativeToTexture - errorPosition;
+            Vector2F mousePositionRelativeToTextureAdjusted = mousePositionRelativeToTexture - errorPosition;
            
             // Delete the decimal part of mousePositionRelativeToTextureAdjusted:
             mousePositionRelativeToTextureAdjusted.X = (float) Math.Floor(mousePositionRelativeToTextureAdjusted.X);
@@ -638,13 +638,13 @@ namespace Alis.App.Engine.Windows
             Console.WriteLine($"Mouse Position Relative To Texture Adjusted: {mousePositionRelativeToTextureAdjusted.X}, {mousePositionRelativeToTextureAdjusted.Y}");
             
             // Calculate the mouse position thinking that the center of the texture is the origin (0,0)
-            Vector2 mousePositionRelativeToTextureCentered = new Vector2(0, 0);
+            Vector2F mousePositionRelativeToTextureCentered = new Vector2F(0, 0);
             mousePositionRelativeToTextureCentered.X = mousePositionRelativeToTextureAdjusted.X - textureSize.X / 2;
             mousePositionRelativeToTextureCentered.Y = mousePositionRelativeToTextureAdjusted.Y - textureSize.Y / 2;
             
             Console.WriteLine($"Mouse Position Relative To Texture Centered: {mousePositionRelativeToTextureCentered.X}, {mousePositionRelativeToTextureCentered.Y}");
 
-            Vector2 worldPos = SpaceWork.VideoGame.Context.GraphicManager.ScreenToWorld(mousePositionRelativeToTextureCentered, textureSize);
+            Vector2F worldPos = SpaceWork.VideoGame.Context.GraphicManager.ScreenToWorld(mousePositionRelativeToTextureCentered, textureSize);
             
             return worldPos;
         }
@@ -654,7 +654,7 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         /// <param name="mousePos">The mouse pos</param>
         /// <returns>The game object</returns>
-        private GameObject FindGameObjectUnderMouse(Vector2 mousePos)
+        private GameObject FindGameObjectUnderMouse(Vector2F mousePos)
         {
             // Iterar sobre todos los GameObjects en la escena y encontrar si el ratón está sobre alguno
             foreach (GameObject gameObject in SpaceWork.VideoGame.Context.SceneManager.CurrentScene.GameObjects)
@@ -676,8 +676,8 @@ namespace Alis.App.Engine.Windows
         private RectangleF GetGameObjectBounds(GameObject gameObject)
         {
             // Calcular los límites del GameObject basado en su posición y escala
-            Vector2 position = gameObject.Transform.Position;
-            Vector2 scale = gameObject.Transform.Scale;
+            Vector2F position = gameObject.Transform.Position;
+            Vector2F scale = gameObject.Transform.Scale;
             return new RectangleF(
                 position.X - scale.X / 2, 
                 position.Y - scale.Y / 2, 
@@ -732,11 +732,11 @@ namespace Alis.App.Engine.Windows
         private void HandleObjectManipulation()
         {
             ImGuiIoPtr io = ImGui.GetIo();
-            Vector2 mousePos = GetMouseWorldPosition();
+            Vector2F mousePos = GetMouseWorldPosition();
 
             if (ImGui.IsMouseDragging(0) && selectedGameObject != null)
             {
-                Vector2 delta = io.MouseDelta;
+                Vector2F delta = io.MouseDelta;
                 Transform transform = selectedGameObject.Transform;
                 transform.Position += delta;
                 selectedGameObject.Transform = transform;

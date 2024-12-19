@@ -45,19 +45,19 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         ///     The
         /// </summary>
-        public Vector2 p;
+        public Vector2F p;
 
         /// <summary>
         ///     Gets the value of the identity
         /// </summary>
-        public static Transform Identity { get; } = new Transform(Vector2.Zero, Complex.One);
+        public static Transform Identity { get; } = new Transform(Vector2F.Zero, Complex.One);
 
         /// <summary>
         ///     Initialize using a position vector and a Complex rotation.
         /// </summary>
         /// <param name="position">The position.</param>
         /// <param name="rotation">The rotation</param>
-        public Transform(Vector2 position, Complex rotation)
+        public Transform(Vector2F position, Complex rotation)
         {
             q = rotation;
             p = position;
@@ -68,7 +68,7 @@ namespace Alis.Core.Physic.Common
         /// </summary>
         /// <param name="position">The position.</param>
         /// <param name="angle">The rotation angle</param>
-        public Transform(Vector2 position, float angle)
+        public Transform(Vector2F position, float angle)
             : this(position, Complex.FromAngle(angle))
         {
         }
@@ -79,7 +79,7 @@ namespace Alis.Core.Physic.Common
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
         /// <returns>The vector</returns>
-        public static Vector2 Multiply(Vector2 left, ref Transform right) => Multiply(ref left, ref right);
+        public static Vector2F Multiply(Vector2F left, ref Transform right) => Multiply(ref left, ref right);
 
         /// <summary>
         ///     Multiplies the left
@@ -87,9 +87,9 @@ namespace Alis.Core.Physic.Common
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
         /// <returns>The vector</returns>
-        public static Vector2 Multiply(ref Vector2 left, ref Transform right) =>
+        public static Vector2F Multiply(ref Vector2F left, ref Transform right) =>
             // Opt: var result = Complex.Multiply(left, right.q) + right.p;
-            new Vector2(
+            new Vector2F(
                 left.X * right.q.R - left.Y * right.q.i + right.p.X,
                 left.Y * right.q.R + left.X * right.q.i + right.p.Y);
 
@@ -99,7 +99,7 @@ namespace Alis.Core.Physic.Common
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
         /// <returns>The vector</returns>
-        public static Vector2 Divide(Vector2 left, ref Transform right) => Divide(ref left, ref right);
+        public static Vector2F Divide(Vector2F left, ref Transform right) => Divide(ref left, ref right);
 
         /// <summary>
         ///     Divides the left
@@ -107,12 +107,12 @@ namespace Alis.Core.Physic.Common
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
         /// <returns>The vector</returns>
-        public static Vector2 Divide(ref Vector2 left, ref Transform right)
+        public static Vector2F Divide(ref Vector2F left, ref Transform right)
         {
             // Opt: var result = Complex.Divide(left - right.p, right);
             float px = left.X - right.p.X;
             float py = left.Y - right.p.Y;
-            return new Vector2(
+            return new Vector2F(
                 px * right.q.R + py * right.q.i,
                 py * right.q.R - px * right.q.i);
         }
@@ -123,12 +123,12 @@ namespace Alis.Core.Physic.Common
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
         /// <param name="result">The result</param>
-        public static void Divide(Vector2 left, ref Transform right, out Vector2 result)
+        public static void Divide(Vector2F left, ref Transform right, out Vector2F result)
         {
             // Opt: var result = Complex.Divide(left - right.p, right);
             float px = left.X - right.p.X;
             float py = left.Y - right.p.Y;
-            result = new Vector2(
+            result = new Vector2F(
                 px * right.q.R + py * right.q.i,
                 py * right.q.R - px * right.q.i);
         }

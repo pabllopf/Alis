@@ -44,7 +44,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <summary>
         ///     The ez
         /// </summary>
-        public Vector3 Ex, Ey, Ez;
+        public Vector3F Ex, Ey, Ez;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Matrix3X3" /> class
@@ -52,7 +52,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="c1">The </param>
         /// <param name="c2">The </param>
         /// <param name="c3">The </param>
-        public Matrix3X3(Vector3 c1, Vector3 c2, Vector3 c3)
+        public Matrix3X3(Vector3F c1, Vector3F c2, Vector3F c3)
         {
             Ex = c1;
             Ey = c2;
@@ -88,9 +88,9 @@ namespace Alis.Core.Aspect.Math.Matrix
             array[5] = a21;
             array[8] = a22;
 
-            Ex = new Vector3(a00, a01, a02);
-            Ey = new Vector3(a10, a11, a12);
-            Ez = new Vector3(a20, a21, a22);
+            Ex = new Vector3F(a00, a01, a02);
+            Ey = new Vector3F(a10, a11, a12);
+            Ez = new Vector3F(a20, a21, a22);
         }
 
         /// <summary>
@@ -98,16 +98,16 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </summary>
         /// <param name="b">The </param>
         /// <returns>The vector</returns>
-        public Vector3 Solve33(Vector3 b)
+        public Vector3F Solve33(Vector3F b)
         {
-            float det = Vector3.Dot(Ex, Vector3.Cross(Ey, Ez));
+            float det = Vector3F.Dot(Ex, Vector3F.Cross(Ey, Ez));
             if (CustomMathF.Abs(det) > Epsilon) // Use epsilon check instead of exact comparison
             {
                 det = 1.0f / det;
             }
 
-            return new Vector3(det * Vector3.Dot(b, Vector3.Cross(Ey, Ez)), det * Vector3.Dot(Ex, Vector3.Cross(b, Ez)),
-                det * Vector3.Dot(Ex, Vector3.Cross(Ey, b)));
+            return new Vector3F(det * Vector3F.Dot(b, Vector3F.Cross(Ey, Ez)), det * Vector3F.Dot(Ex, Vector3F.Cross(b, Ez)),
+                det * Vector3F.Dot(Ex, Vector3F.Cross(Ey, b)));
         }
 
 
@@ -116,7 +116,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </summary>
         /// <param name="b">The </param>
         /// <returns>The vector</returns>
-        public Vector2 Solve22(Vector2 b)
+        public Vector2F Solve22(Vector2F b)
         {
             float a11 = Ex.X, a12 = Ey.X, a21 = Ex.Y, a22 = Ey.Y;
             float det = a11 * a22 - a12 * a21;
@@ -126,7 +126,7 @@ namespace Alis.Core.Aspect.Math.Matrix
                 det = 1.0f / det;
             }
 
-            return new Vector2(det * (a22 * b.X - a12 * b.Y), det * (a11 * b.Y - a21 * b.X));
+            return new Vector2F(det * (a22 * b.X - a12 * b.Y), det * (a11 * b.Y - a21 * b.X));
         }
 
 
@@ -144,19 +144,19 @@ namespace Alis.Core.Aspect.Math.Matrix
                 det = 1.0f / det;
             }
 
-            m.Ex = new Vector3(
+            m.Ex = new Vector3F(
                 det * d,
                 -det * b,
                 0.0f
             );
 
-            m.Ey = new Vector3(
+            m.Ey = new Vector3F(
                 -det * b,
                 det * a,
                 0.0f
             );
 
-            m.Ez = new Vector3(
+            m.Ez = new Vector3F(
                 0.0f,
                 0.0f,
                 0.0f
@@ -179,19 +179,19 @@ namespace Alis.Core.Aspect.Math.Matrix
             float a22 = Ey.Y, a23 = Ez.Y;
             float a33 = Ez.Z;
 
-            m.Ex = new Vector3(
+            m.Ex = new Vector3F(
                 det * (a22 * a33 - a23 * a23),
                 det * (a13 * a23 - a12 * a33),
                 det * (a12 * a23 - a13 * a22)
             );
 
-            m.Ey = new Vector3(
+            m.Ey = new Vector3F(
                 det * (a13 * a23 - a12 * a33),
                 det * (a11 * a33 - a13 * a13),
                 det * (a13 * a12 - a11 * a23)
             );
 
-            m.Ez = new Vector3(
+            m.Ez = new Vector3F(
                 det * (a12 * a23 - a13 * a22),
                 det * (a13 * a12 - a11 * a23),
                 det * (a11 * a22 - a12 * a12)
@@ -205,7 +205,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="a">The </param>
         /// <param name="b">The </param>
         /// <returns>The float</returns>
-        private static float Dot(Vector3 a, Vector3 b) => a.X * b.X + a.Y * b.Y + a.Z * b.Z;
+        private static float Dot(Vector3F a, Vector3F b) => a.X * b.X + a.Y * b.Y + a.Z * b.Z;
 
 
         /// <summary>
@@ -214,7 +214,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="a">The </param>
         /// <param name="b">The </param>
         /// <returns>The vector</returns>
-        private static Vector3 Cross(Vector3 a, Vector3 b) =>
-            new Vector3(a.Y * b.Z - a.Z * b.Y, a.Z * b.X - a.X * b.Z, a.X * b.Y - a.Y * b.X);
+        private static Vector3F Cross(Vector3F a, Vector3F b) =>
+            new Vector3F(a.Y * b.Z - a.Z * b.Y, a.Z * b.X - a.X * b.Z, a.X * b.Y - a.Y * b.X);
     }
 }

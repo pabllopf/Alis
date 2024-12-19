@@ -44,7 +44,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The input pos
         /// </summary>
-        public Vector2 InputPos { get; set; }
+        public Vector2F InputPos { get; set; }
 
         /// <summary>
         ///     The input line height

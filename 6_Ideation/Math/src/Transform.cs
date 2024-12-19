@@ -43,7 +43,7 @@ namespace Alis.Core.Aspect.Math
         /// <summary>
         ///     The
         /// </summary>
-        public Vector2 Position;
+        public Vector2F Position;
 
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Alis.Core.Aspect.Math
         /// <summary>
         ///     The scale
         /// </summary>
-        public Vector2 Scale;
+        public Vector2F Scale;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Transform" /> class
@@ -62,7 +62,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="position">The position</param>
         /// <param name="rotation">The rotation</param>
         /// <param name="scale">The scale</param>
-        public Transform(Vector2 position, float rotation, Vector2 scale)
+        public Transform(Vector2F position, float rotation, Vector2F scale)
         {
             Position = position;
             Rotation = rotation;
@@ -84,14 +84,14 @@ namespace Alis.Core.Aspect.Math
         /// <summary>Set this to the identity transform.</summary>
         public void SetIdentity()
         {
-            Position = Vector2.Zero;
+            Position = Vector2F.Zero;
             Rotation = 0.0f;
         }
 
         /// <summary>Set this based on the position and angle.</summary>
         /// <param name="position">The position.</param>
         /// <param name="angle">The angle.</param>
-        public void Set(Vector2 position, float angle)
+        public void Set(Vector2F position, float angle)
         {
             Position = position;
             Rotation = angle;

@@ -348,7 +348,7 @@ namespace Alis.Extension.Plugin.Test
         {
             // Arrange
             PluginManager pluginManager = new PluginManager(new Context());
-            string pluginFile = Path.Combine(Environment.CurrentDirectory, "Assets", "Invalid", "windows", "Sum.dll"); // Replace with the actual path to your plugin file
+            string pluginFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "Invalid", "windows", "Sum.dll"); // Replace with the actual path to your plugin file
 
             // Act
             Assert.Throws<FileNotFoundException>(() => pluginManager.LoadPluginFromFile(pluginFile));
@@ -436,7 +436,7 @@ namespace Alis.Extension.Plugin.Test
         public void ValidatePluginsDirectory_ThrowsExceptionForInvalidDirectory()
         {
             // Arrange
-            string invalidDirectory = Path.Combine(Environment.CurrentDirectory, "invalid", "Plugins");
+            string invalidDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "invalid", "Plugins");
 
             // Act and Assert
             Assert.False(PluginManager.ValidatePluginsDirectory(invalidDirectory));
@@ -449,7 +449,7 @@ namespace Alis.Extension.Plugin.Test
         public void ValidatePluginsDirectory_DoesNotThrowExceptionForValidDirectory()
         {
             // Arrange
-            string validDirectory = Path.Combine(Environment.CurrentDirectory, "Assets", "Plugins", "windows");
+            string validDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "Plugins", "windows");
 
             // Act
             Exception exception = Record.Exception(() => PluginManager.ValidatePluginsDirectory(validDirectory));
@@ -507,7 +507,7 @@ namespace Alis.Extension.Plugin.Test
         public void IsPluginFile_ReturnsCorrectValueForNonPluginFile()
         {
             // Arrange
-            string nonPluginFile = Path.Combine(Environment.CurrentDirectory, "path", "to", "file.txt");
+            string nonPluginFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "path", "to", "file.txt");
 
             // Act
             bool result = PluginManager.IsPluginFile(nonPluginFile);
@@ -794,7 +794,7 @@ namespace Alis.Extension.Plugin.Test
         {
             // Arrange
             PluginManager pluginManager = new PluginManager(new Context());
-            string invalidPluginsDirectory = Path.Combine(Environment.CurrentDirectory, "invalid", "Plugins");
+            string invalidPluginsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "invalid", "Plugins");
 
             // Act and Assert
             Assert.Throws<DirectoryNotFoundException>(() => pluginManager.LoadPlugins(invalidPluginsDirectory));
@@ -931,7 +931,7 @@ namespace Alis.Extension.Plugin.Test
         public void LoadPlugins_InvalidDirectory_ShouldThrowDirectoryNotFoundException()
         {
             PluginManager pluginManager = new PluginManager(new Context());
-            string invalidPluginsDirectory = Path.Combine(Environment.CurrentDirectory, "invalid", "Plugins");
+            string invalidPluginsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "invalid", "Plugins");
             Assert.Throws<DirectoryNotFoundException>(() => pluginManager.LoadPlugins(invalidPluginsDirectory));
         }
 
@@ -965,7 +965,7 @@ namespace Alis.Extension.Plugin.Test
         [Fact]
         public void ValidatePluginsDirectory_ExistingDirectory_ShouldReturnTrue()
         {
-            string existingDirectory = Path.Combine(Environment.CurrentDirectory, "Assets", "Plugins");
+            string existingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "Plugins");
             bool result = PluginManager.ValidatePluginsDirectory(existingDirectory);
             Assert.True(result);
         }
@@ -977,7 +977,7 @@ namespace Alis.Extension.Plugin.Test
         public void GetPluginFiles_ValidDirectory_ShouldReturnFiles()
         {
             PluginManager pluginManager = new PluginManager(new Context());
-            string directory = Path.Combine(Environment.CurrentDirectory, "Assets", "Plugins", "windows");
+            string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "Plugins", "windows");
             IEnumerable<string> result = pluginManager.GetPluginFiles(directory);
             Assert.NotEmpty(result);
         }
@@ -989,7 +989,7 @@ namespace Alis.Extension.Plugin.Test
         public void LoadAssembly_ValidPluginFile_ShouldReturnAssembly()
         {
             PluginManager pluginManager = new PluginManager(new Context());
-            string pluginFile = Path.Combine(Environment.CurrentDirectory, "Assets", "Plugins", "windows", "Sum.dll");
+            string pluginFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "Plugins", "windows", "Sum.dll");
             Assembly result = pluginManager.LoadAssembly(pluginFile);
             Assert.NotNull(result);
         }
@@ -1036,7 +1036,7 @@ namespace Alis.Extension.Plugin.Test
         [Fact]
         public void IsPluginFile_ValidPluginFile_ShouldReturnTrue()
         {
-            string pluginFile = Path.Combine(Environment.CurrentDirectory, "Assets", "Plugins", "windows", "Sum.dll");
+            string pluginFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "Plugins", "windows", "Sum.dll");
             bool result = PluginManager.IsPluginFile(pluginFile);
             Assert.True(result);
         }

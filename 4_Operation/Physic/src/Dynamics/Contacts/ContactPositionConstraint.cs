@@ -60,22 +60,22 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     The local center
         /// </summary>
-        public Vector2 localCenterA, localCenterB;
+        public Vector2F localCenterA, localCenterB;
 
         /// <summary>
         ///     The local normal
         /// </summary>
-        public Vector2 localNormal;
+        public Vector2F localNormal;
 
         /// <summary>
         ///     The local point
         /// </summary>
-        public Vector2 localPoint;
+        public Vector2F localPoint;
 
         /// <summary>
         ///     The max manifold points
         /// </summary>
-        public Vector2[] localPoints = new Vector2[SettingEnv.MaxManifoldPoints];
+        public Vector2F[] localPoints = new Vector2F[SettingEnv.MaxManifoldPoints];
 
         /// <summary>
         ///     The point count

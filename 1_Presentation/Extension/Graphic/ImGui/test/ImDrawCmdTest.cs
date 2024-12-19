@@ -45,13 +45,13 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void ClipRect_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            ImDrawCmd drawCmd = new ImDrawCmd {ClipRect = new Vector4(1.0f, 2.0f, 3.0f, 4.0f)};
+            ImDrawCmd drawCmd = new ImDrawCmd {ClipRect = new Vector4F(1.0f, 2.0f, 3.0f, 4.0f)};
 
             // Act
-            Vector4 clipRect = drawCmd.ClipRect;
+            Vector4F clipRect = drawCmd.ClipRect;
 
             // Assert
-            Assert.Equal(new Vector4(1.0f, 2.0f, 3.0f, 4.0f), clipRect);
+            Assert.Equal(new Vector4F(1.0f, 2.0f, 3.0f, 4.0f), clipRect);
         }
 
         /// <summary>
@@ -157,13 +157,13 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void GetClipRect_ShouldReturnCorrectValue()
         {
             // Arrange
-            ImDrawCmd drawCmd = new ImDrawCmd {ClipRect = new Vector4(1.0f, 2.0f, 3.0f, 4.0f)};
+            ImDrawCmd drawCmd = new ImDrawCmd {ClipRect = new Vector4F(1.0f, 2.0f, 3.0f, 4.0f)};
 
             // Act
-            Vector4 clipRect = drawCmd.GetClipRect();
+            Vector4F clipRect = drawCmd.GetClipRect();
 
             // Assert
-            Assert.Equal(new Vector4(1.0f, 2.0f, 3.0f, 4.0f), clipRect);
+            Assert.Equal(new Vector4F(1.0f, 2.0f, 3.0f, 4.0f), clipRect);
         }
 
         /// <summary>
@@ -285,8 +285,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void GetClipRect_ReturnsClipRect()
         {
-            ImDrawCmd cmd = new ImDrawCmd {ClipRect = new Vector4(1, 2, 3, 4)};
-            Assert.Equal(new Vector4(1, 2, 3, 4), cmd.GetClipRect());
+            ImDrawCmd cmd = new ImDrawCmd {ClipRect = new Vector4F(1, 2, 3, 4)};
+            Assert.Equal(new Vector4F(1, 2, 3, 4), cmd.GetClipRect());
         }
 
         /// <summary>

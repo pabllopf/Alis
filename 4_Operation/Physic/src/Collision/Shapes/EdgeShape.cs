@@ -46,12 +46,12 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>
         ///     Edge start vertex
         /// </summary>
-        internal Vector2 _vertex1;
+        internal Vector2F _vertex1;
 
         /// <summary>
         ///     Edge end vertex
         /// </summary>
-        internal Vector2 _vertex2;
+        internal Vector2F _vertex2;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="EdgeShape" /> class
@@ -68,7 +68,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// </summary>
         /// <param name="start">The start of the edge.</param>
         /// <param name="end">The end of the edge.</param>
-        public EdgeShape(Vector2 start, Vector2 end)
+        public EdgeShape(Vector2F start, Vector2F end)
             : base(0)
         {
             ShapeType = ShapeType.Edge;
@@ -94,17 +94,17 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>
         ///     Optional adjacent vertices. These are used for smooth collision.
         /// </summary>
-        public Vector2 Vertex0 { get; set; }
+        public Vector2F Vertex0 { get; set; }
 
         /// <summary>
         ///     Optional adjacent vertices. These are used for smooth collision.
         /// </summary>
-        public Vector2 Vertex3 { get; set; }
+        public Vector2F Vertex3 { get; set; }
 
         /// <summary>
         ///     These are the edge vertices
         /// </summary>
-        public Vector2 Vertex1
+        public Vector2F Vertex1
         {
             get => _vertex1;
             set
@@ -117,7 +117,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>
         ///     These are the edge vertices
         /// </summary>
-        public Vector2 Vertex2
+        public Vector2F Vertex2
         {
             get => _vertex2;
             set
@@ -132,7 +132,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// </summary>
         /// <param name="start">The start.</param>
         /// <param name="end">The end.</param>
-        public void Set(Vector2 start, Vector2 end)
+        public void Set(Vector2F start, Vector2F end)
         {
             _vertex1 = start;
             _vertex2 = end;
@@ -148,7 +148,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="transform">The transform</param>
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
-        public override bool TestPoint(ref Transform transform, ref Vector2 point) => false;
+        public override bool TestPoint(ref Transform transform, ref Vector2F point) => false;
 
         /// <summary>
         ///     Describes whether this instance ray cast
@@ -168,21 +168,21 @@ namespace Alis.Core.Physic.Collision.Shapes
             output = new RayCastOutput();
 
             // Put the ray into the edge's frame of reference.
-            Vector2 p1 = Complex.Divide(input.Point1 - transform.p, ref transform.q);
-            Vector2 p2 = Complex.Divide(input.Point2 - transform.p, ref transform.q);
-            Vector2 d = p2 - p1;
+            Vector2F p1 = Complex.Divide(input.Point1 - transform.p, ref transform.q);
+            Vector2F p2 = Complex.Divide(input.Point2 - transform.p, ref transform.q);
+            Vector2F d = p2 - p1;
 
-            Vector2 v1 = _vertex1;
-            Vector2 v2 = _vertex2;
-            Vector2 e = v2 - v1;
-            Vector2 normal = new Vector2(e.Y, -e.X);
+            Vector2F v1 = _vertex1;
+            Vector2F v2 = _vertex2;
+            Vector2F e = v2 - v1;
+            Vector2F normal = new Vector2F(e.Y, -e.X);
             normal.Normalize();
 
             // q = p1 + t * d
             // dot(normal, q - v1) = 0
             // dot(normal, p1 - v1) + t * dot(normal, d) = 0
-            float numerator = Vector2.Dot(normal, v1 - p1);
-            float denominator = Vector2.Dot(normal, d);
+            float numerator = Vector2F.Dot(normal, v1 - p1);
+            float denominator = Vector2F.Dot(normal, d);
 
             if (Math.Abs(denominator) < MathUtils.Epsilon)
             {
@@ -195,18 +195,18 @@ namespace Alis.Core.Physic.Collision.Shapes
                 return false;
             }
 
-            Vector2 q = p1 + t * d;
+            Vector2F q = p1 + t * d;
 
             // q = v1 + s * r
             // s = dot(q - v1, r) / dot(r, r)
-            Vector2 r = v2 - v1;
-            float rr = Vector2.Dot(r, r);
+            Vector2F r = v2 - v1;
+            float rr = Vector2F.Dot(r, r);
             if (Math.Abs(rr) < MathUtils.Epsilon)
             {
                 return false;
             }
 
-            float s = Vector2.Dot(q - v1, r) / rr;
+            float s = Vector2F.Dot(q - v1, r) / rr;
             if (s < 0.0f || 1.0f < s)
             {
                 return false;
@@ -236,15 +236,15 @@ namespace Alis.Core.Physic.Collision.Shapes
             // Initialize aabb
             aabb = new AABB();
 
-            // OPT: Vector2 v1 = Transform.Multiply(ref _vertex1, ref transform);
+            // OPT: Vector2F v1 = Transform.Multiply(ref _vertex1, ref transform);
             float v1X = _vertex1.X * transform.q.R - _vertex1.Y * transform.q.i + transform.p.X;
             float v1Y = _vertex1.Y * transform.q.R + _vertex1.X * transform.q.i + transform.p.Y;
-            // OPT: Vector2 v2 = Transform.Multiply(ref _vertex2, ref transform);
+            // OPT: Vector2F v2 = Transform.Multiply(ref _vertex2, ref transform);
             float v2X = _vertex2.X * transform.q.R - _vertex2.Y * transform.q.i + transform.p.X;
             float v2Y = _vertex2.Y * transform.q.R + _vertex2.X * transform.q.i + transform.p.Y;
 
-            // OPT: aabb.LowerBound = Vector2.Min(v1, v2);
-            // OPT: aabb.UpperBound = Vector2.Max(v1, v2);
+            // OPT: aabb.LowerBound = Vector2F.Min(v1, v2);
+            // OPT: aabb.UpperBound = Vector2F.Max(v1, v2);
             if (v1X < v2X)
             {
                 aabb.LowerBound.X = v1X;
@@ -267,7 +267,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                 aabb.UpperBound.Y = v1Y;
             }
 
-            // OPT: Vector2 r = new Vector2(Radius, Radius);
+            // OPT: Vector2F r = new Vector2F(Radius, Radius);
             // OPT: aabb.LowerBound = aabb.LowerBound - r;
             // OPT: aabb.UpperBound = aabb.LowerBound + r;
             aabb.LowerBound.X -= Radius;
@@ -292,9 +292,9 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="xf">The xf</param>
         /// <param name="sc">The sc</param>
         /// <returns>The float</returns>
-        public override float ComputeSubmergedArea(ref Vector2 normal, float offset, ref Transform xf, out Vector2 sc)
+        public override float ComputeSubmergedArea(ref Vector2F normal, float offset, ref Transform xf, out Vector2F sc)
         {
-            sc = Vector2.Zero;
+            sc = Vector2F.Zero;
             return 0;
         }
 

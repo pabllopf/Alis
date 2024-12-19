@@ -195,6 +195,6 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
         /// <param name="size">The size</param>
         /// <param name="backgroundColor">The background color</param>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_ViewManipulate_Float", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void ImGuizmo_ViewManipulate(float[] view, float length, Vector2 position, Vector2 size, uint backgroundColor);
+        internal static extern void ImGuizmo_ViewManipulate(float[] view, float length, Vector2F position, Vector2F size, uint backgroundColor);
     }
 }

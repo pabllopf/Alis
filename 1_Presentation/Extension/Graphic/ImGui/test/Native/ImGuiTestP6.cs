@@ -145,7 +145,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void InputFloat4_ThrowsDllNotFoundException()
         {
-            Vector4 v = new Vector4();
+            Vector4F v = new Vector4F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputFloat4("Label", ref v, "%.3f"));
         }
 
@@ -155,7 +155,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void InputFloat4_WithFlags_ThrowsDllNotFoundException()
         {
-            Vector4 v = new Vector4();
+            Vector4F v = new Vector4F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputFloat4("Label", ref v, "%.3f", ImGuiInputTextFlags.None));
         }
 
@@ -355,7 +355,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void InvisibleButton_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InvisibleButton("Button", new Vector2(100, 50)));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InvisibleButton("Button", new Vector2F(100, 50)));
         }
 
         /// <summary>
@@ -364,7 +364,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void InvisibleButton_WithFlags_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InvisibleButton("Button", new Vector2(100, 50), ImGuiButtonFlags.None));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InvisibleButton("Button", new Vector2F(100, 50), ImGuiButtonFlags.None));
         }
 
         /// <summary>
@@ -607,7 +607,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void IsMouseHoveringRect_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsMouseHoveringRect(new Vector2(0, 0), new Vector2(100, 100)));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsMouseHoveringRect(new Vector2F(0, 0), new Vector2F(100, 100)));
         }
 
         /// <summary>
@@ -616,7 +616,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void IsMouseHoveringRect_WithClip_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsMouseHoveringRect(new Vector2(0, 0), new Vector2(100, 100), true));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsMouseHoveringRect(new Vector2F(0, 0), new Vector2F(100, 100), true));
         }
 
         /// <summary>
@@ -634,7 +634,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void IsMousePosValid_WithMousePos_ThrowsDllNotFoundException()
         {
-            Vector2 mousePos = new Vector2();
+            Vector2F mousePos = new Vector2F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsMousePosValid(ref mousePos));
         }
 
@@ -671,7 +671,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void IsRectVisible_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsRectVisible(new Vector2(100, 100)));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsRectVisible(new Vector2F(100, 100)));
         }
 
         /// <summary>
@@ -680,7 +680,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void IsRectVisible_WithRectMinAndRectMax_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsRectVisible(new Vector2(0, 0), new Vector2(100, 100)));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.IsRectVisible(new Vector2F(0, 0), new Vector2F(100, 100)));
         }
 
         /// <summary>

@@ -151,7 +151,7 @@ namespace Alis.Extension.Updater
                 if (downloadUrl != null)
                 {
                     string fileName = Path.GetFileName(new Uri(downloadUrl).AbsolutePath);
-                    string filePath = Path.Combine(Environment.CurrentDirectory, fileName);
+                    string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
 
                     OnUpdateProgressChanged(0.4f, "Checking if the latest version is already installed...");
                     WaitForContinue();
@@ -217,7 +217,7 @@ namespace Alis.Extension.Updater
             Logger.Info("Doing backup...");
             OnUpdateProgressChanged(0.7f, "Doing backup...");
 
-            string backupPath = Path.Combine(Environment.CurrentDirectory, "Backup_" + DateTime.Now.ToString("yyyyMMddHHmmss"));
+            string backupPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Backup_" + DateTime.Now.ToString("yyyyMMddHHmmss"));
             Directory.Move(_programFolder, backupPath);
 
             WaitForContinue();
@@ -228,7 +228,7 @@ namespace Alis.Extension.Updater
             WaitForContinue();
 
             // Comprimir el backup:
-            string zipBackupPath = Path.Combine(Environment.CurrentDirectory, "Backup_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".zip");
+            string zipBackupPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Backup_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".zip");
             ZipFile.CreateFromDirectory(backupPath, zipBackupPath);
             Directory.Delete(backupPath, true);
             Logger.Info("Backup compressed.");
@@ -237,7 +237,7 @@ namespace Alis.Extension.Updater
             WaitForContinue();
 
             // Mantener solo los 2 backups más recientes
-            List<FileInfo> backupFiles = Directory.GetFiles(Environment.CurrentDirectory, "Backup_*.zip")
+            List<FileInfo> backupFiles = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "Backup_*.zip")
                 .Select(file => new FileInfo(file))
                 .OrderByDescending(fi => fi.CreationTime)
                 .ToList();
@@ -326,7 +326,7 @@ namespace Alis.Extension.Updater
         private async Task<string> DownloadFileAsync(string url)
         {
             string fileName = Path.GetFileName(new Uri(url).AbsolutePath);
-            string filePath = Path.Combine(Environment.CurrentDirectory, fileName);
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
 
             using HttpClient client = new HttpClient();
             using HttpResponseMessage response = await client.GetAsync(url);
@@ -453,7 +453,7 @@ namespace Alis.Extension.Updater
             OnUpdateProgressChanged(0.9f, "Cleaning temporary files...");
             WaitForContinue();
             Logger.Info("Temporary files cleaned.");
-            string[] files = Directory.GetFiles(Environment.CurrentDirectory, "*.zip");
+            string[] files = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.zip");
             foreach (string file in files)
             {
                 if (!file.Contains("Backup"))
@@ -465,7 +465,7 @@ namespace Alis.Extension.Updater
                 }
             }
 
-            files = Directory.GetFiles(Environment.CurrentDirectory, "*.dmg");
+            files = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dmg");
             foreach (string file in files)
             {
                 if (!file.Contains("Backup"))

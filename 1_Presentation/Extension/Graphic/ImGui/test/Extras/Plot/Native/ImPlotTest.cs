@@ -217,7 +217,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         public void PushStyleColor_WithImPlotColAndVector4_PushesCorrectly()
         {
             ImPlotCol col = ImPlotCol.Line;
-            Vector4 color = new Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+            Vector4F color = new Vector4F(1.0f, 0.0f, 0.0f, 1.0f);
             Assert.Throws<DllNotFoundException>(() => ImPlot.PushStyleColor(col, color));
         }
 
@@ -250,7 +250,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         public void PushStyleVar_WithImPlotStyleVarAndVector2_PushesCorrectly()
         {
             ImPlotStyleVar styleVar = ImPlotStyleVar.MarkerSize;
-            Vector2 value = new Vector2(1.0f, 1.0f);
+            Vector2F value = new Vector2F(1.0f, 1.0f);
             Assert.Throws<DllNotFoundException>(() => ImPlot.PushStyleVar(styleVar, value));
         }
 
@@ -414,7 +414,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         [Fact]
         public void SetNextErrorBarStyle_WithCol_SetsCorrectly()
         {
-            Vector4 col = new Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+            Vector4F col = new Vector4F(1.0f, 0.0f, 0.0f, 1.0f);
             Assert.Throws<DllNotFoundException>(() => ImPlot.SetNextErrorBarStyle(col));
         }
 
@@ -424,7 +424,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         [Fact]
         public void SetNextErrorBarStyle_WithColAndSize_SetsCorrectly()
         {
-            Vector4 col = new Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+            Vector4F col = new Vector4F(1.0f, 0.0f, 0.0f, 1.0f);
             float size = 1.0f;
             Assert.Throws<DllNotFoundException>(() => ImPlot.SetNextErrorBarStyle(col, size));
         }
@@ -435,7 +435,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         [Fact]
         public void SetNextErrorBarStyle_WithColSizeAndWeight_SetsCorrectly()
         {
-            Vector4 col = new Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+            Vector4F col = new Vector4F(1.0f, 0.0f, 0.0f, 1.0f);
             float size = 1.0f;
             float weight = 1.0f;
             Assert.Throws<DllNotFoundException>(() => ImPlot.SetNextErrorBarStyle(col, size, weight));
@@ -456,7 +456,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         [Fact]
         public void SetNextFillStyle_WithCol_SetsCorrectly()
         {
-            Vector4 col = new Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+            Vector4F col = new Vector4F(1.0f, 0.0f, 0.0f, 1.0f);
             Assert.Throws<DllNotFoundException>(() => ImPlot.SetNextFillStyle(col));
         }
 
@@ -466,7 +466,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         [Fact]
         public void SetNextFillStyle_WithColAndAlphaMod_SetsCorrectly()
         {
-            Vector4 col = new Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+            Vector4F col = new Vector4F(1.0f, 0.0f, 0.0f, 1.0f);
             float alphaMod = 0.5f;
             Assert.Throws<DllNotFoundException>(() => ImPlot.SetNextFillStyle(col, alphaMod));
         }
@@ -486,7 +486,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         [Fact]
         public void SetNextLineStyle_WithCol_SetsCorrectly()
         {
-            Vector4 col = new Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+            Vector4F col = new Vector4F(1.0f, 0.0f, 0.0f, 1.0f);
             Assert.Throws<DllNotFoundException>(() => ImPlot.SetNextLineStyle(col));
         }
 
@@ -496,7 +496,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         [Fact]
         public void SetNextLineStyle_WithColAndWeight_SetsCorrectly()
         {
-            Vector4 col = new Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+            Vector4F col = new Vector4F(1.0f, 0.0f, 0.0f, 1.0f);
             float weight = 1.0f;
             Assert.Throws<DllNotFoundException>(() => ImPlot.SetNextLineStyle(col, weight));
         }
@@ -539,7 +539,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             ImPlotMarker marker = ImPlotMarker.Circle;
             float size = 1.0f;
-            Vector4 fill = new Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+            Vector4F fill = new Vector4F(1.0f, 0.0f, 0.0f, 1.0f);
             Assert.Throws<DllNotFoundException>(() => ImPlot.SetNextMarkerStyle(marker, size, fill));
         }
 
@@ -551,7 +551,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             ImPlotMarker marker = ImPlotMarker.Circle;
             float size = 1.0f;
-            Vector4 fill = new Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+            Vector4F fill = new Vector4F(1.0f, 0.0f, 0.0f, 1.0f);
             float weight = 1.0f;
             Assert.Throws<DllNotFoundException>(() => ImPlot.SetNextMarkerStyle(marker, size, fill, weight));
         }
@@ -564,9 +564,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             ImPlotMarker marker = ImPlotMarker.Circle;
             float size = 1.0f;
-            Vector4 fill = new Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+            Vector4F fill = new Vector4F(1.0f, 0.0f, 0.0f, 1.0f);
             float weight = 1.0f;
-            Vector4 outline = new Vector4(0.0f, 0.0f, 0.0f, 1.0f);
+            Vector4F outline = new Vector4F(0.0f, 0.0f, 0.0f, 1.0f);
             Assert.Throws<DllNotFoundException>(() => ImPlot.SetNextMarkerStyle(marker, size, fill, weight, outline));
         }
 
@@ -733,7 +733,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         [Fact]
         public void TagX_WithXAndCol_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.TagX(1.0, new Vector4()));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.TagX(1.0, new Vector4F()));
         }
 
         /// <summary>
@@ -742,7 +742,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         [Fact]
         public void TagX_WithXColAndRound_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.TagX(1.0, new Vector4(), true));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.TagX(1.0, new Vector4F(), true));
         }
 
         /// <summary>
@@ -751,7 +751,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         [Fact]
         public void TagX_WithXColAndFmt_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.TagX(1.0, new Vector4(), "fmt"));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.TagX(1.0, new Vector4F(), "fmt"));
         }
 
         /// <summary>
@@ -760,7 +760,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         [Fact]
         public void TagY_WithYAndCol_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.TagY(1.0, new Vector4()));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.TagY(1.0, new Vector4F()));
         }
 
         /// <summary>
@@ -769,7 +769,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         [Fact]
         public void TagY_WithYColAndRound_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.TagY(1.0, new Vector4(), true));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.TagY(1.0, new Vector4F(), true));
         }
 
         /// <summary>
@@ -778,7 +778,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         [Fact]
         public void TagY_WithYColAndFmt_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.TagY(1.0, new Vector4(), "fmt"));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.TagY(1.0, new Vector4F(), "fmt"));
         }
 
         /// <summary>
@@ -2731,7 +2731,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         [Fact]
         public void PlotText_WithOffset_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotText("text", 0.0, 0.0, new Vector2(0, 0)));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotText("text", 0.0, 0.0, new Vector2F(0, 0)));
         }
 
         /// <summary>
@@ -2740,7 +2740,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         [Fact]
         public void PlotText_WithFlags_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotText("text", 0.0, 0.0, new Vector2(0, 0), ImPlotTextFlags.None));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotText("text", 0.0, 0.0, new Vector2F(0, 0), ImPlotTextFlags.None));
         }
 
         /// <summary>

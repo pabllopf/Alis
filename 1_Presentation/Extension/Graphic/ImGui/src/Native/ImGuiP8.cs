@@ -306,7 +306,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <returns>The bool</returns>
-        public static bool SliderFloat2(string label, ref Vector2 v, float vMin, float vMax)
+        public static bool SliderFloat2(string label, ref Vector2F v, float vMin, float vMax)
         {
             byte ret = ImGuiNative.igSliderFloat2(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes("%.3f"), 0);
 
@@ -322,7 +322,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
         /// <returns>The bool</returns>
-        public static bool SliderFloat2(string label, ref Vector2 v, float vMin, float vMax, string format)
+        public static bool SliderFloat2(string label, ref Vector2F v, float vMin, float vMax, string format)
         {
             byte ret = ImGuiNative.igSliderFloat2(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
             return ret != 0;
@@ -338,7 +338,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The bool</returns>
-        public static bool SliderFloat2(string label, ref Vector2 v, float vMin, float vMax, string format, ImGuiSliderFlags flags)
+        public static bool SliderFloat2(string label, ref Vector2F v, float vMin, float vMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igSliderFloat2(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
             return ret != 0;
@@ -352,7 +352,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <returns>The bool</returns>
-        public static bool SliderFloat3(string label, ref Vector3 v, float vMin, float vMax)
+        public static bool SliderFloat3(string label, ref Vector3F v, float vMin, float vMax)
         {
             byte ret = ImGuiNative.igSliderFloat3(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes("%.3f"), 0);
             return ret != 0;
@@ -367,7 +367,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
         /// <returns>The bool</returns>
-        public static bool SliderFloat3(string label, ref Vector3 v, float vMin, float vMax, string format)
+        public static bool SliderFloat3(string label, ref Vector3F v, float vMin, float vMax, string format)
         {
             byte ret = ImGuiNative.igSliderFloat3(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
             return ret != 0;
@@ -383,7 +383,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The bool</returns>
-        public static bool SliderFloat3(string label, ref Vector3 v, float vMin, float vMax, string format, ImGuiSliderFlags flags)
+        public static bool SliderFloat3(string label, ref Vector3F v, float vMin, float vMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igSliderFloat3(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
 
@@ -398,7 +398,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <returns>The bool</returns>
-        public static bool SliderFloat4(string label, ref Vector4 v, float vMin, float vMax)
+        public static bool SliderFloat4(string label, ref Vector4F v, float vMin, float vMax)
         {
             byte ret = ImGuiNative.igSliderFloat4(Encoding.UTF8.GetBytes(label), v, vMin, vMax, Encoding.UTF8.GetBytes("%.3f"), 0);
 
@@ -414,7 +414,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
         /// <returns>The bool</returns>
-        public static bool SliderFloat4(string label, ref Vector4 v, float vMin, float vMax, string format)
+        public static bool SliderFloat4(string label, ref Vector4F v, float vMin, float vMax, string format)
         {
             byte ret = ImGuiNative.igSliderFloat4(Encoding.UTF8.GetBytes(label), v, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
 

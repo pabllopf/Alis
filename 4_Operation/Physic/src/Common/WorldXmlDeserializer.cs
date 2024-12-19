@@ -52,7 +52,7 @@ namespace Alis.Core.Physic.Common
         /// <returns>The world</returns>
         internal static World Deserialize(Stream stream)
         {
-            World world = new World(Vector2.Zero);
+            World world = new World(Vector2F.Zero);
             Deserialize(world, stream);
             return world;
         }
@@ -149,7 +149,7 @@ namespace Alis.Core.Physic.Common
                                     {
                                         case "vertices":
                                         {
-                                            List<Vector2> verts = new List<Vector2>(sn.Elements.Count);
+                                            List<Vector2F> verts = new List<Vector2F>(sn.Elements.Count);
 
                                             foreach (XMLFragmentElement vert in sn.Elements)
                                                 verts.Add(ReadVector(vert));
@@ -212,7 +212,7 @@ namespace Alis.Core.Physic.Common
                                     {
                                         case "vertices":
                                         {
-                                            List<Vector2> verts = new List<Vector2>(sn.Elements.Count);
+                                            List<Vector2F> verts = new List<Vector2F>(sn.Elements.Count);
 
                                             foreach (XMLFragmentElement vert in sn.Elements)
                                                 verts.Add(ReadVector(vert));
@@ -327,7 +327,7 @@ namespace Alis.Core.Physic.Common
                                     break;
                                 case "angle":
                                 {
-                                    Vector2 position = body.Position;
+                                    Vector2F position = body.Position;
                                     body.SetTransformIgnoreContacts(ref position, ParseFloat(sn.Value));
                                 }
                                     break;
@@ -355,7 +355,7 @@ namespace Alis.Core.Physic.Common
                                 case "position":
                                 {
                                     float rotation = body.Rotation;
-                                    Vector2 position = ReadVector(sn);
+                                    Vector2F position = ReadVector(sn);
                                     body.SetTransformIgnoreContacts(ref position, rotation);
                                 }
                                     break;
@@ -746,10 +746,10 @@ namespace Alis.Core.Physic.Common
         /// </summary>
         /// <param name="node">The node</param>
         /// <returns>The vector</returns>
-        private static Vector2 ReadVector(XMLFragmentElement node)
+        private static Vector2F ReadVector(XMLFragmentElement node)
         {
             string[] values = node.Value.Split(' ');
-            return new Vector2(ParseFloat(values[0]), ParseFloat(values[1]));
+            return new Vector2F(ParseFloat(values[0]), ParseFloat(values[1]));
         }
 
         /// <summary>

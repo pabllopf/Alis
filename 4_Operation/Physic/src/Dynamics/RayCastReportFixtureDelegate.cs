@@ -43,5 +43,5 @@ namespace Alis.Core.Physic.Dynamics
     ///     @param normal the normal vector at the point of intersection
     ///     @return 0 to terminate, fraction to clip the ray for closest hit, 1 to continue
     /// </summary>
-    public delegate float RayCastReportFixtureDelegate(Fixture fixture, Vector2 point, Vector2 normal, float fraction);
+    public delegate float RayCastReportFixtureDelegate(Fixture fixture, Vector2F point, Vector2F normal, float fraction);
 }

@@ -175,7 +175,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         [Fact]
         public void PlotImage_WithUV0_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotImage("label", IntPtr.Zero, new ImPlotPoint(), new ImPlotPoint(), new Vector2()));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotImage("label", IntPtr.Zero, new ImPlotPoint(), new ImPlotPoint(), new Vector2F()));
         }
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         [Fact]
         public void PlotImage_WithUV0UV1_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotImage("label", IntPtr.Zero, new ImPlotPoint(), new ImPlotPoint(), new Vector2(), new Vector2()));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotImage("label", IntPtr.Zero, new ImPlotPoint(), new ImPlotPoint(), new Vector2F(), new Vector2F()));
         }
 
         /// <summary>
@@ -193,7 +193,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         [Fact]
         public void PlotImage_ThrowsDllNotFoundException_v2()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotImage("label", IntPtr.Zero, new ImPlotPoint(), new ImPlotPoint(), new Vector2(), new Vector2(), new Vector4()));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotImage("label", IntPtr.Zero, new ImPlotPoint(), new ImPlotPoint(), new Vector2F(), new Vector2F(), new Vector4F()));
         }
 
         /// <summary>
@@ -202,7 +202,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         [Fact]
         public void PlotImage_WithFlags_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotImage("label", IntPtr.Zero, new ImPlotPoint(), new ImPlotPoint(), new Vector2(), new Vector2(), new Vector4(), ImPlotImageFlags.None));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotImage("label", IntPtr.Zero, new ImPlotPoint(), new ImPlotPoint(), new Vector2F(), new Vector2F(), new Vector4F(), ImPlotImageFlags.None));
         }
 
         /// <summary>

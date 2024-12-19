@@ -106,11 +106,11 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
 
             // Translate polygons into upper right quadrant
             // as the algorithm depends on it
-            Vector2 lbSubject = subject.GetAABB().LowerBound;
-            Vector2 lbClip = clip.GetAABB().LowerBound;
-            Vector2.Min(ref lbSubject, ref lbClip, out Vector2 translate);
-            translate = Vector2.One - translate;
-            if (translate != Vector2.Zero)
+            Vector2F lbSubject = subject.GetAABB().LowerBound;
+            Vector2F lbClip = clip.GetAABB().LowerBound;
+            Vector2F.Min(ref lbSubject, ref lbClip, out Vector2F translate);
+            translate = Vector2F.One - translate;
+            if (translate != Vector2F.Zero)
             {
                 slicedSubject.Translate(ref translate);
                 slicedClip.Translate(ref translate);
@@ -163,17 +163,17 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             for (int i = 0; i < polygon1.Count; i++)
             {
                 // Get edge vertices
-                Vector2 a = polygon1[i];
-                Vector2 b = polygon1[polygon1.NextIndex(i)];
+                Vector2F a = polygon1[i];
+                Vector2F b = polygon1[polygon1.NextIndex(i)];
 
                 // Get intersections between this edge and polygon2
                 for (int j = 0; j < polygon2.Count; j++)
                 {
-                    Vector2 c = polygon2[j];
-                    Vector2 d = polygon2[polygon2.NextIndex(j)];
+                    Vector2F c = polygon2[j];
+                    Vector2F d = polygon2[polygon2.NextIndex(j)];
 
                     // Check if the edges intersect
-                    if (LineTools.LineIntersect(a, b, c, d, out Vector2 intersectionPoint))
+                    if (LineTools.LineIntersect(a, b, c, d, out Vector2F intersectionPoint))
                     {
                         // calculate alpha values for sorting multiple intersections points on a edge
                         float alpha;
@@ -244,7 +244,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             for (int i = 0; i < poly.Count; ++i)
             {
                 simplicies.Add(new Edge(poly[i], poly[poly.NextIndex(i)]));
-                coeff.Add(CalculateSimplexCoefficient(Vector2.Zero, poly[i], poly[poly.NextIndex(i)]));
+                coeff.Add(CalculateSimplexCoefficient(Vector2F.Zero, poly[i], poly[poly.NextIndex(i)]));
             }
         }
 
@@ -421,7 +421,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         ///     Needed to calculate the characteristics function of a simplex.
         /// </summary>
         /// <remarks>Used by method <c>CalculateEdgeCharacter()</c>.</remarks>
-        private static float CalculateBeta(Vector2 point, Edge e, float coefficient)
+        private static float CalculateBeta(Vector2F point, Edge e, float coefficient)
         {
             float result = 0f;
             if (PointInSimplex(point, e))
@@ -429,8 +429,8 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 result = coefficient;
             }
 
-            if (PointOnLineSegment(Vector2.Zero, e.EdgeStart, point) ||
-                PointOnLineSegment(Vector2.Zero, e.EdgeEnd, point))
+            if (PointOnLineSegment(Vector2F.Zero, e.EdgeStart, point) ||
+                PointOnLineSegment(Vector2F.Zero, e.EdgeEnd, point))
             {
                 result = .5f * coefficient;
             }
@@ -442,13 +442,13 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         ///     Needed for sorting multiple intersections points on the same edge.
         /// </summary>
         /// <remarks>Used by method <c>CalculateIntersections()</c>.</remarks>
-        private static float GetAlpha(Vector2 start, Vector2 end, Vector2 point) => (point - start).LengthSquared() / (end - start).LengthSquared();
+        private static float GetAlpha(Vector2F start, Vector2F end, Vector2F point) => (point - start).LengthSquared() / (end - start).LengthSquared();
 
         /// <summary>
         ///     Returns the coefficient of a simplex.
         /// </summary>
         /// <remarks>Used by method <c>CalculateSimplicalChain()</c>.</remarks>
-        private static float CalculateSimplexCoefficient(Vector2 a, Vector2 b, Vector2 c)
+        private static float CalculateSimplexCoefficient(Vector2F a, Vector2F b, Vector2F c)
         {
             float isLeft = MathUtils.Area(ref a, ref b, ref c);
             if (isLeft < 0f)
@@ -473,10 +473,10 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         ///     False if the winding number is even and the point is outside
         ///     the simplex and True otherwise.
         /// </returns>
-        private static bool PointInSimplex(Vector2 point, Edge edge)
+        private static bool PointInSimplex(Vector2F point, Edge edge)
         {
             Vertices polygon = new Vertices();
-            polygon.Add(Vector2.Zero);
+            polygon.Add(Vector2F.Zero);
             polygon.Add(edge.EdgeStart);
             polygon.Add(edge.EdgeEnd);
             return polygon.PointInPolygon(ref point) == 1;
@@ -486,12 +486,12 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         ///     Tests if a point lies on a line segment.
         /// </summary>
         /// <remarks>Used by method <c>CalculateBeta()</c>.</remarks>
-        private static bool PointOnLineSegment(Vector2 start, Vector2 end, Vector2 point)
+        private static bool PointOnLineSegment(Vector2F start, Vector2F end, Vector2F point)
         {
-            Vector2 segment = end - start;
+            Vector2F segment = end - start;
             return (Math.Abs(MathUtils.Area(ref start, ref end, ref point)) < float.Epsilon) &&
-                   (Vector2.Dot(point - start, segment) >= 0f) &&
-                   (Vector2.Dot(point - end, segment) <= 0f);
+                   (Vector2F.Dot(point - start, segment) >= 0f) &&
+                   (Vector2F.Dot(point - end, segment) <= 0f);
         }
 
         /// <summary>
@@ -500,7 +500,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         /// <param name="vec1">The vec</param>
         /// <param name="vec2">The vec</param>
         /// <returns>The bool</returns>
-        private static bool VectorEqual(Vector2 vec1, Vector2 vec2) => (vec2 - vec1).LengthSquared() <= ClipperEpsilonSquared;
+        private static bool VectorEqual(Vector2F vec1, Vector2F vec2) => (vec2 - vec1).LengthSquared() <= ClipperEpsilonSquared;
 
         #region Nested type: Edge
 
@@ -512,7 +512,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             /// </summary>
             /// <param name="edgeStart">The edge start</param>
             /// <param name="edgeEnd">The edge end</param>
-            public Edge(Vector2 edgeStart, Vector2 edgeEnd)
+            public Edge(Vector2F edgeStart, Vector2F edgeEnd)
             {
                 EdgeStart = edgeStart;
                 EdgeEnd = edgeEnd;
@@ -521,18 +521,18 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             /// <summary>
             ///     Gets the value of the edge start
             /// </summary>
-            public Vector2 EdgeStart { get; }
+            public Vector2F EdgeStart { get; }
 
             /// <summary>
             ///     Gets the value of the edge end
             /// </summary>
-            public Vector2 EdgeEnd { get; }
+            public Vector2F EdgeEnd { get; }
 
             /// <summary>
             ///     Gets the center
             /// </summary>
             /// <returns>The vector</returns>
-            public Vector2 GetCenter() => (EdgeStart + EdgeEnd) / 2f;
+            public Vector2F GetCenter() => (EdgeStart + EdgeEnd) / 2f;
 
             public static Edge operator -(Edge e) => new Edge(e.EdgeEnd, e.EdgeStart);
 

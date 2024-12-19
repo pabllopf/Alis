@@ -189,9 +189,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         ///     Editors the context get panning
         /// </summary>
         /// <returns>The retval</returns>
-        public static Vector2 EditorContextGetPanning()
+        public static Vector2F EditorContextGetPanning()
         {
-            ImNodesNative.ImNodes_EditorContextGetPanning(out Vector2 retval);
+            ImNodesNative.ImNodes_EditorContextGetPanning(out Vector2F retval);
             return retval;
         }
 
@@ -208,7 +208,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         ///     Editors the context reset panning using the specified pos
         /// </summary>
         /// <param name="pos">The pos</param>
-        public static void EditorContextResetPanning(Vector2 pos)
+        public static void EditorContextResetPanning(Vector2F pos)
         {
             ImNodesNative.ImNodes_EditorContextResetPanning(pos);
         }
@@ -287,9 +287,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <param name="id">The id</param>
         /// <returns>The retval</returns>
-        public static Vector2 GetNodeDimensions(int id)
+        public static Vector2F GetNodeDimensions(int id)
         {
-            ImNodesNative.ImNodes_GetNodeDimensions(out Vector2 retval, id);
+            ImNodesNative.ImNodes_GetNodeDimensions(out Vector2F retval, id);
             return retval;
         }
 
@@ -298,9 +298,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <param name="nodeId">The node id</param>
         /// <returns>The retval</returns>
-        public static Vector2 GetNodeEditorSpacePos(int nodeId)
+        public static Vector2F GetNodeEditorSpacePos(int nodeId)
         {
-            ImNodesNative.ImNodes_GetNodeEditorSpacePos(out Vector2 retval, nodeId);
+            ImNodesNative.ImNodes_GetNodeEditorSpacePos(out Vector2F retval, nodeId);
             return retval;
         }
 
@@ -309,9 +309,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <param name="nodeId">The node id</param>
         /// <returns>The retval</returns>
-        public static Vector2 GetNodeGridSpacePos(int nodeId)
+        public static Vector2F GetNodeGridSpacePos(int nodeId)
         {
-            ImNodesNative.ImNodes_GetNodeGridSpacePos(out Vector2 retval, nodeId);
+            ImNodesNative.ImNodes_GetNodeGridSpacePos(out Vector2F retval, nodeId);
             return retval;
         }
 
@@ -320,9 +320,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <param name="nodeId">The node id</param>
         /// <returns>The retval</returns>
-        public static Vector2 GetNodeScreenSpacePos(int nodeId)
+        public static Vector2F GetNodeScreenSpacePos(int nodeId)
         {
-            ImNodesNative.ImNodes_GetNodeScreenSpacePos(out Vector2 retval, nodeId);
+            ImNodesNative.ImNodes_GetNodeScreenSpacePos(out Vector2F retval, nodeId);
             return retval;
         }
 
@@ -795,7 +795,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <param name="styleItem">The style item</param>
         /// <param name="value">The value</param>
-        public static void PushStyleVar(ImNodesStyleVar styleItem, Vector2 value)
+        public static void PushStyleVar(ImNodesStyleVar styleItem, Vector2F value)
         {
             ImNodesNative.ImNodes_PushStyleVar_Vec2(styleItem, value);
         }
@@ -952,7 +952,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <param name="nodeId">The node id</param>
         /// <param name="editorSpacePos">The editor space pos</param>
-        public static void SetNodeEditorSpacePos(int nodeId, Vector2 editorSpacePos)
+        public static void SetNodeEditorSpacePos(int nodeId, Vector2F editorSpacePos)
         {
             ImNodesNative.ImNodes_SetNodeEditorSpacePos(nodeId, editorSpacePos);
         }
@@ -962,7 +962,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <param name="nodeId">The node id</param>
         /// <param name="gridPos">The grid pos</param>
-        public static void SetNodeGridSpacePos(int nodeId, Vector2 gridPos)
+        public static void SetNodeGridSpacePos(int nodeId, Vector2F gridPos)
         {
             ImNodesNative.ImNodes_SetNodeGridSpacePos(nodeId, gridPos);
         }
@@ -972,7 +972,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <param name="nodeId">The node id</param>
         /// <param name="screenSpacePos">The screen space pos</param>
-        public static void SetNodeScreenSpacePos(int nodeId, Vector2 screenSpacePos)
+        public static void SetNodeScreenSpacePos(int nodeId, Vector2F screenSpacePos)
         {
             ImNodesNative.ImNodes_SetNodeScreenSpacePos(nodeId, screenSpacePos);
         }

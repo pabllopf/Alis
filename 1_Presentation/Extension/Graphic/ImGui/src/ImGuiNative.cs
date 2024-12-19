@@ -102,7 +102,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginChild_Str")]
-        public static extern byte igBeginChild_Str(byte[] strId, Vector2 size, byte border, ImGuiWindowFlags flags);
+        public static extern byte igBeginChild_Str(byte[] strId, Vector2F size, byte border, ImGuiWindowFlags flags);
 
         /// <summary>
         ///     Igs the begin child id using the specified id
@@ -113,7 +113,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginChild_ID")]
-        public static extern byte igBeginChild_ID(uint id, Vector2 size, byte border, ImGuiWindowFlags flags);
+        public static extern byte igBeginChild_ID(uint id, Vector2F size, byte border, ImGuiWindowFlags flags);
 
         /// <summary>
         ///     Igs the begin child frame using the specified id
@@ -123,7 +123,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginChildFrame")]
-        public static extern byte igBeginChildFrame(uint id, Vector2 size, ImGuiWindowFlags flags);
+        public static extern byte igBeginChildFrame(uint id, Vector2F size, ImGuiWindowFlags flags);
 
         /// <summary>
         ///     Igs the begin combo using the specified label
@@ -170,7 +170,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="size">The size</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginListBox")]
-        public static extern byte igBeginListBox(byte[] label, Vector2 size);
+        public static extern byte igBeginListBox(byte[] label, Vector2F size);
 
         /// <summary>
         ///     Igs the begin main menu bar
@@ -270,7 +270,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="innerWidth">The inner width</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginTable")]
-        public static extern byte igBeginTable(byte[] strId, int column, ImGuiTableFlags flags, Vector2 outerSize, float innerWidth);
+        public static extern byte igBeginTable(byte[] strId, int column, ImGuiTableFlags flags, Vector2F outerSize, float innerWidth);
 
         /// <summary>
         ///     Igs the begin tooltip
@@ -298,7 +298,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="size">The size</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igButton")]
-        public static extern byte igButton(byte[] label, Vector2 size);
+        public static extern byte igButton(byte[] label, Vector2F size);
 
         /// <summary>
         ///     Igs the calc item width
@@ -316,7 +316,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="hideTextAfterDoubleHash">The hide text after double hash</param>
         /// <param name="wrapWidth">The wrap width</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igCalcTextSize")]
-        public static extern void igCalcTextSize(out Vector2 pOut, byte[] text, byte textEnd, bool hideTextAfterDoubleHash, float wrapWidth);
+        public static extern void igCalcTextSize(out Vector2F pOut, byte[] text, byte textEnd, bool hideTextAfterDoubleHash, float wrapWidth);
 
         /// <summary>
         ///     Igs the checkbox using the specified label
@@ -381,7 +381,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="size">The size</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorButton")]
-        public static extern byte igColorButton(byte[] descId, Vector4 col, ImGuiColorEditFlags flags, Vector2 size);
+        public static extern byte igColorButton(byte[] descId, Vector4F col, ImGuiColorEditFlags flags, Vector2F size);
 
         /// <summary>
         ///     Igs the color convert float 4 to u 32 using the specified in
@@ -389,7 +389,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="in">The in</param>
         /// <returns>The uint</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorConvertFloat4ToU32")]
-        public static extern uint igColorConvertFloat4ToU32(Vector4 @in);
+        public static extern uint igColorConvertFloat4ToU32(Vector4F @in);
 
         /// <summary>
         ///     Igs the color convert hs vto rgb using the specified h
@@ -421,7 +421,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="pOut">The out</param>
         /// <param name="in">The in</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorConvertU32ToFloat4")]
-        public static extern void igColorConvertU32ToFloat4(out Vector4 pOut, uint @in);
+        public static extern void igColorConvertU32ToFloat4(out Vector4F pOut, uint @in);
 
         /// <summary>
         ///     Igs the color edit 3 using the specified label
@@ -431,7 +431,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorEdit3")]
-        public static extern byte igColorEdit3(byte[] label, Vector3 col, ImGuiColorEditFlags flags);
+        public static extern byte igColorEdit3(byte[] label, Vector3F col, ImGuiColorEditFlags flags);
 
         /// <summary>
         ///     Igs the color edit 4 using the specified label
@@ -441,7 +441,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorEdit4")]
-        public static extern byte igColorEdit4(byte[] label, Vector4 col, ImGuiColorEditFlags flags);
+        public static extern byte igColorEdit4(byte[] label, Vector4F col, ImGuiColorEditFlags flags);
 
         /// <summary>
         ///     Igs the color picker 3 using the specified label
@@ -451,7 +451,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorPicker3")]
-        public static extern byte igColorPicker3(byte[] label, Vector3 col, ImGuiColorEditFlags flags);
+        public static extern byte igColorPicker3(byte[] label, Vector3F col, ImGuiColorEditFlags flags);
 
         /// <summary>
         ///     Igs the color picker 4 using the specified label
@@ -462,7 +462,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="refCol">The ref col</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorPicker4")]
-        public static extern byte igColorPicker4(byte[] label, Vector4 col, ImGuiColorEditFlags flags, float refCol);
+        public static extern byte igColorPicker4(byte[] label, Vector4F col, ImGuiColorEditFlags flags, float refCol);
 
         /// <summary>
         ///     Igs the columns using the specified count
@@ -534,7 +534,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="windowClass">The window class</param>
         /// <returns>The uint</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockSpace")]
-        public static extern uint igDockSpace(uint id, Vector2 size, ImGuiDockNodeFlags flags, ImGuiWindowClass windowClass);
+        public static extern uint igDockSpace(uint id, Vector2F size, ImGuiDockNodeFlags flags, ImGuiWindowClass windowClass);
 
         /// <summary>
         ///     Igs the dock space over viewport using the specified viewport
@@ -572,7 +572,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDragFloat2")]
-        public static extern byte igDragFloat2(byte[] label, ref Vector2 v, float vSpeed, float vMin, float vMax, byte[] format, ImGuiSliderFlags flags);
+        public static extern byte igDragFloat2(byte[] label, ref Vector2F v, float vSpeed, float vMin, float vMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the drag float 3 using the specified label
@@ -586,7 +586,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDragFloat3")]
-        public static extern byte igDragFloat3(byte[] label, ref Vector3 v, float vSpeed, float vMin, float vMax, byte[] format, ImGuiSliderFlags flags);
+        public static extern byte igDragFloat3(byte[] label, ref Vector3F v, float vSpeed, float vMin, float vMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the drag float 4 using the specified label
@@ -600,7 +600,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDragFloat4")]
-        public static extern byte igDragFloat4(byte[] label, Vector4 v, float vSpeed, float vMin, float vMax, byte[] format, ImGuiSliderFlags flags);
+        public static extern byte igDragFloat4(byte[] label, Vector4F v, float vSpeed, float vMin, float vMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the drag float range 2 using the specified label
@@ -726,7 +726,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="size">The size</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDummy")]
-        public static extern void igDummy(Vector2 size);
+        public static extern void igDummy(Vector2F size);
 
         /// <summary>
         ///     Igs the end
@@ -898,7 +898,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="col">The col</param>
         /// <returns>The uint</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetColorU32_Vec4")]
-        public static extern uint igGetColorU32_Vec4(Vector4 col);
+        public static extern uint igGetColorU32_Vec4(Vector4F col);
 
         /// <summary>
         ///     Igs the get color u 32 u 32 using the specified col
@@ -943,14 +943,14 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetContentRegionAvail")]
-        public static extern void igGetContentRegionAvail(out Vector2 pOut);
+        public static extern void igGetContentRegionAvail(out Vector2F pOut);
 
         /// <summary>
         ///     Igs the get content region max using the specified p out
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetContentRegionMax")]
-        public static extern void igGetContentRegionMax(out Vector2 pOut);
+        public static extern void igGetContentRegionMax(out Vector2F pOut);
 
         /// <summary>
         ///     Igs the get current context
@@ -964,7 +964,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetCursorPos")]
-        public static extern void igGetCursorPos(out Vector2 pOut);
+        public static extern void igGetCursorPos(out Vector2F pOut);
 
         /// <summary>
         ///     Igs the get cursor pos x
@@ -985,14 +985,14 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetCursorScreenPos")]
-        public static extern void igGetCursorScreenPos(out Vector2 pOut);
+        public static extern void igGetCursorScreenPos(out Vector2F pOut);
 
         /// <summary>
         ///     Igs the get cursor start pos using the specified p out
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetCursorStartPos")]
-        public static extern void igGetCursorStartPos(out Vector2 pOut);
+        public static extern void igGetCursorStartPos(out Vector2F pOut);
 
         /// <summary>
         ///     Igs the get drag drop payload
@@ -1034,7 +1034,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetFontTexUvWhitePixel")]
-        public static extern void igGetFontTexUvWhitePixel(out Vector2 pOut);
+        public static extern void igGetFontTexUvWhitePixel(out Vector2F pOut);
 
         /// <summary>
         ///     Igs the get foreground draw list nil
@@ -1109,21 +1109,21 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetItemRectMax")]
-        public static extern void igGetItemRectMax(out Vector2 pOut);
+        public static extern void igGetItemRectMax(out Vector2F pOut);
 
         /// <summary>
         ///     Igs the get item rect min using the specified p out
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetItemRectMin")]
-        public static extern void igGetItemRectMin(out Vector2 pOut);
+        public static extern void igGetItemRectMin(out Vector2F pOut);
 
         /// <summary>
         ///     Igs the get item rect size using the specified p out
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetItemRectSize")]
-        public static extern void igGetItemRectSize(out Vector2 pOut);
+        public static extern void igGetItemRectSize(out Vector2F pOut);
 
         /// <summary>
         ///     Igs the get key index using the specified key
@@ -1180,21 +1180,21 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="button">The button</param>
         /// <param name="lockThreshold">The lock threshold</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetMouseDragDelta")]
-        public static extern void igGetMouseDragDelta(out Vector2 pOut, ImGuiMouseButton button, float lockThreshold);
+        public static extern void igGetMouseDragDelta(out Vector2F pOut, ImGuiMouseButton button, float lockThreshold);
 
         /// <summary>
         ///     Igs the get mouse pos using the specified p out
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetMousePos")]
-        public static extern void igGetMousePos(out Vector2 pOut);
+        public static extern void igGetMousePos(out Vector2F pOut);
 
         /// <summary>
         ///     Igs the get mouse pos on opening current popup using the specified p out
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetMousePosOnOpeningCurrentPopup")]
-        public static extern void igGetMousePosOnOpeningCurrentPopup(out Vector2 pOut);
+        public static extern void igGetMousePosOnOpeningCurrentPopup(out Vector2F pOut);
 
         /// <summary>
         ///     Igs the get platform io
@@ -1259,7 +1259,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="idx">The idx</param>
         /// <returns>The vector</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetStyleColorVec4")]
-        public static extern Vector4 igGetStyleColorVec4(ImGuiCol idx);
+        public static extern Vector4F igGetStyleColorVec4(ImGuiCol idx);
 
         /// <summary>
         ///     Igs the get text line height
@@ -1301,14 +1301,14 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetWindowContentRegionMax")]
-        public static extern void igGetWindowContentRegionMax(out Vector2 pOut);
+        public static extern void igGetWindowContentRegionMax(out Vector2F pOut);
 
         /// <summary>
         ///     Igs the get window content region min using the specified p out
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetWindowContentRegionMin")]
-        public static extern void igGetWindowContentRegionMin(out Vector2 pOut);
+        public static extern void igGetWindowContentRegionMin(out Vector2F pOut);
 
         /// <summary>
         ///     Igs the get window dock id
@@ -1343,14 +1343,14 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetWindowPos")]
-        public static extern void igGetWindowPos(out Vector2 pOut);
+        public static extern void igGetWindowPos(out Vector2F pOut);
 
         /// <summary>
         ///     Igs the get window size using the specified p out
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetWindowSize")]
-        public static extern void igGetWindowSize(out Vector2 pOut);
+        public static extern void igGetWindowSize(out Vector2F pOut);
 
         /// <summary>
         ///     Igs the get window viewport
@@ -1376,7 +1376,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="tintCol">The tint col</param>
         /// <param name="borderCol">The border col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igImage")]
-        public static extern void igImage(IntPtr userTextureId, Vector2 size, Vector2 uv0, Vector2 uv1, Vector4 tintCol, Vector4 borderCol);
+        public static extern void igImage(IntPtr userTextureId, Vector2F size, Vector2F uv0, Vector2F uv1, Vector4F tintCol, Vector4F borderCol);
 
         /// <summary>
         ///     Igs the image button using the specified str id
@@ -1390,7 +1390,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="tintCol">The tint col</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igImageButton")]
-        public static extern byte igImageButton(byte[] strId, IntPtr userTextureId, Vector2 size, Vector2 uv0, Vector2 uv1, Vector4 bgCol, Vector4 tintCol);
+        public static extern byte igImageButton(byte[] strId, IntPtr userTextureId, Vector2F size, Vector2F uv0, Vector2F uv1, Vector4F bgCol, Vector4F tintCol);
 
         /// <summary>
         ///     Igs the indent using the specified indent w
@@ -1434,7 +1434,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igInputFloat2")]
-        public static extern byte igInputFloat2(byte[] label, ref Vector2 v, byte[] format, ImGuiInputTextFlags flags);
+        public static extern byte igInputFloat2(byte[] label, ref Vector2F v, byte[] format, ImGuiInputTextFlags flags);
 
         /// <summary>
         ///     Igs the input float 3 using the specified label
@@ -1445,7 +1445,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igInputFloat3")]
-        public static extern byte igInputFloat3(byte[] label, ref Vector3 v, byte[] format, ImGuiInputTextFlags flags);
+        public static extern byte igInputFloat3(byte[] label, ref Vector3F v, byte[] format, ImGuiInputTextFlags flags);
 
         /// <summary>
         ///     Igs the input float 4 using the specified label
@@ -1456,7 +1456,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igInputFloat4")]
-        public static extern byte igInputFloat4(byte[] label, ref Vector4 v, byte[] format, ImGuiInputTextFlags flags);
+        public static extern byte igInputFloat4(byte[] label, ref Vector4F v, byte[] format, ImGuiInputTextFlags flags);
 
         /// <summary>
         ///     Igs the input int using the specified label
@@ -1554,7 +1554,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="userData">The user data</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igInputTextMultiline")]
-        public static extern byte igInputTextMultiline(byte[] label, byte[] buf, uint bufSize, Vector2 size, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, IntPtr userData);
+        public static extern byte igInputTextMultiline(byte[] label, byte[] buf, uint bufSize, Vector2F size, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, IntPtr userData);
 
         /// <summary>
         ///     Igs the input text with hint using the specified label
@@ -1578,7 +1578,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igInvisibleButton")]
-        public static extern byte igInvisibleButton(byte[] strId, Vector2 size, ImGuiButtonFlags flags);
+        public static extern byte igInvisibleButton(byte[] strId, Vector2F size, ImGuiButtonFlags flags);
 
         /// <summary>
         ///     Igs the is any item active
@@ -1747,7 +1747,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="clip">The clip</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsMouseHoveringRect")]
-        public static extern byte igIsMouseHoveringRect(Vector2 rMin, Vector2 rMax, byte clip);
+        public static extern byte igIsMouseHoveringRect(Vector2F rMin, Vector2F rMax, byte clip);
 
         /// <summary>
         ///     Igs the is mouse pos valid using the specified mouse pos
@@ -1755,7 +1755,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="mousePos">The mouse pos</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsMousePosValid")]
-        public static extern byte igIsMousePosValid(ref Vector2 mousePos);
+        public static extern byte igIsMousePosValid(ref Vector2F mousePos);
 
         /// <summary>
         ///     Igs the is mouse released nil using the specified button
@@ -1780,7 +1780,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="size">The size</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsRectVisible_Nil")]
-        public static extern byte igIsRectVisible_Nil(Vector2 size);
+        public static extern byte igIsRectVisible_Nil(Vector2F size);
 
         /// <summary>
         ///     Igs the is rect visible vec 2 using the specified rect min
@@ -1789,7 +1789,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="rectMax">The rect max</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsRectVisible_Vec2")]
-        public static extern byte igIsRectVisible_Vec2(Vector2 rectMin, Vector2 rectMax);
+        public static extern byte igIsRectVisible_Vec2(Vector2F rectMin, Vector2F rectMax);
 
         /// <summary>
         ///     Igs the is window appearing
@@ -1996,7 +1996,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="graphSize">The graph size</param>
         /// <param name="stride">The stride</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igPlotHistogram_FloatPtr")]
-        public static extern void igPlotHistogram_FloatPtr(byte[] label, float values, int valuesCount, int valuesOffset, byte[] overlayText, float scaleMin, float scaleMax, Vector2 graphSize, int stride);
+        public static extern void igPlotHistogram_FloatPtr(byte[] label, float values, int valuesCount, int valuesOffset, byte[] overlayText, float scaleMin, float scaleMax, Vector2F graphSize, int stride);
 
         /// <summary>
         ///     Igs the plot lines float ptr using the specified label
@@ -2011,7 +2011,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="graphSize">The graph size</param>
         /// <param name="stride">The stride</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igPlotLines_FloatPtr")]
-        public static extern void igPlotLines_FloatPtr(byte[] label, float values, int valuesCount, int valuesOffset, byte[] overlayText, float scaleMin, float scaleMax, Vector2 graphSize, int stride);
+        public static extern void igPlotLines_FloatPtr(byte[] label, float values, int valuesCount, int valuesOffset, byte[] overlayText, float scaleMin, float scaleMax, Vector2F graphSize, int stride);
 
         /// <summary>
         ///     Igs the pop allow keyboard focus
@@ -2076,7 +2076,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="sizeArg">The size arg</param>
         /// <param name="overlay">The overlay</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igProgressBar")]
-        public static extern void igProgressBar(float fraction, Vector2 sizeArg, byte[] overlay);
+        public static extern void igProgressBar(float fraction, Vector2F sizeArg, byte[] overlay);
 
         /// <summary>
         ///     Igs the push allow keyboard focus using the specified allow keyboard focus
@@ -2099,7 +2099,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="clipRectMax">The clip rect max</param>
         /// <param name="intersectWithCurrentClipRect">The intersect with current clip rect</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igPushClipRect")]
-        public static extern void igPushClipRect(Vector2 clipRectMin, Vector2 clipRectMax, byte intersectWithCurrentClipRect);
+        public static extern void igPushClipRect(Vector2F clipRectMin, Vector2F clipRectMax, byte intersectWithCurrentClipRect);
 
         /// <summary>
         ///     Igs the push font using the specified font
@@ -2158,7 +2158,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="idx">The idx</param>
         /// <param name="col">The col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igPushStyleColor_Vec4")]
-        public static extern void igPushStyleColor_Vec4(ImGuiCol idx, Vector4 col);
+        public static extern void igPushStyleColor_Vec4(ImGuiCol idx, Vector4F col);
 
         /// <summary>
         ///     Igs the push style var float using the specified idx
@@ -2174,7 +2174,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="idx">The idx</param>
         /// <param name="val">The val</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igPushStyleVar_Vec2")]
-        public static extern void igPushStyleVar_Vec2(ImGuiStyleVar idx, Vector2 val);
+        public static extern void igPushStyleVar_Vec2(ImGuiStyleVar idx, Vector2F val);
 
         /// <summary>
         ///     Igs the push text wrap pos using the specified wrap local pos x
@@ -2255,7 +2255,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="size">The size</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSelectable_Bool")]
-        public static extern byte igSelectable_Bool(byte[] label, bool selected, ImGuiSelectableFlags flags, Vector2 size);
+        public static extern byte igSelectable_Bool(byte[] label, bool selected, ImGuiSelectableFlags flags, Vector2F size);
 
         /// <summary>
         ///     Igs the selectable bool ptr using the specified label
@@ -2266,7 +2266,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="size">The size</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSelectable_BoolPtr")]
-        public static extern byte igSelectable_BoolPtr(byte[] label, bool pSelected, ImGuiSelectableFlags flags, Vector2 size);
+        public static extern byte igSelectable_BoolPtr(byte[] label, bool pSelected, ImGuiSelectableFlags flags, Vector2F size);
 
         /// <summary>
         ///     Igs the separator
@@ -2325,7 +2325,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="localPos">The local pos</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetCursorPos")]
-        public static extern void igSetCursorPos(Vector2 localPos);
+        public static extern void igSetCursorPos(Vector2F localPos);
 
         /// <summary>
         ///     Igs the set cursor pos x using the specified local x
@@ -2346,7 +2346,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="pos">The pos</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetCursorScreenPos")]
-        public static extern void igSetCursorScreenPos(Vector2 pos);
+        public static extern void igSetCursorScreenPos(Vector2F pos);
 
         /// <summary>
         ///     Igs the set drag drop payload using the specified type
@@ -2441,7 +2441,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="size">The size</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetNextWindowContentSize")]
-        public static extern void igSetNextWindowContentSize(Vector2 size);
+        public static extern void igSetNextWindowContentSize(Vector2F size);
 
         /// <summary>
         ///     Igs the set next window dock id using the specified dock id
@@ -2464,14 +2464,14 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="cond">The cond</param>
         /// <param name="pivot">The pivot</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetNextWindowPos")]
-        public static extern void igSetNextWindowPos(Vector2 pos, ImGuiCond cond, Vector2 pivot);
+        public static extern void igSetNextWindowPos(Vector2F pos, ImGuiCond cond, Vector2F pivot);
 
         /// <summary>
         ///     Igs the set next window scroll using the specified scroll
         /// </summary>
         /// <param name="scroll">The scroll</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetNextWindowScroll")]
-        public static extern void igSetNextWindowScroll(Vector2 scroll);
+        public static extern void igSetNextWindowScroll(Vector2F scroll);
 
         /// <summary>
         ///     Igs the set next window size using the specified size
@@ -2479,7 +2479,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="size">The size</param>
         /// <param name="cond">The cond</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetNextWindowSize")]
-        public static extern void igSetNextWindowSize(Vector2 size, ImGuiCond cond);
+        public static extern void igSetNextWindowSize(Vector2F size, ImGuiCond cond);
 
         /// <summary>
         ///     Igs the set next window size constraints using the specified size min
@@ -2489,7 +2489,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="customCallback">The custom callback</param>
         /// <param name="customCallbackData">The custom callback data</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetNextWindowSizeConstraints")]
-        public static extern void igSetNextWindowSizeConstraints(Vector2 sizeMin, Vector2 sizeMax, ImGuiSizeCallback customCallback, IntPtr customCallbackData);
+        public static extern void igSetNextWindowSizeConstraints(Vector2F sizeMin, Vector2F sizeMax, ImGuiSizeCallback customCallback, IntPtr customCallbackData);
 
         /// <summary>
         ///     Igs the set next window viewport using the specified viewport id
@@ -2606,7 +2606,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="pos">The pos</param>
         /// <param name="cond">The cond</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetWindowPos_Vec2")]
-        public static extern void igSetWindowPos_Vec2(Vector2 pos, ImGuiCond cond);
+        public static extern void igSetWindowPos_Vec2(Vector2F pos, ImGuiCond cond);
 
         /// <summary>
         ///     Igs the set window pos str using the specified name
@@ -2615,7 +2615,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="pos">The pos</param>
         /// <param name="cond">The cond</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetWindowPos_Str")]
-        public static extern void igSetWindowPos_Str(byte[] name, Vector2 pos, ImGuiCond cond);
+        public static extern void igSetWindowPos_Str(byte[] name, Vector2F pos, ImGuiCond cond);
 
         /// <summary>
         ///     Igs the set window size vec 2 using the specified size
@@ -2623,7 +2623,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="size">The size</param>
         /// <param name="cond">The cond</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetWindowSize_Vec2")]
-        public static extern void igSetWindowSize_Vec2(Vector2 size, ImGuiCond cond);
+        public static extern void igSetWindowSize_Vec2(Vector2F size, ImGuiCond cond);
 
         /// <summary>
         ///     Igs the set window size str using the specified name
@@ -2632,7 +2632,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="size">The size</param>
         /// <param name="cond">The cond</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetWindowSize_Str")]
-        public static extern void igSetWindowSize_Str(byte[] name, Vector2 size, ImGuiCond cond);
+        public static extern void igSetWindowSize_Str(byte[] name, Vector2F size, ImGuiCond cond);
 
         /// <summary>
         ///     Igs the show about window using the specified p open
@@ -2734,7 +2734,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSliderFloat2")]
-        public static extern byte igSliderFloat2(byte[] label, ref Vector2 v, float vMin, float vMax, byte[] format, ImGuiSliderFlags flags);
+        public static extern byte igSliderFloat2(byte[] label, ref Vector2F v, float vMin, float vMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the slider float 3 using the specified label
@@ -2747,7 +2747,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSliderFloat3")]
-        public static extern byte igSliderFloat3(byte[] label, ref Vector3 v, float vMin, float vMax, byte[] format, ImGuiSliderFlags flags);
+        public static extern byte igSliderFloat3(byte[] label, ref Vector3F v, float vMin, float vMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the slider float 4 using the specified label
@@ -2760,7 +2760,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSliderFloat4")]
-        public static extern byte igSliderFloat4(byte[] label, Vector4 v, float vMin, float vMax, byte[] format, ImGuiSliderFlags flags);
+        public static extern byte igSliderFloat4(byte[] label, Vector4F v, float vMin, float vMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the slider int using the specified label
@@ -3015,7 +3015,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="col">The col</param>
         /// <param name="fmt">The fmt</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTextColored")]
-        public static extern void igTextColored(Vector4 col, byte[] fmt);
+        public static extern void igTextColored(Vector4F col, byte[] fmt);
 
         /// <summary>
         ///     Igs the text disabled using the specified fmt
@@ -3172,7 +3172,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igVSliderFloat")]
-        public static extern byte igVSliderFloat(byte[] label, Vector2 size, ref float v, float vMin, float vMax, byte[] format, ImGuiSliderFlags flags);
+        public static extern byte igVSliderFloat(byte[] label, Vector2F size, ref float v, float vMin, float vMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the v slider int using the specified label
@@ -3186,7 +3186,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igVSliderInt")]
-        public static extern byte igVSliderInt(byte[] label, Vector2 size, ref int v, int vMin, int vMax, byte[] format, ImGuiSliderFlags flags);
+        public static extern byte igVSliderInt(byte[] label, Vector2F size, ref int v, int vMin, int vMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the v slider scalar using the specified label
@@ -3201,7 +3201,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igVSliderScalar")]
-        public static extern byte igVSliderScalar(byte[] label, Vector2 size, ImGuiDataType dataType, IntPtr pData, IntPtr pMin, IntPtr pMax, byte[] format, ImGuiSliderFlags flags);
+        public static extern byte igVSliderScalar(byte[] label, Vector2F size, ImGuiDataType dataType, IntPtr pData, IntPtr pMin, IntPtr pMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Ims the color hsv using the specified p out
@@ -3238,7 +3238,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="col">The col</param>
         /// <returns>The im color</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImColor_ImColor_Vec4")]
-        public static extern ImColor ImColor_ImColor_Vec4(Vector4 col);
+        public static extern ImColor ImColor_ImColor_Vec4(Vector4F col);
 
         /// <summary>
         ///     Ims the color im color int using the specified r
@@ -3312,7 +3312,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <param name="fbScale">The fb scale</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawData_ScaleClipRects")]
-        public static extern void ImDrawData_ScaleClipRects(ref ImDrawData self, Vector2 fbScale);
+        public static extern void ImDrawData_ScaleClipRects(ref ImDrawData self, Vector2F fbScale);
 
         /// <summary>
         ///     Ims the draw list calc circle auto segment count using the specified self
@@ -3361,7 +3361,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="aMaxSample">The max sample</param>
         /// <param name="aStep">The step</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList__PathArcToFastEx")]
-        public static extern void ImDrawList__PathArcToFastEx(IntPtr self, Vector2 center, float radius, int aMinSample, int aMaxSample, int aStep);
+        public static extern void ImDrawList__PathArcToFastEx(IntPtr self, Vector2F center, float radius, int aMinSample, int aMaxSample, int aStep);
 
         /// <summary>
         ///     Ims the draw list path arc to n using the specified self
@@ -3373,7 +3373,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="aMax">The max</param>
         /// <param name="numSegments">The num segments</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList__PathArcToN")]
-        public static extern void ImDrawList__PathArcToN(IntPtr self, Vector2 center, float radius, float aMin, float aMax, int numSegments);
+        public static extern void ImDrawList__PathArcToN(IntPtr self, Vector2F center, float radius, float aMin, float aMax, int numSegments);
 
         /// <summary>
         ///     Ims the draw list pop unused draw cmd using the specified self
@@ -3408,7 +3408,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="thickness">The thickness</param>
         /// <param name="numSegments">The num segments</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddBezierCubic")]
-        public static extern void ImDrawList_AddBezierCubic(IntPtr self, Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, uint col, float thickness, int numSegments);
+        public static extern void ImDrawList_AddBezierCubic(IntPtr self, Vector2F p1, Vector2F p2, Vector2F p3, Vector2F p4, uint col, float thickness, int numSegments);
 
         /// <summary>
         ///     Ims the draw list add bezier quadratic using the specified self
@@ -3421,7 +3421,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="thickness">The thickness</param>
         /// <param name="numSegments">The num segments</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddBezierQuadratic")]
-        public static extern void ImDrawList_AddBezierQuadratic(IntPtr self, Vector2 p1, Vector2 p2, Vector2 p3, uint col, float thickness, int numSegments);
+        public static extern void ImDrawList_AddBezierQuadratic(IntPtr self, Vector2F p1, Vector2F p2, Vector2F p3, uint col, float thickness, int numSegments);
 
         /// <summary>
         ///     Ims the draw list add callback using the specified self
@@ -3442,7 +3442,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="numSegments">The num segments</param>
         /// <param name="thickness">The thickness</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddCircle")]
-        public static extern void ImDrawList_AddCircle(IntPtr self, Vector2 center, float radius, uint col, int numSegments, float thickness);
+        public static extern void ImDrawList_AddCircle(IntPtr self, Vector2F center, float radius, uint col, int numSegments, float thickness);
 
         /// <summary>
         ///     Ims the draw list add circle filled using the specified self
@@ -3453,7 +3453,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="col">The col</param>
         /// <param name="numSegments">The num segments</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddCircleFilled")]
-        public static extern void ImDrawList_AddCircleFilled(IntPtr self, Vector2 center, float radius, uint col, int numSegments);
+        public static extern void ImDrawList_AddCircleFilled(IntPtr self, Vector2F center, float radius, uint col, int numSegments);
 
         /// <summary>
         ///     Ims the draw list add convex poly filled using the specified self
@@ -3463,7 +3463,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="numPoints">The num points</param>
         /// <param name="col">The col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddConvexPolyFilled")]
-        public static extern void ImDrawList_AddConvexPolyFilled(IntPtr self, ref Vector2 points, int numPoints, uint col);
+        public static extern void ImDrawList_AddConvexPolyFilled(IntPtr self, ref Vector2F points, int numPoints, uint col);
 
         /// <summary>
         ///     Ims the draw list add draw cmd using the specified self
@@ -3483,7 +3483,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="uvMax">The uv max</param>
         /// <param name="col">The col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddImage")]
-        public static extern void ImDrawList_AddImage(IntPtr self, IntPtr userTextureId, Vector2 pMin, Vector2 pMax, Vector2 uvMin, Vector2 uvMax, uint col);
+        public static extern void ImDrawList_AddImage(IntPtr self, IntPtr userTextureId, Vector2F pMin, Vector2F pMax, Vector2F uvMin, Vector2F uvMax, uint col);
 
         /// <summary>
         ///     Ims the draw list add image quad using the specified self
@@ -3500,7 +3500,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="uv4">The uv</param>
         /// <param name="col">The col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddImageQuad")]
-        public static extern void ImDrawList_AddImageQuad(IntPtr self, IntPtr userTextureId, Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, Vector2 uv1, Vector2 uv2, Vector2 uv3, Vector2 uv4, uint col);
+        public static extern void ImDrawList_AddImageQuad(IntPtr self, IntPtr userTextureId, Vector2F p1, Vector2F p2, Vector2F p3, Vector2F p4, Vector2F uv1, Vector2F uv2, Vector2F uv3, Vector2F uv4, uint col);
 
         /// <summary>
         ///     Ims the draw list add image rounded using the specified self
@@ -3515,7 +3515,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="rounding">The rounding</param>
         /// <param name="flags">The flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddImageRounded")]
-        public static extern void ImDrawList_AddImageRounded(IntPtr self, IntPtr userTextureId, Vector2 pMin, Vector2 pMax, Vector2 uvMin, Vector2 uvMax, uint col, float rounding, ImDrawFlags flags);
+        public static extern void ImDrawList_AddImageRounded(IntPtr self, IntPtr userTextureId, Vector2F pMin, Vector2F pMax, Vector2F uvMin, Vector2F uvMax, uint col, float rounding, ImDrawFlags flags);
 
         /// <summary>
         ///     Ims the draw list add line using the specified self
@@ -3526,7 +3526,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="col">The col</param>
         /// <param name="thickness">The thickness</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddLine")]
-        public static extern void ImDrawList_AddLine(IntPtr self, Vector2 p1, Vector2 p2, uint col, float thickness);
+        public static extern void ImDrawList_AddLine(IntPtr self, Vector2F p1, Vector2F p2, uint col, float thickness);
 
         /// <summary>
         ///     Ims the draw list add ngon using the specified self
@@ -3538,7 +3538,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="numSegments">The num segments</param>
         /// <param name="thickness">The thickness</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddNgon")]
-        public static extern void ImDrawList_AddNgon(IntPtr self, Vector2 center, float radius, uint col, int numSegments, float thickness);
+        public static extern void ImDrawList_AddNgon(IntPtr self, Vector2F center, float radius, uint col, int numSegments, float thickness);
 
         /// <summary>
         ///     Ims the draw list add ngon filled using the specified self
@@ -3549,7 +3549,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="col">The col</param>
         /// <param name="numSegments">The num segments</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddNgonFilled")]
-        public static extern void ImDrawList_AddNgonFilled(IntPtr self, Vector2 center, float radius, uint col, int numSegments);
+        public static extern void ImDrawList_AddNgonFilled(IntPtr self, Vector2F center, float radius, uint col, int numSegments);
 
         /// <summary>
         ///     Ims the draw list add polyline using the specified self
@@ -3561,7 +3561,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <param name="thickness">The thickness</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddPolyline")]
-        public static extern void ImDrawList_AddPolyline(IntPtr self, ref Vector2 points, int numPoints, uint col, ImDrawFlags flags, float thickness);
+        public static extern void ImDrawList_AddPolyline(IntPtr self, ref Vector2F points, int numPoints, uint col, ImDrawFlags flags, float thickness);
 
         /// <summary>
         ///     Ims the draw list add quad using the specified self
@@ -3574,7 +3574,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="col">The col</param>
         /// <param name="thickness">The thickness</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddQuad")]
-        public static extern void ImDrawList_AddQuad(IntPtr self, Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, uint col, float thickness);
+        public static extern void ImDrawList_AddQuad(IntPtr self, Vector2F p1, Vector2F p2, Vector2F p3, Vector2F p4, uint col, float thickness);
 
         /// <summary>
         ///     Ims the draw list add quad filled using the specified self
@@ -3586,7 +3586,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="p4">The </param>
         /// <param name="col">The col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddQuadFilled")]
-        public static extern void ImDrawList_AddQuadFilled(IntPtr self, Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, uint col);
+        public static extern void ImDrawList_AddQuadFilled(IntPtr self, Vector2F p1, Vector2F p2, Vector2F p3, Vector2F p4, uint col);
 
         /// <summary>
         ///     Ims the draw list add rect using the specified self
@@ -3599,7 +3599,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <param name="thickness">The thickness</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddRect")]
-        public static extern void ImDrawList_AddRect(IntPtr self, Vector2 pMin, Vector2 pMax, uint col, float rounding, ImDrawFlags flags, float thickness);
+        public static extern void ImDrawList_AddRect(IntPtr self, Vector2F pMin, Vector2F pMax, uint col, float rounding, ImDrawFlags flags, float thickness);
 
         /// <summary>
         ///     Ims the draw list add rect filled using the specified self
@@ -3611,7 +3611,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="rounding">The rounding</param>
         /// <param name="flags">The flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddRectFilled")]
-        public static extern void ImDrawList_AddRectFilled(IntPtr self, Vector2 pMin, Vector2 pMax, uint col, float rounding, ImDrawFlags flags);
+        public static extern void ImDrawList_AddRectFilled(IntPtr self, Vector2F pMin, Vector2F pMax, uint col, float rounding, ImDrawFlags flags);
 
         /// <summary>
         ///     Ims the draw list add rect filled multi color using the specified self
@@ -3624,7 +3624,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="colBotRight">The col bot right</param>
         /// <param name="colBotLeft">The col bot left</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddRectFilledMultiColor")]
-        public static extern void ImDrawList_AddRectFilledMultiColor(IntPtr self, Vector2 pMin, Vector2 pMax, uint colUprLeft, uint colUprRight, uint colBotRight, uint colBotLeft);
+        public static extern void ImDrawList_AddRectFilledMultiColor(IntPtr self, Vector2F pMin, Vector2F pMax, uint colUprLeft, uint colUprRight, uint colBotRight, uint colBotLeft);
 
         /// <summary>
         ///     Ims the draw list add text vec 2 using the specified self
@@ -3635,7 +3635,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="textBegin">The text begin</param>
         /// <param name="textEnd">The text end</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddText_Vec2")]
-        public static extern void ImDrawList_AddText_Vec2(IntPtr self, Vector2 pos, uint col, byte[] textBegin, byte[] textEnd);
+        public static extern void ImDrawList_AddText_Vec2(IntPtr self, Vector2F pos, uint col, byte[] textBegin, byte[] textEnd);
 
         /// <summary>
         ///     Ims the draw list add text font ptr using the specified self
@@ -3650,7 +3650,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="wrapWidth">The wrap width</param>
         /// <param name="cpuFineClipRect">The cpu fine clip rect</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddText_FontPtr")]
-        public static extern void ImDrawList_AddText_FontPtr(IntPtr self, IntPtr font, float fontSize, Vector2 pos, uint col, byte[] textBegin, byte[] textEnd, float wrapWidth, Vector4 cpuFineClipRect);
+        public static extern void ImDrawList_AddText_FontPtr(IntPtr self, IntPtr font, float fontSize, Vector2F pos, uint col, byte[] textBegin, byte[] textEnd, float wrapWidth, Vector4F cpuFineClipRect);
 
         /// <summary>
         ///     Ims the draw list add triangle using the specified self
@@ -3662,7 +3662,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="col">The col</param>
         /// <param name="thickness">The thickness</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddTriangle")]
-        public static extern void ImDrawList_AddTriangle(IntPtr self, Vector2 p1, Vector2 p2, Vector2 p3, uint col, float thickness);
+        public static extern void ImDrawList_AddTriangle(IntPtr self, Vector2F p1, Vector2F p2, Vector2F p3, uint col, float thickness);
 
         /// <summary>
         ///     Ims the draw list add triangle filled using the specified self
@@ -3673,7 +3673,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="p3">The </param>
         /// <param name="col">The col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddTriangleFilled")]
-        public static extern void ImDrawList_AddTriangleFilled(IntPtr self, Vector2 p1, Vector2 p2, Vector2 p3, uint col);
+        public static extern void ImDrawList_AddTriangleFilled(IntPtr self, Vector2F p1, Vector2F p2, Vector2F p3, uint col);
 
         /// <summary>
         ///     Ims the draw list channels merge using the specified self
@@ -3712,7 +3712,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="pOut">The out</param>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_GetClipRectMax")]
-        public static extern void ImDrawList_GetClipRectMax(out Vector2 pOut, IntPtr self);
+        public static extern void ImDrawList_GetClipRectMax(out Vector2F pOut, IntPtr self);
 
         /// <summary>
         ///     Ims the draw list get clip rect min using the specified p out
@@ -3720,7 +3720,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="pOut">The out</param>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_GetClipRectMin")]
-        public static extern void ImDrawList_GetClipRectMin(out Vector2 pOut, IntPtr self);
+        public static extern void ImDrawList_GetClipRectMin(out Vector2F pOut, IntPtr self);
 
         /// <summary>
         ///     Ims the draw list im draw list using the specified shared data
@@ -3740,7 +3740,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="aMax">The max</param>
         /// <param name="numSegments">The num segments</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PathArcTo")]
-        public static extern void ImDrawList_PathArcTo(IntPtr self, Vector2 center, float radius, float aMin, float aMax, int numSegments);
+        public static extern void ImDrawList_PathArcTo(IntPtr self, Vector2F center, float radius, float aMin, float aMax, int numSegments);
 
         /// <summary>
         ///     Ims the draw list path arc to fast using the specified self
@@ -3751,7 +3751,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="aMinOf12">The min of 12</param>
         /// <param name="aMaxOf12">The max of 12</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PathArcToFast")]
-        public static extern void ImDrawList_PathArcToFast(IntPtr self, Vector2 center, float radius, int aMinOf12, int aMaxOf12);
+        public static extern void ImDrawList_PathArcToFast(IntPtr self, Vector2F center, float radius, int aMinOf12, int aMaxOf12);
 
         /// <summary>
         ///     Ims the draw list path bezier cubic curve to using the specified self
@@ -3762,7 +3762,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="p4">The </param>
         /// <param name="numSegments">The num segments</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PathBezierCubicCurveTo")]
-        public static extern void ImDrawList_PathBezierCubicCurveTo(IntPtr self, Vector2 p2, Vector2 p3, Vector2 p4, int numSegments);
+        public static extern void ImDrawList_PathBezierCubicCurveTo(IntPtr self, Vector2F p2, Vector2F p3, Vector2F p4, int numSegments);
 
         /// <summary>
         ///     Ims the draw list path bezier quadratic curve to using the specified self
@@ -3772,7 +3772,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="p3">The </param>
         /// <param name="numSegments">The num segments</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PathBezierQuadraticCurveTo")]
-        public static extern void ImDrawList_PathBezierQuadraticCurveTo(IntPtr self, Vector2 p2, Vector2 p3, int numSegments);
+        public static extern void ImDrawList_PathBezierQuadraticCurveTo(IntPtr self, Vector2F p2, Vector2F p3, int numSegments);
 
         /// <summary>
         ///     Ims the draw list path clear using the specified self
@@ -3795,7 +3795,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <param name="pos">The pos</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PathLineTo")]
-        public static extern void ImDrawList_PathLineTo(IntPtr self, Vector2 pos);
+        public static extern void ImDrawList_PathLineTo(IntPtr self, Vector2F pos);
 
         /// <summary>
         ///     Ims the draw list path line to merge duplicate using the specified self
@@ -3803,7 +3803,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <param name="pos">The pos</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PathLineToMergeDuplicate")]
-        public static extern void ImDrawList_PathLineToMergeDuplicate(IntPtr self, Vector2 pos);
+        public static extern void ImDrawList_PathLineToMergeDuplicate(IntPtr self, Vector2F pos);
 
         /// <summary>
         ///     Ims the draw list path rect using the specified self
@@ -3814,7 +3814,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="rounding">The rounding</param>
         /// <param name="flags">The flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PathRect")]
-        public static extern void ImDrawList_PathRect(IntPtr self, Vector2 rectMin, Vector2 rectMax, float rounding, ImDrawFlags flags);
+        public static extern void ImDrawList_PathRect(IntPtr self, Vector2F rectMin, Vector2F rectMax, float rounding, ImDrawFlags flags);
 
         /// <summary>
         ///     Ims the draw list path stroke using the specified self
@@ -3854,7 +3854,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="uvD">The uv</param>
         /// <param name="col">The col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PrimQuadUV")]
-        public static extern void ImDrawList_PrimQuadUV(IntPtr self, Vector2 a, Vector2 b, Vector2 c, Vector2 d, Vector2 uvA, Vector2 uvB, Vector2 uvC, Vector2 uvD, uint col);
+        public static extern void ImDrawList_PrimQuadUV(IntPtr self, Vector2F a, Vector2F b, Vector2F c, Vector2F d, Vector2F uvA, Vector2F uvB, Vector2F uvC, Vector2F uvD, uint col);
 
         /// <summary>
         ///     Ims the draw list prim rect using the specified self
@@ -3864,7 +3864,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="b">The </param>
         /// <param name="col">The col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PrimRect")]
-        public static extern void ImDrawList_PrimRect(IntPtr self, Vector2 a, Vector2 b, uint col);
+        public static extern void ImDrawList_PrimRect(IntPtr self, Vector2F a, Vector2F b, uint col);
 
         /// <summary>
         ///     Ims the draw list prim rect uv using the specified self
@@ -3876,7 +3876,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="uvB">The uv</param>
         /// <param name="col">The col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PrimRectUV")]
-        public static extern void ImDrawList_PrimRectUV(IntPtr self, Vector2 a, Vector2 b, Vector2 uvA, Vector2 uvB, uint col);
+        public static extern void ImDrawList_PrimRectUV(IntPtr self, Vector2F a, Vector2F b, Vector2F uvA, Vector2F uvB, uint col);
 
         /// <summary>
         ///     Ims the draw list prim reserve using the specified self
@@ -3904,7 +3904,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="uv">The uv</param>
         /// <param name="col">The col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PrimVtx")]
-        public static extern void ImDrawList_PrimVtx(IntPtr self, Vector2 pos, Vector2 uv, uint col);
+        public static extern void ImDrawList_PrimVtx(IntPtr self, Vector2F pos, Vector2F uv, uint col);
 
         /// <summary>
         ///     Ims the draw list prim write idx using the specified self
@@ -3922,7 +3922,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="uv">The uv</param>
         /// <param name="col">The col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PrimWriteVtx")]
-        public static extern void ImDrawList_PrimWriteVtx(IntPtr self, Vector2 pos, Vector2 uv, uint col);
+        public static extern void ImDrawList_PrimWriteVtx(IntPtr self, Vector2F pos, Vector2F uv, uint col);
 
         /// <summary>
         ///     Ims the draw list push clip rect using the specified self
@@ -3932,7 +3932,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="clipRectMax">The clip rect max</param>
         /// <param name="intersectWithCurrentClipRect">The intersect with current clip rect</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PushClipRect")]
-        public static extern void ImDrawList_PushClipRect(IntPtr self, Vector2 clipRectMin, Vector2 clipRectMax, byte intersectWithCurrentClipRect);
+        public static extern void ImDrawList_PushClipRect(IntPtr self, Vector2F clipRectMin, Vector2F clipRectMax, byte intersectWithCurrentClipRect);
 
         /// <summary>
         ///     Ims the draw list push clip rect full screen using the specified self
@@ -4043,7 +4043,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="textEnd">The text end</param>
         /// <param name="remaining">The remaining</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFont_CalcTextSizeA")]
-        public static extern void ImFont_CalcTextSizeA(out Vector2 pOut, IntPtr self, float size, float maxWidth, float wrapWidth, byte[] textBegin, byte[] textEnd, ref IntPtr remaining);
+        public static extern void ImFont_CalcTextSizeA(out Vector2F pOut, IntPtr self, float size, float maxWidth, float wrapWidth, byte[] textBegin, byte[] textEnd, ref IntPtr remaining);
 
         /// <summary>
         ///     Ims the font calc word wrap position a using the specified self
@@ -4142,7 +4142,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="col">The col</param>
         /// <param name="c">The </param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFont_RenderChar")]
-        public static extern void ImFont_RenderChar(IntPtr self, IntPtr drawList, float size, Vector2 pos, uint col, ushort c);
+        public static extern void ImFont_RenderChar(IntPtr self, IntPtr drawList, float size, Vector2F pos, uint col, ushort c);
 
         /// <summary>
         ///     Ims the font render text using the specified self
@@ -4158,7 +4158,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="wrapWidth">The wrap width</param>
         /// <param name="cpuFineClip">The cpu fine clip</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFont_RenderText")]
-        public static extern void ImFont_RenderText(IntPtr self, IntPtr drawList, float size, Vector2 pos, uint col, Vector4 clipRect, byte[] textBegin, byte[] textEnd, float wrapWidth, byte cpuFineClip);
+        public static extern void ImFont_RenderText(IntPtr self, IntPtr drawList, float size, Vector2F pos, uint col, Vector4F clipRect, byte[] textBegin, byte[] textEnd, float wrapWidth, byte cpuFineClip);
 
         /// <summary>
         ///     Ims the font set glyph visible using the specified self
@@ -4181,7 +4181,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="offset">The offset</param>
         /// <returns>The int</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_AddCustomRectFontGlyph")]
-        public static extern int ImFontAtlas_AddCustomRectFontGlyph(IntPtr self, IntPtr font, ushort id, int width, int height, float advanceX, Vector2 offset);
+        public static extern int ImFontAtlas_AddCustomRectFontGlyph(IntPtr self, IntPtr font, ushort id, int width, int height, float advanceX, Vector2F offset);
 
         /// <summary>
         ///     Ims the font atlas add custom rect regular using the specified self
@@ -4277,7 +4277,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="outUvMin">The out uv min</param>
         /// <param name="outUvMax">The out uv max</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_CalcCustomRectUV")]
-        public static extern void ImFontAtlas_CalcCustomRectUV(IntPtr self, ImFontAtlasCustomRect rect, out Vector2 outUvMin, out Vector2 outUvMax);
+        public static extern void ImFontAtlas_CalcCustomRectUV(IntPtr self, ImFontAtlasCustomRect rect, out Vector2F outUvMin, out Vector2F outUvMax);
 
         /// <summary>
         ///     Ims the font atlas clear using the specified self
@@ -4399,7 +4399,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="outUvFill">The out uv fill</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_GetMouseCursorTexData")]
-        public static extern byte ImFontAtlas_GetMouseCursorTexData(IntPtr self, ImGuiMouseCursor cursor, out Vector2 outOffset, out Vector2 outSize, out Vector2 outUvBorder, out Vector2 outUvFill);
+        public static extern byte ImFontAtlas_GetMouseCursorTexData(IntPtr self, ImGuiMouseCursor cursor, out Vector2F outOffset, out Vector2F outSize, out Vector2F outUvBorder, out Vector2F outUvFill);
 
         /// <summary>
         ///     Ims the font atlas get tex data as alpha 8 using the specified self
@@ -5196,7 +5196,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="pOut">The out</param>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiViewport_GetCenter")]
-        public static extern void ImGuiViewport_GetCenter(out Vector2 pOut, IntPtr self);
+        public static extern void ImGuiViewport_GetCenter(out Vector2F pOut, IntPtr self);
 
         /// <summary>
         ///     Ims the gui viewport get work center using the specified p out
@@ -5204,7 +5204,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="pOut">The out</param>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiViewport_GetWorkCenter")]
-        public static extern void ImGuiViewport_GetWorkCenter(out Vector2 pOut, IntPtr self);
+        public static extern void ImGuiViewport_GetWorkCenter(out Vector2F pOut, IntPtr self);
 
         /// <summary>
         ///     Ims the gui viewport im gui viewport
@@ -5241,7 +5241,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <returns>The vector</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImVec4_ImVec4_Nil")]
-        public static extern Vector4 ImVec4_ImVec4_Nil();
+        public static extern Vector4F ImVec4_ImVec4_Nil();
 
         /// <summary>
         ///     Ims the vec 4 im vec 4 float using the specified  x
@@ -5252,6 +5252,6 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="w">The </param>
         /// <returns>The vector</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImVec4_ImVec4_Float")]
-        public static extern Vector4 ImVec4_ImVec4_Float(float x, float y, float z, float w);
+        public static extern Vector4F ImVec4_ImVec4_Float(float x, float y, float z, float w);
     }
 }

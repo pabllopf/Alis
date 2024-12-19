@@ -61,7 +61,7 @@ namespace Alis.Core.Ecs.Entity
             Name = GetType().Name;
             Id = Guid.NewGuid().ToString();
             Tag = "Default";
-            Transform = new Transform(new Vector2(0, 0), 0, new Vector2(1, 1));
+            Transform = new Transform(new Vector2F(0, 0), 0, new Vector2F(1, 1));
             Components = new List<AComponent>();
             PendingComponentsToAdd = new List<AComponent>();
             PendingComponentsToRemove = new List<AComponent>();

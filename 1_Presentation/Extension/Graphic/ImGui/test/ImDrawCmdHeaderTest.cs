@@ -45,13 +45,13 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void ClipRect_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            ImDrawCmdHeader drawCmdHeader = new ImDrawCmdHeader {ClipRect = new Vector4(1.0f, 2.0f, 3.0f, 4.0f)};
+            ImDrawCmdHeader drawCmdHeader = new ImDrawCmdHeader {ClipRect = new Vector4F(1.0f, 2.0f, 3.0f, 4.0f)};
 
             // Act
-            Vector4 clipRect = drawCmdHeader.ClipRect;
+            Vector4F clipRect = drawCmdHeader.ClipRect;
 
             // Assert
-            Assert.Equal(new Vector4(1.0f, 2.0f, 3.0f, 4.0f), clipRect);
+            Assert.Equal(new Vector4F(1.0f, 2.0f, 3.0f, 4.0f), clipRect);
         }
 
         /// <summary>

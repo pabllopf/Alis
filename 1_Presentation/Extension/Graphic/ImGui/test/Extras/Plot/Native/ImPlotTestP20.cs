@@ -304,7 +304,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         public void _PathArcToFastEx_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-            Assert.Throws<DllNotFoundException>(() => drawListPtr.PathArcToFastEx(new Vector2(), 0, 0, 0, 0));
+            Assert.Throws<DllNotFoundException>(() => drawListPtr.PathArcToFastEx(new Vector2F(), 0, 0, 0, 0));
         }
 
         /// <summary>

@@ -48,7 +48,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The bool</returns>
-        public static bool SliderFloat4(string label, ref Vector4 v, float vMin, float vMax, string format, ImGuiSliderFlags flags)
+        public static bool SliderFloat4(string label, ref Vector4F v, float vMin, float vMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igSliderFloat4(Encoding.UTF8.GetBytes(label), v, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
             return ret != 0;

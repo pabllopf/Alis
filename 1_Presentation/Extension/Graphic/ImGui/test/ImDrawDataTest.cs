@@ -127,13 +127,13 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void DisplayPos_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            ImDrawData drawData = new ImDrawData {DisplayPos = new Vector2(1.0f, 2.0f)};
+            ImDrawData drawData = new ImDrawData {DisplayPos = new Vector2F(1.0f, 2.0f)};
 
             // Act
-            Vector2 displayPos = drawData.DisplayPos;
+            Vector2F displayPos = drawData.DisplayPos;
 
             // Assert
-            Assert.Equal(new Vector2(1.0f, 2.0f), displayPos);
+            Assert.Equal(new Vector2F(1.0f, 2.0f), displayPos);
         }
 
         /// <summary>
@@ -143,13 +143,13 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void DisplaySize_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            ImDrawData drawData = new ImDrawData {DisplaySize = new Vector2(3.0f, 4.0f)};
+            ImDrawData drawData = new ImDrawData {DisplaySize = new Vector2F(3.0f, 4.0f)};
 
             // Act
-            Vector2 displaySize = drawData.DisplaySize;
+            Vector2F displaySize = drawData.DisplaySize;
 
             // Assert
-            Assert.Equal(new Vector2(3.0f, 4.0f), displaySize);
+            Assert.Equal(new Vector2F(3.0f, 4.0f), displaySize);
         }
 
         /// <summary>
@@ -159,13 +159,13 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void FramebufferScale_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            ImDrawData drawData = new ImDrawData {FramebufferScale = new Vector2(5.0f, 6.0f)};
+            ImDrawData drawData = new ImDrawData {FramebufferScale = new Vector2F(5.0f, 6.0f)};
 
             // Act
-            Vector2 framebufferScale = drawData.FramebufferScale;
+            Vector2F framebufferScale = drawData.FramebufferScale;
 
             // Assert
-            Assert.Equal(new Vector2(5.0f, 6.0f), framebufferScale);
+            Assert.Equal(new Vector2F(5.0f, 6.0f), framebufferScale);
         }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawData drawData = new ImDrawData {CmdListsCount = 1, CmdListsPtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImDrawList>())};
             ImDrawList drawList = new ImDrawList();
             Marshal.StructureToPtr(drawList, drawData.CmdListsPtr, false);
-            Vector2 fbScale = new Vector2(2.0f, 2.0f);
+            Vector2F fbScale = new Vector2F(2.0f, 2.0f);
 
             // Act
             Assert.Throws<DllNotFoundException>(() => drawData.ScaleClipRects(fbScale));
@@ -255,7 +255,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void ScaleClipRects_ThrowsDllNotFoundException()
         {
             ImDrawData drawData = new ImDrawData();
-            Vector2 fbScale = new Vector2(1.0f, 1.0f);
+            Vector2F fbScale = new Vector2F(1.0f, 1.0f);
             Assert.Throws<DllNotFoundException>(() => drawData.ScaleClipRects(fbScale));
         }
 

@@ -160,7 +160,7 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
         /// <returns>The box collider builder</returns>
         public BoxColliderBuilder LinearVelocity(float x, float y)
         {
-            boxCollider.LinearVelocity = new Vector2(x, y);
+            boxCollider.LinearVelocity = new Vector2F(x, y);
             return this;
         }
 
@@ -183,7 +183,7 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
         /// <returns>The box collider builder</returns>
         public BoxColliderBuilder RelativePosition(float x, float y)
         {
-            boxCollider.RelativePosition = new Vector2(x, y);
+            boxCollider.RelativePosition = new Vector2F(x, y);
             return this;
         }
 

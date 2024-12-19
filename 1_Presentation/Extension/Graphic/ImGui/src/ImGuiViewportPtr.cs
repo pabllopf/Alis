@@ -84,32 +84,32 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the pos
         /// </summary>
-        public Vector2 Pos => Marshal.PtrToStructure<Vector2>(NativePtr + 2 * sizeof(uint));
+        public Vector2F Pos => Marshal.PtrToStructure<Vector2F>(NativePtr + 2 * sizeof(uint));
 
         /// <summary>
         ///     Gets the value of the size
         /// </summary>
-        public Vector2 Size => Marshal.PtrToStructure<Vector2>(NativePtr + 2 * sizeof(uint) + Marshal.SizeOf<Vector2>());
+        public Vector2F Size => Marshal.PtrToStructure<Vector2F>(NativePtr + 2 * sizeof(uint) + Marshal.SizeOf<Vector2F>());
 
         /// <summary>
         ///     Gets the value of the work pos
         /// </summary>
-        public Vector2 WorkPos => Marshal.PtrToStructure<Vector2>(NativePtr + 2 * sizeof(uint) + 2 * Marshal.SizeOf<Vector2>());
+        public Vector2F WorkPos => Marshal.PtrToStructure<Vector2F>(NativePtr + 2 * sizeof(uint) + 2 * Marshal.SizeOf<Vector2F>());
 
         /// <summary>
         ///     Gets the value of the work size
         /// </summary>
-        public Vector2 WorkSize => Marshal.PtrToStructure<Vector2>(NativePtr + 2 * sizeof(uint) + 3 * Marshal.SizeOf<Vector2>());
+        public Vector2F WorkSize => Marshal.PtrToStructure<Vector2F>(NativePtr + 2 * sizeof(uint) + 3 * Marshal.SizeOf<Vector2F>());
 
         /// <summary>
         ///     Gets the value of the dpi scale
         /// </summary>
-        public float DpiScale => Marshal.PtrToStructure<float>(NativePtr + 2 * sizeof(uint) + 4 * Marshal.SizeOf<Vector2>());
+        public float DpiScale => Marshal.PtrToStructure<float>(NativePtr + 2 * sizeof(uint) + 4 * Marshal.SizeOf<Vector2F>());
 
         /// <summary>
         ///     Gets the value of the parent viewport id
         /// </summary>
-        public uint ParentViewportId => (uint) Marshal.ReadInt32(NativePtr + 2 * sizeof(uint) + 4 * Marshal.SizeOf<Vector2>() + sizeof(float));
+        public uint ParentViewportId => (uint) Marshal.ReadInt32(NativePtr + 2 * sizeof(uint) + 4 * Marshal.SizeOf<Vector2F>() + sizeof(float));
 
         /// <summary>
         ///     Gets or sets the value of the renderer user data

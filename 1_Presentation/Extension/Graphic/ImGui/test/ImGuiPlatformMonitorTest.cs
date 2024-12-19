@@ -44,13 +44,13 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void MainPos_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            ImGuiPlatformMonitor monitor = new ImGuiPlatformMonitor {MainPos = new Vector2(1, 2)};
+            ImGuiPlatformMonitor monitor = new ImGuiPlatformMonitor {MainPos = new Vector2F(1, 2)};
 
             // Act
-            Vector2 result = monitor.MainPos;
+            Vector2F result = monitor.MainPos;
 
             // Assert
-            Assert.Equal(new Vector2(1, 2), result);
+            Assert.Equal(new Vector2F(1, 2), result);
         }
 
         /// <summary>
@@ -60,13 +60,13 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void MainSize_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            ImGuiPlatformMonitor monitor = new ImGuiPlatformMonitor {MainSize = new Vector2(3, 4)};
+            ImGuiPlatformMonitor monitor = new ImGuiPlatformMonitor {MainSize = new Vector2F(3, 4)};
 
             // Act
-            Vector2 result = monitor.MainSize;
+            Vector2F result = monitor.MainSize;
 
             // Assert
-            Assert.Equal(new Vector2(3, 4), result);
+            Assert.Equal(new Vector2F(3, 4), result);
         }
 
         /// <summary>
@@ -76,13 +76,13 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void WorkPos_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            ImGuiPlatformMonitor monitor = new ImGuiPlatformMonitor {WorkPos = new Vector2(5, 6)};
+            ImGuiPlatformMonitor monitor = new ImGuiPlatformMonitor {WorkPos = new Vector2F(5, 6)};
 
             // Act
-            Vector2 result = monitor.WorkPos;
+            Vector2F result = monitor.WorkPos;
 
             // Assert
-            Assert.Equal(new Vector2(5, 6), result);
+            Assert.Equal(new Vector2F(5, 6), result);
         }
 
         /// <summary>
@@ -92,13 +92,13 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void WorkSize_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            ImGuiPlatformMonitor monitor = new ImGuiPlatformMonitor {WorkSize = new Vector2(7, 8)};
+            ImGuiPlatformMonitor monitor = new ImGuiPlatformMonitor {WorkSize = new Vector2F(7, 8)};
 
             // Act
-            Vector2 result = monitor.WorkSize;
+            Vector2F result = monitor.WorkSize;
 
             // Assert
-            Assert.Equal(new Vector2(7, 8), result);
+            Assert.Equal(new Vector2F(7, 8), result);
         }
 
         /// <summary>

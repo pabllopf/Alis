@@ -290,7 +290,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         public void TestSetFileReadPermission_ValidPath()
         {
             // Arrange
-            string filePath = Path.Combine(Environment.CurrentDirectory, "Assets", "test.zip");
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "test.zip");
             Exception ex = null;
 
             if (OSPlatform.Linux == EmbeddedDllClass.GetCurrentPlatform() || OSPlatform.OSX == EmbeddedDllClass.GetCurrentPlatform())

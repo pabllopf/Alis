@@ -106,7 +106,7 @@ namespace Alis.Sample.Flappy.Bird
             Logger.Info("Player remove bird controller");
 
             Bird.Get<BoxCollider>().Body.Rotation = -45f;
-            Bird.Get<BoxCollider>().Body.LinearVelocity = new Vector2(0, -3);
+            Bird.Get<BoxCollider>().Body.LinearVelocity = new Vector2F(0, -3);
             Bird.Get<BoxCollider>().IsTrigger = true;
             Bird.Get<BoxCollider>().Body.BodyType = BodyType.Kinematic;
 

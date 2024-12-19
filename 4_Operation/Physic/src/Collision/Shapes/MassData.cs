@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>
         ///     The position of the shape's centroid relative to the shape's origin.
         /// </summary>
-        public Vector2 Centroid { get; internal set; }
+        public Vector2F Centroid { get; internal set; }
 
         /// <summary>
         ///     The rotational inertia of the shape about the local origin.

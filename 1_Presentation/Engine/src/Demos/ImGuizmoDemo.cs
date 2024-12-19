@@ -108,17 +108,17 @@ namespace Alis.App.Engine.Demos
         /// <summary>
         ///     The vector
         /// </summary>
-        private Vector3 rotation;
+        private Vector3F rotation;
 
         /// <summary>
         ///     The vector
         /// </summary>
-        private Vector3 scale;
+        private Vector3F scale;
 
         /// <summary>
         ///     The vector
         /// </summary>
-        private Vector3 translation;
+        private Vector3F translation;
 
         /// <summary>
         ///     Initializes this instance
@@ -148,7 +148,7 @@ namespace Alis.App.Engine.Demos
         [Conditional("DEBUG")]
         private void SimpleSample()
         {
-            ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4(0.35f, 0.3f, 0.3f, 1.0f));
+            ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.35f, 0.3f, 0.3f, 1.0f));
 
 
             if (ImGui.Begin("Gizmo", ref isOpen))
@@ -201,7 +201,7 @@ namespace Alis.App.Engine.Demos
                 ImGuizMo.DrawGrid(ref cameraView, ref cameraProjection, ref identityMatrix, 10.0f);
                 ImGuizMo.Manipulate(cameraView, cameraProjection, Operation.Translate | Operation.Rotate | Operation.Scale, Mode.Local, matrix);
 
-                ImGuizMo.ViewManipulate(ref cameraView, 2.5f, new Vector2(ImGui.GetWindowPos().X, ImGui.GetWindowPos().Y), new Vector2(ImGui.GetWindowWidth(), ImGui.GetWindowHeight()), 0x10101010);
+                ImGuizMo.ViewManipulate(ref cameraView, 2.5f, new Vector2F(ImGui.GetWindowPos().X, ImGui.GetWindowPos().Y), new Vector2F(ImGui.GetWindowWidth(), ImGui.GetWindowHeight()), 0x10101010);
             }
 
 

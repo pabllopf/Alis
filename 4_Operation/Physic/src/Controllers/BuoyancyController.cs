@@ -44,7 +44,7 @@ namespace Alis.Core.Physic.Controllers
         /// <summary>
         ///     The gravity
         /// </summary>
-        private readonly Vector2 _gravity;
+        private readonly Vector2F _gravity;
 
         /// <summary>
         ///     The body
@@ -59,7 +59,7 @@ namespace Alis.Core.Physic.Controllers
         /// <summary>
         ///     The normal
         /// </summary>
-        private Vector2 _normal;
+        private Vector2F _normal;
 
         /// <summary>
         ///     The offset
@@ -88,7 +88,7 @@ namespace Alis.Core.Physic.Controllers
         /// <summary>
         ///     Acts like waterflow. Defaults to 0,0.
         /// </summary>
-        public Vector2 Velocity;
+        public Vector2F Velocity;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="BuoyancyController" /> class.
@@ -98,10 +98,10 @@ namespace Alis.Core.Physic.Controllers
         /// <param name="linearDragCoefficient">Linear drag coefficient of the fluid</param>
         /// <param name="rotationalDragCoefficient">Rotational drag coefficient of the fluid</param>
         /// <param name="gravity">The direction gravity acts. Buoyancy force will act in opposite direction of gravity.</param>
-        public BuoyancyController(AABB container, float density, float linearDragCoefficient, float rotationalDragCoefficient, Vector2 gravity)
+        public BuoyancyController(AABB container, float density, float linearDragCoefficient, float rotationalDragCoefficient, Vector2F gravity)
         {
             Container = container;
-            _normal = new Vector2(0, 1);
+            _normal = new Vector2F(0, 1);
             Density = density;
             LinearDragCoefficient = linearDragCoefficient;
             AngularDragCoefficient = rotationalDragCoefficient;
@@ -150,8 +150,8 @@ namespace Alis.Core.Physic.Controllers
 
             foreach (Body body in _uniqueBodies)
             {
-                Vector2 areac = Vector2.Zero;
-                Vector2 massc = Vector2.Zero;
+                Vector2F areac = Vector2F.Zero;
+                Vector2F massc = Vector2F.Zero;
                 float area = 0;
                 float mass = 0;
 
@@ -164,7 +164,7 @@ namespace Alis.Core.Physic.Controllers
 
                     Shape shape = fixture.Shape;
 
-                    float sarea = shape.ComputeSubmergedArea(ref _normal, _offset, ref body._xf, out Vector2 sc);
+                    float sarea = shape.ComputeSubmergedArea(ref _normal, _offset, ref body._xf, out Vector2F sc);
                     area += sarea;
                     areac.X += sarea * sc.X;
                     areac.Y += sarea * sc.Y;
@@ -185,12 +185,12 @@ namespace Alis.Core.Physic.Controllers
                 }
 
                 //Buoyancy
-                Vector2 buoyancyForce = -Density * area * _gravity;
+                Vector2F buoyancyForce = -Density * area * _gravity;
                 body.ApplyForce(buoyancyForce, massc);
 
                 //Linear drag
-                Vector2 dragVelocity = body.GetLinearVelocityFromWorldPoint(areac) - Velocity;
-                Vector2 dragForce = dragVelocity * (-LinearDragCoefficient * area);
+                Vector2F dragVelocity = body.GetLinearVelocityFromWorldPoint(areac) - Velocity;
+                Vector2F dragForce = dragVelocity * (-LinearDragCoefficient * area);
                 body.ApplyForce(dragForce, areac);
 
                 //Angular drag

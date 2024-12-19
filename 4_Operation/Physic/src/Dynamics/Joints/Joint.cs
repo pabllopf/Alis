@@ -135,13 +135,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     Get the anchor point on bodyA in world coordinates.
         ///     On some joints, this value indicate the anchor point within the world.
         /// </summary>
-        public abstract Vector2 WorldAnchorA { get; set; }
+        public abstract Vector2F WorldAnchorA { get; set; }
 
         /// <summary>
         ///     Get the anchor point on bodyB in world coordinates.
         ///     On some joints, this value indicate the anchor point within the world.
         /// </summary>
-        public abstract Vector2 WorldAnchorB { get; set; }
+        public abstract Vector2F WorldAnchorB { get; set; }
 
         /// <summary>
         ///     Set this flag to true if the attached bodies should collide.
@@ -171,7 +171,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     Get the reaction force on body at the joint anchor in Newtons.
         /// </summary>
         /// <param name="invDt">The inverse delta time.</param>
-        public abstract Vector2 GetReactionForce(float invDt);
+        public abstract Vector2F GetReactionForce(float invDt);
 
         /// <summary>
         ///     Get the reaction torque on the body at the joint anchor in N*m.

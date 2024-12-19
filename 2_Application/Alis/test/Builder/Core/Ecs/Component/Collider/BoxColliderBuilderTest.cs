@@ -183,7 +183,7 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Collider
         public void LinearVelocity_ValidInput()
         {
             BoxColliderBuilder boxColliderBuilder = new BoxColliderBuilder();
-            Vector2 linearVelocity = new Vector2(1.0f, 1.0f);
+            Vector2F linearVelocity = new Vector2F(1.0f, 1.0f);
 
             boxColliderBuilder.LinearVelocity(linearVelocity.X, linearVelocity.Y);
 
@@ -211,7 +211,7 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Collider
         public void RelativePosition_ValidInput()
         {
             BoxColliderBuilder boxColliderBuilder = new BoxColliderBuilder();
-            Vector2 relativePosition = new Vector2(1.0f, 1.0f);
+            Vector2F relativePosition = new Vector2F(1.0f, 1.0f);
 
             boxColliderBuilder.RelativePosition(relativePosition.X, relativePosition.Y);
 
@@ -253,7 +253,7 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Collider
         public void Size_ValidInput()
         {
             BoxColliderBuilder boxColliderBuilder = new BoxColliderBuilder();
-            Vector2 size = new Vector2(1.0f, 1.0f);
+            Vector2F size = new Vector2F(1.0f, 1.0f);
 
             boxColliderBuilder.Size(size.X, size.Y);
 

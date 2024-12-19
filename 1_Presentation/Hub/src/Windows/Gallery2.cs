@@ -53,7 +53,7 @@ namespace Alis.App.Hub.Windows
             Random random = new Random();
 
             // Lista de posibles imágenes
-            string[] imageOptions = {"computer.png", "news.png", "cubes.png", "shop.png"};
+            string[] imageOptions = {"Hub_computer.png", "Hub_news.png", "Hub_cubes.png", "Hub_shop.png"};
 
             // Generar 10 elementos de la galería
             for (int i = 0; i < 10; i++)

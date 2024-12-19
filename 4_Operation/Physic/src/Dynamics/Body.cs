@@ -83,7 +83,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The force
         /// </summary>
-        internal Vector2 _force;
+        internal Vector2F _force;
 
         /// <summary>
         ///     The inertia
@@ -113,7 +113,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The linear velocity
         /// </summary>
-        internal Vector2 _linearVelocity;
+        internal Vector2F _linearVelocity;
 
         /// <summary>
         ///     The lock
@@ -238,7 +238,7 @@ namespace Alis.Core.Physic.Dynamics
 
                 if (_bodyType == BodyType.Static)
                 {
-                    _linearVelocity = Vector2.Zero;
+                    _linearVelocity = Vector2F.Zero;
                     _angularVelocity = 0.0f;
                     _sweep.A0 = _sweep.A;
                     _sweep.C0 = _sweep.C;
@@ -247,7 +247,7 @@ namespace Alis.Core.Physic.Dynamics
 
                 Awake = true;
 
-                _force = Vector2.Zero;
+                _force = Vector2F.Zero;
                 _torque = 0.0f;
 
                 // Delete the attached contacts.
@@ -276,7 +276,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     bodies.
         /// </summary>
         /// <value>The linear velocity.</value>
-        public Vector2 LinearVelocity
+        public Vector2F LinearVelocity
         {
             set
             {
@@ -287,7 +287,7 @@ namespace Alis.Core.Physic.Dynamics
                     return;
                 }
 
-                if (Vector2.Dot(value, value) > 0.0f)
+                if (Vector2F.Dot(value, value) > 0.0f)
                 {
                     Awake = true;
                 }
@@ -500,7 +500,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Get the world body origin position.
         /// </summary>
         /// <returns>Return the world position of the body's origin.</returns>
-        public Vector2 Position
+        public Vector2F Position
         {
             get => _xf.p;
             set
@@ -550,7 +550,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Get the world position of the center of mass.
         /// </summary>
         /// <value>The world position.</value>
-        public Vector2 WorldCenter => _sweep.C;
+        public Vector2F WorldCenter => _sweep.C;
 
         /// <summary>
         ///     Get the local position of the center of mass.
@@ -558,7 +558,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <value>The local position.</value>
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
-        public Vector2 LocalCenter
+        public Vector2F LocalCenter
         {
             get => _sweep.LocalCenter;
             set
@@ -574,13 +574,13 @@ namespace Alis.Core.Physic.Dynamics
                 }
 
                 // Move center of mass.
-                Vector2 oldCenter = _sweep.C;
+                Vector2F oldCenter = _sweep.C;
                 _sweep.LocalCenter = value;
                 _sweep.C0 = _sweep.C = Transform.Multiply(ref _sweep.LocalCenter, ref _xf);
 
                 // Update center of mass velocity.
-                Vector2 a = _sweep.C - oldCenter;
-                _linearVelocity += new Vector2(-_angularVelocity * a.Y, _angularVelocity * a.X);
+                Vector2F a = _sweep.C - oldCenter;
+                _linearVelocity += new Vector2F(-_angularVelocity * a.Y, _angularVelocity * a.X);
             }
         }
 
@@ -626,7 +626,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
         public float Inertia
         {
-            get => _inertia + Mass * Vector2.Dot(_sweep.LocalCenter, _sweep.LocalCenter);
+            get => _inertia + Mass * Vector2F.Dot(_sweep.LocalCenter, _sweep.LocalCenter);
             set
             {
                 if ((World != null) && World.IsLocked)
@@ -643,7 +643,7 @@ namespace Alis.Core.Physic.Dynamics
 
                 if ((value > 0.0f) && !_fixedRotation) //Make an assert
                 {
-                    _inertia = value - Mass * Vector2.Dot(LocalCenter, LocalCenter);
+                    _inertia = value - Mass * Vector2F.Dot(LocalCenter, LocalCenter);
                     Debug.Assert(_inertia > 0.0f);
                     _invI = 1.0f / _inertia;
                 }
@@ -699,8 +699,8 @@ namespace Alis.Core.Physic.Dynamics
         {
             _torque = 0;
             _angularVelocity = 0;
-            _force = Vector2.Zero;
-            _linearVelocity = Vector2.Zero;
+            _force = Vector2F.Zero;
+            _linearVelocity = Vector2F.Zero;
         }
 
         /// <summary>
@@ -845,7 +845,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="position">The world position of the body's local origin.</param>
         /// <param name="rotation">The world rotation in radians.</param>
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
-        public void SetTransform(ref Vector2 position, float rotation)
+        public void SetTransform(ref Vector2F position, float rotation)
         {
             SetTransformIgnoreContacts(ref position, rotation);
 
@@ -861,7 +861,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="position">The world position of the body's local origin.</param>
         /// <param name="rotation">The world rotation in radians.</param>
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
-        public void SetTransform(Vector2 position, float rotation)
+        public void SetTransform(Vector2F position, float rotation)
         {
             SetTransform(ref position, rotation);
         }
@@ -873,7 +873,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="position">The position.</param>
         /// <param name="angle">The angle.</param>
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
-        public void SetTransformIgnoreContacts(ref Vector2 position, float angle)
+        public void SetTransformIgnoreContacts(ref Vector2F position, float angle)
         {
             Debug.Assert(World != null);
             if (World.IsLocked)
@@ -917,7 +917,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="force">The world force vector, usually in Newtons (N).</param>
         /// <param name="point">The world position of the point of application.</param>
-        public void ApplyForce(Vector2 force, Vector2 point)
+        public void ApplyForce(Vector2F force, Vector2F point)
         {
             ApplyForce(ref force, ref point);
         }
@@ -926,7 +926,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Applies a force at the center of mass.
         /// </summary>
         /// <param name="force">The force.</param>
-        public void ApplyForce(ref Vector2 force)
+        public void ApplyForce(ref Vector2F force)
         {
             ApplyForce(ref force, ref _xf.p);
         }
@@ -935,7 +935,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Applies a force at the center of mass.
         /// </summary>
         /// <param name="force">The force.</param>
-        public void ApplyForce(Vector2 force)
+        public void ApplyForce(Vector2F force)
         {
             ApplyForce(ref force, ref _xf.p);
         }
@@ -947,7 +947,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="force">The world force vector, usually in Newtons (N).</param>
         /// <param name="point">The world position of the point of application.</param>
-        public void ApplyForce(ref Vector2 force, ref Vector2 point)
+        public void ApplyForce(ref Vector2F force, ref Vector2F point)
         {
             Debug.Assert(!float.IsNaN(force.X));
             Debug.Assert(!float.IsNaN(force.Y));
@@ -992,7 +992,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     This wakes up the body.
         /// </summary>
         /// <param name="impulse">The world impulse vector, usually in N-seconds or kg-m/s.</param>
-        public void ApplyLinearImpulse(Vector2 impulse)
+        public void ApplyLinearImpulse(Vector2F impulse)
         {
             ApplyLinearImpulse(ref impulse);
         }
@@ -1005,7 +1005,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="impulse">The world impulse vector, usually in N-seconds or kg-m/s.</param>
         /// <param name="point">The world position of the point of application.</param>
-        public void ApplyLinearImpulse(Vector2 impulse, Vector2 point)
+        public void ApplyLinearImpulse(Vector2F impulse, Vector2F point)
         {
             ApplyLinearImpulse(ref impulse, ref point);
         }
@@ -1015,7 +1015,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     This wakes up the body.
         /// </summary>
         /// <param name="impulse">The world impulse vector, usually in N-seconds or kg-m/s.</param>
-        public void ApplyLinearImpulse(ref Vector2 impulse)
+        public void ApplyLinearImpulse(ref Vector2F impulse)
         {
             if (_bodyType != BodyType.Dynamic)
             {
@@ -1038,7 +1038,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="impulse">The world impulse vector, usually in N-seconds or kg-m/s.</param>
         /// <param name="point">The world position of the point of application.</param>
-        public void ApplyLinearImpulse(ref Vector2 impulse, ref Vector2 point)
+        public void ApplyLinearImpulse(ref Vector2F impulse, ref Vector2F point)
         {
             if (_bodyType != BodyType.Dynamic)
             {
@@ -1085,7 +1085,7 @@ namespace Alis.Core.Physic.Dynamics
             _invMass = 0.0f;
             _inertia = 0.0f;
             _invI = 0.0f;
-            _sweep.LocalCenter = Vector2.Zero;
+            _sweep.LocalCenter = Vector2F.Zero;
 
             // Kinematic bodies have zero mass.
             if (BodyType == BodyType.Kinematic)
@@ -1099,7 +1099,7 @@ namespace Alis.Core.Physic.Dynamics
             Debug.Assert(BodyType == BodyType.Dynamic || BodyType == BodyType.Static);
 
             // Accumulate mass over all fixtures.
-            Vector2 localCenter = Vector2.Zero;
+            Vector2F localCenter = Vector2F.Zero;
             foreach (Fixture f in FixtureList)
             {
                 if (Math.Abs(f.Shape._density) < SettingEnv.Epsilon)
@@ -1136,7 +1136,7 @@ namespace Alis.Core.Physic.Dynamics
             if ((_inertia > 0.0f) && !_fixedRotation)
             {
                 // Center the inertia about the center of mass.
-                _inertia -= _mass * Vector2.Dot(localCenter, localCenter);
+                _inertia -= _mass * Vector2F.Dot(localCenter, localCenter);
 
                 Debug.Assert(_inertia > 0.0f);
                 _invI = 1.0f / _inertia;
@@ -1148,13 +1148,13 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             // Move center of mass.
-            Vector2 oldCenter = _sweep.C;
+            Vector2F oldCenter = _sweep.C;
             _sweep.LocalCenter = localCenter;
             _sweep.C0 = _sweep.C = Transform.Multiply(ref _sweep.LocalCenter, ref _xf);
 
             // Update center of mass velocity.
-            Vector2 a = _sweep.C - oldCenter;
-            _linearVelocity += new Vector2(-_angularVelocity * a.Y, _angularVelocity * a.X);
+            Vector2F a = _sweep.C - oldCenter;
+            _linearVelocity += new Vector2F(-_angularVelocity * a.Y, _angularVelocity * a.X);
         }
 
         /// <summary>
@@ -1162,14 +1162,14 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="localPoint">A point on the body measured relative the the body's origin.</param>
         /// <returns>The same point expressed in world coordinates.</returns>
-        public Vector2 GetWorldPoint(ref Vector2 localPoint) => Transform.Multiply(ref localPoint, ref _xf);
+        public Vector2F GetWorldPoint(ref Vector2F localPoint) => Transform.Multiply(ref localPoint, ref _xf);
 
         /// <summary>
         ///     Get the world coordinates of a point given the local coordinates.
         /// </summary>
         /// <param name="localPoint">A point on the body measured relative the the body's origin.</param>
         /// <returns>The same point expressed in world coordinates.</returns>
-        public Vector2 GetWorldPoint(Vector2 localPoint) => GetWorldPoint(ref localPoint);
+        public Vector2F GetWorldPoint(Vector2F localPoint) => GetWorldPoint(ref localPoint);
 
         /// <summary>
         ///     Get the world coordinates of a vector given the local coordinates.
@@ -1177,14 +1177,14 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="localVector">A vector fixed in the body.</param>
         /// <returns>The same vector expressed in world coordinates.</returns>
-        public Vector2 GetWorldVector(ref Vector2 localVector) => Complex.Multiply(ref localVector, ref _xf.q);
+        public Vector2F GetWorldVector(ref Vector2F localVector) => Complex.Multiply(ref localVector, ref _xf.q);
 
         /// <summary>
         ///     Get the world coordinates of a vector given the local coordinates.
         /// </summary>
         /// <param name="localVector">A vector fixed in the body.</param>
         /// <returns>The same vector expressed in world coordinates.</returns>
-        public Vector2 GetWorldVector(Vector2 localVector) => GetWorldVector(ref localVector);
+        public Vector2F GetWorldVector(Vector2F localVector) => GetWorldVector(ref localVector);
 
         /// <summary>
         ///     Gets a local point relative to the body's origin given a world point.
@@ -1192,14 +1192,14 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="worldPoint">A point in world coordinates.</param>
         /// <returns>The corresponding local point relative to the body's origin.</returns>
-        public Vector2 GetLocalPoint(ref Vector2 worldPoint) => Transform.Divide(ref worldPoint, ref _xf);
+        public Vector2F GetLocalPoint(ref Vector2F worldPoint) => Transform.Divide(ref worldPoint, ref _xf);
 
         /// <summary>
         ///     Gets a local point relative to the body's origin given a world point.
         /// </summary>
         /// <param name="worldPoint">A point in world coordinates.</param>
         /// <returns>The corresponding local point relative to the body's origin.</returns>
-        public Vector2 GetLocalPoint(Vector2 worldPoint) => GetLocalPoint(ref worldPoint);
+        public Vector2F GetLocalPoint(Vector2F worldPoint) => GetLocalPoint(ref worldPoint);
 
         /// <summary>
         ///     Gets a local vector given a world vector.
@@ -1207,7 +1207,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="worldVector">A vector in world coordinates.</param>
         /// <returns>The corresponding local vector.</returns>
-        public Vector2 GetLocalVector(ref Vector2 worldVector) => Complex.Divide(ref worldVector, ref _xf.q);
+        public Vector2F GetLocalVector(ref Vector2F worldVector) => Complex.Divide(ref worldVector, ref _xf.q);
 
         /// <summary>
         ///     Gets a local vector given a world vector.
@@ -1215,22 +1215,22 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="worldVector">A vector in world coordinates.</param>
         /// <returns>The corresponding local vector.</returns>
-        public Vector2 GetLocalVector(Vector2 worldVector) => GetLocalVector(ref worldVector);
+        public Vector2F GetLocalVector(Vector2F worldVector) => GetLocalVector(ref worldVector);
 
         /// <summary>
         ///     Get the world linear velocity of a world point attached to this body.
         /// </summary>
         /// <param name="worldPoint">A point in world coordinates.</param>
         /// <returns>The world velocity of a point.</returns>
-        public Vector2 GetLinearVelocityFromWorldPoint(Vector2 worldPoint) => GetLinearVelocityFromWorldPoint(ref worldPoint);
+        public Vector2F GetLinearVelocityFromWorldPoint(Vector2F worldPoint) => GetLinearVelocityFromWorldPoint(ref worldPoint);
 
         /// <summary>
         ///     Get the world linear velocity of a world point attached to this body.
         /// </summary>
         /// <param name="worldPoint">A point in world coordinates.</param>
         /// <returns>The world velocity of a point.</returns>
-        public Vector2 GetLinearVelocityFromWorldPoint(ref Vector2 worldPoint) => _linearVelocity +
-                                                                                  new Vector2(-_angularVelocity * (worldPoint.Y - _sweep.C.Y),
+        public Vector2F GetLinearVelocityFromWorldPoint(ref Vector2F worldPoint) => _linearVelocity +
+                                                                                  new Vector2F(-_angularVelocity * (worldPoint.Y - _sweep.C.Y),
                                                                                       _angularVelocity * (worldPoint.X - _sweep.C.X));
 
         /// <summary>
@@ -1238,21 +1238,21 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="localPoint">A point in local coordinates.</param>
         /// <returns>The world velocity of a point.</returns>
-        public Vector2 GetLinearVelocityFromLocalPoint(Vector2 localPoint) => GetLinearVelocityFromLocalPoint(ref localPoint);
+        public Vector2F GetLinearVelocityFromLocalPoint(Vector2F localPoint) => GetLinearVelocityFromLocalPoint(ref localPoint);
 
         /// <summary>
         ///     Get the world velocity of a local point.
         /// </summary>
         /// <param name="localPoint">A point in local coordinates.</param>
         /// <returns>The world velocity of a point.</returns>
-        public Vector2 GetLinearVelocityFromLocalPoint(ref Vector2 localPoint) => GetLinearVelocityFromWorldPoint(GetWorldPoint(ref localPoint));
+        public Vector2F GetLinearVelocityFromLocalPoint(ref Vector2F localPoint) => GetLinearVelocityFromWorldPoint(GetWorldPoint(ref localPoint));
 
         /// <summary>
         ///     Synchronizes the fixtures
         /// </summary>
         internal void SynchronizeFixtures()
         {
-            Transform xf1 = new Transform(Vector2.Zero, _sweep.A0);
+            Transform xf1 = new Transform(Vector2F.Zero, _sweep.A0);
             xf1.p = _sweep.C0 - Complex.Multiply(ref _sweep.LocalCenter, ref xf1.q);
 
             IBroadPhase broadPhase = World.ContactManager.BroadPhase;

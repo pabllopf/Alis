@@ -151,7 +151,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="valuesCount">The values count</param>
         public static void PlotHistogram(string label, ref float values, int valuesCount)
         {
-            ImGuiNative.igPlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, 0, null, float.MaxValue, float.MaxValue, new Vector2(), sizeof(float));
+            ImGuiNative.igPlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, 0, null, float.MaxValue, float.MaxValue, new Vector2F(), sizeof(float));
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="valuesOffset">The values offset</param>
         public static void PlotHistogram(string label, ref float values, int valuesCount, int valuesOffset)
         {
-            ImGuiNative.igPlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, null, float.MaxValue, float.MaxValue, new Vector2(), sizeof(float));
+            ImGuiNative.igPlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, null, float.MaxValue, float.MaxValue, new Vector2F(), sizeof(float));
         }
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="overlayText">The overlay text</param>
         public static void PlotHistogram(string label, ref float values, int valuesCount, int valuesOffset, string overlayText)
         {
-            ImGuiNative.igPlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, Encoding.UTF8.GetBytes(overlayText), float.MaxValue, float.MaxValue, new Vector2(), sizeof(float));
+            ImGuiNative.igPlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, Encoding.UTF8.GetBytes(overlayText), float.MaxValue, float.MaxValue, new Vector2F(), sizeof(float));
         }
 
         /// <summary>
@@ -190,7 +190,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="scaleMin">The scale min</param>
         public static void PlotHistogram(string label, ref float values, int valuesCount, int valuesOffset, string overlayText, float scaleMin)
         {
-            ImGuiNative.igPlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, Encoding.UTF8.GetBytes(overlayText), scaleMin, float.MaxValue, new Vector2(), sizeof(float));
+            ImGuiNative.igPlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, Encoding.UTF8.GetBytes(overlayText), scaleMin, float.MaxValue, new Vector2F(), sizeof(float));
         }
 
         /// <summary>
@@ -205,7 +205,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="scaleMax">The scale max</param>
         public static void PlotHistogram(string label, ref float values, int valuesCount, int valuesOffset, string overlayText, float scaleMin, float scaleMax)
         {
-            ImGuiNative.igPlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, Encoding.UTF8.GetBytes(overlayText), scaleMin, scaleMax, new Vector2(), sizeof(float));
+            ImGuiNative.igPlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, Encoding.UTF8.GetBytes(overlayText), scaleMin, scaleMax, new Vector2F(), sizeof(float));
         }
 
         /// <summary>
@@ -219,7 +219,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="scaleMin">The scale min</param>
         /// <param name="scaleMax">The scale max</param>
         /// <param name="graphSize">The graph size</param>
-        public static void PlotHistogram(string label, ref float values, int valuesCount, int valuesOffset, string overlayText, float scaleMin, float scaleMax, Vector2 graphSize)
+        public static void PlotHistogram(string label, ref float values, int valuesCount, int valuesOffset, string overlayText, float scaleMin, float scaleMax, Vector2F graphSize)
         {
             ImGuiNative.igPlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, Encoding.UTF8.GetBytes(overlayText), scaleMin, scaleMax, graphSize, sizeof(float));
         }
@@ -236,7 +236,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="scaleMax">The scale max</param>
         /// <param name="graphSize">The graph size</param>
         /// <param name="stride">The stride</param>
-        public static void PlotHistogram(string label, ref float values, int valuesCount, int valuesOffset, string overlayText, float scaleMin, float scaleMax, Vector2 graphSize, int stride)
+        public static void PlotHistogram(string label, ref float values, int valuesCount, int valuesOffset, string overlayText, float scaleMin, float scaleMax, Vector2F graphSize, int stride)
         {
             ImGuiNative.igPlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, Encoding.UTF8.GetBytes(overlayText), scaleMin, scaleMax, graphSize, stride);
         }
@@ -249,7 +249,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="valuesCount">The values count</param>
         public static void PlotLines(string label, ref float values, int valuesCount)
         {
-            ImGuiNative.igPlotLines_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, 0, null, float.MaxValue, float.MaxValue, new Vector2(), sizeof(float));
+            ImGuiNative.igPlotLines_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, 0, null, float.MaxValue, float.MaxValue, new Vector2F(), sizeof(float));
         }
 
         /// <summary>
@@ -261,7 +261,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="valuesOffset">The values offset</param>
         public static void PlotLines(string label, ref float values, int valuesCount, int valuesOffset)
         {
-            ImGuiNative.igPlotLines_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, null, float.MaxValue, float.MaxValue, new Vector2(), sizeof(float));
+            ImGuiNative.igPlotLines_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, null, float.MaxValue, float.MaxValue, new Vector2F(), sizeof(float));
         }
 
         /// <summary>
@@ -274,7 +274,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="overlayText">The overlay text</param>
         public static void PlotLines(string label, ref float values, int valuesCount, int valuesOffset, string overlayText)
         {
-            ImGuiNative.igPlotLines_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, Encoding.UTF8.GetBytes(overlayText), float.MaxValue, float.MaxValue, new Vector2(), sizeof(float));
+            ImGuiNative.igPlotLines_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, Encoding.UTF8.GetBytes(overlayText), float.MaxValue, float.MaxValue, new Vector2F(), sizeof(float));
         }
 
         /// <summary>
@@ -288,7 +288,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="scaleMin">The scale min</param>
         public static void PlotLines(string label, ref float values, int valuesCount, int valuesOffset, string overlayText, float scaleMin)
         {
-            ImGuiNative.igPlotLines_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, Encoding.UTF8.GetBytes(overlayText), scaleMin, float.MaxValue, new Vector2(), sizeof(float));
+            ImGuiNative.igPlotLines_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, Encoding.UTF8.GetBytes(overlayText), scaleMin, float.MaxValue, new Vector2F(), sizeof(float));
         }
 
         /// <summary>
@@ -303,7 +303,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="scaleMax">The scale max</param>
         public static void PlotLines(string label, ref float values, int valuesCount, int valuesOffset, string overlayText, float scaleMin, float scaleMax)
         {
-            ImGuiNative.igPlotLines_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, Encoding.UTF8.GetBytes(overlayText), scaleMin, scaleMax, new Vector2(), sizeof(float));
+            ImGuiNative.igPlotLines_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, Encoding.UTF8.GetBytes(overlayText), scaleMin, scaleMax, new Vector2F(), sizeof(float));
         }
 
         /// <summary>
@@ -317,7 +317,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="scaleMin">The scale min</param>
         /// <param name="scaleMax">The scale max</param>
         /// <param name="graphSize">The graph size</param>
-        public static void PlotLines(string label, ref float values, int valuesCount, int valuesOffset, string overlayText, float scaleMin, float scaleMax, Vector2 graphSize)
+        public static void PlotLines(string label, ref float values, int valuesCount, int valuesOffset, string overlayText, float scaleMin, float scaleMax, Vector2F graphSize)
         {
             ImGuiNative.igPlotLines_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, Encoding.UTF8.GetBytes(overlayText), scaleMin, scaleMax, graphSize, sizeof(float));
         }
@@ -334,7 +334,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="scaleMax">The scale max</param>
         /// <param name="graphSize">The graph size</param>
         /// <param name="stride">The stride</param>
-        public static void PlotLines(string label, ref float values, int valuesCount, int valuesOffset, string overlayText, float scaleMin, float scaleMax, Vector2 graphSize, int stride)
+        public static void PlotLines(string label, ref float values, int valuesCount, int valuesOffset, string overlayText, float scaleMin, float scaleMax, Vector2F graphSize, int stride)
         {
             ImGuiNative.igPlotLines_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, Encoding.UTF8.GetBytes(overlayText), scaleMin, scaleMax, graphSize, stride);
         }
@@ -437,7 +437,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="fraction">The fraction</param>
         public static void ProgressBar(float fraction)
         {
-            Vector2 sizeArg = new Vector2(-float.MinValue, 0.0f);
+            Vector2F sizeArg = new Vector2F(-float.MinValue, 0.0f);
             ImGuiNative.igProgressBar(fraction, sizeArg, null);
         }
 
@@ -446,7 +446,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// </summary>
         /// <param name="fraction">The fraction</param>
         /// <param name="sizeArg">The size arg</param>
-        public static void ProgressBar(float fraction, Vector2 sizeArg)
+        public static void ProgressBar(float fraction, Vector2F sizeArg)
         {
             ImGuiNative.igProgressBar(fraction, sizeArg, null);
         }
@@ -457,7 +457,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="fraction">The fraction</param>
         /// <param name="sizeArg">The size arg</param>
         /// <param name="overlay">The overlay</param>
-        public static void ProgressBar(float fraction, Vector2 sizeArg, string overlay)
+        public static void ProgressBar(float fraction, Vector2F sizeArg, string overlay)
         {
             ImGuiNative.igProgressBar(fraction, sizeArg, Encoding.UTF8.GetBytes(overlay));
         }
@@ -488,7 +488,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="clipRectMin">The clip rect min</param>
         /// <param name="clipRectMax">The clip rect max</param>
         /// <param name="intersectWithCurrentClipRect">The intersect with current clip rect</param>
-        public static void PushClipRect(Vector2 clipRectMin, Vector2 clipRectMax, bool intersectWithCurrentClipRect)
+        public static void PushClipRect(Vector2F clipRectMin, Vector2F clipRectMax, bool intersectWithCurrentClipRect)
         {
             byte nativeIntersectWithCurrentClipRect = intersectWithCurrentClipRect ? (byte) 1 : (byte) 0;
             ImGuiNative.igPushClipRect(clipRectMin, clipRectMax, nativeIntersectWithCurrentClipRect);
@@ -555,7 +555,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// </summary>
         /// <param name="idx">The idx</param>
         /// <param name="col">The col</param>
-        public static void PushStyleColor(ImGuiCol idx, Vector4 col)
+        public static void PushStyleColor(ImGuiCol idx, Vector4F col)
         {
             ImGuiNative.igPushStyleColor_Vec4(idx, col);
         }
@@ -575,7 +575,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// </summary>
         /// <param name="idx">The idx</param>
         /// <param name="val">The val</param>
-        public static void PushStyleVar(ImGuiStyleVar idx, Vector2 val)
+        public static void PushStyleVar(ImGuiStyleVar idx, Vector2F val)
         {
             ImGuiNative.igPushStyleVar_Vec2(idx, val);
         }
@@ -743,7 +743,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool Selectable(string label)
         {
-            byte ret = ImGuiNative.igSelectable_Bool(Encoding.UTF8.GetBytes(label), false, 0, new Vector2());
+            byte ret = ImGuiNative.igSelectable_Bool(Encoding.UTF8.GetBytes(label), false, 0, new Vector2F());
 
             return ret != 0;
         }
@@ -756,7 +756,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool Selectable(string label, bool selected)
         {
-            byte ret = ImGuiNative.igSelectable_Bool(Encoding.UTF8.GetBytes(label), selected, 0, new Vector2());
+            byte ret = ImGuiNative.igSelectable_Bool(Encoding.UTF8.GetBytes(label), selected, 0, new Vector2F());
             return ret != 0;
         }
 
@@ -769,7 +769,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool Selectable(string label, bool selected, ImGuiSelectableFlags flags)
         {
-            byte ret = ImGuiNative.igSelectable_Bool(Encoding.UTF8.GetBytes(label), selected, flags, new Vector2());
+            byte ret = ImGuiNative.igSelectable_Bool(Encoding.UTF8.GetBytes(label), selected, flags, new Vector2F());
             return ret != 0;
         }
 
@@ -781,7 +781,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="flags">The flags</param>
         /// <param name="size">The size</param>
         /// <returns>The bool</returns>
-        public static bool Selectable(string label, bool selected, ImGuiSelectableFlags flags, Vector2 size)
+        public static bool Selectable(string label, bool selected, ImGuiSelectableFlags flags, Vector2F size)
         {
             byte ret = ImGuiNative.igSelectable_Bool(Encoding.UTF8.GetBytes(label), selected, flags, size);
             return ret != 0;
@@ -795,7 +795,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool Selectable(string label, ref bool pSelected)
         {
-            byte ret = ImGuiNative.igSelectable_BoolPtr(Encoding.UTF8.GetBytes(label), pSelected, 0, new Vector2());
+            byte ret = ImGuiNative.igSelectable_BoolPtr(Encoding.UTF8.GetBytes(label), pSelected, 0, new Vector2F());
             return ret != 0;
         }
 
@@ -808,7 +808,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool Selectable(string label, ref bool pSelected, ImGuiSelectableFlags flags)
         {
-            byte ret = ImGuiNative.igSelectable_BoolPtr(Encoding.UTF8.GetBytes(label), pSelected, flags, new Vector2());
+            byte ret = ImGuiNative.igSelectable_BoolPtr(Encoding.UTF8.GetBytes(label), pSelected, flags, new Vector2F());
             return ret != 0;
         }
 
@@ -820,7 +820,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="flags">The flags</param>
         /// <param name="size">The size</param>
         /// <returns>The bool</returns>
-        public static bool Selectable(string label, ref bool pSelected, ImGuiSelectableFlags flags, Vector2 size)
+        public static bool Selectable(string label, ref bool pSelected, ImGuiSelectableFlags flags, Vector2F size)
         {
             byte ret = ImGuiNative.igSelectable_BoolPtr(Encoding.UTF8.GetBytes(label), pSelected, flags, size);
             return ret != 0;
@@ -908,7 +908,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Sets the cursor pos using the specified local pos
         /// </summary>
         /// <param name="localPos">The local pos</param>
-        public static void SetCursorPos(Vector2 localPos)
+        public static void SetCursorPos(Vector2F localPos)
         {
             ImGuiNative.igSetCursorPos(localPos);
         }
@@ -935,7 +935,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Sets the cursor screen pos using the specified pos
         /// </summary>
         /// <param name="pos">The pos</param>
-        public static void SetCursorScreenPos(Vector2 pos)
+        public static void SetCursorScreenPos(Vector2F pos)
         {
             ImGuiNative.igSetCursorScreenPos(pos);
         }
@@ -1106,7 +1106,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Sets the next window content size using the specified size
         /// </summary>
         /// <param name="size">The size</param>
-        public static void SetNextWindowContentSize(Vector2 size)
+        public static void SetNextWindowContentSize(Vector2F size)
         {
             ImGuiNative.igSetNextWindowContentSize(size);
         }
@@ -1143,10 +1143,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Sets the next window pos using the specified pos
         /// </summary>
         /// <param name="pos">The pos</param>
-        public static void SetNextWindowPos(Vector2 pos)
+        public static void SetNextWindowPos(Vector2F pos)
         {
             ImGuiCond cond = 0;
-            Vector2 pivot = new Vector2();
+            Vector2F pivot = new Vector2F();
             ImGuiNative.igSetNextWindowPos(pos, cond, pivot);
         }
 
@@ -1155,9 +1155,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// </summary>
         /// <param name="pos">The pos</param>
         /// <param name="cond">The cond</param>
-        public static void SetNextWindowPos(Vector2 pos, ImGuiCond cond)
+        public static void SetNextWindowPos(Vector2F pos, ImGuiCond cond)
         {
-            Vector2 pivot = new Vector2();
+            Vector2F pivot = new Vector2F();
             ImGuiNative.igSetNextWindowPos(pos, cond, pivot);
         }
 
@@ -1167,7 +1167,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="pos">The pos</param>
         /// <param name="cond">The cond</param>
         /// <param name="pivot">The pivot</param>
-        public static void SetNextWindowPos(Vector2 pos, ImGuiCond cond, Vector2 pivot)
+        public static void SetNextWindowPos(Vector2F pos, ImGuiCond cond, Vector2F pivot)
         {
             ImGuiNative.igSetNextWindowPos(pos, cond, pivot);
         }
@@ -1176,7 +1176,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Sets the next window scroll using the specified scroll
         /// </summary>
         /// <param name="scroll">The scroll</param>
-        public static void SetNextWindowScroll(Vector2 scroll)
+        public static void SetNextWindowScroll(Vector2F scroll)
         {
             ImGuiNative.igSetNextWindowScroll(scroll);
         }
@@ -1185,7 +1185,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Sets the next window size using the specified size
         /// </summary>
         /// <param name="size">The size</param>
-        public static void SetNextWindowSize(Vector2 size)
+        public static void SetNextWindowSize(Vector2F size)
         {
             ImGuiCond cond = 0;
             ImGuiNative.igSetNextWindowSize(size, cond);
@@ -1196,7 +1196,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// </summary>
         /// <param name="size">The size</param>
         /// <param name="cond">The cond</param>
-        public static void SetNextWindowSize(Vector2 size, ImGuiCond cond)
+        public static void SetNextWindowSize(Vector2F size, ImGuiCond cond)
         {
             ImGuiNative.igSetNextWindowSize(size, cond);
         }
@@ -1206,7 +1206,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// </summary>
         /// <param name="sizeMin">The size min</param>
         /// <param name="sizeMax">The size max</param>
-        public static void SetNextWindowSizeConstraints(Vector2 sizeMin, Vector2 sizeMax)
+        public static void SetNextWindowSizeConstraints(Vector2F sizeMin, Vector2F sizeMax)
         {
             ImGuiSizeCallback customCallback = null;
             IntPtr customCallbackData = IntPtr.Zero;
@@ -1219,7 +1219,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="sizeMin">The size min</param>
         /// <param name="sizeMax">The size max</param>
         /// <param name="customCallback">The custom callback</param>
-        public static void SetNextWindowSizeConstraints(Vector2 sizeMin, Vector2 sizeMax, ImGuiSizeCallback customCallback)
+        public static void SetNextWindowSizeConstraints(Vector2F sizeMin, Vector2F sizeMax, ImGuiSizeCallback customCallback)
         {
             IntPtr customCallbackData = IntPtr.Zero;
             ImGuiNative.igSetNextWindowSizeConstraints(sizeMin, sizeMax, customCallback, customCallbackData);
@@ -1232,7 +1232,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="sizeMax">The size max</param>
         /// <param name="customCallback">The custom callback</param>
         /// <param name="customCallbackData">The custom callback data</param>
-        public static void SetNextWindowSizeConstraints(Vector2 sizeMin, Vector2 sizeMax, ImGuiSizeCallback customCallback, IntPtr customCallbackData)
+        public static void SetNextWindowSizeConstraints(Vector2F sizeMin, Vector2F sizeMax, ImGuiSizeCallback customCallback, IntPtr customCallbackData)
         {
             IntPtr nativeCustomCallbackData = customCallbackData;
             ImGuiNative.igSetNextWindowSizeConstraints(sizeMin, sizeMax, customCallback, nativeCustomCallbackData);
@@ -1441,7 +1441,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Sets the window pos using the specified pos
         /// </summary>
         /// <param name="pos">The pos</param>
-        public static void SetWindowPos(Vector2 pos)
+        public static void SetWindowPos(Vector2F pos)
         {
             ImGuiCond cond = 0;
             ImGuiNative.igSetWindowPos_Vec2(pos, cond);
@@ -1452,7 +1452,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// </summary>
         /// <param name="pos">The pos</param>
         /// <param name="cond">The cond</param>
-        public static void SetWindowPos(Vector2 pos, ImGuiCond cond)
+        public static void SetWindowPos(Vector2F pos, ImGuiCond cond)
         {
             ImGuiNative.igSetWindowPos_Vec2(pos, cond);
         }
@@ -1462,7 +1462,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// </summary>
         /// <param name="name">The name</param>
         /// <param name="pos">The pos</param>
-        public static void SetWindowPos(string name, Vector2 pos)
+        public static void SetWindowPos(string name, Vector2F pos)
         {
             ImGuiNative.igSetWindowPos_Str(Encoding.UTF8.GetBytes(name), pos, ImGuiCond.None);
         }
@@ -1473,7 +1473,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="name">The name</param>
         /// <param name="pos">The pos</param>
         /// <param name="cond">The cond</param>
-        public static void SetWindowPos(string name, Vector2 pos, ImGuiCond cond)
+        public static void SetWindowPos(string name, Vector2F pos, ImGuiCond cond)
         {
             ImGuiNative.igSetWindowPos_Str(Encoding.UTF8.GetBytes(name), pos, cond);
         }
@@ -1482,7 +1482,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Sets the window size using the specified size
         /// </summary>
         /// <param name="size">The size</param>
-        public static void SetWindowSize(Vector2 size)
+        public static void SetWindowSize(Vector2F size)
         {
             ImGuiCond cond = 0;
             ImGuiNative.igSetWindowSize_Vec2(size, cond);
@@ -1493,7 +1493,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// </summary>
         /// <param name="size">The size</param>
         /// <param name="cond">The cond</param>
-        public static void SetWindowSize(Vector2 size, ImGuiCond cond)
+        public static void SetWindowSize(Vector2F size, ImGuiCond cond)
         {
             ImGuiNative.igSetWindowSize_Vec2(size, cond);
         }
@@ -1503,7 +1503,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// </summary>
         /// <param name="name">The name</param>
         /// <param name="size">The size</param>
-        public static void SetWindowSize(string name, Vector2 size)
+        public static void SetWindowSize(string name, Vector2F size)
         {
             ImGuiNative.igSetWindowSize_Str(Encoding.UTF8.GetBytes(name), size, ImGuiCond.None);
         }
@@ -1514,7 +1514,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="name">The name</param>
         /// <param name="size">The size</param>
         /// <param name="cond">The cond</param>
-        public static void SetWindowSize(string name, Vector2 size, ImGuiCond cond)
+        public static void SetWindowSize(string name, Vector2F size, ImGuiCond cond)
         {
             ImGuiNative.igSetWindowSize_Str(Encoding.UTF8.GetBytes(name), size, cond);
         }

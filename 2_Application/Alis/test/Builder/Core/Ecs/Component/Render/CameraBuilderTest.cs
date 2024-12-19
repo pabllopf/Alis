@@ -90,7 +90,7 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Render
 
             cameraBuilder.Resolution(resolutionX, resolutionY);
 
-            Assert.Equal(new Vector2(resolutionX, resolutionY), cameraBuilder.Build().Resolution);
+            Assert.Equal(new Vector2F(resolutionX, resolutionY), cameraBuilder.Build().Resolution);
         }
     }
 }

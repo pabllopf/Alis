@@ -164,7 +164,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool BeginChild(string strId)
         {
-            byte ret = ImGuiNative.igBeginChild_Str(Encoding.UTF8.GetBytes(strId), new Vector2(), 0, 0);
+            byte ret = ImGuiNative.igBeginChild_Str(Encoding.UTF8.GetBytes(strId), new Vector2F(), 0, 0);
             return ret != 0;
         }
 
@@ -174,7 +174,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="strId">The str id</param>
         /// <param name="size">The size</param>
         /// <returns>The bool</returns>
-        public static bool BeginChild(string strId, Vector2 size)
+        public static bool BeginChild(string strId, Vector2F size)
         {
             byte ret = ImGuiNative.igBeginChild_Str(Encoding.UTF8.GetBytes(strId), size, 0, 0);
             return ret != 0;
@@ -187,7 +187,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="size">The size</param>
         /// <param name="border">The border</param>
         /// <returns>The bool</returns>
-        public static bool BeginChild(string strId, Vector2 size, bool border)
+        public static bool BeginChild(string strId, Vector2F size, bool border)
         {
             byte ret = ImGuiNative.igBeginChild_Str(Encoding.UTF8.GetBytes(strId), size, border ? (byte) 1 : (byte) 0, 0);
             return ret != 0;
@@ -201,7 +201,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="border">The border</param>
         /// <param name="flags">The flags</param>
         /// <returns>The bool</returns>
-        public static bool BeginChild(string strId, Vector2 size, bool border, ImGuiWindowFlags flags)
+        public static bool BeginChild(string strId, Vector2F size, bool border, ImGuiWindowFlags flags)
         {
             byte ret = ImGuiNative.igBeginChild_Str(Encoding.UTF8.GetBytes(strId), size, border ? (byte) 1 : (byte) 0, flags);
             return ret != 0;
@@ -214,7 +214,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool BeginChild(uint id)
         {
-            Vector2 size = new Vector2();
+            Vector2F size = new Vector2F();
             byte border = 0;
             ImGuiWindowFlags flags = 0;
             byte ret = ImGuiNative.igBeginChild_ID(id, size, border, flags);
@@ -227,7 +227,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="id">The id</param>
         /// <param name="size">The size</param>
         /// <returns>The bool</returns>
-        public static bool BeginChild(uint id, Vector2 size)
+        public static bool BeginChild(uint id, Vector2F size)
         {
             byte border = 0;
             ImGuiWindowFlags flags = 0;
@@ -242,7 +242,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="size">The size</param>
         /// <param name="border">The border</param>
         /// <returns>The bool</returns>
-        public static bool BeginChild(uint id, Vector2 size, bool border)
+        public static bool BeginChild(uint id, Vector2F size, bool border)
         {
             byte nativeBorder = border ? (byte) 1 : (byte) 0;
             ImGuiWindowFlags flags = 0;
@@ -258,7 +258,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="border">The border</param>
         /// <param name="flags">The flags</param>
         /// <returns>The bool</returns>
-        public static bool BeginChild(uint id, Vector2 size, bool border, ImGuiWindowFlags flags)
+        public static bool BeginChild(uint id, Vector2F size, bool border, ImGuiWindowFlags flags)
         {
             byte nativeBorder = border ? (byte) 1 : (byte) 0;
             byte ret = ImGuiNative.igBeginChild_ID(id, size, nativeBorder, flags);
@@ -271,7 +271,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="id">The id</param>
         /// <param name="size">The size</param>
         /// <returns>The bool</returns>
-        public static bool BeginChildFrame(uint id, Vector2 size)
+        public static bool BeginChildFrame(uint id, Vector2F size)
         {
             ImGuiWindowFlags flags = 0;
             byte ret = ImGuiNative.igBeginChildFrame(id, size, flags);
@@ -285,7 +285,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="size">The size</param>
         /// <param name="flags">The flags</param>
         /// <returns>The bool</returns>
-        public static bool BeginChildFrame(uint id, Vector2 size, ImGuiWindowFlags flags)
+        public static bool BeginChildFrame(uint id, Vector2F size, ImGuiWindowFlags flags)
         {
             byte ret = ImGuiNative.igBeginChildFrame(id, size, flags);
             return ret != 0;
@@ -384,7 +384,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool BeginListBox(string label)
         {
-            byte ret = ImGuiNative.igBeginListBox(Encoding.UTF8.GetBytes(label), new Vector2());
+            byte ret = ImGuiNative.igBeginListBox(Encoding.UTF8.GetBytes(label), new Vector2F());
             return ret != 0;
         }
 
@@ -394,7 +394,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="label">The label</param>
         /// <param name="size">The size</param>
         /// <returns>The bool</returns>
-        public static bool BeginListBox(string label, Vector2 size)
+        public static bool BeginListBox(string label, Vector2F size)
         {
             byte ret = ImGuiNative.igBeginListBox(Encoding.UTF8.GetBytes(label), size);
 
@@ -681,7 +681,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool BeginTable(string strId, int column)
         {
-            byte ret = ImGuiNative.igBeginTable(Encoding.UTF8.GetBytes(strId), column, ImGuiTableFlags.None, new Vector2(), 0.0f);
+            byte ret = ImGuiNative.igBeginTable(Encoding.UTF8.GetBytes(strId), column, ImGuiTableFlags.None, new Vector2F(), 0.0f);
 
             return ret != 0;
         }
@@ -695,7 +695,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool BeginTable(string strId, int column, ImGuiTableFlags flags)
         {
-            byte ret = ImGuiNative.igBeginTable(Encoding.UTF8.GetBytes(strId), column, flags, new Vector2(), 0.0f);
+            byte ret = ImGuiNative.igBeginTable(Encoding.UTF8.GetBytes(strId), column, flags, new Vector2F(), 0.0f);
 
             return ret != 0;
         }
@@ -708,7 +708,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="flags">The flags</param>
         /// <param name="outerSize">The outer size</param>
         /// <returns>The bool</returns>
-        public static bool BeginTable(string strId, int column, ImGuiTableFlags flags, Vector2 outerSize)
+        public static bool BeginTable(string strId, int column, ImGuiTableFlags flags, Vector2F outerSize)
         {
             byte ret = ImGuiNative.igBeginTable(Encoding.UTF8.GetBytes(strId), column, flags, outerSize, 0.0f);
             return ret != 0;
@@ -723,7 +723,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="outerSize">The outer size</param>
         /// <param name="innerWidth">The inner width</param>
         /// <returns>The bool</returns>
-        public static bool BeginTable(string strId, int column, ImGuiTableFlags flags, Vector2 outerSize, float innerWidth)
+        public static bool BeginTable(string strId, int column, ImGuiTableFlags flags, Vector2F outerSize, float innerWidth)
         {
             byte ret = ImGuiNative.igBeginTable(Encoding.UTF8.GetBytes(strId), column, flags, outerSize, innerWidth);
 
@@ -762,7 +762,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool Button(string label)
         {
-            byte ret = ImGuiNative.igButton(Encoding.UTF8.GetBytes(label), new Vector2());
+            byte ret = ImGuiNative.igButton(Encoding.UTF8.GetBytes(label), new Vector2F());
             return ret != 0;
         }
 
@@ -772,7 +772,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="label">The label</param>
         /// <param name="size">The size</param>
         /// <returns>The bool</returns>
-        public static bool Button(string label, Vector2 size)
+        public static bool Button(string label, Vector2F size)
         {
             byte ret = ImGuiNative.igButton(Encoding.UTF8.GetBytes(label), size);
             return ret != 0;
@@ -889,9 +889,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="descId">The desc id</param>
         /// <param name="col">The col</param>
         /// <returns>The bool</returns>
-        public static bool ColorButton(string descId, Vector4 col)
+        public static bool ColorButton(string descId, Vector4F col)
         {
-            byte ret = ImGuiNative.igColorButton(Encoding.UTF8.GetBytes(descId), col, ImGuiColorEditFlags.None, new Vector2());
+            byte ret = ImGuiNative.igColorButton(Encoding.UTF8.GetBytes(descId), col, ImGuiColorEditFlags.None, new Vector2F());
             return ret != 0;
         }
 
@@ -902,9 +902,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="col">The col</param>
         /// <param name="flags">The flags</param>
         /// <returns>The bool</returns>
-        public static bool ColorButton(string descId, Vector4 col, ImGuiColorEditFlags flags)
+        public static bool ColorButton(string descId, Vector4F col, ImGuiColorEditFlags flags)
         {
-            byte ret = ImGuiNative.igColorButton(Encoding.UTF8.GetBytes(descId), col, flags, new Vector2());
+            byte ret = ImGuiNative.igColorButton(Encoding.UTF8.GetBytes(descId), col, flags, new Vector2F());
             return ret != 0;
         }
 
@@ -916,7 +916,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="flags">The flags</param>
         /// <param name="size">The size</param>
         /// <returns>The bool</returns>
-        public static bool ColorButton(string descId, Vector4 col, ImGuiColorEditFlags flags, Vector2 size)
+        public static bool ColorButton(string descId, Vector4F col, ImGuiColorEditFlags flags, Vector2F size)
         {
             byte ret = ImGuiNative.igColorButton(Encoding.UTF8.GetBytes(descId), col, flags, size);
             return ret != 0;
@@ -927,7 +927,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// </summary>
         /// <param name="in">The in</param>
         /// <returns>The ret</returns>
-        public static uint ColorConvertFloat4ToU32(Vector4 @in)
+        public static uint ColorConvertFloat4ToU32(Vector4F @in)
         {
             uint ret = ImGuiNative.igColorConvertFloat4ToU32(@in);
             return ret;
@@ -966,9 +966,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// </summary>
         /// <param name="in">The in</param>
         /// <returns>The retval</returns>
-        public static Vector4 ColorConvertU32ToFloat4(uint @in)
+        public static Vector4F ColorConvertU32ToFloat4(uint @in)
         {
-            ImGuiNative.igColorConvertU32ToFloat4(out Vector4 retval, @in);
+            ImGuiNative.igColorConvertU32ToFloat4(out Vector4F retval, @in);
             return retval;
         }
 
@@ -978,7 +978,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="label">The label</param>
         /// <param name="col">The col</param>
         /// <returns>The bool</returns>
-        public static bool ColorEdit3(string label, ref Vector3 col)
+        public static bool ColorEdit3(string label, ref Vector3F col)
         {
             byte ret = ImGuiNative.igColorEdit3(Encoding.UTF8.GetBytes(label), col, ImGuiColorEditFlags.None);
 
@@ -992,7 +992,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="col">The col</param>
         /// <param name="flags">The flags</param>
         /// <returns>The bool</returns>
-        public static bool ColorEdit3(string label, ref Vector3 col, ImGuiColorEditFlags flags)
+        public static bool ColorEdit3(string label, ref Vector3F col, ImGuiColorEditFlags flags)
         {
             byte ret = ImGuiNative.igColorEdit3(Encoding.UTF8.GetBytes(label), col, flags);
             return ret != 0;
@@ -1004,7 +1004,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="label">The label</param>
         /// <param name="col">The col</param>
         /// <returns>The bool</returns>
-        public static bool ColorEdit4(string label, ref Vector4 col)
+        public static bool ColorEdit4(string label, ref Vector4F col)
         {
             byte ret = ImGuiNative.igColorEdit4(Encoding.UTF8.GetBytes(label), col, ImGuiColorEditFlags.None);
 
@@ -1018,7 +1018,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="col">The col</param>
         /// <param name="flags">The flags</param>
         /// <returns>The bool</returns>
-        public static bool ColorEdit4(string label, ref Vector4 col, ImGuiColorEditFlags flags)
+        public static bool ColorEdit4(string label, ref Vector4F col, ImGuiColorEditFlags flags)
         {
             byte ret = ImGuiNative.igColorEdit4(Encoding.UTF8.GetBytes(label), col, flags);
             return ret != 0;
@@ -1030,7 +1030,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="label">The label</param>
         /// <param name="col">The col</param>
         /// <returns>The bool</returns>
-        public static bool ColorPicker3(string label, ref Vector3 col)
+        public static bool ColorPicker3(string label, ref Vector3F col)
         {
             byte ret = ImGuiNative.igColorPicker3(Encoding.UTF8.GetBytes(label), col, ImGuiColorEditFlags.None);
 
@@ -1044,7 +1044,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="col">The col</param>
         /// <param name="flags">The flags</param>
         /// <returns>The bool</returns>
-        public static bool ColorPicker3(string label, ref Vector3 col, ImGuiColorEditFlags flags)
+        public static bool ColorPicker3(string label, ref Vector3F col, ImGuiColorEditFlags flags)
         {
             byte ret = ImGuiNative.igColorPicker3(Encoding.UTF8.GetBytes(label), col, flags);
             return ret != 0;
@@ -1056,7 +1056,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="label">The label</param>
         /// <param name="col">The col</param>
         /// <returns>The bool</returns>
-        public static bool ColorPicker4(string label, ref Vector4 col)
+        public static bool ColorPicker4(string label, ref Vector4F col)
         {
             byte ret = ImGuiNative.igColorPicker4(Encoding.UTF8.GetBytes(label), col, ImGuiColorEditFlags.None, 0);
 
@@ -1070,7 +1070,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="col">The col</param>
         /// <param name="flags">The flags</param>
         /// <returns>The bool</returns>
-        public static bool ColorPicker4(string label, ref Vector4 col, ImGuiColorEditFlags flags)
+        public static bool ColorPicker4(string label, ref Vector4F col, ImGuiColorEditFlags flags)
         {
             byte ret = ImGuiNative.igColorPicker4(Encoding.UTF8.GetBytes(label), col, flags, 0);
             return ret != 0;
@@ -1084,7 +1084,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="flags">The flags</param>
         /// <param name="refCol">The ref col</param>
         /// <returns>The bool</returns>
-        public static bool ColorPicker4(string label, ref Vector4 col, ImGuiColorEditFlags flags, ref float refCol)
+        public static bool ColorPicker4(string label, ref Vector4F col, ImGuiColorEditFlags flags, ref float refCol)
         {
             byte ret = ImGuiNative.igColorPicker4(Encoding.UTF8.GetBytes(label), col, flags, refCol);
 

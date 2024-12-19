@@ -59,7 +59,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// <summary>
         /// The world position
         /// </summary>
-        public Vector2 worldPosition;
+        public Vector2F worldPosition;
 
         /// <summary>
         ///     The pixels per meter
@@ -76,7 +76,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Cameras = new List<Camera>();
             Window = IntPtr.Zero;
             Renderer = IntPtr.Zero;
-            DefaultSize = new Vector2(640, 480);
+            DefaultSize = new Vector2F(640, 480);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// <param name="cameras">The cameras</param>
         /// <param name="context"></param>
         [JsonConstructor]
-        public GraphicManager(List<BoxCollider> colliderBases, IntPtr window, Vector2 defaultSize, IntPtr renderer, List<Sprite> sprites, List<Camera> cameras, Context context) : base(context)
+        public GraphicManager(List<BoxCollider> colliderBases, IntPtr window, Vector2F defaultSize, IntPtr renderer, List<Sprite> sprites, List<Camera> cameras, Context context) : base(context)
         {
             ColliderBases = colliderBases;
             Window = window;
@@ -121,7 +121,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         ///     The default size
         /// </summary>
         [JsonPropertyName("_DefaultSize_")]
-        public Vector2 DefaultSize { get; set; }
+        public Vector2F DefaultSize { get; set; }
 
         /// <summary>
         ///     The renderWindow
@@ -169,7 +169,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
             Logger.Log("init::graphic:new");
 
-            DefaultSize = new Vector2(Context.Setting.Graphic.Window.Resolution.X, Context.Setting.Graphic.Window.Resolution.Y);
+            DefaultSize = new Vector2F(Context.Setting.Graphic.Window.Resolution.X, Context.Setting.Graphic.Window.Resolution.Y);
 
             if (Sdl.Init(InitSettings.InitEverything) < 0)
             {
@@ -336,8 +336,8 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
                 IntPtr cameraTexture = camera.TextureTarget;
                 Color bgColor = camera.BackgroundColor;
-                Vector2 cameraPosition = camera.Position;
-                Vector2 cameraResolution = camera.Resolution;
+                Vector2F cameraPosition = camera.Position;
+                Vector2F cameraResolution = camera.Resolution;
 
                 Sdl.SetRenderTarget(renderer, cameraTexture);
                 Sdl.SetRenderDrawColor(renderer, bgColor.R, bgColor.G, bgColor.B, bgColor.A);
@@ -383,7 +383,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// <param name="radius">The radius</param>
         /// <exception cref="InvalidOperationException">No cameras available to perform the rendering.</exception>
         [Conditional("DEBUG")]
-        public void RenderCircleAtWorldPosition(Vector2 worldPosition, float radius)
+        public void RenderCircleAtWorldPosition(Vector2F worldPosition, float radius)
         {
             if (Cameras.Count == 0)
             {
@@ -391,11 +391,11 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             }
 
             Camera camera = Cameras[0]; // Assuming the first camera is the main camera
-            Vector2 cameraPosition = camera.Position;
-            Vector2 cameraResolution = camera.Resolution;
+            Vector2F cameraPosition = camera.Position;
+            Vector2F cameraResolution = camera.Resolution;
 
             // Convert world position to screen position
-            Vector2 screenPosition = new Vector2(
+            Vector2F screenPosition = new Vector2F(
                 (worldPosition.X + (cameraResolution.X / 2 / PixelsPerMeter) - cameraPosition.X) * PixelsPerMeter,
                 (worldPosition.Y + (cameraResolution.Y / 2 / PixelsPerMeter) - cameraPosition.Y) * PixelsPerMeter
             );
@@ -492,7 +492,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// <param name="textureSize">The texture size</param>
         /// <exception cref="InvalidOperationException">No cameras available to perform the conversion.</exception>
         /// <returns>The world position</returns>
-        public Vector2 ScreenToWorld(Vector2 mousePositionRelativeToTextureCentered, Vector2 textureSize)
+        public Vector2F ScreenToWorld(Vector2F mousePositionRelativeToTextureCentered, Vector2F textureSize)
         {
             if (Cameras.Count == 0)
             {
@@ -502,10 +502,10 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Camera camera = Cameras[0]; // Assuming the first camera is the main camera
             Console.WriteLine($"Camera GameObject: {camera.GameObject.Name}");
 
-            Vector2 cameraPosition = camera.Position;
+            Vector2F cameraPosition = camera.Position;
             Console.WriteLine($"Camera Position: {cameraPosition.X}, {cameraPosition.Y}");
 
-            Vector2 cameraResolution = camera.Resolution;
+            Vector2F cameraResolution = camera.Resolution;
             Console.WriteLine($"Camera Resolution: {cameraResolution.X}, {cameraResolution.Y}");
 
             // Calculate factor conversion textureSize to cameraResolution
@@ -514,7 +514,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Console.WriteLine($"Factor X: {factorX}, Factor Y: {factorY}");
 
             // Convert coordinates mouse position to unit coordinates
-            Vector2 mousePositionOnGameUnits = new Vector2(mousePositionRelativeToTextureCentered.X / PixelsPerMeter, -mousePositionRelativeToTextureCentered.Y / PixelsPerMeter);
+            Vector2F mousePositionOnGameUnits = new Vector2F(mousePositionRelativeToTextureCentered.X / PixelsPerMeter, -mousePositionRelativeToTextureCentered.Y / PixelsPerMeter);
             Console.WriteLine($"Mouse Position on Game Units: {mousePositionOnGameUnits.X}, {mousePositionOnGameUnits.Y}");
 
             // Adjust the mouse position based on the camera position
@@ -526,7 +526,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             float y = (adjustedY * factorY) + cameraPosition.Y;
             Console.WriteLine($"Mouse Position on World: {x}, {y}");
 
-            worldPosition = new Vector2(x, y);
+            worldPosition = new Vector2F(x, y);
 
             return worldPosition;
         }

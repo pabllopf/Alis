@@ -69,7 +69,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// <summary>
         ///     The top left
         /// </summary>
-        private Vector2 _topLeft;
+        private Vector2F _topLeft;
 
         /// <summary>
         ///     The xnum
@@ -89,7 +89,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// <summary>
         ///     Center of terrain in world units.
         /// </summary>
-        public Vector2 Center;
+        public Vector2F Center;
 
         /// <summary>
         ///     Decomposer to use when regenerating terrain. Can be changed on the fly without consequence.
@@ -148,7 +148,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// <param name="position">The position (center) of the terrain.</param>
         /// <param name="width">The width of the terrain.</param>
         /// <param name="height">The height of the terrain.</param>
-        public Terrain(World world, Vector2 position, float width, float height)
+        public Terrain(World world, Vector2F position, float width, float height)
         {
             World = world;
             Width = width;
@@ -162,7 +162,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         public void Initialize()
         {
             // find top left of terrain in world space
-            _topLeft = new Vector2(Center.X - Width * 0.5f, Center.Y - -Height * 0.5f);
+            _topLeft = new Vector2F(Center.X - Width * 0.5f, Center.Y - -Height * 0.5f);
 
             // convert the terrains size to a point cloud size
             _localWidth = Width * PointsPerUnit;
@@ -183,7 +183,7 @@ namespace Alis.Core.Physic.Common.TextureTools
             _bodyMap = new List<Body>[_xnum, _ynum];
 
             // make sure to mark the dirty area to an infinitely small box
-            _dirtyArea = new AABB(new Vector2(float.MaxValue, float.MaxValue), new Vector2(float.MinValue, float.MinValue));
+            _dirtyArea = new AABB(new Vector2F(float.MaxValue, float.MaxValue), new Vector2F(float.MinValue, float.MinValue));
         }
 
         /// <summary>
@@ -191,7 +191,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// </summary>
         /// <param name="data"></param>
         /// <param name="offset"></param>
-        public void ApplyData(sbyte[,] data, Vector2 offset = default(Vector2))
+        public void ApplyData(sbyte[,] data, Vector2F offset = default(Vector2F))
         {
             for (int x = 0; x < data.GetUpperBound(0); x++)
             {
@@ -212,11 +212,11 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// </summary>
         /// <param name="location">World location to modify. Automatically clipped.</param>
         /// <param name="value">-1 = inside terrain, 1 = outside terrain</param>
-        public void ModifyTerrain(Vector2 location, sbyte value)
+        public void ModifyTerrain(Vector2F location, sbyte value)
         {
             // find local position
             // make position local to map space
-            Vector2 p = location - _topLeft;
+            Vector2F p = location - _topLeft;
 
             // find map position for each axis
             p.X = p.X * _localWidth / Width;
@@ -281,7 +281,7 @@ namespace Alis.Core.Physic.Common.TextureTools
 
             RemoveOldData(xStart, xEnd, yStart, yEnd);
 
-            _dirtyArea = new AABB(new Vector2(float.MaxValue, float.MaxValue), new Vector2(float.MinValue, float.MinValue));
+            _dirtyArea = new AABB(new Vector2F(float.MaxValue, float.MaxValue), new Vector2F(float.MinValue, float.MinValue));
         }
 
         /// <summary>
@@ -324,7 +324,7 @@ namespace Alis.Core.Physic.Common.TextureTools
             float ax = gx * CellSize;
             float ay = gy * CellSize;
 
-            List<Vertices> polys = MarchingSquares.DetectSquares(new AABB(new Vector2(ax, ay), new Vector2(ax + CellSize, ay + CellSize)), SubCellSize, SubCellSize, _terrainMap, Iterations, true);
+            List<Vertices> polys = MarchingSquares.DetectSquares(new AABB(new Vector2F(ax, ay), new Vector2F(ax + CellSize, ay + CellSize)), SubCellSize, SubCellSize, _terrainMap, Iterations, true);
             if (polys.Count == 0)
             {
                 return;
@@ -333,7 +333,7 @@ namespace Alis.Core.Physic.Common.TextureTools
             _bodyMap[gx, gy] = new List<Body>();
 
             // create the scale vector
-            Vector2 scale = new Vector2(1f / PointsPerUnit, 1f / -PointsPerUnit);
+            Vector2F scale = new Vector2F(1f / PointsPerUnit, 1f / -PointsPerUnit);
 
             // create physics object for this grid cell
             foreach (Vertices item in polys)

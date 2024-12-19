@@ -122,6 +122,8 @@ namespace Alis.Core.Ecs.System
         public void Load() => _contextHandler.Load();
         
         public void Load(string path) => _contextHandler.Load(path);
+        
+        public void LoadAndRun() => _contextHandler.LoadAndRun();
 
         /// <summary>
         ///     Creates a new instance of the <see cref="VideoGameBuilder" />.

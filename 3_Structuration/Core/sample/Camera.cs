@@ -54,12 +54,12 @@ namespace Alis.Core.Sample
         /// <summary>
         ///     The position
         /// </summary>
-        public Vector2 Position;
+        public Vector2F Position;
 
         /// <summary>
         ///     The resolution
         /// </summary>
-        public Vector2 Resolution;
+        public Vector2F Resolution;
 
         /// <summary>
         ///     The texture target
@@ -77,8 +77,8 @@ namespace Alis.Core.Sample
         /// <param name="renderer">The renderer</param>
         public Camera(IntPtr renderer)
         {
-            Position = new Vector2(0, 0);
-            Resolution = new Vector2(640, 480);
+            Position = new Vector2F(0, 0);
+            Resolution = new Vector2F(640, 480);
             Viewport = new RectangleI(0, 0, 640, 480);
             BackgroundColor = Color.Black;
             CameraBorder = 1f;

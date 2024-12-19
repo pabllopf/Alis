@@ -49,11 +49,11 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     Closest point on shapeA
         /// </summary>
-        public Vector2 PointA;
+        public Vector2F PointA;
 
         /// <summary>
         ///     Closest point on shapeB
         /// </summary>
-        public Vector2 PointB;
+        public Vector2F PointB;
     }
 }

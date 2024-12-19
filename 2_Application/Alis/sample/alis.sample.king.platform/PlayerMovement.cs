@@ -69,7 +69,7 @@ namespace Alis.Sample.King.Platform
         /// <summary>
         ///     The vector
         /// </summary>
-        private Vector2 directionPlayer = new Vector2(0, 0);
+        private Vector2F directionPlayer = new Vector2F(0, 0);
 
         /// <summary>
         ///     The sprite
@@ -101,7 +101,7 @@ namespace Alis.Sample.King.Platform
         {
             if (key == KeyCodes.A || key == KeyCodes.D)
             {
-                boxCollider.Body.LinearVelocity = new Vector2(0, boxCollider.Body.LinearVelocity.Y);
+                boxCollider.Body.LinearVelocity = new Vector2F(0, boxCollider.Body.LinearVelocity.Y);
             }
         }
 
@@ -113,17 +113,17 @@ namespace Alis.Sample.King.Platform
         {
             if (key == KeyCodes.Space)
             {
-                boxCollider.Body.ApplyLinearImpulse(new Vector2(0, 10));
+                boxCollider.Body.ApplyLinearImpulse(new Vector2F(0, 10));
             }
 
             if (key == KeyCodes.A)
             {
-                boxCollider.Body.LinearVelocity = new Vector2(-VelocityPlayer, boxCollider.Body.LinearVelocity.Y);
+                boxCollider.Body.LinearVelocity = new Vector2F(-VelocityPlayer, boxCollider.Body.LinearVelocity.Y);
             }
 
             if (key == KeyCodes.D)
             {
-                boxCollider.Body.ApplyLinearImpulse(new Vector2(VelocityPlayer, boxCollider.Body.LinearVelocity.Y));
+                boxCollider.Body.ApplyLinearImpulse(new Vector2F(VelocityPlayer, boxCollider.Body.LinearVelocity.Y));
             }
         }
     }

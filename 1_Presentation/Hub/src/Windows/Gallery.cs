@@ -44,7 +44,7 @@ namespace Alis.App.Hub.Windows
         public Gallery()
         {
             Random rand = new Random();
-            string[] imageOptions = {"computer.png", "news.png", "cubes.png", "shop.png"};
+            string[] imageOptions = {"Hub_computer.png", "Hub_news.png", "Hub_cubes.png", "Hub_shop.png"};
 
             Items = new List<GalleryItem>();
 
