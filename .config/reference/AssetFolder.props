@@ -13,6 +13,5 @@
             LinkBase="Data"
             CopyToOutputDirectory="Always"
             CopyToPublishDirectory="Always"/>
-        <Compile Remove="$(ProjectDir)Data/**/*.cs" />
     </ItemGroup>
 </Project>
