@@ -5,6 +5,14 @@
               LinkBase="Assets"
               CopyToOutputDirectory="Always"
               CopyToPublishDirectory="Always"/>
-        <Compile Remove="$(ProjectDir)Assets/**/*.cs" />
+    </ItemGroup>
+
+    <ItemGroup Condition="Exists('$(ProjectDir)Data/') == True">
+        <None
+            Update="$(ProjectDir)Data/**"
+            LinkBase="Data"
+            CopyToOutputDirectory="Always"
+            CopyToPublishDirectory="Always"/>
+        <Compile Remove="$(ProjectDir)Data/**/*.cs" />
     </ItemGroup>
 </Project>
