@@ -156,6 +156,7 @@ namespace Alis.App.Engine
 
         private string enginePath;
 
+        
         /// <summary>
         ///     Starts this instance
         /// </summary>
