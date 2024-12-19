@@ -230,6 +230,10 @@ namespace Alis.Core.Ecs.System.Manager
         /// </summary>
         public virtual void OnLoad() => Logger.Trace("Manager loaded.");
 
+        public virtual void OnSave(string path) => Logger.Trace("Manager saved.");
+
+        public virtual void OnLoad(string path) => Logger.Trace("Manager loaded.");
+
         /// <summary>
         ///     Ons the physics update
         /// </summary>

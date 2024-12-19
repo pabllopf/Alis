@@ -192,6 +192,34 @@ namespace Alis.Core.Ecs.System.Manager.Scene
             }
         }
 
+        public override void OnSave(string path)
+        {
+            ScenesMap.Scenes = new List<int>();
+            string versionCurrent = Assembly.GetExecutingAssembly().GetName().Version.ToString().Replace('.', '_');
+            for(int i = 0;i < Scenes.Count;i++)
+            {
+                Scenes[i].SetContext(Context);    
+                
+                string gameJson = JsonSerializer.Serialize( Scenes[i], new JsonOptions
+                {
+                    DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
+                    SerializationOptions = JsonSerializationOptions.Default
+                });
+
+                string file = Path.Combine(Path.Combine(path, "Data", "Scenes"), $"Alis_{versionCurrent}_Scene_{i}.json");
+
+                if (!Directory.Exists(Path.Combine(path, "Data", "Scenes")))
+                {
+                    Directory.CreateDirectory(Path.Combine(path, "Data", "Scenes"));
+                }
+
+                File.WriteAllText(file, gameJson);
+                
+                ScenesMap.Scenes.Add(i);
+                ScenesMap.Save();
+            }
+        }
+
         /// <summary>
         ///     Ons the before update
         /// </summary>

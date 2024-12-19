@@ -574,5 +574,9 @@ namespace Alis.Core.Ecs.Entity
 
             return new GameObject(IsEnable, Name, guid.ToString(), Tag, (Transform) Transform.Clone(), componentsCloned);
         }
+
+        public void OnSave(string path) => Components.ForEach(i => i.OnSave(path));
+
+        public void OnLoad(string path) => Components.ForEach(i => i.OnLoad(path));
     }
 }

@@ -398,6 +398,10 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         public void OnLoad() => GameObjects.ForEach(i => i.OnLoad());
 
+        public void OnSave(string path) => GameObjects.ForEach(i => i.OnSave(path));
+
+        public void OnLoad(string path) => GameObjects.ForEach(i => i.OnLoad(path));
+
         /// <summary>
         ///     Adds the component
         /// </summary>

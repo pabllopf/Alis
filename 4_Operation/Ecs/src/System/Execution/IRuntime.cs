@@ -153,15 +153,20 @@ namespace Alis.Core.Ecs.System.Execution
         ///     Ons the destroy
         /// </summary>
         public void OnDestroy();
-        
+
         /// <summary>
         /// Ons the save
         /// </summary>
+        /// <param name="path"></param>
         public void OnSave();
         
         /// <summary>
         /// Ons the load
         /// </summary>
         public void OnLoad();
+        
+        public void OnSave(string path);
+        
+        public void OnLoad(string path);
     }
 }
