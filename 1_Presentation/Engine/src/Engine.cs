@@ -117,12 +117,7 @@ namespace Alis.App.Engine
         ///     The gl context
         /// </summary>
         private IntPtr _glContext;
-
-        /// <summary>
-        ///     The quit
-        /// </summary>
-        private bool _quit;
-
+        
         /// <summary>
         ///     The shader
         /// </summary>
@@ -469,7 +464,7 @@ namespace Alis.App.Engine
             hubMenu = new HubMenu(spaceWork);
 
 
-            while (!_quit)
+            while (!spaceWork._quit)
             {
                 while (Sdl.PollEvent(out Event e) != 0)
                 {
@@ -481,7 +476,7 @@ namespace Alis.App.Engine
                         {
                             if (e.window.windowEvent == WindowEventId.SdlWindowEventClose)
                             {
-                                _quit = true;
+                                spaceWork._quit = true;
                             }
 
                             break;
@@ -492,7 +487,7 @@ namespace Alis.App.Engine
                             switch (e.key.KeySym.sym)
                             {
                                 case KeyCodes.Escape:
-                                    _quit = true;
+                                    spaceWork._quit = true;
                                     break;
                             }
 

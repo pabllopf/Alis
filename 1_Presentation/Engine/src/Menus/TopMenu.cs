@@ -52,6 +52,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         public void Initialize()
         {
+            TopMenuAction.SetSpaceWork(SpaceWork);
         }
 
         /// <summary>

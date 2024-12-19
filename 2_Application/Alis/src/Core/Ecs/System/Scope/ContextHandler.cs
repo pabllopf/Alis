@@ -188,8 +188,7 @@ namespace Alis.Core.Ecs.System.Scope
             float lastDeltaTime = 0f;
             float smoothDeltaTimeSum = 0f;
             int smoothDeltaTimeCount = 0;
-
-
+            
             double frameStartTime = timeManager.Clock.Elapsed.TotalSeconds;
             double newTime = frameStartTime;
 
@@ -263,5 +262,15 @@ namespace Alis.Core.Ecs.System.Scope
         ///     Exits this instance
         /// </summary>
         public void Exit() => _context.IsRunning = false;
+
+        /// <summary>
+        /// Saves this instance
+        /// </summary>
+        public void Save() => _context.Runtime.OnSave();
+
+        /// <summary>
+        /// Loads this instance
+        /// </summary>
+        public void Load() => _context.Runtime.OnLoad();
     }
 }

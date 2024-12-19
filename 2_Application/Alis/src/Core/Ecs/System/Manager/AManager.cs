@@ -221,6 +221,16 @@ namespace Alis.Core.Ecs.System.Manager
         public virtual void OnDestroy() => Logger.Trace("Manager destroyed.");
 
         /// <summary>
+        /// Ons the save
+        /// </summary>
+        public virtual void OnSave() => Logger.Trace("Manager saved.");
+
+        /// <summary>
+        /// Ons the load
+        /// </summary>
+        public virtual void OnLoad() => Logger.Trace("Manager loaded.");
+
+        /// <summary>
         ///     Ons the physics update
         /// </summary>
         public virtual void OnPhysicUpdate() => Logger.Trace("Manager physics update.");

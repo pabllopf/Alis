@@ -140,17 +140,18 @@ namespace Alis.App.Engine.Menus
                 Scene scene = SpaceWork.VideoGame.Context.SceneManager.CurrentScene;
                 List<Scene> scenes = SpaceWork.VideoGame.Context.SceneManager.Scenes;
 
-                int numberCharsName = scene.Name.Length;
+                int numberCharsName = scene.Name.Length + 1;
                 ImGui.SetNextItemWidth(32 + numberCharsName * 10);
 
                 if (ImGui.BeginCombo($"##{scene.Id}", $"{FontAwesome5.Cube} {scene.Name}"))
                 {
                     // Show the scenes of game: 
-                    foreach (Scene s in scenes)
+                    for(int i = 0; i < scenes.Count; i++)
                     {
+                        Scene s = scenes[i];
                         if (ImGui.Selectable($"{FontAwesome5.Cube} {s.Name}"))
                         {
-                            SpaceWork.VideoGame.Context.SceneManager.LoadScene(s.Name);
+                            SpaceWork.VideoGame.Context.SceneManager.LoadScene(i);
                         }
                     }
 

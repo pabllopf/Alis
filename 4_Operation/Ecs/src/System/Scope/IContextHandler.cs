@@ -58,5 +58,14 @@ namespace Alis.Core.Ecs.System.Scope
         ///     Exits this instance
         /// </summary>
         void Exit();
+
+        /// <summary>
+        /// Saves this instance
+        /// </summary>
+        void Save();
+        /// <summary>
+        /// Loads this instance
+        /// </summary>
+        void Load();
     }
 }

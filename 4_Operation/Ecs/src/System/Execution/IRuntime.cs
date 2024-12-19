@@ -153,5 +153,15 @@ namespace Alis.Core.Ecs.System.Execution
         ///     Ons the destroy
         /// </summary>
         public void OnDestroy();
+        
+        /// <summary>
+        /// Ons the save
+        /// </summary>
+        public void OnSave();
+        
+        /// <summary>
+        /// Ons the load
+        /// </summary>
+        public void OnLoad();
     }
 }
