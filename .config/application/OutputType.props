@@ -10,6 +10,7 @@
 
     <PropertyGroup Condition="
     $(AssemblyName.Contains('App')) == true AND
+    $(AssemblyName.Contains('Test')) == false AND
     $(IsWindows) == true">
         <OutputType>WinExe</OutputType>
     </PropertyGroup>

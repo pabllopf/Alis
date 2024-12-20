@@ -37,7 +37,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
 {
     public class ScenesMap
     {
-        [global::System.Text.Json.Serialization.JsonPropertyName("_Scenes_")]
+        [JsonPropertyName("_Scenes_")]
         public List<int> Scenes { get; set; } = new List<int>();
         
         public void AddScene(int sceneId) => Scenes.Add(sceneId);

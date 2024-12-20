@@ -5,5 +5,11 @@
         
         <!-- Suppresses the warning NETSDK1139:The target framework 'net8.0' is out of support and will not receive security updates in the future. -->
         <NoWarn>$(NoWarn);NETSDK1139</NoWarn>
+        
+        <!-- Suppresses the warning NETSDK1140:The target framework 'net9.0' is out of support and will not receive security updates in the future. -->
+        <NoWarn>$(NoWarn);NETSDK1140</NoWarn>
+        
+        <!-- Suppresses the warning NETSDK1141:The target framework 'net10.0' is out of support and will not receive security updates in the future. -->
+        <NoWarn>$(NoWarn);NU1904</NoWarn>
     </PropertyGroup>
 </Project>

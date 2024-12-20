@@ -1,20 +1,9 @@
 <Project>
     <ItemGroup Condition="$(AssemblyName.Contains('Test')) == true">
-        <!-- Test packs -->
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0"/>
+        <PackageReference Include="coverlet.collector" Version="6.0.2"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1"/>
         <PackageReference Include="xunit" Version="2.9.2"/>
-        <PackageReference Include="Xunit.StaFact" Version="1.1.11"/>
-        <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-            <PrivateAssets>all</PrivateAssets>
-        </PackageReference>
-        
-        <PackageReference Include="coverlet.collector" Version="6.0.2">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-
-        <PackageReference Include="OpenCover" Version="4.7.1221"/>
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2"/>
     </ItemGroup>
 
     <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Payment.Stripe'))">
@@ -36,12 +25,4 @@
     <ItemGroup Condition="$(AssemblyName.Contains('App')) == true OR $(AssemblyName.Contains('Sample')) == true">
         <PackageReference Include="MonoMac.NetStandard" Version="0.0.4"/>
     </ItemGroup>
-    
-    <ItemGroup>
-        <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1"/>
-        <PackageReference Include="System.Net.Http" Version="4.3.4"/>
-        <PackageReference Include="System.Net.Http.Json" Version="9.0.0"/>
-        <PackageReference Include="System.Drawing.Common" Version="9.0.0"/>
-    </ItemGroup>
-    
 </Project>

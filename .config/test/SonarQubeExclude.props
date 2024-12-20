@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
-
-    <!-- $(AssemblyName.Contains('Extension')) == true OR -->
-
     <PropertyGroup Condition="
-        ($(AssemblyName.Contains('App')) == true OR
-        $(AssemblyName.Contains('Template')) == true OR
+        ($(AssemblyName.Contains('Template')) == true OR
         $(AssemblyName.Contains('Sample')) == true OR
         $(AssemblyName.Contains('Test')) == true OR 
         $(AssemblyName.Contains('Benchmark')) == true)">
         <SonarQubeExclude>true</SonarQubeExclude>
     </PropertyGroup>
-
-    <!--
-    <ItemGroup Condition="$(AssemblyName.Equals('Alis.Core.Aspect.Data')) == true">
-        <SonarQubeSetting Include="sonar.coverage.exclusions">
-            <Value>**/KeyCodes.cs</Value>
-        </SonarQubeSetting>
-    </ItemGroup>-->
 </Project>

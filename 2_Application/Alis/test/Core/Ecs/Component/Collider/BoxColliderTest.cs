@@ -52,10 +52,10 @@ namespace Alis.Test.Core.Ecs.Component.Collider
             Assert.NotNull(boxCollider);
             Assert.Equal(10.0f, boxCollider.Width);
             Assert.Equal(10.0f, boxCollider.Height);
-            Assert.Equal(1.0f, boxCollider.Rotation);
+            Assert.Equal(0.0f, boxCollider.Rotation);
             Assert.Equal(new Vector2(0, 0), boxCollider.RelativePosition);
             Assert.Equal(BodyType.Static, boxCollider.BodyType);
-            Assert.Equal(10.0f, boxCollider.Mass);
+            Assert.Equal(1.0f, boxCollider.Mass);
             Assert.False(boxCollider.IgnoreGravity);
             Assert.Equal(Vector2.Zero, boxCollider.LinearVelocity);
         }

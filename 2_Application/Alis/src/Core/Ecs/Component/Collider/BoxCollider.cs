@@ -153,7 +153,7 @@ namespace Alis.Core.Ecs.Component.Collider
             Rotation = 0;
             RelativePosition = new Vector2(0, 0);
             AutoTilling = false;
-            BodyType = BodyType.Dynamic;
+            BodyType = BodyType.Static;
             Restitution = 0.5f;
             Friction = 0.5f;
             FixedRotation = false;
