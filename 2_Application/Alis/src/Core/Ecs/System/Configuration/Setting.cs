@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.IO;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Ecs.System.Configuration.Audio;
 using Alis.Core.Ecs.System.Configuration.General;
@@ -35,6 +37,7 @@ using Alis.Core.Ecs.System.Configuration.Input;
 using Alis.Core.Ecs.System.Configuration.Network;
 using Alis.Core.Ecs.System.Configuration.Physic;
 using Alis.Core.Ecs.System.Configuration.Scene;
+using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Core.Ecs.System.Configuration
 {
@@ -121,5 +124,221 @@ namespace Alis.Core.Ecs.System.Configuration
         /// </summary>
         [JsonPropertyName("_Scene_")]
         public SceneSetting Scene { get; set; }
+
+        public void OnLoad()
+        {
+            string directory = Path.Combine(Environment.CurrentDirectory, "Data", "Setting");
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+            
+            string fileGeneral = Path.Combine(directory, "General.json");
+            if(File.Exists(fileGeneral))
+            {
+                General = JsonSerializer.Deserialize<GeneralSetting>(File.ReadAllText(fileGeneral),new JsonOptions
+                {
+                    DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
+                    SerializationOptions = JsonSerializationOptions.Default
+                });
+            }
+            
+            string fileAudio = Path.Combine(directory, "Audio.json");
+            if(File.Exists(fileAudio))
+            {
+                Audio = JsonSerializer.Deserialize<AudioSetting>(File.ReadAllText(fileAudio),new JsonOptions
+                {
+                    DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
+                    SerializationOptions = JsonSerializationOptions.Default
+                });
+            }
+            
+            string fileGraphic = Path.Combine(directory, "Graphic.json");
+            if(File.Exists(fileGraphic))
+            {
+                Graphic = JsonSerializer.Deserialize<GraphicSetting>(File.ReadAllText(fileGraphic),new JsonOptions
+                {
+                    DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
+                    SerializationOptions = JsonSerializationOptions.Default
+                });
+            }
+            
+            string fileInput = Path.Combine(directory, "Input.json");
+            if(File.Exists(fileInput))
+            {
+                Input = JsonSerializer.Deserialize<InputSetting>(File.ReadAllText(fileInput),new JsonOptions
+                {
+                    DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
+                    SerializationOptions = JsonSerializationOptions.Default
+                });
+            }
+            
+            string fileNetwork = Path.Combine(directory, "Network.json");
+            if(File.Exists(fileNetwork))
+            {
+                Network = JsonSerializer.Deserialize<NetworkSetting>(File.ReadAllText(fileNetwork),new JsonOptions
+                {
+                    DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
+                    SerializationOptions = JsonSerializationOptions.Default
+                });
+            }
+            
+            string filePhysic = Path.Combine(directory, "Physic.json");
+            if(File.Exists(filePhysic))
+            {
+                Physic = JsonSerializer.Deserialize<PhysicSetting>(File.ReadAllText(filePhysic),new JsonOptions
+                {
+                    DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
+                    SerializationOptions = JsonSerializationOptions.Default
+                });
+            }
+            
+            string fileScene = Path.Combine(directory, "Scene.json");
+            if(File.Exists(fileScene))
+            {
+                Scene = JsonSerializer.Deserialize<SceneSetting>(File.ReadAllText(fileScene),new JsonOptions
+                {
+                    DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
+                    SerializationOptions = JsonSerializationOptions.Default
+                });
+            }
+        }
+        
+        public void OnSave()
+        {
+            string directory = Path.Combine(Environment.CurrentDirectory, "Data", "Setting");
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+            
+            string fileGeneral = Path.Combine(directory, "General.json");
+            File.WriteAllText(fileGeneral, JsonSerializer.Serialize(General, new JsonOptions
+            {
+                DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
+                SerializationOptions = JsonSerializationOptions.Default
+            }));
+            
+            string fileAudio = Path.Combine(directory, "Audio.json");
+            File.WriteAllText(fileAudio, JsonSerializer.Serialize(Audio, new JsonOptions
+            {
+                DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
+                SerializationOptions = JsonSerializationOptions.Default
+            }));
+            
+            string fileGraphic = Path.Combine(directory, "Graphic.json");
+            File.WriteAllText(fileGraphic, JsonSerializer.Serialize(Graphic, new JsonOptions
+            {
+                DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
+                SerializationOptions = JsonSerializationOptions.Default
+            }));
+            
+            string fileInput = Path.Combine(directory, "Input.json");
+            File.WriteAllText(fileInput, JsonSerializer.Serialize(Input, new JsonOptions
+            {
+                DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
+                SerializationOptions = JsonSerializationOptions.Default
+            }));
+            
+            string fileNetwork = Path.Combine(directory, "Network.json");
+            File.WriteAllText(fileNetwork, JsonSerializer.Serialize(Network, new JsonOptions
+            {
+                DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
+                SerializationOptions = JsonSerializationOptions.Default
+            }));
+            
+            string filePhysic = Path.Combine(directory, "Physic.json");
+            File.WriteAllText(filePhysic, JsonSerializer.Serialize(Physic, new JsonOptions
+            {
+                DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
+                SerializationOptions = JsonSerializationOptions.Default
+            }));
+            
+            string fileScene = Path.Combine(directory, "Scene.json");
+            File.WriteAllText(fileScene, JsonSerializer.Serialize(Scene, new JsonOptions
+            {
+                DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
+                SerializationOptions = JsonSerializationOptions.Default
+            }));
+        }
+
+        public void OnLoad(string path)
+        {
+           string directory = Path.Combine(path, "Data", "Setting");
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+            
+            string fileGeneral = Path.Combine(directory, "General.json");
+            if(File.Exists(fileGeneral))
+            {
+                General = JsonSerializer.Deserialize<GeneralSetting>(File.ReadAllText(fileGeneral), new JsonOptions
+                {
+                    DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
+                    SerializationOptions = JsonSerializationOptions.Default
+                });
+            }
+            
+            string fileAudio = Path.Combine(directory, "Audio.json");
+            if(File.Exists(fileAudio))
+            {
+                Audio = JsonSerializer.Deserialize<AudioSetting>(File.ReadAllText(fileAudio), new JsonOptions
+                {
+                    DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
+                    SerializationOptions = JsonSerializationOptions.Default
+                });
+            }
+            
+            string fileGraphic = Path.Combine(directory, "Graphic.json");
+            if(File.Exists(fileGraphic))
+            {
+                Graphic = JsonSerializer.Deserialize<GraphicSetting>(File.ReadAllText(fileGraphic), new JsonOptions
+                {
+                    DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
+                    SerializationOptions = JsonSerializationOptions.Default
+                });
+            }
+            
+            string fileInput = Path.Combine(directory, "Input.json");
+            if(File.Exists(fileInput))
+            {
+                Input = JsonSerializer.Deserialize<InputSetting>(File.ReadAllText(fileInput), new JsonOptions
+                {
+                    DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
+                    SerializationOptions = JsonSerializationOptions.Default
+                });
+            }
+            
+            string fileNetwork = Path.Combine(directory, "Network.json");
+            if(File.Exists(fileNetwork))
+            {
+                Network = JsonSerializer.Deserialize<NetworkSetting>(File.ReadAllText(fileNetwork), new JsonOptions
+                {
+                    DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
+                    SerializationOptions = JsonSerializationOptions.Default
+                });
+            }
+            
+            string filePhysic = Path.Combine(directory, "Physic.json");
+            if(File.Exists(filePhysic))
+            {
+                Physic = JsonSerializer.Deserialize<PhysicSetting>(File.ReadAllText(filePhysic), new JsonOptions
+                {
+                    DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
+                    SerializationOptions = JsonSerializationOptions.Default
+                });
+            }
+            
+            string fileScene = Path.Combine(directory, "Scene.json");
+            if(File.Exists(fileScene))
+            {
+                Scene = JsonSerializer.Deserialize<SceneSetting>(File.ReadAllText(fileScene), new JsonOptions
+                {
+                    DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
+                    SerializationOptions = JsonSerializationOptions.Default
+                });
+            }
+        }
     }
 }

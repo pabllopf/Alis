@@ -762,12 +762,12 @@ namespace Alis.App.Hub.Windows
         #if DEBUG
             if (OperatingSystem.IsWindows())
             {
-                enginePath = @"C:\repositorios\Alis\1_Presentation\Engine\src\bin\Debug\lib\net8.0/Alis.App.Engine.exe";
+                enginePath = $"{AppDomain.CurrentDomain.BaseDirectory}Editor/{project.EditorVersion}/Alis.App.Engine.exe";
             }
             
             if (OperatingSystem.IsMacOS())
             {
-                enginePath = @"/Users/pabllopf/Repositorios/Alis/1_Presentation/Engine/src/bin/Debug/lib/net8.0/Alis.App.Engine";
+                enginePath =  $"{AppDomain.CurrentDomain.BaseDirectory}Editor/{project.EditorVersion}/Alis.App.Engine";
             }
         #else
                     enginePath = $"{AppDomain.CurrentDomain.BaseDirectory}Editor/{project.EditorVersion}/Alis.App.Engine";
