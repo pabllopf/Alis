@@ -87,42 +87,42 @@ socio-economic status, nationality, personal appearance, race, religion, or sexu
 		<tr>
             <td align="center">
                 <a href="https://github.com/RaulLozanoPonce">
-                    <img src="https://avatars.githubusercontent.com/u/43152062?v=4" width="75;" alt="RaulLozanoPonce"/>
+                    <img src="https://private-avatars.githubusercontent.com/u/43152062?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE3MzQ2NTU5ODAsIm5iZiI6MTczNDY1NDc4MCwicGF0aCI6Ii91LzQzMTUyMDYyIn0.lwV8_IpKxtxG0_1XVFXmL4PBgiL1hD0YlpkvBfvcSIU&v=4" width="75;" alt="RaulLozanoPonce"/>
                     <br />
                     <sub><b>Raúl Lozano Ponce</b></sub>
                 </a>
             </td>
             <td align="center">
                 <a href="https://github.com/cannt">
-                    <img src="https://avatars.githubusercontent.com/u/45520663?v=4" width="75;" alt="cannt"/>
+                    <img src="https://private-avatars.githubusercontent.com/u/45520663?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE3MzQ2NTU3NDAsIm5iZiI6MTczNDY1NDU0MCwicGF0aCI6Ii91LzQ1NTIwNjYzIn0.ErtV__-EoAcH-PhlE5NW1R-UftSBgCpscvgd3JQNpN0&v=4" width="75;" alt="cannt"/>
                     <br />
                     <sub><b>Juan Ángel Trujillo Jiménez</b></sub>
                 </a>
             </td>
             <td align="center">
                 <a href="https://github.com/pabllopf">
-                    <img src="https://avatars.githubusercontent.com/u/48176121?v=4" width="75;" alt="pabllopf"/>
+                    <img src="https://private-avatars.githubusercontent.com/u/48176121?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE3MzQ2NTYwNDAsIm5iZiI6MTczNDY1NDg0MCwicGF0aCI6Ii91LzQ4MTc2MTIxIn0.9zCH27BaSxp43PBArVzLRfMVowt74UVdMlvGtchtFv0&v=4" width="75;" alt="pabllopf"/>
                     <br />
                     <sub><b>Pablo Perdomo Falcón</b></sub>
                 </a>
             </td>
             <td align="center">
                 <a href="https://github.com/Chgv99">
-                    <img src="https://avatars.githubusercontent.com/u/55676590?v=4" width="75;" alt="Chgv99"/>
+                    <img src="https://private-avatars.githubusercontent.com/u/55676590?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE3MzQ2NTU4MDAsIm5iZiI6MTczNDY1NDYwMCwicGF0aCI6Ii91LzU1Njc2NTkwIn0.DQk7F1aQTbVzlBYzY-IqoW0XbU4qKokVcDYXy8FTHqU&v=4" width="75;" alt="Chgv99"/>
                     <br />
                     <sub><b>Christian García</b></sub>
                 </a>
             </td>
             <td align="center">
                 <a href="https://github.com/RicardoVillarta">
-                    <img src="https://avatars.githubusercontent.com/u/62963416?v=4" width="75;" alt="RicardoVillarta"/>
+                    <img src="https://private-avatars.githubusercontent.com/u/62963416?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE3MzQ2NTY1MjAsIm5iZiI6MTczNDY1NTMyMCwicGF0aCI6Ii91LzYyOTYzNDE2In0.BYw_TYDoPeo99IrlwNptvR5Vf2y7WwGV-CVWp_BsPWg&v=4" width="75;" alt="RicardoVillarta"/>
                     <br />
                     <sub><b>RicardoVillarta</b></sub>
                 </a>
             </td>
             <td align="center">
                 <a href="https://github.com/GabrielRT01">
-                    <img src="https://avatars.githubusercontent.com/u/75950686?v=4" width="75;" alt="GabrielRT01"/>
+                    <img src="https://private-avatars.githubusercontent.com/u/75950686?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE3MzQ2NTYwNDAsIm5iZiI6MTczNDY1NDg0MCwicGF0aCI6Ii91Lzc1OTUwNjg2In0.UZHPW9VRvTXfGHcXk_IcxGsu-vKQE5zBwUf207L65ZQ&v=4" width="75;" alt="GabrielRT01"/>
                     <br />
                     <sub><b>Gabriel</b></sub>
                 </a>
@@ -131,28 +131,28 @@ socio-economic status, nationality, personal appearance, race, religion, or sexu
 		<tr>
             <td align="center">
                 <a href="https://github.com/SPEEDCROW98">
-                    <img src="https://avatars.githubusercontent.com/u/82670532?v=4" width="75;" alt="SPEEDCROW98"/>
+                    <img src="https://private-avatars.githubusercontent.com/u/82670532?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE3MzQ2NTU5ODAsIm5iZiI6MTczNDY1NDc4MCwicGF0aCI6Ii91LzgyNjcwNTMyIn0.9dpx8WKw1R1ezBzZoOkNPRI4fDqv5wH0pvfNup6fh0k&v=4" width="75;" alt="SPEEDCROW98"/>
                     <br />
                     <sub><b>Pedro D.GR</b></sub>
                 </a>
             </td>
             <td align="center">
                 <a href="https://github.com/Claudia2000pf">
-                    <img src="https://avatars.githubusercontent.com/u/82757764?v=4" width="75;" alt="Claudia2000pf"/>
+                    <img src="https://private-avatars.githubusercontent.com/u/82757764?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE3MzQ2NTU4MDAsIm5iZiI6MTczNDY1NDYwMCwicGF0aCI6Ii91LzgyNzU3NzY0In0.afyhaEG146eOvOYobqMcZ_-XorJXAeje6GWFEmMI60U&v=4" width="75;" alt="Claudia2000pf"/>
                     <br />
                     <sub><b>Claudia2000pf</b></sub>
                 </a>
             </td>
             <td align="center">
                 <a href="https://github.com/suarez0965">
-                    <img src="https://avatars.githubusercontent.com/u/82760316?v=4" width="75;" alt="suarez0965"/>
+                    <img src="https://private-avatars.githubusercontent.com/u/82760316?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE3MzQ2NTY1MjAsIm5iZiI6MTczNDY1NTMyMCwicGF0aCI6Ii91LzgyNzYwMzE2In0.ORBMnwJ0xrbW68oxAwmvl0D0hhRuVz6jLtjleOnI9Sw&v=4" width="75;" alt="suarez0965"/>
                     <br />
                     <sub><b>Carlos</b></sub>
                 </a>
             </td>
             <td align="center">
                 <a href="https://github.com/roseralmenar">
-                    <img src="https://avatars.githubusercontent.com/u/118014440?v=4" width="75;" alt="roseralmenar"/>
+                    <img src="https://private-avatars.githubusercontent.com/u/118014440?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE3MzQ2NTY0NjAsIm5iZiI6MTczNDY1NTI2MCwicGF0aCI6Ii91LzExODAxNDQ0MCJ9.DYad400hEQlYsVYjcI3aEEOwLTuqFtTnkThaMs9qq6c&v=4" width="75;" alt="roseralmenar"/>
                     <br />
                     <sub><b>Roser Almenar</b></sub>
                 </a>
@@ -170,7 +170,7 @@ socio-economic status, nationality, personal appearance, race, religion, or sexu
 		<tr>
             <td align="center">
                 <a href="https://github.com/pabllopf">
-                    <img src="https://avatars.githubusercontent.com/u/48176121?v=4" width="75;" alt="pabllopf"/>
+                    <img src="https://private-avatars.githubusercontent.com/u/48176121?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE3MzQ2NTYwNDAsIm5iZiI6MTczNDY1NDg0MCwicGF0aCI6Ii91LzQ4MTc2MTIxIn0.9zCH27BaSxp43PBArVzLRfMVowt74UVdMlvGtchtFv0&v=4" width="75;" alt="pabllopf"/>
                     <br />
                     <sub><b>Pablo Perdomo Falcón</b></sub>
                 </a>
@@ -188,7 +188,7 @@ socio-economic status, nationality, personal appearance, race, religion, or sexu
 		<tr>
             <td align="center">
                 <a href="https://github.com/github-actions[bot]">
-                    <img src="https://avatars.githubusercontent.com/in/15368?v=4" width="75;" alt="github-actions[bot]"/>
+                    <img src="https://private-avatars.githubusercontent.com/in/15368?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE3MzQ2NTY0NjAsIm5iZiI6MTczNDY1NTI2MCwicGF0aCI6Ii9pbi8xNTM2OCJ9.0-BEewOfwxKJTEnNlIflkPOCq2k8QECuPazVBv2A6bo&v=4" width="75;" alt="github-actions[bot]"/>
                     <br />
                     <sub><b>github-actions[bot]</b></sub>
                 </a>
