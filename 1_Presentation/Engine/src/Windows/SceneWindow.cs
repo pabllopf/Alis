@@ -334,6 +334,10 @@ namespace Alis.App.Engine.Windows
             Console.WriteLine($"Imgui Version: {ImGui.GetVersion()}");
         }
 
+        
+        // Crear un HashSet para almacenar los botones activos
+        HashSet<ActiveButton> activeButtons = new HashSet<ActiveButton>();
+        
         /// <summary>
         /// Renders this instance
         /// </summary>
@@ -356,16 +360,16 @@ namespace Alis.App.Engine.Windows
             // Iniciar la ventana de ImGui
             if (ImGui.Begin(NameWindow, ImGuiWindowFlags.MenuBar))
             {
-                // Renderizar el menú principal
+                
                 if (ImGui.BeginMenuBar())
                 {
                     // Botón HandSpock
-                    if (activeButton == ActiveButton.HandSpock)
+                    if (activeButtons.Contains(ActiveButton.HandSpock))
                     {
                         ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(0.2f, 0.5f, 0.8f, 1.0f)); // Color azul claro
                         if (ImGui.Button($"{FontAwesome5.HandSpock}"))
                         {
-                            activeButton = ActiveButton.None;
+                            activeButtons.Remove(ActiveButton.HandSpock);
                         }
 
                         ImGui.PopStyleColor();
@@ -374,17 +378,18 @@ namespace Alis.App.Engine.Windows
                     {
                         if (ImGui.Button($"{FontAwesome5.HandSpock}"))
                         {
-                            activeButton = ActiveButton.HandSpock;
+                            activeButtons.Add(ActiveButton.HandSpock);
                         }
                     }
 
+                    /*
                     // Botón ArrowsAlt
-                    if (activeButton == ActiveButton.ArrowsAlt)
+                    if (activeButtons.Contains(ActiveButton.ArrowsAlt))
                     {
                         ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(0.2f, 0.5f, 0.8f, 1.0f)); // Color azul claro
                         if (ImGui.Button($"{FontAwesome5.ArrowsAlt}"))
                         {
-                            activeButton = ActiveButton.None;
+                            activeButtons.Remove(ActiveButton.ArrowsAlt);
                         }
 
                         ImGui.PopStyleColor();
@@ -393,17 +398,18 @@ namespace Alis.App.Engine.Windows
                     {
                         if (ImGui.Button($"{FontAwesome5.ArrowsAlt}"))
                         {
-                            activeButton = ActiveButton.ArrowsAlt;
+                            activeButtons.Add(ActiveButton.ArrowsAlt);
                         }
-                    }
+                    }*/
 
+                    /*
                     // Botón Cogs
-                    if (activeButton == ActiveButton.Cogs)
+                    if (activeButtons.Contains(ActiveButton.Cogs))
                     {
                         ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(0.2f, 0.5f, 0.8f, 1.0f)); // Color azul claro
                         if (ImGui.Button($"{FontAwesome5.Cogs}"))
                         {
-                            activeButton = ActiveButton.None;
+                            activeButtons.Remove(ActiveButton.Cogs);
                         }
 
                         ImGui.PopStyleColor();
@@ -412,17 +418,17 @@ namespace Alis.App.Engine.Windows
                     {
                         if (ImGui.Button($"{FontAwesome5.Cogs}"))
                         {
-                            activeButton = ActiveButton.Cogs;
+                            activeButtons.Add(ActiveButton.Cogs);
                         }
-                    }
+                    }*/
 
                     // Botón InfoCircle
-                    if (activeButton == ActiveButton.InfoCircle)
+                    if (activeButtons.Contains(ActiveButton.InfoCircle))
                     {
                         ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(0.2f, 0.5f, 0.8f, 1.0f)); // Color azul claro
                         if (ImGui.Button($"{FontAwesome5.InfoCircle}"))
                         {
-                            activeButton = ActiveButton.None;
+                            activeButtons.Remove(ActiveButton.InfoCircle);
                         }
 
                         ImGui.PopStyleColor();
@@ -431,36 +437,37 @@ namespace Alis.App.Engine.Windows
                     {
                         if (ImGui.Button($"{FontAwesome5.InfoCircle}"))
                         {
-                            activeButton = ActiveButton.InfoCircle;
+                            activeButtons.Add(ActiveButton.InfoCircle);
                         }
                     }
 
-                    // Botón Tools
-                    if (activeButton == ActiveButton.Tools)
+                    // Botón Grid
+                    if (activeButtons.Contains(ActiveButton.Grid))
                     {
                         ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(0.2f, 0.5f, 0.8f, 1.0f)); // Color azul claro
-                        if (ImGui.Button($"{FontAwesome5.Tools}"))
+                        if (ImGui.Button($"{FontAwesome5.Th}"))
                         {
-                            activeButton = ActiveButton.None;
+                            activeButtons.Remove(ActiveButton.Grid);
                         }
 
                         ImGui.PopStyleColor();
                     }
                     else
                     {
-                        if (ImGui.Button($"{FontAwesome5.Tools}"))
+                        if (ImGui.Button($"{FontAwesome5.Th}"))
                         {
-                            activeButton = ActiveButton.Tools;
+                            activeButtons.Add(ActiveButton.Grid);
                         }
                     }
 
+                    /*
                     // Botón User
-                    if (activeButton == ActiveButton.User)
+                    if (activeButtons.Contains(ActiveButton.User))
                     {
                         ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(0.2f, 0.5f, 0.8f, 1.0f)); // Color azul claro
                         if (ImGui.Button($"{FontAwesome5.User}"))
                         {
-                            activeButton = ActiveButton.None;
+                            activeButtons.Remove(ActiveButton.User);
                         }
 
                         ImGui.PopStyleColor();
@@ -469,13 +476,43 @@ namespace Alis.App.Engine.Windows
                     {
                         if (ImGui.Button($"{FontAwesome5.User}"))
                         {
-                            activeButton = ActiveButton.User;
+                            activeButtons.Add(ActiveButton.User);
                         }
-                    }
+                    }*/
 
                     ImGui.EndMenuBar();
                 }
 
+                if (activeButtons.Contains(ActiveButton.InfoCircle))
+                {
+                    // Display information as a simple overlay at the top right corner
+                    float xPos = ImGui.GetWindowPos().X;
+                    float yPos = ImGui.GetWindowPos().Y;
+                    float width = ImGui.GetWindowWidth();
+                    float height = ImGui.GetWindowHeight();
+                    Vector2F windowPosCalculated = new Vector2F(xPos + width, yPos + (60));
+                    ImGui.SetNextWindowPos(windowPosCalculated, ImGuiCond.Always, new Vector2F(1.0f, 0.0f));
+                    ImGui.Begin("InfoPanel", ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.AlwaysAutoResize | ImGuiWindowFlags.NoTitleBar);
+
+                    float elapsedTime = SpaceWork.VideoGame.Context.TimeManager.RealtimeSinceStartup;
+                    int objectCount = SpaceWork.VideoGame.Context.SceneManager.CurrentScene.GameObjects.Count;
+                    float fps = ImGui.GetIo().Framerate;
+
+                    ImGui.Text($"Elapsed Time: {elapsedTime:F2} s");
+                    ImGui.Text($"Object Count: {objectCount}");
+                    ImGui.Text($"FPS: {fps:F2}");
+
+                    ImGui.End();
+                }
+                
+                // if Grid is active render the grid:
+                if (activeButtons.Contains(ActiveButton.Grid))
+                {
+                    SpaceWork.VideoGame.Context.GraphicManager.HasGrid = true;
+                }else
+                {
+                    SpaceWork.VideoGame.Context.GraphicManager.HasGrid = false;
+                }
 
 
                 // Obtener el tamaño disponible en el contenedor de ImGui
