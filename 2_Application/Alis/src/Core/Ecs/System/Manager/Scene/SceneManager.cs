@@ -143,6 +143,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
             {
                 CurrentScene = Scenes[0];
                 CurrentScene.SetContext(Context);
+                CurrentScene.OnProcessPendingChanges();
                 CurrentScene.OnInit();
             }
         }

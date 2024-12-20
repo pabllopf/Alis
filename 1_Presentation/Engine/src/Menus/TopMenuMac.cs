@@ -43,7 +43,12 @@ namespace Alis.App.Engine.Menus
         /// Initializes a new instance of the <see cref="TopMenuMac"/> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
-        public TopMenuMac(SpaceWork spaceWork) => SpaceWork = spaceWork;
+        public TopMenuMac(SpaceWork spaceWork)
+        {
+            SpaceWork = spaceWork;
+            TopMenuAction.SetSpaceWork(spaceWork);
+        }
+
         /// <summary>
         /// Gets the value of the space work
         /// </summary>
@@ -103,8 +108,6 @@ namespace Alis.App.Engine.Menus
             AddMenu(mainMenu, "File", new[]
             {
                 "New Scene\tCmd+N",
-                "Open Scene...\tCmd+O",
-                "Open Recent Scene",
                 "-",
                 "Save\tCmd+S",
                 "Save As...\tCmd+Shift+S",

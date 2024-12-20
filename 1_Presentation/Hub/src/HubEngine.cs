@@ -525,15 +525,7 @@ namespace Alis.App.Hub
 
                 UpdateMousePosAndButtons();
 
-                if (spaceWork.ProjectSelected)
-                {
-                    RenderProject();
-                }
-                else
-                {
-                    hubMenu.Render();
-                    ImGui.ShowDemoWindow();
-                }
+                hubMenu.Render();
 
                 Sdl.MakeCurrent(spaceWork.Window, _glContext);
                 ImGui.Render();
