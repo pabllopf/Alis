@@ -550,49 +550,48 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The object</returns>
         internal static object CreateInstanceFromDictionary(Type type, object target, int elementsCount, JsonOptions options, object value)
         {
-            if (type.IsSerializable) // Check if type implements ISerializable
+
+            if (value is IDictionary dictionary)
             {
-                if (value is IDictionary dictionary)
+                // Get all public constructors
+                ConstructorInfo[] constructors = type.GetConstructors(BindingFlags.Public | BindingFlags.Instance);
+
+                dictionary.Remove(SerializationTypeToken);
+                // Find a constructor that has the same number of parameters as the dictionary
+                foreach (ConstructorInfo constructor in constructors)
                 {
-                    // Get all public constructors
-                    ConstructorInfo[] constructors = type.GetConstructors(BindingFlags.Public | BindingFlags.Instance);
-
-                    dictionary.Remove(SerializationTypeToken);
-                    // Find a constructor that has the same number of parameters as the dictionary
-                    foreach (ConstructorInfo constructor in constructors)
+                    ParameterInfo[] parameters = constructor.GetParameters();
+                    if (parameters.Length == dictionary.Count)
                     {
-                        ParameterInfo[] parameters = constructor.GetParameters();
-                        if (parameters.Length == dictionary.Count)
+                        // Create an array to hold the parameter values
+                        object[] parameterValues = new object[parameters.Length];
+
+                        // Try to populate the array with values from the dictionary
+                        for (int i = 0; i < parameters.Length; i++)
                         {
-                            // Create an array to hold the parameter values
-                            object[] parameterValues = new object[parameters.Length];
-
-                            // Try to populate the array with values from the dictionary
-                            for (int i = 0; i < parameters.Length; i++)
+                            if (dictionary.Contains(parameters[i].Name))
                             {
-                                if (dictionary.Contains(parameters[i].Name))
-                                {
-                                    parameterValues[i] = CreateInstance(target, parameters[i].ParameterType, elementsCount, options, dictionary[parameters[i].Name]);
-                                }
-                                else
-                                {
-                                    // If a key in the dictionary does not match a parameter name, this is not the right constructor
-                                    parameterValues = null;
-                                    break;
-                                }
+                                parameterValues[i] = CreateInstance(target, parameters[i].ParameterType, elementsCount, options, dictionary[parameters[i].Name]);
                             }
-
-                            // If the parameter values array was successfully populated, use this constructor
-                            if (parameterValues != null)
+                            else
                             {
-                                return Activator.CreateInstance(type, parameterValues);
+                                // If a key in the dictionary does not match a parameter name, this is not the right constructor
+                                parameterValues = null;
+                                break;
                             }
                         }
-                    }
 
-                    return null;
+                        // If the parameter values array was successfully populated, use this constructor
+                        if (parameterValues != null)
+                        {
+                            return Activator.CreateInstance(type, parameterValues);
+                        }
+                    }
                 }
+
+                return null;
             }
+
 
             return null;
         }

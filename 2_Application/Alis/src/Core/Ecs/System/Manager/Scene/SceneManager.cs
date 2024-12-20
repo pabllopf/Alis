@@ -136,15 +136,12 @@ namespace Alis.Core.Ecs.System.Manager.Scene
 
                 Scenes[i].SetContext(Context);
             }
-
-
-
+            
             if (Scenes.Count > 0)
             {
                 CurrentScene = Scenes[0];
                 CurrentScene.SetContext(Context);
                 CurrentScene.OnProcessPendingChanges();
-                CurrentScene.OnInit();
             }
         }
 
@@ -428,6 +425,9 @@ namespace Alis.Core.Ecs.System.Manager.Scene
                     DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
                     SerializationOptions = JsonSerializationOptions.Default
                 });
+            
+            Scenes[Scenes.IndexOf(selectedScene)] = CurrentScene;
+            
             CurrentScene.SetContext(Context);
             CurrentScene.OnInit();
             CurrentScene.OnAwake();

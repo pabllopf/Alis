@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Builder.Core.Ecs.Component.Collider;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Definition;
@@ -52,84 +53,149 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <summary>
         ///     The rectangle
         /// </summary>
-        private RectangleI Rectangle;
+        [JsonIgnore]
+        private RectangleI rectangle;
 
         /// <summary>
         ///     Gets or sets the value of the is trigger
         /// </summary>
+        [JsonPropertyName("_IsTrigger_")]
         public bool IsTrigger { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the width
         /// </summary>
-        public float Width { get; set; } = 10.0f;
+        [JsonPropertyName("_Width_")]
+        public float Width { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the height
         /// </summary>
-        public float Height { get; set; } = 10.0f;
+        [JsonPropertyName("_Height_")]
+        public float Height { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the rotation
         /// </summary>
-        public float Rotation { get; set; } = 1.0f;
+        [JsonPropertyName("_Rotation_")]
+        public float Rotation { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the relative position
         /// </summary>
-        public Vector2 RelativePosition { get; set; } = new Vector2(0, 0);
+        [JsonPropertyName("_RelativePosition_")]
+        public Vector2 RelativePosition { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the body
         /// </summary>
-
-        public Physic.Dynamics.Body Body { get; private set; }
+        [JsonIgnore]
+        public Physic.Dynamics.Body Body { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the auto tilling
         /// </summary>
+        [JsonPropertyName("_AutoTilling_")]
         public bool AutoTilling { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the body type
         /// </summary>
-        public BodyType BodyType { get; set; } = BodyType.Static;
+        [JsonPropertyName("_BodyType_")]
+        public BodyType BodyType { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the restitution
         /// </summary>
+        [JsonPropertyName("_Restitution_")]
         public float Restitution { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the friction
         /// </summary>
+        [JsonPropertyName("_Friction_")]
         public float Friction { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the fixed rotation
         /// </summary>
+        [JsonPropertyName("_FixedRotation_")]
         public bool FixedRotation { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the mass
         /// </summary>
-        public float Mass { get; set; } = 10.0f;
+        [JsonPropertyName("_Mass_")]
+        public float Mass { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the gravity scale
         /// </summary>
-        public bool IgnoreGravity { get; set; } = false;
+        [JsonPropertyName("_IgnoreGravity_")]
+        public bool IgnoreGravity { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the linear velocity
         /// </summary>
-        public Vector2 LinearVelocity { get; set; } = Vector2.Zero;
+        [JsonPropertyName("_LinearVelocity_")]
+        public Vector2 LinearVelocity { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the angular velocity
         /// </summary>
+        [JsonPropertyName("_AngularVelocity_")]
         public float AngularVelocity { get; set; }
 
+        public BoxCollider()
+        {
+            Width = 10;
+            Height = 10;
+            Rotation = 0;
+            RelativePosition = new Vector2(0, 0);
+            AutoTilling = false;
+            BodyType = BodyType.Dynamic;
+            Restitution = 0.5f;
+            Friction = 0.5f;
+            FixedRotation = false;
+            Mass = 1.0f;
+            IgnoreGravity = false;
+            LinearVelocity = new Vector2(0, 0);
+            AngularVelocity = 0;
+        }
+        
+        [JsonConstructor]
+        public BoxCollider(
+            bool isTrigger,
+            float width,
+            float height,
+            float rotation,
+            Vector2 relativePosition,
+            bool autoTilling,
+            BodyType bodyType,
+            float restitution,
+            float friction,
+            bool fixedRotation,
+            float mass,
+            bool ignoreGravity,
+            Vector2 linearVelocity,
+            float angularVelocity)
+        {
+            IsTrigger = isTrigger;
+            Width = width;
+            Height = height;
+            Rotation = rotation;
+            RelativePosition = relativePosition;
+            AutoTilling = autoTilling;
+            BodyType = bodyType;
+            Restitution = restitution;
+            Friction = friction;
+            FixedRotation = fixedRotation;
+            Mass = mass;
+            IgnoreGravity = ignoreGravity;
+            LinearVelocity = linearVelocity;
+            AngularVelocity = angularVelocity;
+        }
+        
         /// <summary>
         ///     Builders this instance
         /// </summary>
@@ -287,16 +353,16 @@ namespace Alis.Core.Ecs.Component.Collider
             int x = (int) (posX - cameraPosition.X * pixelsPerMeter + cameraResolution.X / 2);
             int y = (int) (posY - cameraPosition.Y * pixelsPerMeter + cameraResolution.Y / 2);
 
-            Rectangle.X = (int) (x - width / 2);
-            Rectangle.Y = (int) (y - height / 2);
-            Rectangle.W = (int) width;
-            Rectangle.H = (int) height;
+            rectangle.X = (int) (x - width / 2);
+            rectangle.Y = (int) (y - height / 2);
+            rectangle.W = (int) width;
+            rectangle.H = (int) height;
 
             Sdl.SetRenderDrawColor(renderer, debugColor.R, debugColor.G, debugColor.B, debugColor.A);
-            Sdl.RenderDrawRect(renderer, ref Rectangle);
+            Sdl.RenderDrawRect(renderer, ref rectangle);
 
             // Render with rotation
-            Sdl.RenderCopyEx(renderer, IntPtr.Zero, IntPtr.Zero, ref Rectangle, colliderRotation, IntPtr.Zero, RendererFlips.None);
+            Sdl.RenderCopyEx(renderer, IntPtr.Zero, IntPtr.Zero, ref rectangle, colliderRotation, IntPtr.Zero, RendererFlips.None);
         }
 
         /// <summary>
