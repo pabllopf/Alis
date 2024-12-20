@@ -56,6 +56,7 @@ using PixelFormat = Alis.Extension.Graphic.OpenGL.Enums.PixelFormat;
 using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 
 
+
 namespace Alis.App.Engine
 {
     /// <summary>
