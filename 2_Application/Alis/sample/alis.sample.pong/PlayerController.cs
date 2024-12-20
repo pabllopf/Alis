@@ -43,18 +43,20 @@ namespace Alis.Sample.Pong
         /// <summary>
         ///     The player id
         /// </summary>
-        private readonly int playerId;
+        public int PlayerId { get; set; }
 
         /// <summary>
         ///     The box collider
         /// </summary>
         private BoxCollider boxCollider;
-
+        
+        public PlayerController() => this.PlayerId = 0;
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="PlayerController" /> class
         /// </summary>
         /// <param name="playerId">The player id</param>
-        public PlayerController(int playerId) => this.playerId = playerId;
+        public PlayerController(int playerId) => this.PlayerId = playerId;
 
         /// <summary>
         ///     Starts this instance
@@ -73,7 +75,7 @@ namespace Alis.Sample.Pong
         public override void OnReleaseKey(KeyCodes key)
         {
             Vector2 velocity = boxCollider.Body.LinearVelocity;
-            switch (playerId)
+            switch (PlayerId)
             {
                 case 1:
                     switch (key)
@@ -115,7 +117,7 @@ namespace Alis.Sample.Pong
         {
             Vector2 velocity = boxCollider.Body.LinearVelocity;
 
-            switch (playerId)
+            switch (PlayerId)
             {
                 case 1:
                     switch (key)
