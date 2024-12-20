@@ -734,8 +734,7 @@ namespace Alis.App.Installer
             Gl.VertexAttribPointer(_shader["UV"].Location, 2, VertexAttribPointerType.Float, false, drawVertSize, uvOffset);
             Gl.VertexAttribPointer(_shader["Color"].Location, 4, VertexAttribPointerType.UnsignedByte, true, drawVertSize, colOffset);
         }
-
-
+        
         /// <summary>
         ///     Creates the gl context using the specified window
         /// </summary>
