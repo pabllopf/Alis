@@ -59,7 +59,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         public void Matrix2X2_Set_ShouldSetValuesCorrectly()
         {
             Matrix2X2 matrix = new Matrix2X2();
-            matrix.Set(new Vector2(1.0f, 2.0f), new Vector2(3.0f, 4.0f));
+            matrix.Set(new Vector2F(1.0f, 2.0f), new Vector2F(3.0f, 4.0f));
 
             Assert.Equal(1.0f, matrix.Ex.X);
             Assert.Equal(2.0f, matrix.Ex.Y);
@@ -130,7 +130,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         public void Matrix2X2_Solve_ShouldReturnCorrectSolution()
         {
             Matrix2X2 matrix = new Matrix2X2(1.0f, 2.0f, 3.0f, 4.0f);
-            Vector2 solution = matrix.Solve(new Vector2(1.0f, 2.0f));
+            Vector2F solution = matrix.Solve(new Vector2F(1.0f, 2.0f));
 
             Assert.Equal(0.0f, solution.X, 1e-6);
             Assert.Equal(0.5f, solution.Y, 1e-6);

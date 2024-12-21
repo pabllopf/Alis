@@ -68,8 +68,8 @@ namespace Alis.App.Engine.Menus
         public void Render()
         {
             // Establecer el color de fondo de los botones
-            ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0.15f, 0.15f, 0.15f, 1.0f));
-            ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4(0.15f, 0.15f, 0.15f, 1.0f));
+            ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.15f, 0.15f, 0.15f, 1.0f));
+            ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.15f, 0.15f, 0.15f, 1.0f));
             // quit border:
             ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0);
 

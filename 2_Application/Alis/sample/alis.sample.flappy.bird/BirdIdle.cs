@@ -28,8 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
-using Vector2 = Alis.Core.Aspect.Math.Vector.Vector2;
 
 namespace Alis.Sample.Flappy.Bird
 {
@@ -52,7 +52,7 @@ namespace Alis.Sample.Flappy.Bird
         /// <summary>
         ///     The default position
         /// </summary>
-        private Vector2 defaultPosition;
+        private Vector2F defaultPosition;
 
         /// <summary>
         ///     The go down
@@ -83,17 +83,17 @@ namespace Alis.Sample.Flappy.Bird
             // get the y position of game object:
             float y = GameObject.Transform.Position.Y;
 
-            Vector2 scale = GameObject.Transform.Scale;
+            Vector2F scale = GameObject.Transform.Scale;
 
             float rotation = GameObject.Transform.Rotation;
 
             // create a new position:
-            Vector2 newPosition;
+            Vector2F newPosition;
 
             if (goUp && !goDown)
             {
                 float displace = Velocity * Context.TimeManager.DeltaTime;
-                newPosition = new Vector2(x, y - displace);
+                newPosition = new Vector2F(x, y - displace);
                 Transform transform = new Transform
                 {
                     Position = newPosition,
@@ -106,7 +106,7 @@ namespace Alis.Sample.Flappy.Bird
             else if (goDown && !goUp)
             {
                 float displace = Velocity * Context.TimeManager.DeltaTime;
-                newPosition = new Vector2(x, y + displace);
+                newPosition = new Vector2F(x, y + displace);
                 Transform transform = new Transform
                 {
                     Position = newPosition,

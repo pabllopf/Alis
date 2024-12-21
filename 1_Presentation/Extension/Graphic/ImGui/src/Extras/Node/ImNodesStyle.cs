@@ -49,7 +49,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <summary>
         ///     The node padding
         /// </summary>
-        public Vector2 NodePadding { get; set; }
+        public Vector2F NodePadding { get; set; }
 
         /// <summary>
         ///     The node border thickness
@@ -104,12 +104,12 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <summary>
         ///     The mini map padding
         /// </summary>
-        public Vector2 MiniMapPadding { get; set; }
+        public Vector2F MiniMapPadding { get; set; }
 
         /// <summary>
         ///     The mini map offset
         /// </summary>
-        public Vector2 MiniMapOffset { get; set; }
+        public Vector2F MiniMapOffset { get; set; }
 
         /// <summary>
         ///     The flags

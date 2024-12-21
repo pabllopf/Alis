@@ -89,7 +89,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void TextColored_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TextColored(new Vector4(), "fmt"));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TextColored(new Vector4F(), "fmt"));
         }
 
         /// <summary>
@@ -290,7 +290,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             Assert.Throws<DllNotFoundException>(() =>
             {
                 float minValue = float.MinValue;
-                return ImGui.Native.ImGui.VSliderFloat("label", new Vector2(), ref minValue, 0.0f, 1.0f);
+                return ImGui.Native.ImGui.VSliderFloat("label", new Vector2F(), ref minValue, 0.0f, 1.0f);
             });
         }
 
@@ -303,7 +303,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             Assert.Throws<DllNotFoundException>(() =>
             {
                 float minValue = float.MinValue;
-                return ImGui.Native.ImGui.VSliderFloat("label", new Vector2(), ref minValue, 0.0f, 1.0f, "format");
+                return ImGui.Native.ImGui.VSliderFloat("label", new Vector2F(), ref minValue, 0.0f, 1.0f, "format");
             });
         }
 
@@ -316,7 +316,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             Assert.Throws<DllNotFoundException>(() =>
             {
                 float minValue = float.MinValue;
-                return ImGui.Native.ImGui.VSliderFloat("label", new Vector2(), ref minValue, 0.0f, 1.0f, "format", ImGuiSliderFlags.None);
+                return ImGui.Native.ImGui.VSliderFloat("label", new Vector2F(), ref minValue, 0.0f, 1.0f, "format", ImGuiSliderFlags.None);
             });
         }
 
@@ -329,7 +329,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             Assert.Throws<DllNotFoundException>(() =>
             {
                 int minValue = int.MinValue;
-                return ImGui.Native.ImGui.VSliderInt("label", new Vector2(), ref minValue, 0, 1);
+                return ImGui.Native.ImGui.VSliderInt("label", new Vector2F(), ref minValue, 0, 1);
             });
         }
 
@@ -342,7 +342,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             Assert.Throws<DllNotFoundException>(() =>
             {
                 int minValue = int.MinValue;
-                return ImGui.Native.ImGui.VSliderInt("label", new Vector2(), ref minValue, 0, 1, "format");
+                return ImGui.Native.ImGui.VSliderInt("label", new Vector2F(), ref minValue, 0, 1, "format");
             });
         }
 
@@ -355,7 +355,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             Assert.Throws<DllNotFoundException>(() =>
             {
                 int minValue = int.MinValue;
-                return ImGui.Native.ImGui.VSliderInt("label", new Vector2(), ref minValue, 0, 1, "format", ImGuiSliderFlags.None);
+                return ImGui.Native.ImGui.VSliderInt("label", new Vector2F(), ref minValue, 0, 1, "format", ImGuiSliderFlags.None);
             });
         }
 
@@ -365,7 +365,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void VSliderScalar_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.VSliderScalar("label", new Vector2(), ImGuiDataType.S32, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.VSliderScalar("label", new Vector2F(), ImGuiDataType.S32, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero));
         }
 
         /// <summary>
@@ -374,7 +374,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void VSliderScalar_WithFormat_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.VSliderScalar("label", new Vector2(), ImGuiDataType.S32, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, "format"));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.VSliderScalar("label", new Vector2F(), ImGuiDataType.S32, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, "format"));
         }
 
         /// <summary>
@@ -383,7 +383,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void VSliderScalar_WithFormatAndFlags_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.VSliderScalar("label", new Vector2(), ImGuiDataType.S32, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, "format", ImGuiSliderFlags.None));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.VSliderScalar("label", new Vector2F(), ImGuiDataType.S32, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, "format", ImGuiSliderFlags.None));
         }
 
         /// <summary>
@@ -469,7 +469,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         public void InputTextMultiline_ThrowsDllNotFoundException()
         {
             string input = string.Empty;
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputTextMultiline("label", ref input, 0u, new Vector2()));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputTextMultiline("label", ref input, 0u, new Vector2F()));
         }
 
         /// <summary>
@@ -479,7 +479,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         public void InputTextMultiline_WithFlags_ThrowsDllNotFoundException()
         {
             string input = string.Empty;
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputTextMultiline("label", ref input, 0u, new Vector2(), ImGuiInputTextFlags.None));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputTextMultiline("label", ref input, 0u, new Vector2F(), ImGuiInputTextFlags.None));
         }
 
         /// <summary>
@@ -489,7 +489,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         public void InputTextMultiline_WithFlagsAndCallback_ThrowsDllNotFoundException()
         {
             string input = string.Empty;
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputTextMultiline("label", ref input, 0u, new Vector2(), ImGuiInputTextFlags.None, null));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputTextMultiline("label", ref input, 0u, new Vector2F(), ImGuiInputTextFlags.None, null));
         }
 
         /// <summary>
@@ -499,7 +499,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         public void InputTextMultiline_WithFlagsCallbackAndUserData_ThrowsDllNotFoundException()
         {
             string input = string.Empty;
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputTextMultiline("label", ref input, 0u, new Vector2(), ImGuiInputTextFlags.None, null, IntPtr.Zero));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputTextMultiline("label", ref input, 0u, new Vector2F(), ImGuiInputTextFlags.None, null, IntPtr.Zero));
         }
 
         /// <summary>

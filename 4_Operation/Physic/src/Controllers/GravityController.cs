@@ -49,7 +49,7 @@ namespace Alis.Core.Physic.Controllers
             Strength = strength;
             MaxRadius = float.MaxValue;
             GravityType = GravityType.DistanceSquared;
-            Points = new List<Vector2>();
+            Points = new List<Vector2F>();
             Bodies = new List<Body>();
         }
 
@@ -65,7 +65,7 @@ namespace Alis.Core.Physic.Controllers
             MaxRadius = maxRadius;
             Strength = strength;
             GravityType = GravityType.DistanceSquared;
-            Points = new List<Vector2>();
+            Points = new List<Vector2F>();
             Bodies = new List<Body>();
         }
 
@@ -97,7 +97,7 @@ namespace Alis.Core.Physic.Controllers
         /// <summary>
         ///     Gets or sets the value of the points
         /// </summary>
-        public List<Vector2> Points { get; set; }
+        public List<Vector2F> Points { get; set; }
 
         /// <summary>
         ///     Updates the dt
@@ -105,7 +105,7 @@ namespace Alis.Core.Physic.Controllers
         /// <param name="dt">The dt</param>
         public override void Update(float dt)
         {
-            Vector2 f = Vector2.Zero;
+            Vector2F f = Vector2F.Zero;
 
             foreach (Body worldBody in World.BodyList)
             {
@@ -121,7 +121,7 @@ namespace Alis.Core.Physic.Controllers
                         continue;
                     }
 
-                    Vector2 d = controllerBody.Position - worldBody.Position;
+                    Vector2F d = controllerBody.Position - worldBody.Position;
                     float r2 = d.LengthSquared();
 
                     if (r2 <= SettingEnv.Epsilon || r2 > MaxRadius * MaxRadius || r2 < MinRadius * MinRadius)
@@ -142,9 +142,9 @@ namespace Alis.Core.Physic.Controllers
                     worldBody.ApplyForce(ref f);
                 }
 
-                foreach (Vector2 point in Points)
+                foreach (Vector2F point in Points)
                 {
-                    Vector2 d = point - worldBody.Position;
+                    Vector2F d = point - worldBody.Position;
                     float r2 = d.LengthSquared();
 
                     if (r2 <= SettingEnv.Epsilon || r2 > MaxRadius * MaxRadius || r2 < MinRadius * MinRadius)
@@ -180,7 +180,7 @@ namespace Alis.Core.Physic.Controllers
         ///     Adds the point using the specified point
         /// </summary>
         /// <param name="point">The point</param>
-        public void AddPoint(Vector2 point)
+        public void AddPoint(Vector2F point)
         {
             Points.Add(point);
         }

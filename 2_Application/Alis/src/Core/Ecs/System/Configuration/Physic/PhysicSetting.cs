@@ -51,7 +51,7 @@ namespace Alis.Core.Ecs.System.Configuration.Physic
         {
             DebugMode = false;
             DebugColor = new Color(255, 0, 0, 255);
-            Gravity = new Vector2(0.0f, 9.8f);
+            Gravity = new Vector2F(0.0f, 9.8f);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Alis.Core.Ecs.System.Configuration.Physic
         /// <param name="debugColor">The debug color</param>
         /// <param name="gravity">The gravity</param>
         [JsonConstructor]
-        public PhysicSetting(bool debugMode, Color debugColor, Vector2 gravity)
+        public PhysicSetting(bool debugMode, Color debugColor, Vector2F gravity)
         {
             DebugMode = debugMode;
             DebugColor = debugColor;
@@ -84,7 +84,7 @@ namespace Alis.Core.Ecs.System.Configuration.Physic
         ///     Gets or sets the value of the gravity
         /// </summary>
         [JsonPropertyName("_Gravity_")]
-        public Vector2 Gravity { get; set; }
+        public Vector2F Gravity { get; set; }
 
         /// <summary>
         ///     Builders this instance

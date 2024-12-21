@@ -28,8 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
-using Vector2 = Alis.Core.Aspect.Math.Vector.Vector2;
 
 namespace Alis.Sample.Flappy.Bird
 {
@@ -72,7 +72,7 @@ namespace Alis.Sample.Flappy.Bird
             float displace = Velocity * Context.TimeManager.DeltaTime;
 
             // if the x position is less than -50.0f, then reset the x position to 0.0f
-            Vector2 newPosition = x < -1.0f ? new Vector2(xOld, y) : new Vector2(x - displace, y);
+            Vector2F newPosition = x < -1.0f ? new Vector2F(xOld, y) : new Vector2F(x - displace, y);
 
             Transform transform = new Transform
             {

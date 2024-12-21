@@ -115,7 +115,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The ret</returns>
         public static uint DockSpace(uint id)
         {
-            Vector2 size = new Vector2();
+            Vector2F size = new Vector2F();
             ImGuiDockNodeFlags flags = 0;
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
             uint ret = ImGuiNative.igDockSpace(id, size, flags, windowClass);
@@ -128,7 +128,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="id">The id</param>
         /// <param name="size">The size</param>
         /// <returns>The ret</returns>
-        public static uint DockSpace(uint id, Vector2 size)
+        public static uint DockSpace(uint id, Vector2F size)
         {
             ImGuiDockNodeFlags flags = 0;
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
@@ -143,7 +143,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="size">The size</param>
         /// <param name="flags">The flags</param>
         /// <returns>The ret</returns>
-        public static uint DockSpace(uint id, Vector2 size, ImGuiDockNodeFlags flags)
+        public static uint DockSpace(uint id, Vector2F size, ImGuiDockNodeFlags flags)
         {
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
             uint ret = ImGuiNative.igDockSpace(id, size, flags, windowClass);
@@ -158,7 +158,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="flags">The flags</param>
         /// <param name="windowClass">The window class</param>
         /// <returns>The ret</returns>
-        public static uint DockSpace(uint id, Vector2 size, ImGuiDockNodeFlags flags, ImGuiWindowClass windowClass)
+        public static uint DockSpace(uint id, Vector2F size, ImGuiDockNodeFlags flags, ImGuiWindowClass windowClass)
         {
             uint ret = ImGuiNative.igDockSpace(id, size, flags, windowClass);
             return ret;
@@ -309,7 +309,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
         /// <returns>The bool</returns>
-        public static bool DragFloat2(string label, ref Vector2 v)
+        public static bool DragFloat2(string label, ref Vector2F v)
         {
             byte ret = ImGuiNative.igDragFloat2(Encoding.UTF8.GetBytes(label), ref v, 0.0f, 0.0f, 0.0f, null, 0);
             return ret != 0;
@@ -322,7 +322,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="v">The </param>
         /// <param name="vSpeed">The speed</param>
         /// <returns>The bool</returns>
-        public static bool DragFloat2(string label, ref Vector2 v, float vSpeed)
+        public static bool DragFloat2(string label, ref Vector2F v, float vSpeed)
         {
             byte ret = ImGuiNative.igDragFloat2(Encoding.UTF8.GetBytes(label), ref v, vSpeed, 0.0f, 0.0f, null, 0);
             return ret != 0;
@@ -336,7 +336,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="vSpeed">The speed</param>
         /// <param name="vMin">The min</param>
         /// <returns>The bool</returns>
-        public static bool DragFloat2(string label, ref Vector2 v, float vSpeed, float vMin)
+        public static bool DragFloat2(string label, ref Vector2F v, float vSpeed, float vMin)
         {
             byte ret = ImGuiNative.igDragFloat2(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, 0.0f, null, 0);
             return ret != 0;
@@ -351,7 +351,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <returns>The bool</returns>
-        public static bool DragFloat2(string label, ref Vector2 v, float vSpeed, float vMin, float vMax)
+        public static bool DragFloat2(string label, ref Vector2F v, float vSpeed, float vMin, float vMax)
         {
             byte ret = ImGuiNative.igDragFloat2(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, vMax, null, 0);
             return ret != 0;
@@ -367,7 +367,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
         /// <returns>The bool</returns>
-        public static bool DragFloat2(string label, ref Vector2 v, float vSpeed, float vMin, float vMax, string format)
+        public static bool DragFloat2(string label, ref Vector2F v, float vSpeed, float vMin, float vMax, string format)
         {
             byte ret = ImGuiNative.igDragFloat2(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
             return ret != 0;
@@ -384,7 +384,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The bool</returns>
-        public static bool DragFloat2(string label, ref Vector2 v, float vSpeed, float vMin, float vMax, string format, ImGuiSliderFlags flags)
+        public static bool DragFloat2(string label, ref Vector2F v, float vSpeed, float vMin, float vMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igDragFloat2(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
             return ret != 0;
@@ -396,7 +396,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
         /// <returns>The bool</returns>
-        public static bool DragFloat3(string label, ref Vector3 v)
+        public static bool DragFloat3(string label, ref Vector3F v)
         {
             byte ret = ImGuiNative.igDragFloat3(Encoding.UTF8.GetBytes(label), ref v, 0.0f, 0.0f, 0.0f, null, 0);
             return ret != 0;
@@ -409,7 +409,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="v">The </param>
         /// <param name="vSpeed">The speed</param>
         /// <returns>The bool</returns>
-        public static bool DragFloat3(string label, ref Vector3 v, float vSpeed)
+        public static bool DragFloat3(string label, ref Vector3F v, float vSpeed)
         {
             byte ret = ImGuiNative.igDragFloat3(Encoding.UTF8.GetBytes(label), ref v, vSpeed, 0.0f, 0.0f, null, 0);
             return ret != 0;
@@ -423,7 +423,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="vSpeed">The speed</param>
         /// <param name="vMin">The min</param>
         /// <returns>The bool</returns>
-        public static bool DragFloat3(string label, ref Vector3 v, float vSpeed, float vMin)
+        public static bool DragFloat3(string label, ref Vector3F v, float vSpeed, float vMin)
         {
             byte ret = ImGuiNative.igDragFloat3(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, 0.0f, null, 0);
             return ret != 0;
@@ -438,7 +438,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <returns>The bool</returns>
-        public static bool DragFloat3(string label, ref Vector3 v, float vSpeed, float vMin, float vMax)
+        public static bool DragFloat3(string label, ref Vector3F v, float vSpeed, float vMin, float vMax)
         {
             byte ret = ImGuiNative.igDragFloat3(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, vMax, null, 0);
             return ret != 0;
@@ -454,7 +454,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
         /// <returns>The bool</returns>
-        public static bool DragFloat3(string label, ref Vector3 v, float vSpeed, float vMin, float vMax, string format)
+        public static bool DragFloat3(string label, ref Vector3F v, float vSpeed, float vMin, float vMax, string format)
         {
             byte ret = ImGuiNative.igDragFloat3(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
             return ret != 0;
@@ -471,7 +471,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The bool</returns>
-        public static bool DragFloat3(string label, ref Vector3 v, float vSpeed, float vMin, float vMax, string format, ImGuiSliderFlags flags)
+        public static bool DragFloat3(string label, ref Vector3F v, float vSpeed, float vMin, float vMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igDragFloat3(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
             return ret != 0;
@@ -483,7 +483,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
         /// <returns>The bool</returns>
-        public static bool DragFloat4(string label, ref Vector4 v)
+        public static bool DragFloat4(string label, ref Vector4F v)
         {
             byte ret = ImGuiNative.igDragFloat4(Encoding.UTF8.GetBytes(label), v, 0.0f, 0.0f, 0.0f, null, 0);
             return ret != 0;
@@ -496,7 +496,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="v">The </param>
         /// <param name="vSpeed">The speed</param>
         /// <returns>The bool</returns>
-        public static bool DragFloat4(string label, ref Vector4 v, float vSpeed)
+        public static bool DragFloat4(string label, ref Vector4F v, float vSpeed)
         {
             byte ret = ImGuiNative.igDragFloat4(Encoding.UTF8.GetBytes(label), v, vSpeed, 0.0f, 0.0f, null, 0);
             return ret != 0;
@@ -510,7 +510,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="vSpeed">The speed</param>
         /// <param name="vMin">The min</param>
         /// <returns>The bool</returns>
-        public static bool DragFloat4(string label, ref Vector4 v, float vSpeed, float vMin)
+        public static bool DragFloat4(string label, ref Vector4F v, float vSpeed, float vMin)
         {
             byte ret = ImGuiNative.igDragFloat4(Encoding.UTF8.GetBytes(label), v, vSpeed, vMin, 0.0f, null, 0);
             return ret != 0;
@@ -525,7 +525,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <returns>The bool</returns>
-        public static bool DragFloat4(string label, ref Vector4 v, float vSpeed, float vMin, float vMax)
+        public static bool DragFloat4(string label, ref Vector4F v, float vSpeed, float vMin, float vMax)
         {
             byte ret = ImGuiNative.igDragFloat4(Encoding.UTF8.GetBytes(label), v, vSpeed, vMin, vMax, null, 0);
             return ret != 0;
@@ -541,7 +541,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
         /// <returns>The bool</returns>
-        public static bool DragFloat4(string label, ref Vector4 v, float vSpeed, float vMin, float vMax, string format)
+        public static bool DragFloat4(string label, ref Vector4F v, float vSpeed, float vMin, float vMax, string format)
         {
             byte ret = ImGuiNative.igDragFloat4(Encoding.UTF8.GetBytes(label), v, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
             return ret != 0;
@@ -558,7 +558,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The bool</returns>
-        public static bool DragFloat4(string label, ref Vector4 v, float vSpeed, float vMin, float vMax, string format, ImGuiSliderFlags flags)
+        public static bool DragFloat4(string label, ref Vector4F v, float vSpeed, float vMin, float vMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igDragFloat4(Encoding.UTF8.GetBytes(label), v, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
             return ret != 0;

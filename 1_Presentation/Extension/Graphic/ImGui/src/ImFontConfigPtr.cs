@@ -123,12 +123,12 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the glyph extra spacing
         /// </summary>
-        public Vector2 GlyphExtraSpacing => Marshal.PtrToStructure<ImFontConfig>(NativePtr).GlyphExtraSpacing;
+        public Vector2F GlyphExtraSpacing => Marshal.PtrToStructure<ImFontConfig>(NativePtr).GlyphExtraSpacing;
 
         /// <summary>
         ///     Gets the value of the glyph offset
         /// </summary>
-        public Vector2 GlyphOffset => Marshal.PtrToStructure<ImFontConfig>(NativePtr).GlyphOffset;
+        public Vector2F GlyphOffset => Marshal.PtrToStructure<ImFontConfig>(NativePtr).GlyphOffset;
 
         /// <summary>
         ///     Gets or sets the value of the glyph ranges

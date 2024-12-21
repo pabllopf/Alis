@@ -78,36 +78,36 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         public void Render()
         {
-            ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0.13f, 0.14f, 0.15f, 1.0f));
-            ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4(0.13f, 0.14f, 0.15f, 1.0f));
+            ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.13f, 0.14f, 0.15f, 1.0f));
+            ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.13f, 0.14f, 0.15f, 1.0f));
 
             ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0.0f);
-            ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(4, 3));
+            ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(4, 3));
 
 
             if (!SpaceWork.IsMacOs)
             {
-                Vector2 dockSize = SpaceWork.Viewport.Size - new Vector2(5, 90);
+                Vector2F dockSize = SpaceWork.Viewport.Size - new Vector2F(5, 90);
 
                 // Menú inferior
-                Vector2 menuSize = new Vector2(SpaceWork.Viewport.Size.X, bottomMenuHeight);
-                ImGui.SetNextWindowPos(new Vector2(SpaceWork.Viewport.WorkPos.X, SpaceWork.Viewport.WorkPos.Y + dockSize.Y + 31 + bottomMenuHeight / 2));
+                Vector2F menuSize = new Vector2F(SpaceWork.Viewport.Size.X, bottomMenuHeight);
+                ImGui.SetNextWindowPos(new Vector2F(SpaceWork.Viewport.WorkPos.X, SpaceWork.Viewport.WorkPos.Y + dockSize.Y + 31 + bottomMenuHeight / 2));
                 ImGui.SetNextWindowSize(menuSize);
             }
             else
             {
-                Vector2 dockSize = SpaceWork.Viewport.Size - new Vector2(5, 35);
+                Vector2F dockSize = SpaceWork.Viewport.Size - new Vector2F(5, 35);
 
                 // Menú inferior
-                Vector2 menuSize = new Vector2(SpaceWork.Viewport.Size.X, bottomMenuHeight);
-                ImGui.SetNextWindowPos(new Vector2(SpaceWork.Viewport.WorkPos.X, SpaceWork.Viewport.WorkPos.Y + dockSize.Y + 8));
+                Vector2F menuSize = new Vector2F(SpaceWork.Viewport.Size.X, bottomMenuHeight);
+                ImGui.SetNextWindowPos(new Vector2F(SpaceWork.Viewport.WorkPos.X, SpaceWork.Viewport.WorkPos.Y + dockSize.Y + 8));
                 ImGui.SetNextWindowSize(menuSize);
             }
 
 
             // Configuración de estilo
-            //ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2(0, 0));
-            //ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(0, 0));
+            //ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2F(0, 0));
+            //ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(0, 0));
 
             if (ImGui.Begin("Bottom Menu", ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoScrollbar))
             {
@@ -153,7 +153,7 @@ namespace Alis.App.Engine.Menus
 
                 /*
                 // Botón de guardar
-                if (ImGui.Button($"{FontAwesome5.Save}##save", new Vector2(32, 32)))
+                if (ImGui.Button($"{FontAwesome5.Save}##save", new Vector2F(32, 32)))
                 {
                     Console.WriteLine("Guardando...");
                     // Lógica para guardar el proyecto
@@ -167,7 +167,7 @@ namespace Alis.App.Engine.Menus
 
                 /*
                 // Botón de deshacer
-                if (ImGui.Button($"{FontAwesome5.Undo}##undo", new Vector2(32, 32)))
+                if (ImGui.Button($"{FontAwesome5.Undo}##undo", new Vector2F(32, 32)))
                 {
                     Console.WriteLine("Deshaciendo...");
                     // Lógica para deshacer
@@ -178,7 +178,7 @@ namespace Alis.App.Engine.Menus
                 //ImGui.EndTooltip();
 
                 // Botón de rehacer
-                if (ImGui.Button($"{FontAwesome5.Redo}##redo", new Vector2(32, 32)))
+                if (ImGui.Button($"{FontAwesome5.Redo}##redo", new Vector2F(32, 32)))
                 {
                     Console.WriteLine("Rehaciendo...");
                     // Lógica para rehacer
@@ -202,7 +202,7 @@ namespace Alis.App.Engine.Menus
 
                 /*
                 // Botón de herramientas rápidas
-                if (ImGui.Button($"{FontAwesome5.Tools}##tools", new Vector2(32, 32)))
+                if (ImGui.Button($"{FontAwesome5.Tools}##tools", new Vector2F(32, 32)))
                 {
                     ImGui.OpenPopup("ToolsMenu");
                 }*/
@@ -245,7 +245,7 @@ namespace Alis.App.Engine.Menus
 
                 // Barra de carga alineada a la derecha
                 ImGui.SetCursorPosX(ImGui.GetContentRegionMax().X - 150); // Ajustar según el tamaño de la barra
-                ImGui.ProgressBar(0.65f, new Vector2(150, 20), "3/15"); // Ejemplo de barra al 65%
+                ImGui.ProgressBar(0.65f, new Vector2F(150, 20), "3/15"); // Ejemplo de barra al 65%
 
                 ImGui.End();
             }

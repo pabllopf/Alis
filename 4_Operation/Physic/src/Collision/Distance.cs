@@ -118,7 +118,7 @@ namespace Alis.Core.Physic.Collision
 
                 //FPE: This code was not used anyway.
                 // Compute closest point.
-                //Vector2 p = simplex.GetClosestPoint();
+                //Vector2F p = simplex.GetClosestPoint();
                 //float distanceSqr2 = p.LengthSquared();
 
                 // Ensure progress
@@ -129,7 +129,7 @@ namespace Alis.Core.Physic.Collision
                 //distanceSqr1 = distanceSqr2;
 
                 // Get search direction.
-                Vector2 d = simplex.GetSearchDirection();
+                Vector2F d = simplex.GetSearchDirection();
 
                 // Ensure the search direction is numerically fit.
                 if (d.LengthSquared() < SettingEnv.Epsilon * SettingEnv.Epsilon)
@@ -206,7 +206,7 @@ namespace Alis.Core.Physic.Collision
                     // Shapes are still no overlapped.
                     // Move the witness points to the outer surface.
                     output.Distance -= rA + rB;
-                    Vector2 normal = output.PointB - output.PointA;
+                    Vector2F normal = output.PointB - output.PointA;
                     normal.Normalize();
                     output.PointA += rA * normal;
                     output.PointB -= rB * normal;
@@ -215,7 +215,7 @@ namespace Alis.Core.Physic.Collision
                 {
                     // Shapes are overlapped when radii are considered.
                     // Move the witness points to the middle.
-                    Vector2 p = 0.5f * (output.PointA + output.PointB);
+                    Vector2F p = 0.5f * (output.PointA + output.PointB);
                     output.PointA = p;
                     output.PointB = p;
                     output.Distance = 0.0f;

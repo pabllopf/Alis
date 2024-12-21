@@ -323,7 +323,7 @@ namespace Alis.Core.Sample
             //float PIXELS_PER_METER = 32f;
 
             /* Circle */
-            Vector2 playerPosition = new Vector2(0, 50);
+            Vector2F playerPosition = new Vector2F(0, 50);
 
             // Create the player fixture
             _playerBody = world.CreateBody(playerPosition, 0, BodyType.Dynamic);
@@ -333,18 +333,18 @@ namespace Alis.Core.Sample
             pfixture.Restitution = 0.3f;
             pfixture.Friction = 0.5f;
 
-            Vector2 sizeBox = new Vector2(10, 1);
+            Vector2F sizeBox = new Vector2F(10, 1);
             Body box = world.CreateRectangle(sizeBox.X, sizeBox.Y, 1);
             box.BodyType = BodyType.Static;
-            box.Position = new Vector2(0, 0);
+            box.Position = new Vector2F(0, 0);
             box.SetFriction(0.5f);
             box.SetRestitution(0.3f);
 
 
-            Vector2 textureBoxSize = new Vector2(1, 1);
+            Vector2F textureBoxSize = new Vector2F(1, 1);
             Body textureBox = world.CreateRectangle(textureBoxSize.X, textureBoxSize.Y, 1);
             textureBox.BodyType = BodyType.Static;
-            textureBox.Position = new Vector2(5, 5);
+            textureBox.Position = new Vector2F(5, 5);
             textureBox.SetFriction(0.5f);
             textureBox.SetRestitution(0.3f);
 
@@ -399,7 +399,7 @@ namespace Alis.Core.Sample
             }
 
             _fontManager = new FontManager(_renderer, RendererFlips.FlipVertical);
-            _fontManager.LoadFont("MONO", 16, Color.White, Color.Black, $"{Environment.CurrentDirectory}/Assets/MONO_V5.bmp");
+            _fontManager.LoadFont("MONO", 16, Color.White, Color.Black, $"{AppDomain.CurrentDomain.BaseDirectory}/Assets/MONO_V5.bmp");
 
             // Llama al método que inicializa el menú
             //createCustomMenu();
@@ -480,7 +480,7 @@ namespace Alis.Core.Sample
 
                             if (_sdlEvent.key.KeySym.sym == KeyCodes.Space)
                             {
-                                _playerBody.ApplyLinearImpulse(new Vector2(0, 10));
+                                _playerBody.ApplyLinearImpulse(new Vector2F(0, 10));
                             }
 
                             //Logger.Info(_sdlEvent.key.KeySym.sym + " was pressed");

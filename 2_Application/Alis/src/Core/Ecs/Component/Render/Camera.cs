@@ -50,7 +50,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     The position
         /// </summary>
-        [JsonPropertyName("_Position_")] public Vector2 Position;
+        [JsonPropertyName("_Position_")] public Vector2F Position;
 
         /// <summary>
         ///     The viewport
@@ -64,7 +64,7 @@ namespace Alis.Core.Ecs.Component.Render
         {
             Viewport = new RectangleI(0, 0, 800, 600);
             TextureTarget = IntPtr.Zero;
-            Resolution = new Vector2(800, 600);
+            Resolution = new Vector2F(800, 600);
             BackgroundColor = Color.Black;
             CameraBorder = 1f;
         }
@@ -81,7 +81,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <param name="backgroundColor">The background color</param>
         /// <param name="cameraBorder">The camera border</param>
         [JsonConstructor]
-        public Camera(string id, string name, string tag, bool isEnable, RectangleI viewport, Vector2 resolution, Color backgroundColor, float cameraBorder)
+        public Camera(string id, string name, string tag, bool isEnable, RectangleI viewport, Vector2F resolution, Color backgroundColor, float cameraBorder)
         {
             Id = id;
             Name = name;
@@ -103,7 +103,7 @@ namespace Alis.Core.Ecs.Component.Render
         ///     Gets or sets the value of the resolution
         /// </summary>
         [JsonPropertyName("_Resolution_")]
-        public Vector2 Resolution { get; set; }
+        public Vector2F Resolution { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the background color

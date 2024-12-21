@@ -57,7 +57,7 @@ namespace Alis.Sample.Snake
         /// <summary>
         ///     The vector
         /// </summary>
-        private Vector2 _direction = new Vector2(1, 0);
+        private Vector2F _direction = new Vector2F(1, 0);
 
         /// <summary>
         ///     The move timer
@@ -98,21 +98,21 @@ namespace Alis.Sample.Snake
         /// <param name="key">The key</param>
         public override void OnPressKey(KeyCodes key)
         {
-            if ((key == KeyCodes.W) && (_direction != new Vector2(0, -1)))
+            if ((key == KeyCodes.W) && (_direction != new Vector2F(0, -1)))
             {
-                _direction = new Vector2(0, 1);
+                _direction = new Vector2F(0, 1);
             }
-            else if ((key == KeyCodes.S) && (_direction != new Vector2(0, 1)))
+            else if ((key == KeyCodes.S) && (_direction != new Vector2F(0, 1)))
             {
-                _direction = new Vector2(0, -1);
+                _direction = new Vector2F(0, -1);
             }
-            else if ((key == KeyCodes.A) && (_direction != new Vector2(1, 0)))
+            else if ((key == KeyCodes.A) && (_direction != new Vector2F(1, 0)))
             {
-                _direction = new Vector2(-1, 0);
+                _direction = new Vector2F(-1, 0);
             }
-            else if ((key == KeyCodes.D) && (_direction != new Vector2(-1, 0)))
+            else if ((key == KeyCodes.D) && (_direction != new Vector2F(-1, 0)))
             {
-                _direction = new Vector2(1, 0);
+                _direction = new Vector2F(1, 0);
             }
         }
 
@@ -130,7 +130,7 @@ namespace Alis.Sample.Snake
         /// </summary>
         private void Move()
         {
-            Vector2 newPosition = _boxCollider.Body.Position + _direction * 1; // Move by 1 meter (32 pixels)
+            Vector2F newPosition = _boxCollider.Body.Position + _direction * 1; // Move by 1 meter (32 pixels)
 
             for (int i = _snakeBody.Count - 1; i > 0; i--)
             {

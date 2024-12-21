@@ -189,7 +189,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="step">The step</param>
         /// <param name="gravity">The gravity</param>
-        internal void Solve(ref TimeStep step, ref Vector2 gravity)
+        internal void Solve(ref TimeStep step, ref Vector2F gravity)
         {
             float h = step.dt;
 
@@ -198,9 +198,9 @@ namespace Alis.Core.Physic.Dynamics
             {
                 Body b = Bodies[i];
 
-                Vector2 c = b._sweep.C;
+                Vector2F c = b._sweep.C;
                 float a = b._sweep.A;
-                Vector2 v = b._linearVelocity;
+                Vector2F v = b._linearVelocity;
                 float w = b._angularVelocity;
 
                 // Store positions for continuous collision.
@@ -309,14 +309,14 @@ namespace Alis.Core.Physic.Dynamics
             // Integrate positions
             for (int i = 0; i < BodyCount; ++i)
             {
-                Vector2 c = _positions[i].c;
+                Vector2F c = _positions[i].c;
                 float a = _positions[i].a;
-                Vector2 v = _velocities[i].v;
+                Vector2F v = _velocities[i].v;
                 float w = _velocities[i].w;
 
                 // Check for large velocities
-                Vector2 translation = h * v;
-                if (Vector2.Dot(translation, translation) > SettingEnv.MaxTranslationSquared)
+                Vector2F translation = h * v;
+                if (Vector2F.Dot(translation, translation) > SettingEnv.MaxTranslationSquared)
                 {
                     float ratio = SettingEnv.MaxTranslation / translation.Length();
                     v *= ratio;
@@ -411,7 +411,7 @@ namespace Alis.Core.Physic.Dynamics
                         continue;
                     }
 
-                    if (!b.SleepingAllowed || b._angularVelocity * b._angularVelocity > AngTolSqr || Vector2.Dot(b._linearVelocity, b._linearVelocity) > LinTolSqr)
+                    if (!b.SleepingAllowed || b._angularVelocity * b._angularVelocity > AngTolSqr || Vector2F.Dot(b._linearVelocity, b._linearVelocity) > LinTolSqr)
                     {
                         b._sleepTime = 0.0f;
                         minSleepTime = 0.0f;
@@ -492,14 +492,14 @@ namespace Alis.Core.Physic.Dynamics
             // Integrate positions.
             for (int i = 0; i < BodyCount; ++i)
             {
-                Vector2 c = _positions[i].c;
+                Vector2F c = _positions[i].c;
                 float a = _positions[i].a;
-                Vector2 v = _velocities[i].v;
+                Vector2F v = _velocities[i].v;
                 float w = _velocities[i].w;
 
                 // Check for large velocities
-                Vector2 translation = h * v;
-                if (Vector2.Dot(translation, translation) > SettingEnv.MaxTranslationSquared)
+                Vector2F translation = h * v;
+                if (Vector2F.Dot(translation, translation) > SettingEnv.MaxTranslationSquared)
                 {
                     float ratio = SettingEnv.MaxTranslation / translation.Length();
                     v *= ratio;

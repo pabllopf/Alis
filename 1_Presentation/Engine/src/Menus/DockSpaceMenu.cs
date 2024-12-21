@@ -65,11 +65,11 @@ namespace Alis.App.Engine.Menus
         {
             // Establece el padding de la ventana
             //ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0);  // Igual padding arriba y abajo
-            //ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(4, 4f));
-            //ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2(4, 4));
+            //ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(4, 4f));
+            //ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2F(4, 4));
 
             // Set height of the menu bar
-            //ImGui.SetWindowSize(new Vector2(0, 5), ImGuiCond.Always);
+            //ImGui.SetWindowSize(new Vector2F(0, 5), ImGuiCond.Always);
 
 
             // Crear barra de menú
@@ -82,11 +82,11 @@ namespace Alis.App.Engine.Menus
 
                 // Establece la posición de la ventana de manera que se centre verticalmente
                 //ImGui.SetCursorPosY(2.5f); // Ajuste para alinear mejor el contenido
-                //ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(4, 5f)); // Ajustar el espaciado si es necesario
+                //ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(4, 5f)); // Ajustar el espaciado si es necesario
 
                 // Establecer el color de fondo de los botones
-                ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0.15f, 0.15f, 0.15f, 1.0f));
-                ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4(0.15f, 0.15f, 0.15f, 1.0f));
+                ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.15f, 0.15f, 0.15f, 1.0f));
+                ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.15f, 0.15f, 0.15f, 1.0f));
                 // quit border:
                 ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0);
 
@@ -95,7 +95,7 @@ namespace Alis.App.Engine.Menus
                 {
                     // Lógica para retroceder
                     Console.WriteLine("Retrocediendo...");
-                    ImGui.LoadIniSettingsFromDisk(AssetManager.Find("default_config.ini"));
+                    ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_default_config.ini"));
                 }
 
                 ImGui.SameLine();
@@ -104,7 +104,7 @@ namespace Alis.App.Engine.Menus
                 {
                     // Lógica para avanzar
                     Console.WriteLine("Avanzando...");
-                    ImGui.LoadIniSettingsFromDisk(AssetManager.Find("tall_config.ini"));
+                    ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_tall_config.ini"));
                 }
 
                 ImGui.SameLine();

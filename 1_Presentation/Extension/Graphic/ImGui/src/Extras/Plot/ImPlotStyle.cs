@@ -94,187 +94,187 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <summary>
         ///     The major tick len
         /// </summary>
-        public Vector2 MajorTickLen { get; set; }
+        public Vector2F MajorTickLen { get; set; }
 
         /// <summary>
         ///     The minor tick len
         /// </summary>
-        public Vector2 MinorTickLen { get; set; }
+        public Vector2F MinorTickLen { get; set; }
 
         /// <summary>
         ///     The major tick size
         /// </summary>
-        public Vector2 MajorTickSize { get; set; }
+        public Vector2F MajorTickSize { get; set; }
 
         /// <summary>
         ///     The minor tick size
         /// </summary>
-        public Vector2 MinorTickSize { get; set; }
+        public Vector2F MinorTickSize { get; set; }
 
         /// <summary>
         ///     The major grid size
         /// </summary>
-        public Vector2 MajorGridSize { get; set; }
+        public Vector2F MajorGridSize { get; set; }
 
         /// <summary>
         ///     The minor grid size
         /// </summary>
-        public Vector2 MinorGridSize { get; set; }
+        public Vector2F MinorGridSize { get; set; }
 
         /// <summary>
         ///     The plot padding
         /// </summary>
-        public Vector2 PlotPadding { get; set; }
+        public Vector2F PlotPadding { get; set; }
 
         /// <summary>
         ///     The label padding
         /// </summary>
-        public Vector2 LabelPadding { get; set; }
+        public Vector2F LabelPadding { get; set; }
 
         /// <summary>
         ///     The legend padding
         /// </summary>
-        public Vector2 LegendPadding { get; set; }
+        public Vector2F LegendPadding { get; set; }
 
         /// <summary>
         ///     The legend inner padding
         /// </summary>
-        public Vector2 LegendInnerPadding { get; set; }
+        public Vector2F LegendInnerPadding { get; set; }
 
         /// <summary>
         ///     The legend spacing
         /// </summary>
-        public Vector2 LegendSpacing { get; set; }
+        public Vector2F LegendSpacing { get; set; }
 
         /// <summary>
         ///     The mouse pos padding
         /// </summary>
-        public Vector2 MousePosPadding { get; set; }
+        public Vector2F MousePosPadding { get; set; }
 
         /// <summary>
         ///     The annotation padding
         /// </summary>
-        public Vector2 AnnotationPadding { get; set; }
+        public Vector2F AnnotationPadding { get; set; }
 
         /// <summary>
         ///     The fit padding
         /// </summary>
-        public Vector2 FitPadding { get; set; }
+        public Vector2F FitPadding { get; set; }
 
         /// <summary>
         ///     The plot default size
         /// </summary>
-        public Vector2 PlotDefaultSize { get; set; }
+        public Vector2F PlotDefaultSize { get; set; }
 
         /// <summary>
         ///     The plot min size
         /// </summary>
-        public Vector2 PlotMinSize { get; set; }
+        public Vector2F PlotMinSize { get; set; }
 
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors0 { get; set; }
+        public Vector4F Colors0 { get; set; }
 
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors1 { get; set; }
+        public Vector4F Colors1 { get; set; }
 
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors2 { get; set; }
+        public Vector4F Colors2 { get; set; }
 
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors3 { get; set; }
+        public Vector4F Colors3 { get; set; }
 
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors4 { get; set; }
+        public Vector4F Colors4 { get; set; }
 
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors5 { get; set; }
+        public Vector4F Colors5 { get; set; }
 
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors6 { get; set; }
+        public Vector4F Colors6 { get; set; }
 
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors7 { get; set; }
+        public Vector4F Colors7 { get; set; }
 
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors8 { get; set; }
+        public Vector4F Colors8 { get; set; }
 
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors9 { get; set; }
+        public Vector4F Colors9 { get; set; }
 
         /// <summary>
         ///     The colors 10
         /// </summary>
-        public Vector4 Colors10 { get; set; }
+        public Vector4F Colors10 { get; set; }
 
         /// <summary>
         ///     The colors 11
         /// </summary>
-        public Vector4 Colors11 { get; set; }
+        public Vector4F Colors11 { get; set; }
 
         /// <summary>
         ///     The colors 12
         /// </summary>
-        public Vector4 Colors12 { get; set; }
+        public Vector4F Colors12 { get; set; }
 
         /// <summary>
         ///     The colors 13
         /// </summary>
-        public Vector4 Colors13 { get; set; }
+        public Vector4F Colors13 { get; set; }
 
         /// <summary>
         ///     The colors 14
         /// </summary>
-        public Vector4 Colors14 { get; set; }
+        public Vector4F Colors14 { get; set; }
 
         /// <summary>
         ///     The colors 15
         /// </summary>
-        public Vector4 Colors15 { get; set; }
+        public Vector4F Colors15 { get; set; }
 
         /// <summary>
         ///     The colors 16
         /// </summary>
-        public Vector4 Colors16 { get; set; }
+        public Vector4F Colors16 { get; set; }
 
         /// <summary>
         ///     The colors 17
         /// </summary>
-        public Vector4 Colors17 { get; set; }
+        public Vector4F Colors17 { get; set; }
 
         /// <summary>
         ///     The colors 18
         /// </summary>
-        public Vector4 Colors18 { get; set; }
+        public Vector4F Colors18 { get; set; }
 
         /// <summary>
         ///     The colors 19
         /// </summary>
-        public Vector4 Colors19 { get; set; }
+        public Vector4F Colors19 { get; set; }
 
         /// <summary>
         ///     The colors 20
         /// </summary>
-        public Vector4 Colors20 { get; set; }
+        public Vector4F Colors20 { get; set; }
 
         /// <summary>
         ///     The colormap

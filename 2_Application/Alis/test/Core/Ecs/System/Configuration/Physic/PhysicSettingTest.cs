@@ -86,12 +86,12 @@ namespace Alis.Test.Core.Ecs.System.Configuration.Physic
             PhysicSetting physicSetting = new PhysicSetting();
 
             // Act
-            physicSetting.Gravity = new Vector2(0.0f, -9.8f);
-            Vector2 result = physicSetting.Gravity;
+            physicSetting.Gravity = new Vector2F(0.0f, -9.8f);
+            Vector2F result = physicSetting.Gravity;
 
             // Assert
             Assert.NotNull(physicSetting);
-            Assert.Equal(new Vector2(0.0f, -9.8f), result);
+            Assert.Equal(new Vector2F(0.0f, -9.8f), result);
         }
 
         /// <summary>

@@ -39,7 +39,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The value
         /// </summary>
-        public Vector4 Value { get; set; }
+        public Vector4F Value { get; set; }
 
         /// <summary>
         ///     Sets the hsv using the specified h

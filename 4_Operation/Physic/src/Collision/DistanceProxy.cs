@@ -120,13 +120,13 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         /// <param name="direction">The direction.</param>
         /// <returns></returns>
-        public int GetSupport(Vector2 direction)
+        public int GetSupport(Vector2F direction)
         {
             int bestIndex = 0;
-            float bestValue = Vector2.Dot(Vertices[0], direction);
+            float bestValue = Vector2F.Dot(Vertices[0], direction);
             for (int i = 1; i < Vertices.Count; ++i)
             {
-                float value = Vector2.Dot(Vertices[i], direction);
+                float value = Vector2F.Dot(Vertices[i], direction);
                 if (value > bestValue)
                 {
                     bestIndex = i;
@@ -142,13 +142,13 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         /// <param name="direction">The direction.</param>
         /// <returns></returns>
-        public Vector2 GetSupportVertex(Vector2 direction)
+        public Vector2F GetSupportVertex(Vector2F direction)
         {
             int bestIndex = 0;
-            float bestValue = Vector2.Dot(Vertices[0], direction);
+            float bestValue = Vector2F.Dot(Vertices[0], direction);
             for (int i = 1; i < Vertices.Count; ++i)
             {
-                float value = Vector2.Dot(Vertices[i], direction);
+                float value = Vector2F.Dot(Vertices[i], direction);
                 if (value > bestValue)
                 {
                     bestIndex = i;

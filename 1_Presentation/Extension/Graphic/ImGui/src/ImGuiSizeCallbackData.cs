@@ -45,16 +45,16 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The pos
         /// </summary>
-        public Vector2 Pos { get; set; }
+        public Vector2F Pos { get; set; }
 
         /// <summary>
         ///     The current size
         /// </summary>
-        public Vector2 CurrentSize { get; set; }
+        public Vector2F CurrentSize { get; set; }
 
         /// <summary>
         ///     The desired size
         /// </summary>
-        public Vector2 DesiredSize { get; set; }
+        public Vector2F DesiredSize { get; set; }
     }
 }

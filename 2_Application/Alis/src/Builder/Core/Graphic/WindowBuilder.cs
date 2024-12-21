@@ -96,7 +96,7 @@ namespace Alis.Builder.Core.Graphic
         /// <returns>The window builder</returns>
         public WindowBuilder Resolution(float x, float y)
         {
-            window.Resolution = new Vector2(x, y);
+            window.Resolution = new Vector2F(x, y);
             return this;
         }
     }

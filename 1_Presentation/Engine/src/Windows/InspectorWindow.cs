@@ -141,7 +141,7 @@ namespace Alis.App.Engine.Windows
                 return;
             }
 
-            if (ImGui.BeginChild("##Header", new Vector2(ImGui.GetContentRegionAvail().X, 80), true, ImGuiWindowFlags.NoCollapse))
+            if (ImGui.BeginChild("##Header", new Vector2F(ImGui.GetContentRegionAvail().X, 80), true, ImGuiWindowFlags.NoCollapse))
             {
                 // Icon of the object:
                 ImGui.PushFont(SpaceWork.fontLoaded30Bold);
@@ -210,11 +210,11 @@ namespace Alis.App.Engine.Windows
             // Transform
             if (ImGui.CollapsingHeader($"{FontAwesome5.Compass} Transform", ImGuiTreeNodeFlags.DefaultOpen))
             {
-                if(ImGui.BeginChild("##Transform", new Vector2(ImGui.GetContentRegionAvail().X, 105), true, ImGuiWindowFlags.NoCollapse))
+                if(ImGui.BeginChild("##Transform", new Vector2F(ImGui.GetContentRegionAvail().X, 105), true, ImGuiWindowFlags.NoCollapse))
                 {
                     ImGui.AlignTextToFramePadding();
                     ImGui.Text("Position"); ImGui.SameLine(80);
-                    Vector2 position = _selectedGameObject.Transform.Position;
+                    Vector2F position = _selectedGameObject.Transform.Position;
                     ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
                     ImGui.DragFloat2("##Position", ref position , 0.1f, -1000, 1000, "%.2f", ImGuiSliderFlags.AlwaysClamp);
 
@@ -226,7 +226,7 @@ namespace Alis.App.Engine.Windows
 
                     ImGui.AlignTextToFramePadding();
                     ImGui.Text("Scale"); ImGui.SameLine(80);
-                    Vector2 scale = _selectedGameObject.Transform.Scale;
+                    Vector2F scale = _selectedGameObject.Transform.Scale;
                     ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
                     ImGui.DragFloat2("##Scale", ref scale, 0.1f, -1000, 1000, "%.2f", ImGuiSliderFlags.AlwaysClamp);
 
@@ -271,7 +271,7 @@ namespace Alis.App.Engine.Windows
                         }
                     }
 
-                    if (ImGui.BeginChild($"##{component.GetType().Name}", new Vector2(ImGui.GetContentRegionAvail().X, counter * 35), true, ImGuiWindowFlags.NoCollapse))
+                    if (ImGui.BeginChild($"##{component.GetType().Name}", new Vector2F(ImGui.GetContentRegionAvail().X, counter * 35), true, ImGuiWindowFlags.NoCollapse))
                     {
                         RenderComponentProperties(component);
                     }
@@ -333,15 +333,15 @@ namespace Alis.App.Engine.Windows
                             ImGui.Checkbox(propertyId, ref boolValue);
                             property.SetValue(component, boolValue);
                             break;
-                        case Vector2 vector2Value:
+                        case Vector2F vector2Value:
                             ImGui.DragFloat2(propertyId, ref vector2Value, 0.1f, -1000, 1000, "%.2f", ImGuiSliderFlags.AlwaysClamp);
                             property.SetValue(component, vector2Value);
                             break;
-                        case Vector3 vector3Value:
+                        case Vector3F vector3Value:
                             ImGui.DragFloat3(propertyId, ref vector3Value, 0.1f, -1000, 1000, "%.2f", ImGuiSliderFlags.AlwaysClamp);
                             property.SetValue(component, vector3Value);
                             break;
-                        case Vector4 vector4Value:
+                        case Vector4F vector4Value:
                             ImGui.DragFloat4(propertyId, ref vector4Value, 0.1f, -1000, 1000, "%.2f", ImGuiSliderFlags.AlwaysClamp);
                             property.SetValue(component, vector4Value);
                             break;

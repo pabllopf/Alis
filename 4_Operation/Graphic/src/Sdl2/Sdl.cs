@@ -1140,11 +1140,11 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns></returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2 GetWindowSize([IsNotNull] IntPtr window)
+        public static Vector2F GetWindowSize([IsNotNull] IntPtr window)
         {
             Validator.Validate(window, nameof(window));
             NativeSdl.InternalGetWindowSize(window, out int w, out int h);
-            return new Vector2(w, h);
+            return new Vector2F(w, h);
         }
 
         /// <summary>

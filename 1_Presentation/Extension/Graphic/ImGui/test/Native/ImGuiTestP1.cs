@@ -110,7 +110,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void DockSpace_ShouldThrowDllNotFoundException_v2()
         {
-            Vector2 size = new Vector2();
+            Vector2F size = new Vector2F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DockSpace(1, size));
         }
 
@@ -120,7 +120,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void DockSpace_ShouldThrowDllNotFoundException_v3()
         {
-            Vector2 size = new Vector2();
+            Vector2F size = new Vector2F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DockSpace(1, size, 0));
         }
 
@@ -130,7 +130,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void DockSpace_ShouldThrowDllNotFoundException_v4()
         {
-            Vector2 size = new Vector2();
+            Vector2F size = new Vector2F();
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DockSpace(1, size, 0, windowClass));
         }
@@ -241,7 +241,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void DragFloat2_ShouldThrowDllNotFoundException_v1()
         {
-            Vector2 v = new Vector2();
+            Vector2F v = new Vector2F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat2("label", ref v));
         }
 
@@ -251,7 +251,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void DragFloat2_ShouldThrowDllNotFoundException_v2()
         {
-            Vector2 v = new Vector2();
+            Vector2F v = new Vector2F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat2("label", ref v, 1.0f));
         }
 
@@ -261,7 +261,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void DragFloat2_ShouldThrowDllNotFoundException_v3()
         {
-            Vector2 v = new Vector2();
+            Vector2F v = new Vector2F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat2("label", ref v, 1.0f, 0.0f));
         }
 
@@ -271,7 +271,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void DragFloat2_ShouldThrowDllNotFoundException_v4()
         {
-            Vector2 v = new Vector2();
+            Vector2F v = new Vector2F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat2("label", ref v, 1.0f, 0.0f, 1.0f));
         }
 
@@ -281,7 +281,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void DragFloat2_ShouldThrowDllNotFoundException_v5()
         {
-            Vector2 v = new Vector2();
+            Vector2F v = new Vector2F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat2("label", ref v, 1.0f, 0.0f, 1.0f, "format"));
         }
 
@@ -291,7 +291,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void DragFloat2_ShouldThrowDllNotFoundException_v6()
         {
-            Vector2 v = new Vector2();
+            Vector2F v = new Vector2F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat2("label", ref v, 1.0f, 0.0f, 1.0f, "format", 0));
         }
 
@@ -301,7 +301,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void DragFloat3_ShouldThrowDllNotFoundException_v1()
         {
-            Vector3 v = new Vector3();
+            Vector3F v = new Vector3F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat3("label", ref v));
         }
 
@@ -311,7 +311,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void DragFloat3_ShouldThrowDllNotFoundException_v2()
         {
-            Vector3 v = new Vector3();
+            Vector3F v = new Vector3F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat3("label", ref v, 1.0f));
         }
 
@@ -321,7 +321,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void DragFloat3_ShouldThrowDllNotFoundException_v3()
         {
-            Vector3 v = new Vector3();
+            Vector3F v = new Vector3F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat3("label", ref v, 1.0f, 0.0f));
         }
 
@@ -331,7 +331,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void DragFloat3_ShouldThrowDllNotFoundException_v4()
         {
-            Vector3 v = new Vector3();
+            Vector3F v = new Vector3F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat3("label", ref v, 1.0f, 0.0f, 1.0f));
         }
 
@@ -341,7 +341,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void DragFloat3_ShouldThrowDllNotFoundException_v5()
         {
-            Vector3 v = new Vector3();
+            Vector3F v = new Vector3F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat3("label", ref v, 1.0f, 0.0f, 1.0f, "format"));
         }
 
@@ -351,7 +351,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void DragFloat3_ShouldThrowDllNotFoundException_v6()
         {
-            Vector3 v = new Vector3();
+            Vector3F v = new Vector3F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat3("label", ref v, 1.0f, 0.0f, 1.0f, "format", 0));
         }
 
@@ -361,7 +361,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void DragFloat4_ShouldThrowDllNotFoundException_v1()
         {
-            Vector4 v = new Vector4();
+            Vector4F v = new Vector4F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat4("label", ref v));
         }
 
@@ -371,7 +371,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void DragFloat4_ShouldThrowDllNotFoundException_v2()
         {
-            Vector4 v = new Vector4();
+            Vector4F v = new Vector4F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat4("label", ref v, 1.0f));
         }
 
@@ -381,7 +381,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void DragFloat4_ShouldThrowDllNotFoundException_v3()
         {
-            Vector4 v = new Vector4();
+            Vector4F v = new Vector4F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat4("label", ref v, 1.0f, 0.0f));
         }
 
@@ -391,7 +391,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void DragFloat4_ShouldThrowDllNotFoundException_v4()
         {
-            Vector4 v = new Vector4();
+            Vector4F v = new Vector4F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat4("label", ref v, 1.0f, 0.0f, 1.0f));
         }
 
@@ -401,7 +401,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void DragFloat4_ShouldThrowDllNotFoundException_v5()
         {
-            Vector4 v = new Vector4();
+            Vector4F v = new Vector4F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat4("label", ref v, 1.0f, 0.0f, 1.0f, "format"));
         }
 
@@ -411,7 +411,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void DragFloat4_ShouldThrowDllNotFoundException_v6()
         {
-            Vector4 v = new Vector4();
+            Vector4F v = new Vector4F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat4("label", ref v, 1.0f, 0.0f, 1.0f, "format", 0));
         }
 

@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The display size
         /// </summary>
-        public Vector2 DisplaySize { get; set; }
+        public Vector2F DisplaySize { get; set; }
 
         /// <summary>
         ///     The delta time
@@ -137,7 +137,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The display framebuffer scale
         /// </summary>
-        public Vector2 DisplayFramebufferScale { get; set; }
+        public Vector2F DisplayFramebufferScale { get; set; }
 
         /// <summary>
         ///     The config docking no split
@@ -342,7 +342,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The mouse delta
         /// </summary>
-        public Vector2 MouseDelta { get; set; }
+        public Vector2F MouseDelta { get; set; }
 
         /// <summary>
         ///     The key map
@@ -365,7 +365,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The mouse pos
         /// </summary>
-        public Vector2 MousePos { get; set; }
+        public Vector2F MousePos { get; set; }
 
         /// <summary>
         ///     The mouse down
@@ -3681,32 +3681,32 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The mouse pos prev
         /// </summary>
-        public Vector2 MousePosPrev { get; set; }
+        public Vector2F MousePosPrev { get; set; }
 
         /// <summary>
         ///     The mouseclickedpos
         /// </summary>
-        public Vector2 MouseClickedPos0 { get; }
+        public Vector2F MouseClickedPos0 { get; }
 
         /// <summary>
         ///     The mouseclickedpos
         /// </summary>
-        public Vector2 MouseClickedPos1 { get; set; }
+        public Vector2F MouseClickedPos1 { get; set; }
 
         /// <summary>
         ///     The mouseclickedpos
         /// </summary>
-        public Vector2 MouseClickedPos2 { get; set; }
+        public Vector2F MouseClickedPos2 { get; set; }
 
         /// <summary>
         ///     The mouseclickedpos
         /// </summary>
-        public Vector2 MouseClickedPos3 { get; set; }
+        public Vector2F MouseClickedPos3 { get; set; }
 
         /// <summary>
         ///     The mouseclickedpos
         /// </summary>
-        public Vector2 MouseClickedPos4 { get; set; }
+        public Vector2F MouseClickedPos4 { get; set; }
 
         /// <summary>
         ///     The mouse clicked time
@@ -3771,27 +3771,27 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The mousedragmaxdistanceabs
         /// </summary>
-        public Vector2 MouseDragMaxDistanceAbs0 { get; set; }
+        public Vector2F MouseDragMaxDistanceAbs0 { get; set; }
 
         /// <summary>
         ///     The mousedragmaxdistanceabs
         /// </summary>
-        public Vector2 MouseDragMaxDistanceAbs1 { get; set; }
+        public Vector2F MouseDragMaxDistanceAbs1 { get; set; }
 
         /// <summary>
         ///     The mousedragmaxdistanceabs
         /// </summary>
-        public Vector2 MouseDragMaxDistanceAbs2 { get; set; }
+        public Vector2F MouseDragMaxDistanceAbs2 { get; set; }
 
         /// <summary>
         ///     The mousedragmaxdistanceabs
         /// </summary>
-        public Vector2 MouseDragMaxDistanceAbs3 { get; set; }
+        public Vector2F MouseDragMaxDistanceAbs3 { get; set; }
 
         /// <summary>
         ///     The mousedragmaxdistanceabs
         /// </summary>
-        public Vector2 MouseDragMaxDistanceAbs4 { get; set; }
+        public Vector2F MouseDragMaxDistanceAbs4 { get; set; }
 
         /// <summary>
         ///     The mouse drag max distance sqr

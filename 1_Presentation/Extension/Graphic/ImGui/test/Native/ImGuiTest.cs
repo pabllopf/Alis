@@ -131,7 +131,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void Test_DockSpace_WithIdAndSize()
         {
-            Vector2 size = new Vector2();
+            Vector2F size = new Vector2F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DockSpace(1, size));
         }
 
@@ -141,7 +141,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void Test_DockSpace_WithIdAndSizeAndFlags()
         {
-            Vector2 size = new Vector2();
+            Vector2F size = new Vector2F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DockSpace(1, size, 0));
         }
 
@@ -151,7 +151,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void Test_DockSpace_WithIdAndSizeAndFlagsAndWindowClass()
         {
-            Vector2 size = new Vector2();
+            Vector2F size = new Vector2F();
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DockSpace(1, size, 0, windowClass));
         }
@@ -263,7 +263,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void Test_DragFloat2_WithLabelAndV()
         {
-            Vector2 v = new Vector2();
+            Vector2F v = new Vector2F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat2("label", ref v));
         }
 
@@ -273,7 +273,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void Test_DragFloat2_WithLabelAndVAndVSpeed()
         {
-            Vector2 v = new Vector2();
+            Vector2F v = new Vector2F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat2("label", ref v, 1.0f));
         }
 
@@ -283,7 +283,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void Test_DragFloat2_WithLabelAndVAndVSpeedAndVMin()
         {
-            Vector2 v = new Vector2();
+            Vector2F v = new Vector2F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat2("label", ref v, 1.0f, 0.0f));
         }
 
@@ -293,7 +293,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void Test_DragFloat2_WithLabelAndVAndVSpeedAndVMinAndVMax()
         {
-            Vector2 v = new Vector2();
+            Vector2F v = new Vector2F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat2("label", ref v, 1.0f, 0.0f, 1.0f));
         }
 
@@ -303,7 +303,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void Test_DragFloat2_WithLabelAndVAndVSpeedAndVMinAndVMaxAndFormat()
         {
-            Vector2 v = new Vector2();
+            Vector2F v = new Vector2F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat2("label", ref v, 1.0f, 0.0f, 1.0f, "%.3f"));
         }
 
@@ -313,7 +313,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void Test_DragFloat2_WithLabelAndVAndVSpeedAndVMinAndVMaxAndFormatAndFlags()
         {
-            Vector2 v = new Vector2();
+            Vector2F v = new Vector2F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat2("label", ref v, 1.0f, 0.0f, 1.0f, "%.3f", 0));
         }
 
@@ -323,7 +323,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void Test_DragFloat3_WithLabelAndV()
         {
-            Vector3 v = new Vector3();
+            Vector3F v = new Vector3F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat3("label", ref v));
         }
 
@@ -333,7 +333,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void Test_DragFloat3_WithLabelAndVAndVSpeed()
         {
-            Vector3 v = new Vector3();
+            Vector3F v = new Vector3F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat3("label", ref v, 1.0f));
         }
 
@@ -344,7 +344,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void Test_DragFloat3_WithLabelAndVAndVSpeedAndVMin()
         {
-            Vector3 v = new Vector3();
+            Vector3F v = new Vector3F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat3("label", ref v, 1.0f, 0.0f));
         }
 
@@ -354,7 +354,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void Test_DragFloat3_WithLabelAndVAndVSpeedAndVMinAndVMax()
         {
-            Vector3 v = new Vector3();
+            Vector3F v = new Vector3F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat3("label", ref v, 1.0f, 0.0f, 1.0f));
         }
 
@@ -364,7 +364,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void Test_DragFloat3_WithLabelAndVAndVSpeedAndVMinAndVMaxAndFormat()
         {
-            Vector3 v = new Vector3();
+            Vector3F v = new Vector3F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat3("label", ref v, 1.0f, 0.0f, 1.0f, "%.3f"));
         }
 
@@ -374,7 +374,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void Test_DragFloat3_WithLabelAndVAndVSpeedAndVMinAndVMaxAndFormatAndFlags()
         {
-            Vector3 v = new Vector3();
+            Vector3F v = new Vector3F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat3("label", ref v, 1.0f, 0.0f, 1.0f, "%.3f", 0));
         }
 
@@ -384,7 +384,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void Test_DragFloat4_WithLabelAndV()
         {
-            Vector4 v = new Vector4();
+            Vector4F v = new Vector4F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat4("label", ref v));
         }
 
@@ -394,7 +394,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void Test_DragFloat4_WithLabelAndVAndVSpeed()
         {
-            Vector4 v = new Vector4();
+            Vector4F v = new Vector4F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat4("label", ref v, 1.0f));
         }
 
@@ -404,7 +404,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void Test_DragFloat4_WithLabelAndVAndVSpeedAndVMin()
         {
-            Vector4 v = new Vector4();
+            Vector4F v = new Vector4F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat4("label", ref v, 1.0f, 0.0f));
         }
 
@@ -414,7 +414,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void Test_DragFloat4_WithLabelAndVAndVSpeedAndVMinAndVMax()
         {
-            Vector4 v = new Vector4();
+            Vector4F v = new Vector4F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat4("label", ref v, 1.0f, 0.0f, 1.0f));
         }
 
@@ -425,7 +425,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void Test_DragFloat4_WithLabelAndVAndVSpeedAndVMinAndVMaxAndFormat()
         {
-            Vector4 v = new Vector4();
+            Vector4F v = new Vector4F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat4("label", ref v, 1.0f, 0.0f, 1.0f, "%.3f"));
         }
 
@@ -435,7 +435,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void Test_DragFloat4_WithLabelAndVAndVSpeedAndVMinAndVMaxAndFormatAndFlags()
         {
-            Vector4 v = new Vector4();
+            Vector4F v = new Vector4F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat4("label", ref v, 1.0f, 0.0f, 1.0f, "%.3f", 0));
         }
 
@@ -535,7 +535,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void Test_SliderFloat4_WithLabelAndVAndVMinAndVMaxAndFormatAndFlags()
         {
-            Vector4 v = new Vector4();
+            Vector4F v = new Vector4F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderFloat4("label", ref v, 0.0f, 1.0f, "%.3f", 0));
         }
 
@@ -1538,7 +1538,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void IsMouseHoveringRect_NoClip_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsMouseHoveringRect(new Vector2(), new Vector2(), 1));
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsMouseHoveringRect(new Vector2F(), new Vector2F(), 1));
         }
 
         /// <summary>
@@ -1547,7 +1547,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void IsMouseHoveringRect_WithClip_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsMouseHoveringRect(new Vector2(), new Vector2(), 0));
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsMouseHoveringRect(new Vector2F(), new Vector2F(), 0));
         }
 
         /// <summary>
@@ -1556,7 +1556,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void IsMousePosValid_NoPos_ThrowsDllNotFoundException()
         {
-            Vector2 mousePos = Vector2.Zero;
+            Vector2F mousePos = Vector2F.Zero;
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsMousePosValid(ref mousePos));
         }
 
@@ -1566,7 +1566,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void IsMousePosValid_WithPos_ThrowsDllNotFoundException()
         {
-            Vector2 mousePos = new Vector2(1, 1);
+            Vector2F mousePos = new Vector2F(1, 1);
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsMousePosValid(ref mousePos));
         }
 
@@ -1603,7 +1603,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void IsRectVisible_NoMinMax_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsRectVisible_Nil(new Vector2()));
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsRectVisible_Nil(new Vector2F()));
         }
 
         /// <summary>
@@ -1612,7 +1612,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void IsRectVisible_WithMinMax_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsRectVisible_Vec2(new Vector2(), new Vector2()));
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsRectVisible_Vec2(new Vector2F(), new Vector2F()));
         }
 
         /// <summary>

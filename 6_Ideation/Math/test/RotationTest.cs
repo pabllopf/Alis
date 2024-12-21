@@ -119,10 +119,10 @@ namespace Alis.Core.Aspect.Math.Test
             Rotation rotation = new Rotation(angle);
 
             // Act
-            Vector2 result = rotation.GetXAxis();
+            Vector2F result = rotation.GetXAxis();
 
             // Assert
-            Assert.Equal(new Vector2(rotation.Cosine, rotation.Sine), result);
+            Assert.Equal(new Vector2F(rotation.Cosine, rotation.Sine), result);
         }
 
         /// <summary>
@@ -136,10 +136,10 @@ namespace Alis.Core.Aspect.Math.Test
             Rotation rotation = new Rotation(angle);
 
             // Act
-            Vector2 result = rotation.GetYAxis();
+            Vector2F result = rotation.GetYAxis();
 
             // Assert
-            Assert.Equal(new Vector2(-rotation.Sine, rotation.Cosine), result);
+            Assert.Equal(new Vector2F(-rotation.Sine, rotation.Cosine), result);
         }
 
         /// <summary>

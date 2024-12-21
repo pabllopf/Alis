@@ -148,12 +148,12 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the tex uv scale
         /// </summary>
-        public Vector2 TexUvScale => Marshal.PtrToStructure<ImFontAtlas>(NativePtr).TexUvScale;
+        public Vector2F TexUvScale => Marshal.PtrToStructure<ImFontAtlas>(NativePtr).TexUvScale;
 
         /// <summary>
         ///     Gets the value of the tex uv white pixel
         /// </summary>
-        public Vector2 TexUvWhitePixel => Marshal.PtrToStructure<ImFontAtlas>(NativePtr).TexUvWhitePixel;
+        public Vector2F TexUvWhitePixel => Marshal.PtrToStructure<ImFontAtlas>(NativePtr).TexUvWhitePixel;
 
         /// <summary>
         ///     Gets the value of the fonts
@@ -205,7 +205,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The ret</returns>
         public int AddCustomRectFontGlyph(ImFontPtr font, ushort id, int width, int height, float advanceX)
         {
-            Vector2 offset = new Vector2();
+            Vector2F offset = new Vector2F();
             int ret = ImGuiNative.ImFontAtlas_AddCustomRectFontGlyph(NativePtr, font.NativePtr, id, width, height, advanceX, offset);
             return ret;
         }
@@ -220,7 +220,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="advanceX">The advance</param>
         /// <param name="offset">The offset</param>
         /// <returns>The ret</returns>
-        public int AddCustomRectFontGlyph(ImFontPtr font, ushort id, int width, int height, float advanceX, Vector2 offset)
+        public int AddCustomRectFontGlyph(ImFontPtr font, ushort id, int width, int height, float advanceX, Vector2F offset)
         {
             int ret = ImGuiNative.ImFontAtlas_AddCustomRectFontGlyph(NativePtr, font.NativePtr, id, width, height, advanceX, offset);
             return ret;
@@ -440,7 +440,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="rect">The rect</param>
         /// <param name="outUvMin">The out uv min</param>
         /// <param name="outUvMax">The out uv max</param>
-        public void CalcCustomRectUv(ImFontAtlasCustomRect rect, out Vector2 outUvMin, out Vector2 outUvMax)
+        public void CalcCustomRectUv(ImFontAtlasCustomRect rect, out Vector2F outUvMin, out Vector2F outUvMax)
         {
             ImGuiNative.ImFontAtlas_CalcCustomRectUV(NativePtr, rect, out outUvMin, out outUvMax);
         }
@@ -575,7 +575,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="outUvBorder">The out uv border</param>
         /// <param name="outUvFill">The out uv fill</param>
         /// <returns>The bool</returns>
-        public bool GetMouseCursorTexData(ImGuiMouseCursor cursor, out Vector2 outOffset, out Vector2 outSize, out Vector2 outUvBorder, out Vector2 outUvFill)
+        public bool GetMouseCursorTexData(ImGuiMouseCursor cursor, out Vector2F outOffset, out Vector2F outSize, out Vector2F outUvBorder, out Vector2F outUvFill)
         {
             byte ret = ImGuiNative.ImFontAtlas_GetMouseCursorTexData(NativePtr, cursor, out outOffset, out outSize, out outUvBorder, out outUvFill);
             return ret != 0;

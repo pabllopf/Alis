@@ -43,7 +43,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>
         ///     The position
         /// </summary>
-        internal Vector2 _position;
+        internal Vector2F _position;
 
         /// <summary>
         ///     Create a new circle with the desired radius and density.
@@ -57,7 +57,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             Debug.Assert(density >= 0);
 
             ShapeType = ShapeType.Circle;
-            _position = Vector2.Zero;
+            _position = Vector2F.Zero;
             Radius = radius; // The Radius property cache 2radius and calls ComputeProperties(). So no need to call ComputeProperties() here.
         }
 
@@ -69,7 +69,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         {
             ShapeType = ShapeType.Circle;
             _radius = 0.0f;
-            _position = Vector2.Zero;
+            _position = Vector2F.Zero;
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>
         ///     Get or set the position of the circle
         /// </summary>
-        public Vector2 Position
+        public Vector2F Position
         {
             get => _position;
             set
@@ -96,11 +96,11 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="transform">The transform</param>
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
-        public override bool TestPoint(ref Transform transform, ref Vector2 point)
+        public override bool TestPoint(ref Transform transform, ref Vector2F point)
         {
-            Vector2 center = transform.p + Complex.Multiply(ref _position, ref transform.q);
-            Vector2 d = point - center;
-            return Vector2.Dot(d, d) <= _2radius;
+            Vector2F center = transform.p + Complex.Multiply(ref _position, ref transform.q);
+            Vector2F d = point - center;
+            return Vector2F.Dot(d, d) <= _2radius;
         }
 
         /// <summary>
@@ -120,14 +120,14 @@ namespace Alis.Core.Physic.Collision.Shapes
 
             output = new RayCastOutput();
 
-            Vector2 position = transform.p + Complex.Multiply(ref _position, ref transform.q);
-            Vector2 s = input.Point1 - position;
-            float b = Vector2.Dot(s, s) - _2radius;
+            Vector2F position = transform.p + Complex.Multiply(ref _position, ref transform.q);
+            Vector2F s = input.Point1 - position;
+            float b = Vector2F.Dot(s, s) - _2radius;
 
             // Solve quadratic equation.
-            Vector2 r = input.Point2 - input.Point1;
-            float c = Vector2.Dot(s, r);
-            float rr = Vector2.Dot(r, r);
+            Vector2F r = input.Point2 - input.Point1;
+            float c = Vector2F.Dot(s, r);
+            float rr = Vector2F.Dot(r, r);
             float sigma = c * c - rr * b;
 
             // Check for negative discriminant and short segment.
@@ -162,15 +162,15 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="childIndex">The child index</param>
         public override void ComputeAABB(out AABB aabb, ref Transform transform, int childIndex)
         {
-            // OPT: Vector2 p = transform.p + Complex.Multiply(ref _position, ref transform.q);
+            // OPT: Vector2F p = transform.p + Complex.Multiply(ref _position, ref transform.q);
             float pX = _position.X * transform.q.R - _position.Y * transform.q.i + transform.p.X;
             float pY = _position.Y * transform.q.R + _position.X * transform.q.i + transform.p.Y;
 
-            // OPT: aabb.LowerBound = new Vector2(p.X - Radius, p.Y - Radius);
-            // OPT: aabb.UpperBound = new Vector2(p.X + Radius, p.Y + Radius);
-            aabb.LowerBound = new Vector2(pX - Radius, pY - Radius);
+            // OPT: aabb.LowerBound = new Vector2F(p.X - Radius, p.Y - Radius);
+            // OPT: aabb.UpperBound = new Vector2F(p.X + Radius, p.Y + Radius);
+            aabb.LowerBound = new Vector2F(pX - Radius, pY - Radius);
 
-            aabb.UpperBound = new Vector2(pX + Radius, pY + Radius);
+            aabb.UpperBound = new Vector2F(pX + Radius, pY + Radius);
         }
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             MassData.Centroid = Position;
 
             // inertia about the local origin
-            MassData.Inertia = MassData.Mass * (0.5f * _2radius + Vector2.Dot(Position, Position));
+            MassData.Inertia = MassData.Mass * (0.5f * _2radius + Vector2F.Dot(Position, Position));
         }
 
         /// <summary>
@@ -195,12 +195,12 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="xf">The xf</param>
         /// <param name="sc">The sc</param>
         /// <returns>The area</returns>
-        public override float ComputeSubmergedArea(ref Vector2 normal, float offset, ref Transform xf, out Vector2 sc)
+        public override float ComputeSubmergedArea(ref Vector2F normal, float offset, ref Transform xf, out Vector2F sc)
         {
-            sc = Vector2.Zero;
+            sc = Vector2F.Zero;
 
-            Vector2 p = Transform.Multiply(ref _position, ref xf);
-            float l = -(Vector2.Dot(normal, p) - offset);
+            Vector2F p = Transform.Multiply(ref _position, ref xf);
+            float l = -(Vector2F.Dot(normal, p) - offset);
             if (l < -Radius + SettingEnv.Epsilon)
             {
                 //Completely dry

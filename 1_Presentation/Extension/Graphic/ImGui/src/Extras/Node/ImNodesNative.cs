@@ -158,7 +158,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_EditorContextGetPanning")]
-        internal static extern void ImNodes_EditorContextGetPanning(out Vector2 pOut);
+        internal static extern void ImNodes_EditorContextGetPanning(out Vector2F pOut);
 
         /// <summary>
         ///     Ims the nodes editor context move to node using the specified node id
@@ -172,7 +172,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <param name="pos">The pos</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_EditorContextResetPanning")]
-        internal static extern void ImNodes_EditorContextResetPanning(Vector2 pos);
+        internal static extern void ImNodes_EditorContextResetPanning(Vector2F pos);
 
         /// <summary>
         ///     Ims the nodes editor context set using the specified noname 1
@@ -237,7 +237,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="pOut">The out</param>
         /// <param name="id">The id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_GetNodeDimensions")]
-        internal static extern void ImNodes_GetNodeDimensions(out Vector2 pOut, int id);
+        internal static extern void ImNodes_GetNodeDimensions(out Vector2F pOut, int id);
 
         /// <summary>
         ///     Ims the nodes get node editor space pos using the specified p out
@@ -245,7 +245,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="pOut">The out</param>
         /// <param name="nodeId">The node id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_GetNodeEditorSpacePos")]
-        internal static extern void ImNodes_GetNodeEditorSpacePos(out Vector2 pOut, int nodeId);
+        internal static extern void ImNodes_GetNodeEditorSpacePos(out Vector2F pOut, int nodeId);
 
         /// <summary>
         ///     Ims the nodes get node grid space pos using the specified p out
@@ -253,7 +253,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="pOut">The out</param>
         /// <param name="nodeId">The node id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_GetNodeGridSpacePos")]
-        internal static extern void ImNodes_GetNodeGridSpacePos(out Vector2 pOut, int nodeId);
+        internal static extern void ImNodes_GetNodeGridSpacePos(out Vector2F pOut, int nodeId);
 
         /// <summary>
         ///     Ims the nodes get node screen space pos using the specified p out
@@ -261,7 +261,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="pOut">The out</param>
         /// <param name="nodeId">The node id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_GetNodeScreenSpacePos")]
-        internal static extern void ImNodes_GetNodeScreenSpacePos(out Vector2 pOut, int nodeId);
+        internal static extern void ImNodes_GetNodeScreenSpacePos(out Vector2F pOut, int nodeId);
 
         /// <summary>
         ///     Ims the nodes get selected links using the specified link ids
@@ -506,7 +506,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="styleItem">The style item</param>
         /// <param name="value">The value</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_PushStyleVar_Vec2")]
-        internal static extern void ImNodes_PushStyleVar_Vec2(ImNodesStyleVar styleItem, Vector2 value);
+        internal static extern void ImNodes_PushStyleVar_Vec2(ImNodesStyleVar styleItem, Vector2F value);
 
         /// <summary>
         ///     Ims the nodes save current editor state to ini file using the specified file name
@@ -582,7 +582,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="nodeId">The node id</param>
         /// <param name="editorSpacePos">The editor space pos</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_SetNodeEditorSpacePos")]
-        internal static extern void ImNodes_SetNodeEditorSpacePos(int nodeId, Vector2 editorSpacePos);
+        internal static extern void ImNodes_SetNodeEditorSpacePos(int nodeId, Vector2F editorSpacePos);
 
         /// <summary>
         ///     Ims the nodes set node grid space pos using the specified node id
@@ -590,7 +590,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="nodeId">The node id</param>
         /// <param name="gridPos">The grid pos</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_SetNodeGridSpacePos")]
-        internal static extern void ImNodes_SetNodeGridSpacePos(int nodeId, Vector2 gridPos);
+        internal static extern void ImNodes_SetNodeGridSpacePos(int nodeId, Vector2F gridPos);
 
         /// <summary>
         ///     Ims the nodes set node screen space pos using the specified node id
@@ -598,7 +598,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="nodeId">The node id</param>
         /// <param name="screenSpacePos">The screen space pos</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_SetNodeScreenSpacePos")]
-        internal static extern void ImNodes_SetNodeScreenSpacePos(int nodeId, Vector2 screenSpacePos);
+        internal static extern void ImNodes_SetNodeScreenSpacePos(int nodeId, Vector2F screenSpacePos);
 
         /// <summary>
         ///     Ims the nodes snap node to grid using the specified node id

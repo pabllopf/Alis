@@ -202,7 +202,7 @@ namespace Alis.Core.Graphic.Sample
             IntPtr textureTile = Sdl.CreateTextureFromSurface(renderer, imageTilePtr);
 
             FontManager fontManager = new FontManager(renderer, RendererFlips.None);
-            fontManager.LoadFont("MONO", 16, Color.Black, Color.White, $"{Environment.CurrentDirectory}/Assets/MONO_V5.bmp");
+            fontManager.LoadFont("MONO", 16, Color.Black, Color.White, $"{AppDomain.CurrentDomain.BaseDirectory}/Assets/MONO_V5.bmp");
 
             while (_running)
             {

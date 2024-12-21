@@ -45,7 +45,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="v">The </param>
         /// <param name="format">The format</param>
         /// <returns>The bool</returns>
-        public static bool InputFloat4(string label, ref Vector4 v, string format)
+        public static bool InputFloat4(string label, ref Vector4F v, string format)
         {
             byte ret = ImGuiNative.igInputFloat4(Encoding.UTF8.GetBytes(label), ref v, Encoding.UTF8.GetBytes(format), ImGuiInputTextFlags.None);
 
@@ -60,7 +60,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The bool</returns>
-        public static bool InputFloat4(string label, ref Vector4 v, string format, ImGuiInputTextFlags flags)
+        public static bool InputFloat4(string label, ref Vector4F v, string format, ImGuiInputTextFlags flags)
         {
             byte ret = ImGuiNative.igInputFloat4(Encoding.UTF8.GetBytes(label), ref v, Encoding.UTF8.GetBytes(format), flags);
             return ret != 0;
@@ -368,7 +368,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="strId">The str id</param>
         /// <param name="size">The size</param>
         /// <returns>The bool</returns>
-        public static bool InvisibleButton(string strId, Vector2 size)
+        public static bool InvisibleButton(string strId, Vector2F size)
         {
             byte ret = ImGuiNative.igInvisibleButton(Encoding.UTF8.GetBytes(strId), size, ImGuiButtonFlags.None);
             return ret != 0;
@@ -381,7 +381,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="size">The size</param>
         /// <param name="flags">The flags</param>
         /// <returns>The bool</returns>
-        public static bool InvisibleButton(string strId, Vector2 size, ImGuiButtonFlags flags)
+        public static bool InvisibleButton(string strId, Vector2F size, ImGuiButtonFlags flags)
         {
             byte ret = ImGuiNative.igInvisibleButton(Encoding.UTF8.GetBytes(strId), size, flags);
             return ret != 0;
@@ -675,7 +675,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="rMin">The min</param>
         /// <param name="rMax">The max</param>
         /// <returns>The bool</returns>
-        public static bool IsMouseHoveringRect(Vector2 rMin, Vector2 rMax)
+        public static bool IsMouseHoveringRect(Vector2F rMin, Vector2F rMax)
         {
             byte clip = 1;
             byte ret = ImGuiNative.igIsMouseHoveringRect(rMin, rMax, clip);
@@ -689,7 +689,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="rMax">The max</param>
         /// <param name="clip">The clip</param>
         /// <returns>The bool</returns>
-        public static bool IsMouseHoveringRect(Vector2 rMin, Vector2 rMax, bool clip)
+        public static bool IsMouseHoveringRect(Vector2F rMin, Vector2F rMax, bool clip)
         {
             byte nativeClip = clip ? (byte) 1 : (byte) 0;
             byte ret = ImGuiNative.igIsMouseHoveringRect(rMin, rMax, nativeClip);
@@ -702,7 +702,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool IsMousePosValid()
         {
-            Vector2 mousePos = Vector2.Zero;
+            Vector2F mousePos = Vector2F.Zero;
             byte ret = ImGuiNative.igIsMousePosValid(ref mousePos);
             return ret != 0;
         }
@@ -712,7 +712,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// </summary>
         /// <param name="mousePos">The mouse pos</param>
         /// <returns>The bool</returns>
-        public static bool IsMousePosValid(ref Vector2 mousePos)
+        public static bool IsMousePosValid(ref Vector2F mousePos)
         {
             byte ret = ImGuiNative.igIsMousePosValid(ref mousePos);
             return ret != 0;
@@ -758,7 +758,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// </summary>
         /// <param name="size">The size</param>
         /// <returns>The bool</returns>
-        public static bool IsRectVisible(Vector2 size)
+        public static bool IsRectVisible(Vector2F size)
         {
             byte ret = ImGuiNative.igIsRectVisible_Nil(size);
             return ret != 0;
@@ -770,7 +770,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="rectMin">The rect min</param>
         /// <param name="rectMax">The rect max</param>
         /// <returns>The bool</returns>
-        public static bool IsRectVisible(Vector2 rectMin, Vector2 rectMax)
+        public static bool IsRectVisible(Vector2F rectMin, Vector2F rectMax)
         {
             byte ret = ImGuiNative.igIsRectVisible_Vec2(rectMin, rectMax);
             return ret != 0;

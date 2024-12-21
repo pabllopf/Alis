@@ -119,7 +119,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void BeginChild_WithStrIdAndSize_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginChild("strId", new Vector2()));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginChild("strId", new Vector2F()));
         }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void BeginChild_WithStrIdSizeAndBorder_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginChild("strId", new Vector2(), true));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginChild("strId", new Vector2F(), true));
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void BeginChild_WithStrIdSizeBorderAndFlags_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginChild("strId", new Vector2(), true, ImGuiWindowFlags.None));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginChild("strId", new Vector2F(), true, ImGuiWindowFlags.None));
         }
 
         /// <summary>
@@ -155,7 +155,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void BeginChild_WithIdAndSize_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginChild(1u, new Vector2()));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginChild(1u, new Vector2F()));
         }
 
         /// <summary>
@@ -164,7 +164,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void BeginChild_WithIdSizeAndBorder_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginChild(1u, new Vector2(), true));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginChild(1u, new Vector2F(), true));
         }
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void BeginChild_WithIdSizeBorderAndFlags_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginChild(1u, new Vector2(), true, ImGuiWindowFlags.None));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginChild(1u, new Vector2F(), true, ImGuiWindowFlags.None));
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void BeginChildFrame_WithIdAndSize_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginChildFrame(1u, new Vector2()));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginChildFrame(1u, new Vector2F()));
         }
 
         /// <summary>
@@ -191,7 +191,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void BeginChildFrame_WithIdSizeAndFlags_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginChildFrame(1u, new Vector2(), ImGuiWindowFlags.None));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginChildFrame(1u, new Vector2F(), ImGuiWindowFlags.None));
         }
 
         /// <summary>
@@ -281,7 +281,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void BeginListBox_WithLabelAndSize_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginListBox("label", new Vector2()));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginListBox("label", new Vector2F()));
         }
 
         /// <summary>
@@ -519,7 +519,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void BeginTable_WithStrIdColumnFlagsAndOuterSize_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginTable("strId", 1, ImGuiTableFlags.None, new Vector2()));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginTable("strId", 1, ImGuiTableFlags.None, new Vector2F()));
         }
 
         /// <summary>
@@ -528,7 +528,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void BeginTable_WithStrIdColumnFlagsOuterSizeAndInnerWidth_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginTable("strId", 1, ImGuiTableFlags.None, new Vector2(), 0.0f));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginTable("strId", 1, ImGuiTableFlags.None, new Vector2F(), 0.0f));
         }
 
         /// <summary>
@@ -573,7 +573,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void Button_WithLabelAndSize_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Button("label", new Vector2()));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Button("label", new Vector2F()));
         }
 
         /// <summary>
@@ -668,7 +668,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void ColorButton_WithDescIdAndCol_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorButton("descId", new Vector4()));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorButton("descId", new Vector4F()));
         }
 
         /// <summary>
@@ -677,7 +677,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void ColorButton_WithDescIdColAndFlags_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorButton("descId", new Vector4(), ImGuiColorEditFlags.None));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorButton("descId", new Vector4F(), ImGuiColorEditFlags.None));
         }
 
         /// <summary>
@@ -686,7 +686,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void ColorButton_WithDescIdColFlagsAndSize_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorButton("descId", new Vector4(), ImGuiColorEditFlags.None, new Vector2()));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorButton("descId", new Vector4F(), ImGuiColorEditFlags.None, new Vector2F()));
         }
 
         /// <summary>
@@ -695,7 +695,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void ColorConvertFloat4ToU32_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorConvertFloat4ToU32(new Vector4()));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorConvertFloat4ToU32(new Vector4F()));
         }
 
         /// <summary>
@@ -731,7 +731,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void ColorEdit3_WithLabelAndRefVector3_ThrowsDllNotFoundException()
         {
-            Vector3 col = new Vector3();
+            Vector3F col = new Vector3F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorEdit3("label", ref col));
         }
 
@@ -741,7 +741,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void ColorEdit3_WithLabelRefVector3AndFlags_ThrowsDllNotFoundException()
         {
-            Vector3 col = new Vector3();
+            Vector3F col = new Vector3F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorEdit3("label", ref col, ImGuiColorEditFlags.None));
         }
 
@@ -751,7 +751,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void ColorEdit4_WithLabelAndRefVector4_ThrowsDllNotFoundException()
         {
-            Vector4 col = new Vector4();
+            Vector4F col = new Vector4F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorEdit4("label", ref col));
         }
 
@@ -761,7 +761,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void ColorEdit4_WithLabelRefVector4AndFlags_ThrowsDllNotFoundException()
         {
-            Vector4 col = new Vector4();
+            Vector4F col = new Vector4F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorEdit4("label", ref col, ImGuiColorEditFlags.None));
         }
 
@@ -771,7 +771,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void ColorPicker3_WithLabelAndRefVector3_ThrowsDllNotFoundException()
         {
-            Vector3 col = new Vector3();
+            Vector3F col = new Vector3F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorPicker3("label", ref col));
         }
 
@@ -781,7 +781,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void ColorPicker3_WithLabelRefVector3AndFlags_ThrowsDllNotFoundException()
         {
-            Vector3 col = new Vector3();
+            Vector3F col = new Vector3F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorPicker3("label", ref col, ImGuiColorEditFlags.None));
         }
 
@@ -791,7 +791,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void ColorPicker4_WithLabelAndRefVector4_ThrowsDllNotFoundException()
         {
-            Vector4 col = new Vector4();
+            Vector4F col = new Vector4F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorPicker4("label", ref col));
         }
 
@@ -801,7 +801,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void ColorPicker4_WithLabelRefVector4AndFlags_ThrowsDllNotFoundException()
         {
-            Vector4 col = new Vector4();
+            Vector4F col = new Vector4F();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorPicker4("label", ref col, ImGuiColorEditFlags.None));
         }
 
@@ -811,7 +811,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void ColorPicker4_WithLabelRefVector4FlagsAndRefCol_ThrowsDllNotFoundException()
         {
-            Vector4 col = new Vector4();
+            Vector4F col = new Vector4F();
             float refCol = 0.0f;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorPicker4("label", ref col, ImGuiColorEditFlags.None, ref refCol));
         }

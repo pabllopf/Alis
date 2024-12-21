@@ -62,7 +62,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The
         /// </summary>
-        private Vector2 _C;
+        private Vector2F _C;
 
         /// <summary>
         ///     The damping ratio
@@ -83,7 +83,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The impulse
         /// </summary>
-        private Vector2 _impulse;
+        private Vector2F _impulse;
 
         // Solver temp
         /// <summary>
@@ -104,7 +104,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The local center
         /// </summary>
-        private Vector2 _localCenterA;
+        private Vector2F _localCenterA;
 
         /// <summary>
         ///     The mass
@@ -119,12 +119,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The
         /// </summary>
-        private Vector2 _rA;
+        private Vector2F _rA;
 
         /// <summary>
         ///     The world anchor
         /// </summary>
-        private Vector2 _worldAnchor;
+        private Vector2F _worldAnchor;
 
         /// <summary>
         ///     This requires a world target point,
@@ -132,7 +132,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         /// <param name="body">The body.</param>
         /// <param name="worldAnchor">The target.</param>
-        public FixedMouseJoint(Body body, Vector2 worldAnchor)
+        public FixedMouseJoint(Body body, Vector2F worldAnchor)
             : base(body)
         {
             JointType = JointType.FixedMouse;
@@ -149,12 +149,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The local anchor point on BodyA
         /// </summary>
-        public Vector2 LocalAnchorA { get; set; }
+        public Vector2F LocalAnchorA { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the world anchor a
         /// </summary>
-        public override Vector2 WorldAnchorA
+        public override Vector2F WorldAnchorA
         {
             get => BodyA.GetWorldPoint(LocalAnchorA);
             set => LocalAnchorA = BodyA.GetLocalPoint(value);
@@ -163,7 +163,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Gets or sets the value of the world anchor b
         /// </summary>
-        public override Vector2 WorldAnchorB
+        public override Vector2F WorldAnchorB
         {
             get => _worldAnchor;
             set
@@ -219,7 +219,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vector</returns>
-        public override Vector2 GetReactionForce(float invDt) => invDt * _impulse;
+        public override Vector2F GetReactionForce(float invDt) => invDt * _impulse;
 
         /// <summary>
         ///     Gets the reaction torque using the specified inv dt
@@ -239,9 +239,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _invMassA = BodyA._invMass;
             _invIA = BodyA._invI;
 
-            Vector2 cA = data.positions[_indexA].c;
+            Vector2F cA = data.positions[_indexA].c;
             float aA = data.positions[_indexA].a;
-            Vector2 vA = data.velocities[_indexA].v;
+            Vector2F vA = data.velocities[_indexA].v;
             float wA = data.velocities[_indexA].w;
 
             Complex qA = Complex.FromAngle(aA);
@@ -297,7 +297,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
             else
             {
-                _impulse = Vector2.Zero;
+                _impulse = Vector2F.Zero;
             }
 
             data.velocities[_indexA].v = vA;
@@ -310,14 +310,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(ref SolverData data)
         {
-            Vector2 vA = data.velocities[_indexA].v;
+            Vector2F vA = data.velocities[_indexA].v;
             float wA = data.velocities[_indexA].w;
 
             // Cdot = v + cross(w, r)
-            Vector2 Cdot = vA + MathUtils.Cross(wA, ref _rA);
-            Vector2 impulse = MathUtils.Mul(ref _mass, -(Cdot + _C + _gamma * _impulse));
+            Vector2F Cdot = vA + MathUtils.Cross(wA, ref _rA);
+            Vector2F impulse = MathUtils.Mul(ref _mass, -(Cdot + _C + _gamma * _impulse));
 
-            Vector2 oldImpulse = _impulse;
+            Vector2F oldImpulse = _impulse;
             _impulse += impulse;
             float maxImpulse = data.step.dt * MaxForce;
             if (_impulse.LengthSquared() > maxImpulse * maxImpulse)

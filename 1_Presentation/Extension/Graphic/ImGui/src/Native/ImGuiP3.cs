@@ -103,7 +103,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Dummies the size
         /// </summary>
         /// <param name="size">The size</param>
-        public static void Dummy(Vector2 size)
+        public static void Dummy(Vector2F size)
         {
             ImGuiNative.igDummy(size);
         }
@@ -325,7 +325,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// </summary>
         /// <param name="col">The col</param>
         /// <returns>The ret</returns>
-        public static uint GetColorU32(Vector4 col)
+        public static uint GetColorU32(Vector4F col)
         {
             uint ret = ImGuiNative.igGetColorU32_Vec4(col);
             return ret;
@@ -410,9 +410,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Gets the content region avail
         /// </summary>
         /// <returns>The retval</returns>
-        public static Vector2 GetContentRegionAvail()
+        public static Vector2F GetContentRegionAvail()
         {
-            ImGuiNative.igGetContentRegionAvail(out Vector2 retval);
+            ImGuiNative.igGetContentRegionAvail(out Vector2F retval);
             return retval;
         }
 
@@ -420,9 +420,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Gets the content region max
         /// </summary>
         /// <returns>The retval</returns>
-        public static Vector2 GetContentRegionMax()
+        public static Vector2F GetContentRegionMax()
         {
-            ImGuiNative.igGetContentRegionMax(out Vector2 retval);
+            ImGuiNative.igGetContentRegionMax(out Vector2F retval);
             return retval;
         }
 
@@ -440,9 +440,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Gets the cursor pos
         /// </summary>
         /// <returns>The retval</returns>
-        public static Vector2 GetCursorPos()
+        public static Vector2F GetCursorPos()
         {
-            ImGuiNative.igGetCursorPos(out Vector2 retval);
+            ImGuiNative.igGetCursorPos(out Vector2F retval);
             return retval;
         }
 
@@ -470,9 +470,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Gets the cursor screen pos
         /// </summary>
         /// <returns>The retval</returns>
-        public static Vector2 GetCursorScreenPos()
+        public static Vector2F GetCursorScreenPos()
         {
-            ImGuiNative.igGetCursorScreenPos(out Vector2 retval);
+            ImGuiNative.igGetCursorScreenPos(out Vector2F retval);
             return retval;
         }
 
@@ -480,9 +480,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Gets the cursor start pos
         /// </summary>
         /// <returns>The retval</returns>
-        public static Vector2 GetCursorStartPos()
+        public static Vector2F GetCursorStartPos()
         {
-            ImGuiNative.igGetCursorStartPos(out Vector2 retval);
+            ImGuiNative.igGetCursorStartPos(out Vector2F retval);
             return retval;
         }
 
@@ -528,9 +528,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Gets the font tex uv white pixel
         /// </summary>
         /// <returns>The retval</returns>
-        public static Vector2 GetFontTexUvWhitePixel()
+        public static Vector2F GetFontTexUvWhitePixel()
         {
-            ImGuiNative.igGetFontTexUvWhitePixel(out Vector2 retval);
+            ImGuiNative.igGetFontTexUvWhitePixel(out Vector2F retval);
             return retval;
         }
 
@@ -618,9 +618,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Gets the item rect max
         /// </summary>
         /// <returns>The retval</returns>
-        public static Vector2 GetItemRectMax()
+        public static Vector2F GetItemRectMax()
         {
-            ImGuiNative.igGetItemRectMax(out Vector2 retval);
+            ImGuiNative.igGetItemRectMax(out Vector2F retval);
             return retval;
         }
 
@@ -628,9 +628,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Gets the item rect min
         /// </summary>
         /// <returns>The retval</returns>
-        public static Vector2 GetItemRectMin()
+        public static Vector2F GetItemRectMin()
         {
-            ImGuiNative.igGetItemRectMin(out Vector2 retval);
+            ImGuiNative.igGetItemRectMin(out Vector2F retval);
             return retval;
         }
 
@@ -638,9 +638,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Gets the item rect size
         /// </summary>
         /// <returns>The retval</returns>
-        public static Vector2 GetItemRectSize()
+        public static Vector2F GetItemRectSize()
         {
-            ImGuiNative.igGetItemRectSize(out Vector2 retval);
+            ImGuiNative.igGetItemRectSize(out Vector2F retval);
             return retval;
         }
 
@@ -706,11 +706,11 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Gets the mouse drag delta
         /// </summary>
         /// <returns>The retval</returns>
-        public static Vector2 GetMouseDragDelta()
+        public static Vector2F GetMouseDragDelta()
         {
             ImGuiMouseButton button = 0;
             float lockThreshold = -1.0f;
-            ImGuiNative.igGetMouseDragDelta(out Vector2 retval, button, lockThreshold);
+            ImGuiNative.igGetMouseDragDelta(out Vector2F retval, button, lockThreshold);
             return retval;
         }
 
@@ -719,10 +719,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// </summary>
         /// <param name="button">The button</param>
         /// <returns>The retval</returns>
-        public static Vector2 GetMouseDragDelta(ImGuiMouseButton button)
+        public static Vector2F GetMouseDragDelta(ImGuiMouseButton button)
         {
             float lockThreshold = -1.0f;
-            ImGuiNative.igGetMouseDragDelta(out Vector2 retval, button, lockThreshold);
+            ImGuiNative.igGetMouseDragDelta(out Vector2F retval, button, lockThreshold);
             return retval;
         }
 
@@ -732,9 +732,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="button">The button</param>
         /// <param name="lockThreshold">The lock threshold</param>
         /// <returns>The retval</returns>
-        public static Vector2 GetMouseDragDelta(ImGuiMouseButton button, float lockThreshold)
+        public static Vector2F GetMouseDragDelta(ImGuiMouseButton button, float lockThreshold)
         {
-            ImGuiNative.igGetMouseDragDelta(out Vector2 retval, button, lockThreshold);
+            ImGuiNative.igGetMouseDragDelta(out Vector2F retval, button, lockThreshold);
             return retval;
         }
 
@@ -742,9 +742,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Gets the mouse pos
         /// </summary>
         /// <returns>The retval</returns>
-        public static Vector2 GetMousePos()
+        public static Vector2F GetMousePos()
         {
-            ImGuiNative.igGetMousePos(out Vector2 retval);
+            ImGuiNative.igGetMousePos(out Vector2F retval);
             return retval;
         }
 
@@ -752,9 +752,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Gets the mouse pos on opening current popup
         /// </summary>
         /// <returns>The retval</returns>
-        public static Vector2 GetMousePosOnOpeningCurrentPopup()
+        public static Vector2F GetMousePosOnOpeningCurrentPopup()
         {
-            ImGuiNative.igGetMousePosOnOpeningCurrentPopup(out Vector2 retval);
+            ImGuiNative.igGetMousePosOnOpeningCurrentPopup(out Vector2F retval);
             return retval;
         }
 
@@ -828,9 +828,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// </summary>
         /// <param name="idx">The idx</param>
         /// <returns>The ret</returns>
-        public static Vector4 GetStyleColorVec4(ImGuiCol idx)
+        public static Vector4F GetStyleColorVec4(ImGuiCol idx)
         {
-            Vector4 ret = ImGuiNative.igGetStyleColorVec4(idx);
+            Vector4F ret = ImGuiNative.igGetStyleColorVec4(idx);
             return ret;
         }
 
@@ -884,9 +884,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Gets the window content region max
         /// </summary>
         /// <returns>The retval</returns>
-        public static Vector2 GetWindowContentRegionMax()
+        public static Vector2F GetWindowContentRegionMax()
         {
-            ImGuiNative.igGetWindowContentRegionMax(out Vector2 retval);
+            ImGuiNative.igGetWindowContentRegionMax(out Vector2F retval);
             return retval;
         }
 
@@ -894,9 +894,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Gets the window content region min
         /// </summary>
         /// <returns>The retval</returns>
-        public static Vector2 GetWindowContentRegionMin()
+        public static Vector2F GetWindowContentRegionMin()
         {
-            ImGuiNative.igGetWindowContentRegionMin(out Vector2 retval);
+            ImGuiNative.igGetWindowContentRegionMin(out Vector2F retval);
             return retval;
         }
 
@@ -940,9 +940,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Gets the window pos
         /// </summary>
         /// <returns>The retval</returns>
-        public static Vector2 GetWindowPos()
+        public static Vector2F GetWindowPos()
         {
-            ImGuiNative.igGetWindowPos(out Vector2 retval);
+            ImGuiNative.igGetWindowPos(out Vector2F retval);
             return retval;
         }
 
@@ -950,9 +950,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Gets the window size
         /// </summary>
         /// <returns>The retval</returns>
-        public static Vector2 GetWindowSize()
+        public static Vector2F GetWindowSize()
         {
-            ImGuiNative.igGetWindowSize(out Vector2 retval);
+            ImGuiNative.igGetWindowSize(out Vector2F retval);
             return retval;
         }
 
@@ -977,12 +977,12 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// </summary>
         /// <param name="userTextureId">The user texture id</param>
         /// <param name="size">The size</param>
-        public static void Image(IntPtr userTextureId, Vector2 size)
+        public static void Image(IntPtr userTextureId, Vector2F size)
         {
-            Vector2 uv0 = new Vector2();
-            Vector2 uv1 = new Vector2(1, 1);
-            Vector4 tintCol = new Vector4(1, 1, 1, 1);
-            Vector4 borderCol = new Vector4();
+            Vector2F uv0 = new Vector2F();
+            Vector2F uv1 = new Vector2F(1, 1);
+            Vector4F tintCol = new Vector4F(1, 1, 1, 1);
+            Vector4F borderCol = new Vector4F();
             ImGuiNative.igImage(userTextureId, size, uv0, uv1, tintCol, borderCol);
         }
 
@@ -992,11 +992,11 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="userTextureId">The user texture id</param>
         /// <param name="size">The size</param>
         /// <param name="uv0">The uv</param>
-        public static void Image(IntPtr userTextureId, Vector2 size, Vector2 uv0)
+        public static void Image(IntPtr userTextureId, Vector2F size, Vector2F uv0)
         {
-            Vector2 uv1 = new Vector2(1, 1);
-            Vector4 tintCol = new Vector4(1, 1, 1, 1);
-            Vector4 borderCol = new Vector4();
+            Vector2F uv1 = new Vector2F(1, 1);
+            Vector4F tintCol = new Vector4F(1, 1, 1, 1);
+            Vector4F borderCol = new Vector4F();
             ImGuiNative.igImage(userTextureId, size, uv0, uv1, tintCol, borderCol);
         }
 
@@ -1007,10 +1007,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="size">The size</param>
         /// <param name="uv0">The uv</param>
         /// <param name="uv1">The uv</param>
-        public static void Image(IntPtr userTextureId, Vector2 size, Vector2 uv0, Vector2 uv1)
+        public static void Image(IntPtr userTextureId, Vector2F size, Vector2F uv0, Vector2F uv1)
         {
-            Vector4 tintCol = new Vector4(1, 1, 1, 1);
-            Vector4 borderCol = new Vector4();
+            Vector4F tintCol = new Vector4F(1, 1, 1, 1);
+            Vector4F borderCol = new Vector4F();
             ImGuiNative.igImage(userTextureId, size, uv0, uv1, tintCol, borderCol);
         }
 
@@ -1022,9 +1022,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="uv0">The uv</param>
         /// <param name="uv1">The uv</param>
         /// <param name="tintCol">The tint col</param>
-        public static void Image(IntPtr userTextureId, Vector2 size, Vector2 uv0, Vector2 uv1, Vector4 tintCol)
+        public static void Image(IntPtr userTextureId, Vector2F size, Vector2F uv0, Vector2F uv1, Vector4F tintCol)
         {
-            Vector4 borderCol = new Vector4();
+            Vector4F borderCol = new Vector4F();
             ImGuiNative.igImage(userTextureId, size, uv0, uv1, tintCol, borderCol);
         }
 
@@ -1037,7 +1037,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="uv1">The uv</param>
         /// <param name="tintCol">The tint col</param>
         /// <param name="borderCol">The border col</param>
-        public static void Image(IntPtr userTextureId, Vector2 size, Vector2 uv0, Vector2 uv1, Vector4 tintCol, Vector4 borderCol)
+        public static void Image(IntPtr userTextureId, Vector2F size, Vector2F uv0, Vector2F uv1, Vector4F tintCol, Vector4F borderCol)
         {
             ImGuiNative.igImage(userTextureId, size, uv0, uv1, tintCol, borderCol);
         }
@@ -1049,9 +1049,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="userTextureId">The user texture id</param>
         /// <param name="size">The size</param>
         /// <returns>The bool</returns>
-        public static bool ImageButton(string strId, IntPtr userTextureId, Vector2 size)
+        public static bool ImageButton(string strId, IntPtr userTextureId, Vector2F size)
         {
-            byte ret = ImGuiNative.igImageButton(Encoding.UTF8.GetBytes(strId), userTextureId, size, new Vector2(), new Vector2(1, 1), new Vector4(), new Vector4(1, 1, 1, 1));
+            byte ret = ImGuiNative.igImageButton(Encoding.UTF8.GetBytes(strId), userTextureId, size, new Vector2F(), new Vector2F(1, 1), new Vector4F(), new Vector4F(1, 1, 1, 1));
             return ret != 0;
         }
 
@@ -1063,9 +1063,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="size">The size</param>
         /// <param name="uv0">The uv</param>
         /// <returns>The bool</returns>
-        public static bool ImageButton(string strId, IntPtr userTextureId, Vector2 size, Vector2 uv0)
+        public static bool ImageButton(string strId, IntPtr userTextureId, Vector2F size, Vector2F uv0)
         {
-            byte ret = ImGuiNative.igImageButton(Encoding.UTF8.GetBytes(strId), userTextureId, size, uv0, new Vector2(1, 1), new Vector4(), new Vector4(1, 1, 1, 1));
+            byte ret = ImGuiNative.igImageButton(Encoding.UTF8.GetBytes(strId), userTextureId, size, uv0, new Vector2F(1, 1), new Vector4F(), new Vector4F(1, 1, 1, 1));
             return ret != 0;
         }
 
@@ -1078,9 +1078,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="uv0">The uv</param>
         /// <param name="uv1">The uv</param>
         /// <returns>The bool</returns>
-        public static bool ImageButton(string strId, IntPtr userTextureId, Vector2 size, Vector2 uv0, Vector2 uv1)
+        public static bool ImageButton(string strId, IntPtr userTextureId, Vector2F size, Vector2F uv0, Vector2F uv1)
         {
-            byte ret = ImGuiNative.igImageButton(Encoding.UTF8.GetBytes(strId), userTextureId, size, uv0, uv1, new Vector4(), new Vector4(1, 1, 1, 1));
+            byte ret = ImGuiNative.igImageButton(Encoding.UTF8.GetBytes(strId), userTextureId, size, uv0, uv1, new Vector4F(), new Vector4F(1, 1, 1, 1));
             return ret != 0;
         }
 
@@ -1094,9 +1094,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="uv1">The uv</param>
         /// <param name="bgCol">The bg col</param>
         /// <returns>The bool</returns>
-        public static bool ImageButton(string strId, IntPtr userTextureId, Vector2 size, Vector2 uv0, Vector2 uv1, Vector4 bgCol)
+        public static bool ImageButton(string strId, IntPtr userTextureId, Vector2F size, Vector2F uv0, Vector2F uv1, Vector4F bgCol)
         {
-            byte ret = ImGuiNative.igImageButton(Encoding.UTF8.GetBytes(strId), userTextureId, size, uv0, uv1, bgCol, new Vector4(1, 1, 1, 1));
+            byte ret = ImGuiNative.igImageButton(Encoding.UTF8.GetBytes(strId), userTextureId, size, uv0, uv1, bgCol, new Vector4F(1, 1, 1, 1));
             return ret != 0;
         }
 
@@ -1111,7 +1111,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="bgCol">The bg col</param>
         /// <param name="tintCol">The tint col</param>
         /// <returns>The bool</returns>
-        public static bool ImageButton(string strId, IntPtr userTextureId, Vector2 size, Vector2 uv0, Vector2 uv1, Vector4 bgCol, Vector4 tintCol)
+        public static bool ImageButton(string strId, IntPtr userTextureId, Vector2F size, Vector2F uv0, Vector2F uv1, Vector4F bgCol, Vector4F tintCol)
         {
             byte ret = ImGuiNative.igImageButton(Encoding.UTF8.GetBytes(strId), userTextureId, size, uv0, uv1, bgCol, tintCol);
             return ret != 0;
@@ -1283,7 +1283,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
         /// <returns>The bool</returns>
-        public static bool InputFloat2(string label, ref Vector2 v)
+        public static bool InputFloat2(string label, ref Vector2F v)
         {
             byte ret = ImGuiNative.igInputFloat2(Encoding.UTF8.GetBytes(label), ref v, null, 0);
 
@@ -1297,7 +1297,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="v">The </param>
         /// <param name="format">The format</param>
         /// <returns>The bool</returns>
-        public static bool InputFloat2(string label, ref Vector2 v, string format)
+        public static bool InputFloat2(string label, ref Vector2F v, string format)
         {
             byte ret = ImGuiNative.igInputFloat2(Encoding.UTF8.GetBytes(label), ref v, Encoding.UTF8.GetBytes(format), 0);
             return ret != 0;
@@ -1311,7 +1311,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The bool</returns>
-        public static bool InputFloat2(string label, ref Vector2 v, string format, ImGuiInputTextFlags flags)
+        public static bool InputFloat2(string label, ref Vector2F v, string format, ImGuiInputTextFlags flags)
         {
             byte ret = ImGuiNative.igInputFloat2(Encoding.UTF8.GetBytes(label), ref v, Encoding.UTF8.GetBytes(format), flags);
 
@@ -1324,7 +1324,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
         /// <returns>The bool</returns>
-        public static bool InputFloat3(string label, ref Vector3 v)
+        public static bool InputFloat3(string label, ref Vector3F v)
         {
             byte ret = ImGuiNative.igInputFloat3(Encoding.UTF8.GetBytes(label), ref v, null, 0);
             return ret != 0;
@@ -1337,7 +1337,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="v">The </param>
         /// <param name="format">The format</param>
         /// <returns>The bool</returns>
-        public static bool InputFloat3(string label, ref Vector3 v, string format)
+        public static bool InputFloat3(string label, ref Vector3F v, string format)
         {
             byte ret = ImGuiNative.igInputFloat3(Encoding.UTF8.GetBytes(label), ref v, Encoding.UTF8.GetBytes(format), 0);
 
@@ -1352,7 +1352,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The bool</returns>
-        public static bool InputFloat3(string label, ref Vector3 v, string format, ImGuiInputTextFlags flags)
+        public static bool InputFloat3(string label, ref Vector3F v, string format, ImGuiInputTextFlags flags)
         {
             byte ret = ImGuiNative.igInputFloat3(Encoding.UTF8.GetBytes(label), ref v, Encoding.UTF8.GetBytes(format), flags);
             return ret != 0;
@@ -1364,7 +1364,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
         /// <returns>The bool</returns>
-        public static bool InputFloat4(string label, ref Vector4 v)
+        public static bool InputFloat4(string label, ref Vector4F v)
         {
             byte ret = ImGuiNative.igInputFloat4(Encoding.UTF8.GetBytes(label), ref v, null, 0);
             return ret != 0;

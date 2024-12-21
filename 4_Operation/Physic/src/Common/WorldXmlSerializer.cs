@@ -77,7 +77,7 @@ namespace Alis.Core.Physic.Common
                     PolygonShape poly = (PolygonShape) shape;
 
                     _writer.WriteStartElement("Vertices");
-                    foreach (Vector2 v in poly.Vertices)
+                    foreach (Vector2F v in poly.Vertices)
                         WriteElement("Vertex", v);
                     _writer.WriteEndElement();
 
@@ -96,7 +96,7 @@ namespace Alis.Core.Physic.Common
                     ChainShape chain = (ChainShape) shape;
 
                     _writer.WriteStartElement("Vertices");
-                    foreach (Vector2 v in chain.Vertices)
+                    foreach (Vector2F v in chain.Vertices)
                         WriteElement("Vertex", v);
                     _writer.WriteEndElement();
 
@@ -352,7 +352,7 @@ namespace Alis.Core.Physic.Common
         /// </summary>
         /// <param name="name">The name</param>
         /// <param name="vec">The vec</param>
-        private static void WriteElement(string name, Vector2 vec)
+        private static void WriteElement(string name, Vector2F vec)
         {
             _writer.WriteElementString(name, FloatToString(vec.X) + " " + FloatToString(vec.Y));
         }

@@ -79,7 +79,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             ImGuiViewport viewport = new ImGuiViewport();
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(viewport);
-            Assert.Equal(default(Vector2), viewportPtr.Pos);
+            Assert.Equal(default(Vector2F), viewportPtr.Pos);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             ImGuiViewport viewport = new ImGuiViewport();
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(viewport);
-            Assert.Equal(default(Vector2), viewportPtr.Size);
+            Assert.Equal(default(Vector2F), viewportPtr.Size);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             ImGuiViewport viewport = new ImGuiViewport();
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(viewport);
-            Assert.Equal(default(Vector2), viewportPtr.WorkPos);
+            Assert.Equal(default(Vector2F), viewportPtr.WorkPos);
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             ImGuiViewport viewport = new ImGuiViewport();
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(viewport);
-            Assert.Equal(default(Vector2), viewportPtr.WorkSize);
+            Assert.Equal(default(Vector2F), viewportPtr.WorkSize);
         }
 
         /// <summary>

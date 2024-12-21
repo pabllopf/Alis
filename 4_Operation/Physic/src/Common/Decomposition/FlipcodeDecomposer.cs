@@ -48,17 +48,17 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <summary>
         ///     The tmp
         /// </summary>
-        private static Vector2 _tmpA;
+        private static Vector2F _tmpA;
 
         /// <summary>
         ///     The tmp
         /// </summary>
-        private static Vector2 _tmpB;
+        private static Vector2F _tmpB;
 
         /// <summary>
         ///     The tmp
         /// </summary>
-        private static Vector2 _tmpC;
+        private static Vector2F _tmpC;
 
         /// <summary>
         ///     Decompose the polygon into triangles.
@@ -151,7 +151,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <param name="c">The C point.</param>
         /// <param name="p">The point to be tested.</param>
         /// <returns>True if the point is inside the triangle</returns>
-        private static bool InsideTriangle(ref Vector2 a, ref Vector2 b, ref Vector2 c, ref Vector2 p)
+        private static bool InsideTriangle(ref Vector2F a, ref Vector2F b, ref Vector2F c, ref Vector2F p)
         {
             //A cross bp
             float abp = (c.X - b.X) * (p.Y - b.Y) - (c.Y - b.Y) * (p.X - b.X);
@@ -190,7 +190,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                     continue;
                 }
 
-                Vector2 point = contour[V[p]];
+                Vector2F point = contour[V[p]];
 
                 if (InsideTriangle(ref _tmpA, ref _tmpB, ref _tmpC, ref point))
                 {

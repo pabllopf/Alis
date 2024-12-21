@@ -27,13 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using Alis.Core.Ecs.Component;
+
 namespace Alis.App.Engine.Sample.Assets.Scripts
 {
     /// <summary>
     /// The player class
     /// </summary>
-    public class Player
+    public class Player : AComponent
     {
-        
+        public override void OnAwake()
+        {
+            Console.WriteLine("Player awake");
+        }
     }
 }

@@ -65,17 +65,17 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The display pos
         /// </summary>
-        public Vector2 DisplayPos { get; set; }
+        public Vector2F DisplayPos { get; set; }
 
         /// <summary>
         ///     The display size
         /// </summary>
-        public Vector2 DisplaySize { get; set; }
+        public Vector2F DisplaySize { get; set; }
 
         /// <summary>
         ///     The framebuffer scale
         /// </summary>
-        public Vector2 FramebufferScale { get; set; }
+        public Vector2F FramebufferScale { get; set; }
 
         /// <summary>
         ///     The owner viewport
@@ -102,7 +102,7 @@ namespace Alis.Extension.Graphic.ImGui
         ///     Scales the clip rects using the specified fb scale
         /// </summary>
         /// <param name="fbScale">The fb scale</param>
-        public void ScaleClipRects(Vector2 fbScale)
+        public void ScaleClipRects(Vector2F fbScale)
         {
             ImGuiNative.ImDrawData_ScaleClipRects(ref this, fbScale);
         }

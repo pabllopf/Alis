@@ -329,7 +329,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         public void TestMatrixTranslation()
         {
             Matrix3X2 matrix = new Matrix3X2(1, 2, 3, 4, 5, 6);
-            Vector2 translation = new Vector2(7, 8);
+            Vector2F translation = new Vector2F(7, 8);
             matrix.Translation = translation;
 
             Assert.Equal(7, matrix.M31);
@@ -353,7 +353,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         [Fact]
         public void TestCreateScaleWithVector()
         {
-            Vector2 scales = new Vector2(2, 3);
+            Vector2F scales = new Vector2F(2, 3);
             Matrix3X2 matrix = Matrix3X2.CreateScale(scales);
 
             Assert.Equal(2, matrix.M11);

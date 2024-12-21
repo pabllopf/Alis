@@ -192,8 +192,8 @@ namespace Alis.App.Engine.Windows
 
             if (ImGui.Begin(WindowName, ref isOpen))
             {
-                ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0.13f, 0.14f, 0.15f, 1.0f));
-                ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4(0.13f, 0.14f, 0.15f, 1.0f));
+                ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.13f, 0.14f, 0.15f, 1.0f));
+                ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.13f, 0.14f, 0.15f, 1.0f));
 
                 ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0.0f);
 
@@ -395,12 +395,12 @@ namespace Alis.App.Engine.Windows
                     string folderName = Path.GetFileName(directory);
 
                     ImGui.PushFont(SpaceWork.fontLoaded45Bold);
-                    ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0, 0, 0, 0)); // Transparent background
-                    ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(0, 0)); // No padding
-                    ImGui.PushStyleVar(ImGuiStyleVar.SelectableTextAlign, new Vector2(0.5f, 0.5f)); // Center text
+                    ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0, 0, 0, 0)); // Transparent background
+                    ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(0, 0)); // No padding
+                    ImGui.PushStyleVar(ImGuiStyleVar.SelectableTextAlign, new Vector2F(0.5f, 0.5f)); // Center text
                     ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0.0f); // No border
 
-                    if (ImGui.Selectable($"{FontAwesome5.Folder}##{folderName}", false, ImGuiSelectableFlags.AllowDoubleClick, new Vector2(itemWidth, itemHeight)))
+                    if (ImGui.Selectable($"{FontAwesome5.Folder}##{folderName}", false, ImGuiSelectableFlags.AllowDoubleClick, new Vector2F(itemWidth, itemHeight)))
                     {
                         if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left))
                         {
@@ -416,7 +416,7 @@ namespace Alis.App.Engine.Windows
                     float textWidth = ImGui.CalcTextSize(folderName).X;
                     ImGui.SetCursorPosX(ImGui.GetCursorPosX() + (itemWidth - textWidth) * 0.05f);
                     ImGui.TextWrapped(folderName);
-                    ImGui.Dummy(new Vector2(0, itemPadding)); // Add padding between items
+                    ImGui.Dummy(new Vector2F(0, itemPadding)); // Add padding between items
                     ImGui.PopFont();
                 }
 
@@ -428,12 +428,12 @@ namespace Alis.App.Engine.Windows
                     string icon = fileIcons.ContainsKey(extension) ? fileIcons[extension] : FontAwesome5.File;
 
                     ImGui.PushFont(SpaceWork.fontLoaded45Bold);
-                    ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0, 0, 0, 0)); // Transparent background
-                    ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(0, 0)); // No padding
-                    ImGui.PushStyleVar(ImGuiStyleVar.SelectableTextAlign, new Vector2(0.5f, 0.5f)); // Center text
+                    ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0, 0, 0, 0)); // Transparent background
+                    ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(0, 0)); // No padding
+                    ImGui.PushStyleVar(ImGuiStyleVar.SelectableTextAlign, new Vector2F(0.5f, 0.5f)); // Center text
                     ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0.0f); // No border
 
-                    if (ImGui.Selectable($"{icon}##{Path.GetFileName(file)}", false, ImGuiSelectableFlags.AllowDoubleClick, new Vector2(itemWidth, itemHeight)))
+                    if (ImGui.Selectable($"{icon}##{Path.GetFileName(file)}", false, ImGuiSelectableFlags.AllowDoubleClick, new Vector2F(itemWidth, itemHeight)))
                     {
                         if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left))
                         {
@@ -449,7 +449,7 @@ namespace Alis.App.Engine.Windows
                     float textWidth = ImGui.CalcTextSize(Path.GetFileName(file)).X;
                     ImGui.SetCursorPosX(ImGui.GetCursorPosX() + (itemWidth - textWidth) * 0.05f);
                     ImGui.TextWrapped(Path.GetFileNameWithoutExtension(file));
-                    ImGui.Dummy(new Vector2(0, itemPadding)); // Add padding between items
+                    ImGui.Dummy(new Vector2F(0, itemPadding)); // Add padding between items
                     ImGui.PopFont();
                 }
 
@@ -461,7 +461,7 @@ namespace Alis.App.Engine.Windows
                     for (int i = 0; i < emptyItems; i++)
                     {
                         ImGui.TableNextColumn();
-                        ImGui.Dummy(new Vector2(itemWidth, itemHeight)); // Invisible item to fill space
+                        ImGui.Dummy(new Vector2F(itemWidth, itemHeight)); // Invisible item to fill space
                     }
                 }
 
@@ -514,12 +514,12 @@ namespace Alis.App.Engine.Windows
             ImGui.NextColumn();
 
             // Contenido de la segunda columna
-            ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0.13f, 0.14f, 0.15f, 1.0f));
-            ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4(0.13f, 0.14f, 0.15f, 1.0f));
+            ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.13f, 0.14f, 0.15f, 1.0f));
+            ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.13f, 0.14f, 0.15f, 1.0f));
 
             ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0.0f);
-            ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(0, 7));
-            ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2(2, 5));
+            ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(0, 7));
+            ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2F(2, 5));
 
             RenderPathOfFolder();
 
@@ -710,12 +710,12 @@ namespace Alis.App.Engine.Windows
                         string folderName = Path.GetFileName(directory);
 
                         ImGui.PushFont(SpaceWork.fontLoaded45Bold);
-                        ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0, 0, 0, 0)); // Transparent background
-                        ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(0, 0)); // No padding
-                        ImGui.PushStyleVar(ImGuiStyleVar.SelectableTextAlign, new Vector2(0.5f, 0.5f)); // Center text
+                        ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0, 0, 0, 0)); // Transparent background
+                        ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(0, 0)); // No padding
+                        ImGui.PushStyleVar(ImGuiStyleVar.SelectableTextAlign, new Vector2F(0.5f, 0.5f)); // Center text
                         ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0.0f); // No border
 
-                        if (ImGui.Selectable($"{FontAwesome5.Folder}##{folderName}", false, ImGuiSelectableFlags.AllowDoubleClick, new Vector2(itemWidth, itemHeight)))
+                        if (ImGui.Selectable($"{FontAwesome5.Folder}##{folderName}", false, ImGuiSelectableFlags.AllowDoubleClick, new Vector2F(itemWidth, itemHeight)))
                         {
                             if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left))
                             {
@@ -731,7 +731,7 @@ namespace Alis.App.Engine.Windows
                         float textWidth = ImGui.CalcTextSize(folderName).X;
                         ImGui.SetCursorPosX(ImGui.GetCursorPosX() + (itemWidth - textWidth) * 0.05f);
                         ImGui.TextWrapped(folderName);
-                        ImGui.Dummy(new Vector2(0, itemPadding)); // Add padding between items
+                        ImGui.Dummy(new Vector2F(0, itemPadding)); // Add padding between items
                         ImGui.PopFont();
                     }
 
@@ -743,12 +743,12 @@ namespace Alis.App.Engine.Windows
                         string icon = fileIcons.ContainsKey(extension) ? fileIcons[extension] : FontAwesome5.File;
 
                         ImGui.PushFont(SpaceWork.fontLoaded45Bold);
-                        ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0, 0, 0, 0)); // Transparent background
-                        ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(0, 0)); // No padding
-                        ImGui.PushStyleVar(ImGuiStyleVar.SelectableTextAlign, new Vector2(0.5f, 0.5f)); // Center text
+                        ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0, 0, 0, 0)); // Transparent background
+                        ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(0, 0)); // No padding
+                        ImGui.PushStyleVar(ImGuiStyleVar.SelectableTextAlign, new Vector2F(0.5f, 0.5f)); // Center text
                         ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0.0f); // No border
 
-                        if (ImGui.Selectable($"{icon}##{Path.GetFileName(file)}", false, ImGuiSelectableFlags.AllowDoubleClick, new Vector2(itemWidth, itemHeight)))
+                        if (ImGui.Selectable($"{icon}##{Path.GetFileName(file)}", false, ImGuiSelectableFlags.AllowDoubleClick, new Vector2F(itemWidth, itemHeight)))
                         {
                             if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left))
                             {
@@ -764,7 +764,7 @@ namespace Alis.App.Engine.Windows
                         float textWidth = ImGui.CalcTextSize(Path.GetFileName(file)).X;
                         ImGui.SetCursorPosX(ImGui.GetCursorPosX() + (itemWidth - textWidth) * 0.05f);
                         ImGui.TextWrapped(Path.GetFileNameWithoutExtension(file));
-                        ImGui.Dummy(new Vector2(0, itemPadding)); // Add padding between items
+                        ImGui.Dummy(new Vector2F(0, itemPadding)); // Add padding between items
                         ImGui.PopFont();
                     }
 
@@ -776,7 +776,7 @@ namespace Alis.App.Engine.Windows
                         for (int i = 0; i < emptyItems; i++)
                         {
                             ImGui.TableNextColumn();
-                            ImGui.Dummy(new Vector2(itemWidth, itemHeight)); // Invisible item to fill space
+                            ImGui.Dummy(new Vector2F(itemWidth, itemHeight)); // Invisible item to fill space
                         }
                     }
 

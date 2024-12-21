@@ -230,8 +230,8 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.GuizMo
         {
             float[] view = new float[16];
             float length = 1.0f;
-            Vector2 position = new Vector2(0.0f, 0.0f);
-            Vector2 size = new Vector2(1.0f, 1.0f);
+            Vector2F position = new Vector2F(0.0f, 0.0f);
+            Vector2F size = new Vector2F(1.0f, 1.0f);
             uint backgroundColor = 0;
             Assert.Throws<DllNotFoundException>(() => ImGuizMo.ViewManipulate(ref view, length, position, size, backgroundColor));
         }

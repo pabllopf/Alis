@@ -49,7 +49,7 @@ namespace Alis.Core.Graphic
         public Window()
         {
             Background = Color.Black;
-            Resolution = new Vector2(640, 480);
+            Resolution = new Vector2F(640, 480);
             IsWindowResizable = true;
         }
 
@@ -60,7 +60,7 @@ namespace Alis.Core.Graphic
         /// <param name="resolution">The resolution</param>
         /// <param name="isWindowResizable">The is window resizable</param>
         [JsonConstructor]
-        public Window(Color background, Vector2 resolution, bool isWindowResizable)
+        public Window(Color background, Vector2F resolution, bool isWindowResizable)
         {
             Background = background;
             Resolution = resolution;
@@ -83,7 +83,7 @@ namespace Alis.Core.Graphic
         ///     Gets or sets the value of the resolution
         /// </summary>
         [JsonPropertyName("_Resolution_")]
-        public Vector2 Resolution { get; set; }
+        public Vector2F Resolution { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the is window resizable

@@ -74,7 +74,7 @@ namespace Alis.Builder.Core.Ecs.Component.Render
         /// <returns>The camera builder</returns>
         public CameraBuilder Resolution(int x, int y)
         {
-            camera.Resolution = new Vector2(x, y);
+            camera.Resolution = new Vector2F(x, y);
             return this;
         }
     }

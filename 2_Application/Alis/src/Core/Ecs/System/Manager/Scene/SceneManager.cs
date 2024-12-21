@@ -94,7 +94,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
             string versionCurrent = Assembly.GetExecutingAssembly().GetName().Version.ToString().Replace('.', '_');
             for (int i = 0; i < ScenesMap.Scenes.Count; i++)
             {
-                string file = Path.Combine(Path.Combine(Environment.CurrentDirectory, "Data", "Scenes"), $"Alis_{versionCurrent}_Scene_{i}.json");
+                string file = Path.Combine(Path.Combine(Environment.CurrentDirectory ?? throw new InvalidOperationException(), "Data", "Scenes"), $"Alis_{versionCurrent}_Scene_{i}.json");
 
                 if (!File.Exists(file))
                 {

@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     The normal
         /// </summary>
-        public Vector2 normal;
+        public Vector2F normal;
 
         /// <summary>
         ///     The normal mass

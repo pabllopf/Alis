@@ -155,7 +155,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void MajorTickLen_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector2), style.MajorTickLen);
+            Assert.Equal(default(Vector2F), style.MajorTickLen);
         }
 
         /// <summary>
@@ -165,7 +165,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void MinorTickLen_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector2), style.MinorTickLen);
+            Assert.Equal(default(Vector2F), style.MinorTickLen);
         }
 
         /// <summary>
@@ -175,7 +175,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void MajorTickSize_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector2), style.MajorTickSize);
+            Assert.Equal(default(Vector2F), style.MajorTickSize);
         }
 
         /// <summary>
@@ -185,7 +185,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void MinorTickSize_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector2), style.MinorTickSize);
+            Assert.Equal(default(Vector2F), style.MinorTickSize);
         }
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void MajorGridSize_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector2), style.MajorGridSize);
+            Assert.Equal(default(Vector2F), style.MajorGridSize);
         }
 
         /// <summary>
@@ -205,7 +205,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void MinorGridSize_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector2), style.MinorGridSize);
+            Assert.Equal(default(Vector2F), style.MinorGridSize);
         }
 
         /// <summary>
@@ -215,7 +215,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void PlotPadding_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector2), style.PlotPadding);
+            Assert.Equal(default(Vector2F), style.PlotPadding);
         }
 
         /// <summary>
@@ -225,7 +225,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void LabelPadding_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector2), style.LabelPadding);
+            Assert.Equal(default(Vector2F), style.LabelPadding);
         }
 
         /// <summary>
@@ -235,7 +235,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void LegendPadding_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector2), style.LegendPadding);
+            Assert.Equal(default(Vector2F), style.LegendPadding);
         }
 
         /// <summary>
@@ -245,7 +245,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void LegendInnerPadding_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector2), style.LegendInnerPadding);
+            Assert.Equal(default(Vector2F), style.LegendInnerPadding);
         }
 
         /// <summary>
@@ -255,7 +255,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void LegendSpacing_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector2), style.LegendSpacing);
+            Assert.Equal(default(Vector2F), style.LegendSpacing);
         }
 
         /// <summary>
@@ -265,7 +265,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void MousePosPadding_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector2), style.MousePosPadding);
+            Assert.Equal(default(Vector2F), style.MousePosPadding);
         }
 
         /// <summary>
@@ -275,7 +275,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void AnnotationPadding_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector2), style.AnnotationPadding);
+            Assert.Equal(default(Vector2F), style.AnnotationPadding);
         }
 
         /// <summary>
@@ -285,7 +285,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void FitPadding_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector2), style.FitPadding);
+            Assert.Equal(default(Vector2F), style.FitPadding);
         }
 
         /// <summary>
@@ -295,7 +295,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void PlotDefaultSize_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector2), style.PlotDefaultSize);
+            Assert.Equal(default(Vector2F), style.PlotDefaultSize);
         }
 
         /// <summary>
@@ -305,7 +305,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void PlotMinSize_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector2), style.PlotMinSize);
+            Assert.Equal(default(Vector2F), style.PlotMinSize);
         }
 
         /// <summary>
@@ -315,7 +315,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors0_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector4), style.Colors0);
+            Assert.Equal(default(Vector4F), style.Colors0);
         }
 
         /// <summary>
@@ -325,7 +325,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors1_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector4), style.Colors1);
+            Assert.Equal(default(Vector4F), style.Colors1);
         }
 
         /// <summary>
@@ -335,7 +335,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors2_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector4), style.Colors2);
+            Assert.Equal(default(Vector4F), style.Colors2);
         }
 
         /// <summary>
@@ -345,7 +345,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors3_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector4), style.Colors3);
+            Assert.Equal(default(Vector4F), style.Colors3);
         }
 
         /// <summary>
@@ -355,7 +355,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors4_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector4), style.Colors4);
+            Assert.Equal(default(Vector4F), style.Colors4);
         }
 
         /// <summary>
@@ -365,7 +365,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors5_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector4), style.Colors5);
+            Assert.Equal(default(Vector4F), style.Colors5);
         }
 
         /// <summary>
@@ -375,7 +375,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors6_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector4), style.Colors6);
+            Assert.Equal(default(Vector4F), style.Colors6);
         }
 
         /// <summary>
@@ -385,7 +385,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors7_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector4), style.Colors7);
+            Assert.Equal(default(Vector4F), style.Colors7);
         }
 
         /// <summary>
@@ -395,7 +395,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors8_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector4), style.Colors8);
+            Assert.Equal(default(Vector4F), style.Colors8);
         }
 
         /// <summary>
@@ -405,7 +405,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors9_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector4), style.Colors9);
+            Assert.Equal(default(Vector4F), style.Colors9);
         }
 
         /// <summary>
@@ -415,7 +415,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors10_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector4), style.Colors10);
+            Assert.Equal(default(Vector4F), style.Colors10);
         }
 
         /// <summary>
@@ -425,7 +425,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors11_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector4), style.Colors11);
+            Assert.Equal(default(Vector4F), style.Colors11);
         }
 
         /// <summary>
@@ -435,7 +435,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors12_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector4), style.Colors12);
+            Assert.Equal(default(Vector4F), style.Colors12);
         }
 
         /// <summary>
@@ -445,7 +445,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors13_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector4), style.Colors13);
+            Assert.Equal(default(Vector4F), style.Colors13);
         }
 
         /// <summary>
@@ -455,7 +455,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors14_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector4), style.Colors14);
+            Assert.Equal(default(Vector4F), style.Colors14);
         }
 
         /// <summary>
@@ -465,7 +465,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors15_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector4), style.Colors15);
+            Assert.Equal(default(Vector4F), style.Colors15);
         }
 
         /// <summary>
@@ -475,7 +475,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors16_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector4), style.Colors16);
+            Assert.Equal(default(Vector4F), style.Colors16);
         }
 
         /// <summary>
@@ -485,7 +485,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors17_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector4), style.Colors17);
+            Assert.Equal(default(Vector4F), style.Colors17);
         }
 
         /// <summary>
@@ -495,7 +495,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors18_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector4), style.Colors18);
+            Assert.Equal(default(Vector4F), style.Colors18);
         }
 
         /// <summary>
@@ -505,7 +505,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors19_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector4), style.Colors19);
+            Assert.Equal(default(Vector4F), style.Colors19);
         }
 
         /// <summary>
@@ -515,7 +515,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors20_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(Vector4), style.Colors20);
+            Assert.Equal(default(Vector4F), style.Colors20);
         }
 
         /// <summary>
@@ -697,7 +697,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void MajorTickLen_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Vector2 value = new Vector2(1.0f, 2.0f);
+            Vector2F value = new Vector2F(1.0f, 2.0f);
             style.MajorTickLen = value;
             Assert.Equal(value, style.MajorTickLen);
         }
@@ -709,7 +709,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void MinorTickLen_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Vector2 value = new Vector2(3.0f, 4.0f);
+            Vector2F value = new Vector2F(3.0f, 4.0f);
             style.MinorTickLen = value;
             Assert.Equal(value, style.MinorTickLen);
         }
@@ -721,7 +721,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void MajorTickSize_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Vector2 value = new Vector2(5.0f, 6.0f);
+            Vector2F value = new Vector2F(5.0f, 6.0f);
             style.MajorTickSize = value;
             Assert.Equal(value, style.MajorTickSize);
         }
@@ -733,7 +733,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void MinorTickSize_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Vector2 value = new Vector2(7.0f, 8.0f);
+            Vector2F value = new Vector2F(7.0f, 8.0f);
             style.MinorTickSize = value;
             Assert.Equal(value, style.MinorTickSize);
         }
@@ -745,7 +745,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void MajorGridSize_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Vector2 value = new Vector2(9.0f, 10.0f);
+            Vector2F value = new Vector2F(9.0f, 10.0f);
             style.MajorGridSize = value;
             Assert.Equal(value, style.MajorGridSize);
         }
@@ -757,7 +757,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void MinorGridSize_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Vector2 value = new Vector2(11.0f, 12.0f);
+            Vector2F value = new Vector2F(11.0f, 12.0f);
             style.MinorGridSize = value;
             Assert.Equal(value, style.MinorGridSize);
         }
@@ -769,7 +769,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void PlotPadding_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Vector2 value = new Vector2(13.0f, 14.0f);
+            Vector2F value = new Vector2F(13.0f, 14.0f);
             style.PlotPadding = value;
             Assert.Equal(value, style.PlotPadding);
         }
@@ -781,7 +781,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void LabelPadding_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Vector2 value = new Vector2(15.0f, 16.0f);
+            Vector2F value = new Vector2F(15.0f, 16.0f);
             style.LabelPadding = value;
             Assert.Equal(value, style.LabelPadding);
         }
@@ -793,7 +793,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void LegendPadding_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Vector2 value = new Vector2(17.0f, 18.0f);
+            Vector2F value = new Vector2F(17.0f, 18.0f);
             style.LegendPadding = value;
             Assert.Equal(value, style.LegendPadding);
         }
@@ -805,7 +805,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void LegendInnerPadding_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Vector2 value = new Vector2(19.0f, 20.0f);
+            Vector2F value = new Vector2F(19.0f, 20.0f);
             style.LegendInnerPadding = value;
             Assert.Equal(value, style.LegendInnerPadding);
         }
@@ -817,7 +817,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void LegendSpacing_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Vector2 value = new Vector2(21.0f, 22.0f);
+            Vector2F value = new Vector2F(21.0f, 22.0f);
             style.LegendSpacing = value;
             Assert.Equal(value, style.LegendSpacing);
         }
@@ -829,7 +829,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void MousePosPadding_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Vector2 value = new Vector2(23.0f, 24.0f);
+            Vector2F value = new Vector2F(23.0f, 24.0f);
             style.MousePosPadding = value;
             Assert.Equal(value, style.MousePosPadding);
         }
@@ -841,7 +841,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void AnnotationPadding_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Vector2 value = new Vector2(25.0f, 26.0f);
+            Vector2F value = new Vector2F(25.0f, 26.0f);
             style.AnnotationPadding = value;
             Assert.Equal(value, style.AnnotationPadding);
         }
@@ -853,7 +853,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void FitPadding_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Vector2 value = new Vector2(27.0f, 28.0f);
+            Vector2F value = new Vector2F(27.0f, 28.0f);
             style.FitPadding = value;
             Assert.Equal(value, style.FitPadding);
         }
@@ -865,7 +865,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void PlotDefaultSize_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Vector2 value = new Vector2(29.0f, 30.0f);
+            Vector2F value = new Vector2F(29.0f, 30.0f);
             style.PlotDefaultSize = value;
             Assert.Equal(value, style.PlotDefaultSize);
         }
@@ -877,7 +877,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void PlotMinSize_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Vector2 value = new Vector2(31.0f, 32.0f);
+            Vector2F value = new Vector2F(31.0f, 32.0f);
             style.PlotMinSize = value;
             Assert.Equal(value, style.PlotMinSize);
         }
@@ -889,7 +889,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors0_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Vector4 value = new Vector4(1.0f, 2.0f, 3.0f, 4.0f);
+            Vector4F value = new Vector4F(1.0f, 2.0f, 3.0f, 4.0f);
             style.Colors0 = value;
             Assert.Equal(value, style.Colors0);
         }
@@ -901,7 +901,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors1_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Vector4 value = new Vector4(5.0f, 6.0f, 7.0f, 8.0f);
+            Vector4F value = new Vector4F(5.0f, 6.0f, 7.0f, 8.0f);
             style.Colors1 = value;
             Assert.Equal(value, style.Colors1);
         }
@@ -913,7 +913,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors2_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Vector4 value = new Vector4(9.0f, 10.0f, 11.0f, 12.0f);
+            Vector4F value = new Vector4F(9.0f, 10.0f, 11.0f, 12.0f);
             style.Colors2 = value;
             Assert.Equal(value, style.Colors2);
         }
@@ -925,7 +925,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors3_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Vector4 value = new Vector4(13.0f, 14.0f, 15.0f, 16.0f);
+            Vector4F value = new Vector4F(13.0f, 14.0f, 15.0f, 16.0f);
             style.Colors3 = value;
             Assert.Equal(value, style.Colors3);
         }
@@ -937,7 +937,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors4_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Vector4 value = new Vector4(17.0f, 18.0f, 19.0f, 20.0f);
+            Vector4F value = new Vector4F(17.0f, 18.0f, 19.0f, 20.0f);
             style.Colors4 = value;
             Assert.Equal(value, style.Colors4);
         }
@@ -949,7 +949,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors5_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Vector4 value = new Vector4(21.0f, 22.0f, 23.0f, 24.0f);
+            Vector4F value = new Vector4F(21.0f, 22.0f, 23.0f, 24.0f);
             style.Colors5 = value;
             Assert.Equal(value, style.Colors5);
         }
@@ -961,7 +961,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors6_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Vector4 value = new Vector4(25.0f, 26.0f, 27.0f, 28.0f);
+            Vector4F value = new Vector4F(25.0f, 26.0f, 27.0f, 28.0f);
             style.Colors6 = value;
             Assert.Equal(value, style.Colors6);
         }
@@ -973,7 +973,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors7_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Vector4 value = new Vector4(29.0f, 30.0f, 31.0f, 32.0f);
+            Vector4F value = new Vector4F(29.0f, 30.0f, 31.0f, 32.0f);
             style.Colors7 = value;
             Assert.Equal(value, style.Colors7);
         }
@@ -985,7 +985,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors8_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Vector4 value = new Vector4(33.0f, 34.0f, 35.0f, 36.0f);
+            Vector4F value = new Vector4F(33.0f, 34.0f, 35.0f, 36.0f);
             style.Colors8 = value;
             Assert.Equal(value, style.Colors8);
         }
@@ -997,7 +997,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors9_SetAndGet_ReturnsCorrectValue()
         {
             ImPlotStyle obj = new ImPlotStyle();
-            Vector4 value = new Vector4(1.0f, 2.0f, 3.0f, 4.0f);
+            Vector4F value = new Vector4F(1.0f, 2.0f, 3.0f, 4.0f);
             obj.Colors9 = value;
             Assert.Equal(value, obj.Colors9);
         }
@@ -1009,7 +1009,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors10_SetAndGet_ReturnsCorrectValue()
         {
             ImPlotStyle obj = new ImPlotStyle();
-            Vector4 value = new Vector4(1.0f, 2.0f, 3.0f, 4.0f);
+            Vector4F value = new Vector4F(1.0f, 2.0f, 3.0f, 4.0f);
             obj.Colors10 = value;
             Assert.Equal(value, obj.Colors10);
         }
@@ -1021,7 +1021,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors11_SetAndGet_ReturnsCorrectValue()
         {
             ImPlotStyle obj = new ImPlotStyle();
-            Vector4 value = new Vector4(1.0f, 2.0f, 3.0f, 4.0f);
+            Vector4F value = new Vector4F(1.0f, 2.0f, 3.0f, 4.0f);
             obj.Colors11 = value;
             Assert.Equal(value, obj.Colors11);
         }
@@ -1033,7 +1033,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors12_SetAndGet_ReturnsCorrectValue()
         {
             ImPlotStyle obj = new ImPlotStyle();
-            Vector4 value = new Vector4(1.0f, 2.0f, 3.0f, 4.0f);
+            Vector4F value = new Vector4F(1.0f, 2.0f, 3.0f, 4.0f);
             obj.Colors12 = value;
             Assert.Equal(value, obj.Colors12);
         }
@@ -1045,7 +1045,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors13_SetAndGet_ReturnsCorrectValue()
         {
             ImPlotStyle obj = new ImPlotStyle();
-            Vector4 value = new Vector4(1.0f, 2.0f, 3.0f, 4.0f);
+            Vector4F value = new Vector4F(1.0f, 2.0f, 3.0f, 4.0f);
             obj.Colors13 = value;
             Assert.Equal(value, obj.Colors13);
         }
@@ -1057,7 +1057,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors14_SetAndGet_ReturnsCorrectValue()
         {
             ImPlotStyle obj = new ImPlotStyle();
-            Vector4 value = new Vector4(1.0f, 2.0f, 3.0f, 4.0f);
+            Vector4F value = new Vector4F(1.0f, 2.0f, 3.0f, 4.0f);
             obj.Colors14 = value;
             Assert.Equal(value, obj.Colors14);
         }
@@ -1069,7 +1069,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors15_SetAndGet_ReturnsCorrectValue()
         {
             ImPlotStyle obj = new ImPlotStyle();
-            Vector4 value = new Vector4(1.0f, 2.0f, 3.0f, 4.0f);
+            Vector4F value = new Vector4F(1.0f, 2.0f, 3.0f, 4.0f);
             obj.Colors15 = value;
             Assert.Equal(value, obj.Colors15);
         }
@@ -1081,7 +1081,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors16_SetAndGet_ReturnsCorrectValue()
         {
             ImPlotStyle obj = new ImPlotStyle();
-            Vector4 value = new Vector4(1.0f, 2.0f, 3.0f, 4.0f);
+            Vector4F value = new Vector4F(1.0f, 2.0f, 3.0f, 4.0f);
             obj.Colors16 = value;
             Assert.Equal(value, obj.Colors16);
         }
@@ -1093,7 +1093,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors17_SetAndGet_ReturnsCorrectValue()
         {
             ImPlotStyle obj = new ImPlotStyle();
-            Vector4 value = new Vector4(1.0f, 2.0f, 3.0f, 4.0f);
+            Vector4F value = new Vector4F(1.0f, 2.0f, 3.0f, 4.0f);
             obj.Colors17 = value;
             Assert.Equal(value, obj.Colors17);
         }
@@ -1105,7 +1105,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors18_SetAndGet_ReturnsCorrectValue()
         {
             ImPlotStyle obj = new ImPlotStyle();
-            Vector4 value = new Vector4(1.0f, 2.0f, 3.0f, 4.0f);
+            Vector4F value = new Vector4F(1.0f, 2.0f, 3.0f, 4.0f);
             obj.Colors18 = value;
             Assert.Equal(value, obj.Colors18);
         }
@@ -1117,7 +1117,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors19_SetAndGet_ReturnsCorrectValue()
         {
             ImPlotStyle obj = new ImPlotStyle();
-            Vector4 value = new Vector4(1.0f, 2.0f, 3.0f, 4.0f);
+            Vector4F value = new Vector4F(1.0f, 2.0f, 3.0f, 4.0f);
             obj.Colors19 = value;
             Assert.Equal(value, obj.Colors19);
         }
@@ -1129,7 +1129,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
         public void Colors20_SetAndGet_ReturnsCorrectValue()
         {
             ImPlotStyle obj = new ImPlotStyle();
-            Vector4 value = new Vector4(1.0f, 2.0f, 3.0f, 4.0f);
+            Vector4F value = new Vector4F(1.0f, 2.0f, 3.0f, 4.0f);
             obj.Colors20 = value;
             Assert.Equal(value, obj.Colors20);
         }

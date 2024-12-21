@@ -84,7 +84,7 @@ namespace Alis.Core.Physic.Collision
         /// <param name="proxyId">The proxy id</param>
         /// <param name="aabb">The aabb</param>
         /// <param name="displacement">The displacement</param>
-        void MoveProxy(int proxyId, ref AABB aabb, Vector2 displacement);
+        void MoveProxy(int proxyId, ref AABB aabb, Vector2F displacement);
 
         /// <summary>
         ///     Sets the proxy using the specified proxy id
@@ -131,6 +131,6 @@ namespace Alis.Core.Physic.Collision
         ///     Shifts the origin using the specified new origin
         /// </summary>
         /// <param name="newOrigin">The new origin</param>
-        void ShiftOrigin(Vector2 newOrigin);
+        void ShiftOrigin(Vector2F newOrigin);
     }
 }

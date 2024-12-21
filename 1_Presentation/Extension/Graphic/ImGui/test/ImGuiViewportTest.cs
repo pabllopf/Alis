@@ -65,7 +65,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Pos_ShouldBeInitialized()
         {
             ImGuiViewport viewport = new ImGuiViewport();
-            Assert.Equal(default(Vector2), viewport.Pos);
+            Assert.Equal(default(Vector2F), viewport.Pos);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Size_ShouldBeInitialized()
         {
             ImGuiViewport viewport = new ImGuiViewport();
-            Assert.Equal(default(Vector2), viewport.Size);
+            Assert.Equal(default(Vector2F), viewport.Size);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void WorkPos_ShouldBeInitialized()
         {
             ImGuiViewport viewport = new ImGuiViewport();
-            Assert.Equal(default(Vector2), viewport.WorkPos);
+            Assert.Equal(default(Vector2F), viewport.WorkPos);
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void WorkSize_ShouldBeInitialized()
         {
             ImGuiViewport viewport = new ImGuiViewport();
-            Assert.Equal(default(Vector2), viewport.WorkSize);
+            Assert.Equal(default(Vector2F), viewport.WorkSize);
         }
 
         /// <summary>
@@ -239,7 +239,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Pos_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport obj = new ImGuiViewport();
-            Vector2 value = new Vector2(1.0f, 2.0f);
+            Vector2F value = new Vector2F(1.0f, 2.0f);
             obj.Pos = value;
             Assert.Equal(value, obj.Pos);
         }
@@ -251,7 +251,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Size_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport obj = new ImGuiViewport();
-            Vector2 value = new Vector2(3.0f, 4.0f);
+            Vector2F value = new Vector2F(3.0f, 4.0f);
             obj.Size = value;
             Assert.Equal(value, obj.Size);
         }
@@ -263,7 +263,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void WorkPos_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport obj = new ImGuiViewport();
-            Vector2 value = new Vector2(5.0f, 6.0f);
+            Vector2F value = new Vector2F(5.0f, 6.0f);
             obj.WorkPos = value;
             Assert.Equal(value, obj.WorkPos);
         }
@@ -275,7 +275,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void WorkSize_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport obj = new ImGuiViewport();
-            Vector2 value = new Vector2(7.0f, 8.0f);
+            Vector2F value = new Vector2F(7.0f, 8.0f);
             obj.WorkSize = value;
             Assert.Equal(value, obj.WorkSize);
         }

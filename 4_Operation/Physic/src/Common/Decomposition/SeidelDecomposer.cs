@@ -67,7 +67,7 @@ namespace Alis.Core.Physic.Common.Decomposition
 
             List<Point> compatList = new List<Point>(vertices.Count);
 
-            foreach (Vector2 vertex in vertices)
+            foreach (Vector2F vertex in vertices)
             {
                 compatList.Add(new Point(vertex.X, vertex.Y));
             }
@@ -82,7 +82,7 @@ namespace Alis.Core.Physic.Common.Decomposition
 
                 foreach (Point outTriangle in triangle)
                 {
-                    outTriangles.Add(new Vector2(outTriangle.X, outTriangle.Y));
+                    outTriangles.Add(new Vector2F(outTriangle.X, outTriangle.Y));
                 }
 
                 list.Add(outTriangles);
@@ -101,7 +101,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         {
             List<Point> compatList = new List<Point>(vertices.Count);
 
-            foreach (Vector2 vertex in vertices)
+            foreach (Vector2F vertex in vertices)
             {
                 compatList.Add(new Point(vertex.X, vertex.Y));
             }
@@ -117,7 +117,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                 List<Point> points = trapezoid.GetVertices();
                 foreach (Point point in points)
                 {
-                    verts.Add(new Vector2(point.X, point.Y));
+                    verts.Add(new Vector2F(point.X, point.Y));
                 }
 
                 list.Add(verts);

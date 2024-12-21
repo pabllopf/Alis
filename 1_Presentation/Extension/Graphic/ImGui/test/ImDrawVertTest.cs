@@ -44,13 +44,13 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Pos_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            ImDrawVert vert = new ImDrawVert {Pos = new Vector2(1, 2)};
+            ImDrawVert vert = new ImDrawVert {Pos = new Vector2F(1, 2)};
 
             // Act
-            Vector2 result = vert.Pos;
+            Vector2F result = vert.Pos;
 
             // Assert
-            Assert.Equal(new Vector2(1, 2), result);
+            Assert.Equal(new Vector2F(1, 2), result);
         }
 
         /// <summary>
@@ -60,13 +60,13 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Uv_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            ImDrawVert vert = new ImDrawVert {Uv = new Vector2(3, 4)};
+            ImDrawVert vert = new ImDrawVert {Uv = new Vector2F(3, 4)};
 
             // Act
-            Vector2 result = vert.Uv;
+            Vector2F result = vert.Uv;
 
             // Assert
-            Assert.Equal(new Vector2(3, 4), result);
+            Assert.Equal(new Vector2F(3, 4), result);
         }
 
         /// <summary>

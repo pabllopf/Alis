@@ -45,7 +45,7 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             Transform transform = new Transform();
-            Vector2 position = new Vector2(1, 1);
+            Vector2F position = new Vector2F(1, 1);
             float angle = 45;
 
             // Act
@@ -63,9 +63,9 @@ namespace Alis.Core.Aspect.Math.Test
         public void Constructor_ShouldSetPositionRotationAndScale()
         {
             // Arrange
-            Vector2 position = new Vector2(1, 1);
+            Vector2F position = new Vector2F(1, 1);
             float rotation = 45;
-            Vector2 scale = new Vector2(2, 2);
+            Vector2F scale = new Vector2F(2, 2);
 
             // Act
             Transform transform = new Transform(position, rotation, scale);
@@ -83,7 +83,7 @@ namespace Alis.Core.Aspect.Math.Test
         public void Set_SetsPositionAndAngleCorrectly()
         {
             Transform transform = new Transform();
-            Vector2 newPosition = new Vector2(5, 6);
+            Vector2F newPosition = new Vector2F(5, 6);
             float newAngle = 30;
 
             transform.Set(newPosition, newAngle);

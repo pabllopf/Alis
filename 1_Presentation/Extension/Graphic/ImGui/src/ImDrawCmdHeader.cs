@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The clip rect
         /// </summary>
-        public Vector4 ClipRect { get; set; }
+        public Vector4F ClipRect { get; set; }
 
         /// <summary>
         ///     The texture id

@@ -59,7 +59,7 @@ namespace Alis.Core.Physic.Common.Decomposition
 
             Polygon poly = new Polygon();
 
-            foreach (Vector2 vertex in vertices)
+            foreach (Vector2F vertex in vertices)
                 poly.Points.Add(new TriangulationPoint(vertex.X, vertex.Y));
 
             if (vertices.Holes != null)
@@ -68,7 +68,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                 {
                     Polygon hole = new Polygon();
 
-                    foreach (Vector2 vertex in holeVertices)
+                    foreach (Vector2F vertex in holeVertices)
                         hole.Points.Add(new TriangulationPoint(vertex.X, vertex.Y));
 
                     poly.AddHole(hole);
@@ -86,7 +86,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                 Vertices v = new Vertices();
                 foreach (TriangulationPoint p in triangle.Points)
                 {
-                    v.Add(new Vector2((float) p.X, (float) p.Y));
+                    v.Add(new Vector2F((float) p.X, (float) p.Y));
                 }
 
                 results.Add(v);

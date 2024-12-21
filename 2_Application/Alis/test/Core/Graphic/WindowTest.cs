@@ -61,7 +61,7 @@ namespace Alis.Test.Core.Graphic
         public void Resolution_SetValue_ShouldChangeResolution()
         {
             Window window = new Window();
-            Vector2 resolution = new Vector2(1920, 1080);
+            Vector2F resolution = new Vector2F(1920, 1080);
 
             window.Resolution = resolution;
 

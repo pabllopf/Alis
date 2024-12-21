@@ -100,7 +100,7 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration.Physic
 
             physicSettingBuilder.Gravity(9.8f, -9.8f);
 
-            Assert.Equal(new Vector2(9.8f, -9.8f), physicSettingBuilder.Build().Gravity);
+            Assert.Equal(new Vector2F(9.8f, -9.8f), physicSettingBuilder.Build().Gravity);
         }
     }
 }

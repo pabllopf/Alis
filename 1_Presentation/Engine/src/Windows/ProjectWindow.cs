@@ -56,7 +56,7 @@ namespace Alis.App.Engine.Windows
         {
             if (ImGui.Begin(NameWindow, ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoCollapse))
             {
-                ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4(0, 0, 0, 0)); // Set background to transparent
+                ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0, 0, 0, 0)); // Set background to transparent
                 ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0); // Remove border
 
                 if (ImGui.BeginMenuBar())
@@ -152,7 +152,7 @@ namespace Alis.App.Engine.Windows
                 if (ImGui.CollapsingHeader(tag))
                 {
                     int height = groupedByTag[tag].Count * 35;
-                    ImGui.BeginChild(tag, new Vector2(0, height), true);
+                    ImGui.BeginChild(tag, new Vector2F(0, height), true);
                     foreach (GameObject gameObject in groupedByTag[tag])
                     {
                         RenderGameObjectHierarchy(gameObject);
@@ -184,7 +184,7 @@ namespace Alis.App.Engine.Windows
                 if (ImGui.CollapsingHeader($"Layer {layer}"))
                 {
                     int height = groupedByLayer[layer].Count * 35;
-                    ImGui.BeginChild($"Layer {layer}", new Vector2(0, height), true);
+                    ImGui.BeginChild($"Layer {layer}", new Vector2F(0, height), true);
                     
                     foreach (GameObject gameObject in groupedByLayer[layer])
                     {

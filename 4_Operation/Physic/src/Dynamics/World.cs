@@ -96,7 +96,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The gravity
         /// </summary>
-        private Vector2 _gravity;
+        private Vector2F _gravity;
 
         /// <summary>
         ///     The toi input
@@ -136,7 +136,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The test point point tmp
         /// </summary>
-        private Vector2 _testPointPointTmp;
+        private Vector2F _testPointPointTmp;
 
         /// <summary>
         ///     The world has new fixture
@@ -206,14 +206,14 @@ namespace Alis.Core.Physic.Dynamics
 
 
             ContactManager = new ContactManager(new DynamicTreeBroadPhase());
-            Gravity = new Vector2(0f, -9.80665f);
+            Gravity = new Vector2F(0f, -9.80665f);
         }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="World" /> class.
         /// </summary>
         /// <param name="gravity">The gravity.</param>
-        public World(Vector2 gravity) : this() => Gravity = gravity;
+        public World(Vector2F gravity) : this() => Gravity = gravity;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="World" /> class.
@@ -271,7 +271,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Change the global gravity vector.
         /// </summary>
         /// <value>The gravity.</value>
-        public Vector2 Gravity
+        public Vector2F Gravity
         {
             get => _gravity;
             set
@@ -1315,7 +1315,7 @@ namespace Alis.Core.Physic.Dynamics
             for (int i = 0; i < BodyList._list.Count; i++)
             {
                 Body body = BodyList._list[i];
-                body._force = Vector2.Zero;
+                body._force = Vector2F.Zero;
                 body._torque = 0.0f;
             }
         }
@@ -1372,7 +1372,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="callback">A user implemented callback class.</param>
         /// <param name="point1">The ray starting point.</param>
         /// <param name="point2">The ray ending point.</param>
-        public void RayCast(RayCastReportFixtureDelegate callback, Vector2 point1, Vector2 point2)
+        public void RayCast(RayCastReportFixtureDelegate callback, Vector2F point1, Vector2F point2)
         {
             RayCastInput input = new RayCastInput();
             input.MaxFraction = 1.0f;
@@ -1400,7 +1400,7 @@ namespace Alis.Core.Physic.Dynamics
             if (hit)
             {
                 float fraction = output.Fraction;
-                Vector2 point = (1.0f - fraction) * rayCastInput.Point1 + fraction * rayCastInput.Point2;
+                Vector2F point = (1.0f - fraction) * rayCastInput.Point1 + fraction * rayCastInput.Point2;
                 return _rayCastDelegateTmp(fixture, point, output.Normal, fraction);
             }
 
@@ -1481,10 +1481,10 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The test point fixture tmp</returns>
-        public Fixture TestPoint(Vector2 point)
+        public Fixture TestPoint(Vector2F point)
         {
             AABB aabb;
-            Vector2 d = new Vector2(SettingEnv.Epsilon, SettingEnv.Epsilon);
+            Vector2F d = new Vector2F(SettingEnv.Epsilon, SettingEnv.Epsilon);
             aabb.LowerBound = point - d;
             aabb.UpperBound = point + d;
 
@@ -1519,7 +1519,7 @@ namespace Alis.Core.Physic.Dynamics
         /// The body shift formula is: position -= newOrigin
         /// @param newOrigin the new origin with respect to the old origin
         /// Warning: Calling this method mid-update might cause a crash.
-        public void ShiftOrigin(Vector2 newOrigin)
+        public void ShiftOrigin(Vector2F newOrigin)
         {
             foreach (Body b in BodyList)
             {

@@ -98,7 +98,7 @@ namespace Alis.Test.Builder.Core.Graphic
         public void Resolution_ValidInput()
         {
             WindowBuilder windowBuilder = new WindowBuilder();
-            Vector2 resolution = new Vector2(800, 600);
+            Vector2F resolution = new Vector2F(800, 600);
 
             windowBuilder.Resolution(resolution.X, resolution.Y);
 
@@ -163,7 +163,7 @@ namespace Alis.Test.Builder.Core.Graphic
         public void Resolution_ValidInput_v2()
         {
             WindowBuilder windowBuilder = new WindowBuilder();
-            Vector2 resolution = new Vector2(1920, 1080);
+            Vector2F resolution = new Vector2F(1920, 1080);
 
             windowBuilder.Resolution(resolution.X, resolution.Y);
 
@@ -223,7 +223,7 @@ namespace Alis.Test.Builder.Core.Graphic
         public void Resolution_SetsResolutionToGivenValue()
         {
             WindowBuilder builder = new WindowBuilder();
-            Vector2 resolution = new Vector2(1920, 1080);
+            Vector2F resolution = new Vector2F(1920, 1080);
 
             builder.Resolution(resolution.X, resolution.Y);
 

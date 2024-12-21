@@ -175,7 +175,7 @@ namespace Alis.App.Engine
                 return;
             }
 
-            enginePath = Environment.CurrentDirectory;
+            enginePath = AppDomain.CurrentDomain.BaseDirectory;
             
             Environment.CurrentDirectory = spaceWork.Project.Path;
             spaceWork = new SpaceWork();
@@ -231,7 +231,7 @@ namespace Alis.App.Engine
 
             spaceWork.Io = ImGui.GetIo();
 
-            spaceWork.Io.DisplaySize = new Vector2(widthWindow, heightWindow);
+            spaceWork.Io.DisplaySize = new Vector2F(widthWindow, heightWindow);
 
             Logger.Info($@"IMGUI VERSION {ImGui.GetVersion()}");
 
@@ -264,7 +264,7 @@ namespace Alis.App.Engine
             float fontSize = 14;
             float fontSizeIcon = 13.5f;
 
-            string fontFileSolid = AssetManager.Find("JetBrainsMono-Bold.ttf");
+            string fontFileSolid = AssetManager.Find("Engine_JetBrainsMono-Bold.ttf");
             spaceWork.fontLoaded16Solid = fonts.AddFontFromFileTtf(fontFileSolid, fontSize);
             try
             {
@@ -293,7 +293,7 @@ namespace Alis.App.Engine
                 return;
             }
             
-            string fontFileSolid10 = AssetManager.Find("JetBrainsMono-Bold.ttf");
+            string fontFileSolid10 = AssetManager.Find("Engine_JetBrainsMono-Bold.ttf");
             spaceWork.fontLoaded10Solid = fonts.AddFontFromFileTtf(fontFileSolid10, 12);
             try
             {
@@ -322,7 +322,7 @@ namespace Alis.App.Engine
                 return;
             }
 
-            string fontFileSolid45 = AssetManager.Find("JetBrainsMono-Bold.ttf");
+            string fontFileSolid45 = AssetManager.Find("Engine_JetBrainsMono-Bold.ttf");
             spaceWork.fontLoaded45Bold = fonts.AddFontFromFileTtf(fontFileSolid45, 40);
             try
             {
@@ -350,7 +350,7 @@ namespace Alis.App.Engine
                 return;
             }
             
-            string fontFileSolid30 = AssetManager.Find("JetBrainsMono-Bold.ttf");
+            string fontFileSolid30 = AssetManager.Find("Engine_JetBrainsMono-Bold.ttf");
             spaceWork.fontLoaded30Bold = fonts.AddFontFromFileTtf(fontFileSolid30, 28);
             try
             {
@@ -378,7 +378,7 @@ namespace Alis.App.Engine
                 return;
             }
 
-            string fontAwesomeLight = AssetManager.Find("JetBrainsMonoNL-Regular.ttf");
+            string fontAwesomeLight = AssetManager.Find("Engine_JetBrainsMonoNL-Regular.ttf");
             spaceWork.fontLoaded16Light = fonts.AddFontFromFileTtf(fontAwesomeLight, fontSize);
             try
             {
@@ -458,7 +458,7 @@ namespace Alis.App.Engine
 
 
             // Set icon app:
-            string iconPath = AssetManager.Find("app.bmp");
+            string iconPath = AssetManager.Find("Engine_app.bmp");
             if (!string.IsNullOrEmpty(iconPath) && File.Exists(iconPath))
             {
                 IntPtr icon = Sdl.LoadBmp(iconPath);
@@ -470,6 +470,8 @@ namespace Alis.App.Engine
             hubMenu = new HubMenu(spaceWork);
 
 
+            ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_default_config.ini"));
+            
             while (!spaceWork._quit)
             {
                 while (Sdl.PollEvent(out Event e) != 0)
@@ -507,12 +509,12 @@ namespace Alis.App.Engine
                 ImGuizMo.BeginFrame();
 
                 // Setup display size (every frame to accommodate for window resizing)
-                Vector2 windowSize = Sdl.GetWindowSize(spaceWork.Window);
+                Vector2F windowSize = Sdl.GetWindowSize(spaceWork.Window);
                 Sdl.GetDrawableSize(spaceWork.Window, out int displayW, out int displayH);
-                spaceWork.Io.DisplaySize = new Vector2(windowSize.X, windowSize.Y);
+                spaceWork.Io.DisplaySize = new Vector2F(windowSize.X, windowSize.Y);
                 if ((windowSize.X > 0) && (windowSize.Y > 0))
                 {
-                    spaceWork.Io.DisplayFramebufferScale = new Vector2(displayW / windowSize.X, displayH / windowSize.Y);
+                    spaceWork.Io.DisplayFramebufferScale = new Vector2F(displayW / windowSize.X, displayH / windowSize.Y);
                 }
 
                 // Setup time step (we don't use SDL_GetTicks() because it is using millisecond resolution)
@@ -577,148 +579,148 @@ namespace Alis.App.Engine
             ref ImGuiStyle style = ref ImGui.GetStyle();
 
             // Main text color:
-            style[(int) ImGuiCol.Text] = new Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+            style[(int) ImGuiCol.Text] = new Vector4F(1.0f, 1.0f, 1.0f, 1.0f);
 
             // Disabled text color:
-            style[(int) ImGuiCol.TextDisabled] = new Vector4(0.5f, 0.5f, 0.5f, 1.0f);
+            style[(int) ImGuiCol.TextDisabled] = new Vector4F(0.5f, 0.5f, 0.5f, 1.0f);
 
             // Main background color for windows
-            style[(int) ImGuiCol.WindowBg] = new Vector4(0.13f, 0.14f, 0.15f, 1.0f);
+            style[(int) ImGuiCol.WindowBg] = new Vector4F(0.13f, 0.14f, 0.15f, 1.0f);
 
             // Main background color for child windows
-            style[(int) ImGuiCol.ChildBg] = new Vector4(0.13f, 0.14f, 0.15f, 1.0f);
+            style[(int) ImGuiCol.ChildBg] = new Vector4F(0.13f, 0.14f, 0.15f, 1.0f);
 
             // Background color for tooltips
-            style[(int) ImGuiCol.PopupBg] = new Vector4(0.13f, 0.14f, 0.15f, 1.0f);
+            style[(int) ImGuiCol.PopupBg] = new Vector4F(0.13f, 0.14f, 0.15f, 1.0f);
 
             // Border colors
-            style[(int) ImGuiCol.Border] = new Vector4(0.25f, 0.25f, 0.25f, 1.0f);
+            style[(int) ImGuiCol.Border] = new Vector4F(0.25f, 0.25f, 0.25f, 1.0f);
 
             // Border shadow color
-            style[(int) ImGuiCol.BorderShadow] = new Vector4(0.0f, 0.0f, 0.0f, 0.0f);
+            style[(int) ImGuiCol.BorderShadow] = new Vector4F(0.0f, 0.0f, 0.0f, 0.0f);
 
             // Frame background color
-            style[(int) ImGuiCol.FrameBg] = new Vector4(0.2f, 0.2f, 0.2f, 1.0f);
+            style[(int) ImGuiCol.FrameBg] = new Vector4F(0.2f, 0.2f, 0.2f, 1.0f);
 
             // Frame background color when hovered
-            style[(int) ImGuiCol.FrameBgHovered] = new Vector4(0.3f, 0.3f, 0.3f, 1.0f);
+            style[(int) ImGuiCol.FrameBgHovered] = new Vector4F(0.3f, 0.3f, 0.3f, 1.0f);
 
             // Frame background color when active
-            style[(int) ImGuiCol.FrameBgActive] = new Vector4(0.4f, 0.4f, 0.4f, 1.0f);
+            style[(int) ImGuiCol.FrameBgActive] = new Vector4F(0.4f, 0.4f, 0.4f, 1.0f);
 
             // Title bar background color
-            style[(int) ImGuiCol.TitleBg] = new Vector4(0.1f, 0.1f, 0.1f, 1.0f);
+            style[(int) ImGuiCol.TitleBg] = new Vector4F(0.1f, 0.1f, 0.1f, 1.0f);
 
             // Title bar background color when active
-            style[(int) ImGuiCol.TitleBgActive] = new Vector4(0.1f, 0.1f, 0.1f, 1.0f);
+            style[(int) ImGuiCol.TitleBgActive] = new Vector4F(0.1f, 0.1f, 0.1f, 1.0f);
 
             // Title bar background color when collapsed
-            style[(int) ImGuiCol.TitleBgCollapsed] = new Vector4(0.1f, 0.1f, 0.1f, 1.0f);
+            style[(int) ImGuiCol.TitleBgCollapsed] = new Vector4F(0.1f, 0.1f, 0.1f, 1.0f);
 
             // Menu bar background color
-            style[(int) ImGuiCol.MenuBarBg] = new Vector4(0.15f, 0.15f, 0.15f, 1.0f);
+            style[(int) ImGuiCol.MenuBarBg] = new Vector4F(0.15f, 0.15f, 0.15f, 1.0f);
 
             // Scrollbar background color
-            style[(int) ImGuiCol.ScrollbarBg] = new Vector4(0.1f, 0.1f, 0.1f, 1.0f);
+            style[(int) ImGuiCol.ScrollbarBg] = new Vector4F(0.1f, 0.1f, 0.1f, 1.0f);
 
             // Scrollbar grab color
-            style[(int) ImGuiCol.ScrollbarGrab] = new Vector4(0.3f, 0.3f, 0.3f, 1.0f);
+            style[(int) ImGuiCol.ScrollbarGrab] = new Vector4F(0.3f, 0.3f, 0.3f, 1.0f);
 
             // Scrollbar grab color when hovered
-            style[(int) ImGuiCol.ScrollbarGrabHovered] = new Vector4(0.4f, 0.4f, 0.4f, 1.0f);
+            style[(int) ImGuiCol.ScrollbarGrabHovered] = new Vector4F(0.4f, 0.4f, 0.4f, 1.0f);
 
             // Scrollbar grab color when active
-            style[(int) ImGuiCol.ScrollbarGrabActive] = new Vector4(0.5f, 0.5f, 0.5f, 1.0f);
+            style[(int) ImGuiCol.ScrollbarGrabActive] = new Vector4F(0.5f, 0.5f, 0.5f, 1.0f);
 
             // Checkmark color
-            style[(int) ImGuiCol.CheckMark] = new Vector4(0.26f, 0.59f, 0.98f, 1.0f);
+            style[(int) ImGuiCol.CheckMark] = new Vector4F(0.26f, 0.59f, 0.98f, 1.0f);
 
             // Slider grab color
-            style[(int) ImGuiCol.SliderGrab] = new Vector4(0.26f, 0.59f, 0.98f, 1.0f);
+            style[(int) ImGuiCol.SliderGrab] = new Vector4F(0.26f, 0.59f, 0.98f, 1.0f);
 
             // Slider grab color when active
-            style[(int) ImGuiCol.SliderGrabActive] = new Vector4(0.26f, 0.59f, 0.98f, 1.0f);
+            style[(int) ImGuiCol.SliderGrabActive] = new Vector4F(0.26f, 0.59f, 0.98f, 1.0f);
 
             // Button color
-            style[(int) ImGuiCol.Button] = new Vector4(0.2f, 0.2f, 0.2f, 1.0f);
+            style[(int) ImGuiCol.Button] = new Vector4F(0.2f, 0.2f, 0.2f, 1.0f);
 
             // Button color when hovered
-            style[(int) ImGuiCol.ButtonHovered] = new Vector4(0.3f, 0.3f, 0.3f, 1.0f);
+            style[(int) ImGuiCol.ButtonHovered] = new Vector4F(0.3f, 0.3f, 0.3f, 1.0f);
 
             // Button color when active
-            style[(int) ImGuiCol.ButtonActive] = new Vector4(0.4f, 0.4f, 0.4f, 1.0f);
+            style[(int) ImGuiCol.ButtonActive] = new Vector4F(0.4f, 0.4f, 0.4f, 1.0f);
 
             // Header color
-            style[(int) ImGuiCol.Header] = new Vector4(0.2f, 0.2f, 0.2f, 1.0f);
+            style[(int) ImGuiCol.Header] = new Vector4F(0.2f, 0.2f, 0.2f, 1.0f);
 
             // Header color when hovered
-            style[(int) ImGuiCol.HeaderHovered] = new Vector4(0.3f, 0.3f, 0.3f, 1.0f);
+            style[(int) ImGuiCol.HeaderHovered] = new Vector4F(0.3f, 0.3f, 0.3f, 1.0f);
 
             // Header color when active
-            style[(int) ImGuiCol.HeaderActive] = new Vector4(0.4f, 0.4f, 0.4f, 1.0f);
+            style[(int) ImGuiCol.HeaderActive] = new Vector4F(0.4f, 0.4f, 0.4f, 1.0f);
 
             // Separator color
-            style[(int) ImGuiCol.Separator] = new Vector4(0.25f, 0.25f, 0.25f, 1.0f);
+            style[(int) ImGuiCol.Separator] = new Vector4F(0.25f, 0.25f, 0.25f, 1.0f);
 
             // Separator color when hovered
-            style[(int) ImGuiCol.SeparatorHovered] = new Vector4(0.3f, 0.3f, 0.3f, 1.0f);
+            style[(int) ImGuiCol.SeparatorHovered] = new Vector4F(0.3f, 0.3f, 0.3f, 1.0f);
 
             // Separator color when active
-            style[(int) ImGuiCol.SeparatorActive] = new Vector4(0.4f, 0.4f, 0.4f, 1.0f);
+            style[(int) ImGuiCol.SeparatorActive] = new Vector4F(0.4f, 0.4f, 0.4f, 1.0f);
 
             // Resize grip color
-            style[(int) ImGuiCol.ResizeGrip] = new Vector4(0.2f, 0.2f, 0.2f, 1.0f);
+            style[(int) ImGuiCol.ResizeGrip] = new Vector4F(0.2f, 0.2f, 0.2f, 1.0f);
 
             // Resize grip color when hovered
-            style[(int) ImGuiCol.ResizeGripHovered] = new Vector4(0.3f, 0.3f, 0.3f, 1.0f);
+            style[(int) ImGuiCol.ResizeGripHovered] = new Vector4F(0.3f, 0.3f, 0.3f, 1.0f);
 
             // Resize grip color when active
-            style[(int) ImGuiCol.ResizeGripActive] = new Vector4(0.4f, 0.4f, 0.4f, 1.0f);
+            style[(int) ImGuiCol.ResizeGripActive] = new Vector4F(0.4f, 0.4f, 0.4f, 1.0f);
 
             // Tab color
-            style[(int) ImGuiCol.Tab] = new Vector4(0.1f, 0.1f, 0.1f, 1.0f);
+            style[(int) ImGuiCol.Tab] = new Vector4F(0.1f, 0.1f, 0.1f, 1.0f);
 
             // Tab color when hovered
-            style[(int) ImGuiCol.TabHovered] = new Vector4(0.3f, 0.3f, 0.3f, 1.0f);
+            style[(int) ImGuiCol.TabHovered] = new Vector4F(0.3f, 0.3f, 0.3f, 1.0f);
 
             // Tab color when active
-            style[(int) ImGuiCol.TabActive] = new Vector4(0.4f, 0.4f, 0.4f, 1.0f);
+            style[(int) ImGuiCol.TabActive] = new Vector4F(0.4f, 0.4f, 0.4f, 1.0f);
 
             // Tab color when active
-            style[(int) ImGuiCol.TabUnfocused] = new Vector4(0.1f, 0.1f, 0.1f, 1.0f);
+            style[(int) ImGuiCol.TabUnfocused] = new Vector4F(0.1f, 0.1f, 0.1f, 1.0f);
 
             // Tab color when active
-            style[(int) ImGuiCol.TabUnfocusedActive] = new Vector4(0.4f, 0.4f, 0.4f, 1.0f);
+            style[(int) ImGuiCol.TabUnfocusedActive] = new Vector4F(0.4f, 0.4f, 0.4f, 1.0f);
 
             // Plot lines color
-            style[(int) ImGuiCol.PlotLines] = new Vector4(0.61f, 0.61f, 0.61f, 1.0f);
+            style[(int) ImGuiCol.PlotLines] = new Vector4F(0.61f, 0.61f, 0.61f, 1.0f);
 
             // Plot lines color when hovered
-            style[(int) ImGuiCol.PlotLinesHovered] = new Vector4(0.7f, 0.7f, 0.7f, 1.0f);
+            style[(int) ImGuiCol.PlotLinesHovered] = new Vector4F(0.7f, 0.7f, 0.7f, 1.0f);
 
             // Plot histogram color
-            style[(int) ImGuiCol.PlotHistogram] = new Vector4(0.61f, 0.61f, 0.61f, 1.0f);
+            style[(int) ImGuiCol.PlotHistogram] = new Vector4F(0.61f, 0.61f, 0.61f, 1.0f);
 
             // Plot histogram color when hovered
-            style[(int) ImGuiCol.PlotHistogramHovered] = new Vector4(0.7f, 0.7f, 0.7f, 1.0f);
+            style[(int) ImGuiCol.PlotHistogramHovered] = new Vector4F(0.7f, 0.7f, 0.7f, 1.0f);
 
             // Text selected color
-            style[(int) ImGuiCol.TextSelectedBg] = new Vector4(0.26f, 0.59f, 0.98f, 1.0f);
+            style[(int) ImGuiCol.TextSelectedBg] = new Vector4F(0.26f, 0.59f, 0.98f, 1.0f);
 
             // Drag and drop target color
-            style[(int) ImGuiCol.DragDropTarget] = new Vector4(0.26f, 0.59f, 0.98f, 1.0f);
+            style[(int) ImGuiCol.DragDropTarget] = new Vector4F(0.26f, 0.59f, 0.98f, 1.0f);
 
             // Nav highlight color
-            style[(int) ImGuiCol.NavHighlight] = new Vector4(0.26f, 0.59f, 0.98f, 1.0f);
+            style[(int) ImGuiCol.NavHighlight] = new Vector4F(0.26f, 0.59f, 0.98f, 1.0f);
 
             // Nav windowing highlight color
-            style[(int) ImGuiCol.NavWindowingHighlight] = new Vector4(0.26f, 0.59f, 0.98f, 1.0f);
+            style[(int) ImGuiCol.NavWindowingHighlight] = new Vector4F(0.26f, 0.59f, 0.98f, 1.0f);
 
             // Nav windowing dim background color
-            style[(int) ImGuiCol.NavWindowingDimBg] = new Vector4(0.2f, 0.2f, 0.2f, 0.6f);
+            style[(int) ImGuiCol.NavWindowingDimBg] = new Vector4F(0.2f, 0.2f, 0.2f, 0.6f);
 
             // Modal window dim background color
-            style[(int) ImGuiCol.ModalWindowDimBg] = new Vector4(0.2f, 0.2f, 0.2f, 0.6f);
+            style[(int) ImGuiCol.ModalWindowDimBg] = new Vector4F(0.2f, 0.2f, 0.2f, 0.6f);
 
             // SETTING STYLE
             // WindowRounding
@@ -761,22 +763,22 @@ namespace Alis.App.Engine
             style.TabBorderSize = 0.0f;
 
             // Window padding
-            style.WindowPadding = new Vector2(4, 4);
+            style.WindowPadding = new Vector2F(4, 4);
 
             // Frame padding
-            style.FramePadding = new Vector2(7, 7);
+            style.FramePadding = new Vector2F(7, 7);
 
             // Item spacing
-            style.ItemSpacing = new Vector2(6, 6);
+            style.ItemSpacing = new Vector2F(6, 6);
 
             // Inner item spacing
-            style.ItemInnerSpacing = new Vector2(6, 6);
+            style.ItemInnerSpacing = new Vector2F(6, 6);
 
             // Cell padding
-            style.CellPadding = new Vector2(10, 10);
+            style.CellPadding = new Vector2F(10, 10);
 
             // Touch extra padding
-            style.TouchExtraPadding = new Vector2(0, 0);
+            style.TouchExtraPadding = new Vector2F(0, 0);
 
             // Indent spacing
             style.IndentSpacing = 21;
@@ -788,7 +790,7 @@ namespace Alis.App.Engine
             style.GrabMinSize = 12;
 
             // Window title alignment
-            style.WindowTitleAlign = new Vector2(0.5f, 0.5f);
+            style.WindowTitleAlign = new Vector2F(0.5f, 0.5f);
 
             // Window menu button position
             style.WindowMenuButtonPosition = ImGuiDir.None;
@@ -797,13 +799,13 @@ namespace Alis.App.Engine
             style.ColorButtonPosition = 0;
 
             // Button text alignment
-            style.ButtonTextAlign = new Vector2(0.5f, 0.5f);
+            style.ButtonTextAlign = new Vector2F(0.5f, 0.5f);
 
             // Display window padding
-            style.DisplayWindowPadding = new Vector2(19, 19);
+            style.DisplayWindowPadding = new Vector2F(19, 19);
 
             // Display safe area padding
-            style.DisplaySafeAreaPadding = new Vector2(3, 3);
+            style.DisplaySafeAreaPadding = new Vector2F(3, 3);
 
             // Enable anti-aliased lines
             style.AntiAliasedLines = 1;
@@ -836,12 +838,12 @@ namespace Alis.App.Engine
 
             spaceWork.DockSpaceMenu.Update();
 
-            Vector2 dockSize = spaceWork.Viewport.Size - new Vector2(5, 85);
+            Vector2F dockSize = spaceWork.Viewport.Size - new Vector2F(5, 85);
 
             // Calcular el tamaño del DockSpace restante
             if (spaceWork.IsMacOs)
             {
-                dockSize = spaceWork.Viewport.Size - new Vector2(5, 60);
+                dockSize = spaceWork.Viewport.Size - new Vector2F(5, 60);
             }
 
             uint dockSpaceId = ImGui.GetId("MyDockSpace");
@@ -1062,7 +1064,7 @@ namespace Alis.App.Engine
             }
             else
             {
-                imGuiIoPtr.MousePos = new Vector2(float.MinValue, float.MinValue);
+                imGuiIoPtr.MousePos = new Vector2F(float.MinValue, float.MinValue);
             }
 
             uint mouseButtons = Sdl.GetMouseStateOutXAndY(out int mx, out int my);
@@ -1086,7 +1088,7 @@ namespace Alis.App.Engine
                 Sdl.GetGlobalMouseStateOutXAndOutY(out mx, out my);
                 mx -= wx;
                 my -= wy;
-                imGuiIoPtr.MousePos = new Vector2(mx, my);
+                imGuiIoPtr.MousePos = new Vector2F(mx, my);
             }
 
             // SDL_CaptureMouse() let the OS know e.g. that our imgui drag outside the SDL window boundaries shouldn't e.g. trigger the OS window resize cursor.
@@ -1205,8 +1207,8 @@ namespace Alis.App.Engine
 
             SetupRenderState(drawData);
 
-            Vector2 clipOffset = drawData.DisplayPos;
-            Vector2 clipScale = drawData.FramebufferScale;
+            Vector2F clipOffset = drawData.DisplayPos;
+            Vector2F clipScale = drawData.FramebufferScale;
 
             drawData.ScaleClipRects(clipScale);
 
@@ -1234,7 +1236,7 @@ namespace Alis.App.Engine
                     else
                     {
                         // Project scissor/clipping rectangles into framebuffer space
-                        Vector4 clipRect = pcmd.ClipRect;
+                        Vector4F clipRect = pcmd.ClipRect;
 
                         clipRect.X = pcmd.ClipRect.X - clipOffset.X;
                         clipRect.Y = pcmd.ClipRect.Y - clipOffset.Y;

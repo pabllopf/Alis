@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="qual">The qual</param>
         /// <returns>The im plot colormap</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_AddColormap_Vec4Ptr")]
-        internal static extern ImPlotColormap ImPlot_AddColormap_Vec4Ptr(byte[] name, Vector4 cols, int size, byte qual);
+        internal static extern ImPlotColormap ImPlot_AddColormap_Vec4Ptr(byte[] name, Vector4F cols, int size, byte qual);
 
         /// <summary>
         ///     Ims the plot add colormap u 32 ptr using the specified name
@@ -75,7 +75,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="clamp">The clamp</param>
         /// <param name="round">The round</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_Annotation_Bool")]
-        internal static extern void ImPlot_Annotation_Bool(double x, double y, Vector4 col, Vector2 pixOffset, byte clamp, byte round);
+        internal static extern void ImPlot_Annotation_Bool(double x, double y, Vector4F col, Vector2F pixOffset, byte clamp, byte round);
 
         /// <summary>
         ///     Ims the plot annotation str using the specified x
@@ -87,7 +87,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="clamp">The clamp</param>
         /// <param name="fmt">The fmt</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_Annotation_Str")]
-        internal static extern void ImPlot_Annotation_Str(double x, double y, Vector4 col, Vector2 pixOffset, byte clamp, byte[] fmt);
+        internal static extern void ImPlot_Annotation_Str(double x, double y, Vector4F col, Vector2F pixOffset, byte clamp, byte[] fmt);
 
         /// <summary>
         ///     Ims the plot begin aligned plots using the specified group id
@@ -163,7 +163,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_BeginPlot")]
-        internal static extern byte ImPlot_BeginPlot(byte[] titleId, Vector2 size, ImPlotFlags flags);
+        internal static extern byte ImPlot_BeginPlot(byte[] titleId, Vector2F size, ImPlotFlags flags);
 
         /// <summary>
         ///     Ims the plot begin subplots using the specified title id
@@ -177,7 +177,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="colRatios">The col ratios</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_BeginSubplots")]
-        internal static extern byte ImPlot_BeginSubplots(byte[] titleId, int rows, int cols, Vector2 size, ImPlotSubplotFlags flags, float rowRatios, float colRatios);
+        internal static extern byte ImPlot_BeginSubplots(byte[] titleId, int rows, int cols, Vector2F size, ImPlotSubplotFlags flags, float rowRatios, float colRatios);
 
         /// <summary>
         ///     Ims the plot bust color cache using the specified plot title id
@@ -200,7 +200,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="cmap">The cmap</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_ColormapButton")]
-        internal static extern byte ImPlot_ColormapButton(byte[] label, Vector2 size, ImPlotColormap cmap);
+        internal static extern byte ImPlot_ColormapButton(byte[] label, Vector2F size, ImPlotColormap cmap);
 
         /// <summary>
         ///     Ims the plot colormap icon using the specified cmap
@@ -220,7 +220,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="cmap">The cmap</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_ColormapScale")]
-        internal static extern void ImPlot_ColormapScale(byte[] label, double scaleMin, double scaleMax, Vector2 size, byte[] format, ImPlotColormapScaleFlags flags, ImPlotColormap cmap);
+        internal static extern void ImPlot_ColormapScale(byte[] label, double scaleMin, double scaleMax, Vector2F size, byte[] format, ImPlotColormapScaleFlags flags, ImPlotColormap cmap);
 
         /// <summary>
         ///     Ims the plot colormap slider using the specified label
@@ -232,7 +232,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="cmap">The cmap</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_ColormapSlider")]
-        internal static extern byte ImPlot_ColormapSlider(byte[] label, float t, out Vector4 @out, byte[] format, ImPlotColormap cmap);
+        internal static extern byte ImPlot_ColormapSlider(byte[] label, float t, out Vector4F @out, byte[] format, ImPlotColormap cmap);
 
         /// <summary>
         ///     Ims the plot create context
@@ -258,7 +258,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_DragLineX")]
-        internal static extern byte ImPlot_DragLineX(int id, double x, Vector4 col, float thickness, ImPlotDragToolFlags flags);
+        internal static extern byte ImPlot_DragLineX(int id, double x, Vector4F col, float thickness, ImPlotDragToolFlags flags);
 
         /// <summary>
         ///     Ims the plot drag line y using the specified id
@@ -270,7 +270,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_DragLineY")]
-        internal static extern byte ImPlot_DragLineY(int id, double y, Vector4 col, float thickness, ImPlotDragToolFlags flags);
+        internal static extern byte ImPlot_DragLineY(int id, double y, Vector4F col, float thickness, ImPlotDragToolFlags flags);
 
         /// <summary>
         ///     Ims the plot drag point using the specified id
@@ -283,7 +283,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_DragPoint")]
-        internal static extern byte ImPlot_DragPoint(int id, double x, double y, Vector4 col, float size, ImPlotDragToolFlags flags);
+        internal static extern byte ImPlot_DragPoint(int id, double x, double y, Vector4F col, float size, ImPlotDragToolFlags flags);
 
         /// <summary>
         ///     Ims the plot drag rect using the specified id
@@ -297,7 +297,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_DragRect")]
-        internal static extern byte ImPlot_DragRect(int id, double x1, double y1, double x2, double y2, Vector4 col, ImPlotDragToolFlags flags);
+        internal static extern byte ImPlot_DragRect(int id, double x1, double y1, double x2, double y2, Vector4F col, ImPlotDragToolFlags flags);
 
         /// <summary>
         ///     Ims the plot end aligned plots
@@ -342,7 +342,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="idx">The idx</param>
         /// <param name="cmap">The cmap</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_GetColormapColor")]
-        internal static extern void ImPlot_GetColormapColor(out Vector4 pOut, int idx, ImPlotColormap cmap);
+        internal static extern void ImPlot_GetColormapColor(out Vector4F pOut, int idx, ImPlotColormap cmap);
 
         /// <summary>
         ///     Ims the plot get colormap count
@@ -394,7 +394,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_GetLastItemColor")]
-        internal static extern void ImPlot_GetLastItemColor(out Vector4 pOut);
+        internal static extern void ImPlot_GetLastItemColor(out Vector4F pOut);
 
         /// <summary>
         ///     Ims the plot get marker name using the specified idx
@@ -434,7 +434,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_GetPlotPos")]
-        internal static extern void ImPlot_GetPlotPos(out Vector2 pOut);
+        internal static extern void ImPlot_GetPlotPos(out Vector2F pOut);
 
         /// <summary>
         ///     Ims the plot get plot selection using the specified x axis
@@ -450,7 +450,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_GetPlotSize")]
-        internal static extern void ImPlot_GetPlotSize(out Vector2 pOut);
+        internal static extern void ImPlot_GetPlotSize(out Vector2F pOut);
 
         /// <summary>
         ///     Ims the plot get style
@@ -517,7 +517,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         /// <param name="col">The col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_ItemIcon_Vec4")]
-        internal static extern void ImPlot_ItemIcon_Vec4(Vector4 col);
+        internal static extern void ImPlot_ItemIcon_Vec4(Vector4F col);
 
         /// <summary>
         ///     Ims the plot item icon u 32 using the specified col
@@ -545,7 +545,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_NextColormapColor")]
-        internal static extern void ImPlot_NextColormapColor(out Vector4 pOut);
+        internal static extern void ImPlot_NextColormapColor(out Vector4F pOut);
 
         /// <summary>
         ///     Ims the plot pixels to plot vec 2 using the specified p out
@@ -555,7 +555,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="xAxis">The axis</param>
         /// <param name="yAxis">The axis</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PixelsToPlot_Vec2")]
-        internal static extern void ImPlot_PixelsToPlot_Vec2(out ImPlotPoint pOut, Vector2 pix, ImAxis xAxis, ImAxis yAxis);
+        internal static extern void ImPlot_PixelsToPlot_Vec2(out ImPlotPoint pOut, Vector2F pix, ImAxis xAxis, ImAxis yAxis);
 
         /// <summary>
         ///     Ims the plot pixels to plot float using the specified p out
@@ -1891,7 +1891,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="tintCol">The tint col</param>
         /// <param name="flags">The flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotImage")]
-        internal static extern void ImPlot_PlotImage(byte[] labelId, IntPtr userTextureId, ImPlotPoint boundsMin, ImPlotPoint boundsMax, Vector2 uv0, Vector2 uv1, Vector4 tintCol, ImPlotImageFlags flags);
+        internal static extern void ImPlot_PlotImage(byte[] labelId, IntPtr userTextureId, ImPlotPoint boundsMin, ImPlotPoint boundsMax, Vector2F uv0, Vector2F uv1, Vector4F tintCol, ImPlotImageFlags flags);
 
         /// <summary>
         ///     Ims the plot plot inf lines float ptr using the specified label id
@@ -3748,7 +3748,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="pixOffset">The pix offset</param>
         /// <param name="flags">The flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotText")]
-        internal static extern void ImPlot_PlotText(byte[] text, double x, double y, Vector2 pixOffset, ImPlotTextFlags flags);
+        internal static extern void ImPlot_PlotText(byte[] text, double x, double y, Vector2F pixOffset, ImPlotTextFlags flags);
 
         /// <summary>
         ///     Ims the plot plot to pixels plot po int using the specified p out
@@ -3758,7 +3758,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="xAxis">The axis</param>
         /// <param name="yAxis">The axis</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotToPixels_PlotPoInt")]
-        internal static extern void ImPlot_PlotToPixels_PlotPoInt(out Vector2 pOut, ImPlotPoint plt, ImAxis xAxis, ImAxis yAxis);
+        internal static extern void ImPlot_PlotToPixels_PlotPoInt(out Vector2F pOut, ImPlotPoint plt, ImAxis xAxis, ImAxis yAxis);
 
         /// <summary>
         ///     Ims the plot plot to pixels double using the specified p out
@@ -3769,7 +3769,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="xAxis">The axis</param>
         /// <param name="yAxis">The axis</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotToPixels_double")]
-        internal static extern void ImPlot_PlotToPixels_double(out Vector2 pOut, double x, double y, ImAxis xAxis, ImAxis yAxis);
+        internal static extern void ImPlot_PlotToPixels_double(out Vector2F pOut, double x, double y, ImAxis xAxis, ImAxis yAxis);
 
         /// <summary>
         ///     Ims the plot pop colormap using the specified count
@@ -3833,7 +3833,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="idx">The idx</param>
         /// <param name="col">The col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PushStyleColor_Vec4")]
-        internal static extern void ImPlot_PushStyleColor_Vec4(ImPlotCol idx, Vector4 col);
+        internal static extern void ImPlot_PushStyleColor_Vec4(ImPlotCol idx, Vector4F col);
 
         /// <summary>
         ///     Ims the plot push style var float using the specified idx
@@ -3857,7 +3857,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="idx">The idx</param>
         /// <param name="val">The val</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PushStyleVar_Vec2")]
-        internal static extern void ImPlot_PushStyleVar_Vec2(ImPlotStyleVar idx, Vector2 val);
+        internal static extern void ImPlot_PushStyleVar_Vec2(ImPlotStyleVar idx, Vector2F val);
 
         /// <summary>
         ///     Ims the plot sample colormap using the specified p out
@@ -3866,7 +3866,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="t">The </param>
         /// <param name="cmap">The cmap</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SampleColormap")]
-        internal static extern void ImPlot_SampleColormap(out Vector4 pOut, float t, ImPlotColormap cmap);
+        internal static extern void ImPlot_SampleColormap(out Vector4F pOut, float t, ImPlotColormap cmap);
 
         /// <summary>
         ///     Ims the plot set axes using the specified x axis
@@ -3947,7 +3947,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="size">The size</param>
         /// <param name="weight">The weight</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetNextErrorBarStyle")]
-        internal static extern void ImPlot_SetNextErrorBarStyle(Vector4 col, float size, float weight);
+        internal static extern void ImPlot_SetNextErrorBarStyle(Vector4F col, float size, float weight);
 
         /// <summary>
         ///     Ims the plot set next fill style using the specified col
@@ -3955,7 +3955,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="col">The col</param>
         /// <param name="alphaMod">The alpha mod</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetNextFillStyle")]
-        internal static extern void ImPlot_SetNextFillStyle(Vector4 col, float alphaMod);
+        internal static extern void ImPlot_SetNextFillStyle(Vector4F col, float alphaMod);
 
         /// <summary>
         ///     Ims the plot set next line style using the specified col
@@ -3963,7 +3963,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="col">The col</param>
         /// <param name="weight">The weight</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetNextLineStyle")]
-        internal static extern void ImPlot_SetNextLineStyle(Vector4 col, float weight);
+        internal static extern void ImPlot_SetNextLineStyle(Vector4F col, float weight);
 
         /// <summary>
         ///     Ims the plot set next marker style using the specified marker
@@ -3974,7 +3974,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="weight">The weight</param>
         /// <param name="outline">The outline</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetNextMarkerStyle")]
-        internal static extern void ImPlot_SetNextMarkerStyle(ImPlotMarker marker, float size, Vector4 fill, float weight, Vector4 outline);
+        internal static extern void ImPlot_SetNextMarkerStyle(ImPlotMarker marker, float size, Vector4F fill, float weight, Vector4F outline);
 
         /// <summary>
         ///     Ims the plot setup axes using the specified x label
@@ -4209,7 +4209,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="col">The col</param>
         /// <param name="round">The round</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_TagX_Bool")]
-        internal static extern void ImPlot_TagX_Bool(double x, Vector4 col, byte round);
+        internal static extern void ImPlot_TagX_Bool(double x, Vector4F col, byte round);
 
         /// <summary>
         ///     Ims the plot tag x str using the specified x
@@ -4218,7 +4218,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="col">The col</param>
         /// <param name="fmt">The fmt</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_TagX_Str")]
-        internal static extern void ImPlot_TagX_Str(double x, Vector4 col, byte[] fmt);
+        internal static extern void ImPlot_TagX_Str(double x, Vector4F col, byte[] fmt);
 
         /// <summary>
         ///     Ims the plot tag y bool using the specified y
@@ -4227,7 +4227,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="col">The col</param>
         /// <param name="round">The round</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_TagY_Bool")]
-        internal static extern void ImPlot_TagY_Bool(double y, Vector4 col, byte round);
+        internal static extern void ImPlot_TagY_Bool(double y, Vector4F col, byte round);
 
         /// <summary>
         ///     Ims the plot tag y str using the specified y
@@ -4236,7 +4236,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="col">The col</param>
         /// <param name="fmt">The fmt</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_TagY_Str")]
-        internal static extern void ImPlot_TagY_Str(double y, Vector4 col, byte[] fmt);
+        internal static extern void ImPlot_TagY_Str(double y, Vector4F col, byte[] fmt);
 
         /// <summary>
         ///     Ims the plot input map destroy using the specified self
@@ -4281,7 +4281,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="p">The </param>
         /// <returns>The im plot point</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotPoint_ImPlotPoint_Vec2")]
-        internal static extern ImPlotPoint ImPlotPoint_ImPlotPoint_Vec2(Vector2 p);
+        internal static extern ImPlotPoint ImPlotPoint_ImPlotPoint_Vec2(Vector2F p);
 
         /// <summary>
         ///     Ims the plot range clamp using the specified self

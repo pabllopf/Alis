@@ -226,7 +226,7 @@ namespace Alis.App.Installer
 
             spaceWork.Io = ImGui.GetIo();
 
-            spaceWork.Io.DisplaySize = new Vector2(320, 320);
+            spaceWork.Io.DisplaySize = new Vector2F(320, 320);
 
             Logger.Info($@"IMGUI VERSION {ImGui.GetVersion()}");
 
@@ -251,10 +251,10 @@ namespace Alis.App.Installer
             // REBUILD ATLAS
             ImFontAtlasPtr fonts = ImGui.GetIo().Fonts;
 
-            string dirFonts = Environment.CurrentDirectory + "/Assets/Fonts/Jetbrains/";
+            string dirFonts = AppDomain.CurrentDomain.BaseDirectory + "/Assets/Fonts/Jetbrains/";
             string fontToLoad = "JetBrainsMono-Bold.ttf";
 
-            string dirFontsIcon = Environment.CurrentDirectory + "/Assets/Icons/";
+            string dirFontsIcon = AppDomain.CurrentDomain.BaseDirectory + "/Assets/Icons/";
 
             if (!Directory.Exists(dirFonts))
             {
@@ -370,7 +370,7 @@ namespace Alis.App.Installer
             spaceWork.Style = ImGui.GetStyle();
             ImGui.StyleColorsDark();
             spaceWork.Style.WindowRounding = 0.0f;
-            spaceWork.Style.Colors2 = new Vector4(0.00f, 0.00f, 0.00f, 1.00f);
+            spaceWork.Style.Colors2 = new Vector4F(0.00f, 0.00f, 0.00f, 1.00f);
 
             // config input manager 
 
@@ -410,7 +410,7 @@ namespace Alis.App.Installer
             }
 
             string api = "https://api.github.com/repos/pabllopf/alis/releases/latest";
-            string dirProject = Path.Combine(Environment.CurrentDirectory, "bin");
+            string dirProject = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin");
             UpdateManager manager = new UpdateManager(new GitHubApiService(api), new FileService(), dirProject);
             Task<bool> task = manager.Start();
             //task.Start();
@@ -460,12 +460,12 @@ namespace Alis.App.Installer
                 ImGuizMo.BeginFrame();
 
                 // Setup display size (every frame to accommodate for window resizing)
-                Vector2 windowSize = Sdl.GetWindowSize(spaceWork.Window);
+                Vector2F windowSize = Sdl.GetWindowSize(spaceWork.Window);
                 Sdl.GetDrawableSize(spaceWork.Window, out int displayW, out int displayH);
-                spaceWork.Io.DisplaySize = new Vector2(windowSize.X, windowSize.Y);
+                spaceWork.Io.DisplaySize = new Vector2F(windowSize.X, windowSize.Y);
                 if ((windowSize.X > 0) && (windowSize.Y > 0))
                 {
-                    spaceWork.Io.DisplayFramebufferScale = new Vector2(displayW / windowSize.X, displayH / windowSize.Y);
+                    spaceWork.Io.DisplayFramebufferScale = new Vector2F(displayW / windowSize.X, displayH / windowSize.Y);
                 }
 
                 // Setup time step (we don't use SDL_GetTicks() because it is using millisecond resolution)
@@ -505,12 +505,12 @@ namespace Alis.App.Installer
 
                 ImGui.PushFont(fontLoaded16Regular);
 
-                ImGui.SetNextWindowSize(new Vector2(displayW, displayH));
-                ImGui.SetNextWindowPos(new Vector2(displayW / windowSize.X, displayH / windowSize.Y));
+                ImGui.SetNextWindowSize(new Vector2F(displayW, displayH));
+                ImGui.SetNextWindowPos(new Vector2F(displayW / windowSize.X, displayH / windowSize.Y));
                 if (ImGui.Begin("MainWindow", ref isOpenMain, ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse))
                 {
                     ImGui.Separator();
-                    ImGui.ProgressBar(manager.Progress, new Vector2(-1, 30), $"{Math.Round(manager.Progress * 100)}%");
+                    ImGui.ProgressBar(manager.Progress, new Vector2F(-1, 30), $"{Math.Round(manager.Progress * 100)}%");
                     ImGui.Separator();
                     ImGui.Text($"{animationSymbol} {manager.Message}");
                     ImGui.Separator();
@@ -657,7 +657,7 @@ namespace Alis.App.Installer
             }
             else
             {
-                imGuiIoPtr.MousePos = new Vector2(float.MinValue, float.MinValue);
+                imGuiIoPtr.MousePos = new Vector2F(float.MinValue, float.MinValue);
             }
 
             uint mouseButtons = Sdl.GetMouseStateOutXAndY(out int mx, out int my);
@@ -681,7 +681,7 @@ namespace Alis.App.Installer
                 Sdl.GetGlobalMouseStateOutXAndOutY(out mx, out my);
                 mx -= wx;
                 my -= wy;
-                imGuiIoPtr.MousePos = new Vector2(mx, my);
+                imGuiIoPtr.MousePos = new Vector2F(mx, my);
             }
 
             // SDL_CaptureMouse() let the OS know e.g. that our imgui drag outside the SDL window boundaries shouldn't e.g. trigger the OS window resize cursor.
@@ -799,8 +799,8 @@ namespace Alis.App.Installer
 
             SetupRenderState(drawData);
 
-            Vector2 clipOffset = drawData.DisplayPos;
-            Vector2 clipScale = drawData.FramebufferScale;
+            Vector2F clipOffset = drawData.DisplayPos;
+            Vector2F clipScale = drawData.FramebufferScale;
 
             drawData.ScaleClipRects(clipScale);
 
@@ -828,7 +828,7 @@ namespace Alis.App.Installer
                     else
                     {
                         // Project scissor/clipping rectangles into framebuffer space
-                        Vector4 clipRect = pcmd.ClipRect;
+                        Vector4F clipRect = pcmd.ClipRect;
 
                         clipRect.X = pcmd.ClipRect.X - clipOffset.X;
                         clipRect.Y = pcmd.ClipRect.Y - clipOffset.Y;

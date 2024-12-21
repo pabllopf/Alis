@@ -50,7 +50,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         /// <summary>
         ///     The vector
         /// </summary>
-        private Vector2[] _velocitiesCache = new Vector2[8];
+        private Vector2F[] _velocitiesCache = new Vector2F[8];
 
         /// <summary>
         ///     The fixture
@@ -83,7 +83,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         /// <param name="density">The density</param>
         /// <param name="position">The position</param>
         /// <param name="rotation">The rotation</param>
-        public BreakableBody(World world, IEnumerable<Vertices> vertices, float density, Vector2 position = new Vector2(), float rotation = 0) : this(world)
+        public BreakableBody(World world, IEnumerable<Vertices> vertices, float density, Vector2F position = new Vector2F(), float rotation = 0) : this(world)
         {
             MainBody = World.CreateBody(position, rotation, BodyType.Dynamic);
 
@@ -102,7 +102,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         /// <param name="shapes">The shapes</param>
         /// <param name="position">The position</param>
         /// <param name="rotation">The rotation</param>
-        public BreakableBody(World world, IEnumerable<Shape> shapes, Vector2 position = new Vector2(), float rotation = 0) : this(world)
+        public BreakableBody(World world, IEnumerable<Shape> shapes, Vector2F position = new Vector2F(), float rotation = 0) : this(world)
         {
             MainBody = World.CreateBody(position, rotation, BodyType.Dynamic);
 
@@ -121,7 +121,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         /// <param name="density">The density</param>
         /// <param name="position">The position</param>
         /// <param name="rotation">The rotation</param>
-        public BreakableBody(World world, Vertices vertices, float density, Vector2 position = new Vector2(), float rotation = 0) : this(world)
+        public BreakableBody(World world, Vertices vertices, float density, Vector2F position = new Vector2F(), float rotation = 0) : this(world)
         {
             MainBody = World.CreateBody(position, rotation, BodyType.Dynamic);
 
@@ -204,7 +204,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
             //Enlarge the cache if needed
             if (Parts.Count > _angularVelocitiesCache.Length)
             {
-                _velocitiesCache = new Vector2[Parts.Count];
+                _velocitiesCache = new Vector2F[Parts.Count];
                 _angularVelocitiesCache = new float[Parts.Count];
             }
 

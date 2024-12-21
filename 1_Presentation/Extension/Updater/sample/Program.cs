@@ -51,7 +51,7 @@ namespace Alis.Extension.Updater.Sample
             string urlReleasesLatest = "https://api.github.com/repos/pabllopf/alis/releases/latest";
             GitHubApiService gitHubApiService = new GitHubApiService(urlReleasesLatest);
             FileService fileService = new FileService();
-            string pathProgram = Path.Combine(Environment.CurrentDirectory, "bin");
+            string pathProgram = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin");
             UpdateManager updateManager = new UpdateManager(gitHubApiService, fileService, pathProgram);
 
             updateManager.Start().Wait();

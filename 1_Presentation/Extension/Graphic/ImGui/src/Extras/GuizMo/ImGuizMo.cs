@@ -250,7 +250,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
         /// <param name="position">The position</param>
         /// <param name="size">The size</param>
         /// <param name="backgroundColor">The background color</param>
-        public static void ViewManipulate(ref float[] view, float length, Vector2 position, Vector2 size, uint backgroundColor)
+        public static void ViewManipulate(ref float[] view, float length, Vector2F position, Vector2F size, uint backgroundColor)
         {
             ImGuiZmoNative.ImGuizmo_ViewManipulate(view, length, position, size, backgroundColor);
         }

@@ -133,7 +133,7 @@ namespace Alis.App.Engine.Windows
 
                 if (isPlaying)
                 {
-                    ImGui.ProgressBar(progress, new Vector2(-10, 0), $"{currentTime} / {totalTime} ");
+                    ImGui.ProgressBar(progress, new Vector2F(-10, 0), $"{currentTime} / {totalTime} ");
                 }
             }
 

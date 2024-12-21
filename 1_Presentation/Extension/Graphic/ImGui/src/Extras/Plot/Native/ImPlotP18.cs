@@ -434,7 +434,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="boundsMax">The bounds max</param>
         public static void PlotImage(string labelId, IntPtr userTextureId, ImPlotPoint boundsMin, ImPlotPoint boundsMax)
         {
-            ImPlotNative.ImPlot_PlotImage(Encoding.UTF8.GetBytes(labelId), userTextureId, boundsMin, boundsMax, new Vector2(0, 0), new Vector2(1, 1), new Vector4(1, 1, 1, 1), 0);
+            ImPlotNative.ImPlot_PlotImage(Encoding.UTF8.GetBytes(labelId), userTextureId, boundsMin, boundsMax, new Vector2F(0, 0), new Vector2F(1, 1), new Vector4F(1, 1, 1, 1), 0);
         }
 
         /// <summary>
@@ -445,9 +445,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="boundsMin">The bounds min</param>
         /// <param name="boundsMax">The bounds max</param>
         /// <param name="uv0">The uv</param>
-        public static void PlotImage(string labelId, IntPtr userTextureId, ImPlotPoint boundsMin, ImPlotPoint boundsMax, Vector2 uv0)
+        public static void PlotImage(string labelId, IntPtr userTextureId, ImPlotPoint boundsMin, ImPlotPoint boundsMax, Vector2F uv0)
         {
-            ImPlotNative.ImPlot_PlotImage(Encoding.UTF8.GetBytes(labelId), userTextureId, boundsMin, boundsMax, uv0, new Vector2(1, 1), new Vector4(1, 1, 1, 1), 0);
+            ImPlotNative.ImPlot_PlotImage(Encoding.UTF8.GetBytes(labelId), userTextureId, boundsMin, boundsMax, uv0, new Vector2F(1, 1), new Vector4F(1, 1, 1, 1), 0);
         }
 
         /// <summary>
@@ -459,9 +459,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="boundsMax">The bounds max</param>
         /// <param name="uv0">The uv</param>
         /// <param name="uv1">The uv</param>
-        public static void PlotImage(string labelId, IntPtr userTextureId, ImPlotPoint boundsMin, ImPlotPoint boundsMax, Vector2 uv0, Vector2 uv1)
+        public static void PlotImage(string labelId, IntPtr userTextureId, ImPlotPoint boundsMin, ImPlotPoint boundsMax, Vector2F uv0, Vector2F uv1)
         {
-            ImPlotNative.ImPlot_PlotImage(Encoding.UTF8.GetBytes(labelId), userTextureId, boundsMin, boundsMax, uv0, uv1, new Vector4(1, 1, 1, 1), 0);
+            ImPlotNative.ImPlot_PlotImage(Encoding.UTF8.GetBytes(labelId), userTextureId, boundsMin, boundsMax, uv0, uv1, new Vector4F(1, 1, 1, 1), 0);
         }
 
         /// <summary>
@@ -474,7 +474,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="uv0">The uv</param>
         /// <param name="uv1">The uv</param>
         /// <param name="tintCol">The tint col</param>
-        public static void PlotImage(string labelId, IntPtr userTextureId, ImPlotPoint boundsMin, ImPlotPoint boundsMax, Vector2 uv0, Vector2 uv1, Vector4 tintCol)
+        public static void PlotImage(string labelId, IntPtr userTextureId, ImPlotPoint boundsMin, ImPlotPoint boundsMax, Vector2F uv0, Vector2F uv1, Vector4F tintCol)
         {
             ImPlotNative.ImPlot_PlotImage(Encoding.UTF8.GetBytes(labelId), userTextureId, boundsMin, boundsMax, uv0, uv1, tintCol, 0);
         }
@@ -490,7 +490,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="uv1">The uv</param>
         /// <param name="tintCol">The tint col</param>
         /// <param name="flags">The flags</param>
-        public static void PlotImage(string labelId, IntPtr userTextureId, ImPlotPoint boundsMin, ImPlotPoint boundsMax, Vector2 uv0, Vector2 uv1, Vector4 tintCol, ImPlotImageFlags flags)
+        public static void PlotImage(string labelId, IntPtr userTextureId, ImPlotPoint boundsMin, ImPlotPoint boundsMax, Vector2F uv0, Vector2F uv1, Vector4F tintCol, ImPlotImageFlags flags)
         {
             ImPlotNative.ImPlot_PlotImage(Encoding.UTF8.GetBytes(labelId), userTextureId, boundsMin, boundsMax, uv0, uv1, tintCol, flags);
         }

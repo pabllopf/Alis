@@ -99,7 +99,7 @@ namespace Alis.Sample.Flappy.Bird
             Velocity = 3;
             factorVelocity = 1.1f;
 
-            boxCollider.LinearVelocity = new Vector2(-Velocity, 0);
+            boxCollider.LinearVelocity = new Vector2F(-Velocity, 0);
             
             using (RandomNumberGenerator randomGenerator = RandomNumberGenerator.Create())
             {
@@ -124,7 +124,7 @@ namespace Alis.Sample.Flappy.Bird
             {
                 Velocity = 0;
                 factorVelocity = 0;
-                boxCollider.LinearVelocity = new Vector2(0, 0);
+                boxCollider.LinearVelocity = new Vector2F(0, 0);
                 return;
             }
 
@@ -142,16 +142,16 @@ namespace Alis.Sample.Flappy.Bird
                 {
                     case 0:
                     {
-                        Vector2 newPos = new Vector2(posOrigin.Position.X, posOrigin.Position.Y + _randomHeight);
+                        Vector2F newPos = new Vector2F(posOrigin.Position.X, posOrigin.Position.Y + _randomHeight);
                         boxCollider.Body.Position = newPos;
-                        boxCollider.LinearVelocity = new Vector2(-Velocity, 0);
+                        boxCollider.LinearVelocity = new Vector2F(-Velocity, 0);
                         break;
                     }
                     case 1:
                     {
-                        Vector2 newPos = new Vector2(posOrigin.Position.X, posOrigin.Position.Y - _randomHeight);
+                        Vector2F newPos = new Vector2F(posOrigin.Position.X, posOrigin.Position.Y - _randomHeight);
                         boxCollider.Body.Position = newPos;
-                        boxCollider.LinearVelocity = new Vector2(-Velocity, 0);
+                        boxCollider.LinearVelocity = new Vector2F(-Velocity, 0);
                         break;
                     }
                 }

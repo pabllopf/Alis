@@ -384,7 +384,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Test_RenderChar()
         {
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
-            Assert.Throws<DllNotFoundException>(() => ptr.RenderChar(new ImDrawListPtr(IntPtr.Zero), 0, new Vector2(), 0, 0));
+            Assert.Throws<DllNotFoundException>(() => ptr.RenderChar(new ImDrawListPtr(IntPtr.Zero), 0, new Vector2F(), 0, 0));
         }
 
         /// <summary>

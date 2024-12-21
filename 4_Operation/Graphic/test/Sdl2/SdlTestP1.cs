@@ -3084,7 +3084,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             IntPtr window = IntPtr.Zero;
 
             // Act
-            Vector2 windowSize = Sdl.GetWindowSize(window);
+            Vector2F windowSize = Sdl.GetWindowSize(window);
 
             // Assert
             Assert.True(windowSize.X >= 0);

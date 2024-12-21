@@ -70,7 +70,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Transform
 
             transformBuilder.Position(1.0f, 2.0f);
 
-            Assert.Equal(new Vector2(1.0f, 2.0f), transformBuilder.Build().Position);
+            Assert.Equal(new Vector2F(1.0f, 2.0f), transformBuilder.Build().Position);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Transform
 
             transformBuilder.Scale(3.0f, 4.0f);
 
-            Assert.Equal(new Vector2(3.0f, 4.0f), transformBuilder.Build().Scale);
+            Assert.Equal(new Vector2F(3.0f, 4.0f), transformBuilder.Build().Scale);
         }
     }
 }

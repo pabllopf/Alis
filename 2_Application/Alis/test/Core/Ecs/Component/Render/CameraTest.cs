@@ -107,8 +107,8 @@ namespace Alis.Test.Core.Ecs.Component.Render
         public void Resolution_PropertySet_GetReturnsCorrectValue()
         {
             Camera camera = new Camera();
-            camera.Resolution = new Vector2(800, 600);
-            Assert.Equal(new Vector2(800, 600), camera.Resolution);
+            camera.Resolution = new Vector2F(800, 600);
+            Assert.Equal(new Vector2F(800, 600), camera.Resolution);
         }
 
         /// <summary>

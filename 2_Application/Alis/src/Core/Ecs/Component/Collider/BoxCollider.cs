@@ -84,7 +84,7 @@ namespace Alis.Core.Ecs.Component.Collider
         ///     Gets or sets the value of the relative position
         /// </summary>
         [JsonPropertyName("_RelativePosition_")]
-        public Vector2 RelativePosition { get; set; }
+        public Vector2F RelativePosition { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the body
@@ -138,7 +138,7 @@ namespace Alis.Core.Ecs.Component.Collider
         ///     Gets or sets the value of the linear velocity
         /// </summary>
         [JsonPropertyName("_LinearVelocity_")]
-        public Vector2 LinearVelocity { get; set; }
+        public Vector2F LinearVelocity { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the angular velocity
@@ -151,7 +151,7 @@ namespace Alis.Core.Ecs.Component.Collider
             Width = 10;
             Height = 10;
             Rotation = 0;
-            RelativePosition = new Vector2(0, 0);
+            RelativePosition = new Vector2F(0, 0);
             AutoTilling = false;
             BodyType = BodyType.Static;
             Restitution = 0.5f;
@@ -159,7 +159,7 @@ namespace Alis.Core.Ecs.Component.Collider
             FixedRotation = false;
             Mass = 1.0f;
             IgnoreGravity = false;
-            LinearVelocity = new Vector2(0, 0);
+            LinearVelocity = new Vector2F(0, 0);
             AngularVelocity = 0;
         }
         
@@ -169,7 +169,7 @@ namespace Alis.Core.Ecs.Component.Collider
             float width,
             float height,
             float rotation,
-            Vector2 relativePosition,
+            Vector2F relativePosition,
             bool autoTilling,
             BodyType bodyType,
             float restitution,
@@ -177,7 +177,7 @@ namespace Alis.Core.Ecs.Component.Collider
             bool fixedRotation,
             float mass,
             bool ignoreGravity,
-            Vector2 linearVelocity,
+            Vector2F linearVelocity,
             float angularVelocity)
         {
             IsTrigger = isTrigger;
@@ -218,7 +218,7 @@ namespace Alis.Core.Ecs.Component.Collider
                 Width * GameObject.Transform.Scale.X,
                 Height * GameObject.Transform.Scale.Y,
                 1.0f,
-                new Vector2(GameObject.Transform.Position.X + RelativePosition.X, GameObject.Transform.Position.Y + RelativePosition.Y),
+                new Vector2F(GameObject.Transform.Position.X + RelativePosition.X, GameObject.Transform.Position.Y + RelativePosition.Y),
                 Rotation,
                 BodyType);
 
@@ -339,10 +339,10 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <param name="cameraResolution">The camera resolution</param>
         /// <param name="pixelsPerMeter">The pixels per meter</param>
         /// <param name="debugColor">The debug color</param>
-        public void Render(IntPtr renderer, Vector2 cameraPosition, Vector2 cameraResolution, float pixelsPerMeter, Color debugColor)
+        public void Render(IntPtr renderer, Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter, Color debugColor)
         {
-            Vector2 colliderPosition = GameObject.Transform.Position;
-            Vector2 colliderScale = GameObject.Transform.Scale;
+            Vector2F colliderPosition = GameObject.Transform.Position;
+            Vector2F colliderScale = GameObject.Transform.Scale;
             float colliderRotation = GameObject.Transform.Rotation;
 
             float posX = colliderPosition.X * pixelsPerMeter;
@@ -372,10 +372,10 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <param name="cameraResolution">The camera resolution</param>
         /// <param name="pixelsPerMeter">The pixels per meter</param>
         /// <returns>The bool</returns>
-        public bool IsVisible(Vector2 cameraPosition, Vector2 cameraResolution, float pixelsPerMeter)
+        public bool IsVisible(Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
         {
-            Vector2 colliderPosition = GameObject.Transform.Position;
-            Vector2 colliderSize = new Vector2(Width, Height);
+            Vector2F colliderPosition = GameObject.Transform.Position;
+            Vector2F colliderSize = new Vector2F(Width, Height);
             float colliderRotation = GameObject.Transform.Rotation;
 
             float colliderPosX = colliderPosition.X * pixelsPerMeter;

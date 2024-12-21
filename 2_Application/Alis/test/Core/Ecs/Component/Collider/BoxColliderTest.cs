@@ -53,11 +53,11 @@ namespace Alis.Test.Core.Ecs.Component.Collider
             Assert.Equal(10.0f, boxCollider.Width);
             Assert.Equal(10.0f, boxCollider.Height);
             Assert.Equal(0.0f, boxCollider.Rotation);
-            Assert.Equal(new Vector2(0, 0), boxCollider.RelativePosition);
+            Assert.Equal(new Vector2F(0, 0), boxCollider.RelativePosition);
             Assert.Equal(BodyType.Static, boxCollider.BodyType);
             Assert.Equal(1.0f, boxCollider.Mass);
             Assert.False(boxCollider.IgnoreGravity);
-            Assert.Equal(Vector2.Zero, boxCollider.LinearVelocity);
+            Assert.Equal(Vector2F.Zero, boxCollider.LinearVelocity);
         }
 
         /// <summary>
@@ -145,8 +145,8 @@ namespace Alis.Test.Core.Ecs.Component.Collider
         public void RelativePosition_PropertySet_GetReturnsCorrectValue()
         {
             BoxCollider boxCollider = new BoxCollider();
-            boxCollider.RelativePosition = new Vector2(10, 20);
-            Assert.Equal(new Vector2(10, 20), boxCollider.RelativePosition);
+            boxCollider.RelativePosition = new Vector2F(10, 20);
+            Assert.Equal(new Vector2F(10, 20), boxCollider.RelativePosition);
         }
 
         /// <summary>
@@ -233,8 +233,8 @@ namespace Alis.Test.Core.Ecs.Component.Collider
         public void LinearVelocity_PropertySet_GetReturnsCorrectValue()
         {
             BoxCollider boxCollider = new BoxCollider();
-            boxCollider.LinearVelocity = new Vector2(10, 20);
-            Assert.Equal(new Vector2(10, 20), boxCollider.LinearVelocity);
+            boxCollider.LinearVelocity = new Vector2F(10, 20);
+            Assert.Equal(new Vector2F(10, 20), boxCollider.LinearVelocity);
         }
 
         /// <summary>

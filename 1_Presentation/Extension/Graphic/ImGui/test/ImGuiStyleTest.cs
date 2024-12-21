@@ -66,7 +66,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void WindowPadding_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector2 padding = new Vector2(10, 20);
+            Vector2F padding = new Vector2F(10, 20);
             style.WindowPadding = padding;
             Assert.Equal(padding, style.WindowPadding);
         }
@@ -100,7 +100,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void WindowMinSize_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector2 minSize = new Vector2(100, 200);
+            Vector2F minSize = new Vector2F(100, 200);
             style.WindowMinSize = minSize;
             Assert.Equal(minSize, style.WindowMinSize);
         }
@@ -112,7 +112,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void WindowTitleAlign_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector2 align = new Vector2(0.5f, 0.5f);
+            Vector2F align = new Vector2F(0.5f, 0.5f);
             style.WindowTitleAlign = align;
             Assert.Equal(align, style.WindowTitleAlign);
         }
@@ -179,7 +179,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void FramePadding_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector2 padding = new Vector2(5, 10);
+            Vector2F padding = new Vector2F(5, 10);
             style.FramePadding = padding;
             Assert.Equal(padding, style.FramePadding);
         }
@@ -213,7 +213,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void ItemSpacing_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector2 spacing = new Vector2(8, 16);
+            Vector2F spacing = new Vector2F(8, 16);
             style.ItemSpacing = spacing;
             Assert.Equal(spacing, style.ItemSpacing);
         }
@@ -225,7 +225,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void ItemInnerSpacing_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector2 innerSpacing = new Vector2(4, 8);
+            Vector2F innerSpacing = new Vector2F(4, 8);
             style.ItemInnerSpacing = innerSpacing;
             Assert.Equal(innerSpacing, style.ItemInnerSpacing);
         }
@@ -237,7 +237,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void CellPadding_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector2 padding = new Vector2(6, 12);
+            Vector2F padding = new Vector2F(6, 12);
             style.CellPadding = padding;
             Assert.Equal(padding, style.CellPadding);
         }
@@ -249,7 +249,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void TouchExtraPadding_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector2 padding = new Vector2(2, 4);
+            Vector2F padding = new Vector2F(2, 4);
             style.TouchExtraPadding = padding;
             Assert.Equal(padding, style.TouchExtraPadding);
         }
@@ -382,7 +382,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void ButtonTextAlign_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector2 align = new Vector2(0.5f, 0.5f);
+            Vector2F align = new Vector2F(0.5f, 0.5f);
             style.ButtonTextAlign = align;
             Assert.Equal(align, style.ButtonTextAlign);
         }
@@ -394,7 +394,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void SelectableTextAlign_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector2 align = new Vector2(0.5f, 0.5f);
+            Vector2F align = new Vector2F(0.5f, 0.5f);
             style.SelectableTextAlign = align;
             Assert.Equal(align, style.SelectableTextAlign);
         }
@@ -406,7 +406,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void DisplayWindowPadding_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector2 padding = new Vector2(10, 10);
+            Vector2F padding = new Vector2F(10, 10);
             style.DisplayWindowPadding = padding;
             Assert.Equal(padding, style.DisplayWindowPadding);
         }
@@ -418,7 +418,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void DisplaySafeAreaPadding_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector2 padding = new Vector2(5, 5);
+            Vector2F padding = new Vector2F(5, 5);
             style.DisplaySafeAreaPadding = padding;
             Assert.Equal(padding, style.DisplaySafeAreaPadding);
         }
@@ -496,7 +496,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors0_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector4 color = new Vector4(1, 0, 0, 1);
+            Vector4F color = new Vector4F(1, 0, 0, 1);
             style.Colors0 = color;
             Assert.Equal(color, style.Colors0);
         }
@@ -508,7 +508,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors1_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector4 color = new Vector4(0, 1, 0, 1);
+            Vector4F color = new Vector4F(0, 1, 0, 1);
             style.Colors1 = color;
             Assert.Equal(color, style.Colors1);
         }
@@ -520,7 +520,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors2_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector4 color = new Vector4(0, 0, 1, 1);
+            Vector4F color = new Vector4F(0, 0, 1, 1);
             style.Colors2 = color;
             Assert.Equal(color, style.Colors2);
         }
@@ -532,7 +532,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors3_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector4 color = new Vector4(1, 1, 0, 1);
+            Vector4F color = new Vector4F(1, 1, 0, 1);
             style.Colors3 = color;
             Assert.Equal(color, style.Colors3);
         }
@@ -544,7 +544,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors4_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector4 color = new Vector4(1, 0, 1, 1);
+            Vector4F color = new Vector4F(1, 0, 1, 1);
             style.Colors4 = color;
             Assert.Equal(color, style.Colors4);
         }
@@ -556,7 +556,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors5_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector4 color = new Vector4(0, 1, 1, 1);
+            Vector4F color = new Vector4F(0, 1, 1, 1);
             style.Colors5 = color;
             Assert.Equal(color, style.Colors5);
         }
@@ -568,7 +568,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors6_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector4 color = new Vector4(0.5f, 0.5f, 0.5f, 1);
+            Vector4F color = new Vector4F(0.5f, 0.5f, 0.5f, 1);
             style.Colors6 = color;
             Assert.Equal(color, style.Colors6);
         }
@@ -580,7 +580,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors7_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector4 color = new Vector4(0.25f, 0.25f, 0.25f, 1);
+            Vector4F color = new Vector4F(0.25f, 0.25f, 0.25f, 1);
             style.Colors7 = color;
             Assert.Equal(color, style.Colors7);
         }
@@ -592,7 +592,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors8_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector4 color = new Vector4(0.75f, 0.75f, 0.75f, 1);
+            Vector4F color = new Vector4F(0.75f, 0.75f, 0.75f, 1);
             style.Colors8 = color;
             Assert.Equal(color, style.Colors8);
         }
@@ -604,7 +604,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors9_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector4 color = new Vector4(0.1f, 0.2f, 0.3f, 1);
+            Vector4F color = new Vector4F(0.1f, 0.2f, 0.3f, 1);
             style.Colors9 = color;
             Assert.Equal(color, style.Colors9);
         }
@@ -616,7 +616,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors10_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector4 color = new Vector4(0.4f, 0.5f, 0.6f, 1);
+            Vector4F color = new Vector4F(0.4f, 0.5f, 0.6f, 1);
             style.Colors10 = color;
             Assert.Equal(color, style.Colors10);
         }
@@ -628,7 +628,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors11_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector4 color = new Vector4(0.7f, 0.8f, 0.9f, 1);
+            Vector4F color = new Vector4F(0.7f, 0.8f, 0.9f, 1);
             style.Colors11 = color;
             Assert.Equal(color, style.Colors11);
         }
@@ -640,7 +640,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors12_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector4 color = new Vector4(0.3f, 0.2f, 0.1f, 1);
+            Vector4F color = new Vector4F(0.3f, 0.2f, 0.1f, 1);
             style.Colors12 = color;
             Assert.Equal(color, style.Colors12);
         }
@@ -652,7 +652,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors13_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector4 color = new Vector4(0.6f, 0.5f, 0.4f, 1);
+            Vector4F color = new Vector4F(0.6f, 0.5f, 0.4f, 1);
             style.Colors13 = color;
             Assert.Equal(color, style.Colors13);
         }
@@ -664,7 +664,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors14_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector4 color = new Vector4(0.9f, 0.8f, 0.7f, 1);
+            Vector4F color = new Vector4F(0.9f, 0.8f, 0.7f, 1);
             style.Colors14 = color;
             Assert.Equal(color, style.Colors14);
         }
@@ -676,7 +676,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors15_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector4 color = new Vector4(0.2f, 0.3f, 0.4f, 1);
+            Vector4F color = new Vector4F(0.2f, 0.3f, 0.4f, 1);
             style.Colors15 = color;
             Assert.Equal(color, style.Colors15);
         }
@@ -688,7 +688,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors16_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector4 color = new Vector4(0.5f, 0.6f, 0.7f, 1);
+            Vector4F color = new Vector4F(0.5f, 0.6f, 0.7f, 1);
             style.Colors16 = color;
             Assert.Equal(color, style.Colors16);
         }
@@ -700,7 +700,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors17_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector4 color = new Vector4(0.8f, 0.9f, 1.0f, 1);
+            Vector4F color = new Vector4F(0.8f, 0.9f, 1.0f, 1);
             style.Colors17 = color;
             Assert.Equal(color, style.Colors17);
         }
@@ -712,7 +712,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors18_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector4 color = new Vector4(0.1f, 0.3f, 0.5f, 1);
+            Vector4F color = new Vector4F(0.1f, 0.3f, 0.5f, 1);
             style.Colors18 = color;
             Assert.Equal(color, style.Colors18);
         }
@@ -724,7 +724,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors19_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector4 color = new Vector4(0.4f, 0.6f, 0.8f, 1);
+            Vector4F color = new Vector4F(0.4f, 0.6f, 0.8f, 1);
             style.Colors19 = color;
             Assert.Equal(color, style.Colors19);
         }
@@ -736,7 +736,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors20_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector4 color = new Vector4(0.7f, 0.9f, 0.1f, 1);
+            Vector4F color = new Vector4F(0.7f, 0.9f, 0.1f, 1);
             style.Colors20 = color;
             Assert.Equal(color, style.Colors20);
         }
@@ -748,7 +748,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors21_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector4 color = new Vector4(0.2f, 0.4f, 0.6f, 1);
+            Vector4F color = new Vector4F(0.2f, 0.4f, 0.6f, 1);
             style.Colors21 = color;
             Assert.Equal(color, style.Colors21);
         }
@@ -760,7 +760,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors22_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector4 color = new Vector4(0.5f, 0.7f, 0.9f, 1);
+            Vector4F color = new Vector4F(0.5f, 0.7f, 0.9f, 1);
             style.Colors22 = color;
             Assert.Equal(color, style.Colors22);
         }
@@ -772,7 +772,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors23_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector4 color = new Vector4(0.8f, 0.1f, 0.3f, 1);
+            Vector4F color = new Vector4F(0.8f, 0.1f, 0.3f, 1);
             style.Colors23 = color;
             Assert.Equal(color, style.Colors23);
         }
@@ -784,7 +784,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors24_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector4 color = new Vector4(0.1f, 0.4f, 0.7f, 1);
+            Vector4F color = new Vector4F(0.1f, 0.4f, 0.7f, 1);
             style.Colors24 = color;
             Assert.Equal(color, style.Colors24);
         }
@@ -796,7 +796,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors25_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
-            Vector4 color = new Vector4(0.3f, 0.6f, 0.9f, 1);
+            Vector4F color = new Vector4F(0.3f, 0.6f, 0.9f, 1);
             style.Colors25 = color;
             Assert.Equal(color, style.Colors25);
         }
@@ -808,7 +808,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors26_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
-            Vector4 value = new Vector4();
+            Vector4F value = new Vector4F();
             obj.Colors26 = value;
             Assert.Equal(value, obj.Colors26);
         }
@@ -820,7 +820,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors27_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
-            Vector4 value = new Vector4();
+            Vector4F value = new Vector4F();
             obj.Colors27 = value;
             Assert.Equal(value, obj.Colors27);
         }
@@ -832,7 +832,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors28_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
-            Vector4 value = new Vector4();
+            Vector4F value = new Vector4F();
             obj.Colors28 = value;
             Assert.Equal(value, obj.Colors28);
         }
@@ -844,7 +844,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors29_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
-            Vector4 value = new Vector4();
+            Vector4F value = new Vector4F();
             obj.Colors29 = value;
             Assert.Equal(value, obj.Colors29);
         }
@@ -856,7 +856,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors30_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
-            Vector4 value = new Vector4();
+            Vector4F value = new Vector4F();
             obj.Colors30 = value;
             Assert.Equal(value, obj.Colors30);
         }
@@ -868,7 +868,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors31_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
-            Vector4 value = new Vector4();
+            Vector4F value = new Vector4F();
             obj.Colors31 = value;
             Assert.Equal(value, obj.Colors31);
         }
@@ -880,7 +880,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors32_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
-            Vector4 value = new Vector4();
+            Vector4F value = new Vector4F();
             obj.Colors32 = value;
             Assert.Equal(value, obj.Colors32);
         }
@@ -892,7 +892,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors33_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
-            Vector4 value = new Vector4();
+            Vector4F value = new Vector4F();
             obj.Colors33 = value;
             Assert.Equal(value, obj.Colors33);
         }
@@ -904,7 +904,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors34_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
-            Vector4 value = new Vector4();
+            Vector4F value = new Vector4F();
             obj.Colors34 = value;
             Assert.Equal(value, obj.Colors34);
         }
@@ -916,7 +916,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors35_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
-            Vector4 value = new Vector4();
+            Vector4F value = new Vector4F();
             obj.Colors35 = value;
             Assert.Equal(value, obj.Colors35);
         }
@@ -928,7 +928,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors36_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
-            Vector4 value = new Vector4();
+            Vector4F value = new Vector4F();
             obj.Colors36 = value;
             Assert.Equal(value, obj.Colors36);
         }
@@ -940,7 +940,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors37_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
-            Vector4 value = new Vector4();
+            Vector4F value = new Vector4F();
             obj.Colors37 = value;
             Assert.Equal(value, obj.Colors37);
         }
@@ -952,7 +952,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors38_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
-            Vector4 value = new Vector4();
+            Vector4F value = new Vector4F();
             obj.Colors38 = value;
             Assert.Equal(value, obj.Colors38);
         }
@@ -964,7 +964,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors39_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
-            Vector4 value = new Vector4();
+            Vector4F value = new Vector4F();
             obj.Colors39 = value;
             Assert.Equal(value, obj.Colors39);
         }
@@ -976,7 +976,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors40_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
-            Vector4 value = new Vector4();
+            Vector4F value = new Vector4F();
             obj.Colors40 = value;
             Assert.Equal(value, obj.Colors40);
         }
@@ -988,7 +988,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors41_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
-            Vector4 value = new Vector4();
+            Vector4F value = new Vector4F();
             obj.Colors41 = value;
             Assert.Equal(value, obj.Colors41);
         }
@@ -1000,7 +1000,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors42_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
-            Vector4 value = new Vector4();
+            Vector4F value = new Vector4F();
             obj.Colors42 = value;
             Assert.Equal(value, obj.Colors42);
         }
@@ -1012,7 +1012,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors43_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
-            Vector4 value = new Vector4();
+            Vector4F value = new Vector4F();
             obj.Colors43 = value;
             Assert.Equal(value, obj.Colors43);
         }
@@ -1024,7 +1024,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors44_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
-            Vector4 value = new Vector4();
+            Vector4F value = new Vector4F();
             obj.Colors44 = value;
             Assert.Equal(value, obj.Colors44);
         }
@@ -1036,7 +1036,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors45_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
-            Vector4 value = new Vector4();
+            Vector4F value = new Vector4F();
             obj.Colors45 = value;
             Assert.Equal(value, obj.Colors45);
         }
@@ -1048,7 +1048,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors46_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
-            Vector4 value = new Vector4();
+            Vector4F value = new Vector4F();
             obj.Colors46 = value;
             Assert.Equal(value, obj.Colors46);
         }
@@ -1060,7 +1060,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors47_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
-            Vector4 value = new Vector4();
+            Vector4F value = new Vector4F();
             obj.Colors47 = value;
             Assert.Equal(value, obj.Colors47);
         }
@@ -1072,7 +1072,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors48_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
-            Vector4 value = new Vector4();
+            Vector4F value = new Vector4F();
             obj.Colors48 = value;
             Assert.Equal(value, obj.Colors48);
         }
@@ -1084,7 +1084,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors49_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
-            Vector4 value = new Vector4();
+            Vector4F value = new Vector4F();
             obj.Colors49 = value;
             Assert.Equal(value, obj.Colors49);
         }
@@ -1096,7 +1096,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors50_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
-            Vector4 value = new Vector4();
+            Vector4F value = new Vector4F();
             obj.Colors50 = value;
             Assert.Equal(value, obj.Colors50);
         }
@@ -1108,7 +1108,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors51_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
-            Vector4 value = new Vector4();
+            Vector4F value = new Vector4F();
             obj.Colors51 = value;
             Assert.Equal(value, obj.Colors51);
         }
@@ -1120,7 +1120,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors52_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
-            Vector4 value = new Vector4();
+            Vector4F value = new Vector4F();
             obj.Colors52 = value;
             Assert.Equal(value, obj.Colors52);
         }
@@ -1132,7 +1132,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors53_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
-            Vector4 value = new Vector4();
+            Vector4F value = new Vector4F();
             obj.Colors53 = value;
             Assert.Equal(value, obj.Colors53);
         }
@@ -1144,7 +1144,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void Colors54_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
-            Vector4 value = new Vector4();
+            Vector4F value = new Vector4F();
             obj.Colors54 = value;
             Assert.Equal(value, obj.Colors54);
         }

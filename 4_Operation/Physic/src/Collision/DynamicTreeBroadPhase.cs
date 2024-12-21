@@ -170,7 +170,7 @@ namespace Alis.Core.Physic.Collision
         /// <param name="proxyId">The proxy id</param>
         /// <param name="aabb">The aabb</param>
         /// <param name="displacement">The displacement</param>
-        public void MoveProxy(int proxyId, ref AABB aabb, Vector2 displacement)
+        public void MoveProxy(int proxyId, ref AABB aabb, Vector2F displacement)
         {
             bool buffer = _tree.MoveProxy(proxyId, ref aabb, displacement);
             if (buffer)
@@ -312,7 +312,7 @@ namespace Alis.Core.Physic.Collision
         ///     Shifts the origin using the specified new origin
         /// </summary>
         /// <param name="newOrigin">The new origin</param>
-        public void ShiftOrigin(Vector2 newOrigin)
+        public void ShiftOrigin(Vector2F newOrigin)
         {
             _tree.ShiftOrigin(newOrigin);
         }

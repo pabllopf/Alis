@@ -53,20 +53,20 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         ///     All the points that makes up the curve
         /// </summary>
-        public List<Vector2> ControlPoints;
+        public List<Vector2F> ControlPoints;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Path" /> class.
         /// </summary>
-        public Path() => ControlPoints = new List<Vector2>();
+        public Path() => ControlPoints = new List<Vector2F>();
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Path" /> class.
         /// </summary>
         /// <param name="vertices">The vertices to created the path from.</param>
-        public Path(Vector2[] vertices)
+        public Path(Vector2F[] vertices)
         {
-            ControlPoints = new List<Vector2>(vertices.Length);
+            ControlPoints = new List<Vector2F>(vertices.Length);
 
             for (int i = 0; i < vertices.Length; i++)
             {
@@ -78,9 +78,9 @@ namespace Alis.Core.Physic.Common
         ///     Initializes a new instance of the <see cref="Path" /> class.
         /// </summary>
         /// <param name="vertices">The vertices to created the path from.</param>
-        public Path(IList<Vector2> vertices)
+        public Path(IList<Vector2F> vertices)
         {
-            ControlPoints = new List<Vector2>(vertices.Count);
+            ControlPoints = new List<Vector2F>(vertices.Count);
             for (int i = 0; i < vertices.Count; i++)
             {
                 Add(vertices[i]);
@@ -127,7 +127,7 @@ namespace Alis.Core.Physic.Common
         ///     Translates the control points by the specified vector.
         /// </summary>
         /// <param name="vector">The vector.</param>
-        public void Translate(ref Vector2 vector)
+        public void Translate(ref Vector2F vector)
         {
             for (int i = 0; i < ControlPoints.Count; i++)
                 ControlPoints[i] = ControlPoints[i] + vector;
@@ -137,7 +137,7 @@ namespace Alis.Core.Physic.Common
         ///     Scales the control points by the specified vector.
         /// </summary>
         /// <param name="value">The Value.</param>
-        public void Scale(ref Vector2 value)
+        public void Scale(ref Vector2F value)
         {
             for (int i = 0; i < ControlPoints.Count; i++)
                 ControlPoints[i] = ControlPoints[i] * value;
@@ -201,9 +201,9 @@ namespace Alis.Core.Physic.Common
         /// <param name="time">The time</param>
         /// <exception cref="Exception">You need at least 2 control points to calculate a position.</exception>
         /// <returns>The temp</returns>
-        public Vector2 GetPosition(float time)
+        public Vector2F GetPosition(float time)
         {
-            Vector2 temp;
+            Vector2F temp;
 
             if (ControlPoints.Count < 2)
             {
@@ -329,7 +329,7 @@ namespace Alis.Core.Physic.Common
         /// <param name="p3">The </param>
         /// <param name="amount">The amount</param>
         /// <param name="result">The result</param>
-        private void CalcCatmullRom(Vector2 p0, Vector2 p1, Vector2 p2, Vector2 p3, float amount, out Vector2 result)
+        private void CalcCatmullRom(Vector2F p0, Vector2F p1, Vector2F p2, Vector2F p3, float amount, out Vector2F result)
         {
             double sqAmount = amount * amount;
             double cuAmount = sqAmount * amount;
@@ -347,7 +347,7 @@ namespace Alis.Core.Physic.Common
             x *= 0.5;
             y *= 0.5;
 
-            result = new Vector2((float) x, (float) y);
+            result = new Vector2F((float) x, (float) y);
         }
 
         /// <summary>
@@ -355,18 +355,18 @@ namespace Alis.Core.Physic.Common
         /// </summary>
         /// <param name="time">The time</param>
         /// <returns>The normal.</returns>
-        public Vector2 GetPositionNormal(float time)
+        public Vector2F GetPositionNormal(float time)
         {
             float offsetTime = time + 0.0001f;
 
-            Vector2 a = GetPosition(time);
-            Vector2 b = GetPosition(offsetTime);
+            Vector2F a = GetPosition(time);
+            Vector2F b = GetPosition(offsetTime);
 
-            Vector2 output;
+            Vector2F output;
 
-            Vector2.Subtract(ref a, ref b, out Vector2 temp);
+            Vector2F.Subtract(ref a, ref b, out Vector2F temp);
 
-            output = new Vector2(temp.Y, -temp.X);
+            output = new Vector2F(temp.Y, -temp.X);
 
             output.Normalize();
 
@@ -377,7 +377,7 @@ namespace Alis.Core.Physic.Common
         ///     Adds the point
         /// </summary>
         /// <param name="point">The point</param>
-        public void Add(Vector2 point)
+        public void Add(Vector2F point)
         {
             ControlPoints.Add(point);
             _deltaT = 1f / (ControlPoints.Count - 1);
@@ -387,7 +387,7 @@ namespace Alis.Core.Physic.Common
         ///     Removes the point
         /// </summary>
         /// <param name="point">The point</param>
-        public void Remove(Vector2 point)
+        public void Remove(Vector2F point)
         {
             ControlPoints.Remove(point);
             _deltaT = 1f / (ControlPoints.Count - 1);
@@ -409,17 +409,17 @@ namespace Alis.Core.Physic.Common
         /// <returns>The length</returns>
         public float GetLength()
         {
-            List<Vector2> verts = GetVertices(ControlPoints.Count * 25);
+            List<Vector2F> verts = GetVertices(ControlPoints.Count * 25);
             float length = 0;
 
             for (int i = 1; i < verts.Count; i++)
             {
-                length += Vector2.Distance(verts[i - 1], verts[i]);
+                length += Vector2F.Distance(verts[i - 1], verts[i]);
             }
 
             if (Closed)
             {
-                length += Vector2.Distance(verts[ControlPoints.Count - 1], verts[0]);
+                length += Vector2F.Distance(verts[ControlPoints.Count - 1], verts[0]);
             }
 
             return length;
@@ -430,9 +430,9 @@ namespace Alis.Core.Physic.Common
         /// </summary>
         /// <param name="divisions">The divisions</param>
         /// <returns>The verts</returns>
-        public List<Vector3> SubdivideEvenly(int divisions)
+        public List<Vector3F> SubdivideEvenly(int divisions)
         {
-            List<Vector3> verts = new List<Vector3>();
+            List<Vector3F> verts = new List<Vector3F>();
 
             float length = GetLength();
 
@@ -440,11 +440,11 @@ namespace Alis.Core.Physic.Common
             float t = 0.000f;
 
             // we always start at the first control point
-            Vector2 start = ControlPoints[0];
-            Vector2 end = GetPosition(t);
+            Vector2F start = ControlPoints[0];
+            Vector2F end = GetPosition(t);
 
             // increment t until we are at half the distance
-            while (deltaLength * 0.5f >= Vector2.Distance(start, end))
+            while (deltaLength * 0.5f >= Vector2F.Distance(start, end))
             {
                 end = GetPosition(t);
                 t += 0.0001f;
@@ -460,13 +460,13 @@ namespace Alis.Core.Physic.Common
             // for each box
             for (int i = 1; i < divisions; i++)
             {
-                Vector2 normal = GetPositionNormal(t);
+                Vector2F normal = GetPositionNormal(t);
                 float angle = (float) Math.Atan2(normal.Y, normal.X);
 
-                verts.Add(new Vector3(end.X, end.Y, angle));
+                verts.Add(new Vector3F(end.X, end.Y, angle));
 
                 // until we reach the correct distance down the curve
-                while (deltaLength >= Vector2.Distance(start, end))
+                while (deltaLength >= Vector2F.Distance(start, end))
                 {
                     end = GetPosition(t);
                     t += 0.00001f;

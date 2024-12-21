@@ -15,17 +15,17 @@ namespace Alis.App.Engine.Fonts
         /// <summary>
         /// The font icon file name far
         /// </summary>
-        public const string NameRegular = "fontawesome5_regular.ttf";
+        public const string NameRegular = "Engine_fontawesome5_regular.ttf";
         
         /// <summary>
         /// The font icon file name far
         /// </summary>
-        public const string NameSolid = "fontawesome5_solid.ttf";
+        public const string NameSolid = "Engine_fontawesome5_solid.ttf";
         
         /// <summary>
         /// The font icon file name far
         /// </summary>
-        public const string NameLight = "fontawesome5_light.ttf";
+        public const string NameLight = "Engine_fontawesome5_light.ttf";
         
         /// <summary>
         /// The icon min

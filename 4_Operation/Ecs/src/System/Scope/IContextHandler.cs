@@ -67,6 +67,8 @@ namespace Alis.Core.Ecs.System.Scope
         /// Loads this instance
         /// </summary>
         void Load();
+        
+        void LoadAndRun();
 
         void Save(string path);
         

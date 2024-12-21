@@ -48,7 +48,7 @@ namespace Alis.Core.Physic.Sample
             Logger.SetLogLevel(LogLevel.Trace);
             Logger.Info($"Run {nameof(Alis)}.{nameof(Core)}.{nameof(Physic)}.{nameof(Sample)}");
 
-            Vector2 gravity = new Vector2(0.0f, -9.8f);
+            Vector2F gravity = new Vector2F(0.0f, -9.8f);
 
             World world = new World(gravity);
 

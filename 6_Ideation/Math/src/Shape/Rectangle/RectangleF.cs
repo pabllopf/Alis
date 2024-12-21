@@ -78,7 +78,7 @@ namespace Alis.Core.Aspect.Math.Shape.Rectangle
         /// </summary>
         /// <param name="pos">The pos</param>
         /// <returns>The bool</returns>
-        public bool Contains(Vector2 pos)
+        public bool Contains(Vector2F pos)
         {
             return pos.X >= X && pos.X <= X + W && pos.Y >= Y && pos.Y <= Y + H;
         }
