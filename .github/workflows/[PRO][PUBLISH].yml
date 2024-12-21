@@ -93,37 +93,37 @@ jobs:
         run: dotnet build alis.sln -c Release
 
       - name: publish osx-arm64
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r osx-arm64
+        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r osx-arm64 -f net8.0
       
       - name: publish osx-x64
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r osx-x64
+        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r osx-x64 -f net8.0
       
       - name: publish win-x64
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r win-x64
+        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r win-x64 -f net8.0
       
       - name: publish win-arm64
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r win-arm64
+        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r win-arm64 -f net8.0
       
       - name: publish win-x86
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r win-x86
+        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r win-x86 -f net8.0
       
       - name: publish linux-x64
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r linux-x64
+        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r linux-x64 -f net8.0
       
       - name: publish linux-arm64
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r linux-arm64
+        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r linux-arm64 -f net8.0
       
       - name: publish linux-arm
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r linux-arm
+        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r linux-arm -f net8.0
       
       - name: publish linux-musl-x64
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r linux-musl-x64
+        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r linux-musl-x64 -f net8.0
       
       - name: publish linux-musl-arm
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r linux-musl-arm
+        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r linux-musl-arm -f net8.0
       
       - name: publish linux-musl-arm64
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r linux-musl-arm64
+        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r linux-musl-arm64 -f net8.0
       
       - name: Build all platforms
         run: for i in `find . -name "*.csproj" -type f`;do if [[ $i != *".Template."* && $i != *".Extension."* && $i != *".App."* && $i != *".Test."* && $i != *".Benchmark."* && $i != *".Sample."* ]] ;then echo "Build project $i" ;dotnet build $i -c Release;dotnet build $i -r win-x64 -c Release;dotnet build $i -r win-arm64 -c Release;dotnet build $i -r win-x86 -c Release;dotnet build $i -r osx-x64 -c Release;dotnet build $i -r osx-arm64 -c Release;dotnet build $i -r linux-x64 -c Release;dotnet build $i -r linux-x86 -c Release;dotnet build $i -r linux-arm64 -c Release;fi;done
