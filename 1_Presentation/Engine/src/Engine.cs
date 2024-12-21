@@ -154,6 +154,8 @@ namespace Alis.App.Engine
         /// </summary>
         private SpaceWork spaceWork = new SpaceWork();
 
+        private string enginePath;
+
         /// <summary>
         ///     Starts this instance
         /// </summary>
@@ -173,9 +175,12 @@ namespace Alis.App.Engine
                 return;
             }
 
+            enginePath = Environment.CurrentDirectory;
+            
+            Environment.CurrentDirectory = spaceWork.Project.Path;
             spaceWork = new SpaceWork();
-
             spaceWork.Initialize();
+            Environment.CurrentDirectory = enginePath;
 
             // GET VERSION SDL2
             Version version = Sdl.GetVersion();
@@ -525,7 +530,9 @@ namespace Alis.App.Engine
 
                 UpdateMousePosAndButtons();
 
+                Environment.CurrentDirectory = spaceWork.Project.Path;
                 RenderProject();
+                Environment.CurrentDirectory = enginePath;
 
                 Sdl.MakeCurrent(spaceWork.Window, _glContext);
                 ImGui.Render();

@@ -114,10 +114,14 @@ namespace Alis.Core.Ecs.System
         /// </summary>
         public void Save() => _contextHandler.Save();
         
+        public void Save(string path) => _contextHandler.Save(path);
+        
         /// <summary>
         /// Loads this instance
         /// </summary>
         public void Load() => _contextHandler.Load();
+        
+        public void Load(string path) => _contextHandler.Load(path);
 
         /// <summary>
         ///     Creates a new instance of the <see cref="VideoGameBuilder" />.

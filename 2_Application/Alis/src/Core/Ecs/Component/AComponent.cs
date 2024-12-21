@@ -271,5 +271,9 @@ namespace Alis.Core.Ecs.Component
         public virtual void OnTriggerStay(GameObject gameObject) => Logger.Trace();
 
         public virtual object Clone() => MemberwiseClone();
+
+        public virtual void OnSave(string path) => Logger.Trace();
+        
+        public virtual void OnLoad(string path) => Logger.Trace();
     }
 }

@@ -159,12 +159,6 @@ namespace Alis.App.Hub
         /// <returns>The int</returns>
         public void Run()
         {
-            // Ejecutar la aplicación
-            //
-
-            // Establecer el delegado de la aplicación (menú nativo)
-            //NSApplication.SharedApplication.Delegate = new AppDelegate();
-
             // initialize SDL and set a few defaults for the OpenGL context
             if (Sdl.Init(InitSettings.InitEverything) != 0)
             {

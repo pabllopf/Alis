@@ -128,7 +128,7 @@ namespace Alis.Core.Aspect.Data.Resource
         /// <returns>The string</returns>
         internal static string GetAssetsDirectory()
         {
-            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string baseDirectory = Environment.CurrentDirectory;
             return Path.Combine(baseDirectory, "Assets");
         }
 

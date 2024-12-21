@@ -187,5 +187,9 @@ namespace Alis.Core.Ecs.System.Execution
         /// Ons the load
         /// </summary>
         public void OnLoad() => runtimes.ForEach(x => x.OnLoad());
+
+        public void OnLoad(string path) => runtimes.ForEach(x => x.OnLoad(path));
+
+        public void OnSave(string path) => runtimes.ForEach(x => x.OnSave(path));
     }
 }

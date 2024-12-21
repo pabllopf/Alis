@@ -306,6 +306,7 @@ namespace Alis.App.Engine.Windows
                     .Build())
                 .Build();
 
+            
             SpaceWork.VideoGame.StartPreview();
 
             SpaceWork.rendererGame = SpaceWork.VideoGame.Context.GraphicManager.Renderer;
