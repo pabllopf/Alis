@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
     <PropertyGroup>
-        <RuntimeIdentifiers>
-            win-x64;win-x86;win-arm64;
-            linux-x64;linux-arm;linux-arm64;linux-musl-x64;linux-musl-arm;linux-musl-arm64;
-            osx-x64;osx-arm64
-        </RuntimeIdentifiers>
         <TargetFrameworks>netcoreapp3.0;netcoreapp3.1;net5.0;net6.0;net7.0;net8.0;net9.0;netstandard2.0;netstandard2.1</TargetFrameworks>
         <TargetFrameworks Condition="$(AssemblyName.Contains('Test')) == true OR $(AssemblyName.Contains('App')) == true OR $(AssemblyName.Contains('Sample')) == true">net8.0;</TargetFrameworks>
     </PropertyGroup>
