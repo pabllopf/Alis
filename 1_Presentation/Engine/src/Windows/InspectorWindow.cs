@@ -37,7 +37,6 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Entity;
 using Alis.Extension.Graphic.ImGui.Native;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Component.Audio;
 using Alis.Core.Ecs.Component.Collider;

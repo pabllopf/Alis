@@ -34,10 +34,8 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
-using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Native;
 using MonoMac.AppKit;
 

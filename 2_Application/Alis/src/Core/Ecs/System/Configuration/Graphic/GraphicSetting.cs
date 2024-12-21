@@ -80,7 +80,10 @@ namespace Alis.Core.Ecs.System.Configuration.Graphic
 
         [JsonPropertyName("_GridColor_")]
         public Color GridColor { get; set; } = new Color(195, 195, 195, 100);
-
+        
+        [JsonIgnore]
+        public bool HasGrid { get; set; } = false;
+        
         /// <summary>
         ///     Builders this instance
         /// </summary>

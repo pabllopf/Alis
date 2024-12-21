@@ -32,7 +32,6 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
-using Alis.Builder.Core.Ecs.Entity.Transform;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
@@ -508,10 +507,10 @@ namespace Alis.App.Engine.Windows
                 // if Grid is active render the grid:
                 if (activeButtons.Contains(ActiveButton.Grid))
                 {
-                    SpaceWork.VideoGame.Context.GraphicManager.HasGrid = true;
+                    SpaceWork.VideoGame.Context.Setting.Graphic.HasGrid = true;
                 }else
                 {
-                    SpaceWork.VideoGame.Context.GraphicManager.HasGrid = false;
+                    SpaceWork.VideoGame.Context.Setting.Graphic.HasGrid = false;
                 }
 
 

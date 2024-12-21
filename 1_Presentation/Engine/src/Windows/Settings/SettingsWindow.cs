@@ -33,15 +33,9 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Ecs.System.Configuration.Audio;
-using Alis.Core.Ecs.System.Configuration.General;
-using Alis.Core.Ecs.System.Configuration.Graphic;
-using Alis.Core.Ecs.System.Configuration.Input;
-using Alis.Core.Ecs.System.Configuration.Network;
-using Alis.Core.Ecs.System.Configuration.Physic;
-using Alis.Core.Ecs.System.Configuration.Scene;
 using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Native;
 
@@ -109,7 +103,7 @@ namespace Alis.App.Engine.Windows.Settings
                 {
                     PropertyInfo[] properties = setting.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
                     int propertyCount = properties.Count(property => property.CanWrite && property.GetValue(setting) != null);
-                    
+
                     if (ImGui.BeginChild($"##{headerName}Child", new Vector2F(ImGui.GetContentRegionAvail().X, propertyCount * 36), true, ImGuiWindowFlags.NoCollapse))
                     {
                         foreach (PropertyInfo property in properties)
@@ -117,7 +111,9 @@ namespace Alis.App.Engine.Windows.Settings
                             object value = property.GetValue(setting);
                             string uniqueId = $"{property.Name}##{headerName}";
 
-                            if (property.CanWrite)
+                            bool isJsonIgnored = property.GetCustomAttributes(typeof(JsonIgnoreAttribute), true).Any();
+
+                            if (property.CanWrite || isJsonIgnored)
                             {
                                 ImGui.AlignTextToFramePadding();
                                 ImGui.Text(property.Name);
@@ -125,43 +121,48 @@ namespace Alis.App.Engine.Windows.Settings
 
                                 ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X); // Adjust the width as needed
 
+                                if (isJsonIgnored)
+                                {
+                                    ImGui.BeginDisabled();
+                                }
+
                                 switch (value)
                                 {
                                     case int intValue:
                                         int uniqueInt = intValue;
                                         ImGui.DragInt(uniqueId, ref uniqueInt, 1f, -1000, 1000);
-                                        property.SetValue(setting, uniqueInt);
+                                        if (!isJsonIgnored) property.SetValue(setting, uniqueInt);
                                         break;
                                     case float floatValue:
                                         ImGui.DragFloat(uniqueId, ref floatValue, 0.1f, -1000, 1000, "%.2f", ImGuiSliderFlags.AlwaysClamp);
-                                        property.SetValue(setting, floatValue);
+                                        if (!isJsonIgnored) property.SetValue(setting, floatValue);
                                         break;
                                     case bool boolValue:
                                         ImGui.Checkbox(uniqueId, ref boolValue);
-                                        property.SetValue(setting, boolValue);
+                                        if (!isJsonIgnored) property.SetValue(setting, boolValue);
                                         break;
                                     case Vector2F vector2Value:
                                         ImGui.DragFloat2(uniqueId, ref vector2Value, 0.1f, -1000, 1000, "%.2f", ImGuiSliderFlags.AlwaysClamp);
-                                        property.SetValue(setting, vector2Value);
+                                        if (!isJsonIgnored) property.SetValue(setting, vector2Value);
                                         break;
                                     case Vector3F vector3Value:
                                         ImGui.DragFloat3(uniqueId, ref vector3Value, 0.1f, -1000, 1000, "%.2f", ImGuiSliderFlags.AlwaysClamp);
-                                        property.SetValue(setting, vector3Value);
+                                        if (!isJsonIgnored) property.SetValue(setting, vector3Value);
                                         break;
                                     case Vector4F vector4Value:
                                         ImGui.DragFloat4(uniqueId, ref vector4Value, 0.1f, -1000, 1000, "%.2f", ImGuiSliderFlags.AlwaysClamp);
-                                        property.SetValue(setting, vector4Value);
+                                        if (!isJsonIgnored) property.SetValue(setting, vector4Value);
                                         break;
                                     case string stringValue:
                                         IntPtr commandPtr = Marshal.StringToHGlobalAnsi(stringValue);
                                         ImGui.InputText(uniqueId, commandPtr, 256, ImGuiInputTextFlags.AlwaysOverwrite);
-                                        property.SetValue(setting, Marshal.PtrToStringAnsi(commandPtr));
+                                        if (!isJsonIgnored) property.SetValue(setting, Marshal.PtrToStringAnsi(commandPtr));
                                         break;
                                     case Color color:
                                         Vector4F colorValue = new Vector4F(color.R / 255.0f, color.G / 255.0f, color.B / 255.0f, color.A / 255.0f);
                                         IntPtr commandPtr2 = Marshal.StringToHGlobalAnsi(uniqueId);
                                         ImGui.ColorEdit4(commandPtr2, ref colorValue, ImGuiColorEditFlags.DisplayRgb | ImGuiColorEditFlags.Uint8);
-                                        property.SetValue(setting, new Color((byte) (colorValue.X * 255), (byte) (colorValue.Y * 255), (byte) (colorValue.Z * 255), (byte) (colorValue.W * 255)));
+                                        if (!isJsonIgnored) property.SetValue(setting, new Color((byte) (colorValue.X * 255), (byte) (colorValue.Y * 255), (byte) (colorValue.Z * 255), (byte) (colorValue.W * 255)));
                                         break;
                                     case Enum enumValue:
                                         string[] enumNames = Enum.GetNames(property.PropertyType);
@@ -169,30 +170,35 @@ namespace Alis.App.Engine.Windows.Settings
                                         string itemsSeparatedByZeros = string.Join("\0", enumNames);
                                         if (ImGui.Combo(uniqueId, ref currentEnumIndex, itemsSeparatedByZeros))
                                         {
-                                            property.SetValue(setting, Enum.Parse(property.PropertyType, enumNames[currentEnumIndex]));
+                                            if (!isJsonIgnored) property.SetValue(setting, Enum.Parse(property.PropertyType, enumNames[currentEnumIndex]));
                                         }
 
                                         break;
                                     case double doubleValue:
                                         float floatValue2 = (float) doubleValue;
                                         ImGui.DragFloat(uniqueId, ref floatValue2, 0.1f, -1000, 1000, "%.2f", ImGuiSliderFlags.AlwaysClamp);
-                                        property.SetValue(setting, floatValue2);
+                                        if (!isJsonIgnored) property.SetValue(setting, floatValue2);
                                         break;
                                     case sbyte sbyteValue:
                                         ImGui.DragScalar(uniqueId, ImGuiDataType.S8, sbyteValue, 1, sbyte.MinValue, sbyte.MaxValue, "%d", ImGuiSliderFlags.AlwaysClamp);
-                                        property.SetValue(setting, sbyteValue);
+                                        if (!isJsonIgnored) property.SetValue(setting, sbyteValue);
                                         break;
                                     case byte byteValue:
                                         ImGui.DragScalar(uniqueId, ImGuiDataType.U8, byteValue, 1, byte.MinValue, byte.MaxValue, "%d", ImGuiSliderFlags.AlwaysClamp);
-                                        property.SetValue(setting, byteValue);
+                                        if (!isJsonIgnored) property.SetValue(setting, byteValue);
                                         break;
                                     case short shortValue:
                                         ImGui.DragScalar(uniqueId, ImGuiDataType.S16, shortValue, 1, short.MinValue, short.MaxValue, "%d", ImGuiSliderFlags.AlwaysClamp);
-                                        property.SetValue(setting, shortValue);
+                                        if (!isJsonIgnored) property.SetValue(setting, shortValue);
                                         break;
                                     default:
                                         ImGui.Text($"{property.Name}: {value}");
                                         break;
+                                }
+
+                                if (isJsonIgnored)
+                                {
+                                    ImGui.EndDisabled();
                                 }
                             }
                             else
@@ -201,6 +207,7 @@ namespace Alis.App.Engine.Windows.Settings
                             }
                         }
                     }
+
                     ImGui.EndChild();
                 }
             }
