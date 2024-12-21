@@ -29,6 +29,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Reflection;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
@@ -80,7 +82,10 @@ namespace Alis.App.Engine.Windows
             { typeof(Camera), FontAwesome5.Camera },
             { typeof(DirectionalLight), FontAwesome5.Lightbulb },
             { typeof(AudioSource), FontAwesome5.VolumeUp },
-            { typeof(Animation), FontAwesome5.Play}
+            { typeof(Animation), FontAwesome5.Play},
+            { typeof(PointLight), FontAwesome5.Lightbulb},
+            { typeof(SpotLight), FontAwesome5.Lightbulb},
+            { typeof(AreaLight), FontAwesome5.Lightbulb},
         };
         
         /// <summary>
@@ -100,6 +105,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     Renders this instance
         /// </summary>
+        [UnconditionalSuppressMessage("Trimming", "IL2026:Members annotated with 'RequiresUnreferencedCodeAttribute' require dynamic access otherwise can break functionality when trimming application code", Justification = "<Pending>")]
         public void Render()
         {
             ImGui.Begin(NameWindow);
@@ -111,11 +117,101 @@ namespace Alis.App.Engine.Windows
                 RenderTransform();
 
                 RenderComponents();
+                
+                RenderAddComponentButton();
             }
 
             ImGui.End();
         }
+
+        IntPtr searchQueryComand = IntPtr.Zero;
+        string searchQuery = "";
         
+        /// <summary>
+        /// Renders the add component button
+        /// </summary>
+        [RequiresUnreferencedCode("Calls System.Reflection.Assembly.GetTypes()")]
+        private void RenderAddComponentButton()
+        {
+            if (ImGui.Button("Add Component", new Vector2F(ImGui.GetContentRegionAvail().X, 30)))
+            {
+                ShowAddComponentPopup();
+            }
+            
+            // Obtener todos los tipos de componentes en el namespace Alis.xxx
+            Assembly assembly = Assembly.GetAssembly(typeof(AComponent))!;
+            Type[] allTypes = assembly.GetTypes();
+            IEnumerable<Type> componentSubclasses = allTypes.Where(t => t.IsSubclassOf(typeof(AComponent)));
+            List<Type> componentTypes = componentSubclasses
+                .Where(t => t.Namespace != null && t.IsClass && !t.IsAbstract && t.Namespace.StartsWith("Alis"))
+                .ToList();
+            
+            // Agrupar componentes por namespace
+            IOrderedEnumerable<IGrouping<string, Type>> groupedComponents = componentTypes
+                .GroupBy(t => t.Namespace)
+                .OrderBy(g => g.Key);
+
+            ImGui.SetNextWindowSize(new Vector2F(ImGui.GetWindowWidth(), (groupedComponents.Count() * 30) + 60));
+            if (ImGui.BeginPopup("AddComponentPopup"))
+            {
+                // Campo de búsqueda
+                
+                searchQueryComand = Marshal.StringToHGlobalAnsi(searchQuery);
+                ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X - 30);
+                ImGui.InputText($"{FontAwesome5.Search}##Search components",  searchQueryComand, 256);
+                searchQuery = Marshal.PtrToStringAnsi(searchQueryComand);
+                
+                // Filtrar componentes según la búsqueda
+                if (!string.IsNullOrEmpty(searchQuery))
+                {
+                    componentTypes = componentTypes
+                        .Where(t => t.Name.Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
+                        .ToList();
+                }
+                
+                
+                foreach (var group in groupedComponents)
+                {
+                    if (ImGui.CollapsingHeader(group.Key))
+                    {
+                        foreach (Type componentType in group)
+                        {
+                            if (ImGui.MenuItem(componentType.Name))
+                            {
+                                AddComponentToSelectedGameObject(componentType);
+                            }
+                        }
+                    }
+                }
+
+                ImGui.EndPopup();
+            }
+        }
+
+        /// <summary>
+        /// Shows the add component popup
+        /// </summary>
+        private void ShowAddComponentPopup()
+        {
+            ImGui.OpenPopup("AddComponentPopup");
+        }
+
+
+        /// <summary>
+        /// Adds a component to the selected game object
+        /// </summary>
+        /// <param name="componentType">The component type</param>
+        private void AddComponentToSelectedGameObject([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicParameterlessConstructor)] Type componentType)
+        {
+            if (_selectedGameObject == null)
+            {
+                return;
+            }
+
+            AComponent component = (AComponent) Activator.CreateInstance(componentType);
+            _selectedGameObject.Add(component);
+        }
+
         /// <summary>
         /// The zero
         /// </summary>
