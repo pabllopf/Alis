@@ -58,4 +58,62 @@
         </ItemGroup>
         <Copy SourceFiles="@(EditorFiles)" DestinationFiles="@(EditorFiles->'$(MacOSDir)Editor/%(RecursiveDir)%(Filename)%(Extension)')" Condition="Exists('$(HubOutputDir)Editor')" />
     </Target>
+    
+    <Target Name="CreateLinuxBundle" AfterTargets="Build;Publish" Condition="'$(MSBuildProjectName)' == 'Alis.App.Hub' And '$(IsLinux)' == 'true'">
+        <PropertyGroup>
+            <PublishDir>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/publish/</PublishDir>
+            <HubOutputDir>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/</HubOutputDir>
+            <ZipFileName>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/Alis_$(RuntimeIdentifier).zip</ZipFileName>
+        </PropertyGroup>
+        <ItemGroup>
+            <HubOutputFiles Include="$(HubOutputDir)**/*" Exclude="$(PublishDir)**/*;$(HubOutputDir)**/*.zip" />
+        </ItemGroup>
+        <RemoveDir Directories="$(PublishDir)" />
+        <MakeDir Directories="$(PublishDir)" />
+        <CreateItem Include="@(EngineOutputFiles)" AdditionalMetadata="MyRecursiveDir=%(RecursiveDir)">
+            <Output TaskParameter="Include" ItemName="EngineOutputFilesWithMyRecursiveDir" />
+        </CreateItem>
+        <CreateItem Include="@(InstallerOutputFiles)" AdditionalMetadata="MyRecursiveDir=%(RecursiveDir)">
+            <Output TaskParameter="Include" ItemName="InstallerOutputFilesWithMyRecursiveDir" />
+        </CreateItem>
+        <CreateItem Include="@(HubOutputFiles)" AdditionalMetadata="MyRecursiveDir=%(RecursiveDir)">
+            <Output TaskParameter="Include" ItemName="HubOutputFilesWithMyRecursiveDir" />
+        </CreateItem>
+        <Copy SourceFiles="@(HubOutputFilesWithMyRecursiveDir)" DestinationFiles="@(HubOutputFilesWithMyRecursiveDir->'$(PublishDir)%(MyRecursiveDir)%(Filename)%(Extension)')" />
+        <ItemGroup>
+            <EditorFiles Include="$(HubOutputDir)Editor/**/*" />
+        </ItemGroup>
+        <Copy SourceFiles="@(EditorFiles)" DestinationFiles="@(EditorFiles->'$(PublishDir)Editor/%(RecursiveDir)%(Filename)%(Extension)')" Condition="Exists('$(HubOutputDir)Editor')" />
+        <Delete Files="$(ZipFileName)" />
+        <ZipDirectory SourceDirectory="$(PublishDir)" DestinationFile="$(ZipFileName)" />
+    </Target>
+
+    <Target Name="CreateWindowsBundle" AfterTargets="Build;Publish" Condition="'$(MSBuildProjectName)' == 'Alis.App.Hub' And '$(IsWindows)' == 'true'">
+        <PropertyGroup>
+            <PublishDir>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/publish/</PublishDir>
+            <HubOutputDir>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/</HubOutputDir>
+            <ZipFileName>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/Alis_$(RuntimeIdentifier).zip</ZipFileName>
+        </PropertyGroup>
+        <ItemGroup>
+            <HubOutputFiles Include="$(HubOutputDir)**/*" Exclude="$(PublishDir)**/*;$(HubOutputDir)**/*.zip" />
+        </ItemGroup>
+        <RemoveDir Directories="$(PublishDir)" />
+        <MakeDir Directories="$(PublishDir)" />
+        <CreateItem Include="@(EngineOutputFiles)" AdditionalMetadata="MyRecursiveDir=%(RecursiveDir)">
+            <Output TaskParameter="Include" ItemName="EngineOutputFilesWithMyRecursiveDir" />
+        </CreateItem>
+        <CreateItem Include="@(InstallerOutputFiles)" AdditionalMetadata="MyRecursiveDir=%(RecursiveDir)">
+            <Output TaskParameter="Include" ItemName="InstallerOutputFilesWithMyRecursiveDir" />
+        </CreateItem>
+        <CreateItem Include="@(HubOutputFiles)" AdditionalMetadata="MyRecursiveDir=%(RecursiveDir)">
+            <Output TaskParameter="Include" ItemName="HubOutputFilesWithMyRecursiveDir" />
+        </CreateItem>
+        <Copy SourceFiles="@(HubOutputFilesWithMyRecursiveDir)" DestinationFiles="@(HubOutputFilesWithMyRecursiveDir->'$(PublishDir)%(MyRecursiveDir)%(Filename)%(Extension)')" />
+        <ItemGroup>
+            <EditorFiles Include="$(HubOutputDir)Editor/**/*" />
+        </ItemGroup>
+        <Copy SourceFiles="@(EditorFiles)" DestinationFiles="@(EditorFiles->'$(PublishDir)Editor/%(RecursiveDir)%(Filename)%(Extension)')" Condition="Exists('$(HubOutputDir)Editor')" />
+        <Delete Files="$(ZipFileName)" />
+        <ZipDirectory SourceDirectory="$(PublishDir)" DestinationFile="$(ZipFileName)" />
+    </Target>
 </Project>
