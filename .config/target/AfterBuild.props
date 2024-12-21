@@ -27,13 +27,14 @@
         <Copy SourceFiles="@(InstallerOutputFiles)" DestinationFiles="@(InstallerOutputFiles->'$(DestinationDir)%(RecursiveDir)%(Filename)%(Extension)')" />
     </Target>
 
-    <Target Name="CreateAppBundle" AfterTargets="Build;Publish" Condition="'$(MSBuildProjectName)' == 'Alis.App.Hub' And '$(IsOSX)' == 'true'">
+    <Target Name="CreateMacOsBundle" AfterTargets="Build;Publish" Condition="'$(MSBuildProjectName)' == 'Alis.App.Hub' And '$(IsOSX)' == 'true'">
         <PropertyGroup>
             <AppBundleDir>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/publish/Alis.app/</AppBundleDir>
             <ContentsDir>$(AppBundleDir)Contents/</ContentsDir>
             <MacOSDir>$(ContentsDir)MacOS/</MacOSDir>
             <ResourcesDir>$(ContentsDir)Resources/</ResourcesDir>
             <HubOutputDir>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/</HubOutputDir>
+            <DmgFileName>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/publish/Alis_$(RuntimeIdentifier).dmg</DmgFileName>
         </PropertyGroup>
         <ItemGroup>
             <HubOutputFiles Include="$(HubOutputDir)**/*" Exclude="$(AppBundleDir)**/*" />
@@ -57,8 +58,10 @@
             <EditorFiles Include="$(HubOutputDir)Editor/**/*" />
         </ItemGroup>
         <Copy SourceFiles="@(EditorFiles)" DestinationFiles="@(EditorFiles->'$(MacOSDir)Editor/%(RecursiveDir)%(Filename)%(Extension)')" Condition="Exists('$(HubOutputDir)Editor')" />
+        <Delete Files="$(DmgFileName)" />
+        <Exec Command="hdiutil create -volname Alis -srcfolder $(AppBundleDir) -ov -format UDZO $(DmgFileName)" />
     </Target>
-    
+        
     <Target Name="CreateLinuxBundle" AfterTargets="Build;Publish" Condition="'$(MSBuildProjectName)' == 'Alis.App.Hub' And '$(IsLinux)' == 'true'">
         <PropertyGroup>
             <PublishDir>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/publish/</PublishDir>
