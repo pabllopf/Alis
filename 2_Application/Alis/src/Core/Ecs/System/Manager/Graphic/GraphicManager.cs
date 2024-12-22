@@ -142,6 +142,9 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         [JsonPropertyName("_Cameras_")]
         public List<Camera> Cameras { get; }
 
+        [JsonIgnore]
+        public bool HasGrid { get; set; } = false;
+
         /// <summary>
         ///     Ons the enable
         /// </summary>
@@ -353,6 +356,12 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                         sprite.Render(renderer, cameraPosition, cameraResolution, pixelsPerMeter);
                     }
                 }
+                
+                // If the grid is enabled, render it:
+                if (HasGrid)
+                {
+                    RenderGrid(renderer, cameraPosition, cameraResolution, pixelsPerMeter);
+                }
 
                 if (contextSetting.Physic.DebugMode)
                 {
@@ -370,11 +379,40 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                     // draw a circle of radius 2 at the mouse position:
                     RenderCircleAtWorldPosition(worldPosition, 2);
                 }
-
+                
                 Sdl.SetRenderTarget(renderer, IntPtr.Zero);
 
                 // Copy the custom backbuffer to the SDL backbuffer with vertical flip
                 Sdl.RenderCopyEx(renderer, cameraTexture, IntPtr.Zero, IntPtr.Zero, 0, IntPtr.Zero, RendererFlips.FlipVertical);
+            }
+        }
+
+        private void RenderGrid(IntPtr renderer, Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
+        {
+            // Set the color for the grid lines
+            Sdl.SetRenderDrawColor(renderer, Context.Setting.Graphic.GridColor.R, Context.Setting.Graphic.GridColor.G, Context.Setting.Graphic.GridColor.B, Context.Setting.Graphic.GridColor.A);
+            
+            // Define the grid size in meters
+            float gridSize = 1000.0f;
+
+            // Calculate the number of lines to draw based on the grid size and pixels per meter
+            int numVerticalLines = (int)(gridSize);
+            int numHorizontalLines = (int)(gridSize);
+
+            // Draw vertical lines
+            for (int i = 0; i <= numVerticalLines; i++)
+            {
+                float x = -gridSize / 2 + i;
+                int screenX = (int)(x * pixelsPerMeter - cameraPosition.X * pixelsPerMeter + cameraResolution.X / 2);
+                Sdl.RenderDrawLine(renderer, screenX, 0, screenX, (int)cameraResolution.Y);
+            }
+
+            // Draw horizontal lines
+            for (int i = 0; i <= numHorizontalLines; i++)
+            {
+                float y = -gridSize / 2 + i;
+                int screenY = (int)(y * pixelsPerMeter - cameraPosition.Y * pixelsPerMeter + cameraResolution.Y / 2);
+                Sdl.RenderDrawLine(renderer, 0, screenY, (int)cameraResolution.X, screenY);
             }
         }
 

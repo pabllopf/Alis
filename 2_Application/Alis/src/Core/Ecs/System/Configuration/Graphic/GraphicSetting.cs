@@ -30,6 +30,7 @@
 using Alis.Builder.Core.Ecs.System.Setting.Graphic;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Graphic;
 
 namespace Alis.Core.Ecs.System.Configuration.Graphic
@@ -76,6 +77,9 @@ namespace Alis.Core.Ecs.System.Configuration.Graphic
         /// </summary>
         [JsonIgnore]
         public bool PreviewMode { get; set; } = false;
+
+        [JsonPropertyName("_GridColor_")]
+        public Color GridColor { get; set; } = new Color(195, 195, 195, 100);
 
         /// <summary>
         ///     Builders this instance

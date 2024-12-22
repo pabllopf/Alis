@@ -57,7 +57,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         /// The tools active button
         /// </summary>
-        Tools,
+        Grid,
         /// <summary>
         /// The user active button
         /// </summary>
