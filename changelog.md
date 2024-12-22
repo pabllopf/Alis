@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.5.1] - 2024-12-21
+### :sparkles: New Features
+- [`f9a6dd9`](https://github.com/pabllopf/Alis/commit/f9a6dd99c2af433c4d3db3f2ac47504caf75c3fd) - auto compile app for hub and engine. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e4e38d6`](https://github.com/pabllopf/Alis/commit/e4e38d6a104ca21d63b33f3726f359b785ae8204) - auto create bildings apps *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5fcb2a6`](https://github.com/pabllopf/Alis/commit/5fcb2a63c080deb5c419e3928c13ace88e7e67ed) - auto create .dmg file *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`5acaab4`](https://github.com/pabllopf/Alis/commit/5acaab47f6494b54fd0901c054e0d910b0de8614) - the sample project, load custom assets and project json. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6fb5b20`](https://github.com/pabllopf/Alis/commit/6fb5b2087e085c38da1a98b3379c46f8edc3fc1a) - runtimes *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.5.0] - 2024-12-20
 ### :sparkles: New Features
 - [`ded7106`](https://github.com/pabllopf/Alis/commit/ded710638451974e898f934f60095d8545c0a002) - add new project with hub *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -3755,3 +3766,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.4.8]: https://github.com/pabllopf/Alis/compare/v0.4.7...v0.4.8
 [v0.4.9]: https://github.com/pabllopf/Alis/compare/v0.4.8...v0.4.9
 [v0.5.0]: https://github.com/pabllopf/Alis/compare/v0.4.9...v0.5.0
+[v0.5.1]: https://github.com/pabllopf/Alis/compare/v0.5.0...v0.5.1
