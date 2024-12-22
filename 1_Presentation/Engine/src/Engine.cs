@@ -225,6 +225,7 @@ namespace Alis.App.Engine
             spaceWork.ContextGui = ImGui.CreateContext();
 
             spaceWork.Io = ImGui.GetIo();
+            spaceWork.Io.WantSaveIniSettings = false;
 
             spaceWork.Io.DisplaySize = new Vector2F(widthWindow, heightWindow);
 
@@ -466,8 +467,6 @@ namespace Alis.App.Engine
             
             while (!spaceWork._quit)
             {
-                Environment.CurrentDirectory = spaceWork.Project.Path;
-                
                 while (Sdl.PollEvent(out Event e) != 0)
                 {
                     spaceWork.Event = e;
@@ -502,6 +501,8 @@ namespace Alis.App.Engine
                 ImGui.NewFrame();
                 ImGuizMo.BeginFrame();
 
+                Environment.CurrentDirectory = spaceWork.Project.Path;
+                
                 // Setup display size (every frame to accommodate for window resizing)
                 Vector2F windowSize = Sdl.GetWindowSize(spaceWork.Window);
                 Sdl.GetDrawableSize(spaceWork.Window, out int displayW, out int displayH);
@@ -537,6 +538,8 @@ namespace Alis.App.Engine
                 Gl.GlClear(ClearBufferMask.ColorBufferBit);
 
                 RenderDrawData();
+                
+                Environment.CurrentDirectory = enginePath;
 
                 IntPtr backupCurrentWindow = Sdl.GetCurrentWindow();
                 IntPtr backupCurrentContext = Sdl.GetCurrentContext();
@@ -547,7 +550,6 @@ namespace Alis.App.Engine
 
                 Gl.GlDisable(EnableCap.ScissorTest);
                 Sdl.SwapWindow(spaceWork.Window);
-                Environment.CurrentDirectory = enginePath;
             }
 
             if (_shader != null)
