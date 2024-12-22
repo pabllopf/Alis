@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:JetbrainFont.cs
+//  File:IRuntime.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,12 +27,36 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.App.Hub.Fonts
+namespace Alis.App.Hub.Core
 {
     /// <summary>
-    ///     The jetbrain font class
+    /// The runtime interface
     /// </summary>
-    public class JetbrainFont
+    public interface IRuntime
     {
+        /// <summary>
+        /// Ons the init
+        /// </summary>
+        public void OnInit();
+        
+        /// <summary>
+        /// Ons the start
+        /// </summary>
+        public void OnStart();
+        
+        /// <summary>
+        /// Ons the update
+        /// </summary>
+        public void OnUpdate();
+        
+        /// <summary>
+        /// Ons the render
+        /// </summary>
+        public void OnRender();
+        
+        /// <summary>
+        /// Ons the destroy
+        /// </summary>
+        public void OnDestroy();
     }
 }

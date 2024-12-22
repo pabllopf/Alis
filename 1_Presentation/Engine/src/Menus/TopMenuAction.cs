@@ -151,6 +151,9 @@ namespace Alis.App.Engine.Menus
             MenuActions.Add("Report Bug", ReportBug);
         }
 
+        /// <summary>
+        /// Saves
+        /// </summary>
         private static void Save()
         {
             spaceWork.VideoGame.Save();
@@ -783,6 +786,10 @@ namespace Alis.App.Engine.Menus
             OpenUrl("https://www.alisengine.com/en/v0.4.0/api/Alis.html");
         }
         
+        /// <summary>
+        /// Opens the url using the specified url
+        /// </summary>
+        /// <param name="url">The url</param>
         private static void OpenUrl(string url)
         {
             try

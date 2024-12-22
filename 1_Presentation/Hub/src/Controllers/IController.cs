@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SegoeIcon.cs
+//  File:IController.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,15 +27,57 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.App.Hub.Icons;
+using Alis.App.Hub.Core;
 
-namespace Alis.App.Hub.Fonts
+namespace Alis.App.Hub.Controllers
 {
     /// <summary>
-    ///     The segoe icon class
+    /// The controller class
     /// </summary>
-    /// <seealso cref="IIcon" />
-    public class SegoeIcon : IIcon
+    public abstract class AController
     {
+        /// <summary>
+        /// Gets the value of the space work
+        /// </summary>
+        public SpaceWork SpaceWork {get;}
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AController"/> class
+        /// </summary>
+        /// <param name="spaceWork">The space work</param>
+        public AController(SpaceWork spaceWork)
+        {
+            SpaceWork = spaceWork;
+        }
+        
+        /// <summary>
+        /// Ons the init
+        /// </summary>
+        public abstract void OnInit();
+        
+        /// <summary>
+        /// Ons the start
+        /// </summary>
+        public abstract void OnStart();
+        
+        /// <summary>
+        /// Ons the start render
+        /// </summary>
+        public abstract void OnStartRender();
+        
+        /// <summary>
+        /// Ons the update
+        /// </summary>
+        public abstract void OnUpdate();
+        
+        /// <summary>
+        /// Ons the end render
+        /// </summary>
+        public abstract void OnEndRender();
+        
+        /// <summary>
+        /// Ons the destroy
+        /// </summary>
+        public abstract void OnDestroy();
     }
 }

@@ -97,6 +97,10 @@ namespace Alis.Core.Aspect.Math
             Rotation = angle;
         }
 
+        /// <summary>
+        /// Clones this instance
+        /// </summary>
+        /// <returns>The object</returns>
         public object Clone()
         {
             return new Transform(Position, Rotation, Scale);

@@ -384,6 +384,13 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             }
         }
 
+        /// <summary>
+        /// Renders the grid using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="cameraPosition">The camera position</param>
+        /// <param name="cameraResolution">The camera resolution</param>
+        /// <param name="pixelsPerMeter">The pixels per meter</param>
         private void RenderGrid(IntPtr renderer, Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
         {
             // Set the color for the grid lines

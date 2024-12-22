@@ -68,10 +68,21 @@ namespace Alis.Core.Ecs.System.Scope
         /// </summary>
         void Load();
         
+        /// <summary>
+        /// Loads the and run
+        /// </summary>
         void LoadAndRun();
 
+        /// <summary>
+        /// Saves the path
+        /// </summary>
+        /// <param name="path">The path</param>
         void Save(string path);
         
+        /// <summary>
+        /// Loads the path
+        /// </summary>
+        /// <param name="path">The path</param>
         void Load(string path);
     }
 }

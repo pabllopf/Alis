@@ -50,6 +50,9 @@ namespace Alis.Sample.Pong
         /// </summary>
         private BoxCollider boxCollider;
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PlayerController"/> class
+        /// </summary>
         public PlayerController() => this.PlayerId = 0;
         
         /// <summary>

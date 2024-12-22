@@ -270,10 +270,22 @@ namespace Alis.Core.Ecs.Component
         /// <param name="gameObject">The game object</param>
         public virtual void OnTriggerStay(GameObject gameObject) => Logger.Trace();
 
+        /// <summary>
+        /// Clones this instance
+        /// </summary>
+        /// <returns>The object</returns>
         public virtual object Clone() => MemberwiseClone();
 
+        /// <summary>
+        /// Ons the save using the specified path
+        /// </summary>
+        /// <param name="path">The path</param>
         public virtual void OnSave(string path) => Logger.Trace();
         
+        /// <summary>
+        /// Ons the load using the specified path
+        /// </summary>
+        /// <param name="path">The path</param>
         public virtual void OnLoad(string path) => Logger.Trace();
     }
 }

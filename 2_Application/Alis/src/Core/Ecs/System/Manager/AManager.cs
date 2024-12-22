@@ -230,8 +230,16 @@ namespace Alis.Core.Ecs.System.Manager
         /// </summary>
         public virtual void OnLoad() => Logger.Trace("Manager loaded.");
 
+        /// <summary>
+        /// Ons the save using the specified path
+        /// </summary>
+        /// <param name="path">The path</param>
         public virtual void OnSave(string path) => Logger.Trace("Manager saved.");
 
+        /// <summary>
+        /// Ons the load using the specified path
+        /// </summary>
+        /// <param name="path">The path</param>
         public virtual void OnLoad(string path) => Logger.Trace("Manager loaded.");
 
         /// <summary>

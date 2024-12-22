@@ -114,6 +114,10 @@ namespace Alis.Core.Ecs.System
         /// </summary>
         public void Save() => _contextHandler.Save();
         
+        /// <summary>
+        /// Saves the path
+        /// </summary>
+        /// <param name="path">The path</param>
         public void Save(string path) => _contextHandler.Save(path);
         
         /// <summary>
@@ -121,8 +125,15 @@ namespace Alis.Core.Ecs.System
         /// </summary>
         public void Load() => _contextHandler.Load();
         
+        /// <summary>
+        /// Loads the path
+        /// </summary>
+        /// <param name="path">The path</param>
         public void Load(string path) => _contextHandler.Load(path);
         
+        /// <summary>
+        /// Loads the and run
+        /// </summary>
         public void LoadAndRun()
         {
             _contextHandler.LoadAndRun();

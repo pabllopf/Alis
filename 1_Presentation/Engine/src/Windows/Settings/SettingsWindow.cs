@@ -41,8 +41,15 @@ using Alis.Extension.Graphic.ImGui.Native;
 
 namespace Alis.App.Engine.Windows.Settings
 {
+    /// <summary>
+    /// The settings window class
+    /// </summary>
+    /// <seealso cref="IWindow"/>
     public class SettingsWindow : IWindow
     {
+        /// <summary>
+        /// The is open
+        /// </summary>
         private bool isOpen = true;
 
         /// <summary>
@@ -50,24 +57,40 @@ namespace Alis.App.Engine.Windows.Settings
         /// </summary>
         private static readonly string WindowName = $"{FontAwesome5.Wrench} Settings";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SettingsWindow"/> class
+        /// </summary>
+        /// <param name="spaceWork">The space work</param>
         public SettingsWindow(SpaceWork spaceWork)
         {
             SpaceWork = spaceWork;
         }
 
+        /// <summary>
+        /// Gets the value of the space work
+        /// </summary>
         public SpaceWork SpaceWork { get; }
 
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
         public void Initialize()
         {
 
         }
 
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
         public void Start()
         {
 
         }
 
 
+        /// <summary>
+        /// Renders this instance
+        /// </summary>
         public void Render()
         {
             if (!isOpen)
@@ -94,6 +117,10 @@ namespace Alis.App.Engine.Windows.Settings
             ImGui.End();
         }
 
+        /// <summary>
+        /// Renders the settings using the specified settings
+        /// </summary>
+        /// <param name="settings">The settings</param>
         private void RenderSettings(object[] settings)
         {
             foreach (object setting in settings)
