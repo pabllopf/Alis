@@ -74,7 +74,7 @@ namespace Alis.Core.Ecs.System.Configuration.Graphic
         /// <summary>
         ///     Gets or sets the value of the preview mode
         /// </summary>
-        [JsonPropertyName("_PreviewMode_")]
+        [JsonIgnore]
         public bool PreviewMode { get; set; } = false;
 
         /// <summary>

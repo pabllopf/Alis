@@ -475,6 +475,8 @@ namespace Alis.App.Engine
             
             while (!spaceWork._quit)
             {
+                Environment.CurrentDirectory = spaceWork.Project.Path;
+                
                 while (Sdl.PollEvent(out Event e) != 0)
                 {
                     spaceWork.Event = e;
@@ -533,9 +535,9 @@ namespace Alis.App.Engine
 
                 UpdateMousePosAndButtons();
 
-                Environment.CurrentDirectory = spaceWork.Project.Path;
+               
                 RenderProject();
-                Environment.CurrentDirectory = enginePath;
+                
 
                 Sdl.MakeCurrent(spaceWork.Window, _glContext);
                 ImGui.Render();
@@ -554,6 +556,7 @@ namespace Alis.App.Engine
 
                 Gl.GlDisable(EnableCap.ScissorTest);
                 Sdl.SwapWindow(spaceWork.Window);
+                Environment.CurrentDirectory = enginePath;
             }
 
             if (_shader != null)
@@ -836,7 +839,7 @@ namespace Alis.App.Engine
             ImGui.SetNextWindowSize(spaceWork.Viewport.Size);
             ImGui.Begin("DockSpace Demo", dockspaceflags);
 
-
+            
             spaceWork.DockSpaceMenu.Update();
 
             Vector2F dockSize = spaceWork.Viewport.Size - new Vector2F(5, 85);

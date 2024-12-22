@@ -32,6 +32,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Alis.Core.Aspect.Data.Json;
+using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
@@ -289,7 +290,8 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
             if (!string.IsNullOrEmpty(Context.Setting.General.Icon))
             {
-                IntPtr icon = Sdl.LoadBmp(Context.Setting.General.Icon);
+                
+                IntPtr icon = Sdl.LoadBmp(AssetManager.Find(Context.Setting.General.Icon));
                 Sdl.SetWindowIcon(Window, icon);
             }
 

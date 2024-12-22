@@ -99,7 +99,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.General
         /// <returns>The general setting builder</returns>
         public GeneralSettingBuilder Icon(string value)
         {
-            generalSetting.Icon = AssetManager.Find(value);
+            generalSetting.Icon = value;
             return this;
         }
 

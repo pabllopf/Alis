@@ -54,7 +54,7 @@ namespace Alis.Core.Ecs.System.Configuration.General
             Version = "0.0.0";
             Author = "Pablo Perdomo Falcón";
             License = "GPL-3.0 license";
-            Icon = "";
+            Icon = "app.bmp";
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace Alis.Core.Ecs.System.Configuration.General
             Version = version;
             Author = author;
             License = license;
-            Icon = AssetManager.Find(icon);
+            Icon = icon;
         }
 
         /// <summary>

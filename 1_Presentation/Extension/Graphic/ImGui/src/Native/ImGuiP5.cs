@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -1004,9 +1005,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="label">The label</param>
         /// <param name="col">The col</param>
         /// <returns>The bool</returns>
-        public static bool ColorEdit4(string label, ref Vector4F col)
+        public static bool ColorEdit4(IntPtr label, ref Vector4F col)
         {
-            byte ret = ImGuiNative.igColorEdit4(Encoding.UTF8.GetBytes(label), col, ImGuiColorEditFlags.None);
+            byte ret = ImGuiNative.igColorEdit4(label, ref col, ImGuiColorEditFlags.None);
 
             return ret != 0;
         }
@@ -1018,9 +1019,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="col">The col</param>
         /// <param name="flags">The flags</param>
         /// <returns>The bool</returns>
-        public static bool ColorEdit4(string label, ref Vector4F col, ImGuiColorEditFlags flags)
+        public static bool ColorEdit4(IntPtr label, ref Vector4F col, ImGuiColorEditFlags flags)
         {
-            byte ret = ImGuiNative.igColorEdit4(Encoding.UTF8.GetBytes(label), col, flags);
+            byte ret = ImGuiNative.igColorEdit4(label, ref col, flags);
             return ret != 0;
         }
 

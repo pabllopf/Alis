@@ -752,7 +752,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         public void ColorEdit4_WithLabelAndRefVector4_ThrowsDllNotFoundException()
         {
             Vector4F col = new Vector4F();
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorEdit4("label", ref col));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorEdit4(Marshal.StringToHGlobalAnsi("label"), ref col));
         }
 
         /// <summary>
@@ -762,7 +762,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         public void ColorEdit4_WithLabelRefVector4AndFlags_ThrowsDllNotFoundException()
         {
             Vector4F col = new Vector4F();
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorEdit4("label", ref col, ImGuiColorEditFlags.None));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorEdit4(Marshal.StringToHGlobalAnsi("label"), ref col, ImGuiColorEditFlags.None));
         }
 
         /// <summary>

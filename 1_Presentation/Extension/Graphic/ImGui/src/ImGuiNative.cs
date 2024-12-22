@@ -441,7 +441,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorEdit4")]
-        public static extern byte igColorEdit4(byte[] label, Vector4F col, ImGuiColorEditFlags flags);
+        public static extern byte igColorEdit4(IntPtr label, ref Vector4F col, ImGuiColorEditFlags flags);
 
         /// <summary>
         ///     Igs the color picker 3 using the specified label

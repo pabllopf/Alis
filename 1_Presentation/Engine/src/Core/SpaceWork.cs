@@ -35,6 +35,7 @@ using Alis.App.Engine.Demos;
 using Alis.App.Engine.Entity;
 using Alis.App.Engine.Menus;
 using Alis.App.Engine.Windows;
+using Alis.App.Engine.Windows.Settings;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Ecs.System;
 using Alis.Core.Graphic.Sdl2.Structs;
@@ -61,6 +62,8 @@ namespace Alis.App.Engine.Core
         ///     The im guizmo demo
         /// </summary>
         public readonly ImGuizmoDemo imGuizmoDemo = new ImGuizmoDemo();
+
+        public readonly SettingsWindow SettingsWindow;
 
         /// <summary>
         ///     The im node demo
@@ -139,12 +142,14 @@ namespace Alis.App.Engine.Core
             DockSpaceMenu = new DockSpaceMenu(this);
             ConsoleWindow = new ConsoleWindow(this);
             GameWindow = new GameWindow(this);
+            SettingsWindow = new SettingsWindow(this);
             InspectorWindow = new InspectorWindow(this);
             SolutionWindow = new SolutionWindow(this);
             SceneWindow = new SceneWindow(this);
             ProjectWindow = new ProjectWindow(this);
             AudioPlayerWindow = new AudioPlayerWindow(this);
             AssetsWindow = new AssetsWindow(this);
+            
             TopMenu = new TopMenu(this);
             TopMenuMac = new TopMenuMac(this);
             BottomMenu = new BottomMenu(this);
@@ -268,6 +273,7 @@ namespace Alis.App.Engine.Core
             ProjectWindow.Initialize();
             AudioPlayerWindow.Initialize();
             AssetsWindow.Initialize();
+            SettingsWindow.Initialize();
         }
 
         /// <summary>
@@ -301,6 +307,7 @@ namespace Alis.App.Engine.Core
             ProjectWindow.Start();
             AudioPlayerWindow.Start();
             AssetsWindow.Start();
+            SettingsWindow.Start();
         }
 
         /// <summary>
@@ -324,6 +331,7 @@ namespace Alis.App.Engine.Core
                 TopMenuMac.Render();
             }
 
+            SettingsWindow.Render();
             BottomMenu.Render();
             ConsoleWindow.Render();
             GameWindow.Render();
@@ -333,6 +341,7 @@ namespace Alis.App.Engine.Core
             ProjectWindow.Render();
             AudioPlayerWindow.Render();
             AssetsWindow.Render();
+            
         }
     }
 }

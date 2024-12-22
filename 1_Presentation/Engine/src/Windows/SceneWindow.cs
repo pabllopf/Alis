@@ -129,7 +129,7 @@ namespace Alis.App.Engine.Windows
                         .Description("Sample of a rogue legacy game")
                         .Debug(true)
                         .License("GNU General Public License v3.0")
-                        .Icon("app.bmp")
+                        .Icon("logo.bmp")
                         .Build())
                     .Audio(audio => audio
                         .Build())
@@ -306,7 +306,7 @@ namespace Alis.App.Engine.Windows
                     .Build())
                 .Build();
 
-            
+            SpaceWork.VideoGame.Load();
             SpaceWork.VideoGame.StartPreview();
 
             SpaceWork.rendererGame = SpaceWork.VideoGame.Context.GraphicManager.Renderer;

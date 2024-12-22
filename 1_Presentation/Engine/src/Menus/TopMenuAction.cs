@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
@@ -70,10 +71,11 @@ namespace Alis.App.Engine.Menus
             MenuActions.Add("Preferences", Preferences);
             MenuActions.Add("Quit Alis", QuitAlis);
 
+            MenuActions.Add("Save", Save);
+            
             MenuActions.Add("New Scene", NewScene);
             MenuActions.Add("New Project", NewProject);
             MenuActions.Add("Open Project", OpenProject);
-            MenuActions.Add("Save Project", SaveProject);
             MenuActions.Add("Build Profiles", BuildProfiles);
             MenuActions.Add("Build And Run", BuildAndRun);
             MenuActions.Add("Close", Close);
@@ -149,6 +151,17 @@ namespace Alis.App.Engine.Menus
             MenuActions.Add("Alis Manual", AlisManual);
             MenuActions.Add("API Reference", APIReference);
             MenuActions.Add("Report Bug", ReportBug);
+        }
+
+        private static void Save()
+        {
+            spaceWork.VideoGame.Save();
+            string file = AppDomain.CurrentDomain.BaseDirectory + "settings.ini";
+            if (File.Exists(file))
+            {
+                File.Delete(file);
+            }
+            ImGui.SaveIniSettingsToDisk(file);
         }
 
         /// <summary>
@@ -260,6 +273,7 @@ namespace Alis.App.Engine.Menus
         private static void SaveProject()
         {
             spaceWork.VideoGame.Save();
+            ImGui.SaveIniSettingsToDisk(AppDomain.CurrentDomain.BaseDirectory + "settings.ini");
         }
 
         /// <summary>
