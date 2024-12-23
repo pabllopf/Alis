@@ -29,7 +29,6 @@
 
 using Alis.Builder.Core.Ecs.System.Setting.General;
 using Alis.Core.Aspect.Data.Json;
-using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent;
 
 namespace Alis.Core.Ecs.System.Configuration.General

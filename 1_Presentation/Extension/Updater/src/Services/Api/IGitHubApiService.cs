@@ -42,5 +42,7 @@ namespace Alis.Extension.Updater.Services.Api
         /// </summary>
         /// <returns>A task containing a dictionary of string and object</returns>
         Task<Dictionary<string, object>> GetLatestReleaseAsync();
+        
+        string apiUrl { get; }
     }
 }

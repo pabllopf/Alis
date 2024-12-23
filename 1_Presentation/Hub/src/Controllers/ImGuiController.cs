@@ -32,6 +32,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 using Alis.App.Engine.Fonts;
+using Alis.App.Hub.Core;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
@@ -51,36 +52,36 @@ using Alis.Extension.Graphic.OpenGL.Enums;
 namespace Alis.App.Hub.Controllers
 {
     /// <summary>
-    /// The im gui controller class
+    ///     The im gui controller class
     /// </summary>
-    /// <seealso cref="AController"/>
+    /// <seealso cref="AController" />
     public class ImGuiController : AController
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ImGuiController"/> class
-        /// </summary>
-        /// <param name="SpaceWork">The space work</param>
-        public ImGuiController(Core.SpaceWork SpaceWork) : base(SpaceWork)
-        {
-        }
-
         /// <summary>
         ///     The mouse pressed
         /// </summary>
         private readonly bool[] _mousePressed = {false, false, false};
-        
+
         /// <summary>
-        /// Ons the init
+        ///     Initializes a new instance of the <see cref="ImGuiController" /> class
+        /// </summary>
+        /// <param name="SpaceWork">The space work</param>
+        public ImGuiController(SpaceWork SpaceWork) : base(SpaceWork)
+        {
+        }
+
+        /// <summary>
+        ///     Ons the init
         /// </summary>
         public override void OnInit()
         {
             SpaceWork.ContextImGui = ImGui.CreateContext();
-            
+
             SpaceWork.Io = ImGui.GetIo();
             SpaceWork.Io.WantSaveIniSettings = false;
-            
+
             SpaceWork.Io.DisplaySize = new Vector2F(SpaceWork.WidthMainWindow, SpaceWork.HeightMainWindow);
-            
+
             Logger.Info($@"IMGUI VERSION {ImGui.GetVersion()}");
 
             // active plot renders
@@ -105,16 +106,16 @@ namespace Alis.App.Hub.Controllers
             ImGui.SetCurrentContext(SpaceWork.ContextImGui);
 
             LoadFonts();
-            
+
             ConfigDockSpace();
-            
+
             SetStyle();
-            
+
             ConfigInput();
         }
 
         /// <summary>
-        /// Configs the input
+        ///     Configs the input
         /// </summary>
         private void ConfigInput()
         {
@@ -140,11 +141,10 @@ namespace Alis.App.Hub.Controllers
             SpaceWork.Io.KeyMap[(int) ImGuiKey.X] = (int) SdlScancode.SdlScancodeX;
             SpaceWork.Io.KeyMap[(int) ImGuiKey.Y] = (int) SdlScancode.SdlScancodeY;
             SpaceWork.Io.KeyMap[(int) ImGuiKey.Z] = (int) SdlScancode.SdlScancodeZ;
-
         }
 
         /// <summary>
-        /// Sets the style
+        ///     Sets the style
         /// </summary>
         private void SetStyle()
         {
@@ -401,7 +401,7 @@ namespace Alis.App.Hub.Controllers
 
 
         /// <summary>
-        /// Configs the dock space
+        ///     Configs the dock space
         /// </summary>
         private void ConfigDockSpace()
         {
@@ -416,11 +416,11 @@ namespace Alis.App.Hub.Controllers
         }
 
         /// <summary>
-        /// Loads the fonts
+        ///     Loads the fonts
         /// </summary>
         private void LoadFonts()
         {
-             // REBUILD ATLAS
+            // REBUILD ATLAS
             ImFontAtlasPtr fonts = ImGui.GetIo().Fonts;
 
             //fonts.AddFontDefault();
@@ -456,7 +456,7 @@ namespace Alis.App.Hub.Controllers
                 Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {FontAwesome5.NameSolid} {e.Message}");
                 return;
             }
-            
+
             string fontFileSolid10 = AssetManager.Find("Hub_JetBrainsMono-Bold.ttf");
             SpaceWork.FontLoaded10Solid = fonts.AddFontFromFileTtf(fontFileSolid10, 12);
             try
@@ -504,7 +504,7 @@ namespace Alis.App.Hub.Controllers
                 GCHandle iconRangesHandle = GCHandle.Alloc(iconRanges, GCHandleType.Pinned);
 
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
-                
+
                 string fontAwesome = AssetManager.Find(FontAwesome5.NameSolid);
                 fonts.AddFontFromFileTtf(fontAwesome, 40, iconsConfig, rangePtr);
             }
@@ -513,7 +513,7 @@ namespace Alis.App.Hub.Controllers
                 Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {FontAwesome5.NameSolid} {e.Message}");
                 return;
             }
-            
+
             string fontFileSolid30 = AssetManager.Find("Hub_JetBrainsMono-Bold.ttf");
             SpaceWork.FontLoaded30Bold = fonts.AddFontFromFileTtf(fontFileSolid30, 28);
             try
@@ -532,7 +532,7 @@ namespace Alis.App.Hub.Controllers
                 GCHandle iconRangesHandle = GCHandle.Alloc(iconRanges, GCHandleType.Pinned);
 
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
-                
+
                 string fontAwesome = AssetManager.Find(FontAwesome5.NameSolid);
                 fonts.AddFontFromFileTtf(fontAwesome, 28, iconsConfig, rangePtr);
             }
@@ -572,11 +572,10 @@ namespace Alis.App.Hub.Controllers
 
             fonts.GetTexDataAsRgba32(out IntPtr pixelData, out int width, out int height, out int _);
             SpaceWork.FontTextureId = SpaceWork.OpenGlController.LoadTexture(pixelData, width, height);
-            fonts.TexId = (IntPtr) SpaceWork.FontTextureId ;
+            fonts.TexId = (IntPtr) SpaceWork.FontTextureId;
             fonts.ClearTexData();
-
         }
-        
+
         /// <summary>
         ///     Processes the event using the specified evt
         /// </summary>
@@ -771,37 +770,35 @@ namespace Alis.App.Hub.Controllers
                 }
             }
         }
-        
-      
+
+
         /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
         public override void OnStart()
         {
-            
         }
-        
+
         /// <summary>
-        /// Ons the start render
+        ///     Ons the start render
         /// </summary>
         public override void OnStartRender()
         {
             //Gl.GlClearColor(0.05f, 0.05f, 0.05f, 1.00f);
             ImGui.NewFrame();
             ImGuizMo.BeginFrame();
-
         }
-        
+
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public override void OnUpdate()
         {
             UpdateMousePosAndButtons();
         }
-        
+
         /// <summary>
-        /// Ons the end render
+        ///     Ons the end render
         /// </summary>
         public override void OnEndRender()
         {
@@ -825,11 +822,10 @@ namespace Alis.App.Hub.Controllers
         }
 
         /// <summary>
-        /// Ons the destroy
+        ///     Ons the destroy
         /// </summary>
         public override void OnDestroy()
         {
-            
         }
 
 
@@ -878,9 +874,9 @@ namespace Alis.App.Hub.Controllers
             bool anyMouseButtonDown = ImGui.IsAnyMouseDown();
             Sdl.CaptureMouse(anyMouseButtonDown);
         }
-         
-         
-          /// <summary>
+
+
+        /// <summary>
         ///     Renders the draw data
         /// </summary>
         private void RenderDrawData()
@@ -951,7 +947,7 @@ namespace Alis.App.Hub.Controllers
             }
         }
 
-           /// <summary>
+        /// <summary>
         ///     Setup the render state using the specified draw data
         /// </summary>
         /// <param name="drawData">The draw data</param>
@@ -996,6 +992,5 @@ namespace Alis.App.Hub.Controllers
             Gl.VertexAttribPointer(SpaceWork.GlShader["UV"].Location, 2, VertexAttribPointerType.Float, false, drawVertSize, uvOffset);
             Gl.VertexAttribPointer(SpaceWork.GlShader["Color"].Location, 4, VertexAttribPointerType.UnsignedByte, true, drawVertSize, colOffset);
         }
-        
     }
 }

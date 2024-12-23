@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:LearnWindow.cs
+//  File:LearnSection.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -37,71 +37,69 @@ using Alis.Extension.Graphic.ImGui.Native;
 namespace Alis.App.Hub.Windows.Sections
 {
     /// <summary>
-    /// The learn section class
+    ///     The learn section class
     /// </summary>
-    /// <seealso cref="ASection"/>
+    /// <seealso cref="ASection" />
     public class LearnSection : ASection
     {
         /// <summary>
-        /// The show documentation
+        ///     The show documentation
         /// </summary>
         private bool showDocumentation;
+
         /// <summary>
-        /// The show tips
+        ///     The show tips
         /// </summary>
         private bool showTips;
 
         /// <summary>
-        /// The show tutorials
+        ///     The show tutorials
         /// </summary>
         private bool showTutorials;
 
         /// <summary>
-        /// The show videos
+        ///     The show videos
         /// </summary>
         private bool showVideos;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="LearnSection"/> class
+        ///     Initializes a new instance of the <see cref="LearnSection" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
         public LearnSection(SpaceWork spaceWork) : base(spaceWork)
         {
         }
-        
+
         /// <summary>
-        /// Ons the init
+        ///     Ons the init
         /// </summary>
         public override void OnInit()
         {
-            
         }
 
         /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
         public override void OnStart()
         {
-            
         }
 
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public override void OnUpdate()
         {
-            
         }
 
         /// <summary>
-        /// Ons the render
+        ///     Ons the render
         /// </summary>
         public override void OnRender()
         {
             // Header for the section
             ImGui.Text("Learn and Explore");
             ImGui.Separator();
-            
+
             // Create buttons as tabs for each section
             if (ImGui.Button("📚 Tutorials"))
             {
@@ -173,16 +171,15 @@ namespace Alis.App.Hub.Windows.Sections
         }
 
         /// <summary>
-        /// Ons the destroy
+        ///     Ons the destroy
         /// </summary>
         public override void OnDestroy()
         {
-            
         }
 
 
         /// <summary>
-        /// Displays the tutorials
+        ///     Displays the tutorials
         /// </summary>
         private void DisplayTutorials()
         {
@@ -205,9 +202,9 @@ namespace Alis.App.Hub.Windows.Sections
                 }
             }
         }
-        
+
         /// <summary>
-        /// Displays the documentation
+        ///     Displays the documentation
         /// </summary>
         private void DisplayDocumentation()
         {
@@ -234,7 +231,7 @@ namespace Alis.App.Hub.Windows.Sections
 
 
         /// <summary>
-        /// Displays the videos
+        ///     Displays the videos
         /// </summary>
         private void DisplayVideos()
         {
@@ -258,7 +255,7 @@ namespace Alis.App.Hub.Windows.Sections
         }
 
         /// <summary>
-        /// Displays the tips
+        ///     Displays the tips
         /// </summary>
         private void DisplayTips()
         {
@@ -276,6 +273,5 @@ namespace Alis.App.Hub.Windows.Sections
             Random random = new Random();
             ImGui.TextWrapped(tips[random.Next(tips.Count)]);
         }
-
     }
 }

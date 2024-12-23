@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Gallery2.cs
+//  File:Gallery.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -34,18 +34,18 @@ using Alis.Core.Aspect.Data.Resource;
 namespace Alis.App.Hub.Entity
 {
     /// <summary>
-    /// The gallery class
+    ///     The gallery class
     /// </summary>
     public class Gallery
     {
         /// <summary>
-        /// The items
+        ///     The items
         /// </summary>
         public readonly List<GalleryItem> Items;
 
         // Método para generar una lista de 10 elementos de tipo GalleryItem
         /// <summary>
-        /// Initializes a new instance of the <see cref="Gallery"/> class
+        ///     Initializes a new instance of the <see cref="Gallery" /> class
         /// </summary>
         public Gallery()
         {

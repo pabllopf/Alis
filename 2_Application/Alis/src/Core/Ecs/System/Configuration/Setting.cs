@@ -37,7 +37,6 @@ using Alis.Core.Ecs.System.Configuration.Input;
 using Alis.Core.Ecs.System.Configuration.Network;
 using Alis.Core.Ecs.System.Configuration.Physic;
 using Alis.Core.Ecs.System.Configuration.Scene;
-using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Core.Ecs.System.Configuration
 {
@@ -126,7 +125,7 @@ namespace Alis.Core.Ecs.System.Configuration
         public SceneSetting Scene { get; set; }
 
         /// <summary>
-        /// Ons the load
+        ///     Ons the load
         /// </summary>
         public void OnLoad()
         {
@@ -135,80 +134,80 @@ namespace Alis.Core.Ecs.System.Configuration
             {
                 Directory.CreateDirectory(directory);
             }
-            
+
             string fileGeneral = Path.Combine(directory, "General.json");
-            if(File.Exists(fileGeneral))
+            if (File.Exists(fileGeneral))
             {
-                General = JsonSerializer.Deserialize<GeneralSetting>(File.ReadAllText(fileGeneral),new JsonOptions
+                General = JsonSerializer.Deserialize<GeneralSetting>(File.ReadAllText(fileGeneral), new JsonOptions
                 {
                     DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
                     SerializationOptions = JsonSerializationOptions.Default
                 });
             }
-            
+
             string fileAudio = Path.Combine(directory, "Audio.json");
-            if(File.Exists(fileAudio))
+            if (File.Exists(fileAudio))
             {
-                Audio = JsonSerializer.Deserialize<AudioSetting>(File.ReadAllText(fileAudio),new JsonOptions
+                Audio = JsonSerializer.Deserialize<AudioSetting>(File.ReadAllText(fileAudio), new JsonOptions
                 {
                     DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
                     SerializationOptions = JsonSerializationOptions.Default
                 });
             }
-            
+
             string fileGraphic = Path.Combine(directory, "Graphic.json");
-            if(File.Exists(fileGraphic))
+            if (File.Exists(fileGraphic))
             {
-                Graphic = JsonSerializer.Deserialize<GraphicSetting>(File.ReadAllText(fileGraphic),new JsonOptions
+                Graphic = JsonSerializer.Deserialize<GraphicSetting>(File.ReadAllText(fileGraphic), new JsonOptions
                 {
                     DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
                     SerializationOptions = JsonSerializationOptions.Default
                 });
             }
-            
+
             string fileInput = Path.Combine(directory, "Input.json");
-            if(File.Exists(fileInput))
+            if (File.Exists(fileInput))
             {
-                Input = JsonSerializer.Deserialize<InputSetting>(File.ReadAllText(fileInput),new JsonOptions
+                Input = JsonSerializer.Deserialize<InputSetting>(File.ReadAllText(fileInput), new JsonOptions
                 {
                     DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
                     SerializationOptions = JsonSerializationOptions.Default
                 });
             }
-            
+
             string fileNetwork = Path.Combine(directory, "Network.json");
-            if(File.Exists(fileNetwork))
+            if (File.Exists(fileNetwork))
             {
-                Network = JsonSerializer.Deserialize<NetworkSetting>(File.ReadAllText(fileNetwork),new JsonOptions
+                Network = JsonSerializer.Deserialize<NetworkSetting>(File.ReadAllText(fileNetwork), new JsonOptions
                 {
                     DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
                     SerializationOptions = JsonSerializationOptions.Default
                 });
             }
-            
+
             string filePhysic = Path.Combine(directory, "Physic.json");
-            if(File.Exists(filePhysic))
+            if (File.Exists(filePhysic))
             {
-                Physic = JsonSerializer.Deserialize<PhysicSetting>(File.ReadAllText(filePhysic),new JsonOptions
+                Physic = JsonSerializer.Deserialize<PhysicSetting>(File.ReadAllText(filePhysic), new JsonOptions
                 {
                     DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
                     SerializationOptions = JsonSerializationOptions.Default
                 });
             }
-            
+
             string fileScene = Path.Combine(directory, "Scene.json");
-            if(File.Exists(fileScene))
+            if (File.Exists(fileScene))
             {
-                Scene = JsonSerializer.Deserialize<SceneSetting>(File.ReadAllText(fileScene),new JsonOptions
+                Scene = JsonSerializer.Deserialize<SceneSetting>(File.ReadAllText(fileScene), new JsonOptions
                 {
                     DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
                     SerializationOptions = JsonSerializationOptions.Default
                 });
             }
         }
-        
+
         /// <summary>
-        /// Ons the save
+        ///     Ons the save
         /// </summary>
         public void OnSave()
         {
@@ -217,49 +216,49 @@ namespace Alis.Core.Ecs.System.Configuration
             {
                 Directory.CreateDirectory(directory);
             }
-            
+
             string fileGeneral = Path.Combine(directory, "General.json");
             File.WriteAllText(fileGeneral, JsonSerializer.Serialize(General, new JsonOptions
             {
                 DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
                 SerializationOptions = JsonSerializationOptions.Default
             }));
-            
+
             string fileAudio = Path.Combine(directory, "Audio.json");
             File.WriteAllText(fileAudio, JsonSerializer.Serialize(Audio, new JsonOptions
             {
                 DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
                 SerializationOptions = JsonSerializationOptions.Default
             }));
-            
+
             string fileGraphic = Path.Combine(directory, "Graphic.json");
             File.WriteAllText(fileGraphic, JsonSerializer.Serialize(Graphic, new JsonOptions
             {
                 DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
                 SerializationOptions = JsonSerializationOptions.Default
             }));
-            
+
             string fileInput = Path.Combine(directory, "Input.json");
             File.WriteAllText(fileInput, JsonSerializer.Serialize(Input, new JsonOptions
             {
                 DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
                 SerializationOptions = JsonSerializationOptions.Default
             }));
-            
+
             string fileNetwork = Path.Combine(directory, "Network.json");
             File.WriteAllText(fileNetwork, JsonSerializer.Serialize(Network, new JsonOptions
             {
                 DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
                 SerializationOptions = JsonSerializationOptions.Default
             }));
-            
+
             string filePhysic = Path.Combine(directory, "Physic.json");
             File.WriteAllText(filePhysic, JsonSerializer.Serialize(Physic, new JsonOptions
             {
                 DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
                 SerializationOptions = JsonSerializationOptions.Default
             }));
-            
+
             string fileScene = Path.Combine(directory, "Scene.json");
             File.WriteAllText(fileScene, JsonSerializer.Serialize(Scene, new JsonOptions
             {
@@ -269,19 +268,19 @@ namespace Alis.Core.Ecs.System.Configuration
         }
 
         /// <summary>
-        /// Ons the load using the specified path
+        ///     Ons the load using the specified path
         /// </summary>
         /// <param name="path">The path</param>
         public void OnLoad(string path)
         {
-           string directory = Path.Combine(path, "Data", "Setting");
+            string directory = Path.Combine(path, "Data", "Setting");
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
             }
-            
+
             string fileGeneral = Path.Combine(directory, "General.json");
-            if(File.Exists(fileGeneral))
+            if (File.Exists(fileGeneral))
             {
                 General = JsonSerializer.Deserialize<GeneralSetting>(File.ReadAllText(fileGeneral), new JsonOptions
                 {
@@ -289,9 +288,9 @@ namespace Alis.Core.Ecs.System.Configuration
                     SerializationOptions = JsonSerializationOptions.Default
                 });
             }
-            
+
             string fileAudio = Path.Combine(directory, "Audio.json");
-            if(File.Exists(fileAudio))
+            if (File.Exists(fileAudio))
             {
                 Audio = JsonSerializer.Deserialize<AudioSetting>(File.ReadAllText(fileAudio), new JsonOptions
                 {
@@ -299,9 +298,9 @@ namespace Alis.Core.Ecs.System.Configuration
                     SerializationOptions = JsonSerializationOptions.Default
                 });
             }
-            
+
             string fileGraphic = Path.Combine(directory, "Graphic.json");
-            if(File.Exists(fileGraphic))
+            if (File.Exists(fileGraphic))
             {
                 Graphic = JsonSerializer.Deserialize<GraphicSetting>(File.ReadAllText(fileGraphic), new JsonOptions
                 {
@@ -309,9 +308,9 @@ namespace Alis.Core.Ecs.System.Configuration
                     SerializationOptions = JsonSerializationOptions.Default
                 });
             }
-            
+
             string fileInput = Path.Combine(directory, "Input.json");
-            if(File.Exists(fileInput))
+            if (File.Exists(fileInput))
             {
                 Input = JsonSerializer.Deserialize<InputSetting>(File.ReadAllText(fileInput), new JsonOptions
                 {
@@ -319,9 +318,9 @@ namespace Alis.Core.Ecs.System.Configuration
                     SerializationOptions = JsonSerializationOptions.Default
                 });
             }
-            
+
             string fileNetwork = Path.Combine(directory, "Network.json");
-            if(File.Exists(fileNetwork))
+            if (File.Exists(fileNetwork))
             {
                 Network = JsonSerializer.Deserialize<NetworkSetting>(File.ReadAllText(fileNetwork), new JsonOptions
                 {
@@ -329,9 +328,9 @@ namespace Alis.Core.Ecs.System.Configuration
                     SerializationOptions = JsonSerializationOptions.Default
                 });
             }
-            
+
             string filePhysic = Path.Combine(directory, "Physic.json");
-            if(File.Exists(filePhysic))
+            if (File.Exists(filePhysic))
             {
                 Physic = JsonSerializer.Deserialize<PhysicSetting>(File.ReadAllText(filePhysic), new JsonOptions
                 {
@@ -339,9 +338,9 @@ namespace Alis.Core.Ecs.System.Configuration
                     SerializationOptions = JsonSerializationOptions.Default
                 });
             }
-            
+
             string fileScene = Path.Combine(directory, "Scene.json");
-            if(File.Exists(fileScene))
+            if (File.Exists(fileScene))
             {
                 Scene = JsonSerializer.Deserialize<SceneSetting>(File.ReadAllText(fileScene), new JsonOptions
                 {

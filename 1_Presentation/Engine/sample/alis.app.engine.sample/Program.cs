@@ -27,18 +27,17 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Ecs.System;
 
 namespace Alis.App.Engine.Sample
 {
     /// <summary>
-    /// The program class
+    ///     The program class
     /// </summary>
     public static class Program
     {
         /// <summary>
-        /// Main the args
+        ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
         public static void Main(string[] args) => VideoGame.Create().Build().LoadAndRun();

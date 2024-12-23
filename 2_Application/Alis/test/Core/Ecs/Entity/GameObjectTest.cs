@@ -87,7 +87,7 @@ namespace Alis.Test.Core.Ecs.Entity
             // Act
             gameObject.Add(component);
             bool containsAfterAdd = gameObject.Contains<Sprite>();
-            
+
             // Assert
             Assert.False(containsAfterAdd);
         }
@@ -369,7 +369,7 @@ namespace Alis.Test.Core.Ecs.Entity
             GameObject gameObject = new GameObject();
             Sample2Component sample2Component = new Sample2Component();
             gameObject.Add(sample2Component);
-            
+
             gameObject.OnProcessPendingChanges();
 
             Sample2Component result = gameObject.Get<Sample2Component>();

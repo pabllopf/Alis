@@ -38,7 +38,6 @@ using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
-using Alis.Core.Ecs.Entity;
 using Alis.Core.Ecs.System.Configuration;
 using Alis.Core.Ecs.System.Configuration.Physic;
 using Alis.Core.Ecs.System.Scope;
@@ -58,14 +57,14 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
     public class GraphicManager : AManager
     {
         /// <summary>
-        /// The world position
-        /// </summary>
-        public Vector2F worldPosition;
-
-        /// <summary>
         ///     The pixels per meter
         /// </summary>
         private const float PixelsPerMeter = 32.0f;
+
+        /// <summary>
+        ///     The world position
+        /// </summary>
+        public Vector2F worldPosition;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="GraphicManager" /> class
@@ -141,7 +140,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// </summary>
         [JsonPropertyName("_Cameras_")]
         public List<Camera> Cameras { get; }
-        
+
         /// <summary>
         ///     Ons the enable
         /// </summary>
@@ -290,7 +289,6 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
             if (!string.IsNullOrEmpty(Context.Setting.General.Icon))
             {
-                
                 IntPtr icon = Sdl.LoadBmp(AssetManager.Find(Context.Setting.General.Icon));
                 Sdl.SetWindowIcon(Window, icon);
             }
@@ -353,7 +351,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                         sprite.Render(renderer, cameraPosition, cameraResolution, pixelsPerMeter);
                     }
                 }
-                
+
                 // If the grid is enabled, render it:
                 if (Context.Setting.Graphic.HasGrid)
                 {
@@ -376,7 +374,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                     // draw a circle of radius 2 at the mouse position:
                     RenderCircleAtWorldPosition(worldPosition, 2);
                 }
-                
+
                 Sdl.SetRenderTarget(renderer, IntPtr.Zero);
 
                 // Copy the custom backbuffer to the SDL backbuffer with vertical flip
@@ -385,7 +383,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         }
 
         /// <summary>
-        /// Renders the grid using the specified renderer
+        ///     Renders the grid using the specified renderer
         /// </summary>
         /// <param name="renderer">The renderer</param>
         /// <param name="cameraPosition">The camera position</param>
@@ -395,33 +393,33 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         {
             // Set the color for the grid lines
             Sdl.SetRenderDrawColor(renderer, Context.Setting.Graphic.GridColor.R, Context.Setting.Graphic.GridColor.G, Context.Setting.Graphic.GridColor.B, Context.Setting.Graphic.GridColor.A);
-            
+
             // Define the grid size in meters
             float gridSize = 1000.0f;
 
             // Calculate the number of lines to draw based on the grid size and pixels per meter
-            int numVerticalLines = (int)(gridSize);
-            int numHorizontalLines = (int)(gridSize);
+            int numVerticalLines = (int) gridSize;
+            int numHorizontalLines = (int) gridSize;
 
             // Draw vertical lines
             for (int i = 0; i <= numVerticalLines; i++)
             {
                 float x = -gridSize / 2 + i;
-                int screenX = (int)(x * pixelsPerMeter - cameraPosition.X * pixelsPerMeter + cameraResolution.X / 2);
-                Sdl.RenderDrawLine(renderer, screenX, 0, screenX, (int)cameraResolution.Y);
+                int screenX = (int) (x * pixelsPerMeter - cameraPosition.X * pixelsPerMeter + cameraResolution.X / 2);
+                Sdl.RenderDrawLine(renderer, screenX, 0, screenX, (int) cameraResolution.Y);
             }
 
             // Draw horizontal lines
             for (int i = 0; i <= numHorizontalLines; i++)
             {
                 float y = -gridSize / 2 + i;
-                int screenY = (int)(y * pixelsPerMeter - cameraPosition.Y * pixelsPerMeter + cameraResolution.Y / 2);
-                Sdl.RenderDrawLine(renderer, 0, screenY, (int)cameraResolution.X, screenY);
+                int screenY = (int) (y * pixelsPerMeter - cameraPosition.Y * pixelsPerMeter + cameraResolution.Y / 2);
+                Sdl.RenderDrawLine(renderer, 0, screenY, (int) cameraResolution.X, screenY);
             }
         }
 
         /// <summary>
-        /// Renders the circle at world position using the specified world position
+        ///     Renders the circle at world position using the specified world position
         /// </summary>
         /// <param name="worldPosition">The world position</param>
         /// <param name="radius">The radius</param>
@@ -440,8 +438,8 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
             // Convert world position to screen position
             Vector2F screenPosition = new Vector2F(
-                (worldPosition.X + (cameraResolution.X / 2 / PixelsPerMeter) - cameraPosition.X) * PixelsPerMeter,
-                (worldPosition.Y + (cameraResolution.Y / 2 / PixelsPerMeter) - cameraPosition.Y) * PixelsPerMeter
+                (worldPosition.X + cameraResolution.X / 2 / PixelsPerMeter - cameraPosition.X) * PixelsPerMeter,
+                (worldPosition.Y + cameraResolution.Y / 2 / PixelsPerMeter - cameraPosition.Y) * PixelsPerMeter
             );
 
             // Set the color for the circle
@@ -454,7 +452,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 {
                     int dx = (int) radius - w; // horizontal offset
                     int dy = (int) radius - h; // vertical offset
-                    if ((dx * dx + dy * dy) <= (radius * radius))
+                    if (dx * dx + dy * dy <= radius * radius)
                     {
                         Sdl.RenderDrawPoint(Renderer, (int) screenPosition.X + dx, (int) screenPosition.Y + dy);
                     }
@@ -527,10 +525,8 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         }
 
 
-
-
         /// <summary>
-        /// Screens the to world using the specified mouse position relative to texture centered
+        ///     Screens the to world using the specified mouse position relative to texture centered
         /// </summary>
         /// <param name="mousePositionRelativeToTextureCentered">The mouse position relative to texture centered</param>
         /// <param name="textureSize">The texture size</param>
@@ -566,8 +562,8 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             float adjustedY = mousePositionOnGameUnits.Y;
 
             // Convert the mouse position to world coordinates
-            float x = (adjustedX * factorX) + cameraPosition.X;
-            float y = (adjustedY * factorY) + cameraPosition.Y;
+            float x = adjustedX * factorX + cameraPosition.X;
+            float y = adjustedY * factorY + cameraPosition.Y;
             Console.WriteLine($"Mouse Position on World: {x}, {y}");
 
             worldPosition = new Vector2F(x, y);

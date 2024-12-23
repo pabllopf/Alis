@@ -137,7 +137,6 @@ namespace Alis.Sample.Snake
                     food.IsEnable = true;
                     _currentFoodIndex = (_currentFoodIndex + 1) % _foodPool.Count;
                 }
-                
             }
         }
     }

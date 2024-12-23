@@ -33,12 +33,12 @@ using Alis.Core.Ecs.Component;
 namespace Alis.App.Engine.Sample.Assets.Scripts
 {
     /// <summary>
-    /// The player class
+    ///     The player class
     /// </summary>
     public class Player : AComponent
     {
         /// <summary>
-        /// Ons the awake
+        ///     Ons the awake
         /// </summary>
         public override void OnAwake()
         {

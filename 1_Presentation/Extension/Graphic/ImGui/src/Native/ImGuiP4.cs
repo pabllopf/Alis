@@ -704,7 +704,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             string label,
             string hint,
             string input,
-            uint maxLength) => InputTextWithHint(label, hint,  input, maxLength, 0, null, IntPtr.Zero);
+            uint maxLength) => InputTextWithHint(label, hint, input, maxLength, 0, null, IntPtr.Zero);
 
         /// <summary>
         ///     Describes whether input text with hint
@@ -720,7 +720,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             string hint,
             string input,
             uint maxLength,
-            ImGuiInputTextFlags flags) => InputTextWithHint(label, hint,  input, maxLength, flags, null, IntPtr.Zero);
+            ImGuiInputTextFlags flags) => InputTextWithHint(label, hint, input, maxLength, flags, null, IntPtr.Zero);
 
         /// <summary>
         ///     Describes whether input text with hint
@@ -738,7 +738,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             string input,
             uint maxLength,
             ImGuiInputTextFlags flags,
-            ImGuiInputTextCallback callback) => InputTextWithHint(label, hint,  input, maxLength, flags, callback, IntPtr.Zero);
+            ImGuiInputTextCallback callback) => InputTextWithHint(label, hint, input, maxLength, flags, callback, IntPtr.Zero);
 
         /// <summary>
         ///     Describes whether input text with hint

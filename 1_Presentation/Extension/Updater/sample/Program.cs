@@ -52,7 +52,7 @@ namespace Alis.Extension.Updater.Sample
             GitHubApiService gitHubApiService = new GitHubApiService(urlReleasesLatest);
             FileService fileService = new FileService();
             string pathProgram = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin");
-            UpdateManager updateManager = new UpdateManager(gitHubApiService, fileService, pathProgram);
+            UpdateManager updateManager = new UpdateManager(gitHubApiService, "latest", fileService, pathProgram);
 
             updateManager.Start().Wait();
 

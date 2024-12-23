@@ -56,24 +56,36 @@ namespace Alis.App.Engine.Windows
     public class SceneWindow : IWindow
     {
         /// <summary>
-        /// The hashtag
+        ///     The hashtag
         /// </summary>
         private static readonly string NameWindow = $"{FontAwesome5.Hashtag} Scene";
 
         /// <summary>
-        /// The is dragging
+        ///     The hand spock
         /// </summary>
-        private bool isDragging = false;
+        private readonly ActiveButton activeButton = ActiveButton.HandSpock;
+
+
+        // Crear un HashSet para almacenar los botones activos
         /// <summary>
-        /// The previous mouse position
+        ///     The active button
         /// </summary>
-        private Vector2F previousMousePosition;
-        
-        
+        private readonly HashSet<ActiveButton> activeButtons = new HashSet<ActiveButton>();
+
         /// <summary>
-        /// The selected game object
+        ///     The height texture
         /// </summary>
-        private GameObject selectedGameObject;
+        private float heightTexture;
+
+        /// <summary>
+        ///     The is dragging
+        /// </summary>
+        private bool isDragging;
+
+        /// <summary>
+        ///     The offset texture
+        /// </summary>
+        private Vector2F offsetTexture;
 
         /// <summary>
         ///     The pixel ptr
@@ -81,26 +93,25 @@ namespace Alis.App.Engine.Windows
         private IntPtr pixelPtr;
 
         /// <summary>
+        ///     The previous mouse position
+        /// </summary>
+        private Vector2F previousMousePosition;
+
+
+        /// <summary>
+        ///     The selected game object
+        /// </summary>
+        private GameObject selectedGameObject;
+
+        /// <summary>
         ///     The textureopen gl id
         /// </summary>
         private uint textureopenGlId;
 
         /// <summary>
-        /// The hand spock
-        /// </summary>
-        private ActiveButton activeButton = ActiveButton.HandSpock;
-        /// <summary>
-        /// The width texture
+        ///     The width texture
         /// </summary>
         private float widthTexture;
-        /// <summary>
-        /// The height texture
-        /// </summary>
-        private float heightTexture;
-        /// <summary>
-        /// The offset texture
-        /// </summary>
-        private Vector2F offsetTexture;
 
 
         /// <summary>
@@ -178,7 +189,6 @@ namespace Alis.App.Engine.Windows
                                     .Build())
                                 .Build())
                             .Build())
-
                         .Add<GameObject>(camera => camera
                             .Name("Camera")
                             .AddComponent<Camera>(component => component
@@ -187,7 +197,7 @@ namespace Alis.App.Engine.Windows
                                 .BackgroundColor(Color.DarkGreen)
                                 .Build())
                             .Build())
-                        
+
                         // Decoration tree-001
                         .Add<GameObject>(gameObject => gameObject
                             .Name("tree-001")
@@ -333,15 +343,8 @@ namespace Alis.App.Engine.Windows
             Console.WriteLine($"Imgui Version: {ImGui.GetVersion()}");
         }
 
-        
-        // Crear un HashSet para almacenar los botones activos
         /// <summary>
-        /// The active button
-        /// </summary>
-        HashSet<ActiveButton> activeButtons = new HashSet<ActiveButton>();
-        
-        /// <summary>
-        /// Renders this instance
+        ///     Renders this instance
         /// </summary>
         public void Render()
         {
@@ -362,7 +365,6 @@ namespace Alis.App.Engine.Windows
             // Iniciar la ventana de ImGui
             if (ImGui.Begin(NameWindow, ImGuiWindowFlags.MenuBar))
             {
-                
                 if (ImGui.BeginMenuBar())
                 {
                     // Botón HandSpock
@@ -492,7 +494,7 @@ namespace Alis.App.Engine.Windows
                     float yPos = ImGui.GetWindowPos().Y;
                     float width = ImGui.GetWindowWidth();
                     float height = ImGui.GetWindowHeight();
-                    Vector2F windowPosCalculated = new Vector2F(xPos + width, yPos + (60));
+                    Vector2F windowPosCalculated = new Vector2F(xPos + width, yPos + 60);
                     ImGui.SetNextWindowPos(windowPosCalculated, ImGuiCond.Always, new Vector2F(1.0f, 0.0f));
                     ImGui.Begin("InfoPanel", ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.AlwaysAutoResize | ImGuiWindowFlags.NoTitleBar);
 
@@ -506,12 +508,13 @@ namespace Alis.App.Engine.Windows
 
                     ImGui.End();
                 }
-                
+
                 // if Grid is active render the grid:
                 if (activeButtons.Contains(ActiveButton.Grid))
                 {
                     SpaceWork.VideoGame.Context.Setting.Graphic.HasGrid = true;
-                }else
+                }
+                else
                 {
                     SpaceWork.VideoGame.Context.Setting.Graphic.HasGrid = false;
                 }
@@ -558,14 +561,14 @@ namespace Alis.App.Engine.Windows
                 {
                     DrawSelectionRectangle(selectedGameObject);
                 }
-                
+
                 if (ImGui.IsItemHovered() && ImGui.IsMouseClicked(0))
                 {
                     Vector2F mousePos = GetMouseWorldPosition();
                     selectedGameObject = FindGameObjectUnderMouse(mousePos);
                     Console.WriteLine($"Selected GameObject: {selectedGameObject?.Name}");
                 }
-                
+
                 // Detectar si estamos en la región de la escena
                 if (ImGui.IsItemHovered() && ImGui.IsMouseDown(ImGuiMouseButton.Right))
                 {
@@ -614,7 +617,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// Gets the mouse world position
+        ///     Gets the mouse world position
         /// </summary>
         /// <returns>The world pos</returns>
         private Vector2F GetMouseWorldPosition()
@@ -628,9 +631,9 @@ namespace Alis.App.Engine.Windows
 
             Vector2F mousePositionRelativeToWindow = mousePosition - windowPosition;
             Vector2F mousePositionRelativeToTexture = mousePositionRelativeToWindow - (windowSize - textureSize) / 2;
-          
+
             mousePositionRelativeToTexture.Y -= 30.0f;
-            
+
             Console.WriteLine("--------------------");
             Console.WriteLine($"Mouse Position: {mousePosition.X}, {mousePosition.Y}");
             Console.WriteLine($"Window Position: {windowPosition.X}, {windowPosition.Y}");
@@ -642,13 +645,14 @@ namespace Alis.App.Engine.Windows
             Console.WriteLine();
             // Adjust mouse position to center the texture
             Vector2F errorPosition = new Vector2F(0, 0);
-            
+
             // Check if the mouse position is outside the texture
             if (mousePositionRelativeToTexture.X >= textureSize.X)
             {
                 errorPosition.X = mousePositionRelativeToTexture.X - textureSize.X;
                 Console.WriteLine($"Error Position X: {errorPosition.X}");
             }
+
             if (mousePositionRelativeToTexture.X < 0)
             {
                 errorPosition.X = -mousePositionRelativeToTexture.X;
@@ -661,35 +665,35 @@ namespace Alis.App.Engine.Windows
                 errorPosition.Y = mousePositionRelativeToTexture.Y - textureSize.Y;
                 Console.WriteLine($"Error Position Y: {errorPosition.Y}");
             }
-            
+
             if (mousePositionRelativeToTexture.Y < 0)
             {
                 errorPosition.Y = -mousePositionRelativeToTexture.Y;
                 Console.WriteLine($"Error Position Y: {errorPosition.Y}");
             }
-            
+
             Vector2F mousePositionRelativeToTextureAdjusted = mousePositionRelativeToTexture - errorPosition;
-           
+
             // Delete the decimal part of mousePositionRelativeToTextureAdjusted:
             mousePositionRelativeToTextureAdjusted.X = (float) Math.Floor(mousePositionRelativeToTextureAdjusted.X);
             mousePositionRelativeToTextureAdjusted.Y = (float) Math.Floor(mousePositionRelativeToTextureAdjusted.Y);
-            
+
             Console.WriteLine($"Mouse Position Relative To Texture Adjusted: {mousePositionRelativeToTextureAdjusted.X}, {mousePositionRelativeToTextureAdjusted.Y}");
-            
+
             // Calculate the mouse position thinking that the center of the texture is the origin (0,0)
             Vector2F mousePositionRelativeToTextureCentered = new Vector2F(0, 0);
             mousePositionRelativeToTextureCentered.X = mousePositionRelativeToTextureAdjusted.X - textureSize.X / 2;
             mousePositionRelativeToTextureCentered.Y = mousePositionRelativeToTextureAdjusted.Y - textureSize.Y / 2;
-            
+
             Console.WriteLine($"Mouse Position Relative To Texture Centered: {mousePositionRelativeToTextureCentered.X}, {mousePositionRelativeToTextureCentered.Y}");
 
             Vector2F worldPos = SpaceWork.VideoGame.Context.GraphicManager.ScreenToWorld(mousePositionRelativeToTextureCentered, textureSize);
-            
+
             return worldPos;
         }
-        
+
         /// <summary>
-        /// Finds the game object under mouse using the specified mouse pos
+        ///     Finds the game object under mouse using the specified mouse pos
         /// </summary>
         /// <param name="mousePos">The mouse pos</param>
         /// <returns>The game object</returns>
@@ -704,11 +708,12 @@ namespace Alis.App.Engine.Windows
                     return gameObject;
                 }
             }
+
             return null;
         }
 
         /// <summary>
-        /// Gets the game object bounds using the specified game object
+        ///     Gets the game object bounds using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
         /// <returns>The rectangle</returns>
@@ -718,21 +723,21 @@ namespace Alis.App.Engine.Windows
             Vector2F position = gameObject.Transform.Position;
             Vector2F scale = gameObject.Transform.Scale;
             return new RectangleF(
-                position.X - scale.X / 2, 
-                position.Y - scale.Y / 2, 
-                scale.X, 
+                position.X - scale.X / 2,
+                position.Y - scale.Y / 2,
+                scale.X,
                 scale.Y
             );
         }
 
         /// <summary>
-        /// Draws the selection rectangle using the specified game object
+        ///     Draws the selection rectangle using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
         private void DrawSelectionRectangle(GameObject gameObject)
         {
             // CHECK IF OBJECT EXISTS
-            if(!gameObject.Context.SceneManager.CurrentScene.GameObjects.Exists(x => x.Name == "Preview Selection"))
+            if (!gameObject.Context.SceneManager.CurrentScene.GameObjects.Exists(x => x.Name == "Preview Selection"))
             {
                 // Create a new GameObject with a collider component of the same size as the selected GameObject
                 GameObject selectionRectangle = new GameObject().Builder()
@@ -751,29 +756,29 @@ namespace Alis.App.Engine.Windows
                         .FixedRotation(true)
                         .Build())
                     .Build();
-                
+
                 // Add the GameObject to the scene
                 gameObject.Context.SceneManager.CurrentScene.Add(selectionRectangle);
                 gameObject.Context.SceneManager.CurrentScene.OnProcessPendingChanges();
-            }else
+            }
+            else
             {
                 // Update the position and scale of the selection rectangle
                 GameObject selectionRectangle = gameObject.Context.SceneManager.CurrentScene.GameObjects.Find(x => x.Name == "Preview Selection");
                 selectionRectangle.Get<BoxCollider>().Body.Position = gameObject.Transform.Position;
                 selectionRectangle.Get<BoxCollider>().Body.Rotation = gameObject.Transform.Rotation;
             }
-            
         }
 
         /// <summary>
-        /// Handles the object manipulation
+        ///     Handles the object manipulation
         /// </summary>
         private void HandleObjectManipulation()
         {
             ImGuiIoPtr io = ImGui.GetIo();
             Vector2F mousePos = GetMouseWorldPosition();
 
-            if (ImGui.IsMouseDragging(0) && selectedGameObject != null)
+            if (ImGui.IsMouseDragging(0) && (selectedGameObject != null))
             {
                 Vector2F delta = io.MouseDelta;
                 Transform transform = selectedGameObject.Transform;

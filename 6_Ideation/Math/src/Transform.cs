@@ -98,12 +98,9 @@ namespace Alis.Core.Aspect.Math
         }
 
         /// <summary>
-        /// Clones this instance
+        ///     Clones this instance
         /// </summary>
         /// <returns>The object</returns>
-        public object Clone()
-        {
-            return new Transform(Position, Rotation, Scale);
-        }
+        public object Clone() => new Transform(Position, Rotation, Scale);
     }
 }

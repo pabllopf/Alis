@@ -32,51 +32,48 @@ using Alis.App.Hub.Core;
 namespace Alis.App.Hub.Controllers
 {
     /// <summary>
-    /// The controller class
+    ///     The controller class
     /// </summary>
     public abstract class AController
     {
         /// <summary>
-        /// Gets the value of the space work
-        /// </summary>
-        public SpaceWork SpaceWork {get;}
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AController"/> class
+        ///     Initializes a new instance of the <see cref="AController" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
-        public AController(SpaceWork spaceWork)
-        {
-            SpaceWork = spaceWork;
-        }
-        
+        public AController(SpaceWork spaceWork) => SpaceWork = spaceWork;
+
         /// <summary>
-        /// Ons the init
+        ///     Gets the value of the space work
+        /// </summary>
+        public SpaceWork SpaceWork { get; }
+
+        /// <summary>
+        ///     Ons the init
         /// </summary>
         public abstract void OnInit();
-        
+
         /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
         public abstract void OnStart();
-        
+
         /// <summary>
-        /// Ons the start render
+        ///     Ons the start render
         /// </summary>
         public abstract void OnStartRender();
-        
+
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public abstract void OnUpdate();
-        
+
         /// <summary>
-        /// Ons the end render
+        ///     Ons the end render
         /// </summary>
         public abstract void OnEndRender();
-        
+
         /// <summary>
-        /// Ons the destroy
+        ///     Ons the destroy
         /// </summary>
         public abstract void OnDestroy();
     }

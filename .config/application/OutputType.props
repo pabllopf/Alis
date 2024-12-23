@@ -23,5 +23,5 @@
     $(AssemblyName.Contains('Sample')) == false">
         <OutputType>Library</OutputType>
     </PropertyGroup>
-    
+
 </Project>

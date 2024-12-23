@@ -1,7 +1,37 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ProjectsSection.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Alis.App.Engine.Fonts;
@@ -15,37 +45,46 @@ using Alis.Extension.Graphic.ImGui.Native;
 namespace Alis.App.Hub.Windows.Sections
 {
     /// <summary>
-    /// The projects section class
+    ///     The projects section class
     /// </summary>
-    /// <seealso cref="ASection"/>
+    /// <seealso cref="ASection" />
     public class ProjectsSection : ASection
     {
+#if DEBUG
         /// <summary>
-        /// The selected project index
+        ///     The project
         /// </summary>
-        private int selectedProjectIndex = -1;
-        /// <summary>
-        /// The empty
-        /// </summary>
-        private string searchQuery = string.Empty;
-
-        /// <summary>
-        /// The project
-        /// </summary>
-        private readonly List<Project> projects = new List<Project>
+        private List<Project> projects = new List<Project>
         {
-            new Project("MacOS Project", "/Users/pabllopf/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", "NOT CONNECTED", "3 days ago", "0.4.5"),
-            new Project("MacOS Project (latest)", "/Users/pabllopf/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", "NOT CONNECTED", "3 days ago", "latest"),
-            new Project("Windows Project", "C:/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", "NOT CONNECTED", "5 minutes ago", "0.4.4")
+            new Project("MacOS Project", "/Users/pabllopf/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", "NOT CONNECTED", "3 days ago", "v0.5.0"),
+            new Project("MacOS Project (latest)", "/Users/pabllopf/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", "NOT CONNECTED", "3 days ago", $"v{Assembly.GetExecutingAssembly().GetName().Version!.ToString().TrimEnd('0').TrimEnd('.')}"),
+            new Project("Windows Project", "C:/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", "NOT CONNECTED", "5 minutes ago", "v0.4.9")
         };
+#else
+        /// <summary>
+        ///     The project
+        /// </summary>
+        private List<Project> projects = new List<Project>();
+#endif
+     
 
         /// <summary>
-        /// The conmand ptr
+        ///     The conmand ptr
         /// </summary>
         private IntPtr conmandPtr;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ProjectsSection"/> class
+        ///     The empty
+        /// </summary>
+        private string searchQuery = string.Empty;
+
+        /// <summary>
+        ///     The selected project index
+        /// </summary>
+        private int selectedProjectIndex = -1;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ProjectsSection" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
         public ProjectsSection(SpaceWork spaceWork) : base(spaceWork)
@@ -53,7 +92,7 @@ namespace Alis.App.Hub.Windows.Sections
         }
 
         /// <summary>
-        /// Opens the project using the specified project
+        ///     Opens the project using the specified project
         /// </summary>
         /// <param name="project">The project</param>
         private void OpenProject(Project project)
@@ -84,7 +123,7 @@ namespace Alis.App.Hub.Windows.Sections
         }
 
         /// <summary>
-        /// Gets the engine path using the specified editor version
+        ///     Gets the engine path using the specified editor version
         /// </summary>
         /// <param name="editorVersion">The editor version</param>
         /// <returns>The engine path</returns>
@@ -102,7 +141,7 @@ namespace Alis.App.Hub.Windows.Sections
         }
 
         /// <summary>
-        /// Reveals the in finder using the specified path
+        ///     Reveals the in finder using the specified path
         /// </summary>
         /// <param name="path">The path</param>
         private void RevealInFinder(string path)
@@ -111,7 +150,7 @@ namespace Alis.App.Hub.Windows.Sections
         }
 
         /// <summary>
-        /// Opens the in terminal using the specified path
+        ///     Opens the in terminal using the specified path
         /// </summary>
         /// <param name="path">The path</param>
         private void OpenInTerminal(string path)
@@ -120,28 +159,28 @@ namespace Alis.App.Hub.Windows.Sections
         }
 
         /// <summary>
-        /// Ons the init
+        ///     Ons the init
         /// </summary>
         public override void OnInit()
         {
         }
 
         /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
         public override void OnStart()
         {
         }
 
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public override void OnUpdate()
         {
         }
 
         /// <summary>
-        /// Ons the render
+        ///     Ons the render
         /// </summary>
         public override void OnRender()
         {
@@ -168,7 +207,7 @@ namespace Alis.App.Hub.Windows.Sections
         }
 
         /// <summary>
-        /// Renders the search bar using the specified button width
+        ///     Renders the search bar using the specified button width
         /// </summary>
         /// <param name="buttonWidth">The button width</param>
         /// <param name="elementHeight">The element height</param>
@@ -203,7 +242,7 @@ namespace Alis.App.Hub.Windows.Sections
         }
 
         /// <summary>
-        /// Renders the buttons using the specified button width
+        ///     Renders the buttons using the specified button width
         /// </summary>
         /// <param name="buttonWidth">The button width</param>
         /// <param name="elementHeight">The element height</param>
@@ -232,7 +271,7 @@ namespace Alis.App.Hub.Windows.Sections
         }
 
         /// <summary>
-        /// Renders the project table using the specified element height
+        ///     Renders the project table using the specified element height
         /// </summary>
         /// <param name="elementHeight">The element height</param>
         private void RenderProjectTable(float elementHeight)
@@ -255,7 +294,7 @@ namespace Alis.App.Hub.Windows.Sections
         }
 
         /// <summary>
-        /// Renders the project row using the specified index
+        ///     Renders the project row using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         /// <param name="elementHeight">The element height</param>
@@ -304,7 +343,7 @@ namespace Alis.App.Hub.Windows.Sections
         }
 
         /// <summary>
-        /// Renders the context menu using the specified project
+        ///     Renders the context menu using the specified project
         /// </summary>
         /// <param name="project">The project</param>
         /// <param name="index">The index</param>
@@ -329,7 +368,7 @@ namespace Alis.App.Hub.Windows.Sections
         }
 
         /// <summary>
-        /// Ons the destroy
+        ///     Ons the destroy
         /// </summary>
         public override void OnDestroy()
         {

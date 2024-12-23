@@ -32,19 +32,19 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
-using Alis.Core.Ecs.Entity;
-using Alis.Extension.Graphic.ImGui.Native;
-using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Component.Audio;
 using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Light;
 using Alis.Core.Ecs.Component.Render;
+using Alis.Core.Ecs.Entity;
 using Alis.Extension.Graphic.ImGui;
+using Alis.Extension.Graphic.ImGui.Native;
 
 namespace Alis.App.Engine.Windows
 {
@@ -55,14 +55,57 @@ namespace Alis.App.Engine.Windows
     public class InspectorWindow : IWindow
     {
         /// <summary>
-        /// The info circle
+        ///     The info circle
         /// </summary>
         private static readonly string NameWindow = $"{FontAwesome5.InfoCircle} Inspector";
 
+        // Define a dictionary to map component types to icons
         /// <summary>
-        /// The selected game object
+        ///     The play
+        /// </summary>
+        private readonly Dictionary<Type, string> _componentIcons = new Dictionary<Type, string>
+        {
+            {typeof(Sprite), FontAwesome5.PaintBrush},
+            {typeof(Animator), FontAwesome5.ShieldAlt},
+            {typeof(BoxCollider), FontAwesome5.ShieldAlt},
+            {typeof(Camera), FontAwesome5.Camera},
+            {typeof(DirectionalLight), FontAwesome5.Lightbulb},
+            {typeof(AudioSource), FontAwesome5.VolumeUp},
+            {typeof(Animation), FontAwesome5.Play},
+            {typeof(PointLight), FontAwesome5.Lightbulb},
+            {typeof(SpotLight), FontAwesome5.Lightbulb},
+            {typeof(AreaLight), FontAwesome5.Lightbulb}
+        };
+
+        /// <summary>
+        ///     The tags
+        /// </summary>
+        private readonly string[] tags = {"Player", "Enemy", "NPC", "Item"};
+
+        /// <summary>
+        ///     The selected game object
         /// </summary>
         private GameObject _selectedGameObject;
+
+        /// <summary>
+        ///     The zero
+        /// </summary>
+        private IntPtr commandBufferName = IntPtr.Zero;
+
+        /// <summary>
+        ///     The zero
+        /// </summary>
+        private IntPtr commandBufferTag = IntPtr.Zero;
+
+        /// <summary>
+        ///     The search query
+        /// </summary>
+        private string searchQuery = "";
+
+        /// <summary>
+        ///     The zero
+        /// </summary>
+        private IntPtr searchQueryComand = IntPtr.Zero;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="InspectorWindow" /> class
@@ -70,26 +113,8 @@ namespace Alis.App.Engine.Windows
         /// <param name="spaceWork">The space work</param>
         public InspectorWindow(SpaceWork spaceWork) => SpaceWork = spaceWork;
 
-        // Define a dictionary to map component types to icons
         /// <summary>
-        /// The play
-        /// </summary>
-        private readonly Dictionary<Type, string> _componentIcons = new Dictionary<Type, string>
-        {
-            { typeof(Sprite), FontAwesome5.PaintBrush },
-            { typeof(Animator), FontAwesome5.ShieldAlt },
-            { typeof(BoxCollider), FontAwesome5.ShieldAlt },
-            { typeof(Camera), FontAwesome5.Camera },
-            { typeof(DirectionalLight), FontAwesome5.Lightbulb },
-            { typeof(AudioSource), FontAwesome5.VolumeUp },
-            { typeof(Animation), FontAwesome5.Play},
-            { typeof(PointLight), FontAwesome5.Lightbulb},
-            { typeof(SpotLight), FontAwesome5.Lightbulb},
-            { typeof(AreaLight), FontAwesome5.Lightbulb},
-        };
-        
-        /// <summary>
-        /// Initializes this instance
+        ///     Initializes this instance
         /// </summary>
         public void Initialize()
         {
@@ -113,28 +138,25 @@ namespace Alis.App.Engine.Windows
             if (_selectedGameObject != null)
             {
                 RenderHeader();
-                
+
                 RenderTransform();
 
                 RenderComponents();
-                
+
                 RenderAddComponentButton();
             }
 
             ImGui.End();
         }
 
+
         /// <summary>
-        /// The zero
+        ///     Gets the value of the space work
         /// </summary>
-        IntPtr searchQueryComand = IntPtr.Zero;
+        public SpaceWork SpaceWork { get; }
+
         /// <summary>
-        /// The search query
-        /// </summary>
-        string searchQuery = "";
-        
-        /// <summary>
-        /// Renders the add component button
+        ///     Renders the add component button
         /// </summary>
         [RequiresUnreferencedCode("Calls System.Reflection.Assembly.GetTypes()")]
         private void RenderAddComponentButton()
@@ -143,30 +165,30 @@ namespace Alis.App.Engine.Windows
             {
                 ShowAddComponentPopup();
             }
-            
+
             // Obtener todos los tipos de componentes en el namespace Alis.xxx
             Assembly assembly = Assembly.GetAssembly(typeof(AComponent))!;
             Type[] allTypes = assembly.GetTypes();
             IEnumerable<Type> componentSubclasses = allTypes.Where(t => t.IsSubclassOf(typeof(AComponent)));
             List<Type> componentTypes = componentSubclasses
-                .Where(t => t.Namespace != null && t.IsClass && !t.IsAbstract && t.Namespace.StartsWith("Alis"))
+                .Where(t => (t.Namespace != null) && t.IsClass && !t.IsAbstract && t.Namespace.StartsWith("Alis"))
                 .ToList();
-            
+
             // Agrupar componentes por namespace
             IOrderedEnumerable<IGrouping<string, Type>> groupedComponents = componentTypes
                 .GroupBy(t => t.Namespace)
                 .OrderBy(g => g.Key);
 
-            ImGui.SetNextWindowSize(new Vector2F(ImGui.GetWindowWidth(), (groupedComponents.Count() * 30) + 90));
+            ImGui.SetNextWindowSize(new Vector2F(ImGui.GetWindowWidth(), groupedComponents.Count() * 30 + 90));
             if (ImGui.BeginPopup("AddComponentPopup"))
             {
                 // Campo de búsqueda
-                
+
                 searchQueryComand = Marshal.StringToHGlobalAnsi(searchQuery);
                 ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X - 30);
-                ImGui.InputText($"{FontAwesome5.Search}##Search components",  searchQueryComand, 256);
+                ImGui.InputText($"{FontAwesome5.Search}##Search components", searchQueryComand, 256);
                 searchQuery = Marshal.PtrToStringAnsi(searchQueryComand);
-                
+
                 // Filtrar componentes según la búsqueda
                 if (!string.IsNullOrEmpty(searchQuery))
                 {
@@ -174,8 +196,8 @@ namespace Alis.App.Engine.Windows
                         .Where(t => t.Name.Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
                         .ToList();
                 }
-                
-                
+
+
                 foreach (var group in groupedComponents)
                 {
                     if (ImGui.CollapsingHeader(group.Key))
@@ -195,7 +217,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// Shows the add component popup
+        ///     Shows the add component popup
         /// </summary>
         private void ShowAddComponentPopup()
         {
@@ -204,7 +226,7 @@ namespace Alis.App.Engine.Windows
 
 
         /// <summary>
-        /// Adds a component to the selected game object
+        ///     Adds a component to the selected game object
         /// </summary>
         /// <param name="componentType">The component type</param>
         private void AddComponentToSelectedGameObject([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicParameterlessConstructor)] Type componentType)
@@ -219,21 +241,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// The zero
-        /// </summary>
-        private IntPtr commandBufferName = IntPtr.Zero;
-        /// <summary>
-        /// The zero
-        /// </summary>
-        private IntPtr commandBufferTag = IntPtr.Zero;
-        
-        /// <summary>
-        /// The tags
-        /// </summary>
-        private string[] tags = { "Player", "Enemy", "NPC", "Item" };
-        
-        /// <summary>
-        /// Renderiza la sección superior del inspector con el nombre y el tag del objeto.
+        ///     Renderiza la sección superior del inspector con el nombre y el tag del objeto.
         /// </summary>
         private void RenderHeader()
         {
@@ -251,27 +259,27 @@ namespace Alis.App.Engine.Windows
                 ImGui.PopFont();
 
                 ImGui.SameLine();
-                
+
                 // check if iseneable:
                 bool isEnable = _selectedGameObject.IsEnable;
                 ImGui.SetCursorPosY(ImGui.GetCursorPosY() - 3); // Adjust the Y position
                 ImGui.Checkbox($"##{_selectedGameObject.Name} isEnable", ref isEnable);
                 _selectedGameObject.IsEnable = isEnable;
-                
+
                 ImGui.SameLine();
-                
+
                 // name of the object
                 commandBufferName = Marshal.StringToHGlobalAnsi(_selectedGameObject.Name);
                 ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
                 ImGui.SetCursorPosY(ImGui.GetCursorPosY() - 3); // Adjust the Y position
-                if (ImGui.InputText("##Name",  commandBufferName, 256))
+                if (ImGui.InputText("##Name", commandBufferName, 256))
                 {
                     _selectedGameObject.Name = Marshal.PtrToStringAnsi(commandBufferName);
                 }
-            
+
                 ImGui.SetCursorPosY(ImGui.GetCursorPosY() - 3); // Adjust the Y position
                 ImGui.Separator();
-            
+
                 // Show Tag and Layer of the object
                 ImGui.AlignTextToFramePadding();
                 ImGui.Text("Tag:");
@@ -291,7 +299,7 @@ namespace Alis.App.Engine.Windows
                 ImGui.Text("Layer:");
                 ImGui.SameLine();
 
-                string[] layers = { "Default", "UI", "Background", "Foreground" }; // List of possible layers
+                string[] layers = {"Default", "UI", "Background", "Foreground"}; // List of possible layers
                 int currentLayerIndex = Array.IndexOf(layers, _selectedGameObject.Layer);
                 string itemsSeparatedByZerosLayers = string.Join("\0", layers);
                 ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
@@ -300,45 +308,50 @@ namespace Alis.App.Engine.Windows
                     _selectedGameObject.Layer = layers[currentLayerIndex];
                 }
             }
+
             ImGui.EndChild();
         }
 
         /// <summary>
-        /// Renders the transform
+        ///     Renders the transform
         /// </summary>
         private void RenderTransform()
         {
             // Transform
             if (ImGui.CollapsingHeader($"{FontAwesome5.Compass} Transform", ImGuiTreeNodeFlags.DefaultOpen))
             {
-                if(ImGui.BeginChild("##Transform", new Vector2F(ImGui.GetContentRegionAvail().X, 105), true, ImGuiWindowFlags.NoCollapse))
+                if (ImGui.BeginChild("##Transform", new Vector2F(ImGui.GetContentRegionAvail().X, 105), true, ImGuiWindowFlags.NoCollapse))
                 {
                     ImGui.AlignTextToFramePadding();
-                    ImGui.Text("Position"); ImGui.SameLine(80);
+                    ImGui.Text("Position");
+                    ImGui.SameLine(80);
                     Vector2F position = _selectedGameObject.Transform.Position;
                     ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
-                    ImGui.DragFloat2("##Position", ref position , 0.1f, -1000, 1000, "%.2f", ImGuiSliderFlags.AlwaysClamp);
+                    ImGui.DragFloat2("##Position", ref position, 0.1f, -1000, 1000, "%.2f", ImGuiSliderFlags.AlwaysClamp);
 
                     ImGui.AlignTextToFramePadding();
-                    ImGui.Text("Rotation"); ImGui.SameLine(80);
+                    ImGui.Text("Rotation");
+                    ImGui.SameLine(80);
                     float rotation = _selectedGameObject.Transform.Rotation;
                     ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
                     ImGui.DragFloat("##Rotation", ref rotation, 0.1f, -360, 360, "%.2f", ImGuiSliderFlags.AlwaysClamp);
 
                     ImGui.AlignTextToFramePadding();
-                    ImGui.Text("Scale"); ImGui.SameLine(80);
+                    ImGui.Text("Scale");
+                    ImGui.SameLine(80);
                     Vector2F scale = _selectedGameObject.Transform.Scale;
                     ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
                     ImGui.DragFloat2("##Scale", ref scale, 0.1f, -1000, 1000, "%.2f", ImGuiSliderFlags.AlwaysClamp);
 
                     _selectedGameObject.Transform = new Transform(position, rotation, scale);
                 }
+
                 ImGui.EndChild();
             }
         }
 
         /// <summary>
-        /// Renders the components
+        ///     Renders the components
         /// </summary>
         private void RenderComponents()
         {
@@ -382,14 +395,8 @@ namespace Alis.App.Engine.Windows
             }
         }
 
-        
         /// <summary>
-        ///     Gets the value of the space work
-        /// </summary>
-        public SpaceWork SpaceWork { get; }
-
-        /// <summary>
-        /// Renders the component properties using the specified component
+        ///     Renders the component properties using the specified component
         /// </summary>
         /// <param name="component">The component</param>
         private void RenderComponentProperties(AComponent component)
@@ -414,7 +421,7 @@ namespace Alis.App.Engine.Windows
                     ImGui.SameLine(100); // Adjust the spacing as needed
 
                     ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X); // Adjust the width as needed
-                    
+
                     switch (value)
                     {
                         case float floatValue:
@@ -467,19 +474,19 @@ namespace Alis.App.Engine.Windows
 
                             break;
                         case byte byteValue:
-                            ImGui.DragScalar(propertyId, ImGuiDataType.U8,  byteValue, 1, byte.MinValue, byte.MaxValue, "%d", ImGuiSliderFlags.AlwaysClamp);
+                            ImGui.DragScalar(propertyId, ImGuiDataType.U8, byteValue, 1, byte.MinValue, byte.MaxValue, "%d", ImGuiSliderFlags.AlwaysClamp);
                             property.SetValue(component, byteValue);
                             break;
                         case sbyte sbyteValue:
-                            ImGui.DragScalar(propertyId, ImGuiDataType.S8,  sbyteValue, 1, sbyte.MinValue, sbyte.MaxValue, "%d", ImGuiSliderFlags.AlwaysClamp);
+                            ImGui.DragScalar(propertyId, ImGuiDataType.S8, sbyteValue, 1, sbyte.MinValue, sbyte.MaxValue, "%d", ImGuiSliderFlags.AlwaysClamp);
                             property.SetValue(component, sbyteValue);
                             break;
                         case short shortValue:
-                            ImGui.DragScalar(propertyId, ImGuiDataType.S16,  shortValue, 1, short.MinValue, short.MaxValue, "%d", ImGuiSliderFlags.AlwaysClamp);
+                            ImGui.DragScalar(propertyId, ImGuiDataType.S16, shortValue, 1, short.MinValue, short.MaxValue, "%d", ImGuiSliderFlags.AlwaysClamp);
                             property.SetValue(component, shortValue);
                             break;
                         case ushort ushortValue:
-                            ImGui.DragScalar(propertyId, ImGuiDataType.U16,  ushortValue, 1, ushort.MinValue, ushort.MaxValue, "%d", ImGuiSliderFlags.AlwaysClamp);
+                            ImGui.DragScalar(propertyId, ImGuiDataType.U16, ushortValue, 1, ushort.MinValue, ushort.MaxValue, "%d", ImGuiSliderFlags.AlwaysClamp);
                             property.SetValue(component, ushortValue);
                             break;
                     }
@@ -488,7 +495,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// Selects the game object using the specified game object
+        ///     Selects the game object using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public void SelectGameObject(GameObject gameObject)

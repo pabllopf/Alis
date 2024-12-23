@@ -41,13 +41,13 @@ using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 namespace Alis.App.Hub.Controllers
 {
     /// <summary>
-    /// The sdl controller class
+    ///     The sdl controller class
     /// </summary>
-    /// <seealso cref="AController"/>
+    /// <seealso cref="AController" />
     public class SdlController : AController
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SdlController"/> class
+        ///     Initializes a new instance of the <see cref="SdlController" /> class
         /// </summary>
         /// <param name="SpaceWork">The space work</param>
         public SdlController(SpaceWork SpaceWork) : base(SpaceWork)
@@ -55,7 +55,7 @@ namespace Alis.App.Hub.Controllers
         }
 
         /// <summary>
-        /// Ons the init
+        ///     Ons the init
         /// </summary>
         public override void OnInit()
         {
@@ -63,12 +63,12 @@ namespace Alis.App.Hub.Controllers
             {
                 Logger.Exception($@"Error of SDL2: {Sdl.GetError()}");
             }
-            
+
             Version version = Sdl.GetVersion();
             Logger.Info(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
 
             Sdl.SetHint(Hint.HintRenderDriver, "opengl");
-            
+
             Sdl.SetAttributeByInt(Attr.SdlGlContextFlags, (int) Contexts.SdlGlContextForwardCompatibleFlag);
             Sdl.SetAttributeByProfile(Attr.SdlGlContextProfileMask, Profiles.SdlGlContextProfileCore);
             Sdl.SetAttributeByInt(Attr.SdlGlContextMajorVersion, 4);
@@ -90,11 +90,10 @@ namespace Alis.App.Hub.Controllers
                 (int) WindowPos.WindowPosCentered,
                 (int) WindowPos.WindowPosCentered,
                 SpaceWork.WidthMainWindow, SpaceWork.HeightMainWindow, flags);
-
         }
 
         /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
         public override void OnStart()
         {
@@ -105,9 +104,9 @@ namespace Alis.App.Hub.Controllers
                 Sdl.SetWindowIcon(SpaceWork.WindowHub, icon);
             }
         }
-        
+
         /// <summary>
-        /// Ons the start render
+        ///     Ons the start render
         /// </summary>
         public override void OnStartRender()
         {
@@ -128,32 +127,29 @@ namespace Alis.App.Hub.Controllers
             {
                 SpaceWork.Io.DeltaTime = 0.016f;
             }
-            
+
             SpaceWork.Time = currentTime;
         }
-        
+
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public override void OnUpdate()
         {
-            
         }
 
         /// <summary>
-        /// Ons the end render
+        ///     Ons the end render
         /// </summary>
         public override void OnEndRender()
         {
-            
         }
 
         /// <summary>
-        /// Ons the destroy
+        ///     Ons the destroy
         /// </summary>
         public override void OnDestroy()
         {
-            
         }
     }
 }

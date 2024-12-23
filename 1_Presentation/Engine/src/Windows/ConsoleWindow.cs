@@ -45,7 +45,7 @@ namespace Alis.App.Engine.Windows
     public class ConsoleWindow : IWindow
     {
         /// <summary>
-        /// The terminal
+        ///     The terminal
         /// </summary>
         private static readonly string NameWindow = $"{FontAwesome5.Terminal} Console";
 
@@ -55,19 +55,20 @@ namespace Alis.App.Engine.Windows
         private readonly IntPtr commandPtr;
 
         /// <summary>
+        ///     The concurrent queue
+        /// </summary>
+        private readonly ConcurrentQueue<string> consoleOutputQueue = new ConcurrentQueue<string>();
+
+        /// <summary>
         ///     The no collapse
         /// </summary>
         private readonly ImGuiWindowFlags flags = ImGuiWindowFlags.NoCollapse;
-        
+
         /// <summary>
-        /// The concurrent queue
-        /// </summary>
-        private readonly ConcurrentQueue<string> consoleOutputQueue = new ConcurrentQueue<string>();
-        /// <summary>
-        /// The string writer
+        ///     The string writer
         /// </summary>
         private readonly StringWriter stringWriter = new StringWriter();
-        
+
         /// <summary>
         ///     The command
         /// </summary>
@@ -168,48 +169,50 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// Renders the console output
+        ///     Renders the console output
         /// </summary>
         private void RenderConsoleOutput()
         {
             ImGui.BeginChild("ScrollingRegion", ImGui.GetContentRegionAvail(), false, ImGuiWindowFlags.HorizontalScrollbar);
 
             string consoleOutput = stringWriter.ToString();
-            string[] consoleLines = consoleOutput.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+            string[] consoleLines = consoleOutput.Split(new[] {Environment.NewLine}, StringSplitOptions.None);
 
             foreach (string line in consoleLines)
             {
                 ImGui.PushId(line.GetHashCode());
-                
+
                 if (line.Contains("Trace:"))
                 {
                     ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(0.5f, 0.5f, 0.5f, 1.0f));
                 }
+
                 if (line.Contains("Info:"))
                 {
                     ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(0.0f, 1.0f, 0.0f, 1.0f));
                 }
-                
+
                 if (line.Contains("Log:") || line.Contains("Message:"))
                 {
                     ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(1.0f, 1.0f, 1.0f, 1.0f));
                 }
-                
+
                 if (line.Contains("Warning:", StringComparison.OrdinalIgnoreCase))
                 {
                     ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(1.0f, 1.0f, 0.0f, 1.0f));
                 }
-                
+
                 if (line.Contains("Error:", StringComparison.OrdinalIgnoreCase) || line.Contains("Exception:", StringComparison.OrdinalIgnoreCase))
                 {
                     ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(1.0f, 0.0f, 0.0f, 1.0f));
                 }
-                
-                if (!line.Contains("Trace:") && !line.Contains("Log:", StringComparison.OrdinalIgnoreCase) && !line.Contains("message", StringComparison.OrdinalIgnoreCase) && !line.Contains("Warning:", StringComparison.OrdinalIgnoreCase) && !line.Contains("Error:", StringComparison.OrdinalIgnoreCase) && !line.Contains("Exception:", StringComparison.OrdinalIgnoreCase) && !line.Contains("Info:"))
+
+                if (!line.Contains("Trace:") && !line.Contains("Log:", StringComparison.OrdinalIgnoreCase) && !line.Contains("message", StringComparison.OrdinalIgnoreCase) && !line.Contains("Warning:", StringComparison.OrdinalIgnoreCase) && !line.Contains("Error:", StringComparison.OrdinalIgnoreCase) && !line.Contains("Exception:", StringComparison.OrdinalIgnoreCase) &&
+                    !line.Contains("Info:"))
                 {
                     ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(1.0f, 1.0f, 1.0f, 1.0f));
                 }
-                
+
                 if (ImGui.Selectable(line, false, ImGuiSelectableFlags.AllowDoubleClick))
                 {
                     if (ImGui.IsMouseDoubleClicked(0))

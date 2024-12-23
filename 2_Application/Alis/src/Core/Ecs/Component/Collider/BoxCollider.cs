@@ -53,8 +53,77 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <summary>
         ///     The rectangle
         /// </summary>
-        [JsonIgnore]
-        private RectangleI rectangle;
+        [JsonIgnore] private RectangleI rectangle;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="BoxCollider" /> class
+        /// </summary>
+        public BoxCollider()
+        {
+            Width = 10;
+            Height = 10;
+            Rotation = 0;
+            RelativePosition = new Vector2F(0, 0);
+            AutoTilling = false;
+            BodyType = BodyType.Static;
+            Restitution = 0.5f;
+            Friction = 0.5f;
+            FixedRotation = false;
+            Mass = 1.0f;
+            IgnoreGravity = false;
+            LinearVelocity = new Vector2F(0, 0);
+            AngularVelocity = 0;
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="BoxCollider" /> class
+        /// </summary>
+        /// <param name="isTrigger">The is trigger</param>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="rotation">The rotation</param>
+        /// <param name="relativePosition">The relative position</param>
+        /// <param name="autoTilling">The auto tilling</param>
+        /// <param name="bodyType">The body type</param>
+        /// <param name="restitution">The restitution</param>
+        /// <param name="friction">The friction</param>
+        /// <param name="fixedRotation">The fixed rotation</param>
+        /// <param name="mass">The mass</param>
+        /// <param name="ignoreGravity">The ignore gravity</param>
+        /// <param name="linearVelocity">The linear velocity</param>
+        /// <param name="angularVelocity">The angular velocity</param>
+        [JsonConstructor]
+        public BoxCollider(
+            bool isTrigger,
+            float width,
+            float height,
+            float rotation,
+            Vector2F relativePosition,
+            bool autoTilling,
+            BodyType bodyType,
+            float restitution,
+            float friction,
+            bool fixedRotation,
+            float mass,
+            bool ignoreGravity,
+            Vector2F linearVelocity,
+            float angularVelocity)
+        {
+            IsTrigger = isTrigger;
+            Width = width;
+            Height = height;
+            Rotation = rotation;
+            RelativePosition = relativePosition;
+            AutoTilling = autoTilling;
+            BodyType = bodyType;
+            Restitution = restitution;
+            Friction = friction;
+            FixedRotation = fixedRotation;
+            Mass = mass;
+            IgnoreGravity = ignoreGravity;
+            LinearVelocity = linearVelocity;
+            AngularVelocity = angularVelocity;
+        }
 
         /// <summary>
         ///     Gets or sets the value of the is trigger
@@ -146,76 +215,6 @@ namespace Alis.Core.Ecs.Component.Collider
         [JsonPropertyName("_AngularVelocity_")]
         public float AngularVelocity { get; set; }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BoxCollider"/> class
-        /// </summary>
-        public BoxCollider()
-        {
-            Width = 10;
-            Height = 10;
-            Rotation = 0;
-            RelativePosition = new Vector2F(0, 0);
-            AutoTilling = false;
-            BodyType = BodyType.Static;
-            Restitution = 0.5f;
-            Friction = 0.5f;
-            FixedRotation = false;
-            Mass = 1.0f;
-            IgnoreGravity = false;
-            LinearVelocity = new Vector2F(0, 0);
-            AngularVelocity = 0;
-        }
-        
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BoxCollider"/> class
-        /// </summary>
-        /// <param name="isTrigger">The is trigger</param>
-        /// <param name="width">The width</param>
-        /// <param name="height">The height</param>
-        /// <param name="rotation">The rotation</param>
-        /// <param name="relativePosition">The relative position</param>
-        /// <param name="autoTilling">The auto tilling</param>
-        /// <param name="bodyType">The body type</param>
-        /// <param name="restitution">The restitution</param>
-        /// <param name="friction">The friction</param>
-        /// <param name="fixedRotation">The fixed rotation</param>
-        /// <param name="mass">The mass</param>
-        /// <param name="ignoreGravity">The ignore gravity</param>
-        /// <param name="linearVelocity">The linear velocity</param>
-        /// <param name="angularVelocity">The angular velocity</param>
-        [JsonConstructor]
-        public BoxCollider(
-            bool isTrigger,
-            float width,
-            float height,
-            float rotation,
-            Vector2F relativePosition,
-            bool autoTilling,
-            BodyType bodyType,
-            float restitution,
-            float friction,
-            bool fixedRotation,
-            float mass,
-            bool ignoreGravity,
-            Vector2F linearVelocity,
-            float angularVelocity)
-        {
-            IsTrigger = isTrigger;
-            Width = width;
-            Height = height;
-            Rotation = rotation;
-            RelativePosition = relativePosition;
-            AutoTilling = autoTilling;
-            BodyType = bodyType;
-            Restitution = restitution;
-            Friction = friction;
-            FixedRotation = fixedRotation;
-            Mass = mass;
-            IgnoreGravity = ignoreGravity;
-            LinearVelocity = linearVelocity;
-            AngularVelocity = angularVelocity;
-        }
-        
         /// <summary>
         ///     Builders this instance
         /// </summary>

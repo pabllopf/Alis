@@ -41,25 +41,25 @@ namespace Alis.Sample.Pong
     public class PlayerController : AComponent
     {
         /// <summary>
-        ///     The player id
-        /// </summary>
-        public int PlayerId { get; set; }
-
-        /// <summary>
         ///     The box collider
         /// </summary>
         private BoxCollider boxCollider;
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="PlayerController"/> class
+        ///     Initializes a new instance of the <see cref="PlayerController" /> class
         /// </summary>
-        public PlayerController() => this.PlayerId = 0;
-        
+        public PlayerController() => PlayerId = 0;
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="PlayerController" /> class
         /// </summary>
         /// <param name="playerId">The player id</param>
-        public PlayerController(int playerId) => this.PlayerId = playerId;
+        public PlayerController(int playerId) => PlayerId = playerId;
+
+        /// <summary>
+        ///     The player id
+        /// </summary>
+        public int PlayerId { get; set; }
 
         /// <summary>
         ///     Starts this instance

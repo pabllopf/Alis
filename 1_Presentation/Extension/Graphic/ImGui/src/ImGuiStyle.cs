@@ -513,7 +513,7 @@ namespace Alis.Extension.Graphic.ImGui
         public Vector4F Colors54 { get; set; }
 
         /// <summary>
-        /// The index out of range exception
+        ///     The index out of range exception
         /// </summary>
         public Vector4F this[int index]
         {

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:HubMenu.cs
+//  File:HubWindow.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -46,25 +46,20 @@ namespace Alis.App.Hub.Windows
     public class HubWindow : AWindow
     {
         /// <summary>
-        /// The community section
+        ///     The community section
         /// </summary>
         public readonly CommunitySection CommunitySection;
 
         /// <summary>
-        /// The projects section
-        /// </summary>
-        public readonly ProjectsSection ProjectsSection;
-
-        /// <summary>
-        /// The editor installation section
+        ///     The editor installation section
         /// </summary>
         public readonly EditorInstallationSection EditorInstallationSection;
 
         /// <summary>
-        /// The learn section
+        ///     The learn section
         /// </summary>
         public readonly LearnSection LearnSection;
-        
+
         /// <summary>
         ///     The gamepad
         /// </summary>
@@ -75,7 +70,12 @@ namespace Alis.App.Hub.Windows
             $"{FontAwesome5.Book} Learn",
             $"{FontAwesome5.Gamepad} Community"
         };
-        
+
+        /// <summary>
+        ///     The projects section
+        /// </summary>
+        public readonly ProjectsSection ProjectsSection;
+
         /// <summary>
         ///     The space work
         /// </summary>
@@ -85,7 +85,7 @@ namespace Alis.App.Hub.Windows
         ///     The selected menu item
         /// </summary>
         private int selectedMenuItem;
-        
+
         //private string searchQuery = " ";  // Variable para el buscador
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace Alis.App.Hub.Windows
         public HubWindow(SpaceWork spaceWork) : base(spaceWork)
         {
             this.spaceWork = spaceWork;
-            
+
             CommunitySection = new CommunitySection(spaceWork);
             ProjectsSection = new ProjectsSection(spaceWork);
             EditorInstallationSection = new EditorInstallationSection(spaceWork);
@@ -103,27 +103,36 @@ namespace Alis.App.Hub.Windows
         }
 
         /// <summary>
-        /// Ons the init
+        ///     Ons the init
         /// </summary>
         public override void OnInit()
         {
-            
+            ProjectsSection.OnInit();
+            EditorInstallationSection.OnInit();
+            LearnSection.OnInit();
+            CommunitySection.OnInit();
         }
 
         /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
         public override void OnStart()
         {
-            
+            ProjectsSection.OnStart();
+            EditorInstallationSection.OnStart();
+            LearnSection.OnStart();
+            CommunitySection.OnStart();
         }
 
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public override void OnUpdate()
         {
-           
+            ProjectsSection.OnUpdate();
+            EditorInstallationSection.OnUpdate();
+            LearnSection.OnUpdate();
+            CommunitySection.OnUpdate();
         }
 
         /// <summary>
@@ -176,7 +185,10 @@ namespace Alis.App.Hub.Windows
             ImGui.SetCursorPosY(screenSize.Y - 70);
             if (ImGui.Button($"{FontAwesome5.Cog} Preferences", new Vector2F(200, 40)))
             {
+                OpenPreferences();
             }
+            
+            RenderPreferences();
 
             ImGui.EndChild();
 
@@ -188,13 +200,58 @@ namespace Alis.App.Hub.Windows
             ImGui.End();
         }
 
+        private void RenderPreferences()
+        {
+            if(ImGui.BeginPopupModal("Preferences"))
+            {
+                ImGui.Text("Preferences");
+                ImGui.Separator();
+
+                ImGui.Text("Select your favorite color:");
+                
+                ImGui.Separator();
+
+                ImGui.Text("Select your favorite font:");
+                ImGui.Text("This is a sample text with the selected font.");
+
+                ImGui.Separator();
+
+                ImGui.Text("Select your favorite font size:");
+
+                ImGui.Separator();
+
+                ImGui.Text("Select your favorite font style:");
+
+                ImGui.Separator();
+
+                ImGui.Text("Select your favorite font color:");
+                
+                ImGui.Separator();
+
+                if (ImGui.Button("Close"))
+                {
+                    ImGui.CloseCurrentPopup();
+                }
+
+                ImGui.EndPopup();
+            }
+        }
+
+        private void OpenPreferences()
+        {
+            ImGui.OpenPopup("Preferences");
+        }
+
         /// <summary>
-        /// Ons the destroy
+        ///     Ons the destroy
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
         public override void OnDestroy()
         {
-            throw new NotImplementedException();
+            ProjectsSection.OnDestroy();
+            EditorInstallationSection.OnDestroy();
+            LearnSection.OnDestroy();
+            CommunitySection.OnDestroy();
         }
 
         /// <summary>
@@ -219,7 +276,7 @@ namespace Alis.App.Hub.Windows
                 ImGui.PopStyleVar(3); // Restaurar ItemSpacing y FrameRounding
             }
         }
-        
+
         /// <summary>
         ///     Renders the main content
         /// </summary>
@@ -244,8 +301,5 @@ namespace Alis.App.Hub.Windows
 
             ImGui.PopStyleColor();
         }
-
-       
-        
     }
 }
