@@ -392,6 +392,9 @@ namespace Alis.App.Hub.Windows.Sections
                 ImGui.TableSetupColumn("EDITOR VERSION", ImGuiTableColumnFlags.WidthFixed, 150);
                 ImGui.TableHeadersRow();
 
+                //order projects by name:
+                projects = projects.OrderBy(p => p.Name).ToList();
+                
                 for (int i = 0; i < projects.Count; i++)
                 {
                     RenderProjectRow(i, elementHeight);
