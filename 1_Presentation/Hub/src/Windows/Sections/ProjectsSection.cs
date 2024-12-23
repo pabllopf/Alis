@@ -31,12 +31,14 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Alis.App.Engine.Fonts;
 using Alis.App.Hub.Core;
 using Alis.App.Hub.Entity;
+using Alis.App.Hub.Utils;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.ImGui;
@@ -64,9 +66,13 @@ namespace Alis.App.Hub.Windows.Sections
         /// <summary>
         ///     The project
         /// </summary>
-        private List<Project> projects = new List<Project>();
+        private List<Project> projects = new List<Project>
+        {
+            new Project("MacOS Project (latest)", "/Users/pabllopf/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", "NOT CONNECTED", "3 days ago", $"v{Assembly.GetExecutingAssembly().GetName().Version!.ToString().TrimEnd('0').TrimEnd('.')}"),
+            new Project("Windows Project", "C:/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", "NOT CONNECTED", "5 minutes ago", "v0.5.0")
+        };
 #endif
-     
+
 
         /// <summary>
         ///     The conmand ptr
@@ -84,11 +90,17 @@ namespace Alis.App.Hub.Windows.Sections
         private int selectedProjectIndex = -1;
 
         /// <summary>
+        /// The show create project popup
+        /// </summary>
+        private bool showCreateProjectPopup = false;
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="ProjectsSection" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
         public ProjectsSection(SpaceWork spaceWork) : base(spaceWork)
         {
+            fileBrowser = new FileBrowser(spaceWork);
         }
 
         /// <summary>
@@ -132,7 +144,7 @@ namespace Alis.App.Hub.Windows.Sections
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
             string editorPath = Path.Combine(basePath, "Editor", editorVersion);
             string searchPattern = OperatingSystem.IsWindows() ? "Alis.App.Engine.exe" : "Alis.App.Engine";
-            
+
             string[] files = Directory.GetFiles(editorPath, searchPattern, SearchOption.AllDirectories);
             if (files.Length == 0)
             {
@@ -254,8 +266,10 @@ namespace Alis.App.Hub.Windows.Sections
             ImGui.SetCursorPosY(ImGui.GetCursorPosY() - verticalOffset);
             if (ImGui.Button("Create", new Vector2F(buttonWidth, elementHeight)))
             {
-                // Action for "Create"
+                CreateProject();
             }
+
+            RenderCreateProjectPopup();
 
             ImGui.SameLine();
             ImGui.SetCursorPosY(ImGui.GetCursorPosY() - verticalOffset);
@@ -272,6 +286,98 @@ namespace Alis.App.Hub.Windows.Sections
             }
         }
 
+        /// <summary>
+        /// Creates the project
+        /// </summary>
+        private void CreateProject()
+        {
+            ImGui.OpenPopup("New Project");
+        }
+
+        /// <summary>
+        /// The zero
+        /// </summary>
+        private IntPtr conmandPtrProjectName = IntPtr.Zero;
+
+        /// <summary>
+        /// The empty
+        /// </summary>
+        private string projectName = string.Empty;
+
+        /// <summary>
+        /// The zero
+        /// </summary>
+        private IntPtr conmandPtrProjectPath = IntPtr.Zero;
+
+        /// <summary>
+        /// The empty
+        /// </summary>
+        private string projectPath = string.Empty;
+
+        /// <summary>
+        /// The zero
+        /// </summary>
+        private IntPtr conmandPtrEditorVersion = IntPtr.Zero;
+
+        /// <summary>
+        /// The empty
+        /// </summary>
+        private string editorVersion = string.Empty;
+
+        private FileBrowser fileBrowser;
+
+        /// <summary>
+        /// Renders the create project popup
+        /// </summary>
+        private void RenderCreateProjectPopup()
+        {
+            ImGui.SetNextWindowSize(new Vector2F(600, 350));
+            ImGui.SetNextWindowPos(new Vector2F(ImGui.GetIo().DisplaySize.X / 2 - 300, ImGui.GetIo().DisplaySize.Y / 2 - 175));
+            if (ImGui.BeginPopupModal("New Project", ref showCreateProjectPopup, ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove))
+            {
+                ImGui.Text("Project Name:");
+                conmandPtrProjectName = Marshal.StringToHGlobalAnsi(projectName);
+                ImGui.InputText("##ProjectName", conmandPtrProjectName, 100);
+                projectName = Marshal.PtrToStringAnsi(conmandPtrProjectName);
+
+                ImGui.Text("Project Path:");
+                conmandPtrProjectPath = Marshal.StringToHGlobalAnsi(projectPath);
+                ImGui.InputText("##ProjectPath", conmandPtrProjectPath, 256);
+                projectPath = Marshal.PtrToStringAnsi(conmandPtrProjectPath);
+
+                ImGui.SameLine();
+
+                if (ImGui.Button($"{FontAwesome5.Folder}## Browse"))
+                {
+                    fileBrowser.OpenFileBrowser();
+                }
+
+                fileBrowser.OnRender();
+                
+
+                ImGui.Text("Editor Version:");
+                conmandPtrEditorVersion = Marshal.StringToHGlobalAnsi(editorVersion);
+                ImGui.InputText("##EditorVersion", conmandPtrEditorVersion, 50);
+                editorVersion = Marshal.PtrToStringAnsi(conmandPtrEditorVersion);
+
+                ImGui.Separator();
+
+                if (ImGui.Button("Create"))
+                {
+                    ImGui.CloseCurrentPopup();
+                }
+
+                ImGui.SameLine();
+
+                if (ImGui.Button("Cancel"))
+                {
+                    ImGui.CloseCurrentPopup();
+                }
+
+                ImGui.EndPopup();
+            }
+        }
+        
         /// <summary>
         ///     Renders the project table using the specified element height
         /// </summary>
