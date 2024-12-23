@@ -48,13 +48,25 @@ namespace Alis.App.Hub.Windows.Sections
     /// <seealso cref="ASection" />
     public class EditorInstallationSection : ASection
     {
+        /// <summary>
+        /// The selected version index
+        /// </summary>
         private int selectedVersionIndex = 0;
         
         // Example dropdown for selecting version
+        /// <summary>
+        /// The empty
+        /// </summary>
         private string[] versions = Array.Empty<string>();
         
+        /// <summary>
+        /// The is visible
+        /// </summary>
         public bool IsVisible = false;
         
+        /// <summary>
+        /// The installed version
+        /// </summary>
         private List<InstalledVersion> installedVersions = new List<InstalledVersion>();
         
         /// <summary>
@@ -65,11 +77,17 @@ namespace Alis.App.Hub.Windows.Sections
         {
         }
 
+        /// <summary>
+        /// Installs the new version
+        /// </summary>
         private void InstallNewVersion()
         {
             ImGui.OpenPopup("Install_New_Version");
         }
 
+        /// <summary>
+        /// Renders the install new version popup
+        /// </summary>
         private void RenderInstallNewVersionPopup()
         {
             // Set size of the popup: 
@@ -119,6 +137,10 @@ namespace Alis.App.Hub.Windows.Sections
             }
         }
 
+        /// <summary>
+        /// Starts the installation using the specified version
+        /// </summary>
+        /// <param name="version">The version</param>
         private void StartInstallation(string version)
         {
             string installerPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Installer", "Alis.App.Installer");
@@ -178,6 +200,10 @@ namespace Alis.App.Hub.Windows.Sections
             versions = availableVersions.ToArray();
         }
 
+        /// <summary>
+        /// Fetches the available versions
+        /// </summary>
+        /// <returns>A task containing a list of string</returns>
         private async Task<List<string>> FetchAvailableVersionsAsync()
         {
             using (HttpClient client = new HttpClient())
@@ -200,6 +226,9 @@ namespace Alis.App.Hub.Windows.Sections
             }
         }
 
+        /// <summary>
+        /// Detects the installed versions
+        /// </summary>
         private void DetectInstalledVersions()
         {
             installedVersions = new List<InstalledVersion>();
@@ -214,6 +243,9 @@ namespace Alis.App.Hub.Windows.Sections
             }
         }
 
+        /// <summary>
+        /// Ons the start
+        /// </summary>
         public override void OnStart()
         {
             

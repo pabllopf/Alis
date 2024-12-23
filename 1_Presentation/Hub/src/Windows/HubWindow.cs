@@ -200,6 +200,9 @@ namespace Alis.App.Hub.Windows
             ImGui.End();
         }
 
+        /// <summary>
+        /// Renders the preferences
+        /// </summary>
         private void RenderPreferences()
         {
             if(ImGui.BeginPopupModal("Preferences"))
@@ -237,6 +240,9 @@ namespace Alis.App.Hub.Windows
             }
         }
 
+        /// <summary>
+        /// Opens the preferences
+        /// </summary>
         private void OpenPreferences()
         {
             ImGui.OpenPopup("Preferences");

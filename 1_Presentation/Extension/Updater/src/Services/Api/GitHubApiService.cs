@@ -66,6 +66,9 @@ namespace Alis.Extension.Updater.Services.Api
             return JsonSerializer.Deserialize<Dictionary<string, object>>(response);
         }
 
+        /// <summary>
+        /// Gets the value of the api url
+        /// </summary>
         public string apiUrl { get; }
     }
 }
