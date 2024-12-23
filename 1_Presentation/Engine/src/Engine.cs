@@ -34,7 +34,6 @@ using System.Runtime.InteropServices;
 using System.Text;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
-using Alis.App.Engine.Hub;
 using Alis.App.Engine.Shaders;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Data.Resource;
@@ -143,12 +142,7 @@ namespace Alis.App.Engine
         ///     The dockspaceflags
         /// </summary>
         private ImGuiWindowFlags dockspaceflags;
-
-        /// <summary>
-        ///     The hub menu
-        /// </summary>
-        private HubMenu hubMenu;
-
+        
         /// <summary>
         ///     The windows
         /// </summary>
@@ -467,10 +461,7 @@ namespace Alis.App.Engine
             }
 
             spaceWork.Start();
-
-            hubMenu = new HubMenu(spaceWork);
-
-
+            
             ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_default_config.ini"));
             
             while (!spaceWork._quit)

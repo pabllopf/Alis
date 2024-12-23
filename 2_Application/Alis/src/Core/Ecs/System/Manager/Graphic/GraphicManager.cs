@@ -141,10 +141,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// </summary>
         [JsonPropertyName("_Cameras_")]
         public List<Camera> Cameras { get; }
-
-        [JsonIgnore]
-        public bool HasGrid { get; set; } = false;
-
+        
         /// <summary>
         ///     Ons the enable
         /// </summary>
@@ -358,7 +355,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 }
                 
                 // If the grid is enabled, render it:
-                if (HasGrid)
+                if (Context.Setting.Graphic.HasGrid)
                 {
                     RenderGrid(renderer, cameraPosition, cameraResolution, pixelsPerMeter);
                 }

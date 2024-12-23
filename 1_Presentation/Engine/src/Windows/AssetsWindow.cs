@@ -32,14 +32,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 using Alis.App.Engine.Core;
-using Alis.App.Engine.Entity;
 using Alis.App.Engine.Fonts;
-using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Graphic.Sdl2;
-using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Native;
 
