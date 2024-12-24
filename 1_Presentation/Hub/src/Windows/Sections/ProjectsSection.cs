@@ -60,7 +60,7 @@ namespace Alis.App.Hub.Windows.Sections
         {
             new Project("MacOS Project", "/Users/pabllopf/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", "NOT CONNECTED", "3 days ago", "v0.5.0"),
             new Project("MacOS Project (latest)", "/Users/pabllopf/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", "NOT CONNECTED", "3 days ago", $"v{Assembly.GetExecutingAssembly().GetName().Version!.ToString().TrimEnd('0').TrimEnd('.')}"),
-            new Project("Windows Project", "C:/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", "NOT CONNECTED", "5 minutes ago", "v0.4.9")
+            new Project("Windows Project", "C:/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", "NOT CONNECTED", "5 minutes ago", $"v{Assembly.GetExecutingAssembly().GetName().Version!.ToString().TrimEnd('0').TrimEnd('.')}")
         };
 #else
         /// <summary>
@@ -150,7 +150,7 @@ namespace Alis.App.Hub.Windows.Sections
             {
                 throw new FileNotFoundException($"Engine executable not found in {editorPath}");
             }
-
+            
             return files[0];
         }
 
