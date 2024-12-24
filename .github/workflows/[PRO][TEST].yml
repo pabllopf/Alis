@@ -26,6 +26,9 @@ jobs:
             8.0.202
             9.x.x
 
+      - name: workloads
+        run: dotnet workload install wasm-tools android ios maccatalyst tvos macos maui
+
       - name: install
         run: |
           brew install sdl2 sdl2_image sdl2_ttf ffmpeg
@@ -62,6 +65,9 @@ jobs:
             7.0.408
             8.0.202
             9.x.x
+            
+      - name: workloads
+        run: dotnet workload install wasm-tools android ios maccatalyst tvos macos maui
 
       - name: install
         run: |
@@ -99,6 +105,9 @@ jobs:
             7.0.408
             8.0.202
             9.x.x
+
+      - name: workloads
+        run: dotnet workload install wasm-tools android ios maccatalyst tvos macos maui
 
       - name: install
         run: |
