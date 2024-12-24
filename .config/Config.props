@@ -20,8 +20,6 @@
         <RuntimeIdentifiers Condition="'$(TargetFramework)' == 'net6.0' OR '$(TargetFramework)' == 'net7.0' OR '$(TargetFramework)' == 'net8.0' OR '$(TargetFramework)' == 'net9.0' OR '$(TargetFramework)' == 'netstandard2.0' OR '$(TargetFramework)' == 'netstandard2.1'">
             $(RuntimeIdentifiers)linux-arm;linux-arm64;osx-arm64;linux-musl-arm;linux-musl-arm64;win-arm64;
         </RuntimeIdentifiers>
-
-        <PublishTrimmed>false</PublishTrimmed>
     </PropertyGroup>
 
     <!-- Import all the props files in the application folder -->
