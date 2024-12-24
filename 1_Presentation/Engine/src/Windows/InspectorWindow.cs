@@ -124,7 +124,13 @@ namespace Alis.App.Engine.Windows
             ImGui.End();
         }
 
+        /// <summary>
+        /// The zero
+        /// </summary>
         IntPtr searchQueryComand = IntPtr.Zero;
+        /// <summary>
+        /// The search query
+        /// </summary>
         string searchQuery = "";
         
         /// <summary>

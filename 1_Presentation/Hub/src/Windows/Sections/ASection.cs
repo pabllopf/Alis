@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InstalledVersion.cs
+//  File:AWindow.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,37 +27,68 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.App.Hub.Windows
+using Alis.App.Hub.Core;
+
+namespace Alis.App.Hub.Windows.Sections
 {
     /// <summary>
-    /// The installed version class
+    /// The section class
     /// </summary>
-    public class InstalledVersion
+    /// <seealso cref="IRuntime"/>
+    public abstract class ASection : IRuntime
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="InstalledVersion"/> class
+        /// Gets or sets the value of the space work
         /// </summary>
-        /// <param name="version">The version</param>
-        /// <param name="releaseDate">The release date</param>
-        /// <param name="installPath">The install path</param>
-        public InstalledVersion(string version, string releaseDate, string installPath)
+        public SpaceWork SpaceWork { get; set; }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ASection"/> class
+        /// </summary>
+        /// <param name="spaceWork">The space work</param>
+        public ASection(SpaceWork spaceWork)
         {
-            Version = version;
-            ReleaseDate = releaseDate;
-            InstallPath = installPath;
+            SpaceWork = spaceWork;
         }
-
+        
         /// <summary>
-        /// Gets the value of the version
+        /// Gets or sets the value of the title
         /// </summary>
-        public string Version { get; }
+        public string Title { get; set; } = "Window";
+        
         /// <summary>
-        /// Gets the value of the release date
+        /// Gets or sets the value of the is open
         /// </summary>
-        public string ReleaseDate { get; }
+        public bool IsOpen { get; set; }
+        
         /// <summary>
-        /// Gets the value of the install path
+        /// Gets or sets the value of the is focused
         /// </summary>
-        public string InstallPath { get; }
+        public bool IsFocused { get; set; }
+        
+        /// <summary>
+        /// Ons the init
+        /// </summary>
+        public abstract void OnInit();
+        
+        /// <summary>
+        /// Ons the start
+        /// </summary>
+        public abstract void OnStart();
+        
+        /// <summary>
+        /// Ons the update
+        /// </summary>
+        public abstract void OnUpdate();
+        
+        /// <summary>
+        /// Ons the render
+        /// </summary>
+        public abstract void OnRender();
+        
+        /// <summary>
+        /// Ons the destroy
+        /// </summary>
+        public abstract void OnDestroy();
     }
 }

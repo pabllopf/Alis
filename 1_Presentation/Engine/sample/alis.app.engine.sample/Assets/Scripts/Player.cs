@@ -37,6 +37,9 @@ namespace Alis.App.Engine.Sample.Assets.Scripts
     /// </summary>
     public class Player : AComponent
     {
+        /// <summary>
+        /// Ons the awake
+        /// </summary>
         public override void OnAwake()
         {
             Console.WriteLine("Player awake");

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Engine.cs
+//  File:Gallery2.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,59 +27,53 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.App.Hub.Core;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Graphic.Sdl2;
-using Alis.Core.Graphic.Sdl2.Structs;
-using Alis.Extension.Graphic.ImGui.Native;
+using System;
+using System.Collections.Generic;
+using Alis.Core.Aspect.Data.Resource;
 
-namespace Alis.App.Hub
+namespace Alis.App.Hub.Entity
 {
     /// <summary>
-    ///     The engine class
+    /// The gallery class
     /// </summary>
-    public class HubEngine
+    public class Gallery
     {
         /// <summary>
-        ///     The windows
+        /// The items
         /// </summary>
-        private readonly SpaceWork spaceWork = new SpaceWork();
-        
+        public readonly List<GalleryItem> Items;
+
+        // Método para generar una lista de 10 elementos de tipo GalleryItem
         /// <summary>
-        ///     Starts this instance
+        /// Initializes a new instance of the <see cref="Gallery"/> class
         /// </summary>
-        /// <returns>The int</returns>
-        public void Run()
+        public Gallery()
         {
-            spaceWork.OnInit();
-            spaceWork.OnStart();
-            
-            while (spaceWork.IsRunning)
+            Items = new List<GalleryItem>();
+            Random random = new Random();
+
+            // Lista de posibles imágenes
+            string[] imageOptions = {"Hub_computer.png", "Hub_news.png", "Hub_cubes.png", "Hub_shop.png"};
+
+            // Generar 10 elementos de la galería
+            for (int i = 0; i < 10; i++)
             {
-                while (Sdl.PollEvent(out Event e) != 0)
-                {
-                    spaceWork.OnEvent(e);
-                }
+                // Seleccionar una imagen aleatoria
+                string imagePath = AssetManager.Find(imageOptions[random.Next(imageOptions.Length)]);
 
-                spaceWork.OnStartRender();
+                // Crear un nuevo GalleryItem con datos aleatorios
+                GalleryItem item = new GalleryItem(
+                    imagePath,
+                    $"Item {i + 1}",
+                    $"Description for Item {i + 1}",
+                    $"https://www.example.com/{i + 1}",
+                    100, // Altura de la imagen
+                    100 // Ancho de la imagen
+                );
 
-                ImGui.SetNextWindowPos(spaceWork.ViewportHub.WorkPos);
-                ImGui.SetNextWindowSize(spaceWork.ViewportHub.Size);
-                ImGui.Begin("DockSpace Demo", spaceWork.Dockspaceflags);
-                
-                Vector2F dockSize = spaceWork.ViewportHub.Size - new Vector2F(5, 85);
-                uint dockSpaceId = ImGui.GetId("MyDockSpace");
-                ImGui.DockSpace(dockSpaceId, dockSize);
-                
-                spaceWork.OnUpdate();
-
-                ImGui.End();
-                
-                
-                spaceWork.OnEndRender();
+                // Agregar el item a la lista
+                Items.Add(item);
             }
-            
-            spaceWork.OnDestroy();
         }
     }
 }

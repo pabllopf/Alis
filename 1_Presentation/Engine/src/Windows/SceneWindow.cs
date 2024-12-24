@@ -335,6 +335,9 @@ namespace Alis.App.Engine.Windows
 
         
         // Crear un HashSet para almacenar los botones activos
+        /// <summary>
+        /// The active button
+        /// </summary>
         HashSet<ActiveButton> activeButtons = new HashSet<ActiveButton>();
         
         /// <summary>

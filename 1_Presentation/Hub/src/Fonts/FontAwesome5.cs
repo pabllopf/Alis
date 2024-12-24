@@ -10,7 +10,7 @@ namespace Alis.App.Engine.Fonts
     /// <summary>
     /// The font awesome class
     /// </summary>
-    public class FontAwesome5
+    public static class FontAwesome5
     {
         /// <summary>
         /// The font icon file name far

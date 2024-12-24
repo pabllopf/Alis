@@ -125,6 +125,9 @@ namespace Alis.Core.Ecs.System.Configuration
         [JsonPropertyName("_Scene_")]
         public SceneSetting Scene { get; set; }
 
+        /// <summary>
+        /// Ons the load
+        /// </summary>
         public void OnLoad()
         {
             string directory = Path.Combine(Environment.CurrentDirectory, "Data", "Setting");
@@ -204,6 +207,9 @@ namespace Alis.Core.Ecs.System.Configuration
             }
         }
         
+        /// <summary>
+        /// Ons the save
+        /// </summary>
         public void OnSave()
         {
             string directory = Path.Combine(Environment.CurrentDirectory, "Data", "Setting");
@@ -262,6 +268,10 @@ namespace Alis.Core.Ecs.System.Configuration
             }));
         }
 
+        /// <summary>
+        /// Ons the load using the specified path
+        /// </summary>
+        /// <param name="path">The path</param>
         public void OnLoad(string path)
         {
            string directory = Path.Combine(path, "Data", "Setting");

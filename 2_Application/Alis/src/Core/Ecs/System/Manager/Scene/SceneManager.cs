@@ -53,6 +53,9 @@ namespace Alis.Core.Ecs.System.Manager.Scene
             ScenesMap = new ScenesMap();
         }
 
+        /// <summary>
+        /// Gets or sets the value of the scenes map
+        /// </summary>
         [JsonPropertyName("_ScenesMap_")]
         public ScenesMap ScenesMap { get; set; }
         
@@ -192,6 +195,10 @@ namespace Alis.Core.Ecs.System.Manager.Scene
             }
         }
 
+        /// <summary>
+        /// Ons the save using the specified path
+        /// </summary>
+        /// <param name="path">The path</param>
         public override void OnSave(string path)
         {
             ScenesMap.Scenes = new List<int>();

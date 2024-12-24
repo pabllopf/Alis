@@ -34,9 +34,5 @@ namespace Alis.App.Hub.Shaders
     /// </summary>
     public interface IShader
     {
-        /// <summary>
-        ///     Gets the value of the shader code
-        /// </summary>
-        public string ShaderCode { get; }
     }
 }

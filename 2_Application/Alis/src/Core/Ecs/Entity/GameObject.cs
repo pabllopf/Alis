@@ -314,12 +314,18 @@ namespace Alis.Core.Ecs.Entity
             }
         }
 
+        /// <summary>
+        /// Ons the process pending changes
+        /// </summary>
         public void OnProcessPendingChanges()
         {
             AddPendingComponents();
             RemovePendingComponents();
         }
 
+        /// <summary>
+        /// Adds the pending components
+        /// </summary>
         private void AddPendingComponents()
         {
             if (PendingComponentsToAdd.Count == 0) return;
@@ -350,6 +356,9 @@ namespace Alis.Core.Ecs.Entity
             PendingComponentsToAdd.Clear();
         }
 
+        /// <summary>
+        /// Removes the pending components
+        /// </summary>
         private void RemovePendingComponents()
         {
             if (PendingComponentsToRemove.Count == 0) return;
@@ -562,6 +571,10 @@ namespace Alis.Core.Ecs.Entity
             Components.ForEach(i => i.Attach(this));
         }
 
+        /// <summary>
+        /// Clones this instance
+        /// </summary>
+        /// <returns>The object</returns>
         public object Clone()
         {
             List<AComponent> componentsCloned = new List<AComponent>();
@@ -575,8 +588,16 @@ namespace Alis.Core.Ecs.Entity
             return new GameObject(IsEnable, Name, guid.ToString(), Tag, (Transform) Transform.Clone(), componentsCloned);
         }
 
+        /// <summary>
+        /// Ons the save using the specified path
+        /// </summary>
+        /// <param name="path">The path</param>
         public void OnSave(string path) => Components.ForEach(i => i.OnSave(path));
 
+        /// <summary>
+        /// Ons the load using the specified path
+        /// </summary>
+        /// <param name="path">The path</param>
         public void OnLoad(string path) => Components.ForEach(i => i.OnLoad(path));
     }
 }

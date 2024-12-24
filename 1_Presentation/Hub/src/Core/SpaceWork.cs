@@ -30,10 +30,16 @@
 
 using System;
 using System.Runtime.InteropServices;
+using Alis.App.Hub.Controllers;
 using Alis.App.Hub.Entity;
-using Alis.Core.Ecs.System;
+using Alis.App.Hub.Windows;
+using Alis.Core.Aspect.Data.Mapping;
+using Alis.Core.Graphic.Sdl2;
+using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Alis.Extension.Graphic.ImGui;
+using Alis.Extension.Graphic.OpenGL;
+using Alis.Extension.Graphic.OpenGL.Constructs;
 
 namespace Alis.App.Hub.Core
 {
@@ -43,24 +49,39 @@ namespace Alis.App.Hub.Core
     public class SpaceWork
     {
         /// <summary>
+        ///     The name engine
+        /// </summary>
+        public readonly string NameEngine;
+        
+        /// <summary>
+        /// Gets the value of the height main window
+        /// </summary>
+        public int HeightMainWindow { get;}
+        
+        /// <summary>
+        /// Gets the value of the width main window
+        /// </summary>
+        public int WidthMainWindow { get;}
+
+        /// <summary>
+        /// The sdl controller
+        /// </summary>
+        public SdlController SdlController;
+        
+        /// <summary>
+        /// The open gl controller
+        /// </summary>
+        public OpenGlController OpenGlController;
+
+        /// <summary>
+        /// The im gui controller
+        /// </summary>
+        public ImGuiController ImGuiController;
+        
+        /// <summary>
         ///     The context
         /// </summary>
-        public IntPtr ContextGui;
-
-        /// <summary>
-        ///     The font loaded 16 light
-        /// </summary>
-        public ImFontPtr fontLoaded16Light;
-
-        /// <summary>
-        ///     The font loaded 16 solid
-        /// </summary>
-        public ImFontPtr fontLoaded16Solid;
-
-        /// <summary>
-        ///     The font loaded 30 bold
-        /// </summary>
-        public ImFontPtr fontLoaded45Bold;
+        public IntPtr ContextImGui;
 
         /// <summary>
         ///     The io
@@ -68,97 +89,342 @@ namespace Alis.App.Hub.Core
         public ImGuiIoPtr Io;
 
         /// <summary>
-        ///     The renderer game
-        /// </summary>
-        public IntPtr rendererGame;
-
-        /// <summary>
         ///     The style
         /// </summary>
         public ImGuiStyle Style;
 
         /// <summary>
-        ///     The video game
-        /// </summary>
-        public VideoGame VideoGame;
-
-        /// <summary>
         ///     Gets or sets the value of the viewport
         /// </summary>
-        public ImGuiViewportPtr Viewport;
+        public ImGuiViewportPtr ViewportHub;
 
         /// <summary>
         ///     The window
         /// </summary>
-        public IntPtr Window;
-
+        public IntPtr WindowHub { get; set; }
+        
+        /// <summary>
+        /// The hub window
+        /// </summary>
+        public readonly HubWindow HubWindow;
+        
+        /// <summary>
+        /// The font loaded 16 solid
+        /// </summary>
+        public ImFontPtr FontLoaded16Solid;
+        
         /// <summary>
         /// The font loaded 10 solid
         /// </summary>
-        public ImFontPtr fontLoaded10Solid;
+        public ImFontPtr FontLoaded10Solid;
+        
         /// <summary>
         /// The font loaded 30 bold
         /// </summary>
-        public ImFontPtr fontLoaded30Bold;
+        public ImFontPtr FontLoaded30Bold;
+        
+        /// <summary>
+        /// The font loaded 16 light
+        /// </summary>
+        public ImFontPtr FontLoaded16Light;
+        
+        /// <summary>
+        /// The gl context
+        /// </summary>
+        public IntPtr GlContext;
+
+        /// <summary>
+        /// The gl shader
+        /// </summary>
+        public GlShaderProgram GlShader;
+        
+        /// <summary>
+        ///     The dockspaceflags
+        /// </summary>
+        public ImGuiWindowFlags Dockspaceflags;
+        
+        /// <summary>
+        ///     The font texture id
+        /// </summary>
+        public uint FontTextureId;
+
+        /// <summary>
+        /// The vbo handle
+        /// </summary>
+        public uint VboHandle;
+        /// <summary>
+        /// The elements handle
+        /// </summary>
+        public uint ElementsHandle;
+        /// <summary>
+        /// The vertex array object
+        /// </summary>
+        public uint VertexArrayObject;
+
+        /// <summary>
+        /// The time
+        /// </summary>
+        public float Time;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="SpaceWork" /> class
         /// </summary>
         public SpaceWork()
         {
+            NameEngine = "Welcome to Alis by @pabllopf";
+            HeightMainWindow = 575;
+            WidthMainWindow = 1025;
+            Time = 0;
+            IsRunning = true;
+            
+            Event = new Event();
+            
+            SdlController = new SdlController(this);
+            OpenGlController = new OpenGlController(this);
+            ImGuiController = new ImGuiController(this);
+            
+            HubWindow = new HubWindow(this);
         }
-
-        /// <summary>
-        /// Gets the value of the is mac os
-        /// </summary>
-        public bool IsMacOs => RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
-
-        /// <summary>
-        ///     Gets or sets the value of the fps
-        /// </summary>
-        public int Fps { get; set; } = 60;
-
-        /// <summary>
-        ///     Gets or sets the value of the project selected
-        /// </summary>
-        public bool ProjectSelected { get; set; } = false;
-        
-        /// <summary>
-        /// Gets or sets the value of the project
-        /// </summary>
-        public Project Project { get; set; } = new Project("", "" , "", "Never", "2021.1.0");
         
         /// <summary>
         ///     The quit
         /// </summary>
-        public bool _quit;
-        
+        public bool IsRunning { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value of the font loaded 45 bold
+        /// </summary>
+        public ImFontPtr FontLoaded45Bold { get; set; }
+
         /// <summary>
         /// Gets or sets the value of the event
         /// </summary>
         public Event Event { get; set; }
 
         /// <summary>
-        ///     Initializes this instance
+        /// Ons the event using the specified input event
         /// </summary>
-        public void Initialize()
+        /// <param name="inputEvent">The input event</param>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        public void OnEvent(Event inputEvent)
         {
+            Event = inputEvent;
+            ImGuiController.ProcessEvent(inputEvent);
+
+            switch (inputEvent.type)
+            {
+                case EventType.WindowEvent:
+                {
+                    if (inputEvent.window.windowEvent == WindowEventId.SdlWindowEventClose)
+                    {
+                        IsRunning = false;
+                    }
+
+                    break;
+                }
+
+                case EventType.Keydown:
+                {
+                    switch (inputEvent.key.KeySym.sym)
+                    {
+                        case KeyCodes.Escape:
+                            IsRunning = false;
+                            break;
+                    }
+
+                    break;
+                }
+                
+                case EventType.FirstEvent:
+                    break;
+                case EventType.Quit:
+                    break;
+                case EventType.AppTerminating:
+                    break;
+                case EventType.AppLowMemory:
+                    break;
+                case EventType.AppWillEnterBackground:
+                    break;
+                case EventType.AppDidEnterBackground:
+                    break;
+                case EventType.AppWillEnterForeground:
+                    break;
+                case EventType.AppDidEnterForeground:
+                    break;
+                case EventType.LocaleChanged:
+                    break;
+                case EventType.DisplayEvent:
+                    break;
+                case EventType.SysWmEvent:
+                    break;
+                case EventType.Keyup:
+                    break;
+                case EventType.TextEditing:
+                    break;
+                case EventType.TextInput:
+                    break;
+                case EventType.KeymapChanged:
+                    break;
+                case EventType.MouseMotion:
+                    break;
+                case EventType.MouseButtonDown:
+                    break;
+                case EventType.MouseButtonUp:
+                    break;
+                case EventType.Mousewheel:
+                    break;
+                case EventType.JoyAxisMotion:
+                    break;
+                case EventType.JoyBallMotion:
+                    break;
+                case EventType.JoyHatMotion:
+                    break;
+                case EventType.JoyButtonDown:
+                    break;
+                case EventType.JoyButtonUp:
+                    break;
+                case EventType.JoyDeviceAdded:
+                    break;
+                case EventType.JoyDeviceRemoved:
+                    break;
+                case EventType.ControllerAxisMotion:
+                    break;
+                case EventType.ControllerButtonDown:
+                    break;
+                case EventType.ControllerButtonUp:
+                    break;
+                case EventType.ControllerDeviceAdded:
+                    break;
+                case EventType.ControllerDeviceRemoved:
+                    break;
+                case EventType.ControllerDeviceRemapped:
+                    break;
+                case EventType.ControllerTouchpadDown:
+                    break;
+                case EventType.ControllerTouchpadMotion:
+                    break;
+                case EventType.ControllerTouchpadUp:
+                    break;
+                case EventType.ControllerSensorUpdate:
+                    break;
+                case EventType.FingerDown:
+                    break;
+                case EventType.FingerUp:
+                    break;
+                case EventType.FingerMotion:
+                    break;
+                case EventType.DollarGesture:
+                    break;
+                case EventType.DollarRecord:
+                    break;
+                case EventType.MultiGesture:
+                    break;
+                case EventType.ClipBoardUpdate:
+                    break;
+                case EventType.DropFile:
+                    break;
+                case EventType.DropText:
+                    break;
+                case EventType.DropBegin:
+                    break;
+                case EventType.DropComplete:
+                    break;
+                case EventType.AudioDeviceAdded:
+                    break;
+                case EventType.AudioDeviceRemoved:
+                    break;
+                case EventType.SensorUpdate:
+                    break;
+                case EventType.RenderTargetsReset:
+                    break;
+                case EventType.RenderDeviceReset:
+                    break;
+                case EventType.PollSentinel:
+                    break;
+                case EventType.UserEvent:
+                    break;
+                case EventType.LastEvent:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         /// <summary>
-        ///     Starts this instance
+        /// Ons the start render
         /// </summary>
-        public void Start()
+        public void OnStartRender()
         {
-
+            SdlController.OnStartRender();
+            OpenGlController.OnStartRender();
+            ImGuiController.OnStartRender();
         }
 
         /// <summary>
-        ///     Updates this instance
+        /// Ons the update
         /// </summary>
-        public void Update()
+        public void OnUpdate()
         {
+            SdlController.OnUpdate();
+            OpenGlController.OnUpdate();
+            ImGuiController.OnUpdate();
+            
+            HubWindow.OnRender();
         }
-        
+
+        /// <summary>
+        /// Ons the end render
+        /// </summary>
+        public void OnEndRender()
+        {
+            SdlController.OnEndRender();
+            OpenGlController.OnEndRender();
+            ImGuiController.OnEndRender();
+        }
+
+        /// <summary>
+        /// Ons the destroy
+        /// </summary>
+        public void OnDestroy()
+        {
+            SdlController.OnDestroy();
+            OpenGlController.OnDestroy();
+            ImGuiController.OnDestroy();
+            
+            
+            if (GlShader != null)
+            {
+                GlShader.Dispose();
+                GlShader = null;
+                Gl.DeleteBuffer(VboHandle);
+                Gl.DeleteBuffer(ElementsHandle);
+                Gl.DeleteVertexArray(VertexArrayObject);
+                Gl.DeleteTexture(FontTextureId);
+            }
+
+            Sdl.DeleteContext(GlContext);
+            Sdl.DestroyWindow(WindowHub);
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        /// Ons the init
+        /// </summary>
+        public void OnInit()
+        {
+            SdlController.OnInit();
+            OpenGlController.OnInit();
+            ImGuiController.OnInit();
+        }
+
+        /// <summary>
+        /// Ons the start
+        /// </summary>
+        public void OnStart()
+        {
+            SdlController.OnStart();
+            OpenGlController.OnStart();
+            ImGuiController.OnStart();
+        }
     }
 }

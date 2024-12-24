@@ -314,6 +314,10 @@ namespace Alis.Core.Ecs.Component.Render
             return max;
         }
 
+        /// <summary>
+        /// Clones this instance
+        /// </summary>
+        /// <returns>The object</returns>
         public override object Clone()
         {
             return new Sprite(NameFile, Depth, Flips);

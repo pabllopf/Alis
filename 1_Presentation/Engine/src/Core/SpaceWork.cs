@@ -63,6 +63,9 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public readonly ImGuizmoDemo imGuizmoDemo = new ImGuizmoDemo();
 
+        /// <summary>
+        /// The settings window
+        /// </summary>
         public readonly SettingsWindow SettingsWindow;
 
         /// <summary>

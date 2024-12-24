@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Gallery2.cs
+//  File:LearningResource.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,53 +27,37 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using Alis.Core.Aspect.Data.Resource;
-
-namespace Alis.App.Hub.Windows
+namespace Alis.App.Hub.Entity
 {
     /// <summary>
-    /// The gallery class
+    /// The learning resource class
     /// </summary>
-    public class Gallery2
+    public class LearningResource
     {
         /// <summary>
-        /// The items
+        /// Initializes a new instance of the <see cref="LearningResource"/> class
         /// </summary>
-        public List<GalleryItem> Items;
-
-        // Método para generar una lista de 10 elementos de tipo GalleryItem
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Gallery2"/> class
-        /// </summary>
-        public Gallery2()
+        /// <param name="title">The title</param>
+        /// <param name="description">The description</param>
+        /// <param name="url">The url</param>
+        public LearningResource(string title, string description, string url)
         {
-            Items = new List<GalleryItem>();
-            Random random = new Random();
-
-            // Lista de posibles imágenes
-            string[] imageOptions = {"Hub_computer.png", "Hub_news.png", "Hub_cubes.png", "Hub_shop.png"};
-
-            // Generar 10 elementos de la galería
-            for (int i = 0; i < 10; i++)
-            {
-                // Seleccionar una imagen aleatoria
-                string imagePath = AssetManager.Find(imageOptions[random.Next(imageOptions.Length)]);
-
-                // Crear un nuevo GalleryItem con datos aleatorios
-                GalleryItem item = new GalleryItem(
-                    imagePath,
-                    $"Item {i + 1}",
-                    $"Description for Item {i + 1}",
-                    $"https://www.example.com/{i + 1}",
-                    100, // Altura de la imagen
-                    100 // Ancho de la imagen
-                );
-
-                // Agregar el item a la lista
-                Items.Add(item);
-            }
+            Title = title;
+            Description = description;
+            Url = url;
         }
+
+        /// <summary>
+        /// Gets the value of the title
+        /// </summary>
+        public string Title { get; }
+        /// <summary>
+        /// Gets the value of the description
+        /// </summary>
+        public string Description { get; }
+        /// <summary>
+        /// Gets the value of the url
+        /// </summary>
+        public string Url { get; }
     }
 }

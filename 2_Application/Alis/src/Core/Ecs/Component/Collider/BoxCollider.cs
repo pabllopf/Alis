@@ -146,6 +146,9 @@ namespace Alis.Core.Ecs.Component.Collider
         [JsonPropertyName("_AngularVelocity_")]
         public float AngularVelocity { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BoxCollider"/> class
+        /// </summary>
         public BoxCollider()
         {
             Width = 10;
@@ -163,6 +166,23 @@ namespace Alis.Core.Ecs.Component.Collider
             AngularVelocity = 0;
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BoxCollider"/> class
+        /// </summary>
+        /// <param name="isTrigger">The is trigger</param>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="rotation">The rotation</param>
+        /// <param name="relativePosition">The relative position</param>
+        /// <param name="autoTilling">The auto tilling</param>
+        /// <param name="bodyType">The body type</param>
+        /// <param name="restitution">The restitution</param>
+        /// <param name="friction">The friction</param>
+        /// <param name="fixedRotation">The fixed rotation</param>
+        /// <param name="mass">The mass</param>
+        /// <param name="ignoreGravity">The ignore gravity</param>
+        /// <param name="linearVelocity">The linear velocity</param>
+        /// <param name="angularVelocity">The angular velocity</param>
         [JsonConstructor]
         public BoxCollider(
             bool isTrigger,

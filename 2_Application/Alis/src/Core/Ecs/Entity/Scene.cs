@@ -208,6 +208,9 @@ namespace Alis.Core.Ecs.Entity
             GameObjects.ForEach(i => i.OnAfterUpdate());
         }
 
+        /// <summary>
+        /// Ons the process pending changes
+        /// </summary>
         public void OnProcessPendingChanges()
         {
             GameObjects.ForEach(i => i.OnProcessPendingChanges());
@@ -215,6 +218,9 @@ namespace Alis.Core.Ecs.Entity
             RemovePendingGameObjects();
         }
 
+        /// <summary>
+        /// Adds the pending game objects
+        /// </summary>
         private void AddPendingGameObjects()
         {
             if (PendingGameObjectsToAdd.Count == 0) return;
@@ -247,6 +253,9 @@ namespace Alis.Core.Ecs.Entity
             PendingGameObjectsToAdd.Clear();
         }
 
+        /// <summary>
+        /// Removes the pending game objects
+        /// </summary>
         private void RemovePendingGameObjects()
         {
             if (PendingGameObjectsToRemove.Count == 0) return;
@@ -398,8 +407,16 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         public void OnLoad() => GameObjects.ForEach(i => i.OnLoad());
 
+        /// <summary>
+        /// Ons the save using the specified path
+        /// </summary>
+        /// <param name="path">The path</param>
         public void OnSave(string path) => GameObjects.ForEach(i => i.OnSave(path));
 
+        /// <summary>
+        /// Ons the load using the specified path
+        /// </summary>
+        /// <param name="path">The path</param>
         public void OnLoad(string path) => GameObjects.ForEach(i => i.OnLoad(path));
 
         /// <summary>
@@ -513,6 +530,10 @@ namespace Alis.Core.Ecs.Entity
             GameObjects.ForEach(i => i.SetContext(context));
         }
 
+        /// <summary>
+        /// Builders this instance
+        /// </summary>
+        /// <returns>The scene builder</returns>
         public SceneBuilder Builder() => new SceneBuilder(this.Context);
     }
 }

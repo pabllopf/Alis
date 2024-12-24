@@ -188,8 +188,16 @@ namespace Alis.Core.Ecs.System.Execution
         /// </summary>
         public void OnLoad() => runtimes.ForEach(x => x.OnLoad());
 
+        /// <summary>
+        /// Ons the load using the specified path
+        /// </summary>
+        /// <param name="path">The path</param>
         public void OnLoad(string path) => runtimes.ForEach(x => x.OnLoad(path));
 
+        /// <summary>
+        /// Ons the save using the specified path
+        /// </summary>
+        /// <param name="path">The path</param>
         public void OnSave(string path) => runtimes.ForEach(x => x.OnSave(path));
     }
 }

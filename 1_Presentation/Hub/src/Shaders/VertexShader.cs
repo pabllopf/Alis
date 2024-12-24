@@ -37,7 +37,7 @@ namespace Alis.App.Hub.Shaders
         /// <summary>
         ///     Gets the value of the shader code
         /// </summary>
-        public string ShaderCode => @"
+        public static string ShaderCode => @"
 			#version 330
 			
 			precision mediump float;

@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -35,17 +35,38 @@ using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Core.Ecs.System.Manager.Scene
 {
+    /// <summary>
+    /// The scenes map class
+    /// </summary>
     public class ScenesMap
     {
+        /// <summary>
+        /// Gets or sets the value of the scenes
+        /// </summary>
         [JsonPropertyName("_Scenes_")]
         public List<int> Scenes { get; set; } = new List<int>();
         
+        /// <summary>
+        /// Adds the scene using the specified scene id
+        /// </summary>
+        /// <param name="sceneId">The scene id</param>
         public void AddScene(int sceneId) => Scenes.Add(sceneId);
         
+        /// <summary>
+        /// Removes the scene using the specified scene id
+        /// </summary>
+        /// <param name="sceneId">The scene id</param>
         public void RemoveScene(int sceneId) => Scenes.Remove(sceneId);
         
+        /// <summary>
+        /// Clears this instance
+        /// </summary>
         public void Clear() => Scenes.Clear();
 
+        /// <summary>
+        /// Loads this instance
+        /// </summary>
+        /// <returns>The scenes map</returns>
         public ScenesMap Load()
         {
             string pathFile =  Path.Combine(Environment.CurrentDirectory, "Data", "ScenesMap.json");
@@ -74,6 +95,9 @@ namespace Alis.Core.Ecs.System.Manager.Scene
             });
         }
         
+        /// <summary>
+        /// Saves this instance
+        /// </summary>
         public void Save()
         {
             string pathFile =  Path.Combine(Environment.CurrentDirectory, "Data", "ScenesMap.json");

@@ -78,9 +78,15 @@ namespace Alis.Core.Ecs.System.Configuration.Graphic
         [JsonIgnore]
         public bool PreviewMode { get; set; } = false;
 
+        /// <summary>
+        /// Gets or sets the value of the grid color
+        /// </summary>
         [JsonPropertyName("_GridColor_")]
         public Color GridColor { get; set; } = new Color(195, 195, 195, 100);
         
+        /// <summary>
+        /// Gets or sets the value of the has grid
+        /// </summary>
         [JsonIgnore]
         public bool HasGrid { get; set; } = false;
         

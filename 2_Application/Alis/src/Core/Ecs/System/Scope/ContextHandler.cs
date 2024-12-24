@@ -281,6 +281,9 @@ namespace Alis.Core.Ecs.System.Scope
             _context.Runtime.OnLoad();
         }
 
+        /// <summary>
+        /// Loads the and run
+        /// </summary>
         public void LoadAndRun()
         {
             _context.Setting.OnLoad();
@@ -288,12 +291,20 @@ namespace Alis.Core.Ecs.System.Scope
             Run();
         }
         
+        /// <summary>
+        /// Saves the path
+        /// </summary>
+        /// <param name="path">The path</param>
         public void Save(string path)
         {
             _context.Setting.OnSave();
             _context.Runtime.OnSave(path);
         }
 
+        /// <summary>
+        /// Loads the path
+        /// </summary>
+        /// <param name="path">The path</param>
         public void Load(string path)
         {
             _context.Setting.OnLoad(path);
