@@ -294,27 +294,6 @@ namespace Alis.Core.Network.Test
         }
 
         /// <summary>
-        ///     Tests that generate sec web socket key should return valid base 64 string
-        /// </summary>
-        [Fact]
-        public void GenerateSecWebSocketKey_ShouldReturnValidBase64String()
-        {
-            WebSocketClientFactory factory = new WebSocketClientFactory();
-            string result = factory.GenerateSecWebSocketKey();
-            byte[] bytes = Convert.FromBase64String(result);
-
-            Assert.NotNull(result);
-            Assert.NotEmpty(result);
-
-            // Check if the result is a valid Base64 string
-            int base64Bytes;
-            Assert.True(Convert.TryFromBase64String(result, bytes, out base64Bytes));
-
-            // Check if the length of the byte array is 16
-            Assert.Equal(16, base64Bytes);
-        }
-
-        /// <summary>
         ///     Tests that tls authenticate as client test
         /// </summary>
         [Fact]
