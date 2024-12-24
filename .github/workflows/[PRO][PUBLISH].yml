@@ -89,8 +89,11 @@ jobs:
       - name: Print the next version
         run: echo $CURRENTVERSION
 
-      - name: build all
-        run: dotnet build alis.sln -c Release
+      - name: build installer
+        run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -f net8.0
+
+      - name: build engine
+        run: dotnet build ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -f net8.0
 
       - name: publish osx-arm64
         run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r osx-arm64 -f net8.0
