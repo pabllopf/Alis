@@ -219,6 +219,7 @@ namespace Alis.App.Hub
             spaceWork.ContextGui = ImGui.CreateContext();
 
             spaceWork.Io = ImGui.GetIo();
+            spaceWork.Io.WantSaveIniSettings = false;
 
             spaceWork.Io.DisplaySize = new Vector2F(widthWindow, heightWindow);
 

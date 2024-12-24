@@ -151,7 +151,7 @@ namespace Alis.App.Engine.Windows
                 .GroupBy(t => t.Namespace)
                 .OrderBy(g => g.Key);
 
-            ImGui.SetNextWindowSize(new Vector2F(ImGui.GetWindowWidth(), (groupedComponents.Count() * 30) + 60));
+            ImGui.SetNextWindowSize(new Vector2F(ImGui.GetWindowWidth(), (groupedComponents.Count() * 30) + 90));
             if (ImGui.BeginPopup("AddComponentPopup"))
             {
                 // Campo de búsqueda
