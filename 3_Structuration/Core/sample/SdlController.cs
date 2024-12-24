@@ -44,7 +44,6 @@ using Alis.Core.Graphic.Fonts;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Alis.Core.Physic.Dynamics;
-using MonoMac.AppKit;
 using Action = System.Action;
 using Sdl = Alis.Core.Graphic.Sdl2.Sdl;
 using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
@@ -416,11 +415,7 @@ namespace Alis.Core.Sample
             });*/
 
             // Crea y configura el menú
-
-#if OSX
-            ConfigureMenu();
-#endif
-
+            
             while (_running)
             {
                 stopwatch.Restart();
@@ -649,51 +644,7 @@ namespace Alis.Core.Sample
             Sdl.DestroyWindow(window);
             Sdl.Quit();
         }
-
-
-        /// <summary>
-        ///     Configures the menu
-        /// </summary>
-        [Conditional("OSX")]
-        private static void ConfigureMenu()
-        {
-            NSApplication.Init();
-
-            // Configuración del menú principal
-            NSMenu mainMenu = new NSMenu();
-
-            // Crea un ítem para el menú de la aplicación
-            NSMenuItem appMenuItem = new NSMenuItem();
-            mainMenu.AddItem(appMenuItem);
-
-            NSMenu appMenu = new NSMenu();
-            appMenuItem.Submenu = appMenu;
-
-            // "Acerca de" (About)
-            NSMenuItem aboutMenuItem = new NSMenuItem("About", (sender, e) =>
-            {
-                NSAlert alert = new NSAlert
-                {
-                    AlertStyle = NSAlertStyle.Informational,
-                    MessageText = "About My App",
-                    InformativeText = "This is a .NET macOS app configured before launch!"
-                };
-                alert.RunModal();
-            });
-            appMenu.AddItem(aboutMenuItem);
-
-            // "Salir" (Quit)
-            NSMenuItem quitMenuItem = new NSMenuItem("Quit", (sender, e) => { NSApplication.SharedApplication.Terminate(null); })
-            {
-                KeyEquivalent = "q" // Atajo de teclado: Command + Q
-            };
-            appMenu.AddItem(quitMenuItem);
-
-            // Asigna el menú configurado a la aplicación
-            NSApplication.SharedApplication.MainMenu = mainMenu;
-        }
-
-
+        
         /// <summary>
         ///     Draws the circle using the specified renderer
         /// </summary>

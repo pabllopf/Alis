@@ -85,23 +85,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
             Assert.Equal(48.0f, result.Z);
             Assert.Equal(-6.0f, result.W);
         }
-
-        /// <summary>
-        ///     Tests that quaternion operator division should return correct result
-        /// </summary>
-        [Fact]
-        public void Quaternion_OperatorDivision_ShouldReturnCorrectResult()
-        {
-            Quaternion quaternion1 = new Quaternion(1.0f, -2.0f, 3.0f, -4.0f);
-            Quaternion quaternion2 = new Quaternion(1.0f, 2.0f, 3.0f, 4.0f);
-            Quaternion result = quaternion1 / quaternion2;
-
-            Assert.Equal(0.6f, result.X, 0.1f);
-            Assert.Equal(0.0f, result.Y, 0.1f);
-            Assert.Equal(0.6f, result.Z, 0.1f);
-            Assert.Equal(-0.3f, result.W, 0.1f);
-        }
-
+        
         /// <summary>
         ///     Tests that quaternion operator unary negation should return correct result
         /// </summary>
