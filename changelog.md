@@ -5,6 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.5.3] - 2024-12-26
+### :sparkles: New Features
+- [`48a81f3`](https://github.com/pabllopf/Alis/commit/48a81f3e9552c82e9e14c67b41d52901bd6c8035) - create simple file browser *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a8845ce`](https://github.com/pabllopf/Alis/commit/a8845ce767ff9c862795ed68eb4c546eb573ceb2) - order the installations *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`e1d5dbb`](https://github.com/pabllopf/Alis/commit/e1d5dbb46168776061c0d2a96b4af78eaa456eac) - windows hub open installer *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`3a294a2`](https://github.com/pabllopf/Alis/commit/3a294a230b33f68e1c084624bf479d2c301d2aef) - pro check all platforms *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`08a4aa1`](https://github.com/pabllopf/Alis/commit/08a4aa19b62a8f252427f8ce5f1f5a31c42afed0) - pro Update [PRO][TEST].yml *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`917a0bc`](https://github.com/pabllopf/Alis/commit/917a0bc253768e831fdf286d78ca416a77896696) - pro Update [PRO][TEST].yml *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0f1c35b`](https://github.com/pabllopf/Alis/commit/0f1c35bfd481366a02153d8aaa9f378a29ead9c3) - pro fix ubuntu  *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8e4b47d`](https://github.com/pabllopf/Alis/commit/8e4b47d57c58396a43f7a140909af744ace52ecb) - pro check full  *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5ec4a60`](https://github.com/pabllopf/Alis/commit/5ec4a60baec257c9e06a4089a5c6669746b22c79) - fix compilation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fb55b72`](https://github.com/pabllopf/Alis/commit/fb55b725b0953075f8072d20067c8cee6540f893) - pro check final version of workloads *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c566d6d`](https://github.com/pabllopf/Alis/commit/c566d6d6ca01fcf8f2639ce9ac707c87593b64fb) - pro quit dependencies *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c39f37e`](https://github.com/pabllopf/Alis/commit/c39f37ece1658997b91ecab453b823f8137d83a5) - without workloads Update [PRO][TEST].yml *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8df0ab4`](https://github.com/pabllopf/Alis/commit/8df0ab4d743c761decccec7d6d112c2a1ebf5404) - pro Update [PRO][TEST].yml *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`45479b5`](https://github.com/pabllopf/Alis/commit/45479b5306540fd483a2c7058a580a4cb5b8a2bc) - pro delete trim files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6ee4079`](https://github.com/pabllopf/Alis/commit/6ee4079cfaabca3914dd79050194a35d325544a8) - pro disable PublishTrimmed *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d18a6f7`](https://github.com/pabllopf/Alis/commit/d18a6f7d89479636734795329ce2303955327a9f) - pro update TargetFrameworks *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7068b7c`](https://github.com/pabllopf/Alis/commit/7068b7cd88c1e55b0fb35fbc58b86fc39f961d32) - pro TargetFrameworks *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.5.2] - 2024-12-25
 ### :sparkles: New Features
 - [`0f242ad`](https://github.com/pabllopf/Alis/commit/0f242adb1f3f5016b278b55b2f519bf06566be23) - add new settings load information. *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -3785,3 +3810,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.5.0]: https://github.com/pabllopf/Alis/compare/v0.4.9...v0.5.0
 [v0.5.1]: https://github.com/pabllopf/Alis/compare/v0.5.0...v0.5.1
 [v0.5.2]: https://github.com/pabllopf/Alis/compare/v0.5.1...v0.5.2
+[v0.5.3]: https://github.com/pabllopf/Alis/compare/v0.5.2...v0.5.3
