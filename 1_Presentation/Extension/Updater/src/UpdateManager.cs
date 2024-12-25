@@ -65,6 +65,9 @@ namespace Alis.Extension.Updater
         /// </summary>
         public readonly string _programFolder;
 
+        /// <summary>
+        /// The version to install
+        /// </summary>
         public readonly string _versionToInstall;
 
         /// <summary>
