@@ -36,7 +36,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Square
     /// <summary>
     ///     The square test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class SquareITest 
     {
         /// <summary>

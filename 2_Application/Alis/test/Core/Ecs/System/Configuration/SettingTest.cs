@@ -43,7 +43,7 @@ namespace Alis.Test.Core.Ecs.System.Configuration
     /// <summary>
     ///     The settings test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class SettingTest 
     {
         /// <summary>

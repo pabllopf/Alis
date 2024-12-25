@@ -34,7 +34,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
     /// <summary>
     ///     The chain shape test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class ChainShapeTest 
     {
     }

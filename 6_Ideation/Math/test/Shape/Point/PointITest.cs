@@ -36,7 +36,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
     /// <summary>
     ///     The point test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class PointITest 
     {
         /// <summary>

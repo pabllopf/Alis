@@ -37,7 +37,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
     /// <summary>
     ///     The quaternion test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class QuaternionTest 
     {
         /// <summary>

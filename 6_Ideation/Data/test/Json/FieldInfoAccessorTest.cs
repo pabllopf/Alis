@@ -38,7 +38,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
     /// <summary>
     ///     The field info accessor test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class FieldInfoAccessorTest 
     {
         /// <summary>

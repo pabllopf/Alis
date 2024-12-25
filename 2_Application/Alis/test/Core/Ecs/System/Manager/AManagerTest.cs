@@ -37,7 +37,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
     /// <summary>
     ///     The manager test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class AManagerTest 
     {
         /// <summary>

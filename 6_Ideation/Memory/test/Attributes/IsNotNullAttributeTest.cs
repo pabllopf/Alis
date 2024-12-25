@@ -37,7 +37,7 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
     /// <summary>
     ///     The not null attribute test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class IsNotNullAttributeTest 
     {
         /// <summary>

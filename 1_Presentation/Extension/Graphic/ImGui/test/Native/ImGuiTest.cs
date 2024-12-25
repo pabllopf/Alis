@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
     /// <summary>
     ///     The im gui test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class ImGuiTest 
     {
         /// <summary>

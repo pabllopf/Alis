@@ -41,7 +41,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Test
     /// <summary>
     ///     The video conversion tests class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class VideoConversionTests 
     {
         /// <summary>

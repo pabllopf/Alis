@@ -38,7 +38,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
     /// <summary>
     ///     The animation test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class AnimationTest 
     {
         /// <summary>

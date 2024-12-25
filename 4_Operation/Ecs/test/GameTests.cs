@@ -35,7 +35,7 @@ namespace Alis.Core.Ecs.Test
     /// <summary>
     ///     The game tests class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class GameTests 
     {
         /// <summary>

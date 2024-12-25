@@ -37,7 +37,7 @@ namespace Alis.Core.Network.Test
     /// <summary>
     ///     The web socket http context test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class WebSocketHttpContextTest 
     {
         /// <summary>

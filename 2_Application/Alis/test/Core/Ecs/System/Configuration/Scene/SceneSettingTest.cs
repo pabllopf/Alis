@@ -37,7 +37,7 @@ namespace Alis.Test.Core.Ecs.System.Configuration.Scene
     /// <summary>
     ///     The scene setting test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class SceneSettingTest 
     {
         /// <summary>

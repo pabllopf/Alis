@@ -37,7 +37,7 @@ namespace Alis.Test.Core.Ecs.Component.Body
     /// <summary>
     ///     The rigid body test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class RigidBodyTest 
     {
         /// <summary>

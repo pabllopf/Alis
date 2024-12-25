@@ -35,7 +35,7 @@ namespace Alis.App.Installer.Test
     /// <summary>
     ///     The default test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class DefaultTest 
     {
         /// <summary>

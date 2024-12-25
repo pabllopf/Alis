@@ -43,7 +43,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
     /// <summary>
     ///     The type def test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class TypeDefTest 
     {
         /// <summary>

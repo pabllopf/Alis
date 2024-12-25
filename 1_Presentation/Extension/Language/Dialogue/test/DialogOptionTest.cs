@@ -36,7 +36,7 @@ namespace Alis.Extension.Language.Dialogue.Test
     /// <summary>
     ///     The dialog option test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class DialogOptionTest 
     {
         /// <summary>

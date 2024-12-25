@@ -40,7 +40,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Test
     /// <summary>
     ///     The audio conversion tests class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class AudioConversionTests 
     {
         /// <summary>

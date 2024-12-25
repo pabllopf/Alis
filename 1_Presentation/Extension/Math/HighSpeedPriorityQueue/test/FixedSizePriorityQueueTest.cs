@@ -36,7 +36,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
     /// <summary>
     ///     The fixed size priority queue test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class FixedSizePriorityQueueTest 
     {
         /// <summary>

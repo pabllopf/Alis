@@ -37,7 +37,7 @@ namespace Alis.Test.Core.Ecs.Component.Audio
     /// <summary>
     ///     The audio recorder test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class AudioRecorderTest 
     {
         /// <summary>

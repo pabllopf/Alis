@@ -37,7 +37,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im color test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class ImColorTest 
     {
         /// <summary>

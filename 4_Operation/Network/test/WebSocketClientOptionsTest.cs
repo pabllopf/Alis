@@ -36,7 +36,7 @@ namespace Alis.Core.Network.Test
     /// <summary>
     ///     The web socket client options test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class WebSocketClientOptionsTest 
     {
         /// <summary>

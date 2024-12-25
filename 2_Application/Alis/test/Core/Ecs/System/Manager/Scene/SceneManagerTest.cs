@@ -37,7 +37,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
     /// <summary>
     ///     The scene manager test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class SceneManagerTest 
     {
         /// <summary>

@@ -35,7 +35,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The stb textedit state test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class StbTexteditStateTest 
     {
         /// <summary>

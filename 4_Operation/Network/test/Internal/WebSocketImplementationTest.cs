@@ -42,7 +42,7 @@ namespace Alis.Core.Network.Test.Internal
     /// <summary>
     ///     The web socket implementation test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class WebSocketImplementationTest 
     {
         /// <summary>

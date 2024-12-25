@@ -39,7 +39,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Test
     /// <summary>
     ///     The audio metadata tests class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class AudioMetadataTests 
     {
         /// <summary>

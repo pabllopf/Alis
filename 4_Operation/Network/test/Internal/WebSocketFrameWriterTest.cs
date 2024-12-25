@@ -39,7 +39,7 @@ namespace Alis.Core.Network.Test.Internal
     /// <summary>
     ///     The web socket frame writer test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class WebSocketFrameWriterTest 
     {
         /// <summary>

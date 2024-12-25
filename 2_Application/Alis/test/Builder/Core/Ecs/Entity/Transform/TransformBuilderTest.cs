@@ -37,7 +37,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Transform
     /// <summary>
     ///     The transform builder test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class TransformBuilderTest 
     {
         /// <summary>

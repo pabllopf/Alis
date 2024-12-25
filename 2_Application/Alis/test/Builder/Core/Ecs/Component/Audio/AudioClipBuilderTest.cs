@@ -37,7 +37,7 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Audio
     /// <summary>
     ///     The audio clip builder test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class AudioClipBuilderTest 
     {
         /// <summary>

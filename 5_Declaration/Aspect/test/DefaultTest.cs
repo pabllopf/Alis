@@ -35,7 +35,7 @@ namespace Alis.Core.Aspect.Test
     /// <summary>
     ///     The default test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class DefaultTest 
     {
         /// <summary>

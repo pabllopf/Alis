@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Sdl2Ttf.Test
     /// <summary>
     ///     The sdl ttf test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class SdlTtfTest 
     {
         /// <summary>

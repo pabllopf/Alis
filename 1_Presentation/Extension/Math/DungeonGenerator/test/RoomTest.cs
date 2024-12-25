@@ -37,7 +37,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
     /// <summary>
     ///     The room test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class RoomTest 
     {
         /// <summary>

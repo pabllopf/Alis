@@ -38,7 +38,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
     /// <summary>
     ///     The serialization tests class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class SerializationTests 
     {
         /// <summary>

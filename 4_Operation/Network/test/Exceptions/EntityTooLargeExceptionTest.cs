@@ -37,7 +37,7 @@ namespace Alis.Core.Network.Test.Exceptions
     /// <summary>
     ///     The entitytoolargeexceptiontest class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class EntityTooLargeExceptionTest 
     {
         /// <summary>

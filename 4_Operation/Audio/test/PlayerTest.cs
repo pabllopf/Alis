@@ -35,7 +35,7 @@ namespace Alis.Core.Audio.Test
     ///     The player test class
     /// </summary>
     
-    [ExcludeFromCodeCoverage] 
+     
 	 public class PlayerTest 
     {
         /*

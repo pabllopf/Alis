@@ -36,7 +36,7 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
     /// <summary>
     ///     The not null exception test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class NotNullExceptionTest 
     {
         /// <summary>

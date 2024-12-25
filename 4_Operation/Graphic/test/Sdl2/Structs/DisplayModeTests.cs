@@ -37,7 +37,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
     /// <summary>
     ///     The display mode tests class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class DisplayModeTests 
     {
         /// <summary>

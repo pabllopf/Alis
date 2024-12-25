@@ -52,7 +52,7 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration
     /// <summary>
     ///     The settings builder test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class SettingsBuilderTest 
     {
         /// <summary>

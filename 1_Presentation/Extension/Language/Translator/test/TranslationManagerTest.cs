@@ -38,7 +38,7 @@ namespace Alis.Extension.Language.Translator.Test
     /// <summary>
     ///     The translation manager test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class TranslationManagerTest 
     {
         /// <summary>

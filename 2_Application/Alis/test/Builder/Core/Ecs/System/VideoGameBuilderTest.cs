@@ -42,7 +42,7 @@ namespace Alis.Test.Builder.Core.Ecs.System
     /// <summary>
     ///     The video game builder test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class VideoGameBuilderTest 
     {
         /// <summary>

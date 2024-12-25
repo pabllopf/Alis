@@ -38,7 +38,7 @@ namespace Alis.Test.Core.Ecs.Component.Audio
     /// <summary>
     ///     The audio source test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class AudioSourceTest 
     {
         /// <summary>

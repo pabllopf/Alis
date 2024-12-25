@@ -37,7 +37,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Scene
     /// <summary>
     ///     The scene builder test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class SceneBuilderTest 
     {
         /// <summary>

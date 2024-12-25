@@ -39,7 +39,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Time
     /// <summary>
     ///     The time manager test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class TimeManagerTest 
     {
         /// <summary>

@@ -35,7 +35,7 @@ namespace Alis.Core.Aspect.Time.Test
     /// <summary>
     ///     The time configuration test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class TimeConfigurationTest 
     {
         /// <summary>

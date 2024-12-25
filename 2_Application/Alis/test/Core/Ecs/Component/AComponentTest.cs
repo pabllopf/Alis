@@ -39,7 +39,7 @@ namespace Alis.Test.Core.Ecs.Component
     /// <summary>
     ///     The component test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class AComponentTest 
     {
         /// <summary>

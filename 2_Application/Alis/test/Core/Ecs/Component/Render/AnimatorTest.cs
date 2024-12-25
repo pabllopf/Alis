@@ -42,7 +42,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
     /// <summary>
     ///     The animator test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class AnimatorTest 
     {
         /// <summary>

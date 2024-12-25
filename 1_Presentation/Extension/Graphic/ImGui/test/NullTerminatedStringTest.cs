@@ -37,7 +37,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The null terminated string test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class NullTerminatedStringTest 
     {
         /// <summary>

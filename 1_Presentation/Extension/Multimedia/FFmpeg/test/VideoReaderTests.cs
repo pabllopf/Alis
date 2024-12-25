@@ -39,7 +39,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Test
     /// <summary>
     ///     The video reader tests class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class VideoReaderTests 
     {
         /// <summary>

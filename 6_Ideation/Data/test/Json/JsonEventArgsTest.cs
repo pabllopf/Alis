@@ -38,7 +38,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
     /// <summary>
     ///     The json event args test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class JsonEventArgsTest 
     {
         /// <summary>

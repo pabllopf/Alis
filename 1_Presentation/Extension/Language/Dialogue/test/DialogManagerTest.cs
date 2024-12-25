@@ -37,7 +37,7 @@ namespace Alis.Extension.Language.Dialogue.Test
     /// <summary>
     ///     The dialog manager test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class DialogManagerTest 
     {
         /// <summary>

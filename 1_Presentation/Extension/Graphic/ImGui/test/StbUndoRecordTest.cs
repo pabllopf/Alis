@@ -35,7 +35,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The stb undo record test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class StbUndoRecordTest 
     {
         /// <summary>

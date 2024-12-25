@@ -37,7 +37,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
     /// <summary>
     ///     The controller button event tests class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class ControllerButtonEventTests 
     {
         /// <summary>

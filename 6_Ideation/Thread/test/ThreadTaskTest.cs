@@ -36,7 +36,7 @@ namespace Alis.Core.Aspect.Thread.Test
     /// <summary>
     ///     The thread task test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class ThreadTaskTest 
     {
         /// <summary>

@@ -37,7 +37,7 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Collider
     /// <summary>
     ///     The circle collider builder test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class CircleColliderBuilderTest 
     {
         /// <summary>

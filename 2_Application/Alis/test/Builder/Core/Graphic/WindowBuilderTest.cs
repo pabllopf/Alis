@@ -39,7 +39,7 @@ namespace Alis.Test.Builder.Core.Graphic
     /// <summary>
     ///     The window builder test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class WindowBuilderTest 
     {
         /// <summary>

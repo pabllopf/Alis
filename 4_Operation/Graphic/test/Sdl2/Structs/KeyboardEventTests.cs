@@ -38,7 +38,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
     /// <summary>
     ///     The keyboard event tests class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class KeyboardEventTests 
     {
         /// <summary>

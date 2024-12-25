@@ -34,7 +34,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test.Constructs
     /// <summary>
     ///     The gl shader test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class GlShaderTest 
     {
     }

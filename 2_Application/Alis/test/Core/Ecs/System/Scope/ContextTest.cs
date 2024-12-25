@@ -44,7 +44,7 @@ namespace Alis.Test.Core.Ecs.System.Scope
     /// <summary>
     ///     The context test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class ContextTest 
     {
         /// <summary>

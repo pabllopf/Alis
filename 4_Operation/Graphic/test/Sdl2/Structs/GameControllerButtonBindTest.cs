@@ -34,7 +34,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
     /// <summary>
     ///     The game controller button bind test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class GameControllerButtonBindTest 
     {
     }

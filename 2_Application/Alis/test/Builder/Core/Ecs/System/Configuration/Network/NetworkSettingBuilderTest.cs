@@ -37,7 +37,7 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration.Network
     /// <summary>
     ///     The network setting builder test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class NetworkSettingBuilderTest 
     {
         /// <summary>

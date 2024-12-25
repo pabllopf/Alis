@@ -37,7 +37,7 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration.Audio
     /// <summary>
     ///     The audio setting builder test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class AudioSettingBuilderTest 
     {
         /// <summary>

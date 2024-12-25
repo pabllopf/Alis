@@ -41,7 +41,7 @@ namespace Alis.Test.Core.Ecs.Entity
     /// <summary>
     ///     The scene test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class SceneTest 
     {
         /// <summary>

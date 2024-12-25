@@ -37,7 +37,7 @@ namespace Alis.Test.Core.Ecs.System.Configuration.General
     /// <summary>
     ///     The general setting test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class GeneralSettingTest 
     {
         /// <summary>

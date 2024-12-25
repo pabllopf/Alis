@@ -38,7 +38,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Properties
     /// <summary>
     ///     The im gui dlls test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class ImGuiDllsTest 
     {
         /// <summary>

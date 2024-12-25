@@ -37,7 +37,7 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration.General
     /// <summary>
     ///     The general setting builder test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class GeneralSettingBuilderTest 
     {
         /// <summary>

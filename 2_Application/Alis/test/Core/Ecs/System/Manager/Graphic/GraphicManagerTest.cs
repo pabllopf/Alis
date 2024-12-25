@@ -38,7 +38,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Graphic
     /// <summary>
     ///     The graphic manager test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class GraphicManagerTest 
     {
         /// <summary>

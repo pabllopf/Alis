@@ -35,7 +35,7 @@ namespace Alis.Core.Aspect.Time.Test
     /// <summary>
     ///     The time step test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class TimeStepTest 
     {
         /// <summary>

@@ -35,7 +35,7 @@ namespace Alis.Extension.Payment.Stripe.Test
     /// <summary>
     ///     The dummy test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class DummyTest 
     {
         /// <summary>

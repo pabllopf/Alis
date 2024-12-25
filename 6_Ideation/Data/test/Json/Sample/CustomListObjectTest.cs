@@ -38,7 +38,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Sample
     /// <summary>
     ///     The custom list object test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class CustomListObjectTest 
     {
         /// <summary>

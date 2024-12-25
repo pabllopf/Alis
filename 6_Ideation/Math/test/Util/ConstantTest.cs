@@ -36,7 +36,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
     /// <summary>
     ///     The constant test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class ConstantTest 
     {
         /// <summary>

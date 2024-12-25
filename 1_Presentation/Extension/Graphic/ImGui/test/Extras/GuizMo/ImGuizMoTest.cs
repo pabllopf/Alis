@@ -38,7 +38,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.GuizMo
     /// <summary>
     ///     The im guiz mo test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class ImGuizMoTest 
     {
         /// <summary>

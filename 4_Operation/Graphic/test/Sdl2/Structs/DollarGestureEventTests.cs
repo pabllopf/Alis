@@ -36,7 +36,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
     /// <summary>
     ///     The dollar gesture event tests class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class DollarGestureEventTests 
     {
         /// <summary>

@@ -37,7 +37,7 @@ namespace Alis.Extension.Profile.Test
     /// <summary>
     ///     The profiler test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class ProfilerTest 
     {
         /// <summary>

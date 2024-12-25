@@ -36,7 +36,7 @@ namespace Alis.Test.Core.Ecs.Component.Light
     /// <summary>
     ///     The directional light test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class DirectionalLightTest 
     {
         /// <summary>

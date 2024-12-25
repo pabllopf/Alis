@@ -36,7 +36,7 @@ namespace Alis.Core.Aspect.Math.Test.Definition
     /// <summary>
     ///     The depth tests class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class DepthTests 
     {
         /// <summary>

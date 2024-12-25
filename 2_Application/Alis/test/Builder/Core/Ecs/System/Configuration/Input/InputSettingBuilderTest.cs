@@ -37,7 +37,7 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration.Input
     /// <summary>
     ///     The input setting builder test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class InputSettingBuilderTest 
     {
         /// <summary>

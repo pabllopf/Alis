@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
     /// <summary>
     ///     The im plot  Fact class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class ImPlotTest 
     {
         /// <summary>

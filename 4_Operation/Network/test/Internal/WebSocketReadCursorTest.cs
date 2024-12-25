@@ -37,7 +37,7 @@ namespace Alis.Core.Network.Test.Internal
     /// <summary>
     ///     The web socket read cursor test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class WebSocketReadCursorTest 
     {
         /// <summary>

@@ -35,7 +35,7 @@ namespace Alis.Core.Aspect.Math.Test
     /// <summary>
     ///     The math test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class CustomMathFTest 
     {
         /// <summary>

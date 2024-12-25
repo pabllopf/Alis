@@ -41,7 +41,7 @@ namespace Alis.Core.Network.Test.Internal
     /// <summary>
     ///     The web socket frame reader test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class WebSocketFrameReaderTest 
     {
         /// <summary>
