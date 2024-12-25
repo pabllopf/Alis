@@ -235,6 +235,9 @@ namespace Alis.App.Hub.Windows.Sections
             string dirProject = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Editor");
             string[] directories = Directory.GetDirectories(dirProject, "v*", SearchOption.TopDirectoryOnly);
 
+            // Order directories by name in descending order:
+            Array.Sort(directories, (a, b) => string.Compare(b, a, StringComparison.Ordinal));
+
             foreach (string directory in directories)
             {
                 string version = Path.GetFileName(directory);
