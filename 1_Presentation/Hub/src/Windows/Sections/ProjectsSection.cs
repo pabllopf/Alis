@@ -130,14 +130,16 @@ namespace Alis.App.Hub.Windows.Sections
         private string GetEnginePath(string editorVersion)
         {
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
-            string enginePath = $"{basePath}Editor/{editorVersion}/Alis.App.Engine";
-
-            if (OperatingSystem.IsWindows())
+            string editorPath = Path.Combine(basePath, "Editor", editorVersion);
+            string searchPattern = OperatingSystem.IsWindows() ? "Alis.App.Engine.exe" : "Alis.App.Engine";
+            
+            string[] files = Directory.GetFiles(editorPath, searchPattern, SearchOption.AllDirectories);
+            if (files.Length == 0)
             {
-                enginePath += ".exe";
+                throw new FileNotFoundException($"Engine executable not found in {editorPath}");
             }
 
-            return enginePath;
+            return files[0];
         }
 
         /// <summary>
