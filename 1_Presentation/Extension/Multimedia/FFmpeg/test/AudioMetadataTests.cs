@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Extension.Multimedia.FFmpeg.Audio;
@@ -38,7 +39,8 @@ namespace Alis.Extension.Multimedia.FFmpeg.Test
     /// <summary>
     ///     The audio metadata tests class
     /// </summary>
-    public class AudioMetadataTests
+    	 [ExcludeFromCodeCoverage] 
+	 public class AudioMetadataTests 
     {
         /// <summary>
         ///     Tests that load metadata mp 3

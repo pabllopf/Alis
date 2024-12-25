@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Xunit;
 
@@ -35,7 +36,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
     /// <summary>
     ///     The controller touchpad event tests class
     /// </summary>
-    public class ControllerTouchpadEventTests
+    	 [ExcludeFromCodeCoverage] 
+	 public class ControllerTouchpadEventTests 
     {
         /// <summary>
         ///     Tests that controller touchpad event initializes properties correctly

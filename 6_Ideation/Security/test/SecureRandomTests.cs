@@ -27,12 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace Alis.Core.Aspect.Security.Test
 {
     /// <summary>
     ///     The secure random tests class
     /// </summary>
-    public class SecureRandomTests
+    	 [ExcludeFromCodeCoverage] 
+	 public class SecureRandomTests 
     {
     }
 }

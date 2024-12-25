@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Memory.Attributes;
 
 namespace Alis.Core.Aspect.Memory.Test
@@ -34,6 +35,7 @@ namespace Alis.Core.Aspect.Memory.Test
     /// <summary>
     ///     The validator test class
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class ValidatorTestClass
     {
         /// <summary>

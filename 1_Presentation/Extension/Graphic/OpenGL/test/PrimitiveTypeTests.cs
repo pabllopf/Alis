@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Graphic.OpenGL.Test
@@ -34,7 +35,8 @@ namespace Alis.Extension.Graphic.OpenGL.Test
     /// <summary>
     ///     The primitive type tests class
     /// </summary>
-    public class PrimitiveTypeTests
+    	 [ExcludeFromCodeCoverage] 
+	 public class PrimitiveTypeTests 
     {
         /// <summary>
         ///     Tests that points has value 0x 0000

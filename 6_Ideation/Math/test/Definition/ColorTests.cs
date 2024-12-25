@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Definition;
 using Xunit;
 
@@ -35,7 +36,8 @@ namespace Alis.Core.Aspect.Math.Test.Definition
     /// <summary>
     ///     The color tests class
     /// </summary>
-    public class ColorTests
+    	 [ExcludeFromCodeCoverage] 
+	 public class ColorTests 
     {
         /// <summary>
         ///     Tests that constructor sets properties correctly when given bytes

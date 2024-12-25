@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Core.Aspect.Security.Test
@@ -34,7 +35,8 @@ namespace Alis.Core.Aspect.Security.Test
     /// <summary>
     ///     The secure long tests class
     /// </summary>
-    public class SecureLongTests
+    	 [ExcludeFromCodeCoverage] 
+	 public class SecureLongTests 
     {
         /// <summary>
         ///     Tests that test secure long constructor

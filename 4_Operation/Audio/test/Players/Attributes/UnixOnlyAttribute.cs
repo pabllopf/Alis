@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using Xunit;
 
@@ -36,6 +37,7 @@ namespace Alis.Core.Audio.Test.Players.Attributes
     ///     The unix only attribute class
     /// </summary>
     /// <seealso cref="FactAttribute" />
+    [ExcludeFromCodeCoverage]
     public class UnixOnlyAttribute : FactAttribute
     {
         /// <summary>

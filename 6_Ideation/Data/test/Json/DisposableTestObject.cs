@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Core.Aspect.Data.Test.Json
 {
@@ -35,6 +36,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
     ///     The disposable test object class
     /// </summary>
     /// <seealso cref="IDisposable" />
+    [ExcludeFromCodeCoverage]
     public class DisposableTestObject : IDisposable
     {
         /// <summary>

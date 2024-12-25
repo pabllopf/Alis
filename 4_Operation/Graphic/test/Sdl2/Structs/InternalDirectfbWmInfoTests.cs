@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Xunit;
 
@@ -36,7 +37,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
     /// <summary>
     ///     The internal directfb wm info tests class
     /// </summary>
-    public class InternalDirectfbWmInfoTests
+    	 [ExcludeFromCodeCoverage] 
+	 public class InternalDirectfbWmInfoTests 
     {
         /// <summary>
         ///     Tests that internal directfb wm info initializes properties correctly

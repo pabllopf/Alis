@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Point;
 using Alis.Core.Graphic.Sdl2.Structs;
@@ -37,7 +38,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
     /// <summary>
     ///     The vertex tests class
     /// </summary>
-    public class VertexTests
+    	 [ExcludeFromCodeCoverage] 
+	 public class VertexTests 
     {
         /// <summary>
         ///     Tests that vertex initializes position correctly

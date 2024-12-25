@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Shape.Point;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Graphic.Sdl2;
@@ -40,6 +41,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
     /// <summary>
     ///     The sdl test class
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class SdlTestP4
     {
         /// <summary>
