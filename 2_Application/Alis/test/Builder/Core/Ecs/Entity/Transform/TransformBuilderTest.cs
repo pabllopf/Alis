@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Entity.Transform;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
@@ -36,7 +37,8 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Transform
     /// <summary>
     ///     The transform builder test class
     /// </summary>
-    public class TransformBuilderTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class TransformBuilderTest 
     {
         /// <summary>
         ///     Tests that transform builder default constructor valid input

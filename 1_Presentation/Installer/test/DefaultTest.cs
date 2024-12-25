@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.App.Installer.Test
@@ -34,7 +35,8 @@ namespace Alis.App.Installer.Test
     /// <summary>
     ///     The default test class
     /// </summary>
-    public class DefaultTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class DefaultTest 
     {
         /// <summary>
         ///     Tests that test

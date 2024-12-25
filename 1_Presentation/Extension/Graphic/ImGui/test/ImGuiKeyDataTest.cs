@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Graphic.ImGui.Test
@@ -34,7 +35,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im gui key data test class
     /// </summary>
-    public class ImGuiKeyDataTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ImGuiKeyDataTest 
     {
         /// <summary>
         ///     Tests that down should set and get correctly

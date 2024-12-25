@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Core.Aspect.Time.Test
@@ -34,7 +35,8 @@ namespace Alis.Core.Aspect.Time.Test
     /// <summary>
     ///     The time step test class
     /// </summary>
-    public class TimeStepTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class TimeStepTest 
     {
         /// <summary>
         ///     Tests that delta time get set should get and set correctly

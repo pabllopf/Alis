@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Ecs.Entity;
 using Alis.Test.Builder.Core.Ecs.Entity.GameObject.Sample;
@@ -38,7 +39,8 @@ namespace Alis.Test.Core.Ecs.Component
     /// <summary>
     ///     The component test class
     /// </summary>
-    public class AComponentTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class AComponentTest 
     {
         /// <summary>
         ///     Tests that on enable valid input

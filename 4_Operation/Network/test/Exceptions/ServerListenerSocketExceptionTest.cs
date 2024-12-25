@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Network.Exceptions;
 using Xunit;
 
@@ -36,7 +37,8 @@ namespace Alis.Core.Network.Test.Exceptions
     /// <summary>
     ///     The server listener socket exception test class
     /// </summary>
-    public class ServerListenerSocketExceptionTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ServerListenerSocketExceptionTest 
     {
         /// <summary>
         ///     Tests that server listener socket exception default constructor

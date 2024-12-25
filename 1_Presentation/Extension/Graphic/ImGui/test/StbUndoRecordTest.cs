@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Graphic.ImGui.Test
@@ -34,7 +35,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The stb undo record test class
     /// </summary>
-    public class StbUndoRecordTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class StbUndoRecordTest 
     {
         /// <summary>
         ///     Tests that where should be initialized correctly

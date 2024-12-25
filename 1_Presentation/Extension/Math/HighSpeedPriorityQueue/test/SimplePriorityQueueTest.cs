@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
@@ -36,7 +37,8 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
     /// <summary>
     ///     The simple priority queue test class
     /// </summary>
-    public class SimplePriorityQueueTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class SimplePriorityQueueTest 
     {
         /// <summary>
         ///     Tests that constructor initializes with default comparer and equality comparer

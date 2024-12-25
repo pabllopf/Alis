@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Data.Json;
 using Xunit;
 
@@ -36,7 +37,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
     /// <summary>
     ///     The member definition test class
     /// </summary>
-    public class MemberDefinitionTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class MemberDefinitionTest 
     {
         /// <summary>
         ///     Tests that add deserialization member null type throws argument null exception

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.ImGui.Extras.Plot;
 using Xunit;
@@ -36,7 +37,8 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
     /// <summary>
     ///     The im plot style test class
     /// </summary>
-    public class ImPlotStyleTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ImPlotStyleTest 
     {
         /// <summary>
         ///     Tests that line weight should be initialized

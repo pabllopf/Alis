@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Text;
 using Alis.Core.Network.Internal;
@@ -38,7 +39,8 @@ namespace Alis.Core.Network.Test.Internal
     /// <summary>
     ///     The web socket frame writer test class
     /// </summary>
-    public class WebSocketFrameWriterTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class WebSocketFrameWriterTest 
     {
         /// <summary>
         ///     Tests that write valid input

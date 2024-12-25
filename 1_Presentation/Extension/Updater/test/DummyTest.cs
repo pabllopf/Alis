@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Updater.Test
@@ -34,7 +35,8 @@ namespace Alis.Extension.Updater.Test
     /// <summary>
     ///     The dummy test class
     /// </summary>
-    public class DummyTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class DummyTest 
     {
         /// <summary>
         ///     Tests that default test

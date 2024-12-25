@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.System.Setting;
 using Alis.Builder.Core.Ecs.System.Setting.Audio;
 using Alis.Builder.Core.Ecs.System.Setting.General;
@@ -51,7 +52,8 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration
     /// <summary>
     ///     The settings builder test class
     /// </summary>
-    public class SettingsBuilderTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class SettingsBuilderTest 
     {
         /// <summary>
         ///     Tests that settings builder default constructor valid input

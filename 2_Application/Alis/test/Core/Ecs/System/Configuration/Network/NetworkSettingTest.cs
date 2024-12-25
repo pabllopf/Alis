@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.System.Setting.Network;
 using Alis.Core.Ecs.System.Configuration.Network;
 using Xunit;
@@ -36,7 +37,8 @@ namespace Alis.Test.Core.Ecs.System.Configuration.Network
     /// <summary>
     ///     The network setting test class
     /// </summary>
-    public class NetworkSettingTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class NetworkSettingTest 
     {
         /// <summary>
         ///     Tests that test network setting port

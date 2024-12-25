@@ -27,12 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace Alis.Extension.Graphic.OpenGL.Test.Enums
 {
     /// <summary>
     ///     The active attrib type test class
     /// </summary>
-    public class ActiveAttribTypeTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ActiveAttribTypeTest 
     {
     }
 }

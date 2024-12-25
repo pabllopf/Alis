@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Graphic.ImGui.Test
@@ -35,7 +36,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im gui list clipper test class
     /// </summary>
-    public class ImGuiListClipperTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ImGuiListClipperTest 
     {
         /// <summary>
         ///     Tests that display start should set and get correctly

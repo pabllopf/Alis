@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
@@ -37,7 +38,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im font config ptr test class
     /// </summary>
-    public class ImFontConfigPtrTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ImFontConfigPtrTest 
     {
         /// <summary>
         ///     Tests that native ptr should be initialized

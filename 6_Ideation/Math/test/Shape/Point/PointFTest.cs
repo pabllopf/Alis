@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Shape.Point;
 using Xunit;
 
@@ -35,7 +36,8 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
     /// <summary>
     ///     The point test class
     /// </summary>
-    public class PointFTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class PointFTest 
     {
         /// <summary>
         ///     Tests that constructor initializes properties correctly

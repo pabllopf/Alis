@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using Alis.Core.Aspect.Data.Json;
 using Xunit;
@@ -38,7 +39,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
     /// <summary>
     ///     The conversions test class
     /// </summary>
-    public class ConversionsTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ConversionsTest 
     {
         /// <summary>
         ///     Tests that test conversions change type

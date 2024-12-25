@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
@@ -35,7 +36,8 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
     /// <summary>
     ///     The fixed size priority queue test class
     /// </summary>
-    public class FixedSizePriorityQueueTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class FixedSizePriorityQueueTest 
     {
         /// <summary>
         ///     Tests that max size initially set

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Network.Internal;
 using Xunit;
 
@@ -36,7 +37,8 @@ namespace Alis.Core.Network.Test.Internal
     /// <summary>
     ///     The web socket read cursor test class
     /// </summary>
-    public class WebSocketReadCursorTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class WebSocketReadCursorTest 
     {
         /// <summary>
         ///     Tests that web socket read cursor constructor valid input

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
@@ -35,7 +36,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im gui platform ime data test class
     /// </summary>
-    public class ImGuiPlatformImeDataTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ImGuiPlatformImeDataTest 
     {
         /// <summary>
         ///     Tests that want visible should set and get correctly

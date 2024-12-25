@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Text;
 using System.Threading;
@@ -41,7 +42,8 @@ namespace Alis.Core.Network.Test
     /// <summary>
     ///     The web socket server factory test class
     /// </summary>
-    public class WebSocketServerFactoryTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class WebSocketServerFactoryTest 
     {
         /// <summary>
         ///     Tests that web socket server factory read http header from stream

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Profile.Test
@@ -34,7 +35,8 @@ namespace Alis.Extension.Profile.Test
     /// <summary>
     ///     The profiler service test class
     /// </summary>
-    public class ProfilerServiceTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ProfilerServiceTest 
     {
         /// <summary>
         ///     Tests that start profiling initializes cpu and memory usage

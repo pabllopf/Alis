@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Graphic.ImGui.Test
@@ -34,7 +35,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im gui table column sort specs test class
     /// </summary>
-    public class ImGuiTableColumnSortSpecsTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ImGuiTableColumnSortSpecsTest 
     {
         /// <summary>
         ///     Tests that column user id should be initialized

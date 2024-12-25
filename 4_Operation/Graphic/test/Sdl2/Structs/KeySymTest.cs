@@ -27,12 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
     /// <summary>
     ///     The key sym test class
     /// </summary>
-    public class KeySymTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class KeySymTest 
     {
     }
 }

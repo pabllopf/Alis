@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
@@ -41,7 +42,8 @@ namespace Alis.Test.Core.Ecs.Component.Render
     /// <summary>
     ///     The camera test class
     /// </summary>
-    public class CameraTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class CameraTest 
     {
         /// <summary>
         ///     Tests that builder when called returns camera builder

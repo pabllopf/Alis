@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Component.Light;
 using Alis.Core.Ecs.Component.Light;
 using Xunit;
@@ -36,7 +37,8 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Light
     /// <summary>
     ///     The area light builder test class
     /// </summary>
-    public class AreaLightBuilderTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class AreaLightBuilderTest 
     {
         /// <summary>
         ///     Tests that area light builder default constructor valid input

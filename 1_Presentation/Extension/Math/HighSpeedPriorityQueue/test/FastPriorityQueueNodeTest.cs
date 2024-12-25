@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
@@ -34,7 +35,8 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
     /// <summary>
     ///     The fast priority queue node test class
     /// </summary>
-    public class FastPriorityQueueNodeTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class FastPriorityQueueNodeTest 
     {
         /// <summary>
         ///     Tests that constructor initializes with correct max nodes

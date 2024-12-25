@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Entity.Scene;
 using Alis.Builder.Core.Ecs.System;
 using Xunit;
@@ -36,7 +37,8 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Scene
     /// <summary>
     ///     The scene builder test class
     /// </summary>
-    public class SceneBuilderTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class SceneBuilderTest 
     {
         /// <summary>
         ///     Tests that scene builder default constructor valid input

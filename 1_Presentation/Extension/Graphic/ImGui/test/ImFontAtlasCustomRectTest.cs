@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
@@ -36,7 +37,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im font atlas custom rect test class
     /// </summary>
-    public class ImFontAtlasCustomRectTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ImFontAtlasCustomRectTest 
     {
         /// <summary>
         ///     Tests that width should be initialized

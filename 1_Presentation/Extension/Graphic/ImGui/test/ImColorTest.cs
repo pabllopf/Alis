@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
@@ -36,7 +37,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im color test class
     /// </summary>
-    public class ImColorTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ImColorTest 
     {
         /// <summary>
         ///     Tests that value should be initialized correctly

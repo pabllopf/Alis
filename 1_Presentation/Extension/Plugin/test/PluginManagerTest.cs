@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -43,7 +44,8 @@ namespace Alis.Extension.Plugin.Test
     /// <summary>
     ///     The plugin manager test class
     /// </summary>
-    public class PluginManagerTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class PluginManagerTest 
     {
         /// <summary>
         ///     Tests that load plugins loads plugins from directory

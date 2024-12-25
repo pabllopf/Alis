@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
@@ -36,7 +37,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im font atlas ptr test class
     /// </summary>
-    public class ImFontAtlasPtrTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ImFontAtlasPtrTest 
     {
         /// <summary>
         ///     Tests that native ptr should be initialized

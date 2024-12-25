@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
@@ -35,7 +36,8 @@ namespace Alis.Core.Aspect.Math.Test
     /// <summary>
     ///     The transform test class
     /// </summary>
-    public class TransformTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class TransformTest 
     {
         /// <summary>
         ///     Tests that set should set position and angle

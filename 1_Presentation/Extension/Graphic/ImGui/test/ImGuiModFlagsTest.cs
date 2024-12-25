@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Graphic.ImGui.Test
@@ -34,7 +35,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im gui mod flags test class
     /// </summary>
-    public class ImGuiModFlagsTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ImGuiModFlagsTest 
     {
         /// <summary>
         ///     Tests that none should be initialized correctly

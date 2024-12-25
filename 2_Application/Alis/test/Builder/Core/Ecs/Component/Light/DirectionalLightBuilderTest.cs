@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Component.Light;
 using Xunit;
 
@@ -35,7 +36,8 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Light
     /// <summary>
     ///     The directional light builder test class
     /// </summary>
-    public class DirectionalLightBuilderTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class DirectionalLightBuilderTest 
     {
         /// <summary>
         ///     Tests that directional light builder default constructor valid input

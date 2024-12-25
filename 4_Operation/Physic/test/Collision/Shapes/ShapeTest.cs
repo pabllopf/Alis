@@ -27,12 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace Alis.Core.Physic.Test.Collision.Shapes
 {
     /// <summary>
     ///     The shape test class
     /// </summary>
-    public class ShapeTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ShapeTest 
     {
     }
 }

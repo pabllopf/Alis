@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using Alis.Core.Aspect.Data.Resource;
 using Xunit;
@@ -37,7 +38,8 @@ namespace Alis.Core.Aspect.Data.Test.Resource
     /// <summary>
     ///     The asset manager test class
     /// </summary>
-    public class AssetManagerTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class AssetManagerTest 
     {
         /// <summary>
         ///     Tests that find valid asset name should return correct path

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
@@ -36,7 +37,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im draw cmd test class
     /// </summary>
-    public class ImDrawCmdTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ImDrawCmdTest 
     {
         /// <summary>
         ///     Tests that clip rect should be initialized correctly

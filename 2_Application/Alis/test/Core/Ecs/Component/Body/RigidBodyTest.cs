@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Component.Body;
 using Alis.Core.Ecs.Component.Body;
 using Xunit;
@@ -36,7 +37,8 @@ namespace Alis.Test.Core.Ecs.Component.Body
     /// <summary>
     ///     The rigid body test class
     /// </summary>
-    public class RigidBodyTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class RigidBodyTest 
     {
         /// <summary>
         ///     Tests that rigid body default constructor valid input

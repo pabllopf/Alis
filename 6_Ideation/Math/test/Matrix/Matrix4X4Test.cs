@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Matrix;
 using Xunit;
 
@@ -35,7 +36,8 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
     /// <summary>
     ///     The matrix test class
     /// </summary>
-    public class Matrix4X4Test
+    	 [ExcludeFromCodeCoverage] 
+	 public class Matrix4X4Test 
     {
         /// <summary>
         ///     Tests that test identity matrix

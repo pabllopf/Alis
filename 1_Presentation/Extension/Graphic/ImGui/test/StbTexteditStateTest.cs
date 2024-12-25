@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Graphic.ImGui.Test
@@ -34,7 +35,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The stb textedit state test class
     /// </summary>
-    public class StbTexteditStateTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class StbTexteditStateTest 
     {
         /// <summary>
         ///     Tests that cursor should be initialized correctly

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using Alis.Core.Aspect.Time;
 using Alis.Core.Ecs.System;
@@ -38,7 +39,8 @@ namespace Alis.Test.Core.Ecs.System.Manager.Time
     /// <summary>
     ///     The time manager test class
     /// </summary>
-    public class TimeManagerTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class TimeManagerTest 
     {
         /// <summary>
         ///     Tests that constructor should initialize properties

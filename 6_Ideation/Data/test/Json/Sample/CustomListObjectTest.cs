@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Data.Json;
 using Xunit;
 
@@ -37,7 +38,8 @@ namespace Alis.Core.Aspect.Data.Test.Json.Sample
     /// <summary>
     ///     The custom list object test class
     /// </summary>
-    public class CustomListObjectTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class CustomListObjectTest 
     {
         /// <summary>
         ///     Tests that clear list is empty does not throw exception

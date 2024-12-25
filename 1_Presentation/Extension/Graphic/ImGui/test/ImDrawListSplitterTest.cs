@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Graphic.ImGui.Test
@@ -34,7 +35,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im draw list splitter test class
     /// </summary>
-    public class ImDrawListSplitterTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ImDrawListSplitterTest 
     {
         /// <summary>
         ///     Tests that current should set and get correctly

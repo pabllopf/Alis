@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Extension.Graphic.ImGui.Extras.Plot;
 using Xunit;
 
@@ -35,7 +36,8 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
     /// <summary>
     ///     The im plot input map test class
     /// </summary>
-    public class ImPlotInputMapTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ImPlotInputMapTest 
     {
         /// <summary>
         ///     Tests that pan should be initialized

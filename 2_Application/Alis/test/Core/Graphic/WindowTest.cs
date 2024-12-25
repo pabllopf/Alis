@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Graphic;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
@@ -38,7 +39,8 @@ namespace Alis.Test.Core.Graphic
     /// <summary>
     ///     The window test class
     /// </summary>
-    public class WindowTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class WindowTest 
     {
         /// <summary>
         ///     Tests that background set value should change background

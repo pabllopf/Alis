@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Component.Audio;
 using Alis.Core.Ecs.Component.Audio;
 using Xunit;
@@ -36,7 +37,8 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Audio
     /// <summary>
     ///     The audio clip builder test class
     /// </summary>
-    public class AudioClipBuilderTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class AudioClipBuilderTest 
     {
         /// <summary>
         ///     Tests that audio clip builder default constructor valid input

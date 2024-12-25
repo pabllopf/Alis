@@ -27,12 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace Alis.Core.Physic.Test.Controllers
 {
     /// <summary>
     ///     The controller test class
     /// </summary>
-    public class ControllerTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ControllerTest 
     {
     }
 }

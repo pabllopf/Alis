@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Network.Exceptions;
 using Xunit;
 
@@ -36,7 +37,8 @@ namespace Alis.Core.Network.Test.Exceptions
     /// <summary>
     ///     The web socket buffer overflow exception test class
     /// </summary>
-    public class WebSocketBufferOverflowExceptionTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class WebSocketBufferOverflowExceptionTest 
     {
         /// <summary>
         ///     Tests that web socket buffer overflow exception default constructor

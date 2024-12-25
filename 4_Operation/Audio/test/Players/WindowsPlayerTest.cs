@@ -27,12 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace Alis.Core.Audio.Test.Players
 {
     /// <summary>
     ///     The windows player test class
     /// </summary>
-    public class WindowsPlayerTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class WindowsPlayerTest 
     {
         /*
 

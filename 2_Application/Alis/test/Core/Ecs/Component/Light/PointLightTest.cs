@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Ecs.Component.Light;
 using Xunit;
 
@@ -35,7 +36,8 @@ namespace Alis.Test.Core.Ecs.Component.Light
     /// <summary>
     ///     The point light test class
     /// </summary>
-    public class PointLightTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class PointLightTest 
     {
         /// <summary>
         ///     Tests that point light default constructor valid input

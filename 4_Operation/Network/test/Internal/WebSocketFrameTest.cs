@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Net.WebSockets;
 using Alis.Core.Network.Internal;
 using Xunit;
@@ -37,7 +38,8 @@ namespace Alis.Core.Network.Test.Internal
     /// <summary>
     ///     The web socket frame test class
     /// </summary>
-    public class WebSocketFrameTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class WebSocketFrameTest 
     {
         /// <summary>
         ///     Tests that web socket frame constructor 1 valid input

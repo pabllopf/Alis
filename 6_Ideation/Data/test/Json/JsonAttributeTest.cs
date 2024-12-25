@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Data.Json;
 using Xunit;
 
@@ -35,7 +36,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
     /// <summary>
     ///     The json attribute test class
     /// </summary>
-    public class JsonAttributeTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class JsonAttributeTest 
     {
         /// <summary>
         ///     Tests that test constructor

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Xunit;
 
@@ -35,7 +36,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
     /// <summary>
     ///     The audio device event test class
     /// </summary>
-    public class AudioDeviceEventTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class AudioDeviceEventTest 
     {
         /// <summary>
         ///     Tests that audio device event initializes properties correctly

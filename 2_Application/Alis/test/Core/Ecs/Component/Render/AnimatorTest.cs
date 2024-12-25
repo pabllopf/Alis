@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Component.Render;
@@ -41,7 +42,8 @@ namespace Alis.Test.Core.Ecs.Component.Render
     /// <summary>
     ///     The animator test class
     /// </summary>
-    public class AnimatorTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class AnimatorTest 
     {
         /// <summary>
         ///     Tests that builder should return animator builder

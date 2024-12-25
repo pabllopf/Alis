@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data.Dll;
 using Xunit;
@@ -36,7 +37,8 @@ namespace Alis.Core.Aspect.Data.Test.Dll
     /// <summary>
     ///     The platform info test class
     /// </summary>
-    public class PlatformInfoTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class PlatformInfoTest 
     {
         /// <summary>
         ///     Tests that test platform info constructor

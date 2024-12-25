@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Core.Aspect.Time.Test
@@ -34,7 +35,8 @@ namespace Alis.Core.Aspect.Time.Test
     /// <summary>
     ///     The time configuration test class
     /// </summary>
-    public class TimeConfigurationTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class TimeConfigurationTest 
     {
         /// <summary>
         ///     Tests that constructor should set properties correctly

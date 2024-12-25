@@ -27,12 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
     /// <summary>
     ///     The hint test class
     /// </summary>
-    public class HintTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class HintTest 
     {
     }
 }

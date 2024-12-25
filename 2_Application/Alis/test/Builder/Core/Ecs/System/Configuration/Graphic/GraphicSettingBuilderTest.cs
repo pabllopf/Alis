@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.System.Setting.Graphic;
 using Alis.Builder.Core.Graphic;
 using Alis.Core.Ecs.System.Configuration.Graphic;
@@ -39,7 +40,8 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration.Graphic
     /// <summary>
     ///     The graphic setting builder test class
     /// </summary>
-    public class GraphicSettingBuilderTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class GraphicSettingBuilderTest 
     {
         /// <summary>
         ///     Tests that graphic setting builder default constructor valid input

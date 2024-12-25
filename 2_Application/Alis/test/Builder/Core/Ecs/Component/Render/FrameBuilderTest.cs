@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Component.Render;
 using Xunit;
@@ -36,7 +37,8 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Render
     /// <summary>
     ///     The frame builder test class
     /// </summary>
-    public class FrameBuilderTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class FrameBuilderTest 
     {
         /// <summary>
         ///     Tests that frame builder default constructor valid input

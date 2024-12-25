@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Graphic.ImGui.Test
@@ -35,7 +36,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im font glyph ranges builder test class
     /// </summary>
-    public class ImFontGlyphRangesBuilderTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ImFontGlyphRangesBuilderTest 
     {
         /// <summary>
         ///     Tests that used chars should be initialized

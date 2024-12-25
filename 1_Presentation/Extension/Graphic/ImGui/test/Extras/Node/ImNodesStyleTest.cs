@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.ImGui.Extras.Node;
 using Xunit;
@@ -36,7 +37,8 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
     /// <summary>
     ///     The im nodes style test class
     /// </summary>
-    public class ImNodesStyleTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ImNodesStyleTest 
     {
         /// <summary>
         ///     Tests that grid spacing should be initialized

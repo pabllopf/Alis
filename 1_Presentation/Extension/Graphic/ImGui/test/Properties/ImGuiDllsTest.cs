@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data.Dll;
 using Alis.Extension.Graphic.ImGui.Properties;
@@ -37,7 +38,8 @@ namespace Alis.Extension.Graphic.ImGui.Test.Properties
     /// <summary>
     ///     The im gui dlls test class
     /// </summary>
-    public class ImGuiDllsTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ImGuiDllsTest 
     {
         /// <summary>
         ///     Tests that im gui dll bytes should contain win x 86

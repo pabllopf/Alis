@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Core.Aspect.Test
@@ -34,7 +35,8 @@ namespace Alis.Core.Aspect.Test
     /// <summary>
     ///     The default test class
     /// </summary>
-    public class DefaultTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class DefaultTest 
     {
         /// <summary>
         ///     Tests that always returns true

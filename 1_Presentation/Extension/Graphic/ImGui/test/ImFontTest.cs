@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Graphic.ImGui.Test
@@ -35,7 +36,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im font test class
     /// </summary>
-    public class ImFontTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ImFontTest 
     {
         /// <summary>
         ///     Tests that index advance x should be initialized correctly

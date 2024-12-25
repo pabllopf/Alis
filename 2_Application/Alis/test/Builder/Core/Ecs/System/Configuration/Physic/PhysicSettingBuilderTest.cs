@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.System.Setting.Physic;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
@@ -38,7 +39,8 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration.Physic
     /// <summary>
     ///     The physic setting builder test class
     /// </summary>
-    public class PhysicSettingBuilderTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class PhysicSettingBuilderTest 
     {
         /// <summary>
         ///     Tests that physic setting builder default constructor valid input

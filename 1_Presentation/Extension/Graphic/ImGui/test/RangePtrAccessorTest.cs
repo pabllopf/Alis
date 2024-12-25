@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using Xunit;
 
@@ -36,7 +37,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The range ptr accessor test class
     /// </summary>
-    public class RangePtrAccessorTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class RangePtrAccessorTest 
     {
         /// <summary>
         ///     Tests that data should be initialized correctly

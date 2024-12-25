@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Extension.Graphic.ImGui.Extras.Node;
 using Xunit;
 
@@ -35,7 +36,8 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
     /// <summary>
     ///     The im nodes io test class
     /// </summary>
-    public class ImNodesIoTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ImNodesIoTest 
     {
         /// <summary>
         ///     Tests that three button mouse should be initialized
