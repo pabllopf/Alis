@@ -141,10 +141,10 @@ namespace Alis.Core.Ecs.System.Manager
         public virtual void OnAfterUpdate() => Logger.Trace("Manager after update.");
 
         /// <summary>
-        /// Ons the process pending changes
+        ///     Ons the process pending changes
         /// </summary>
         public virtual void OnProcessPendingChanges() => Logger.Trace("Manager process pending changes.");
-        
+
         /// <summary>
         ///     Ons the before fixed update
         /// </summary>
@@ -221,23 +221,23 @@ namespace Alis.Core.Ecs.System.Manager
         public virtual void OnDestroy() => Logger.Trace("Manager destroyed.");
 
         /// <summary>
-        /// Ons the save
+        ///     Ons the save
         /// </summary>
         public virtual void OnSave() => Logger.Trace("Manager saved.");
 
         /// <summary>
-        /// Ons the load
+        ///     Ons the load
         /// </summary>
         public virtual void OnLoad() => Logger.Trace("Manager loaded.");
 
         /// <summary>
-        /// Ons the save using the specified path
+        ///     Ons the save using the specified path
         /// </summary>
         /// <param name="path">The path</param>
         public virtual void OnSave(string path) => Logger.Trace("Manager saved.");
 
         /// <summary>
-        /// Ons the load using the specified path
+        ///     Ons the load using the specified path
         /// </summary>
         /// <param name="path">The path</param>
         public virtual void OnLoad(string path) => Logger.Trace("Manager loaded.");

@@ -123,6 +123,41 @@ namespace Alis.Core.Ecs.Entity
         public Transform Transform { get; set; }
 
         /// <summary>
+        ///     Gets the value of the pending components to add
+        /// </summary>
+        [JsonPropertyName("_PendingComponentsToAdd_")]
+        public List<AComponent> PendingComponentsToAdd { get; }
+
+        /// <summary>
+        ///     Gets the value of the pending components to remove
+        /// </summary>
+        [JsonPropertyName("_PendingComponentsToRemove_")]
+        public List<AComponent> PendingComponentsToRemove { get; }
+
+        /// <summary>
+        ///     Gets or sets the value of the layer
+        /// </summary>
+        [JsonPropertyName("_Layer_")]
+        public string Layer { get; set; } = "Default";
+
+        /// <summary>
+        ///     Clones this instance
+        /// </summary>
+        /// <returns>The object</returns>
+        public object Clone()
+        {
+            List<AComponent> componentsCloned = new List<AComponent>();
+            for (int i = 0; i < Components.Count; i++)
+            {
+                componentsCloned.Add((AComponent) Components[i].Clone());
+            }
+
+            Guid guid = Guid.NewGuid();
+
+            return new GameObject(IsEnable, Name, guid.ToString(), Tag, (Transform) Transform.Clone(), componentsCloned);
+        }
+
+        /// <summary>
         ///     Gets or sets the value of the is enable
         /// </summary>
         [JsonPropertyName("_IsEnable_")]
@@ -153,28 +188,10 @@ namespace Alis.Core.Ecs.Entity
         public List<AComponent> Components { get; set; }
 
         /// <summary>
-        /// Gets the value of the pending components to add
-        /// </summary>
-        [JsonPropertyName("_PendingComponentsToAdd_")]
-        public List<AComponent> PendingComponentsToAdd { get; }
-
-        /// <summary>
-        /// Gets the value of the pending components to remove
-        /// </summary>
-        [JsonPropertyName("_PendingComponentsToRemove_")]
-        public List<AComponent> PendingComponentsToRemove { get; }
-
-        /// <summary>
         ///     Gets or sets the value of the is static
         /// </summary>
         [JsonPropertyName("_IsStatic_")]
         public bool IsStatic { get; set; } = false;
-
-        /// <summary>
-        /// Gets or sets the value of the layer
-        /// </summary>
-        [JsonPropertyName("_Layer_")]
-        public string Layer { get; set; } = "Default";
 
         /// <summary>
         ///     Adds the component
@@ -315,68 +332,12 @@ namespace Alis.Core.Ecs.Entity
         }
 
         /// <summary>
-        /// Ons the process pending changes
+        ///     Ons the process pending changes
         /// </summary>
         public void OnProcessPendingChanges()
         {
             AddPendingComponents();
             RemovePendingComponents();
-        }
-
-        /// <summary>
-        /// Adds the pending components
-        /// </summary>
-        private void AddPendingComponents()
-        {
-            if (PendingComponentsToAdd.Count == 0) return;
-
-            PendingComponentsToAdd.Sort((x, y) => x.GetType().Name.CompareTo(y.GetType().Name));
-
-            foreach (AComponent component in PendingComponentsToAdd)
-            {
-                Components.Add(component);
-            }
-            foreach (AComponent component in PendingComponentsToAdd)
-            {
-                component.Attach(this);
-            }
-            foreach (AComponent component in PendingComponentsToAdd)
-            {
-                component.OnInit();
-            }
-            foreach (AComponent component in PendingComponentsToAdd)
-            {
-                component.OnAwake();
-            }
-            foreach (AComponent component in PendingComponentsToAdd)
-            {
-                component.OnStart();
-            }
-
-            PendingComponentsToAdd.Clear();
-        }
-
-        /// <summary>
-        /// Removes the pending components
-        /// </summary>
-        private void RemovePendingComponents()
-        {
-            if (PendingComponentsToRemove.Count == 0) return;
-            
-            foreach (AComponent component in PendingComponentsToRemove)
-            {
-                component.OnStop();
-            }
-            foreach (AComponent component in PendingComponentsToRemove)
-            {
-                component.OnExit();
-            }
-            foreach (AComponent component in PendingComponentsToRemove)
-            {
-                Components.Remove(component);
-            }
-
-            PendingComponentsToRemove.Clear();
         }
 
         /// <summary>
@@ -546,20 +507,94 @@ namespace Alis.Core.Ecs.Entity
         }
 
         /// <summary>
-        /// Ons the save
+        ///     Ons the save
         /// </summary>
         public void OnSave() => Components.ForEach(i => i.OnSave());
 
         /// <summary>
-        /// Ons the load
+        ///     Ons the load
         /// </summary>
         public void OnLoad() => Components.ForEach(i => i.OnLoad());
+
+        /// <summary>
+        ///     Ons the save using the specified path
+        /// </summary>
+        /// <param name="path">The path</param>
+        public void OnSave(string path) => Components.ForEach(i => i.OnSave(path));
+
+        /// <summary>
+        ///     Ons the load using the specified path
+        /// </summary>
+        /// <param name="path">The path</param>
+        public void OnLoad(string path) => Components.ForEach(i => i.OnLoad(path));
 
         /// <summary>
         ///     Builders this instance
         /// </summary>
         /// <returns>The game object builder</returns>
         public GameObjectBuilder Builder() => new GameObjectBuilder(_context);
+
+        /// <summary>
+        ///     Adds the pending components
+        /// </summary>
+        private void AddPendingComponents()
+        {
+            if (PendingComponentsToAdd.Count == 0) return;
+
+            PendingComponentsToAdd.Sort((x, y) => x.GetType().Name.CompareTo(y.GetType().Name));
+
+            foreach (AComponent component in PendingComponentsToAdd)
+            {
+                Components.Add(component);
+            }
+
+            foreach (AComponent component in PendingComponentsToAdd)
+            {
+                component.Attach(this);
+            }
+
+            foreach (AComponent component in PendingComponentsToAdd)
+            {
+                component.OnInit();
+            }
+
+            foreach (AComponent component in PendingComponentsToAdd)
+            {
+                component.OnAwake();
+            }
+
+            foreach (AComponent component in PendingComponentsToAdd)
+            {
+                component.OnStart();
+            }
+
+            PendingComponentsToAdd.Clear();
+        }
+
+        /// <summary>
+        ///     Removes the pending components
+        /// </summary>
+        private void RemovePendingComponents()
+        {
+            if (PendingComponentsToRemove.Count == 0) return;
+
+            foreach (AComponent component in PendingComponentsToRemove)
+            {
+                component.OnStop();
+            }
+
+            foreach (AComponent component in PendingComponentsToRemove)
+            {
+                component.OnExit();
+            }
+
+            foreach (AComponent component in PendingComponentsToRemove)
+            {
+                Components.Remove(component);
+            }
+
+            PendingComponentsToRemove.Clear();
+        }
 
         /// <summary>
         ///     Sets the context using the specified context
@@ -570,34 +605,5 @@ namespace Alis.Core.Ecs.Entity
             _context = context;
             Components.ForEach(i => i.Attach(this));
         }
-
-        /// <summary>
-        /// Clones this instance
-        /// </summary>
-        /// <returns>The object</returns>
-        public object Clone()
-        {
-            List<AComponent> componentsCloned = new List<AComponent>();
-            for (int i = 0; i < Components.Count; i++)
-            {
-                componentsCloned.Add((AComponent) Components[i].Clone());
-            }
-
-            Guid guid = Guid.NewGuid();
-
-            return new GameObject(IsEnable, Name, guid.ToString(), Tag, (Transform) Transform.Clone(), componentsCloned);
-        }
-
-        /// <summary>
-        /// Ons the save using the specified path
-        /// </summary>
-        /// <param name="path">The path</param>
-        public void OnSave(string path) => Components.ForEach(i => i.OnSave(path));
-
-        /// <summary>
-        /// Ons the load using the specified path
-        /// </summary>
-        /// <param name="path">The path</param>
-        public void OnLoad(string path) => Components.ForEach(i => i.OnLoad(path));
     }
 }

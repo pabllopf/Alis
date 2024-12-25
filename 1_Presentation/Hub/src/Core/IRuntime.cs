@@ -30,32 +30,32 @@
 namespace Alis.App.Hub.Core
 {
     /// <summary>
-    /// The runtime interface
+    ///     The runtime interface
     /// </summary>
     public interface IRuntime
     {
         /// <summary>
-        /// Ons the init
+        ///     Ons the init
         /// </summary>
         public void OnInit();
-        
+
         /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
         public void OnStart();
-        
+
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public void OnUpdate();
-        
+
         /// <summary>
-        /// Ons the render
+        ///     Ons the render
         /// </summary>
         public void OnRender();
-        
+
         /// <summary>
-        /// Ons the destroy
+        ///     Ons the destroy
         /// </summary>
         public void OnDestroy();
     }

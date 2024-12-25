@@ -47,29 +47,19 @@ namespace Alis.App.Engine.Windows
     public class AssetsWindow : IWindow
     {
         /// <summary>
-        /// The folder open
+        ///     The folder open
         /// </summary>
         private static readonly string WindowName = $"{FontAwesome5.FolderOpen} Assets";
 
         /// <summary>
         ///     The command ptr
         /// </summary>
-        private IntPtr commandPtr;
+        private readonly IntPtr commandPtr;
 
         /// <summary>
-        ///     The is open
+        ///     The file audio
         /// </summary>
-        private bool isOpen = true;
-
-        /// <summary>
-        /// The directory separator char
-        /// </summary>
-        private string CurrentPath = $"{Path.DirectorySeparatorChar}Assets";
-
-        /// <summary>
-        /// The file audio
-        /// </summary>
-        private Dictionary<string, string> fileIcons = new Dictionary<string, string>
+        private readonly Dictionary<string, string> fileIcons = new Dictionary<string, string>
         {
             {".png", FontAwesome5.FileImage},
             {".jpg", FontAwesome5.FileImage},
@@ -138,13 +128,33 @@ namespace Alis.App.Engine.Windows
             {".aiff", FontAwesome5.FileAudio},
             {".wma", FontAwesome5.FileAudio},
             {".mid", FontAwesome5.FileAudio},
-            {".midi", FontAwesome5.FileAudio},
+            {".midi", FontAwesome5.FileAudio}
         };
 
         /// <summary>
-        /// The ignore patterns
+        ///     The ignore patterns
         /// </summary>
-        private string[] ignorePatterns = new[] {"*.meta", "*.tmp", ".DS_Store"};
+        private readonly string[] ignorePatterns = {"*.meta", "*.tmp", ".DS_Store"};
+
+        /// <summary>
+        ///     The directory separator char
+        /// </summary>
+        private string CurrentPath = $"{Path.DirectorySeparatorChar}Assets";
+
+        /// <summary>
+        ///     The is move directory
+        /// </summary>
+        private bool IsMoveDirectory;
+
+        /// <summary>
+        ///     The is open
+        /// </summary>
+        private bool isOpen = true;
+
+        /// <summary>
+        ///     The search text
+        /// </summary>
+        private string searchText = "";
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="AssetsWindow" /> class
@@ -155,6 +165,11 @@ namespace Alis.App.Engine.Windows
             SpaceWork = spaceWork;
             commandPtr = Marshal.AllocHGlobal(256);
         }
+
+        /// <summary>
+        ///     Gets or sets the value of the is default size
+        /// </summary>
+        public bool IsDefaultSize { get; set; } = true;
 
         /// <summary>
         ///     Gets the value of the space work
@@ -328,7 +343,7 @@ namespace Alis.App.Engine.Windows
 
 
         /// <summary>
-        /// Renders the search bar
+        ///     Renders the search bar
         /// </summary>
         private void RenderSearchBar()
         {
@@ -336,23 +351,23 @@ namespace Alis.App.Engine.Windows
             ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X - 30);
 
             // Renderiza el cuadro de texto personalizado
-            
-            
-            if (ImGui.InputText("##SearchBar",  commandPtr, 256, ImGuiInputTextFlags.AlwaysOverwrite))
+
+
+            if (ImGui.InputText("##SearchBar", commandPtr, 256, ImGuiInputTextFlags.AlwaysOverwrite))
             {
                 searchText = Marshal.PtrToStringAnsi(commandPtr);
                 Console.WriteLine(searchText);
             }
-            
+
             ImGui.SameLine();
             ImGui.Text($"{FontAwesome5.Search}");
-            
+
             ImGui.Separator();
         }
 
 
         /// <summary>
-        /// Renders the files on folder using the specified text
+        ///     Renders the files on folder using the specified text
         /// </summary>
         /// <param name="text">The text</param>
         private void RenderFilesOnFolder(string text)
@@ -450,7 +465,7 @@ namespace Alis.App.Engine.Windows
 
                 // Fill remaining columns with invisible items
                 int totalItems = directories.Length + files.Length;
-                int emptyItems = columns - (totalItems % columns);
+                int emptyItems = columns - totalItems % columns;
                 if (emptyItems < columns)
                 {
                     for (int i = 0; i < emptyItems; i++)
@@ -468,7 +483,7 @@ namespace Alis.App.Engine.Windows
 
 
         /// <summary>
-        /// Renders the assets
+        ///     Renders the assets
         /// </summary>
         private void RenderAssets()
         {
@@ -536,12 +551,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// Gets or sets the value of the is default size
-        /// </summary>
-        public bool IsDefaultSize { get; set; } = true;
-
-        /// <summary>
-        /// Renders the folders
+        ///     Renders the folders
         /// </summary>
         private void RenderFolders()
         {
@@ -556,16 +566,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// The is move directory
-        /// </summary>
-        private bool IsMoveDirectory = false;
-        /// <summary>
-        /// The search text
-        /// </summary>
-        private string searchText = "";
-
-        /// <summary>
-        /// Renders the directory using the specified path
+        ///     Renders the directory using the specified path
         /// </summary>
         /// <param name="path">The path</param>
         /// <param name="isRoot">The is root</param>
@@ -598,7 +599,7 @@ namespace Alis.App.Engine.Windows
                             CurrentPath = relativePath.StartsWith($"{Path.DirectorySeparatorChar}") ? relativePath : $"{Path.DirectorySeparatorChar}{relativePath}";
                             IsMoveDirectory = true;
                         }
-                        
+
                         RenderSubDirectories(path);
                         ImGui.TreePop();
                     }
@@ -613,13 +614,11 @@ namespace Alis.App.Engine.Windows
                         IsMoveDirectory = true;
                     }
                 }
-
-                
             }
         }
 
         /// <summary>
-        /// Renders the sub directories using the specified path
+        ///     Renders the sub directories using the specified path
         /// </summary>
         /// <param name="path">The path</param>
         private void RenderSubDirectories(string path)
@@ -633,7 +632,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// Renders the path of folder
+        ///     Renders the path of folder
         /// </summary>
         private void RenderPathOfFolder()
         {
@@ -641,7 +640,7 @@ namespace Alis.App.Engine.Windows
             string[] folders = CurrentPath.Split(new[] {Path.DirectorySeparatorChar}, StringSplitOptions.RemoveEmptyEntries);
 
             // If only the "Assets" folder is present, render a button with the name "Assets"
-            if (folders.Length == 1 && folders[0] == "Assets")
+            if ((folders.Length == 1) && (folders[0] == "Assets"))
             {
                 if (ImGui.Button("Assets"))
                 {
@@ -671,7 +670,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// Renders the files on folder
+        ///     Renders the files on folder
         /// </summary>
         private void RenderFilesOnFolder()
         {
@@ -687,7 +686,6 @@ namespace Alis.App.Engine.Windows
             // Create a child window for scrolling
             if (ImGui.BeginChild("FilesAndFoldersRegion", ImGui.GetContentRegionAvail(), true, ImGuiWindowFlags.HorizontalScrollbar))
             {
-
                 // Set the width and height of each item (button + icon)
                 float itemWidth = 50.0f; // Width of each item
                 float itemHeight = 50.0f; // Height of each item
@@ -765,7 +763,7 @@ namespace Alis.App.Engine.Windows
 
                     // Fill remaining columns with invisible items
                     int totalItems = directories.Length + files.Length;
-                    int emptyItems = columns - (totalItems % columns);
+                    int emptyItems = columns - totalItems % columns;
                     if (emptyItems < columns)
                     {
                         for (int i = 0; i < emptyItems; i++)

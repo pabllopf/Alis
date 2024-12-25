@@ -30,12 +30,12 @@
 namespace Alis.App.Hub.Entity
 {
     /// <summary>
-    /// The installed version class
+    ///     The installed version class
     /// </summary>
     public class InstalledVersion
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="InstalledVersion"/> class
+        ///     Initializes a new instance of the <see cref="InstalledVersion" /> class
         /// </summary>
         /// <param name="version">The version</param>
         /// <param name="releaseDate">The release date</param>
@@ -48,15 +48,17 @@ namespace Alis.App.Hub.Entity
         }
 
         /// <summary>
-        /// Gets the value of the version
+        ///     Gets the value of the version
         /// </summary>
         public string Version { get; }
+
         /// <summary>
-        /// Gets the value of the release date
+        ///     Gets the value of the release date
         /// </summary>
         public string ReleaseDate { get; }
+
         /// <summary>
-        /// Gets the value of the install path
+        ///     Gets the value of the install path
         /// </summary>
         public string InstallPath { get; }
     }

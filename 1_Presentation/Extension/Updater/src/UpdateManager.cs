@@ -53,29 +53,33 @@ namespace Alis.Extension.Updater
         /// <summary>
         ///     The file service
         /// </summary>
-        private readonly IFileService _fileService;
+        public readonly IFileService _fileService;
 
         /// <summary>
         ///     The git hub api service
         /// </summary>
-        private readonly IGitHubApiService _gitHubApiService;
+        public readonly IGitHubApiService _gitHubApiService;
 
         /// <summary>
         ///     The program folder
         /// </summary>
-        private readonly string _programFolder;
+        public readonly string _programFolder;
+
+        public readonly string _versionToInstall;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="UpdateManager" /> class
         /// </summary>
         /// <param name="gitHubApiService">The git hub api service</param>
+        /// <param name="versionToInstall"></param>
         /// <param name="fileService">The file service</param>
         /// <param name="programFolder">The program folder</param>
-        public UpdateManager(IGitHubApiService gitHubApiService, IFileService fileService, string programFolder)
+        public UpdateManager(IGitHubApiService gitHubApiService, string versionToInstall, IFileService fileService, string programFolder)
         {
             _gitHubApiService = gitHubApiService;
             _fileService = fileService;
             _programFolder = programFolder;
+            _versionToInstall = versionToInstall;
         }
 
         /// <summary>
@@ -312,10 +316,33 @@ namespace Alis.Extension.Updater
         /// <returns>A task containing the object</returns>
         private async Task<Dictionary<string, object>> GetLatestReleaseAsync()
         {
-            using HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Add("User-Agent", "request");
-            string response = await client.GetStringAsync("https://api.github.com/repos/pabllopf/alis/releases/latest");
-            return JsonSerializer.Deserialize<Dictionary<string, object>>(response);
+            using HttpClient _httpClient = new HttpClient();
+
+            _httpClient.DefaultRequestHeaders.Add("User-Agent", "request");
+            string response = await _httpClient.GetStringAsync(_gitHubApiService.apiUrl);
+            List<Dictionary<string, object>> releases = JsonSerializer.Deserialize<List<Dictionary<string, object>>>(response);
+
+            foreach (Dictionary<string, object> release in releases)
+            {
+                string version = release["tag_name"]?.ToString();
+                if (version == _versionToInstall)
+                {
+                    return release;
+                }
+            }
+            if (releases.Count == 0)
+            {
+                Logger.Exception("No releases found.");
+                return null;
+            }
+            
+            if ("latest" == _versionToInstall)
+            {
+                return releases[0];
+            }
+
+            Logger.Exception("The latest version is already installed.");
+            return null;
         }
 
         /// <summary>

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AWindow.cs
+//  File:ASection.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,62 +32,59 @@ using Alis.App.Hub.Core;
 namespace Alis.App.Hub.Windows.Sections
 {
     /// <summary>
-    /// The section class
+    ///     The section class
     /// </summary>
-    /// <seealso cref="IRuntime"/>
+    /// <seealso cref="IRuntime" />
     public abstract class ASection : IRuntime
     {
         /// <summary>
-        /// Gets or sets the value of the space work
-        /// </summary>
-        public SpaceWork SpaceWork { get; set; }
-        
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ASection"/> class
+        ///     Initializes a new instance of the <see cref="ASection" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
-        public ASection(SpaceWork spaceWork)
-        {
-            SpaceWork = spaceWork;
-        }
-        
+        public ASection(SpaceWork spaceWork) => SpaceWork = spaceWork;
+
         /// <summary>
-        /// Gets or sets the value of the title
+        ///     Gets or sets the value of the space work
+        /// </summary>
+        public SpaceWork SpaceWork { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the title
         /// </summary>
         public string Title { get; set; } = "Window";
-        
+
         /// <summary>
-        /// Gets or sets the value of the is open
+        ///     Gets or sets the value of the is open
         /// </summary>
         public bool IsOpen { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the is focused
+        ///     Gets or sets the value of the is focused
         /// </summary>
         public bool IsFocused { get; set; }
-        
+
         /// <summary>
-        /// Ons the init
+        ///     Ons the init
         /// </summary>
         public abstract void OnInit();
-        
+
         /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
         public abstract void OnStart();
-        
+
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public abstract void OnUpdate();
-        
+
         /// <summary>
-        /// Ons the render
+        ///     Ons the render
         /// </summary>
         public abstract void OnRender();
-        
+
         /// <summary>
-        /// Ons the destroy
+        ///     Ons the destroy
         /// </summary>
         public abstract void OnDestroy();
     }

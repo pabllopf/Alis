@@ -484,7 +484,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igCombo_Str_arr")]
         public static extern byte igCombo_Str_arr(byte[] label, int currentItem, byte[][] items, int itemsCount, int popupMaxHeightInItems);
-        
+
         /// <summary>
         ///     Igs the combo str using the specified label
         /// </summary>

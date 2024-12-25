@@ -39,13 +39,13 @@ using Alis.Extension.Graphic.OpenGL.Enums;
 namespace Alis.App.Hub.Controllers
 {
     /// <summary>
-    /// The open gl controller class
+    ///     The open gl controller class
     /// </summary>
-    /// <seealso cref="AController"/>
+    /// <seealso cref="AController" />
     public class OpenGlController : AController
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="OpenGlController"/> class
+        ///     Initializes a new instance of the <see cref="OpenGlController" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
         public OpenGlController(SpaceWork spaceWork) : base(spaceWork)
@@ -53,7 +53,7 @@ namespace Alis.App.Hub.Controllers
         }
 
         /// <summary>
-        /// Ons the init
+        ///     Ons the init
         /// </summary>
         public override void OnInit()
         {
@@ -62,7 +62,7 @@ namespace Alis.App.Hub.Controllers
         }
 
         /// <summary>
-        /// Creates the gl context using the specified window
+        ///     Creates the gl context using the specified window
         /// </summary>
         /// <param name="window">The window</param>
         /// <returns>The gl context</returns>
@@ -76,7 +76,7 @@ namespace Alis.App.Hub.Controllers
 
             Sdl.MakeCurrent(window, glContext);
             Sdl.SetSwapInterval(1);
-            
+
             Gl.GlClearColor(0f, 0f, 0f, 1f);
             Gl.GlClear(ClearBufferMask.ColorBufferBit);
             Sdl.SwapWindow(window);
@@ -84,7 +84,7 @@ namespace Alis.App.Hub.Controllers
             Logger.Info($"GL Version: {Gl.GlGetString(StringName.Version)}");
             return glContext;
         }
-        
+
         /// <summary>
         ///     Loads the texture using the specified pixel data
         /// </summary>
@@ -108,7 +108,7 @@ namespace Alis.App.Hub.Controllers
 
 
         /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
         public override void OnStart()
         {
@@ -118,31 +118,28 @@ namespace Alis.App.Hub.Controllers
         }
 
         /// <summary>
-        /// Ons the start render
+        ///     Ons the start render
         /// </summary>
         public override void OnStartRender()
         {
-            
-        }
-        
-        /// <summary>
-        /// Ons the update
-        /// </summary>
-        public override void OnUpdate()
-        {
-            
         }
 
         /// <summary>
-        /// Ons the end render
+        ///     Ons the update
+        /// </summary>
+        public override void OnUpdate()
+        {
+        }
+
+        /// <summary>
+        ///     Ons the end render
         /// </summary>
         public override void OnEndRender()
         {
-            
         }
-        
+
         /// <summary>
-        /// Ons the destroy
+        ///     Ons the destroy
         /// </summary>
         public override void OnDestroy()
         {

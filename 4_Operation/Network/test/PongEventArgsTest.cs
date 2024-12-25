@@ -32,7 +32,6 @@ using Xunit;
 
 namespace Alis.Core.Network.Test
 {
-    
     /// <summary>
     ///     The pong event args test class
     /// </summary>

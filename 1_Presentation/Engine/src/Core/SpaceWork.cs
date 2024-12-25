@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -64,11 +63,6 @@ namespace Alis.App.Engine.Core
         public readonly ImGuizmoDemo imGuizmoDemo = new ImGuizmoDemo();
 
         /// <summary>
-        /// The settings window
-        /// </summary>
-        public readonly SettingsWindow SettingsWindow;
-
-        /// <summary>
         ///     The im node demo
         /// </summary>
         public readonly ImNodeDemo imNodeDemo = new ImNodeDemo();
@@ -79,9 +73,24 @@ namespace Alis.App.Engine.Core
         public readonly ImPlotDemo imPlotDemo = new ImPlotDemo();
 
         /// <summary>
+        ///     The settings window
+        /// </summary>
+        public readonly SettingsWindow SettingsWindow;
+
+        /// <summary>
+        ///     The quit
+        /// </summary>
+        public bool _quit = false;
+
+        /// <summary>
         ///     The context
         /// </summary>
         public IntPtr ContextGui;
+
+        /// <summary>
+        ///     The font loaded 10 solid
+        /// </summary>
+        public ImFontPtr fontLoaded10Solid;
 
         /// <summary>
         ///     The font loaded 16 light
@@ -92,6 +101,11 @@ namespace Alis.App.Engine.Core
         ///     The font loaded 16 solid
         /// </summary>
         public ImFontPtr fontLoaded16Solid;
+
+        /// <summary>
+        ///     The font loaded 30 bold
+        /// </summary>
+        public ImFontPtr fontLoaded30Bold;
 
         /// <summary>
         ///     The font loaded 30 bold
@@ -129,15 +143,6 @@ namespace Alis.App.Engine.Core
         public IntPtr Window;
 
         /// <summary>
-        /// The font loaded 10 solid
-        /// </summary>
-        public ImFontPtr fontLoaded10Solid;
-        /// <summary>
-        /// The font loaded 30 bold
-        /// </summary>
-        public ImFontPtr fontLoaded30Bold;
-
-        /// <summary>
         ///     Initializes a new instance of the <see cref="SpaceWork" /> class
         /// </summary>
         public SpaceWork()
@@ -152,26 +157,21 @@ namespace Alis.App.Engine.Core
             ProjectWindow = new ProjectWindow(this);
             AudioPlayerWindow = new AudioPlayerWindow(this);
             AssetsWindow = new AssetsWindow(this);
-            
+
             TopMenu = new TopMenu(this);
             TopMenuMac = new TopMenuMac(this);
             BottomMenu = new BottomMenu(this);
-            
+
             Project = JsonSerializer.Deserialize<Project>(File.ReadAllText(Path.Combine(Path.GetTempPath(), "projectConfig.json")));
         }
 
         /// <summary>
-        ///     The quit
-        /// </summary>
-        public bool _quit = false;
-        
-        /// <summary>
-        /// Gets the value of the is mac os
+        ///     Gets the value of the is mac os
         /// </summary>
         public bool IsMacOs => RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
 
         /// <summary>
-        /// Gets or sets the value of the top menu mac
+        ///     Gets or sets the value of the top menu mac
         /// </summary>
         public TopMenuMac TopMenuMac { get; set; }
 
@@ -211,7 +211,7 @@ namespace Alis.App.Engine.Core
         internal TopMenu TopMenu { get; }
 
         /// <summary>
-        /// Gets the value of the dock space menu
+        ///     Gets the value of the dock space menu
         /// </summary>
         internal DockSpaceMenu DockSpaceMenu { get; }
 
@@ -234,14 +234,14 @@ namespace Alis.App.Engine.Core
         ///     Gets or sets the value of the fps
         /// </summary>
         public int Fps { get; set; } = 60;
-        
+
         /// <summary>
-        /// Gets or sets the value of the project
+        ///     Gets or sets the value of the project
         /// </summary>
         public Project Project { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the event
+        ///     Gets or sets the value of the event
         /// </summary>
         public Event Event { get; set; }
 
@@ -344,7 +344,6 @@ namespace Alis.App.Engine.Core
             ProjectWindow.Render();
             AudioPlayerWindow.Render();
             AssetsWindow.Render();
-            
         }
     }
 }

@@ -34,13 +34,13 @@ using MonoMac.AppKit;
 namespace Alis.App.Engine.Menus
 {
     /// <summary>
-    /// The top menu mac class
+    ///     The top menu mac class
     /// </summary>
-    /// <seealso cref="IMenu"/>
+    /// <seealso cref="IMenu" />
     public class TopMenuMac : IMenu
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TopMenuMac"/> class
+        ///     Initializes a new instance of the <see cref="TopMenuMac" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
         public TopMenuMac(SpaceWork spaceWork)
@@ -50,42 +50,41 @@ namespace Alis.App.Engine.Menus
         }
 
         /// <summary>
-        /// Gets the value of the space work
+        ///     Gets the value of the space work
         /// </summary>
         public SpaceWork SpaceWork { get; }
 
         /// <summary>
-        /// Initializes this instance
+        ///     Initializes this instance
         /// </summary>
         public void Initialize()
         {
-
             ConfigureMenu();
         }
 
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         public void Start()
         {
         }
 
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         public void Update()
         {
         }
 
         /// <summary>
-        /// Renders this instance
+        ///     Renders this instance
         /// </summary>
         public void Render()
         {
         }
-        
+
         /// <summary>
-        /// Configures the menu
+        ///     Configures the menu
         /// </summary>
         [Conditional("OSX")]
         private static void ConfigureMenu()
@@ -245,7 +244,7 @@ namespace Alis.App.Engine.Menus
         }
 
         /// <summary>
-        /// Adds the menu using the specified main menu
+        ///     Adds the menu using the specified main menu
         /// </summary>
         /// <param name="mainMenu">The main menu</param>
         /// <param name="title">The title</param>

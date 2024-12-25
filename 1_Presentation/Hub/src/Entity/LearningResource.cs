@@ -30,12 +30,12 @@
 namespace Alis.App.Hub.Entity
 {
     /// <summary>
-    /// The learning resource class
+    ///     The learning resource class
     /// </summary>
     public class LearningResource
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="LearningResource"/> class
+        ///     Initializes a new instance of the <see cref="LearningResource" /> class
         /// </summary>
         /// <param name="title">The title</param>
         /// <param name="description">The description</param>
@@ -48,15 +48,17 @@ namespace Alis.App.Hub.Entity
         }
 
         /// <summary>
-        /// Gets the value of the title
+        ///     Gets the value of the title
         /// </summary>
         public string Title { get; }
+
         /// <summary>
-        /// Gets the value of the description
+        ///     Gets the value of the description
         /// </summary>
         public string Description { get; }
+
         /// <summary>
-        /// Gets the value of the url
+        ///     Gets the value of the url
         /// </summary>
         public string Url { get; }
     }

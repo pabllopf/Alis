@@ -1,1 +1,7 @@
-{"__type":"Alis.Core.Ecs.System.Manager.Scene.ScenesMap","_Scenes_":[0,1]}
+{
+  "__type": "Alis.Core.Ecs.System.Manager.Scene.ScenesMap",
+  "_Scenes_": [
+    0,
+    1
+  ]
+}

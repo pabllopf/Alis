@@ -40,7 +40,7 @@ using PixelFormat = Alis.Extension.Graphic.OpenGL.Enums.PixelFormat;
 namespace Alis.App.Hub.Utils
 {
     /// <summary>
-    /// The image loader class
+    ///     The image loader class
     /// </summary>
     public static class ImageLoader
     {
@@ -82,6 +82,5 @@ namespace Alis.App.Hub.Utils
 
             return (IntPtr) textureId;
         }
-
     }
 }

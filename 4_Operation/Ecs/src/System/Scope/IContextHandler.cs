@@ -60,27 +60,28 @@ namespace Alis.Core.Ecs.System.Scope
         void Exit();
 
         /// <summary>
-        /// Saves this instance
+        ///     Saves this instance
         /// </summary>
         void Save();
+
         /// <summary>
-        /// Loads this instance
+        ///     Loads this instance
         /// </summary>
         void Load();
-        
+
         /// <summary>
-        /// Loads the and run
+        ///     Loads the and run
         /// </summary>
         void LoadAndRun();
 
         /// <summary>
-        /// Saves the path
+        ///     Saves the path
         /// </summary>
         /// <param name="path">The path</param>
         void Save(string path);
-        
+
         /// <summary>
-        /// Loads the path
+        ///     Loads the path
         /// </summary>
         /// <param name="path">The path</param>
         void Load(string path);

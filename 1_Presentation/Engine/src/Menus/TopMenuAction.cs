@@ -42,23 +42,23 @@ using MonoMac.AppKit;
 namespace Alis.App.Engine.Menus
 {
     /// <summary>
-    /// The top menu action class
+    ///     The top menu action class
     /// </summary>
     public static class TopMenuAction
     {
         /// <summary>
-        /// The space work
+        ///     The space work
         /// </summary>
         private static SpaceWork spaceWork;
 
         // Diccionario para mapear las acciones del menú con sus métodos
         /// <summary>
-        /// The action
+        ///     The action
         /// </summary>
         private static readonly Dictionary<string, Action> MenuActions = new Dictionary<string, Action>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TopMenuAction"/> class
+        ///     Initializes a new instance of the <see cref="TopMenuAction" /> class
         /// </summary>
         static TopMenuAction()
         {
@@ -70,7 +70,7 @@ namespace Alis.App.Engine.Menus
             MenuActions.Add("Quit Alis", QuitAlis);
 
             MenuActions.Add("Save", Save);
-            
+
             MenuActions.Add("New Scene", NewScene);
             MenuActions.Add("New Project", NewProject);
             MenuActions.Add("Open Project", OpenProject);
@@ -152,7 +152,7 @@ namespace Alis.App.Engine.Menus
         }
 
         /// <summary>
-        /// Saves
+        ///     Saves
         /// </summary>
         private static void Save()
         {
@@ -162,11 +162,12 @@ namespace Alis.App.Engine.Menus
             {
                 File.Delete(file);
             }
+
             ImGui.SaveIniSettingsToDisk(file);
         }
 
         /// <summary>
-        /// Executes the menu action using the specified action
+        ///     Executes the menu action using the specified action
         /// </summary>
         /// <param name="action">The action</param>
         public static void ExecuteMenuAction(string action)
@@ -183,7 +184,7 @@ namespace Alis.App.Engine.Menus
 
         // Métodos de las acciones del menú
         /// <summary>
-        /// Abouts the alis
+        ///     Abouts the alis
         /// </summary>
         private static void AboutAlis()
         {
@@ -198,6 +199,7 @@ namespace Alis.App.Engine.Menus
                 };
                 alert.RunModal();
             }
+
             if (OperatingSystem.IsWindows() || OperatingSystem.IsLinux())
             {
                 ImGui.OpenPopup("About Alis");
@@ -209,27 +211,28 @@ namespace Alis.App.Engine.Menus
                     {
                         ImGui.CloseCurrentPopup();
                     }
+
                     ImGui.EndPopup();
                 }
             }
         }
 
         /// <summary>
-        /// Preferenceses
+        ///     Preferenceses
         /// </summary>
         private static void Preferences()
         {
         }
 
         /// <summary>
-        /// Quits the alis
+        ///     Quits the alis
         /// </summary>
         private static void QuitAlis()
         {
         }
 
         /// <summary>
-        /// News the scene
+        ///     News the scene
         /// </summary>
         private static void NewScene()
         {
@@ -237,39 +240,38 @@ namespace Alis.App.Engine.Menus
                 .Name("New Scene")
                 .Add<GameObject>(camera => camera
                     .Name("Main Camera")
-                    .AddComponent(new Camera()) 
+                    .AddComponent(new Camera())
                     .Build())
                 .Build();
-            
+
             spaceWork.VideoGame.Context.SceneManager.Add(scene);
             spaceWork.VideoGame.Save();
             spaceWork.VideoGame.Context.SceneManager.LoadScene(scene);
         }
-        
+
         /// <summary>
-        /// Saves the as scene template
+        ///     Saves the as scene template
         /// </summary>
         private static void SaveAsSceneTemplate()
         {
-            
         }
 
         /// <summary>
-        /// News the project
+        ///     News the project
         /// </summary>
         private static void NewProject()
         {
         }
 
         /// <summary>
-        /// Opens the project
+        ///     Opens the project
         /// </summary>
         private static void OpenProject()
         {
         }
 
         /// <summary>
-        /// Saves the project
+        ///     Saves the project
         /// </summary>
         private static void SaveProject()
         {
@@ -278,21 +280,21 @@ namespace Alis.App.Engine.Menus
         }
 
         /// <summary>
-        /// Builds the profiles
+        ///     Builds the profiles
         /// </summary>
         private static void BuildProfiles()
         {
         }
 
         /// <summary>
-        /// Builds the and run
+        ///     Builds the and run
         /// </summary>
         private static void BuildAndRun()
         {
         }
 
         /// <summary>
-        /// Closes
+        ///     Closes
         /// </summary>
         private static void Close()
         {
@@ -300,476 +302,476 @@ namespace Alis.App.Engine.Menus
         }
 
         /// <summary>
-        /// Undoes
+        ///     Undoes
         /// </summary>
         private static void Undo()
         {
         }
 
         /// <summary>
-        /// Redoes
+        ///     Redoes
         /// </summary>
         private static void Redo()
         {
         }
 
         /// <summary>
-        /// Undoes the history
+        ///     Undoes the history
         /// </summary>
         private static void UndoHistory()
         {
         }
 
         /// <summary>
-        /// Selects the all
+        ///     Selects the all
         /// </summary>
         private static void SelectAll()
         {
         }
 
         /// <summary>
-        /// Deselects the all
+        ///     Deselects the all
         /// </summary>
         private static void DeselectAll()
         {
         }
 
         /// <summary>
-        /// Selects the children
+        ///     Selects the children
         /// </summary>
         private static void SelectChildren()
         {
         }
 
         /// <summary>
-        /// Selects the prefab root
+        ///     Selects the prefab root
         /// </summary>
         private static void SelectPrefabRoot()
         {
         }
 
         /// <summary>
-        /// Inverts the selection
+        ///     Inverts the selection
         /// </summary>
         private static void InvertSelection()
         {
         }
 
         /// <summary>
-        /// Selections the groups
+        ///     Selections the groups
         /// </summary>
         private static void SelectionGroups()
         {
         }
 
         /// <summary>
-        /// Cuts
+        ///     Cuts
         /// </summary>
         private static void Cut()
         {
         }
 
         /// <summary>
-        /// Copies
+        ///     Copies
         /// </summary>
         private static void Copy()
         {
         }
 
         /// <summary>
-        /// Pastes
+        ///     Pastes
         /// </summary>
         private static void Paste()
         {
         }
 
         /// <summary>
-        /// Pastes the special
+        ///     Pastes the special
         /// </summary>
         private static void PasteSpecial()
         {
         }
 
         /// <summary>
-        /// Duplicates
+        ///     Duplicates
         /// </summary>
         private static void Duplicate()
         {
         }
 
         /// <summary>
-        /// Renames
+        ///     Renames
         /// </summary>
         private static void Rename()
         {
         }
 
         /// <summary>
-        /// Deletes
+        ///     Deletes
         /// </summary>
         private static void Delete()
         {
         }
 
         /// <summary>
-        /// Frames the selected in scene
+        ///     Frames the selected in scene
         /// </summary>
         private static void FrameSelectedInScene()
         {
         }
 
         /// <summary>
-        /// Frames the selected in window
+        ///     Frames the selected in window
         /// </summary>
         private static void FrameSelectedInWindow()
         {
         }
 
         /// <summary>
-        /// Locks the view to selected
+        ///     Locks the view to selected
         /// </summary>
         private static void LockViewToSelected()
         {
         }
 
         /// <summary>
-        /// Searches
+        ///     Searches
         /// </summary>
         private static void Search()
         {
         }
 
         /// <summary>
-        /// Plays
+        ///     Plays
         /// </summary>
         private static void Play()
         {
         }
 
         /// <summary>
-        /// Pauses
+        ///     Pauses
         /// </summary>
         private static void Pause()
         {
         }
 
         /// <summary>
-        /// Steps
+        ///     Steps
         /// </summary>
         private static void Step()
         {
         }
 
         /// <summary>
-        /// Projects the settings
+        ///     Projects the settings
         /// </summary>
         private static void ProjectSettings()
         {
         }
 
         /// <summary>
-        /// Clears the all player prefs
+        ///     Clears the all player prefs
         /// </summary>
         private static void ClearAllPlayerPrefs()
         {
         }
 
         /// <summary>
-        /// Lightings
+        ///     Lightings
         /// </summary>
         private static void Lighting()
         {
         }
 
         /// <summary>
-        /// Graphicses the tier
+        ///     Graphicses the tier
         /// </summary>
         private static void GraphicsTier()
         {
         }
 
         /// <summary>
-        /// Renderings
+        ///     Renderings
         /// </summary>
         private static void Rendering()
         {
         }
 
         /// <summary>
-        /// Creates
+        ///     Creates
         /// </summary>
         private static void Create()
         {
         }
 
         /// <summary>
-        /// Imports the new asset
+        ///     Imports the new asset
         /// </summary>
         private static void ImportNewAsset()
         {
         }
 
         /// <summary>
-        /// Imports the package
+        ///     Imports the package
         /// </summary>
         private static void ImportPackage()
         {
         }
 
         /// <summary>
-        /// Exports the package
+        ///     Exports the package
         /// </summary>
         private static void ExportPackage()
         {
         }
 
         /// <summary>
-        /// Finds the references in scene
+        ///     Finds the references in scene
         /// </summary>
         private static void FindReferencesInScene()
         {
         }
 
         /// <summary>
-        /// Opens the asset
+        ///     Opens the asset
         /// </summary>
         private static void OpenAsset()
         {
         }
 
         /// <summary>
-        /// Reimports
+        ///     Reimports
         /// </summary>
         private static void Reimport()
         {
         }
 
         /// <summary>
-        /// Reimports the all
+        ///     Reimports the all
         /// </summary>
         private static void ReimportAll()
         {
         }
 
         /// <summary>
-        /// Refreshes
+        ///     Refreshes
         /// </summary>
         private static void Refresh()
         {
         }
 
         /// <summary>
-        /// Removes the unused assets
+        ///     Removes the unused assets
         /// </summary>
         private static void RemoveUnusedAssets()
         {
         }
 
         /// <summary>
-        /// Creates the empty
+        ///     Creates the empty
         /// </summary>
         private static void CreateEmpty()
         {
         }
 
         /// <summary>
-        /// Creates the empty child
+        ///     Creates the empty child
         /// </summary>
         private static void CreateEmptyChild()
         {
         }
 
         /// <summary>
-        /// Creates the 2 d object
+        ///     Creates the 2 d object
         /// </summary>
         private static void Create2DObject()
         {
         }
 
         /// <summary>
-        /// Creates the ui
+        ///     Creates the ui
         /// </summary>
         private static void CreateUI()
         {
         }
 
         /// <summary>
-        /// Creates the light
+        ///     Creates the light
         /// </summary>
         private static void CreateLight()
         {
         }
 
         /// <summary>
-        /// Creates the audio
+        ///     Creates the audio
         /// </summary>
         private static void CreateAudio()
         {
         }
 
         /// <summary>
-        /// Creates the tilemap
+        ///     Creates the tilemap
         /// </summary>
         private static void CreateTilemap()
         {
         }
 
         /// <summary>
-        /// Aligns the with view
+        ///     Aligns the with view
         /// </summary>
         private static void AlignWithView()
         {
         }
 
         /// <summary>
-        /// Aligns the view to selected
+        ///     Aligns the view to selected
         /// </summary>
         private static void AlignViewToSelected()
         {
         }
 
         /// <summary>
-        /// Moves the to view
+        ///     Moves the to view
         /// </summary>
         private static void MoveToView()
         {
         }
 
         /// <summary>
-        /// Renames the game object
+        ///     Renames the game object
         /// </summary>
         private static void RenameGameObject()
         {
         }
 
         /// <summary>
-        /// Duplicates the game object
+        ///     Duplicates the game object
         /// </summary>
         private static void DuplicateGameObject()
         {
         }
 
         /// <summary>
-        /// Deletes the game object
+        ///     Deletes the game object
         /// </summary>
         private static void DeleteGameObject()
         {
         }
 
         /// <summary>
-        /// Adds the component
+        ///     Adds the component
         /// </summary>
         private static void AddComponent()
         {
         }
 
         /// <summary>
-        /// Physicses the 2 d
+        ///     Physicses the 2 d
         /// </summary>
         private static void Physics2D()
         {
         }
 
         /// <summary>
-        /// Renderings the 2 d
+        ///     Renderings the 2 d
         /// </summary>
         private static void Rendering2D()
         {
         }
 
         /// <summary>
-        /// Audioes the component
+        ///     Audioes the component
         /// </summary>
         private static void AudioComponent()
         {
         }
 
         /// <summary>
-        /// Uis the component
+        ///     Uis the component
         /// </summary>
         private static void UIComponent()
         {
         }
 
         /// <summary>
-        /// Scriptses the component
+        ///     Scriptses the component
         /// </summary>
         private static void ScriptsComponent()
         {
         }
 
         /// <summary>
-        /// Sprites the editor
+        ///     Sprites the editor
         /// </summary>
         private static void SpriteEditor()
         {
         }
 
         /// <summary>
-        /// Tilemaps the editor
+        ///     Tilemaps the editor
         /// </summary>
         private static void TilemapEditor()
         {
         }
 
         /// <summary>
-        /// Animations the editor
+        ///     Animations the editor
         /// </summary>
         private static void AnimationEditor()
         {
         }
 
         /// <summary>
-        /// Customs the tools
+        ///     Customs the tools
         /// </summary>
         private static void CustomTools()
         {
         }
 
         /// <summary>
-        /// Generals the window
+        ///     Generals the window
         /// </summary>
         private static void GeneralWindow()
         {
         }
 
         /// <summary>
-        /// Scenes the view window
+        ///     Scenes the view window
         /// </summary>
         private static void SceneViewWindow()
         {
         }
 
         /// <summary>
-        /// Games the view window
+        ///     Games the view window
         /// </summary>
         private static void GameViewWindow()
         {
         }
 
         /// <summary>
-        /// Inspectors the window
+        ///     Inspectors the window
         /// </summary>
         private static void InspectorWindow()
         {
         }
 
         /// <summary>
-        /// Hierarchies the window
+        ///     Hierarchies the window
         /// </summary>
         private static void HierarchyWindow()
         {
         }
 
         /// <summary>
-        /// Consoles the window
+        ///     Consoles the window
         /// </summary>
         private static void ConsoleWindow()
         {
         }
 
         /// <summary>
-        /// Alises the manual
+        ///     Alises the manual
         /// </summary>
         private static void AlisManual()
         {
@@ -777,7 +779,7 @@ namespace Alis.App.Engine.Menus
         }
 
         /// <summary>
-        /// Apis the reference
+        ///     Apis the reference
         /// </summary>
         private static void APIReference()
         {
@@ -785,9 +787,9 @@ namespace Alis.App.Engine.Menus
             // https://www.alisengine.com/en/v0.4.0/api/Alis.html
             OpenUrl("https://www.alisengine.com/en/v0.4.0/api/Alis.html");
         }
-        
+
         /// <summary>
-        /// Opens the url using the specified url
+        ///     Opens the url using the specified url
         /// </summary>
         /// <param name="url">The url</param>
         private static void OpenUrl(string url)
@@ -802,7 +804,7 @@ namespace Alis.App.Engine.Menus
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
                     url = url.Replace("&", "^&");
-                    Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
+                    Process.Start(new ProcessStartInfo(url) {UseShellExecute = true});
                 }
                 else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
                 {
@@ -820,7 +822,7 @@ namespace Alis.App.Engine.Menus
         }
 
         /// <summary>
-        /// Reports the bug
+        ///     Reports the bug
         /// </summary>
         private static void ReportBug()
         {
@@ -828,7 +830,7 @@ namespace Alis.App.Engine.Menus
         }
 
         /// <summary>
-        /// Sets the space work using the specified space
+        ///     Sets the space work using the specified space
         /// </summary>
         /// <param name="space">The space</param>
         public static void SetSpaceWork(SpaceWork space)

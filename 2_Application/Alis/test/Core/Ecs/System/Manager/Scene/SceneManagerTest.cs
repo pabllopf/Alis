@@ -302,7 +302,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             sceneManager.Clear<Alis.Core.Ecs.Entity.Scene>();
             Assert.Empty(sceneManager.Scenes);
         }
-        
+
 
         /// <summary>
         ///     Tests that reload scene valid scene sets current scene

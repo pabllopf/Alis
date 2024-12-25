@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Engine.cs
+//  File:HubEngine.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -44,7 +44,7 @@ namespace Alis.App.Hub
         ///     The windows
         /// </summary>
         private readonly SpaceWork spaceWork = new SpaceWork();
-        
+
         /// <summary>
         ///     Starts this instance
         /// </summary>
@@ -53,7 +53,7 @@ namespace Alis.App.Hub
         {
             spaceWork.OnInit();
             spaceWork.OnStart();
-            
+
             while (spaceWork.IsRunning)
             {
                 while (Sdl.PollEvent(out Event e) != 0)
@@ -66,19 +66,19 @@ namespace Alis.App.Hub
                 ImGui.SetNextWindowPos(spaceWork.ViewportHub.WorkPos);
                 ImGui.SetNextWindowSize(spaceWork.ViewportHub.Size);
                 ImGui.Begin("DockSpace Demo", spaceWork.Dockspaceflags);
-                
+
                 Vector2F dockSize = spaceWork.ViewportHub.Size - new Vector2F(5, 85);
                 uint dockSpaceId = ImGui.GetId("MyDockSpace");
                 ImGui.DockSpace(dockSpaceId, dockSize);
-                
+
                 spaceWork.OnUpdate();
 
                 ImGui.End();
-                
-                
+
+
                 spaceWork.OnEndRender();
             }
-            
+
             spaceWork.OnDestroy();
         }
     }

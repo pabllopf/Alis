@@ -550,7 +550,6 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The object</returns>
         internal static object CreateInstanceFromDictionary(Type type, object target, int elementsCount, JsonOptions options, object value)
         {
-
             if (value is IDictionary dictionary)
             {
                 // Get all public constructors
@@ -3853,21 +3852,20 @@ namespace Alis.Core.Aspect.Data.Json
             if (value is Stream stream)
             {
                 byte[] buffer = new byte[stream.Length];
-                # if NET9_0_OR_GREATER
+# if NET9_0_OR_GREATER
                 stream.ReadExactly(buffer, 0, buffer.Length);
-                # else
+# else
                 stream.Read(buffer, 0, buffer.Length);
-                #endif
-                
+#endif
+
                 writer.Write(Convert.ToBase64String(buffer));
                 return true;
             }
 
             return false;
         }
-        
 
-        
+
         /// <summary>
         ///     Writes the base 64 stream using the specified writer
         /// </summary>

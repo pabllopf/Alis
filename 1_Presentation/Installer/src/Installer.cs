@@ -172,6 +172,26 @@ namespace Alis.App.Installer
             arguments = args;
             Logger.Info(@$"Starting {NameEngine} with args: {string.Join(", ", arguments)}");
 
+            string versionToInstall = null;
+
+            for (int i = 0; i < args.Length; i++)
+            {
+                if (args[i] == "-versionToInstall" && i + 1 < args.Length)
+                {
+                    versionToInstall = args[i + 1];
+                }
+            }
+
+            if (versionToInstall != null)
+            {
+                Logger.Info(@$"Version to install: {versionToInstall}");
+            }
+            else
+            {
+                versionToInstall = "latest";
+                Logger.Warning($"Version to install: {versionToInstall}");
+            }
+
             // initialize SDL and set a few defaults for the OpenGL context
             if (Sdl.Init(InitSettings.InitEverything) != 0)
             {
@@ -409,9 +429,12 @@ namespace Alis.App.Installer
                 Sdl.SetWindowIcon(spaceWork.Window, icon);
             }
 
-            string api = "https://api.github.com/repos/pabllopf/alis/releases/latest";
-            string dirProject = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin");
-            UpdateManager manager = new UpdateManager(new GitHubApiService(api), new FileService(), dirProject);
+            string api = $"https://api.github.com/repos/pabllopf/alis/releases";
+            string dirProject = Path.Combine(Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory)!.FullName)!.FullName, "Editor", $"{versionToInstall}");
+            Logger.Info(@$"API: {api}");
+            Logger.Info(@$"DIR: {dirProject}");
+            Logger.Info(@$"Starting UpdateManager");
+            UpdateManager manager = new UpdateManager(new GitHubApiService(api), versionToInstall, new FileService(), dirProject);
             Task<bool> task = manager.Start();
             //task.Start();
 
@@ -422,6 +445,7 @@ namespace Alis.App.Installer
             double lastUpdateTime = 0;
             Clock clock = new Clock();
             clock.Start();
+            Logger.Info(@$"Starting {NameEngine}");
 
             spaceWork.Start();
             while (!_quit)
@@ -734,7 +758,7 @@ namespace Alis.App.Installer
             Gl.VertexAttribPointer(_shader["UV"].Location, 2, VertexAttribPointerType.Float, false, drawVertSize, uvOffset);
             Gl.VertexAttribPointer(_shader["Color"].Location, 4, VertexAttribPointerType.UnsignedByte, true, drawVertSize, colOffset);
         }
-        
+
         /// <summary>
         ///     Creates the gl context using the specified window
         /// </summary>

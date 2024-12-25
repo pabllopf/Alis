@@ -155,8 +155,8 @@ namespace Alis.Core.Aspect.Math.Vector
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool operator ==(Vector3F left, Vector3F right) => (System.Math.Abs(left.X - right.X) < 0.1f)
-                                                                       && (System.Math.Abs(left.Y - right.Y) < 0.1f)
-                                                                       && (System.Math.Abs(left.Z - right.Z) < 0.1f);
+                                                                         && (System.Math.Abs(left.Y - right.Y) < 0.1f)
+                                                                         && (System.Math.Abs(left.Z - right.Z) < 0.1f);
 
         /// <summary>Returns a value that indicates whether two specified vectors are not equal.</summary>
         /// <param name="left">The first vector to compare.</param>
@@ -235,8 +235,8 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <returns>The dot product.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Dot(Vector3F vector1, Vector3F vector2) => vector1.X * vector2.X
-                                                                     + vector1.Y * vector2.Y
-                                                                     + vector1.Z * vector2.Z;
+                                                                       + vector1.Y * vector2.Y
+                                                                       + vector1.Z * vector2.Z;
 
         /// <summary>Returns a vector with the same direction as the specified vector, but with a length of one.</summary>
         /// <param name="value">The vector to normalize.</param>

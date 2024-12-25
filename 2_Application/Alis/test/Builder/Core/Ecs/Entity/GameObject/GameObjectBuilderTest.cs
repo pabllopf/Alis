@@ -30,7 +30,6 @@
 using Alis.Builder.Core.Ecs.Entity.GameObject;
 using Alis.Builder.Core.Ecs.Entity.Transform;
 using Alis.Builder.Core.Ecs.System;
-using Alis.Test.Builder.Core.Ecs.Entity.GameObject.Sample;
 using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
@@ -105,7 +104,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
 
             Assert.Equal("Test Tag", gameObjectBuilder.Build().Tag);
         }
-        
+
         /// <summary>
         ///     Tests that name should set name of game object
         /// </summary>

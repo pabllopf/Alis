@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SceneNameMap.cs
+//  File:ScenesMap.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -31,45 +31,44 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Alis.Core.Aspect.Data.Json;
-using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Core.Ecs.System.Manager.Scene
 {
     /// <summary>
-    /// The scenes map class
+    ///     The scenes map class
     /// </summary>
     public class ScenesMap
     {
         /// <summary>
-        /// Gets or sets the value of the scenes
+        ///     Gets or sets the value of the scenes
         /// </summary>
         [JsonPropertyName("_Scenes_")]
         public List<int> Scenes { get; set; } = new List<int>();
-        
+
         /// <summary>
-        /// Adds the scene using the specified scene id
+        ///     Adds the scene using the specified scene id
         /// </summary>
         /// <param name="sceneId">The scene id</param>
         public void AddScene(int sceneId) => Scenes.Add(sceneId);
-        
+
         /// <summary>
-        /// Removes the scene using the specified scene id
+        ///     Removes the scene using the specified scene id
         /// </summary>
         /// <param name="sceneId">The scene id</param>
         public void RemoveScene(int sceneId) => Scenes.Remove(sceneId);
-        
+
         /// <summary>
-        /// Clears this instance
+        ///     Clears this instance
         /// </summary>
         public void Clear() => Scenes.Clear();
 
         /// <summary>
-        /// Loads this instance
+        ///     Loads this instance
         /// </summary>
         /// <returns>The scenes map</returns>
         public ScenesMap Load()
         {
-            string pathFile =  Path.Combine(Environment.CurrentDirectory, "Data", "ScenesMap.json");
+            string pathFile = Path.Combine(Environment.CurrentDirectory, "Data", "ScenesMap.json");
             if (!File.Exists(pathFile))
             {
                 string json = JsonSerializer.Serialize(this, new JsonOptions
@@ -77,14 +76,14 @@ namespace Alis.Core.Ecs.System.Manager.Scene
                     DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
                     SerializationOptions = JsonSerializationOptions.Default
                 });
-                
+
                 if (!Directory.Exists(Path.Combine(Environment.CurrentDirectory, "Data")))
                 {
                     Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "Data"));
                 }
-                
+
                 File.WriteAllText(pathFile, json);
-                
+
                 return this;
             }
 
@@ -94,25 +93,25 @@ namespace Alis.Core.Ecs.System.Manager.Scene
                 SerializationOptions = JsonSerializationOptions.Default
             });
         }
-        
+
         /// <summary>
-        /// Saves this instance
+        ///     Saves this instance
         /// </summary>
         public void Save()
         {
-            string pathFile =  Path.Combine(Environment.CurrentDirectory, "Data", "ScenesMap.json");
-            
+            string pathFile = Path.Combine(Environment.CurrentDirectory, "Data", "ScenesMap.json");
+
             if (!Directory.Exists(Path.Combine(Environment.CurrentDirectory, "Data")))
             {
                 Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "Data"));
             }
-            
+
             string json = JsonSerializer.Serialize(this, new JsonOptions
             {
                 DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
                 SerializationOptions = JsonSerializationOptions.Default
             });
-            
+
             File.WriteAllText(pathFile, json);
         }
     }

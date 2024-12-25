@@ -40,26 +40,26 @@ using Alis.Extension.Graphic.ImGui.Native;
 namespace Alis.App.Engine.Menus
 {
     /// <summary>
-    /// The dock space menu class
+    ///     The dock space menu class
     /// </summary>
-    /// <seealso cref="IMenu"/>
+    /// <seealso cref="IMenu" />
     internal class DockSpaceMenu : IMenu
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DockSpaceMenu"/> class
+        ///     Initializes a new instance of the <see cref="DockSpaceMenu" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
         public DockSpaceMenu(SpaceWork spaceWork) => SpaceWork = spaceWork;
 
         /// <summary>
-        /// Initializes this instance
+        ///     Initializes this instance
         /// </summary>
         public void Initialize()
         {
         }
 
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         public void Update()
         {
@@ -146,7 +146,7 @@ namespace Alis.App.Engine.Menus
                 if (ImGui.BeginCombo($"##{scene.Id}", $"{FontAwesome5.Cube} {scene.Name}"))
                 {
                     // Show the scenes of game: 
-                    for(int i = 0; i < scenes.Count; i++)
+                    for (int i = 0; i < scenes.Count; i++)
                     {
                         Scene s = scenes[i];
                         if (ImGui.Selectable($"{FontAwesome5.Cube} {s.Name}"))
@@ -253,28 +253,28 @@ namespace Alis.App.Engine.Menus
 
 
         /// <summary>
-        /// Renders this instance
+        ///     Renders this instance
         /// </summary>
         void IRuntime.Render()
         {
         }
 
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         public void Start()
         {
         }
 
         /// <summary>
-        /// Renders this instance
+        ///     Renders this instance
         /// </summary>
         void IRenderable.Render()
         {
         }
 
         /// <summary>
-        /// Gets the value of the space work
+        ///     Gets the value of the space work
         /// </summary>
         public SpaceWork SpaceWork { get; }
     }

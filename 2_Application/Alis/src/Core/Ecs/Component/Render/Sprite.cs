@@ -315,12 +315,9 @@ namespace Alis.Core.Ecs.Component.Render
         }
 
         /// <summary>
-        /// Clones this instance
+        ///     Clones this instance
         /// </summary>
         /// <returns>The object</returns>
-        public override object Clone()
-        {
-            return new Sprite(NameFile, Depth, Flips);
-        }
+        public override object Clone() => new Sprite(NameFile, Depth, Flips);
     }
 }

@@ -44,12 +44,7 @@ namespace Alis.Extension.Updater.Services.Api
         ///     The http client
         /// </summary>
         private readonly HttpClient _httpClient;
-
-        /// <summary>
-        ///     The api url
-        /// </summary>
-        private readonly string apiUrl;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="GitHubApiService" /> class
         /// </summary>
@@ -70,5 +65,7 @@ namespace Alis.Extension.Updater.Services.Api
             string response = await _httpClient.GetStringAsync(apiUrl);
             return JsonSerializer.Deserialize<Dictionary<string, object>>(response);
         }
+
+        public string apiUrl { get; }
     }
 }

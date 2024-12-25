@@ -55,7 +55,6 @@ using PixelFormat = Alis.Extension.Graphic.OpenGL.Enums.PixelFormat;
 using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 
 
-
 namespace Alis.App.Engine
 {
     /// <summary>
@@ -117,7 +116,7 @@ namespace Alis.App.Engine
         ///     The gl context
         /// </summary>
         private IntPtr _glContext;
-        
+
         /// <summary>
         ///     The shader
         /// </summary>
@@ -142,18 +141,18 @@ namespace Alis.App.Engine
         ///     The dockspaceflags
         /// </summary>
         private ImGuiWindowFlags dockspaceflags;
-        
+
+        /// <summary>
+        ///     The engine path
+        /// </summary>
+        private string enginePath;
+
         /// <summary>
         ///     The windows
         /// </summary>
         private SpaceWork spaceWork = new SpaceWork();
 
-        /// <summary>
-        /// The engine path
-        /// </summary>
-        private string enginePath;
 
-        
         /// <summary>
         ///     Starts this instance
         /// </summary>
@@ -174,7 +173,7 @@ namespace Alis.App.Engine
             }
 
             enginePath = AppDomain.CurrentDomain.BaseDirectory;
-            
+
             Environment.CurrentDirectory = spaceWork.Project.Path;
             spaceWork = new SpaceWork();
             spaceWork.Initialize();
@@ -207,8 +206,8 @@ namespace Alis.App.Engine
             {
                 flags |= WindowSettings.WindowFullscreen;
             }
-            
-            
+
+
             flags |= WindowSettings.WindowMaximized;
 
             if (highDpi)
@@ -291,7 +290,7 @@ namespace Alis.App.Engine
                 Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {FontAwesome5.NameSolid} {e.Message}");
                 return;
             }
-            
+
             string fontFileSolid10 = AssetManager.Find("Engine_JetBrainsMono-Bold.ttf");
             spaceWork.fontLoaded10Solid = fonts.AddFontFromFileTtf(fontFileSolid10, 12);
             try
@@ -339,7 +338,7 @@ namespace Alis.App.Engine
                 GCHandle iconRangesHandle = GCHandle.Alloc(IconRanges, GCHandleType.Pinned);
 
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
-                
+
                 string fontAwesome = AssetManager.Find(FontAwesome5.NameSolid);
                 fonts.AddFontFromFileTtf(fontAwesome, 40, icons_config, rangePtr);
             }
@@ -348,7 +347,7 @@ namespace Alis.App.Engine
                 Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {FontAwesome5.NameSolid} {e.Message}");
                 return;
             }
-            
+
             string fontFileSolid30 = AssetManager.Find("Engine_JetBrainsMono-Bold.ttf");
             spaceWork.fontLoaded30Bold = fonts.AddFontFromFileTtf(fontFileSolid30, 28);
             try
@@ -367,7 +366,7 @@ namespace Alis.App.Engine
                 GCHandle iconRangesHandle = GCHandle.Alloc(IconRanges, GCHandleType.Pinned);
 
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
-                
+
                 string fontAwesome = AssetManager.Find(FontAwesome5.NameSolid);
                 fonts.AddFontFromFileTtf(fontAwesome, 28, icons_config, rangePtr);
             }
@@ -465,9 +464,9 @@ namespace Alis.App.Engine
             }
 
             spaceWork.Start();
-            
+
             ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_default_config.ini"));
-            
+
             while (!spaceWork._quit)
             {
                 while (Sdl.PollEvent(out Event e) != 0)
@@ -505,7 +504,7 @@ namespace Alis.App.Engine
                 ImGuizMo.BeginFrame();
 
                 Environment.CurrentDirectory = spaceWork.Project.Path;
-                
+
                 // Setup display size (every frame to accommodate for window resizing)
                 Vector2F windowSize = Sdl.GetWindowSize(spaceWork.Window);
                 Sdl.GetDrawableSize(spaceWork.Window, out int displayW, out int displayH);
@@ -530,9 +529,9 @@ namespace Alis.App.Engine
 
                 UpdateMousePosAndButtons();
 
-               
+
                 RenderProject();
-                
+
 
                 Sdl.MakeCurrent(spaceWork.Window, _glContext);
                 ImGui.Render();
@@ -541,7 +540,7 @@ namespace Alis.App.Engine
                 Gl.GlClear(ClearBufferMask.ColorBufferBit);
 
                 RenderDrawData();
-                
+
                 Environment.CurrentDirectory = enginePath;
 
                 IntPtr backupCurrentWindow = Sdl.GetCurrentWindow();
@@ -572,7 +571,7 @@ namespace Alis.App.Engine
 
 
         /// <summary>
-        /// Sets the style
+        ///     Sets the style
         /// </summary>
         private void SetStyle()
         {
@@ -824,7 +823,7 @@ namespace Alis.App.Engine
 
             style.DisabledAlpha = 0.6f;
         }
-        
+
         /// <summary>
         ///     Renders the project
         /// </summary>
@@ -835,7 +834,7 @@ namespace Alis.App.Engine
             ImGui.SetNextWindowSize(spaceWork.Viewport.Size);
             ImGui.Begin("DockSpace Demo", dockspaceflags);
 
-            
+
             spaceWork.DockSpaceMenu.Update();
 
             Vector2F dockSize = spaceWork.Viewport.Size - new Vector2F(5, 85);

@@ -27,11 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
-using System.Runtime.InteropServices;
 using Alis.App.Hub.Controllers;
-using Alis.App.Hub.Entity;
 using Alis.App.Hub.Windows;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Graphic.Sdl2;
@@ -49,39 +46,69 @@ namespace Alis.App.Hub.Core
     public class SpaceWork
     {
         /// <summary>
+        ///     The hub window
+        /// </summary>
+        public readonly HubWindow HubWindow;
+
+        /// <summary>
         ///     The name engine
         /// </summary>
         public readonly string NameEngine;
-        
-        /// <summary>
-        /// Gets the value of the height main window
-        /// </summary>
-        public int HeightMainWindow { get;}
-        
-        /// <summary>
-        /// Gets the value of the width main window
-        /// </summary>
-        public int WidthMainWindow { get;}
 
-        /// <summary>
-        /// The sdl controller
-        /// </summary>
-        public SdlController SdlController;
-        
-        /// <summary>
-        /// The open gl controller
-        /// </summary>
-        public OpenGlController OpenGlController;
-
-        /// <summary>
-        /// The im gui controller
-        /// </summary>
-        public ImGuiController ImGuiController;
-        
         /// <summary>
         ///     The context
         /// </summary>
         public IntPtr ContextImGui;
+
+        /// <summary>
+        ///     The dockspaceflags
+        /// </summary>
+        public ImGuiWindowFlags Dockspaceflags;
+
+        /// <summary>
+        ///     The elements handle
+        /// </summary>
+        public uint ElementsHandle;
+
+        /// <summary>
+        ///     The font loaded 10 solid
+        /// </summary>
+        public ImFontPtr FontLoaded10Solid;
+
+        /// <summary>
+        ///     The font loaded 16 light
+        /// </summary>
+        public ImFontPtr FontLoaded16Light;
+
+        /// <summary>
+        ///     The font loaded 16 solid
+        /// </summary>
+        public ImFontPtr FontLoaded16Solid;
+
+        /// <summary>
+        ///     The font loaded 30 bold
+        /// </summary>
+        public ImFontPtr FontLoaded30Bold;
+
+        /// <summary>
+        ///     The font texture id
+        /// </summary>
+        public uint FontTextureId;
+
+        /// <summary>
+        ///     The gl context
+        /// </summary>
+        public IntPtr GlContext;
+
+        /// <summary>
+        ///     The gl shader
+        /// </summary>
+        public GlShaderProgram GlShader;
+
+        /// <summary>
+        ///     The im gui controller
+        /// </summary>
+        public ImGuiController ImGuiController;
 
         /// <summary>
         ///     The io
@@ -89,82 +116,39 @@ namespace Alis.App.Hub.Core
         public ImGuiIoPtr Io;
 
         /// <summary>
+        ///     The open gl controller
+        /// </summary>
+        public OpenGlController OpenGlController;
+
+        /// <summary>
+        ///     The sdl controller
+        /// </summary>
+        public SdlController SdlController;
+
+        /// <summary>
         ///     The style
         /// </summary>
         public ImGuiStyle Style;
 
         /// <summary>
-        ///     Gets or sets the value of the viewport
+        ///     The time
         /// </summary>
-        public ImGuiViewportPtr ViewportHub;
+        public float Time;
 
         /// <summary>
-        ///     The window
-        /// </summary>
-        public IntPtr WindowHub { get; set; }
-        
-        /// <summary>
-        /// The hub window
-        /// </summary>
-        public readonly HubWindow HubWindow;
-        
-        /// <summary>
-        /// The font loaded 16 solid
-        /// </summary>
-        public ImFontPtr FontLoaded16Solid;
-        
-        /// <summary>
-        /// The font loaded 10 solid
-        /// </summary>
-        public ImFontPtr FontLoaded10Solid;
-        
-        /// <summary>
-        /// The font loaded 30 bold
-        /// </summary>
-        public ImFontPtr FontLoaded30Bold;
-        
-        /// <summary>
-        /// The font loaded 16 light
-        /// </summary>
-        public ImFontPtr FontLoaded16Light;
-        
-        /// <summary>
-        /// The gl context
-        /// </summary>
-        public IntPtr GlContext;
-
-        /// <summary>
-        /// The gl shader
-        /// </summary>
-        public GlShaderProgram GlShader;
-        
-        /// <summary>
-        ///     The dockspaceflags
-        /// </summary>
-        public ImGuiWindowFlags Dockspaceflags;
-        
-        /// <summary>
-        ///     The font texture id
-        /// </summary>
-        public uint FontTextureId;
-
-        /// <summary>
-        /// The vbo handle
+        ///     The vbo handle
         /// </summary>
         public uint VboHandle;
+
         /// <summary>
-        /// The elements handle
-        /// </summary>
-        public uint ElementsHandle;
-        /// <summary>
-        /// The vertex array object
+        ///     The vertex array object
         /// </summary>
         public uint VertexArrayObject;
 
         /// <summary>
-        /// The time
+        ///     Gets or sets the value of the viewport
         /// </summary>
-        public float Time;
+        public ImGuiViewportPtr ViewportHub;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="SpaceWork" /> class
@@ -176,33 +160,48 @@ namespace Alis.App.Hub.Core
             WidthMainWindow = 1025;
             Time = 0;
             IsRunning = true;
-            
+
             Event = new Event();
-            
+
             SdlController = new SdlController(this);
             OpenGlController = new OpenGlController(this);
             ImGuiController = new ImGuiController(this);
-            
+
             HubWindow = new HubWindow(this);
         }
-        
+
+        /// <summary>
+        ///     Gets the value of the height main window
+        /// </summary>
+        public int HeightMainWindow { get; }
+
+        /// <summary>
+        ///     Gets the value of the width main window
+        /// </summary>
+        public int WidthMainWindow { get; }
+
+        /// <summary>
+        ///     The window
+        /// </summary>
+        public IntPtr WindowHub { get; set; }
+
         /// <summary>
         ///     The quit
         /// </summary>
         public bool IsRunning { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the font loaded 45 bold
+        ///     Gets or sets the value of the font loaded 45 bold
         /// </summary>
         public ImFontPtr FontLoaded45Bold { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the event
+        ///     Gets or sets the value of the event
         /// </summary>
         public Event Event { get; set; }
 
         /// <summary>
-        /// Ons the event using the specified input event
+        ///     Ons the event using the specified input event
         /// </summary>
         /// <param name="inputEvent">The input event</param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
@@ -234,7 +233,7 @@ namespace Alis.App.Hub.Core
 
                     break;
                 }
-                
+
                 case EventType.FirstEvent:
                     break;
                 case EventType.Quit:
@@ -351,7 +350,7 @@ namespace Alis.App.Hub.Core
         }
 
         /// <summary>
-        /// Ons the start render
+        ///     Ons the start render
         /// </summary>
         public void OnStartRender()
         {
@@ -361,29 +360,31 @@ namespace Alis.App.Hub.Core
         }
 
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public void OnUpdate()
         {
             SdlController.OnUpdate();
             OpenGlController.OnUpdate();
             ImGuiController.OnUpdate();
-            
+
             HubWindow.OnRender();
         }
 
         /// <summary>
-        /// Ons the end render
+        ///     Ons the end render
         /// </summary>
         public void OnEndRender()
         {
             SdlController.OnEndRender();
             OpenGlController.OnEndRender();
             ImGuiController.OnEndRender();
+            
+            
         }
 
         /// <summary>
-        /// Ons the destroy
+        ///     Ons the destroy
         /// </summary>
         public void OnDestroy()
         {
@@ -391,7 +392,9 @@ namespace Alis.App.Hub.Core
             OpenGlController.OnDestroy();
             ImGuiController.OnDestroy();
             
-            
+            HubWindow.OnDestroy();
+
+
             if (GlShader != null)
             {
                 GlShader.Dispose();
@@ -408,23 +411,27 @@ namespace Alis.App.Hub.Core
         }
 
         /// <summary>
-        /// Ons the init
+        ///     Ons the init
         /// </summary>
         public void OnInit()
         {
             SdlController.OnInit();
             OpenGlController.OnInit();
             ImGuiController.OnInit();
+            
+            HubWindow.OnInit();
         }
 
         /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
         public void OnStart()
         {
             SdlController.OnStart();
             OpenGlController.OnStart();
             ImGuiController.OnStart();
+            
+            HubWindow.OnStart();
         }
     }
 }

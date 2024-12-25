@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:CommunityWindow.cs
+//  File:CommunitySection.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -38,50 +38,47 @@ using Alis.Extension.Graphic.ImGui.Native;
 namespace Alis.App.Hub.Windows.Sections
 {
     /// <summary>
-    /// The community section class
+    ///     The community section class
     /// </summary>
-    /// <seealso cref="ASection"/>
+    /// <seealso cref="ASection" />
     public class CommunitySection : ASection
     {
         /// <summary>
-        /// The gallery
+        ///     The gallery
         /// </summary>
         private readonly Gallery gallery = new Gallery();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CommunitySection"/> class
+        ///     Initializes a new instance of the <see cref="CommunitySection" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
         public CommunitySection(SpaceWork spaceWork) : base(spaceWork)
         {
         }
-        
+
         /// <summary>
-        /// Ons the init
+        ///     Ons the init
         /// </summary>
         public override void OnInit()
         {
-            
         }
 
         /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
         public override void OnStart()
         {
-            
         }
 
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public override void OnUpdate()
         {
-            
         }
 
         /// <summary>
-        /// Ons the render
+        ///     Ons the render
         /// </summary>
         public override void OnRender()
         {
@@ -156,11 +153,10 @@ namespace Alis.App.Hub.Windows.Sections
         }
 
         /// <summary>
-        /// Ons the destroy
+        ///     Ons the destroy
         /// </summary>
         public override void OnDestroy()
         {
-            
         }
     }
 }

@@ -91,7 +91,7 @@ namespace Alis.Core.Network.Test
                 Logger.Exception(ex.ToString());
             }
         }
-        
+
         /// <summary>
         ///     Tests that dispose closes web socket
         /// </summary>

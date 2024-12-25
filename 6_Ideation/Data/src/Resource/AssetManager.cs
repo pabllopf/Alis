@@ -30,8 +30,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Data.Dll;
 
 namespace Alis.Core.Aspect.Data.Resource
 {
@@ -131,19 +129,19 @@ namespace Alis.Core.Aspect.Data.Resource
         /// <returns>The string</returns>
         internal static string[] GetAssetsDirectory()
         {
-            string[] baseDirectories = new[]
+            string[] baseDirectories =
             {
                 Environment.CurrentDirectory,
                 Path.GetDirectoryName(typeof(AssetManager).Assembly.Location),
                 AppDomain.CurrentDomain.BaseDirectory
             };
-            
+
             for (int i = 0; i < baseDirectories.Length; i++)
             {
                 baseDirectories[i] = baseDirectories[i].TrimEnd('/', '\\');
                 baseDirectories[i] = Path.Combine(baseDirectories[i], "Assets");
             }
-            
+
             return baseDirectories;
         }
 
@@ -170,7 +168,7 @@ namespace Alis.Core.Aspect.Data.Resource
                     }
                 }
             }
-            
+
             return files.ToArray();
         }
 

@@ -74,7 +74,7 @@ namespace Alis.App.Engine.Menus
             ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0);
 
             ImGui.BeginMainMenuBar();
-            
+
             // Menú "File"
             if (ImGui.BeginMenu("File"))
             {
@@ -87,7 +87,7 @@ namespace Alis.App.Engine.Menus
                 {
                     TopMenuAction.ExecuteMenuAction("Open Scene...");
                 }
-                
+
                 ImGui.Separator();
                 if (ImGui.MenuItem("Save", Shortcuts.Save))
                 {
@@ -526,18 +526,17 @@ namespace Alis.App.Engine.Menus
             // Menú "Help"
             if (ImGui.BeginMenu("Help"))
             {
-                
                 if (ImGui.MenuItem("About Alis", Shortcuts.AboutAlis))
                 {
                     TopMenuAction.ExecuteMenuAction("About Alis");
                 }
-                
+
                 ImGui.Separator();
                 if (ImGui.MenuItem("Preferences", Shortcuts.Preferences))
                 {
                     TopMenuAction.ExecuteMenuAction("Preferences");
                 }
-                
+
                 if (ImGui.MenuItem("Alis Manual"))
                 {
                     TopMenuAction.ExecuteMenuAction("Alis Manual");
@@ -553,7 +552,7 @@ namespace Alis.App.Engine.Menus
                 {
                     TopMenuAction.ExecuteMenuAction("Report Bug");
                 }
-                
+
                 ImGui.Separator();
                 if (ImGui.MenuItem("Quit Alis", Shortcuts.QuitAlis))
                 {

@@ -93,12 +93,30 @@ namespace Alis.Core.Ecs.Entity
             PendingGameObjectsToAdd = new List<GameObject>();
             PendingGameObjectsToRemove = new List<GameObject>();
         }
-        
+
         /// <summary>
         ///     The context
         /// </summary>
         [JsonIgnore]
         public Context Context { get; private set; }
+
+        /// <summary>
+        ///     Gets the value of the pending game objects to add
+        /// </summary>
+        [JsonPropertyName("_PendingGameObjectsToAdd_")]
+        public List<GameObject> PendingGameObjectsToAdd { get; }
+
+        /// <summary>
+        ///     Gets the value of the pending game objects to remove
+        /// </summary>
+        [JsonPropertyName("_PendingGameObjectsToRemove_")]
+        public List<GameObject> PendingGameObjectsToRemove { get; }
+
+        /// <summary>
+        ///     Builders this instance
+        /// </summary>
+        /// <returns>The scene builder</returns>
+        public SceneBuilder Builder() => new SceneBuilder(Context);
 
         /// <summary>
         ///     Gets or sets the value of the is enable
@@ -130,19 +148,7 @@ namespace Alis.Core.Ecs.Entity
 
         [JsonPropertyName("_GameObjects_")]
         public List<GameObject> GameObjects { get; set; }
-        
-        /// <summary>
-        /// Gets the value of the pending game objects to add
-        /// </summary>
-        [JsonPropertyName("_PendingGameObjectsToAdd_")]
-        public List<GameObject> PendingGameObjectsToAdd { get; }
 
-        /// <summary>
-        /// Gets the value of the pending game objects to remove
-        /// </summary>
-        [JsonPropertyName("_PendingGameObjectsToRemove_")]
-        public List<GameObject> PendingGameObjectsToRemove  { get; }
-        
         /// <summary>
         ///     Ons the enable
         /// </summary>
@@ -209,71 +215,13 @@ namespace Alis.Core.Ecs.Entity
         }
 
         /// <summary>
-        /// Ons the process pending changes
+        ///     Ons the process pending changes
         /// </summary>
         public void OnProcessPendingChanges()
         {
             GameObjects.ForEach(i => i.OnProcessPendingChanges());
             AddPendingGameObjects();
             RemovePendingGameObjects();
-        }
-
-        /// <summary>
-        /// Adds the pending game objects
-        /// </summary>
-        private void AddPendingGameObjects()
-        {
-            if (PendingGameObjectsToAdd.Count == 0) return;
-
-            foreach (GameObject gameObject in PendingGameObjectsToAdd)
-            {
-                gameObject.SetContext(Context);
-            }
-            
-            foreach (GameObject gameObject in PendingGameObjectsToAdd)
-            {
-                gameObject.OnInit();
-            }
-            
-            foreach (GameObject gameObject in PendingGameObjectsToAdd)
-            {
-                gameObject.OnAwake();
-            }
-            
-            foreach (GameObject gameObject in PendingGameObjectsToAdd)
-            {
-                gameObject.OnStart();
-            }
-            
-            foreach (GameObject gameObject in PendingGameObjectsToAdd)
-            {
-                GameObjects.Add(gameObject);
-            }
-            
-            PendingGameObjectsToAdd.Clear();
-        }
-
-        /// <summary>
-        /// Removes the pending game objects
-        /// </summary>
-        private void RemovePendingGameObjects()
-        {
-            if (PendingGameObjectsToRemove.Count == 0) return;
-            
-            foreach (GameObject gameObject in PendingGameObjectsToRemove)
-            {
-                gameObject.OnStop();
-            }
-            foreach (GameObject gameObject in PendingGameObjectsToRemove)
-            {
-                gameObject.OnExit();
-            }
-            foreach (GameObject gameObject in PendingGameObjectsToRemove)
-            {
-                GameObjects.Remove(gameObject);
-            }
-
-            PendingGameObjectsToRemove.Clear();
         }
 
         /// <summary>
@@ -398,23 +346,23 @@ namespace Alis.Core.Ecs.Entity
         }
 
         /// <summary>
-        /// Ons the save
+        ///     Ons the save
         /// </summary>
         public void OnSave() => GameObjects.ForEach(i => i.OnSave());
 
         /// <summary>
-        /// Ons the load
+        ///     Ons the load
         /// </summary>
         public void OnLoad() => GameObjects.ForEach(i => i.OnLoad());
 
         /// <summary>
-        /// Ons the save using the specified path
+        ///     Ons the save using the specified path
         /// </summary>
         /// <param name="path">The path</param>
         public void OnSave(string path) => GameObjects.ForEach(i => i.OnSave(path));
 
         /// <summary>
-        /// Ons the load using the specified path
+        ///     Ons the load using the specified path
         /// </summary>
         /// <param name="path">The path</param>
         public void OnLoad(string path) => GameObjects.ForEach(i => i.OnLoad(path));
@@ -455,55 +403,6 @@ namespace Alis.Core.Ecs.Entity
         {
             return GameObjects.Find(i => i is T) as T;
         }
-        
-        /// <summary>
-        /// Gets the name
-        /// </summary>
-        /// <param name="name">The name</param>
-        /// <returns>The game object</returns>
-        public GameObject Get(string name)
-        {
-            return GameObjects.Find(i => i.Name == name);
-        }
-        
-        /// <summary>
-        /// Gets the id
-        /// </summary>
-        /// <param name="id">The id</param>
-        /// <returns>The game object</returns>
-        public GameObject Get(Guid id)
-        {
-            return GameObjects.Find(i => i.Id == id.ToString());
-        }
-        
-        /// <summary>
-        /// Gets the index
-        /// </summary>
-        /// <param name="index">The index</param>
-        /// <returns>The game object</returns>
-        public GameObject Get(int index)
-        {
-            return GameObjects[index];
-        }
-        
-        /// <summary>
-        /// Gets the all
-        /// </summary>
-        /// <returns>The game objects</returns>
-        public List<GameObject> GetAll()
-        {
-            return GameObjects;
-        }
-        
-        /// <summary>
-        /// Gets the by tag using the specified tag
-        /// </summary>
-        /// <param name="tag">The tag</param>
-        /// <returns>The game object</returns>
-        public GameObject GetByTag(string tag)
-        {
-            return GameObjects.Find(i => i.Tag == tag);
-        }
 
         /// <summary>
         ///     Describes whether this instance contains
@@ -521,6 +420,109 @@ namespace Alis.Core.Ecs.Entity
         }
 
         /// <summary>
+        ///     Adds the pending game objects
+        /// </summary>
+        private void AddPendingGameObjects()
+        {
+            if (PendingGameObjectsToAdd.Count == 0) return;
+
+            foreach (GameObject gameObject in PendingGameObjectsToAdd)
+            {
+                gameObject.SetContext(Context);
+            }
+
+            foreach (GameObject gameObject in PendingGameObjectsToAdd)
+            {
+                gameObject.OnInit();
+            }
+
+            foreach (GameObject gameObject in PendingGameObjectsToAdd)
+            {
+                gameObject.OnAwake();
+            }
+
+            foreach (GameObject gameObject in PendingGameObjectsToAdd)
+            {
+                gameObject.OnStart();
+            }
+
+            foreach (GameObject gameObject in PendingGameObjectsToAdd)
+            {
+                GameObjects.Add(gameObject);
+            }
+
+            PendingGameObjectsToAdd.Clear();
+        }
+
+        /// <summary>
+        ///     Removes the pending game objects
+        /// </summary>
+        private void RemovePendingGameObjects()
+        {
+            if (PendingGameObjectsToRemove.Count == 0) return;
+
+            foreach (GameObject gameObject in PendingGameObjectsToRemove)
+            {
+                gameObject.OnStop();
+            }
+
+            foreach (GameObject gameObject in PendingGameObjectsToRemove)
+            {
+                gameObject.OnExit();
+            }
+
+            foreach (GameObject gameObject in PendingGameObjectsToRemove)
+            {
+                GameObjects.Remove(gameObject);
+            }
+
+            PendingGameObjectsToRemove.Clear();
+        }
+
+        /// <summary>
+        ///     Gets the name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <returns>The game object</returns>
+        public GameObject Get(string name)
+        {
+            return GameObjects.Find(i => i.Name == name);
+        }
+
+        /// <summary>
+        ///     Gets the id
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <returns>The game object</returns>
+        public GameObject Get(Guid id)
+        {
+            return GameObjects.Find(i => i.Id == id.ToString());
+        }
+
+        /// <summary>
+        ///     Gets the index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <returns>The game object</returns>
+        public GameObject Get(int index) => GameObjects[index];
+
+        /// <summary>
+        ///     Gets the all
+        /// </summary>
+        /// <returns>The game objects</returns>
+        public List<GameObject> GetAll() => GameObjects;
+
+        /// <summary>
+        ///     Gets the by tag using the specified tag
+        /// </summary>
+        /// <param name="tag">The tag</param>
+        /// <returns>The game object</returns>
+        public GameObject GetByTag(string tag)
+        {
+            return GameObjects.Find(i => i.Tag == tag);
+        }
+
+        /// <summary>
         ///     Sets the context using the specified context
         /// </summary>
         /// <param name="context">The context</param>
@@ -529,11 +531,5 @@ namespace Alis.Core.Ecs.Entity
             Context = context;
             GameObjects.ForEach(i => i.SetContext(context));
         }
-
-        /// <summary>
-        /// Builders this instance
-        /// </summary>
-        /// <returns>The scene builder</returns>
-        public SceneBuilder Builder() => new SceneBuilder(this.Context);
     }
 }

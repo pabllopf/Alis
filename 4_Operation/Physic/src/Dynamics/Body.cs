@@ -1230,8 +1230,8 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="worldPoint">A point in world coordinates.</param>
         /// <returns>The world velocity of a point.</returns>
         public Vector2F GetLinearVelocityFromWorldPoint(ref Vector2F worldPoint) => _linearVelocity +
-                                                                                  new Vector2F(-_angularVelocity * (worldPoint.Y - _sweep.C.Y),
-                                                                                      _angularVelocity * (worldPoint.X - _sweep.C.X));
+                                                                                    new Vector2F(-_angularVelocity * (worldPoint.Y - _sweep.C.Y),
+                                                                                        _angularVelocity * (worldPoint.X - _sweep.C.X));
 
         /// <summary>
         ///     Get the world velocity of a local point.

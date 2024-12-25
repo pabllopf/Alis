@@ -107,12 +107,12 @@ namespace Alis.Core.Ecs.System.Scope
 
                 runtime.OnDispatchEvents();
                 runtime.OnProcessPendingChanges();
-                
+
                 runtime.OnPhysicUpdate();
                 runtime.OnBeforeUpdate();
                 runtime.OnUpdate();
                 runtime.OnAfterUpdate();
-                
+
                 while (accumulator >= timeManager.Configuration.FixedTimeStep)
                 {
                     timeManager.InFixedTimeStep = true;
@@ -188,7 +188,7 @@ namespace Alis.Core.Ecs.System.Scope
             float lastDeltaTime = 0f;
             float smoothDeltaTimeSum = 0f;
             int smoothDeltaTimeCount = 0;
-            
+
             double frameStartTime = timeManager.Clock.Elapsed.TotalSeconds;
             double newTime = frameStartTime;
 
@@ -214,7 +214,7 @@ namespace Alis.Core.Ecs.System.Scope
 
             runtime.OnDispatchEvents();
             runtime.OnProcessPendingChanges();
-            
+
             runtime.OnPhysicUpdate();
             runtime.OnBeforeUpdate();
             runtime.OnUpdate();
@@ -264,7 +264,7 @@ namespace Alis.Core.Ecs.System.Scope
         public void Exit() => _context.IsRunning = false;
 
         /// <summary>
-        /// Saves this instance
+        ///     Saves this instance
         /// </summary>
         public void Save()
         {
@@ -273,7 +273,7 @@ namespace Alis.Core.Ecs.System.Scope
         }
 
         /// <summary>
-        /// Loads this instance
+        ///     Loads this instance
         /// </summary>
         public void Load()
         {
@@ -282,7 +282,7 @@ namespace Alis.Core.Ecs.System.Scope
         }
 
         /// <summary>
-        /// Loads the and run
+        ///     Loads the and run
         /// </summary>
         public void LoadAndRun()
         {
@@ -290,9 +290,9 @@ namespace Alis.Core.Ecs.System.Scope
             _context.Runtime.OnLoad();
             Run();
         }
-        
+
         /// <summary>
-        /// Saves the path
+        ///     Saves the path
         /// </summary>
         /// <param name="path">The path</param>
         public void Save(string path)
@@ -302,7 +302,7 @@ namespace Alis.Core.Ecs.System.Scope
         }
 
         /// <summary>
-        /// Loads the path
+        ///     Loads the path
         /// </summary>
         /// <param name="path">The path</param>
         public void Load(string path)

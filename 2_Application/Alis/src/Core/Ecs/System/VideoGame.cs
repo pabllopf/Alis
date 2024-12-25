@@ -108,31 +108,31 @@ namespace Alis.Core.Ecs.System
         ///     Starts the preview
         /// </summary>
         public void StartPreview() => _contextHandler.StartPreview();
-        
+
         /// <summary>
-        /// Saves this instance
+        ///     Saves this instance
         /// </summary>
         public void Save() => _contextHandler.Save();
-        
+
         /// <summary>
-        /// Saves the path
+        ///     Saves the path
         /// </summary>
         /// <param name="path">The path</param>
         public void Save(string path) => _contextHandler.Save(path);
-        
+
         /// <summary>
-        /// Loads this instance
+        ///     Loads this instance
         /// </summary>
         public void Load() => _contextHandler.Load();
-        
+
         /// <summary>
-        /// Loads the path
+        ///     Loads the path
         /// </summary>
         /// <param name="path">The path</param>
         public void Load(string path) => _contextHandler.Load(path);
-        
+
         /// <summary>
-        /// Loads the and run
+        ///     Loads the and run
         /// </summary>
         public void LoadAndRun()
         {

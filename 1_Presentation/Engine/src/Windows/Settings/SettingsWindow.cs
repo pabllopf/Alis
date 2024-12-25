@@ -42,54 +42,49 @@ using Alis.Extension.Graphic.ImGui.Native;
 namespace Alis.App.Engine.Windows.Settings
 {
     /// <summary>
-    /// The settings window class
+    ///     The settings window class
     /// </summary>
-    /// <seealso cref="IWindow"/>
+    /// <seealso cref="IWindow" />
     public class SettingsWindow : IWindow
     {
         /// <summary>
-        /// The is open
-        /// </summary>
-        private bool isOpen = true;
-
-        /// <summary>
-        /// The music
+        ///     The music
         /// </summary>
         private static readonly string WindowName = $"{FontAwesome5.Wrench} Settings";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SettingsWindow"/> class
+        ///     The is open
         /// </summary>
-        /// <param name="spaceWork">The space work</param>
-        public SettingsWindow(SpaceWork spaceWork)
-        {
-            SpaceWork = spaceWork;
-        }
+        private bool isOpen = true;
 
         /// <summary>
-        /// Gets the value of the space work
+        ///     Initializes a new instance of the <see cref="SettingsWindow" /> class
+        /// </summary>
+        /// <param name="spaceWork">The space work</param>
+        public SettingsWindow(SpaceWork spaceWork) => SpaceWork = spaceWork;
+
+        /// <summary>
+        ///     Gets the value of the space work
         /// </summary>
         public SpaceWork SpaceWork { get; }
 
         /// <summary>
-        /// Initializes this instance
+        ///     Initializes this instance
         /// </summary>
         public void Initialize()
         {
-
         }
 
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         public void Start()
         {
-
         }
 
 
         /// <summary>
-        /// Renders this instance
+        ///     Renders this instance
         /// </summary>
         public void Render()
         {
@@ -98,7 +93,7 @@ namespace Alis.App.Engine.Windows.Settings
                 return;
             }
 
-            object[] settings = new object[]
+            object[] settings =
             {
                 SpaceWork.VideoGame.Context.Setting.General,
                 SpaceWork.VideoGame.Context.Setting.Graphic,
@@ -118,7 +113,7 @@ namespace Alis.App.Engine.Windows.Settings
         }
 
         /// <summary>
-        /// Renders the settings using the specified settings
+        ///     Renders the settings using the specified settings
         /// </summary>
         /// <param name="settings">The settings</param>
         private void RenderSettings(object[] settings)
@@ -129,7 +124,7 @@ namespace Alis.App.Engine.Windows.Settings
                 if (ImGui.CollapsingHeader(headerName))
                 {
                     PropertyInfo[] properties = setting.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
-                    int propertyCount = properties.Count(property => property.CanWrite && property.GetValue(setting) != null);
+                    int propertyCount = properties.Count(property => property.CanWrite && (property.GetValue(setting) != null));
 
                     if (ImGui.BeginChild($"##{headerName}Child", new Vector2F(ImGui.GetContentRegionAvail().X, propertyCount * 36), true, ImGuiWindowFlags.NoCollapse))
                     {
