@@ -5,7 +5,4 @@
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/</OutDir>
         <OutDir Condition="$(AssemblyName.Contains('Sample')) OR $(AssemblyName.Contains('App'))">bin/$(Configuration)/$(RuntimeIdentifier)/lib/</OutDir>
     </PropertyGroup>
-    <ItemGroup>
-        <ProjectReference Include="..\..\..\6_Ideation\Data\src\Alis.Core.Aspect.Data.csproj"/>
-    </ItemGroup>
 </Project>
