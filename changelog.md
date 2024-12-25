@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.5.2] - 2024-12-25
+### :sparkles: New Features
+- [`0f242ad`](https://github.com/pabllopf/Alis/commit/0f242adb1f3f5016b278b55b2f519bf06566be23) - add new settings load information. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c936def`](https://github.com/pabllopf/Alis/commit/c936def2f43369e7408b9411307c8f577deadd64) - add grid to render. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`113167b`](https://github.com/pabllopf/Alis/commit/113167b1bc30bf69aa30402db4d3f86dbfb4e678) - add new button to include new components to gameobject selected. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e7185d6`](https://github.com/pabllopf/Alis/commit/e7185d6201d4bdd905c5afbeac2dd09a54878442) - add integration of installer, editor and hub. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`574dafd`](https://github.com/pabllopf/Alis/commit/574dafdca7aa9c01db57067698b8cab3cc432924) - add new form to search installation engine file *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`98e0319`](https://github.com/pabllopf/Alis/commit/98e0319147c4484037caecaca3dd13a50dee969b) - delete hub on engine app *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`adc181a`](https://github.com/pabllopf/Alis/commit/adc181a9efc817d744b3d06e27ad79be0a835b4a) - init file generation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fd33179`](https://github.com/pabllopf/Alis/commit/fd331799b154e14384a449735da947ea855171bb) - restart files of sln *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :art: Code Style Changes
+- [`a34b6b2`](https://github.com/pabllopf/Alis/commit/a34b6b249d7d33bc90dc53cc205a2b90b45d2c9b) - big refactor on hub project *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.5.1] - 2024-12-21
 ### :sparkles: New Features
 - [`f9a6dd9`](https://github.com/pabllopf/Alis/commit/f9a6dd99c2af433c4d3db3f2ac47504caf75c3fd) - auto compile app for hub and engine. *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -3767,3 +3784,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.4.9]: https://github.com/pabllopf/Alis/compare/v0.4.8...v0.4.9
 [v0.5.0]: https://github.com/pabllopf/Alis/compare/v0.4.9...v0.5.0
 [v0.5.1]: https://github.com/pabllopf/Alis/compare/v0.5.0...v0.5.1
+[v0.5.2]: https://github.com/pabllopf/Alis/compare/v0.5.1...v0.5.2
