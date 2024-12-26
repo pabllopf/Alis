@@ -4,7 +4,7 @@
         $(AssemblyName.Contains('Template')) == true OR
         $(AssemblyName.Contains('Sample')) == true OR
         $(AssemblyName.Contains('Benchmark')) == true">
-        <PublishTrimmed>true</PublishTrimmed>
-        <PublishSingleFile>true</PublishSingleFile>
+        <PublishTrimmed>false</PublishTrimmed>
+        <PublishSingleFile>false</PublishSingleFile>
     </PropertyGroup>
 </Project>
