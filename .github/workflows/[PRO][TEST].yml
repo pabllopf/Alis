@@ -4,7 +4,6 @@ on:
   push:
     branches: [ master ]
 
-
 jobs:
   macos_13_x64:
     runs-on: macOS-13
