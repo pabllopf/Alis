@@ -33,12 +33,6 @@ jobs:
             8.0.202
             9.x.x
 
-      - name: workloads
-        run: dotnet workload install wasm-tools android ios maccatalyst tvos macos maui
-
-      - name: workloads restore
-        run: dotnet workload restore
-
       - name: Cache SonarCloud packages
         uses: actions/cache@v4
         with:
