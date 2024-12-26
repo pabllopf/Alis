@@ -38,7 +38,7 @@ namespace Alis.Core.Aspect.Math
     ///     frames.
     /// </summary>
     [Serializable]
-    public struct Transform : ISerializable, ICloneable
+    public struct Transform : ISerializable
     {
         /// <summary>
         ///     The

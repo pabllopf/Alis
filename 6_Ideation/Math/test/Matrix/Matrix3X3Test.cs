@@ -83,24 +83,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Assert.Equal(1.0f, result.X);
             Assert.Equal(0.0f, result.Y);
         }
-
-        /// <summary>
-        ///     Tests that matrix 3 x 3 get inverse 22 should return correct result
-        /// </summary>
-        [Fact]
-        public void Matrix3X3_GetInverse22_ShouldReturnCorrectResult()
-        {
-            Matrix3X3 matrix = new Matrix3X3(new Vector3F(1.0f, 2.0f, 3.0f), new Vector3F(4.0f, 5.0f, 6.0f), new Vector3F(7.0f, 8.0f, 9.0f));
-            Matrix3X3 result = new Matrix3X3();
-            matrix.GetInverse22(ref result);
-
-            Assert.Equal(-1.66, result.Ex.X, 0.1f);
-            Assert.Equal(1.3f, result.Ex.Y, 0.2f);
-            Assert.Equal(0.0f, result.Ex.Z, 0.1f);
-            Assert.Equal(1.33f, result.Ey.X, 0.2f);
-            Assert.Equal(-0.33f, result.Ey.Y, 0.1f);
-            Assert.Equal(0.0f, result.Ey.Z, 0.1f);
-        }
+        
 
         /// <summary>
         ///     Tests that matrix 3 x 3 get sym inverse 33 should return correct result

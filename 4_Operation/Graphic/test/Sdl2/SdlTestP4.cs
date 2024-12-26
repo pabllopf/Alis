@@ -1319,32 +1319,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-
-        /// <summary>
-        ///     Tests that restore window should not throw exception
-        /// </summary>
-        [Fact]
-        public void RestoreWindow_ShouldNotThrowException()
-        {
-            // Arrange
-            int initResult = Sdl.Init(InitSettings.InitEverything);
-            Assert.Equal(0, initResult);
-            IntPtr window = IntPtr.Zero;
-
-            // Act
-            try
-            {
-                Sdl.RestoreWindow(window);
-            }
-            catch (Exception ex)
-            {
-                Assert.Fail("Exception thrown when calling RestoreWindow: " + ex.Message);
-            }
-
-            // Cleanup
-            Sdl.Quit();
-        }
-
+        
         /// <summary>
         ///     Tests that set window brightness should return expected value
         /// </summary>

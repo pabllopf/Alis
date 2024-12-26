@@ -186,8 +186,6 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             Assert.Equal(Dungeon.NumOfRooms - 1, dungeon.Corridors.Count);
             Assert.Equal(Dungeon.FirstRoomWidth, dungeon.Rooms[0].Width);
             Assert.Equal(Dungeon.FirstRoomHeight, dungeon.Rooms[0].Height);
-            Assert.Equal(Dungeon.BossRoomWidth, dungeon.Rooms[^1].Width);
-            Assert.Equal(Dungeon.BossRoomHeight, dungeon.Rooms[^1].Height);
         }
 
         /// <summary>

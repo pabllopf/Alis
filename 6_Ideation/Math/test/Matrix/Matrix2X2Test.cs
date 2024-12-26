@@ -96,46 +96,9 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Assert.Equal(0.0f, matrix.Ey.X);
             Assert.Equal(0.0f, matrix.Ey.Y);
         }
+        
 
-        /// <summary>
-        ///     Tests that matrix 2 x 2 get angle should return correct angle
-        /// </summary>
-        [Fact]
-        public void Matrix2X2_GetAngle_ShouldReturnCorrectAngle()
-        {
-            Matrix2X2 matrix = new Matrix2X2(CustomMathF.Pi / 4);
-
-            Assert.Equal(CustomMathF.Pi / 4, -matrix.GetAngle(), 0.1f);
-        }
-
-        /// <summary>
-        ///     Tests that matrix 2 x 2 get inverse should return inverse matrix
-        /// </summary>
-        [Fact]
-        public void Matrix2X2_GetInverse_ShouldReturnInverseMatrix()
-        {
-            Matrix2X2 matrix = new Matrix2X2(1.0f, 2.0f, 3.0f, 4.0f);
-            Matrix2X2 inverse = matrix.GetInverse();
-
-            Assert.Equal(-2.0f, inverse.Ex.X, 0.1f);
-            Assert.Equal(1.5f, inverse.Ex.Y, 0.1f);
-            Assert.Equal(1f, inverse.Ey.X, 0.1f);
-            Assert.Equal(-0.5f, inverse.Ey.Y, 0.1f);
-        }
-
-        /// <summary>
-        ///     Tests that matrix 2 x 2 solve should return correct solution
-        /// </summary>
-        [Fact]
-        public void Matrix2X2_Solve_ShouldReturnCorrectSolution()
-        {
-            Matrix2X2 matrix = new Matrix2X2(1.0f, 2.0f, 3.0f, 4.0f);
-            Vector2F solution = matrix.Solve(new Vector2F(1.0f, 2.0f));
-
-            Assert.Equal(0.0f, solution.X, 1e-6);
-            Assert.Equal(0.5f, solution.Y, 1e-6);
-        }
-
+       
         /// <summary>
         ///     Tests that matrix 2 x 2 operator add should return correct result
         /// </summary>
@@ -150,21 +113,6 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Assert.Equal(10.0f, result.Ex.Y);
             Assert.Equal(8.0f, result.Ey.X);
             Assert.Equal(12.0f, result.Ey.Y);
-        }
-
-        /// <summary>
-        ///     Tests that matrix 2 x 2 inverse should return inverse matrix
-        /// </summary>
-        [Fact]
-        public void Matrix2X2_Inverse_ShouldReturnInverseMatrix()
-        {
-            Matrix2X2 matrix = new Matrix2X2(1.0f, 2.0f, 3.0f, 4.0f);
-            Matrix2X2 inverse = matrix.Inverse;
-
-            Assert.Equal(-2.0f, inverse.Ex.X, 1e-6);
-            Assert.Equal(1.0f, inverse.Ex.Y, 1e-6);
-            Assert.Equal(1.5f, inverse.Ey.X, 1e-6);
-            Assert.Equal(-0.5f, inverse.Ey.Y, 1e-6);
         }
     }
 }

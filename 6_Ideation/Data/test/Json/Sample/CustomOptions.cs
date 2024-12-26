@@ -168,7 +168,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Sample
             /// <param name="key">The key</param>
             /// <param name="value">The value</param>
             /// <returns>The bool</returns>
-            public bool TryGetValue(object key, [MaybeNullWhen(false)] out object value) => throw new NotImplementedException();
+            public bool TryGetValue(object key, out object value) => throw new NotImplementedException();
 
             /// <summary>
             ///     Gets the enumerator

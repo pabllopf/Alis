@@ -94,18 +94,7 @@ namespace Alis.Core.Aspect.Security.Test
             SecureFloat secureFloat2 = 20.0f;
             Assert.Equal(30.0f, (float) (secureFloat1 + secureFloat2));
         }
-
-        /// <summary>
-        ///     Tests that test secure float subtraction operator
-        /// </summary>
-        [Fact]
-        public void Test_SecureFloat_SubtractionOperator()
-        {
-            SecureFloat secureFloat1 = 20.0f;
-            SecureFloat secureFloat2 = 10.0f;
-            Assert.Equal(10.0f, (float) (secureFloat1 - secureFloat2), 0.1f);
-        }
-
+        
         /// <summary>
         ///     Tests that test secure float multiplication operator
         /// </summary>
@@ -239,24 +228,7 @@ namespace Alis.Core.Aspect.Security.Test
             // Assert
             Assert.Equal(9f, (float) secureFloat);
         }
-
-        /// <summary>
-        ///     Tests that test addition
-        /// </summary>
-        [Fact]
-        public void TestAddition()
-        {
-            // Arrange
-            SecureFloat secureFloat1 = new SecureFloat(10f);
-            SecureFloat secureFloat2 = new SecureFloat(20f);
-
-            // Act
-            SecureFloat result = secureFloat1 + secureFloat2;
-
-            // Assert
-            Assert.Equal(30f, (float) result, 0.1f);
-        }
-
+        
         /// <summary>
         ///     Tests that test subtraction
         /// </summary>

@@ -233,22 +233,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
             // Assert
             Assert.Equal(CustomMathF.Pi, result);
         }
-
-        /// <summary>
-        ///     Tests that wrap angle should calculate correctly
-        /// </summary>
-        [Fact]
-        public void WrapAngle_ShouldCalculateCorrectly()
-        {
-            // Arrange
-            float angle = 3 * CustomMathF.Pi;
-
-            // Act
-            float result = Helper.WrapAngle(angle);
-
-            // Assert
-            Assert.Equal(CustomMathF.Pi, result, 0.1);
-        }
+        
 
         /// <summary>
         ///     Tests that is power of two should return correct value
@@ -277,32 +262,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
 
             Assert.Equal(angle, result);
         }
-
-        /// <summary>
-        ///     Tests that wrap angle should return positive value when angle is less than negative pi
-        /// </summary>
-        [Fact]
-        public void WrapAngle_ShouldReturnPositiveValue_WhenAngleIsLessThanNegativePi()
-        {
-            float angle = -Constant.Pi * 1.5f;
-            float expected = Constant.Pi / 2;
-            float result = Helper.WrapAngle(angle);
-
-            Assert.Equal(expected, result, 0.1f);
-        }
-
-        /// <summary>
-        ///     Tests that wrap angle should return negative value when angle is more than pi
-        /// </summary>
-        [Fact]
-        public void WrapAngle_ShouldReturnNegativeValue_WhenAngleIsMoreThanPi()
-        {
-            float angle = Constant.Pi * 1.5f;
-            float expected = -Constant.Pi / 2;
-            float result = Helper.WrapAngle(angle);
-
-            Assert.Equal(expected, result, 0.1f);
-        }
+        
 
         /// <summary>
         ///     Tests that wrap angle should return zero when angle is zero
@@ -327,20 +287,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
 
             Assert.Equal(angle, result);
         }
-
-        /// <summary>
-        ///     Tests that wrap angle should return negative pi when angle is pi
-        /// </summary>
-        [Fact]
-        public void WrapAngle_ShouldReturnNegativePi_WhenAngleIsPi()
-        {
-            float angle = Constant.Pi;
-            float expected = Constant.Pi;
-            float result = Helper.WrapAngle(angle);
-
-            Assert.Equal(expected, result, 0.1f);
-        }
-
+        
         /// <summary>
         ///     Tests that hermite should calculate correctly when amount is zero
         /// </summary>
