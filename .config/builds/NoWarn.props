@@ -11,5 +11,8 @@
 
         <!-- Suppresses the warning IL2072: Dinamic type -->
         <NoWarn>$(NoWarn);IL2072</NoWarn>
+        
+        <!-- Disable vulnerability warnings -->
+        <NoWarn>$(NoWarn);NU1902;NU1701</NoWarn>
     </PropertyGroup>
 </Project>
