@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
-    <ItemGroup Condition="
-        $(AssemblyName.Contains('Sample')) == true OR
-        $(AssemblyName.Contains('Test')) == true">
+    <ItemGroup Condition="$(AssemblyName.Contains('Sample')) == true">
         <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
     </ItemGroup>
 </Project>
