@@ -113,7 +113,7 @@ jobs:
             9.x.x
 
       - name: workloads
-        run: dotnet workload install wasm-tools android ios maccatalyst tvos macos
+        run: dotnet workload install wasm-tools android
 
       - name: workloads restore
         run: dotnet workload restore
