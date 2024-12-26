@@ -27,7 +27,7 @@ jobs:
             9.x.x
             
       - name: workloads
-        run: dotnet workload install wasm-tools android ios maccatalyst tvos macos maui
+        run: dotnet workload install wasm-tools android ios maccatalyst tvos macos
 
       - name: workloads restore
         run: dotnet workload restore
@@ -70,7 +70,7 @@ jobs:
             9.x.x
             
       - name: workloads
-        run: dotnet workload install wasm-tools android ios maccatalyst tvos macos maui
+        run: dotnet workload install wasm-tools android ios maccatalyst tvos macos
 
       - name: workloads restore
         run: dotnet workload restore
@@ -113,7 +113,7 @@ jobs:
             9.x.x
 
       - name: workloads
-        run: dotnet workload install wasm-tools android maui
+        run: dotnet workload install wasm-tools android ios maccatalyst tvos macos
 
       - name: workloads restore
         run: dotnet workload restore
