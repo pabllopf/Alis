@@ -143,7 +143,7 @@ namespace Alis.App.Hub.Windows.Sections
         /// <param name="version">The version</param>
         private void StartInstallation(string version)
         {
-            string installerPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Installer", "Alis.App.Installer");
+            string installerPath = GetInstallerPath();
 
             if (File.Exists(installerPath))
             {
@@ -158,6 +158,21 @@ namespace Alis.App.Hub.Windows.Sections
             {
                 Console.WriteLine("Installer not found at: " + installerPath);
             }
+        }
+        
+        private string GetInstallerPath()
+        {
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+            string installerPath = Path.Combine(basePath, "Installer");
+            string searchPattern = OperatingSystem.IsWindows() ? "Alis.App.Installer.exe" : "Alis.App.Installer";
+
+            string[] files = Directory.GetFiles(installerPath, searchPattern, SearchOption.AllDirectories);
+            if (files.Length == 0)
+            {
+                throw new FileNotFoundException($"Engine executable not found in {installerPath}");
+            }
+            
+            return files[0];
         }
         
 

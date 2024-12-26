@@ -1,7 +1,1 @@
-{
-  "__type": "Alis.Core.Ecs.System.Configuration.Network.NetworkSetting",
-  "_Port_": 8080,
-  "_Ip_": "127.0.0.1",
-  "_Host_": "localhost",
-  "_Protocol_": "http"
-}
+{"__type":"Alis.Core.Ecs.System.Configuration.Network.NetworkSetting","_Port_":8080,"_Ip_":"127.0.0.1","_Host_":"localhost","_Protocol_":"http"}
