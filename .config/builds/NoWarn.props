@@ -13,6 +13,6 @@
         <NoWarn>$(NoWarn);IL2072</NoWarn>
         
         <!-- Disable vulnerability warnings -->
-        <NoWarn>$(NoWarn);NU1902;NU1701</NoWarn>
+        <NoWarn>$(NoWarn);NU1902;NU1701;NU1904</NoWarn>
     </PropertyGroup>
 </Project>
