@@ -91,18 +91,35 @@ jobs:
 
       - name: Build all platforms
         run: |
-          dotnet build alis.sln -c Release
-          dotnet build alis.sln -r win-x64 -c Release
-          dotnet build alis.sln -r win-x86 -c Release
-          dotnet build alis.sln -r win-arm64 -c Release
-          dotnet build alis.sln -r linux-x64 -c Release
-          dotnet build alis.sln -r linux-musl-x64 -c Release
-          dotnet build alis.sln -r linux-arm -c Release
-          dotnet build alis.sln -r linux-arm64 -c Release
-          dotnet build alis.sln -r linux-musl-arm -c Release
-          dotnet build alis.sln -r linux-musl-arm64 -c Release
-          dotnet build alis.sln -r osx-x64 -c Release
-          dotnet build alis.sln -r osx-arm64 -c Release
+          runtimes=(
+            "win-x64"
+            "win-x86"
+            "win-arm64"
+            "linux-x64"
+            "linux-musl-x64"
+            "linux-arm"
+            "linux-arm64"
+            "linux-musl-arm"
+            "linux-musl-arm64"
+            "osx-x64"
+            "osx-arm64"
+          )
+          
+          for project in $(find . -name "*.csproj" -type f); do
+            if [[ $project == *".Template."* || $project == *".App."* || $project == *".Test."* || $project == *".Benchmark."* || $project == *".Sample."* ]]; then
+              echo "Skip project $project"
+            else
+              echo "Compiling project: $project"
+              for runtime in "${runtimes[@]}"; do
+                echo "  - Compiling for runtime: $runtime"
+                dotnet build "$project" -r "$runtime" -c Release
+                if [[ $? -ne 0 ]]; then
+                  echo "Error compiling $project for $runtime. Stopping..."
+                  exit 1
+                fi
+              done
+            fi
+          done
         
       - name: build installer
         run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -f net8.0
