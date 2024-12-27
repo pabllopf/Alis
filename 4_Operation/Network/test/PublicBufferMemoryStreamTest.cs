@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -40,7 +41,8 @@ namespace Alis.Core.Network.Test
     /// <summary>
     ///     The public buffer memory stream test class
     /// </summary>
-    public class PublicBufferMemoryStreamTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class PublicBufferMemoryStreamTest 
     {
         /// <summary>
         ///     Tests that public buffer memory stream constructor

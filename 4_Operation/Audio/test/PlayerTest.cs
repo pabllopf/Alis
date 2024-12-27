@@ -27,12 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace Alis.Core.Audio.Test
 {
     /// <summary>
     ///     The player test class
     /// </summary>
-    public class PlayerTest
+    
+    [ExcludeFromCodeCoverage] 
+	 public class PlayerTest 
     {
         /*
         /// <summary>

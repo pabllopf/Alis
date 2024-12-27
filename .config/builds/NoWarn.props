@@ -6,15 +6,15 @@
         <NoWarn>NETSDK1138</NoWarn>
 
         <!-- Suppresses the warning NETSDK1139:The target framework 'net8.0' is out of support and will not receive security updates in the future. -->
-        <NoWarn>$(NoWarn);NETSDK1139</NoWarn>
+        <NoWarn>$(NoWarn);NETSDK1139;</NoWarn>
 
         <!-- Suppresses the warning NETSDK1140:The target framework 'net9.0' is out of support and will not receive security updates in the future. -->
-        <NoWarn>$(NoWarn);NETSDK1140;CS0433;CS0246;CS0738;SYSLIB0050</NoWarn>
+        <NoWarn>$(NoWarn);NETSDK1140;CS0433;CS0246;CS0738;SYSLIB0050;</NoWarn>
 
         <!-- Suppresses the warning IL2072: Dinamic type -->
-        <NoWarn>$(NoWarn);IL2072</NoWarn>
+        <NoWarn>$(NoWarn);IL2072;</NoWarn>
         
         <!-- Disable vulnerability warnings -->
-        <NoWarn>$(NoWarn);NU1902;NU1701;NU1904;NU1903</NoWarn>
+        <NoWarn>$(NoWarn);NU1902;NU1701;NU1904;NU1903;CS0618;</NoWarn>
     </PropertyGroup>
 </Project>

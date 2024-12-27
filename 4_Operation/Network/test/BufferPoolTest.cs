@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using Xunit;
 
@@ -35,7 +36,8 @@ namespace Alis.Core.Network.Test
     /// <summary>
     ///     The buffer pool test class
     /// </summary>
-    public class BufferPoolTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class BufferPoolTest 
     {
         /// <summary>
         ///     Tests that buffer pool constructor default size

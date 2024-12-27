@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Net.Security;
 using System.Net.Sockets;
@@ -45,7 +46,8 @@ namespace Alis.Core.Network.Test
     /// <summary>
     ///     The web socket client factory test class
     /// </summary>
-    public class WebSocketClientFactoryTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class WebSocketClientFactoryTest 
     {
         /// <summary>
         ///     The web socket server factory

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using Alis.Core.Aspect.Data.Json;
 using Xunit;
@@ -37,7 +38,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
     /// <summary>
     ///     The json event args test class
     /// </summary>
-    public class JsonEventArgsTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class JsonEventArgsTest 
     {
         /// <summary>
         ///     Tests that json event args constructor with four parameters sets properties correctly

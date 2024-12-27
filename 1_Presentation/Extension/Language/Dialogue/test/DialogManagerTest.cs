@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using Xunit;
 
@@ -36,7 +37,8 @@ namespace Alis.Extension.Language.Dialogue.Test
     /// <summary>
     ///     The dialog manager test class
     /// </summary>
-    public class DialogManagerTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class DialogManagerTest 
     {
         /// <summary>
         ///     Tests that add dialog should add dialog to dictionary

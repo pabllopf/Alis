@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Util;
 using Xunit;
 
@@ -35,6 +36,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
     /// <summary>
     ///     The helper test class
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class HelperTest
     {
         /// <summary>

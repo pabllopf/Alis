@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Graphic.ImGui.Test
@@ -35,7 +36,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im gui platform io ptr test class
     /// </summary>
-    public class ImGuiPlatformIoPtrTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ImGuiPlatformIoPtrTest 
     {
         /// <summary>
         ///     The native ptr should set and get correctly

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Test.Core.Ecs.Component.Collider.Sample;
 using Xunit;
 
@@ -35,7 +36,8 @@ namespace Alis.Test.Core.Ecs.Component.Collider
     /// <summary>
     ///     The collider test class
     /// </summary>
-    public class ColliderTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ColliderTest 
     {
         /// <summary>
         ///     Tests that collider default constructor valid input

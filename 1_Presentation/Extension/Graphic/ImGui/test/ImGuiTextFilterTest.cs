@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Graphic.ImGui.Test
@@ -34,7 +35,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im gui text filter test class
     /// </summary>
-    public class ImGuiTextFilterTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ImGuiTextFilterTest 
     {
         /// <summary>
         ///     Tests that input buf should set and get correctly

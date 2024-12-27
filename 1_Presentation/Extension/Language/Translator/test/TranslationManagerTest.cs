@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Xunit;
 
@@ -37,7 +38,8 @@ namespace Alis.Extension.Language.Translator.Test
     /// <summary>
     ///     The translation manager test class
     /// </summary>
-    public class TranslationManagerTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class TranslationManagerTest 
     {
         /// <summary>
         ///     Tests that set language with valid language should set current language

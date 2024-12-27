@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Component.Render;
 using Xunit;
@@ -37,7 +38,8 @@ namespace Alis.Test.Core.Ecs.Component.Render
     /// <summary>
     ///     The animation test class
     /// </summary>
-    public class AnimationTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class AnimationTest 
     {
         /// <summary>
         ///     Tests that animator default constructor valid input

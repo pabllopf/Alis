@@ -27,12 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace Alis.Core.Physic.Test.Controllers
 {
     /// <summary>
     ///     The velocity limit controller test class
     /// </summary>
-    public class VelocityLimitControllerTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class VelocityLimitControllerTest 
     {
     }
 }

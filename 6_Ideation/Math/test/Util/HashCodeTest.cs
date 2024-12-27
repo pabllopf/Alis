@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Util;
 using Xunit;
 
@@ -35,7 +36,8 @@ namespace Alis.Core.Aspect.Math.Test.Util
     /// <summary>
     ///     The hash code test class
     /// </summary>
-    public class HashCodeTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class HashCodeTest 
     {
         /// <summary>
         ///     Tests that combine should calculate correctly for different input

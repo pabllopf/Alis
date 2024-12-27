@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using Xunit;
 
@@ -36,7 +37,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im vector test class
     /// </summary>
-    public class ImVectorGTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ImVectorGTest 
     {
         /// <summary>
         ///     Tests that size should be initialized correctly

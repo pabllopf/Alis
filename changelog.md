@@ -669,7 +669,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### :art: Code Style Changes
 
 - [`589b882`](https://github.com/pabllopf/Alis/commit/589b8822af6763437978c2987ff8496b43195889) - delete
-  all  [ExcludeFromCodeCoverage] to have real covert tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+  all  	[ExcludeFromCodeCoverage] to have real covert tests *(commit by [@pabllopf](https://github.com/pabllopf))*
 
 ## [v0.3.5] - 2024-07-18
 

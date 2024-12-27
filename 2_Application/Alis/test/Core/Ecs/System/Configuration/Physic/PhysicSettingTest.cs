@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.System.Setting.Physic;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
@@ -38,7 +39,8 @@ namespace Alis.Test.Core.Ecs.System.Configuration.Physic
     /// <summary>
     ///     The physic setting test class
     /// </summary>
-    public class PhysicSettingTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class PhysicSettingTest 
     {
         /// <summary>
         ///     Tests that test physic setting debug mode

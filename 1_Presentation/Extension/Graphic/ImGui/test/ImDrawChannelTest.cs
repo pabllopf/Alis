@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Graphic.ImGui.Test
@@ -34,7 +35,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im draw channel test class
     /// </summary>
-    public class ImDrawChannelTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ImDrawChannelTest 
     {
         /// <summary>
         ///     Tests that cmd buffer should be initialized correctly

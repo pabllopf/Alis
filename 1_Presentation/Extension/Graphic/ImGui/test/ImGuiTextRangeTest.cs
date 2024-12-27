@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Graphic.ImGui.Test
@@ -35,7 +36,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im gui text range test class
     /// </summary>
-    public class ImGuiTextRangeTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ImGuiTextRangeTest 
     {
         /// <summary>
         ///     Tests that b should set and get correctly

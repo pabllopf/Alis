@@ -3,4 +3,7 @@
     <ItemGroup Condition="$(AssemblyName.Contains('Sample')) == true">
         <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
     </ItemGroup>
+    <PropertyGroup Condition="$(AssemblyName.Contains('Sample')) == true OR $(AssemblyName.Contains('Test')) == true">
+        <ExcludeFromCodeCoverage>true</ExcludeFromCodeCoverage>
+    </PropertyGroup>
 </Project>

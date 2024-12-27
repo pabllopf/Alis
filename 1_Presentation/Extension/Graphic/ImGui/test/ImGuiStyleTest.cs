@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
@@ -35,7 +36,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im gui style test class
     /// </summary>
-    public class ImGuiStyleTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ImGuiStyleTest 
     {
         /// <summary>
         ///     Tests that alpha should set and get correctly

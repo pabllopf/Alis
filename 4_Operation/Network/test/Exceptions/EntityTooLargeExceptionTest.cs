@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Network.Exceptions;
 using Xunit;
 
@@ -36,7 +37,8 @@ namespace Alis.Core.Network.Test.Exceptions
     /// <summary>
     ///     The entitytoolargeexceptiontest class
     /// </summary>
-    public class EntityTooLargeExceptionTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class EntityTooLargeExceptionTest 
     {
         /// <summary>
         ///     Tests that entity too large exception default constructor

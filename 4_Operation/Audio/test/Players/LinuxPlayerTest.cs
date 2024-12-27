@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Players;
 using Alis.Core.Audio.Test.Players.Attributes;
@@ -38,7 +39,8 @@ namespace Alis.Core.Audio.Test.Players
     /// <summary>
     ///     The linux player test class
     /// </summary>
-    public class LinuxPlayerTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class LinuxPlayerTest 
     {
         /// <summary>
         ///     Tests that test method

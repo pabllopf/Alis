@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
@@ -37,7 +38,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
     /// <summary>
     ///     The sdl renderer info test class
     /// </summary>
-    public class SdlRendererInfoTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class SdlRendererInfoTest 
     {
         /// <summary>
         ///     Tests that get name valid call returns expected string

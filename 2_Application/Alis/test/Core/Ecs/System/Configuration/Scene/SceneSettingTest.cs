@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.System.Setting.Scene;
 using Alis.Core.Ecs.System.Configuration.Scene;
 using Xunit;
@@ -36,7 +37,8 @@ namespace Alis.Test.Core.Ecs.System.Configuration.Scene
     /// <summary>
     ///     The scene setting test class
     /// </summary>
-    public class SceneSettingTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class SceneSettingTest 
     {
         /// <summary>
         ///     Tests that test scene setting max number of scenes

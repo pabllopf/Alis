@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Graphic;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
@@ -38,7 +39,8 @@ namespace Alis.Test.Builder.Core.Graphic
     /// <summary>
     ///     The window builder test class
     /// </summary>
-    public class WindowBuilderTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class WindowBuilderTest 
     {
         /// <summary>
         ///     Tests that window builder default constructor valid input

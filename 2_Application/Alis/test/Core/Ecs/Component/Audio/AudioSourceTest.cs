@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using Alis.Builder.Core.Ecs.Component.Audio;
 using Alis.Core.Ecs.Component.Audio;
@@ -37,7 +38,8 @@ namespace Alis.Test.Core.Ecs.Component.Audio
     /// <summary>
     ///     The audio source test class
     /// </summary>
-    public class AudioSourceTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class AudioSourceTest 
     {
         /// <summary>
         ///     Tests that audio source default constructor valid input

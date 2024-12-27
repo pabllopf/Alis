@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.ImGui.Extras.GuizMo;
 using Xunit;
@@ -37,7 +38,8 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.GuizMo
     /// <summary>
     ///     The im guiz mo test class
     /// </summary>
-    public class ImGuizMoTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ImGuizMoTest 
     {
         /// <summary>
         ///     Tests that allow axis flip should not throw

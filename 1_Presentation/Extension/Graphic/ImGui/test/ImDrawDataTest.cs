@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
@@ -37,7 +38,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im draw data test class
     /// </summary>
-    public class ImDrawDataTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ImDrawDataTest 
     {
         /// <summary>
         ///     Tests that valid should be initialized correctly

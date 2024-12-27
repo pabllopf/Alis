@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Graphic.ImGui.Test
@@ -35,7 +36,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im gui input text callback data test class
     /// </summary>
-    public class ImGuiInputTextCallbackDataTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ImGuiInputTextCallbackDataTest 
     {
         /// <summary>
         ///     Tests that event flag should be initialized

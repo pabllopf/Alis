@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Graphic.ImGui.Test
@@ -34,7 +35,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im gui window class test class
     /// </summary>
-    public class ImGuiWindowClassTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ImGuiWindowClassTest 
     {
         /// <summary>
         ///     Tests that im gui window class should initialize with default values

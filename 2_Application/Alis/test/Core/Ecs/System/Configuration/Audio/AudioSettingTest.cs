@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.System.Setting.Audio;
 using Alis.Core.Ecs.System.Configuration.Audio;
 using Xunit;
@@ -36,7 +37,8 @@ namespace Alis.Test.Core.Ecs.System.Configuration.Audio
     /// <summary>
     ///     The audio setting test class
     /// </summary>
-    public class AudioSettingTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class AudioSettingTest 
     {
         /// <summary>
         ///     Tests that test audio setting volume

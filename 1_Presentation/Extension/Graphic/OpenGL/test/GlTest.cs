@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Extension.Graphic.OpenGL.Enums;
 using Xunit;
@@ -37,7 +38,8 @@ namespace Alis.Extension.Graphic.OpenGL.Test
     /// <summary>
     ///     The gl test class
     /// </summary>
-    public class GlTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class GlTest 
     {
         /// <summary>
         ///     Tests that get program link status returns true when linked

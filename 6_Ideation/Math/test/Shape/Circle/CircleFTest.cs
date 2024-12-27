@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Shape.Circle;
 using Xunit;
 
@@ -35,7 +36,8 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Circle
     /// <summary>
     ///     The circle test class
     /// </summary>
-    public class CircleFTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class CircleFTest 
     {
         /// <summary>
         ///     Tests that constructor initializes properties correctly

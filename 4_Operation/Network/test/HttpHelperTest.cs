@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Text;
 using System.Threading;
@@ -40,7 +41,8 @@ namespace Alis.Core.Network.Test
     /// <summary>
     ///     The http helper test class
     /// </summary>
-    public class HttpHelperTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class HttpHelperTest 
     {
         /// <summary>
         ///     Tests that calculate web socket key should return valid key

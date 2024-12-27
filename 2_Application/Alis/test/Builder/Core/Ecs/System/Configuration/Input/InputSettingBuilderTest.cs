@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.System.Setting.Input;
 using Alis.Core.Ecs.System.Configuration.Input;
 using Xunit;
@@ -36,7 +37,8 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration.Input
     /// <summary>
     ///     The input setting builder test class
     /// </summary>
-    public class InputSettingBuilderTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class InputSettingBuilderTest 
     {
         /// <summary>
         ///     Tests that input setting builder default constructor valid input

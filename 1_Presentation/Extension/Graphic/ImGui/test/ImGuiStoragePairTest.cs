@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Graphic.ImGui.Test
@@ -34,7 +35,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im gui storage pair test class
     /// </summary>
-    public class ImGuiStoragePairTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ImGuiStoragePairTest 
     {
         /// <summary>
         ///     Tests that key should set and get correctly

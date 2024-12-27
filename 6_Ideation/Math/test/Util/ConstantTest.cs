@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Util;
 using Xunit;
 
@@ -35,7 +36,8 @@ namespace Alis.Core.Aspect.Math.Test.Util
     /// <summary>
     ///     The constant test class
     /// </summary>
-    public class ConstantTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ConstantTest 
     {
         /// <summary>
         ///     Tests that constant epsilon should be correct

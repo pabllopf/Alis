@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Memory.Exceptions;
 using Xunit;
 
@@ -35,7 +36,8 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
     /// <summary>
     ///     The not null exception test class
     /// </summary>
-    public class NotNullExceptionTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class NotNullExceptionTest 
     {
         /// <summary>
         ///     Tests that not null exception with message should set message

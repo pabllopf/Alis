@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Extension.Graphic.ImGui.Extras.Node;
 using Xunit;
 
@@ -35,7 +36,8 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
     /// <summary>
     ///     The style test class
     /// </summary>
-    public class StyleTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class StyleTest 
     {
         /// <summary>
         ///     Tests that grid spacing should set and get correctly

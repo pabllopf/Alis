@@ -27,12 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace Alis.Test.Core.Ecs.System.Manager.Physic
 {
     /// <summary>
     ///     The physic manager test class
     /// </summary>
-    public class PhysicManagerTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class PhysicManagerTest 
     {
     }
 }

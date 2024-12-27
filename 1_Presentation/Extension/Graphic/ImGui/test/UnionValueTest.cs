@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Graphic.ImGui.Test
@@ -35,7 +36,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The union value test class
     /// </summary>
-    public class UnionValueTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class UnionValueTest 
     {
         /// <summary>
         ///     Tests that value i 32 should be initialized correctly

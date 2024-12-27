@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
@@ -34,7 +35,8 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
     /// <summary>
     ///     The stable priority queue node test class
     /// </summary>
-    public class StablePriorityQueueNodeTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class StablePriorityQueueNodeTest 
     {
         /// <summary>
         ///     Tests that insertion index initially zero

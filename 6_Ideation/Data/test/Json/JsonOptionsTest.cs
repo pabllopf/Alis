@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using Alis.Core.Aspect.Data.Json;
 using Xunit;
@@ -37,7 +38,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
     /// <summary>
     ///     The json options test class
     /// </summary>
-    public class JsonOptionsTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class JsonOptionsTest 
     {
         /// <summary>
         ///     Tests that test constructor

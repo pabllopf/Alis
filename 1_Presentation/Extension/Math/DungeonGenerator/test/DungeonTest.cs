@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math;
 using Xunit;
 
@@ -36,7 +37,8 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
     /// <summary>
     ///     The dungeon test class
     /// </summary>
-    public class DungeonTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class DungeonTest 
     {
         /// <summary>
         ///     Tests that set up first room should initialize room with given parameters

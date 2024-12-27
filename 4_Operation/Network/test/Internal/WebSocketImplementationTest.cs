@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Net.WebSockets;
 using System.Text;
@@ -41,7 +42,8 @@ namespace Alis.Core.Network.Test.Internal
     /// <summary>
     ///     The web socket implementation test class
     /// </summary>
-    public class WebSocketImplementationTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class WebSocketImplementationTest 
     {
         /// <summary>
         ///     Tests that send async valid input

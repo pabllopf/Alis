@@ -27,12 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace Alis.Core.Aspect.Data.Test.Mapping
 {
     /// <summary>
     ///     The button test class
     /// </summary>
-    public class ButtonTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ButtonTest 
     {
     }
 }

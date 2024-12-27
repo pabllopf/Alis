@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Text;
 using System.Threading;
@@ -40,7 +41,8 @@ namespace Alis.Core.Network.Test.Internal
     /// <summary>
     ///     The binary reader writer test class
     /// </summary>
-    public class BinaryReaderWriterTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class BinaryReaderWriterTest 
     {
         /// <summary>
         ///     Tests that read exactly valid input

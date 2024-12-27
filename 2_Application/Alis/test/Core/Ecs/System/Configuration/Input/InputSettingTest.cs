@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.System.Setting.Input;
 using Alis.Core.Ecs.System.Configuration.Input;
 using Xunit;
@@ -36,7 +37,8 @@ namespace Alis.Test.Core.Ecs.System.Configuration.Input
     /// <summary>
     ///     The input setting test class
     /// </summary>
-    public class InputSettingTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class InputSettingTest 
     {
         /// <summary>
         ///     Tests that test input setting update mode

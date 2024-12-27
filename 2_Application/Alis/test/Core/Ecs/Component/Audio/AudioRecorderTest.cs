@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Component.Audio;
 using Alis.Core.Ecs.Component.Audio;
 using Xunit;
@@ -36,7 +37,8 @@ namespace Alis.Test.Core.Ecs.Component.Audio
     /// <summary>
     ///     The audio recorder test class
     /// </summary>
-    public class AudioRecorderTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class AudioRecorderTest 
     {
         /// <summary>
         ///     Tests that builder should return audio recorder builder

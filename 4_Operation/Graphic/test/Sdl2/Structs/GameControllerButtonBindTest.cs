@@ -27,12 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
     /// <summary>
     ///     The game controller button bind test class
     /// </summary>
-    public class GameControllerButtonBindTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class GameControllerButtonBindTest 
     {
     }
 }

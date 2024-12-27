@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Util;
 using Xunit;
 
@@ -36,7 +37,8 @@ namespace Alis.Core.Aspect.Math.Test.Util
     /// <summary>
     ///     The random utils test class
     /// </summary>
-    public class RandomUtilsTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class RandomUtilsTest 
     {
         /// <summary>
         ///     Tests that get int 32 with min and max values should return within range

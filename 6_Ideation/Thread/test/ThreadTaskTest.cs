@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using Xunit;
 
@@ -35,7 +36,8 @@ namespace Alis.Core.Aspect.Thread.Test
     /// <summary>
     ///     The thread task test class
     /// </summary>
-    public class ThreadTaskTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ThreadTaskTest 
     {
         /// <summary>
         ///     Tests that execute should execute action

@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.IO.Compression;
 using System.Reflection;
@@ -41,7 +42,8 @@ namespace Alis.Core.Aspect.Data.Test.Dll
     /// <summary>
     ///     The embedded dll class test class
     /// </summary>
-    public class EmbeddedDllClassTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class EmbeddedDllClassTest 
     {
         /// <summary>
         ///     Tests that test load resource

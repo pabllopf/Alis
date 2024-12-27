@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
@@ -38,7 +39,8 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Render
     /// <summary>
     ///     The camera builder test class
     /// </summary>
-    public class CameraBuilderTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class CameraBuilderTest 
     {
         /// <summary>
         ///     Tests that camera builder default constructor valid input

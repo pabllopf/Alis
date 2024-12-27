@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Ecs.System.Configuration;
 using Alis.Core.Ecs.System.Manager.Audio;
 using Alis.Core.Ecs.System.Manager.Graphic;
@@ -43,7 +44,8 @@ namespace Alis.Test.Core.Ecs.System.Scope
     /// <summary>
     ///     The context test class
     /// </summary>
-    public class ContextTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class ContextTest 
     {
         /// <summary>
         ///     Tests that test context constructor

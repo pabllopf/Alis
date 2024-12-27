@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Data.Json;
 using Xunit;
 
@@ -37,7 +38,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
     /// <summary>
     ///     The collection object test class
     /// </summary>
-    public class CollectionTObjectTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class CollectionTObjectTest 
     {
         /// <summary>
         ///     Tests that test collection t object clear

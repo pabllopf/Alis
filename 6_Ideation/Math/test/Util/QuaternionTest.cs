@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
@@ -36,7 +37,8 @@ namespace Alis.Core.Aspect.Math.Test.Util
     /// <summary>
     ///     The quaternion test class
     /// </summary>
-    public class QuaternionTest
+    	 [ExcludeFromCodeCoverage] 
+	 public class QuaternionTest 
     {
         /// <summary>
         ///     Tests that quaternion operator addition should return correct result
