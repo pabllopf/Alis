@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Core.Aspect.Security.Test
@@ -34,7 +35,8 @@ namespace Alis.Core.Aspect.Security.Test
     /// <summary>
     ///     The secure decimal tests class
     /// </summary>
-    public class SecureDecimalTests
+    	 [ExcludeFromCodeCoverage] 
+	 public class SecureDecimalTests 
     {
         /// <summary>
         ///     Tests that test secure decimal constructor

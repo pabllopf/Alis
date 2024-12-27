@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Xunit;
 
@@ -36,7 +37,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
     /// <summary>
     ///     The internal winrt wm info tests class
     /// </summary>
-    public class InternalWinrtWmInfoTests
+    	 [ExcludeFromCodeCoverage] 
+	 public class InternalWinrtWmInfoTests 
     {
         /// <summary>
         ///     Tests that internal winrt wm info initializes properties correctly

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Xunit;
 
@@ -36,7 +37,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
     /// <summary>
     ///     The user event tests class
     /// </summary>
-    public class UserEventTests
+    	 [ExcludeFromCodeCoverage] 
+	 public class UserEventTests 
     {
         /// <summary>
         ///     Tests that user event initializes properties correctly

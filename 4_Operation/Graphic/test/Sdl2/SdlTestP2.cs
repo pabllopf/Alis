@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Math.Definition;
@@ -43,6 +44,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
     /// <summary>
     ///     The sdl test class
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class SdlTestP2
     {
         /// <summary>

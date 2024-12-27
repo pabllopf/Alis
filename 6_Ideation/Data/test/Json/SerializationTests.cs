@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Test.Json.Sample;
 using Xunit;
@@ -37,7 +38,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
     /// <summary>
     ///     The serialization tests class
     /// </summary>
-    public class SerializationTests
+    	 [ExcludeFromCodeCoverage] 
+	 public class SerializationTests 
     {
         /// <summary>
         ///     Tests that test simple types

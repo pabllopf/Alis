@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
@@ -43,6 +44,7 @@ namespace Alis.Core.Network.Test.Samples
     ///     The web server class
     /// </summary>
     /// <seealso cref="IDisposable" />
+    [ExcludeFromCodeCoverage]
     public class WebServer : IDisposable
     {
         // const int BUFFER_SIZE = 1 * 1024 * 1024 * 1024; // 1GB

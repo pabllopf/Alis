@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Core.Aspect.Security.Test
@@ -34,7 +35,8 @@ namespace Alis.Core.Aspect.Security.Test
     /// <summary>
     ///     The secure float tests class
     /// </summary>
-    public class SecureFloatTests
+    	 [ExcludeFromCodeCoverage] 
+	 public class SecureFloatTests 
     {
         /// <summary>
         ///     Tests that test secure float constructor

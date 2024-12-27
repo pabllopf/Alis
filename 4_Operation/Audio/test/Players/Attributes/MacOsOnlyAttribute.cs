@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using Xunit;
 
@@ -36,6 +37,7 @@ namespace Alis.Core.Audio.Test.Players.Attributes
     ///     The mac os only attribute class
     /// </summary>
     /// <seealso cref="FactAttribute" />
+    [ExcludeFromCodeCoverage]
     public class MacOsOnlyAttribute : FactAttribute
     {
         /// <summary>

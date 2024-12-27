@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Xunit;
@@ -36,7 +37,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
     /// <summary>
     ///     The controller button event tests class
     /// </summary>
-    public class ControllerButtonEventTests
+    	 [ExcludeFromCodeCoverage] 
+	 public class ControllerButtonEventTests 
     {
         /// <summary>
         ///     Tests that controller button event initializes properties correctly

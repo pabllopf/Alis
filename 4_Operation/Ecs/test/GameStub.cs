@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Ecs.System;
 
 namespace Alis.Core.Ecs.Test
@@ -35,6 +36,7 @@ namespace Alis.Core.Ecs.Test
     ///     The game stub class
     /// </summary>
     /// <seealso cref="IGame" />
+    [ExcludeFromCodeCoverage]
     internal class GameStub : IGame
     {
         /// <summary>

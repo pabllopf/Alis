@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Xunit;
@@ -37,7 +38,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
     /// <summary>
     ///     The renderer info tests class
     /// </summary>
-    public class RendererInfoTests
+    	 [ExcludeFromCodeCoverage] 
+	 public class RendererInfoTests 
     {
         /// <summary>
         ///     Tests that renderer info initializes properties correctly

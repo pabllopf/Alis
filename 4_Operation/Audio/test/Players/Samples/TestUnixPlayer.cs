@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Players;
 
@@ -36,6 +37,7 @@ namespace Alis.Core.Audio.Test.Players.Samples
     ///     The test unix player class
     /// </summary>
     /// <seealso cref="UnixPlayerBase" />
+    [ExcludeFromCodeCoverage]
     public class TestUnixPlayer : UnixPlayerBase
     {
         /// <summary>

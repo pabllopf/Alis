@@ -29,6 +29,7 @@
 
 using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Threading.Tasks;
 using Alis.Extension.Multimedia.FFmpeg.Audio;
@@ -39,7 +40,8 @@ namespace Alis.Extension.Multimedia.FFmpeg.Test
     /// <summary>
     ///     The audio conversion tests class
     /// </summary>
-    public class AudioConversionTests
+    	 [ExcludeFromCodeCoverage] 
+	 public class AudioConversionTests 
     {
         /// <summary>
         ///     Tests that f fmpeg wrapper progress test

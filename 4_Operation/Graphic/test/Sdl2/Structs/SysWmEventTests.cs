@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Xunit;
@@ -37,7 +38,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
     /// <summary>
     ///     The sys wm event tests class
     /// </summary>
-    public class SysWmEventTests
+    	 [ExcludeFromCodeCoverage] 
+	 public class SysWmEventTests 
     {
         /// <summary>
         ///     Tests that sys wm event initializes properties correctly

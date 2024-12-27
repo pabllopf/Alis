@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Ecs.System.Manager;
 using Alis.Core.Ecs.System.Scope;
 
@@ -36,6 +37,7 @@ namespace Alis.Test.Sample
     ///     The custom manager class
     /// </summary>
     /// <seealso cref="AManager" />
+    [ExcludeFromCodeCoverage]
     public class CustomManager : AManager
     {
         /// <summary>

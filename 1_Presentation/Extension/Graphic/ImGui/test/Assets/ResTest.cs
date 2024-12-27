@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 
 namespace Alis.Extension.Graphic.ImGui.Test.Assets
@@ -35,7 +36,8 @@ namespace Alis.Extension.Graphic.ImGui.Test.Assets
     /// <summary>
     ///     The res class
     /// </summary>
-    public static class Res
+    [ExcludeFromCodeCoverage]
+    public static class ResTest
     {
         /// <summary>
         ///     The directory

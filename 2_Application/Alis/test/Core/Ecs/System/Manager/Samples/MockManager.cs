@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Ecs.System.Manager;
 using Alis.Core.Ecs.System.Scope;
 
@@ -36,6 +37,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Samples
     ///     The mock manager class
     /// </summary>
     /// <seealso cref="AManager" />
+    [ExcludeFromCodeCoverage]
     public class MockManager : AManager
     {
         /// <summary>
