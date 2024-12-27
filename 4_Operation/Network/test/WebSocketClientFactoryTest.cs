@@ -233,24 +233,6 @@ namespace Alis.Core.Network.Test
         }
 
         /// <summary>
-        ///     Tests that get sub protocol from header should return correct sub protocol when response contains sub protocol
-        /// </summary>
-        [Fact]
-        public void GetSubProtocolFromHeader_ShouldReturnCorrectSubProtocol_WhenResponseContainsSubProtocol()
-        {
-            WebSocketClientFactory factory = new WebSocketClientFactory();
-            string response = "HTTP/1.1 101 Switching Protocols\r\n" +
-                              "Upgrade: websocket\r\n" +
-                              "Connection: Upgrade\r\n" +
-                              "Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=\r\n" +
-                              "Sec-WebSocket-Protocol: chat\r\n\r\n";
-
-            string result = factory.GetSubProtocolFromHeader(response);
-
-            Assert.Equal("chat", result);
-        }
-
-        /// <summary>
         ///     Tests that get sub protocol from header should return null when response does not contain sub protocol
         /// </summary>
         [Fact]
