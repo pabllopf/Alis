@@ -41,7 +41,7 @@ namespace Alis.Core.Network.Test
     /// <summary>
     ///     The http helper test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class HttpHelperTest 
     {
         /// <summary>

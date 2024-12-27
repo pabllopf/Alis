@@ -37,7 +37,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im gui size callback data test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class ImGuiSizeCallbackDataTest 
     {
         /// <summary>

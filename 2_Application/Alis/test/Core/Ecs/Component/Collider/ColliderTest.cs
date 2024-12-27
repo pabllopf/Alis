@@ -36,7 +36,7 @@ namespace Alis.Test.Core.Ecs.Component.Collider
     /// <summary>
     ///     The collider test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class ColliderTest 
     {
         /// <summary>

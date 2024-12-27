@@ -38,7 +38,7 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Render
     /// <summary>
     ///     The animator builder test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class AnimatorBuilderTest 
     {
         /// <summary>

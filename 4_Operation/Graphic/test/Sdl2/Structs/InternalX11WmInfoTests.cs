@@ -37,7 +37,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
     /// <summary>
     ///     The internal 11 wm info tests class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class InternalX11WmInfoTests 
     {
         /// <summary>

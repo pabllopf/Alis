@@ -34,7 +34,7 @@ namespace Alis.Core.Aspect.Data.Test.Mapping
     /// <summary>
     ///     The button test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class ButtonTest 
     {
     }

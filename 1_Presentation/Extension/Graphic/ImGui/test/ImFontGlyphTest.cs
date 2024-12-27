@@ -35,7 +35,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im font glyph test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class ImFontGlyphTest 
     {
         /// <summary>

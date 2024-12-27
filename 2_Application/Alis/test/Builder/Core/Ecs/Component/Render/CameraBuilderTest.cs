@@ -39,7 +39,7 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Render
     /// <summary>
     ///     The camera builder test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class CameraBuilderTest 
     {
         /// <summary>

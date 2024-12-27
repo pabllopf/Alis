@@ -38,7 +38,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im font config ptr test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class ImFontConfigPtrTest 
     {
         /// <summary>

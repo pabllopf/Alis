@@ -37,7 +37,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
     /// <summary>
     ///     The random utils test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class RandomUtilsTest 
     {
         /// <summary>

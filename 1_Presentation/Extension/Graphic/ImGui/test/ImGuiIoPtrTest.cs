@@ -38,7 +38,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im gui io ptr test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class ImGuiIoPtrTest 
     {
         /// <summary>

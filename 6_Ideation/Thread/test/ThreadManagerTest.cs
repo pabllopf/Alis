@@ -36,7 +36,7 @@ namespace Alis.Core.Aspect.Thread.Test
     /// <summary>
     ///     The thread manager test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class ThreadManagerTest 
     {
         /// <summary>

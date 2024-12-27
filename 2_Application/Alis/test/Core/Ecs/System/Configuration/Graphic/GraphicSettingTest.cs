@@ -38,7 +38,7 @@ namespace Alis.Test.Core.Ecs.System.Configuration.Graphic
     /// <summary>
     ///     The graphic setting test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class GraphicSettingTest 
     {
         /// <summary>

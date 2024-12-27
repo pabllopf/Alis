@@ -36,7 +36,7 @@ namespace Alis.Core.Network.Test
     /// <summary>
     ///     The buffer pool test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class IBufferPoolTest 
     {
         /// <summary>

@@ -35,7 +35,7 @@ namespace Alis.Extension.Ads.GoogleAds.Test
     /// <summary>
     ///     The dummy test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class DummyTest 
     {
         /// <summary>

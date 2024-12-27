@@ -38,7 +38,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
     /// <summary>
     ///     The sdl text editing event test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class SdlTextEditingEventTest 
     {
         /// <summary>

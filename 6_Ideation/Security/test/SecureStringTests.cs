@@ -35,7 +35,7 @@ namespace Alis.Core.Aspect.Security.Test
     /// <summary>
     ///     The secure string tests class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class SecureStringTests 
     {
         /// <summary>

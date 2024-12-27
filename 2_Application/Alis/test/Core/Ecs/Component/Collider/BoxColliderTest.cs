@@ -40,7 +40,7 @@ namespace Alis.Test.Core.Ecs.Component.Collider
     /// <summary>
     ///     The box collider test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class BoxColliderTest 
     {
         /// <summary>

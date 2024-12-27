@@ -36,7 +36,7 @@ namespace Alis.Core.Aspect.Math.Test
     /// <summary>
     ///     The transform test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class TransformTest 
     {
         /// <summary>

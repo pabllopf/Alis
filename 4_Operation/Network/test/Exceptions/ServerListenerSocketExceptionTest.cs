@@ -37,7 +37,7 @@ namespace Alis.Core.Network.Test.Exceptions
     /// <summary>
     ///     The server listener socket exception test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class ServerListenerSocketExceptionTest 
     {
         /// <summary>

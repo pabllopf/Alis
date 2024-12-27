@@ -35,7 +35,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im gui text filter test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class ImGuiTextFilterTest 
     {
         /// <summary>

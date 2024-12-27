@@ -36,7 +36,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
     /// <summary>
     ///     The style test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class StyleTest 
     {
         /// <summary>

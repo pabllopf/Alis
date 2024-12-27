@@ -36,7 +36,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
     /// <summary>
     ///     The board square test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class BoardSquareTest 
     {
         /// <summary>

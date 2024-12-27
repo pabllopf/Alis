@@ -38,7 +38,7 @@ namespace Alis.Core.Audio.Test.Players
     /// <summary>
     ///     The unix player base test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class UnixPlayerBaseTest 
     {
         /// <summary>

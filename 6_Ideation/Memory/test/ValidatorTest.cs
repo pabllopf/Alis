@@ -41,7 +41,7 @@ namespace Alis.Core.Aspect.Memory.Test
     /// <summary>
     ///     The validator test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class ValidatorTest 
     {
         /// <summary>

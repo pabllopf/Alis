@@ -37,7 +37,7 @@ namespace Alis.Core.Network.Test.Exceptions
     /// <summary>
     ///     The sec web socket key missing exception test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class SecWebSocketKeyMissingExceptionTest 
     {
         /// <summary>

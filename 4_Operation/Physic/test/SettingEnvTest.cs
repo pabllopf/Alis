@@ -34,7 +34,7 @@ namespace Alis.Core.Physic.Test
     /// <summary>
     ///     The setting env test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class SettingEnvTest 
     {
     }

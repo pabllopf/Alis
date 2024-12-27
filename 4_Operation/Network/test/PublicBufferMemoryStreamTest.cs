@@ -41,7 +41,7 @@ namespace Alis.Core.Network.Test
     /// <summary>
     ///     The public buffer memory stream test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class PublicBufferMemoryStreamTest 
     {
         /// <summary>

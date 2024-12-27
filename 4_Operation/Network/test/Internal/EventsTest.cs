@@ -39,7 +39,7 @@ namespace Alis.Core.Network.Test.Internal
     /// <summary>
     ///     The events test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class EventsTest 
     {
         /// <summary>

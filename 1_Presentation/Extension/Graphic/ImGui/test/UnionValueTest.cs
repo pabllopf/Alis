@@ -36,7 +36,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The union value test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class UnionValueTest 
     {
         /// <summary>

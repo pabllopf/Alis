@@ -40,7 +40,7 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration.Graphic
     /// <summary>
     ///     The graphic setting builder test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class GraphicSettingBuilderTest 
     {
         /// <summary>

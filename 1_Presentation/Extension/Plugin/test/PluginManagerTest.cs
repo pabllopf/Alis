@@ -44,7 +44,7 @@ namespace Alis.Extension.Plugin.Test
     /// <summary>
     ///     The plugin manager test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class PluginManagerTest 
     {
         /// <summary>

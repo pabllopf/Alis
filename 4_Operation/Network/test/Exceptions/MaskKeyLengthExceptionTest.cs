@@ -36,7 +36,7 @@ namespace Alis.Core.Network.Test.Exceptions
     /// <summary>
     ///     The mask key length exception test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class MaskKeyLengthExceptionTest 
     {
         /// <summary>

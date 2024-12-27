@@ -35,7 +35,7 @@ namespace Alis.Core.Aspect.Security.Test
     /// <summary>
     ///     The secure byte tests class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class SecureByteTests 
     {
         /// <summary>

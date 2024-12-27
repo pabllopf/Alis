@@ -37,7 +37,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
     /// <summary>
     ///     The internal android wm info tests class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class InternalAndroidWmInfoTests 
     {
         /// <summary>

@@ -36,7 +36,7 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Light
     /// <summary>
     ///     The directional light builder test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class DirectionalLightBuilderTest 
     {
         /// <summary>

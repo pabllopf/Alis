@@ -35,7 +35,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test
     /// <summary>
     ///     The primitive type tests class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class PrimitiveTypeTests 
     {
         /// <summary>

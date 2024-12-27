@@ -42,7 +42,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
     /// <summary>
     ///     The embedded dll class test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class EmbeddedDllClassTest 
     {
         /// <summary>

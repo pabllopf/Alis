@@ -36,7 +36,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The stb undo state test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class StbUndoStateTest 
     {
         /// <summary>

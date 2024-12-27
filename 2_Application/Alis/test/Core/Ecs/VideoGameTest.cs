@@ -39,7 +39,7 @@ namespace Alis.Test.Core.Ecs
     /// <summary>
     ///     The video game test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class VideoGameTest 
     {
         /// <summary>

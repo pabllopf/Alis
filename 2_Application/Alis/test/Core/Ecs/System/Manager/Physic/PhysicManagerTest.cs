@@ -34,7 +34,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Physic
     /// <summary>
     ///     The physic manager test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class PhysicManagerTest 
     {
     }

@@ -37,7 +37,7 @@ namespace Alis.Core.Aspect.Time.Test
     /// <summary>
     ///     The clock test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class ClockTest 
     {
         /// <summary>

@@ -36,7 +36,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Circle
     /// <summary>
     ///     The circle test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class CircleITest 
     {
         /// <summary>

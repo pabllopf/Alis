@@ -37,7 +37,7 @@ namespace Alis.Core.Aspect.Data.Test.Dll
     /// <summary>
     ///     The platform info test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class PlatformInfoTest 
     {
         /// <summary>

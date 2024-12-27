@@ -35,7 +35,7 @@ namespace Alis.App.Engine.Test
     /// <summary>
     ///     The default test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class DefaultTest 
     {
         /// <summary>

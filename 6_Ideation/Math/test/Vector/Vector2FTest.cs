@@ -36,7 +36,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
     /// <summary>
     ///     The vector test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class Vector2FTest 
     {
         /// <summary>

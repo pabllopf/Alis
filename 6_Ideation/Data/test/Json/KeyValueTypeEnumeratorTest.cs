@@ -39,7 +39,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
     /// <summary>
     ///     The key value type enumerator test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class KeyValueTypeEnumeratorTest 
     {
         /// <summary>

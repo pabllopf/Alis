@@ -38,7 +38,7 @@ namespace Alis.Core.Aspect.Data.Test.Resource
     /// <summary>
     ///     The asset manager test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class AssetManagerTest 
     {
         /// <summary>

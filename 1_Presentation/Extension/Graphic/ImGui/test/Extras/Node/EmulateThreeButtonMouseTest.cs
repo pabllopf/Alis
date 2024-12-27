@@ -36,7 +36,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
     /// <summary>
     ///     The emulate three button mouse test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class EmulateThreeButtonMouseTest 
     {
         /// <summary>

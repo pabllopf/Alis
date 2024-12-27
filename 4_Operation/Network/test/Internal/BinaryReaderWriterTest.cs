@@ -41,7 +41,7 @@ namespace Alis.Core.Network.Test.Internal
     /// <summary>
     ///     The binary reader writer test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class BinaryReaderWriterTest 
     {
         /// <summary>

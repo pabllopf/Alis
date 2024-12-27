@@ -39,7 +39,7 @@ namespace Alis.Test.Core.Ecs.System.Configuration.Physic
     /// <summary>
     ///     The physic setting test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class PhysicSettingTest 
     {
         /// <summary>

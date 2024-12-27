@@ -39,7 +39,7 @@ namespace Alis.Core.Audio.Test.Players
     /// <summary>
     ///     The linux player test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class LinuxPlayerTest 
     {
         /// <summary>

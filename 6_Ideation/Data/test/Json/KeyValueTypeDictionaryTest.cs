@@ -39,7 +39,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
     /// <summary>
     ///     The key value type dictionary test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class KeyValueTypeDictionaryTest 
     {
         /// <summary>

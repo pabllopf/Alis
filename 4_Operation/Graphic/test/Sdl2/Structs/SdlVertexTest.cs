@@ -39,7 +39,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
     /// <summary>
     ///     The sdl vertex test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class SdlVertexTest 
     {
         /// <summary>

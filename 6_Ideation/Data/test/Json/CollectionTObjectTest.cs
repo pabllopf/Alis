@@ -38,7 +38,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
     /// <summary>
     ///     The collection object test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class CollectionTObjectTest 
     {
         /// <summary>

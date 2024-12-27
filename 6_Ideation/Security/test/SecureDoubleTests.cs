@@ -35,7 +35,7 @@ namespace Alis.Core.Aspect.Security.Test
     /// <summary>
     ///     The secure double tests class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class SecureDoubleTests 
     {
         /// <summary>

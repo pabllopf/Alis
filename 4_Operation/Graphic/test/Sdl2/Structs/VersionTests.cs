@@ -36,7 +36,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
     /// <summary>
     ///     The version tests class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class VersionTests 
     {
         /// <summary>

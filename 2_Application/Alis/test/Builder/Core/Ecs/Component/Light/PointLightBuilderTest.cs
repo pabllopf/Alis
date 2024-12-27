@@ -37,7 +37,7 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Light
     /// <summary>
     ///     The point light builder test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class PointLightBuilderTest 
     {
         /// <summary>

@@ -36,7 +36,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
     /// <summary>
     ///     The matrix test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class Matrix4X4Test 
     {
         /// <summary>

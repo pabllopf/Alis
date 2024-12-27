@@ -36,7 +36,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Rectangle
     /// <summary>
     ///     The rectangle test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class RectangleITest 
     {
         /// <summary>

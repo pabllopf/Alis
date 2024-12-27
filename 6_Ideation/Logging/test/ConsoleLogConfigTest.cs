@@ -36,7 +36,7 @@ namespace Alis.Core.Aspect.Logging.Test
     /// <summary>
     ///     The console log config test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class ConsoleLogConfigTest 
     {
         /// <summary>

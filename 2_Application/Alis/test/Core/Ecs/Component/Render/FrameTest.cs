@@ -38,7 +38,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
     /// <summary>
     ///     The frame test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class FrameTest 
     {
         /// <summary>

@@ -36,7 +36,7 @@ namespace Alis.Core.Aspect.Math.Test.Definition
     /// <summary>
     ///     The color tests class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class ColorTests 
     {
         /// <summary>

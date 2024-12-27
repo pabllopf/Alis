@@ -38,7 +38,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im draw data test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class ImDrawDataTest 
     {
         /// <summary>

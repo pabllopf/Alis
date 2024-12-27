@@ -34,7 +34,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
     /// <summary>
     ///     The shape type test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class ShapeTypeTest 
     {
     }

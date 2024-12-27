@@ -35,7 +35,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im gui table column sort specs test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class ImGuiTableColumnSortSpecsTest 
     {
         /// <summary>

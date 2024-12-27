@@ -37,7 +37,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
     /// <summary>
     ///     The simple priority queue test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class SimplePriorityQueueTest 
     {
         /// <summary>

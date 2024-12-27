@@ -38,7 +38,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
     /// <summary>
     ///     The game object builder test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class GameObjectBuilderTest 
     {
         /// <summary>

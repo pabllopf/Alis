@@ -36,7 +36,7 @@ namespace Alis.Core.Network.Test.Internal
     /// <summary>
     ///     The web socket op code test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class WebSocketOpCodeTest 
     {
         /// <summary>

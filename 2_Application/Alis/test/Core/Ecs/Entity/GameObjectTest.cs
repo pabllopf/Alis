@@ -40,7 +40,7 @@ namespace Alis.Test.Core.Ecs.Entity
     /// <summary>
     ///     The game object test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class GameObjectTest 
     {
         /// <summary>

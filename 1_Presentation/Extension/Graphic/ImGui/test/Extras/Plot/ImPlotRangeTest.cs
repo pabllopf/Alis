@@ -36,7 +36,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
     /// <summary>
     ///     The im plot range test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class ImPlotRangeTest 
     {
         /// <summary>

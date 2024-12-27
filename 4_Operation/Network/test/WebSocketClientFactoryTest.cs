@@ -46,7 +46,7 @@ namespace Alis.Core.Network.Test
     /// <summary>
     ///     The web socket client factory test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class WebSocketClientFactoryTest 
     {
         /// <summary>

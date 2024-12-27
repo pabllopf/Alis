@@ -34,7 +34,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test
     /// <summary>
     ///     The draw elements test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class DrawElementsTest 
     {
     }

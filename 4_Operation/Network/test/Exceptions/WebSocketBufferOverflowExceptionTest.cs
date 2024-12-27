@@ -37,7 +37,7 @@ namespace Alis.Core.Network.Test.Exceptions
     /// <summary>
     ///     The web socket buffer overflow exception test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class WebSocketBufferOverflowExceptionTest 
     {
         /// <summary>

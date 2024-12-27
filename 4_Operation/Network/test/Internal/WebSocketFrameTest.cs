@@ -38,7 +38,7 @@ namespace Alis.Core.Network.Test.Internal
     /// <summary>
     ///     The web socket frame test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class WebSocketFrameTest 
     {
         /// <summary>

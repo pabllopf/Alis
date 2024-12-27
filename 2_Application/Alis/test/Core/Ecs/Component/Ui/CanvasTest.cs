@@ -37,7 +37,7 @@ namespace Alis.Test.Core.Ecs.Component.Ui
     /// <summary>
     ///     The canvas test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class CanvasTest 
     {
         /// <summary>

@@ -36,7 +36,7 @@ namespace Alis.Core.Aspect.Math.Test
     /// <summary>
     ///     The rotation test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class RotationTest 
     {
         /// <summary>

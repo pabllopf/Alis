@@ -36,7 +36,7 @@ namespace Alis.Core.Network.Test
     /// <summary>
     ///     The pong event args test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class PongEventArgsTest 
     {
         /// <summary>

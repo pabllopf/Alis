@@ -34,7 +34,7 @@ namespace Alis.Core.Physic.Test.Controllers
     /// <summary>
     ///     The gravity controller test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class GravityControllerTest 
     {
     }

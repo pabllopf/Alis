@@ -39,7 +39,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
     /// <summary>
     ///     The input manager test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class InputManagerTest 
     {
         /// <summary>

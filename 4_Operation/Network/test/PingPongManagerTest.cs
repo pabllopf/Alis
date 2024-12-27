@@ -43,7 +43,7 @@ namespace Alis.Core.Network.Test
     /// <summary>
     ///     The ping pong manager test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class PingPongManagerTest 
     {
         /// <summary>

@@ -37,7 +37,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
     /// <summary>
     ///     The audio spec test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class AudioSpecTest 
     {
         /// <summary>

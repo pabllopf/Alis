@@ -38,7 +38,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
     /// <summary>
     ///     The sdl renderer info test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class SdlRendererInfoTest 
     {
         /// <summary>

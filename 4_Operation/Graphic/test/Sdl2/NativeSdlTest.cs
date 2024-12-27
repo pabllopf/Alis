@@ -35,7 +35,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
     /// <summary>
     ///     The native sdl test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class NativeSdlTest 
     {
         /// <summary>

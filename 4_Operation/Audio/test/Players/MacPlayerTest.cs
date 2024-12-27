@@ -39,7 +39,7 @@ namespace Alis.Core.Audio.Test.Players
     /// <summary>
     ///     The mac player test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class MacPlayerTest 
     {
         /// <summary>

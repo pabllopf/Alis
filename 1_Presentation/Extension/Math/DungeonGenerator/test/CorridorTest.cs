@@ -37,7 +37,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
     /// <summary>
     ///     The corridor test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class CorridorTest 
     {
         /// <summary>

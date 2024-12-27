@@ -36,7 +36,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
     /// <summary>
     ///     The hash code test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class HashCodeTest 
     {
         /// <summary>

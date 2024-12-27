@@ -37,7 +37,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
     /// <summary>
     ///     The internal winrt wm info tests class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class InternalWinrtWmInfoTests 
     {
         /// <summary>

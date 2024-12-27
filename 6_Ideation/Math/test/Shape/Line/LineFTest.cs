@@ -36,7 +36,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Line
     /// <summary>
     ///     The line test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class LineFTest 
     {
         /// <summary>

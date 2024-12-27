@@ -37,7 +37,7 @@ namespace Alis.Test.Core.Ecs.System.Configuration.Input
     /// <summary>
     ///     The input setting test class
     /// </summary>
-    	 [ExcludeFromCodeCoverage] 
+    	  
 	 public class InputSettingTest 
     {
         /// <summary>
