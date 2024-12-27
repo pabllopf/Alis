@@ -20,7 +20,6 @@
 [![Web](https://img.shields.io/website?down_color=red&down_message=failed&up_color=blue&up_message=active&url=https%3A%2F%2Fpabllopf.github.io%2FAlis.Web%2F)](https://pabllopf.github.io/Alis.Web/index.html)
 ![Nuget](https://img.shields.io/nuget/v/alis?label=nuget%20version&color=green)
 ![Nuget](https://img.shields.io/nuget/dt/alis?label=nuget%20downloads)
-![GitHub contributors](https://img.shields.io/github/contributors/pabllopf/alis)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/pabllopf)
 
 
