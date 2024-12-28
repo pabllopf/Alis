@@ -1,7 +1,5 @@
 <Project>
     <PropertyGroup>
-        <WarningLevel>0</WarningLevel>
-        
         <!-- Suppresses the warning NETSDK1138:The target framework 'net7.0' is out of support and will not receive security updates in the future. -->
         <NoWarn>NETSDK1138</NoWarn>
 

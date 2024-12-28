@@ -30,6 +30,7 @@
 using System;
 using System.Runtime.Serialization;
 
+
 namespace Alis.Core.Aspect.Math.Definition
 {
     /// <summary>

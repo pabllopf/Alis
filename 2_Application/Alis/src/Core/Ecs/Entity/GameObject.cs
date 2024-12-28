@@ -45,7 +45,7 @@ namespace Alis.Core.Ecs.Entity
     /// </summary>
     /// <seealso cref="IGameObject{AComponent}" />
     /// <seealso cref="ISerializable" />
-    public class GameObject : IGameObject<AComponent>, IHasBuilder<GameObjectBuilder>, ICloneable
+    public class GameObject : IGameObject<AComponent>, IHasBuilder<GameObjectBuilder>
     {
         /// <summary>
         ///     The context
