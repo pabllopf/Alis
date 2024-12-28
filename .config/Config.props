@@ -13,6 +13,12 @@
         <TargetFrameworks Condition="$(AssemblyName.Contains('Benchmark')) == true">net8.0;</TargetFrameworks>
         <TargetFrameworks Condition="$(AssemblyName.Contains('Test')) == true">net8.0;</TargetFrameworks>
         <TargetFrameworks Condition="$(AssemblyName.Contains('Sample')) == true">net8.0;</TargetFrameworks>
+        
+        <RuntimeIdentifiers>
+            win-x64; win-x86; win-arm64;
+            linux-x64; linux-musl-x64; linux-arm; linux-arm64; linux-musl-arm; linux-musl-arm64;
+            osx-x64;osx-arm64;
+        </RuntimeIdentifiers>
     </PropertyGroup>
     
     <!-- Import all the props files in the application folder -->
