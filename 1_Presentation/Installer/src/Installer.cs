@@ -208,12 +208,12 @@ namespace Alis.App.Installer
             Logger.Info(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
 
             Sdl.SetHint(Hint.HintRenderDriver, "opengl");
-
+            
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION
             Sdl.SetAttributeByInt(Attr.SdlGlContextFlags, (int) Contexts.SdlGlContextForwardCompatibleFlag);
             Sdl.SetAttributeByProfile(Attr.SdlGlContextProfileMask, Profiles.SdlGlContextProfileCore);
-            Sdl.SetAttributeByInt(Attr.SdlGlContextMajorVersion, 4);
-            Sdl.SetAttributeByInt(Attr.SdlGlContextMinorVersion, 1);
+            Sdl.SetAttributeByInt(Attr.SdlGlContextMajorVersion, 3);
+            Sdl.SetAttributeByInt(Attr.SdlGlContextMinorVersion, 2);
 
             Sdl.SetAttributeByProfile(Attr.SdlGlContextProfileMask, Profiles.SdlGlContextProfileCore);
             Sdl.SetAttributeByInt(Attr.SdlGlDoubleBuffer, 1);

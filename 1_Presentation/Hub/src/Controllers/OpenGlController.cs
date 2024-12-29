@@ -57,33 +57,11 @@ namespace Alis.App.Hub.Controllers
         /// </summary>
         public override void OnInit()
         {
-            SpaceWork.GlContext = CreateGlContext(SpaceWork.WindowHub);
+            SpaceWork.GlContext = SpaceWork.SdlController.CreateGlContext(SpaceWork.WindowHub);
             SpaceWork.GlShader = new GlShaderProgram(VertexShader.ShaderCode, FragmentShader.ShaderCode);
         }
 
-        /// <summary>
-        ///     Creates the gl context using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <returns>The gl context</returns>
-        public IntPtr CreateGlContext(IntPtr window)
-        {
-            IntPtr glContext = Sdl.CreateContext(window);
-            if (glContext == IntPtr.Zero)
-            {
-                Logger.Exception("Could Not Create GL Context.");
-            }
-
-            Sdl.MakeCurrent(window, glContext);
-            Sdl.SetSwapInterval(1);
-
-            Gl.GlClearColor(0f, 0f, 0f, 1f);
-            Gl.GlClear(ClearBufferMask.ColorBufferBit);
-            Sdl.SwapWindow(window);
-
-            Logger.Info($"GL Version: {Gl.GlGetString(StringName.Version)}");
-            return glContext;
-        }
+      
 
         /// <summary>
         ///     Loads the texture using the specified pixel data

@@ -188,8 +188,8 @@ namespace Alis.App.Engine
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION
             Sdl.SetAttributeByInt(Attr.SdlGlContextFlags, (int) Contexts.SdlGlContextForwardCompatibleFlag);
             Sdl.SetAttributeByProfile(Attr.SdlGlContextProfileMask, Profiles.SdlGlContextProfileCore);
-            Sdl.SetAttributeByInt(Attr.SdlGlContextMajorVersion, 4);
-            Sdl.SetAttributeByInt(Attr.SdlGlContextMinorVersion, 1);
+            Sdl.SetAttributeByInt(Attr.SdlGlContextMajorVersion, 3);
+            Sdl.SetAttributeByInt(Attr.SdlGlContextMinorVersion, 2);
 
             Sdl.SetAttributeByProfile(Attr.SdlGlContextProfileMask, Profiles.SdlGlContextProfileCore);
             Sdl.SetAttributeByInt(Attr.SdlGlDoubleBuffer, 1);
