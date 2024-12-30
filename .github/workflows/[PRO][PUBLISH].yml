@@ -89,7 +89,7 @@ jobs:
       - name: Print the next version
         run: echo $CURRENTVERSION
 
-      - name: Build all platforms
+      - name: Build all platforms Standard
         run: |
           runtimes=(
             "win-x64"
@@ -105,22 +105,74 @@ jobs:
             "osx-arm64"
           )
           
+          targetFrameworks=(
+            "net6.0"
+            "net7.0"
+            "net8.0"
+            "net9.0"
+            "netstandard2.0"
+            "netstandard2.1"
+            "net471"
+            "net472"
+            "net48"
+            "net481"
+          )
+          
           for project in $(find . -name "*.csproj" -type f); do
             if [[ $project == *".Template."* || $project == *".App."* || $project == *".Test."* || $project == *".Benchmark."* || $project == *".Sample."* ]]; then
               echo "Skip project $project"
             else
               echo "Compiling project: $project"
-              for runtime in "${runtimes[@]}"; do
-                echo "  - Compiling for runtime: $runtime"
-                dotnet build "$project" -r "$runtime" -c Release
-                if [[ $? -ne 0 ]]; then
-                  echo "Error compiling $project for $runtime. Stopping..."
-                  exit 1
-                fi
+              for targetFramework in "${targetFrameworks[@]}"; do
+                for runtime in "${runtimes[@]}"; do
+                  echo "  - Compiling $project for TargetFramework: $targetFramework, Runtime: $runtime"
+                  dotnet build "$project" -r "$runtime" -f "$targetFramework" -c Release
+                  if [[ $? -ne 0 ]]; then
+                    echo "Error compiling $project for $targetFramework and $runtime. Stopping..."
+                    exit 1
+                  fi
+                done
               done
             fi
           done
-        
+
+      - name: Build all platforms Especials
+        run: |
+          runtimes=(
+            "win-x64"
+            "win-x86"
+            "linux-x64"
+            "linux-musl-x64"
+            "osx-x64"
+          )
+          
+          targetFrameworks=(
+            "netcoreapp2.0"
+            "netcoreapp2.1"
+            "netcoreapp2.2"
+            "netcoreapp3.0"
+            "netcoreapp3.1"
+            "net5.0"
+          )
+          
+          for project in $(find . -name "*.csproj" -type f); do
+            if [[ $project == *".Template."* || $project == *".App."* || $project == *".Test."* || $project == *".Benchmark."* || $project == *".Sample."* ]]; then
+              echo "Skip project $project"
+            else
+              echo "Compiling project: $project"
+              for targetFramework in "${targetFrameworks[@]}"; do
+                for runtime in "${runtimes[@]}"; do
+                  echo "  - Compiling $project for TargetFramework: $targetFramework, Runtime: $runtime"
+                  dotnet build "$project" -r "$runtime" -f "$targetFramework" -c Release
+                  if [[ $? -ne 0 ]]; then
+                    echo "Error compiling $project for $targetFramework and $runtime. Stopping..."
+                    exit 1
+                  fi
+                done
+              done
+            fi
+          done
+
       - name: build installer
         run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -f net8.0
 
