@@ -474,19 +474,19 @@ namespace Alis.App.Engine.Windows
 
                             break;
                         case byte byteValue:
-                            ImGui.DragScalar(propertyId, ImGuiDataType.U8, byteValue, 1, byte.MinValue, byte.MaxValue, "%d", ImGuiSliderFlags.AlwaysClamp);
+                            ImGui.DragScalar(propertyId, ImGuiDataType.U8, new IntPtr(byteValue), 1, new IntPtr(byte.MinValue), new IntPtr(byte.MaxValue), "%d", ImGuiSliderFlags.AlwaysClamp);
                             property.SetValue(component, byteValue);
                             break;
                         case sbyte sbyteValue:
-                            ImGui.DragScalar(propertyId, ImGuiDataType.S8, sbyteValue, 1, sbyte.MinValue, sbyte.MaxValue, "%d", ImGuiSliderFlags.AlwaysClamp);
+                            ImGui.DragScalar(propertyId, ImGuiDataType.S8, new IntPtr(sbyteValue), 1, new IntPtr(sbyte.MinValue), new IntPtr(sbyte.MaxValue), "%d", ImGuiSliderFlags.AlwaysClamp);
                             property.SetValue(component, sbyteValue);
                             break;
                         case short shortValue:
-                            ImGui.DragScalar(propertyId, ImGuiDataType.S16, shortValue, 1, short.MinValue, short.MaxValue, "%d", ImGuiSliderFlags.AlwaysClamp);
+                            ImGui.DragScalar(propertyId, ImGuiDataType.S16, new IntPtr(shortValue), 1, new IntPtr(short.MinValue), new IntPtr(short.MaxValue), "%d", ImGuiSliderFlags.AlwaysClamp);
                             property.SetValue(component, shortValue);
                             break;
                         case ushort ushortValue:
-                            ImGui.DragScalar(propertyId, ImGuiDataType.U16, ushortValue, 1, ushort.MinValue, ushort.MaxValue, "%d", ImGuiSliderFlags.AlwaysClamp);
+                            ImGui.DragScalar(propertyId, ImGuiDataType.U16, new IntPtr(ushortValue), 1, new IntPtr(ushort.MinValue), new IntPtr(ushort.MaxValue), "%d", ImGuiSliderFlags.AlwaysClamp);
                             property.SetValue(component, ushortValue);
                             break;
                     }
