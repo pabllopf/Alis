@@ -89,6 +89,42 @@ jobs:
       - name: Print the next version
         run: echo $CURRENTVERSION
 
+      - name: Build all platforms Standard EXTENSIONS
+        run: |
+          runtimes=(
+            "win-x64"
+            "win-x86"
+            "win-arm64"
+            "linux-x64"
+            "linux-musl-x64"
+            "linux-arm"
+            "linux-arm64"
+            "linux-musl-arm"
+            "linux-musl-arm64"
+            "osx-x64"
+            "osx-arm64"
+          )
+          
+          targetFrameworks=(
+            "netstandard2.0"
+          )
+          
+          for project in $(find . -name "*.csproj" -type f); do
+            if [[ $project == *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* ]]; then
+              echo "Compiling project: $project"
+              for targetFramework in "${targetFrameworks[@]}"; do
+                for runtime in "${runtimes[@]}"; do
+                  echo "  - Compiling $project for TargetFramework: $targetFramework, Runtime: $runtime"
+                  dotnet build "$project" -r "$runtime" -f "$targetFramework" -c Release
+                  if [[ $? -ne 0 ]]; then
+                    echo "Error compiling $project for $targetFramework and $runtime. Stopping..."
+                    exit 1
+                  fi
+                done
+              done
+            fi
+          done
+
       - name: Build all platforms Standard
         run: |
           runtimes=(
@@ -119,7 +155,7 @@ jobs:
           )
           
           for project in $(find . -name "*.csproj" -type f); do
-            if [[ $project == *".Template."* || $project == *".App."* || $project == *".Test."* || $project == *".Benchmark."* || $project == *".Sample."* ]]; then
+            if [[ $project == *".Template."* || $project == *".App."* || $project == *".Extension."* || $project == *".Test."* || $project == *".Benchmark."* || $project == *".Sample."* ]]; then
               echo "Skip project $project"
             else
               echo "Compiling project: $project"
@@ -156,7 +192,7 @@ jobs:
           )
           
           for project in $(find . -name "*.csproj" -type f); do
-            if [[ $project == *".Template."* || $project == *".App."* || $project == *".Test."* || $project == *".Benchmark."* || $project == *".Sample."* ]]; then
+            if [[ $project == *".Template."* || $project == *".App."* || $project == *".Extension."* || $project == *".Test."* || $project == *".Benchmark."* || $project == *".Sample."* ]]; then
               echo "Skip project $project"
             else
               echo "Compiling project: $project"
@@ -172,7 +208,7 @@ jobs:
               done
             fi
           done
-
+          
       - name: build installer
         run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -f net8.0
 
