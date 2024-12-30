@@ -18,6 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "application", "application"
 		.config\application\Runtimes.props = .config\application\Runtimes.props
 		.config\application\SelfContained.props = .config\application\SelfContained.props
 		.config\application\Optimize.props = .config\application\Optimize.props
+		.config\application\Nullable.props = .config\application\Nullable.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assembly", "assembly", "{9444A5E5-647C-451D-97B2-0C480EA31258}"
@@ -26,6 +27,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assembly", "assembly", "{94
 		.config\assembly\FileVersion.props = .config\assembly\FileVersion.props
 		.config\assembly\NeutralLanguage.props = .config\assembly\NeutralLanguage.props
 		.config\assembly\Product.props = .config\assembly\Product.props
+		.config\assembly\InternalsVisibleTo.props = .config\assembly\InternalsVisibleTo.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{0B0C39B0-DF36-4782-9B28-0902A4927D78}"
@@ -73,6 +75,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "reference", "reference", "{
 		.config\reference\AssetFolder.props = .config\reference\AssetFolder.props
 		.config\reference\ContentFiles.props = .config\reference\ContentFiles.props
 		.config\reference\EmbeddedResources.props = .config\reference\EmbeddedResources.props
+		.config\reference\DataFolder.props = .config\reference\DataFolder.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "target", "target", "{F025DB85-A618-4B9B-BE22-ACF53063C9FA}"
@@ -88,7 +91,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{18D887C5
 		readme.md = readme.md
 		docs\nuget\readme_nuget.md = docs\nuget\readme_nuget.md
 		contributing.md = contributing.md
-		license.md = license.md
 		security.md = security.md
 	EndProjectSection
 EndProject
@@ -158,6 +160,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sln", ".sln", "{2D95A184-C
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
+		NuGet.Config = NuGet.Config
+		funding.yml = funding.yml
+		license.md = license.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{7D733040-0257-4FA9-885A-58637AFE5652}"

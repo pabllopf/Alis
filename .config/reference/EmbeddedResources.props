@@ -2,8 +2,7 @@
     <PropertyGroup>
         <DisableResources>false</DisableResources>
     </PropertyGroup>
-
-
+    
     <ItemGroup>
         <None Remove="$(ProjectDir)/**/resources/**/*.zip;"/>
     </ItemGroup>

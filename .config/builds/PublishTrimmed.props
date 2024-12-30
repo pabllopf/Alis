@@ -1,10 +1,6 @@
 <Project>
-    <PropertyGroup Condition="
-        $(AssemblyName.Contains('App')) == true OR
-        $(AssemblyName.Contains('Template')) == true OR
-        $(AssemblyName.Contains('Sample')) == true OR
-        $(AssemblyName.Contains('Benchmark')) == true">
+    <PropertyGroup>
         <PublishTrimmed>false</PublishTrimmed>
-        <PublishSingleFile>false</PublishSingleFile>
+        <TrimMode>link</TrimMode>
     </PropertyGroup>
 </Project>

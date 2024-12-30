@@ -133,7 +133,7 @@ namespace Alis.Core.Aspect.Data.Resource
             string[] baseDirectories =
             {
                 Environment.CurrentDirectory,
-                Path.GetDirectoryName(typeof(AssetManager).Assembly.Location),
+                //Path.GetDirectoryName(typeof(AssetManager).Assembly.Location),
                 AppDomain.CurrentDomain.BaseDirectory
             };
 

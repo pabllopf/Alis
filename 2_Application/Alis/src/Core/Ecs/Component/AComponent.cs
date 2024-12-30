@@ -42,7 +42,7 @@ namespace Alis.Core.Ecs.Component
     /// </summary>
     /// <seealso cref="IComponent{GameObject}" />
     /// <seealso cref="ISerializable" />
-    public abstract class AComponent : IComponent<GameObject>, ICloneable
+    public abstract class AComponent : IComponent<GameObject>
     {
         /// <summary>
         ///     Gets or sets the value of the game object
