@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Graphic.ImGui.Test
@@ -35,8 +34,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im font glyph test class
     /// </summary>
-    	  
-	 public class ImFontGlyphTest 
+    public class ImFontGlyphTest
     {
         /// <summary>
         ///     Tests that colored should set and get correctly

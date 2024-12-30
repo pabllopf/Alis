@@ -49,26 +49,26 @@ namespace Alis.App.Hub.Windows.Sections
     public class EditorInstallationSection : ASection
     {
         /// <summary>
-        /// The selected version index
-        /// </summary>
-        private int selectedVersionIndex = 0;
-        
-        // Example dropdown for selecting version
-        /// <summary>
-        /// The empty
-        /// </summary>
-        private string[] versions = Array.Empty<string>();
-        
-        /// <summary>
-        /// The is visible
-        /// </summary>
-        public bool IsVisible = false;
-        
-        /// <summary>
-        /// The installed version
+        ///     The installed version
         /// </summary>
         private List<InstalledVersion> installedVersions = new List<InstalledVersion>();
-        
+
+        /// <summary>
+        ///     The is visible
+        /// </summary>
+        public bool IsVisible;
+
+        /// <summary>
+        ///     The selected version index
+        /// </summary>
+        private int selectedVersionIndex;
+
+        // Example dropdown for selecting version
+        /// <summary>
+        ///     The empty
+        /// </summary>
+        private string[] versions = Array.Empty<string>();
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="EditorInstallationSection" /> class
         /// </summary>
@@ -78,7 +78,7 @@ namespace Alis.App.Hub.Windows.Sections
         }
 
         /// <summary>
-        /// Installs the new version
+        ///     Installs the new version
         /// </summary>
         private void InstallNewVersion()
         {
@@ -86,7 +86,7 @@ namespace Alis.App.Hub.Windows.Sections
         }
 
         /// <summary>
-        /// Renders the install new version popup
+        ///     Renders the install new version popup
         /// </summary>
         private void RenderInstallNewVersionPopup()
         {
@@ -97,12 +97,11 @@ namespace Alis.App.Hub.Windows.Sections
             {
                 ImGui.Text("Select the version to install:");
                 ImGui.Separator();
-                
+
                 // Selector de solución
                 ImGui.SetNextItemWidth(100);
                 if (ImGui.BeginCombo("Version", $"{versions[selectedVersionIndex]}", ImGuiComboFlags.HeightLarge))
                 {
-                    
                     for (int i = 0; i < versions.Length; i++)
                     {
                         if (ImGui.Selectable($"{versions[i]}"))
@@ -110,10 +109,10 @@ namespace Alis.App.Hub.Windows.Sections
                             selectedVersionIndex = i;
                         }
                     }
-                    
+
                     ImGui.EndCombo();
                 }
-                
+
                 ImGui.Separator();
 
                 if (ImGui.Button("Install"))
@@ -132,13 +131,13 @@ namespace Alis.App.Hub.Windows.Sections
                     ImGui.CloseCurrentPopup();
                     IsVisible = false;
                 }
-                
+
                 ImGui.EndPopup();
             }
         }
 
         /// <summary>
-        /// Starts the installation using the specified version
+        ///     Starts the installation using the specified version
         /// </summary>
         /// <param name="version">The version</param>
         private void StartInstallation(string version)
@@ -159,7 +158,12 @@ namespace Alis.App.Hub.Windows.Sections
                 Console.WriteLine("Installer not found at: " + installerPath);
             }
         }
-        
+
+        /// <summary>
+        ///     Gets the installer path
+        /// </summary>
+        /// <exception cref="FileNotFoundException">Engine executable not found in {installerPath}</exception>
+        /// <returns>The string</returns>
         private string GetInstallerPath()
         {
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
@@ -171,10 +175,10 @@ namespace Alis.App.Hub.Windows.Sections
             {
                 throw new FileNotFoundException($"Engine executable not found in {installerPath}");
             }
-            
+
             return files[0];
         }
-        
+
 
         /// <summary>
         ///     Reveals the in finder using the specified path
@@ -216,7 +220,7 @@ namespace Alis.App.Hub.Windows.Sections
         }
 
         /// <summary>
-        /// Fetches the available versions
+        ///     Fetches the available versions
         /// </summary>
         /// <returns>A task containing a list of string</returns>
         private async Task<List<string>> FetchAvailableVersionsAsync()
@@ -242,7 +246,7 @@ namespace Alis.App.Hub.Windows.Sections
         }
 
         /// <summary>
-        /// Detects the installed versions
+        ///     Detects the installed versions
         /// </summary>
         private void DetectInstalledVersions()
         {
@@ -262,11 +266,10 @@ namespace Alis.App.Hub.Windows.Sections
         }
 
         /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
         public override void OnStart()
         {
-            
         }
 
         /// <summary>
@@ -282,14 +285,14 @@ namespace Alis.App.Hub.Windows.Sections
         public override void OnRender()
         {
             DetectInstalledVersions();
-            
+
             // Button to install new versions
             if (ImGui.Button("Install New Version"))
             {
                 // Implement the logic to handle new version installation
                 InstallNewVersion();
             }
-            
+
             RenderInstallNewVersionPopup();
 
             ImGui.NewLine();
@@ -349,7 +352,7 @@ namespace Alis.App.Hub.Windows.Sections
                 ImGui.EndTable();
             }
         }
-        
+
         /// <summary>
         ///     Ons the destroy
         /// </summary>

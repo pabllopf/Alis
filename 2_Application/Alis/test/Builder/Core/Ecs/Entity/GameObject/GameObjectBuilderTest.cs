@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Entity.GameObject;
 using Alis.Builder.Core.Ecs.Entity.Transform;
 using Alis.Builder.Core.Ecs.System;
@@ -38,8 +37,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
     /// <summary>
     ///     The game object builder test class
     /// </summary>
-    	  
-	 public class GameObjectBuilderTest 
+    public class GameObjectBuilderTest
     {
         /// <summary>
         ///     Tests that game object builder default constructor valid input

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Xunit;
 
@@ -36,8 +35,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Rectangle
     /// <summary>
     ///     The rectangle test class
     /// </summary>
-    	  
-	 public class RectangleFTest 
+    public class RectangleFTest
     {
         /// <summary>
         ///     Tests the rectangle f constructor

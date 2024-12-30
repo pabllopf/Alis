@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager.Scene;
 using Xunit;
@@ -37,8 +36,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
     /// <summary>
     ///     The scene manager test class
     /// </summary>
-    	  
-	 public class SceneManagerTest 
+    public class SceneManagerTest
     {
         /// <summary>
         ///     Tests that on enable valid input

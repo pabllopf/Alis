@@ -94,7 +94,7 @@ namespace Alis.App.Hub.Controllers
                 (int) WindowPos.WindowPosCentered,
                 SpaceWork.WidthMainWindow, SpaceWork.HeightMainWindow, flags);
         }
-        
+
         /// <summary>
         ///     Creates the gl context using the specified window
         /// </summary>

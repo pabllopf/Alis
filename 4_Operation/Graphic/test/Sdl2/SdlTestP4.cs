@@ -1321,7 +1321,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Cleanup
             Sdl.Quit();
         }
-        
+
         /// <summary>
         ///     Tests that set window brightness should return expected value
         /// </summary>

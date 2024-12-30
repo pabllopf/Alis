@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
@@ -36,8 +35,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im draw vert test class
     /// </summary>
-    	  
-	 public class ImDrawVertTest 
+    public class ImDrawVertTest
     {
         /// <summary>
         ///     Tests that pos should be initialized correctly

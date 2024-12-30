@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Shape.Square;
 using Xunit;
 
@@ -36,8 +35,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Square
     /// <summary>
     ///     The square test class
     /// </summary>
-    	  
-	 public class SquareFTest 
+    public class SquareFTest
     {
         /// <summary>
         ///     Tests that constructor initializes properties correctly

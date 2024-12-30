@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Core.Test
@@ -35,8 +34,7 @@ namespace Alis.Core.Test
     /// <summary>
     ///     The default test class
     /// </summary>
-    	  
-	 public class DefaultTest 
+    public class DefaultTest
     {
         /// <summary>
         ///     Tests that always returns true

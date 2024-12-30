@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
@@ -35,8 +34,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
     /// <summary>
     ///     The generic priority queue test class
     /// </summary>
-    	  
-	 public class GenericPriorityQueueTest 
+    public class GenericPriorityQueueTest
     {
         /// <summary>
         ///     Tests that queue initializes with correct max size

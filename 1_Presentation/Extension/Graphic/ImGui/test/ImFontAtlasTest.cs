@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
@@ -37,8 +36,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im font atlas test class
     /// </summary>
-    	  
-	 public class ImFontAtlasTest 
+    public class ImFontAtlasTest
     {
         /// <summary>
         ///     Tests that flags should set and get correctly

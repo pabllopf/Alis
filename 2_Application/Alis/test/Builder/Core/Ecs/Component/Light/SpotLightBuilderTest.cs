@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Component.Light;
 using Alis.Core.Ecs.Component.Light;
 using Xunit;
@@ -37,8 +36,7 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Light
     /// <summary>
     ///     The spot light builder test class
     /// </summary>
-    	  
-	 public class SpotLightBuilderTest 
+    public class SpotLightBuilderTest
     {
         /// <summary>
         ///     Tests that spot light builder default constructor valid input

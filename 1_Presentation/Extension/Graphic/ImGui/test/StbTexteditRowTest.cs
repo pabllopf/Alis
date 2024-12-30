@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Graphic.ImGui.Test
@@ -35,8 +34,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The stb textedit row test class
     /// </summary>
-    	  
-	 public class StbTexteditRowTest 
+    public class StbTexteditRowTest
     {
         /// <summary>
         ///     Tests that x 0 should be initialized

@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Language.Dialogue.Test
@@ -36,8 +35,7 @@ namespace Alis.Extension.Language.Dialogue.Test
     /// <summary>
     ///     The dialog test class
     /// </summary>
-    	  
-	 public class DialogTest 
+    public class DialogTest
     {
         /// <summary>
         ///     Tests that dialog constructor should initialize properties

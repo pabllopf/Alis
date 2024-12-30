@@ -32,7 +32,6 @@ using System.CodeDom.Compiler;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -49,8 +48,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
     /// <summary>
     ///     The json serializer test class
     /// </summary>
-    	  
-	 public class JsonSerializerTest 
+    public class JsonSerializerTest
     {
         /// <summary>
         ///     Tests that test json serializer deserialize string success

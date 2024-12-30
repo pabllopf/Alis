@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
@@ -36,8 +35,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im gui platform monitor test class
     /// </summary>
-    	  
-	 public class ImGuiPlatformMonitorTest 
+    public class ImGuiPlatformMonitorTest
     {
         /// <summary>
         ///     Tests that main pos should be initialized correctly

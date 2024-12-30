@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Extension.Graphic.ImGui.Extras.Node;
 using Xunit;
 
@@ -36,8 +35,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
     /// <summary>
     ///     The emulate three button mouse test class
     /// </summary>
-    	  
-	 public class EmulateThreeButtonMouseTest 
+    public class EmulateThreeButtonMouseTest
     {
         /// <summary>
         ///     Tests that modifier should be initialized

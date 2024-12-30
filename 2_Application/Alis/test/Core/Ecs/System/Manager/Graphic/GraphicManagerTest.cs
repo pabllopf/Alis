@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager.Graphic;
@@ -38,8 +37,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Graphic
     /// <summary>
     ///     The graphic manager test class
     /// </summary>
-    	  
-	 public class GraphicManagerTest 
+    public class GraphicManagerTest
     {
         /// <summary>
         ///     Tests that on enable valid input

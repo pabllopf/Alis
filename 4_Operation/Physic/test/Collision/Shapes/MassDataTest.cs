@@ -27,15 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
-
 namespace Alis.Core.Physic.Test.Collision.Shapes
 {
     /// <summary>
     ///     The mass data test class
     /// </summary>
-    	  
-	 public class MassDataTest 
+    public class MassDataTest
     {
     }
 }

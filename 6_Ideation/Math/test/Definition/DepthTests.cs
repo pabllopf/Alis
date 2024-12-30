@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Definition;
 using Xunit;
 
@@ -36,8 +35,7 @@ namespace Alis.Core.Aspect.Math.Test.Definition
     /// <summary>
     ///     The depth tests class
     /// </summary>
-    	  
-	 public class DepthTests 
+    public class DepthTests
     {
         /// <summary>
         ///     Tests that constructor sets value correctly

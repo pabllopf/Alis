@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
 using Alis.Core.Ecs.System;
@@ -40,8 +39,7 @@ namespace Alis.Test.Core.Ecs.Entity
     /// <summary>
     ///     The game object test class
     /// </summary>
-    	  
-	 public class GameObjectTest 
+    public class GameObjectTest
     {
         /// <summary>
         ///     Tests that test game object on enable

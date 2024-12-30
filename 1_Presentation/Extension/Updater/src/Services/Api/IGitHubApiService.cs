@@ -38,14 +38,14 @@ namespace Alis.Extension.Updater.Services.Api
     public interface IGitHubApiService
     {
         /// <summary>
+        ///     Gets the value of the api url
+        /// </summary>
+        string apiUrl { get; }
+
+        /// <summary>
         ///     Gets the latest release using the specified api url
         /// </summary>
         /// <returns>A task containing a dictionary of string and object</returns>
         Task<Dictionary<string, object>> GetLatestReleaseAsync();
-        
-        /// <summary>
-        /// Gets the value of the api url
-        /// </summary>
-        string apiUrl { get; }
     }
 }

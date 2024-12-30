@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.System.Setting.Audio;
 using Alis.Core.Ecs.System.Configuration.Audio;
 using Xunit;
@@ -37,8 +36,7 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration.Audio
     /// <summary>
     ///     The audio setting builder test class
     /// </summary>
-    	  
-	 public class AudioSettingBuilderTest 
+    public class AudioSettingBuilderTest
     {
         /// <summary>
         ///     Tests that audio setting builder default constructor valid input

@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Data.Resource;
@@ -41,8 +40,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Test
     /// <summary>
     ///     The video conversion tests class
     /// </summary>
-    	  
-	 public class VideoConversionTests 
+    public class VideoConversionTests
     {
         /// <summary>
         ///     Tests that conversion test 1

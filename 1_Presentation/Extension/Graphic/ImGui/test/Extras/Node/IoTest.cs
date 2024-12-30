@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Extension.Graphic.ImGui.Extras.Node;
 using Xunit;
 
@@ -36,8 +35,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
     /// <summary>
     ///     The io test class
     /// </summary>
-    	  
-	 public class IoTest 
+    public class IoTest
     {
         /// <summary>
         ///     Tests that emulate three button mouse should be initialized

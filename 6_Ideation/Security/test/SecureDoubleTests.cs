@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Core.Aspect.Security.Test
@@ -35,8 +34,7 @@ namespace Alis.Core.Aspect.Security.Test
     /// <summary>
     ///     The secure double tests class
     /// </summary>
-    	  
-	 public class SecureDoubleTests 
+    public class SecureDoubleTests
     {
         /// <summary>
         ///     Tests that test secure double constructor

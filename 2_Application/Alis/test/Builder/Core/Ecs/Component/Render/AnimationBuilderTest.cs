@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Component.Render;
 using Xunit;
@@ -38,8 +37,7 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Render
     /// <summary>
     ///     The animation builder test class
     /// </summary>
-    	  
-	 public class AnimationBuilderTest 
+    public class AnimationBuilderTest
     {
         /// <summary>
         ///     Tests that animation builder default constructor valid input

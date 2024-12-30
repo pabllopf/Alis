@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
@@ -37,8 +36,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im gui viewport ptr test class
     /// </summary>
-    	  
-	 public class ImGuiViewportPtrTest 
+    public class ImGuiViewportPtrTest
     {
         /// <summary>
         ///     Tests that native ptr should be initialized

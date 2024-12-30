@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
@@ -38,8 +37,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
     /// <summary>
     ///     The sdl text input event test class
     /// </summary>
-    	  
-	 public class SdlTextInputEventTest 
+    public class SdlTextInputEventTest
     {
         /// <summary>
         ///     Tests that text valid call returns expected byte array

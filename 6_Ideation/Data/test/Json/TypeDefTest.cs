@@ -30,7 +30,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Reflection;
 using Alis.Core.Aspect.Data.Json;
@@ -43,8 +42,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
     /// <summary>
     ///     The type def test class
     /// </summary>
-    	  
-	 public class TypeDefTest 
+    public class TypeDefTest
     {
         /// <summary>
         ///     Tests that test type def constructor

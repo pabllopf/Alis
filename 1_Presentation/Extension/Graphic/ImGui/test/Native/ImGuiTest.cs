@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -40,8 +39,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
     /// <summary>
     ///     The im gui test class
     /// </summary>
-    	  
-	 public class ImGuiTest 
+    public class ImGuiTest
     {
         /// <summary>
         ///     Tests that test im gui version

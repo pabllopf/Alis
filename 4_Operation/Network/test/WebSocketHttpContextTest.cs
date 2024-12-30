@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using Xunit;
 
@@ -37,8 +36,7 @@ namespace Alis.Core.Network.Test
     /// <summary>
     ///     The web socket http context test class
     /// </summary>
-    	  
-	 public class WebSocketHttpContextTest 
+    public class WebSocketHttpContextTest
     {
         /// <summary>
         ///     Tests that web socket http context constructor

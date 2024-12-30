@@ -27,15 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
-
 namespace Alis.Core.Physic.Test.Controllers
 {
     /// <summary>
     ///     The buoyancy controller test class
     /// </summary>
-    	  
-	 public class BuoyancyControllerTest 
+    public class BuoyancyControllerTest
     {
     }
 }

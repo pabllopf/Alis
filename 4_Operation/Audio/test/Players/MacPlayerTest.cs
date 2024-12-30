@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Players;
 using Alis.Core.Audio.Test.Players.Attributes;
@@ -39,8 +38,7 @@ namespace Alis.Core.Audio.Test.Players
     /// <summary>
     ///     The mac player test class
     /// </summary>
-    	  
-	 public class MacPlayerTest 
+    public class MacPlayerTest
     {
         /// <summary>
         ///     Tests that test method

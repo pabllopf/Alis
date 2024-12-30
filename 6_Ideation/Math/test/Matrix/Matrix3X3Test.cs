@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
@@ -37,8 +36,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
     /// <summary>
     ///     The matrix test class
     /// </summary>
-    	  
-	 public class Matrix3X3Test 
+    public class Matrix3X3Test
     {
         /// <summary>
         ///     Tests that matrix 3 x 3 constructor should set values correctly
@@ -85,7 +83,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Assert.Equal(1.0f, result.X);
             Assert.Equal(0.0f, result.Y);
         }
-        
+
 
         /// <summary>
         ///     Tests that matrix 3 x 3 get sym inverse 33 should return correct result

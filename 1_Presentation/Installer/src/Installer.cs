@@ -176,7 +176,7 @@ namespace Alis.App.Installer
 
             for (int i = 0; i < args.Length; i++)
             {
-                if (args[i] == "-versionToInstall" && i + 1 < args.Length)
+                if ((args[i] == "-versionToInstall") && (i + 1 < args.Length))
                 {
                     versionToInstall = args[i + 1];
                 }
@@ -208,7 +208,7 @@ namespace Alis.App.Installer
             Logger.Info(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
 
             Sdl.SetHint(Hint.HintRenderDriver, "opengl");
-            
+
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION
             Sdl.SetAttributeByInt(Attr.SdlGlContextFlags, (int) Contexts.SdlGlContextForwardCompatibleFlag);
             Sdl.SetAttributeByProfile(Attr.SdlGlContextProfileMask, Profiles.SdlGlContextProfileCore);
@@ -429,11 +429,11 @@ namespace Alis.App.Installer
                 Sdl.SetWindowIcon(spaceWork.Window, icon);
             }
 
-            string api = $"https://api.github.com/repos/pabllopf/alis/releases";
+            string api = "https://api.github.com/repos/pabllopf/alis/releases";
             string dirProject = Path.Combine(Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory)!.FullName)!.FullName, "Editor", $"{versionToInstall}");
             Logger.Info(@$"API: {api}");
             Logger.Info(@$"DIR: {dirProject}");
-            Logger.Info(@$"Starting UpdateManager");
+            Logger.Info(@"Starting UpdateManager");
             UpdateManager manager = new UpdateManager(new GitHubApiService(api), versionToInstall, new FileService(), dirProject);
             Task<bool> task = manager.Start();
             //task.Start();
@@ -754,9 +754,9 @@ namespace Alis.App.Installer
             int uvOffset = 8; // Offset of Uv is 8 bytes from the start (after Pos)
             int colOffset = 16; // Offset of Col is 16 bytes from the start (after Pos and Uv)
 
-            Gl.VertexAttribPointer(_shader["Position"].Location, 2, VertexAttribPointerType.Float, false, drawVertSize, (IntPtr)posOffset);
-            Gl.VertexAttribPointer(_shader["UV"].Location, 2, VertexAttribPointerType.Float, false, drawVertSize, (IntPtr)uvOffset);
-            Gl.VertexAttribPointer(_shader["Color"].Location, 4, VertexAttribPointerType.UnsignedByte, true, drawVertSize, (IntPtr)colOffset);
+            Gl.VertexAttribPointer(_shader["Position"].Location, 2, VertexAttribPointerType.Float, false, drawVertSize, (IntPtr) posOffset);
+            Gl.VertexAttribPointer(_shader["UV"].Location, 2, VertexAttribPointerType.Float, false, drawVertSize, (IntPtr) uvOffset);
+            Gl.VertexAttribPointer(_shader["Color"].Location, 4, VertexAttribPointerType.UnsignedByte, true, drawVertSize, (IntPtr) colOffset);
         }
 
         /// <summary>
@@ -839,8 +839,8 @@ namespace Alis.App.Installer
                 ImDrawListPtr cmdList = drawData.CmdListsRange[n];
 
                 // Upload vertex/index buffers
-                Gl.GlBufferData(BufferTarget.ArrayBuffer, (IntPtr)(cmdList.VtxBuffer.Size * drawVertSize), cmdList.VtxBuffer.Data, BufferUsageHint.StreamDraw);
-                Gl.GlBufferData(BufferTarget.ElementArrayBuffer, (IntPtr)(cmdList.IdxBuffer.Size * drawIdxSize), cmdList.IdxBuffer.Data, BufferUsageHint.StreamDraw);
+                Gl.GlBufferData(BufferTarget.ArrayBuffer, (IntPtr) (cmdList.VtxBuffer.Size * drawVertSize), cmdList.VtxBuffer.Data, BufferUsageHint.StreamDraw);
+                Gl.GlBufferData(BufferTarget.ElementArrayBuffer, (IntPtr) (cmdList.IdxBuffer.Size * drawIdxSize), cmdList.IdxBuffer.Data, BufferUsageHint.StreamDraw);
 
                 for (int cmdI = 0; cmdI < cmdList.CmdBuffer.Size; cmdI++)
                 {

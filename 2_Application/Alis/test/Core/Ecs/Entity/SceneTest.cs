@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Ecs.Entity;
 using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Configuration;
@@ -41,8 +40,7 @@ namespace Alis.Test.Core.Ecs.Entity
     /// <summary>
     ///     The scene test class
     /// </summary>
-    	  
-	 public class SceneTest 
+    public class SceneTest
     {
         /// <summary>
         ///     Tests that test scene on enable

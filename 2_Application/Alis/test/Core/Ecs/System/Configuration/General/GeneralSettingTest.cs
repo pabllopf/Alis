@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.System.Setting.General;
 using Alis.Core.Ecs.System.Configuration.General;
 using Xunit;
@@ -37,8 +36,7 @@ namespace Alis.Test.Core.Ecs.System.Configuration.General
     /// <summary>
     ///     The general setting test class
     /// </summary>
-    	  
-	 public class GeneralSettingTest 
+    public class GeneralSettingTest
     {
         /// <summary>
         ///     Tests that test general setting debug

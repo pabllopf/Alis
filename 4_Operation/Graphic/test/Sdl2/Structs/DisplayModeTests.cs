@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Xunit;
 
@@ -37,8 +36,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
     /// <summary>
     ///     The display mode tests class
     /// </summary>
-    	  
-	 public class DisplayModeTests 
+    public class DisplayModeTests
     {
         /// <summary>
         ///     Tests that display mode initializes properties correctly

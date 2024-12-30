@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager.Input;
@@ -39,8 +38,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
     /// <summary>
     ///     The input manager test class
     /// </summary>
-    	  
-	 public class InputManagerTest 
+    public class InputManagerTest
     {
         /// <summary>
         ///     Tests that on init valid input

@@ -30,7 +30,6 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using Alis.Core.Aspect.Memory.Attributes;
 using Alis.Core.Aspect.Memory.Exceptions;
@@ -41,8 +40,7 @@ namespace Alis.Core.Aspect.Memory.Test
     /// <summary>
     ///     The validator test class
     /// </summary>
-    	  
-	 public class ValidatorTest 
+    public class ValidatorTest
     {
         /// <summary>
         ///     The empty dictionary

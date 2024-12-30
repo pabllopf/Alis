@@ -30,8 +30,6 @@
 using System;
 using Alis.App.Hub.Core;
 using Alis.App.Hub.Shaders;
-using Alis.Core.Aspect.Logging;
-using Alis.Core.Graphic.Sdl2;
 using Alis.Extension.Graphic.OpenGL;
 using Alis.Extension.Graphic.OpenGL.Constructs;
 using Alis.Extension.Graphic.OpenGL.Enums;
@@ -61,7 +59,6 @@ namespace Alis.App.Hub.Controllers
             SpaceWork.GlShader = new GlShaderProgram(VertexShader.ShaderCode, FragmentShader.ShaderCode);
         }
 
-      
 
         /// <summary>
         ///     Loads the texture using the specified pixel data

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Ecs.System.Configuration;
 using Alis.Core.Ecs.System.Configuration.Audio;
 using Alis.Core.Ecs.System.Configuration.General;
@@ -43,8 +42,7 @@ namespace Alis.Test.Core.Ecs.System.Configuration
     /// <summary>
     ///     The settings test class
     /// </summary>
-    	  
-	 public class SettingTest 
+    public class SettingTest
     {
         /// <summary>
         ///     Tests that test settings general

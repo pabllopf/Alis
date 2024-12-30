@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.System;
 using Alis.Builder.Core.Ecs.System.Manager.Scene;
 using Alis.Builder.Core.Ecs.System.Setting;
@@ -42,8 +41,7 @@ namespace Alis.Test.Builder.Core.Ecs.System
     /// <summary>
     ///     The video game builder test class
     /// </summary>
-    	  
-	 public class VideoGameBuilderTest 
+    public class VideoGameBuilderTest
     {
         /// <summary>
         ///     Tests that video game builder default constructor valid input

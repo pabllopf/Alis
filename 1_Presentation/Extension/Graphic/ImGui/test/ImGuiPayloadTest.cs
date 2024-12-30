@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using Xunit;
 
@@ -37,8 +36,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im gui payload test class
     /// </summary>
-    	  
-	 public class ImGuiPayloadTest 
+    public class ImGuiPayloadTest
     {
         /// <summary>
         ///     Tests that data should be initialized correctly

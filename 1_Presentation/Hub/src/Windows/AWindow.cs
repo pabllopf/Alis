@@ -32,44 +32,44 @@ using Alis.App.Hub.Core;
 namespace Alis.App.Hub.Windows
 {
     /// <summary>
-    /// The window class
+    ///     The window class
     /// </summary>
-    /// <seealso cref="IRuntime"/>
+    /// <seealso cref="IRuntime" />
     public abstract class AWindow : IRuntime
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AWindow"/> class
+        ///     Initializes a new instance of the <see cref="AWindow" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
         public AWindow(SpaceWork spaceWork) => SpaceWork = spaceWork;
 
         /// <summary>
-        /// Gets or sets the value of the space work
+        ///     Gets or sets the value of the space work
         /// </summary>
         public SpaceWork SpaceWork { get; set; }
 
         /// <summary>
-        /// Ons the init
+        ///     Ons the init
         /// </summary>
         public abstract void OnInit();
 
         /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
         public abstract void OnStart();
 
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public abstract void OnUpdate();
 
         /// <summary>
-        /// Ons the render
+        ///     Ons the render
         /// </summary>
         public abstract void OnRender();
 
         /// <summary>
-        /// Ons the destroy
+        ///     Ons the destroy
         /// </summary>
         public abstract void OnDestroy();
     }

@@ -29,16 +29,13 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Net.Security;
 using System.Net.Sockets;
 using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Network.Exceptions;
-using Alis.Core.Network.Test.Samples;
 using Xunit;
 
 namespace Alis.Core.Network.Test
@@ -46,8 +43,7 @@ namespace Alis.Core.Network.Test
     /// <summary>
     ///     The web socket client factory test class
     /// </summary>
-    	  
-	 public class WebSocketClientFactoryTest 
+    public class WebSocketClientFactoryTest
     {
         /// <summary>
         ///     Tests that dispose closes web socket

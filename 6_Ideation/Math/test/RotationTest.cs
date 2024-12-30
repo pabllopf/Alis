@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
@@ -36,8 +35,7 @@ namespace Alis.Core.Aspect.Math.Test
     /// <summary>
     ///     The rotation test class
     /// </summary>
-    	  
-	 public class RotationTest 
+    public class RotationTest
     {
         /// <summary>
         ///     Tests that constructor should set angle and calculate sine and cosine

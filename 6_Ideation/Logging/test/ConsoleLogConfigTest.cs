@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Core.Aspect.Logging.Test
@@ -36,8 +35,7 @@ namespace Alis.Core.Aspect.Logging.Test
     /// <summary>
     ///     The console log config test class
     /// </summary>
-    	  
-	 public class ConsoleLogConfigTest 
+    public class ConsoleLogConfigTest
     {
         /// <summary>
         ///     Tests that get color message by type should return trace color

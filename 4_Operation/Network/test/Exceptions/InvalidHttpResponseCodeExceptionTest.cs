@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Network.Exceptions;
 using Xunit;
 
@@ -37,8 +36,7 @@ namespace Alis.Core.Network.Test.Exceptions
     /// <summary>
     ///     The invalid http response code exception test class
     /// </summary>
-    	  
-	 public class InvalidHttpResponseCodeExceptionTest 
+    public class InvalidHttpResponseCodeExceptionTest
     {
         /// <summary>
         ///     Tests that invalid http response code exception default constructor

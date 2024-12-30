@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.System;
@@ -38,8 +37,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
     /// <summary>
     ///     The frame test class
     /// </summary>
-    	  
-	 public class FrameTest 
+    public class FrameTest
     {
         /// <summary>
         ///     Tests that frame default constructor valid input

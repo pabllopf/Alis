@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using Xunit;
 
@@ -37,8 +36,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im gui native test class
     /// </summary>
-    	  
-	 public class ImGuiNativeTest 
+    public class ImGuiNativeTest
     {
         /// <summary>
         ///     Tests that im gui input text callback data clear selection should invoke native method

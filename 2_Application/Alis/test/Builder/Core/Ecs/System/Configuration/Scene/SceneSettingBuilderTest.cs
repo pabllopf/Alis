@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.System.Setting.Scene;
 using Alis.Core.Ecs.System.Configuration.Scene;
 using Xunit;
@@ -37,8 +36,7 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration.Scene
     /// <summary>
     ///     The scene setting builder test class
     /// </summary>
-    	  
-	 public class SceneSettingBuilderTest 
+    public class SceneSettingBuilderTest
     {
         /// <summary>
         ///     Tests that scene setting builder default constructor valid input

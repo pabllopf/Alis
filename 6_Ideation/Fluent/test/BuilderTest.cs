@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Core.Aspect.Fluent.Test
@@ -35,8 +34,7 @@ namespace Alis.Core.Aspect.Fluent.Test
     /// <summary>
     ///     The builder test class
     /// </summary>
-    	  
-	 public class BuilderTest 
+    public class BuilderTest
     {
         /// <summary>
         ///     Tests that builder returns expected value

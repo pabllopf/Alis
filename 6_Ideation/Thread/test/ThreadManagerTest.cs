@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using Xunit;
 
@@ -36,8 +35,7 @@ namespace Alis.Core.Aspect.Thread.Test
     /// <summary>
     ///     The thread manager test class
     /// </summary>
-    	  
-	 public class ThreadManagerTest 
+    public class ThreadManagerTest
     {
         /// <summary>
         ///     Tests that start thread should start new thread

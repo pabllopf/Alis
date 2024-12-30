@@ -27,15 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
-
 namespace Alis.Extension.Graphic.OpenGL.Test.Constructs
 {
     /// <summary>
     ///     The gl shader test class
     /// </summary>
-    	  
-	 public class GlShaderTest 
+    public class GlShaderTest
     {
     }
 }

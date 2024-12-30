@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Test.Json.Sample;
@@ -38,8 +37,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
     /// <summary>
     ///     The field info accessor test class
     /// </summary>
-    	  
-	 public class FieldInfoAccessorTest 
+    public class FieldInfoAccessorTest
     {
         /// <summary>
         ///     Tests that test field info accessor get

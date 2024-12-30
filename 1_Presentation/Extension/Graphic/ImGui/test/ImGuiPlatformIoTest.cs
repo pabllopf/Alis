@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Graphic.ImGui.Test
@@ -36,8 +35,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im gui platform io test class
     /// </summary>
-    	  
-	 public class ImGuiPlatformIoTest 
+    public class ImGuiPlatformIoTest
     {
         /// <summary>
         ///     Tests that platform create window should be initialized

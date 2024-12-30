@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Component.Collider;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component.Collider;
@@ -40,8 +39,7 @@ namespace Alis.Test.Core.Ecs.Component.Collider
     /// <summary>
     ///     The box collider test class
     /// </summary>
-    	  
-	 public class BoxColliderTest 
+    public class BoxColliderTest
     {
         /// <summary>
         ///     Tests that box collider default constructor valid input

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
@@ -37,8 +36,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
     /// <summary>
     ///     The quaternion test class
     /// </summary>
-    	  
-	 public class QuaternionTest 
+    public class QuaternionTest
     {
         /// <summary>
         ///     Tests that quaternion operator addition should return correct result
@@ -87,7 +85,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
             Assert.Equal(48.0f, result.Z);
             Assert.Equal(-6.0f, result.W);
         }
-        
+
         /// <summary>
         ///     Tests that quaternion operator unary negation should return correct result
         /// </summary>

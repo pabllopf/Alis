@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Core.Aspect.Security.Test
@@ -35,8 +34,7 @@ namespace Alis.Core.Aspect.Security.Test
     /// <summary>
     ///     The secure int tests class
     /// </summary>
-    	  
-	 public class SecureIntTests 
+    public class SecureIntTests
     {
         /// <summary>
         ///     Tests that test secure int constructor

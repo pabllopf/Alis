@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using Xunit;
 
@@ -37,8 +36,7 @@ namespace Alis.Core.Aspect.Time.Test
     /// <summary>
     ///     The clock test class
     /// </summary>
-    	  
-	 public class ClockTest 
+    public class ClockTest
     {
         /// <summary>
         ///     Tests that start should start stopwatch

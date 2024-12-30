@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Network.Exceptions;
 using Xunit;
 
@@ -37,8 +36,7 @@ namespace Alis.Core.Network.Test.Exceptions
     /// <summary>
     ///     The sec web socket key missing exception test class
     /// </summary>
-    	  
-	 public class SecWebSocketKeyMissingExceptionTest 
+    public class SecWebSocketKeyMissingExceptionTest
     {
         /// <summary>
         ///     Tests that sec web socket key missing exception default constructor

@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Data.Json;
 using Xunit;
 
@@ -37,8 +36,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
     /// <summary>
     ///     The json exception test class
     /// </summary>
-    	  
-	 public class JsonExceptionTest 
+    public class JsonExceptionTest
     {
         /// <summary>
         ///     Tests that test default constructor

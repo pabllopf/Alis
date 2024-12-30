@@ -27,15 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
-
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
     /// <summary>
     ///     The controller sensor event test class
     /// </summary>
-    	  
-	 public class ControllerSensorEventTest 
+    public class ControllerSensorEventTest
     {
     }
 }
