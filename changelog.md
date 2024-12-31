@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.5.5] - 2024-12-31
+### :bug: Bug Fixes
+- [`7498f18`](https://github.com/pabllopf/Alis/commit/7498f18d550e2f485fe08534b8b0615ab968c714) - linux runners *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e3d34bd`](https://github.com/pabllopf/Alis/commit/e3d34bd8ab7b13798bc4907bb0de961234ad00b0) - new binding for win arm64 *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`396696b`](https://github.com/pabllopf/Alis/commit/396696bfe4534fc263aab9389794ffd87588c0c2) - pro delete unless test on netowork module *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.5.4] - 2024-12-31
 ### :sparkles: New Features
 - [`c1ff96b`](https://github.com/pabllopf/Alis/commit/c1ff96b2dd85a70f6e9727a9ff8f3be9e6dc31ac) - add new netcoreapp2.2; TargetFramework *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -3834,3 +3843,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.5.2]: https://github.com/pabllopf/Alis/compare/v0.5.1...v0.5.2
 [v0.5.3]: https://github.com/pabllopf/Alis/compare/v0.5.2...v0.5.3
 [v0.5.4]: https://github.com/pabllopf/Alis/compare/v0.5.3...v0.5.4
+[v0.5.5]: https://github.com/pabllopf/Alis/compare/v0.5.4...v0.5.5
