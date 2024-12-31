@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
-using System.Text;
-using NativeFileDialogSharp.Native;
+using Alis.Extension.Io.FileDialog.Native;
 
-namespace NativeFileDialogSharp
+namespace Alis.Extension.Io.FileDialog
 {
     /// <summary>
     /// The dialog class
@@ -15,12 +10,12 @@ namespace NativeFileDialogSharp
         /// <summary>
         /// The get encoder
         /// </summary>
-        private static readonly Encoder utf8encoder = Encoding.UTF8.GetEncoder();
+        private static readonly Encoder Utf8Encoder = Encoding.UTF8.GetEncoder();
 
         /// <summary>
         /// The is 32 bit windows on net framework
         /// </summary>
-        private static readonly bool need32bit = Is32BitWindowsOnNetFramework();
+        private static readonly bool Need32Bit = Is32BitWindowsOnNetFramework();
         
         /// <summary>
         /// Describes whether is 32 bit windows on net framework
@@ -31,7 +26,7 @@ namespace NativeFileDialogSharp
             try
             {
                 // we call a function that does nothing just to test if we can load it properly
-                NativeFileDialogSharp.Native.NativeFunctions.NFD_Dummy();
+                NativeFunctions.NFD_Dummy();
                 return false;
             }
             catch
@@ -39,7 +34,7 @@ namespace NativeFileDialogSharp
                 // a call to a default library failed, let's attempt the other one
                 try
                 {
-                    NativeFileDialogSharp.Native.NativeFunctions32.NFD_Dummy();
+                    NativeFunctions32.NFD_Dummy();
                     return true;
                 }
                 catch
@@ -62,7 +57,7 @@ namespace NativeFileDialogSharp
             fixed (byte* o = bytes)
             fixed (char* input = s)
             {
-                utf8encoder.Convert(input, s.Length, o, bytes.Length, true, out _, out var _,
+                Utf8Encoder.Convert(input, s.Length, o, bytes.Length, true, out _, out var _,
                     out var completed);
                 Debug.Assert(completed);
             }
@@ -112,14 +107,14 @@ namespace NativeFileDialogSharp
                 string path = null;
                 string errorMessage = null;
                 IntPtr outPathIntPtr;
-                var result = need32bit 
+                var result = Need32Bit 
                     ? NativeFunctions32.NFD_OpenDialog(filterListNts, defaultPathNts, out outPathIntPtr)
                     : NativeFunctions.NFD_OpenDialog(filterListNts, defaultPathNts, out outPathIntPtr);
-                if (result == nfdresult_t.NFD_ERROR)
+                if (result == NfdresultT.NfdError)
                 {
                     errorMessage = FromUtf8(NativeFunctions.NFD_GetError());
                 }
-                else if (result == nfdresult_t.NFD_OKAY)
+                else if (result == NfdresultT.NfdOkay)
                 {
                     var outPathNts = (byte*)outPathIntPtr.ToPointer();
                     path = FromUtf8(outPathNts);
@@ -144,14 +139,14 @@ namespace NativeFileDialogSharp
                 string path = null;
                 string errorMessage = null;
                 IntPtr outPathIntPtr;
-                var result = need32bit 
+                var result = Need32Bit 
                     ? NativeFunctions32.NFD_SaveDialog(filterListNts, defaultPathNts, out outPathIntPtr) 
                     : NativeFunctions.NFD_SaveDialog(filterListNts, defaultPathNts, out outPathIntPtr);
-                if (result == nfdresult_t.NFD_ERROR)
+                if (result == NfdresultT.NfdError)
                 {
                     errorMessage = FromUtf8(NativeFunctions.NFD_GetError());
                 }
-                else if (result == nfdresult_t.NFD_OKAY)
+                else if (result == NfdresultT.NfdOkay)
                 {
                     var outPathNts = (byte*)outPathIntPtr.ToPointer();
                     path = FromUtf8(outPathNts);
@@ -174,14 +169,14 @@ namespace NativeFileDialogSharp
                 string path = null;
                 string errorMessage = null;
                 IntPtr outPathIntPtr;
-                var result = need32bit
+                var result = Need32Bit
                     ? NativeFunctions32.NFD_PickFolder(defaultPathNts, out outPathIntPtr)
                     : NativeFunctions.NFD_PickFolder(defaultPathNts, out outPathIntPtr);
-                if (result == nfdresult_t.NFD_ERROR)
+                if (result == NfdresultT.NfdError)
                 {
                     errorMessage = FromUtf8(NativeFunctions.NFD_GetError());
                 }
-                else if (result == nfdresult_t.NFD_OKAY)
+                else if (result == NfdresultT.NfdOkay)
                 {
                     var outPathNts = (byte*)outPathIntPtr.ToPointer();
                     path = FromUtf8(outPathNts);
@@ -205,15 +200,15 @@ namespace NativeFileDialogSharp
             {
                 List<string> paths = null;
                 string errorMessage = null;
-                nfdpathset_t pathSet;
-                var result = need32bit
+                NfdpathsetT pathSet;
+                var result = Need32Bit
                     ? NativeFunctions32.NFD_OpenDialogMultiple(filterListNts, defaultPathNts, &pathSet)
                     : NativeFunctions.NFD_OpenDialogMultiple(filterListNts, defaultPathNts, &pathSet);
-                if (result == nfdresult_t.NFD_ERROR)
+                if (result == NfdresultT.NfdError)
                 {
                     errorMessage = FromUtf8(NativeFunctions.NFD_GetError());
                 }
-                else if (result == nfdresult_t.NFD_OKAY)
+                else if (result == NfdresultT.NfdOkay)
                 {
                     var pathCount = (int)NativeFunctions.NFD_PathSet_GetCount(&pathSet).ToUInt32();
                     paths = new List<string>(pathCount);

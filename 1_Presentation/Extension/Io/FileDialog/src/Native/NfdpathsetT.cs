@@ -1,23 +1,23 @@
-using System;
-
-namespace NativeFileDialogSharp.Native
+﻿namespace Alis.Extension.Io.FileDialog.Native
 {
     /// <summary>
     /// The nfdpathset
     /// </summary>
-    public struct nfdpathset_t
+    public struct NfdpathsetT
     {
         /// <summary>
         /// The buf
         /// </summary>
-        public IntPtr buf;
+        public IntPtr Buf;
+        
         /// <summary>
         /// The indices
         /// </summary>
-        public IntPtr indices;
+        public IntPtr Indices;
+        
         /// <summary>
         /// The count
         /// </summary>
-        public UIntPtr count;
+        public UIntPtr Count;
     }
 }

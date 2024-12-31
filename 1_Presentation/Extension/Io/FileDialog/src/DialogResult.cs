@@ -1,7 +1,6 @@
-using System.Collections.Generic;
-using NativeFileDialogSharp.Native;
+﻿using Alis.Extension.Io.FileDialog.Native;
 
-namespace NativeFileDialogSharp
+namespace Alis.Extension.Io.FileDialog
 {
     /// <summary>
     /// The dialog result class
@@ -11,7 +10,7 @@ namespace NativeFileDialogSharp
         /// <summary>
         /// The result
         /// </summary>
-        private readonly nfdresult_t result;
+        private readonly NfdresultT result;
 
         /// <summary>
         /// Gets the value of the path
@@ -26,7 +25,7 @@ namespace NativeFileDialogSharp
         /// <summary>
         /// Gets the value of the is error
         /// </summary>
-        public bool IsError => result == nfdresult_t.NFD_ERROR;
+        public bool IsError => result == NfdresultT.NfdError;
 
         /// <summary>
         /// Gets the value of the error message
@@ -36,12 +35,12 @@ namespace NativeFileDialogSharp
         /// <summary>
         /// Gets the value of the is cancelled
         /// </summary>
-        public bool IsCancelled => result == nfdresult_t.NFD_CANCEL;
+        public bool IsCancelled => result == NfdresultT.NfdCancel;
 
         /// <summary>
         /// Gets the value of the is ok
         /// </summary>
-        public bool IsOk => result == nfdresult_t.NFD_OKAY;
+        public bool IsOk => result == NfdresultT.NfdOkay;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DialogResult"/> class
@@ -50,7 +49,7 @@ namespace NativeFileDialogSharp
         /// <param name="path">The path</param>
         /// <param name="paths">The paths</param>
         /// <param name="errorMessage">The error message</param>
-        internal DialogResult(nfdresult_t result, string path, IReadOnlyList<string> paths, string errorMessage)
+        internal DialogResult(NfdresultT result, string path, IReadOnlyList<string> paths, string errorMessage)
         {
             this.result = result;
             Path = path;
