@@ -76,9 +76,7 @@ jobs:
           dotnet build --no-incremental -c Release -f net6.0
           
           # Run tests with dotCover (XML report)
-          dotnet dotcover test `
-            --dcReportType=XML `
-            --dcOutput="dotCover.Output.xml"
+          dotnet dotcover test --dcReportType=XML --dcOutput="dotCover.Output.xml" --framework net6.0 --configuration Release
           
           # End SonarCloud analysis
           .\.sonar\scanner\dotnet-sonarscanner end `
