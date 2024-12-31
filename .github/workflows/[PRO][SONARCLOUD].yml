@@ -3,8 +3,6 @@ on:
   push:
     branches:
       - master
-    paths:
-      - '**.cs'
 
 jobs:
   build:
@@ -15,9 +13,9 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: 17
-          distribution: 'zulu' # Alternative distribution options are available.
+          distribution: 'zulu'
 
-      - name: Check
+      - name: Check out code
         uses: actions/checkout@v4
         with:
           ref: master
@@ -34,8 +32,8 @@ jobs:
             7.0.408
             8.0.202
             9.x.x
-            
-      - name: install
+
+      - name: Install FFmpeg
         run: |
           choco install ffmpeg -y
 
@@ -63,19 +61,25 @@ jobs:
 
       - name: Build and analyze
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
+          # Install coverage and coverlet
           dotnet tool install --global dotnet-coverage
           dotnet tool install --global coverlet.console
           
-          # Utiliza la ruta a tu solución (.sln) en el comando dotnet build
+          # Build the project with .NET 6.0
           dotnet build --no-incremental -c Debug -f net6.0 .\\alis.sln
           
-          # Utiliza la ruta a tu solución (.sln) en el comando dotnet-coverage collect
-          dotnet-coverage collect "dotnet test -c Debug -f net6.0 .\\alis.sln" -f xml -o "coverage.xml"
+          # Run tests and collect coverage with .NET 6.0
+          dotnet test --no-build -c Debug -f net6.0 --collect:"XPlat Code Coverage" .\\alis.sln
           
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.scanner.scanAll=false /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
+          # Run SonarCloud Scanner with coverage results
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths="coverage.xml"
+          
+          # Build the project again (only necessary if there are changes after tests)
           dotnet build --no-incremental -c Debug -f net6.0 .\\alis.sln
+          
+          # End SonarCloud analysis
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
