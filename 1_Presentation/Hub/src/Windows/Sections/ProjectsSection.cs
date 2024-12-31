@@ -99,7 +99,7 @@ namespace Alis.App.Hub.Windows.Sections
         ///     Initializes a new instance of the <see cref="ProjectsSection" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
-        public ProjectsSection(SpaceWork spaceWork) : base(spaceWork) => fileBrowser = new FileBrowser(spaceWork);
+        public ProjectsSection(SpaceWork spaceWork) : base(spaceWork) => fileBrowser = new FileBrowserView(new FileBrowserModel(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)));
 
         /// <summary>
         ///     Opens the project using the specified project
@@ -325,7 +325,7 @@ namespace Alis.App.Hub.Windows.Sections
         /// <summary>
         ///     The file browser
         /// </summary>
-        private readonly FileBrowser fileBrowser;
+        private readonly FileBrowserView fileBrowser;
 
         /// <summary>
         ///     Renders the create project popup
@@ -350,10 +350,10 @@ namespace Alis.App.Hub.Windows.Sections
 
                 if (ImGui.Button($"{FontAwesome5.Folder}## Browse"))
                 {
-                    fileBrowser.OpenFileBrowser();
+                    ImGui.OpenPopup("File Browser");
                 }
 
-                fileBrowser.OnRender();
+                fileBrowser.Render();
 
 
                 ImGui.Text("Editor Version:");
