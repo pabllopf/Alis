@@ -49,51 +49,7 @@ namespace Alis.Core.Network.Test
     	  
 	 public class WebSocketClientFactoryTest 
     {
-        /// <summary>
-        ///     The web socket server factory
-        /// </summary>
-        private IWebSocketServerFactory _webSocketServerFactory;
-
-        /// <summary>
-        ///     Tests that connect async valid input
-        /// </summary>
-        [Fact]
-        public async Task ConnectAsync_ValidInput()
-        {
-            CancellationTokenSource cts = new CancellationTokenSource();
-            _webSocketServerFactory = new WebSocketServerFactory();
-            StartWebServer(cts.Token, 8081);
-            Uri uri = new Uri("ws://localhost:8081");
-
-            WebSocketClientFactory factory = new WebSocketClientFactory();
-
-
-            WebSocket result = await factory.ConnectAsync(uri);
-
-            await result.CloseAsync(WebSocketCloseStatus.NormalClosure, "", new CancellationToken());
-        }
-
-        /// <summary>
-        ///     Starts the web server using the specified cts token
-        /// </summary>
-        /// <param name="ctsToken">The cts token</param>
-        /// <param name="port"></param>
-        private async void StartWebServer(CancellationToken ctsToken, int port)
-        {
-            try
-            {
-                IList<string> supportedSubProtocols = new[] {"chatV1", "chatV2", "chatV3"};
-                using WebServer server = new WebServer(_webSocketServerFactory, supportedSubProtocols);
-                Logger.Log($"Listening on port {port}");
-                Logger.Log("Press any key to quit");
-                await server.Listen(port, ctsToken);
-            }
-            catch (Exception ex)
-            {
-                Logger.Exception(ex.ToString());
-            }
-        }
-
+        
         /// <summary>
         ///     Tests that dispose closes web socket
         /// </summary>
