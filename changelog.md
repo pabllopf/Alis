@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.5.4] - 2024-12-31
+### :sparkles: New Features
+- [`c1ff96b`](https://github.com/pabllopf/Alis/commit/c1ff96b2dd85a70f6e9727a9ff8f3be9e6dc31ac) - add new netcoreapp2.2; TargetFramework *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`9f77372`](https://github.com/pabllopf/Alis/commit/9f77372307e0a7f08de4445e0ab9a9e3e4167c54) - NoWarn some warnings *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4f626c1`](https://github.com/pabllopf/Alis/commit/4f626c19762def1a55da6c65623d1933db6ece6d) - ExcludeFromCodeCoverage value *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`381e20d`](https://github.com/pabllopf/Alis/commit/381e20dcfebe6ea6148d6128eb44f3c95c1d6083) - RuntimeIdentifiers *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a6fe87b`](https://github.com/pabllopf/Alis/commit/a6fe87b02b375909ddba63356605dd695ca71649) - ContentFiles *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`924ab12`](https://github.com/pabllopf/Alis/commit/924ab1286f018848f0a953a09722d94a48ea644f) - delete all [ExcludeFromCodeCoverage]  atributes *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`921e30f`](https://github.com/pabllopf/Alis/commit/921e30f938e51032baa33f1b617eb3e6ea81e332) - pro add news TargetFrameworks *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b8e3bc1`](https://github.com/pabllopf/Alis/commit/b8e3bc1001f46b05608cbd5aa3ea9e2ccc6592df) - pro delete warnings *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`84fd628`](https://github.com/pabllopf/Alis/commit/84fd6285f078a6105323671a11ff3f880a28c93c) - pro check all tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b71cf2c`](https://github.com/pabllopf/Alis/commit/b71cf2c2b626f8159f184c39c205310ae9bfd949) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`08f8451`](https://github.com/pabllopf/Alis/commit/08f8451e1496decdd53425f4a8c71cfcf159b918) - pro check *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`08bf5cb`](https://github.com/pabllopf/Alis/commit/08bf5cbbda5693d90a08577f5b8d2f195c54c9cf) - pro fix network tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bb9673e`](https://github.com/pabllopf/Alis/commit/bb9673ecd8b63492a44a46a96861043e32a56544) - pro check new config with net windows. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ce12faa`](https://github.com/pabllopf/Alis/commit/ce12faaad746f944e71b34fcfcb0a261657d5b16) - pro fix the buildings *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.5.3] - 2024-12-26
 ### :sparkles: New Features
 - [`48a81f3`](https://github.com/pabllopf/Alis/commit/48a81f3e9552c82e9e14c67b41d52901bd6c8035) - create simple file browser *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -3811,3 +3833,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.5.1]: https://github.com/pabllopf/Alis/compare/v0.5.0...v0.5.1
 [v0.5.2]: https://github.com/pabllopf/Alis/compare/v0.5.1...v0.5.2
 [v0.5.3]: https://github.com/pabllopf/Alis/compare/v0.5.2...v0.5.3
+[v0.5.4]: https://github.com/pabllopf/Alis/compare/v0.5.3...v0.5.4
