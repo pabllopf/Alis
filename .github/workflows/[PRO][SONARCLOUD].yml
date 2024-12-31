@@ -70,7 +70,7 @@ jobs:
           dotnet-coverage collect "dotnet test --no-build -c Debug -f net6.0" -f xml -o "coverage.xml"
           
           # Run SonarCloud Scanner with coverage results
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths="coverage.xml"
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.scanner.scanAll=false /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths="coverage.xml"
           
           # Build the project with .NET 6.0
           dotnet build --no-incremental -c Debug -f net6.0 .\\alis.sln
