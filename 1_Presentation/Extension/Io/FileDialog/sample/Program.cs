@@ -1,47 +1,28 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Program.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+﻿using System;
 
-using System;
-
-namespace Alis.Extension.Ads.GoogleAds.Sample
+namespace Alis.Extension.Io.FileDialog.Sample
 {
-    /// <summary>
-    ///     The program class
-    /// </summary>
-    public static class Program
+    internal class Program
     {
-        /// <summary>
-        ///     Main
-        /// </summary>
-        public static void Main()
+        static void Main(string[] args)
         {
-            Console.WriteLine("End program.");
+            PrintResult(Dialog.FileOpenMultiple("pdf", null));
+            PrintResult(Dialog.FileOpen(null));
+            PrintResult(Dialog.FileSave(null));
+            PrintResult(Dialog.FolderPicker(null));
+        }
+
+        static void PrintResult(DialogResult result)
+        {
+            Console.WriteLine($"Path: {result.Path}, IsError {result.IsError}, IsOk {result.IsOk}, IsCancelled {result.IsCancelled}, ErrorMessage {result.ErrorMessage}");
+            if (result.Paths != null)
+            {
+                Console.WriteLine("Paths");
+                foreach (string path2 in result.Paths)
+                {
+                    Console.WriteLine(path2);
+                }
+            }
         }
     }
 }

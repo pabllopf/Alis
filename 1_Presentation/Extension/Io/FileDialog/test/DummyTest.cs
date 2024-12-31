@@ -29,7 +29,7 @@
 
 using Xunit;
 
-namespace Alis.Extension.Ads.GoogleAds.Test
+namespace Alis.Extension.Io.FileDialog.Test
 {
     /// <summary>
     ///     The dummy test class

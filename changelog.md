@@ -894,11 +894,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`633da04`](https://github.com/pabllopf/Alis/commit/633da04b11f66744b00fc386925efc9034381ebd) - 4 bugs of sonarcloud
   *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`43db357`](https://github.com/pabllopf/Alis/commit/43db35701cac2f75ace8dbcef8c1210062d459d4) - delete unsafe code of
+- [`43db357`](https://github.com/pabllopf/Alis/commit/43db35701cac2f75ace8dbcef8c1210062d459d4) - delete  code of
   Vector4F* *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`e41d131`](https://github.com/pabllopf/Alis/commit/e41d1311a177fdcbceb853182ec399b13133623a) - delete unsafe code of
+- [`e41d131`](https://github.com/pabllopf/Alis/commit/e41d1311a177fdcbceb853182ec399b13133623a) - delete  code of
   ImVector *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`a96bbd5`](https://github.com/pabllopf/Alis/commit/a96bbd541720c686d18e8c202db4f9d3dcda2143) - delete unsafe code
+- [`a96bbd5`](https://github.com/pabllopf/Alis/commit/a96bbd541720c686d18e8c202db4f9d3dcda2143) - delete  code
   from RangePtrAccessor *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`39c2b94`](https://github.com/pabllopf/Alis/commit/39c2b941cd583ffd97ead1bf738f00a9f66d30ce) - delete ImPtrVector *(
   commit by [@pabllopf](https://github.com/pabllopf))*
@@ -915,20 +915,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [`9bb7a12`](https://github.com/pabllopf/Alis/commit/9bb7a1281cc293646bb95aa23d2c63fa85fd00d3) - delete IoPtr *(commit
   by [@pabllopf](https://github.com/pabllopf))*
 - [`d6adcdd`](https://github.com/pabllopf/Alis/commit/d6adcdda3b522241cca5b13b5bdbc5cbefb01a4a) - change name Guizmo and
-  delete unsafe code *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`9cf0ddf`](https://github.com/pabllopf/Alis/commit/9cf0ddfd97fe23fc36e678c784f2afa3c701d0fe) - delete unsafe code
+  delete  code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9cf0ddf`](https://github.com/pabllopf/Alis/commit/9cf0ddfd97fe23fc36e678c784f2afa3c701d0fe) - delete  code
   from EmulateThreeButtonMouse *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`6974c0d`](https://github.com/pabllopf/Alis/commit/6974c0d9a79015e46c0559115319d715d40fbe99) - delete all code unsafe
+- [`6974c0d`](https://github.com/pabllopf/Alis/commit/6974c0d9a79015e46c0559115319d715d40fbe99) - delete all code 
   of ImNodes *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`af0552c`](https://github.com/pabllopf/Alis/commit/af0552c861149b99d451986896283bb98c5e598b) - delete unseless usings
   *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`b9daacc`](https://github.com/pabllopf/Alis/commit/b9daacc0d140c691307a77f1641479060362d1c6) - delete unsafe code
+- [`b9daacc`](https://github.com/pabllopf/Alis/commit/b9daacc0d140c691307a77f1641479060362d1c6) - delete  code
   from implot part 1 *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`e0f62b4`](https://github.com/pabllopf/Alis/commit/e0f62b4782d73a17cdfb5a5b6075b004bb08a8bd) - ImPlotP22 *(commit
   by [@pabllopf](https://github.com/pabllopf))*
 - [`8c9d737`](https://github.com/pabllopf/Alis/commit/8c9d7376ff87002b0ae5040337b968105ee985bb) - ImPlotP13 *(commit
   by [@pabllopf](https://github.com/pabllopf))*
-- [`1060619`](https://github.com/pabllopf/Alis/commit/1060619c8cf3c1bc1b6725a59828fd90bbd22611) - delete all unsafe code
+- [`1060619`](https://github.com/pabllopf/Alis/commit/1060619c8cf3c1bc1b6725a59828fd90bbd22611) - delete all  code
   of implot *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`3a4ebfe`](https://github.com/pabllopf/Alis/commit/3a4ebfef45feb233e6cc9ffade145a01270339b2) - the implot values *(
   commit by [@pabllopf](https://github.com/pabllopf))*
@@ -936,7 +936,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   serialize math module *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`d2799b1`](https://github.com/pabllopf/Alis/commit/d2799b15260dd54731209107bd1987b2e21c31c2) - reduce all input
   pointers *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`5a785e1`](https://github.com/pabllopf/Alis/commit/5a785e1bf9a5c66bf9280d91d8ee00fc9300dea4) - delete all unsafe code
+- [`5a785e1`](https://github.com/pabllopf/Alis/commit/5a785e1bf9a5c66bf9280d91d8ee00fc9300dea4) - delete all  code
   of sln *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`6c04f06`](https://github.com/pabllopf/Alis/commit/6c04f06d66a8df6a1387e13da228cbed3562e11d) - dlls from imgui *(
   commit by [@pabllopf](https://github.com/pabllopf))*
@@ -948,23 +948,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   ImPlotNative *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`51d9531`](https://github.com/pabllopf/Alis/commit/51d95317a7836a3d10f552afa0944edf14a976da) - EntryPoints of
   ImPlotNative *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`c40a3c4`](https://github.com/pabllopf/Alis/commit/c40a3c449e6f860f5201aa09d2db64bff5cbbca5) - delete unsafe code of
+- [`c40a3c4`](https://github.com/pabllopf/Alis/commit/c40a3c449e6f860f5201aa09d2db64bff5cbbca5) - delete  code of
   ImGuiNative *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`6bee9bc`](https://github.com/pabllopf/Alis/commit/6bee9bc2e87c6e97f33ba46ebc3878d086d1de33) - delete unsafe code *(
+- [`6bee9bc`](https://github.com/pabllopf/Alis/commit/6bee9bc2e87c6e97f33ba46ebc3878d086d1de33) - delete  code *(
   commit by [@pabllopf](https://github.com/pabllopf))*
-- [`47d061b`](https://github.com/pabllopf/Alis/commit/47d061b6c2acf4f085e8aedb0bf81b64656be7f6) - delete unsafe code
+- [`47d061b`](https://github.com/pabllopf/Alis/commit/47d061b6c2acf4f085e8aedb0bf81b64656be7f6) - delete  code
   ImGuiNative *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`658fa1a`](https://github.com/pabllopf/Alis/commit/658fa1a93117115bc626ba2d88f1f4e1969de8cb) - delete unsafe code *(
+- [`658fa1a`](https://github.com/pabllopf/Alis/commit/658fa1a93117115bc626ba2d88f1f4e1969de8cb) - delete  code *(
   commit by [@pabllopf](https://github.com/pabllopf))*
-- [`7d19766`](https://github.com/pabllopf/Alis/commit/7d19766a68a84f8e9f407b29967fb658713032c8) - delete unsafe code
+- [`7d19766`](https://github.com/pabllopf/Alis/commit/7d19766a68a84f8e9f407b29967fb658713032c8) - delete  code
   ImGuiNative *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`c8f4555`](https://github.com/pabllopf/Alis/commit/c8f4555bb9d45d4d1202bace20603b8dd932931d) - ImFontPtr *(commit
   by [@pabllopf](https://github.com/pabllopf))*
-- [`07dc994`](https://github.com/pabllopf/Alis/commit/07dc994b87b9ff95cf9db7da05e56921596d5698) - ImFontPtr unsafe code
+- [`07dc994`](https://github.com/pabllopf/Alis/commit/07dc994b87b9ff95cf9db7da05e56921596d5698) - ImFontPtr  code
   *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`3722bce`](https://github.com/pabllopf/Alis/commit/3722bce08ceb9e53775e95b8bfee75bcfc5a34ca) - delete unsafe code *(
+- [`3722bce`](https://github.com/pabllopf/Alis/commit/3722bce08ceb9e53775e95b8bfee75bcfc5a34ca) - delete  code *(
   commit by [@pabllopf](https://github.com/pabllopf))*
-- [`41e6880`](https://github.com/pabllopf/Alis/commit/41e6880e81fe1d706b9fb0958ffb361c2acda0ab) - delete unsafe code
+- [`41e6880`](https://github.com/pabllopf/Alis/commit/41e6880e81fe1d706b9fb0958ffb361c2acda0ab) - delete  code
   ImGuiIO *(commit by [@pabllopf](https://github.com/pabllopf))*
 
 ### :white_check_mark: Tests
@@ -973,7 +973,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   commit by [@pabllopf](https://github.com/pabllopf))*
 - [`e64a895`](https://github.com/pabllopf/Alis/commit/e64a895fc25afa08132c96a93174c708352af114) - covert the 100% *(
   commit by [@pabllopf](https://github.com/pabllopf))*
-- [`4b6710a`](https://github.com/pabllopf/Alis/commit/4b6710a54692186916216f060c375450085872e1) - pro fix all unsafe
+- [`4b6710a`](https://github.com/pabllopf/Alis/commit/4b6710a54692186916216f060c375450085872e1) - pro fix all 
   code *(commit by [@pabllopf](https://github.com/pabllopf))*
 
 ### :construction_worker: Build System
@@ -1129,7 +1129,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [`b621bcc`](https://github.com/pabllopf/Alis/commit/b621bccde3ddd326ed99e0452be62815df2618bd) - the resources of
   extensions module. *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`8eb0725`](https://github.com/pabllopf/Alis/commit/8eb072569483b7f9ba2e8877d47d6dcf71744c06) - do readonly pointers
-  of unsafe code *(commit by [@pabllopf](https://github.com/pabllopf))*
+  of  code *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`e2dc816`](https://github.com/pabllopf/Alis/commit/e2dc8163c4d91d14809b611e63b16ff7715774c4) - delete partial class
   *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`b16c9e3`](https://github.com/pabllopf/Alis/commit/b16c9e32c6d96f7a65cf8ff78502b9f81374bd0f) - delete
@@ -2497,7 +2497,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   by [@pabllopf](https://github.com/pabllopf))*
 - [`0b5399c`](https://github.com/pabllopf/Alis/commit/0b5399c443e565eb9f835d82548f746df3391cd3) - linux .so files to
   arm64 systems *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`6ad8c61`](https://github.com/pabllopf/Alis/commit/6ad8c61693777e3f05cd40ef033e5025a6935764) - delete unsafe keyword
+- [`6ad8c61`](https://github.com/pabllopf/Alis/commit/6ad8c61693777e3f05cd40ef033e5025a6935764) - delete  keyword
   of class and change name of imguizmo *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`04145d9`](https://github.com/pabllopf/Alis/commit/04145d9772d789653db43cdb357f78495097c79b) - implicit conversions
   *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -2765,7 +2765,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   of windows *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`8a5f623`](https://github.com/pabllopf/Alis/commit/8a5f623c0c17171136c7d7a3da470dce7be8a6c1) - new module "Scripting"
   *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`b10e3b8`](https://github.com/pabllopf/Alis/commit/b10e3b81ce0ca1a54d863bb1bdf3e9d7f7ab0ad5) - delete all unsafe code
+- [`b10e3b8`](https://github.com/pabllopf/Alis/commit/b10e3b81ce0ca1a54d863bb1bdf3e9d7f7ab0ad5) - delete all  code
   to do more security of sdl module *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`bb4991f`](https://github.com/pabllopf/Alis/commit/bb4991f3b7d474c4206e8888cabbee5b4f3c1e97) - create store and
   translation modules *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -2776,10 +2776,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [`44df77f`](https://github.com/pabllopf/Alis/commit/44df77fa94854aab373bf83a8346269b9c9515b8) - resources of api
   graphic *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`31c6e36`](https://github.com/pabllopf/Alis/commit/31c6e369e3fcf1e7dbfa0e82a7ad99fb5730a58e) - the unsafe block of
+- [`31c6e36`](https://github.com/pabllopf/Alis/commit/31c6e369e3fcf1e7dbfa0e82a7ad99fb5730a58e) - the  block of
   code *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`6080680`](https://github.com/pabllopf/Alis/commit/60806801f94709f629f3b1a44378171ac636725f) - delete dependencie
-  with unsafe code *(commit by [@pabllopf](https://github.com/pabllopf))*
+  with  code *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`ac73804`](https://github.com/pabllopf/Alis/commit/ac738040b969d75608dc0420dd0cda4c007182b0) - restore the sln and
   update the assets folder of engine. *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`8239997`](https://github.com/pabllopf/Alis/commit/8239997cd367fd1b143e8aadcf167948372d1424) - imgui module and gen
@@ -2837,49 +2837,49 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   file *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`41ac71c`](https://github.com/pabllopf/Alis/commit/41ac71c7f52aca8c3e870546d8c00c9b63addae5) - the main sdl class *(
   commit by [@pabllopf](https://github.com/pabllopf))*
-- [`b7a6b8c`](https://github.com/pabllopf/Alis/commit/b7a6b8c112f2956663a798969537344432f6e591) - delete all unsafe code
+- [`b7a6b8c`](https://github.com/pabllopf/Alis/commit/b7a6b8c112f2956663a798969537344432f6e591) - delete all  code
   of audio module *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`159c75f`](https://github.com/pabllopf/Alis/commit/159c75f33832d030ead462467061aba41d8baf90) - resolve some unsafe
+- [`159c75f`](https://github.com/pabllopf/Alis/commit/159c75f33832d030ead462467061aba41d8baf90) - resolve some 
   code to to safe *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`fb6c6b0`](https://github.com/pabllopf/Alis/commit/fb6c6b08b57143d7c58bf18a019b3d0ada3c1e9f) - delete some unsafe
+- [`fb6c6b0`](https://github.com/pabllopf/Alis/commit/fb6c6b08b57143d7c58bf18a019b3d0ada3c1e9f) - delete some 
   code of graphic module *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`73d8319`](https://github.com/pabllopf/Alis/commit/73d8319801f651cf1972acc704be51055d275914) - the encoding text *(
   commit by [@pabllopf](https://github.com/pabllopf))*
-- [`035d853`](https://github.com/pabllopf/Alis/commit/035d85301df7a0302432cffa025c024b3ac184b5) - delete all unsafe code
+- [`035d853`](https://github.com/pabllopf/Alis/commit/035d85301df7a0302432cffa025c024b3ac184b5) - delete all  code
   of sfml module *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`377002b`](https://github.com/pabllopf/Alis/commit/377002b6663851ef0936de5ff0a7711f6d4ce9f1) - abstract the input
   system *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`b63a640`](https://github.com/pabllopf/Alis/commit/b63a640bd058c88f9fe4627422cf1c6684f7d260) - the sdl unsafe code *(
+- [`b63a640`](https://github.com/pabllopf/Alis/commit/b63a640bd058c88f9fe4627422cf1c6684f7d260) - the sdl  code *(
   commit by [@pabllopf](https://github.com/pabllopf))*
-- [`2b8caf2`](https://github.com/pabllopf/Alis/commit/2b8caf2309bf4013572c89b9786819c5dd4549e8) - the event unsafe code
+- [`2b8caf2`](https://github.com/pabllopf/Alis/commit/2b8caf2309bf4013572c89b9786819c5dd4549e8) - the event  code
   *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`7b92206`](https://github.com/pabllopf/Alis/commit/7b92206bfab0bfdeb0b6150d95c8d56700a9352a) - delete unsafe code
+- [`7b92206`](https://github.com/pabllopf/Alis/commit/7b92206bfab0bfdeb0b6150d95c8d56700a9352a) - delete  code
   SdlHapticCondition *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`31f7a96`](https://github.com/pabllopf/Alis/commit/31f7a96b0f7b706d0bd433255821d18d0bc46715) - allow SizeConst of
   arrays *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`ad75acf`](https://github.com/pabllopf/Alis/commit/ad75acf78e49f2b70290c43dafb943edd88f1a87) - delete all unsafe code
+- [`ad75acf`](https://github.com/pabllopf/Alis/commit/ad75acf78e49f2b70290c43dafb943edd88f1a87) - delete all  code
   of byte[] *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`9ddaf77`](https://github.com/pabllopf/Alis/commit/9ddaf77ef1ac5727f410778fa97efc1661d5bfb9) - the sdl unsafe code of
+- [`9ddaf77`](https://github.com/pabllopf/Alis/commit/9ddaf77ef1ac5727f410778fa97efc1661d5bfb9) - the sdl  code of
   events *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`1bb469e`](https://github.com/pabllopf/Alis/commit/1bb469e2c0ccde37c99aebfadfdcfc4424508b32) - byte[] unsafe code to
+- [`1bb469e`](https://github.com/pabllopf/Alis/commit/1bb469e2c0ccde37c99aebfadfdcfc4424508b32) - byte[]  code to
   do with intptr *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`d056781`](https://github.com/pabllopf/Alis/commit/d056781c3f9e8206428b9d850f2ad461d08ce0fb) - the SdlSensorEvent *(
   commit by [@pabllopf](https://github.com/pabllopf))*
 - [`e1f9e9a`](https://github.com/pabllopf/Alis/commit/e1f9e9a4f2ac46d647fc7c02a6cb026a55d7915a) - SdlRendererInfo *(
   commit by [@pabllopf](https://github.com/pabllopf))*
-- [`d8da437`](https://github.com/pabllopf/Alis/commit/d8da437acefdc5d48ad7dc7c5aa22acde3458668) - delete unsafe code of
+- [`d8da437`](https://github.com/pabllopf/Alis/commit/d8da437acefdc5d48ad7dc7c5aa22acde3458668) - delete  code of
   opengl module *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`4dcc5fe`](https://github.com/pabllopf/Alis/commit/4dcc5fe09762c0f102eaf62d6d7cea57120180f1) - the engine with imgui
   *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`6260ad6`](https://github.com/pabllopf/Alis/commit/6260ad6e144be16f7a2f47f2485e11c752ecf55b) - delete unsafe code of
+- [`6260ad6`](https://github.com/pabllopf/Alis/commit/6260ad6e144be16f7a2f47f2485e11c752ecf55b) - delete  code of
   ImDrawCmd *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`3b7fb5b`](https://github.com/pabllopf/Alis/commit/3b7fb5b83a400a8efa94e0849dc8f1cbe3c3f0a0) - the byte sdl input
   event *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`abeb900`](https://github.com/pabllopf/Alis/commit/abeb9003ad68504b40a54035c6a743a7b363fbec) - padding byte converter
   *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`0cfa609`](https://github.com/pabllopf/Alis/commit/0cfa609eee00bc00d48a2425537188d42ed55c0e) - quite unsafe code of
+- [`0cfa609`](https://github.com/pabllopf/Alis/commit/0cfa609eee00bc00d48a2425537188d42ed55c0e) - quite  code of
   rendered sdl imgui *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`bc6899d`](https://github.com/pabllopf/Alis/commit/bc6899d38d7b72894dbb2511f7d90addfd8024b7) - the imgui unsafe code
+- [`bc6899d`](https://github.com/pabllopf/Alis/commit/bc6899d38d7b72894dbb2511f7d90addfd8024b7) - the imgui  code
   to compile *(commit by [@pabllopf](https://github.com/pabllopf))*
 
 ### :white_check_mark: Tests

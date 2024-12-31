@@ -1,4 +1,12 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Text;
+using Alis.Core.Aspect.Data.Dll;
 using Alis.Extension.Io.FileDialog.Native;
+using Alis.Extension.Io.FileDialog.Properties;
 
 namespace Alis.Extension.Io.FileDialog
 {
@@ -7,16 +15,15 @@ namespace Alis.Extension.Io.FileDialog
     /// </summary>
     public static class Dialog
     {
-        /// <summary>
-        /// The get encoder
-        /// </summary>
-        private static readonly Encoder Utf8Encoder = Encoding.UTF8.GetEncoder();
+        public const string NativeLibName = "nfd";
+        
+        static Dialog() => EmbeddedDllClass.ExtractEmbeddedDlls("nfd", DllType.Lib, NfdDlls.NfdDllBytes, Assembly.GetAssembly(typeof(Dialog)));
 
         /// <summary>
         /// The is 32 bit windows on net framework
         /// </summary>
         private static readonly bool Need32Bit = Is32BitWindowsOnNetFramework();
-        
+
         /// <summary>
         /// Describes whether is 32 bit windows on net framework
         /// </summary>
@@ -50,18 +57,12 @@ namespace Alis.Extension.Io.FileDialog
         /// </summary>
         /// <param name="s">The </param>
         /// <returns>The bytes</returns>
-        private static unsafe byte[] ToUtf8(string s)
+        private static byte[] ToUtf8(string s)
         {
-            var byteCount = Encoding.UTF8.GetByteCount(s);
-            var bytes = new byte[byteCount + 1];
-            fixed (byte* o = bytes)
-            fixed (char* input = s)
-            {
-                Utf8Encoder.Convert(input, s.Length, o, bytes.Length, true, out _, out var _,
-                    out var completed);
-                Debug.Assert(completed);
-            }
-
+            int byteCount = Encoding.UTF8.GetByteCount(s);
+            byte[] bytes = new byte[byteCount + 1];
+            Encoding.UTF8.GetBytes(s, 0, s.Length, bytes, 0);
+            bytes[byteCount] = 0; // Null-terminate the byte array
             return bytes;
         }
 
@@ -70,13 +71,11 @@ namespace Alis.Extension.Io.FileDialog
         /// </summary>
         /// <param name="nullTerminatedString">The null terminated string</param>
         /// <returns>The count</returns>
-        private static unsafe int GetNullTerminatedStringLength(byte* nullTerminatedString)
+        private static int GetNullTerminatedStringLength(IntPtr nullTerminatedString)
         {
             int count = 0;
-            var ptr = nullTerminatedString;
-            while (*ptr != 0)
+            while (Marshal.ReadByte(nullTerminatedString, count) != 0)
             {
-                ptr++;
                 count++;
             }
 
@@ -88,9 +87,9 @@ namespace Alis.Extension.Io.FileDialog
         /// </summary>
         /// <param name="nullTerminatedString">The null terminated string</param>
         /// <returns>The string</returns>
-        private static unsafe string FromUtf8(byte* nullTerminatedString)
+        private static string FromUtf8(IntPtr nullTerminatedString)
         {
-            return Encoding.UTF8.GetString(nullTerminatedString, GetNullTerminatedStringLength(nullTerminatedString));
+            return Marshal.PtrToStringAnsi(nullTerminatedString);
         }
 
         /// <summary>
@@ -99,15 +98,19 @@ namespace Alis.Extension.Io.FileDialog
         /// <param name="filterList">The filter list</param>
         /// <param name="defaultPath">The default path</param>
         /// <returns>The dialog result</returns>
-        public static unsafe DialogResult FileOpen(string filterList = null, string defaultPath = null)
+        public static DialogResult FileOpen(string filterList = null, string defaultPath = null)
         {
-            fixed (byte* filterListNts = filterList != null ? ToUtf8(filterList) : null)
-            fixed (byte* defaultPathNts = defaultPath != null ? ToUtf8(defaultPath) : null)
+            IntPtr filterListNts = IntPtr.Zero;
+            IntPtr defaultPathNts = IntPtr.Zero;
+            try
             {
+                filterListNts = filterList != null ? Marshal.StringToHGlobalAnsi(filterList) : IntPtr.Zero;
+                defaultPathNts = defaultPath != null ? Marshal.StringToHGlobalAnsi(defaultPath) : IntPtr.Zero;
+
                 string path = null;
                 string errorMessage = null;
                 IntPtr outPathIntPtr;
-                var result = Need32Bit 
+                NfdresultT result = Need32Bit
                     ? NativeFunctions32.NFD_OpenDialog(filterListNts, defaultPathNts, out outPathIntPtr)
                     : NativeFunctions.NFD_OpenDialog(filterListNts, defaultPathNts, out outPathIntPtr);
                 if (result == NfdresultT.NfdError)
@@ -116,12 +119,23 @@ namespace Alis.Extension.Io.FileDialog
                 }
                 else if (result == NfdresultT.NfdOkay)
                 {
-                    var outPathNts = (byte*)outPathIntPtr.ToPointer();
-                    path = FromUtf8(outPathNts);
+                    path = Marshal.PtrToStringAnsi(outPathIntPtr);
                     NativeFunctions.NFD_Free(outPathIntPtr);
                 }
 
                 return new DialogResult(result, path, null, errorMessage);
+            }
+            finally
+            {
+                if (filterListNts != IntPtr.Zero)
+                {
+                    Marshal.FreeHGlobal(filterListNts);
+                }
+
+                if (defaultPathNts != IntPtr.Zero)
+                {
+                    Marshal.FreeHGlobal(defaultPathNts);
+                }
             }
         }
 
@@ -131,16 +145,20 @@ namespace Alis.Extension.Io.FileDialog
         /// <param name="filterList">The filter list</param>
         /// <param name="defaultPath">The default path</param>
         /// <returns>The dialog result</returns>
-        public static unsafe DialogResult FileSave(string filterList = null, string defaultPath = null)
+        public static DialogResult FileSave(string filterList = null, string defaultPath = null)
         {
-            fixed (byte* filterListNts = filterList != null ? ToUtf8(filterList) : null)
-            fixed (byte* defaultPathNts = defaultPath != null ? ToUtf8(defaultPath) : null)
+            IntPtr filterListNts = IntPtr.Zero;
+            IntPtr defaultPathNts = IntPtr.Zero;
+            try
             {
+                filterListNts = filterList != null ? Marshal.StringToHGlobalAnsi(filterList) : IntPtr.Zero;
+                defaultPathNts = defaultPath != null ? Marshal.StringToHGlobalAnsi(defaultPath) : IntPtr.Zero;
+
                 string path = null;
                 string errorMessage = null;
                 IntPtr outPathIntPtr;
-                var result = Need32Bit 
-                    ? NativeFunctions32.NFD_SaveDialog(filterListNts, defaultPathNts, out outPathIntPtr) 
+                NfdresultT result = Need32Bit
+                    ? NativeFunctions32.NFD_SaveDialog(filterListNts, defaultPathNts, out outPathIntPtr)
                     : NativeFunctions.NFD_SaveDialog(filterListNts, defaultPathNts, out outPathIntPtr);
                 if (result == NfdresultT.NfdError)
                 {
@@ -148,12 +166,23 @@ namespace Alis.Extension.Io.FileDialog
                 }
                 else if (result == NfdresultT.NfdOkay)
                 {
-                    var outPathNts = (byte*)outPathIntPtr.ToPointer();
-                    path = FromUtf8(outPathNts);
+                    path = Marshal.PtrToStringAnsi(outPathIntPtr);
                     NativeFunctions.NFD_Free(outPathIntPtr);
                 }
 
                 return new DialogResult(result, path, null, errorMessage);
+            }
+            finally
+            {
+                if (filterListNts != IntPtr.Zero)
+                {
+                    Marshal.FreeHGlobal(filterListNts);
+                }
+
+                if (defaultPathNts != IntPtr.Zero)
+                {
+                    Marshal.FreeHGlobal(defaultPathNts);
+                }
             }
         }
 
@@ -162,14 +191,17 @@ namespace Alis.Extension.Io.FileDialog
         /// </summary>
         /// <param name="defaultPath">The default path</param>
         /// <returns>The dialog result</returns>
-        public static unsafe DialogResult FolderPicker(string defaultPath = null)
+        public static DialogResult FolderPicker(string defaultPath = null)
         {
-            fixed (byte* defaultPathNts = defaultPath != null ? ToUtf8(defaultPath) : null)
+            IntPtr defaultPathNts = IntPtr.Zero;
+            try
             {
+                defaultPathNts = defaultPath != null ? Marshal.StringToHGlobalAnsi(defaultPath) : IntPtr.Zero;
+
                 string path = null;
                 string errorMessage = null;
                 IntPtr outPathIntPtr;
-                var result = Need32Bit
+                NfdresultT result = Need32Bit
                     ? NativeFunctions32.NFD_PickFolder(defaultPathNts, out outPathIntPtr)
                     : NativeFunctions.NFD_PickFolder(defaultPathNts, out outPathIntPtr);
                 if (result == NfdresultT.NfdError)
@@ -178,12 +210,18 @@ namespace Alis.Extension.Io.FileDialog
                 }
                 else if (result == NfdresultT.NfdOkay)
                 {
-                    var outPathNts = (byte*)outPathIntPtr.ToPointer();
-                    path = FromUtf8(outPathNts);
+                    path = Marshal.PtrToStringAnsi(outPathIntPtr);
                     NativeFunctions.NFD_Free(outPathIntPtr);
                 }
 
                 return new DialogResult(result, path, null, errorMessage);
+            }
+            finally
+            {
+                if (defaultPathNts != IntPtr.Zero)
+                {
+                    Marshal.FreeHGlobal(defaultPathNts);
+                }
             }
         }
 
@@ -193,34 +231,50 @@ namespace Alis.Extension.Io.FileDialog
         /// <param name="filterList">The filter list</param>
         /// <param name="defaultPath">The default path</param>
         /// <returns>The dialog result</returns>
-        public static unsafe DialogResult FileOpenMultiple(string filterList = null, string defaultPath = null)
+        public static DialogResult FileOpenMultiple(string filterList = null, string defaultPath = null)
         {
-            fixed (byte* filterListNts = filterList != null ? ToUtf8(filterList) : null)
-            fixed (byte* defaultPathNts = defaultPath != null ? ToUtf8(defaultPath) : null)
+            IntPtr filterListNts = IntPtr.Zero;
+            IntPtr defaultPathNts = IntPtr.Zero;
+            try
             {
+                filterListNts = filterList != null ? Marshal.StringToHGlobalAnsi(filterList) : IntPtr.Zero;
+                defaultPathNts = defaultPath != null ? Marshal.StringToHGlobalAnsi(defaultPath) : IntPtr.Zero;
+
                 List<string> paths = null;
                 string errorMessage = null;
                 NfdpathsetT pathSet;
-                var result = Need32Bit
-                    ? NativeFunctions32.NFD_OpenDialogMultiple(filterListNts, defaultPathNts, &pathSet)
-                    : NativeFunctions.NFD_OpenDialogMultiple(filterListNts, defaultPathNts, &pathSet);
+                NfdresultT result = Need32Bit
+                    ? NativeFunctions32.NFD_OpenDialogMultiple(filterListNts, defaultPathNts, out pathSet)
+                    : NativeFunctions.NFD_OpenDialogMultiple(filterListNts, defaultPathNts, out pathSet);
                 if (result == NfdresultT.NfdError)
                 {
                     errorMessage = FromUtf8(NativeFunctions.NFD_GetError());
                 }
                 else if (result == NfdresultT.NfdOkay)
                 {
-                    var pathCount = (int)NativeFunctions.NFD_PathSet_GetCount(&pathSet).ToUInt32();
+                    int pathCount = (int) NativeFunctions.NFD_PathSet_GetCount(pathSet).ToUInt32();
                     paths = new List<string>(pathCount);
                     for (int i = 0; i < pathCount; i++)
                     {
-                        paths.Add(FromUtf8(NativeFunctions.NFD_PathSet_GetPath(&pathSet, new UIntPtr((uint)i))));
+                        paths.Add(FromUtf8(NativeFunctions.NFD_PathSet_GetPath(pathSet, new UIntPtr((uint) i))));
                     }
 
-                    NativeFunctions.NFD_PathSet_Free(&pathSet);
+                    NativeFunctions.NFD_PathSet_Free(pathSet);
                 }
 
                 return new DialogResult(result, null, paths, errorMessage);
+            }
+            finally
+            {
+                if (filterListNts != IntPtr.Zero)
+                {
+                    Marshal.FreeHGlobal(filterListNts);
+                }
+
+                if (defaultPathNts != IntPtr.Zero)
+                {
+                    Marshal.FreeHGlobal(defaultPathNts);
+                }
             }
         }
     }
