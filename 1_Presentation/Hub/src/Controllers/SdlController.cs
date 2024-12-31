@@ -36,6 +36,8 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
+using Alis.Extension.Graphic.OpenGL;
+using Alis.Extension.Graphic.OpenGL.Enums;
 using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 
 namespace Alis.App.Hub.Controllers
@@ -69,10 +71,11 @@ namespace Alis.App.Hub.Controllers
 
             Sdl.SetHint(Hint.HintRenderDriver, "opengl");
 
+            // CONFIG THE SDL2 AN OPENGL CONFIGURATION
             Sdl.SetAttributeByInt(Attr.SdlGlContextFlags, (int) Contexts.SdlGlContextForwardCompatibleFlag);
             Sdl.SetAttributeByProfile(Attr.SdlGlContextProfileMask, Profiles.SdlGlContextProfileCore);
-            Sdl.SetAttributeByInt(Attr.SdlGlContextMajorVersion, 4);
-            Sdl.SetAttributeByInt(Attr.SdlGlContextMinorVersion, 1);
+            Sdl.SetAttributeByInt(Attr.SdlGlContextMajorVersion, 3);
+            Sdl.SetAttributeByInt(Attr.SdlGlContextMinorVersion, 2);
 
             Sdl.SetAttributeByProfile(Attr.SdlGlContextProfileMask, Profiles.SdlGlContextProfileCore);
             Sdl.SetAttributeByInt(Attr.SdlGlDoubleBuffer, 1);
@@ -90,6 +93,30 @@ namespace Alis.App.Hub.Controllers
                 (int) WindowPos.WindowPosCentered,
                 (int) WindowPos.WindowPosCentered,
                 SpaceWork.WidthMainWindow, SpaceWork.HeightMainWindow, flags);
+        }
+        
+        /// <summary>
+        ///     Creates the gl context using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The gl context</returns>
+        public IntPtr CreateGlContext(IntPtr window)
+        {
+            IntPtr glContext = Sdl.CreateContext(window);
+            if (glContext == IntPtr.Zero)
+            {
+                throw new Exception("Could Not Create GL Context.");
+            }
+
+            Sdl.MakeCurrent(window, glContext);
+            Sdl.SetSwapInterval(1);
+
+            Gl.GlClearColor(0f, 0f, 0f, 1f);
+            Gl.GlClear(ClearBufferMask.ColorBufferBit);
+            Sdl.SwapWindow(window);
+
+            Logger.Info($"GL Version: {Gl.GlGetString(StringName.Version)}");
+            return glContext;
         }
 
         /// <summary>
