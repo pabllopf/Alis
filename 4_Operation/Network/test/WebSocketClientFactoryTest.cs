@@ -49,7 +49,6 @@ namespace Alis.Core.Network.Test
     	  
 	 public class WebSocketClientFactoryTest 
     {
-        
         /// <summary>
         ///     Tests that dispose closes web socket
         /// </summary>
