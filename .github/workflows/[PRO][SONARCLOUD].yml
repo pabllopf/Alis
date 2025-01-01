@@ -51,7 +51,7 @@ jobs:
           dotnet tool install --global dotnet-coverage
           dotnet tool install --global coverlet.console
           
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.dotnet.frameworkVersion="net8.0" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.scanner.scanAll=false /d:sonar.cs.opencover.reportsPaths=coverage.xml
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.scanner.skipJreProvisioning=true /d:sonar.dotnet.frameworkVersion="net8.0" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.scanner.scanAll=false /d:sonar.cs.opencover.reportsPaths=coverage.xml
           
           dotnet build -c Release -f net8.0 .\\alis.sln
 
