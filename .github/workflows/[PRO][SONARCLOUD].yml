@@ -1,52 +1,79 @@
 name: "[PRO][SONARCLOUD]"
+
 on:
   push:
     branches:
+      - main
       - master
+      - develop
+      - 'releases/**'
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 jobs:
-  sonarqube:
+  build-and-analyze:
     runs-on: ubuntu-latest
+
     steps:
-    
-    - name: Set up JDK 17
-      uses: actions/setup-java@v4
-      with:
-        java-version: 17
-        distribution: 'zulu'
+      # 1. Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    - name: Check
-      uses: actions/checkout@v4
-      with:
-        ref: master
-        fetch-depth: 0
+      # 2. Install SDL2 and ffmpeg dependencies
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev ffmpeg
 
-    - name: setup
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: |
-          3.0.103
-          3.1.426
-          5.0.408
-          6.0.420
-          7.0.408
-          8.0.202
-          9.x.x
+      # 3. Set up JDK 17
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: 17
+          distribution: 'zulu' # Alternative distribution options are available.
 
-    - name: install
-      run: |
-        sudo apt-get update -y
-        sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev ffmpeg
+      # 4. Setup .NET 8.0
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            3.0.103
+            3.1.426
+            5.0.408
+            6.0.420
+            7.0.408
+            8.0.202
+            9.x.x
 
-    - name: SonarQube Scan
-      uses: SonarSource/sonarqube-scan-action@v4.2.1
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      with:
-        args: >
-          -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
-          -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
-          -Dsonar.scanner.skipJreProvisioning=true
-          -Dsonar.cs.vscoveragexml.reportsPaths=coverage.xml
-          -Dsonar.verbose=true
+      # 5. Install dependencies
+      - name: Install .NET dependencies
+        run: dotnet restore
+
+      # 6. Build solution
+      - name: Build solution
+        run: dotnet build --no-restore --configuration Release -f net8.0
+
+      # 7. Run tests
+      - name: Run tests
+        run: dotnet test --no-build --configuration Release -f net8.0 --collect:"XPlat Code Coverage"
+
+      # 8. SonarQube Scan
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v4.2.0
+        env:
+          SONAR_HOST_URL: "https://sonarcloud.io" # Cambiar según tu instancia
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} # Se mantiene como secreto por seguridad
+        with:
+          projectBaseDir: ./
+          args: >
+            -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
+            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
+            -Dsonar.scanner.skipJreProvisioning=true
+            -Dsonar.language=cs
+            -Dsonar.dotnet.version=8.0
+            -Dsonar.cs.opencover.reportsPaths=**/coverage.opencover.xml
+            -Dsonar.verbose=true
+            -Dsonar.scanner.scanAll=false
+          
