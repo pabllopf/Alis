@@ -53,11 +53,11 @@ jobs:
 
       # 6. Build solution
       - name: Build solution
-        run: dotnet build --no-restore --configuration Release -f net8.0
+        run: dotnet build -c Release -f net8.0
 
       # 7. Run tests
       - name: Run tests
-        run: dotnet test --no-build --configuration Release -f net8.0 --collect:"XPlat Code Coverage"
+        run: dotnet test -c Release -f net8.0 --collect:"XPlat Code Coverage"
 
       # 8. SonarQube Scan
       - name: SonarQube Scan
