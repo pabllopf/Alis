@@ -78,9 +78,9 @@ jobs:
             -Dsonar.scanner.skipJreProvisioning=true
             -Dsonar.language=cs
             -Dsonar.dotnet.version=8.0
-            -Dsonar.cs.opencover.reportsPaths=coverage.xml
+            -Dsonar.cs.vscoveragexml.reportsPaths=coverage.xml
             -Dsonar.verbose=true
-            -Dsonar.exclusions=**/bin/**,**/obj/**,**/lib/**,**/docs/**,**/test/**,**/sample/**,**/*.generated.cs,**/*.props,**/*.md,**/*.zip
+            -Dsonar.exclusions=**/bin/**,**/obj/**,**/lib/**,**/docs/**,**/test/**,**/sample/**,**/*.generated.cs,**/*.props,**/*.md,**/*.zip,**/*.xml,**/*.nuget,**/*.Config
             -Dsonar.cs.ignoreHeaderComments=true
             -Dsonar.scanner.scanAll=true
           
