@@ -57,7 +57,7 @@ jobs:
 
       # 7. Run tests
       - name: Run tests
-        run: dotnet test -c Release -f net8.0 --collect:"XPlat Code Coverage"
+        run: dotnet-coverage collect "dotnet test -c Release -f net8.0 .\\alis.sln" -f xml -o "coverage.xml"
 
       # 8. SonarQube Scan
       - name: SonarQube Scan
@@ -68,8 +68,8 @@ jobs:
         with:
           projectBaseDir: ./
           args: >
-            -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
-            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
+            -Dsonar.organization=pabllopf
+            -Dsonar.projectKey=pabllopf_Alis
             -Dsonar.scanner.skipJreProvisioning=true
             -Dsonar.language=cs
             -Dsonar.dotnet.version=8.0
