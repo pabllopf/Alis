@@ -51,7 +51,7 @@ jobs:
           dotnet tool install --global dotnet-coverage --version 17.13.1
           dotnet tool install --global dotnet-sonarscanner --version 8.0.2
 
-          dotnet restore -c Release -f net8.0 .\\alis.sln
+          dotnet build  -c Release -f net8.0 .\\alis.sln
 
           # Utiliza la ruta a tu solución (.sln) en el comando dotnet-coverage collect
           dotnet-coverage collect "dotnet test --no-restore -c Release -f net8.0 .\\alis.sln" -f xml -o "coverage.xml"
