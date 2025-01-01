@@ -235,7 +235,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
             // Assert
             Assert.Equal(CustomMathF.Pi, result);
         }
-        
+
 
         /// <summary>
         ///     Tests that is power of two should return correct value
@@ -264,7 +264,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
 
             Assert.Equal(angle, result);
         }
-        
+
 
         /// <summary>
         ///     Tests that wrap angle should return zero when angle is zero
@@ -289,7 +289,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
 
             Assert.Equal(angle, result);
         }
-        
+
         /// <summary>
         ///     Tests that hermite should calculate correctly when amount is zero
         /// </summary>

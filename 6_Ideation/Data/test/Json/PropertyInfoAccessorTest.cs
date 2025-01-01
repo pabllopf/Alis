@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Test.Json.Sample;
@@ -40,8 +39,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
     /// <summary>
     ///     The property info accessor test class
     /// </summary>
-    	  
-	 public class PropertyInfoAccessorTest 
+    public class PropertyInfoAccessorTest
     {
         /// <summary>
         ///     Tests that test property info accessor get

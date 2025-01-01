@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using Xunit;
 
@@ -37,8 +36,7 @@ namespace Alis.Core.Aspect.Logging.Test
     /// <summary>
     ///     The logger test class
     /// </summary>
-    	  
-	 public class LoggerTest 
+    public class LoggerTest
     {
         /// <summary>
         ///     Tests that trace should print trace message

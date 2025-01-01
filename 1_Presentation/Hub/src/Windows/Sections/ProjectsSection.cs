@@ -91,18 +91,15 @@ namespace Alis.App.Hub.Windows.Sections
         private int selectedProjectIndex = -1;
 
         /// <summary>
-        /// The show create project popup
+        ///     The show create project popup
         /// </summary>
-        private bool showCreateProjectPopup = false;
+        private bool showCreateProjectPopup;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ProjectsSection" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
-        public ProjectsSection(SpaceWork spaceWork) : base(spaceWork)
-        {
-            fileBrowser = new FileBrowser(spaceWork);
-        }
+        public ProjectsSection(SpaceWork spaceWork) : base(spaceWork) => fileBrowser = new FileBrowser(spaceWork);
 
         /// <summary>
         ///     Opens the project using the specified project
@@ -151,7 +148,7 @@ namespace Alis.App.Hub.Windows.Sections
             {
                 throw new FileNotFoundException($"Engine executable not found in {editorPath}");
             }
-            
+
             return files[0];
         }
 
@@ -288,7 +285,7 @@ namespace Alis.App.Hub.Windows.Sections
         }
 
         /// <summary>
-        /// Creates the project
+        ///     Creates the project
         /// </summary>
         private void CreateProject()
         {
@@ -296,39 +293,42 @@ namespace Alis.App.Hub.Windows.Sections
         }
 
         /// <summary>
-        /// The zero
+        ///     The zero
         /// </summary>
         private IntPtr conmandPtrProjectName = IntPtr.Zero;
 
         /// <summary>
-        /// The empty
+        ///     The empty
         /// </summary>
         private string projectName = string.Empty;
 
         /// <summary>
-        /// The zero
+        ///     The zero
         /// </summary>
         private IntPtr conmandPtrProjectPath = IntPtr.Zero;
 
         /// <summary>
-        /// The empty
+        ///     The empty
         /// </summary>
         private string projectPath = string.Empty;
 
         /// <summary>
-        /// The zero
+        ///     The zero
         /// </summary>
         private IntPtr conmandPtrEditorVersion = IntPtr.Zero;
 
         /// <summary>
-        /// The empty
+        ///     The empty
         /// </summary>
         private string editorVersion = string.Empty;
 
-        private FileBrowser fileBrowser;
+        /// <summary>
+        ///     The file browser
+        /// </summary>
+        private readonly FileBrowser fileBrowser;
 
         /// <summary>
-        /// Renders the create project popup
+        ///     Renders the create project popup
         /// </summary>
         private void RenderCreateProjectPopup()
         {
@@ -354,7 +354,7 @@ namespace Alis.App.Hub.Windows.Sections
                 }
 
                 fileBrowser.OnRender();
-                
+
 
                 ImGui.Text("Editor Version:");
                 conmandPtrEditorVersion = Marshal.StringToHGlobalAnsi(editorVersion);
@@ -378,7 +378,7 @@ namespace Alis.App.Hub.Windows.Sections
                 ImGui.EndPopup();
             }
         }
-        
+
         /// <summary>
         ///     Renders the project table using the specified element height
         /// </summary>
@@ -395,7 +395,7 @@ namespace Alis.App.Hub.Windows.Sections
 
                 //order projects by name:
                 projects = projects.OrderBy(p => p.Name).ToList();
-                
+
                 for (int i = 0; i < projects.Count; i++)
                 {
                     RenderProjectRow(i, elementHeight);

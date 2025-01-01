@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Payment.Stripe.Test
@@ -35,8 +34,7 @@ namespace Alis.Extension.Payment.Stripe.Test
     /// <summary>
     ///     The dummy test class
     /// </summary>
-    	  
-	 public class DummyTest 
+    public class DummyTest
     {
         /// <summary>
         ///     Tests that default test

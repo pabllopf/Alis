@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Extension.Multimedia.FFmpeg.Video;
@@ -39,8 +38,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Test
     /// <summary>
     ///     The video reader tests class
     /// </summary>
-    	  
-	 public class VideoReaderTests 
+    public class VideoReaderTests
     {
         /// <summary>
         ///     Tests that load metadata mp 4

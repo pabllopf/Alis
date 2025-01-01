@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.System;
 using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Configuration;
@@ -39,8 +38,7 @@ namespace Alis.Test.Core.Ecs
     /// <summary>
     ///     The video game test class
     /// </summary>
-    	  
-	 public class VideoGameTest 
+    public class VideoGameTest
     {
         /// <summary>
         ///     Tests that is running set value should change is running

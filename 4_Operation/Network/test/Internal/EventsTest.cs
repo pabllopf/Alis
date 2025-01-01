@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Net.Security;
 using System.Net.WebSockets;
 using Alis.Core.Network.Internal;
@@ -39,8 +38,7 @@ namespace Alis.Core.Network.Test.Internal
     /// <summary>
     ///     The events test class
     /// </summary>
-    	  
-	 public class EventsTest 
+    public class EventsTest
     {
         /// <summary>
         ///     Tests that client connecting to ip address valid input

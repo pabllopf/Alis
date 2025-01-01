@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Network.Internal;
 using Xunit;
 
@@ -36,8 +35,7 @@ namespace Alis.Core.Network.Test.Internal
     /// <summary>
     ///     The web socket op code test class
     /// </summary>
-    	  
-	 public class WebSocketOpCodeTest 
+    public class WebSocketOpCodeTest
     {
         /// <summary>
         ///     Tests that web socket op code values

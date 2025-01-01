@@ -27,15 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
-
 namespace Alis.Core.Physic.Test.Collision.Shapes
 {
     /// <summary>
     ///     The chain shape test class
     /// </summary>
-    	  
-	 public class ChainShapeTest 
+    public class ChainShapeTest
     {
     }
 }

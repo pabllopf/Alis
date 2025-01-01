@@ -1,1 +1,4 @@
-{"__type":"Alis.Core.Ecs.System.Configuration.Input.InputSetting","_UpdateMode_":1}
+{
+  "__type": "Alis.Core.Ecs.System.Configuration.Input.InputSetting",
+  "_UpdateMode_": 1
+}

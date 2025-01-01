@@ -41,7 +41,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
     /// <summary>
     ///     The sdl test class
     /// </summary>
-    [ExcludeFromCodeCoverage]    
+    [ExcludeFromCodeCoverage]
     public class SdlTestP3
     {
         /// <summary>

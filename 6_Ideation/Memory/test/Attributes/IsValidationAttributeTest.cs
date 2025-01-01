@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Memory.Attributes;
 using Alis.Core.Aspect.Memory.Exceptions;
 using Xunit;
@@ -37,8 +36,7 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
     /// <summary>
     ///     The validation attribute test class
     /// </summary>
-    	  
-	 public class IsValidationAttributeTest 
+    public class IsValidationAttributeTest
     {
         /// <summary>
         ///     Tests that validate with empty string should throw exception

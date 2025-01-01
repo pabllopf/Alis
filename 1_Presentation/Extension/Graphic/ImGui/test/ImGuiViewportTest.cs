@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
@@ -37,8 +36,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im gui viewport test class
     /// </summary>
-    	  
-	 public class ImGuiViewportTest 
+    public class ImGuiViewportTest
     {
         /// <summary>
         ///     Tests that id should be initialized

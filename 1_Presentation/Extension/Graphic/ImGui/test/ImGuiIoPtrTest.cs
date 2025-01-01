@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
@@ -38,8 +37,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im gui io ptr test class
     /// </summary>
-    	  
-	 public class ImGuiIoPtrTest 
+    public class ImGuiIoPtrTest
     {
         /// <summary>
         ///     Tests that want text input get set returns expected

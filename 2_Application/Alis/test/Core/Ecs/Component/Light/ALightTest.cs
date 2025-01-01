@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Test.Core.Ecs.Component.Light.Sample;
 using Xunit;
 
@@ -36,8 +35,7 @@ namespace Alis.Test.Core.Ecs.Component.Light
     /// <summary>
     ///     The light test class
     /// </summary>
-    	  
-	 public class ALightTest 
+    public class ALightTest
     {
         /// <summary>
         ///     Tests that light default constructor valid input

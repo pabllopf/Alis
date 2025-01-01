@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
@@ -37,8 +36,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The im gui io test class
     /// </summary>
-    	  
-	 public class ImGuiIoTest 
+    public class ImGuiIoTest
     {
         /// <summary>
         ///     Tests that keys data 407 should be initialized

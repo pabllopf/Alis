@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Core.Network.Test
@@ -36,8 +35,7 @@ namespace Alis.Core.Network.Test
     /// <summary>
     ///     The web socket server options test class
     /// </summary>
-    	  
-	 public class WebSocketServerOptionsTest 
+    public class WebSocketServerOptionsTest
     {
         /// <summary>
         ///     Tests that web socket server options default constructor

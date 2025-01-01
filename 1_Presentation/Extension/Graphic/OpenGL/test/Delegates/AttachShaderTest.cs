@@ -27,15 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
-
 namespace Alis.Extension.Graphic.OpenGL.Test.Delegates
 {
     /// <summary>
     ///     The attach shader test class
     /// </summary>
-    	  
-	 public class AttachShaderTest 
+    public class AttachShaderTest
     {
     }
 }

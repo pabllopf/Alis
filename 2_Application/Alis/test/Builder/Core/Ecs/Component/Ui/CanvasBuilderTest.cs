@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Component.Ui;
 using Alis.Core.Ecs.Component.Ui;
 using Xunit;
@@ -37,8 +36,7 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Ui
     /// <summary>
     ///     The canvas builder test class
     /// </summary>
-    	  
-	 public class CanvasBuilderTest 
+    public class CanvasBuilderTest
     {
         /// <summary>
         ///     Tests that canvas builder default constructor valid input

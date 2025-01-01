@@ -27,15 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
-
 namespace Alis.Extension.Graphic.OpenGL.Test
 {
     /// <summary>
     ///     The draw arrays test class
     /// </summary>
-    	  
-	 public class DrawArraysTest 
+    public class DrawArraysTest
     {
     }
 }

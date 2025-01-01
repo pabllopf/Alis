@@ -66,7 +66,7 @@ namespace Alis.Extension.Updater
         public readonly string _programFolder;
 
         /// <summary>
-        /// The version to install
+        ///     The version to install
         /// </summary>
         public readonly string _versionToInstall;
 
@@ -333,12 +333,13 @@ namespace Alis.Extension.Updater
                     return release;
                 }
             }
+
             if (releases.Count == 0)
             {
                 Logger.Exception("No releases found.");
                 return null;
             }
-            
+
             if ("latest" == _versionToInstall)
             {
                 return releases[0];

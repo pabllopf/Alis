@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using Xunit;
 
@@ -36,8 +35,7 @@ namespace Alis.Core.Network.Test
     /// <summary>
     ///     The buffer pool test class
     /// </summary>
-    	  
-	 public class IBufferPoolTest 
+    public class IBufferPoolTest
     {
         /// <summary>
         ///     Tests that get buffer should return memory stream

@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Graphic.ImGui.Test
@@ -36,8 +35,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The stb undo state test class
     /// </summary>
-    	  
-	 public class StbUndoStateTest 
+    public class StbUndoStateTest
     {
         /// <summary>
         ///     Tests that undo rec 0 should be initialized correctly

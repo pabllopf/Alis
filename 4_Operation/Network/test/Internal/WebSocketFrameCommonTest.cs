@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Network.Exceptions;
 using Alis.Core.Network.Internal;
 using Xunit;
@@ -38,8 +37,7 @@ namespace Alis.Core.Network.Test.Internal
     /// <summary>
     ///     The web socket frame common test class
     /// </summary>
-    	  
-	 public class WebSocketFrameCommonTest 
+    public class WebSocketFrameCommonTest
     {
         /// <summary>
         ///     Tests that toggle mask should not throw exception when mask key is valid

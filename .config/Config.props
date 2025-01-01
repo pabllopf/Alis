@@ -13,14 +13,14 @@
         <TargetFrameworks Condition="$(AssemblyName.Contains('Benchmark')) == true">net8.0;</TargetFrameworks>
         <TargetFrameworks Condition="$(AssemblyName.Contains('Test')) == true">net8.0;</TargetFrameworks>
         <TargetFrameworks Condition="$(AssemblyName.Contains('Sample')) == true">net8.0;</TargetFrameworks>
-        
+
         <RuntimeIdentifiers>
             win-x64; win-x86; win-arm64;
             linux-x64; linux-musl-x64; linux-arm; linux-arm64; linux-musl-arm; linux-musl-arm64;
             osx-x64;osx-arm64;
         </RuntimeIdentifiers>
     </PropertyGroup>
-    
+
     <!-- Import all the props files in the application folder -->
     <Import Project="$(SolutionDir).config/application/Runtimes.props"/>
     <Import Project="$(SolutionDir).config/application/LangVersion.props"/>
@@ -29,7 +29,7 @@
     <Import Project="$(SolutionDir).config/application/AllowUnsafeBlocks.props"/>
     <Import Project="$(SolutionDir).config/application/Nullable.props"/>
     <Import Project="$(SolutionDir).config/application/SelfContained.props"/>
-    
+
     <!-- Import all the props files in the assembly folder -->
     <Import Project="$(SolutionDir).config/assembly/Company.props"/>
     <Import Project="$(SolutionDir).config/assembly/FileVersion.props"/>
@@ -88,6 +88,6 @@
 
     <!-- Exclude all the files that are not necessary -->
     <ItemGroup>
-        <None Remove="*.xml;*.pdb;*.md;*.dll;*.dylib;*.sh;*.bat" />
+        <None Remove="*.xml;*.pdb;*.md;*.dll;*.dylib;*.sh;*.bat"/>
     </ItemGroup>
 </Project>

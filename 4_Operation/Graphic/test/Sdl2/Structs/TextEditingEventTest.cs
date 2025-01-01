@@ -27,15 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
-
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
     /// <summary>
     ///     The text editing event test class
     /// </summary>
-    	  
-	 public class TextEditingEventTest 
+    public class TextEditingEventTest
     {
     }
 }

@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Graphic.Sdl2;
@@ -41,8 +40,7 @@ namespace Alis.Extension.Graphic.Sdl2Ttf.Test
     /// <summary>
     ///     The sdl ttf test class
     /// </summary>
-    	  
-	 public class SdlTtfTest 
+    public class SdlTtfTest
     {
         /// <summary>
         ///     Tests that byte swapped unicode test

@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using Xunit;
 
@@ -37,8 +36,7 @@ namespace Alis.Extension.Profile.Test
     /// <summary>
     ///     The profiler test class
     /// </summary>
-    	  
-	 public class ProfilerTest 
+    public class ProfilerTest
     {
         /// <summary>
         ///     Tests that start profiling sets start time

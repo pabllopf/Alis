@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Component.Audio;
 using Alis.Core.Ecs.Component.Audio;
 using Xunit;
@@ -37,8 +36,7 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Audio
     /// <summary>
     ///     The audio recorder builder test class
     /// </summary>
-    	  
-	 public class AudioRecorderBuilderTest 
+    public class AudioRecorderBuilderTest
     {
         /// <summary>
         ///     Tests that audio recorder builder default constructor valid input

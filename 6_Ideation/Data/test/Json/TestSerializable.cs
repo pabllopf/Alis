@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Runtime.Serialization;
 
 namespace Alis.Core.Aspect.Data.Test.Json

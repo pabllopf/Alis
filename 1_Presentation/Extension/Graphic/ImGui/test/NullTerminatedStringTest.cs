@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using Xunit;
 
@@ -37,8 +36,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
     /// <summary>
     ///     The null terminated string test class
     /// </summary>
-    	  
-	 public class NullTerminatedStringTest 
+    public class NullTerminatedStringTest
     {
         /// <summary>
         ///     Tests that data should set and get correctly with int ptr

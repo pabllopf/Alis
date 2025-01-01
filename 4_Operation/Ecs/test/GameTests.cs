@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test
@@ -35,8 +34,7 @@ namespace Alis.Core.Ecs.Test
     /// <summary>
     ///     The game tests class
     /// </summary>
-    	  
-	 public class GameTests 
+    public class GameTests
     {
         /// <summary>
         ///     Tests that run invokes run method

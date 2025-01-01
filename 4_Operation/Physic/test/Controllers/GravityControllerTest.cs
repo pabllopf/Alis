@@ -27,15 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
-
 namespace Alis.Core.Physic.Test.Controllers
 {
     /// <summary>
     ///     The gravity controller test class
     /// </summary>
-    	  
-	 public class GravityControllerTest 
+    public class GravityControllerTest
     {
     }
 }

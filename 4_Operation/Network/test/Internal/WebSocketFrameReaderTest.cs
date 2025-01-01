@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Text;
 using System.Threading;
@@ -41,8 +40,7 @@ namespace Alis.Core.Network.Test.Internal
     /// <summary>
     ///     The web socket frame reader test class
     /// </summary>
-    	  
-	 public class WebSocketFrameReaderTest 
+    public class WebSocketFrameReaderTest
     {
         /// <summary>
         ///     Tests that read async valid input

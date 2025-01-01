@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Profile.Test
@@ -35,8 +34,7 @@ namespace Alis.Extension.Profile.Test
     /// <summary>
     ///     The profile data test class
     /// </summary>
-    	  
-	 public class ProfileDataTest 
+    public class ProfileDataTest
     {
         /// <summary>
         ///     Tests that memory usage set and get returns correct value

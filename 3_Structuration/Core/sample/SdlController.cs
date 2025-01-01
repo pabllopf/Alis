@@ -415,7 +415,7 @@ namespace Alis.Core.Sample
             });*/
 
             // Crea y configura el menú
-            
+
             while (_running)
             {
                 stopwatch.Restart();
@@ -644,7 +644,7 @@ namespace Alis.Core.Sample
             Sdl.DestroyWindow(window);
             Sdl.Quit();
         }
-        
+
         /// <summary>
         ///     Draws the circle using the specified renderer
         /// </summary>

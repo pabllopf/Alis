@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Entity.Scene;
 using Alis.Builder.Core.Ecs.System.Manager.Scene;
 using Alis.Core.Ecs.System.Manager.Scene;
@@ -40,8 +39,7 @@ namespace Alis.Test.Builder.Core.Ecs.System.Manager.Scene
     /// <summary>
     ///     The scene manager builder test class
     /// </summary>
-    	  
-	 public class SceneManagerBuilderTest 
+    public class SceneManagerBuilderTest
     {
         /// <summary>
         ///     Tests that scene manager builder default constructor valid input

@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
@@ -41,8 +40,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
     /// <summary>
     ///     The sprite test class
     /// </summary>
-    	  
-	 public class SpriteTest 
+    public class SpriteTest
     {
         /// <summary>
         ///     Tests that on init valid input

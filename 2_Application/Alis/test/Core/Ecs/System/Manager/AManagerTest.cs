@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Ecs.System;
 using Alis.Test.Core.Ecs.System.Manager.Samples;
 using Xunit;
@@ -37,8 +36,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
     /// <summary>
     ///     The manager test class
     /// </summary>
-    	  
-	 public class AManagerTest 
+    public class AManagerTest
     {
         /// <summary>
         ///     Tests that test on enable

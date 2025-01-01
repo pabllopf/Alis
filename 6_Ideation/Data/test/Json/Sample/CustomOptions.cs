@@ -30,7 +30,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Data.Json;
 
 namespace Alis.Core.Aspect.Data.Test.Json.Sample

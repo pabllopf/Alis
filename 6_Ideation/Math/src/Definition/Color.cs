@@ -31,7 +31,6 @@ using System;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 
-
 namespace Alis.Core.Aspect.Math.Definition
 {
     /// <summary>

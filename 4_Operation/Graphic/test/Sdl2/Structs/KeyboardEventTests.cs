@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
@@ -38,8 +37,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
     /// <summary>
     ///     The keyboard event tests class
     /// </summary>
-    	  
-	 public class KeyboardEventTests 
+    public class KeyboardEventTests
     {
         /// <summary>
         ///     Tests that keyboard event initializes properties correctly

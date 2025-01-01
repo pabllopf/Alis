@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Shape.Line;
 using Xunit;
 
@@ -36,8 +35,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Line
     /// <summary>
     ///     The line test class
     /// </summary>
-    	  
-	 public class LineITest 
+    public class LineITest
     {
         /// <summary>
         ///     Tests that constructor initializes properties correctly

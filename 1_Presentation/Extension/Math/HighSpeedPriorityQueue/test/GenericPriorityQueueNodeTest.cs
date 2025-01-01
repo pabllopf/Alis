@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
@@ -35,8 +34,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
     /// <summary>
     ///     The generic priority queue node test class
     /// </summary>
-    	  
-	 public class GenericPriorityQueueNodeTest 
+    public class GenericPriorityQueueNodeTest
     {
         /// <summary>
         ///     Tests that priority set and get returns correct value

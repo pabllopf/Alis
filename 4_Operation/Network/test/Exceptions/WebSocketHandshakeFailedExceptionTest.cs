@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Network.Exceptions;
 using Xunit;
 
@@ -37,8 +36,7 @@ namespace Alis.Core.Network.Test.Exceptions
     /// <summary>
     ///     The web socket handshake failed exception test class
     /// </summary>
-    	  
-	 public class WebSocketHandshakeFailedExceptionTest 
+    public class WebSocketHandshakeFailedExceptionTest
     {
         /// <summary>
         ///     Tests that web socket handshake failed exception default constructor

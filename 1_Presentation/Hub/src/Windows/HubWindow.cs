@@ -187,7 +187,7 @@ namespace Alis.App.Hub.Windows
             {
                 OpenPreferences();
             }
-            
+
             RenderPreferences();
 
             ImGui.EndChild();
@@ -201,17 +201,17 @@ namespace Alis.App.Hub.Windows
         }
 
         /// <summary>
-        /// Renders the preferences
+        ///     Renders the preferences
         /// </summary>
         private void RenderPreferences()
         {
-            if(ImGui.BeginPopupModal("Preferences"))
+            if (ImGui.BeginPopupModal("Preferences"))
             {
                 ImGui.Text("Preferences");
                 ImGui.Separator();
 
                 ImGui.Text("Select your favorite color:");
-                
+
                 ImGui.Separator();
 
                 ImGui.Text("Select your favorite font:");
@@ -228,7 +228,7 @@ namespace Alis.App.Hub.Windows
                 ImGui.Separator();
 
                 ImGui.Text("Select your favorite font color:");
-                
+
                 ImGui.Separator();
 
                 if (ImGui.Button("Close"))
@@ -241,7 +241,7 @@ namespace Alis.App.Hub.Windows
         }
 
         /// <summary>
-        /// Opens the preferences
+        ///     Opens the preferences
         /// </summary>
         private void OpenPreferences()
         {

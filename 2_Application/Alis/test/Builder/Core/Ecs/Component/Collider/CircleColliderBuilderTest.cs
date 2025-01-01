@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Collider;
 using Xunit;
@@ -37,8 +36,7 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Collider
     /// <summary>
     ///     The circle collider builder test class
     /// </summary>
-    	  
-	 public class CircleColliderBuilderTest 
+    public class CircleColliderBuilderTest
     {
         /// <summary>
         ///     Tests that circle collider builder default constructor valid input

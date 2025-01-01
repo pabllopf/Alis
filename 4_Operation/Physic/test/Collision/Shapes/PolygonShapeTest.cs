@@ -27,15 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
-
 namespace Alis.Core.Physic.Test.Collision.Shapes
 {
     /// <summary>
     ///     The polygon shape test class
     /// </summary>
-    	  
-	 public class PolygonShapeTest 
+    public class PolygonShapeTest
     {
     }
 }

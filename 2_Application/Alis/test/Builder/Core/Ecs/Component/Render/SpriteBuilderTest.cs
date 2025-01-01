@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Component.Render;
 using Xunit;
@@ -37,8 +36,7 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Render
     /// <summary>
     ///     The sprite builder test class
     /// </summary>
-    	  
-	 public class SpriteBuilderTest 
+    public class SpriteBuilderTest
     {
         /// <summary>
         ///     Tests that sprite builder default constructor valid input

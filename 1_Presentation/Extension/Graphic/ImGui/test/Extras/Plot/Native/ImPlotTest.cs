@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.ImGui.Extras.Plot;
@@ -40,8 +39,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
     /// <summary>
     ///     The im plot  Fact class
     /// </summary>
-    	  
-	 public class ImPlotTest 
+    public class ImPlotTest
     {
         /// <summary>
         ///     Facts that plot to pixels with im plot point returns correct vector 2

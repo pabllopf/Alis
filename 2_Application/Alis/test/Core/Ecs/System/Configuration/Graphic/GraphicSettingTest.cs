@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.System.Setting.Graphic;
 using Alis.Core.Ecs.System.Configuration.Graphic;
 using Alis.Core.Graphic;
@@ -38,8 +37,7 @@ namespace Alis.Test.Core.Ecs.System.Configuration.Graphic
     /// <summary>
     ///     The graphic setting test class
     /// </summary>
-    	  
-	 public class GraphicSettingTest 
+    public class GraphicSettingTest
     {
         /// <summary>
         ///     Tests that test graphic setting window

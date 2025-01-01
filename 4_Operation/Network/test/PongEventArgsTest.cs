@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Core.Network.Test
@@ -36,8 +35,7 @@ namespace Alis.Core.Network.Test
     /// <summary>
     ///     The pong event args test class
     /// </summary>
-    	  
-	 public class PongEventArgsTest 
+    public class PongEventArgsTest
     {
         /// <summary>
         ///     Tests that pong event args constructor

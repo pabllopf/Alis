@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Core.Aspect.Math.Test
@@ -35,8 +34,7 @@ namespace Alis.Core.Aspect.Math.Test
     /// <summary>
     ///     The math test class
     /// </summary>
-    	  
-	 public class CustomMathFTest 
+    public class CustomMathFTest
     {
         /// <summary>
         ///     Tests that sqrt should calculate correctly

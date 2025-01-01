@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Memory.Exceptions;
 using Xunit;
 
@@ -36,8 +35,7 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
     /// <summary>
     ///     The not empty exception test class
     /// </summary>
-    	  
-	 public class NotEmptyExceptionTest 
+    public class NotEmptyExceptionTest
     {
         /// <summary>
         ///     Tests that not empty exception with message should set message

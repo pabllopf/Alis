@@ -29,7 +29,6 @@
 
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Memory.Attributes;
 using Alis.Core.Aspect.Memory.Exceptions;
 using Xunit;
@@ -39,8 +38,7 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
     /// <summary>
     ///     The not empty attribute test class
     /// </summary>
-    	  
-	 public class IsNotEmptyAttributeTest 
+    public class IsNotEmptyAttributeTest
     {
         /// <summary>
         ///     The empty concurrent bag

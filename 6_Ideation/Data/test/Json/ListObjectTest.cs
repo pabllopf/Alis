@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Data.Json;
 using Xunit;
 
@@ -36,8 +35,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
     /// <summary>
     ///     The list object test class
     /// </summary>
-    	  
-	 public class ListObjectTest 
+    public class ListObjectTest
     {
         /// <summary>
         ///     Tests that test add method

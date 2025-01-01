@@ -141,23 +141,6 @@ namespace Alis.Core.Ecs.Entity
         public string Layer { get; set; } = "Default";
 
         /// <summary>
-        ///     Clones this instance
-        /// </summary>
-        /// <returns>The object</returns>
-        public object Clone()
-        {
-            List<AComponent> componentsCloned = new List<AComponent>();
-            for (int i = 0; i < Components.Count; i++)
-            {
-                componentsCloned.Add((AComponent) Components[i].Clone());
-            }
-
-            Guid guid = Guid.NewGuid();
-
-            return new GameObject(IsEnable, Name, guid.ToString(), Tag, (Transform) Transform.Clone(), componentsCloned);
-        }
-
-        /// <summary>
         ///     Gets or sets the value of the is enable
         /// </summary>
         [JsonPropertyName("_IsEnable_")]
@@ -533,6 +516,23 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         /// <returns>The game object builder</returns>
         public GameObjectBuilder Builder() => new GameObjectBuilder(_context);
+
+        /// <summary>
+        ///     Clones this instance
+        /// </summary>
+        /// <returns>The object</returns>
+        public object Clone()
+        {
+            List<AComponent> componentsCloned = new List<AComponent>();
+            for (int i = 0; i < Components.Count; i++)
+            {
+                componentsCloned.Add((AComponent) Components[i].Clone());
+            }
+
+            Guid guid = Guid.NewGuid();
+
+            return new GameObject(IsEnable, Name, guid.ToString(), Tag, (Transform) Transform.Clone(), componentsCloned);
+        }
 
         /// <summary>
         ///     Adds the pending components

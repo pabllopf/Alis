@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.ImGui.Extras.Node;
@@ -39,8 +38,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
     /// <summary>
     ///     The im nodes test class
     /// </summary>
-    	  
-	 public class ImNodesTest 
+    public class ImNodesTest
     {
         /// <summary>
         ///     Tests that BeginInputAttribute starts an input attribute with default shape

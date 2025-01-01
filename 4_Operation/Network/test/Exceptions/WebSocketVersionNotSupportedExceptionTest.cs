@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Network.Exceptions;
 using Xunit;
 
@@ -37,8 +36,7 @@ namespace Alis.Core.Network.Test.Exceptions
     /// <summary>
     ///     The web socket version not supported exception test class
     /// </summary>
-    	  
-	 public class WebSocketVersionNotSupportedExceptionTest 
+    public class WebSocketVersionNotSupportedExceptionTest
     {
         /// <summary>
         ///     Tests that web socket version not supported exception default constructor

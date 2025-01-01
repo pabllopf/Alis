@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Xunit;
 
@@ -37,8 +36,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
     /// <summary>
     ///     The internal 11 wm info tests class
     /// </summary>
-    	  
-	 public class InternalX11WmInfoTests 
+    public class InternalX11WmInfoTests
     {
         /// <summary>
         ///     Tests that internal x 11 wm info initializes properties correctly

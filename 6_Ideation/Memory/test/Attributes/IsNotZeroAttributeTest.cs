@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Memory.Attributes;
 using Alis.Core.Aspect.Memory.Exceptions;
 using Xunit;
@@ -37,8 +36,7 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
     /// <summary>
     ///     The not zero attribute test class
     /// </summary>
-    	  
-	 public class IsNotZeroAttributeTest 
+    public class IsNotZeroAttributeTest
     {
         /// <summary>
         ///     Tests that validate with value is zero should throw exception

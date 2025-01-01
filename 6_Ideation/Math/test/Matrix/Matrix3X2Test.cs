@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
@@ -37,8 +36,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
     /// <summary>
     ///     The matrix test class
     /// </summary>
-    	  
-	 public class Matrix3X2Test 
+    public class Matrix3X2Test
     {
         /// <summary>
         ///     Tests that matrix 3 x 2 constructor should set values correctly

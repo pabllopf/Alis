@@ -31,7 +31,6 @@ using System.Collections.Generic;
 
 namespace Alis.Core.Aspect.Data.Json
 {
-    
     /// <summary>
     ///     The collection object class
     /// </summary>

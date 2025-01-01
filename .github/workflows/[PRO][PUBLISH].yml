@@ -208,7 +208,7 @@ jobs:
               done
             fi
           done
-          
+
       - name: build installer
         run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -f net8.0
 

@@ -40,91 +40,88 @@ using Alis.Extension.Graphic.ImGui.Native;
 namespace Alis.App.Hub.Utils
 {
     /// <summary>
-    /// The file browser class
+    ///     The file browser class
     /// </summary>
     public class FileBrowser
     {
         /// <summary>
-        /// The space work
+        ///     The list
         /// </summary>
-        private SpaceWork spaceWork;
+        private readonly List<string> directoryContents = new List<string>();
 
         /// <summary>
-        /// The show hidden files
+        ///     The stack
         /// </summary>
-        private bool showHiddenFiles = false;
-        
-        /// <summary>
-        /// The show file browser popup
-        /// </summary>
-        private bool showFileBrowserPopup = false;
+        private readonly Stack<string> forwardHistory = new Stack<string>();
 
         /// <summary>
-        /// The user profile
+        ///     The is searching directory
+        /// </summary>
+        private readonly bool IsSearchingDirectory = false;
+
+        /// <summary>
+        ///     The is searching file
+        /// </summary>
+        private readonly bool IsSearchingFile = false;
+
+        /// <summary>
+        ///     The stack
+        /// </summary>
+        private readonly Stack<string> navigationHistory = new Stack<string>();
+
+        /// <summary>
+        ///     The search extension
+        /// </summary>
+        private readonly string SearchExtension = "";
+
+        /// <summary>
+        ///     The search file
+        /// </summary>
+        private readonly string SearchFile = "";
+
+        /// <summary>
+        ///     The search path
+        /// </summary>
+        private readonly string SearchPath = "";
+
+        /// <summary>
+        ///     The user profile
         /// </summary>
         private string currentPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
 
         /// <summary>
-        /// The empty
+        ///     The empty
         /// </summary>
         private string searchQuery2 = string.Empty;
 
         /// <summary>
-        /// The list
-        /// </summary>
-        private List<string> directoryContents = new List<string>();
-
-        /// <summary>
-        /// The stack
-        /// </summary>
-        private Stack<string> navigationHistory = new Stack<string>();
-
-        /// <summary>
-        /// The stack
-        /// </summary>
-        private Stack<string> forwardHistory = new Stack<string>();
-
-        /// <summary>
-        /// The zero
+        ///     The zero
         /// </summary>
         private IntPtr searchQuery2Ptr = IntPtr.Zero;
 
         /// <summary>
-        /// The is searching file
+        ///     The show file browser popup
         /// </summary>
-        private bool IsSearchingFile = false;
+        private bool showFileBrowserPopup;
 
         /// <summary>
-        /// The is searching directory
+        ///     The show hidden files
         /// </summary>
-        private bool IsSearchingDirectory = false;
+        private bool showHiddenFiles;
 
         /// <summary>
-        /// The search path
+        ///     The space work
         /// </summary>
-        private string SearchPath = "";
+        private SpaceWork spaceWork;
 
         /// <summary>
-        /// The search file
-        /// </summary>
-        private string SearchFile = "";
-
-        /// <summary>
-        /// The search extension
-        /// </summary>
-        private string SearchExtension = "";
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FileBrowser"/> class
+        ///     Initializes a new instance of the <see cref="FileBrowser" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
-        public FileBrowser(SpaceWork spaceWork)
-        {
-            this.spaceWork = spaceWork;
-        }
+        public FileBrowser(SpaceWork spaceWork) => this.spaceWork = spaceWork;
 
         /// <summary>
-        /// Ons the init
+        ///     Ons the init
         /// </summary>
         public void OnInit()
         {
@@ -137,14 +134,14 @@ namespace Alis.App.Hub.Utils
         }
 
         /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
         public void OnStart()
         {
         }
 
         /// <summary>
-        /// Ons the render
+        ///     Ons the render
         /// </summary>
         public void OnRender()
         {
@@ -162,14 +159,17 @@ namespace Alis.App.Hub.Utils
                 ImGui.EndPopup();
             }
         }
-        
+
+        /// <summary>
+        ///     Opens the file browser
+        /// </summary>
         public void OpenFileBrowser()
         {
             ImGui.OpenPopup("File Browser");
         }
-        
+
         /// <summary>
-        /// Sets the search directory using the specified directory
+        ///     Sets the search directory using the specified directory
         /// </summary>
         /// <param name="directory">The directory</param>
         public void SetSearchDirectory(string directory)
@@ -177,16 +177,16 @@ namespace Alis.App.Hub.Utils
         }
 
         /// <summary>
-        /// Sets the search file using the specified file
+        ///     Sets the search file using the specified file
         /// </summary>
         /// <param name="file">The file</param>
         /// <param name="extension">The extension</param>
         public void SetSearchFile(string file, string extension)
         {
         }
-        
+
         /// <summary>
-        /// Renders the bottom buttons
+        ///     Renders the bottom buttons
         /// </summary>
         private void RenderBottomButtons()
         {
@@ -220,13 +220,13 @@ namespace Alis.App.Hub.Utils
                 ImGui.EndPopup();
             }
         }
-        
+
         /// <summary>
-        /// Renders the navigation bar
+        ///     Renders the navigation bar
         /// </summary>
         private void RenderNavigationBar()
         {
-            if (ImGui.Button("Back") && navigationHistory.Count > 0)
+            if (ImGui.Button("Back") && (navigationHistory.Count > 0))
             {
                 forwardHistory.Push(currentPath);
                 currentPath = navigationHistory.Pop();
@@ -235,7 +235,7 @@ namespace Alis.App.Hub.Utils
 
             ImGui.SameLine();
 
-            if (ImGui.Button("Forward") && forwardHistory.Count > 0)
+            if (ImGui.Button("Forward") && (forwardHistory.Count > 0))
             {
                 navigationHistory.Push(currentPath);
                 currentPath = forwardHistory.Pop();
@@ -254,7 +254,7 @@ namespace Alis.App.Hub.Utils
         }
 
         /// <summary>
-        /// Renders the sidebar
+        ///     Renders the sidebar
         /// </summary>
         private void RenderSidebar()
         {
@@ -284,7 +284,7 @@ namespace Alis.App.Hub.Utils
         }
 
         /// <summary>
-        /// Renders the directory contents
+        ///     Renders the directory contents
         /// </summary>
         private void RenderDirectoryContents()
         {
@@ -310,7 +310,7 @@ namespace Alis.App.Hub.Utils
         }
 
         /// <summary>
-        /// Updates the directory contents
+        ///     Updates the directory contents
         /// </summary>
         private void UpdateDirectoryContents()
         {

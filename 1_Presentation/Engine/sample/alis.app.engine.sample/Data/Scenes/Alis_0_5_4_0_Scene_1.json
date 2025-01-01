@@ -1,1 +1,226 @@
-{"__type":"Alis.Core.Ecs.Entity.Scene","_PendingGameObjectsToAdd_":[{"__type":"Alis.Core.Ecs.Entity.GameObject","_Transform_":{"__type":"Alis.Core.Aspect.Math.Transform","position":{"__type":"Alis.Core.Aspect.Math.Vector.Vector2F","x":0,"y":0},"scale":{"__type":"Alis.Core.Aspect.Math.Vector.Vector2F","x":2,"y":2},"rotation":0},"_PendingComponentsToAdd_":[{"__type":"Alis.Core.Ecs.Component.Render.Camera","_Resolution_":{"__type":"Alis.Core.Aspect.Math.Vector.Vector2F","x":1024,"y":640},"_BackgroundColor_":{"__type":"Alis.Core.Aspect.Math.Definition.Color","r":0,"g":100,"b":0,"a":255},"_CameraBorder_":1,"_IsEnable_":true,"_Name_":"AComponent","_Id_":"2793ee23-0831-40a0-9724-f13d7990c716","_Tag_":"AComponent"}],"_PendingComponentsToRemove_":[],"_Layer_":"Default","_IsEnable_":true,"_Name_":"Camera","_Id_":"545f24a9-e2a5-4429-96c4-c24281f1f36d","_Tag_":"Camera","_Components_":[],"_IsStatic_":false},{"__type":"Alis.Core.Ecs.Entity.GameObject","_Transform_":{"__type":"Alis.Core.Aspect.Math.Transform","position":{"__type":"Alis.Core.Aspect.Math.Vector.Vector2F","x":3,"y":3},"scale":{"__type":"Alis.Core.Aspect.Math.Vector.Vector2F","x":2,"y":2},"rotation":0},"_PendingComponentsToAdd_":[{"__type":"Alis.Core.Ecs.Component.Render.Sprite","_Depth_":0,"_Flips_":0,"_NameFile_":"tree-001.bmp","_Size_":{"__type":"Alis.Core.Aspect.Math.Vector.Vector2F","x":0,"y":0},"_IsEnable_":true,"_Name_":"AComponent","_Id_":"145b636e-1878-4748-a64c-af47db185df8","_Tag_":"AComponent"}],"_PendingComponentsToRemove_":[],"_Layer_":"Default","_IsEnable_":true,"_Name_":"tree-001","_Id_":"a804a9ed-52e4-48fc-8faa-cf271ce711f1","_Tag_":"Default","_Components_":[],"_IsStatic_":false},{"__type":"Alis.Core.Ecs.Entity.GameObject","_Transform_":{"__type":"Alis.Core.Aspect.Math.Transform","position":{"__type":"Alis.Core.Aspect.Math.Vector.Vector2F","x":5,"y":5},"scale":{"__type":"Alis.Core.Aspect.Math.Vector.Vector2F","x":2,"y":2},"rotation":0},"_PendingComponentsToAdd_":[{"__type":"Alis.Core.Ecs.Component.Render.Sprite","_Depth_":0,"_Flips_":0,"_NameFile_":"tree-001.bmp","_Size_":{"__type":"Alis.Core.Aspect.Math.Vector.Vector2F","x":0,"y":0},"_IsEnable_":true,"_Name_":"AComponent","_Id_":"efdd835c-6ec5-4e8e-b239-b1a372c81de8","_Tag_":"AComponent"}],"_PendingComponentsToRemove_":[],"_Layer_":"Default","_IsEnable_":true,"_Name_":"tree-002","_Id_":"6b0c29de-cd0a-4e8c-8585-2dbdf38f3ad5","_Tag_":"Default","_Components_":[],"_IsStatic_":false},{"__type":"Alis.Core.Ecs.Entity.GameObject","_Transform_":{"__type":"Alis.Core.Aspect.Math.Transform","position":{"__type":"Alis.Core.Aspect.Math.Vector.Vector2F","x":-1,"y":-1},"scale":{"__type":"Alis.Core.Aspect.Math.Vector.Vector2F","x":2,"y":2},"rotation":0},"_PendingComponentsToAdd_":[{"__type":"Alis.Core.Ecs.Component.Render.Sprite","_Depth_":0,"_Flips_":0,"_NameFile_":"tree-001.bmp","_Size_":{"__type":"Alis.Core.Aspect.Math.Vector.Vector2F","x":0,"y":0},"_IsEnable_":true,"_Name_":"AComponent","_Id_":"23314665-ebfe-45ee-a039-dd0e64e8b506","_Tag_":"AComponent"}],"_PendingComponentsToRemove_":[],"_Layer_":"Default","_IsEnable_":true,"_Name_":"tree-001","_Id_":"3ba2b08e-5d39-4010-8196-950817c67135","_Tag_":"Default","_Components_":[],"_IsStatic_":false},{"__type":"Alis.Core.Ecs.Entity.GameObject","_Transform_":{"__type":"Alis.Core.Aspect.Math.Transform","position":{"__type":"Alis.Core.Aspect.Math.Vector.Vector2F","x":-4,"y":-4},"scale":{"__type":"Alis.Core.Aspect.Math.Vector.Vector2F","x":2,"y":2},"rotation":0},"_PendingComponentsToAdd_":[{"__type":"Alis.Core.Ecs.Component.Render.Sprite","_Depth_":0,"_Flips_":0,"_NameFile_":"tree-001.bmp","_Size_":{"__type":"Alis.Core.Aspect.Math.Vector.Vector2F","x":0,"y":0},"_IsEnable_":true,"_Name_":"AComponent","_Id_":"e4b49748-8346-48f8-a060-43bb0fa595e6","_Tag_":"AComponent"}],"_PendingComponentsToRemove_":[],"_Layer_":"Default","_IsEnable_":true,"_Name_":"tree-001","_Id_":"a8a136e6-db73-44a9-a72c-19e362087881","_Tag_":"Default","_Components_":[],"_IsStatic_":false}],"_PendingGameObjectsToRemove_":[],"_IsEnable_":true,"_Name_":"Other Scene","_Id_":"0be52543-25ba-4131-8159-4d80670a9f82","_Tag_":"Scene","_GameObjects_":[]}
+{
+  "__type": "Alis.Core.Ecs.Entity.Scene",
+  "_PendingGameObjectsToAdd_": [
+    {
+      "__type": "Alis.Core.Ecs.Entity.GameObject",
+      "_Transform_": {
+        "__type": "Alis.Core.Aspect.Math.Transform",
+        "position": {
+          "__type": "Alis.Core.Aspect.Math.Vector.Vector2F",
+          "x": 0,
+          "y": 0
+        },
+        "scale": {
+          "__type": "Alis.Core.Aspect.Math.Vector.Vector2F",
+          "x": 2,
+          "y": 2
+        },
+        "rotation": 0
+      },
+      "_PendingComponentsToAdd_": [
+        {
+          "__type": "Alis.Core.Ecs.Component.Render.Camera",
+          "_Resolution_": {
+            "__type": "Alis.Core.Aspect.Math.Vector.Vector2F",
+            "x": 1024,
+            "y": 640
+          },
+          "_BackgroundColor_": {
+            "__type": "Alis.Core.Aspect.Math.Definition.Color",
+            "r": 0,
+            "g": 100,
+            "b": 0,
+            "a": 255
+          },
+          "_CameraBorder_": 1,
+          "_IsEnable_": true,
+          "_Name_": "AComponent",
+          "_Id_": "2793ee23-0831-40a0-9724-f13d7990c716",
+          "_Tag_": "AComponent"
+        }
+      ],
+      "_PendingComponentsToRemove_": [],
+      "_Layer_": "Default",
+      "_IsEnable_": true,
+      "_Name_": "Camera",
+      "_Id_": "545f24a9-e2a5-4429-96c4-c24281f1f36d",
+      "_Tag_": "Camera",
+      "_Components_": [],
+      "_IsStatic_": false
+    },
+    {
+      "__type": "Alis.Core.Ecs.Entity.GameObject",
+      "_Transform_": {
+        "__type": "Alis.Core.Aspect.Math.Transform",
+        "position": {
+          "__type": "Alis.Core.Aspect.Math.Vector.Vector2F",
+          "x": 3,
+          "y": 3
+        },
+        "scale": {
+          "__type": "Alis.Core.Aspect.Math.Vector.Vector2F",
+          "x": 2,
+          "y": 2
+        },
+        "rotation": 0
+      },
+      "_PendingComponentsToAdd_": [
+        {
+          "__type": "Alis.Core.Ecs.Component.Render.Sprite",
+          "_Depth_": 0,
+          "_Flips_": 0,
+          "_NameFile_": "tree-001.bmp",
+          "_Size_": {
+            "__type": "Alis.Core.Aspect.Math.Vector.Vector2F",
+            "x": 0,
+            "y": 0
+          },
+          "_IsEnable_": true,
+          "_Name_": "AComponent",
+          "_Id_": "145b636e-1878-4748-a64c-af47db185df8",
+          "_Tag_": "AComponent"
+        }
+      ],
+      "_PendingComponentsToRemove_": [],
+      "_Layer_": "Default",
+      "_IsEnable_": true,
+      "_Name_": "tree-001",
+      "_Id_": "a804a9ed-52e4-48fc-8faa-cf271ce711f1",
+      "_Tag_": "Default",
+      "_Components_": [],
+      "_IsStatic_": false
+    },
+    {
+      "__type": "Alis.Core.Ecs.Entity.GameObject",
+      "_Transform_": {
+        "__type": "Alis.Core.Aspect.Math.Transform",
+        "position": {
+          "__type": "Alis.Core.Aspect.Math.Vector.Vector2F",
+          "x": 5,
+          "y": 5
+        },
+        "scale": {
+          "__type": "Alis.Core.Aspect.Math.Vector.Vector2F",
+          "x": 2,
+          "y": 2
+        },
+        "rotation": 0
+      },
+      "_PendingComponentsToAdd_": [
+        {
+          "__type": "Alis.Core.Ecs.Component.Render.Sprite",
+          "_Depth_": 0,
+          "_Flips_": 0,
+          "_NameFile_": "tree-001.bmp",
+          "_Size_": {
+            "__type": "Alis.Core.Aspect.Math.Vector.Vector2F",
+            "x": 0,
+            "y": 0
+          },
+          "_IsEnable_": true,
+          "_Name_": "AComponent",
+          "_Id_": "efdd835c-6ec5-4e8e-b239-b1a372c81de8",
+          "_Tag_": "AComponent"
+        }
+      ],
+      "_PendingComponentsToRemove_": [],
+      "_Layer_": "Default",
+      "_IsEnable_": true,
+      "_Name_": "tree-002",
+      "_Id_": "6b0c29de-cd0a-4e8c-8585-2dbdf38f3ad5",
+      "_Tag_": "Default",
+      "_Components_": [],
+      "_IsStatic_": false
+    },
+    {
+      "__type": "Alis.Core.Ecs.Entity.GameObject",
+      "_Transform_": {
+        "__type": "Alis.Core.Aspect.Math.Transform",
+        "position": {
+          "__type": "Alis.Core.Aspect.Math.Vector.Vector2F",
+          "x": -1,
+          "y": -1
+        },
+        "scale": {
+          "__type": "Alis.Core.Aspect.Math.Vector.Vector2F",
+          "x": 2,
+          "y": 2
+        },
+        "rotation": 0
+      },
+      "_PendingComponentsToAdd_": [
+        {
+          "__type": "Alis.Core.Ecs.Component.Render.Sprite",
+          "_Depth_": 0,
+          "_Flips_": 0,
+          "_NameFile_": "tree-001.bmp",
+          "_Size_": {
+            "__type": "Alis.Core.Aspect.Math.Vector.Vector2F",
+            "x": 0,
+            "y": 0
+          },
+          "_IsEnable_": true,
+          "_Name_": "AComponent",
+          "_Id_": "23314665-ebfe-45ee-a039-dd0e64e8b506",
+          "_Tag_": "AComponent"
+        }
+      ],
+      "_PendingComponentsToRemove_": [],
+      "_Layer_": "Default",
+      "_IsEnable_": true,
+      "_Name_": "tree-001",
+      "_Id_": "3ba2b08e-5d39-4010-8196-950817c67135",
+      "_Tag_": "Default",
+      "_Components_": [],
+      "_IsStatic_": false
+    },
+    {
+      "__type": "Alis.Core.Ecs.Entity.GameObject",
+      "_Transform_": {
+        "__type": "Alis.Core.Aspect.Math.Transform",
+        "position": {
+          "__type": "Alis.Core.Aspect.Math.Vector.Vector2F",
+          "x": -4,
+          "y": -4
+        },
+        "scale": {
+          "__type": "Alis.Core.Aspect.Math.Vector.Vector2F",
+          "x": 2,
+          "y": 2
+        },
+        "rotation": 0
+      },
+      "_PendingComponentsToAdd_": [
+        {
+          "__type": "Alis.Core.Ecs.Component.Render.Sprite",
+          "_Depth_": 0,
+          "_Flips_": 0,
+          "_NameFile_": "tree-001.bmp",
+          "_Size_": {
+            "__type": "Alis.Core.Aspect.Math.Vector.Vector2F",
+            "x": 0,
+            "y": 0
+          },
+          "_IsEnable_": true,
+          "_Name_": "AComponent",
+          "_Id_": "e4b49748-8346-48f8-a060-43bb0fa595e6",
+          "_Tag_": "AComponent"
+        }
+      ],
+      "_PendingComponentsToRemove_": [],
+      "_Layer_": "Default",
+      "_IsEnable_": true,
+      "_Name_": "tree-001",
+      "_Id_": "a8a136e6-db73-44a9-a72c-19e362087881",
+      "_Tag_": "Default",
+      "_Components_": [],
+      "_IsStatic_": false
+    }
+  ],
+  "_PendingGameObjectsToRemove_": [],
+  "_IsEnable_": true,
+  "_Name_": "Other Scene",
+  "_Id_": "0be52543-25ba-4131-8159-4d80670a9f82",
+  "_Tag_": "Scene",
+  "_GameObjects_": []
+}

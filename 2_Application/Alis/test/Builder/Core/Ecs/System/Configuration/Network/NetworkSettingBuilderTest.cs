@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.System.Setting.Network;
 using Alis.Core.Ecs.System.Configuration.Network;
 using Xunit;
@@ -37,8 +36,7 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration.Network
     /// <summary>
     ///     The network setting builder test class
     /// </summary>
-    	  
-	 public class NetworkSettingBuilderTest 
+    public class NetworkSettingBuilderTest
     {
         /// <summary>
         ///     Tests that network setting builder default constructor valid input

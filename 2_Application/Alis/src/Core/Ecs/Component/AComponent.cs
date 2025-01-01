@@ -51,12 +51,6 @@ namespace Alis.Core.Ecs.Component
         public Context Context => GameObject.Context;
 
         /// <summary>
-        ///     Clones this instance
-        /// </summary>
-        /// <returns>The object</returns>
-        public virtual object Clone() => MemberwiseClone();
-
-        /// <summary>
         ///     Gets or sets the value of the is enable
         /// </summary>
         [JsonPropertyName("_IsEnable_")]
@@ -263,6 +257,12 @@ namespace Alis.Core.Ecs.Component
         /// </summary>
         /// <param name="path">The path</param>
         public virtual void OnLoad(string path) => Logger.Trace();
+
+        /// <summary>
+        ///     Clones this instance
+        /// </summary>
+        /// <returns>The object</returns>
+        public virtual object Clone() => MemberwiseClone();
 
         /// <summary>
         ///     Ons the collision stay using the specified game object

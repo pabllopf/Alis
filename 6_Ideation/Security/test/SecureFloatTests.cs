@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Core.Aspect.Security.Test
@@ -35,8 +34,7 @@ namespace Alis.Core.Aspect.Security.Test
     /// <summary>
     ///     The secure float tests class
     /// </summary>
-    	  
-	 public class SecureFloatTests 
+    public class SecureFloatTests
     {
         /// <summary>
         ///     Tests that test secure float constructor
@@ -96,7 +94,7 @@ namespace Alis.Core.Aspect.Security.Test
             SecureFloat secureFloat2 = 20.0f;
             Assert.Equal(30.0f, (float) (secureFloat1 + secureFloat2));
         }
-        
+
         /// <summary>
         ///     Tests that test secure float multiplication operator
         /// </summary>
@@ -230,7 +228,7 @@ namespace Alis.Core.Aspect.Security.Test
             // Assert
             Assert.Equal(9f, (float) secureFloat);
         }
-        
+
         /// <summary>
         ///     Tests that test subtraction
         /// </summary>

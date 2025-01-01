@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.System.Setting.General;
 using Alis.Core.Ecs.System.Configuration.General;
 using Xunit;
@@ -37,8 +36,7 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration.General
     /// <summary>
     ///     The general setting builder test class
     /// </summary>
-    	  
-	 public class GeneralSettingBuilderTest 
+    public class GeneralSettingBuilderTest
     {
         /// <summary>
         ///     Tests that general setting builder default constructor valid input

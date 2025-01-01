@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Reflection;
 using System.Text;
@@ -43,8 +42,7 @@ namespace Alis.Core.Network.Test
     /// <summary>
     ///     The ping pong manager test class
     /// </summary>
-    	  
-	 public class PingPongManagerTest 
+    public class PingPongManagerTest
     {
         /// <summary>
         ///     Tests that send ping valid input

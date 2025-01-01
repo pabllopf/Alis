@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Alis.Core.Graphic.Test.Sdl2
@@ -35,8 +34,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
     /// <summary>
     ///     The native sdl test class
     /// </summary>
-    	  
-	 public class NativeSdlTest 
+    public class NativeSdlTest
     {
         /// <summary>
         ///     Tests that test

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
@@ -36,8 +35,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
     /// <summary>
     ///     The vector test class
     /// </summary>
-    	  
-	 public class Vector2FTest 
+    public class Vector2FTest
     {
         /// <summary>
         ///     Tests that vector 2 addition

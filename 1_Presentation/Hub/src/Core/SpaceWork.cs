@@ -379,8 +379,6 @@ namespace Alis.App.Hub.Core
             SdlController.OnEndRender();
             OpenGlController.OnEndRender();
             ImGuiController.OnEndRender();
-            
-            
         }
 
         /// <summary>
@@ -391,7 +389,7 @@ namespace Alis.App.Hub.Core
             SdlController.OnDestroy();
             OpenGlController.OnDestroy();
             ImGuiController.OnDestroy();
-            
+
             HubWindow.OnDestroy();
 
 
@@ -418,7 +416,7 @@ namespace Alis.App.Hub.Core
             SdlController.OnInit();
             OpenGlController.OnInit();
             ImGuiController.OnInit();
-            
+
             HubWindow.OnInit();
         }
 
@@ -430,7 +428,7 @@ namespace Alis.App.Hub.Core
             SdlController.OnStart();
             OpenGlController.OnStart();
             ImGuiController.OnStart();
-            
+
             HubWindow.OnStart();
         }
     }

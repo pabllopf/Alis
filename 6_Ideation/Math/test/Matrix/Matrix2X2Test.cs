@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
@@ -37,8 +36,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
     /// <summary>
     ///     The matrix test class
     /// </summary>
-    	  
-	 public class Matrix2X2Test 
+    public class Matrix2X2Test
     {
         /// <summary>
         ///     Tests that matrix 2 x 2 constructor should set values correctly
@@ -98,9 +96,8 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Assert.Equal(0.0f, matrix.Ey.X);
             Assert.Equal(0.0f, matrix.Ey.Y);
         }
-        
 
-       
+
         /// <summary>
         ///     Tests that matrix 2 x 2 operator add should return correct result
         /// </summary>

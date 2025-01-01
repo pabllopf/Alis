@@ -48,7 +48,7 @@ namespace Alis.Extension.Updater.Sample
             Logger.LogLevel = LogLevel.Trace;
             Logger.Log("Start sample program");
 
-            string api = $"https://api.github.com/repos/pabllopf/alis/releases";
+            string api = "https://api.github.com/repos/pabllopf/alis/releases";
             GitHubApiService gitHubApiService = new GitHubApiService(api);
             FileService fileService = new FileService();
             string pathProgram = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin");

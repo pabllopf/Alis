@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Network.Exceptions;
 using Xunit;
 
@@ -36,8 +35,7 @@ namespace Alis.Core.Network.Test.Exceptions
     /// <summary>
     ///     The mask key length exception test class
     /// </summary>
-    	  
-	 public class MaskKeyLengthExceptionTest 
+    public class MaskKeyLengthExceptionTest
     {
         /// <summary>
         ///     Tests that mask key length exception default constructor

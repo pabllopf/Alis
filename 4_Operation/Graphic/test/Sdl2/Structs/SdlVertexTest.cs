@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Point;
@@ -39,8 +38,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
     /// <summary>
     ///     The sdl vertex test class
     /// </summary>
-    	  
-	 public class SdlVertexTest 
+    public class SdlVertexTest
     {
         /// <summary>
         ///     Tests that sdl vertex has correct field count

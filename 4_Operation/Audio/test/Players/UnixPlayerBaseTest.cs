@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using Alis.Core.Audio.Test.Players.Attributes;
 using Alis.Core.Audio.Test.Players.Samples;
@@ -38,8 +37,7 @@ namespace Alis.Core.Audio.Test.Players
     /// <summary>
     ///     The unix player base test class
     /// </summary>
-    	  
-	 public class UnixPlayerBaseTest 
+    public class UnixPlayerBaseTest
     {
         /// <summary>
         ///     Tests that test method
