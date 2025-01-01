@@ -6,7 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{0F6ED8BC-329E-4716-8419-C8C94377C8BE}"
 	ProjectSection(SolutionItems) = preProject
 		.config\Config.props = .config\Config.props
-		.config\Default_csproj.props = .config\Default_csproj.props
+		.config\default_csproj.props = .config\default_csproj.props
 		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
