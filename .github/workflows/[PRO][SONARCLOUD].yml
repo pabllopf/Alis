@@ -62,7 +62,7 @@ jobs:
           
           dotnet-coverage collect "dotnet test --no-restore -c Release -f net8.0 .\\alis.sln" -f xml -o "coverage.xml"
           
-          dotnet sonarscanner end /d:sonar.token="<sonar-token>"
+          dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
 
 
           
