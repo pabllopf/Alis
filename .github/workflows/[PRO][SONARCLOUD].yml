@@ -57,7 +57,6 @@ jobs:
 
       # 7. Run tests
       - name: Run tests
-        shell: powershell
         run: |
           dotnet tool install --global dotnet-coverage
           dotnet tool install --global coverlet.console
