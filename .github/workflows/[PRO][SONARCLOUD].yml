@@ -48,5 +48,6 @@ jobs:
         args: >
           -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
           -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
+          -Dsonar.scanner.skipJreProvisioning=true
           -Dsonar.cs.vscoveragexml.reportsPaths=coverage.xml
           -Dsonar.verbose=true
