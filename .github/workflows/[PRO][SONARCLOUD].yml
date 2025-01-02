@@ -68,17 +68,17 @@ jobs:
           # Install coverage and coverlet
           dotnet tool install --global dotnet-coverage
           dotnet tool install --global coverlet.console
-          
+
           # Build the project with .NET 6.0
           dotnet build --no-incremental -c Debug -f net6.0 .\\alis.sln
           
           # Run tests and collect coverage with .NET 6.0
-          dotnet test --no-build -c Debug -f net6.0 --collect:"XPlat Code Coverage" .\\alis.sln
+          dotnet-coverage collect "dotnet test --no-build -c Debug -f net6.0" -f xml -o "coverage.xml"
           
           # Run SonarCloud Scanner with coverage results
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths="coverage.xml"
           
-          # Build the project again (only necessary if there are changes after tests)
+          # Build the project with .NET 6.0
           dotnet build --no-incremental -c Debug -f net6.0 .\\alis.sln
           
           # End SonarCloud analysis
