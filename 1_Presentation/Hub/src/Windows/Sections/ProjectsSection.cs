@@ -43,6 +43,7 @@ using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Native;
+using Alis.Extension.Io.FileDialog;
 
 namespace Alis.App.Hub.Windows.Sections
 {
@@ -99,7 +100,10 @@ namespace Alis.App.Hub.Windows.Sections
         ///     Initializes a new instance of the <see cref="ProjectsSection" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
-        public ProjectsSection(SpaceWork spaceWork) : base(spaceWork) => fileBrowser = new FileBrowserView(new FileBrowserModel(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)));
+        public ProjectsSection(SpaceWork spaceWork) : base(spaceWork)
+        {
+            
+        }
 
         /// <summary>
         ///     Opens the project using the specified project
@@ -321,12 +325,7 @@ namespace Alis.App.Hub.Windows.Sections
         ///     The empty
         /// </summary>
         private string editorVersion = string.Empty;
-
-        /// <summary>
-        ///     The file browser
-        /// </summary>
-        private readonly FileBrowserView fileBrowser;
-
+        
         /// <summary>
         ///     Renders the create project popup
         /// </summary>
@@ -350,12 +349,11 @@ namespace Alis.App.Hub.Windows.Sections
 
                 if (ImGui.Button($"{FontAwesome5.Folder}## Browse"))
                 {
-                    ImGui.OpenPopup("File Browser");
+                    // DEFAULT PATH USER PATH:
+                    DialogResult result = Dialog.FolderPicker(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile));
+                    Console.WriteLine($"Path: {result.Path}, IsError {result.IsError}, IsOk {result.IsOk}, IsCancelled {result.IsCancelled}, ErrorMessage {result.ErrorMessage}");
                 }
-
-                fileBrowser.Render();
-
-
+                
                 ImGui.Text("Editor Version:");
                 conmandPtrEditorVersion = Marshal.StringToHGlobalAnsi(editorVersion);
                 ImGui.InputText("##EditorVersion", conmandPtrEditorVersion, 50);
