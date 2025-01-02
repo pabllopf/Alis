@@ -1,21 +1,21 @@
-namespace NativeFileDialogSharp.Native
+﻿namespace Alis.Extension.Io.FileDialog.Native
 {
     /// <summary>
     /// The nfdresult enum
     /// </summary>
-    public enum nfdresult_t
+    public enum NfdresultT
     {
         /// <summary>
         /// The nfd error nfdresult
         /// </summary>
-        NFD_ERROR,
+        NfdError,
         /// <summary>
         /// The nfd okay nfdresult
         /// </summary>
-        NFD_OKAY,
+        NfdOkay,
         /// <summary>
         /// The nfd cancel nfdresult
         /// </summary>
-        NFD_CANCEL
+        NfdCancel
     }
 }

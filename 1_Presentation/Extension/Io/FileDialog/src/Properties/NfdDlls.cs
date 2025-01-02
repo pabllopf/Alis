@@ -27,21 +27,17 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Data.Dll;
-
-namespace Alis.Extension.Graphic.ImGui.Properties
+namespace Alis.Extension.Io.FileDialog.Properties
 {
     /// <summary>
     ///     The im gui dlls class
     /// </summary>
-    public static class ImGuiDlls
+    public static class NfdDlls
     {
         /// <summary>
         ///     The resource path
         /// </summary>
-        private static readonly string ResourcePath = "Alis.Extension.Graphic.ImGui.resources";
+        private static readonly string ResourcePath = "Alis.Extension.Io.FileDialog.resources";
 
         /// <summary>
         ///     The 86

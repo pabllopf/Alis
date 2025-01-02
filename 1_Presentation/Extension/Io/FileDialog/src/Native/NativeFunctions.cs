@@ -1,7 +1,4 @@
-using System;
-using System.Runtime.InteropServices;
-
-namespace NativeFileDialogSharp.Native
+﻿namespace Alis.Extension.Io.FileDialog.Native
 {
     /// <summary>
     /// The native functions class
@@ -21,7 +18,7 @@ namespace NativeFileDialogSharp.Native
         /// <param name="outPath">The out path</param>
         /// <returns>The nfdresult</returns>
         [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-        public static extern unsafe nfdresult_t NFD_OpenDialog(byte* filterList, byte* defaultPath, out IntPtr outPath);
+        public static extern unsafe NfdresultT NFD_OpenDialog(byte* filterList, byte* defaultPath, out IntPtr outPath);
 
         /// <summary>
         /// Nfds the open dialog multiple using the specified filter list
@@ -31,8 +28,8 @@ namespace NativeFileDialogSharp.Native
         /// <param name="outPaths">The out paths</param>
         /// <returns>The nfdresult</returns>
         [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-        public static extern unsafe nfdresult_t NFD_OpenDialogMultiple(byte* filterList, byte* defaultPath,
-            nfdpathset_t* outPaths);
+        public static extern unsafe NfdresultT NFD_OpenDialogMultiple(byte* filterList, byte* defaultPath,
+            NfdpathsetT* outPaths);
 
         /// <summary>
         /// Nfds the save dialog using the specified filter list
@@ -42,7 +39,7 @@ namespace NativeFileDialogSharp.Native
         /// <param name="outPath">The out path</param>
         /// <returns>The nfdresult</returns>
         [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-        public static extern unsafe nfdresult_t NFD_SaveDialog(byte* filterList, byte* defaultPath, out IntPtr outPath);
+        public static extern unsafe NfdresultT NFD_SaveDialog(byte* filterList, byte* defaultPath, out IntPtr outPath);
 
         /// <summary>
         /// Nfds the pick folder using the specified default path
@@ -51,7 +48,7 @@ namespace NativeFileDialogSharp.Native
         /// <param name="outPath">The out path</param>
         /// <returns>The nfdresult</returns>
         [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-        public static extern unsafe nfdresult_t NFD_PickFolder(byte* defaultPath, out IntPtr outPath);
+        public static extern unsafe NfdresultT NFD_PickFolder(byte* defaultPath, out IntPtr outPath);
 
         /// <summary>
         /// Nfds the get error
@@ -66,7 +63,7 @@ namespace NativeFileDialogSharp.Native
         /// <param name="pathSet">The path set</param>
         /// <returns>The int ptr</returns>
         [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-        public static extern unsafe UIntPtr NFD_PathSet_GetCount(nfdpathset_t* pathSet);
+        public static extern unsafe UIntPtr NFD_PathSet_GetCount(NfdpathsetT* pathSet);
 
         /// <summary>
         /// Nfds the path set get path using the specified path set
@@ -75,14 +72,14 @@ namespace NativeFileDialogSharp.Native
         /// <param name="index">The index</param>
         /// <returns>The byte</returns>
         [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-        public static extern unsafe byte* NFD_PathSet_GetPath(nfdpathset_t* pathSet, UIntPtr index);
+        public static extern unsafe byte* NFD_PathSet_GetPath(NfdpathsetT* pathSet, UIntPtr index);
 
         /// <summary>
         /// Nfds the path set free using the specified path set
         /// </summary>
         /// <param name="pathSet">The path set</param>
         [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-        public static extern unsafe void NFD_PathSet_Free(nfdpathset_t* pathSet);
+        public static extern unsafe void NFD_PathSet_Free(NfdpathsetT* pathSet);
 
         /// <summary>
         /// Nfds the dummy
