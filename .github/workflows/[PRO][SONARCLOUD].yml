@@ -21,11 +21,10 @@ jobs:
           ref: master
           fetch-depth: 0
 
-      - name: setup
+      - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: |
-            6.0.420
+          dotnet-version: 6.0.420
 
       - name: Install FFmpeg
         run: |
@@ -59,11 +58,11 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          # Install coverage and coverlet
+          # Install coverage tools
           dotnet tool install --global dotnet-coverage
           dotnet tool install --global coverlet.console
           dotnet tool install --global JetBrains.dotCover.GlobalTool
-          
+
           # Start SonarCloud analysis
           .\.sonar\scanner\dotnet-sonarscanner begin `
             /k:"pabllopf_Alis" `
@@ -71,15 +70,15 @@ jobs:
             /d:sonar.scanner.scanAll=false `
             /d:sonar.token="${{ secrets.SONAR_TOKEN }}" `
             /d:sonar.host.url="https://sonarcloud.io" `
-            /d:sonar.cs.dotcover.reportsPaths="dotCover.Output.html"
+            /d:sonar.cs.dotcover.reportsPaths="dotCover.Output.xml"
           
           # Build the project
           dotnet build --no-incremental -c Release -f net6.0
           
-          # Run tests with dotCover
+          # Run tests with dotCover (XML report)
           dotnet dotcover test `
-            --dcReportType=HTML `
-            --dcOutput="dotCover.Output.html"
+            --dcReportType=XML `
+            --dcOutput="dotCover.Output.xml"
           
           # End SonarCloud analysis
           .\.sonar\scanner\dotnet-sonarscanner end `
