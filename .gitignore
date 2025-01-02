@@ -74,3 +74,4 @@
 *FodyWeavers.xml
 *FodyWeavers.xsd
 *.htm
+/.sonarqube

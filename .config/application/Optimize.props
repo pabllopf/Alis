@@ -2,19 +2,5 @@
 <Project>
     <PropertyGroup>
         <Optimize>true</Optimize>
-        <SelfContained>true</SelfContained>
-        <GenerateDocumentationFile>false</GenerateDocumentationFile>
-        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-        <DebugSymbols>false</DebugSymbols>
-        <DebugType>none</DebugType>
-        <EnableDefaultLinkAttributes>true</EnableDefaultLinkAttributes>
-        <RemoveUnusedReferences>true</RemoveUnusedReferences>
-        <EnableUnsafeBinaryFormatterSerialization>false</EnableUnsafeBinaryFormatterSerialization>
-        <EnableDynamicCode>false</EnableDynamicCode>
-        <GenerateDepsFile>false</GenerateDepsFile>
-        <SuppressTrimAnalysisWarnings>true</SuppressTrimAnalysisWarnings>
-        <CopyOutputSymbolsToPublishDirectory>false</CopyOutputSymbolsToPublishDirectory>
-        <CopyOutputSymbolsToOutputDirectory>false</CopyOutputSymbolsToOutputDirectory>
-        <IncludeNativeLibrariesForSelfExtract>false</IncludeNativeLibrariesForSelfExtract>
     </PropertyGroup>
 </Project>
