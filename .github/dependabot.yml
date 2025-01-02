@@ -1,12 +1,10 @@
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for all configuration options:
-# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
-
+# Dependabot configuration file for version updates
 version: 2
 updates:
-  - package-ecosystem: "" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  - package-ecosystem: "nuget" # Ecosystem for C#
+    directory: "/" # Root directory or adjust to where your .csproj files are located
     schedule:
-      interval: "weekly"
-      
+      interval: "weekly" # Frequency of updates (daily, weekly, or monthly)
+    commit-message:
+      prefix: "deps" # Prefix for the commit messages
+      include: "scope" # Include dependency scope in the commit message
