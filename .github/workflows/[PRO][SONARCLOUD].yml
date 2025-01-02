@@ -33,6 +33,11 @@ jobs:
             6.0.420
             7.0.408
             8.0.202
+            9.x.x
+            
+      - name: install
+        run: |
+          choco install ffmpeg -y
 
       - name: Cache SonarCloud packages
         uses: actions/cache@v4
