@@ -1,4 +1,6 @@
-﻿namespace Alis.Extension.Io.FileDialog.Native
+﻿using System;
+
+namespace Alis.Extension.Io.FileDialog.Native
 {
     /// <summary>
     /// The nfdpathset

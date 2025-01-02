@@ -27,6 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Data.Dll;
+
 namespace Alis.Extension.Io.FileDialog.Properties
 {
     /// <summary>
@@ -102,22 +106,22 @@ namespace Alis.Extension.Io.FileDialog.Properties
         /// <summary>
         ///     The arm
         /// </summary>
-        internal static readonly Dictionary<PlatformInfo, string> ImGuiDllBytes = new Dictionary<PlatformInfo, string>
+        internal static readonly Dictionary<PlatformInfo, string> NfdDllBytes = new Dictionary<PlatformInfo, string>
         {
-            {WinX86, $"{ResourcePath}.win_x86.win-x86_cimgui.zip"},
-            {WinX64, $"{ResourcePath}.win_x64.win-x64_cimgui.zip"},
-            {WinArm, $"{ResourcePath}.win_arm.win-arm_cimgui.zip"},
-            {WinArm64, $"{ResourcePath}.win_arm64.win-arm64_cimgui.zip"},
+            {WinX86, $"{ResourcePath}.win_x86.win-x86_nfd.zip"},
+            {WinX64, $"{ResourcePath}.win_x64.win-x64_nfd.zip"},
+            {WinArm, $"{ResourcePath}.win_arm.win-arm_nfd.zip"},
+            {WinArm64, $"{ResourcePath}.win_arm64.win-arm64_nfd.zip"},
 
-            {LinuxX86, $"{ResourcePath}.linux_x86.linux-x86_cimgui.zip"},
-            {LinuxX64, $"{ResourcePath}.linux_x64.linux-x64_cimgui.zip"},
-            {LinuxArm, $"{ResourcePath}.linux_arm.linux-arm_cimgui.zip"},
-            {LinuxArm64, $"{ResourcePath}.linux_arm64.linux-arm64_cimgui.zip"},
+            {LinuxX86, $"{ResourcePath}.linux_x86.linux-x86_nfd.zip"},
+            {LinuxX64, $"{ResourcePath}.linux_x64.linux-x64_nfd.zip"},
+            {LinuxArm, $"{ResourcePath}.linux_arm.linux-arm_nfd.zip"},
+            {LinuxArm64, $"{ResourcePath}.linux_arm64.linux-arm64_nfd.zip"},
 
-            {OsxX86, $"{ResourcePath}.osx_x86.osx-x86_cimgui.zip"},
-            {OsxX64, $"{ResourcePath}.osx_x64.osx-x64_cimgui.zip"},
-            {OsxArm64, $"{ResourcePath}.osx_arm64.osx-arm64_cimgui.zip"},
-            {OsxArm, $"{ResourcePath}.osx_arm.osx-arm_cimgui.zip"}
+            {OsxX86, $"{ResourcePath}.osx_x86.osx-x86_nfd.zip"},
+            {OsxX64, $"{ResourcePath}.osx_x64.osx-x64_nfd.zip"},
+            {OsxArm64, $"{ResourcePath}.osx_arm64.osx-arm64_nfd.zip"},
+            {OsxArm, $"{ResourcePath}.osx_arm.osx-arm_nfd.zip"}
         };
     }
 }
