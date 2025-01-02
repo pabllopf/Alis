@@ -15,8 +15,14 @@ namespace Alis.Extension.Io.FileDialog
     /// </summary>
     public static class Dialog
     {
+        /// <summary>
+        /// The native lib name
+        /// </summary>
         public const string NativeLibName = "nfd";
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Dialog"/> class
+        /// </summary>
         static Dialog() => EmbeddedDllClass.ExtractEmbeddedDlls("nfd", DllType.Lib, NfdDlls.NfdDllBytes, Assembly.GetAssembly(typeof(Dialog)));
 
         /// <summary>
