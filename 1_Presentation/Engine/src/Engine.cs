@@ -1220,6 +1220,7 @@ namespace Alis.App.Engine
             {
                 ImDrawListPtr cmdList = drawData.CmdListsRange[n];
 
+                
                 // Upload vertex/index buffers
                 Gl.GlBufferData(BufferTarget.ArrayBuffer, (IntPtr) (cmdList.VtxBuffer.Size * drawVertSize), cmdList.VtxBuffer.Data, BufferUsageHint.StreamDraw);
                 Gl.GlBufferData(BufferTarget.ElementArrayBuffer, (IntPtr) (cmdList.IdxBuffer.Size * drawIdxSize), cmdList.IdxBuffer.Data, BufferUsageHint.StreamDraw);
