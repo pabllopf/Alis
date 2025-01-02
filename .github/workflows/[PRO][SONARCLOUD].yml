@@ -8,7 +8,7 @@ on:
       - develop
       - 'releases/**'
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [ opened, synchronize, reopened ]
 
 jobs:
   build-and-analyze:
@@ -46,13 +46,16 @@ jobs:
             7.0.408
             8.0.202
             9.x.x
-            
+
       - name: SonarQube Scan
         run: |
           dotnet tool install --global coverlet.console --version 6.0.3
           dotnet tool install --global dotnet-sonarscanner --version 8.0.2
 
           dotnet sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.scanner.scanAll=false /d:sonar.host.url="https://sonarcloud.io" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.scanner.skipJreProvisioning=true /d:sonar.language=cs /d:sonar.dotnet.version=8.0 /d:sonar.verbose=true /d:sonar.cs.opencover.reportsPaths="./.test/**/*.opencover.xml"
+
           dotnet build --no-incremental -c Release -f net8.0 ./alis.sln
+          
           dotnet test --no-build -f net8.0 -c Release ./alis.sln --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+
           dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"

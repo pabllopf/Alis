@@ -38,7 +38,6 @@ using System.Threading.Tasks;
 using Alis.App.Engine.Fonts;
 using Alis.App.Hub.Core;
 using Alis.App.Hub.Entity;
-using Alis.App.Hub.Utils;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.ImGui;
@@ -102,7 +101,6 @@ namespace Alis.App.Hub.Windows.Sections
         /// <param name="spaceWork">The space work</param>
         public ProjectsSection(SpaceWork spaceWork) : base(spaceWork)
         {
-            
         }
 
         /// <summary>
@@ -325,7 +323,7 @@ namespace Alis.App.Hub.Windows.Sections
         ///     The empty
         /// </summary>
         private string editorVersion = string.Empty;
-        
+
         /// <summary>
         ///     Renders the create project popup
         /// </summary>
@@ -353,7 +351,7 @@ namespace Alis.App.Hub.Windows.Sections
                     DialogResult result = Dialog.FolderPicker(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile));
                     Console.WriteLine($"Path: {result.Path}, IsError {result.IsError}, IsOk {result.IsOk}, IsCancelled {result.IsCancelled}, ErrorMessage {result.ErrorMessage}");
                 }
-                
+
                 ImGui.Text("Editor Version:");
                 conmandPtrEditorVersion = Marshal.StringToHGlobalAnsi(editorVersion);
                 ImGui.InputText("##EditorVersion", conmandPtrEditorVersion, 50);
