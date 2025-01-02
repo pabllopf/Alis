@@ -13,22 +13,25 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: 17
-          distribution: 'zulu'
+          distribution: 'zulu' # Alternative distribution options are available.
 
-      - name: Check out code
+      - name: Check
         uses: actions/checkout@v4
         with:
           ref: master
           fetch-depth: 0
 
-      - name: Setup .NET
+      - name: setup
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 6.0.420
-
-      - name: Install FFmpeg
-        run: |
-          choco install ffmpeg -y
+          dotnet-version: |
+            3.0.103
+            3.1.426
+            5.0.408
+            6.0.420
+            7.0.408
+            8.0.202
+            9.x.x
 
       - name: Cache SonarCloud packages
         uses: actions/cache@v4
@@ -54,30 +57,19 @@ jobs:
 
       - name: Build and analyze
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          # Install coverage tools
           dotnet tool install --global dotnet-coverage
           dotnet tool install --global coverlet.console
-          dotnet tool install --global JetBrains.dotCover.GlobalTool
-
-          # Start SonarCloud analysis
-          .\.sonar\scanner\dotnet-sonarscanner begin `
-            /k:"pabllopf_Alis" `
-            /o:"pabllopf" `
-            /d:sonar.scanner.scanAll=false `
-            /d:sonar.token="${{ secrets.SONAR_TOKEN }}" `
-            /d:sonar.host.url="https://sonarcloud.io" `
-            /d:sonar.cs.dotcover.reportsPaths="dotCover.Output.xml"
           
-          # Build the project
-          dotnet build --no-incremental -c Release -f net6.0
+          # Utiliza la ruta a tu solución (.sln) en el comando dotnet build
+          dotnet build --no-incremental -c Debug -f net8.0 .\\alis.sln
           
-          # Run tests with dotCover (XML report)
-          dotnet dotcover test --dcReportType=XML --dcOutput="dotCover.Output.xml" --framework net6.0 --configuration Release
+          # Utiliza la ruta a tu solución (.sln) en el comando dotnet-coverage collect
+          dotnet-coverage collect "dotnet test -c Debug -f net8.0 .\\alis.sln" -f xml -o "coverage.xml"
           
-          # End SonarCloud analysis
-          .\.sonar\scanner\dotnet-sonarscanner end `
-            /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.dotnet.frameworkVersion="net8.0" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.scanner.scanAll=false /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
+          dotnet build --no-incremental -c Debug -f net8.0 .\\alis.sln
+          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
