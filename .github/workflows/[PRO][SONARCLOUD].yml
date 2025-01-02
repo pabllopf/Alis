@@ -63,13 +63,13 @@ jobs:
           dotnet tool install --global JetBrains.dotCover.GlobalTool
 
           # Need to compile to create temps files:
-          dotnet build -c Release -f net6.0 .\\alis.sln
+          dotnet build -c Release -f net6.0 ./alis.sln
             
           # Run SonarCloud Scanner with coverage results
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.scanner.scanAll=false /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.dotcover.reportsPaths=dotCover.Output.html
           
           # Build the project with .NET 6.0
-          dotnet build –no-incremental -c Release -f net6.0 .\\alis.sln
+          dotnet build –no-incremental -c Release -f net6.0 ./alis.sln
           dotnet dotcover test --dcReportType=HTML
           
           # End SonarCloud analysis
