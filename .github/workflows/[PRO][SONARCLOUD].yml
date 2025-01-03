@@ -61,9 +61,9 @@ jobs:
           
           dotnet sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.scanner.skipJreProvisioning=true /d:sonar.scanner.scanAll=true /d:sonar.language=cs /d:sonar.dotnet.version=8.0 /d:sonar.cs.ignoreHeaderComments=true /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml /d:sonar.verbose=true
 
-          dotnet build --no-incremental
+          dotnet build --no-incremental -c Release -f net8.0 .\\alis.sln
           
-          dotnet-coverage collect "dotnet test" -f xml -o "coverage.xml"
+          dotnet-coverage collect "dotnet test -c Release -f net8.0 .\\alis.sln" -f xml -o "coverage.xml"
           
           dotnet sonarscanner end /d:sonar.token="<sonar-token>"
 
