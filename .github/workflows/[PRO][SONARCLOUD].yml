@@ -25,33 +25,17 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: |
+            3.0.103
+            3.1.426
+            5.0.408
             6.0.420
+            7.0.408
+            8.0.202
+            9.x.x
 
       - name: Install FFmpeg
         run: |
           choco install ffmpeg -y
-
-      - name: Cache SonarCloud packages
-        uses: actions/cache@v4
-        with:
-          path: ~\sonar\cache
-          key: ${{ runner.os }}-sonar
-          restore-keys: ${{ runner.os }}-sonar
-
-      - name: Cache SonarCloud scanner
-        id: cache-sonar-scanner
-        uses: actions/cache@v4
-        with:
-          path: .\.sonar\scanner
-          key: ${{ runner.os }}-sonar-scanner
-          restore-keys: ${{ runner.os }}-sonar-scanner
-
-      - name: Install SonarCloud scanner
-        if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
-        shell: powershell
-        run: |
-          New-Item -Path .\.sonar\scanner -ItemType Directory
-          dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
 
       - name: Build and analyze
         env:
@@ -59,15 +43,20 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
+          New-Item -Path .\.sonar\scanner -ItemType Directory
+          dotnet tool install --global dotnet-sonarscanner --version 8.0.2 --tool-path .\.sonar\scanner
+
+          dotnet tool install --global dotnet-reportgenerator-globaltool --version 5.4.3
+          
           dotnet tool install --global dotnet-coverage
           dotnet tool install --global coverlet.console
           
-          # Utiliza la ruta a tu solución (.sln) en el comando dotnet build
-          dotnet build --no-incremental -c Debug -f net6.0 .\\alis.sln
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.dotnet.frameworkVersion="net8.0" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.scanner.scanAll=false /d:sonar.coverageReportPaths=".\sonarqubecoverage\SonarQube.xml"
           
-          # Utiliza la ruta a tu solución (.sln) en el comando dotnet-coverage collect
-          dotnet-coverage collect "dotnet test -c Debug -f net6.0 .\\alis.sln" -f xml -o "coverage.xml"
+          dotnet build -c Release -f net8.0 .\\alis.sln
+
+          dotnet test --no-build --collect:"XPlat Code Coverage" -c Release -f net8.0 .\\alis.sln
           
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.dotnet.frameworkVersion="net6.0" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.scanner.scanAll=false /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
-          dotnet build --no-incremental -c Debug -f net6.0 .\\alis.sln
+          reportgenerator "-reports:*\TestResults\*\coverage.cobertura.xml" "-targetdir:sonarqubecoverage" "-reporttypes:SonarQube"
+          
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
