@@ -44,7 +44,7 @@ jobs:
         shell: powershell
         run: |
           New-Item -Path .\.sonar\scanner -ItemType Directory
-          dotnet tool install --global dotnet-sonarscanner --version 8.0.2 --tool-path .\.sonar\scanner
+          dotnet tool install dotnet-sonarscanner --version 8.0.2 --tool-path .\.sonar\scanner
 
           dotnet tool install --global dotnet-reportgenerator-globaltool --version 5.4.3
           
