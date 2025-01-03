@@ -76,7 +76,6 @@ jobs:
               /d:sonar.scanner.scanAll=true
               /d:sonar.language=cs
               /d:sonar.dotnet.version=8.0
-              /d:sonar.exclusions=**/bin/**,**/obj/**,**/lib/**,**/docs/**,**/test/**,**/sample/**,**/*.generated.cs,**/*.props,**/*.md,**/*.zip,**/*.nuget,**/*.Config
               /d:sonar.cs.ignoreHeaderComments=true
               /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
               /d:sonar.verbose=true
