@@ -46,13 +46,6 @@ jobs:
             8.0.202
             9.x.x
             
-      # 7. Run tests
-      - name: Run tests
-        run: |
-          dotnet tool install --global dotnet-coverage
-          
-          
-
       - name: SonarQube Scan
         run: |
           dotnet tool install --global dotnet-coverage --version 17.13.1
