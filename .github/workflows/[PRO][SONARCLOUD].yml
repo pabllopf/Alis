@@ -57,7 +57,13 @@ jobs:
 
       # 7. Run tests
       - name: Run tests
-        run: dotnet-coverage collect "dotnet test -c Release -f net8.0 .\\alis.sln" -f xml -o "coverage.xml"
+        shell: powershell
+        run: |
+          dotnet tool install --global dotnet-coverage
+          dotnet tool install --global coverlet.console
+
+          # Utiliza la ruta a tu solución (.sln) en el comando dotnet-coverage collect
+          dotnet-coverage collect "dotnet test -c Release -f net8.0 .\\alis.sln" -f xml -o "coverage.xml"
 
       # 8. SonarQube Scan
       - name: SonarQube Scan
