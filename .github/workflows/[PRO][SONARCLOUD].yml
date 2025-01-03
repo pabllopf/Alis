@@ -25,13 +25,7 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: |
-            3.0.103
-            3.1.426
-            5.0.408
             6.0.420
-            7.0.408
-            8.0.202
-            9.x.x
 
       - name: Install FFmpeg
         run: |
@@ -69,11 +63,11 @@ jobs:
           dotnet tool install --global coverlet.console
           
           # Utiliza la ruta a tu solución (.sln) en el comando dotnet build
-          dotnet build --no-incremental -c Debug -f net8.0 .\\alis.sln
+          dotnet build --no-incremental -c Debug -f net6.0 .\\alis.sln
           
           # Utiliza la ruta a tu solución (.sln) en el comando dotnet-coverage collect
-          dotnet-coverage collect "dotnet test -c Debug -f net8.0 .\\alis.sln" -f xml -o "coverage.xml"
+          dotnet-coverage collect "dotnet test -c Debug -f net6.0 .\\alis.sln" -f xml -o "coverage.xml"
           
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.dotnet.frameworkVersion="net8.0" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.scanner.scanAll=false /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
-          dotnet build --no-incremental -c Debug -f net8.0 .\\alis.sln
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.dotnet.frameworkVersion="net6.0" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.scanner.scanAll=false /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
+          dotnet build --no-incremental -c Debug -f net6.0 .\\alis.sln
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
