@@ -12,7 +12,7 @@ on:
 
 jobs:
   build-and-analyze:
-    runs-on: windows-latest
+    runs-on: macOS-13
 
     steps:
       # 1. Checkout code
@@ -22,9 +22,10 @@ jobs:
           fetch-depth: 0
 
       # 2. Install SDL2 and ffmpeg dependencies
-      - name: Install dependencies
+      - name: install
         run: |
-          choco install ffmpeg -y
+          brew install sdl2 sdl2_image sdl2_ttf ffmpeg
+          brew link ffmpeg
 
       # 3. Set up JDK 17
       - name: Set up JDK 17
@@ -50,18 +51,16 @@ jobs:
         run: |
           dotnet tool install --global dotnet-coverage --version 17.13.1
           dotnet tool install --global dotnet-sonarscanner --version 8.0.2
+          dotnet tool install --global dotnet-reportgenerator-globaltool --version 5.4.3
 
-          dotnet build  -c Release -f net8.0 .\\alis.sln
+          dotnet build --no-incremental -c Release -f net8.0 ./alis.sln
+          
+          dotnet sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.scanner.scanAll=false /d:sonar.host.url="https://sonarcloud.io" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.scanner.skipJreProvisioning=true /d:sonar.language=cs /d:sonar.dotnet.version=8.0 /d:sonar.cs.ignoreHeaderComments=true /d:sonar.verbose=true /d:sonar.cs.opencover.reportsPaths="./.test/**/*.xml"
 
-          # Utiliza la ruta a tu solución (.sln) en el comando dotnet-coverage collect
-          dotnet-coverage collect "dotnet test --no-restore -c Release -f net8.0 .\\alis.sln" -f xml -o "coverage.xml"
-          
-          dotnet sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.scanner.scanAll=false /d:sonar.host.url="https://sonarcloud.io" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.scanner.skipJreProvisioning=true /d:sonar.language=cs /d:sonar.dotnet.version=8.0 /d:sonar.cs.ignoreHeaderComments=true /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml /d:sonar.verbose=true
+          dotnet build --no-incremental -c Release -f net8.0 ./alis.sln
 
-          dotnet build --no-restore --no-incremental -c Release -f net8.0 .\\alis.sln
-          
-          dotnet-coverage collect "dotnet test --no-restore -c Release -f net8.0 .\\alis.sln" -f xml -o "coverage.xml"
-          
+          dotnet test --no-build -f net8.0 -c Release ./alis.sln --collect "XPlat Code Coverage;Format=opencover" 
+
           dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
 
 
