@@ -13,7 +13,7 @@
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_Alis&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=pabllopf_Alis)
 ![GitHub issues](https://img.shields.io/github/issues/pabllopf/alis?label=Open%20Tickets&color=green)
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20OSX%20%7C%20Linux%20%7C%20IOS(soon)%20%7C%20Android(soon)%20-blue)](https://img.shields.io/badge/platform-Windows%20%7C%20OSX%20%7C%20Linux%20%7C%20IOS(soon)%20%7C%20Android(soon)%20-blue)
-[![Release](https://img.shields.io/github/release/pabllopf/alis.svg)](https://github.com/pabllopf/alis/releases/latest)
+[![Release](https://img.shields.io/github/v/release/pabllopf/alis?color=green)](https://github.com/pabllopf/alis/releases/latest)
 [![License](https://img.shields.io/badge/license-GPL%20v3.0-blue)](https://github.com/pabllopf/Alis/blob/main/LICENSE)
 ![GitHub all releases](https://img.shields.io/github/downloads/pabllopf/alis/total?label=github%20downloads&color=blue)
 [![Visitors](https://visitor-badge.laobi.icu/badge?page_id=pabllopf.alis)](https://visitor-badge.laobi.icu/badge?page_id=pabllopf.alis)
