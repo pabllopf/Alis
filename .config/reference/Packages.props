@@ -14,18 +14,8 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-
-        <PackageReference Include="OpenCover" Version="4.7.1221" />
-
-        <Content Include="$(SolutionDir).config/xunit.runner.json" LinkBase="." Pack="true" Visible="true" PackagePath=".">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
     </ItemGroup>
-
-    <PropertyGroup Condition="$(AssemblyName.Contains('Test')) == true">
-        <IsTestProject>true</IsTestProject>
-    </PropertyGroup>
-
+    
     <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Payment.Stripe'))">
         <PackageReference Include="Stripe.net" Version="47.1.0"/>
     </ItemGroup>
