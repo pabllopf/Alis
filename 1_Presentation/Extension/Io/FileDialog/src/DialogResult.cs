@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Alis.Extension.Io.FileDialog.Native;
 
 namespace Alis.Extension.Io.FileDialog

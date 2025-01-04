@@ -1,4 +1,4 @@
-﻿namespace Alis.Extension.Io.FileDialog.Native
+namespace Alis.Extension.Io.FileDialog.Native
 {
     /// <summary>
     /// The nfdresult enum
