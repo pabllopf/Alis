@@ -1,6 +1,6 @@
 <Project>
     <ItemGroup Condition="$(AssemblyName.Contains('Test')) == true">
-        
+
         <!-- Test packs -->
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1"/>
         <PackageReference Include="xunit" Version="2.6.6"/>
@@ -9,13 +9,13 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        
+
         <PackageReference Include="coverlet.collector" Version="6.0.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
     </ItemGroup>
-    
+
     <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Payment.Stripe'))">
         <PackageReference Include="Stripe.net" Version="47.1.0"/>
     </ItemGroup>

@@ -140,7 +140,7 @@ namespace Alis.Extension.Graphic.OpenGL.Sample
             try
             {
                 IntPtr pointer = handle.AddrOfPinnedObject();
-                Gl.GlBufferData(BufferTarget.ArrayBuffer, (IntPtr) (vertices.Length * sizeof(float)), pointer, BufferUsageHint.StaticDraw);
+                Gl.GlBufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), pointer, BufferUsageHint.StaticDraw);
             }
             finally
             {
