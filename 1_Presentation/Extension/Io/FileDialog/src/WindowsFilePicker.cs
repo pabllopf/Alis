@@ -11,15 +11,17 @@ namespace Alis.Extension.Io.FileDialog
         public string ChooseFile()
         {
             // Start the process to invoke the PowerShell script that opens the file picker dialog
+            // Start the process to invoke the PowerShell script that opens the file picker dialog
             Process process = new Process();
             process.StartInfo = new ProcessStartInfo
             {
                 FileName = "powershell",
-                Arguments = "[System.Windows.Forms.OpenFileDialog]::new().ShowDialog()",
+                Arguments = "-Command \"Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.OpenFileDialog]::new().ShowDialog()\"\n",
                 RedirectStandardOutput = true,
                 UseShellExecute = false,
                 CreateNoWindow = true
             };
+
 
             // Start the process and capture its output
             process.Start();
