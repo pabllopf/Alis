@@ -14,7 +14,7 @@
 
 > Develop the video games of your dreams 💯 free!! on Windows, MacOS, Linux, Android(soon), IOS(soon).
 
-## 📚 Alis.Core.Aspect.Time
+## 📚 Alis.Core.Aspect.Thread
 - [Modular Design](#-modular-design)
 - [Description](#-description)
 - [Getting Started](#-getting-started)
@@ -27,61 +27,69 @@
 
 ### ⚙️ Modular Design
 
-> All modules within the Alis framework, including `Alis.Core.Aspect.Time`, are fully independent and can be used separately. While the primary focus of Alis is game development, these modules are designed to be versatile and can be integrated into other types of applications or environments where precise time management, event handling, or other functionalities are required.
+> All modules within the Alis framework, including `Alis.Core.Aspect.Thread`, are fully independent and can be used separately. While the primary focus of Alis is game development, these modules are designed to be versatile and can be integrated into other types of applications or environments where thread management, task execution, or concurrency handling are needed.
 
 ---
 
 ## 📖 Description
 
-`Alis.Core.Aspect.Time` is a module within the Alis framework designed for precise and flexible time management and measurement in applications. This module includes tools for tracking elapsed time, configuring fixed time intervals, controlling the speed of time progression (TimeScale), and performing time step measurements, making it ideal for physics simulations or event-driven applications.
+`Alis.Core.Aspect.Thread` is a module within the Alis framework designed to manage the execution of tasks in separate threads. This module includes classes to define tasks that run in parallel, as well as a manager to handle the lifecycle of multiple threads.
 
 ### Features:
-- **Precise Time Control**: Allows accurate measurement of elapsed time in milliseconds, seconds, and ticks.
-- **Time Scalability**: Adjust the speed of time using `TimeScale` to simulate bullet-time effects.
-- **Flexible Configuration**: Choose between fixed or variable time intervals depending on the needs of the application.
+- **Task Management**: Encapsulate tasks that can be executed in separate threads with cancellation support.
+- **Thread Management**: Manage the starting and stopping of multiple threads and track the active threads.
+- **Cancellation Support**: Gracefully handle task cancellation through the use of `CancellationToken`.
 - **Main Classes**:
-    - `Clock`: For simple and efficient tracking of elapsed time.
-    - `TimeStep`: Manages and measures time steps within the application.
-    - `TimeConfiguration`: Configures fixed time intervals, maximum allowed time, and time speed.
+    - `ThreadTask`: Encapsulates a task to be executed on a separate thread.
+    - `ThreadManager`: Manages multiple `ThreadTask` instances, starting, stopping, and tracking threads.
 
 ---
 
 ## 🚀 Getting Started
-To start using `Alis.Core.Aspect.Time`, simply install the package:
+To start using `Alis.Core.Aspect.Thread`, simply install the package:
 
 ```bash
-dotnet add package Alis.Core.Aspect.Time
+dotnet add package Alis.Core.Aspect.Thread
 ```
 
-This module is ideal for games and simulations where precise time management is critical.
+This module is ideal for applications that need to run concurrent tasks in separate threads.
 
 ### Basic Usage Example:
 
 ```csharp
 public static void Main(string[] args)
 {
-    // Create a new Clock instance
-    Clock clock = new Clock();
-    clock.Start();
+    ThreadManager threadManager = new ThreadManager();
 
-    // Create a new TimeConfiguration instance
-    TimeConfiguration timeConfig = new TimeConfiguration();
-
-    int i = 0;
-    while (i < 1000)
+    CancellationTokenSource cts1 = new CancellationTokenSource();
+    ThreadTask task1 = new ThreadTask(token =>
     {
-        Thread.Sleep(1);
-        i++;
-    }
+        for (int i = 0; (i < 10) && !token.IsCancellationRequested; i++)
+        {
+            Console.WriteLine($"Task 1 - Count: {i}");
+            System.Threading.Thread.Sleep(1000);
+        }
+    }, cts1.Token);
 
-    // Stop the clock and display the elapsed time
-    clock.Stop();
-    Console.WriteLine($"Elapsed time: {clock.ElapsedMilliseconds} ms");
+    CancellationTokenSource cts2 = new CancellationTokenSource();
+    ThreadTask task2 = new ThreadTask(token =>
+    {
+        for (int i = 0; (i < 10) && !token.IsCancellationRequested; i++)
+        {
+            Console.WriteLine($"Task 2 - Count: {i}");
+            System.Threading.Thread.Sleep(1000);
+        }
+    }, cts2.Token);
 
-    // Display some TimeManager properties
-    Console.WriteLine($"TimeScale: {timeConfig.TimeScale}");
+    threadManager.StartThread(task1);
+    threadManager.StartThread(task2);
 
-    Console.WriteLine("Press any key to continue...");
+    Console.WriteLine("Press any key to stop threads...");
+    Console.ReadKey();
+
+    threadManager.StopAllThreads();
+
+    Console.WriteLine("Press any key to exit...");
     Console.ReadKey();
 }
 ```
@@ -123,6 +131,7 @@ The ALIS framework is released under the [GNU General Public License v3 (GPL-3.0
 [![](https://img.shields.io/badge/Read%20More--blue)](https://github.com/pabllopf/Alis/blob/master/license.md)
 
 ---
+
 ## Contributor Guide
 
 Thank you for investing your time in contributing to our project! Any contribution you make will be reflected.
@@ -149,7 +158,6 @@ Read our Code of Conduct to keep our community approachable and respectable.
 <!-- readme: pabllopf -end -->
 
 ## Collaborators
-
 <!-- readme: collaborators -start -->
 <table>
 	<tbody>
