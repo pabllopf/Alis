@@ -8,6 +8,10 @@ namespace Alis.Extension.Io.FileDialog
     /// </summary>
     public class WindowsFilePicker : IFilePicker
     {
+        /// <summary>
+        /// Chooses the file
+        /// </summary>
+        /// <returns>The string</returns>
         public string ChooseFile()
         {
             // Start the process to invoke the PowerShell script that opens the file picker dialog

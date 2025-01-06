@@ -34,6 +34,10 @@ namespace Alis.Extension.Io.FileDialog
     /// </summary>
     public interface IFilePicker
     {
+        /// <summary>
+        /// Chooses the file
+        /// </summary>
+        /// <returns>The string</returns>
         public string ChooseFile();
     }
 }

@@ -28,6 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Numerics;
+using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Aspect.Math.Sample
@@ -43,9 +45,17 @@ namespace Alis.Core.Aspect.Math.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            Console.WriteLine(new Vector2F(3.0f, 2.0f).ToString());
-            Console.WriteLine("Press any key to continue...");
-            Console.ReadKey();
+            // Vector operations
+            Vector2F vec1 = new Vector2F(1, 2);
+            Vector2F vec2 = new Vector2F(3, 4);
+            Vector2F result = vec1 + vec2;
+
+            Console.WriteLine($"Vector addition: {result}");
+            
+            Matrix4X4 matrix = Matrix4X4.Identity;
+            Matrix4X4 translated = matrix * Matrix4X4.CreateTranslation(new Vector3F(1, 2, 3));
+
+            Console.WriteLine($"Matrix after translation: {translated}");
         }
     }
 }

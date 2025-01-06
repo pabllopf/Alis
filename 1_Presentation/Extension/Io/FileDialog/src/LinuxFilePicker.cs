@@ -8,6 +8,10 @@ namespace Alis.Extension.Io.FileDialog
     /// </summary>
     public class LinuxFilePicker : IFilePicker
     {
+        /// <summary>
+        /// Chooses the file
+        /// </summary>
+        /// <returns>The output</returns>
         public string ChooseFile()
         {
             // Start the process to run the zenity command that invokes the file picker dialog

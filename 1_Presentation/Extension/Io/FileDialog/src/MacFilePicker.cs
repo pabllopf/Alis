@@ -8,6 +8,10 @@ namespace Alis.Extension.Io.FileDialog
     /// </summary>
     public class MacFilePicker : IFilePicker
     {
+        /// <summary>
+        /// Chooses the file
+        /// </summary>
+        /// <returns>The output</returns>
         public string ChooseFile()
         {
             // Start the process to run the AppleScript that invokes the file picker dialog

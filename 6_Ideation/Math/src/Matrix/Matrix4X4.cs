@@ -29,6 +29,7 @@
 
 using System;
 using System.Runtime.CompilerServices;
+using Alis.Core.Aspect.Math.Vector;
 using HashCode = Alis.Core.Aspect.Math.Util.HashCode;
 
 namespace Alis.Core.Aspect.Math.Matrix
@@ -165,6 +166,56 @@ namespace Alis.Core.Aspect.Math.Matrix
             0f, 0f, 0f, 1f
         );
 
+        public float this[int row, int column]
+        {
+            get
+            {
+                return (row, column) switch
+                {
+                    (0, 0) => M11,
+                    (0, 1) => M12,
+                    (0, 2) => M13,
+                    (0, 3) => M14,
+                    (1, 0) => M21,
+                    (1, 1) => M22,
+                    (1, 2) => M23,
+                    (1, 3) => M24,
+                    (2, 0) => M31,
+                    (2, 1) => M32,
+                    (2, 2) => M33,
+                    (2, 3) => M34,
+                    (3, 0) => M41,
+                    (3, 1) => M42,
+                    (3, 2) => M43,
+                    (3, 3) => M44,
+                    _ => throw new IndexOutOfRangeException("Invalid matrix index!")
+                };
+            }
+            set
+            {
+                switch (row, column)
+                {
+                    case (0, 0): M11 = value; break;
+                    case (0, 1): M12 = value; break;
+                    case (0, 2): M13 = value; break;
+                    case (0, 3): M14 = value; break;
+                    case (1, 0): M21 = value; break;
+                    case (1, 1): M22 = value; break;
+                    case (1, 2): M23 = value; break;
+                    case (1, 3): M24 = value; break;
+                    case (2, 0): M31 = value; break;
+                    case (2, 1): M32 = value; break;
+                    case (2, 2): M33 = value; break;
+                    case (2, 3): M34 = value; break;
+                    case (3, 0): M41 = value; break;
+                    case (3, 1): M42 = value; break;
+                    case (3, 2): M43 = value; break;
+                    case (3, 3): M44 = value; break;
+                    default: throw new IndexOutOfRangeException("Invalid matrix index!");
+                }
+            }
+        }
+
         /// <summary>Creates a customized orthographic projection matrix.</summary>
         /// <param name="left">The minimum X-value of the view volume.</param>
         /// <param name="right">The maximum X-value of the view volume.</param>
@@ -283,6 +334,26 @@ namespace Alis.Core.Aspect.Math.Matrix
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override bool Equals(object obj) => obj is Matrix4X4 other && Equals(other);
 
+        public static Matrix4X4 operator *(Matrix4X4 a, Matrix4X4 b)
+        {
+            // Implement the matrix multiplication logic here
+            Matrix4X4 result = new Matrix4X4();
+            // Example logic for matrix multiplication
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    result[i, j] = 0;
+                    for (int k = 0; k < 4; k++)
+                    {
+                        result[i, j] += a[i, k] * b[k, j];
+                    }
+                }
+            }
+
+            return result;
+        }
+
         /// <summary>Returns a value that indicates whether this instance and another 4x4 matrix are equal.</summary>
         /// <param name="other">The other matrix.</param>
         /// <returns><see langword="true" /> if the two matrices are equal; otherwise, <see langword="false" />.</returns>
@@ -355,5 +426,21 @@ namespace Alis.Core.Aspect.Math.Matrix
             M43 = matrix1.M41 * matrix2.M13 + matrix1.M42 * matrix2.M23 + matrix1.M43 * matrix2.M33 + matrix1.M44 * matrix2.M43,
             M44 = matrix1.M41 * matrix2.M14 + matrix1.M42 * matrix2.M24 + matrix1.M43 * matrix2.M34 + matrix1.M44 * matrix2.M44
         };
+
+        /// <summary>
+        /// Creates the translation using the specified vector 3
+        /// </summary>
+        /// <param name="vector3">The vector</param>
+        /// <returns>The result</returns>
+        public static Matrix4X4 CreateTranslation(Vector3F vector3)
+        {
+            Matrix4X4 result = Identity;
+
+            result.M41 = vector3.X;
+            result.M42 = vector3.Y;
+            result.M43 = vector3.Z;
+
+            return result;
+        }
     }
 }
