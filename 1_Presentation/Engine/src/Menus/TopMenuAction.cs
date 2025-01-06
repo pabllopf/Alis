@@ -62,7 +62,10 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         static TopMenuAction()
         {
-            if (MenuActions.Count > 0) return;
+            if (MenuActions.Count > 0)
+            {
+                return;
+            }
 
             // Inicializando el diccionario con las acciones del menú usando Add
             MenuActions.Add("About Alis", AboutAlis);

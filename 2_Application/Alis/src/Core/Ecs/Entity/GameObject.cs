@@ -539,7 +539,10 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         private void AddPendingComponents()
         {
-            if (PendingComponentsToAdd.Count == 0) return;
+            if (PendingComponentsToAdd.Count == 0)
+            {
+                return;
+            }
 
             PendingComponentsToAdd.Sort((x, y) => x.GetType().Name.CompareTo(y.GetType().Name));
 
@@ -576,7 +579,10 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         private void RemovePendingComponents()
         {
-            if (PendingComponentsToRemove.Count == 0) return;
+            if (PendingComponentsToRemove.Count == 0)
+            {
+                return;
+            }
 
             foreach (AComponent component in PendingComponentsToRemove)
             {

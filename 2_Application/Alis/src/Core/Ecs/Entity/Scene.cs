@@ -424,7 +424,10 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         private void AddPendingGameObjects()
         {
-            if (PendingGameObjectsToAdd.Count == 0) return;
+            if (PendingGameObjectsToAdd.Count == 0)
+            {
+                return;
+            }
 
             foreach (GameObject gameObject in PendingGameObjectsToAdd)
             {
@@ -459,7 +462,10 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         private void RemovePendingGameObjects()
         {
-            if (PendingGameObjectsToRemove.Count == 0) return;
+            if (PendingGameObjectsToRemove.Count == 0)
+            {
+                return;
+            }
 
             foreach (GameObject gameObject in PendingGameObjectsToRemove)
             {
