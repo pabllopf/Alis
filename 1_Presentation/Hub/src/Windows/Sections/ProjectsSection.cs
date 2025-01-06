@@ -42,7 +42,6 @@ using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Native;
-using Alis.Extension.Io.FileDialog;
 
 namespace Alis.App.Hub.Windows.Sections
 {
@@ -348,8 +347,6 @@ namespace Alis.App.Hub.Windows.Sections
                 if (ImGui.Button($"{FontAwesome5.Folder}## Browse"))
                 {
                     // DEFAULT PATH USER PATH:
-                    DialogResult result = Dialog.FolderPicker(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile));
-                    Console.WriteLine($"Path: {result.Path}, IsError {result.IsError}, IsOk {result.IsOk}, IsCancelled {result.IsCancelled}, ErrorMessage {result.ErrorMessage}");
                 }
 
                 ImGui.Text("Editor Version:");
