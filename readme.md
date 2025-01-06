@@ -16,8 +16,10 @@
 ![GitHub all releases](https://img.shields.io/github/downloads/pabllopf/alis/total?label=github%20downloads&color=blue)
 [![Web](https://img.shields.io/website?down_color=red&down_message=failed&up_color=blue&up_message=active&url=https%3A%2F%2Fpabllopf.github.io%2FAlis.Web%2F)](https://pabllopf.github.io/Alis.Web/index.html)
 ![Nuget](https://img.shields.io/nuget/v/alis?label=nuget%20version&color=green)
+![Total downloads](https://img.shields.io/badge/downloads-+300k-green)
 ![GitHub Stars](https://img.shields.io/github/stars/pabllopf/alis?style=social)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/pabllopf)
+
 
 > Develop the video games of your dreams 💯 free!! on Windows, MacOS, Linux, Android(soon), IOS(soon).
 
