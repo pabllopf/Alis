@@ -21,8 +21,7 @@ namespace Alis.Extension.Io.FileDialog
                 UseShellExecute = false,
                 CreateNoWindow = true
             };
-
-
+            
             // Start the process and capture its output
             process.Start();
             process.WaitForExit();
