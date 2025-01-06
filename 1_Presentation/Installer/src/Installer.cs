@@ -65,7 +65,7 @@ namespace Alis.App.Installer
     /// <summary>
     ///     The engine class
     /// </summary>
-    public class Installer
+    public class Installer: IDisposable
     {
         /// <summary>
         ///     The name engine
@@ -875,6 +875,11 @@ namespace Alis.App.Installer
                     }
                 }
             }
+        }
+
+        public void Dispose()
+        {
+            _shader?.Dispose();
         }
     }
 }

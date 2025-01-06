@@ -138,9 +138,18 @@ namespace Alis.Core.Aspect.Data.Resource
 
             for (int i = 0; i < baseDirectories.Length; i++)
             {
-                baseDirectories[i] = baseDirectories[i].TrimEnd('/', '\\');
-                baseDirectories[i] = Path.Combine(baseDirectories[i], "Assets");
+                if (baseDirectories[i] != null)  // Ensure the directory value is not null.
+                {
+                    baseDirectories[i] = baseDirectories[i].TrimEnd('/', '\\');
+                    baseDirectories[i] = Path.Combine(baseDirectories[i], "Assets");
+                }
+                else
+                {
+                    // Handle null case if necessary, for example:
+                    Console.WriteLine($"baseDirectories[{i}] is null. Skipping this entry.");
+                }
             }
+
 
             return baseDirectories;
         }

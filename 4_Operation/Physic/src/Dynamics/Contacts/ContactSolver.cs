@@ -42,7 +42,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
     /// <summary>
     ///     The contact solver class
     /// </summary>
-    public class ContactSolver
+    public class ContactSolver: IDisposable
     {
         /// <summary>
         ///     The countdown event
@@ -1197,6 +1197,11 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             {
                 _queue.Enqueue((SolveVelocityConstraintsState) state);
             }
+        }
+
+        public void Dispose()
+        {
+            SolveVelocityConstraintsWaitLock?.Dispose();
         }
     }
 }

@@ -36,7 +36,7 @@ namespace Alis.Core.Aspect.Data.Json
     ///     The key value type dictionary class
     /// </summary>
     /// <seealso cref="IDictionary" />
-    internal sealed class KeyValueTypeDictionary : IDictionary
+    internal sealed class KeyValueTypeDictionary : IDictionary, IDisposable
     {
         /// <summary>
         ///     The enumerator
@@ -136,5 +136,10 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <returns>The enumerator</returns>
         IEnumerator IEnumerable.GetEnumerator() => throw new NotSupportedException();
+
+        public void Dispose()
+        {
+            _enumerator?.Dispose();
+        }
     }
 }
