@@ -117,6 +117,8 @@ The ALIS framework is released under the [GNU General Public License v3 (GPL-3.0
 
 We welcome contributions to the project! Please check our [Code of Conduct](https://github.com/pabllopf/Alis/blob/main/code_of_conduct.md) for guidelines on how to contribute respectfully.
 
+[![](https://img.shields.io/badge/Read%20More--blue)](https://github.com/pabllopf/Alis/blob/main/code_of_conduct.md)
+
 ---
 
 ## Authors
