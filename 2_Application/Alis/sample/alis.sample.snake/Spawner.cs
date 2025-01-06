@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
@@ -125,9 +126,16 @@ namespace Alis.Sample.Snake
             GameObject food = _foodPool[_currentFoodIndex];
             if (!food.IsEnable)
             {
-                Random random = new Random();
-                float x = (float) (random.NextDouble() * 15 - 7);
-                float y = (float) (random.NextDouble() * 15 - 7);
+                RandomNumberGenerator rng = RandomNumberGenerator.Create();
+                byte[] buffer = new byte[4];
+    
+                // Generate secure random float for x
+                rng.GetBytes(buffer);
+                float x = (BitConverter.ToUInt32(buffer, 0) / (float)uint.MaxValue) * 15f - 7f;
+
+                // Generate secure random float for y
+                rng.GetBytes(buffer);
+                float y = (BitConverter.ToUInt32(buffer, 0) / (float)uint.MaxValue) * 15f - 7f;
 
                 BoxCollider collider = food.Get<BoxCollider>();
                 if (collider != null)
