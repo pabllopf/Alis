@@ -31,6 +31,28 @@
 
 ---
 
+### 🖥️ Platform Compatibility
+
+> The Alis framework, including `Alis.Core.Aspect.Memory`, is designed to support a wide range of platforms, ensuring flexibility and adaptability for developers. Each module is optimized for seamless integration across the following architectures and operating systems:
+
+#### Supported Platforms:
+
+- **Windows**
+    - `win-x64`
+    - `win-x86`
+    - `win-arm64`
+- **Linux**
+    - `linux-x64`
+    - `linux-musl-x64`
+    - `linux-arm`
+    - `linux-arm64`
+    - `linux-musl-arm`
+    - `linux-musl-arm64`
+- **macOS**
+    - `osx-x64`
+    - `osx-arm64`
+--- 
+
 ## 📖 Description
 
 `Alis.Core.Aspect.Memory` is a module within the Alis framework that provides tools for memory management and validation, ensuring that values meet specified constraints. It includes a set of attributes and a validation system to ensure that data values adhere to important rules, such as non-zero or non-null values.
