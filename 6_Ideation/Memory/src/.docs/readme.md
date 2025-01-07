@@ -1,4 +1,4 @@
-[![](https://raw.githubusercontent.com/pabllopf/Alis/master/docs/banner/Alis_Banner_970x250.png)](https://pabllopf.github.io/Alis/index.html)
+![Alis Banner](https://raw.githubusercontent.com/pabllopf/Alis/master/docs/banner/Alis_Banner_970x250.png)
 
 ![GitHub Stars](https://img.shields.io/github/stars/pabllopf/alis?style=social)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_Alis&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_Alis)
@@ -14,7 +14,7 @@
 
 > Develop the video games of your dreams 💯 free!! on Windows, MacOS, Linux, Android(soon), IOS(soon).
 
-## 📚 Alis.Core.Aspect.Time
+## 📚 Alis.Core.Aspect.Memory
 - [Modular Design](#-modular-design)
 - [Description](#-description)
 - [Getting Started](#-getting-started)
@@ -27,62 +27,115 @@
 
 ### ⚙️ Modular Design
 
-> All modules within the Alis framework, including `Alis.Core.Aspect.Time`, are fully independent and can be used separately. While the primary focus of Alis is game development, these modules are designed to be versatile and can be integrated into other types of applications or environments where precise time management, event handling, or other functionalities are required.
+> All modules within the Alis framework, including `Alis.Core.Aspect.Memory`, are fully independent and can be used separately. While the primary focus of Alis is game development, these modules are designed to be versatile and can be integrated into other types of applications or environments where memory management or data validation is required.
 
 ---
 
 ## 📖 Description
 
-`Alis.Core.Aspect.Time` is a module within the Alis framework designed for precise and flexible time management and measurement in applications. This module includes tools for tracking elapsed time, configuring fixed time intervals, controlling the speed of time progression (TimeScale), and performing time step measurements, making it ideal for physics simulations or event-driven applications.
+`Alis.Core.Aspect.Memory` is a module within the Alis framework that provides tools for memory management and validation, ensuring that values meet specified constraints. It includes a set of attributes and a validation system to ensure that data values adhere to important rules, such as non-zero or non-null values.
 
 ### Features:
-- **Precise Time Control**: Allows accurate measurement of elapsed time in milliseconds, seconds, and ticks.
-- **Time Scalability**: Adjust the speed of time using `TimeScale` to simulate bullet-time effects.
-- **Flexible Configuration**: Choose between fixed or variable time intervals depending on the needs of the application.
+- **Data Validation**: Use attributes like `[IsNotZero]` and `[IsNotNull]` to ensure values meet specific conditions.
+- **Flexible Validation**: Validator system that checks values before they are used, preventing runtime errors.
 - **Main Classes**:
-    - `Clock`: For simple and efficient tracking of elapsed time.
-    - `TimeStep`: Manages and measures time steps within the application.
-    - `TimeConfiguration`: Configures fixed time intervals, maximum allowed time, and time speed.
+    - `Validator`: Validates data according to rules such as non-zero or non-null.
+    - `NotZeroException`: Thrown when a value is zero when it shouldn't be.
 
 ---
 
 ## 🚀 Getting Started
-To start using `Alis.Core.Aspect.Time`, simply install the package:
+To start using `Alis.Core.Aspect.Memory`, simply install the package:
 
 ```bash
-dotnet add package Alis.Core.Aspect.Time
+dotnet add package Alis.Core.Aspect.Memory
 ```
 
-This module is ideal for games and simulations where precise time management is critical.
+This module is ideal for applications where data integrity is crucial, and you need to ensure that certain values adhere to specific constraints.
 
 ### Basic Usage Example:
 
 ```csharp
-public static void Main(string[] args)
+using Alis.Core.Aspect.Memory;
+using System;
+
+public static class Program
 {
-    // Create a new Clock instance
-    Clock clock = new Clock();
-    clock.Start();
+    /// <summary>
+    ///     Gets or sets the value of the non zero value
+    /// </summary>
+    [IsNotZero] private static int _nonZeroValue;
 
-    // Create a new TimeConfiguration instance
-    TimeConfiguration timeConfig = new TimeConfiguration();
+    /// <summary>
+    ///     Gets or sets the value of the non zero value
+    /// </summary>
+    private static int _nonZeroValuev2;
 
-    int i = 0;
-    while (i < 1000)
+    /// <summary>
+    ///     Gets or sets the value of the sample
+    /// </summary>
+    [IsNotZero]
+    private static int Sample { get; set; }
+
+    /// <summary>
+    ///     Samples the method using the specified value
+    /// </summary>
+    /// <param name="value">The value</param>
+    public static void SampleMethod([IsNotZero, IsNotNull] int value)
     {
-        Thread.Sleep(1);
-        i++;
+        Validator.Validate(value, nameof(value));
+        Console.WriteLine("The value of value is " + value);
     }
 
-    // Stop the clock and display the elapsed time
-    clock.Stop();
-    Console.WriteLine($"Elapsed time: {clock.ElapsedMilliseconds} ms");
+    /// <summary>
+    ///     Main the args
+    /// </summary>
+    /// <param name="args">The args</param>
+    public static void Main(string[] args)
+    {
+        try
+        {
+            Sample = 0;
+            Validator.Validate(Sample, nameof(Sample));
+        }
+        catch (NotZeroException e)
+        {
+            Console.WriteLine(e);
+        }
 
-    // Display some TimeManager properties
-    Console.WriteLine($"TimeScale: {timeConfig.TimeScale}");
+        try
+        {
+            SampleMethod(0);
+        }
+        catch (NotZeroException e)
+        {
+            Console.WriteLine(e);
+        }
 
-    Console.WriteLine("Press any key to continue...");
-    Console.ReadKey();
+        _nonZeroValuev2 = 0;
+        Validator.Validate(_nonZeroValuev2, nameof(_nonZeroValuev2));
+
+        try
+        {
+            _nonZeroValue = 0;
+            Validator.Validate(_nonZeroValue, nameof(_nonZeroValue));
+        }
+        catch (NotZeroException ex)
+        {
+            Console.WriteLine(ex);
+        }
+
+        try
+        {
+            _nonZeroValue = 5;
+            Validator.Validate(_nonZeroValue, nameof(_nonZeroValue));
+            Console.WriteLine("NonZeroValue has been successfully set to " + _nonZeroValue);
+        }
+        catch (NotZeroException ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
 }
 ```
 
@@ -90,45 +143,30 @@ public static void Main(string[] args)
 
 ## 🛡️ License
 
-The ALIS framework is released under the [GNU General Public License v3 (GPL-3.0)](https://github.com/pabllopf/Alis/blob/master/license.md), a strong copyleft license that ensures your freedom to use, modify, and distribute the framework while preserving the same license terms. Below is an explanation of how the license affects you as a developer:
+The ALIS framework is released under the [GNU General Public License v3 (GPL-3.0)](https://github.com/pabllopf/Alis/blob/master/license.md), ensuring your freedom to use, modify, and distribute the framework.
 
 [![License](https://raw.githubusercontent.com/pabllopf/Alis/master/docs/licence/License.png)](https://github.com/pabllopf/Alis/blob/master/license.md)
 
 ### Key License Points
 
-- **Complete Freedom for Video Game Developers**:  
-  Any video game created with the ALIS framework is **completely free and unrestricted**. You are free to create, publish, and distribute your games without any licensing fees or royalties.
+- **Complete Freedom for Developers**:  
+  Any software created with the ALIS framework is **free** to use, modify, and distribute.
 
 - **Source Code Availability**:  
-  If you make modifications to the ALIS framework itself or integrate it as part of a larger software project (beyond just using it in a video game), you are required to make those changes publicly available under the same GPL-3.0 license. This ensures the framework remains open and accessible to everyone.
-
-- **No Obligation to Mention**:  
-  While it’s not required, it would be greatly appreciated if you mention or credit the ALIS project somewhere in your game, such as in the credits or documentation. This is entirely optional and is meant to help grow the ALIS community.
-
-- **Patent Rights**:  
-  Contributors to ALIS provide an express grant of patent rights, meaning you’re protected from patent-related legal issues when using the framework.
-
-- **Copyright and Notices**:  
-  You must preserve copyright notices and license texts when redistributing ALIS, either in its original form or as part of a modified version.
-
-### What This Means for Your Games
-
-- **Your Game’s License**:  
-  The GPL-3.0 license applies only to the ALIS framework and its modifications. It does not impose restrictions on the license of the game you build using ALIS. You are free to license your game however you choose (e.g., proprietary, open-source, or public domain).
+  If you modify the ALIS framework, you must make the source code publicly available under the GPL-3.0 license.
 
 - **Monetization**:  
-  You are free to monetize games created with ALIS, whether by selling them, integrating ads, or any other form of commercialization.
-
+  You are free to monetize any project developed using ALIS without any royalties.
 
 [![](https://img.shields.io/badge/Read%20More--blue)](https://github.com/pabllopf/Alis/blob/master/license.md)
 
 ---
+
 ## Contributor Guide
 
-Thank you for investing your time in contributing to our project! Any contribution you make will be reflected.
-Read our Code of Conduct to keep our community approachable and respectable.
+We welcome contributions to the project! Please check our [Code of Conduct](https://github.com/pabllopf/Alis/blob/main/code_of_conduct.md) for guidelines on how to contribute respectfully.
 
-[![](https://img.shields.io/badge/Read%20More--blue)](https://github.com/pabllopf/Alis/blob/main/code_of_conduct.md)
+---
 
 ## Authors
 
