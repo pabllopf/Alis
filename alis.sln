@@ -89,7 +89,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{18D887C5
 		changelog.md = changelog.md
 		code_of_conduct.md = code_of_conduct.md
 		readme.md = readme.md
-		docs\nuget\readme_nuget.md = docs\nuget\readme_nuget.md
 		contributing.md = contributing.md
 		security.md = security.md
 	EndProjectSection
