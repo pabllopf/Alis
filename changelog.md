@@ -5,6 +5,50 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.5.6] - 2025-01-07
+### :sparkles: New Features
+- [`2dcb574`](https://github.com/pabllopf/Alis/commit/2dcb5746207edea914c37f71b41dc86b1538711f) - add new module to create file dialog cross-platforms *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4538344`](https://github.com/pabllopf/Alis/commit/45383442228468131c43130691a278c0f18cd45e) - delete unsafe code on file dialog module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f97a69d`](https://github.com/pabllopf/Alis/commit/f97a69d2daf056a6f146c94f098e17c0e059b55c) - add new file dialog to hub system *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1a58bb4`](https://github.com/pabllopf/Alis/commit/1a58bb4065e185e0bf140de17e6e4296b5a8354d) - delete old dependency with nfd lib and create native lib direct with OS. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9eb7fb2`](https://github.com/pabllopf/Alis/commit/9eb7fb2c6d0bfde6659931787ee7bf11007e06c6) - add windows and linux open file dialog *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`3e87aab`](https://github.com/pabllopf/Alis/commit/3e87aabdd566d952fc76c7966b4eee90459bfa28) - name default_csproj *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`058b534`](https://github.com/pabllopf/Alis/commit/058b534eb170141071b3d858920db5926e75d52d) - creation inptr *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6fe95c3`](https://github.com/pabllopf/Alis/commit/6fe95c36d0e01011ee3738405ac532c7711bb826) - init intptr with new directive *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9b49c6e`](https://github.com/pabllopf/Alis/commit/9b49c6e3f7b87a0c46223ca33ec508ff820f8788) - names of classes on module file dialog *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ec5cfc1`](https://github.com/pabllopf/Alis/commit/ec5cfc112b2f70d1318b77415e7d96f80c4144ac) - delete old file browser on hub module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4a8d4a5`](https://github.com/pabllopf/Alis/commit/4a8d4a59db037590d34972f387ecd537f3a66668) - add net8.0 on extensions modules *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0ae7cff`](https://github.com/pabllopf/Alis/commit/0ae7cffc758175912a6d16e00b6a3177d879de0e) - delete local import nuget. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`07acca1`](https://github.com/pabllopf/Alis/commit/07acca14be9d3db59c3997ec058fb837d5da43bc) - Packages *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d3fa113`](https://github.com/pabllopf/Alis/commit/d3fa113e2e370b7097b19ee8d6fbbd12dc386e74) - sonarcloud test covert *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`92c6b54`](https://github.com/pabllopf/Alis/commit/92c6b54ab5ee94dde59459d7de94a36a1328a2c2) - spaces and tabs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4586bc0`](https://github.com/pabllopf/Alis/commit/4586bc07c2025906a2bf2fec7c14f409b0369df4) - new sonarcloud config *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b026980`](https://github.com/pabllopf/Alis/commit/b02698095aceeea33d5fddf1c78f90788947bb35) - covert unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`088ca02`](https://github.com/pabllopf/Alis/commit/088ca02c24cda8a77cdea4ed7f4dc7fd5302eef2) - TargetFrameworks *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b9dbda1`](https://github.com/pabllopf/Alis/commit/b9dbda1f5f02cd3d2f6e70b828a251fefa507a0e) - SYSLIB1054 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f4cef63`](https://github.com/pabllopf/Alis/commit/f4cef630f5dd6044c9a94beafe288d78961cd0e8) - code smells of alis sln *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3fa92d1`](https://github.com/pabllopf/Alis/commit/3fa92d10e2c4e6f809a4bee13ebb1f842e588cb9) - +300 code smells *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`dd1cb46`](https://github.com/pabllopf/Alis/commit/dd1cb46623c962e1938193291b19754f4a1578f1) - delete unseless file dialog *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`23ca8e8`](https://github.com/pabllopf/Alis/commit/23ca8e809a78f7eff181c5efe35084053e635f1a) - hub manager *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`e0466e3`](https://github.com/pabllopf/Alis/commit/e0466e3b3d45dcc391021f217114869e5f288fc0) - pro check all platforns *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`153f8b4`](https://github.com/pabllopf/Alis/commit/153f8b42213ff3c474c494feb3ab373abfcf5324) - pro check new nuget config *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8876e44`](https://github.com/pabllopf/Alis/commit/8876e44411c3f949dbc8c78a08e3a932d2f04db7) - pro Update [PRO][TEST].yml *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a604d99`](https://github.com/pabllopf/Alis/commit/a604d99688e2290d9c986f4d7c60de1cdb173958) - pro check all targetframeworks *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`54728a7`](https://github.com/pabllopf/Alis/commit/54728a755c89e458232e317fb84a162c7725ae91) - pro check all platformns *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`ca7f94d`](https://github.com/pabllopf/Alis/commit/ca7f94d29469b7df4a1ec66cdd3cfbe285f970bb) - add comments to filedialog module *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :art: Code Style Changes
+- [`79c1a0d`](https://github.com/pabllopf/Alis/commit/79c1a0d4bdc47aae436b719104ac2f8d8c51262b) - refactor the main sln to clean usings *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b16b3b2`](https://github.com/pabllopf/Alis/commit/b16b3b2185fea7eb7df5593a82ddad73235f2761) - clean unseless packages *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`60d4db9`](https://github.com/pabllopf/Alis/commit/60d4db9a5f51fa48421f2b1be99419fe179646b4) - refactor sln and clean spaces and tabs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.5.5] - 2024-12-31
 ### :bug: Bug Fixes
 - [`7498f18`](https://github.com/pabllopf/Alis/commit/7498f18d550e2f485fe08534b8b0615ab968c714) - linux runners *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -3844,3 +3888,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.5.3]: https://github.com/pabllopf/Alis/compare/v0.5.2...v0.5.3
 [v0.5.4]: https://github.com/pabllopf/Alis/compare/v0.5.3...v0.5.4
 [v0.5.5]: https://github.com/pabllopf/Alis/compare/v0.5.4...v0.5.5
+[v0.5.6]: https://github.com/pabllopf/Alis/compare/v0.5.5...v0.5.6
