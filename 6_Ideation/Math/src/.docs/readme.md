@@ -132,93 +132,19 @@ We welcome contributions to the project! Please check our [Code of Conduct](http
 ## Authors
 
 <!-- readme: pabllopf -start -->
-<table>
-	<tbody>
-		<tr>
-            <td align="center">
-                <a href="https://github.com/pabllopf">
-                    <img src="https://avatars.githubusercontent.com/u/48176121?v=4" width="75;" alt="pabllopf"/>
-                    <br />
-                    <sub><b>Pablo Perdomo Falcón</b></sub>
-                </a>
-            </td>
-		</tr>
-	<tbody>
-</table>
+| [![Pablo Perdomo Falcón](https://avatars.githubusercontent.com/u/48176121?v=4&s=75)](https://github.com/pabllopf) |
+|:--------------------------------------------------------------------------------------------------:|
+| **[Pablo Perdomo Falcón](https://github.com/pabllopf)**                                             |
 <!-- readme: pabllopf -end -->
 
 ## Collaborators
 
 <!-- readme: collaborators -start -->
-<table>
-	<tbody>
-		<tr>
-            <td align="center">
-                <a href="https://github.com/RaulLozanoPonce">
-                    <img src="https://avatars.githubusercontent.com/u/43152062?v=4" width="75;" alt="RaulLozanoPonce"/>
-                    <br />
-                    <sub><b>Raúl Lozano Ponce</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/cannt">
-                    <img src="https://avatars.githubusercontent.com/u/45520663?v=4" width="75;" alt="cannt"/>
-                    <br />
-                    <sub><b>Juan Ángel Trujillo Jiménez</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/Chgv99">
-                    <img src="https://avatars.githubusercontent.com/u/55676590?v=4" width="75;" alt="Chgv99"/>
-                    <br />
-                    <sub><b>Christian García</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/RicardoVillarta">
-                    <img src="https://avatars.githubusercontent.com/u/62963416?v=4" width="75;" alt="RicardoVillarta"/>
-                    <br />
-                    <sub><b>RicardoVillarta</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/GabrielRT01">
-                    <img src="https://avatars.githubusercontent.com/u/75950686?v=4" width="75;" alt="GabrielRT01"/>
-                    <br />
-                    <sub><b>Gabriel</b></sub>
-                </a>
-            </td>
-		</tr>
-		<tr>
-            <td align="center">
-                <a href="https://github.com/SPEEDCROW98">
-                    <img src="https://avatars.githubusercontent.com/u/82670532?v=4" width="75;" alt="SPEEDCROW98"/>
-                    <br />
-                    <sub><b>Pedro D.GR</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/Claudia2000pf">
-                    <img src="https://avatars.githubusercontent.com/u/82757764?v=4" width="75;" alt="Claudia2000pf"/>
-                    <br />
-                    <sub><b>Claudia2000pf</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/suarez0965">
-                    <img src="https://avatars.githubusercontent.com/u/82760316?v=4" width="75;" alt="suarez0965"/>
-                    <br />
-                    <sub><b>Carlos</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/roseralmenar">
-                    <img src="https://avatars.githubusercontent.com/u/118014440?v=4" width="75;" alt="roseralmenar"/>
-                    <br />
-                    <sub><b>Roser Almenar</b></sub>
-                </a>
-            </td>
-		</tr>
-	<tbody>
-</table>
+| [![Raúl Lozano Ponce](https://avatars.githubusercontent.com/u/43152062?v=4)](https://github.com/RaulLozanoPonce)  | [![Juan Ángel Trujillo Jiménez](https://avatars.githubusercontent.com/u/45520663?v=4)](https://github.com/cannt)  | [![Pablo Perdomo Falcón](https://avatars.githubusercontent.com/u/48176121?v=4)](https://github.com/pabllopf)  | [![Christian García](https://avatars.githubusercontent.com/u/55676590?v=4)](https://github.com/Chgv99)  | [![RicardoVillarta](https://avatars.githubusercontent.com/u/62963416?v=4)](https://github.com/RicardoVillarta)  |
+|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|
+| **[Raúl Lozano Ponce](https://github.com/RaulLozanoPonce)**                                        | **[Juan Ángel Trujillo Jiménez](https://github.com/cannt)**                                         | **[Pablo Perdomo Falcón](https://github.com/pabllopf)**                                             | **[Christian García](https://github.com/Chgv99)**                                                  | **[RicardoVillarta](https://github.com/RicardoVillarta)**                                           |
+
+| [![Gabriel](https://avatars.githubusercontent.com/u/75950686?v=4)](https://github.com/GabrielRT01)  | [![Pedro D.GR](https://avatars.githubusercontent.com/u/82670532?v=4)](https://github.com/SPEEDCROW98)  | [![Claudia2000pf](https://avatars.githubusercontent.com/u/82757764?v=4)](https://github.com/Claudia2000pf)  | [![Carlos](https://avatars.githubusercontent.com/u/82760316?v=4)](https://github.com/suarez0965)  | [![Roser Almenar](https://avatars.githubusercontent.com/u/118014440?v=4)](https://github.com/roseralmenar)  |
+|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|
+| **[Gabriel](https://github.com/GabrielRT01)**                                                      | **[Pedro D.GR](https://github.com/SPEEDCROW98)**                                                  | **[Claudia2000pf](https://github.com/Claudia2000pf)**                                              | **[Carlos](https://github.com/suarez0965)**                                                       | **[Roser Almenar](https://github.com/roseralmenar)**                                               |
 <!-- readme: collaborators -end -->
