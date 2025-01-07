@@ -462,8 +462,17 @@ namespace Alis.Extension.Updater
             }
         }
 
+        /// <summary>
+        /// The threshold entries
+        /// </summary>
         private const int THRESHOLD_ENTRIES = 10000;
+        /// <summary>
+        /// The threshold size
+        /// </summary>
         private const int THRESHOLD_SIZE = 1000000000; // 1 GB
+        /// <summary>
+        /// The threshold ratio
+        /// </summary>
         private const double THRESHOLD_RATIO = 10.0; // Compression ratio threshold
 
         /// <summary>

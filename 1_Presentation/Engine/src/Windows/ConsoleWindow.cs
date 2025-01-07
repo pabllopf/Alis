@@ -230,11 +230,18 @@ namespace Alis.App.Engine.Windows
             ImGui.EndChild();
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             stringWriter?.Dispose();
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
+        /// <returns>The value task</returns>
         public async ValueTask DisposeAsync()
         {
             if (stringWriter != null)

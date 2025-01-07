@@ -72,6 +72,9 @@ namespace Alis.Extension.Updater.Services.Api
         /// </summary>
         public string apiUrl { get; }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             _httpClient?.Dispose();

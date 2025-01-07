@@ -602,6 +602,9 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             _contactSolver?.Dispose();

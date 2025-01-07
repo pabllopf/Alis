@@ -166,6 +166,9 @@ namespace Alis.Core.Aspect.Math.Matrix
             0f, 0f, 0f, 1f
         );
 
+        /// <summary>
+        /// The index out of range exception
+        /// </summary>
         public float this[int row, int column]
         {
             get
