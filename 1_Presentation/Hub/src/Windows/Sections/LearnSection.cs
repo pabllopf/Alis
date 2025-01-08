@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.App.Hub.Core;
@@ -269,7 +268,7 @@ namespace Alis.App.Hub.Windows.Sections
 
             ImGui.Text("Quick Tips");
             ImGui.Separator();
-            
+
             ImGui.TextWrapped(tips[0]);
         }
     }

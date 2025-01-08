@@ -33,7 +33,6 @@ using System.Threading.Tasks;
 using Alis.Core.Audio.Interfaces;
 using Alis.Core.Audio.Players;
 
-
 namespace Alis.Core.Audio
 {
     /// <summary>
