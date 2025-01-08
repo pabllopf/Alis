@@ -72,6 +72,21 @@ Alis is a cross-platform framework designed to help developers create video game
     - `osx-arm64`
 --- 
 
+### 🎮 Platform Compatibility
+
+`Alis` is designed to support a wide range of frameworks, ensuring maximum flexibility across different platforms and environments. Whether you're working with legacy systems or the latest .NET versions, this module has got you covered!
+
+#### Supported Frameworks:
+
+| **Framework**         | **Version(s)**                                |
+|-----------------------|-----------------------------------------------|
+| **.NET Core**         | `netcoreapp2.0`, `netcoreapp2.1`, `netcoreapp2.2`, `netcoreapp3.0`, `netcoreapp3.1` |
+| **.NET 5 & Above**    | `net5.0`, `net6.0`, `net7.0`, `net8.0`, `net9.0` |
+| **.NET Standard**     | `netstandard2.0`, `netstandard2.1`            |
+| **.NET Framework**    | `net471`, `net472`, `net48`, `net481`        |
+
+---
+
 ## 🚀 Getting Started
 To start using Alis, simply install the core package from NuGet:
 
