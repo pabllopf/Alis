@@ -641,63 +641,145 @@ namespace Alis.App.Hub.Controllers
 
                     // Modifiers
                     if (sym == KeyCodes.Lshift)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.LeftShift, true);
+                    }
+
                     if (sym == KeyCodes.Rshift)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.RightShift, true);
+                    }
+
                     if (sym == KeyCodes.Lalt)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.LeftAlt, true);
+                    }
+
                     if (sym == KeyCodes.Ralt)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.RightAlt, true);
+                    }
+
                     if (sym == KeyCodes.Lctrl)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.LeftCtrl, true);
+                    }
+
                     if (sym == KeyCodes.Rctrl)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.RightCtrl, true);
+                    }
 
                     // Keys
                     if (sym == KeyCodes.Escape)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.Escape, true);
+                    }
+
                     if (sym == KeyCodes.Tab)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.Tab, true);
+                    }
+
                     if (sym == KeyCodes.Left)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.LeftArrow, true);
+                    }
+
                     if (sym == KeyCodes.Right)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.RightArrow, true);
+                    }
+
                     if (sym == KeyCodes.Up)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.UpArrow, true);
+                    }
+
                     if (sym == KeyCodes.Down)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.DownArrow, true);
+                    }
+
                     if (sym == KeyCodes.Pageup)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.PageUp, true);
+                    }
+
                     if (sym == KeyCodes.Pagedown)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.PageDown, true);
+                    }
+
                     if (sym == KeyCodes.Home)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.Home, true);
+                    }
+
                     if (sym == KeyCodes.End)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.End, true);
+                    }
+
                     if (sym == KeyCodes.Insert)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.Insert, true);
+                    }
+
                     if (sym == KeyCodes.Delete)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.Delete, true);
+                    }
+
                     if (sym == KeyCodes.Backspace)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.Backspace, true);
+                    }
+
                     if (sym == KeyCodes.Space)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.Space, true);
+                    }
+
                     if (sym == KeyCodes.Return)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.Enter, true);
+                    }
+
                     if (sym == KeyCodes.KpEnter)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.KeypadEnter, true);
+                    }
+
                     if (sym == KeyCodes.A)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.A, true);
+                    }
+
                     if (sym == KeyCodes.C)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.C, true);
+                    }
+
                     if (sym == KeyCodes.V)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.V, true);
+                    }
+
                     if (sym == KeyCodes.X)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.X, true);
+                    }
+
                     if (sym == KeyCodes.Y)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.Y, true);
+                    }
+
                     if (sym == KeyCodes.Z)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.Z, true);
+                    }
 
                     break;
                 }
@@ -708,63 +790,145 @@ namespace Alis.App.Hub.Controllers
 
                     // Modifiers
                     if (sym == KeyCodes.Lshift)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.LeftShift, false);
+                    }
+
                     if (sym == KeyCodes.Rshift)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.RightShift, false);
+                    }
+
                     if (sym == KeyCodes.Lalt)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.LeftAlt, false);
+                    }
+
                     if (sym == KeyCodes.Ralt)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.RightAlt, false);
+                    }
+
                     if (sym == KeyCodes.Lctrl)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.LeftCtrl, false);
+                    }
+
                     if (sym == KeyCodes.Rctrl)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.RightCtrl, false);
+                    }
 
                     // Keys
                     if (sym == KeyCodes.Escape)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.Escape, false);
+                    }
+
                     if (sym == KeyCodes.Tab)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.Tab, false);
+                    }
+
                     if (sym == KeyCodes.Left)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.LeftArrow, false);
+                    }
+
                     if (sym == KeyCodes.Right)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.RightArrow, false);
+                    }
+
                     if (sym == KeyCodes.Up)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.UpArrow, false);
+                    }
+
                     if (sym == KeyCodes.Down)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.DownArrow, false);
+                    }
+
                     if (sym == KeyCodes.Pageup)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.PageUp, false);
+                    }
+
                     if (sym == KeyCodes.Pagedown)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.PageDown, false);
+                    }
+
                     if (sym == KeyCodes.Home)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.Home, false);
+                    }
+
                     if (sym == KeyCodes.End)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.End, false);
+                    }
+
                     if (sym == KeyCodes.Insert)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.Insert, false);
+                    }
+
                     if (sym == KeyCodes.Delete)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.Delete, false);
+                    }
+
                     if (sym == KeyCodes.Backspace)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.Backspace, false);
+                    }
+
                     if (sym == KeyCodes.Space)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.Space, false);
+                    }
+
                     if (sym == KeyCodes.Return)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.Enter, false);
+                    }
+
                     if (sym == KeyCodes.KpEnter)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.KeypadEnter, false);
+                    }
+
                     if (sym == KeyCodes.A)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.A, false);
+                    }
+
                     if (sym == KeyCodes.C)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.C, false);
+                    }
+
                     if (sym == KeyCodes.V)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.V, false);
+                    }
+
                     if (sym == KeyCodes.X)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.X, false);
+                    }
+
                     if (sym == KeyCodes.Y)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.Y, false);
+                    }
+
                     if (sym == KeyCodes.Z)
+                    {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.Z, false);
+                    }
 
                     break;
                 }
