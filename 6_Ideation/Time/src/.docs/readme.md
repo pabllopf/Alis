@@ -31,6 +31,28 @@
 
 ---
 
+### 🖥️ Platform Compatibility
+
+> The Alis framework, including `Alis.Core.Aspect.Time`, is designed to support a wide range of platforms, ensuring flexibility and adaptability for developers. Each module is optimized for seamless integration across the following architectures and operating systems:
+
+#### Supported Platforms:
+
+- **Windows**
+    - `win-x64`
+    - `win-x86`
+    - `win-arm64`
+- **Linux**
+    - `linux-x64`
+    - `linux-musl-x64`
+    - `linux-arm`
+    - `linux-arm64`
+    - `linux-musl-arm`
+    - `linux-musl-arm64`
+- **macOS**
+    - `osx-x64`
+    - `osx-arm64`
+--- 
+
 ## 📖 Description
 
 `Alis.Core.Aspect.Time` is a module within the Alis framework designed for precise and flexible time management and measurement in applications. This module includes tools for tracking elapsed time, configuring fixed time intervals, controlling the speed of time progression (TimeScale), and performing time step measurements, making it ideal for physics simulations or event-driven applications.

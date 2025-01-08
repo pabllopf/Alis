@@ -31,6 +31,28 @@
 
 ---
 
+### 🖥️ Platform Compatibility
+
+> The Alis framework, including `Alis.Core.Aspect.Thread`, is designed to support a wide range of platforms, ensuring flexibility and adaptability for developers. Each module is optimized for seamless integration across the following architectures and operating systems:
+
+#### Supported Platforms:
+
+- **Windows**
+    - `win-x64`
+    - `win-x86`
+    - `win-arm64`
+- **Linux**
+    - `linux-x64`
+    - `linux-musl-x64`
+    - `linux-arm`
+    - `linux-arm64`
+    - `linux-musl-arm`
+    - `linux-musl-arm64`
+- **macOS**
+    - `osx-x64`
+    - `osx-arm64`
+--- 
+
 ## 📖 Description
 
 `Alis.Core.Aspect.Thread` is a module within the Alis framework designed to manage the execution of tasks in separate threads. This module includes classes to define tasks that run in parallel, as well as a manager to handle the lifecycle of multiple threads.
