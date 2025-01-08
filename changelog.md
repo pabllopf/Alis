@@ -5,6 +5,34 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.5.7] - 2025-01-08
+### :sparkles: New Features
+- [`455af46`](https://github.com/pabllopf/Alis/commit/455af4663cb1fa4a2b18f66459c893f87e53e7d6) - include first file picker on hub engine *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`78b5bdc`](https://github.com/pabllopf/Alis/commit/78b5bdc708c572edcc828b1f7dacbdf76b308c76) - PackageReleaseNotes *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fe1c28b`](https://github.com/pabllopf/Alis/commit/fe1c28b1edb0f7149bdb25aace2fc7a4e6b164ef) - copy and paste the logo to create pack nuget *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`94ba418`](https://github.com/pabllopf/Alis/commit/94ba4181b844584d4544f2b7e2cd8bb47ff8f1c1) - random numbers use on code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6af367b`](https://github.com/pabllopf/Alis/commit/6af367b286402d1f44f72c8512264d2df9add8b3) - 7 bugs of sonarcloud *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7130cf2`](https://github.com/pabllopf/Alis/commit/7130cf2ff6d749f914de3de8eb4aa872cdf87fbf) - Add curly braces around the nested statement(s) in this 'if' block. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`14dda21`](https://github.com/pabllopf/Alis/commit/14dda21febf6846ff80215c9760da3cc4906e18a) - Island *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`7d6ba14`](https://github.com/pabllopf/Alis/commit/7d6ba145f1bea10f8b694d5a44708bc14eefd9d1) - change readme of project *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`511ffd9`](https://github.com/pabllopf/Alis/commit/511ffd9802f8619210d55f393157a5ef2209c507) - add all custom readme to nugets *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`23e0975`](https://github.com/pabllopf/Alis/commit/23e0975524c783150ea3e3e90c2e597afae4d4c1) - update the main readme of nugets *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`face464`](https://github.com/pabllopf/Alis/commit/face464d9ba0c5b0c7e6a93b0f0748288e7e2c8b) - **contributor**: contrib-readme-action has updated readme *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+- [`58fcb6f`](https://github.com/pabllopf/Alis/commit/58fcb6f0363d9571290ecff9df93dc80d3107277) - add new reame to math module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7609700`](https://github.com/pabllopf/Alis/commit/76097008d6fe1e771e8b0749085d5f194b30b5f0) - add logging readme *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`179d22e`](https://github.com/pabllopf/Alis/commit/179d22e0ee40f6c6e28092aee0bf19bb4a5667c3) - add new readmes and fix the buttons of readme *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1c9081f`](https://github.com/pabllopf/Alis/commit/1c9081f407724cbd5545f3f95325d0b995316fd1) - update all aspects readme to include new section of Compatibility *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`554bb0c`](https://github.com/pabllopf/Alis/commit/554bb0c94e3e0569a93764e40ed48015358af655) - include the readme of aspect module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bcf3f42`](https://github.com/pabllopf/Alis/commit/bcf3f42349e008ef863165235b39e723c7bd1679) - update the main nuget readme *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a3dc5ca`](https://github.com/pabllopf/Alis/commit/a3dc5ca6be358e8f89b4769c378c54322b552abf) - add new readme to Alis.Core.Audio *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`16aa0b1`](https://github.com/pabllopf/Alis/commit/16aa0b1a7741fac7e288fcaee29be93a8a3cc0fd) - add readme on Alis.Core.Ecs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`27cbad7`](https://github.com/pabllopf/Alis/commit/27cbad7029002a328956f922e87227c66cd8f1ee) - add new readme to core modules *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.5.6] - 2025-01-07
 ### :sparkles: New Features
 - [`2dcb574`](https://github.com/pabllopf/Alis/commit/2dcb5746207edea914c37f71b41dc86b1538711f) - add new module to create file dialog cross-platforms *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -3889,3 +3917,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.5.4]: https://github.com/pabllopf/Alis/compare/v0.5.3...v0.5.4
 [v0.5.5]: https://github.com/pabllopf/Alis/compare/v0.5.4...v0.5.5
 [v0.5.6]: https://github.com/pabllopf/Alis/compare/v0.5.5...v0.5.6
+[v0.5.7]: https://github.com/pabllopf/Alis/compare/v0.5.6...v0.5.7
