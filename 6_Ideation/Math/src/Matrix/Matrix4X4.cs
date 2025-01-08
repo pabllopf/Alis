@@ -191,7 +191,7 @@ namespace Alis.Core.Aspect.Math.Matrix
                     (3, 1) => M42,
                     (3, 2) => M43,
                     (3, 3) => M44,
-                    _ => throw new IndexOutOfRangeException("Invalid matrix index!")
+                    _ => throw new CustomIndexOutOfRangeException("Invalid matrix index!")
                 };
             }
             set
@@ -214,7 +214,7 @@ namespace Alis.Core.Aspect.Math.Matrix
                     case (3, 1): M42 = value; break;
                     case (3, 2): M43 = value; break;
                     case (3, 3): M44 = value; break;
-                    default: throw new IndexOutOfRangeException("Invalid matrix index!");
+                    default: throw new CustomIndexOutOfRangeException("Invalid matrix index!");
                 }
             }
         }

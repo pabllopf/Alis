@@ -29,6 +29,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Math.Matrix;
 
 namespace Alis.Extension.Graphic.ImGui
 {
@@ -67,7 +68,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 if (index < 0 || index >= Count)
                 {
-                    throw new IndexOutOfRangeException();
+                    throw new CustomIndexOutOfRangeException();
                 }
 
                 byte[] bytes = new byte[Marshal.SizeOf<T>()];

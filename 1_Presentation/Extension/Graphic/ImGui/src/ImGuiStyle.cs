@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Extension.Graphic.ImGui
@@ -521,7 +522,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 if (index < 0 || index >= 55)
                 {
-                    throw new IndexOutOfRangeException("Index out of range");
+                    throw new CustomIndexOutOfRangeException("Index out of range");
                 }
 
                 return index switch
@@ -581,14 +582,14 @@ namespace Alis.Extension.Graphic.ImGui
                     52 => Colors52,
                     53 => Colors53,
                     54 => Colors54,
-                    _ => throw new IndexOutOfRangeException("Index out of range")
+                    _ => throw new CustomIndexOutOfRangeException("Index out of range")
                 };
             }
             set
             {
                 if (index < 0 || index >= 55)
                 {
-                    throw new IndexOutOfRangeException("Index out of range");
+                    throw new CustomIndexOutOfRangeException("Index out of range");
                 }
 
                 switch (index)
@@ -648,7 +649,7 @@ namespace Alis.Extension.Graphic.ImGui
                     case 52: Colors52 = value; break;
                     case 53: Colors53 = value; break;
                     case 54: Colors54 = value; break;
-                    default: throw new IndexOutOfRangeException("Index out of range");
+                    default: throw new CustomIndexOutOfRangeException("Index out of range");
                 }
             }
         }
