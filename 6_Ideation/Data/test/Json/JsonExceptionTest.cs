@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Data.Json;
 using Xunit;
 
@@ -38,7 +37,6 @@ namespace Alis.Core.Aspect.Data.Test.Json
     /// </summary>
     public class JsonExceptionTest
     {
-        
         /// <summary>
         ///     Tests that test get code method
         /// </summary>

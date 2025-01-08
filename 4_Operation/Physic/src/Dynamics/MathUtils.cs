@@ -236,9 +236,14 @@ namespace Alis.Core.Physic.Dynamics
             double theta2 = Math.Atan2(p2.Y, p2.X);
             double dtheta = theta2 - theta1;
             while (dtheta > Math.PI)
+            {
                 dtheta -= 2 * Math.PI;
+            }
+
             while (dtheta < -Math.PI)
+            {
                 dtheta += 2 * Math.PI;
+            }
 
             return dtheta;
         }

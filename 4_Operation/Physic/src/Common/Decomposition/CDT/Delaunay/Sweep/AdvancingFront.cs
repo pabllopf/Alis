@@ -127,20 +127,24 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             if (x < node.Value)
             {
                 while ((node = node.Prev) != null)
+                {
                     if (x >= node.Value)
                     {
                         Search = node;
                         return node;
                     }
+                }
             }
             else
             {
                 while ((node = node.Next) != null)
+                {
                     if (x < node.Value)
                     {
                         Search = node.Prev;
                         return node.Prev;
                     }
+                }
             }
 
             return null;

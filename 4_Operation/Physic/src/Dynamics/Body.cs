@@ -266,7 +266,9 @@ namespace Alis.Core.Physic.Dynamics
                     // Touch the proxies so that new contacts will be created (when appropriate)
                     IBroadPhase broadPhase = World.ContactManager.BroadPhase;
                     foreach (Fixture fixture in FixtureList)
+                    {
                         fixture.TouchProxies(broadPhase);
+                    }
                 }
             }
         }
@@ -662,7 +664,9 @@ namespace Alis.Core.Physic.Dynamics
         {
             IBroadPhase broadPhase = World.ContactManager.BroadPhase;
             for (int i = 0; i < FixtureList._list.Count; i++)
+            {
                 FixtureList._list[i].CreateProxies(broadPhase, ref _xf);
+            }
         }
 
         /// <summary>
@@ -672,7 +676,9 @@ namespace Alis.Core.Physic.Dynamics
         {
             IBroadPhase broadPhase = World.ContactManager.BroadPhase;
             for (int i = 0; i < FixtureList._list.Count; i++)
+            {
                 FixtureList._list[i].DestroyProxies(broadPhase);
+            }
         }
 
         /// <summary>
@@ -892,7 +898,9 @@ namespace Alis.Core.Physic.Dynamics
 
             IBroadPhase broadPhase = World.ContactManager.BroadPhase;
             for (int i = 0; i < FixtureList._list.Count; i++)
+            {
                 FixtureList._list[i].Synchronize(broadPhase, ref _xf, ref _xf);
+            }
         }
 
         /// <summary>
@@ -1342,7 +1350,9 @@ namespace Alis.Core.Physic.Dynamics
         public void SetRestitution(float restitution)
         {
             for (int i = 0; i < FixtureList._list.Count; i++)
+            {
                 FixtureList._list[i].Restitution = restitution;
+            }
         }
 
         /// <summary>
@@ -1354,7 +1364,9 @@ namespace Alis.Core.Physic.Dynamics
         public void SetFriction(float friction)
         {
             for (int i = 0; i < FixtureList._list.Count; i++)
+            {
                 FixtureList._list[i].Friction = friction;
+            }
         }
 
         /// <summary>
@@ -1364,7 +1376,9 @@ namespace Alis.Core.Physic.Dynamics
         public void SetCollisionCategories(Category category)
         {
             for (int i = 0; i < FixtureList._list.Count; i++)
+            {
                 FixtureList._list[i].CollisionCategories = category;
+            }
         }
 
         /// <summary>
@@ -1374,7 +1388,9 @@ namespace Alis.Core.Physic.Dynamics
         public void SetCollidesWith(Category category)
         {
             for (int i = 0; i < FixtureList._list.Count; i++)
+            {
                 FixtureList._list[i].CollidesWith = category;
+            }
         }
 
         /// <summary>
@@ -1384,7 +1400,9 @@ namespace Alis.Core.Physic.Dynamics
         public void SetCollisionGroup(short collisionGroup)
         {
             for (int i = 0; i < FixtureList._list.Count; i++)
+            {
                 FixtureList._list[i].CollisionGroup = collisionGroup;
+            }
         }
 
         /// <summary>
@@ -1394,7 +1412,9 @@ namespace Alis.Core.Physic.Dynamics
         public void SetIsSensor(bool isSensor)
         {
             for (int i = 0; i < FixtureList._list.Count; i++)
+            {
                 FixtureList._list[i].IsSensor = isSensor;
+            }
         }
 
         /// <summary>

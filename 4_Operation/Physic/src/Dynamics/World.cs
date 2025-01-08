@@ -878,7 +878,9 @@ namespace Alis.Core.Physic.Dynamics
             if (fixtureAddedHandler != null)
             {
                 for (int i = 0; i < body.FixtureList._list.Count; i++)
+                {
                     fixtureAddedHandler(this, body, body.FixtureList._list[i]);
+                }
             }
         }
 
@@ -939,7 +941,9 @@ namespace Alis.Core.Physic.Dynamics
             if (fixtureRemovedHandler != null)
             {
                 for (int i = 0; i < body.FixtureList._list.Count; i++)
+                {
                     fixtureRemovedHandler(this, body, body.FixtureList._list[i]);
+                }
             }
 
             body._world = null;

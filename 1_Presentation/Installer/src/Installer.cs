@@ -66,7 +66,7 @@ namespace Alis.App.Installer
     /// <summary>
     ///     The engine class
     /// </summary>
-    public class Installer: IDisposable
+    public class Installer : IDisposable
     {
         /// <summary>
         ///     The name engine
@@ -162,6 +162,14 @@ namespace Alis.App.Installer
         ///     The windows
         /// </summary>
         private SpaceWork spaceWork = new SpaceWork();
+
+        /// <summary>
+        ///     Disposes this instance
+        /// </summary>
+        public void Dispose()
+        {
+            _shader?.Dispose();
+        }
 
         /// <summary>
         ///     Starts this instance
@@ -876,14 +884,6 @@ namespace Alis.App.Installer
                     }
                 }
             }
-        }
-
-        /// <summary>
-        /// Disposes this instance
-        /// </summary>
-        public void Dispose()
-        {
-            _shader?.Dispose();
         }
     }
 }

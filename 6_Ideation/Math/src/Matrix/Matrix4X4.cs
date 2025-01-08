@@ -167,7 +167,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         );
 
         /// <summary>
-        /// The index out of range exception
+        ///     The index out of range exception
         /// </summary>
         public float this[int row, int column]
         {
@@ -431,7 +431,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         };
 
         /// <summary>
-        /// Creates the translation using the specified vector 3
+        ///     Creates the translation using the specified vector 3
         /// </summary>
         /// <param name="vector3">The vector</param>
         /// <returns>The result</returns>

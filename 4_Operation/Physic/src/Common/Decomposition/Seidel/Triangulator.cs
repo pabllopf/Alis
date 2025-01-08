@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 
@@ -192,7 +191,9 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                     points.Sort((p1, p2) => p1.X.CompareTo(p2.X));
 
                     foreach (Point p in points)
+                    {
                         mountain.Add(p);
+                    }
 
                     // Triangulate monotone mountain
                     mountain.Process();
@@ -286,7 +287,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                 n--;
                 byte[] randomNumber = new byte[1];
                 rng.GetBytes(randomNumber);
-                int k = randomNumber[0] % (n + 1); 
+                int k = randomNumber[0] % (n + 1);
                 T value = list[k];
                 list[k] = list[n];
                 list[n] = value;

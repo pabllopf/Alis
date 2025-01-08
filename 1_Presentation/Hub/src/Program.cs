@@ -40,5 +40,4 @@ namespace Alis.App.Hub
         /// <param name="args">The args</param>
         public static void Main(string[] args) => new HubEngine().Run();
     }
-    
 }

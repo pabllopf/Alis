@@ -165,7 +165,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             };
             Assert.Equal(" ", options.FormattingTab);
         }
-        
+
         /// <summary>
         ///     Tests that test clone method
         /// </summary>
@@ -224,7 +224,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(600, result);
         }
 
-        
+
         /// <summary>
         ///     Tests that test add exception method with null exception
         /// </summary>

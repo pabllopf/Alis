@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Data.Resource;
 
@@ -50,7 +49,7 @@ namespace Alis.App.Hub.Entity
         public Gallery()
         {
             Items = new List<GalleryItem>();
-            
+
             // Lista de posibles imágenes
             string[] imageOptions = {"Hub_computer.png", "Hub_news.png", "Hub_cubes.png", "Hub_shop.png"};
 

@@ -59,6 +59,15 @@ namespace Alis.Core.Audio.Players
         /// </summary>
         private Stopwatch _playStopwatch;
 
+        /// <summary>
+        ///     Disposes this instance
+        /// </summary>
+        public void Dispose()
+        {
+            _playbackTimer?.Dispose();
+            _playbackTimer = null;
+        }
+
         public event EventHandler PlaybackFinished;
 
         /// <summary>
@@ -234,15 +243,6 @@ namespace Alis.Core.Audio.Players
             }
 
             return Task.CompletedTask;
-        }
-
-        /// <summary>
-        /// Disposes this instance
-        /// </summary>
-        public void Dispose()
-        {
-            _playbackTimer?.Dispose();
-            _playbackTimer = null;
         }
     }
 }
