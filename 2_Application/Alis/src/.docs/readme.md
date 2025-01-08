@@ -44,6 +44,34 @@ Alis is a cross-platform framework designed to help developers create video game
 
 ---
 
+### ⚙️ Modular Design
+
+> All modules within the Alis framework are fully independent and can be used separately. While the primary focus of Alis is game development, these modules are versatile and can be integrated into other types of applications requiring data management capabilities.
+
+---
+
+### 🖥️ Platform Compatibility
+
+> The Alis framework is designed to support a wide range of platforms, ensuring flexibility and adaptability for developers. Each module is optimized for seamless integration across the following architectures and operating systems:
+
+#### Supported Platforms:
+
+- **Windows**
+    - `win-x64`
+    - `win-x86`
+    - `win-arm64`
+- **Linux**
+    - `linux-x64`
+    - `linux-musl-x64`
+    - `linux-arm`
+    - `linux-arm64`
+    - `linux-musl-arm`
+    - `linux-musl-arm64`
+- **macOS**
+    - `osx-x64`
+    - `osx-arm64`
+--- 
+
 ## 🚀 Getting Started
 To start using Alis, simply install the core package from NuGet:
 
@@ -228,6 +256,13 @@ socio-economic status, nationality, personal appearance, race, religion, or sexu
                     <img src="https://avatars.githubusercontent.com/u/45520663?v=4" width="75;" alt="cannt"/>
                     <br />
                     <sub><b>Juan Ángel Trujillo Jiménez</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/pabllopf">
+                    <img src="https://avatars.githubusercontent.com/u/48176121?v=4" width="75;" alt="pabllopf"/>
+                    <br />
+                    <sub><b>Pablo Perdomo Falcón</b></sub>
                 </a>
             </td>
             <td align="center">
