@@ -13,7 +13,7 @@
 ![GitHub issues](https://img.shields.io/github/issues/pabllopf/alis?label=Open%20Tickets&color=green)
 [![License](https://img.shields.io/badge/license-GPL%20v3.0-blue)](https://github.com/pabllopf/Alis/blob/main/LICENSE)
 [![Web](https://img.shields.io/website?down_color=red&down_message=failed&up_color=blue&up_message=active&url=https%3A%2F%2Fpabllopf.github.io%2FAlis.Web%2F)](https://pabllopf.github.io/Alis.Web/index.html)
-![Nuget](https://img.shields.io/nuget/v/alis?label=nuget%20version&color=green)
+![Nuget](https://img.shields.io/nuget/v/alis?label=latest%20version&color=green)
 ![Total downloads](https://img.shields.io/badge/downloads-+300k-green)
 ![GitHub Stars](https://img.shields.io/github/stars/pabllopf/alis?style=social)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/pabllopf)
