@@ -1,5 +1,3 @@
-# Alis.Core.Aspect.Math
-
 ![Alis Banner](https://raw.githubusercontent.com/pabllopf/Alis/master/docs/banner/Alis_Banner_970x250.png)
 
 ![GitHub Stars](https://img.shields.io/github/stars/pabllopf/alis?style=social)
@@ -18,7 +16,7 @@
 
 ---
 
-## 📚 Table of Contents
+## 📚 Alis.Core.Aspect.Math
 - [Modular Design](#-modular-design)
 - [Description](#-description)
 - [Getting Started](#-getting-started)
