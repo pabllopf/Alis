@@ -38,7 +38,7 @@ namespace Alis.Core.Physic.Dynamics
     /// <summary>
     ///     This is an internal class.
     /// </summary>
-    public class Island
+    public class Island : IDisposable
     {
         /// <summary>
         ///     The linear sleep tolerance
@@ -599,6 +599,11 @@ namespace Alis.Core.Physic.Dynamics
                     postSolveHandler(c, constraints[i]);
                 }
             }
+        }
+
+        public void Dispose()
+        {
+            _contactSolver?.Dispose();
         }
     }
 }
