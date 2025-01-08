@@ -41,7 +41,7 @@ namespace Alis.Core.Audio.Players
     ///     The windows player class
     /// </summary>
     /// <seealso cref="IPlayer" />
-    internal class WindowsPlayer : IPlayer
+    internal class WindowsPlayer : IPlayer, IDisposable
     {
         /// <summary>
         ///     The file name
@@ -233,6 +233,12 @@ namespace Alis.Core.Audio.Players
             }
 
             return Task.CompletedTask;
+        }
+
+        public void Dispose()
+        {
+            _playbackTimer?.Dispose();
+            _playbackTimer = null;
         }
     }
 }

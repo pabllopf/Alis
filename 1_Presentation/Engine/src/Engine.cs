@@ -59,7 +59,7 @@ namespace Alis.App.Engine
     /// <summary>
     ///     The engine class
     /// </summary>
-    public class Engine
+    public class Engine: IDisposable
     {
         /// <summary>
         ///     The name engine
@@ -1257,6 +1257,11 @@ namespace Alis.App.Engine
                     }
                 }
             }
+        }
+
+        public void Dispose()
+        {
+            _shader?.Dispose();
         }
     }
 }

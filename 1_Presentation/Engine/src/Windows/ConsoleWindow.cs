@@ -31,6 +31,7 @@ using System;
 using System.Collections.Concurrent;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
 using Alis.Core.Aspect.Math.Vector;
@@ -42,7 +43,7 @@ namespace Alis.App.Engine.Windows
     /// <summary>
     ///     The console window class
     /// </summary>
-    public class ConsoleWindow : IWindow
+    public class ConsoleWindow : IWindow, IDisposable, IAsyncDisposable
     {
         /// <summary>
         ///     The terminal
@@ -227,6 +228,19 @@ namespace Alis.App.Engine.Windows
             }
 
             ImGui.EndChild();
+        }
+
+        public void Dispose()
+        {
+            stringWriter?.Dispose();
+        }
+
+        public async ValueTask DisposeAsync()
+        {
+            if (stringWriter != null)
+            {
+                await stringWriter.DisposeAsync();
+            }
         }
     }
 }

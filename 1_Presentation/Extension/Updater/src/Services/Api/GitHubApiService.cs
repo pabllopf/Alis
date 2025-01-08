@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -38,7 +39,7 @@ namespace Alis.Extension.Updater.Services.Api
     ///     The git hub api service class
     /// </summary>
     /// <seealso cref="IGitHubApiService" />
-    public class GitHubApiService : IGitHubApiService
+    public class GitHubApiService : IGitHubApiService, IDisposable
     {
         /// <summary>
         ///     The http client
@@ -70,5 +71,10 @@ namespace Alis.Extension.Updater.Services.Api
         ///     Gets the value of the api url
         /// </summary>
         public string apiUrl { get; }
+
+        public void Dispose()
+        {
+            _httpClient?.Dispose();
+        }
     }
 }
