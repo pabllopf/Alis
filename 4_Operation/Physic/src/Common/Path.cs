@@ -31,6 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Aspect.Memory.Exceptions;
 
 namespace Alis.Core.Physic.Common
 {
@@ -207,7 +208,7 @@ namespace Alis.Core.Physic.Common
 
             if (ControlPoints.Count < 2)
             {
-                throw new Exception("You need at least 2 control points to calculate a position.");
+                throw new GeneralAlisException("You need at least 2 control points to calculate a position.");
             }
 
             if (Closed)

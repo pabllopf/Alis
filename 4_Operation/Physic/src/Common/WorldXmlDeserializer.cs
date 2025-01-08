@@ -34,6 +34,7 @@ using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Aspect.Memory.Exceptions;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
@@ -85,7 +86,7 @@ namespace Alis.Core.Physic.Common
 
             if (root.Name.ToLower() != "world")
             {
-                throw new Exception();
+                throw new GeneralAlisException();
             }
 
             //Read gravity
@@ -107,7 +108,7 @@ namespace Alis.Core.Physic.Common
                     {
                         if (element.Name.ToLower() != "shape")
                         {
-                            throw new Exception();
+                            throw new GeneralAlisException();
                         }
 
                         ShapeType type = (ShapeType) Enum.Parse(typeof(ShapeType), element.Attributes[0].Value, true);
@@ -131,7 +132,7 @@ namespace Alis.Core.Physic.Common
                                             shape.Position = ReadVector(sn);
                                             break;
                                         default:
-                                            throw new Exception();
+                                            throw new GeneralAlisException();
                                     }
                                 }
 
@@ -194,7 +195,7 @@ namespace Alis.Core.Physic.Common
                                             shape.Vertex3 = ReadVector(sn);
                                             break;
                                         default:
-                                            throw new Exception();
+                                            throw new GeneralAlisException();
                                     }
                                 }
 
@@ -228,7 +229,7 @@ namespace Alis.Core.Physic.Common
                                             break;
 
                                         default:
-                                            throw new Exception();
+                                            throw new GeneralAlisException();
                                     }
                                 }
 
@@ -251,7 +252,7 @@ namespace Alis.Core.Physic.Common
 
                         if (element.Name.ToLower() != "fixture")
                         {
-                            throw new Exception();
+                            throw new GeneralAlisException();
                         }
 
                         int fixtureId = int.Parse(element.Attributes[0].Value);
@@ -310,7 +311,7 @@ namespace Alis.Core.Physic.Common
 
                         if (element.Name.ToLower() != "body")
                         {
-                            throw new Exception();
+                            throw new GeneralAlisException();
                         }
 
                         body.BodyType = (BodyType) Enum.Parse(typeof(BodyType), element.Attributes[0].Value, true);
@@ -393,7 +394,7 @@ namespace Alis.Core.Physic.Common
 
                         if (n.Name.ToLower() != "joint")
                         {
-                            throw new Exception();
+                            throw new GeneralAlisException();
                         }
 
                         JointType type = (JointType) Enum.Parse(typeof(JointType), n.Attributes[0].Value, true);
@@ -472,9 +473,9 @@ namespace Alis.Core.Physic.Common
                                 joint = new MotorJoint();
                                 break;
                             case JointType.Gear:
-                                throw new Exception("GearJoint is not supported.");
+                                throw new GeneralAlisException("GearJoint is not supported.");
                             default:
-                                throw new Exception("Invalid or unsupported joint.");
+                                throw new GeneralAlisException("Invalid or unsupported joint.");
                         }
 
                         joint.CollideConnected = collideConnected;
@@ -693,7 +694,7 @@ namespace Alis.Core.Physic.Common
                                 }
                                     break;
                                 case JointType.Gear:
-                                    throw new Exception("Gear joint is unsupported");
+                                    throw new GeneralAlisException("Gear joint is unsupported");
                                 case JointType.Angle:
                                 {
                                     switch (sn.Name.ToLower())

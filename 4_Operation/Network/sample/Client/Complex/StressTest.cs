@@ -32,6 +32,7 @@ using System.Net.WebSockets;
 using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
+using Alis.Core.Aspect.Memory.Exceptions;
 
 namespace Alis.Core.Network.Sample.Client.Complex
 {
@@ -187,7 +188,7 @@ namespace Alis.Core.Network.Sample.Client.Complex
 
                 if (!result.EndOfMessage)
                 {
-                    throw new Exception("Multi frame messages not supported");
+                    throw new GeneralAlisException("Multi frame messages not supported");
                 }
 
                 if (result.MessageType == WebSocketMessageType.Close || _token.IsCancellationRequested)
@@ -211,7 +212,7 @@ namespace Alis.Core.Network.Sample.Client.Complex
                 {
                     await _webSocket.CloseOutputAsync(WebSocketCloseStatus.InvalidPayloadData,
                         "Value actual does not equal value expected", _token);
-                    throw new Exception(
+                    throw new GeneralAlisException(
                         $"Expected: {valueExpected.Length} bytes Actual: {result.Count} bytes. Contents different.");
                 }
             }

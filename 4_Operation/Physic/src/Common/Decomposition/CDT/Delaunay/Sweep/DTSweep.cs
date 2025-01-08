@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Alis.Core.Aspect.Memory.Exceptions;
 
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
 {
@@ -652,7 +653,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
 
             if (t.GetConstrainedEdgeAcross(p))
             {
-                throw new Exception("Intersecting Constraints");
+                throw new GeneralAlisException("Intersecting Constraints");
             }
 
             bool inScanArea = TriangulationUtil.InScanArea(p, t.PointCCW(p), t.PointCW(p), op);

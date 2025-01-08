@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Memory.Exceptions;
 using Alis.Extension.Graphic.OpenGL.Enums;
 using static Alis.Extension.Graphic.OpenGL.Gl;
 
@@ -55,7 +56,7 @@ namespace Alis.Extension.Graphic.OpenGL.Constructs
 
             if (!GetShaderCompileStatus(ShaderId))
             {
-                throw new Exception(ShaderLog);
+                throw new GeneralAlisException(ShaderLog);
             }
         }
 

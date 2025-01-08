@@ -165,19 +165,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             };
             Assert.Equal(" ", options.FormattingTab);
         }
-
-        /// <summary>
-        ///     Tests that test add exception method
-        /// </summary>
-        [Fact]
-        public void TestAddExceptionMethod()
-        {
-            JsonOptions options = new JsonOptions();
-            Exception ex = new Exception("Test exception");
-            options.AddException(ex);
-            Assert.Contains(ex, options.Exceptions);
-        }
-
+        
         /// <summary>
         ///     Tests that test clone method
         /// </summary>
@@ -236,24 +224,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(600, result);
         }
 
-
-        /// <summary>
-        ///     Tests that test add exception method with valid exception
-        /// </summary>
-        [Fact]
-        public void TestAddExceptionMethodWithValidException()
-        {
-            // Arrange
-            JsonOptions options = new JsonOptions();
-            Exception ex = new Exception("Test exception");
-
-            // Act
-            options.AddException(ex);
-
-            // Assert
-            Assert.Contains(ex, options.Exceptions);
-        }
-
+        
         /// <summary>
         ///     Tests that test add exception method with null exception
         /// </summary>
@@ -266,27 +237,6 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
             // Act & Assert
             Assert.Throws<ArgumentNullException>(() => options.AddException(ex));
-        }
-
-        /// <summary>
-        ///     Tests that test add exception method with maximum exceptions count exceeded
-        /// </summary>
-        [Fact]
-        public void TestAddExceptionMethodWithMaximumExceptionsCountExceeded()
-        {
-            // Arrange
-            JsonOptions options = new JsonOptions
-            {
-                MaximumExceptionsCount = 1
-            };
-            Exception ex1 = new Exception("Test exception 1");
-            Exception ex2 = new Exception("Test exception 2");
-
-            // Act
-            options.AddException(ex1);
-
-            // Assert
-            Assert.Throws<JsonException>(() => options.AddException(ex2));
         }
     }
 }

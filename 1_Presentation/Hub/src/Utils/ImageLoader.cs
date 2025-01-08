@@ -30,6 +30,7 @@
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Memory.Exceptions;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Alis.Extension.Graphic.OpenGL;
@@ -62,7 +63,7 @@ namespace Alis.App.Hub.Utils
             IntPtr surface = SdlImage.LoadImg(filePath);
             if (surface == IntPtr.Zero)
             {
-                throw new Exception($"Failed to load image: {Sdl.GetError()}");
+                throw new GeneralAlisException($"Failed to load image: {Sdl.GetError()}");
             }
 
             // Get image dimensions

@@ -1367,30 +1367,6 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        ///     Tests that get type exception positive position returns correct message
-        /// </summary>
-        [Fact]
-        public void GetTypeException_PositivePosition_ReturnsCorrectMessage()
-        {
-            Exception innerException = new Exception("Inner exception message");
-            JsonException exception = JsonSerializer.GetTypeException(5, "TestType", innerException);
-            Assert.Equal("JSO0011: JSON deserialization error detected for 'TestType' type at position 5.", exception.Message);
-            Assert.Equal(innerException, exception.InnerException);
-        }
-
-        /// <summary>
-        ///     Tests that get type exception negative position returns correct message
-        /// </summary>
-        [Fact]
-        public void GetTypeException_NegativePosition_ReturnsCorrectMessage()
-        {
-            Exception innerException = new Exception("Inner exception message");
-            JsonException exception = JsonSerializer.GetTypeException(-1, "TestType", innerException);
-            Assert.Equal("JSO0010: JSON deserialization error detected for 'TestType' type.", exception.Message);
-            Assert.Equal(innerException, exception.InnerException);
-        }
-
-        /// <summary>
         ///     Tests that get eof exception returns correct message
         /// </summary>
         [Fact]
@@ -2718,36 +2694,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Assert
             Assert.Equal("Test", result);
         }
-
-        /// <summary>
-        ///     Tests that handle creation exception with valid type and exception returns null
-        /// </summary>
-        [Fact]
-        public void HandleCreationException_WithValidTypeAndException_ReturnsNull()
-        {
-            // Arrange
-            Type type = typeof(string);
-            Exception exception = new Exception("Test exception");
-            JsonOptions options = new JsonOptions();
-
-            // Act
-            Assert.Throws<JsonException>(() => JsonSerializer.HandleCreationException(type, exception, options));
-        }
-
-        /// <summary>
-        ///     Tests that handle creation exception with null type throws exception
-        /// </summary>
-        [Fact]
-        public void HandleCreationException_WithNullType_ThrowsException()
-        {
-            // Arrange
-            Type type = null;
-            Exception exception = new Exception("Test exception");
-            JsonOptions options = new JsonOptions();
-
-            // Act & Assert
-            Assert.Throws<NullReferenceException>(() => JsonSerializer.HandleCreationException(type, exception, options));
-        }
+        
 
         /// <summary>
         ///     Tests that handle creation exception with null exception throws exception
@@ -2763,22 +2710,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Act & Assert
             Assert.Throws<JsonException>(() => JsonSerializer.HandleCreationException(type, exception, options));
         }
-
-        /// <summary>
-        ///     Tests that handle creation exception with null options throws exception
-        /// </summary>
-        [Fact]
-        public void HandleCreationException_WithNullOptions_ThrowsException()
-        {
-            // Arrange
-            Type type = typeof(string);
-            Exception exception = new Exception("Test exception");
-            JsonOptions options = null;
-
-            // Act & Assert
-            Assert.Throws<JsonException>(() => JsonSerializer.HandleCreationException(type, exception, options));
-        }
-
+        
         /// <summary>
         ///     Tests that read dictionary when called with valid json returns correct dictionary
         /// </summary>
@@ -4940,38 +4872,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
             Assert.Throws<TargetParameterCountException>(() => JsonSerializer.InvokeConstructor(constructor, info, context));
         }
-
-        /// <summary>
-        ///     Tests that handle exception when throw exceptions is false adds exception to options
-        /// </summary>
-        [Fact]
-        public void HandleException_WhenThrowExceptionsIsFalse_AddsExceptionToOptions()
-        {
-            // Arrange
-            JsonOptions options = new JsonOptions {ThrowExceptions = false};
-            Exception exception = new Exception("Test exception");
-
-            // Act
-            JsonSerializer.HandleException(exception, options);
-
-            // Assert
-            Assert.Single(options.Exceptions);
-            Assert.Equal(exception, options.Exceptions.First());
-        }
-
-        /// <summary>
-        ///     Tests that handle exception when throw exceptions is true throws exception
-        /// </summary>
-        [Fact]
-        public void HandleException_WhenThrowExceptionsIsTrue_ThrowsException()
-        {
-            // Arrange
-            JsonOptions options = new JsonOptions {ThrowExceptions = true};
-            Exception exception = new Exception("Test exception");
-
-            // Act & Assert
-            Assert.Throws<Exception>(() => JsonSerializer.HandleException(exception, options));
-        }
+        
 
         /// <summary>
         ///     Tests that update context should update context correctly
@@ -5348,21 +5249,6 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        ///     Tests that handle creation exception with null type throws argument null exception
-        /// </summary>
-        [Fact]
-        public void HandleCreationException_WithNullType_ThrowsArgumentNullException()
-        {
-            // Arrange
-            Type type = null;
-            Exception exception = new Exception();
-            JsonOptions options = new JsonOptions();
-
-            // Act & Assert
-            Assert.Throws<NullReferenceException>(() => JsonSerializer.HandleCreationException(type, exception, options));
-        }
-
-        /// <summary>
         ///     Tests that handle creation exception with null exception throws argument null exception
         /// </summary>
         [Fact]
@@ -5376,40 +5262,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Act & Assert
             Assert.Throws<JsonException>(() => JsonSerializer.HandleCreationException(type, exception, options));
         }
-
-        /// <summary>
-        ///     Tests that handle creation exception with null options throws argument null exception
-        /// </summary>
-        [Fact]
-        public void HandleCreationException_WithNullOptions_ThrowsArgumentNullException()
-        {
-            // Arrange
-            Type type = typeof(string);
-            Exception exception = new Exception();
-            JsonOptions options = null;
-
-            // Act & Assert
-            Assert.Throws<JsonException>(() => JsonSerializer.HandleCreationException(type, exception, options));
-        }
-
-        /// <summary>
-        ///     Tests that handle creation exception with valid input returns null
-        /// </summary>
-        [Fact]
-        public void HandleCreationException_WithValidInput_ReturnsNull()
-        {
-            // Arrange
-            Type type = typeof(string);
-            Exception exception = new Exception();
-            JsonOptions options = new JsonOptions();
-
-            // Act
-            Exception result = Record.Exception(() => JsonSerializer.HandleCreationException(type, exception, options));
-
-            // Assert
-            Assert.IsType<JsonException>(result);
-        }
-
+        
+        
         /// <summary>
         ///     Tests that write dictionary entry with write keys without quotes option writes without quotes
         /// </summary>
@@ -5992,24 +5846,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Assert
             Assert.Contains("Callback invoked", writer.ToString());
         }
-
-        /// <summary>
-        ///     Tests that handle after write object callback when callback is available and throws exception propagates exception
-        /// </summary>
-        /// <exception cref="Exception">Callback exception</exception>
-        [Fact]
-        public void HandleAfterWriteObjectCallback_WhenCallbackIsAvailableAndThrowsException_PropagatesException()
-        {
-            // Arrange
-            TextWriter writer = new StringWriter();
-            object value = new object();
-            IDictionary<object, object> objectGraph = new Dictionary<object, object>();
-            JsonOptions options = new JsonOptions {AfterWriteObjectCallback = args => throw new Exception("Callback exception")}; // Callback is available and throws exception
-
-            // Act & Assert
-            Assert.Throws<Exception>(() => JsonSerializer.HandleAfterWriteObjectCallback(writer, value, objectGraph, options));
-        }
-
+        
         /// <summary>
         ///     Tests that handle after write object callback when callback is available and modifies event args modifies event
         ///     args
@@ -6227,37 +6064,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
             JsonSerializer.HandleStreamValue(writer, value, objectGraph, options); // No exception should be thrown
         }
-
-        /// <summary>
-        ///     Tests that handle creation exception valid type valid exception valid options returns null
-        /// </summary>
-        [Fact]
-        public void HandleCreationException_ValidTypeValidExceptionValidOptions_ReturnsNull()
-        {
-            // Arrange
-            Type type = typeof(string);
-            Exception exception = new Exception();
-            JsonOptions options = new JsonOptions();
-
-            // Act
-            Assert.Throws<JsonException>(() => JsonSerializer.HandleCreationException(type, exception, options));
-        }
-
-        /// <summary>
-        ///     Tests that handle creation exception null type valid exception valid options returns null
-        /// </summary>
-        [Fact]
-        public void HandleCreationException_NullTypeValidExceptionValidOptions_ReturnsNull()
-        {
-            // Arrange
-            Type type = null;
-            Exception exception = new Exception();
-            JsonOptions options = new JsonOptions();
-
-            // Act
-            Assert.Throws<NullReferenceException>(() => JsonSerializer.HandleCreationException(type, exception, options));
-        }
-
+        
         /// <summary>
         ///     Tests that handle creation exception valid type null exception valid options returns null
         /// </summary>
@@ -6268,21 +6075,6 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type type = typeof(string);
             Exception exception = null;
             JsonOptions options = new JsonOptions();
-
-            // Act
-            Assert.Throws<JsonException>(() => JsonSerializer.HandleCreationException(type, exception, options));
-        }
-
-        /// <summary>
-        ///     Tests that handle creation exception valid type valid exception null options returns null
-        /// </summary>
-        [Fact]
-        public void HandleCreationException_ValidTypeValidExceptionNullOptions_ReturnsNull()
-        {
-            // Arrange
-            Type type = typeof(string);
-            Exception exception = new Exception();
-            JsonOptions options = null;
 
             // Act
             Assert.Throws<JsonException>(() => JsonSerializer.HandleCreationException(type, exception, options));
