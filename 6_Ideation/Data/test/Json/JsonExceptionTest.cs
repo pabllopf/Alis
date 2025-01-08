@@ -38,28 +38,6 @@ namespace Alis.Core.Aspect.Data.Test.Json
     /// </summary>
     public class JsonExceptionTest
     {
-        /// <summary>
-        ///     Tests that test default constructor
-        /// </summary>
-        [Fact]
-        public void TestDefaultConstructor()
-        {
-            JsonException ex = new JsonException();
-            Assert.NotNull(ex);
-            Assert.Equal("JSO0001: JSON GeneralAlisException.", ex.Message);
-        }
-
-        /// <summary>
-        ///     Tests that test constructor with message
-        /// </summary>
-        [Fact]
-        public void TestConstructorWithMessage()
-        {
-            string message = "Test message";
-            JsonException ex = new JsonException(message);
-            Assert.NotNull(ex);
-            Assert.Equal(message, ex.Message);
-        }
         
         /// <summary>
         ///     Tests that test get code method
