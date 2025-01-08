@@ -259,6 +259,13 @@ socio-economic status, nationality, personal appearance, race, religion, or sexu
                 </a>
             </td>
             <td align="center">
+                <a href="https://github.com/pabllopf">
+                    <img src="https://avatars.githubusercontent.com/u/48176121?v=4" width="75;" alt="pabllopf"/>
+                    <br />
+                    <sub><b>Pablo Perdomo Falcón</b></sub>
+                </a>
+            </td>
+            <td align="center">
                 <a href="https://github.com/Chgv99">
                     <img src="https://avatars.githubusercontent.com/u/55676590?v=4" width="75;" alt="Chgv99"/>
                     <br />
