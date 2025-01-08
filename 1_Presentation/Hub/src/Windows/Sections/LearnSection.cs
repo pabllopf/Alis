@@ -269,9 +269,8 @@ namespace Alis.App.Hub.Windows.Sections
 
             ImGui.Text("Quick Tips");
             ImGui.Separator();
-
-            Random random = new Random();
-            ImGui.TextWrapped(tips[random.Next(tips.Count)]);
+            
+            ImGui.TextWrapped(tips[0]);
         }
     }
 }

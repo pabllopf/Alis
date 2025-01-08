@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
 {
@@ -40,7 +41,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
         /// <summary>
         ///     The random
         /// </summary>
-        private static readonly Random RNG = new Random();
+        private static readonly RandomNumberGenerator RNG = RandomNumberGenerator.Create();
 
         /// <summary>
         ///     Uniforms the distribution using the specified n
@@ -51,9 +52,21 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
         public static List<TriangulationPoint> UniformDistribution(int n, double scale)
         {
             List<TriangulationPoint> points = new List<TriangulationPoint>();
+            byte[] buffer = new byte[4];
+
             for (int i = 0; i < n; i++)
             {
-                points.Add(new TriangulationPoint(scale * (0.5 - RNG.NextDouble()), scale * (0.5 - RNG.NextDouble())));
+                // Generate secure random number for X coordinate
+                RNG.GetBytes(buffer);
+                double x = (BitConverter.ToUInt32(buffer, 0) / (double)uint.MaxValue) - 0.5;
+                x *= scale;
+
+                // Generate secure random number for Y coordinate
+                RNG.GetBytes(buffer);
+                double y = (BitConverter.ToUInt32(buffer, 0) / (double)uint.MaxValue) - 0.5;
+                y *= scale;
+
+                points.Add(new TriangulationPoint(x, y));
             }
 
             return points;

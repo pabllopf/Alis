@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Security.Cryptography;
 using Alis.Core.Physic.Common.Decomposition.CDT.Polygon;
 
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
@@ -40,13 +41,8 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
         /// <summary>
         ///     The random
         /// </summary>
-        private static readonly Random RNG = new Random();
-
-        /// <summary>
-        ///     The pi
-        /// </summary>
-        private static readonly double PI_2 = 2.0 * Math.PI;
-
+        private static readonly RandomNumberGenerator RNG = RandomNumberGenerator.Create();
+        
         /// <summary>
         ///     Randoms the circle sweep using the specified scale
         /// </summary>
@@ -58,32 +54,43 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
             PolygonPoint point;
             PolygonPoint[] points;
             double radius = scale / 4;
-
+    
             points = new PolygonPoint[vertexCount];
-            for (int i = 0; i < vertexCount; i++)
+    
+            using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
             {
-                do
+                byte[] buffer = new byte[4];
+
+                for (int i = 0; i < vertexCount; i++)
                 {
-                    if (i % 250 == 0)
+                    do
                     {
-                        radius += scale / 2 * (0.5 - RNG.NextDouble());
-                    }
-                    else if (i % 50 == 0)
-                    {
-                        radius += scale / 5 * (0.5 - RNG.NextDouble());
-                    }
-                    else
-                    {
-                        radius += 25 * scale / vertexCount * (0.5 - RNG.NextDouble());
-                    }
+                        // Generate a secure random number for radius adjustment
+                        rng.GetBytes(buffer);
+                        double randomValue = (BitConverter.ToUInt32(buffer, 0) / (double)uint.MaxValue) - 0.5;
 
-                    radius = radius > scale / 2 ? scale / 2 : radius;
-                    radius = radius < scale / 10 ? scale / 10 : radius;
-                } while (radius < scale / 10 || radius > scale / 2);
+                        if (i % 250 == 0)
+                        {
+                            radius += scale / 2 * randomValue;
+                        }
+                        else if (i % 50 == 0)
+                        {
+                            radius += scale / 5 * randomValue;
+                        }
+                        else
+                        {
+                            radius += 25 * scale / vertexCount * randomValue;
+                        }
 
-                point = new PolygonPoint(radius * Math.Cos(PI_2 * i / vertexCount),
-                    radius * Math.Sin(PI_2 * i / vertexCount));
-                points[i] = point;
+                        // Constrain the radius to be within bounds
+                        radius = Math.Min(Math.Max(radius, scale / 10), scale / 2);
+                    } while (radius < scale / 10 || radius > scale / 2);
+
+                    // Create the point with the secure random radius
+                    point = new PolygonPoint(radius * Math.Cos(Math.PI * 2 * i / vertexCount),
+                        radius * Math.Sin(Math.PI * 2 * i / vertexCount));
+                    points[i] = point;
+                }
             }
 
             return new Polygon.Polygon(points);
@@ -102,18 +109,30 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
             double radius = scale / 4;
 
             points = new PolygonPoint[vertexCount];
-            for (int i = 0; i < vertexCount; i++)
+    
+            using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
             {
-                do
-                {
-                    radius += scale / 5 * (0.5 - RNG.NextDouble());
-                    radius = radius > scale / 2 ? scale / 2 : radius;
-                    radius = radius < scale / 10 ? scale / 10 : radius;
-                } while (radius < scale / 10 || radius > scale / 2);
+                byte[] buffer = new byte[4];
 
-                point = new PolygonPoint(radius * Math.Cos(PI_2 * i / vertexCount),
-                    radius * Math.Sin(PI_2 * i / vertexCount));
-                points[i] = point;
+                for (int i = 0; i < vertexCount; i++)
+                {
+                    do
+                    {
+                        // Generate secure random number for radius adjustment
+                        rng.GetBytes(buffer);
+                        double randomValue = (BitConverter.ToUInt32(buffer, 0) / (double)uint.MaxValue) - 0.5;
+
+                        radius += scale / 5 * randomValue;
+
+                        // Constrain the radius within the desired range
+                        radius = Math.Min(Math.Max(radius, scale / 10), scale / 2);
+                    } while (radius < scale / 10 || radius > scale / 2);
+
+                    // Calculate the point based on the secure random radius
+                    point = new PolygonPoint(radius * Math.Cos(Math.PI * 2 * i / vertexCount),
+                        radius * Math.Sin(Math.PI * 2 * i / vertexCount));
+                    points[i] = point;
+                }
             }
 
             return new Polygon.Polygon(points);

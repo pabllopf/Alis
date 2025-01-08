@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Security.Cryptography;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Math;
 
@@ -96,7 +97,11 @@ namespace Alis.Extension.Math.DungeonGenerator
         /// <returns>The corridor</returns>
         public static Corridor SetUpFirstCorridor(int width, int height, Room room)
         {
-            Direction direction = (Direction) new Random().Next(1, 5);
+            RandomNumberGenerator rng = RandomNumberGenerator.Create();
+            
+            byte[] randomNumber = new byte[1];
+            rng.GetBytes(randomNumber);
+            Direction direction = (Direction)(randomNumber[0] % 4 + 1);
 
             int xPos = 0;
             int yPos = 0;
@@ -148,7 +153,12 @@ namespace Alis.Extension.Math.DungeonGenerator
         /// <returns>The corridor</returns>
         public static Corridor SetUp(int width, int height, Room room)
         {
-            Direction direction = (Direction) new Random().Next(1, 5);
+            RandomNumberGenerator rng = RandomNumberGenerator.Create();
+            
+            byte[] randomNumber = new byte[1];
+            rng.GetBytes(randomNumber);
+            Direction direction = (Direction)(randomNumber[0] % 4 + 1);
+            
             Direction oppositeDirection = (Direction) (((int) room.Direction + 2) % 4);
 
             direction = direction == oppositeDirection ? (Direction) ((int) direction++ % 4) : direction;

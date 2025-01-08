@@ -462,16 +462,66 @@ namespace Alis.Extension.Updater
             }
         }
 
+        private const int THRESHOLD_ENTRIES = 10000;
+        private const int THRESHOLD_SIZE = 1000000000; // 1 GB
+        private const double THRESHOLD_RATIO = 10.0; // Compression ratio threshold
 
         /// <summary>
-        ///     Extracts the zip using the specified file async
+        ///     Extracts the zip using the specified file asynchronously and applies security checks.
         /// </summary>
-        /// <param name="fileAsync">The file</param>
+        /// <param name="fileAsync">The path to the zip file.</param>
         /// <exception cref="InvalidOperationException">Exceeded the maximum compression ratio threshold.</exception>
         /// <exception cref="InvalidOperationException">Exceeded the maximum number of entries threshold.</exception>
         /// <exception cref="InvalidOperationException">Exceeded the maximum uncompressed size threshold.</exception>
         private void ExtractZip(string fileAsync)
         {
+            int totalSizeArchive = 0;
+            int totalEntryArchive = 0;
+
+            // Open the zip file for reading
+            using (FileStream zipToOpen = new FileStream(fileAsync, FileMode.Open))
+            using (ZipArchive archive = new ZipArchive(zipToOpen, ZipArchiveMode.Read))
+            {
+                foreach (ZipArchiveEntry entry in archive.Entries)
+                {
+                    totalEntryArchive++;
+
+                    // Check if the number of entries exceeds the threshold
+                    if (totalEntryArchive > THRESHOLD_ENTRIES)
+                    {
+                        throw new InvalidOperationException("Exceeded the maximum number of entries threshold.");
+                    }
+
+                    using (Stream entryStream = entry.Open())
+                    {
+                        byte[] buffer = new byte[1024];
+                        int totalSizeEntry = 0;
+                        int numBytesRead = 0;
+
+                        // Read through the entry and calculate its uncompressed size
+                        while ((numBytesRead = entryStream.Read(buffer, 0, buffer.Length)) > 0)
+                        {
+                            totalSizeEntry += numBytesRead;
+                            totalSizeArchive += numBytesRead;
+
+                            // Check for suspiciously high compression ratio
+                            double compressionRatio = (double) totalSizeEntry / entry.CompressedLength;
+                            if (compressionRatio > THRESHOLD_RATIO)
+                            {
+                                throw new InvalidOperationException("Exceeded the maximum compression ratio threshold.");
+                            }
+                        }
+
+                        // Check if the total uncompressed data size exceeds the threshold
+                        if (totalSizeArchive > THRESHOLD_SIZE)
+                        {
+                            throw new InvalidOperationException("Exceeded the maximum uncompressed size threshold.");
+                        }
+                    }
+                }
+            }
+
+            // If we reach this point, extraction is safe
             ZipFile.ExtractToDirectory(fileAsync, _programFolder);
             OnUpdateProgressChanged(0.7f, "Extracted and replaced.");
         }
