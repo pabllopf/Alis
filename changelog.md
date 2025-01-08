@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.5.8] - 2025-01-10
+### :bug: Bug Fixes
+- [`2f209a5`](https://github.com/pabllopf/Alis/commit/2f209a548766a4b7897c82d1c25644deb2ddbd51) - delete html code on readme files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a57d977`](https://github.com/pabllopf/Alis/commit/a57d97732bcb5eada79195e14ded36f7989e87f3) - header of readme files *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`c2bc2db`](https://github.com/pabllopf/Alis/commit/c2bc2dbf4c625ab0a74b68fa9db39d12ac5282c5) - pro check all platforns *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`839c53a`](https://github.com/pabllopf/Alis/commit/839c53afdddd3937e3008281ae29e394c1eec417) - add new comments to dispose methods *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.5.7] - 2025-01-08
 ### :sparkles: New Features
 - [`455af46`](https://github.com/pabllopf/Alis/commit/455af4663cb1fa4a2b18f66459c893f87e53e7d6) - include first file picker on hub engine *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -3918,3 +3930,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.5.5]: https://github.com/pabllopf/Alis/compare/v0.5.4...v0.5.5
 [v0.5.6]: https://github.com/pabllopf/Alis/compare/v0.5.5...v0.5.6
 [v0.5.7]: https://github.com/pabllopf/Alis/compare/v0.5.6...v0.5.7
+[v0.5.8]: https://github.com/pabllopf/Alis/compare/v0.5.7...v0.5.8
