@@ -57,6 +57,14 @@ namespace Alis.Extension.Updater.Services.Api
         }
 
         /// <summary>
+        ///     Disposes this instance
+        /// </summary>
+        public void Dispose()
+        {
+            _httpClient?.Dispose();
+        }
+
+        /// <summary>
         ///     Gets the latest release
         /// </summary>
         /// <returns>A task containing a dictionary of string and object</returns>
@@ -71,13 +79,5 @@ namespace Alis.Extension.Updater.Services.Api
         ///     Gets the value of the api url
         /// </summary>
         public string apiUrl { get; }
-
-        /// <summary>
-        /// Disposes this instance
-        /// </summary>
-        public void Dispose()
-        {
-            _httpClient?.Dispose();
-        }
     }
 }

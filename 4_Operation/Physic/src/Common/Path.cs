@@ -131,7 +131,9 @@ namespace Alis.Core.Physic.Common
         public void Translate(ref Vector2F vector)
         {
             for (int i = 0; i < ControlPoints.Count; i++)
+            {
                 ControlPoints[i] = ControlPoints[i] + vector;
+            }
         }
 
         /// <summary>
@@ -141,7 +143,9 @@ namespace Alis.Core.Physic.Common
         public void Scale(ref Vector2F value)
         {
             for (int i = 0; i < ControlPoints.Count; i++)
+            {
                 ControlPoints[i] = ControlPoints[i] * value;
+            }
         }
 
         /// <summary>
@@ -153,7 +157,9 @@ namespace Alis.Core.Physic.Common
             Complex rotation = Complex.FromAngle(value);
 
             for (int i = 0; i < ControlPoints.Count; i++)
+            {
                 ControlPoints[i] = Complex.Multiply(ControlPoints[i], ref rotation);
+            }
         }
 
         /// <summary>

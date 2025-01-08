@@ -43,7 +43,9 @@ namespace Alis.Core.Physic.Common
         public FileBuffer(Stream stream)
         {
             using (StreamReader sr = new StreamReader(stream))
+            {
                 Buffer = sr.ReadToEnd();
+            }
 
             Position = 0;
         }

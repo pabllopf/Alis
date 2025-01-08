@@ -305,7 +305,9 @@ namespace Alis.Core.Physic.Dynamics
         internal void TouchProxies(IBroadPhase broadPhase)
         {
             for (int i = 0; i < ProxyCount; ++i)
+            {
                 broadPhase.TouchProxy(Proxies[i].ProxyId);
+            }
         }
 
         /// <summary>

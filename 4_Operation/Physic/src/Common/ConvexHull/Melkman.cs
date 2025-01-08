@@ -152,7 +152,9 @@ namespace Alis.Core.Physic.Common.ConvexHull
                 Vertices convexHull = new Vertices(qf);
 
                 for (int i = qb; i < qf; i++)
+                {
                     convexHull.Add(deque[i]);
+                }
 
                 return convexHull;
             }
@@ -161,10 +163,14 @@ namespace Alis.Core.Physic.Common.ConvexHull
                 Vertices convexHull = new Vertices(qf + deque.Length);
 
                 for (int i = 0; i < qf; i++)
+                {
                     convexHull.Add(deque[i]);
+                }
 
                 for (int i = qb; i < deque.Length; i++)
+                {
                     convexHull.Add(deque[i]);
+                }
 
                 return convexHull;
             }
