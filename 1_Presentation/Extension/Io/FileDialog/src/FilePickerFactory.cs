@@ -9,6 +9,11 @@ namespace Alis.Extension.Io.FileDialog
     /// </summary>
     public static class FilePickerFactory
     {
+        /// <summary>
+        /// Creates the file picker
+        /// </summary>
+        /// <exception cref="NotSupportedException">This platform is not supported.</exception>
+        /// <returns>The file picker</returns>
         public static IFilePicker CreateFilePicker()
         {
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.OSX)
