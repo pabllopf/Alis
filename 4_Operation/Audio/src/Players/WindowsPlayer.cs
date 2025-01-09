@@ -235,6 +235,9 @@ namespace Alis.Core.Audio.Players
             return Task.CompletedTask;
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             _playbackTimer?.Dispose();

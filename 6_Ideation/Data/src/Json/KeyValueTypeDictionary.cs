@@ -137,6 +137,9 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The enumerator</returns>
         IEnumerator IEnumerable.GetEnumerator() => throw new NotSupportedException();
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             _enumerator?.Dispose();

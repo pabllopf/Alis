@@ -1199,6 +1199,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             }
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             SolveVelocityConstraintsWaitLock?.Dispose();

@@ -877,6 +877,9 @@ namespace Alis.App.Installer
             }
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             _shader?.Dispose();

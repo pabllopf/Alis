@@ -1424,6 +1424,9 @@ namespace Alis.App.Engine
             }
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             _shader?.Dispose();
