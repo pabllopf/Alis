@@ -130,6 +130,15 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public TimeSpan JointUpdateTime;
 
+
+        /// <summary>
+        ///     Disposes this instance
+        /// </summary>
+        public void Dispose()
+        {
+            _contactSolver?.Dispose();
+        }
+
         /// <summary>
         ///     Resets the body capacity
         /// </summary>
@@ -599,15 +608,6 @@ namespace Alis.Core.Physic.Dynamics
                     postSolveHandler(c, constraints[i]);
                 }
             }
-        }
-
-        
-        /// <summary>
-        /// Disposes this instance
-        /// </summary>
-        public void Dispose()
-        {
-            _contactSolver?.Dispose();
         }
     }
 }

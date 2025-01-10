@@ -173,7 +173,7 @@ namespace Alis.Extension.Graphic.OpenGL.Sample
             try
             {
                 IntPtr vPointer = vHandle.AddrOfPinnedObject();
-                Gl.GlBufferData(BufferTarget.ArrayBuffer, (IntPtr) (vertices.Length * sizeof(float)), vPointer, BufferUsageHint.StaticDraw);
+                Gl.GlBufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), vPointer, BufferUsageHint.StaticDraw);
             }
             finally
             {
@@ -188,7 +188,7 @@ namespace Alis.Extension.Graphic.OpenGL.Sample
             try
             {
                 IntPtr iPointer = iHandle.AddrOfPinnedObject();
-                Gl.GlBufferData(BufferTarget.ElementArrayBuffer, (IntPtr) (indices.Length * sizeof(uint)), iPointer, BufferUsageHint.StaticDraw);
+                Gl.GlBufferData(BufferTarget.ElementArrayBuffer, indices.Length * sizeof(uint), iPointer, BufferUsageHint.StaticDraw);
             }
             finally
             {
@@ -246,7 +246,7 @@ namespace Alis.Extension.Graphic.OpenGL.Sample
             Gl.EnableVertexAttribArray(0);
             Gl.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 6 * sizeof(float), IntPtr.Zero);
             Gl.EnableVertexAttribArray(1);
-            Gl.VertexAttribPointer(1, 3, VertexAttribPointerType.Float, false, 6 * sizeof(float), (IntPtr) (3 * sizeof(float)));
+            Gl.VertexAttribPointer(1, 3, VertexAttribPointerType.Float, false, 6 * sizeof(float), 3 * sizeof(float));
 
             while (running)
             {
