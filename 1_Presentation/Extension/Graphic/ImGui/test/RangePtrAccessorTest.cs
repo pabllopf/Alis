@@ -29,6 +29,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Math.Matrix;
 using Xunit;
 
 namespace Alis.Extension.Graphic.ImGui.Test
@@ -103,7 +104,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             RangePtrAccessor<int> accessor = new RangePtrAccessor<int>(new IntPtr(123), 10);
 
             // Act & Assert
-            Assert.Throws<IndexOutOfRangeException>(() => accessor[10]);
+            Assert.Throws<CustomIndexOutOfRangeException>(() => accessor[10]);
         }
     }
 }
