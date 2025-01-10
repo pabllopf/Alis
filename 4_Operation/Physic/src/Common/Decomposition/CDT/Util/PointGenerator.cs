@@ -58,12 +58,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
             {
                 // Generate secure random number for X coordinate
                 RNG.GetBytes(buffer);
-                double x = (BitConverter.ToUInt32(buffer, 0) / (double)uint.MaxValue) - 0.5;
+                double x = BitConverter.ToUInt32(buffer, 0) / (double) uint.MaxValue - 0.5;
                 x *= scale;
 
                 // Generate secure random number for Y coordinate
                 RNG.GetBytes(buffer);
-                double y = (BitConverter.ToUInt32(buffer, 0) / (double)uint.MaxValue) - 0.5;
+                double y = BitConverter.ToUInt32(buffer, 0) / (double) uint.MaxValue - 0.5;
                 y *= scale;
 
                 points.Add(new TriangulationPoint(x, y));

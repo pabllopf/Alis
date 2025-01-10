@@ -235,7 +235,9 @@ namespace Alis.Core.Physic.Common
             Debug.Assert(!AttachedToBody, "Translating vertices that are used by a Body can result in unstable behavior. Use Body.Position instead.");
 
             for (int i = 0; i < Count; i++)
+            {
                 this[i] = this[i] + value;
+            }
 
             if ((Holes != null) && (Holes.Count > 0))
             {
@@ -264,7 +266,9 @@ namespace Alis.Core.Physic.Common
             Debug.Assert(!AttachedToBody, "Scaling vertices that are used by a Body can result in unstable behavior.");
 
             for (int i = 0; i < Count; i++)
+            {
                 this[i] = this[i] * value;
+            }
 
             if ((Holes != null) && (Holes.Count > 0))
             {
