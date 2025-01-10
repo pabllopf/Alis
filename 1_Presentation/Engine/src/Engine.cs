@@ -938,7 +938,6 @@ namespace Alis.App.Engine
                     {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.RightAlt, true);
                     }
-
                     if (sym == KeyCodes.Lctrl)
                     {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.LeftCtrl, true);
