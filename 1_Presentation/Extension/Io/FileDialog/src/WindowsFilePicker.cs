@@ -1,15 +1,44 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:WindowsFilePicker.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Diagnostics;
 
 namespace Alis.Extension.Io.FileDialog
 {
     /// <summary>
-    /// FilePicker implementation for Windows using PowerShell.
+    ///     FilePicker implementation for Windows using PowerShell.
     /// </summary>
     public class WindowsFilePicker : IFilePicker
     {
         /// <summary>
-        /// Chooses the file
+        ///     Chooses the file
         /// </summary>
         /// <returns>The string</returns>
         public string ChooseFile()
@@ -25,7 +54,7 @@ namespace Alis.Extension.Io.FileDialog
                 UseShellExecute = false,
                 CreateNoWindow = true
             };
-            
+
             // Start the process and capture its output
             process.Start();
             process.WaitForExit();
@@ -37,12 +66,10 @@ namespace Alis.Extension.Io.FileDialog
                 Console.WriteLine("File selected!");
                 return "selected_file_path"; // Return the file path if a file is selected (replace with actual capture logic)
             }
-            else
-            {
-                // The user cancelled or closed the dialog
-                Console.WriteLine("The user cancelled or closed the dialog.");
-                return null; // Return null if no file was selected
-            }
+
+            // The user cancelled or closed the dialog
+            Console.WriteLine("The user cancelled or closed the dialog.");
+            return null; // Return null if no file was selected
         }
     }
 }

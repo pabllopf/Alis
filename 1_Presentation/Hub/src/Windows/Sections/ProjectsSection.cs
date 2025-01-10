@@ -349,13 +349,13 @@ namespace Alis.App.Hub.Windows.Sections
                 {
                     // DEFAULT PATH USER PATH:
                     string defaultPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-                   
+
                     // Get the platform-specific file picker
                     IFilePicker filePicker = FilePickerFactory.CreateFilePicker();
 
                     // Choose a file using the platform-specific picker
                     string selectedFile = filePicker.ChooseFile();
-                    
+
                     if (!string.IsNullOrEmpty(selectedFile))
                     {
                         projectPath = selectedFile;

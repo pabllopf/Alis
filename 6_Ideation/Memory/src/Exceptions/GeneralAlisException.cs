@@ -31,15 +31,14 @@ using System;
 
 namespace Alis.Core.Aspect.Memory.Exceptions
 {
-    public class GeneralAlisException: Exception
+    public class GeneralAlisException : Exception
     {
         public GeneralAlisException()
         {
         }
-        
+
         public GeneralAlisException(string message) : base(message)
         {
-            
         }
     }
 }

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Matrix;
@@ -106,10 +105,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
         public bool Contains(T value)
         {
             for (int i = 0; i < 3; ++i)
+            {
                 if (this[i] == value)
                 {
                     return true;
                 }
+            }
 
             return false;
         }
@@ -122,10 +123,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
         public int IndexOf(T value)
         {
             for (int i = 0; i < 3; ++i)
+            {
                 if (this[i] == value)
                 {
                     return i;
                 }
+            }
 
             return -1;
         }
@@ -145,10 +148,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
         public void Clear(T value)
         {
             for (int i = 0; i < 3; ++i)
+            {
                 if (this[i] == value)
                 {
                     this[i] = null;
                 }
+            }
         }
 
         /// <summary>
@@ -157,7 +162,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
         /// <returns>An enumerable of t</returns>
         private IEnumerable<T> Enumerate()
         {
-            for (int i = 0; i < 3; ++i) yield return this[i];
+            for (int i = 0; i < 3; ++i)
+            {
+                yield return this[i];
+            }
         }
     }
 }

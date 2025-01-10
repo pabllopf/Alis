@@ -42,7 +42,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
     /// <summary>
     ///     The contact solver class
     /// </summary>
-    public class ContactSolver: IDisposable
+    public class ContactSolver : IDisposable
     {
         /// <summary>
         ///     The countdown event
@@ -93,6 +93,14 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         ///     The velocity constraints multithread threshold
         /// </summary>
         private int _velocityConstraintsMultithreadThreshold;
+
+        /// <summary>
+        ///     Disposes this instance
+        /// </summary>
+        public void Dispose()
+        {
+            SolveVelocityConstraintsWaitLock?.Dispose();
+        }
 
         /// <summary>
         ///     Resets the step
@@ -390,7 +398,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                 // We avoid SolveVelocityConstraintsWaitLock.Wait(); because it spins a few milliseconds before going into sleep. Going into sleep(0) directly in a while loop is faster.
                 while (SolveVelocityConstraintsWaitLock.CurrentCount > 0)
+                {
                     Thread.Sleep(0);
+                }
 
                 SolveVelocityConstraints(0, _count);
             }
@@ -1197,14 +1207,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             {
                 _queue.Enqueue((SolveVelocityConstraintsState) state);
             }
-        }
-
-        /// <summary>
-        /// Disposes this instance
-        /// </summary>
-        public void Dispose()
-        {
-            SolveVelocityConstraintsWaitLock?.Dispose();
         }
     }
 }

@@ -189,7 +189,7 @@ namespace Alis.Core.Aspect.Logging.Test
             string output = consoleOutput.ToString();
             Assert.Contains("Error: Test Error Message", output);
         }
-        
+
         /// <summary>
         ///     Tests that set detail level should change detail level when calling different methods
         /// </summary>

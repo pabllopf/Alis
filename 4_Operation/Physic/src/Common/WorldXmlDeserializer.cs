@@ -153,7 +153,9 @@ namespace Alis.Core.Physic.Common
                                             List<Vector2F> verts = new List<Vector2F>(sn.Elements.Count);
 
                                             foreach (XMLFragmentElement vert in sn.Elements)
+                                            {
                                                 verts.Add(ReadVector(vert));
+                                            }
 
                                             shape.Vertices = new Vertices(verts);
                                         }
@@ -216,7 +218,9 @@ namespace Alis.Core.Physic.Common
                                             List<Vector2F> verts = new List<Vector2F>(sn.Elements.Count);
 
                                             foreach (XMLFragmentElement vert in sn.Elements)
+                                            {
                                                 verts.Add(ReadVector(vert));
+                                            }
 
                                             shape.Vertices = new Vertices(verts);
                                         }

@@ -34,7 +34,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
@@ -2694,7 +2693,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Assert
             Assert.Equal("Test", result);
         }
-        
+
 
         /// <summary>
         ///     Tests that handle creation exception with null exception throws exception
@@ -2710,7 +2709,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Act & Assert
             Assert.Throws<JsonException>(() => JsonSerializer.HandleCreationException(type, exception, options));
         }
-        
+
         /// <summary>
         ///     Tests that read dictionary when called with valid json returns correct dictionary
         /// </summary>
@@ -4872,7 +4871,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
             Assert.Throws<TargetParameterCountException>(() => JsonSerializer.InvokeConstructor(constructor, info, context));
         }
-        
+
 
         /// <summary>
         ///     Tests that update context should update context correctly
@@ -5262,8 +5261,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Act & Assert
             Assert.Throws<JsonException>(() => JsonSerializer.HandleCreationException(type, exception, options));
         }
-        
-        
+
+
         /// <summary>
         ///     Tests that write dictionary entry with write keys without quotes option writes without quotes
         /// </summary>
@@ -5846,7 +5845,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Assert
             Assert.Contains("Callback invoked", writer.ToString());
         }
-        
+
         /// <summary>
         ///     Tests that handle after write object callback when callback is available and modifies event args modifies event
         ///     args
@@ -6064,7 +6063,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
             JsonSerializer.HandleStreamValue(writer, value, objectGraph, options); // No exception should be thrown
         }
-        
+
         /// <summary>
         ///     Tests that handle creation exception valid type null exception valid options returns null
         /// </summary>

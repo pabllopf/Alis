@@ -36,8 +36,8 @@ namespace Alis.Core.Aspect.Math.Matrix
         public CustomIndexOutOfRangeException()
         {
         }
-        
-        public CustomIndexOutOfRangeException(string invalidMatrixIndex): base(invalidMatrixIndex)
+
+        public CustomIndexOutOfRangeException(string invalidMatrixIndex) : base(invalidMatrixIndex)
         {
         }
     }

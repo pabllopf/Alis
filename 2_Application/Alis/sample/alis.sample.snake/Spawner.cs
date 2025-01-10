@@ -128,14 +128,14 @@ namespace Alis.Sample.Snake
             {
                 RandomNumberGenerator rng = RandomNumberGenerator.Create();
                 byte[] buffer = new byte[4];
-    
+
                 // Generate secure random float for x
                 rng.GetBytes(buffer);
-                float x = (BitConverter.ToUInt32(buffer, 0) / (float)uint.MaxValue) * 15f - 7f;
+                float x = BitConverter.ToUInt32(buffer, 0) / (float) uint.MaxValue * 15f - 7f;
 
                 // Generate secure random float for y
                 rng.GetBytes(buffer);
-                float y = (BitConverter.ToUInt32(buffer, 0) / (float)uint.MaxValue) * 15f - 7f;
+                float y = BitConverter.ToUInt32(buffer, 0) / (float) uint.MaxValue * 15f - 7f;
 
                 BoxCollider collider = food.Get<BoxCollider>();
                 if (collider != null)

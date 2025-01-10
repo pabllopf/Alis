@@ -347,10 +347,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
         public void MarkNeighborEdges()
         {
             for (int i = 0; i < 3; i++)
+            {
                 if (EdgeIsConstrained[i] && (Neighbors[i] != null))
                 {
                     Neighbors[i].MarkConstrainedEdge(Points[(i + 1) % 3], Points[(i + 2) % 3]);
                 }
+            }
         }
 
         /// <summary>
@@ -360,10 +362,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
         public void MarkEdge(DelaunayTriangle triangle)
         {
             for (int i = 0; i < 3; i++)
+            {
                 if (EdgeIsConstrained[i])
                 {
                     triangle.MarkConstrainedEdge(Points[(i + 1) % 3], Points[(i + 2) % 3]);
                 }
+            }
         }
 
         /// <summary>
@@ -373,11 +377,15 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
         public void MarkEdge(List<DelaunayTriangle> tList)
         {
             foreach (DelaunayTriangle t in tList)
+            {
                 for (int i = 0; i < 3; i++)
+                {
                     if (t.EdgeIsConstrained[i])
                     {
                         MarkConstrainedEdge(t.Points[(i + 1) % 3], t.Points[(i + 2) % 3]);
                     }
+                }
+            }
         }
 
         /// <summary>

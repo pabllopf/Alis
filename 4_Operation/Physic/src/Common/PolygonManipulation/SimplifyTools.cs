@@ -89,7 +89,9 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             bool[] usePoint = new bool[vertices.Count];
 
             for (int i = 0; i < vertices.Count; i++)
+            {
                 usePoint[i] = true;
+            }
 
             SimplifySection(vertices, 0, vertices.Count - 1, usePoint, distanceTolerance);
 
