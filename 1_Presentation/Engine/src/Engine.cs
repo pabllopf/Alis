@@ -61,7 +61,7 @@ namespace Alis.App.Engine
     /// <summary>
     ///     The engine class
     /// </summary>
-    public class Engine: IDisposable
+    public class Engine : IDisposable
     {
         /// <summary>
         ///     The name engine
@@ -152,6 +152,14 @@ namespace Alis.App.Engine
         ///     The windows
         /// </summary>
         private SpaceWork spaceWork = new SpaceWork();
+
+        /// <summary>
+        ///     Disposes this instance
+        /// </summary>
+        public void Dispose()
+        {
+            _shader?.Dispose();
+        }
 
 
         /// <summary>
@@ -938,6 +946,7 @@ namespace Alis.App.Engine
                     {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.RightAlt, true);
                     }
+
                     if (sym == KeyCodes.Lctrl)
                     {
                         imGuiIoPtr.AddKeyEvent(ImGuiKey.LeftCtrl, true);
@@ -1300,9 +1309,9 @@ namespace Alis.App.Engine
             int uvOffset = 8; // Offset of Uv is 8 bytes from the start (after Pos)
             int colOffset = 16; // Offset of Col is 16 bytes from the start (after Pos and Uv)
 
-            Gl.VertexAttribPointer(_shader["Position"].Location, 2, VertexAttribPointerType.Float, false, drawVertSize, (IntPtr) posOffset);
-            Gl.VertexAttribPointer(_shader["UV"].Location, 2, VertexAttribPointerType.Float, false, drawVertSize, (IntPtr) uvOffset);
-            Gl.VertexAttribPointer(_shader["Color"].Location, 4, VertexAttribPointerType.UnsignedByte, true, drawVertSize, (IntPtr) colOffset);
+            Gl.VertexAttribPointer(_shader["Position"].Location, 2, VertexAttribPointerType.Float, false, drawVertSize, posOffset);
+            Gl.VertexAttribPointer(_shader["UV"].Location, 2, VertexAttribPointerType.Float, false, drawVertSize, uvOffset);
+            Gl.VertexAttribPointer(_shader["Color"].Location, 4, VertexAttribPointerType.UnsignedByte, true, drawVertSize, colOffset);
         }
 
 
@@ -1384,10 +1393,10 @@ namespace Alis.App.Engine
             for (int n = 0; n < drawData.CmdListsCount; n++)
             {
                 ImDrawListPtr cmdList = drawData.CmdListsRange[n];
-                
+
                 // Upload vertex/index buffers
-                Gl.GlBufferData(BufferTarget.ArrayBuffer, (IntPtr) (cmdList.VtxBuffer.Size * drawVertSize), cmdList.VtxBuffer.Data, BufferUsageHint.StreamDraw);
-                Gl.GlBufferData(BufferTarget.ElementArrayBuffer, (IntPtr) (cmdList.IdxBuffer.Size * drawIdxSize), cmdList.IdxBuffer.Data, BufferUsageHint.StreamDraw);
+                Gl.GlBufferData(BufferTarget.ArrayBuffer, cmdList.VtxBuffer.Size * drawVertSize, cmdList.VtxBuffer.Data, BufferUsageHint.StreamDraw);
+                Gl.GlBufferData(BufferTarget.ElementArrayBuffer, cmdList.IdxBuffer.Size * drawIdxSize, cmdList.IdxBuffer.Data, BufferUsageHint.StreamDraw);
 
                 for (int cmdI = 0; cmdI < cmdList.CmdBuffer.Size; cmdI++)
                 {
@@ -1422,14 +1431,6 @@ namespace Alis.App.Engine
                     }
                 }
             }
-        }
-
-        /// <summary>
-        /// Disposes this instance
-        /// </summary>
-        public void Dispose()
-        {
-            _shader?.Dispose();
         }
     }
 }

@@ -73,7 +73,9 @@ namespace Alis.Extension.Graphic.ImGui
 
             int length = 0;
             while (Marshal.ReadByte(Data, length) != 0)
+            {
                 length++;
+            }
 
             if (length == 0)
             {

@@ -30,12 +30,12 @@
 namespace Alis.Extension.Io.FileDialog
 {
     /// <summary>
-    /// Abstract class for file picker strategy.
+    ///     Abstract class for file picker strategy.
     /// </summary>
     public interface IFilePicker
     {
         /// <summary>
-        /// Chooses the file
+        ///     Chooses the file
         /// </summary>
         /// <returns>The string</returns>
         public string ChooseFile();
