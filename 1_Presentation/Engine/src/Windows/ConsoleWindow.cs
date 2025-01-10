@@ -92,6 +92,26 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
+        ///     Disposes this instance
+        /// </summary>
+        /// <returns>The value task</returns>
+        public async ValueTask DisposeAsync()
+        {
+            if (stringWriter != null)
+            {
+                await stringWriter.DisposeAsync();
+            }
+        }
+
+        /// <summary>
+        ///     Disposes this instance
+        /// </summary>
+        public void Dispose()
+        {
+            stringWriter?.Dispose();
+        }
+
+        /// <summary>
         ///     Gets the value of the space work
         /// </summary>
         public SpaceWork SpaceWork { get; }
@@ -228,26 +248,6 @@ namespace Alis.App.Engine.Windows
             }
 
             ImGui.EndChild();
-        }
-
-        /// <summary>
-        /// Disposes this instance
-        /// </summary>
-        public void Dispose()
-        {
-            stringWriter?.Dispose();
-        }
-
-        /// <summary>
-        /// Disposes this instance
-        /// </summary>
-        /// <returns>The value task</returns>
-        public async ValueTask DisposeAsync()
-        {
-            if (stringWriter != null)
-            {
-                await stringWriter.DisposeAsync();
-            }
         }
     }
 }

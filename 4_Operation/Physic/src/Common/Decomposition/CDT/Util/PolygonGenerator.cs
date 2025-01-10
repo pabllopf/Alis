@@ -42,7 +42,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
         ///     The random
         /// </summary>
         private static readonly RandomNumberGenerator RNG = RandomNumberGenerator.Create();
-        
+
         /// <summary>
         ///     Randoms the circle sweep using the specified scale
         /// </summary>
@@ -54,9 +54,9 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
             PolygonPoint point;
             PolygonPoint[] points;
             double radius = scale / 4;
-    
+
             points = new PolygonPoint[vertexCount];
-    
+
             using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
             {
                 byte[] buffer = new byte[4];
@@ -67,7 +67,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
                     {
                         // Generate a secure random number for radius adjustment
                         rng.GetBytes(buffer);
-                        double randomValue = (BitConverter.ToUInt32(buffer, 0) / (double)uint.MaxValue) - 0.5;
+                        double randomValue = BitConverter.ToUInt32(buffer, 0) / (double) uint.MaxValue - 0.5;
 
                         if (i % 250 == 0)
                         {
@@ -109,7 +109,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
             double radius = scale / 4;
 
             points = new PolygonPoint[vertexCount];
-    
+
             using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
             {
                 byte[] buffer = new byte[4];
@@ -120,7 +120,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
                     {
                         // Generate secure random number for radius adjustment
                         rng.GetBytes(buffer);
-                        double randomValue = (BitConverter.ToUInt32(buffer, 0) / (double)uint.MaxValue) - 0.5;
+                        double randomValue = BitConverter.ToUInt32(buffer, 0) / (double) uint.MaxValue - 0.5;
 
                         radius += scale / 5 * randomValue;
 

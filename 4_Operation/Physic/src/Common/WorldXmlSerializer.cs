@@ -79,7 +79,10 @@ namespace Alis.Core.Physic.Common
 
                     _writer.WriteStartElement("Vertices");
                     foreach (Vector2F v in poly.Vertices)
+                    {
                         WriteElement("Vertex", v);
+                    }
+
                     _writer.WriteEndElement();
 
                     WriteElement("Centroid", poly.MassData.Centroid);
@@ -98,7 +101,10 @@ namespace Alis.Core.Physic.Common
 
                     _writer.WriteStartElement("Vertices");
                     foreach (Vector2F v in chain.Vertices)
+                    {
                         WriteElement("Vertex", v);
+                    }
+
                     _writer.WriteEndElement();
 
                     WriteElement("NextVertex", chain.NextVertex);

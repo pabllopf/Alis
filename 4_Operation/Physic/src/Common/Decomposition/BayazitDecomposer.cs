@@ -134,7 +134,9 @@ namespace Alis.Core.Physic.Common.Decomposition
                     {
                         double highestScore = 0, bestIndex = lowerIndex;
                         while (upperIndex < lowerIndex)
+                        {
                             upperIndex += vertices.Count;
+                        }
 
                         for (int j = lowerIndex; j <= upperIndex; ++j)
                         {
@@ -213,7 +215,9 @@ namespace Alis.Core.Physic.Common.Decomposition
         private static Vertices Copy(int i, int j, Vertices vertices)
         {
             while (j < i)
+            {
                 j += vertices.Count;
+            }
 
             Vertices p = new Vertices(j);
 

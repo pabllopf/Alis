@@ -188,8 +188,10 @@ namespace Alis.Core.Physic.Common
 
             vertices.Add(new Vector2F(xRadius, 0));
             for (int i = numberOfEdges - 1; i > 0; --i)
+            {
                 vertices.Add(new Vector2F(xRadius * (float) Math.Cos(stepSize * i),
                     -yRadius * (float) Math.Sin(stepSize * i)));
+            }
 
             return vertices;
         }

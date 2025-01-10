@@ -229,7 +229,10 @@ namespace Alis.Core.Physic.Common.TextureTools
 
                     //combine above (but disallow the hole thingies
                     CxFastListNode<Vector2F> bi = bp.Begin();
-                    while (Square(bi.Elem().Y - ay) > SettingEnv.Epsilon || bi.Elem().X < ax) bi = bi.Next();
+                    while (Square(bi.Elem().Y - ay) > SettingEnv.Epsilon || bi.Elem().X < ax)
+                    {
+                        bi = bi.Next();
+                    }
 
                     //NOTE: Unused
                     //Vector2F b0 = bi.elem();

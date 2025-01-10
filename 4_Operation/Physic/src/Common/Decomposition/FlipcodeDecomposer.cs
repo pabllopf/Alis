@@ -74,7 +74,9 @@ namespace Alis.Core.Physic.Common.Decomposition
             int[] polygon = new int[vertices.Count];
 
             for (int v = 0; v < vertices.Count; v++)
+            {
                 polygon[v] = v;
+            }
 
             int nv = vertices.Count;
 

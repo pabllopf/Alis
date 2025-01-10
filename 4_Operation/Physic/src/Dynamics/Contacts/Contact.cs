@@ -361,7 +361,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     if (onFixtureCollisionHandlerA != null)
                     {
                         foreach (OnCollisionEventHandler handler in onFixtureCollisionHandlerA.GetInvocationList())
+                        {
                             enabledA = handler(FixtureA, FixtureB, this) && enabledA;
+                        }
                     }
 
                     // Reverse the order of the reported fixtures. The first fixture is always the one that the
@@ -370,7 +372,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     if (onFixtureCollisionHandlerB != null)
                     {
                         foreach (OnCollisionEventHandler handler in onFixtureCollisionHandlerB.GetInvocationList())
+                        {
                             enabledB = handler(FixtureB, FixtureA, this) && enabledB;
+                        }
                     }
 
                     // Report the collision to both bodies:
@@ -378,7 +382,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     if (onBodyCollisionHandlerA != null)
                     {
                         foreach (OnCollisionEventHandler handler in onBodyCollisionHandlerA.GetInvocationList())
+                        {
                             enabledA = handler(FixtureA, FixtureB, this) && enabledA;
+                        }
                     }
 
                     // Reverse the order of the reported fixtures. The first fixture is always the one that the
@@ -387,7 +393,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     if (onBodyCollisionHandlerB != null)
                     {
                         foreach (OnCollisionEventHandler handler in onBodyCollisionHandlerB.GetInvocationList())
+                        {
                             enabledB = handler(FixtureB, FixtureA, this) && enabledB;
+                        }
                     }
 
 
