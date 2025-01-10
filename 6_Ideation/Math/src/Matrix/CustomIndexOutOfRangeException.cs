@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:FixedArray2.cs
+//  File:CustomIndexOutOfRangeException.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,56 +28,17 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Math.Matrix;
 
-namespace Alis.Core.Physic.Common
+namespace Alis.Core.Aspect.Math.Matrix
 {
-    /// <summary>
-    ///     The fixed array
-    /// </summary>
-    public struct FixedArray2<T>
+    public class CustomIndexOutOfRangeException : Exception
     {
-        /// <summary>
-        ///     The value
-        /// </summary>
-        private T _value0;
-
-        /// <summary>
-        ///     The value
-        /// </summary>
-        private T _value1;
-
-        /// <summary>
-        ///     The index out of range exception
-        /// </summary>
-        public T this[int index]
+        public CustomIndexOutOfRangeException()
         {
-            get
-            {
-                switch (index)
-                {
-                    case 0:
-                        return _value0;
-                    case 1:
-                        return _value1;
-                    default:
-                        throw new CustomIndexOutOfRangeException();
-                }
-            }
-            set
-            {
-                switch (index)
-                {
-                    case 0:
-                        _value0 = value;
-                        break;
-                    case 1:
-                        _value1 = value;
-                        break;
-                    default:
-                        throw new CustomIndexOutOfRangeException();
-                }
-            }
+        }
+        
+        public CustomIndexOutOfRangeException(string invalidMatrixIndex): base(invalidMatrixIndex)
+        {
         }
     }
 }

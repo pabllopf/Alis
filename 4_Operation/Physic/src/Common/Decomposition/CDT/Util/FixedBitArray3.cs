@@ -30,6 +30,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Alis.Core.Aspect.Math.Matrix;
 
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
 {
@@ -59,7 +60,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
                     case 2:
                         return _2;
                     default:
-                        throw new IndexOutOfRangeException();
+                        throw new CustomIndexOutOfRangeException();
                 }
             }
             set
@@ -76,7 +77,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
                         _2 = value;
                         break;
                     default:
-                        throw new IndexOutOfRangeException();
+                        throw new CustomIndexOutOfRangeException();
                 }
             }
         }

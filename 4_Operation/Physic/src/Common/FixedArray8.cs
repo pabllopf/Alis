@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Math.Matrix;
 
 namespace Alis.Core.Physic.Common
 {
@@ -102,7 +103,7 @@ namespace Alis.Core.Physic.Common
                     case 7:
                         return _value7;
                     default:
-                        throw new IndexOutOfRangeException();
+                        throw new CustomIndexOutOfRangeException();
                 }
             }
             set
@@ -134,7 +135,7 @@ namespace Alis.Core.Physic.Common
                         _value7 = value;
                         break;
                     default:
-                        throw new IndexOutOfRangeException();
+                        throw new CustomIndexOutOfRangeException();
                 }
             }
         }
