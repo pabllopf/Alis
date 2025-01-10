@@ -36,6 +36,7 @@ using System.Net.Sockets;
 using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
+using Alis.Core.Aspect.Memory.Exceptions;
 
 namespace Alis.Core.Network.Sample.Server
 {
@@ -271,11 +272,7 @@ namespace Alis.Core.Network.Sample.Server
             }
             catch (SocketException ex)
             {
-                string message =
-                    string.Format(
-                        "Error listening on port {0}. Make sure IIS or another application is not running and consuming your port.",
-                        port);
-                throw new Exception(message, ex);
+                throw new GeneralAlisException(ex.Message);
             }
         }
     }

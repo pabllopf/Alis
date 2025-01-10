@@ -34,6 +34,7 @@ using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Aspect.Memory.Exceptions;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
@@ -105,7 +106,7 @@ namespace Alis.Core.Physic.Common
                 }
                     break;
                 default:
-                    throw new Exception();
+                    throw new GeneralAlisException();
             }
 
             _writer.WriteEndElement();
@@ -231,7 +232,7 @@ namespace Alis.Core.Physic.Common
                 }
                     break;
                 case JointType.Gear:
-                    throw new Exception("Gear joint not supported by serialization");
+                    throw new GeneralAlisException("Gear joint not supported by serialization");
                 case JointType.Wheel:
                 {
                     WheelJoint wheelJoint = (WheelJoint) joint;
@@ -326,7 +327,7 @@ namespace Alis.Core.Physic.Common
                 }
                     break;
                 default:
-                    throw new Exception("Joint not supported");
+                    throw new GeneralAlisException("Joint not supported");
             }
 
             _writer.WriteEndElement();

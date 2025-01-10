@@ -29,6 +29,7 @@
 
 using System;
 using System.Text;
+using Alis.Core.Aspect.Memory.Exceptions;
 
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
 {
@@ -169,7 +170,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                     }
                     else
                     {
-                        throw new Exception("Failed to find Node for given afront point");
+                        throw new GeneralAlisException("Failed to find Node for given afront point");
                         //node = null;
                     }
                 }

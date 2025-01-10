@@ -41,6 +41,7 @@ using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Aspect.Memory.Exceptions;
 using Alis.Core.Aspect.Time;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
@@ -770,7 +771,7 @@ namespace Alis.App.Installer
             IntPtr glContext = Sdl.CreateContext(window);
             if (glContext == IntPtr.Zero)
             {
-                throw new Exception("CouldNotCreateContext");
+                throw new GeneralAlisException("CouldNotCreateContext");
             }
 
             Sdl.MakeCurrent(window, glContext);

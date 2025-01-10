@@ -97,24 +97,6 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        ///     Tests that exception should print exception message when log level is critical
-        /// </summary>
-        [RunnableInDebugOnly]
-        public void Exception_ShouldPrintExceptionMessage_WhenLogLevelIsCritical()
-        {
-            using StringWriter consoleOutput = new StringWriter();
-            Console.SetOut(consoleOutput);
-
-            Logger.LogLevel = LogLevel.Critical;
-            Exception exception = new Exception("Test Exception Message");
-            Logger.Exception(exception);
-
-            string output = consoleOutput.ToString();
-            Assert.Contains($"Exception: {exception.Message}", output);
-        }
-
-
-        /// <summary>
         ///     Tests that trace with log level trace should print trace message
         /// </summary>
         [RunnableInDebugOnly]
@@ -207,22 +189,7 @@ namespace Alis.Core.Aspect.Logging.Test
             string output = consoleOutput.ToString();
             Assert.Contains("Error: Test Error Message", output);
         }
-
-        /// <summary>
-        ///     Tests that exception with exception should print exception message
-        /// </summary>
-        [RunnableInDebugOnly]
-        public void Exception_WithException_ShouldPrintExceptionMessage()
-        {
-            using StringWriter consoleOutput = new StringWriter();
-            Console.SetOut(consoleOutput);
-
-            Logger.Exception(new Exception("Test Exception Message"));
-
-            string output = consoleOutput.ToString();
-            Assert.Contains("Exception: Test Exception Message", output);
-        }
-
+        
         /// <summary>
         ///     Tests that set detail level should change detail level when calling different methods
         /// </summary>

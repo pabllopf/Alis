@@ -33,6 +33,7 @@ using Alis.App.Hub.Core;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Aspect.Memory.Exceptions;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
@@ -105,7 +106,7 @@ namespace Alis.App.Hub.Controllers
             IntPtr glContext = Sdl.CreateContext(window);
             if (glContext == IntPtr.Zero)
             {
-                throw new Exception("Could Not Create GL Context.");
+                throw new GeneralAlisException("Could Not Create GL Context.");
             }
 
             Sdl.MakeCurrent(window, glContext);

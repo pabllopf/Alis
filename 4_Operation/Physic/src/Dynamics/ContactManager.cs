@@ -31,6 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Alis.Core.Aspect.Memory.Exceptions;
 using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Dynamics.Contacts;
 
@@ -576,7 +577,7 @@ namespace Alis.Core.Physic.Dynamics
                 int idB = orderedBodyB._lockOrder;
                 if (idA == idB)
                 {
-                    throw new Exception();
+                    throw new GeneralAlisException();
                 }
 
                 if (idA > idB)

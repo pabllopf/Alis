@@ -32,6 +32,7 @@ using System.Collections.Generic;
 using System.Text;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Aspect.Memory.Exceptions;
 using Alis.Extension.Graphic.OpenGL.Enums;
 using static Alis.Extension.Graphic.OpenGL.Gl;
 using Type = System.Type;
@@ -85,7 +86,7 @@ namespace Alis.Extension.Graphic.OpenGL.Constructs
             //If not then throw an error with the linking error.
             if (!GetProgramLinkStatus(ProgramId))
             {
-                throw new Exception(ProgramLog);
+                throw new GeneralAlisException(ProgramLog);
             }
 
             GetParams();
@@ -183,7 +184,7 @@ namespace Alis.Extension.Graphic.OpenGL.Constructs
             {
                 case ActiveAttribType.Float: return typeof(float);
                 case ActiveAttribType.FloatMat2: return typeof(float[]);
-                case ActiveAttribType.FloatMat3: throw new Exception();
+                case ActiveAttribType.FloatMat3: throw new GeneralAlisException();
                 case ActiveAttribType.FloatMat4: return typeof(Matrix4X4);
                 case ActiveAttribType.FloatVec2: return typeof(Vector2F);
                 case ActiveAttribType.FloatVec3: return typeof(Vector3F);
@@ -215,7 +216,7 @@ namespace Alis.Extension.Graphic.OpenGL.Constructs
                 case ActiveUniformType.BoolVec3: return typeof(bool[]);
                 case ActiveUniformType.BoolVec4: return typeof(bool[]);
                 case ActiveUniformType.FloatMat2: return typeof(float[]);
-                case ActiveUniformType.FloatMat3: throw new Exception();
+                case ActiveUniformType.FloatMat3: throw new GeneralAlisException();
                 case ActiveUniformType.FloatMat4: return typeof(Matrix4X4);
                 case ActiveUniformType.Sampler1D:
                 case ActiveUniformType.Sampler2D:

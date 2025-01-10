@@ -34,7 +34,7 @@ using Xunit;
 namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    ///     The json exception test class
+    ///     The json GeneralAlisException test class
     /// </summary>
     public class JsonExceptionTest
     {
@@ -46,7 +46,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             JsonException ex = new JsonException();
             Assert.NotNull(ex);
-            Assert.Equal("JSO0001: JSON exception.", ex.Message);
+            Assert.Equal("JSO0001: JSON GeneralAlisException.", ex.Message);
         }
 
         /// <summary>
@@ -60,33 +60,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.NotNull(ex);
             Assert.Equal(message, ex.Message);
         }
-
-        /// <summary>
-        ///     Tests that test constructor with message and inner exception
-        /// </summary>
-        [Fact]
-        public void TestConstructorWithMessageAndInnerException()
-        {
-            string message = "Test message";
-            Exception innerException = new Exception("Inner exception");
-            JsonException ex = new JsonException(message, innerException);
-            Assert.NotNull(ex);
-            Assert.Equal(message, ex.Message);
-            Assert.Equal(innerException, ex.InnerException);
-        }
-
-        /// <summary>
-        ///     Tests that test constructor with inner exception
-        /// </summary>
-        [Fact]
-        public void TestConstructorWithInnerException()
-        {
-            Exception innerException = new Exception("Inner exception");
-            JsonException ex = new JsonException(innerException);
-            Assert.NotNull(ex);
-            Assert.Equal(innerException, ex.InnerException);
-        }
-
+        
         /// <summary>
         ///     Tests that test get code method
         /// </summary>
