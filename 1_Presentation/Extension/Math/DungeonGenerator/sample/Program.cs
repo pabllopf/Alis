@@ -133,7 +133,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Sample
                     Console.Write("█");
                 }
 
-                Console.WriteLine();
+               Logger.Info();
             }
 
             Logger.Log("Dungeon generated");

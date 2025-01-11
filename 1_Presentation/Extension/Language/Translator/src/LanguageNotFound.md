@@ -21,7 +21,7 @@ try
 }
 catch (LanguageNotFound ex)
 {
-    Console.WriteLine(ex.Message);
+   Logger.Info(ex.Message);
 }
 ```
 

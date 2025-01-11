@@ -51,8 +51,8 @@ namespace Alis.Extension.Profile.Sample
 
             ProfileData profileData = profilerService.StopProfiling();
 
-            Console.WriteLine($"CPU Usage: {profileData.CpuUsage}");
-            Console.WriteLine($"Memory Usage: {profileData.MemoryUsage}");
+           Logger.Info($"CPU Usage: {profileData.CpuUsage}");
+           Logger.Info($"Memory Usage: {profileData.MemoryUsage}");
         }
 
         /// <summary>

@@ -53,16 +53,16 @@ namespace Alis.Extension.Io.FileDialog.Sample
                 // Output the result (the file path)
                 if (!string.IsNullOrEmpty(selectedFile))
                 {
-                    Console.WriteLine($"Selected file: {selectedFile}");
+                   Logger.Info($"Selected file: {selectedFile}");
                 }
                 else
                 {
-                    Console.WriteLine("No file selected.");
+                   Logger.Info("No file selected.");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred: {ex.Message}");
+               Logger.Info($"An error occurred: {ex.Message}");
             }
         }
     }

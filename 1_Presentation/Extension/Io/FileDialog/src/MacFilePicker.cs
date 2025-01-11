@@ -62,12 +62,12 @@ namespace Alis.Extension.Io.FileDialog
             // Check if the user selected a file or cancelled/closed the dialog
             if (string.IsNullOrEmpty(output))
             {
-                Console.WriteLine("The user cancelled or closed the dialog.");
+               Logger.Info("The user cancelled or closed the dialog.");
                 return null; // Return null if the dialog was closed or cancelled
             }
 
             // Output is now the POSIX file path of the selected file
-            Console.WriteLine($"File selected: {output}");
+           Logger.Info($"File selected: {output}");
             return output; // Return the selected file path
         }
     }

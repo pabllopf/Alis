@@ -59,7 +59,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         public void AddOption_ShouldAddOptionToList()
         {
             Dialog dialog = new Dialog("testId", "Test Text");
-            DialogOption option = new DialogOption("Option Text", () => Console.WriteLine("Test Action"));
+            DialogOption option = new DialogOption("Option Text", () =>Logger.Info("Test Action"));
             dialog.AddOption(option);
 
             Assert.Single(dialog.Options);
@@ -73,7 +73,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         public void DialogOption_Constructor_ShouldInitializeProperties()
         {
             string text = "Option Text";
-            Action action = () => Console.WriteLine("Test Action");
+            Action action = () =>Logger.Info("Test Action");
             DialogOption option = new DialogOption(text, action);
 
             Assert.Equal(text, option.Text);

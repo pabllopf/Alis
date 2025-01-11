@@ -99,7 +99,7 @@ public class Example
             .DoStep("Finalize")
             .Build();
 
-        Console.WriteLine(result);
+       Logger.Info(result);
     }
 }
 ```

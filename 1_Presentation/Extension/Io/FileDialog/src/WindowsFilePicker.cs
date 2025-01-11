@@ -63,12 +63,12 @@ namespace Alis.Extension.Io.FileDialog
             if (process.ExitCode == 0)
             {
                 // The user selected a file (this can be expanded further to capture the file path)
-                Console.WriteLine("File selected!");
+               Logger.Info("File selected!");
                 return "selected_file_path"; // Return the file path if a file is selected (replace with actual capture logic)
             }
 
             // The user cancelled or closed the dialog
-            Console.WriteLine("The user cancelled or closed the dialog.");
+           Logger.Info("The user cancelled or closed the dialog.");
             return null; // Return null if no file was selected
         }
     }

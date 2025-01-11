@@ -99,7 +99,7 @@ public class Example
 
         while (true)
         {
-            Console.WriteLine("Write command 'play' | 'stop' | 'resume' | exit ");
+           Logger.Info("Write command 'play' | 'stop' | 'resume' | exit ");
             string command = Console.ReadLine();
             try
             {

@@ -41,7 +41,7 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
         /// </summary>
         public static void Main()
         {
-            Console.WriteLine("End program.");
+           Logger.Info("End program.");
         }
     }
 }

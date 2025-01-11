@@ -239,7 +239,7 @@ namespace Alis.App.Engine.Windows
                     if (ImGui.IsMouseDoubleClicked(0))
                     {
                         // Handle double-click action here
-                        Console.WriteLine($"Double-clicked on: {line}");
+                       Logger.Info($"Double-clicked on: {line}");
                     }
                 }
 

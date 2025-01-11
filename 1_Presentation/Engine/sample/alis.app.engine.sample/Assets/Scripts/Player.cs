@@ -42,7 +42,7 @@ namespace Alis.App.Engine.Sample.Assets.Scripts
         /// </summary>
         public override void OnAwake()
         {
-            Console.WriteLine("Player awake");
+           Logger.Info("Player awake");
         }
     }
 }

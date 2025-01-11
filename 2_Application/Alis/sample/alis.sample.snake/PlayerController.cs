@@ -74,7 +74,7 @@ namespace Alis.Sample.Snake
         /// </summary>
         public override void OnStart()
         {
-            Console.WriteLine("PlayerController started");
+           Logger.Info("PlayerController started");
             _boxCollider = GameObject.Get<BoxCollider>();
             _snakeBody = new List<GameObject> {GameObject};
         }

@@ -113,7 +113,7 @@ public static class Program
     public static void SampleMethod([IsNotZero, IsNotNull] int value)
     {
         Validator.Validate(value, nameof(value));
-        Console.WriteLine("The value of value is " + value);
+       Logger.Info("The value of value is " + value);
     }
 
     /// <summary>
@@ -129,7 +129,7 @@ public static class Program
         }
         catch (NotZeroException e)
         {
-            Console.WriteLine(e);
+           Logger.Info(e);
         }
 
         try
@@ -138,7 +138,7 @@ public static class Program
         }
         catch (NotZeroException e)
         {
-            Console.WriteLine(e);
+           Logger.Info(e);
         }
 
         _nonZeroValuev2 = 0;
@@ -151,18 +151,18 @@ public static class Program
         }
         catch (NotZeroException ex)
         {
-            Console.WriteLine(ex);
+           Logger.Info(ex);
         }
 
         try
         {
             _nonZeroValue = 5;
             Validator.Validate(_nonZeroValue, nameof(_nonZeroValue));
-            Console.WriteLine("NonZeroValue has been successfully set to " + _nonZeroValue);
+           Logger.Info("NonZeroValue has been successfully set to " + _nonZeroValue);
         }
         catch (NotZeroException ex)
         {
-            Console.WriteLine(ex.Message);
+           Logger.Info(ex.Message);
         }
     }
 }

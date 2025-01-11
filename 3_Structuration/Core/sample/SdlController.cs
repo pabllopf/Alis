@@ -200,7 +200,7 @@ namespace Alis.Core.Sample
         /// </summary>
         public static void SampleAction()
         {
-            Console.WriteLine("Called from .NET");
+           Logger.Info("Called from .NET");
         }
 
 
@@ -406,12 +406,12 @@ namespace Alis.Core.Sample
             // Definir el callback en .NET y pasarlo a Objective-C
             /*setTestCallback(() =>
             {
-                Console.WriteLine("Callback ejecutado desde .NET!");
+               Logger.Info("Callback ejecutado desde .NET!");
             });*/
 
             /*
             setDotNetCallback(() => {
-                Console.WriteLine("Botón presionado, llamando a .NET");
+               Logger.Info("Botón presionado, llamando a .NET");
             });*/
 
             // Crea y configura el menú
@@ -634,7 +634,7 @@ namespace Alis.Core.Sample
                 if (realTimeStopwatch.ElapsedMilliseconds >= 500)
                 {
                     double averageFps = frameCounter / (realTimeStopwatch.ElapsedMilliseconds / 1000.0);
-                    Console.WriteLine($"Average FPS: {averageFps:F2}");
+                   Logger.Info($"Average FPS: {averageFps:F2}");
                     frameCounter = 0;
                     realTimeStopwatch.Restart();
                 }

@@ -155,7 +155,7 @@ namespace Alis.App.Hub.Windows.Sections
             }
             else
             {
-                Console.WriteLine("Installer not found at: " + installerPath);
+               Logger.Info("Installer not found at: " + installerPath);
             }
         }
 

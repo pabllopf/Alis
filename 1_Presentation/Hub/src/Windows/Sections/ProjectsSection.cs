@@ -109,7 +109,7 @@ namespace Alis.App.Hub.Windows.Sections
         /// <param name="project">The project</param>
         private void OpenProject(Project project)
         {
-            Console.WriteLine($"Opening project: {project.Name}");
+           Logger.Info($"Opening project: {project.Name}");
 
             string projectConfig = JsonSerializer.Serialize(project);
             string configFilePath = Path.Combine(Path.GetTempPath(), "projectConfig.json");
@@ -245,7 +245,7 @@ namespace Alis.App.Hub.Windows.Sections
             if (ImGui.InputText("##Search", conmandPtr, 256))
             {
                 searchQuery = Marshal.PtrToStringAnsi(conmandPtr);
-                Console.WriteLine("Search query: " + searchQuery);
+               Logger.Info("Search query: " + searchQuery);
             }
 
             ImGui.PopStyleVar(1);
@@ -438,7 +438,7 @@ namespace Alis.App.Hub.Windows.Sections
             if (ImGui.IsItemHovered() && ImGui.IsMouseClicked(ImGuiMouseButton.Right))
             {
                 ImGui.OpenPopup($"ContextMenu##{index}");
-                Console.WriteLine("Right-clicked on project: " + project.Name);
+               Logger.Info("Right-clicked on project: " + project.Name);
             }
 
             ImGui.SetCursorPosY(ImGui.GetCursorPosY() + (rowHeight - elementHeight) / 2);

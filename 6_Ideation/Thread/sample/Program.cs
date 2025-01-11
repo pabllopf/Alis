@@ -50,7 +50,7 @@ namespace Alis.Core.Aspect.Thread.Sample
             {
                 for (int i = 0; (i < 10) && !token.IsCancellationRequested; i++)
                 {
-                    Console.WriteLine($"Task 1 - Count: {i}");
+                   Logger.Info($"Task 1 - Count: {i}");
                     System.Threading.Thread.Sleep(1000);
                 }
             }, cts1.Token);
@@ -60,7 +60,7 @@ namespace Alis.Core.Aspect.Thread.Sample
             {
                 for (int i = 0; (i < 10) && !token.IsCancellationRequested; i++)
                 {
-                    Console.WriteLine($"Task 2 - Count: {i}");
+                   Logger.Info($"Task 2 - Count: {i}");
                     System.Threading.Thread.Sleep(1000);
                 }
             }, cts2.Token);
@@ -68,12 +68,12 @@ namespace Alis.Core.Aspect.Thread.Sample
             threadManager.StartThread(task1);
             threadManager.StartThread(task2);
 
-            Console.WriteLine("Press any key to stop threads...");
+           Logger.Info("Press any key to stop threads...");
             Console.ReadKey();
 
             threadManager.StopAllThreads();
 
-            Console.WriteLine("Press any key to exit...");
+           Logger.Info("Press any key to exit...");
             Console.ReadKey();
         }
     }
