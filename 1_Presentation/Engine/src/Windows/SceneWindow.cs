@@ -32,6 +32,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Rectangle;

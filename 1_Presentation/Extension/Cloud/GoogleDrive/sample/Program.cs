@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Logging;
 
 namespace Alis.Extension.Cloud.GoogleDrive.Sample
 {

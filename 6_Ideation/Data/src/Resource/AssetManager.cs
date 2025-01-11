@@ -143,11 +143,6 @@ namespace Alis.Core.Aspect.Data.Resource
                     baseDirectories[i] = baseDirectories[i].TrimEnd('/', '\\');
                     baseDirectories[i] = Path.Combine(baseDirectories[i], "Assets");
                 }
-                else
-                {
-                    // Handle null case if necessary, for example:
-                   Logger.Info($"baseDirectories[{i}] is null. Skipping this entry.");
-                }
             }
 
 

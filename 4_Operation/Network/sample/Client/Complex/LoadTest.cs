@@ -32,6 +32,7 @@ using System.Diagnostics;
 using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
+using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Network.Sample.Client.Complex
 {

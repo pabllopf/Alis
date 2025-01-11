@@ -29,6 +29,7 @@
 
 using System;
 using System.IO;
+using Alis.Core.Aspect.Logging;
 using Alis.Extension.Multimedia.FFmpeg.BaseClasses;
 
 namespace Alis.Extension.Multimedia.FFmpeg.Video

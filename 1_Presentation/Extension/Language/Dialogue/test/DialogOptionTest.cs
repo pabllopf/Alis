@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Logging;
 using Xunit;
 
 namespace Alis.Extension.Language.Dialogue.Test

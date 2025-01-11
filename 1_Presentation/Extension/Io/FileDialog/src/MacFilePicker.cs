@@ -29,6 +29,7 @@
 
 using System;
 using System.Diagnostics;
+using Alis.Core.Aspect.Logging;
 
 namespace Alis.Extension.Io.FileDialog
 {
