@@ -23,6 +23,9 @@
         
         <!-- Starting with .NET 7 the explicit conversion '(IntPtr)Int64' will not throw when overflowing in an unchecked context. Wrap the expression with a 'checked' statement to restore the .NET 6 behavior. -->
         <NoWarn>$(NoWarn);CA2020</NoWarn>
-        
+
+        <!-- CA1816 roslyn -->
+        <NoWarn>$(NoWarn);CA1816</NoWarn>
+
     </PropertyGroup>
 </Project>
