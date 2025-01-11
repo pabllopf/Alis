@@ -79,7 +79,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                 }
             }
 
-            DTSweepContext tcx = new DTSweepContext();
+            DtSweepContext tcx = new DtSweepContext();
             tcx.PrepareTriangulation(poly);
             DtSweep.Triangulate(tcx);
 

@@ -33,39 +33,39 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
     ///     The dt sweep context class
     /// </summary>
     /// <seealso cref="TriangulationContext" />
-    internal class DTSweepContext : TriangulationContext
+    internal class DtSweepContext : TriangulationContext
     {
         // Inital triangle factor, seed triangle will extend 30% of 
         // PointSet width to both left and right.
         /// <summary>
         ///     The alpha
         /// </summary>
-        private const float ALPHA = 0.3f;
+        private const float Alpha = 0.3f;
 
         /// <summary>
         ///     The dt sweep point comparator
         /// </summary>
-        private readonly DTSweepPointComparator _comparator = new DTSweepPointComparator();
+        private readonly DtSweepPointComparator _comparator = new DtSweepPointComparator();
 
         /// <summary>
         ///     The front
         /// </summary>
-        public AdvancingFront aFront;
+        public AdvancingFront AFront;
 
         /// <summary>
         ///     The dt sweep basin
         /// </summary>
-        public DTSweepBasin Basin = new DTSweepBasin();
+        public DtSweepBasin Basin = new DtSweepBasin();
 
         /// <summary>
         ///     The dt sweep edge event
         /// </summary>
-        public DTSweepEdgeEvent EdgeEvent = new DTSweepEdgeEvent();
+        public DtSweepEdgeEvent EdgeEvent = new DtSweepEdgeEvent();
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="DTSweepContext" /> class
+        ///     Initializes a new instance of the <see cref="DtSweepContext" /> class
         /// </summary>
-        public DTSweepContext()
+        public DtSweepContext()
         {
             Clear();
         }
@@ -144,7 +144,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         {
             //        Console.WriteLine( "add:" + node.key + ":" + System.identityHashCode(node.key));
             //        m_nodeTree.put( node.getKey(), node );
-            aFront.AddNode(node);
+            AFront.AddNode(node);
         }
 
         /// <summary>
@@ -155,7 +155,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         {
             //        Console.WriteLine( "remove:" + node.key + ":" + System.identityHashCode(node.key));
             //        m_nodeTree.delete( node.getKey() );
-            aFront.RemoveNode(node);
+            AFront.RemoveNode(node);
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The advancing front node</returns>
-        public AdvancingFrontNode LocateNode(TriangulationPoint point) => aFront.LocateNode(point);
+        public AdvancingFrontNode LocateNode(TriangulationPoint point) => AFront.LocateNode(point);
 
         /// <summary>
         ///     Creates the advancing front
@@ -181,15 +181,15 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             middle.Triangle = iTriangle;
             tail = new AdvancingFrontNode(iTriangle.Points[2]);
 
-            aFront = new AdvancingFront(head, tail);
-            aFront.AddNode(middle);
+            AFront = new AdvancingFront(head, tail);
+            AFront.AddNode(middle);
 
 
             //       so swap head and tail
-            aFront.Head.Next = middle;
-            middle.Next = aFront.Tail;
-            middle.Prev = aFront.Head;
-            aFront.Tail.Prev = middle;
+            AFront.Head.Next = middle;
+            middle.Next = AFront.Tail;
+            middle.Prev = AFront.Head;
+            AFront.Tail.Prev = middle;
         }
 
         /// <summary>
@@ -203,7 +203,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             {
                 if (t.Neighbors[i] == null)
                 {
-                    n = aFront.LocatePoint(t.PointCW(t.Points[i]));
+                    n = AFront.LocatePoint(t.PointCw(t.Points[i]));
                     if (n != null)
                     {
                         n.Triangle = t;
@@ -250,8 +250,8 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 }
             }
 
-            double deltaX = ALPHA * (xmax - xmin);
-            double deltaY = ALPHA * (ymax - ymin);
+            double deltaX = Alpha * (xmax - xmin);
+            double deltaY = Alpha * (ymax - ymin);
             TriangulationPoint p1 = new TriangulationPoint(xmax + deltaX, ymin - deltaY);
             TriangulationPoint p2 = new TriangulationPoint(xmin - deltaX, ymin - deltaY);
 
@@ -287,32 +287,32 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// <summary>
         ///     The dt sweep basin class
         /// </summary>
-        public class DTSweepBasin
+        public class DtSweepBasin
         {
             /// <summary>
             ///     The bottom node
             /// </summary>
-            public AdvancingFrontNode bottomNode;
+            public AdvancingFrontNode BottomNode;
 
             /// <summary>
             ///     The left highest
             /// </summary>
-            public bool leftHighest;
+            public bool LeftHighest;
 
             /// <summary>
             ///     The left node
             /// </summary>
-            public AdvancingFrontNode leftNode;
+            public AdvancingFrontNode LeftNode;
 
             /// <summary>
             ///     The right node
             /// </summary>
-            public AdvancingFrontNode rightNode;
+            public AdvancingFrontNode RightNode;
 
             /// <summary>
             ///     The width
             /// </summary>
-            public double width;
+            public double Width;
         }
 
         #endregion
@@ -322,7 +322,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// <summary>
         ///     The dt sweep edge event class
         /// </summary>
-        public class DTSweepEdgeEvent
+        public class DtSweepEdgeEvent
         {
             /// <summary>
             ///     The constrained edge
