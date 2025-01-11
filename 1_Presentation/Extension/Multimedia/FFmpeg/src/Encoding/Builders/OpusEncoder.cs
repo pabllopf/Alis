@@ -43,7 +43,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Encoding.Builders
             /// <summary>
             ///     Favor improved speech intelligibility.
             /// </summary>
-            VoIP = 0,
+            VoIp = 0,
 
             /// <summary>
             ///     Favor faithfulness to the input
@@ -61,7 +61,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Encoding.Builders
         /// </summary>
         public OpusEncoder()
         {
-            SetVBR();
+            SetVbr();
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Encoding.Builders
         ///     Constant bitrate encoding.
         /// </summary>
         /// <param name="bitrate">Target bitrate (ex: '320k', '250k', ...)</param>
-        public void SetCBR(string bitrate)
+        public void SetCbr(string bitrate)
         {
             CurrentQualitySettings = $"-b:a {bitrate} -vbr off";
         }
@@ -112,7 +112,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Encoding.Builders
         ///     Average bitrate encoding. (Default)
         /// </summary>
         /// <param name="bitrate">Target bitrate (ex: '320k', '250k', ...)</param>
-        public void SetVBR(string bitrate = "128k")
+        public void SetVbr(string bitrate = "128k")
         {
             CurrentQualitySettings = $"-b:a {bitrate} -vbr on";
         }
@@ -121,7 +121,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Encoding.Builders
         ///     Constrained VBR encoding
         /// </summary>
         /// <param name="bitrate">Target bitrate (ex: '320k', '250k', ...)</param>
-        public void SetCVBR(string bitrate = "128k")
+        public void SetCvbr(string bitrate = "128k")
         {
             CurrentQualitySettings = $"-b:a {bitrate} -vbr constrained";
         }

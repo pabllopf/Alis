@@ -33,14 +33,14 @@ namespace Alis.Extension.Multimedia.FFmpeg.Encoding.Builders
     ///     The aac encoder class
     /// </summary>
     /// <seealso cref="EncoderOptionsBuilder" />
-    public class AACEncoder : EncoderOptionsBuilder
+    public class AacEncoder : EncoderOptionsBuilder
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="AACEncoder" /> class
+        ///     Initializes a new instance of the <see cref="AacEncoder" /> class
         /// </summary>
-        public AACEncoder()
+        public AacEncoder()
         {
-            SetCBR();
+            SetCbr();
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Encoding.Builders
         ///     Constant bitrate encoding
         /// </summary>
         /// <param name="bitrate">Target bitrate (ex: '320k', '128k', ...)</param>
-        public void SetCBR(string bitrate = "128k")
+        public void SetCbr(string bitrate = "128k")
         {
             CurrentQualitySettings = $"-b:a {bitrate}";
         }

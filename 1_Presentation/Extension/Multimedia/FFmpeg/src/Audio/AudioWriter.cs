@@ -57,7 +57,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Audio
         /// <summary>
         ///     The ffmpegp
         /// </summary>
-        internal Process ffmpegp;
+        internal Process Ffmpegp;
 
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Audio
             SampleRate = sampleRate;
 
             Filename = filename;
-            EncoderOptions = encoderOptions ?? new MP3Encoder().Create();
+            EncoderOptions = encoderOptions ?? new Mp3Encoder().Create();
         }
 
         /// <summary>
@@ -128,13 +128,13 @@ namespace Alis.Extension.Multimedia.FFmpeg.Audio
             SampleRate = sampleRate;
 
             DestinationStream = destinationStream ?? throw new NullReferenceException("Stream can't be null!");
-            EncoderOptions = encoderOptions ?? new MP3Encoder().Create();
+            EncoderOptions = encoderOptions ?? new Mp3Encoder().Create();
         }
 
         /// <summary>
         ///     Gets the value of the current f fmpeg process
         /// </summary>
-        public Process CurrentFFmpegProcess => ffmpegp;
+        public Process CurrentFFmpegProcess => Ffmpegp;
 
         /// <summary>
         ///     Gets the value of the channels
@@ -207,14 +207,14 @@ namespace Alis.Extension.Multimedia.FFmpeg.Audio
                     File.Delete(Filename);
                 }
 
-                InputDataStream = FfMpegWrapper.OpenInput(ffmpeg, $"{cmd} \"{Filename}\"", out ffmpegp, showFFmpegOutput);
+                InputDataStream = FfMpegWrapper.OpenInput(ffmpeg, $"{cmd} \"{Filename}\"", out Ffmpegp, showFFmpegOutput);
             }
             else
             {
                 csc = new CancellationTokenSource();
 
                 // using stream
-                (InputDataStream, OutputDataStream) = FfMpegWrapper.Open(ffmpeg, $"{cmd} -", out ffmpegp, showFFmpegOutput);
+                (InputDataStream, OutputDataStream) = FfMpegWrapper.Open(ffmpeg, $"{cmd} -", out Ffmpegp, showFFmpegOutput);
                 _ = OutputDataStream.CopyToAsync(DestinationStream, 81920, csc.Token); // 81920 is the default buffer size
             }
 
@@ -234,7 +234,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Audio
             try
             {
                 InputDataStream.Dispose();
-                ffmpegp.WaitForExit();
+                Ffmpegp.WaitForExit();
                 csc?.Cancel();
 
                 if (!UseFilename)
@@ -244,9 +244,9 @@ namespace Alis.Extension.Multimedia.FFmpeg.Audio
 
                 try
                 {
-                    if (ffmpegp?.HasExited == false)
+                    if (Ffmpegp?.HasExited == false)
                     {
-                        ffmpegp.Kill();
+                        Ffmpegp.Kill();
                     }
                 }
                 catch

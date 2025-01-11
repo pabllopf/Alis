@@ -42,7 +42,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Encoding.Builders
         /// </summary>
         public VorbisEncoder()
         {
-            SetCQP();
+            SetCqp();
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Encoding.Builders
         ///     Constant bitrate encoding.
         /// </summary>
         /// <param name="bitrate">Target bitrate (ex: '320k', '250k', ...)</param>
-        public void SetCBR(string bitrate)
+        public void SetCbr(string bitrate)
         {
             CurrentQualitySettings = $"-b:a {bitrate}";
         }
@@ -83,7 +83,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Encoding.Builders
         ///     Constant quality encoding - VBR mode
         /// </summary>
         /// <param name="q">Float number from -1 to 10 (Higher = higher quality)</param>
-        public void SetCQP(float q = 3)
+        public void SetCqp(float q = 3)
         {
             CurrentQualitySettings = $"-q:a {q.ToString("0.00", CultureInfo.InvariantCulture)}";
         }

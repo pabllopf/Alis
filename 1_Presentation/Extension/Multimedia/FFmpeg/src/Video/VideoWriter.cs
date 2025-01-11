@@ -57,7 +57,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video
         /// <summary>
         ///     The ffmpegp
         /// </summary>
-        internal Process ffmpegp;
+        internal Process Ffmpegp;
 
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video
         /// <summary>
         ///     Gets the value of the current f fmpeg process
         /// </summary>
-        public Process CurrentFFmpegProcess => ffmpegp;
+        public Process CurrentFFmpegProcess => Ffmpegp;
 
         /// <summary>
         ///     Gets the value of the width
@@ -208,14 +208,14 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video
                     File.Delete(Filename);
                 }
 
-                InputDataStream = FfMpegWrapper.OpenInput(ffmpeg, $"{cmd} \"{Filename}\"", out ffmpegp, showFFmpegOutput);
+                InputDataStream = FfMpegWrapper.OpenInput(ffmpeg, $"{cmd} \"{Filename}\"", out Ffmpegp, showFFmpegOutput);
             }
             else
             {
                 csc = new CancellationTokenSource();
 
                 // using stream
-                (InputDataStream, OutputDataStream) = FfMpegWrapper.Open(ffmpeg, $"{cmd} -", out ffmpegp, showFFmpegOutput);
+                (InputDataStream, OutputDataStream) = FfMpegWrapper.Open(ffmpeg, $"{cmd} -", out Ffmpegp, showFFmpegOutput);
                 _ = OutputDataStream.CopyToAsync(DestinationStream, 81920, csc.Token); // 81920 is the default buffer size
             }
 
@@ -235,7 +235,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video
             try
             {
                 InputDataStream.Dispose();
-                ffmpegp.WaitForExit();
+                Ffmpegp.WaitForExit();
                 csc?.Cancel();
 
                 if (!UseFilename)
@@ -245,9 +245,9 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video
 
                 try
                 {
-                    if (ffmpegp?.HasExited == false)
+                    if (Ffmpegp?.HasExited == false)
                     {
-                        ffmpegp.Kill();
+                        Ffmpegp.Kill();
                     }
                 }
                 catch

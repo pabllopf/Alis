@@ -155,11 +155,11 @@ namespace Alis.Extension.Multimedia.FFmpeg.Test
 
             try
             {
-                VP9Encoder encoder = new VP9Encoder
+                Vp9Encoder encoder = new Vp9Encoder
                 {
                     RowBasedMultithreading = true
                 };
-                encoder.SetCQP();
+                encoder.SetCqp();
 
                 using VideoReader reader = new VideoReader(path);
 
