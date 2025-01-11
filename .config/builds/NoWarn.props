@@ -21,5 +21,8 @@
         <!-- CA1507: Use nameof expression -->
         <NoWarn>$(NoWarn);CA1507</NoWarn>
         
+        <!-- Starting with .NET 7 the explicit conversion '(IntPtr)Int64' will not throw when overflowing in an unchecked context. Wrap the expression with a 'checked' statement to restore the .NET 6 behavior. -->
+        <NoWarn>$(NoWarn);CA2020</NoWarn>
+        
     </PropertyGroup>
 </Project>
