@@ -60,5 +60,8 @@
         <!-- CA2016 roslyn -->
         <NoWarn>$(NoWarn);CA2016</NoWarn>
         
+        <!-- CA1861 roslyn -->
+        <NoWarn>$(NoWarn);CA1861</NoWarn>
+        
     </PropertyGroup>
 </Project>
