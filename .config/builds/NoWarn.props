@@ -18,5 +18,8 @@
         <!-- The enum member 'RoundCornersDefault' has the same constant value '240' as member 'RoundCornersAll' -->
         <NoWarn>$(NoWarn);CA1069</NoWarn>
         
+        <!-- CA1507: Use nameof expression -->
+        <NoWarn>$(NoWarn);CA1507</NoWarn>
+        
     </PropertyGroup>
 </Project>
