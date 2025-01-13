@@ -325,7 +325,7 @@ namespace Alis.Core.Physic.Common
                             switch (sn.Name.ToLower())
                             {
                                 case "active":
-                                    body._enabled = bool.Parse(sn.Value);
+                                    body.Enabled = bool.Parse(sn.Value);
                                     break;
                                 case "allowsleep":
                                     body.SleepingAllowed = bool.Parse(sn.Value);

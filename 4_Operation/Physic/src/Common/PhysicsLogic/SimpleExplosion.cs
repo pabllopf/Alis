@@ -69,7 +69,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
             aabb.UpperBound = pos + new Vector2F(radius);
 
             // Query the world for bodies within the radius.
-            World.QueryAABB(fixture =>
+            World.QueryAabb(fixture =>
             {
                 if (Vector2F.Distance(fixture.Body.Position, pos) <= radius)
                 {

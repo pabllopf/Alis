@@ -170,11 +170,11 @@ namespace Alis.Core.Physic.Controllers
                 if (LimitAngularVelocity)
                 {
                     //Rotation
-                    float rotation = dt * body._angularVelocity;
+                    float rotation = dt * body.AngularVelocity;
                     if (rotation * rotation > _maxAngularSqared)
                     {
                         float ratio = _maxAngularVelocity / Math.Abs(rotation);
-                        body._angularVelocity *= ratio;
+                        body.AngularVelocity *= ratio;
                     }
                 }
             }

@@ -74,14 +74,14 @@ namespace Alis.Core.Physic
         ///     to move by a small amount without triggering a tree adjustment.
         ///     This is in meters.
         /// </summary>
-        public const float AABBExtension = 0.1f;
+        public const float AabbExtension = 0.1f;
 
         /// <summary>
         ///     This is used to fatten AABBs in the dynamic tree. This is used to predict
         ///     the future position based on the current displacement.
         ///     This is a dimensionless multiplier.
         /// </summary>
-        public const float AABBMultiplier = 2.0f;
+        public const float AabbMultiplier = 2.0f;
 
         /// <summary>
         ///     A small length used as a collision and constraint tolerance. Usually it is
@@ -107,7 +107,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     Maximum number of contacts to be handled to solve a TOI impact.
         /// </summary>
-        public const int MaxTOIContacts = 32;
+        public const int MaxToiContacts = 32;
 
         /// <summary>
         ///     A velocity threshold for elastic collisions. Any collision with a relative linear
@@ -175,7 +175,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     Defines the maximum number of iterations made by the GJK algorithm.
         /// </summary>
-        public const int MaxGJKIterations = 20;
+        public const int MaxGjkIterations = 20;
 
         /// <summary>
         ///     By default, forces are cleared automatically after each call to Step.
@@ -213,12 +213,12 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     The number of velocity iterations in the TOI solver
         /// </summary>
-        public static int TOIVelocityIterations = VelocityIterations;
+        public static int ToiVelocityIterations = VelocityIterations;
 
         /// <summary>
         ///     The number of position iterations in the TOI solver
         /// </summary>
-        public static int TOIPositionIterations = 20;
+        public static int ToiPositionIterations = 20;
 
         /// <summary>
         ///     Enable/Disable sleeping

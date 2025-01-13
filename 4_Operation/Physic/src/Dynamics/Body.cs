@@ -58,7 +58,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The angular velocity
         /// </summary>
-        internal float _angularVelocity;
+        private float _angularVelocity;
 
         /// <summary>
         ///     The awake
@@ -73,7 +73,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The enabled
         /// </summary>
-        internal bool _enabled;
+        private bool _enabled;
 
         /// <summary>
         ///     The fixed rotation
@@ -83,7 +83,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The force
         /// </summary>
-        internal Vector2F _force;
+        internal Vector2F Force { get; set; }
 
         /// <summary>
         ///     The inertia
@@ -93,12 +93,12 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The inv
         /// </summary>
-        internal float _invI;
+        internal float InvI { get; set; }
 
         /// <summary>
         ///     The inv mass
         /// </summary>
-        internal float _invMass;
+        internal float InvMass { get; set; }
 
         /// <summary>
         ///     The island
@@ -188,7 +188,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             FixtureList = new FixtureCollection(this);
 
-            _enabled = true;
+            Enabled = true;
             _awake = true;
             _sleepingAllowed = true;
             _xf.q = Complex.One;
@@ -239,7 +239,7 @@ namespace Alis.Core.Physic.Dynamics
                 if (_bodyType == BodyType.Static)
                 {
                     _linearVelocity = Vector2F.Zero;
-                    _angularVelocity = 0.0f;
+                    AngularVelocity = 0.0f;
                     _sweep.A0 = _sweep.A;
                     _sweep.C0 = _sweep.C;
                     SynchronizeFixtures();
@@ -247,7 +247,7 @@ namespace Alis.Core.Physic.Dynamics
 
                 Awake = true;
 
-                _force = Vector2F.Zero;
+                Force = Vector2F.Zero;
                 _torque = 0.0f;
 
                 // Delete the attached contacts.
@@ -478,7 +478,7 @@ namespace Alis.Core.Physic.Dynamics
 
                 _fixedRotation = value;
 
-                _angularVelocity = 0f;
+                AngularVelocity = 0f;
                 ResetMassData();
             }
             get => _fixedRotation;
@@ -582,7 +582,7 @@ namespace Alis.Core.Physic.Dynamics
 
                 // Update center of mass velocity.
                 Vector2F a = _sweep.C - oldCenter;
-                _linearVelocity += new Vector2F(-_angularVelocity * a.Y, _angularVelocity * a.X);
+                _linearVelocity += new Vector2F(-AngularVelocity * a.Y, AngularVelocity * a.X);
             }
         }
 
@@ -616,7 +616,7 @@ namespace Alis.Core.Physic.Dynamics
                     _mass = 1.0f;
                 }
 
-                _invMass = 1.0f / _mass;
+                InvMass = 1.0f / _mass;
             }
         }
 
@@ -647,7 +647,7 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     _inertia = value - Mass * Vector2F.Dot(LocalCenter, LocalCenter);
                     Debug.Assert(_inertia > 0.0f);
-                    _invI = 1.0f / _inertia;
+                    InvI = 1.0f / _inertia;
                 }
             }
         }
@@ -704,8 +704,8 @@ namespace Alis.Core.Physic.Dynamics
         public void ResetDynamics()
         {
             _torque = 0;
-            _angularVelocity = 0;
-            _force = Vector2F.Zero;
+            AngularVelocity = 0;
+            Force = Vector2F.Zero;
             _linearVelocity = Vector2F.Zero;
         }
 
@@ -762,7 +762,7 @@ namespace Alis.Core.Physic.Dynamics
 
                 // Let the world know we have a new fixture. This will cause new contacts
                 // to be created at the beginning of the next time step.
-                World._worldHasNewFixture = true;
+                World.WorldHasNewFixture = true;
 
                 FixtureDelegate fixtureAddedHandler = World.FixtureAdded;
                 if (fixtureAddedHandler != null)
@@ -969,7 +969,7 @@ namespace Alis.Core.Physic.Dynamics
                     Awake = true;
                 }
 
-                _force += force;
+                Force += force;
                 _torque += (point.X - _sweep.C.X) * force.Y - (point.Y - _sweep.C.Y) * force.X;
             }
         }
@@ -1035,7 +1035,7 @@ namespace Alis.Core.Physic.Dynamics
                 Awake = true;
             }
 
-            _linearVelocity += _invMass * impulse;
+            _linearVelocity += InvMass * impulse;
         }
 
         /// <summary>
@@ -1058,8 +1058,8 @@ namespace Alis.Core.Physic.Dynamics
                 Awake = true;
             }
 
-            _linearVelocity += _invMass * impulse;
-            _angularVelocity += _invI * ((point.X - _sweep.C.X) * impulse.Y - (point.Y - _sweep.C.Y) * impulse.X);
+            _linearVelocity += InvMass * impulse;
+            AngularVelocity += InvI * ((point.X - _sweep.C.X) * impulse.Y - (point.Y - _sweep.C.Y) * impulse.X);
         }
 
         /// <summary>
@@ -1078,7 +1078,7 @@ namespace Alis.Core.Physic.Dynamics
                 Awake = true;
             }
 
-            _angularVelocity += _invI * impulse;
+            AngularVelocity += InvI * impulse;
         }
 
         /// <summary>
@@ -1090,9 +1090,9 @@ namespace Alis.Core.Physic.Dynamics
         {
             // Compute mass data from shapes. Each shape has its own density.
             _mass = 0.0f;
-            _invMass = 0.0f;
+            InvMass = 0.0f;
             _inertia = 0.0f;
-            _invI = 0.0f;
+            InvI = 0.0f;
             _sweep.LocalCenter = Vector2F.Zero;
 
             // Kinematic bodies have zero mass.
@@ -1131,14 +1131,14 @@ namespace Alis.Core.Physic.Dynamics
             // Compute center of mass.
             if (_mass > 0.0f)
             {
-                _invMass = 1.0f / _mass;
-                localCenter *= _invMass;
+                InvMass = 1.0f / _mass;
+                localCenter *= InvMass;
             }
             else
             {
                 // Force all dynamic bodies to have a positive mass.
                 _mass = 1.0f;
-                _invMass = 1.0f;
+                InvMass = 1.0f;
             }
 
             if ((_inertia > 0.0f) && !_fixedRotation)
@@ -1147,12 +1147,12 @@ namespace Alis.Core.Physic.Dynamics
                 _inertia -= _mass * Vector2F.Dot(localCenter, localCenter);
 
                 Debug.Assert(_inertia > 0.0f);
-                _invI = 1.0f / _inertia;
+                InvI = 1.0f / _inertia;
             }
             else
             {
                 _inertia = 0.0f;
-                _invI = 0.0f;
+                InvI = 0.0f;
             }
 
             // Move center of mass.
@@ -1162,7 +1162,7 @@ namespace Alis.Core.Physic.Dynamics
 
             // Update center of mass velocity.
             Vector2F a = _sweep.C - oldCenter;
-            _linearVelocity += new Vector2F(-_angularVelocity * a.Y, _angularVelocity * a.X);
+            _linearVelocity += new Vector2F(-AngularVelocity * a.Y, AngularVelocity * a.X);
         }
 
         /// <summary>
@@ -1238,8 +1238,8 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="worldPoint">A point in world coordinates.</param>
         /// <returns>The world velocity of a point.</returns>
         public Vector2F GetLinearVelocityFromWorldPoint(ref Vector2F worldPoint) => _linearVelocity +
-                                                                                    new Vector2F(-_angularVelocity * (worldPoint.Y - _sweep.C.Y),
-                                                                                        _angularVelocity * (worldPoint.X - _sweep.C.X));
+                                                                                    new Vector2F(-AngularVelocity * (worldPoint.Y - _sweep.C.Y),
+                                                                                        AngularVelocity * (worldPoint.X - _sweep.C.X));
 
         /// <summary>
         ///     Get the world velocity of a local point.
@@ -1429,9 +1429,9 @@ namespace Alis.Core.Physic.Dynamics
             Body body = world.CreateBody(Position, Rotation);
             body._bodyType = _bodyType;
             body._linearVelocity = _linearVelocity;
-            body._angularVelocity = _angularVelocity;
+            body.AngularVelocity = AngularVelocity;
             body.Tag = Tag;
-            body._enabled = _enabled;
+            body.Enabled = Enabled;
             body._fixedRotation = _fixedRotation;
             body._sleepingAllowed = _sleepingAllowed;
             body._linearDamping = _linearDamping;

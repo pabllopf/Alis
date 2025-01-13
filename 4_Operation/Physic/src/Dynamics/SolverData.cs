@@ -35,21 +35,21 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The step
         /// </summary>
-        internal TimeStep step;
+        internal TimeStep Step;
 
         /// <summary>
         ///     The positions
         /// </summary>
-        internal SolverPosition[] positions;
+        internal SolverPosition[] Positions;
 
         /// <summary>
         ///     The velocities
         /// </summary>
-        internal SolverVelocity[] velocities;
+        internal SolverVelocity[] Velocities;
 
         /// <summary>
         ///     The locks
         /// </summary>
-        internal int[] locks;
+        internal int[] Locks;
     }
 }

@@ -85,7 +85,7 @@ namespace Alis.Core.Physic.Collision
 
             // Main iteration loop.
             int iter = 0;
-            while (iter < SettingEnv.MaxGJKIterations)
+            while (iter < SettingEnv.MaxGjkIterations)
             {
                 // Copy simplex so we can identify duplicates.
                 int saveCount = simplex.Count;
