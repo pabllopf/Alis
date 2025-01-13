@@ -2346,10 +2346,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             object input = null;
             IFormatProvider provider = CultureInfo.InvariantCulture;
-            object value;
 
             // Act
-            Assert.Throws<NullReferenceException>(() => Conversions.TryConvertToUri(input.ToString(), out value));
+            Assert.Throws<NullReferenceException>(() => Conversions.TryConvertToUri(input.ToString(), out object _));
         }
 
         /// <summary>
@@ -2544,10 +2543,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object inputValue = "invalid";
             Type targetType = typeof(int);
             Type sourceType = typeof(string);
-            object convertedValue;
 
             // Act
-            Assert.Throws<ArgumentException>(() => Conversions.TryConvert(inputValue, targetType, sourceType, out convertedValue));
+            Assert.Throws<ArgumentException>(() => Conversions.TryConvert(inputValue, targetType, sourceType, out object _));
         }
 
         /// <summary>

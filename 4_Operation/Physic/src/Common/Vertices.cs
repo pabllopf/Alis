@@ -411,9 +411,7 @@ namespace Alis.Core.Physic.Common
                     Vector2F b1 = this[j];
                     Vector2F b2 = NextVertex(j);
 
-                    Vector2F temp;
-
-                    if (LineTools.LineIntersect2(ref a1, ref a2, ref b1, ref b2, out temp))
+                    if (LineTools.LineIntersect2(ref a1, ref a2, ref b1, ref b2, out Vector2F _))
                     {
                         return false;
                     }

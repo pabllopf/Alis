@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 
@@ -46,7 +45,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
         /// <summary>
         ///     The point comparer
         /// </summary>
-        private static readonly PointComparer _pointComparer = new PointComparer();
+        private static readonly PointComparer PointComparer = new PointComparer();
 
         /// <summary>
         ///     Returns the convex hull from the given vertices..
@@ -61,7 +60,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
             Vertices pointSet = new Vertices(vertices);
 
             //Sort by X-axis
-            pointSet.Sort(_pointComparer);
+            pointSet.Sort(PointComparer);
 
             Vector2F[] h = new Vector2F[pointSet.Count];
             Vertices res;
@@ -185,25 +184,6 @@ namespace Alis.Core.Physic.Common.ConvexHull
             }
 
             return res;
-        }
-
-        /// <summary>
-        ///     The point comparer class
-        /// </summary>
-        /// <seealso cref="Comparer{Vector2F}" />
-        private class PointComparer : Comparer<Vector2F>
-        {
-            /// <summary>
-            ///     Compares the a
-            /// </summary>
-            /// <param name="a">The </param>
-            /// <param name="b">The </param>
-            /// <returns>The int</returns>
-            public override int Compare(Vector2F a, Vector2F b)
-            {
-                int f = a.X.CompareTo(b.X);
-                return f != 0 ? f : a.Y.CompareTo(b.Y);
-            }
         }
     }
 }

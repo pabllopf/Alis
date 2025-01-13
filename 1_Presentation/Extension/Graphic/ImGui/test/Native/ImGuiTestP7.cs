@@ -1139,8 +1139,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void SaveIniSettingsToMemory_WithOutIniSize_ThrowsDllNotFoundException()
         {
-            uint size;
-            Assert.Throws<MarshalDirectiveException>(() => ImGui.Native.ImGui.SaveIniSettingsToMemory(out size));
+            Assert.Throws<MarshalDirectiveException>(() => ImGui.Native.ImGui.SaveIniSettingsToMemory(out uint _));
         }
 
         /// <summary>
@@ -2035,8 +2034,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void V3_SaveIniSettingsToMemory_WithOutIniSize_ThrowsDllNotFoundException()
         {
-            uint outIniSize;
-            Assert.Throws<MarshalDirectiveException>(() => ImGui.Native.ImGui.SaveIniSettingsToMemory(out outIniSize));
+            Assert.Throws<MarshalDirectiveException>(() => ImGui.Native.ImGui.SaveIniSettingsToMemory(out uint _));
         }
 
         /// <summary>
