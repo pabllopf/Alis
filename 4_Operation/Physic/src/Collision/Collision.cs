@@ -884,8 +884,8 @@ namespace Alis.Core.Physic.Collision
                 centroidB = Transform.Multiply(polygonB.MassData.Centroid, ref xf);
 
                 Vector2F v0 = edgeA.Vertex0;
-                Vector2F v1 = edgeA._vertex1;
-                Vector2F v2 = edgeA._vertex2;
+                Vector2F v1 = edgeA.Vertex11;
+                Vector2F v2 = edgeA.Vertex22;
                 Vector2F v3 = edgeA.Vertex3;
 
                 bool hasVertex0 = edgeA.HasVertex0;
