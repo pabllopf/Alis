@@ -5,6 +5,42 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.5.9] - 2025-01-15
+### :bug: Bug Fixes
+- [`6fd62df`](https://github.com/pabllopf/Alis/commit/6fd62df13d9f0e706f3bad934b88d4cd9d2e41c8) - NU1900 warning *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4f3071a`](https://github.com/pabllopf/Alis/commit/4f3071a103350d8fb6e8e43765dc15caacf4df7c) - more than 300 code smellss *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5cd15c3`](https://github.com/pabllopf/Alis/commit/5cd15c3af5b3a03841d1884f1734475848af16cc) - delete all Exception *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c67ece7`](https://github.com/pabllopf/Alis/commit/c67ece772700c1ed1a19355dbe56bf9ec32fad6f) - CustomIndexOutOfRangeException *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`de569c0`](https://github.com/pabllopf/Alis/commit/de569c050af156ee8df127c60ae54cfb63fd2939) - unit tests with CustomIndexOutOfRangeException *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`65c2c60`](https://github.com/pabllopf/Alis/commit/65c2c603737e0e2a17e0e44f319bfe7b244891f9) - more than 500 code smells *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f91c29d`](https://github.com/pabllopf/Alis/commit/f91c29d5006eb93569600be86996abf69961b363) - 300+ code smells *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8c6038d`](https://github.com/pabllopf/Alis/commit/8c6038d6cd73863a953f256607cc4fe421a6c7db) - add brackets on code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cf35f3c`](https://github.com/pabllopf/Alis/commit/cf35f3c845d2dd353b816ade9fcbbaab10f02d2e) - brackets the space *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`97c314b`](https://github.com/pabllopf/Alis/commit/97c314b0192277116581a3d11e6aa6231077cbd2) - double values *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9d8645f`](https://github.com/pabllopf/Alis/commit/9d8645f9879dc1ec1e3c736231cef14604758eff) - spaces and tabs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`899f10e`](https://github.com/pabllopf/Alis/commit/899f10ee79c1a724cbf2f5daf2cf0fd40830aacf) - CA1822 warning *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a713e7e`](https://github.com/pabllopf/Alis/commit/a713e7e2c8bc5995e8953a2d46a7e2c9a5892855) - the CA1510 roslyn *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2816222`](https://github.com/pabllopf/Alis/commit/28162223d8dcd1fff1ab7f056a98cbb2403dcec2) - The enum member 'RoundCornersDefault' has the same constant value '240' as member 'RoundCornersAll' *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b96fe94`](https://github.com/pabllopf/Alis/commit/b96fe946e6bb9fefe872d0d3ea4b7f8977051fa7) - the CA1507 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6bc1cea`](https://github.com/pabllopf/Alis/commit/6bc1cea08bc9699731bc6e352b4f9cbc3cb83b19) - the warnings CA2020 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`333008e`](https://github.com/pabllopf/Alis/commit/333008e615b5c1bf636aeb8acac007aa3b7e9fc8) - move to other files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`535ffda`](https://github.com/pabllopf/Alis/commit/535ffda586b6c9d264ba27a54bad926911cbd1f6) - names methods and class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6149387`](https://github.com/pabllopf/Alis/commit/61493870e0e8089202c85641e55584843ba942d6) - names on physic module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b7d5204`](https://github.com/pabllopf/Alis/commit/b7d520497eeaed83757ac0d64a3e98f52befe6af) - more than 100 code smells *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a85e450`](https://github.com/pabllopf/Alis/commit/a85e450d566df8b2e0d2559a5476bb010f04106b) - Operation flags *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`477740a`](https://github.com/pabllopf/Alis/commit/477740aac6797dcc24da9497c6951718fbb2bd17) - CA1861 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9ca5782`](https://github.com/pabllopf/Alis/commit/9ca5782a91a990f6f4e7a7d9f2ad564357f58efa) - the console log *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`efbbd9a`](https://github.com/pabllopf/Alis/commit/efbbd9aeda2c994df456e272844dad687d8097cd) - logger info *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`da5044f`](https://github.com/pabllopf/Alis/commit/da5044fac4553bbd9c3e0b09cbbebab2a59a9575) - logger info message *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f16e154`](https://github.com/pabllopf/Alis/commit/f16e154e62a412d20079f192fb17ea6d7f78504d) - more than 200 code smells *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1ce2578`](https://github.com/pabllopf/Alis/commit/1ce257872c40a47d797ca5cc3dc601109ed48410) - code smells *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`dfdba42`](https://github.com/pabllopf/Alis/commit/dfdba428e71727c01c0868cb222a8821fcc7f3dd) - 50 code smells *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f2e7016`](https://github.com/pabllopf/Alis/commit/f2e7016980624ee335e6ba06e77cb91e38a6ede8) - name files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6419d5b`](https://github.com/pabllopf/Alis/commit/6419d5bd661d8b40db8fc5cafa35d494175b6fec) - rename all names on common folder *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`16a1341`](https://github.com/pabllopf/Alis/commit/16a1341b23d920970f34a580053de08809ce303d) - The point comparer on test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6844040`](https://github.com/pabllopf/Alis/commit/6844040e07e0c83122326f629d0c21bad86a6155) - names of shapes *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.5.8] - 2025-01-10
 ### :bug: Bug Fixes
 - [`2f209a5`](https://github.com/pabllopf/Alis/commit/2f209a548766a4b7897c82d1c25644deb2ddbd51) - delete html code on readme files *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -3931,3 +3967,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.5.6]: https://github.com/pabllopf/Alis/compare/v0.5.5...v0.5.6
 [v0.5.7]: https://github.com/pabllopf/Alis/compare/v0.5.6...v0.5.7
 [v0.5.8]: https://github.com/pabllopf/Alis/compare/v0.5.7...v0.5.8
+[v0.5.9]: https://github.com/pabllopf/Alis/compare/v0.5.8...v0.5.9
