@@ -37,7 +37,7 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     Enlarged AABB
         /// </summary>
-        internal AABB AABB;
+        internal Aabb AABB;
 
         /// <summary>
         ///     The child

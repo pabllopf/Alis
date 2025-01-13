@@ -231,10 +231,10 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="aabb">The aabb</param>
         /// <param name="transform">The transform</param>
         /// <param name="childIndex">The child index</param>
-        public override void ComputeAABB(out AABB aabb, ref Transform transform, int childIndex)
+        public override void ComputeAABB(out Aabb aabb, ref Transform transform, int childIndex)
         {
             // Initialize aabb
-            aabb = new AABB();
+            aabb = new Aabb();
 
             // OPT: Vector2F v1 = Transform.Multiply(ref _vertex1, ref transform);
             float v1X = Vertex11.X * transform.q.R - Vertex11.Y * transform.q.i + transform.p.X;

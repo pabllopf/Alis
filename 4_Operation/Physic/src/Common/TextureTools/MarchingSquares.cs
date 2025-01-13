@@ -54,7 +54,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// <param name="lerpCount"></param>
         /// <param name="combine"></param>
         /// <returns></returns>
-        public static List<Vertices> DetectSquares(AABB domain, float cellWidth, float cellHeight, sbyte[,] f,
+        public static List<Vertices> DetectSquares(Aabb domain, float cellWidth, float cellHeight, sbyte[,] f,
             int lerpCount, bool combine)
         {
             CxFastList<GeomPoly> ret = new CxFastList<GeomPoly>();

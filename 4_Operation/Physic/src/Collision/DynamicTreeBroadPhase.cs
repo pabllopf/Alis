@@ -144,7 +144,7 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         /// <param name="proxy">The user data.</param>
         /// <returns></returns>
-        public int AddProxy(ref AABB aabb)
+        public int AddProxy(ref Aabb aabb)
         {
             int proxyId = _tree.AddProxy(ref aabb);
             ++ProxyCount;
@@ -170,7 +170,7 @@ namespace Alis.Core.Physic.Collision
         /// <param name="proxyId">The proxy id</param>
         /// <param name="aabb">The aabb</param>
         /// <param name="displacement">The displacement</param>
-        public void MoveProxy(int proxyId, ref AABB aabb, Vector2F displacement)
+        public void MoveProxy(int proxyId, ref Aabb aabb, Vector2F displacement)
         {
             bool buffer = _tree.MoveProxy(proxyId, ref aabb, displacement);
             if (buffer)
@@ -193,7 +193,7 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         /// <param name="proxyId">The proxy id.</param>
         /// <param name="aabb">The aabb.</param>
-        public void GetFatAABB(int proxyId, out AABB aabb)
+        public void GetFatAABB(int proxyId, out Aabb aabb)
         {
             _tree.GetFatAABB(proxyId, out aabb);
         }
@@ -243,7 +243,7 @@ namespace Alis.Core.Physic.Collision
 
                 // We have to query the tree with the fat AABB so that
                 // we don't fail to create a pair that may touch later.
-                AABB fatAABB = _tree.GetFatAABB(_queryProxyId);
+                Aabb fatAABB = _tree.GetFatAABB(_queryProxyId);
 
                 // Query tree, create pairs and add them pair buffer.
                 _tree.Query(_queryCallbackCache, ref fatAABB);
@@ -289,7 +289,7 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         /// <param name="callback">The callback.</param>
         /// <param name="aabb">The aabb.</param>
-        public void Query(BroadPhaseQueryCallback callback, ref AABB aabb)
+        public void Query(BroadPhaseQueryCallback callback, ref Aabb aabb)
         {
             _tree.Query(callback, ref aabb);
         }

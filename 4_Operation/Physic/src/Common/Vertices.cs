@@ -182,9 +182,9 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         ///     Returns an AABB that fully contains this polygon.
         /// </summary>
-        public AABB GetAABB()
+        public Aabb GetAABB()
         {
-            AABB aabb;
+            Aabb aabb;
             Vector2F lowerBound = new Vector2F(float.MaxValue, float.MaxValue);
             Vector2F upperBound = new Vector2F(float.MinValue, float.MinValue);
 

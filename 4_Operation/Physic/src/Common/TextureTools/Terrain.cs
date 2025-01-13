@@ -49,7 +49,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// <summary>
         ///     The dirty area
         /// </summary>
-        private AABB _dirtyArea;
+        private Aabb _dirtyArea;
 
         /// <summary>
         ///     The local height
@@ -133,7 +133,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// </summary>
         /// <param name="world">The World</param>
         /// <param name="area">The area of the terrain.</param>
-        public Terrain(World world, AABB area)
+        public Terrain(World world, Aabb area)
         {
             World = world;
             Width = area.Width;
@@ -183,7 +183,7 @@ namespace Alis.Core.Physic.Common.TextureTools
             _bodyMap = new List<Body>[_xnum, _ynum];
 
             // make sure to mark the dirty area to an infinitely small box
-            _dirtyArea = new AABB(new Vector2F(float.MaxValue, float.MaxValue), new Vector2F(float.MinValue, float.MinValue));
+            _dirtyArea = new Aabb(new Vector2F(float.MaxValue, float.MaxValue), new Vector2F(float.MinValue, float.MinValue));
         }
 
         /// <summary>
@@ -281,7 +281,7 @@ namespace Alis.Core.Physic.Common.TextureTools
 
             RemoveOldData(xStart, xEnd, yStart, yEnd);
 
-            _dirtyArea = new AABB(new Vector2F(float.MaxValue, float.MaxValue), new Vector2F(float.MinValue, float.MinValue));
+            _dirtyArea = new Aabb(new Vector2F(float.MaxValue, float.MaxValue), new Vector2F(float.MinValue, float.MinValue));
         }
 
         /// <summary>
@@ -324,7 +324,7 @@ namespace Alis.Core.Physic.Common.TextureTools
             float ax = gx * CellSize;
             float ay = gy * CellSize;
 
-            List<Vertices> polys = MarchingSquares.DetectSquares(new AABB(new Vector2F(ax, ay), new Vector2F(ax + CellSize, ay + CellSize)), SubCellSize, SubCellSize, _terrainMap, Iterations, true);
+            List<Vertices> polys = MarchingSquares.DetectSquares(new Aabb(new Vector2F(ax, ay), new Vector2F(ax + CellSize, ay + CellSize)), SubCellSize, SubCellSize, _terrainMap, Iterations, true);
             if (polys.Count == 0)
             {
                 return;

@@ -160,7 +160,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="aabb">The aabb</param>
         /// <param name="transform">The transform</param>
         /// <param name="childIndex">The child index</param>
-        public override void ComputeAABB(out AABB aabb, ref Transform transform, int childIndex)
+        public override void ComputeAABB(out Aabb aabb, ref Transform transform, int childIndex)
         {
             // OPT: Vector2F p = transform.p + Complex.Multiply(ref _position, ref transform.q);
             float pX = PositionInternal.X * transform.q.R - PositionInternal.Y * transform.q.i + transform.p.X;

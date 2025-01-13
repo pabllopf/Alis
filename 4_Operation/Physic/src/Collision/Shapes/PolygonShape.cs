@@ -355,9 +355,9 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="aabb">The aabb results.</param>
         /// <param name="transform">The world transform of the shape.</param>
         /// <param name="childIndex">The child shape index.</param>
-        public override void ComputeAABB(out AABB aabb, ref Transform transform, int childIndex)
+        public override void ComputeAABB(out Aabb aabb, ref Transform transform, int childIndex)
         {
-            aabb = new AABB();
+            aabb = new Aabb();
 
             // OPT: aabb.LowerBound = Transform.Multiply(Vertices[0], ref transform);
             Vector2F vert = Vertices[0];
