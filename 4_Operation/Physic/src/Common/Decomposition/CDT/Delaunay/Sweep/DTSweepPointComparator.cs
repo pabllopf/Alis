@@ -35,7 +35,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
     ///     The dt sweep point comparator class
     /// </summary>
     /// <seealso cref="IComparer{TriangulationPoint}" />
-    internal class DTSweepPointComparator : IComparer<TriangulationPoint>
+    internal class DtSweepPointComparator : IComparer<TriangulationPoint>
     {
         #region IComparer<TriangulationPoint> Members
 
