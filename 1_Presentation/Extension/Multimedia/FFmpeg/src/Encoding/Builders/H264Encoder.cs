@@ -42,7 +42,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Encoding.Builders
         /// </summary>
         public H264Encoder()
         {
-            SetCQP();
+            SetCqp();
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Encoding.Builders
         ///     bitrate/size)
         /// </summary>
         /// <param name="crf">Float number from 0 to 51 (0=lossless)</param>
-        public void SetCQP(float crf = 22)
+        public void SetCqp(float crf = 22)
         {
             CurrentQualitySettings = "-crf " + crf.ToString("0.00", CultureInfo.InvariantCulture);
         }
@@ -95,7 +95,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Encoding.Builders
         ///     control buffer that will enforce the requested average bitrate across [bufsize] worth of video. Fluctuation within
         ///     this range is acceptable. This is expected client buffer size. (ex: '1M', '1000k', ...)
         /// </param>
-        public void SetCBR(string bitrate, string bufsize)
+        public void SetCbr(string bitrate, string bufsize)
         {
             CurrentQualitySettings = $"-x264-params \"nal-hrd=cbr\" -b:v {bitrate} -minrate {bitrate} -maxrate {bitrate} -bufsize {bufsize}";
         }
@@ -106,24 +106,24 @@ namespace Alis.Extension.Multimedia.FFmpeg.Encoding.Builders
         ///     CRF is increased when [max_bitrate] is exceeded.
         /// </summary>
         /// <param name="crf">Float number from 0 to 51 (0=lossless)</param>
-        /// <param name="max_bitrate">Max. allowed bitrate (ex: '1M', '1000k', ...)</param>
+        /// <param name="maxBitrate">Max. allowed bitrate (ex: '1M', '1000k', ...)</param>
         /// <param name="bufsize">
         ///     Decoder buffer size, which determines the variability of the output bitrate. This is expected
         ///     client buffer size. (ex: '1M', '1000k', ... Should be more than the bitrate)
         /// </param>
-        /// <param name="crf_max">Prevents lowering CRF beyond this point (-1 = auto)</param>
-        public void SetVBV(float crf, string max_bitrate, string bufsize, float crf_max = -1)
+        /// <param name="crfMax">Prevents lowering CRF beyond this point (-1 = auto)</param>
+        public void SetVbv(float crf, string maxBitrate, string bufsize, float crfMax = -1)
         {
-            CurrentQualitySettings = $"-crf {crf.ToString("0.00", CultureInfo.InvariantCulture)} -maxrate {max_bitrate} -bufsize {bufsize} -crf_max {crf_max}";
+            CurrentQualitySettings = $"-crf {crf.ToString("0.00", CultureInfo.InvariantCulture)} -maxrate {maxBitrate} -bufsize {bufsize} -crf_max {crfMax}";
         }
 
         /// <summary>
         ///     Average bitrate encoding (Not recommended as it includes a lot of guessing ahead in time)
         /// </summary>
-        /// <param name="avg_bitrate">Average target bitrate (ex: '1M', '1000k', ...)</param>
-        public void SetABR(string avg_bitrate)
+        /// <param name="avgBitrate">Average target bitrate (ex: '1M', '1000k', ...)</param>
+        public void SetAbr(string avgBitrate)
         {
-            CurrentQualitySettings = $"-b:v {avg_bitrate}";
+            CurrentQualitySettings = $"-b:v {avgBitrate}";
         }
 
         /// <summary>

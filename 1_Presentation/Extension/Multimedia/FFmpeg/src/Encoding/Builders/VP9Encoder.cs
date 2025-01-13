@@ -33,7 +33,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Encoding.Builders
     ///     The vp encoder class
     /// </summary>
     /// <seealso cref="EncoderOptionsBuilder" />
-    public class VP9Encoder : EncoderOptionsBuilder
+    public class Vp9Encoder : EncoderOptionsBuilder
     {
         /// <summary>
         ///     The tune enum
@@ -57,11 +57,11 @@ namespace Alis.Extension.Multimedia.FFmpeg.Encoding.Builders
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="VP9Encoder" /> class
+        ///     Initializes a new instance of the <see cref="Vp9Encoder" /> class
         /// </summary>
-        public VP9Encoder()
+        public Vp9Encoder()
         {
-            SetCQP();
+            SetCqp();
         }
 
         /// <summary>
@@ -105,27 +105,27 @@ namespace Alis.Extension.Multimedia.FFmpeg.Encoding.Builders
         ///     CRF is increased when [max_bitrate] is exceeded.
         /// </summary>
         /// <param name="crf">Number from 0 to 63 (Lower = higher quality)</param>
-        public void SetCVBR(int crf, string max_bitrate)
+        public void SetCvbr(int crf, string maxBitrate)
         {
-            CurrentQualitySettings = $"-crf {crf} -b:v {max_bitrate}";
+            CurrentQualitySettings = $"-crf {crf} -b:v {maxBitrate}";
         }
 
         /// <summary>
         ///     Constrained bitrate encoding - Set target, min and max bitrate.
         /// </summary>
-        /// <param name="target_bitrate">Target bitrate (ex: '1M', '1000k', ...)</param>
-        /// <param name="min_bitrate">Min bitrate (ex: '1M', '1000k', ...)</param>
-        /// <param name="max_bitrate">Max bitrate (ex: '1M', '1000k', ...)</param>
-        public void SetCVBR(string target_bitrate, string min_bitrate, string max_bitrate)
+        /// <param name="targetBitrate">Target bitrate (ex: '1M', '1000k', ...)</param>
+        /// <param name="minBitrate">Min bitrate (ex: '1M', '1000k', ...)</param>
+        /// <param name="maxBitrate">Max bitrate (ex: '1M', '1000k', ...)</param>
+        public void SetCvbr(string targetBitrate, string minBitrate, string maxBitrate)
         {
-            CurrentQualitySettings = $"-minrate {min_bitrate} -b:v {target_bitrate} -maxrate {max_bitrate}";
+            CurrentQualitySettings = $"-minrate {minBitrate} -b:v {targetBitrate} -maxrate {maxBitrate}";
         }
 
         /// <summary>
         ///     ABR encoding
         /// </summary>
         /// <param name="bitrate">Average target bitrate (ex: '1M', '1000k', ...)</param>
-        public void SetABR(string bitrate)
+        public void SetAbr(string bitrate)
         {
             CurrentQualitySettings = $"-b:v {bitrate}";
         }
@@ -134,7 +134,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Encoding.Builders
         ///     Constant quality encoding
         /// </summary>
         /// <param name="crf">Number from 0 to 63 (Lower = higher quality)</param>
-        public void SetCQP(int crf = 31)
+        public void SetCqp(int crf = 31)
         {
             CurrentQualitySettings = $"-crf {crf} -b:v 0";
         }
@@ -143,7 +143,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Encoding.Builders
         ///     Constant bitrate encoding
         /// </summary>
         /// <param name="bitrate">Average target bitrate (ex: '1M', '1000k', ...)</param>
-        public void SetCBR(string bitrate)
+        public void SetCbr(string bitrate)
         {
             CurrentQualitySettings = $"-minrate {bitrate} -maxrate {bitrate} -b:v {bitrate}";
         }

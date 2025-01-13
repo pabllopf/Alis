@@ -33,14 +33,14 @@ namespace Alis.Extension.Multimedia.FFmpeg.Encoding.Builders
     ///     The mp encoder class
     /// </summary>
     /// <seealso cref="EncoderOptionsBuilder" />
-    public class MP3Encoder : EncoderOptionsBuilder
+    public class Mp3Encoder : EncoderOptionsBuilder
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="MP3Encoder" /> class
+        ///     Initializes a new instance of the <see cref="Mp3Encoder" /> class
         /// </summary>
-        public MP3Encoder()
+        public Mp3Encoder()
         {
-            SetCQP();
+            SetCqp();
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Encoding.Builders
         ///     Constant bitrate encoding. (This mode is considered wasteful, use CQP instead)
         /// </summary>
         /// <param name="bitrate">Target bitrate (ex: '320k', '250k', ...)</param>
-        public void SetCBR(string bitrate)
+        public void SetCbr(string bitrate)
         {
             CurrentQualitySettings = $"-b:a {bitrate}";
         }
@@ -80,17 +80,17 @@ namespace Alis.Extension.Multimedia.FFmpeg.Encoding.Builders
         /// <summary>
         ///     Average bitrate encoding.
         /// </summary>
-        /// <param name="avg_bitrate">Average target bitrate (ex: '320k', '250k', ...)</param>
-        public void SetABR(string avg_bitrate)
+        /// <param name="avgBitrate">Average target bitrate (ex: '320k', '250k', ...)</param>
+        public void SetAbr(string avgBitrate)
         {
-            CurrentQualitySettings = $"-b:a {avg_bitrate} -abr 1";
+            CurrentQualitySettings = $"-b:a {avgBitrate} -abr 1";
         }
 
         /// <summary>
         ///     Constant quality encoding - VBR mode (0 produces around 240kbps, 1 -> 220kbps, 2 -> 190, ...)
         /// </summary>
         /// <param name="qscale">Number from 0 to 9 (Lower = higher quality)</param>
-        public void SetCQP(int qscale = 4)
+        public void SetCqp(int qscale = 4)
         {
             CurrentQualitySettings = $"-q:a {qscale}";
         }

@@ -37,7 +37,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.BaseClasses
     /// <summary>
     ///     The media writer class
     /// </summary>
-    public abstract class MediaWriter<Frame> where Frame : IMediaFrame
+    public abstract class MediaWriter<TFrame> where TFrame : IMediaFrame
     {
         /// <summary>
         ///     Output filename
@@ -58,7 +58,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.BaseClasses
         ///     Writes frame to output. Make sure to call OpenWrite() before calling this.
         /// </summary>
         /// <param name="frame">Frame containing media data</param>
-        public virtual void WriteFrame(Frame frame)
+        public virtual void WriteFrame(TFrame frame)
         {
             if (!OpenedForWriting)
             {

@@ -49,7 +49,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video
         /// <summary>
         ///     The compiled
         /// </summary>
-        private static readonly Regex bitRateSimpleRgx = new Regex(@"\D(\d+?)[bl]e", RegexOptions.Compiled, TimeSpan.FromSeconds(10));
+        private static readonly Regex BitRateSimpleRgx = new Regex(@"\D(\d+?)[bl]e", RegexOptions.Compiled, TimeSpan.FromSeconds(10));
 
         /// <summary>
         ///     The ffprobe
@@ -234,11 +234,11 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video
         /// <summary>
         ///     Tries the parse bit depth using the specified pix fmt
         /// </summary>
-        /// <param name="pix_fmt">The pix fmt</param>
+        /// <param name="pixFmt">The pix fmt</param>
         /// <returns>The int</returns>
-        private int TryParseBitDepth(string pix_fmt)
+        private int TryParseBitDepth(string pixFmt)
         {
-            Match match = bitRateSimpleRgx.Match(pix_fmt);
+            Match match = BitRateSimpleRgx.Match(pixFmt);
             if (match.Success)
             {
                 return int.Parse(match.Groups[1].Value);

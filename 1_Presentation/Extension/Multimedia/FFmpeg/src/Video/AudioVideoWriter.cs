@@ -52,7 +52,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video
         /// <summary>
         ///     The connected socket
         /// </summary>
-        private Socket connected_socket;
+        private Socket connectedSocket;
 
         /// <summary>
         ///     The csc
@@ -62,7 +62,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video
         /// <summary>
         ///     The ffmpegp
         /// </summary>
-        internal Process ffmpegp;
+        internal Process Ffmpegp;
 
         /// <summary>
         ///     The socket
@@ -73,27 +73,27 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video
         ///     Used for encoding video and audio frames into a single file
         /// </summary>
         /// <param name="filename">Output file name</param>
-        /// <param name="video_width">Input video width in pixels</param>
-        /// <param name="video_height">Input video height in pixels</param>
-        /// <param name="video_framerate">Input video framerate in fps</param>
-        /// <param name="audio_channels">Input audio channel count</param>
-        /// <param name="audio_sampleRate">Input audio sample rate</param>
-        /// <param name="audio_bitDepth">Input audio bits per sample</param>
+        /// <param name="videoWidth">Input video width in pixels</param>
+        /// <param name="videoHeight">Input video height in pixels</param>
+        /// <param name="videoFramerate">Input video framerate in fps</param>
+        /// <param name="audioChannels">Input audio channel count</param>
+        /// <param name="audioSampleRate">Input audio sample rate</param>
+        /// <param name="audioBitDepth">Input audio bits per sample</param>
         /// <param name="videoEncoderOptions">Video encoding options that will be passed to FFmpeg</param>
         /// <param name="audioEncoderOptions">Audio encoding options that will be passed to FFmpeg</param>
         /// <param name="ffmpegExecutable">Name or path to the ffmpeg executable</param>
-        public AudioVideoWriter(string filename, int video_width, int video_height, double video_framerate,
-            int audio_channels, int audio_sampleRate, int audio_bitDepth,
+        public AudioVideoWriter(string filename, int videoWidth, int videoHeight, double videoFramerate,
+            int audioChannels, int audioSampleRate, int audioBitDepth,
             EncoderOptions videoEncoderOptions,
             EncoderOptions audioEncoderOptions,
             string ffmpegExecutable = "ffmpeg")
         {
-            if (video_width <= 0 || video_height <= 0)
+            if (videoWidth <= 0 || videoHeight <= 0)
             {
                 throw new InvalidDataException("Video frame dimensions have to be bigger than 0 pixels!");
             }
 
-            if (video_framerate <= 0)
+            if (videoFramerate <= 0)
             {
                 throw new InvalidDataException("Video framerate has to be bigger than 0!");
             }
@@ -103,12 +103,12 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video
                 throw new NullReferenceException("Filename can't be null or empty!");
             }
 
-            if (audio_channels <= 0 || audio_sampleRate <= 0)
+            if (audioChannels <= 0 || audioSampleRate <= 0)
             {
                 throw new InvalidDataException("Channels/Sample rate have to be bigger than 0!");
             }
 
-            if ((audio_bitDepth != 16) && (audio_bitDepth != 24) && (audio_bitDepth != 32))
+            if ((audioBitDepth != 16) && (audioBitDepth != 24) && (audioBitDepth != 32))
             {
                 throw new InvalidOperationException("Acceptable bit depths are 16, 24 and 32");
             }
@@ -116,14 +116,14 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video
             Filename = filename;
             UseFilename = true;
 
-            VideoWidth = video_width;
-            VideoHeight = video_height;
-            VideoFramerate = video_framerate;
+            VideoWidth = videoWidth;
+            VideoHeight = videoHeight;
+            VideoFramerate = videoFramerate;
             VideoEncoderOptions = videoEncoderOptions;
 
-            AudioChannels = audio_channels;
-            AudioSampleRate = audio_sampleRate;
-            AudioBitDepth = audio_bitDepth;
+            AudioChannels = audioChannels;
+            AudioSampleRate = audioSampleRate;
+            AudioBitDepth = audioBitDepth;
             AudioEncoderOptions = audioEncoderOptions;
 
             ffmpeg = ffmpegExecutable;
@@ -133,37 +133,37 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video
         ///     Used for encoding video and audio frames into a single stream
         /// </summary>
         /// <param name="outputStream">Output stream</param>
-        /// <param name="video_width">Input video width in pixels</param>
-        /// <param name="video_height">Input video height in pixels</param>
-        /// <param name="video_framerate">Input video framerate in fps</param>
-        /// <param name="audio_channels">Input audio channel count</param>
-        /// <param name="audio_sampleRate">Input audio sample rate</param>
-        /// <param name="audio_bitDepth">Input audio bits per sample</param>
+        /// <param name="videoWidth">Input video width in pixels</param>
+        /// <param name="videoHeight">Input video height in pixels</param>
+        /// <param name="videoFramerate">Input video framerate in fps</param>
+        /// <param name="audioChannels">Input audio channel count</param>
+        /// <param name="audioSampleRate">Input audio sample rate</param>
+        /// <param name="audioBitDepth">Input audio bits per sample</param>
         /// <param name="videoEncoderOptions">Video encoding options that will be passed to FFmpeg</param>
         /// <param name="audioEncoderOptions">Audio encoding options that will be passed to FFmpeg</param>
         /// <param name="ffmpegExecutable">Name or path to the ffmpeg executable</param>
-        public AudioVideoWriter(Stream outputStream, int video_width, int video_height, double video_framerate,
-            int audio_channels, int audio_sampleRate, int audio_bitDepth,
+        public AudioVideoWriter(Stream outputStream, int videoWidth, int videoHeight, double videoFramerate,
+            int audioChannels, int audioSampleRate, int audioBitDepth,
             EncoderOptions videoEncoderOptions,
             EncoderOptions audioEncoderOptions,
             string ffmpegExecutable = "ffmpeg")
         {
-            if (video_width <= 0 || video_height <= 0)
+            if (videoWidth <= 0 || videoHeight <= 0)
             {
                 throw new InvalidDataException("Video frame dimensions have to be bigger than 0 pixels!");
             }
 
-            if (video_framerate <= 0)
+            if (videoFramerate <= 0)
             {
                 throw new InvalidDataException("Video framerate has to be bigger than 0!");
             }
 
-            if (audio_channels <= 0 || audio_sampleRate <= 0)
+            if (audioChannels <= 0 || audioSampleRate <= 0)
             {
                 throw new InvalidDataException("Channels/Sample rate have to be bigger than 0!");
             }
 
-            if ((audio_bitDepth != 16) && (audio_bitDepth != 24) && (audio_bitDepth != 32))
+            if ((audioBitDepth != 16) && (audioBitDepth != 24) && (audioBitDepth != 32))
             {
                 throw new InvalidOperationException("Acceptable bit depths are 16, 24 and 32");
             }
@@ -171,14 +171,14 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video
             DestinationStream = outputStream ?? throw new NullReferenceException("Stream can't be null!");
             UseFilename = false;
 
-            VideoWidth = video_width;
-            VideoHeight = video_height;
-            VideoFramerate = video_framerate;
+            VideoWidth = videoWidth;
+            VideoHeight = videoHeight;
+            VideoFramerate = videoFramerate;
             VideoEncoderOptions = videoEncoderOptions;
 
-            AudioChannels = audio_channels;
-            AudioSampleRate = audio_sampleRate;
-            AudioBitDepth = audio_bitDepth;
+            AudioChannels = audioChannels;
+            AudioSampleRate = audioSampleRate;
+            AudioBitDepth = audioBitDepth;
             AudioEncoderOptions = audioEncoderOptions;
 
             ffmpeg = ffmpegExecutable;
@@ -187,7 +187,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video
         /// <summary>
         ///     Gets the value of the current f fmpeg process
         /// </summary>
-        public Process CurrentFFmpegProcess => ffmpegp;
+        public Process CurrentFFmpegProcess => Ffmpegp;
 
         /// <summary>
         ///     Input video stream
@@ -282,11 +282,11 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video
         ///     Prepares for writing.
         /// </summary>
         /// <param name="showFFmpegOutput">Show output to terminal. Error stream will not be redirected if this is set to true.</param>
-        /// <param name="thread_queue_size">
+        /// <param name="threadQueueSize">
         ///     Max. number of queued packets when reading from file/stream.
         ///     Should be set to higher when dealing with high rate/low latency streams.
         /// </param>
-        public void OpenWrite(bool showFFmpegOutput = false, int thread_queue_size = 4096)
+        public void OpenWrite(bool showFFmpegOutput = false, int threadQueueSize = 4096)
         {
             if (OpenedForWriting)
             {
@@ -301,15 +301,15 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video
             int port = ((IPEndPoint) socket.LocalEndPoint).Port;
             socket.BeginAccept(r =>
             {
-                connected_socket = socket.EndAccept(r);
-                InputDataStreamAudio = new NetworkStream(connected_socket);
+                connectedSocket = socket.EndAccept(r);
+                InputDataStreamAudio = new NetworkStream(connectedSocket);
                 manual.Set();
             }, null);
 
             string cmd = $"-f s{AudioBitDepth}le -channels {AudioChannels} -sample_rate {AudioSampleRate} " +
-                         $"-thread_queue_size {thread_queue_size} -i \"tcp://{IPAddress.Loopback}:{port}\" " +
+                         $"-thread_queue_size {threadQueueSize} -i \"tcp://{IPAddress.Loopback}:{port}\" " +
                          $"-f rawvideo -video_size {VideoWidth}:{VideoHeight} -r {VideoFramerate} " +
-                         $"-thread_queue_size {thread_queue_size} -pixel_format rgb24 -i - " +
+                         $"-thread_queue_size {threadQueueSize} -pixel_format rgb24 -i - " +
                          $"-map 0 -c:a {AudioEncoderOptions.EncoderName} {AudioEncoderOptions.EncoderArguments} " +
                          $"-map 1 -c:v {VideoEncoderOptions.EncoderName} {VideoEncoderOptions.EncoderArguments} " +
                          $"-f {VideoEncoderOptions.Format}";
@@ -321,14 +321,14 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video
                     File.Delete(Filename);
                 }
 
-                InputDataStreamVideo = FfMpegWrapper.OpenInput(ffmpeg, $"{cmd} \"{Filename}\"", out ffmpegp, showFFmpegOutput);
+                InputDataStreamVideo = FfMpegWrapper.OpenInput(ffmpeg, $"{cmd} \"{Filename}\"", out Ffmpegp, showFFmpegOutput);
             }
             else
             {
                 csc = new CancellationTokenSource();
 
                 // using stream
-                (InputDataStreamVideo, OutputDataStream) = FfMpegWrapper.Open(ffmpeg, $"{cmd} -", out ffmpegp, showFFmpegOutput);
+                (InputDataStreamVideo, OutputDataStream) = FfMpegWrapper.Open(ffmpeg, $"{cmd} -", out Ffmpegp, showFFmpegOutput);
                 _ = OutputDataStream.CopyToAsync(DestinationStream, 81920, csc.Token);
             }
 
@@ -351,11 +351,11 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video
                 InputDataStreamAudio?.Dispose();
                 InputDataStreamVideo?.Dispose();
 
-                connected_socket?.Shutdown(SocketShutdown.Both);
-                connected_socket?.Close();
+                connectedSocket?.Shutdown(SocketShutdown.Both);
+                connectedSocket?.Close();
                 socket?.Close();
 
-                ffmpegp.WaitForExit();
+                Ffmpegp.WaitForExit();
                 csc?.Cancel();
 
                 if (!UseFilename)
@@ -365,9 +365,9 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video
 
                 try
                 {
-                    if (ffmpegp?.HasExited == false)
+                    if (Ffmpegp?.HasExited == false)
                     {
-                        ffmpegp.Kill();
+                        Ffmpegp.Kill();
                     }
                 }
                 catch

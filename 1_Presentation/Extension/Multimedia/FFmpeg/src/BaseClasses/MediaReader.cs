@@ -36,7 +36,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.BaseClasses
     /// <summary>
     ///     The media reader class
     /// </summary>
-    public abstract class MediaReader<Frame, Writer> where Frame : IMediaFrame where Writer : MediaWriter<Frame>
+    public abstract class MediaReader<TFrame, TWriter> where TFrame : IMediaFrame where TWriter : MediaWriter<TFrame>
     {
         /// <summary>
         ///     Input filename
@@ -57,20 +57,20 @@ namespace Alis.Extension.Multimedia.FFmpeg.BaseClasses
         ///     Nexts the frame
         /// </summary>
         /// <returns>The frame</returns>
-        public abstract Frame NextFrame();
+        public abstract TFrame NextFrame();
 
         /// <summary>
         ///     Nexts the frame using the specified frame
         /// </summary>
         /// <param name="frame">The frame</param>
         /// <returns>The frame</returns>
-        public abstract Frame NextFrame(Frame frame);
+        public abstract TFrame NextFrame(TFrame frame);
 
         /// <summary>
         ///     Copy data directly to writer
         /// </summary>
         /// <param name="writer">Writer that is opened for writing</param>
-        public virtual void CopyTo(MediaWriter<Frame> writer)
+        public virtual void CopyTo(MediaWriter<TFrame> writer)
         {
             if (DataStream == null)
             {
@@ -89,7 +89,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.BaseClasses
         ///     Copy data directly to writer
         /// </summary>
         /// <param name="writer">Writer that is opened for writing</param>
-        public virtual async Task CopyToAsync(MediaWriter<Frame> writer)
+        public virtual async Task CopyToAsync(MediaWriter<TFrame> writer)
         {
             if (DataStream == null)
             {
