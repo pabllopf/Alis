@@ -27,11 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
 {
     /// <summary>
     ///     The operation enum
     /// </summary>
+    [Flags]
     public enum Operation
     {
         /// <summary>
