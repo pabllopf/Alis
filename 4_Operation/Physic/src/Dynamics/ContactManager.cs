@@ -229,30 +229,30 @@ namespace Alis.Core.Physic.Dynamics
             // Connect to island graph.
 
             // Connect to body A
-            c._nodeA.Contact = c;
-            c._nodeA.Other = bodyB;
+            c.NodeA.Contact = c;
+            c.NodeA.Other = bodyB;
 
-            c._nodeA.Prev = null;
-            c._nodeA.Next = bodyA.ContactList;
+            c.NodeA.Prev = null;
+            c.NodeA.Next = bodyA.ContactList;
             if (bodyA.ContactList != null)
             {
-                bodyA.ContactList.Prev = c._nodeA;
+                bodyA.ContactList.Prev = c.NodeA;
             }
 
-            bodyA.ContactList = c._nodeA;
+            bodyA.ContactList = c.NodeA;
 
             // Connect to body B
-            c._nodeB.Contact = c;
-            c._nodeB.Other = bodyA;
+            c.NodeB.Contact = c;
+            c.NodeB.Other = bodyA;
 
-            c._nodeB.Prev = null;
-            c._nodeB.Next = bodyB.ContactList;
+            c.NodeB.Prev = null;
+            c.NodeB.Next = bodyB.ContactList;
             if (bodyB.ContactList != null)
             {
-                bodyB.ContactList.Prev = c._nodeB;
+                bodyB.ContactList.Prev = c.NodeB;
             }
 
-            bodyB.ContactList = c._nodeB;
+            bodyB.ContactList = c.NodeB;
 
             // Wake up the bodies
             if ((fixtureA.IsSensor == false) && (fixtureB.IsSensor == false))
@@ -328,35 +328,35 @@ namespace Alis.Core.Physic.Dynamics
             ContactCount--;
 
             // Remove from body 1
-            if (contact._nodeA == bodyA.ContactList)
+            if (contact.NodeA == bodyA.ContactList)
             {
-                bodyA.ContactList = contact._nodeA.Next;
+                bodyA.ContactList = contact.NodeA.Next;
             }
 
-            if (contact._nodeA.Prev != null)
+            if (contact.NodeA.Prev != null)
             {
-                contact._nodeA.Prev.Next = contact._nodeA.Next;
+                contact.NodeA.Prev.Next = contact.NodeA.Next;
             }
 
-            if (contact._nodeA.Next != null)
+            if (contact.NodeA.Next != null)
             {
-                contact._nodeA.Next.Prev = contact._nodeA.Prev;
+                contact.NodeA.Next.Prev = contact.NodeA.Prev;
             }
 
             // Remove from body 2
-            if (contact._nodeB == bodyB.ContactList)
+            if (contact.NodeB == bodyB.ContactList)
             {
-                bodyB.ContactList = contact._nodeB.Next;
+                bodyB.ContactList = contact.NodeB.Next;
             }
 
-            if (contact._nodeB.Prev != null)
+            if (contact.NodeB.Prev != null)
             {
-                contact._nodeB.Prev.Next = contact._nodeB.Next;
+                contact.NodeB.Prev.Next = contact.NodeB.Next;
             }
 
-            if (contact._nodeB.Next != null)
+            if (contact.NodeB.Next != null)
             {
-                contact._nodeB.Next.Prev = contact._nodeB.Prev;
+                contact.NodeB.Next.Prev = contact.NodeB.Prev;
             }
 
             contact.Destroy();

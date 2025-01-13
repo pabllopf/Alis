@@ -40,56 +40,56 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     The index
         /// </summary>
-        public int indexA;
+        public int IndexA;
 
         /// <summary>
         ///     The index
         /// </summary>
-        public int indexB;
+        public int IndexB;
 
         /// <summary>
         ///     The inv ib
         /// </summary>
-        public float invIA, invIB;
+        public float InvIa, InvIb;
 
         /// <summary>
         ///     The inv mass
         /// </summary>
-        public float invMassA, invMassB;
+        public float InvMassA, InvMassB;
 
         /// <summary>
         ///     The local center
         /// </summary>
-        public Vector2F localCenterA, localCenterB;
+        public Vector2F LocalCenterA, LocalCenterB;
 
         /// <summary>
         ///     The local normal
         /// </summary>
-        public Vector2F localNormal;
+        public Vector2F LocalNormal;
 
         /// <summary>
         ///     The local point
         /// </summary>
-        public Vector2F localPoint;
+        public Vector2F LocalPoint;
 
         /// <summary>
         ///     The max manifold points
         /// </summary>
-        public Vector2F[] localPoints = new Vector2F[SettingEnv.MaxManifoldPoints];
+        public Vector2F[] LocalPoints = new Vector2F[SettingEnv.MaxManifoldPoints];
 
         /// <summary>
         ///     The point count
         /// </summary>
-        public int pointCount;
+        public int PointCount;
 
         /// <summary>
         ///     The radius
         /// </summary>
-        public float radiusA, radiusB;
+        public float RadiusA, RadiusB;
 
         /// <summary>
         ///     The type
         /// </summary>
-        public ManifoldType type;
+        public ManifoldType Type;
     }
 }

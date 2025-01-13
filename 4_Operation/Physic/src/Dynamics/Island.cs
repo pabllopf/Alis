@@ -405,7 +405,7 @@ namespace Alis.Core.Physic.Dynamics
                 body.SynchronizeTransform();
             }
 
-            Report(_contactSolver._velocityConstraints);
+            Report(_contactSolver.VelocityConstraints);
 
             if (SettingEnv.AllowSleep)
             {
@@ -470,7 +470,7 @@ namespace Alis.Core.Physic.Dynamics
             // Solve position constraints.
             for (int i = 0; i < subStep.PositionIterations; ++i)
             {
-                bool contactsOkay = _contactSolver.SolveTOIPositionConstraints(toiIndexA, toiIndexB);
+                bool contactsOkay = _contactSolver.SolveToiPositionConstraints(toiIndexA, toiIndexB);
                 if (contactsOkay)
                 {
                     break;
@@ -539,7 +539,7 @@ namespace Alis.Core.Physic.Dynamics
                 body.SynchronizeTransform();
             }
 
-            Report(_contactSolver._velocityConstraints);
+            Report(_contactSolver.VelocityConstraints);
         }
 
         /// <summary>

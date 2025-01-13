@@ -40,32 +40,32 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     The contact index
         /// </summary>
-        public int contactIndex;
+        public int ContactIndex;
 
         /// <summary>
         ///     The friction
         /// </summary>
-        public float friction;
+        public float Friction;
 
         /// <summary>
         ///     The index
         /// </summary>
-        public int indexA;
+        public int IndexA;
 
         /// <summary>
         ///     The index
         /// </summary>
-        public int indexB;
+        public int IndexB;
 
         /// <summary>
         ///     The inv ib
         /// </summary>
-        public float invIA, invIB;
+        public float InvIa, InvIb;
 
         /// <summary>
         ///     The inv mass
         /// </summary>
-        public float invMassA, invMassB;
+        public float InvMassA, InvMassB;
 
         /// <summary>
         ///     The
@@ -75,32 +75,32 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     The normal
         /// </summary>
-        public Vector2F normal;
+        public Vector2F Normal;
 
         /// <summary>
         ///     The normal mass
         /// </summary>
-        public Mat22 normalMass;
+        public Mat22 NormalMass;
 
         /// <summary>
         ///     The point count
         /// </summary>
-        public int pointCount;
+        public int PointCount;
 
         /// <summary>
         ///     The max manifold points
         /// </summary>
-        public VelocityConstraintPoint[] points = new VelocityConstraintPoint[SettingEnv.MaxManifoldPoints];
+        public VelocityConstraintPoint[] Points = new VelocityConstraintPoint[SettingEnv.MaxManifoldPoints];
 
         /// <summary>
         ///     The restitution
         /// </summary>
-        public float restitution;
+        public float Restitution;
 
         /// <summary>
         ///     The tangent speed
         /// </summary>
-        public float tangentSpeed;
+        public float TangentSpeed;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ContactVelocityConstraint" /> class
@@ -109,7 +109,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         {
             for (int i = 0; i < SettingEnv.MaxManifoldPoints; i++)
             {
-                points[i] = new VelocityConstraintPoint();
+                Points[i] = new VelocityConstraintPoint();
             }
         }
     }

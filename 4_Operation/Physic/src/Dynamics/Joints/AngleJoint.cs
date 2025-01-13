@@ -133,10 +133,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vector</returns>
-        public override Vector2F GetReactionForce(float invDt) =>
-
-            //return _inv_dt * _impulse;
-            Vector2F.Zero;
+        public override Vector2F GetReactionForce(float invDt) => Vector2F.Zero;
 
         /// <summary>
         ///     Gets the reaction torque using the specified inv dt
