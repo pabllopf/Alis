@@ -29,6 +29,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;

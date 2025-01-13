@@ -59,12 +59,6 @@ namespace Alis.Core.Aspect.Time.Sample
 
             // Stop the clock and print the elapsed time
             clock.Stop();
-           Logger.Info($"Elapsed time: {clock.ElapsedMilliseconds} ms");
-
-            // Print some TimeManager properties
-           Logger.Info($"TimeScale: {timeConfig.TimeScale}");
-
-           Logger.Info("Press any key to continue...");
             Console.ReadKey();
         }
     }

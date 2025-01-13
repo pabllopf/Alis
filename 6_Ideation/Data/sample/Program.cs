@@ -56,7 +56,6 @@ namespace Alis.Core.Aspect.Data.Sample
 
             // This will produce a copy of the instance you created earlier
             JsonSerializer.Deserialize<Music>(serialized2);
-           Logger.Info(serialized2);
         }
     }
 }

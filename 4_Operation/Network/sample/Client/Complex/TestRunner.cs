@@ -30,6 +30,7 @@
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Network.Sample.Client.Complex
 {

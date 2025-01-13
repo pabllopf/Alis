@@ -61,7 +61,6 @@ namespace Alis.Core.Aspect.Memory.Sample
         public static void SampleMethod([IsNotZero, IsNotNull] int value)
         {
             Validator.Validate(value, nameof(value));
-           Logger.Info("The value of value is " + value);
         }
 
         /// <summary>
@@ -70,49 +69,19 @@ namespace Alis.Core.Aspect.Memory.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            try
-            {
-                Sample = 0;
-                Validator.Validate(Sample, nameof(Sample));
-            }
-            catch (NotZeroException e)
-            {
-               Logger.Info(e);
-            }
-
-            try
-            {
-                SampleMethod(0);
-            }
-            catch (NotZeroException e)
-            {
-               Logger.Info(e);
-            }
-
+            Sample = 0;
+            Validator.Validate(Sample, nameof(Sample));
+            
+            SampleMethod(0);
+            
             _nonZeroValuev2 = 0;
             Validator.Validate(_nonZeroValuev2, nameof(_nonZeroValuev2));
 
-
-            try
-            {
-                _nonZeroValue = 0;
-                Validator.Validate(_nonZeroValue, nameof(_nonZeroValue));
-            }
-            catch (NotZeroException ex)
-            {
-               Logger.Info(ex);
-            }
-
-            try
-            {
-                _nonZeroValue = 5;
-                Validator.Validate(_nonZeroValue, nameof(_nonZeroValue));
-               Logger.Info("NonZeroValue has been successfully set to " + _nonZeroValue);
-            }
-            catch (NotZeroException ex)
-            {
-               Logger.Info(ex.Message);
-            }
+            _nonZeroValue = 0;
+            Validator.Validate(_nonZeroValue, nameof(_nonZeroValue));
+            
+            _nonZeroValue = 5;
+            Validator.Validate(_nonZeroValue, nameof(_nonZeroValue));
         }
     }
 }
