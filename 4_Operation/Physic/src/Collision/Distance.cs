@@ -43,19 +43,19 @@ namespace Alis.Core.Physic.Collision
         ///     The number of calls made to the ComputeDistance() function.
         ///     Note: This is only activated when Settings.EnableDiagnostics = true
         /// </summary>
-        [ThreadStatic] public static int GJKCalls;
+        [ThreadStatic] public static int GjkCalls;
 
         /// <summary>
         ///     The number of iterations that was made on the last call to ComputeDistance().
         ///     Note: This is only activated when Settings.EnableDiagnostics = true
         /// </summary>
-        [ThreadStatic] public static int GJKIters;
+        [ThreadStatic] public static int GjkIters;
 
         /// <summary>
         ///     The maximum numer of iterations ever mae with calls to the CompteDistance() funtion.
         ///     Note: This is only activated when Settings.EnableDiagnostics = true
         /// </summary>
-        [ThreadStatic] public static int GJKMaxIters;
+        [ThreadStatic] public static int GjkMaxIters;
 
         /// <summary>
         ///     Computes the distance using the specified output
@@ -69,7 +69,7 @@ namespace Alis.Core.Physic.Collision
 
             if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
             {
-                ++GJKCalls;
+                ++GjkCalls;
             }
 
             // Initialize the simplex.
@@ -158,7 +158,7 @@ namespace Alis.Core.Physic.Collision
 
                 if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
                 {
-                    ++GJKIters;
+                    ++GjkIters;
                 }
 
                 // Check for duplicate support points. This is the main termination criteria.
@@ -184,7 +184,7 @@ namespace Alis.Core.Physic.Collision
 
             if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
             {
-                GJKMaxIters = Math.Max(GJKMaxIters, iter);
+                GjkMaxIters = Math.Max(GjkMaxIters, iter);
             }
 
             // Prepare output.
