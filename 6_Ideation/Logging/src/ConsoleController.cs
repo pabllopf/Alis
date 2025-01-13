@@ -46,11 +46,11 @@ namespace Alis.Core.Aspect.Logging
             Console.ForegroundColor = ConsoleLogConfig.GetColorMessageByType(message.MessageType);
             if (detailLevel == DetailLevel.Minimal)
             {
-                Console.WriteLine($"[{message.DateTime}] {message.Level}: {message.Content}");
+               Logger.Info($"[{message.DateTime}] {message.Level}: {message.Content}");
             }
             else if (detailLevel == DetailLevel.Full)
             {
-                Console.WriteLine($"[{message.DateTime}] {message.Level}: {message.Content} \n" +
+               Logger.Info($"[{message.DateTime}] {message.Level}: {message.Content} \n" +
                                   $"   method: '{message.Method}' \n" +
                                   $"   line:   '{message.Line}' \n" +
                                   $"   file:   '{message.File}' \n" +

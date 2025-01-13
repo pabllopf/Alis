@@ -173,7 +173,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
                 if ((sdlEvent.type == EventType.JoyButtonDown)
                     && (button == (GameControllerButton) sdlEvent.cButton.button))
                 {
-                    Console.WriteLine($"[SDL_JoystickName_id = '{sdlEvent.cDevice.which}'] Pressed button={button}");
+                   Logger.Info($"[SDL_JoystickName_id = '{sdlEvent.cDevice.which}'] Pressed button={button}");
                 }
             }
         }
@@ -189,7 +189,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
                 if ((sdlEvent.type == EventType.JoyAxisMotion)
                     && (axi == (GameControllerAxis) sdlEvent.cAxis.axis))
                 {
-                    Console.WriteLine($"[SDL_JoystickName_id = '{sdlEvent.cDevice.which}'] Pressed axi={axi}");
+                   Logger.Info($"[SDL_JoystickName_id = '{sdlEvent.cDevice.which}'] Pressed axi={axi}");
                 }
             }
         }

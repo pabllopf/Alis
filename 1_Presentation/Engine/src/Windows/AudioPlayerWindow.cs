@@ -118,7 +118,7 @@ namespace Alis.App.Engine.Windows
         {
             if (!isOpen)
             {
-                Console.WriteLine("Audio Player Window is closed");
+               Logger.Info("Audio Player Window is closed");
                 return;
             }
 

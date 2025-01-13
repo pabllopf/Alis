@@ -105,12 +105,12 @@ public static void Main(string[] args)
 
     // Stop the clock and display the elapsed time
     clock.Stop();
-    Console.WriteLine($"Elapsed time: {clock.ElapsedMilliseconds} ms");
+   Logger.Info($"Elapsed time: {clock.ElapsedMilliseconds} ms");
 
     // Display some TimeManager properties
-    Console.WriteLine($"TimeScale: {timeConfig.TimeScale}");
+   Logger.Info($"TimeScale: {timeConfig.TimeScale}");
 
-    Console.WriteLine("Press any key to continue...");
+   Logger.Info("Press any key to continue...");
     Console.ReadKey();
 }
 ```

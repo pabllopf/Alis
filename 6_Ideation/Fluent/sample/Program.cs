@@ -49,9 +49,9 @@ namespace Alis.Core.Aspect.Fluent.Sample
                 .WithColor("Red")
                 .Build();
 
-            Console.WriteLine($" Car: Name={sampleCar.Name} Model={sampleCar.Model} Color={sampleCar.Color}");
+           Logger.Info($" Car: Name={sampleCar.Name} Model={sampleCar.Model} Color={sampleCar.Color}");
 
-            Console.WriteLine("Press any key to continue...");
+           Logger.Info("Press any key to continue...");
             Console.ReadKey();
         }
     }

@@ -118,7 +118,7 @@ namespace Alis.App.Engine.Menus
                 // Botón de notificaciones
                 if (ImGui.Button($"{FontAwesome5.Bell}##notifications"))
                 {
-                    Console.WriteLine("Abriendo notificaciones...");
+                   Logger.Info("Abriendo notificaciones...");
                     // Lógica para abrir notificaciones
                 }
 
@@ -131,19 +131,19 @@ namespace Alis.App.Engine.Menus
                 {
                     if (ImGui.Selectable("master"))
                     {
-                        Console.WriteLine("Cambiando a la rama master...");
+                       Logger.Info("Cambiando a la rama master...");
                         // Lógica para cambiar a la rama master
                     }
 
                     if (ImGui.Selectable("develop"))
                     {
-                        Console.WriteLine("Cambiando a la rama develop...");
+                       Logger.Info("Cambiando a la rama develop...");
                         // Lógica para cambiar a la rama develop
                     }
 
                     if (ImGui.Selectable("feature/new-feature"))
                     {
-                        Console.WriteLine("Cambiando a la rama feature/new-feature...");
+                       Logger.Info("Cambiando a la rama feature/new-feature...");
                         // Lógica para cambiar a la rama feature/new-feature
                     }
 
@@ -155,7 +155,7 @@ namespace Alis.App.Engine.Menus
                 // Botón de guardar
                 if (ImGui.Button($"{FontAwesome5.Save}##save", new Vector2F(32, 32)))
                 {
-                    Console.WriteLine("Guardando...");
+                   Logger.Info("Guardando...");
                     // Lógica para guardar el proyecto
                 }*/
 
@@ -169,7 +169,7 @@ namespace Alis.App.Engine.Menus
                 // Botón de deshacer
                 if (ImGui.Button($"{FontAwesome5.Undo}##undo", new Vector2F(32, 32)))
                 {
-                    Console.WriteLine("Deshaciendo...");
+                   Logger.Info("Deshaciendo...");
                     // Lógica para deshacer
                 }
 
@@ -180,7 +180,7 @@ namespace Alis.App.Engine.Menus
                 // Botón de rehacer
                 if (ImGui.Button($"{FontAwesome5.Redo}##redo", new Vector2F(32, 32)))
                 {
-                    Console.WriteLine("Rehaciendo...");
+                   Logger.Info("Rehaciendo...");
                     // Lógica para rehacer
                 }
 
@@ -218,13 +218,13 @@ namespace Alis.App.Engine.Menus
                 {
                     if (ImGui.MenuItem("Configurar entorno"))
                     {
-                        Console.WriteLine("Abriendo configuración del entorno...");
+                       Logger.Info("Abriendo configuración del entorno...");
                         // Lógica para configurar entorno
                     }
 
                     if (ImGui.MenuItem("Reparar proyecto"))
                     {
-                        Console.WriteLine("Reparando proyecto...");
+                       Logger.Info("Reparando proyecto...");
                         // Lógica para reparar proyecto
                     }
 

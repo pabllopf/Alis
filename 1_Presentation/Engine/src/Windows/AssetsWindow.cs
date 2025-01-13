@@ -356,7 +356,7 @@ namespace Alis.App.Engine.Windows
             if (ImGui.InputText("##SearchBar", commandPtr, 256, ImGuiInputTextFlags.AlwaysOverwrite))
             {
                 searchText = Marshal.PtrToStringAnsi(commandPtr);
-                Console.WriteLine(searchText);
+               Logger.Info(searchText);
             }
 
             ImGui.SameLine();

@@ -335,12 +335,12 @@ namespace Alis.App.Engine.Windows
             Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Linear);
             Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Linear);
 
-            Console.WriteLine($"Gl Version: {Gl.GlGetString(StringName.Version)}");
-            Console.WriteLine($"Vendor: {Gl.GlGetString(StringName.Vendor)}");
-            Console.WriteLine($"Renderer: {Gl.GlGetString(StringName.Renderer)}");
-            Console.WriteLine($"Extensions: {Gl.GlGetString(StringName.Extensions)}");
-            Console.WriteLine($"SDL2 Version: {Sdl.GetVersion().major}.{Sdl.GetVersion().minor}.{Sdl.GetVersion().patch}");
-            Console.WriteLine($"Imgui Version: {ImGui.GetVersion()}");
+           Logger.Info($"Gl Version: {Gl.GlGetString(StringName.Version)}");
+           Logger.Info($"Vendor: {Gl.GlGetString(StringName.Vendor)}");
+           Logger.Info($"Renderer: {Gl.GlGetString(StringName.Renderer)}");
+           Logger.Info($"Extensions: {Gl.GlGetString(StringName.Extensions)}");
+           Logger.Info($"SDL2 Version: {Sdl.GetVersion().major}.{Sdl.GetVersion().minor}.{Sdl.GetVersion().patch}");
+           Logger.Info($"Imgui Version: {ImGui.GetVersion()}");
         }
 
         /// <summary>
@@ -566,7 +566,7 @@ namespace Alis.App.Engine.Windows
                 {
                     Vector2F mousePos = GetMouseWorldPosition();
                     selectedGameObject = FindGameObjectUnderMouse(mousePos);
-                    Console.WriteLine($"Selected GameObject: {selectedGameObject?.Name}");
+                   Logger.Info($"Selected GameObject: {selectedGameObject?.Name}");
                 }
 
                 // Detectar si estamos en la región de la escena
@@ -634,15 +634,15 @@ namespace Alis.App.Engine.Windows
 
             mousePositionRelativeToTexture.Y -= 30.0f;
 
-            Console.WriteLine("--------------------");
-            Console.WriteLine($"Mouse Position: {mousePosition.X}, {mousePosition.Y}");
-            Console.WriteLine($"Window Position: {windowPosition.X}, {windowPosition.Y}");
-            Console.WriteLine($"Window Size: {windowSize.X}, {windowSize.Y}");
-            Console.WriteLine($"Texture Size: {textureSize.X}, {textureSize.Y}");
-            Console.WriteLine($"Mouse Position Relative To Window: {mousePositionRelativeToWindow.X}, {mousePositionRelativeToWindow.Y}");
-            Console.WriteLine($"Mouse Position Relative To Texture: {mousePositionRelativeToTexture.X}, {mousePositionRelativeToTexture.Y}");
-            Console.WriteLine("--------------------");
-            Console.WriteLine();
+           Logger.Info("--------------------");
+           Logger.Info($"Mouse Position: {mousePosition.X}, {mousePosition.Y}");
+           Logger.Info($"Window Position: {windowPosition.X}, {windowPosition.Y}");
+           Logger.Info($"Window Size: {windowSize.X}, {windowSize.Y}");
+           Logger.Info($"Texture Size: {textureSize.X}, {textureSize.Y}");
+           Logger.Info($"Mouse Position Relative To Window: {mousePositionRelativeToWindow.X}, {mousePositionRelativeToWindow.Y}");
+           Logger.Info($"Mouse Position Relative To Texture: {mousePositionRelativeToTexture.X}, {mousePositionRelativeToTexture.Y}");
+           Logger.Info("--------------------");
+           Logger.Info();
             // Adjust mouse position to center the texture
             Vector2F errorPosition = new Vector2F(0, 0);
 
@@ -650,26 +650,26 @@ namespace Alis.App.Engine.Windows
             if (mousePositionRelativeToTexture.X >= textureSize.X)
             {
                 errorPosition.X = mousePositionRelativeToTexture.X - textureSize.X;
-                Console.WriteLine($"Error Position X: {errorPosition.X}");
+               Logger.Info($"Error Position X: {errorPosition.X}");
             }
 
             if (mousePositionRelativeToTexture.X < 0)
             {
                 errorPosition.X = -mousePositionRelativeToTexture.X;
-                Console.WriteLine($"Error Position X: {errorPosition.X}");
+               Logger.Info($"Error Position X: {errorPosition.X}");
             }
 
             // Check if the mouse position is outside the texture
             if (mousePositionRelativeToTexture.Y >= textureSize.Y)
             {
                 errorPosition.Y = mousePositionRelativeToTexture.Y - textureSize.Y;
-                Console.WriteLine($"Error Position Y: {errorPosition.Y}");
+               Logger.Info($"Error Position Y: {errorPosition.Y}");
             }
 
             if (mousePositionRelativeToTexture.Y < 0)
             {
                 errorPosition.Y = -mousePositionRelativeToTexture.Y;
-                Console.WriteLine($"Error Position Y: {errorPosition.Y}");
+               Logger.Info($"Error Position Y: {errorPosition.Y}");
             }
 
             Vector2F mousePositionRelativeToTextureAdjusted = mousePositionRelativeToTexture - errorPosition;
@@ -678,14 +678,14 @@ namespace Alis.App.Engine.Windows
             mousePositionRelativeToTextureAdjusted.X = (float) Math.Floor(mousePositionRelativeToTextureAdjusted.X);
             mousePositionRelativeToTextureAdjusted.Y = (float) Math.Floor(mousePositionRelativeToTextureAdjusted.Y);
 
-            Console.WriteLine($"Mouse Position Relative To Texture Adjusted: {mousePositionRelativeToTextureAdjusted.X}, {mousePositionRelativeToTextureAdjusted.Y}");
+           Logger.Info($"Mouse Position Relative To Texture Adjusted: {mousePositionRelativeToTextureAdjusted.X}, {mousePositionRelativeToTextureAdjusted.Y}");
 
             // Calculate the mouse position thinking that the center of the texture is the origin (0,0)
             Vector2F mousePositionRelativeToTextureCentered = new Vector2F(0, 0);
             mousePositionRelativeToTextureCentered.X = mousePositionRelativeToTextureAdjusted.X - textureSize.X / 2;
             mousePositionRelativeToTextureCentered.Y = mousePositionRelativeToTextureAdjusted.Y - textureSize.Y / 2;
 
-            Console.WriteLine($"Mouse Position Relative To Texture Centered: {mousePositionRelativeToTextureCentered.X}, {mousePositionRelativeToTextureCentered.Y}");
+           Logger.Info($"Mouse Position Relative To Texture Centered: {mousePositionRelativeToTextureCentered.X}, {mousePositionRelativeToTextureCentered.Y}");
 
             Vector2F worldPos = SpaceWork.VideoGame.Context.GraphicManager.ScreenToWorld(mousePositionRelativeToTextureCentered, textureSize);
 

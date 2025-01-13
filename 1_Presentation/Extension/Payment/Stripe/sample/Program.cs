@@ -41,7 +41,7 @@ namespace Alis.Extension.Payment.Stripe.Sample
         /// </summary>
         public static void Main()
         {
-            Console.WriteLine("End Program...");
+           Logger.Info("End Program...");
         }
     }
 }

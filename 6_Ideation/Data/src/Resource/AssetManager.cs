@@ -146,7 +146,7 @@ namespace Alis.Core.Aspect.Data.Resource
                 else
                 {
                     // Handle null case if necessary, for example:
-                    Console.WriteLine($"baseDirectories[{i}] is null. Skipping this entry.");
+                   Logger.Info($"baseDirectories[{i}] is null. Skipping this entry.");
                 }
             }
 
