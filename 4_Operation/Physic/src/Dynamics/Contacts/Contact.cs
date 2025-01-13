@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;
@@ -392,8 +393,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     OnCollisionEventHandler onBodyCollisionHandlerB = bodyB.onCollisionEventHandler;
                     if (onBodyCollisionHandlerB != null)
                     {
-                        foreach (OnCollisionEventHandler handler in onBodyCollisionHandlerB.GetInvocationList())
+                        foreach (Delegate @delegate in onBodyCollisionHandlerB.GetInvocationList())
                         {
+                            OnCollisionEventHandler handler = (OnCollisionEventHandler)@delegate;
                             enabledB = handler(FixtureB, FixtureA, this) && enabledB;
                         }
                     }
