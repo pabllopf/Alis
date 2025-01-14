@@ -46,8 +46,8 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
     /// <summary>
     ///     The polygon class
     /// </summary>
-    /// <seealso cref="Triangulatable" />
-    internal class Polygon : Triangulatable
+    /// <seealso cref="ITriangulatable" />
+    internal class Polygon : ITriangulatable
     {
         /// <summary>
         ///     The holes

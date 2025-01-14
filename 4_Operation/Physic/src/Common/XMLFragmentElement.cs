@@ -34,27 +34,27 @@ namespace Alis.Core.Physic.Common
     /// <summary>
     ///     The xml fragment element class
     /// </summary>
-    internal class XMLFragmentElement
+    internal class XmlFragmentElement
     {
         /// <summary>
         ///     The xml fragment attribute
         /// </summary>
-        private readonly List<XMLFragmentAttribute> _attributes = new List<XMLFragmentAttribute>();
+        private readonly List<XmlFragmentAttribute> _attributes = new List<XmlFragmentAttribute>();
 
         /// <summary>
         ///     The xml fragment element
         /// </summary>
-        private readonly List<XMLFragmentElement> _elements = new List<XMLFragmentElement>();
+        private readonly List<XmlFragmentElement> _elements = new List<XmlFragmentElement>();
 
         /// <summary>
         ///     Gets the value of the elements
         /// </summary>
-        public IList<XMLFragmentElement> Elements => _elements;
+        public IList<XmlFragmentElement> Elements => _elements;
 
         /// <summary>
         ///     Gets the value of the attributes
         /// </summary>
-        public IList<XMLFragmentAttribute> Attributes => _attributes;
+        public IList<XmlFragmentAttribute> Attributes => _attributes;
 
         /// <summary>
         ///     Gets or sets the value of the name

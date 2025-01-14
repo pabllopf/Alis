@@ -35,13 +35,13 @@ namespace Alis.Core.Physic.Common
     ///     The xml fragment exception class
     /// </summary>
     /// <seealso cref="Exception" />
-    internal class XMLFragmentException : Exception
+    internal class XmlFragmentException : Exception
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="XMLFragmentException" /> class
+        ///     Initializes a new instance of the <see cref="XmlFragmentException" /> class
         /// </summary>
         /// <param name="message">The message</param>
-        public XMLFragmentException(string message)
+        public XmlFragmentException(string message)
             : base(message)
         {
         }

@@ -41,7 +41,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
         /// <summary>
         ///     The random
         /// </summary>
-        private static readonly RandomNumberGenerator RNG = RandomNumberGenerator.Create();
+        private static readonly RandomNumberGenerator Rng = RandomNumberGenerator.Create();
 
         /// <summary>
         ///     Randoms the circle sweep using the specified scale

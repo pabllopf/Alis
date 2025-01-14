@@ -32,7 +32,7 @@ namespace Alis.Core.Physic.Common
     /// <summary>
     ///     The xml fragment attribute class
     /// </summary>
-    internal class XMLFragmentAttribute
+    internal class XmlFragmentAttribute
     {
         /// <summary>
         ///     Gets or sets the value of the name

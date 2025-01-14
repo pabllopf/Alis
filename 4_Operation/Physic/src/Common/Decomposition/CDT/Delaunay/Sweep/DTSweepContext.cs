@@ -216,7 +216,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         ///     Prepares the triangulation using the specified t
         /// </summary>
         /// <param name="t">The </param>
-        public override void PrepareTriangulation(Triangulatable t)
+        public override void PrepareTriangulation(ITriangulatable t)
         {
             base.PrepareTriangulation(t);
 

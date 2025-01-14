@@ -60,7 +60,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
         /// <summary>
         ///     Gets or sets the value of the triangulatable
         /// </summary>
-        public Triangulatable Triangulatable { get; private set; }
+        public ITriangulatable Triangulatable { get; private set; }
 
         /// <summary>
         ///     Gets the value of the wait until notified
@@ -89,7 +89,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
         ///     Prepares the triangulation using the specified t
         /// </summary>
         /// <param name="t">The </param>
-        public virtual void PrepareTriangulation(Triangulatable t)
+        public virtual void PrepareTriangulation(ITriangulatable t)
         {
             Triangulatable = t;
             TriangulationMode = t.TriangulationMode;

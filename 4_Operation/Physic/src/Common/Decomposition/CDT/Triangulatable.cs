@@ -35,7 +35,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
     /// <summary>
     ///     The triangulatable interface
     /// </summary>
-    internal interface Triangulatable
+    internal interface ITriangulatable
     {
         /// <summary>
         ///     Gets the value of the points

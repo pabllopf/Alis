@@ -40,12 +40,12 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         ///     The
         /// </summary>
-        public Complex q;
+        public Complex Q;
 
         /// <summary>
         ///     The
         /// </summary>
-        public Vector2F p;
+        public Vector2F P;
 
         /// <summary>
         ///     Gets the value of the identity
@@ -59,8 +59,8 @@ namespace Alis.Core.Physic.Common
         /// <param name="rotation">The rotation</param>
         public Transform(Vector2F position, Complex rotation)
         {
-            q = rotation;
-            p = position;
+            Q = rotation;
+            P = position;
         }
 
         /// <summary>
@@ -90,8 +90,8 @@ namespace Alis.Core.Physic.Common
         public static Vector2F Multiply(ref Vector2F left, ref Transform right) =>
             // Opt: var result = Complex.Multiply(left, right.q) + right.p;
             new Vector2F(
-                left.X * right.q.R - left.Y * right.q.I + right.p.X,
-                left.Y * right.q.R + left.X * right.q.I + right.p.Y);
+                left.X * right.Q.R - left.Y * right.Q.I + right.P.X,
+                left.Y * right.Q.R + left.X * right.Q.I + right.P.Y);
 
         /// <summary>
         ///     Divides the left
@@ -110,11 +110,11 @@ namespace Alis.Core.Physic.Common
         public static Vector2F Divide(ref Vector2F left, ref Transform right)
         {
             // Opt: var result = Complex.Divide(left - right.p, right);
-            float px = left.X - right.p.X;
-            float py = left.Y - right.p.Y;
+            float px = left.X - right.P.X;
+            float py = left.Y - right.P.Y;
             return new Vector2F(
-                px * right.q.R + py * right.q.I,
-                py * right.q.R - px * right.q.I);
+                px * right.Q.R + py * right.Q.I,
+                py * right.Q.R - px * right.Q.I);
         }
 
         /// <summary>
@@ -126,11 +126,11 @@ namespace Alis.Core.Physic.Common
         public static void Divide(Vector2F left, ref Transform right, out Vector2F result)
         {
             // Opt: var result = Complex.Divide(left - right.p, right);
-            float px = left.X - right.p.X;
-            float py = left.Y - right.p.Y;
+            float px = left.X - right.P.X;
+            float py = left.Y - right.P.Y;
             result = new Vector2F(
-                px * right.q.R + py * right.q.I,
-                py * right.q.R - px * right.q.I);
+                px * right.Q.R + py * right.Q.I,
+                py * right.Q.R - px * right.Q.I);
         }
 
         /// <summary>
@@ -140,8 +140,8 @@ namespace Alis.Core.Physic.Common
         /// <param name="right">The right</param>
         /// <returns>The transform</returns>
         public static Transform Multiply(ref Transform left, ref Transform right) => new Transform(
-            Complex.Multiply(ref left.p, ref right.q) + right.p,
-            Complex.Multiply(ref left.q, ref right.q));
+            Complex.Multiply(ref left.P, ref right.Q) + right.P,
+            Complex.Multiply(ref left.Q, ref right.Q));
 
         /// <summary>
         ///     Divides the left
@@ -150,8 +150,8 @@ namespace Alis.Core.Physic.Common
         /// <param name="right">The right</param>
         /// <returns>The transform</returns>
         public static Transform Divide(ref Transform left, ref Transform right) => new Transform(
-            Complex.Divide(left.p - right.p, ref right.q),
-            Complex.Divide(ref left.q, ref right.q));
+            Complex.Divide(left.P - right.P, ref right.Q),
+            Complex.Divide(ref left.Q, ref right.Q));
 
         /// <summary>
         ///     Divides the left
@@ -161,8 +161,8 @@ namespace Alis.Core.Physic.Common
         /// <param name="result">The result</param>
         public static void Divide(ref Transform left, ref Transform right, out Transform result)
         {
-            Complex.Divide(left.p - right.p, ref right.q, out result.p);
-            Complex.Divide(ref left.q, ref right.q, out result.q);
+            Complex.Divide(left.P - right.P, ref right.Q, out result.P);
+            Complex.Divide(ref left.Q, ref right.Q, out result.Q);
         }
 
         /// <summary>
@@ -173,8 +173,8 @@ namespace Alis.Core.Physic.Common
         /// <param name="result">The result</param>
         public static void Multiply(ref Transform left, Complex right, out Transform result)
         {
-            result.p = Complex.Multiply(ref left.p, ref right);
-            result.q = Complex.Multiply(ref left.q, ref right);
+            result.P = Complex.Multiply(ref left.P, ref right);
+            result.Q = Complex.Multiply(ref left.Q, ref right);
         }
 
         /// <summary>
@@ -185,8 +185,8 @@ namespace Alis.Core.Physic.Common
         /// <param name="result">The result</param>
         public static void Divide(ref Transform left, Complex right, out Transform result)
         {
-            result.p = Complex.Divide(ref left.p, ref right);
-            result.q = Complex.Divide(ref left.q, ref right);
+            result.P = Complex.Divide(ref left.P, ref right);
+            result.Q = Complex.Divide(ref left.Q, ref right);
         }
     }
 }

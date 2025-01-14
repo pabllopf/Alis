@@ -35,12 +35,12 @@ namespace Alis.Core.Physic.Common
     /// <summary>
     ///     The xml fragment parser class
     /// </summary>
-    internal class XMLFragmentParser
+    internal class XmlFragmentParser
     {
         /// <summary>
         ///     The list
         /// </summary>
-        private static readonly List<char> _punctuation = new List<char> {'/', '<', '>', '='};
+        private static readonly List<char> Punctuation = new List<char> {'/', '<', '>', '='};
 
         /// <summary>
         ///     The buffer
@@ -48,10 +48,10 @@ namespace Alis.Core.Physic.Common
         private FileBuffer _buffer;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="XMLFragmentParser" /> class
+        ///     Initializes a new instance of the <see cref="XmlFragmentParser" /> class
         /// </summary>
         /// <param name="stream">The stream</param>
-        public XMLFragmentParser(Stream stream)
+        public XmlFragmentParser(Stream stream)
         {
             Load(stream);
         }
@@ -59,7 +59,7 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         ///     Gets or sets the value of the root node
         /// </summary>
-        public XMLFragmentElement RootNode { get; private set; }
+        public XmlFragmentElement RootNode { get; private set; }
 
         /// <summary>
         ///     Loads the stream
@@ -75,9 +75,9 @@ namespace Alis.Core.Physic.Common
         /// </summary>
         /// <param name="stream">The stream</param>
         /// <returns>The xml fragment element</returns>
-        public static XMLFragmentElement LoadFromStream(Stream stream)
+        public static XmlFragmentElement LoadFromStream(Stream stream)
         {
-            XMLFragmentParser x = new XMLFragmentParser(stream);
+            XmlFragmentParser x = new XmlFragmentParser(stream);
             x.Parse();
             return x.RootNode;
         }
@@ -89,13 +89,13 @@ namespace Alis.Core.Physic.Common
         private string NextToken()
         {
             string str = "";
-            bool _done = false;
+            bool done = false;
 
             while (true)
             {
                 char c = _buffer.Next;
 
-                if (_punctuation.Contains(c))
+                if (Punctuation.Contains(c))
                 {
                     if (str != "")
                     {
@@ -103,7 +103,7 @@ namespace Alis.Core.Physic.Common
                         break;
                     }
 
-                    _done = true;
+                    done = true;
                 }
                 else if (char.IsWhiteSpace(c))
                 {
@@ -117,7 +117,7 @@ namespace Alis.Core.Physic.Common
 
                 str += c;
 
-                if (_done)
+                if (done)
                 {
                     break;
                 }
@@ -234,11 +234,11 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         ///     Tries the parse node
         /// </summary>
-        /// <exception cref="XMLFragmentException"></exception>
-        /// <exception cref="XMLFragmentException"></exception>
-        /// <exception cref="XMLFragmentException"></exception>
+        /// <exception cref="XmlFragmentException"></exception>
+        /// <exception cref="XmlFragmentException"></exception>
+        /// <exception cref="XmlFragmentException"></exception>
         /// <returns>The element</returns>
-        public XMLFragmentElement TryParseNode()
+        public XmlFragmentElement TryParseNode()
         {
             if (_buffer.EndOfBuffer)
             {
@@ -250,10 +250,10 @@ namespace Alis.Core.Physic.Common
 
             if (token != "<")
             {
-                throw new XMLFragmentException("Expected \"<\", got " + token);
+                throw new XmlFragmentException("Expected \"<\", got " + token);
             }
 
-            XMLFragmentElement element = new XMLFragmentElement();
+            XmlFragmentElement element = new XmlFragmentElement();
             element.Name = NextToken();
 
             while (true)
@@ -276,11 +276,11 @@ namespace Alis.Core.Physic.Common
                     return element;
                 }
 
-                XMLFragmentAttribute attribute = new XMLFragmentAttribute();
+                XmlFragmentAttribute attribute = new XmlFragmentAttribute();
                 attribute.Name = token;
                 if ((token = NextToken()) != "=")
                 {
-                    throw new XMLFragmentException("Expected \"=\", got " + token);
+                    throw new XmlFragmentException("Expected \"=\", got " + token);
                 }
 
                 attribute.Value = NextToken();
@@ -308,7 +308,7 @@ namespace Alis.Core.Physic.Common
 
                         if (token != element.Name)
                         {
-                            throw new XMLFragmentException("Mismatched element pairs: \"" + element.Name + "\" vs \"" +
+                            throw new XmlFragmentException("Mismatched element pairs: \"" + element.Name + "\" vs \"" +
                                                            token + "\"");
                         }
 
@@ -332,14 +332,14 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         ///     Parses this instance
         /// </summary>
-        /// <exception cref="XMLFragmentException">Unable to load root node</exception>
+        /// <exception cref="XmlFragmentException">Unable to load root node</exception>
         private void Parse()
         {
             RootNode = TryParseNode();
 
             if (RootNode == null)
             {
-                throw new XMLFragmentException("Unable to load root node");
+                throw new XmlFragmentException("Unable to load root node");
             }
         }
     }
