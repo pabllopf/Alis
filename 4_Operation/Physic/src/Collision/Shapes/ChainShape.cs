@@ -69,7 +69,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             : base(0)
         {
             ShapeType = ShapeType.Chain;
-            _radius = SettingEnv.PolygonRadius;
+            Radius = SettingEnv.PolygonRadius;
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             : base(0)
         {
             ShapeType = ShapeType.Chain;
-            _radius = SettingEnv.PolygonRadius;
+            Radius = SettingEnv.PolygonRadius;
 
             Debug.Assert((vertices != null) && (vertices.Count >= 3));
             Debug.Assert(vertices[0] != vertices[vertices.Count - 1]); // FPE. See http://www.box2d.org/forum/viewtopic.php?f=4&t=7973&p=35363
@@ -158,7 +158,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             Debug.Assert(edge != null);
 
             edge.ShapeType = ShapeType.Edge;
-            edge._radius = _radius;
+            edge.Radius = Radius;
 
             edge.Vertex1 = Vertices[index + 0];
             edge.Vertex2 = Vertices[index + 1];
@@ -236,7 +236,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="aabb">The aabb</param>
         /// <param name="transform">The transform</param>
         /// <param name="childIndex">The child index</param>
-        public override void ComputeAABB(out Aabb aabb, ref Transform transform, int childIndex)
+        public override void ComputeAabb(out Aabb aabb, ref Transform transform, int childIndex)
         {
             Debug.Assert(childIndex < Vertices.Count);
 
@@ -307,8 +307,8 @@ namespace Alis.Core.Physic.Collision.Shapes
         {
             ChainShape clone = new ChainShape();
             clone.ShapeType = ShapeType;
-            clone._density = _density;
-            clone._radius = _radius;
+            clone.Density = Density;
+            clone.Radius = Radius;
             clone.PrevVertex = _prevVertex;
             clone.NextVertex = _nextVertex;
             clone._hasNextVertex = _hasNextVertex;

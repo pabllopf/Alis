@@ -622,11 +622,11 @@ namespace Alis.Core.Physic.Dynamics
                         _input.SweepB = bB._sweep;
                         _input.TMax = 1.0f;
 
-                        TimeOfImpact.CalculateTimeOfImpact(out TOIOutput output, ref _input);
+                        TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref _input);
 
                         // Beta is the fraction of the remaining portion of the .
                         float beta = output.T;
-                        if (output.State == TOIOutputState.Touching)
+                        if (output.State == ToiOutputState.Touching)
                         {
                             alpha = Math.Min(alpha0 + (1.0f - alpha0) * beta, 1.0f);
                         }

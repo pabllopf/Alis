@@ -231,7 +231,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             Shape shapeA = FixtureA.Shape;
             Shape shapeB = FixtureB.Shape;
 
-            ContactSolver.WorldManifold.Initialize(ref Manifold, ref bodyA._xf, shapeA.Radius, ref bodyB._xf, shapeB.Radius, out normal, out points);
+            ContactSolver.WorldManifold.Initialize(ref Manifold, ref bodyA._xf, shapeA.GetRadius, ref bodyB._xf, shapeB.GetRadius, out normal, out points);
         }
 
         /// <summary>

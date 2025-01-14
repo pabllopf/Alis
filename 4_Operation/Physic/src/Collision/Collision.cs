@@ -127,7 +127,7 @@ namespace Alis.Core.Physic.Collision
 
             Vector2F d = pB - pA;
             float distSqr = Vector2F.Dot(d, d);
-            float radius = circleA.Radius + circleB.Radius;
+            float radius = circleA.GetRadius + circleB.GetRadius;
             if (distSqr > radius * radius)
             {
                 return;
@@ -165,7 +165,7 @@ namespace Alis.Core.Physic.Collision
             // Find the min separating edge.
             int normalIndex = 0;
             float separation = -SettingEnv.MaxFloat;
-            float radius = polygonA.Radius + circleB.Radius;
+            float radius = polygonA.GetRadius + circleB.GetRadius;
             int vertexCount = polygonA.Vertices.Count;
 
             for (int i = 0; i < vertexCount; ++i)
@@ -303,7 +303,7 @@ namespace Alis.Core.Physic.Collision
         public static void CollidePolygons(ref Manifold manifold, PolygonShape polyA, ref Transform transformA, PolygonShape polyB, ref Transform transformB)
         {
             manifold.PointCount = 0;
-            float totalRadius = polyA.Radius + polyB.Radius;
+            float totalRadius = polyA.GetRadius + polyB.GetRadius;
 
             float separationA = FindMaxSeparation(out int edgeA, polyA, ref transformA, polyB, ref transformB);
             if (separationA > totalRadius)
@@ -453,7 +453,7 @@ namespace Alis.Core.Physic.Collision
             float u = Vector2F.Dot(e, B - Q);
             float v = Vector2F.Dot(e, Q - A);
 
-            float radius = edgeA.Radius + circleB.Radius;
+            float radius = edgeA.GetRadius + circleB.GetRadius;
 
             ContactFeature cf;
             cf.IndexB = 0;

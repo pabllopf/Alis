@@ -181,13 +181,13 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                 {
                     // We create a "diamond" approximation of the circle
                     Vertices v = new Vertices();
-                    Vector2F vec = Vector2F.Zero + new Vector2F(cs.Radius, 0);
+                    Vector2F vec = Vector2F.Zero + new Vector2F(cs.GetRadius, 0);
                     v.Add(vec);
-                    vec = Vector2F.Zero + new Vector2F(0, cs.Radius);
+                    vec = Vector2F.Zero + new Vector2F(0, cs.GetRadius);
                     v.Add(vec);
-                    vec = Vector2F.Zero + new Vector2F(-cs.Radius, cs.Radius);
+                    vec = Vector2F.Zero + new Vector2F(-cs.GetRadius, cs.GetRadius);
                     v.Add(vec);
-                    vec = Vector2F.Zero + new Vector2F(0, -cs.Radius);
+                    vec = Vector2F.Zero + new Vector2F(0, -cs.GetRadius);
                     v.Add(vec);
                     ps = new PolygonShape(v, 0);
                 }

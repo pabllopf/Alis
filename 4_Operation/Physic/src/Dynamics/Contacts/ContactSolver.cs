@@ -150,8 +150,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 Fixture fixtureB = contact.FixtureB;
                 Shape shapeA = fixtureA.Shape;
                 Shape shapeB = fixtureB.Shape;
-                float radiusA = shapeA.Radius;
-                float radiusB = shapeB.Radius;
+                float radiusA = shapeA.GetRadius;
+                float radiusB = shapeB.GetRadius;
                 Body bodyA = fixtureA.Body;
                 Body bodyB = fixtureB.Body;
                 Manifold manifold = contact.Manifold;

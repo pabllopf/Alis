@@ -58,7 +58,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             : base(density)
         {
             ShapeType = ShapeType.Polygon;
-            _radius = SettingEnv.PolygonRadius;
+            Radius = SettingEnv.PolygonRadius;
 
             Vertices = vertices;
         }
@@ -73,7 +73,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             Debug.Assert(density >= 0f);
 
             ShapeType = ShapeType.Polygon;
-            _radius = SettingEnv.PolygonRadius;
+            Radius = SettingEnv.PolygonRadius;
             _vertices = new Vertices(SettingEnv.MaxPolygonVertices);
             Normals = new Vertices(SettingEnv.MaxPolygonVertices);
         }
@@ -85,7 +85,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             : base(0)
         {
             ShapeType = ShapeType.Polygon;
-            _radius = SettingEnv.PolygonRadius;
+            Radius = SettingEnv.PolygonRadius;
             _vertices = new Vertices(SettingEnv.MaxPolygonVertices);
             Normals = new Vertices(SettingEnv.MaxPolygonVertices);
         }
@@ -181,7 +181,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             Debug.Assert(Vertices.Count >= 3);
 
             //FPE optimization: Early exit as polygons with 0 density does not have any properties.
-            if (_density <= 0)
+            if (Density <= 0)
             {
                 return;
             }
@@ -189,7 +189,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             //FPE optimization: Consolidated the calculate centroid and mass code to a single method.
             Vector2F center = Vector2F.Zero;
             float area = 0.0f;
-            float I = 0.0f;
+            float inv3 = 0.0f;
 
             // pRef is the reference point for forming triangles.
             // It's location doesn't change the result (except for rounding error).
@@ -203,7 +203,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 
             s *= 1.0f / Vertices.Count;
 
-            const float k_inv3 = 1.0f / 3.0f;
+            const float kInv3 = 1.0f / 3.0f;
 
             for (int i = 0; i < Vertices.Count; ++i)
             {
@@ -211,13 +211,13 @@ namespace Alis.Core.Physic.Collision.Shapes
                 Vector2F e1 = Vertices[i] - s;
                 Vector2F e2 = i + 1 < Vertices.Count ? Vertices[i + 1] - s : Vertices[0] - s;
 
-                float D = MathUtils.Cross(ref e1, ref e2);
+                float d = MathUtils.Cross(ref e1, ref e2);
 
-                float triangleArea = 0.5f * D;
+                float triangleArea = 0.5f * d;
                 area += triangleArea;
 
                 // Area weighted centroid
-                center += triangleArea * k_inv3 * (e1 + e2);
+                center += triangleArea * kInv3 * (e1 + e2);
 
                 float ex1 = e1.X, ey1 = e1.Y;
                 float ex2 = e2.X, ey2 = e2.Y;
@@ -225,7 +225,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                 float intx2 = ex1 * ex1 + ex2 * ex1 + ex2 * ex2;
                 float inty2 = ey1 * ey1 + ey2 * ey1 + ey2 * ey2;
 
-                I += 0.25f * k_inv3 * D * (intx2 + inty2);
+                inv3 += 0.25f * kInv3 * d * (intx2 + inty2);
             }
 
             //The area is too small for the engine to handle.
@@ -235,14 +235,14 @@ namespace Alis.Core.Physic.Collision.Shapes
             MassData.Area = area;
 
             // Total mass
-            MassData.Mass = _density * area;
+            MassData.Mass = Density * area;
 
             // Center of mass
             center *= 1.0f / area;
             MassData.Centroid = center + s;
 
             // Inertia tensor relative to the local origin (point s).
-            MassData.Inertia = _density * I;
+            MassData.Inertia = Density * inv3;
 
             // Shift to center of mass then to original body origin.
             MassData.Inertia += MassData.Mass * (Vector2F.Dot(MassData.Centroid, MassData.Centroid) - Vector2F.Dot(center, center));
@@ -355,7 +355,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="aabb">The aabb results.</param>
         /// <param name="transform">The world transform of the shape.</param>
         /// <param name="childIndex">The child shape index.</param>
-        public override void ComputeAABB(out Aabb aabb, ref Transform transform, int childIndex)
+        public override void ComputeAabb(out Aabb aabb, ref Transform transform, int childIndex)
         {
             aabb = new Aabb();
 
@@ -398,10 +398,10 @@ namespace Alis.Core.Physic.Collision.Shapes
             // OPT: Vector2F r = new Vector2F(Radius, Radius);
             // OPT: aabb.LowerBound = aabb.LowerBound - r;
             // OPT: aabb.UpperBound = aabb.UpperBound + r;
-            aabb.LowerBound.X -= Radius;
-            aabb.LowerBound.Y -= Radius;
-            aabb.UpperBound.X += Radius;
-            aabb.UpperBound.Y += Radius;
+            aabb.LowerBound.X -= GetRadius;
+            aabb.LowerBound.Y -= GetRadius;
+            aabb.UpperBound.X += GetRadius;
+            aabb.UpperBound.Y += GetRadius;
         }
 
         /// <summary>
@@ -461,7 +461,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                     {
                         //Completely submerged
                         sc = Transform.Multiply(MassData.Centroid, ref xf);
-                        return MassData.Mass / Density;
+                        return MassData.Mass / GetDensity;
                     }
 
                     //Completely dry
@@ -493,7 +493,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             Vector2F center = new Vector2F(0, 0);
             Vector2F p2 = Vertices[intoIndex2];
 
-            const float k_inv3 = 1.0f / 3.0f;
+            const float kInv3 = 1.0f / 3.0f;
 
             //An awkward loop from intoIndex2+1 to outIndex2
             i = intoIndex2;
@@ -515,14 +515,14 @@ namespace Alis.Core.Physic.Collision.Shapes
                     Vector2F e1 = p2 - intoVec;
                     Vector2F e2 = p3 - intoVec;
 
-                    float D = MathUtils.Cross(ref e1, ref e2);
+                    float d = MathUtils.Cross(ref e1, ref e2);
 
-                    float triangleArea = 0.5f * D;
+                    float triangleArea = 0.5f * d;
 
                     area += triangleArea;
 
                     // Area weighted centroid
-                    center += triangleArea * k_inv3 * (intoVec + p2 + p3);
+                    center += triangleArea * kInv3 * (intoVec + p2 + p3);
                 }
 
                 p2 = p3;
@@ -556,7 +556,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                 }
             }
 
-            return (Math.Abs(Radius - shape.Radius) < SettingEnv.Epsilon) && (MassData == shape.MassData);
+            return (Math.Abs(GetRadius - shape.GetRadius) < SettingEnv.Epsilon) && (MassData == shape.MassData);
         }
 
         /// <summary>
@@ -567,8 +567,8 @@ namespace Alis.Core.Physic.Collision.Shapes
         {
             PolygonShape clone = new PolygonShape();
             clone.ShapeType = ShapeType;
-            clone._radius = _radius;
-            clone._density = _density;
+            clone.Radius = Radius;
+            clone.Density = Density;
             clone._vertices = new Vertices(_vertices);
             clone.Normals = new Vertices(Normals);
             clone.MassData = MassData;

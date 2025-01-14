@@ -230,7 +230,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                     //Delete the original shape and create two new. Retain the properties of the body.
                     if (first.CheckPolygon() == PolygonError.NoError)
                     {
-                        Body firstFixture = world.CreatePolygon(first, fixtures[i].Shape.Density, fixtures[i].Body.Position);
+                        Body firstFixture = world.CreatePolygon(first, fixtures[i].Shape.GetDensity, fixtures[i].Body.Position);
                         firstFixture.Rotation = fixtures[i].Body.Rotation;
                         firstFixture.LinearVelocity = fixtures[i].Body.LinearVelocity;
                         firstFixture.AngularVelocity = fixtures[i].Body.AngularVelocity;
@@ -239,7 +239,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
 
                     if (second.CheckPolygon() == PolygonError.NoError)
                     {
-                        Body secondFixture = world.CreatePolygon(second, fixtures[i].Shape.Density, fixtures[i].Body.Position);
+                        Body secondFixture = world.CreatePolygon(second, fixtures[i].Shape.GetDensity, fixtures[i].Body.Position);
                         secondFixture.Rotation = fixtures[i].Body.Rotation;
                         secondFixture.LinearVelocity = fixtures[i].Body.LinearVelocity;
                         secondFixture.AngularVelocity = fixtures[i].Body.AngularVelocity;

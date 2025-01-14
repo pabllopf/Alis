@@ -119,14 +119,14 @@ namespace Alis.Core.Physic.Common
                             case ShapeType.Circle:
                             {
                                 CircleShape shape = new CircleShape();
-                                shape._density = density;
+                                shape.Density = density;
 
                                 foreach (XMLFragmentElement sn in element.Elements)
                                 {
                                     switch (sn.Name.ToLower())
                                     {
                                         case "radius":
-                                            shape.Radius = ParseFloat(sn.Value);
+                                            shape.GetRadius = ParseFloat(sn.Value);
                                             break;
                                         case "position":
                                             shape.Position = ReadVector(sn);
@@ -142,7 +142,7 @@ namespace Alis.Core.Physic.Common
                             case ShapeType.Polygon:
                             {
                                 PolygonShape shape = new PolygonShape();
-                                shape._density = density;
+                                shape.Density = density;
 
                                 foreach (XMLFragmentElement sn in element.Elements)
                                 {
@@ -172,7 +172,7 @@ namespace Alis.Core.Physic.Common
                             case ShapeType.Edge:
                             {
                                 EdgeShape shape = new EdgeShape();
-                                shape._density = density;
+                                shape.Density = density;
 
                                 foreach (XMLFragmentElement sn in element.Elements)
                                 {
@@ -207,7 +207,7 @@ namespace Alis.Core.Physic.Common
                             case ShapeType.Chain:
                             {
                                 ChainShape shape = new ChainShape();
-                                shape._density = density;
+                                shape.Density = density;
 
                                 foreach (XMLFragmentElement sn in element.Elements)
                                 {

@@ -58,7 +58,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 
             ShapeType = ShapeType.Circle;
             PositionInternal = Vector2F.Zero;
-            Radius = radius; // The Radius property cache 2radius and calls ComputeProperties(). So no need to call ComputeProperties() here.
+            GetRadius = radius; // The Radius property cache 2radius and calls ComputeProperties(). So no need to call ComputeProperties() here.
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             : base(0)
         {
             ShapeType = ShapeType.Circle;
-            _radius = 0.0f;
+            Radius = 0.0f;
             PositionInternal = Vector2F.Zero;
         }
 
@@ -160,7 +160,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="aabb">The aabb</param>
         /// <param name="transform">The transform</param>
         /// <param name="childIndex">The child index</param>
-        public override void ComputeAABB(out Aabb aabb, ref Transform transform, int childIndex)
+        public override void ComputeAabb(out Aabb aabb, ref Transform transform, int childIndex)
         {
             // OPT: Vector2F p = transform.p + Complex.Multiply(ref _position, ref transform.q);
             float pX = PositionInternal.X * transform.q.R - PositionInternal.Y * transform.q.i + transform.p.X;
@@ -168,9 +168,9 @@ namespace Alis.Core.Physic.Collision.Shapes
 
             // OPT: aabb.LowerBound = new Vector2F(p.X - Radius, p.Y - Radius);
             // OPT: aabb.UpperBound = new Vector2F(p.X + Radius, p.Y + Radius);
-            aabb.LowerBound = new Vector2F(pX - Radius, pY - Radius);
+            aabb.LowerBound = new Vector2F(pX - GetRadius, pY - GetRadius);
 
-            aabb.UpperBound = new Vector2F(pX + Radius, pY + Radius);
+            aabb.UpperBound = new Vector2F(pX + GetRadius, pY + GetRadius);
         }
 
         /// <summary>
@@ -180,7 +180,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         {
             float area = Constant.Pi * _2radius;
             MassData.Area = area;
-            MassData.Mass = Density * area;
+            MassData.Mass = GetDensity * area;
             MassData.Centroid = Position;
 
             // inertia about the local origin
@@ -201,13 +201,13 @@ namespace Alis.Core.Physic.Collision.Shapes
 
             Vector2F p = Transform.Multiply(ref PositionInternal, ref xf);
             float l = -(Vector2F.Dot(normal, p) - offset);
-            if (l < -Radius + SettingEnv.Epsilon)
+            if (l < -GetRadius + SettingEnv.Epsilon)
             {
                 //Completely dry
                 return 0;
             }
 
-            if (l > Radius)
+            if (l > GetRadius)
             {
                 //Completely wet
                 sc = p;
@@ -216,7 +216,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 
             //Magic
             float l2 = l * l;
-            float area = _2radius * (float) (Math.Asin(l / Radius) + Constant.Pi / 2 + l * Math.Sqrt(_2radius - l2));
+            float area = _2radius * (float) (Math.Asin(l / GetRadius) + Constant.Pi / 2 + l * Math.Sqrt(_2radius - l2));
             float com = -2.0f / 3.0f * (float) Math.Pow(_2radius - l2, 1.5f) / area;
 
             sc.X = p.X + normal.X * com;
@@ -230,7 +230,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// </summary>
         /// <param name="shape">The other circle</param>
         /// <returns>True if the two circles are the same size and have the same position</returns>
-        public bool CompareTo(CircleShape shape) => (Math.Abs(Radius - shape.Radius) < MathUtils.Epsilon) && (Position == shape.Position);
+        public bool CompareTo(CircleShape shape) => (Math.Abs(GetRadius - shape.GetRadius) < MathUtils.Epsilon) && (Position == shape.Position);
 
         /// <summary>
         ///     Clones this instance
@@ -240,9 +240,9 @@ namespace Alis.Core.Physic.Collision.Shapes
         {
             CircleShape clone = new CircleShape();
             clone.ShapeType = ShapeType;
-            clone._radius = Radius;
+            clone.Radius = GetRadius;
             clone._2radius = _2radius; //FPE note: We also copy the cache
-            clone._density = _density;
+            clone.Density = Density;
             clone.PositionInternal = PositionInternal;
             clone.MassData = MassData;
             return clone;

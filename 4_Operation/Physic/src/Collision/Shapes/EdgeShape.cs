@@ -60,7 +60,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             : base(0)
         {
             ShapeType = ShapeType.Edge;
-            _radius = SettingEnv.PolygonRadius;
+            Radius = SettingEnv.PolygonRadius;
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             : base(0)
         {
             ShapeType = ShapeType.Edge;
-            _radius = SettingEnv.PolygonRadius;
+            Radius = SettingEnv.PolygonRadius;
             Set(start, end);
         }
 
@@ -231,7 +231,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="aabb">The aabb</param>
         /// <param name="transform">The transform</param>
         /// <param name="childIndex">The child index</param>
-        public override void ComputeAABB(out Aabb aabb, ref Transform transform, int childIndex)
+        public override void ComputeAabb(out Aabb aabb, ref Transform transform, int childIndex)
         {
             // Initialize aabb
             aabb = new Aabb();
@@ -270,10 +270,10 @@ namespace Alis.Core.Physic.Collision.Shapes
             // OPT: Vector2F r = new Vector2F(Radius, Radius);
             // OPT: aabb.LowerBound = aabb.LowerBound - r;
             // OPT: aabb.UpperBound = aabb.LowerBound + r;
-            aabb.LowerBound.X -= Radius;
-            aabb.LowerBound.Y -= Radius;
-            aabb.UpperBound.X += Radius;
-            aabb.UpperBound.Y += Radius;
+            aabb.LowerBound.X -= GetRadius;
+            aabb.LowerBound.Y -= GetRadius;
+            aabb.UpperBound.X += GetRadius;
+            aabb.UpperBound.Y += GetRadius;
         }
 
         /// <summary>
@@ -318,8 +318,8 @@ namespace Alis.Core.Physic.Collision.Shapes
         {
             EdgeShape clone = new EdgeShape();
             clone.ShapeType = ShapeType;
-            clone._radius = _radius;
-            clone._density = _density;
+            clone.Radius = Radius;
+            clone.Density = Density;
             clone.HasVertex0 = HasVertex0;
             clone.HasVertex3 = HasVertex3;
             clone.Vertex0 = Vertex0;
