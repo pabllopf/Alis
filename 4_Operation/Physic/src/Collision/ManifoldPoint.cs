@@ -48,7 +48,7 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     Uniquely identifies a contact point between two Shapes
         /// </summary>
-        public ContactID Id;
+        public ContactId Id;
 
         /// <summary>
         ///     Usage depends on manifold type

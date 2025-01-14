@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>
         ///     The edge shape
         /// </summary>
-        private static readonly EdgeShape _edgeShape = new EdgeShape();
+        private static readonly EdgeShape EdgeShape = new EdgeShape();
 
         /// <summary>
         ///     The has next vertex
@@ -224,10 +224,10 @@ namespace Alis.Core.Physic.Collision.Shapes
                 i2 = 0;
             }
 
-            _edgeShape.Vertex1 = Vertices[i1];
-            _edgeShape.Vertex2 = Vertices[i2];
+            EdgeShape.Vertex1 = Vertices[i1];
+            EdgeShape.Vertex2 = Vertices[i2];
 
-            return _edgeShape.RayCast(out output, ref input, ref transform, 0);
+            return EdgeShape.RayCast(out output, ref input, ref transform, 0);
         }
 
         /// <summary>

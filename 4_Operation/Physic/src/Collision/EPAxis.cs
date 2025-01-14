@@ -32,7 +32,7 @@ namespace Alis.Core.Physic.Collision
     /// <summary>
     ///     This structure is used to keep track of the best separating axis.
     /// </summary>
-    public struct EPAxis
+    public struct EpAxis
     {
         /// <summary>
         ///     The index
@@ -47,6 +47,6 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     The type
         /// </summary>
-        public EPAxisType Type;
+        public EpAxisType Type;
     }
 }

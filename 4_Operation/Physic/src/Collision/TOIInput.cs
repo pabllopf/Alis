@@ -34,7 +34,7 @@ namespace Alis.Core.Physic.Collision
     /// <summary>
     ///     Input parameters for CalculateTimeOfImpact
     /// </summary>
-    public class TOIInput
+    public class ToiInput
     {
         /// <summary>
         ///     The proxy

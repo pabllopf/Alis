@@ -111,7 +111,7 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         /// <param name="aabb">The aabb</param>
-        void GetFatAABB(int proxyId, out Aabb aabb);
+        void GetFatAabb(int proxyId, out Aabb aabb);
 
         /// <summary>
         ///     Queries the callback
