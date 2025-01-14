@@ -49,11 +49,11 @@ namespace Alis.Core.Physic.Common.TextureTools
         ///     Initializes a new instance of the <see cref="GeomPolyVal" /> class
         /// </summary>
         /// <param name="geomP">The geom</param>
-        /// <param name="K">The </param>
-        public GeomPolyVal(MarchingSquares.GeomPoly geomP, int K)
+        /// <param name="k">The </param>
+        public GeomPolyVal(MarchingSquares.GeomPoly geomP, int k)
         {
             GeomP = geomP;
-            Key = K;
+            Key = k;
         }
     }
 }

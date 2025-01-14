@@ -48,7 +48,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         /// <summary>
         ///     Ignores the controller. The controller has no effect on this body.
         /// </summary>
-        /// <param name="type">The logic type.</param>
+        /// <param name="category"></param>
         public void IgnoreController(ControllerCategory category)
         {
             ControllerCategories &= ~category;

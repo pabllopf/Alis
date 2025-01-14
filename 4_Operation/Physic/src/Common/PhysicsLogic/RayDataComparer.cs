@@ -37,8 +37,6 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
     /// </summary>
     internal class RayDataComparer : IComparer<float>
     {
-        #region IComparer<float> Members
-
         /// <summary>
         ///     Compares the a
         /// </summary>
@@ -60,7 +58,5 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
 
             return 0;
         }
-
-        #endregion
     }
 }

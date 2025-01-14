@@ -40,12 +40,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
         /// <summary>
         ///     Gets the value of the points
         /// </summary>
-        IList<TriangulationPoint> Points { get; } // MM: Neither of these are used via interface (yet?)
+        IList<TriangulationPoint> GetPoints { get; } // MM: Neither of these are used via interface (yet?)
 
         /// <summary>
         ///     Gets the value of the triangles
         /// </summary>
-        IList<DelaunayTriangle> Triangles { get; }
+        IList<DelaunayTriangle> GetTriangles { get; }
 
         /// <summary>
         ///     Gets the value of the triangulation mode

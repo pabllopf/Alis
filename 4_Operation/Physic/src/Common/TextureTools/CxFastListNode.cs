@@ -37,29 +37,29 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// <summary>
         ///     The elt
         /// </summary>
-        internal readonly T _elt;
+        internal readonly T Elt;
 
         /// <summary>
         ///     The next
         /// </summary>
-        internal CxFastListNode<T> _next;
+        internal CxFastListNode<T> Next;
 
         /// <summary>
         ///     Initializes a new instance of the class
         /// </summary>
         /// <param name="obj">The obj</param>
-        public CxFastListNode(T obj) => _elt = obj;
+        public CxFastListNode(T obj) => Elt = obj;
 
         /// <summary>
         ///     Elems this instance
         /// </summary>
         /// <returns>The</returns>
-        public T Elem() => _elt;
+        public T GetElem() => Elt;
 
         /// <summary>
         ///     Nexts this instance
         /// </summary>
         /// <returns>A cx fast list node of t</returns>
-        public CxFastListNode<T> Next() => _next;
+        public CxFastListNode<T> NextPos() => Next;
     }
 }
