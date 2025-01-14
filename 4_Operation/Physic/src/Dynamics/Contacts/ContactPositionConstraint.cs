@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     The max manifold points
         /// </summary>
-        public Vector2F[] LocalPoints = new Vector2F[SettingEnv.MaxManifoldPoints];
+        public readonly Vector2F[] LocalPoints = new Vector2F[SettingEnv.MaxManifoldPoints];
 
         /// <summary>
         ///     The point count

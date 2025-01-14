@@ -41,7 +41,7 @@ namespace Alis.Core.Physic.Controllers
         /// <summary>
         ///     The cat 01
         /// </summary>
-        public ControllerCategory ControllerCategory = ControllerCategory.Cat01;
+        public readonly ControllerCategory ControllerCategory = ControllerCategory.Cat01;
 
         /// <summary>
         ///     The enabled

@@ -81,31 +81,31 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         ///     Ratio of arc length to angle from edges to first ray tested.
         ///     Defaults to 1/40.
         /// </summary>
-        public float EdgeRatio = 1.0f / 40.0f;
+        public readonly float EdgeRatio = 1.0f / 40.0f;
 
         /// <summary>
         ///     Ignore Explosion if it happens inside a shape.
         ///     Default value is false.
         /// </summary>
-        public bool IgnoreWhenInsideShape = false;
+        public readonly bool IgnoreWhenInsideShape = false;
 
         /// <summary>
         ///     Max angle between rays (used when segment is large).
         ///     Defaults to 15 degrees
         /// </summary>
-        public float MaxAngle = Constant.Pi / 15;
+        public readonly float MaxAngle = Constant.Pi / 15;
 
         /// <summary>
         ///     Maximum number of shapes involved in the explosion.
         ///     Defaults to 100
         /// </summary>
-        public int MaxShapes = 100;
+        public readonly int MaxShapes = 100;
 
         /// <summary>
         ///     How many rays per shape/body/segment.
         ///     Defaults to 5
         /// </summary>
-        public int MinRays = 5;
+        public readonly int MinRays = 5;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="RealExplosion" /> class

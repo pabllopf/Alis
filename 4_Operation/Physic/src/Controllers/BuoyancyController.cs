@@ -71,19 +71,19 @@ namespace Alis.Core.Physic.Controllers
         ///     fluid, like honey, lower values to
         ///     simulate water-like fluids.
         /// </summary>
-        public float AngularDragCoefficient;
+        public readonly float AngularDragCoefficient;
 
         /// <summary>
         ///     Density of the fluid. Higher values will make things more buoyant, lower values will cause things to sink.
         /// </summary>
-        public float Density;
+        public readonly float Density;
 
         /// <summary>
         ///     Controls the linear drag that the fluid exerts on the bodies within it.  Use higher values will simulate thick
         ///     fluid, like honey, lower values to
         ///     simulate water-like fluids.
         /// </summary>
-        public float LinearDragCoefficient;
+        public readonly float LinearDragCoefficient;
 
         /// <summary>
         ///     Acts like waterflow. Defaults to 0,0.

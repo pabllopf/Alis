@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         /// <summary>
         ///     The polygon
         /// </summary>
-        protected List<Polygon> _polygons = new List<Polygon>();
+        protected readonly List<Polygon> _polygons = new List<Polygon>();
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PolygonSet" /> class

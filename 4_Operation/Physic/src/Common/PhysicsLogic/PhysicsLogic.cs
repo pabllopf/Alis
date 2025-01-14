@@ -40,7 +40,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         /// <summary>
         ///     The cat 01
         /// </summary>
-        public ControllerCategory ControllerCategory = ControllerCategory.Cat01;
+        public readonly ControllerCategory ControllerCategory = ControllerCategory.Cat01;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PhysicsLogic" /> class

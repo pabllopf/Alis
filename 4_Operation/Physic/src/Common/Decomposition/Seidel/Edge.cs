@@ -46,7 +46,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// <summary>
         ///     The
         /// </summary>
-        public float B;
+        public readonly float B;
 
         /// <summary>
         ///     The below
@@ -57,23 +57,23 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// <summary>
         ///     The points
         /// </summary>
-        public HashSet<Point> MPoints;
+        public readonly HashSet<Point> MPoints;
 
         /// <summary>
         ///     The
         /// </summary>
-        public Point P;
+        public readonly Point P;
 
         /// <summary>
         ///     The
         /// </summary>
-        public Point Q;
+        public readonly Point Q;
 
         // Slope of the line (m)
         /// <summary>
         ///     The slope
         /// </summary>
-        public float Slope;
+        public readonly float Slope;
 
 
         /// <summary>

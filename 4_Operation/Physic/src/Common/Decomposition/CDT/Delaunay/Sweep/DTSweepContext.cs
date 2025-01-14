@@ -55,12 +55,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// <summary>
         ///     The dt sweep basin
         /// </summary>
-        public DtSweepBasin Basin = new DtSweepBasin();
+        public readonly DtSweepBasin Basin = new DtSweepBasin();
 
         /// <summary>
         ///     The dt sweep edge event
         /// </summary>
-        public DtSweepEdgeEvent EdgeEvent = new DtSweepEdgeEvent();
+        public readonly DtSweepEdgeEvent EdgeEvent = new DtSweepEdgeEvent();
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="DtSweepContext" /> class

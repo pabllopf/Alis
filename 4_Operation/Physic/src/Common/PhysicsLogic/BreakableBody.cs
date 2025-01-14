@@ -55,13 +55,13 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         /// <summary>
         ///     The fixture
         /// </summary>
-        public List<Fixture> Parts = new List<Fixture>(8);
+        public readonly List<Fixture> Parts = new List<Fixture>(8);
 
         /// <summary>
         ///     The force needed to break the body apart.
         ///     Default: 500
         /// </summary>
-        public float Strength = 500.0f;
+        public readonly float Strength = 500.0f;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="BreakableBody" /> class
