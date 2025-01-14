@@ -206,8 +206,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                         vcp.TangentImpulse = 0.0f;
                     }
 
-                    vcp.RA = Vector2F.Zero;
-                    vcp.RB = Vector2F.Zero;
+                    vcp.Ra = Vector2F.Zero;
+                    vcp.Rb = Vector2F.Zero;
                     vcp.NormalMass = 0.0f;
                     vcp.TangentMass = 0.0f;
                     vcp.VelocityBias = 0.0f;
@@ -268,19 +268,19 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 {
                     VelocityConstraintPoint vcp = vc.Points[j];
 
-                    vcp.RA = points[j] - cA;
-                    vcp.RB = points[j] - cB;
+                    vcp.Ra = points[j] - cA;
+                    vcp.Rb = points[j] - cB;
 
-                    float rnA = MathUtils.Cross(ref vcp.RA, ref vc.Normal);
-                    float rnB = MathUtils.Cross(ref vcp.RB, ref vc.Normal);
+                    float rnA = MathUtils.Cross(ref vcp.Ra, ref vc.Normal);
+                    float rnB = MathUtils.Cross(ref vcp.Rb, ref vc.Normal);
 
                     float kNormal = mA + mB + iA * rnA * rnA + iB * rnB * rnB;
 
                     vcp.NormalMass = kNormal > 0.0f ? 1.0f / kNormal : 0.0f;
 
 
-                    float rtA = MathUtils.Cross(ref vcp.RA, ref tangent);
-                    float rtB = MathUtils.Cross(ref vcp.RB, ref tangent);
+                    float rtA = MathUtils.Cross(ref vcp.Ra, ref tangent);
+                    float rtB = MathUtils.Cross(ref vcp.Rb, ref tangent);
 
                     float kTangent = mA + mB + iA * rtA * rtA + iB * rtB * rtB;
 
@@ -288,7 +288,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                     // Setup a velocity bias for restitution.
                     vcp.VelocityBias = 0.0f;
-                    float vRel = Vector2F.Dot(vc.Normal, vB + MathUtils.Cross(wB, ref vcp.RB) - vA - MathUtils.Cross(wA, ref vcp.RA));
+                    float vRel = Vector2F.Dot(vc.Normal, vB + MathUtils.Cross(wB, ref vcp.Rb) - vA - MathUtils.Cross(wA, ref vcp.Ra));
                     if (vRel < -SettingEnv.VelocityThreshold)
                     {
                         vcp.VelocityBias = -vc.Restitution * vRel;
@@ -301,10 +301,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     VelocityConstraintPoint vcp1 = vc.Points[0];
                     VelocityConstraintPoint vcp2 = vc.Points[1];
 
-                    float rn1A = MathUtils.Cross(ref vcp1.RA, ref vc.Normal);
-                    float rn1B = MathUtils.Cross(ref vcp1.RB, ref vc.Normal);
-                    float rn2A = MathUtils.Cross(ref vcp2.RA, ref vc.Normal);
-                    float rn2B = MathUtils.Cross(ref vcp2.RB, ref vc.Normal);
+                    float rn1A = MathUtils.Cross(ref vcp1.Ra, ref vc.Normal);
+                    float rn1B = MathUtils.Cross(ref vcp1.Rb, ref vc.Normal);
+                    float rn2A = MathUtils.Cross(ref vcp2.Ra, ref vc.Normal);
+                    float rn2B = MathUtils.Cross(ref vcp2.Rb, ref vc.Normal);
 
                     float k11 = mA + mB + iA * rn1A * rn1A + iB * rn1B * rn1B;
                     float k22 = mA + mB + iA * rn2A * rn2A + iB * rn2B * rn2B;
@@ -359,9 +359,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 {
                     VelocityConstraintPoint vcp = vc.Points[j];
                     Vector2F p = vcp.NormalImpulse * normal + vcp.TangentImpulse * tangent;
-                    wA -= iA * MathUtils.Cross(ref vcp.RA, ref p);
+                    wA -= iA * MathUtils.Cross(ref vcp.Ra, ref p);
                     vA -= mA * p;
-                    wB += iB * MathUtils.Cross(ref vcp.RB, ref p);
+                    wB += iB * MathUtils.Cross(ref vcp.Rb, ref p);
                     vB += mB * p;
                 }
 
@@ -473,7 +473,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     VelocityConstraintPoint vcp = vc.Points[j];
 
                     // Relative velocity at contact
-                    Vector2F dv = vB + MathUtils.Cross(wB, ref vcp.RB) - vA - MathUtils.Cross(wA, ref vcp.RA);
+                    Vector2F dv = vB + MathUtils.Cross(wB, ref vcp.Rb) - vA - MathUtils.Cross(wA, ref vcp.Ra);
 
                     // Compute tangent force
                     float vt = Vector2F.Dot(dv, tangent) - vc.TangentSpeed;
@@ -489,10 +489,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     Vector2F p = lambda * tangent;
 
                     vA -= mA * p;
-                    wA -= iA * MathUtils.Cross(ref vcp.RA, ref p);
+                    wA -= iA * MathUtils.Cross(ref vcp.Ra, ref p);
 
                     vB += mB * p;
-                    wB += iB * MathUtils.Cross(ref vcp.RB, ref p);
+                    wB += iB * MathUtils.Cross(ref vcp.Rb, ref p);
                 }
 
                 // Solve normal constraints
@@ -501,7 +501,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     VelocityConstraintPoint vcp = vc.Points[0];
 
                     // Relative velocity at contact
-                    Vector2F dv = vB + MathUtils.Cross(wB, ref vcp.RB) - vA - MathUtils.Cross(wA, ref vcp.RA);
+                    Vector2F dv = vB + MathUtils.Cross(wB, ref vcp.Rb) - vA - MathUtils.Cross(wA, ref vcp.Ra);
 
                     // Compute normal impulse
                     float vn = Vector2F.Dot(dv, normal);
@@ -515,10 +515,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     // Apply contact impulse
                     Vector2F p = lambda * normal;
                     vA -= mA * p;
-                    wA -= iA * MathUtils.Cross(ref vcp.RA, ref p);
+                    wA -= iA * MathUtils.Cross(ref vcp.Ra, ref p);
 
                     vB += mB * p;
-                    wB += iB * MathUtils.Cross(ref vcp.RB, ref p);
+                    wB += iB * MathUtils.Cross(ref vcp.Rb, ref p);
                 }
                 else
                 {
@@ -562,8 +562,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     Debug.Assert((a.X >= 0.0f) && (a.Y >= 0.0f));
 
                     // Relative velocity at contact
-                    Vector2F dv1 = vB + MathUtils.Cross(wB, ref cp1.RB) - vA - MathUtils.Cross(wA, ref cp1.RA);
-                    Vector2F dv2 = vB + MathUtils.Cross(wB, ref cp2.RB) - vA - MathUtils.Cross(wA, ref cp2.RA);
+                    Vector2F dv1 = vB + MathUtils.Cross(wB, ref cp1.Rb) - vA - MathUtils.Cross(wA, ref cp1.Ra);
+                    Vector2F dv2 = vB + MathUtils.Cross(wB, ref cp2.Rb) - vA - MathUtils.Cross(wA, ref cp2.Ra);
 
                     // Compute normal velocity
                     float vn1 = Vector2F.Dot(dv1, normal);
@@ -600,10 +600,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                             Vector2F p1 = d.X * normal;
                             Vector2F p2 = d.Y * normal;
                             vA -= mA * (p1 + p2);
-                            wA -= iA * (MathUtils.Cross(ref cp1.RA, ref p1) + MathUtils.Cross(ref cp2.RA, ref p2));
+                            wA -= iA * (MathUtils.Cross(ref cp1.Ra, ref p1) + MathUtils.Cross(ref cp2.Ra, ref p2));
 
                             vB += mB * (p1 + p2);
-                            wB += iB * (MathUtils.Cross(ref cp1.RB, ref p1) + MathUtils.Cross(ref cp2.RB, ref p2));
+                            wB += iB * (MathUtils.Cross(ref cp1.Rb, ref p1) + MathUtils.Cross(ref cp2.Rb, ref p2));
 
                             // Accumulate
                             cp1.NormalImpulse = x.X;
@@ -632,10 +632,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                             Vector2F p1 = d.X * normal;
                             Vector2F p2 = d.Y * normal;
                             vA -= mA * (p1 + p2);
-                            wA -= iA * (MathUtils.Cross(ref cp1.RA, ref p1) + MathUtils.Cross(ref cp2.RA, ref p2));
+                            wA -= iA * (MathUtils.Cross(ref cp1.Ra, ref p1) + MathUtils.Cross(ref cp2.Ra, ref p2));
 
                             vB += mB * (p1 + p2);
-                            wB += iB * (MathUtils.Cross(ref cp1.RB, ref p1) + MathUtils.Cross(ref cp2.RB, ref p2));
+                            wB += iB * (MathUtils.Cross(ref cp1.Rb, ref p1) + MathUtils.Cross(ref cp2.Rb, ref p2));
 
                             // Accumulate
                             cp1.NormalImpulse = x.X;
@@ -665,10 +665,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                             Vector2F p1 = d.X * normal;
                             Vector2F p2 = d.Y * normal;
                             vA -= mA * (p1 + p2);
-                            wA -= iA * (MathUtils.Cross(ref cp1.RA, ref p1) + MathUtils.Cross(ref cp2.RA, ref p2));
+                            wA -= iA * (MathUtils.Cross(ref cp1.Ra, ref p1) + MathUtils.Cross(ref cp2.Ra, ref p2));
 
                             vB += mB * (p1 + p2);
-                            wB += iB * (MathUtils.Cross(ref cp1.RB, ref p1) + MathUtils.Cross(ref cp2.RB, ref p2));
+                            wB += iB * (MathUtils.Cross(ref cp1.Rb, ref p1) + MathUtils.Cross(ref cp2.Rb, ref p2));
 
                             // Accumulate
                             cp1.NormalImpulse = x.X;
@@ -696,10 +696,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                             Vector2F p1 = d.X * normal;
                             Vector2F p2 = d.Y * normal;
                             vA -= mA * (p1 + p2);
-                            wA -= iA * (MathUtils.Cross(ref cp1.RA, ref p1) + MathUtils.Cross(ref cp2.RA, ref p2));
+                            wA -= iA * (MathUtils.Cross(ref cp1.Ra, ref p1) + MathUtils.Cross(ref cp2.Ra, ref p2));
 
                             vB += mB * (p1 + p2);
-                            wB += iB * (MathUtils.Cross(ref cp1.RB, ref p1) + MathUtils.Cross(ref cp2.RB, ref p2));
+                            wB += iB * (MathUtils.Cross(ref cp1.Rb, ref p1) + MathUtils.Cross(ref cp2.Rb, ref p2));
 
                             // Accumulate
                             cp1.NormalImpulse = x.X;
