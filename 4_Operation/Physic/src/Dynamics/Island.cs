@@ -78,17 +78,17 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The locks
         /// </summary>
-        internal int[] _locks;
+        internal int[] Locks;
 
         /// <summary>
         ///     The positions
         /// </summary>
-        internal SolverPosition[] _positions;
+        internal SolverPosition[] Positions;
 
         /// <summary>
         ///     The velocities
         /// </summary>
-        internal SolverVelocity[] _velocities;
+        internal SolverVelocity[] Velocities;
 
         /// <summary>
         ///     The bodies
@@ -162,9 +162,9 @@ namespace Alis.Core.Physic.Dynamics
                 int newBodyBufferCapacity = Math.Max(bodyCapacity, 32);
                 newBodyBufferCapacity = (newBodyBufferCapacity + 31) & ~31; // grow in chunks of 32.
                 Bodies = new Body[newBodyBufferCapacity];
-                _velocities = new SolverVelocity[newBodyBufferCapacity];
-                _positions = new SolverPosition[newBodyBufferCapacity];
-                _locks = new int[newBodyBufferCapacity];
+                Velocities = new SolverVelocity[newBodyBufferCapacity];
+                Positions = new SolverPosition[newBodyBufferCapacity];
+                Locks = new int[newBodyBufferCapacity];
             }
 
             if (_contacts == null || _contacts.Length < contactCapacity)
@@ -243,21 +243,21 @@ namespace Alis.Core.Physic.Dynamics
                     w *= MathUtils.Clamp(1.0f - h * b.AngularDamping, 0.0f, 1.0f);
                 }
 
-                _positions[i].C = c;
-                _positions[i].A = a;
-                _velocities[i].v = v;
-                _velocities[i].w = w;
+                Positions[i].C = c;
+                Positions[i].A = a;
+                Velocities[i].v = v;
+                Velocities[i].w = w;
             }
 
             // Solver data
             SolverData solverData = new SolverData();
             solverData.Step = step;
-            solverData.Positions = _positions;
-            solverData.Velocities = _velocities;
-            solverData.Locks = _locks;
+            solverData.Positions = Positions;
+            solverData.Velocities = Velocities;
+            solverData.Locks = Locks;
 
-            _contactSolver.Reset(ref step, ContactCount, _contacts, _positions, _velocities,
-                _locks, _contactManager.VelocityConstraintsMultithreadThreshold, _contactManager.PositionConstraintsMultithreadThreshold);
+            _contactSolver.Reset(ref step, ContactCount, _contacts, Positions, Velocities,
+                Locks, _contactManager.VelocityConstraintsMultithreadThreshold, _contactManager.PositionConstraintsMultithreadThreshold);
             _contactSolver.InitializeVelocityConstraints();
 
             if (step.WarmStarting)
@@ -318,10 +318,10 @@ namespace Alis.Core.Physic.Dynamics
             // Integrate positions
             for (int i = 0; i < BodyCount; ++i)
             {
-                Vector2F c = _positions[i].C;
-                float a = _positions[i].A;
-                Vector2F v = _velocities[i].v;
-                float w = _velocities[i].w;
+                Vector2F c = Positions[i].C;
+                float a = Positions[i].A;
+                Vector2F v = Velocities[i].v;
+                float w = Velocities[i].w;
 
                 // Check for large velocities
                 Vector2F translation = h * v;
@@ -342,10 +342,10 @@ namespace Alis.Core.Physic.Dynamics
                 c += h * v;
                 a += h * w;
 
-                _positions[i].C = c;
-                _positions[i].A = a;
-                _velocities[i].v = v;
-                _velocities[i].w = w;
+                Positions[i].C = c;
+                Positions[i].A = a;
+                Velocities[i].v = v;
+                Velocities[i].w = w;
             }
 
 
@@ -398,10 +398,10 @@ namespace Alis.Core.Physic.Dynamics
             for (int i = 0; i < BodyCount; ++i)
             {
                 Body body = Bodies[i];
-                body._sweep.C = _positions[i].C;
-                body._sweep.A = _positions[i].A;
-                body._linearVelocity = _velocities[i].v;
-                body.AngularVelocity = _velocities[i].w;
+                body._sweep.C = Positions[i].C;
+                body._sweep.A = Positions[i].A;
+                body._linearVelocity = Velocities[i].v;
+                body.AngularVelocity = Velocities[i].w;
                 body.SynchronizeTransform();
             }
 
@@ -449,7 +449,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="subStep">The sub step</param>
         /// <param name="toiIndexA">The toi index</param>
         /// <param name="toiIndexB">The toi index</param>
-        internal void SolveTOI(ref TimeStep subStep, int toiIndexA, int toiIndexB)
+        internal void SolveToi(ref TimeStep subStep, int toiIndexA, int toiIndexB)
         {
             Debug.Assert(toiIndexA < BodyCount);
             Debug.Assert(toiIndexB < BodyCount);
@@ -458,14 +458,14 @@ namespace Alis.Core.Physic.Dynamics
             for (int i = 0; i < BodyCount; ++i)
             {
                 Body b = Bodies[i];
-                _positions[i].C = b._sweep.C;
-                _positions[i].A = b._sweep.A;
-                _velocities[i].v = b._linearVelocity;
-                _velocities[i].w = b.AngularVelocity;
+                Positions[i].C = b._sweep.C;
+                Positions[i].A = b._sweep.A;
+                Velocities[i].v = b._linearVelocity;
+                Velocities[i].w = b.AngularVelocity;
             }
 
-            _contactSolver.Reset(ref subStep, ContactCount, _contacts, _positions, _velocities,
-                _locks, _contactManager.VelocityConstraintsMultithreadThreshold, _contactManager.PositionConstraintsMultithreadThreshold);
+            _contactSolver.Reset(ref subStep, ContactCount, _contacts, Positions, Velocities,
+                Locks, _contactManager.VelocityConstraintsMultithreadThreshold, _contactManager.PositionConstraintsMultithreadThreshold);
 
             // Solve position constraints.
             for (int i = 0; i < subStep.PositionIterations; ++i)
@@ -478,10 +478,10 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             // Leap of faith to new safe state.
-            Bodies[toiIndexA]._sweep.C0 = _positions[toiIndexA].C;
-            Bodies[toiIndexA]._sweep.A0 = _positions[toiIndexA].A;
-            Bodies[toiIndexB]._sweep.C0 = _positions[toiIndexB].C;
-            Bodies[toiIndexB]._sweep.A0 = _positions[toiIndexB].A;
+            Bodies[toiIndexA]._sweep.C0 = Positions[toiIndexA].C;
+            Bodies[toiIndexA]._sweep.A0 = Positions[toiIndexA].A;
+            Bodies[toiIndexB]._sweep.C0 = Positions[toiIndexB].C;
+            Bodies[toiIndexB]._sweep.A0 = Positions[toiIndexB].A;
 
             // No warm starting is needed for TOI events because warm
             // starting impulses were applied in the discrete solver.
@@ -501,10 +501,10 @@ namespace Alis.Core.Physic.Dynamics
             // Integrate positions.
             for (int i = 0; i < BodyCount; ++i)
             {
-                Vector2F c = _positions[i].C;
-                float a = _positions[i].A;
-                Vector2F v = _velocities[i].v;
-                float w = _velocities[i].w;
+                Vector2F c = Positions[i].C;
+                float a = Positions[i].A;
+                Vector2F v = Velocities[i].v;
+                float w = Velocities[i].w;
 
                 // Check for large velocities
                 Vector2F translation = h * v;
@@ -525,10 +525,10 @@ namespace Alis.Core.Physic.Dynamics
                 c += h * v;
                 a += h * w;
 
-                _positions[i].C = c;
-                _positions[i].A = a;
-                _velocities[i].v = v;
-                _velocities[i].w = w;
+                Positions[i].C = c;
+                Positions[i].A = a;
+                Velocities[i].v = v;
+                Velocities[i].w = w;
 
                 // Sync bodies
                 Body body = Bodies[i];
