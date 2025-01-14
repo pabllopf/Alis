@@ -532,7 +532,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             Debug.Assert((ShapeType.Unknown < type2) && (type2 < ShapeType.TypeCount));
 
             Contact c = null;
-            ContactListHead contactPoolList = contactManager._contactPoolList;
+            ContactListHead contactPoolList = contactManager.ContactPoolList;
             if (contactPoolList.Next != contactPoolList)
             {
                 // get first item in the pool.

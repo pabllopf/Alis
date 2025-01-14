@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         ///     The
         /// </summary>
-        public float i;
+        public float I;
 
         /// <summary>
         ///     Gets the value of the one
@@ -62,7 +62,7 @@ namespace Alis.Core.Physic.Common
         /// </summary>
         public float Phase
         {
-            get => (float) Math.Atan2(i, R);
+            get => (float) Math.Atan2(I, R);
             set
             {
                 if (Math.Abs(value) < float.Epsilon)
@@ -72,7 +72,7 @@ namespace Alis.Core.Physic.Common
                 }
 
                 R = (float) Math.Cos(value);
-                i = (float) Math.Sin(value);
+                I = (float) Math.Sin(value);
             }
         }
 
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Common
         public Complex(float real, float imaginary)
         {
             R = real;
-            i = imaginary;
+            I = imaginary;
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace Alis.Core.Physic.Common
         /// </summary>
         public void Conjugate()
         {
-            i = -i;
+            I = -I;
         }
 
         /// <summary>
@@ -124,14 +124,14 @@ namespace Alis.Core.Physic.Common
         public void Negate()
         {
             R = -R;
-            i = -i;
+            I = -I;
         }
 
         /// <summary>
         ///     Magnitudes the squared
         /// </summary>
         /// <returns>The float</returns>
-        public float MagnitudeSquared() => R * R + i * i;
+        public float MagnitudeSquared() => R * R + I * I;
 
         /// <summary>
         ///     Normalizes this instance
@@ -140,14 +140,14 @@ namespace Alis.Core.Physic.Common
         {
             float mag = Magnitude;
             R = R / mag;
-            i = i / mag;
+            I = I / mag;
         }
 
         /// <summary>
         ///     Returns the vector 2
         /// </summary>
         /// <returns>The vector</returns>
-        public Vector2F ToVector2() => new Vector2F(R, i);
+        public Vector2F ToVector2() => new Vector2F(R, I);
 
         /// <summary>
         ///     Multiplies the left
@@ -155,8 +155,8 @@ namespace Alis.Core.Physic.Common
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
         /// <returns>The complex</returns>
-        public static Complex Multiply(ref Complex left, ref Complex right) => new Complex(left.R * right.R - left.i * right.i,
-            left.i * right.R + left.R * right.i);
+        public static Complex Multiply(ref Complex left, ref Complex right) => new Complex(left.R * right.R - left.I * right.I,
+            left.I * right.R + left.R * right.I);
 
         /// <summary>
         ///     Divides the left
@@ -164,8 +164,8 @@ namespace Alis.Core.Physic.Common
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
         /// <returns>The complex</returns>
-        public static Complex Divide(ref Complex left, ref Complex right) => new Complex(right.R * left.R + right.i * left.i,
-            right.R * left.i - right.i * left.R);
+        public static Complex Divide(ref Complex left, ref Complex right) => new Complex(right.R * left.R + right.I * left.I,
+            right.R * left.I - right.I * left.R);
 
         /// <summary>
         ///     Divides the left
@@ -175,8 +175,8 @@ namespace Alis.Core.Physic.Common
         /// <param name="result">The result</param>
         public static void Divide(ref Complex left, ref Complex right, out Complex result)
         {
-            result = new Complex(right.R * left.R + right.i * left.i,
-                right.R * left.i - right.i * left.R);
+            result = new Complex(right.R * left.R + right.I * left.I,
+                right.R * left.I - right.I * left.R);
         }
 
         /// <summary>
@@ -185,8 +185,8 @@ namespace Alis.Core.Physic.Common
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
         /// <returns>The vector</returns>
-        public static Vector2F Multiply(ref Vector2F left, ref Complex right) => new Vector2F(left.X * right.R - left.Y * right.i,
-            left.Y * right.R + left.X * right.i);
+        public static Vector2F Multiply(ref Vector2F left, ref Complex right) => new Vector2F(left.X * right.R - left.Y * right.I,
+            left.Y * right.R + left.X * right.I);
 
         /// <summary>
         ///     Multiplies the left
@@ -196,8 +196,8 @@ namespace Alis.Core.Physic.Common
         /// <param name="result">The result</param>
         public static void Multiply(ref Vector2F left, ref Complex right, out Vector2F result)
         {
-            result = new Vector2F(left.X * right.R - left.Y * right.i,
-                left.Y * right.R + left.X * right.i);
+            result = new Vector2F(left.X * right.R - left.Y * right.I,
+                left.Y * right.R + left.X * right.I);
         }
 
         /// <summary>
@@ -206,8 +206,8 @@ namespace Alis.Core.Physic.Common
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
         /// <returns>The vector</returns>
-        public static Vector2F Multiply(Vector2F left, ref Complex right) => new Vector2F(left.X * right.R - left.Y * right.i,
-            left.Y * right.R + left.X * right.i);
+        public static Vector2F Multiply(Vector2F left, ref Complex right) => new Vector2F(left.X * right.R - left.Y * right.I,
+            left.Y * right.R + left.X * right.I);
 
         /// <summary>
         ///     Divides the left
@@ -215,8 +215,8 @@ namespace Alis.Core.Physic.Common
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
         /// <returns>The vector</returns>
-        public static Vector2F Divide(ref Vector2F left, ref Complex right) => new Vector2F(left.X * right.R + left.Y * right.i,
-            left.Y * right.R - left.X * right.i);
+        public static Vector2F Divide(ref Vector2F left, ref Complex right) => new Vector2F(left.X * right.R + left.Y * right.I,
+            left.Y * right.R - left.X * right.I);
 
         /// <summary>
         ///     Divides the left
@@ -224,8 +224,8 @@ namespace Alis.Core.Physic.Common
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
         /// <returns>The vector</returns>
-        public static Vector2F Divide(Vector2F left, ref Complex right) => new Vector2F(left.X * right.R + left.Y * right.i,
-            left.Y * right.R - left.X * right.i);
+        public static Vector2F Divide(Vector2F left, ref Complex right) => new Vector2F(left.X * right.R + left.Y * right.I,
+            left.Y * right.R - left.X * right.I);
 
         /// <summary>
         ///     Divides the left
@@ -235,8 +235,8 @@ namespace Alis.Core.Physic.Common
         /// <param name="result">The result</param>
         public static void Divide(Vector2F left, ref Complex right, out Vector2F result)
         {
-            result = new Vector2F(left.X * right.R + left.Y * right.i,
-                left.Y * right.R - left.X * right.i);
+            result = new Vector2F(left.X * right.R + left.Y * right.I,
+                left.Y * right.R - left.X * right.I);
         }
 
         /// <summary>
@@ -244,14 +244,14 @@ namespace Alis.Core.Physic.Common
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The complex</returns>
-        public static Complex Conjugate(ref Complex value) => new Complex(value.R, -value.i);
+        public static Complex Conjugate(ref Complex value) => new Complex(value.R, -value.I);
 
         /// <summary>
         ///     Negates the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The complex</returns>
-        public static Complex Negate(ref Complex value) => new Complex(-value.R, -value.i);
+        public static Complex Negate(ref Complex value) => new Complex(-value.R, -value.I);
 
         /// <summary>
         ///     Normalizes the value
@@ -261,13 +261,13 @@ namespace Alis.Core.Physic.Common
         public static Complex Normalize(ref Complex value)
         {
             float mag = value.Magnitude;
-            return new Complex(value.R / mag, -value.i / mag);
+            return new Complex(value.R / mag, -value.I / mag);
         }
 
         /// <summary>
         ///     Returns the string
         /// </summary>
         /// <returns>The string</returns>
-        public override string ToString() => string.Format("{{R: {0} i: {1} Phase: {2} Magnitude: {3}}}", R, i, Phase, Magnitude);
+        public override string ToString() => string.Format("{{R: {0} i: {1} Phase: {2} Magnitude: {3}}}", R, I, Phase, Magnitude);
     }
 }

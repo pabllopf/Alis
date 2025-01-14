@@ -90,8 +90,8 @@ namespace Alis.Core.Physic.Common
         public static Vector2F Multiply(ref Vector2F left, ref Transform right) =>
             // Opt: var result = Complex.Multiply(left, right.q) + right.p;
             new Vector2F(
-                left.X * right.q.R - left.Y * right.q.i + right.p.X,
-                left.Y * right.q.R + left.X * right.q.i + right.p.Y);
+                left.X * right.q.R - left.Y * right.q.I + right.p.X,
+                left.Y * right.q.R + left.X * right.q.I + right.p.Y);
 
         /// <summary>
         ///     Divides the left
@@ -113,8 +113,8 @@ namespace Alis.Core.Physic.Common
             float px = left.X - right.p.X;
             float py = left.Y - right.p.Y;
             return new Vector2F(
-                px * right.q.R + py * right.q.i,
-                py * right.q.R - px * right.q.i);
+                px * right.q.R + py * right.q.I,
+                py * right.q.R - px * right.q.I);
         }
 
         /// <summary>
@@ -129,8 +129,8 @@ namespace Alis.Core.Physic.Common
             float px = left.X - right.p.X;
             float py = left.Y - right.p.Y;
             result = new Vector2F(
-                px * right.q.R + py * right.q.i,
-                py * right.q.R - px * right.q.i);
+                px * right.q.R + py * right.q.I,
+                py * right.q.R - px * right.q.I);
         }
 
         /// <summary>

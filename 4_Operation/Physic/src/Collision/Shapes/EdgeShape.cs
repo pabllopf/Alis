@@ -237,11 +237,11 @@ namespace Alis.Core.Physic.Collision.Shapes
             aabb = new Aabb();
 
             // OPT: Vector2F v1 = Transform.Multiply(ref _vertex1, ref transform);
-            float v1X = Vertex11.X * transform.q.R - Vertex11.Y * transform.q.i + transform.p.X;
-            float v1Y = Vertex11.Y * transform.q.R + Vertex11.X * transform.q.i + transform.p.Y;
+            float v1X = Vertex11.X * transform.q.R - Vertex11.Y * transform.q.I + transform.p.X;
+            float v1Y = Vertex11.Y * transform.q.R + Vertex11.X * transform.q.I + transform.p.Y;
             // OPT: Vector2F v2 = Transform.Multiply(ref _vertex2, ref transform);
-            float v2X = Vertex22.X * transform.q.R - Vertex22.Y * transform.q.i + transform.p.X;
-            float v2Y = Vertex22.Y * transform.q.R + Vertex22.X * transform.q.i + transform.p.Y;
+            float v2X = Vertex22.X * transform.q.R - Vertex22.Y * transform.q.I + transform.p.X;
+            float v2Y = Vertex22.Y * transform.q.R + Vertex22.X * transform.q.I + transform.p.Y;
 
             // OPT: aabb.LowerBound = Vector2F.Min(v1, v2);
             // OPT: aabb.UpperBound = Vector2F.Max(v1, v2);

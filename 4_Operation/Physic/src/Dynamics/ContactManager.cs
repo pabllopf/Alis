@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The contact pool list
         /// </summary>
-        internal readonly ContactListHead _contactPoolList;
+        internal readonly ContactListHead ContactPoolList;
 
         /// <summary>
         ///     The broad phase
@@ -102,7 +102,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             ContactList = new ContactListHead();
             ContactCount = 0;
-            _contactPoolList = new ContactListHead();
+            ContactPoolList = new ContactListHead();
 
             BroadPhase = broadPhase;
             OnBroadphaseCollision += AddPair;
@@ -362,8 +362,8 @@ namespace Alis.Core.Physic.Dynamics
             contact.Destroy();
 
             // Insert into the pool.
-            contact.Next = _contactPoolList.Next;
-            _contactPoolList.Next = contact;
+            contact.Next = ContactPoolList.Next;
+            ContactPoolList.Next = contact;
         }
 
         /// <summary>

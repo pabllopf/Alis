@@ -163,8 +163,8 @@ namespace Alis.Core.Physic.Collision.Shapes
         public override void ComputeAabb(out Aabb aabb, ref Transform transform, int childIndex)
         {
             // OPT: Vector2F p = transform.p + Complex.Multiply(ref _position, ref transform.q);
-            float pX = PositionInternal.X * transform.q.R - PositionInternal.Y * transform.q.i + transform.p.X;
-            float pY = PositionInternal.Y * transform.q.R + PositionInternal.X * transform.q.i + transform.p.Y;
+            float pX = PositionInternal.X * transform.q.R - PositionInternal.Y * transform.q.I + transform.p.X;
+            float pY = PositionInternal.Y * transform.q.R + PositionInternal.X * transform.q.I + transform.p.Y;
 
             // OPT: aabb.LowerBound = new Vector2F(p.X - Radius, p.Y - Radius);
             // OPT: aabb.UpperBound = new Vector2F(p.X + Radius, p.Y + Radius);
