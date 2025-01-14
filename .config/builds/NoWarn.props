@@ -28,7 +28,7 @@
         <NoWarn>$(NoWarn);CA1816</NoWarn>
         
         <!-- :CA1401 roslyn: P/Invoke method 'InternalVersion' should not be visible -->
-        <NoWarn>$(NoWarn);:CA1401</NoWarn>
+        <NoWarn>$(NoWarn);CA1401</NoWarn>
         
         <!-- Non-constant fields should not be visible -->
         <NoWarn>$(NoWarn);CA2211</NoWarn>
@@ -62,6 +62,25 @@
         
         <!-- CA1861 roslyn -->
         <NoWarn>$(NoWarn);CA1861</NoWarn>
-        
+
+        <NoWarn>$(NoWarn);CA1854</NoWarn>
+
+        <NoWarn>$(NoWarn);CA1825</NoWarn>
+
+        <NoWarn>$(NoWarn);CA2101</NoWarn>
+
+        <NoWarn>$(NoWarn);CA1511</NoWarn>
+
+        <NoWarn>$(NoWarn);CA1847</NoWarn>
+
+        <NoWarn>$(NoWarn);CA1846</NoWarn>
+
+        <NoWarn>$(NoWarn);CA1864</NoWarn>
+
+        <NoWarn>$(NoWarn);CA1850</NoWarn>
+
+        <NoWarn>$(NoWarn);CA1868</NoWarn>
+
+        <NoWarn>$(NoWarn);CA2249</NoWarn>
     </PropertyGroup>
 </Project>
