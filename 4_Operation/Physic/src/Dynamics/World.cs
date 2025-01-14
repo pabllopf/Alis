@@ -975,18 +975,18 @@ namespace Alis.Core.Physic.Dynamics
                 throw new ArgumentNullException("joint");
             }
 
-            if (joint._world == this)
+            if (joint.WorldInternal == this)
             {
                 throw new ArgumentException("You are adding the same joint more than once.", "joint");
             }
 
-            if (joint._world != null)
+            if (joint.WorldInternal != null)
             {
                 throw new ArgumentException("joint belongs to another world.", "joint");
             }
 
             // Connect to the world list.
-            joint._world = this;
+            joint.WorldInternal = this;
             JointList._list.Add(joint);
             JointList._generationStamp++;
 
@@ -1074,7 +1074,7 @@ namespace Alis.Core.Physic.Dynamics
             bool collideConnected = joint.CollideConnected;
 
             // Remove from the world list.
-            joint._world = null;
+            joint.WorldInternal = null;
             JointList._list.Remove(joint);
             JointList._generationStamp++;
 
