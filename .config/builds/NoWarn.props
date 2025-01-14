@@ -82,5 +82,7 @@
         <NoWarn>$(NoWarn);CA1868</NoWarn>
 
         <NoWarn>$(NoWarn);CA2249</NoWarn>
+        
+        <NoWarn>$(NoWarn);CA1859</NoWarn>
     </PropertyGroup>
 </Project>
