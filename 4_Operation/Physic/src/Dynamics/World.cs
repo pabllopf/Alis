@@ -987,8 +987,8 @@ namespace Alis.Core.Physic.Dynamics
 
             // Connect to the world list.
             joint.WorldInternal = this;
-            JointList._list.Add(joint);
-            JointList._generationStamp++;
+            JointList.List.Add(joint);
+            JointList.GenerationStamp++;
 
             // Connect to the bodies' doubly linked lists.
             joint.EdgeA.Joint = joint;
@@ -1075,8 +1075,8 @@ namespace Alis.Core.Physic.Dynamics
 
             // Remove from the world list.
             joint.WorldInternal = null;
-            JointList._list.Remove(joint);
-            JointList._generationStamp++;
+            JointList.List.Remove(joint);
+            JointList.GenerationStamp++;
 
             // Disconnect from island graph.
             Body bodyA = joint.BodyA;

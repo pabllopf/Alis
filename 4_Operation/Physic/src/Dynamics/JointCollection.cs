@@ -46,7 +46,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The joint
         /// </summary>
-        internal readonly List<Joint> _list = new List<Joint>(32);
+        internal readonly List<Joint> List = new List<Joint>(32);
 
         /// <summary>
         ///     The world
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The generation stamp
         /// </summary>
-        internal int _generationStamp = 0;
+        internal int GenerationStamp = 0;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="JointCollection" /> class
@@ -71,7 +71,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Gets the enumerator
         /// </summary>
         /// <returns>An enumerator of joint</returns>
-        IEnumerator<Joint> IEnumerable<Joint>.GetEnumerator() => new JointEnumerator(this, _list);
+        IEnumerator<Joint> IEnumerable<Joint>.GetEnumerator() => new JointEnumerator(this, List);
 
         #endregion IEnumerable<Joint>
 
@@ -82,7 +82,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Gets the enumerator
         /// </summary>
         /// <returns>The enumerator</returns>
-        IEnumerator IEnumerable.GetEnumerator() => new JointEnumerator(this, _list);
+        IEnumerator IEnumerable.GetEnumerator() => new JointEnumerator(this, List);
 
         #endregion IEnumerable
 
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Gets the enumerator
         /// </summary>
         /// <returns>The joint enumerator</returns>
-        public JointEnumerator GetEnumerator() => new JointEnumerator(this, _list);
+        public JointEnumerator GetEnumerator() => new JointEnumerator(this, List);
 
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 _collection = collection;
                 _list = list;
-                _generationStamp = collection._generationStamp;
+                _generationStamp = collection.GenerationStamp;
                 i = -1;
             }
 
@@ -138,7 +138,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 get
                 {
-                    if (_generationStamp == _collection._generationStamp)
+                    if (_generationStamp == _collection.GenerationStamp)
                     {
                         return _list[i];
                     }
@@ -156,7 +156,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 get
                 {
-                    if (_generationStamp == _collection._generationStamp)
+                    if (_generationStamp == _collection.GenerationStamp)
                     {
                         return _list[i];
                     }
@@ -176,7 +176,7 @@ namespace Alis.Core.Physic.Dynamics
             /// <returns>The bool</returns>
             public bool MoveNext()
             {
-                if (_generationStamp != _collection._generationStamp)
+                if (_generationStamp != _collection.GenerationStamp)
                 {
                     throw new InvalidOperationException("Collection was modified.");
                 }
@@ -192,7 +192,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 get
                 {
-                    if (_generationStamp == _collection._generationStamp)
+                    if (_generationStamp == _collection.GenerationStamp)
                     {
                         return _list[i];
                     }
@@ -230,7 +230,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public Joint this[int index]
         {
-            get => _list[index];
+            get => List[index];
             set => throw new NotSupportedException();
         }
 
@@ -239,7 +239,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="item">The item</param>
         /// <returns>The int</returns>
-        public int IndexOf(Joint item) => _list.IndexOf(item);
+        public int IndexOf(Joint item) => List.IndexOf(item);
 
         /// <summary>
         ///     Inserts the index
@@ -275,7 +275,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Gets the value of the count
         /// </summary>
-        public int Count => _list.Count;
+        public int Count => List.Count;
 
         /// <summary>
         ///     Adds the item
@@ -308,7 +308,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="item">The item</param>
         /// <returns>The bool</returns>
-        public bool Contains(Joint item) => _list.Contains(item);
+        public bool Contains(Joint item) => List.Contains(item);
 
         /// <summary>
         ///     Copies the to using the specified array
@@ -317,7 +317,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="arrayIndex">The array index</param>
         public void CopyTo(Joint[] array, int arrayIndex)
         {
-            _list.CopyTo(array, arrayIndex);
+            List.CopyTo(array, arrayIndex);
         }
 
         #endregion ICollection<Joint>
