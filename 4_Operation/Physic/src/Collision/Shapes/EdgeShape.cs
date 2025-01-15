@@ -46,12 +46,12 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>
         ///     Edge start vertex
         /// </summary>
-        internal Vector2F _vertex1;
+        internal Vector2F Vertex11;
 
         /// <summary>
         ///     Edge end vertex
         /// </summary>
-        internal Vector2F _vertex2;
+        internal Vector2F Vertex22;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="EdgeShape" /> class
@@ -106,10 +106,10 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// </summary>
         public Vector2F Vertex1
         {
-            get => _vertex1;
+            get => Vertex11;
             set
             {
-                _vertex1 = value;
+                Vertex11 = value;
                 ComputeProperties();
             }
         }
@@ -119,10 +119,10 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// </summary>
         public Vector2F Vertex2
         {
-            get => _vertex2;
+            get => Vertex22;
             set
             {
-                _vertex2 = value;
+                Vertex22 = value;
                 ComputeProperties();
             }
         }
@@ -134,8 +134,8 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="end">The end.</param>
         public void Set(Vector2F start, Vector2F end)
         {
-            _vertex1 = start;
-            _vertex2 = end;
+            Vertex11 = start;
+            Vertex22 = end;
             HasVertex0 = false;
             HasVertex3 = false;
 
@@ -172,8 +172,8 @@ namespace Alis.Core.Physic.Collision.Shapes
             Vector2F p2 = Complex.Divide(input.Point2 - transform.p, ref transform.q);
             Vector2F d = p2 - p1;
 
-            Vector2F v1 = _vertex1;
-            Vector2F v2 = _vertex2;
+            Vector2F v1 = Vertex11;
+            Vector2F v2 = Vertex22;
             Vector2F e = v2 - v1;
             Vector2F normal = new Vector2F(e.Y, -e.X);
             normal.Normalize();
@@ -237,11 +237,11 @@ namespace Alis.Core.Physic.Collision.Shapes
             aabb = new AABB();
 
             // OPT: Vector2F v1 = Transform.Multiply(ref _vertex1, ref transform);
-            float v1X = _vertex1.X * transform.q.R - _vertex1.Y * transform.q.i + transform.p.X;
-            float v1Y = _vertex1.Y * transform.q.R + _vertex1.X * transform.q.i + transform.p.Y;
+            float v1X = Vertex11.X * transform.q.R - Vertex11.Y * transform.q.i + transform.p.X;
+            float v1Y = Vertex11.Y * transform.q.R + Vertex11.X * transform.q.i + transform.p.Y;
             // OPT: Vector2F v2 = Transform.Multiply(ref _vertex2, ref transform);
-            float v2X = _vertex2.X * transform.q.R - _vertex2.Y * transform.q.i + transform.p.X;
-            float v2Y = _vertex2.Y * transform.q.R + _vertex2.X * transform.q.i + transform.p.Y;
+            float v2X = Vertex22.X * transform.q.R - Vertex22.Y * transform.q.i + transform.p.X;
+            float v2Y = Vertex22.Y * transform.q.R + Vertex22.X * transform.q.i + transform.p.Y;
 
             // OPT: aabb.LowerBound = Vector2F.Min(v1, v2);
             // OPT: aabb.UpperBound = Vector2F.Max(v1, v2);
@@ -281,7 +281,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// </summary>
         protected override void ComputeProperties()
         {
-            MassData.Centroid = 0.5f * (_vertex1 + _vertex2);
+            MassData.Centroid = 0.5f * (Vertex11 + Vertex22);
         }
 
         /// <summary>
@@ -323,8 +323,8 @@ namespace Alis.Core.Physic.Collision.Shapes
             clone.HasVertex0 = HasVertex0;
             clone.HasVertex3 = HasVertex3;
             clone.Vertex0 = Vertex0;
-            clone._vertex1 = _vertex1;
-            clone._vertex2 = _vertex2;
+            clone.Vertex11 = Vertex11;
+            clone.Vertex22 = Vertex22;
             clone.Vertex3 = Vertex3;
             clone.MassData = MassData;
             return clone;

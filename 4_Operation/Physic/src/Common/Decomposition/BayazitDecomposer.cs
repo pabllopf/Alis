@@ -275,9 +275,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                     continue; // ignore incident edges
                 }
 
-                Vector2F intersectionPoint;
-
-                if (LineTools.LineIntersect(At(i, vertices), At(j, vertices), At(k, vertices), At(k + 1, vertices), out intersectionPoint))
+                if (LineTools.LineIntersect(At(i, vertices), At(j, vertices), At(k, vertices), At(k + 1, vertices), out Vector2F _))
                 {
                     return false;
                 }
