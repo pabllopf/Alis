@@ -143,7 +143,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Debug.Assert(worldAnchor.IsValid());
 
             _worldAnchor = worldAnchor;
-            LocalAnchorA = Transform.Divide(ref worldAnchor, ref BodyA._xf);
+            LocalAnchorA = Transform.Divide(ref worldAnchor, ref BodyA.Xf);
         }
 
         /// <summary>
@@ -234,8 +234,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
         {
-            _indexA = BodyA.IslandIndex;
-            _localCenterA = BodyA._sweep.LocalCenter;
+            _indexA = BodyA.GetIslandIndex;
+            _localCenterA = BodyA.Sweep.LocalCenter;
             _invMassA = BodyA.InvMass;
             invIa = BodyA.InvI;
 

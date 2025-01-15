@@ -207,16 +207,16 @@ namespace Alis.Core.Physic.Dynamics
             {
                 Body b = Bodies[i];
 
-                Vector2F c = b._sweep.C;
-                float a = b._sweep.A;
-                Vector2F v = b._linearVelocity;
+                Vector2F c = b.Sweep.C;
+                float a = b.Sweep.A;
+                Vector2F v = b.LinearVelocity;
                 float w = b.AngularVelocity;
 
                 // Store positions for continuous collision.
-                b._sweep.C0 = b._sweep.C;
-                b._sweep.A0 = b._sweep.A;
+                b.Sweep.C0 = b.Sweep.C;
+                b.Sweep.A0 = b.Sweep.A;
 
-                if (b.BodyType == BodyType.Dynamic)
+                if (b.GetBodyType == BodyType.Dynamic)
                 {
                     // Integrate velocities.
 
@@ -230,7 +230,7 @@ namespace Alis.Core.Physic.Dynamics
                         v += h * (gravity + b.InvMass * b.Force);
                     }
 
-                    w += h * b.InvI * b._torque;
+                    w += h * b.InvI * b.Torque;
 
                     // Apply damping.
                     // ODE: dv/dt + c * v = 0
@@ -398,9 +398,9 @@ namespace Alis.Core.Physic.Dynamics
             for (int i = 0; i < BodyCount; ++i)
             {
                 Body body = Bodies[i];
-                body._sweep.C = Positions[i].C;
-                body._sweep.A = Positions[i].A;
-                body._linearVelocity = Velocities[i].V;
+                body.Sweep.C = Positions[i].C;
+                body.Sweep.A = Positions[i].A;
+                body.LinearVelocity = Velocities[i].V;
                 body.AngularVelocity = Velocities[i].W;
                 body.SynchronizeTransform();
             }
@@ -415,20 +415,20 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     Body b = Bodies[i];
 
-                    if (b.BodyType == BodyType.Static)
+                    if (b.GetBodyType == BodyType.Static)
                     {
                         continue;
                     }
 
-                    if (!b.SleepingAllowed || b.AngularVelocity * b.AngularVelocity > AngTolSqr || Vector2F.Dot(b._linearVelocity, b._linearVelocity) > LinTolSqr)
+                    if (!b.SleepingAllowed || b.AngularVelocity * b.AngularVelocity > AngTolSqr || Vector2F.Dot(b.LinearVelocity, b.LinearVelocity) > LinTolSqr)
                     {
-                        b._sleepTime = 0.0f;
+                        b.SleepTime = 0.0f;
                         minSleepTime = 0.0f;
                     }
                     else
                     {
-                        b._sleepTime += h;
-                        minSleepTime = Math.Min(minSleepTime, b._sleepTime);
+                        b.SleepTime += h;
+                        minSleepTime = Math.Min(minSleepTime, b.SleepTime);
                     }
                 }
 
@@ -458,9 +458,9 @@ namespace Alis.Core.Physic.Dynamics
             for (int i = 0; i < BodyCount; ++i)
             {
                 Body b = Bodies[i];
-                Positions[i].C = b._sweep.C;
-                Positions[i].A = b._sweep.A;
-                Velocities[i].V = b._linearVelocity;
+                Positions[i].C = b.Sweep.C;
+                Positions[i].A = b.Sweep.A;
+                Velocities[i].V = b.LinearVelocity;
                 Velocities[i].W = b.AngularVelocity;
             }
 
@@ -478,10 +478,10 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             // Leap of faith to new safe state.
-            Bodies[toiIndexA]._sweep.C0 = Positions[toiIndexA].C;
-            Bodies[toiIndexA]._sweep.A0 = Positions[toiIndexA].A;
-            Bodies[toiIndexB]._sweep.C0 = Positions[toiIndexB].C;
-            Bodies[toiIndexB]._sweep.A0 = Positions[toiIndexB].A;
+            Bodies[toiIndexA].Sweep.C0 = Positions[toiIndexA].C;
+            Bodies[toiIndexA].Sweep.A0 = Positions[toiIndexA].A;
+            Bodies[toiIndexB].Sweep.C0 = Positions[toiIndexB].C;
+            Bodies[toiIndexB].Sweep.A0 = Positions[toiIndexB].A;
 
             // No warm starting is needed for TOI events because warm
             // starting impulses were applied in the discrete solver.
@@ -532,9 +532,9 @@ namespace Alis.Core.Physic.Dynamics
 
                 // Sync bodies
                 Body body = Bodies[i];
-                body._sweep.C = c;
-                body._sweep.A = a;
-                body._linearVelocity = v;
+                body.Sweep.C = c;
+                body.Sweep.A = a;
+                body.LinearVelocity = v;
                 body.AngularVelocity = w;
                 body.SynchronizeTransform();
             }
@@ -549,7 +549,7 @@ namespace Alis.Core.Physic.Dynamics
         public void Add(Body body)
         {
             Debug.Assert(BodyCount < BodyCapacity);
-            body.IslandIndex = BodyCount;
+            body.GetIslandIndex = BodyCount;
             Bodies[BodyCount++] = body;
         }
 

@@ -237,10 +237,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _bodyA = JointA.BodyB;
 
             // Get geometry of joint1
-            Transform xfA = _bodyA._xf;
-            float aA = _bodyA._sweep.A;
-            Transform xfC = _bodyC._xf;
-            float aC = _bodyC._sweep.A;
+            Transform xfA = _bodyA.Xf;
+            float aA = _bodyA.Sweep.A;
+            Transform xfC = _bodyC.Xf;
+            float aC = _bodyC.Sweep.A;
 
             if (_typeA == JointType.Revolute)
             {
@@ -269,10 +269,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _bodyB = JointB.BodyB;
 
             // Get geometry of joint2
-            Transform xfB = _bodyB._xf;
-            float aB = _bodyB._sweep.A;
-            Transform xfD = _bodyD._xf;
-            float aD = _bodyD._sweep.A;
+            Transform xfB = _bodyB.Xf;
+            float aB = _bodyB.Sweep.A;
+            Transform xfD = _bodyD.Xf;
+            float aD = _bodyD.Sweep.A;
 
             if (_typeB == JointType.Revolute)
             {
@@ -371,14 +371,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
         {
-            _indexA = _bodyA.IslandIndex;
-            _indexB = _bodyB.IslandIndex;
-            _indexC = _bodyC.IslandIndex;
-            _indexD = _bodyD.IslandIndex;
-            _lcA = _bodyA._sweep.LocalCenter;
-            _lcB = _bodyB._sweep.LocalCenter;
-            _lcC = _bodyC._sweep.LocalCenter;
-            _lcD = _bodyD._sweep.LocalCenter;
+            _indexA = _bodyA.GetIslandIndex;
+            _indexB = _bodyB.GetIslandIndex;
+            _indexC = _bodyC.GetIslandIndex;
+            _indexD = _bodyD.GetIslandIndex;
+            _lcA = _bodyA.Sweep.LocalCenter;
+            _lcB = _bodyB.Sweep.LocalCenter;
+            _lcC = _bodyC.Sweep.LocalCenter;
+            _lcD = _bodyD.Sweep.LocalCenter;
             _mA = _bodyA.InvMass;
             _mB = _bodyB.InvMass;
             _mC = _bodyC.InvMass;

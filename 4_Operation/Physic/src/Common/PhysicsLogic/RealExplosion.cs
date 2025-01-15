@@ -177,7 +177,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
             for (int i = 0; i < shapeCount; ++i)
             {
                 PolygonShape ps;
-                if (shapes[i].Shape is CircleShape cs)
+                if (shapes[i].GetShape is CircleShape cs)
                 {
                     // We create a "diamond" approximation of the circle
                     Vertices v = new Vertices();
@@ -193,12 +193,12 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                 }
                 else
                 {
-                    ps = shapes[i].Shape as PolygonShape;
+                    ps = shapes[i].GetShape as PolygonShape;
                 }
 
-                if ((shapes[i].Body.BodyType == BodyType.Dynamic) && (ps != null))
+                if ((shapes[i].GetBody.GetBodyType == BodyType.Dynamic) && (ps != null))
                 {
-                    Vector2F toCentroid = shapes[i].Body.GetWorldPoint(ps.MassData.Centroid) - pos;
+                    Vector2F toCentroid = shapes[i].GetBody.GetWorldPoint(ps.MassData.Centroid) - pos;
                     float angleToCentroid = (float) Math.Atan2(toCentroid.Y, toCentroid.X);
                     float min = float.MaxValue;
                     float max = float.MinValue;
@@ -207,7 +207,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
 
                     for (int j = 0; j < ps.Vertices.Count; ++j)
                     {
-                        Vector2F toVertex = shapes[i].Body.GetWorldPoint(ps.Vertices[j]) - pos;
+                        Vector2F toVertex = shapes[i].GetBody.GetWorldPoint(ps.Vertices[j]) - pos;
                         float newAngle = (float) Math.Atan2(toVertex.Y, toVertex.X);
                         float diff = newAngle - angleToCentroid;
 
@@ -280,7 +280,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                 bool hitClosest = false;
                 World.RayCast((f, p, n, fr) =>
                 {
-                    Body body = f.Body;
+                    Body body = f.GetBody;
 
                     if (!IsActiveOn(body))
                     {
@@ -293,9 +293,9 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                 }, p1, p2);
 
                 //draws radius points
-                if (hitClosest && (fixture.Body.BodyType == BodyType.Dynamic))
+                if (hitClosest && (fixture.GetBody.GetBodyType == BodyType.Dynamic))
                 {
-                    if (_data.Any() && (_data.Last().Body == fixture.Body) && !rayMissed)
+                    if (_data.Any() && (_data.Last().Body == fixture.GetBody) && !rayMissed)
                     {
                         int laPos = _data.Count - 1;
                         ShapeData la = _data[laPos];
@@ -306,7 +306,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                     {
                         // make new
                         ShapeData d;
-                        d.Body = fixture.Body;
+                        d.Body = fixture.GetBody;
                         d.Min = vals[i];
                         d.Max = vals[iplus];
                         _data.Add(d);
@@ -422,7 +422,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
             {
                 Fixture fix = containedShapes[i];
 
-                if (!IsActiveOn(fix.Body))
+                if (!IsActiveOn(fix.GetBody))
                 {
                     continue;
                 }
@@ -430,19 +430,19 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                 float impulse = MinRays * maxForce * 180.0f / Constant.Pi;
                 Vector2F hitPoint;
 
-                if (fix.Shape is CircleShape circShape)
+                if (fix.GetShape is CircleShape circShape)
                 {
-                    hitPoint = fix.Body.GetWorldPoint(circShape.Position);
+                    hitPoint = fix.GetBody.GetWorldPoint(circShape.Position);
                 }
                 else
                 {
-                    PolygonShape shape = fix.Shape as PolygonShape;
-                    hitPoint = fix.Body.GetWorldPoint(shape.MassData.Centroid);
+                    PolygonShape shape = fix.GetShape as PolygonShape;
+                    hitPoint = fix.GetBody.GetWorldPoint(shape.MassData.Centroid);
                 }
 
                 Vector2F vectImp = impulse * (hitPoint - pos);
 
-                fix.Body.ApplyLinearImpulse(ref vectImp, ref hitPoint);
+                fix.GetBody.ApplyLinearImpulse(ref vectImp, ref hitPoint);
 
                 if (!exploded.ContainsKey(fix))
                 {

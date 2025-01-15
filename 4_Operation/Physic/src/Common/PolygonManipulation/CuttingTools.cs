@@ -50,11 +50,11 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         /// <param name="second">The second collection of vertexes</param>
         public static void SplitShape(Fixture fixture, Vector2F entryPoint, Vector2F exitPoint, out Vertices first, out Vertices second)
         {
-            Vector2F localEntryPoint = fixture.Body.GetLocalPoint(ref entryPoint);
-            Vector2F localExitPoint = fixture.Body.GetLocalPoint(ref exitPoint);
+            Vector2F localEntryPoint = fixture.GetBody.GetLocalPoint(ref entryPoint);
+            Vector2F localExitPoint = fixture.GetBody.GetLocalPoint(ref exitPoint);
 
             //We can only cut polygons at the moment
-            if (!(fixture.Shape is PolygonShape shape))
+            if (!(fixture.GetShape is PolygonShape shape))
             {
                 first = new Vertices();
                 second = new Vertices();
@@ -217,12 +217,12 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             for (int i = 0; i < fixtures.Count; i++)
             {
                 // can't cut circles or edges yet !
-                if (fixtures[i].Shape.ShapeType != ShapeType.Polygon)
+                if (fixtures[i].GetShape.ShapeType != ShapeType.Polygon)
                 {
                     continue;
                 }
 
-                if (fixtures[i].Body.BodyType != BodyType.Static)
+                if (fixtures[i].GetBody.GetBodyType != BodyType.Static)
                 {
                     //Split the shape up into two shapes
                     SplitShape(fixtures[i], entryPoints[i], exitPoints[i], out Vertices first, out Vertices second);
@@ -230,23 +230,23 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                     //Delete the original shape and create two new. Retain the properties of the body.
                     if (first.CheckPolygon() == PolygonError.NoError)
                     {
-                        Body firstFixture = world.CreatePolygon(first, fixtures[i].Shape.GetDensity, fixtures[i].Body.Position);
-                        firstFixture.Rotation = fixtures[i].Body.Rotation;
-                        firstFixture.LinearVelocity = fixtures[i].Body.LinearVelocity;
-                        firstFixture.AngularVelocity = fixtures[i].Body.AngularVelocity;
-                        firstFixture.BodyType = BodyType.Dynamic;
+                        Body firstFixture = world.CreatePolygon(first, fixtures[i].GetShape.GetDensity, fixtures[i].GetBody.Position);
+                        firstFixture.Rotation = fixtures[i].GetBody.Rotation;
+                        firstFixture.GetLinearVelocity = fixtures[i].GetBody.GetLinearVelocity;
+                        firstFixture.AngularVelocity = fixtures[i].GetBody.AngularVelocity;
+                        firstFixture.GetBodyType = BodyType.Dynamic;
                     }
 
                     if (second.CheckPolygon() == PolygonError.NoError)
                     {
-                        Body secondFixture = world.CreatePolygon(second, fixtures[i].Shape.GetDensity, fixtures[i].Body.Position);
-                        secondFixture.Rotation = fixtures[i].Body.Rotation;
-                        secondFixture.LinearVelocity = fixtures[i].Body.LinearVelocity;
-                        secondFixture.AngularVelocity = fixtures[i].Body.AngularVelocity;
-                        secondFixture.BodyType = BodyType.Dynamic;
+                        Body secondFixture = world.CreatePolygon(second, fixtures[i].GetShape.GetDensity, fixtures[i].GetBody.Position);
+                        secondFixture.Rotation = fixtures[i].GetBody.Rotation;
+                        secondFixture.GetLinearVelocity = fixtures[i].GetBody.GetLinearVelocity;
+                        secondFixture.AngularVelocity = fixtures[i].GetBody.AngularVelocity;
+                        secondFixture.GetBodyType = BodyType.Dynamic;
                     }
 
-                    world.Remove(fixtures[i].Body);
+                    world.Remove(fixtures[i].GetBody);
                 }
             }
 

@@ -210,7 +210,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// </summary>
         public void ResetRestitution()
         {
-            Restitution = SettingEnv.MixRestitution(FixtureA.Restitution, FixtureB.Restitution);
+            Restitution = SettingEnv.MixRestitution(FixtureA.GetRestitution, FixtureB.GetRestitution);
         }
 
         /// <summary>
@@ -218,7 +218,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// </summary>
         public void ResetFriction()
         {
-            Friction = SettingEnv.MixFriction(FixtureA.Friction, FixtureB.Friction);
+            Friction = SettingEnv.MixFriction(FixtureA.GetFriction, FixtureB.GetFriction);
         }
 
         /// <summary>
@@ -226,12 +226,12 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// </summary>
         public void GetWorldManifold(out Vector2F normal, out FixedArray2<Vector2F> points)
         {
-            Body bodyA = FixtureA.Body;
-            Body bodyB = FixtureB.Body;
-            Shape shapeA = FixtureA.Shape;
-            Shape shapeB = FixtureB.Shape;
+            Body bodyA = FixtureA.GetBody;
+            Body bodyB = FixtureB.GetBody;
+            Shape shapeA = FixtureA.GetShape;
+            Shape shapeB = FixtureB.GetShape;
 
-            ContactSolver.WorldManifold.Initialize(ref Manifold, ref bodyA._xf, shapeA.GetRadius, ref bodyB._xf, shapeB.GetRadius, out normal, out points);
+            ContactSolver.WorldManifold.Initialize(ref Manifold, ref bodyA.Xf, shapeA.GetRadius, ref bodyB.Xf, shapeB.GetRadius, out normal, out points);
         }
 
         /// <summary>
@@ -275,8 +275,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             //FPE: We only set the friction and restitution if we are not destroying the contact
             if ((FixtureA != null) && (FixtureB != null))
             {
-                Friction = SettingEnv.MixFriction(FixtureA.Friction, FixtureB.Friction);
-                Restitution = SettingEnv.MixRestitution(FixtureA.Restitution, FixtureB.Restitution);
+                Friction = SettingEnv.MixFriction(FixtureA.GetFriction, FixtureB.GetFriction);
+                Restitution = SettingEnv.MixRestitution(FixtureA.GetRestitution, FixtureB.GetRestitution);
             }
 
             TangentSpeed = 0;
@@ -289,8 +289,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <param name="contactManager">The contact manager.</param>
         internal void Update(ContactManager contactManager)
         {
-            Body bodyA = FixtureA.Body;
-            Body bodyB = FixtureB.Body;
+            Body bodyA = FixtureA.GetBody;
+            Body bodyB = FixtureB.GetBody;
 
             Manifold oldManifold = Manifold;
 
@@ -300,21 +300,21 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             bool touching;
             bool wasTouching = IsTouching;
 
-            bool sensor = FixtureA.IsSensor || FixtureB.IsSensor;
+            bool sensor = FixtureA.GetIsSensor || FixtureB.GetIsSensor;
 
             // Is this contact a sensor?
             if (sensor)
             {
-                Shape shapeA = FixtureA.Shape;
-                Shape shapeB = FixtureB.Shape;
-                touching = Collision.Collision.TestOverlap(shapeA, ChildIndexA, shapeB, ChildIndexB, ref bodyA._xf, ref bodyB._xf);
+                Shape shapeA = FixtureA.GetShape;
+                Shape shapeB = FixtureB.GetShape;
+                touching = Collision.Collision.TestOverlap(shapeA, ChildIndexA, shapeB, ChildIndexB, ref bodyA.Xf, ref bodyB.Xf);
 
                 // Sensors don't generate manifolds.
                 Manifold.PointCount = 0;
             }
             else
             {
-                Evaluate(ref Manifold, ref bodyA._xf, ref bodyB._xf);
+                Evaluate(ref Manifold, ref bodyA.Xf, ref bodyB.Xf);
                 touching = Manifold.PointCount > 0;
 
                 // Match old contact ids to new contact ids and copy the
@@ -381,7 +381,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     }
 
                     // Report the collision to both bodies:
-                    OnCollisionEventHandler onBodyCollisionHandlerA = bodyA.onCollisionEventHandler;
+                    OnCollisionEventHandler onBodyCollisionHandlerA = bodyA.OnCollisionEventHandler;
                     if (onBodyCollisionHandlerA != null)
                     {
                         foreach (Delegate @delegate in onBodyCollisionHandlerA.GetInvocationList())
@@ -393,7 +393,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                     // Reverse the order of the reported fixtures. The first fixture is always the one that the
                     // user subscribed to.
-                    OnCollisionEventHandler onBodyCollisionHandlerB = bodyB.onCollisionEventHandler;
+                    OnCollisionEventHandler onBodyCollisionHandlerB = bodyB.OnCollisionEventHandler;
                     if (onBodyCollisionHandlerB != null)
                     {
                         foreach (Delegate @delegate in onBodyCollisionHandlerB.GetInvocationList())
@@ -442,7 +442,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     }
 
                     //Report the separation to both bodies:
-                    OnSeparationEventHandler onBodySeparationHandlerA = bodyA.onSeparationEventHandler;
+                    OnSeparationEventHandler onBodySeparationHandlerA = bodyA.OnSeparationEventHandler;
                     if (onBodySeparationHandlerA != null)
                     {
                         onBodySeparationHandlerA(FixtureA, FixtureB, this);
@@ -450,7 +450,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                     //Reverse the order of the reported fixtures. The first fixture is always the one that the
                     //user subscribed to.
-                    OnSeparationEventHandler onBodySeparationHandlerB = bodyB.onSeparationEventHandler;
+                    OnSeparationEventHandler onBodySeparationHandlerB = bodyB.OnSeparationEventHandler;
                     if (onBodySeparationHandlerB != null)
                     {
                         onBodySeparationHandlerB(FixtureB, FixtureA, this);
@@ -487,29 +487,29 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             switch (_type)
             {
                 case ContactType.Polygon:
-                    Collision.Collision.CollidePolygons(ref manifold, (PolygonShape) FixtureA.Shape, ref transformA, (PolygonShape) FixtureB.Shape, ref transformB);
+                    Collision.Collision.CollidePolygons(ref manifold, (PolygonShape) FixtureA.GetShape, ref transformA, (PolygonShape) FixtureB.GetShape, ref transformB);
                     break;
                 case ContactType.PolygonAndCircle:
-                    Collision.Collision.CollidePolygonAndCircle(ref manifold, (PolygonShape) FixtureA.Shape, ref transformA, (CircleShape) FixtureB.Shape, ref transformB);
+                    Collision.Collision.CollidePolygonAndCircle(ref manifold, (PolygonShape) FixtureA.GetShape, ref transformA, (CircleShape) FixtureB.GetShape, ref transformB);
                     break;
                 case ContactType.EdgeAndCircle:
-                    Collision.Collision.CollideEdgeAndCircle(ref manifold, (EdgeShape) FixtureA.Shape, ref transformA, (CircleShape) FixtureB.Shape, ref transformB);
+                    Collision.Collision.CollideEdgeAndCircle(ref manifold, (EdgeShape) FixtureA.GetShape, ref transformA, (CircleShape) FixtureB.GetShape, ref transformB);
                     break;
                 case ContactType.EdgeAndPolygon:
-                    Collision.Collision.CollideEdgeAndPolygon(ref manifold, (EdgeShape) FixtureA.Shape, ref transformA, (PolygonShape) FixtureB.Shape, ref transformB);
+                    Collision.Collision.CollideEdgeAndPolygon(ref manifold, (EdgeShape) FixtureA.GetShape, ref transformA, (PolygonShape) FixtureB.GetShape, ref transformB);
                     break;
                 case ContactType.ChainAndCircle:
-                    ChainShape chain = (ChainShape) FixtureA.Shape;
+                    ChainShape chain = (ChainShape) FixtureA.GetShape;
                     chain.GetChildEdge(Edge, ChildIndexA);
-                    Collision.Collision.CollideEdgeAndCircle(ref manifold, Edge, ref transformA, (CircleShape) FixtureB.Shape, ref transformB);
+                    Collision.Collision.CollideEdgeAndCircle(ref manifold, Edge, ref transformA, (CircleShape) FixtureB.GetShape, ref transformB);
                     break;
                 case ContactType.ChainAndPolygon:
-                    ChainShape loop2 = (ChainShape) FixtureA.Shape;
+                    ChainShape loop2 = (ChainShape) FixtureA.GetShape;
                     loop2.GetChildEdge(Edge, ChildIndexA);
-                    Collision.Collision.CollideEdgeAndPolygon(ref manifold, Edge, ref transformA, (PolygonShape) FixtureB.Shape, ref transformB);
+                    Collision.Collision.CollideEdgeAndPolygon(ref manifold, Edge, ref transformA, (PolygonShape) FixtureB.GetShape, ref transformB);
                     break;
                 case ContactType.Circle:
-                    Collision.Collision.CollideCircles(ref manifold, (CircleShape) FixtureA.Shape, ref transformA, (CircleShape) FixtureB.Shape, ref transformB);
+                    Collision.Collision.CollideCircles(ref manifold, (CircleShape) FixtureA.GetShape, ref transformA, (CircleShape) FixtureB.GetShape, ref transformB);
                     break;
             }
         }
@@ -525,8 +525,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <returns>The </returns>
         internal static Contact Create(ContactManager contactManager, Fixture fixtureA, int indexA, Fixture fixtureB, int indexB)
         {
-            ShapeType type1 = fixtureA.Shape.ShapeType;
-            ShapeType type2 = fixtureB.Shape.ShapeType;
+            ShapeType type1 = fixtureA.GetShape.ShapeType;
+            ShapeType type2 = fixtureB.GetShape.ShapeType;
 
             Debug.Assert((ShapeType.Unknown < type1) && (type1 < ShapeType.TypeCount));
             Debug.Assert((ShapeType.Unknown < type2) && (type2 < ShapeType.TypeCount));
@@ -577,10 +577,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// </summary>
         internal void Destroy()
         {
-            if ((Manifold.PointCount > 0) && (FixtureA.IsSensor == false) && (FixtureB.IsSensor == false))
+            if ((Manifold.PointCount > 0) && (FixtureA.GetIsSensor == false) && (FixtureB.GetIsSensor == false))
             {
-                FixtureA.Body.Awake = true;
-                FixtureB.Body.Awake = true;
+                FixtureA.GetBody.Awake = true;
+                FixtureB.GetBody.Awake = true;
             }
 
             Reset(null, 0, null, 0);

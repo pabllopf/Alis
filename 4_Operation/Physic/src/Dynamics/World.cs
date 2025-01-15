@@ -194,8 +194,8 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public World()
         {
-            Island = new Island();
-            Enabled = true;
+            GetIsland = new Island();
+            GetEnabled = true;
             BodyList = new BodyCollection(this);
             JointList = new JointCollection(this);
             ControllerList = new ControllerCollection(this);
@@ -206,14 +206,14 @@ namespace Alis.Core.Physic.Dynamics
 
 
             ContactManager = new ContactManager(new DynamicTreeBroadPhase());
-            Gravity = new Vector2F(0f, -9.80665f);
+            GetGravity = new Vector2F(0f, -9.80665f);
         }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="World" /> class.
         /// </summary>
         /// <param name="gravity">The gravity.</param>
-        public World(Vector2F gravity) : this() => Gravity = gravity;
+        public World(Vector2F gravity) : this() => GetGravity = gravity;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="World" /> class.
@@ -271,12 +271,12 @@ namespace Alis.Core.Physic.Dynamics
         ///     Change the global gravity vector.
         /// </summary>
         /// <value>The gravity.</value>
-        public Vector2F Gravity
+        public Vector2F GetGravity
         {
             get => _gravity;
             set
             {
-                if (IsLocked)
+                if (GetIsLocked)
                 {
                     throw new InvalidOperationException("The World is locked.");
                 }
@@ -288,7 +288,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Is the world locked (in the middle of a time step).
         /// </summary>
-        public bool IsLocked { get; private set; }
+        public bool GetIsLocked { get; private set; }
 
         /// <summary>
         ///     Get the world contact list.
@@ -302,12 +302,12 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     If false, the whole simulation stops. It still processes added and removed geometries.
         /// </summary>
-        public bool Enabled { get; set; }
+        public bool GetEnabled { get; set; }
 
         /// <summary>
         ///     Gets the value of the island
         /// </summary>
-        public Island Island { get; }
+        public Island GetIsland { get; }
 
         /// <summary>
         ///     Solves the step
@@ -316,7 +316,7 @@ namespace Alis.Core.Physic.Dynamics
         private void Solve(ref TimeStep step)
         {
             // Size the island for the worst case.
-            Island.Reset(BodyList.Count,
+            GetIsland.Reset(BodyList.Count,
                 ContactManager.ContactCount,
                 JointList.Count,
                 ContactManager);
@@ -324,7 +324,7 @@ namespace Alis.Core.Physic.Dynamics
             // Clear all the island flags.
             foreach (Body b in BodyList)
             {
-                b._island = false;
+                b.Island = false;
             }
 
             for (Contact c = ContactManager.ContactList.Next; c != ContactManager.ContactList; c = c.Next)
@@ -344,11 +344,11 @@ namespace Alis.Core.Physic.Dynamics
                 _stack = new Body[Math.Max(_stack.Length * 2, stackSize)];
             }
 
-            for (int index = BodyList._list.Count - 1; index >= 0; index--)
+            for (int index = BodyList.List.Count - 1; index >= 0; index--)
             {
-                Body seed = BodyList._list[index];
+                Body seed = BodyList.List[index];
 
-                if (seed._island)
+                if (seed.Island)
                 {
                     continue;
                 }
@@ -359,17 +359,17 @@ namespace Alis.Core.Physic.Dynamics
                 }
 
                 // The seed can be dynamic or kinematic.
-                if (seed.BodyType == BodyType.Static)
+                if (seed.GetBodyType == BodyType.Static)
                 {
                     continue;
                 }
 
                 // Reset island and stack.
-                Island.Clear();
+                GetIsland.Clear();
                 int stackCount = 0;
                 _stack[stackCount++] = seed;
 
-                seed._island = true;
+                seed.Island = true;
 
                 // Perform a depth first search (DFS) on the constraint graph.
                 while (stackCount > 0)
@@ -377,14 +377,14 @@ namespace Alis.Core.Physic.Dynamics
                     // Grab the next body off the stack and add it to the island.
                     Body b = _stack[--stackCount];
                     Debug.Assert(b.Enabled);
-                    Island.Add(b);
+                    GetIsland.Add(b);
 
                     // Make sure the body is awake.
                     b.Awake = true;
 
                     // To keep islands as small as possible, we don't
                     // propagate islands across static bodies.
-                    if (b.BodyType == BodyType.Static)
+                    if (b.GetBodyType == BodyType.Static)
                     {
                         continue;
                     }
@@ -407,20 +407,20 @@ namespace Alis.Core.Physic.Dynamics
                         }
 
                         // Skip sensors.
-                        bool sensorA = contact.FixtureA.IsSensor;
-                        bool sensorB = contact.FixtureB.IsSensor;
+                        bool sensorA = contact.FixtureA.GetIsSensor;
+                        bool sensorB = contact.FixtureB.GetIsSensor;
                         if (sensorA || sensorB)
                         {
                             continue;
                         }
 
-                        Island.Add(contact);
+                        GetIsland.Add(contact);
                         contact.IslandFlag = true;
 
                         Body other = ce.Other;
 
                         // Was the other body already added to this island?
-                        if (other._island)
+                        if (other.Island)
                         {
                             continue;
                         }
@@ -428,7 +428,7 @@ namespace Alis.Core.Physic.Dynamics
                         Debug.Assert(stackCount < stackSize);
                         _stack[stackCount++] = other;
 
-                        other._island = true;
+                        other.Island = true;
                     }
 
                     // Search all joints connect to this body.
@@ -451,10 +451,10 @@ namespace Alis.Core.Physic.Dynamics
                                 continue;
                             }
 
-                            Island.Add(je.Joint);
+                            GetIsland.Add(je.Joint);
                             je.Joint.IslandFlag = true;
 
-                            if (other._island)
+                            if (other.Island)
                             {
                                 continue;
                             }
@@ -462,26 +462,26 @@ namespace Alis.Core.Physic.Dynamics
                             Debug.Assert(stackCount < stackSize);
                             _stack[stackCount++] = other;
 
-                            other._island = true;
+                            other.Island = true;
                         }
                         else
                         {
-                            Island.Add(je.Joint);
+                            GetIsland.Add(je.Joint);
                             je.Joint.IslandFlag = true;
                         }
                     }
                 }
 
-                Island.Solve(ref step, ref _gravity);
+                GetIsland.Solve(ref step, ref _gravity);
 
                 // Post solve cleanup.
-                for (int i = 0; i < Island.BodyCount; ++i)
+                for (int i = 0; i < GetIsland.BodyCount; ++i)
                 {
                     // Allow static bodies to participate in other islands.
-                    Body b = Island.Bodies[i];
-                    if (b.BodyType == BodyType.Static)
+                    Body b = GetIsland.Bodies[i];
+                    if (b.GetBodyType == BodyType.Static)
                     {
-                        b._island = false;
+                        b.Island = false;
                     }
                 }
             }
@@ -489,12 +489,12 @@ namespace Alis.Core.Physic.Dynamics
             foreach (Body b in BodyList)
             {
                 // If a body was not in an island then it did not move.
-                if (!b._island)
+                if (!b.Island)
                 {
                     continue;
                 }
 
-                if (b.BodyType == BodyType.Static)
+                if (b.GetBodyType == BodyType.Static)
                 {
                     continue;
                 }
@@ -514,14 +514,14 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="iterations">The iterations</param>
         private void SolveToi(ref TimeStep step, ref SolverIterations iterations)
         {
-            Island.Reset(2 * SettingEnv.MaxToiContacts, SettingEnv.MaxToiContacts, 0, ContactManager);
+            GetIsland.Reset(2 * SettingEnv.MaxToiContacts, SettingEnv.MaxToiContacts, 0, ContactManager);
 
             if (_stepComplete)
             {
-                for (int i = 0; i < BodyList._list.Count; i++)
+                for (int i = 0; i < BodyList.List.Count; i++)
                 {
-                    BodyList._list[i]._island = false;
-                    BodyList._list[i]._sweep.Alpha0 = 0.0f;
+                    BodyList.List[i].Island = false;
+                    BodyList.List[i].Sweep.Alpha0 = 0.0f;
                 }
 
                 for (Contact c = ContactManager.ContactList.Next; c != ContactManager.ContactList; c = c.Next)
@@ -568,16 +568,16 @@ namespace Alis.Core.Physic.Dynamics
                         Fixture fB = c.FixtureB;
 
                         // Is there a sensor?
-                        if (fA.IsSensor || fB.IsSensor)
+                        if (fA.GetIsSensor || fB.GetIsSensor)
                         {
                             continue;
                         }
 
-                        Body bA = fA.Body;
-                        Body bB = fB.Body;
+                        Body bA = fA.GetBody;
+                        Body bB = fB.GetBody;
 
-                        BodyType typeA = bA.BodyType;
-                        BodyType typeB = bB.BodyType;
+                        BodyType typeA = bA.GetBodyType;
+                        BodyType typeB = bB.GetBodyType;
                         Debug.Assert(typeA == BodyType.Dynamic || typeB == BodyType.Dynamic);
 
                         bool activeA = bA.Awake && (typeA != BodyType.Static);
@@ -589,8 +589,8 @@ namespace Alis.Core.Physic.Dynamics
                             continue;
                         }
 
-                        bool collideA = (bA.IsBullet || typeA != BodyType.Dynamic) && !bA.IgnoreCCD;
-                        bool collideB = (bB.IsBullet || typeB != BodyType.Dynamic) && !bB.IgnoreCCD;
+                        bool collideA = (bA.IsBullet || typeA != BodyType.Dynamic) && !bA.IgnoreCcd;
+                        bool collideB = (bB.IsBullet || typeB != BodyType.Dynamic) && !bB.IgnoreCcd;
 
                         // Are these two non-bullet dynamic bodies?
                         if ((collideA == false) && (collideB == false))
@@ -600,26 +600,26 @@ namespace Alis.Core.Physic.Dynamics
 
                         // Compute the TOI for this contact.
                         // Put the sweeps onto the same time interval.
-                        float alpha0 = bA._sweep.Alpha0;
+                        float alpha0 = bA.Sweep.Alpha0;
 
-                        if (bA._sweep.Alpha0 < bB._sweep.Alpha0)
+                        if (bA.Sweep.Alpha0 < bB.Sweep.Alpha0)
                         {
-                            alpha0 = bB._sweep.Alpha0;
-                            bA._sweep.Advance(alpha0);
+                            alpha0 = bB.Sweep.Alpha0;
+                            bA.Sweep.Advance(alpha0);
                         }
-                        else if (bB._sweep.Alpha0 < bA._sweep.Alpha0)
+                        else if (bB.Sweep.Alpha0 < bA.Sweep.Alpha0)
                         {
-                            alpha0 = bA._sweep.Alpha0;
-                            bB._sweep.Advance(alpha0);
+                            alpha0 = bA.Sweep.Alpha0;
+                            bB.Sweep.Advance(alpha0);
                         }
 
                         Debug.Assert(alpha0 < 1.0f);
 
                         // Compute the time of impact in interval [0, minTOI]
-                        _input.ProxyA = new DistanceProxy(fA.Shape, c.ChildIndexA);
-                        _input.ProxyB = new DistanceProxy(fB.Shape, c.ChildIndexB);
-                        _input.SweepA = bA._sweep;
-                        _input.SweepB = bB._sweep;
+                        _input.ProxyA = new DistanceProxy(fA.GetShape, c.ChildIndexA);
+                        _input.ProxyB = new DistanceProxy(fB.GetShape, c.ChildIndexB);
+                        _input.SweepA = bA.Sweep;
+                        _input.SweepB = bB.Sweep;
                         _input.TMax = 1.0f;
 
                         TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref _input);
@@ -657,11 +657,11 @@ namespace Alis.Core.Physic.Dynamics
                 // Advance the bodies to the TOI.
                 Fixture fA1 = minContact.FixtureA;
                 Fixture fB1 = minContact.FixtureB;
-                Body bA0 = fA1.Body;
-                Body bB0 = fB1.Body;
+                Body bA0 = fA1.GetBody;
+                Body bB0 = fB1.GetBody;
 
-                Sweep backup1 = bA0._sweep;
-                Sweep backup2 = bB0._sweep;
+                Sweep backup1 = bA0.Sweep;
+                Sweep backup2 = bB0.Sweep;
 
                 bA0.Advance(minAlpha);
                 bB0.Advance(minAlpha);
@@ -676,8 +676,8 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     // Restore the sweeps.
                     minContact.Enabled = false;
-                    bA0._sweep = backup1;
-                    bB0._sweep = backup2;
+                    bA0.Sweep = backup1;
+                    bB0.Sweep = backup2;
                     bA0.SynchronizeTransform();
                     bB0.SynchronizeTransform();
                     continue;
@@ -687,13 +687,13 @@ namespace Alis.Core.Physic.Dynamics
                 bB0.Awake = true;
 
                 // Build the island
-                Island.Clear();
-                Island.Add(bA0);
-                Island.Add(bB0);
-                Island.Add(minContact);
+                GetIsland.Clear();
+                GetIsland.Add(bA0);
+                GetIsland.Add(bB0);
+                GetIsland.Add(minContact);
 
-                bA0._island = true;
-                bB0._island = true;
+                bA0.Island = true;
+                bB0.Island = true;
                 minContact.IslandFlag = true;
 
                 // Get contacts on bodyA and bodyB.
@@ -701,18 +701,18 @@ namespace Alis.Core.Physic.Dynamics
                 for (int i = 0; i < 2; ++i)
                 {
                     Body body = bodies[i];
-                    if (body.BodyType == BodyType.Dynamic)
+                    if (body.GetBodyType == BodyType.Dynamic)
                     {
                         for (ContactEdge ce = body.ContactList; ce != null; ce = ce.Next)
                         {
                             Contact contact = ce.Contact;
 
-                            if (Island.BodyCount == Island.BodyCapacity)
+                            if (GetIsland.BodyCount == GetIsland.BodyCapacity)
                             {
                                 break;
                             }
 
-                            if (Island.ContactCount == Island.ContactCapacity)
+                            if (GetIsland.ContactCount == GetIsland.ContactCapacity)
                             {
                                 break;
                             }
@@ -725,21 +725,21 @@ namespace Alis.Core.Physic.Dynamics
 
                             // Only add static, kinematic, or bullet bodies.
                             Body other = ce.Other;
-                            if ((other.BodyType == BodyType.Dynamic) &&
+                            if ((other.GetBodyType == BodyType.Dynamic) &&
                                 (body.IsBullet == false) && (other.IsBullet == false))
                             {
                                 continue;
                             }
 
                             // Skip sensors.
-                            if (contact.FixtureA.IsSensor || contact.FixtureB.IsSensor)
+                            if (contact.FixtureA.GetIsSensor || contact.FixtureB.GetIsSensor)
                             {
                                 continue;
                             }
 
                             // Tentatively advance the body to the TOI.
-                            Sweep backup = other._sweep;
-                            if (!other._island)
+                            Sweep backup = other.Sweep;
+                            if (!other.Island)
                             {
                                 other.Advance(minAlpha);
                             }
@@ -750,7 +750,7 @@ namespace Alis.Core.Physic.Dynamics
                             // Was the contact disabled by the user?
                             if (contact.Enabled == false)
                             {
-                                other._sweep = backup;
+                                other.Sweep = backup;
                                 other.SynchronizeTransform();
                                 continue;
                             }
@@ -758,30 +758,30 @@ namespace Alis.Core.Physic.Dynamics
                             // Are there contact points?
                             if (contact.IsTouching == false)
                             {
-                                other._sweep = backup;
+                                other.Sweep = backup;
                                 other.SynchronizeTransform();
                                 continue;
                             }
 
                             // Add the contact to the island
                             contact.IslandFlag = true;
-                            Island.Add(contact);
+                            GetIsland.Add(contact);
 
                             // Has the other body already been added to the island?
-                            if (other._island)
+                            if (other.Island)
                             {
                                 continue;
                             }
 
                             // Add the other body to the island.
-                            other._island = true;
+                            other.Island = true;
 
-                            if (other.BodyType != BodyType.Static)
+                            if (other.GetBodyType != BodyType.Static)
                             {
                                 other.Awake = true;
                             }
 
-                            Island.Add(other);
+                            GetIsland.Add(other);
                         }
                     }
                 }
@@ -793,15 +793,15 @@ namespace Alis.Core.Physic.Dynamics
                 subStep.InvDt = 1.0f / subStep.Dt;
                 subStep.DtRatio = 1.0f;
                 subStep.WarmStarting = false;
-                Island.SolveToi(ref subStep, bA0.IslandIndex, bB0.IslandIndex);
+                GetIsland.SolveToi(ref subStep, bA0.GetIslandIndex, bB0.GetIslandIndex);
 
                 // Reset island flags and synchronize broad-phase proxies.
-                for (int i = 0; i < Island.BodyCount; ++i)
+                for (int i = 0; i < GetIsland.BodyCount; ++i)
                 {
-                    Body body = Island.Bodies[i];
-                    body._island = false;
+                    Body body = GetIsland.Bodies[i];
+                    body.Island = false;
 
-                    if (body.BodyType != BodyType.Dynamic)
+                    if (body.GetBodyType != BodyType.Dynamic)
                     {
                         continue;
                     }
@@ -829,7 +829,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
         public virtual void Add(Body body)
         {
-            if (IsLocked)
+            if (GetIsLocked)
             {
                 throw new InvalidOperationException("The World is locked.");
             }
@@ -839,26 +839,26 @@ namespace Alis.Core.Physic.Dynamics
                 throw new ArgumentNullException("body");
             }
 
-            if (body._world == this)
+            if (body.World == this)
             {
                 throw new ArgumentException("You are adding the same body more than once.", "body");
             }
 
-            if (body._world != null)
+            if (body.World != null)
             {
                 throw new ArgumentException("body belongs to another world.", "body");
             }
 
-            body._world = this;
-            BodyList._list.Add(body);
-            BodyList._generationStamp++;
+            body.World = this;
+            BodyList.List.Add(body);
+            BodyList.GenerationStamp++;
 
 
             // Update transform
-            body.SetTransformIgnoreContacts(ref body._xf.P, body.Rotation);
+            body.SetTransformIgnoreContacts(ref body.Xf.P, body.Rotation);
 
             // Create proxies
-            if (Enabled)
+            if (GetEnabled)
             {
                 body.CreateProxies();
             }
@@ -877,9 +877,9 @@ namespace Alis.Core.Physic.Dynamics
             FixtureDelegate fixtureAddedHandler = FixtureAdded;
             if (fixtureAddedHandler != null)
             {
-                for (int i = 0; i < body.FixtureList._list.Count; i++)
+                for (int i = 0; i < body.FixtureList.List.Count; i++)
                 {
-                    fixtureAddedHandler(this, body, body.FixtureList._list[i]);
+                    fixtureAddedHandler(this, body, body.FixtureList.List[i]);
                 }
             }
         }
@@ -893,7 +893,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
         public virtual void Remove(Body body)
         {
-            if (IsLocked)
+            if (GetIsLocked)
             {
                 throw new InvalidOperationException("The World is locked.");
             }
@@ -903,7 +903,7 @@ namespace Alis.Core.Physic.Dynamics
                 throw new ArgumentNullException("body");
             }
 
-            if (body.World != this)
+            if (body.GetWorld != this)
             {
                 throw new ArgumentException("You are removing a body that is not in the simulation.", "body");
             }
@@ -932,23 +932,23 @@ namespace Alis.Core.Physic.Dynamics
             body.ContactList = null;
 
             // remove the attached contact callbacks
-            body.onCollisionEventHandler = null;
-            body.onSeparationEventHandler = null;
+            body.OnCollisionEventHandler = null;
+            body.OnSeparationEventHandler = null;
 
             // Delete the attached fixtures. This destroys broad-phase proxies.
             body.DestroyProxies();
             FixtureDelegate fixtureRemovedHandler = FixtureRemoved;
             if (fixtureRemovedHandler != null)
             {
-                for (int i = 0; i < body.FixtureList._list.Count; i++)
+                for (int i = 0; i < body.FixtureList.List.Count; i++)
                 {
-                    fixtureRemovedHandler(this, body, body.FixtureList._list[i]);
+                    fixtureRemovedHandler(this, body, body.FixtureList.List[i]);
                 }
             }
 
-            body._world = null;
-            BodyList._list.Remove(body);
-            BodyList._generationStamp++;
+            body.World = null;
+            BodyList.List.Remove(body);
+            BodyList.GenerationStamp++;
 
             BodyDelegate bodyRemovedHandler = BodyRemoved;
             if (bodyRemovedHandler != null)
@@ -965,7 +965,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
         public void Add(Joint joint)
         {
-            if (IsLocked)
+            if (GetIsLocked)
             {
                 throw new InvalidOperationException("The World is locked.");
             }
@@ -1056,7 +1056,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
         public void Remove(Joint joint)
         {
-            if (IsLocked)
+            if (GetIsLocked)
             {
                 throw new InvalidOperationException("The World is locked.");
             }
@@ -1209,12 +1209,12 @@ namespace Alis.Core.Physic.Dynamics
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
         public void Step(float dt, ref SolverIterations iterations)
         {
-            if (IsLocked)
+            if (GetIsLocked)
             {
                 throw new InvalidOperationException("The World is locked.");
             }
 
-            if (!Enabled)
+            if (!GetEnabled)
             {
                 return;
             }
@@ -1245,7 +1245,7 @@ namespace Alis.Core.Physic.Dynamics
             step.DtRatio = _invDt0 * dt;
             step.WarmStarting = WarmStarting;
 
-            IsLocked = true;
+            GetIsLocked = true;
             try
             {
                 //Update controllers
@@ -1295,7 +1295,7 @@ namespace Alis.Core.Physic.Dynamics
             }
             finally
             {
-                IsLocked = false;
+                GetIsLocked = false;
             }
 
             if (step.Dt > 0.0f)
@@ -1318,11 +1318,11 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public void ClearForces()
         {
-            for (int i = 0; i < BodyList._list.Count; i++)
+            for (int i = 0; i < BodyList.List.Count; i++)
             {
-                Body body = BodyList._list[i];
+                Body body = BodyList.List[i];
                 body.Force = Vector2F.Zero;
-                body._torque = 0.0f;
+                body.Torque = 0.0f;
             }
         }
 
@@ -1419,7 +1419,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
         public void Add(Controller controller)
         {
-            if (IsLocked)
+            if (GetIsLocked)
             {
                 throw new InvalidOperationException("The World is locked.");
             }
@@ -1456,7 +1456,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
         public void Remove(Controller controller)
         {
-            if (IsLocked)
+            if (GetIsLocked)
             {
                 throw new InvalidOperationException("The World is locked.");
             }
@@ -1529,9 +1529,9 @@ namespace Alis.Core.Physic.Dynamics
         {
             foreach (Body b in BodyList)
             {
-                b._xf.P -= newOrigin;
-                b._sweep.C0 -= newOrigin;
-                b._sweep.C -= newOrigin;
+                b.Xf.P -= newOrigin;
+                b.Sweep.C0 -= newOrigin;
+                b.Sweep.C -= newOrigin;
             }
 
             ContactManager.BroadPhase.ShiftOrigin(newOrigin);
@@ -1543,14 +1543,14 @@ namespace Alis.Core.Physic.Dynamics
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
         public void Clear()
         {
-            if (IsLocked)
+            if (GetIsLocked)
             {
                 throw new InvalidOperationException("The World is locked.");
             }
 
-            for (int i = BodyList._list.Count - 1; i >= 0; i--)
+            for (int i = BodyList.List.Count - 1; i >= 0; i--)
             {
-                Remove(BodyList._list[i]);
+                Remove(BodyList.List[i]);
             }
 
             for (int i = ControllerList.List.Count - 1; i >= 0; i--)

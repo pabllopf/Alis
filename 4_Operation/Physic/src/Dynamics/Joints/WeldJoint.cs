@@ -86,12 +86,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The inv ia
         /// </summary>
-        private float _invIA;
+        private float invIa;
 
         /// <summary>
         ///     The inv ib
         /// </summary>
-        private float _invIB;
+        private float invIb;
 
         /// <summary>
         ///     The inv mass
@@ -227,14 +227,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
         {
-            _indexA = BodyA.IslandIndex;
-            _indexB = BodyB.IslandIndex;
-            _localCenterA = BodyA._sweep.LocalCenter;
-            _localCenterB = BodyB._sweep.LocalCenter;
+            _indexA = BodyA.GetIslandIndex;
+            _indexB = BodyB.GetIslandIndex;
+            _localCenterA = BodyA.Sweep.LocalCenter;
+            _localCenterB = BodyB.Sweep.LocalCenter;
             _invMassA = BodyA.InvMass;
             _invMassB = BodyB.InvMass;
-            _invIA = BodyA.InvI;
-            _invIB = BodyB.InvI;
+            invIa = BodyA.InvI;
+            invIb = BodyB.InvI;
 
             float aA = data.Positions[_indexA].A;
             Vector2F vA = data.Velocities[_indexA].V;
@@ -251,27 +251,27 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _rB = Complex.Multiply(LocalAnchorB - _localCenterB, ref qB);
 
             float mA = _invMassA, mB = _invMassB;
-            float iA = _invIA, iB = _invIB;
+            float iA = invIa, iB = invIb;
 
-            Mat33 K = new Mat33();
-            K.Ex.X = mA + mB + _rA.Y * _rA.Y * iA + _rB.Y * _rB.Y * iB;
-            K.Ey.X = -_rA.Y * _rA.X * iA - _rB.Y * _rB.X * iB;
-            K.Ez.X = -_rA.Y * iA - _rB.Y * iB;
-            K.Ex.Y = K.Ey.X;
-            K.Ey.Y = mA + mB + _rA.X * _rA.X * iA + _rB.X * _rB.X * iB;
-            K.Ez.Y = _rA.X * iA + _rB.X * iB;
-            K.Ex.Z = K.Ez.X;
-            K.Ey.Z = K.Ez.Y;
-            K.Ez.Z = iA + iB;
+            Mat33 k = new Mat33();
+            k.Ex.X = mA + mB + _rA.Y * _rA.Y * iA + _rB.Y * _rB.Y * iB;
+            k.Ey.X = -_rA.Y * _rA.X * iA - _rB.Y * _rB.X * iB;
+            k.Ez.X = -_rA.Y * iA - _rB.Y * iB;
+            k.Ex.Y = k.Ey.X;
+            k.Ey.Y = mA + mB + _rA.X * _rA.X * iA + _rB.X * _rB.X * iB;
+            k.Ez.Y = _rA.X * iA + _rB.X * iB;
+            k.Ex.Z = k.Ez.X;
+            k.Ey.Z = k.Ez.Y;
+            k.Ez.Z = iA + iB;
 
             if (FrequencyHz > 0.0f)
             {
-                K.GetInverse22(ref _mass);
+                k.GetInverse22(ref _mass);
 
                 float invM = iA + iB;
                 float m = invM > 0.0f ? 1.0f / invM : 0.0f;
 
-                float C = aB - aA - ReferenceAngle;
+                float c = aB - aA - ReferenceAngle;
 
                 // Frequency
                 float omega = Constant.Tau * FrequencyHz;
@@ -280,26 +280,26 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 float d = 2.0f * m * DampingRatio * omega;
 
                 // Spring stiffness
-                float k = m * omega * omega;
+                float kkk = m * omega * omega;
 
                 // magic formulas
                 float h = data.Step.Dt;
-                _gamma = h * (d + h * k);
+                _gamma = h * (d + h * kkk);
                 _gamma = Math.Abs(_gamma) < float.Epsilon ? 1.0f / _gamma : 0.0f;
-                _bias = C * h * k * _gamma;
+                _bias = c * h * kkk * _gamma;
 
                 invM += _gamma;
                 _mass.Ez.Z = Math.Abs(invM) < float.Epsilon ? 1.0f / invM : 0.0f;
             }
-            else if (Math.Abs(K.Ez.Z) < float.Epsilon)
+            else if (Math.Abs(k.Ez.Z) < float.Epsilon)
             {
-                K.GetInverse22(ref _mass);
+                k.GetInverse22(ref _mass);
                 _gamma = 0.0f;
                 _bias = 0.0f;
             }
             else
             {
-                K.GetSymInverse33(ref _mass);
+                k.GetSymInverse33(ref _mass);
                 _gamma = 0.0f;
                 _bias = 0.0f;
             }
@@ -309,13 +309,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 // Scale impulses to support a variable time step.
                 _impulse *= data.Step.DtRatio;
 
-                Vector2F P = new Vector2F(_impulse.X, _impulse.Y);
+                Vector2F p = new Vector2F(_impulse.X, _impulse.Y);
 
-                vA -= mA * P;
-                wA -= iA * (MathUtils.Cross(ref _rA, ref P) + _impulse.Z);
+                vA -= mA * p;
+                wA -= iA * (MathUtils.Cross(ref _rA, ref p) + _impulse.Z);
 
-                vB += mB * P;
-                wB += iB * (MathUtils.Cross(ref _rB, ref P) + _impulse.Z);
+                vB += mB * p;
+                wB += iB * (MathUtils.Cross(ref _rB, ref p) + _impulse.Z);
             }
             else
             {
@@ -340,7 +340,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float wB = data.Velocities[_indexB].W;
 
             float mA = _invMassA, mB = _invMassB;
-            float iA = _invIA, iB = _invIB;
+            float iA = invIa, iB = invIb;
 
             if (FrequencyHz > 0.0f)
             {
@@ -406,7 +406,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Complex qB = Complex.FromAngle(aB);
 
             float mA = _invMassA, mB = _invMassB;
-            float iA = _invIA, iB = _invIB;
+            float iA = invIa, iB = invIb;
 
             Vector2F rA = Complex.Multiply(LocalAnchorA - _localCenterA, ref qA);
             Vector2F rB = Complex.Multiply(LocalAnchorB - _localCenterB, ref qB);

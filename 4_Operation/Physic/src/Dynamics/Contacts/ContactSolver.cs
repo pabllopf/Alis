@@ -148,12 +148,12 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                 Fixture fixtureA = contact.FixtureA;
                 Fixture fixtureB = contact.FixtureB;
-                Shape shapeA = fixtureA.Shape;
-                Shape shapeB = fixtureB.Shape;
+                Shape shapeA = fixtureA.GetShape;
+                Shape shapeB = fixtureB.GetShape;
                 float radiusA = shapeA.GetRadius;
                 float radiusB = shapeB.GetRadius;
-                Body bodyA = fixtureA.Body;
-                Body bodyB = fixtureB.Body;
+                Body bodyA = fixtureA.GetBody;
+                Body bodyB = fixtureB.GetBody;
                 Manifold manifold = contact.Manifold;
 
                 int pointCount = manifold.PointCount;
@@ -163,8 +163,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 vc.Friction = contact.Friction;
                 vc.Restitution = contact.Restitution;
                 vc.TangentSpeed = contact.TangentSpeed;
-                vc.IndexA = bodyA.IslandIndex;
-                vc.IndexB = bodyB.IslandIndex;
+                vc.IndexA = bodyA.GetIslandIndex;
+                vc.IndexB = bodyB.GetIslandIndex;
                 vc.InvMassA = bodyA.InvMass;
                 vc.InvMassB = bodyB.InvMass;
                 vc.InvIa = bodyA.InvI;
@@ -175,12 +175,12 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 vc.NormalMass.SetZero();
 
                 ContactPositionConstraint pc = PositionConstraints[i];
-                pc.IndexA = bodyA.IslandIndex;
-                pc.IndexB = bodyB.IslandIndex;
+                pc.IndexA = bodyA.GetIslandIndex;
+                pc.IndexB = bodyB.GetIslandIndex;
                 pc.InvMassA = bodyA.InvMass;
                 pc.InvMassB = bodyB.InvMass;
-                pc.LocalCenterA = bodyA._sweep.LocalCenter;
-                pc.LocalCenterB = bodyB._sweep.LocalCenter;
+                pc.LocalCenterA = bodyA.Sweep.LocalCenter;
+                pc.LocalCenterB = bodyB.Sweep.LocalCenter;
                 pc.InvIa = bodyA.InvI;
                 pc.InvIb = bodyB.InvI;
                 pc.LocalNormal = manifold.LocalNormal;

@@ -148,8 +148,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
         {
-            int indexA = BodyA.IslandIndex;
-            int indexB = BodyB.IslandIndex;
+            int indexA = BodyA.GetIslandIndex;
+            int indexB = BodyB.GetIslandIndex;
 
             float aW = data.Positions[indexA].A;
             float bW = data.Positions[indexB].A;
@@ -165,8 +165,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(ref SolverData data)
         {
-            int indexA = BodyA.IslandIndex;
-            int indexB = BodyB.IslandIndex;
+            int indexA = BodyA.GetIslandIndex;
+            int indexB = BodyB.GetIslandIndex;
 
             float p = (_bias - data.Velocities[indexB].W + data.Velocities[indexA].W) * _massFactor;
 

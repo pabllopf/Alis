@@ -40,7 +40,12 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         ///     The ey
         /// </summary>
-        public Vector2F Ex, Ey;
+        public Vector2F Ex;
+
+        /// <summary>
+        ///     The ey
+        /// </summary>
+        public Vector2F Ey;
 
         /// <summary>
         ///     Construct this matrix using columns.

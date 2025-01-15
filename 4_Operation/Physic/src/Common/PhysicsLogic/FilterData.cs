@@ -64,7 +64,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         /// <returns></returns>
         public virtual bool IsActiveOn(Body body)
         {
-            if (body == null || !body.Enabled || body.BodyType == BodyType.Static)
+            if (body == null || !body.Enabled || body.GetBodyType == BodyType.Static)
             {
                 return false;
             }
@@ -72,12 +72,12 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
             foreach (Fixture fixture in body.FixtureList)
             {
                 //Disable
-                if ((fixture.CollisionGroup == DisabledOnGroup) && (fixture.CollisionGroup != 0) && (DisabledOnGroup != 0))
+                if ((fixture.GetCollisionGroup == DisabledOnGroup) && (fixture.GetCollisionGroup != 0) && (DisabledOnGroup != 0))
                 {
                     return false;
                 }
 
-                if ((fixture.CollisionCategories & DisabledOnCategories) != Category.None)
+                if ((fixture.GetCollisionCategories & DisabledOnCategories) != Category.None)
                 {
                     return false;
                 }
@@ -85,12 +85,12 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                 if (EnabledOnGroup != 0 || EnabledOnCategories != Category.All)
                 {
                     //Enable
-                    if ((fixture.CollisionGroup == EnabledOnGroup) && (fixture.CollisionGroup != 0) && (EnabledOnGroup != 0))
+                    if ((fixture.GetCollisionGroup == EnabledOnGroup) && (fixture.GetCollisionGroup != 0) && (EnabledOnGroup != 0))
                     {
                         return true;
                     }
 
-                    if (((fixture.CollisionCategories & EnabledOnCategories) != Category.None) &&
+                    if (((fixture.GetCollisionCategories & EnabledOnCategories) != Category.None) &&
                         (EnabledOnCategories != Category.All))
                     {
                         return true;

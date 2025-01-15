@@ -246,7 +246,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Get the current joint angle in radians.
         /// </summary>
-        public float JointAngle => BodyB._sweep.A - BodyA._sweep.A - ReferenceAngle;
+        public float JointAngle => BodyB.Sweep.A - BodyA.Sweep.A - ReferenceAngle;
 
         /// <summary>
         ///     Get the current joint angle speed in radians per second.
@@ -404,10 +404,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
         {
-            _indexA = BodyA.IslandIndex;
-            _indexB = BodyB.IslandIndex;
-            _localCenterA = BodyA._sweep.LocalCenter;
-            _localCenterB = BodyB._sweep.LocalCenter;
+            _indexA = BodyA.GetIslandIndex;
+            _indexB = BodyB.GetIslandIndex;
+            _localCenterA = BodyA.Sweep.LocalCenter;
+            _localCenterB = BodyB.Sweep.LocalCenter;
             _invMassA = BodyA.InvMass;
             _invMassB = BodyB.InvMass;
             invIa = BodyA.InvI;

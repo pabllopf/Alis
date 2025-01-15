@@ -50,12 +50,22 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>
         ///     The has next vertex
         /// </summary>
-        private bool _hasPrevVertex, _hasNextVertex;
+        private bool _hasPrevVertex;
+
+        /// <summary>
+        ///     The has next vertex
+        /// </summary>
+        private bool _hasNextVertex;
 
         /// <summary>
         ///     The next vertex
         /// </summary>
-        private Vector2F _prevVertex, _nextVertex;
+        private Vector2F _prevVertex;
+
+        /// <summary>
+        ///     The next vertex
+        /// </summary>
+        private Vector2F _nextVertex;
 
         /// <summary>
         ///     The vertices. These are not owned/freed by the chain Shape.

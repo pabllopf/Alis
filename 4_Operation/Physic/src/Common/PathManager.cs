@@ -134,7 +134,7 @@ namespace Alis.Core.Physic.Common
                 Body b = world.CreateBody();
 
                 // copy the type from original body
-                b.BodyType = type;
+                b.GetBodyType = type;
                 b.Position = new Vector2F(centers[i].X, centers[i].Y);
                 b.Rotation = centers[i].Z;
                 b.Tag = userData;
@@ -183,7 +183,7 @@ namespace Alis.Core.Physic.Common
             Vector2F positionDelta = body.Position - destination;
             Vector2F velocity = positionDelta / timeStep * strength;
 
-            body.LinearVelocity = -velocity;
+            body.GetLinearVelocity = -velocity;
         }
 
         /// <summary>

@@ -103,7 +103,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The island
         /// </summary>
-        internal bool _island;
+        internal bool Island;
 
         /// <summary>
         ///     The linear damping
@@ -113,17 +113,17 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The linear velocity
         /// </summary>
-        internal Vector2F _linearVelocity;
+        internal Vector2F LinearVelocity;
 
         /// <summary>
         ///     The lock
         /// </summary>
-        internal int _lock;
+        internal int Lock;
 
         /// <summary>
         ///     The lock order
         /// </summary>
-        internal int _lockOrder;
+        internal int LockOrder;
 
         /// <summary>
         ///     The mass
@@ -138,27 +138,27 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The sleep time
         /// </summary>
-        internal float _sleepTime;
+        internal float SleepTime;
 
         /// <summary>
         ///     The sweep
         /// </summary>
-        internal Sweep _sweep; // the swept motion for CCD
+        internal Sweep Sweep; // the swept motion for CCD
 
         /// <summary>
         ///     The torque
         /// </summary>
-        internal float _torque;
+        internal float Torque;
 
         /// <summary>
         ///     The world
         /// </summary>
-        internal World _world;
+        internal World World;
 
         /// <summary>
         ///     The xf
         /// </summary>
-        internal Transform _xf; // the body origin transform
+        internal Transform Xf; // the body origin transform
 
         /// <summary>
         ///     The all
@@ -168,12 +168,12 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The on collision event handler
         /// </summary>
-        internal OnCollisionEventHandler onCollisionEventHandler;
+        internal OnCollisionEventHandler OnCollisionEventHandler;
 
         /// <summary>
         ///     The on separation event handler
         /// </summary>
-        internal OnSeparationEventHandler onSeparationEventHandler;
+        internal OnSeparationEventHandler OnSeparationEventHandler;
 
         /// <summary>
         ///     Set the user data. Use this to store your application specific data.
@@ -191,25 +191,25 @@ namespace Alis.Core.Physic.Dynamics
             Enabled = true;
             _awake = true;
             _sleepingAllowed = true;
-            _xf.Q = Complex.One;
+            Xf.Q = Complex.One;
 
-            BodyType = BodyType.Static;
+            GetBodyType = BodyType.Static;
         }
 
         /// <summary>
         ///     Get the parent World of this body. This is null if the body is not attached.
         /// </summary>
-        public World World => _world;
+        public World GetWorld => World;
 
         /// <remarks>Deprecated in version 1.6</remarks>
 
-        public int IslandIndex { get; internal set; }
+        public int GetIslandIndex { get; internal set; }
 
         /// <summary>
         ///     Gets the total number revolutions the body has made.
         /// </summary>
         /// <value>The revolutions.</value>
-        public float Revolutions => Rotation / (2 * (float) Math.PI);
+        public float GetRevolutions => Rotation / (2 * (float) Math.PI);
 
         /// <summary>
         ///     Gets or sets the body type.
@@ -217,12 +217,12 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <value>The type of body.</value>
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
-        public BodyType BodyType
+        public BodyType GetBodyType
         {
             get => _bodyType;
             set
             {
-                if ((World != null) && World.IsLocked)
+                if ((GetWorld != null) && GetWorld.GetIsLocked)
                 {
                     throw new InvalidOperationException("The World is locked.");
                 }
@@ -238,17 +238,17 @@ namespace Alis.Core.Physic.Dynamics
 
                 if (_bodyType == BodyType.Static)
                 {
-                    _linearVelocity = Vector2F.Zero;
+                    LinearVelocity = Vector2F.Zero;
                     AngularVelocity = 0.0f;
-                    _sweep.A0 = _sweep.A;
-                    _sweep.C0 = _sweep.C;
+                    Sweep.A0 = Sweep.A;
+                    Sweep.C0 = Sweep.C;
                     SynchronizeFixtures();
                 }
 
                 Awake = true;
 
                 Force = Vector2F.Zero;
-                _torque = 0.0f;
+                Torque = 0.0f;
 
                 // Delete the attached contacts.
                 ContactEdge ce = ContactList;
@@ -256,15 +256,15 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     ContactEdge ce0 = ce;
                     ce = ce.Next;
-                    World.ContactManager.Destroy(ce0.Contact);
+                    GetWorld.ContactManager.Destroy(ce0.Contact);
                 }
 
                 ContactList = null;
 
-                if (World != null)
+                if (GetWorld != null)
                 {
                     // Touch the proxies so that new contacts will be created (when appropriate)
-                    IBroadPhase broadPhase = World.ContactManager.BroadPhase;
+                    IBroadPhase broadPhase = GetWorld.ContactManager.BroadPhase;
                     foreach (Fixture fixture in FixtureList)
                     {
                         fixture.TouchProxies(broadPhase);
@@ -278,7 +278,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     bodies.
         /// </summary>
         /// <value>The linear velocity.</value>
-        public Vector2F LinearVelocity
+        public Vector2F GetLinearVelocity
         {
             set
             {
@@ -294,9 +294,9 @@ namespace Alis.Core.Physic.Dynamics
                     Awake = true;
                 }
 
-                _linearVelocity = value;
+                LinearVelocity = value;
             }
-            get => _linearVelocity;
+            get => LinearVelocity;
         }
 
         /// <summary>
@@ -392,13 +392,13 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     if (!_awake)
                     {
-                        _sleepTime = 0.0f;
+                        SleepTime = 0.0f;
                     }
                 }
                 else
                 {
                     ResetDynamics();
-                    _sleepTime = 0.0f;
+                    SleepTime = 0.0f;
                 }
 
                 _awake = value;
@@ -429,7 +429,7 @@ namespace Alis.Core.Physic.Dynamics
             get => _enabled;
             set
             {
-                if ((World != null) && World.IsLocked)
+                if ((GetWorld != null) && GetWorld.GetIsLocked)
                 {
                     throw new InvalidOperationException("The World is locked.");
                 }
@@ -443,7 +443,7 @@ namespace Alis.Core.Physic.Dynamics
 
                 if (Enabled)
                 {
-                    if (World != null)
+                    if (GetWorld != null)
                     {
                         CreateProxies();
                     }
@@ -452,7 +452,7 @@ namespace Alis.Core.Physic.Dynamics
                 }
                 else
                 {
-                    if (World != null)
+                    if (GetWorld != null)
                     {
                         DestroyProxies();
                         DestroyContacts();
@@ -504,14 +504,14 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>Return the world position of the body's origin.</returns>
         public Vector2F Position
         {
-            get => _xf.P;
+            get => Xf.P;
             set
             {
                 Debug.Assert(!float.IsNaN(value.X) && !float.IsNaN(value.Y));
 
-                if (World == null)
+                if (GetWorld == null)
                 {
-                    _xf.P = value;
+                    Xf.P = value;
                 }
                 else
                 {
@@ -526,18 +526,18 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>Return the current world rotation angle in radians.</returns>
         public float Rotation
         {
-            get => _sweep.A;
+            get => Sweep.A;
             set
             {
                 Debug.Assert(!float.IsNaN(value));
 
-                if (World == null)
+                if (GetWorld == null)
                 {
-                    _sweep.A = value;
+                    Sweep.A = value;
                 }
                 else
                 {
-                    SetTransform(ref _xf.P, value);
+                    SetTransform(ref Xf.P, value);
                 }
             }
         }
@@ -552,7 +552,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Get the world position of the center of mass.
         /// </summary>
         /// <value>The world position.</value>
-        public Vector2F WorldCenter => _sweep.C;
+        public Vector2F WorldCenter => Sweep.C;
 
         /// <summary>
         ///     Get the local position of the center of mass.
@@ -562,10 +562,10 @@ namespace Alis.Core.Physic.Dynamics
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
         public Vector2F LocalCenter
         {
-            get => _sweep.LocalCenter;
+            get => Sweep.LocalCenter;
             set
             {
-                if ((World != null) && World.IsLocked)
+                if ((GetWorld != null) && GetWorld.GetIsLocked)
                 {
                     throw new InvalidOperationException("The World is locked.");
                 }
@@ -576,13 +576,13 @@ namespace Alis.Core.Physic.Dynamics
                 }
 
                 // Move center of mass.
-                Vector2F oldCenter = _sweep.C;
-                _sweep.LocalCenter = value;
-                _sweep.C0 = _sweep.C = Transform.Multiply(ref _sweep.LocalCenter, ref _xf);
+                Vector2F oldCenter = Sweep.C;
+                Sweep.LocalCenter = value;
+                Sweep.C0 = Sweep.C = Transform.Multiply(ref Sweep.LocalCenter, ref Xf);
 
                 // Update center of mass velocity.
-                Vector2F a = _sweep.C - oldCenter;
-                _linearVelocity += new Vector2F(-AngularVelocity * a.Y, AngularVelocity * a.X);
+                Vector2F a = Sweep.C - oldCenter;
+                LinearVelocity += new Vector2F(-AngularVelocity * a.Y, AngularVelocity * a.X);
             }
         }
 
@@ -597,7 +597,7 @@ namespace Alis.Core.Physic.Dynamics
             get => _mass;
             set
             {
-                if ((World != null) && World.IsLocked)
+                if ((GetWorld != null) && GetWorld.GetIsLocked)
                 {
                     throw new InvalidOperationException("The World is locked.");
                 }
@@ -628,10 +628,10 @@ namespace Alis.Core.Physic.Dynamics
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
         public float Inertia
         {
-            get => _inertia + Mass * Vector2F.Dot(_sweep.LocalCenter, _sweep.LocalCenter);
+            get => _inertia + Mass * Vector2F.Dot(Sweep.LocalCenter, Sweep.LocalCenter);
             set
             {
-                if ((World != null) && World.IsLocked)
+                if ((GetWorld != null) && GetWorld.GetIsLocked)
                 {
                     throw new InvalidOperationException("The World is locked.");
                 }
@@ -655,17 +655,17 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Gets or sets the value of the ignore ccd
         /// </summary>
-        public bool IgnoreCCD { get; set; }
+        public bool IgnoreCcd { get; set; }
 
         /// <summary>
         ///     Create all proxies.
         /// </summary>
         internal void CreateProxies()
         {
-            IBroadPhase broadPhase = World.ContactManager.BroadPhase;
-            for (int i = 0; i < FixtureList._list.Count; i++)
+            IBroadPhase broadPhase = GetWorld.ContactManager.BroadPhase;
+            for (int i = 0; i < FixtureList.List.Count; i++)
             {
-                FixtureList._list[i].CreateProxies(broadPhase, ref _xf);
+                FixtureList.List[i].CreateProxies(broadPhase, ref Xf);
             }
         }
 
@@ -674,10 +674,10 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         internal void DestroyProxies()
         {
-            IBroadPhase broadPhase = World.ContactManager.BroadPhase;
-            for (int i = 0; i < FixtureList._list.Count; i++)
+            IBroadPhase broadPhase = GetWorld.ContactManager.BroadPhase;
+            for (int i = 0; i < FixtureList.List.Count; i++)
             {
-                FixtureList._list[i].DestroyProxies(broadPhase);
+                FixtureList.List[i].DestroyProxies(broadPhase);
             }
         }
 
@@ -691,7 +691,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 ContactEdge ce0 = ce;
                 ce = ce.Next;
-                World.ContactManager.Destroy(ce0.Contact);
+                GetWorld.ContactManager.Destroy(ce0.Contact);
             }
 
             ContactList = null;
@@ -703,10 +703,10 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public void ResetDynamics()
         {
-            _torque = 0;
+            Torque = 0;
             AngularVelocity = 0;
             Force = Vector2F.Zero;
-            _linearVelocity = Vector2F.Zero;
+            LinearVelocity = Vector2F.Zero;
         }
 
         /// <summary>
@@ -716,7 +716,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
         public void Add(Fixture fixture)
         {
-            if ((World != null) && World.IsLocked)
+            if ((GetWorld != null) && GetWorld.GetIsLocked)
             {
                 throw new InvalidOperationException("The World is locked.");
             }
@@ -726,9 +726,9 @@ namespace Alis.Core.Physic.Dynamics
                 throw new ArgumentNullException("fixture");
             }
 
-            if (fixture.Body != null)
+            if (fixture.GetBody != null)
             {
-                if (fixture.Body == this)
+                if (fixture.GetBody == this)
                 {
                     throw new ArgumentException("You are adding the same fixture more than once.", "fixture");
                 }
@@ -736,38 +736,38 @@ namespace Alis.Core.Physic.Dynamics
                 throw new ArgumentException("fixture belongs to another body.", "fixture");
             }
 
-            fixture.Body = this;
-            FixtureList._list.Add(fixture);
-            FixtureList._generationStamp++;
+            fixture.GetBody = this;
+            FixtureList.List.Add(fixture);
+            FixtureList.GenerationStamp++;
 #if DEBUG
-            if (fixture.Shape.ShapeType == ShapeType.Polygon)
+            if (fixture.GetShape.ShapeType == ShapeType.Polygon)
             {
-                ((PolygonShape) fixture.Shape).Vertices.AttachedToBody = true;
+                ((PolygonShape) fixture.GetShape).Vertices.AttachedToBody = true;
             }
 #endif
 
             // Adjust mass properties if needed.
-            if (fixture.Shape.Density > 0.0f)
+            if (fixture.GetShape.Density > 0.0f)
             {
                 ResetMassData();
             }
 
-            if (World != null)
+            if (GetWorld != null)
             {
                 if (Enabled)
                 {
-                    IBroadPhase broadPhase = World.ContactManager.BroadPhase;
-                    fixture.CreateProxies(broadPhase, ref _xf);
+                    IBroadPhase broadPhase = GetWorld.ContactManager.BroadPhase;
+                    fixture.CreateProxies(broadPhase, ref Xf);
                 }
 
                 // Let the world know we have a new fixture. This will cause new contacts
                 // to be created at the beginning of the next time step.
-                World.WorldHasNewFixture = true;
+                GetWorld.WorldHasNewFixture = true;
 
-                FixtureDelegate fixtureAddedHandler = World.FixtureAdded;
+                FixtureDelegate fixtureAddedHandler = GetWorld.FixtureAdded;
                 if (fixtureAddedHandler != null)
                 {
-                    fixtureAddedHandler(World, this, fixture);
+                    fixtureAddedHandler(GetWorld, this, fixture);
                 }
             }
         }
@@ -784,7 +784,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
         public virtual void Remove(Fixture fixture)
         {
-            if ((World != null) && World.IsLocked)
+            if ((GetWorld != null) && GetWorld.GetIsLocked)
             {
                 throw new InvalidOperationException("The World is locked.");
             }
@@ -794,7 +794,7 @@ namespace Alis.Core.Physic.Dynamics
                 throw new ArgumentNullException("fixture");
             }
 
-            if (fixture.Body != this)
+            if (fixture.GetBody != this)
             {
                 throw new ArgumentException("You are removing a fixture that does not belong to this Body.", "fixture");
             }
@@ -813,30 +813,30 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     // This destroys the contact and removes it from
                     // this body's contact list.
-                    World.ContactManager.Destroy(c);
+                    GetWorld.ContactManager.Destroy(c);
                 }
             }
 
             if (Enabled)
             {
-                IBroadPhase broadPhase = World.ContactManager.BroadPhase;
+                IBroadPhase broadPhase = GetWorld.ContactManager.BroadPhase;
                 fixture.DestroyProxies(broadPhase);
             }
 
-            fixture.Body = null;
-            FixtureList._list.Remove(fixture);
-            FixtureList._generationStamp++;
+            fixture.GetBody = null;
+            FixtureList.List.Remove(fixture);
+            FixtureList.GenerationStamp++;
 #if DEBUG
-            if (fixture.Shape.ShapeType == ShapeType.Polygon)
+            if (fixture.GetShape.ShapeType == ShapeType.Polygon)
             {
-                ((PolygonShape) fixture.Shape).Vertices.AttachedToBody = false;
+                ((PolygonShape) fixture.GetShape).Vertices.AttachedToBody = false;
             }
 #endif
 
-            FixtureDelegate fixtureRemovedHandler = World.FixtureRemoved;
+            FixtureDelegate fixtureRemovedHandler = GetWorld.FixtureRemoved;
             if (fixtureRemovedHandler != null)
             {
-                fixtureRemovedHandler(World, this, fixture);
+                fixtureRemovedHandler(GetWorld, this, fixture);
             }
 
             ResetMassData();
@@ -855,7 +855,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             SetTransformIgnoreContacts(ref position, rotation);
 
-            World.ContactManager.FindNewContacts();
+            GetWorld.ContactManager.FindNewContacts();
         }
 
         /// <summary>
@@ -881,25 +881,25 @@ namespace Alis.Core.Physic.Dynamics
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
         public void SetTransformIgnoreContacts(ref Vector2F position, float angle)
         {
-            Debug.Assert(World != null);
-            if (World.IsLocked)
+            Debug.Assert(GetWorld != null);
+            if (GetWorld.GetIsLocked)
             {
                 throw new InvalidOperationException("The World is locked.");
             }
 
-            _xf.Q.Phase = angle;
-            _xf.P = position;
+            Xf.Q.Phase = angle;
+            Xf.P = position;
 
-            _sweep.C = Transform.Multiply(ref _sweep.LocalCenter, ref _xf);
-            _sweep.A = angle;
+            Sweep.C = Transform.Multiply(ref Sweep.LocalCenter, ref Xf);
+            Sweep.A = angle;
 
-            _sweep.C0 = _sweep.C;
-            _sweep.A0 = angle;
+            Sweep.C0 = Sweep.C;
+            Sweep.A0 = angle;
 
-            IBroadPhase broadPhase = World.ContactManager.BroadPhase;
-            for (int i = 0; i < FixtureList._list.Count; i++)
+            IBroadPhase broadPhase = GetWorld.ContactManager.BroadPhase;
+            for (int i = 0; i < FixtureList.List.Count; i++)
             {
-                FixtureList._list[i].Synchronize(broadPhase, ref _xf, ref _xf);
+                FixtureList.List[i].Synchronize(broadPhase, ref Xf, ref Xf);
             }
         }
 
@@ -907,7 +907,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Get the body transform for the body's origin.
         /// </summary>
         /// <param name="transform">The transform of the body's origin.</param>
-        public Transform GetTransform() => _xf;
+        public Transform GetTransform() => Xf;
 
         /// <summary>
         ///     Get the body transform for the body's origin.
@@ -915,7 +915,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="transform">The transform of the body's origin.</param>
         public void GetTransform(out Transform transform)
         {
-            transform = _xf;
+            transform = Xf;
         }
 
         /// <summary>
@@ -936,7 +936,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="force">The force.</param>
         public void ApplyForce(ref Vector2F force)
         {
-            ApplyForce(ref force, ref _xf.P);
+            ApplyForce(ref force, ref Xf.P);
         }
 
         /// <summary>
@@ -945,7 +945,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="force">The force.</param>
         public void ApplyForce(Vector2F force)
         {
-            ApplyForce(ref force, ref _xf.P);
+            ApplyForce(ref force, ref Xf.P);
         }
 
         /// <summary>
@@ -970,7 +970,7 @@ namespace Alis.Core.Physic.Dynamics
                 }
 
                 Force += force;
-                _torque += (point.X - _sweep.C.X) * force.Y - (point.Y - _sweep.C.Y) * force.X;
+                Torque += (point.X - Sweep.C.X) * force.Y - (point.Y - Sweep.C.Y) * force.X;
             }
         }
 
@@ -991,7 +991,7 @@ namespace Alis.Core.Physic.Dynamics
                     Awake = true;
                 }
 
-                _torque += torque;
+                Torque += torque;
             }
         }
 
@@ -1035,7 +1035,7 @@ namespace Alis.Core.Physic.Dynamics
                 Awake = true;
             }
 
-            _linearVelocity += InvMass * impulse;
+            LinearVelocity += InvMass * impulse;
         }
 
         /// <summary>
@@ -1058,8 +1058,8 @@ namespace Alis.Core.Physic.Dynamics
                 Awake = true;
             }
 
-            _linearVelocity += InvMass * impulse;
-            AngularVelocity += InvI * ((point.X - _sweep.C.X) * impulse.Y - (point.Y - _sweep.C.Y) * impulse.X);
+            LinearVelocity += InvMass * impulse;
+            AngularVelocity += InvI * ((point.X - Sweep.C.X) * impulse.Y - (point.Y - Sweep.C.Y) * impulse.X);
         }
 
         /// <summary>
@@ -1093,38 +1093,38 @@ namespace Alis.Core.Physic.Dynamics
             InvMass = 0.0f;
             _inertia = 0.0f;
             InvI = 0.0f;
-            _sweep.LocalCenter = Vector2F.Zero;
+            Sweep.LocalCenter = Vector2F.Zero;
 
             // Kinematic bodies have zero mass.
-            if (BodyType == BodyType.Kinematic)
+            if (GetBodyType == BodyType.Kinematic)
             {
-                _sweep.C0 = _xf.P;
-                _sweep.C = _xf.P;
-                _sweep.A0 = _sweep.A;
+                Sweep.C0 = Xf.P;
+                Sweep.C = Xf.P;
+                Sweep.A0 = Sweep.A;
                 return;
             }
 
-            Debug.Assert(BodyType == BodyType.Dynamic || BodyType == BodyType.Static);
+            Debug.Assert(GetBodyType == BodyType.Dynamic || GetBodyType == BodyType.Static);
 
             // Accumulate mass over all fixtures.
             Vector2F localCenter = Vector2F.Zero;
             foreach (Fixture f in FixtureList)
             {
-                if (Math.Abs(f.Shape.Density) < SettingEnv.Epsilon)
+                if (Math.Abs(f.GetShape.Density) < SettingEnv.Epsilon)
                 {
                     continue;
                 }
 
-                MassData massData = f.Shape.MassData;
+                MassData massData = f.GetShape.MassData;
                 _mass += massData.Mass;
                 localCenter += massData.Mass * massData.Centroid;
                 _inertia += massData.Inertia;
             }
 
             //FPE: Static bodies only have mass, they don't have other properties. A little hacky tho...
-            if (BodyType == BodyType.Static)
+            if (GetBodyType == BodyType.Static)
             {
-                _sweep.C0 = _sweep.C = _xf.P;
+                Sweep.C0 = Sweep.C = Xf.P;
                 return;
             }
 
@@ -1156,13 +1156,13 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             // Move center of mass.
-            Vector2F oldCenter = _sweep.C;
-            _sweep.LocalCenter = localCenter;
-            _sweep.C0 = _sweep.C = Transform.Multiply(ref _sweep.LocalCenter, ref _xf);
+            Vector2F oldCenter = Sweep.C;
+            Sweep.LocalCenter = localCenter;
+            Sweep.C0 = Sweep.C = Transform.Multiply(ref Sweep.LocalCenter, ref Xf);
 
             // Update center of mass velocity.
-            Vector2F a = _sweep.C - oldCenter;
-            _linearVelocity += new Vector2F(-AngularVelocity * a.Y, AngularVelocity * a.X);
+            Vector2F a = Sweep.C - oldCenter;
+            LinearVelocity += new Vector2F(-AngularVelocity * a.Y, AngularVelocity * a.X);
         }
 
         /// <summary>
@@ -1170,7 +1170,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="localPoint">A point on the body measured relative the the body's origin.</param>
         /// <returns>The same point expressed in world coordinates.</returns>
-        public Vector2F GetWorldPoint(ref Vector2F localPoint) => Transform.Multiply(ref localPoint, ref _xf);
+        public Vector2F GetWorldPoint(ref Vector2F localPoint) => Transform.Multiply(ref localPoint, ref Xf);
 
         /// <summary>
         ///     Get the world coordinates of a point given the local coordinates.
@@ -1185,7 +1185,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="localVector">A vector fixed in the body.</param>
         /// <returns>The same vector expressed in world coordinates.</returns>
-        public Vector2F GetWorldVector(ref Vector2F localVector) => Complex.Multiply(ref localVector, ref _xf.Q);
+        public Vector2F GetWorldVector(ref Vector2F localVector) => Complex.Multiply(ref localVector, ref Xf.Q);
 
         /// <summary>
         ///     Get the world coordinates of a vector given the local coordinates.
@@ -1200,7 +1200,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="worldPoint">A point in world coordinates.</param>
         /// <returns>The corresponding local point relative to the body's origin.</returns>
-        public Vector2F GetLocalPoint(ref Vector2F worldPoint) => Transform.Divide(ref worldPoint, ref _xf);
+        public Vector2F GetLocalPoint(ref Vector2F worldPoint) => Transform.Divide(ref worldPoint, ref Xf);
 
         /// <summary>
         ///     Gets a local point relative to the body's origin given a world point.
@@ -1215,7 +1215,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="worldVector">A vector in world coordinates.</param>
         /// <returns>The corresponding local vector.</returns>
-        public Vector2F GetLocalVector(ref Vector2F worldVector) => Complex.Divide(ref worldVector, ref _xf.Q);
+        public Vector2F GetLocalVector(ref Vector2F worldVector) => Complex.Divide(ref worldVector, ref Xf.Q);
 
         /// <summary>
         ///     Gets a local vector given a world vector.
@@ -1237,9 +1237,9 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="worldPoint">A point in world coordinates.</param>
         /// <returns>The world velocity of a point.</returns>
-        public Vector2F GetLinearVelocityFromWorldPoint(ref Vector2F worldPoint) => _linearVelocity +
-                                                                                    new Vector2F(-AngularVelocity * (worldPoint.Y - _sweep.C.Y),
-                                                                                        AngularVelocity * (worldPoint.X - _sweep.C.X));
+        public Vector2F GetLinearVelocityFromWorldPoint(ref Vector2F worldPoint) => LinearVelocity +
+                                                                                    new Vector2F(-AngularVelocity * (worldPoint.Y - Sweep.C.Y),
+                                                                                        AngularVelocity * (worldPoint.X - Sweep.C.X));
 
         /// <summary>
         ///     Get the world velocity of a local point.
@@ -1260,13 +1260,13 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         internal void SynchronizeFixtures()
         {
-            Transform xf1 = new Transform(Vector2F.Zero, _sweep.A0);
-            xf1.P = _sweep.C0 - Complex.Multiply(ref _sweep.LocalCenter, ref xf1.Q);
+            Transform xf1 = new Transform(Vector2F.Zero, Sweep.A0);
+            xf1.P = Sweep.C0 - Complex.Multiply(ref Sweep.LocalCenter, ref xf1.Q);
 
-            IBroadPhase broadPhase = World.ContactManager.BroadPhase;
-            for (int i = 0; i < FixtureList._list.Count; i++)
+            IBroadPhase broadPhase = GetWorld.ContactManager.BroadPhase;
+            for (int i = 0; i < FixtureList.List.Count; i++)
             {
-                FixtureList._list[i].Synchronize(broadPhase, ref xf1, ref _xf);
+                FixtureList.List[i].Synchronize(broadPhase, ref xf1, ref Xf);
             }
         }
 
@@ -1275,8 +1275,8 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         internal void SynchronizeTransform()
         {
-            _xf.Q.Phase = _sweep.A;
-            _xf.P = _sweep.C - Complex.Multiply(ref _sweep.LocalCenter, ref _xf.Q);
+            Xf.Q.Phase = Sweep.A;
+            Xf.P = Sweep.C - Complex.Multiply(ref Sweep.LocalCenter, ref Xf.Q);
         }
 
         /// <summary>
@@ -1315,11 +1315,11 @@ namespace Alis.Core.Physic.Dynamics
         internal void Advance(float alpha)
         {
             // Advance to the new safe time. This doesn't sync the broad-phase.
-            _sweep.Advance(alpha);
-            _sweep.C = _sweep.C0;
-            _sweep.A = _sweep.A0;
-            _xf.Q.Phase = _sweep.A;
-            _xf.P = _sweep.C - Complex.Multiply(ref _sweep.LocalCenter, ref _xf.Q);
+            Sweep.Advance(alpha);
+            Sweep.C = Sweep.C0;
+            Sweep.A = Sweep.A0;
+            Xf.Q.Phase = Sweep.A;
+            Xf.P = Sweep.C - Complex.Multiply(ref Sweep.LocalCenter, ref Xf.Q);
         }
 
         /// <summary>
@@ -1327,8 +1327,8 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public event OnCollisionEventHandler OnCollision
         {
-            add => onCollisionEventHandler += value;
-            remove => onCollisionEventHandler -= value;
+            add => OnCollisionEventHandler += value;
+            remove => OnCollisionEventHandler -= value;
         }
 
         /// <summary>
@@ -1336,8 +1336,8 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public event OnSeparationEventHandler OnSeparation
         {
-            add => onSeparationEventHandler += value;
-            remove => onSeparationEventHandler -= value;
+            add => OnSeparationEventHandler += value;
+            remove => OnSeparationEventHandler -= value;
         }
 
 
@@ -1349,9 +1349,9 @@ namespace Alis.Core.Physic.Dynamics
         /// <remarks>Deprecated in version 1.6</remarks>
         public void SetRestitution(float restitution)
         {
-            for (int i = 0; i < FixtureList._list.Count; i++)
+            for (int i = 0; i < FixtureList.List.Count; i++)
             {
-                FixtureList._list[i].Restitution = restitution;
+                FixtureList.List[i].GetRestitution = restitution;
             }
         }
 
@@ -1363,9 +1363,9 @@ namespace Alis.Core.Physic.Dynamics
         /// <remarks>Deprecated in version 1.6</remarks>
         public void SetFriction(float friction)
         {
-            for (int i = 0; i < FixtureList._list.Count; i++)
+            for (int i = 0; i < FixtureList.List.Count; i++)
             {
-                FixtureList._list[i].Friction = friction;
+                FixtureList.List[i].GetFriction = friction;
             }
         }
 
@@ -1375,9 +1375,9 @@ namespace Alis.Core.Physic.Dynamics
         /// <remarks>Deprecated in version 1.6</remarks>
         public void SetCollisionCategories(Category category)
         {
-            for (int i = 0; i < FixtureList._list.Count; i++)
+            for (int i = 0; i < FixtureList.List.Count; i++)
             {
-                FixtureList._list[i].CollisionCategories = category;
+                FixtureList.List[i].GetCollisionCategories = category;
             }
         }
 
@@ -1387,9 +1387,9 @@ namespace Alis.Core.Physic.Dynamics
         /// <remarks>Deprecated in version 1.6</remarks>
         public void SetCollidesWith(Category category)
         {
-            for (int i = 0; i < FixtureList._list.Count; i++)
+            for (int i = 0; i < FixtureList.List.Count; i++)
             {
-                FixtureList._list[i].CollidesWith = category;
+                FixtureList.List[i].GetCollidesWith = category;
             }
         }
 
@@ -1399,9 +1399,9 @@ namespace Alis.Core.Physic.Dynamics
         /// <remarks>Deprecated in version 1.6</remarks>
         public void SetCollisionGroup(short collisionGroup)
         {
-            for (int i = 0; i < FixtureList._list.Count; i++)
+            for (int i = 0; i < FixtureList.List.Count; i++)
             {
-                FixtureList._list[i].CollisionGroup = collisionGroup;
+                FixtureList.List[i].GetCollisionGroup = collisionGroup;
             }
         }
 
@@ -1411,9 +1411,9 @@ namespace Alis.Core.Physic.Dynamics
         /// <remarks>Deprecated in version 1.6</remarks>
         public void SetIsSensor(bool isSensor)
         {
-            for (int i = 0; i < FixtureList._list.Count; i++)
+            for (int i = 0; i < FixtureList.List.Count; i++)
             {
-                FixtureList._list[i].IsSensor = isSensor;
+                FixtureList.List[i].GetIsSensor = isSensor;
             }
         }
 
@@ -1425,10 +1425,10 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns></returns>
         public Body Clone(World world = null)
         {
-            world = world ?? World;
+            world = world ?? GetWorld;
             Body body = world.CreateBody(Position, Rotation);
             body._bodyType = _bodyType;
-            body._linearVelocity = _linearVelocity;
+            body.LinearVelocity = LinearVelocity;
             body.AngularVelocity = AngularVelocity;
             body.Tag = Tag;
             body.Enabled = Enabled;
@@ -1438,9 +1438,9 @@ namespace Alis.Core.Physic.Dynamics
             body._angularDamping = _angularDamping;
             body._awake = _awake;
             body.IsBullet = IsBullet;
-            body.IgnoreCCD = IgnoreCCD;
+            body.IgnoreCcd = IgnoreCcd;
             body.IgnoreGravity = IgnoreGravity;
-            body._torque = _torque;
+            body.Torque = Torque;
 
             return body;
         }
@@ -1452,12 +1452,12 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns></returns>
         public Body DeepClone(World world = null)
         {
-            Body body = Clone(world ?? World);
+            Body body = Clone(world ?? GetWorld);
 
-            int count = FixtureList._list.Count; //Make a copy of the count. Otherwise it causes an infinite loop.
+            int count = FixtureList.List.Count; //Make a copy of the count. Otherwise it causes an infinite loop.
             for (int i = 0; i < count; i++)
             {
-                FixtureList._list[i].CloneOnto(body);
+                FixtureList.List[i].CloneOnto(body);
             }
 
             return body;

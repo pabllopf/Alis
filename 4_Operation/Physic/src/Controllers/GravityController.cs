@@ -116,7 +116,7 @@ namespace Alis.Core.Physic.Controllers
 
                 foreach (Body controllerBody in Bodies)
                 {
-                    if (worldBody == controllerBody || ((worldBody.BodyType == BodyType.Static) && (controllerBody.BodyType == BodyType.Static)) || !controllerBody.Enabled)
+                    if (worldBody == controllerBody || ((worldBody.GetBodyType == BodyType.Static) && (controllerBody.GetBodyType == BodyType.Static)) || !controllerBody.Enabled)
                     {
                         continue;
                     }
