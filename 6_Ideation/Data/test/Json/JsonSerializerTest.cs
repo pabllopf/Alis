@@ -4518,8 +4518,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void ReadNew_WhenReaderContainsNull_ReturnsNull_v2()
         {
             StringReader reader = new StringReader("null");
-            bool arrayEnd;
-            object result = JsonSerializer.ReadNew(reader, new JsonOptions(), out arrayEnd);
+            object result = JsonSerializer.ReadNew(reader, new JsonOptions(), out bool _);
             Assert.Null(result);
         }
 
@@ -4530,8 +4529,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void ReadNew_WhenReaderContainsDateTime_ReturnsDateTime()
         {
             StringReader reader = new StringReader("\"/Date(946684800000)/\"");
-            bool arrayEnd;
-            Assert.Throws<JsonException>(() => JsonSerializer.ReadNew(reader, new JsonOptions(), out arrayEnd));
+            Assert.Throws<JsonException>(() => JsonSerializer.ReadNew(reader, new JsonOptions(), out bool _));
         }
 
         /// <summary>
@@ -4541,8 +4539,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void ReadNew_WhenReaderContainsUnexpectedCharacter_ThrowsJsonException_v2()
         {
             StringReader reader = new StringReader("unexpected");
-            bool arrayEnd;
-            Assert.Throws<JsonException>(() => JsonSerializer.ReadNew(reader, new JsonOptions(), out arrayEnd));
+            Assert.Throws<JsonException>(() => JsonSerializer.ReadNew(reader, new JsonOptions(), out bool _));
         }
 
         /// <summary>
@@ -4552,8 +4549,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void ReadNew_WhenReaderContainsEndOfArray_SetsArrayEndToTrue()
         {
             StringReader reader = new StringReader("]");
-            bool arrayEnd;
-            Assert.Throws<IndexOutOfRangeException>(() => JsonSerializer.ReadNew(reader, new JsonOptions(), out arrayEnd));
+            Assert.Throws<IndexOutOfRangeException>(() => JsonSerializer.ReadNew(reader, new JsonOptions(), out bool _));
         }
 
         /// <summary>

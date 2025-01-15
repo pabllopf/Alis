@@ -63,8 +63,7 @@ namespace Alis.Core.Physic.Collision
             _input.TransformB = xfB;
             _input.UseRadii = true;
 
-            SimplexCache cache;
-            Distance.ComputeDistance(out DistanceOutput output, out cache, _input);
+            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache _, _input);
 
             return output.Distance < 10.0f * SettingEnv.Epsilon;
         }
@@ -123,8 +122,8 @@ namespace Alis.Core.Physic.Collision
         {
             manifold.PointCount = 0;
 
-            Vector2F pA = Transform.Multiply(ref circleA._position, ref xfA);
-            Vector2F pB = Transform.Multiply(ref circleB._position, ref xfB);
+            Vector2F pA = Transform.Multiply(ref circleA.PositionInternal, ref xfA);
+            Vector2F pB = Transform.Multiply(ref circleB.PositionInternal, ref xfB);
 
             Vector2F d = pB - pA;
             float distSqr = Vector2F.Dot(d, d);
@@ -160,7 +159,7 @@ namespace Alis.Core.Physic.Collision
             manifold.PointCount = 0;
 
             // Compute circle position in the frame of the polygon.
-            Vector2F c = Transform.Multiply(ref circleB._position, ref xfB);
+            Vector2F c = Transform.Multiply(ref circleB.PositionInternal, ref xfB);
             Vector2F cLocal = Transform.Divide(ref c, ref xfA);
 
             // Find the min separating edge.
@@ -445,7 +444,7 @@ namespace Alis.Core.Physic.Collision
             manifold.PointCount = 0;
 
             // Compute circle in frame of edge
-            Vector2F Q = Transform.Divide(Transform.Multiply(ref circleB._position, ref transformB), ref transformA);
+            Vector2F Q = Transform.Divide(Transform.Multiply(ref circleB.PositionInternal, ref transformB), ref transformA);
 
             Vector2F A = edgeA.Vertex1, B = edgeA.Vertex2;
             Vector2F e = B - A;
