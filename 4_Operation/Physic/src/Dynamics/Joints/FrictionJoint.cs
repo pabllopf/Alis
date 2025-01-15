@@ -74,12 +74,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The inv ia
         /// </summary>
-        private float _invIA;
+        private float invIa;
 
         /// <summary>
         ///     The inv ib
         /// </summary>
-        private float _invIB;
+        private float invIb;
 
         /// <summary>
         ///     The inv mass
@@ -215,8 +215,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _localCenterB = BodyB._sweep.LocalCenter;
             _invMassA = BodyA.InvMass;
             _invMassB = BodyB.InvMass;
-            _invIA = BodyA.InvI;
-            _invIB = BodyB.InvI;
+            invIa = BodyA.InvI;
+            invIb = BodyB.InvI;
 
             float aA = data.Positions[_indexA].A;
             Vector2F vA = data.Velocities[_indexA].v;
@@ -243,15 +243,15 @@ namespace Alis.Core.Physic.Dynamics.Joints
             //     [          -r1y*iA-r2y*iB,           r1x*iA+r2x*iB,                   iA+iB]
 
             float mA = _invMassA, mB = _invMassB;
-            float iA = _invIA, iB = _invIB;
+            float iA = invIa, iB = invIb;
 
-            Mat22 K = new Mat22();
-            K.Ex.X = mA + mB + iA * _rA.Y * _rA.Y + iB * _rB.Y * _rB.Y;
-            K.Ex.Y = -iA * _rA.X * _rA.Y - iB * _rB.X * _rB.Y;
-            K.Ey.X = K.Ex.Y;
-            K.Ey.Y = mA + mB + iA * _rA.X * _rA.X + iB * _rB.X * _rB.X;
+            Mat22 k = new Mat22();
+            k.Ex.X = mA + mB + iA * _rA.Y * _rA.Y + iB * _rB.Y * _rB.Y;
+            k.Ex.Y = -iA * _rA.X * _rA.Y - iB * _rB.X * _rB.Y;
+            k.Ey.X = k.Ex.Y;
+            k.Ey.Y = mA + mB + iA * _rA.X * _rA.X + iB * _rB.X * _rB.X;
 
-            _linearMass = K.Inverse;
+            _linearMass = k.Inverse;
 
             _angularMass = iA + iB;
             if (_angularMass > 0.0f)
@@ -265,11 +265,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _linearImpulse *= data.Step.DtRatio;
                 _angularImpulse *= data.Step.DtRatio;
 
-                Vector2F P = new Vector2F(_linearImpulse.X, _linearImpulse.Y);
-                vA -= mA * P;
-                wA -= iA * (MathUtils.Cross(ref _rA, ref P) + _angularImpulse);
-                vB += mB * P;
-                wB += iB * (MathUtils.Cross(ref _rB, ref P) + _angularImpulse);
+                Vector2F p = new Vector2F(_linearImpulse.X, _linearImpulse.Y);
+                vA -= mA * p;
+                wA -= iA * (MathUtils.Cross(ref _rA, ref p) + _angularImpulse);
+                vB += mB * p;
+                wB += iB * (MathUtils.Cross(ref _rB, ref p) + _angularImpulse);
             }
             else
             {
@@ -295,14 +295,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float wB = data.Velocities[_indexB].w;
 
             float mA = _invMassA, mB = _invMassB;
-            float iA = _invIA, iB = _invIB;
+            float iA = invIa, iB = invIb;
 
             float h = data.Step.Dt;
 
             // Solve angular friction
             {
-                float Cdot = wB - wA;
-                float impulse = -_angularMass * Cdot;
+                float cdot = wB - wA;
+                float impulse = -_angularMass * cdot;
 
                 float oldImpulse = _angularImpulse;
                 float maxImpulse = h * MaxTorque;
@@ -315,9 +315,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             // Solve linear friction
             {
-                Vector2F Cdot = vB + MathUtils.Cross(wB, ref _rB) - vA - MathUtils.Cross(wA, ref _rA);
+                Vector2F cdot = vB + MathUtils.Cross(wB, ref _rB) - vA - MathUtils.Cross(wA, ref _rA);
 
-                Vector2F impulse = -MathUtils.Mul(ref _linearMass, ref Cdot);
+                Vector2F impulse = -MathUtils.Mul(ref _linearMass, ref cdot);
                 Vector2F oldImpulse = _linearImpulse;
                 _linearImpulse += impulse;
 

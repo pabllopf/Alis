@@ -528,9 +528,9 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     // Invalidate TOI
                     c.IslandFlag = false;
-                    c.TOIFlag = false;
-                    c._toiCount = 0;
-                    c._toi = 1.0f;
+                    c.ToiFlag = false;
+                    c.ToiCount = 0;
+                    c.Toi = 1.0f;
                 }
             }
 
@@ -551,16 +551,16 @@ namespace Alis.Core.Physic.Dynamics
                     }
 
                     // Prevent excessive sub-stepping.
-                    if (c._toiCount > SettingEnv.MaxSubSteps)
+                    if (c.ToiCount > SettingEnv.MaxSubSteps)
                     {
                         continue;
                     }
 
                     float alpha;
-                    if (c.TOIFlag)
+                    if (c.ToiFlag)
                     {
                         // This contact has a valid cached TOI.
-                        alpha = c._toi;
+                        alpha = c.Toi;
                     }
                     else
                     {
@@ -635,8 +635,8 @@ namespace Alis.Core.Physic.Dynamics
                             alpha = 1.0f;
                         }
 
-                        c._toi = alpha;
-                        c.TOIFlag = true;
+                        c.Toi = alpha;
+                        c.ToiFlag = true;
                     }
 
                     if (alpha < minAlpha)
@@ -668,8 +668,8 @@ namespace Alis.Core.Physic.Dynamics
 
                 // The TOI contact likely has some new contact points.
                 minContact.Update(ContactManager);
-                minContact.TOIFlag = false;
-                ++minContact._toiCount;
+                minContact.ToiFlag = false;
+                ++minContact.ToiCount;
 
                 // Is the contact solid?
                 if (minContact.Enabled == false || minContact.IsTouching == false)
@@ -811,7 +811,7 @@ namespace Alis.Core.Physic.Dynamics
                     // Invalidate all contact TOIs on this displaced body.
                     for (ContactEdge ce = body.ContactList; ce != null; ce = ce.Next)
                     {
-                        ce.Contact.TOIFlag = false;
+                        ce.Contact.ToiFlag = false;
                         ce.Contact.IslandFlag = false;
                     }
                 }

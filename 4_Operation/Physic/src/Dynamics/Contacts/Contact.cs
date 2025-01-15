@@ -45,12 +45,12 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     The edge shape
         /// </summary>
-        private static readonly EdgeShape _edge = new EdgeShape();
+        private static readonly EdgeShape Edge = new EdgeShape();
 
         /// <summary>
         ///     The not supported
         /// </summary>
-        private static readonly ContactType[,] _registers =
+        private static readonly ContactType[,] Registers =
         {
             {
                 ContactType.Circle,
@@ -86,22 +86,22 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     The contact edge
         /// </summary>
-        internal ContactEdge _nodeA = new ContactEdge();
+        internal ContactEdge NodeA = new ContactEdge();
 
         /// <summary>
         ///     The contact edge
         /// </summary>
-        internal ContactEdge _nodeB = new ContactEdge();
+        internal ContactEdge NodeB = new ContactEdge();
 
         /// <summary>
         ///     The toi
         /// </summary>
-        internal float _toi;
+        internal float Toi;
 
         /// <summary>
         ///     The toi count
         /// </summary>
-        internal int _toiCount;
+        internal int ToiCount;
 
         /// <summary>
         ///     The type
@@ -197,7 +197,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     Gets or sets the value of the toi flag
         /// </summary>
-        internal bool TOIFlag { get; set; }
+        internal bool ToiFlag { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the filter flag
@@ -246,7 +246,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             IsTouching = false;
             IslandFlag = false;
             FilterFlag = false;
-            TOIFlag = false;
+            ToiFlag = false;
 
             FixtureA = fA;
             FixtureB = fB;
@@ -259,17 +259,17 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             Next = null;
             Prev = null;
 
-            _nodeA.Contact = null;
-            _nodeA.Other = null;
-            _nodeA.Next = null;
-            _nodeA.Prev = null;
+            NodeA.Contact = null;
+            NodeA.Other = null;
+            NodeA.Next = null;
+            NodeA.Prev = null;
 
-            _nodeB.Contact = null;
-            _nodeB.Other = null;
-            _nodeB.Next = null;
-            _nodeB.Prev = null;
+            NodeB.Contact = null;
+            NodeB.Other = null;
+            NodeB.Next = null;
+            NodeB.Prev = null;
 
-            _toiCount = 0;
+            ToiCount = 0;
 
             //FPE: We only set the friction and restitution if we are not destroying the contact
             if ((FixtureA != null) && (FixtureB != null))
@@ -495,13 +495,13 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     break;
                 case ContactType.ChainAndCircle:
                     ChainShape chain = (ChainShape) FixtureA.Shape;
-                    chain.GetChildEdge(_edge, ChildIndexA);
-                    Collision.Collision.CollideEdgeAndCircle(ref manifold, _edge, ref transformA, (CircleShape) FixtureB.Shape, ref transformB);
+                    chain.GetChildEdge(Edge, ChildIndexA);
+                    Collision.Collision.CollideEdgeAndCircle(ref manifold, Edge, ref transformA, (CircleShape) FixtureB.Shape, ref transformB);
                     break;
                 case ContactType.ChainAndPolygon:
                     ChainShape loop2 = (ChainShape) FixtureA.Shape;
-                    loop2.GetChildEdge(_edge, ChildIndexA);
-                    Collision.Collision.CollideEdgeAndPolygon(ref manifold, _edge, ref transformA, (PolygonShape) FixtureB.Shape, ref transformB);
+                    loop2.GetChildEdge(Edge, ChildIndexA);
+                    Collision.Collision.CollideEdgeAndPolygon(ref manifold, Edge, ref transformA, (PolygonShape) FixtureB.Shape, ref transformB);
                     break;
                 case ContactType.Circle:
                     Collision.Collision.CollideCircles(ref manifold, (CircleShape) FixtureA.Shape, ref transformA, (CircleShape) FixtureB.Shape, ref transformB);
@@ -562,7 +562,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             }
 
 
-            c._type = _registers[(int) type1, (int) type2];
+            c._type = Registers[(int) type1, (int) type2];
 
             return c;
         }
