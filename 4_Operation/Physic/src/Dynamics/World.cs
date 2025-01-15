@@ -1332,7 +1332,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="callback">A user implemented callback class.</param>
         /// <param name="aabb">The aabb query box.</param>
-        public void QueryAabb(QueryReportFixtureDelegate callback, AABB aabb)
+        public void QueryAabb(QueryReportFixtureDelegate callback, Aabb aabb)
         {
             QueryAabb(callback, ref aabb);
         }
@@ -1345,7 +1345,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="callback">A user implemented callback class.</param>
         /// <param name="aabb">The aabb query box.</param>
-        public void QueryAabb(QueryReportFixtureDelegate callback, ref AABB aabb)
+        public void QueryAabb(QueryReportFixtureDelegate callback, ref Aabb aabb)
         {
             _queryDelegateTmp = callback;
             ContactManager.BroadPhase.Query(_queryCallbackCache, ref aabb);
@@ -1487,7 +1487,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>The test point fixture tmp</returns>
         public Fixture TestPoint(Vector2F point)
         {
-            AABB aabb;
+            Aabb aabb;
             Vector2F d = new Vector2F(SettingEnv.Epsilon, SettingEnv.Epsilon);
             aabb.LowerBound = point - d;
             aabb.UpperBound = point + d;

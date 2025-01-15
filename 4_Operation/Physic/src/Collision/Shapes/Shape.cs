@@ -152,7 +152,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="aabb">The aabb results.</param>
         /// <param name="transform">The world transform of the shape.</param>
         /// <param name="childIndex">The child shape index.</param>
-        public abstract void ComputeAABB(out AABB aabb, ref Transform transform, int childIndex);
+        public abstract void ComputeAABB(out Aabb aabb, ref Transform transform, int childIndex);
 
         /// <summary>
         ///     Compute the mass properties of this shape using its dimensions and density.

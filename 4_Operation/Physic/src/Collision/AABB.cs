@@ -37,7 +37,7 @@ namespace Alis.Core.Physic.Collision
     /// <summary>
     ///     An axis aligned bounding box.
     /// </summary>
-    public struct AABB
+    public struct Aabb
     {
         /// <summary>
         ///     The lower vertex
@@ -50,33 +50,33 @@ namespace Alis.Core.Physic.Collision
         public Vector2F UpperBound;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="AABB" /> class
+        ///     Initializes a new instance of the <see cref="Aabb" /> class
         /// </summary>
         /// <param name="min">The min</param>
         /// <param name="max">The max</param>
-        public AABB(Vector2F min, Vector2F max)
+        public Aabb(Vector2F min, Vector2F max)
             : this(ref min, ref max)
         {
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="AABB" /> class
+        ///     Initializes a new instance of the <see cref="Aabb" /> class
         /// </summary>
         /// <param name="min">The min</param>
         /// <param name="max">The max</param>
-        public AABB(ref Vector2F min, ref Vector2F max)
+        public Aabb(ref Vector2F min, ref Vector2F max)
         {
             LowerBound = min;
             UpperBound = max;
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="AABB" /> class
+        ///     Initializes a new instance of the <see cref="Aabb" /> class
         /// </summary>
         /// <param name="center">The center</param>
         /// <param name="width">The width</param>
         /// <param name="height">The height</param>
-        public AABB(Vector2F center, float width, float height)
+        public Aabb(Vector2F center, float width, float height)
         {
             LowerBound = center - new Vector2F(width / 2, height / 2);
             UpperBound = center + new Vector2F(width / 2, height / 2);
@@ -135,22 +135,22 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     First quadrant
         /// </summary>
-        public AABB Q1 => new AABB(Center, UpperBound);
+        public Aabb Q1 => new Aabb(Center, UpperBound);
 
         /// <summary>
         ///     Second quadrant
         /// </summary>
-        public AABB Q2 => new AABB(new Vector2F(LowerBound.X, Center.Y), new Vector2F(Center.X, UpperBound.Y));
+        public Aabb Q2 => new Aabb(new Vector2F(LowerBound.X, Center.Y), new Vector2F(Center.X, UpperBound.Y));
 
         /// <summary>
         ///     Third quadrant
         /// </summary>
-        public AABB Q3 => new AABB(LowerBound, Center);
+        public Aabb Q3 => new Aabb(LowerBound, Center);
 
         /// <summary>
         ///     Forth quadrant
         /// </summary>
-        public AABB Q4 => new AABB(new Vector2F(Center.X, LowerBound.Y), new Vector2F(UpperBound.X, Center.Y));
+        public Aabb Q4 => new Aabb(new Vector2F(Center.X, LowerBound.Y), new Vector2F(UpperBound.X, Center.Y));
 
         /// <summary>
         ///     Verify that the bounds are sorted. And the bounds are valid numbers (not NaN).
@@ -170,7 +170,7 @@ namespace Alis.Core.Physic.Collision
         ///     Combine an AABB into this one.
         /// </summary>
         /// <param name="aabb">The aabb.</param>
-        public void Combine(ref AABB aabb)
+        public void Combine(ref Aabb aabb)
         {
             Vector2F.Min(ref LowerBound, ref aabb.LowerBound, out LowerBound);
             Vector2F.Max(ref UpperBound, ref aabb.UpperBound, out UpperBound);
@@ -181,7 +181,7 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         /// <param name="aabb1">The aabb1.</param>
         /// <param name="aabb2">The aabb2.</param>
-        public void Combine(ref AABB aabb1, ref AABB aabb2)
+        public void Combine(ref Aabb aabb1, ref Aabb aabb2)
         {
             Vector2F.Min(ref aabb1.LowerBound, ref aabb2.LowerBound, out LowerBound);
             Vector2F.Max(ref aabb1.UpperBound, ref aabb2.UpperBound, out UpperBound);
@@ -194,7 +194,7 @@ namespace Alis.Core.Physic.Collision
         /// <returns>
         ///     <c>true</c> if it contains the specified aabb; otherwise, <c>false</c>.
         /// </returns>
-        public bool Contains(ref AABB aabb)
+        public bool Contains(ref Aabb aabb)
         {
             bool result = true;
             result = result && (LowerBound.X <= aabb.LowerBound.X);
@@ -222,7 +222,7 @@ namespace Alis.Core.Physic.Collision
         /// <param name="a">The first AABB.</param>
         /// <param name="b">The second AABB.</param>
         /// <returns>True if they are overlapping.</returns>
-        public static bool TestOverlap(ref AABB a, ref AABB b)
+        public static bool TestOverlap(ref Aabb a, ref Aabb b)
         {
             if (b.LowerBound.X > a.UpperBound.X || b.LowerBound.Y > a.UpperBound.Y)
             {
@@ -260,26 +260,26 @@ namespace Alis.Core.Physic.Collision
 
             for (int i = 0; i < 2; ++i)
             {
-                float absD_i = i == 0 ? absD.X : absD.Y;
-                float lowerBound_i = i == 0 ? LowerBound.X : LowerBound.Y;
-                float upperBound_i = i == 0 ? UpperBound.X : UpperBound.Y;
-                float p_i = i == 0 ? p.X : p.Y;
+                float absDI = i == 0 ? absD.X : absD.Y;
+                float lowerBoundI = i == 0 ? LowerBound.X : LowerBound.Y;
+                float upperBoundI = i == 0 ? UpperBound.X : UpperBound.Y;
+                float pI = i == 0 ? p.X : p.Y;
 
-                if (absD_i < SettingEnv.Epsilon)
+                if (absDI < SettingEnv.Epsilon)
                 {
                     // Parallel.
-                    if (p_i < lowerBound_i || upperBound_i < p_i)
+                    if (pI < lowerBoundI || upperBoundI < pI)
                     {
                         return false;
                     }
                 }
                 else
                 {
-                    float d_i = i == 0 ? d.X : d.Y;
+                    float dI = i == 0 ? d.X : d.Y;
 
-                    float inv_d = 1.0f / d_i;
-                    float t1 = (lowerBound_i - p_i) * inv_d;
-                    float t2 = (upperBound_i - p_i) * inv_d;
+                    float invD = 1.0f / dI;
+                    float t1 = (lowerBoundI - pI) * invD;
+                    float t2 = (upperBoundI - pI) * invD;
 
                     // Sign of the normal vector.
                     float s = -1.0f;

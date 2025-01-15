@@ -129,7 +129,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         /// <returns>A list of bodies and the amount of force that was applied to them.</returns>
         public Dictionary<Fixture, Vector2F> Activate(Vector2F pos, float radius, float maxForce)
         {
-            AABB aabb;
+            Aabb aabb;
             aabb.LowerBound = pos + new Vector2F(-radius, -radius);
             aabb.UpperBound = pos + new Vector2F(radius, radius);
             Fixture[] shapes = new Fixture[MaxShapes];

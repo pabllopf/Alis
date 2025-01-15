@@ -54,7 +54,7 @@ namespace Alis.Core.Physic.Controllers
         /// <summary>
         ///     The container
         /// </summary>
-        private AABB _container;
+        private Aabb _container;
 
         /// <summary>
         ///     The normal
@@ -98,7 +98,7 @@ namespace Alis.Core.Physic.Controllers
         /// <param name="linearDragCoefficient">Linear drag coefficient of the fluid</param>
         /// <param name="rotationalDragCoefficient">Rotational drag coefficient of the fluid</param>
         /// <param name="gravity">The direction gravity acts. Buoyancy force will act in opposite direction of gravity.</param>
-        public BuoyancyController(AABB container, float density, float linearDragCoefficient, float rotationalDragCoefficient, Vector2F gravity)
+        public BuoyancyController(Aabb container, float density, float linearDragCoefficient, float rotationalDragCoefficient, Vector2F gravity)
         {
             Container = container;
             _normal = new Vector2F(0, 1);
@@ -111,7 +111,7 @@ namespace Alis.Core.Physic.Controllers
         /// <summary>
         ///     Gets or sets the value of the container
         /// </summary>
-        public AABB Container
+        public Aabb Container
         {
             get => _container;
             set

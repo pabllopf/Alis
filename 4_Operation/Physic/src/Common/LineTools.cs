@@ -344,6 +344,6 @@ namespace Alis.Core.Physic.Common
         /// <param name="point1">The first point of the line segment to test</param>
         /// <param name="point2">The second point of the line segment to test.</param>
         /// <param name="aabb">The AABB that is used for testing intersection.</param>
-        public static Vertices LineSegmentAabbIntersect(ref Vector2F point1, ref Vector2F point2, AABB aabb) => LineSegmentVerticesIntersect(ref point1, ref point2, aabb.Vertices);
+        public static Vertices LineSegmentAabbIntersect(ref Vector2F point1, ref Vector2F point2, Aabb aabb) => LineSegmentVerticesIntersect(ref point1, ref point2, aabb.Vertices);
     }
 }
