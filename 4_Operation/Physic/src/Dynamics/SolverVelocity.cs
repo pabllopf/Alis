@@ -37,11 +37,11 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The
         /// </summary>
-        public Vector2F v;
+        public Vector2F V;
 
         /// <summary>
         ///     The
         /// </summary>
-        public float w;
+        public float W;
     }
 }

@@ -245,8 +245,8 @@ namespace Alis.Core.Physic.Dynamics
 
                 Positions[i].C = c;
                 Positions[i].A = a;
-                Velocities[i].v = v;
-                Velocities[i].w = w;
+                Velocities[i].V = v;
+                Velocities[i].W = w;
             }
 
             // Solver data
@@ -320,8 +320,8 @@ namespace Alis.Core.Physic.Dynamics
             {
                 Vector2F c = Positions[i].C;
                 float a = Positions[i].A;
-                Vector2F v = Velocities[i].v;
-                float w = Velocities[i].w;
+                Vector2F v = Velocities[i].V;
+                float w = Velocities[i].W;
 
                 // Check for large velocities
                 Vector2F translation = h * v;
@@ -344,8 +344,8 @@ namespace Alis.Core.Physic.Dynamics
 
                 Positions[i].C = c;
                 Positions[i].A = a;
-                Velocities[i].v = v;
-                Velocities[i].w = w;
+                Velocities[i].V = v;
+                Velocities[i].W = w;
             }
 
 
@@ -400,8 +400,8 @@ namespace Alis.Core.Physic.Dynamics
                 Body body = Bodies[i];
                 body._sweep.C = Positions[i].C;
                 body._sweep.A = Positions[i].A;
-                body._linearVelocity = Velocities[i].v;
-                body.AngularVelocity = Velocities[i].w;
+                body._linearVelocity = Velocities[i].V;
+                body.AngularVelocity = Velocities[i].W;
                 body.SynchronizeTransform();
             }
 
@@ -460,8 +460,8 @@ namespace Alis.Core.Physic.Dynamics
                 Body b = Bodies[i];
                 Positions[i].C = b._sweep.C;
                 Positions[i].A = b._sweep.A;
-                Velocities[i].v = b._linearVelocity;
-                Velocities[i].w = b.AngularVelocity;
+                Velocities[i].V = b._linearVelocity;
+                Velocities[i].W = b.AngularVelocity;
             }
 
             _contactSolver.Reset(ref subStep, ContactCount, _contacts, Positions, Velocities,
@@ -503,8 +503,8 @@ namespace Alis.Core.Physic.Dynamics
             {
                 Vector2F c = Positions[i].C;
                 float a = Positions[i].A;
-                Vector2F v = Velocities[i].v;
-                float w = Velocities[i].w;
+                Vector2F v = Velocities[i].V;
+                float w = Velocities[i].W;
 
                 // Check for large velocities
                 Vector2F translation = h * v;
@@ -527,8 +527,8 @@ namespace Alis.Core.Physic.Dynamics
 
                 Positions[i].C = c;
                 Positions[i].A = a;
-                Velocities[i].v = v;
-                Velocities[i].w = w;
+                Velocities[i].V = v;
+                Velocities[i].W = w;
 
                 // Sync bodies
                 Body body = Bodies[i];

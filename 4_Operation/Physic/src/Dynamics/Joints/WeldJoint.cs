@@ -237,12 +237,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _invIB = BodyB.InvI;
 
             float aA = data.Positions[_indexA].A;
-            Vector2F vA = data.Velocities[_indexA].v;
-            float wA = data.Velocities[_indexA].w;
+            Vector2F vA = data.Velocities[_indexA].V;
+            float wA = data.Velocities[_indexA].W;
 
             float aB = data.Positions[_indexB].A;
-            Vector2F vB = data.Velocities[_indexB].v;
-            float wB = data.Velocities[_indexB].w;
+            Vector2F vB = data.Velocities[_indexB].V;
+            float wB = data.Velocities[_indexB].W;
 
             Complex qA = Complex.FromAngle(aA);
             Complex qB = Complex.FromAngle(aB);
@@ -322,10 +322,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _impulse = Vector3F.Zero;
             }
 
-            data.Velocities[_indexA].v = vA;
-            data.Velocities[_indexA].w = wA;
-            data.Velocities[_indexB].v = vB;
-            data.Velocities[_indexB].w = wB;
+            data.Velocities[_indexA].V = vA;
+            data.Velocities[_indexA].W = wA;
+            data.Velocities[_indexB].V = vB;
+            data.Velocities[_indexB].W = wB;
         }
 
         /// <summary>
@@ -334,10 +334,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(ref SolverData data)
         {
-            Vector2F vA = data.Velocities[_indexA].v;
-            float wA = data.Velocities[_indexA].w;
-            Vector2F vB = data.Velocities[_indexB].v;
-            float wB = data.Velocities[_indexB].w;
+            Vector2F vA = data.Velocities[_indexA].V;
+            float wA = data.Velocities[_indexA].W;
+            Vector2F vB = data.Velocities[_indexB].V;
+            float wB = data.Velocities[_indexB].W;
 
             float mA = _invMassA, mB = _invMassB;
             float iA = _invIA, iB = _invIB;
@@ -384,10 +384,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 wB += iB * (MathUtils.Cross(ref _rB, ref p) + impulse.Z);
             }
 
-            data.Velocities[_indexA].v = vA;
-            data.Velocities[_indexA].w = wA;
-            data.Velocities[_indexB].v = vB;
-            data.Velocities[_indexB].w = wB;
+            data.Velocities[_indexA].V = vA;
+            data.Velocities[_indexA].W = wA;
+            data.Velocities[_indexB].V = vB;
+            data.Velocities[_indexB].W = wB;
         }
 
         /// <summary>
