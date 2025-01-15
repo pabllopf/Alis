@@ -62,7 +62,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The
         /// </summary>
-        private Vector2F _C;
+        private Vector2F c;
 
         /// <summary>
         ///     The damping ratio
@@ -94,7 +94,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The inv ia
         /// </summary>
-        private float _invIA;
+        private float invIa;
 
         /// <summary>
         ///     The inv mass
@@ -237,7 +237,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _indexA = BodyA.IslandIndex;
             _localCenterA = BodyA._sweep.LocalCenter;
             _invMassA = BodyA.InvMass;
-            _invIA = BodyA.InvI;
+            invIa = BodyA.InvI;
 
             Vector2F cA = data.Positions[_indexA].C;
             float aA = data.Positions[_indexA].A;
@@ -255,36 +255,36 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float d = 2.0f * mass * DampingRatio * omega;
 
             // Spring stiffness
-            float k = mass * (omega * omega);
+            float kKk = mass * (omega * omega);
 
             // magic formulas
             // gamma has units of inverse mass.
             // beta has units of inverse time.
             float h = data.Step.Dt;
-            Debug.Assert(d + h * k > SettingEnv.Epsilon);
-            _gamma = h * (d + h * k);
+            Debug.Assert(d + h * kKk > SettingEnv.Epsilon);
+            _gamma = h * (d + h * kKk);
             if (Math.Abs(_gamma) > SettingEnv.Epsilon)
             {
                 _gamma = 1.0f / _gamma;
             }
 
-            _beta = h * k * _gamma;
+            _beta = h * kKk * _gamma;
 
             // Compute the effective mass matrix.
             _rA = Complex.Multiply(LocalAnchorA - _localCenterA, ref qA);
             // K    = [(1/m1 + 1/m2) * eye(2) - skew(r1) * invI1 * skew(r1) - skew(r2) * invI2 * skew(r2)]
             //      = [1/m1+1/m2     0    ] + invI1 * [r1.Y*r1.Y -r1.X*r1.Y] + invI2 * [r1.Y*r1.Y -r1.X*r1.Y]
             //        [    0     1/m1+1/m2]           [-r1.X*r1.Y r1.X*r1.X]           [-r1.X*r1.Y r1.X*r1.X]
-            Mat22 K = new Mat22();
-            K.Ex.X = _invMassA + _invIA * _rA.Y * _rA.Y + _gamma;
-            K.Ex.Y = -_invIA * _rA.X * _rA.Y;
-            K.Ey.X = K.Ex.Y;
-            K.Ey.Y = _invMassA + _invIA * _rA.X * _rA.X + _gamma;
+            Mat22 k = new Mat22();
+            k.Ex.X = _invMassA + invIa * _rA.Y * _rA.Y + _gamma;
+            k.Ex.Y = -invIa * _rA.X * _rA.Y;
+            k.Ey.X = k.Ex.Y;
+            k.Ey.Y = _invMassA + invIa * _rA.X * _rA.X + _gamma;
 
-            _mass = K.Inverse;
+            _mass = k.Inverse;
 
-            _C = cA + _rA - _worldAnchor;
-            _C *= _beta;
+            c = cA + _rA - _worldAnchor;
+            c *= _beta;
 
             // Cheat with some damping
             wA *= 0.98f;
@@ -293,7 +293,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             {
                 _impulse *= data.Step.DtRatio;
                 vA += _invMassA * _impulse;
-                wA += _invIA * MathUtils.Cross(ref _rA, ref _impulse);
+                wA += invIa * MathUtils.Cross(ref _rA, ref _impulse);
             }
             else
             {
@@ -314,8 +314,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float wA = data.Velocities[_indexA].w;
 
             // Cdot = v + cross(w, r)
-            Vector2F Cdot = vA + MathUtils.Cross(wA, ref _rA);
-            Vector2F impulse = MathUtils.Mul(ref _mass, -(Cdot + _C + _gamma * _impulse));
+            Vector2F cdot = vA + MathUtils.Cross(wA, ref _rA);
+            Vector2F impulse = MathUtils.Mul(ref _mass, -(cdot + c + _gamma * _impulse));
 
             Vector2F oldImpulse = _impulse;
             _impulse += impulse;
@@ -328,7 +328,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             impulse = _impulse - oldImpulse;
 
             vA += _invMassA * impulse;
-            wA += _invIA * MathUtils.Cross(ref _rA, ref impulse);
+            wA += invIa * MathUtils.Cross(ref _rA, ref impulse);
 
             data.Velocities[_indexA].v = vA;
             data.Velocities[_indexA].w = wA;
