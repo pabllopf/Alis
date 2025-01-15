@@ -306,23 +306,23 @@ namespace Alis.App.Installer
             ImFontPtr fontLoaded16Solid = fonts.AddFontFromFileTtf(@$"{dirFonts}{fontToLoad}", fontSize);
             try
             {
-                ImFontConfigPtr icons_config = ImGui.ImFontConfig();
-                icons_config.MergeMode = true;
-                icons_config.SnapH = true;
-                icons_config.GlyphMinAdvanceX = 18;
+                ImFontConfigPtr iconsConfig = ImGui.ImFontConfig();
+                iconsConfig.MergeMode = true;
+                iconsConfig.SnapH = true;
+                iconsConfig.GlyphMinAdvanceX = 18;
 
-                ushort[] IconRanges = new ushort[3];
-                IconRanges[0] = FontAwesome5.IconMin;
-                IconRanges[1] = FontAwesome5.IconMax;
-                IconRanges[2] = 0;
+                ushort[] iconRanges = new ushort[3];
+                iconRanges[0] = FontAwesome5.IconMin;
+                iconRanges[1] = FontAwesome5.IconMax;
+                iconRanges[2] = 0;
 
                 // Allocate GCHandle to pin IconRanges in memory
-                GCHandle iconRangesHandle = GCHandle.Alloc(IconRanges, GCHandleType.Pinned);
+                GCHandle iconRangesHandle = GCHandle.Alloc(iconRanges, GCHandleType.Pinned);
 
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
 
                 // Assuming 'io' is a valid ImGuiIO instance and 'dir' and 'dirIcon' are defined paths
-                fonts.AddFontFromFileTtf(@$"{dirFontsIcon}{FontAwesome5.NameSolid}", fontSizeIcon, icons_config, rangePtr);
+                fonts.AddFontFromFileTtf(@$"{dirFontsIcon}{FontAwesome5.NameSolid}", fontSizeIcon, iconsConfig, rangePtr);
             }
             catch (Exception e)
             {
@@ -334,23 +334,23 @@ namespace Alis.App.Installer
             ImFontPtr fontLoaded16Regular = fonts.AddFontFromFileTtf(@$"{dirFonts}{fontToLoad}", fontSize);
             try
             {
-                ImFontConfigPtr icons_config = ImGui.ImFontConfig();
-                icons_config.MergeMode = true;
-                icons_config.SnapH = true;
-                icons_config.GlyphMinAdvanceX = 20;
+                ImFontConfigPtr iconsConfig = ImGui.ImFontConfig();
+                iconsConfig.MergeMode = true;
+                iconsConfig.SnapH = true;
+                iconsConfig.GlyphMinAdvanceX = 20;
 
-                ushort[] IconRanges = new ushort[3];
-                IconRanges[0] = FontAwesome5.IconMin;
-                IconRanges[1] = FontAwesome5.IconMax;
-                IconRanges[2] = 0;
+                ushort[] iconRanges = new ushort[3];
+                iconRanges[0] = FontAwesome5.IconMin;
+                iconRanges[1] = FontAwesome5.IconMax;
+                iconRanges[2] = 0;
 
                 // Allocate GCHandle to pin IconRanges in memory
-                GCHandle iconRangesHandle = GCHandle.Alloc(IconRanges, GCHandleType.Pinned);
+                GCHandle iconRangesHandle = GCHandle.Alloc(iconRanges, GCHandleType.Pinned);
 
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
 
                 // Assuming 'io' is a valid ImGuiIO instance and 'dir' and 'dirIcon' are defined paths
-                fonts.AddFontFromFileTtf(@$"{dirFontsIcon}{FontAwesome5.NameRegular}", fontSizeIcon, icons_config, rangePtr);
+                fonts.AddFontFromFileTtf(@$"{dirFontsIcon}{FontAwesome5.NameRegular}", fontSizeIcon, iconsConfig, rangePtr);
             }
             catch (Exception e)
             {
@@ -362,23 +362,23 @@ namespace Alis.App.Installer
             ImFontPtr fontLoaded16Light = fonts.AddFontFromFileTtf(@$"{dirFonts}{fontToLoad}", fontSize);
             try
             {
-                ImFontConfigPtr icons_config = ImGui.ImFontConfig();
-                icons_config.MergeMode = true;
-                icons_config.SnapH = true;
-                icons_config.GlyphMinAdvanceX = 20;
+                ImFontConfigPtr iconsConfig = ImGui.ImFontConfig();
+                iconsConfig.MergeMode = true;
+                iconsConfig.SnapH = true;
+                iconsConfig.GlyphMinAdvanceX = 20;
 
-                ushort[] IconRanges = new ushort[3];
-                IconRanges[0] = FontAwesome5.IconMin;
-                IconRanges[1] = FontAwesome5.IconMax;
-                IconRanges[2] = 0;
+                ushort[] iconRanges = new ushort[3];
+                iconRanges[0] = FontAwesome5.IconMin;
+                iconRanges[1] = FontAwesome5.IconMax;
+                iconRanges[2] = 0;
 
                 // Allocate GCHandle to pin IconRanges in memory
-                GCHandle iconRangesHandle = GCHandle.Alloc(IconRanges, GCHandleType.Pinned);
+                GCHandle iconRangesHandle = GCHandle.Alloc(iconRanges, GCHandleType.Pinned);
 
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
 
                 // Assuming 'io' is a valid ImGuiIO instance and 'dir' and 'dirIcon' are defined paths
-                fonts.AddFontFromFileTtf(@$"{dirFontsIcon}{FontAwesome5.NameLight}", fontSizeIcon, icons_config, rangePtr);
+                fonts.AddFontFromFileTtf(@$"{dirFontsIcon}{FontAwesome5.NameLight}", fontSizeIcon, iconsConfig, rangePtr);
             }
             catch (Exception e)
             {

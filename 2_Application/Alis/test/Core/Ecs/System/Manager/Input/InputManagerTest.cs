@@ -157,7 +157,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
         {
             VideoGame videoGame = new VideoGame();
             InputManager inputManager = new InputManager(videoGame.Context);
-            inputManager.tempListOfKeys = new List<KeyCodes> {KeyCodes.A, KeyCodes.B};
+            inputManager.TempListOfKeys = new List<KeyCodes> {KeyCodes.A, KeyCodes.B};
             inputManager.NotifyKeyHold();
         }
 

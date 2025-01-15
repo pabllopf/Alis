@@ -49,7 +49,7 @@ namespace Alis.App.Engine.Menus
         /// <summary>
         ///     The space work
         /// </summary>
-        private static SpaceWork spaceWork;
+        private static SpaceWork _spaceWork;
 
         // Diccionario para mapear las acciones del menú con sus métodos
         /// <summary>
@@ -134,7 +134,7 @@ namespace Alis.App.Engine.Menus
             MenuActions.Add("Physics 2D", Physics2D);
             MenuActions.Add("Rendering 2D", Rendering2D);
             MenuActions.Add("Audio", AudioComponent);
-            MenuActions.Add("UI", UIComponent);
+            MenuActions.Add("UI", UiComponent);
             MenuActions.Add("Scripts", ScriptsComponent);
 
             MenuActions.Add("Sprite Editor", SpriteEditor);
@@ -150,7 +150,7 @@ namespace Alis.App.Engine.Menus
             MenuActions.Add("Console", ConsoleWindow);
 
             MenuActions.Add("Alis Manual", AlisManual);
-            MenuActions.Add("API Reference", APIReference);
+            MenuActions.Add("API Reference", ApiReference);
             MenuActions.Add("Report Bug", ReportBug);
         }
 
@@ -159,7 +159,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void Save()
         {
-            spaceWork.VideoGame.Save();
+            _spaceWork.VideoGame.Save();
             string file = AppDomain.CurrentDomain.BaseDirectory + "settings.ini";
             if (File.Exists(file))
             {
@@ -247,9 +247,9 @@ namespace Alis.App.Engine.Menus
                     .Build())
                 .Build();
 
-            spaceWork.VideoGame.Context.SceneManager.Add(scene);
-            spaceWork.VideoGame.Save();
-            spaceWork.VideoGame.Context.SceneManager.LoadScene(scene);
+            _spaceWork.VideoGame.Context.SceneManager.Add(scene);
+            _spaceWork.VideoGame.Save();
+            _spaceWork.VideoGame.Context.SceneManager.LoadScene(scene);
         }
 
         /// <summary>
@@ -278,7 +278,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void SaveProject()
         {
-            spaceWork.VideoGame.Save();
+            _spaceWork.VideoGame.Save();
             ImGui.SaveIniSettingsToDisk(AppDomain.CurrentDomain.BaseDirectory + "settings.ini");
         }
 
@@ -301,7 +301,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void Close()
         {
-            spaceWork._quit = true;
+            _spaceWork.Quit = true;
         }
 
         /// <summary>
@@ -594,7 +594,7 @@ namespace Alis.App.Engine.Menus
         /// <summary>
         ///     Creates the ui
         /// </summary>
-        private static void CreateUI()
+        private static void CreateUi()
         {
         }
 
@@ -692,7 +692,7 @@ namespace Alis.App.Engine.Menus
         /// <summary>
         ///     Uis the component
         /// </summary>
-        private static void UIComponent()
+        private static void UiComponent()
         {
         }
 
@@ -784,7 +784,7 @@ namespace Alis.App.Engine.Menus
         /// <summary>
         ///     Apis the reference
         /// </summary>
-        private static void APIReference()
+        private static void ApiReference()
         {
             // open url on browser:
             // https://www.alisengine.com/en/v0.4.0/api/Alis.html
@@ -838,7 +838,7 @@ namespace Alis.App.Engine.Menus
         /// <param name="space">The space</param>
         public static void SetSpaceWork(SpaceWork space)
         {
-            spaceWork = space;
+            _spaceWork = space;
         }
     }
 }

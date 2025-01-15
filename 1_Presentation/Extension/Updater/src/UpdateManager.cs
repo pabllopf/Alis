@@ -54,37 +54,37 @@ namespace Alis.Extension.Updater
         /// <summary>
         ///     The threshold entries
         /// </summary>
-        private const int THRESHOLD_ENTRIES = 10000;
+        private const int ThresholdEntries = 10000;
 
         /// <summary>
         ///     The threshold size
         /// </summary>
-        private const int THRESHOLD_SIZE = 1000000000; // 1 GB
+        private const int ThresholdSize = 1000000000; // 1 GB
 
         /// <summary>
         ///     The threshold ratio
         /// </summary>
-        private const double THRESHOLD_RATIO = 10.0; // Compression ratio threshold
+        private const double ThresholdRatio = 10.0; // Compression ratio threshold
 
         /// <summary>
         ///     The file service
         /// </summary>
-        public readonly IFileService _fileService;
+        public readonly IFileService FileService;
 
         /// <summary>
         ///     The git hub api service
         /// </summary>
-        public readonly IGitHubApiService _gitHubApiService;
+        public readonly IGitHubApiService GitHubApiService;
 
         /// <summary>
         ///     The program folder
         /// </summary>
-        public readonly string _programFolder;
+        public readonly string ProgramFolder;
 
         /// <summary>
         ///     The version to install
         /// </summary>
-        public readonly string _versionToInstall;
+        public readonly string VersionToInstall;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="UpdateManager" /> class
@@ -95,10 +95,10 @@ namespace Alis.Extension.Updater
         /// <param name="programFolder">The program folder</param>
         public UpdateManager(IGitHubApiService gitHubApiService, string versionToInstall, IFileService fileService, string programFolder)
         {
-            _gitHubApiService = gitHubApiService;
-            _fileService = fileService;
-            _programFolder = programFolder;
-            _versionToInstall = versionToInstall;
+            GitHubApiService = gitHubApiService;
+            FileService = fileService;
+            ProgramFolder = programFolder;
+            VersionToInstall = versionToInstall;
         }
 
         /// <summary>
@@ -229,7 +229,7 @@ namespace Alis.Extension.Updater
         /// </summary>
         private void Backup()
         {
-            if (!Directory.Exists(_programFolder))
+            if (!Directory.Exists(ProgramFolder))
             {
                 Logger.Info("Don't need to do backup.");
                 OnUpdateProgressChanged(0.7f, "Don't need to do backup.");
@@ -241,7 +241,7 @@ namespace Alis.Extension.Updater
             OnUpdateProgressChanged(0.7f, "Doing backup...");
 
             string backupPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Backup_" + DateTime.Now.ToString("yyyyMMddHHmmss"));
-            Directory.Move(_programFolder, backupPath);
+            Directory.Move(ProgramFolder, backupPath);
 
             WaitForContinue();
 
@@ -335,16 +335,16 @@ namespace Alis.Extension.Updater
         /// <returns>A task containing the object</returns>
         private async Task<Dictionary<string, object>> GetLatestReleaseAsync()
         {
-            using HttpClient _httpClient = new HttpClient();
+            using HttpClient httpClient = new HttpClient();
 
-            _httpClient.DefaultRequestHeaders.Add("User-Agent", "request");
-            string response = await _httpClient.GetStringAsync(_gitHubApiService.apiUrl);
+            httpClient.DefaultRequestHeaders.Add("User-Agent", "request");
+            string response = await httpClient.GetStringAsync(GitHubApiService.ApiUrl);
             List<Dictionary<string, object>> releases = JsonSerializer.Deserialize<List<Dictionary<string, object>>>(response);
 
             foreach (Dictionary<string, object> release in releases)
             {
                 string version = release["tag_name"]?.ToString();
-                if (version == _versionToInstall)
+                if (version == VersionToInstall)
                 {
                     return release;
                 }
@@ -356,7 +356,7 @@ namespace Alis.Extension.Updater
                 return null;
             }
 
-            if ("latest" == _versionToInstall)
+            if ("latest" == VersionToInstall)
             {
                 return releases[0];
             }
@@ -428,9 +428,9 @@ namespace Alis.Extension.Updater
             WaitForContinue();
 
             // Assuming _programFolder is the destination where you want to copy the contents of the .dmg
-            if (!Directory.Exists(_programFolder))
+            if (!Directory.Exists(ProgramFolder))
             {
-                Directory.CreateDirectory(_programFolder);
+                Directory.CreateDirectory(ProgramFolder);
             }
 
             WaitForContinue();
@@ -439,7 +439,7 @@ namespace Alis.Extension.Updater
             Logger.Info("Copying contents from .dmg to target directory...");
 
             // Copy the contents from the mounted .dmg to the target directory
-            ExecuteShellCommand($"cp -R \"{mountPath}/.\" \"{_programFolder}\"");
+            ExecuteShellCommand($"cp -R \"{mountPath}/.\" \"{ProgramFolder}\"");
 
 
             WaitForContinue();
@@ -499,7 +499,7 @@ namespace Alis.Extension.Updater
                     totalEntryArchive++;
 
                     // Check if the number of entries exceeds the threshold
-                    if (totalEntryArchive > THRESHOLD_ENTRIES)
+                    if (totalEntryArchive > ThresholdEntries)
                     {
                         throw new InvalidOperationException("Exceeded the maximum number of entries threshold.");
                     }
@@ -518,14 +518,14 @@ namespace Alis.Extension.Updater
 
                             // Check for suspiciously high compression ratio
                             double compressionRatio = (double) totalSizeEntry / entry.CompressedLength;
-                            if (compressionRatio > THRESHOLD_RATIO)
+                            if (compressionRatio > ThresholdRatio)
                             {
                                 throw new InvalidOperationException("Exceeded the maximum compression ratio threshold.");
                             }
                         }
 
                         // Check if the total uncompressed data size exceeds the threshold
-                        if (totalSizeArchive > THRESHOLD_SIZE)
+                        if (totalSizeArchive > ThresholdSize)
                         {
                             throw new InvalidOperationException("Exceeded the maximum uncompressed size threshold.");
                         }
@@ -534,7 +534,7 @@ namespace Alis.Extension.Updater
             }
 
             // If we reach this point, extraction is safe
-            ZipFile.ExtractToDirectory(fileAsync, _programFolder);
+            ZipFile.ExtractToDirectory(fileAsync, ProgramFolder);
             OnUpdateProgressChanged(0.7f, "Extracted and replaced.");
         }
 

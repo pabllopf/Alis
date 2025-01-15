@@ -52,7 +52,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             float expectedDx = 0.1f;
             float expectedDy = 0.2f;
             float expectedPressure = 0.8f;
-            uint expectedWindowID = 2;
+            uint expectedWindowId = 2;
 
             TouchFingerEvent touchFingerEvent = new TouchFingerEvent
             {
@@ -65,7 +65,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
                 dx = expectedDx,
                 dy = expectedDy,
                 pressure = expectedPressure,
-                windowID = expectedWindowID
+                windowID = expectedWindowId
             };
 
             Assert.Equal(expectedType, touchFingerEvent.type);
@@ -77,7 +77,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             Assert.Equal(expectedDx, touchFingerEvent.dx);
             Assert.Equal(expectedDy, touchFingerEvent.dy);
             Assert.Equal(expectedPressure, touchFingerEvent.pressure);
-            Assert.Equal(expectedWindowID, touchFingerEvent.windowID);
+            Assert.Equal(expectedWindowId, touchFingerEvent.windowID);
         }
     }
 }

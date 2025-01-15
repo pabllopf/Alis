@@ -44,7 +44,7 @@ namespace Alis.Extension.Plugin
         ///     Describes whether this instance is osx
         /// </summary>
         /// <returns>The bool</returns>
-        public bool IsOSX();
+        public bool IsOsx();
 
         /// <summary>
         ///     Describes whether this instance is linux
@@ -56,7 +56,7 @@ namespace Alis.Extension.Plugin
         ///     Describes whether this instance isi os
         /// </summary>
         /// <returns>The bool</returns>
-        public bool IsiOS();
+        public bool IsiOs();
 
         /// <summary>
         ///     Describes whether this instance is android

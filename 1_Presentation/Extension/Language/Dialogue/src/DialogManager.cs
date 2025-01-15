@@ -41,7 +41,7 @@ namespace Alis.Extension.Language.Dialogue
         /// <summary>
         ///     The dialog
         /// </summary>
-        internal readonly Dictionary<string, Dialog> dialogs = new Dictionary<string, Dialog>();
+        internal readonly Dictionary<string, Dialog> Dialogs = new Dictionary<string, Dialog>();
 
         /// <summary>
         ///     Adds the dialog using the specified dialog
@@ -49,7 +49,7 @@ namespace Alis.Extension.Language.Dialogue
         /// <param name="dialog">The dialog</param>
         public void AddDialog(Dialog dialog)
         {
-            dialogs[dialog.Id] = dialog;
+            Dialogs[dialog.Id] = dialog;
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Alis.Extension.Language.Dialogue
         /// </summary>
         /// <param name="id">The id</param>
         /// <returns>The dialog</returns>
-        public Dialog GetDialog(string id) => dialogs.TryGetValue(id, out Dialog dialog) ? dialog : null;
+        public Dialog GetDialog(string id) => Dialogs.TryGetValue(id, out Dialog dialog) ? dialog : null;
 
         // Example usage: ShowDialog("greeting");
         /// <summary>

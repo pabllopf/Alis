@@ -46,7 +46,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Test
         [Fact]
         public async Task LoadMetadataMp3()
         {
-            AudioReader audio = new AudioReader(AssetManager.Find(Res.Audio_Mp3));
+            AudioReader audio = new AudioReader(AssetManager.Find(Res.AudioMp3));
 
             await audio.LoadMetadataAsync();
 
@@ -65,7 +65,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Test
         [Fact]
         public async Task LoadMetadataOgg()
         {
-            AudioReader audio = new AudioReader(AssetManager.Find(Res.Audio_Ogg));
+            AudioReader audio = new AudioReader(AssetManager.Find(Res.AudioOgg));
 
             await audio.LoadMetadataAsync();
 

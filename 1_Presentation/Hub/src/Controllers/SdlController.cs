@@ -52,8 +52,8 @@ namespace Alis.App.Hub.Controllers
         /// <summary>
         ///     Initializes a new instance of the <see cref="SdlController" /> class
         /// </summary>
-        /// <param name="SpaceWork">The space work</param>
-        public SdlController(SpaceWork SpaceWork) : base(SpaceWork)
+        /// <param name="spaceWork">The space work</param>
+        public SdlController(SpaceWork spaceWork) : base(spaceWork)
         {
         }
 

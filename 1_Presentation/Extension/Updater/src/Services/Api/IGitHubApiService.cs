@@ -40,7 +40,7 @@ namespace Alis.Extension.Updater.Services.Api
         /// <summary>
         ///     Gets the value of the api url
         /// </summary>
-        string apiUrl { get; }
+        string ApiUrl { get; }
 
         /// <summary>
         ///     Gets the latest release using the specified api url

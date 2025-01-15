@@ -47,7 +47,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// <summary>
         ///     The initial queue size
         /// </summary>
-        private const int INITIAL_QUEUE_SIZE = 10;
+        private const int InitialQueueSize = 10;
 
         /// <summary>
         ///     The item to nodes cache
@@ -117,7 +117,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// <param name="itemEquality">The equality comparison function to use to compare TItem values</param>
         public SimplePriorityQueue(Comparison<TPriority> priorityComparer, IEqualityComparer<TItem> itemEquality)
         {
-            _queue = new GenericPriorityQueue<SimpleNode, TPriority>(INITIAL_QUEUE_SIZE, priorityComparer);
+            _queue = new GenericPriorityQueue<SimpleNode, TPriority>(InitialQueueSize, priorityComparer);
             _itemToNodesCache = new Dictionary<TItem, IList<SimpleNode>>(itemEquality);
             _nullNodesCache = new List<SimpleNode>();
         }

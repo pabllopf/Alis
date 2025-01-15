@@ -42,31 +42,31 @@ namespace Alis.Extension.Multimedia.FFmpeg.Test
         /// <summary>
         ///     The video mp4
         /// </summary>
-        public const string Video_Mp4 = "small.mp4";
+        public const string VideoMp4 = "small.mp4";
 
         /// <summary>
         ///     The video webm
         /// </summary>
-        public const string Video_Webm = "small.webm";
+        public const string VideoWebm = "small.webm";
 
         /// <summary>
         ///     The video flv
         /// </summary>
-        public const string Video_Flv = "small.flv";
+        public const string VideoFlv = "small.flv";
 
         /// <summary>
         ///     The audio mp3
         /// </summary>
-        public const string Audio_Mp3 = "horse.mp3";
+        public const string AudioMp3 = "horse.mp3";
 
         /// <summary>
         ///     The audio mp3
         /// </summary>
-        public const string Audio_Mp32 = "horse2.mp3";
+        public const string AudioMp32 = "horse2.mp3";
 
         /// <summary>
         ///     The audio ogg
         /// </summary>
-        public const string Audio_Ogg = "horse.ogg";
+        public const string AudioOgg = "horse.ogg";
     }
 }

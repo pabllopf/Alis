@@ -68,7 +68,7 @@ namespace Alis.Core.Sample
         /// <summary>
         ///     The pixels per meter
         /// </summary>
-        private const float PIXELS_PER_METER = 32f;
+        private const float PixelsPerMeter = 32f;
 
         /// <summary>
         ///     The sdl game controller axis
@@ -123,19 +123,19 @@ namespace Alis.Core.Sample
         /// <summary>
         ///     The player body radius
         /// </summary>
-        private static readonly float _playerBodyRadius = 1.5f / 2f; // player diameter is 1.5 meters
+        private static readonly float PlayerBodyRadius = 1.5f / 2f; // player diameter is 1.5 meters
 
         // Add a variable to store the desired frame rate
         /// <summary>
         ///     The target fps
         /// </summary>
-        private static readonly int targetFps = 60;
+        private static readonly int TargetFps = 60;
 
         // Calculate the frame duration based on the desired frame rate
         /// <summary>
         ///     The target fps
         /// </summary>
-        private static readonly int frameDuration = 1000 / targetFps;
+        private static readonly int FrameDuration = 1000 / TargetFps;
 
         /// <summary>
         ///     The renderer
@@ -326,7 +326,7 @@ namespace Alis.Core.Sample
 
             // Create the player fixture
             _playerBody = world.CreateBody(playerPosition, 0, BodyType.Dynamic);
-            Fixture pfixture = _playerBody.CreateCircle(_playerBodyRadius, 1f);
+            Fixture pfixture = _playerBody.CreateCircle(PlayerBodyRadius, 1f);
 
             // Give it some bounce and friction
             pfixture.GetRestitution = 0.3f;
@@ -362,37 +362,37 @@ namespace Alis.Core.Sample
             int frameCounter = 0;
 
             float timeStepPhysics = 1f / 20f;
-            if (targetFps <= 240)
+            if (TargetFps <= 240)
             {
                 timeStepPhysics = 1f / 80f;
             }
 
-            if (targetFps <= 200)
+            if (TargetFps <= 200)
             {
                 timeStepPhysics = 1f / 60f;
             }
 
-            if (targetFps <= 120)
+            if (TargetFps <= 120)
             {
                 timeStepPhysics = 1f / 40f;
             }
 
-            if (targetFps <= 60)
+            if (TargetFps <= 60)
             {
                 timeStepPhysics = 1f / 30f;
             }
 
-            if (targetFps <= 30)
+            if (TargetFps <= 30)
             {
                 timeStepPhysics = 1f / 15f;
             }
 
-            if (targetFps <= 15)
+            if (TargetFps <= 15)
             {
                 timeStepPhysics = 1f / 10f;
             }
 
-            if (targetFps <= 5)
+            if (TargetFps <= 5)
             {
                 timeStepPhysics = 1f / 5f;
             }
@@ -554,18 +554,18 @@ namespace Alis.Core.Sample
                 // RENDER:
 
                 // Convert positions and sizes from meters to pixels
-                float playerPosX = playerTransform.Position.X * PIXELS_PER_METER;
-                float playerPosY = playerTransform.Position.Y * PIXELS_PER_METER;
-                float boxPosX = boxTransform.Position.X * PIXELS_PER_METER;
-                float boxPosY = boxTransform.Position.Y * PIXELS_PER_METER;
-                float boxWidth = sizeBox.X * PIXELS_PER_METER;
-                float boxHeight = sizeBox.Y * PIXELS_PER_METER;
+                float playerPosX = playerTransform.Position.X * PixelsPerMeter;
+                float playerPosY = playerTransform.Position.Y * PixelsPerMeter;
+                float boxPosX = boxTransform.Position.X * PixelsPerMeter;
+                float boxPosY = boxTransform.Position.Y * PixelsPerMeter;
+                float boxWidth = sizeBox.X * PixelsPerMeter;
+                float boxHeight = sizeBox.Y * PixelsPerMeter;
 
                 // Draw the player circle:
                 int circleX = (int) (playerPosX - camera.Position.X + camera.Resolution.X / 2);
                 int circleY = (int) (playerPosY - camera.Position.Y + camera.Resolution.Y / 2);
                 Sdl.SetRenderDrawColor(_renderer, 0, 255, 0, 255);
-                DrawCircleWithLine(_renderer, circleX, circleY, (int) (_playerBodyRadius * PIXELS_PER_METER), playerTransform.Rotation * 180 / MathF.PI);
+                DrawCircleWithLine(_renderer, circleX, circleY, (int) (PlayerBodyRadius * PixelsPerMeter), playerTransform.Rotation * 180 / MathF.PI);
 
                 // Draw the box:
                 int boxX = (int) (boxPosX - camera.Position.X + camera.Resolution.X / 2);
@@ -601,8 +601,8 @@ namespace Alis.Core.Sample
                 Sdl.SetRenderDrawColor(_renderer, 0, 0, 255, 255);
                 RectangleI textureBoxRect = new RectangleI
                 {
-                    X = (int) (textureTransform.Position.X * PIXELS_PER_METER - camera.Position.X + camera.Resolution.X / 2 - tileRectangleI.W / 2),
-                    Y = (int) (textureTransform.Position.Y * PIXELS_PER_METER - camera.Position.Y + camera.Resolution.Y / 2 - tileRectangleI.H / 2),
+                    X = (int) (textureTransform.Position.X * PixelsPerMeter - camera.Position.X + camera.Resolution.X / 2 - tileRectangleI.W / 2),
+                    Y = (int) (textureTransform.Position.Y * PixelsPerMeter - camera.Position.Y + camera.Resolution.Y / 2 - tileRectangleI.H / 2),
                     W = tileRectangleI.W,
                     H = tileRectangleI.H
                 };
@@ -624,9 +624,9 @@ namespace Alis.Core.Sample
                 int frameTime = (int) stopwatch.ElapsedMilliseconds;
 
                 // Sleep for the remaining time to maintain the desired frame rate
-                if (frameTime < frameDuration)
+                if (frameTime < FrameDuration)
                 {
-                    Thread.Sleep(frameDuration - frameTime);
+                    Thread.Sleep(FrameDuration - frameTime);
                 }
 
                 frameCounter++;

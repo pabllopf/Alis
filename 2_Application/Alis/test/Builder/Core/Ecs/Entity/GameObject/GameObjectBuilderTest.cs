@@ -46,7 +46,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
         public void GameObjectBuilder_DefaultConstructor_ValidInput()
         {
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
-            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder(videoGameBuilder.context);
+            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder(videoGameBuilder.Context);
 
             Assert.NotNull(gameObjectBuilder);
         }
@@ -58,7 +58,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
         public void Build_ValidInput()
         {
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
-            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder(videoGameBuilder.context);
+            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder(videoGameBuilder.Context);
 
             Alis.Core.Ecs.Entity.GameObject gameObject = gameObjectBuilder.Build();
 
@@ -72,7 +72,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
         public void Name_ValidInput()
         {
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
-            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder(videoGameBuilder.context);
+            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder(videoGameBuilder.Context);
 
             gameObjectBuilder.Name("Test Name");
 
@@ -86,7 +86,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
         public void Transform_ValidInput()
         {
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
-            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder(videoGameBuilder.context);
+            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder(videoGameBuilder.Context);
 
             gameObjectBuilder.Transform(builder => builder.Position(1.0f, 2.0f).Rotation(45.0f).Scale(3.0f, 4.0f).Build());
         }
@@ -98,7 +98,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
         public void WithTag_ValidInput()
         {
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
-            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder(videoGameBuilder.context);
+            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder(videoGameBuilder.Context);
 
             gameObjectBuilder.WithTag("Test Tag");
 
@@ -112,7 +112,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
         public void Name_ShouldSetNameOfGameObject()
         {
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
-            GameObjectBuilder builder = new GameObjectBuilder(videoGameBuilder.context);
+            GameObjectBuilder builder = new GameObjectBuilder(videoGameBuilder.Context);
             string name = "TestName";
 
             builder.Name(name);
@@ -127,7 +127,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
         public void Transform_ShouldSetTransformOfGameObject()
         {
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
-            GameObjectBuilder builder = new GameObjectBuilder(videoGameBuilder.context);
+            GameObjectBuilder builder = new GameObjectBuilder(videoGameBuilder.Context);
             Alis.Core.Aspect.Math.Transform transform = new TransformBuilder().Build();
 
             builder.Transform(_ => transform);
@@ -142,7 +142,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
         public void WithTag_ShouldSetTagOfGameObject()
         {
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
-            GameObjectBuilder builder = new GameObjectBuilder(videoGameBuilder.context);
+            GameObjectBuilder builder = new GameObjectBuilder(videoGameBuilder.Context);
             string tag = "TestTag";
 
             builder.WithTag(tag);

@@ -47,7 +47,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Test
         [Fact]
         public async Task FFmpegWrapperProgressTest()
         {
-            string path = Path.Combine(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets"), Res.Audio_Ogg);
+            string path = Path.Combine(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets"), Res.AudioOgg);
             string opath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "out_test.mp3");
 
             try

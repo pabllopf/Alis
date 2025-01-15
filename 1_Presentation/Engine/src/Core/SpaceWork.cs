@@ -50,27 +50,27 @@ namespace Alis.App.Engine.Core
         /// <summary>
         ///     The icon demo
         /// </summary>
-        public readonly IconDemo iconDemo = new IconDemo();
+        public readonly IconDemo IconDemo = new IconDemo();
 
         /// <summary>
         ///     The im gui demo
         /// </summary>
-        public readonly ImGuiDemo imGuiDemo = new ImGuiDemo();
+        public readonly ImGuiDemo ImGuiDemo = new ImGuiDemo();
 
         /// <summary>
         ///     The im guizmo demo
         /// </summary>
-        public readonly ImGuizmoDemo imGuizmoDemo = new ImGuizmoDemo();
+        public readonly ImGuizmoDemo ImGuizmoDemo = new ImGuizmoDemo();
 
         /// <summary>
         ///     The im node demo
         /// </summary>
-        public readonly ImNodeDemo imNodeDemo = new ImNodeDemo();
+        public readonly ImNodeDemo ImNodeDemo = new ImNodeDemo();
 
         /// <summary>
         ///     The im plot demo
         /// </summary>
-        public readonly ImPlotDemo imPlotDemo = new ImPlotDemo();
+        public readonly ImPlotDemo ImPlotDemo = new ImPlotDemo();
 
         /// <summary>
         ///     The settings window
@@ -80,7 +80,7 @@ namespace Alis.App.Engine.Core
         /// <summary>
         ///     The quit
         /// </summary>
-        public bool _quit = false;
+        public bool Quit = false;
 
         /// <summary>
         ///     The context
@@ -90,27 +90,27 @@ namespace Alis.App.Engine.Core
         /// <summary>
         ///     The font loaded 10 solid
         /// </summary>
-        public ImFontPtr fontLoaded10Solid;
+        public ImFontPtr FontLoaded10Solid;
 
         /// <summary>
         ///     The font loaded 16 light
         /// </summary>
-        public ImFontPtr fontLoaded16Light;
+        public ImFontPtr FontLoaded16Light;
 
         /// <summary>
         ///     The font loaded 16 solid
         /// </summary>
-        public ImFontPtr fontLoaded16Solid;
+        public ImFontPtr FontLoaded16Solid;
 
         /// <summary>
         ///     The font loaded 30 bold
         /// </summary>
-        public ImFontPtr fontLoaded30Bold;
+        public ImFontPtr FontLoaded30Bold;
 
         /// <summary>
         ///     The font loaded 30 bold
         /// </summary>
-        public ImFontPtr fontLoaded45Bold;
+        public ImFontPtr FontLoaded45Bold;
 
         /// <summary>
         ///     The io
@@ -120,7 +120,7 @@ namespace Alis.App.Engine.Core
         /// <summary>
         ///     The renderer game
         /// </summary>
-        public IntPtr rendererGame;
+        public IntPtr RendererGame;
 
         /// <summary>
         ///     The style
@@ -250,11 +250,11 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public void Initialize()
         {
-            imGuiDemo.Initialize();
-            imPlotDemo.Initialize();
-            imGuizmoDemo.Initialize();
-            imNodeDemo.Initialize();
-            iconDemo.Initialize();
+            ImGuiDemo.Initialize();
+            ImPlotDemo.Initialize();
+            ImGuizmoDemo.Initialize();
+            ImNodeDemo.Initialize();
+            IconDemo.Initialize();
 
             // if is macos system:
             if (!IsMacOs)
@@ -284,11 +284,11 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public void Start()
         {
-            imGuiDemo.Start();
-            imPlotDemo.Start();
-            imGuizmoDemo.Start();
-            imNodeDemo.Start();
-            iconDemo.Start();
+            ImGuiDemo.Start();
+            ImPlotDemo.Start();
+            ImGuizmoDemo.Start();
+            ImNodeDemo.Start();
+            IconDemo.Start();
 
             // if is macos system:
             if (!IsMacOs)
@@ -318,11 +318,11 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public void Update()
         {
-            imGuiDemo.Run();
-            imPlotDemo.Run();
-            imGuizmoDemo.Run();
-            imNodeDemo.Run();
-            iconDemo.Run();
+            ImGuiDemo.Run();
+            ImPlotDemo.Run();
+            ImGuizmoDemo.Run();
+            ImNodeDemo.Run();
+            IconDemo.Run();
 
             // if is macos system:
             if (!IsMacOs)

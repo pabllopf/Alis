@@ -47,7 +47,7 @@ namespace Alis.Extension.Language.Dialogue.Test
             DialogManager manager = new DialogManager();
             Dialog dialog = new Dialog("testId", "Test Dialog");
             manager.AddDialog(dialog);
-            Assert.True(manager.dialogs.ContainsKey("testId"));
+            Assert.True(manager.Dialogs.ContainsKey("testId"));
         }
 
         /// <summary>

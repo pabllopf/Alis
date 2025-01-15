@@ -140,12 +140,12 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     The directory separator char
         /// </summary>
-        private string CurrentPath = $"{Path.DirectorySeparatorChar}Assets";
+        private string currentPath = $"{Path.DirectorySeparatorChar}Assets";
 
         /// <summary>
         ///     The is move directory
         /// </summary>
-        private bool IsMoveDirectory;
+        private bool isMoveDirectory;
 
         /// <summary>
         ///     The is open
@@ -373,7 +373,7 @@ namespace Alis.App.Engine.Windows
         /// <param name="text">The text</param>
         private void RenderFilesOnFolder(string text)
         {
-            string path = $"{SpaceWork.Project.Path}{CurrentPath}";
+            string path = $"{SpaceWork.Project.Path}{currentPath}";
 
             // Get all directories and files in the directory
             string[] directories = Directory.GetDirectories(path);
@@ -405,7 +405,7 @@ namespace Alis.App.Engine.Windows
                     ImGui.TableNextColumn();
                     string folderName = Path.GetFileName(directory);
 
-                    ImGui.PushFont(SpaceWork.fontLoaded45Bold);
+                    ImGui.PushFont(SpaceWork.FontLoaded45Bold);
                     ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0, 0, 0, 0)); // Transparent background
                     ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(0, 0)); // No padding
                     ImGui.PushStyleVar(ImGuiStyleVar.SelectableTextAlign, new Vector2F(0.5f, 0.5f)); // Center text
@@ -415,7 +415,7 @@ namespace Alis.App.Engine.Windows
                     {
                         if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left))
                         {
-                            CurrentPath = Path.Combine(CurrentPath, folderName);
+                            currentPath = Path.Combine(currentPath, folderName);
                         }
                     }
 
@@ -423,7 +423,7 @@ namespace Alis.App.Engine.Windows
                     ImGui.PopStyleColor();
                     ImGui.PopFont();
 
-                    ImGui.PushFont(SpaceWork.fontLoaded10Solid);
+                    ImGui.PushFont(SpaceWork.FontLoaded10Solid);
                     float textWidth = ImGui.CalcTextSize(folderName).X;
                     ImGui.SetCursorPosX(ImGui.GetCursorPosX() + (itemWidth - textWidth) * 0.05f);
                     ImGui.TextWrapped(folderName);
@@ -438,7 +438,7 @@ namespace Alis.App.Engine.Windows
                     string extension = Path.GetExtension(file).ToLower();
                     string icon = fileIcons.ContainsKey(extension) ? fileIcons[extension] : FontAwesome5.File;
 
-                    ImGui.PushFont(SpaceWork.fontLoaded45Bold);
+                    ImGui.PushFont(SpaceWork.FontLoaded45Bold);
                     ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0, 0, 0, 0)); // Transparent background
                     ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(0, 0)); // No padding
                     ImGui.PushStyleVar(ImGuiStyleVar.SelectableTextAlign, new Vector2F(0.5f, 0.5f)); // Center text
@@ -456,7 +456,7 @@ namespace Alis.App.Engine.Windows
                     ImGui.PopStyleColor();
                     ImGui.PopFont();
 
-                    ImGui.PushFont(SpaceWork.fontLoaded10Solid);
+                    ImGui.PushFont(SpaceWork.FontLoaded10Solid);
                     float textWidth = ImGui.CalcTextSize(Path.GetFileName(file)).X;
                     ImGui.SetCursorPosX(ImGui.GetCursorPosX() + (itemWidth - textWidth) * 0.05f);
                     ImGui.TextWrapped(Path.GetFileNameWithoutExtension(file));
@@ -578,11 +578,11 @@ namespace Alis.App.Engine.Windows
                 ImGui.TreeNodeEx($"{FontAwesome5.FolderOpen} Assets", ImGuiTreeNodeFlags.Leaf | ImGuiTreeNodeFlags.DefaultOpen);
                 if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left))
                 {
-                    CurrentPath = $"{Path.DirectorySeparatorChar}Assets";
+                    currentPath = $"{Path.DirectorySeparatorChar}Assets";
                 }
 
                 RenderSubDirectories(path);
-                IsMoveDirectory = false;
+                isMoveDirectory = false;
                 ImGui.TreePop();
             }
             else
@@ -594,11 +594,11 @@ namespace Alis.App.Engine.Windows
                 {
                     if (ImGui.TreeNodeEx($"{FontAwesome5.Folder} {folderName}", ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.OpenOnArrow))
                     {
-                        if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left) && !IsMoveDirectory)
+                        if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left) && !isMoveDirectory)
                         {
                             string relativePath = path.Replace(SpaceWork.Project.Path, "");
-                            CurrentPath = relativePath.StartsWith($"{Path.DirectorySeparatorChar}") ? relativePath : $"{Path.DirectorySeparatorChar}{relativePath}";
-                            IsMoveDirectory = true;
+                            currentPath = relativePath.StartsWith($"{Path.DirectorySeparatorChar}") ? relativePath : $"{Path.DirectorySeparatorChar}{relativePath}";
+                            isMoveDirectory = true;
                         }
 
                         RenderSubDirectories(path);
@@ -608,11 +608,11 @@ namespace Alis.App.Engine.Windows
                 else
                 {
                     ImGui.TreeNodeEx($"{FontAwesome5.Folder} {folderName}", ImGuiTreeNodeFlags.Leaf | ImGuiTreeNodeFlags.NoTreePushOnOpen);
-                    if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left) && !IsMoveDirectory)
+                    if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left) && !isMoveDirectory)
                     {
                         string relativePath = path.Replace(SpaceWork.Project.Path, "");
-                        CurrentPath = relativePath.StartsWith($"{Path.DirectorySeparatorChar}") ? relativePath : $"{Path.DirectorySeparatorChar}{relativePath}";
-                        IsMoveDirectory = true;
+                        currentPath = relativePath.StartsWith($"{Path.DirectorySeparatorChar}") ? relativePath : $"{Path.DirectorySeparatorChar}{relativePath}";
+                        isMoveDirectory = true;
                     }
                 }
             }
@@ -638,14 +638,14 @@ namespace Alis.App.Engine.Windows
         private void RenderPathOfFolder()
         {
             // Divide the path into folders:
-            string[] folders = CurrentPath.Split(new[] {Path.DirectorySeparatorChar}, StringSplitOptions.RemoveEmptyEntries);
+            string[] folders = currentPath.Split(new[] {Path.DirectorySeparatorChar}, StringSplitOptions.RemoveEmptyEntries);
 
             // If only the "Assets" folder is present, render a button with the name "Assets"
             if ((folders.Length == 1) && (folders[0] == "Assets"))
             {
                 if (ImGui.Button("Assets"))
                 {
-                    CurrentPath = $"{Path.DirectorySeparatorChar}Assets";
+                    currentPath = $"{Path.DirectorySeparatorChar}Assets";
                 }
             }
             else
@@ -657,7 +657,7 @@ namespace Alis.App.Engine.Windows
 
                     if (ImGui.Button(folders[i]))
                     {
-                        CurrentPath = $"{Path.DirectorySeparatorChar}{path}";
+                        currentPath = $"{Path.DirectorySeparatorChar}{path}";
                     }
 
                     if (i < folders.Length - 1)
@@ -675,7 +675,7 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         private void RenderFilesOnFolder()
         {
-            string path = $"{SpaceWork.Project.Path}{CurrentPath}";
+            string path = $"{SpaceWork.Project.Path}{currentPath}";
 
             // Get all directories and files in the directory
             string[] directories = Directory.GetDirectories(path);
@@ -703,7 +703,7 @@ namespace Alis.App.Engine.Windows
                         ImGui.TableNextColumn();
                         string folderName = Path.GetFileName(directory);
 
-                        ImGui.PushFont(SpaceWork.fontLoaded45Bold);
+                        ImGui.PushFont(SpaceWork.FontLoaded45Bold);
                         ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0, 0, 0, 0)); // Transparent background
                         ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(0, 0)); // No padding
                         ImGui.PushStyleVar(ImGuiStyleVar.SelectableTextAlign, new Vector2F(0.5f, 0.5f)); // Center text
@@ -713,7 +713,7 @@ namespace Alis.App.Engine.Windows
                         {
                             if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left))
                             {
-                                CurrentPath = Path.Combine(CurrentPath, folderName);
+                                currentPath = Path.Combine(currentPath, folderName);
                             }
                         }
 
@@ -721,7 +721,7 @@ namespace Alis.App.Engine.Windows
                         ImGui.PopStyleColor();
                         ImGui.PopFont();
 
-                        ImGui.PushFont(SpaceWork.fontLoaded10Solid);
+                        ImGui.PushFont(SpaceWork.FontLoaded10Solid);
                         float textWidth = ImGui.CalcTextSize(folderName).X;
                         ImGui.SetCursorPosX(ImGui.GetCursorPosX() + (itemWidth - textWidth) * 0.05f);
                         ImGui.TextWrapped(folderName);
@@ -736,7 +736,7 @@ namespace Alis.App.Engine.Windows
                         string extension = Path.GetExtension(file).ToLower();
                         string icon = fileIcons.ContainsKey(extension) ? fileIcons[extension] : FontAwesome5.File;
 
-                        ImGui.PushFont(SpaceWork.fontLoaded45Bold);
+                        ImGui.PushFont(SpaceWork.FontLoaded45Bold);
                         ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0, 0, 0, 0)); // Transparent background
                         ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(0, 0)); // No padding
                         ImGui.PushStyleVar(ImGuiStyleVar.SelectableTextAlign, new Vector2F(0.5f, 0.5f)); // Center text
@@ -754,7 +754,7 @@ namespace Alis.App.Engine.Windows
                         ImGui.PopStyleColor();
                         ImGui.PopFont();
 
-                        ImGui.PushFont(SpaceWork.fontLoaded10Solid);
+                        ImGui.PushFont(SpaceWork.FontLoaded10Solid);
                         float textWidth = ImGui.CalcTextSize(Path.GetFileName(file)).X;
                         ImGui.SetCursorPosX(ImGui.GetCursorPosX() + (itemWidth - textWidth) * 0.05f);
                         ImGui.TextWrapped(Path.GetFileNameWithoutExtension(file));

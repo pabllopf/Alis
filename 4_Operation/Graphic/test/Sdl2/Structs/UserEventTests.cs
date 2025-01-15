@@ -46,7 +46,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
         {
             uint expectedType = 1;
             uint expectedTimestamp = 123456789;
-            uint expectedWindowID = 2;
+            uint expectedWindowId = 2;
             int expectedCode = 3;
             IntPtr expectedData1 = new IntPtr(4);
             IntPtr expectedData2 = new IntPtr(5);
@@ -55,7 +55,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             {
                 type = expectedType,
                 timestamp = expectedTimestamp,
-                windowID = expectedWindowID,
+                windowID = expectedWindowId,
                 code = expectedCode,
                 Data1 = expectedData1,
                 Data2 = expectedData2
@@ -63,7 +63,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
 
             Assert.Equal(expectedType, userEvent.type);
             Assert.Equal(expectedTimestamp, userEvent.timestamp);
-            Assert.Equal(expectedWindowID, userEvent.windowID);
+            Assert.Equal(expectedWindowId, userEvent.windowID);
             Assert.Equal(expectedCode, userEvent.code);
             Assert.Equal(expectedData1, userEvent.Data1);
             Assert.Equal(expectedData2, userEvent.Data2);

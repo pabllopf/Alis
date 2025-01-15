@@ -49,11 +49,11 @@ namespace Alis.Builder.Core.Ecs.System
     {
         /// <summary>Gets or sets the video game.</summary>
         /// <value>The video game.</value>
-        public readonly Context context = new Context(new Alis.Core.Ecs.System.Configuration.Setting());
+        public readonly Context Context = new Context(new Alis.Core.Ecs.System.Configuration.Setting());
 
         /// <summary>Builds this instance.</summary>
         /// <returns></returns>
-        public VideoGame Build() => new VideoGame(new ContextHandler(context));
+        public VideoGame Build() => new VideoGame(new ContextHandler(Context));
 
         /// <summary>
         ///     Setting the value
@@ -62,7 +62,7 @@ namespace Alis.Builder.Core.Ecs.System
         /// <returns>The video game builder</returns>
         public VideoGameBuilder Settings(Func<SettingsBuilder, Alis.Core.Ecs.System.Configuration.Setting> value)
         {
-            context.Setting = value.Invoke(new SettingsBuilder());
+            Context.Setting = value.Invoke(new SettingsBuilder());
             return this;
         }
 
@@ -73,9 +73,9 @@ namespace Alis.Builder.Core.Ecs.System
         /// <returns>The video game builder</returns>
         public VideoGameBuilder World(Func<SceneManagerBuilder, SceneManager> value)
         {
-            SceneManager sceneManager = value.Invoke(new SceneManagerBuilder(context));
-            context.SceneManager.Scenes = sceneManager.Scenes;
-            context.SceneManager.CurrentScene = sceneManager.CurrentScene;
+            SceneManager sceneManager = value.Invoke(new SceneManagerBuilder(Context));
+            Context.SceneManager.Scenes = sceneManager.Scenes;
+            Context.SceneManager.CurrentScene = sceneManager.CurrentScene;
             return this;
         }
     }

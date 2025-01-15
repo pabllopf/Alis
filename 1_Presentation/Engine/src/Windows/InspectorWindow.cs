@@ -253,7 +253,7 @@ namespace Alis.App.Engine.Windows
             if (ImGui.BeginChild("##Header", new Vector2F(ImGui.GetContentRegionAvail().X, 80), true, ImGuiWindowFlags.NoCollapse))
             {
                 // Icon of the object:
-                ImGui.PushFont(SpaceWork.fontLoaded30Bold);
+                ImGui.PushFont(SpaceWork.FontLoaded30Bold);
                 ImGui.SetCursorPosY(ImGui.GetCursorPosY() + 5); // Adjust the Y position
                 ImGui.Text($"{FontAwesome5.Cube}");
                 ImGui.PopFont();
