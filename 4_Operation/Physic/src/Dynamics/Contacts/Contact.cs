@@ -95,16 +95,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         internal readonly ContactEdge NodeB = new ContactEdge();
 
         /// <summary>
-        ///     The toi
-        /// </summary>
-        internal float Toi;
-
-        /// <summary>
-        ///     The toi count
-        /// </summary>
-        internal int ToiCount;
-
-        /// <summary>
         ///     The type
         /// </summary>
         private ContactType _type;
@@ -114,6 +104,16 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         ///     internals of Box2D.
         /// </summary>
         public Manifold Manifold;
+
+        /// <summary>
+        ///     The toi
+        /// </summary>
+        internal float Toi;
+
+        /// <summary>
+        ///     The toi count
+        /// </summary>
+        internal int ToiCount;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Contact" /> class
@@ -363,7 +363,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     {
                         foreach (Delegate @delegate in onFixtureCollisionHandlerA.GetInvocationList())
                         {
-                            OnCollisionEventHandler handler = (OnCollisionEventHandler)@delegate;
+                            OnCollisionEventHandler handler = (OnCollisionEventHandler) @delegate;
                             enabledA = handler(FixtureA, FixtureB, this) && enabledA;
                         }
                     }
@@ -375,7 +375,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     {
                         foreach (Delegate @delegate in onFixtureCollisionHandlerB.GetInvocationList())
                         {
-                            OnCollisionEventHandler handler = (OnCollisionEventHandler)@delegate;
+                            OnCollisionEventHandler handler = (OnCollisionEventHandler) @delegate;
                             enabledB = handler(FixtureB, FixtureA, this) && enabledB;
                         }
                     }
@@ -386,7 +386,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     {
                         foreach (Delegate @delegate in onBodyCollisionHandlerA.GetInvocationList())
                         {
-                            OnCollisionEventHandler handler = (OnCollisionEventHandler)@delegate;
+                            OnCollisionEventHandler handler = (OnCollisionEventHandler) @delegate;
                             enabledA = handler(FixtureA, FixtureB, this) && enabledA;
                         }
                     }
@@ -398,7 +398,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     {
                         foreach (Delegate @delegate in onBodyCollisionHandlerB.GetInvocationList())
                         {
-                            OnCollisionEventHandler handler = (OnCollisionEventHandler)@delegate;
+                            OnCollisionEventHandler handler = (OnCollisionEventHandler) @delegate;
                             enabledB = handler(FixtureB, FixtureA, this) && enabledB;
                         }
                     }

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Component;
 
@@ -43,7 +42,7 @@ namespace Alis.App.Engine.Sample.Assets.Scripts
         /// </summary>
         public override void OnAwake()
         {
-           Logger.Info("Player awake");
+            Logger.Info("Player awake");
         }
     }
 }

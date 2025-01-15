@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Logging;
 
@@ -63,12 +62,12 @@ namespace Alis.Extension.Io.FileDialog
             // Check if the user selected a file or cancelled/closed the dialog
             if (string.IsNullOrEmpty(output))
             {
-               Logger.Info("The user cancelled or closed the dialog.");
+                Logger.Info("The user cancelled or closed the dialog.");
                 return null; // Return null if the dialog was closed or cancelled
             }
 
             // Output is now the file path of the selected file
-           Logger.Info($"File selected: {output}");
+            Logger.Info($"File selected: {output}");
             return output; // Return the selected file path
         }
     }

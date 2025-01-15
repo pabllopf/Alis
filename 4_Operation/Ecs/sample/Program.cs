@@ -43,7 +43,7 @@ namespace Alis.Core.Ecs.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-           Logger.Info("Press any key to continue...");
+            Logger.Info("Press any key to continue...");
             Console.ReadKey();
         }
     }

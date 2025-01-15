@@ -147,36 +147,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         private int _indexA, _indexB, _indexC, _indexD;
 
         /// <summary>
-        ///     The jv bd
-        /// </summary>
-        private Vector2F jvAc;
-
-        /// <summary>
-        ///     The jv bd
-        /// </summary>
-        private Vector2F jvBd;
-
-        /// <summary>
-        ///     The jw
-        /// </summary>
-        private float jwA;
-
-        /// <summary>
-        ///     The jw
-        /// </summary>
-        private float jwB;
-
-        /// <summary>
-        ///     The jw
-        /// </summary>
-        private float jwC;
-
-        /// <summary>
-        ///     The jw
-        /// </summary>
-        private float jwD;
-
-        /// <summary>
         ///     The lc
         /// </summary>
         private Vector2F _lcA, _lcB, _lcC, _lcD;
@@ -205,6 +175,36 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The ratio
         /// </summary>
         private float _ratio;
+
+        /// <summary>
+        ///     The jv bd
+        /// </summary>
+        private Vector2F jvAc;
+
+        /// <summary>
+        ///     The jv bd
+        /// </summary>
+        private Vector2F jvBd;
+
+        /// <summary>
+        ///     The jw
+        /// </summary>
+        private float jwA;
+
+        /// <summary>
+        ///     The jw
+        /// </summary>
+        private float jwB;
+
+        /// <summary>
+        ///     The jw
+        /// </summary>
+        private float jwC;
+
+        /// <summary>
+        ///     The jw
+        /// </summary>
+        private float jwD;
 
         /// <summary>
         ///     Requires two existing revolute or prismatic joints (any combination will work).

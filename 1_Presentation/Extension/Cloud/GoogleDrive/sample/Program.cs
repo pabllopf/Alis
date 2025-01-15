@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Logging;
 
 namespace Alis.Extension.Cloud.GoogleDrive.Sample
@@ -42,7 +41,7 @@ namespace Alis.Extension.Cloud.GoogleDrive.Sample
         /// </summary>
         public static void Main()
         {
-           Logger.Info("End Program...");
+            Logger.Info("End Program...");
         }
     }
 }

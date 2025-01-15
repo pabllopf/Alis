@@ -43,11 +43,6 @@ namespace Alis.Core.Physic.Dynamics
     public class ContactManager
     {
         /// <summary>
-        ///     The contact pool list
-        /// </summary>
-        internal readonly ContactListHead ContactPoolList;
-
-        /// <summary>
         ///     The broad phase
         /// </summary>
         public readonly IBroadPhase BroadPhase;
@@ -56,6 +51,16 @@ namespace Alis.Core.Physic.Dynamics
         ///     The contact list
         /// </summary>
         public readonly ContactListHead ContactList;
+
+        /// <summary>
+        ///     The contact pool list
+        /// </summary>
+        internal readonly ContactListHead ContactPoolList;
+
+        /// <summary>
+        ///     Fires when the broadphase detects that two Fixtures are close to each other.
+        /// </summary>
+        public readonly BroadphaseDelegate OnBroadphaseCollision;
 
         /// <summary>
         ///     A temporary list of contacts to be updated during Collide().
@@ -78,11 +83,6 @@ namespace Alis.Core.Physic.Dynamics
         ///     Fires when a contact is deleted
         /// </summary>
         public EndContactDelegate EndContact;
-
-        /// <summary>
-        ///     Fires when the broadphase detects that two Fixtures are close to each other.
-        /// </summary>
-        public readonly BroadphaseDelegate OnBroadphaseCollision;
 
         /// <summary>
         ///     Fires after the solver has run

@@ -200,7 +200,7 @@ namespace Alis.Core.Sample
         /// </summary>
         public static void SampleAction()
         {
-           Logger.Info("Called from .NET");
+            Logger.Info("Called from .NET");
         }
 
 
@@ -634,7 +634,7 @@ namespace Alis.Core.Sample
                 if (realTimeStopwatch.ElapsedMilliseconds >= 500)
                 {
                     double averageFps = frameCounter / (realTimeStopwatch.ElapsedMilliseconds / 1000.0);
-                   Logger.Info($"Average FPS: {averageFps:F2}");
+                    Logger.Info($"Average FPS: {averageFps:F2}");
                     frameCounter = 0;
                     realTimeStopwatch.Restart();
                 }

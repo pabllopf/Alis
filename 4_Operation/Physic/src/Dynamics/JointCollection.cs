@@ -44,14 +44,14 @@ namespace Alis.Core.Physic.Dynamics
         , ICollection<Joint>, IList<Joint>
     {
         /// <summary>
-        ///     The joint
-        /// </summary>
-        internal readonly List<Joint> List = new List<Joint>(32);
-
-        /// <summary>
         ///     The world
         /// </summary>
         private readonly World _world;
+
+        /// <summary>
+        ///     The joint
+        /// </summary>
+        internal readonly List<Joint> List = new List<Joint>(32);
 
         /// <summary>
         ///     The generation stamp

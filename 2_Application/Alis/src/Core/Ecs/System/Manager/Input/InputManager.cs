@@ -83,7 +83,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         /// <param name="isEnable">The is enable</param>
         /// <param name="context">The context</param>
         /// <param name="sdlEvent">The sdl event</param>
-        public InputManager(string id, string name, string tag, bool isEnable, Context context, Event sdlEvent) : base(id, name, tag, isEnable, context) => this.SdlEvent = sdlEvent;
+        public InputManager(string id, string name, string tag, bool isEnable, Context context, Event sdlEvent) : base(id, name, tag, isEnable, context) => SdlEvent = sdlEvent;
 
         /// <summary>
         ///     Ons the init
@@ -173,7 +173,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
                 if ((SdlEvent.type == EventType.JoyButtonDown)
                     && (button == (GameControllerButton) SdlEvent.cButton.button))
                 {
-                   Logger.Info($"[SDL_JoystickName_id = '{SdlEvent.cDevice.which}'] Pressed button={button}");
+                    Logger.Info($"[SDL_JoystickName_id = '{SdlEvent.cDevice.which}'] Pressed button={button}");
                 }
             }
         }
@@ -189,7 +189,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
                 if ((SdlEvent.type == EventType.JoyAxisMotion)
                     && (axi == (GameControllerAxis) SdlEvent.cAxis.axis))
                 {
-                   Logger.Info($"[SDL_JoystickName_id = '{SdlEvent.cDevice.which}'] Pressed axi={axi}");
+                    Logger.Info($"[SDL_JoystickName_id = '{SdlEvent.cDevice.which}'] Pressed axi={axi}");
                 }
             }
         }

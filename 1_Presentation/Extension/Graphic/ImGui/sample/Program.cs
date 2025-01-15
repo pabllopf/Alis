@@ -43,7 +43,7 @@ namespace Alis.Extension.Graphic.ImGui.Sample
         /// <param name="args">The args</param>
         private static void Main(string[] args)
         {
-           Logger.Info("Press any key to exit.");
+            Logger.Info("Press any key to exit.");
             Console.ReadKey();
         }
     }

@@ -240,7 +240,7 @@ namespace Alis.App.Engine.Windows
                     if (ImGui.IsMouseDoubleClicked(0))
                     {
                         // Handle double-click action here
-                       Logger.Info($"Double-clicked on: {line}");
+                        Logger.Info($"Double-clicked on: {line}");
                     }
                 }
 

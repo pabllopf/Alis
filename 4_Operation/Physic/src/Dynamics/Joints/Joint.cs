@@ -39,21 +39,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
     public abstract class Joint
     {
         /// <summary>
-        ///     The breakpoint
-        /// </summary>
-        private float _breakpoint;
-
-        /// <summary>
-        ///     The breakpoint squared
-        /// </summary>
-        private double _breakpointSquared;
-
-        /// <summary>
-        ///     The world
-        /// </summary>
-        internal World WorldInternal;
-
-        /// <summary>
         ///     The joint edge
         /// </summary>
         internal readonly JointEdge EdgeA = new JointEdge();
@@ -62,6 +47,16 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The joint edge
         /// </summary>
         internal readonly JointEdge EdgeB = new JointEdge();
+
+        /// <summary>
+        ///     The breakpoint
+        /// </summary>
+        private float _breakpoint;
+
+        /// <summary>
+        ///     The breakpoint squared
+        /// </summary>
+        private double _breakpointSquared;
 
         /// <summary>
         ///     Indicate if this join is enabled or not. Disabling a joint
@@ -79,6 +74,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         /// <value>The data.</value>
         public object Tag;
+
+        /// <summary>
+        ///     The world
+        /// </summary>
+        internal World WorldInternal;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Joint" /> class

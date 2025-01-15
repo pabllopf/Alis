@@ -60,11 +60,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         private float _beta;
 
         /// <summary>
-        ///     The
-        /// </summary>
-        private Vector2F c;
-
-        /// <summary>
         ///     The damping ratio
         /// </summary>
         private float _dampingRatio;
@@ -90,11 +85,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The index
         /// </summary>
         private int _indexA;
-
-        /// <summary>
-        ///     The inv ia
-        /// </summary>
-        private float invIa;
 
         /// <summary>
         ///     The inv mass
@@ -125,6 +115,16 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The world anchor
         /// </summary>
         private Vector2F _worldAnchor;
+
+        /// <summary>
+        ///     The
+        /// </summary>
+        private Vector2F c;
+
+        /// <summary>
+        ///     The inv ia
+        /// </summary>
+        private float invIa;
 
         /// <summary>
         ///     This requires a world target point,

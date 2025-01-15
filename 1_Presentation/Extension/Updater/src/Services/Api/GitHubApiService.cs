@@ -53,7 +53,7 @@ namespace Alis.Extension.Updater.Services.Api
         public GitHubApiService(string apiUrl)
         {
             _httpClient = new HttpClient();
-            this.ApiUrl = apiUrl;
+            ApiUrl = apiUrl;
         }
 
         /// <summary>

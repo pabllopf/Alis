@@ -43,6 +43,12 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// </summary>
         private readonly float _margin;
 
+        // Trapezoid container
+        /// <summary>
+        ///     The map
+        /// </summary>
+        public readonly HashSet<Trapezoid> Map;
+
         // Bottom segment that spans multiple trapezoids
         /// <summary>
         ///     The cross
@@ -54,12 +60,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         ///     The cross
         /// </summary>
         private Edge _cross;
-
-        // Trapezoid container
-        /// <summary>
-        ///     The map
-        /// </summary>
-        public readonly HashSet<Trapezoid> Map;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="TrapezoidalMap" /> class

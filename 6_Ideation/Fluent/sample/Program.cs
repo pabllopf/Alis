@@ -48,7 +48,7 @@ namespace Alis.Core.Aspect.Fluent.Sample
                 .WithModel("F8")
                 .WithColor("Red")
                 .Build();
-            
+
             Console.ReadKey();
         }
     }

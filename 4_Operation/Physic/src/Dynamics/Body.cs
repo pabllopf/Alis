@@ -81,34 +81,34 @@ namespace Alis.Core.Physic.Dynamics
         private bool _fixedRotation;
 
         /// <summary>
-        ///     The force
-        /// </summary>
-        internal Vector2F Force { get; set; }
-
-        /// <summary>
         ///     The inertia
         /// </summary>
         private float _inertia;
 
         /// <summary>
-        ///     The inv
+        ///     The linear damping
         /// </summary>
-        internal float InvI { get; set; }
+        private float _linearDamping;
 
         /// <summary>
-        ///     The inv mass
+        ///     The mass
         /// </summary>
-        internal float InvMass { get; set; }
+        private float _mass;
+
+        /// <summary>
+        ///     The sleeping allowed
+        /// </summary>
+        private bool _sleepingAllowed;
+
+        /// <summary>
+        ///     The all
+        /// </summary>
+        public ControllerFilter ControllerFilter = new ControllerFilter(ControllerCategory.All);
 
         /// <summary>
         ///     The island
         /// </summary>
         internal bool Island;
-
-        /// <summary>
-        ///     The linear damping
-        /// </summary>
-        private float _linearDamping;
 
         /// <summary>
         ///     The linear velocity
@@ -126,14 +126,14 @@ namespace Alis.Core.Physic.Dynamics
         internal int LockOrder;
 
         /// <summary>
-        ///     The mass
+        ///     The on collision event handler
         /// </summary>
-        private float _mass;
+        internal OnCollisionEventHandler OnCollisionEventHandler;
 
         /// <summary>
-        ///     The sleeping allowed
+        ///     The on separation event handler
         /// </summary>
-        private bool _sleepingAllowed;
+        internal OnSeparationEventHandler OnSeparationEventHandler;
 
         /// <summary>
         ///     The sleep time
@@ -144,6 +144,12 @@ namespace Alis.Core.Physic.Dynamics
         ///     The sweep
         /// </summary>
         internal Sweep Sweep; // the swept motion for CCD
+
+        /// <summary>
+        ///     Set the user data. Use this to store your application specific data.
+        /// </summary>
+        /// <value>The user data.</value>
+        public object Tag;
 
         /// <summary>
         ///     The torque
@@ -161,27 +167,6 @@ namespace Alis.Core.Physic.Dynamics
         internal Transform Xf; // the body origin transform
 
         /// <summary>
-        ///     The all
-        /// </summary>
-        public ControllerFilter ControllerFilter = new ControllerFilter(ControllerCategory.All);
-
-        /// <summary>
-        ///     The on collision event handler
-        /// </summary>
-        internal OnCollisionEventHandler OnCollisionEventHandler;
-
-        /// <summary>
-        ///     The on separation event handler
-        /// </summary>
-        internal OnSeparationEventHandler OnSeparationEventHandler;
-
-        /// <summary>
-        ///     Set the user data. Use this to store your application specific data.
-        /// </summary>
-        /// <value>The user data.</value>
-        public object Tag;
-
-        /// <summary>
         ///     Initializes a new instance of the <see cref="Body" /> class
         /// </summary>
         public Body()
@@ -195,6 +180,21 @@ namespace Alis.Core.Physic.Dynamics
 
             GetBodyType = BodyType.Static;
         }
+
+        /// <summary>
+        ///     The force
+        /// </summary>
+        internal Vector2F Force { get; set; }
+
+        /// <summary>
+        ///     The inv
+        /// </summary>
+        internal float InvI { get; set; }
+
+        /// <summary>
+        ///     The inv mass
+        /// </summary>
+        internal float InvMass { get; set; }
 
         /// <summary>
         ///     Get the parent World of this body. This is null if the body is not attached.

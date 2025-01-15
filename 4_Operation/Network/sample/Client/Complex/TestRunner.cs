@@ -89,7 +89,7 @@ namespace Alis.Core.Network.Sample.Client.Complex
         {
             Stopwatch stopwatch = Stopwatch.StartNew();
             Parallel.For(0, _numThreads, Run);
-           Logger.Info($"Completed in {stopwatch.Elapsed.TotalMilliseconds:#,##0.00} ms");
+            Logger.Info($"Completed in {stopwatch.Elapsed.TotalMilliseconds:#,##0.00} ms");
         }
 
         /// <summary>

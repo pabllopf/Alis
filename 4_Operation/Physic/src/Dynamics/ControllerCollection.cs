@@ -44,14 +44,14 @@ namespace Alis.Core.Physic.Dynamics
         , ICollection<Controller>, IList<Controller>
     {
         /// <summary>
-        ///     The controller
-        /// </summary>
-        internal readonly List<Controller> List = new List<Controller>(32);
-
-        /// <summary>
         ///     The world
         /// </summary>
         private readonly World _world;
+
+        /// <summary>
+        ///     The controller
+        /// </summary>
+        internal readonly List<Controller> List = new List<Controller>(32);
 
         /// <summary>
         ///     The generation stamp
@@ -64,63 +64,6 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="world">The world</param>
         public ControllerCollection(World world) => _world = world;
 
-        
-        /// <summary>
-        ///     Gets the enumerator
-        /// </summary>
-        /// <returns>An enumerator of controller</returns>
-        IEnumerator<Controller> IEnumerable<Controller>.GetEnumerator() => new ControllerEnumerator(this, List);
-        
-        /// <summary>
-        ///     Gets the enumerator
-        /// </summary>
-        /// <returns>The enumerator</returns>
-        IEnumerator IEnumerable.GetEnumerator() => new ControllerEnumerator(this, List);
-        
-        /// <summary>
-        ///     Gets the enumerator
-        /// </summary>
-        /// <returns>The controller enumerator</returns>
-        public ControllerEnumerator GetEnumerator() => new ControllerEnumerator(this, List);
-
-        
-        /// <summary>
-        ///     The not supported exception
-        /// </summary>
-        public Controller this[int index]
-        {
-            get => List[index];
-            set => throw new NotSupportedException();
-        }
-
-        /// <summary>
-        ///     Indexes the of using the specified item
-        /// </summary>
-        /// <param name="item">The item</param>
-        /// <returns>The int</returns>
-        public int IndexOf(Controller item) => List.IndexOf(item);
-
-        /// <summary>
-        ///     Inserts the index
-        /// </summary>
-        /// <param name="index">The index</param>
-        /// <param name="item">The item</param>
-        /// <exception cref="NotSupportedException"></exception>
-        void IList<Controller>.Insert(int index, Controller item)
-        {
-            throw new NotSupportedException();
-        }
-
-        /// <summary>
-        ///     Removes the at using the specified index
-        /// </summary>
-        /// <param name="index">The index</param>
-        /// <exception cref="NotSupportedException"></exception>
-        void IList<Controller>.RemoveAt(int index)
-        {
-            throw new NotSupportedException();
-        }
-        
         /// <summary>
         ///     Gets the value of the is read only
         /// </summary>
@@ -173,5 +116,62 @@ namespace Alis.Core.Physic.Dynamics
         {
             List.CopyTo(array, arrayIndex);
         }
+
+
+        /// <summary>
+        ///     Gets the enumerator
+        /// </summary>
+        /// <returns>An enumerator of controller</returns>
+        IEnumerator<Controller> IEnumerable<Controller>.GetEnumerator() => new ControllerEnumerator(this, List);
+
+        /// <summary>
+        ///     Gets the enumerator
+        /// </summary>
+        /// <returns>The enumerator</returns>
+        IEnumerator IEnumerable.GetEnumerator() => new ControllerEnumerator(this, List);
+
+
+        /// <summary>
+        ///     The not supported exception
+        /// </summary>
+        public Controller this[int index]
+        {
+            get => List[index];
+            set => throw new NotSupportedException();
+        }
+
+        /// <summary>
+        ///     Indexes the of using the specified item
+        /// </summary>
+        /// <param name="item">The item</param>
+        /// <returns>The int</returns>
+        public int IndexOf(Controller item) => List.IndexOf(item);
+
+        /// <summary>
+        ///     Inserts the index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <param name="item">The item</param>
+        /// <exception cref="NotSupportedException"></exception>
+        void IList<Controller>.Insert(int index, Controller item)
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        ///     Removes the at using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <exception cref="NotSupportedException"></exception>
+        void IList<Controller>.RemoveAt(int index)
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        ///     Gets the enumerator
+        /// </summary>
+        /// <returns>The controller enumerator</returns>
+        public ControllerEnumerator GetEnumerator() => new ControllerEnumerator(this, List);
     }
 }

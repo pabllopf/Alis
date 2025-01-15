@@ -52,21 +52,6 @@ namespace Alis.Core.Physic.Controllers
         private readonly ICollection<Body> _uniqueBodies = new List<Body>();
 
         /// <summary>
-        ///     The container
-        /// </summary>
-        private Aabb _container;
-
-        /// <summary>
-        ///     The normal
-        /// </summary>
-        private Vector2F _normal;
-
-        /// <summary>
-        ///     The offset
-        /// </summary>
-        private float _offset;
-
-        /// <summary>
         ///     Controls the rotational drag that the fluid exerts on the bodies within it. Use higher values will simulate thick
         ///     fluid, like honey, lower values to
         ///     simulate water-like fluids.
@@ -84,6 +69,21 @@ namespace Alis.Core.Physic.Controllers
         ///     simulate water-like fluids.
         /// </summary>
         public readonly float LinearDragCoefficient;
+
+        /// <summary>
+        ///     The container
+        /// </summary>
+        private Aabb _container;
+
+        /// <summary>
+        ///     The normal
+        /// </summary>
+        private Vector2F _normal;
+
+        /// <summary>
+        ///     The offset
+        /// </summary>
+        private float _offset;
 
         /// <summary>
         ///     Acts like waterflow. Defaults to 0,0.

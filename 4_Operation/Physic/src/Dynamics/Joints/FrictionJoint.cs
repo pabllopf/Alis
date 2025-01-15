@@ -72,16 +72,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         private int _indexB;
 
         /// <summary>
-        ///     The inv ia
-        /// </summary>
-        private float invIa;
-
-        /// <summary>
-        ///     The inv ib
-        /// </summary>
-        private float invIb;
-
-        /// <summary>
         ///     The inv mass
         /// </summary>
         private float _invMassA;
@@ -121,6 +111,16 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The
         /// </summary>
         private Vector2F _rB;
+
+        /// <summary>
+        ///     The inv ia
+        /// </summary>
+        private float invIa;
+
+        /// <summary>
+        ///     The inv ib
+        /// </summary>
+        private float invIb;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="FrictionJoint" /> class

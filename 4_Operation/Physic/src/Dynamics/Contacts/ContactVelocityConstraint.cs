@@ -38,6 +38,11 @@ namespace Alis.Core.Physic.Dynamics.Contacts
     public sealed class ContactVelocityConstraint
     {
         /// <summary>
+        ///     The max manifold points
+        /// </summary>
+        public readonly VelocityConstraintPoint[] Points = new VelocityConstraintPoint[SettingEnv.MaxManifoldPoints];
+
+        /// <summary>
         ///     The contact index
         /// </summary>
         public int ContactIndex;
@@ -86,11 +91,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         ///     The point count
         /// </summary>
         public int PointCount;
-
-        /// <summary>
-        ///     The max manifold points
-        /// </summary>
-        public readonly VelocityConstraintPoint[] Points = new VelocityConstraintPoint[SettingEnv.MaxManifoldPoints];
 
         /// <summary>
         ///     The restitution

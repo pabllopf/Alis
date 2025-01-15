@@ -42,6 +42,27 @@ namespace Alis.Core.Physic.Common.TextureTools
     public class Terrain
     {
         /// <summary>
+        ///     Height of terrain in world units.
+        /// </summary>
+        public readonly float Height;
+
+        /// <summary>
+        ///     Number of iterations to perform in the Marching Squares algorithm.
+        ///     Note: More then 3 has almost no effect on quality.
+        /// </summary>
+        public readonly int Iterations = 2;
+
+        /// <summary>
+        ///     Width of terrain in world units.
+        /// </summary>
+        public readonly float Width;
+
+        /// <summary>
+        ///     World to manage terrain in.
+        /// </summary>
+        public readonly World World;
+
+        /// <summary>
         ///     Generated bodies.
         /// </summary>
         private List<Body>[,] _bodyMap;
@@ -98,17 +119,6 @@ namespace Alis.Core.Physic.Common.TextureTools
         public TriangulationAlgorithm Decomposer;
 
         /// <summary>
-        ///     Height of terrain in world units.
-        /// </summary>
-        public readonly float Height;
-
-        /// <summary>
-        ///     Number of iterations to perform in the Marching Squares algorithm.
-        ///     Note: More then 3 has almost no effect on quality.
-        /// </summary>
-        public readonly int Iterations = 2;
-
-        /// <summary>
         ///     Points per each world unit used to define the terrain in the point cloud.
         /// </summary>
         public int PointsPerUnit;
@@ -117,16 +127,6 @@ namespace Alis.Core.Physic.Common.TextureTools
         ///     Points per sub cell.
         /// </summary>
         public int SubCellSize;
-
-        /// <summary>
-        ///     Width of terrain in world units.
-        /// </summary>
-        public readonly float Width;
-
-        /// <summary>
-        ///     World to manage terrain in.
-        /// </summary>
-        public readonly World World;
 
         /// <summary>
         ///     Creates a new terrain.

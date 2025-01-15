@@ -47,14 +47,14 @@ namespace Alis.Core.Physic.Common
     public class Path
     {
         /// <summary>
-        ///     The delta
-        /// </summary>
-        private float _deltaT;
-
-        /// <summary>
         ///     All the points that makes up the curve
         /// </summary>
         public readonly List<Vector2F> ControlPoints;
+
+        /// <summary>
+        ///     The delta
+        /// </summary>
+        private float _deltaT;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Path" /> class.

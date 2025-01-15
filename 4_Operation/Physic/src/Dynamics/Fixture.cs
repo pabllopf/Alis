@@ -45,21 +45,6 @@ namespace Alis.Core.Physic.Dynamics
     public class Fixture
     {
         /// <summary>
-        ///     The collides with
-        /// </summary>
-        internal Category CollidesWith;
-
-        /// <summary>
-        ///     The collision categories
-        /// </summary>
-        internal Category CollisionCategories;
-
-        /// <summary>
-        ///     The collision group
-        /// </summary>
-        internal short CollisionGroup;
-
-        /// <summary>
         ///     The friction
         /// </summary>
         private float _friction;
@@ -84,6 +69,21 @@ namespace Alis.Core.Physic.Dynamics
         ///     Due to how the broadphase works, this can be quite inaccurate as shapes are approximated using AABBs.
         /// </summary>
         public BeforeCollisionEventHandler BeforeCollision;
+
+        /// <summary>
+        ///     The collides with
+        /// </summary>
+        internal Category CollidesWith;
+
+        /// <summary>
+        ///     The collision categories
+        /// </summary>
+        internal Category CollisionCategories;
+
+        /// <summary>
+        ///     The collision group
+        /// </summary>
+        internal short CollisionGroup;
 
         /// <summary>
         ///     Fires when two shapes collide and a contact is created between them.
