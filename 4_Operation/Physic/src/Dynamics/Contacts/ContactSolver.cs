@@ -165,10 +165,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 vc.tangentSpeed = contact.TangentSpeed;
                 vc.indexA = bodyA.IslandIndex;
                 vc.indexB = bodyB.IslandIndex;
-                vc.invMassA = bodyA._invMass;
-                vc.invMassB = bodyB._invMass;
-                vc.invIA = bodyA._invI;
-                vc.invIB = bodyB._invI;
+                vc.invMassA = bodyA.InvMass;
+                vc.invMassB = bodyB.InvMass;
+                vc.invIA = bodyA.InvI;
+                vc.invIB = bodyB.InvI;
                 vc.contactIndex = i;
                 vc.pointCount = pointCount;
                 vc.K.SetZero();
@@ -177,12 +177,12 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 ContactPositionConstraint pc = _positionConstraints[i];
                 pc.indexA = bodyA.IslandIndex;
                 pc.indexB = bodyB.IslandIndex;
-                pc.invMassA = bodyA._invMass;
-                pc.invMassB = bodyB._invMass;
+                pc.invMassA = bodyA.InvMass;
+                pc.invMassB = bodyB.InvMass;
                 pc.localCenterA = bodyA._sweep.LocalCenter;
                 pc.localCenterB = bodyB._sweep.LocalCenter;
-                pc.invIA = bodyA._invI;
-                pc.invIB = bodyB._invI;
+                pc.invIA = bodyA.InvI;
+                pc.invIB = bodyB.InvI;
                 pc.localNormal = manifold.LocalNormal;
                 pc.localPoint = manifold.LocalPoint;
                 pc.pointCount = pointCount;
@@ -195,10 +195,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     ManifoldPoint cp = manifold.Points[j];
                     VelocityConstraintPoint vcp = vc.points[j];
 
-                    if (step.warmStarting)
+                    if (step.WarmStarting)
                     {
-                        vcp.normalImpulse = step.dtRatio * cp.NormalImpulse;
-                        vcp.tangentImpulse = step.dtRatio * cp.TangentImpulse;
+                        vcp.normalImpulse = step.DtRatio * cp.NormalImpulse;
+                        vcp.tangentImpulse = step.DtRatio * cp.TangentImpulse;
                     }
                     else
                     {
@@ -241,13 +241,13 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 Vector2F localCenterA = pc.localCenterA;
                 Vector2F localCenterB = pc.localCenterB;
 
-                Vector2F cA = _positions[indexA].c;
-                float aA = _positions[indexA].a;
+                Vector2F cA = _positions[indexA].C;
+                float aA = _positions[indexA].A;
                 Vector2F vA = _velocities[indexA].v;
                 float wA = _velocities[indexA].w;
 
-                Vector2F cB = _positions[indexB].c;
-                float aB = _positions[indexB].a;
+                Vector2F cB = _positions[indexB].C;
+                float aB = _positions[indexB].A;
                 Vector2F vB = _velocities[indexB].v;
                 float wB = _velocities[indexB].w;
 
@@ -831,10 +831,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 float iB = pc.invIB;
                 int pointCount = pc.pointCount;
 
-                Vector2F cA = _positions[indexA].c;
-                float aA = _positions[indexA].a;
-                Vector2F cB = _positions[indexB].c;
-                float aB = _positions[indexB].a;
+                Vector2F cA = _positions[indexA].C;
+                float aA = _positions[indexA].A;
+                Vector2F cB = _positions[indexB].C;
+                float aB = _positions[indexB].A;
 
                 // Solve normal constraints
                 for (int j = 0; j < pointCount; ++j)
@@ -872,10 +872,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     aB += iB * MathUtils.Cross(ref rB, ref P);
                 }
 
-                _positions[indexA].c = cA;
-                _positions[indexA].a = aA;
-                _positions[indexB].c = cB;
-                _positions[indexB].a = aB;
+                _positions[indexA].C = cA;
+                _positions[indexA].A = aA;
+                _positions[indexB].C = cB;
+                _positions[indexB].A = aB;
 
 
                 // Unlock bodies.
@@ -925,11 +925,11 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     iB = pc.invIB;
                 }
 
-                Vector2F cA = _positions[indexA].c;
-                float aA = _positions[indexA].a;
+                Vector2F cA = _positions[indexA].C;
+                float aA = _positions[indexA].A;
 
-                Vector2F cB = _positions[indexB].c;
-                float aB = _positions[indexB].a;
+                Vector2F cB = _positions[indexB].C;
+                float aB = _positions[indexB].A;
 
                 // Solve normal constraints
                 for (int j = 0; j < pointCount; ++j)
@@ -967,11 +967,11 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     aB += iB * MathUtils.Cross(ref rB, ref P);
                 }
 
-                _positions[indexA].c = cA;
-                _positions[indexA].a = aA;
+                _positions[indexA].C = cA;
+                _positions[indexA].A = aA;
 
-                _positions[indexB].c = cB;
-                _positions[indexB].a = aB;
+                _positions[indexB].C = cB;
+                _positions[indexB].A = aB;
             }
 
             // We can't expect minSpeparation >= -b2_linearSlop because we don't

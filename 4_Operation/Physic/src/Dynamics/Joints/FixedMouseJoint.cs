@@ -236,13 +236,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
         {
             _indexA = BodyA.IslandIndex;
             _localCenterA = BodyA._sweep.LocalCenter;
-            _invMassA = BodyA._invMass;
-            _invIA = BodyA._invI;
+            _invMassA = BodyA.InvMass;
+            _invIA = BodyA.InvI;
 
-            Vector2F cA = data.positions[_indexA].c;
-            float aA = data.positions[_indexA].a;
-            Vector2F vA = data.velocities[_indexA].v;
-            float wA = data.velocities[_indexA].w;
+            Vector2F cA = data.Positions[_indexA].C;
+            float aA = data.Positions[_indexA].A;
+            Vector2F vA = data.Velocities[_indexA].v;
+            float wA = data.Velocities[_indexA].w;
 
             Complex qA = Complex.FromAngle(aA);
 
@@ -260,7 +260,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             // magic formulas
             // gamma has units of inverse mass.
             // beta has units of inverse time.
-            float h = data.step.dt;
+            float h = data.Step.Dt;
             Debug.Assert(d + h * k > SettingEnv.Epsilon);
             _gamma = h * (d + h * k);
             if (Math.Abs(_gamma) > SettingEnv.Epsilon)
@@ -289,9 +289,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
             // Cheat with some damping
             wA *= 0.98f;
 
-            if (data.step.warmStarting)
+            if (data.Step.WarmStarting)
             {
-                _impulse *= data.step.dtRatio;
+                _impulse *= data.Step.DtRatio;
                 vA += _invMassA * _impulse;
                 wA += _invIA * MathUtils.Cross(ref _rA, ref _impulse);
             }
@@ -300,8 +300,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _impulse = Vector2F.Zero;
             }
 
-            data.velocities[_indexA].v = vA;
-            data.velocities[_indexA].w = wA;
+            data.Velocities[_indexA].v = vA;
+            data.Velocities[_indexA].w = wA;
         }
 
         /// <summary>
@@ -310,8 +310,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(ref SolverData data)
         {
-            Vector2F vA = data.velocities[_indexA].v;
-            float wA = data.velocities[_indexA].w;
+            Vector2F vA = data.Velocities[_indexA].v;
+            float wA = data.Velocities[_indexA].w;
 
             // Cdot = v + cross(w, r)
             Vector2F Cdot = vA + MathUtils.Cross(wA, ref _rA);
@@ -319,7 +319,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             Vector2F oldImpulse = _impulse;
             _impulse += impulse;
-            float maxImpulse = data.step.dt * MaxForce;
+            float maxImpulse = data.Step.Dt * MaxForce;
             if (_impulse.LengthSquared() > maxImpulse * maxImpulse)
             {
                 _impulse *= maxImpulse / _impulse.Length();
@@ -330,8 +330,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             vA += _invMassA * impulse;
             wA += _invIA * MathUtils.Cross(ref _rA, ref impulse);
 
-            data.velocities[_indexA].v = vA;
-            data.velocities[_indexA].w = wA;
+            data.Velocities[_indexA].v = vA;
+            data.Velocities[_indexA].w = wA;
         }
 
         /// <summary>

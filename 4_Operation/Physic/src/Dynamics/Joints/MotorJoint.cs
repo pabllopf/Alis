@@ -286,20 +286,20 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _indexB = BodyB.IslandIndex;
             _localCenterA = BodyA._sweep.LocalCenter;
             _localCenterB = BodyB._sweep.LocalCenter;
-            _invMassA = BodyA._invMass;
-            _invMassB = BodyB._invMass;
-            invIa = BodyA._invI;
-            invIb = BodyB._invI;
+            _invMassA = BodyA.InvMass;
+            _invMassB = BodyB.InvMass;
+            invIa = BodyA.InvI;
+            invIb = BodyB.InvI;
 
-            Vector2F cA = data.positions[_indexA].c;
-            float aA = data.positions[_indexA].a;
-            Vector2F vA = data.velocities[_indexA].v;
-            float wA = data.velocities[_indexA].w;
+            Vector2F cA = data.Positions[_indexA].C;
+            float aA = data.Positions[_indexA].A;
+            Vector2F vA = data.Velocities[_indexA].v;
+            float wA = data.Velocities[_indexA].w;
 
-            Vector2F cB = data.positions[_indexB].c;
-            float aB = data.positions[_indexB].a;
-            Vector2F vB = data.velocities[_indexB].v;
-            float wB = data.velocities[_indexB].w;
+            Vector2F cB = data.Positions[_indexB].C;
+            float aB = data.Positions[_indexB].A;
+            Vector2F vB = data.Velocities[_indexB].v;
+            float wB = data.Velocities[_indexB].w;
 
             Complex qA = Complex.FromAngle(aA);
             Complex qB = Complex.FromAngle(aB);
@@ -337,11 +337,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _linearError = cB + _rB - cA - _rA - Complex.Multiply(ref _linearOffset, ref qA);
             _angularError = aB - aA - _angularOffset;
 
-            if (data.step.warmStarting)
+            if (data.Step.WarmStarting)
             {
                 // Scale impulses to support a variable time step.
-                _linearImpulse *= data.step.dtRatio;
-                _angularImpulse *= data.step.dtRatio;
+                _linearImpulse *= data.Step.DtRatio;
+                _angularImpulse *= data.Step.DtRatio;
 
                 Vector2F p = new Vector2F(_linearImpulse.X, _linearImpulse.Y);
 
@@ -356,10 +356,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _angularImpulse = 0.0f;
             }
 
-            data.velocities[_indexA].v = vA;
-            data.velocities[_indexA].w = wA;
-            data.velocities[_indexB].v = vB;
-            data.velocities[_indexB].w = wB;
+            data.Velocities[_indexA].v = vA;
+            data.Velocities[_indexA].w = wA;
+            data.Velocities[_indexB].v = vB;
+            data.Velocities[_indexB].w = wB;
         }
 
         /// <summary>
@@ -368,16 +368,16 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(ref SolverData data)
         {
-            Vector2F vA = data.velocities[_indexA].v;
-            float wA = data.velocities[_indexA].w;
-            Vector2F vB = data.velocities[_indexB].v;
-            float wB = data.velocities[_indexB].w;
+            Vector2F vA = data.Velocities[_indexA].v;
+            float wA = data.Velocities[_indexA].w;
+            Vector2F vB = data.Velocities[_indexB].v;
+            float wB = data.Velocities[_indexB].w;
 
             float mA = _invMassA, mB = _invMassB;
             float iA = invIa, iB = invIb;
 
-            float h = data.step.dt;
-            float invH = data.step.inv_dt;
+            float h = data.Step.Dt;
+            float invH = data.Step.InvDt;
 
             // Solve angular friction
             {
@@ -418,10 +418,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 wB += iB * MathUtils.Cross(ref _rB, ref impulse);
             }
 
-            data.velocities[_indexA].v = vA;
-            data.velocities[_indexA].w = wA;
-            data.velocities[_indexB].v = vB;
-            data.velocities[_indexB].w = wB;
+            data.Velocities[_indexA].v = vA;
+            data.Velocities[_indexA].w = wA;
+            data.Velocities[_indexB].v = vB;
+            data.Velocities[_indexB].w = wB;
         }
 
         /// <summary>

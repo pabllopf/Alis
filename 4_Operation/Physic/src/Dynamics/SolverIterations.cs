@@ -41,9 +41,9 @@ namespace Alis.Core.Physic.Dynamics
         public int PositionIterations;
 
         /// <summary>The number of velocity iterations in the TOI solver</summary>
-        public int TOIVelocityIterations;
+        public int ToiVelocityIterations;
 
         /// <summary>The number of position iterations in the TOI solver</summary>
-        public int TOIPositionIterations;
+        public int ToiPositionIterations;
     }
 }

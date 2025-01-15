@@ -142,7 +142,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
             int containedShapeCount = 0;
 
             // Query the world for overlapping shapes.
-            World.QueryAABB(
+            World.QueryAabb(
                 fixture =>
                 {
                     if (fixture.TestPoint(ref pos))

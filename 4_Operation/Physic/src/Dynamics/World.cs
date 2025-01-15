@@ -45,10 +45,10 @@ namespace Alis.Core.Physic.Dynamics
     public partial class World
     {
         /// <summary>This is only for debugging the solver</summary>
-        private const bool _warmStarting = true;
+        private const bool WarmStarting = true;
 
         /// <summary>This is only for debugging the solver</summary>
-        private const bool _subStepping = false;
+        private const bool SubStepping = false;
 
         /// <summary>
         ///     The query callback cache
@@ -141,7 +141,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The world has new fixture
         /// </summary>
-        internal bool _worldHasNewFixture;
+        internal bool WorldHasNewFixture;
 
         /// <summary>
         ///     Fires whenever a body has been added
@@ -200,7 +200,7 @@ namespace Alis.Core.Physic.Dynamics
             JointList = new JointCollection(this);
             ControllerList = new ControllerCollection(this);
 
-            _queryCallbackCache = QueryAABBCallback;
+            _queryCallbackCache = QueryAabbCallback;
             _rayCastCallbackCache = RayCastCallback;
             _testPointDelegateCache = TestPointCallback;
 
@@ -512,9 +512,9 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="step">The step</param>
         /// <param name="iterations">The iterations</param>
-        private void SolveTOI(ref TimeStep step, ref SolverIterations iterations)
+        private void SolveToi(ref TimeStep step, ref SolverIterations iterations)
         {
-            Island.Reset(2 * SettingEnv.MaxTOIContacts, SettingEnv.MaxTOIContacts, 0, ContactManager);
+            Island.Reset(2 * SettingEnv.MaxToiContacts, SettingEnv.MaxToiContacts, 0, ContactManager);
 
             if (_stepComplete)
             {
@@ -787,12 +787,12 @@ namespace Alis.Core.Physic.Dynamics
                 }
 
                 TimeStep subStep;
-                subStep.positionIterations = iterations.TOIPositionIterations;
-                subStep.velocityIterations = iterations.TOIVelocityIterations;
-                subStep.dt = (1.0f - minAlpha) * step.dt;
-                subStep.inv_dt = 1.0f / subStep.dt;
-                subStep.dtRatio = 1.0f;
-                subStep.warmStarting = false;
+                subStep.PositionIterations = iterations.ToiPositionIterations;
+                subStep.VelocityIterations = iterations.ToiVelocityIterations;
+                subStep.Dt = (1.0f - minAlpha) * step.Dt;
+                subStep.InvDt = 1.0f / subStep.Dt;
+                subStep.DtRatio = 1.0f;
+                subStep.WarmStarting = false;
                 Island.SolveTOI(ref subStep, bA0.IslandIndex, bB0.IslandIndex);
 
                 // Reset island flags and synchronize broad-phase proxies.
@@ -1193,8 +1193,8 @@ namespace Alis.Core.Physic.Dynamics
             SolverIterations iterations = new SolverIterations();
             iterations.PositionIterations = SettingEnv.PositionIterations;
             iterations.VelocityIterations = SettingEnv.VelocityIterations;
-            iterations.TOIPositionIterations = SettingEnv.TOIPositionIterations;
-            iterations.TOIVelocityIterations = SettingEnv.TOIVelocityIterations;
+            iterations.ToiPositionIterations = SettingEnv.ToiPositionIterations;
+            iterations.ToiVelocityIterations = SettingEnv.ToiVelocityIterations;
             Step(dt, ref iterations);
         }
 
@@ -1223,10 +1223,10 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             // If new fixtures were added, we need to find the new contacts.
-            if (_worldHasNewFixture)
+            if (WorldHasNewFixture)
             {
                 ContactManager.FindNewContacts();
-                _worldHasNewFixture = false;
+                WorldHasNewFixture = false;
             }
 
             if (SettingEnv.EnableDiagnostics)
@@ -1236,12 +1236,12 @@ namespace Alis.Core.Physic.Dynamics
 
             //FPE only: moved position and velocity iterations into Settings.cs
             TimeStep step;
-            step.positionIterations = iterations.PositionIterations;
-            step.velocityIterations = iterations.VelocityIterations;
-            step.dt = dt;
-            step.inv_dt = dt > 0.0f ? 1.0f / dt : 0.0f;
-            step.dtRatio = _invDt0 * dt;
-            step.warmStarting = _warmStarting;
+            step.PositionIterations = iterations.PositionIterations;
+            step.VelocityIterations = iterations.VelocityIterations;
+            step.Dt = dt;
+            step.InvDt = dt > 0.0f ? 1.0f / dt : 0.0f;
+            step.DtRatio = _invDt0 * dt;
+            step.WarmStarting = WarmStarting;
 
             IsLocked = true;
             try
@@ -1265,7 +1265,7 @@ namespace Alis.Core.Physic.Dynamics
                 }
 
                 // Integrate velocities, solve velocity constraints, and integrate positions.
-                if (_stepComplete && (step.dt > 0.0f))
+                if (_stepComplete && (step.Dt > 0.0f))
                 {
                     Solve(ref step);
                 }
@@ -1276,9 +1276,9 @@ namespace Alis.Core.Physic.Dynamics
                 }
 
                 // Handle TOI events.
-                if (SettingEnv.ContinuousPhysics && (step.dt > 0.0f))
+                if (SettingEnv.ContinuousPhysics && (step.Dt > 0.0f))
                 {
-                    SolveTOI(ref step, ref iterations);
+                    SolveToi(ref step, ref iterations);
                 }
 
                 if (SettingEnv.EnableDiagnostics)
@@ -1296,9 +1296,9 @@ namespace Alis.Core.Physic.Dynamics
                 IsLocked = false;
             }
 
-            if (step.dt > 0.0f)
+            if (step.Dt > 0.0f)
             {
-                _invDt0 = step.inv_dt;
+                _invDt0 = step.InvDt;
             }
 
             if (SettingEnv.EnableDiagnostics)
@@ -1319,7 +1319,7 @@ namespace Alis.Core.Physic.Dynamics
             for (int i = 0; i < BodyList._list.Count; i++)
             {
                 Body body = BodyList._list[i];
-                body._force = Vector2F.Zero;
+                body.Force = Vector2F.Zero;
                 body._torque = 0.0f;
             }
         }
@@ -1332,9 +1332,9 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="callback">A user implemented callback class.</param>
         /// <param name="aabb">The aabb query box.</param>
-        public void QueryAABB(QueryReportFixtureDelegate callback, AABB aabb)
+        public void QueryAabb(QueryReportFixtureDelegate callback, AABB aabb)
         {
-            QueryAABB(callback, ref aabb);
+            QueryAabb(callback, ref aabb);
         }
 
         /// <summary>
@@ -1345,7 +1345,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="callback">A user implemented callback class.</param>
         /// <param name="aabb">The aabb query box.</param>
-        public void QueryAABB(QueryReportFixtureDelegate callback, ref AABB aabb)
+        public void QueryAabb(QueryReportFixtureDelegate callback, ref AABB aabb)
         {
             _queryDelegateTmp = callback;
             ContactManager.BroadPhase.Query(_queryCallbackCache, ref aabb);
@@ -1357,7 +1357,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         /// <returns>The bool</returns>
-        private bool QueryAABBCallback(int proxyId)
+        private bool QueryAabbCallback(int proxyId)
         {
             FixtureProxy proxy = ContactManager.BroadPhase.GetProxy(proxyId);
             return _queryDelegateTmp(proxy.Fixture);
@@ -1496,7 +1496,7 @@ namespace Alis.Core.Physic.Dynamics
             _testPointFixtureTmp = null;
 
             // Query the world for overlapping shapes.
-            QueryAABB(_testPointDelegateCache, ref aabb);
+            QueryAabb(_testPointDelegateCache, ref aabb);
 
             return _testPointFixtureTmp;
         }

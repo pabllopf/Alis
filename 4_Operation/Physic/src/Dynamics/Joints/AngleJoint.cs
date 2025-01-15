@@ -154,12 +154,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
             int indexA = BodyA.IslandIndex;
             int indexB = BodyB.IslandIndex;
 
-            float aW = data.positions[indexA].a;
-            float bW = data.positions[indexB].a;
+            float aW = data.Positions[indexA].A;
+            float bW = data.Positions[indexB].A;
 
             _jointError = bW - aW - TargetAngle;
-            _bias = -BiasFactor * data.step.inv_dt * _jointError;
-            _massFactor = (1 - Softness) / (BodyA._invI + BodyB._invI);
+            _bias = -BiasFactor * data.Step.InvDt * _jointError;
+            _massFactor = (1 - Softness) / (BodyA.InvI + BodyB.InvI);
         }
 
         /// <summary>
@@ -171,10 +171,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
             int indexA = BodyA.IslandIndex;
             int indexB = BodyB.IslandIndex;
 
-            float p = (_bias - data.velocities[indexB].w + data.velocities[indexA].w) * _massFactor;
+            float p = (_bias - data.Velocities[indexB].w + data.Velocities[indexA].w) * _massFactor;
 
-            data.velocities[indexA].w -= BodyA._invI * Math.Sign(p) * Math.Min(Math.Abs(p), MaxImpulse);
-            data.velocities[indexB].w += BodyB._invI * Math.Sign(p) * Math.Min(Math.Abs(p), MaxImpulse);
+            data.Velocities[indexA].w -= BodyA.InvI * Math.Sign(p) * Math.Min(Math.Abs(p), MaxImpulse);
+            data.Velocities[indexB].w += BodyB.InvI * Math.Sign(p) * Math.Min(Math.Abs(p), MaxImpulse);
         }
 
         /// <summary>
