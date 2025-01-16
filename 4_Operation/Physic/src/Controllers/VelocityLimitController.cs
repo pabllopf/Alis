@@ -67,12 +67,12 @@ namespace Alis.Core.Physic.Controllers
         /// <summary>
         ///     The limit angular velocity
         /// </summary>
-        public bool LimitAngularVelocity = true;
+        public readonly bool LimitAngularVelocity = true;
 
         /// <summary>
         ///     The limit linear velocity
         /// </summary>
-        public bool LimitLinearVelocity = true;
+        public readonly bool LimitLinearVelocity = true;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="VelocityLimitController" /> class.

@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// <summary>
         ///     The parent list
         /// </summary>
-        public List<Node> ParentList;
+        public readonly List<Node> ParentList;
 
         /// <summary>
         ///     The right child

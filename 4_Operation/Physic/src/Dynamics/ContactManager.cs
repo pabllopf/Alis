@@ -82,7 +82,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Fires when the broadphase detects that two Fixtures are close to each other.
         /// </summary>
-        public BroadphaseDelegate OnBroadphaseCollision;
+        public readonly BroadphaseDelegate OnBroadphaseCollision;
 
         /// <summary>
         ///     Fires after the solver has run
@@ -639,7 +639,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     A value of 0 will always use multithreading. A value of (int.MaxValue) will never use multithreading.
         ///     Typical values are {128 or 256}.
         /// </summary>
-        public int VelocityConstraintsMultithreadThreshold = int.MaxValue;
+        public readonly int VelocityConstraintsMultithreadThreshold = int.MaxValue;
 
         /// <summary>
         ///     A threshold for activating multiple cores to solve PositionConstraints.
@@ -647,7 +647,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     A value of 0 will always use multithreading. A value of (int.MaxValue) will never use multithreading.
         ///     Typical values are {128 or 256}.
         /// </summary>
-        public int PositionConstraintsMultithreadThreshold = int.MaxValue;
+        public readonly int PositionConstraintsMultithreadThreshold = int.MaxValue;
 
         /// <summary>
         ///     A threshold for activating multiple cores to solve Collide.
@@ -655,7 +655,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     A value of 0 will always use multithreading. A value of (int.MaxValue) will never use multithreading.
         ///     Typical values are {128 or 256}.
         /// </summary>
-        public int CollideMultithreadThreshold = int.MaxValue;
+        public readonly int CollideMultithreadThreshold = int.MaxValue;
 
         #endregion
     }

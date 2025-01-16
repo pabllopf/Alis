@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// <summary>
         ///     The triangles
         /// </summary>
-        public List<List<Point>> Triangles;
+        public readonly List<List<Point>> Triangles;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="MonotoneMountain" /> class

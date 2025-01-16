@@ -100,13 +100,13 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// <summary>
         ///     Height of terrain in world units.
         /// </summary>
-        public float Height;
+        public readonly float Height;
 
         /// <summary>
         ///     Number of iterations to perform in the Marching Squares algorithm.
         ///     Note: More then 3 has almost no effect on quality.
         /// </summary>
-        public int Iterations = 2;
+        public readonly int Iterations = 2;
 
         /// <summary>
         ///     Points per each world unit used to define the terrain in the point cloud.
@@ -121,12 +121,12 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// <summary>
         ///     Width of terrain in world units.
         /// </summary>
-        public float Width;
+        public readonly float Width;
 
         /// <summary>
         ///     World to manage terrain in.
         /// </summary>
-        public World World;
+        public readonly World World;
 
         /// <summary>
         ///     Creates a new terrain.

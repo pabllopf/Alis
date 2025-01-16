@@ -54,7 +54,7 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         ///     All the points that makes up the curve
         /// </summary>
-        public List<Vector2F> ControlPoints;
+        public readonly List<Vector2F> ControlPoints;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Path" /> class.

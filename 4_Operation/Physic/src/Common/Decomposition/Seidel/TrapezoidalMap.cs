@@ -59,7 +59,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// <summary>
         ///     The map
         /// </summary>
-        public HashSet<Trapezoid> Map;
+        public readonly HashSet<Trapezoid> Map;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="TrapezoidalMap" /> class

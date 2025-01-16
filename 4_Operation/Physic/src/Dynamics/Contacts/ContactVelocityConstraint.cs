@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     The max manifold points
         /// </summary>
-        public VelocityConstraintPoint[] Points = new VelocityConstraintPoint[SettingEnv.MaxManifoldPoints];
+        public readonly VelocityConstraintPoint[] Points = new VelocityConstraintPoint[SettingEnv.MaxManifoldPoints];
 
         /// <summary>
         ///     The restitution

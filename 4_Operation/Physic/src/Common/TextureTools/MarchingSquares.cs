@@ -620,7 +620,7 @@ namespace Alis.Core.Physic.Common.TextureTools
             /// <summary>
             ///     The points
             /// </summary>
-            public CxFastList<Vector2F> Points;
+            public readonly CxFastList<Vector2F> Points;
 
             /// <summary>
             ///     Initializes a new instance of the <see cref="GeomPoly" /> class

@@ -37,7 +37,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
         /// <summary>
         ///     The epsilon
         /// </summary>
-        public static double EPSILON = 1e-12;
+        public static readonly double EPSILON = 1e-12;
 
         /// <summary>
         ///     Requirements:

@@ -37,7 +37,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// <summary>
         ///     The elt
         /// </summary>
-        internal T _elt;
+        internal readonly T _elt;
 
         /// <summary>
         ///     The next

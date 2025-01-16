@@ -43,12 +43,12 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     The radius
         /// </summary>
-        internal float Radius;
+        internal readonly float Radius;
 
         /// <summary>
         ///     The vertices
         /// </summary>
-        internal Vertices Vertices;
+        internal readonly Vertices Vertices;
 
         // GJK using Voronoi regions (Christer Ericson) and Barycentric coordinates.
 

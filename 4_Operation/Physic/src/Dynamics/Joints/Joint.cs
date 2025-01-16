@@ -56,12 +56,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The joint edge
         /// </summary>
-        internal JointEdge EdgeA = new JointEdge();
+        internal readonly JointEdge EdgeA = new JointEdge();
 
         /// <summary>
         ///     The joint edge
         /// </summary>
-        internal JointEdge EdgeB = new JointEdge();
+        internal readonly JointEdge EdgeB = new JointEdge();
 
         /// <summary>
         ///     Indicate if this join is enabled or not. Disabling a joint

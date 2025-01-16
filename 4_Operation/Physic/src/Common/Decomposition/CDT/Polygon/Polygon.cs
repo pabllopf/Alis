@@ -62,7 +62,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         /// <summary>
         ///     The triangulation point
         /// </summary>
-        protected List<TriangulationPoint> _points = new List<TriangulationPoint>();
+        protected readonly List<TriangulationPoint> _points = new List<TriangulationPoint>();
 
         /// <summary>
         ///     The steiner points

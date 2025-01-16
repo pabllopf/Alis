@@ -42,7 +42,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// <summary>
         ///     The point
         /// </summary>
-        public TriangulationPoint Point;
+        public readonly TriangulationPoint Point;
 
         /// <summary>
         ///     The prev
@@ -57,7 +57,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// <summary>
         ///     The value
         /// </summary>
-        public double Value;
+        public readonly double Value;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="AdvancingFrontNode" /> class

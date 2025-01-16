@@ -190,17 +190,17 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     The number of velocity iterations used in the solver.
         /// </summary>
-        public static int VelocityIterations = 8;
+        public static readonly int VelocityIterations = 8;
 
         /// <summary>
         ///     The number of position iterations used in the solver.
         /// </summary>
-        public static int PositionIterations = 3;
+        public static readonly int PositionIterations = 3;
 
         /// <summary>
         ///     Enable/Disable Continuous Collision Detection (CCD)
         /// </summary>
-        public static bool ContinuousPhysics = true;
+        public static readonly bool ContinuousPhysics = true;
 
         /// <summary>
         ///     If true, it will run a GiftWrap convex hull on all polygon inputs.
@@ -208,27 +208,27 @@ namespace Alis.Core.Physic
         ///     but if speed of the creation of polygons are more important,
         ///     you might want to set this to false.
         /// </summary>
-        public static bool UseConvexHullPolygons = true;
+        public static readonly bool UseConvexHullPolygons = true;
 
         /// <summary>
         ///     The number of velocity iterations in the TOI solver
         /// </summary>
-        public static int ToiVelocityIterations = VelocityIterations;
+        public static readonly int ToiVelocityIterations = VelocityIterations;
 
         /// <summary>
         ///     The number of position iterations in the TOI solver
         /// </summary>
-        public static int ToiPositionIterations = 20;
+        public static readonly int ToiPositionIterations = 20;
 
         /// <summary>
         ///     Enable/Disable sleeping
         /// </summary>
-        public static bool AllowSleep = true;
+        public static readonly bool AllowSleep = true;
 
         /// <summary>
         ///     The maximum number of vertices on a convex polygon.
         /// </summary>
-        public static int MaxPolygonVertices = 8;
+        public static readonly int MaxPolygonVertices = 8;
 
         /// <summary>
         ///     Friction mixing law. Feel free to customize this.
