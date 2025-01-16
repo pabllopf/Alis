@@ -46,7 +46,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The controller
         /// </summary>
-        internal readonly List<Controller> _list = new List<Controller>(32);
+        internal readonly List<Controller> List = new List<Controller>(32);
 
         /// <summary>
         ///     The world
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The generation stamp
         /// </summary>
-        internal int _generationStamp = 0;
+        internal int GenerationStamp = 0;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ControllerCollection" /> class
@@ -64,173 +64,32 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="world">The world</param>
         public ControllerCollection(World world) => _world = world;
 
-
-        #region IEnumerable<Controller>
-
+        
         /// <summary>
         ///     Gets the enumerator
         /// </summary>
         /// <returns>An enumerator of controller</returns>
-        IEnumerator<Controller> IEnumerable<Controller>.GetEnumerator() => new ControllerEnumerator(this, _list);
-
-        #endregion IEnumerable<Controller>
-
-
-        #region IEnumerable
-
+        IEnumerator<Controller> IEnumerable<Controller>.GetEnumerator() => new ControllerEnumerator(this, List);
+        
         /// <summary>
         ///     Gets the enumerator
         /// </summary>
         /// <returns>The enumerator</returns>
-        IEnumerator IEnumerable.GetEnumerator() => new ControllerEnumerator(this, _list);
-
-        #endregion IEnumerable
-
+        IEnumerator IEnumerable.GetEnumerator() => new ControllerEnumerator(this, List);
+        
         /// <summary>
         ///     Gets the enumerator
         /// </summary>
         /// <returns>The controller enumerator</returns>
-        public ControllerEnumerator GetEnumerator() => new ControllerEnumerator(this, _list);
+        public ControllerEnumerator GetEnumerator() => new ControllerEnumerator(this, List);
 
-
-        /// <summary>
-        ///     The controller enumerator
-        /// </summary>
-        public struct ControllerEnumerator : IEnumerator<Controller>
-        {
-            /// <summary>
-            ///     The collection
-            /// </summary>
-            private ControllerCollection _collection;
-
-            /// <summary>
-            ///     The list
-            /// </summary>
-            private List<Controller> _list;
-
-            /// <summary>
-            ///     The generation stamp
-            /// </summary>
-            private readonly int _generationStamp;
-
-            /// <summary>
-            ///     The
-            /// </summary>
-            private int i;
-
-            /// <summary>
-            ///     Initializes a new instance of the <see cref="ControllerEnumerator" /> class
-            /// </summary>
-            /// <param name="collection">The collection</param>
-            /// <param name="list">The list</param>
-            public ControllerEnumerator(ControllerCollection collection, List<Controller> list)
-            {
-                _collection = collection;
-                _list = list;
-                _generationStamp = collection._generationStamp;
-                i = -1;
-            }
-
-            /// <summary>
-            ///     Gets the value of the current
-            /// </summary>
-            public Controller Current
-            {
-                get
-                {
-                    if (_generationStamp == _collection._generationStamp)
-                    {
-                        return _list[i];
-                    }
-
-                    throw new InvalidOperationException("Collection was modified.");
-                }
-            }
-
-            #region IEnumerator<Controller>
-
-            /// <summary>
-            ///     Gets the value of the current
-            /// </summary>
-            Controller IEnumerator<Controller>.Current
-            {
-                get
-                {
-                    if (_generationStamp == _collection._generationStamp)
-                    {
-                        return _list[i];
-                    }
-
-                    throw new InvalidOperationException("Collection was modified.");
-                }
-            }
-
-            #endregion IEnumerator<Controller>
-
-            #region IEnumerator
-
-            /// <summary>
-            ///     Describes whether this instance move next
-            /// </summary>
-            /// <exception cref="InvalidOperationException">Collection was modified.</exception>
-            /// <returns>The bool</returns>
-            public bool MoveNext()
-            {
-                if (_generationStamp != _collection._generationStamp)
-                {
-                    throw new InvalidOperationException("Collection was modified.");
-                }
-
-                return ++i < _list.Count;
-            }
-
-
-            /// <summary>
-            ///     Gets the value of the current
-            /// </summary>
-            object IEnumerator.Current
-            {
-                get
-                {
-                    if (_generationStamp == _collection._generationStamp)
-                    {
-                        return _list[i];
-                    }
-
-                    throw new InvalidOperationException();
-                }
-            }
-
-            /// <summary>
-            ///     Disposes this instance
-            /// </summary>
-            void IDisposable.Dispose()
-            {
-                _collection = null;
-                _list = null;
-                i = -1;
-            }
-
-            /// <summary>
-            ///     Resets this instance
-            /// </summary>
-            void IEnumerator.Reset()
-            {
-                i = -1;
-            }
-
-            #endregion IEnumerator
-        }
-
-
-        #region IList<Controller>
-
+        
         /// <summary>
         ///     The not supported exception
         /// </summary>
         public Controller this[int index]
         {
-            get => _list[index];
+            get => List[index];
             set => throw new NotSupportedException();
         }
 
@@ -239,7 +98,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="item">The item</param>
         /// <returns>The int</returns>
-        public int IndexOf(Controller item) => _list.IndexOf(item);
+        public int IndexOf(Controller item) => List.IndexOf(item);
 
         /// <summary>
         ///     Inserts the index
@@ -261,12 +120,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             throw new NotSupportedException();
         }
-
-        #endregion IList<Controller>
-
-
-        #region ICollection<Controller>
-
+        
         /// <summary>
         ///     Gets the value of the is read only
         /// </summary>
@@ -275,7 +129,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Gets the value of the count
         /// </summary>
-        public int Count => _list.Count;
+        public int Count => List.Count;
 
         /// <summary>
         ///     Adds the item
@@ -308,7 +162,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="item">The item</param>
         /// <returns>The bool</returns>
-        public bool Contains(Controller item) => _list.Contains(item);
+        public bool Contains(Controller item) => List.Contains(item);
 
         /// <summary>
         ///     Copies the to using the specified array
@@ -317,9 +171,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="arrayIndex">The array index</param>
         public void CopyTo(Controller[] array, int arrayIndex)
         {
-            _list.CopyTo(array, arrayIndex);
+            List.CopyTo(array, arrayIndex);
         }
-
-        #endregion ICollection<Controller>
     }
 }

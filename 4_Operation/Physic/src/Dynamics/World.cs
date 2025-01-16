@@ -1176,6 +1176,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     and consraint solution.
         /// </summary>
         /// <param name="dt">The amount of time to simulate, this should not vary.</param>
+        /// <param name="iterations"></param>
         public void Step(TimeSpan dt, ref SolverIterations iterations)
         {
             Step((float) dt.TotalSeconds, ref iterations);
@@ -1204,6 +1205,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Warning: This method is locked during callbacks.
         /// </summary>
         /// <param name="dt">The amount of time to simulate in seconds, this should not vary.</param>
+        /// <param name="iterations"></param>
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
         public void Step(float dt, ref SolverIterations iterations)
         {
@@ -1247,9 +1249,9 @@ namespace Alis.Core.Physic.Dynamics
             try
             {
                 //Update controllers
-                for (int i = 0; i < ControllerList._list.Count; i++)
+                for (int i = 0; i < ControllerList.List.Count; i++)
                 {
-                    ControllerList._list[i].Update(dt);
+                    ControllerList.List[i].Update(dt);
                 }
 
                 if (SettingEnv.EnableDiagnostics)
@@ -1438,8 +1440,8 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             controller.World = this;
-            ControllerList._list.Add(controller);
-            ControllerList._generationStamp++;
+            ControllerList.List.Add(controller);
+            ControllerList.GenerationStamp++;
 
             ControllerDelegate controllerAddedHandler = ControllerAdded;
             if (controllerAddedHandler != null)
@@ -1470,8 +1472,8 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             controller.World = null;
-            ControllerList._list.Remove(controller);
-            ControllerList._generationStamp++;
+            ControllerList.List.Remove(controller);
+            ControllerList.GenerationStamp++;
 
             ControllerDelegate controllerRemovedHandler = ControllerRemoved;
             if (controllerRemovedHandler != null)
@@ -1551,9 +1553,9 @@ namespace Alis.Core.Physic.Dynamics
                 Remove(BodyList._list[i]);
             }
 
-            for (int i = ControllerList._list.Count - 1; i >= 0; i--)
+            for (int i = ControllerList.List.Count - 1; i >= 0; i--)
             {
-                Remove(ControllerList._list[i]);
+                Remove(ControllerList.List[i]);
             }
         }
     }
