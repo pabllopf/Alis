@@ -793,7 +793,7 @@ namespace Alis.Core.Physic.Dynamics
                 subStep.InvDt = 1.0f / subStep.Dt;
                 subStep.DtRatio = 1.0f;
                 subStep.WarmStarting = false;
-                Island.SolveTOI(ref subStep, bA0.IslandIndex, bB0.IslandIndex);
+                Island.SolveToi(ref subStep, bA0.IslandIndex, bB0.IslandIndex);
 
                 // Reset island flags and synchronize broad-phase proxies.
                 for (int i = 0; i < Island.BodyCount; ++i)
