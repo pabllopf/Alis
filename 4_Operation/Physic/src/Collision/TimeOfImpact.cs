@@ -44,12 +44,27 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     The toi max iters
         /// </summary>
-        [ThreadStatic] public static int TOICalls, TOIIters, TOIMaxIters;
+        [ThreadStatic] public static int ToiCalls;
+
+        /// <summary>
+        ///     The toi max iters
+        /// </summary>
+        [ThreadStatic] public static int ToiIters;
+
+        /// <summary>
+        ///     The toi max iters
+        /// </summary>
+        [ThreadStatic] public static int ToiMaxIters;
 
         /// <summary>
         ///     The toi max root iters
         /// </summary>
-        [ThreadStatic] public static int TOIRootIters, TOIMaxRootIters;
+        [ThreadStatic] public static int ToiRootIters;
+
+        /// <summary>
+        ///     The toi max root iters
+        /// </summary>
+        [ThreadStatic] public static int ToiMaxRootIters;
 
         /// <summary>
         ///     Compute the upper bound on time before two shapes penetrate. Time is represented as
@@ -60,15 +75,15 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         /// <param name="output">The output.</param>
         /// <param name="input">The input.</param>
-        public static void CalculateTimeOfImpact(out TOIOutput output, ref TOIInput input)
+        public static void CalculateTimeOfImpact(out ToiOutput output, ref TOIInput input)
         {
             if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
             {
-                ++TOICalls;
+                ++ToiCalls;
             }
 
-            output = new TOIOutput();
-            output.State = TOIOutputState.Unknown;
+            output = new ToiOutput();
+            output.State = ToiOutputState.Unknown;
             output.T = input.TMax;
 
             Sweep sweepA = input.SweepA;
@@ -87,7 +102,7 @@ namespace Alis.Core.Physic.Collision
             Debug.Assert(target > tolerance);
 
             float t1 = 0.0f;
-            const int k_maxIterations = 20;
+            const int kMaxIterations = 20;
             int iter = 0;
 
             // Prepare input for distance query.
@@ -113,7 +128,7 @@ namespace Alis.Core.Physic.Collision
                 if (distanceOutput.Distance <= 0.0f)
                 {
                     // Failure!
-                    output.State = TOIOutputState.Overlapped;
+                    output.State = ToiOutputState.Overlapped;
                     output.T = 0.0f;
                     break;
                 }
@@ -121,7 +136,7 @@ namespace Alis.Core.Physic.Collision
                 if (distanceOutput.Distance < target + tolerance)
                 {
                     // Victory!
-                    output.State = TOIOutputState.Touching;
+                    output.State = ToiOutputState.Touching;
                     output.T = t1;
                     break;
                 }
@@ -142,7 +157,7 @@ namespace Alis.Core.Physic.Collision
                     if (s2 > target + tolerance)
                     {
                         // Victory!
-                        output.State = TOIOutputState.Seperated;
+                        output.State = ToiOutputState.Seperated;
                         output.T = tMax;
                         done = true;
                         break;
@@ -163,7 +178,7 @@ namespace Alis.Core.Physic.Collision
                     // runs out of iterations.
                     if (s1 < target - tolerance)
                     {
-                        output.State = TOIOutputState.Failed;
+                        output.State = ToiOutputState.Failed;
                         output.T = t1;
                         done = true;
                         break;
@@ -173,7 +188,7 @@ namespace Alis.Core.Physic.Collision
                     if (s1 <= target + tolerance)
                     {
                         // Victory! t1 should hold the TOI (could be 0.0).
-                        output.State = TOIOutputState.Touching;
+                        output.State = ToiOutputState.Touching;
                         output.T = t1;
                         done = true;
                         break;
@@ -201,7 +216,7 @@ namespace Alis.Core.Physic.Collision
 
                         if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
                         {
-                            ++TOIRootIters;
+                            ++ToiRootIters;
                         }
 
                         float s = SeparationFunction.Evaluate(indexA, indexB, t);
@@ -233,7 +248,7 @@ namespace Alis.Core.Physic.Collision
 
                     if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
                     {
-                        TOIMaxRootIters = Math.Max(TOIMaxRootIters, rootIterCount);
+                        ToiMaxRootIters = Math.Max(ToiMaxRootIters, rootIterCount);
                     }
 
                     ++pushBackIter;
@@ -248,7 +263,7 @@ namespace Alis.Core.Physic.Collision
 
                 if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
                 {
-                    ++TOIIters;
+                    ++ToiIters;
                 }
 
                 if (done)
@@ -256,10 +271,10 @@ namespace Alis.Core.Physic.Collision
                     break;
                 }
 
-                if (iter == k_maxIterations)
+                if (iter == kMaxIterations)
                 {
                     // Root finder got stuck. Semi-victory.
-                    output.State = TOIOutputState.Failed;
+                    output.State = ToiOutputState.Failed;
                     output.T = t1;
                     break;
                 }
@@ -267,7 +282,7 @@ namespace Alis.Core.Physic.Collision
 
             if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
             {
-                TOIMaxIters = Math.Max(TOIMaxIters, iter);
+                ToiMaxIters = Math.Max(ToiMaxIters, iter);
             }
         }
     }

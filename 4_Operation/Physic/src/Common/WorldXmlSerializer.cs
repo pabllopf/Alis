@@ -60,7 +60,7 @@ namespace Alis.Core.Physic.Common
         {
             _writer.WriteStartElement("Shape");
             _writer.WriteAttributeString("Type", shape.ShapeType.ToString());
-            _writer.WriteAttributeString("Density", FloatToString(shape.Density));
+            _writer.WriteAttributeString("Density", FloatToString(shape.GetDensity));
 
             switch (shape.ShapeType)
             {
@@ -68,7 +68,7 @@ namespace Alis.Core.Physic.Common
                 {
                     CircleShape circle = (CircleShape) shape;
 
-                    WriteElement("Radius", circle.Radius);
+                    WriteElement("Radius", circle.GetRadius);
 
                     WriteElement("Position", circle.Position);
                 }

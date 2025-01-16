@@ -361,7 +361,7 @@ namespace Alis.Core.Physic.Dynamics
                 FixtureProxy proxy = new FixtureProxy();
                 proxy.Fixture = this;
                 proxy.ChildIndex = i;
-                Shape.ComputeAABB(out proxy.AABB, ref xf, i);
+                Shape.ComputeAabb(out proxy.AABB, ref xf, i);
                 proxy.ProxyId = broadPhase.AddProxy(ref proxy.AABB);
                 broadPhase.SetProxy(proxy.ProxyId, ref proxy);
 
@@ -398,8 +398,8 @@ namespace Alis.Core.Physic.Dynamics
                 FixtureProxy proxy = Proxies[i];
 
                 // Compute an AABB that covers the swept Shape (may miss some rotation effect).
-                Shape.ComputeAABB(out Aabb aabb1, ref transform1, proxy.ChildIndex);
-                Shape.ComputeAABB(out Aabb aabb2, ref transform2, proxy.ChildIndex);
+                Shape.ComputeAabb(out Aabb aabb1, ref transform1, proxy.ChildIndex);
+                Shape.ComputeAabb(out Aabb aabb2, ref transform2, proxy.ChildIndex);
 
                 proxy.AABB.Combine(ref aabb1, ref aabb2);
 

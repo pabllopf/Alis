@@ -48,12 +48,12 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>
         ///     The density
         /// </summary>
-        internal float _density;
+        internal float Density;
 
         /// <summary>
         ///     The radius
         /// </summary>
-        internal float _radius;
+        internal float Radius;
 
         /// <summary>
         ///     Contains the properties of the shape such as:
@@ -70,7 +70,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="density">The density</param>
         protected Shape(float density)
         {
-            _density = density;
+            Density = density;
             ShapeType = ShapeType.Unknown;
         }
 
@@ -91,14 +91,14 @@ namespace Alis.Core.Physic.Collision.Shapes
         ///     Changing the density causes a recalculation of shape properties.
         /// </summary>
         /// <value>The density.</value>
-        public float Density
+        public float GetDensity
         {
-            get => _density;
+            get => Density;
             set
             {
                 Debug.Assert(value >= 0);
 
-                _density = value;
+                Density = value;
                 ComputeProperties();
             }
         }
@@ -107,15 +107,15 @@ namespace Alis.Core.Physic.Collision.Shapes
         ///     Radius of the Shape
         ///     Changing the radius causes a recalculation of shape properties.
         /// </summary>
-        public float Radius
+        public float GetRadius
         {
-            get => _radius;
+            get => Radius;
             set
             {
                 Debug.Assert(value >= 0);
 
-                _radius = value;
-                _2radius = _radius * _radius;
+                Radius = value;
+                _2radius = Radius * Radius;
 
                 ComputeProperties();
             }
@@ -152,7 +152,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="aabb">The aabb results.</param>
         /// <param name="transform">The world transform of the shape.</param>
         /// <param name="childIndex">The child shape index.</param>
-        public abstract void ComputeAABB(out Aabb aabb, ref Transform transform, int childIndex);
+        public abstract void ComputeAabb(out Aabb aabb, ref Transform transform, int childIndex);
 
         /// <summary>
         ///     Compute the mass properties of this shape using its dimensions and density.

@@ -169,9 +169,9 @@ namespace Alis.Core.Physic.Controllers
                     areac.X += sarea * sc.X;
                     areac.Y += sarea * sc.Y;
 
-                    mass += sarea * shape.Density;
-                    massc.X += sarea * sc.X * shape.Density;
-                    massc.Y += sarea * sc.Y * shape.Density;
+                    mass += sarea * shape.GetDensity;
+                    massc.X += sarea * sc.X * shape.GetDensity;
+                    massc.Y += sarea * sc.Y * shape.GetDensity;
                 }
 
                 areac.X /= area;

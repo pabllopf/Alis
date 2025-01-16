@@ -747,7 +747,7 @@ namespace Alis.Core.Physic.Dynamics
 #endif
 
             // Adjust mass properties if needed.
-            if (fixture.Shape._density > 0.0f)
+            if (fixture.Shape.Density > 0.0f)
             {
                 ResetMassData();
             }
@@ -1110,7 +1110,7 @@ namespace Alis.Core.Physic.Dynamics
             Vector2F localCenter = Vector2F.Zero;
             foreach (Fixture f in FixtureList)
             {
-                if (Math.Abs(f.Shape._density) < SettingEnv.Epsilon)
+                if (Math.Abs(f.Shape.Density) < SettingEnv.Epsilon)
                 {
                     continue;
                 }
