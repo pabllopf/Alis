@@ -98,7 +98,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <returns>The bool</returns>
         public override bool TestPoint(ref Transform transform, ref Vector2F point)
         {
-            Vector2F center = transform.p + Complex.Multiply(ref PositionInternal, ref transform.q);
+            Vector2F center = transform.P + Complex.Multiply(ref PositionInternal, ref transform.Q);
             Vector2F d = point - center;
             return Vector2F.Dot(d, d) <= _2radius;
         }
@@ -120,7 +120,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 
             output = new RayCastOutput();
 
-            Vector2F position = transform.p + Complex.Multiply(ref PositionInternal, ref transform.q);
+            Vector2F position = transform.P + Complex.Multiply(ref PositionInternal, ref transform.Q);
             Vector2F s = input.Point1 - position;
             float b = Vector2F.Dot(s, s) - _2radius;
 
@@ -163,8 +163,8 @@ namespace Alis.Core.Physic.Collision.Shapes
         public override void ComputeAabb(out Aabb aabb, ref Transform transform, int childIndex)
         {
             // OPT: Vector2F p = transform.p + Complex.Multiply(ref _position, ref transform.q);
-            float pX = PositionInternal.X * transform.q.R - PositionInternal.Y * transform.q.I + transform.p.X;
-            float pY = PositionInternal.Y * transform.q.R + PositionInternal.X * transform.q.I + transform.p.Y;
+            float pX = PositionInternal.X * transform.Q.R - PositionInternal.Y * transform.Q.I + transform.P.X;
+            float pY = PositionInternal.Y * transform.Q.R + PositionInternal.X * transform.Q.I + transform.P.Y;
 
             // OPT: aabb.LowerBound = new Vector2F(p.X - Radius, p.Y - Radius);
             // OPT: aabb.UpperBound = new Vector2F(p.X + Radius, p.Y + Radius);

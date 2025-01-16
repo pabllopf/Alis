@@ -310,8 +310,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 Transform xf1 = BodyA.GetTransform();
                 Transform xf2 = BodyB.GetTransform();
 
-                Vector2F r1 = Complex.Multiply(LocalAnchorA - BodyA.LocalCenter, ref xf1.q);
-                Vector2F r2 = Complex.Multiply(LocalAnchorB - BodyB.LocalCenter, ref xf2.q);
+                Vector2F r1 = Complex.Multiply(LocalAnchorA - BodyA.LocalCenter, ref xf1.Q);
+                Vector2F r2 = Complex.Multiply(LocalAnchorB - BodyB.LocalCenter, ref xf2.Q);
                 Vector2F p1 = BodyA._sweep.C + r1;
                 Vector2F p2 = BodyB._sweep.C + r2;
                 Vector2F d = p2 - p1;

@@ -185,7 +185,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             AdvancingFrontNode first = b;
             while (c != tcx.AFront.Tail)
             {
-                if (TriangulationUtil.Orient2d(b.Point, c.Point, c.Next.Point) == Orientation.CCW)
+                if (TriangulationUtil.Orient2d(b.Point, c.Point, c.Next.Point) == Orientation.Ccw)
                 {
                     // [b,c,d] Concave - fill around c
                     Fill(tcx, c);
@@ -194,7 +194,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 else
                 {
                     // [b,c,d] Convex
-                    if ((b != first) && (TriangulationUtil.Orient2d(b.Prev.Point, b.Point, c.Point) == Orientation.CCW))
+                    if ((b != first) && (TriangulationUtil.Orient2d(b.Prev.Point, b.Point, c.Point) == Orientation.Ccw))
                     {
                         // [a,b,c] Concave - fill around b
                         Fill(tcx, b);
@@ -338,10 +338,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             if (node.Next.Point != edge.P)
             {
                 // Next above or below edge?
-                if (TriangulationUtil.Orient2d(edge.Q, node.Next.Point, edge.P) == Orientation.CCW)
+                if (TriangulationUtil.Orient2d(edge.Q, node.Next.Point, edge.P) == Orientation.Ccw)
                 {
                     // Below
-                    if (TriangulationUtil.Orient2d(node.Point, node.Next.Point, node.Next.Next.Point) == Orientation.CCW)
+                    if (TriangulationUtil.Orient2d(node.Point, node.Next.Point, node.Next.Next.Point) == Orientation.Ccw)
                     {
                         // Next is concave
                         FillRightConcaveEdgeEvent(tcx, edge, node);
@@ -361,7 +361,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         {
             // Next concave or convex?
             if (TriangulationUtil.Orient2d(node.Next.Point, node.Next.Next.Point, node.Next.Next.Next.Point) ==
-                Orientation.CCW)
+                Orientation.Ccw)
             {
                 // Concave
                 FillRightConcaveEdgeEvent(tcx, edge, node.Next);
@@ -370,7 +370,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             {
                 // Convex
                 // Next above or below edge?
-                if (TriangulationUtil.Orient2d(edge.Q, node.Next.Next.Point, edge.P) == Orientation.CCW)
+                if (TriangulationUtil.Orient2d(edge.Q, node.Next.Next.Point, edge.P) == Orientation.Ccw)
                 {
                     // Below
                     FillRightConvexEdgeEvent(tcx, edge, node.Next);
@@ -389,7 +389,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         {
             if (node.Point.X < edge.P.X) // needed?
             {
-                if (TriangulationUtil.Orient2d(node.Point, node.Next.Point, node.Next.Next.Point) == Orientation.CCW)
+                if (TriangulationUtil.Orient2d(node.Point, node.Next.Point, node.Next.Next.Point) == Orientation.Ccw)
                 {
                     // Concave 
                     FillRightConcaveEdgeEvent(tcx, edge, node);
@@ -416,7 +416,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             {
                 // Check if next node is below the edge
                 Orientation o1 = TriangulationUtil.Orient2d(edge.Q, node.Next.Point, edge.P);
-                if (o1 == Orientation.CCW)
+                if (o1 == Orientation.Ccw)
                 {
                     FillRightBelowEdgeEvent(tcx, edge, node);
                 }
@@ -437,7 +437,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         {
             // Next concave or convex?
             if (TriangulationUtil.Orient2d(node.Prev.Point, node.Prev.Prev.Point, node.Prev.Prev.Prev.Point) ==
-                Orientation.CW)
+                Orientation.Cw)
             {
                 // Concave
                 FillLeftConcaveEdgeEvent(tcx, edge, node.Prev);
@@ -446,7 +446,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             {
                 // Convex
                 // Next above or below edge?
-                if (TriangulationUtil.Orient2d(edge.Q, node.Prev.Prev.Point, edge.P) == Orientation.CW)
+                if (TriangulationUtil.Orient2d(edge.Q, node.Prev.Prev.Point, edge.P) == Orientation.Cw)
                 {
                     // Below
                     FillLeftConvexEdgeEvent(tcx, edge, node.Prev);
@@ -467,10 +467,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             if (node.Prev.Point != edge.P)
             {
                 // Next above or below edge?
-                if (TriangulationUtil.Orient2d(edge.Q, node.Prev.Point, edge.P) == Orientation.CW)
+                if (TriangulationUtil.Orient2d(edge.Q, node.Prev.Point, edge.P) == Orientation.Cw)
                 {
                     // Below
-                    if (TriangulationUtil.Orient2d(node.Point, node.Prev.Point, node.Prev.Prev.Point) == Orientation.CW)
+                    if (TriangulationUtil.Orient2d(node.Point, node.Prev.Point, node.Prev.Prev.Point) == Orientation.Cw)
                     {
                         // Next is concave
                         FillLeftConcaveEdgeEvent(tcx, edge, node);
@@ -490,7 +490,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         {
             if (node.Point.X > edge.P.X)
             {
-                if (TriangulationUtil.Orient2d(node.Point, node.Prev.Point, node.Prev.Prev.Point) == Orientation.CW)
+                if (TriangulationUtil.Orient2d(node.Point, node.Prev.Point, node.Prev.Prev.Point) == Orientation.Cw)
                 {
                     // Concave 
                     FillLeftConcaveEdgeEvent(tcx, edge, node);
@@ -517,7 +517,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             {
                 // Check if next node is below the edge
                 Orientation o1 = TriangulationUtil.Orient2d(edge.Q, node.Prev.Point, edge.P);
-                if (o1 == Orientation.CW)
+                if (o1 == Orientation.Cw)
                 {
                     FillLeftBelowEdgeEvent(tcx, edge, node);
                 }
@@ -618,7 +618,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             {
                 // Need to decide if we are rotating CW or CCW to get to a triangle
                 // that will cross edge
-                if (o1 == Orientation.CW)
+                if (o1 == Orientation.Cw)
                 {
                     triangle = triangle.NeighborCcw(point);
                 }
@@ -705,13 +705,13 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         private static TriangulationPoint NextFlipPoint(TriangulationPoint ep, TriangulationPoint eq, DelaunayTriangle ot, TriangulationPoint op)
         {
             Orientation o2d = TriangulationUtil.Orient2d(eq, op, ep);
-            if (o2d == Orientation.CW)
+            if (o2d == Orientation.Cw)
             {
                 // Right
                 return ot.PointCcw(op);
             }
 
-            if (o2d == Orientation.CCW)
+            if (o2d == Orientation.Ccw)
             {
                 // Left
                 return ot.PointCw(op);
@@ -735,7 +735,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         private static DelaunayTriangle NextFlipTriangle(DtSweepContext tcx, Orientation o, DelaunayTriangle t, DelaunayTriangle ot, TriangulationPoint p, TriangulationPoint op)
         {
             int edgeIndex;
-            if (o == Orientation.CCW)
+            if (o == Orientation.Ccw)
             {
                 // ot is not crossing edge after flip
                 edgeIndex = ot.EdgeIndex(p, op);
@@ -942,7 +942,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// <param name="node">starting node, this or next node will be left node</param>
         private static void FillBasin(DtSweepContext tcx, AdvancingFrontNode node)
         {
-            if (TriangulationUtil.Orient2d(node.Point, node.Next.Point, node.Next.Next.Point) == Orientation.CCW)
+            if (TriangulationUtil.Orient2d(node.Point, node.Next.Point, node.Next.Next.Point) == Orientation.Ccw)
             {
                 // tcx.basin.leftNode = node.next.next;
                 tcx.Basin.LeftNode = node;
@@ -1003,7 +1003,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             if (node.Prev == tcx.Basin.LeftNode)
             {
                 Orientation o = TriangulationUtil.Orient2d(node.Point, node.Next.Point, node.Next.Next.Point);
-                if (o == Orientation.CW)
+                if (o == Orientation.Cw)
                 {
                     return;
                 }
@@ -1013,7 +1013,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             else if (node.Next == tcx.Basin.RightNode)
             {
                 Orientation o = TriangulationUtil.Orient2d(node.Point, node.Prev.Point, node.Prev.Prev.Point);
-                if (o == Orientation.CCW)
+                if (o == Orientation.Ccw)
                 {
                     return;
                 }

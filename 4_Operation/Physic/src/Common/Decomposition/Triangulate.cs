@@ -104,7 +104,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                     results = SeidelDecomposer.ConvexPartitionTrapezoid(vertices, tolerance);
                     break;
                 case TriangulationAlgorithm.Delauny:
-                    results = CDTDecomposer.ConvexPartition(vertices);
+                    results = CdtDecomposer.ConvexPartition(vertices);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException("algorithm");

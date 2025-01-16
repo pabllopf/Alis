@@ -79,12 +79,12 @@ namespace Alis.Core.Physic.Common
         /// <param name="beta">beta is a factor in [0,1], where 0 indicates alpha0.</param>
         public void GetTransform(out Transform xfb, float beta)
         {
-            xfb.p = new Vector2F((1.0f - beta) * C0.X + beta * C.X, (1.0f - beta) * C0.Y + beta * C.Y);
+            xfb.P = new Vector2F((1.0f - beta) * C0.X + beta * C.X, (1.0f - beta) * C0.Y + beta * C.Y);
             float angle = (1.0f - beta) * A0 + beta * A;
-            xfb.q = Complex.FromAngle(angle);
+            xfb.Q = Complex.FromAngle(angle);
 
             // Shift to origin
-            xfb.p -= Complex.Multiply(ref LocalCenter, ref xfb.q);
+            xfb.P -= Complex.Multiply(ref LocalCenter, ref xfb.Q);
         }
 
         /// <summary>

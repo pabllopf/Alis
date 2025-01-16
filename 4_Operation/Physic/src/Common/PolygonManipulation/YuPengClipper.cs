@@ -106,8 +106,8 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
 
             // Translate polygons into upper right quadrant
             // as the algorithm depends on it
-            Vector2F lbSubject = subject.GetAABB().LowerBound;
-            Vector2F lbClip = clip.GetAABB().LowerBound;
+            Vector2F lbSubject = subject.GetAabb().LowerBound;
+            Vector2F lbClip = clip.GetAabb().LowerBound;
             Vector2F.Min(ref lbSubject, ref lbClip, out Vector2F translate);
             translate = Vector2F.One - translate;
             if (translate != Vector2F.Zero)

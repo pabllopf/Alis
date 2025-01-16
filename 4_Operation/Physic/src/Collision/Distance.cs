@@ -145,10 +145,10 @@ namespace Alis.Core.Physic.Collision
 
                 // Compute a tentative new simplex vertex using support points.
                 SimplexVertex vertex = simplex.V[simplex.Count];
-                vertex.IndexA = input.ProxyA.GetSupport(-Complex.Divide(ref d, ref input.TransformA.q));
+                vertex.IndexA = input.ProxyA.GetSupport(-Complex.Divide(ref d, ref input.TransformA.Q));
                 vertex.Wa = Transform.Multiply(input.ProxyA.Vertices[vertex.IndexA], ref input.TransformA);
 
-                vertex.IndexB = input.ProxyB.GetSupport(Complex.Divide(ref d, ref input.TransformB.q));
+                vertex.IndexB = input.ProxyB.GetSupport(Complex.Divide(ref d, ref input.TransformB.Q));
                 vertex.Wb = Transform.Multiply(input.ProxyB.Vertices[vertex.IndexB], ref input.TransformB);
                 vertex.W = vertex.Wb - vertex.Wa;
                 simplex.V[simplex.Count] = vertex;

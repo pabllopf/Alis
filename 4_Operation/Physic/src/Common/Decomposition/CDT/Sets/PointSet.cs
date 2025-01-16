@@ -35,8 +35,8 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
     /// <summary>
     ///     The point set class
     /// </summary>
-    /// <seealso cref="Triangulatable" />
-    internal class PointSet : Triangulatable
+    /// <seealso cref="ITriangulatable" />
+    internal class PointSet : ITriangulatable
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="PointSet" /> class

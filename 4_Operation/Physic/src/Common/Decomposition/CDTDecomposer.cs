@@ -48,7 +48,7 @@ namespace Alis.Core.Physic.Common.Decomposition
     ///     - Does not care about winding order.
     ///     Source: http://code.google.com/p/poly2tri/
     /// </summary>
-    internal static class CDTDecomposer
+    internal static class CdtDecomposer
     {
         /// <summary>
         ///     Decompose the polygon into several smaller non-concave polygon.

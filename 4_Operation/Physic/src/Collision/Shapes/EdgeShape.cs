@@ -168,8 +168,8 @@ namespace Alis.Core.Physic.Collision.Shapes
             output = new RayCastOutput();
 
             // Put the ray into the edge's frame of reference.
-            Vector2F p1 = Complex.Divide(input.Point1 - transform.p, ref transform.q);
-            Vector2F p2 = Complex.Divide(input.Point2 - transform.p, ref transform.q);
+            Vector2F p1 = Complex.Divide(input.Point1 - transform.P, ref transform.Q);
+            Vector2F p2 = Complex.Divide(input.Point2 - transform.P, ref transform.Q);
             Vector2F d = p2 - p1;
 
             Vector2F v1 = Vertex11;
@@ -237,11 +237,11 @@ namespace Alis.Core.Physic.Collision.Shapes
             aabb = new Aabb();
 
             // OPT: Vector2F v1 = Transform.Multiply(ref _vertex1, ref transform);
-            float v1X = Vertex11.X * transform.q.R - Vertex11.Y * transform.q.I + transform.p.X;
-            float v1Y = Vertex11.Y * transform.q.R + Vertex11.X * transform.q.I + transform.p.Y;
+            float v1X = Vertex11.X * transform.Q.R - Vertex11.Y * transform.Q.I + transform.P.X;
+            float v1Y = Vertex11.Y * transform.Q.R + Vertex11.X * transform.Q.I + transform.P.Y;
             // OPT: Vector2F v2 = Transform.Multiply(ref _vertex2, ref transform);
-            float v2X = Vertex22.X * transform.q.R - Vertex22.Y * transform.q.I + transform.p.X;
-            float v2Y = Vertex22.Y * transform.q.R + Vertex22.X * transform.q.I + transform.p.Y;
+            float v2X = Vertex22.X * transform.Q.R - Vertex22.Y * transform.Q.I + transform.P.X;
+            float v2Y = Vertex22.Y * transform.Q.R + Vertex22.X * transform.Q.I + transform.P.Y;
 
             // OPT: aabb.LowerBound = Vector2F.Min(v1, v2);
             // OPT: aabb.UpperBound = Vector2F.Max(v1, v2);

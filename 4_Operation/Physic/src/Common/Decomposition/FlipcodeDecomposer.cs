@@ -176,9 +176,9 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <param name="v">The index of the second point</param>
         /// <param name="w">The index of the third point</param>
         /// <param name="n">The number of elements in the array.</param>
-        /// <param name="V">The array to populate with indicies of triangles.</param>
+        /// <param name="vertices"></param>
         /// <returns>True if a triangle was found</returns>
-        private static bool Snip(Vertices contour, int u, int v, int w, int n, int[] V)
+        private static bool Snip(Vertices contour, int u, int v, int w, int n, int[] vertices)
         {
             if (SettingEnv.Epsilon > MathUtils.Area(ref _tmpA, ref _tmpB, ref _tmpC))
             {
@@ -192,7 +192,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                     continue;
                 }
 
-                Vector2F point = contour[V[p]];
+                Vector2F point = contour[vertices[p]];
 
                 if (InsideTriangle(ref _tmpA, ref _tmpB, ref _tmpC, ref point))
                 {

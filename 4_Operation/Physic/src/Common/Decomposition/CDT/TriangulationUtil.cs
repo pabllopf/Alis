@@ -183,10 +183,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
 
             if (val > 0)
             {
-                return Orientation.CCW;
+                return Orientation.Ccw;
             }
 
-            return Orientation.CW;
+            return Orientation.Cw;
         }
     }
 }

@@ -191,7 +191,7 @@ namespace Alis.Core.Physic.Dynamics
             Enabled = true;
             _awake = true;
             _sleepingAllowed = true;
-            _xf.q = Complex.One;
+            _xf.Q = Complex.One;
 
             BodyType = BodyType.Static;
         }
@@ -504,14 +504,14 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>Return the world position of the body's origin.</returns>
         public Vector2F Position
         {
-            get => _xf.p;
+            get => _xf.P;
             set
             {
                 Debug.Assert(!float.IsNaN(value.X) && !float.IsNaN(value.Y));
 
                 if (World == null)
                 {
-                    _xf.p = value;
+                    _xf.P = value;
                 }
                 else
                 {
@@ -537,7 +537,7 @@ namespace Alis.Core.Physic.Dynamics
                 }
                 else
                 {
-                    SetTransform(ref _xf.p, value);
+                    SetTransform(ref _xf.P, value);
                 }
             }
         }
@@ -887,8 +887,8 @@ namespace Alis.Core.Physic.Dynamics
                 throw new InvalidOperationException("The World is locked.");
             }
 
-            _xf.q.Phase = angle;
-            _xf.p = position;
+            _xf.Q.Phase = angle;
+            _xf.P = position;
 
             _sweep.C = Transform.Multiply(ref _sweep.LocalCenter, ref _xf);
             _sweep.A = angle;
@@ -936,7 +936,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="force">The force.</param>
         public void ApplyForce(ref Vector2F force)
         {
-            ApplyForce(ref force, ref _xf.p);
+            ApplyForce(ref force, ref _xf.P);
         }
 
         /// <summary>
@@ -945,7 +945,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="force">The force.</param>
         public void ApplyForce(Vector2F force)
         {
-            ApplyForce(ref force, ref _xf.p);
+            ApplyForce(ref force, ref _xf.P);
         }
 
         /// <summary>
@@ -1098,8 +1098,8 @@ namespace Alis.Core.Physic.Dynamics
             // Kinematic bodies have zero mass.
             if (BodyType == BodyType.Kinematic)
             {
-                _sweep.C0 = _xf.p;
-                _sweep.C = _xf.p;
+                _sweep.C0 = _xf.P;
+                _sweep.C = _xf.P;
                 _sweep.A0 = _sweep.A;
                 return;
             }
@@ -1124,7 +1124,7 @@ namespace Alis.Core.Physic.Dynamics
             //FPE: Static bodies only have mass, they don't have other properties. A little hacky tho...
             if (BodyType == BodyType.Static)
             {
-                _sweep.C0 = _sweep.C = _xf.p;
+                _sweep.C0 = _sweep.C = _xf.P;
                 return;
             }
 
@@ -1185,7 +1185,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="localVector">A vector fixed in the body.</param>
         /// <returns>The same vector expressed in world coordinates.</returns>
-        public Vector2F GetWorldVector(ref Vector2F localVector) => Complex.Multiply(ref localVector, ref _xf.q);
+        public Vector2F GetWorldVector(ref Vector2F localVector) => Complex.Multiply(ref localVector, ref _xf.Q);
 
         /// <summary>
         ///     Get the world coordinates of a vector given the local coordinates.
@@ -1215,7 +1215,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="worldVector">A vector in world coordinates.</param>
         /// <returns>The corresponding local vector.</returns>
-        public Vector2F GetLocalVector(ref Vector2F worldVector) => Complex.Divide(ref worldVector, ref _xf.q);
+        public Vector2F GetLocalVector(ref Vector2F worldVector) => Complex.Divide(ref worldVector, ref _xf.Q);
 
         /// <summary>
         ///     Gets a local vector given a world vector.
@@ -1261,7 +1261,7 @@ namespace Alis.Core.Physic.Dynamics
         internal void SynchronizeFixtures()
         {
             Transform xf1 = new Transform(Vector2F.Zero, _sweep.A0);
-            xf1.p = _sweep.C0 - Complex.Multiply(ref _sweep.LocalCenter, ref xf1.q);
+            xf1.P = _sweep.C0 - Complex.Multiply(ref _sweep.LocalCenter, ref xf1.Q);
 
             IBroadPhase broadPhase = World.ContactManager.BroadPhase;
             for (int i = 0; i < FixtureList._list.Count; i++)
@@ -1275,8 +1275,8 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         internal void SynchronizeTransform()
         {
-            _xf.q.Phase = _sweep.A;
-            _xf.p = _sweep.C - Complex.Multiply(ref _sweep.LocalCenter, ref _xf.q);
+            _xf.Q.Phase = _sweep.A;
+            _xf.P = _sweep.C - Complex.Multiply(ref _sweep.LocalCenter, ref _xf.Q);
         }
 
         /// <summary>
@@ -1318,8 +1318,8 @@ namespace Alis.Core.Physic.Dynamics
             _sweep.Advance(alpha);
             _sweep.C = _sweep.C0;
             _sweep.A = _sweep.A0;
-            _xf.q.Phase = _sweep.A;
-            _xf.p = _sweep.C - Complex.Multiply(ref _sweep.LocalCenter, ref _xf.q);
+            _xf.Q.Phase = _sweep.A;
+            _xf.P = _sweep.C - Complex.Multiply(ref _sweep.LocalCenter, ref _xf.Q);
         }
 
         /// <summary>

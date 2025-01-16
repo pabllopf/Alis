@@ -82,7 +82,7 @@ namespace Alis.Core.Physic.Common
             List<Joint> joints = new List<Joint>();
             List<Shape> shapes = new List<Shape>();
 
-            XMLFragmentElement root = XMLFragmentParser.LoadFromStream(stream);
+            XmlFragmentElement root = XmlFragmentParser.LoadFromStream(stream);
 
             if (root.Name.ToLower() != "world")
             {
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Common
             }
 
             //Read gravity
-            foreach (XMLFragmentElement element in root.Elements)
+            foreach (XmlFragmentElement element in root.Elements)
             {
                 if (element.Name.ToLower() == "gravity")
                 {
@@ -100,11 +100,11 @@ namespace Alis.Core.Physic.Common
             }
 
             //Read shapes
-            foreach (XMLFragmentElement shapeElement in root.Elements)
+            foreach (XmlFragmentElement shapeElement in root.Elements)
             {
                 if (shapeElement.Name.ToLower() == "shapes")
                 {
-                    foreach (XMLFragmentElement element in shapeElement.Elements)
+                    foreach (XmlFragmentElement element in shapeElement.Elements)
                     {
                         if (element.Name.ToLower() != "shape")
                         {
@@ -121,7 +121,7 @@ namespace Alis.Core.Physic.Common
                                 CircleShape shape = new CircleShape();
                                 shape.Density = density;
 
-                                foreach (XMLFragmentElement sn in element.Elements)
+                                foreach (XmlFragmentElement sn in element.Elements)
                                 {
                                     switch (sn.Name.ToLower())
                                     {
@@ -144,7 +144,7 @@ namespace Alis.Core.Physic.Common
                                 PolygonShape shape = new PolygonShape();
                                 shape.Density = density;
 
-                                foreach (XMLFragmentElement sn in element.Elements)
+                                foreach (XmlFragmentElement sn in element.Elements)
                                 {
                                     switch (sn.Name.ToLower())
                                     {
@@ -152,7 +152,7 @@ namespace Alis.Core.Physic.Common
                                         {
                                             List<Vector2F> verts = new List<Vector2F>(sn.Elements.Count);
 
-                                            foreach (XMLFragmentElement vert in sn.Elements)
+                                            foreach (XmlFragmentElement vert in sn.Elements)
                                             {
                                                 verts.Add(ReadVector(vert));
                                             }
@@ -174,7 +174,7 @@ namespace Alis.Core.Physic.Common
                                 EdgeShape shape = new EdgeShape();
                                 shape.Density = density;
 
-                                foreach (XMLFragmentElement sn in element.Elements)
+                                foreach (XmlFragmentElement sn in element.Elements)
                                 {
                                     switch (sn.Name.ToLower())
                                     {
@@ -209,7 +209,7 @@ namespace Alis.Core.Physic.Common
                                 ChainShape shape = new ChainShape();
                                 shape.Density = density;
 
-                                foreach (XMLFragmentElement sn in element.Elements)
+                                foreach (XmlFragmentElement sn in element.Elements)
                                 {
                                     switch (sn.Name.ToLower())
                                     {
@@ -217,7 +217,7 @@ namespace Alis.Core.Physic.Common
                                         {
                                             List<Vector2F> verts = new List<Vector2F>(sn.Elements.Count);
 
-                                            foreach (XMLFragmentElement vert in sn.Elements)
+                                            foreach (XmlFragmentElement vert in sn.Elements)
                                             {
                                                 verts.Add(ReadVector(vert));
                                             }
@@ -246,11 +246,11 @@ namespace Alis.Core.Physic.Common
             }
 
             //Read fixtures
-            foreach (XMLFragmentElement fixtureElement in root.Elements)
+            foreach (XmlFragmentElement fixtureElement in root.Elements)
             {
                 if (fixtureElement.Name.ToLower() == "fixtures")
                 {
-                    foreach (XMLFragmentElement element in fixtureElement.Elements)
+                    foreach (XmlFragmentElement element in fixtureElement.Elements)
                     {
                         Fixture fixture = new Fixture();
 
@@ -261,12 +261,12 @@ namespace Alis.Core.Physic.Common
 
                         int fixtureId = int.Parse(element.Attributes[0].Value);
 
-                        foreach (XMLFragmentElement sn in element.Elements)
+                        foreach (XmlFragmentElement sn in element.Elements)
                         {
                             switch (sn.Name.ToLower())
                             {
                                 case "filterdata":
-                                    foreach (XMLFragmentElement ssn in sn.Elements)
+                                    foreach (XmlFragmentElement ssn in sn.Elements)
                                     {
                                         switch (ssn.Name.ToLower())
                                         {
@@ -305,11 +305,11 @@ namespace Alis.Core.Physic.Common
 
             //Read bodies
             Dictionary<Fixture, Fixture> mapFixtureClones = new Dictionary<Fixture, Fixture>();
-            foreach (XMLFragmentElement bodyElement in root.Elements)
+            foreach (XmlFragmentElement bodyElement in root.Elements)
             {
                 if (bodyElement.Name.ToLower() == "bodies")
                 {
-                    foreach (XMLFragmentElement element in bodyElement.Elements)
+                    foreach (XmlFragmentElement element in bodyElement.Elements)
                     {
                         Body body = world.CreateBody();
 
@@ -320,7 +320,7 @@ namespace Alis.Core.Physic.Common
 
                         body.BodyType = (BodyType) Enum.Parse(typeof(BodyType), element.Attributes[0].Value, true);
 
-                        foreach (XMLFragmentElement sn in element.Elements)
+                        foreach (XmlFragmentElement sn in element.Elements)
                         {
                             switch (sn.Name.ToLower())
                             {
@@ -369,7 +369,7 @@ namespace Alis.Core.Physic.Common
                                     break;
                                 case "bindings":
                                 {
-                                    foreach (XMLFragmentElement pair in sn.Elements)
+                                    foreach (XmlFragmentElement pair in sn.Elements)
                                     {
                                         Fixture fix = fixtures[int.Parse(pair.Attributes[0].Value)];
                                         Shape shape = shapes[int.Parse(pair.Attributes[1].Value)].Clone();
@@ -388,11 +388,11 @@ namespace Alis.Core.Physic.Common
             }
 
             //Read joints
-            foreach (XMLFragmentElement jointElement in root.Elements)
+            foreach (XmlFragmentElement jointElement in root.Elements)
             {
                 if (jointElement.Name.ToLower() == "joints")
                 {
-                    foreach (XMLFragmentElement n in jointElement.Elements)
+                    foreach (XmlFragmentElement n in jointElement.Elements)
                     {
                         Joint joint;
 
@@ -407,7 +407,7 @@ namespace Alis.Core.Physic.Common
                         bool collideConnected = false;
                         object jointTag = null;
 
-                        foreach (XMLFragmentElement sn in n.Elements)
+                        foreach (XmlFragmentElement sn in n.Elements)
                         {
                             switch (sn.Name.ToLower())
                             {
@@ -489,7 +489,7 @@ namespace Alis.Core.Physic.Common
                         joints.Add(joint);
                         world.Add(joint);
 
-                        foreach (XMLFragmentElement sn in n.Elements)
+                        foreach (XmlFragmentElement sn in n.Elements)
                         {
                             // check for specific nodes
                             switch (type)
@@ -751,7 +751,7 @@ namespace Alis.Core.Physic.Common
         /// </summary>
         /// <param name="node">The node</param>
         /// <returns>The vector</returns>
-        private static Vector2F ReadVector(XMLFragmentElement node)
+        private static Vector2F ReadVector(XmlFragmentElement node)
         {
             string[] values = node.Value.Split(' ');
             return new Vector2F(ParseFloat(values[0]), ParseFloat(values[1]));
@@ -764,7 +764,7 @@ namespace Alis.Core.Physic.Common
         /// <param name="type">The type</param>
         /// <param name="outer">The outer</param>
         /// <returns>The object</returns>
-        private static object ReadSimpleType(XMLFragmentElement node, Type type, bool outer)
+        private static object ReadSimpleType(XmlFragmentElement node, Type type, bool outer)
         {
             if (type == null)
             {

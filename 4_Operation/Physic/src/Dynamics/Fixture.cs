@@ -403,7 +403,7 @@ namespace Alis.Core.Physic.Dynamics
 
                 proxy.AABB.Combine(ref aabb1, ref aabb2);
 
-                Vector2F displacement = transform2.p - transform1.p;
+                Vector2F displacement = transform2.P - transform1.P;
 
                 broadPhase.MoveProxy(proxy.ProxyId, ref proxy.AABB, displacement);
             }

@@ -41,7 +41,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
         /// <summary>
         ///     The random
         /// </summary>
-        private static readonly RandomNumberGenerator RNG = RandomNumberGenerator.Create();
+        private static readonly RandomNumberGenerator Rng = RandomNumberGenerator.Create();
 
         /// <summary>
         ///     Uniforms the distribution using the specified n
@@ -57,12 +57,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
             for (int i = 0; i < n; i++)
             {
                 // Generate secure random number for X coordinate
-                RNG.GetBytes(buffer);
+                Rng.GetBytes(buffer);
                 double x = BitConverter.ToUInt32(buffer, 0) / (double) uint.MaxValue - 0.5;
                 x *= scale;
 
                 // Generate secure random number for Y coordinate
-                RNG.GetBytes(buffer);
+                Rng.GetBytes(buffer);
                 double y = BitConverter.ToUInt32(buffer, 0) / (double) uint.MaxValue - 0.5;
                 y *= scale;
 
