@@ -37,7 +37,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
         /// <summary>
         ///     The epsilon
         /// </summary>
-        public static readonly double EPSILON = 1e-12;
+        public static readonly double Epsilon = 1e-12;
 
         /// <summary>
         ///     Requirements:
@@ -151,13 +151,13 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
         public static bool InScanArea(TriangulationPoint pa, TriangulationPoint pb, TriangulationPoint pc, TriangulationPoint pd)
         {
             double oadb = (pa.X - pb.X) * (pd.Y - pb.Y) - (pd.X - pb.X) * (pa.Y - pb.Y);
-            if (oadb >= -EPSILON)
+            if (oadb >= -Epsilon)
             {
                 return false;
             }
 
             double oadc = (pa.X - pc.X) * (pd.Y - pc.Y) - (pd.X - pc.X) * (pa.Y - pc.Y);
-            if (oadc <= EPSILON)
+            if (oadc <= Epsilon)
             {
                 return false;
             }
@@ -176,7 +176,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
             double detleft = (pa.X - pc.X) * (pb.Y - pc.Y);
             double detright = (pa.Y - pc.Y) * (pb.X - pc.X);
             double val = detleft - detright;
-            if ((val > -EPSILON) && (val < EPSILON))
+            if ((val > -Epsilon) && (val < Epsilon))
             {
                 return Orientation.Collinear;
             }

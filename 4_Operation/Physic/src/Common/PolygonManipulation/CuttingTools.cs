@@ -40,8 +40,6 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
     /// </summary>
     public static class CuttingTools
     {
-        //Cutting a shape into two is based on the work of Daid and his prototype BoxCutter: http://www.box2d.org/forum/viewtopic.php?f=3&t=1473
-
         /// <summary>
         ///     Split a fixture into 2 vertice collections using the given entry and exit-point.
         /// </summary>
@@ -89,16 +87,8 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             int last = -1;
             for (int i = 0; i < vertices.Count; i++)
             {
-                int n;
                 //Find out if this vertex is on the old or new shape.
-                if (Vector2F.Dot(MathUtils.Cross(localExitPoint - localEntryPoint, 1), vertices[i] - localEntryPoint) > SettingEnv.Epsilon)
-                {
-                    n = 0;
-                }
-                else
-                {
-                    n = 1;
-                }
+                int n = Vector2F.Dot(MathUtils.Cross(localExitPoint - localEntryPoint, 1), vertices[i] - localEntryPoint) > SettingEnv.Epsilon ? 0 : 1;
 
                 if (last != n)
                 {

@@ -61,7 +61,7 @@ namespace Alis.Core.Physic.Common.Decomposition
 
             foreach (Vector2F vertex in vertices)
             {
-                poly.Points.Add(new TriangulationPoint(vertex.X, vertex.Y));
+                poly.GetPoints.Add(new TriangulationPoint(vertex.X, vertex.Y));
             }
 
             if (vertices.Holes != null)
@@ -72,7 +72,7 @@ namespace Alis.Core.Physic.Common.Decomposition
 
                     foreach (Vector2F vertex in holeVertices)
                     {
-                        hole.Points.Add(new TriangulationPoint(vertex.X, vertex.Y));
+                        hole.GetPoints.Add(new TriangulationPoint(vertex.X, vertex.Y));
                     }
 
                     poly.AddHole(hole);
@@ -85,7 +85,7 @@ namespace Alis.Core.Physic.Common.Decomposition
 
             List<Vertices> results = new List<Vertices>();
 
-            foreach (DelaunayTriangle triangle in poly.Triangles)
+            foreach (DelaunayTriangle triangle in poly.GetTriangles)
             {
                 Vertices v = new Vertices();
                 foreach (TriangulationPoint p in triangle.Points)

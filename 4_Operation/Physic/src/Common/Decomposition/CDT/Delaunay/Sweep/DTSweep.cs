@@ -240,7 +240,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
 
             // Only need to check +epsilon since point never have smaller 
             // x value than node due to how we fetch nodes from the front
-            if (point.X <= node.Point.X + TriangulationUtil.EPSILON)
+            if (point.X <= node.Point.X + TriangulationUtil.Epsilon)
             {
                 Fill(tcx, node);
             }

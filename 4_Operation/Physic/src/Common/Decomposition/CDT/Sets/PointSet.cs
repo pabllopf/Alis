@@ -42,19 +42,19 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
         ///     Initializes a new instance of the <see cref="PointSet" /> class
         /// </summary>
         /// <param name="points">The points</param>
-        public PointSet(List<TriangulationPoint> points) => Points = new List<TriangulationPoint>(points);
+        public PointSet(List<TriangulationPoint> points) => GetPoints = new List<TriangulationPoint>(points);
 
         #region Triangulatable Members
 
         /// <summary>
         ///     Gets the value of the points
         /// </summary>
-        public IList<TriangulationPoint> Points { get; }
+        public IList<TriangulationPoint> GetPoints { get; }
 
         /// <summary>
         ///     Gets or sets the value of the triangles
         /// </summary>
-        public IList<DelaunayTriangle> Triangles { get; private set; }
+        public IList<DelaunayTriangle> GetTriangles { get; private set; }
 
         /// <summary>
         ///     Gets the value of the triangulation mode
@@ -67,7 +67,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
         /// <param name="t">The </param>
         public void AddTriangle(DelaunayTriangle t)
         {
-            Triangles.Add(t);
+            GetTriangles.Add(t);
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
         {
             foreach (DelaunayTriangle tri in list)
             {
-                Triangles.Add(tri);
+                GetTriangles.Add(tri);
             }
         }
 
@@ -87,7 +87,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
         /// </summary>
         public void ClearTriangles()
         {
-            Triangles.Clear();
+            GetTriangles.Clear();
         }
 
         /// <summary>
@@ -96,16 +96,16 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
         /// <param name="tcx">The tcx</param>
         public virtual void PrepareTriangulation(TriangulationContext tcx)
         {
-            if (Triangles == null)
+            if (GetTriangles == null)
             {
-                Triangles = new List<DelaunayTriangle>(Points.Count);
+                GetTriangles = new List<DelaunayTriangle>(GetPoints.Count);
             }
             else
             {
-                Triangles.Clear();
+                GetTriangles.Clear();
             }
 
-            tcx.Points.AddRange(Points);
+            tcx.Points.AddRange(GetPoints);
         }
 
         #endregion
