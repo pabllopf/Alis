@@ -32,7 +32,7 @@ namespace Alis.Core.Physic.Collision
     /// <summary>
     ///     The ep axis type enum
     /// </summary>
-    public enum EPAxisType
+    public enum EpAxisType
     {
         /// <summary>
         ///     The unknown ep axis type

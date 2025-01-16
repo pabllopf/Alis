@@ -101,7 +101,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The toi input
         /// </summary>
-        private TOIInput _input = new TOIInput();
+        private ToiInput _input = new ToiInput();
 
         /// <summary>
         ///     The inv dt

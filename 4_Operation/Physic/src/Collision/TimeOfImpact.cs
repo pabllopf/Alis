@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         /// <param name="output">The output.</param>
         /// <param name="input">The input.</param>
-        public static void CalculateTimeOfImpact(out ToiOutput output, ref TOIInput input)
+        public static void CalculateTimeOfImpact(out ToiOutput output, ref ToiInput input)
         {
             if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
             {

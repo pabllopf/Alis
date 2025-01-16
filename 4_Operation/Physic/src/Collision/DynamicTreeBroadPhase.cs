@@ -193,9 +193,9 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         /// <param name="proxyId">The proxy id.</param>
         /// <param name="aabb">The aabb.</param>
-        public void GetFatAABB(int proxyId, out Aabb aabb)
+        public void GetFatAabb(int proxyId, out Aabb aabb)
         {
-            _tree.GetFatAABB(proxyId, out aabb);
+            _tree.GetFatAabb(proxyId, out aabb);
         }
 
         /// <summary>
@@ -221,7 +221,7 @@ namespace Alis.Core.Physic.Collision
         /// <param name="proxyIdA">The proxy id A.</param>
         /// <param name="proxyIdB">The proxy id B.</param>
         /// <returns></returns>
-        public bool TestOverlap(int proxyIdA, int proxyIdB) => _tree.TestFatAABBOverlap(proxyIdA, proxyIdB);
+        public bool TestOverlap(int proxyIdA, int proxyIdB) => _tree.TestFatAabbOverlap(proxyIdA, proxyIdB);
 
         /// <summary>
         ///     Update the pairs. This results in pair callbacks. This can only add pairs.
@@ -243,10 +243,10 @@ namespace Alis.Core.Physic.Collision
 
                 // We have to query the tree with the fat AABB so that
                 // we don't fail to create a pair that may touch later.
-                Aabb fatAABB = _tree.GetFatAABB(_queryProxyId);
+                Aabb fatAabb = _tree.GetFatAabb(_queryProxyId);
 
                 // Query tree, create pairs and add them pair buffer.
-                _tree.Query(_queryCallbackCache, ref fatAABB);
+                _tree.Query(_queryCallbackCache, ref fatAabb);
             }
 
             // Reset move buffer

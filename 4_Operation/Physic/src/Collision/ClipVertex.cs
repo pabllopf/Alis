@@ -39,7 +39,7 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     The id
         /// </summary>
-        public ContactID ID;
+        public ContactId Id;
 
         /// <summary>
         ///     The

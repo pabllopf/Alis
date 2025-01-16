@@ -260,12 +260,12 @@ namespace Alis.Core.Physic.Collision
 
             for (int i = 0; i < 2; ++i)
             {
-                float absDI = i == 0 ? absD.X : absD.Y;
+                float absDi = i == 0 ? absD.X : absD.Y;
                 float lowerBoundI = i == 0 ? LowerBound.X : LowerBound.Y;
                 float upperBoundI = i == 0 ? UpperBound.X : UpperBound.Y;
                 float pI = i == 0 ? p.X : p.Y;
 
-                if (absDI < SettingEnv.Epsilon)
+                if (absDi < SettingEnv.Epsilon)
                 {
                     // Parallel.
                     if (pI < lowerBoundI || upperBoundI < pI)

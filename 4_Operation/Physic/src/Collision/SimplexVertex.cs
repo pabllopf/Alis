@@ -59,11 +59,11 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     Support point in proxyA
         /// </summary>
-        public Vector2F WA;
+        public Vector2F Wa;
 
         /// <summary>
         ///     Support point in proxyB
         /// </summary>
-        public Vector2F WB;
+        public Vector2F Wb;
     }
 }
