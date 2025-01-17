@@ -71,11 +71,11 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
             // Query the world for bodies within the radius.
             World.QueryAabb(fixture =>
             {
-                if (Vector2F.Distance(fixture.Body.Position, pos) <= radius)
+                if (Vector2F.Distance(fixture.GetBody.Position, pos) <= radius)
                 {
-                    if (!affectedBodies.Contains(fixture.Body))
+                    if (!affectedBodies.Contains(fixture.GetBody))
                     {
-                        affectedBodies.Add(fixture.Body);
+                        affectedBodies.Add(fixture.GetBody);
                     }
                 }
 

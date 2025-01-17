@@ -47,17 +47,17 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The collides with
         /// </summary>
-        internal Category _collidesWith;
+        internal Category CollidesWith;
 
         /// <summary>
         ///     The collision categories
         /// </summary>
-        internal Category _collisionCategories;
+        internal Category CollisionCategories;
 
         /// <summary>
         ///     The collision group
         /// </summary>
-        internal short _collisionGroup;
+        internal short CollisionGroup;
 
         /// <summary>
         ///     The friction
@@ -67,7 +67,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The is sensor
         /// </summary>
-        private bool _isSensor;
+        private bool isSensor;
 
         /// <summary>
         ///     The restitution
@@ -109,13 +109,13 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         internal Fixture() // Note: This is internal because it's used by Deserialization.
         {
-            _collisionCategories = Category.Cat1;
-            _collidesWith = Category.All;
-            _collisionGroup = 0;
+            CollisionCategories = Category.Cat1;
+            CollidesWith = Category.All;
+            CollisionGroup = 0;
 
             //Fixture defaults
-            Friction = 0.2f;
-            Restitution = 0f;
+            GetFriction = 0.2f;
+            GetRestitution = 0f;
         }
 
         /// <summary>
@@ -124,10 +124,10 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="shape">The shape</param>
         public Fixture(Shape shape) : this()
         {
-            Shape = shape.Clone();
+            GetShape = shape.Clone();
 
             // Reserve proxy space
-            Proxies = new FixtureProxy[Shape.ChildCount];
+            Proxies = new FixtureProxy[GetShape.ChildCount];
             ProxyCount = 0;
         }
 
@@ -147,19 +147,19 @@ namespace Alis.Core.Physic.Dynamics
         ///     or always collide (positive). Zero means no collision group. Non-zero group
         ///     filtering always wins against the mask bits.
         /// </summary>
-        public short CollisionGroup
+        public short GetCollisionGroup
         {
             set
             {
-                if (_collisionGroup == value)
+                if (CollisionGroup == value)
                 {
                     return;
                 }
 
-                _collisionGroup = value;
+                CollisionGroup = value;
                 Refilter();
             }
-            get => _collisionGroup;
+            get => CollisionGroup;
         }
 
         /// <summary>
@@ -167,18 +167,18 @@ namespace Alis.Core.Physic.Dynamics
         ///     The collision mask bits. This states the categories that this
         ///     fixture would accept for collision.
         /// </summary>
-        public Category CollidesWith
+        public Category GetCollidesWith
         {
-            get => _collidesWith;
+            get => CollidesWith;
 
             set
             {
-                if (_collidesWith == value)
+                if (CollidesWith == value)
                 {
                     return;
                 }
 
-                _collidesWith = value;
+                CollidesWith = value;
                 Refilter();
             }
         }
@@ -187,18 +187,18 @@ namespace Alis.Core.Physic.Dynamics
         ///     The collision categories this fixture is a part of.
         ///     Defaults to Category.Cat1
         /// </summary>
-        public Category CollisionCategories
+        public Category GetCollisionCategories
         {
-            get => _collisionCategories;
+            get => CollisionCategories;
 
             set
             {
-                if (_collisionCategories == value)
+                if (CollisionCategories == value)
                 {
                     return;
                 }
 
-                _collisionCategories = value;
+                CollisionCategories = value;
                 Refilter();
             }
         }
@@ -207,23 +207,23 @@ namespace Alis.Core.Physic.Dynamics
         ///     Get the child Shape.
         /// </summary>
         /// <value>The shape.</value>
-        public Shape Shape { get; }
+        public Shape GetShape { get; }
 
         /// <summary>
         ///     Gets or sets a value indicating whether this fixture is a sensor.
         /// </summary>
         /// <value><c>true</c> if this instance is a sensor; otherwise, <c>false</c>.</value>
-        public bool IsSensor
+        public bool GetIsSensor
         {
-            get => _isSensor;
+            get => isSensor;
             set
             {
-                if (Body != null)
+                if (GetBody != null)
                 {
-                    Body.Awake = true;
+                    GetBody.Awake = true;
                 }
 
-                _isSensor = value;
+                isSensor = value;
             }
         }
 
@@ -231,14 +231,14 @@ namespace Alis.Core.Physic.Dynamics
         ///     Get the parent body of this fixture. This is null if the fixture is not attached.
         /// </summary>
         /// <value>The body.</value>
-        public Body Body { get; internal set; }
+        public Body GetBody { get; internal set; }
 
         /// <summary>
         ///     Set the coefficient of friction. This will _not_ change the friction of
         ///     existing contacts.
         /// </summary>
         /// <value>The friction.</value>
-        public float Friction
+        public float GetFriction
         {
             get => _friction;
             set
@@ -253,7 +253,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     existing contacts.
         /// </summary>
         /// <value>The restitution.</value>
-        public float Restitution
+        public float GetRestitution
         {
             get => _restitution;
             set
@@ -272,7 +272,7 @@ namespace Alis.Core.Physic.Dynamics
         private void Refilter()
         {
             // Flag associated contacts for filtering.
-            ContactEdge edge = Body.ContactList;
+            ContactEdge edge = GetBody.ContactList;
             while (edge != null)
             {
                 Contact contact = edge.Contact;
@@ -286,7 +286,7 @@ namespace Alis.Core.Physic.Dynamics
                 edge = edge.Next;
             }
 
-            World world = Body.World;
+            World world = GetBody.GetWorld;
 
             if (world == null)
             {
@@ -315,7 +315,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="point">A point in world coordinates.</param>
         /// <returns></returns>
-        public bool TestPoint(ref Vector2F point) => Shape.TestPoint(ref Body._xf, ref point);
+        public bool TestPoint(ref Vector2F point) => GetShape.TestPoint(ref GetBody.Xf, ref point);
 
         /// <summary>
         ///     Cast a ray against this Shape.
@@ -324,7 +324,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="input">The ray-cast input parameters.</param>
         /// <param name="childIndex">Index of the child.</param>
         /// <returns></returns>
-        public bool RayCast(out RayCastOutput output, ref RayCastInput input, int childIndex) => Shape.RayCast(out output, ref input, ref Body._xf, childIndex);
+        public bool RayCast(out RayCastOutput output, ref RayCastInput input, int childIndex) => GetShape.RayCast(out output, ref input, ref GetBody.Xf, childIndex);
 
         /// <summary>
         ///     Get the fixture's AABB. This AABB may be enlarge and/or stale.
@@ -333,10 +333,10 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="aabb">The aabb.</param>
         /// <param name="childIndex">Index of the child.</param>
-        public void GetAABB(out Aabb aabb, int childIndex)
+        public void GetAabb(out Aabb aabb, int childIndex)
         {
             Debug.Assert((0 <= childIndex) && (childIndex < ProxyCount));
-            aabb = Proxies[childIndex].AABB;
+            aabb = Proxies[childIndex].Aabb;
         }
 
         // These support body activation/deactivation.
@@ -354,15 +354,15 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             // Create proxies in the broad-phase.
-            ProxyCount = Shape.ChildCount;
+            ProxyCount = GetShape.ChildCount;
 
             for (int i = 0; i < ProxyCount; ++i)
             {
                 FixtureProxy proxy = new FixtureProxy();
                 proxy.Fixture = this;
                 proxy.ChildIndex = i;
-                Shape.ComputeAabb(out proxy.AABB, ref xf, i);
-                proxy.ProxyId = broadPhase.AddProxy(ref proxy.AABB);
+                GetShape.ComputeAabb(out proxy.Aabb, ref xf, i);
+                proxy.ProxyId = broadPhase.AddProxy(ref proxy.Aabb);
                 broadPhase.SetProxy(proxy.ProxyId, ref proxy);
 
                 Proxies[i] = proxy;
@@ -398,14 +398,14 @@ namespace Alis.Core.Physic.Dynamics
                 FixtureProxy proxy = Proxies[i];
 
                 // Compute an AABB that covers the swept Shape (may miss some rotation effect).
-                Shape.ComputeAabb(out Aabb aabb1, ref transform1, proxy.ChildIndex);
-                Shape.ComputeAabb(out Aabb aabb2, ref transform2, proxy.ChildIndex);
+                GetShape.ComputeAabb(out Aabb aabb1, ref transform1, proxy.ChildIndex);
+                GetShape.ComputeAabb(out Aabb aabb2, ref transform2, proxy.ChildIndex);
 
-                proxy.AABB.Combine(ref aabb1, ref aabb2);
+                proxy.Aabb.Combine(ref aabb1, ref aabb2);
 
                 Vector2F displacement = transform2.P - transform1.P;
 
-                broadPhase.MoveProxy(proxy.ProxyId, ref proxy.AABB, displacement);
+                broadPhase.MoveProxy(proxy.ProxyId, ref proxy.Aabb, displacement);
             }
         }
 
@@ -414,7 +414,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="body">The body you wish to clone the fixture onto.</param>
         /// <returns>The cloned fixture.</returns>
-        public Fixture CloneOnto(Body body) => CloneOnto(body, Shape);
+        public Fixture CloneOnto(Body body) => CloneOnto(body, GetShape);
 
         /// <summary>
         ///     Clones the fixture and attached shape onto the specified body.
@@ -426,12 +426,12 @@ namespace Alis.Core.Physic.Dynamics
         {
             Fixture fixture = new Fixture(shape.Clone());
             fixture.Tag = Tag;
-            fixture.Restitution = Restitution;
-            fixture.Friction = Friction;
-            fixture.IsSensor = IsSensor;
-            fixture._collisionGroup = _collisionGroup;
-            fixture._collisionCategories = _collisionCategories;
-            fixture._collidesWith = _collidesWith;
+            fixture.GetRestitution = GetRestitution;
+            fixture.GetFriction = GetFriction;
+            fixture.GetIsSensor = GetIsSensor;
+            fixture.CollisionGroup = CollisionGroup;
+            fixture.CollisionCategories = CollisionCategories;
+            fixture.CollidesWith = CollidesWith;
 
             body.Add(fixture);
             return fixture;

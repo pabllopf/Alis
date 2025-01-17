@@ -329,12 +329,12 @@ namespace Alis.Core.Sample
             Fixture pfixture = _playerBody.CreateCircle(_playerBodyRadius, 1f);
 
             // Give it some bounce and friction
-            pfixture.Restitution = 0.3f;
-            pfixture.Friction = 0.5f;
+            pfixture.GetRestitution = 0.3f;
+            pfixture.GetFriction = 0.5f;
 
             Vector2F sizeBox = new Vector2F(10, 1);
             Body box = world.CreateRectangle(sizeBox.X, sizeBox.Y, 1);
-            box.BodyType = BodyType.Static;
+            box.GetBodyType = BodyType.Static;
             box.Position = new Vector2F(0, 0);
             box.SetFriction(0.5f);
             box.SetRestitution(0.3f);
@@ -342,7 +342,7 @@ namespace Alis.Core.Sample
 
             Vector2F textureBoxSize = new Vector2F(1, 1);
             Body textureBox = world.CreateRectangle(textureBoxSize.X, textureBoxSize.Y, 1);
-            textureBox.BodyType = BodyType.Static;
+            textureBox.GetBodyType = BodyType.Static;
             textureBox.Position = new Vector2F(5, 5);
             textureBox.SetFriction(0.5f);
             textureBox.SetRestitution(0.3f);

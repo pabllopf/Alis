@@ -55,7 +55,7 @@ namespace Alis.Core.Physic.Dynamics
             Body body = new Body();
             body.Position = position;
             body.Rotation = rotation;
-            body.BodyType = bodyType;
+            body.GetBodyType = bodyType;
 
 
             Add(body);

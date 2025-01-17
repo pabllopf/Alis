@@ -40,8 +40,6 @@ namespace Alis.Core.Physic.Common.ConvexHull
     /// </summary>
     public static class ChainHull
     {
-        //Copyright 2001, softSurfer (www.softsurfer.com)
-
         /// <summary>
         ///     The point comparer
         /// </summary>

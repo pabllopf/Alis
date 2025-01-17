@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The body
         /// </summary>
-        internal readonly List<Body> _list = new List<Body>(32);
+        internal readonly List<Body> List = new List<Body>(32);
 
         /// <summary>
         ///     The world
@@ -55,7 +55,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The generation stamp
         /// </summary>
-        internal int _generationStamp = 0;
+        internal int GenerationStamp = 0;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="BodyCollection" /> class
@@ -70,7 +70,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Gets the enumerator
         /// </summary>
         /// <returns>An enumerator of body</returns>
-        IEnumerator<Body> IEnumerable<Body>.GetEnumerator() => new BodyEnumerator(this, _list);
+        IEnumerator<Body> IEnumerable<Body>.GetEnumerator() => new BodyEnumerator(this, List);
 
         #endregion IEnumerable<Body>
 
@@ -81,7 +81,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Gets the enumerator
         /// </summary>
         /// <returns>The enumerator</returns>
-        IEnumerator IEnumerable.GetEnumerator() => new BodyEnumerator(this, _list);
+        IEnumerator IEnumerable.GetEnumerator() => new BodyEnumerator(this, List);
 
         #endregion IEnumerable
 
@@ -89,7 +89,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Gets the enumerator
         /// </summary>
         /// <returns>The body enumerator</returns>
-        public BodyEnumerator GetEnumerator() => new BodyEnumerator(this, _list);
+        public BodyEnumerator GetEnumerator() => new BodyEnumerator(this, List);
 
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 _collection = collection;
                 _list = list;
-                _generationStamp = collection._generationStamp;
+                _generationStamp = collection.GenerationStamp;
                 i = -1;
             }
 
@@ -137,7 +137,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 get
                 {
-                    if (_generationStamp == _collection._generationStamp)
+                    if (_generationStamp == _collection.GenerationStamp)
                     {
                         return _list[i];
                     }
@@ -155,7 +155,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 get
                 {
-                    if (_generationStamp == _collection._generationStamp)
+                    if (_generationStamp == _collection.GenerationStamp)
                     {
                         return _list[i];
                     }
@@ -175,7 +175,7 @@ namespace Alis.Core.Physic.Dynamics
             /// <returns>The bool</returns>
             public bool MoveNext()
             {
-                if (_generationStamp != _collection._generationStamp)
+                if (_generationStamp != _collection.GenerationStamp)
                 {
                     throw new InvalidOperationException("Collection was modified.");
                 }
@@ -191,7 +191,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 get
                 {
-                    if (_generationStamp == _collection._generationStamp)
+                    if (_generationStamp == _collection.GenerationStamp)
                     {
                         return _list[i];
                     }
@@ -229,7 +229,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public Body this[int index]
         {
-            get => _list[index];
+            get => List[index];
             set => throw new NotSupportedException();
         }
 
@@ -238,7 +238,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="item">The item</param>
         /// <returns>The int</returns>
-        public int IndexOf(Body item) => _list.IndexOf(item);
+        public int IndexOf(Body item) => List.IndexOf(item);
 
         /// <summary>
         ///     Inserts the index
@@ -274,7 +274,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Gets the value of the count
         /// </summary>
-        public int Count => _list.Count;
+        public int Count => List.Count;
 
         /// <summary>
         ///     Adds the item
@@ -307,7 +307,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="item">The item</param>
         /// <returns>The bool</returns>
-        public bool Contains(Body item) => _list.Contains(item);
+        public bool Contains(Body item) => List.Contains(item);
 
         /// <summary>
         ///     Copies the to using the specified array
@@ -316,7 +316,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="arrayIndex">The array index</param>
         public void CopyTo(Body[] array, int arrayIndex)
         {
-            _list.CopyTo(array, arrayIndex);
+            List.CopyTo(array, arrayIndex);
         }
 
         #endregion ICollection<Body>

@@ -248,7 +248,7 @@ namespace Alis.Core.Ecs.Component.Collider
             Body.SleepingAllowed = false;
             Body.IsBullet = true;
             Body.IgnoreGravity = IgnoreGravity;
-            Body.LinearVelocity = LinearVelocity;
+            Body.GetLinearVelocity = LinearVelocity;
             Body.Awake = true;
             Body.SetIsSensor(IsTrigger);
             Body.Tag = GameObject;
@@ -267,8 +267,8 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <returns>The bool</returns>
         private bool OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
-            GameObject fixtureGameObject = (GameObject) fixtureA.Body.Tag;
-            GameObject fixtureBGameObject = (GameObject) fixtureB.Body.Tag;
+            GameObject fixtureGameObject = (GameObject) fixtureA.GetBody.Tag;
+            GameObject fixtureBGameObject = (GameObject) fixtureB.GetBody.Tag;
 
             if (fixtureGameObject.Equals(GameObject) && fixtureBGameObject.Contains<BoxCollider>())
             {
@@ -290,8 +290,8 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <param name="contact">The contact</param>
         private void OnSeparation(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
-            GameObject fixtureGameObject = (GameObject) fixtureA.Body.Tag;
-            GameObject fixtureBGameObject = (GameObject) fixtureB.Body.Tag;
+            GameObject fixtureGameObject = (GameObject) fixtureA.GetBody.Tag;
+            GameObject fixtureBGameObject = (GameObject) fixtureB.GetBody.Tag;
 
             if (fixtureGameObject.Equals(GameObject) && fixtureBGameObject.Contains<BoxCollider>())
             {

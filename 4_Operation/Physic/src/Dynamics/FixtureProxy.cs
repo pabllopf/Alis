@@ -39,7 +39,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The aabb
         /// </summary>
-        public Aabb AABB;
+        public Aabb Aabb;
 
         /// <summary>
         ///     The child index

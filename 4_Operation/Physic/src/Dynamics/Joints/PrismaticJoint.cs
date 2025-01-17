@@ -312,13 +312,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
                 Vector2F r1 = Complex.Multiply(LocalAnchorA - BodyA.LocalCenter, ref xf1.Q);
                 Vector2F r2 = Complex.Multiply(LocalAnchorB - BodyB.LocalCenter, ref xf2.Q);
-                Vector2F p1 = BodyA._sweep.C + r1;
-                Vector2F p2 = BodyB._sweep.C + r2;
+                Vector2F p1 = BodyA.Sweep.C + r1;
+                Vector2F p2 = BodyB.Sweep.C + r2;
                 Vector2F d = p2 - p1;
                 Vector2F axis = BodyA.GetWorldVector(ref _localXAxis);
 
-                Vector2F v1 = BodyA._linearVelocity;
-                Vector2F v2 = BodyB._linearVelocity;
+                Vector2F v1 = BodyA.LinearVelocity;
+                Vector2F v2 = BodyB.LinearVelocity;
                 float w1 = BodyA.AngularVelocity;
                 float w2 = BodyB.AngularVelocity;
 
@@ -526,10 +526,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
         {
-            _indexA = BodyA.IslandIndex;
-            _indexB = BodyB.IslandIndex;
-            _localCenterA = BodyA._sweep.LocalCenter;
-            _localCenterB = BodyB._sweep.LocalCenter;
+            _indexA = BodyA.GetIslandIndex;
+            _indexB = BodyB.GetIslandIndex;
+            _localCenterA = BodyA.Sweep.LocalCenter;
+            _localCenterB = BodyB.Sweep.LocalCenter;
             _invMassA = BodyA.InvMass;
             _invMassB = BodyB.InvMass;
             invIa = BodyA.InvI;

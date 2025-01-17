@@ -129,14 +129,14 @@ namespace Alis.Core.Physic.Common
             _writer.WriteAttributeString("Id", fixtures.IndexOf(fixture).ToString());
 
             _writer.WriteStartElement("FilterData");
-            _writer.WriteElementString("CategoryBits", ((int) fixture.CollisionCategories).ToString());
-            _writer.WriteElementString("MaskBits", ((int) fixture.CollidesWith).ToString());
-            _writer.WriteElementString("GroupIndex", fixture.CollisionGroup.ToString());
+            _writer.WriteElementString("CategoryBits", ((int) fixture.GetCollisionCategories).ToString());
+            _writer.WriteElementString("MaskBits", ((int) fixture.GetCollidesWith).ToString());
+            _writer.WriteElementString("GroupIndex", fixture.GetCollisionGroup.ToString());
             _writer.WriteEndElement();
 
-            WriteElement("Friction", fixture.Friction);
-            _writer.WriteElementString("IsSensor", fixture.IsSensor.ToString());
-            WriteElement("Restitution", fixture.Restitution);
+            WriteElement("Friction", fixture.GetFriction);
+            _writer.WriteElementString("IsSensor", fixture.GetIsSensor.ToString());
+            WriteElement("Restitution", fixture.GetRestitution);
 
             if (fixture.Tag != null)
             {
@@ -157,7 +157,7 @@ namespace Alis.Core.Physic.Common
         private static void SerializeBody(List<Fixture> fixtures, List<Shape> shapes, Body body)
         {
             _writer.WriteStartElement("Body");
-            _writer.WriteAttributeString("Type", body.BodyType.ToString());
+            _writer.WriteAttributeString("Type", body.GetBodyType.ToString());
             _writer.WriteElementString("Active", body.Enabled.ToString());
             _writer.WriteElementString("AllowSleep", body.SleepingAllowed.ToString());
             WriteElement("Angle", body.Rotation);
@@ -167,7 +167,7 @@ namespace Alis.Core.Physic.Common
             _writer.WriteElementString("Bullet", body.IsBullet.ToString());
             _writer.WriteElementString("FixedRotation", body.FixedRotation.ToString());
             WriteElement("LinearDamping", body.LinearDamping);
-            WriteElement("LinearVelocity", body.LinearVelocity);
+            WriteElement("LinearVelocity", body.GetLinearVelocity);
             WriteElement("Position", body.Position);
 
             if (body.Tag != null)
@@ -178,11 +178,11 @@ namespace Alis.Core.Physic.Common
             }
 
             _writer.WriteStartElement("Bindings");
-            for (int i = 0; i < body.FixtureList._list.Count; i++)
+            for (int i = 0; i < body.FixtureList.List.Count; i++)
             {
                 _writer.WriteStartElement("Pair");
-                _writer.WriteAttributeString("FixtureId", fixtures.IndexOf(body.FixtureList._list[i]).ToString());
-                _writer.WriteAttributeString("ShapeId", shapes.IndexOf(body.FixtureList._list[i].Shape).ToString());
+                _writer.WriteAttributeString("FixtureId", fixtures.IndexOf(body.FixtureList.List[i]).ToString());
+                _writer.WriteAttributeString("ShapeId", shapes.IndexOf(body.FixtureList.List[i].GetShape).ToString());
                 _writer.WriteEndElement();
             }
 
@@ -421,7 +421,7 @@ namespace Alis.Core.Physic.Common
 
             _writer.WriteStartElement("World");
             _writer.WriteAttributeString("Version", "3");
-            WriteElement("Gravity", world.Gravity);
+            WriteElement("Gravity", world.GetGravity);
 
             _writer.WriteStartElement("Shapes");
 
@@ -429,10 +429,10 @@ namespace Alis.Core.Physic.Common
             {
                 foreach (Fixture fixture in body.FixtureList)
                 {
-                    if (!shapes.Contains(fixture.Shape))
+                    if (!shapes.Contains(fixture.GetShape))
                     {
-                        shapes.Add(fixture.Shape);
-                        SerializeShape(fixture.Shape);
+                        shapes.Add(fixture.GetShape);
+                        SerializeShape(fixture.GetShape);
                     }
                 }
             }

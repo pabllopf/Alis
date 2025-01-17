@@ -130,8 +130,8 @@ namespace Alis.Core.Physic.Dynamics
             int indexA = proxyA.ChildIndex;
             int indexB = proxyB.ChildIndex;
 
-            Body bodyA = fixtureA.Body;
-            Body bodyB = fixtureB.Body;
+            Body bodyA = fixtureA.GetBody;
+            Body bodyB = fixtureB.GetBody;
 
             // Are the fixtures on the same body?
             if (bodyA == bodyB)
@@ -215,8 +215,8 @@ namespace Alis.Core.Physic.Dynamics
             // Contact creation may swap fixtures.
             fixtureA = c.FixtureA;
             fixtureB = c.FixtureB;
-            bodyA = fixtureA.Body;
-            bodyB = fixtureB.Body;
+            bodyA = fixtureA.GetBody;
+            bodyB = fixtureB.GetBody;
 
             // Insert into the world.
             c.Prev = ContactList;
@@ -255,7 +255,7 @@ namespace Alis.Core.Physic.Dynamics
             bodyB.ContactList = c.NodeB;
 
             // Wake up the bodies
-            if ((fixtureA.IsSensor == false) && (fixtureB.IsSensor == false))
+            if ((fixtureA.GetIsSensor == false) && (fixtureB.GetIsSensor == false))
             {
                 bodyA.Awake = true;
                 bodyB.Awake = true;
@@ -278,8 +278,8 @@ namespace Alis.Core.Physic.Dynamics
         {
             Fixture fixtureA = contact.FixtureA;
             Fixture fixtureB = contact.FixtureB;
-            Body bodyA = fixtureA.Body;
-            Body bodyB = fixtureB.Body;
+            Body bodyA = fixtureA.GetBody;
+            Body bodyB = fixtureB.GetBody;
 
             if (contact.IsTouching)
             {
@@ -299,7 +299,7 @@ namespace Alis.Core.Physic.Dynamics
                 }
 
                 //Report the separation to both bodies:
-                OnSeparationEventHandler onBodySeparationHandlerA = bodyA.onSeparationEventHandler;
+                OnSeparationEventHandler onBodySeparationHandlerA = bodyA.OnSeparationEventHandler;
                 if (onBodySeparationHandlerA != null)
                 {
                     onBodySeparationHandlerA(fixtureA, fixtureB, contact);
@@ -307,7 +307,7 @@ namespace Alis.Core.Physic.Dynamics
 
                 //Reverse the order of the reported fixtures. The first fixture is always the one that the
                 //user subscribed to.
-                OnSeparationEventHandler onBodySeparationHandlerB = bodyB.onSeparationEventHandler;
+                OnSeparationEventHandler onBodySeparationHandlerB = bodyB.OnSeparationEventHandler;
                 if (onBodySeparationHandlerB != null)
                 {
                     onBodySeparationHandlerB(fixtureB, fixtureA, contact);
@@ -385,8 +385,8 @@ namespace Alis.Core.Physic.Dynamics
                 Fixture fixtureB = c.FixtureB;
                 int indexA = c.ChildIndexA;
                 int indexB = c.ChildIndexB;
-                Body bodyA = fixtureA.Body;
-                Body bodyB = fixtureB.Body;
+                Body bodyA = fixtureA.GetBody;
+                Body bodyB = fixtureB.GetBody;
 
                 //Do no try to collide disabled bodies
                 if (!bodyA.Enabled || !bodyB.Enabled)
@@ -433,8 +433,8 @@ namespace Alis.Core.Physic.Dynamics
                     c.FilterFlag = false;
                 }
 
-                bool activeA = bodyA.Awake && (bodyA.BodyType != BodyType.Static);
-                bool activeB = bodyB.Awake && (bodyB.BodyType != BodyType.Static);
+                bool activeA = bodyA.Awake && (bodyA.GetBodyType != BodyType.Static);
+                bool activeB = bodyB.Awake && (bodyB.GetBodyType != BodyType.Static);
 
                 // At least one body must be awake and it must be dynamic or kinematic.
                 if ((activeA == false) && (activeB == false))
@@ -480,8 +480,8 @@ namespace Alis.Core.Physic.Dynamics
                 Fixture fixtureB = c.FixtureB;
                 int indexA = c.ChildIndexA;
                 int indexB = c.ChildIndexB;
-                Body bodyA = fixtureA.Body;
-                Body bodyB = fixtureB.Body;
+                Body bodyA = fixtureA.GetBody;
+                Body bodyB = fixtureB.GetBody;
 
                 //Do no try to collide disabled bodies
                 if (!bodyA.Enabled || !bodyB.Enabled)
@@ -528,8 +528,8 @@ namespace Alis.Core.Physic.Dynamics
                     c.FilterFlag = false;
                 }
 
-                bool activeA = bodyA.Awake && (bodyA.BodyType != BodyType.Static);
-                bool activeB = bodyB.Awake && (bodyB.BodyType != BodyType.Static);
+                bool activeA = bodyA.Awake && (bodyA.GetBodyType != BodyType.Static);
+                bool activeB = bodyB.Awake && (bodyB.GetBodyType != BodyType.Static);
 
                 // At least one body must be awake and it must be dynamic or kinematic.
                 if ((activeA == false) && (activeB == false))
@@ -555,8 +555,8 @@ namespace Alis.Core.Physic.Dynamics
                 // The contact persists.
                 updateList.Add(c);
                 // Assign a unique id for lock order
-                bodyA._lockOrder = lockOrder++;
-                bodyB._lockOrder = lockOrder++;
+                bodyA.LockOrder = lockOrder++;
+                bodyB.LockOrder = lockOrder++;
 
 
                 c = c.Next;
@@ -571,10 +571,10 @@ namespace Alis.Core.Physic.Dynamics
                 Fixture fixtureB = c.FixtureB;
 
                 // find lower order item
-                Body orderedBodyA = fixtureA.Body;
-                Body orderedBodyB = fixtureB.Body;
-                int idA = orderedBodyA._lockOrder;
-                int idB = orderedBodyB._lockOrder;
+                Body orderedBodyA = fixtureA.GetBody;
+                Body orderedBodyB = fixtureB.GetBody;
+                int idA = orderedBodyA.LockOrder;
+                int idB = orderedBodyB.LockOrder;
                 if (idA == idB)
                 {
                     throw new GeneralAlisException();
@@ -582,21 +582,21 @@ namespace Alis.Core.Physic.Dynamics
 
                 if (idA > idB)
                 {
-                    orderedBodyA = fixtureB.Body;
-                    orderedBodyB = fixtureA.Body;
+                    orderedBodyA = fixtureB.GetBody;
+                    orderedBodyB = fixtureA.GetBody;
                 }
 
                 // obtain lock
                 for (;;)
                 {
-                    if (Interlocked.CompareExchange(ref orderedBodyA._lock, 1, 0) == 0)
+                    if (Interlocked.CompareExchange(ref orderedBodyA.Lock, 1, 0) == 0)
                     {
-                        if (Interlocked.CompareExchange(ref orderedBodyB._lock, 1, 0) == 0)
+                        if (Interlocked.CompareExchange(ref orderedBodyB.Lock, 1, 0) == 0)
                         {
                             break;
                         }
 
-                        Interlocked.Exchange(ref orderedBodyA._lock, 0);
+                        Interlocked.Exchange(ref orderedBodyA.Lock, 0);
                     }
 
                     Thread.Sleep(0);
@@ -604,8 +604,8 @@ namespace Alis.Core.Physic.Dynamics
 
                 c.Update(this);
 
-                Interlocked.Exchange(ref orderedBodyB._lock, 0);
-                Interlocked.Exchange(ref orderedBodyA._lock, 0);
+                Interlocked.Exchange(ref orderedBodyB.Lock, 0);
+                Interlocked.Exchange(ref orderedBodyA.Lock, 0);
             });
 
             updateList.Clear();
@@ -620,13 +620,13 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>The collide</returns>
         private static bool ShouldCollide(Fixture fixtureA, Fixture fixtureB)
         {
-            if ((fixtureA.CollisionGroup != 0) && (fixtureA.CollisionGroup == fixtureB.CollisionGroup))
+            if ((fixtureA.GetCollisionGroup != 0) && (fixtureA.GetCollisionGroup == fixtureB.GetCollisionGroup))
             {
-                return fixtureA.CollisionGroup > 0;
+                return fixtureA.GetCollisionGroup > 0;
             }
 
-            bool collide = ((fixtureA.CollidesWith & fixtureB.CollisionCategories) != 0) &&
-                           ((fixtureB.CollidesWith & fixtureA.CollisionCategories) != 0);
+            bool collide = ((fixtureA.GetCollidesWith & fixtureB.GetCollisionCategories) != 0) &&
+                           ((fixtureB.GetCollidesWith & fixtureA.GetCollisionCategories) != 0);
 
             return collide;
         }

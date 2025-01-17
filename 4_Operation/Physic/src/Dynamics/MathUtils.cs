@@ -104,38 +104,38 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Muls the a
         /// </summary>
-        /// <param name="A">The </param>
+        /// <param name="a">The </param>
         /// <param name="v">The </param>
         /// <returns>The vector</returns>
-        public static Vector2F Mul(ref Mat22 A, Vector2F v) => Mul(ref A, ref v);
+        public static Vector2F Mul(ref Mat22 a, Vector2F v) => Mul(ref a, ref v);
 
         /// <summary>
         ///     Muls the a
         /// </summary>
-        /// <param name="A">The </param>
+        /// <param name="a">The </param>
         /// <param name="v">The </param>
         /// <returns>The vector</returns>
-        public static Vector2F Mul(ref Mat22 A, ref Vector2F v) => new Vector2F(A.Ex.X * v.X + A.Ey.X * v.Y, A.Ex.Y * v.X + A.Ey.Y * v.Y);
+        public static Vector2F Mul(ref Mat22 a, ref Vector2F v) => new Vector2F(a.Ex.X * v.X + a.Ey.X * v.Y, a.Ex.Y * v.X + a.Ey.Y * v.Y);
 
         /// <summary>
         ///     Muls the t using the specified a
         /// </summary>
-        /// <param name="A">The </param>
+        /// <param name="a">The </param>
         /// <param name="v">The </param>
         /// <returns>The vector</returns>
-        public static Vector2F MulT(ref Mat22 A, Vector2F v) => MulT(ref A, ref v);
+        public static Vector2F MulT(ref Mat22 a, Vector2F v) => MulT(ref a, ref v);
 
         /// <summary>
         ///     Muls the t using the specified a
         /// </summary>
-        /// <param name="A">The </param>
+        /// <param name="a">The </param>
         /// <param name="v">The </param>
         /// <returns>The vector</returns>
-        public static Vector2F MulT(ref Mat22 A, ref Vector2F v) => new Vector2F(v.X * A.Ex.X + v.Y * A.Ex.Y, v.X * A.Ey.X + v.Y * A.Ey.Y);
+        public static Vector2F MulT(ref Mat22 a, ref Vector2F v) => new Vector2F(v.X * a.Ex.X + v.Y * a.Ex.Y, v.X * a.Ey.X + v.Y * a.Ey.Y);
 
 
         /// Multiply a matrix times a vector.
-        public static Vector3F Mul(Mat33 A, Vector3F v) => v.X * A.Ex + v.Y * A.Ey + v.Z * A.Ez;
+        public static Vector3F Mul(Mat33 a, Vector3F v) => v.X * a.Ex + v.Y * a.Ey + v.Z * a.Ez;
 
         /// <summary>
         ///     Swaps the a
@@ -151,7 +151,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// Multiply a matrix times a vector.
-        public static Vector2F Mul22(Mat33 A, Vector2F v) => new Vector2F(A.Ex.X * v.X + A.Ey.X * v.Y, A.Ex.Y * v.X + A.Ey.Y * v.Y);
+        public static Vector2F Mul22(Mat33 a, Vector2F v) => new Vector2F(a.Ex.X * v.X + a.Ey.X * v.Y, a.Ex.Y * v.X + a.Ey.Y * v.Y);
 
         /// Get the skew vector such that dot(skew_vec, other) == cross(vec, other)
         public static Vector2F Skew(Vector2F input) => new Vector2F(-input.Y, input.X);

@@ -60,7 +60,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         IEnumerator IEnumerable.GetEnumerator() => new ContactEnumerator(this);
 
 
-        #region Nested type: ContactEnumerator
 
         /// <summary>
         ///     The contact enumerator
@@ -121,7 +120,5 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 Current = null;
             }
         }
-
-        #endregion
     }
 }

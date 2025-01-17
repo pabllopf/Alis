@@ -130,14 +130,14 @@ namespace Alis.Core.Physic.Controllers
             _uniqueBodies.Clear();
             World.QueryAabb(fixture =>
             {
-                if (fixture.Body.BodyType == BodyType.Static || !fixture.Body.Awake)
+                if (fixture.GetBody.GetBodyType == BodyType.Static || !fixture.GetBody.Awake)
                 {
                     return true;
                 }
 
-                if (!_uniqueBodies.Contains(fixture.Body))
+                if (!_uniqueBodies.Contains(fixture.GetBody))
                 {
-                    _uniqueBodies.Add(fixture.Body);
+                    _uniqueBodies.Add(fixture.GetBody);
                 }
 
                 return true;
@@ -157,14 +157,14 @@ namespace Alis.Core.Physic.Controllers
 
                 foreach (Fixture fixture in body.FixtureList)
                 {
-                    if ((fixture.Shape.ShapeType != ShapeType.Polygon) && (fixture.Shape.ShapeType != ShapeType.Circle))
+                    if ((fixture.GetShape.ShapeType != ShapeType.Polygon) && (fixture.GetShape.ShapeType != ShapeType.Circle))
                     {
                         continue;
                     }
 
-                    Shape shape = fixture.Shape;
+                    Shape shape = fixture.GetShape;
 
-                    float sarea = shape.ComputeSubmergedArea(ref _normal, _offset, ref body._xf, out Vector2F sc);
+                    float sarea = shape.ComputeSubmergedArea(ref _normal, _offset, ref body.Xf, out Vector2F sc);
                     area += sarea;
                     areac.X += sarea * sc.X;
                     areac.Y += sarea * sc.Y;

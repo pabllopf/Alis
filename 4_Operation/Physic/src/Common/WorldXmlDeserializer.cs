@@ -94,7 +94,7 @@ namespace Alis.Core.Physic.Common
             {
                 if (element.Name.ToLower() == "gravity")
                 {
-                    world.Gravity = ReadVector(element);
+                    world.GetGravity = ReadVector(element);
                     break;
                 }
             }
@@ -271,26 +271,26 @@ namespace Alis.Core.Physic.Common
                                         switch (ssn.Name.ToLower())
                                         {
                                             case "categorybits":
-                                                fixture._collisionCategories = (Category) int.Parse(ssn.Value);
+                                                fixture.GetCollisionCategories = (Category) int.Parse(ssn.Value);
                                                 break;
                                             case "maskbits":
-                                                fixture._collidesWith = (Category) int.Parse(ssn.Value);
+                                                fixture.CollidesWith = (Category) int.Parse(ssn.Value);
                                                 break;
                                             case "groupindex":
-                                                fixture._collisionGroup = short.Parse(ssn.Value);
+                                                fixture.GetCollisionGroup = short.Parse(ssn.Value);
                                                 break;
                                         }
                                     }
 
                                     break;
                                 case "friction":
-                                    fixture.Friction = ParseFloat(sn.Value);
+                                    fixture.GetFriction = ParseFloat(sn.Value);
                                     break;
                                 case "issensor":
-                                    fixture.IsSensor = bool.Parse(sn.Value);
+                                    fixture.GetIsSensor = bool.Parse(sn.Value);
                                     break;
                                 case "restitution":
-                                    fixture.Restitution = ParseFloat(sn.Value);
+                                    fixture.GetRestitution = ParseFloat(sn.Value);
                                     break;
                                 case "tag":
                                     fixture.Tag = ReadSimpleType(sn, null, false);
@@ -318,7 +318,7 @@ namespace Alis.Core.Physic.Common
                             throw new GeneralAlisException();
                         }
 
-                        body.BodyType = (BodyType) Enum.Parse(typeof(BodyType), element.Attributes[0].Value, true);
+                        body.GetBodyType = (BodyType) Enum.Parse(typeof(BodyType), element.Attributes[0].Value, true);
 
                         foreach (XmlFragmentElement sn in element.Elements)
                         {
@@ -355,7 +355,7 @@ namespace Alis.Core.Physic.Common
                                     body.LinearDamping = ParseFloat(sn.Value);
                                     break;
                                 case "linearvelocity":
-                                    body.LinearVelocity = ReadVector(sn);
+                                    body.GetLinearVelocity = ReadVector(sn);
                                     break;
                                 case "position":
                                 {
