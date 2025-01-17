@@ -389,20 +389,20 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _iD = _bodyD.InvI;
 
             float aA = data.Positions[_indexA].A;
-            Vector2F vA = data.Velocities[_indexA].v;
-            float wA = data.Velocities[_indexA].w;
+            Vector2F vA = data.Velocities[_indexA].V;
+            float wA = data.Velocities[_indexA].W;
 
             float aB = data.Positions[_indexB].A;
-            Vector2F vB = data.Velocities[_indexB].v;
-            float wB = data.Velocities[_indexB].w;
+            Vector2F vB = data.Velocities[_indexB].V;
+            float wB = data.Velocities[_indexB].W;
 
             float aC = data.Positions[_indexC].A;
-            Vector2F vC = data.Velocities[_indexC].v;
-            float wC = data.Velocities[_indexC].w;
+            Vector2F vC = data.Velocities[_indexC].V;
+            float wC = data.Velocities[_indexC].W;
 
             float aD = data.Positions[_indexD].A;
-            Vector2F vD = data.Velocities[_indexD].v;
-            float wD = data.Velocities[_indexD].w;
+            Vector2F vD = data.Velocities[_indexD].V;
+            float wD = data.Velocities[_indexD].W;
 
             Complex qA = Complex.FromAngle(aA);
             Complex qB = Complex.FromAngle(aB);
@@ -466,14 +466,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _impulse = 0.0f;
             }
 
-            data.Velocities[_indexA].v = vA;
-            data.Velocities[_indexA].w = wA;
-            data.Velocities[_indexB].v = vB;
-            data.Velocities[_indexB].w = wB;
-            data.Velocities[_indexC].v = vC;
-            data.Velocities[_indexC].w = wC;
-            data.Velocities[_indexD].v = vD;
-            data.Velocities[_indexD].w = wD;
+            data.Velocities[_indexA].V = vA;
+            data.Velocities[_indexA].W = wA;
+            data.Velocities[_indexB].V = vB;
+            data.Velocities[_indexB].W = wB;
+            data.Velocities[_indexC].V = vC;
+            data.Velocities[_indexC].W = wC;
+            data.Velocities[_indexD].V = vD;
+            data.Velocities[_indexD].W = wD;
         }
 
         /// <summary>
@@ -482,14 +482,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(ref SolverData data)
         {
-            Vector2F vA = data.Velocities[_indexA].v;
-            float wA = data.Velocities[_indexA].w;
-            Vector2F vB = data.Velocities[_indexB].v;
-            float wB = data.Velocities[_indexB].w;
-            Vector2F vC = data.Velocities[_indexC].v;
-            float wC = data.Velocities[_indexC].w;
-            Vector2F vD = data.Velocities[_indexD].v;
-            float wD = data.Velocities[_indexD].w;
+            Vector2F vA = data.Velocities[_indexA].V;
+            float wA = data.Velocities[_indexA].W;
+            Vector2F vB = data.Velocities[_indexB].V;
+            float wB = data.Velocities[_indexB].W;
+            Vector2F vC = data.Velocities[_indexC].V;
+            float wC = data.Velocities[_indexC].W;
+            Vector2F vD = data.Velocities[_indexD].V;
+            float wD = data.Velocities[_indexD].W;
 
             float cdot = Vector2F.Dot(jvAc, vA - vC) + Vector2F.Dot(jvBd, vB - vD);
             cdot += jwA * wA - jwC * wC + (jwB * wB - jwD * wD);
@@ -506,14 +506,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
             vD -= _mD * impulse * jvBd;
             wD -= _iD * impulse * jwD;
 
-            data.Velocities[_indexA].v = vA;
-            data.Velocities[_indexA].w = wA;
-            data.Velocities[_indexB].v = vB;
-            data.Velocities[_indexB].w = wB;
-            data.Velocities[_indexC].v = vC;
-            data.Velocities[_indexC].w = wC;
-            data.Velocities[_indexD].v = vD;
-            data.Velocities[_indexD].w = wD;
+            data.Velocities[_indexA].V = vA;
+            data.Velocities[_indexA].W = wA;
+            data.Velocities[_indexB].V = vB;
+            data.Velocities[_indexB].W = wB;
+            data.Velocities[_indexC].V = vC;
+            data.Velocities[_indexC].W = wC;
+            data.Velocities[_indexD].V = vD;
+            data.Velocities[_indexD].W = wD;
         }
 
         /// <summary>

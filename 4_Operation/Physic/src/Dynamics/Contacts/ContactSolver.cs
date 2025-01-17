@@ -243,13 +243,13 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                 Vector2F cA = Positions[indexA].C;
                 float aA = Positions[indexA].A;
-                Vector2F vA = Velocities[indexA].v;
-                float wA = Velocities[indexA].w;
+                Vector2F vA = Velocities[indexA].V;
+                float wA = Velocities[indexA].W;
 
                 Vector2F cB = Positions[indexB].C;
                 float aB = Positions[indexB].A;
-                Vector2F vB = Velocities[indexB].v;
-                float wB = Velocities[indexB].w;
+                Vector2F vB = Velocities[indexB].V;
+                float wB = Velocities[indexB].W;
 
                 Debug.Assert(manifold.PointCount > 0);
 
@@ -347,10 +347,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 float iB = vc.InvIb;
                 int pointCount = vc.PointCount;
 
-                Vector2F vA = Velocities[indexA].v;
-                float wA = Velocities[indexA].w;
-                Vector2F vB = Velocities[indexB].v;
-                float wB = Velocities[indexB].w;
+                Vector2F vA = Velocities[indexA].V;
+                float wA = Velocities[indexA].W;
+                Vector2F vB = Velocities[indexB].V;
+                float wB = Velocities[indexB].W;
 
                 Vector2F normal = vc.Normal;
                 Vector2F tangent = MathUtils.Rot270(ref normal);
@@ -365,10 +365,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     vB += mB * p;
                 }
 
-                Velocities[indexA].v = vA;
-                Velocities[indexA].w = wA;
-                Velocities[indexB].v = vB;
-                Velocities[indexB].w = wB;
+                Velocities[indexA].V = vA;
+                Velocities[indexA].W = wA;
+                Velocities[indexB].V = vB;
+                Velocities[indexB].W = wB;
             }
         }
 
@@ -455,10 +455,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 float iB = vc.InvIb;
                 int pointCount = vc.PointCount;
 
-                Vector2F vA = Velocities[indexA].v;
-                float wA = Velocities[indexA].w;
-                Vector2F vB = Velocities[indexB].v;
-                float wB = Velocities[indexB].w;
+                Vector2F vA = Velocities[indexA].V;
+                float wA = Velocities[indexA].W;
+                Vector2F vB = Velocities[indexB].V;
+                float wB = Velocities[indexB].W;
 
                 Vector2F normal = vc.Normal;
                 Vector2F tangent = MathUtils.Rot270(ref normal);
@@ -710,10 +710,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     }
                 }
 
-                Velocities[indexA].v = vA;
-                Velocities[indexA].w = wA;
-                Velocities[indexB].v = vB;
-                Velocities[indexB].w = wB;
+                Velocities[indexA].V = vA;
+                Velocities[indexA].W = wA;
+                Velocities[indexB].V = vB;
+                Velocities[indexB].W = wB;
 
 
                 Interlocked.Exchange(ref Locks[orderedIndexB], 0);

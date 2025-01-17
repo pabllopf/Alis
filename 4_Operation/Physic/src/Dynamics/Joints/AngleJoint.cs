@@ -168,10 +168,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
             int indexA = BodyA.IslandIndex;
             int indexB = BodyB.IslandIndex;
 
-            float p = (_bias - data.Velocities[indexB].w + data.Velocities[indexA].w) * _massFactor;
+            float p = (_bias - data.Velocities[indexB].W + data.Velocities[indexA].W) * _massFactor;
 
-            data.Velocities[indexA].w -= BodyA.InvI * Math.Sign(p) * Math.Min(Math.Abs(p), MaxImpulse);
-            data.Velocities[indexB].w += BodyB.InvI * Math.Sign(p) * Math.Min(Math.Abs(p), MaxImpulse);
+            data.Velocities[indexA].W -= BodyA.InvI * Math.Sign(p) * Math.Min(Math.Abs(p), MaxImpulse);
+            data.Velocities[indexB].W += BodyB.InvI * Math.Sign(p) * Math.Min(Math.Abs(p), MaxImpulse);
         }
 
         /// <summary>
