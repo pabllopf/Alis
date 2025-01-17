@@ -77,7 +77,7 @@ namespace Alis.Test.Builder.Core.Ecs.System
         {
             VideoGame videoGame = new VideoGame(new Context());
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
-            SceneManager sceneManager = new SceneManager(videoGameBuilder.context);
+            SceneManager sceneManager = new SceneManager(videoGameBuilder.Context);
 
             videoGameBuilder.World(s => sceneManager);
 
@@ -142,7 +142,7 @@ namespace Alis.Test.Builder.Core.Ecs.System
         public void World_ValidInput_v2()
         {
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
-            SceneManagerBuilder sceneManagerBuilder = new SceneManagerBuilder(videoGameBuilder.context);
+            SceneManagerBuilder sceneManagerBuilder = new SceneManagerBuilder(videoGameBuilder.Context);
 
             videoGameBuilder.World(s => sceneManagerBuilder.Build());
 

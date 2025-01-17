@@ -67,7 +67,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The is sensor
         /// </summary>
-        private bool isSensor;
+        private bool _isSensor;
 
         /// <summary>
         ///     The restitution
@@ -215,7 +215,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <value><c>true</c> if this instance is a sensor; otherwise, <c>false</c>.</value>
         public bool GetIsSensor
         {
-            get => isSensor;
+            get => _isSensor;
             set
             {
                 if (GetBody != null)
@@ -223,7 +223,7 @@ namespace Alis.Core.Physic.Dynamics
                     GetBody.Awake = true;
                 }
 
-                isSensor = value;
+                _isSensor = value;
             }
         }
 

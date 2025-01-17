@@ -48,7 +48,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Test
         [Fact]
         public async Task ConversionTest1()
         {
-            string path = AssetManager.Find(Res.Video_Mp4);
+            string path = AssetManager.Find(Res.VideoMp4);
             string opath = "out-test-v-1.mp4";
 
             try
@@ -95,7 +95,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Test
         [Fact]
         public async Task ConversionStreamTest()
         {
-            string path = AssetManager.Find(Res.Video_Mp4);
+            string path = AssetManager.Find(Res.VideoMp4);
             string opath = "out-test-v-2.mp4";
 
             try
@@ -150,7 +150,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Test
         [Fact]
         public async Task ConversionTest2()
         {
-            string path = AssetManager.Find(Res.Video_Mp4);
+            string path = AssetManager.Find(Res.VideoMp4);
             string opath = "out-test-v-2.webm";
 
             try

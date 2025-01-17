@@ -152,12 +152,12 @@ namespace Alis.Extension.Plugin
                 return "windows";
             }
 
-            if (_platformDetector.IsOSX())
+            if (_platformDetector.IsOsx())
             {
                 return "osx";
             }
 
-            if (_platformDetector.IsiOS())
+            if (_platformDetector.IsiOs())
             {
                 return "ios";
             }
@@ -180,7 +180,7 @@ namespace Alis.Extension.Plugin
         ///     Describes whether this instance is running oni os
         /// </summary>
         /// <returns>The bool</returns>
-        public bool IsRunningOniOS() => _platformDetector.IsiOS();
+        public bool IsRunningOniOS() => _platformDetector.IsiOs();
 
         /// <summary>
         ///     Validates the plugins directory using the specified directory

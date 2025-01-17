@@ -53,7 +53,7 @@ namespace Alis.Extension.Updater.Services.Api
         public GitHubApiService(string apiUrl)
         {
             _httpClient = new HttpClient();
-            this.apiUrl = apiUrl;
+            this.ApiUrl = apiUrl;
         }
 
         /// <summary>
@@ -71,13 +71,13 @@ namespace Alis.Extension.Updater.Services.Api
         public async Task<Dictionary<string, object>> GetLatestReleaseAsync()
         {
             _httpClient.DefaultRequestHeaders.Add("User-Agent", "request");
-            string response = await _httpClient.GetStringAsync(apiUrl);
+            string response = await _httpClient.GetStringAsync(ApiUrl);
             return JsonSerializer.Deserialize<Dictionary<string, object>>(response);
         }
 
         /// <summary>
         ///     Gets the value of the api url
         /// </summary>
-        public string apiUrl { get; }
+        public string ApiUrl { get; }
     }
 }

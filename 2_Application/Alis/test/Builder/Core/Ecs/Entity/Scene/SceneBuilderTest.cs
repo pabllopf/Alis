@@ -45,7 +45,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Scene
         public void SceneBuilder_DefaultConstructor_ValidInput()
         {
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
-            SceneBuilder sceneBuilder = new SceneBuilder(videoGameBuilder.context);
+            SceneBuilder sceneBuilder = new SceneBuilder(videoGameBuilder.Context);
 
             Assert.NotNull(sceneBuilder);
         }
@@ -57,7 +57,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Scene
         public void Build_ValidInput()
         {
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
-            SceneBuilder sceneBuilder = new SceneBuilder(videoGameBuilder.context);
+            SceneBuilder sceneBuilder = new SceneBuilder(videoGameBuilder.Context);
 
             Alis.Core.Ecs.Entity.Scene scene = sceneBuilder.Build();
 
@@ -71,7 +71,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Scene
         public void Name_ValidInput()
         {
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
-            SceneBuilder sceneBuilder = new SceneBuilder(videoGameBuilder.context);
+            SceneBuilder sceneBuilder = new SceneBuilder(videoGameBuilder.Context);
 
             sceneBuilder.Name("Test Name");
 

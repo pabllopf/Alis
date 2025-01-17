@@ -319,7 +319,7 @@ namespace Alis.App.Engine.Windows
             SpaceWork.VideoGame.Load();
             SpaceWork.VideoGame.StartPreview();
 
-            SpaceWork.rendererGame = SpaceWork.VideoGame.Context.GraphicManager.Renderer;
+            SpaceWork.RendererGame = SpaceWork.VideoGame.Context.GraphicManager.Renderer;
         }
 
         /// <summary>
@@ -354,7 +354,7 @@ namespace Alis.App.Engine.Windows
 
             // Leer los píxeles del renderer de SDL
             RectangleI rect = new RectangleI(0, 0, 800, 600);
-            Sdl.RenderReadPixels(SpaceWork.rendererGame, ref rect, Sdl.PixelFormatABgr8888, pixelPtr, 800 * 4);
+            Sdl.RenderReadPixels(SpaceWork.RendererGame, ref rect, Sdl.PixelFormatABgr8888, pixelPtr, 800 * 4);
 
             // Actualizar la textura de OpenGL con los píxeles renderizados
             Gl.GlBindTexture(TextureTarget.Texture2D, textureopenGlId);

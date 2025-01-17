@@ -45,7 +45,7 @@ namespace Alis.Extension.Plugin.Test.Fakes
         ///     Describes whether this instance is osx
         /// </summary>
         /// <returns>The bool</returns>
-        public bool IsOSX() => false;
+        public bool IsOsx() => false;
 
         /// <summary>
         ///     Describes whether this instance is linux
@@ -57,7 +57,7 @@ namespace Alis.Extension.Plugin.Test.Fakes
         ///     Describes whether this instance isi os
         /// </summary>
         /// <returns>The bool</returns>
-        public bool IsiOS() => true;
+        public bool IsiOs() => true;
 
         /// <summary>
         ///     Describes whether this instance is android

@@ -39,7 +39,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Sample
         /// <summary>
         ///     The max users in queue
         /// </summary>
-        private const int MAX_USERS_IN_QUEUE = 10;
+        private const int MaxUsersInQueue = 10;
 
         /// <summary>
         ///     Runs the example
@@ -47,7 +47,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Sample
         public static void RunExample()
         {
             //First, we create the priority queue.  We'll specify a max of 10 users in the queue
-            FastPriorityQueue<User> priorityQueue = new FastPriorityQueue<User>(MAX_USERS_IN_QUEUE);
+            FastPriorityQueue<User> priorityQueue = new FastPriorityQueue<User>(MaxUsersInQueue);
 
             //Next, we'll create 5 users to enqueue
             User user1 = new User("1 - Jason");

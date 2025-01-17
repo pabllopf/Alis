@@ -47,20 +47,20 @@ namespace Alis.Core.Network
         /// <summary>
         ///     The buffer factory
         /// </summary>
-        internal readonly Func<MemoryStream> _bufferFactory;
+        internal readonly Func<MemoryStream> BufferFactory;
 
         /// <summary>
         ///     The buffer pool
         /// </summary>
-        internal readonly IBufferPool _bufferPool;
+        internal readonly IBufferPool BufferPool;
 
         /// <summary>
         ///     Initialises a new instance of the WebSocketServerFactory class without caring about internal buffers
         /// </summary>
         public WebSocketServerFactory()
         {
-            _bufferPool = new BufferPool();
-            _bufferFactory = _bufferPool.GetBuffer;
+            BufferPool = new BufferPool();
+            BufferFactory = BufferPool.GetBuffer;
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Alis.Core.Network
             Events.Log.AcceptWebSocketStarted(guid);
             await PerformHandshakeAsync(guid, context.HttpHeader, options.SubProtocol, context.Stream, token);
             Events.Log.ServerHandshakeSuccess(guid);
-            return new WebSocketImplementation(guid, _bufferFactory, context.Stream, options.KeepAliveInterval,
+            return new WebSocketImplementation(guid, BufferFactory, context.Stream, options.KeepAliveInterval,
                 null, options.IncludeExceptionInCloseResponse, false, options.SubProtocol);
         }
 

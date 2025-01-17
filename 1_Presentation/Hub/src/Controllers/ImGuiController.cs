@@ -65,8 +65,8 @@ namespace Alis.App.Hub.Controllers
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImGuiController" /> class
         /// </summary>
-        /// <param name="SpaceWork">The space work</param>
-        public ImGuiController(SpaceWork SpaceWork) : base(SpaceWork)
+        /// <param name="spaceWork">The space work</param>
+        public ImGuiController(SpaceWork spaceWork) : base(spaceWork)
         {
         }
 

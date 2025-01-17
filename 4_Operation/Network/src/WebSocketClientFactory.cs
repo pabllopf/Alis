@@ -54,25 +54,25 @@ namespace Alis.Core.Network
         /// <summary>
         ///     The buffer factory
         /// </summary>
-        internal readonly Func<MemoryStream> _bufferFactory;
+        internal readonly Func<MemoryStream> BufferFactory;
 
         /// <summary>
         ///     The buffer pool
         /// </summary>
-        internal readonly IBufferPool _bufferPool;
+        internal readonly IBufferPool BufferPool;
 
         /// <summary>
         ///     The tcp client
         /// </summary>
-        internal TcpClient tcpClient;
+        internal TcpClient TcpClient;
 
         /// <summary>
         ///     Initialises a new instance of the WebSocketClientFactory class without caring about internal buffers
         /// </summary>
         public WebSocketClientFactory()
         {
-            _bufferPool = new BufferPool();
-            _bufferFactory = _bufferPool.GetBuffer;
+            BufferPool = new BufferPool();
+            BufferFactory = BufferPool.GetBuffer;
         }
 
         /// <summary>
@@ -82,14 +82,14 @@ namespace Alis.Core.Network
         ///     Used to get a memory stream. Feel free to implement your own buffer pool. MemoryStreams
         ///     will be disposed when no longer needed and can be returned to the pool.
         /// </param>
-        public WebSocketClientFactory(Func<MemoryStream> bufferFactory) => _bufferFactory = bufferFactory;
+        public WebSocketClientFactory(Func<MemoryStream> bufferFactory) => BufferFactory = bufferFactory;
 
         /// <summary>
         ///     Disposes this instance
         /// </summary>
         public void Dispose()
         {
-            tcpClient?.Dispose();
+            TcpClient?.Dispose();
         }
 
         /// <summary>
@@ -172,7 +172,7 @@ namespace Alis.Core.Network
             ThrowIfInvalidResponseCode(response);
             ThrowIfInvalidAcceptString(guid, response, secWebSocketKey);
             string subProtocol = GetSubProtocolFromHeader(response);
-            return new WebSocketImplementation(guid, _bufferFactory, responseStream, keepAliveInterval,
+            return new WebSocketImplementation(guid, BufferFactory, responseStream, keepAliveInterval,
                 secWebSocketExtensions, includeExceptionInCloseResponse, true, subProtocol);
         }
 
@@ -280,22 +280,22 @@ namespace Alis.Core.Network
         internal virtual async Task<Stream> GetStream(Guid loggingGuid, bool isSecure, bool noDelay, string host,
             int port, CancellationToken cancellationToken)
         {
-            tcpClient = new TcpClient();
-            tcpClient.NoDelay = noDelay;
+            TcpClient = new TcpClient();
+            TcpClient.NoDelay = noDelay;
             IPAddress ipAddress;
             if (IPAddress.TryParse(host, out ipAddress))
             {
                 Events.Log.ClientConnectingToIpAddress(loggingGuid, ipAddress.ToString(), port);
-                await tcpClient.ConnectAsync(ipAddress, port);
+                await TcpClient.ConnectAsync(ipAddress, port);
             }
             else
             {
                 Events.Log.ClientConnectingToHost(loggingGuid, host, port);
-                await tcpClient.ConnectAsync(host, port);
+                await TcpClient.ConnectAsync(host, port);
             }
 
             cancellationToken.ThrowIfCancellationRequested();
-            Stream stream = tcpClient.GetStream();
+            Stream stream = TcpClient.GetStream();
 
             if (isSecure)
             {

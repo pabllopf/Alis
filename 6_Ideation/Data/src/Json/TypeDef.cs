@@ -61,17 +61,17 @@ namespace Alis.Core.Aspect.Data.Json
         /// <summary>
         ///     The member definition
         /// </summary>
-        internal readonly List<MemberDefinition> _deserializationMembers;
+        internal readonly List<MemberDefinition> DeserializationMembers;
 
         /// <summary>
         ///     The member definition
         /// </summary>
-        internal readonly List<MemberDefinition> _serializationMembers;
+        internal readonly List<MemberDefinition> SerializationMembers;
 
         /// <summary>
         ///     The type
         /// </summary>
-        internal readonly Type _type;
+        internal readonly Type Type;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="TypeDef" /> class
@@ -80,14 +80,14 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="options">The options</param>
         internal TypeDef(Type type, JsonOptions options)
         {
-            _type = type;
+            Type = type;
             IEnumerable<MemberDefinition> members = options.SerializationOptions.HasFlag(JsonSerializationOptions.UseReflection) ? EnumerateDefinitionsUsingReflection(true, type, options) : EnumerateDefinitionsUsingTypeDescriptors(true, type, options);
 
-            _serializationMembers = new List<MemberDefinition>(options.FinalizeSerializationMembers(type, members));
+            SerializationMembers = new List<MemberDefinition>(options.FinalizeSerializationMembers(type, members));
 
             members = options.SerializationOptions.HasFlag(JsonSerializationOptions.UseReflection) ? EnumerateDefinitionsUsingReflection(false, type, options) : EnumerateDefinitionsUsingTypeDescriptors(false, type, options);
 
-            _deserializationMembers = new List<MemberDefinition>(options.FinalizeDeserializationMembers(type, members));
+            DeserializationMembers = new List<MemberDefinition>(options.FinalizeDeserializationMembers(type, members));
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The member definition</returns>
         internal MemberDefinition FindDeserializationMember(string key)
         {
-            return _deserializationMembers.FirstOrDefault(def => CompareWireName(def, key));
+            return DeserializationMembers.FirstOrDefault(def => CompareWireName(def, key));
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace Alis.Core.Aspect.Data.Json
         public void WriteValues(TextWriter writer, object component, IDictionary<object, object> objectGraph, JsonOptions options)
         {
             bool first = true;
-            foreach (MemberDefinition member in _serializationMembers)
+            foreach (MemberDefinition member in SerializationMembers)
             {
                 bool nameChanged;
                 string name;
@@ -379,7 +379,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     Returns the string
         /// </summary>
         /// <returns>The string</returns>
-        public override string ToString() => _type.AssemblyQualifiedName;
+        public override string ToString() => Type.AssemblyQualifiedName;
 
         /// <summary>
         ///     Gets the key using the specified type
@@ -433,7 +433,7 @@ namespace Alis.Core.Aspect.Data.Json
             lock (LockField)
             {
                 TypeDef ta = UnlockedGet(type, options);
-                return ta._deserializationMembers.Remove(member);
+                return ta.DeserializationMembers.Remove(member);
             }
         }
 
@@ -449,7 +449,7 @@ namespace Alis.Core.Aspect.Data.Json
             lock (LockField)
             {
                 TypeDef ta = UnlockedGet(type, options);
-                return ta._serializationMembers.Remove(member);
+                return ta.SerializationMembers.Remove(member);
             }
         }
 
@@ -464,7 +464,7 @@ namespace Alis.Core.Aspect.Data.Json
             lock (LockField)
             {
                 TypeDef ta = UnlockedGet(type, options);
-                ta._deserializationMembers.Add(member);
+                ta.DeserializationMembers.Add(member);
             }
         }
 
@@ -479,7 +479,7 @@ namespace Alis.Core.Aspect.Data.Json
             lock (LockField)
             {
                 TypeDef ta = UnlockedGet(type, options);
-                ta._serializationMembers.Add(member);
+                ta.SerializationMembers.Add(member);
             }
         }
 
@@ -494,7 +494,7 @@ namespace Alis.Core.Aspect.Data.Json
             lock (LockField)
             {
                 TypeDef ta = UnlockedGet(type, options);
-                return ta._deserializationMembers.ToArray();
+                return ta.DeserializationMembers.ToArray();
             }
         }
 
@@ -509,7 +509,7 @@ namespace Alis.Core.Aspect.Data.Json
             lock (LockField)
             {
                 TypeDef ta = UnlockedGet(type, options);
-                return ta._serializationMembers.ToArray();
+                return ta.SerializationMembers.ToArray();
             }
         }
 

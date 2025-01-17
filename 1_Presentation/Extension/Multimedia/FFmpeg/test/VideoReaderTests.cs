@@ -46,7 +46,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Test
         [Fact]
         public async Task LoadMetadataMp4()
         {
-            VideoReader video = new VideoReader(AssetManager.Find(Res.Video_Mp4));
+            VideoReader video = new VideoReader(AssetManager.Find(Res.VideoMp4));
 
             await video.LoadMetadataAsync();
 
@@ -67,7 +67,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Test
         [Fact]
         public async Task LoadMetadataWebm()
         {
-            VideoReader video = new VideoReader(AssetManager.Find(Res.Video_Webm));
+            VideoReader video = new VideoReader(AssetManager.Find(Res.VideoWebm));
 
             await video.LoadMetadataAsync();
 
@@ -86,7 +86,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Test
         [Fact]
         public async Task LoadMetadataFlv()
         {
-            VideoReader video = new VideoReader(AssetManager.Find(Res.Video_Flv));
+            VideoReader video = new VideoReader(AssetManager.Find(Res.VideoFlv));
 
             await video.LoadMetadataAsync();
 
@@ -106,13 +106,13 @@ namespace Alis.Extension.Multimedia.FFmpeg.Test
         [Fact]
         public async Task LoadAtOffset1()
         {
-            using VideoReader video = new VideoReader(AssetManager.Find(Res.Video_Flv));
+            using VideoReader video = new VideoReader(AssetManager.Find(Res.VideoFlv));
             int second = 3;
 
             await video.LoadMetadataAsync();
 
-            double at_frame = second * video.Metadata.PredictedFrameCount / video.Metadata.Duration;
-            int frames_left = (int) Math.Round(video.Metadata.PredictedFrameCount - at_frame);
+            double atFrame = second * video.Metadata.PredictedFrameCount / video.Metadata.Duration;
+            int framesLeft = (int) Math.Round(video.Metadata.PredictedFrameCount - atFrame);
 
             video.Load(second);
 
@@ -129,7 +129,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Test
                 count++;
             }
 
-            Assert.True(frames_left == count);
+            Assert.True(framesLeft == count);
         }
 
         /// <summary>
@@ -138,13 +138,13 @@ namespace Alis.Extension.Multimedia.FFmpeg.Test
         [Fact]
         public async Task LoadAtOffset2()
         {
-            using VideoReader video = new VideoReader(AssetManager.Find(Res.Video_Mp4));
+            using VideoReader video = new VideoReader(AssetManager.Find(Res.VideoMp4));
             int second = 4;
 
             await video.LoadMetadataAsync();
 
-            double at_frame = second * video.Metadata.PredictedFrameCount / video.Metadata.Duration;
-            int frames_left = (int) Math.Round(video.Metadata.PredictedFrameCount - at_frame);
+            double atFrame = second * video.Metadata.PredictedFrameCount / video.Metadata.Duration;
+            int framesLeft = (int) Math.Round(video.Metadata.PredictedFrameCount - atFrame);
 
             video.Load(second);
 
@@ -161,7 +161,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Test
                 count++;
             }
 
-            Assert.True(frames_left == count);
+            Assert.True(framesLeft == count);
         }
     }
 }

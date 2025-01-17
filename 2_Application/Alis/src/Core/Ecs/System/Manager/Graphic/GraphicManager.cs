@@ -64,7 +64,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// <summary>
         ///     The world position
         /// </summary>
-        public Vector2F worldPosition;
+        public Vector2F WorldPosition;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="GraphicManager" /> class
@@ -372,7 +372,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                     }
 
                     // draw a circle of radius 2 at the mouse position:
-                    RenderCircleAtWorldPosition(worldPosition, 2);
+                    RenderCircleAtWorldPosition(WorldPosition, 2);
                 }
 
                 Sdl.SetRenderTarget(renderer, IntPtr.Zero);
@@ -566,9 +566,9 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             float y = adjustedY * factorY + cameraPosition.Y;
            Logger.Info($"Mouse Position on World: {x}, {y}");
 
-            worldPosition = new Vector2F(x, y);
+            WorldPosition = new Vector2F(x, y);
 
-            return worldPosition;
+            return WorldPosition;
         }
     }
 }

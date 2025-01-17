@@ -44,32 +44,32 @@ namespace Alis.Core.Network
         /// <summary>
         ///     The cancellation token
         /// </summary>
-        internal readonly CancellationToken _cancellationToken;
+        internal readonly CancellationToken CancellationToken;
 
         /// <summary>
         ///     The guid
         /// </summary>
-        internal readonly Guid _guid;
+        internal readonly Guid Guid;
 
         /// <summary>
         ///     The keep alive interval
         /// </summary>
-        internal readonly TimeSpan _keepAliveInterval;
+        internal readonly TimeSpan KeepAliveInterval;
 
         /// <summary>
         ///     The stopwatch
         /// </summary>
-        internal readonly Stopwatch _stopwatch;
+        internal readonly Stopwatch Stopwatch;
 
         /// <summary>
         ///     The web socket
         /// </summary>
-        internal readonly WebSocketImplementation _webSocket;
+        internal readonly WebSocketImplementation WebSocketInternal;
 
         /// <summary>
         ///     The ping sent ticks
         /// </summary>
-        internal long _pingSentTicks;
+        internal long PingSentTicks;
 
         /// <summary>
         ///     Initialises a new instance of the PingPongManager to facilitate ping pong WebSocket messages.
@@ -91,13 +91,13 @@ namespace Alis.Core.Network
             CancellationToken cancellationToken)
         {
             WebSocketImplementation webSocketImpl = webSocket as WebSocketImplementation;
-            _webSocket = webSocketImpl ?? throw new InvalidCastException(
+            WebSocketInternal = webSocketImpl ?? throw new InvalidCastException(
                 "Cannot cast WebSocket to an instance of WebSocketImplementation. Please use the web socket factories to create a web socket");
-            _guid = guid;
-            _keepAliveInterval = keepAliveInterval;
-            _cancellationToken = cancellationToken;
+            Guid = guid;
+            KeepAliveInterval = keepAliveInterval;
+            CancellationToken = cancellationToken;
             webSocketImpl.Pong += WebSocketImplPong;
-            _stopwatch = Stopwatch.StartNew();
+            Stopwatch = Stopwatch.StartNew();
 
             if (keepAliveInterval == TimeSpan.Zero)
             {
@@ -121,7 +121,7 @@ namespace Alis.Core.Network
         /// <param name="cancellation">The cancellation token</param>
         public async Task SendPing(ArraySegment<byte> payload, CancellationToken cancellation)
         {
-            await _webSocket.SendPingAsync(payload, cancellation);
+            await WebSocketInternal.SendPingAsync(payload, cancellation);
         }
 
         /// <summary>
@@ -157,11 +157,11 @@ namespace Alis.Core.Network
         /// </summary>
         internal async Task PingLoop()
         {
-            while (!_cancellationToken.IsCancellationRequested)
+            while (!CancellationToken.IsCancellationRequested)
             {
-                await Task.Delay(_keepAliveInterval, _cancellationToken);
+                await Task.Delay(KeepAliveInterval, CancellationToken);
 
-                if (_webSocket.State != WebSocketState.Open)
+                if (WebSocketInternal.State != WebSocketState.Open)
                 {
                     break;
                 }
@@ -172,7 +172,7 @@ namespace Alis.Core.Network
                     break;
                 }
 
-                if (!_cancellationToken.IsCancellationRequested)
+                if (!CancellationToken.IsCancellationRequested)
                 {
                     await SendPing();
                 }
@@ -184,7 +184,7 @@ namespace Alis.Core.Network
         /// </summary>
         internal void LogPingPongManagerStart()
         {
-            Events.Log.PingPongManagerStarted(_guid, (int) _keepAliveInterval.TotalSeconds);
+            Events.Log.PingPongManagerStarted(Guid, (int) KeepAliveInterval.TotalSeconds);
         }
 
         /// <summary>
@@ -192,24 +192,24 @@ namespace Alis.Core.Network
         /// </summary>
         internal void LogPingPongManagerEnd()
         {
-            Events.Log.PingPongManagerEnded(_guid);
+            Events.Log.PingPongManagerEnded(Guid);
         }
 
         /// <summary>
         ///     Describes whether this instance ping sent ticks exist
         /// </summary>
         /// <returns>The bool</returns>
-        internal bool PingSentTicksExist() => _pingSentTicks != 0;
+        internal bool PingSentTicksExist() => PingSentTicks != 0;
 
         /// <summary>
         ///     Handles the expired keep alive interval
         /// </summary>
         internal async Task HandleExpiredKeepAliveInterval()
         {
-            Events.Log.KeepAliveIntervalExpired(_guid, (int) _keepAliveInterval.TotalSeconds);
-            await _webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure,
-                $"No Pong message received in response to a Ping after KeepAliveInterval {_keepAliveInterval}",
-                _cancellationToken);
+            Events.Log.KeepAliveIntervalExpired(Guid, (int) KeepAliveInterval.TotalSeconds);
+            await WebSocketInternal.CloseAsync(WebSocketCloseStatus.NormalClosure,
+                $"No Pong message received in response to a Ping after KeepAliveInterval {KeepAliveInterval}",
+                CancellationToken);
         }
 
         /// <summary>
@@ -217,9 +217,9 @@ namespace Alis.Core.Network
         /// </summary>
         internal async Task SendPing()
         {
-            _pingSentTicks = _stopwatch.Elapsed.Ticks;
-            ArraySegment<byte> buffer = new ArraySegment<byte>(BitConverter.GetBytes(_pingSentTicks));
-            await SendPing(buffer, _cancellationToken);
+            PingSentTicks = Stopwatch.Elapsed.Ticks;
+            ArraySegment<byte> buffer = new ArraySegment<byte>(BitConverter.GetBytes(PingSentTicks));
+            await SendPing(buffer, CancellationToken);
         }
 
         /// <summary>
@@ -229,7 +229,7 @@ namespace Alis.Core.Network
         /// <param name="e">The </param>
         internal void WebSocketImplPong(object sender, PongEventArgs e)
         {
-            _pingSentTicks = 0;
+            PingSentTicks = 0;
             OnPong(e);
         }
     }

@@ -89,7 +89,7 @@ namespace Alis.Extension.Language.Dialogue.Test
             manager.AddDialog(dialog);
 
             // Assert
-            Assert.Equal(expectedCount, manager.dialogs.Count);
+            Assert.Equal(expectedCount, manager.Dialogs.Count);
         }
 
         /// <summary>

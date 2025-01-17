@@ -272,27 +272,27 @@ namespace Alis.App.Engine
             float fontSizeIcon = 13.5f;
 
             string fontFileSolid = AssetManager.Find("Engine_JetBrainsMono-Bold.ttf");
-            spaceWork.fontLoaded16Solid = fonts.AddFontFromFileTtf(fontFileSolid, fontSize);
+            spaceWork.FontLoaded16Solid = fonts.AddFontFromFileTtf(fontFileSolid, fontSize);
             try
             {
-                ImFontConfigPtr icons_config = ImGui.ImFontConfig();
-                icons_config.MergeMode = true;
-                icons_config.SnapH = true;
-                icons_config.GlyphMinAdvanceX = 18;
+                ImFontConfigPtr iconsConfig = ImGui.ImFontConfig();
+                iconsConfig.MergeMode = true;
+                iconsConfig.SnapH = true;
+                iconsConfig.GlyphMinAdvanceX = 18;
 
-                ushort[] IconRanges = new ushort[3];
-                IconRanges[0] = FontAwesome5.IconMin;
-                IconRanges[1] = FontAwesome5.IconMax;
-                IconRanges[2] = 0;
+                ushort[] iconRanges = new ushort[3];
+                iconRanges[0] = FontAwesome5.IconMin;
+                iconRanges[1] = FontAwesome5.IconMax;
+                iconRanges[2] = 0;
 
                 // Allocate GCHandle to pin IconRanges in memory
-                GCHandle iconRangesHandle = GCHandle.Alloc(IconRanges, GCHandleType.Pinned);
+                GCHandle iconRangesHandle = GCHandle.Alloc(iconRanges, GCHandleType.Pinned);
 
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
 
                 // Assuming 'io' is a valid ImGuiIO instance and 'dir' and 'dirIcon' are defined paths
                 string fontAwesome = AssetManager.Find(FontAwesome5.NameSolid);
-                fonts.AddFontFromFileTtf(fontAwesome, fontSizeIcon, icons_config, rangePtr);
+                fonts.AddFontFromFileTtf(fontAwesome, fontSizeIcon, iconsConfig, rangePtr);
             }
             catch (Exception e)
             {
@@ -301,27 +301,27 @@ namespace Alis.App.Engine
             }
 
             string fontFileSolid10 = AssetManager.Find("Engine_JetBrainsMono-Bold.ttf");
-            spaceWork.fontLoaded10Solid = fonts.AddFontFromFileTtf(fontFileSolid10, 12);
+            spaceWork.FontLoaded10Solid = fonts.AddFontFromFileTtf(fontFileSolid10, 12);
             try
             {
-                ImFontConfigPtr icons_config = ImGui.ImFontConfig();
-                icons_config.MergeMode = true;
-                icons_config.SnapH = true;
-                icons_config.GlyphMinAdvanceX = 18;
+                ImFontConfigPtr iconsConfig = ImGui.ImFontConfig();
+                iconsConfig.MergeMode = true;
+                iconsConfig.SnapH = true;
+                iconsConfig.GlyphMinAdvanceX = 18;
 
-                ushort[] IconRanges = new ushort[3];
-                IconRanges[0] = FontAwesome5.IconMin;
-                IconRanges[1] = FontAwesome5.IconMax;
-                IconRanges[2] = 0;
+                ushort[] iconRanges = new ushort[3];
+                iconRanges[0] = FontAwesome5.IconMin;
+                iconRanges[1] = FontAwesome5.IconMax;
+                iconRanges[2] = 0;
 
                 // Allocate GCHandle to pin IconRanges in memory
-                GCHandle iconRangesHandle = GCHandle.Alloc(IconRanges, GCHandleType.Pinned);
+                GCHandle iconRangesHandle = GCHandle.Alloc(iconRanges, GCHandleType.Pinned);
 
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
 
                 // Assuming 'io' is a valid ImGuiIO instance and 'dir' and 'dirIcon' are defined paths
                 string fontAwesome = AssetManager.Find(FontAwesome5.NameSolid);
-                fonts.AddFontFromFileTtf(fontAwesome, 12, icons_config, rangePtr);
+                fonts.AddFontFromFileTtf(fontAwesome, 12, iconsConfig, rangePtr);
             }
             catch (Exception e)
             {
@@ -330,26 +330,26 @@ namespace Alis.App.Engine
             }
 
             string fontFileSolid45 = AssetManager.Find("Engine_JetBrainsMono-Bold.ttf");
-            spaceWork.fontLoaded45Bold = fonts.AddFontFromFileTtf(fontFileSolid45, 40);
+            spaceWork.FontLoaded45Bold = fonts.AddFontFromFileTtf(fontFileSolid45, 40);
             try
             {
-                ImFontConfigPtr icons_config = ImGui.ImFontConfig();
-                icons_config.MergeMode = true;
-                icons_config.SnapH = true;
-                icons_config.GlyphMinAdvanceX = 18;
+                ImFontConfigPtr iconsConfig = ImGui.ImFontConfig();
+                iconsConfig.MergeMode = true;
+                iconsConfig.SnapH = true;
+                iconsConfig.GlyphMinAdvanceX = 18;
 
-                ushort[] IconRanges = new ushort[3];
-                IconRanges[0] = FontAwesome5.IconMin;
-                IconRanges[1] = FontAwesome5.IconMax;
-                IconRanges[2] = 0;
+                ushort[] iconRanges = new ushort[3];
+                iconRanges[0] = FontAwesome5.IconMin;
+                iconRanges[1] = FontAwesome5.IconMax;
+                iconRanges[2] = 0;
 
                 // Allocate GCHandle to pin IconRanges in memory
-                GCHandle iconRangesHandle = GCHandle.Alloc(IconRanges, GCHandleType.Pinned);
+                GCHandle iconRangesHandle = GCHandle.Alloc(iconRanges, GCHandleType.Pinned);
 
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
 
                 string fontAwesome = AssetManager.Find(FontAwesome5.NameSolid);
-                fonts.AddFontFromFileTtf(fontAwesome, 40, icons_config, rangePtr);
+                fonts.AddFontFromFileTtf(fontAwesome, 40, iconsConfig, rangePtr);
             }
             catch (Exception e)
             {
@@ -358,26 +358,26 @@ namespace Alis.App.Engine
             }
 
             string fontFileSolid30 = AssetManager.Find("Engine_JetBrainsMono-Bold.ttf");
-            spaceWork.fontLoaded30Bold = fonts.AddFontFromFileTtf(fontFileSolid30, 28);
+            spaceWork.FontLoaded30Bold = fonts.AddFontFromFileTtf(fontFileSolid30, 28);
             try
             {
-                ImFontConfigPtr icons_config = ImGui.ImFontConfig();
-                icons_config.MergeMode = true;
-                icons_config.SnapH = true;
-                icons_config.GlyphMinAdvanceX = 18;
+                ImFontConfigPtr iconsConfig = ImGui.ImFontConfig();
+                iconsConfig.MergeMode = true;
+                iconsConfig.SnapH = true;
+                iconsConfig.GlyphMinAdvanceX = 18;
 
-                ushort[] IconRanges = new ushort[3];
-                IconRanges[0] = FontAwesome5.IconMin;
-                IconRanges[1] = FontAwesome5.IconMax;
-                IconRanges[2] = 0;
+                ushort[] iconRanges = new ushort[3];
+                iconRanges[0] = FontAwesome5.IconMin;
+                iconRanges[1] = FontAwesome5.IconMax;
+                iconRanges[2] = 0;
 
                 // Allocate GCHandle to pin IconRanges in memory
-                GCHandle iconRangesHandle = GCHandle.Alloc(IconRanges, GCHandleType.Pinned);
+                GCHandle iconRangesHandle = GCHandle.Alloc(iconRanges, GCHandleType.Pinned);
 
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
 
                 string fontAwesome = AssetManager.Find(FontAwesome5.NameSolid);
-                fonts.AddFontFromFileTtf(fontAwesome, 28, icons_config, rangePtr);
+                fonts.AddFontFromFileTtf(fontAwesome, 28, iconsConfig, rangePtr);
             }
             catch (Exception e)
             {
@@ -386,26 +386,26 @@ namespace Alis.App.Engine
             }
 
             string fontAwesomeLight = AssetManager.Find("Engine_JetBrainsMonoNL-Regular.ttf");
-            spaceWork.fontLoaded16Light = fonts.AddFontFromFileTtf(fontAwesomeLight, fontSize);
+            spaceWork.FontLoaded16Light = fonts.AddFontFromFileTtf(fontAwesomeLight, fontSize);
             try
             {
-                ImFontConfigPtr icons_config = ImGui.ImFontConfig();
-                icons_config.MergeMode = true;
-                icons_config.SnapH = true;
-                icons_config.GlyphMinAdvanceX = 20;
+                ImFontConfigPtr iconsConfig = ImGui.ImFontConfig();
+                iconsConfig.MergeMode = true;
+                iconsConfig.SnapH = true;
+                iconsConfig.GlyphMinAdvanceX = 20;
 
-                ushort[] IconRanges = new ushort[3];
-                IconRanges[0] = FontAwesome5.IconMin;
-                IconRanges[1] = FontAwesome5.IconMax;
-                IconRanges[2] = 0;
+                ushort[] iconRanges = new ushort[3];
+                iconRanges[0] = FontAwesome5.IconMin;
+                iconRanges[1] = FontAwesome5.IconMax;
+                iconRanges[2] = 0;
 
                 // Allocate GCHandle to pin IconRanges in memory
-                GCHandle iconRangesHandle = GCHandle.Alloc(IconRanges, GCHandleType.Pinned);
+                GCHandle iconRangesHandle = GCHandle.Alloc(iconRanges, GCHandleType.Pinned);
 
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
 
                 // Assuming 'io' is a valid ImGuiIO instance and 'dir' and 'dirIcon' are defined paths
-                fonts.AddFontFromFileTtf(fontAwesomeLight, fontSizeIcon, icons_config, rangePtr);
+                fonts.AddFontFromFileTtf(fontAwesomeLight, fontSizeIcon, iconsConfig, rangePtr);
             }
             catch (Exception e)
             {
@@ -476,7 +476,7 @@ namespace Alis.App.Engine
 
             ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_default_config.ini"));
 
-            while (!spaceWork._quit)
+            while (!spaceWork.Quit)
             {
                 while (Sdl.PollEvent(out Event e) != 0)
                 {
@@ -488,7 +488,7 @@ namespace Alis.App.Engine
                         {
                             if (e.window.windowEvent == WindowEventId.SdlWindowEventClose)
                             {
-                                spaceWork._quit = true;
+                                spaceWork.Quit = true;
                             }
 
                             break;
@@ -499,7 +499,7 @@ namespace Alis.App.Engine
                             switch (e.key.KeySym.sym)
                             {
                                 case KeyCodes.Escape:
-                                    spaceWork._quit = true;
+                                    spaceWork.Quit = true;
                                     break;
                             }
 
