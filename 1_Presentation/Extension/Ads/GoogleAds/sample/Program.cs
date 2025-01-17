@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Logging;
 
 namespace Alis.Extension.Ads.GoogleAds.Sample
@@ -42,7 +41,7 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
         /// </summary>
         public static void Main()
         {
-           Logger.Info("End program.");
+            Logger.Info("End program.");
         }
     }
 }

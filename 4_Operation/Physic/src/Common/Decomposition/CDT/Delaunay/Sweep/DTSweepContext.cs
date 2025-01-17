@@ -48,11 +48,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         private readonly DtSweepPointComparator _comparator = new DtSweepPointComparator();
 
         /// <summary>
-        ///     The front
-        /// </summary>
-        public AdvancingFront AFront;
-
-        /// <summary>
         ///     The dt sweep basin
         /// </summary>
         public readonly DtSweepBasin Basin = new DtSweepBasin();
@@ -61,6 +56,11 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         ///     The dt sweep edge event
         /// </summary>
         public readonly DtSweepEdgeEvent EdgeEvent = new DtSweepEdgeEvent();
+
+        /// <summary>
+        ///     The front
+        /// </summary>
+        public AdvancingFront AFront;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="DtSweepContext" /> class

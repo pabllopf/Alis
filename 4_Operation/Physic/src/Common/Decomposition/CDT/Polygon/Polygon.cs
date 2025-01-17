@@ -50,6 +50,11 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
     internal class Polygon : ITriangulatable
     {
         /// <summary>
+        ///     The triangulation point
+        /// </summary>
+        protected readonly List<TriangulationPoint> Points = new List<TriangulationPoint>();
+
+        /// <summary>
         ///     The holes
         /// </summary>
         protected List<Polygon> Holes;
@@ -58,11 +63,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         ///     The last
         /// </summary>
         protected PolygonPoint Last;
-
-        /// <summary>
-        ///     The triangulation point
-        /// </summary>
-        protected readonly List<TriangulationPoint> Points = new List<TriangulationPoint>();
 
         /// <summary>
         ///     The steiner points

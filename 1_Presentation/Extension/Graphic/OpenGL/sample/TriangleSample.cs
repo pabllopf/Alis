@@ -102,7 +102,7 @@ namespace Alis.Extension.Graphic.OpenGL.Sample
 
             // GET VERSION SDL2
             Version version = Sdl.GetVersion();
-           Logger.Info(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
+            Logger.Info(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
 
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION
             Sdl.SetAttributeByInt(Attr.SdlGlContextFlags, (int) Contexts.SdlGlContextForwardCompatibleFlag);
@@ -193,16 +193,16 @@ namespace Alis.Extension.Graphic.OpenGL.Sample
             Gl.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), IntPtr.Zero);
 
             // Print the OpenGL version
-           Logger.Info(@$"OpenGL VERSION {Gl.GlGetString(StringName.Version)}");
+            Logger.Info(@$"OpenGL VERSION {Gl.GlGetString(StringName.Version)}");
 
             // Print the OpenGL vendor
-           Logger.Info(@$"OpenGL VENDOR {Gl.GlGetString(StringName.Vendor)}");
+            Logger.Info(@$"OpenGL VENDOR {Gl.GlGetString(StringName.Vendor)}");
 
             // Print the OpenGL renderer
-           Logger.Info(@$"OpenGL RENDERER {Gl.GlGetString(StringName.Renderer)}");
+            Logger.Info(@$"OpenGL RENDERER {Gl.GlGetString(StringName.Renderer)}");
 
             // Print the OpenGL shading language version
-           Logger.Info(@$"OpenGL SHADING LANGUAGE VERSION {Gl.GlGetString(StringName.ShadingLanguageVersion)}");
+            Logger.Info(@$"OpenGL SHADING LANGUAGE VERSION {Gl.GlGetString(StringName.ShadingLanguageVersion)}");
 
             while (running)
             {

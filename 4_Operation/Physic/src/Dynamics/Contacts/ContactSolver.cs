@@ -50,6 +50,16 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         private readonly CountdownEvent solveVelocityConstraintsWaitLock = new CountdownEvent(0);
 
         /// <summary>
+        ///     The position constraints multithread threshold
+        /// </summary>
+        private int _positionConstraintsMultithreadThreshold;
+
+        /// <summary>
+        ///     The velocity constraints multithread threshold
+        /// </summary>
+        private int _velocityConstraintsMultithreadThreshold;
+
+        /// <summary>
         ///     The contacts
         /// </summary>
         public Contact[] Contacts;
@@ -70,11 +80,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         public ContactPositionConstraint[] PositionConstraints;
 
         /// <summary>
-        ///     The position constraints multithread threshold
-        /// </summary>
-        private int _positionConstraintsMultithreadThreshold;
-
-        /// <summary>
         ///     The positions
         /// </summary>
         internal SolverPosition[] Positions;
@@ -88,11 +93,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         ///     The velocity constraints
         /// </summary>
         public ContactVelocityConstraint[] VelocityConstraints;
-
-        /// <summary>
-        ///     The velocity constraints multithread threshold
-        /// </summary>
-        private int _velocityConstraintsMultithreadThreshold;
 
         /// <summary>
         ///     Disposes this instance

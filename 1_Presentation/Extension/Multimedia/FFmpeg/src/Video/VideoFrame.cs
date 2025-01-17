@@ -153,9 +153,9 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video
                        out _))
             {
                 // save it
-               Logger.Info("Saving frame...");
+                Logger.Info("Saving frame...");
                 byte[] data = RawData;
-               Logger.Info($"Writing Length {data.Length} bytes to ffmpeg...");
+                Logger.Info($"Writing Length {data.Length} bytes to ffmpeg...");
                 inp.Write(data, 0, data.Length);
             }
         }

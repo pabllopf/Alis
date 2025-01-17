@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
 using Alis.Core.Aspect.Logging;
@@ -119,7 +118,7 @@ namespace Alis.App.Engine.Menus
                 // Botón de notificaciones
                 if (ImGui.Button($"{FontAwesome5.Bell}##notifications"))
                 {
-                   Logger.Info("Abriendo notificaciones...");
+                    Logger.Info("Abriendo notificaciones...");
                     // Lógica para abrir notificaciones
                 }
 
@@ -132,19 +131,19 @@ namespace Alis.App.Engine.Menus
                 {
                     if (ImGui.Selectable("master"))
                     {
-                       Logger.Info("Cambiando a la rama master...");
+                        Logger.Info("Cambiando a la rama master...");
                         // Lógica para cambiar a la rama master
                     }
 
                     if (ImGui.Selectable("develop"))
                     {
-                       Logger.Info("Cambiando a la rama develop...");
+                        Logger.Info("Cambiando a la rama develop...");
                         // Lógica para cambiar a la rama develop
                     }
 
                     if (ImGui.Selectable("feature/new-feature"))
                     {
-                       Logger.Info("Cambiando a la rama feature/new-feature...");
+                        Logger.Info("Cambiando a la rama feature/new-feature...");
                         // Lógica para cambiar a la rama feature/new-feature
                     }
 

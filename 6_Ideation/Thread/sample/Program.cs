@@ -69,7 +69,7 @@ namespace Alis.Core.Aspect.Thread.Sample
             Console.ReadKey();
 
             threadManager.StopAllThreads();
-            
+
             Console.ReadKey();
         }
     }

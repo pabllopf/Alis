@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Memory.Attributes;
-using Alis.Core.Aspect.Memory.Exceptions;
 
 namespace Alis.Core.Aspect.Memory.Sample
 {
@@ -71,15 +69,15 @@ namespace Alis.Core.Aspect.Memory.Sample
         {
             Sample = 0;
             Validator.Validate(Sample, nameof(Sample));
-            
+
             SampleMethod(0);
-            
+
             _nonZeroValuev2 = 0;
             Validator.Validate(_nonZeroValuev2, nameof(_nonZeroValuev2));
 
             _nonZeroValue = 0;
             Validator.Validate(_nonZeroValue, nameof(_nonZeroValue));
-            
+
             _nonZeroValue = 5;
             Validator.Validate(_nonZeroValue, nameof(_nonZeroValue));
         }

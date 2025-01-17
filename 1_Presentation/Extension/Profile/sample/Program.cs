@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Logging;
 
 namespace Alis.Extension.Profile.Sample
@@ -52,8 +51,8 @@ namespace Alis.Extension.Profile.Sample
 
             ProfileData profileData = profilerService.StopProfiling();
 
-           Logger.Info($"CPU Usage: {profileData.CpuUsage}");
-           Logger.Info($"Memory Usage: {profileData.MemoryUsage}");
+            Logger.Info($"CPU Usage: {profileData.CpuUsage}");
+            Logger.Info($"Memory Usage: {profileData.MemoryUsage}");
         }
 
         /// <summary>

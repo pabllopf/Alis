@@ -110,7 +110,7 @@ namespace Alis.Extension.Graphic.OpenGL.Sample
 
             // GET VERSION SDL2
             Version version = Sdl.GetVersion();
-           Logger.Info(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
+            Logger.Info(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
 
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION
             Sdl.SetAttributeByInt(Attr.SdlGlContextFlags, (int) Contexts.SdlGlContextForwardCompatibleFlag);

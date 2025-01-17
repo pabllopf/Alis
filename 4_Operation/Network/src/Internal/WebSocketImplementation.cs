@@ -88,14 +88,14 @@ namespace Alis.Core.Network.Internal
         internal readonly bool UsePerMessageDeflate;
 
         /// <summary>
-        ///     The close status
-        /// </summary>
-        internal WebSocketCloseStatus? CloseStatusInternal;
-
-        /// <summary>
         ///     The close status description
         /// </summary>
         internal string CloseStatusDescriptionInternal;
+
+        /// <summary>
+        ///     The close status
+        /// </summary>
+        internal WebSocketCloseStatus? CloseStatusInternal;
 
         /// <summary>
         ///     The binary

@@ -42,9 +42,9 @@ namespace Alis.Extension.Graphic.OpenGL.Sample
         /// </summary>
         public static void Main()
         {
-           Logger.Info("Enter the number of the sample you want to run:");
-           Logger.Info("1. Triangle Sample");
-           Logger.Info("2. Cube Sample");
+            Logger.Info("Enter the number of the sample you want to run:");
+            Logger.Info("1. Triangle Sample");
+            Logger.Info("2. Cube Sample");
             int sampleNumber = Convert.ToInt32(Console.ReadLine());
 
             switch (sampleNumber)

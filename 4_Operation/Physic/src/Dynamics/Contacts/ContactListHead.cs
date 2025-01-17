@@ -60,7 +60,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         IEnumerator IEnumerable.GetEnumerator() => new ContactEnumerator(this);
 
 
-
         /// <summary>
         ///     The contact enumerator
         /// </summary>

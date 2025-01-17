@@ -116,7 +116,7 @@ namespace Alis.Core.Network.Sample.Client.Complex
         {
             Stopwatch stopwatch = Stopwatch.StartNew();
             long len = await ReadAll(webSocket);
-           Logger.Info($"Read {len:#,##0} bytes in {stopwatch.Elapsed.TotalMilliseconds:#,##0} ms");
+            Logger.Info($"Read {len:#,##0} bytes in {stopwatch.Elapsed.TotalMilliseconds:#,##0} ms");
         }
     }
 }

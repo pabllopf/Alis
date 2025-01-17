@@ -43,16 +43,6 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
     public class BreakableBody
     {
         /// <summary>
-        ///     The angular velocities cache
-        /// </summary>
-        private float[] _angularVelocitiesCache = new float[8];
-
-        /// <summary>
-        ///     The vector
-        /// </summary>
-        private Vector2F[] _velocitiesCache = new Vector2F[8];
-
-        /// <summary>
         ///     The fixture
         /// </summary>
         public readonly List<Fixture> Parts = new List<Fixture>(8);
@@ -62,6 +52,16 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         ///     Default: 500
         /// </summary>
         public readonly float Strength = 500.0f;
+
+        /// <summary>
+        ///     The angular velocities cache
+        /// </summary>
+        private float[] _angularVelocitiesCache = new float[8];
+
+        /// <summary>
+        ///     The vector
+        /// </summary>
+        private Vector2F[] _velocitiesCache = new Vector2F[8];
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="BreakableBody" /> class

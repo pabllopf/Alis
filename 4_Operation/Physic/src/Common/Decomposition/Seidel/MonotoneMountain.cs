@@ -55,6 +55,12 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// </summary>
         private readonly List<Point> _monoPoly;
 
+        // Triangles that constitute the mountain
+        /// <summary>
+        ///     The triangles
+        /// </summary>
+        public readonly List<List<Point>> Triangles;
+
         /// <summary>
         ///     The head
         /// </summary>
@@ -75,12 +81,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         ///     The tail
         /// </summary>
         private Point _tail;
-
-        // Triangles that constitute the mountain
-        /// <summary>
-        ///     The triangles
-        /// </summary>
-        public readonly List<List<Point>> Triangles;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="MonotoneMountain" /> class

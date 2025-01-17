@@ -46,7 +46,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         {
             // Arrange
             string expectedText = "Option Text";
-            Action expectedAction = () =>Logger.Info("Action executed");
+            Action expectedAction = () => Logger.Info("Action executed");
 
             // Act
             DialogOption option = new DialogOption(expectedText, expectedAction);
@@ -64,7 +64,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         {
             // Arrange
             Dialog dialog = new Dialog("dialogId", "Dialog Text");
-            DialogOption option = new DialogOption("Option Text", () =>Logger.Info("Action executed"));
+            DialogOption option = new DialogOption("Option Text", () => Logger.Info("Action executed"));
             int expectedCount = 1;
 
             // Act

@@ -76,21 +76,6 @@ namespace Alis.Core.Physic.Dynamics
         private Joint[] _joints;
 
         /// <summary>
-        ///     The locks
-        /// </summary>
-        internal int[] Locks;
-
-        /// <summary>
-        ///     The positions
-        /// </summary>
-        internal SolverPosition[] Positions;
-
-        /// <summary>
-        ///     The velocities
-        /// </summary>
-        internal SolverVelocity[] Velocities;
-
-        /// <summary>
         ///     The bodies
         /// </summary>
         public Body[] Bodies;
@@ -129,6 +114,21 @@ namespace Alis.Core.Physic.Dynamics
         ///     The joint update time
         /// </summary>
         public TimeSpan JointUpdateTime;
+
+        /// <summary>
+        ///     The locks
+        /// </summary>
+        internal int[] Locks;
+
+        /// <summary>
+        ///     The positions
+        /// </summary>
+        internal SolverPosition[] Positions;
+
+        /// <summary>
+        ///     The velocities
+        /// </summary>
+        internal SolverVelocity[] Velocities;
 
 
         /// <summary>

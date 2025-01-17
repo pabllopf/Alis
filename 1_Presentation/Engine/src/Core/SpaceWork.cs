@@ -78,11 +78,6 @@ namespace Alis.App.Engine.Core
         public readonly SettingsWindow SettingsWindow;
 
         /// <summary>
-        ///     The quit
-        /// </summary>
-        public bool Quit = false;
-
-        /// <summary>
         ///     The context
         /// </summary>
         public IntPtr ContextGui;
@@ -116,6 +111,11 @@ namespace Alis.App.Engine.Core
         ///     The io
         /// </summary>
         public ImGuiIoPtr Io;
+
+        /// <summary>
+        ///     The quit
+        /// </summary>
+        public bool Quit = false;
 
         /// <summary>
         ///     The renderer game

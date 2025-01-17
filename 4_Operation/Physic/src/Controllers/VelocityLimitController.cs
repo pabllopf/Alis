@@ -45,6 +45,16 @@ namespace Alis.Core.Physic.Controllers
         private readonly List<Body> _bodies = new List<Body>();
 
         /// <summary>
+        ///     The limit angular velocity
+        /// </summary>
+        public readonly bool LimitAngularVelocity = true;
+
+        /// <summary>
+        ///     The limit linear velocity
+        /// </summary>
+        public readonly bool LimitLinearVelocity = true;
+
+        /// <summary>
         ///     The max angular sqared
         /// </summary>
         private float _maxAngularSqared;
@@ -63,16 +73,6 @@ namespace Alis.Core.Physic.Controllers
         ///     The max linear velocity
         /// </summary>
         private float _maxLinearVelocity;
-
-        /// <summary>
-        ///     The limit angular velocity
-        /// </summary>
-        public readonly bool LimitAngularVelocity = true;
-
-        /// <summary>
-        ///     The limit linear velocity
-        /// </summary>
-        public readonly bool LimitLinearVelocity = true;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="VelocityLimitController" /> class.

@@ -540,22 +540,22 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             }
 
             Camera camera = Cameras[0]; // Assuming the first camera is the main camera
-           Logger.Info($"Camera GameObject: {camera.GameObject.Name}");
+            Logger.Info($"Camera GameObject: {camera.GameObject.Name}");
 
             Vector2F cameraPosition = camera.Position;
-           Logger.Info($"Camera Position: {cameraPosition.X}, {cameraPosition.Y}");
+            Logger.Info($"Camera Position: {cameraPosition.X}, {cameraPosition.Y}");
 
             Vector2F cameraResolution = camera.Resolution;
-           Logger.Info($"Camera Resolution: {cameraResolution.X}, {cameraResolution.Y}");
+            Logger.Info($"Camera Resolution: {cameraResolution.X}, {cameraResolution.Y}");
 
             // Calculate factor conversion textureSize to cameraResolution
             float factorX = cameraResolution.X / textureSize.X;
             float factorY = cameraResolution.Y / textureSize.Y;
-           Logger.Info($"Factor X: {factorX}, Factor Y: {factorY}");
+            Logger.Info($"Factor X: {factorX}, Factor Y: {factorY}");
 
             // Convert coordinates mouse position to unit coordinates
             Vector2F mousePositionOnGameUnits = new Vector2F(mousePositionRelativeToTextureCentered.X / PixelsPerMeter, -mousePositionRelativeToTextureCentered.Y / PixelsPerMeter);
-           Logger.Info($"Mouse Position on Game Units: {mousePositionOnGameUnits.X}, {mousePositionOnGameUnits.Y}");
+            Logger.Info($"Mouse Position on Game Units: {mousePositionOnGameUnits.X}, {mousePositionOnGameUnits.Y}");
 
             // Adjust the mouse position based on the camera position
             float adjustedX = mousePositionOnGameUnits.X;
@@ -564,7 +564,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             // Convert the mouse position to world coordinates
             float x = adjustedX * factorX + cameraPosition.X;
             float y = adjustedY * factorY + cameraPosition.Y;
-           Logger.Info($"Mouse Position on World: {x}, {y}");
+            Logger.Info($"Mouse Position on World: {x}, {y}");
 
             WorldPosition = new Vector2F(x, y);
 

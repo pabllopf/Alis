@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Data.Json;
 
 namespace Alis.Core.Aspect.Data.Sample

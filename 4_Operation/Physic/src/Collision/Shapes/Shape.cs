@@ -51,11 +51,6 @@ namespace Alis.Core.Physic.Collision.Shapes
         internal float Density;
 
         /// <summary>
-        ///     The radius
-        /// </summary>
-        internal float Radius;
-
-        /// <summary>
         ///     Contains the properties of the shape such as:
         ///     - Area of the shape
         ///     - Centroid
@@ -63,6 +58,11 @@ namespace Alis.Core.Physic.Collision.Shapes
         ///     - Mass
         /// </summary>
         public MassData MassData;
+
+        /// <summary>
+        ///     The radius
+        /// </summary>
+        internal float Radius;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Shape" /> class

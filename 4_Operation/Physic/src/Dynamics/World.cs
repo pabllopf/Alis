@@ -139,11 +139,6 @@ namespace Alis.Core.Physic.Dynamics
         private Vector2F _testPointPointTmp;
 
         /// <summary>
-        ///     The world has new fixture
-        /// </summary>
-        internal bool WorldHasNewFixture;
-
-        /// <summary>
         ///     Fires whenever a body has been added
         /// </summary>
         public BodyDelegate BodyAdded;
@@ -188,6 +183,11 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <value>The user data.</value>
         public object Tag;
+
+        /// <summary>
+        ///     The world has new fixture
+        /// </summary>
+        internal bool WorldHasNewFixture;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="World" /> class.

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
@@ -95,7 +94,7 @@ namespace Alis.App.Engine.Menus
                 if (ImGui.Button($"{FontAwesome5.ArrowLeft}"))
                 {
                     // Lógica para retroceder
-                   Logger.Info("Retrocediendo...");
+                    Logger.Info("Retrocediendo...");
                     ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_default_config.ini"));
                 }
 
@@ -104,7 +103,7 @@ namespace Alis.App.Engine.Menus
                 if (ImGui.Button($"{FontAwesome5.ArrowRight}"))
                 {
                     // Lógica para avanzar
-                   Logger.Info("Avanzando...");
+                    Logger.Info("Avanzando...");
                     ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_tall_config.ini"));
                 }
 
@@ -167,19 +166,19 @@ namespace Alis.App.Engine.Menus
                 ImGui.SameLine(controlOffset);
                 if (ImGui.Button($"{FontAwesome5.Play}"))
                 {
-                   Logger.Info("Ejecutando juego...");
+                    Logger.Info("Ejecutando juego...");
                 }
 
                 ImGui.SameLine();
                 if (ImGui.Button($"{FontAwesome5.Pause}"))
                 {
-                   Logger.Info("Pausando juego...");
+                    Logger.Info("Pausando juego...");
                 }
 
                 ImGui.SameLine();
                 if (ImGui.Button($"{FontAwesome5.Stop}"))
                 {
-                   Logger.Info("Deteniendo juego...");
+                    Logger.Info("Deteniendo juego...");
                 }
 
                 ImGui.SameLine();
@@ -189,7 +188,7 @@ namespace Alis.App.Engine.Menus
                 ImGui.SameLine(compileOffset);
                 if (ImGui.Button($"{FontAwesome5.Hammer}"))
                 {
-                   Logger.Info("Compilando proyecto...");
+                    Logger.Info("Compilando proyecto...");
                 }
 
                 // Selector de plataforma y modo de compilación
@@ -231,13 +230,13 @@ namespace Alis.App.Engine.Menus
 
                 if (ImGui.Button($"{FontAwesome5.Search}"))
                 {
-                   Logger.Info("Abriendo buscador...");
+                    Logger.Info("Abriendo buscador...");
                 }
 
                 ImGui.SameLine();
                 if (ImGui.Button($"{FontAwesome5.Cog}"))
                 {
-                   Logger.Info("Abriendo ajustes...");
+                    Logger.Info("Abriendo ajustes...");
                 }
 
                 ImGui.PopStyleColor(2);

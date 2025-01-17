@@ -613,14 +613,14 @@ namespace Alis.Core.Physic.Common.TextureTools
         internal class GeomPoly
         {
             /// <summary>
-            ///     The length
-            /// </summary>
-            public int Length;
-
-            /// <summary>
             ///     The points
             /// </summary>
             public readonly CxFastList<Vector2F> Points;
+
+            /// <summary>
+            ///     The length
+            /// </summary>
+            public int Length;
 
             /// <summary>
             ///     Initializes a new instance of the <see cref="GeomPoly" /> class

@@ -72,10 +72,10 @@ namespace Alis.Extension.Language.Dialogue
                 return;
             }
 
-           Logger.Info(dialog.Text);
+            Logger.Info(dialog.Text);
             for (int i = 0; i < dialog.Options.Count; i++)
             {
-               Logger.Info($"{i + 1}. {dialog.Options[i].Text}");
+                Logger.Info($"{i + 1}. {dialog.Options[i].Text}");
             }
 
             // Assuming user input for example purposes

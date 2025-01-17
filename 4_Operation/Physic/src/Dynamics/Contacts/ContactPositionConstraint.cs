@@ -38,6 +38,11 @@ namespace Alis.Core.Physic.Dynamics.Contacts
     public sealed class ContactPositionConstraint
     {
         /// <summary>
+        ///     The max manifold points
+        /// </summary>
+        public readonly Vector2F[] LocalPoints = new Vector2F[SettingEnv.MaxManifoldPoints];
+
+        /// <summary>
         ///     The index
         /// </summary>
         public int IndexA;
@@ -71,11 +76,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         ///     The local point
         /// </summary>
         public Vector2F LocalPoint;
-
-        /// <summary>
-        ///     The max manifold points
-        /// </summary>
-        public readonly Vector2F[] LocalPoints = new Vector2F[SettingEnv.MaxManifoldPoints];
 
         /// <summary>
         ///     The point count
