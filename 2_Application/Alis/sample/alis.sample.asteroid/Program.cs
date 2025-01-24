@@ -77,6 +77,8 @@ namespace Alis.Sample.Asteroid
                 .World(sceneManager => sceneManager
                     .Add<Scene>(gameScene => gameScene
                         .Name("Main Scene")
+                        
+                        // CAMERA
                         .Add<GameObject>(mainCamera => mainCamera
                             .Name("Camera")
                             .WithTag("Camera")
@@ -86,6 +88,31 @@ namespace Alis.Sample.Asteroid
                                 .BackgroundColor(Color.Black)
                                 .Build())
                             .Build())
+                        
+                        // SPAWN POINT ASTEROID
+                        .Add<GameObject>(spawnPointAsteroid => spawnPointAsteroid
+                            .Name("Spawn Point Asteroid")
+                            .Transform(transform => transform
+                                .Position(0, 0)
+                                .Scale(1, 1)
+                                .Rotation(0)
+                                .Build())
+                            .AddComponent(new SpawnAsteroid())
+                            .Build())
+                        
+                        // ASTEROID
+                        .Add<GameObject>(asteroid => asteroid
+                            .Transform(transform => transform
+                                .Position(5, 5)
+                                .Scale(3, 3)
+                                .Rotation(0)
+                                .Build())
+                            .AddComponent<Sprite>(sprite => sprite.Builder()
+                                .SetTexture("asteroid_0.bmp")
+                                .Build())
+                            .Build())
+                        
+                        // SOUNDTRACK
                         .Add<GameObject>(soundTrack => soundTrack
                             .Name("Soundtrack")
                             .AddComponent<AudioSource>(audioSource => audioSource
@@ -97,11 +124,13 @@ namespace Alis.Sample.Asteroid
                                     .Build())
                                 .Build())
                             .Build())
+                        
+                        // PLAYER
                         .Add<GameObject>(player => player
                             .Name("Player 1")
                             .Transform(transform => transform
                                 .Position(0, 0)
-                                .Scale(1, 1)
+                                .Scale(1f, 1f)
                                 .Rotation(0)
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite.Builder()

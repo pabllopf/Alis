@@ -5,4 +5,7 @@
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/</OutDir>
         <OutDir Condition="($(AssemblyName.Contains('Sample')) OR $(AssemblyName.Contains('App'))) AND $(AssemblyName.Contains('Test')) == false">bin/$(Configuration)/$(RuntimeIdentifier)/lib/</OutDir>
     </PropertyGroup>
+    <ItemGroup>
+      <Folder Include="Assets\Enemy\" />
+    </ItemGroup>
 </Project>
