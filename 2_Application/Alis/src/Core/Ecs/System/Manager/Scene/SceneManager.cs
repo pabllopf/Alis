@@ -91,7 +91,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
             {
                 ScenesMap.Scenes.Add(i);
             }
-
+            
             ScenesMap = ScenesMap.Load();
 
             string versionCurrent = Assembly.GetExecutingAssembly().GetName().Version.ToString().Replace('.', '_');
@@ -113,27 +113,6 @@ namespace Alis.Core.Ecs.System.Manager.Scene
                     }
 
                     File.WriteAllText(file, gameJson);
-                }
-                else
-                {
-                    Entity.Scene sceneLoaded = JsonSerializer.Deserialize<Entity.Scene>(File.ReadAllText(file), new JsonOptions
-                    {
-                        DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
-                        SerializationOptions = JsonSerializationOptions.Default
-                    });
-
-                    if (i < Scenes.Count)
-                    {
-                        Scenes[i] = sceneLoaded;
-                    }
-                    else
-                    {
-                        Scenes.Add(JsonSerializer.Deserialize<Entity.Scene>(File.ReadAllText(file), new JsonOptions
-                        {
-                            DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
-                            SerializationOptions = JsonSerializationOptions.Default
-                        }));
-                    }
                 }
 
                 Scenes[i].SetContext(Context);
