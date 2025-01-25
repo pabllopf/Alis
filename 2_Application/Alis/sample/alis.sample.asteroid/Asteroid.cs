@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SpawnAsteroid.cs
+//  File:Asteroid.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,18 +27,54 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Audio;
 using Alis.Core.Ecs.Component;
+using Alis.Core.Ecs.Component.Collider;
+using Alis.Core.Ecs.Entity;
 
 namespace Alis.Sample.Asteroid
 {
-    public class SpawnAsteroid : AComponent
+    public class Asteroid : AComponent
     {
-        public override void OnStart()
-        {
-            
+        private BoxCollider rb;
+        public float speed;
+
+        public GameObject[] subAsteroids;
+        public int numberOfAsteroids;
+        
+        private static readonly Random random = new Random();
+
+        // Start is called before the first frame update
+        private void Start () {
+            rb = this.GameObject.Get<BoxCollider>();
+
+
+            rb.Body.LinearVelocity = new Vector2F(
+                (float) (random.NextDouble() * 2 - 1),
+                (float) (random.NextDouble() * 2 - 1)
+            );
+            rb.Body.LinearVelocity.Normalize();
+            rb.Body.LinearVelocity *= speed;
+
+            rb.AngularVelocity = (float)(random.NextDouble() * 100 - 50);
         }
 
-        public override void OnUpdate()
+        public override void OnCollisionEnter(GameObject gameObject)
+        {
+            if (gameObject.Tag == "Bullet")
+            {
+                
+            }
+            
+            if (gameObject.Tag == "Player")
+            {
+            }
+        }
+
+        public override void OnCollisionExit(GameObject gameObject)
         {
             
         }

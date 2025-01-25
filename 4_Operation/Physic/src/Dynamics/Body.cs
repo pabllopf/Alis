@@ -113,7 +113,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The linear velocity
         /// </summary>
-        internal Vector2F LinearVelocity;
+        internal Vector2F LinearVelocityInternal;
 
         /// <summary>
         ///     The lock
@@ -238,7 +238,7 @@ namespace Alis.Core.Physic.Dynamics
 
                 if (_bodyType == BodyType.Static)
                 {
-                    LinearVelocity = Vector2F.Zero;
+                    LinearVelocityInternal = Vector2F.Zero;
                     AngularVelocity = 0.0f;
                     Sweep.A0 = Sweep.A;
                     Sweep.C0 = Sweep.C;
@@ -278,7 +278,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     bodies.
         /// </summary>
         /// <value>The linear velocity.</value>
-        public Vector2F GetLinearVelocity
+        public Vector2F LinearVelocity
         {
             set
             {
@@ -294,9 +294,9 @@ namespace Alis.Core.Physic.Dynamics
                     Awake = true;
                 }
 
-                LinearVelocity = value;
+                LinearVelocityInternal = value;
             }
-            get => LinearVelocity;
+            get => LinearVelocityInternal;
         }
 
         /// <summary>
@@ -582,7 +582,7 @@ namespace Alis.Core.Physic.Dynamics
 
                 // Update center of mass velocity.
                 Vector2F a = Sweep.C - oldCenter;
-                LinearVelocity += new Vector2F(-AngularVelocity * a.Y, AngularVelocity * a.X);
+                LinearVelocityInternal += new Vector2F(-AngularVelocity * a.Y, AngularVelocity * a.X);
             }
         }
 
@@ -706,7 +706,7 @@ namespace Alis.Core.Physic.Dynamics
             Torque = 0;
             AngularVelocity = 0;
             Force = Vector2F.Zero;
-            LinearVelocity = Vector2F.Zero;
+            LinearVelocityInternal = Vector2F.Zero;
         }
 
         /// <summary>
@@ -1035,7 +1035,7 @@ namespace Alis.Core.Physic.Dynamics
                 Awake = true;
             }
 
-            LinearVelocity += InvMass * impulse;
+            LinearVelocityInternal += InvMass * impulse;
         }
 
         /// <summary>
@@ -1058,7 +1058,7 @@ namespace Alis.Core.Physic.Dynamics
                 Awake = true;
             }
 
-            LinearVelocity += InvMass * impulse;
+            LinearVelocityInternal += InvMass * impulse;
             AngularVelocity += InvI * ((point.X - Sweep.C.X) * impulse.Y - (point.Y - Sweep.C.Y) * impulse.X);
         }
 
@@ -1162,7 +1162,7 @@ namespace Alis.Core.Physic.Dynamics
 
             // Update center of mass velocity.
             Vector2F a = Sweep.C - oldCenter;
-            LinearVelocity += new Vector2F(-AngularVelocity * a.Y, AngularVelocity * a.X);
+            LinearVelocityInternal += new Vector2F(-AngularVelocity * a.Y, AngularVelocity * a.X);
         }
 
         /// <summary>
@@ -1237,7 +1237,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="worldPoint">A point in world coordinates.</param>
         /// <returns>The world velocity of a point.</returns>
-        public Vector2F GetLinearVelocityFromWorldPoint(ref Vector2F worldPoint) => LinearVelocity +
+        public Vector2F GetLinearVelocityFromWorldPoint(ref Vector2F worldPoint) => LinearVelocityInternal +
                                                                                     new Vector2F(-AngularVelocity * (worldPoint.Y - Sweep.C.Y),
                                                                                         AngularVelocity * (worldPoint.X - Sweep.C.X));
 
@@ -1428,7 +1428,7 @@ namespace Alis.Core.Physic.Dynamics
             world = world ?? GetWorld;
             Body body = world.CreateBody(Position, Rotation);
             body._bodyType = _bodyType;
-            body.LinearVelocity = LinearVelocity;
+            body.LinearVelocityInternal = LinearVelocityInternal;
             body.AngularVelocity = AngularVelocity;
             body.Tag = Tag;
             body.Enabled = Enabled;

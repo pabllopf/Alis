@@ -167,7 +167,7 @@ namespace Alis.Core.Physic.Common
             _writer.WriteElementString("Bullet", body.IsBullet.ToString());
             _writer.WriteElementString("FixedRotation", body.FixedRotation.ToString());
             WriteElement("LinearDamping", body.LinearDamping);
-            WriteElement("LinearVelocity", body.GetLinearVelocity);
+            WriteElement("LinearVelocity", body.LinearVelocity);
             WriteElement("Position", body.Position);
 
             if (body.Tag != null)
