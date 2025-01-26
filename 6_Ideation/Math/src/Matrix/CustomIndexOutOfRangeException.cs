@@ -31,12 +31,23 @@ using System;
 
 namespace Alis.Core.Aspect.Math.Matrix
 {
+    /// <summary>
+    /// The custom index out of range exception class
+    /// </summary>
+    /// <seealso cref="Exception"/>
     public class CustomIndexOutOfRangeException : Exception
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CustomIndexOutOfRangeException"/> class
+        /// </summary>
         public CustomIndexOutOfRangeException()
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CustomIndexOutOfRangeException"/> class
+        /// </summary>
+        /// <param name="invalidMatrixIndex">The invalid matrix index</param>
         public CustomIndexOutOfRangeException(string invalidMatrixIndex) : base(invalidMatrixIndex)
         {
         }

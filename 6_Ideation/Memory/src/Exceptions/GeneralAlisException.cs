@@ -31,12 +31,23 @@ using System;
 
 namespace Alis.Core.Aspect.Memory.Exceptions
 {
+    /// <summary>
+    /// The general alis exception class
+    /// </summary>
+    /// <seealso cref="Exception"/>
     public class GeneralAlisException : Exception
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GeneralAlisException"/> class
+        /// </summary>
         public GeneralAlisException()
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GeneralAlisException"/> class
+        /// </summary>
+        /// <param name="message">The message</param>
         public GeneralAlisException(string message) : base(message)
         {
         }
