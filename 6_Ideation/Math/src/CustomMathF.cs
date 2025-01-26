@@ -210,5 +210,28 @@ namespace Alis.Core.Aspect.Math
         /// <param name="y4">The </param>
         /// <returns>The float</returns>
         public static float Min(float y3, float y4) => y3 <= y4 ? y3 : y4;
+
+       /// <summary>
+       /// Clamps the value
+       /// </summary>
+       /// <param name="value">The value</param>
+       /// <param name="min">The min</param>
+       /// <param name="max">The max</param>
+       /// <returns>The float</returns>
+       public static float Clamp(float value, float min, float max)
+       {
+           if (value < min)
+           {
+               return min;
+           }
+           else if (value > max)
+           {
+               return max;
+           }
+           else
+           {
+               return value;
+           }
+       }
     }
 }

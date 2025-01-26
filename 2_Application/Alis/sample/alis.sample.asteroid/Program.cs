@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Definition;
+using Alis.Core.Audio;
 using Alis.Core.Ecs.Component.Audio;
 using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
@@ -35,7 +36,7 @@ using Alis.Core.Ecs.Entity;
 using Alis.Core.Ecs.System;
 using Alis.Core.Physic.Dynamics;
 
-namespace Alis.Sample.Pong
+namespace Alis.Sample.Asteroid
 {
     /// <summary>
     ///     The program class
@@ -52,9 +53,9 @@ namespace Alis.Sample.Pong
                 .Create()
                 .Settings(setting => setting
                     .General(general => general
-                        .Name("Pong")
+                        .Name("Asteroids")
                         .Author("Pablo Perdomo Falcón")
-                        .Description("Pong game")
+                        .Description("Asteroids game")
                         .License("GNU General Public License v3.0")
                         .Icon("app.bmp")
                         .Build())
@@ -62,10 +63,10 @@ namespace Alis.Sample.Pong
                         .Build())
                     .Graphic(graphic => graphic
                         .Window(window => window
-                            .Resolution(1024, 640)
-                            .IsResizable(false)
+                            .IsResizable(true)
                             .Background(Color.Black)
                             .Build())
+                        .FrameRate(60)
                         .Build())
                     .Physic(physic => physic
                         .Gravity(0.0f, -9.8f)
@@ -75,6 +76,7 @@ namespace Alis.Sample.Pong
                     .Build())
                 .World(sceneManager => sceneManager
                     .Add<Scene>(gameScene => gameScene
+                        .Name("Main Scene")
                         .Add<GameObject>(mainCamera => mainCamera
                             .Name("Camera")
                             .WithTag("Camera")
@@ -98,162 +100,29 @@ namespace Alis.Sample.Pong
                         .Add<GameObject>(player => player
                             .Name("Player 1")
                             .Transform(transform => transform
-                                .Position(-15, 0)
-                                .Scale(1, 1)
-                                .Rotation(0)
-                                .Build())
-                            .AddComponent<BoxCollider>(boxCollider => boxCollider
-                                .Builder()
-                                .IsActive(true)
-                                .BodyType(BodyType.Kinematic)
-                                .IsTrigger(false)
-                                .AutoTilling(false)
-                                .Size(0.5f, 2.5f)
-                                .Rotation(0.0f)
-                                .RelativePosition(0, 0)
-                                .Mass(10.0f)
-                                .Restitution(1f)
-                                .Friction(0f)
-                                .FixedRotation(true)
-                                .IgnoreGravity(true)
-                                .Build())
-                            .AddComponent(new PlayerController(1))
-                            .Build())
-                        .Add<GameObject>(player => player
-                            .Name("Player 2")
-                            .Transform(transform => transform
-                                .Position(15, 0)
-                                .Scale(1, 1)
-                                .Rotation(0)
-                                .Build())
-                            .AddComponent<BoxCollider>(boxCollider => boxCollider
-                                .Builder()
-                                .IsActive(true)
-                                .BodyType(BodyType.Kinematic)
-                                .IsTrigger(false)
-                                .AutoTilling(false)
-                                .Size(0.5f, 2.5f)
-                                .Rotation(0.0f)
-                                .RelativePosition(0, 0)
-                                .Mass(10.0f)
-                                .Restitution(1.0f)
-                                .Friction(0f)
-                                .FixedRotation(true)
-                                .IgnoreGravity(true)
-                                .Build())
-                            .AddComponent(new PlayerController(2))
-                            .Build())
-                        .Add<GameObject>(ball => ball
-                            .Name("Ball")
-                            .Transform(transform => transform
                                 .Position(0, 0)
                                 .Scale(1, 1)
                                 .Rotation(0)
+                                .Build())
+                            .AddComponent<Sprite>(sprite => sprite.Builder()
+                                .SetTexture("player.bmp")
+                                .Depth(1)
                                 .Build())
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
                                 .BodyType(BodyType.Dynamic)
                                 .IsTrigger(false)
-                                .AutoTilling(false)
+                                .AutoTilling(true)
+                                .Rotation(0.0f)
                                 .Size(1, 1)
-                                .Rotation(0.0f)
-                                .RelativePosition(0, 0)
-                                .LinearVelocity(-5.5f, -5)
-                                .Mass(10.0f)
-                                .Restitution(1.0f)
+                                .Mass(1.0f)
+                                .Restitution(0.0f)
                                 .Friction(0f)
-                                .FixedRotation(true)
+                                .FixedRotation(false)
                                 .IgnoreGravity(true)
                                 .Build())
-                            .Build())
-                        .Add<GameObject>(downWall => downWall
-                            .Name("downWall")
-                            .IsStatic()
-                            .Transform(transform => transform
-                                .Position(0, -10)
-                                .Build())
-                            .AddComponent<BoxCollider>(boxCollider => boxCollider
-                                .Builder()
-                                .IsActive(true)
-                                .BodyType(BodyType.Static)
-                                .IsTrigger(false)
-                                .AutoTilling(false)
-                                .Size(32, 1)
-                                .Rotation(0.0f)
-                                .RelativePosition(0, 0)
-                                .Mass(10.0f)
-                                .Restitution(0.0f)
-                                .Friction(0.1f)
-                                .FixedRotation(true)
-                                .IgnoreGravity(true)
-                                .Build())
-                            .Build())
-                        .Add<GameObject>(upWall => upWall
-                            .Name("upWall")
-                            .IsStatic()
-                            .Transform(transform => transform
-                                .Position(0, 10)
-                                .Build())
-                            .AddComponent<BoxCollider>(boxCollider => boxCollider
-                                .Builder()
-                                .IsActive(true)
-                                .BodyType(BodyType.Static)
-                                .IsTrigger(false)
-                                .AutoTilling(false)
-                                .Size(32, 1)
-                                .Rotation(0.0f)
-                                .RelativePosition(0, 0)
-                                .Mass(10.0f)
-                                .Restitution(0.0f)
-                                .Friction(0.1f)
-                                .FixedRotation(true)
-                                .IgnoreGravity(true)
-                                .Build())
-                            .Build())
-                        .Add<GameObject>(leftWall => leftWall
-                            .Name("leftWall")
-                            .IsStatic()
-                            .Transform(transform => transform
-                                .Position(-16, 0)
-                                .Build())
-                            .AddComponent<BoxCollider>(boxCollider => boxCollider
-                                .Builder()
-                                .IsActive(true)
-                                .BodyType(BodyType.Static)
-                                .IsTrigger(false)
-                                .AutoTilling(false)
-                                .Size(1, 20)
-                                .Rotation(0.0f)
-                                .RelativePosition(0, 0)
-                                .Mass(10.0f)
-                                .Restitution(0.0f)
-                                .Friction(0.1f)
-                                .FixedRotation(true)
-                                .IgnoreGravity(true)
-                                .Build())
-                            .Build())
-                        .Add<GameObject>(rightWall => rightWall
-                            .Name("rightWall")
-                            .IsStatic()
-                            .Transform(transform => transform
-                                .Position(16, 0)
-                                .Build())
-                            .AddComponent<BoxCollider>(boxCollider => boxCollider
-                                .Builder()
-                                .IsActive(true)
-                                .BodyType(BodyType.Static)
-                                .IsTrigger(false)
-                                .AutoTilling(false)
-                                .Size(1, 20)
-                                .Rotation(0.0f)
-                                .RelativePosition(0, 0)
-                                .Mass(10.0f)
-                                .Restitution(0.0f)
-                                .Friction(0.1f)
-                                .FixedRotation(true)
-                                .IgnoreGravity(true)
-                                .Build())
+                            .AddComponent(new PlayerMovement())
                             .Build())
                         .Build())
                     .Build())
