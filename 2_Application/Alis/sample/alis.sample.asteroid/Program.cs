@@ -104,7 +104,7 @@ namespace Alis.Sample.Asteroid
                         .Add<GameObject>(asteroid => asteroid
                             .Transform(transform => transform
                                 .Position(5, 5)
-                                .Scale(3, 3)
+                                .Scale(2, 2)
                                 .Rotation(0)
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite.Builder()

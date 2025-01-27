@@ -209,7 +209,7 @@ namespace Alis.Core.Physic.Dynamics
 
                 Vector2F c = b.Sweep.C;
                 float a = b.Sweep.A;
-                Vector2F v = b.LinearVelocity;
+                Vector2F v = b.LinearVelocityInternal;
                 float w = b.AngularVelocity;
 
                 // Store positions for continuous collision.
@@ -400,7 +400,7 @@ namespace Alis.Core.Physic.Dynamics
                 Body body = Bodies[i];
                 body.Sweep.C = Positions[i].C;
                 body.Sweep.A = Positions[i].A;
-                body.LinearVelocity = Velocities[i].V;
+                body.LinearVelocityInternal = Velocities[i].V;
                 body.AngularVelocity = Velocities[i].W;
                 body.SynchronizeTransform();
             }
@@ -420,7 +420,7 @@ namespace Alis.Core.Physic.Dynamics
                         continue;
                     }
 
-                    if (!b.SleepingAllowed || b.AngularVelocity * b.AngularVelocity > AngTolSqr || Vector2F.Dot(b.LinearVelocity, b.LinearVelocity) > LinTolSqr)
+                    if (!b.SleepingAllowed || b.AngularVelocity * b.AngularVelocity > AngTolSqr || Vector2F.Dot(b.LinearVelocityInternal, b.LinearVelocityInternal) > LinTolSqr)
                     {
                         b.SleepTime = 0.0f;
                         minSleepTime = 0.0f;
@@ -460,7 +460,7 @@ namespace Alis.Core.Physic.Dynamics
                 Body b = Bodies[i];
                 Positions[i].C = b.Sweep.C;
                 Positions[i].A = b.Sweep.A;
-                Velocities[i].V = b.LinearVelocity;
+                Velocities[i].V = b.LinearVelocityInternal;
                 Velocities[i].W = b.AngularVelocity;
             }
 
@@ -534,7 +534,7 @@ namespace Alis.Core.Physic.Dynamics
                 Body body = Bodies[i];
                 body.Sweep.C = c;
                 body.Sweep.A = a;
-                body.LinearVelocity = v;
+                body.LinearVelocityInternal = v;
                 body.AngularVelocity = w;
                 body.SynchronizeTransform();
             }

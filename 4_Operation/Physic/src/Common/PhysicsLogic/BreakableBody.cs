@@ -211,7 +211,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
             //Cache the linear and angular velocities.
             for (int i = 0; i < Parts.Count; i++)
             {
-                _velocitiesCache[i] = Parts[i].GetBody.GetLinearVelocity;
+                _velocitiesCache[i] = Parts[i].GetBody.LinearVelocity;
                 _angularVelocitiesCache[i] = Parts[i].GetBody.AngularVelocity;
             }
         }
@@ -247,7 +247,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                 Parts[i] = newFixture;
 
                 body.AngularVelocity = _angularVelocitiesCache[i];
-                body.GetLinearVelocity = _velocitiesCache[i];
+                body.LinearVelocity = _velocitiesCache[i];
             }
 
             World.Remove(MainBody);

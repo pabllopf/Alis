@@ -355,7 +355,7 @@ namespace Alis.Core.Physic.Common
                                     body.LinearDamping = ParseFloat(sn.Value);
                                     break;
                                 case "linearvelocity":
-                                    body.GetLinearVelocity = ReadVector(sn);
+                                    body.LinearVelocity = ReadVector(sn);
                                     break;
                                 case "position":
                                 {

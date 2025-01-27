@@ -232,7 +232,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                     {
                         Body firstFixture = world.CreatePolygon(first, fixtures[i].GetShape.GetDensity, fixtures[i].GetBody.Position);
                         firstFixture.Rotation = fixtures[i].GetBody.Rotation;
-                        firstFixture.GetLinearVelocity = fixtures[i].GetBody.GetLinearVelocity;
+                        firstFixture.LinearVelocity = fixtures[i].GetBody.LinearVelocity;
                         firstFixture.AngularVelocity = fixtures[i].GetBody.AngularVelocity;
                         firstFixture.GetBodyType = BodyType.Dynamic;
                     }
@@ -241,7 +241,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                     {
                         Body secondFixture = world.CreatePolygon(second, fixtures[i].GetShape.GetDensity, fixtures[i].GetBody.Position);
                         secondFixture.Rotation = fixtures[i].GetBody.Rotation;
-                        secondFixture.GetLinearVelocity = fixtures[i].GetBody.GetLinearVelocity;
+                        secondFixture.LinearVelocity = fixtures[i].GetBody.LinearVelocity;
                         secondFixture.AngularVelocity = fixtures[i].GetBody.AngularVelocity;
                         secondFixture.GetBodyType = BodyType.Dynamic;
                     }

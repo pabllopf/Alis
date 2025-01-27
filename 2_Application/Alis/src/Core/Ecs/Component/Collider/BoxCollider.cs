@@ -248,7 +248,7 @@ namespace Alis.Core.Ecs.Component.Collider
             Body.SleepingAllowed = false;
             Body.IsBullet = true;
             Body.IgnoreGravity = IgnoreGravity;
-            Body.GetLinearVelocity = LinearVelocity;
+            Body.LinearVelocity = LinearVelocity;
             Body.Awake = true;
             Body.SetIsSensor(IsTrigger);
             Body.Tag = GameObject;

@@ -317,8 +317,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 Vector2F d = p2 - p1;
                 Vector2F axis = BodyA.GetWorldVector(ref _localXAxis);
 
-                Vector2F v1 = BodyA.LinearVelocity;
-                Vector2F v2 = BodyB.LinearVelocity;
+                Vector2F v1 = BodyA.LinearVelocityInternal;
+                Vector2F v2 = BodyB.LinearVelocityInternal;
                 float w1 = BodyA.AngularVelocity;
                 float w2 = BodyB.AngularVelocity;
 

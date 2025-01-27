@@ -183,7 +183,7 @@ namespace Alis.Core.Physic.Common
             Vector2F positionDelta = body.Position - destination;
             Vector2F velocity = positionDelta / timeStep * strength;
 
-            body.GetLinearVelocity = -velocity;
+            body.LinearVelocity = -velocity;
         }
 
         /// <summary>

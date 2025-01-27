@@ -101,7 +101,7 @@ namespace Alis.Sample.King.Platform
         {
             if (key == KeyCodes.A || key == KeyCodes.D)
             {
-                boxCollider.Body.GetLinearVelocity = new Vector2F(0, boxCollider.Body.GetLinearVelocity.Y);
+                boxCollider.Body.LinearVelocity = new Vector2F(0, boxCollider.Body.LinearVelocity.Y);
             }
         }
 
@@ -118,12 +118,12 @@ namespace Alis.Sample.King.Platform
 
             if (key == KeyCodes.A)
             {
-                boxCollider.Body.GetLinearVelocity = new Vector2F(-VelocityPlayer, boxCollider.Body.GetLinearVelocity.Y);
+                boxCollider.Body.LinearVelocity = new Vector2F(-VelocityPlayer, boxCollider.Body.LinearVelocity.Y);
             }
 
             if (key == KeyCodes.D)
             {
-                boxCollider.Body.ApplyLinearImpulse(new Vector2F(VelocityPlayer, boxCollider.Body.GetLinearVelocity.Y));
+                boxCollider.Body.ApplyLinearImpulse(new Vector2F(VelocityPlayer, boxCollider.Body.LinearVelocity.Y));
             }
         }
     }
