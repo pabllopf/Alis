@@ -287,5 +287,6 @@ namespace Alis.Core.Ecs.Component
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public virtual void OnTriggerStay(GameObject gameObject) => Logger.Trace();
+        
     }
 }

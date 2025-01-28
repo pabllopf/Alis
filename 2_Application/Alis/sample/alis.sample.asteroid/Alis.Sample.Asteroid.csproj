@@ -7,5 +7,13 @@
     </PropertyGroup>
     <ItemGroup>
       <Folder Include="Assets\Enemy\" />
+      <Folder Include="Assets\Sounds\" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Update="Assets\Logo\app.bmp">
+        <LinkBase>Assets/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
     </ItemGroup>
 </Project>
