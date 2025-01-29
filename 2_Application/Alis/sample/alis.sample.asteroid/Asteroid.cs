@@ -61,6 +61,7 @@ namespace Alis.Sample.Asteroid
            if (health <= 0)
            {
                SpawnSubAsteroids();
+               GameObject.Context.SceneManager.CurrentScene.GetByTag("Points").Get<CounterManager>().Increment();
                this.GameObject.Context.SceneManager.DestroyGameObject(this.GameObject);
            }
         }
@@ -114,14 +115,30 @@ namespace Alis.Sample.Asteroid
                             .IgnoreGravity(true)
                             .Build());
                     }
-                    
-                    
-                   subAsteroid.Add(new Sprite().Builder()
-                       .SetTexture("asteroid_0.bmp")
-                       .Depth(1)
-                       .Build());
-                   
-                   subAsteroid.Add(new Asteroid());
+
+                    if (i == 0)
+                    {
+                        // generete a random number between 0 and 3
+                        int randomAsteroid = random.Next(0, 3);
+
+
+                        subAsteroid.Add(new Sprite().Builder()
+                            .SetTexture($"asteroid_{randomAsteroid}.bmp")
+                            .Depth(1)
+                            .Build());
+                    }
+                    else
+                    {
+                        // generete a random number between 0 and 3
+                        int randomAsteroid = random.Next(0, 3);
+                        
+                        subAsteroid.Add(new Sprite().Builder()
+                            .SetTexture($"asteroid_{randomAsteroid}.bmp")
+                            .Depth(1)
+                            .Build());
+                    }
+
+                    subAsteroid.Add(new Asteroid());
                    
                    Context.SceneManager.CurrentScene.Add(subAsteroid);
                }

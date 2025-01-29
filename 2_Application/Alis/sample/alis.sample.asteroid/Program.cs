@@ -64,6 +64,7 @@ namespace Alis.Sample.Asteroid
                     .Graphic(graphic => graphic
                         .Window(window => window
                             .IsResizable(true)
+                            .Resolution(1024, 640)
                             .Background(Color.Black)
                             .Build())
                         .FrameRate(60)
@@ -98,6 +99,24 @@ namespace Alis.Sample.Asteroid
                                 .Rotation(0)
                                 .Build())
                             .AddComponent(new SpawnAsteroid())
+                            .Build())
+                        
+                        .Add<GameObject>(counterPoints => counterPoints
+                            .Name("Counter")
+                            .WithTag("Points")
+                            .AddComponent(new CounterManager())
+                            .Build())
+                        
+                        .Add<GameObject>(counterPoints => counterPoints
+                            .Name("HealthController")
+                            .WithTag("UI")
+                            .AddComponent(new HealthController())
+                            .Build())
+                        
+                        .Add<GameObject>(counterPoints => counterPoints
+                            .Name("TimeController")
+                            .WithTag("UI")
+                            .AddComponent(new TimerController())
                             .Build())
                         
                         // SOUNDTRACK
