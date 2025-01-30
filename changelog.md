@@ -5,6 +5,41 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.6.0] - 2025-02-01
+### :sparkles: New Features
+- [`8c16c7a`](https://github.com/pabllopf/Alis/commit/8c16c7a2d7fc3816f71ae32774c2dccfb818a5c6) - add new sample of classic game asteroid *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ebe04c7`](https://github.com/pabllopf/Alis/commit/ebe04c7db19b953b3267d60d4e0e62704c1ab449) - basic move space ship *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bd4100d`](https://github.com/pabllopf/Alis/commit/bd4100d301dbcb1063fc88888de059da7272ddc5) - add new assets to astroid game *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c6c9e59`](https://github.com/pabllopf/Alis/commit/c6c9e5935abe056b7f48de65ee93ef3dce2b90bb) - basic game asteroid *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4c8c3d4`](https://github.com/pabllopf/Alis/commit/4c8c3d4c744ec60204445a04f2f4c6cc8693b6ed) - add counter points and timer *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6fd73a2`](https://github.com/pabllopf/Alis/commit/6fd73a2f2985b886ef347c50a9372b25224db941) - complete the asteroid game *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`770c563`](https://github.com/pabllopf/Alis/commit/770c563419ed2fce0a84889d777630b7de7a7e38) - add the game over on astroids game *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`6c13b4b`](https://github.com/pabllopf/Alis/commit/6c13b4bd16e93e5ad6e5149036f9140d2e6d72c1) - definition of readonly *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9149726`](https://github.com/pabllopf/Alis/commit/9149726607663a8b5bd7d13e07bf681308998899) - name on files Physic module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`380f4e5`](https://github.com/pabllopf/Alis/commit/380f4e54c0a1c2fb8b78a95c33970bf89972a505) - refactor name on Physic *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f2dc04c`](https://github.com/pabllopf/Alis/commit/f2dc04c383d34b4fd9ab4a73321d81c0db42df23) - names *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`37be247`](https://github.com/pabllopf/Alis/commit/37be247cfc75c8bb075fd1f1498bcd86a9e33361) - name Physic module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`dee3151`](https://github.com/pabllopf/Alis/commit/dee3151a385181545a47755b3ecab85f389f6606) - name class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6fb7e1e`](https://github.com/pabllopf/Alis/commit/6fb7e1ed3679299dc9bdcd35647328b61810194c) - name Physic names *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0b8588e`](https://github.com/pabllopf/Alis/commit/0b8588e3d7fec89dd8c6c09136944a37c99a3b75) - names of lists *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`70c0038`](https://github.com/pabllopf/Alis/commit/70c00380395c4e64a4744c10c1683c3f0d92010d) - names of Physic *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`07f9d51`](https://github.com/pabllopf/Alis/commit/07f9d51a4bf14e7f4f1c82c27e775894dc570dcf) - name files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`742fd72`](https://github.com/pabllopf/Alis/commit/742fd72767acb6da7df3ae0e7293d84878814023) - the Physic names *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6703c47`](https://github.com/pabllopf/Alis/commit/6703c4714a57948f4f71ea36618997eaf680d8e3) - refactor the names of vars *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`dc11eee`](https://github.com/pabllopf/Alis/commit/dc11eee9ad80c4f76df13398c9f0308f6b070544) - asteroid sprites *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`42622d5`](https://github.com/pabllopf/Alis/commit/42622d5136f39a63158cdbaffa8aa3ccfb915e7c) - name of linear velocity *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5b53be9`](https://github.com/pabllopf/Alis/commit/5b53be97f5fd4de4b9e4f51a67a331cd1b874601) - runtime identifier *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`f6df76b`](https://github.com/pabllopf/Alis/commit/f6df76bb78103ac2db7b8a6374e6e63714afe595) - add comments to exceltions *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :art: Code Style Changes
+- [`8508285`](https://github.com/pabllopf/Alis/commit/85082851bb6c00733b52f99469dd64ecf464c77a) - change names of Physic module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`749085b`](https://github.com/pabllopf/Alis/commit/749085b71967ee3b292e925955ecb0b5423096b2) - refactor the sln *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.5.9] - 2025-01-15
 ### :bug: Bug Fixes
 - [`6fd62df`](https://github.com/pabllopf/Alis/commit/6fd62df13d9f0e706f3bad934b88d4cd9d2e41c8) - NU1900 warning *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -3968,3 +4003,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.5.7]: https://github.com/pabllopf/Alis/compare/v0.5.6...v0.5.7
 [v0.5.8]: https://github.com/pabllopf/Alis/compare/v0.5.7...v0.5.8
 [v0.5.9]: https://github.com/pabllopf/Alis/compare/v0.5.8...v0.5.9
+[v0.6.0]: https://github.com/pabllopf/Alis/compare/v0.5.9...v0.6.0
