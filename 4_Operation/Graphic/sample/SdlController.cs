@@ -37,7 +37,6 @@ using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
-using Alis.Core.Graphic.Fonts;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Sdl = Alis.Core.Graphic.Sdl2.Sdl;
@@ -200,10 +199,6 @@ namespace Alis.Core.Graphic.Sample
 
             // Create a new texture from the image.
             IntPtr textureTile = Sdl.CreateTextureFromSurface(renderer, imageTilePtr);
-
-            FontManager fontManager = new FontManager(renderer, RendererFlips.None);
-            fontManager.LoadFont("MONO", 16, Color.Black, Color.White, $"{AppDomain.CurrentDomain.BaseDirectory}/Assets/MONO_V5.bmp");
-
             while (_running)
             {
                 Sdl.JoystickUpdate();
@@ -287,9 +282,7 @@ namespace Alis.Core.Graphic.Sample
                 Sdl.RenderCopy(renderer, textureTile, IntPtr.Zero, ref tileRectangleI);
 
                 Sdl.RenderDrawRects(renderer, new[] {rectBorder, rectFilled}, 2);
-
-                fontManager.RenderText("MONO", "Hello World", 40, 40);
-
+                
                 // draw a line
                 Sdl.SetRenderDrawColor(renderer, 255, 0, 0, 255);
                 Sdl.RenderDrawLine(renderer, 0, 0, 100, 100);

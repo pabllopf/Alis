@@ -62,7 +62,7 @@ namespace Alis.Sample.Asteroid
                         .Build())
                     .Graphic(graphic => graphic
                         .Window(window => window
-                            .IsResizable(true)
+                            .IsResizable(false)
                             .Resolution(1024, 640)
                             .Background(Color.Black)
                             .Build())
@@ -70,7 +70,7 @@ namespace Alis.Sample.Asteroid
                         .Build())
                     .Physic(physic => physic
                         .Gravity(0.0f, -9.8f)
-                        .Debug(true)
+                        .Debug(false)
                         .DebugColor(Color.Red)
                         .Build())
                     .Build())
@@ -108,13 +108,14 @@ namespace Alis.Sample.Asteroid
                         
                         .Add<GameObject>(counterPoints => counterPoints
                             .Name("HealthController")
-                            .WithTag("UI")
+                            .WithTag("HealthController")
                             .AddComponent(new HealthController())
                             .Build())
                         
                         // SOUNDTRACK
                         .Add<GameObject>(soundTrack => soundTrack
                             .Name("Soundtrack")
+                            .WithTag("Soundtrack")
                             .AddComponent<AudioSource>(audioSource => audioSource
                                 .Builder()
                                 .PlayOnAwake(true)
@@ -128,7 +129,8 @@ namespace Alis.Sample.Asteroid
                         
                         // PLAYER
                         .Add<GameObject>(player => player
-                            .Name("Player 1")
+                            .Name("Player")
+                            .WithTag("Player")
                             .Transform(transform => transform
                                 .Position(0, 0)
                                 .Scale(1.3f, 1.3f)

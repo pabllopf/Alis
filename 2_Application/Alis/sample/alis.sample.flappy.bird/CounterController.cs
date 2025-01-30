@@ -33,7 +33,7 @@ using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Component.Audio;
 using Alis.Core.Ecs.Entity;
-using Alis.Core.Graphic.Fonts;
+using Alis.Core.Ecs.System.Manager.Fonts;
 
 namespace Alis.Sample.Flappy.Bird
 {
