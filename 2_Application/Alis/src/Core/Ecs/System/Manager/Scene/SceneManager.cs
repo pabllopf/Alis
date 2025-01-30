@@ -32,6 +32,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using Alis.Core.Aspect.Data.Json;
+using Alis.Core.Ecs.Entity;
 using Alis.Core.Ecs.System.Scope;
 
 namespace Alis.Core.Ecs.System.Manager.Scene
@@ -352,6 +353,11 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         public void Remove<T>(T component) where T : Entity.Scene
         {
             Scenes.Remove(component);
+        }
+        
+        public void DestroyGameObject(GameObject gameObject)
+        {
+            CurrentScene.Remove(gameObject);
         }
 
         /// <summary>

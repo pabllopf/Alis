@@ -29,11 +29,14 @@
 
 using System;
 using System.Numerics;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Audio;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Component.Collider;
+using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
+using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Sample.Asteroid
 {
@@ -44,39 +47,120 @@ namespace Alis.Sample.Asteroid
 
         public GameObject[] subAsteroids;
         public int numberOfAsteroids;
-        
+        private int health = 3;
+
         private static readonly Random random = new Random();
-
-        // Start is called before the first frame update
-        private void Start () {
+        
+        public override void OnStart () 
+        {
             rb = this.GameObject.Get<BoxCollider>();
-
-
-            rb.Body.LinearVelocity = new Vector2F(
-                (float) (random.NextDouble() * 2 - 1),
-                (float) (random.NextDouble() * 2 - 1)
-            );
-            rb.Body.LinearVelocity.Normalize();
-            rb.Body.LinearVelocity *= speed;
-
-            rb.AngularVelocity = (float)(random.NextDouble() * 100 - 50);
         }
+        
+        public override void OnUpdate () 
+        {
+           if (health <= 0)
+           {
+               SpawnSubAsteroids();
+               this.GameObject.Context.SceneManager.DestroyGameObject(this.GameObject);
+           }
+        }
+        
+        private void SpawnSubAsteroids()
+           {
+               for (int i = 0; i < 2; i++)
+               {
+                   GameObject subAsteroid = new GameObject();
+                   subAsteroid.Name = $"SubAsteroid_{i}_{Context.TimeManager.FrameCount}";
+                   subAsteroid.Tag = "Asteroid";
+
+                    Transform parentTransform = new Transform();
+                    parentTransform.Position = this.GameObject.Transform.Position;
+                    parentTransform.Rotation = 0.0f;
+                    parentTransform.Scale = new Vector2F(2.0f, 2.0f);
+                    
+                    subAsteroid.Transform = parentTransform;
+                   
+                    if (i == 0)
+                    {
+                        subAsteroid.Add(new BoxCollider().Builder()
+                            .IsActive(true)
+                            .BodyType(BodyType.Dynamic)
+                            .IsTrigger(false)
+                            .AutoTilling(true)
+                            .Rotation(0.0f)
+                            .LinearVelocity(-3f, -1)
+                            .Size(0.7F, 0.7F)
+                            .Mass(1.0f)
+                            .Restitution(0.9f)
+                            .Friction(0.5f)
+                            .FixedRotation(true)
+                            .IgnoreGravity(true)
+                            .Build());
+                    }
+                    else
+                    {
+                        subAsteroid.Add(new BoxCollider().Builder()
+                            .IsActive(true)
+                            .BodyType(BodyType.Dynamic)
+                            .IsTrigger(false)
+                            .AutoTilling(true)
+                            .Rotation(0.0f)
+                            .LinearVelocity(3f, 1)
+                            .Size(0.7F, 0.7F)
+                            .Mass(1.0f)
+                            .Restitution(0.9f)
+                            .Friction(0.5f)
+                            .FixedRotation(true)
+                            .IgnoreGravity(true)
+                            .Build());
+                    }
+                    
+                    
+                   subAsteroid.Add(new Sprite().Builder()
+                       .SetTexture("asteroid_0.bmp")
+                       .Depth(1)
+                       .Build());
+                   
+                   subAsteroid.Add(new Asteroid());
+                   
+                   Context.SceneManager.CurrentScene.Add(subAsteroid);
+               }
+           }
 
         public override void OnCollisionEnter(GameObject gameObject)
         {
-            if (gameObject.Tag == "Bullet")
-            {
-                
-            }
-            
             if (gameObject.Tag == "Player")
             {
+                Console.WriteLine("Player Dead");
+            }
+
+            if (gameObject.Tag == "Asteroid" || gameObject.Tag == "Wall")
+            {
+                float xRandom = random.Next(-1, 2);
+                float yRandom = random.Next(-1, 2);
+
+                // Asegurarse de que el vector no sea cero
+                if (xRandom == 0 && yRandom == 0)
+                {
+                    xRandom = 1;
+                }
+
+                Vector2F newVelocity = new Vector2F(xRandom, yRandom);
+                newVelocity = Vector2F.Normalize(newVelocity) * 3.0f; 
+
+                rb.Body.LinearVelocity = newVelocity;
             }
         }
 
         public override void OnCollisionExit(GameObject gameObject)
         {
             
+        }
+
+        public void DecreaseHealth()
+        {
+            health -= 1;
+            Console.WriteLine("Asteroid health: " + health);
         }
     }
 }

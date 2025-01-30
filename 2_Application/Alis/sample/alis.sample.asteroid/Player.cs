@@ -1,9 +1,13 @@
 using System;
 using Alis.Core.Aspect.Data.Mapping;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Component.Collider;
+using Alis.Core.Ecs.Component.Render;
+using Alis.Core.Ecs.Entity;
 using Alis.Core.Ecs.System.Manager.Time;
+using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Sample.Asteroid
 {
@@ -11,7 +15,7 @@ namespace Alis.Sample.Asteroid
     /// The player movement class
     /// </summary>
     /// <seealso cref="AComponent"/>
-    public class PlayerMovement : AComponent
+    public class Player : AComponent
     {
         /// <summary>
         /// The box collider
@@ -42,7 +46,6 @@ namespace Alis.Sample.Asteroid
         public override void OnUpdate()
         {
             float targetRotationDegrees = CalculateRotationInDegrees(direction.X, direction.Y);
-            Console.WriteLine($"targetRotationDegrees: {targetRotationDegrees} direction: {direction}");
             boxCollider.Body.Rotation = targetRotationDegrees;
         }
 
@@ -83,25 +86,25 @@ namespace Alis.Sample.Asteroid
                 if (x > 0 && y > 0)
                 {
                     angle = 315;
-                    Console.WriteLine("angle: " + angle);
+                    //Console.WriteLine("angle: " + angle);
                 }
 
                 if (x < 0 && y > 0)
                 {
                     angle = 45;
-                    Console.WriteLine("angle: " + angle);
+                    //Console.WriteLine("angle: " + angle);
                 }
 
                 if (x < 0 && y < 0)
                 {
                     angle = 135;
-                    Console.WriteLine("angle: " + angle);
+                    //Console.WriteLine("angle: " + angle);
                 }
 
                 if (x > 0 && y < 0)
                 {
                     angle = 225;
-                    Console.WriteLine("angle: " + angle);
+                    //Console.WriteLine("angle: " + angle);
                 }
             }
 
@@ -147,10 +150,44 @@ namespace Alis.Sample.Asteroid
         /// <param name="key">The key</param>
         public override void OnPressKey(KeyCodes key)
         {
-
             if (key == KeyCodes.Space)
             {
-                Console.WriteLine("shoot");
+                GameObject bullet = new GameObject();
+                bullet.Name = $"Bullet_{Context.TimeManager.FrameCount}";
+        
+                Transform transform = bullet.Transform;
+                transform.Position = this.GameObject.Transform.Position; // Set the bullet's initial position to the player's position
+                transform.Scale = new Vector2F(0.25f, 0.25f);
+                bullet.Transform = transform;
+        
+                bullet.Add(new Sprite().Builder()
+                    .SetTexture("asteroid_0.bmp")
+                    .Depth(1)
+                    .Build());
+                
+                int bulletSpeed = 5;
+                Vector2F velo = new Vector2F(direction.X * bulletSpeed, direction.Y * bulletSpeed);
+                
+                bullet.Add(new BoxCollider()
+                    .Builder()
+                    .IsActive(true)
+                    .BodyType(BodyType.Dynamic)
+                    .IsTrigger(true)
+                    .AutoTilling(false)
+                    .Size(0.25F, 0.25F)
+                    .Rotation(0.0f)
+                    .RelativePosition(0, 0)
+                    .LinearVelocity(velo.X, velo.Y)
+                    .Mass(1.0f)
+                    .Restitution(1f)
+                    .Friction(0f)
+                    .FixedRotation(true)
+                    .IgnoreGravity(true)
+                    .Build());
+                
+                bullet.Add(new Bullet());
+                
+                Context.SceneManager.CurrentScene.Add(bullet);
             }
         }
 
