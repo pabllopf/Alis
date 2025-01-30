@@ -87,5 +87,11 @@ namespace Alis.Builder.Core.Ecs.Component.Audio
             audioSource.AudioClip = value.Invoke(new AudioClipBuilder());
             return this;
         }
+
+        public AudioSourceBuilder Loop(bool isLoop)
+        {
+            audioSource.Loop = isLoop;
+            return this;
+        }
     }
 }

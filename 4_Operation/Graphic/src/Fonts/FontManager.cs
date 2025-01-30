@@ -177,7 +177,7 @@ namespace Alis.Core.Graphic.Fonts
             Dictionary<char, RectangleI> characterRects = new Dictionary<char, RectangleI>();
             string lowercase = "abcdefghijklmnopqrstuvwxyz";
             string uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            string special = "0123456789";
+            string special = "0123456789.:,;(*!?}^)$#{%^&-+@"; // Special characters
 
             int charWidth = 10; // Width of each character in the bitmap
             int charHeight = 16; // Height of each character in the bitmap
