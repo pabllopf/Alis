@@ -53,7 +53,6 @@ namespace Alis.Core.Ecs.Component.Audio
         {
             NameFile = string.Empty;
             FullPathAudioFile = string.Empty;
-            IsPlaying = false;
             IsMute = false;
             IsLooping = false;
             Volume = 100;
@@ -68,7 +67,6 @@ namespace Alis.Core.Ecs.Component.Audio
         {
             NameFile = nameFile;
             FullPathAudioFile = AssetManager.Find(nameFile);
-            IsPlaying = false;
             IsMute = false;
             IsLooping = false;
             Volume = 100;
@@ -84,10 +82,9 @@ namespace Alis.Core.Ecs.Component.Audio
         /// <param name="isLooping">The is looping</param>
         /// <param name="volume">The volume</param>
         [JsonConstructor]
-        public AudioClip(string nameFile, bool isPlaying, bool isMute, bool isLooping, float volume)
+        public AudioClip(string nameFile, bool isMute, bool isLooping, float volume)
         {
             NameFile = nameFile;
-            IsPlaying = isPlaying;
             IsMute = isMute;
             IsLooping = isLooping;
             Volume = volume;
@@ -99,7 +96,10 @@ namespace Alis.Core.Ecs.Component.Audio
         ///     Gets or sets the value of the is playing
         /// </summary>
         [JsonPropertyName("_IsPlaying_")]
-        public bool IsPlaying { get; set; }
+        public bool IsPlaying
+        {
+            get => player.Playing;
+        }
 
         /// <summary>
         ///     Gets or sets the value of the is mute

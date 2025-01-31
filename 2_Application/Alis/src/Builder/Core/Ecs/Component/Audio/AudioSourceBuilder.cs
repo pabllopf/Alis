@@ -84,13 +84,18 @@ namespace Alis.Builder.Core.Ecs.Component.Audio
         /// <returns>The audio source builder</returns>
         public AudioSourceBuilder SetAudioClip(Func<AudioClipBuilder, AudioClip> value)
         {
-            audioSource.AudioClip = value.Invoke(new AudioClipBuilder());
+            AudioClip audioClip = value.Invoke(new AudioClipBuilder());
+            audioClip.IsLooping = audioSource.Loop;
+            audioClip.Volume = audioSource.AudioClip.Volume;
+            audioClip.IsMute = audioSource.AudioClip.IsMute;
+            audioSource.AudioClip = audioClip;
             return this;
         }
 
         public AudioSourceBuilder Loop(bool isLoop)
         {
             audioSource.Loop = isLoop;
+            audioSource.AudioClip.IsLooping = isLoop;
             return this;
         }
     }

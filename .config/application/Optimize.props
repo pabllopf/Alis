@@ -13,10 +13,8 @@
         <PublishReadyToRun>true</PublishReadyToRun>
         <SelfContained>true</SelfContained>
         <OptimizationPreference>Size</OptimizationPreference>
-        <StackTraceSupport>false</StackTraceSupport>
         <InvariantGlobalization>true</InvariantGlobalization>
-        <IncludeNativeLibrariesForSelfExtract>false</IncludeNativeLibrariesForSelfExtract> 
-        <DebugType>none</DebugType>
+        <IncludeNativeLibrariesForSelfExtract>false</IncludeNativeLibrariesForSelfExtract>
         <EnableUnsafeBinaryFormatterSerialization>false</EnableUnsafeBinaryFormatterSerialization>
     </PropertyGroup>
 </Project>
