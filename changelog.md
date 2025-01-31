@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.6.1] - 2025-02-02
+### :bug: Bug Fixes
+- [`2ad53f4`](https://github.com/pabllopf/Alis/commit/2ad53f4744f0aeaa4f05281d05735827faf2f8aa) - audioclip loop *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`32b56ca`](https://github.com/pabllopf/Alis/commit/32b56ca891e057adfe422eab3af2dbc85682afff) - delete unselees code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3ccb5cd`](https://github.com/pabllopf/Alis/commit/3ccb5cd75c23c19927a5f5530cb2614c2209c1e6) - flappy bird space *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e4a82f0`](https://github.com/pabllopf/Alis/commit/e4a82f04990742cf1aa37d6e62dd2dc2bfac31de) - new bildings with reduce space *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.6.0] - 2025-02-01
 ### :sparkles: New Features
 - [`8c16c7a`](https://github.com/pabllopf/Alis/commit/8c16c7a2d7fc3816f71ae32774c2dccfb818a5c6) - add new sample of classic game asteroid *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -4004,3 +4012,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.5.8]: https://github.com/pabllopf/Alis/compare/v0.5.7...v0.5.8
 [v0.5.9]: https://github.com/pabllopf/Alis/compare/v0.5.8...v0.5.9
 [v0.6.0]: https://github.com/pabllopf/Alis/compare/v0.5.9...v0.6.0
+[v0.6.1]: https://github.com/pabllopf/Alis/compare/v0.6.0...v0.6.1
