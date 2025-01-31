@@ -100,7 +100,7 @@ namespace Alis.Sample.Flappy.Bird
         /// </summary>
         public override void OnGui()
         {
-            fontManager.RenderText("MONO", $"{Counter}", 128, 15, Color.White, 32);
+            fontManager.RenderText("MONO", $"{Counter}", -0.5f, -7, Color.White, 32);
         }
 
         /// <summary>
