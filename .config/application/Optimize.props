@@ -15,6 +15,7 @@
         <PublishTrimmed>true</PublishTrimmed>
     </PropertyGroup>
     
+    
     <PropertyGroup Condition="
     $(Configuration) == 'Release' AND
     ($(AssemblyName.Contains('Sample')) == true OR
