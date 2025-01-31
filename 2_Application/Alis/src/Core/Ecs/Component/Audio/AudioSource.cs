@@ -45,6 +45,9 @@ namespace Alis.Core.Ecs.Component.Audio
         /// </summary>
         /// <param name="audioClip">The audio clip</param>
         [JsonConstructor]
+        #if NET5_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.DynamicDependency(global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicConstructors, typeof(AudioSource))]
+        #endif
         public AudioSource(AudioClip audioClip)
         {
             AudioClip = audioClip;
@@ -54,6 +57,9 @@ namespace Alis.Core.Ecs.Component.Audio
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioSource" /> class
         /// </summary>
+#if NET5_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.DynamicDependency(global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicConstructors, typeof(AudioSource))]
+#endif
         public AudioSource()
         {
             AudioClip = new AudioClip();

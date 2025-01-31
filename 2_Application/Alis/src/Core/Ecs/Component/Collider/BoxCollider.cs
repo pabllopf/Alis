@@ -58,6 +58,9 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <summary>
         ///     Initializes a new instance of the <see cref="BoxCollider" /> class
         /// </summary>
+#if NET5_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.DynamicDependency(global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicConstructors, typeof(BoxCollider))]
+#endif
         public BoxCollider()
         {
             Width = 10;
@@ -92,6 +95,9 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <param name="ignoreGravity">The ignore gravity</param>
         /// <param name="linearVelocity">The linear velocity</param>
         /// <param name="angularVelocity">The angular velocity</param>
+#if NET5_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.DynamicDependency(global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicConstructors, typeof(BoxCollider))]
+#endif
         [JsonConstructor]
         public BoxCollider(
             bool isTrigger,

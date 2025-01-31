@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Threading;
 using Alis.Core.Aspect.Data.Dll;
@@ -56,17 +57,7 @@ namespace Alis.Extension.Graphic.Sdl2Image.Sample
         ///     The height
         /// </summary>
         private const int Height = 480;
-
-        /// <summary>
-        ///     The sdl game controller axis
-        /// </summary>
-        private static readonly List<GameControllerAxis> Axis = new List<GameControllerAxis>((GameControllerAxis[]) Enum.GetValues(typeof(GameControllerAxis)));
-
-        /// <summary>
-        ///     The sdl game controller button
-        /// </summary>
-        private static readonly List<GameControllerButton> Buttons = new List<GameControllerButton>((GameControllerButton[]) Enum.GetValues(typeof(GameControllerButton)));
-
+        
         /// <summary>
         ///     The running
         /// </summary>
