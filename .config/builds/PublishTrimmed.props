@@ -1,6 +1,4 @@
 <Project>
     <PropertyGroup>
-        <PublishTrimmed>false</PublishTrimmed>
-        <TrimMode>link</TrimMode>
     </PropertyGroup>
 </Project>

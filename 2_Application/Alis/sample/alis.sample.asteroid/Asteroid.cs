@@ -28,11 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Numerics;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Audio;
 using Alis.Core.Ecs.Component;
+using Alis.Core.Ecs.Component.Audio;
 using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
@@ -60,7 +59,9 @@ namespace Alis.Sample.Asteroid
         {
            if (health <= 0)
            {
+               this.Context.SceneManager.CurrentScene.GetByTag("SoundPlayer").Get<AudioSource>().Play();
                SpawnSubAsteroids();
+               
                GameObject.Context.SceneManager.CurrentScene.GetByTag("Points").Get<CounterManager>().Increment();
                this.GameObject.Context.SceneManager.DestroyGameObject(this.GameObject);
            }
@@ -80,6 +81,15 @@ namespace Alis.Sample.Asteroid
                     parentTransform.Scale = new Vector2F(2.0f, 2.0f);
                     
                     subAsteroid.Transform = parentTransform;
+
+                    subAsteroid.Add(new AudioSource()
+                        .Builder()
+                        .PlayOnAwake(false)
+                        .SetAudioClip(audioClip => audioClip
+                            .FilePath("bangLarge.wav")
+                            .Volume(100.0f)
+                            .Build())
+                        .Build());
                    
                     if (i == 0)
                     {
@@ -153,14 +163,16 @@ namespace Alis.Sample.Asteroid
 
             if (gameObject.Tag == "Asteroid" || gameObject.Tag == "Wall")
             {
-                float xRandom = random.Next(-1, 2);
-                float yRandom = random.Next(-1, 2);
+                float xRandom = random.Next(-2, 2);
+                float yRandom = random.Next(-2, 2);
 
-                // Asegurarse de que el vector no sea cero
-                if (xRandom == 0 && yRandom == 0)
+                while (xRandom == 0 && yRandom == 0)
                 {
-                    xRandom = 1;
+                    yRandom = random.Next(-2, 2);
+                    xRandom = random.Next(-2, 2);
                 }
+                
+                
 
                 Vector2F newVelocity = new Vector2F(xRandom, yRandom);
                 newVelocity = Vector2F.Normalize(newVelocity) * 3.0f; 

@@ -210,10 +210,6 @@
         <ProjectReference
             Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == False"
             Include="$(ProjectDir)/../../src/$(NameTest).csproj"/>
-
-        <ProjectReference
-            Condition="$(AssemblyName.Contains('Alis.Sample'))"
-            Include="$(SolutionDir)**/src/**/*Extension*.csproj"/>
     </ItemGroup>
 
 

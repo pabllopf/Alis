@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Definition;
-using Alis.Core.Audio;
 using Alis.Core.Ecs.Component.Audio;
 using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
@@ -113,18 +112,13 @@ namespace Alis.Sample.Asteroid
                             .AddComponent(new HealthController())
                             .Build())
                         
-                        .Add<GameObject>(counterPoints => counterPoints
-                            .Name("TimeController")
-                            .WithTag("UI")
-                            .AddComponent(new TimerController())
-                            .Build())
-                        
                         // SOUNDTRACK
                         .Add<GameObject>(soundTrack => soundTrack
                             .Name("Soundtrack")
                             .AddComponent<AudioSource>(audioSource => audioSource
                                 .Builder()
                                 .PlayOnAwake(true)
+                                .Loop(true)
                                 .SetAudioClip(audioClip => audioClip
                                     .FilePath("soundtrack.wav")
                                     .Volume(100.0f)
@@ -137,12 +131,20 @@ namespace Alis.Sample.Asteroid
                             .Name("Player 1")
                             .Transform(transform => transform
                                 .Position(0, 0)
-                                .Scale(1f, 1f)
+                                .Scale(1.3f, 1.3f)
                                 .Rotation(0)
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite.Builder()
                                 .SetTexture("player.bmp")
                                 .Depth(1)
+                                .Build())
+                            .AddComponent<AudioSource>(audioSource => audioSource
+                                .Builder()
+                                .PlayOnAwake(false)
+                                .SetAudioClip(audioClip => audioClip
+                                    .FilePath("fire.wav")
+                                    .Volume(50.0f)
+                                    .Build())
                                 .Build())
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
@@ -151,7 +153,7 @@ namespace Alis.Sample.Asteroid
                                 .IsTrigger(false)
                                 .AutoTilling(true)
                                 .Rotation(0.0f)
-                                .Size(1, 1)
+                                .Size(0.5f, 0.5f)
                                 .Mass(1.0f)
                                 .Restitution(0.0f)
                                 .Friction(0f)
@@ -160,6 +162,20 @@ namespace Alis.Sample.Asteroid
                                 .Build())
                             .AddComponent(new Player())
                             .Build())
+                        
+                        .Add<GameObject>(sound => sound
+                            .Name("SoundPlayer")
+                            .WithTag("SoundPlayer")
+                            .AddComponent<AudioSource>(audioSource => audioSource
+                                .Builder()
+                                .PlayOnAwake(false)
+                                .SetAudioClip(audioClip => audioClip
+                                    .FilePath("bangLarge.wav")
+                                    .Volume(50.0f)
+                                    .Build())
+                                .Build())
+                            .Build())
+                            
                         
                         // ASTEROID
                         .Add<GameObject>(asteroid => asteroid

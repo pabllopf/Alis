@@ -1,12 +1,11 @@
-using System;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
+using Alis.Core.Ecs.Component.Audio;
 using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
-using Alis.Core.Ecs.System.Manager.Time;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Sample.Asteroid
@@ -150,8 +149,11 @@ namespace Alis.Sample.Asteroid
         /// <param name="key">The key</param>
         public override void OnPressKey(KeyCodes key)
         {
-            if (key == KeyCodes.Space)
+            if (key == KeyCodes.Space && (direction.X != 0 || direction.Y != 0))
             {
+                this.GameObject.Get<AudioSource>().Play();
+                this.Context.SceneManager.CurrentScene.GetByTag("Points").Get<CounterManager>().Decrement();
+                
                 GameObject bullet = new GameObject();
                 bullet.Name = $"Bullet_{Context.TimeManager.FrameCount}";
         

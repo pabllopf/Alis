@@ -27,48 +27,33 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math;
-using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Aspect.Data.Resource;
+using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Ecs.Component;
-using Alis.Core.Ecs.Component.Render;
-using Alis.Core.Ecs.Entity;
+using Alis.Core.Graphic.Fonts;
 
 namespace Alis.Sample.Asteroid
 {
     public class HealthController : AComponent
     {
-        public int health = 3;
-
-        private string healthName = "Health.bmp";
-
+        public FontManager fontManager;
+        
         public override void OnStart()
-        {
-            CreateHealth();
+        { 
+            fontManager = Context.GraphicManager.FontManager;
+            fontManager.LoadFont("MONO", 16, AssetManager.Find("mono.bmp"));
         }
 
-        private void CreateHealth()
+        public override void OnGui()
         {
-            GameObject subAsteroid = new GameObject();
-            subAsteroid.Name = $"Health_{health}";
-            subAsteroid.Tag = "UI";
-
-            Transform parentTransform = new Transform();
-            parentTransform.Position = new Vector2F(-12, 8);
-            parentTransform.Rotation = 0.0f;
-            parentTransform.Scale = new Vector2F(0.5f, 0.5f);
-
-            subAsteroid.Transform = parentTransform;
-
-            subAsteroid.Add(new Sprite().Builder()
-                .SetTexture(healthName)
-                .Depth(1)
-                .Build());
-
-            Context.SceneManager.CurrentScene.Add(subAsteroid);
+            fontManager.RenderText("MONO", $"^", 98, 40, Color.White, 32);
+            fontManager.RenderText("MONO", $"^", 122, 40, Color.White, 32);
+            fontManager.RenderText("MONO", $"^", 146, 40, Color.White, 32);
         }
 
         public override void OnUpdate()
         {
+            
         }
     }
 }

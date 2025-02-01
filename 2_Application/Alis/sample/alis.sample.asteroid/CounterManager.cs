@@ -36,7 +36,7 @@ namespace Alis.Sample.Asteroid
 {
     public class CounterManager : AComponent
     {
-        public int counter = 0;
+        public int counter = 10;
         public FontManager fontManager;
 
         public override void OnStart()
@@ -54,7 +54,7 @@ namespace Alis.Sample.Asteroid
         /// </summary>
         public override void OnGui()
         {
-            fontManager.RenderText("MONO", $"{counter}", 100, 0, Color.White, 32);
+            fontManager.RenderText("MONO", counter.ToString("D3"), 100, 0, Color.White, 32);
         }
         
         /// <summary>
@@ -63,6 +63,11 @@ namespace Alis.Sample.Asteroid
         public void Increment()
         {
             counter += 10;
+        }
+        
+        public void Decrement()
+        {
+            counter -= 1;
         }
 
         /// <summary>
