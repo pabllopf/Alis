@@ -40,8 +40,8 @@ using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.System.Configuration;
 using Alis.Core.Ecs.System.Configuration.Physic;
+using Alis.Core.Ecs.System.Manager.Fonts;
 using Alis.Core.Ecs.System.Scope;
-using Alis.Core.Graphic.Fonts;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
@@ -295,7 +295,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
             Logger.Info("End config SDL2");
 
-            FontManager = new FontManager(Renderer, RendererFlips.None);
+            FontManager = new FontManager(Context, RendererFlips.None);
         }
 
         /// <summary>

@@ -46,6 +46,15 @@ namespace Alis.Sample.Asteroid
         {
             float targetRotationDegrees = CalculateRotationInDegrees(direction.X, direction.Y);
             boxCollider.Body.Rotation = targetRotationDegrees;
+        
+            // Limit the maximum velocity
+            float maxVelocity = 3.0f; // Set your desired maximum velocity
+            Vector2F currentVelocity = boxCollider.Body.LinearVelocity;
+            if (currentVelocity.Length() > maxVelocity)
+            {
+                currentVelocity = Vector2F.Normalize(currentVelocity) * maxVelocity;
+                boxCollider.Body.LinearVelocity = currentVelocity;
+            }
         }
 
         /// <summary>
@@ -153,6 +162,7 @@ namespace Alis.Sample.Asteroid
             {
                 this.GameObject.Get<AudioSource>().Play();
                 this.Context.SceneManager.CurrentScene.GetByTag("Points").Get<CounterManager>().Decrement();
+                
                 
                 GameObject bullet = new GameObject();
                 bullet.Name = $"Bullet_{Context.TimeManager.FrameCount}";

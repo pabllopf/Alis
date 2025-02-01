@@ -33,11 +33,14 @@ using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Ecs.Component.Render;
+using Alis.Core.Ecs.System.Scope;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
 
-namespace Alis.Core.Graphic.Fonts
+namespace Alis.Core.Ecs.System.Manager.Fonts
 {
     /// <summary>
     ///     The font manager class
@@ -52,7 +55,7 @@ namespace Alis.Core.Graphic.Fonts
         /// <summary>
         ///     The renderer
         /// </summary>
-        private readonly IntPtr _renderer;
+        private readonly Context context;
 
         /// <summary>
         ///     The renderer flips
@@ -62,11 +65,11 @@ namespace Alis.Core.Graphic.Fonts
         /// <summary>
         ///     Initializes a new instance of the <see cref="FontManager" /> class
         /// </summary>
-        /// <param name="renderer">The renderer</param>
+        /// <param name="context">The renderer</param>
         /// <param name="rendererFlips">The renderer flips</param>
-        public FontManager(IntPtr renderer, RendererFlips rendererFlips)
+        public FontManager(Context context, RendererFlips rendererFlips)
         {
-            _renderer = renderer;
+            this.context = context;
             _rendererFlips = rendererFlips;
         }
 
@@ -93,7 +96,7 @@ namespace Alis.Core.Graphic.Fonts
 
             Sdl.SetColorKey(surface, 1, Sdl.MapRgb(surfaceObject.Format, 0, 0, 0));
 
-            IntPtr texture = Sdl.CreateTextureFromSurface(_renderer, surface);
+            IntPtr texture = Sdl.CreateTextureFromSurface(context.GraphicManager.Renderer, surface);
             if (texture == IntPtr.Zero)
             {
                 Logger.Exception($"Failed to create texture from surface: {Sdl.GetError()}");
@@ -166,7 +169,7 @@ namespace Alis.Core.Graphic.Fonts
 
             Sdl.SetColorKey(surface, 1, Sdl.MapRgb(surfaceObject.Format, 0, 0, 0));
 
-            IntPtr texture = Sdl.CreateTextureFromSurface(_renderer, surface);
+            IntPtr texture = Sdl.CreateTextureFromSurface(context.GraphicManager.Renderer, surface);
             if (texture == IntPtr.Zero)
             {
                 Logger.Exception($"Failed to create texture from surface: {Sdl.GetError()}");
@@ -175,8 +178,8 @@ namespace Alis.Core.Graphic.Fonts
 
 
             Dictionary<char, RectangleI> characterRects = new Dictionary<char, RectangleI>();
-            string lowercase = "abcdefghijklmnopqrstuvwxyz";
-            string uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            string lowercase = "abcdefghijklmnopqrstuvwxyz ";
+            string uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ ";
             string special = "0123456789.:,;(*!?}^)$#{%^&-+@"; // Special characters
 
             int charWidth = 10; // Width of each character in the bitmap
@@ -274,7 +277,7 @@ namespace Alis.Core.Graphic.Fonts
                     // Draw text character
                     RectangleI dstRect = new RectangleI
                         {X = posX, Y = y, W = srcRect.W, H = srcRect.H};
-                    Sdl.RenderCopyEx(_renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, _rendererFlips);
+                    Sdl.RenderCopyEx(context.GraphicManager.Renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, _rendererFlips);
 
                     posX += srcRect.W; // Move the X position for the next character
                 }
@@ -295,7 +298,7 @@ namespace Alis.Core.Graphic.Fonts
                     // Draw text character
                     RectangleI dstRect = new RectangleI
                         {X = posX, Y = y, W = srcRect.W, H = srcRect.H};
-                    Sdl.RenderCopyEx(_renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, _rendererFlips);
+                    Sdl.RenderCopyEx(context.GraphicManager.Renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, _rendererFlips);
 
                     posX += srcRect.W; // Move the X position for the next character
                 }
@@ -351,7 +354,7 @@ namespace Alis.Core.Graphic.Fonts
                     // Draw text character
                     RectangleI dstRect = new RectangleI
                         {X = posX, Y = y, W = srcRect.W, H = srcRect.H};
-                    Sdl.RenderCopyEx(_renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, _rendererFlips);
+                    Sdl.RenderCopyEx(context.GraphicManager.Renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, _rendererFlips);
 
                     posX += srcRect.W; // Move the X position for the next character
                 }
@@ -372,7 +375,7 @@ namespace Alis.Core.Graphic.Fonts
                     // Draw text character
                     RectangleI dstRect = new RectangleI
                         {X = posX, Y = y, W = srcRect.W, H = srcRect.H};
-                    Sdl.RenderCopyEx(_renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, _rendererFlips);
+                    Sdl.RenderCopyEx(context.GraphicManager.Renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, _rendererFlips);
 
                     posX += srcRect.W; // Move the X position for the next character
                 }
@@ -430,7 +433,7 @@ namespace Alis.Core.Graphic.Fonts
                     // Draw text character
                     RectangleI dstRect = new RectangleI
                         {X = posX, Y = y, W = srcRect.W, H = srcRect.H};
-                    Sdl.RenderCopyEx(_renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, _rendererFlips);
+                    Sdl.RenderCopyEx(context.GraphicManager.Renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, _rendererFlips);
 
                     posX += srcRect.W; // Move the X position for the next character
                 }
@@ -451,13 +454,13 @@ namespace Alis.Core.Graphic.Fonts
                     // Draw background rectangle
                     RectangleI backgroundRect = new RectangleI
                         {X = posX, Y = y, W = srcRect.W, H = srcRect.H};
-                    Sdl.SetRenderDrawColor(_renderer, backgroundColor.R, backgroundColor.G, backgroundColor.B, backgroundColor.A);
-                    Sdl.RenderFillRect(_renderer, ref backgroundRect);
+                    Sdl.SetRenderDrawColor(context.GraphicManager.Renderer, backgroundColor.R, backgroundColor.G, backgroundColor.B, backgroundColor.A);
+                    Sdl.RenderFillRect(context.GraphicManager.Renderer, ref backgroundRect);
 
                     // Draw text character
                     RectangleI dstRect = new RectangleI
                         {X = posX, Y = y, W = srcRect.W, H = srcRect.H};
-                    Sdl.RenderCopyEx(_renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, _rendererFlips);
+                    Sdl.RenderCopyEx(context.GraphicManager.Renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, _rendererFlips);
 
                     posX += srcRect.W; // Move the X position for the next character
                 }
@@ -515,7 +518,7 @@ namespace Alis.Core.Graphic.Fonts
                     // Draw text character with scaling
                     RectangleI dstRect = new RectangleI
                         {X = posX, Y = y, W = srcRect.W * fontSize / font.Size, H = srcRect.H * fontSize / font.Size};
-                    Sdl.RenderCopyEx(_renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, _rendererFlips);
+                    Sdl.RenderCopyEx(context.GraphicManager.Renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, _rendererFlips);
 
                     posX += dstRect.W; // Move the X position for the next character
                 }
@@ -536,13 +539,13 @@ namespace Alis.Core.Graphic.Fonts
                     // Draw background rectangle with scaling
                     RectangleI backgroundRect = new RectangleI
                         {X = posX, Y = y, W = srcRect.W * fontSize / font.Size, H = srcRect.H * fontSize / font.Size};
-                    Sdl.SetRenderDrawColor(_renderer, backgroundColor.R, backgroundColor.G, backgroundColor.B, backgroundColor.A);
-                    Sdl.RenderFillRect(_renderer, ref backgroundRect);
+                    Sdl.SetRenderDrawColor(context.GraphicManager.Renderer, backgroundColor.R, backgroundColor.G, backgroundColor.B, backgroundColor.A);
+                    Sdl.RenderFillRect(context.GraphicManager.Renderer, ref backgroundRect);
 
                     // Draw text character with scaling
                     RectangleI dstRect = new RectangleI
                         {X = posX, Y = y, W = srcRect.W * fontSize / font.Size, H = srcRect.H * fontSize / font.Size};
-                    Sdl.RenderCopyEx(_renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, _rendererFlips);
+                    Sdl.RenderCopyEx(context.GraphicManager.Renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, _rendererFlips);
 
                     posX += dstRect.W; // Move the X position for the next character
                 }
@@ -554,28 +557,51 @@ namespace Alis.Core.Graphic.Fonts
         /// </summary>
         /// <param name="fontName">The font name</param>
         /// <param name="text">The text</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x position</param>
+        /// <param name="y">The y position</param>
         /// <param name="colorFont">The color font</param>
         /// <param name="fontSize">The font size</param>
-        public void RenderText(string fontName, string text, int x, int y, Color colorFont, int fontSize)
+        public void RenderText(string fontName, string text, float x, float y, Color colorFont, int fontSize)
         {
             if (!_fonts.TryGetValue(fontName, out Font font))
             {
                 Logger.Exception($"Font '{fontName}' not found.");
                 return;
             }
-
-            int posX = x;
-
+        
+            List<Camera> cameras = context.GraphicManager.Cameras;
+            if (cameras.Count == 0)
+            {
+                Logger.Exception("No cameras found.");
+                return;
+            }
+        
+            Camera camera = cameras[0]; // Assuming the first camera is the main camera
+            Vector2F cameraPosition = camera.Position;
+            Vector2F cameraResolution = camera.Resolution;
+            float pixelsPerMeter = 32.0f; // Assuming a constant value for pixels per meter
+        
+            // Get the window size
+            Vector2F windowSize = Sdl.GetWindowSize(context.GraphicManager.Window);
+        
+            // Adjust the text position based on the camera position and window size
+            int adjustedX = (int)((x - cameraPosition.X) * pixelsPerMeter + cameraResolution.X / 2);
+            int adjustedY = (int)((y - cameraPosition.Y) * pixelsPerMeter + cameraResolution.Y / 2);
+        
+            // Scale the position based on the window size
+            adjustedX = (int)(adjustedX * (windowSize.X / cameraResolution.X));
+            adjustedY = (int)(adjustedY * (windowSize.Y / cameraResolution.Y));
+        
+            int posX = adjustedX;
+        
             // Lock the surface to access pixel data
             Sdl.LockSurface(font.Surface);
-
+        
             // Get the pixel data from the surface
             Surface surfaceObject = Marshal.PtrToStructure<Surface>(font.Surface);
             IntPtr pixels = surfaceObject.Pixels;
             int pitch = surfaceObject.pitch;
-
+        
             foreach (char c in text)
             {
                 if (font.CharacterRects.TryGetValue(c, out RectangleI srcRect))
@@ -595,33 +621,33 @@ namespace Alis.Core.Graphic.Fonts
                             }
                         }
                     }
-
+        
                     // Draw text character with scaling
                     RectangleI dstRect = new RectangleI
-                        {X = posX, Y = y, W = srcRect.W * fontSize / font.Size, H = srcRect.H * fontSize / font.Size};
-                    Sdl.RenderCopyEx(_renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, _rendererFlips);
-
+                        {X = posX, Y = adjustedY, W = srcRect.W * fontSize / font.Size, H = srcRect.H * fontSize / font.Size};
+                    Sdl.RenderCopyEx(context.GraphicManager.Renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, _rendererFlips);
+        
                     posX += dstRect.W; // Move the X position for the next character
                 }
             }
-
+        
             // Unlock the surface
             Sdl.UnlockSurface(font.Surface);
-
+        
             // Update the entire texture with the modified pixel data
             Sdl.UpdateTexture(font.Texture, IntPtr.Zero, pixels, pitch);
-
-            posX = x;
-
+        
+            posX = adjustedX;
+        
             foreach (char c in text)
             {
                 if (font.CharacterRects.TryGetValue(c, out RectangleI srcRect))
                 {
                     // Draw text character with scaling
                     RectangleI dstRect = new RectangleI
-                        {X = posX, Y = y, W = srcRect.W * fontSize / font.Size, H = srcRect.H * fontSize / font.Size};
-                    Sdl.RenderCopyEx(_renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, _rendererFlips);
-
+                        {X = posX, Y = adjustedY, W = srcRect.W * fontSize / font.Size, H = srcRect.H * fontSize / font.Size};
+                    Sdl.RenderCopyEx(context.GraphicManager.Renderer, font.Texture, ref srcRect, ref dstRect, 0, IntPtr.Zero, _rendererFlips);
+        
                     posX += dstRect.W; // Move the X position for the next character
                 }
             }

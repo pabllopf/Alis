@@ -32,7 +32,7 @@ using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 
-namespace Alis.Core.Graphic.Fonts
+namespace Alis.Core.Ecs.System.Manager.Fonts
 {
     /// <summary>
     ///     The font class

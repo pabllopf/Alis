@@ -30,7 +30,7 @@
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Ecs.Component;
-using Alis.Core.Graphic.Fonts;
+using Alis.Core.Ecs.System.Manager.Fonts;
 
 namespace Alis.Sample.Asteroid
 {
@@ -54,7 +54,10 @@ namespace Alis.Sample.Asteroid
         /// </summary>
         public override void OnGui()
         {
-            fontManager.RenderText("MONO", counter.ToString("D3"), 100, 0, Color.White, 32);
+            if(this.Context.SceneManager.CurrentScene.GetByTag("HealthController").Get<HealthController>().health > 0)
+            {
+                fontManager.RenderText("MONO", counter.ToString("D3"), -10, -10, Color.White, 32);
+            }
         }
         
         /// <summary>
@@ -68,6 +71,11 @@ namespace Alis.Sample.Asteroid
         public void Decrement()
         {
             counter -= 1;
+            if (counter < 0)
+            {
+                counter = 15;
+                this.Context.SceneManager.CurrentScene.GetByTag("HealthController").Get<HealthController>().Decrement();
+            }
         }
 
         /// <summary>

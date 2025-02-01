@@ -27,16 +27,21 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Ecs.Component;
-using Alis.Core.Graphic.Fonts;
+using Alis.Core.Ecs.Component.Audio;
+using Alis.Core.Ecs.System.Manager.Fonts;
 
 namespace Alis.Sample.Asteroid
 {
     public class HealthController : AComponent
     {
         public FontManager fontManager;
+
+        public int health = 1;
         
         public override void OnStart()
         { 
@@ -46,14 +51,58 @@ namespace Alis.Sample.Asteroid
 
         public override void OnGui()
         {
-            fontManager.RenderText("MONO", $"^", 98, 40, Color.White, 32);
-            fontManager.RenderText("MONO", $"^", 122, 40, Color.White, 32);
-            fontManager.RenderText("MONO", $"^", 146, 40, Color.White, 32);
+            if (fontManager == null) return;
+            
+            if (health == 3)
+            {
+                fontManager.RenderText("MONO", $"^", -10.1f, -9, Color.White, 32);
+                fontManager.RenderText("MONO", $"^", -9.3f, -9, Color.White, 32);
+                fontManager.RenderText("MONO", $"^", -8.5f, -9, Color.White, 32);
+                return;
+            }
+            
+            if (health == 2)
+            {
+                fontManager.RenderText("MONO", $"^", -10.1f, -9, Color.White, 32);
+                fontManager.RenderText("MONO", $"^", -9.3f, -9, Color.White, 32);
+                return;
+            }
+            
+            if (health == 1)
+            {
+                fontManager.RenderText("MONO", $"^", -10.1f, -9, Color.White, 32);
+                return;
+            }
+            
+            if (health >= 0)
+            {
+                fontManager.RenderText("MONO", $"GAME OVER", -2.8f, -0.5f, Color.White, 32);
+                fontManager.RenderText("MONO", $"^^^ Press START ^^^", -2f, 0.8f, Color.White, 12);
+                Context.SceneManager.CurrentScene.GetByTag("Soundtrack").Get<AudioSource>().Stop();
+            }
+        }
+
+        public override void OnPressKey(KeyCodes key)
+        {
+            if (health <= 0 && key != KeyCodes.Space && key != KeyCodes.S && key != KeyCodes.W && key != KeyCodes.A && key != KeyCodes.D)
+            {
+                Context.SceneManager.LoadScene(0);
+                Console.WriteLine("Restarting game");
+            }
         }
 
         public override void OnUpdate()
         {
-            
+            if (health <= 0)
+            {
+                Context.SceneManager.CurrentScene.GetByTag("Points").Get<CounterManager>().counter = 0;
+                Context.SceneManager.DestroyGameObject(Context.SceneManager.CurrentScene.GetByTag("Player"));
+            }
+        }
+
+        public void Decrement()
+        {
+            health--;
         }
     }
 }

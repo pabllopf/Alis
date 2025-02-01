@@ -40,7 +40,6 @@ using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Graphic.Fonts;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Alis.Core.Physic.Dynamics;
@@ -79,12 +78,7 @@ namespace Alis.Core.Sample
         ///     The sdl game controller button
         /// </summary>
         private static readonly List<GameControllerButton> Buttons = new List<GameControllerButton>((GameControllerButton[]) Enum.GetValues(typeof(GameControllerButton)));
-
-        /// <summary>
-        ///     The font manager
-        /// </summary>
-        private static FontManager _fontManager;
-
+        
         /// <summary>
         ///     The blue
         /// </summary>
@@ -397,8 +391,6 @@ namespace Alis.Core.Sample
                 timeStepPhysics = 1f / 5f;
             }
 
-            _fontManager = new FontManager(_renderer, RendererFlips.FlipVertical);
-            _fontManager.LoadFont("MONO", 16, Color.White, Color.Black, $"{AppDomain.CurrentDomain.BaseDirectory}/Assets/MONO_V5.bmp");
 
             // Llama al método que inicializa el menú
             //createCustomMenu();
@@ -579,24 +571,7 @@ namespace Alis.Core.Sample
                     H = (int) boxHeight
                 };
                 Sdl.RenderDrawRect(_renderer, ref boxRect);
-
-
-                _fontManager.RenderText("MONO", "0123456789", 10, 10);
-
-                _fontManager.RenderText("MONO", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", 10, 40);
-
-                _fontManager.RenderText("MONO", "abcdefghijklmnopqrstuvwxyz", 10, 70, Color.Brown, Color.White);
-
-
-                _fontManager.RenderText("MONO", "0123456789", 320, 10, Color.White, Color.Transparent);
-
-                _fontManager.RenderText("MONO", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", 320, 40, Color.Green, Color.White);
-
-                _fontManager.RenderText("MONO", "abcdefghijklmnopqrstuvwxyz", 320, 70, Color.DarkGreen, Color.White);
-
-
-                _fontManager.RenderText("MONO", "0123456789", 10, 100, Color.White, Color.Transparent, 32);
-
+                
                 // render the texture box
                 Sdl.SetRenderDrawColor(_renderer, 0, 0, 255, 255);
                 RectangleI textureBoxRect = new RectangleI

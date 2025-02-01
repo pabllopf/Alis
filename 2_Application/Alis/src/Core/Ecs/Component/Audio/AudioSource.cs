@@ -145,6 +145,17 @@ namespace Alis.Core.Ecs.Component.Audio
                 Play();
             }
         }
+        
+        public override void OnUpdate()
+        {
+            if (Loop)
+            {
+                if (!AudioClip.IsPlaying)
+                {
+                    Play();
+                }
+            }
+        }
 
 
         /// <summary>
