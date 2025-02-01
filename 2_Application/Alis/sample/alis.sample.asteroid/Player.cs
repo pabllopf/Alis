@@ -39,6 +39,7 @@ namespace Alis.Sample.Asteroid
             boxCollider = this.GameObject.Get<BoxCollider>();
         }
         
+        
         /// <summary>
         /// Ons the update
         /// </summary>
