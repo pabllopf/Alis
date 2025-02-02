@@ -99,11 +99,7 @@ namespace Alis.Core.Ecs.Component.Audio
         public float Volume
         {
             get => AudioClip.Volume;
-            set
-            {
-                Logger.Log($"Write volume={value}");
-                AudioClip.Volume = value;
-            }
+            set => AudioClip.Volume = value;
         }
 
         /// <summary>
@@ -148,12 +144,9 @@ namespace Alis.Core.Ecs.Component.Audio
         
         public override void OnUpdate()
         {
-            if (Loop)
+            if (AudioClip.IsLooping && !IsPlaying)
             {
-                if (!AudioClip.IsPlaying)
-                {
-                    Play();
-                }
+                Play();
             }
         }
 
