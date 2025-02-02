@@ -9,12 +9,10 @@
     ($(AssemblyName.Contains('Sample')) == true OR
     ($(AssemblyName.Contains('App')) == true AND $(AssemblyName.Contains('Test')) == false))">
         <Optimize>true</Optimize>
-        <PublishReadyToRun>false</PublishReadyToRun>
         <SelfContained>true</SelfContained>
         <OptimizationPreference>Size</OptimizationPreference>
         <TrimUnusedDependencies>true</TrimUnusedDependencies>
         <PublishTrimmed>true</PublishTrimmed>
-        <UseSystemResourceKeys>true</UseSystemResourceKeys>
     </PropertyGroup>
     
     <PropertyGroup Condition="
@@ -23,6 +21,7 @@
     ($(AssemblyName.Contains('App')) == true AND $(AssemblyName.Contains('Test')) == false))">
         <Optimize>true</Optimize>
         <PublishReadyToRun>false</PublishReadyToRun>
+        <PublishSingleFile>true</PublishSingleFile>
         <SelfContained>true</SelfContained>
         <OptimizationPreference>Size</OptimizationPreference>
         <StackTraceSupport>false</StackTraceSupport>
@@ -32,6 +31,7 @@
         <EnableUnsafeBinaryFormatterSerialization>false</EnableUnsafeBinaryFormatterSerialization>
         <TrimUnusedDependencies>true</TrimUnusedDependencies>
         <PublishTrimmed>true</PublishTrimmed>
+        <TrimMode>Link</TrimMode>
         <UseSystemResourceKeys>true</UseSystemResourceKeys>
     </PropertyGroup>
 </Project>
