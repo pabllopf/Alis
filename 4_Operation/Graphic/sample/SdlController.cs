@@ -58,17 +58,7 @@ namespace Alis.Core.Graphic.Sample
         ///     The height
         /// </summary>
         private const int Height = 480;
-
-        /// <summary>
-        ///     The sdl game controller axis
-        /// </summary>
-        private static readonly List<GameControllerAxis> Axis = new List<GameControllerAxis>((GameControllerAxis[]) Enum.GetValues(typeof(GameControllerAxis)));
-
-        /// <summary>
-        ///     The sdl game controller button
-        /// </summary>
-        private static readonly List<GameControllerButton> Buttons = new List<GameControllerButton>((GameControllerButton[]) Enum.GetValues(typeof(GameControllerButton)));
-
+        
         /// <summary>
         ///     The blue
         /// </summary>
@@ -78,12 +68,7 @@ namespace Alis.Core.Graphic.Sample
         ///     The blue
         /// </summary>
         private static byte _green;
-
-        /// <summary>
-        ///     The sdl keycode
-        /// </summary>
-        private static List<KeyCodes> _keys = new List<KeyCodes>((KeyCodes[]) Enum.GetValues(typeof(KeyCodes)));
-
+        
         /// <summary>
         ///     The blue
         /// </summary>
@@ -238,24 +223,6 @@ namespace Alis.Core.Graphic.Sample
 
                             Logger.Info(_sdlEvent.key.KeySym.sym + " was pressed");
                             break;
-                    }
-
-                    foreach (GameControllerButton button in Buttons)
-                    {
-                        if ((_sdlEvent.type == EventType.JoyButtonDown)
-                            && (button == (GameControllerButton) _sdlEvent.cButton.button))
-                        {
-                            Logger.Info($"[SDL_JoystickName_id = '{_sdlEvent.cDevice.which}'] Pressed button={button}");
-                        }
-                    }
-
-                    foreach (GameControllerAxis axi in Axis)
-                    {
-                        if ((_sdlEvent.type == EventType.JoyAxisMotion)
-                            && (axi == (GameControllerAxis) _sdlEvent.cAxis.axis))
-                        {
-                            Logger.Info($"[SDL_JoystickName_id = '{_sdlEvent.cDevice.which}'] Pressed axi={axi}");
-                        }
                     }
                 }
 

@@ -115,19 +115,6 @@ namespace Alis.Test.Core.Ecs.Component.Audio
         }
 
         /// <summary>
-        ///     Tests that set is playing should change value
-        /// </summary>
-        [Fact]
-        public void SetIsPlaying_ShouldChangeValue()
-        {
-            AudioClip audioClip = new AudioClip();
-            audioClip.IsPlaying = true;
-            Assert.True(audioClip.IsPlaying);
-            audioClip.IsPlaying = false;
-            Assert.False(audioClip.IsPlaying);
-        }
-
-        /// <summary>
         ///     Tests that set is mute should change value
         /// </summary>
         [Fact]

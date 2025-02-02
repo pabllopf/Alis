@@ -66,6 +66,9 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     Initializes a new instance of the <see cref="Sprite" /> class
         /// </summary>
+#if NET5_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.DynamicDependency(global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicConstructors, typeof(Sprite))]
+#endif
         public Sprite()
         {
             NameFile = "";
@@ -78,6 +81,9 @@ namespace Alis.Core.Ecs.Component.Render
         ///     Initializes a new instance of the <see cref="Sprite" /> class
         /// </summary>
         /// <param name="nameFile">The name file</param>
+#if NET5_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.DynamicDependency(global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicConstructors, typeof(Sprite))]
+#endif
         public Sprite(string nameFile)
         {
             NameFile = nameFile;
@@ -94,6 +100,9 @@ namespace Alis.Core.Ecs.Component.Render
         /// <param name="flips">The flips</param>
         /// <param name="nameFile"></param>
         [JsonConstructor]
+#if NET5_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.DynamicDependency(global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicConstructors, typeof(Sprite))]
+#endif
         public Sprite(string nameFile, int depth, RendererFlips flips)
         {
             Depth = depth;
