@@ -9,6 +9,6 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <AssemblyVersion>0.5.9</AssemblyVersion>
+        <AssemblyVersion>0.6.0</AssemblyVersion>
     </PropertyGroup>
 </Project>
