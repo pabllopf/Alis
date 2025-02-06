@@ -2,20 +2,5 @@
 <Project>
     <PropertyGroup>
         <Optimize>true</Optimize>
-        <PublishSingleFile>true</PublishSingleFile>
-        <SelfContained>true</SelfContained>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="
-    $(Configuration) == 'Release' AND
-    ($(AssemblyName.Contains('Sample')) == true OR
-    ($(AssemblyName.Contains('App')) == true AND $(AssemblyName.Contains('Test')) == false))">
-        <Optimize>true</Optimize>
-        <PublishSingleFile>true</PublishSingleFile>
-        <SelfContained>true</SelfContained>
-        <TrimUnusedDependencies>true</TrimUnusedDependencies>
-        <PublishTrimmed>true</PublishTrimmed>
-        <TrimMode>partial</TrimMode>
-        <TrimmerRemoveSymbols>true</TrimmerRemoveSymbols>
     </PropertyGroup>
 </Project>
