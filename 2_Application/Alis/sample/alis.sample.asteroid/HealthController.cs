@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -37,18 +37,34 @@ using Alis.Core.Ecs.System.Manager.Fonts;
 
 namespace Alis.Sample.Asteroid
 {
+    /// <summary>
+    /// The health controller class
+    /// </summary>
+    /// <seealso cref="AComponent"/>
     public class HealthController : AComponent
     {
+        /// <summary>
+        /// The font manager
+        /// </summary>
         public FontManager fontManager;
 
+        /// <summary>
+        /// The health
+        /// </summary>
         public int health = 1;
         
+        /// <summary>
+        /// Ons the start
+        /// </summary>
         public override void OnStart()
         { 
             fontManager = Context.GraphicManager.FontManager;
             fontManager.LoadFont("MONO", 16, AssetManager.Find("mono.bmp"));
         }
 
+        /// <summary>
+        /// Ons the gui
+        /// </summary>
         public override void OnGui()
         {
             if (fontManager == null) return;
@@ -82,6 +98,10 @@ namespace Alis.Sample.Asteroid
             }
         }
 
+        /// <summary>
+        /// Ons the press key using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
         public override void OnPressKey(KeyCodes key)
         {
             if (health <= 0 && key != KeyCodes.Space && key != KeyCodes.S && key != KeyCodes.W && key != KeyCodes.A && key != KeyCodes.D)
@@ -91,6 +111,9 @@ namespace Alis.Sample.Asteroid
             }
         }
 
+        /// <summary>
+        /// Ons the update
+        /// </summary>
         public override void OnUpdate()
         {
             if (health <= 0)
@@ -100,6 +123,9 @@ namespace Alis.Sample.Asteroid
             }
         }
 
+        /// <summary>
+        /// Decrements this instance
+        /// </summary>
         public void Decrement()
         {
             health--;

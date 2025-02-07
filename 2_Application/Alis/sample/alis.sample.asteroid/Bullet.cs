@@ -32,8 +32,16 @@ using Alis.Core.Ecs.Entity;
 
 namespace Alis.Sample.Asteroid
 {
+    /// <summary>
+    /// The bullet class
+    /// </summary>
+    /// <seealso cref="AComponent"/>
     public class Bullet : AComponent
     {
+        /// <summary>
+        /// Ons the collision enter using the specified game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
         public override void OnCollisionEnter(GameObject gameObject)
         {
             if (gameObject.Tag == "Asteroid")

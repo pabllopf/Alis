@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -39,22 +39,50 @@ using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Sample.Asteroid
 {
+    /// <summary>
+    /// The asteroid class
+    /// </summary>
+    /// <seealso cref="AComponent"/>
     public class Asteroid : AComponent
     {
+        /// <summary>
+        /// The rb
+        /// </summary>
         private BoxCollider rb;
+        /// <summary>
+        /// The speed
+        /// </summary>
         public float speed;
 
+        /// <summary>
+        /// The sub asteroids
+        /// </summary>
         public GameObject[] subAsteroids;
+        /// <summary>
+        /// The number of asteroids
+        /// </summary>
         public int numberOfAsteroids;
+        /// <summary>
+        /// The health
+        /// </summary>
         private int health = 3;
 
+        /// <summary>
+        /// The random
+        /// </summary>
         private static readonly Random random = new Random();
         
+        /// <summary>
+        /// Ons the start
+        /// </summary>
         public override void OnStart () 
         {
             rb = this.GameObject.Get<BoxCollider>();
         }
         
+        /// <summary>
+        /// Ons the update
+        /// </summary>
         public override void OnUpdate () 
         {
            if (health <= 0)
@@ -67,6 +95,9 @@ namespace Alis.Sample.Asteroid
            }
         }
         
+        /// <summary>
+        /// Spawns the sub asteroids
+        /// </summary>
         private void SpawnSubAsteroids()
            {
                for (int i = 0; i < 2; i++)
@@ -154,6 +185,10 @@ namespace Alis.Sample.Asteroid
                }
            }
 
+        /// <summary>
+        /// Ons the collision enter using the specified game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
         public override void OnCollisionEnter(GameObject gameObject)
         {
             if (gameObject.Tag == "Player")
@@ -181,11 +216,18 @@ namespace Alis.Sample.Asteroid
             }
         }
 
+        /// <summary>
+        /// Ons the collision exit using the specified game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
         public override void OnCollisionExit(GameObject gameObject)
         {
             
         }
 
+        /// <summary>
+        /// Decreases the health
+        /// </summary>
         public void DecreaseHealth()
         {
             health -= 1;
