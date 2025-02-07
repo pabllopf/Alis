@@ -89,7 +89,7 @@ namespace Alis.Core.Graphic.Sample
         /// </summary>
         public static void Run()
         {
-            if (Sdl.Init(InitSettings.InitEverything) < 0)
+            if (Sdl.Init(InitSettings.InitEvents) < 0 || Sdl.Init(InitSettings.InitVideo) < 0)
             {
                 Logger.Exception($@"There was an issue initializing SDL. {Sdl.GetError()}");
             }
@@ -104,7 +104,7 @@ namespace Alis.Core.Graphic.Sample
 
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Windows)
             {
-                Sdl.SetHint(Hint.HintRenderDriver, "direct3d");
+                Sdl.SetHint(Hint.HintRenderDriver, "opengl");
             }
 
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.OSX)
