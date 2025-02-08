@@ -49,23 +49,7 @@ namespace Alis.Core.Aspect.Logging
             DateTime = DateTime.Now.ToUniversalTime();
             MessageType = messageType;
             Content = content;
-
-            StackTrace stackTrace1 = new StackTrace(2, false);
-            StackTrace stackTrace2 = new StackTrace(2, true);
-
-            string methodName = stackTrace1.GetFrame(0).GetMethod().Name;
-            Type reflectedType = stackTrace1.GetFrame(0).GetMethod().ReflectedType;
-            if (reflectedType != null)
-            {
-                string className = reflectedType.FullName;
-                Method = className + "." + methodName + "()";
-            }
-
             Level = MessageType.ToString();
-
-            StackTrace = stackTrace1.ToString().Trim();
-            File = stackTrace2.GetFrame(0).GetFileName();
-            Line = stackTrace2.GetFrame(0).GetFileLineNumber().ToString();
         }
 
         /// <summary>

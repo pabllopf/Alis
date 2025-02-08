@@ -34,9 +34,6 @@ using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Entity;
 using Alis.Core.Ecs.System.Scope;
-using Alis.Core.Graphic.Sdl2.Enums;
-using Alis.Core.Graphic.Sdl2.Structs;
-using Sdl = Alis.Core.Graphic.Sdl2.Sdl;
 
 namespace Alis.Core.Ecs.System.Manager.Input
 {
@@ -49,17 +46,17 @@ namespace Alis.Core.Ecs.System.Manager.Input
         /// <summary>
         ///     The sdl game controller axis
         /// </summary>
-        internal readonly List<GameControllerAxis> Axis = new List<GameControllerAxis>((GameControllerAxis[]) Enum.GetValues(typeof(GameControllerAxis)));
+        //internal readonly List<GameControllerAxis> Axis = new List<GameControllerAxis>((GameControllerAxis[]) Enum.GetValues(typeof(GameControllerAxis)));
 
         /// <summary>
         ///     The sdl game controller button
         /// </summary>
-        internal readonly List<GameControllerButton> Buttons = new List<GameControllerButton>((GameControllerButton[]) Enum.GetValues(typeof(GameControllerButton)));
+        //internal readonly List<GameControllerButton> Buttons = new List<GameControllerButton>((GameControllerButton[]) Enum.GetValues(typeof(GameControllerButton)));
 
         /// <summary>
         ///     The sdl event
         /// </summary>
-        internal Event SdlEvent;
+        //internal Event SdlEvent;
 
         /// <summary>
         ///     Temp list of keys
@@ -83,7 +80,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         /// <param name="isEnable">The is enable</param>
         /// <param name="context">The context</param>
         /// <param name="sdlEvent">The sdl event</param>
-        public InputManager(string id, string name, string tag, bool isEnable, Context context, Event sdlEvent) : base(id, name, tag, isEnable, context) => SdlEvent = sdlEvent;
+        //public InputManager(string id, string name, string tag, bool isEnable, Context context, Event sdlEvent) : base(id, name, tag, isEnable, context) => SdlEvent = sdlEvent;
 
         /// <summary>
         ///     Ons the init
@@ -99,6 +96,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         /// </summary>
         public override void OnDispatchEvents()
         {
+            /*
             if (Context is null || Sdl.WasInit(InitSettings.InitEvents) == 0)
             {
                 return;
@@ -115,7 +113,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
                 HandleSdlJoyAxisMotionEvent();
             }
 
-            NotifyKeyHold();
+            NotifyKeyHold();*/
         }
 
         /// <summary>
@@ -123,10 +121,10 @@ namespace Alis.Core.Ecs.System.Manager.Input
         /// </summary>
         internal void HandleSdlQuitEvent()
         {
-            if (SdlEvent.type == EventType.Quit)
+            /*if (SdlEvent.type == EventType.Quit)
             {
                 Context.Exit();
-            }
+            }*/
         }
 
         /// <summary>
@@ -134,6 +132,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         /// </summary>
         internal void HandleSdlKeyupEvent()
         {
+            /*
             if (SdlEvent.type == EventType.Keyup)
             {
                 KeyCodes indexUp = SdlEvent.key.KeySym.sym;
@@ -143,7 +142,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
                     TempListOfKeys.Remove(indexUp);
                     NotifyKeyRelease(indexUp);
                 }
-            }
+            }*/
         }
 
         /// <summary>
@@ -151,6 +150,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         /// </summary>
         internal void HandleSdlKeydownEvent()
         {
+            /*
             if (SdlEvent.type == EventType.Keydown)
             {
                 KeyCodes indexDown = SdlEvent.key.KeySym.sym;
@@ -159,7 +159,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
                     TempListOfKeys.Add(indexDown);
                     NotifyKeyPress(indexDown);
                 }
-            }
+            }*/
         }
 
         /// <summary>
@@ -167,6 +167,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         /// </summary>
         internal void HandleSdlJoyButtonDownEvent()
         {
+            /*
             for (int index = 0; index < Buttons.Count; index++)
             {
                 GameControllerButton button = Buttons[index];
@@ -175,7 +176,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
                 {
                     Logger.Info($"[SDL_JoystickName_id = '{SdlEvent.cDevice.which}'] Pressed button={button}");
                 }
-            }
+            }*/
         }
 
         /// <summary>
@@ -183,6 +184,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         /// </summary>
         internal void HandleSdlJoyAxisMotionEvent()
         {
+            /*
             for (int index = 0; index < Axis.Count; index++)
             {
                 GameControllerAxis axi = Axis[index];
@@ -191,7 +193,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
                 {
                     Logger.Info($"[SDL_JoystickName_id = '{SdlEvent.cDevice.which}'] Pressed axi={axi}");
                 }
-            }
+            }*/
         }
 
         /// <summary>

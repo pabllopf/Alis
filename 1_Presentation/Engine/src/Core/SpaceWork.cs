@@ -37,8 +37,8 @@ using Alis.App.Engine.Windows;
 using Alis.App.Engine.Windows.Settings;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Ecs.System;
-using Alis.Core.Graphic.Sdl2.Structs;
 using Alis.Extension.Graphic.ImGui;
+using Alis.Extension.Graphic.Sdl2.Structs;
 
 namespace Alis.App.Engine.Core
 {

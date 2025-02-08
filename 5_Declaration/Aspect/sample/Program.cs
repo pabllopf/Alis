@@ -32,9 +32,6 @@ using System.Threading;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Aspect.Memory;
-using Alis.Core.Aspect.Memory.Attributes;
-using Alis.Core.Aspect.Memory.Exceptions;
 using Alis.Core.Aspect.Sample.Data;
 using Alis.Core.Aspect.Sample.Fluent;
 using Alis.Core.Aspect.Thread;
@@ -47,11 +44,6 @@ namespace Alis.Core.Aspect.Sample
     /// </summary>
     public static class Program
     {
-        /// <summary>
-        ///     Gets or sets the value of the non zero value
-        /// </summary>
-        [IsNotZero] private static int _nonZeroValue;
-
         /// <summary>
         ///     Main the args
         /// </summary>
@@ -165,17 +157,6 @@ namespace Alis.Core.Aspect.Sample
             Logger.Info("--------------------------");
             Logger.Info("Memory sample");
             Logger.Info("--------------------------\n");
-
-            try
-            {
-                _nonZeroValue = 0;
-                Validator.Validate(_nonZeroValue, nameof(_nonZeroValue));
-            }
-            catch (NotZeroException ex)
-            {
-                Logger.Exception(ex);
-            }
-
 
             // SAMPLE ASPECT LOGGING
             Logger.Info("--------------------------");

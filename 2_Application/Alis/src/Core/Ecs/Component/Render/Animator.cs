@@ -33,7 +33,6 @@ using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Graphic.Sdl2.Enums;
 
 namespace Alis.Core.Ecs.Component.Render
 {
@@ -173,27 +172,6 @@ namespace Alis.Core.Ecs.Component.Render
                 currentAnimation = tempAnimation;
             }
         }
-
-        /// <summary>
-        ///     Changes the animation to using the specified name animation
-        /// </summary>
-        /// <param name="nameAnimation">The name animation</param>
-        /// <param name="flipsTo">The flip to</param>
-        public void ChangeAnimationTo(string nameAnimation, RendererFlips flipsTo)
-        {
-            if (currentAnimation.Name.Equals(nameAnimation) && (Sprite.Flips == flipsTo))
-            {
-                return;
-            }
-
-            Animation tempAnimation = Animations.Find(i => i.Name.Equals(nameAnimation));
-            Sprite.Flips = flipsTo;
-            if (tempAnimation != null)
-            {
-                currentAnimation = tempAnimation;
-            }
-        }
-
         /// <summary>
         ///     Gets the current animation
         /// </summary>

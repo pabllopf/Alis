@@ -29,9 +29,7 @@
 
 using System;
 using Alis.Builder.Core.Ecs.System.Setting.Graphic;
-using Alis.Builder.Core.Graphic;
 using Alis.Core.Ecs.System.Configuration.Graphic;
-using Alis.Core.Graphic;
 using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.System.Configuration.Graphic
@@ -64,19 +62,6 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration.Graphic
 
             Assert.NotNull(graphicSetting);
         }
-
-        /// <summary>
-        ///     Tests that window valid input
-        /// </summary>
-        [Fact]
-        public void Window_ValidInput()
-        {
-            GraphicSettingBuilder graphicSettingBuilder = new GraphicSettingBuilder();
-            Func<WindowBuilder, Window> windowFunc = wb => wb.Build();
-
-            graphicSettingBuilder.Window(windowFunc);
-
-            Assert.NotNull(graphicSettingBuilder.Build().Window);
-        }
+        
     }
 }

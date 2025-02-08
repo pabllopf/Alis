@@ -31,11 +31,9 @@ using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Memory.Exceptions;
-using Alis.Core.Graphic.Sdl2;
-using Alis.Core.Graphic.Sdl2.Structs;
-using Alis.Extension.Graphic.OpenGL;
-using Alis.Extension.Graphic.OpenGL.Enums;
-using Alis.Extension.Graphic.Sdl2Image;
+using Alis.Extension.Graphic.Sdl2;
+using Alis.Extension.Graphic.Sdl2.Sdl2Image;
+using Alis.Extension.Graphic.Sdl2.Structs;
 using PixelFormat = Alis.Extension.Graphic.OpenGL.Enums.PixelFormat;
 
 namespace Alis.App.Hub.Utils

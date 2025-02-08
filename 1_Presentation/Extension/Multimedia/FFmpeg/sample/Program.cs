@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Extension.Multimedia.FFmpeg.Sample
 {
     /// <summary>
@@ -40,7 +42,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            SdlController.Run();
+            Console.WriteLine("Hello World!");
         }
     }
 }

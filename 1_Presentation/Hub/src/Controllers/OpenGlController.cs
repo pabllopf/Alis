@@ -30,9 +30,6 @@
 using System;
 using Alis.App.Hub.Core;
 using Alis.App.Hub.Shaders;
-using Alis.Extension.Graphic.OpenGL;
-using Alis.Extension.Graphic.OpenGL.Constructs;
-using Alis.Extension.Graphic.OpenGL.Enums;
 
 namespace Alis.App.Hub.Controllers
 {

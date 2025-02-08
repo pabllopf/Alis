@@ -32,7 +32,6 @@ using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
 using Alis.Core.Ecs.System;
-using Alis.Core.Graphic.Sdl2.Enums;
 using Xunit;
 
 namespace Alis.Test.Core.Ecs.Component.Render
@@ -120,24 +119,6 @@ namespace Alis.Test.Core.Ecs.Component.Render
             SpriteBuilder result = sprite.Builder();
             Assert.NotNull(result);
             Assert.IsType<SpriteBuilder>(result);
-        }
-
-
-        /// <summary>
-        ///     Tests that flips set value should change value
-        /// </summary>
-        [Fact]
-        public void Flips_SetValue_ShouldChangeValue()
-        {
-            Sprite sprite = new Sprite();
-            sprite.Flips = RendererFlips.FlipHorizontal;
-            Assert.Equal(RendererFlips.FlipHorizontal, sprite.Flips);
-
-            sprite.Flips = RendererFlips.FlipVertical;
-            Assert.Equal(RendererFlips.FlipVertical, sprite.Flips);
-
-            sprite.Flips = RendererFlips.None;
-            Assert.Equal(RendererFlips.None, sprite.Flips);
         }
     }
 }

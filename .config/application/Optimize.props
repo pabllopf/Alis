@@ -3,4 +3,16 @@
     <PropertyGroup>
         <Optimize>true</Optimize>
     </PropertyGroup>
+
+
+    <PropertyGroup Condition="'$(Configuration)'=='Release' 
+        AND 
+        ('$(TargetFramework)'=='net8.0'
+        OR '$(TargetFramework)'=='net7.0'
+        OR '$(TargetFramework)'=='net6.0'
+        OR '$(TargetFramework)'=='net5.0')">
+        <Optimize>true</Optimize>
+        <PublishSingleFile>true</PublishSingleFile>
+        <SelfContained>true</SelfContained>
+    </PropertyGroup>
 </Project>

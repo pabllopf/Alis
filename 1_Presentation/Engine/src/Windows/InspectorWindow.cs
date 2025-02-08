@@ -198,7 +198,7 @@ namespace Alis.App.Engine.Windows
                 }
 
 
-                foreach (var group in groupedComponents)
+                foreach (IGrouping<string, Type> group in groupedComponents)
                 {
                     if (ImGui.CollapsingHeader(group.Key))
                     {
