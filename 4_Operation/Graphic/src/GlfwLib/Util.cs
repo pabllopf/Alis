@@ -1,10 +1,13 @@
-﻿using System;
+using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
 
 namespace Alis.Core.Graphic.GlfwLib
 {
+    /// <summary>
+    /// The util class
+    /// </summary>
     internal static class Util
     {
         #region Methods

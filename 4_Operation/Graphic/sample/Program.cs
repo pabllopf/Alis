@@ -1,9 +1,16 @@
-﻿using System;
+using System;
 
 namespace Alis.Core.Graphic.Sample
 {
+    /// <summary>
+    /// The program class
+    /// </summary>
     class Program
     {
+        /// <summary>
+        /// Main the args
+        /// </summary>
+        /// <param name="args">The args</param>
         static void Main(string[] args)
         {
             Console.WriteLine("Enter the number of the sample you want to run:");

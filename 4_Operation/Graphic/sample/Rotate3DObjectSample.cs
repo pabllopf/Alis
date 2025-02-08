@@ -12,16 +12,43 @@ using Exception = System.Exception;
 
 namespace Alis.Core.Graphic.Sample
 {
+    /// <summary>
+    /// The rotate object sample class
+    /// </summary>
     public class Rotate3DObjectSample
     {
+        /// <summary>
+        /// The running
+        /// </summary>
         private bool running = true;
+        /// <summary>
+        /// The shader program
+        /// </summary>
         private uint shaderProgram;
+        /// <summary>
+        /// The vao
+        /// </summary>
         private uint vao;
+        /// <summary>
+        /// The vbo
+        /// </summary>
         private uint vbo;
+        /// <summary>
+        /// The ebo
+        /// </summary>
         private uint ebo;
+        /// <summary>
+        /// The texture
+        /// </summary>
         private uint texture;
+        /// <summary>
+        /// The window
+        /// </summary>
         private Window window;
 
+        /// <summary>
+        /// Draws this instance
+        /// </summary>
         public void Draw()
         {
             Gl.GlUseProgram(shaderProgram);
@@ -29,6 +56,12 @@ namespace Alis.Core.Graphic.Sample
             Gl.GlDrawElements(PrimitiveType.Triangles, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
         }
 
+        /// <summary>
+        /// Runs this instance
+        /// </summary>
+        /// <exception cref="Exception">Failed to create GLFW window</exception>
+        /// <exception cref="Exception">Failed to initialize GLFW</exception>
+        /// <exception cref="FileNotFoundException">Texture file not found </exception>
         public void Run()
         {
             if (!Glfw.Init())

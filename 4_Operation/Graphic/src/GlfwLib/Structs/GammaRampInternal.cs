@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.InteropServices;
 
 namespace Alis.Core.Graphic.GlfwLib.Structs
@@ -11,9 +11,21 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
     [StructLayout(LayoutKind.Sequential)]
     internal struct GammaRampInternal
     {
+        /// <summary>
+        /// The red
+        /// </summary>
         public readonly IntPtr Red;
+        /// <summary>
+        /// The green
+        /// </summary>
         public readonly IntPtr Green;
+        /// <summary>
+        /// The blue
+        /// </summary>
         public readonly IntPtr Blue;
+        /// <summary>
+        /// The size
+        /// </summary>
         public readonly int Size;
 
         public static explicit operator GammaRamp(GammaRampInternal ramp)

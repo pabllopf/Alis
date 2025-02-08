@@ -5,8 +5,16 @@ using Alis.Core.Graphic.Stb.Hebron.Runtime;
 
 namespace Alis.Core.Graphic.Stb
 {
+	/// <summary>
+	/// The stb image class
+	/// </summary>
 	unsafe partial class StbImage
 	{
+		/// <summary>
+		/// Stbis the bmp test using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <returns>The </returns>
 		public static int stbi__bmp_test(stbi__context s)
 		{
 			int r = stbi__bmp_test_raw(s);
@@ -14,6 +22,16 @@ namespace Alis.Core.Graphic.Stb
 			return r;
 		}
 
+		/// <summary>
+		/// Stbis the bmp load using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <param name="x">The </param>
+		/// <param name="y">The </param>
+		/// <param name="comp">The comp</param>
+		/// <param name="req_comp">The req comp</param>
+		/// <param name="ri">The ri</param>
+		/// <returns>The out</returns>
 		public static void* stbi__bmp_load(stbi__context s, int* x, int* y, int* comp, int req_comp,
 			stbi__result_info* ri)
 		{
@@ -298,6 +316,14 @@ namespace Alis.Core.Graphic.Stb
 			return _out_;
 		}
 
+		/// <summary>
+		/// Stbis the bmp info using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <param name="x">The </param>
+		/// <param name="y">The </param>
+		/// <param name="comp">The comp</param>
+		/// <returns>The int</returns>
 		public static int stbi__bmp_info(stbi__context s, int* x, int* y, int* comp)
 		{
 			void* p;
@@ -325,6 +351,11 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// Stbis the bmp test raw using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <returns>The </returns>
 		public static int stbi__bmp_test_raw(stbi__context s)
 		{
 			int r = 0;
@@ -342,6 +373,12 @@ namespace Alis.Core.Graphic.Stb
 			return r;
 		}
 
+		/// <summary>
+		/// Stbis the bmp set mask defaults using the specified info
+		/// </summary>
+		/// <param name="info">The info</param>
+		/// <param name="compress">The compress</param>
+		/// <returns>The int</returns>
 		public static int stbi__bmp_set_mask_defaults(stbi__bmp_data* info, int compress)
 		{
 			if (compress == 3)
@@ -373,6 +410,12 @@ namespace Alis.Core.Graphic.Stb
 			return 0;
 		}
 
+		/// <summary>
+		/// Stbis the bmp parse header using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <param name="info">The info</param>
+		/// <returns>The void</returns>
 		public static void* stbi__bmp_parse_header(stbi__context s, stbi__bmp_data* info)
 		{
 			int hsz = 0;
@@ -476,17 +519,47 @@ namespace Alis.Core.Graphic.Stb
 			return (void*)1;
 		}
 
+		/// <summary>
+		/// The stbi bmp data
+		/// </summary>
 		[StructLayout(LayoutKind.Sequential)]
 		public struct stbi__bmp_data
 		{
+			/// <summary>
+			/// The bpp
+			/// </summary>
 			public int bpp;
+			/// <summary>
+			/// The offset
+			/// </summary>
 			public int offset;
+			/// <summary>
+			/// The hsz
+			/// </summary>
 			public int hsz;
+			/// <summary>
+			/// The mr
+			/// </summary>
 			public uint mr;
+			/// <summary>
+			/// The mg
+			/// </summary>
 			public uint mg;
+			/// <summary>
+			/// The mb
+			/// </summary>
 			public uint mb;
+			/// <summary>
+			/// The ma
+			/// </summary>
 			public uint ma;
+			/// <summary>
+			/// The all
+			/// </summary>
 			public uint all_a;
+			/// <summary>
+			/// The extra read
+			/// </summary>
 			public int extra_read;
 		}
 	}

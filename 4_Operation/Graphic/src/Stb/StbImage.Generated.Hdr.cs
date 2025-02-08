@@ -4,8 +4,16 @@ using Alis.Core.Graphic.Stb.Hebron.Runtime;
 
 namespace Alis.Core.Graphic.Stb
 {
+	/// <summary>
+	/// The stb image class
+	/// </summary>
 	unsafe partial class StbImage
 	{
+		/// <summary>
+		/// Stbis the hdr test using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <returns>The </returns>
 		public static int stbi__hdr_test(stbi__context s)
 		{
 			int r = stbi__hdr_test_core(s, "#?RADIANCE\n");
@@ -19,6 +27,16 @@ namespace Alis.Core.Graphic.Stb
 			return r;
 		}
 
+		/// <summary>
+		/// Stbis the hdr load using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <param name="x">The </param>
+		/// <param name="y">The </param>
+		/// <param name="comp">The comp</param>
+		/// <param name="req_comp">The req comp</param>
+		/// <param name="ri">The ri</param>
+		/// <returns>The float</returns>
 		public static float* stbi__hdr_load(stbi__context s, int* x, int* y, int* comp, int req_comp,
 			stbi__result_info* ri)
 		{
@@ -203,6 +221,14 @@ namespace Alis.Core.Graphic.Stb
 			return hdr_data;
 		}
 
+		/// <summary>
+		/// Stbis the hdr info using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <param name="x">The </param>
+		/// <param name="y">The </param>
+		/// <param name="comp">The comp</param>
+		/// <returns>The int</returns>
 		public static int stbi__hdr_info(stbi__context s, int* x, int* y, int* comp)
 		{
 			sbyte* buffer = stackalloc sbyte[1024];
@@ -259,6 +285,14 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// Stbis the hdr to ldr using the specified data
+		/// </summary>
+		/// <param name="data">The data</param>
+		/// <param name="x">The </param>
+		/// <param name="y">The </param>
+		/// <param name="comp">The comp</param>
+		/// <returns>The output</returns>
 		public static byte* stbi__hdr_to_ldr(float* data, int x, int y, int comp)
 		{
 			int i = 0;
@@ -306,6 +340,12 @@ namespace Alis.Core.Graphic.Stb
 			return output;
 		}
 
+		/// <summary>
+		/// Stbis the hdr test core using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <param name="signature">The signature</param>
+		/// <returns>The int</returns>
 		public static int stbi__hdr_test_core(stbi__context s, string signature)
 		{
 			int i = 0;
@@ -316,6 +356,12 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// Stbis the hdr gettoken using the specified z
+		/// </summary>
+		/// <param name="z">The </param>
+		/// <param name="buffer">The buffer</param>
+		/// <returns>The buffer</returns>
 		public static sbyte* stbi__hdr_gettoken(stbi__context z, sbyte* buffer)
 		{
 			int len = 0;
@@ -340,6 +386,12 @@ namespace Alis.Core.Graphic.Stb
 			return buffer;
 		}
 
+		/// <summary>
+		/// Stbis the hdr convert using the specified output
+		/// </summary>
+		/// <param name="output">The output</param>
+		/// <param name="input">The input</param>
+		/// <param name="req_comp">The req comp</param>
 		public static void stbi__hdr_convert(float* output, byte* input, int req_comp)
 		{
 			if (input[3] != 0)

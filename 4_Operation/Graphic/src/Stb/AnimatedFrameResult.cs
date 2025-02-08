@@ -1,12 +1,19 @@
-﻿namespace Alis.Core.Graphic.Stb
+namespace Alis.Core.Graphic.Stb
 {
 #if !STBSHARP_INTERNAL
+	/// <summary>
+	/// The animated frame result class
+	/// </summary>
+	/// <seealso cref="ImageResult"/>
 	public
 #else
 	internal
 #endif
 	class AnimatedFrameResult : ImageResult
 	{
+		/// <summary>
+		/// Gets or sets the value of the delay in ms
+		/// </summary>
 		public int DelayInMs { get; set; }
 	}
 }

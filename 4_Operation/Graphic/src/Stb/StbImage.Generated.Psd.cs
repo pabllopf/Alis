@@ -4,8 +4,16 @@ using Alis.Core.Graphic.Stb.Hebron.Runtime;
 
 namespace Alis.Core.Graphic.Stb
 {
+	/// <summary>
+	/// The stb image class
+	/// </summary>
 	unsafe partial class StbImage
 	{
+		/// <summary>
+		/// Stbis the psd test using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <returns>The </returns>
 		public static int stbi__psd_test(stbi__context s)
 		{
 			int r = stbi__get32be(s) == 0x38425053 ? 1 : 0;
@@ -13,6 +21,17 @@ namespace Alis.Core.Graphic.Stb
 			return r;
 		}
 
+		/// <summary>
+		/// Stbis the psd load using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <param name="x">The </param>
+		/// <param name="y">The </param>
+		/// <param name="comp">The comp</param>
+		/// <param name="req_comp">The req comp</param>
+		/// <param name="ri">The ri</param>
+		/// <param name="bpc">The bpc</param>
+		/// <returns>The out</returns>
 		public static void* stbi__psd_load(stbi__context s, int* x, int* y, int* comp, int req_comp,
 			stbi__result_info* ri, int bpc)
 		{
@@ -177,6 +196,14 @@ namespace Alis.Core.Graphic.Stb
 			return _out_;
 		}
 
+		/// <summary>
+		/// Stbis the psd info using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <param name="x">The </param>
+		/// <param name="y">The </param>
+		/// <param name="comp">The comp</param>
+		/// <returns>The int</returns>
 		public static int stbi__psd_info(stbi__context s, int* x, int* y, int* comp)
 		{
 			int channelCount = 0;
@@ -227,6 +254,11 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// Stbis the psd is 16 using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <returns>The int</returns>
 		public static int stbi__psd_is16(stbi__context s)
 		{
 			int channelCount = 0;
@@ -261,6 +293,13 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// Stbis the psd decode rle using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <param name="p">The </param>
+		/// <param name="pixelCount">The pixel count</param>
+		/// <returns>The int</returns>
 		public static int stbi__psd_decode_rle(stbi__context s, byte* p, int pixelCount)
 		{
 			int count = 0;

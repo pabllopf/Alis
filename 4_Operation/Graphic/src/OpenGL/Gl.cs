@@ -575,6 +575,10 @@ namespace Alis.Core.Graphic.OpenGL
             GlDeleteTextures(1, Uint1);
         }
 
+        /// <summary>
+        /// Generates the mipmap using the specified texture 2 d
+        /// </summary>
+        /// <param name="texture2D">The texture</param>
         public static void GenerateMipmap(TextureTarget texture2D) => _<GetString>("glGenerateMipmap");
         
     }

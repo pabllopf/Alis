@@ -8,14 +8,37 @@ using Exception = System.Exception;
 
 namespace Alis.Core.Graphic.Sample
 {
+    /// <summary>
+    /// The load bmp imagen sample class
+    /// </summary>
     public class LoadBmpImagenSample
     {
+        /// <summary>
+        /// The running
+        /// </summary>
         private bool running = true;
+        /// <summary>
+        /// The sprite
+        /// </summary>
         private Sprite sprite1;
+        /// <summary>
+        /// The sprite
+        /// </summary>
         private Sprite sprite2;
+        /// <summary>
+        /// The sprite
+        /// </summary>
         private Sprite sprite3;
+        /// <summary>
+        /// The window
+        /// </summary>
         private Window window;
 
+        /// <summary>
+        /// Runs this instance
+        /// </summary>
+        /// <exception cref="Exception">Failed to create GLFW window</exception>
+        /// <exception cref="Exception">Failed to initialize GLFW</exception>
         public void Run()
         {
             if (!Glfw.Init())
@@ -88,11 +111,25 @@ namespace Alis.Core.Graphic.Sample
             Gl.DeleteTexture(sprite3.Texture);
         }
 
+        /// <summary>
+        /// Framebuffers the size callback using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
         private void FramebufferSizeCallback(Window window, int width, int height)
         {
             Gl.GlViewport(0, 0, width, height);
         }
 
+        /// <summary>
+        /// Keys the callback using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="key">The key</param>
+        /// <param name="scancode">The scancode</param>
+        /// <param name="state">The state</param>
+        /// <param name="mods">The mods</param>
         private void KeyCallback(Window window, Keys key, int scancode, InputState state, ModifierKeys mods)
         {
             if (state == InputState.Press || state == InputState.Repeat)

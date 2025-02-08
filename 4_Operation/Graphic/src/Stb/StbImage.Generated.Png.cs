@@ -5,21 +5,56 @@ using Alis.Core.Graphic.Stb.Hebron.Runtime;
 
 namespace Alis.Core.Graphic.Stb
 {
+	/// <summary>
+	/// The stb image class
+	/// </summary>
 	unsafe partial class StbImage
 	{
+		/// <summary>
+		/// The stbi none
+		/// </summary>
 		public const int STBI__F_none = 0;
+		/// <summary>
+		/// The stbi sub
+		/// </summary>
 		public const int STBI__F_sub = 1;
+		/// <summary>
+		/// The stbi up
+		/// </summary>
 		public const int STBI__F_up = 2;
+		/// <summary>
+		/// The stbi avg
+		/// </summary>
 		public const int STBI__F_avg = 3;
+		/// <summary>
+		/// The stbi paeth
+		/// </summary>
 		public const int STBI__F_paeth = 4;
+		/// <summary>
+		/// The stbi avg first
+		/// </summary>
 		public const int STBI__F_avg_first = 5;
 
+		/// <summary>
+		/// The stbi sub
+		/// </summary>
 		public static byte[] first_row_filter =
 			{ STBI__F_none, STBI__F_sub, STBI__F_none, STBI__F_avg_first, STBI__F_sub };
 
+		/// <summary>
+		/// The stbi check png header png sig
+		/// </summary>
 		public static byte[] stbi__check_png_header_png_sig = { 137, 80, 78, 71, 13, 10, 26, 10 };
+		/// <summary>
+		/// The stbi depth scale table
+		/// </summary>
 		public static byte[] stbi__depth_scale_table = { 0, 0xff, 0x55, 0, 0x11, 0, 0, 0, 0x01 };
 
+		/// <summary>
+		/// Stbis the png test using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <returns>The </returns>
 		public static int stbi__png_test(stbi__context s)
 		{
 			int r = 0;
@@ -28,6 +63,16 @@ namespace Alis.Core.Graphic.Stb
 			return r;
 		}
 
+		/// <summary>
+		/// Stbis the png load using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <param name="x">The </param>
+		/// <param name="y">The </param>
+		/// <param name="comp">The comp</param>
+		/// <param name="req_comp">The req comp</param>
+		/// <param name="ri">The ri</param>
+		/// <returns>The void</returns>
 		public static void* stbi__png_load(stbi__context s, int* x, int* y, int* comp, int req_comp,
 			stbi__result_info* ri)
 		{
@@ -36,6 +81,14 @@ namespace Alis.Core.Graphic.Stb
 			return stbi__do_png(p, x, y, comp, req_comp, ri);
 		}
 
+		/// <summary>
+		/// Stbis the png info using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <param name="x">The </param>
+		/// <param name="y">The </param>
+		/// <param name="comp">The comp</param>
+		/// <returns>The int</returns>
 		public static int stbi__png_info(stbi__context s, int* x, int* y, int* comp)
 		{
 			stbi__png p = new stbi__png();
@@ -43,6 +96,11 @@ namespace Alis.Core.Graphic.Stb
 			return stbi__png_info_raw(p, x, y, comp);
 		}
 
+		/// <summary>
+		/// Stbis the png is 16 using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <returns>The int</returns>
 		public static int stbi__png_is16(stbi__context s)
 		{
 			stbi__png p = new stbi__png();
@@ -58,6 +116,11 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// Stbis the get chunk header using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <returns>The </returns>
 		public static stbi__pngchunk stbi__get_chunk_header(stbi__context s)
 		{
 			stbi__pngchunk c = new stbi__pngchunk();
@@ -66,6 +129,11 @@ namespace Alis.Core.Graphic.Stb
 			return c;
 		}
 
+		/// <summary>
+		/// Stbis the check png header using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <returns>The int</returns>
 		public static int stbi__check_png_header(stbi__context s)
 		{
 			int i = 0;
@@ -76,6 +144,13 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// Stbis the paeth using the specified a
+		/// </summary>
+		/// <param name="a">The </param>
+		/// <param name="b">The </param>
+		/// <param name="c">The </param>
+		/// <returns>The </returns>
 		public static int stbi__paeth(int a, int b, int c)
 		{
 			int thresh = c * 3 - (a + b);
@@ -86,6 +161,13 @@ namespace Alis.Core.Graphic.Stb
 			return t1;
 		}
 
+		/// <summary>
+		/// Stbis the create png alpha expand 8 using the specified dest
+		/// </summary>
+		/// <param name="dest">The dest</param>
+		/// <param name="src">The src</param>
+		/// <param name="x">The </param>
+		/// <param name="img_n">The img</param>
 		public static void stbi__create_png_alpha_expand8(byte* dest, byte* src, uint x, int img_n)
 		{
 			int i = 0;
@@ -106,6 +188,18 @@ namespace Alis.Core.Graphic.Stb
 		}
 
 
+		/// <summary>
+		/// Stbis the create png image raw using the specified a
+		/// </summary>
+		/// <param name="a">The </param>
+		/// <param name="raw">The raw</param>
+		/// <param name="raw_len">The raw len</param>
+		/// <param name="out_n">The out</param>
+		/// <param name="x">The </param>
+		/// <param name="y">The </param>
+		/// <param name="depth">The depth</param>
+		/// <param name="color">The color</param>
+		/// <returns>The int</returns>
 		public static int stbi__create_png_image_raw(stbi__png a, byte* raw, uint raw_len, int out_n, uint x, uint y,
 			int depth, int color)
 		{
@@ -277,6 +371,17 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// Stbis the create png image using the specified a
+		/// </summary>
+		/// <param name="a">The </param>
+		/// <param name="image_data">The image data</param>
+		/// <param name="image_data_len">The image data len</param>
+		/// <param name="out_n">The out</param>
+		/// <param name="depth">The depth</param>
+		/// <param name="color">The color</param>
+		/// <param name="interlaced">The interlaced</param>
+		/// <returns>The int</returns>
 		public static int stbi__create_png_image(stbi__png a, byte* image_data, uint image_data_len, int out_n,
 			int depth, int color, int interlaced)
 		{
@@ -333,6 +438,13 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// Stbis the compute transparency using the specified z
+		/// </summary>
+		/// <param name="z">The </param>
+		/// <param name="tc">The tc</param>
+		/// <param name="out_n">The out</param>
+		/// <returns>The int</returns>
 		public static int stbi__compute_transparency(stbi__png z, byte* tc, int out_n)
 		{
 			stbi__context s = z.s;
@@ -356,6 +468,13 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// Stbis the compute transparency 16 using the specified z
+		/// </summary>
+		/// <param name="z">The </param>
+		/// <param name="tc">The tc</param>
+		/// <param name="out_n">The out</param>
+		/// <returns>The int</returns>
 		public static int stbi__compute_transparency16(stbi__png z, ushort* tc, int out_n)
 		{
 			stbi__context s = z.s;
@@ -379,6 +498,14 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// Stbis the expand png palette using the specified a
+		/// </summary>
+		/// <param name="a">The </param>
+		/// <param name="palette">The palette</param>
+		/// <param name="len">The len</param>
+		/// <param name="pal_img_n">The pal img</param>
+		/// <returns>The int</returns>
 		public static int stbi__expand_png_palette(stbi__png a, byte* palette, int len, int pal_img_n)
 		{
 			uint i = 0;
@@ -415,6 +542,10 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// Stbis the de iphone using the specified z
+		/// </summary>
+		/// <param name="z">The </param>
 		public static void stbi__de_iphone(stbi__png z)
 		{
 			stbi__context s = z.s;
@@ -466,6 +597,13 @@ namespace Alis.Core.Graphic.Stb
 			}
 		}
 
+		/// <summary>
+		/// Stbis the parse png file using the specified z
+		/// </summary>
+		/// <param name="z">The </param>
+		/// <param name="scan">The scan</param>
+		/// <param name="req_comp">The req comp</param>
+		/// <returns>The int</returns>
 		public static int stbi__parse_png_file(stbi__png z, int scan, int req_comp)
 		{
 			byte* palette = stackalloc byte[1024];
@@ -740,6 +878,16 @@ namespace Alis.Core.Graphic.Stb
 			}
 		}
 
+		/// <summary>
+		/// Stbis the do png using the specified p
+		/// </summary>
+		/// <param name="p">The </param>
+		/// <param name="x">The </param>
+		/// <param name="y">The </param>
+		/// <param name="n">The </param>
+		/// <param name="req_comp">The req comp</param>
+		/// <param name="ri">The ri</param>
+		/// <returns>The result</returns>
 		public static void* stbi__do_png(stbi__png p, int* x, int* y, int* n, int req_comp, stbi__result_info* ri)
 		{
 			void* result = null;
@@ -781,6 +929,14 @@ namespace Alis.Core.Graphic.Stb
 			return result;
 		}
 
+		/// <summary>
+		/// Stbis the png info raw using the specified p
+		/// </summary>
+		/// <param name="p">The </param>
+		/// <param name="x">The </param>
+		/// <param name="y">The </param>
+		/// <param name="comp">The comp</param>
+		/// <returns>The int</returns>
 		public static int stbi__png_info_raw(stbi__png p, int* x, int* y, int* comp)
 		{
 			if (stbi__parse_png_file(p, STBI__SCAN_header, 0) == 0)
@@ -798,19 +954,46 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// The stbi png class
+		/// </summary>
 		public class stbi__png
 		{
+			/// <summary>
+			/// The out
+			/// </summary>
 			public byte* _out_;
+			/// <summary>
+			/// The depth
+			/// </summary>
 			public int depth;
+			/// <summary>
+			/// The expanded
+			/// </summary>
 			public byte* expanded;
+			/// <summary>
+			/// The idata
+			/// </summary>
 			public byte* idata;
+			/// <summary>
+			/// The 
+			/// </summary>
 			public stbi__context s;
 		}
 
+		/// <summary>
+		/// The stbi pngchunk
+		/// </summary>
 		[StructLayout(LayoutKind.Sequential)]
 		public struct stbi__pngchunk
 		{
+			/// <summary>
+			/// The length
+			/// </summary>
 			public uint length;
+			/// <summary>
+			/// The type
+			/// </summary>
 			public uint type;
 		}
 	}

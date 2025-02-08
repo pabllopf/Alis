@@ -5,11 +5,20 @@ using Alis.Core.Graphic.Stb.Hebron.Runtime;
 
 namespace Alis.Core.Graphic.Stb
 {
+	/// <summary>
+	/// The stb image class
+	/// </summary>
 	unsafe partial class StbImage
 	{
+		/// <summary>
+		/// The stbi zdefault distance
+		/// </summary>
 		public static byte[] stbi__zdefault_distance =
 			{ 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 };
 
+		/// <summary>
+		/// The stbi zdefault length
+		/// </summary>
 		public static byte[] stbi__zdefault_length =
 		{
 			8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
@@ -22,24 +31,44 @@ namespace Alis.Core.Graphic.Stb
 			9, 9, 9, 9, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 8, 8, 8
 		};
 
+		/// <summary>
+		/// The stbi zdist base
+		/// </summary>
 		public static int[] stbi__zdist_base =
 		{
 			1, 2, 3, 4, 5, 7, 9, 13, 17, 25, 33, 49, 65, 97, 129, 193, 257, 385, 513, 769, 1025, 1537, 2049, 3073, 4097,
 			6145, 8193, 12289, 16385, 24577, 0, 0
 		};
 
+		/// <summary>
+		/// The stbi zdist extra
+		/// </summary>
 		public static int[] stbi__zdist_extra =
 			{ 0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 0, 0 };
 
+		/// <summary>
+		/// The stbi zlength base
+		/// </summary>
 		public static int[] stbi__zlength_base =
 		{
 			3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 17, 19, 23, 27, 31, 35, 43, 51, 59, 67, 83, 99, 115, 131, 163, 195,
 			227, 258, 0, 0
 		};
 
+		/// <summary>
+		/// The stbi zlength extra
+		/// </summary>
 		public static int[] stbi__zlength_extra =
 			{ 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 0, 0, 0 };
 
+		/// <summary>
+		/// Stbis the zlib decode malloc guesssize using the specified buffer
+		/// </summary>
+		/// <param name="buffer">The buffer</param>
+		/// <param name="len">The len</param>
+		/// <param name="initial_size">The initial size</param>
+		/// <param name="outlen">The outlen</param>
+		/// <returns>The sbyte</returns>
 		public static sbyte* stbi_zlib_decode_malloc_guesssize(sbyte* buffer, int len, int initial_size, int* outlen)
 		{
 			stbi__zbuf a = new stbi__zbuf();
@@ -59,6 +88,15 @@ namespace Alis.Core.Graphic.Stb
 			return null;
 		}
 
+		/// <summary>
+		/// Stbis the zlib decode malloc guesssize headerflag using the specified buffer
+		/// </summary>
+		/// <param name="buffer">The buffer</param>
+		/// <param name="len">The len</param>
+		/// <param name="initial_size">The initial size</param>
+		/// <param name="outlen">The outlen</param>
+		/// <param name="parse_header">The parse header</param>
+		/// <returns>The sbyte</returns>
 		public static sbyte* stbi_zlib_decode_malloc_guesssize_headerflag(sbyte* buffer, int len, int initial_size,
 			int* outlen, int parse_header)
 		{
@@ -79,11 +117,26 @@ namespace Alis.Core.Graphic.Stb
 			return null;
 		}
 
+		/// <summary>
+		/// Stbis the zlib decode malloc using the specified buffer
+		/// </summary>
+		/// <param name="buffer">The buffer</param>
+		/// <param name="len">The len</param>
+		/// <param name="outlen">The outlen</param>
+		/// <returns>The sbyte</returns>
 		public static sbyte* stbi_zlib_decode_malloc(sbyte* buffer, int len, int* outlen)
 		{
 			return stbi_zlib_decode_malloc_guesssize(buffer, len, 16384, outlen);
 		}
 
+		/// <summary>
+		/// Stbis the zlib decode buffer using the specified obuffer
+		/// </summary>
+		/// <param name="obuffer">The obuffer</param>
+		/// <param name="olen">The olen</param>
+		/// <param name="ibuffer">The ibuffer</param>
+		/// <param name="ilen">The ilen</param>
+		/// <returns>The int</returns>
 		public static int stbi_zlib_decode_buffer(sbyte* obuffer, int olen, sbyte* ibuffer, int ilen)
 		{
 			stbi__zbuf a = new stbi__zbuf();
@@ -94,6 +147,13 @@ namespace Alis.Core.Graphic.Stb
 			return -1;
 		}
 
+		/// <summary>
+		/// Stbis the zlib decode noheader malloc using the specified buffer
+		/// </summary>
+		/// <param name="buffer">The buffer</param>
+		/// <param name="len">The len</param>
+		/// <param name="outlen">The outlen</param>
+		/// <returns>The sbyte</returns>
 		public static sbyte* stbi_zlib_decode_noheader_malloc(sbyte* buffer, int len, int* outlen)
 		{
 			stbi__zbuf a = new stbi__zbuf();
@@ -113,6 +173,14 @@ namespace Alis.Core.Graphic.Stb
 			return null;
 		}
 
+		/// <summary>
+		/// Stbis the zlib decode noheader buffer using the specified obuffer
+		/// </summary>
+		/// <param name="obuffer">The obuffer</param>
+		/// <param name="olen">The olen</param>
+		/// <param name="ibuffer">The ibuffer</param>
+		/// <param name="ilen">The ilen</param>
+		/// <returns>The int</returns>
 		public static int stbi_zlib_decode_noheader_buffer(sbyte* obuffer, int olen, sbyte* ibuffer, int ilen)
 		{
 			stbi__zbuf a = new stbi__zbuf();
@@ -123,6 +191,13 @@ namespace Alis.Core.Graphic.Stb
 			return -1;
 		}
 
+		/// <summary>
+		/// Stbis the zbuild huffman using the specified z
+		/// </summary>
+		/// <param name="z">The </param>
+		/// <param name="sizelist">The sizelist</param>
+		/// <param name="num">The num</param>
+		/// <returns>The int</returns>
 		public static int stbi__zbuild_huffman(stbi__zhuffman* z, byte* sizelist, int num)
 		{
 			int i = 0;
@@ -182,16 +257,30 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// Stbis the zeof using the specified z
+		/// </summary>
+		/// <param name="z">The </param>
+		/// <returns>The int</returns>
 		public static int stbi__zeof(stbi__zbuf* z)
 		{
 			return z->zbuffer >= z->zbuffer_end ? 1 : 0;
 		}
 
+		/// <summary>
+		/// Stbis the zget 8 using the specified z
+		/// </summary>
+		/// <param name="z">The </param>
+		/// <returns>The byte</returns>
 		public static byte stbi__zget8(stbi__zbuf* z)
 		{
 			return (byte)(stbi__zeof(z) != 0 ? 0 : *z->zbuffer++);
 		}
 
+		/// <summary>
+		/// Stbis the fill bits using the specified z
+		/// </summary>
+		/// <param name="z">The </param>
 		public static void stbi__fill_bits(stbi__zbuf* z)
 		{
 			do
@@ -207,6 +296,12 @@ namespace Alis.Core.Graphic.Stb
 			} while (z->num_bits <= 24);
 		}
 
+		/// <summary>
+		/// Stbis the zreceive using the specified z
+		/// </summary>
+		/// <param name="z">The </param>
+		/// <param name="n">The </param>
+		/// <returns>The </returns>
 		public static uint stbi__zreceive(stbi__zbuf* z, int n)
 		{
 			uint k = 0;
@@ -218,6 +313,12 @@ namespace Alis.Core.Graphic.Stb
 			return k;
 		}
 
+		/// <summary>
+		/// Stbis the zhuffman decode slowpath using the specified a
+		/// </summary>
+		/// <param name="a">The </param>
+		/// <param name="z">The </param>
+		/// <returns>The int</returns>
 		public static int stbi__zhuffman_decode_slowpath(stbi__zbuf* a, stbi__zhuffman* z)
 		{
 			int b = 0;
@@ -240,6 +341,12 @@ namespace Alis.Core.Graphic.Stb
 			return z->value[b];
 		}
 
+		/// <summary>
+		/// Stbis the zhuffman decode using the specified a
+		/// </summary>
+		/// <param name="a">The </param>
+		/// <param name="z">The </param>
+		/// <returns>The int</returns>
 		public static int stbi__zhuffman_decode(stbi__zbuf* a, stbi__zhuffman* z)
 		{
 			int b = 0;
@@ -276,6 +383,13 @@ namespace Alis.Core.Graphic.Stb
 			return stbi__zhuffman_decode_slowpath(a, z);
 		}
 
+		/// <summary>
+		/// Stbis the zexpand using the specified z
+		/// </summary>
+		/// <param name="z">The </param>
+		/// <param name="zout">The zout</param>
+		/// <param name="n">The </param>
+		/// <returns>The int</returns>
 		public static int stbi__zexpand(stbi__zbuf* z, sbyte* zout, int n)
 		{
 			sbyte* q;
@@ -305,6 +419,11 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// Stbis the parse huffman block using the specified a
+		/// </summary>
+		/// <param name="a">The </param>
+		/// <returns>The int</returns>
 		public static int stbi__parse_huffman_block(stbi__zbuf* a)
 		{
 			sbyte* zout = a->zout;
@@ -381,6 +500,11 @@ namespace Alis.Core.Graphic.Stb
 			}
 		}
 
+		/// <summary>
+		/// Stbis the compute huffman codes using the specified a
+		/// </summary>
+		/// <param name="a">The </param>
+		/// <returns>The int</returns>
 		public static int stbi__compute_huffman_codes(stbi__zbuf* a)
 		{
 			stbi__zhuffman z_codelength = new stbi__zhuffman();
@@ -450,6 +574,11 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// Stbis the parse uncompressed block using the specified a
+		/// </summary>
+		/// <param name="a">The </param>
+		/// <returns>The int</returns>
 		public static int stbi__parse_uncompressed_block(stbi__zbuf* a)
 		{
 			byte* header = stackalloc byte[4];
@@ -486,6 +615,11 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// Stbis the parse zlib header using the specified a
+		/// </summary>
+		/// <param name="a">The </param>
+		/// <returns>The int</returns>
 		public static int stbi__parse_zlib_header(stbi__zbuf* a)
 		{
 			int cmf = stbi__zget8(a);
@@ -502,6 +636,12 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// Stbis the parse zlib using the specified a
+		/// </summary>
+		/// <param name="a">The </param>
+		/// <param name="parse_header">The parse header</param>
+		/// <returns>The int</returns>
 		public static int stbi__parse_zlib(stbi__zbuf* a, int parse_header)
 		{
 			int final = 0;
@@ -555,6 +695,15 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// Stbis the do zlib using the specified a
+		/// </summary>
+		/// <param name="a">The </param>
+		/// <param name="obuf">The obuf</param>
+		/// <param name="olen">The olen</param>
+		/// <param name="exp">The exp</param>
+		/// <param name="parse_header">The parse header</param>
+		/// <returns>The int</returns>
 		public static int stbi__do_zlib(stbi__zbuf* a, sbyte* obuf, int olen, int exp, int parse_header)
 		{
 			a->zout_start = obuf;
@@ -564,30 +713,87 @@ namespace Alis.Core.Graphic.Stb
 			return stbi__parse_zlib(a, parse_header);
 		}
 
+		/// <summary>
+		/// The stbi zbuf
+		/// </summary>
 		[StructLayout(LayoutKind.Sequential)]
 		public struct stbi__zbuf
 		{
+			/// <summary>
+			/// The zbuffer
+			/// </summary>
 			public byte* zbuffer;
+			/// <summary>
+			/// The zbuffer end
+			/// </summary>
 			public byte* zbuffer_end;
+			/// <summary>
+			/// The num bits
+			/// </summary>
 			public int num_bits;
+			/// <summary>
+			/// The hit zeof once
+			/// </summary>
 			public int hit_zeof_once;
+			/// <summary>
+			/// The code buffer
+			/// </summary>
 			public uint code_buffer;
+			/// <summary>
+			/// The zout
+			/// </summary>
 			public sbyte* zout;
+			/// <summary>
+			/// The zout start
+			/// </summary>
 			public sbyte* zout_start;
+			/// <summary>
+			/// The zout end
+			/// </summary>
 			public sbyte* zout_end;
+			/// <summary>
+			/// The expandable
+			/// </summary>
 			public int z_expandable;
+			/// <summary>
+			/// The length
+			/// </summary>
 			public stbi__zhuffman z_length;
+			/// <summary>
+			/// The distance
+			/// </summary>
 			public stbi__zhuffman z_distance;
 		}
 
+		/// <summary>
+		/// The stbi zhuffman
+		/// </summary>
 		[StructLayout(LayoutKind.Sequential)]
 		public struct stbi__zhuffman
 		{
+			/// <summary>
+			/// The fast
+			/// </summary>
 			public fixed ushort fast[512];
+			/// <summary>
+			/// The firstcode
+			/// </summary>
 			public fixed ushort firstcode[16];
+			/// <summary>
+			/// The maxcode
+			/// </summary>
 			public fixed int maxcode[17];
+			/// <summary>
+			/// The firstsymbol
+			/// </summary>
 			public fixed ushort firstsymbol[16];
+			/// <summary>
+			/// The size
+			/// </summary>
 			public fixed byte size[288];
+			/// <summary>
+			/// The value
+			/// </summary>
 			public fixed ushort value[288];
 		}
 	}

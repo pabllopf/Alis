@@ -5,20 +5,41 @@ using Alis.Core.Graphic.Stb.Hebron.Runtime;
 
 namespace Alis.Core.Graphic.Stb
 {
+	/// <summary>
+	/// The stb image class
+	/// </summary>
 	unsafe partial class StbImage
 	{
+		/// <summary>
+		/// The delegate
+		/// </summary>
 		public delegate void delegate0(byte* arg0, int arg1, short* arg2);
 
+		/// <summary>
+		/// The delegate
+		/// </summary>
 		public delegate void delegate1(byte* arg0, byte* arg1, byte* arg2, byte* arg3, int arg4, int arg5);
 
+		/// <summary>
+		/// The delegate
+		/// </summary>
 		public delegate byte* delegate2(byte* arg0, byte* arg1, byte* arg2, int arg3, int arg4);
 
+		/// <summary>
+		/// The stbi bmask
+		/// </summary>
 		public static uint[] stbi__bmask =
 			{ 0, 1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383, 32767, 65535 };
 
+		/// <summary>
+		/// The stbi jbias
+		/// </summary>
 		public static int[] stbi__jbias =
 			{ 0, -1, -3, -7, -15, -31, -63, -127, -255, -511, -1023, -2047, -4095, -8191, -16383, -32767 };
 
+		/// <summary>
+		/// The stbi jpeg dezigzag
+		/// </summary>
 		public static byte[] stbi__jpeg_dezigzag =
 		{
 			0, 1, 8, 16, 9, 2, 3, 10, 17, 24, 32, 25, 18, 11, 4, 5, 12, 19, 26, 33, 40, 48, 41, 34, 27, 20, 13, 6, 7,
@@ -26,6 +47,11 @@ namespace Alis.Core.Graphic.Stb
 			53, 60, 61, 54, 47, 55, 62, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63
 		};
 
+		/// <summary>
+		/// Stbis the jpeg test using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <returns>The </returns>
 		public static int stbi__jpeg_test(stbi__context s)
 		{
 			int r = 0;
@@ -39,6 +65,16 @@ namespace Alis.Core.Graphic.Stb
 			return r;
 		}
 
+		/// <summary>
+		/// Stbis the jpeg load using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <param name="x">The </param>
+		/// <param name="y">The </param>
+		/// <param name="comp">The comp</param>
+		/// <param name="req_comp">The req comp</param>
+		/// <param name="ri">The ri</param>
+		/// <returns>The result</returns>
 		public static void* stbi__jpeg_load(stbi__context s, int* x, int* y, int* comp, int req_comp,
 			stbi__result_info* ri)
 		{
@@ -52,6 +88,14 @@ namespace Alis.Core.Graphic.Stb
 			return result;
 		}
 
+		/// <summary>
+		/// Stbis the jpeg info using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <param name="x">The </param>
+		/// <param name="y">The </param>
+		/// <param name="comp">The comp</param>
+		/// <returns>The result</returns>
 		public static int stbi__jpeg_info(stbi__context s, int* x, int* y, int* comp)
 		{
 			int result = 0;
@@ -63,6 +107,12 @@ namespace Alis.Core.Graphic.Stb
 			return result;
 		}
 
+		/// <summary>
+		/// Stbis the build huffman using the specified h
+		/// </summary>
+		/// <param name="h">The </param>
+		/// <param name="count">The count</param>
+		/// <returns>The int</returns>
 		public static int stbi__build_huffman(stbi__huffman* h, int* count)
 		{
 			int i = 0;
@@ -115,6 +165,11 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// Stbis the build fast ac using the specified fast ac
+		/// </summary>
+		/// <param name="fast_ac">The fast ac</param>
+		/// <param name="h">The </param>
 		public static void stbi__build_fast_ac(short[] fast_ac, stbi__huffman* h)
 		{
 			int i = 0;
@@ -141,6 +196,10 @@ namespace Alis.Core.Graphic.Stb
 			}
 		}
 
+		/// <summary>
+		/// Stbis the grow buffer unsafe using the specified j
+		/// </summary>
+		/// <param name="j">The </param>
 		public static void stbi__grow_buffer_unsafe(stbi__jpeg j)
 		{
 			do
@@ -165,6 +224,12 @@ namespace Alis.Core.Graphic.Stb
 			} while (j.code_bits <= 24);
 		}
 
+		/// <summary>
+		/// Stbis the jpeg huff decode using the specified j
+		/// </summary>
+		/// <param name="j">The </param>
+		/// <param name="h">The </param>
+		/// <returns>The int</returns>
 		public static int stbi__jpeg_huff_decode(stbi__jpeg j, stbi__huffman* h)
 		{
 			uint temp = 0;
@@ -205,6 +270,12 @@ namespace Alis.Core.Graphic.Stb
 			return h->values[c];
 		}
 
+		/// <summary>
+		/// Stbis the extend receive using the specified j
+		/// </summary>
+		/// <param name="j">The </param>
+		/// <param name="n">The </param>
+		/// <returns>The int</returns>
 		public static int stbi__extend_receive(stbi__jpeg j, int n)
 		{
 			uint k = 0;
@@ -221,6 +292,12 @@ namespace Alis.Core.Graphic.Stb
 			return (int)(k + (stbi__jbias[n] & (sgn - 1)));
 		}
 
+		/// <summary>
+		/// Stbis the jpeg get bits using the specified j
+		/// </summary>
+		/// <param name="j">The </param>
+		/// <param name="n">The </param>
+		/// <returns>The int</returns>
 		public static int stbi__jpeg_get_bits(stbi__jpeg j, int n)
 		{
 			uint k = 0;
@@ -235,6 +312,11 @@ namespace Alis.Core.Graphic.Stb
 			return (int)k;
 		}
 
+		/// <summary>
+		/// Stbis the jpeg get bit using the specified j
+		/// </summary>
+		/// <param name="j">The </param>
+		/// <returns>The int</returns>
 		public static int stbi__jpeg_get_bit(stbi__jpeg j)
 		{
 			uint k = 0;
@@ -248,6 +330,17 @@ namespace Alis.Core.Graphic.Stb
 			return (int)(k & 0x80000000);
 		}
 
+		/// <summary>
+		/// Stbis the jpeg decode block using the specified j
+		/// </summary>
+		/// <param name="j">The </param>
+		/// <param name="data">The data</param>
+		/// <param name="hdc">The hdc</param>
+		/// <param name="hac">The hac</param>
+		/// <param name="fac">The fac</param>
+		/// <param name="b">The </param>
+		/// <param name="dequant">The dequant</param>
+		/// <returns>The int</returns>
 		public static int stbi__jpeg_decode_block(stbi__jpeg j, short* data, stbi__huffman* hdc, stbi__huffman* hac,
 			short[] fac, int b, ushort[] dequant)
 		{
@@ -316,6 +409,14 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// Stbis the jpeg decode block prog dc using the specified j
+		/// </summary>
+		/// <param name="j">The </param>
+		/// <param name="data">The data</param>
+		/// <param name="hdc">The hdc</param>
+		/// <param name="b">The </param>
+		/// <returns>The int</returns>
 		public static int stbi__jpeg_decode_block_prog_dc(stbi__jpeg j, short* data, stbi__huffman* hdc, int b)
 		{
 			int diff = 0;
@@ -349,6 +450,14 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// Stbis the jpeg decode block prog ac using the specified j
+		/// </summary>
+		/// <param name="j">The </param>
+		/// <param name="data">The data</param>
+		/// <param name="hac">The hac</param>
+		/// <param name="fac">The fac</param>
+		/// <returns>The int</returns>
 		public static int stbi__jpeg_decode_block_prog_ac(stbi__jpeg j, short* data, stbi__huffman* hac, short[] fac)
 		{
 			int k = 0;
@@ -498,6 +607,12 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// Stbis the idct block using the specified  out 
+		/// </summary>
+		/// <param name="_out_">The out</param>
+		/// <param name="out_stride">The out stride</param>
+		/// <param name="data">The data</param>
 		public static void stbi__idct_block(byte* _out_, int out_stride, short* data)
 		{
 			int i = 0;
@@ -638,6 +753,11 @@ namespace Alis.Core.Graphic.Stb
 			}
 		}
 
+		/// <summary>
+		/// Stbis the get marker using the specified j
+		/// </summary>
+		/// <param name="j">The </param>
+		/// <returns>The </returns>
 		public static byte stbi__get_marker(stbi__jpeg j)
 		{
 			byte x = 0;
@@ -657,6 +777,10 @@ namespace Alis.Core.Graphic.Stb
 			return x;
 		}
 
+		/// <summary>
+		/// Stbis the jpeg reset using the specified j
+		/// </summary>
+		/// <param name="j">The </param>
 		public static void stbi__jpeg_reset(stbi__jpeg j)
 		{
 			j.code_bits = 0;
@@ -668,6 +792,11 @@ namespace Alis.Core.Graphic.Stb
 			j.eob_run = 0;
 		}
 
+		/// <summary>
+		/// Stbis the parse entropy coded data using the specified z
+		/// </summary>
+		/// <param name="z">The </param>
+		/// <returns>The int</returns>
 		public static int stbi__parse_entropy_coded_data(stbi__jpeg z)
 		{
 			stbi__jpeg_reset(z);
@@ -837,6 +966,11 @@ namespace Alis.Core.Graphic.Stb
 			}
 		}
 
+		/// <summary>
+		/// Stbis the jpeg dequantize using the specified data
+		/// </summary>
+		/// <param name="data">The data</param>
+		/// <param name="dequant">The dequant</param>
 		public static void stbi__jpeg_dequantize(short* data, ushort[] dequant)
 		{
 			int i = 0;
@@ -844,6 +978,10 @@ namespace Alis.Core.Graphic.Stb
 				data[i] *= (short)dequant[i];
 		}
 
+		/// <summary>
+		/// Stbis the jpeg finish using the specified z
+		/// </summary>
+		/// <param name="z">The </param>
 		public static void stbi__jpeg_finish(stbi__jpeg z)
 		{
 			if (z.progressive != 0)
@@ -867,6 +1005,12 @@ namespace Alis.Core.Graphic.Stb
 			}
 		}
 
+		/// <summary>
+		/// Stbis the process marker using the specified z
+		/// </summary>
+		/// <param name="z">The </param>
+		/// <param name="m">The </param>
+		/// <returns>The int</returns>
 		public static int stbi__process_marker(stbi__jpeg z, int m)
 		{
 			int L = 0;
@@ -1003,6 +1147,11 @@ namespace Alis.Core.Graphic.Stb
 			return stbi__err("unknown marker");
 		}
 
+		/// <summary>
+		/// Stbis the process scan header using the specified z
+		/// </summary>
+		/// <param name="z">The </param>
+		/// <returns>The int</returns>
 		public static int stbi__process_scan_header(stbi__jpeg z)
 		{
 			int i = 0;
@@ -1058,6 +1207,13 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// Stbis the free jpeg components using the specified z
+		/// </summary>
+		/// <param name="z">The </param>
+		/// <param name="ncomp">The ncomp</param>
+		/// <param name="why">The why</param>
+		/// <returns>The why</returns>
 		public static int stbi__free_jpeg_components(stbi__jpeg z, int ncomp, int why)
 		{
 			int i = 0;
@@ -1087,6 +1243,12 @@ namespace Alis.Core.Graphic.Stb
 			return why;
 		}
 
+		/// <summary>
+		/// Stbis the process frame header using the specified z
+		/// </summary>
+		/// <param name="z">The </param>
+		/// <param name="scan">The scan</param>
+		/// <returns>The int</returns>
 		public static int stbi__process_frame_header(stbi__jpeg z, int scan)
 		{
 			stbi__context s = z.s;
@@ -1196,6 +1358,12 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// Stbis the decode jpeg header using the specified z
+		/// </summary>
+		/// <param name="z">The </param>
+		/// <param name="scan">The scan</param>
+		/// <returns>The int</returns>
 		public static int stbi__decode_jpeg_header(stbi__jpeg z, int scan)
 		{
 			int m = 0;
@@ -1227,6 +1395,11 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// Stbis the skip jpeg junk at end using the specified j
+		/// </summary>
+		/// <param name="j">The </param>
+		/// <returns>The byte</returns>
 		public static byte stbi__skip_jpeg_junk_at_end(stbi__jpeg j)
 		{
 			while (stbi__at_eof(j.s) == 0)
@@ -1245,6 +1418,11 @@ namespace Alis.Core.Graphic.Stb
 			return 0xff;
 		}
 
+		/// <summary>
+		/// Stbis the decode jpeg image using the specified j
+		/// </summary>
+		/// <param name="j">The </param>
+		/// <returns>The int</returns>
 		public static int stbi__decode_jpeg_image(stbi__jpeg j)
 		{
 			int m = 0;
@@ -1294,11 +1472,29 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// Resamples the row 1 using the specified  out 
+		/// </summary>
+		/// <param name="_out_">The out</param>
+		/// <param name="in_near">The in near</param>
+		/// <param name="in_far">The in far</param>
+		/// <param name="w">The </param>
+		/// <param name="hs">The hs</param>
+		/// <returns>The in near</returns>
 		public static byte* resample_row_1(byte* _out_, byte* in_near, byte* in_far, int w, int hs)
 		{
 			return in_near;
 		}
 
+		/// <summary>
+		/// Stbis the resample row v 2 using the specified  out 
+		/// </summary>
+		/// <param name="_out_">The out</param>
+		/// <param name="in_near">The in near</param>
+		/// <param name="in_far">The in far</param>
+		/// <param name="w">The </param>
+		/// <param name="hs">The hs</param>
+		/// <returns>The out</returns>
 		public static byte* stbi__resample_row_v_2(byte* _out_, byte* in_near, byte* in_far, int w, int hs)
 		{
 			int i = 0;
@@ -1308,6 +1504,15 @@ namespace Alis.Core.Graphic.Stb
 			return _out_;
 		}
 
+		/// <summary>
+		/// Stbis the resample row h 2 using the specified  out 
+		/// </summary>
+		/// <param name="_out_">The out</param>
+		/// <param name="in_near">The in near</param>
+		/// <param name="in_far">The in far</param>
+		/// <param name="w">The </param>
+		/// <param name="hs">The hs</param>
+		/// <returns>The out</returns>
 		public static byte* stbi__resample_row_h_2(byte* _out_, byte* in_near, byte* in_far, int w, int hs)
 		{
 			int i = 0;
@@ -1332,6 +1537,15 @@ namespace Alis.Core.Graphic.Stb
 			return _out_;
 		}
 
+		/// <summary>
+		/// Stbis the resample row hv 2 using the specified  out 
+		/// </summary>
+		/// <param name="_out_">The out</param>
+		/// <param name="in_near">The in near</param>
+		/// <param name="in_far">The in far</param>
+		/// <param name="w">The </param>
+		/// <param name="hs">The hs</param>
+		/// <returns>The out</returns>
 		public static byte* stbi__resample_row_hv_2(byte* _out_, byte* in_near, byte* in_far, int w, int hs)
 		{
 			int i = 0;
@@ -1357,6 +1571,15 @@ namespace Alis.Core.Graphic.Stb
 			return _out_;
 		}
 
+		/// <summary>
+		/// Stbis the resample row generic using the specified  out 
+		/// </summary>
+		/// <param name="_out_">The out</param>
+		/// <param name="in_near">The in near</param>
+		/// <param name="in_far">The in far</param>
+		/// <param name="w">The </param>
+		/// <param name="hs">The hs</param>
+		/// <returns>The out</returns>
 		public static byte* stbi__resample_row_generic(byte* _out_, byte* in_near, byte* in_far, int w, int hs)
 		{
 			int i = 0;
@@ -1368,6 +1591,15 @@ namespace Alis.Core.Graphic.Stb
 			return _out_;
 		}
 
+		/// <summary>
+		/// Stbis the y cb cr to rgb row using the specified  out 
+		/// </summary>
+		/// <param name="_out_">The out</param>
+		/// <param name="y">The </param>
+		/// <param name="pcb">The pcb</param>
+		/// <param name="pcr">The pcr</param>
+		/// <param name="count">The count</param>
+		/// <param name="step">The step</param>
 		public static void stbi__YCbCr_to_RGB_row(byte* _out_, byte* y, byte* pcb, byte* pcr, int count, int step)
 		{
 			int i = 0;
@@ -1418,6 +1650,10 @@ namespace Alis.Core.Graphic.Stb
 			}
 		}
 
+		/// <summary>
+		/// Stbis the setup jpeg using the specified j
+		/// </summary>
+		/// <param name="j">The </param>
 		public static void stbi__setup_jpeg(stbi__jpeg j)
 		{
 			j.idct_block_kernel = stbi__idct_block;
@@ -1425,11 +1661,24 @@ namespace Alis.Core.Graphic.Stb
 			j.resample_row_hv_2_kernel = stbi__resample_row_hv_2;
 		}
 
+		/// <summary>
+		/// Stbis the cleanup jpeg using the specified j
+		/// </summary>
+		/// <param name="j">The </param>
 		public static void stbi__cleanup_jpeg(stbi__jpeg j)
 		{
 			stbi__free_jpeg_components(j, j.s.img_n, 0);
 		}
 
+		/// <summary>
+		/// Loads the jpeg image using the specified z
+		/// </summary>
+		/// <param name="z">The </param>
+		/// <param name="out_x">The out</param>
+		/// <param name="out_y">The out</param>
+		/// <param name="comp">The comp</param>
+		/// <param name="req_comp">The req comp</param>
+		/// <returns>The byte</returns>
 		public static byte* load_jpeg_image(stbi__jpeg z, int* out_x, int* out_y, int* comp, int req_comp)
 		{
 			int n = 0;
@@ -1639,6 +1888,14 @@ namespace Alis.Core.Graphic.Stb
 			}
 		}
 
+		/// <summary>
+		/// Stbis the jpeg info raw using the specified j
+		/// </summary>
+		/// <param name="j">The </param>
+		/// <param name="x">The </param>
+		/// <param name="y">The </param>
+		/// <param name="comp">The comp</param>
+		/// <returns>The int</returns>
 		public static int stbi__jpeg_info_raw(stbi__jpeg j, int* x, int* y, int* comp)
 		{
 			if (stbi__decode_jpeg_header(j, STBI__SCAN_header) == 0)
@@ -1656,85 +1913,289 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// The stbi huffman
+		/// </summary>
 		[StructLayout(LayoutKind.Sequential)]
 		public struct stbi__huffman
 		{
+			/// <summary>
+			/// The fast
+			/// </summary>
 			public fixed byte fast[512];
+			/// <summary>
+			/// The code
+			/// </summary>
 			public fixed ushort code[256];
+			/// <summary>
+			/// The values
+			/// </summary>
 			public fixed byte values[256];
+			/// <summary>
+			/// The size
+			/// </summary>
 			public fixed byte size[257];
+			/// <summary>
+			/// The maxcode
+			/// </summary>
 			public fixed uint maxcode[18];
+			/// <summary>
+			/// The delta
+			/// </summary>
 			public fixed int delta[17];
 		}
 
+		/// <summary>
+		/// The stbi jpeg class
+		/// </summary>
 		public class stbi__jpeg
 		{
+			/// <summary>
+			/// The app14 color transform
+			/// </summary>
 			public int app14_color_transform;
+			/// <summary>
+			/// The code bits
+			/// </summary>
 			public int code_bits;
+			/// <summary>
+			/// The code buffer
+			/// </summary>
 			public uint code_buffer;
+			/// <summary>
+			/// The create array
+			/// </summary>
 			public ushort[][] dequant = Utility.CreateArray<ushort>(4, 64);
+			/// <summary>
+			/// The eob run
+			/// </summary>
 			public int eob_run;
+			/// <summary>
+			/// The create array
+			/// </summary>
 			public short[][] fast_ac = Utility.CreateArray<short>(4, 512);
+			/// <summary>
+			/// The stbi huffman
+			/// </summary>
 			public stbi__huffman[] huff_ac = new stbi__huffman[4];
+			/// <summary>
+			/// The stbi huffman
+			/// </summary>
 			public stbi__huffman[] huff_dc = new stbi__huffman[4];
+			/// <summary>
+			/// The idct block kernel
+			/// </summary>
 			public delegate0 idct_block_kernel;
+			/// <summary>
+			/// The unnamed
+			/// </summary>
 			public unnamed1[] img_comp = new unnamed1[4];
+			/// <summary>
+			/// The img max
+			/// </summary>
 			public int img_h_max;
+			/// <summary>
+			/// The img mcu
+			/// </summary>
 			public int img_mcu_h;
+			/// <summary>
+			/// The img mcu
+			/// </summary>
 			public int img_mcu_w;
+			/// <summary>
+			/// The img mcu
+			/// </summary>
 			public int img_mcu_x;
+			/// <summary>
+			/// The img mcu
+			/// </summary>
 			public int img_mcu_y;
+			/// <summary>
+			/// The img max
+			/// </summary>
 			public int img_v_max;
+			/// <summary>
+			/// The jfif
+			/// </summary>
 			public int jfif;
+			/// <summary>
+			/// The marker
+			/// </summary>
 			public byte marker;
+			/// <summary>
+			/// The nomore
+			/// </summary>
 			public int nomore;
+			/// <summary>
+			/// The order
+			/// </summary>
 			public int[] order = new int[4];
+			/// <summary>
+			/// The progressive
+			/// </summary>
 			public int progressive;
+			/// <summary>
+			/// The resample row hv kernel
+			/// </summary>
 			public delegate2 resample_row_hv_2_kernel;
+			/// <summary>
+			/// The restart interval
+			/// </summary>
 			public int restart_interval;
+			/// <summary>
+			/// The rgb
+			/// </summary>
 			public int rgb;
+			/// <summary>
+			/// The 
+			/// </summary>
 			public stbi__context s;
+			/// <summary>
+			/// The scan
+			/// </summary>
 			public int scan_n;
+			/// <summary>
+			/// The spec end
+			/// </summary>
 			public int spec_end;
+			/// <summary>
+			/// The spec start
+			/// </summary>
 			public int spec_start;
+			/// <summary>
+			/// The succ high
+			/// </summary>
 			public int succ_high;
+			/// <summary>
+			/// The succ low
+			/// </summary>
 			public int succ_low;
+			/// <summary>
+			/// The todo
+			/// </summary>
 			public int todo;
+			/// <summary>
+			/// The ycbcr to rgb kernel
+			/// </summary>
 			public delegate1 YCbCr_to_RGB_kernel;
 
+			/// <summary>
+			/// The unnamed
+			/// </summary>
 			[StructLayout(LayoutKind.Sequential)]
 			public struct unnamed1
 			{
+				/// <summary>
+				/// The id
+				/// </summary>
 				public int id;
+				/// <summary>
+				/// The 
+				/// </summary>
 				public int h;
+				/// <summary>
+				/// The 
+				/// </summary>
 				public int v;
+				/// <summary>
+				/// The tq
+				/// </summary>
 				public int tq;
+				/// <summary>
+				/// The hd
+				/// </summary>
 				public int hd;
+				/// <summary>
+				/// The ha
+				/// </summary>
 				public int ha;
+				/// <summary>
+				/// The dc pred
+				/// </summary>
 				public int dc_pred;
+				/// <summary>
+				/// The 
+				/// </summary>
 				public int x;
+				/// <summary>
+				/// The 
+				/// </summary>
 				public int y;
+				/// <summary>
+				/// The 
+				/// </summary>
 				public int w2;
+				/// <summary>
+				/// The 
+				/// </summary>
 				public int h2;
+				/// <summary>
+				/// The data
+				/// </summary>
 				public byte* data;
+				/// <summary>
+				/// The raw data
+				/// </summary>
 				public void* raw_data;
+				/// <summary>
+				/// The raw coeff
+				/// </summary>
 				public void* raw_coeff;
+				/// <summary>
+				/// The linebuf
+				/// </summary>
 				public byte* linebuf;
+				/// <summary>
+				/// The coeff
+				/// </summary>
 				public short* coeff;
+				/// <summary>
+				/// The coeff
+				/// </summary>
 				public int coeff_w;
+				/// <summary>
+				/// The coeff
+				/// </summary>
 				public int coeff_h;
 			}
 		}
 
+		/// <summary>
+		/// The stbi resample class
+		/// </summary>
 		public class stbi__resample
 		{
+			/// <summary>
+			/// The hs
+			/// </summary>
 			public int hs;
+			/// <summary>
+			/// The line
+			/// </summary>
 			public byte* line0;
+			/// <summary>
+			/// The line
+			/// </summary>
 			public byte* line1;
+			/// <summary>
+			/// The resample
+			/// </summary>
 			public delegate2 resample;
+			/// <summary>
+			/// The vs
+			/// </summary>
 			public int vs;
+			/// <summary>
+			/// The lores
+			/// </summary>
 			public int w_lores;
+			/// <summary>
+			/// The ypos
+			/// </summary>
 			public int ypos;
+			/// <summary>
+			/// The ystep
+			/// </summary>
 			public int ystep;
 		}
 	}
