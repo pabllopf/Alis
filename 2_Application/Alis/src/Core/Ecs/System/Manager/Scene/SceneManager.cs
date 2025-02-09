@@ -355,6 +355,10 @@ namespace Alis.Core.Ecs.System.Manager.Scene
             Scenes.Remove(component);
         }
         
+        /// <summary>
+        /// Destroys the game object using the specified game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
         public void DestroyGameObject(GameObject gameObject)
         {
             CurrentScene.Remove(gameObject);

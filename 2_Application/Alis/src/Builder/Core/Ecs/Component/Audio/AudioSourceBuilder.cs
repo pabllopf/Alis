@@ -92,6 +92,11 @@ namespace Alis.Builder.Core.Ecs.Component.Audio
             return this;
         }
 
+        /// <summary>
+        /// Loops the is loop
+        /// </summary>
+        /// <param name="isLoop">The is loop</param>
+        /// <returns>The audio source builder</returns>
         public AudioSourceBuilder Loop(bool isLoop)
         {
             audioSource.Loop = isLoop;

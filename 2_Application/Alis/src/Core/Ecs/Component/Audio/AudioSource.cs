@@ -148,6 +148,9 @@ namespace Alis.Core.Ecs.Component.Audio
             }
         }
         
+        /// <summary>
+        /// Ons the update
+        /// </summary>
         public override void OnUpdate()
         {
             if (AudioClip.IsLooping && !IsPlaying)
