@@ -1,69 +1,23 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Sprite.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
-
 using System;
+using System.IO;
+using System.Runtime.InteropServices;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Graphic.OpenGL;
+using Alis.Core.Graphic.OpenGL.Enums;
+using Alis.Core.Graphic.Stb;
 
 namespace Alis.Core.Ecs.Component.Render
 {
-    /// <summary>
-    ///     The sprite class
-    /// </summary>
-    /// <seealso cref="AComponent" />
-    /// <seealso cref="IHasBuilder{TOut}" />
-    public class Sprite :
-        AComponent,
-        IHasBuilder<SpriteBuilder>
+    public class Sprite : AComponent, IHasBuilder<SpriteBuilder>
     {
-        /// <summary>
-        ///     The
-        /// </summary>
-        //private int h;
+        private GCHandle imageHandle;
+        private GCHandle indicesHandle;
+        private GCHandle verticesHandle;
 
-        /// <summary>
-        ///     The rectangle
-        /// </summary>
-        private RectangleI rectangle;
-
-        /// <summary>
-        ///     The
-        /// </summary>
-        //private int w;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Sprite" /> class
-        /// </summary>
         public Sprite()
         {
             NameFile = "";
@@ -71,10 +25,6 @@ namespace Alis.Core.Ecs.Component.Render
             Depth = 0;
         }
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Sprite" /> class
-        /// </summary>
-        /// <param name="nameFile">The name file</param>
         public Sprite(string nameFile)
         {
             NameFile = nameFile;
@@ -82,11 +32,6 @@ namespace Alis.Core.Ecs.Component.Render
             Depth = 0;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Sprite"/> class
-        /// </summary>
-        /// <param name="nameFile">The name file</param>
-        /// <param name="depth">The depth</param>
         private Sprite(string nameFile, int depth)
         {
             NameFile = nameFile;
@@ -94,217 +39,208 @@ namespace Alis.Core.Ecs.Component.Render
             Depth = depth;
         }
 
-        /// <summary>
-        ///     The level
-        /// </summary>
-        [JsonPropertyName("_Depth_")]
+        [JsonPropertyName("_Depth_")] 
         public int Depth { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the value of the path
-        /// </summary>
-        [JsonIgnore]
+        [JsonIgnore] 
         public string Path { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the value of the name file
-        /// </summary>
-        [JsonPropertyName("_NameFile_")]
+        [JsonPropertyName("_NameFile_")] 
         public string NameFile { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the value of the texture
-        /// </summary>
-        [JsonIgnore]
-        public IntPtr Texture { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the value of the size
-        /// </summary>
-        [JsonPropertyName("_Size_")]
+        [JsonPropertyName("_Size_")] 
         public Vector2F Size { get; set; }
 
-        /// <summary>
-        ///     Builders this instance
-        /// </summary>
-        /// <returns>The sprite builder</returns>
+        public uint ShaderProgram { get; private set; }
+        
+        public uint Vao { get; private set; }
+        
+        public uint Vbo { get; private set; }
+        
+        public uint Ebo { get; private set; }
+        
+        public uint Texture { get; private set; }
+
         public SpriteBuilder Builder() => new SpriteBuilder();
 
-        /// <summary>
-        ///     Inits this instance
-        /// </summary>
         public override void OnInit()
         {
-            /*
             if (!string.IsNullOrEmpty(NameFile))
             {
                 Path = AssetManager.Find(NameFile);
-
-                Texture = Sdl.CreateTextureFromSurface(Context.GraphicManager.Renderer, Sdl.LoadBmp(Path));
-
-                // get the size of sprite.Texture
-                Sdl.QueryTexture(Texture, out _, out _, out int w, out int h);
-
-                Size = new Vector2F(w, h);
-            }*/
+                InitializeShaders();
+                LoadTexture(Path);
+                SetupBuffers();
+            }
         }
 
-        /// <summary>
-        ///     Awakes this instance
-        /// </summary>
         public override void OnAwake()
         {
             Context.GraphicManager.Attach(this);
         }
 
-        /// <summary>
-        ///     Ons the start
-        /// </summary>
         public override void OnStart()
         {
-            //Sdl.QueryTexture(Texture, out _, out _, out w, out h);
-
-            //new RectangleI((int) GameObject.Transform.Position.X, (int) GameObject.Transform.Position.Y, w, h);
         }
 
-        /// <summary>
-        ///     Ons the update
-        /// </summary>
         public override void OnUpdate()
         {
         }
 
-        /// <summary>
-        ///     Exits this instance
-        /// </summary>
         public override void OnExit()
         {
             Context.GraphicManager.UnAttach(this);
         }
 
-        /// <summary>
-        ///     Renders the renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="cameraPosition">The camera position</param>
-        /// <param name="cameraResolution">The camera resolution</param>
-        /// <param name="pixelsPerMeter">The pixels per meter</param>
-        public void Render(IntPtr renderer, Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
+        private void InitializeShaders()
         {
-            Vector2F spritePosition = GameObject.Transform.Position;
-            Vector2F spriteSize = Size;
-            Vector2F spriteScale = GameObject.Transform.Scale;
-            float spriteRotation = GameObject.Transform.Rotation;
+            string vertexShaderSource = @"
+                #version 330 core
+                layout (location = 0) in vec3 aPos;
+                layout (location = 1) in vec2 aTexCoord;
+                out vec2 TexCoord;
+                uniform vec2 offset;
+                void main()
+                {
+                    gl_Position = vec4(aPos.xy + offset, aPos.z, 1.0);
+                    TexCoord = vec2(aTexCoord.x, 1.0 - aTexCoord.y);
+                }
+            ";
 
-            float spritePosX = spritePosition.X * pixelsPerMeter;
-            float spritePosY = spritePosition.Y * pixelsPerMeter;
+            string fragmentShaderSource = @"
+                #version 330 core
+                out vec4 FragColor;
+                in vec2 TexCoord;
+                uniform sampler2D texture1;
+                void main()
+                {
+                    FragColor = texture(texture1, TexCoord);
+                }
+            ";
 
-            int scaledWidth = (int) (spriteSize.X * spriteScale.X);
-            int scaledHeight = (int) (spriteSize.Y * spriteScale.Y);
+            uint vertexShader = Gl.GlCreateShader(ShaderType.VertexShader);
+            Gl.ShaderSource(vertexShader, vertexShaderSource);
+            Gl.GlCompileShader(vertexShader);
 
-            int x = (int) (spritePosX - cameraPosition.X * pixelsPerMeter + cameraResolution.X / 2 - scaledWidth / 2);
-            int y = (int) (spritePosY - cameraPosition.Y * pixelsPerMeter + cameraResolution.Y / 2 - scaledHeight / 2);
+            uint fragmentShader = Gl.GlCreateShader(ShaderType.FragmentShader);
+            Gl.ShaderSource(fragmentShader, fragmentShaderSource);
+            Gl.GlCompileShader(fragmentShader);
 
-            rectangle = new RectangleI
+            ShaderProgram = Gl.GlCreateProgram();
+            Gl.GlAttachShader(ShaderProgram, vertexShader);
+            Gl.GlAttachShader(ShaderProgram, fragmentShader);
+            Gl.GlLinkProgram(ShaderProgram);
+
+            Gl.GlDeleteShader(vertexShader);
+            Gl.GlDeleteShader(fragmentShader);
+        }
+
+        private void LoadTexture(string imagePath)
+        {
+            if (!File.Exists(imagePath))
             {
-                X = x,
-                Y = y,
-                W = scaledWidth,
-                H = scaledHeight
+                throw new FileNotFoundException("Texture file not found", imagePath);
+            }
+
+            using (FileStream stream = File.OpenRead(imagePath))
+            {
+                ImageResult image = ImageResult.FromStream(stream, ColorComponents.RedGreenBlueAlpha);
+
+                Size = new Vector2F(image.Width, image.Height);
+
+                byte r = image.Data[0];
+                byte g = image.Data[1];
+                byte b = image.Data[2];
+
+                for (int i = 0; i < image.Data.Length; i += 4)
+                {
+                    if (image.Data[i] == r && image.Data[i + 1] == g && image.Data[i + 2] == b)
+                    {
+                        image.Data[i + 3] = 0;
+                    }
+                }
+
+                for (int y = 0; y < image.Height / 2; y++)
+                {
+                    for (int x = 0; x < image.Width * 4; x++)
+                    {
+                        (image.Data[y * image.Width * 4 + x], image.Data[(image.Height - 1 - y) * image.Width * 4 + x]) = (image.Data[(image.Height - 1 - y) * image.Width * 4 + x], image.Data[y * image.Width * 4 + x]);
+                    }
+                }
+
+                Texture = Gl.GenTexture();
+                Gl.GlBindTexture(TextureTarget.Texture2D, Texture);
+
+                Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, TextureParameter.ClampToEdge);
+                Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, TextureParameter.ClampToEdge);
+                Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Linear);
+                Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Linear);
+
+                imageHandle = GCHandle.Alloc(image.Data, GCHandleType.Pinned);
+                Gl.GlTexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, image.Width, image.Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, imageHandle.AddrOfPinnedObject());
+                imageHandle.Free();
+
+                Gl.GenerateMipmap(TextureTarget.Texture2D);
+            }
+        }
+
+        private void SetupBuffers()
+        {
+            int windowWidth = 800;
+            int windowHeight = 600;
+
+            float scaleX = Size.X / windowWidth;
+            float scaleY = Size.Y / windowHeight;
+
+            float[] vertices =
+            {
+                1 * scaleX, 1 * scaleY, 0.0f, 1.0f, 0.0f,
+                1 * scaleX, -1 * scaleY, 0.0f, 1.0f, 1.0f,
+                -1 * scaleX, -1 * scaleY, 0.0f, 0.0f, 1.0f,
+                -1 * scaleX, 1f * scaleY, 0.0f, 0.0f, 0.0f
             };
 
-            //Sdl.RenderCopyEx(renderer, Texture, IntPtr.Zero, ref rectangle, spriteRotation, IntPtr.Zero, RendererFlips.FlipVertical);
+            uint[] indices = {0, 1, 3, 1, 2, 3};
+
+            Vao = Gl.GenVertexArray();
+            Vbo = Gl.GenBuffer();
+            Ebo = Gl.GenBuffer();
+
+            Gl.GlBindVertexArray(Vao);
+
+            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
+            verticesHandle = GCHandle.Alloc(vertices, GCHandleType.Pinned);
+            Gl.GlBufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), verticesHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
+            verticesHandle.Free();
+
+            Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, Ebo);
+            indicesHandle = GCHandle.Alloc(indices, GCHandleType.Pinned);
+            Gl.GlBufferData(BufferTarget.ElementArrayBuffer, indices.Length * sizeof(uint), indicesHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
+            indicesHandle.Free();
+
+            Gl.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), IntPtr.Zero);
+            Gl.EnableVertexAttribArray(0);
+
+            Gl.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), (IntPtr) (3 * sizeof(float)));
+            Gl.EnableVertexAttribArray(1);
         }
 
-        /// <summary>
-        ///     Describes whether this instance is visible
-        /// </summary>
-        /// <param name="cameraPosition">The camera position</param>
-        /// <param name="cameraResolution">The camera resolution</param>
-        /// <param name="pixelsPerMeter">The pixels per meter</param>
-        /// <returns>The bool</returns>
-        public bool IsVisible(Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
-        {
-            Vector2F spritePosition = GameObject.Transform.Position;
-            Vector2F spriteSize = Size;
-            float spriteRotation = GameObject.Transform.Rotation;
-
-            float spritePosX = spritePosition.X * pixelsPerMeter;
-            float spritePosY = spritePosition.Y * pixelsPerMeter;
-
-            float cameraLeft = cameraPosition.X * pixelsPerMeter - cameraResolution.X / 2;
-            float cameraRight = cameraPosition.X * pixelsPerMeter + cameraResolution.X / 2;
-            float cameraTop = cameraPosition.Y * pixelsPerMeter - cameraResolution.Y / 2;
-            float cameraBottom = cameraPosition.Y * pixelsPerMeter + cameraResolution.Y / 2;
-
-            // Calculate the bounding box of the rotated sprite
-            float halfWidth = spriteSize.X / 2;
-            float halfHeight = spriteSize.Y / 2;
-            float cos = (float) Math.Cos(spriteRotation);
-            float sin = (float) Math.Sin(spriteRotation);
-
-            float[] cornersX = new float[4];
-            float[] cornersY = new float[4];
-
-            cornersX[0] = spritePosX + (-halfWidth * cos - -halfHeight * sin);
-            cornersY[0] = spritePosY + (-halfWidth * sin + -halfHeight * cos);
-            cornersX[1] = spritePosX + (halfWidth * cos - -halfHeight * sin);
-            cornersY[1] = spritePosY + (halfWidth * sin + -halfHeight * cos);
-            cornersX[2] = spritePosX + (halfWidth * cos - halfHeight * sin);
-            cornersY[2] = spritePosY + (halfWidth * sin + halfHeight * cos);
-            cornersX[3] = spritePosX + (-halfWidth * cos - halfHeight * sin);
-            cornersY[3] = spritePosY + (-halfWidth * sin + halfHeight * cos);
-
-            float spriteLeft = Min(cornersX);
-            float spriteRight = Max(cornersX);
-            float spriteTop = Min(cornersY);
-            float spriteBottom = Max(cornersY);
-
-            return (spriteRight > cameraLeft) && (spriteLeft < cameraRight) && (spriteBottom > cameraTop) && (spriteTop < cameraBottom);
-        }
-
-        /// <summary>
-        ///     Mins the corners x
-        /// </summary>
-        /// <param name="cornersX">The corners</param>
-        /// <returns>The min</returns>
-        private float Min(float[] cornersX)
-        {
-            float min = cornersX[0];
-            for (int i = 1; i < cornersX.Length; i++)
-            {
-                if (cornersX[i] < min)
-                {
-                    min = cornersX[i];
-                }
-            }
-
-            return min;
-        }
-
-        /// <summary>
-        ///     Maxes the corners x
-        /// </summary>
-        /// <param name="cornersX">The corners</param>
-        /// <returns>The max</returns>
-        private float Max(float[] cornersX)
-        {
-            float max = cornersX[0];
-            for (int i = 1; i < cornersX.Length; i++)
-            {
-                if (cornersX[i] > max)
-                {
-                    max = cornersX[i];
-                }
-            }
-
-            return max;
-        }
-
-        /// <summary>
-        ///     Clones this instance
-        /// </summary>
-        /// <returns>The object</returns>
+       public void Render()
+       {
+           Gl.GlUseProgram(ShaderProgram);
+           int offsetLocation = Gl.GlGetUniformLocation(ShaderProgram, "offset");
+           Gl.GlUniform2F(offsetLocation, GameObject.Transform.Position.X, GameObject.Transform.Position.Y);
+           Gl.GlBindVertexArray(Vao);
+           Gl.GlEnable(EnableCap.Blend);
+           Gl.GlBlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+           
+           // Bind the texture before drawing
+           Gl.GlBindTexture(TextureTarget.Texture2D, Texture);
+           
+           Gl.GlDrawElements(PrimitiveType.Triangles, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
+           Gl.GlDisable(EnableCap.Blend);
+       }
+        
         public override object Clone() => new Sprite(NameFile, Depth);
     }
 }
