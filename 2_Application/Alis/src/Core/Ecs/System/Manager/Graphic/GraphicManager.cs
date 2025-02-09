@@ -192,20 +192,6 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             //vbo = Gl.GenBuffer();
             //vao = Gl.GenVertexArray();
             
-            
-            // Print the OpenGL version
-            Console.WriteLine(@$"OpenGL VERSION {Gl.GlGetString(StringName.Version)}");
-
-            // Print the OpenGL vendor
-            Console.WriteLine(@$"OpenGL VENDOR {Gl.GlGetString(StringName.Vendor)}");
-
-            // Print the OpenGL renderer
-            Console.WriteLine(@$"OpenGL RENDERER {Gl.GlGetString(StringName.Renderer)}");
-
-            // Print the OpenGL shading language version
-            Console.WriteLine(@$"OpenGL SHADING LANGUAGE VERSION {Gl.GlGetString(StringName.ShadingLanguageVersion)}");
-            
-            
             Glfw.SetFramebufferSizeCallback(Window, FramebufferSizeCallback);
             Glfw.SetKeyCallback(Window, KeyCallback);
             

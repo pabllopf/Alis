@@ -52,6 +52,7 @@ using Alis.Extension.Graphic.ImGui.Native;
 using Alis.Extension.Graphic.Sdl2;
 using Alis.Extension.Graphic.Sdl2.Enums;
 using Alis.Extension.Graphic.Sdl2.Structs;
+using Gl = Alis.Extension.Graphic.Sdl2.Gl;
 using PixelFormat = Alis.Core.Graphic.OpenGL.Enums.PixelFormat;
 
 

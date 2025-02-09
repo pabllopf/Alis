@@ -36,6 +36,7 @@ using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Extension.Graphic.Sdl2;
 using Alis.Extension.Graphic.Sdl2.Sdl2Image;
 using Alis.Extension.Graphic.Sdl2.Structs;
+using Gl = Alis.Extension.Graphic.Sdl2.Gl;
 using PixelFormat = Alis.Core.Graphic.OpenGL.Enums.PixelFormat;
 
 namespace Alis.App.Hub.Utils
