@@ -41,12 +41,13 @@ using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
 using Alis.Core.Ecs.System;
+using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Physic.Dynamics;
 using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Native;
 using Alis.Extension.Graphic.Sdl2;
-using Alis.Extension.Graphic.Sdl2.OpenGl;
+
 
 
 namespace Alis.App.Engine.Windows
@@ -145,10 +146,6 @@ namespace Alis.App.Engine.Windows
                     .Audio(audio => audio
                         .Build())
                     .Graphic(graphic => graphic
-                        .Window(window => window
-                            .Resolution(800, 600)
-                            .Background(Color.Black)
-                            .Build())
                         .Build())
                     .Physic(physic => physic
                         .Gravity(0.0f, -9.8f)

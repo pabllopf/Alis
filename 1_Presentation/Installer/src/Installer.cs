@@ -43,6 +43,9 @@ using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Memory.Exceptions;
 using Alis.Core.Aspect.Time;
+using Alis.Core.Graphic.OpenGL;
+using Alis.Core.Graphic.OpenGL.Constructs;
+using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Extras.GuizMo;
 using Alis.Extension.Graphic.ImGui.Extras.Node;
@@ -50,16 +53,11 @@ using Alis.Extension.Graphic.ImGui.Extras.Plot.Native;
 using Alis.Extension.Graphic.ImGui.Native;
 using Alis.Extension.Graphic.Sdl2;
 using Alis.Extension.Graphic.Sdl2.Enums;
-using Alis.Extension.Graphic.Sdl2.OpenGl;
-using Alis.Extension.Graphic.Sdl2.OpenGl.Constructs;
-using Alis.Extension.Graphic.Sdl2.OpenGl.Enums;
 using Alis.Extension.Graphic.Sdl2.Structs;
 using Alis.Extension.Updater;
 using Alis.Extension.Updater.Services.Api;
 using Alis.Extension.Updater.Services.Files;
-using PixelFormat = Alis.Extension.Graphic.Sdl2.Structs.PixelFormat;
-using Version = System.Version;
-
+using PixelFormat = Alis.Core.Graphic.OpenGL.Enums.PixelFormat;
 
 namespace Alis.App.Installer
 {

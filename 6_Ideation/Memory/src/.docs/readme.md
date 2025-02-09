@@ -65,7 +65,7 @@
 `Alis.Core.Aspect.Memory` is a module within the Alis framework that provides tools for memory management and validation, ensuring that values meet specified constraints. It includes a set of attributes and a validation system to ensure that data values adhere to important rules, such as non-zero or non-null values.
 
 ### Features:
-- **Data Validation**: Use attributes like `[IsNotZero]` and `[IsNotNull]` to ensure values meet specific conditions.
+- **Data Validation**: Use attributes like `[IsNotZero]` and `` to ensure values meet specific conditions.
 - **Flexible Validation**: Validator system that checks values before they are used, preventing runtime errors.
 - **Main Classes**:
     - `Validator`: Validates data according to rules such as non-zero or non-null.
@@ -110,9 +110,9 @@ public static class Program
     ///     Samples the method using the specified value
     /// </summary>
     /// <param name="value">The value</param>
-    public static void SampleMethod([IsNotZero, IsNotNull] int value)
+    public static void SampleMethod([IsNotZero] int value)
     {
-        Validator.Validate(value, nameof(value));
+        
        Logger.Info("The value of value is " + value);
     }
 
@@ -125,7 +125,7 @@ public static class Program
         try
         {
             Sample = 0;
-            Validator.Validate(Sample, nameof(Sample));
+            
         }
         catch (NotZeroException e)
         {
@@ -142,12 +142,12 @@ public static class Program
         }
 
         _nonZeroValuev2 = 0;
-        Validator.Validate(_nonZeroValuev2, nameof(_nonZeroValuev2));
+        
 
         try
         {
             _nonZeroValue = 0;
-            Validator.Validate(_nonZeroValue, nameof(_nonZeroValue));
+            
         }
         catch (NotZeroException ex)
         {
@@ -157,7 +157,7 @@ public static class Program
         try
         {
             _nonZeroValue = 5;
-            Validator.Validate(_nonZeroValue, nameof(_nonZeroValue));
+            
            Logger.Info("NonZeroValue has been successfully set to " + _nonZeroValue);
         }
         catch (NotZeroException ex)

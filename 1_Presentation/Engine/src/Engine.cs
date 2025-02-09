@@ -41,6 +41,9 @@ using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Memory.Exceptions;
+using Alis.Core.Graphic.OpenGL;
+using Alis.Core.Graphic.OpenGL.Constructs;
+using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Extras.GuizMo;
 using Alis.Extension.Graphic.ImGui.Extras.Node;
@@ -48,12 +51,8 @@ using Alis.Extension.Graphic.ImGui.Extras.Plot.Native;
 using Alis.Extension.Graphic.ImGui.Native;
 using Alis.Extension.Graphic.Sdl2;
 using Alis.Extension.Graphic.Sdl2.Enums;
-using Alis.Extension.Graphic.Sdl2.OpenGl;
-using Alis.Extension.Graphic.Sdl2.OpenGl.Constructs;
-using Alis.Extension.Graphic.Sdl2.OpenGl.Enums;
 using Alis.Extension.Graphic.Sdl2.Structs;
-using PixelFormat = Alis.Extension.Graphic.Sdl2.OpenGl.Enums.PixelFormat;
-using Version = Alis.Extension.Graphic.Sdl2.Structs.Version;
+using PixelFormat = Alis.Core.Graphic.OpenGL.Enums.PixelFormat;
 
 
 namespace Alis.App.Engine
@@ -187,11 +186,7 @@ namespace Alis.App.Engine
             spaceWork = new SpaceWork();
             spaceWork.Initialize();
             Environment.CurrentDirectory = enginePath;
-
-            // GET VERSION SDL2
-            Version version = Sdl.GetVersion();
-            Logger.Info(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
-
+            
             Sdl.SetHint(Hint.HintRenderDriver, "opengl");
 
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION

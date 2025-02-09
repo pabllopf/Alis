@@ -44,7 +44,20 @@ namespace Alis.Core.Ecs.System.Manager.Fonts
     /// </summary>
     public class FontManager
     {
-        
+        public void RenderText(string mono, string p1, float p2, int p3, Color white, int p5)
+        {
+           
+        }
+
+        public void LoadFont(string mono, int i, string find)
+        {
+            
+        }
+
+        public void RenderText(string mono, string p1, float p2, float p3, Color white, int p5)
+        {
+            
+        }
     }
     /*
     /// <summary>
