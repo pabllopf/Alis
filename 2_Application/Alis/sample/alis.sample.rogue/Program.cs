@@ -91,7 +91,7 @@ namespace Alis.Sample.Rogue
                             .Name("tree-001")
                             .IsStatic()
                             .Transform(transform => transform
-                                .Position(0.5f, 0.5f)
+                                .Position(-2f, -2f)
                                 .Scale(2, 2)
                                 .Rotation(0)
                                 .Build())
@@ -105,7 +105,19 @@ namespace Alis.Sample.Rogue
                             .Name("tree-002")
                             .IsStatic()
                             .Transform(transform => transform
-                                .Position(-0.5f, 0.5f)
+                                .Position(-2f, 2f)
+                                .Scale(2, 2)
+                                .Rotation(90)
+                                .Build())
+                            .AddComponent<Sprite>(sprite => sprite.Builder()
+                                .SetTexture("tree-001.bmp")
+                                .Build())
+                            .Build())
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("tree-001")
+                            .IsStatic()
+                            .Transform(transform => transform
+                                .Position(2, 2)
                                 .Scale(2, 2)
                                 .Rotation(0)
                                 .Build())
@@ -117,19 +129,7 @@ namespace Alis.Sample.Rogue
                             .Name("tree-001")
                             .IsStatic()
                             .Transform(transform => transform
-                                .Position(-0.5f, -0.5f)
-                                .Scale(2, 2)
-                                .Rotation(0)
-                                .Build())
-                            .AddComponent<Sprite>(sprite => sprite.Builder()
-                                .SetTexture("tree-001.bmp")
-                                .Build())
-                            .Build())
-                        .Add<GameObject>(gameObject => gameObject
-                            .Name("tree-001")
-                            .IsStatic()
-                            .Transform(transform => transform
-                                .Position(0.5f, -0.5f)
+                                .Position(2f, -2f)
                                 .Scale(2, 2)
                                 .Rotation(0)
                                 .Build())
