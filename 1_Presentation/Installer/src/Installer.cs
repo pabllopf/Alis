@@ -50,11 +50,15 @@ using Alis.Extension.Graphic.ImGui.Extras.Plot.Native;
 using Alis.Extension.Graphic.ImGui.Native;
 using Alis.Extension.Graphic.Sdl2;
 using Alis.Extension.Graphic.Sdl2.Enums;
+using Alis.Extension.Graphic.Sdl2.OpenGl;
+using Alis.Extension.Graphic.Sdl2.OpenGl.Constructs;
+using Alis.Extension.Graphic.Sdl2.OpenGl.Enums;
+using Alis.Extension.Graphic.Sdl2.Structs;
 using Alis.Extension.Updater;
 using Alis.Extension.Updater.Services.Api;
 using Alis.Extension.Updater.Services.Files;
-using PixelFormat = Alis.Extension.Graphic.OpenGL.Enums.PixelFormat;
-using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
+using PixelFormat = Alis.Extension.Graphic.Sdl2.Structs.PixelFormat;
+using Version = System.Version;
 
 
 namespace Alis.App.Installer
@@ -207,11 +211,7 @@ namespace Alis.App.Installer
             spaceWork = new SpaceWork();
 
             spaceWork.Initialize();
-
-            // GET VERSION SDL2
-            Version version = Sdl.GetVersion();
-            Logger.Info(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
-
+            
             Sdl.SetHint(Hint.HintRenderDriver, "opengl");
 
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION

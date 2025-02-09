@@ -66,11 +66,6 @@ namespace Alis.Sample.Flappy.Bird
                     .Graphic(graphic => graphic
                         .Target("OpenGL")
                         .FrameRate(30)
-                        .Window(window => window
-                            .Resolution(288, 512)
-                            .Background(Color.Black)
-                            .IsResizable(false)
-                            .Build())
                         .Build())
                     .Physic(physic => physic
                         .Debug(true)

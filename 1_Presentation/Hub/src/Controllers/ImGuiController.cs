@@ -44,6 +44,8 @@ using Alis.Extension.Graphic.ImGui.Extras.Node;
 using Alis.Extension.Graphic.ImGui.Extras.Plot.Native;
 using Alis.Extension.Graphic.ImGui.Native;
 using Alis.Extension.Graphic.Sdl2;
+using Alis.Extension.Graphic.Sdl2.OpenGl;
+using Alis.Extension.Graphic.Sdl2.OpenGl.Enums;
 
 namespace Alis.App.Hub.Controllers
 {

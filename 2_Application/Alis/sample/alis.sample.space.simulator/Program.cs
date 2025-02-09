@@ -57,10 +57,6 @@ namespace Alis.Sample.Space.Simulator
                     .Audio(audio => audio
                         .Build())
                     .Graphic(graphic => graphic
-                        .Window(window => window
-                            .Resolution(1024, 640)
-                            .Background(Color.Black)
-                            .Build())
                         .Build())
                     .Physic(physic => physic
                         .Gravity(0.0f, -9.8f)

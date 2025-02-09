@@ -61,11 +61,6 @@ namespace Alis.Sample.Snake
                     .Audio(audio => audio
                         .Build())
                     .Graphic(graphic => graphic
-                        .Window(window => window
-                            .Resolution(640, 640)
-                            .IsResizable(false)
-                            .Background(Color.Black)
-                            .Build())
                         .Build())
                     .Physic(physic => physic
                         .Gravity(0.0f, -9.8f)
