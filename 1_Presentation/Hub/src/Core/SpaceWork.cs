@@ -39,7 +39,7 @@ using Alis.Extension.Graphic.Sdl2.Enums;
 
 
 using Alis.Extension.Graphic.Sdl2.Structs;
-using Gl = Alis.Extension.Graphic.Sdl2.Gl;
+
 
 namespace Alis.App.Hub.Core
 {
