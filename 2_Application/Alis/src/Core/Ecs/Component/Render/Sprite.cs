@@ -12,12 +12,29 @@ using Alis.Core.Graphic.Stb;
 
 namespace Alis.Core.Ecs.Component.Render
 {
+    /// <summary>
+    /// The sprite class
+    /// </summary>
+    /// <seealso cref="AComponent"/>
+    /// <seealso cref="IHasBuilder{SpriteBuilder}"/>
     public class Sprite : AComponent, IHasBuilder<SpriteBuilder>
     {
+        /// <summary>
+        /// The image handle
+        /// </summary>
         private GCHandle imageHandle;
+        /// <summary>
+        /// The indices handle
+        /// </summary>
         private GCHandle indicesHandle;
+        /// <summary>
+        /// The vertices handle
+        /// </summary>
         private GCHandle verticesHandle;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Sprite"/> class
+        /// </summary>
         public Sprite()
         {
             NameFile = "";
@@ -25,6 +42,10 @@ namespace Alis.Core.Ecs.Component.Render
             Depth = 0;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Sprite"/> class
+        /// </summary>
+        /// <param name="nameFile">The name file</param>
         public Sprite(string nameFile)
         {
             NameFile = nameFile;
@@ -32,6 +53,11 @@ namespace Alis.Core.Ecs.Component.Render
             Depth = 0;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Sprite"/> class
+        /// </summary>
+        /// <param name="nameFile">The name file</param>
+        /// <param name="depth">The depth</param>
         private Sprite(string nameFile, int depth)
         {
             NameFile = nameFile;
@@ -39,30 +65,64 @@ namespace Alis.Core.Ecs.Component.Render
             Depth = depth;
         }
 
+        /// <summary>
+        /// Gets or sets the value of the depth
+        /// </summary>
         [JsonPropertyName("_Depth_")] 
         public int Depth { get; set; }
 
+        /// <summary>
+        /// Gets or sets the value of the path
+        /// </summary>
         [JsonIgnore] 
         public string Path { get; set; }
 
+        /// <summary>
+        /// Gets or sets the value of the name file
+        /// </summary>
         [JsonPropertyName("_NameFile_")] 
         public string NameFile { get; set; }
 
+        /// <summary>
+        /// Gets or sets the value of the size
+        /// </summary>
         [JsonPropertyName("_Size_")] 
         public Vector2F Size { get; set; }
 
+        /// <summary>
+        /// Gets or sets the value of the shader program
+        /// </summary>
         public uint ShaderProgram { get; private set; }
         
+        /// <summary>
+        /// Gets or sets the value of the vao
+        /// </summary>
         public uint Vao { get; private set; }
         
+        /// <summary>
+        /// Gets or sets the value of the vbo
+        /// </summary>
         public uint Vbo { get; private set; }
         
+        /// <summary>
+        /// Gets or sets the value of the ebo
+        /// </summary>
         public uint Ebo { get; private set; }
         
+        /// <summary>
+        /// Gets or sets the value of the texture
+        /// </summary>
         public uint Texture { get; private set; }
 
+        /// <summary>
+        /// Builders this instance
+        /// </summary>
+        /// <returns>The sprite builder</returns>
         public SpriteBuilder Builder() => new SpriteBuilder();
 
+        /// <summary>
+        /// Ons the init
+        /// </summary>
         public override void OnInit()
         {
             if (!string.IsNullOrEmpty(NameFile))
@@ -74,24 +134,39 @@ namespace Alis.Core.Ecs.Component.Render
             }
         }
 
+        /// <summary>
+        /// Ons the awake
+        /// </summary>
         public override void OnAwake()
         {
             Context.GraphicManager.Attach(this);
         }
 
+        /// <summary>
+        /// Ons the start
+        /// </summary>
         public override void OnStart()
         {
         }
 
+        /// <summary>
+        /// Ons the update
+        /// </summary>
         public override void OnUpdate()
         {
         }
 
+        /// <summary>
+        /// Ons the exit
+        /// </summary>
         public override void OnExit()
         {
             Context.GraphicManager.UnAttach(this);
         }
 
+        /// <summary>
+        /// Initializes the shaders
+        /// </summary>
         private void InitializeShaders()
         {
             string vertexShaderSource = @"
@@ -141,6 +216,11 @@ namespace Alis.Core.Ecs.Component.Render
             Gl.GlDeleteShader(fragmentShader);
         }
 
+        /// <summary>
+        /// Loads the texture using the specified image path
+        /// </summary>
+        /// <param name="imagePath">The image path</param>
+        /// <exception cref="FileNotFoundException">Texture file not found </exception>
         private void LoadTexture(string imagePath)
         {
             if (!File.Exists(imagePath))
@@ -190,6 +270,9 @@ namespace Alis.Core.Ecs.Component.Render
             }
         }
 
+        /// <summary>
+        /// Setup the buffers
+        /// </summary>
         private void SetupBuffers()
         {
             int windowWidth = 800;
@@ -231,6 +314,9 @@ namespace Alis.Core.Ecs.Component.Render
             Gl.EnableVertexAttribArray(1);
         }
 
+       /// <summary>
+       /// Renders this instance
+       /// </summary>
        public void Render()
        {
            Gl.GlUseProgram(ShaderProgram);
@@ -247,8 +333,18 @@ namespace Alis.Core.Ecs.Component.Render
            Gl.GlDisable(EnableCap.Blend);
        }
         
+        /// <summary>
+        /// Clones this instance
+        /// </summary>
+        /// <returns>The object</returns>
         public override object Clone() => new Sprite(NameFile, Depth);
 
+       /// <summary>
+       /// Renders the camera position
+       /// </summary>
+       /// <param name="cameraPosition">The camera position</param>
+       /// <param name="cameraResolution">The camera resolution</param>
+       /// <param name="pixelsPerMeter">The pixels per meter</param>
        public void Render(Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
        {
            float spriteRotation = GameObject.Transform.Rotation;

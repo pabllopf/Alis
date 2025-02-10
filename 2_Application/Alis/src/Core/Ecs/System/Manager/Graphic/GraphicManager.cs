@@ -469,6 +469,14 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Gl.GlViewport(0, 0, width, height);
         }
         
+        /// <summary>
+        /// Keys the callback using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="key">The key</param>
+        /// <param name="scancode">The scancode</param>
+        /// <param name="state">The state</param>
+        /// <param name="mods">The mods</param>
         private void KeyCallback(Window window, Keys key, int scancode, InputState state, ModifierKeys mods)
         {
             if (state == InputState.Press || state == InputState.Repeat)
