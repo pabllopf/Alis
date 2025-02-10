@@ -33,7 +33,6 @@ using System.Threading;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.System;
-using Alis.Core.Graphic.Sdl2.Enums;
 using Xunit;
 
 namespace Alis.Test.Core.Ecs.Component.Render
@@ -139,76 +138,6 @@ namespace Alis.Test.Core.Ecs.Component.Render
             List<Animation> animations = new List<Animation> {new Animation(new List<Frame>())};
             Animator animator = new Animator(animations);
             Assert.Equal(animations, animator.Animations);
-        }
-
-        /// <summary>
-        ///     Tests that change animation to with new animation should change current animation
-        /// </summary>
-        [Fact]
-        public void ChangeAnimationTo_WithNewAnimation_ShouldChangeCurrentAnimation()
-        {
-            List<Animation> animations = new List<Animation>
-            {
-                new Animation(new List<Frame>())
-                {
-                    Name = "Test1"
-                },
-                new Animation(new List<Frame>())
-                {
-                    Name = "Test2"
-                }
-            };
-            Animator animator = new Animator(animations);
-            animator.OnInit();
-            Assert.Throws<NullReferenceException>(() => animator.ChangeAnimationTo("Test2", RendererFlips.None));
-        }
-
-        /// <summary>
-        ///     Tests that change animation to with same animation and flips should not change current animation
-        /// </summary>
-        [Fact]
-        public void ChangeAnimationTo_WithSameAnimationAndFlips_ShouldNotChangeCurrentAnimation()
-        {
-            List<Animation> animations = new List<Animation>
-            {
-                new Animation(new List<Frame>()),
-                new Animation(new List<Frame>())
-            };
-            Animator animator = new Animator(animations);
-            animator.OnInit();
-            Assert.Throws<NullReferenceException>(() => animator.ChangeAnimationTo("Test1", RendererFlips.None));
-        }
-
-        /// <summary>
-        ///     Tests that change animation to with same animation and different flips should change flips
-        /// </summary>
-        [Fact]
-        public void ChangeAnimationTo_WithSameAnimationAndDifferentFlips_ShouldChangeFlips()
-        {
-            List<Animation> animations = new List<Animation>
-            {
-                new Animation(new List<Frame>()),
-                new Animation(new List<Frame>())
-            };
-            Animator animator = new Animator(animations);
-            animator.OnInit();
-            Assert.Throws<NullReferenceException>(() => animator.ChangeAnimationTo("Test1", RendererFlips.FlipHorizontal));
-        }
-
-        /// <summary>
-        ///     Tests that change animation to with nonexistent animation should not change current animation
-        /// </summary>
-        [Fact]
-        public void ChangeAnimationTo_WithNonexistentAnimation_ShouldNotChangeCurrentAnimation()
-        {
-            List<Animation> animations = new List<Animation>
-            {
-                new Animation(new List<Frame>()),
-                new Animation(new List<Frame>())
-            };
-            Animator animator = new Animator(animations);
-            animator.OnInit();
-            Assert.Throws<NullReferenceException>(() => animator.ChangeAnimationTo("Test3", RendererFlips.None));
         }
     }
 }

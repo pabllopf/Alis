@@ -43,24 +43,6 @@ namespace Alis.Core.Ecs.System.Configuration.Graphic
     public class GraphicSetting : IGraphicSetting, IHasBuilder<GraphicSettingBuilder>
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="GraphicSetting" /> class
-        /// </summary>
-        public GraphicSetting() => Window = new Window();
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="GraphicSetting" /> class
-        /// </summary>
-        /// <param name="window">The window</param>
-        [JsonConstructor]
-        public GraphicSetting(Window window) => Window = window;
-
-        /// <summary>
-        ///     Gets or sets the value of the window
-        /// </summary>
-        [JsonPropertyName("_Window_")]
-        public Window Window { get; set; }
-
-        /// <summary>
         ///     The targetframes
         /// </summary>
         [JsonPropertyName("_TargetFrames_")]

@@ -42,11 +42,7 @@ using Alis.Core.Ecs.System.Configuration;
 using Alis.Core.Ecs.System.Configuration.Physic;
 using Alis.Core.Ecs.System.Manager.Fonts;
 using Alis.Core.Ecs.System.Scope;
-using Alis.Core.Graphic.Sdl2;
-using Alis.Core.Graphic.Sdl2.Enums;
-using Alis.Core.Graphic.Sdl2.Structs;
 using Color = Alis.Core.Aspect.Math.Definition.Color;
-using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 
 namespace Alis.Core.Ecs.System.Manager.Graphic
 {
@@ -169,8 +165,9 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
             Logger.Log("init::graphic:new");
 
-            DefaultSize = new Vector2F(Context.Setting.Graphic.Window.Resolution.X, Context.Setting.Graphic.Window.Resolution.Y);
+            //DefaultSize = new Vector2F(Context.Setting.Graphic.Window.Resolution.X, Context.Setting.Graphic.Window.Resolution.Y);
 
+            /*
             if (Sdl.Init(InitSettings.InitEverything) < 0)
             {
                 Logger.Info($@"There was an issue initializing SDL. {Sdl.GetError()}");
@@ -295,7 +292,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
             Logger.Info("End config SDL2");
 
-            FontManager = new FontManager(Context, RendererFlips.None);
+            FontManager = new FontManager(Context, RendererFlips.None);*/
         }
 
         /// <summary>
@@ -339,9 +336,9 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 Vector2F cameraPosition = camera.Position;
                 Vector2F cameraResolution = camera.Resolution;
 
-                Sdl.SetRenderTarget(renderer, cameraTexture);
+                /*Sdl.SetRenderTarget(renderer, cameraTexture);
                 Sdl.SetRenderDrawColor(renderer, bgColor.R, bgColor.G, bgColor.B, bgColor.A);
-                Sdl.RenderClear(renderer);
+                Sdl.RenderClear(renderer);*/
 
                 // Render sprites
                 foreach (Sprite sprite in Sprites.OrderBy(o => o.Depth))
@@ -361,7 +358,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 if (contextSetting.Physic.DebugMode)
                 {
                     // Render colliders
-                    Sdl.SetRenderDrawColor(renderer, debugColor.R, debugColor.G, debugColor.B, debugColor.A);
+                    //Sdl.SetRenderDrawColor(renderer, debugColor.R, debugColor.G, debugColor.B, debugColor.A);
 
                     foreach (BoxCollider collider in ColliderBases)
                     {
@@ -375,10 +372,10 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                     RenderCircleAtWorldPosition(WorldPosition, 2);
                 }
 
-                Sdl.SetRenderTarget(renderer, IntPtr.Zero);
+                //Sdl.SetRenderTarget(renderer, IntPtr.Zero);
 
                 // Copy the custom backbuffer to the SDL backbuffer with vertical flip
-                Sdl.RenderCopyEx(renderer, cameraTexture, IntPtr.Zero, IntPtr.Zero, 0, IntPtr.Zero, RendererFlips.FlipVertical);
+                //Sdl.RenderCopyEx(renderer, cameraTexture, IntPtr.Zero, IntPtr.Zero, 0, IntPtr.Zero, RendererFlips.FlipVertical);
             }
         }
 
@@ -392,7 +389,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         private void RenderGrid(IntPtr renderer, Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
         {
             // Set the color for the grid lines
-            Sdl.SetRenderDrawColor(renderer, Context.Setting.Graphic.GridColor.R, Context.Setting.Graphic.GridColor.G, Context.Setting.Graphic.GridColor.B, Context.Setting.Graphic.GridColor.A);
+            //Sdl.SetRenderDrawColor(renderer, Context.Setting.Graphic.GridColor.R, Context.Setting.Graphic.GridColor.G, Context.Setting.Graphic.GridColor.B, Context.Setting.Graphic.GridColor.A);
 
             // Define the grid size in meters
             float gridSize = 1000.0f;
@@ -406,7 +403,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             {
                 float x = -gridSize / 2 + i;
                 int screenX = (int) (x * pixelsPerMeter - cameraPosition.X * pixelsPerMeter + cameraResolution.X / 2);
-                Sdl.RenderDrawLine(renderer, screenX, 0, screenX, (int) cameraResolution.Y);
+                //Sdl.RenderDrawLine(renderer, screenX, 0, screenX, (int) cameraResolution.Y);
             }
 
             // Draw horizontal lines
@@ -414,7 +411,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             {
                 float y = -gridSize / 2 + i;
                 int screenY = (int) (y * pixelsPerMeter - cameraPosition.Y * pixelsPerMeter + cameraResolution.Y / 2);
-                Sdl.RenderDrawLine(renderer, 0, screenY, (int) cameraResolution.X, screenY);
+                //Sdl.RenderDrawLine(renderer, 0, screenY, (int) cameraResolution.X, screenY);
             }
         }
 
@@ -443,7 +440,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             );
 
             // Set the color for the circle
-            Sdl.SetRenderDrawColor(Renderer, 255, 0, 0, 255); // Red color
+            //Sdl.SetRenderDrawColor(Renderer, 255, 0, 0, 255); // Red color
 
             // Draw the circle
             for (int w = 0; w < radius * 2; w++)
@@ -454,7 +451,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                     int dy = (int) radius - h; // vertical offset
                     if (dx * dx + dy * dy <= radius * radius)
                     {
-                        Sdl.RenderDrawPoint(Renderer, (int) screenPosition.X + dx, (int) screenPosition.Y + dy);
+                        //Sdl.RenderDrawPoint(Renderer, (int) screenPosition.X + dx, (int) screenPosition.Y + dy);
                     }
                 }
             }
@@ -465,7 +462,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// </summary>
         public override void OnRenderPresent()
         {
-            Sdl.RenderPresent(Renderer);
+            //Sdl.RenderPresent(Renderer);
         }
 
         /// <summary>

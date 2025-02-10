@@ -41,13 +41,13 @@ using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
 using Alis.Core.Ecs.System;
-using Alis.Core.Graphic.Sdl2;
+using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Physic.Dynamics;
 using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Native;
-using Alis.Extension.Graphic.OpenGL;
-using Alis.Extension.Graphic.OpenGL.Enums;
-using PixelFormat = Alis.Extension.Graphic.OpenGL.Enums.PixelFormat;
+using Alis.Extension.Graphic.Sdl2;
+using Alis.Extension.Graphic.Sdl2.OpenGl;
+
 
 namespace Alis.App.Engine.Windows
 {

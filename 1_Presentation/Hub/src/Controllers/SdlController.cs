@@ -34,11 +34,8 @@ using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Memory.Exceptions;
-using Alis.Core.Graphic.Sdl2;
-using Alis.Core.Graphic.Sdl2.Enums;
-using Alis.Core.Graphic.Sdl2.Structs;
-using Alis.Extension.Graphic.OpenGL;
-using Alis.Extension.Graphic.OpenGL.Enums;
+using Alis.Extension.Graphic.Sdl2;
+using Alis.Extension.Graphic.Sdl2.Enums;
 using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 
 namespace Alis.App.Hub.Controllers

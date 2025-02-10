@@ -37,8 +37,6 @@ using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
-using Alis.Core.Graphic.Sdl2;
-using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Contacts;
 
@@ -58,9 +56,6 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <summary>
         ///     Initializes a new instance of the <see cref="BoxCollider" /> class
         /// </summary>
-#if NET5_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.DynamicDependency(global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicConstructors, typeof(BoxCollider))]
-#endif
         public BoxCollider()
         {
             Width = 10;
@@ -95,9 +90,6 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <param name="ignoreGravity">The ignore gravity</param>
         /// <param name="linearVelocity">The linear velocity</param>
         /// <param name="angularVelocity">The angular velocity</param>
-#if NET5_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.DynamicDependency(global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicConstructors, typeof(BoxCollider))]
-#endif
         [JsonConstructor]
         public BoxCollider(
             bool isTrigger,
@@ -383,11 +375,11 @@ namespace Alis.Core.Ecs.Component.Collider
             rectangle.W = (int) width;
             rectangle.H = (int) height;
 
-            Sdl.SetRenderDrawColor(renderer, debugColor.R, debugColor.G, debugColor.B, debugColor.A);
-            Sdl.RenderDrawRect(renderer, ref rectangle);
+            //Sdl.SetRenderDrawColor(renderer, debugColor.R, debugColor.G, debugColor.B, debugColor.A);
+            //Sdl.RenderDrawRect(renderer, ref rectangle);
 
             // Render with rotation
-            Sdl.RenderCopyEx(renderer, IntPtr.Zero, IntPtr.Zero, ref rectangle, colliderRotation, IntPtr.Zero, RendererFlips.None);
+            //Sdl.RenderCopyEx(renderer, IntPtr.Zero, IntPtr.Zero, ref rectangle, colliderRotation, IntPtr.Zero, RendererFlips.None);
         }
 
         /// <summary>

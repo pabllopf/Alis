@@ -34,8 +34,6 @@ using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Graphic.Sdl2;
-using Alis.Core.Graphic.Sdl2.Enums;
 
 namespace Alis.Core.Ecs.Component.Render
 {
@@ -51,7 +49,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     The
         /// </summary>
-        private int h;
+        //private int h;
 
         /// <summary>
         ///     The rectangle
@@ -61,54 +59,34 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     The
         /// </summary>
-        private int w;
+        //private int w;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Sprite" /> class
         /// </summary>
-#if NET5_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.DynamicDependency(global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicConstructors, typeof(Sprite))]
-#endif
         public Sprite()
         {
             NameFile = "";
             Path = "";
             Depth = 0;
-            Flips = RendererFlips.None;
         }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Sprite" /> class
         /// </summary>
         /// <param name="nameFile">The name file</param>
-#if NET5_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.DynamicDependency(global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicConstructors, typeof(Sprite))]
-#endif
         public Sprite(string nameFile)
         {
             NameFile = nameFile;
             Path = "";
             Depth = 0;
-            Flips = RendererFlips.None;
         }
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Sprite" /> class
-        /// </summary>
-        /// <param name="image">The image</param>
-        /// <param name="depth">The depth</param>
-        /// <param name="flips">The flips</param>
-        /// <param name="nameFile"></param>
-        [JsonConstructor]
-#if NET5_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.DynamicDependency(global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicConstructors, typeof(Sprite))]
-#endif
-        public Sprite(string nameFile, int depth, RendererFlips flips)
+        private Sprite(string nameFile, int depth)
         {
-            Depth = depth;
-            Flips = flips;
-            Path = AssetManager.Find(nameFile);
             NameFile = nameFile;
+            Path = AssetManager.Find(nameFile);
+            Depth = depth;
         }
 
         /// <summary>
@@ -116,12 +94,6 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         [JsonPropertyName("_Depth_")]
         public int Depth { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the value of the flip
-        /// </summary>
-        [JsonPropertyName("_Flips_")]
-        public RendererFlips Flips { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the path
@@ -158,6 +130,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public override void OnInit()
         {
+            /*
             if (!string.IsNullOrEmpty(NameFile))
             {
                 Path = AssetManager.Find(NameFile);
@@ -168,7 +141,7 @@ namespace Alis.Core.Ecs.Component.Render
                 Sdl.QueryTexture(Texture, out _, out _, out int w, out int h);
 
                 Size = new Vector2F(w, h);
-            }
+            }*/
         }
 
         /// <summary>
@@ -184,7 +157,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public override void OnStart()
         {
-            Sdl.QueryTexture(Texture, out _, out _, out w, out h);
+            //Sdl.QueryTexture(Texture, out _, out _, out w, out h);
 
             //new RectangleI((int) GameObject.Transform.Position.X, (int) GameObject.Transform.Position.Y, w, h);
         }
@@ -235,7 +208,7 @@ namespace Alis.Core.Ecs.Component.Render
                 H = scaledHeight
             };
 
-            Sdl.RenderCopyEx(renderer, Texture, IntPtr.Zero, ref rectangle, spriteRotation, IntPtr.Zero, RendererFlips.FlipVertical);
+            //Sdl.RenderCopyEx(renderer, Texture, IntPtr.Zero, ref rectangle, spriteRotation, IntPtr.Zero, RendererFlips.FlipVertical);
         }
 
         /// <summary>
@@ -327,6 +300,6 @@ namespace Alis.Core.Ecs.Component.Render
         ///     Clones this instance
         /// </summary>
         /// <returns>The object</returns>
-        public override object Clone() => new Sprite(NameFile, Depth, Flips);
+        public override object Clone() => new Sprite(NameFile, Depth);
     }
 }

@@ -31,12 +31,9 @@ using System;
 using Alis.App.Hub.Controllers;
 using Alis.App.Hub.Windows;
 using Alis.Core.Aspect.Data.Mapping;
-using Alis.Core.Graphic.Sdl2;
-using Alis.Core.Graphic.Sdl2.Enums;
-using Alis.Core.Graphic.Sdl2.Structs;
 using Alis.Extension.Graphic.ImGui;
-using Alis.Extension.Graphic.OpenGL;
-using Alis.Extension.Graphic.OpenGL.Constructs;
+using Alis.Extension.Graphic.Sdl2;
+using Alis.Extension.Graphic.Sdl2.Enums;
 
 namespace Alis.App.Hub.Core
 {

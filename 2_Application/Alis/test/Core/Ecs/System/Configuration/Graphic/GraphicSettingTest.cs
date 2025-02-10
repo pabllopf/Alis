@@ -40,25 +40,6 @@ namespace Alis.Test.Core.Ecs.System.Configuration.Graphic
     public class GraphicSettingTest
     {
         /// <summary>
-        ///     Tests that test graphic setting window
-        /// </summary>
-        [Fact]
-        public void Test_GraphicSetting_Window()
-        {
-            // Arrange
-            GraphicSetting graphicSetting = new GraphicSetting();
-
-            // Act
-            graphicSetting.Window = new Window();
-            IWindow result = graphicSetting.Window;
-
-            // Assert
-            Assert.NotNull(graphicSetting);
-            Assert.NotNull(result);
-            Assert.IsType<Window>(result);
-        }
-
-        /// <summary>
         ///     Tests that test graphic setting builder
         /// </summary>
         [Fact]

@@ -43,7 +43,6 @@ namespace Alis.Core.Sample
         public static void Main(string[] args)
         {
             Logger.Info("Alis.Core.Sample with " + args.Length + " args");
-            SdlController.Run();
         }
     }
 }

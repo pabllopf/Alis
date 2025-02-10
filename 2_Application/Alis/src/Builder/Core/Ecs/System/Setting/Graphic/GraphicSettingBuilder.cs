@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Builder.Core.Graphic;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Ecs.System.Configuration.Graphic;
@@ -40,8 +39,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Graphic
     ///     The graphic setting builder class
     /// </summary>
     public class GraphicSettingBuilder :
-        IBuild<GraphicSetting>,
-        IWindow<GraphicSettingBuilder, Func<WindowBuilder, Window>>
+        IBuild<GraphicSetting>
     {
         /// <summary>
         ///     The graphic setting
@@ -53,17 +51,6 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Graphic
         /// </summary>
         /// <returns>The graphic setting</returns>
         public GraphicSetting Build() => graphicSetting;
-
-        /// <summary>
-        ///     Windows the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The graphic setting builder</returns>
-        public GraphicSettingBuilder Window(Func<WindowBuilder, Window> value)
-        {
-            graphicSetting.Window = value(new WindowBuilder());
-            return this;
-        }
 
         /// <summary>
         ///     Targets the value
