@@ -109,17 +109,5 @@ namespace Alis.Core.Graphic.Stb
 				return FromStream(stream, requiredComponents);
 			}
 		}
-
-		/// <summary>
-		/// Animateds the gif frames from stream using the specified stream
-		/// </summary>
-		/// <param name="stream">The stream</param>
-		/// <param name="requiredComponents">The required components</param>
-		/// <returns>An enumerable of animated frame result</returns>
-		public static IEnumerable<AnimatedFrameResult> AnimatedGifFramesFromStream(Stream stream,
-			ColorComponents requiredComponents = ColorComponents.Default)
-		{
-			return new AnimatedGifEnumerable(stream, requiredComponents);
-		}
 	}
 }

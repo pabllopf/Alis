@@ -441,20 +441,8 @@ namespace Alis.Core.Graphic.Stb
 				return stbi__png_load(s, x, y, comp, req_comp, ri);
 			if (stbi__bmp_test(s) != 0)
 				return stbi__bmp_load(s, x, y, comp, req_comp, ri);
-			if (stbi__gif_test(s) != 0)
-				return stbi__gif_load(s, x, y, comp, req_comp, ri);
-			if (stbi__psd_test(s) != 0)
-				return stbi__psd_load(s, x, y, comp, req_comp, ri, bpc);
 			if (stbi__jpeg_test(s) != 0)
 				return stbi__jpeg_load(s, x, y, comp, req_comp, ri);
-			if (stbi__hdr_test(s) != 0)
-			{
-				float* hdr = stbi__hdr_load(s, x, y, comp, req_comp, ri);
-				return stbi__hdr_to_ldr(hdr, *x, *y, req_comp != 0 ? req_comp : *comp);
-			}
-
-			if (stbi__tga_test(s) != 0)
-				return stbi__tga_load(s, x, y, comp, req_comp, ri);
 			return (byte*)(ulong)(stbi__err("unknown image type") != 0 ? 0 : 0);
 		}
 
@@ -650,15 +638,6 @@ namespace Alis.Core.Graphic.Stb
 		public static float* stbi__loadf_main(stbi__context s, int* x, int* y, int* comp, int req_comp)
 		{
 			byte* data;
-			if (stbi__hdr_test(s) != 0)
-			{
-				stbi__result_info ri = new stbi__result_info();
-				float* hdr_data = stbi__hdr_load(s, x, y, comp, req_comp, &ri);
-				if (hdr_data != null)
-					stbi__float_postprocess(hdr_data, x, y, comp, req_comp);
-				return hdr_data;
-			}
-
 			data = stbi__load_and_postprocess_8bit(s, x, y, comp, req_comp);
 			if (data != null)
 				return stbi__ldr_to_hdr(data, *x, *y, req_comp != 0 ? req_comp : *comp);
@@ -1125,15 +1104,7 @@ namespace Alis.Core.Graphic.Stb
 				return 1;
 			if (stbi__png_info(s, x, y, comp) != 0)
 				return 1;
-			if (stbi__gif_info(s, x, y, comp) != 0)
-				return 1;
 			if (stbi__bmp_info(s, x, y, comp) != 0)
-				return 1;
-			if (stbi__psd_info(s, x, y, comp) != 0)
-				return 1;
-			if (stbi__hdr_info(s, x, y, comp) != 0)
-				return 1;
-			if (stbi__tga_info(s, x, y, comp) != 0)
 				return 1;
 			return stbi__err("unknown image type");
 		}
@@ -1146,8 +1117,6 @@ namespace Alis.Core.Graphic.Stb
 		public static int stbi__is_16_main(stbi__context s)
 		{
 			if (stbi__png_is16(s) != 0)
-				return 1;
-			if (stbi__psd_is16(s) != 0)
 				return 1;
 			return 0;
 		}

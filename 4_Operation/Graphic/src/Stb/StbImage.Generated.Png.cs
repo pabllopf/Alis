@@ -798,17 +798,12 @@ namespace Alis.Core.Graphic.Stb
 					case ((uint)73 << 24) + ((uint)69 << 16) + ((uint)78 << 8) + 68:
 						{
 							uint raw_len = 0;
-							uint bpl = 0;
 							if (first != 0)
 								return stbi__err("first not IHDR");
 							if (scan != STBI__SCAN_load)
 								return 1;
 							if (z.idata == null)
 								return stbi__err("no IDAT");
-							bpl = (uint)((s.img_x * z.depth + 7) / 8);
-							raw_len = (uint)(bpl * s.img_y * s.img_n + s.img_y);
-							z.expanded = (byte*)stbi_zlib_decode_malloc_guesssize_headerflag((sbyte*)z.idata, (int)ioff,
-								(int)raw_len, (int*)&raw_len, is_iphone == 0 ? 1 : 0);
 							if (z.expanded == null)
 								return 0;
 							CRuntime.free(z.idata);
