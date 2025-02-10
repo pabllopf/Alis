@@ -66,6 +66,15 @@ namespace Alis.Core.Graphic.OpenGL
         ///     The clear color
         /// </summary>
         public static readonly ClearColor GlClearColor = GetCommand<ClearColor>("glClearColor");
+        
+        
+        /// <summary>
+        /// The color 4f
+        /// </summary>
+        public static readonly Color4f GlColor4f = GetCommand<Color4f>("glColor4f");
+        
+        
+        public static readonly End GlEnd = GetCommand<End>("glEnd");
 
         /// <summary>
         ///     The clear
@@ -111,7 +120,9 @@ namespace Alis.Core.Graphic.OpenGL
         ///     The create shader
         /// </summary>
         public static readonly CreateShader GlCreateShader = GetCommand<CreateShader>("glCreateShader");
-
+        
+        public static readonly Begin GlBegin = GetCommand<Begin>("glBegin");
+        
         /// <summary>
         ///     The shader source del
         /// </summary>
@@ -241,6 +252,8 @@ namespace Alis.Core.Graphic.OpenGL
         ///     The bind buffer
         /// </summary>
         public static readonly BindBuffer GlBindBuffer = GetCommand<BindBuffer>("glBindBuffer");
+        
+        public static readonly Vertex2f GlVertex2f = GetCommand<Vertex2f>("glVertex2f");
 
         /// <summary>
         ///     The enable vertex attrib array del
@@ -336,7 +349,9 @@ namespace Alis.Core.Graphic.OpenGL
         ///     The draw elements
         /// </summary>
         public static readonly DrawElements GlDrawElements = GetCommand<DrawElements>("glDrawElements");
-
+        
+        public static readonly PolygonMode GlPolygonMode = GetCommand<PolygonMode>("glPolygonMode");
+        
         /// <summary>
         ///     S
         /// </summary>
@@ -580,6 +595,6 @@ namespace Alis.Core.Graphic.OpenGL
         /// </summary>
         /// <param name="texture2D">The texture</param>
         public static void GenerateMipmap(TextureTarget texture2D) => GetCommand<GetString>("glGenerateMipmap");
-        
     }
+    
 }

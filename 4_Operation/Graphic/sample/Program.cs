@@ -19,6 +19,7 @@ namespace Alis.Core.Graphic.Sample
             Console.WriteLine("3. Texture Sample");
             Console.WriteLine("4. Rotate 3D Object Sample");
             Console.WriteLine("5. Load BMP Image");
+            Console.WriteLine("6. Render a square unfilled");
             int sampleNumber = Convert.ToInt32(Console.ReadLine());
 
             switch (sampleNumber)
@@ -43,6 +44,11 @@ namespace Alis.Core.Graphic.Sample
                 case 5:
                     LoadBmpImagenSample loadBmpImagen = new LoadBmpImagenSample();
                     loadBmpImagen.Run();
+                    break;
+                
+                case 6:
+                    RenderSquareUnfilled unfilled = new RenderSquareUnfilled();
+                    unfilled.Run();
                     break;
 
             }
