@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security;
@@ -29,12 +29,18 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         public const string LIBRARY = "glfw";
 
+        /// <summary>
+        /// The glfw error
+        /// </summary>
         private static readonly ErrorCallback errorCallback = GlfwError;
 
         #endregion
 
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Glfw"/> class
+        /// </summary>
         static Glfw()
         {
             EmbeddedDllClass.ExtractEmbeddedDlls("glfw", DllType.Lib, GlfwDlls.GlfwDllBytes, Assembly.GetAssembly(typeof(GlfwDlls)));
@@ -250,6 +256,12 @@ namespace Alis.Core.Graphic.GlfwLib
         [DllImport(LIBRARY, EntryPoint = "glfwSetWindowAttrib", CallingConvention = CallingConvention.Cdecl)]
         public static extern void SetWindowAttribute(IntPtr window, WindowAttribute attr, bool value);
 
+        /// <summary>
+        /// Gets the joystick hats using the specified joystick id
+        /// </summary>
+        /// <param name="joystickId">The joystick id</param>
+        /// <param name="count">The count</param>
+        /// <returns>The int ptr</returns>
         [DllImport(LIBRARY, EntryPoint = "glfwGetJoystickHats", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetJoystickHats(int joystickId, out int count);
 
@@ -271,6 +283,11 @@ namespace Alis.Core.Graphic.GlfwLib
             return hat;
         }
 
+        /// <summary>
+        /// Gets the joystick guid private using the specified joystick id
+        /// </summary>
+        /// <param name="joystickId">The joystick id</param>
+        /// <returns>The int ptr</returns>
         [DllImport(LIBRARY, EntryPoint = "glfwGetJoystickGUID", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetJoystickGuidPrivate(int joystickId);
 
@@ -314,6 +331,11 @@ namespace Alis.Core.Graphic.GlfwLib
         [DllImport(LIBRARY, EntryPoint = "glfwJoystickIsGamepad", CallingConvention = CallingConvention.Cdecl)]
         public static extern bool JoystickIsGamepad(int joystickId);
 
+        /// <summary>
+        /// Updates the gamepad mappings using the specified mappings
+        /// </summary>
+        /// <param name="mappings">The mappings</param>
+        /// <returns>The bool</returns>
         [DllImport(LIBRARY, EntryPoint = "glfwUpdateGamepadMappings", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool UpdateGamepadMappings( byte[] mappings);
 
@@ -331,6 +353,11 @@ namespace Alis.Core.Graphic.GlfwLib
             return UpdateGamepadMappings(Encoding.ASCII.GetBytes(mappings));
         }
 
+        /// <summary>
+        /// Gets the gamepad name private using the specified gamepad id
+        /// </summary>
+        /// <param name="gamepadId">The gamepad id</param>
+        /// <returns>The int ptr</returns>
         [DllImport(LIBRARY, EntryPoint = "glfwGetGamepadName", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetGamepadNamePrivate(int gamepadId);
 
@@ -521,6 +548,15 @@ namespace Alis.Core.Graphic.GlfwLib
         [return: MarshalAs(UnmanagedType.FunctionPtr, MarshalTypeRef = typeof(ErrorCallback))]
         public static extern ErrorCallback SetErrorCallback(ErrorCallback errorHandler);
 
+        /// <summary>
+        /// Creates the window using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="title">The title</param>
+        /// <param name="monitor">The monitor</param>
+        /// <param name="share">The share</param>
+        /// <returns>The window</returns>
         [DllImport(LIBRARY, EntryPoint = "glfwCreateWindow", CallingConvention = CallingConvention.Cdecl)]
         private static extern Window CreateWindow(int width, int height, byte[] title, Monitor monitor, Window share);
 
@@ -692,15 +728,31 @@ namespace Alis.Core.Graphic.GlfwLib
         [DllImport(LIBRARY, EntryPoint = "glfwGetVersionString", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr GetVersionString();
 
+        /// <summary>
+        /// Gets the time
+        /// </summary>
+        /// <returns>The double</returns>
         [DllImport(LIBRARY, EntryPoint = "glfwGetTime", CallingConvention = CallingConvention.Cdecl)]
         private static extern double GetTime();
 
+        /// <summary>
+        /// Sets the time using the specified time
+        /// </summary>
+        /// <param name="time">The time</param>
         [DllImport(LIBRARY, EntryPoint = "glfwSetTime", CallingConvention = CallingConvention.Cdecl)]
         private static extern void SetTime(double time);
 
+        /// <summary>
+        /// Gets the timer frequency
+        /// </summary>
+        /// <returns>The ulong</returns>
         [DllImport(LIBRARY, EntryPoint = "glfwGetTimerFrequency", CallingConvention = CallingConvention.Cdecl)]
         private static extern ulong GetTimerFrequency();
 
+        /// <summary>
+        /// Gets the timer value
+        /// </summary>
+        /// <returns>The ulong</returns>
         [DllImport(LIBRARY, EntryPoint = "glfwGetTimerValue", CallingConvention = CallingConvention.Cdecl)]
         private static extern ulong GetTimerValue();
 
@@ -915,12 +967,27 @@ namespace Alis.Core.Graphic.GlfwLib
         [return: MarshalAs(UnmanagedType.FunctionPtr, MarshalTypeRef = typeof(WindowCallback))]
         public static extern WindowCallback SetCloseCallback(Window window, WindowCallback closeCallback);
 
+        /// <summary>
+        /// Gets the primary monitor
+        /// </summary>
+        /// <returns>The monitor</returns>
         [DllImport(LIBRARY, EntryPoint = "glfwGetPrimaryMonitor", CallingConvention = CallingConvention.Cdecl)]
         private static extern Monitor GetPrimaryMonitor();
 
+        /// <summary>
+        /// Gets the video mode internal using the specified monitor
+        /// </summary>
+        /// <param name="monitor">The monitor</param>
+        /// <returns>The int ptr</returns>
         [DllImport(LIBRARY, EntryPoint = "glfwGetVideoMode", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetVideoModeInternal(Monitor monitor);
 
+        /// <summary>
+        /// Gets the video modes using the specified monitor
+        /// </summary>
+        /// <param name="monitor">The monitor</param>
+        /// <param name="count">The count</param>
+        /// <returns>The int ptr</returns>
         [DllImport(LIBRARY, EntryPoint = "glfwGetVideoModes", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetVideoModes(Monitor monitor, out int count);
 
@@ -963,6 +1030,11 @@ namespace Alis.Core.Graphic.GlfwLib
         public static extern void SetWindowMonitor(Window window, Monitor monitor, int x, int y, int width, int height,
             int refreshRate);
 
+        /// <summary>
+        /// Gets the gamma ramp internal using the specified monitor
+        /// </summary>
+        /// <param name="monitor">The monitor</param>
+        /// <returns>The int ptr</returns>
         [DllImport(LIBRARY, EntryPoint = "glfwGetGammaRamp", CallingConvention = CallingConvention.Cdecl)]
         internal static extern IntPtr GetGammaRampInternal(Monitor monitor);
 
@@ -989,9 +1061,19 @@ namespace Alis.Core.Graphic.GlfwLib
         [DllImport(LIBRARY, EntryPoint = "glfwSetGamma", CallingConvention = CallingConvention.Cdecl)]
         public static extern void SetGamma(Monitor monitor, float gamma);
 
+        /// <summary>
+        /// Gets the clipboard string internal using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The int ptr</returns>
         [DllImport(LIBRARY, EntryPoint = "glfwGetClipboardString", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetClipboardStringInternal(Window window);
 
+        /// <summary>
+        /// Sets the clipboard string using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="bytes">The bytes</param>
         [DllImport(LIBRARY, EntryPoint = "glfwSetClipboardString", CallingConvention = CallingConvention.Cdecl)]
         private static extern void SetClipboardString(Window window, byte[] bytes);
 
@@ -1011,6 +1093,11 @@ namespace Alis.Core.Graphic.GlfwLib
         [return: MarshalAs(UnmanagedType.FunctionPtr, MarshalTypeRef = typeof(FileDropCallback))]
         public static extern FileDropCallback SetDropCallback(Window window, FileDropCallback dropCallback);
 
+        /// <summary>
+        /// Gets the monitor name internal using the specified monitor
+        /// </summary>
+        /// <param name="monitor">The monitor</param>
+        /// <returns>The int ptr</returns>
         [DllImport(LIBRARY, EntryPoint = "glfwGetMonitorName", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetMonitorNameInternal(Monitor monitor);
 
@@ -1218,6 +1305,10 @@ namespace Alis.Core.Graphic.GlfwLib
         [DllImport(LIBRARY, EntryPoint = "glfwSetWindowAspectRatio", CallingConvention = CallingConvention.Cdecl)]
         public static extern void SetWindowAspectRatio(Window window, int numerator, int denominator);
 
+        /// <summary>
+        /// Gets the current context
+        /// </summary>
+        /// <returns>The window</returns>
         [DllImport(LIBRARY, EntryPoint = "glfwGetCurrentContext", CallingConvention = CallingConvention.Cdecl)]
         private static extern Window GetCurrentContext();
 
@@ -1239,6 +1330,11 @@ namespace Alis.Core.Graphic.GlfwLib
         [DllImport(LIBRARY, EntryPoint = "glfwGetMonitorPos", CallingConvention = CallingConvention.Cdecl)]
         public static extern void GetMonitorPosition(Monitor monitor, out int x, out int y);
 
+        /// <summary>
+        /// Gets the monitors using the specified count
+        /// </summary>
+        /// <param name="count">The count</param>
+        /// <returns>The int ptr</returns>
         [DllImport(LIBRARY, EntryPoint = "glfwGetMonitors", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetMonitors(out int count);
 
@@ -1300,6 +1396,12 @@ namespace Alis.Core.Graphic.GlfwLib
         [DllImport(LIBRARY, EntryPoint = "glfwGetKey", CallingConvention = CallingConvention.Cdecl)]
         public static extern InputState GetKey(Window window, Keys key);
 
+        /// <summary>
+        /// Gets the key name internal using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
+        /// <param name="scanCode">The scan code</param>
+        /// <returns>The int ptr</returns>
         [DllImport(LIBRARY, EntryPoint = "glfwGetKeyName", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetKeyNameInternal(Keys key, int scanCode);
 
@@ -1364,12 +1466,29 @@ namespace Alis.Core.Graphic.GlfwLib
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool JoystickPresent(Joystick joystick);
 
+        /// <summary>
+        /// Gets the joystick name internal using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <returns>The int ptr</returns>
         [DllImport(LIBRARY, EntryPoint = "glfwGetJoystickName", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetJoystickNameInternal(Joystick joystick);
 
+        /// <summary>
+        /// Gets the joystick axes using the specified joystic
+        /// </summary>
+        /// <param name="joystic">The joystic</param>
+        /// <param name="count">The count</param>
+        /// <returns>The int ptr</returns>
         [DllImport(LIBRARY, EntryPoint = "glfwGetJoystickAxes", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetJoystickAxes(Joystick joystic, out int count);
 
+        /// <summary>
+        /// Gets the joystick buttons using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <param name="count">The count</param>
+        /// <returns>The int ptr</returns>
         [DllImport(LIBRARY, EntryPoint = "glfwGetJoystickButtons", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetJoystickButtons(Joystick joystick, out int count);
 
@@ -1440,6 +1559,11 @@ namespace Alis.Core.Graphic.GlfwLib
         public static extern void GetMonitorWorkArea(IntPtr monitor, out int x, out int y, out int width,
             out int height);
 
+        /// <summary>
+        /// Gets the proc address using the specified proc name
+        /// </summary>
+        /// <param name="procName">The proc name</param>
+        /// <returns>The int ptr</returns>
         [DllImport(LIBRARY, EntryPoint = "glfwGetProcAddress", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetProcAddress(byte[] procName);
 
@@ -1467,6 +1591,11 @@ namespace Alis.Core.Graphic.GlfwLib
         [DllImport(LIBRARY, EntryPoint = "glfwGetWindowAttrib", CallingConvention = CallingConvention.Cdecl)]
         private static extern int GetWindowAttribute(Window window, int attribute);
 
+        /// <summary>
+        /// Gets the error private using the specified description
+        /// </summary>
+        /// <param name="description">The description</param>
+        /// <returns>The error code</returns>
         [DllImport(LIBRARY, EntryPoint = "glfwGetError", CallingConvention = CallingConvention.Cdecl)]
         private static extern ErrorCode GetErrorPrivate(out IntPtr description);
 
@@ -1852,6 +1981,13 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="value">The value.</param>
         public static void WindowHint(Hint hint, ReleaseBehavior value) { WindowHint(hint, (int) value); }
 
+        /// <summary>
+        /// Gets the context version using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="major">The major</param>
+        /// <param name="minor">The minor</param>
+        /// <param name="revision">The revision</param>
         private static void GetContextVersion(Window window, out int major, out int minor, out int revision)
         {
             major = GetWindowAttribute(window, (int) ContextAttributes.ContextVersionMajor);
@@ -1859,6 +1995,12 @@ namespace Alis.Core.Graphic.GlfwLib
             revision = GetWindowAttribute(window, (int) ContextAttributes.ContextVersionRevision);
         }
 
+        /// <summary>
+        /// Glfws the error using the specified code
+        /// </summary>
+        /// <param name="code">The code</param>
+        /// <param name="message">The message</param>
+        /// <exception cref="Exception"></exception>
         private static void GlfwError(ErrorCode code, IntPtr message)
         {
             throw new Exception(Util.PtrToStringUTF8(message));

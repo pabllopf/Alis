@@ -1,4 +1,4 @@
-﻿namespace Alis.Core.Graphic.GlfwLib.Enums
+namespace Alis.Core.Graphic.GlfwLib.Enums
 {
     /// <summary>
     ///     Strongly-typed enumeration describing mouse buttons.

@@ -7,16 +7,46 @@ using Alis.Core.Graphic.Stb;
 
 namespace Alis.Core.Graphic.Sample
             {
+                /// <summary>
+                /// The sprite class
+                /// </summary>
                 public class Sprite
                 {
+                    /// <summary>
+                    /// Gets or sets the value of the shader program
+                    /// </summary>
                     public uint ShaderProgram { get; private set; }
+                    /// <summary>
+                    /// Gets or sets the value of the vao
+                    /// </summary>
                     public uint Vao { get; private set; }
+                    /// <summary>
+                    /// Gets or sets the value of the vbo
+                    /// </summary>
                     public uint Vbo { get; private set; }
+                    /// <summary>
+                    /// Gets or sets the value of the ebo
+                    /// </summary>
                     public uint Ebo { get; private set; }
+                    /// <summary>
+                    /// Gets or sets the value of the texture
+                    /// </summary>
                     public uint Texture { get; private set; }
+                    /// <summary>
+                    /// Gets or sets the value of the x
+                    /// </summary>
                     public float X { get; set; }
+                    /// <summary>
+                    /// Gets or sets the value of the y
+                    /// </summary>
                     public float Y { get; set; }
             
+                    /// <summary>
+                    /// Initializes a new instance of the <see cref="Sprite"/> class
+                    /// </summary>
+                    /// <param name="imagePath">The image path</param>
+                    /// <param name="x">The </param>
+                    /// <param name="y">The </param>
                     public Sprite(string imagePath, float x, float y)
                     {
                         X = x;
@@ -26,6 +56,9 @@ namespace Alis.Core.Graphic.Sample
                         SetupBuffers();
                     }
             
+                    /// <summary>
+                    /// Initializes the shaders
+                    /// </summary>
                     private void InitializeShaders()
                     {
                         string vertexShaderSource = @"
@@ -69,6 +102,11 @@ namespace Alis.Core.Graphic.Sample
                         Gl.GlDeleteShader(fragmentShader);
                     }
             
+                    /// <summary>
+                    /// Loads the texture using the specified image path
+                    /// </summary>
+                    /// <param name="imagePath">The image path</param>
+                    /// <exception cref="FileNotFoundException">Texture file not found </exception>
                     private void LoadTexture(string imagePath)
                     {
                         if (!File.Exists(imagePath))
@@ -121,6 +159,9 @@ namespace Alis.Core.Graphic.Sample
                         }
                     }
             
+                    /// <summary>
+                    /// Setup the buffers
+                    /// </summary>
                     private void SetupBuffers()
                     {
                         int windowWidth = 800;
@@ -169,6 +210,9 @@ namespace Alis.Core.Graphic.Sample
                         Gl.EnableVertexAttribArray(1);
                     }
             
+                    /// <summary>
+                    /// Draws this instance
+                    /// </summary>
                     public void Draw()
                     {
                         Gl.GlUseProgram(ShaderProgram);

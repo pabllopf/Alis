@@ -1,4 +1,4 @@
-﻿namespace Alis.Core.Graphic.GlfwLib.Enums
+namespace Alis.Core.Graphic.GlfwLib.Enums
 {
     /// <summary>
     ///     Describes the state of a button/key.

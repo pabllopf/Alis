@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
@@ -213,15 +213,33 @@ namespace Alis.Core.Graphic.GlfwLib
                 out IntPtr buffer);
 
 
+        /// <summary>
+        /// Sets the x 11 selection string using the specified str
+        /// </summary>
+        /// <param name="str">The str</param>
         [DllImport(Glfw.LIBRARY, EntryPoint = "glfwSetX11SelectionString", CallingConvention = CallingConvention.Cdecl)]
         private static extern void SetX11SelectionString( byte[] str);
 
+        /// <summary>
+        /// Gets the x 11 selection string internal
+        /// </summary>
+        /// <returns>The int ptr</returns>
         [DllImport(Glfw.LIBRARY, EntryPoint = "glfwGetX11SelectionString", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetX11SelectionStringInternal();
 
+        /// <summary>
+        /// Gets the win 32 adapter internal using the specified monitor
+        /// </summary>
+        /// <param name="monitor">The monitor</param>
+        /// <returns>The int ptr</returns>
         [DllImport(Glfw.LIBRARY, EntryPoint = "glfwGetWin32Adapter", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetWin32AdapterInternal(Monitor monitor);
 
+        /// <summary>
+        /// Gets the win 32 monitor internal using the specified monitor
+        /// </summary>
+        /// <param name="monitor">The monitor</param>
+        /// <returns>The int ptr</returns>
         [DllImport(Glfw.LIBRARY, EntryPoint = "glfwGetWin32Monitor", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetWin32MonitorInternal(Monitor monitor);
 

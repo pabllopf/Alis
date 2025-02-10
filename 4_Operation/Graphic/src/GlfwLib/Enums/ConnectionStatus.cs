@@ -1,4 +1,4 @@
-﻿namespace Alis.Core.Graphic.GlfwLib.Enums
+namespace Alis.Core.Graphic.GlfwLib.Enums
 {
     /// <summary>
     ///     Strongly-typed values indicating connection status of joysticks, monitors, etc.

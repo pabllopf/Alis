@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -91,19 +91,58 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         protected readonly Window Window;
 
+        /// <summary>
+        /// The title
+        /// </summary>
         private string title;
 
+        /// <summary>
+        /// The window position callback
+        /// </summary>
         private PositionCallback windowPositionCallback;
+        /// <summary>
+        /// The framebuffer size callback
+        /// </summary>
         private SizeCallback windowSizeCallback, framebufferSizeCallback;
+        /// <summary>
+        /// The window focus callback
+        /// </summary>
         private FocusCallback windowFocusCallback;
+        /// <summary>
+        /// The window refresh callback
+        /// </summary>
         private WindowCallback closeCallback, windowRefreshCallback;
+        /// <summary>
+        /// The drop callback
+        /// </summary>
         private FileDropCallback dropCallback;
+        /// <summary>
+        /// The scroll callback
+        /// </summary>
         private MouseCallback cursorPositionCallback, scrollCallback;
+        /// <summary>
+        /// The cursor enter callback
+        /// </summary>
         private MouseEnterCallback cursorEnterCallback;
+        /// <summary>
+        /// The mouse button callback
+        /// </summary>
         private MouseButtonCallback mouseButtonCallback;
+        /// <summary>
+        /// The char mods callback
+        /// </summary>
         private CharModsCallback charModsCallback;
+        /// <summary>
+        /// The key callback
+        /// </summary>
         private KeyCallback keyCallback;
+        /// <summary>
+        /// The window maximize callback
+        /// </summary>
         private WindowMaximizedCallback windowMaximizeCallback;
+        /// <summary>
+        /// The window content scale callback
+        /// </summary>
         private WindowContentsScaleCallback windowContentScaleCallback;
 
         #endregion
@@ -785,6 +824,9 @@ namespace Alis.Core.Graphic.GlfwLib
             }
         }
 
+        /// <summary>
+        /// Binds the callbacks
+        /// </summary>
         private void BindCallbacks()
         {
             windowPositionCallback = (_, x, y) => OnPositionChanged(x, y);
@@ -820,6 +862,11 @@ namespace Alis.Core.Graphic.GlfwLib
             Glfw.SetWindowContentScaleCallback(Window, windowContentScaleCallback);
         }
 
+        /// <summary>
+        /// Ons the file drop using the specified count
+        /// </summary>
+        /// <param name="count">The count</param>
+        /// <param name="pointer">The pointer</param>
         private void OnFileDrop(int count, IntPtr pointer)
         {
             string[] paths = new string[count];

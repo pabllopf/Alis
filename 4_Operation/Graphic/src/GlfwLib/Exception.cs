@@ -1,4 +1,4 @@
-﻿using Alis.Core.Graphic.GlfwLib.Enums;
+using Alis.Core.Graphic.GlfwLib.Enums;
 
 namespace Alis.Core.Graphic.GlfwLib
 {

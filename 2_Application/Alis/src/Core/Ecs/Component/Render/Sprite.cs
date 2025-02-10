@@ -82,6 +82,11 @@ namespace Alis.Core.Ecs.Component.Render
             Depth = 0;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Sprite"/> class
+        /// </summary>
+        /// <param name="nameFile">The name file</param>
+        /// <param name="depth">The depth</param>
         private Sprite(string nameFile, int depth)
         {
             NameFile = nameFile;

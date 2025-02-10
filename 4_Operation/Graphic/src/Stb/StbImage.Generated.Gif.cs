@@ -5,8 +5,16 @@ using Alis.Core.Graphic.Stb.Hebron.Runtime;
 
 namespace Alis.Core.Graphic.Stb
 {
+	/// <summary>
+	/// The stb image class
+	/// </summary>
 	unsafe partial class StbImage
 	{
+		/// <summary>
+		/// Stbis the gif test using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <returns>The </returns>
 		public static int stbi__gif_test(stbi__context s)
 		{
 			int r = stbi__gif_test_raw(s);
@@ -14,6 +22,16 @@ namespace Alis.Core.Graphic.Stb
 			return r;
 		}
 
+		/// <summary>
+		/// Stbis the gif load using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <param name="x">The </param>
+		/// <param name="y">The </param>
+		/// <param name="comp">The comp</param>
+		/// <param name="req_comp">The req comp</param>
+		/// <param name="ri">The ri</param>
+		/// <returns>The </returns>
 		public static void* stbi__gif_load(stbi__context s, int* x, int* y, int* comp, int req_comp,
 			stbi__result_info* ri)
 		{
@@ -37,6 +55,17 @@ namespace Alis.Core.Graphic.Stb
 			return u;
 		}
 
+		/// <summary>
+		/// Stbis the load gif main using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <param name="delays">The delays</param>
+		/// <param name="x">The </param>
+		/// <param name="y">The </param>
+		/// <param name="z">The </param>
+		/// <param name="comp">The comp</param>
+		/// <param name="req_comp">The req comp</param>
+		/// <returns>The void</returns>
 		public static void* stbi__load_gif_main(stbi__context s, int** delays, int* x, int* y, int* z, int* comp,
 			int req_comp)
 		{
@@ -112,11 +141,24 @@ namespace Alis.Core.Graphic.Stb
 			return (byte*)(ulong)(stbi__err("not GIF") != 0 ? 0 : 0);
 		}
 
+		/// <summary>
+		/// Stbis the gif info using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <param name="x">The </param>
+		/// <param name="y">The </param>
+		/// <param name="comp">The comp</param>
+		/// <returns>The int</returns>
 		public static int stbi__gif_info(stbi__context s, int* x, int* y, int* comp)
 		{
 			return stbi__gif_info_raw(s, x, y, comp);
 		}
 
+		/// <summary>
+		/// Stbis the gif test raw using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <returns>The int</returns>
 		public static int stbi__gif_test_raw(stbi__context s)
 		{
 			int sz = 0;
@@ -130,6 +172,13 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// Stbis the gif parse colortable using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <param name="pal">The pal</param>
+		/// <param name="num_entries">The num entries</param>
+		/// <param name="transp">The transp</param>
 		public static void stbi__gif_parse_colortable(stbi__context s, byte[][] pal, int num_entries, int transp)
 		{
 			int i = 0;
@@ -142,6 +191,14 @@ namespace Alis.Core.Graphic.Stb
 			}
 		}
 
+		/// <summary>
+		/// Stbis the gif header using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <param name="g">The </param>
+		/// <param name="comp">The comp</param>
+		/// <param name="is_info">The is info</param>
+		/// <returns>The int</returns>
 		public static int stbi__gif_header(stbi__context s, stbi__gif g, int* comp, int is_info)
 		{
 			byte version = 0;
@@ -172,6 +229,14 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// Stbis the gif info raw using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <param name="x">The </param>
+		/// <param name="y">The </param>
+		/// <param name="comp">The comp</param>
+		/// <returns>The int</returns>
 		public static int stbi__gif_info_raw(stbi__context s, int* x, int* y, int* comp)
 		{
 			stbi__gif g = new stbi__gif();
@@ -190,6 +255,11 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// Stbis the out gif code using the specified g
+		/// </summary>
+		/// <param name="g">The </param>
+		/// <param name="code">The code</param>
 		public static void stbi__out_gif_code(stbi__gif g, ushort code)
 		{
 			byte* p;
@@ -224,6 +294,12 @@ namespace Alis.Core.Graphic.Stb
 			}
 		}
 
+		/// <summary>
+		/// Stbis the process gif raster using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <param name="g">The </param>
+		/// <returns>The byte</returns>
 		public static byte* stbi__process_gif_raster(stbi__context s, stbi__gif g)
 		{
 			byte lzw_cs = 0;
@@ -328,6 +404,15 @@ namespace Alis.Core.Graphic.Stb
 				}
 		}
 
+		/// <summary>
+		/// Stbis the gif load next using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <param name="g">The </param>
+		/// <param name="comp">The comp</param>
+		/// <param name="req_comp">The req comp</param>
+		/// <param name="two_back">The two back</param>
+		/// <returns>The byte</returns>
 		public static byte* stbi__gif_load_next(stbi__context s, stbi__gif g, int* comp, int req_comp, byte* two_back)
 		{
 			int dispose = 0;
@@ -492,6 +577,13 @@ namespace Alis.Core.Graphic.Stb
 			}
 		}
 
+		/// <summary>
+		/// Stbis the load gif main outofmem using the specified g
+		/// </summary>
+		/// <param name="g">The </param>
+		/// <param name="_out_">The out</param>
+		/// <param name="delays">The delays</param>
+		/// <returns>The void</returns>
 		public static void* stbi__load_gif_main_outofmem(stbi__gif g, byte* _out_, int** delays)
 		{
 			CRuntime.free(g._out_);
@@ -504,40 +596,130 @@ namespace Alis.Core.Graphic.Stb
 			return (byte*)(ulong)(stbi__err("outofmem") != 0 ? 0 : 0);
 		}
 
+		/// <summary>
+		/// The stbi gif class
+		/// </summary>
 		public class stbi__gif
 		{
+			/// <summary>
+			/// The out
+			/// </summary>
 			public byte* _out_;
+			/// <summary>
+			/// The background
+			/// </summary>
 			public byte* background;
+			/// <summary>
+			/// The bgindex
+			/// </summary>
 			public int bgindex;
+			/// <summary>
+			/// The stbi gif lzw
+			/// </summary>
 			public stbi__gif_lzw[] codes = new stbi__gif_lzw[8192];
+			/// <summary>
+			/// The color table
+			/// </summary>
 			public byte[][] color_table;
+			/// <summary>
+			/// The cur
+			/// </summary>
 			public int cur_x;
+			/// <summary>
+			/// The cur
+			/// </summary>
 			public int cur_y;
+			/// <summary>
+			/// The delay
+			/// </summary>
 			public int delay;
+			/// <summary>
+			/// The eflags
+			/// </summary>
 			public int eflags;
+			/// <summary>
+			/// The flags
+			/// </summary>
 			public int flags;
+			/// <summary>
+			/// The 
+			/// </summary>
 			public int h;
+			/// <summary>
+			/// The history
+			/// </summary>
 			public byte* history;
+			/// <summary>
+			/// The lflags
+			/// </summary>
 			public int lflags;
+			/// <summary>
+			/// The line size
+			/// </summary>
 			public int line_size;
+			/// <summary>
+			/// The create array
+			/// </summary>
 			public byte[][] lpal = Utility.CreateArray<byte>(256, 4);
+			/// <summary>
+			/// The max
+			/// </summary>
 			public int max_x;
+			/// <summary>
+			/// The max
+			/// </summary>
 			public int max_y;
+			/// <summary>
+			/// The create array
+			/// </summary>
 			public byte[][] pal = Utility.CreateArray<byte>(256, 4);
+			/// <summary>
+			/// The parse
+			/// </summary>
 			public int parse;
+			/// <summary>
+			/// The ratio
+			/// </summary>
 			public int ratio;
+			/// <summary>
+			/// The start
+			/// </summary>
 			public int start_x;
+			/// <summary>
+			/// The start
+			/// </summary>
 			public int start_y;
+			/// <summary>
+			/// The step
+			/// </summary>
 			public int step;
+			/// <summary>
+			/// The transparent
+			/// </summary>
 			public int transparent;
+			/// <summary>
+			/// The 
+			/// </summary>
 			public int w;
 		}
 
+		/// <summary>
+		/// The stbi gif lzw
+		/// </summary>
 		[StructLayout(LayoutKind.Sequential)]
 		public struct stbi__gif_lzw
 		{
+			/// <summary>
+			/// The prefix
+			/// </summary>
 			public short prefix;
+			/// <summary>
+			/// The first
+			/// </summary>
 			public byte first;
+			/// <summary>
+			/// The suffix
+			/// </summary>
 			public byte suffix;
 		}
 	}

@@ -4,8 +4,16 @@ using Alis.Core.Graphic.Stb.Hebron.Runtime;
 
 namespace Alis.Core.Graphic.Stb
 {
+	/// <summary>
+	/// The stb image class
+	/// </summary>
 	unsafe partial class StbImage
 	{
+		/// <summary>
+		/// Stbis the tga test using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <returns>The res</returns>
 		public static int stbi__tga_test(stbi__context s)
 		{
 			int res = 0;
@@ -48,6 +56,16 @@ namespace Alis.Core.Graphic.Stb
 			return res;
 		}
 
+		/// <summary>
+		/// Stbis the tga load using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <param name="x">The </param>
+		/// <param name="y">The </param>
+		/// <param name="comp">The comp</param>
+		/// <param name="req_comp">The req comp</param>
+		/// <param name="ri">The ri</param>
+		/// <returns>The tga data</returns>
 		public static void* stbi__tga_load(stbi__context s, int* x, int* y, int* comp, int req_comp,
 			stbi__result_info* ri)
 		{
@@ -236,6 +254,14 @@ namespace Alis.Core.Graphic.Stb
 			return tga_data;
 		}
 
+		/// <summary>
+		/// Stbis the tga info using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <param name="x">The </param>
+		/// <param name="y">The </param>
+		/// <param name="comp">The comp</param>
+		/// <returns>The int</returns>
 		public static int stbi__tga_info(stbi__context s, int* x, int* y, int* comp)
 		{
 			int tga_w = 0;
@@ -333,6 +359,13 @@ namespace Alis.Core.Graphic.Stb
 			return 1;
 		}
 
+		/// <summary>
+		/// Stbis the tga get comp using the specified bits per pixel
+		/// </summary>
+		/// <param name="bits_per_pixel">The bits per pixel</param>
+		/// <param name="is_grey">The is grey</param>
+		/// <param name="is_rgb16">The is rgb16</param>
+		/// <returns>The int</returns>
 		public static int stbi__tga_get_comp(int bits_per_pixel, int is_grey, int* is_rgb16)
 		{
 			if (is_rgb16 != null)
@@ -356,6 +389,11 @@ namespace Alis.Core.Graphic.Stb
 			}
 		}
 
+		/// <summary>
+		/// Stbis the tga read rgb 16 using the specified s
+		/// </summary>
+		/// <param name="s">The </param>
+		/// <param name="_out_">The out</param>
 		public static void stbi__tga_read_rgb16(stbi__context s, byte* _out_)
 		{
 			ushort px = (ushort)stbi__get16le(s);

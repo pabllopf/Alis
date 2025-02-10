@@ -1,4 +1,4 @@
-﻿namespace Alis.Core.Graphic.GlfwLib.Enums
+namespace Alis.Core.Graphic.GlfwLib.Enums
 {
     /// <summary>
     ///     Describes the release behavior to be used by the context.

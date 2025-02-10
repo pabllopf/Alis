@@ -1,20 +1,40 @@
-﻿using System.IO;
+using System.IO;
 
 namespace Alis.Core.Graphic.Stb
 {
 #if !STBSHARP_INTERNAL
+	/// <summary>
+	/// The image info
+	/// </summary>
 	public
 #else
 	internal
 #endif
 	struct ImageInfo
 	{
+		/// <summary>
+		/// The width
+		/// </summary>
 		public int Width;
+		/// <summary>
+		/// The height
+		/// </summary>
 		public int Height;
+		/// <summary>
+		/// The color components
+		/// </summary>
 		public ColorComponents ColorComponents;
+		/// <summary>
+		/// The bits per channel
+		/// </summary>
 		public int BitsPerChannel;
 
 
+		/// <summary>
+		/// Creates the stream using the specified stream
+		/// </summary>
+		/// <param name="stream">The stream</param>
+		/// <returns>The image info</returns>
 		public static unsafe ImageInfo? FromStream(Stream stream)
 		{
 			int width, height, comp;

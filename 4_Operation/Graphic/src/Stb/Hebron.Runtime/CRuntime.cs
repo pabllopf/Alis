@@ -1,17 +1,33 @@
-﻿using System;
+using System;
 using System.Runtime.InteropServices;
 
 namespace Alis.Core.Graphic.Stb.Hebron.Runtime
 {
+	/// <summary>
+	/// The runtime class
+	/// </summary>
 	internal static unsafe class CRuntime
 	{
+		/// <summary>
+		/// The numbers
+		/// </summary>
 		private static readonly string numbers = "0123456789";
 
+		/// <summary>
+		/// Mallocs the size
+		/// </summary>
+		/// <param name="size">The size</param>
+		/// <returns>The void</returns>
 		public static void* malloc(ulong size)
 		{
 			return malloc((long)size);
 		}
 
+		/// <summary>
+		/// Mallocs the size
+		/// </summary>
+		/// <param name="size">The size</param>
+		/// <returns>The void</returns>
 		public static void* malloc(long size)
 		{
 			IntPtr ptr = Marshal.AllocHGlobal((int)size);
@@ -21,6 +37,10 @@ namespace Alis.Core.Graphic.Stb.Hebron.Runtime
 			return ptr.ToPointer();
 		}
 
+		/// <summary>
+		/// Frees the a
+		/// </summary>
+		/// <param name="a">The </param>
 		public static void free(void* a)
 		{
 			if (a == null)
@@ -31,16 +51,34 @@ namespace Alis.Core.Graphic.Stb.Hebron.Runtime
 			MemoryStats.Freed();
 		}
 
+		/// <summary>
+		/// Memcpies the a
+		/// </summary>
+		/// <param name="a">The </param>
+		/// <param name="b">The </param>
+		/// <param name="size">The size</param>
 		public static void memcpy(void* a, void* b, long size)
 		{
 			Buffer.MemoryCopy(b, a, size, size);
 		}
 
+		/// <summary>
+		/// Memcpies the a
+		/// </summary>
+		/// <param name="a">The </param>
+		/// <param name="b">The </param>
+		/// <param name="size">The size</param>
 		public static void memcpy(void* a, void* b, ulong size)
 		{
 			memcpy(a, b, (long)size);
 		}
 
+		/// <summary>
+		/// Memmoves the a
+		/// </summary>
+		/// <param name="a">The </param>
+		/// <param name="b">The </param>
+		/// <param name="size">The size</param>
 		public static void memmove(void* a, void* b, long size)
 		{
 			void* temp = null;
@@ -59,6 +97,13 @@ namespace Alis.Core.Graphic.Stb.Hebron.Runtime
 			}
 		}
 
+		/// <summary>
+		/// Memcmps the a
+		/// </summary>
+		/// <param name="a">The </param>
+		/// <param name="b">The </param>
+		/// <param name="size">The size</param>
+		/// <returns>The result</returns>
 		public static int memcmp(void* a, void* b, long size)
 		{
 			int result = 0;
@@ -76,6 +121,12 @@ namespace Alis.Core.Graphic.Stb.Hebron.Runtime
 			return result;
 		}
 
+		/// <summary>
+		/// Memsets the ptr
+		/// </summary>
+		/// <param name="ptr">The ptr</param>
+		/// <param name="value">The value</param>
+		/// <param name="size">The size</param>
 		public static void memset(void* ptr, int value, long size)
 		{
 			byte* bptr = (byte*)ptr;
@@ -84,16 +135,34 @@ namespace Alis.Core.Graphic.Stb.Hebron.Runtime
 				*bptr++ = bval;
 		}
 
+		/// <summary>
+		/// Memsets the ptr
+		/// </summary>
+		/// <param name="ptr">The ptr</param>
+		/// <param name="value">The value</param>
+		/// <param name="size">The size</param>
 		public static void memset(void* ptr, int value, ulong size)
 		{
 			memset(ptr, value, (long)size);
 		}
 
+		/// <summary>
+		/// Lrotls the x
+		/// </summary>
+		/// <param name="x">The </param>
+		/// <param name="y">The </param>
+		/// <returns>The uint</returns>
 		public static uint _lrotl(uint x, int y)
 		{
 			return (x << y) | (x >> (32 - y));
 		}
 
+		/// <summary>
+		/// Reallocs the a
+		/// </summary>
+		/// <param name="a">The </param>
+		/// <param name="newSize">The new size</param>
+		/// <returns>The void</returns>
 		public static void* realloc(void* a, long newSize)
 		{
 			if (a == null)
@@ -105,26 +174,55 @@ namespace Alis.Core.Graphic.Stb.Hebron.Runtime
 			return result.ToPointer();
 		}
 
+		/// <summary>
+		/// Reallocs the a
+		/// </summary>
+		/// <param name="a">The </param>
+		/// <param name="newSize">The new size</param>
+		/// <returns>The void</returns>
 		public static void* realloc(void* a, ulong newSize)
 		{
 			return realloc(a, (long)newSize);
 		}
 
+		/// <summary>
+		/// Abses the v
+		/// </summary>
+		/// <param name="v">The </param>
+		/// <returns>The int</returns>
 		public static int abs(int v)
 		{
 			return Math.Abs(v);
 		}
 
+		/// <summary>
+		/// Pows the a
+		/// </summary>
+		/// <param name="a">The </param>
+		/// <param name="b">The </param>
+		/// <returns>The double</returns>
 		public static double pow(double a, double b)
 		{
 			return Math.Pow(a, b);
 		}
 
+		/// <summary>
+		/// Ldexps the number
+		/// </summary>
+		/// <param name="number">The number</param>
+		/// <param name="exponent">The exponent</param>
+		/// <returns>The double</returns>
 		public static double ldexp(double number, int exponent)
 		{
 			return number * Math.Pow(2, exponent);
 		}
 
+		/// <summary>
+		/// Strcmps the src
+		/// </summary>
+		/// <param name="src">The src</param>
+		/// <param name="token">The token</param>
+		/// <returns>The result</returns>
 		public static int strcmp(sbyte* src, string token)
 		{
 			int result = 0;
@@ -140,6 +238,13 @@ namespace Alis.Core.Graphic.Stb.Hebron.Runtime
 			return result;
 		}
 
+		/// <summary>
+		/// Strncmps the src
+		/// </summary>
+		/// <param name="src">The src</param>
+		/// <param name="token">The token</param>
+		/// <param name="size">The size</param>
+		/// <returns>The result</returns>
 		public static int strncmp(sbyte* src, string token, ulong size)
 		{
 			int result = 0;
@@ -155,6 +260,13 @@ namespace Alis.Core.Graphic.Stb.Hebron.Runtime
 			return result;
 		}
 
+		/// <summary>
+		/// Strtols the start
+		/// </summary>
+		/// <param name="start">The start</param>
+		/// <param name="end">The end</param>
+		/// <param name="radix">The radix</param>
+		/// <returns>The result</returns>
 		public static long strtol(sbyte* start, sbyte** end, int radix)
 		{
 			// First step - determine length

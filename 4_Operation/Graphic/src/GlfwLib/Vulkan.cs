@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security;
@@ -52,14 +52,29 @@ namespace Alis.Core.Graphic.GlfwLib
             CallingConvention = CallingConvention.Cdecl)]
         public static extern bool GetPhysicalDevicePresentationSupport(IntPtr instance, IntPtr device, uint family);
 
+        /// <summary>
+        /// Gets the instance proc address using the specified vulkan
+        /// </summary>
+        /// <param name="vulkan">The vulkan</param>
+        /// <param name="procName">The proc name</param>
+        /// <returns>The int ptr</returns>
         [DllImport(Glfw.LIBRARY, EntryPoint = "glfwGetInstanceProcAddress",
             CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetInstanceProcAddress(IntPtr vulkan, byte[] procName);
 
+        /// <summary>
+        /// Gets the required instance extensions using the specified count
+        /// </summary>
+        /// <param name="count">The count</param>
+        /// <returns>The int ptr</returns>
         [DllImport(Glfw.LIBRARY, EntryPoint = "glfwGetRequiredInstanceExtensions",
             CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetRequiredInstanceExtensions(out uint count);
 
+        /// <summary>
+        /// Vulkans the supported
+        /// </summary>
+        /// <returns>The bool</returns>
         [DllImport(Glfw.LIBRARY, EntryPoint = "glfwVulkanSupported", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool VulkanSupported();
 

@@ -9,9 +9,15 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
     [StructLayout(LayoutKind.Sequential)]
     public struct GamePadState
     {
+        /// <summary>
+        /// The states
+        /// </summary>
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 15)]
         private readonly InputState[] states;
 
+        /// <summary>
+        /// The axes
+        /// </summary>
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
         private readonly float[] axes;
 

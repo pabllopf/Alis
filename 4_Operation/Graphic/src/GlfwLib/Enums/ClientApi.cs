@@ -1,4 +1,4 @@
-﻿namespace Alis.Core.Graphic.GlfwLib.Enums
+namespace Alis.Core.Graphic.GlfwLib.Enums
 {
     /// <summary>
     ///     Strongly-typed description for possible client APIs to be used.
