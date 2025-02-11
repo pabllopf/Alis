@@ -100,9 +100,15 @@ namespace Alis.Core.Ecs.Component.Render
                 layout (location = 1) in vec2 aTexCoord;
                 out vec2 TexCoord;
                 uniform vec2 offset;
+                uniform float rotation;
                 void main()
                 {
-                    gl_Position = vec4(aPos.xy + offset, aPos.z, 1.0);
+                    float radians = radians(rotation);
+                    float cosTheta = cos(radians);
+                    float sinTheta = sin(radians);
+                    mat2 rotationMatrix = mat2(cosTheta, -sinTheta, sinTheta, cosTheta);
+                    vec2 rotatedPos = rotationMatrix * aPos.xy;
+                    gl_Position = vec4(rotatedPos + offset, aPos.z, 1.0);
                     TexCoord = vec2(aTexCoord.x, 1.0 - aTexCoord.y);
                 }
             ";
@@ -210,12 +216,12 @@ namespace Alis.Core.Ecs.Component.Render
 
             Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
             verticesHandle = GCHandle.Alloc(vertices, GCHandleType.Pinned);
-            Gl.GlBufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), verticesHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
+            Gl.GlBufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertices.Length * sizeof(float)), verticesHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
             verticesHandle.Free();
 
             Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, Ebo);
             indicesHandle = GCHandle.Alloc(indices, GCHandleType.Pinned);
-            Gl.GlBufferData(BufferTarget.ElementArrayBuffer, indices.Length * sizeof(uint), indicesHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
+            Gl.GlBufferData(BufferTarget.ElementArrayBuffer, (IntPtr)(indices.Length * sizeof(uint)), indicesHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
             indicesHandle.Free();
 
             Gl.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), IntPtr.Zero);
@@ -242,5 +248,31 @@ namespace Alis.Core.Ecs.Component.Render
        }
         
         public override object Clone() => new Sprite(NameFile, Depth);
+
+       public void Render(Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
+       {
+           float spriteRotation = GameObject.Transform.Rotation;
+           
+           Gl.GlUseProgram(ShaderProgram);
+
+           float offsetX = (GameObject.Transform.Position.X - cameraPosition.X) * pixelsPerMeter / cameraResolution.X;
+           float offsetY = (GameObject.Transform.Position.Y - cameraPosition.Y) * pixelsPerMeter / cameraResolution.Y;
+       
+           int offsetLocation = Gl.GlGetUniformLocation(ShaderProgram, "offset");
+           Gl.GlUniform2F(offsetLocation, offsetX, offsetY);
+       
+           int rotationLocation = Gl.GlGetUniformLocation(ShaderProgram, "rotation");
+           Gl.GlUniform1F(rotationLocation, spriteRotation);
+       
+           Gl.GlBindVertexArray(Vao);
+           Gl.GlEnable(EnableCap.Blend);
+           Gl.GlBlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+       
+           // Bind the texture before drawing
+           Gl.GlBindTexture(TextureTarget.Texture2D, Texture);
+       
+           Gl.GlDrawElements(PrimitiveType.Triangles, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
+           Gl.GlDisable(EnableCap.Blend);
+       }
     }
 }

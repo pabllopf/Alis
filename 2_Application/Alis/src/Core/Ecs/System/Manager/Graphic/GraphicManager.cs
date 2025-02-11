@@ -357,7 +357,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// </summary>
         public override void OnDraw()
         {
-            //float pixelsPerMeter = PixelsPerMeter;
+            float pixelsPerMeter = PixelsPerMeter;
             IntPtr renderer = Renderer;
             Setting contextSetting = Context.Setting;
             PhysicSetting physicSettings = contextSetting.Physic;
@@ -374,11 +374,12 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Gl.GlClear(ClearBufferMask.ColorBufferBit);
             
             // Draw the sprites:
+
             
             foreach (Sprite sprite in Sprites.OrderBy(o => o.Depth))
             {
                 // Render sprite with opengl:
-                sprite.Render();
+                sprite.Render(new Vector2F(0, 0), new Vector2F(800, 600), pixelsPerMeter);
             }
 
 
