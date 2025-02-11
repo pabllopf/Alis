@@ -114,8 +114,6 @@ namespace Alis.Core.Graphic.Sample
                             throw new FileNotFoundException("Texture file not found", imagePath);
                         }
                         
-                        Console.WriteLine($"Loading texture: {imagePath}");
-            
                         using (FileStream stream = File.OpenRead(imagePath))
                         {
                             ImageResult image = ImageResult.FromStream(stream, ColorComponents.RedGreenBlueAlpha);

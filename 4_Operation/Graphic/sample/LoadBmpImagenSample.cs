@@ -67,7 +67,7 @@ namespace Alis.Core.Graphic.Sample
             int imageWidth = 32 * scaleTexture;
             int imageHeight = 32 * scaleTexture;
 
-            sprite1 = new Sprite(AssetManager.Find("tile000.png"), -0.5f, 0.5f);
+            sprite1 = new Sprite(AssetManager.Find("tile000.bmp"), -0.5f, 0.5f);
             sprite2 = new Sprite(AssetManager.Find("tile000.jpeg"), 0.5f, 0.5f);
             sprite3 = new Sprite(AssetManager.Find("tile000.jpeg"), 0.0f, -0.5f);
 

@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Numerics;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Graphic.GlfwLib;
 using Alis.Core.Graphic.GlfwLib.Enums;
 using Alis.Core.Graphic.GlfwLib.Structs;
@@ -174,7 +175,7 @@ namespace Alis.Core.Graphic.Sample
             Gl.GlDeleteShader(fragmentShader);
 
             // Load and bind texture
-            string imagePath = Path.Combine(Environment.CurrentDirectory, "tile000.bmp");
+            string imagePath = AssetManager.Find("tile000.bmp");
             if (!File.Exists(imagePath))
             {
                 throw new FileNotFoundException("Texture file not found", imagePath);
