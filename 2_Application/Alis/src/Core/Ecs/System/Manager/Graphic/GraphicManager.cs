@@ -42,7 +42,13 @@ using Alis.Core.Ecs.System.Configuration;
 using Alis.Core.Ecs.System.Configuration.Physic;
 using Alis.Core.Ecs.System.Manager.Fonts;
 using Alis.Core.Ecs.System.Scope;
+using Alis.Core.Graphic.GlfwLib;
+using Alis.Core.Graphic.GlfwLib.Enums;
+using Alis.Core.Graphic.GlfwLib.Structs;
+using Alis.Core.Graphic.OpenGL;
+using Alis.Core.Graphic.OpenGL.Enums;
 using Color = Alis.Core.Aspect.Math.Definition.Color;
+using Exception = System.Exception;
 
 namespace Alis.Core.Ecs.System.Manager.Graphic
 {
@@ -70,7 +76,6 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             ColliderBases = new List<BoxCollider>();
             Sprites = new List<Sprite>();
             Cameras = new List<Camera>();
-            Window = IntPtr.Zero;
             Renderer = IntPtr.Zero;
             DefaultSize = new Vector2F(640, 480);
         }
@@ -86,7 +91,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// <param name="cameras">The cameras</param>
         /// <param name="context"></param>
         [JsonConstructor]
-        public GraphicManager(List<BoxCollider> colliderBases, IntPtr window, Vector2F defaultSize, IntPtr renderer, List<Sprite> sprites, List<Camera> cameras, Context context) : base(context)
+        public GraphicManager(List<BoxCollider> colliderBases, Window window, Vector2F defaultSize, IntPtr renderer, List<Sprite> sprites, List<Camera> cameras, Context context) : base(context)
         {
             ColliderBases = colliderBases;
             Window = window;
@@ -111,7 +116,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         ///     The window
         /// </summary>
         [JsonPropertyName("_Window_", true, true)]
-        public IntPtr Window { get; set; }
+        public Window Window { get; set; }
 
         /// <summary>
         ///     The default size
@@ -136,7 +141,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// </summary>
         [JsonPropertyName("_Cameras_")]
         public List<Camera> Cameras { get; }
-
+        
         /// <summary>
         ///     Ons the enable
         /// </summary>
@@ -150,6 +155,60 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// </summary>
         public override void OnInit()
         {
+            // Initialize GLFW
+            if (!Glfw.Init())
+            {
+                throw new Exception("Failed to initialize GLFW");
+            }
+            
+            // Set GLFW window hints for OpenGL context
+            Glfw.WindowHint(Hint.ContextVersionMajor, 3);
+            Glfw.WindowHint(Hint.ContextVersionMinor, 2);
+            Glfw.WindowHint(Hint.OpenglProfile, Profile.Core);
+            Glfw.WindowHint(Hint.OpenglForwardCompatible, true);
+            Glfw.WindowHint(Hint.Doublebuffer, true);
+            Glfw.WindowHint(Hint.DepthBits, 24);
+            Glfw.WindowHint(Hint.AlphaBits, 8);
+            Glfw.WindowHint(Hint.StencilBits, 8);
+            
+            // Create a GLFW window
+            Window = Glfw.CreateWindow(800, 600, "OpenGL Window", Monitor.None, Window.None);
+            if (Window == Window.None)
+            {
+                throw new Exception("Failed to create GLFW window");
+            }
+            
+            // Make the OpenGL context current
+            Glfw.MakeContextCurrent(Window);
+            
+            // Enable v-sync
+            Glfw.SwapInterval(1);
+            
+            // Log GLFW version
+            Console.WriteLine($"GLFW VERSION {Glfw.GetVersionString()}");
+            
+            
+            // Create a vertex buffer object (VBO) and a vertex array object (VAO)
+            //vbo = Gl.GenBuffer();
+            //vao = Gl.GenVertexArray();
+            
+            
+            // Print the OpenGL version
+            Console.WriteLine(@$"OpenGL VERSION {Gl.GlGetString(StringName.Version)}");
+
+            // Print the OpenGL vendor
+            Console.WriteLine(@$"OpenGL VENDOR {Gl.GlGetString(StringName.Vendor)}");
+
+            // Print the OpenGL renderer
+            Console.WriteLine(@$"OpenGL RENDERER {Gl.GlGetString(StringName.Renderer)}");
+
+            // Print the OpenGL shading language version
+            Console.WriteLine(@$"OpenGL SHADING LANGUAGE VERSION {Gl.GlGetString(StringName.ShadingLanguageVersion)}");
+            
+            
+            Glfw.SetFramebufferSizeCallback(Window, FramebufferSizeCallback);
+            Glfw.SetKeyCallback(Window, KeyCallback);
+            
             /*
             _context.GraphicManager.Window = Sdl.CreateWindow("Game Preview",
                 0, 0,
@@ -158,12 +217,12 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             _context.GraphicManager.Renderer = Sdl.CreateRenderer(_context.GraphicManager.Window, -1,
                 Renderers.SdlRendererAccelerated | Renderers.SdlRendererTargetTexture);*/
 
-            if (Context is null)
+            /*if (Context is null)
             {
                 return;
-            }
+            }*/
 
-            Logger.Log("init::graphic:new");
+            //Logger.Log("init::graphic:new");
 
             //DefaultSize = new Vector2F(Context.Setting.Graphic.Window.Resolution.X, Context.Setting.Graphic.Window.Resolution.Y);
 
@@ -312,6 +371,39 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// </summary>
         public override void OnDraw()
         {
+            //float pixelsPerMeter = PixelsPerMeter;
+            IntPtr renderer = Renderer;
+            Setting contextSetting = Context.Setting;
+            PhysicSetting physicSettings = contextSetting.Physic;
+            Color debugColor = physicSettings.DebugColor;
+            
+            // Event handling
+            Glfw.PollEvents();
+            if (Glfw.WindowShouldClose(Window))
+            {
+                Context.IsRunning = false;
+            }
+            
+            // Clear the screen
+            Gl.GlClear(ClearBufferMask.ColorBufferBit);
+            
+            // Draw the sprites:
+            
+            foreach (Sprite sprite in Sprites.OrderBy(o => o.Depth))
+            {
+                // Render sprite with opengl:
+                sprite.Render();
+            }
+
+
+
+            Gl.GlClearColor(debugColor.R, debugColor.G, debugColor.B, debugColor.A);
+            
+            // Swap the buffers to display the triangle
+            Glfw.SwapBuffers(Window);
+            
+            
+            /*
             float pixelsPerMeter = PixelsPerMeter;
             IntPtr renderer = Renderer;
             Setting contextSetting = Context.Setting;
@@ -336,9 +428,9 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 Vector2F cameraPosition = camera.Position;
                 Vector2F cameraResolution = camera.Resolution;
 
-                /*Sdl.SetRenderTarget(renderer, cameraTexture);
+                Sdl.SetRenderTarget(renderer, cameraTexture);
                 Sdl.SetRenderDrawColor(renderer, bgColor.R, bgColor.G, bgColor.B, bgColor.A);
-                Sdl.RenderClear(renderer);*/
+                Sdl.RenderClear(renderer);
 
                 // Render sprites
                 foreach (Sprite sprite in Sprites.OrderBy(o => o.Depth))
@@ -376,6 +468,25 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
                 // Copy the custom backbuffer to the SDL backbuffer with vertical flip
                 //Sdl.RenderCopyEx(renderer, cameraTexture, IntPtr.Zero, IntPtr.Zero, 0, IntPtr.Zero, RendererFlips.FlipVertical);
+            }*/
+        }
+        
+        /// <summary>
+        /// Framebuffers the size callback using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        private void FramebufferSizeCallback(Window window, int width, int height)
+        {
+            Gl.GlViewport(0, 0, width, height);
+        }
+        
+        private void KeyCallback(Window window, Keys key, int scancode, InputState state, ModifierKeys mods)
+        {
+            if (state == InputState.Press || state == InputState.Repeat)
+            {
+                Console.WriteLine($"Key: {key}");
             }
         }
 

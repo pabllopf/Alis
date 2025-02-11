@@ -59,10 +59,6 @@ namespace Alis.Sample.Rogue
                     .Audio(audio => audio
                         .Build())
                     .Graphic(graphic => graphic
-                        .Window(window => window
-                            .Resolution(1024, 640)
-                            .Background(Color.Black)
-                            .Build())
                         .Build())
                     .Physic(physic => physic
                         .Gravity(0.0f, -9.8f)
@@ -83,25 +79,6 @@ namespace Alis.Sample.Rogue
                             .AddComponent<Sprite>(sprite => sprite.Builder()
                                 .SetTexture("tile000.bmp")
                                 .Build())
-                            .AddComponent<Animator>(animator => animator.Builder()
-                                .AddAnimation(animation => animation
-                                    .Name("Idle")
-                                    .Order(0)
-                                    .Speed(0.2f)
-                                    .AddFrame(frame => frame
-                                        .FilePath("tile000.bmp")
-                                        .Build())
-                                    .AddFrame(frame => frame
-                                        .FilePath("tile001.bmp")
-                                        .Build())
-                                    .AddFrame(frame => frame
-                                        .FilePath("tile002.bmp")
-                                        .Build())
-                                    .AddFrame(frame => frame
-                                        .FilePath("tile003.bmp")
-                                        .Build())
-                                    .Build())
-                                .Build())
                             .AddComponent<Camera>(camera => camera.Builder()
                                 .Resolution(1024, 640)
                                 .BackgroundColor(Color.Brown)
@@ -114,7 +91,7 @@ namespace Alis.Sample.Rogue
                             .Name("tree-001")
                             .IsStatic()
                             .Transform(transform => transform
-                                .Position(2, 2)
+                                .Position(0.5f, 0.5f)
                                 .Scale(2, 2)
                                 .Rotation(0)
                                 .Build())
@@ -128,7 +105,7 @@ namespace Alis.Sample.Rogue
                             .Name("tree-002")
                             .IsStatic()
                             .Transform(transform => transform
-                                .Position(4, 4)
+                                .Position(-0.5f, 0.5f)
                                 .Scale(2, 2)
                                 .Rotation(0)
                                 .Build())
@@ -140,7 +117,7 @@ namespace Alis.Sample.Rogue
                             .Name("tree-001")
                             .IsStatic()
                             .Transform(transform => transform
-                                .Position(-1, -1)
+                                .Position(-0.5f, -0.5f)
                                 .Scale(2, 2)
                                 .Rotation(0)
                                 .Build())
@@ -152,7 +129,7 @@ namespace Alis.Sample.Rogue
                             .Name("tree-001")
                             .IsStatic()
                             .Transform(transform => transform
-                                .Position(-2, -2)
+                                .Position(0.5f, -0.5f)
                                 .Scale(2, 2)
                                 .Rotation(0)
                                 .Build())
