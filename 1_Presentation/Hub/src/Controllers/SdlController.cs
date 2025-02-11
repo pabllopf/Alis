@@ -36,6 +36,7 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Memory.Exceptions;
 using Alis.Extension.Graphic.Sdl2;
 using Alis.Extension.Graphic.Sdl2.Enums;
+using Alis.Extension.Graphic.Sdl2.OpenGl;
 using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 
 namespace Alis.App.Hub.Controllers

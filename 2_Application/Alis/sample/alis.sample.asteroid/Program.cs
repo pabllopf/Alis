@@ -61,11 +61,6 @@ namespace Alis.Sample.Asteroid
                     .Audio(audio => audio
                         .Build())
                     .Graphic(graphic => graphic
-                        .Window(window => window
-                            .IsResizable(false)
-                            .Resolution(1024, 640)
-                            .Background(Color.Black)
-                            .Build())
                         .FrameRate(60)
                         .Build())
                     .Physic(physic => physic
