@@ -47,7 +47,7 @@ using Alis.Core.Physic.Dynamics;
 using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Native;
 using Alis.Extension.Graphic.Sdl2;
-
+using Gl = Alis.Extension.Graphic.Sdl2.Gl;
 
 
 namespace Alis.App.Engine.Windows

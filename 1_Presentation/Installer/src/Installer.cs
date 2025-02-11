@@ -57,6 +57,7 @@ using Alis.Extension.Graphic.Sdl2.Structs;
 using Alis.Extension.Updater;
 using Alis.Extension.Updater.Services.Api;
 using Alis.Extension.Updater.Services.Files;
+using Gl = Alis.Extension.Graphic.Sdl2.Gl;
 using PixelFormat = Alis.Core.Graphic.OpenGL.Enums.PixelFormat;
 
 namespace Alis.App.Installer
