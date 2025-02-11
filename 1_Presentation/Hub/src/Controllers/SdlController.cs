@@ -34,10 +34,12 @@ using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Memory.Exceptions;
+using Alis.Core.Graphic.OpenGL;
+using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Extension.Graphic.Sdl2;
 using Alis.Extension.Graphic.Sdl2.Enums;
-using Alis.Extension.Graphic.Sdl2.OpenGl;
-using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
+using Alis.Extension.Graphic.Sdl2.Structs;
+
 
 namespace Alis.App.Hub.Controllers
 {
@@ -64,10 +66,7 @@ namespace Alis.App.Hub.Controllers
             {
                 Logger.Exception($@"Error of SDL2: {Sdl.GetError()}");
             }
-
-            Version version = Sdl.GetVersion();
-            Logger.Info(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
-
+            
             Sdl.SetHint(Hint.HintRenderDriver, "opengl");
 
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION

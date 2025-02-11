@@ -36,7 +36,6 @@ using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Point;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
-using Alis.Core.Aspect.Memory.Attributes;
 using Alis.Extension.Graphic.Sdl2.Delegates;
 using Alis.Extension.Graphic.Sdl2.Enums;
 using Alis.Extension.Graphic.Sdl2.Properties;
@@ -65,15 +64,15 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="joystick">The joystick</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickIsHaptic", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalJoystickIsHaptic([IsNotNull] IntPtr joystick);
+        
+        internal static extern int InternalJoystickIsHaptic( IntPtr joystick);
 
         /// <summary>
         ///     Sdl the mouse is haptic
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_MouseIsHaptic", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern int InternalMouseIsHaptic();
 
         /// <summary>
@@ -81,7 +80,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_NumHaptics", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern int InternalNumHaptics();
 
         /// <summary>
@@ -89,8 +88,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="dev">The dev</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_CloseAudioDevice", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalCloseAudioDevice([IsNotNull] uint dev);
+        
+        internal static extern void InternalCloseAudioDevice( uint dev);
 
         /// <summary>
         ///     Internals the sdl get audio device name using the specified index
@@ -99,8 +98,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="isCapture">The is capture</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetAudioDeviceName", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalGetAudioDeviceName([IsNotNull] int index, [IsNotNull] int isCapture);
+        
+        internal static extern IntPtr InternalGetAudioDeviceName( int index,  int isCapture);
 
         /// <summary>
         ///     Sdl the get audio device status using the specified dev
@@ -108,8 +107,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="dev">The dev</param>
         /// <returns>The sdl audio status</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetAudioDeviceStatus", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern AudioStatus InternalGetAudioDeviceStatus([IsNotNull] uint dev);
+        
+        internal static extern AudioStatus InternalGetAudioDeviceStatus( uint dev);
 
         /// <summary>
         ///     Internals the sdl get audio driver using the specified index
@@ -117,15 +116,15 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="index">The index</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetAudioDriver", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalGetAudioDriver([IsNotNull] int index);
+        
+        internal static extern IntPtr InternalGetAudioDriver( int index);
 
         /// <summary>
         ///     Internals the sdl get current audio driver
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetCurrentAudioDriver", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern IntPtr InternalGetCurrentAudioDriver();
 
         /// <summary>
@@ -134,15 +133,15 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="isCapture">The is capture</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetNumAudioDevices", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGetNumAudioDevices([IsNotNull] int isCapture);
+        
+        internal static extern int InternalGetNumAudioDevices( int isCapture);
 
         /// <summary>
         ///     Sdl the get num audio drivers
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetNumAudioDrivers", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern int InternalGetNumAudioDrivers();
 
         /// <summary>
@@ -155,16 +154,16 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="audioLen">The audio len</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_LoadWAV_RW", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalLoadWAV_RW([IsNotNull] IntPtr src, [IsNotNull] int freeSrc, out AudioSpec spec, out IntPtr audioBuf, out uint audioLen);
+        
+        internal static extern IntPtr InternalLoadWAV_RW( IntPtr src,  int freeSrc, out AudioSpec spec, out IntPtr audioBuf, out uint audioLen);
 
         /// <summary>
         ///     Sdl the lock audio device using the specified dev
         /// </summary>
         /// <param name="dev">The dev</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_LockAudioDevice", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalLockAudioDevice([IsNotNull] uint dev);
+        
+        internal static extern void InternalLockAudioDevice( uint dev);
 
         /// <summary>
         ///     Sdl the mix audio using the specified dst
@@ -174,8 +173,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="len">The len</param>
         /// <param name="volume">The volume</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_MixAudio", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalMixAudio([Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 2), IsNotNull] byte[] dst, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 2), IsNotNull] byte[] src, [IsNotNull] uint len, [IsNotNull] int volume);
+        
+        internal static extern void InternalMixAudio([Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 2)] byte[] dst, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 2)] byte[] src,  uint len,  int volume);
 
         /// <summary>
         ///     Sdl the mix audio format using the specified dst
@@ -186,8 +185,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="len">The len</param>
         /// <param name="volume">The volume</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_MixAudioFormat", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalMixAudioFormat([IsNotNull] IntPtr dst, [IsNotNull] IntPtr src, [IsNotNull] ushort format, [IsNotNull] uint len, [IsNotNull] int volume);
+        
+        internal static extern void InternalMixAudioFormat( IntPtr dst,  IntPtr src,  ushort format,  uint len,  int volume);
 
         /// <summary>
         ///     Sdl the mix audio format using the specified dst
@@ -198,8 +197,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="len">The len</param>
         /// <param name="volume">The volume</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_MixAudioFormat", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalMixAudioFormat([Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3), IsNotNull] byte[] dst, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3), IsNotNull] byte[] src, [IsNotNull] ushort format, [IsNotNull] uint len, [IsNotNull] int volume);
+        
+        internal static extern void InternalMixAudioFormat([Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)] byte[] dst, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)] byte[] src,  ushort format,  uint len,  int volume);
 
         /// <summary>
         ///     Sdl the open audio device using the specified device
@@ -211,8 +210,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="allowedChanges">The allowed changes</param>
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_OpenAudioDevice", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern uint InternalOpenAudioDevice([IsNotNull] IntPtr device, [IsNotNull] int isCapture, ref AudioSpec desired, out AudioSpec obtained, [IsNotNull] int allowedChanges);
+        
+        internal static extern uint InternalOpenAudioDevice( IntPtr device,  int isCapture, ref AudioSpec desired, out AudioSpec obtained,  int allowedChanges);
 
         /// <summary>
         ///     Internals the sdl open audio device using the specified device
@@ -224,16 +223,16 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="allowedChanges">The allowed changes</param>
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_OpenAudioDevice", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern uint InternalOpenAudioDevice([IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string device, [IsNotNull] int isCapture, ref AudioSpec desired, out AudioSpec obtained, [IsNotNull] int allowedChanges);
+        
+        internal static extern uint InternalOpenAudioDevice([ MarshalAs(UnmanagedType.LPStr)] string device,  int isCapture, ref AudioSpec desired, out AudioSpec obtained,  int allowedChanges);
 
         /// <summary>
         ///     Sdl the pause audio using the specified pause on
         /// </summary>
         /// <param name="pauseOn">The pause on</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_PauseAudio", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalPauseAudio([IsNotNull] int pauseOn);
+        
+        internal static extern void InternalPauseAudio( int pauseOn);
 
         /// <summary>
         ///     Sdl the pause audio device using the specified dev
@@ -241,16 +240,16 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="dev">The dev</param>
         /// <param name="pauseOn">The pause on</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_PauseAudioDevice", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalPauseAudioDevice([IsNotNull] uint dev, [IsNotNull] int pauseOn);
+        
+        internal static extern void InternalPauseAudioDevice( uint dev,  int pauseOn);
 
         /// <summary>
         ///     Sdl the unlock audio device using the specified dev
         /// </summary>
         /// <param name="dev">The dev</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_UnlockAudioDevice", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalUnlockAudioDevice([IsNotNull] uint dev);
+        
+        internal static extern void InternalUnlockAudioDevice( uint dev);
 
         /// <summary>
         ///     Sdl the new audio stream using the specified src format
@@ -263,8 +262,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="dstRate">The dst rate</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_NewAudioStream", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalNewAudioStream([IsNotNull] ushort srcFormat, [IsNotNull] byte srcChannels, [IsNotNull] int srcRate, [IsNotNull] ushort dstFormat, [IsNotNull] byte dstChannels, [IsNotNull] int dstRate);
+        
+        internal static extern IntPtr InternalNewAudioStream( ushort srcFormat,  byte srcChannels,  int srcRate,  ushort dstFormat,  byte dstChannels,  int dstRate);
 
         /// <summary>
         ///     Sdl the audio stream put using the specified stream
@@ -274,8 +273,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="len">The len</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_AudioStreamPut", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalAudioStreamPut([IsNotNull] IntPtr stream, [IsNotNull] IntPtr buf, [IsNotNull] int len);
+        
+        internal static extern int InternalAudioStreamPut( IntPtr stream,  IntPtr buf,  int len);
 
         /// <summary>
         ///     Sdl the audio stream get using the specified stream
@@ -285,8 +284,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="len">The len</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_AudioStreamGet", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalAudioStreamGet([IsNotNull] IntPtr stream, [IsNotNull] IntPtr buf, [IsNotNull] int len);
+        
+        internal static extern int InternalAudioStreamGet( IntPtr stream,  IntPtr buf,  int len);
 
         /// <summary>
         ///     Sdl the audio stream available using the specified stream
@@ -294,7 +293,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="stream">The stream</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_AudioStreamAvailable", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern int InternalAudioStreamAvailable(IntPtr stream);
 
         /// <summary>
@@ -302,16 +301,16 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="stream">The stream</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_AudioStreamClear", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalAudioStreamClear([IsNotNull] IntPtr stream);
+        
+        internal static extern void InternalAudioStreamClear( IntPtr stream);
 
         /// <summary>
         ///     Sdl the free audio stream using the specified stream
         /// </summary>
         /// <param name="stream">The stream</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_FreeAudioStream", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalFreeAudioStream([IsNotNull] IntPtr stream);
+        
+        internal static extern void InternalFreeAudioStream( IntPtr stream);
 
         /// <summary>
         ///     Internals the sdl set clipboard text using the specified text
@@ -319,8 +318,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="text">The text</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetClipboardText", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalSetClipboardText([IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string text);
+        
+        internal static extern int InternalSetClipboardText([ MarshalAs(UnmanagedType.LPStr)] string text);
 
         /// <summary>
         ///     Sdl the peep events using the specified events
@@ -332,8 +331,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="maxType">The max type</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_PeepEvents", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalPeepEvents([Out] Event[] events, [IsNotNull] int numEvents, EventAction action, EventType minType, EventType maxType);
+        
+        internal static extern int InternalPeepEvents([Out] Event[] events,  int numEvents, EventAction action, EventType minType, EventType maxType);
 
         /// <summary>
         ///     Sdl the has event using the specified type
@@ -341,7 +340,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="type">The type</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HasEvent", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern bool InternalHasEvent(EventType type);
 
         /// <summary>
@@ -351,7 +350,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="maxType">The max type</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HasEvents", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern bool InternalHasEvents(EventType minType, EventType maxType);
 
         /// <summary>
@@ -359,7 +358,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="type">The type</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_FlushEvent", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern void InternalFlushEvent(EventType type);
 
         /// <summary>
@@ -368,7 +367,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="sdlEvent">The event</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_PollEvent", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern int InternalPollEvent(out Event sdlEvent);
 
         /// <summary>
@@ -377,7 +376,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="sdlEvent">The event</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_PushEvent", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern int InternalPushEvent(ref Event sdlEvent);
 
         /// <summary>
@@ -386,8 +385,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="filter">The filter</param>
         /// <param name="userdata">The userdata</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetEventFilter", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalSetEventFilter(SdlEventFilter filter, [IsNotNull] IntPtr userdata);
+        
+        internal static extern void InternalSetEventFilter(SdlEventFilter filter,  IntPtr userdata);
 
         /// <summary>
         ///     Sdl the get event filter using the specified filter
@@ -396,7 +395,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="userdata">The userdata</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetEventFilter", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern bool InternalGetEventFilter(out IntPtr filter, out IntPtr userdata);
 
         /// <summary>
@@ -405,8 +404,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="filter">The filter</param>
         /// <param name="userdata">The userdata</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_AddEventWatch", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalAddEventWatch(SdlEventFilter filter, [IsNotNull] IntPtr userdata);
+        
+        internal static extern void InternalAddEventWatch(SdlEventFilter filter,  IntPtr userdata);
 
         /// <summary>
         ///     Sdl the del event watch using the specified filter
@@ -414,8 +413,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="filter">The filter</param>
         /// <param name="userdata">The userdata</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_DelEventWatch", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalDelEventWatch(SdlEventFilter filter, [IsNotNull] IntPtr userdata);
+        
+        internal static extern void InternalDelEventWatch(SdlEventFilter filter,  IntPtr userdata);
 
         /// <summary>
         ///     Sdl the event state using the specified type
@@ -424,8 +423,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="state">The state</param>
         /// <returns>The byte</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_EventState", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern byte InternalEventState(EventType type, [IsNotNull] int state);
+        
+        internal static extern byte InternalEventState(EventType type,  int state);
 
         /// <summary>
         ///     Sdl the register events using the specified num events
@@ -433,15 +432,15 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="numEvents">The num events</param>
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RegisterEvents", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern uint InternalRegisterEvents([IsNotNull] int numEvents);
+        
+        internal static extern uint InternalRegisterEvents( int numEvents);
 
         /// <summary>
         ///     Sdl the get keyboard focus
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetKeyboardFocus", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern IntPtr InternalGetKeyboardFocus();
 
         /// <summary>
@@ -450,7 +449,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="numKeys">The num keys</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetKeyboardState", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern IntPtr InternalGetKeyboardState(out int numKeys);
 
         /// <summary>
@@ -458,7 +457,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <returns>The sdl key mod</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetModState", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern KeyMods InternalGetModState();
 
         /// <summary>
@@ -466,7 +465,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="modState">The mod state</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetModState", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern void InternalSetModState(KeyMods modState);
 
         /// <summary>
@@ -475,7 +474,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="scancode">The scancode</param>
         /// <returns>The sdl keycode</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetKeyFromScancode", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern KeyCodes InternalGetKeyFromScancode(SdlScancode scancode);
 
         /// <summary>
@@ -484,7 +483,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="key">The key</param>
         /// <returns>The sdl scancode</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetScancodeFromKey", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern SdlScancode InternalGetScancodeFromKey(KeyCodes key);
 
         /// <summary>
@@ -493,7 +492,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="scancode">The scancode</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetScancodeName", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern IntPtr InternalGetScancodeName(SdlScancode scancode);
 
         /// <summary>
@@ -502,8 +501,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="name">The name</param>
         /// <returns>The sdl scancode</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetScancodeFromName", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern SdlScancode InternalGetScancodeFromName([IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string name);
+        
+        internal static extern SdlScancode InternalGetScancodeFromName([ MarshalAs(UnmanagedType.LPStr)] string name);
 
         /// <summary>
         ///     Internals the sdl get key name using the specified key
@@ -511,7 +510,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="key">The key</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetKeyName", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern IntPtr InternalGetKeyName(KeyCodes key);
 
         /// <summary>
@@ -520,14 +519,14 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="name">The name</param>
         /// <returns>The sdl keycode</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetKeyFromName", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern KeyCodes InternalGetKeyFromName([IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string name);
+        
+        internal static extern KeyCodes InternalGetKeyFromName([ MarshalAs(UnmanagedType.LPStr)] string name);
 
         /// <summary>
         ///     Sdl the start text input
         /// </summary>
         [DllImport(NativeLibName, EntryPoint = "SDL_StartTextInput", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern void InternalStartTextInput();
 
         /// <summary>
@@ -535,14 +534,14 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_IsTextInputActive", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern bool InternalIsTextInputActive();
 
         /// <summary>
         ///     Sdl the stop text input
         /// </summary>
         [DllImport(NativeLibName, EntryPoint = "SDL_StopTextInput", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern void InternalStopTextInput();
 
         /// <summary>
@@ -550,7 +549,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="rect">The rect</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetTextInputRect", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern void InternalSetTextInputRect(ref RectangleI rect);
 
         /// <summary>
@@ -558,7 +557,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HasScreenKeyboardSupport", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern bool InternalHasScreenKeyboardSupport();
 
         /// <summary>
@@ -567,15 +566,15 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_IsScreenKeyboardShown", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern bool InternalIsScreenKeyboardShown([IsNotNull] IntPtr window);
+        
+        internal static extern bool InternalIsScreenKeyboardShown( IntPtr window);
 
         /// <summary>
         ///     Sdl the get mouse focus
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetMouseFocus", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern IntPtr InternalGetMouseFocus();
 
         /// <summary>
@@ -585,7 +584,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="y">The </param>
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetMouseState", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern uint InternalGetMouseState(out int x, out int y);
 
         /// <summary>
@@ -595,8 +594,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="y">The </param>
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetMouseState", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern uint InternalGetMouseState([IsNotNull] IntPtr x, out int y);
+        
+        internal static extern uint InternalGetMouseState( IntPtr x, out int y);
 
         /// <summary>
         ///     Sdl the get mouse state using the specified x
@@ -605,8 +604,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="y">The </param>
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetMouseState", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern uint InternalGetMouseState(out int x, [IsNotNull] IntPtr y);
+        
+        internal static extern uint InternalGetMouseState(out int x,  IntPtr y);
 
         /// <summary>
         ///     Sdl the get mouse state using the specified x
@@ -615,8 +614,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="y">The </param>
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetMouseState", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern uint InternalGetMouseState([IsNotNull] IntPtr x, [IsNotNull] IntPtr y);
+        
+        internal static extern uint InternalGetMouseState( IntPtr x,  IntPtr y);
 
         /// <summary>
         ///     Sdl the get global mouse state using the specified x
@@ -625,7 +624,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="y">The </param>
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetGlobalMouseState", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern uint InternalGetGlobalMouseState(out int x, out int y);
 
         /// <summary>
@@ -635,8 +634,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="y">The </param>
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetGlobalMouseState", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern uint InternalGetGlobalMouseState([IsNotNull] IntPtr x, [IsNotNull] IntPtr y);
+        
+        internal static extern uint InternalGetGlobalMouseState( IntPtr x,  IntPtr y);
 
         /// <summary>
         ///     Sdl the get relative mouse state using the specified x
@@ -645,7 +644,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="y">The </param>
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetRelativeMouseState", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern uint InternalGetRelativeMouseState(out int x, out int y);
 
         /// <summary>
@@ -655,8 +654,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         [DllImport(NativeLibName, EntryPoint = "SDL_WarpMouseInWindow", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalWarpMouseInWindow([IsNotNull] IntPtr window, [IsNotNull] int x, [IsNotNull] int y);
+        
+        internal static extern void InternalWarpMouseInWindow( IntPtr window,  int x,  int y);
 
         /// <summary>
         ///     Sdl the warp mouse global using the specified x
@@ -665,8 +664,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="y">The </param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_WarpMouseGlobal", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalWarpMouseGlobal([IsNotNull] int x, [IsNotNull] int y);
+        
+        internal static extern int InternalWarpMouseGlobal( int x,  int y);
 
         /// <summary>
         ///     Sdl the set relative mouse mode using the specified enabled
@@ -674,7 +673,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="enabled">The enabled</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetRelativeMouseMode", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern int InternalSetRelativeMouseMode(bool enabled);
 
         /// <summary>
@@ -683,7 +682,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="enabled">The enabled</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_CaptureMouse", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern int InternalCaptureMouse(bool enabled);
 
         /// <summary>
@@ -691,7 +690,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetRelativeMouseMode", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern bool InternalGetRelativeMouseMode();
 
         /// <summary>
@@ -705,8 +704,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="hotY">The hot</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_CreateCursor", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalCreateCursor([IsNotNull] IntPtr data, [IsNotNull] IntPtr mask, [IsNotNull] int w, [IsNotNull] int h, [IsNotNull] int hotX, [IsNotNull] int hotY);
+        
+        internal static extern IntPtr InternalCreateCursor( IntPtr data,  IntPtr mask,  int w,  int h,  int hotX,  int hotY);
 
         /// <summary>
         ///     Sdl the create color cursor using the specified surface
@@ -716,8 +715,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="hotY">The hot</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_CreateColorCursor", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalCreateColorCursor([IsNotNull] IntPtr surface, [IsNotNull] int hotX, [IsNotNull] int hotY);
+        
+        internal static extern IntPtr InternalCreateColorCursor( IntPtr surface,  int hotX,  int hotY);
 
         /// <summary>
         ///     Sdl the create system cursor using the specified id
@@ -725,7 +724,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="id">The id</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_CreateSystemCursor", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern IntPtr InternalCreateSystemCursor(SystemCursor id);
 
         /// <summary>
@@ -733,15 +732,15 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="cursor">The cursor</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetCursor", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalSetCursor([IsNotNull] IntPtr cursor);
+        
+        internal static extern void InternalSetCursor( IntPtr cursor);
 
         /// <summary>
         ///     Sdl the get cursor
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetCursor", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern IntPtr InternalGetCursor();
 
         /// <summary>
@@ -749,8 +748,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="cursor">The cursor</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_FreeCursor", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalFreeCursor([IsNotNull] IntPtr cursor);
+        
+        internal static extern void InternalFreeCursor( IntPtr cursor);
 
         /// <summary>
         ///     Sdl the show cursor using the specified toggle
@@ -758,8 +757,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="toggle">The toggle</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_ShowCursor", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalShowCursor([IsNotNull] int toggle);
+        
+        internal static extern int InternalShowCursor( int toggle);
 
         /// <summary>
         ///     Sdl the get touch device using the specified index
@@ -767,8 +766,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="index">The index</param>
         /// <returns>The long</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetTouchDevice", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern long InternalGetTouchDevice([IsNotNull] int index);
+        
+        internal static extern long InternalGetTouchDevice( int index);
 
         /// <summary>
         ///     Sdl the get num touch fingers using the specified touch id
@@ -776,7 +775,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="touchId">The touch id</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetNumTouchFingers", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern int InternalGetNumTouchFingers(long touchId);
 
         /// <summary>
@@ -786,8 +785,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="index">The index</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetTouchFinger", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalGetTouchFinger([IsNotNull] long touchId, [IsNotNull] int index);
+        
+        internal static extern IntPtr InternalGetTouchFinger( long touchId,  int index);
 
         /// <summary>
         ///     Sdl the get touch device type using the specified touch id
@@ -795,8 +794,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="touchId">The touch id</param>
         /// <returns>The sdl touch device type</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetTouchDeviceType", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern TouchDeviceType InternalGetTouchDeviceType([IsNotNull] long touchId);
+        
+        internal static extern TouchDeviceType InternalGetTouchDeviceType( long touchId);
 
         /// <summary>
         ///     Sdl the joystick rumble using the specified joystick
@@ -807,16 +806,16 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="durationMs">The duration ms</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickRumble", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalJoystickRumble([IsNotNull] IntPtr joystick, [IsNotNull] ushort lowFrequencyRumble, [IsNotNull] ushort highFrequencyRumble, [IsNotNull] uint durationMs);
+        
+        internal static extern int InternalJoystickRumble( IntPtr joystick,  ushort lowFrequencyRumble,  ushort highFrequencyRumble,  uint durationMs);
 
         /// <summary>
         ///     Sdl the joystick close using the specified joystick
         /// </summary>
         /// <param name="joystick">The joystick</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickClose", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalJoystickClose([IsNotNull] IntPtr joystick);
+        
+        internal static extern void InternalJoystickClose( IntPtr joystick);
 
         /// <summary>
         ///     Sdl the joystick event state using the specified state
@@ -824,8 +823,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="state">The state</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickEventState", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalJoystickEventState([IsNotNull] int state);
+        
+        internal static extern int InternalJoystickEventState( int state);
 
         /// <summary>
         ///     Sdl the joystick get axis using the specified joystick
@@ -834,8 +833,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="axis">The axis</param>
         /// <returns>The short</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetAxis", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern short InternalJoystickGetAxis([IsNotNull] IntPtr joystick, [IsNotNull] int axis);
+        
+        internal static extern short InternalJoystickGetAxis( IntPtr joystick,  int axis);
 
         /// <summary>
         ///     Sdl the joystick get axis initial state using the specified joystick
@@ -845,8 +844,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="state">The state</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetAxisInitialState", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern bool InternalJoystickGetAxisInitialState([IsNotNull] IntPtr joystick, [IsNotNull] int axis, out ushort state);
+        
+        internal static extern bool InternalJoystickGetAxisInitialState( IntPtr joystick,  int axis, out ushort state);
 
         /// <summary>
         ///     Sdl the joystick get ball using the specified joystick
@@ -857,8 +856,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="dy">The dy</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetBall", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalJoystickGetBall([IsNotNull] IntPtr joystick, [IsNotNull] int ball, out int dx, out int dy);
+        
+        internal static extern int InternalJoystickGetBall( IntPtr joystick,  int ball, out int dx, out int dy);
 
         /// <summary>
         ///     Sdl the joystick get button using the specified joystick
@@ -867,8 +866,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="button">The button</param>
         /// <returns>The byte</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetButton", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern byte InternalJoystickGetButton([IsNotNull] IntPtr joystick, [IsNotNull] int button);
+        
+        internal static extern byte InternalJoystickGetButton( IntPtr joystick,  int button);
 
         /// <summary>
         ///     Sdl the joystick get hat using the specified joystick
@@ -877,8 +876,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="hat">The hat</param>
         /// <returns>The byte</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetHat", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern byte InternalJoystickGetHat([IsNotNull] IntPtr joystick, [IsNotNull] int hat);
+        
+        internal static extern byte InternalJoystickGetHat( IntPtr joystick,  int hat);
 
         /// <summary>
         ///     Internals the sdl joystick name using the specified joystick
@@ -886,8 +885,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="joystick">The joystick</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickName", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalJoystickName([IsNotNull] IntPtr joystick);
+        
+        internal static extern IntPtr InternalJoystickName( IntPtr joystick);
 
         /// <summary>
         ///     Internals the sdl joystick name for index using the specified device index
@@ -895,8 +894,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickNameForIndex", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalJoystickNameForIndex([IsNotNull] int deviceIndex);
+        
+        internal static extern IntPtr InternalJoystickNameForIndex( int deviceIndex);
 
         /// <summary>
         ///     Sdl the joystick num axes using the specified joystick
@@ -904,8 +903,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="joystick">The joystick</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickNumAxes", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalJoystickNumAxes([IsNotNull] IntPtr joystick);
+        
+        internal static extern int InternalJoystickNumAxes( IntPtr joystick);
 
         /// <summary>
         ///     Sdl the joystick num balls using the specified joystick
@@ -913,8 +912,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="joystick">The joystick</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickNumBalls", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalJoystickNumBalls([IsNotNull] IntPtr joystick);
+        
+        internal static extern int InternalJoystickNumBalls( IntPtr joystick);
 
         /// <summary>
         ///     Sdl the joystick num buttons using the specified joystick
@@ -922,8 +921,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="joystick">The joystick</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickNumButtons", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalJoystickNumButtons([IsNotNull] IntPtr joystick);
+        
+        internal static extern int InternalJoystickNumButtons( IntPtr joystick);
 
         /// <summary>
         ///     Sdl the joystick num hats using the specified joystick
@@ -931,8 +930,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="joystick">The joystick</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickNumHats", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalJoystickNumHats([IsNotNull] IntPtr joystick);
+        
+        internal static extern int InternalJoystickNumHats( IntPtr joystick);
 
         /// <summary>
         ///     Sdl the joystick open using the specified device index
@@ -940,14 +939,14 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickOpen", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalJoystickOpen([IsNotNull] int deviceIndex);
+        
+        internal static extern IntPtr InternalJoystickOpen( int deviceIndex);
 
         /// <summary>
         ///     Sdl the joystick update
         /// </summary>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickUpdate", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern void InternalJoystickUpdate();
 
         /// <summary>
@@ -955,7 +954,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_NumJoysticks", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern int InternalNumJoysticks();
 
         /// <summary>
@@ -964,8 +963,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The guid</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetDeviceGUID", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern Guid InternalJoystickGetDeviceGUID([IsNotNull] int deviceIndex);
+        
+        internal static extern Guid InternalJoystickGetDeviceGUID( int deviceIndex);
 
         /// <summary>
         ///     Sdl the joystick get guid using the specified joystick
@@ -973,7 +972,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="joystick">The joystick</param>
         /// <returns>The guid</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetGUID", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern Guid InternalJoystickGetGUID(IntPtr joystick);
 
         /// <summary>
@@ -983,8 +982,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="pszGuid">The psz guid</param>
         /// <param name="cbGuid">The cb guid</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetGUIDString", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalJoystickGetGUIDString(Guid guid, [IsNotNull] byte[] pszGuid, [IsNotNull] int cbGuid);
+        
+        internal static extern void InternalJoystickGetGUIDString(Guid guid,  byte[] pszGuid,  int cbGuid);
 
         /// <summary>
         ///     Internals the sdl joystick get guid from string using the specified pch guid
@@ -992,8 +991,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="pchGuid">The pch guid</param>
         /// <returns>The guid</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetGUIDFromString", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern Guid InternalJoystickGetGUIDFromString([IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string pchGuid);
+        
+        internal static extern Guid InternalJoystickGetGUIDFromString([ MarshalAs(UnmanagedType.LPStr)] string pchGuid);
 
         /// <summary>
         ///     Sdl the joystick get device vendor using the specified device index
@@ -1001,8 +1000,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The ushort</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetDeviceVendor", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern ushort InternalJoystickGetDeviceVendor([IsNotNull] int deviceIndex);
+        
+        internal static extern ushort InternalJoystickGetDeviceVendor( int deviceIndex);
 
         /// <summary>
         ///     Sdl the joystick get device product using the specified device index
@@ -1010,8 +1009,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The ushort</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetDeviceProduct", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern ushort InternalJoystickGetDeviceProduct([IsNotNull] int deviceIndex);
+        
+        internal static extern ushort InternalJoystickGetDeviceProduct( int deviceIndex);
 
         /// <summary>
         ///     Sdl the joystick get device product version using the specified device index
@@ -1019,8 +1018,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The ushort</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetDeviceProductVersion", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern ushort InternalJoystickGetDeviceProductVersion([IsNotNull] int deviceIndex);
+        
+        internal static extern ushort InternalJoystickGetDeviceProductVersion( int deviceIndex);
 
         /// <summary>
         ///     Sdl the joystick get device type using the specified device index
@@ -1028,8 +1027,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The sdl joystick type</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetDeviceType", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern JoystickType InternalJoystickGetDeviceType([IsNotNull] int deviceIndex);
+        
+        internal static extern JoystickType InternalJoystickGetDeviceType( int deviceIndex);
 
         /// <summary>
         ///     Sdl the joystick get device instance id using the specified device index
@@ -1037,8 +1036,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetDeviceInstanceID", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalJoystickGetDeviceInstanceID([IsNotNull] int deviceIndex);
+        
+        internal static extern int InternalJoystickGetDeviceInstanceID( int deviceIndex);
 
         /// <summary>
         ///     Sdl the joystick get vendor using the specified joystick
@@ -1046,8 +1045,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="joystick">The joystick</param>
         /// <returns>The ushort</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetVendor", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern ushort InternalJoystickGetVendor([IsNotNull] IntPtr joystick);
+        
+        internal static extern ushort InternalJoystickGetVendor( IntPtr joystick);
 
         /// <summary>
         ///     Sdl the joystick get product using the specified joystick
@@ -1055,8 +1054,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="joystick">The joystick</param>
         /// <returns>The ushort</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetProduct", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern ushort InternalJoystickGetProduct([IsNotNull] IntPtr joystick);
+        
+        internal static extern ushort InternalJoystickGetProduct( IntPtr joystick);
 
         /// <summary>
         ///     Sdl the joystick get product version using the specified joystick
@@ -1064,8 +1063,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="joystick">The joystick</param>
         /// <returns>The ushort</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetProductVersion", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern ushort InternalJoystickGetProductVersion([IsNotNull] IntPtr joystick);
+        
+        internal static extern ushort InternalJoystickGetProductVersion( IntPtr joystick);
 
         /// <summary>
         ///     Sdl the joystick get type using the specified joystick
@@ -1073,8 +1072,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="joystick">The joystick</param>
         /// <returns>The sdl joystick type</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetType", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern JoystickType InternalJoystickGetType([IsNotNull] IntPtr joystick);
+        
+        internal static extern JoystickType InternalJoystickGetType( IntPtr joystick);
 
         /// <summary>
         ///     Sdl the joystick get attached using the specified joystick
@@ -1082,8 +1081,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="joystick">The joystick</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetAttached", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern bool InternalJoystickGetAttached([IsNotNull] IntPtr joystick);
+        
+        internal static extern bool InternalJoystickGetAttached( IntPtr joystick);
 
         /// <summary>
         ///     Sdl the joystick instance id using the specified joystick
@@ -1091,8 +1090,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="joystick">The joystick</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickInstanceID", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalJoystickInstanceID([IsNotNull] IntPtr joystick);
+        
+        internal static extern int InternalJoystickInstanceID( IntPtr joystick);
 
         /// <summary>
         ///     Sdl the joystick current power level using the specified joystick
@@ -1100,8 +1099,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="joystick">The joystick</param>
         /// <returns>The sdl joystick power level</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickCurrentPowerLevel", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern JoystickPowerLevel InternalJoystickCurrentPowerLevel([IsNotNull] IntPtr joystick);
+        
+        internal static extern JoystickPowerLevel InternalJoystickCurrentPowerLevel( IntPtr joystick);
 
         /// <summary>
         ///     Sdl the joystick from instance id using the specified instance id
@@ -1109,21 +1108,21 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="instanceId">The instance id</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickFromInstanceID", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalJoystickFromInstanceID([IsNotNull] int instanceId);
+        
+        internal static extern IntPtr InternalJoystickFromInstanceID( int instanceId);
 
         /// <summary>
         ///     Sdl the lock joysticks
         /// </summary>
         [DllImport(NativeLibName, EntryPoint = "SDL_LockJoysticks", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern void InternalLockJoysticks();
 
         /// <summary>
         ///     Sdl the unlock joysticks
         /// </summary>
         [DllImport(NativeLibName, EntryPoint = "SDL_UnlockJoysticks", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern void InternalUnlockJoysticks();
 
         /// <summary>
@@ -1133,8 +1132,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="mode">The mode</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RWFromFile", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalRWFromFile([IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string file, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string mode);
+        
+        internal static extern IntPtr InternalRWFromFile([ MarshalAs(UnmanagedType.LPStr)] string file, [ MarshalAs(UnmanagedType.LPStr)] string mode);
 
         /// <summary>
         ///     Internals the sdl load file using the specified file
@@ -1143,8 +1142,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="dataSize">The data size</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_LoadFile", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalLoadFile([IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string file, out IntPtr dataSize);
+        
+        internal static extern IntPtr InternalLoadFile([ MarshalAs(UnmanagedType.LPStr)] string file, out IntPtr dataSize);
 
         /// <summary>
         ///     Sdl the init using the specified flags
@@ -1152,14 +1151,14 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="flags">The flags</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_Init", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalInit([IsNotNull] InitSettings flags);
+        
+        internal static extern int InternalInit( InitSettings flags);
 
         /// <summary>
         ///     Sdl the quit
         /// </summary>
         [DllImport(NativeLibName, EntryPoint = "SDL_Quit", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern void InternalQuit();
 
         /// <summary>
@@ -1168,14 +1167,14 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="flags">The flags</param>
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_WasInit", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern uint InternalWasInit([IsNotNull] InitSettings flags);
+        
+        internal static extern uint InternalWasInit( InitSettings flags);
 
         /// <summary>
         ///     Sdl the clear hints
         /// </summary>
         [DllImport(NativeLibName, EntryPoint = "SDL_ClearHints", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern void InternalClearHints();
 
         /// <summary>
@@ -1184,8 +1183,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="name">The name</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetHint", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalGetHint([IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string name);
+        
+        internal static extern IntPtr InternalGetHint([ MarshalAs(UnmanagedType.LPStr)] string name);
 
         /// <summary>
         ///     Internals the sdl set hint using the specified name
@@ -1194,8 +1193,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="value">The value</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetHint", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern bool InternalSetHint([IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string name, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string value);
+        
+        internal static extern bool InternalSetHint([ MarshalAs(UnmanagedType.LPStr)] string name, [ MarshalAs(UnmanagedType.LPStr)] string value);
 
         /// <summary>
         ///     Internals the sdl set hint with priority using the specified name
@@ -1205,8 +1204,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="priority">The priority</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetHintWithPriority", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern bool InternalSetHintWithPriority([IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string name, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string value, HintPriority priority);
+        
+        internal static extern bool InternalSetHintWithPriority([ MarshalAs(UnmanagedType.LPStr)] string name, [ MarshalAs(UnmanagedType.LPStr)] string value, HintPriority priority);
 
         /// <summary>
         ///     Internals the sdl get hint boolean using the specified name
@@ -1215,15 +1214,15 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="defaultValue">The default value</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetHintBoolean", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern bool InternalGetHintBoolean([IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string name, bool defaultValue);
+        
+        internal static extern bool InternalGetHintBoolean([ MarshalAs(UnmanagedType.LPStr)] string name, bool defaultValue);
 
         /// <summary>
         ///     Internals the sdl get error
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetError", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern IntPtr InternalGetError();
 
         /// <summary>
@@ -1231,8 +1230,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetError", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalSetError([IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string fmtAndArgList);
+        
+        internal static extern void InternalSetError([ MarshalAs(UnmanagedType.LPStr)] string fmtAndArgList);
 
         /// <summary>
         ///     Internals the sdl create window using the specified title
@@ -1245,8 +1244,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="flags">The flags</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_CreateWindow", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalCreateWindow([IsNotNull, IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string title, [IsNotNull] int x, [IsNotNull] int y, [IsNotNull] int w, [IsNotNull] int h, [IsNotNull] WindowSettings flags);
+        
+        internal static extern IntPtr InternalCreateWindow([ MarshalAs(UnmanagedType.LPStr)] string title,  int x,  int y,  int w,  int h,  WindowSettings flags);
 
         /// <summary>
         ///     Sdl the create window and renderer using the specified width
@@ -1258,16 +1257,16 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="renderer">The renderer</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_CreateWindowAndRenderer", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalCreateWindowAndRenderer([IsNotNull] int width, [IsNotNull] int height, [IsNotNull] WindowSettings windowFlags, out IntPtr window, out IntPtr renderer);
+        
+        internal static extern int InternalCreateWindowAndRenderer( int width,  int height,  WindowSettings windowFlags, out IntPtr window, out IntPtr renderer);
 
         /// <summary>
         ///     Sdl the destroy window using the specified window
         /// </summary>
         /// <param name="window">The window</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_DestroyWindow", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalDestroyWindow([IsNotNull] IntPtr window);
+        
+        internal static extern void InternalDestroyWindow( IntPtr window);
 
         /// <summary>
         ///     Sdl the get closest display mode using the specified display index
@@ -1277,8 +1276,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="closest">The closest</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetClosestDisplayMode", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalGetClosestDisplayMode([IsNotNull] int displayIndex, ref DisplayMode mode, out DisplayMode closest);
+        
+        internal static extern IntPtr InternalGetClosestDisplayMode( int displayIndex, ref DisplayMode mode, out DisplayMode closest);
 
         /// <summary>
         ///     Sdl the get current display mode using the specified display index
@@ -1287,15 +1286,15 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="mode">The mode</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetCurrentDisplayMode", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGetCurrentDisplayMode([IsNotNull] int displayIndex, out DisplayMode mode);
+        
+        internal static extern int InternalGetCurrentDisplayMode( int displayIndex, out DisplayMode mode);
 
         /// <summary>
         ///     Internals the sdl get current video driver
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetCurrentVideoDriver", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern IntPtr InternalGetCurrentVideoDriver();
 
         /// <summary>
@@ -1305,8 +1304,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="mode">The mode</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetDesktopDisplayMode", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGetDesktopDisplayMode([IsNotNull] int displayIndex, out DisplayMode mode);
+        
+        internal static extern int InternalGetDesktopDisplayMode( int displayIndex, out DisplayMode mode);
 
         /// <summary>
         ///     Internals the sdl get display name using the specified index
@@ -1314,8 +1313,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="index">The index</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetDisplayName", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalGetDisplayName([IsNotNull] int index);
+        
+        internal static extern IntPtr InternalGetDisplayName( int index);
 
         /// <summary>
         ///     Sdl the get display bounds using the specified display index
@@ -1324,8 +1323,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetDisplayBounds", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGetDisplayBounds([IsNotNull] int displayIndex, out RectangleI rect);
+        
+        internal static extern int InternalGetDisplayBounds( int displayIndex, out RectangleI rect);
 
         /// <summary>
         ///     Sdl the get display dpi using the specified display index
@@ -1336,8 +1335,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="vDpi">The v dpi</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetDisplayDPI", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGetDisplayDPI([IsNotNull] int displayIndex, out float dDpi, out float hDpi, out float vDpi);
+        
+        internal static extern int InternalGetDisplayDPI( int displayIndex, out float dDpi, out float hDpi, out float vDpi);
 
         /// <summary>
         ///     Sdl the get display mode using the specified display index
@@ -1347,8 +1346,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="mode">The mode</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetDisplayMode", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGetDisplayMode([IsNotNull] int displayIndex, [IsNotNull] int modeIndex, out DisplayMode mode);
+        
+        internal static extern int InternalGetDisplayMode( int displayIndex,  int modeIndex, out DisplayMode mode);
 
         /// <summary>
         ///     Sdl the get display usable bounds using the specified display index
@@ -1357,8 +1356,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetDisplayUsableBounds", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGetDisplayUsableBounds([IsNotNull] int displayIndex, out RectangleI rect);
+        
+        internal static extern int InternalGetDisplayUsableBounds( int displayIndex, out RectangleI rect);
 
         /// <summary>
         ///     Sdl the get num display modes using the specified display index
@@ -1366,15 +1365,15 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="displayIndex">The display index</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetNumDisplayModes", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGetNumDisplayModes([IsNotNull] int displayIndex);
+        
+        internal static extern int InternalGetNumDisplayModes( int displayIndex);
 
         /// <summary>
         ///     Sdl the get num video displays
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetNumVideoDisplays", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern int InternalGetNumVideoDisplays();
 
         /// <summary>
@@ -1382,7 +1381,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetNumVideoDrivers", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern int InternalGetNumVideoDrivers();
 
         /// <summary>
@@ -1391,8 +1390,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="index">The index</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetVideoDriver", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalGetVideoDriver([IsNotNull] int index);
+        
+        internal static extern IntPtr InternalGetVideoDriver( int index);
 
         /// <summary>
         ///     Sdl the get window brightness using the specified window
@@ -1400,8 +1399,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <returns>The float</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowBrightness", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern float InternalGetWindowBrightness([IsNotNull] IntPtr window);
+        
+        internal static extern float InternalGetWindowBrightness( IntPtr window);
 
         /// <summary>
         ///     Sdl the set window opacity using the specified window
@@ -1410,8 +1409,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="opacity">The opacity</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowOpacity", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalSetWindowOpacity([IsNotNull] IntPtr window, [IsNotNull] float opacity);
+        
+        internal static extern int InternalSetWindowOpacity( IntPtr window,  float opacity);
 
         /// <summary>
         ///     Sdl the get window opacity using the specified window
@@ -1420,8 +1419,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="outOpacity">The out opacity</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowOpacity", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGetWindowOpacity([IsNotNull] IntPtr window, out float outOpacity);
+        
+        internal static extern int InternalGetWindowOpacity( IntPtr window, out float outOpacity);
 
         /// <summary>
         ///     Sdl the set window modal for using the specified modal window
@@ -1430,8 +1429,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="parentWindow">The parent window</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowModalFor", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalSetWindowModalFor([IsNotNull] IntPtr modalWindow, [IsNotNull] IntPtr parentWindow);
+        
+        internal static extern int InternalSetWindowModalFor( IntPtr modalWindow,  IntPtr parentWindow);
 
         /// <summary>
         ///     Sdl the set window input focus using the specified window
@@ -1439,8 +1438,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowInputFocus", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalSetWindowInputFocus([IsNotNull] IntPtr window);
+        
+        internal static extern int InternalSetWindowInputFocus( IntPtr window);
 
         /// <summary>
         ///     Internals the sdl get window data using the specified window
@@ -1449,8 +1448,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="name">The name</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowData", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalGetWindowData([IsNotNull] IntPtr window, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string name);
+        
+        internal static extern IntPtr InternalGetWindowData( IntPtr window, [ MarshalAs(UnmanagedType.LPStr)] string name);
 
         /// <summary>
         ///     Sdl the get window display index using the specified window
@@ -1458,8 +1457,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowDisplayIndex", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGetWindowDisplayIndex([IsNotNull] IntPtr window);
+        
+        internal static extern int InternalGetWindowDisplayIndex( IntPtr window);
 
         /// <summary>
         ///     Sdl the get window display mode using the specified window
@@ -1468,8 +1467,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="mode">The mode</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowDisplayMode", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGetWindowDisplayMode([IsNotNull] IntPtr window, out DisplayMode mode);
+        
+        internal static extern int InternalGetWindowDisplayMode( IntPtr window, out DisplayMode mode);
 
         /// <summary>
         ///     Sdl the get window flags using the specified window
@@ -1477,8 +1476,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowFlags", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern uint InternalGetWindowFlags([IsNotNull] IntPtr window);
+        
+        internal static extern uint InternalGetWindowFlags( IntPtr window);
 
         /// <summary>
         ///     Sdl the get window from id using the specified id
@@ -1486,8 +1485,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="id">The id</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowFromID", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalGetWindowFromID([IsNotNull] uint id);
+        
+        internal static extern IntPtr InternalGetWindowFromID( uint id);
 
         /// <summary>
         ///     Sdl the get window gamma ramp using the specified window
@@ -1498,8 +1497,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="blue">The blue</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowGammaRamp", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGetWindowGammaRamp([IsNotNull] IntPtr window, [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] red, [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] green,
+        
+        internal static extern int InternalGetWindowGammaRamp( IntPtr window, [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] red, [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] green,
             [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)]
             ushort[] blue);
 
@@ -1509,8 +1508,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowGrab", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern bool InternalGetWindowGrab([IsNotNull] IntPtr window);
+        
+        internal static extern bool InternalGetWindowGrab( IntPtr window);
 
         /// <summary>
         ///     Sdl the get window id using the specified window
@@ -1518,8 +1517,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowID", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern uint InternalGetWindowID([IsNotNull] IntPtr window);
+        
+        internal static extern uint InternalGetWindowID( IntPtr window);
 
         /// <summary>
         ///     Sdl the get window pixel format using the specified window
@@ -1527,8 +1526,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowPixelFormat", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern uint InternalGetWindowPixelFormat([IsNotNull] IntPtr window);
+        
+        internal static extern uint InternalGetWindowPixelFormat( IntPtr window);
 
         /// <summary>
         ///     Sdl the get window maximum size using the specified window
@@ -1537,8 +1536,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="maxW">The max</param>
         /// <param name="maxH">The max</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowMaximumSize", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalGetWindowMaximumSize([IsNotNull] IntPtr window, out int maxW, out int maxH);
+        
+        internal static extern void InternalGetWindowMaximumSize( IntPtr window, out int maxW, out int maxH);
 
         /// <summary>
         ///     Sdl the get window minimum size using the specified window
@@ -1547,8 +1546,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="minW">The min</param>
         /// <param name="minH">The min</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowMinimumSize", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalGetWindowMinimumSize([IsNotNull] IntPtr window, out int minW, out int minH);
+        
+        internal static extern void InternalGetWindowMinimumSize( IntPtr window, out int minW, out int minH);
 
         /// <summary>
         ///     Sdl the get window position using the specified window
@@ -1557,8 +1556,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowPosition", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalGetWindowPosition([IsNotNull] IntPtr window, out int x, out int y);
+        
+        internal static extern void InternalGetWindowPosition( IntPtr window, out int x, out int y);
 
         /// <summary>
         ///     Sdl the get window size using the specified window
@@ -1567,8 +1566,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="w">The </param>
         /// <param name="h">The </param>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowSize", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalGetWindowSize([IsNotNull] IntPtr window, out int w, out int h);
+        
+        internal static extern void InternalGetWindowSize( IntPtr window, out int w, out int h);
 
         /// <summary>
         ///     Sdl the get window surface using the specified window
@@ -1576,8 +1575,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowSurface", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalGetWindowSurface([IsNotNull] IntPtr window);
+        
+        internal static extern IntPtr InternalGetWindowSurface( IntPtr window);
 
         /// <summary>
         ///     Internals the sdl get window title using the specified window
@@ -1585,8 +1584,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowTitle", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalGetWindowTitle([IsNotNull] IntPtr window);
+        
+        internal static extern IntPtr InternalGetWindowTitle( IntPtr window);
 
         /// <summary>
         ///     Sdl the gl bind texture using the specified texture
@@ -1596,8 +1595,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="texH">The tex h</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_BindTexture", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGlBindTexture([IsNotNull] IntPtr texture, out float texW, out float texH);
+        
+        internal static extern int InternalGlBindTexture( IntPtr texture, out float texW, out float texH);
 
         /// <summary>
         ///     Sdl the gl create context using the specified window
@@ -1605,16 +1604,16 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_CreateContext", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalGlCreateContext([IsNotNull] IntPtr window);
+        
+        internal static extern IntPtr InternalGlCreateContext( IntPtr window);
 
         /// <summary>
         ///     Sdl the gl delete context using the specified context
         /// </summary>
         /// <param name="context">The context</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_DeleteContext", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalGlDeleteContext([IsNotNull] IntPtr context);
+        
+        internal static extern void InternalGlDeleteContext( IntPtr context);
 
         /// <summary>
         ///     Internals the sdl gl load library using the specified path
@@ -1622,8 +1621,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="path">The path</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_LoadLibrary", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGlLoadLibrary([IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string path);
+        
+        internal static extern int InternalGlLoadLibrary([ MarshalAs(UnmanagedType.LPStr)] string path);
 
         /// <summary>
         ///     Sdl the gl get proc address using the specified proc
@@ -1631,8 +1630,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="proc">The proc</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_GetProcAddress", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalGlGetProcAddress([IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string proc);
+        
+        internal static extern IntPtr InternalGlGetProcAddress([ MarshalAs(UnmanagedType.LPStr)] string proc);
 
         /// <summary>
         ///     Internals the sdl gl extension supported using the specified extension
@@ -1640,14 +1639,14 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="extension">The extension</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_ExtensionSupported", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern bool InternalGlExtensionSupported([IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string extension);
+        
+        internal static extern bool InternalGlExtensionSupported([ MarshalAs(UnmanagedType.LPStr)] string extension);
 
         /// <summary>
         ///     Sdl the gl reset attributes
         /// </summary>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_ResetAttributes", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern void InternalGlResetAttributes();
 
         /// <summary>
@@ -1657,15 +1656,15 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="value">The value</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_GetAttribute", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGlGetAttribute([IsNotNull] Attr attr, out int value);
+        
+        internal static extern int InternalGlGetAttribute( Attr attr, out int value);
 
         /// <summary>
         ///     Sdl the gl get swap interval
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_GetSwapInterval", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern int InternalGlGetSwapInterval();
 
         /// <summary>
@@ -1675,15 +1674,15 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="context">The context</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_MakeCurrent", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGlMakeCurrent([IsNotNull] IntPtr window, [IsNotNull] IntPtr context);
+        
+        internal static extern int InternalGlMakeCurrent( IntPtr window,  IntPtr context);
 
         /// <summary>
         ///     Sdl the gl get current window
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_GetCurrentWindow", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern IntPtr InternalGlGetCurrentWindow();
 
         /// <summary>
@@ -1692,8 +1691,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="renderer">The renderer</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderIsClipEnabled", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern bool InternalRenderIsClipEnabled([IsNotNull] IntPtr renderer);
+        
+        internal static extern bool InternalRenderIsClipEnabled( IntPtr renderer);
 
         /// <summary>
         ///     Sdl the calculate gamma ramp using the specified gamma
@@ -1701,7 +1700,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="gamma">The gamma</param>
         /// <param name="ramp">The ramp</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_CalculateGammaRamp", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern void InternalCalculateGammaRamp(float gamma, [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] ramp);
 
         /// <summary>
@@ -1710,8 +1709,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="format">The format</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetPixelFormatName", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalGetPixelFormatName([IsNotNull] uint format);
+        
+        internal static extern IntPtr InternalGetPixelFormatName( uint format);
 
         /// <summary>
         ///     Sdl the pixel format enum to masks using the specified format
@@ -1724,8 +1723,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="aMask">The a mask</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_PixelFormatEnumToMasks", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern bool InternalPixelFormatEnumToMasks([IsNotNull] uint format, out int bpp, out uint rMask, out uint gMask, out uint bMask, out uint aMask);
+        
+        internal static extern bool InternalPixelFormatEnumToMasks( uint format, out int bpp, out uint rMask, out uint gMask, out uint bMask, out uint aMask);
 
         /// <summary>
         ///     Sdl the set palette colors using the specified palette
@@ -1736,8 +1735,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="nColors">The n colors</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetPaletteColors", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalSetPaletteColors([IsNotNull] IntPtr palette, [In] Color[] colors, [IsNotNull] int firstColor, [IsNotNull] int nColors);
+        
+        internal static extern int InternalSetPaletteColors( IntPtr palette, [In] Color[] colors,  int firstColor,  int nColors);
 
         /// <summary>
         ///     Sdl the set pixel format palette using the specified format
@@ -1746,8 +1745,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="palette">The palette</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetPixelFormatPalette", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalSetPixelFormatPalette([IsNotNull] IntPtr format, [IsNotNull] IntPtr palette);
+        
+        internal static extern int InternalSetPixelFormatPalette( IntPtr format,  IntPtr palette);
 
         /// <summary>
         ///     Sdl the blit surface using the specified src
@@ -1758,8 +1757,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_UpperBlit", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalBlitSurface([IsNotNull] IntPtr src, ref RectangleI srcRect, [IsNotNull] IntPtr dst, ref RectangleI dstRect);
+        
+        internal static extern int InternalBlitSurface( IntPtr src, ref RectangleI srcRect,  IntPtr dst, ref RectangleI dstRect);
 
         /// <summary>
         ///     Sdl the blit surface using the specified src
@@ -1770,8 +1769,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_UpperBlit", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalBlitSurface([IsNotNull] IntPtr src, [IsNotNull] IntPtr srcRect, [IsNotNull] IntPtr dst, ref RectangleI dstRect);
+        
+        internal static extern int InternalBlitSurface( IntPtr src,  IntPtr srcRect,  IntPtr dst, ref RectangleI dstRect);
 
         /// <summary>
         ///     Sdl the blit surface using the specified src
@@ -1782,8 +1781,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_UpperBlit", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalBlitSurface([IsNotNull] IntPtr src, ref RectangleI srcRect, [IsNotNull] IntPtr dst, [IsNotNull] IntPtr dstRect);
+        
+        internal static extern int InternalBlitSurface( IntPtr src, ref RectangleI srcRect,  IntPtr dst,  IntPtr dstRect);
 
         /// <summary>
         ///     Sdl the blit surface using the specified src
@@ -1794,8 +1793,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_UpperBlit", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalBlitSurface([IsNotNull] IntPtr src, [IsNotNull] IntPtr srcRect, [IsNotNull] IntPtr dst, [IsNotNull] IntPtr dstRect);
+        
+        internal static extern int InternalBlitSurface( IntPtr src,  IntPtr srcRect,  IntPtr dst,  IntPtr dstRect);
 
         /// <summary>
         ///     Sdl the convert surface using the specified src
@@ -1805,8 +1804,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="flags">The flags</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_ConvertSurface", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalConvertSurface([IsNotNull] IntPtr src, [IsNotNull] IntPtr fmt, [IsNotNull] uint flags);
+        
+        internal static extern IntPtr InternalConvertSurface( IntPtr src,  IntPtr fmt,  uint flags);
 
         /// <summary>
         ///     Sdl the create rgb surface with format using the specified flags
@@ -1818,8 +1817,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="format">The format</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_CreateRGBSurfaceWithFormat", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalCreateRGBSurfaceWithFormat([IsNotNull] uint flags, [IsNotNull] int width, [IsNotNull] int height, [IsNotNull] int depth, [IsNotNull] uint format);
+        
+        internal static extern IntPtr InternalCreateRGBSurfaceWithFormat( uint flags,  int width,  int height,  int depth,  uint format);
 
         /// <summary>
         ///     Sdl the fill rect using the specified dst
@@ -1829,8 +1828,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="color">The color</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_FillRect", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalFillRect([IsNotNull] IntPtr dst, ref RectangleI rect, [IsNotNull] uint color);
+        
+        internal static extern int InternalFillRect( IntPtr dst, ref RectangleI rect,  uint color);
 
         /// <summary>
         ///     Sdl the fill rect using the specified dst
@@ -1840,8 +1839,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="color">The color</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_FillRect", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalFillRect([IsNotNull] IntPtr dst, [IsNotNull] IntPtr rect, [IsNotNull] uint color);
+        
+        internal static extern int InternalFillRect( IntPtr dst,  IntPtr rect,  uint color);
 
         /// <summary>
         ///     Sdl the fill rects using the specified dst
@@ -1852,8 +1851,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="color">The color</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_FillRects", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalFillRects([IsNotNull] IntPtr dst, [In] RectangleI[] rects, [IsNotNull] int count, [IsNotNull] uint color);
+        
+        internal static extern int InternalFillRects( IntPtr dst, [In] RectangleI[] rects,  int count,  uint color);
 
         /// <summary>
         ///     Sdl the get clip rect using the specified surface
@@ -1861,8 +1860,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="surface">The surface</param>
         /// <param name="rect">The rect</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetClipRect", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalGetClipRect([IsNotNull] IntPtr surface, out RectangleI rect);
+        
+        internal static extern void InternalGetClipRect( IntPtr surface, out RectangleI rect);
 
         /// <summary>
         ///     Sdl the has color key using the specified surface
@@ -1870,8 +1869,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="surface">The surface</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HasColorKey", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern bool InternalHasColorKey([IsNotNull] IntPtr surface);
+        
+        internal static extern bool InternalHasColorKey( IntPtr surface);
 
         /// <summary>
         ///     Sdl the get color key using the specified surface
@@ -1880,8 +1879,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="key">The key</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetColorKey", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGetColorKey([IsNotNull] IntPtr surface, out uint key);
+        
+        internal static extern int InternalGetColorKey( IntPtr surface, out uint key);
 
         /// <summary>
         ///     Sdl the get surface alpha mod using the specified surface
@@ -1890,8 +1889,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="alpha">The alpha</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetSurfaceAlphaMod", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGetSurfaceAlphaMod([IsNotNull] IntPtr surface, out byte alpha);
+        
+        internal static extern int InternalGetSurfaceAlphaMod( IntPtr surface, out byte alpha);
 
         /// <summary>
         ///     Sdl the get surface blend mode using the specified surface
@@ -1900,8 +1899,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="blendMode">The blend mode</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetSurfaceBlendMode", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGetSurfaceBlendMode([IsNotNull] IntPtr surface, out BlendModes blendMode);
+        
+        internal static extern int InternalGetSurfaceBlendMode( IntPtr surface, out BlendModes blendMode);
 
         /// <summary>
         ///     Sdl the get surface color mod using the specified surface
@@ -1912,8 +1911,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="b">The </param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetSurfaceColorMod", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGetSurfaceColorMod([IsNotNull] IntPtr surface, out byte r, out byte g, out byte b);
+        
+        internal static extern int InternalGetSurfaceColorMod( IntPtr surface, out byte r, out byte g, out byte b);
 
         /// <summary>
         ///     Internals the sdl load bmp rw using the specified src
@@ -1922,8 +1921,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="freeSrc">The free src</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_LoadBMP_RW", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalLoadBMP_RW([IsNotNull] IntPtr src, [IsNotNull] int freeSrc);
+        
+        internal static extern IntPtr InternalLoadBMP_RW( IntPtr src,  int freeSrc);
 
         /// <summary>
         ///     Sdl the set clip rect using the specified surface
@@ -1932,8 +1931,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="rect">The rect</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetClipRect", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern bool InternalSetClipRect([IsNotNull] IntPtr surface, ref RectangleI rect);
+        
+        internal static extern bool InternalSetClipRect( IntPtr surface, ref RectangleI rect);
 
         /// <summary>
         ///     Sdl the set color key using the specified surface
@@ -1943,8 +1942,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="key">The key</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetColorKey", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalSetColorKey([IsNotNull] IntPtr surface, [IsNotNull] int flag, [IsNotNull] uint key);
+        
+        internal static extern int InternalSetColorKey( IntPtr surface,  int flag,  uint key);
 
         /// <summary>
         ///     Sdl the set surface alpha mod using the specified surface
@@ -1953,8 +1952,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="alpha">The alpha</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetSurfaceAlphaMod", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalSetSurfaceAlphaMod([IsNotNull] IntPtr surface, [IsNotNull] byte alpha);
+        
+        internal static extern int InternalSetSurfaceAlphaMod( IntPtr surface,  byte alpha);
 
         /// <summary>
         ///     Sdl the set surface blend mode using the specified surface
@@ -1963,8 +1962,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="blendMode">The blend mode</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetSurfaceBlendMode", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalSetSurfaceBlendMode([IsNotNull] IntPtr surface, BlendModes blendMode);
+        
+        internal static extern int InternalSetSurfaceBlendMode( IntPtr surface, BlendModes blendMode);
 
         /// <summary>
         ///     Sdl the set surface color mod using the specified surface
@@ -1975,8 +1974,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="b">The </param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetSurfaceColorMod", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalSetSurfaceColorMod([IsNotNull] IntPtr surface, [IsNotNull] byte r, [IsNotNull] byte g, [IsNotNull] byte b);
+        
+        internal static extern int InternalSetSurfaceColorMod( IntPtr surface,  byte r,  byte g,  byte b);
 
         /// <summary>
         ///     Sdl the set surface palette using the specified surface
@@ -1985,8 +1984,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="palette">The palette</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetSurfacePalette", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalSetSurfacePalette([IsNotNull] IntPtr surface, [IsNotNull] IntPtr palette);
+        
+        internal static extern int InternalSetSurfacePalette( IntPtr surface,  IntPtr palette);
 
         /// <summary>
         ///     Sdl the upper blit using the specified src
@@ -1997,8 +1996,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_UpperBlit", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalUpperBlit([IsNotNull] IntPtr src, ref RectangleI srcRect, [IsNotNull] IntPtr dst, ref RectangleI dstRect);
+        
+        internal static extern int InternalUpperBlit( IntPtr src, ref RectangleI srcRect,  IntPtr dst, ref RectangleI dstRect);
 
         /// <summary>
         ///     Sdl the upper blit scaled using the specified src
@@ -2009,15 +2008,15 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_UpperBlitScaled", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalUpperBlitScaled([IsNotNull] IntPtr src, ref RectangleI srcRect, [IsNotNull] IntPtr dst, ref RectangleI dstRect);
+        
+        internal static extern int InternalUpperBlitScaled( IntPtr src, ref RectangleI srcRect,  IntPtr dst, ref RectangleI dstRect);
 
         /// <summary>
         ///     Sdl the has clipboard text
         /// </summary>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HasClipboardText", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern bool InternalHasClipboardText();
 
         /// <summary>
@@ -2025,7 +2024,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetClipboardText", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern IntPtr InternalGetClipboardText();
 
         /// <summary>
@@ -2034,15 +2033,15 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="mappingString">The mapping string</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerAddMapping", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGameControllerAddMapping([IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string mappingString);
+        
+        internal static extern int InternalGameControllerAddMapping([ MarshalAs(UnmanagedType.LPStr)] string mappingString);
 
         /// <summary>
         ///     Sdl the game controller num mappings
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerNumMappings", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern int InternalGameControllerNumMappings();
 
         /// <summary>
@@ -2051,8 +2050,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="mappingIndex">The mapping index</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerMappingForIndex", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalGameControllerMappingForIndex([IsNotNull] int mappingIndex);
+        
+        internal static extern IntPtr InternalGameControllerMappingForIndex( int mappingIndex);
 
         /// <summary>
         ///     Internals the sdl game controller add mappings from rw using the specified rw
@@ -2061,8 +2060,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="freeRw">The free rw</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerAddMappingsFromRW", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGameControllerAddMappingsFromRW([IsNotNull] IntPtr rw, [IsNotNull] int freeRw);
+        
+        internal static extern int InternalGameControllerAddMappingsFromRW( IntPtr rw,  int freeRw);
 
         /// <summary>
         ///     Internals the sdl game controller mapping for guid using the specified guid
@@ -2070,7 +2069,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="guid">The guid</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerMappingForGUID", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern IntPtr InternalGameControllerMappingForGUID(Guid guid);
 
         /// <summary>
@@ -2079,8 +2078,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="gameController">The game controller</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerMapping", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalGameControllerMapping([IsNotNull] IntPtr gameController);
+        
+        internal static extern IntPtr InternalGameControllerMapping( IntPtr gameController);
 
         /// <summary>
         ///     Sdl the is game controller using the specified joystick index
@@ -2088,8 +2087,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="joystickIndex">The joystick index</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_IsGameController", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern bool InternalIsGameController([IsNotNull] int joystickIndex);
+        
+        internal static extern bool InternalIsGameController( int joystickIndex);
 
         /// <summary>
         ///     Internals the sdl game controller name for index using the specified joystick index
@@ -2097,8 +2096,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="joystickIndex">The joystick index</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerNameForIndex", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalGameControllerNameForIndex([IsNotNull] int joystickIndex);
+        
+        internal static extern IntPtr InternalGameControllerNameForIndex( int joystickIndex);
 
         /// <summary>
         ///     Internals the sdl game controller mapping for device index using the specified joystick index
@@ -2106,8 +2105,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="joystickIndex">The joystick index</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerMappingForDeviceIndex", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalGameControllerMappingForDeviceIndex([IsNotNull] int joystickIndex);
+        
+        internal static extern IntPtr InternalGameControllerMappingForDeviceIndex( int joystickIndex);
 
         /// <summary>
         ///     Sdl the game controller open using the specified joystick index
@@ -2115,8 +2114,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="joystickIndex">The joystick index</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerOpen", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalGameControllerOpen([IsNotNull] int joystickIndex);
+        
+        internal static extern IntPtr InternalGameControllerOpen( int joystickIndex);
 
         /// <summary>
         ///     Internals the sdl game controller name using the specified game controller
@@ -2124,8 +2123,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="gameController">The game controller</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerName", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalGameControllerName([IsNotNull] IntPtr gameController);
+        
+        internal static extern IntPtr InternalGameControllerName( IntPtr gameController);
 
         /// <summary>
         ///     Sdl the game controller get vendor using the specified game controller
@@ -2133,8 +2132,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="gameController">The game controller</param>
         /// <returns>The ushort</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetVendor", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern ushort InternalGameControllerGetVendor([IsNotNull] IntPtr gameController);
+        
+        internal static extern ushort InternalGameControllerGetVendor( IntPtr gameController);
 
         /// <summary>
         ///     Sdl the game controller get product using the specified game controller
@@ -2142,8 +2141,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="gameController">The game controller</param>
         /// <returns>The ushort</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetProduct", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern ushort InternalGameControllerGetProduct([IsNotNull] IntPtr gameController);
+        
+        internal static extern ushort InternalGameControllerGetProduct( IntPtr gameController);
 
         /// <summary>
         ///     Sdl the game controller get product version using the specified game controller
@@ -2151,8 +2150,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="gameController">The game controller</param>
         /// <returns>The ushort</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetProductVersion", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern ushort InternalGameControllerGetProductVersion([IsNotNull] IntPtr gameController);
+        
+        internal static extern ushort InternalGameControllerGetProductVersion( IntPtr gameController);
 
         /// <summary>
         ///     Sdl the game controller get attached using the specified game controller
@@ -2160,8 +2159,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="gameController">The game controller</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetAttached", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern bool InternalGameControllerGetAttached([IsNotNull] IntPtr gameController);
+        
+        internal static extern bool InternalGameControllerGetAttached( IntPtr gameController);
 
         /// <summary>
         ///     Sdl the game controller get joystick using the specified game controller
@@ -2169,8 +2168,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="gameController">The game controller</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetJoystick", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalGameControllerGetJoystick([IsNotNull] IntPtr gameController);
+        
+        internal static extern IntPtr InternalGameControllerGetJoystick( IntPtr gameController);
 
         /// <summary>
         ///     Sdl the game controller event state using the specified state
@@ -2178,14 +2177,14 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="state">The state</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerEventState", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGameControllerEventState([IsNotNull] int state);
+        
+        internal static extern int InternalGameControllerEventState( int state);
 
         /// <summary>
         ///     Sdl the game controller update
         /// </summary>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerUpdate", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern void InternalGameControllerUpdate();
 
         /// <summary>
@@ -2194,8 +2193,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="pchString">The pch string</param>
         /// <returns>The sdl game controller axis</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetAxisFromString", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern GameControllerAxis InternalGameControllerGetAxisFromString([IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string pchString);
+        
+        internal static extern GameControllerAxis InternalGameControllerGetAxisFromString([ MarshalAs(UnmanagedType.LPStr)] string pchString);
 
         /// <summary>
         ///     Internals the sdl game controller get string for axis using the specified axis
@@ -2203,7 +2202,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="axis">The axis</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetStringForAxis", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern IntPtr InternalGameControllerGetStringForAxis(GameControllerAxis axis);
 
         /// <summary>
@@ -2213,8 +2212,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="axis">The axis</param>
         /// <returns>The internal sdl game controller button bind</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetBindForAxis", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern InternalSdlGameControllerButtonBind InternalGameControllerGetBindForAxis([IsNotNull] IntPtr gameController, GameControllerAxis axis);
+        
+        internal static extern InternalSdlGameControllerButtonBind InternalGameControllerGetBindForAxis( IntPtr gameController, GameControllerAxis axis);
 
         /// <summary>
         ///     Sdl the game controller get axis using the specified game controller
@@ -2223,8 +2222,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="axis">The axis</param>
         /// <returns>The short</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetAxis", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern short InternalGameControllerGetAxis([IsNotNull] IntPtr gameController, GameControllerAxis axis);
+        
+        internal static extern short InternalGameControllerGetAxis( IntPtr gameController, GameControllerAxis axis);
 
         /// <summary>
         ///     Internals the sdl game controller get button from string using the specified pch string
@@ -2232,8 +2231,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="pchString">The pch string</param>
         /// <returns>The sdl game controller button</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetButtonFromString", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern GameControllerButton InternalGameControllerGetButtonFromString([IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string pchString);
+        
+        internal static extern GameControllerButton InternalGameControllerGetButtonFromString([ MarshalAs(UnmanagedType.LPStr)] string pchString);
 
         /// <summary>
         ///     Internals the sdl game controller get string for button using the specified button
@@ -2241,7 +2240,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="button">The button</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetStringForButton", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern IntPtr InternalGameControllerGetStringForButton(GameControllerButton button);
 
         /// <summary>
@@ -2251,8 +2250,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="button">The button</param>
         /// <returns>The internal sdl game controller button bind</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetBindForButton", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern InternalSdlGameControllerButtonBind InternalGameControllerGetBindForButton([IsNotNull] IntPtr gameController, GameControllerButton button);
+        
+        internal static extern InternalSdlGameControllerButtonBind InternalGameControllerGetBindForButton( IntPtr gameController, GameControllerButton button);
 
         /// <summary>
         ///     Sdl the game controller get button using the specified game controller
@@ -2261,8 +2260,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="button">The button</param>
         /// <returns>The byte</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetButton", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern byte InternalGameControllerGetButton([IsNotNull] IntPtr gameController, GameControllerButton button);
+        
+        internal static extern byte InternalGameControllerGetButton( IntPtr gameController, GameControllerButton button);
 
         /// <summary>
         ///     Sdl the game controller rumble using the specified game controller
@@ -2273,16 +2272,16 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="durationMs">The duration ms</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerRumble", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGameControllerRumble([IsNotNull] IntPtr gameController, [IsNotNull] ushort lowFrequencyRumble, [IsNotNull] ushort highFrequencyRumble, [IsNotNull] uint durationMs);
+        
+        internal static extern int InternalGameControllerRumble( IntPtr gameController,  ushort lowFrequencyRumble,  ushort highFrequencyRumble,  uint durationMs);
 
         /// <summary>
         ///     Sdl the game controller close using the specified game controller
         /// </summary>
         /// <param name="gameController">The game controller</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerClose", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalGameControllerClose([IsNotNull] IntPtr gameController);
+        
+        internal static extern void InternalGameControllerClose( IntPtr gameController);
 
         /// <summary>
         ///     Sdl the game controller from instance id using the specified joy id
@@ -2290,8 +2289,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="joyId">The joy id</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerFromInstanceID", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalGameControllerFromInstanceID([IsNotNull] int joyId);
+        
+        internal static extern IntPtr InternalGameControllerFromInstanceID( int joyId);
 
         /// <summary>
         ///     Sdl the gl get drawable size using the specified window
@@ -2300,8 +2299,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="w">The </param>
         /// <param name="h">The </param>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_GetDrawableSize", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalGlGetDrawableSize([IsNotNull] IntPtr window, out int w, out int h);
+        
+        internal static extern void InternalGlGetDrawableSize( IntPtr window, out int w, out int h);
 
         /// <summary>
         ///     Sdl the gl set attribute using the specified attr
@@ -2310,8 +2309,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="value">The value</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_SetAttribute", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGlSetAttribute([IsNotNull] Attr attr, [IsNotNull] int value);
+        
+        internal static extern int InternalGlSetAttribute( Attr attr,  int value);
 
         /// <summary>
         ///     Sdl the gl set swap interval using the specified interval
@@ -2319,16 +2318,16 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="interval">The interval</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_SetSwapInterval", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGlSetSwapInterval([IsNotNull] int interval);
+        
+        internal static extern int InternalGlSetSwapInterval( int interval);
 
         /// <summary>
         ///     Sdl the gl swap window using the specified window
         /// </summary>
         /// <param name="window">The window</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_SwapWindow", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalGlSwapWindow([IsNotNull] IntPtr window);
+        
+        internal static extern void InternalGlSwapWindow( IntPtr window);
 
         /// <summary>
         ///     Sdl the gl unbind texture using the specified texture
@@ -2336,48 +2335,48 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="texture">The texture</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_UnbindTexture", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGlUnbindTexture([IsNotNull] IntPtr texture);
+        
+        internal static extern int InternalGlUnbindTexture( IntPtr texture);
 
         /// <summary>
         ///     Sdl the hide window using the specified window
         /// </summary>
         /// <param name="window">The window</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_HideWindow", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalHideWindow([IsNotNull] IntPtr window);
+        
+        internal static extern void InternalHideWindow( IntPtr window);
 
         /// <summary>
         ///     Sdl the maximize window using the specified window
         /// </summary>
         /// <param name="window">The window</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_MaximizeWindow", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalMaximizeWindow([IsNotNull] IntPtr window);
+        
+        internal static extern void InternalMaximizeWindow( IntPtr window);
 
         /// <summary>
         ///     Sdl the minimize window using the specified window
         /// </summary>
         /// <param name="window">The window</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_MinimizeWindow", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalMinimizeWindow([IsNotNull] IntPtr window);
+        
+        internal static extern void InternalMinimizeWindow( IntPtr window);
 
         /// <summary>
         ///     Sdl the raise window using the specified window
         /// </summary>
         /// <param name="window">The window</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_RaiseWindow", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalRaiseWindow([IsNotNull] IntPtr window);
+        
+        internal static extern void InternalRaiseWindow( IntPtr window);
 
         /// <summary>
         ///     Sdl the restore window using the specified window
         /// </summary>
         /// <param name="window">The window</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_RestoreWindow", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalRestoreWindow([IsNotNull] IntPtr window);
+        
+        internal static extern void InternalRestoreWindow( IntPtr window);
 
         /// <summary>
         ///     Sdl the set window brightness using the specified window
@@ -2386,8 +2385,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="brightness">The brightness</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowBrightness", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalSetWindowBrightness([IsNotNull] IntPtr window, float brightness);
+        
+        internal static extern int InternalSetWindowBrightness( IntPtr window, float brightness);
 
         /// <summary>
         ///     Internals the sdl set window data using the specified window
@@ -2397,8 +2396,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="userdata">The userdata</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowData", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalSetWindowData([IsNotNull] IntPtr window, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string name, [IsNotNull] IntPtr userdata);
+        
+        internal static extern IntPtr InternalSetWindowData( IntPtr window, [ MarshalAs(UnmanagedType.LPStr)] string name,  IntPtr userdata);
 
         /// <summary>
         ///     Sdl the set window display mode using the specified window
@@ -2407,8 +2406,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="mode">The mode</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowDisplayMode", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalSetWindowDisplayMode([IsNotNull] IntPtr window, ref DisplayMode mode);
+        
+        internal static extern int InternalSetWindowDisplayMode( IntPtr window, ref DisplayMode mode);
 
         /// <summary>
         ///     Sdl the set window display mode using the specified window
@@ -2417,8 +2416,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="mode">The mode</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowDisplayMode", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalSetWindowDisplayMode([IsNotNull] IntPtr window, [IsNotNull] IntPtr mode);
+        
+        internal static extern int InternalSetWindowDisplayMode( IntPtr window,  IntPtr mode);
 
         /// <summary>
         ///     Sdl the set window fullscreen using the specified window
@@ -2427,8 +2426,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="flags">The flags</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowFullscreen", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalSetWindowFullscreen([IsNotNull] IntPtr window, [IsNotNull] uint flags);
+        
+        internal static extern int InternalSetWindowFullscreen( IntPtr window,  uint flags);
 
         /// <summary>
         ///     Sdl the set window gamma ramp using the specified window
@@ -2439,8 +2438,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="blue">The blue</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowGammaRamp", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalSetWindowGammaRamp([IsNotNull] IntPtr window, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] red, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] green,
+        
+        internal static extern int InternalSetWindowGammaRamp( IntPtr window, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] red, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] green,
             [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)]
             ushort[] blue);
 
@@ -2450,8 +2449,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <param name="grabbed">The grabbed</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowGrab", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalSetWindowGrab([IsNotNull] IntPtr window, [IsNotNull] bool grabbed);
+        
+        internal static extern void InternalSetWindowGrab( IntPtr window,  bool grabbed);
 
         /// <summary>
         ///     Sdl the set window icon using the specified window
@@ -2459,8 +2458,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <param name="icon">The icon</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowIcon", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalSetWindowIcon([IsNotNull] IntPtr window, [IsNotNull] IntPtr icon);
+        
+        internal static extern void InternalSetWindowIcon( IntPtr window,  IntPtr icon);
 
         /// <summary>
         ///     Sdl the set window maximum size using the specified window
@@ -2469,8 +2468,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="maxW">The max</param>
         /// <param name="maxH">The max</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowMaximumSize", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalSetWindowMaximumSize([IsNotNull] IntPtr window, [IsNotNull] int maxW, [IsNotNull] int maxH);
+        
+        internal static extern void InternalSetWindowMaximumSize( IntPtr window,  int maxW,  int maxH);
 
         /// <summary>
         ///     Sdl the set window minimum size using the specified window
@@ -2479,8 +2478,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="minW">The min</param>
         /// <param name="minH">The min</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowMinimumSize", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalSetWindowMinimumSize([IsNotNull] IntPtr window, [IsNotNull] int minW, [IsNotNull] int minH);
+        
+        internal static extern void InternalSetWindowMinimumSize( IntPtr window,  int minW,  int minH);
 
         /// <summary>
         ///     Sdl the set window size using the specified window
@@ -2489,8 +2488,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="w">The </param>
         /// <param name="h">The </param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowSize", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalSetWindowSize([IsNotNull] IntPtr window, [IsNotNull] int w, [IsNotNull] int h);
+        
+        internal static extern void InternalSetWindowSize( IntPtr window,  int w,  int h);
 
         /// <summary>
         ///     Sdl the set window bordered using the specified window
@@ -2498,8 +2497,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <param name="bordered">The bordered</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowBordered", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalSetWindowBordered([IsNotNull] IntPtr window, bool bordered);
+        
+        internal static extern void InternalSetWindowBordered( IntPtr window, bool bordered);
 
         /// <summary>
         ///     Sdl the get window borders size using the specified window
@@ -2511,8 +2510,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="right">The right</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowBordered", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGetWindowBordersSize([IsNotNull] IntPtr window, out int top, out int left, out int bottom, out int right);
+        
+        internal static extern int InternalGetWindowBordersSize( IntPtr window, out int top, out int left, out int bottom, out int right);
 
         /// <summary>
         ///     Sdl the set window resizable using the specified window
@@ -2520,8 +2519,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <param name="resizable">The resizable</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowResizable", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalSetWindowResizable([IsNotNull] IntPtr window, bool resizable);
+        
+        internal static extern void InternalSetWindowResizable( IntPtr window, bool resizable);
 
         /// <summary>
         ///     Internals the sdl set window title using the specified window
@@ -2529,16 +2528,16 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <param name="title">The title</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowTitle", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalSetWindowTitle([IsNotNull] IntPtr window, [IsNotNull, IsNotEmpty, MarshalAs(UnmanagedType.LPStr)] string title);
+        
+        internal static extern void InternalSetWindowTitle( IntPtr window, [ MarshalAs(UnmanagedType.LPStr)] string title);
 
         /// <summary>
         ///     Sdl the show window using the specified window
         /// </summary>
         /// <param name="window">The window</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_ShowWindow", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalShowWindow([IsNotNull] IntPtr window);
+        
+        internal static extern void InternalShowWindow( IntPtr window);
 
         /// <summary>
         ///     Sdl the update window surface using the specified window
@@ -2546,8 +2545,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_UpdateWindowSurface", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalUpdateWindowSurface([IsNotNull] IntPtr window);
+        
+        internal static extern int InternalUpdateWindowSurface( IntPtr window);
 
         /// <summary>
         ///     Sdl the update window surface rects using the specified window
@@ -2557,8 +2556,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="numRects">The num rects</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_UpdateWindowSurfaceRects", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalUpdateWindowSurfaceRects([IsNotNull] IntPtr window, [In] RectangleI[] rects, [IsNotNull] int numRects);
+        
+        internal static extern int InternalUpdateWindowSurfaceRects( IntPtr window, [In] RectangleI[] rects,  int numRects);
 
         /// <summary>
         ///     Sdl the set window hit test using the specified window
@@ -2568,15 +2567,15 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="callbackData">The callback data</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowHitTest", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalSetWindowHitTest([IsNotNull] IntPtr window, SdlHitTest callback, [IsNotNull] IntPtr callbackData);
+        
+        internal static extern int InternalSetWindowHitTest( IntPtr window, SdlHitTest callback,  IntPtr callbackData);
 
         /// <summary>
         ///     Sdl the get grabbed window
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetGrabbedWindow", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern IntPtr InternalGetGrabbedWindow();
 
         /// <summary>
@@ -2590,8 +2589,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="alphaOperation">The alpha operation</param>
         /// <returns>The sdl blend mode</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_ComposeCustomBlendMode", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern BlendModes InternalComposeCustomBlendMode([IsNotNull] BlendFactor srcColorFactor, [IsNotNull] BlendFactor dstColorFactor, [IsNotNull] BlendOperation colorOperation, [IsNotNull] BlendFactor srcAlphaFactor, [IsNotNull] BlendFactor dstAlphaFactor, [IsNotNull] BlendOperation alphaOperation);
+        
+        internal static extern BlendModes InternalComposeCustomBlendMode( BlendFactor srcColorFactor,  BlendFactor dstColorFactor,  BlendOperation colorOperation,  BlendFactor srcAlphaFactor,  BlendFactor dstAlphaFactor,  BlendOperation alphaOperation);
 
         /// <summary>
         ///     Sdl the create renderer using the specified window
@@ -2601,8 +2600,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="flags">The flags</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_CreateRenderer", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalCreateRenderer([IsNotNull] IntPtr window, [IsNotNull] int index, Renderers flags);
+        
+        internal static extern IntPtr InternalCreateRenderer( IntPtr window,  int index, Renderers flags);
 
         /// <summary>
         ///     Sdl the create software renderer using the specified surface
@@ -2610,8 +2609,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="surface">The surface</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_CreateSoftwareRenderer", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalCreateSoftwareRenderer([IsNotNull] IntPtr surface);
+        
+        internal static extern IntPtr InternalCreateSoftwareRenderer( IntPtr surface);
 
         /// <summary>
         ///     Sdl the create texture using the specified renderer
@@ -2623,8 +2622,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="h">The </param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_CreateTexture", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalCreateTexture([IsNotNull] IntPtr renderer, [IsNotNull] uint format, [IsNotNull] int access, [IsNotNull] int w, [IsNotNull] int h);
+        
+        internal static extern IntPtr InternalCreateTexture( IntPtr renderer,  uint format,  int access,  int w,  int h);
 
         /// <summary>
         ///     Sdl the create texture from surface using the specified renderer
@@ -2633,31 +2632,31 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="surface">The surface</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_CreateTextureFromSurface", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalCreateTextureFromSurface([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr surface);
+        
+        internal static extern IntPtr InternalCreateTextureFromSurface( IntPtr renderer,  IntPtr surface);
 
         /// <summary>
         ///     Sdl the destroy renderer using the specified renderer
         /// </summary>
         /// <param name="renderer">The renderer</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_DestroyRenderer", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalDestroyRenderer([IsNotNull] IntPtr renderer);
+        
+        internal static extern void InternalDestroyRenderer( IntPtr renderer);
 
         /// <summary>
         ///     Sdl the destroy texture using the specified texture
         /// </summary>
         /// <param name="texture">The texture</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_DestroyTexture", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalDestroyTexture([IsNotNull] IntPtr texture);
+        
+        internal static extern void InternalDestroyTexture( IntPtr texture);
 
         /// <summary>
         ///     Sdl the get num render drivers
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetNumRenderDrivers", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern int InternalGetNumRenderDrivers();
 
         /// <summary>
@@ -2667,8 +2666,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="blendMode">The blend mode</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetRenderDrawBlendMode", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGetRenderDrawBlendMode([IsNotNull] IntPtr renderer, out BlendModes blendMode);
+        
+        internal static extern int InternalGetRenderDrawBlendMode( IntPtr renderer, out BlendModes blendMode);
 
         /// <summary>
         ///     Sdl the get render draw color using the specified renderer
@@ -2680,8 +2679,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="a">The </param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetRenderDrawColor", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGetRenderDrawColor([IsNotNull] IntPtr renderer, out byte r, out byte g, out byte b, out byte a);
+        
+        internal static extern int InternalGetRenderDrawColor( IntPtr renderer, out byte r, out byte g, out byte b, out byte a);
 
         /// <summary>
         ///     Sdl the get render driver info using the specified index
@@ -2690,8 +2689,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="info">The info</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetRenderDriverInfo", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGetRenderDriverInfo([IsNotNull] int index, out RendererInfo info);
+        
+        internal static extern int InternalGetRenderDriverInfo( int index, out RendererInfo info);
 
         /// <summary>
         ///     Sdl the get renderer using the specified window
@@ -2699,8 +2698,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetRenderer", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern IntPtr InternalGetRenderer([IsNotNull] IntPtr window);
+        
+        internal static extern IntPtr InternalGetRenderer( IntPtr window);
 
         /// <summary>
         ///     Sdl the get renderer info using the specified renderer
@@ -2709,8 +2708,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="info">The info</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetRendererInfo", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGetRendererInfo([IsNotNull] IntPtr renderer, out RendererInfo info);
+        
+        internal static extern int InternalGetRendererInfo( IntPtr renderer, out RendererInfo info);
 
         /// <summary>
         ///     Sdl the get renderer output size using the specified renderer
@@ -2720,8 +2719,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="h">The </param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetRendererOutputSize", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGetRendererOutputSize([IsNotNull] IntPtr renderer, out int w, out int h);
+        
+        internal static extern int InternalGetRendererOutputSize( IntPtr renderer, out int w, out int h);
 
         /// <summary>
         ///     Sdl the get texture alpha mod using the specified texture
@@ -2730,8 +2729,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="alpha">The alpha</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetTextureAlphaMod", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGetTextureAlphaMod([IsNotNull] IntPtr texture, out byte alpha);
+        
+        internal static extern int InternalGetTextureAlphaMod( IntPtr texture, out byte alpha);
 
         /// <summary>
         ///     Sdl the get texture blend mode using the specified texture
@@ -2740,8 +2739,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="blendMode">The blend mode</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetTextureBlendMode", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGetTextureBlendMode([IsNotNull] IntPtr texture, out BlendModes blendMode);
+        
+        internal static extern int InternalGetTextureBlendMode( IntPtr texture, out BlendModes blendMode);
 
         /// <summary>
         ///     Sdl the get texture color mod using the specified texture
@@ -2752,8 +2751,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="b">The </param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetTextureColorMod", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalGetTextureColorMod([IsNotNull] IntPtr texture, out byte r, out byte g, out byte b);
+        
+        internal static extern int InternalGetTextureColorMod( IntPtr texture, out byte r, out byte g, out byte b);
 
         /// <summary>
         ///     Sdl the lock texture using the specified texture
@@ -2764,8 +2763,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="pitch">The pitch</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_LockTexture", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalLockTexture([IsNotNull] IntPtr texture, ref RectangleI rect, out IntPtr pixels, out int pitch);
+        
+        internal static extern int InternalLockTexture( IntPtr texture, ref RectangleI rect, out IntPtr pixels, out int pitch);
 
         /// <summary>
         ///     Sdl the query texture using the specified texture
@@ -2777,8 +2776,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="h">The </param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_QueryTexture", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalQueryTexture([IsNotNull] IntPtr texture, out uint format, out int access, out int w, out int h);
+        
+        internal static extern int InternalQueryTexture( IntPtr texture, out uint format, out int access, out int w, out int h);
 
         /// <summary>
         ///     Sdl the render clear using the specified renderer
@@ -2786,8 +2785,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="renderer">The renderer</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderClear", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderClear([IsNotNull] IntPtr renderer);
+        
+        internal static extern int InternalRenderClear( IntPtr renderer);
 
         /// <summary>
         ///     Sdl the render copy using the specified renderer
@@ -2798,8 +2797,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopy", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderCopy([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleI dstRect);
+        
+        internal static extern int InternalRenderCopy( IntPtr renderer,  IntPtr texture, ref RectangleI srcRect, ref RectangleI dstRect);
 
         /// <summary>
         ///     Sdl the render copy using the specified renderer
@@ -2810,8 +2809,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopy", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderCopy([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, ref RectangleI dstRect);
+        
+        internal static extern int InternalRenderCopy( IntPtr renderer,  IntPtr texture,  IntPtr srcRect, ref RectangleI dstRect);
 
         /// <summary>
         ///     Sdl the render copy using the specified renderer
@@ -2822,8 +2821,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopy", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderCopy([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, [IsNotNull] IntPtr dstRect);
+        
+        internal static extern int InternalRenderCopy( IntPtr renderer,  IntPtr texture, ref RectangleI srcRect,  IntPtr dstRect);
 
         /// <summary>
         ///     Sdl the render copy using the specified renderer
@@ -2834,8 +2833,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopy", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderCopy([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, [IsNotNull] IntPtr dstRect);
+        
+        internal static extern int InternalRenderCopy( IntPtr renderer,  IntPtr texture,  IntPtr srcRect,  IntPtr dstRect);
 
         /// <summary>
         ///     Sdl the render copy ex using the specified renderer
@@ -2849,8 +2848,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyEx", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleI dstRect, double angle, ref PointI center, RendererFlips flips);
+        
+        internal static extern int InternalRenderCopyEx( IntPtr renderer,  IntPtr texture, ref RectangleI srcRect, ref RectangleI dstRect, double angle, ref PointI center, RendererFlips flips);
 
         /// <summary>
         ///     Sdl the render copy ex using the specified renderer
@@ -2864,8 +2863,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyEx", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleF dst, double angle, ref PointF center, RendererFlips flips);
+        
+        internal static extern int InternalRenderCopyEx( IntPtr renderer,  IntPtr texture, ref RectangleI srcRect, ref RectangleF dst, double angle, ref PointF center, RendererFlips flips);
 
 
         /// <summary>
@@ -2880,8 +2879,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyEx", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, ref RectangleI dstRect, double angle, ref PointI center, RendererFlips flips);
+        
+        internal static extern int InternalRenderCopyEx( IntPtr renderer,  IntPtr texture,  IntPtr srcRect, ref RectangleI dstRect, double angle, ref PointI center, RendererFlips flips);
 
         /// <summary>
         ///     Sdl the render copy ex using the specified renderer
@@ -2895,8 +2894,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyEx", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, [IsNotNull] IntPtr dstRect, double angle, ref PointI center, RendererFlips flips);
+        
+        internal static extern int InternalRenderCopyEx( IntPtr renderer,  IntPtr texture, ref RectangleI srcRect,  IntPtr dstRect, double angle, ref PointI center, RendererFlips flips);
 
         /// <summary>
         ///     Sdl the render copy ex using the specified renderer
@@ -2910,8 +2909,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyEx", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleI dstRect, double angle, [IsNotNull] IntPtr center, RendererFlips flips);
+        
+        internal static extern int InternalRenderCopyEx( IntPtr renderer,  IntPtr texture, ref RectangleI srcRect, ref RectangleI dstRect, double angle,  IntPtr center, RendererFlips flips);
 
         /// <summary>
         ///     Sdl the render copy ex using the specified renderer
@@ -2925,8 +2924,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyEx", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, [IsNotNull] IntPtr dstRect, double angle, ref PointI center, RendererFlips flips);
+        
+        internal static extern int InternalRenderCopyEx( IntPtr renderer,  IntPtr texture,  IntPtr srcRect,  IntPtr dstRect, double angle, ref PointI center, RendererFlips flips);
 
         /// <summary>
         ///     Sdl the render copy ex using the specified renderer
@@ -2940,8 +2939,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyEx", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, ref RectangleI dstRect, double angle, [IsNotNull] IntPtr center, RendererFlips flips);
+        
+        internal static extern int InternalRenderCopyEx( IntPtr renderer,  IntPtr texture,  IntPtr srcRect, ref RectangleI dstRect, double angle,  IntPtr center, RendererFlips flips);
 
         /// <summary>
         ///     Sdl the render copy ex using the specified renderer
@@ -2955,8 +2954,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyEx", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, [IsNotNull] IntPtr dstRect, double angle, [IsNotNull] IntPtr center, RendererFlips flips);
+        
+        internal static extern int InternalRenderCopyEx( IntPtr renderer,  IntPtr texture, ref RectangleI srcRect,  IntPtr dstRect, double angle,  IntPtr center, RendererFlips flips);
 
         /// <summary>
         ///     Sdl the render copy ex using the specified renderer
@@ -2970,8 +2969,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyEx", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, [IsNotNull] IntPtr dstRect, double angle, [IsNotNull] IntPtr center, RendererFlips flips);
+        
+        internal static extern int InternalRenderCopyEx( IntPtr renderer,  IntPtr texture,  IntPtr srcRect,  IntPtr dstRect, double angle,  IntPtr center, RendererFlips flips);
 
         /// <summary>
         ///     Sdl the render draw line using the specified renderer
@@ -2983,8 +2982,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="y2">The </param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderDrawLine", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderDrawLine([IsNotNull] IntPtr renderer, [IsNotNull] int x1, [IsNotNull] int y1, [IsNotNull] int x2, [IsNotNull] int y2);
+        
+        internal static extern int InternalRenderDrawLine( IntPtr renderer,  int x1,  int y1,  int x2,  int y2);
 
         /// <summary>
         ///     Sdl the render draw lines using the specified renderer
@@ -2994,8 +2993,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderDrawLines", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderDrawLines([IsNotNull] IntPtr renderer, [In] PointI[] points, [IsNotNull] int count);
+        
+        internal static extern int InternalRenderDrawLines( IntPtr renderer, [In] PointI[] points,  int count);
 
         /// <summary>
         ///     Sdl the render draw point using the specified renderer
@@ -3005,8 +3004,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="y">The </param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderDrawPoint", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderDrawPoint([IsNotNull] IntPtr renderer, [IsNotNull] int x, [IsNotNull] int y);
+        
+        internal static extern int InternalRenderDrawPoint( IntPtr renderer,  int x,  int y);
 
         /// <summary>
         ///     Sdl the render draw points using the specified renderer
@@ -3016,8 +3015,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderDrawPoints", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderDrawPoints([IsNotNull] IntPtr renderer, [In] PointI[] points, [IsNotNull] int count);
+        
+        internal static extern int InternalRenderDrawPoints( IntPtr renderer, [In] PointI[] points,  int count);
 
         /// <summary>
         ///     Sdl the render draw rect using the specified renderer
@@ -3026,8 +3025,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderDrawRect", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderDrawRect([IsNotNull] IntPtr renderer, ref RectangleI rect);
+        
+        internal static extern int InternalRenderDrawRect( IntPtr renderer, ref RectangleI rect);
 
         /// <summary>
         ///     Sdl the render draw rect using the specified renderer
@@ -3036,8 +3035,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderDrawRect", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderDrawRect([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr rect);
+        
+        internal static extern int InternalRenderDrawRect( IntPtr renderer,  IntPtr rect);
 
         /// <summary>
         ///     Sdl the render draw rects using the specified renderer
@@ -3047,8 +3046,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderDrawRects", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderDrawRects([IsNotNull] IntPtr renderer, [In] RectangleI[] rects, [IsNotNull] int count);
+        
+        internal static extern int InternalRenderDrawRects( IntPtr renderer, [In] RectangleI[] rects,  int count);
 
         /// <summary>
         ///     Sdl the render fill rect using the specified renderer
@@ -3057,8 +3056,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderFillRect", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderFillRect([IsNotNull] IntPtr renderer, ref RectangleI rect);
+        
+        internal static extern int InternalRenderFillRect( IntPtr renderer, ref RectangleI rect);
 
         /// <summary>
         ///     Sdl the render fill rect using the specified renderer
@@ -3067,8 +3066,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderFillRect", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderFillRect([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr rect);
+        
+        internal static extern int InternalRenderFillRect( IntPtr renderer,  IntPtr rect);
 
         /// <summary>
         ///     Sdl the render fill rects using the specified renderer
@@ -3078,8 +3077,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderFillRects", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderFillRects([IsNotNull] IntPtr renderer, [In] RectangleI[] rects, [IsNotNull] int count);
+        
+        internal static extern int InternalRenderFillRects( IntPtr renderer, [In] RectangleI[] rects,  int count);
 
         /// <summary>
         ///     Sdl the render copy f using the specified renderer
@@ -3090,8 +3089,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="dst">The dst rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyF", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderCopyF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleF dst);
+        
+        internal static extern int InternalRenderCopyF( IntPtr renderer,  IntPtr texture, ref RectangleI srcRect, ref RectangleF dst);
 
         /// <summary>
         ///     Sdl the render copy f using the specified renderer
@@ -3102,8 +3101,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="dst">The dst rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyF", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderCopyF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, ref RectangleF dst);
+        
+        internal static extern int InternalRenderCopyF( IntPtr renderer,  IntPtr texture,  IntPtr srcRect, ref RectangleF dst);
 
         /// <summary>
         ///     Sdl the render copy f using the specified renderer
@@ -3114,8 +3113,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyF", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderCopyF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, [IsNotNull] IntPtr dstRect);
+        
+        internal static extern int InternalRenderCopyF( IntPtr renderer,  IntPtr texture, ref RectangleI srcRect,  IntPtr dstRect);
 
         /// <summary>
         ///     Sdl the render copy f using the specified renderer
@@ -3126,8 +3125,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="dstRect">The dst rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyF", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderCopyF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, [IsNotNull] IntPtr dstRect);
+        
+        internal static extern int InternalRenderCopyF( IntPtr renderer,  IntPtr texture,  IntPtr srcRect,  IntPtr dstRect);
 
         /// <summary>
         ///     Sdl the render copy ex using the specified renderer
@@ -3141,8 +3140,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyEx", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderCopyEx([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, ref RectangleF dst, double angle, ref PointF center, RendererFlips flips);
+        
+        internal static extern int InternalRenderCopyEx( IntPtr renderer,  IntPtr texture,  IntPtr srcRect, ref RectangleF dst, double angle, ref PointF center, RendererFlips flips);
 
         /// <summary>
         ///     Sdl the render copy ex f using the specified renderer
@@ -3156,8 +3155,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyExF", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, [IsNotNull] IntPtr dstRect, double angle, ref PointF center, RendererFlips flips);
+        
+        internal static extern int InternalRenderCopyExF( IntPtr renderer,  IntPtr texture, ref RectangleI srcRect,  IntPtr dstRect, double angle, ref PointF center, RendererFlips flips);
 
         /// <summary>
         ///     Sdl the render copy ex f using the specified renderer
@@ -3171,8 +3170,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyExF", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, ref RectangleF dst, double angle, [IsNotNull] IntPtr center, RendererFlips flips);
+        
+        internal static extern int InternalRenderCopyExF( IntPtr renderer,  IntPtr texture, ref RectangleI srcRect, ref RectangleF dst, double angle,  IntPtr center, RendererFlips flips);
 
         /// <summary>
         ///     Sdl the render copy ex f using the specified renderer
@@ -3186,8 +3185,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyExF", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, [IsNotNull] IntPtr dstRect, double angle, ref PointF center, RendererFlips flips);
+        
+        internal static extern int InternalRenderCopyExF( IntPtr renderer,  IntPtr texture,  IntPtr srcRect,  IntPtr dstRect, double angle, ref PointF center, RendererFlips flips);
 
         /// <summary>
         ///     Sdl the render copy ex f using the specified renderer
@@ -3201,8 +3200,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyExF", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, ref RectangleF dst, double angle, [IsNotNull] IntPtr center, RendererFlips flips);
+        
+        internal static extern int InternalRenderCopyExF( IntPtr renderer,  IntPtr texture,  IntPtr srcRect, ref RectangleF dst, double angle,  IntPtr center, RendererFlips flips);
 
         /// <summary>
         ///     Sdl the render copy ex f using the specified renderer
@@ -3216,8 +3215,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyExF", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, ref RectangleI srcRect, [IsNotNull] IntPtr dstRect, double angle, [IsNotNull] IntPtr center, RendererFlips flips);
+        
+        internal static extern int InternalRenderCopyExF( IntPtr renderer,  IntPtr texture, ref RectangleI srcRect,  IntPtr dstRect, double angle,  IntPtr center, RendererFlips flips);
 
         /// <summary>
         ///     Sdl the render copy ex f using the specified renderer
@@ -3231,8 +3230,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderCopyExF", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderCopyExF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture, [IsNotNull] IntPtr srcRect, [IsNotNull] IntPtr dstRect, double angle, [IsNotNull] IntPtr center, RendererFlips flips);
+        
+        internal static extern int InternalRenderCopyExF( IntPtr renderer,  IntPtr texture,  IntPtr srcRect,  IntPtr dstRect, double angle,  IntPtr center, RendererFlips flips);
 
         /// <summary>
         ///     Sdl the render draw point f using the specified renderer
@@ -3242,8 +3241,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="y">The </param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderDrawPointF", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderDrawPointF([IsNotNull] IntPtr renderer, float x, float y);
+        
+        internal static extern int InternalRenderDrawPointF( IntPtr renderer, float x, float y);
 
         /// <summary>
         ///     Sdl the render draw points f using the specified renderer
@@ -3253,8 +3252,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderDrawPointsF", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderDrawPointsF(IntPtr renderer, [In] PointF[] points, [IsNotNull] int count);
+        
+        internal static extern int InternalRenderDrawPointsF(IntPtr renderer, [In] PointF[] points,  int count);
 
         /// <summary>
         ///     Sdl the render draw line f using the specified renderer
@@ -3266,8 +3265,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="y2">The </param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderDrawLineF", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderDrawLineF([IsNotNull] IntPtr renderer, float x1, float y1, float x2, float y2);
+        
+        internal static extern int InternalRenderDrawLineF( IntPtr renderer, float x1, float y1, float x2, float y2);
 
         /// <summary>
         ///     Sdl the render draw lines f using the specified renderer
@@ -3277,8 +3276,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderDrawLinesF", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderDrawLinesF([IsNotNull] IntPtr renderer, [In] PointF[] points, [IsNotNull] int count);
+        
+        internal static extern int InternalRenderDrawLinesF( IntPtr renderer, [In] PointF[] points,  int count);
 
         /// <summary>
         ///     Sdl the render draw rect f using the specified renderer
@@ -3287,8 +3286,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderDrawRectF", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderDrawRectF([IsNotNull] IntPtr renderer, ref RectangleF rect);
+        
+        internal static extern int InternalRenderDrawRectF( IntPtr renderer, ref RectangleF rect);
 
         /// <summary>
         ///     Sdl the render draw rect f using the specified renderer
@@ -3297,8 +3296,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderDrawRectF", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderDrawRectF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr rect);
+        
+        internal static extern int InternalRenderDrawRectF( IntPtr renderer,  IntPtr rect);
 
         /// <summary>
         ///     Sdl the render draw rects f using the specified renderer
@@ -3308,8 +3307,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderDrawRectsF", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderDrawRectsF([IsNotNull] IntPtr renderer, [In] RectangleF[] rects, [IsNotNull] int count);
+        
+        internal static extern int InternalRenderDrawRectsF( IntPtr renderer, [In] RectangleF[] rects,  int count);
 
         /// <summary>
         ///     Sdl the render fill rect f using the specified renderer
@@ -3318,8 +3317,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderFillRectF", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderFillRectF([IsNotNull] IntPtr renderer, RectangleF rect);
+        
+        internal static extern int InternalRenderFillRectF( IntPtr renderer, RectangleF rect);
 
         /// <summary>
         ///     Sdl the render fill rect f using the specified renderer
@@ -3328,8 +3327,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderFillRectF", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderFillRectF([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr rect);
+        
+        internal static extern int InternalRenderFillRectF( IntPtr renderer,  IntPtr rect);
 
         /// <summary>
         ///     Sdl the render fill rects f using the specified renderer
@@ -3339,8 +3338,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderFillRectsF", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderFillRectsF([IsNotNull] IntPtr renderer, [In] RectangleF[] rects, [IsNotNull] int count);
+        
+        internal static extern int InternalRenderFillRectsF( IntPtr renderer, [In] RectangleF[] rects,  int count);
 
         /// <summary>
         ///     Sdl the render get clip rect using the specified renderer
@@ -3348,8 +3347,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="renderer">The renderer</param>
         /// <param name="rect">The rect</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderGetClipRect", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalRenderGetClipRect([IsNotNull] IntPtr renderer, out RectangleI rect);
+        
+        internal static extern void InternalRenderGetClipRect( IntPtr renderer, out RectangleI rect);
 
         /// <summary>
         ///     Sdl the render get logical size using the specified renderer
@@ -3358,8 +3357,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="w">The </param>
         /// <param name="h">The </param>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderGetLogicalSize", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalRenderGetLogicalSize([IsNotNull] IntPtr renderer, out int w, out int h);
+        
+        internal static extern void InternalRenderGetLogicalSize( IntPtr renderer, out int w, out int h);
 
         /// <summary>
         ///     Sdl the render get scale using the specified renderer
@@ -3368,8 +3367,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="scaleX">The scale</param>
         /// <param name="scaleY">The scale</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderGetScale", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalRenderGetScale([IsNotNull] IntPtr renderer, out float scaleX, out float scaleY);
+        
+        internal static extern void InternalRenderGetScale( IntPtr renderer, out float scaleX, out float scaleY);
 
         /// <summary>
         ///     Sdl the render get viewport using the specified renderer
@@ -3378,15 +3377,15 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderGetViewport", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderGetViewport([IsNotNull] IntPtr renderer, out RectangleI rect);
+        
+        internal static extern int InternalRenderGetViewport( IntPtr renderer, out RectangleI rect);
 
         /// <summary>
         ///     Sdl the render present using the specified renderer
         /// </summary>
         /// <param name="renderer">The renderer</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderPresent", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern void InternalRenderPresent(IntPtr renderer);
 
         /// <summary>
@@ -3399,8 +3398,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="pitch">The pitch</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderReadPixels", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderReadPixels([IsNotNull] IntPtr renderer, ref RectangleI rect, [IsNotNull] uint format, [IsNotNull] IntPtr pixels, [IsNotNull] int pitch);
+        
+        internal static extern int InternalRenderReadPixels( IntPtr renderer, ref RectangleI rect,  uint format,  IntPtr pixels,  int pitch);
 
         /// <summary>
         ///     Sdl the render set clip rect using the specified renderer
@@ -3409,8 +3408,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderSetClipRect", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderSetClipRect([IsNotNull] IntPtr renderer, ref RectangleI rect);
+        
+        internal static extern int InternalRenderSetClipRect( IntPtr renderer, ref RectangleI rect);
 
         /// <summary>
         ///     Sdl the render set clip rect using the specified renderer
@@ -3419,8 +3418,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderSetClipRect", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderSetClipRect([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr rect);
+        
+        internal static extern int InternalRenderSetClipRect( IntPtr renderer,  IntPtr rect);
 
         /// <summary>
         ///     Sdl the render set logical size using the specified renderer
@@ -3430,8 +3429,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="h">The </param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderSetLogicalSize", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderSetLogicalSize([IsNotNull] IntPtr renderer, [IsNotNull] int w, [IsNotNull] int h);
+        
+        internal static extern int InternalRenderSetLogicalSize( IntPtr renderer,  int w,  int h);
 
         /// <summary>
         ///     Sdl the render set scale using the specified renderer
@@ -3441,8 +3440,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="scaleY">The scale</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderSetScale", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderSetScale([IsNotNull] IntPtr renderer, float scaleX, float scaleY);
+        
+        internal static extern int InternalRenderSetScale( IntPtr renderer, float scaleX, float scaleY);
 
         /// <summary>
         ///     Sdl the render set integer scale using the specified renderer
@@ -3451,8 +3450,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="enable">The enable</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderSetIntegerScale", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderSetIntegerScale([IsNotNull] IntPtr renderer, bool enable);
+        
+        internal static extern int InternalRenderSetIntegerScale( IntPtr renderer, bool enable);
 
         /// <summary>
         ///     Sdl the render set viewport using the specified renderer
@@ -3461,8 +3460,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderSetViewport", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalRenderSetViewportWithRef([IsNotNull] IntPtr renderer, ref RectangleI rect);
+        
+        internal static extern int InternalRenderSetViewportWithRef( IntPtr renderer, ref RectangleI rect);
 
         /// <summary>
         ///     Sdl the set render draw blend mode using the specified renderer
@@ -3471,8 +3470,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="blendMode">The blend mode</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetRenderDrawBlendMode", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalSetRenderDrawBlendMode([IsNotNull] IntPtr renderer, BlendModes blendMode);
+        
+        internal static extern int InternalSetRenderDrawBlendMode( IntPtr renderer, BlendModes blendMode);
 
         /// <summary>
         ///     Sdl the set render draw color using the specified renderer
@@ -3484,8 +3483,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="a">The </param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetRenderDrawColor", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalSetRenderDrawColor([IsNotNull] IntPtr renderer, [IsNotNull] byte r, [IsNotNull] byte g, [IsNotNull] byte b, [IsNotNull] byte a);
+        
+        internal static extern int InternalSetRenderDrawColor( IntPtr renderer,  byte r,  byte g,  byte b,  byte a);
 
         /// <summary>
         ///     Sdl the set render target using the specified renderer
@@ -3494,8 +3493,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="texture">The texture</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetRenderTarget", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalSetRenderTarget([IsNotNull] IntPtr renderer, [IsNotNull] IntPtr texture);
+        
+        internal static extern int InternalSetRenderTarget( IntPtr renderer,  IntPtr texture);
 
         /// <summary>
         ///     Sdl the set texture alpha mod using the specified texture
@@ -3504,8 +3503,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="alpha">The alpha</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetTextureAlphaMod", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalSetTextureAlphaMod([IsNotNull] IntPtr texture, [IsNotNull] byte alpha);
+        
+        internal static extern int InternalSetTextureAlphaMod( IntPtr texture,  byte alpha);
 
         /// <summary>
         ///     Sdl the set texture blend mode using the specified texture
@@ -3514,8 +3513,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="blendMode">The blend mode</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetTextureBlendMode", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalSetTextureBlendMode([IsNotNull] IntPtr texture, BlendModes blendMode);
+        
+        internal static extern int InternalSetTextureBlendMode( IntPtr texture, BlendModes blendMode);
 
         /// <summary>
         ///     Sdl the set texture color mod using the specified texture
@@ -3526,8 +3525,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="b">The </param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetTextureColorMod", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalSetTextureColorMod([IsNotNull] IntPtr texture, [IsNotNull] byte r, [IsNotNull] byte g, [IsNotNull] byte b);
+        
+        internal static extern int InternalSetTextureColorMod( IntPtr texture,  byte r,  byte g,  byte b);
 
         /// <summary>
         ///     Sdl the update texture using the specified texture
@@ -3538,8 +3537,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="pitch">The pitch</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_UpdateTexture", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalUpdateTexture([IsNotNull] IntPtr texture, ref RectangleI rect, [IsNotNull] IntPtr pixels, [IsNotNull] int pitch);
+        
+        internal static extern int InternalUpdateTexture( IntPtr texture, ref RectangleI rect,  IntPtr pixels,  int pitch);
 
         /// <summary>
         ///     Sdl the update texture using the specified texture
@@ -3550,8 +3549,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="pitch">The pitch</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_UpdateTexture", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalUpdateTexture([IsNotNull] IntPtr texture, [IsNotNull] IntPtr rect, [IsNotNull] IntPtr pixels, [IsNotNull] int pitch);
+        
+        internal static extern int InternalUpdateTexture( IntPtr texture,  IntPtr rect,  IntPtr pixels,  int pitch);
 
         /// <summary>
         ///     Sdl the update texture using the specified texture
@@ -3562,8 +3561,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="pitch">The pitch</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_UpdateTexture", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern int InternalUpdateTexturev2([IsNotNull] IntPtr texture, [IsNotNull] IntPtr rect, [IsNotNull] byte[] pixels, [IsNotNull] int pitch);
+        
+        internal static extern int InternalUpdateTexturev2( IntPtr texture,  IntPtr rect,  byte[] pixels,  int pitch);
 
         /// <summary>
         ///     Sdl the render target supported using the specified renderer
@@ -3571,8 +3570,8 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="renderer">The renderer</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderTargetSupported", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern bool InternalRenderTargetSupported([IsNotNull] IntPtr renderer);
+        
+        internal static extern bool InternalRenderTargetSupported( IntPtr renderer);
 
         /// <summary>
         ///     Sdl the set window position using the specified window
@@ -3581,15 +3580,15 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowPosition", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
-        internal static extern void InternalSetWindowPosition([IsNotNull] IntPtr window, [IsNotNull] int x, [IsNotNull] int y);
+        
+        internal static extern void InternalSetWindowPosition( IntPtr window,  int x,  int y);
 
         /// <summary>
         ///     Sdl the gl get current context
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_GetCurrentContext", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern IntPtr InternalGlGetCurrentContext();
 
         /// <summary>
@@ -3597,7 +3596,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <returns>The int 64</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetPerformanceFrequency", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern ulong InternalGetPerformanceFrequency();
 
         /// <summary>
@@ -3605,7 +3604,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <returns>The int 64</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetPerformanceCounter", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern ulong InternalGetPerformanceCounter();
 
         /// <summary>
@@ -3615,7 +3614,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="audioData">The audio data</param>
         /// <param name="wavLength">The wav length</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_QueueAudio", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: IsNotNull]
+        
         internal static extern void InternalQueueAudio(int deviceId, byte[] audioData, uint wavLength);
 
         /// <summary>
