@@ -28,15 +28,17 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Alis.Builder.Core.Ecs.Component.Collider;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Definition;
-using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
+using Alis.Core.Graphic.OpenGL;
+using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Contacts;
 
@@ -48,11 +50,6 @@ namespace Alis.Core.Ecs.Component.Collider
     /// <seealso cref="ACollider" />
     public class BoxCollider : ACollider, IHasBuilder<BoxColliderBuilder>
     {
-        /// <summary>
-        ///     The rectangle
-        /// </summary>
-        [JsonIgnore] private RectangleI rectangle;
-
         /// <summary>
         ///     Initializes a new instance of the <see cref="BoxCollider" /> class
         /// </summary>
@@ -358,6 +355,7 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <param name="debugColor">The debug color</param>
         public void Render(IntPtr renderer, Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter, Color debugColor)
         {
+            /*
             Vector2F colliderPosition = GameObject.Transform.Position;
             Vector2F colliderScale = GameObject.Transform.Scale;
             float colliderRotation = GameObject.Transform.Rotation;
@@ -373,7 +371,7 @@ namespace Alis.Core.Ecs.Component.Collider
             rectangle.X = (int) (x - width / 2);
             rectangle.Y = (int) (y - height / 2);
             rectangle.W = (int) width;
-            rectangle.H = (int) height;
+            rectangle.H = (int) height;*/
 
             //Sdl.SetRenderDrawColor(renderer, debugColor.R, debugColor.G, debugColor.B, debugColor.A);
             //Sdl.RenderDrawRect(renderer, ref rectangle);
@@ -467,6 +465,66 @@ namespace Alis.Core.Ecs.Component.Collider
             }
 
             return max;
+        }
+
+        /// <summary>
+        /// Renders the camera position
+        /// </summary>
+        /// <param name="cameraPosition">The camera position</param>
+        /// <param name="cameraResolution">The camera resolution</param>
+        /// <param name="pixelsPerMeter">The pixels per meter</param>
+        /// <param name="debugColor">The debug color</param>
+        public void Render(Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter, Color debugColor)
+        {
+            DrawRectangle(0,0, 100, 100, 255, 0, 0, 255);
+        }
+        
+        public void DrawRectangle(float posX, float posY, float sizeX, float sizeY, byte r, byte g, byte b, byte a)
+        {
+            // Define the vertices for the rectangle
+            float[] vertices =
+            {
+                posX, posY, 0.0f, // Bottom Left
+                posX + sizeX, posY, 0.0f, // Bottom Right
+                posX + sizeX, posY + sizeY, 0.0f, // Top Right
+                posX, posY + sizeY, 0.0f // Top Left
+            };
+        
+            // Create a vertex buffer object (VBO) and a vertex array object (VAO)
+            uint vbo = Gl.GenBuffer();
+            uint vao = Gl.GenVertexArray();
+        
+            // Bind the VAO and VBO
+            Gl.GlBindVertexArray(vao);
+            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, vbo);
+        
+            GCHandle handle = GCHandle.Alloc(vertices, GCHandleType.Pinned);
+            try
+            {
+                IntPtr pointer = handle.AddrOfPinnedObject();
+                Gl.GlBufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), pointer, BufferUsageHint.StaticDraw);
+            }
+            finally
+            {
+                if (handle.IsAllocated)
+                {
+                    handle.Free();
+                }
+            }
+        
+            // Enable the vertex attribute array
+            Gl.EnableVertexAttribArray(0);
+            Gl.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), IntPtr.Zero);
+        
+            // Set the color
+            Gl.GlColor4f(r, g, b, a);
+        
+            // Draw the rectangle using a triangle fan
+            //Gl.GlDrawArrays(PrimitiveType.TriangleFan, 0, 4);
+        
+            // Cleanup
+            Gl.DeleteVertexArray(vao);
+            Gl.DeleteBuffer(vbo);
         }
     }
 }

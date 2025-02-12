@@ -72,6 +72,9 @@ namespace Alis.Core.Ecs.System.Configuration.Graphic
         [JsonIgnore]
         public bool HasGrid { get; set; } = false;
 
+        [JsonPropertyName("_BackgroundColor_")]
+        public Color BackgroundColor { get; set; } = new Color(0, 0, 0, 255);
+
         /// <summary>
         ///     Builders this instance
         /// </summary>

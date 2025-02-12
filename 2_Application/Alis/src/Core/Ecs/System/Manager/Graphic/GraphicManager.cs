@@ -362,6 +362,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Setting contextSetting = Context.Setting;
             PhysicSetting physicSettings = contextSetting.Physic;
             Color debugColor = physicSettings.DebugColor;
+            Color backgrounColor = contextSetting.Graphic.BackgroundColor;
             
             // Event handling
             Glfw.PollEvents();
@@ -382,9 +383,14 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 sprite.Render(new Vector2F(0, 0), new Vector2F(800, 600), pixelsPerMeter);
             }
 
+            foreach (BoxCollider collider in ColliderBases)
+            {
+                collider.Render(new Vector2F(0, 0), new Vector2F(800, 600), pixelsPerMeter, debugColor);
+            }
 
 
-            Gl.GlClearColor(debugColor.R, debugColor.G, debugColor.B, debugColor.A);
+
+            Gl.GlClearColor(backgrounColor.R, backgrounColor.G, backgrounColor.B, backgrounColor.A);
             
             // Swap the buffers to display the triangle
             Glfw.SwapBuffers(Window);
