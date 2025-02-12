@@ -44,16 +44,40 @@ namespace Alis.Core.Ecs.System.Manager.Fonts
     /// </summary>
     public class FontManager
     {
+        /// <summary>
+        /// Renders the text using the specified mono
+        /// </summary>
+        /// <param name="mono">The mono</param>
+        /// <param name="p1">The </param>
+        /// <param name="p2">The </param>
+        /// <param name="p3">The </param>
+        /// <param name="white">The white</param>
+        /// <param name="p5">The </param>
         public void RenderText(string mono, string p1, float p2, int p3, Color white, int p5)
         {
            
         }
 
+        /// <summary>
+        /// Loads the font using the specified mono
+        /// </summary>
+        /// <param name="mono">The mono</param>
+        /// <param name="i">The </param>
+        /// <param name="find">The find</param>
         public void LoadFont(string mono, int i, string find)
         {
             
         }
 
+        /// <summary>
+        /// Renders the text using the specified mono
+        /// </summary>
+        /// <param name="mono">The mono</param>
+        /// <param name="p1">The </param>
+        /// <param name="p2">The </param>
+        /// <param name="p3">The </param>
+        /// <param name="white">The white</param>
+        /// <param name="p5">The </param>
         public void RenderText(string mono, string p1, float p2, float p3, Color white, int p5)
         {
             
