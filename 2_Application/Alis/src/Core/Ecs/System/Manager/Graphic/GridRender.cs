@@ -29,6 +29,9 @@
 
 namespace Alis.Core.Ecs.System.Manager.Graphic
 {
+    /// <summary>
+    /// The grid render class
+    /// </summary>
     public class GridRender
     {
         

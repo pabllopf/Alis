@@ -210,37 +210,37 @@ namespace Alis.Core.Ecs.Component.Collider
         /// </summary>
         [JsonPropertyName("_AngularVelocity_")]
         public float AngularVelocity { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the value of the shader program
         /// </summary>
         [JsonIgnore]
         public uint ShaderProgram { get; private set; }
-        
+
         /// <summary>
         /// Gets or sets the value of the size
         /// </summary>
         [JsonIgnore]
         public Vector2F SizeOfTexture { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the value of the vao
         /// </summary>
         [JsonIgnore]
         public uint Vao { get; private set; }
-        
+
         /// <summary>
         /// Gets or sets the value of the vbo
         /// </summary>
         [JsonIgnore]
         public uint Vbo { get; private set; }
-        
+
         /// <summary>
         /// Gets or sets the value of the ebo
         /// </summary>
         [JsonIgnore]
         public uint Ebo { get; private set; }
-        
+
         /// <summary>
         ///     Builders this instance
         /// </summary>
@@ -254,12 +254,15 @@ namespace Alis.Core.Ecs.Component.Collider
         {
             SetupBuffers();
         }
-        
 
+
+        /// <summary>
+        /// Setup the buffers
+        /// </summary>
         private void SetupBuffers()
         {
-            int windowWidth = (int)Context.Setting.Graphic.WindowSize.X;
-            int windowHeight = (int)Context.Setting.Graphic.WindowSize.Y;
+            int windowWidth = (int) Context.Setting.Graphic.WindowSize.X;
+            int windowHeight = (int) Context.Setting.Graphic.WindowSize.Y;
 
             float scaleX = SizeOfTexture.X / windowWidth;
             float scaleY = SizeOfTexture.Y / windowHeight;
@@ -271,7 +274,7 @@ namespace Alis.Core.Ecs.Component.Collider
                 -1 * scaleX, -1 * scaleY, 0.0f, 0.0f, 1.0f,
                 -1 * scaleX, 1f * scaleY, 0.0f, 0.0f, 0.0f
             };
-            
+
             uint[] indices =
             {
                 0, 1, 2, // First triangle
@@ -573,60 +576,69 @@ namespace Alis.Core.Ecs.Component.Collider
             return max;
         }
 
-    public void Render(Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter, Color debugColor)
-    {
-        Vector2F position = GameObject.Transform.Position;
-        Vector2F scale = GameObject.Transform.Scale;
-        Vector2F colliderSize = new Vector2F(Width, Height);
-        float spriteRotation = GameObject.Transform.Rotation;
-        Vector2F windowSize = Context.Setting.Graphic.WindowSize;
-    
-        Gl.GlBindVertexArray(Vao);
-        Gl.GlUseProgram(ShaderProgram);
-    
-        Gl.EnableVertexAttribArray(0);
-    
-        // Calculate the offset based on the camera position and resolution
-        float offsetX = (position.X - cameraPosition.X) * pixelsPerMeter / windowSize.X;
-        float offsetY = (position.Y - cameraPosition.Y) * pixelsPerMeter / windowSize.Y;
-    
-        // Calculate the scale based on the window size and pixels per meter
-        float scaleX = scale.X * pixelsPerMeter / windowSize.X;
-        float scaleY = scale.Y * pixelsPerMeter / windowSize.Y;
-    
-        // Update the vertex positions based on the given position and size
-        float[] vertices =
+        /// <summary>
+        /// Renders the camera position
+        /// </summary>
+        /// <param name="cameraPosition">The camera position</param>
+        /// <param name="cameraResolution">The camera resolution</param>
+        /// <param name="pixelsPerMeter">The pixels per meter</param>
+        /// <param name="debugColor">The debug color</param>
+        public void Render(Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter, Color debugColor)
         {
-            offsetX - colliderSize.X / 2 * scaleX, offsetY + colliderSize.Y / 2 * scaleY, 0.0f, // Top-left
-            offsetX + colliderSize.X / 2 * scaleX, offsetY + colliderSize.Y / 2 * scaleY, 0.0f, // Top-right
-            offsetX + colliderSize.X / 2 * scaleX, offsetY - colliderSize.Y / 2 * scaleY, 0.0f, // Bottom-right
-            offsetX - colliderSize.X / 2 * scaleX, offsetY - colliderSize.Y / 2 * scaleY, 0.0f  // Bottom-left
-        };
-    
-        uint[] indices =
-        {
-            0, 1, 2, // First triangle
-            2, 3, 0  // Second triangle
-        };
-    
-        Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
-        GCHandle handle = GCHandle.Alloc(vertices, GCHandleType.Pinned);
-        try
-        {
-            IntPtr pointer = handle.AddrOfPinnedObject();
-            Gl.GlBufferData(BufferTarget.ArrayBuffer, new IntPtr(vertices.Length * sizeof(float)), pointer, BufferUsageHint.StaticDraw);
-        }
-        finally
-        {
-            if (handle.IsAllocated)
+            Vector2F position = GameObject.Transform.Position;
+            Vector2F scale = GameObject.Transform.Scale;
+            Vector2F colliderSize = new Vector2F(Width, Height);
+            float spriteRotation = GameObject.Transform.Rotation;
+
+            Gl.GlBindVertexArray(Vao);
+            Gl.GlUseProgram(ShaderProgram);
+
+            Gl.EnableVertexAttribArray(0);
+            
+            // Conversión de metros a píxeles
+            float positionXPixels = (position.X - cameraPosition.X) * pixelsPerMeter;
+            float positionYPixels = (position.Y - cameraPosition.Y) * pixelsPerMeter;
+
+            float scaleXPixels = colliderSize.X * scale.X * pixelsPerMeter;
+            float scaleYPixels = colliderSize.Y * scale.Y * pixelsPerMeter;
+
+            // Normalizar a coordenadas OpenGL (-1 a 1) usando la resolución de la cámara
+            float worldX = (2.0f * positionXPixels / cameraResolution.X);
+            float worldY = (2.0f * positionYPixels / cameraResolution.Y);
+
+            float scaleX = 2.0f * scaleXPixels / cameraResolution.X;
+            float scaleY = 2.0f * scaleYPixels / cameraResolution.Y;
+
+            // Definir los vértices en el espacio normalizado (centrado en 0,0)
+            float[] vertices =
             {
-                handle.Free();
+                worldX - scaleX / 2, worldY + scaleY / 2, 0.0f, // Top-left
+                worldX + scaleX / 2, worldY + scaleY / 2, 0.0f, // Top-right
+                worldX + scaleX / 2, worldY - scaleY / 2, 0.0f, // Bottom-right
+                worldX - scaleX / 2, worldY - scaleY / 2, 0.0f  // Bottom-left
+            };
+            
+            // Subir los datos de los vértices a OpenGL
+            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
+            GCHandle handle = GCHandle.Alloc(vertices, GCHandleType.Pinned);
+            try
+            {
+                IntPtr pointer = handle.AddrOfPinnedObject();
+                Gl.GlBufferData(BufferTarget.ArrayBuffer, new IntPtr(vertices.Length * sizeof(float)), pointer, BufferUsageHint.StaticDraw);
             }
+            finally
+            {
+                if (handle.IsAllocated)
+                {
+                    handle.Free();
+                }
+            }
+
+            // Dibujar en modo wireframe si es para depuración
+            Gl.GlPolygonMode(MaterialFace.FrontAndBack, PolygonModeEnum.Line);
+            Gl.GlDrawElements(PrimitiveType.LineLoop, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
+            Gl.GlPolygonMode(MaterialFace.FrontAndBack, PolygonModeEnum.Fill);
         }
-    
-        Gl.GlPolygonMode(MaterialFace.FrontAndBack, PolygonModeEnum.Line);
-        Gl.GlDrawElements(PrimitiveType.LineLoop, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
-        Gl.GlPolygonMode(MaterialFace.FrontAndBack, PolygonModeEnum.Fill);
-    }
+
     }
 }

@@ -1,3 +1,4 @@
+using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Graphic.GlfwLib;
 using Alis.Core.Graphic.GlfwLib.Enums;

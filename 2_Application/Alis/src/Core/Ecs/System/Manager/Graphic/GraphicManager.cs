@@ -192,7 +192,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             //vao = Gl.GenVertexArray();
             
             Glfw.SetFramebufferSizeCallback(Window, FramebufferSizeCallback);
-            Glfw.SetKeyCallback(Window, KeyCallback);
+           
             
             /*
             _context.GraphicManager.Window = Sdl.CreateWindow("Game Preview",
@@ -363,32 +363,27 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Color debugColor = physicSettings.DebugColor;
             Color backgrounColor = contextSetting.Graphic.BackgroundColor;
             
-            // Event handling
-            Glfw.PollEvents();
-            if (Glfw.WindowShouldClose(Window))
-            {
-                Context.IsRunning = false;
-            }
-            
+           
             // Clear the screen
             Gl.GlClear(ClearBufferMask.ColorBufferBit);
             
             // Draw the sprites:
 
+            foreach (Camera camera in Cameras)
+            {
+                foreach (Sprite sprite in Sprites.OrderBy(o => o.Depth))
+                {
+                    // Render sprite with opengl:
+                    sprite.Render(camera.Position, camera.Resolution, pixelsPerMeter);
+                }
+
+                foreach (BoxCollider collider in ColliderBases)
+                {
+                    collider.Render(camera.Position, camera.Resolution, pixelsPerMeter, debugColor);
+                }
+
+            }
             
-            foreach (Sprite sprite in Sprites.OrderBy(o => o.Depth))
-            {
-                // Render sprite with opengl:
-                sprite.Render(new Vector2F(0, 0), new Vector2F(800, 800), pixelsPerMeter);
-            }
-
-            foreach (BoxCollider collider in ColliderBases)
-            {
-                collider.Render(new Vector2F(0, 0), new Vector2F(800, 800), pixelsPerMeter, debugColor);
-            }
-
-
-
             Gl.GlClearColor(backgrounColor.R, backgrounColor.G, backgrounColor.B, backgrounColor.A);
             
             // Swap the buffers to display the triangle
@@ -463,6 +458,12 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             }*/
         }
 
+        /// <summary>
+        /// Draws the rectangle using the specified vector 2 f
+        /// </summary>
+        /// <param name="vector2F">The vector</param>
+        /// <param name="vector2F1">The vector</param>
+        /// <param name="debugColor">The debug color</param>
         private void DrawRectangle(Vector2F vector2F, Vector2F vector2F1, Color debugColor)
         {
             
@@ -482,22 +483,6 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Context.Setting.Graphic.WindowSize = new Vector2F(width, height);
         }
         
-        /// <summary>
-        /// Keys the callback using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="key">The key</param>
-        /// <param name="scancode">The scancode</param>
-        /// <param name="state">The state</param>
-        /// <param name="mods">The mods</param>
-        private void KeyCallback(Window window, Keys key, int scancode, InputState state, ModifierKeys mods)
-        {
-            if (state == InputState.Press || state == InputState.Repeat)
-            {
-                Console.WriteLine($"Key: {key}");
-            }
-        }
-
         /// <summary>
         ///     Renders the grid using the specified renderer
         /// </summary>

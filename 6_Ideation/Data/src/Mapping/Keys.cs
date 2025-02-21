@@ -1,6 +1,6 @@
-#pragma warning disable 1591
 
-namespace Alis.Core.Graphic.GlfwLib.Enums
+
+namespace Alis.Core.Aspect.Data.Mapping
 {
     /// <summary>
     ///     Strongly-typed enumeration for key code values.

@@ -74,6 +74,9 @@ namespace Alis.Core.Graphic.OpenGL
         public static readonly Color4f GlColor4f = GetCommand<Color4f>("glColor4f");
         
         
+        /// <summary>
+        /// The end
+        /// </summary>
         public static readonly End GlEnd = GetCommand<End>("glEnd");
 
         /// <summary>
@@ -121,6 +124,9 @@ namespace Alis.Core.Graphic.OpenGL
         /// </summary>
         public static readonly CreateShader GlCreateShader = GetCommand<CreateShader>("glCreateShader");
         
+        /// <summary>
+        /// The begin
+        /// </summary>
         public static readonly Begin GlBegin = GetCommand<Begin>("glBegin");
         
         /// <summary>
@@ -253,6 +259,9 @@ namespace Alis.Core.Graphic.OpenGL
         /// </summary>
         public static readonly BindBuffer GlBindBuffer = GetCommand<BindBuffer>("glBindBuffer");
         
+        /// <summary>
+        /// The vertex 2f
+        /// </summary>
         public static readonly Vertex2f GlVertex2f = GetCommand<Vertex2f>("glVertex2f");
 
         /// <summary>
@@ -350,6 +359,9 @@ namespace Alis.Core.Graphic.OpenGL
         /// </summary>
         public static readonly DrawElements GlDrawElements = GetCommand<DrawElements>("glDrawElements");
         
+        /// <summary>
+        /// The polygon mode
+        /// </summary>
         public static readonly PolygonMode GlPolygonMode = GetCommand<PolygonMode>("glPolygonMode");
         
         /// <summary>
