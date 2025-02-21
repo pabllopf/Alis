@@ -77,7 +77,6 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Sprites = new List<Sprite>();
             Cameras = new List<Camera>();
             Renderer = IntPtr.Zero;
-            DefaultSize = new Vector2F(800, 800);
         }
 
         /// <summary>
@@ -95,7 +94,6 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         {
             ColliderBases = colliderBases;
             Window = window;
-            DefaultSize = defaultSize;
             Renderer = renderer;
             Sprites = sprites;
             Cameras = cameras;
@@ -117,13 +115,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// </summary>
         [JsonPropertyName("_Window_", true, true)]
         public Window Window { get; set; }
-
-        /// <summary>
-        ///     The default size
-        /// </summary>
-        [JsonPropertyName("_DefaultSize_")]
-        public Vector2F DefaultSize { get; set; }
-
+        
         /// <summary>
         ///     The renderWindow
         /// </summary>
@@ -174,7 +166,11 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Glfw.WindowHint(Hint.StencilBits, 8);
             
             // Create a GLFW window
-            this.Context.Setting.Graphic.WindowSize = new Vector2F(800, 800);
+            if (this.Context.Setting.Graphic.WindowSize == new Vector2F(0,0))
+            {
+                this.Context.Setting.Graphic.WindowSize = new Vector2F(800, 800);
+            }
+           
             Window = Glfw.CreateWindow((int)Context.Setting.Graphic.WindowSize.X, (int)Context.Setting.Graphic.WindowSize.Y, "OpenGL Window", Monitor.None, Window.None);
             if (Window == Window.None)
             {
