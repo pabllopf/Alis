@@ -102,9 +102,9 @@ namespace Alis.Sample.Asteroid
         /// Ons the press key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public override void OnPressKey(KeyCodes key)
+        public override void OnPressKey(Keys key)
         {
-            if (health <= 0 && key != KeyCodes.Space && key != KeyCodes.S && key != KeyCodes.W && key != KeyCodes.A && key != KeyCodes.D)
+            if (health <= 0 && key != Keys.Space && key != Keys.S && key != Keys.W && key != Keys.A && key != Keys.D)
             {
                 Context.SceneManager.LoadScene(0);
                 Console.WriteLine("Restarting game");

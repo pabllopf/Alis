@@ -97,9 +97,9 @@ namespace Alis.Sample.King.Platform
         ///     Ons the release key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public override void OnReleaseKey(KeyCodes key)
+        public override void OnReleaseKey(Keys key)
         {
-            if (key == KeyCodes.A || key == KeyCodes.D)
+            if (key == Keys.A || key == Keys.D)
             {
                 boxCollider.Body.LinearVelocity = new Vector2F(0, boxCollider.Body.LinearVelocity.Y);
             }
@@ -109,19 +109,19 @@ namespace Alis.Sample.King.Platform
         ///     Ons the press key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public override void OnPressKey(KeyCodes key)
+        public override void OnPressKey(Keys key)
         {
-            if (key == KeyCodes.Space)
+            if (key == Keys.Space)
             {
                 boxCollider.Body.ApplyLinearImpulse(new Vector2F(0, 10));
             }
 
-            if (key == KeyCodes.A)
+            if (key == Keys.A)
             {
                 boxCollider.Body.LinearVelocity = new Vector2F(-VelocityPlayer, boxCollider.Body.LinearVelocity.Y);
             }
 
-            if (key == KeyCodes.D)
+            if (key == Keys.D)
             {
                 boxCollider.Body.ApplyLinearImpulse(new Vector2F(VelocityPlayer, boxCollider.Body.LinearVelocity.Y));
             }

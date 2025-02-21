@@ -61,6 +61,7 @@ namespace Alis.Sample.King.Platform
                     .Audio(audio => audio
                         .Build())
                     .Graphic(graphic => graphic
+                        .Resolution(640, 480)
                         .Build())
                     .Physic(physic => physic
                         .Gravity(0.0f, -9.8f)

@@ -148,50 +148,5 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
             InputManager inputManager = new InputManager(videoGame.Context);
             // You would need to simulate a key release here
         }
-
-        /// <summary>
-        ///     Tests that notify key hold valid input v 2
-        /// </summary>
-        [Fact]
-        public void NotifyKeyHold_ValidInput_v2()
-        {
-            VideoGame videoGame = new VideoGame();
-            InputManager inputManager = new InputManager(videoGame.Context);
-            inputManager.TempListOfKeys = new List<KeyCodes> {KeyCodes.A, KeyCodes.B};
-            inputManager.NotifyKeyHold();
-        }
-
-        /// <summary>
-        ///     Tests that notify key press valid input v 2
-        /// </summary>
-        [Fact]
-        public void NotifyKeyPress_ValidInput_v2()
-        {
-            VideoGame videoGame = new VideoGame();
-            InputManager inputManager = new InputManager(videoGame.Context);
-            inputManager.NotifyKeyPress(KeyCodes.A);
-        }
-
-        /// <summary>
-        ///     Tests that notify key release valid input v 2
-        /// </summary>
-        [Fact]
-        public void NotifyKeyRelease_ValidInput_v2()
-        {
-            VideoGame videoGame = new VideoGame();
-            InputManager inputManager = new InputManager(videoGame.Context);
-            inputManager.NotifyKeyRelease(KeyCodes.A);
-        }
-
-        /// <summary>
-        ///     Tests that notify key hold with key valid input
-        /// </summary>
-        [Fact]
-        public void NotifyKeyHoldWithKey_ValidInput()
-        {
-            VideoGame videoGame = new VideoGame();
-            InputManager inputManager = new InputManager(videoGame.Context);
-            inputManager.NotifyKeyHold(KeyCodes.A);
-        }
     }
 }

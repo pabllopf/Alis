@@ -59,27 +59,27 @@ namespace Alis.Sample.Rogue
         ///     Ons the press down key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public override void OnPressDownKey(KeyCodes key)
+        public override void OnPressDownKey(Keys key)
         {
-            if (key == KeyCodes.D)
+            if (key == Keys.D)
             {
                 GameObject.Transform = new Transform(new Vector2F(GameObject.Transform.Position.X + 1, GameObject.Transform.Position.Y), GameObject.Transform.Rotation, GameObject.Transform.Scale);
                 Logger.Info(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation);
             }
 
-            if (key == KeyCodes.A)
+            if (key == Keys.A)
             {
                 GameObject.Transform = new Transform(new Vector2F(GameObject.Transform.Position.X - 1, GameObject.Transform.Position.Y), GameObject.Transform.Rotation, GameObject.Transform.Scale);
                 Logger.Info(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation);
             }
 
-            if (key == KeyCodes.W)
+            if (key == Keys.W)
             {
                 GameObject.Transform = new Transform(new Vector2F(GameObject.Transform.Position.X, GameObject.Transform.Position.Y - 1), GameObject.Transform.Rotation, GameObject.Transform.Scale);
                 Logger.Info(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation);
             }
 
-            if (key == KeyCodes.S)
+            if (key == Keys.S)
             {
                 GameObject.Transform = new Transform(new Vector2F(GameObject.Transform.Position.X, GameObject.Transform.Position.Y + 1), GameObject.Transform.Rotation, GameObject.Transform.Scale);
                 Logger.Info(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation);
