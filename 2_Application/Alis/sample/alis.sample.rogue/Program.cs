@@ -82,7 +82,7 @@ namespace Alis.Sample.Rogue
                                 .SetTexture("tile000.bmp")
                                 .Build())
                             .AddComponent<Camera>(camera => camera.Builder()
-                                .Resolution(1024, 640)
+                                .Resolution(800, 800)
                                 .BackgroundColor(Color.Brown)
                                 .Build())
                             .AddComponent<BoxCollider>(boxCollider => boxCollider

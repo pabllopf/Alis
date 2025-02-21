@@ -259,7 +259,7 @@ namespace Alis.Core.Ecs.Component.Collider
         private void SetupBuffers()
         {
             int windowWidth = 800;
-            int windowHeight = 600;
+            int windowHeight = 800;
 
             float scaleX = SizeOfTexture.X / windowWidth;
             float scaleY = SizeOfTexture.Y / windowHeight;
@@ -573,31 +573,42 @@ namespace Alis.Core.Ecs.Component.Collider
             return max;
         }
 
-       public void Render(Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter, Color debugColor)
+      public void Render(Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter, Color debugColor)
        {
-           Vector2F pos = new Vector2F(0, 0);
-           Vector2F size = new Vector2F(0.5f, 0.5f);
-           
+           Vector2F position = GameObject.Transform.Position;
+           Vector2F scale = GameObject.Transform.Scale;
+           Vector2F colliderSize = new Vector2F(Width, Height);
+           float spriteRotation = GameObject.Transform.Rotation;
+           Vector2F windowSize = Context.Setting.Graphic.WindowSize;
+       
            Gl.GlBindVertexArray(Vao);
            Gl.GlUseProgram(ShaderProgram);
-
+       
            Gl.EnableVertexAttribArray(0);
-           
+       
+           // Calculate the offset based on the camera position and resolution
+           float offsetX = (position.X - cameraPosition.X) * pixelsPerMeter / cameraResolution.X;
+           float offsetY = (position.Y - cameraPosition.Y) * pixelsPerMeter / cameraResolution.Y;
+       
+           // Calculate the scale based on the window size and pixels per meter
+           float scaleX = scale.X * pixelsPerMeter / windowSize.X;
+           float scaleY = scale.Y * pixelsPerMeter / windowSize.Y;
+       
            // Update the vertex positions based on the given position and size
            float[] vertices =
            {
-               pos.X - size.X / 2, pos.Y + size.Y / 2, 0.0f, // Top-left
-               pos.X + size.X / 2, pos.Y + size.Y / 2, 0.0f, // Top-right
-               pos.X + size.X / 2, pos.Y - size.Y / 2, 0.0f, // Bottom-right
-               pos.X - size.X / 2, pos.Y - size.Y / 2, 0.0f // Bottom-left
+               offsetX - colliderSize.X / 2 * scaleX, offsetY + colliderSize.Y / 2 * scaleY, 0.0f, // Top-left
+               offsetX + colliderSize.X / 2 * scaleX, offsetY + colliderSize.Y / 2 * scaleY, 0.0f, // Top-right
+               offsetX + colliderSize.X / 2 * scaleX, offsetY - colliderSize.Y / 2 * scaleY, 0.0f, // Bottom-right
+               offsetX - colliderSize.X / 2 * scaleX, offsetY - colliderSize.Y / 2 * scaleY, 0.0f  // Bottom-left
            };
-
+       
            uint[] indices =
            {
                0, 1, 2, // First triangle
-               2, 3, 0 // Second triangle
+               2, 3, 0  // Second triangle
            };
-
+       
            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
            GCHandle handle = GCHandle.Alloc(vertices, GCHandleType.Pinned);
            try
@@ -612,7 +623,7 @@ namespace Alis.Core.Ecs.Component.Collider
                    handle.Free();
                }
            }
-
+       
            Gl.GlPolygonMode(MaterialFace.FrontAndBack, PolygonModeEnum.Line);
            Gl.GlDrawElements(PrimitiveType.LineLoop, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
            Gl.GlPolygonMode(MaterialFace.FrontAndBack, PolygonModeEnum.Fill);
