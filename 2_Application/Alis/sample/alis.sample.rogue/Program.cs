@@ -28,9 +28,11 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Definition;
+using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
 using Alis.Core.Ecs.System;
+using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Sample.Rogue
 {
@@ -82,6 +84,20 @@ namespace Alis.Sample.Rogue
                             .AddComponent<Camera>(camera => camera.Builder()
                                 .Resolution(1024, 640)
                                 .BackgroundColor(Color.Brown)
+                                .Build())
+                            .AddComponent<BoxCollider>(boxCollider => boxCollider
+                                .Builder()
+                                .IsActive(true)
+                                .BodyType(BodyType.Kinematic)
+                                .IsTrigger(false)
+                                .AutoTilling(true)
+                                .Rotation(0.0f)
+                                .Size(1, 1)
+                                .Mass(1.0f)
+                                .Restitution(0.0f)
+                                .Friction(0f)
+                                .FixedRotation(true)
+                                .IgnoreGravity(false)
                                 .Build())
                             .AddComponent(new PlayerMovement())
                             .Build())

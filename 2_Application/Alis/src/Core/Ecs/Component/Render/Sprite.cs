@@ -313,25 +313,6 @@ namespace Alis.Core.Ecs.Component.Render
             Gl.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), (IntPtr) (3 * sizeof(float)));
             Gl.EnableVertexAttribArray(1);
         }
-
-       /// <summary>
-       /// Renders this instance
-       /// </summary>
-       public void Render()
-       {
-           Gl.GlUseProgram(ShaderProgram);
-           int offsetLocation = Gl.GlGetUniformLocation(ShaderProgram, "offset");
-           Gl.GlUniform2F(offsetLocation, GameObject.Transform.Position.X, GameObject.Transform.Position.Y);
-           Gl.GlBindVertexArray(Vao);
-           Gl.GlEnable(EnableCap.Blend);
-           Gl.GlBlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
-           
-           // Bind the texture before drawing
-           Gl.GlBindTexture(TextureTarget.Texture2D, Texture);
-           
-           Gl.GlDrawElements(PrimitiveType.Triangles, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
-           Gl.GlDisable(EnableCap.Blend);
-       }
         
         /// <summary>
         /// Clones this instance
@@ -350,6 +331,9 @@ namespace Alis.Core.Ecs.Component.Render
            float spriteRotation = GameObject.Transform.Rotation;
            
            Gl.GlUseProgram(ShaderProgram);
+           Gl.GlBindVertexArray(Vao);
+           Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, Ebo);
+           Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
 
            float offsetX = (GameObject.Transform.Position.X - cameraPosition.X) * pixelsPerMeter / cameraResolution.X;
            float offsetY = (GameObject.Transform.Position.Y - cameraPosition.Y) * pixelsPerMeter / cameraResolution.Y;
