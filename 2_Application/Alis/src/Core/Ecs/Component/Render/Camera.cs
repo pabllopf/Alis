@@ -63,7 +63,7 @@ namespace Alis.Core.Ecs.Component.Render
         #endif
         public Camera()
         {
-            Viewport = new RectangleI(0, 0, 800, 600);
+            Viewport = new RectangleI(0, 0, 1024, 640);
             TextureTarget = IntPtr.Zero;
             Resolution = new Vector2F(800, 600);
             BackgroundColor = Color.Black;

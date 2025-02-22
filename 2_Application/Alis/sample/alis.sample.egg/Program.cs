@@ -50,11 +50,11 @@ namespace Alis.Sample.Egg
                 .Create()
                 .Settings(setting => setting
                     .General(general => general
-                        .Name("Asteroids")
-                        .Author("Pablo Perdomo Falcón")
-                        .Description("Asteroids game")
+                        .Name("Egg game")
+                        .Author("Pablo Perdomo Falcón y Luis")
+                        .Description("Egg game.")
                         .License("GNU General Public License v3.0")
-                        .Icon("app.bmp")
+                        .Icon("app.jpeg")
                         .Build())
                     .Audio(audio => audio
                         .Build())
@@ -80,6 +80,42 @@ namespace Alis.Sample.Egg
                                 .Builder()
                                 .Resolution(1024, 640)
                                 .BackgroundColor(Color.Black)
+                                .Build())
+                            .Build())
+                        
+                        .Add<GameObject>(sarten => sarten
+                            .Transform(transform => transform
+                                .Position(-6, -2)
+                                .Rotation(0)
+                                .Scale(0.30f, 0.30f)
+                                .Build())
+                            .AddComponent<Sprite>(sprite => sprite.Builder()
+                                .SetTexture("sarten.jpeg")
+                                .Depth(0)
+                                .Build())
+                            .Build())
+                        
+                        .Add<GameObject>(clara => clara
+                            .Transform(transform => transform
+                                .Position(-3, -1)
+                                .Rotation(0)
+                                .Scale(0.10f, 0.10f)
+                                .Build())
+                            .AddComponent<Sprite>(sprite => sprite.Builder()
+                                .SetTexture("clara.jpeg")
+                                .Depth(1)
+                                .Build())
+                            .Build())
+                        
+                        .Add<GameObject>(yema => yema
+                            .Transform(transform => transform
+                                .Position(-3, -1)
+                                .Rotation(0)
+                                .Scale(0.15f, 0.15f)
+                                .Build())
+                            .AddComponent<Sprite>(sprite => sprite.Builder()
+                                .SetTexture("yema.jpeg")
+                                .Depth(2)
                                 .Build())
                             .Build())
                         
