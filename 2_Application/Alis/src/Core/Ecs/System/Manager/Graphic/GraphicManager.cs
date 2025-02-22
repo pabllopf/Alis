@@ -135,16 +135,6 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         public List<Camera> Cameras { get; }
         
         /// <summary>
-        ///     Ons the enable
-        /// </summary>
-        public override void OnEnable()
-        {
-            Logger.Trace();
-        }
-        
-
-
-        /// <summary>
         ///     Ons the init
         /// </summary>
         public override void OnInit()
@@ -186,157 +176,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             // Log GLFW version
             Console.WriteLine($"GLFW VERSION {Glfw.GetVersionString()}");
             
-            
-            // Create a vertex buffer object (VBO) and a vertex array object (VAO)
-            //vbo = Gl.GenBuffer();
-            //vao = Gl.GenVertexArray();
-            
             Glfw.SetFramebufferSizeCallback(Window, FramebufferSizeCallback);
-           
-            
-            /*
-            _context.GraphicManager.Window = Sdl.CreateWindow("Game Preview",
-                0, 0,
-                800, 800,
-                WindowSettings.WindowResizable | WindowSettings.WindowHidden );
-            _context.GraphicManager.Renderer = Sdl.CreateRenderer(_context.GraphicManager.Window, -1,
-                Renderers.SdlRendererAccelerated | Renderers.SdlRendererTargetTexture);*/
-
-            /*if (Context is null)
-            {
-                return;
-            }*/
-
-            //Logger.Log("init::graphic:new");
-
-            //DefaultSize = new Vector2F(Context.Setting.Graphic.Window.Resolution.X, Context.Setting.Graphic.Window.Resolution.Y);
-
-            /*
-            if (Sdl.Init(InitSettings.InitEverything) < 0)
-            {
-                Logger.Info($@"There was an issue initializing SDL. {Sdl.GetError()}");
-            }
-
-            // GET VERSION SDL2
-            Version version = Sdl.GetVersion();
-            Logger.Info(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
-
-            // Enable vsync
-            //Sdl.SetSwapInterval(1);
-            //Sdl.SetHint(Hint.HintRenderDriver, "opengl");
-
-            // Create the window
-            // create the window which should be able to have a valid OpenGL context and is resizable
-            WindowSettings flags = WindowSettings.WindowShown;
-
-            if (Context.Setting.Graphic.Window.IsWindowResizable)
-            {
-                flags |= WindowSettings.WindowResizable;
-            }
-
-            if (Context.Setting.Graphic.PreviewMode)
-            {
-                flags = WindowSettings.WindowHidden;
-            }
-
-            // Creates a new SDL window at the center of the screen with the given width and height.
-            Window = Sdl.CreateWindow(Context.Setting.General.Name, (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered, (int) DefaultSize.X, (int) DefaultSize.Y, flags);
-
-            // Check if the window was created successfully.
-            Logger.Info(Window == IntPtr.Zero ? $"There was an issue creating the renderer. {Sdl.GetError()}" : "Window created");
-
-            Renderers renderFlags = Renderers.SdlRendererAccelerated;
-
-            if (Context.Setting.Graphic.PreviewMode)
-            {
-                renderFlags |= Renderers.SdlRendererTargetTexture;
-            }
-
-            // Create the renderer
-            Renderer = Sdl.CreateRenderer(
-                Window,
-                -1,
-                renderFlags);
-
-            // Check if the renderer was created successfully.
-            Logger.Info(Renderer == IntPtr.Zero ? $"There was an issue creating the renderer. {Sdl.GetError()}" : "Renderer created");
-
-            int totalDisplays = Sdl.GetNumVideoDisplays();
-            Logger.Info($"Total Displays: {totalDisplays}");
-
-            for (int i = 0; i < totalDisplays; ++i)
-            {
-                string displayName = Sdl.GetDisplayName(i + 1);
-                Logger.Info($"Display {i}: {displayName}");
-
-                // GET DISPLAY BOUNDS
-                Sdl.GetDisplayBounds(i, out RectangleI displayBounds);
-                Logger.Info($"Display [{i}] Bounds: {displayBounds.X}, {displayBounds.Y}, {displayBounds.W}, {displayBounds.H}");
-            }
-
-            int totalDrivers = Sdl.GetNumRenderDrivers();
-            Logger.Info($"Total Render Drivers: {totalDrivers}");
-
-            for (int i = 0; i < totalDrivers; ++i)
-            {
-                Logger.Info($"Driver {i}: {Sdl.GetVideoDriver(i)}");
-            }
-
-            // GET RENDERER INFO
-            Sdl.GetRendererInfo(Renderer, out RendererInfo rendererInfo);
-            Logger.Info($"Renderer Name: {rendererInfo.GetName()} \n" +
-                        $"Renderer Flags: {rendererInfo.flags} \n" +
-                        $"Max Texture Width: {rendererInfo.maxTextureWidth} \n" +
-                        $"Max Texture Height: {rendererInfo.maxTextureHeight} + \n" +
-                        $"Max Texture Width: {rendererInfo.maxTextureWidth} \n" +
-                        $"Max Texture Height: {rendererInfo.maxTextureHeight}");
-
-            // GET RENDERER OUTPUT SIZE
-            Sdl.GetRendererOutputSize(Renderer, out int w, out int h);
-            Logger.Info($"Renderer Output Size: {w}, {h}");
-
-            // GET RENDERER LOGICAL SIZE
-            Sdl.RenderGetLogicalSize(Renderer, out int w2, out int h2);
-            Logger.Info($"Renderer Logical Size: {w2}, {h2}");
-
-            // GET RENDERER SCALE
-            Sdl.RenderGetScale(Renderer, out float scaleX, out float scaleY);
-            Logger.Info($"Renderer Scale: {scaleX}, {scaleY}");
-
-
-            uint windowHandle = Sdl.GetWindowId(Window);
-            Logger.Info($"Window Handle: {windowHandle}");
-
-            int numberOfDisplays = Sdl.GetNumVideoDisplays();
-            Logger.Info($"Number of Displays: {numberOfDisplays}");
-
-            int displayIndex = Sdl.GetWindowDisplayIndex(Window);
-            Logger.Info($"Display Index: {displayIndex}");
-
-            int numOfTypeDisplaysModes = Sdl.GetNumDisplayModes(displayIndex);
-            Logger.Info($"Number of Type Displays Modes: {numOfTypeDisplaysModes}");
-
-            for (int i = 0; i < numOfTypeDisplaysModes; ++i)
-            {
-                Sdl.GetDisplayMode(displayIndex, i, out DisplayMode displayMode);
-                Logger.Info($"Display {displayIndex} Mode [{i}]: {displayMode.format}, {displayMode.w}, {displayMode.h}, {displayMode.refresh_rate}");
-            }
-
-            // SET DISPLAY MODE
-            Sdl.GetDisplayMode(displayIndex, 0, out DisplayMode displayMode2);
-            Logger.Info($"Display {displayIndex} SELECTED Mode: {displayMode2.format}, {displayMode2.w}, {displayMode2.h}, {displayMode2.refresh_rate}");
-            Sdl.SetWindowDisplayMode(Window, ref displayMode2);
-
-
-            if (!string.IsNullOrEmpty(Context.Setting.General.Icon))
-            {
-                IntPtr icon = Sdl.LoadBmp(AssetManager.Find(Context.Setting.General.Icon));
-                Sdl.SetWindowIcon(Window, icon);
-            }
-
-            Logger.Info("End config SDL2");
-
-            FontManager = new FontManager(Context, RendererFlips.None);*/
         }
 
         /// <summary>
@@ -388,85 +228,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             
             // Swap the buffers to display the triangle
             Glfw.SwapBuffers(Window);
-            
-            
-            /*
-            float pixelsPerMeter = PixelsPerMeter;
-            IntPtr renderer = Renderer;
-            Setting contextSetting = Context.Setting;
-            PhysicSetting physicSettings = contextSetting.Physic;
-            Color debugColor = physicSettings.DebugColor;
-
-            if (Cameras.Count == 0)
-            {
-                Logger.Warning($"There are no cameras to render on the screen in the graphic manager for scene {Context.SceneManager.CurrentScene.Name}");
-                return;
-            }
-
-            foreach (Camera camera in Cameras)
-            {
-                if (!camera.IsEnable)
-                {
-                    continue;
-                }
-
-                IntPtr cameraTexture = camera.TextureTarget;
-                Color bgColor = camera.BackgroundColor;
-                Vector2F cameraPosition = camera.Position;
-                Vector2F cameraResolution = camera.Resolution;
-
-                Sdl.SetRenderTarget(renderer, cameraTexture);
-                Sdl.SetRenderDrawColor(renderer, bgColor.R, bgColor.G, bgColor.B, bgColor.A);
-                Sdl.RenderClear(renderer);
-
-                // Render sprites
-                foreach (Sprite sprite in Sprites.OrderBy(o => o.Depth))
-                {
-                    if (sprite.IsEnable && sprite.GameObject.IsEnable && sprite.IsVisible(cameraPosition, cameraResolution, pixelsPerMeter))
-                    {
-                        sprite.Render(renderer, cameraPosition, cameraResolution, pixelsPerMeter);
-                    }
-                }
-
-                // If the grid is enabled, render it:
-                if (Context.Setting.Graphic.HasGrid)
-                {
-                    RenderGrid(renderer, cameraPosition, cameraResolution, pixelsPerMeter);
-                }
-
-                if (contextSetting.Physic.DebugMode)
-                {
-                    // Render colliders
-                    //Sdl.SetRenderDrawColor(renderer, debugColor.R, debugColor.G, debugColor.B, debugColor.A);
-
-                    foreach (BoxCollider collider in ColliderBases)
-                    {
-                        if (collider.IsEnable && collider.GameObject.IsEnable && collider.IsVisible(cameraPosition, cameraResolution, pixelsPerMeter))
-                        {
-                            collider.Render(renderer, cameraPosition, cameraResolution, pixelsPerMeter, debugColor);
-                        }
-                    }
-
-                    // draw a circle of radius 2 at the mouse position:
-                    RenderCircleAtWorldPosition(WorldPosition, 2);
-                }
-
-                //Sdl.SetRenderTarget(renderer, IntPtr.Zero);
-
-                // Copy the custom backbuffer to the SDL backbuffer with vertical flip
-                //Sdl.RenderCopyEx(renderer, cameraTexture, IntPtr.Zero, IntPtr.Zero, 0, IntPtr.Zero, RendererFlips.FlipVertical);
-            }*/
-        }
-
-        /// <summary>
-        /// Draws the rectangle using the specified vector 2 f
-        /// </summary>
-        /// <param name="vector2F">The vector</param>
-        /// <param name="vector2F1">The vector</param>
-        /// <param name="debugColor">The debug color</param>
-        private void DrawRectangle(Vector2F vector2F, Vector2F vector2F1, Color debugColor)
-        {
-            
+           
         }
 
         /// <summary>
@@ -558,14 +320,6 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                     }
                 }
             }
-        }
-
-        /// <summary>
-        ///     Ons the render present
-        /// </summary>
-        public override void OnRenderPresent()
-        {
-            //Sdl.RenderPresent(Renderer);
         }
 
         /// <summary>
