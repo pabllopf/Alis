@@ -478,8 +478,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         private void FramebufferSizeCallback(Window window, int width, int height)
         {
             Console.WriteLine($"Framebuffer Size: {width}, {height}");
-            //Gl.GlViewport(0, 0, width, height);
-            
+            Gl.GlViewport(0, 0, width, height);
             Context.Setting.Graphic.WindowSize = new Vector2F(width, height);
         }
         

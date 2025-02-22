@@ -589,6 +589,7 @@ namespace Alis.Core.Ecs.Component.Collider
             Vector2F scale = GameObject.Transform.Scale;
             Vector2F colliderSize = new Vector2F(Width, Height);
             float spriteRotation = GameObject.Transform.Rotation;
+            Vector2F windowSize = Context.Setting.Graphic.WindowSize;
 
             Gl.GlBindVertexArray(Vao);
             Gl.GlUseProgram(ShaderProgram);
