@@ -76,7 +76,7 @@ namespace Alis.Core.Ecs.System.Configuration.Graphic
         [JsonPropertyName("_BackgroundColor_")]
         public Color BackgroundColor { get; set; } = new Color(0, 0, 0, 255);
 
-        public Vector2F WindowSize { get; set; } = new Vector2F(800, 600);
+        public Vector2F WindowSize { get; set; } = new Vector2F(0, 0);
 
         /// <summary>
         ///     Builders this instance

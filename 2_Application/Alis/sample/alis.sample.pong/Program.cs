@@ -61,6 +61,7 @@ namespace Alis.Sample.Pong
                     .Audio(audio => audio
                         .Build())
                     .Graphic(graphic => graphic
+                        .Resolution(1024, 640)
                         .Build())
                     .Physic(physic => physic
                         .Gravity(0.0f, -9.8f)
