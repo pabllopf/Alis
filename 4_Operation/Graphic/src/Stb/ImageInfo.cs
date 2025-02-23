@@ -7,9 +7,6 @@ namespace Alis.Core.Graphic.Stb
 	/// The image info
 	/// </summary>
 	public
-#else
-	internal
-#endif
 	struct ImageInfo
 	{
 		/// <summary>

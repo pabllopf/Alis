@@ -11,9 +11,6 @@ namespace Alis.Core.Graphic.Stb
 	/// The image result class
 	/// </summary>
 	public
-#else
-	internal
-#endif
 	class ImageResult
 	{
 		/// <summary>

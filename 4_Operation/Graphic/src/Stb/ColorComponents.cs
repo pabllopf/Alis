@@ -5,9 +5,6 @@ namespace Alis.Core.Graphic.Stb
 	/// The color components enum
 	/// </summary>
 	public
-#else
-	internal
-#endif
 	enum ColorComponents
 	{
 		/// <summary>
