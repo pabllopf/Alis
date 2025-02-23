@@ -463,7 +463,12 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 //Sdl.RenderCopyEx(renderer, cameraTexture, IntPtr.Zero, IntPtr.Zero, 0, IntPtr.Zero, RendererFlips.FlipVertical);
             }*/
         }
-        
+
+        private void DrawRectangle(Vector2F vector2F, Vector2F vector2F1, Color debugColor)
+        {
+            
+        }
+
         /// <summary>
         /// Framebuffers the size callback using the specified window
         /// </summary>

@@ -28,9 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.InteropServices;
+using Alis.Core.Ecs.Component.Collider;
 
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    public delegate void PolygonMode(uint face, uint mode);
+    public delegate void PolygonMode(MaterialFace face, PolygonModeEnum mode);
 }
