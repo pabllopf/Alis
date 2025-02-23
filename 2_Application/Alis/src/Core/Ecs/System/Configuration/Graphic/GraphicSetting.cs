@@ -31,6 +31,7 @@ using Alis.Builder.Core.Ecs.System.Setting.Graphic;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math.Definition;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic;
 
 namespace Alis.Core.Ecs.System.Configuration.Graphic
@@ -74,6 +75,8 @@ namespace Alis.Core.Ecs.System.Configuration.Graphic
 
         [JsonPropertyName("_BackgroundColor_")]
         public Color BackgroundColor { get; set; } = new Color(0, 0, 0, 255);
+
+        public Vector2F WindowSize { get; set; } = new Vector2F(800, 600);
 
         /// <summary>
         ///     Builders this instance

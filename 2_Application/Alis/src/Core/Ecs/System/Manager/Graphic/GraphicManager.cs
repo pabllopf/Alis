@@ -77,7 +77,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Sprites = new List<Sprite>();
             Cameras = new List<Camera>();
             Renderer = IntPtr.Zero;
-            DefaultSize = new Vector2F(640, 480);
+            DefaultSize = new Vector2F(800, 800);
         }
 
         /// <summary>
@@ -149,6 +149,8 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         {
             Logger.Trace();
         }
+        
+
 
         /// <summary>
         ///     Ons the init
@@ -172,7 +174,8 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Glfw.WindowHint(Hint.StencilBits, 8);
             
             // Create a GLFW window
-            Window = Glfw.CreateWindow(800, 600, "OpenGL Window", Monitor.None, Window.None);
+            this.Context.Setting.Graphic.WindowSize = new Vector2F(800, 800);
+            Window = Glfw.CreateWindow((int)Context.Setting.Graphic.WindowSize.X, (int)Context.Setting.Graphic.WindowSize.Y, "OpenGL Window", Monitor.None, Window.None);
             if (Window == Window.None)
             {
                 throw new Exception("Failed to create GLFW window");
@@ -198,7 +201,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             /*
             _context.GraphicManager.Window = Sdl.CreateWindow("Game Preview",
                 0, 0,
-                800, 600,
+                800, 800,
                 WindowSettings.WindowResizable | WindowSettings.WindowHidden );
             _context.GraphicManager.Renderer = Sdl.CreateRenderer(_context.GraphicManager.Window, -1,
                 Renderers.SdlRendererAccelerated | Renderers.SdlRendererTargetTexture);*/
@@ -380,12 +383,12 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             foreach (Sprite sprite in Sprites.OrderBy(o => o.Depth))
             {
                 // Render sprite with opengl:
-                sprite.Render(new Vector2F(0, 0), new Vector2F(800, 600), pixelsPerMeter);
+                sprite.Render(new Vector2F(0, 0), new Vector2F(800, 800), pixelsPerMeter);
             }
 
             foreach (BoxCollider collider in ColliderBases)
             {
-                collider.Render(new Vector2F(0, 0), new Vector2F(800, 600), pixelsPerMeter, debugColor);
+                collider.Render(new Vector2F(0, 0), new Vector2F(800, 800), pixelsPerMeter, debugColor);
             }
 
 
@@ -477,7 +480,10 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// <param name="height">The height</param>
         private void FramebufferSizeCallback(Window window, int width, int height)
         {
-            Gl.GlViewport(0, 0, width, height);
+            Console.WriteLine($"Framebuffer Size: {width}, {height}");
+            //Gl.GlViewport(0, 0, width, height);
+            
+            Context.Setting.Graphic.WindowSize = new Vector2F(width, height);
         }
         
         /// <summary>

@@ -276,7 +276,7 @@ namespace Alis.Core.Ecs.Component.Render
         private void SetupBuffers()
         {
             int windowWidth = 800;
-            int windowHeight = 600;
+            int windowHeight = 800;
 
             float scaleX = Size.X / windowWidth;
             float scaleY = Size.Y / windowHeight;
@@ -320,7 +320,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <returns>The object</returns>
         public override object Clone() => new Sprite(NameFile, Depth);
 
-       /// <summary>
+      /// <summary>
        /// Renders the camera position
        /// </summary>
        /// <param name="cameraPosition">The camera position</param>
@@ -328,18 +328,30 @@ namespace Alis.Core.Ecs.Component.Render
        /// <param name="pixelsPerMeter">The pixels per meter</param>
        public void Render(Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
        {
+           Vector2F position = GameObject.Transform.Position;
+           Vector2F scale = GameObject.Transform.Scale;
            float spriteRotation = GameObject.Transform.Rotation;
-           
+           Vector2F windowSize = Context.Setting.Graphic.WindowSize;
+       
            Gl.GlUseProgram(ShaderProgram);
            Gl.GlBindVertexArray(Vao);
            Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, Ebo);
            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
-
-           float offsetX = (GameObject.Transform.Position.X - cameraPosition.X) * pixelsPerMeter / cameraResolution.X;
-           float offsetY = (GameObject.Transform.Position.Y - cameraPosition.Y) * pixelsPerMeter / cameraResolution.Y;
        
+           // Calculate the offset based on the camera position and resolution
+           float offsetX = (position.X - cameraPosition.X) * pixelsPerMeter / cameraResolution.X;
+           float offsetY = (position.Y - cameraPosition.Y) * pixelsPerMeter / cameraResolution.Y;
+       
+           // Calculate the scale based on the window size and pixels per meter
+           float scaleX = scale.X * pixelsPerMeter / windowSize.X;
+           float scaleY = scale.Y * pixelsPerMeter / windowSize.Y;
+       
+           // Set the uniform values for the shader
            int offsetLocation = Gl.GlGetUniformLocation(ShaderProgram, "offset");
            Gl.GlUniform2F(offsetLocation, offsetX, offsetY);
+       
+           int scaleLocation = Gl.GlGetUniformLocation(ShaderProgram, "scale");
+           Gl.GlUniform2F(scaleLocation, scaleX, scaleY);
        
            int rotationLocation = Gl.GlGetUniformLocation(ShaderProgram, "rotation");
            Gl.GlUniform1F(rotationLocation, spriteRotation);
