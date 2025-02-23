@@ -5,7 +5,7 @@ using Alis.Core.Graphic.Stb.Hebron.Runtime;
 
 namespace Alis.Core.Graphic.Stb
 {
-#if !STBSHARP_INTERNAL
+
 	/// <summary>
 	/// The image result float class
 	/// </summary>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
     <ItemGroup Condition="
-        $(AssemblyName.Contains('Graphic.Test')) == True OR
+        $(AssemblyName.Contains('Graphic.Sdl2.Test')) == True OR
         $(AssemblyName.Contains('Audio.Test')) == True OR
         $(AssemblyName.Contains('Network.Test')) == True OR
         $(AssemblyName.Contains('FFmpeg.Test')) == True

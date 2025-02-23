@@ -1,6 +1,6 @@
 namespace Alis.Core.Graphic.Stb
 {
-#if !STBSHARP_INTERNAL
+
 	/// <summary>
 	/// The color components enum
 	/// </summary>

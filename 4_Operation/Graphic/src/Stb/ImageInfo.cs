@@ -2,7 +2,7 @@ using System.IO;
 
 namespace Alis.Core.Graphic.Stb
 {
-#if !STBSHARP_INTERNAL
+
 	/// <summary>
 	/// The image info
 	/// </summary>

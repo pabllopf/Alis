@@ -1,6 +1,6 @@
 namespace Alis.Core.Graphic.Stb
 {
-#if !STBSHARP_INTERNAL
+
 	/// <summary>
 	/// The animated frame result class
 	/// </summary>

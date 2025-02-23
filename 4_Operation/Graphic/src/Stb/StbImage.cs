@@ -5,7 +5,7 @@ using Alis.Core.Graphic.Stb.Hebron.Runtime;
 
 namespace Alis.Core.Graphic.Stb
 {
-#if !STBSHARP_INTERNAL
+
 	/// <summary>
 	/// The stb image class
 	/// </summary>
