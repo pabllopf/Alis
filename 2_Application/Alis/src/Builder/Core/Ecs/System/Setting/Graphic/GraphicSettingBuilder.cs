@@ -75,6 +75,12 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Graphic
             return this;
         }
 
+        /// <summary>
+        /// Resolutions the x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <returns>The graphic setting builder</returns>
         public GraphicSettingBuilder Resolution(int x, int y)
         {
             graphicSetting.WindowSize = new Vector2F(x, y);

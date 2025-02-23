@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
 using Alis.Core.Aspect.Data.Dll;
+using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Graphic.GlfwLib.Enums;
 using Alis.Core.Graphic.GlfwLib.Structs;
 using Alis.Core.Graphic.Properties;

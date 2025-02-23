@@ -73,9 +73,15 @@ namespace Alis.Core.Ecs.System.Configuration.Graphic
         [JsonIgnore]
         public bool HasGrid { get; set; } = false;
 
+        /// <summary>
+        /// Gets or sets the value of the background color
+        /// </summary>
         [JsonPropertyName("_BackgroundColor_")]
         public Color BackgroundColor { get; set; } = new Color(0, 0, 0, 255);
 
+        /// <summary>
+        /// Gets or sets the value of the window size
+        /// </summary>
         public Vector2F WindowSize { get; set; } = new Vector2F(0, 0);
 
         /// <summary>

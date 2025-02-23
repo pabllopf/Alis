@@ -1,7 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Graphic.GlfwLib;
 using Alis.Core.Graphic.GlfwLib.Enums;
 using Alis.Core.Graphic.GlfwLib.Structs;
@@ -11,14 +10,35 @@ using Exception = System.Exception;
 
 namespace Alis.Core.Graphic.Sample
 {
+    /// <summary>
+    /// The render square unfilled class
+    /// </summary>
     public class RenderSquareUnfilled
     {
+        /// <summary>
+        /// The running
+        /// </summary>
         private bool running = true;
+        /// <summary>
+        /// The shader program
+        /// </summary>
         private uint shaderProgram;
+        /// <summary>
+        /// The vao
+        /// </summary>
         private uint vao;
+        /// <summary>
+        /// The vbo
+        /// </summary>
         private uint vbo;
+        /// <summary>
+        /// The window
+        /// </summary>
         private Window window;
 
+        /// <summary>
+        /// Runs this instance
+        /// </summary>
         public void Run()
         {
             Init();
@@ -44,6 +64,11 @@ namespace Alis.Core.Graphic.Sample
             Gl.GlDeleteProgram(shaderProgram);
         }
 
+        /// <summary>
+        /// Inits this instance
+        /// </summary>
+        /// <exception cref="Exception">Failed to create GLFW window</exception>
+        /// <exception cref="Exception">Failed to initialize GLFW</exception>
         private void Init()
         {
             if (!Glfw.Init())
@@ -155,6 +180,11 @@ namespace Alis.Core.Graphic.Sample
             Gl.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), IntPtr.Zero);
         }
 
+        /// <summary>
+        /// Draws the pos
+        /// </summary>
+        /// <param name="pos">The pos</param>
+        /// <param name="size">The size</param>
         private void Draw(Vector2F pos, Vector2F size)
         {
             // Update the vertex positions based on the given position and size
@@ -186,6 +216,12 @@ namespace Alis.Core.Graphic.Sample
             Gl.GlPolygonMode(MaterialFace.FrontAndBack, PolygonModeEnum.Fill);
         }
 
+        /// <summary>
+        /// Framebuffers the size callback using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
         private void FramebufferSizeCallback(Window window, int width, int height)
         {
             Gl.GlViewport(0, 0, width, height);

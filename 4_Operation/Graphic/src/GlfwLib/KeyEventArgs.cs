@@ -1,4 +1,5 @@
 using System;
+using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Graphic.GlfwLib.Enums;
 
 namespace Alis.Core.Graphic.GlfwLib
