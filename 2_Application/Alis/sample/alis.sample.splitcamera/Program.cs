@@ -58,6 +58,7 @@ namespace Alis.Sample.SplitCamera
                     .Audio(audio => audio
                         .Build())
                     .Graphic(graphic => graphic
+                        .Resolution(1024, 640)
                         .Build())
                     .Physic(physic => physic
                         .Gravity(0.0f, -9.8f)
@@ -80,8 +81,8 @@ namespace Alis.Sample.SplitCamera
                         .Add<GameObject>(gameObject => gameObject
                             .Name("tree-001")
                             .Transform(transform => transform
-                                .Position(-2, -2)
-                                .Scale(2, 2)
+                                .Position(-4, -4)
+                                .Scale(3, 3)
                                 .Rotation(0)
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite.Builder()

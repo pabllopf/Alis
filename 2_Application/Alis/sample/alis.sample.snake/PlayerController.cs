@@ -96,21 +96,21 @@ namespace Alis.Sample.Snake
         ///     Ons the press key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public override void OnPressKey(KeyCodes key)
+        public override void OnPressKey(Keys key)
         {
-            if ((key == KeyCodes.W) && (_direction != new Vector2F(0, -1)))
+            if ((key == Keys.W) && (_direction != new Vector2F(0, -1)))
             {
                 _direction = new Vector2F(0, 1);
             }
-            else if ((key == KeyCodes.S) && (_direction != new Vector2F(0, 1)))
+            else if ((key == Keys.S) && (_direction != new Vector2F(0, 1)))
             {
                 _direction = new Vector2F(0, -1);
             }
-            else if ((key == KeyCodes.A) && (_direction != new Vector2F(1, 0)))
+            else if ((key == Keys.A) && (_direction != new Vector2F(1, 0)))
             {
                 _direction = new Vector2F(-1, 0);
             }
-            else if ((key == KeyCodes.D) && (_direction != new Vector2F(-1, 0)))
+            else if ((key == Keys.D) && (_direction != new Vector2F(-1, 0)))
             {
                 _direction = new Vector2F(1, 0);
             }
@@ -120,7 +120,7 @@ namespace Alis.Sample.Snake
         ///     Ons the release key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public override void OnReleaseKey(KeyCodes key)
+        public override void OnReleaseKey(Keys key)
         {
             // No action needed on key release for this game
         }

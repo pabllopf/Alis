@@ -124,29 +124,29 @@ namespace Alis.Sample.Asteroid
         /// Ons the press down key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public override void OnPressDownKey(KeyCodes key)
+        public override void OnPressDownKey(Keys key)
         {
-            if (key == KeyCodes.D)
+            if (key == Keys.D)
             {
                 direction.X = 1;
             }
 
-            if (key == KeyCodes.A)
+            if (key == Keys.A)
             {
                 direction.X = -1;
             }
 
-            if (key == KeyCodes.W)
+            if (key == Keys.W)
             {
                 direction.Y = 1;
             }
 
-            if (key == KeyCodes.S)
+            if (key == Keys.S)
             {
                 direction.Y = -1;
             }
 
-            if (key == KeyCodes.A || key == KeyCodes.D || key == KeyCodes.W || key == KeyCodes.S)
+            if (key == Keys.A || key == Keys.D || key == Keys.W || key == Keys.S)
             {
                 this.boxCollider.Body.ApplyForce(direction * acceleration);
             }
@@ -157,9 +157,9 @@ namespace Alis.Sample.Asteroid
         /// Ons the press key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public override void OnPressKey(KeyCodes key)
+        public override void OnPressKey(Keys key)
         {
-            if (key == KeyCodes.Space && (direction.X != 0 || direction.Y != 0))
+            if (key == Keys.Space && (direction.X != 0 || direction.Y != 0))
             {
                 this.GameObject.Get<AudioSource>().Play();
                 this.Context.SceneManager.CurrentScene.GetByTag("Points").Get<CounterManager>().Decrement();
@@ -208,7 +208,7 @@ namespace Alis.Sample.Asteroid
         /// Ons the release key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public override void OnReleaseKey(KeyCodes key)
+        public override void OnReleaseKey(Keys key)
         {
         }
     }

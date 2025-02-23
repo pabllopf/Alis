@@ -59,6 +59,7 @@ namespace Alis.Sample.Egg
                     .Audio(audio => audio
                         .Build())
                     .Graphic(graphic => graphic
+                        .Resolution(1024, 640)
                         .FrameRate(60)
                         .Build())
                     .Physic(physic => physic

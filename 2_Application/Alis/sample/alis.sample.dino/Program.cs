@@ -58,6 +58,7 @@ namespace Alis.Sample.Dino
                     .Audio(audio => audio
                         .Build())
                     .Graphic(graphic => graphic
+                        .Resolution(800, 600)
                         .Build())
                     .Physic(physic => physic
                         .Gravity(0.0f, -9.8f)

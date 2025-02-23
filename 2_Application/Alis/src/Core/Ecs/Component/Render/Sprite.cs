@@ -23,10 +23,12 @@ namespace Alis.Core.Ecs.Component.Render
         /// The image handle
         /// </summary>
         private GCHandle imageHandle;
+
         /// <summary>
         /// The indices handle
         /// </summary>
         private GCHandle indicesHandle;
+
         /// <summary>
         /// The vertices handle
         /// </summary>
@@ -68,47 +70,47 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         /// Gets or sets the value of the depth
         /// </summary>
-        [JsonPropertyName("_Depth_")] 
+        [JsonPropertyName("_Depth_")]
         public int Depth { get; set; }
 
         /// <summary>
         /// Gets or sets the value of the path
         /// </summary>
-        [JsonIgnore] 
+        [JsonIgnore]
         public string Path { get; set; }
 
         /// <summary>
         /// Gets or sets the value of the name file
         /// </summary>
-        [JsonPropertyName("_NameFile_")] 
+        [JsonPropertyName("_NameFile_")]
         public string NameFile { get; set; }
 
         /// <summary>
         /// Gets or sets the value of the size
         /// </summary>
-        [JsonPropertyName("_Size_")] 
+        [JsonPropertyName("_Size_")]
         public Vector2F Size { get; set; }
 
         /// <summary>
         /// Gets or sets the value of the shader program
         /// </summary>
         public uint ShaderProgram { get; private set; }
-        
+
         /// <summary>
         /// Gets or sets the value of the vao
         /// </summary>
         public uint Vao { get; private set; }
-        
+
         /// <summary>
         /// Gets or sets the value of the vbo
         /// </summary>
         public uint Vbo { get; private set; }
-        
+
         /// <summary>
         /// Gets or sets the value of the ebo
         /// </summary>
         public uint Ebo { get; private set; }
-        
+
         /// <summary>
         /// Gets or sets the value of the texture
         /// </summary>
@@ -275,8 +277,8 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         private void SetupBuffers()
         {
-            int windowWidth = 800;
-            int windowHeight = 800;
+            int windowWidth = (int) Context.Setting.Graphic.WindowSize.X;
+            int windowHeight = (int) Context.Setting.Graphic.WindowSize.Y;
 
             float scaleX = Size.X / windowWidth;
             float scaleY = Size.Y / windowHeight;
@@ -299,12 +301,12 @@ namespace Alis.Core.Ecs.Component.Render
 
             Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
             verticesHandle = GCHandle.Alloc(vertices, GCHandleType.Pinned);
-            Gl.GlBufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertices.Length * sizeof(float)), verticesHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
+            Gl.GlBufferData(BufferTarget.ArrayBuffer, (IntPtr) (vertices.Length * sizeof(float)), verticesHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
             verticesHandle.Free();
 
             Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, Ebo);
             indicesHandle = GCHandle.Alloc(indices, GCHandleType.Pinned);
-            Gl.GlBufferData(BufferTarget.ElementArrayBuffer, (IntPtr)(indices.Length * sizeof(uint)), indicesHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
+            Gl.GlBufferData(BufferTarget.ElementArrayBuffer, (IntPtr) (indices.Length * sizeof(uint)), indicesHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
             indicesHandle.Free();
 
             Gl.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), IntPtr.Zero);
@@ -313,58 +315,65 @@ namespace Alis.Core.Ecs.Component.Render
             Gl.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), (IntPtr) (3 * sizeof(float)));
             Gl.EnableVertexAttribArray(1);
         }
-        
+
         /// <summary>
         /// Clones this instance
         /// </summary>
         /// <returns>The object</returns>
         public override object Clone() => new Sprite(NameFile, Depth);
 
-      /// <summary>
-       /// Renders the camera position
-       /// </summary>
-       /// <param name="cameraPosition">The camera position</param>
-       /// <param name="cameraResolution">The camera resolution</param>
-       /// <param name="pixelsPerMeter">The pixels per meter</param>
-       public void Render(Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
-       {
-           Vector2F position = GameObject.Transform.Position;
-           Vector2F scale = GameObject.Transform.Scale;
-           float spriteRotation = GameObject.Transform.Rotation;
-           Vector2F windowSize = Context.Setting.Graphic.WindowSize;
-       
-           Gl.GlUseProgram(ShaderProgram);
-           Gl.GlBindVertexArray(Vao);
-           Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, Ebo);
-           Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
-       
-           // Calculate the offset based on the camera position and resolution
-           float offsetX = (position.X - cameraPosition.X) * pixelsPerMeter / cameraResolution.X;
-           float offsetY = (position.Y - cameraPosition.Y) * pixelsPerMeter / cameraResolution.Y;
-       
-           // Calculate the scale based on the window size and pixels per meter
-           float scaleX = scale.X * pixelsPerMeter / windowSize.X;
-           float scaleY = scale.Y * pixelsPerMeter / windowSize.Y;
-       
-           // Set the uniform values for the shader
-           int offsetLocation = Gl.GlGetUniformLocation(ShaderProgram, "offset");
-           Gl.GlUniform2F(offsetLocation, offsetX, offsetY);
-       
-           int scaleLocation = Gl.GlGetUniformLocation(ShaderProgram, "scale");
-           Gl.GlUniform2F(scaleLocation, scaleX, scaleY);
-       
-           int rotationLocation = Gl.GlGetUniformLocation(ShaderProgram, "rotation");
-           Gl.GlUniform1F(rotationLocation, spriteRotation);
-       
-           Gl.GlBindVertexArray(Vao);
-           Gl.GlEnable(EnableCap.Blend);
-           Gl.GlBlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
-       
-           // Bind the texture before drawing
-           Gl.GlBindTexture(TextureTarget.Texture2D, Texture);
-       
-           Gl.GlDrawElements(PrimitiveType.Triangles, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
-           Gl.GlDisable(EnableCap.Blend);
-       }
+        /// <summary>
+        /// Renders the sprite at its position relative to the camera.
+        /// </summary>
+        /// <param name="cameraPosition">The camera position</param>
+        /// <param name="cameraResolution">The camera resolution</param>
+        /// <param name="pixelsPerMeter">The pixels per meter</param>
+        public void Render(Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
+        {
+            Vector2F position = GameObject.Transform.Position;
+            Vector2F scale = GameObject.Transform.Scale;
+            float spriteRotation = GameObject.Transform.Rotation;
+
+            Gl.GlUseProgram(ShaderProgram);
+            Gl.GlBindVertexArray(Vao);
+            Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, Ebo);
+            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
+
+            // Conversión de metros a píxeles
+            float positionXPixels = (position.X - cameraPosition.X) * pixelsPerMeter;
+            float positionYPixels = (position.Y - cameraPosition.Y) * pixelsPerMeter;
+
+            float scaleXPixels = scale.X * pixelsPerMeter;
+            float scaleYPixels = scale.Y * pixelsPerMeter;
+
+            // Normalizar a coordenadas OpenGL (-1 a 1) usando la resolución de la cámara
+            float worldX = (2.0f * positionXPixels / cameraResolution.X);
+            float worldY = (2.0f * positionYPixels / cameraResolution.Y);
+
+            float scaleX = 2.0f * scaleXPixels / cameraResolution.X;
+            float scaleY = 2.0f * scaleYPixels / cameraResolution.Y;
+
+            // Enviar valores normalizados al shader
+            int offsetLocation = Gl.GlGetUniformLocation(ShaderProgram, "offset");
+            Gl.GlUniform2F(offsetLocation, worldX, worldY);
+
+            int scaleLocation = Gl.GlGetUniformLocation(ShaderProgram, "scale");
+            Gl.GlUniform2F(scaleLocation, scaleX, scaleY);
+
+            int rotationLocation = Gl.GlGetUniformLocation(ShaderProgram, "rotation");
+            Gl.GlUniform1F(rotationLocation, spriteRotation);
+
+            // Activar blending para manejar transparencias
+            Gl.GlEnable(EnableCap.Blend);
+            Gl.GlBlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+
+            // Vincular la textura antes de dibujar
+            Gl.GlBindTexture(TextureTarget.Texture2D, Texture);
+
+            // Dibujar el sprite
+            Gl.GlDrawElements(PrimitiveType.Triangles, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
+
+            Gl.GlDisable(EnableCap.Blend);
+        }
     }
 }
