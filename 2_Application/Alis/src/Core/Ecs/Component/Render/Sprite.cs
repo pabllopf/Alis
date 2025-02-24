@@ -177,6 +177,7 @@ namespace Alis.Core.Ecs.Component.Render
                 layout (location = 1) in vec2 aTexCoord;
                 out vec2 TexCoord;
                 uniform vec2 offset;
+                uniform vec2 scale;
                 uniform float rotation;
                 void main()
                 {
@@ -184,12 +185,13 @@ namespace Alis.Core.Ecs.Component.Render
                     float cosTheta = cos(radians);
                     float sinTheta = sin(radians);
                     mat2 rotationMatrix = mat2(cosTheta, -sinTheta, sinTheta, cosTheta);
-                    vec2 rotatedPos = rotationMatrix * aPos.xy;
+                    vec2 scaledPos = aPos.xy * scale;
+                    vec2 rotatedPos = rotationMatrix * scaledPos;
                     gl_Position = vec4(rotatedPos + offset, aPos.z, 1.0);
                     TexCoord = vec2(aTexCoord.x, 1.0 - aTexCoord.y);
                 }
             ";
-
+            
             string fragmentShaderSource = @"
                 #version 330 core
                 out vec4 FragColor;
@@ -261,8 +263,8 @@ namespace Alis.Core.Ecs.Component.Render
 
                 Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, TextureParameter.ClampToEdge);
                 Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, TextureParameter.ClampToEdge);
-                Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Linear);
-                Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Linear);
+                Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Nearest);
+                Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Nearest);
 
                 imageHandle = GCHandle.Alloc(image.Data, GCHandleType.Pinned);
                 Gl.GlTexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, image.Width, image.Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, imageHandle.AddrOfPinnedObject());
@@ -333,46 +335,40 @@ namespace Alis.Core.Ecs.Component.Render
             Vector2F position = GameObject.Transform.Position;
             Vector2F scale = GameObject.Transform.Scale;
             float spriteRotation = GameObject.Transform.Rotation;
-
+        
             Gl.GlUseProgram(ShaderProgram);
             Gl.GlBindVertexArray(Vao);
             Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, Ebo);
             Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
-
+        
             // Conversión de metros a píxeles
             float positionXPixels = (position.X - cameraPosition.X) * pixelsPerMeter;
             float positionYPixels = (position.Y - cameraPosition.Y) * pixelsPerMeter;
-
-            float scaleXPixels = scale.X * pixelsPerMeter;
-            float scaleYPixels = scale.Y * pixelsPerMeter;
-
+            
             // Normalizar a coordenadas OpenGL (-1 a 1) usando la resolución de la cámara
             float worldX = (2.0f * positionXPixels / cameraResolution.X);
             float worldY = (2.0f * positionYPixels / cameraResolution.Y);
-
-            float scaleX = 2.0f * scaleXPixels / cameraResolution.X;
-            float scaleY = 2.0f * scaleYPixels / cameraResolution.Y;
-
+            
             // Enviar valores normalizados al shader
             int offsetLocation = Gl.GlGetUniformLocation(ShaderProgram, "offset");
             Gl.GlUniform2F(offsetLocation, worldX, worldY);
-
+        
             int scaleLocation = Gl.GlGetUniformLocation(ShaderProgram, "scale");
-            Gl.GlUniform2F(scaleLocation, scaleX, scaleY);
-
+            Gl.GlUniform2F(scaleLocation, GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y);
+        
             int rotationLocation = Gl.GlGetUniformLocation(ShaderProgram, "rotation");
             Gl.GlUniform1F(rotationLocation, spriteRotation);
-
+        
             // Activar blending para manejar transparencias
             Gl.GlEnable(EnableCap.Blend);
             Gl.GlBlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
-
+        
             // Vincular la textura antes de dibujar
             Gl.GlBindTexture(TextureTarget.Texture2D, Texture);
-
+        
             // Dibujar el sprite
             Gl.GlDrawElements(PrimitiveType.Triangles, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
-
+        
             Gl.GlDisable(EnableCap.Blend);
         }
     }
