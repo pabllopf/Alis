@@ -30,7 +30,9 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
@@ -47,6 +49,7 @@ using Alis.Core.Graphic.GlfwLib.Enums;
 using Alis.Core.Graphic.GlfwLib.Structs;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
+using Alis.Core.Graphic.Stb;
 using Color = Alis.Core.Aspect.Math.Definition.Color;
 using Exception = System.Exception;
 
@@ -158,10 +161,10 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             // Create a GLFW window
             if (this.Context.Setting.Graphic.WindowSize == new Vector2F(0,0))
             {
-                this.Context.Setting.Graphic.WindowSize = new Vector2F(800, 800);
+                this.Context.Setting.Graphic.WindowSize = new Vector2F(1024, 640);
             }
            
-            Window = Glfw.CreateWindow((int)Context.Setting.Graphic.WindowSize.X, (int)Context.Setting.Graphic.WindowSize.Y, "OpenGL Window", Monitor.None, Window.None);
+            Window = Glfw.CreateWindow((int)Context.Setting.Graphic.WindowSize.X, (int)Context.Setting.Graphic.WindowSize.Y, Context.Setting.General.Name, Monitor.None, Window.None);
             if (Window == Window.None)
             {
                 throw new Exception("Failed to create GLFW window");
@@ -175,10 +178,75 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             
             // Log GLFW version
             Console.WriteLine($"GLFW VERSION {Glfw.GetVersionString()}");
+        
+           // Set window icon (skip on macOS)
+           if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+           {
+               Console.WriteLine("Skipping window icon setting on macOS");
+           }
+           else
+           {
+               string iconPath = Context.Setting.General.Icon;
+               if (!string.IsNullOrEmpty(iconPath))
+               {
+                   Image icon = LoadIcon(AssetManager.Find(iconPath));
+                   Glfw.SetWindowIcon(Window, 1, new Image[] { icon });
+               }
+           }
             
             Glfw.SetFramebufferSizeCallback(Window, FramebufferSizeCallback);
         }
+        
+        private static Image LoadIcon2(string iconPath)
+        {
+            if (!File.Exists(iconPath))
+            {
+                throw new FileNotFoundException("Icon file not found", iconPath);
+            }
 
+            using (FileStream stream = File.OpenRead(iconPath))
+            {
+                ImageResult image = ImageResult.FromStream(stream, ColorComponents.RedGreenBlueAlpha);
+
+                GCHandle handle = GCHandle.Alloc(image.Data, GCHandleType.Pinned);
+                IntPtr dataPtr = handle.AddrOfPinnedObject();
+
+                Image icon = new Image
+                {
+                    Width = image.Width,
+                    Height = image.Height,
+                    Pixels = dataPtr
+                };
+
+                handle.Free();
+
+                return icon;
+            }
+        }
+        
+       private Image LoadIcon(string iconPath)
+       {
+           if (!File.Exists(iconPath))
+           {
+               throw new FileNotFoundException("Icon file not found", iconPath);
+           }
+       
+           using (FileStream stream = File.OpenRead(iconPath))
+           {
+               ImageResult image = ImageResult.FromStream(stream, ColorComponents.RedGreenBlueAlpha);
+       
+               GCHandle handle = GCHandle.Alloc(image.Data, GCHandleType.Pinned);
+               IntPtr dataPtr = handle.AddrOfPinnedObject();
+       
+               Image icon = new Image(image.Width, image.Height, dataPtr);
+       
+               handle.Free();
+       
+               return icon;
+           }
+       }
+        
+        
         /// <summary>
         ///     Ons the start
         /// </summary>

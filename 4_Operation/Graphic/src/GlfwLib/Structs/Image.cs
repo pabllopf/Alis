@@ -12,17 +12,17 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
         /// <summary>
         ///     The height, in pixels, of this image.
         /// </summary>
-        public readonly int Width;
+        public int Width;
 
         /// <summary>
         ///     The width, in pixels, of this image.
         /// </summary>
-        public readonly int Height;
+        public int Height;
 
         /// <summary>
         ///     Pointer to the RGBA pixel data of this image, arranged left-to-right, top-to-bottom.
         /// </summary>
-        public readonly IntPtr Pixels;
+        public IntPtr Pixels;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Image" /> struct.
