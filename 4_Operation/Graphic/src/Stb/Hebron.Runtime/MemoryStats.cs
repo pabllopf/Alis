@@ -5,7 +5,7 @@ namespace Alis.Core.Graphic.Stb.Hebron.Runtime
 	/// <summary>
 	/// The memory stats class
 	/// </summary>
-	internal unsafe static class MemoryStats
+	internal static class MemoryStats
 	{
 		/// <summary>
 		/// The allocations
