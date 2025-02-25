@@ -16,6 +16,9 @@ namespace Alis.Core.Ecs.System.Manager.Input
     /// <seealso cref="AManager"/>
     public class InputManager : AManager
     {
+        private KeyCallback keyCallback;
+        
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="InputManager"/> class
         /// </summary>
@@ -29,7 +32,8 @@ namespace Alis.Core.Ecs.System.Manager.Input
         /// </summary>
         public override void OnInit()
         {
-            Glfw.SetKeyCallback(Context.GraphicManager.Window, KeyCallback);
+            keyCallback = KeyCallback;
+            Glfw.SetKeyCallback(Context.GraphicManager.Window, keyCallback);
         }
 
         /// <summary>
@@ -37,7 +41,6 @@ namespace Alis.Core.Ecs.System.Manager.Input
         /// </summary>
         public override void OnDispatchEvents()
         {
-            Glfw.PollEvents();
             if (Glfw.WindowShouldClose(Context.GraphicManager.Window))
             {
                 Context.IsRunning = false;

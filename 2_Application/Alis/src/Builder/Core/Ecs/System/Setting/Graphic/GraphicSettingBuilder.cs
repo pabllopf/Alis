@@ -30,6 +30,7 @@
 using System;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.System.Configuration.Graphic;
 using Alis.Core.Graphic;
@@ -84,6 +85,12 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Graphic
         public GraphicSettingBuilder Resolution(int x, int y)
         {
             graphicSetting.WindowSize = new Vector2F(x, y);
+            return this;
+        }
+
+        public GraphicSettingBuilder BackgroundColor(Color color)
+        {
+            graphicSetting.BackgroundColor = color;
             return this;
         }
     }
