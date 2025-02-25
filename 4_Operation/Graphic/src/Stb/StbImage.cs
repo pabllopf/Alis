@@ -10,9 +10,6 @@ namespace Alis.Core.Graphic.Stb
 	/// The stb image class
 	/// </summary>
 	public
-#else
-	internal
-#endif
 	static unsafe partial class StbImage
 	{
 		/// <summary>

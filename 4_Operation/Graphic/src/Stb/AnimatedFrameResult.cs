@@ -6,9 +6,6 @@ namespace Alis.Core.Graphic.Stb
 	/// </summary>
 	/// <seealso cref="ImageResult"/>
 	public
-#else
-	internal
-#endif
 	class AnimatedFrameResult : ImageResult
 	{
 		/// <summary>

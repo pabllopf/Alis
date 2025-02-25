@@ -10,9 +10,6 @@ namespace Alis.Core.Graphic.Stb
 	/// The image result float class
 	/// </summary>
 	public
-#else
-	internal
-#endif
 	class ImageResultFloat
 	{
 		/// <summary>
