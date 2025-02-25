@@ -105,13 +105,13 @@ jobs:
           sudo apt-get update -y
           sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev ffmpeg
 
-      - name: free disk space
+      - name: Free up disk space
         run: |
-          sudo swapoff -a
-          sudo rm -f /swapfile
-          sudo apt clean
-          docker rmi $(docker image ls -aq)
+          sudo apt-get clean
+          sudo apt-get autoremove -y
+          sudo rm -rf /usr/local/lib/android /opt/ghc /usr/share/dotnet /usr/share/swift /usr/local/.ghcup
           df -h
+
 
       - name: Dotnet test Release
         run: dotnet test alis.sln -c Release -f net8.0
