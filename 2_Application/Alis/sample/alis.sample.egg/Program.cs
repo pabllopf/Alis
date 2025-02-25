@@ -39,6 +39,7 @@ namespace Alis.Sample.Egg
     /// </summary>
     public static class Program
     {
+        
         /// <summary>
         ///     Main the args
         /// </summary>
