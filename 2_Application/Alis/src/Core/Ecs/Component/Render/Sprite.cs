@@ -175,10 +175,16 @@ namespace Alis.Core.Ecs.Component.Render
                 #version 330 core
                 layout (location = 0) in vec3 aPos;
                 layout (location = 1) in vec2 aTexCoord;
+                layout (location = 2) in vec3 aNormal;
+                
                 out vec2 TexCoord;
+                out vec3 Normal;
+                out vec3 FragPos;
+                
                 uniform vec2 offset;
                 uniform vec2 scale;
                 uniform float rotation;
+                
                 void main()
                 {
                     float radians = radians(rotation);
@@ -189,18 +195,36 @@ namespace Alis.Core.Ecs.Component.Render
                     vec2 rotatedPos = rotationMatrix * scaledPos;
                     gl_Position = vec4(rotatedPos + offset, aPos.z, 1.0);
                     TexCoord = vec2(aTexCoord.x, 1.0 - aTexCoord.y);
+                    FragPos = vec3(rotatedPos + offset, aPos.z);
+                    Normal = aNormal;
                 }
             ";
             
             string fragmentShaderSource = @"
-                #version 330 core
-                out vec4 FragColor;
-                in vec2 TexCoord;
-                uniform sampler2D texture1;
-                void main()
-                {
-                    FragColor = texture(texture1, TexCoord);
-                }
+               #version 330 core
+               out vec4 FragColor;
+               in vec2 TexCoord;
+               in vec3 Normal;
+               in vec3 FragPos;
+               
+               uniform sampler2D texture1;
+               uniform vec3 lightDir;
+               uniform vec3 lightColor;
+               
+               void main()
+               {
+                   // Ambient lighting
+                   vec3 ambient = 0.1 * lightColor;
+               
+                   // Diffuse lighting
+                   vec3 norm = normalize(Normal);
+                   float diff = max(dot(norm, -lightDir), 0.0);
+                   vec3 diffuse = diff * lightColor;
+               
+                   // Combine results
+                   vec3 result = (ambient + diffuse) * texture(texture1, TexCoord).rgb;
+                   FragColor = vec4(result, 1.0);
+               }
             ";
 
             uint vertexShader = Gl.GlCreateShader(ShaderType.VertexShader);
@@ -281,41 +305,45 @@ namespace Alis.Core.Ecs.Component.Render
         {
             int windowWidth = (int) Context.Setting.Graphic.WindowSize.X;
             int windowHeight = (int) Context.Setting.Graphic.WindowSize.Y;
-
+        
             float scaleX = Size.X / windowWidth;
             float scaleY = Size.Y / windowHeight;
-
+        
             float[] vertices =
             {
-                1 * scaleX, 1 * scaleY, 0.0f, 1.0f, 0.0f,
-                1 * scaleX, -1 * scaleY, 0.0f, 1.0f, 1.0f,
-                -1 * scaleX, -1 * scaleY, 0.0f, 0.0f, 1.0f,
-                -1 * scaleX, 1f * scaleY, 0.0f, 0.0f, 0.0f
+                // positions        // texture coords // normals
+                1 * scaleX, 1 * scaleY, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f,
+                1 * scaleX, -1 * scaleY, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f,
+                -1 * scaleX, -1 * scaleY, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
+                -1 * scaleX, 1f * scaleY, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f
             };
-
+        
             uint[] indices = {0, 1, 3, 1, 2, 3};
-
+        
             Vao = Gl.GenVertexArray();
             Vbo = Gl.GenBuffer();
             Ebo = Gl.GenBuffer();
-
+        
             Gl.GlBindVertexArray(Vao);
-
+        
             Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
             verticesHandle = GCHandle.Alloc(vertices, GCHandleType.Pinned);
             Gl.GlBufferData(BufferTarget.ArrayBuffer, (IntPtr) (vertices.Length * sizeof(float)), verticesHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
             verticesHandle.Free();
-
+        
             Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, Ebo);
             indicesHandle = GCHandle.Alloc(indices, GCHandleType.Pinned);
             Gl.GlBufferData(BufferTarget.ElementArrayBuffer, (IntPtr) (indices.Length * sizeof(uint)), indicesHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
             indicesHandle.Free();
-
-            Gl.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), IntPtr.Zero);
+        
+            Gl.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 8 * sizeof(float), IntPtr.Zero);
             Gl.EnableVertexAttribArray(0);
-
-            Gl.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), (IntPtr) (3 * sizeof(float)));
+        
+            Gl.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, 8 * sizeof(float), (IntPtr) (3 * sizeof(float)));
             Gl.EnableVertexAttribArray(1);
+        
+            Gl.VertexAttribPointer(2, 3, VertexAttribPointerType.Float, false, 8 * sizeof(float), (IntPtr) (5 * sizeof(float)));
+            Gl.EnableVertexAttribArray(2);
         }
 
         /// <summary>
