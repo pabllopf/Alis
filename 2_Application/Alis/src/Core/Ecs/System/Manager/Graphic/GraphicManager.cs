@@ -65,6 +65,8 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         ///     The pixels per meter
         /// </summary>
         private const float PixelsPerMeter = 32.0f;
+        
+        private SizeCallback framebufferSizeCallback;
 
         /// <summary>
         ///     The world position
@@ -143,10 +145,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         public override void OnInit()
         {
             // Initialize GLFW
-            if (!Glfw.Init())
-            {
-                throw new Exception("Failed to initialize GLFW");
-            }
+            Glfw.Init();
             
             // Set GLFW window hints for OpenGL context
             Glfw.WindowHint(Hint.ContextVersionMajor, 3);
@@ -194,7 +193,8 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                }
            }
             
-            Glfw.SetFramebufferSizeCallback(Window, FramebufferSizeCallback);
+           framebufferSizeCallback = FramebufferSizeCallback;
+           Glfw.SetFramebufferSizeCallback(Window, framebufferSizeCallback);
         }
         
         private static Image LoadIcon2(string iconPath)
@@ -258,10 +258,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         public override void OnBeforeDraw()
         {
         }
-
-        /// <summary>
-        ///     Ons the draw
-        /// </summary>
+        
         public override void OnDraw()
         {
             float pixelsPerMeter = PixelsPerMeter;
@@ -271,17 +268,20 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Color debugColor = physicSettings.DebugColor;
             Color backgrounColor = contextSetting.Graphic.BackgroundColor;
             
+            Glfw.PollEvents();
            
+            // Set the clear color (convert from 0-255 range to 0.0-1.0 range)
+            Gl.GlClearColor(backgrounColor.R / 255.0f, backgrounColor.G / 255.0f, backgrounColor.B / 255.0f, backgrounColor.A / 255.0f);
+            
             // Clear the screen
             Gl.GlClear(ClearBufferMask.ColorBufferBit);
             
             // Draw the sprites:
-
             foreach (Camera camera in Cameras)
             {
                 foreach (Sprite sprite in Sprites.OrderBy(o => o.Depth))
                 {
-                    // Render sprite with opengl:
+                    // Render sprite with OpenGL:
                     sprite.Render(camera.Position, camera.Resolution, pixelsPerMeter);
                 }
 
@@ -289,14 +289,10 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 {
                     collider.Render(camera.Position, camera.Resolution, pixelsPerMeter, debugColor);
                 }
-
             }
-            
-            Gl.GlClearColor(backgrounColor.R, backgrounColor.G, backgrounColor.B, backgrounColor.A);
             
             // Swap the buffers to display the triangle
             Glfw.SwapBuffers(Window);
-           
         }
 
         /// <summary>

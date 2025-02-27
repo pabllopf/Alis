@@ -61,6 +61,7 @@ namespace Alis.Sample.Egg
                     .Graphic(graphic => graphic
                         .Resolution(1024, 640)
                         .FrameRate(60)
+                        .BackgroundColor(new Color(20, 23, 32, 255))
                         .Build())
                     .Physic(physic => physic
                         .Gravity(0.0f, -9.8f)
@@ -79,7 +80,6 @@ namespace Alis.Sample.Egg
                             .AddComponent<Camera>(camera => camera
                                 .Builder()
                                 .Resolution(1024, 640)
-                                .BackgroundColor(Color.Black)
                                 .Build())
                             .Build())
                         
@@ -116,6 +116,43 @@ namespace Alis.Sample.Egg
                             .AddComponent<Sprite>(sprite => sprite.Builder()
                                 .SetTexture("yema.jpeg")
                                 .Depth(2)
+                                .Build())
+                            .Build())
+                        
+                        
+                        .Add<GameObject>(sarten => sarten
+                            .Transform(transform => transform
+                                .Position(-4, 0)
+                                .Rotation(0)
+                                .Scale(0.40f, 0.40f)
+                                .Build())
+                            .AddComponent<Sprite>(sprite => sprite.Builder()
+                                .SetTexture("vitro.jpeg")
+                                .Depth(-2)
+                                .Build())
+                            .Build())
+                        
+                        .Add<GameObject>(sarten => sarten
+                            .Transform(transform => transform
+                                .Position(9, -8)
+                                .Rotation(0)
+                                .Scale(0.08f, 0.08f)
+                                .Build())
+                            .AddComponent<Sprite>(sprite => sprite.Builder()
+                                .SetTexture("button.jpeg")
+                                .Depth(-1)
+                                .Build())
+                            .Build())
+                        
+                        .Add<GameObject>(sarten => sarten
+                            .Transform(transform => transform
+                                .Position(13, -8)
+                                .Rotation(0)
+                                .Scale(0.08f, 0.08f)
+                                .Build())
+                            .AddComponent<Sprite>(sprite => sprite.Builder()
+                                .SetTexture("button.jpeg")
+                                .Depth(-1)
                                 .Build())
                             .Build())
                         
