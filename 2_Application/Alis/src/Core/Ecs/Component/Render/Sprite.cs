@@ -191,7 +191,7 @@ namespace Alis.Core.Ecs.Component.Render
                     TexCoord = vec2(aTexCoord.x, 1.0 - aTexCoord.y);
                 }
             ";
-            
+
             string fragmentShaderSource = @"
                 #version 330 core
                 out vec4 FragColor;
@@ -333,42 +333,41 @@ namespace Alis.Core.Ecs.Component.Render
         public void Render(Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
         {
             Vector2F position = GameObject.Transform.Position;
-            Vector2F scale = GameObject.Transform.Scale;
             float spriteRotation = GameObject.Transform.Rotation;
-        
+
             Gl.GlUseProgram(ShaderProgram);
             Gl.GlBindVertexArray(Vao);
             Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, Ebo);
             Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
-        
+
             // Conversión de metros a píxeles
             float positionXPixels = (position.X - cameraPosition.X) * pixelsPerMeter;
             float positionYPixels = (position.Y - cameraPosition.Y) * pixelsPerMeter;
-            
+
             // Normalizar a coordenadas OpenGL (-1 a 1) usando la resolución de la cámara
             float worldX = (2.0f * positionXPixels / cameraResolution.X);
             float worldY = (2.0f * positionYPixels / cameraResolution.Y);
-            
+
             // Enviar valores normalizados al shader
             int offsetLocation = Gl.GlGetUniformLocation(ShaderProgram, "offset");
             Gl.GlUniform2F(offsetLocation, worldX, worldY);
-        
+
             int scaleLocation = Gl.GlGetUniformLocation(ShaderProgram, "scale");
             Gl.GlUniform2F(scaleLocation, GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y);
-        
+
             int rotationLocation = Gl.GlGetUniformLocation(ShaderProgram, "rotation");
             Gl.GlUniform1F(rotationLocation, spriteRotation);
-        
+
             // Activar blending para manejar transparencias
             Gl.GlEnable(EnableCap.Blend);
             Gl.GlBlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
-        
+
             // Vincular la textura antes de dibujar
             Gl.GlBindTexture(TextureTarget.Texture2D, Texture);
-        
+
             // Dibujar el sprite
             Gl.GlDrawElements(PrimitiveType.Triangles, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
-        
+
             Gl.GlDisable(EnableCap.Blend);
         }
     }

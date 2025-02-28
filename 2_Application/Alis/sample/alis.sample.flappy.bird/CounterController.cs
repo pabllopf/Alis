@@ -51,7 +51,7 @@ namespace Alis.Sample.Flappy.Bird
         /// <summary>
         ///     The font manager
         /// </summary>
-        private FontManager fontManager;
+        //private FontManager fontManager;
 
         /// <summary>
         ///     The is enter
@@ -91,8 +91,8 @@ namespace Alis.Sample.Flappy.Bird
         public override void OnInit()
         {
             audioSource = GameObject.Get<AudioSource>();
-            fontManager = Context.GraphicManager.FontManager;
-            fontManager.LoadFont("MONO", 16, AssetManager.Find("mono.bmp"));
+            //fontManager = Context.GraphicManager.FontManager;
+            //fontManager.LoadFont("MONO", 16, AssetManager.Find("mono.bmp"));
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Alis.Sample.Flappy.Bird
         /// </summary>
         public override void OnGui()
         {
-            fontManager.RenderText("MONO", $"{Counter}", -0.5f, -7, Color.White, 32);
+            //fontManager.RenderText("MONO", $"{Counter}", -0.5f, -7, Color.White, 32);
         }
 
         /// <summary>
