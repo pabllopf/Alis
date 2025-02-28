@@ -58,9 +58,6 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     Initializes a new instance of the <see cref="Camera" /> class
         /// </summary>
-        #if NET5_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.DynamicDependency(global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicConstructors, typeof(Camera))]
-        #endif
         public Camera()
         {
             Viewport = new RectangleI(0, 0, 1024, 640);
