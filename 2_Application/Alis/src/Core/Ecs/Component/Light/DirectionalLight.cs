@@ -28,6 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Aspect.Math.Definition;
+using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Ecs.Component.Light
 {
@@ -37,6 +39,10 @@ namespace Alis.Core.Ecs.Component.Light
     /// <seealso cref="ALight" />
     public class DirectionalLight : ALight
     {
+        public Vector3F Direction { get; set; } = new Vector3F(0.0f, -1.0f, -1.0f);
+        
+        public Color Color { get; set; } = new Color(255, 0, 0, 255);
+        
         /// <summary>
         ///     Inits this instance
         /// </summary>
