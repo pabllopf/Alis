@@ -31,6 +31,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Data.Json;
+using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Logging;
 
@@ -90,13 +91,19 @@ namespace Alis.Core.Ecs.Component.Render
         ///     Builders this instance
         /// </summary>
         /// <returns>The animator builder</returns>
-        public AnimatorBuilder Builder() => new AnimatorBuilder();
+        public AnimatorBuilder Builder()
+        {
+            return new AnimatorBuilder();
+        }
 
         /// <summary>
         ///     Adds the animation using the specified animation
         /// </summary>
         /// <param name="animation">The animation</param>
-        public void AddAnimation(Animation animation) => Animations.Add(animation);
+        public void AddAnimation(Animation animation)
+        {
+            Animations.Add(animation);
+        }
 
         /// <summary>
         ///     Inits this instance
@@ -139,7 +146,7 @@ namespace Alis.Core.Ecs.Component.Render
             {
                 if (currentAnimation.HasNext())
                 {
-                    Sprite = new Sprite(currentAnimation.NextTexture().NameFile);
+                    Sprite.LoadTexture(AssetManager.Find(currentAnimation.NextTexture().NameFile));
                 }
 
                 Timer.Restart();
@@ -176,6 +183,9 @@ namespace Alis.Core.Ecs.Component.Render
         ///     Gets the current animation
         /// </summary>
         /// <returns>The animation</returns>
-        public Animation GetCurrentAnimation() => currentAnimation;
+        public Animation GetCurrentAnimation()
+        {
+            return currentAnimation;
+        }
     }
 }

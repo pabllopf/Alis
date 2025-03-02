@@ -80,24 +80,85 @@ namespace Alis.Sample.Rogue
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite.Builder()
                                 .SetTexture("tile000.bmp")
+                                .Depth(-1)
+                                .Build())
+                            .AddComponent<Animator>(animator => animator.Builder()
+                                .AddAnimation(animation1 => animation1
+                                    .Name("Walk Down")
+                                    .Order(0)
+                                    .Speed(0.2f)
+                                    .AddFrame(frame => frame
+                                        .FilePath("tile000.bmp")
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath("tile001.bmp")
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath("tile002.bmp")
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath("tile003.bmp")
+                                        .Build())
+                                    .Build())
+                                
+                                .AddAnimation(animation2 => animation2
+                                    .Name("Walk Right")
+                                    .Order(1)
+                                    .Speed(0.2f)
+                                    .AddFrame(frame => frame
+                                        .FilePath("tile017.bmp")
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath("tile018.bmp")
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath("tile019.bmp")
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath("tile020.bmp")
+                                        .Build())
+                                    .Build())
+                                
+                                .AddAnimation(animation2 => animation2
+                                    .Name("Walk Up")
+                                    .Order(2)
+                                    .Speed(0.2f)
+                                    .AddFrame(frame => frame
+                                        .FilePath("tile034.bmp")
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath("tile035.bmp")
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath("tile036.bmp")
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath("tile037.bmp")
+                                        .Build())
+                                    .Build())
+                                
+                                .AddAnimation(animation2 => animation2
+                                    .Name("Walk Left")
+                                    .Order(3)
+                                    .Speed(0.2f)
+                                    .AddFrame(frame => frame
+                                        .FilePath("tile051.bmp")
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath("tile052.bmp")
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath("tile053.bmp")
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath("tile054.bmp")
+                                        .Build())
+                                    .Build())
+                                
                                 .Build())
                             .AddComponent<Camera>(camera => camera.Builder()
                                 .Resolution(800, 800)
                                 .BackgroundColor(Color.Brown)
-                                .Build())
-                            .AddComponent<BoxCollider>(boxCollider => boxCollider
-                                .Builder()
-                                .IsActive(true)
-                                .BodyType(BodyType.Kinematic)
-                                .IsTrigger(false)
-                                .AutoTilling(true)
-                                .Rotation(0.0f)
-                                .Size(1, 1)
-                                .Mass(1.0f)
-                                .Restitution(0.0f)
-                                .Friction(0f)
-                                .FixedRotation(true)
-                                .IgnoreGravity(false)
                                 .Build())
                             .AddComponent(new PlayerMovement())
                             .Build())
@@ -113,6 +174,7 @@ namespace Alis.Sample.Rogue
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite.Builder()
                                 .SetTexture("tree-001.bmp")
+                                .Depth(-1)
                                 .Build())
                             .Build())
 
@@ -127,6 +189,7 @@ namespace Alis.Sample.Rogue
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite.Builder()
                                 .SetTexture("tree-001.bmp")
+                                .Depth(0)
                                 .Build())
                             .Build())
                         .Add<GameObject>(gameObject => gameObject
@@ -139,6 +202,7 @@ namespace Alis.Sample.Rogue
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite.Builder()
                                 .SetTexture("tree-001.bmp")
+                                .Depth(-2)
                                 .Build())
                             .Build())
                         .Add<GameObject>(gameObject => gameObject
@@ -151,6 +215,7 @@ namespace Alis.Sample.Rogue
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite.Builder()
                                 .SetTexture("tree-001.bmp")
+                                .Depth(-1)
                                 .Build())
                             .Build())
                         .Build())
