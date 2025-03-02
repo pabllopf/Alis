@@ -73,7 +73,11 @@ namespace Alis.Core.Graphic.OpenGL
         /// </summary>
         public static readonly Color4f GlColor4f = GetCommand<Color4f>("glColor4f");
         
-        
+        /// <summary>
+        /// The depth func
+        /// </summary>
+        public static readonly DepthFunc GlDepthFunc = GetCommand<DepthFunc>("glDepthFunc");
+
         /// <summary>
         /// The end
         /// </summary>
