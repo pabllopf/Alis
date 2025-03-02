@@ -32,7 +32,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Numerics;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Resource;
@@ -40,7 +39,6 @@ using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component.Collider;
-using Alis.Core.Ecs.Component.Light;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.System.Configuration;
 using Alis.Core.Ecs.System.Configuration.Physic;
@@ -261,49 +259,41 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         {
         }
         
-       public override void OnDraw()
-       {
-           float pixelsPerMeter = PixelsPerMeter;
-           IntPtr renderer = Renderer;
-           Setting contextSetting = Context.Setting;
-           PhysicSetting physicSettings = contextSetting.Physic;
-           Color debugColor = physicSettings.DebugColor;
-           Color backgrounColor = contextSetting.Graphic.BackgroundColor;
+        public override void OnDraw()
+        {
+            float pixelsPerMeter = PixelsPerMeter;
+            IntPtr renderer = Renderer;
+            Setting contextSetting = Context.Setting;
+            PhysicSetting physicSettings = contextSetting.Physic;
+            Color debugColor = physicSettings.DebugColor;
+            Color backgrounColor = contextSetting.Graphic.BackgroundColor;
+            
+            Glfw.PollEvents();
            
-           Glfw.PollEvents();
-          
-           // Set the clear color (convert from 0-255 range to 0.0-1.0 range)
-           Gl.GlClearColor(backgrounColor.R / 255.0f, backgrounColor.G / 255.0f, backgrounColor.B / 255.0f, backgrounColor.A / 255.0f);
-           
-           // Clear the screen
-           Gl.GlClear(ClearBufferMask.ColorBufferBit);
-           
-           // Draw the sprites:
-           foreach (Camera camera in Cameras)
-           {
-               foreach (Sprite sprite in Sprites.OrderBy(o => o.Depth))
-               {
-                   // Set light properties
-                   DirectionalLight dirLight = new DirectionalLight();
-                   int lightDirLocation = Gl.GlGetUniformLocation(sprite.ShaderProgram, "lightDir");
-                   Gl.GlUniform3F(lightDirLocation, dirLight.Direction.X, dirLight.Direction.Y, dirLight.Direction.Z);
+            // Set the clear color (convert from 0-255 range to 0.0-1.0 range)
+            Gl.GlClearColor(backgrounColor.R / 255.0f, backgrounColor.G / 255.0f, backgrounColor.B / 255.0f, backgrounColor.A / 255.0f);
+            
+            // Clear the screen
+            Gl.GlClear(ClearBufferMask.ColorBufferBit);
+            
+            // Draw the sprites:
+            foreach (Camera camera in Cameras)
+            {
+                foreach (Sprite sprite in Sprites.OrderBy(o => o.Depth))
+                {
+                    // Render sprite with OpenGL:
+                    sprite.Render(camera.Position, camera.Resolution, pixelsPerMeter);
+                }
 
-                   int lightColorLocation = Gl.GlGetUniformLocation(sprite.ShaderProgram, "lightColor");
-                   Gl.GlUniform3F(lightColorLocation, dirLight.Color.R / 255.0f, dirLight.Color.G / 255.0f, dirLight.Color.B / 255.0f);
-                   
-                   // Render sprite with OpenGL:
-                   sprite.Render(camera.Position, camera.Resolution, pixelsPerMeter);
-               }
-       
-               foreach (BoxCollider collider in ColliderBases)
-               {
-                   collider.Render(camera.Position, camera.Resolution, pixelsPerMeter, debugColor);
-               }
-           }
-           
-           // Swap the buffers to display the triangle
-           Glfw.SwapBuffers(Window);
-       }
+                foreach (BoxCollider collider in ColliderBases)
+                {
+                    collider.Render(camera.Position, camera.Resolution, pixelsPerMeter, debugColor);
+                }
+            }
+            
+            // Swap the buffers to display the triangle
+            Glfw.SwapBuffers(Window);
+        }
 
         /// <summary>
         /// Framebuffers the size callback using the specified window
