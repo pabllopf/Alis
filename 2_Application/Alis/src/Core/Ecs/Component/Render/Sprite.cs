@@ -116,6 +116,9 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public uint Texture { get; private set; }
 
+        [JsonPropertyName("_Flip_")]
+        public bool Flip { get; set; }
+
         /// <summary>
         /// Builders this instance
         /// </summary>
@@ -171,26 +174,34 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         private void InitializeShaders()
         {
-            string vertexShaderSource = @"
-                #version 330 core
-                layout (location = 0) in vec3 aPos;
-                layout (location = 1) in vec2 aTexCoord;
-                out vec2 TexCoord;
-                uniform vec2 offset;
-                uniform vec2 scale;
-                uniform float rotation;
-                void main()
-                {
-                    float radians = radians(rotation);
-                    float cosTheta = cos(radians);
-                    float sinTheta = sin(radians);
-                    mat2 rotationMatrix = mat2(cosTheta, -sinTheta, sinTheta, cosTheta);
-                    vec2 scaledPos = aPos.xy * scale;
-                    vec2 rotatedPos = rotationMatrix * scaledPos;
-                    gl_Position = vec4(rotatedPos + offset, aPos.z, 1.0);
-                    TexCoord = vec2(aTexCoord.x, 1.0 - aTexCoord.y);
-                }
-            ";
+         string vertexShaderSource = @"
+             #version 330 core
+             layout (location = 0) in vec3 aPos;
+             layout (location = 1) in vec2 aTexCoord;
+             out vec2 TexCoord;
+             uniform vec2 offset;
+             uniform vec2 scale;
+             uniform float rotation;
+             uniform int flip;
+             void main()
+             {
+                 float radians = radians(rotation);
+                 float cosTheta = cos(radians);
+                 float sinTheta = sin(radians);
+                 mat2 rotationMatrix = mat2(cosTheta, -sinTheta, sinTheta, cosTheta);
+                 vec2 scaledPos = aPos.xy * scale;
+                 vec2 rotatedPos = rotationMatrix * scaledPos;
+                 gl_Position = vec4(rotatedPos + offset, aPos.z, 1.0);
+                 if (flip == 1)
+                 {
+                     TexCoord = vec2(1.0 - aTexCoord.x, aTexCoord.y);
+                 }
+                 else
+                 {
+                     TexCoord = vec2(aTexCoord.x, aTexCoord.y);
+                 }
+             }
+         ";
             
             string fragmentShaderSource = @"
                 #version 330 core
@@ -287,10 +298,10 @@ namespace Alis.Core.Ecs.Component.Render
 
             float[] vertices =
             {
-                1 * scaleX, 1 * scaleY, 0.0f, 1.0f, 0.0f,
-                1 * scaleX, -1 * scaleY, 0.0f, 1.0f, 1.0f,
-                -1 * scaleX, -1 * scaleY, 0.0f, 0.0f, 1.0f,
-                -1 * scaleX, 1f * scaleY, 0.0f, 0.0f, 0.0f
+                1 * scaleX, -1 * scaleY, 0.0f, 1.0f, 0.0f,
+                1 * scaleX, 1 * scaleY, 0.0f, 1.0f, 1.0f,
+                -1 * scaleX, 1 * scaleY, 0.0f, 0.0f, 1.0f,
+                -1 * scaleX, -1 * scaleY, 0.0f, 0.0f, 0.0f
             };
 
             uint[] indices = {0, 1, 3, 1, 2, 3};
@@ -323,17 +334,10 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         /// <returns>The object</returns>
         public override object Clone() => new Sprite(NameFile, Depth);
-
-        /// <summary>
-        /// Renders the sprite at its position relative to the camera.
-        /// </summary>
-        /// <param name="cameraPosition">The camera position</param>
-        /// <param name="cameraResolution">The camera resolution</param>
-        /// <param name="pixelsPerMeter">The pixels per meter</param>
+        
         public void Render(Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
         {
             Vector2F position = GameObject.Transform.Position;
-            Vector2F scale = GameObject.Transform.Scale;
             float spriteRotation = GameObject.Transform.Rotation;
         
             Gl.GlUseProgram(ShaderProgram);
@@ -344,11 +348,11 @@ namespace Alis.Core.Ecs.Component.Render
             // Conversión de metros a píxeles
             float positionXPixels = (position.X - cameraPosition.X) * pixelsPerMeter;
             float positionYPixels = (position.Y - cameraPosition.Y) * pixelsPerMeter;
-            
+        
             // Normalizar a coordenadas OpenGL (-1 a 1) usando la resolución de la cámara
             float worldX = (2.0f * positionXPixels / cameraResolution.X);
             float worldY = (2.0f * positionYPixels / cameraResolution.Y);
-            
+        
             // Enviar valores normalizados al shader
             int offsetLocation = Gl.GlGetUniformLocation(ShaderProgram, "offset");
             Gl.GlUniform2F(offsetLocation, worldX, worldY);
@@ -358,6 +362,10 @@ namespace Alis.Core.Ecs.Component.Render
         
             int rotationLocation = Gl.GlGetUniformLocation(ShaderProgram, "rotation");
             Gl.GlUniform1F(rotationLocation, spriteRotation);
+        
+            // Enviar la propiedad Flip al shader
+            int flipLocation = Gl.GlGetUniformLocation(ShaderProgram, "flip");
+            Gl.GlUniform1I(flipLocation, Flip ? 1 : 0);
         
             // Activar blending para manejar transparencias
             Gl.GlEnable(EnableCap.Blend);
