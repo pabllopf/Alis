@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using Alis.Builder.Core.Ecs.Component.Render;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 
 namespace Alis.Core.Ecs.Component.Render
@@ -50,31 +51,44 @@ namespace Alis.Core.Ecs.Component.Render
         /// <param name="textures">The textures</param>
         public Animation(List<Frame> textures) => Frames = textures;
 
+        [JsonConstructor]
+        public Animation(string name, int order, float speed, List<Frame> frames)
+        {
+            Name = name;
+            Order = order;
+            Speed = speed;
+            Frames = frames;
+        }
+        
         /// <summary>
         ///     Gets or sets the value of the name
         /// </summary>
+        [JsonPropertyName("_Name_")]
         public string Name { get; set; } = "Default Animation";
 
         /// <summary>
         ///     Gets or sets the value of the index
         /// </summary>
+        [JsonPropertyName("_Index_")]
         private int Index { get; set; }
-
-
+        
         /// <summary>
         ///     Gets or sets the value of the order
         /// </summary>
+        [JsonPropertyName("_Order_")]
         public int Order { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the speed
         /// </summary>
+        [JsonPropertyName("_Speed_")]
         public float Speed { get; set; } = 1.0f;
 
         /// <summary>
         ///     Gets or sets the value of the textures
         /// </summary>
-        internal List<Frame> Frames { get; }
+        [JsonPropertyName("_Frames_")]
+        public List<Frame> Frames { get; set; }
 
         /// <summary>
         ///     Builders this instance

@@ -93,5 +93,11 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Graphic
             graphicSetting.BackgroundColor = color;
             return this;
         }
+
+        public GraphicSettingBuilder IsResizable(bool value)
+        {
+            graphicSetting.IsResizable = value;
+            return this;
+        }
     }
 }

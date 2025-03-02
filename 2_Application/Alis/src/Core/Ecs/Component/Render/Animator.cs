@@ -75,16 +75,19 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     Gets or sets the value of the timer
         /// </summary>
+        [JsonIgnore]
         internal Stopwatch Timer { get; }
 
         /// <summary>
         ///     Gets or sets the value of the sprite
         /// </summary>
+        [JsonIgnore]
         internal Sprite Sprite { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the animations
         /// </summary>
+        [JsonPropertyName("_Animations_")]
         public List<Animation> Animations { get; }
 
         /// <summary>

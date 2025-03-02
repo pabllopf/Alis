@@ -68,9 +68,10 @@ namespace Alis.Sample.Flappy.Bird
                         .Resolution(288, 512)
                         .BackgroundColor(new Color(141,212,247,255))
                         .FrameRate(30)
+                        .IsResizable(false)
                         .Build())
                     .Physic(physic => physic
-                        .Debug(true)
+                        .Debug(false)
                         .DebugColor(Color.Red)
                         .Gravity(0.0f, -4.5f)
                         .Build())
@@ -184,6 +185,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .AddAnimation(animation => animation
                                     .Name("Fly")
                                     .Speed(0.2f)
+                                    .Order(0)
                                     .AddFrame(frame1 => frame1
                                         .FilePath("bluebird-down_flap.bmp")
                                         .Build())
@@ -450,7 +452,7 @@ namespace Alis.Sample.Flappy.Bird
                             .AddComponent<Sprite>(sprite => sprite
                                 .Builder()
                                 .SetTexture("bluebird-down_flap.bmp")
-                                .Depth(4)
+                                .Depth(0)
                                 .Build())
                             .AddComponent<AudioSource>(audioSource => audioSource
                                 .Builder()
@@ -464,6 +466,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .AddAnimation(animation => animation
                                     .Name("Fly")
                                     .Speed(0.2f)
+                                    .Order(0)
                                     .AddFrame(frame1 => frame1
                                         .FilePath("bluebird-down_flap.bmp")
                                         .Build())

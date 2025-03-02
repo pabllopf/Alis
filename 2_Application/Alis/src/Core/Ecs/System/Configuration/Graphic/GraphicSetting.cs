@@ -82,7 +82,11 @@ namespace Alis.Core.Ecs.System.Configuration.Graphic
         /// <summary>
         /// Gets or sets the value of the window size
         /// </summary>
+        [JsonPropertyName("_WindowSize_")]
         public Vector2F WindowSize { get; set; } = new Vector2F(0, 0);
+
+        [JsonPropertyName("_IsResizable_")]
+        public bool IsResizable { get; set; } = true;
 
         /// <summary>
         ///     Builders this instance
