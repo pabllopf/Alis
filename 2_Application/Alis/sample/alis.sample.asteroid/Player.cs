@@ -174,7 +174,7 @@ namespace Alis.Sample.Asteroid
                 bullet.Transform = transform;
         
                 bullet.Add(new Sprite().Builder()
-                    .SetTexture("asteroid_0.bmp")
+                    .SetTexture("asteroid_0.jpeg")
                     .Depth(1)
                     .Build());
                 

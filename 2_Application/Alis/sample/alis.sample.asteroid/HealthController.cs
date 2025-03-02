@@ -46,7 +46,7 @@ namespace Alis.Sample.Asteroid
         /// <summary>
         /// The font manager
         /// </summary>
-        public FontManager fontManager;
+        //public FontManager fontManager;
 
         /// <summary>
         /// The health
@@ -58,8 +58,8 @@ namespace Alis.Sample.Asteroid
         /// </summary>
         public override void OnStart()
         { 
-            fontManager = Context.GraphicManager.FontManager;
-            fontManager.LoadFont("MONO", 16, AssetManager.Find("mono.bmp"));
+            //fontManager = Context.GraphicManager.FontManager;
+            //fontManager.LoadFont("MONO", 16, AssetManager.Find("mono.bmp"));
         }
 
         /// <summary>
@@ -67,33 +67,33 @@ namespace Alis.Sample.Asteroid
         /// </summary>
         public override void OnGui()
         {
-            if (fontManager == null) return;
+            //if (fontManager == null) return;
             
             if (health == 3)
             {
-                fontManager.RenderText("MONO", $"^", -10.1f, -9, Color.White, 32);
-                fontManager.RenderText("MONO", $"^", -9.3f, -9, Color.White, 32);
-                fontManager.RenderText("MONO", $"^", -8.5f, -9, Color.White, 32);
+             //   fontManager.RenderText("MONO", $"^", -10.1f, -9, Color.White, 32);
+              //  fontManager.RenderText("MONO", $"^", -9.3f, -9, Color.White, 32);
+              //  fontManager.RenderText("MONO", $"^", -8.5f, -9, Color.White, 32);
                 return;
             }
             
             if (health == 2)
             {
-                fontManager.RenderText("MONO", $"^", -10.1f, -9, Color.White, 32);
-                fontManager.RenderText("MONO", $"^", -9.3f, -9, Color.White, 32);
+               // fontManager.RenderText("MONO", $"^", -10.1f, -9, Color.White, 32);
+               // fontManager.RenderText("MONO", $"^", -9.3f, -9, Color.White, 32);
                 return;
             }
             
             if (health == 1)
             {
-                fontManager.RenderText("MONO", $"^", -10.1f, -9, Color.White, 32);
+                //fontManager.RenderText("MONO", $"^", -10.1f, -9, Color.White, 32);
                 return;
             }
             
             if (health >= 0)
             {
-                fontManager.RenderText("MONO", $"GAME OVER", -2.8f, -0.5f, Color.White, 32);
-                fontManager.RenderText("MONO", $"^^^ Press START ^^^", -2f, 0.8f, Color.White, 12);
+               // fontManager.RenderText("MONO", $"GAME OVER", -2.8f, -0.5f, Color.White, 32);
+               // fontManager.RenderText("MONO", $"^^^ Press START ^^^", -2f, 0.8f, Color.White, 12);
                 Context.SceneManager.CurrentScene.GetByTag("Soundtrack").Get<AudioSource>().Stop();
             }
         }

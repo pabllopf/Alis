@@ -47,15 +47,15 @@ namespace Alis.Sample.Asteroid
         /// <summary>
         /// The font manager
         /// </summary>
-        public FontManager fontManager;
+        //public FontManager fontManager;
 
         /// <summary>
         /// Ons the start
         /// </summary>
         public override void OnStart()
         {
-            fontManager = Context.GraphicManager.FontManager;
-            fontManager.LoadFont("MONO", 16, AssetManager.Find("mono.bmp"));
+            //fontManager = Context.GraphicManager.FontManager;
+            //fontManager.LoadFont("MONO", 16, AssetManager.Find("mono.bmp"));
         }
         
         /// <summary>
@@ -72,7 +72,7 @@ namespace Alis.Sample.Asteroid
         {
             if(this.Context.SceneManager.CurrentScene.GetByTag("HealthController").Get<HealthController>().health > 0)
             {
-                fontManager.RenderText("MONO", counter.ToString("D3"), -10, -10, Color.White, 32);
+                //fontManager.RenderText("MONO", counter.ToString("D3"), -10, -10, Color.White, 32);
             }
         }
         
