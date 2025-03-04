@@ -157,6 +157,15 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Glfw.WindowHint(Hint.AlphaBits, 8);
             Glfw.WindowHint(Hint.StencilBits, 8);
             
+            if(Context.Setting.Graphic.IsResizable)
+            {
+                Glfw.WindowHint(Hint.Resizable, true);
+            }
+            else
+            {
+                Glfw.WindowHint(Hint.Resizable, false);
+            }
+            
             // Create a GLFW window
             if (this.Context.Setting.Graphic.WindowSize == new Vector2F(0,0))
             {
@@ -257,9 +266,12 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                     sprite.Render(camera.Position, camera.Resolution, pixelsPerMeter);
                 }
 
-                foreach (BoxCollider collider in ColliderBases)
+                if (physicSettings.DebugMode)
                 {
-                    collider.Render(camera.Position, camera.Resolution, pixelsPerMeter, debugColor);
+                    foreach (BoxCollider collider in ColliderBases)
+                    {
+                        collider.Render(camera.Position, camera.Resolution, pixelsPerMeter, debugColor);
+                    }
                 }
             }
             
