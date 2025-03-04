@@ -116,19 +116,17 @@ namespace Alis.Sample.King.Platform
                                 .AddAnimation(animation2 => animation2
                                     .Name("Jump")
                                     .Order(2)
-                                    .Speed(0.25f)
+                                    .Speed(0.35f)
                                     .AddFrame(frame => frame
                                         .FilePath("tile027.bmp")
                                         .Build())
                                     .AddFrame(frame => frame
-                                        .FilePath("tile028.bmp")
-                                        .Build())
-                                    .AddFrame(frame => frame
-                                        .FilePath("tile029.bmp")
-                                        .Build())
-                                    .AddFrame(frame => frame
                                         .FilePath("tile030.bmp")
                                         .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath("tile025.bmp")
+                                        .Build())
+                                    
                                     .Build())
                                 .Build())
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
@@ -155,7 +153,7 @@ namespace Alis.Sample.King.Platform
                         // FLOOR
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Floor")
-                            .WithTag("Floor Down")
+                            .WithTag("Floor")
                             .IsStatic()
                             .Transform(transform => transform
                                 .Position(0, 0)
