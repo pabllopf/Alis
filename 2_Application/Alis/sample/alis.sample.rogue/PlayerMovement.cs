@@ -32,6 +32,7 @@ using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
+using Alis.Core.Ecs.Component.Render;
 
 namespace Alis.Sample.Rogue
 {
@@ -64,24 +65,28 @@ namespace Alis.Sample.Rogue
             if (key == Keys.D)
             {
                 GameObject.Transform = new Transform(new Vector2F(GameObject.Transform.Position.X + 1, GameObject.Transform.Position.Y), GameObject.Transform.Rotation, GameObject.Transform.Scale);
+                GameObject.Get<Animator>().ChangeAnimationTo("Walk Right");
                 Logger.Info(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation);
             }
 
             if (key == Keys.A)
             {
                 GameObject.Transform = new Transform(new Vector2F(GameObject.Transform.Position.X - 1, GameObject.Transform.Position.Y), GameObject.Transform.Rotation, GameObject.Transform.Scale);
+                GameObject.Get<Animator>().ChangeAnimationTo("Walk Left");
                 Logger.Info(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation);
             }
 
             if (key == Keys.W)
             {
-                GameObject.Transform = new Transform(new Vector2F(GameObject.Transform.Position.X, GameObject.Transform.Position.Y - 1), GameObject.Transform.Rotation, GameObject.Transform.Scale);
+                GameObject.Transform = new Transform(new Vector2F(GameObject.Transform.Position.X, GameObject.Transform.Position.Y + 1), GameObject.Transform.Rotation, GameObject.Transform.Scale);
+                GameObject.Get<Animator>().ChangeAnimationTo("Walk Up");
                 Logger.Info(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation);
             }
 
             if (key == Keys.S)
             {
-                GameObject.Transform = new Transform(new Vector2F(GameObject.Transform.Position.X, GameObject.Transform.Position.Y + 1), GameObject.Transform.Rotation, GameObject.Transform.Scale);
+                GameObject.Transform = new Transform(new Vector2F(GameObject.Transform.Position.X, GameObject.Transform.Position.Y - 1), GameObject.Transform.Rotation, GameObject.Transform.Scale);
+                GameObject.Get<Animator>().ChangeAnimationTo("Walk Down");
                 Logger.Info(GameObject.Transform.Position.X + " " + GameObject.Transform.Position.Y + " " + GameObject.Transform.Rotation);
             }
         }

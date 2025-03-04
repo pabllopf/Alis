@@ -197,33 +197,6 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
            Glfw.SetFramebufferSizeCallback(Window, framebufferSizeCallback);
         }
         
-        private static Image LoadIcon2(string iconPath)
-        {
-            if (!File.Exists(iconPath))
-            {
-                throw new FileNotFoundException("Icon file not found", iconPath);
-            }
-
-            using (FileStream stream = File.OpenRead(iconPath))
-            {
-                ImageResult image = ImageResult.FromStream(stream, ColorComponents.RedGreenBlueAlpha);
-
-                GCHandle handle = GCHandle.Alloc(image.Data, GCHandleType.Pinned);
-                IntPtr dataPtr = handle.AddrOfPinnedObject();
-
-                Image icon = new Image
-                {
-                    Width = image.Width,
-                    Height = image.Height,
-                    Pixels = dataPtr
-                };
-
-                handle.Free();
-
-                return icon;
-            }
-        }
-        
        private Image LoadIcon(string iconPath)
        {
            if (!File.Exists(iconPath))
@@ -262,7 +235,6 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         public override void OnDraw()
         {
             float pixelsPerMeter = PixelsPerMeter;
-            IntPtr renderer = Renderer;
             Setting contextSetting = Context.Setting;
             PhysicSetting physicSettings = contextSetting.Physic;
             Color debugColor = physicSettings.DebugColor;
@@ -308,84 +280,6 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Context.Setting.Graphic.WindowSize = new Vector2F(width, height);
         }
         
-        /// <summary>
-        ///     Renders the grid using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="cameraPosition">The camera position</param>
-        /// <param name="cameraResolution">The camera resolution</param>
-        /// <param name="pixelsPerMeter">The pixels per meter</param>
-        private void RenderGrid(IntPtr renderer, Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
-        {
-            // Set the color for the grid lines
-            //Sdl.SetRenderDrawColor(renderer, Context.Setting.Graphic.GridColor.R, Context.Setting.Graphic.GridColor.G, Context.Setting.Graphic.GridColor.B, Context.Setting.Graphic.GridColor.A);
-
-            // Define the grid size in meters
-            float gridSize = 1000.0f;
-
-            // Calculate the number of lines to draw based on the grid size and pixels per meter
-            int numVerticalLines = (int) gridSize;
-            int numHorizontalLines = (int) gridSize;
-
-            // Draw vertical lines
-            for (int i = 0; i <= numVerticalLines; i++)
-            {
-                float x = -gridSize / 2 + i;
-                int screenX = (int) (x * pixelsPerMeter - cameraPosition.X * pixelsPerMeter + cameraResolution.X / 2);
-                //Sdl.RenderDrawLine(renderer, screenX, 0, screenX, (int) cameraResolution.Y);
-            }
-
-            // Draw horizontal lines
-            for (int i = 0; i <= numHorizontalLines; i++)
-            {
-                float y = -gridSize / 2 + i;
-                int screenY = (int) (y * pixelsPerMeter - cameraPosition.Y * pixelsPerMeter + cameraResolution.Y / 2);
-                //Sdl.RenderDrawLine(renderer, 0, screenY, (int) cameraResolution.X, screenY);
-            }
-        }
-
-        /// <summary>
-        ///     Renders the circle at world position using the specified world position
-        /// </summary>
-        /// <param name="worldPosition">The world position</param>
-        /// <param name="radius">The radius</param>
-        /// <exception cref="InvalidOperationException">No cameras available to perform the rendering.</exception>
-        [Conditional("DEBUG")]
-        public void RenderCircleAtWorldPosition(Vector2F worldPosition, float radius)
-        {
-            if (Cameras.Count == 0)
-            {
-                throw new InvalidOperationException("No cameras available to perform the rendering.");
-            }
-
-            Camera camera = Cameras[0]; // Assuming the first camera is the main camera
-            Vector2F cameraPosition = camera.Position;
-            Vector2F cameraResolution = camera.Resolution;
-
-            // Convert world position to screen position
-            Vector2F screenPosition = new Vector2F(
-                (worldPosition.X + cameraResolution.X / 2 / PixelsPerMeter - cameraPosition.X) * PixelsPerMeter,
-                (worldPosition.Y + cameraResolution.Y / 2 / PixelsPerMeter - cameraPosition.Y) * PixelsPerMeter
-            );
-
-            // Set the color for the circle
-            //Sdl.SetRenderDrawColor(Renderer, 255, 0, 0, 255); // Red color
-
-            // Draw the circle
-            for (int w = 0; w < radius * 2; w++)
-            {
-                for (int h = 0; h < radius * 2; h++)
-                {
-                    int dx = (int) radius - w; // horizontal offset
-                    int dy = (int) radius - h; // vertical offset
-                    if (dx * dx + dy * dy <= radius * radius)
-                    {
-                        //Sdl.RenderDrawPoint(Renderer, (int) screenPosition.X + dx, (int) screenPosition.Y + dy);
-                    }
-                }
-            }
-        }
-
         /// <summary>
         ///     Attaches the sprite
         /// </summary>
