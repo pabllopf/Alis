@@ -5,6 +5,58 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.6.2] - 2025-03-05
+### :sparkles: New Features
+- [`ab47956`](https://github.com/pabllopf/Alis/commit/ab47956ec34c2b91ad2f32a00e4f938fd92a35aa) - move external sdl2 to extensions and include new default render with glfw and opengl *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5eb40b0`](https://github.com/pabllopf/Alis/commit/5eb40b0859624b3aef10f8b9900a3fc8d7b96df0) - add simple render on engine *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ea9af5d`](https://github.com/pabllopf/Alis/commit/ea9af5d84c4997a12b4c60a1a856451ce08527a5) - rotation on sprite *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3060163`](https://github.com/pabllopf/Alis/commit/3060163f8668a52d6a0f0dfd78b31a9c90788598) - add creation of squares and rectangles *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c5a56b6`](https://github.com/pabllopf/Alis/commit/c5a56b6415526bbda364ce13af9f6bdc659e8ecd) - render custom square red *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`aae2891`](https://github.com/pabllopf/Alis/commit/aae2891539a8ce9d9bc5b55821cc68fc0c8877a7) - big refactor to render with custom resolutions *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7e793ff`](https://github.com/pabllopf/Alis/commit/7e793ff3039a429e304f03f08d4f4f4b539a908b) - scale the render *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4102407`](https://github.com/pabllopf/Alis/commit/4102407fb6ee38f108521438df71773302ccdca1) - add new sprites on game and fix resolution default *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`30a1492`](https://github.com/pabllopf/Alis/commit/30a149244016dbea87d6b14fad2f7b04d62a0dfc) - set desktop icon *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`84c04ea`](https://github.com/pabllopf/Alis/commit/84c04ea8db755e8cc97ad8bd712b971b101ebaab) - add custom sprites to egg game *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`47c6ae5`](https://github.com/pabllopf/Alis/commit/47c6ae597fc66cbc11ad2f9b02ce647eb861bc58) - add GlDepthFunc *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1823202`](https://github.com/pabllopf/Alis/commit/18232029f4c4c1bd24b9b52dcd11a9e0af0edb50) - add simple flip texture *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fbc3384`](https://github.com/pabllopf/Alis/commit/fbc3384a9e6d439c607985ad75a38eb7ada8eebd) - serialize animations *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`628954f`](https://github.com/pabllopf/Alis/commit/628954f93ea03c3bf09cc878a3cb1cbbf371bc63) - size samples *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6d509df`](https://github.com/pabllopf/Alis/commit/6d509df106dbc0d4a832e81c00d79aa2ac13dc4b) - reduce errors *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`dd5ac9a`](https://github.com/pabllopf/Alis/commit/dd5ac9aa3857e982544c187ca44eef8c216a2373) - delete opnegl from sdl2 extension because have the opengl module on core *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a567388`](https://github.com/pabllopf/Alis/commit/a567388544eade8f43ac85a815d46e5a1052eed1) - COMPILATION *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a105b50`](https://github.com/pabllopf/Alis/commit/a105b50857ebe13e606b9e4eca553ffdd865c1ce) - delete opengl distribution *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`26c9a53`](https://github.com/pabllopf/Alis/commit/26c9a53032bcc1d52396c56b1b144370dfd2be9a) - runner *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`17f97b9`](https://github.com/pabllopf/Alis/commit/17f97b9e9076d4a41195f31792ad9f22127aa0bf) - load files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7b8d94a`](https://github.com/pabllopf/Alis/commit/7b8d94ad70ea8f5b744f09ad8fa933533a93fe5d) - delete unless code from graphics *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9b62675`](https://github.com/pabllopf/Alis/commit/9b626757f23dc96a91e25d773e20db30fab2afb6) - config *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4b11626`](https://github.com/pabllopf/Alis/commit/4b1162614208f9db38615c4a418d3378c1fd4c87) - render sprites and boxcollliders *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d9f4ddf`](https://github.com/pabllopf/Alis/commit/d9f4ddfbbf407f01fb0f8bb1c7480ba65ec9e802) - resolution on game of boxcolliders *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`82c2755`](https://github.com/pabllopf/Alis/commit/82c27555620793fa3a45beae6f99c3877a24c9cb) - keys names on samples *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`481f83c`](https://github.com/pabllopf/Alis/commit/481f83c8cc7965bcacd0fbb3402315dec1ce38cd) - camara resolution *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`56f92c6`](https://github.com/pabllopf/Alis/commit/56f92c643e8384a70aa44caea032241fde26d11b) - do public the class of Stb *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d53d63b`](https://github.com/pabllopf/Alis/commit/d53d63b63b287c472e349fa06e9fc1eb8db22ef3) - simple ligth *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`41ead71`](https://github.com/pabllopf/Alis/commit/41ead71123a89532b602ac21e36d558549b55c82) - delete unless atributes *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1f6326f`](https://github.com/pabllopf/Alis/commit/1f6326f5b3a7822bdd99b247e8dd0992238b86e4) - flappy bird game *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b776844`](https://github.com/pabllopf/Alis/commit/b77684429efbb11aeeecd631623a71de8a0cd513) - game asteroid *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0391018`](https://github.com/pabllopf/Alis/commit/0391018846b8d67bc321f7a734caf1f43a746ad8) - animator and include animations on games samples *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`2ae6bad`](https://github.com/pabllopf/Alis/commit/2ae6badeb683a44f9f029b80d902df8a2aefdbce) - check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1aa2b67`](https://github.com/pabllopf/Alis/commit/1aa2b67a3c828034d7ac4c854ed4758da2da2946) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a076074`](https://github.com/pabllopf/Alis/commit/a07607464b60f2fe5c495188037a9ffae838bb1d) - pro delete unlesss tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9af0fbd`](https://github.com/pabllopf/Alis/commit/9af0fbd774b6d5e0deb4bc491810b4efb1f8d07c) - pro Update [PRO][TEST].yml *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8ee16d0`](https://github.com/pabllopf/Alis/commit/8ee16d02276e88fbb6148c283fb527a583b12abe) - pro fix paralles tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`73bcec2`](https://github.com/pabllopf/Alis/commit/73bcec2de16fdb84910f7c396964560345dc54fb) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`01479b5`](https://github.com/pabllopf/Alis/commit/01479b5ea436deabed72bd2abf4a2ed6439aa846) - pro Update [PRO][TEST].yml *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c44a4bc`](https://github.com/pabllopf/Alis/commit/c44a4bc239efbd8003873cb5996acbf83211bec1) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`e207416`](https://github.com/pabllopf/Alis/commit/e207416df1371893f9286483b74036f6c74731a0) - samples *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6ec15c5`](https://github.com/pabllopf/Alis/commit/6ec15c536961afdc9f4ef3583a40fb52dab0be5f) - add coments to external code *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.6.1] - 2025-02-02
 ### :bug: Bug Fixes
 - [`2ad53f4`](https://github.com/pabllopf/Alis/commit/2ad53f4744f0aeaa4f05281d05735827faf2f8aa) - audioclip loop *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -4013,3 +4065,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.5.9]: https://github.com/pabllopf/Alis/compare/v0.5.8...v0.5.9
 [v0.6.0]: https://github.com/pabllopf/Alis/compare/v0.5.9...v0.6.0
 [v0.6.1]: https://github.com/pabllopf/Alis/compare/v0.6.0...v0.6.1
+[v0.6.2]: https://github.com/pabllopf/Alis/compare/v0.6.1...v0.6.2
