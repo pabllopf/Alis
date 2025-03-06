@@ -164,7 +164,7 @@ namespace Alis.Sample.Asteroid
 
 
                         subAsteroid.Add(new Sprite().Builder()
-                            .SetTexture($"asteroid_{randomAsteroid}.bmp")
+                            .SetTexture($"asteroid_{randomAsteroid}.jpeg")
                             .Depth(1)
                             .Build());
                     }
@@ -174,7 +174,7 @@ namespace Alis.Sample.Asteroid
                         int randomAsteroid = random.Next(0, 3);
                         
                         subAsteroid.Add(new Sprite().Builder()
-                            .SetTexture($"asteroid_{randomAsteroid}.bmp")
+                            .SetTexture($"asteroid_{randomAsteroid}.jpeg")
                             .Depth(1)
                             .Build());
                     }
