@@ -116,6 +116,9 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public uint Texture { get; private set; }
 
+        /// <summary>
+        /// Gets or sets the value of the flip
+        /// </summary>
         [JsonPropertyName("_Flip_")]
         public bool Flip { get; set; }
 
@@ -335,6 +338,12 @@ namespace Alis.Core.Ecs.Component.Render
         /// <returns>The object</returns>
         public override object Clone() => new Sprite(NameFile, Depth);
         
+        /// <summary>
+        /// Renders the camera position
+        /// </summary>
+        /// <param name="cameraPosition">The camera position</param>
+        /// <param name="cameraResolution">The camera resolution</param>
+        /// <param name="pixelsPerMeter">The pixels per meter</param>
         public void Render(Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
         {
             Vector2F position = GameObject.Transform.Position;
