@@ -291,13 +291,13 @@ namespace Alis.Benchmark.Iterators
         }
         
         [Benchmark]
-        public int IterateFastest(int[] items)
+        public int IterateFastest()
         {
-            if (items == null || items.Length == 0)
+            if (array == null || array.Length == 0)
                 return 0;
 
-            ref int start = ref MemoryMarshal.GetArrayDataReference(items);
-            ref int end = ref Unsafe.Add(ref start, items.Length);
+            ref int start = ref MemoryMarshal.GetArrayDataReference(array);
+            ref int end = ref Unsafe.Add(ref start, array.Length);
             int sum = 0;
 
             while (Unsafe.IsAddressLessThan(ref start, ref end))
