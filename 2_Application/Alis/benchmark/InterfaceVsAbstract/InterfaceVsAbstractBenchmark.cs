@@ -22,7 +22,7 @@ namespace Alis.Benchmark.InterfaceVsAbstract
         /// <summary>
         /// The 
         /// </summary>
-        [Params(100, 1000, 10000)]
+        [Params(10, 100, 1000)]
         public int N;
     
         /// <summary>
