@@ -1,4 +1,4 @@
-namespace Alis.Benchmark
+namespace Alis.Benchmark.ClassVsStruct.Instancies
 {
     /// <summary>
     /// The struct point
