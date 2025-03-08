@@ -48,8 +48,6 @@ using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Native;
 using Alis.Extension.Graphic.Sdl2;
 
-
-
 namespace Alis.App.Engine.Windows
 {
     /// <summary>

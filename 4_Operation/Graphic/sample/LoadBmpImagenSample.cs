@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:LoadBmpImagenSample.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Graphic.GlfwLib;
@@ -10,33 +39,37 @@ using Exception = System.Exception;
 namespace Alis.Core.Graphic.Sample
 {
     /// <summary>
-    /// The load bmp imagen sample class
+    ///     The load bmp imagen sample class
     /// </summary>
     public class LoadBmpImagenSample
     {
         /// <summary>
-        /// The running
+        ///     The running
         /// </summary>
         private bool running = true;
+
         /// <summary>
-        /// The sprite
+        ///     The sprite
         /// </summary>
         private Sprite sprite1;
+
         /// <summary>
-        /// The sprite
+        ///     The sprite
         /// </summary>
         private Sprite sprite2;
+
         /// <summary>
-        /// The sprite
+        ///     The sprite
         /// </summary>
         private Sprite sprite3;
+
         /// <summary>
-        /// The window
+        ///     The window
         /// </summary>
         private Window window;
 
         /// <summary>
-        /// Runs this instance
+        ///     Runs this instance
         /// </summary>
         /// <exception cref="Exception">Failed to create GLFW window</exception>
         /// <exception cref="Exception">Failed to initialize GLFW</exception>
@@ -113,7 +146,7 @@ namespace Alis.Core.Graphic.Sample
         }
 
         /// <summary>
-        /// Framebuffers the size callback using the specified window
+        ///     Framebuffers the size callback using the specified window
         /// </summary>
         /// <param name="window">The window</param>
         /// <param name="width">The width</param>
@@ -124,7 +157,7 @@ namespace Alis.Core.Graphic.Sample
         }
 
         /// <summary>
-        /// Keys the callback using the specified window
+        ///     Keys the callback using the specified window
         /// </summary>
         /// <param name="window">The window</param>
         /// <param name="key">The key</param>

@@ -43,24 +43,30 @@ namespace Alis.Core.Graphic.OpenGL
     public static class Gl
     {
         /// <summary>
-        /// The get proc address delegate
+        ///     The get proc address delegate
         /// </summary>
         public delegate IntPtr GetProcAddressDelegate(string procName);
 
         /// <summary>
-        /// The get proc address
+        ///     The get proc address
         /// </summary>
         private static GetProcAddressDelegate _getProcAddress = Glfw.GetProcAddress;
 
         /// <summary>
-        /// Initializes the get proc address
+        ///     The uint
         /// </summary>
-        /// <param name="getProcAddress">The get proc address</param>
-        public static void Initialize(GetProcAddressDelegate getProcAddress)
-        {
-            _getProcAddress = getProcAddress;
-        }
-        
+        public static uint[] Uint1 = new uint[1];
+
+        /// <summary>
+        ///     The int
+        /// </summary>
+        public static int[] Int1 = new int[1];
+
+        /// <summary>
+        ///     The matrix float
+        /// </summary>
+        public static float[] Matrix4Float = new float[16];
+
         /// <summary>
         ///     The get string
         /// </summary>
@@ -85,15 +91,15 @@ namespace Alis.Core.Graphic.OpenGL
         ///     The clear color
         /// </summary>
         public static ClearColor GlClearColor => GetCommand<ClearColor>("glClearColor");
-        
+
         /// <summary>
-        /// The color 4f
+        ///     The color 4f
         /// </summary>
         public static Color4f GlColor4f => GetCommand<Color4f>("glColor4f");
-        
-        
+
+
         /// <summary>
-        /// The end
+        ///     The end
         /// </summary>
         public static End GlEnd => GetCommand<End>("glEnd");
 
@@ -141,12 +147,12 @@ namespace Alis.Core.Graphic.OpenGL
         ///     The create shader
         /// </summary>
         public static CreateShader GlCreateShader => GetCommand<CreateShader>("glCreateShader");
-        
+
         /// <summary>
-        /// The begin
+        ///     The begin
         /// </summary>
         public static Begin GlBegin => GetCommand<Begin>("glBegin");
-        
+
         /// <summary>
         ///     The shader source del
         /// </summary>
@@ -276,9 +282,9 @@ namespace Alis.Core.Graphic.OpenGL
         ///     The bind buffer
         /// </summary>
         public static BindBuffer GlBindBuffer => GetCommand<BindBuffer>("glBindBuffer");
-        
+
         /// <summary>
-        /// The vertex 2f
+        ///     The vertex 2f
         /// </summary>
         public static Vertex2f GlVertex2f => GetCommand<Vertex2f>("glVertex2f");
 
@@ -353,21 +359,6 @@ namespace Alis.Core.Graphic.OpenGL
         public static DeleteTextures GlDeleteTextures => GetCommand<DeleteTextures>("glDeleteTextures");
 
         /// <summary>
-        ///     The uint
-        /// </summary>
-        public static uint[] Uint1 = new uint[1];
-
-        /// <summary>
-        ///     The int
-        /// </summary>
-        public static int[] Int1 = new int[1];
-
-        /// <summary>
-        ///     The matrix float
-        /// </summary>
-        public static float[] Matrix4Float = new float[16];
-
-        /// <summary>
         ///     The draw arrays
         /// </summary>
         public static DrawArrays GlDrawArrays => GetCommand<DrawArrays>("glDrawArrays");
@@ -376,35 +367,44 @@ namespace Alis.Core.Graphic.OpenGL
         ///     The draw elements
         /// </summary>
         public static DrawElements GlDrawElements => GetCommand<DrawElements>("glDrawElements");
-        
+
         /// <summary>
-        /// The polygon mode
+        ///     The polygon mode
         /// </summary>
         public static PolygonMode GlPolygonMode => GetCommand<PolygonMode>("glPolygonMode");
-        
-       /// <summary>
-       /// Gets the command using the specified command
-       /// </summary>
-       /// <typeparam name="T">The </typeparam>
-       /// <param name="command">The command</param>
-       /// <exception cref="InvalidOperationException">Inicialize called before Initialize</exception>
-       /// <exception cref="ExternalException">{command} from {typeof(T).Name}</exception>
-       /// <returns>The</returns>
-       private static T GetCommand<T>(string command) where T : class
-       {
-           if (_getProcAddress == null)
-           {
+
+        /// <summary>
+        ///     Initializes the get proc address
+        /// </summary>
+        /// <param name="getProcAddress">The get proc address</param>
+        public static void Initialize(GetProcAddressDelegate getProcAddress)
+        {
+            _getProcAddress = getProcAddress;
+        }
+
+        /// <summary>
+        ///     Gets the command using the specified command
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="command">The command</param>
+        /// <exception cref="InvalidOperationException">Inicialize called before Initialize</exception>
+        /// <exception cref="ExternalException">{command} from {typeof(T).Name}</exception>
+        /// <returns>The</returns>
+        private static T GetCommand<T>(string command) where T : class
+        {
+            if (_getProcAddress == null)
+            {
                 throw new InvalidOperationException("Inicialize called before Initialize");
-           }
-       
-           IntPtr ptr = _getProcAddress(command);
-           if (ptr == IntPtr.Zero)
-           {
-               throw new ExternalException($"{command} from {typeof(T).Name}");
-           }
-       
-           return Marshal.GetDelegateForFunctionPointer(ptr, typeof(T)) as T;
-       }
+            }
+
+            IntPtr ptr = _getProcAddress(command);
+            if (ptr == IntPtr.Zero)
+            {
+                throw new ExternalException($"{command} from {typeof(T).Name}");
+            }
+
+            return Marshal.GetDelegateForFunctionPointer(ptr, typeof(T)) as T;
+        }
 
         /// <summary>
         ///     Gls the get string using the specified pname
@@ -627,10 +627,9 @@ namespace Alis.Core.Graphic.OpenGL
         }
 
         /// <summary>
-        /// Generates the mipmap using the specified texture 2 d
+        ///     Generates the mipmap using the specified texture 2 d
         /// </summary>
         /// <param name="texture2D">The texture</param>
         public static void GenerateMipmap(TextureTarget texture2D) => GetCommand<GetString>("glGenerateMipmap");
     }
-    
 }

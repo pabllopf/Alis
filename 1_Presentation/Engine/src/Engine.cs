@@ -52,7 +52,6 @@ using Alis.Extension.Graphic.ImGui.Native;
 using Alis.Extension.Graphic.Sdl2;
 using Alis.Extension.Graphic.Sdl2.Enums;
 using Alis.Extension.Graphic.Sdl2.Structs;
-
 using PixelFormat = Alis.Core.Graphic.OpenGL.Enums.PixelFormat;
 
 
@@ -187,7 +186,7 @@ namespace Alis.App.Engine
             spaceWork = new SpaceWork();
             spaceWork.Initialize();
             Environment.CurrentDirectory = enginePath;
-            
+
             Sdl.SetHint(Hint.HintRenderDriver, "opengl");
 
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION

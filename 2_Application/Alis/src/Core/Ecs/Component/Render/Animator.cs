@@ -94,10 +94,7 @@ namespace Alis.Core.Ecs.Component.Render
         ///     Builders this instance
         /// </summary>
         /// <returns>The animator builder</returns>
-        public AnimatorBuilder Builder()
-        {
-            return new AnimatorBuilder();
-        }
+        public AnimatorBuilder Builder() => new AnimatorBuilder();
 
         /// <summary>
         ///     Adds the animation using the specified animation
@@ -182,13 +179,11 @@ namespace Alis.Core.Ecs.Component.Render
                 currentAnimation = tempAnimation;
             }
         }
+
         /// <summary>
         ///     Gets the current animation
         /// </summary>
         /// <returns>The animation</returns>
-        public Animation GetCurrentAnimation()
-        {
-            return currentAnimation;
-        }
+        public Animation GetCurrentAnimation() => currentAnimation;
     }
 }

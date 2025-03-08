@@ -55,7 +55,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sample
         ///     The height
         /// </summary>
         private const int Height = 480;
-        
+
         /// <summary>
         ///     The blue
         /// </summary>
@@ -65,7 +65,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sample
         ///     The blue
         /// </summary>
         private static byte _green;
-        
+
         /// <summary>
         ///     The blue
         /// </summary>
@@ -246,7 +246,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sample
                 Sdl.RenderCopy(renderer, textureTile, IntPtr.Zero, ref tileRectangleI);
 
                 Sdl.RenderDrawRects(renderer, new[] {rectBorder, rectFilled}, 2);
-                
+
                 // draw a line
                 Sdl.SetRenderDrawColor(renderer, 255, 0, 0, 255);
                 Sdl.RenderDrawLine(renderer, 0, 0, 100, 100);

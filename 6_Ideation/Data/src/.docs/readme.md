@@ -24,6 +24,7 @@
 ---
 
 ## 📚 Alis.Core.Aspect.Data
+
 - [Modular Design](#-modular-design)
 - [Description](#-description)
 - [Getting Started](#-getting-started)
@@ -36,13 +37,17 @@
 
 ### ⚙️ Modular Design
 
-> All modules within the Alis framework, including `Alis.Core.Aspect.Data`, are fully independent and can be used separately. While the primary focus of Alis is game development, these modules are versatile and can be integrated into other types of applications requiring data management capabilities.
+> All modules within the Alis framework, including `Alis.Core.Aspect.Data`, are fully independent and can be used
+> separately. While the primary focus of Alis is game development, these modules are versatile and can be integrated into
+> other types of applications requiring data management capabilities.
 
 ---
 
 ### 🖥️ Platform Compatibility
 
-> The Alis framework, including `Alis.Core.Aspect.Data`, is designed to support a wide range of platforms, ensuring flexibility and adaptability for developers. Each module is optimized for seamless integration across the following architectures and operating systems:
+> The Alis framework, including `Alis.Core.Aspect.Data`, is designed to support a wide range of platforms, ensuring
+> flexibility and adaptability for developers. Each module is optimized for seamless integration across the following
+> architectures and operating systems:
 
 #### Supported Platforms:
 
@@ -60,13 +65,17 @@
 - **macOS**
     - `osx-x64`
     - `osx-arm64`
+
 --- 
 
 ## 📖 Description
 
-`Alis.Core.Aspect.Data` is a powerful module within the Alis framework designed to simplify data access and management. It provides developers with tools to handle data operations effectively, ensuring high performance and flexibility for various applications.
+`Alis.Core.Aspect.Data` is a powerful module within the Alis framework designed to simplify data access and management.
+It provides developers with tools to handle data operations effectively, ensuring high performance and flexibility for
+various applications.
 
 ### Features:
+
 - **Seamless Data Access**: Simplifies the integration of data sources into your applications.
 - **Scalable Architecture**: Designed to handle large-scale data operations efficiently.
 - **Customizable**: Easily extend and customize the module to meet specific data management requirements.
@@ -114,7 +123,9 @@ public class Example
 
 ## 🛡️ License
 
-The ALIS framework is released under the [GNU General Public License v3 (GPL-3.0)](https://github.com/pabllopf/Alis/blob/master/license.md), ensuring your freedom to use, modify, and distribute the framework.
+The ALIS framework is released under
+the [GNU General Public License v3 (GPL-3.0)](https://github.com/pabllopf/Alis/blob/master/license.md), ensuring your
+freedom to use, modify, and distribute the framework.
 
 [![License](https://raw.githubusercontent.com/pabllopf/Alis/master/docs/licence/License.png)](https://github.com/pabllopf/Alis/blob/master/license.md)
 
@@ -135,7 +146,9 @@ The ALIS framework is released under the [GNU General Public License v3 (GPL-3.0
 
 ## Contributor Guide
 
-We welcome contributions to the project! Please check our [Code of Conduct](https://github.com/pabllopf/Alis/blob/main/code_of_conduct.md) for guidelines on how to contribute respectfully.
+We welcome contributions to the project! Please check
+our [Code of Conduct](https://github.com/pabllopf/Alis/blob/main/code_of_conduct.md) for guidelines on how to contribute
+respectfully.
 
 [![](https://img.shields.io/badge/Read%20More--blue)](https://github.com/pabllopf/Alis/blob/main/code_of_conduct.md)
 
@@ -144,19 +157,23 @@ We welcome contributions to the project! Please check our [Code of Conduct](http
 ## Authors
 
 <!-- readme: pabllopf -start -->
+
 | [![Pablo Perdomo Falcón](https://avatars.githubusercontent.com/u/48176121?v=4&s=75)](https://github.com/pabllopf) |
-|:--------------------------------------------------------------------------------------------------:|
-| **[Pablo Perdomo Falcón](https://github.com/pabllopf)**                                             |
+|:-----------------------------------------------------------------------------------------------------------------:|
+|                              **[Pablo Perdomo Falcón](https://github.com/pabllopf)**                              |
+
 <!-- readme: pabllopf -end -->
 
 ## Collaborators
 
 <!-- readme: collaborators -start -->
-| [![Raúl Lozano Ponce](https://avatars.githubusercontent.com/u/43152062?v=4)](https://github.com/RaulLozanoPonce)  | [![Juan Ángel Trujillo Jiménez](https://avatars.githubusercontent.com/u/45520663?v=4)](https://github.com/cannt)  | [![Pablo Perdomo Falcón](https://avatars.githubusercontent.com/u/48176121?v=4)](https://github.com/pabllopf)  | [![Christian García](https://avatars.githubusercontent.com/u/55676590?v=4)](https://github.com/Chgv99)  | [![RicardoVillarta](https://avatars.githubusercontent.com/u/62963416?v=4)](https://github.com/RicardoVillarta)  |
-|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|
-| **[Raúl Lozano Ponce](https://github.com/RaulLozanoPonce)**                                        | **[Juan Ángel Trujillo Jiménez](https://github.com/cannt)**                                         | **[Pablo Perdomo Falcón](https://github.com/pabllopf)**                                             | **[Christian García](https://github.com/Chgv99)**                                                  | **[RicardoVillarta](https://github.com/RicardoVillarta)**                                           |
 
-| [![Gabriel](https://avatars.githubusercontent.com/u/75950686?v=4)](https://github.com/GabrielRT01)  | [![Pedro D.GR](https://avatars.githubusercontent.com/u/82670532?v=4)](https://github.com/SPEEDCROW98)  | [![Claudia2000pf](https://avatars.githubusercontent.com/u/82757764?v=4)](https://github.com/Claudia2000pf)  | [![Carlos](https://avatars.githubusercontent.com/u/82760316?v=4)](https://github.com/suarez0965)  | [![Roser Almenar](https://avatars.githubusercontent.com/u/118014440?v=4)](https://github.com/roseralmenar)  |
-|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|
-| **[Gabriel](https://github.com/GabrielRT01)**                                                      | **[Pedro D.GR](https://github.com/SPEEDCROW98)**                                                  | **[Claudia2000pf](https://github.com/Claudia2000pf)**                                              | **[Carlos](https://github.com/suarez0965)**                                                       | **[Roser Almenar](https://github.com/roseralmenar)**                                               |
+| [![Raúl Lozano Ponce](https://avatars.githubusercontent.com/u/43152062?v=4)](https://github.com/RaulLozanoPonce) | [![Juan Ángel Trujillo Jiménez](https://avatars.githubusercontent.com/u/45520663?v=4)](https://github.com/cannt) | [![Pablo Perdomo Falcón](https://avatars.githubusercontent.com/u/48176121?v=4)](https://github.com/pabllopf) | [![Christian García](https://avatars.githubusercontent.com/u/55676590?v=4)](https://github.com/Chgv99) | [![RicardoVillarta](https://avatars.githubusercontent.com/u/62963416?v=4)](https://github.com/RicardoVillarta) |
+|:----------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------:|
+|                           **[Raúl Lozano Ponce](https://github.com/RaulLozanoPonce)**                            |                           **[Juan Ángel Trujillo Jiménez](https://github.com/cannt)**                            |                           **[Pablo Perdomo Falcón](https://github.com/pabllopf)**                            |                           **[Christian García](https://github.com/Chgv99)**                            |                           **[RicardoVillarta](https://github.com/RicardoVillarta)**                            |
+
+| [![Gabriel](https://avatars.githubusercontent.com/u/75950686?v=4)](https://github.com/GabrielRT01) | [![Pedro D.GR](https://avatars.githubusercontent.com/u/82670532?v=4)](https://github.com/SPEEDCROW98) | [![Claudia2000pf](https://avatars.githubusercontent.com/u/82757764?v=4)](https://github.com/Claudia2000pf) | [![Carlos](https://avatars.githubusercontent.com/u/82760316?v=4)](https://github.com/suarez0965) | [![Roser Almenar](https://avatars.githubusercontent.com/u/118014440?v=4)](https://github.com/roseralmenar) |
+|:--------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------:|
+|                           **[Gabriel](https://github.com/GabrielRT01)**                            |                           **[Pedro D.GR](https://github.com/SPEEDCROW98)**                            |                           **[Claudia2000pf](https://github.com/Claudia2000pf)**                            |                           **[Carlos](https://github.com/suarez0965)**                            |                            **[Roser Almenar](https://github.com/roseralmenar)**                            |
+
 <!-- readme: collaborators -end -->

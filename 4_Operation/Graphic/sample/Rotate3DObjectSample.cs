@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Rotate3DObjectSample.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.IO;
 using System.Numerics;
@@ -15,41 +44,47 @@ using Exception = System.Exception;
 namespace Alis.Core.Graphic.Sample
 {
     /// <summary>
-    /// The rotate object sample class
+    ///     The rotate object sample class
     /// </summary>
     public class Rotate3DObjectSample
     {
         /// <summary>
-        /// The running
-        /// </summary>
-        private bool running = true;
-        /// <summary>
-        /// The shader program
-        /// </summary>
-        private uint shaderProgram;
-        /// <summary>
-        /// The vao
-        /// </summary>
-        private uint vao;
-        /// <summary>
-        /// The vbo
-        /// </summary>
-        private uint vbo;
-        /// <summary>
-        /// The ebo
+        ///     The ebo
         /// </summary>
         private uint ebo;
+
         /// <summary>
-        /// The texture
+        ///     The running
+        /// </summary>
+        private bool running = true;
+
+        /// <summary>
+        ///     The shader program
+        /// </summary>
+        private uint shaderProgram;
+
+        /// <summary>
+        ///     The texture
         /// </summary>
         private uint texture;
+
         /// <summary>
-        /// The window
+        ///     The vao
+        /// </summary>
+        private uint vao;
+
+        /// <summary>
+        ///     The vbo
+        /// </summary>
+        private uint vbo;
+
+        /// <summary>
+        ///     The window
         /// </summary>
         private Window window;
 
         /// <summary>
-        /// Draws this instance
+        ///     Draws this instance
         /// </summary>
         public void Draw()
         {
@@ -59,7 +94,7 @@ namespace Alis.Core.Graphic.Sample
         }
 
         /// <summary>
-        /// Runs this instance
+        ///     Runs this instance
         /// </summary>
         /// <exception cref="Exception">Failed to create GLFW window</exception>
         /// <exception cref="Exception">Failed to initialize GLFW</exception>
@@ -94,8 +129,8 @@ namespace Alis.Core.Graphic.Sample
             int imageHeight = 32; // Ajusta esto al tamaño real de tu imagen
 
             // Factor de escalado
-            float scaleX = (float)imageWidth / windowWidth;
-            float scaleY = (float)imageHeight / windowHeight;
+            float scaleX = (float) imageWidth / windowWidth;
+            float scaleY = (float) imageHeight / windowHeight;
 
             // Vértices con coordenadas de textura invertidas y aplicando el factor de escalado
             float[] vertices =
@@ -107,7 +142,7 @@ namespace Alis.Core.Graphic.Sample
                 -1 * scaleX, 1f * scaleY, 0.0f, 0.0f, 0.0f // Top Left
             };
 
-            uint[] indices = { 0, 1, 3, 1, 2, 3 };
+            uint[] indices = {0, 1, 3, 1, 2, 3};
 
             vao = Gl.GenVertexArray();
             vbo = Gl.GenBuffer();
@@ -131,7 +166,7 @@ namespace Alis.Core.Graphic.Sample
             Gl.EnableVertexAttribArray(0);
 
             Gl.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float),
-                (IntPtr)(3 * sizeof(float)));
+                3 * sizeof(float));
             Gl.EnableVertexAttribArray(1);
 
             string vertexShaderSource = @"
@@ -223,7 +258,7 @@ namespace Alis.Core.Graphic.Sample
 
             float xPosition = 0.0f;
             float yPosition = 0.0f;
-            
+
             while (running)
             {
                 Glfw.PollEvents();
@@ -231,30 +266,30 @@ namespace Alis.Core.Graphic.Sample
                 {
                     running = false;
                 }
-            
+
                 // Handle keyboard input
                 if (Glfw.GetKey(window, Keys.W) == InputState.Press)
                 {
                     yPosition += 0.01f;
                 }
-            
+
                 if (Glfw.GetKey(window, Keys.S) == InputState.Press)
                 {
                     yPosition -= 0.01f;
                 }
-            
+
                 if (Glfw.GetKey(window, Keys.A) == InputState.Press)
                 {
                     xPosition -= 0.01f;
                 }
-            
+
                 if (Glfw.GetKey(window, Keys.D) == InputState.Press)
                 {
                     xPosition += 0.01f;
                 }
-            
+
                 Gl.GlClear(ClearBufferMask.ColorBufferBit);
-            
+
                 // Update the transformation matrix
                 Matrix3x2 transform = Matrix3x2.CreateTranslation(xPosition, yPosition);
                 float[] transformArray =
@@ -263,10 +298,10 @@ namespace Alis.Core.Graphic.Sample
                     transform.M21, transform.M22,
                     transform.M31, transform.M32
                 };
-            
+
                 int transformLoc = Gl.GlGetUniformLocation(shaderProgram, "transform");
                 Gl.GlUniformMatrix3Fv(transformLoc, 1, false, transformArray);
-            
+
                 Draw();
                 Glfw.SwapBuffers(window);
             }

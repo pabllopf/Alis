@@ -60,10 +60,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
 
 // Repeat similar tests for all KeysData properties
 
-        /// <summary>
-        ///     Tests that want capture mouse unless popup close should be initialized
-        /// </summary>
-        [Fact]
+/// <summary>
+///     Tests that want capture mouse unless popup close should be initialized
+/// </summary>
+[Fact]
         public void WantCaptureMouseUnlessPopupClose_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
@@ -92,10 +92,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
 
 // Repeat similar tests for all MouseClickedPos properties
 
-        /// <summary>
-        ///     Tests that mouse clicked time should be initialized
-        /// </summary>
-        [Fact]
+/// <summary>
+///     Tests that mouse clicked time should be initialized
+/// </summary>
+[Fact]
         public void MouseClickedTime_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();

@@ -40,153 +40,156 @@ using Alis.Core.Physic.Dynamics;
 namespace Alis.Sample.Asteroid
 {
     /// <summary>
-    /// The asteroid class
+    ///     The asteroid class
     /// </summary>
-    /// <seealso cref="AComponent"/>
+    /// <seealso cref="AComponent" />
     public class Asteroid : AComponent
     {
         /// <summary>
-        /// The rb
+        ///     The random
         /// </summary>
-        private BoxCollider rb;
-        /// <summary>
-        /// The speed
-        /// </summary>
-        public float speed;
+        private static readonly Random random = new Random();
 
         /// <summary>
-        /// The sub asteroids
-        /// </summary>
-        public GameObject[] subAsteroids;
-        /// <summary>
-        /// The number of asteroids
-        /// </summary>
-        public int numberOfAsteroids;
-        /// <summary>
-        /// The health
+        ///     The health
         /// </summary>
         private int health = 3;
 
         /// <summary>
-        /// The random
+        ///     The number of asteroids
         /// </summary>
-        private static readonly Random random = new Random();
-        
+        public int numberOfAsteroids;
+
         /// <summary>
-        /// Ons the start
+        ///     The rb
         /// </summary>
-        public override void OnStart () 
+        private BoxCollider rb;
+
+        /// <summary>
+        ///     The speed
+        /// </summary>
+        public float speed;
+
+        /// <summary>
+        ///     The sub asteroids
+        /// </summary>
+        public GameObject[] subAsteroids;
+
+        /// <summary>
+        ///     Ons the start
+        /// </summary>
+        public override void OnStart()
         {
-            rb = this.GameObject.Get<BoxCollider>();
+            rb = GameObject.Get<BoxCollider>();
         }
-        
+
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
-        public override void OnUpdate () 
+        public override void OnUpdate()
         {
-           if (health <= 0)
-           {
-               this.Context.SceneManager.CurrentScene.GetByTag("SoundPlayer").Get<AudioSource>().Play();
-               SpawnSubAsteroids();
-               
-               GameObject.Context.SceneManager.CurrentScene.GetByTag("Points").Get<CounterManager>().Increment();
-               this.GameObject.Context.SceneManager.DestroyGameObject(this.GameObject);
-           }
+            if (health <= 0)
+            {
+                Context.SceneManager.CurrentScene.GetByTag("SoundPlayer").Get<AudioSource>().Play();
+                SpawnSubAsteroids();
+
+                GameObject.Context.SceneManager.CurrentScene.GetByTag("Points").Get<CounterManager>().Increment();
+                GameObject.Context.SceneManager.DestroyGameObject(GameObject);
+            }
         }
-        
+
         /// <summary>
-        /// Spawns the sub asteroids
+        ///     Spawns the sub asteroids
         /// </summary>
         private void SpawnSubAsteroids()
-           {
-               for (int i = 0; i < 2; i++)
-               {
-                   GameObject subAsteroid = new GameObject();
-                   subAsteroid.Name = $"SubAsteroid_{i}_{Context.TimeManager.FrameCount}";
-                   subAsteroid.Tag = "Asteroid";
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                GameObject subAsteroid = new GameObject();
+                subAsteroid.Name = $"SubAsteroid_{i}_{Context.TimeManager.FrameCount}";
+                subAsteroid.Tag = "Asteroid";
 
-                    Transform parentTransform = new Transform();
-                    parentTransform.Position = this.GameObject.Transform.Position;
-                    parentTransform.Rotation = 0.0f;
-                    parentTransform.Scale = new Vector2F(2.0f, 2.0f);
-                    
-                    subAsteroid.Transform = parentTransform;
+                Transform parentTransform = new Transform();
+                parentTransform.Position = GameObject.Transform.Position;
+                parentTransform.Rotation = 0.0f;
+                parentTransform.Scale = new Vector2F(2.0f, 2.0f);
 
-                    subAsteroid.Add(new AudioSource()
-                        .Builder()
-                        .PlayOnAwake(false)
-                        .SetAudioClip(audioClip => audioClip
-                            .FilePath("bangLarge.wav")
-                            .Volume(100.0f)
-                            .Build())
+                subAsteroid.Transform = parentTransform;
+
+                subAsteroid.Add(new AudioSource()
+                    .Builder()
+                    .PlayOnAwake(false)
+                    .SetAudioClip(audioClip => audioClip
+                        .FilePath("bangLarge.wav")
+                        .Volume(100.0f)
+                        .Build())
+                    .Build());
+
+                if (i == 0)
+                {
+                    subAsteroid.Add(new BoxCollider().Builder()
+                        .IsActive(true)
+                        .BodyType(BodyType.Dynamic)
+                        .IsTrigger(false)
+                        .AutoTilling(true)
+                        .Rotation(0.0f)
+                        .LinearVelocity(-3f, -1)
+                        .Size(0.7F, 0.7F)
+                        .Mass(1.0f)
+                        .Restitution(0.9f)
+                        .Friction(0.5f)
+                        .FixedRotation(true)
+                        .IgnoreGravity(true)
                         .Build());
-                   
-                    if (i == 0)
-                    {
-                        subAsteroid.Add(new BoxCollider().Builder()
-                            .IsActive(true)
-                            .BodyType(BodyType.Dynamic)
-                            .IsTrigger(false)
-                            .AutoTilling(true)
-                            .Rotation(0.0f)
-                            .LinearVelocity(-3f, -1)
-                            .Size(0.7F, 0.7F)
-                            .Mass(1.0f)
-                            .Restitution(0.9f)
-                            .Friction(0.5f)
-                            .FixedRotation(true)
-                            .IgnoreGravity(true)
-                            .Build());
-                    }
-                    else
-                    {
-                        subAsteroid.Add(new BoxCollider().Builder()
-                            .IsActive(true)
-                            .BodyType(BodyType.Dynamic)
-                            .IsTrigger(false)
-                            .AutoTilling(true)
-                            .Rotation(0.0f)
-                            .LinearVelocity(3f, 1)
-                            .Size(0.7F, 0.7F)
-                            .Mass(1.0f)
-                            .Restitution(0.9f)
-                            .Friction(0.5f)
-                            .FixedRotation(true)
-                            .IgnoreGravity(true)
-                            .Build());
-                    }
+                }
+                else
+                {
+                    subAsteroid.Add(new BoxCollider().Builder()
+                        .IsActive(true)
+                        .BodyType(BodyType.Dynamic)
+                        .IsTrigger(false)
+                        .AutoTilling(true)
+                        .Rotation(0.0f)
+                        .LinearVelocity(3f, 1)
+                        .Size(0.7F, 0.7F)
+                        .Mass(1.0f)
+                        .Restitution(0.9f)
+                        .Friction(0.5f)
+                        .FixedRotation(true)
+                        .IgnoreGravity(true)
+                        .Build());
+                }
 
-                    if (i == 0)
-                    {
-                        // generete a random number between 0 and 3
-                        int randomAsteroid = random.Next(0, 3);
+                if (i == 0)
+                {
+                    // generete a random number between 0 and 3
+                    int randomAsteroid = random.Next(0, 3);
 
 
-                        subAsteroid.Add(new Sprite().Builder()
-                            .SetTexture($"asteroid_{randomAsteroid}.jpeg")
-                            .Depth(1)
-                            .Build());
-                    }
-                    else
-                    {
-                        // generete a random number between 0 and 3
-                        int randomAsteroid = random.Next(0, 3);
-                        
-                        subAsteroid.Add(new Sprite().Builder()
-                            .SetTexture($"asteroid_{randomAsteroid}.jpeg")
-                            .Depth(1)
-                            .Build());
-                    }
+                    subAsteroid.Add(new Sprite().Builder()
+                        .SetTexture($"asteroid_{randomAsteroid}.jpeg")
+                        .Depth(1)
+                        .Build());
+                }
+                else
+                {
+                    // generete a random number between 0 and 3
+                    int randomAsteroid = random.Next(0, 3);
 
-                    subAsteroid.Add(new Asteroid());
-                   
-                   Context.SceneManager.CurrentScene.Add(subAsteroid);
-               }
-           }
+                    subAsteroid.Add(new Sprite().Builder()
+                        .SetTexture($"asteroid_{randomAsteroid}.jpeg")
+                        .Depth(1)
+                        .Build());
+                }
+
+                subAsteroid.Add(new Asteroid());
+
+                Context.SceneManager.CurrentScene.Add(subAsteroid);
+            }
+        }
 
         /// <summary>
-        /// Ons the collision enter using the specified game object
+        ///     Ons the collision enter using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public override void OnCollisionEnter(GameObject gameObject)
@@ -206,27 +209,25 @@ namespace Alis.Sample.Asteroid
                     yRandom = random.Next(-2, 2);
                     xRandom = random.Next(-2, 2);
                 }
-                
-                
+
 
                 Vector2F newVelocity = new Vector2F(xRandom, yRandom);
-                newVelocity = Vector2F.Normalize(newVelocity) * 3.0f; 
+                newVelocity = Vector2F.Normalize(newVelocity) * 3.0f;
 
                 rb.Body.LinearVelocity = newVelocity;
             }
         }
 
         /// <summary>
-        /// Ons the collision exit using the specified game object
+        ///     Ons the collision exit using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public override void OnCollisionExit(GameObject gameObject)
         {
-            
         }
 
         /// <summary>
-        /// Decreases the health
+        ///     Decreases the health
         /// </summary>
         public void DecreaseHealth()
         {

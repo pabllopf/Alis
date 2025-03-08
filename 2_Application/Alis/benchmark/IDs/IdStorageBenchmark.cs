@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:d.cs
+//  File:IdStorageBenchmark.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,22 +32,37 @@ using BenchmarkDotNet.Attributes;
 namespace Alis.Benchmark.IDs
 {
     /// <summary>
-    /// This class demonstrates the performance and memory usage differences
-    /// when using different data types (byte, uint, and string) to store a unique identifier (ID).
+    ///     This class demonstrates the performance and memory usage differences
+    ///     when using different data types (byte, uint, and string) to store a unique identifier (ID).
     /// </summary>
+    [MemoryDiagnoser(true), Config(typeof(Config))]
     public class IdStorageBenchmark
     {
         // Number of iterations to run for the benchmark
+        /// <summary>
+        ///     The iterations
+        /// </summary>
         private const int Iterations = 1000000;
-        
+
         // Unique identifier values for each type
-        private byte byteId = 255; // A byte can store values from 0 to 255
-        private uint uintId = 123456789; // A uint can store values from 0 to 4,294,967,295
-        private string stringId = "ID_1234567890"; // A string to store a unique identifier
+        /// <summary>
+        ///     The byte id
+        /// </summary>
+        private readonly byte byteId = 255; // A byte can store values from 0 to 255
 
         /// <summary>
-        /// Benchmark using byte to store the unique identifier.
-        /// This will measure both speed and memory usage.
+        ///     The string id
+        /// </summary>
+        private readonly string stringId = "ID_1234567890"; // A string to store a unique identifier
+
+        /// <summary>
+        ///     The uint id
+        /// </summary>
+        private readonly uint uintId = 123456789; // A uint can store values from 0 to 4,294,967,295
+
+        /// <summary>
+        ///     Benchmark using byte to store the unique identifier.
+        ///     This will measure both speed and memory usage.
         /// </summary>
         [Benchmark]
         public byte ByteIdStorage()
@@ -57,12 +72,13 @@ namespace Alis.Benchmark.IDs
             {
                 result = byteId;
             }
+
             return result;
         }
 
         /// <summary>
-        /// Benchmark using uint to store the unique identifier.
-        /// This will measure both speed and memory usage.
+        ///     Benchmark using uint to store the unique identifier.
+        ///     This will measure both speed and memory usage.
         /// </summary>
         [Benchmark]
         public uint UintIdStorage()
@@ -72,12 +88,13 @@ namespace Alis.Benchmark.IDs
             {
                 result = uintId;
             }
+
             return result;
         }
 
         /// <summary>
-        /// Benchmark using string to store the unique identifier.
-        /// This will measure both speed and memory usage.
+        ///     Benchmark using string to store the unique identifier.
+        ///     This will measure both speed and memory usage.
         /// </summary>
         [Benchmark]
         public string StringIdStorage()
@@ -87,6 +104,7 @@ namespace Alis.Benchmark.IDs
             {
                 result = stringId;
             }
+
             return result;
         }
     }

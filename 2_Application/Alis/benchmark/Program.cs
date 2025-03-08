@@ -29,19 +29,22 @@
 
 using System;
 using Alis.Benchmark.ClassVsStruct;
+using Alis.Benchmark.ECS;
 using Alis.Benchmark.IDs;
+using Alis.Benchmark.InterfaceVsAbstract;
+using Alis.Benchmark.Iterators;
 using Alis.Benchmark.Strings;
 using BenchmarkDotNet.Running;
 
 namespace Alis.Benchmark
 {
     /// <summary>
-    /// The main program class
+    ///     The main program class
     /// </summary>
     public class Program
     {
         /// <summary>
-        /// Main entry point of the program
+        ///     Main entry point of the program
         /// </summary>
         /// <param name="args">Command-line arguments</param>
         public static void Main(string[] args)
@@ -50,6 +53,9 @@ namespace Alis.Benchmark
             Console.WriteLine("1 - String manipulation benchmark");
             Console.WriteLine("2 - Class vs struct benchmark");
             Console.WriteLine("3 - ID storage benchmark");
+            Console.WriteLine("4 - Iteration benchmark");
+            Console.WriteLine("5 - ECS benchmark");
+            Console.WriteLine("6 - Interfaces vs Abstract classes");
             Console.WriteLine("All - Run both benchmarks");
             Console.Write("Option: ");
 
@@ -64,9 +70,21 @@ namespace Alis.Benchmark
                 case "2":
                     BenchmarkRunner.Run<ClassVsStructBenchmark>();
                     break;
-                
+
                 case "3":
                     BenchmarkRunner.Run<IdStorageBenchmark>();
+                    break;
+                
+                case "4":
+                    BenchmarkRunner.Run<IterationBenchmarks>();
+                    break;
+                
+                case "5":
+                    BenchmarkRunner.Run<EcsBenchmarks>();
+                    break;
+                
+                case "6":
+                    BenchmarkRunner.Run<InterfaceVsAbstractBenchmark>();
                     break;
 
                 case "All":

@@ -96,10 +96,7 @@ namespace Alis.Core.Ecs.Component.Audio
         ///     Gets or sets the value of the is playing
         /// </summary>
         [JsonPropertyName("_IsPlaying_")]
-        public bool IsPlaying
-        {
-            get => player.Playing;
-        }
+        public bool IsPlaying => player.Playing;
 
         /// <summary>
         ///     Gets or sets the value of the is mute

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+
 using System;
 using Alis.App.Hub.Controllers;
 using Alis.App.Hub.Windows;
@@ -36,10 +37,7 @@ using Alis.Core.Graphic.OpenGL.Constructs;
 using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.Sdl2;
 using Alis.Extension.Graphic.Sdl2.Enums;
-
-
 using Alis.Extension.Graphic.Sdl2.Structs;
-
 
 namespace Alis.App.Hub.Core
 {

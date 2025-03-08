@@ -33,13 +33,13 @@ using BenchmarkDotNet.Configs;
 namespace Alis.Benchmark
 {
     /// <summary>
-    /// The config class
+    ///     The config class
     /// </summary>
-    /// <seealso cref="ManualConfig"/>
+    /// <seealso cref="ManualConfig" />
     public class Config : ManualConfig
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Config"/> class
+        ///     Initializes a new instance of the <see cref="Config" /> class
         /// </summary>
         public Config()
         {

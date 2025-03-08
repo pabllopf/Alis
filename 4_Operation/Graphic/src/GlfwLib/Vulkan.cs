@@ -1,17 +1,45 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Vulkan.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
 
-
 namespace Alis.Core.Graphic.GlfwLib
 {
-	/// <summary>
-	///     Implements the Vulkan specific functions of GLFW.
-	///     <para>See http://www.glfw.org/docs/latest/vulkan_guide.html for detailed documentation.</para>
-	/// </summary>
-	[SuppressUnmanagedCodeSecurity]
+    /// <summary>
+    ///     Implements the Vulkan specific functions of GLFW.
+    ///     <para>See http://www.glfw.org/docs/latest/vulkan_guide.html for detailed documentation.</para>
+    /// </summary>
+    [SuppressUnmanagedCodeSecurity]
     public static class Vulkan
     {
         #region Properties
@@ -53,7 +81,7 @@ namespace Alis.Core.Graphic.GlfwLib
         public static extern bool GetPhysicalDevicePresentationSupport(IntPtr instance, IntPtr device, uint family);
 
         /// <summary>
-        /// Gets the instance proc address using the specified vulkan
+        ///     Gets the instance proc address using the specified vulkan
         /// </summary>
         /// <param name="vulkan">The vulkan</param>
         /// <param name="procName">The proc name</param>
@@ -63,7 +91,7 @@ namespace Alis.Core.Graphic.GlfwLib
         private static extern IntPtr GetInstanceProcAddress(IntPtr vulkan, byte[] procName);
 
         /// <summary>
-        /// Gets the required instance extensions using the specified count
+        ///     Gets the required instance extensions using the specified count
         /// </summary>
         /// <param name="count">The count</param>
         /// <returns>The int ptr</returns>
@@ -72,7 +100,7 @@ namespace Alis.Core.Graphic.GlfwLib
         private static extern IntPtr GetRequiredInstanceExtensions(out uint count);
 
         /// <summary>
-        /// Vulkans the supported
+        ///     Vulkans the supported
         /// </summary>
         /// <returns>The bool</returns>
         [DllImport(Glfw.LIBRARY, EntryPoint = "glfwVulkanSupported", CallingConvention = CallingConvention.Cdecl)]
@@ -93,10 +121,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="vulkan">The vulkan instance.</param>
         /// <param name="procName">Name of the function.</param>
         /// <returns>The address of the function, or <see cref="IntPtr.Zero" /> if an error occurred.</returns>
-        public static IntPtr GetInstanceProcAddress(IntPtr vulkan,  string procName)
-        {
-            return GetInstanceProcAddress(vulkan, Encoding.ASCII.GetBytes(procName));
-        }
+        public static IntPtr GetInstanceProcAddress(IntPtr vulkan, string procName) => GetInstanceProcAddress(vulkan, Encoding.ASCII.GetBytes(procName));
 
         /// <summary>
         ///     This function returns an array of names of Vulkan instance extensions required by GLFW for creating Vulkan surfaces
@@ -112,7 +137,6 @@ namespace Alis.Core.Graphic.GlfwLib
         ///     </para>
         /// </summary>
         /// <returns>An array of extension names.</returns>
-        
         public static string[] GetRequiredInstanceExtensions()
         {
             IntPtr ptr = GetRequiredInstanceExtensions(out uint count);

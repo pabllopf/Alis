@@ -38,7 +38,6 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
 using Alis.Core.Graphic.OpenGL;
-using Alis.Core.Graphic.OpenGL.Delegates;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Contacts;
@@ -212,31 +211,31 @@ namespace Alis.Core.Ecs.Component.Collider
         public float AngularVelocity { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the shader program
+        ///     Gets or sets the value of the shader program
         /// </summary>
         [JsonIgnore]
         public uint ShaderProgram { get; private set; }
 
         /// <summary>
-        /// Gets or sets the value of the size
+        ///     Gets or sets the value of the size
         /// </summary>
         [JsonIgnore]
         public Vector2F SizeOfTexture { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the vao
+        ///     Gets or sets the value of the vao
         /// </summary>
         [JsonIgnore]
         public uint Vao { get; private set; }
 
         /// <summary>
-        /// Gets or sets the value of the vbo
+        ///     Gets or sets the value of the vbo
         /// </summary>
         [JsonIgnore]
         public uint Vbo { get; private set; }
 
         /// <summary>
-        /// Gets or sets the value of the ebo
+        ///     Gets or sets the value of the ebo
         /// </summary>
         [JsonIgnore]
         public uint Ebo { get; private set; }
@@ -257,7 +256,7 @@ namespace Alis.Core.Ecs.Component.Collider
 
 
         /// <summary>
-        /// Setup the buffers
+        ///     Setup the buffers
         /// </summary>
         private void SetupBuffers()
         {
@@ -577,7 +576,7 @@ namespace Alis.Core.Ecs.Component.Collider
         }
 
         /// <summary>
-        /// Renders the camera position
+        ///     Renders the camera position
         /// </summary>
         /// <param name="cameraPosition">The camera position</param>
         /// <param name="cameraResolution">The camera resolution</param>
@@ -595,7 +594,7 @@ namespace Alis.Core.Ecs.Component.Collider
             Gl.GlUseProgram(ShaderProgram);
 
             Gl.EnableVertexAttribArray(0);
-            
+
             // Conversión de metros a píxeles
             float positionXPixels = (position.X - cameraPosition.X) * pixelsPerMeter;
             float positionYPixels = (position.Y - cameraPosition.Y) * pixelsPerMeter;
@@ -604,8 +603,8 @@ namespace Alis.Core.Ecs.Component.Collider
             float scaleYPixels = colliderSize.Y * scale.Y * pixelsPerMeter;
 
             // Normalizar a coordenadas OpenGL (-1 a 1) usando la resolución de la cámara
-            float worldX = (2.0f * positionXPixels / cameraResolution.X);
-            float worldY = (2.0f * positionYPixels / cameraResolution.Y);
+            float worldX = 2.0f * positionXPixels / cameraResolution.X;
+            float worldY = 2.0f * positionYPixels / cameraResolution.Y;
 
             float scaleX = 2.0f * scaleXPixels / cameraResolution.X;
             float scaleY = 2.0f * scaleYPixels / cameraResolution.Y;
@@ -616,9 +615,9 @@ namespace Alis.Core.Ecs.Component.Collider
                 worldX - scaleX / 2, worldY + scaleY / 2, 0.0f, // Top-left
                 worldX + scaleX / 2, worldY + scaleY / 2, 0.0f, // Top-right
                 worldX + scaleX / 2, worldY - scaleY / 2, 0.0f, // Bottom-right
-                worldX - scaleX / 2, worldY - scaleY / 2, 0.0f  // Bottom-left
+                worldX - scaleX / 2, worldY - scaleY / 2, 0.0f // Bottom-left
             };
-            
+
             // Subir los datos de los vértices a OpenGL
             Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
             GCHandle handle = GCHandle.Alloc(vertices, GCHandleType.Pinned);
@@ -640,6 +639,5 @@ namespace Alis.Core.Ecs.Component.Collider
             Gl.GlDrawElements(PrimitiveType.LineLoop, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
             Gl.GlPolygonMode(MaterialFace.FrontAndBack, PolygonModeEnum.Fill);
         }
-
     }
 }

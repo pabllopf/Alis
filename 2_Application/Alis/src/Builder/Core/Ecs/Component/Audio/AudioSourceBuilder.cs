@@ -93,7 +93,7 @@ namespace Alis.Builder.Core.Ecs.Component.Audio
         }
 
         /// <summary>
-        /// Loops the is loop
+        ///     Loops the is loop
         /// </summary>
         /// <param name="isLoop">The is loop</param>
         /// <returns>The audio source builder</returns>

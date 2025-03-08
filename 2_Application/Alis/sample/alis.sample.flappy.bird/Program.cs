@@ -66,7 +66,7 @@ namespace Alis.Sample.Flappy.Bird
                     .Graphic(graphic => graphic
                         .Target("OpenGL")
                         .Resolution(288, 512)
-                        .BackgroundColor(new Color(141,212,247,255))
+                        .BackgroundColor(new Color(141, 212, 247, 255))
                         .FrameRate(30)
                         .IsResizable(false)
                         .Build())

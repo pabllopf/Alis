@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Glfw.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -8,7 +37,6 @@ using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Graphic.GlfwLib.Enums;
 using Alis.Core.Graphic.GlfwLib.Structs;
 using Alis.Core.Graphic.Properties;
-
 
 #pragma warning disable 0419
 
@@ -21,26 +49,10 @@ namespace Alis.Core.Graphic.GlfwLib
     [SuppressUnmanagedCodeSecurity]
     public static class Glfw
     {
-        
-        #region Fields and Constants
-
-        /// <summary>
-        ///     The native library name,
-        ///     <para>For Unix users using an installed version of GLFW, this needs refactored to <c>glfw</c>.</para>
-        /// </summary>
-        public const string LIBRARY = "glfw";
-
-        /// <summary>
-        /// The glfw error
-        /// </summary>
-        private static readonly ErrorCallback errorCallback = GlfwError;
-
-        #endregion
-
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Glfw"/> class
+        ///     Initializes a new instance of the <see cref="Glfw" /> class
         /// </summary>
         static Glfw()
         {
@@ -258,7 +270,7 @@ namespace Alis.Core.Graphic.GlfwLib
         public static extern void SetWindowAttribute(IntPtr window, WindowAttribute attr, bool value);
 
         /// <summary>
-        /// Gets the joystick hats using the specified joystick id
+        ///     Gets the joystick hats using the specified joystick id
         /// </summary>
         /// <param name="joystickId">The joystick id</param>
         /// <param name="count">The count</param>
@@ -285,7 +297,7 @@ namespace Alis.Core.Graphic.GlfwLib
         }
 
         /// <summary>
-        /// Gets the joystick guid private using the specified joystick id
+        ///     Gets the joystick guid private using the specified joystick id
         /// </summary>
         /// <param name="joystickId">The joystick id</param>
         /// <returns>The int ptr</returns>
@@ -333,12 +345,12 @@ namespace Alis.Core.Graphic.GlfwLib
         public static extern bool JoystickIsGamepad(int joystickId);
 
         /// <summary>
-        /// Updates the gamepad mappings using the specified mappings
+        ///     Updates the gamepad mappings using the specified mappings
         /// </summary>
         /// <param name="mappings">The mappings</param>
         /// <returns>The bool</returns>
         [DllImport(LIBRARY, EntryPoint = "glfwUpdateGamepadMappings", CallingConvention = CallingConvention.Cdecl)]
-        private static extern bool UpdateGamepadMappings( byte[] mappings);
+        private static extern bool UpdateGamepadMappings(byte[] mappings);
 
         /// <summary>
         ///     Parses the specified string and updates the internal list with any gamepad mappings it finds.
@@ -349,13 +361,10 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="mappings">The string containing the gamepad mappings.</param>
         /// <returns><c>true</c> if successful, or <c>false</c> if an error occurred.</returns>
-        public static bool UpdateGamepadMappings(string mappings)
-        {
-            return UpdateGamepadMappings(Encoding.ASCII.GetBytes(mappings));
-        }
+        public static bool UpdateGamepadMappings(string mappings) => UpdateGamepadMappings(Encoding.ASCII.GetBytes(mappings));
 
         /// <summary>
-        /// Gets the gamepad name private using the specified gamepad id
+        ///     Gets the gamepad name private using the specified gamepad id
         /// </summary>
         /// <param name="gamepadId">The gamepad id</param>
         /// <returns>The int ptr</returns>
@@ -387,6 +396,21 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </returns>
         [DllImport(LIBRARY, EntryPoint = "glfwGetGamepadState", CallingConvention = CallingConvention.Cdecl)]
         public static extern bool GetGamepadState(int id, out GamePadState state);
+
+        #region Fields and Constants
+
+        /// <summary>
+        ///     The native library name,
+        ///     <para>For Unix users using an installed version of GLFW, this needs refactored to <c>glfw</c>.</para>
+        /// </summary>
+        public const string LIBRARY = "glfw";
+
+        /// <summary>
+        ///     The glfw error
+        /// </summary>
+        private static readonly ErrorCallback errorCallback = GlfwError;
+
+        #endregion
 
         #region Properties
 
@@ -550,7 +574,7 @@ namespace Alis.Core.Graphic.GlfwLib
         public static extern ErrorCallback SetErrorCallback(ErrorCallback errorHandler);
 
         /// <summary>
-        /// Creates the window using the specified width
+        ///     Creates the window using the specified width
         /// </summary>
         /// <param name="width">The width</param>
         /// <param name="height">The height</param>
@@ -730,28 +754,28 @@ namespace Alis.Core.Graphic.GlfwLib
         public static extern IntPtr GetVersionString();
 
         /// <summary>
-        /// Gets the time
+        ///     Gets the time
         /// </summary>
         /// <returns>The double</returns>
         [DllImport(LIBRARY, EntryPoint = "glfwGetTime", CallingConvention = CallingConvention.Cdecl)]
         private static extern double GetTime();
 
         /// <summary>
-        /// Sets the time using the specified time
+        ///     Sets the time using the specified time
         /// </summary>
         /// <param name="time">The time</param>
         [DllImport(LIBRARY, EntryPoint = "glfwSetTime", CallingConvention = CallingConvention.Cdecl)]
         private static extern void SetTime(double time);
 
         /// <summary>
-        /// Gets the timer frequency
+        ///     Gets the timer frequency
         /// </summary>
         /// <returns>The ulong</returns>
         [DllImport(LIBRARY, EntryPoint = "glfwGetTimerFrequency", CallingConvention = CallingConvention.Cdecl)]
         private static extern ulong GetTimerFrequency();
 
         /// <summary>
-        /// Gets the timer value
+        ///     Gets the timer value
         /// </summary>
         /// <returns>The ulong</returns>
         [DllImport(LIBRARY, EntryPoint = "glfwGetTimerValue", CallingConvention = CallingConvention.Cdecl)]
@@ -969,14 +993,14 @@ namespace Alis.Core.Graphic.GlfwLib
         public static extern WindowCallback SetCloseCallback(Window window, WindowCallback closeCallback);
 
         /// <summary>
-        /// Gets the primary monitor
+        ///     Gets the primary monitor
         /// </summary>
         /// <returns>The monitor</returns>
         [DllImport(LIBRARY, EntryPoint = "glfwGetPrimaryMonitor", CallingConvention = CallingConvention.Cdecl)]
         private static extern Monitor GetPrimaryMonitor();
 
         /// <summary>
-        /// Gets the video mode internal using the specified monitor
+        ///     Gets the video mode internal using the specified monitor
         /// </summary>
         /// <param name="monitor">The monitor</param>
         /// <returns>The int ptr</returns>
@@ -984,7 +1008,7 @@ namespace Alis.Core.Graphic.GlfwLib
         private static extern IntPtr GetVideoModeInternal(Monitor monitor);
 
         /// <summary>
-        /// Gets the video modes using the specified monitor
+        ///     Gets the video modes using the specified monitor
         /// </summary>
         /// <param name="monitor">The monitor</param>
         /// <param name="count">The count</param>
@@ -1032,7 +1056,7 @@ namespace Alis.Core.Graphic.GlfwLib
             int refreshRate);
 
         /// <summary>
-        /// Gets the gamma ramp internal using the specified monitor
+        ///     Gets the gamma ramp internal using the specified monitor
         /// </summary>
         /// <param name="monitor">The monitor</param>
         /// <returns>The int ptr</returns>
@@ -1063,7 +1087,7 @@ namespace Alis.Core.Graphic.GlfwLib
         public static extern void SetGamma(Monitor monitor, float gamma);
 
         /// <summary>
-        /// Gets the clipboard string internal using the specified window
+        ///     Gets the clipboard string internal using the specified window
         /// </summary>
         /// <param name="window">The window</param>
         /// <returns>The int ptr</returns>
@@ -1071,7 +1095,7 @@ namespace Alis.Core.Graphic.GlfwLib
         private static extern IntPtr GetClipboardStringInternal(Window window);
 
         /// <summary>
-        /// Sets the clipboard string using the specified window
+        ///     Sets the clipboard string using the specified window
         /// </summary>
         /// <param name="window">The window</param>
         /// <param name="bytes">The bytes</param>
@@ -1095,7 +1119,7 @@ namespace Alis.Core.Graphic.GlfwLib
         public static extern FileDropCallback SetDropCallback(Window window, FileDropCallback dropCallback);
 
         /// <summary>
-        /// Gets the monitor name internal using the specified monitor
+        ///     Gets the monitor name internal using the specified monitor
         /// </summary>
         /// <param name="monitor">The monitor</param>
         /// <returns>The int ptr</returns>
@@ -1307,7 +1331,7 @@ namespace Alis.Core.Graphic.GlfwLib
         public static extern void SetWindowAspectRatio(Window window, int numerator, int denominator);
 
         /// <summary>
-        /// Gets the current context
+        ///     Gets the current context
         /// </summary>
         /// <returns>The window</returns>
         [DllImport(LIBRARY, EntryPoint = "glfwGetCurrentContext", CallingConvention = CallingConvention.Cdecl)]
@@ -1332,7 +1356,7 @@ namespace Alis.Core.Graphic.GlfwLib
         public static extern void GetMonitorPosition(Monitor monitor, out int x, out int y);
 
         /// <summary>
-        /// Gets the monitors using the specified count
+        ///     Gets the monitors using the specified count
         /// </summary>
         /// <param name="count">The count</param>
         /// <returns>The int ptr</returns>
@@ -1398,7 +1422,7 @@ namespace Alis.Core.Graphic.GlfwLib
         public static extern InputState GetKey(Window window, Keys key);
 
         /// <summary>
-        /// Gets the key name internal using the specified key
+        ///     Gets the key name internal using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         /// <param name="scanCode">The scan code</param>
@@ -1468,7 +1492,7 @@ namespace Alis.Core.Graphic.GlfwLib
         public static extern bool JoystickPresent(Joystick joystick);
 
         /// <summary>
-        /// Gets the joystick name internal using the specified joystick
+        ///     Gets the joystick name internal using the specified joystick
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The int ptr</returns>
@@ -1476,7 +1500,7 @@ namespace Alis.Core.Graphic.GlfwLib
         private static extern IntPtr GetJoystickNameInternal(Joystick joystick);
 
         /// <summary>
-        /// Gets the joystick axes using the specified joystic
+        ///     Gets the joystick axes using the specified joystic
         /// </summary>
         /// <param name="joystic">The joystic</param>
         /// <param name="count">The count</param>
@@ -1485,7 +1509,7 @@ namespace Alis.Core.Graphic.GlfwLib
         private static extern IntPtr GetJoystickAxes(Joystick joystic, out int count);
 
         /// <summary>
-        /// Gets the joystick buttons using the specified joystick
+        ///     Gets the joystick buttons using the specified joystick
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <param name="count">The count</param>
@@ -1561,7 +1585,7 @@ namespace Alis.Core.Graphic.GlfwLib
             out int height);
 
         /// <summary>
-        /// Gets the proc address using the specified proc name
+        ///     Gets the proc address using the specified proc name
         /// </summary>
         /// <param name="procName">The proc name</param>
         /// <returns>The int ptr</returns>
@@ -1593,7 +1617,7 @@ namespace Alis.Core.Graphic.GlfwLib
         private static extern int GetWindowAttribute(Window window, int attribute);
 
         /// <summary>
-        /// Gets the error private using the specified description
+        ///     Gets the error private using the specified description
         /// </summary>
         /// <param name="description">The description</param>
         /// <returns>The error code</returns>
@@ -1617,20 +1641,14 @@ namespace Alis.Core.Graphic.GlfwLib
         ///     resources..
         /// </param>
         /// <returns>The created window, or <see cref="Window.None" /> if an error occurred.</returns>
-        public static Window CreateWindow(int width, int height,  string title, Monitor monitor, Window share)
-        {
-            return CreateWindow(width, height, Encoding.UTF8.GetBytes(title), monitor, share);
-        }
+        public static Window CreateWindow(int width, int height, string title, Monitor monitor, Window share) => CreateWindow(width, height, Encoding.UTF8.GetBytes(title), monitor, share);
 
         /// <summary>
         ///     Gets the client API.
         /// </summary>
         /// <param name="window">A window instance.</param>
         /// <returns>The client API.</returns>
-        public static ClientApi GetClientApi(Window window)
-        {
-            return (ClientApi) GetWindowAttribute(window, (int) ContextAttributes.ClientApi);
-        }
+        public static ClientApi GetClientApi(Window window) => (ClientApi) GetWindowAttribute(window, (int) ContextAttributes.ClientApi);
 
         /// <summary>
         ///     Gets the contents of the system clipboard, if it contains or is convertible to a UTF-8 encoded
@@ -1638,21 +1656,14 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="window">A window instance.</param>
         /// <returns>The contents of the clipboard as a UTF-8 encoded string, or <c>null</c> if an error occurred.</returns>
-        
-        public static string GetClipboardString(Window window)
-        {
-            return Util.PtrToStringUTF8(GetClipboardStringInternal(window));
-        }
+        public static string GetClipboardString(Window window) => Util.PtrToStringUTF8(GetClipboardStringInternal(window));
 
         /// <summary>
         ///     Gets the API used to create the context of the specified window.
         /// </summary>
         /// <param name="window">A window instance.</param>
         /// <returns>The API used to create the context.</returns>
-        public static ContextApi GetContextCreationApi(Window window)
-        {
-            return (ContextApi) GetWindowAttribute(window, (int) ContextAttributes.ContextCreationApi);
-        }
+        public static ContextApi GetContextCreationApi(Window window) => (ContextApi) GetWindowAttribute(window, (int) ContextAttributes.ContextCreationApi);
 
         /// <summary>
         ///     Gets the context version of the specified window.
@@ -1671,40 +1682,28 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="extension">The extension name.</param>
         /// <returns><c>true</c> if the extension is supported; otherwise <c>false</c>.</returns>
-        public static bool GetExtensionSupported(string extension)
-        {
-            return GetExtensionSupported(Encoding.ASCII.GetBytes(extension));
-        }
+        public static bool GetExtensionSupported(string extension) => GetExtensionSupported(Encoding.ASCII.GetBytes(extension));
 
         /// <summary>
         ///     Gets the current gamma ramp of the specified monitor.
         /// </summary>
         /// <param name="monitor">The monitor to query.</param>
         /// <returns>The current gamma ramp, or empty structure if an error occurred.</returns>
-        public static GammaRamp GetGammaRamp(Monitor monitor)
-        {
-            return (GammaRamp) Marshal.PtrToStructure<GammaRampInternal>(GetGammaRampInternal(monitor));
-        }
+        public static GammaRamp GetGammaRamp(Monitor monitor) => (GammaRamp) Marshal.PtrToStructure<GammaRampInternal>(GetGammaRampInternal(monitor));
 
         /// <summary>
         ///     Gets value indicating if specified window is using a debug context.
         /// </summary>
         /// <param name="window">A window instance.</param>
         /// <returns><c>true</c> if window context is debug context, otherwise <c>false</c>.</returns>
-        public static bool GetIsDebugContext(Window window)
-        {
-            return GetWindowAttribute(window, (int) ContextAttributes.OpenglDebugContext) == (int) Constants.True;
-        }
+        public static bool GetIsDebugContext(Window window) => GetWindowAttribute(window, (int) ContextAttributes.OpenglDebugContext) == (int) Constants.True;
 
         /// <summary>
         ///     Gets value indicating if specified window is using a forward compatible context.
         /// </summary>
         /// <param name="window">A window instance.</param>
         /// <returns><c>true</c> if window context is forward compatible, otherwise <c>false</c>.</returns>
-        public static bool GetIsForwardCompatible(Window window)
-        {
-            return GetWindowAttribute(window, (int) ContextAttributes.OpenglForwardCompat) == (int) Constants.True;
-        }
+        public static bool GetIsForwardCompatible(Window window) => GetWindowAttribute(window, (int) ContextAttributes.OpenglForwardCompat) == (int) Constants.True;
 
         /// <summary>
         ///     Gets the values of all axes of the specified joystick. Each element in the array is a value
@@ -1748,10 +1747,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="joystick">The joystick to query.</param>
         /// <returns>The name of the joystick, or <c>null</c> if the joystick is not present or an error occurred.</returns>
-        public static string GetJoystickName(Joystick joystick)
-        {
-            return Util.PtrToStringUTF8(GetJoystickNameInternal(joystick));
-        }
+        public static string GetJoystickName(Joystick joystick) => Util.PtrToStringUTF8(GetJoystickNameInternal(joystick));
 
         /// <summary>
         ///     Gets the localized name of the specified printable key. This is intended for displaying key
@@ -1765,10 +1761,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="key">The key to query.</param>
         /// <param name="scanCode">The scancode of the key to query.</param>
         /// <returns>The localized name of the key.</returns>
-        public static string GetKeyName(Keys key, int scanCode)
-        {
-            return Util.PtrToStringUTF8(GetKeyNameInternal(key, scanCode));
-        }
+        public static string GetKeyName(Keys key, int scanCode) => Util.PtrToStringUTF8(GetKeyNameInternal(key, scanCode));
 
         /// <summary>
         ///     Gets a human-readable name, encoded as UTF-8, of the specified monitor.
@@ -1779,10 +1772,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="monitor">The monitor to query.</param>
         /// <returns>The name of the monitor, or <c>null</c> if an error occurred.</returns>
-        public static string GetMonitorName(Monitor monitor)
-        {
-            return Util.PtrToStringUTF8(GetMonitorNameInternal(monitor));
-        }
+        public static string GetMonitorName(Monitor monitor) => Util.PtrToStringUTF8(GetMonitorNameInternal(monitor));
 
         /// <summary>
         ///     Gets the address of the specified OpenGL or OpenGL ES core or extension function, if it is
@@ -1792,30 +1782,21 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="procName">Name of the function.</param>
         /// <returns>The address of the function, or <see cref="IntPtr.Zero" /> if an error occurred.</returns>
-        public static IntPtr GetProcAddress(string procName)
-        {
-            return GetProcAddress(Encoding.ASCII.GetBytes(procName));
-        }
+        public static IntPtr GetProcAddress(string procName) => GetProcAddress(Encoding.ASCII.GetBytes(procName));
 
         /// <summary>
         ///     Gets the profile of the specified window.
         /// </summary>
         /// <param name="window">A window instance.</param>
         /// <returns>Profile of the window.</returns>
-        public static Profile GetProfile(Window window)
-        {
-            return (Profile) GetWindowAttribute(window, (int) ContextAttributes.OpenglProfile);
-        }
+        public static Profile GetProfile(Window window) => (Profile) GetWindowAttribute(window, (int) ContextAttributes.OpenglProfile);
 
         /// <summary>
         ///     Gets the robustness value of the specified window.
         /// </summary>
         /// <param name="window">A window instance.</param>
         /// <returns>Current set value of the robustness.</returns>
-        public static Robustness GetRobustness(Window window)
-        {
-            return (Robustness) GetWindowAttribute(window, (int) ContextAttributes.ContextRobustness);
-        }
+        public static Robustness GetRobustness(Window window) => (Robustness) GetWindowAttribute(window, (int) ContextAttributes.ContextRobustness);
 
         /// <summary>
         ///     Gets the current video mode of the specified monitor.
@@ -1856,10 +1837,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="window">A window instance.</param>
         /// <param name="attribute">The window attribute whose value to return.</param>
         /// <returns>The value of the attribute, or zero if an error occurred.</returns>
-        public static bool GetWindowAttribute(Window window, WindowAttribute attribute)
-        {
-            return GetWindowAttribute(window, (int) attribute) == (int) Constants.True;
-        }
+        public static bool GetWindowAttribute(Window window, WindowAttribute attribute) => GetWindowAttribute(window, (int) attribute) == (int) Constants.True;
 
         /// <summary>
         ///     Sets the system clipboard to the specified string.
@@ -1910,7 +1888,10 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="hint">The hint.</param>
         /// <param name="value">The value.</param>
-        public static void WindowHint(Hint hint, ClientApi value) { WindowHint(hint, (int) value); }
+        public static void WindowHint(Hint hint, ClientApi value)
+        {
+            WindowHint(hint, (int) value);
+        }
 
         /// <summary>
         ///     Sets hints for the next call to <see cref="CreateWindow" />. The hints, once set, retain their values
@@ -1924,7 +1905,10 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="hint">The hint.</param>
         /// <param name="value">The value.</param>
-        public static void WindowHint(Hint hint, Constants value) { WindowHint(hint, (int) value); }
+        public static void WindowHint(Hint hint, Constants value)
+        {
+            WindowHint(hint, (int) value);
+        }
 
         /// <summary>
         ///     Sets hints for the next call to <see cref="CreateWindow" />. The hints, once set, retain their values
@@ -1938,7 +1922,10 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="hint">The hint.</param>
         /// <param name="value">The value.</param>
-        public static void WindowHint(Hint hint, ContextApi value) { WindowHint(hint, (int) value); }
+        public static void WindowHint(Hint hint, ContextApi value)
+        {
+            WindowHint(hint, (int) value);
+        }
 
         /// <summary>
         ///     Sets hints for the next call to <see cref="CreateWindow" />. The hints, once set, retain their values
@@ -1952,7 +1939,10 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="hint">The hint.</param>
         /// <param name="value">The value.</param>
-        public static void WindowHint(Hint hint, Robustness value) { WindowHint(hint, (int) value); }
+        public static void WindowHint(Hint hint, Robustness value)
+        {
+            WindowHint(hint, (int) value);
+        }
 
         /// <summary>
         ///     Sets hints for the next call to <see cref="CreateWindow" />. The hints, once set, retain their values
@@ -1966,7 +1956,10 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="hint">The hint.</param>
         /// <param name="value">The value.</param>
-        public static void WindowHint(Hint hint, Profile value) { WindowHint(hint, (int) value); }
+        public static void WindowHint(Hint hint, Profile value)
+        {
+            WindowHint(hint, (int) value);
+        }
 
         /// <summary>
         ///     Sets hints for the next call to <see cref="CreateWindow" />. The hints, once set, retain their values
@@ -1980,10 +1973,13 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="hint">The hint.</param>
         /// <param name="value">The value.</param>
-        public static void WindowHint(Hint hint, ReleaseBehavior value) { WindowHint(hint, (int) value); }
+        public static void WindowHint(Hint hint, ReleaseBehavior value)
+        {
+            WindowHint(hint, (int) value);
+        }
 
         /// <summary>
-        /// Gets the context version using the specified window
+        ///     Gets the context version using the specified window
         /// </summary>
         /// <param name="window">The window</param>
         /// <param name="major">The major</param>
@@ -1997,7 +1993,7 @@ namespace Alis.Core.Graphic.GlfwLib
         }
 
         /// <summary>
-        /// Glfws the error using the specified code
+        ///     Glfws the error using the specified code
         /// </summary>
         /// <param name="code">The code</param>
         /// <param name="message">The message</param>

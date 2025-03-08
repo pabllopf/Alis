@@ -1,21 +1,49 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Native.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
 using Alis.Core.Graphic.GlfwLib.Structs;
 
-
 namespace Alis.Core.Graphic.GlfwLib
 {
-	/// <summary>
-	///     Provides access to relevant native functions of the current operating system.
-	///     <para>
-	///         By using the native access functions you assert that you know what you're doing and how to fix problems
-	///         caused by using them.
-	///     </para>
-	///     <para>If you don't, you shouldn't be using them.</para>
-	/// </summary>
-	[SuppressUnmanagedCodeSecurity]
+    /// <summary>
+    ///     Provides access to relevant native functions of the current operating system.
+    ///     <para>
+    ///         By using the native access functions you assert that you know what you're doing and how to fix problems
+    ///         caused by using them.
+    ///     </para>
+    ///     <para>If you don't, you shouldn't be using them.</para>
+    /// </summary>
+    [SuppressUnmanagedCodeSecurity]
     public static class Native
     {
         #region External
@@ -24,7 +52,7 @@ namespace Alis.Core.Graphic.GlfwLib
         ///     Returns the CGDirectDisplayID of the specified monitor.
         /// </summary>
         /// <param name="monitor">The monitor to query.</param>
-        /// <returns>The CGDirectDisplayID of the specified monitor, or <see cref="IntPtr.Zero" /> if an error occurred.</returns>
+        /// <returns>The CGDirectDisplayID of the specified monitor, or <see cref="nint.Zero" /> if an error occurred.</returns>
         [DllImport(Glfw.LIBRARY, EntryPoint = "glfwGetCocoaMonitor", CallingConvention = CallingConvention.Cdecl)]
         public static extern uint GetCocoaMonitor(Monitor monitor);
 
@@ -169,7 +197,6 @@ namespace Alis.Core.Graphic.GlfwLib
         ///     Returns the contents of the selection as a string.
         /// </summary>
         /// <returns>The selected string, or <c>null</c> if error occurs or no string is selected.</returns>
-        
         public static string GetX11SelectionString()
         {
             IntPtr ptr = GetX11SelectionStringInternal();
@@ -180,7 +207,7 @@ namespace Alis.Core.Graphic.GlfwLib
         ///     Sets the clipboard string of an X11 window.
         /// </summary>
         /// <param name="str">The string to set.</param>
-        public static void SetX11SelectionString( string str)
+        public static void SetX11SelectionString(string str)
         {
             SetX11SelectionString(Encoding.UTF8.GetBytes(str));
         }
@@ -214,21 +241,21 @@ namespace Alis.Core.Graphic.GlfwLib
 
 
         /// <summary>
-        /// Sets the x 11 selection string using the specified str
+        ///     Sets the x 11 selection string using the specified str
         /// </summary>
         /// <param name="str">The str</param>
         [DllImport(Glfw.LIBRARY, EntryPoint = "glfwSetX11SelectionString", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void SetX11SelectionString( byte[] str);
+        private static extern void SetX11SelectionString(byte[] str);
 
         /// <summary>
-        /// Gets the x 11 selection string internal
+        ///     Gets the x 11 selection string internal
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(Glfw.LIBRARY, EntryPoint = "glfwGetX11SelectionString", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetX11SelectionStringInternal();
 
         /// <summary>
-        /// Gets the win 32 adapter internal using the specified monitor
+        ///     Gets the win 32 adapter internal using the specified monitor
         /// </summary>
         /// <param name="monitor">The monitor</param>
         /// <returns>The int ptr</returns>
@@ -236,7 +263,7 @@ namespace Alis.Core.Graphic.GlfwLib
         private static extern IntPtr GetWin32AdapterInternal(Monitor monitor);
 
         /// <summary>
-        /// Gets the win 32 monitor internal using the specified monitor
+        ///     Gets the win 32 monitor internal using the specified monitor
         /// </summary>
         /// <param name="monitor">The monitor</param>
         /// <returns>The int ptr</returns>
@@ -252,10 +279,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="monitor">A monitor instance.</param>
         /// <returns>dapter device name (for example \\.\DISPLAY1) of the specified monitor, or <c>null</c> if an error occurred.</returns>
-        public static string GetWin32Adapter(Monitor monitor)
-        {
-            return Util.PtrToStringUTF8(GetWin32AdapterInternal(monitor));
-        }
+        public static string GetWin32Adapter(Monitor monitor) => Util.PtrToStringUTF8(GetWin32AdapterInternal(monitor));
 
         /// <summary>
         ///     Returns the display device name of the specified monitor
@@ -265,10 +289,7 @@ namespace Alis.Core.Graphic.GlfwLib
         ///     The display device name (for example \\.\DISPLAY1\Monitor0) of the specified monitor, or <c>null</c> if an
         ///     error occurred.
         /// </returns>
-        public static string GetWin32Monitor(Monitor monitor)
-        {
-            return Util.PtrToStringUTF8(GetWin32MonitorInternal(monitor));
-        }
+        public static string GetWin32Monitor(Monitor monitor) => Util.PtrToStringUTF8(GetWin32MonitorInternal(monitor));
 
         #endregion
     }

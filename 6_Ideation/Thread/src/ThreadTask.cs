@@ -37,7 +37,6 @@ namespace Alis.Core.Aspect.Thread
     /// </summary>
     public class ThreadTask
     {
-        
         /// <summary>
         ///     Initializes a new instance of the <see cref="ThreadTask" /> class
         /// </summary>

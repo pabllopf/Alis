@@ -27,13 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Component.Audio;
 using Alis.Core.Ecs.Entity;
-using Alis.Core.Ecs.System.Manager.Fonts;
 
 namespace Alis.Sample.Flappy.Bird
 {

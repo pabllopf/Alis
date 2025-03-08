@@ -32,8 +32,8 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    /// The vertex 2f
+    ///     The vertex 2f
     /// </summary>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    public delegate void Vertex2f (float x, float y);
+    public delegate void Vertex2f(float x, float y);
 }

@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Xunit;
@@ -49,7 +48,7 @@ namespace Alis.Core.Graphic.Test
             int index = -1;
             Assert.Throws<ArgumentOutOfRangeException>(() => Gl.VertexAttribPointer(index, 3, VertexAttribPointerType.Float, false, 0, IntPtr.Zero));
         }
-        
+
 
         /// <summary>
         ///     Tests that enable vertex attrib array throws argument out of range exception for negative index

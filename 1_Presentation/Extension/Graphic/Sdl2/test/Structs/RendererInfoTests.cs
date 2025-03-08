@@ -71,7 +71,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test.Structs
                 maxTextureHeight = 1080
             };
 
-            Assert.Equal((string)"TestRenderer", (string)rendererInfo.GetName());
+            Assert.Equal("TestRenderer", rendererInfo.GetName());
             Assert.Equal(1u, rendererInfo.flags);
             Assert.Equal(2u, rendererInfo.num_texture_formats);
             Assert.Equal(3, rendererInfo.textureFormats0);

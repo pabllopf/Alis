@@ -126,7 +126,6 @@ namespace Alis.Sample.King.Platform
                                     .AddFrame(frame => frame
                                         .FilePath("tile025.bmp")
                                         .Build())
-                                    
                                     .Build())
                                 .Build())
                             .AddComponent<BoxCollider>(boxCollider => boxCollider

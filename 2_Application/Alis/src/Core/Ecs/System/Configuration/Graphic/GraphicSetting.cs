@@ -32,7 +32,6 @@ using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Graphic;
 
 namespace Alis.Core.Ecs.System.Configuration.Graphic
 {
@@ -74,19 +73,19 @@ namespace Alis.Core.Ecs.System.Configuration.Graphic
         public bool HasGrid { get; set; } = false;
 
         /// <summary>
-        /// Gets or sets the value of the background color
+        ///     Gets or sets the value of the background color
         /// </summary>
         [JsonPropertyName("_BackgroundColor_")]
         public Color BackgroundColor { get; set; } = new Color(0, 0, 0, 255);
 
         /// <summary>
-        /// Gets or sets the value of the window size
+        ///     Gets or sets the value of the window size
         /// </summary>
         [JsonPropertyName("_WindowSize_")]
         public Vector2F WindowSize { get; set; } = new Vector2F(0, 0);
 
         /// <summary>
-        /// Gets or sets the value of the is resizable
+        ///     Gets or sets the value of the is resizable
         /// </summary>
         [JsonPropertyName("_IsResizable_")]
         public bool IsResizable { get; set; } = true;
