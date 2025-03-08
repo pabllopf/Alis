@@ -66,6 +66,9 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// </summary>
         private const float PixelsPerMeter = 32.0f;
         
+        /// <summary>
+        /// The framebuffer size callback
+        /// </summary>
         private SizeCallback framebufferSizeCallback;
 
         /// <summary>
@@ -206,6 +209,12 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
            Glfw.SetFramebufferSizeCallback(Window, framebufferSizeCallback);
         }
         
+       /// <summary>
+       /// Loads the icon using the specified icon path
+       /// </summary>
+       /// <param name="iconPath">The icon path</param>
+       /// <exception cref="FileNotFoundException">Icon file not found </exception>
+       /// <returns>The image</returns>
        private Image LoadIcon(string iconPath)
        {
            if (!File.Exists(iconPath))
@@ -241,6 +250,9 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         {
         }
         
+        /// <summary>
+        /// Ons the draw
+        /// </summary>
         public override void OnDraw()
         {
             float pixelsPerMeter = PixelsPerMeter;

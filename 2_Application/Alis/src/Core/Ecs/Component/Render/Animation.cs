@@ -51,6 +51,13 @@ namespace Alis.Core.Ecs.Component.Render
         /// <param name="textures">The textures</param>
         public Animation(List<Frame> textures) => Frames = textures;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Animation"/> class
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="order">The order</param>
+        /// <param name="speed">The speed</param>
+        /// <param name="frames">The frames</param>
         [JsonConstructor]
         public Animation(string name, int order, float speed, List<Frame> frames)
         {

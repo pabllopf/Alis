@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ProfilerServiceTest.cs
+//  File:GlTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,25 +27,38 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using Alis.Core.Aspect.Math.Matrix;
+using Alis.Core.Graphic.OpenGL;
+using Alis.Core.Graphic.OpenGL.Enums;
 using Xunit;
 
-namespace Alis.Extension.Profile.Test
+namespace Alis.Core.Graphic.Test
 {
     /// <summary>
-    ///     The profiler service test class
+    ///     The gl test class
     /// </summary>
-    public class ProfilerServiceTest
+    public class GlTest
     {
         /// <summary>
-        ///     Tests that get memory usage returns positive value
+        ///     Tests that vertex attrib pointer throws argument out of range exception for negative index
         /// </summary>
         [Fact]
-        public void GetMemoryUsage_ReturnsPositiveValue()
+        public void VertexAttribPointer_ThrowsArgumentOutOfRangeExceptionForNegativeIndex()
         {
-            ProfilerService profilerService = new ProfilerService();
-            profilerService.StartProfiling();
-            long memoryUsage = profilerService.GetMemoryUsage();
-            Assert.True(memoryUsage > 0);
+            int index = -1;
+            Assert.Throws<ArgumentOutOfRangeException>(() => Gl.VertexAttribPointer(index, 3, VertexAttribPointerType.Float, false, 0, IntPtr.Zero));
+        }
+        
+
+        /// <summary>
+        ///     Tests that enable vertex attrib array throws argument out of range exception for negative index
+        /// </summary>
+        [Fact]
+        public void EnableVertexAttribArray_ThrowsArgumentOutOfRangeExceptionForNegativeIndex()
+        {
+            int index = -1;
+            Assert.Throws<ArgumentOutOfRangeException>(() => Gl.EnableVertexAttribArray(index));
         }
     }
 }

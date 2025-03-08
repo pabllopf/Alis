@@ -88,12 +88,22 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Graphic
             return this;
         }
 
+        /// <summary>
+        /// Backgrounds the color using the specified color
+        /// </summary>
+        /// <param name="color">The color</param>
+        /// <returns>The graphic setting builder</returns>
         public GraphicSettingBuilder BackgroundColor(Color color)
         {
             graphicSetting.BackgroundColor = color;
             return this;
         }
 
+        /// <summary>
+        /// Ises the resizable using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The graphic setting builder</returns>
         public GraphicSettingBuilder IsResizable(bool value)
         {
             graphicSetting.IsResizable = value;

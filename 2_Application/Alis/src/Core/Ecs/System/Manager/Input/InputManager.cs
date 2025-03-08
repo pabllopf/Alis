@@ -16,6 +16,9 @@ namespace Alis.Core.Ecs.System.Manager.Input
     /// <seealso cref="AManager"/>
     public class InputManager : AManager
     {
+        /// <summary>
+        /// The key callback
+        /// </summary>
         private KeyCallback keyCallback;
         
         

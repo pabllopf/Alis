@@ -85,6 +85,9 @@ namespace Alis.Core.Ecs.System.Configuration.Graphic
         [JsonPropertyName("_WindowSize_")]
         public Vector2F WindowSize { get; set; } = new Vector2F(0, 0);
 
+        /// <summary>
+        /// Gets or sets the value of the is resizable
+        /// </summary>
         [JsonPropertyName("_IsResizable_")]
         public bool IsResizable { get; set; } = true;
 

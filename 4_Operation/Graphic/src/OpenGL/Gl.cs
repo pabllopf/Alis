@@ -42,10 +42,20 @@ namespace Alis.Core.Graphic.OpenGL
     /// </summary>
     public static class Gl
     {
+        /// <summary>
+        /// The get proc address delegate
+        /// </summary>
         public delegate IntPtr GetProcAddressDelegate(string procName);
 
+        /// <summary>
+        /// The get proc address
+        /// </summary>
         private static GetProcAddressDelegate _getProcAddress = Glfw.GetProcAddress;
 
+        /// <summary>
+        /// Initializes the get proc address
+        /// </summary>
+        /// <param name="getProcAddress">The get proc address</param>
         public static void Initialize(GetProcAddressDelegate getProcAddress)
         {
             _getProcAddress = getProcAddress;
@@ -372,6 +382,14 @@ namespace Alis.Core.Graphic.OpenGL
         /// </summary>
         public static PolygonMode GlPolygonMode => GetCommand<PolygonMode>("glPolygonMode");
         
+       /// <summary>
+       /// Gets the command using the specified command
+       /// </summary>
+       /// <typeparam name="T">The </typeparam>
+       /// <param name="command">The command</param>
+       /// <exception cref="InvalidOperationException">Inicialize called before Initialize</exception>
+       /// <exception cref="ExternalException">{command} from {typeof(T).Name}</exception>
+       /// <returns>The</returns>
        private static T GetCommand<T>(string command) where T : class
        {
            if (_getProcAddress == null)

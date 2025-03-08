@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ProfilerServiceTest.cs
+//  File:DrawArraysTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,25 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
-
-namespace Alis.Extension.Profile.Test
+namespace Alis.Core.Graphic.Test
 {
     /// <summary>
-    ///     The profiler service test class
+    ///     The draw arrays test class
     /// </summary>
-    public class ProfilerServiceTest
+    public class DrawArraysTest
     {
-        /// <summary>
-        ///     Tests that get memory usage returns positive value
-        /// </summary>
-        [Fact]
-        public void GetMemoryUsage_ReturnsPositiveValue()
-        {
-            ProfilerService profilerService = new ProfilerService();
-            profilerService.StartProfiling();
-            long memoryUsage = profilerService.GetMemoryUsage();
-            Assert.True(memoryUsage > 0);
-        }
     }
 }
