@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Sdl2.Properties
         /// <summary>
         ///     The resource path
         /// </summary>
-        private static readonly string ResourcePath = "Alis.Extension.Graphic.Sdl2Image.resources";
+        private static readonly string ResourcePath = "Alis.Extension.Graphic.Sdl2.resources";
 
         /// <summary>
         ///     The 86

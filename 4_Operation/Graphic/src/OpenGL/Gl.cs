@@ -42,345 +42,351 @@ namespace Alis.Core.Graphic.OpenGL
     /// </summary>
     public static class Gl
     {
+        public delegate IntPtr GetProcAddressDelegate(string procName);
+
+        private static GetProcAddressDelegate _getProcAddress = Glfw.GetProcAddress;
+
+        public static void Initialize(GetProcAddressDelegate getProcAddress)
+        {
+            _getProcAddress = getProcAddress;
+        }
+        
         /// <summary>
         ///     The get string
         /// </summary>
-        public static readonly GetString GetString = GetCommand<GetString>("glGetString");
+        public static GetString GetString => GetCommand<GetString>("glGetString");
 
         /// <summary>
         ///     The gen buffers
         /// </summary>
-        private static readonly GenBuffers GlGenBuffers = GetCommand<GenBuffers>("glGenBuffers");
+        public static GenBuffers GlGenBuffers => GetCommand<GenBuffers>("glGenBuffers");
 
         /// <summary>
         ///     The delete buffers
         /// </summary>
-        private static readonly DeleteBuffers GlDeleteBuffers = GetCommand<DeleteBuffers>("glDeleteBuffers");
+        public static DeleteBuffers GlDeleteBuffers => GetCommand<DeleteBuffers>("glDeleteBuffers");
 
         /// <summary>
         ///     The viewport
         /// </summary>
-        public static readonly Viewport GlViewport = GetCommand<Viewport>("glViewport");
+        public static Viewport GlViewport => GetCommand<Viewport>("glViewport");
 
         /// <summary>
         ///     The clear color
         /// </summary>
-        public static readonly ClearColor GlClearColor = GetCommand<ClearColor>("glClearColor");
-        
+        public static ClearColor GlClearColor => GetCommand<ClearColor>("glClearColor");
         
         /// <summary>
         /// The color 4f
         /// </summary>
-        public static readonly Color4f GlColor4f = GetCommand<Color4f>("glColor4f");
+        public static Color4f GlColor4f => GetCommand<Color4f>("glColor4f");
         
         
         /// <summary>
         /// The end
         /// </summary>
-        public static readonly End GlEnd = GetCommand<End>("glEnd");
+        public static End GlEnd => GetCommand<End>("glEnd");
 
         /// <summary>
         ///     The clear
         /// </summary>
-        public static readonly Clear GlClear = GetCommand<Clear>("glClear");
+        public static Clear GlClear => GetCommand<Clear>("glClear");
 
         /// <summary>
         ///     The enable
         /// </summary>
-        public static readonly Enable GlEnable = GetCommand<Enable>("glEnable");
+        public static Enable GlEnable => GetCommand<Enable>("glEnable");
 
         /// <summary>
         ///     The disable
         /// </summary>
-        public static readonly Disable GlDisable = GetCommand<Disable>("glDisable");
+        public static Disable GlDisable => GetCommand<Disable>("glDisable");
 
         /// <summary>
         ///     The blend equation
         /// </summary>
-        public static readonly BlendEquation GlBlendEquation = GetCommand<BlendEquation>("glBlendEquation");
+        public static BlendEquation GlBlendEquation => GetCommand<BlendEquation>("glBlendEquation");
 
         /// <summary>
         ///     The blend func
         /// </summary>
-        public static readonly BlendFunc GlBlendFunc = GetCommand<BlendFunc>("glBlendFunc");
+        public static BlendFunc GlBlendFunc => GetCommand<BlendFunc>("glBlendFunc");
 
         /// <summary>
         ///     The use program
         /// </summary>
-        public static readonly UseProgram GlUseProgram = GetCommand<UseProgram>("glUseProgram");
+        public static UseProgram GlUseProgram => GetCommand<UseProgram>("glUseProgram");
 
         /// <summary>
         ///     The get shader
         /// </summary>
-        private static readonly GetShaderiv GlGetShaderIv = GetCommand<GetShaderiv>("glGetShaderiv");
+        public static GetShaderiv GlGetShaderIv => GetCommand<GetShaderiv>("glGetShaderiv");
 
         /// <summary>
         ///     The get shader info log del
         /// </summary>
-        private static readonly GetShaderInfoLogDel GlGetShaderInfoLog = GetCommand<GetShaderInfoLogDel>("glGetShaderInfoLog");
+        public static GetShaderInfoLogDel GlGetShaderInfoLog => GetCommand<GetShaderInfoLogDel>("glGetShaderInfoLog");
 
         /// <summary>
         ///     The create shader
         /// </summary>
-        public static readonly CreateShader GlCreateShader = GetCommand<CreateShader>("glCreateShader");
+        public static CreateShader GlCreateShader => GetCommand<CreateShader>("glCreateShader");
         
         /// <summary>
         /// The begin
         /// </summary>
-        public static readonly Begin GlBegin = GetCommand<Begin>("glBegin");
+        public static Begin GlBegin => GetCommand<Begin>("glBegin");
         
         /// <summary>
         ///     The shader source del
         /// </summary>
-        private static readonly ShaderSourceDel GlShaderSource = GetCommand<ShaderSourceDel>("glShaderSource");
+        public static ShaderSourceDel GlShaderSource => GetCommand<ShaderSourceDel>("glShaderSource");
 
         /// <summary>
         ///     The compile shader
         /// </summary>
-        public static readonly CompileShader GlCompileShader = GetCommand<CompileShader>("glCompileShader");
+        public static CompileShader GlCompileShader => GetCommand<CompileShader>("glCompileShader");
 
         /// <summary>
         ///     The delete shader
         /// </summary>
-        public static readonly DeleteShader GlDeleteShader = GetCommand<DeleteShader>("glDeleteShader");
+        public static DeleteShader GlDeleteShader => GetCommand<DeleteShader>("glDeleteShader");
 
         /// <summary>
         ///     The get programiv
         /// </summary>
-        public static readonly GetProgramiv GlGetProgramiv = GetCommand<GetProgramiv>("glGetProgramiv");
+        public static GetProgramiv GlGetProgramiv => GetCommand<GetProgramiv>("glGetProgramiv");
 
         /// <summary>
         ///     The get program info log del
         /// </summary>
-        private static readonly GetProgramInfoLogDel GlGetProgramInfoLog = GetCommand<GetProgramInfoLogDel>("glGetProgramInfoLog");
+        public static GetProgramInfoLogDel GlGetProgramInfoLog => GetCommand<GetProgramInfoLogDel>("glGetProgramInfoLog");
 
         /// <summary>
         ///     The create program
         /// </summary>
-        public static readonly CreateProgram GlCreateProgram = GetCommand<CreateProgram>("glCreateProgram");
+        public static CreateProgram GlCreateProgram => GetCommand<CreateProgram>("glCreateProgram");
 
         /// <summary>
         ///     The attach shader
         /// </summary>
-        public static readonly AttachShader GlAttachShader = GetCommand<AttachShader>("glAttachShader");
+        public static AttachShader GlAttachShader => GetCommand<AttachShader>("glAttachShader");
 
         /// <summary>
         ///     The link program
         /// </summary>
-        public static readonly LinkProgram GlLinkProgram = GetCommand<LinkProgram>("glLinkProgram");
+        public static LinkProgram GlLinkProgram => GetCommand<LinkProgram>("glLinkProgram");
 
         /// <summary>
         ///     The get uniform location
         /// </summary>
-        public static readonly GetUniformLocation GlGetUniformLocation = GetCommand<GetUniformLocation>("glGetUniformLocation");
+        public static GetUniformLocation GlGetUniformLocation => GetCommand<GetUniformLocation>("glGetUniformLocation");
 
         /// <summary>
         ///     The get attrib location
         /// </summary>
-        public static readonly GetAttribLocation GlGetAttribLocation = GetCommand<GetAttribLocation>("glGetAttribLocation");
+        public static GetAttribLocation GlGetAttribLocation => GetCommand<GetAttribLocation>("glGetAttribLocation");
 
         /// <summary>
         ///     The detach shader
         /// </summary>
-        public static readonly DetachShader GlDetachShader = GetCommand<DetachShader>("glDetachShader");
+        public static DetachShader GlDetachShader => GetCommand<DetachShader>("glDetachShader");
 
         /// <summary>
         ///     The delete program
         /// </summary>
-        public static readonly DeleteProgram GlDeleteProgram = GetCommand<DeleteProgram>("glDeleteProgram");
+        public static DeleteProgram GlDeleteProgram => GetCommand<DeleteProgram>("glDeleteProgram");
 
         /// <summary>
         ///     The get active attrib
         /// </summary>
-        public static readonly GetActiveAttrib GlGetActiveAttrib = GetCommand<GetActiveAttrib>("glGetActiveAttrib");
+        public static GetActiveAttrib GlGetActiveAttrib => GetCommand<GetActiveAttrib>("glGetActiveAttrib");
 
         /// <summary>
         ///     The get active uniform
         /// </summary>
-        public static readonly GetActiveUniform GlGetActiveUniform = GetCommand<GetActiveUniform>("glGetActiveUniform");
+        public static GetActiveUniform GlGetActiveUniform => GetCommand<GetActiveUniform>("glGetActiveUniform");
 
         /// <summary>
         ///     The uniform 1f
         /// </summary>
-        public static readonly Uniform1F GlUniform1F = GetCommand<Uniform1F>("glUniform1f");
+        public static Uniform1F GlUniform1F => GetCommand<Uniform1F>("glUniform1f");
 
         /// <summary>
         ///     The uniform 2f
         /// </summary>
-        public static readonly Uniform2F GlUniform2F = GetCommand<Uniform2F>("glUniform2f");
+        public static Uniform2F GlUniform2F => GetCommand<Uniform2F>("glUniform2f");
 
         /// <summary>
         ///     The uniform 3f
         /// </summary>
-        public static readonly Uniform3F GlUniform3F = GetCommand<Uniform3F>("glUniform3f");
+        public static Uniform3F GlUniform3F => GetCommand<Uniform3F>("glUniform3f");
 
         /// <summary>
         ///     The uniform 4f
         /// </summary>
-        public static readonly Uniform4F GlUniform4F = GetCommand<Uniform4F>("glUniform4f");
+        public static Uniform4F GlUniform4F => GetCommand<Uniform4F>("glUniform4f");
 
         /// <summary>
         ///     The uniform 1i
         /// </summary>
-        public static readonly Uniform1I GlUniform1I = GetCommand<Uniform1I>("glUniform1i");
+        public static Uniform1I GlUniform1I => GetCommand<Uniform1I>("glUniform1i");
 
         /// <summary>
         ///     The uniform 3fv
         /// </summary>
-        private static Uniform3Fv _glUniform3Fv = GetCommand<Uniform3Fv>("glUniform3fv");
+        private static Uniform3Fv _glUniform3Fv => GetCommand<Uniform3Fv>("glUniform3fv");
 
         /// <summary>
         ///     The uniform 4fv
         /// </summary>
-        private static Uniform4Fv _glUniform4Fv = GetCommand<Uniform4Fv>("glUniform4fv");
+        private static Uniform4Fv _glUniform4Fv => GetCommand<Uniform4Fv>("glUniform4fv");
 
         /// <summary>
         ///     The uniform matrix 3fv del
         /// </summary>
-        public static readonly UniformMatrix3FvDel GlUniformMatrix3Fv = GetCommand<UniformMatrix3FvDel>("glUniformMatrix3fv");
+        public static UniformMatrix3FvDel GlUniformMatrix3Fv => GetCommand<UniformMatrix3FvDel>("glUniformMatrix3fv");
 
         /// <summary>
         ///     The uniform matrix 4fv del
         /// </summary>
-        public static readonly UniformMatrix4FvDel GlUniformMatrix4Fv = GetCommand<UniformMatrix4FvDel>("glUniformMatrix4fv");
+        public static UniformMatrix4FvDel GlUniformMatrix4Fv => GetCommand<UniformMatrix4FvDel>("glUniformMatrix4fv");
 
         /// <summary>
         ///     The bind sampler
         /// </summary>
-        public static readonly BindSampler GlBindSampler = GetCommand<BindSampler>("glBindSampler");
+        public static BindSampler GlBindSampler => GetCommand<BindSampler>("glBindSampler");
 
         /// <summary>
         ///     The bind vertex array
         /// </summary>
-        public static readonly BindVertexArray GlBindVertexArray = GetCommand<BindVertexArray>("glBindVertexArray");
+        public static BindVertexArray GlBindVertexArray => GetCommand<BindVertexArray>("glBindVertexArray");
 
         /// <summary>
         ///     The bind buffer
         /// </summary>
-        public static readonly BindBuffer GlBindBuffer = GetCommand<BindBuffer>("glBindBuffer");
+        public static BindBuffer GlBindBuffer => GetCommand<BindBuffer>("glBindBuffer");
         
         /// <summary>
         /// The vertex 2f
         /// </summary>
-        public static readonly Vertex2f GlVertex2f = GetCommand<Vertex2f>("glVertex2f");
+        public static Vertex2f GlVertex2f => GetCommand<Vertex2f>("glVertex2f");
 
         /// <summary>
         ///     The enable vertex attrib array del
         /// </summary>
-        private static readonly EnableVertexAttribArrayDel GlEnableVertexAttribArray = GetCommand<EnableVertexAttribArrayDel>("glEnableVertexAttribArray");
+        public static EnableVertexAttribArrayDel GlEnableVertexAttribArray => GetCommand<EnableVertexAttribArrayDel>("glEnableVertexAttribArray");
 
         /// <summary>
         ///     The disable vertex attrib array
         /// </summary>
-        public static readonly DisableVertexAttribArray GlDisableVertexAttribArray = GetCommand<DisableVertexAttribArray>("glDisableVertexAttribArray");
+        public static DisableVertexAttribArray GlDisableVertexAttribArray => GetCommand<DisableVertexAttribArray>("glDisableVertexAttribArray");
 
         /// <summary>
         ///     The vertex attrib pointer del
         /// </summary>
-        private static readonly VertexAttribPointerDel GlVertexAttribPointer = GetCommand<VertexAttribPointerDel>("glVertexAttribPointer");
+        public static VertexAttribPointerDel GlVertexAttribPointer => GetCommand<VertexAttribPointerDel>("glVertexAttribPointer");
 
         /// <summary>
         ///     The bind texture
         /// </summary>
-        public static readonly BindTexture GlBindTexture = GetCommand<BindTexture>("glBindTexture");
+        public static BindTexture GlBindTexture => GetCommand<BindTexture>("glBindTexture");
 
         /// <summary>
         ///     The buffer data
         /// </summary>
-        public static readonly BufferData GlBufferData = GetCommand<BufferData>("glBufferData");
+        public static BufferData GlBufferData => GetCommand<BufferData>("glBufferData");
 
         /// <summary>
         ///     The scissor
         /// </summary>
-        public static readonly Scissor GlScissor = GetCommand<Scissor>("glScissor");
+        public static Scissor GlScissor => GetCommand<Scissor>("glScissor");
 
         /// <summary>
         ///     The draw elements base vertex
         /// </summary>
-        public static readonly DrawElementsBaseVertex GlDrawElementsBaseVertex = GetCommand<DrawElementsBaseVertex>("glDrawElementsBaseVertex");
+        public static DrawElementsBaseVertex GlDrawElementsBaseVertex => GetCommand<DrawElementsBaseVertex>("glDrawElementsBaseVertex");
 
         /// <summary>
         ///     The delete vertex arrays
         /// </summary>
-        private static readonly DeleteVertexArrays GlDeleteVertexArrays = GetCommand<DeleteVertexArrays>("glDeleteVertexArrays");
+        public static DeleteVertexArrays GlDeleteVertexArrays => GetCommand<DeleteVertexArrays>("glDeleteVertexArrays");
 
         /// <summary>
         ///     The gen vertex arrays
         /// </summary>
-        public static readonly GenVertexArrays GlGenVertexArrays = GetCommand<GenVertexArrays>("glGenVertexArrays");
+        public static GenVertexArrays GlGenVertexArrays => GetCommand<GenVertexArrays>("glGenVertexArrays");
 
         /// <summary>
         ///     The gen textures
         /// </summary>
-        public static readonly GenTextures GlGenTextures = GetCommand<GenTextures>("glGenTextures");
+        public static GenTextures GlGenTextures => GetCommand<GenTextures>("glGenTextures");
 
         /// <summary>
         ///     The pixel storei
         /// </summary>
-        public static readonly Storei GlPixelStorei = GetCommand<Storei>("glPixelStorei");
+        public static Storei GlPixelStorei => GetCommand<Storei>("glPixelStorei");
 
         /// <summary>
         ///     The tex image
         /// </summary>
-        public static readonly TexImage2D GlTexImage2D = GetCommand<TexImage2D>("glTexImage2D");
+        public static TexImage2D GlTexImage2D => GetCommand<TexImage2D>("glTexImage2D");
 
         /// <summary>
         ///     The tex parameteri
         /// </summary>
-        public static readonly TexParameteri GlTexParameteri = GetCommand<TexParameteri>("glTexParameteri");
+        public static TexParameteri GlTexParameteri => GetCommand<TexParameteri>("glTexParameteri");
 
         /// <summary>
         ///     The delete textures
         /// </summary>
-        private static readonly DeleteTextures GlDeleteTextures = GetCommand<DeleteTextures>("glDeleteTextures");
+        public static DeleteTextures GlDeleteTextures => GetCommand<DeleteTextures>("glDeleteTextures");
 
         /// <summary>
         ///     The uint
         /// </summary>
-        private static readonly uint[] Uint1 = new uint[1];
+        public static uint[] Uint1 = new uint[1];
 
         /// <summary>
         ///     The int
         /// </summary>
-        private static readonly int[] Int1 = new int[1];
+        public static int[] Int1 = new int[1];
 
         /// <summary>
         ///     The matrix float
         /// </summary>
-        private static readonly float[] Matrix4Float = new float[16];
+        public static float[] Matrix4Float = new float[16];
 
         /// <summary>
         ///     The draw arrays
         /// </summary>
-        public static readonly DrawArrays GlDrawArrays = GetCommand<DrawArrays>("glDrawArrays");
+        public static DrawArrays GlDrawArrays => GetCommand<DrawArrays>("glDrawArrays");
 
         /// <summary>
         ///     The draw elements
         /// </summary>
-        public static readonly DrawElements GlDrawElements = GetCommand<DrawElements>("glDrawElements");
+        public static DrawElements GlDrawElements => GetCommand<DrawElements>("glDrawElements");
         
         /// <summary>
         /// The polygon mode
         /// </summary>
-        public static readonly PolygonMode GlPolygonMode = GetCommand<PolygonMode>("glPolygonMode");
+        public static PolygonMode GlPolygonMode => GetCommand<PolygonMode>("glPolygonMode");
         
-        /// <summary>
-        ///     S
-        /// </summary>
-        /// <param name="command"></param>
-        /// <typeparam name="T">The </typeparam>
-        /// <exception cref="System.Exception">nogo: {method} from {typeof(T).Name}</exception>
-        /// <returns>The</returns>
-        private static T GetCommand<T>(string command) where T : class
-        {
-            IntPtr ptr = Glfw.GetProcAddress(command);
-            if (ptr == IntPtr.Zero)
-            {
-                throw new ExternalException($"{command} from {typeof(T).Name}");
-            }
-
-            return Marshal.GetDelegateForFunctionPointer(ptr, typeof(T)) as T;
-        }
+       private static T GetCommand<T>(string command) where T : class
+       {
+           if (_getProcAddress == null)
+           {
+                throw new InvalidOperationException("Inicialize called before Initialize");
+           }
+       
+           IntPtr ptr = _getProcAddress(command);
+           if (ptr == IntPtr.Zero)
+           {
+               throw new ExternalException($"{command} from {typeof(T).Name}");
+           }
+       
+           return Marshal.GetDelegateForFunctionPointer(ptr, typeof(T)) as T;
+       }
 
         /// <summary>
         ///     Gls the get string using the specified pname
