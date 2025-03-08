@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.6.3] - 2025-03-08
+### :sparkles: New Features
+- [`cdf072b`](https://github.com/pabllopf/Alis/commit/cdf072bbda96cf0f1bd9113f3a9820b78d5928ff) - implement cross platform Graphics (sdl2 or glfw) *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`28e9708`](https://github.com/pabllopf/Alis/commit/28e9708a03404987074584a67398dc3b61c72a21) - astroid game sample *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`305d5fb`](https://github.com/pabllopf/Alis/commit/305d5fb5681667037db03847ccd8a15c15db1b09) - updater render with sdl2 *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`9072448`](https://github.com/pabllopf/Alis/commit/9072448a038b3fcba950627bcfd103ff31fa8c14) - include the new tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e06777e`](https://github.com/pabllopf/Alis/commit/e06777effc18ffe768c0b078ca15f3ac9a25c6b7) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b0c3a8e`](https://github.com/pabllopf/Alis/commit/b0c3a8e3d6519792674ed1c8c6f6959908e1f516) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.6.2] - 2025-03-05
 ### :sparkles: New Features
 - [`ab47956`](https://github.com/pabllopf/Alis/commit/ab47956ec34c2b91ad2f32a00e4f938fd92a35aa) - move external sdl2 to extensions and include new default render with glfw and opengl *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -4066,3 +4080,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.6.0]: https://github.com/pabllopf/Alis/compare/v0.5.9...v0.6.0
 [v0.6.1]: https://github.com/pabllopf/Alis/compare/v0.6.0...v0.6.1
 [v0.6.2]: https://github.com/pabllopf/Alis/compare/v0.6.1...v0.6.2
+[v0.6.3]: https://github.com/pabllopf/Alis/compare/v0.6.2...v0.6.3
