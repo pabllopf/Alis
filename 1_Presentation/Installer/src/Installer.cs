@@ -241,10 +241,10 @@ namespace Alis.App.Installer
 
             spaceWork.Window = Sdl.CreateWindow(NameEngine, (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered, widthWindow, heightWindow, flags);
             _glContext = CreateGlContext(spaceWork.Window);
-
+            
             // compile the shader program
             _shader = new GlShaderProgram(VertexShader.ShaderCode, FragmentShader.ShaderCode);
-
+            
             spaceWork.ContextGui = ImGui.CreateContext();
 
             spaceWork.Io = ImGui.GetIo();
@@ -775,6 +775,8 @@ namespace Alis.App.Installer
             {
                 throw new GeneralAlisException("CouldNotCreateContext");
             }
+            
+            Gl.Initialize(Sdl.GetProcAddress);
 
             Sdl.MakeCurrent(window, glContext);
             Sdl.SetSwapInterval(1);
