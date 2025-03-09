@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Benchmark.IDs;
 using BenchmarkDotNet.Running;
 
 namespace Alis.Benchmark
@@ -46,7 +47,8 @@ namespace Alis.Benchmark
             Console.WriteLine("Select the benchmark to run:");
             Console.WriteLine("1 - String manipulation benchmark");
             Console.WriteLine("2 - Class vs struct benchmark");
-            Console.WriteLine("3 - Run both benchmarks");
+            Console.WriteLine("3 - ID storage benchmark");
+            Console.WriteLine("All - Run both benchmarks");
             Console.Write("Option: ");
 
             string option = Console.ReadLine();
@@ -60,8 +62,12 @@ namespace Alis.Benchmark
                 case "2":
                     BenchmarkRunner.Run<ClassVsStructBenchmark>();
                     break;
-
+                
                 case "3":
+                    BenchmarkRunner.Run<IdStorageBenchmark>();
+                    break;
+
+                case "All":
                     BenchmarkRunner.Run<StringManipulationBenchmark>();
                     BenchmarkRunner.Run<ClassVsStructBenchmark>();
                     break;
