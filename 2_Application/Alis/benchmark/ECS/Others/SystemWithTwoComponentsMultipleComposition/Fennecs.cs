@@ -1,9 +1,10 @@
 ﻿using System;
-using Alis.Benchmark.ECS.Others.Contexts;
-using Alis.Benchmark.ECS.Others.Contexts.Fennecs_Components;
 using BenchmarkDotNet.Attributes;
+using Ecs.CSharp.Benchmark.Contexts;
+using Ecs.CSharp.Benchmark.Contexts.Fennecs_Components;
+using fennecs;
 
-namespace Alis.Benchmark.ECS.Others.SystemWithTwoComponentsMultipleComposition
+namespace Ecs.CSharp.Benchmark
 {
     public partial class SystemWithTwoComponentsMultipleComposition
     {

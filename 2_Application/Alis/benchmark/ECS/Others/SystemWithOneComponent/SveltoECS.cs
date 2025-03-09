@@ -1,8 +1,10 @@
 ﻿using System;
-using Alis.Benchmark.ECS.Others.Contexts;
 using BenchmarkDotNet.Attributes;
+using Ecs.CSharp.Benchmark.Contexts;
+using Svelto.DataStructures;
+using Svelto.ECS;
 
-namespace Alis.Benchmark.ECS.Others.SystemWithOneComponent
+namespace Ecs.CSharp.Benchmark
 {
     public partial class SystemWithOneComponent
     {

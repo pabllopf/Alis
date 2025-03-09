@@ -1,6 +1,7 @@
 ﻿using System;
+using Flecs.NET.Core;
 
-namespace Alis.Benchmark.ECS.Others.Contexts
+namespace Ecs.CSharp.Benchmark.Contexts
 {
     namespace FlecsNet_Components
     {

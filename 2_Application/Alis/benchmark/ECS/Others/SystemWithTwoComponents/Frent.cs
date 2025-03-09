@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics;
-using Alis.Benchmark.ECS.Others.Contexts;
 using BenchmarkDotNet.Attributes;
-using static Alis.Benchmark.ECS.Others.Contexts.FrentBaseContext;
+using Ecs.CSharp.Benchmark.Contexts;
+using Frent;
+using Frent.Systems;
+using static Ecs.CSharp.Benchmark.Contexts.FrentBaseContext;
 
-namespace Alis.Benchmark.ECS.Others.SystemWithTwoComponents
+namespace Ecs.CSharp.Benchmark
 {
     public partial class SystemWithTwoComponents
     {

@@ -1,8 +1,9 @@
-﻿using Alis.Benchmark.ECS.Others.Contexts;
-using Alis.Benchmark.ECS.Others.Contexts.TinyEcs_Components;
-using BenchmarkDotNet.Attributes;
+﻿using BenchmarkDotNet.Attributes;
+using Ecs.CSharp.Benchmark.Contexts;
+using Ecs.CSharp.Benchmark.Contexts.TinyEcs_Components;
+using TinyEcs;
 
-namespace Alis.Benchmark.ECS.Others.SystemWithTwoComponentsMultipleComposition
+namespace Ecs.CSharp.Benchmark
 {
     public partial class SystemWithTwoComponentsMultipleComposition
     {

@@ -1,8 +1,11 @@
-﻿using Alis.Benchmark.ECS.Others.Contexts;
-using Alis.Benchmark.ECS.Others.Contexts.Myriad_Components;
+﻿using System;
 using BenchmarkDotNet.Attributes;
+using Ecs.CSharp.Benchmark.Contexts;
+using Ecs.CSharp.Benchmark.Contexts.Myriad_Components;
+using Myriad.ECS.Command;
+using Myriad.ECS.Worlds;
 
-namespace Alis.Benchmark.ECS.Others.CreateEntityWithTwoComponents
+namespace Ecs.CSharp.Benchmark
 {
     public partial class CreateEntityWithTwoComponents
     {

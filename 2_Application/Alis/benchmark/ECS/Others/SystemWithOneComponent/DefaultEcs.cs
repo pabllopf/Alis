@@ -1,8 +1,11 @@
 ﻿using System;
-using Alis.Benchmark.ECS.Others.Contexts;
 using BenchmarkDotNet.Attributes;
+using DefaultEcs;
+using DefaultEcs.System;
+using DefaultEcs.Threading;
+using Ecs.CSharp.Benchmark.Contexts;
 
-namespace Alis.Benchmark.ECS.Others.SystemWithOneComponent
+namespace Ecs.CSharp.Benchmark
 {
     public partial class SystemWithOneComponent
     {

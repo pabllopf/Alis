@@ -1,4 +1,4 @@
-﻿namespace Alis.Benchmark.ECS.Others
+﻿namespace Ecs.CSharp.Benchmark
 {
     internal static class Categories
     {

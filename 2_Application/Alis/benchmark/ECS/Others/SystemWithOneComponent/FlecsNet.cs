@@ -1,8 +1,9 @@
-﻿using Alis.Benchmark.ECS.Others.Contexts;
-using Alis.Benchmark.ECS.Others.Contexts.Arch_Components;
-using BenchmarkDotNet.Attributes;
+﻿using BenchmarkDotNet.Attributes;
+using Ecs.CSharp.Benchmark.Contexts;
+using Ecs.CSharp.Benchmark.Contexts.Arch_Components;
+using Flecs.NET.Core;
 
-namespace Alis.Benchmark.ECS.Others.SystemWithOneComponent
+namespace Ecs.CSharp.Benchmark
 {
     public partial class SystemWithOneComponent
     {
