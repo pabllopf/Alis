@@ -494,6 +494,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Physic.Sample", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Physic", "4_Operation\Physic\src\Alis.Core.Physic.csproj", "{2374187F-D71C-4C15-98F9-C76DB011BA11}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Benchmark", "2_Application\Alis\benchmark\Alis.Benchmark.csproj", "{289C31BE-85CE-44F5-9B83-F1041ECD49EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1824,6 +1826,18 @@ Global
 		{2374187F-D71C-4C15-98F9-C76DB011BA11}.Release|x64.Build.0 = Release|Any CPU
 		{2374187F-D71C-4C15-98F9-C76DB011BA11}.Release|x86.ActiveCfg = Release|Any CPU
 		{2374187F-D71C-4C15-98F9-C76DB011BA11}.Release|x86.Build.0 = Release|Any CPU
+		{289C31BE-85CE-44F5-9B83-F1041ECD49EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{289C31BE-85CE-44F5-9B83-F1041ECD49EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{289C31BE-85CE-44F5-9B83-F1041ECD49EF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{289C31BE-85CE-44F5-9B83-F1041ECD49EF}.Debug|x64.Build.0 = Debug|Any CPU
+		{289C31BE-85CE-44F5-9B83-F1041ECD49EF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{289C31BE-85CE-44F5-9B83-F1041ECD49EF}.Debug|x86.Build.0 = Debug|Any CPU
+		{289C31BE-85CE-44F5-9B83-F1041ECD49EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{289C31BE-85CE-44F5-9B83-F1041ECD49EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{289C31BE-85CE-44F5-9B83-F1041ECD49EF}.Release|x64.ActiveCfg = Release|Any CPU
+		{289C31BE-85CE-44F5-9B83-F1041ECD49EF}.Release|x64.Build.0 = Release|Any CPU
+		{289C31BE-85CE-44F5-9B83-F1041ECD49EF}.Release|x86.ActiveCfg = Release|Any CPU
+		{289C31BE-85CE-44F5-9B83-F1041ECD49EF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1997,6 +2011,7 @@ Global
 		{3690FAA4-BC39-45BA-B873-4C2FE424190E} = {A93626D5-3BCB-4D40-803A-D90037BD65AA}
 		{93473A21-7750-4FF7-9DAC-49E02F3A2214} = {A93626D5-3BCB-4D40-803A-D90037BD65AA}
 		{2374187F-D71C-4C15-98F9-C76DB011BA11} = {A93626D5-3BCB-4D40-803A-D90037BD65AA}
+		{289C31BE-85CE-44F5-9B83-F1041ECD49EF} = {1FCBE201-6F63-4F3E-BCCC-F1BF2406F401}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8C491FC8-E9B0-4689-BAA5-ED6F7C5F61A5}
