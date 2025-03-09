@@ -1,9 +1,8 @@
-﻿using BenchmarkDotNet.Attributes;
-using Ecs.CSharp.Benchmark.Contexts;
-using Ecs.CSharp.Benchmark.Contexts.Arch_Components;
-using Flecs.NET.Core;
+﻿using Alis.Benchmark.ECS.Others.Contexts;
+using Alis.Benchmark.ECS.Others.Contexts.Arch_Components;
+using BenchmarkDotNet.Attributes;
 
-namespace Ecs.CSharp.Benchmark
+namespace Alis.Benchmark.ECS.Others.SystemWithTwoComponentsMultipleComposition
 {
     public partial class SystemWithTwoComponentsMultipleComposition
     {

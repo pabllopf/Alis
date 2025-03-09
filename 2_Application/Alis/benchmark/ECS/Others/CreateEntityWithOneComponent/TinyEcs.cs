@@ -1,9 +1,8 @@
-﻿using BenchmarkDotNet.Attributes;
-using DefaultEcs;
-using Ecs.CSharp.Benchmark.Contexts;
-using Ecs.CSharp.Benchmark.Contexts.TinyEcs_Components;
+﻿using Alis.Benchmark.ECS.Others.Contexts;
+using Alis.Benchmark.ECS.Others.Contexts.TinyEcs_Components;
+using BenchmarkDotNet.Attributes;
 
-namespace Ecs.CSharp.Benchmark
+namespace Alis.Benchmark.ECS.Others.CreateEntityWithOneComponent
 {
     public partial class CreateEntityWithOneComponent
     {

@@ -1,7 +1,6 @@
 ﻿using System;
-using fennecs;
 
-namespace Ecs.CSharp.Benchmark.Contexts
+namespace Alis.Benchmark.ECS.Others.Contexts
 {
     namespace Fennecs_Components
     {

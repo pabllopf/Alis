@@ -1,10 +1,8 @@
-﻿using System;
-using Arch.Core.Utils;
+﻿using Alis.Benchmark.ECS.Others.Contexts;
+using Alis.Benchmark.ECS.Others.Contexts.Arch_Components;
 using BenchmarkDotNet.Attributes;
-using Ecs.CSharp.Benchmark.Contexts;
-using Ecs.CSharp.Benchmark.Contexts.Arch_Components;
 
-namespace Ecs.CSharp.Benchmark
+namespace Alis.Benchmark.ECS.Others.CreateEntityWithThreeComponents
 {
     public partial class CreateEntityWithThreeComponents
     {

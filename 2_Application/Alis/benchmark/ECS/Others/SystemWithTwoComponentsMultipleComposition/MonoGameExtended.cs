@@ -1,10 +1,7 @@
-﻿using BenchmarkDotNet.Attributes;
-using Ecs.CSharp.Benchmark.Contexts;
-using Microsoft.Xna.Framework;
-using MonoGame.Extended.Entities;
-using MonoGame.Extended.Entities.Systems;
+﻿using Alis.Benchmark.ECS.Others.Contexts;
+using BenchmarkDotNet.Attributes;
 
-namespace Ecs.CSharp.Benchmark
+namespace Alis.Benchmark.ECS.Others.SystemWithTwoComponentsMultipleComposition
 {
     public partial class SystemWithTwoComponentsMultipleComposition
     {

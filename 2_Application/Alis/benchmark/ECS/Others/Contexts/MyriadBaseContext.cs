@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Runtime.InteropServices;
-using Myriad.ECS;
-using Myriad.ECS.Worlds;
 
-namespace Ecs.CSharp.Benchmark.Contexts
+namespace Alis.Benchmark.ECS.Others.Contexts
 {
     namespace Myriad_Components
     {

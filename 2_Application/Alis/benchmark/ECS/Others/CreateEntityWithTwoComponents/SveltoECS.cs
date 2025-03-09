@@ -1,8 +1,7 @@
-﻿using BenchmarkDotNet.Attributes;
-using Ecs.CSharp.Benchmark.Contexts;
-using Svelto.ECS;
+﻿using Alis.Benchmark.ECS.Others.Contexts;
+using BenchmarkDotNet.Attributes;
 
-namespace Ecs.CSharp.Benchmark
+namespace Alis.Benchmark.ECS.Others.CreateEntityWithTwoComponents
 {
     public partial class CreateEntityWithTwoComponents
     {

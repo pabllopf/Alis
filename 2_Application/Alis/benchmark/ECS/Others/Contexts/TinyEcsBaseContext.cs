@@ -1,7 +1,6 @@
 using System;
-using TinyEcs;
 
-namespace Ecs.CSharp.Benchmark.Contexts
+namespace Alis.Benchmark.ECS.Others.Contexts
 {
     namespace TinyEcs_Components
     {

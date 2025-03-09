@@ -1,13 +1,9 @@
-﻿using System;
-using System.Runtime.CompilerServices;
-using Arch.Core;
-using Arch.Core.Utils;
-using Arch.System;
+﻿using System.Runtime.CompilerServices;
+using Alis.Benchmark.ECS.Others.Contexts;
+using Alis.Benchmark.ECS.Others.Contexts.Arch_Components;
 using BenchmarkDotNet.Attributes;
-using Ecs.CSharp.Benchmark.Contexts;
-using Ecs.CSharp.Benchmark.Contexts.Arch_Components;
 
-namespace Ecs.CSharp.Benchmark
+namespace Alis.Benchmark.ECS.Others.SystemWithTwoComponents
 {
     public partial class SystemWithTwoComponents
     {

@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Runtime.Intrinsics;
+using Alis.Benchmark.ECS.Others.Contexts;
+using Alis.Benchmark.ECS.Others.Contexts.FrifloEngine_Components;
 using BenchmarkDotNet.Attributes;
-using Ecs.CSharp.Benchmark.Contexts;
-using Ecs.CSharp.Benchmark.Contexts.FrifloEngine_Components;
-using Friflo.Engine.ECS;
 
-namespace Ecs.CSharp.Benchmark
+namespace Alis.Benchmark.ECS.Others.SystemWithTwoComponents
 {
     public partial class SystemWithTwoComponents
     {

@@ -1,10 +1,8 @@
-﻿using BenchmarkDotNet.Attributes;
-using Ecs.CSharp.Benchmark.Contexts;
-using Frent;
-using Frent.Core;
-using static Ecs.CSharp.Benchmark.Contexts.FrentBaseContext;
+﻿using Alis.Benchmark.ECS.Others.Contexts;
+using BenchmarkDotNet.Attributes;
+using static Alis.Benchmark.ECS.Others.Contexts.FrentBaseContext;
 
-namespace Ecs.CSharp.Benchmark
+namespace Alis.Benchmark.ECS.Others.CreateEntityWithThreeComponents
 {
     public partial class CreateEntityWithThreeComponents
     {
