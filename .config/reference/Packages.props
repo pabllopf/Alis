@@ -38,6 +38,33 @@
 
     <ItemGroup Condition="$(AssemblyName.Contains('Benchmark')) == true">
         <PackageReference Include="BenchmarkDotNet" Version="0.13.1"/>
+
+
+        <PackageReference Include="Arch.System" Version="1.0.5" />
+        <PackageReference Include="Arch.System.SourceGenerator" Version="1.2.1" />
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0" PrivateAssets="all" />
+        <PackageReference Include="Myriad.ECS" Version="34.2.0" />
+        <PackageReference Include="Roslynator.Analyzers" Version="4.10.0" PrivateAssets="all" />
+        <PackageReference Include="Roslynator.CodeAnalysis.Analyzers" Version="4.10.0" PrivateAssets="all" />
+        <PackageReference Include="Roslynator.Formatting.Analyzers" Version="4.10.0" PrivateAssets="all" />
+        <PackageReference Include="TinyEcs.Main" Version="1.2.0" />
+        
+        <PackageReference Include="Arch" Version="1.2.8.1-alpha" />
+        <PackageReference Include="Frent" Version="0.4.0-beta" />
+        <PackageReference Include="DefaultEcs" Version="0.17.2" />
+        <PackageReference Include="DefaultEcs.Analyzer" Version="0.17.0" PrivateAssets="all" />
+        <PackageReference Include="fennecs" Version="0.1.1-beta" />
+        <PackageReference Include="Friflo.Engine.ECS" Version="3.2.0" />
+        <PackageReference Include="HypEcs" Version="1.2.1" />
+        <PackageReference Include="MonoGame.Extended.Entities" Version="3.8.0" />
+        <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.1.303" />
+        <PackageReference Include="Leopotam.Ecs" Version="1.0.1" />
+        <PackageReference Include="Leopotam.EcsLite" Version="1.0.1" />
+        <PackageReference Include="RelEcs" Version="1.5.1" />
+        <PackageReference Include="Scellecs.Morpeh" Version="2023.1.0" />
+        <PackageReference Include="Svelto.ECS" Version="3.3.2" />
+        <PackageReference Include="Svelto.Common" Version="3.3.2" />
+        <PackageReference Include="Flecs.NET.Release" Version="3.2.11" />
     </ItemGroup>
 
     <ItemGroup Condition="

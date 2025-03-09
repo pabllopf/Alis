@@ -28,20 +28,23 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Globalization;
 using Alis.Benchmark.ClassVsStruct;
-using Alis.Benchmark.ECS;
 using Alis.Benchmark.IDs;
 using Alis.Benchmark.InterfaceVsAbstract;
 using Alis.Benchmark.Iterators;
 using Alis.Benchmark.Strings;
+using BenchmarkDotNet.Configs;
+using BenchmarkDotNet.Order;
 using BenchmarkDotNet.Running;
+using Ecs.CSharp.Benchmark;
 
 namespace Alis.Benchmark
 {
     /// <summary>
     ///     The main program class
     /// </summary>
-    public class Program
+    public static class Program
     {
         /// <summary>
         ///     Main entry point of the program
@@ -49,52 +52,43 @@ namespace Alis.Benchmark
         /// <param name="args">Command-line arguments</param>
         public static void Main(string[] args)
         {
-            Console.WriteLine("Select the benchmark to run:");
-            Console.WriteLine("1 - String manipulation benchmark");
-            Console.WriteLine("2 - Class vs struct benchmark");
-            Console.WriteLine("3 - ID storage benchmark");
-            Console.WriteLine("4 - Iteration benchmark");
-            Console.WriteLine("5 - ECS benchmark");
-            Console.WriteLine("6 - Interfaces vs Abstract classes");
-            Console.WriteLine("All - Run both benchmarks");
-            Console.Write("Option: ");
+            CultureInfo cultureInfo = new CultureInfo("en-US");
 
-            string option = Console.ReadLine();
+            CultureInfo.CurrentCulture = cultureInfo;
+            CultureInfo.CurrentUICulture = cultureInfo;
+            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+            CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 
-            switch (option)
+            BenchmarkSwitcher benchmark = BenchmarkSwitcher.FromTypes(new[]
             {
-                case "1":
-                    BenchmarkRunner.Run<StringManipulationBenchmark>();
-                    break;
+                typeof(CreateEntityWithOneComponent),
+                typeof(CreateEntityWithTwoComponents),
+                typeof(CreateEntityWithThreeComponents),
 
-                case "2":
-                    BenchmarkRunner.Run<ClassVsStructBenchmark>();
-                    break;
+                typeof(SystemWithOneComponent),
+                typeof(SystemWithTwoComponents),
+                typeof(SystemWithThreeComponents),
 
-                case "3":
-                    BenchmarkRunner.Run<IdStorageBenchmark>();
-                    break;
+                typeof(SystemWithTwoComponentsMultipleComposition),
                 
-                case "4":
-                    BenchmarkRunner.Run<IterationBenchmarks>();
-                    break;
-                
-                case "5":
-                    BenchmarkRunner.Run<EcsBenchmarks>();
-                    break;
-                
-                case "6":
-                    BenchmarkRunner.Run<InterfaceVsAbstractBenchmark>();
-                    break;
+                typeof(StringManipulationBenchmark),
+                typeof(ClassVsStructBenchmark),
+                typeof(IdStorageBenchmark),
+                typeof(IterationBenchmarks),
+                typeof(InterfaceVsAbstractBenchmark)
+            });
 
-                case "All":
-                    BenchmarkRunner.Run<StringManipulationBenchmark>();
-                    BenchmarkRunner.Run<ClassVsStructBenchmark>();
-                    break;
+            IConfig configuration = DefaultConfig.Instance
+                .WithOptions(ConfigOptions.DisableOptimizationsValidator)
+                .WithOrderer(new DefaultOrderer(SummaryOrderPolicy.FastestToSlowest));
 
-                default:
-                    Console.WriteLine("Invalid option.");
-                    break;
+            if (args.Length > 0)
+            {
+                benchmark.Run(args, configuration);
+            }
+            else
+            {
+                benchmark.Run(null, configuration);
             }
         }
     }
