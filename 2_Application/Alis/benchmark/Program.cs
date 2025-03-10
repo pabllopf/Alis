@@ -30,9 +30,9 @@
 using System;
 using System.Globalization;
 using Alis.Benchmark.ClassVsStruct;
-using Alis.Benchmark.EntityComponentSystem.Others.CreateEntityWithOneComponent;
-using Alis.Benchmark.EntityComponentSystem.Others.CreateEntityWithThreeComponents;
-using Alis.Benchmark.EntityComponentSystem.Others.CreateEntityWithTwoComponents;
+using Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent;
+using Alis.Benchmark.EntityComponentSystem.CreateEntityWithThreeComponents;
+using Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents;
 using Alis.Benchmark.IDs;
 using Alis.Benchmark.InterfaceVsAbstract;
 using Alis.Benchmark.Iterators;
@@ -40,10 +40,10 @@ using Alis.Benchmark.Strings;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Order;
 using BenchmarkDotNet.Running;
-using SystemWithOneComponent = Alis.Benchmark.EntityComponentSystem.Others.SystemWithOneComponent.SystemWithOneComponent;
-using SystemWithThreeComponents = Alis.Benchmark.EntityComponentSystem.Others.SystemWithThreeComponents.SystemWithThreeComponents;
-using SystemWithTwoComponents = Alis.Benchmark.EntityComponentSystem.Others.SystemWithTwoComponents.SystemWithTwoComponents;
-using SystemWithTwoComponentsMultipleComposition = Alis.Benchmark.EntityComponentSystem.Others.SystemWithTwoComponentsMultipleComposition.SystemWithTwoComponentsMultipleComposition;
+using SystemWithOneComponent = Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent.SystemWithOneComponent;
+using SystemWithThreeComponents = Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents.SystemWithThreeComponents;
+using SystemWithTwoComponents = Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents.SystemWithTwoComponents;
+using SystemWithTwoComponentsMultipleComposition = Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleComposition.SystemWithTwoComponentsMultipleComposition;
 
 namespace Alis.Benchmark
 {
