@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ClassVsStructBenchmark.cs
+//  File:Config.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,27 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Benchmark.ClassVsStruct.Instancies;
-using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Columns;
+using BenchmarkDotNet.Configs;
 
-namespace Alis.Benchmark.ClassVsStruct
+namespace Alis.Benchmark
 {
     /// <summary>
-    /// The class vs struct benchmark class
+    /// The config class
     /// </summary>
-    public class ClassVsStructBenchmark
+    /// <seealso cref="ManualConfig"/>
+    public class Config : ManualConfig
     {
         /// <summary>
-        /// The iterations
+        /// Initializes a new instance of the <see cref="Config"/> class
         /// </summary>
-        private const int Iterations = 1_000_000;
-
-        /// <summary>
-        /// Usings this instance
-        /// </summary>
-        /// <returns>The sum</returns>
-        [Benchmark(Baseline = true)]
-        public int UsingClass()
+        public Config()
         {
-            ClassPoint obj = new ClassPoint(1, 2);
-            int sum = 0;
-            for (int i = 0; i < Iterations; i++)
-            {
-                sum += obj.X + obj.Y;
-            }
-            return sum;
-        }
-
-        /// <summary>
-        /// Usings the struct
-        /// </summary>
-        /// <returns>The sum</returns>
-        [Benchmark]
-        public int UsingStruct()
-        {
-            StructPoint obj = new StructPoint(1, 2);
-            int sum = 0;
-            for (int i = 0; i < Iterations; i++)
-            {
-                sum += obj.X + obj.Y;
-            }
-            return sum;
+            AddColumn(StatisticColumn.Mean);
+            AddColumn(StatisticColumn.StdDev);
+            AddColumn(StatisticColumn.StdErr);
+            AddColumn(StatisticColumn.Iterations);
+            AddColumn(StatisticColumn.OperationsPerSecond);
         }
     }
 }

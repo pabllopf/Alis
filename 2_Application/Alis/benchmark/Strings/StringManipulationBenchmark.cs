@@ -1,40 +1,13 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Strin.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
-
 using System.Text;
 using BenchmarkDotNet.Attributes;
 
-namespace Alis.Benchmark
+namespace Alis.Benchmark.Strings
 {
     /// <summary>
     /// The string manipulation benchmark class
     /// </summary>
+    [MemoryDiagnoser(displayGenColumns: true)]
+    [Config(typeof(Config))]
     public class StringManipulationBenchmark
     {
         /// <summary>
@@ -43,11 +16,11 @@ namespace Alis.Benchmark
         private const int Iterations = 10000;
 
         /// <summary>
-        /// Bads the string manipulation
+        /// Bads the string manipulation base line
         /// </summary>
         /// <returns>The result</returns>
         [Benchmark(Baseline = true)]
-        public string BadStringManipulation()
+        public string BadStringManipulation_BaseLine()
         {
             string result = "";
             for (int i = 0; i < Iterations; i++)
@@ -84,8 +57,5 @@ namespace Alis.Benchmark
                 span.Fill(value);
             });
         }
-
-    
     }
-
 }

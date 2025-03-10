@@ -28,7 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Benchmark.ClassVsStruct;
 using Alis.Benchmark.IDs;
+using Alis.Benchmark.Strings;
 using BenchmarkDotNet.Running;
 
 namespace Alis.Benchmark
