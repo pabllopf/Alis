@@ -59,12 +59,15 @@ namespace Alis.Benchmark.Iterators
         /// </summary>
         private LinkedList<int> linkedList;
 
+        /// <summary>
+        /// The memory
+        /// </summary>
         private Memory<int> memory;
 
         /// <summary>
         /// The 
         /// </summary>
-        [Params(10, 100)] 
+        [Params(10)] 
         public int N;
 
         /// <summary>
@@ -79,6 +82,56 @@ namespace Alis.Benchmark.Iterators
             memory = new Memory<int>(array);
         }
 
+        /// <summary>
+        /// Iterates the linked list manual
+        /// </summary>
+        /// <returns>The sum</returns>
+        [Benchmark]
+        public int IterateLinkedListManual()
+        {
+            int sum = 0;
+            LinkedListNode<int> node = linkedList.First;
+            while (node != null)
+            {
+                sum += node.Value;
+                node = node.Next;
+            }
+
+            return sum;
+        }
+        
+        /// <summary>
+        /// Iterates the linked list foreach
+        /// </summary>
+        /// <returns>The sum</returns>
+        [Benchmark]
+        public int IterateLinkedListForeach()
+        {
+            int sum = 0;
+            foreach (int item in linkedList)
+            {
+                sum += item;
+            }
+
+            return sum;
+        }
+        
+        /// <summary>
+        /// Iterates the list foreach
+        /// </summary>
+        /// <returns>The sum</returns>
+        [Benchmark]
+        public int IterateListForeach()
+        {
+            int sum = 0;
+            foreach (int item in list)
+            {
+                sum += item;
+            }
+
+            return sum;
+        }
+        
         /// <summary>
         /// Iterates the array for
         /// </summary>
@@ -127,55 +180,11 @@ namespace Alis.Benchmark.Iterators
             return sum;
         }
 
-        /// <summary>
-        /// Iterates the list foreach
-        /// </summary>
-        /// <returns>The sum</returns>
-        [Benchmark]
-        public int IterateListForeach()
-        {
-            int sum = 0;
-            foreach (int item in list)
-            {
-                sum += item;
-            }
+       
 
-            return sum;
-        }
+       
 
-        /// <summary>
-        /// Iterates the linked list foreach
-        /// </summary>
-        /// <returns>The sum</returns>
-        [Benchmark]
-        public int IterateLinkedListForeach()
-        {
-            int sum = 0;
-            foreach (int item in linkedList)
-            {
-                sum += item;
-            }
-
-            return sum;
-        }
-
-        /// <summary>
-        /// Iterates the linked list manual
-        /// </summary>
-        /// <returns>The sum</returns>
-        [Benchmark]
-        public int IterateLinkedListManual()
-        {
-            int sum = 0;
-            LinkedListNode<int> node = linkedList.First;
-            while (node != null)
-            {
-                sum += node.Value;
-                node = node.Next;
-            }
-
-            return sum;
-        }
+       
 
         /// <summary>
         /// Iterates the span
@@ -194,42 +203,7 @@ namespace Alis.Benchmark.Iterators
 
             return sum;
         }
-
-
-
-        /// <summary>
-        /// Iteración más rápida con Memory<T>, Span<T> y SIMD (Vector<T>)
-        /// </summary>
-        [Benchmark]
-        public int IterateMemorySIMD()
-        {
-            Span<int> span = memory.Span;
-            int sum = 0;
-            int i = 0;
-            int vectorSize = Vector<int>.Count;
-            Vector<int> vectorSum = Vector<int>.Zero;
-
-            // Procesar en bloques de tamaño SIMD (vectorSize)
-            for (; i <= span.Length - vectorSize; i += vectorSize)
-            {
-                vectorSum += new Vector<int>(span.Slice(i, vectorSize));
-            }
-
-            // Sumar los valores del vector SIMD
-            for (int j = 0; j < vectorSize; j++)
-            {
-                sum += vectorSum[j];
-            }
-
-            // Sumar los elementos restantes
-            for (; i < span.Length; i++)
-            {
-                sum += span[i];
-            }
-
-            return sum;
-        }
-
+        
         /// <summary>
         /// Iteración optimizada con ref y Unsafe.Add
         /// </summary>
@@ -247,10 +221,90 @@ namespace Alis.Benchmark.Iterators
 
             return sum;
         }
-
-
+        
+      
+        /// <summary>
+        /// Iterates the fastest
+        /// </summary>
+        /// <returns>The sum</returns>
         [Benchmark]
-        public int IterateWithSpanAndVector()
+        public int IterateFastest()
+        {
+            if (array == null || array.Length == 0)
+                return 0;
+
+            ref int start = ref MemoryMarshal.GetArrayDataReference(array);
+            ref int end = ref Unsafe.Add(ref start, array.Length);
+            int sum = 0;
+
+            while (Unsafe.IsAddressLessThan(ref start, ref end))
+            {
+                sum += start;
+                start = ref Unsafe.Add(ref start, 1);
+            }
+
+            return sum;
+        }
+        
+        /// <summary>
+        /// Iterates the fastest with sim
+        /// </summary>
+        /// <returns>The sum</returns>
+        [Benchmark]
+        public int IterateFastestWithSIM()
+        {
+            if (array == null || array.Length == 0)
+                return 0;
+
+            ref int start = ref MemoryMarshal.GetArrayDataReference(array);
+            ref int end = ref Unsafe.Add(ref start, array.Length);
+            int sum = 0;
+
+            int vectorSize = Vector<int>.Count; // Tamaño del vector SIMD
+            ref int vectorEnd = ref Unsafe.Subtract(ref end, vectorSize); // Último bloque SIMD
+
+            Vector<int> vectorSum = Vector<int>.Zero;
+
+            // Procesar en bloques SIMD
+            while (Unsafe.IsAddressLessThan(ref start, ref vectorEnd))
+            {
+                vectorSum += new Vector<int>(array.AsSpan((int)(Unsafe.ByteOffset(ref MemoryMarshal.GetArrayDataReference(array), ref start) / sizeof(int)), vectorSize));
+                start = ref Unsafe.Add(ref start, vectorSize);
+            }
+
+            // Sumar los valores de los vectores
+            for (int i = 0; i < vectorSize; i++)
+            {
+                sum += vectorSum[i];
+            }
+
+            // Procesar los elementos restantes (si el tamaño del array no es múltiplo de vectorSize)
+            while (Unsafe.IsAddressLessThan(ref start, ref end))
+            {
+                sum += start;
+                start = ref Unsafe.Add(ref start, 1);
+            }
+
+            return sum;
+        }
+        
+        /// <summary>
+        /// Iterates the linq sum
+        /// </summary>
+        /// <returns>The int</returns>
+        [Benchmark]
+        public int IterateLinqSum()
+        {
+            return array.Sum();
+        }
+        
+        
+        /// <summary>
+        /// Bests the iterate with span and vector
+        /// </summary>
+        /// <returns>The sum</returns>
+        [Benchmark]
+        public int Best_IterateWithSpanAndVector()
         {
             Span<int> span = array;
             int sum = 0;
@@ -275,35 +329,6 @@ namespace Alis.Benchmark.Iterators
             for (; i < span.Length; i++)
             {
                 sum += span[i];
-            }
-
-            return sum;
-        }
-        
-        /// <summary>
-        /// Iterates the linq sum
-        /// </summary>
-        /// <returns>The int</returns>
-        [Benchmark]
-        public int IterateLinqSum()
-        {
-            return array.Sum();
-        }
-        
-        [Benchmark]
-        public int IterateFastest()
-        {
-            if (array == null || array.Length == 0)
-                return 0;
-
-            ref int start = ref MemoryMarshal.GetArrayDataReference(array);
-            ref int end = ref Unsafe.Add(ref start, array.Length);
-            int sum = 0;
-
-            while (Unsafe.IsAddressLessThan(ref start, ref end))
-            {
-                sum += start;
-                start = ref Unsafe.Add(ref start, 1);
             }
 
             return sum;
