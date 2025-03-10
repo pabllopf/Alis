@@ -6,6 +6,7 @@ namespace Alis.Benchmark.ObjectPooling
     /// <summary>
     /// The object pooling benchmark class
     /// </summary>
+    [MemoryDiagnoser, Config(typeof(Config))]
     public class ObjectPoolingBenchmark
     {
         /// <summary>
@@ -16,7 +17,7 @@ namespace Alis.Benchmark.ObjectPooling
         /// <summary>
         /// The 
         /// </summary>
-        [Params(100, 1000, 10000)]
+        [Params(10, 100, 1000)]
         public int N;
     
         /// <summary>
