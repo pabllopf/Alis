@@ -22,6 +22,7 @@
 > Develop the video games of your dreams 💯 free!! on Windows, MacOS, Linux, Android(soon), IOS(soon).
 
 ## 📚 Alis.Core.Aspect.Time
+
 - [Modular Design](#-modular-design)
 - [Description](#-description)
 - [Getting Started](#-getting-started)
@@ -34,13 +35,18 @@
 
 ### ⚙️ Modular Design
 
-> All modules within the Alis framework, including `Alis.Core.Aspect.Time`, are fully independent and can be used separately. While the primary focus of Alis is game development, these modules are designed to be versatile and can be integrated into other types of applications or environments where precise time management, event handling, or other functionalities are required.
+> All modules within the Alis framework, including `Alis.Core.Aspect.Time`, are fully independent and can be used
+> separately. While the primary focus of Alis is game development, these modules are designed to be versatile and can be
+> integrated into other types of applications or environments where precise time management, event handling, or other
+> functionalities are required.
 
 ---
 
 ### 🖥️ Platform Compatibility
 
-> The Alis framework, including `Alis.Core.Aspect.Time`, is designed to support a wide range of platforms, ensuring flexibility and adaptability for developers. Each module is optimized for seamless integration across the following architectures and operating systems:
+> The Alis framework, including `Alis.Core.Aspect.Time`, is designed to support a wide range of platforms, ensuring
+> flexibility and adaptability for developers. Each module is optimized for seamless integration across the following
+> architectures and operating systems:
 
 #### Supported Platforms:
 
@@ -58,13 +64,18 @@
 - **macOS**
     - `osx-x64`
     - `osx-arm64`
+
 --- 
 
 ## 📖 Description
 
-`Alis.Core.Aspect.Time` is a module within the Alis framework designed for precise and flexible time management and measurement in applications. This module includes tools for tracking elapsed time, configuring fixed time intervals, controlling the speed of time progression (TimeScale), and performing time step measurements, making it ideal for physics simulations or event-driven applications.
+`Alis.Core.Aspect.Time` is a module within the Alis framework designed for precise and flexible time management and
+measurement in applications. This module includes tools for tracking elapsed time, configuring fixed time intervals,
+controlling the speed of time progression (TimeScale), and performing time step measurements, making it ideal for
+physics simulations or event-driven applications.
 
 ### Features:
+
 - **Precise Time Control**: Allows accurate measurement of elapsed time in milliseconds, seconds, and ticks.
 - **Time Scalability**: Adjust the speed of time using `TimeScale` to simulate bullet-time effects.
 - **Flexible Configuration**: Choose between fixed or variable time intervals depending on the needs of the application.
@@ -76,6 +87,7 @@
 ---
 
 ## 🚀 Getting Started
+
 To start using `Alis.Core.Aspect.Time`, simply install the package:
 
 ```bash
@@ -119,39 +131,51 @@ public static void Main(string[] args)
 
 ## 🛡️ License
 
-The ALIS framework is released under the [GNU General Public License v3 (GPL-3.0)](https://github.com/pabllopf/Alis/blob/master/license.md), a strong copyleft license that ensures your freedom to use, modify, and distribute the framework while preserving the same license terms. Below is an explanation of how the license affects you as a developer:
+The ALIS framework is released under
+the [GNU General Public License v3 (GPL-3.0)](https://github.com/pabllopf/Alis/blob/master/license.md), a strong
+copyleft license that ensures your freedom to use, modify, and distribute the framework while preserving the same
+license terms. Below is an explanation of how the license affects you as a developer:
 
 [![License](https://raw.githubusercontent.com/pabllopf/Alis/master/docs/licence/License.png)](https://github.com/pabllopf/Alis/blob/master/license.md)
 
 ### Key License Points
 
 - **Complete Freedom for Video Game Developers**:  
-  Any video game created with the ALIS framework is **completely free and unrestricted**. You are free to create, publish, and distribute your games without any licensing fees or royalties.
+  Any video game created with the ALIS framework is **completely free and unrestricted**. You are free to create,
+  publish, and distribute your games without any licensing fees or royalties.
 
 - **Source Code Availability**:  
-  If you make modifications to the ALIS framework itself or integrate it as part of a larger software project (beyond just using it in a video game), you are required to make those changes publicly available under the same GPL-3.0 license. This ensures the framework remains open and accessible to everyone.
+  If you make modifications to the ALIS framework itself or integrate it as part of a larger software project (beyond
+  just using it in a video game), you are required to make those changes publicly available under the same GPL-3.0
+  license. This ensures the framework remains open and accessible to everyone.
 
 - **No Obligation to Mention**:  
-  While it’s not required, it would be greatly appreciated if you mention or credit the ALIS project somewhere in your game, such as in the credits or documentation. This is entirely optional and is meant to help grow the ALIS community.
+  While it’s not required, it would be greatly appreciated if you mention or credit the ALIS project somewhere in your
+  game, such as in the credits or documentation. This is entirely optional and is meant to help grow the ALIS community.
 
 - **Patent Rights**:  
-  Contributors to ALIS provide an express grant of patent rights, meaning you’re protected from patent-related legal issues when using the framework.
+  Contributors to ALIS provide an express grant of patent rights, meaning you’re protected from patent-related legal
+  issues when using the framework.
 
 - **Copyright and Notices**:  
-  You must preserve copyright notices and license texts when redistributing ALIS, either in its original form or as part of a modified version.
+  You must preserve copyright notices and license texts when redistributing ALIS, either in its original form or as part
+  of a modified version.
 
 ### What This Means for Your Games
 
 - **Your Game’s License**:  
-  The GPL-3.0 license applies only to the ALIS framework and its modifications. It does not impose restrictions on the license of the game you build using ALIS. You are free to license your game however you choose (e.g., proprietary, open-source, or public domain).
+  The GPL-3.0 license applies only to the ALIS framework and its modifications. It does not impose restrictions on the
+  license of the game you build using ALIS. You are free to license your game however you choose (e.g., proprietary,
+  open-source, or public domain).
 
 - **Monetization**:  
-  You are free to monetize games created with ALIS, whether by selling them, integrating ads, or any other form of commercialization.
-
+  You are free to monetize games created with ALIS, whether by selling them, integrating ads, or any other form of
+  commercialization.
 
 [![](https://img.shields.io/badge/Read%20More--blue)](https://github.com/pabllopf/Alis/blob/master/license.md)
 
 ---
+
 ## Contributor Guide
 
 Thank you for investing your time in contributing to our project! Any contribution you make will be reflected.
@@ -162,19 +186,23 @@ Read our Code of Conduct to keep our community approachable and respectable.
 ## Authors
 
 <!-- readme: pabllopf -start -->
+
 | [![Pablo Perdomo Falcón](https://avatars.githubusercontent.com/u/48176121?v=4&s=75)](https://github.com/pabllopf) |
-|:--------------------------------------------------------------------------------------------------:|
-| **[Pablo Perdomo Falcón](https://github.com/pabllopf)**                                             |
+|:-----------------------------------------------------------------------------------------------------------------:|
+|                              **[Pablo Perdomo Falcón](https://github.com/pabllopf)**                              |
+
 <!-- readme: pabllopf -end -->
 
 ## Collaborators
 
 <!-- readme: collaborators -start -->
-| [![Raúl Lozano Ponce](https://avatars.githubusercontent.com/u/43152062?v=4)](https://github.com/RaulLozanoPonce)  | [![Juan Ángel Trujillo Jiménez](https://avatars.githubusercontent.com/u/45520663?v=4)](https://github.com/cannt)  | [![Pablo Perdomo Falcón](https://avatars.githubusercontent.com/u/48176121?v=4)](https://github.com/pabllopf)  | [![Christian García](https://avatars.githubusercontent.com/u/55676590?v=4)](https://github.com/Chgv99)  | [![RicardoVillarta](https://avatars.githubusercontent.com/u/62963416?v=4)](https://github.com/RicardoVillarta)  |
-|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|
-| **[Raúl Lozano Ponce](https://github.com/RaulLozanoPonce)**                                        | **[Juan Ángel Trujillo Jiménez](https://github.com/cannt)**                                         | **[Pablo Perdomo Falcón](https://github.com/pabllopf)**                                             | **[Christian García](https://github.com/Chgv99)**                                                  | **[RicardoVillarta](https://github.com/RicardoVillarta)**                                           |
 
-| [![Gabriel](https://avatars.githubusercontent.com/u/75950686?v=4)](https://github.com/GabrielRT01)  | [![Pedro D.GR](https://avatars.githubusercontent.com/u/82670532?v=4)](https://github.com/SPEEDCROW98)  | [![Claudia2000pf](https://avatars.githubusercontent.com/u/82757764?v=4)](https://github.com/Claudia2000pf)  | [![Carlos](https://avatars.githubusercontent.com/u/82760316?v=4)](https://github.com/suarez0965)  | [![Roser Almenar](https://avatars.githubusercontent.com/u/118014440?v=4)](https://github.com/roseralmenar)  |
-|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|
-| **[Gabriel](https://github.com/GabrielRT01)**                                                      | **[Pedro D.GR](https://github.com/SPEEDCROW98)**                                                  | **[Claudia2000pf](https://github.com/Claudia2000pf)**                                              | **[Carlos](https://github.com/suarez0965)**                                                       | **[Roser Almenar](https://github.com/roseralmenar)**                                               |
+| [![Raúl Lozano Ponce](https://avatars.githubusercontent.com/u/43152062?v=4)](https://github.com/RaulLozanoPonce) | [![Juan Ángel Trujillo Jiménez](https://avatars.githubusercontent.com/u/45520663?v=4)](https://github.com/cannt) | [![Pablo Perdomo Falcón](https://avatars.githubusercontent.com/u/48176121?v=4)](https://github.com/pabllopf) | [![Christian García](https://avatars.githubusercontent.com/u/55676590?v=4)](https://github.com/Chgv99) | [![RicardoVillarta](https://avatars.githubusercontent.com/u/62963416?v=4)](https://github.com/RicardoVillarta) |
+|:----------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------:|
+|                           **[Raúl Lozano Ponce](https://github.com/RaulLozanoPonce)**                            |                           **[Juan Ángel Trujillo Jiménez](https://github.com/cannt)**                            |                           **[Pablo Perdomo Falcón](https://github.com/pabllopf)**                            |                           **[Christian García](https://github.com/Chgv99)**                            |                           **[RicardoVillarta](https://github.com/RicardoVillarta)**                            |
+
+| [![Gabriel](https://avatars.githubusercontent.com/u/75950686?v=4)](https://github.com/GabrielRT01) | [![Pedro D.GR](https://avatars.githubusercontent.com/u/82670532?v=4)](https://github.com/SPEEDCROW98) | [![Claudia2000pf](https://avatars.githubusercontent.com/u/82757764?v=4)](https://github.com/Claudia2000pf) | [![Carlos](https://avatars.githubusercontent.com/u/82760316?v=4)](https://github.com/suarez0965) | [![Roser Almenar](https://avatars.githubusercontent.com/u/118014440?v=4)](https://github.com/roseralmenar) |
+|:--------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------:|
+|                           **[Gabriel](https://github.com/GabrielRT01)**                            |                           **[Pedro D.GR](https://github.com/SPEEDCROW98)**                            |                           **[Claudia2000pf](https://github.com/Claudia2000pf)**                            |                           **[Carlos](https://github.com/suarez0965)**                            |                            **[Roser Almenar](https://github.com/roseralmenar)**                            |
+
 <!-- readme: collaborators -end -->

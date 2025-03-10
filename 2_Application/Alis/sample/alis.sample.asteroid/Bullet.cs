@@ -33,13 +33,13 @@ using Alis.Core.Ecs.Entity;
 namespace Alis.Sample.Asteroid
 {
     /// <summary>
-    /// The bullet class
+    ///     The bullet class
     /// </summary>
-    /// <seealso cref="AComponent"/>
+    /// <seealso cref="AComponent" />
     public class Bullet : AComponent
     {
         /// <summary>
-        /// Ons the collision enter using the specified game object
+        ///     Ons the collision enter using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public override void OnCollisionEnter(GameObject gameObject)
@@ -47,12 +47,12 @@ namespace Alis.Sample.Asteroid
             if (gameObject.Tag == "Asteroid")
             {
                 gameObject.Get<Asteroid>().DecreaseHealth();
-                this.GameObject.Context.SceneManager.DestroyGameObject(this.GameObject);
+                GameObject.Context.SceneManager.DestroyGameObject(GameObject);
             }
-            
+
             if (gameObject.Tag == "Wall")
             {
-                this.GameObject.Context.SceneManager.DestroyGameObject(this.GameObject);
+                GameObject.Context.SceneManager.DestroyGameObject(GameObject);
             }
         }
     }

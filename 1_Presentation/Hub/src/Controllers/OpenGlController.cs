@@ -33,8 +33,6 @@ using Alis.App.Hub.Shaders;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Constructs;
 using Alis.Core.Graphic.OpenGL.Enums;
-using Alis.Extension.Graphic.Sdl2;
-
 
 namespace Alis.App.Hub.Controllers
 {

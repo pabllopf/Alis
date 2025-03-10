@@ -33,17 +33,18 @@ using BenchmarkDotNet.Attributes;
 namespace Alis.Benchmark.ClassVsStruct
 {
     /// <summary>
-    /// The class vs struct benchmark class
+    ///     The class vs struct benchmark class
     /// </summary>
+    [MemoryDiagnoser(true), Config(typeof(Config))]
     public class ClassVsStructBenchmark
     {
         /// <summary>
-        /// The iterations
+        ///     The iterations
         /// </summary>
         private const int Iterations = 1_000_000;
 
         /// <summary>
-        /// Usings this instance
+        ///     Usings this instance
         /// </summary>
         /// <returns>The sum</returns>
         [Benchmark(Baseline = true)]
@@ -55,11 +56,12 @@ namespace Alis.Benchmark.ClassVsStruct
             {
                 sum += obj.X + obj.Y;
             }
+
             return sum;
         }
 
         /// <summary>
-        /// Usings the struct
+        ///     Usings the struct
         /// </summary>
         /// <returns>The sum</returns>
         [Benchmark]
@@ -71,6 +73,7 @@ namespace Alis.Benchmark.ClassVsStruct
             {
                 sum += obj.X + obj.Y;
             }
+
             return sum;
         }
     }

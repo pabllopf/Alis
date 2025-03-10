@@ -27,21 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Data.Resource;
-using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Ecs.Component;
-using Alis.Core.Ecs.System.Manager.Fonts;
 
 namespace Alis.Sample.Asteroid
 {
     /// <summary>
-    /// The counter manager class
+    ///     The counter manager class
     /// </summary>
-    /// <seealso cref="AComponent"/>
+    /// <seealso cref="AComponent" />
     public class CounterManager : AComponent
     {
         /// <summary>
-        /// The counter
+        ///     The counter
         /// </summary>
         public int counter = 10;
         /// <summary>
@@ -50,32 +47,32 @@ namespace Alis.Sample.Asteroid
         //public FontManager fontManager;
 
         /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
         public override void OnStart()
         {
             //fontManager = Context.GraphicManager.FontManager;
             //fontManager.LoadFont("MONO", 16, AssetManager.Find("mono.bmp"));
         }
-        
+
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public override void OnUpdate()
         {
         }
-        
+
         /// <summary>
         ///     Ons the gui
         /// </summary>
         public override void OnGui()
         {
-            if(this.Context.SceneManager.CurrentScene.GetByTag("HealthController").Get<HealthController>().health > 0)
+            if (Context.SceneManager.CurrentScene.GetByTag("HealthController").Get<HealthController>().health > 0)
             {
                 //fontManager.RenderText("MONO", counter.ToString("D3"), -10, -10, Color.White, 32);
             }
         }
-        
+
         /// <summary>
         ///     Increments this instance
         /// </summary>
@@ -83,9 +80,9 @@ namespace Alis.Sample.Asteroid
         {
             counter += 10;
         }
-        
+
         /// <summary>
-        /// Decrements this instance
+        ///     Decrements this instance
         /// </summary>
         public void Decrement()
         {
@@ -93,7 +90,7 @@ namespace Alis.Sample.Asteroid
             if (counter < 0)
             {
                 counter = 15;
-                this.Context.SceneManager.CurrentScene.GetByTag("HealthController").Get<HealthController>().Decrement();
+                Context.SceneManager.CurrentScene.GetByTag("HealthController").Get<HealthController>().Decrement();
             }
         }
 

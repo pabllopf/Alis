@@ -6,9 +6,9 @@
             CopyToOutputDirectory="Always"
             CopyToPublishDirectory="Always"/>
     </ItemGroup>
-    
+
     <PropertyGroup Condition="Exists('$(ProjectDir)Assets/icon/app.ico') == True">
         <ApplicationIcon>$(ProjectDir)Assets/icon/app.ico</ApplicationIcon>
     </PropertyGroup>
-    
+
 </Project>

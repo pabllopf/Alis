@@ -52,7 +52,7 @@ namespace Alis.Core.Ecs.Component.Render
         public Animation(List<Frame> textures) => Frames = textures;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Animation"/> class
+        ///     Initializes a new instance of the <see cref="Animation" /> class
         /// </summary>
         /// <param name="name">The name</param>
         /// <param name="order">The order</param>
@@ -66,7 +66,7 @@ namespace Alis.Core.Ecs.Component.Render
             Speed = speed;
             Frames = frames;
         }
-        
+
         /// <summary>
         ///     Gets or sets the value of the name
         /// </summary>
@@ -78,7 +78,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         [JsonPropertyName("_Index_")]
         private int Index { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the order
         /// </summary>

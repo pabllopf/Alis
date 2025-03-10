@@ -27,13 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.System.Configuration.Graphic;
-using Alis.Core.Graphic;
 
 namespace Alis.Builder.Core.Ecs.System.Setting.Graphic
 {
@@ -77,7 +74,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Graphic
         }
 
         /// <summary>
-        /// Resolutions the x
+        ///     Resolutions the x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
@@ -89,7 +86,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Graphic
         }
 
         /// <summary>
-        /// Backgrounds the color using the specified color
+        ///     Backgrounds the color using the specified color
         /// </summary>
         /// <param name="color">The color</param>
         /// <returns>The graphic setting builder</returns>
@@ -100,7 +97,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Graphic
         }
 
         /// <summary>
-        /// Ises the resizable using the specified value
+        ///     Ises the resizable using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The graphic setting builder</returns>

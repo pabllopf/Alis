@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Monitor.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -28,7 +57,7 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
         /// <returns>
         ///     <c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.
         /// </returns>
-        public bool Equals(Monitor other) { return handle.Equals(other.handle); }
+        public bool Equals(Monitor other) => handle.Equals(other.handle);
 
         /// <summary>
         ///     Determines whether the specified <see cref="object" />, is equal to this instance.
@@ -50,7 +79,7 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
         /// <returns>
         ///     A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
         /// </returns>
-        public override int GetHashCode() { return handle.GetHashCode(); }
+        public override int GetHashCode() => handle.GetHashCode();
 
         /// <summary>
         ///     Implements the operator ==.
@@ -60,7 +89,7 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
         /// <returns>
         ///     The result of the operator.
         /// </returns>
-        public static bool operator ==(Monitor left, Monitor right) { return left.Equals(right); }
+        public static bool operator ==(Monitor left, Monitor right) => left.Equals(right);
 
         /// <summary>
         ///     Implements the operator !=.
@@ -70,7 +99,7 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
         /// <returns>
         ///     The result of the operator.
         /// </returns>
-        public static bool operator !=(Monitor left, Monitor right) { return !left.Equals(right); }
+        public static bool operator !=(Monitor left, Monitor right) => !left.Equals(right);
 
         /// <summary>
         ///     Returns a <see cref="string" /> that represents this instance.
@@ -78,7 +107,7 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
         /// <returns>
         ///     A <see cref="string" /> that represents this instance.
         /// </returns>
-        public override string ToString() { return handle.ToString(); }
+        public override string ToString() => handle.ToString();
 
         /// <summary>
         ///     Gets the position, in screen coordinates of the valid work are for the monitor.

@@ -92,7 +92,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
             {
                 ScenesMap.Scenes.Add(i);
             }
-            
+
             ScenesMap = ScenesMap.Load();
 
             string versionCurrent = Assembly.GetExecutingAssembly().GetName().Version.ToString().Replace('.', '_');
@@ -354,9 +354,9 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             Scenes.Remove(component);
         }
-        
+
         /// <summary>
-        /// Destroys the game object using the specified game object
+        ///     Destroys the game object using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public void DestroyGameObject(GameObject gameObject)

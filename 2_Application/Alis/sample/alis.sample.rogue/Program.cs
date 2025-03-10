@@ -28,11 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Definition;
-using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
 using Alis.Core.Ecs.System;
-using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Sample.Rogue
 {
@@ -100,7 +98,6 @@ namespace Alis.Sample.Rogue
                                         .FilePath("tile003.bmp")
                                         .Build())
                                     .Build())
-                                
                                 .AddAnimation(animation2 => animation2
                                     .Name("Walk Right")
                                     .Order(1)
@@ -118,7 +115,6 @@ namespace Alis.Sample.Rogue
                                         .FilePath("tile020.bmp")
                                         .Build())
                                     .Build())
-                                
                                 .AddAnimation(animation2 => animation2
                                     .Name("Walk Up")
                                     .Order(2)
@@ -136,7 +132,6 @@ namespace Alis.Sample.Rogue
                                         .FilePath("tile037.bmp")
                                         .Build())
                                     .Build())
-                                
                                 .AddAnimation(animation2 => animation2
                                     .Name("Walk Left")
                                     .Order(3)
@@ -154,7 +149,6 @@ namespace Alis.Sample.Rogue
                                         .FilePath("tile054.bmp")
                                         .Build())
                                     .Build())
-                                
                                 .Build())
                             .AddComponent<Camera>(camera => camera.Builder()
                                 .Resolution(800, 800)

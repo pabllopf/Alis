@@ -45,7 +45,6 @@ namespace Alis.Sample.Egg
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            
             VideoGame
                 .Create()
                 .Settings(setting => setting
@@ -72,7 +71,7 @@ namespace Alis.Sample.Egg
                 .World(sceneManager => sceneManager
                     .Add<Scene>(gameScene => gameScene
                         .Name("Main Scene")
-                        
+
                         // CAMERA
                         .Add<GameObject>(mainCamera => mainCamera
                             .Name("Camera")
@@ -82,7 +81,6 @@ namespace Alis.Sample.Egg
                                 .Resolution(1024, 640)
                                 .Build())
                             .Build())
-                        
                         .Add<GameObject>(sarten => sarten
                             .Transform(transform => transform
                                 .Position(-6, -2)
@@ -94,7 +92,6 @@ namespace Alis.Sample.Egg
                                 .Depth(0)
                                 .Build())
                             .Build())
-                        
                         .Add<GameObject>(clara => clara
                             .Transform(transform => transform
                                 .Position(-3, -1)
@@ -106,7 +103,6 @@ namespace Alis.Sample.Egg
                                 .Depth(1)
                                 .Build())
                             .Build())
-                        
                         .Add<GameObject>(yema => yema
                             .Transform(transform => transform
                                 .Position(-3, -1)
@@ -118,8 +114,6 @@ namespace Alis.Sample.Egg
                                 .Depth(2)
                                 .Build())
                             .Build())
-                        
-                        
                         .Add<GameObject>(sarten => sarten
                             .Transform(transform => transform
                                 .Position(-4, 0)
@@ -131,7 +125,6 @@ namespace Alis.Sample.Egg
                                 .Depth(-2)
                                 .Build())
                             .Build())
-                        
                         .Add<GameObject>(sarten => sarten
                             .Transform(transform => transform
                                 .Position(9, -8)
@@ -143,7 +136,6 @@ namespace Alis.Sample.Egg
                                 .Depth(-1)
                                 .Build())
                             .Build())
-                        
                         .Add<GameObject>(sarten => sarten
                             .Transform(transform => transform
                                 .Position(13, -8)
@@ -155,7 +147,6 @@ namespace Alis.Sample.Egg
                                 .Depth(-1)
                                 .Build())
                             .Build())
-                        
                         .Build())
                     .Build())
                 .Build()

@@ -22,6 +22,7 @@
 > Develop the video games of your dreams 💯 free!! on Windows, MacOS, Linux, Android(soon), IOS(soon).
 
 ## 📚 Alis.Core.Aspect.Security
+
 - [Modular Design](#-modular-design)
 - [Description](#-description)
 - [Getting Started](#-getting-started)
@@ -34,13 +35,17 @@
 
 ### ⚙️ Modular Design
 
-> All modules within the Alis framework, including `Alis.Core.Aspect.Security`, are fully independent and can be used separately. While the primary focus of Alis is game development, these modules are designed to be versatile and can be integrated into other types of applications or environments where security, encryption, or data integrity are required.
+> All modules within the Alis framework, including `Alis.Core.Aspect.Security`, are fully independent and can be used
+> separately. While the primary focus of Alis is game development, these modules are designed to be versatile and can be
+> integrated into other types of applications or environments where security, encryption, or data integrity are required.
 
 ---
 
 ### 🖥️ Platform Compatibility
 
-> The Alis framework, including `Alis.Core.Aspect.Security`, is designed to support a wide range of platforms, ensuring flexibility and adaptability for developers. Each module is optimized for seamless integration across the following architectures and operating systems:
+> The Alis framework, including `Alis.Core.Aspect.Security`, is designed to support a wide range of platforms, ensuring
+> flexibility and adaptability for developers. Each module is optimized for seamless integration across the following
+> architectures and operating systems:
 
 #### Supported Platforms:
 
@@ -58,13 +63,18 @@
 - **macOS**
     - `osx-x64`
     - `osx-arm64`
+
 --- 
 
 ## 📖 Description
 
-`Alis.Core.Aspect.Security` is a module within the Alis framework that provides types for handling secure data types, offering encrypted data operations to enhance security in applications. This module includes types like `SecureDouble`, `SecureFloat`, `SecureInt`, `SecureLong`, `SecureDecimal`, `SecureString`, and `SecureChar`, all designed to offer safer handling of primitive data types.
+`Alis.Core.Aspect.Security` is a module within the Alis framework that provides types for handling secure data types,
+offering encrypted data operations to enhance security in applications. This module includes types like `SecureDouble`,
+`SecureFloat`, `SecureInt`, `SecureLong`, `SecureDecimal`, `SecureString`, and `SecureChar`, all designed to offer safer
+handling of primitive data types.
 
 ### Features:
+
 - **Secure Data Handling**: Secure versions of common primitive data types.
 - **Enhanced Security**: These types protect against unauthorized access and modification of sensitive data.
 - **Main Classes**:
@@ -79,6 +89,7 @@
 ---
 
 ## 🚀 Getting Started
+
 To start using `Alis.Core.Aspect.Security`, simply install the package:
 
 ```bash
@@ -123,17 +134,22 @@ public static void Main(string[] args)
 
 ## 🛡️ License
 
-The ALIS framework is released under the [GNU General Public License v3 (GPL-3.0)](https://github.com/pabllopf/Alis/blob/master/license.md), a strong copyleft license that ensures your freedom to use, modify, and distribute the framework while preserving the same license terms. Below is an explanation of how the license affects you as a developer:
+The ALIS framework is released under
+the [GNU General Public License v3 (GPL-3.0)](https://github.com/pabllopf/Alis/blob/master/license.md), a strong
+copyleft license that ensures your freedom to use, modify, and distribute the framework while preserving the same
+license terms. Below is an explanation of how the license affects you as a developer:
 
 [![License](https://raw.githubusercontent.com/pabllopf/Alis/master/docs/licence/License.png)](https://github.com/pabllopf/Alis/blob/master/license.md)
 
 ### Key License Points
 
 - **Complete Freedom for Developers**:  
-  Any software created with the ALIS framework is **completely free and unrestricted**. You are free to create, publish, and distribute your applications without any licensing fees or royalties.
+  Any software created with the ALIS framework is **completely free and unrestricted**. You are free to create, publish,
+  and distribute your applications without any licensing fees or royalties.
 
 - **Source Code Availability**:  
-  If you make modifications to the ALIS framework itself or integrate it as part of a larger software project, you are required to make those changes publicly available under the same GPL-3.0 license.
+  If you make modifications to the ALIS framework itself or integrate it as part of a larger software project, you are
+  required to make those changes publicly available under the same GPL-3.0 license.
 
 ---
 
@@ -147,19 +163,23 @@ Read our Code of Conduct to keep our community approachable and respectable.
 ## Authors
 
 <!-- readme: pabllopf -start -->
+
 | [![Pablo Perdomo Falcón](https://avatars.githubusercontent.com/u/48176121?v=4&s=75)](https://github.com/pabllopf) |
-|:--------------------------------------------------------------------------------------------------:|
-| **[Pablo Perdomo Falcón](https://github.com/pabllopf)**                                             |
+|:-----------------------------------------------------------------------------------------------------------------:|
+|                              **[Pablo Perdomo Falcón](https://github.com/pabllopf)**                              |
+
 <!-- readme: pabllopf -end -->
 
 ## Collaborators
 
 <!-- readme: collaborators -start -->
-| [![Raúl Lozano Ponce](https://avatars.githubusercontent.com/u/43152062?v=4)](https://github.com/RaulLozanoPonce)  | [![Juan Ángel Trujillo Jiménez](https://avatars.githubusercontent.com/u/45520663?v=4)](https://github.com/cannt)  | [![Pablo Perdomo Falcón](https://avatars.githubusercontent.com/u/48176121?v=4)](https://github.com/pabllopf)  | [![Christian García](https://avatars.githubusercontent.com/u/55676590?v=4)](https://github.com/Chgv99)  | [![RicardoVillarta](https://avatars.githubusercontent.com/u/62963416?v=4)](https://github.com/RicardoVillarta)  |
-|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|
-| **[Raúl Lozano Ponce](https://github.com/RaulLozanoPonce)**                                        | **[Juan Ángel Trujillo Jiménez](https://github.com/cannt)**                                         | **[Pablo Perdomo Falcón](https://github.com/pabllopf)**                                             | **[Christian García](https://github.com/Chgv99)**                                                  | **[RicardoVillarta](https://github.com/RicardoVillarta)**                                           |
 
-| [![Gabriel](https://avatars.githubusercontent.com/u/75950686?v=4)](https://github.com/GabrielRT01)  | [![Pedro D.GR](https://avatars.githubusercontent.com/u/82670532?v=4)](https://github.com/SPEEDCROW98)  | [![Claudia2000pf](https://avatars.githubusercontent.com/u/82757764?v=4)](https://github.com/Claudia2000pf)  | [![Carlos](https://avatars.githubusercontent.com/u/82760316?v=4)](https://github.com/suarez0965)  | [![Roser Almenar](https://avatars.githubusercontent.com/u/118014440?v=4)](https://github.com/roseralmenar)  |
-|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:|
-| **[Gabriel](https://github.com/GabrielRT01)**                                                      | **[Pedro D.GR](https://github.com/SPEEDCROW98)**                                                  | **[Claudia2000pf](https://github.com/Claudia2000pf)**                                              | **[Carlos](https://github.com/suarez0965)**                                                       | **[Roser Almenar](https://github.com/roseralmenar)**                                               |
+| [![Raúl Lozano Ponce](https://avatars.githubusercontent.com/u/43152062?v=4)](https://github.com/RaulLozanoPonce) | [![Juan Ángel Trujillo Jiménez](https://avatars.githubusercontent.com/u/45520663?v=4)](https://github.com/cannt) | [![Pablo Perdomo Falcón](https://avatars.githubusercontent.com/u/48176121?v=4)](https://github.com/pabllopf) | [![Christian García](https://avatars.githubusercontent.com/u/55676590?v=4)](https://github.com/Chgv99) | [![RicardoVillarta](https://avatars.githubusercontent.com/u/62963416?v=4)](https://github.com/RicardoVillarta) |
+|:----------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------:|
+|                           **[Raúl Lozano Ponce](https://github.com/RaulLozanoPonce)**                            |                           **[Juan Ángel Trujillo Jiménez](https://github.com/cannt)**                            |                           **[Pablo Perdomo Falcón](https://github.com/pabllopf)**                            |                           **[Christian García](https://github.com/Chgv99)**                            |                           **[RicardoVillarta](https://github.com/RicardoVillarta)**                            |
+
+| [![Gabriel](https://avatars.githubusercontent.com/u/75950686?v=4)](https://github.com/GabrielRT01) | [![Pedro D.GR](https://avatars.githubusercontent.com/u/82670532?v=4)](https://github.com/SPEEDCROW98) | [![Claudia2000pf](https://avatars.githubusercontent.com/u/82757764?v=4)](https://github.com/Claudia2000pf) | [![Carlos](https://avatars.githubusercontent.com/u/82760316?v=4)](https://github.com/suarez0965) | [![Roser Almenar](https://avatars.githubusercontent.com/u/118014440?v=4)](https://github.com/roseralmenar) |
+|:--------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------:|
+|                           **[Gabriel](https://github.com/GabrielRT01)**                            |                           **[Pedro D.GR](https://github.com/SPEEDCROW98)**                            |                           **[Claudia2000pf](https://github.com/Claudia2000pf)**                            |                           **[Carlos](https://github.com/suarez0965)**                            |                            **[Roser Almenar](https://github.com/roseralmenar)**                            |
+
 <!-- readme: collaborators -end -->

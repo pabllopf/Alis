@@ -32,25 +32,23 @@ using Alis.Core.Ecs.Component;
 namespace Alis.Sample.Asteroid
 {
     /// <summary>
-    /// The spawn asteroid class
+    ///     The spawn asteroid class
     /// </summary>
-    /// <seealso cref="AComponent"/>
+    /// <seealso cref="AComponent" />
     public class SpawnAsteroid : AComponent
     {
         /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
         public override void OnStart()
         {
-            
         }
 
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public override void OnUpdate()
         {
-            
         }
     }
 }

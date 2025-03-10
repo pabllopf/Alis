@@ -1,33 +1,36 @@
 # Contributing to Alis
 
-Thank you for your interest in contributing to Alis! Your contributions help make this project better for everyone. Whether you're fixing bugs, adding new features, improving documentation, or helping out in any other way, we're excited to have you on board.
-
+Thank you for your interest in contributing to Alis! Your contributions help make this project better for everyone.
+Whether you're fixing bugs, adding new features, improving documentation, or helping out in any other way, we're excited
+to have you on board.
 
 ## Table of Contents
 
 1. [Code of Conduct](#code-of-conduct)
 2. [How to Contribute](#how-to-contribute)
-   - [Reporting Bugs](#reporting-bugs)
-   - [Suggesting Features](#suggesting-features)
-   - [Submitting Changes](#submitting-changes)
+    - [Reporting Bugs](#reporting-bugs)
+    - [Suggesting Features](#suggesting-features)
+    - [Submitting Changes](#submitting-changes)
 3. [Development Process](#development-process)
-   - [Setting Up the Environment](#setting-up-the-environment)
-   - [Building the Project](#building-the-project)
-   - [Running Tests](#running-tests)
+    - [Setting Up the Environment](#setting-up-the-environment)
+    - [Building the Project](#building-the-project)
+    - [Running Tests](#running-tests)
 4. [Style Guides](#style-guides)
-   - [Coding Standards](#coding-standards)
-   - [Commit Messages](#commit-messages)
+    - [Coding Standards](#coding-standards)
+    - [Commit Messages](#commit-messages)
 5. [Acknowledgments](#acknowledgments)
 
 ## Code of Conduct
 
-By participating in this project, you agree to abide by the [Code of Conduct](CODE_OF_CONDUCT.md). Please read it to understand the expectations we have for all contributors.
+By participating in this project, you agree to abide by the [Code of Conduct](CODE_OF_CONDUCT.md). Please read it to
+understand the expectations we have for all contributors.
 
 ## How to Contribute
 
 ### Reporting Bugs
 
-If you find a bug in the project, please open an issue on our [GitHub Issues](https://github.com/username/alis/issues) page. When reporting a bug, include:
+If you find a bug in the project, please open an issue on our [GitHub Issues](https://github.com/username/alis/issues)
+page. When reporting a bug, include:
 
 - A clear and descriptive title.
 - Steps to reproduce the issue.
@@ -36,7 +39,9 @@ If you find a bug in the project, please open an issue on our [GitHub Issues](ht
 
 ### Suggesting Features
 
-We welcome feature requests! To suggest a new feature, please open an issue on our [GitHub Issues](https://github.com/username/alis/issues) page. Provide a detailed explanation of the feature, its potential benefits, and any examples or mockups that might help illustrate your idea.
+We welcome feature requests! To suggest a new feature, please open an issue on
+our [GitHub Issues](https://github.com/username/alis/issues) page. Provide a detailed explanation of the feature, its
+potential benefits, and any examples or mockups that might help illustrate your idea.
 
 ### Submitting Changes
 
@@ -66,7 +71,8 @@ To set up your development environment, follow these steps:
 
 ### Building the Project
 
-Instructions for building the project will vary depending on the technology stack. Ensure you have the necessary tools installed, such as Node.js, Python, etc.
+Instructions for building the project will vary depending on the technology stack. Ensure you have the necessary tools
+installed, such as Node.js, Python, etc.
 
 ```cs
 dotnet build alis.sln
@@ -101,7 +107,8 @@ Write meaningful commit messages to make the history easier to understand:
 
 ## Acknowledgments
 
-We appreciate your contributions! If your pull request is merged, you will be listed as a contributor in the project's [Contributors](https://github.com/username/alis/graphs/contributors) section.
+We appreciate your contributions! If your pull request is merged, you will be listed as a contributor in the
+project's [Contributors](https://github.com/username/alis/graphs/contributors) section.
 
 Thank you for helping make Alis better for everyone!
 

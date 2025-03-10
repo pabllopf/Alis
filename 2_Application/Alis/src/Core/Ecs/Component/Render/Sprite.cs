@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Sprite.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -13,29 +42,29 @@ using Alis.Core.Graphic.Stb;
 namespace Alis.Core.Ecs.Component.Render
 {
     /// <summary>
-    /// The sprite class
+    ///     The sprite class
     /// </summary>
-    /// <seealso cref="AComponent"/>
-    /// <seealso cref="IHasBuilder{SpriteBuilder}"/>
+    /// <seealso cref="AComponent" />
+    /// <seealso cref="IHasBuilder{SpriteBuilder}" />
     public class Sprite : AComponent, IHasBuilder<SpriteBuilder>
     {
         /// <summary>
-        /// The image handle
+        ///     The image handle
         /// </summary>
         private GCHandle imageHandle;
 
         /// <summary>
-        /// The indices handle
+        ///     The indices handle
         /// </summary>
         private GCHandle indicesHandle;
 
         /// <summary>
-        /// The vertices handle
+        ///     The vertices handle
         /// </summary>
         private GCHandle verticesHandle;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Sprite"/> class
+        ///     Initializes a new instance of the <see cref="Sprite" /> class
         /// </summary>
         public Sprite()
         {
@@ -45,7 +74,7 @@ namespace Alis.Core.Ecs.Component.Render
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Sprite"/> class
+        ///     Initializes a new instance of the <see cref="Sprite" /> class
         /// </summary>
         /// <param name="nameFile">The name file</param>
         public Sprite(string nameFile)
@@ -56,7 +85,7 @@ namespace Alis.Core.Ecs.Component.Render
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Sprite"/> class
+        ///     Initializes a new instance of the <see cref="Sprite" /> class
         /// </summary>
         /// <param name="nameFile">The name file</param>
         /// <param name="depth">The depth</param>
@@ -68,68 +97,68 @@ namespace Alis.Core.Ecs.Component.Render
         }
 
         /// <summary>
-        /// Gets or sets the value of the depth
+        ///     Gets or sets the value of the depth
         /// </summary>
         [JsonPropertyName("_Depth_")]
         public int Depth { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the path
+        ///     Gets or sets the value of the path
         /// </summary>
         [JsonIgnore]
         public string Path { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the name file
+        ///     Gets or sets the value of the name file
         /// </summary>
         [JsonPropertyName("_NameFile_")]
         public string NameFile { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the size
+        ///     Gets or sets the value of the size
         /// </summary>
         [JsonPropertyName("_Size_")]
         public Vector2F Size { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the shader program
+        ///     Gets or sets the value of the shader program
         /// </summary>
         public uint ShaderProgram { get; private set; }
 
         /// <summary>
-        /// Gets or sets the value of the vao
+        ///     Gets or sets the value of the vao
         /// </summary>
         public uint Vao { get; private set; }
 
         /// <summary>
-        /// Gets or sets the value of the vbo
+        ///     Gets or sets the value of the vbo
         /// </summary>
         public uint Vbo { get; private set; }
 
         /// <summary>
-        /// Gets or sets the value of the ebo
+        ///     Gets or sets the value of the ebo
         /// </summary>
         public uint Ebo { get; private set; }
 
         /// <summary>
-        /// Gets or sets the value of the texture
+        ///     Gets or sets the value of the texture
         /// </summary>
         public uint Texture { get; private set; }
 
         /// <summary>
-        /// Gets or sets the value of the flip
+        ///     Gets or sets the value of the flip
         /// </summary>
         [JsonPropertyName("_Flip_")]
         public bool Flip { get; set; }
 
         /// <summary>
-        /// Builders this instance
+        ///     Builders this instance
         /// </summary>
         /// <returns>The sprite builder</returns>
         public SpriteBuilder Builder() => new SpriteBuilder();
 
         /// <summary>
-        /// Ons the init
+        ///     Ons the init
         /// </summary>
         public override void OnInit()
         {
@@ -143,7 +172,7 @@ namespace Alis.Core.Ecs.Component.Render
         }
 
         /// <summary>
-        /// Ons the awake
+        ///     Ons the awake
         /// </summary>
         public override void OnAwake()
         {
@@ -151,21 +180,21 @@ namespace Alis.Core.Ecs.Component.Render
         }
 
         /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
         public override void OnStart()
         {
         }
 
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public override void OnUpdate()
         {
         }
 
         /// <summary>
-        /// Ons the exit
+        ///     Ons the exit
         /// </summary>
         public override void OnExit()
         {
@@ -173,11 +202,11 @@ namespace Alis.Core.Ecs.Component.Render
         }
 
         /// <summary>
-        /// Initializes the shaders
+        ///     Initializes the shaders
         /// </summary>
         private void InitializeShaders()
         {
-         string vertexShaderSource = @"
+            string vertexShaderSource = @"
              #version 330 core
              layout (location = 0) in vec3 aPos;
              layout (location = 1) in vec2 aTexCoord;
@@ -205,7 +234,7 @@ namespace Alis.Core.Ecs.Component.Render
                  }
              }
          ";
-            
+
             string fragmentShaderSource = @"
                 #version 330 core
                 out vec4 FragColor;
@@ -235,7 +264,7 @@ namespace Alis.Core.Ecs.Component.Render
         }
 
         /// <summary>
-        /// Loads the texture using the specified image path
+        ///     Loads the texture using the specified image path
         /// </summary>
         /// <param name="imagePath">The image path</param>
         /// <exception cref="FileNotFoundException">Texture file not found </exception>
@@ -289,7 +318,7 @@ namespace Alis.Core.Ecs.Component.Render
         }
 
         /// <summary>
-        /// Setup the buffers
+        ///     Setup the buffers
         /// </summary>
         private void SetupBuffers()
         {
@@ -333,13 +362,13 @@ namespace Alis.Core.Ecs.Component.Render
         }
 
         /// <summary>
-        /// Clones this instance
+        ///     Clones this instance
         /// </summary>
         /// <returns>The object</returns>
         public override object Clone() => new Sprite(NameFile, Depth);
-        
+
         /// <summary>
-        /// Renders the camera position
+        ///     Renders the camera position
         /// </summary>
         /// <param name="cameraPosition">The camera position</param>
         /// <param name="cameraResolution">The camera resolution</param>
@@ -348,44 +377,44 @@ namespace Alis.Core.Ecs.Component.Render
         {
             Vector2F position = GameObject.Transform.Position;
             float spriteRotation = GameObject.Transform.Rotation;
-        
+
             Gl.GlUseProgram(ShaderProgram);
             Gl.GlBindVertexArray(Vao);
             Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, Ebo);
             Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
-        
+
             // Conversión de metros a píxeles
             float positionXPixels = (position.X - cameraPosition.X) * pixelsPerMeter;
             float positionYPixels = (position.Y - cameraPosition.Y) * pixelsPerMeter;
-        
+
             // Normalizar a coordenadas OpenGL (-1 a 1) usando la resolución de la cámara
-            float worldX = (2.0f * positionXPixels / cameraResolution.X);
-            float worldY = (2.0f * positionYPixels / cameraResolution.Y);
-        
+            float worldX = 2.0f * positionXPixels / cameraResolution.X;
+            float worldY = 2.0f * positionYPixels / cameraResolution.Y;
+
             // Enviar valores normalizados al shader
             int offsetLocation = Gl.GlGetUniformLocation(ShaderProgram, "offset");
             Gl.GlUniform2F(offsetLocation, worldX, worldY);
-        
+
             int scaleLocation = Gl.GlGetUniformLocation(ShaderProgram, "scale");
             Gl.GlUniform2F(scaleLocation, GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y);
-        
+
             int rotationLocation = Gl.GlGetUniformLocation(ShaderProgram, "rotation");
             Gl.GlUniform1F(rotationLocation, spriteRotation);
-        
+
             // Enviar la propiedad Flip al shader
             int flipLocation = Gl.GlGetUniformLocation(ShaderProgram, "flip");
             Gl.GlUniform1I(flipLocation, Flip ? 1 : 0);
-        
+
             // Activar blending para manejar transparencias
             Gl.GlEnable(EnableCap.Blend);
             Gl.GlBlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
-        
+
             // Vincular la textura antes de dibujar
             Gl.GlBindTexture(TextureTarget.Texture2D, Texture);
-        
+
             // Dibujar el sprite
             Gl.GlDrawElements(PrimitiveType.Triangles, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
-        
+
             Gl.GlDisable(EnableCap.Blend);
         }
     }

@@ -29,14 +29,12 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
@@ -65,9 +63,9 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         ///     The pixels per meter
         /// </summary>
         private const float PixelsPerMeter = 32.0f;
-        
+
         /// <summary>
-        /// The framebuffer size callback
+        ///     The framebuffer size callback
         /// </summary>
         private SizeCallback framebufferSizeCallback;
 
@@ -123,7 +121,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// </summary>
         [JsonPropertyName("_Window_", true, true)]
         public Window Window { get; set; }
-        
+
         /// <summary>
         ///     The renderWindow
         /// </summary>
@@ -141,7 +139,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// </summary>
         [JsonPropertyName("_Cameras_")]
         public List<Camera> Cameras { get; }
-        
+
         /// <summary>
         ///     Ons the init
         /// </summary>
@@ -149,7 +147,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         {
             // Initialize GLFW
             Glfw.Init();
-            
+
             // Set GLFW window hints for OpenGL context
             Glfw.WindowHint(Hint.ContextVersionMajor, 3);
             Glfw.WindowHint(Hint.ContextVersionMinor, 2);
@@ -159,8 +157,8 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Glfw.WindowHint(Hint.DepthBits, 24);
             Glfw.WindowHint(Hint.AlphaBits, 8);
             Glfw.WindowHint(Hint.StencilBits, 8);
-            
-            if(Context.Setting.Graphic.IsResizable)
+
+            if (Context.Setting.Graphic.IsResizable)
             {
                 Glfw.WindowHint(Hint.Resizable, true);
             }
@@ -168,76 +166,76 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             {
                 Glfw.WindowHint(Hint.Resizable, false);
             }
-            
+
             // Create a GLFW window
-            if (this.Context.Setting.Graphic.WindowSize == new Vector2F(0,0))
+            if (Context.Setting.Graphic.WindowSize == new Vector2F(0, 0))
             {
-                this.Context.Setting.Graphic.WindowSize = new Vector2F(1024, 640);
+                Context.Setting.Graphic.WindowSize = new Vector2F(1024, 640);
             }
-           
-            Window = Glfw.CreateWindow((int)Context.Setting.Graphic.WindowSize.X, (int)Context.Setting.Graphic.WindowSize.Y, Context.Setting.General.Name, Monitor.None, Window.None);
+
+            Window = Glfw.CreateWindow((int) Context.Setting.Graphic.WindowSize.X, (int) Context.Setting.Graphic.WindowSize.Y, Context.Setting.General.Name, Monitor.None, Window.None);
             if (Window == Window.None)
             {
                 throw new Exception("Failed to create GLFW window");
             }
-            
+
             // Make the OpenGL context current
             Glfw.MakeContextCurrent(Window);
-            
+
             // Enable v-sync
             Glfw.SwapInterval(1);
-            
+
             // Log GLFW version
             Console.WriteLine($"GLFW VERSION {Glfw.GetVersionString()}");
-        
-           // Set window icon (skip on macOS)
-           if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-           {
-               Console.WriteLine("Skipping window icon setting on macOS");
-           }
-           else
-           {
-               string iconPath = Context.Setting.General.Icon;
-               if (!string.IsNullOrEmpty(iconPath))
-               {
-                   Image icon = LoadIcon(AssetManager.Find(iconPath));
-                   Glfw.SetWindowIcon(Window, 1, new Image[] { icon });
-               }
-           }
-            
-           framebufferSizeCallback = FramebufferSizeCallback;
-           Glfw.SetFramebufferSizeCallback(Window, framebufferSizeCallback);
+
+            // Set window icon (skip on macOS)
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                Console.WriteLine("Skipping window icon setting on macOS");
+            }
+            else
+            {
+                string iconPath = Context.Setting.General.Icon;
+                if (!string.IsNullOrEmpty(iconPath))
+                {
+                    Image icon = LoadIcon(AssetManager.Find(iconPath));
+                    Glfw.SetWindowIcon(Window, 1, new[] {icon});
+                }
+            }
+
+            framebufferSizeCallback = FramebufferSizeCallback;
+            Glfw.SetFramebufferSizeCallback(Window, framebufferSizeCallback);
         }
-        
-       /// <summary>
-       /// Loads the icon using the specified icon path
-       /// </summary>
-       /// <param name="iconPath">The icon path</param>
-       /// <exception cref="FileNotFoundException">Icon file not found </exception>
-       /// <returns>The image</returns>
-       private Image LoadIcon(string iconPath)
-       {
-           if (!File.Exists(iconPath))
-           {
-               throw new FileNotFoundException("Icon file not found", iconPath);
-           }
-       
-           using (FileStream stream = File.OpenRead(iconPath))
-           {
-               ImageResult image = ImageResult.FromStream(stream, ColorComponents.RedGreenBlueAlpha);
-       
-               GCHandle handle = GCHandle.Alloc(image.Data, GCHandleType.Pinned);
-               IntPtr dataPtr = handle.AddrOfPinnedObject();
-       
-               Image icon = new Image(image.Width, image.Height, dataPtr);
-       
-               handle.Free();
-       
-               return icon;
-           }
-       }
-        
-        
+
+        /// <summary>
+        ///     Loads the icon using the specified icon path
+        /// </summary>
+        /// <param name="iconPath">The icon path</param>
+        /// <exception cref="FileNotFoundException">Icon file not found </exception>
+        /// <returns>The image</returns>
+        private Image LoadIcon(string iconPath)
+        {
+            if (!File.Exists(iconPath))
+            {
+                throw new FileNotFoundException("Icon file not found", iconPath);
+            }
+
+            using (FileStream stream = File.OpenRead(iconPath))
+            {
+                ImageResult image = ImageResult.FromStream(stream, ColorComponents.RedGreenBlueAlpha);
+
+                GCHandle handle = GCHandle.Alloc(image.Data, GCHandleType.Pinned);
+                IntPtr dataPtr = handle.AddrOfPinnedObject();
+
+                Image icon = new Image(image.Width, image.Height, dataPtr);
+
+                handle.Free();
+
+                return icon;
+            }
+        }
+
+
         /// <summary>
         ///     Ons the start
         /// </summary>
@@ -249,9 +247,9 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         public override void OnBeforeDraw()
         {
         }
-        
+
         /// <summary>
-        /// Ons the draw
+        ///     Ons the draw
         /// </summary>
         public override void OnDraw()
         {
@@ -260,15 +258,15 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             PhysicSetting physicSettings = contextSetting.Physic;
             Color debugColor = physicSettings.DebugColor;
             Color backgrounColor = contextSetting.Graphic.BackgroundColor;
-            
+
             Glfw.PollEvents();
-           
+
             // Set the clear color (convert from 0-255 range to 0.0-1.0 range)
             Gl.GlClearColor(backgrounColor.R / 255.0f, backgrounColor.G / 255.0f, backgrounColor.B / 255.0f, backgrounColor.A / 255.0f);
-            
+
             // Clear the screen
             Gl.GlClear(ClearBufferMask.ColorBufferBit);
-            
+
             // Draw the sprites:
             foreach (Camera camera in Cameras)
             {
@@ -286,13 +284,13 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                     }
                 }
             }
-            
+
             // Swap the buffers to display the triangle
             Glfw.SwapBuffers(Window);
         }
 
         /// <summary>
-        /// Framebuffers the size callback using the specified window
+        ///     Framebuffers the size callback using the specified window
         /// </summary>
         /// <param name="window">The window</param>
         /// <param name="width">The width</param>
@@ -303,7 +301,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Gl.GlViewport(0, 0, width, height);
             Context.Setting.Graphic.WindowSize = new Vector2F(width, height);
         }
-        
+
         /// <summary>
         ///     Attaches the sprite
         /// </summary>

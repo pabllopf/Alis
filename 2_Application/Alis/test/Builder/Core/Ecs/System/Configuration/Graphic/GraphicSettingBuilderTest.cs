@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Builder.Core.Ecs.System.Setting.Graphic;
 using Alis.Core.Ecs.System.Configuration.Graphic;
 using Xunit;
@@ -62,6 +61,5 @@ namespace Alis.Test.Builder.Core.Ecs.System.Configuration.Graphic
 
             Assert.NotNull(graphicSetting);
         }
-        
     }
 }

@@ -29,18 +29,15 @@
 
 using System;
 using Alis.Core.Aspect.Data.Mapping;
-using Alis.Core.Aspect.Data.Resource;
-using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Component.Audio;
-using Alis.Core.Ecs.System.Manager.Fonts;
 
 namespace Alis.Sample.Asteroid
 {
     /// <summary>
-    /// The health controller class
+    ///     The health controller class
     /// </summary>
-    /// <seealso cref="AComponent"/>
+    /// <seealso cref="AComponent" />
     public class HealthController : AComponent
     {
         /// <summary>
@@ -49,57 +46,57 @@ namespace Alis.Sample.Asteroid
         //public FontManager fontManager;
 
         /// <summary>
-        /// The health
+        ///     The health
         /// </summary>
         public int health = 1;
-        
+
         /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
         public override void OnStart()
-        { 
+        {
             //fontManager = Context.GraphicManager.FontManager;
             //fontManager.LoadFont("MONO", 16, AssetManager.Find("mono.bmp"));
         }
 
         /// <summary>
-        /// Ons the gui
+        ///     Ons the gui
         /// </summary>
         public override void OnGui()
         {
             //if (fontManager == null) return;
-            
+
             if (health == 3)
             {
-             //   fontManager.RenderText("MONO", $"^", -10.1f, -9, Color.White, 32);
-              //  fontManager.RenderText("MONO", $"^", -9.3f, -9, Color.White, 32);
-              //  fontManager.RenderText("MONO", $"^", -8.5f, -9, Color.White, 32);
+                //   fontManager.RenderText("MONO", $"^", -10.1f, -9, Color.White, 32);
+                //  fontManager.RenderText("MONO", $"^", -9.3f, -9, Color.White, 32);
+                //  fontManager.RenderText("MONO", $"^", -8.5f, -9, Color.White, 32);
                 return;
             }
-            
+
             if (health == 2)
             {
-               // fontManager.RenderText("MONO", $"^", -10.1f, -9, Color.White, 32);
-               // fontManager.RenderText("MONO", $"^", -9.3f, -9, Color.White, 32);
+                // fontManager.RenderText("MONO", $"^", -10.1f, -9, Color.White, 32);
+                // fontManager.RenderText("MONO", $"^", -9.3f, -9, Color.White, 32);
                 return;
             }
-            
+
             if (health == 1)
             {
                 //fontManager.RenderText("MONO", $"^", -10.1f, -9, Color.White, 32);
                 return;
             }
-            
+
             if (health >= 0)
             {
-               // fontManager.RenderText("MONO", $"GAME OVER", -2.8f, -0.5f, Color.White, 32);
-               // fontManager.RenderText("MONO", $"^^^ Press START ^^^", -2f, 0.8f, Color.White, 12);
+                // fontManager.RenderText("MONO", $"GAME OVER", -2.8f, -0.5f, Color.White, 32);
+                // fontManager.RenderText("MONO", $"^^^ Press START ^^^", -2f, 0.8f, Color.White, 12);
                 Context.SceneManager.CurrentScene.GetByTag("Soundtrack").Get<AudioSource>().Stop();
             }
         }
 
         /// <summary>
-        /// Ons the press key using the specified key
+        ///     Ons the press key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public override void OnPressKey(Keys key)
@@ -112,7 +109,7 @@ namespace Alis.Sample.Asteroid
         }
 
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public override void OnUpdate()
         {
@@ -124,7 +121,7 @@ namespace Alis.Sample.Asteroid
         }
 
         /// <summary>
-        /// Decrements this instance
+        ///     Decrements this instance
         /// </summary>
         public void Decrement()
         {

@@ -97,7 +97,7 @@ namespace Alis.Core.Graphic.Sample
             {
                 throw new Exception("Failed to initialize GLFW");
             }
-            
+
             // Set GLFW window hints for OpenGL context
             Glfw.WindowHint(Hint.ContextVersionMajor, 3);
             Glfw.WindowHint(Hint.ContextVersionMinor, 2);
@@ -107,20 +107,20 @@ namespace Alis.Core.Graphic.Sample
             Glfw.WindowHint(Hint.DepthBits, 24);
             Glfw.WindowHint(Hint.AlphaBits, 8);
             Glfw.WindowHint(Hint.StencilBits, 8);
-            
+
             // Create a GLFW window
             window = Glfw.CreateWindow(800, 600, "OpenGL Window", Monitor.None, Window.None);
             if (window == Window.None)
             {
                 throw new Exception("Failed to create GLFW window");
             }
-            
+
             // Make the OpenGL context current
             Glfw.MakeContextCurrent(window);
-            
+
             // Enable v-sync
             Glfw.SwapInterval(1);
-            
+
             // Log GLFW version
             Console.WriteLine($"GLFW VERSION {Glfw.GetVersionString()}");
 
@@ -215,12 +215,12 @@ namespace Alis.Core.Graphic.Sample
                 {
                     running = false;
                 }
-            
+
                 // Clear the screen
                 Gl.GlClear(ClearBufferMask.ColorBufferBit);
-            
+
                 Draw();
-            
+
                 // Swap the buffers to display the triangle
                 Glfw.SwapBuffers(window);
             }

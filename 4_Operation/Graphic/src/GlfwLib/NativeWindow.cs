@@ -1,5 +1,35 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:NativeWindow.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data.Mapping;
@@ -52,16 +82,10 @@ namespace Alis.Core.Graphic.GlfwLib
         }
 
         /// <inheritdoc cref="Object.Equals(object)" />
-        public override bool Equals(object obj)
-        {
-            return ReferenceEquals(this, obj) || obj is NativeWindow other && Equals(other);
-        }
+        public override bool Equals(object obj) => ReferenceEquals(this, obj) || obj is NativeWindow other && Equals(other);
 
         /// <inheritdoc cref="Object.GetHashCode" />
-        public override int GetHashCode()
-        {
-            return Window.GetHashCode();
-        }
+        public override int GetHashCode() => Window.GetHashCode();
 
         /// <summary>
         ///     Determines whether the specified window is equal to this instance.
@@ -69,10 +93,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="left">This instance.</param>
         /// <param name="right">A <see cref="NativeWindow" /> instance to compare for equality.</param>
         /// <returns><c>true</c> if objects represent the same window, otherwise <c>false</c>.</returns>
-        public static bool operator ==(NativeWindow left, NativeWindow right)
-        {
-            return Equals(left, right);
-        }
+        public static bool operator ==(NativeWindow left, NativeWindow right) => Equals(left, right);
 
         /// <summary>
         ///     Determines whether the specified window is not equal to this instance.
@@ -80,10 +101,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="left">This instance.</param>
         /// <param name="right">A <see cref="NativeWindow" /> instance to compare for equality.</param>
         /// <returns><c>true</c> if objects do not represent the same window, otherwise <c>false</c>.</returns>
-        public static bool operator !=(NativeWindow left, NativeWindow right)
-        {
-            return !Equals(left, right);
-        }
+        public static bool operator !=(NativeWindow left, NativeWindow right) => !Equals(left, right);
 
         #region Fields and Constants
 
@@ -93,56 +111,67 @@ namespace Alis.Core.Graphic.GlfwLib
         protected readonly Window Window;
 
         /// <summary>
-        /// The title
+        ///     The title
         /// </summary>
         private string title;
 
         /// <summary>
-        /// The window position callback
+        ///     The window position callback
         /// </summary>
         private PositionCallback windowPositionCallback;
+
         /// <summary>
-        /// The framebuffer size callback
+        ///     The framebuffer size callback
         /// </summary>
         private SizeCallback windowSizeCallback, framebufferSizeCallback;
+
         /// <summary>
-        /// The window focus callback
+        ///     The window focus callback
         /// </summary>
         private FocusCallback windowFocusCallback;
+
         /// <summary>
-        /// The window refresh callback
+        ///     The window refresh callback
         /// </summary>
         private WindowCallback closeCallback, windowRefreshCallback;
+
         /// <summary>
-        /// The drop callback
+        ///     The drop callback
         /// </summary>
         private FileDropCallback dropCallback;
+
         /// <summary>
-        /// The scroll callback
+        ///     The scroll callback
         /// </summary>
         private MouseCallback cursorPositionCallback, scrollCallback;
+
         /// <summary>
-        /// The cursor enter callback
+        ///     The cursor enter callback
         /// </summary>
         private MouseEnterCallback cursorEnterCallback;
+
         /// <summary>
-        /// The mouse button callback
+        ///     The mouse button callback
         /// </summary>
         private MouseButtonCallback mouseButtonCallback;
+
         /// <summary>
-        /// The char mods callback
+        ///     The char mods callback
         /// </summary>
         private CharModsCallback charModsCallback;
+
         /// <summary>
-        /// The key callback
+        ///     The key callback
         /// </summary>
         private KeyCallback keyCallback;
+
         /// <summary>
-        /// The window maximize callback
+        ///     The window maximize callback
         /// </summary>
         private WindowMaximizedCallback windowMaximizeCallback;
+
         /// <summary>
-        /// The window content scale callback
+        ///     The window content scale callback
         /// </summary>
         private WindowContentsScaleCallback windowContentScaleCallback;
 
@@ -210,13 +239,13 @@ namespace Alis.Core.Graphic.GlfwLib
             }
             set
             {
-                if (value < 1) 
+                if (value < 1)
                     throw new Exception("Window width muts be greater than 0.");
                 Glfw.GetWindowSize(Window, out int dummy, out int height);
                 Glfw.SetWindowSize(Window, value, height);
             }
         }
-        
+
         /// <summary>
         ///     Gets or sets the height of the client area of the window, in screen coordinates.
         /// </summary>
@@ -230,7 +259,7 @@ namespace Alis.Core.Graphic.GlfwLib
             }
             set
             {
-                if (value < 1) 
+                if (value < 1)
                     throw new Exception("Window height muts be greater than 0.");
                 Glfw.GetWindowSize(Window, out int width, out int dummy);
                 Glfw.SetWindowSize(Window, width, value);
@@ -505,7 +534,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <value>
         ///     The title.
         /// </value>
-        
+
         public string Title
         {
             get => title;
@@ -571,10 +600,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <returns>
         ///     The result of the conversion.
         /// </returns>
-        public static implicit operator Window(NativeWindow nativeWindow)
-        {
-            return nativeWindow.Window;
-        }
+        public static implicit operator Window(NativeWindow nativeWindow) => nativeWindow.Window;
 
         /// <summary>
         ///     Performs an implicit conversion from <see cref="NativeWindow" /> to <see cref="IntPtr" />.
@@ -583,10 +609,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <returns>
         ///     The result of the conversion.
         /// </returns>
-        public static implicit operator IntPtr(NativeWindow nativeWindow)
-        {
-            return nativeWindow.Window;
-        }
+        public static implicit operator IntPtr(NativeWindow nativeWindow) => nativeWindow.Window;
 
         #endregion
 
@@ -607,7 +630,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="width">The desired width, in screen coordinates, of the window. This must be greater than zero.</param>
         /// <param name="height">The desired height, in screen coordinates, of the window. This must be greater than zero.</param>
         /// <param name="title">The initial window title.</param>
-        public NativeWindow(int width, int height,  string title) : this(width, height, title, Monitor.None,
+        public NativeWindow(int width, int height, string title) : this(width, height, title, Monitor.None,
             Window.None)
         {
         }
@@ -618,12 +641,15 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="width">The desired width, in screen coordinates, of the window. This must be greater than zero.</param>
         /// <param name="height">The desired height, in screen coordinates, of the window. This must be greater than zero.</param>
         /// <param name="title">The initial window title.</param>
-        /// <param name="monitor">The monitor to use for full screen mode, or <see cref="Structs.Monitor.None" /> for windowed mode.</param>
+        /// <param name="monitor">
+        ///     The monitor to use for full screen mode, or <see cref="Structs.Monitor.None" /> for windowed
+        ///     mode.
+        /// </param>
         /// <param name="share">
         ///     A window instance whose context to share resources with, or <see cref="Structs.Window.None" /> to not share
         ///     resources..
         /// </param>
-        public NativeWindow(int width, int height,  string title, Monitor monitor, Window share) : base(true)
+        public NativeWindow(int width, int height, string title, Monitor monitor, Window share) : base(true)
         {
             this.title = title ?? string.Empty;
             Window = Glfw.CreateWindow(width, height, title ?? string.Empty, monitor, share);
@@ -738,7 +764,7 @@ namespace Alis.Core.Graphic.GlfwLib
         ///     <para>Standard sizes are 16x16, 32x32, and 48x48.</para>
         /// </summary>
         /// <param name="images">One or more images to set as an icon.</param>
-        public void SetIcons( params Image[] images)
+        public void SetIcons(params Image[] images)
         {
             Glfw.SetWindowIcon(Window, images.Length, images);
         }
@@ -826,7 +852,7 @@ namespace Alis.Core.Graphic.GlfwLib
         }
 
         /// <summary>
-        /// Binds the callbacks
+        ///     Binds the callbacks
         /// </summary>
         private void BindCallbacks()
         {
@@ -864,7 +890,7 @@ namespace Alis.Core.Graphic.GlfwLib
         }
 
         /// <summary>
-        /// Ons the file drop using the specified count
+        ///     Ons the file drop using the specified count
         /// </summary>
         /// <param name="count">The count</param>
         /// <param name="pointer">The pointer</param>
@@ -1025,7 +1051,7 @@ namespace Alis.Core.Graphic.GlfwLib
         ///     Raises the <see cref="FileDrop" /> event.
         /// </summary>
         /// <param name="paths">The filenames of the dropped files.</param>
-        protected virtual void OnFileDrop( string[] paths)
+        protected virtual void OnFileDrop(string[] paths)
         {
             FileDrop?.Invoke(this, new FileDropEventArgs(paths));
         }
@@ -1121,7 +1147,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="x">The new position on the x-axis.</param>
         /// <param name="y">The new position on the y-axis.</param>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("ReSharper", "UnusedParameter.Global")]
+        [SuppressMessage("ReSharper", "UnusedParameter.Global")]
         protected virtual void OnPositionChanged(double x, double y)
         {
             PositionChanged?.Invoke(this, EventArgs.Empty);

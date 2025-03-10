@@ -45,9 +45,9 @@ namespace Alis.Core.Ecs.Component.Audio
         /// </summary>
         /// <param name="audioClip">The audio clip</param>
         [JsonConstructor]
-        #if NET5_0_OR_GREATER
+#if NET5_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.DynamicDependency(global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicConstructors, typeof(AudioSource))]
-        #endif
+#endif
         public AudioSource(AudioClip audioClip)
         {
             AudioClip = audioClip;
@@ -147,9 +147,9 @@ namespace Alis.Core.Ecs.Component.Audio
                 Play();
             }
         }
-        
+
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public override void OnUpdate()
         {

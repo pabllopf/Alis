@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GridRenderç.cs
+//  File:GridRender.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,10 +30,9 @@
 namespace Alis.Core.Ecs.System.Manager.Graphic
 {
     /// <summary>
-    /// The grid render class
+    ///     The grid render class
     /// </summary>
     public class GridRender
     {
-        
     }
 }

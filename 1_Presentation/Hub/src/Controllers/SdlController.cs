@@ -65,9 +65,8 @@ namespace Alis.App.Hub.Controllers
             {
                 Logger.Exception($@"Error of SDL2: {Sdl.GetError()}");
             }
-            
-            
-            
+
+
             Sdl.SetHint(Hint.HintRenderDriver, "opengl");
 
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION
@@ -106,7 +105,7 @@ namespace Alis.App.Hub.Controllers
             {
                 throw new GeneralAlisException("Could Not Create GL Context.");
             }
-            
+
             Gl.Initialize(Sdl.GetProcAddress);
 
             Sdl.MakeCurrent(window, glContext);
