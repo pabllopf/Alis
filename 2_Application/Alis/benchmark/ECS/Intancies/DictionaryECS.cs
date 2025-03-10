@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Alis.Benchmark.ECS.Intancies
 {
@@ -10,7 +10,7 @@ namespace Alis.Benchmark.ECS.Intancies
         /// <summary>
         /// The positions
         /// </summary>
-        private Dictionary<int, Position> positions = new();
+        private Dictionary<int, Position> positions =  new Dictionary<int, Position>();
         /// <summary>
         /// The id counter
         /// </summary>
