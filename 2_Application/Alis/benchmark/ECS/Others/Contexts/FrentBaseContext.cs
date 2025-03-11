@@ -1,6 +1,7 @@
 ﻿using System;
+using Frent;
 
-namespace Alis.Benchmark.ECS.Others.Contexts
+namespace Ecs.CSharp.Benchmark.Contexts
 {
     internal class FrentBaseContext : IDisposable
     {

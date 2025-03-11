@@ -1,7 +1,8 @@
-﻿using Alis.Benchmark.ECS.Others.Contexts;
-using BenchmarkDotNet.Attributes;
+﻿using BenchmarkDotNet.Attributes;
+using Ecs.CSharp.Benchmark.Contexts;
+using HypEcs;
 
-namespace Alis.Benchmark.ECS.Others.SystemWithThreeComponents
+namespace Ecs.CSharp.Benchmark
 {
     public partial class SystemWithThreeComponents
     {

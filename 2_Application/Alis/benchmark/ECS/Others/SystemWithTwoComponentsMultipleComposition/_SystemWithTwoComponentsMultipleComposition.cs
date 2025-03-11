@@ -1,6 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 
-namespace Alis.Benchmark.ECS.Others.SystemWithTwoComponentsMultipleComposition
+namespace Ecs.CSharp.Benchmark
 {
     [BenchmarkCategory(Categories.System)]
     [MemoryDiagnoser]

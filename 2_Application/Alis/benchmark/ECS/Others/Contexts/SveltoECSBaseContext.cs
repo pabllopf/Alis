@@ -1,6 +1,8 @@
 ﻿using System;
+using Svelto.ECS;
+using Svelto.ECS.Schedulers;
 
-namespace Alis.Benchmark.ECS.Others.Contexts
+namespace Ecs.CSharp.Benchmark.Contexts
 {
     internal class SveltoECSBaseContext : IDisposable
     {

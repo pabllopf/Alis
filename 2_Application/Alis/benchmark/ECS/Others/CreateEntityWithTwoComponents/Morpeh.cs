@@ -1,7 +1,8 @@
-﻿using Alis.Benchmark.ECS.Others.Contexts;
-using BenchmarkDotNet.Attributes;
+﻿using BenchmarkDotNet.Attributes;
+using Ecs.CSharp.Benchmark.Contexts;
+using Scellecs.Morpeh;
 
-namespace Alis.Benchmark.ECS.Others.CreateEntityWithTwoComponents
+namespace Ecs.CSharp.Benchmark
 {
     public partial class CreateEntityWithTwoComponents
     {

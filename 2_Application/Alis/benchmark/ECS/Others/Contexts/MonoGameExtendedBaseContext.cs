@@ -1,6 +1,7 @@
 ﻿using System;
+using MonoGame.Extended.Entities;
 
-namespace Alis.Benchmark.ECS.Others.Contexts
+namespace Ecs.CSharp.Benchmark.Contexts
 {
     internal class MonoGameExtendedBaseContext : IDisposable
     {

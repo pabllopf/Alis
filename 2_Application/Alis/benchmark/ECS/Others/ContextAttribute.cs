@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Alis.Benchmark.ECS.Others
+namespace Ecs.CSharp.Benchmark
 {
     [AttributeUsage(AttributeTargets.Field)]
     internal sealed class ContextAttribute : Attribute

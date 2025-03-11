@@ -1,6 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 
-namespace Alis.Benchmark.ECS.Others.CreateEntityWithOneComponent
+namespace Ecs.CSharp.Benchmark
 {
     [BenchmarkCategory(Categories.CreateEntity)]
     [MemoryDiagnoser]

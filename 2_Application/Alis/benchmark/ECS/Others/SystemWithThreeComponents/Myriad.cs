@@ -1,9 +1,14 @@
 ﻿using System;
-using Alis.Benchmark.ECS.Others.Contexts;
-using Alis.Benchmark.ECS.Others.Contexts.Myriad_Components;
 using BenchmarkDotNet.Attributes;
+using Ecs.CSharp.Benchmark.Contexts;
+using Ecs.CSharp.Benchmark.Contexts.Myriad_Components;
+using Myriad.ECS;
+using Myriad.ECS.Collections;
+using Myriad.ECS.Command;
+using Myriad.ECS.Queries;
+using Myriad.ECS.Worlds;
 
-namespace Alis.Benchmark.ECS.Others.SystemWithThreeComponents
+namespace Ecs.CSharp.Benchmark
 {
     public partial class SystemWithThreeComponents
     {

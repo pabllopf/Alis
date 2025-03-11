@@ -1,8 +1,10 @@
-﻿using Alis.Benchmark.ECS.Others.Contexts;
-using Alis.Benchmark.ECS.Others.Contexts.FlecsNet_Components;
+﻿using System;
 using BenchmarkDotNet.Attributes;
+using Ecs.CSharp.Benchmark.Contexts;
+using Ecs.CSharp.Benchmark.Contexts.FlecsNet_Components;
+using Flecs.NET.Core;
 
-namespace Alis.Benchmark.ECS.Others.CreateEntityWithOneComponent
+namespace Ecs.CSharp.Benchmark
 {
     public partial class CreateEntityWithOneComponent
     {

@@ -1,7 +1,10 @@
-﻿using Alis.Benchmark.ECS.Others.Contexts;
+﻿using System;
 using BenchmarkDotNet.Attributes;
+using Ecs.CSharp.Benchmark.Contexts;
+using Svelto.DataStructures;
+using Svelto.ECS;
 
-namespace Alis.Benchmark.ECS.Others.SystemWithTwoComponentsMultipleComposition
+namespace Ecs.CSharp.Benchmark
 {
     public partial class SystemWithTwoComponentsMultipleComposition
     {
