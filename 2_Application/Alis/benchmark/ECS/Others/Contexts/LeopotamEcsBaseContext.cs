@@ -1,7 +1,6 @@
 ﻿using System;
-using Leopotam.Ecs;
 
-namespace Ecs.CSharp.Benchmark.Contexts
+namespace Alis.Benchmark.ECS.Others.Contexts
 {
     internal class LeopotamEcsBaseContext : IDisposable
     {

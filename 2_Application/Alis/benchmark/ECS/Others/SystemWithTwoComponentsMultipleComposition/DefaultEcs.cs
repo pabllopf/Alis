@@ -1,11 +1,8 @@
 ﻿using System;
+using Alis.Benchmark.ECS.Others.Contexts;
 using BenchmarkDotNet.Attributes;
-using DefaultEcs;
-using DefaultEcs.System;
-using DefaultEcs.Threading;
-using Ecs.CSharp.Benchmark.Contexts;
 
-namespace Ecs.CSharp.Benchmark
+namespace Alis.Benchmark.ECS.Others.SystemWithTwoComponentsMultipleComposition
 {
     public partial class SystemWithTwoComponentsMultipleComposition
     {

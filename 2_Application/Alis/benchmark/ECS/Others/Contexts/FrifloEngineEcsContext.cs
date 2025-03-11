@@ -1,8 +1,8 @@
 ﻿using System;
-using Ecs.CSharp.Benchmark.Contexts.FrifloEngine_Components;
-using Friflo.Engine.ECS;
+using Alis.Benchmark.ECS.Others.Contexts.FrifloEngine_Components;
+using Alis.Benchmark.ECS.Others.SystemWithOneComponent;
 
-namespace Ecs.CSharp.Benchmark.Contexts
+namespace Alis.Benchmark.ECS.Others.Contexts
 {
     namespace FrifloEngine_Components
     {
@@ -43,10 +43,10 @@ namespace Ecs.CSharp.Benchmark.Contexts
             queryTwo    = EntityStore.Query<Component1, Component2>();
             queryThree  = EntityStore.Query<Component1, Component2, Component3>();
             
-            jobOne = queryOne.ForEach(SystemWithOneComponent.FrifloEngineEcsContext.ForEach);
-            jobTwo = queryTwo.ForEach(SystemWithTwoComponents.FrifloEngineEcsContext.ForEach);
-            jobThree = queryThree.ForEach(SystemWithThreeComponents.FrifloEngineEcsContext.ForEach);
-            jobTwoWithComposition = queryTwo.ForEach(SystemWithTwoComponentsMultipleComposition.FrifloEngineEcsContext.ForEach);
+            jobOne = queryOne.ForEach(SystemWithOneComponent.SystemWithOneComponent.FrifloEngineEcsContext.ForEach);
+            jobTwo = queryTwo.ForEach(SystemWithTwoComponents.SystemWithTwoComponents.FrifloEngineEcsContext.ForEach);
+            jobThree = queryThree.ForEach(SystemWithThreeComponents.SystemWithThreeComponents.FrifloEngineEcsContext.ForEach);
+            jobTwoWithComposition = queryTwo.ForEach(SystemWithTwoComponentsMultipleComposition.SystemWithTwoComponentsMultipleComposition.FrifloEngineEcsContext.ForEach);
         }
 
         /// <summary>See padding notes</summary>

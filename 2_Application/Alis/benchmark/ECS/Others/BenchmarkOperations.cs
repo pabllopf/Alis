@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Ecs.CSharp.Benchmark
+namespace Alis.Benchmark.ECS.Others
 {
     internal static class BenchmarkOperations
     {

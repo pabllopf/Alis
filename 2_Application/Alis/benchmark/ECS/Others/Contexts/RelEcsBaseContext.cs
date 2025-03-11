@@ -1,7 +1,6 @@
 ﻿using System;
-using RelEcs;
 
-namespace Ecs.CSharp.Benchmark.Contexts
+namespace Alis.Benchmark.ECS.Others.Contexts
 {
     internal class RelEcsBaseContext : IDisposable
     {

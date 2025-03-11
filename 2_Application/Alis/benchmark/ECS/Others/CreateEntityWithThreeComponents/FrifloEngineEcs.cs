@@ -1,8 +1,7 @@
-﻿using BenchmarkDotNet.Attributes;
-using Ecs.CSharp.Benchmark.Contexts.FrifloEngine_Components;
-using Friflo.Engine.ECS;
+﻿using Alis.Benchmark.ECS.Others.Contexts.FrifloEngine_Components;
+using BenchmarkDotNet.Attributes;
 
-namespace Ecs.CSharp.Benchmark
+namespace Alis.Benchmark.ECS.Others.CreateEntityWithThreeComponents
 {
     public partial class CreateEntityWithThreeComponents
     {

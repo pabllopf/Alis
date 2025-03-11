@@ -30,6 +30,13 @@
 using System;
 using System.Globalization;
 using Alis.Benchmark.ClassVsStruct;
+using Alis.Benchmark.ECS.Others.CreateEntityWithOneComponent;
+using Alis.Benchmark.ECS.Others.CreateEntityWithThreeComponents;
+using Alis.Benchmark.ECS.Others.CreateEntityWithTwoComponents;
+using Alis.Benchmark.ECS.Others.SystemWithOneComponent;
+using Alis.Benchmark.ECS.Others.SystemWithThreeComponents;
+using Alis.Benchmark.ECS.Others.SystemWithTwoComponents;
+using Alis.Benchmark.ECS.Others.SystemWithTwoComponentsMultipleComposition;
 using Alis.Benchmark.IDs;
 using Alis.Benchmark.InterfaceVsAbstract;
 using Alis.Benchmark.Iterators;
@@ -37,7 +44,6 @@ using Alis.Benchmark.Strings;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Order;
 using BenchmarkDotNet.Running;
-using Ecs.CSharp.Benchmark;
 
 namespace Alis.Benchmark
 {

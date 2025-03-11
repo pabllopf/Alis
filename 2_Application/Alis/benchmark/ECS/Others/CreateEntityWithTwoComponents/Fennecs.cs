@@ -1,9 +1,8 @@
-﻿using BenchmarkDotNet.Attributes;
-using Ecs.CSharp.Benchmark.Contexts;
-using Ecs.CSharp.Benchmark.Contexts.Fennecs_Components;
-using fennecs;
+﻿using Alis.Benchmark.ECS.Others.Contexts;
+using Alis.Benchmark.ECS.Others.Contexts.Fennecs_Components;
+using BenchmarkDotNet.Attributes;
 
-namespace Ecs.CSharp.Benchmark
+namespace Alis.Benchmark.ECS.Others.CreateEntityWithTwoComponents
 {
     public partial class CreateEntityWithTwoComponents
     {

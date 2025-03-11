@@ -1,7 +1,6 @@
 ﻿using System;
-using DefaultEcs;
 
-namespace Ecs.CSharp.Benchmark.Contexts
+namespace Alis.Benchmark.ECS.Others.Contexts
 {
     internal class DefaultEcsBaseContext : IDisposable
     {
