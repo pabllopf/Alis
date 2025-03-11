@@ -17,7 +17,7 @@ namespace Alis.Benchmark.ObjectPooling
         /// <summary>
         /// The 
         /// </summary>
-        [Params(10, 100, 1000)]
+        [Params(100)]
         public int N;
     
         /// <summary>
