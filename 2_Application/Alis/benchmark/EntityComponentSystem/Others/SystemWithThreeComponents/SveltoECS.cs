@@ -1,0 +1,135 @@
+using Alis.Benchmark.EntityComponentSystem.Others.Contexts;
+using BenchmarkDotNet.Attributes;
+using Svelto.DataStructures;
+using Svelto.ECS;
+
+namespace Alis.Benchmark.EntityComponentSystem.Others.SystemWithThreeComponents
+{
+    /// <summary>
+    /// The system with three components class
+    /// </summary>
+    public partial class SystemWithThreeComponents
+    {
+        /// <summary>
+        /// The svelto ecs context class
+        /// </summary>
+        /// <seealso cref="SveltoECSBaseContext"/>
+        private sealed class SveltoECSContext : SveltoECSBaseContext
+        {
+            /// <summary>
+            /// The svelto engine class
+            /// </summary>
+            /// <seealso cref="IQueryingEntitiesEngine"/>
+            public sealed class SveltoEngine : IQueryingEntitiesEngine
+            {
+                /// <summary>
+                /// Gets or sets the value of the entities db
+                /// </summary>
+                public EntitiesDB entitiesDB { get; set; }
+
+                /// <summary>
+                /// Readies this instance
+                /// </summary>
+                public void Ready()
+                { }
+
+                /// <summary>
+                /// Updates this instance
+                /// </summary>
+                public void Update()
+                {
+                    (NB<Component1> c1, NB<Component2> c2, NB<Component3> c3, int count) = entitiesDB.QueryEntities<Component1, Component2, Component3>(Group);
+
+                    for (int i = 0; i < count; i++)
+                    {
+                        c1[i].Value += c2[i].Value + c3[i].Value;
+                    }
+                }
+            }
+
+            /// <summary>
+            /// The padding entity class
+            /// </summary>
+            /// <seealso cref="GenericEntityDescriptor{Component1}"/>
+            public sealed class Padding1Entity : GenericEntityDescriptor<Component1>
+            { }
+
+            /// <summary>
+            /// The padding entity class
+            /// </summary>
+            /// <seealso cref="GenericEntityDescriptor{Component2}"/>
+            public sealed class Padding2Entity : GenericEntityDescriptor<Component2>
+            { }
+
+            /// <summary>
+            /// The padding entity class
+            /// </summary>
+            /// <seealso cref="GenericEntityDescriptor{Component3}"/>
+            public sealed class Padding3Entity : GenericEntityDescriptor<Component3>
+            { }
+
+            /// <summary>
+            /// The entity class
+            /// </summary>
+            /// <seealso cref="GenericEntityDescriptor{Component1, Component2, Component3}"/>
+            public sealed class Entity : GenericEntityDescriptor<Component1, Component2, Component3>
+            { }
+
+            /// <summary>
+            /// Gets the value of the engine
+            /// </summary>
+            public SveltoEngine Engine { get; }
+
+            /// <summary>
+            /// Initializes a new instance of the <see cref="SveltoECSContext"/> class
+            /// </summary>
+            /// <param name="entityCount">The entity count</param>
+            /// <param name="entityPadding">The entity padding</param>
+            public SveltoECSContext(int entityCount, int entityPadding)
+            {
+                Engine = new SveltoEngine();
+                Root.AddEngine(Engine);
+
+                uint id = 0;
+                for (int i = 0; i < entityCount; ++i)
+                {
+                    for (int j = 0; j < entityPadding; ++j)
+                    {
+                        switch (j % 3)
+                        {
+                            case 0:
+                                Factory.BuildEntity<Padding1Entity>(id++, Group);
+                                break;
+
+                            case 1:
+                                Factory.BuildEntity<Padding2Entity>(id++, Group);
+                                break;
+
+                            case 2:
+                                Factory.BuildEntity<Padding3Entity>(id++, Group);
+                                break;
+                        }
+                    }
+
+                    EntityInitializer entity = Factory.BuildEntity<Entity>(id++, Group);
+                    entity.GetOrAdd<Component2>() = new Component2 { Value = 1 };
+                    entity.GetOrAdd<Component3>() = new Component3 { Value = 1 };
+                }
+
+                Scheduler.SubmitEntities();
+            }
+        }
+
+        /// <summary>
+        /// The svelto ecs
+        /// </summary>
+        [Context]
+        private readonly SveltoECSContext _sveltoECS;
+
+        /// <summary>
+        /// Sveltoes the ecs
+        /// </summary>
+        [Benchmark]
+        public void SveltoECS() => _sveltoECS.Engine.Update();
+    }
+}
