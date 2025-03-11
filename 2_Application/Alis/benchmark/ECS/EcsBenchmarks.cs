@@ -21,7 +21,7 @@ namespace Alis.Benchmark.ECS
         /// <summary>
         /// The 
         /// </summary>
-        [Params(10, 100, 1000)]
+        [Params(10)]
         public int N;
 
         /// <summary>
