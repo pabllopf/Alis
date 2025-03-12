@@ -65,6 +65,8 @@
         <PackageReference Include="Svelto.ECS" Version="3.3.2" />
         <PackageReference Include="Svelto.Common" Version="3.3.2" />
         <PackageReference Include="Flecs.NET.Release" Version="3.2.11" />
+        
+        <ProjectReference Include="../src/Alis.csproj" />
     </ItemGroup>
 
     <ItemGroup Condition="
