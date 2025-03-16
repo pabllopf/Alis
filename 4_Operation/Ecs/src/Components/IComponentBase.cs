@@ -1,4 +1,4 @@
-﻿namespace Frent.Components;
+namespace Frent.Components;
 
 /*  ALL COMPONENT TYPES                                 |Interface|Storage
  *  Arbitary data                                           X       X

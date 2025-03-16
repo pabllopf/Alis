@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Frent.Components;
 using Frent.Core;
@@ -12,9 +12,21 @@ namespace Frent.Updating;
 /// </summary>
 public static class GenerationServices
 {
+    /// <summary>
+    /// The user generated type map
+    /// </summary>
     internal static readonly Dictionary<Type, (IComponentStorageBaseFactory Factory, int UpdateOrder)> UserGeneratedTypeMap = new();
+    /// <summary>
+    /// The type attribute cache
+    /// </summary>
     internal static readonly Dictionary<Type, HashSet<Type>> TypeAttributeCache = new();
+    /// <summary>
+    /// The type initers
+    /// </summary>
     internal static readonly Dictionary<Type, Delegate> TypeIniters = new();
+    /// <summary>
+    /// The type destroyers
+    /// </summary>
     internal static readonly Dictionary<Type, Delegate> TypeDestroyers = new();
 
     /// <summary>

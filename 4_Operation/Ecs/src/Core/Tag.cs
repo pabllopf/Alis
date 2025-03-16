@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using Frent.Collections;
@@ -19,16 +19,37 @@ public class Tag<T>
 }
 
 //this entirely piggybacks on top of component
+/// <summary>
+/// The tag class
+/// </summary>
 internal class Tag
 {
+    /// <summary>
+    /// The existing tag ds
+    /// </summary>
     private static readonly Dictionary<Type, TagID> ExistingTagIDs = [];
+    /// <summary>
+    /// The create
+    /// </summary>
     internal static FastStack<Type> TagTable = FastStack<Type>.Create(4);
 
+    /// <summary>
+    /// The next tag id
+    /// </summary>
     private static int _nextTagID = -1;
 
     //initalize default(TagID) to point to disable
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Tag"/> class
+    /// </summary>
     static Tag() => GetTagID(typeof(Disable));
 
+    /// <summary>
+    /// Gets the tag id using the specified type
+    /// </summary>
+    /// <param name="type">The type</param>
+    /// <exception cref="Exception">Exceeded max tag count of 65535</exception>
+    /// <returns>The tag id</returns>
     internal static TagID GetTagID(Type type)
     {
         lock (GlobalWorldTables.BufferChangeLock)

@@ -1,4 +1,4 @@
-﻿using Frent.Components;
+using Frent.Components;
 
 namespace Frent;
 

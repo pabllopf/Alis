@@ -1,4 +1,4 @@
-﻿namespace Frent.Core;
+namespace Frent.Core;
 
 /// <summary>
 /// An generic action with known parameter

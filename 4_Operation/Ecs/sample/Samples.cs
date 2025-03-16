@@ -1,13 +1,19 @@
-﻿using System;
+using System;
 using Frent.Components;
 using Frent.Core;
 using Frent.Systems;
 
 namespace Frent.Sample
 {
+    /// <summary>
+    /// The samples class
+    /// </summary>
     internal class Samples
     {
         #region Cookbook 1
+        /// <summary>
+        /// Updates the component
+        /// </summary>
         [Sample]
         public static void Update_Component()
         {
@@ -25,6 +31,9 @@ namespace Frent.Sample
         #endregion
 
         #region Cookbook 2
+        /// <summary>
+        /// Uniformses the and entities
+        /// </summary>
         [Sample]
         public static void Uniforms_And_Entities()
         {
@@ -42,6 +51,9 @@ namespace Frent.Sample
         #endregion
 
         #region Cookbook 3
+        /// <summary>
+        /// Querieses
+        /// </summary>
         [Sample]
         public static void Queries()
         {
@@ -58,8 +70,15 @@ namespace Frent.Sample
             world.Query<With<int>>().Inline<WriteAction, int>(default);
         }
 
+        /// <summary>
+        /// The write action
+        /// </summary>
         internal struct WriteAction : IAction<int>
         {
+            /// <summary>
+            /// Runs the arg
+            /// </summary>
+            /// <param name="arg">The arg</param>
             public void Run(ref int arg)
             {
                 Console.Write($"{arg} ");
@@ -68,6 +87,9 @@ namespace Frent.Sample
         #endregion
 
         #region Cookbook 4
+        /// <summary>
+        /// Entitieses
+        /// </summary>
         [Sample]
         public static void Entities()
         {
@@ -101,6 +123,10 @@ namespace Frent.Sample
     }
     record struct Pos(float X) : IEntityComponent
     {
+        /// <summary>
+        /// Updates the entity
+        /// </summary>
+        /// <param name="entity">The entity</param>
         public void Update(Entity entity)
         {
             Console.WriteLine(entity.Has<Vel>() ?
@@ -111,14 +137,26 @@ namespace Frent.Sample
 
     record struct Vel(float DX) : IUniformComponent<float, Pos>
     {
+        /// <summary>
+        /// Updates the dt
+        /// </summary>
+        /// <param name="dt">The dt</param>
+        /// <param name="pos">The pos</param>
         public void Update(float dt, ref Pos pos)
         {
             pos.X += DX * dt;
         }
     }
 
+    /// <summary>
+    /// The console text
+    /// </summary>
     struct ConsoleText(ConsoleColor Color) : IComponent<string>
     {
+        /// <summary>
+        /// Updates the str
+        /// </summary>
+        /// <param name="str">The str</param>
         public void Update(ref string str)
         {
             Console.ForegroundColor = Color;
@@ -126,8 +164,15 @@ namespace Frent.Sample
         }
     }
 
+    /// <summary>
+    /// The write action
+    /// </summary>
     internal struct WriteAction : IAction<int>
     {
+        /// <summary>
+        /// Runs the x
+        /// </summary>
+        /// <param name="x">The </param>
         public void Run(ref int x) => Console.Write($"{x++}, ");
     }
 }

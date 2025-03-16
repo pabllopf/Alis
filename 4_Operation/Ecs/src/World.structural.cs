@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Frent.Core;
 using Frent.Core.Structures;
 using Frent.Updating;
@@ -9,6 +9,9 @@ using System.Runtime.InteropServices;
 
 namespace Frent;
 
+/// <summary>
+/// The world class
+/// </summary>
 partial class World
 {
     /*  
@@ -17,6 +20,12 @@ partial class World
      *  These functions take all the data it needs, with no validation that an entity is alive
      */
 
+    /// <summary>
+    /// Removes the component using the specified entity
+    /// </summary>
+    /// <param name="entity">The entity</param>
+    /// <param name="lookup">The lookup</param>
+    /// <param name="componentID">The component id</param>
     internal void RemoveComponent(Entity entity, ref EntityLocation lookup, ComponentID componentID)
     {
         Archetype destination = RemoveComponentLookup.FindAdjacentArchetypeID(componentID, lookup.ArchetypeID, this, ArchetypeEdgeType.RemoveComponent)
@@ -27,6 +36,14 @@ partial class World
 
     }
 
+    /// <summary>
+    /// Adds the component using the specified entity
+    /// </summary>
+    /// <param name="entity">The entity</param>
+    /// <param name="lookup">The lookup</param>
+    /// <param name="componentID">The component id</param>
+    /// <param name="runner">The runner</param>
+    /// <param name="entityLocation">The entity location</param>
     internal void AddComponent(Entity entity, ref EntityLocation lookup, ComponentID componentID, ref ComponentStorageBase runner, out EntityLocation entityLocation)
     {
         Archetype destination = AddComponentLookup.FindAdjacentArchetypeID(componentID, lookup.ArchetypeID, this, ArchetypeEdgeType.AddComponent)
@@ -37,6 +54,14 @@ partial class World
 
     }
 
+    /// <summary>
+    /// Moves the entity to archetype add using the specified write to
+    /// </summary>
+    /// <param name="writeTo">The write to</param>
+    /// <param name="entity">The entity</param>
+    /// <param name="currentLookup">The current lookup</param>
+    /// <param name="nextLocation">The next location</param>
+    /// <param name="destination">The destination</param>
     [Frent.SkipLocalsInit]
     internal void MoveEntityToArchetypeAdd(Span<ComponentStorageBase> writeTo, Entity entity, ref EntityLocation currentLookup, out EntityLocation nextLocation, Archetype destination)
     {
@@ -78,6 +103,13 @@ partial class World
         currentLookup = nextLocation;
     }
 
+    /// <summary>
+    /// Moves the entity to archetype remove using the specified component handles
+    /// </summary>
+    /// <param name="componentHandles">The component handles</param>
+    /// <param name="entity">The entity</param>
+    /// <param name="currentLookup">The current lookup</param>
+    /// <param name="destination">The destination</param>
     [Frent.SkipLocalsInit]
     internal void MoveEntityToArchetypeRemove(Span<ComponentHandle> componentHandles, Entity entity, ref EntityLocation currentLookup, Archetype destination)
     {
@@ -163,6 +195,12 @@ partial class World
         }
     }
 
+    /// <summary>
+    /// Moves the entity to archetype iso using the specified entity
+    /// </summary>
+    /// <param name="entity">The entity</param>
+    /// <param name="currentLookup">The current lookup</param>
+    /// <param name="destination">The destination</param>
     [Frent.SkipLocalsInit]
     internal void MoveEntityToArchetypeIso(Entity entity, ref EntityLocation currentLookup, Archetype destination)
     {
@@ -197,6 +235,11 @@ partial class World
 
     #region Delete
     //Delete
+    /// <summary>
+    /// Deletes the entity using the specified entity
+    /// </summary>
+    /// <param name="entity">The entity</param>
+    /// <param name="entityLocation">The entity location</param>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal void DeleteEntity(Entity entity, ref EntityLocation entityLocation)
     {
@@ -207,6 +250,11 @@ partial class World
     }
 
     //let the jit decide whether or not to inline
+    /// <summary>
+    /// Invokes the delete events using the specified entity
+    /// </summary>
+    /// <param name="entity">The entity</param>
+    /// <param name="entityLocation">The entity location</param>
     private void InvokeDeleteEvents(Entity entity, EntityLocation entityLocation)
     {
         EntityDeletedEvent.Invoke(entity);
@@ -220,6 +268,11 @@ partial class World
         EventLookup.Remove(entity.EntityIDOnly);
     }
 
+    /// <summary>
+    /// Deletes the entity without events using the specified entity
+    /// </summary>
+    /// <param name="entity">The entity</param>
+    /// <param name="currentLookup">The current lookup</param>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal void DeleteEntityWithoutEvents(Entity entity, ref EntityLocation currentLookup)
     {

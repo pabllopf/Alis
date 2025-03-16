@@ -1,4 +1,4 @@
-﻿namespace Frent.Systems;
+namespace Frent.Systems;
 
 
 /// <summary>

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Frent.Core;
 
@@ -7,7 +7,14 @@ namespace Frent.Core;
 /// </summary>
 public readonly struct TagID : ITypeID, IEquatable<TagID>
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="TagID"/> class
+    /// </summary>
+    /// <param name="id">The id</param>
     internal TagID(ushort id) => RawValue = id;
+    /// <summary>
+    /// The raw value
+    /// </summary>
     internal readonly ushort RawValue;
 
     /// <summary>
@@ -15,6 +22,9 @@ public readonly struct TagID : ITypeID, IEquatable<TagID>
     /// </summary>
     public Type Type => Tag.TagTable[RawValue];
 
+    /// <summary>
+    /// Gets the value of the value
+    /// </summary>
     ushort ITypeID.Value => RawValue;
 
     /// <summary>

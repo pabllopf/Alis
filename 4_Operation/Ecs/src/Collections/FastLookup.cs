@@ -1,4 +1,4 @@
-﻿using Frent.Core;
+using Frent.Core;
 using Frent.Core.Structures;
 using System.Runtime.CompilerServices;
 
@@ -9,13 +9,37 @@ using System.Runtime.Intrinsics;
 
 namespace Frent.Collections;
 
+/// <summary>
+/// The fast lookup
+/// </summary>
 internal struct FastLookup()
 {
+    /// <summary>
+    /// The data
+    /// </summary>
     private InlineArray8<uint> _data;
+    /// <summary>
+    /// The ids
+    /// </summary>
     private InlineArray8<ushort> _ids;
+    /// <summary>
+    /// The archetype
+    /// </summary>
     internal Archetype[] Archetypes = new Archetype[8];
+    /// <summary>
+    /// The index
+    /// </summary>
     private int index;
 
+    /// <summary>
+    /// Finds the adjacent archetype id using the specified id
+    /// </summary>
+    /// <typeparam name="T">The </typeparam>
+    /// <param name="id">The id</param>
+    /// <param name="archetype">The archetype</param>
+    /// <param name="world">The world</param>
+    /// <param name="edgeType">The edge type</param>
+    /// <returns>The archetype id</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public ArchetypeID FindAdjacentArchetypeID<T>(T id, ArchetypeID archetype, World world, ArchetypeEdgeType edgeType)
         where T : ITypeID
@@ -40,12 +64,24 @@ internal struct FastLookup()
         return dest.ID;
     }
 
+    /// <summary>
+    /// Gets the key using the specified id
+    /// </summary>
+    /// <param name="id">The id</param>
+    /// <param name="archetypeID">The archetype id</param>
+    /// <returns>The key</returns>
     public uint GetKey(ushort id, ArchetypeID archetypeID)
     {
         uint key = archetypeID.RawIndex | ((uint)id << 16);
         return key;
     }
 
+    /// <summary>
+    /// Sets the archetype using the specified id
+    /// </summary>
+    /// <param name="id">The id</param>
+    /// <param name="from">The from</param>
+    /// <param name="to">The to</param>
     public void SetArchetype(ushort id, ArchetypeID from, Archetype to)
     {
         uint key = GetKey(id, from);
@@ -58,6 +94,11 @@ internal struct FastLookup()
         index = (index + 1) & 7;
     }
 
+    /// <summary>
+    /// Lookups the index using the specified key
+    /// </summary>
+    /// <param name="key">The key</param>
+    /// <returns>The int</returns>
     public int LookupIndex(uint key)
     {
         if (_data._0 == key)

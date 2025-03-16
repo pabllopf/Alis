@@ -1,4 +1,4 @@
-﻿namespace Frent;
+namespace Frent;
 
 /// <summary>
 /// Built-in tag that can be used to disable entities.

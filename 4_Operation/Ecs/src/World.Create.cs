@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Frent.Core;
 using Frent.Systems;
 using Frent.Updating;
@@ -15,6 +15,9 @@ namespace Frent;
 
 
 //it just so happens Archetype and Create both end with "e"
+/// <summary>
+/// The world class
+/// </summary>
 partial class World
 {
     /// <summary>

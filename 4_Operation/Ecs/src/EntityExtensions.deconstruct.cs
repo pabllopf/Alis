@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Frent.Core;
 using Frent.Core.Structures;
 using Frent.Updating;
@@ -32,8 +32,19 @@ public static partial class EntityExtensions
     }
 }
 
+/// <summary>
+/// The entity extensions class
+/// </summary>
 partial class EntityExtensions
 {
+    /// <summary>
+    /// Gets the comp using the specified archetype table
+    /// </summary>
+    /// <typeparam name="TC">The tc</typeparam>
+    /// <param name="archetypeTable">The archetype table</param>
+    /// <param name="comps">The comps</param>
+    /// <param name="index">The index</param>
+    /// <returns>A ref of tc</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private static Ref<TC> GetComp<TC>(byte[] archetypeTable, ComponentStorageBase[] comps, int index)
     {

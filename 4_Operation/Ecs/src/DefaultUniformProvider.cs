@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Frent;
@@ -8,6 +8,9 @@ namespace Frent;
 /// </summary>
 public class DefaultUniformProvider : IUniformProvider
 {
+    /// <summary>
+    /// The uniforms
+    /// </summary>
     private Dictionary<Type, object> _uniforms = [];
 
     /// <summary>

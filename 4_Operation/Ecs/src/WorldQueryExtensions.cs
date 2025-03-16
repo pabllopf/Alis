@@ -1,4 +1,4 @@
-﻿using Frent.Core;
+using Frent.Core;
 using Frent.Systems;
 
 using System.Runtime.InteropServices;
@@ -8,6 +8,9 @@ namespace Frent;
 
 
 
+/// <summary>
+/// The world query extensions class
+/// </summary>
 public static partial class WorldQueryExtensions
 {
     //we could use static abstract methods IF NOT FOR DOTNET6

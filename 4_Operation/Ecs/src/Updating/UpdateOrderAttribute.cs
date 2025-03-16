@@ -1,6 +1,11 @@
-﻿using System;
+using System;
 
 namespace Frent.Updating;
+/// <summary>
+/// The update order attribute class
+/// </summary>
+/// <seealso cref="Attribute"/>
+/// <seealso cref="IComponentUpdateOrderAttribute"/>
 [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
 #pragma warning disable CS9113 // Parameter is unread.
 internal class UpdateOrderAttribute(int order) : Attribute, IComponentUpdateOrderAttribute;

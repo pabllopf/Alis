@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Frent.Buffers;
 using Frent.Collections;
@@ -24,53 +24,137 @@ namespace Frent;
 public partial class World : IDisposable
 {
     #region Static Version Management
+    /// <summary>
+    /// The next world id
+    /// </summary>
     private static ushort _nextWorldID = 1;
     #endregion
 
     //entityID -> entity metadata
+    /// <summary>
+    /// The entity location
+    /// </summary>
     internal Table<EntityLocation> EntityTable = new Table<EntityLocation>(256);
     //archetype ID -> Archetype?
+    /// <summary>
+    /// The world archetype table
+    /// </summary>
     internal Archetype?[] WorldArchetypeTable;
     
+    /// <summary>
+    /// The archetype graph edges
+    /// </summary>
     internal Dictionary<ArchetypeEdgeKey, Archetype> ArchetypeGraphEdges = [];
 
+    /// <summary>
+    /// The entity id only
+    /// </summary>
     internal NativeStack<EntityIDOnly> RecycledEntityIds = new NativeStack<EntityIDOnly>(256);
     
+    /// <summary>
+    /// The updates by attributes
+    /// </summary>
     private Dictionary<Type, WorldUpdateFilter> _updatesByAttributes = [];
     
+    /// <summary>
+    /// The next entity id
+    /// </summary>
     internal int NextEntityID;
 
+    /// <summary>
+    /// The id
+    /// </summary>
     internal readonly ushort ID;
+    /// <summary>
+    /// The default world entity
+    /// </summary>
     internal readonly Entity DefaultWorldEntity;
+    /// <summary>
+    /// The is disposed
+    /// </summary>
     private bool _isDisposed = false;
 
+    /// <summary>
+    /// The query cache
+    /// </summary>
     internal Dictionary<int, Query> QueryCache = [];
 
+    /// <summary>
+    /// Gets the value of the shared countdown
+    /// </summary>
     internal CountdownEvent SharedCountdown => _sharedCountdown;
+    /// <summary>
+    /// The shared countdown
+    /// </summary>
     private CountdownEvent _sharedCountdown = new(0);
+    /// <summary>
+    /// The create
+    /// </summary>
     private FastStack<ArchetypeID> _enabledArchetypes = FastStack<ArchetypeID>.Create(16);
 
+    /// <summary>
+    /// The allow structural changes
+    /// </summary>
     private int _allowStructuralChanges;
 
+    /// <summary>
+    /// The world update command buffer
+    /// </summary>
     internal CommandBuffer WorldUpdateCommandBuffer;
 
+    /// <summary>
+    /// The entity only event
+    /// </summary>
     internal EntityOnlyEvent EntityCreatedEvent = new EntityOnlyEvent();
+    /// <summary>
+    /// The entity only event
+    /// </summary>
     internal EntityOnlyEvent EntityDeletedEvent = new EntityOnlyEvent();
+    /// <summary>
+    /// The component id
+    /// </summary>
     internal Event<ComponentID> ComponentAddedEvent = new Event<ComponentID>();
+    /// <summary>
+    /// The component id
+    /// </summary>
     internal Event<ComponentID> ComponentRemovedEvent = new Event<ComponentID>();
+    /// <summary>
+    /// The tag event
+    /// </summary>
     internal TagEvent Tagged = new TagEvent();
+    /// <summary>
+    /// The tag event
+    /// </summary>
     internal TagEvent Detached = new TagEvent();
 
     //these lookups exists for programmical api optimization
     //normal <T1, T2...> methods use a shared global static cache
+    /// <summary>
+    /// The add component lookup
+    /// </summary>
     internal FastLookup AddComponentLookup;
+    /// <summary>
+    /// The remove component lookup
+    /// </summary>
     internal FastLookup RemoveComponentLookup;
+    /// <summary>
+    /// The add tag lookup
+    /// </summary>
     internal FastLookup AddTagLookup;
+    /// <summary>
+    /// The remove tag lookup
+    /// </summary>
     internal FastLookup RemoveTagLookup;
 
 
+    /// <summary>
+    /// The world event flags
+    /// </summary>
     internal EntityFlags WorldEventFlags;
 
+    /// <summary>
+    /// The create
+    /// </summary>
     internal FastStack<Archetype> DeferredCreationArchetypes = FastStack<Archetype>.Create(4);
 
     /// <summary>
@@ -144,12 +228,26 @@ public partial class World : IDisposable
         remove => RemoveEvent(ref Detached, value, EntityFlags.Detach);
     }
 
+    /// <summary>
+    /// Adds the event using the specified event
+    /// </summary>
+    /// <typeparam name="T">The </typeparam>
+    /// <param name="@event">The event</param>
+    /// <param name="action">The action</param>
+    /// <param name="flag">The flag</param>
     private void AddEvent<T>(ref Event<T> @event, Action<Entity, T> action, EntityFlags flag)
     {
         @event.Add(action);
         WorldEventFlags |= flag;
     }
 
+    /// <summary>
+    /// Removes the event using the specified event
+    /// </summary>
+    /// <typeparam name="T">The </typeparam>
+    /// <param name="@event">The event</param>
+    /// <param name="action">The action</param>
+    /// <param name="flag">The flag</param>
     private void RemoveEvent<T>(ref Event<T> @event, Action<Entity, T> action, EntityFlags flag)
     {
         @event.Remove(action);
@@ -157,6 +255,9 @@ public partial class World : IDisposable
             WorldEventFlags &= ~flag;
     }
 
+    /// <summary>
+    /// The event lookup
+    /// </summary>
     internal Dictionary<EntityIDOnly, EventRecord> EventLookup = [];
 
     /// <summary>
@@ -167,6 +268,9 @@ public partial class World : IDisposable
         get => _uniformProvider;
         set => _uniformProvider = value ?? NullUniformProvider.Instance;
     }
+    /// <summary>
+    /// The uniform provider
+    /// </summary>
     private IUniformProvider _uniformProvider;
 
     /// <summary>
@@ -179,7 +283,13 @@ public partial class World : IDisposable
     /// </summary>
     public Config CurrentConfig { get; set; }
 
+    /// <summary>
+    /// The default archetype
+    /// </summary>
     internal readonly Archetype DefaultArchetype;
+    /// <summary>
+    /// The deferred create archetype
+    /// </summary>
     internal readonly Archetype DeferredCreateArchetype;
 
     /// <summary>
@@ -203,6 +313,11 @@ public partial class World : IDisposable
         DeferredCreateArchetype = Archetype.CreateOrGetExistingArchetype(Archetype.DeferredCreate, this);
     }
 
+    /// <summary>
+    /// Creates the entity from location using the specified entity location
+    /// </summary>
+    /// <param name="entityLocation">The entity location</param>
+    /// <returns>The entity</returns>
     internal Entity CreateEntityFromLocation(EntityLocation entityLocation)
     {
         var (id, version) = RecycledEntityIds.TryPop(out var v) ? v : new EntityIDOnly(NextEntityID++, (ushort)0);
@@ -306,6 +421,10 @@ public partial class World : IDisposable
         return query;
     }
 
+    /// <summary>
+    /// Archetypes the added using the specified archetype
+    /// </summary>
+    /// <param name="archetype">The archetype</param>
     internal void ArchetypeAdded(Archetype archetype)
     {
         if (!GlobalWorldTables.HasTag(archetype.ID, Tag<Disable>.ID))
@@ -316,6 +435,11 @@ public partial class World : IDisposable
         }
     }
 
+    /// <summary>
+    /// Creates the query using the specified rules
+    /// </summary>
+    /// <param name="rules">The rules</param>
+    /// <returns>The </returns>
     internal Query CreateQuery(ImmutableArray<Rule> rules)
     {
         Query q = new Query(this, rules);
@@ -325,19 +449,34 @@ public partial class World : IDisposable
         return q;
     }
 
+    /// <summary>
+    /// Creates the query from span using the specified rules
+    /// </summary>
+    /// <param name="rules">The rules</param>
+    /// <returns>The query</returns>
     internal Query CreateQueryFromSpan(ReadOnlySpan<Rule> rules) => CreateQuery(MemoryHelpers.ReadOnlySpanToImmutableArray(rules));
 
+    /// <summary>
+    /// Updates the archetype table using the specified new size
+    /// </summary>
+    /// <param name="newSize">The new size</param>
     internal void UpdateArchetypeTable(int newSize)
     {
         Debug.Assert(newSize > WorldArchetypeTable.Length);
         FastStackArrayPool<Archetype>.ResizeArrayFromPool(ref WorldArchetypeTable, newSize);
     }
 
+    /// <summary>
+    /// Enters the disallow state
+    /// </summary>
     internal void EnterDisallowState()
     {
         Interlocked.Increment(ref _allowStructuralChanges);
     }
 
+    /// <summary>
+    /// Exits the disallow state
+    /// </summary>
     internal void ExitDisallowState()
     {
         if (Interlocked.Decrement(ref _allowStructuralChanges) == 0)
@@ -354,6 +493,14 @@ public partial class World : IDisposable
     }
 
 #if !NETSTANDARD2_1 && !NETSTANDARD2_0 && !NET5_0 && !NETCOREAPP2_0 && !NETCOREAPP2_1 && !NETCOREAPP2_2 && !NETCOREAPP3_0 && !NETCOREAPP3_1 && !NET481 && !NET48 && !NET472 && !NET471 && !NET47 && !NET462 && !NET461 && !NET46 && !NET452 && !NET451 && !NET45 && !NET40
+    /// <summary>
+    /// Tries the get event data using the specified entity location
+    /// </summary>
+    /// <param name="entityLocation">The entity location</param>
+    /// <param name="entity">The entity</param>
+    /// <param name="eventType">The event type</param>
+    /// <param name="exists">The exists</param>
+    /// <returns>The ref event record</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal ref EventRecord TryGetEventData(EntityLocation entityLocation, EntityIDOnly entity, EntityFlags eventType, out bool exists)
     {
@@ -369,6 +516,9 @@ public partial class World : IDisposable
     }
 #endif
 
+    /// <summary>
+    /// Gets the value of the allow structual changes
+    /// </summary>
     internal bool AllowStructualChanges => _allowStructuralChanges == 0;
 
     /// <summary>
@@ -435,6 +585,10 @@ public partial class World : IDisposable
         return entity;
     }
 
+    /// <summary>
+    /// Creates the entity without event
+    /// </summary>
+    /// <returns>The entity</returns>
     internal Entity CreateEntityWithoutEvent()
     {
         ref var entity = ref DefaultArchetype.CreateEntityLocation(EntityFlags.None, out var eloc);
@@ -446,6 +600,10 @@ public partial class World : IDisposable
         return new Entity(ID, version, id);
     }
 
+    /// <summary>
+    /// Invokes the entity created using the specified entity
+    /// </summary>
+    /// <param name="entity">The entity</param>
     internal void InvokeEntityCreated(Entity entity)
     {
         EntityCreatedEvent.Invoke(entity);
@@ -465,6 +623,12 @@ public partial class World : IDisposable
         EnsureCapacityCore(archetype, count);
     }
 
+    /// <summary>
+    /// Ensures the capacity core using the specified archetype
+    /// </summary>
+    /// <param name="archetype">The archetype</param>
+    /// <param name="count">The count</param>
+    /// <exception cref="ArgumentOutOfRangeException">Count must be positive </exception>
     internal void EnsureCapacityCore(Archetype archetype, int count)
     {
         if (count < 1)
@@ -473,10 +637,22 @@ public partial class World : IDisposable
         EntityTable.EnsureCapacity(count + EntityCount);
     }
 
+    /// <summary>
+    /// The null uniform provider class
+    /// </summary>
+    /// <seealso cref="IUniformProvider"/>
     internal class NullUniformProvider : IUniformProvider
     {
+        /// <summary>
+        /// Gets the value of the instance
+        /// </summary>
         internal static NullUniformProvider Instance { get; } = new NullUniformProvider();
 
+        /// <summary>
+        /// Gets the uniform
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <returns>The</returns>
         [DebuggerHidden]
         public T GetUniform<T>()
         {
