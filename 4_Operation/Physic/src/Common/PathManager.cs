@@ -42,8 +42,6 @@ namespace Alis.Core.Physic.Common
     /// </summary>
     public static class PathManager
     {
-        
-
         /// <summary>
         ///     The link type enum
         /// </summary>
@@ -60,7 +58,6 @@ namespace Alis.Core.Physic.Common
             Slider
         }
 
-        
 
         //Contributed by Matthew Bettcher
 

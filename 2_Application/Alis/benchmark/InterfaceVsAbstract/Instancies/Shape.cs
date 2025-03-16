@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:d.cs
+//  File:Shape.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,17 +29,16 @@
 
 namespace Alis.Benchmark.InterfaceVsAbstract.Instancies
 {
-
 // Interface definition
 
 // Abstract class definition
-    /// <summary>
-    /// The shape class
-    /// </summary>
-    public abstract class Shape
+/// <summary>
+///     The shape class
+/// </summary>
+public abstract class Shape
     {
         /// <summary>
-        /// Gets the area
+        ///     Gets the area
         /// </summary>
         /// <returns>The float</returns>
         public abstract float GetArea();

@@ -64,7 +64,59 @@ namespace Alis.Core.Physic.Dynamics
         public BodyCollection(World world) => _world = world;
 
 
-        
+        /// <summary>
+        ///     Gets the value of the is read only
+        /// </summary>
+        public bool IsReadOnly => true;
+
+        /// <summary>
+        ///     Gets the value of the count
+        /// </summary>
+        public int Count => List.Count;
+
+        /// <summary>
+        ///     Adds the item
+        /// </summary>
+        /// <param name="item">The item</param>
+        /// <exception cref="NotSupportedException"></exception>
+        void ICollection<Body>.Add(Body item)
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        ///     Describes whether this instance remove
+        /// </summary>
+        /// <param name="item">The item</param>
+        /// <returns>The bool</returns>
+        bool ICollection<Body>.Remove(Body item) => throw new NotSupportedException();
+
+        /// <summary>
+        ///     Clears this instance
+        /// </summary>
+        /// <exception cref="NotSupportedException"></exception>
+        void ICollection<Body>.Clear()
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        ///     Describes whether this instance contains
+        /// </summary>
+        /// <param name="item">The item</param>
+        /// <returns>The bool</returns>
+        public bool Contains(Body item) => List.Contains(item);
+
+        /// <summary>
+        ///     Copies the to using the specified array
+        /// </summary>
+        /// <param name="array">The array</param>
+        /// <param name="arrayIndex">The array index</param>
+        public void CopyTo(Body[] array, int arrayIndex)
+        {
+            List.CopyTo(array, arrayIndex);
+        }
+
 
         /// <summary>
         ///     Gets the enumerator
@@ -72,10 +124,6 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>An enumerator of body</returns>
         IEnumerator<Body> IEnumerable<Body>.GetEnumerator() => new BodyEnumerator(this, List);
 
-        
-
-
-        
 
         /// <summary>
         ///     Gets the enumerator
@@ -83,7 +131,44 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>The enumerator</returns>
         IEnumerator IEnumerable.GetEnumerator() => new BodyEnumerator(this, List);
 
-        
+
+        /// <summary>
+        ///     The not supported exception
+        /// </summary>
+        public Body this[int index]
+        {
+            get => List[index];
+            set => throw new NotSupportedException();
+        }
+
+        /// <summary>
+        ///     Indexes the of using the specified item
+        /// </summary>
+        /// <param name="item">The item</param>
+        /// <returns>The int</returns>
+        public int IndexOf(Body item) => List.IndexOf(item);
+
+        /// <summary>
+        ///     Inserts the index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <param name="item">The item</param>
+        /// <exception cref="NotSupportedException"></exception>
+        void IList<Body>.Insert(int index, Body item)
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        ///     Removes the at using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <exception cref="NotSupportedException"></exception>
+        void IList<Body>.RemoveAt(int index)
+        {
+            throw new NotSupportedException();
+        }
+
 
         /// <summary>
         ///     Gets the enumerator
@@ -146,7 +231,6 @@ namespace Alis.Core.Physic.Dynamics
                 }
             }
 
-            
 
             /// <summary>
             ///     Gets the value of the current
@@ -164,9 +248,6 @@ namespace Alis.Core.Physic.Dynamics
                 }
             }
 
-            
-
-            
 
             /// <summary>
             ///     Describes whether this instance move next
@@ -217,108 +298,6 @@ namespace Alis.Core.Physic.Dynamics
             {
                 i = -1;
             }
-
-            
         }
-
-
-        
-
-        /// <summary>
-        ///     The not supported exception
-        /// </summary>
-        public Body this[int index]
-        {
-            get => List[index];
-            set => throw new NotSupportedException();
-        }
-
-        /// <summary>
-        ///     Indexes the of using the specified item
-        /// </summary>
-        /// <param name="item">The item</param>
-        /// <returns>The int</returns>
-        public int IndexOf(Body item) => List.IndexOf(item);
-
-        /// <summary>
-        ///     Inserts the index
-        /// </summary>
-        /// <param name="index">The index</param>
-        /// <param name="item">The item</param>
-        /// <exception cref="NotSupportedException"></exception>
-        void IList<Body>.Insert(int index, Body item)
-        {
-            throw new NotSupportedException();
-        }
-
-        /// <summary>
-        ///     Removes the at using the specified index
-        /// </summary>
-        /// <param name="index">The index</param>
-        /// <exception cref="NotSupportedException"></exception>
-        void IList<Body>.RemoveAt(int index)
-        {
-            throw new NotSupportedException();
-        }
-
-        
-
-
-        
-
-        /// <summary>
-        ///     Gets the value of the is read only
-        /// </summary>
-        public bool IsReadOnly => true;
-
-        /// <summary>
-        ///     Gets the value of the count
-        /// </summary>
-        public int Count => List.Count;
-
-        /// <summary>
-        ///     Adds the item
-        /// </summary>
-        /// <param name="item">The item</param>
-        /// <exception cref="NotSupportedException"></exception>
-        void ICollection<Body>.Add(Body item)
-        {
-            throw new NotSupportedException();
-        }
-
-        /// <summary>
-        ///     Describes whether this instance remove
-        /// </summary>
-        /// <param name="item">The item</param>
-        /// <returns>The bool</returns>
-        bool ICollection<Body>.Remove(Body item) => throw new NotSupportedException();
-
-        /// <summary>
-        ///     Clears this instance
-        /// </summary>
-        /// <exception cref="NotSupportedException"></exception>
-        void ICollection<Body>.Clear()
-        {
-            throw new NotSupportedException();
-        }
-
-        /// <summary>
-        ///     Describes whether this instance contains
-        /// </summary>
-        /// <param name="item">The item</param>
-        /// <returns>The bool</returns>
-        public bool Contains(Body item) => List.Contains(item);
-
-        /// <summary>
-        ///     Copies the to using the specified array
-        /// </summary>
-        /// <param name="array">The array</param>
-        /// <param name="arrayIndex">The array index</param>
-        public void CopyTo(Body[] array, int arrayIndex)
-        {
-            List.CopyTo(array, arrayIndex);
-        }
-
-        
     }
 }

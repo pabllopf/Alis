@@ -1,20 +1,54 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ComponentArrayPool.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
-using Frent.Core;
 using System.Buffers;
 using System.Numerics;
 using System.Runtime.CompilerServices;
+using Frent.Core;
 
 namespace Frent.Buffers
 {
     //super simple arraypool class
     /// <summary>
-    /// The component array pool class
+    ///     The component array pool class
     /// </summary>
-    /// <seealso cref="ArrayPool{T}"/>
+    /// <seealso cref="ArrayPool{T}" />
     internal class ComponentArrayPool<T> : ArrayPool<T>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ComponentArrayPool{T}"/> class
+        ///     The buckets
+        /// </summary>
+        private readonly T[][] Buckets;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ComponentArrayPool{T}" /> class
         /// </summary>
         public ComponentArrayPool()
         {
@@ -26,12 +60,7 @@ namespace Frent.Buffers
         }
 
         /// <summary>
-        /// The buckets
-        /// </summary>
-        private T[][] Buckets;
-
-        /// <summary>
-        /// Rents the minimum length
+        ///     Rents the minimum length
         /// </summary>
         /// <param name="minimumLength">The minimum length</param>
         /// <returns>The array</returns>
@@ -40,9 +69,9 @@ namespace Frent.Buffers
             if (minimumLength < 16)
                 return new T[minimumLength];
 
-            int bucketIndex = BitOperations.Log2((uint)minimumLength) - 4;
+            int bucketIndex = BitOperations.Log2((uint) minimumLength) - 4;
 
-            if ((uint)bucketIndex < (uint)Buckets.Length)
+            if ((uint) bucketIndex < (uint) Buckets.Length)
             {
                 ref T[] item = ref Buckets[bucketIndex];
 
@@ -54,12 +83,12 @@ namespace Frent.Buffers
                 }
             }
 
-            return new T[minimumLength];//GC.AllocateUninitializedArray<T>(minimumLength)
+            return new T[minimumLength]; //GC.AllocateUninitializedArray<T>(minimumLength)
             //benchmarks say uninit is the same speed
         }
 
         /// <summary>
-        /// Returns the array
+        ///     Returns the array
         /// </summary>
         /// <param name="array">The array</param>
         /// <param name="clearArray">The clear array</param>
@@ -68,13 +97,13 @@ namespace Frent.Buffers
             //easier to deal w/ all logic here
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
                 array.AsSpan().Clear();
-            int bucketIndex = BitOperations.Log2((uint)array.Length) - 4;
-            if ((uint)bucketIndex < (uint)Buckets.Length)
+            int bucketIndex = BitOperations.Log2((uint) array.Length) - 4;
+            if ((uint) bucketIndex < (uint) Buckets.Length)
                 Buckets[bucketIndex] = array;
         }
 
         /// <summary>
-        /// Clears the buckets
+        ///     Clears the buckets
         /// </summary>
         private void ClearBuckets()
         {

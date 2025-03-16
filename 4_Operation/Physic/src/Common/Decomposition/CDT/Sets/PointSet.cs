@@ -44,7 +44,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
         /// <param name="points">The points</param>
         public PointSet(List<TriangulationPoint> points) => GetPoints = new List<TriangulationPoint>(points);
 
-        
 
         /// <summary>
         ///     Gets the value of the points
@@ -107,7 +106,5 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
 
             tcx.Points.AddRange(GetPoints);
         }
-
-        
     }
 }

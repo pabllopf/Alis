@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ArchetypeNeighborCache.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
@@ -5,23 +34,24 @@ namespace Frent.Collections
 {
     //160 bits, 20 bytes
     /// <summary>
-    /// The archetype neighbor cache
+    ///     The archetype neighbor cache
     /// </summary>
     internal struct ArchetypeNeighborCache
     {
         //128 bits
         /// <summary>
-        /// The keys and values
+        ///     The keys and values
         /// </summary>
         private InlineArray8<ushort> _keysAndValues;
+
         //32
         /// <summary>
-        /// The next index
+        ///     The next index
         /// </summary>
         private int _nextIndex;
 
         /// <summary>
-        /// Traverses the value
+        ///     Traverses the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The int</returns>
@@ -51,7 +81,7 @@ namespace Frent.Collections
         }
 
         /// <summary>
-        /// Lookups the index
+        ///     Lookups the index
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The ushort</returns>
@@ -62,7 +92,7 @@ namespace Frent.Collections
         }
 
         /// <summary>
-        /// Sets the key
+        ///     Sets the key
         /// </summary>
         /// <param name="key">The key</param>
         /// <param name="value">The value</param>

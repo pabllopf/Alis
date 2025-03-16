@@ -1,41 +1,56 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Query.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
+using System.Collections.Immutable;
 using Frent.Collections;
 using Frent.Core;
-
-using System.Collections.Immutable;
 
 namespace Frent.Systems
 {
     /// <summary>
-    /// Represents a set of entities from a world which can have systems applied to
+    ///     Represents a set of entities from a world which can have systems applied to
     /// </summary>
     public partial class Query
     {
         /// <summary>
-        /// Converts the span
-        /// </summary>
-        /// <returns>A span of archetype</returns>
-        internal Span<Archetype> AsSpan() => _archetypes.AsSpan();
-
-        /// <summary>
-        /// The create
+        ///     The create
         /// </summary>
         private FastStack<Archetype> _archetypes = FastStack<Archetype>.Create(2);
-        /// <summary>
-        /// The rules
-        /// </summary>
-        private ImmutableArray<Rule> _rules;
-        /// <summary>
-        /// Gets or inits the value of the world
-        /// </summary>
-        internal World World { get; init; }
-        /// <summary>
-        /// Gets or inits the value of the include disabled
-        /// </summary>
-        internal bool IncludeDisabled { get; init; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Query"/> class
+        ///     The rules
+        /// </summary>
+        private ImmutableArray<Rule> _rules;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Query" /> class
         /// </summary>
         /// <param name="world">The world</param>
         /// <param name="rules">The rules</param>
@@ -52,7 +67,23 @@ namespace Frent.Systems
         }
 
         /// <summary>
-        /// Tries the attach archetype using the specified archetype
+        ///     Gets or inits the value of the world
+        /// </summary>
+        internal World World { get; init; }
+
+        /// <summary>
+        ///     Gets or inits the value of the include disabled
+        /// </summary>
+        internal bool IncludeDisabled { get; init; }
+
+        /// <summary>
+        ///     Converts the span
+        /// </summary>
+        /// <returns>A span of archetype</returns>
+        internal Span<Archetype> AsSpan() => _archetypes.AsSpan();
+
+        /// <summary>
+        ///     Tries the attach archetype using the specified archetype
         /// </summary>
         /// <param name="archetype">The archetype</param>
         internal void TryAttachArchetype(Archetype archetype)
@@ -65,7 +96,7 @@ namespace Frent.Systems
         }
 
         /// <summary>
-        /// Archetypes the satisfies query using the specified id
+        ///     Archetypes the satisfies query using the specified id
         /// </summary>
         /// <param name="id">The id</param>
         /// <returns>The bool</returns>
@@ -78,30 +109,33 @@ namespace Frent.Systems
                     return false;
                 }
             }
+
             return true;
         }
     }
 
 
     /// <summary>
-    /// The query class
+    ///     The query class
     /// </summary>
     partial class Query
     {
         /// <summary>
-        /// Enumerates this instance
+        ///     Enumerates this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>A query enumerator of t query enumerable</returns>
         public QueryEnumerator<T>.QueryEnumerable Enumerate<T>() => new(this);
+
         /// <summary>
-        /// Enumerates the with entities
+        ///     Enumerates the with entities
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>An entity query enumerator of t query enumerable</returns>
         public EntityQueryEnumerator<T>.QueryEnumerable EnumerateWithEntities<T>() => new(this);
+
         /// <summary>
-        /// Enumerates the chunks
+        ///     Enumerates the chunks
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>A chunk query enumerator of t query enumerable</returns>
@@ -109,12 +143,12 @@ namespace Frent.Systems
     }
 
     /// <summary>
-    /// The query class
+    ///     The query class
     /// </summary>
     partial class Query
     {
         /// <summary>
-        /// Enumerates the with entities
+        ///     Enumerates the with entities
         /// </summary>
         /// <returns>The entity query enumerator query enumerable</returns>
         public EntityQueryEnumerator.QueryEnumerable EnumerateWithEntities() => new(this);

@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Frent.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics;
@@ -10,87 +39,37 @@ using static Alis.Benchmark.EntityComponentSystem.Contexts.FrentBaseContext;
 namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
 {
     /// <summary>
-    /// The system with one component class
+    ///     The system with one component class
     /// </summary>
     public partial class SystemWithOneComponent
     {
         /// <summary>
-        /// The frent
+        ///     The frent
         /// </summary>
-        [Context]
-        private readonly FrentContext _frent;
+        [Context] private readonly FrentContext _frent;
 
         /// <summary>
-        /// The frent context class
+        ///     Frents the query inline
         /// </summary>
-        /// <seealso cref="FrentBaseContext"/>
-        private sealed class FrentContext : FrentBaseContext
-        {
-            /// <summary>
-            /// Initializes a new instance of the <see cref="FrentContext"/> class
-            /// </summary>
-            /// <param name="entityCount">The entity count</param>
-            /// <param name="entityPadding">The entity padding</param>
-            public FrentContext(int entityCount, int entityPadding)
-            {
-                for (int i = 0; i < entityCount; i++)
-                {
-                    World.Create<Component1>(default);
-                    for (int j = 0; j < entityPadding; j++)
-                    {
-                        World.Create();
-                    }
-                }
-
-                Query = World.Query<With<Component1>>();
-            }
-
-            /// <summary>
-            /// The query
-            /// </summary>
-            public Query Query;
-        }
-
-        /// <summary>
-        /// The increment
-        /// </summary>
-        internal struct Increment : IAction<FrentBaseContext.Component1>
-        {
-            /// <summary>
-            /// Runs the t 0
-            /// </summary>
-            /// <param name="t0">The </param>
-            public void Run(ref Component1 t0)
-            {
-                t0.Value++;
-            }
-        }
-
-        /// <summary>
-        /// Frents the query inline
-        /// </summary>
-        [BenchmarkCategory(Categories.Frent)]
-        [Benchmark]
+        [BenchmarkCategory(Categories.Frent), Benchmark]
         public void Frent_QueryInline()
         {
             _frent.Query.Inline<Increment, Component1>(default);
         }
 
         /// <summary>
-        /// Frents the query delegate
+        ///     Frents the query delegate
         /// </summary>
-        [BenchmarkCategory(Categories.Frent)]
-        [Benchmark]
+        [BenchmarkCategory(Categories.Frent), Benchmark]
         public void Frent_QueryDelegate()
         {
             _frent.Query.Delegate((ref Component1 c) => c.Value++);
         }
 
         /// <summary>
-        /// Frents the simd
+        ///     Frents the simd
         /// </summary>
-        [BenchmarkCategory(Categories.Frent)]
-        [Benchmark]
+        [BenchmarkCategory(Categories.Frent), Benchmark]
         public void Frent_Simd()
         {
             Vector256<int> sum = Vector256.Create(1);
@@ -107,6 +86,52 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
                 {
                     chunk.Span[i].Value++;
                 }
+            }
+        }
+
+        /// <summary>
+        ///     The frent context class
+        /// </summary>
+        /// <seealso cref="FrentBaseContext" />
+        private sealed class FrentContext : FrentBaseContext
+        {
+            /// <summary>
+            ///     The query
+            /// </summary>
+            public readonly Query Query;
+
+            /// <summary>
+            ///     Initializes a new instance of the <see cref="FrentContext" /> class
+            /// </summary>
+            /// <param name="entityCount">The entity count</param>
+            /// <param name="entityPadding">The entity padding</param>
+            public FrentContext(int entityCount, int entityPadding)
+            {
+                for (int i = 0; i < entityCount; i++)
+                {
+                    World.Create<Component1>(default);
+                    for (int j = 0; j < entityPadding; j++)
+                    {
+                        World.Create();
+                    }
+                }
+
+                Query = World.Query<With<Component1>>();
+            }
+        }
+
+        /// <summary>
+        ///     The increment
+        /// </summary>
+        internal struct Increment : IAction<Component1>
+        {
+            /// <summary>
+            ///     Runs the t 0
+            /// </summary>
+            /// <param name="t0">The </param>
+            public void Run(ref Component1 t0)
+            {
+                t0.Value++;
             }
         }
     }

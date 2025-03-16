@@ -225,7 +225,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="options">The options.</param>
         public void ApplyEntry(IDictionary dictionary, object target, string key, object value, JsonOptions options = null)
         {
-            if (options is {ApplyEntryCallback: { }})
+            if (options is {ApplyEntryCallback: not null})
             {
                 Dictionary<object, object> og = new Dictionary<object, object>
                 {

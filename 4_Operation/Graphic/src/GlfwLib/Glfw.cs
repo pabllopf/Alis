@@ -49,7 +49,17 @@ namespace Alis.Core.Graphic.GlfwLib
     [SuppressUnmanagedCodeSecurity]
     public static class Glfw
     {
-        
+        /// <summary>
+        ///     The native library name,
+        ///     <para>For Unix users using an installed version of GLFW, this needs refactored to <c>glfw</c>.</para>
+        /// </summary>
+        public const string LIBRARY = "glfw";
+
+        /// <summary>
+        ///     The glfw error
+        /// </summary>
+        private static readonly ErrorCallback errorCallback = GlfwError;
+
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Glfw" /> class
@@ -61,7 +71,104 @@ namespace Alis.Core.Graphic.GlfwLib
             SetErrorCallback(errorCallback);
         }
 
-        
+
+        /// <summary>
+        ///     Gets the window whose OpenGL or OpenGL ES context is current on the calling thread, or <see cref="Window.None" />
+        ///     if no context is current.
+        /// </summary>
+        /// <value>
+        ///     The current context.
+        /// </value>
+        public static Window CurrentContext => GetCurrentContext();
+
+        /// <summary>
+        ///     Gets an array of handles for all currently connected monitors.
+        ///     <para>The primary monitor is always first in the array.</para>
+        /// </summary>
+        /// <value>
+        ///     The monitors.
+        /// </value>
+        public static Monitor[] Monitors
+        {
+            get
+            {
+                IntPtr ptr = GetMonitors(out int count);
+                Monitor[] monitors = new Monitor[count];
+                int offset = 0;
+                for (int i = 0; i < count; i++, offset += IntPtr.Size)
+                {
+                    monitors[i] = Marshal.PtrToStructure<Monitor>(ptr + offset);
+                }
+
+                return monitors;
+            }
+        }
+
+        /// <summary>
+        ///     Gets the primary monitor. This is usually the monitor where elements like the task bar or global menu bar are
+        ///     located.
+        /// </summary>
+        /// <value>
+        ///     The primary monitor, or <see cref="Monitor.None" /> if no monitors were found or if an error occurred.
+        /// </value>
+        public static Monitor PrimaryMonitor => GetPrimaryMonitor();
+
+        /// <summary>
+        ///     Gets or sets the value of the GLFW timer.
+        ///     <para>
+        ///         The resolution of the timer is system dependent, but is usually on the order of a few micro- or nanoseconds.
+        ///         It uses the highest-resolution monotonic time source on each supported platform.
+        ///     </para>
+        /// </summary>
+        /// <value>
+        ///     The time.
+        /// </value>
+        public static double Time
+        {
+            get => GetTime();
+            set => SetTime(value);
+        }
+
+        /// <summary>
+        ///     Gets the frequency, in Hz, of the raw timer.
+        /// </summary>
+        /// <value>
+        ///     The frequency of the timer, in Hz, or zero if an error occurred.
+        /// </value>
+        public static ulong TimerFrequency => GetTimerFrequency();
+
+        /// <summary>
+        ///     Gets the current value of the raw timer, measured in 1 / frequency seconds.
+        /// </summary>
+        /// <value>
+        ///     The timer value.
+        /// </value>
+        public static ulong TimerValue => GetTimerValue();
+
+        /// <summary>
+        ///     Gets the version of the native GLFW library.
+        /// </summary>
+        /// <value>
+        ///     The version.
+        /// </value>
+        public static Version Version
+        {
+            get
+            {
+                GetVersion(out int major, out int minor, out int revision);
+                return new Version(major, minor, revision);
+            }
+        }
+
+        /// <summary>
+        ///     Gets the compile-time generated version string of the GLFW library binary.
+        ///     <para>It describes the version, platform, compiler and any platform-specific compile-time options.</para>
+        /// </summary>
+        /// <value>
+        ///     The version string.
+        /// </value>
+        public static string VersionString => Util.PtrToStringUTF8(GetVersionString());
+
 
         /// <summary>
         ///     Returns and clears the error code of the last error that occurred on the calling thread, and optionally
@@ -397,123 +504,6 @@ namespace Alis.Core.Graphic.GlfwLib
         [DllImport(LIBRARY, EntryPoint = "glfwGetGamepadState", CallingConvention = CallingConvention.Cdecl)]
         public static extern bool GetGamepadState(int id, out GamePadState state);
 
-        
-
-        /// <summary>
-        ///     The native library name,
-        ///     <para>For Unix users using an installed version of GLFW, this needs refactored to <c>glfw</c>.</para>
-        /// </summary>
-        public const string LIBRARY = "glfw";
-
-        /// <summary>
-        ///     The glfw error
-        /// </summary>
-        private static readonly ErrorCallback errorCallback = GlfwError;
-
-        
-
-        
-
-        /// <summary>
-        ///     Gets the window whose OpenGL or OpenGL ES context is current on the calling thread, or <see cref="Window.None" />
-        ///     if no context is current.
-        /// </summary>
-        /// <value>
-        ///     The current context.
-        /// </value>
-        public static Window CurrentContext => GetCurrentContext();
-
-        /// <summary>
-        ///     Gets an array of handles for all currently connected monitors.
-        ///     <para>The primary monitor is always first in the array.</para>
-        /// </summary>
-        /// <value>
-        ///     The monitors.
-        /// </value>
-        public static Monitor[] Monitors
-        {
-            get
-            {
-                IntPtr ptr = GetMonitors(out int count);
-                Monitor[] monitors = new Monitor[count];
-                int offset = 0;
-                for (int i = 0; i < count; i++, offset += IntPtr.Size)
-                {
-                    monitors[i] = Marshal.PtrToStructure<Monitor>(ptr + offset);
-                }
-
-                return monitors;
-            }
-        }
-
-        /// <summary>
-        ///     Gets the primary monitor. This is usually the monitor where elements like the task bar or global menu bar are
-        ///     located.
-        /// </summary>
-        /// <value>
-        ///     The primary monitor, or <see cref="Monitor.None" /> if no monitors were found or if an error occurred.
-        /// </value>
-        public static Monitor PrimaryMonitor => GetPrimaryMonitor();
-
-        /// <summary>
-        ///     Gets or sets the value of the GLFW timer.
-        ///     <para>
-        ///         The resolution of the timer is system dependent, but is usually on the order of a few micro- or nanoseconds.
-        ///         It uses the highest-resolution monotonic time source on each supported platform.
-        ///     </para>
-        /// </summary>
-        /// <value>
-        ///     The time.
-        /// </value>
-        public static double Time
-        {
-            get => GetTime();
-            set => SetTime(value);
-        }
-
-        /// <summary>
-        ///     Gets the frequency, in Hz, of the raw timer.
-        /// </summary>
-        /// <value>
-        ///     The frequency of the timer, in Hz, or zero if an error occurred.
-        /// </value>
-        public static ulong TimerFrequency => GetTimerFrequency();
-
-        /// <summary>
-        ///     Gets the current value of the raw timer, measured in 1 / frequency seconds.
-        /// </summary>
-        /// <value>
-        ///     The timer value.
-        /// </value>
-        public static ulong TimerValue => GetTimerValue();
-
-        /// <summary>
-        ///     Gets the version of the native GLFW library.
-        /// </summary>
-        /// <value>
-        ///     The version.
-        /// </value>
-        public static Version Version
-        {
-            get
-            {
-                GetVersion(out int major, out int minor, out int revision);
-                return new Version(major, minor, revision);
-            }
-        }
-
-        /// <summary>
-        ///     Gets the compile-time generated version string of the GLFW library binary.
-        ///     <para>It describes the version, platform, compiler and any platform-specific compile-time options.</para>
-        /// </summary>
-        /// <value>
-        ///     The version string.
-        /// </value>
-        public static string VersionString => Util.PtrToStringUTF8(GetVersionString());
-
-        
-
-        
 
         /// <summary>
         ///     This function sets hints for the next initialization of GLFW.
@@ -1624,9 +1614,6 @@ namespace Alis.Core.Graphic.GlfwLib
         [DllImport(LIBRARY, EntryPoint = "glfwGetError", CallingConvention = CallingConvention.Cdecl)]
         private static extern ErrorCode GetErrorPrivate(out IntPtr description);
 
-        
-
-        
 
         /// <summary>
         ///     This function creates a window and its associated OpenGL or OpenGL ES context. Most of the options controlling how
@@ -2002,7 +1989,5 @@ namespace Alis.Core.Graphic.GlfwLib
         {
             throw new Exception(Util.PtrToStringUTF8(message));
         }
-
-        
     }
 }

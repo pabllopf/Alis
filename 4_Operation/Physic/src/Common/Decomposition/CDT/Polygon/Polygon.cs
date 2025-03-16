@@ -115,6 +115,96 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         /// </summary>
         public IList<Polygon> GetHoles => Holes;
 
+
+        /// <summary>
+        ///     Gets the value of the triangulation mode
+        /// </summary>
+        public TriangulationMode TriangulationMode => TriangulationMode.Polygon;
+
+        /// <summary>
+        ///     Gets the value of the points
+        /// </summary>
+        public IList<TriangulationPoint> GetPoints => Points;
+
+        /// <summary>
+        ///     Gets the value of the triangles
+        /// </summary>
+        public IList<DelaunayTriangle> GetTriangles => Triangles;
+
+        /// <summary>
+        ///     Adds the triangle using the specified t
+        /// </summary>
+        /// <param name="t">The </param>
+        public void AddTriangle(DelaunayTriangle t)
+        {
+            Triangles.Add(t);
+        }
+
+        /// <summary>
+        ///     Adds the triangles using the specified list
+        /// </summary>
+        /// <param name="list">The list</param>
+        public void AddTriangles(IEnumerable<DelaunayTriangle> list)
+        {
+            Triangles.AddRange(list);
+        }
+
+        /// <summary>
+        ///     Clears the triangles
+        /// </summary>
+        public void ClearTriangles()
+        {
+            if (Triangles != null)
+            {
+                Triangles.Clear();
+            }
+        }
+
+        /// <summary>
+        ///     Creates constraints and populates the context with points
+        /// </summary>
+        /// <param name="tcx">The context</param>
+        public void PrepareTriangulation(TriangulationContext tcx)
+        {
+            if (Triangles == null)
+            {
+                Triangles = new List<DelaunayTriangle>(Points.Count);
+            }
+            else
+            {
+                Triangles.Clear();
+            }
+
+            // Outer constraints
+            for (int i = 0; i < Points.Count - 1; i++)
+            {
+                tcx.NewConstraint(Points[i], Points[i + 1]);
+            }
+
+            tcx.NewConstraint(Points[0], Points[Points.Count - 1]);
+            tcx.Points.AddRange(Points);
+
+            // Hole constraints
+            if (Holes != null)
+            {
+                foreach (Polygon p in Holes)
+                {
+                    for (int i = 0; i < p.Points.Count - 1; i++)
+                    {
+                        tcx.NewConstraint(p.Points[i], p.Points[i + 1]);
+                    }
+
+                    tcx.NewConstraint(p.Points[0], p.Points[p.Points.Count - 1]);
+                    tcx.Points.AddRange(p.Points);
+                }
+            }
+
+            if (SteinerPoints != null)
+            {
+                tcx.Points.AddRange(SteinerPoints);
+            }
+        }
+
         /// <summary>
         ///     Adds the steiner point using the specified point
         /// </summary>
@@ -243,98 +333,5 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
             next.Previous = prev;
             Points.Remove(p);
         }
-
-        
-
-        /// <summary>
-        ///     Gets the value of the triangulation mode
-        /// </summary>
-        public TriangulationMode TriangulationMode => TriangulationMode.Polygon;
-
-        /// <summary>
-        ///     Gets the value of the points
-        /// </summary>
-        public IList<TriangulationPoint> GetPoints => Points;
-
-        /// <summary>
-        ///     Gets the value of the triangles
-        /// </summary>
-        public IList<DelaunayTriangle> GetTriangles => Triangles;
-
-        /// <summary>
-        ///     Adds the triangle using the specified t
-        /// </summary>
-        /// <param name="t">The </param>
-        public void AddTriangle(DelaunayTriangle t)
-        {
-            Triangles.Add(t);
-        }
-
-        /// <summary>
-        ///     Adds the triangles using the specified list
-        /// </summary>
-        /// <param name="list">The list</param>
-        public void AddTriangles(IEnumerable<DelaunayTriangle> list)
-        {
-            Triangles.AddRange(list);
-        }
-
-        /// <summary>
-        ///     Clears the triangles
-        /// </summary>
-        public void ClearTriangles()
-        {
-            if (Triangles != null)
-            {
-                Triangles.Clear();
-            }
-        }
-
-        /// <summary>
-        ///     Creates constraints and populates the context with points
-        /// </summary>
-        /// <param name="tcx">The context</param>
-        public void PrepareTriangulation(TriangulationContext tcx)
-        {
-            if (Triangles == null)
-            {
-                Triangles = new List<DelaunayTriangle>(Points.Count);
-            }
-            else
-            {
-                Triangles.Clear();
-            }
-
-            // Outer constraints
-            for (int i = 0; i < Points.Count - 1; i++)
-            {
-                tcx.NewConstraint(Points[i], Points[i + 1]);
-            }
-
-            tcx.NewConstraint(Points[0], Points[Points.Count - 1]);
-            tcx.Points.AddRange(Points);
-
-            // Hole constraints
-            if (Holes != null)
-            {
-                foreach (Polygon p in Holes)
-                {
-                    for (int i = 0; i < p.Points.Count - 1; i++)
-                    {
-                        tcx.NewConstraint(p.Points[i], p.Points[i + 1]);
-                    }
-
-                    tcx.NewConstraint(p.Points[0], p.Points[p.Points.Count - 1]);
-                    tcx.Points.AddRange(p.Points);
-                }
-            }
-
-            if (SteinerPoints != null)
-            {
-                tcx.Points.AddRange(SteinerPoints);
-            }
-        }
-
-        
     }
 }

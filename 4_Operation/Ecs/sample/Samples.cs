@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Samples.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using Frent.Components;
 using Frent.Core;
@@ -6,13 +35,12 @@ using Frent.Systems;
 namespace Frent.Sample
 {
     /// <summary>
-    /// The samples class
+    ///     The samples class
     /// </summary>
     internal class Samples
     {
-        
         /// <summary>
-        /// Updates the component
+        ///     Updates the component
         /// </summary>
         [Sample]
         public static void Update_Component()
@@ -22,17 +50,16 @@ namespace Frent.Sample
             //Create three entities
             for (int i = 0; i < 3; i++)
             {
-                world.Create<ConsoleText>( new(ConsoleColor.Blue));
+                world.Create<ConsoleText>(new(ConsoleColor.Blue));
             }
 
             //Update the three entities
             world.Update();
         }
-        
 
-        
+
         /// <summary>
-        /// Uniformses the and entities
+        ///     Uniformses the and entities
         /// </summary>
         [Sample]
         public static void Uniforms_And_Entities()
@@ -48,11 +75,10 @@ namespace Frent.Sample
 
             world.Update();
         }
-        
 
-        
+
         /// <summary>
-        /// Querieses
+        ///     Querieses
         /// </summary>
         [Sample]
         public static void Queries()
@@ -62,33 +88,17 @@ namespace Frent.Sample
             using World world = new World(provider);
 
             for (int i = 0; i < 5; i++)
-                world.Create<int>(i);
+                world.Create(i);
 
             world.Query<With<int>>().Delegate((ref int x) => Console.Write($"{x++}, "));
             Console.WriteLine();
-        
+
             world.Query<With<int>>().Inline<WriteAction, int>(default);
         }
 
-        /// <summary>
-        /// The write action
-        /// </summary>
-        internal struct WriteAction : IAction<int>
-        {
-            /// <summary>
-            /// Runs the arg
-            /// </summary>
-            /// <param name="arg">The arg</param>
-            public void Run(ref int arg)
-            {
-                Console.Write($"{arg} ");
-            }
-        }
-        
 
-        
         /// <summary>
-        /// Entitieses
+        ///     Entitieses
         /// </summary>
         [Sample]
         public static void Entities()
@@ -119,26 +129,39 @@ namespace Frent.Sample
             d.Value = 4;
             Console.WriteLine(d.Value);
         }
-        
+
+        /// <summary>
+        ///     The write action
+        /// </summary>
+        internal struct WriteAction : IAction<int>
+        {
+            /// <summary>
+            ///     Runs the arg
+            /// </summary>
+            /// <param name="arg">The arg</param>
+            public void Run(ref int arg)
+            {
+                Console.Write($"{arg} ");
+            }
+        }
     }
-    record struct Pos(float X) : IEntityComponent
+
+    internal record struct Pos(float X) : IEntityComponent
     {
         /// <summary>
-        /// Updates the entity
+        ///     Updates the entity
         /// </summary>
         /// <param name="entity">The entity</param>
         public void Update(Entity entity)
         {
-            Console.WriteLine(entity.Has<Vel>() ?
-                "I have velocity!" :
-                "No velocity here!");
+            Console.WriteLine(entity.Has<Vel>() ? "I have velocity!" : "No velocity here!");
         }
     }
 
-    record struct Vel(float DX) : IUniformComponent<float, Pos>
+    internal record struct Vel(float DX) : IUniformComponent<float, Pos>
     {
         /// <summary>
-        /// Updates the dt
+        ///     Updates the dt
         /// </summary>
         /// <param name="dt">The dt</param>
         /// <param name="pos">The pos</param>
@@ -149,12 +172,12 @@ namespace Frent.Sample
     }
 
     /// <summary>
-    /// The console text
+    ///     The console text
     /// </summary>
-    struct ConsoleText(ConsoleColor Color) : IComponent<string>
+    internal struct ConsoleText(ConsoleColor Color) : IComponent<string>
     {
         /// <summary>
-        /// Updates the str
+        ///     Updates the str
         /// </summary>
         /// <param name="str">The str</param>
         public void Update(ref string str)
@@ -165,12 +188,12 @@ namespace Frent.Sample
     }
 
     /// <summary>
-    /// The write action
+    ///     The write action
     /// </summary>
     internal struct WriteAction : IAction<int>
     {
         /// <summary>
-        /// Runs the x
+        ///     Runs the x
         /// </summary>
         /// <param name="x">The </param>
         public void Run(ref int x) => Console.Write($"{x++}, ");

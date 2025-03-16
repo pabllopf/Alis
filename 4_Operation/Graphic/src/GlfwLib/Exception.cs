@@ -36,7 +36,22 @@ namespace Alis.Core.Graphic.GlfwLib
     /// </summary>
     public class Exception : System.Exception
     {
-        
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Exception" /> class.
+        /// </summary>
+        /// <param name="error">The error code to create a generic message from.</param>
+        public Exception(ErrorCode error) : base(GetErrorMessage(error))
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Exception" /> class.
+        /// </summary>
+        /// <param name="message">The error message.</param>
+        public Exception(string message) : base(message)
+        {
+        }
+
 
         /// <summary>
         ///     Generic error messages if only an error code is supplied as an argument to the constructor.
@@ -60,27 +75,5 @@ namespace Alis.Core.Graphic.GlfwLib
                 default: return "Unknown error code.";
             }
         }
-
-        
-
-        
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Exception" /> class.
-        /// </summary>
-        /// <param name="error">The error code to create a generic message from.</param>
-        public Exception(ErrorCode error) : base(GetErrorMessage(error))
-        {
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Exception" /> class.
-        /// </summary>
-        /// <param name="message">The error message.</param>
-        public Exception(string message) : base(message)
-        {
-        }
-
-        
     }
 }

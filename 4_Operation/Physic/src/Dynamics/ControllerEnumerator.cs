@@ -88,7 +88,6 @@ namespace Alis.Core.Physic.Dynamics
             }
         }
 
-        
 
         /// <summary>
         ///     Gets the value of the current
@@ -106,9 +105,6 @@ namespace Alis.Core.Physic.Dynamics
             }
         }
 
-        
-
-        
 
         /// <summary>
         ///     Describes whether this instance move next
@@ -159,7 +155,5 @@ namespace Alis.Core.Physic.Dynamics
         {
             i = -1;
         }
-
-        
     }
 }

@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:DefaultEcs.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using Alis.Benchmark.EntityComponentSystem.Contexts;
 using BenchmarkDotNet.Attributes;
@@ -8,52 +37,35 @@ using DefaultEcs.Threading;
 namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
 {
     /// <summary>
-    /// The system with three components class
+    ///     The system with three components class
     /// </summary>
     public partial class SystemWithThreeComponents
     {
         /// <summary>
-        /// The default ecs context class
+        ///     The default ecs
         /// </summary>
-        /// <seealso cref="DefaultEcsBaseContext"/>
+        [Context] private readonly DefaultEcsContext _defaultEcs;
+
+        /// <summary>
+        ///     Defaults the ecs mono thread
+        /// </summary>
+        [BenchmarkCategory(Categories.DefaultEcs), Benchmark]
+        public void DefaultEcs_MonoThread() => _defaultEcs.MonoThreadEntitySetSystem.Update(0);
+
+        /// <summary>
+        ///     Defaults the ecs multi thread
+        /// </summary>
+        [BenchmarkCategory(Categories.DefaultEcs), Benchmark]
+        public void DefaultEcs_MultiThread() => _defaultEcs.MultiThreadEntitySetSystem.Update(0);
+
+        /// <summary>
+        ///     The default ecs context class
+        /// </summary>
+        /// <seealso cref="DefaultEcsBaseContext" />
         private sealed partial class DefaultEcsContext : DefaultEcsBaseContext
         {
             /// <summary>
-            /// The entity set system class
-            /// </summary>
-            /// <seealso cref="AEntitySetSystem{int}"/>
-            private sealed partial class EntitySetSystem : AEntitySetSystem<int>
-            {
-                /// <summary>
-                /// Updates the c 1
-                /// </summary>
-                /// <param name="c1">The </param>
-                /// <param name="c2">The </param>
-                /// <param name="c3">The </param>
-                [Update]
-                private static void Update(ref Component1 c1, in Component2 c2, in Component3 c3)
-                {
-                    c1.Value += c2.Value + c3.Value;
-                }
-            }
-
-            /// <summary>
-            /// Gets the value of the runner
-            /// </summary>
-            public IParallelRunner Runner { get; }
-
-            /// <summary>
-            /// Gets the value of the mono thread entity set system
-            /// </summary>
-            public ISystem<int> MonoThreadEntitySetSystem { get; }
-
-            /// <summary>
-            /// Gets the value of the multi thread entity set system
-            /// </summary>
-            public ISystem<int> MultiThreadEntitySetSystem { get; }
-
-            /// <summary>
-            /// Initializes a new instance of the <see cref="DefaultEcsContext"/> class
+            ///     Initializes a new instance of the <see cref="DefaultEcsContext" /> class
             /// </summary>
             /// <param name="entityCount">The entity count</param>
             /// <param name="entityPadding">The entity padding</param>
@@ -86,13 +98,28 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
 
                     Entity entity = World.CreateEntity();
                     entity.Set<Component1>();
-                    entity.Set(new Component2 { Value = 1 });
-                    entity.Set(new Component3 { Value = 1 });
+                    entity.Set(new Component2 {Value = 1});
+                    entity.Set(new Component3 {Value = 1});
                 }
             }
 
             /// <summary>
-            /// Disposes this instance
+            ///     Gets the value of the runner
+            /// </summary>
+            public IParallelRunner Runner { get; }
+
+            /// <summary>
+            ///     Gets the value of the mono thread entity set system
+            /// </summary>
+            public ISystem<int> MonoThreadEntitySetSystem { get; }
+
+            /// <summary>
+            ///     Gets the value of the multi thread entity set system
+            /// </summary>
+            public ISystem<int> MultiThreadEntitySetSystem { get; }
+
+            /// <summary>
+            ///     Disposes this instance
             /// </summary>
             public override void Dispose()
             {
@@ -100,26 +127,25 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
 
                 Runner.Dispose();
             }
+
+            /// <summary>
+            ///     The entity set system class
+            /// </summary>
+            /// <seealso cref="AEntitySetSystem{int}" />
+            private sealed partial class EntitySetSystem : AEntitySetSystem<int>
+            {
+                /// <summary>
+                ///     Updates the c 1
+                /// </summary>
+                /// <param name="c1">The </param>
+                /// <param name="c2">The </param>
+                /// <param name="c3">The </param>
+                [Update]
+                private static void Update(ref Component1 c1, in Component2 c2, in Component3 c3)
+                {
+                    c1.Value += c2.Value + c3.Value;
+                }
+            }
         }
-
-        /// <summary>
-        /// The default ecs
-        /// </summary>
-        [Context]
-        private readonly DefaultEcsContext _defaultEcs;
-
-        /// <summary>
-        /// Defaults the ecs mono thread
-        /// </summary>
-        [BenchmarkCategory(Categories.DefaultEcs)]
-        [Benchmark]
-        public void DefaultEcs_MonoThread() => _defaultEcs.MonoThreadEntitySetSystem.Update(0);
-
-        /// <summary>
-        /// Defaults the ecs multi thread
-        /// </summary>
-        [BenchmarkCategory(Categories.DefaultEcs)]
-        [Benchmark]
-        public void DefaultEcs_MultiThread() => _defaultEcs.MultiThreadEntitySetSystem.Update(0);
     }
 }

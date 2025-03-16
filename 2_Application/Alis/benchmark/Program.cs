@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Globalization;
 using Alis.Benchmark.ClassVsStruct;
 using Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent;
@@ -76,7 +75,7 @@ namespace Alis.Benchmark
                 typeof(SystemWithThreeComponents),
 
                 typeof(SystemWithTwoComponentsMultipleComposition),
-                
+
                 typeof(StringManipulationBenchmark),
                 typeof(ClassVsStructBenchmark),
                 typeof(IdStorageBenchmark),

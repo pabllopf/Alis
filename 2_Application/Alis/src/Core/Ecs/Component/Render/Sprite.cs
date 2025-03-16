@@ -346,18 +346,18 @@ namespace Alis.Core.Ecs.Component.Render
 
             Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
             verticesHandle = GCHandle.Alloc(vertices, GCHandleType.Pinned);
-            Gl.GlBufferData(BufferTarget.ArrayBuffer, (IntPtr) (vertices.Length * sizeof(float)), verticesHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
+            Gl.GlBufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), verticesHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
             verticesHandle.Free();
 
             Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, Ebo);
             indicesHandle = GCHandle.Alloc(indices, GCHandleType.Pinned);
-            Gl.GlBufferData(BufferTarget.ElementArrayBuffer, (IntPtr) (indices.Length * sizeof(uint)), indicesHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
+            Gl.GlBufferData(BufferTarget.ElementArrayBuffer, indices.Length * sizeof(uint), indicesHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
             indicesHandle.Free();
 
             Gl.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), IntPtr.Zero);
             Gl.EnableVertexAttribArray(0);
 
-            Gl.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), (IntPtr) (3 * sizeof(float)));
+            Gl.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), 3 * sizeof(float));
             Gl.EnableVertexAttribArray(1);
         }
 

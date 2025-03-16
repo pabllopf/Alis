@@ -47,73 +47,64 @@ namespace Alis.Core.Graphic.GlfwLib
     public class NativeWindow : SafeHandleZeroOrMinusOneIsInvalid, IEquatable<NativeWindow>
     {
         /// <summary>
-        ///     Determines whether the specified <paramref name="window" /> is equal to this instance.
-        /// </summary>
-        /// <param name="window">A <see cref="NativeWindow" /> instance to compare for equality.</param>
-        /// <returns><c>true</c> if objects represent the same window, otherwise <c>false</c>.</returns>
-        public bool Equals(NativeWindow window)
-        {
-            if (ReferenceEquals(null, window)) return false;
-            return ReferenceEquals(this, window) || Window.Equals(window.Window);
-        }
-
-        /// <summary>
-        ///     Raises the <see cref="Maximized" /> event.
-        /// </summary>
-        /// <param name="maximized">Flag indicating if window is being maximized or restored.</param>
-        protected virtual void OnMaximizeChanged(bool maximized)
-        {
-            MaximizeChanged?.Invoke(this, new MaximizeEventArgs(maximized));
-        }
-
-        /// <summary>
-        ///     Occurs when the content scale has been changed.
-        /// </summary>
-        public event EventHandler<ContentScaleEventArgs> ContentScaleChanged;
-
-        /// <summary>
-        ///     Raises the <see cref="ContentScaleChanged" /> event.
-        /// </summary>
-        /// <param name="xScale">The new scale on the x-axis.</param>
-        /// <param name="yScale">The new scale on the y-axis.</param>
-        protected virtual void OnContentScaleChanged(float xScale, float yScale)
-        {
-            ContentScaleChanged?.Invoke(this, new ContentScaleEventArgs(xScale, yScale));
-        }
-
-        /// <inheritdoc cref="Object.Equals(object)" />
-        public override bool Equals(object obj) => ReferenceEquals(this, obj) || obj is NativeWindow other && Equals(other);
-
-        /// <inheritdoc cref="Object.GetHashCode" />
-        public override int GetHashCode() => Window.GetHashCode();
-
-        /// <summary>
-        ///     Determines whether the specified window is equal to this instance.
-        /// </summary>
-        /// <param name="left">This instance.</param>
-        /// <param name="right">A <see cref="NativeWindow" /> instance to compare for equality.</param>
-        /// <returns><c>true</c> if objects represent the same window, otherwise <c>false</c>.</returns>
-        public static bool operator ==(NativeWindow left, NativeWindow right) => Equals(left, right);
-
-        /// <summary>
-        ///     Determines whether the specified window is not equal to this instance.
-        /// </summary>
-        /// <param name="left">This instance.</param>
-        /// <param name="right">A <see cref="NativeWindow" /> instance to compare for equality.</param>
-        /// <returns><c>true</c> if objects do not represent the same window, otherwise <c>false</c>.</returns>
-        public static bool operator !=(NativeWindow left, NativeWindow right) => !Equals(left, right);
-
-        
-
-        /// <summary>
         ///     The window instance this object wraps.
         /// </summary>
         protected readonly Window Window;
 
         /// <summary>
+        ///     The char mods callback
+        /// </summary>
+        private CharModsCallback charModsCallback;
+
+        /// <summary>
+        ///     The window refresh callback
+        /// </summary>
+        private WindowCallback closeCallback, windowRefreshCallback;
+
+        /// <summary>
+        ///     The cursor enter callback
+        /// </summary>
+        private MouseEnterCallback cursorEnterCallback;
+
+        /// <summary>
+        ///     The scroll callback
+        /// </summary>
+        private MouseCallback cursorPositionCallback, scrollCallback;
+
+        /// <summary>
+        ///     The drop callback
+        /// </summary>
+        private FileDropCallback dropCallback;
+
+        /// <summary>
+        ///     The key callback
+        /// </summary>
+        private KeyCallback keyCallback;
+
+        /// <summary>
+        ///     The mouse button callback
+        /// </summary>
+        private MouseButtonCallback mouseButtonCallback;
+
+        /// <summary>
         ///     The title
         /// </summary>
         private string title;
+
+        /// <summary>
+        ///     The window content scale callback
+        /// </summary>
+        private WindowContentsScaleCallback windowContentScaleCallback;
+
+        /// <summary>
+        ///     The window focus callback
+        /// </summary>
+        private FocusCallback windowFocusCallback;
+
+        /// <summary>
+        ///     The window maximize callback
+        /// </summary>
+        private WindowMaximizedCallback windowMaximizeCallback;
 
         /// <summary>
         ///     The window position callback
@@ -125,59 +116,49 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         private SizeCallback windowSizeCallback, framebufferSizeCallback;
 
-        /// <summary>
-        ///     The window focus callback
-        /// </summary>
-        private FocusCallback windowFocusCallback;
 
         /// <summary>
-        ///     The window refresh callback
+        ///     Initializes a new instance of the <see cref="NativeWindow" /> class.
         /// </summary>
-        private WindowCallback closeCallback, windowRefreshCallback;
+        public NativeWindow() : this(800, 600, string.Empty, Monitor.None, Window.None)
+        {
+        }
 
         /// <summary>
-        ///     The drop callback
+        ///     Initializes a new instance of the <see cref="NativeWindow" /> class.
         /// </summary>
-        private FileDropCallback dropCallback;
+        /// <param name="width">The desired width, in screen coordinates, of the window. This must be greater than zero.</param>
+        /// <param name="height">The desired height, in screen coordinates, of the window. This must be greater than zero.</param>
+        /// <param name="title">The initial window title.</param>
+        public NativeWindow(int width, int height, string title) : this(width, height, title, Monitor.None,
+            Window.None)
+        {
+        }
 
         /// <summary>
-        ///     The scroll callback
+        ///     Initializes a new instance of the <see cref="NativeWindow" /> class.
         /// </summary>
-        private MouseCallback cursorPositionCallback, scrollCallback;
+        /// <param name="width">The desired width, in screen coordinates, of the window. This must be greater than zero.</param>
+        /// <param name="height">The desired height, in screen coordinates, of the window. This must be greater than zero.</param>
+        /// <param name="title">The initial window title.</param>
+        /// <param name="monitor">
+        ///     The monitor to use for full screen mode, or <see cref="Structs.Monitor.None" /> for windowed
+        ///     mode.
+        /// </param>
+        /// <param name="share">
+        ///     A window instance whose context to share resources with, or <see cref="Structs.Window.None" /> to not share
+        ///     resources..
+        /// </param>
+        public NativeWindow(int width, int height, string title, Monitor monitor, Window share) : base(true)
+        {
+            this.title = title ?? string.Empty;
+            Window = Glfw.CreateWindow(width, height, title ?? string.Empty, monitor, share);
+            SetHandle(Window);
+            if (Glfw.GetClientApi(this) != ClientApi.None)
+                MakeCurrent();
+            BindCallbacks();
+        }
 
-        /// <summary>
-        ///     The cursor enter callback
-        /// </summary>
-        private MouseEnterCallback cursorEnterCallback;
-
-        /// <summary>
-        ///     The mouse button callback
-        /// </summary>
-        private MouseButtonCallback mouseButtonCallback;
-
-        /// <summary>
-        ///     The char mods callback
-        /// </summary>
-        private CharModsCallback charModsCallback;
-
-        /// <summary>
-        ///     The key callback
-        /// </summary>
-        private KeyCallback keyCallback;
-
-        /// <summary>
-        ///     The window maximize callback
-        /// </summary>
-        private WindowMaximizedCallback windowMaximizeCallback;
-
-        /// <summary>
-        ///     The window content scale callback
-        /// </summary>
-        private WindowContentsScaleCallback windowContentScaleCallback;
-
-        
-
-        
 
         /// <summary>
         ///     Gets or sets the size and location of the window including its non-client elements (borders, title bar, etc.), in
@@ -280,18 +261,6 @@ namespace Alis.Core.Graphic.GlfwLib
                 return new Size(width, height);
             }
             set => Glfw.SetWindowSize(Window, value.Width, value.Height);
-        }
-
-        /// <summary>
-        ///     Requests user-attention to this window on platforms that support it,
-        ///     <para>
-        ///         Once the user has given attention, usually by focusing the window or application, the system will end the
-        ///         request automatically.
-        ///     </para>
-        /// </summary>
-        public void RequestAttention()
-        {
-            Glfw.RequestWindowAttention(handle);
         }
 
         /// <summary>
@@ -591,7 +560,75 @@ namespace Alis.Core.Graphic.GlfwLib
             }
         }
 
-        
+        /// <summary>
+        ///     Determines whether the specified <paramref name="window" /> is equal to this instance.
+        /// </summary>
+        /// <param name="window">A <see cref="NativeWindow" /> instance to compare for equality.</param>
+        /// <returns><c>true</c> if objects represent the same window, otherwise <c>false</c>.</returns>
+        public bool Equals(NativeWindow window)
+        {
+            if (ReferenceEquals(null, window)) return false;
+            return ReferenceEquals(this, window) || Window.Equals(window.Window);
+        }
+
+        /// <summary>
+        ///     Raises the <see cref="Maximized" /> event.
+        /// </summary>
+        /// <param name="maximized">Flag indicating if window is being maximized or restored.</param>
+        protected virtual void OnMaximizeChanged(bool maximized)
+        {
+            MaximizeChanged?.Invoke(this, new MaximizeEventArgs(maximized));
+        }
+
+        /// <summary>
+        ///     Occurs when the content scale has been changed.
+        /// </summary>
+        public event EventHandler<ContentScaleEventArgs> ContentScaleChanged;
+
+        /// <summary>
+        ///     Raises the <see cref="ContentScaleChanged" /> event.
+        /// </summary>
+        /// <param name="xScale">The new scale on the x-axis.</param>
+        /// <param name="yScale">The new scale on the y-axis.</param>
+        protected virtual void OnContentScaleChanged(float xScale, float yScale)
+        {
+            ContentScaleChanged?.Invoke(this, new ContentScaleEventArgs(xScale, yScale));
+        }
+
+        /// <inheritdoc cref="Object.Equals(object)" />
+        public override bool Equals(object obj) => ReferenceEquals(this, obj) || obj is NativeWindow other && Equals(other);
+
+        /// <inheritdoc cref="Object.GetHashCode" />
+        public override int GetHashCode() => Window.GetHashCode();
+
+        /// <summary>
+        ///     Determines whether the specified window is equal to this instance.
+        /// </summary>
+        /// <param name="left">This instance.</param>
+        /// <param name="right">A <see cref="NativeWindow" /> instance to compare for equality.</param>
+        /// <returns><c>true</c> if objects represent the same window, otherwise <c>false</c>.</returns>
+        public static bool operator ==(NativeWindow left, NativeWindow right) => Equals(left, right);
+
+        /// <summary>
+        ///     Determines whether the specified window is not equal to this instance.
+        /// </summary>
+        /// <param name="left">This instance.</param>
+        /// <param name="right">A <see cref="NativeWindow" /> instance to compare for equality.</param>
+        /// <returns><c>true</c> if objects do not represent the same window, otherwise <c>false</c>.</returns>
+        public static bool operator !=(NativeWindow left, NativeWindow right) => !Equals(left, right);
+
+        /// <summary>
+        ///     Requests user-attention to this window on platforms that support it,
+        ///     <para>
+        ///         Once the user has given attention, usually by focusing the window or application, the system will end the
+        ///         request automatically.
+        ///     </para>
+        /// </summary>
+        public void RequestAttention()
+        {
+            Glfw.RequestWindowAttention(handle);
+        }
+
 
         /// <summary>
         ///     Performs an implicit conversion from <see cref="NativeWindow" /> to <see cref="Structs.Window" />.
@@ -611,57 +648,6 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </returns>
         public static implicit operator IntPtr(NativeWindow nativeWindow) => nativeWindow.Window;
 
-        
-
-        
-
-        
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="NativeWindow" /> class.
-        /// </summary>
-        public NativeWindow() : this(800, 600, string.Empty, Monitor.None, Window.None)
-        {
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="NativeWindow" /> class.
-        /// </summary>
-        /// <param name="width">The desired width, in screen coordinates, of the window. This must be greater than zero.</param>
-        /// <param name="height">The desired height, in screen coordinates, of the window. This must be greater than zero.</param>
-        /// <param name="title">The initial window title.</param>
-        public NativeWindow(int width, int height, string title) : this(width, height, title, Monitor.None,
-            Window.None)
-        {
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="NativeWindow" /> class.
-        /// </summary>
-        /// <param name="width">The desired width, in screen coordinates, of the window. This must be greater than zero.</param>
-        /// <param name="height">The desired height, in screen coordinates, of the window. This must be greater than zero.</param>
-        /// <param name="title">The initial window title.</param>
-        /// <param name="monitor">
-        ///     The monitor to use for full screen mode, or <see cref="Structs.Monitor.None" /> for windowed
-        ///     mode.
-        /// </param>
-        /// <param name="share">
-        ///     A window instance whose context to share resources with, or <see cref="Structs.Window.None" /> to not share
-        ///     resources..
-        /// </param>
-        public NativeWindow(int width, int height, string title, Monitor monitor, Window share) : base(true)
-        {
-            this.title = title ?? string.Empty;
-            Window = Glfw.CreateWindow(width, height, title ?? string.Empty, monitor, share);
-            SetHandle(Window);
-            if (Glfw.GetClientApi(this) != ClientApi.None)
-                MakeCurrent();
-            BindCallbacks();
-        }
-
-        
-
-        
 
         /// <summary>
         ///     Centers the on window on the screen.
@@ -907,9 +893,6 @@ namespace Alis.Core.Graphic.GlfwLib
             OnFileDrop(paths);
         }
 
-        
-
-        
 
         /// <summary>
         ///     Occurs when the window is maximized or restored.
@@ -1162,7 +1145,5 @@ namespace Alis.Core.Graphic.GlfwLib
         {
             SizeChanged?.Invoke(this, new SizeChangeEventArgs(new Size(width, height)));
         }
-
-        
     }
 }

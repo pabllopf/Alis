@@ -1,5 +1,39 @@
-﻿using System;
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:World.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using System.Threading;
 using Frent.Buffers;
 using Frent.Collections;
 using Frent.Components;
@@ -8,157 +42,164 @@ using Frent.Core.Events;
 using Frent.Core.Structures;
 using Frent.Systems;
 using Frent.Updating;
-using System.Collections.Immutable;
-using System.Diagnostics;
-using System.Numerics;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Threading;
 
 [assembly: InternalsVisibleTo("Frent.Tests")]
+
 namespace Frent
 {
     /// <summary>
-    /// A collection of entities that can be updated and queried.
+    ///     A collection of entities that can be updated and queried.
     /// </summary>
     public partial class World : IDisposable
     {
-        
         /// <summary>
-        /// The next world id
+        ///     The next world id
         /// </summary>
         private static ushort _nextWorldID = 1;
-        
+
 
         //entityID -> entity metadata
         /// <summary>
-        /// The entity location
+        ///     The entity location
         /// </summary>
         internal Table<EntityLocation> EntityTable = new Table<EntityLocation>(256);
+
         //archetype ID -> Archetype?
         /// <summary>
-        /// The world archetype table
+        ///     The world archetype table
         /// </summary>
         internal Archetype?[] WorldArchetypeTable;
-    
+
         /// <summary>
-        /// The archetype graph edges
+        ///     The archetype graph edges
         /// </summary>
         internal Dictionary<ArchetypeEdgeKey, Archetype> ArchetypeGraphEdges = [];
 
         /// <summary>
-        /// The entity id only
+        ///     The entity id only
         /// </summary>
         internal NativeStack<EntityIDOnly> RecycledEntityIds = new NativeStack<EntityIDOnly>(256);
-    
+
         /// <summary>
-        /// The updates by attributes
+        ///     The updates by attributes
         /// </summary>
-        private Dictionary<Type, WorldUpdateFilter> _updatesByAttributes = [];
-    
+        private readonly Dictionary<Type, WorldUpdateFilter> _updatesByAttributes = [];
+
         /// <summary>
-        /// The next entity id
+        ///     The next entity id
         /// </summary>
         internal int NextEntityID;
 
         /// <summary>
-        /// The id
+        ///     The id
         /// </summary>
         internal readonly ushort ID;
-        /// <summary>
-        /// The default world entity
-        /// </summary>
-        internal readonly Entity DefaultWorldEntity;
-        /// <summary>
-        /// The is disposed
-        /// </summary>
-        private bool _isDisposed = false;
 
         /// <summary>
-        /// The query cache
+        ///     The default world entity
+        /// </summary>
+        internal readonly Entity DefaultWorldEntity;
+
+        /// <summary>
+        ///     The is disposed
+        /// </summary>
+        private bool _isDisposed;
+
+        /// <summary>
+        ///     The query cache
         /// </summary>
         internal Dictionary<int, Query> QueryCache = [];
 
         /// <summary>
-        /// Gets the value of the shared countdown
+        ///     Gets the value of the shared countdown
         /// </summary>
         internal CountdownEvent SharedCountdown => _sharedCountdown;
+
         /// <summary>
-        /// The shared countdown
+        ///     The shared countdown
         /// </summary>
-        private CountdownEvent _sharedCountdown = new(0);
+        private readonly CountdownEvent _sharedCountdown = new(0);
+
         /// <summary>
-        /// The create
+        ///     The create
         /// </summary>
         private FastStack<ArchetypeID> _enabledArchetypes = FastStack<ArchetypeID>.Create(16);
 
         /// <summary>
-        /// The allow structural changes
+        ///     The allow structural changes
         /// </summary>
         private int _allowStructuralChanges;
 
         /// <summary>
-        /// The world update command buffer
+        ///     The world update command buffer
         /// </summary>
         internal CommandBuffer WorldUpdateCommandBuffer;
 
         /// <summary>
-        /// The entity only event
+        ///     The entity only event
         /// </summary>
         internal EntityOnlyEvent EntityCreatedEvent = new EntityOnlyEvent();
+
         /// <summary>
-        /// The entity only event
+        ///     The entity only event
         /// </summary>
         internal EntityOnlyEvent EntityDeletedEvent = new EntityOnlyEvent();
+
         /// <summary>
-        /// The component id
+        ///     The component id
         /// </summary>
         internal Event<ComponentID> ComponentAddedEvent = new Event<ComponentID>();
+
         /// <summary>
-        /// The component id
+        ///     The component id
         /// </summary>
         internal Event<ComponentID> ComponentRemovedEvent = new Event<ComponentID>();
+
         /// <summary>
-        /// The tag event
+        ///     The tag event
         /// </summary>
         internal TagEvent Tagged = new TagEvent();
+
         /// <summary>
-        /// The tag event
+        ///     The tag event
         /// </summary>
         internal TagEvent Detached = new TagEvent();
 
         //these lookups exists for programmical api optimization
         //normal <T1, T2...> methods use a shared global static cache
         /// <summary>
-        /// The add component lookup
+        ///     The add component lookup
         /// </summary>
         internal FastLookup AddComponentLookup;
+
         /// <summary>
-        /// The remove component lookup
+        ///     The remove component lookup
         /// </summary>
         internal FastLookup RemoveComponentLookup;
+
         /// <summary>
-        /// The add tag lookup
+        ///     The add tag lookup
         /// </summary>
         internal FastLookup AddTagLookup;
+
         /// <summary>
-        /// The remove tag lookup
+        ///     The remove tag lookup
         /// </summary>
         internal FastLookup RemoveTagLookup;
 
 
         /// <summary>
-        /// The world event flags
+        ///     The world event flags
         /// </summary>
         internal EntityFlags WorldEventFlags;
 
         /// <summary>
-        /// The create
+        ///     The create
         /// </summary>
         internal FastStack<Archetype> DeferredCreationArchetypes = FastStack<Archetype>.Create(4);
 
         /// <summary>
-        /// Invoked whenever an entity is created on this world.
+        ///     Invoked whenever an entity is created on this world.
         /// </summary>
         public event Action<Entity> EntityCreated
         {
@@ -174,8 +215,9 @@ namespace Frent
                     WorldEventFlags &= ~EntityFlags.WorldCreate;
             }
         }
+
         /// <summary>
-        /// Invoked whenever an entity belonging to this world is deleted.
+        ///     Invoked whenever an entity belonging to this world is deleted.
         /// </summary>
         public event Action<Entity> EntityDeleted
         {
@@ -193,7 +235,7 @@ namespace Frent
         }
 
         /// <summary>
-        /// Invoked whenever a component is added to an entity.
+        ///     Invoked whenever a component is added to an entity.
         /// </summary>
         public event Action<Entity, ComponentID> ComponentAdded
         {
@@ -202,7 +244,7 @@ namespace Frent
         }
 
         /// <summary>
-        /// Invoked whenever a component is removed from an entity.
+        ///     Invoked whenever a component is removed from an entity.
         /// </summary>
         public event Action<Entity, ComponentID> ComponentRemoved
         {
@@ -211,7 +253,7 @@ namespace Frent
         }
 
         /// <summary>
-        /// Invoked whenever a tag is added to an entity.
+        ///     Invoked whenever a tag is added to an entity.
         /// </summary>
         public event Action<Entity, TagID> TagTagged
         {
@@ -220,7 +262,7 @@ namespace Frent
         }
 
         /// <summary>
-        /// Invoked whenever a tag is removed from an entity.
+        ///     Invoked whenever a tag is removed from an entity.
         /// </summary>
         public event Action<Entity, TagID> TagDetached
         {
@@ -229,7 +271,7 @@ namespace Frent
         }
 
         /// <summary>
-        /// Adds the event using the specified event
+        ///     Adds the event using the specified event
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="@event">The event</param>
@@ -242,7 +284,7 @@ namespace Frent
         }
 
         /// <summary>
-        /// Removes the event using the specified event
+        ///     Removes the event using the specified event
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="@event">The event</param>
@@ -256,47 +298,49 @@ namespace Frent
         }
 
         /// <summary>
-        /// The event lookup
+        ///     The event lookup
         /// </summary>
         internal Dictionary<EntityIDOnly, EventRecord> EventLookup = [];
 
         /// <summary>
-        /// The current uniform provider used when updating components/queries with uniforms.
+        ///     The current uniform provider used when updating components/queries with uniforms.
         /// </summary>
         public IUniformProvider UniformProvider
         {
             get => _uniformProvider;
             set => _uniformProvider = value ?? NullUniformProvider.Instance;
         }
+
         /// <summary>
-        /// The uniform provider
+        ///     The uniform provider
         /// </summary>
         private IUniformProvider _uniformProvider;
 
         /// <summary>
-        /// Gets the current number of entities managed by the world.
+        ///     Gets the current number of entities managed by the world.
         /// </summary>
         public int EntityCount => NextEntityID - RecycledEntityIds.Count;
 
         /// <summary>
-        /// The current world config.
+        ///     The current world config.
         /// </summary>
         public Config CurrentConfig { get; set; }
 
         /// <summary>
-        /// The default archetype
+        ///     The default archetype
         /// </summary>
         internal readonly Archetype DefaultArchetype;
+
         /// <summary>
-        /// The deferred create archetype
+        ///     The deferred create archetype
         /// </summary>
         internal readonly Archetype DeferredCreateArchetype;
 
         /// <summary>
-        /// Creates a world with zero entities and a uniform provider.
+        ///     Creates a world with zero entities and a uniform provider.
         /// </summary>
         /// <param name="uniformProvider">The initial uniform provider to be used.</param>
-        /// <param name="config">The inital config to use. If not provided, <see cref="Config.Singlethreaded"/> is used.</param>
+        /// <param name="config">The inital config to use. If not provided, <see cref="Config.Singlethreaded" /> is used.</param>
         public World(IUniformProvider? uniformProvider = null, Config? config = null)
         {
             CurrentConfig = config ?? Config.Singlethreaded;
@@ -314,20 +358,20 @@ namespace Frent
         }
 
         /// <summary>
-        /// Creates the entity from location using the specified entity location
+        ///     Creates the entity from location using the specified entity location
         /// </summary>
         /// <param name="entityLocation">The entity location</param>
         /// <returns>The entity</returns>
         internal Entity CreateEntityFromLocation(EntityLocation entityLocation)
         {
-            (int id, ushort version) = RecycledEntityIds.TryPop(out EntityIDOnly v) ? v : new EntityIDOnly(NextEntityID++, (ushort)0);
+            (int id, ushort version) = RecycledEntityIds.TryPop(out EntityIDOnly v) ? v : new EntityIDOnly(NextEntityID++, 0);
             entityLocation.Version = version;
             EntityTable[id] = entityLocation;
             return new Entity(ID, version, id);
         }
 
         /// <summary>
-        /// Updates all component instances in the world that implement a component interface, e.g., <see cref="IComponent"/>
+        ///     Updates all component instances in the world that implement a component interface, e.g., <see cref="IComponent" />
         /// </summary>
         public void Update()
         {
@@ -356,13 +400,15 @@ namespace Frent
         }
 
         /// <summary>
-        /// Updates all component instances in the world that implement a component interface and have update methods with the <typeparamref name="T"/> attribute
+        ///     Updates all component instances in the world that implement a component interface and have update methods with the
+        ///     <typeparamref name="T" /> attribute
         /// </summary>
         /// <typeparam name="T">The type of attribute to filter</typeparam>
         public void Update<T>() where T : UpdateTypeAttribute => Update(typeof(T));
 
         /// <summary>
-        /// Updates all component instances in the world that implement a component interface and have update methods with an attribute of type <paramref name="attributeType"/>
+        ///     Updates all component instances in the world that implement a component interface and have update methods with an
+        ///     attribute of type <paramref name="attributeType" />
         /// </summary>
         /// <param name="attributeType">The attribute type to filter</param>
         public void Update(Type attributeType)
@@ -376,11 +422,11 @@ namespace Frent
 
                 //fill up the table with the correct IDs
                 //works for initalization as well as updating it
-                if(GenerationServices.TypeAttributeCache.TryGetValue(attributeType, out HashSet<Type>? compSet))
+                if (GenerationServices.TypeAttributeCache.TryGetValue(attributeType, out HashSet<Type>? compSet))
                 {
                     for (ref int i = ref appliesTo.NextComponentIndex; i < Component.ComponentTable.Count; i++)
                     {
-                        ComponentID id = new ComponentID((ushort)i);
+                        ComponentID id = new ComponentID((ushort) i);
                         if (compSet.Contains(id.Type))
                         {
                             appliesTo.Stack.Push(id);
@@ -403,7 +449,7 @@ namespace Frent
         }
 
         /// <summary>
-        /// Creates a custom query from the given set of rules. For an entity to be queried, all rules must apply.
+        ///     Creates a custom query from the given set of rules. For an entity to be queried, all rules must apply.
         /// </summary>
         /// <param name="rules">The rules governing which entities are queried.</param>
         /// <returns>A query object representing all the entities that satisfy all the rules.</returns>
@@ -422,7 +468,7 @@ namespace Frent
         }
 
         /// <summary>
-        /// Archetypes the added using the specified archetype
+        ///     Archetypes the added using the specified archetype
         /// </summary>
         /// <param name="archetype">The archetype</param>
         internal void ArchetypeAdded(Archetype archetype)
@@ -436,7 +482,7 @@ namespace Frent
         }
 
         /// <summary>
-        /// Creates the query using the specified rules
+        ///     Creates the query using the specified rules
         /// </summary>
         /// <param name="rules">The rules</param>
         /// <returns>The </returns>
@@ -450,14 +496,14 @@ namespace Frent
         }
 
         /// <summary>
-        /// Creates the query from span using the specified rules
+        ///     Creates the query from span using the specified rules
         /// </summary>
         /// <param name="rules">The rules</param>
         /// <returns>The query</returns>
         internal Query CreateQueryFromSpan(ReadOnlySpan<Rule> rules) => CreateQuery(MemoryHelpers.ReadOnlySpanToImmutableArray(rules));
 
         /// <summary>
-        /// Updates the archetype table using the specified new size
+        ///     Updates the archetype table using the specified new size
         /// </summary>
         /// <param name="newSize">The new size</param>
         internal void UpdateArchetypeTable(int newSize)
@@ -467,7 +513,7 @@ namespace Frent
         }
 
         /// <summary>
-        /// Enters the disallow state
+        ///     Enters the disallow state
         /// </summary>
         internal void EnterDisallowState()
         {
@@ -475,7 +521,7 @@ namespace Frent
         }
 
         /// <summary>
-        /// Exits the disallow state
+        ///     Exits the disallow state
         /// </summary>
         internal void ExitDisallowState()
         {
@@ -493,36 +539,36 @@ namespace Frent
         }
 
 #if !NETSTANDARD2_1 && !NETSTANDARD2_0 && !NET5_0 && !NETCOREAPP2_0 && !NETCOREAPP2_1 && !NETCOREAPP2_2 && !NETCOREAPP3_0 && !NETCOREAPP3_1 && !NET481 && !NET48 && !NET472 && !NET471 && !NET47 && !NET462 && !NET461 && !NET46 && !NET452 && !NET451 && !NET45 && !NET40
-    /// <summary>
-    /// Tries the get event data using the specified entity location
-    /// </summary>
-    /// <param name="entityLocation">The entity location</param>
-    /// <param name="entity">The entity</param>
-    /// <param name="eventType">The event type</param>
-    /// <param name="exists">The exists</param>
-    /// <returns>The ref event record</returns>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal ref EventRecord TryGetEventData(EntityLocation entityLocation, EntityIDOnly entity, EntityFlags eventType, out bool exists)
-    {
-        if (entityLocation.HasEvent(eventType))
+        /// <summary>
+        /// Tries the get event data using the specified entity location
+        /// </summary>
+        /// <param name="entityLocation">The entity location</param>
+        /// <param name="entity">The entity</param>
+        /// <param name="eventType">The event type</param>
+        /// <param name="exists">The exists</param>
+        /// <returns>The ref event record</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal ref EventRecord TryGetEventData(EntityLocation entityLocation, EntityIDOnly entity, EntityFlags eventType, out bool exists)
         {
-            exists = true;
-            return ref CollectionsMarshal.GetValueRefOrNullRef(EventLookup, entity);
+            if (entityLocation.HasEvent(eventType))
+            {
+                exists = true;
+                return ref CollectionsMarshal.GetValueRefOrNullRef(EventLookup, entity);
+            }
+
+
+            exists = false;
+            return ref Unsafe.NullRef<EventRecord>();
         }
-
-
-        exists = false;
-        return ref Unsafe.NullRef<EventRecord>();
-    }
 #endif
 
         /// <summary>
-        /// Gets the value of the allow structual changes
+        ///     Gets the value of the allow structual changes
         /// </summary>
         internal bool AllowStructualChanges => _allowStructuralChanges == 0;
 
         /// <summary>
-        /// Disposes of the <see cref="World"/>.
+        ///     Disposes of the <see cref="World" />.
         /// </summary>
         public void Dispose()
         {
@@ -544,7 +590,7 @@ namespace Frent
         }
 
         /// <summary>
-        /// Creates an <see cref="Entity"/>
+        ///     Creates an <see cref="Entity" />
         /// </summary>
         /// <param name="components">The components to use</param>
         /// <returns>The created entity</returns>
@@ -575,7 +621,7 @@ namespace Frent
         }
 
         /// <summary>
-        /// Creates an <see cref="Entity"/> with zero components.
+        ///     Creates an <see cref="Entity" /> with zero components.
         /// </summary>
         /// <returns>The entity that was created.</returns>
         public Entity Create()
@@ -586,7 +632,7 @@ namespace Frent
         }
 
         /// <summary>
-        /// Creates the entity without event
+        ///     Creates the entity without event
         /// </summary>
         /// <returns>The entity</returns>
         internal Entity CreateEntityWithoutEvent()
@@ -601,7 +647,7 @@ namespace Frent
         }
 
         /// <summary>
-        /// Invokes the entity created using the specified entity
+        ///     Invokes the entity created using the specified entity
         /// </summary>
         /// <param name="entity">The entity</param>
         internal void InvokeEntityCreated(Entity entity)
@@ -610,7 +656,7 @@ namespace Frent
         }
 
         /// <summary>
-        /// Allocates memory sufficient to store <paramref name="count"/> entities of a type
+        ///     Allocates memory sufficient to store <paramref name="count" /> entities of a type
         /// </summary>
         /// <param name="entityType">The types of the entity to allocate for</param>
         /// <param name="count">Number of entity spaces to allocate</param>
@@ -624,7 +670,7 @@ namespace Frent
         }
 
         /// <summary>
-        /// Ensures the capacity core using the specified archetype
+        ///     Ensures the capacity core using the specified archetype
         /// </summary>
         /// <param name="archetype">The archetype</param>
         /// <param name="count">The count</param>
@@ -638,18 +684,18 @@ namespace Frent
         }
 
         /// <summary>
-        /// The null uniform provider class
+        ///     The null uniform provider class
         /// </summary>
-        /// <seealso cref="IUniformProvider"/>
+        /// <seealso cref="IUniformProvider" />
         internal class NullUniformProvider : IUniformProvider
         {
             /// <summary>
-            /// Gets the value of the instance
+            ///     Gets the value of the instance
             /// </summary>
             internal static NullUniformProvider Instance { get; } = new NullUniformProvider();
 
             /// <summary>
-            /// Gets the uniform
+            ///     Gets the uniform
             /// </summary>
             /// <typeparam name="T">The </typeparam>
             /// <returns>The</returns>

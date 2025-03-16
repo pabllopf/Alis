@@ -81,7 +81,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
             }
         }
 
-        
 
         /// <summary>
         ///     Gets the enumerator
@@ -95,7 +94,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
         /// <returns>The enumerator</returns>
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-        
 
         /// <summary>
         ///     Describes whether this instance contains

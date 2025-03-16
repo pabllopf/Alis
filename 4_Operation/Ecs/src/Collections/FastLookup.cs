@@ -1,7 +1,35 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:FastLookup.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using System.Runtime.CompilerServices;
 using Frent.Core;
 using Frent.Core.Structures;
-using System.Runtime.CompilerServices;
-
 #if NET7_0_OR_GREATER
 using System.Numerics;
 using System.Runtime.Intrinsics;
@@ -10,29 +38,32 @@ using System.Runtime.Intrinsics;
 namespace Frent.Collections
 {
     /// <summary>
-    /// The fast lookup
+    ///     The fast lookup
     /// </summary>
     internal struct FastLookup()
     {
         /// <summary>
-        /// The data
+        ///     The data
         /// </summary>
         private InlineArray8<uint> _data;
+
         /// <summary>
-        /// The ids
+        ///     The ids
         /// </summary>
         private InlineArray8<ushort> _ids;
+
         /// <summary>
-        /// The archetype
+        ///     The archetype
         /// </summary>
         internal Archetype[] Archetypes = new Archetype[8];
+
         /// <summary>
-        /// The index
+        ///     The index
         /// </summary>
         private int index;
 
         /// <summary>
-        /// Finds the adjacent archetype id using the specified id
+        ///     Finds the adjacent archetype id using the specified id
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="id">The id</param>
@@ -51,13 +82,13 @@ namespace Frent.Collections
             {
                 return new ArchetypeID(InlineArray8<ushort>.Get(ref _ids, index));
             }
-            else if (world.ArchetypeGraphEdges.TryGetValue(edgeKey = typeof(T) == typeof(ComponentID) ?
-                         ArchetypeEdgeKey.Component(new(id.Value), archetype, edgeType) :
-                         ArchetypeEdgeKey.Tag(new(id.Value), archetype, edgeType), out Archetype? destination))
+
+            if (world.ArchetypeGraphEdges.TryGetValue(edgeKey = typeof(T) == typeof(ComponentID) ? ArchetypeEdgeKey.Component(new(id.Value), archetype, edgeType) : ArchetypeEdgeKey.Tag(new(id.Value), archetype, edgeType), out Archetype? destination))
             {
                 //warm/cool depending on number of times they add/remove
                 return destination.ID;
             }
+
             //cold path
             Archetype dest = Archetype.GetAdjacentArchetypeCold(world, edgeKey);
             world.ArchetypeGraphEdges.Add(edgeKey, dest);
@@ -65,19 +96,19 @@ namespace Frent.Collections
         }
 
         /// <summary>
-        /// Gets the key using the specified id
+        ///     Gets the key using the specified id
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="archetypeID">The archetype id</param>
         /// <returns>The key</returns>
         public uint GetKey(ushort id, ArchetypeID archetypeID)
         {
-            uint key = archetypeID.RawIndex | ((uint)id << 16);
+            uint key = archetypeID.RawIndex | ((uint) id << 16);
             return key;
         }
 
         /// <summary>
-        /// Sets the archetype using the specified id
+        ///     Sets the archetype using the specified id
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="from">The from</param>
@@ -95,7 +126,7 @@ namespace Frent.Collections
         }
 
         /// <summary>
-        /// Lookups the index using the specified key
+        ///     Lookups the index using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         /// <returns>The int</returns>

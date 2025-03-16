@@ -1,17 +1,46 @@
-﻿using System;
-using Frent.Core;
-using Frent.Core.Structures;
-using Frent.Updating;
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:World.structural.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using System;
 using System.Collections.Immutable;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using Frent.Core;
 using Frent.Core.Events;
+using Frent.Core.Structures;
+using Frent.Updating;
 
 namespace Frent
 {
     /// <summary>
-    /// The world class
+    ///     The world class
     /// </summary>
     partial class World
     {
@@ -22,7 +51,7 @@ namespace Frent
          */
 
         /// <summary>
-        /// Removes the component using the specified entity
+        ///     Removes the component using the specified entity
         /// </summary>
         /// <param name="entity">The entity</param>
         /// <param name="lookup">The lookup</param>
@@ -31,14 +60,13 @@ namespace Frent
         {
             Archetype destination = RemoveComponentLookup.FindAdjacentArchetypeID(componentID, lookup.ArchetypeID, this, ArchetypeEdgeType.RemoveComponent)
                 .Archetype(this);
-        
+
             Span<ComponentHandle> tmpHandleSpan = [default!];
             MoveEntityToArchetypeRemove(tmpHandleSpan, entity, ref lookup, destination);
-
         }
 
         /// <summary>
-        /// Adds the component using the specified entity
+        ///     Adds the component using the specified entity
         /// </summary>
         /// <param name="entity">The entity</param>
         /// <param name="lookup">The lookup</param>
@@ -52,11 +80,10 @@ namespace Frent
             Span<ComponentStorageBase> runnerSpan = [null!];
             MoveEntityToArchetypeAdd(runnerSpan, entity, ref lookup, out entityLocation, destination);
             runner = MemoryMarshal.GetReference(runnerSpan);
-
         }
 
         /// <summary>
-        /// Moves the entity to archetype add using the specified write to
+        ///     Moves the entity to archetype add using the specified write to
         /// </summary>
         /// <param name="writeTo">The write to</param>
         /// <param name="entity">The entity</param>
@@ -105,7 +132,7 @@ namespace Frent
         }
 
         /// <summary>
-        /// Moves the entity to archetype remove using the specified component handles
+        ///     Moves the entity to archetype remove using the specified component handles
         /// </summary>
         /// <param name="componentHandles">The component handles</param>
         /// <param name="entity">The entity</param>
@@ -148,7 +175,7 @@ namespace Frent
                     ref ComponentHandle writeTo = ref componentHandles.UnsafeSpanIndex(writeToIndex++);
                     if (hasGenericRemoveEvent)
                         writeTo = runner.Store(currentLookup.Index);
-                    else//kinda illegal but whatever
+                    else //kinda illegal but whatever
                         writeTo = new ComponentHandle(0, componentToMoveFromFromToTo);
                     runner.Delete(deleteData);
                 }
@@ -171,7 +198,6 @@ namespace Frent
 
                 if (EntityLocation.HasEventFlag(currentLookup.Flags, EntityFlags.RemoveComp | EntityFlags.RemoveGenericComp))
                 {
-
                     EventRecord? lookup = EventLookup[entity.EntityIDOnly];
 
 
@@ -192,12 +218,11 @@ namespace Frent
                         }
                     }
                 }
-
             }
         }
 
         /// <summary>
-        /// Moves the entity to archetype iso using the specified entity
+        ///     Moves the entity to archetype iso using the specified entity
         /// </summary>
         /// <param name="entity">The entity</param>
         /// <param name="currentLookup">The current lookup</param>
@@ -234,10 +259,10 @@ namespace Frent
             currentLookup = nextLocation;
         }
 
-        
+
         //Delete
         /// <summary>
-        /// Deletes the entity using the specified entity
+        ///     Deletes the entity using the specified entity
         /// </summary>
         /// <param name="entity">The entity</param>
         /// <param name="entityLocation">The entity location</param>
@@ -252,7 +277,7 @@ namespace Frent
 
         //let the jit decide whether or not to inline
         /// <summary>
-        /// Invokes the delete events using the specified entity
+        ///     Invokes the delete events using the specified entity
         /// </summary>
         /// <param name="entity">The entity</param>
         /// <param name="entityLocation">The entity location</param>
@@ -266,11 +291,12 @@ namespace Frent
                     @event.Invoke(entity);
                 }
             }
+
             EventLookup.Remove(entity.EntityIDOnly);
         }
 
         /// <summary>
-        /// Deletes the entity without events using the specified entity
+        ///     Deletes the entity without events using the specified entity
         /// </summary>
         /// <param name="entity">The entity</param>
         /// <param name="currentLookup">The current lookup</param>
@@ -296,6 +322,5 @@ namespace Frent
                 id.Version++;
             }
         }
-        
     }
 }

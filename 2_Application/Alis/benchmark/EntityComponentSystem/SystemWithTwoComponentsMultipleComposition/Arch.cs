@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Arch.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Alis.Benchmark.EntityComponentSystem.Contexts;
@@ -12,29 +41,32 @@ using World = Arch.Core.World;
 namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleComposition
 {
     /// <summary>
-    /// The system with two components multiple composition class
+    ///     The system with two components multiple composition class
     /// </summary>
     public partial class SystemWithTwoComponentsMultipleComposition
     {
         /// <summary>
-        /// The for each
+        ///     The component
         /// </summary>
-        private struct ForEach2 : IForEach<Component1, Component2>
-        {
-            /// <summary>
-            /// Updates the t 0
-            /// </summary>
-            /// <param name="t0">The </param>
-            /// <param name="t1">The </param>
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            public void Update(ref Component1 t0, ref Component2 t1)
-            {
-                t0.Value += t1.Value;
-            }
-        }
-        
+        private static readonly ComponentType[] _filter = [typeof(Component1), typeof(Component2)];
+
         /// <summary>
-        /// Fors the each using the specified t 0
+        ///     The filter
+        /// </summary>
+        private static readonly QueryDescription _queryDescription = new() {All = _filter};
+
+        /// <summary>
+        ///     The arch
+        /// </summary>
+        [Context] private readonly ArchContext _arch;
+
+        /// <summary>
+        ///     The for each
+        /// </summary>
+        private ForEach2 _forEach2;
+
+        /// <summary>
+        ///     Fors the each using the specified t 0
         /// </summary>
         /// <param name="t0">The </param>
         /// <param name="t1">The </param>
@@ -45,35 +77,74 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
         }
 
         /// <summary>
-        /// The arch context class
+        ///     Arches this instance
         /// </summary>
-        /// <seealso cref="ArchBaseContext"/>
+        [BenchmarkCategory(Categories.Arch), Benchmark]
+        public void Arch()
+        {
+            World world = _arch.World;
+            world.InlineQuery<ForEach2, Component1, Component2>(in _queryDescription, ref _forEach2);
+        }
+
+        /// <summary>
+        ///     Arches the mono thread source generated
+        /// </summary>
+        [BenchmarkCategory(Categories.Arch), Benchmark]
+        public void Arch_MonoThread_SourceGenerated()
+        {
+            ForEachQuery(_arch.World);
+        }
+
+        /// <summary>
+        ///     Arches the multi thread
+        /// </summary>
+        [BenchmarkCategory(Categories.Arch), Benchmark]
+        public void Arch_MultiThread()
+        {
+            World world = _arch.World;
+            world.InlineParallelQuery<ForEach2, Component1, Component2>(in _queryDescription, ref _forEach2);
+        }
+
+        /// <summary>
+        ///     The for each
+        /// </summary>
+        private struct ForEach2 : IForEach<Component1, Component2>
+        {
+            /// <summary>
+            ///     Updates the t 0
+            /// </summary>
+            /// <param name="t0">The </param>
+            /// <param name="t1">The </param>
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            public void Update(ref Component1 t0, ref Component2 t1)
+            {
+                t0.Value += t1.Value;
+            }
+        }
+
+        /// <summary>
+        ///     The arch context class
+        /// </summary>
+        /// <seealso cref="ArchBaseContext" />
         private sealed class ArchContext : ArchBaseContext
         {
-            private record struct Padding1();
-
-            private record struct Padding2();
-
-            private record struct Padding3();
-
-            private record struct Padding4();
-
             /// <summary>
-            /// Initializes a new instance of the <see cref="ArchContext"/> class
+            ///     Initializes a new instance of the <see cref="ArchContext" /> class
             /// </summary>
             /// <param name="entityCount">The entity count</param>
             public ArchContext(int entityCount)
             {
-                JobScheduler = new JobScheduler( new JobScheduler.Config
+                JobScheduler = new JobScheduler(new JobScheduler.Config
                 {
                     ThreadPrefixName = "Arch.Benchmark",
                     ThreadCount = 0,
                     MaxExpectedConcurrentJobs = 64,
-                    StrictAllocationMode = false,
+                    StrictAllocationMode = false
                 });
                 World.SharedJobScheduler = JobScheduler;
-                
-                ComponentType[] paddingTypes = [
+
+                ComponentType[] paddingTypes =
+                [
                     typeof(Padding1),
                     typeof(Padding2),
                     typeof(Padding3),
@@ -92,57 +163,14 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
                     World.Create(archetypes[index % archetypes.Length]);
                 }
             }
-        }
 
-        /// <summary>
-        /// The component
-        /// </summary>
-        private static readonly ComponentType[] _filter = [typeof(Component1), typeof(Component2)];
-        /// <summary>
-        /// The filter
-        /// </summary>
-        private static readonly QueryDescription _queryDescription = new() { All = _filter };
+            private record struct Padding1;
 
-        /// <summary>
-        /// The arch
-        /// </summary>
-        [Context]
-        private readonly ArchContext _arch;
-        /// <summary>
-        /// The for each
-        /// </summary>
-        private ForEach2 _forEach2;
+            private record struct Padding2;
 
-        /// <summary>
-        /// Arches this instance
-        /// </summary>
-        [BenchmarkCategory(Categories.Arch)]
-        [Benchmark]
-        public void Arch()
-        {
-            World world = _arch.World;
-            world.InlineQuery<ForEach2, Component1, Component2>(in _queryDescription, ref _forEach2);
-        }
-        
-        /// <summary>
-        /// Arches the mono thread source generated
-        /// </summary>
-        [BenchmarkCategory(Categories.Arch)]
-        [Benchmark]
-        public void Arch_MonoThread_SourceGenerated()
-        {
-           SystemWithTwoComponentsMultipleComposition.ForEachQuery(_arch.World);
-        }
-        
-        /// <summary>
-        /// Arches the multi thread
-        /// </summary>
-        [BenchmarkCategory(Categories.Arch)]
-        [Benchmark]
-        public void Arch_MultiThread()
-        {
-            World world = _arch.World;
-            world.InlineParallelQuery<ForEach2, Component1, Component2>(in _queryDescription, ref _forEach2);
+            private record struct Padding3;
+
+            private record struct Padding4;
         }
     }
 }

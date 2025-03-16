@@ -40,6 +40,18 @@ namespace Alis.Core.Physic.Common.TextureTools
     /// </summary>
     public static class MarchingSquares
     {
+        //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+
+        /// <summary>
+        ///     The look march
+        /// </summary>
+        private static readonly int[] LookMarch =
+        {
+            0x00, 0xE0, 0x38, 0xD8, 0x0E, 0xEE, 0x36, 0xD6, 0x83, 0x63, 0xBB, 0x5B, 0x8D,
+            0x6D, 0xB5, 0x55
+        };
+
         /// <summary>
         ///     Marching squares over the given domain using the mesh defined via the dimensions
         ///     (wid,hei) to build a set of polygons such that f(x,y) less than 0, using the given number
@@ -328,328 +340,6 @@ namespace Alis.Core.Physic.Common.TextureTools
             return verticesList;
         }
 
-        
-
-        
-
-        /// <summary>
-        ///     Designed as a complete port of CxFastList from CxStd.
-        /// </summary>
-        internal class CxFastList<T>
-        {
-            /// <summary>
-            ///     The count
-            /// </summary>
-            private int _count;
-
-            // first node in the list
-            /// <summary>
-            ///     The head
-            /// </summary>
-            private CxFastListNode<T> _head;
-
-            /// <summary>
-            ///     Iterator to start of list (O(1))
-            /// </summary>
-            public CxFastListNode<T> Begin() => _head;
-
-            /// <summary>
-            ///     Iterator to end of list (O(1))
-            /// </summary>
-            public CxFastListNode<T> End() => null;
-
-            /// <summary>
-            ///     Returns first element of list (O(1))
-            /// </summary>
-            public T Front() => _head.GetElem();
-
-            /// <summary>
-            ///     add object to list (O(1))
-            /// </summary>
-            public CxFastListNode<T> Add(T value)
-            {
-                CxFastListNode<T> newNode = new CxFastListNode<T>(value);
-                if (_head == null)
-                {
-                    newNode.Next = null;
-                    _head = newNode;
-                    _count++;
-                    return newNode;
-                }
-
-                newNode.Next = _head;
-                _head = newNode;
-
-                _count++;
-
-                return newNode;
-            }
-
-            /// <summary>
-            ///     remove object from list, returns true if an element was removed (O(n))
-            /// </summary>
-            public bool Remove(T value)
-            {
-                CxFastListNode<T> head = _head;
-                CxFastListNode<T> prev = _head;
-
-                EqualityComparer<T> comparer = EqualityComparer<T>.Default;
-
-                if (head != null)
-                {
-                    if (!EqualityComparer<T>.Default.Equals(value, default(T)))
-                    {
-                        do
-                        {
-                            // if we are on the value to be removed
-                            if (comparer.Equals(head.Elt, value))
-                            {
-                                // then we need to patch the list
-                                // check to see if we are removing the _head
-                                if (head == _head)
-                                {
-                                    _head = head.Next;
-                                    _count--;
-                                    return true;
-                                }
-
-                                // were not at the head
-                                prev.Next = head.Next;
-                                _count--;
-                                return true;
-                            }
-
-                            // cache the current as the previous for the next go around
-                            prev = head;
-                            head = head.Next;
-                        } while (head != null);
-                    }
-                }
-
-                return false;
-            }
-
-            /// <summary>
-            ///     pop element from head of list (O(1)) Note: this does not return the object popped!
-            ///     There is good reason to this, and it regards the Alloc list variants which guarantee
-            ///     objects are released to the object pool. You do not want to retrieve an element
-            ///     through pop or else that object may suddenly be used by another piece of code which
-            ///     retrieves it from the object pool.
-            /// </summary>
-            public CxFastListNode<T> Pop() => Erase(null, _head);
-
-            /// <summary>
-            ///     insert object after 'node' returning an iterator to the inserted object.
-            /// </summary>
-            public CxFastListNode<T> Insert(CxFastListNode<T> node, T value)
-            {
-                if (node == null)
-                {
-                    return Add(value);
-                }
-
-                CxFastListNode<T> newNode = new CxFastListNode<T>(value);
-                CxFastListNode<T> nextNode = node.Next;
-                newNode.Next = nextNode;
-                node.Next = newNode;
-
-                _count++;
-
-                return newNode;
-            }
-
-            /// <summary>
-            ///     removes the element pointed to by 'node' with 'prev' being the previous iterator,
-            ///     returning an iterator to the element following that of 'node' (O(1))
-            /// </summary>
-            public CxFastListNode<T> Erase(CxFastListNode<T> prev, CxFastListNode<T> node)
-            {
-                // cache the node after the node to be removed
-                CxFastListNode<T> nextNode = node.Next;
-                if (prev != null)
-                {
-                    prev.Next = nextNode;
-                }
-                else if (_head != null)
-                {
-                    _head = _head.Next;
-                }
-                else
-                {
-                    return null;
-                }
-
-                _count--;
-                return nextNode;
-            }
-
-            /// <summary>
-            ///     whether the list is empty (O(1))
-            /// </summary>
-            public bool Empty()
-            {
-                if (_head == null)
-                {
-                    return true;
-                }
-
-                return false;
-            }
-
-            /// <summary>
-            ///     computes size of list (O(n))
-            /// </summary>
-            public int Size()
-            {
-                CxFastListNode<T> i = Begin();
-                int count = 0;
-
-                do
-                {
-                    count++;
-                } while (i.NextPos() != null);
-
-                return count;
-            }
-
-            /// <summary>
-            ///     empty the list (O(1) if CxMixList, O(n) otherwise)
-            /// </summary>
-            public void Clear()
-            {
-                CxFastListNode<T> head = _head;
-                while (head != null)
-                {
-                    CxFastListNode<T> node2 = head;
-                    head = head.Next;
-                    node2.Next = null;
-                }
-
-                _head = null;
-                _count = 0;
-            }
-
-            /// <summary>
-            ///     returns true if 'value' is an element of the list (O(n))
-            /// </summary>
-            public bool Has(T value) => Find(value) != null;
-
-            // Non CxFastList Methods 
-            /// <summary>
-            ///     Finds the value
-            /// </summary>
-            /// <param name="value">The value</param>
-            /// <returns>A cx fast list node of t</returns>
-            public CxFastListNode<T> Find(T value)
-            {
-                // start at head
-                CxFastListNode<T> head = _head;
-                EqualityComparer<T> comparer = EqualityComparer<T>.Default;
-                if (head != null)
-                {
-                    if (!EqualityComparer<T>.Default.Equals(value, default(T)))
-                    {
-                        do
-                        {
-                            if (comparer.Equals(head.Elt, value))
-                            {
-                                return head;
-                            }
-
-                            head = head.Next;
-                        } while (head != _head);
-                    }
-                    else
-                    {
-                        do
-                        {
-                            if (EqualityComparer<T>.Default.Equals(head.Elt, default(T)))
-                            {
-                                return head;
-                            }
-
-                            head = head.Next;
-                        } while (head != _head);
-                    }
-                }
-
-                return null;
-            }
-
-            /// <summary>
-            ///     Gets the list of elements
-            /// </summary>
-            /// <returns>The list</returns>
-            public List<T> GetListOfElements()
-            {
-                List<T> list = new List<T>();
-
-                CxFastListNode<T> iter = Begin();
-
-                if (iter != null)
-                {
-                    do
-                    {
-                        list.Add(iter.Elt);
-                        iter = iter.Next;
-                    } while (iter != null);
-                }
-
-                return list;
-            }
-        }
-
-        
-
-        
-
-        
-
-        
-
-        /// <summary>
-        ///     The geom poly class
-        /// </summary>
-        internal class GeomPoly
-        {
-            /// <summary>
-            ///     The points
-            /// </summary>
-            public readonly CxFastList<Vector2F> Points;
-
-            /// <summary>
-            ///     The length
-            /// </summary>
-            public int Length;
-
-            /// <summary>
-            ///     Initializes a new instance of the <see cref="GeomPoly" /> class
-            /// </summary>
-            public GeomPoly()
-            {
-                Points = new CxFastList<Vector2F>();
-                Length = 0;
-            }
-        }
-
-        
-
-        
-
-        
-
-        //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-
-        /// <summary>
-        ///     The look march
-        /// </summary>
-        private static readonly int[] LookMarch =
-        {
-            0x00, 0xE0, 0x38, 0xD8, 0x0E, 0xEE, 0x36, 0xD6, 0x83, 0x63, 0xBB, 0x5B, 0x8D,
-            0x6D, 0xB5, 0x55
-        };
-
         /// <summary>
         ///     Lerps the x 0
         /// </summary>
@@ -936,6 +626,298 @@ namespace Alis.Core.Physic.Common.TextureTools
             }
         }
 
-        
+
+        /// <summary>
+        ///     Designed as a complete port of CxFastList from CxStd.
+        /// </summary>
+        internal class CxFastList<T>
+        {
+            /// <summary>
+            ///     The count
+            /// </summary>
+            private int _count;
+
+            // first node in the list
+            /// <summary>
+            ///     The head
+            /// </summary>
+            private CxFastListNode<T> _head;
+
+            /// <summary>
+            ///     Iterator to start of list (O(1))
+            /// </summary>
+            public CxFastListNode<T> Begin() => _head;
+
+            /// <summary>
+            ///     Iterator to end of list (O(1))
+            /// </summary>
+            public CxFastListNode<T> End() => null;
+
+            /// <summary>
+            ///     Returns first element of list (O(1))
+            /// </summary>
+            public T Front() => _head.GetElem();
+
+            /// <summary>
+            ///     add object to list (O(1))
+            /// </summary>
+            public CxFastListNode<T> Add(T value)
+            {
+                CxFastListNode<T> newNode = new CxFastListNode<T>(value);
+                if (_head == null)
+                {
+                    newNode.Next = null;
+                    _head = newNode;
+                    _count++;
+                    return newNode;
+                }
+
+                newNode.Next = _head;
+                _head = newNode;
+
+                _count++;
+
+                return newNode;
+            }
+
+            /// <summary>
+            ///     remove object from list, returns true if an element was removed (O(n))
+            /// </summary>
+            public bool Remove(T value)
+            {
+                CxFastListNode<T> head = _head;
+                CxFastListNode<T> prev = _head;
+
+                EqualityComparer<T> comparer = EqualityComparer<T>.Default;
+
+                if (head != null)
+                {
+                    if (!EqualityComparer<T>.Default.Equals(value, default(T)))
+                    {
+                        do
+                        {
+                            // if we are on the value to be removed
+                            if (comparer.Equals(head.Elt, value))
+                            {
+                                // then we need to patch the list
+                                // check to see if we are removing the _head
+                                if (head == _head)
+                                {
+                                    _head = head.Next;
+                                    _count--;
+                                    return true;
+                                }
+
+                                // were not at the head
+                                prev.Next = head.Next;
+                                _count--;
+                                return true;
+                            }
+
+                            // cache the current as the previous for the next go around
+                            prev = head;
+                            head = head.Next;
+                        } while (head != null);
+                    }
+                }
+
+                return false;
+            }
+
+            /// <summary>
+            ///     pop element from head of list (O(1)) Note: this does not return the object popped!
+            ///     There is good reason to this, and it regards the Alloc list variants which guarantee
+            ///     objects are released to the object pool. You do not want to retrieve an element
+            ///     through pop or else that object may suddenly be used by another piece of code which
+            ///     retrieves it from the object pool.
+            /// </summary>
+            public CxFastListNode<T> Pop() => Erase(null, _head);
+
+            /// <summary>
+            ///     insert object after 'node' returning an iterator to the inserted object.
+            /// </summary>
+            public CxFastListNode<T> Insert(CxFastListNode<T> node, T value)
+            {
+                if (node == null)
+                {
+                    return Add(value);
+                }
+
+                CxFastListNode<T> newNode = new CxFastListNode<T>(value);
+                CxFastListNode<T> nextNode = node.Next;
+                newNode.Next = nextNode;
+                node.Next = newNode;
+
+                _count++;
+
+                return newNode;
+            }
+
+            /// <summary>
+            ///     removes the element pointed to by 'node' with 'prev' being the previous iterator,
+            ///     returning an iterator to the element following that of 'node' (O(1))
+            /// </summary>
+            public CxFastListNode<T> Erase(CxFastListNode<T> prev, CxFastListNode<T> node)
+            {
+                // cache the node after the node to be removed
+                CxFastListNode<T> nextNode = node.Next;
+                if (prev != null)
+                {
+                    prev.Next = nextNode;
+                }
+                else if (_head != null)
+                {
+                    _head = _head.Next;
+                }
+                else
+                {
+                    return null;
+                }
+
+                _count--;
+                return nextNode;
+            }
+
+            /// <summary>
+            ///     whether the list is empty (O(1))
+            /// </summary>
+            public bool Empty()
+            {
+                if (_head == null)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+
+            /// <summary>
+            ///     computes size of list (O(n))
+            /// </summary>
+            public int Size()
+            {
+                CxFastListNode<T> i = Begin();
+                int count = 0;
+
+                do
+                {
+                    count++;
+                } while (i.NextPos() != null);
+
+                return count;
+            }
+
+            /// <summary>
+            ///     empty the list (O(1) if CxMixList, O(n) otherwise)
+            /// </summary>
+            public void Clear()
+            {
+                CxFastListNode<T> head = _head;
+                while (head != null)
+                {
+                    CxFastListNode<T> node2 = head;
+                    head = head.Next;
+                    node2.Next = null;
+                }
+
+                _head = null;
+                _count = 0;
+            }
+
+            /// <summary>
+            ///     returns true if 'value' is an element of the list (O(n))
+            /// </summary>
+            public bool Has(T value) => Find(value) != null;
+
+            // Non CxFastList Methods 
+            /// <summary>
+            ///     Finds the value
+            /// </summary>
+            /// <param name="value">The value</param>
+            /// <returns>A cx fast list node of t</returns>
+            public CxFastListNode<T> Find(T value)
+            {
+                // start at head
+                CxFastListNode<T> head = _head;
+                EqualityComparer<T> comparer = EqualityComparer<T>.Default;
+                if (head != null)
+                {
+                    if (!EqualityComparer<T>.Default.Equals(value, default(T)))
+                    {
+                        do
+                        {
+                            if (comparer.Equals(head.Elt, value))
+                            {
+                                return head;
+                            }
+
+                            head = head.Next;
+                        } while (head != _head);
+                    }
+                    else
+                    {
+                        do
+                        {
+                            if (EqualityComparer<T>.Default.Equals(head.Elt, default(T)))
+                            {
+                                return head;
+                            }
+
+                            head = head.Next;
+                        } while (head != _head);
+                    }
+                }
+
+                return null;
+            }
+
+            /// <summary>
+            ///     Gets the list of elements
+            /// </summary>
+            /// <returns>The list</returns>
+            public List<T> GetListOfElements()
+            {
+                List<T> list = new List<T>();
+
+                CxFastListNode<T> iter = Begin();
+
+                if (iter != null)
+                {
+                    do
+                    {
+                        list.Add(iter.Elt);
+                        iter = iter.Next;
+                    } while (iter != null);
+                }
+
+                return list;
+            }
+        }
+
+
+        /// <summary>
+        ///     The geom poly class
+        /// </summary>
+        internal class GeomPoly
+        {
+            /// <summary>
+            ///     The points
+            /// </summary>
+            public readonly CxFastList<Vector2F> Points;
+
+            /// <summary>
+            ///     The length
+            /// </summary>
+            public int Length;
+
+            /// <summary>
+            ///     Initializes a new instance of the <see cref="GeomPoly" /> class
+            /// </summary>
+            public GeomPoly()
+            {
+                Points = new CxFastList<Vector2F>();
+                Length = 0;
+            }
+        }
     }
 }

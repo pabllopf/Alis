@@ -3934,7 +3934,7 @@ namespace Alis.Core.Aspect.Data.Json
                 case StreamWriter sw:
                     sw.Flush();
                     return WriteBase64Stream(stream, sw.BaseStream, options);
-                case IndentedTextWriter {InnerWriter: { }} itw:
+                case IndentedTextWriter {InnerWriter: not null} itw:
                     itw.Flush();
                     return WriteBase64Stream(itw.InnerWriter, stream, objectGraph, options);
             }
