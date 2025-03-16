@@ -57,11 +57,11 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The bool</returns>
         bool IEqualityComparer<object>.Equals(object x, object y) => ReferenceEquals(x, y);
 
-        /// <summary>
-        ///     Gets the hash code using the specified obj
-        /// </summary>
-        /// <param name="obj">The obj</param>
-        /// <returns>The int</returns>
-        int IEqualityComparer<object>.GetHashCode(object obj) => RuntimeHelpers.GetHashCode(obj);
+         /// <summary>
+         ///     Obtiene el código hash usando el objeto especificado
+         /// </summary>
+         /// <param name="obj">El objeto</param>
+         /// <returns>El código hash</returns>
+         int IEqualityComparer<object>.GetHashCode(object obj) => obj.GetHashCode();
     }
 }
