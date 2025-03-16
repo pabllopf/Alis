@@ -49,7 +49,7 @@ namespace Alis.Core.Graphic.GlfwLib
     [SuppressUnmanagedCodeSecurity]
     public static class Glfw
     {
-        #region Constructors
+        
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Glfw" /> class
@@ -61,7 +61,7 @@ namespace Alis.Core.Graphic.GlfwLib
             SetErrorCallback(errorCallback);
         }
 
-        #endregion
+        
 
         /// <summary>
         ///     Returns and clears the error code of the last error that occurred on the calling thread, and optionally
@@ -397,7 +397,7 @@ namespace Alis.Core.Graphic.GlfwLib
         [DllImport(LIBRARY, EntryPoint = "glfwGetGamepadState", CallingConvention = CallingConvention.Cdecl)]
         public static extern bool GetGamepadState(int id, out GamePadState state);
 
-        #region Fields and Constants
+        
 
         /// <summary>
         ///     The native library name,
@@ -410,9 +410,9 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         private static readonly ErrorCallback errorCallback = GlfwError;
 
-        #endregion
+        
 
-        #region Properties
+        
 
         /// <summary>
         ///     Gets the window whose OpenGL or OpenGL ES context is current on the calling thread, or <see cref="Window.None" />
@@ -511,9 +511,9 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </value>
         public static string VersionString => Util.PtrToStringUTF8(GetVersionString());
 
-        #endregion
+        
 
-        #region External
+        
 
         /// <summary>
         ///     This function sets hints for the next initialization of GLFW.
@@ -1624,9 +1624,9 @@ namespace Alis.Core.Graphic.GlfwLib
         [DllImport(LIBRARY, EntryPoint = "glfwGetError", CallingConvention = CallingConvention.Cdecl)]
         private static extern ErrorCode GetErrorPrivate(out IntPtr description);
 
-        #endregion
+        
 
-        #region Methods
+        
 
         /// <summary>
         ///     This function creates a window and its associated OpenGL or OpenGL ES context. Most of the options controlling how
@@ -2003,6 +2003,6 @@ namespace Alis.Core.Graphic.GlfwLib
             throw new Exception(Util.PtrToStringUTF8(message));
         }
 
-        #endregion
+        
     }
 }

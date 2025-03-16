@@ -46,7 +46,7 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         public int ProxyIdB;
 
-        #region IComparable<Pair> Members
+        
 
         /// <summary>
         ///     Compares the to using the specified other
@@ -76,6 +76,6 @@ namespace Alis.Core.Physic.Collision
             return 1;
         }
 
-        #endregion
+        
     }
 }

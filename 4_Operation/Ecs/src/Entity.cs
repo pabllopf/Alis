@@ -20,7 +20,7 @@ namespace Frent
     [DebuggerTypeProxy(typeof(EntityDebugView))]
     public partial struct Entity : IEquatable<Entity>
     {
-        #region Fields & Ctor
+        
         /// <summary>
         /// Creates an <see cref="Entity"/> identical to <see cref="Entity.Null"/>
         /// </summary>
@@ -54,9 +54,9 @@ namespace Frent
         /// The world id
         /// </summary>
         internal ushort WorldID;
-        #endregion
+        
 
-        #region Props
+        
         /// <summary>
         /// The entity world info access
         /// </summary>
@@ -121,11 +121,11 @@ namespace Frent
         /// Gets the value of the entity low
         /// </summary>
         internal int EntityLow => Unsafe.As<Entity, EntityHighLow>(ref this).EntityLow;
-        #endregion
+        
 
-        #region Internal Helpers
+        
 
-        #region IsAlive
+        
         /// <summary>
         /// Internals the is alive using the specified world
         /// </summary>
@@ -159,7 +159,7 @@ namespace Frent
             return ref lookup;
         }
 
-        #endregion IsAlive
+        
 
         /// <summary>
         /// Tries the get core using the specified exists
@@ -252,9 +252,9 @@ namespace Frent
                 }
             }
         }
-        #endregion
+        
 
-        #region IEquatable
+        
         /// <summary>
         /// Checks if two <see cref="Entity"/> structs refer to the same entity.
         /// </summary>
@@ -290,6 +290,6 @@ namespace Frent
         /// </summary>
         /// <returns>A hash code for the current <see cref="Entity"/>.</returns>
         public override int GetHashCode() => PackedValue.GetHashCode();
-        #endregion
+        
     }
 }

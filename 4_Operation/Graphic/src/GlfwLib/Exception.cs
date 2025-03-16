@@ -36,7 +36,7 @@ namespace Alis.Core.Graphic.GlfwLib
     /// </summary>
     public class Exception : System.Exception
     {
-        #region Methods
+        
 
         /// <summary>
         ///     Generic error messages if only an error code is supplied as an argument to the constructor.
@@ -61,9 +61,9 @@ namespace Alis.Core.Graphic.GlfwLib
             }
         }
 
-        #endregion
+        
 
-        #region Constructors
+        
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Exception" /> class.
@@ -81,6 +81,6 @@ namespace Alis.Core.Graphic.GlfwLib
         {
         }
 
-        #endregion
+        
     }
 }

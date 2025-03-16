@@ -103,7 +103,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <returns><c>true</c> if objects do not represent the same window, otherwise <c>false</c>.</returns>
         public static bool operator !=(NativeWindow left, NativeWindow right) => !Equals(left, right);
 
-        #region Fields and Constants
+        
 
         /// <summary>
         ///     The window instance this object wraps.
@@ -175,9 +175,9 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         private WindowContentsScaleCallback windowContentScaleCallback;
 
-        #endregion
+        
 
-        #region Properties
+        
 
         /// <summary>
         ///     Gets or sets the size and location of the window including its non-client elements (borders, title bar, etc.), in
@@ -591,7 +591,7 @@ namespace Alis.Core.Graphic.GlfwLib
             }
         }
 
-        #region Operators
+        
 
         /// <summary>
         ///     Performs an implicit conversion from <see cref="NativeWindow" /> to <see cref="Structs.Window" />.
@@ -611,11 +611,11 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </returns>
         public static implicit operator IntPtr(NativeWindow nativeWindow) => nativeWindow.Window;
 
-        #endregion
+        
 
-        #endregion
+        
 
-        #region Constructors
+        
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="NativeWindow" /> class.
@@ -659,9 +659,9 @@ namespace Alis.Core.Graphic.GlfwLib
             BindCallbacks();
         }
 
-        #endregion
+        
 
-        #region Methods
+        
 
         /// <summary>
         ///     Centers the on window on the screen.
@@ -907,9 +907,9 @@ namespace Alis.Core.Graphic.GlfwLib
             OnFileDrop(paths);
         }
 
-        #endregion
+        
 
-        #region Delegates and Events
+        
 
         /// <summary>
         ///     Occurs when the window is maximized or restored.
@@ -1163,6 +1163,6 @@ namespace Alis.Core.Graphic.GlfwLib
             SizeChanged?.Invoke(this, new SizeChangeEventArgs(new Size(width, height)));
         }
 
-        #endregion
+        
     }
 }

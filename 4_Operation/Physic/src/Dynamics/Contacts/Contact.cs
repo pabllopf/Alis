@@ -586,7 +586,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             Reset(null, 0, null, 0);
         }
 
-        #region Nested type: ContactType
+        
 
         /// <summary>
         ///     The contact type enum
@@ -634,6 +634,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             ChainAndCircle
         }
 
-        #endregion
+        
     }
 }

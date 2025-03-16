@@ -10,7 +10,7 @@ namespace Frent.Sample
     /// </summary>
     internal class Samples
     {
-        #region Cookbook 1
+        
         /// <summary>
         /// Updates the component
         /// </summary>
@@ -28,9 +28,9 @@ namespace Frent.Sample
             //Update the three entities
             world.Update();
         }
-        #endregion
+        
 
-        #region Cookbook 2
+        
         /// <summary>
         /// Uniformses the and entities
         /// </summary>
@@ -48,9 +48,9 @@ namespace Frent.Sample
 
             world.Update();
         }
-        #endregion
+        
 
-        #region Cookbook 3
+        
         /// <summary>
         /// Querieses
         /// </summary>
@@ -84,9 +84,9 @@ namespace Frent.Sample
                 Console.Write($"{arg} ");
             }
         }
-        #endregion
+        
 
-        #region Cookbook 4
+        
         /// <summary>
         /// Entitieses
         /// </summary>
@@ -119,7 +119,7 @@ namespace Frent.Sample
             d.Value = 4;
             Console.WriteLine(d.Value);
         }
-        #endregion
+        
     }
     record struct Pos(float X) : IEntityComponent
     {

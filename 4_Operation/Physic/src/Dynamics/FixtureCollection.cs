@@ -64,7 +64,7 @@ namespace Alis.Core.Physic.Dynamics
         public FixtureCollection(Body body) => _body = body;
 
 
-        #region IEnumerable<Fixture>
+        
 
         /// <summary>
         ///     Gets the enumerator
@@ -72,10 +72,10 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>An enumerator of fixture</returns>
         IEnumerator<Fixture> IEnumerable<Fixture>.GetEnumerator() => new FixtureEnumerator(this, List);
 
-        #endregion IEnumerable<Fixture>
+        
 
 
-        #region IEnumerable
+        
 
         /// <summary>
         ///     Gets the enumerator
@@ -83,7 +83,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>The enumerator</returns>
         IEnumerator IEnumerable.GetEnumerator() => new FixtureEnumerator(this, List);
 
-        #endregion IEnumerable
+        
 
         /// <summary>
         ///     Gets the enumerator
@@ -146,7 +146,7 @@ namespace Alis.Core.Physic.Dynamics
                 }
             }
 
-            #region IEnumerator<Body>
+            
 
             /// <summary>
             ///     Gets the value of the current
@@ -164,9 +164,9 @@ namespace Alis.Core.Physic.Dynamics
                 }
             }
 
-            #endregion IEnumerator<Fixture>
+            
 
-            #region IEnumerator
+            
 
             /// <summary>
             ///     Describes whether this instance move next
@@ -218,11 +218,11 @@ namespace Alis.Core.Physic.Dynamics
                 i = -1;
             }
 
-            #endregion IEnumerator
+            
         }
 
 
-        #region IList<Fixture>
+        
 
         /// <summary>
         ///     The not supported exception
@@ -261,10 +261,10 @@ namespace Alis.Core.Physic.Dynamics
             throw new NotSupportedException();
         }
 
-        #endregion IList<Fixture>
+        
 
 
-        #region ICollection<Fixture>
+        
 
         /// <summary>
         ///     Gets the value of the is read only
@@ -319,6 +319,6 @@ namespace Alis.Core.Physic.Dynamics
             List.CopyTo(array, arrayIndex);
         }
 
-        #endregion ICollection<Fixture>
+        
     }
 }

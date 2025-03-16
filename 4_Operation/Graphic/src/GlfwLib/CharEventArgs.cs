@@ -38,7 +38,7 @@ namespace Alis.Core.Graphic.GlfwLib
     /// <seealso cref="System.EventArgs" />
     public class CharEventArgs : EventArgs
     {
-        #region Constructors
+        
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="CharEventArgs" /> class.
@@ -51,9 +51,9 @@ namespace Alis.Core.Graphic.GlfwLib
             ModifierKeys = mods;
         }
 
-        #endregion
+        
 
-        #region Properties
+        
 
         /// <summary>
         ///     Gets the Unicode character for the code point.
@@ -80,6 +80,6 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </value>
         public ModifierKeys ModifierKeys { get; }
 
-        #endregion
+        
     }
 }
