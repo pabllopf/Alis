@@ -36,6 +36,23 @@
         <PackageReference Include="MonoMac.NetStandard" Version="0.0.4"/>
     </ItemGroup>
 
+    <ItemGroup Condition="$(AssemblyName.Contains('Generator')) == true">
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.11.0" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4" PrivateAssets="all" />
+    </ItemGroup>
+
+    <PropertyGroup Condition="$(AssemblyName.Contains('Generator')) == true">
+        <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+    </PropertyGroup>
+
+    <ItemGroup Condition="$(AssemblyName.Contains('Ecs')) == true">
+        <PackageReference Include="CommunityToolkit.HighPerformance" Version="8.4.0" />
+    </ItemGroup>
+
+    <ItemGroup Condition="Exists('$(ProjectDir)../generator/') == True AND $(AssemblyName.Contains('Generator')) == false">
+        <ProjectReference Include="$(ProjectDir)../generator/*.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    </ItemGroup>
+
     <ItemGroup Condition="$(AssemblyName.Contains('Benchmark')) == true">
         <PackageReference Include="BenchmarkDotNet" Version="0.14.0"/>
 
