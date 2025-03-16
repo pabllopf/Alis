@@ -23,7 +23,7 @@ namespace Frent
         {
             Archetype archetype = Archetype<T>.CreateNewOrGetExistingArchetype(this);
 
-            ref var entity = ref Unsafe.NullRef<EntityIDOnly>();
+            ref EntityIDOnly entity = ref Unsafe.NullRef<EntityIDOnly>();
             EntityLocation eloc = default;
 
             ComponentStorageBase[] components;
@@ -45,7 +45,7 @@ namespace Frent
             //manually inlined from World.CreateEntityFromLocation
             //The jit likes to inline the outer create function and not inline
             //the inner functions - benchmarked to improve perf by 10-20%
-            var (id, version) = entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.PopUnsafe() : new(NextEntityID++, 0);
+            (int id, ushort version) = entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.PopUnsafe() : new(NextEntityID++, 0);
             eloc.Version = version;
             EntityTable[id] = eloc;
 
@@ -79,11 +79,11 @@ namespace Frent
 
             if (EntityCreatedEvent.HasListeners)
             {
-                foreach (var entity in entities)
+                foreach (EntityIDOnly entity in entities)
                     EntityCreatedEvent.Invoke(entity.ToEntity(this));
             }
 
-            var chunks = new ChunkTuple<T>()
+            ChunkTuple<T> chunks = new ChunkTuple<T>()
             {
                 Entities = new EntityEnumerator.EntityEnumerable(this, entities),
                 Span = archetype.GetComponentSpan<T>()[initalEntityCount..],

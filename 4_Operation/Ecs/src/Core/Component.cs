@@ -53,7 +53,7 @@ namespace Frent.Core
         /// <returns>The component handle</returns>
         public static ComponentHandle StoreComponent(in T component)
         {
-            GeneralComponentStorage.Create(out var index) = component;
+            GeneralComponentStorage.Create(out int index) = component;
             return new ComponentHandle(index, _id);
         }
 
@@ -65,7 +65,7 @@ namespace Frent.Core
         {
             (_id, GeneralComponentStorage, Initer, Destroyer) = Component.GetExistingOrSetupNewComponent<T>();
 
-            if (GenerationServices.UserGeneratedTypeMap.TryGetValue(typeof(T), out var type))
+            if (GenerationServices.UserGeneratedTypeMap.TryGetValue(typeof(T), out (IComponentStorageBaseFactory Factory, int UpdateOrder) type))
             {
                 if (type.Factory is IComponentStorageBaseFactory<T> casted)
                 {
@@ -76,7 +76,7 @@ namespace Frent.Core
                 throw new InvalidOperationException($"{typeof(T).FullName} is not initalized correctly. (Is the source generator working?)");
             }
 
-            var fac = new NoneUpdateRunnerFactory<T>();
+            NoneUpdateRunnerFactory<T>? fac = new NoneUpdateRunnerFactory<T>();
             Component.NoneComponentRunnerTable[typeof(T)] = fac;
             RunnerInstance = fac;
         }
@@ -136,11 +136,11 @@ namespace Frent.Core
         /// <returns>The component storage base factory</returns>
         internal static IComponentStorageBaseFactory GetComponentFactoryFromType(Type t)
         {
-            if (GenerationServices.UserGeneratedTypeMap.TryGetValue(t, out var type))
+            if (GenerationServices.UserGeneratedTypeMap.TryGetValue(t, out (IComponentStorageBaseFactory Factory, int UpdateOrder) type))
             {
                 return type.Factory;
             }
-            if (NoneComponentRunnerTable.TryGetValue(t, out var t1))
+            if (NoneComponentRunnerTable.TryGetValue(t, out IComponentStorageBaseFactory? t1))
             {
                 return t1;
             }
@@ -169,7 +169,7 @@ namespace Frent.Core
         {
             lock (GlobalWorldTables.BufferChangeLock)
             {
-                var type = typeof(T);
+                Type? type = typeof(T);
                 if (ExistingComponentIDs.TryGetValue(type, out ComponentID value))
                 {
                     return (value, (IDTable<T>)ComponentTable[value.RawIndex].Storage, (ComponentDelegates<T>.InitDelegate?)ComponentTable[value.RawIndex].Initer, (ComponentDelegates<T>.DestroyDelegate?)ComponentTable[value.RawIndex].Destroyer);
@@ -185,13 +185,13 @@ namespace Frent.Core
 
                 GlobalWorldTables.GrowComponentTagTableIfNeeded(id.RawIndex);
 
-                var initDelegate = (ComponentDelegates<T>.InitDelegate?)(GenerationServices.TypeIniters.TryGetValue(type, out var v) ? v : null);
-                var destroyDelegate = (ComponentDelegates<T>.DestroyDelegate?)(GenerationServices.TypeDestroyers.TryGetValue(type, out var v2) ? v2 : null);
+                ComponentDelegates<T>.InitDelegate? initDelegate = (ComponentDelegates<T>.InitDelegate?)(GenerationServices.TypeIniters.TryGetValue(type, out Delegate? v) ? v : null);
+                ComponentDelegates<T>.DestroyDelegate? destroyDelegate = (ComponentDelegates<T>.DestroyDelegate?)(GenerationServices.TypeDestroyers.TryGetValue(type, out Delegate? v2) ? v2 : null);
 
                 IDTable<T> stack = new IDTable<T>();
                 ComponentTable.Push(new ComponentData(type, stack,
-                    GenerationServices.TypeIniters.TryGetValue(type, out var v1) ? initDelegate : null,
-                    GenerationServices.TypeDestroyers.TryGetValue(type, out var d) ? destroyDelegate : null));
+                    GenerationServices.TypeIniters.TryGetValue(type, out Delegate? v1) ? initDelegate : null,
+                    GenerationServices.TypeDestroyers.TryGetValue(type, out Delegate? d) ? destroyDelegate : null));
 
                 return (id, stack, initDelegate, destroyDelegate);
             }
@@ -222,8 +222,8 @@ namespace Frent.Core
                 GlobalWorldTables.GrowComponentTagTableIfNeeded(id.RawIndex);
 
                 ComponentTable.Push(new ComponentData(t, GetComponentTable(t),
-                    GenerationServices.TypeIniters.TryGetValue(t, out var v) ? v : null,
-                    GenerationServices.TypeDestroyers.TryGetValue(t, out var d) ? d : null));
+                    GenerationServices.TypeIniters.TryGetValue(t, out Delegate? v) ? v : null,
+                    GenerationServices.TypeDestroyers.TryGetValue(t, out Delegate? d) ? d : null));
 
                 return id;
             }
@@ -236,9 +236,9 @@ namespace Frent.Core
         /// <returns>The id table</returns>
         private static IDTable GetComponentTable(Type type)
         {
-            if (NoneComponentRunnerTable.TryGetValue(type, out var fac))
+            if (NoneComponentRunnerTable.TryGetValue(type, out IComponentStorageBaseFactory? fac))
                 return (IDTable)fac.CreateStack();
-            if (GenerationServices.UserGeneratedTypeMap.TryGetValue(type, out var data))
+            if (GenerationServices.UserGeneratedTypeMap.TryGetValue(type, out (IComponentStorageBaseFactory Factory, int UpdateOrder) data))
                 return (IDTable)data.Factory.CreateStack();
             if (type == typeof(void))
                 return null!;

@@ -2,6 +2,7 @@ using Alis.Benchmark.EntityComponentSystem.Contexts;
 using BenchmarkDotNet.Attributes;
 using Frent;
 using Frent.Core;
+using Frent.Systems;
 using static Alis.Benchmark.EntityComponentSystem.Contexts.FrentBaseContext;
 
 namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent
@@ -44,7 +45,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent
         public void Frent_Bulk()
         {
             World world = _frent.World;
-            var chunks = world.CreateMany<Component1>(EntityCount);
+            ChunkTuple<Component1> chunks = world.CreateMany<Component1>(EntityCount);
 
             for (int i = 0; i < chunks.Span.Length; i++)
                 chunks.Span[i] = new();

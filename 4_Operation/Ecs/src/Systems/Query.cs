@@ -43,7 +43,7 @@ namespace Frent.Systems
         {
             World = world;
             _rules = rules;
-            foreach (var rule in rules)
+            foreach (Rule rule in rules)
                 if (rule == Rule.IncludeDisabledRule)
                 {
                     IncludeDisabled = true;
@@ -71,7 +71,7 @@ namespace Frent.Systems
         /// <returns>The bool</returns>
         private bool ArchetypeSatisfiesQuery(ArchetypeID id)
         {
-            foreach (var rule in _rules)
+            foreach (Rule rule in _rules)
             {
                 if (!rule.RuleApplies(id))
                 {

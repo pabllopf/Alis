@@ -28,8 +28,8 @@ namespace Frent.Systems
         /// <returns>The hash</returns>
         public static QueryHash New(ImmutableArray<Rule> rules)
         {
-            var hash = new QueryHash();
-            foreach (var rule in rules)
+            QueryHash hash = new QueryHash();
+            foreach (Rule rule in rules)
             {
                 hash.AddRule(rule);
             }

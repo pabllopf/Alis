@@ -40,7 +40,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
             {
                 for (int i = 0; i < entityCount; ++i)
                 {
-                    var entity = World.Entity();
+                    EntityView entity = World.Entity();
                     entity.Set<Component1>();
                     entity.Set(new Component2 { Value = 1 });
 

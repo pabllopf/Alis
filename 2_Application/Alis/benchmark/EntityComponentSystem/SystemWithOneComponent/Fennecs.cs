@@ -76,7 +76,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         {
             _fennecs.query.Raw(delegate(Memory<Component1> vectors)
             {
-                foreach (ref var v in vectors.Span)
+                foreach (ref Component1 v in vectors.Span)
                 {
                     v.Value++;
                 }

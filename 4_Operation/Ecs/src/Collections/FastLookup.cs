@@ -53,7 +53,7 @@ namespace Frent.Collections
             }
             else if (world.ArchetypeGraphEdges.TryGetValue(edgeKey = typeof(T) == typeof(ComponentID) ?
                          ArchetypeEdgeKey.Component(new(id.Value), archetype, edgeType) :
-                         ArchetypeEdgeKey.Tag(new(id.Value), archetype, edgeType), out var destination))
+                         ArchetypeEdgeKey.Tag(new(id.Value), archetype, edgeType), out Archetype? destination))
             {
                 //warm/cool depending on number of times they add/remove
                 return destination.ID;

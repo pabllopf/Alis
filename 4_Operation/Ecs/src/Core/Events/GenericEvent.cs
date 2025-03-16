@@ -51,7 +51,7 @@ namespace Frent.Core.Events
             if (_first == action)
             {
                 _first = null;
-                if (_invokationList.TryPop(out var v))
+                if (_invokationList.TryPop(out IGenericAction<Entity>? v))
                     _first = v;
             }
             else
@@ -71,7 +71,7 @@ namespace Frent.Core.Events
             if (_first is not null)
             {
                 _first.Invoke(entity, ref arg);
-                foreach (var item in _invokationList.AsSpan())
+                foreach (IGenericAction<Entity>? item in _invokationList.AsSpan())
                     item.Invoke(entity, ref arg);
             }
         }

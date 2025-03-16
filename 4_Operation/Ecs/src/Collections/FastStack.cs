@@ -67,7 +67,7 @@ namespace Frent.Collections
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Push(T comp)
         {
-            var buffer = _buffer;
+            T[]? buffer = _buffer;
             if ((uint)_nextIndex < (uint)buffer.Length)
                 buffer[_nextIndex++] = comp;
             else
@@ -96,8 +96,8 @@ namespace Frent.Collections
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public T Pop()
         {
-            var buffer = _buffer;
-            var next = buffer[--_nextIndex];
+            T[]? buffer = _buffer;
+            T? next = buffer[--_nextIndex];
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
                 buffer[_nextIndex] = default!;
             return next;
@@ -135,7 +135,7 @@ namespace Frent.Collections
         {
             Debug.Assert(Count > 0);
 
-            var buffer = _buffer;
+            T[]? buffer = _buffer;
             if (index < buffer.Length)
             {
                 buffer[index] = buffer[--_nextIndex];

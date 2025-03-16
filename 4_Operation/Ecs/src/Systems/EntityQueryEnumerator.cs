@@ -80,7 +80,7 @@ namespace Frent.Systems
 
                 if ((uint)_archetypeIndex < (uint)_archetypes.Length)
                 {
-                    var cur = _archetypes[_archetypeIndex];
+                    Archetype? cur = _archetypes[_archetypeIndex];
                     _entityIds = cur.GetEntitySpan();
                     _currentSpan1 = cur.GetComponentSpan<T>();
                 }
@@ -172,7 +172,7 @@ namespace Frent.Systems
 
             if ((uint)_archetypeIndex < (uint)_archetypes.Length)
             {
-                var cur = _archetypes[_archetypeIndex];
+                Archetype? cur = _archetypes[_archetypeIndex];
                 _entityIds = cur.GetEntitySpan();
                 return true;
             }
