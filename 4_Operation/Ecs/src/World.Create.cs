@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Frent.Core;
 using Frent.Systems;
 using Frent.Updating;
@@ -6,95 +6,90 @@ using Frent.Updating.Runners;
 
 using System.Runtime.CompilerServices;
 
-namespace Frent;
-
-
-
-
-
-
-
-//it just so happens Archetype and Create both end with "e"
-/// <summary>
-/// The world class
-/// </summary>
-partial class World
+namespace Frent
 {
+    //it just so happens Archetype and Create both end with "e"
     /// <summary>
-    /// Creates an <see cref="Entity"/> with the given component(s)
+    /// The world class
     /// </summary>
-    /// <returns>An <see cref="Entity"/> that can be used to acsess the component data</returns>
-    [Frent.SkipLocalsInit]
-    public Entity Create<T>(in T comp)
+    partial class World
     {
-        Archetype archetype = Archetype<T>.CreateNewOrGetExistingArchetype(this);
-
-        ref var entity = ref Unsafe.NullRef<EntityIDOnly>();
-        EntityLocation eloc = default;
-
-        ComponentStorageBase[] components;
-        Unsafe.SkipInit(out int index);
-        MemoryHelpers.Poison(ref index);
-
-        if (AllowStructualChanges)
+        /// <summary>
+        /// Creates an <see cref="Entity"/> with the given component(s)
+        /// </summary>
+        /// <returns>An <see cref="Entity"/> that can be used to acsess the component data</returns>
+        [Frent.SkipLocalsInit]
+        public Entity Create<T>(in T comp)
         {
-            components = archetype.Components;
-            entity = ref archetype.CreateEntityLocation(EntityFlags.None, out eloc);
-            index = eloc.Index;
-        }
-        else
-        {
-            entity = ref archetype.CreateDeferredEntityLocation(this, ref eloc, out index, out components);
-            eloc.Archetype = DeferredCreateArchetype;
-        }
+            Archetype archetype = Archetype<T>.CreateNewOrGetExistingArchetype(this);
 
-        //manually inlined from World.CreateEntityFromLocation
-        //The jit likes to inline the outer create function and not inline
-        //the inner functions - benchmarked to improve perf by 10-20%
-        var (id, version) = entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.PopUnsafe() : new(NextEntityID++, 0);
-        eloc.Version = version;
-        EntityTable[id] = eloc;
+            ref var entity = ref Unsafe.NullRef<EntityIDOnly>();
+            EntityLocation eloc = default;
 
-        //1x array lookup per component
-        ref T ref1 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T>>(components.UnsafeArrayIndex(Archetype<T>.OfComponent<T>.Index))[index]; ref1 = comp;
+            ComponentStorageBase[] components;
+            Unsafe.SkipInit(out int index);
+            MemoryHelpers.Poison(ref index);
 
-        Entity concreteEntity = new Entity(ID, version, id);
+            if (AllowStructualChanges)
+            {
+                components = archetype.Components;
+                entity = ref archetype.CreateEntityLocation(EntityFlags.None, out eloc);
+                index = eloc.Index;
+            }
+            else
+            {
+                entity = ref archetype.CreateDeferredEntityLocation(this, ref eloc, out index, out components);
+                eloc.Archetype = DeferredCreateArchetype;
+            }
+
+            //manually inlined from World.CreateEntityFromLocation
+            //The jit likes to inline the outer create function and not inline
+            //the inner functions - benchmarked to improve perf by 10-20%
+            var (id, version) = entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.PopUnsafe() : new(NextEntityID++, 0);
+            eloc.Version = version;
+            EntityTable[id] = eloc;
+
+            //1x array lookup per component
+            ref T ref1 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T>>(components.UnsafeArrayIndex(Archetype<T>.OfComponent<T>.Index))[index]; ref1 = comp;
+
+            Entity concreteEntity = new Entity(ID, version, id);
         
-        Component<T>.Initer?.Invoke(concreteEntity, ref ref1);
-        EntityCreatedEvent.Invoke(concreteEntity);
+            Component<T>.Initer?.Invoke(concreteEntity, ref ref1);
+            EntityCreatedEvent.Invoke(concreteEntity);
 
-        return concreteEntity;
-    }
-
-    /// <summary>
-    /// Creates a large amount of entities quickly
-    /// </summary>
-    /// <param name="count">The number of entities to create</param>
-    /// <returns>The entities created and their component spans</returns>
-    public ChunkTuple<T> CreateMany<T>(int count)
-    {
-        if (count < 0)
-            FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
-
-        Archetype archetype = Archetype<T>.CreateNewOrGetExistingArchetype(this);
-        int initalEntityCount = archetype.EntityCount;
-
-        EntityTable.EnsureCapacity(EntityCount + count);
-
-        Span<EntityIDOnly> entities = archetype.CreateEntityLocations(count, this);
-
-        if (EntityCreatedEvent.HasListeners)
-        {
-            foreach (var entity in entities)
-                EntityCreatedEvent.Invoke(entity.ToEntity(this));
+            return concreteEntity;
         }
 
-        var chunks = new ChunkTuple<T>()
+        /// <summary>
+        /// Creates a large amount of entities quickly
+        /// </summary>
+        /// <param name="count">The number of entities to create</param>
+        /// <returns>The entities created and their component spans</returns>
+        public ChunkTuple<T> CreateMany<T>(int count)
         {
-            Entities = new EntityEnumerator.EntityEnumerable(this, entities),
-            Span = archetype.GetComponentSpan<T>()[initalEntityCount..],
-        };
+            if (count < 0)
+                FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
 
-        return chunks;
+            Archetype archetype = Archetype<T>.CreateNewOrGetExistingArchetype(this);
+            int initalEntityCount = archetype.EntityCount;
+
+            EntityTable.EnsureCapacity(EntityCount + count);
+
+            Span<EntityIDOnly> entities = archetype.CreateEntityLocations(count, this);
+
+            if (EntityCreatedEvent.HasListeners)
+            {
+                foreach (var entity in entities)
+                    EntityCreatedEvent.Invoke(entity.ToEntity(this));
+            }
+
+            var chunks = new ChunkTuple<T>()
+            {
+                Entities = new EntityEnumerator.EntityEnumerable(this, entities),
+                Span = archetype.GetComponentSpan<T>()[initalEntityCount..],
+            };
+
+            return chunks;
+        }
     }
 }

@@ -1,57 +1,58 @@
 using System;
 
-namespace Frent.Core;
-
-/// <summary>
-/// Represents a specific type as a tag, and can be used for tag related queries
-/// </summary>
-public readonly struct TagID : ITypeID, IEquatable<TagID>
+namespace Frent.Core
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="TagID"/> class
+    /// Represents a specific type as a tag, and can be used for tag related queries
     /// </summary>
-    /// <param name="id">The id</param>
-    internal TagID(ushort id) => RawValue = id;
-    /// <summary>
-    /// The raw value
-    /// </summary>
-    internal readonly ushort RawValue;
+    public readonly struct TagID : ITypeID, IEquatable<TagID>
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TagID"/> class
+        /// </summary>
+        /// <param name="id">The id</param>
+        internal TagID(ushort id) => RawValue = id;
+        /// <summary>
+        /// The raw value
+        /// </summary>
+        internal readonly ushort RawValue;
 
-    /// <summary>
-    /// The type that this TagID represents
-    /// </summary>
-    public Type Type => Tag.TagTable[RawValue];
+        /// <summary>
+        /// The type that this TagID represents
+        /// </summary>
+        public Type Type => Tag.TagTable[RawValue];
 
-    /// <summary>
-    /// Gets the value of the value
-    /// </summary>
-    ushort ITypeID.Value => RawValue;
+        /// <summary>
+        /// Gets the value of the value
+        /// </summary>
+        ushort ITypeID.Value => RawValue;
 
-    /// <summary>
-    /// Checks if this TagID instance represents the same type as <paramref name="other"/>
-    /// </summary>
-    /// <param name="other">The tag to compare against</param>
-    /// <returns><see langword="true"/> when they represent the same type, <see langword="false"/> otherwise</returns>
-    public readonly bool Equals(TagID other) => other.RawValue == RawValue;
-    /// <summary>
-    /// Checks if this TagID instance represents the same type as <paramref name="other"/>
-    /// </summary>
-    /// <param name="other">The tag to compare against</param>
-    /// <returns><see langword="true"/> when they represent the same type, <see langword="false"/> otherwise</returns>
-    public override bool Equals(object? other) => other is TagID t && RawValue == t.RawValue;
-    /// <summary>
-    /// Checks if two <see cref="TagID"/>s represent the same type
-    /// </summary>
-    /// <returns><see langword="true"/> when they represent the same type, <see langword="false"/> otherwise</returns>
-    public static bool operator ==(TagID left, TagID right) => left.RawValue == right.RawValue;
-    /// <summary>
-    /// Checks if two <see cref="TagID"/>s represent a different type
-    /// </summary>
-    /// <returns><see langword="false"/> when they represent the same type, <see langword="true"/> otherwise</returns>
-    public static bool operator !=(TagID left, TagID right) => left.RawValue != right.RawValue;
-    /// <summary>
-    /// Gets the hashcode of this <see cref="TagID"/>
-    /// </summary>
-    /// <returns>A unique code representing the <see cref="TagID"/></returns>
-    public override int GetHashCode() => RawValue;
+        /// <summary>
+        /// Checks if this TagID instance represents the same type as <paramref name="other"/>
+        /// </summary>
+        /// <param name="other">The tag to compare against</param>
+        /// <returns><see langword="true"/> when they represent the same type, <see langword="false"/> otherwise</returns>
+        public readonly bool Equals(TagID other) => other.RawValue == RawValue;
+        /// <summary>
+        /// Checks if this TagID instance represents the same type as <paramref name="other"/>
+        /// </summary>
+        /// <param name="other">The tag to compare against</param>
+        /// <returns><see langword="true"/> when they represent the same type, <see langword="false"/> otherwise</returns>
+        public override bool Equals(object? other) => other is TagID t && RawValue == t.RawValue;
+        /// <summary>
+        /// Checks if two <see cref="TagID"/>s represent the same type
+        /// </summary>
+        /// <returns><see langword="true"/> when they represent the same type, <see langword="false"/> otherwise</returns>
+        public static bool operator ==(TagID left, TagID right) => left.RawValue == right.RawValue;
+        /// <summary>
+        /// Checks if two <see cref="TagID"/>s represent a different type
+        /// </summary>
+        /// <returns><see langword="false"/> when they represent the same type, <see langword="true"/> otherwise</returns>
+        public static bool operator !=(TagID left, TagID right) => left.RawValue != right.RawValue;
+        /// <summary>
+        /// Gets the hashcode of this <see cref="TagID"/>
+        /// </summary>
+        /// <returns>A unique code representing the <see cref="TagID"/></returns>
+        public override int GetHashCode() => RawValue;
+    }
 }
