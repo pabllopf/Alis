@@ -1,7 +1,7 @@
 ﻿using System;
 using Frent.Collections;
 using Frent.Core;
-using Frent.Variadic.Generator;
+
 using System.Collections.Immutable;
 
 namespace Frent.Systems;
@@ -52,7 +52,7 @@ public partial class Query
     }
 }
 
-[Variadic("<T>", "<|T$, |>")]
+
 partial class Query
 {
     public QueryEnumerator<T>.QueryEnumerable Enumerate<T>() => new(this);

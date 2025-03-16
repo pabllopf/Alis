@@ -3,19 +3,17 @@ using Frent.Core;
 using Frent.Systems;
 using Frent.Updating;
 using Frent.Updating.Runners;
-using Frent.Variadic.Generator;
+
 using System.Runtime.CompilerServices;
 
 namespace Frent;
 
-[Variadic("        ref T ref1 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T>>(components.UnsafeArrayIndex(Archetype<T>.OfComponent<T>.Index))[index]; ref1 = comp;",
-    "|        ref T$ ref$ = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T$>>(components.UnsafeArrayIndex(Archetype<T>.OfComponent<T$>.Index))[index]; ref$ = comp$;\n|")]
-[Variadic("        Component<T>.Initer?.Invoke(concreteEntity, ref ref1);",
-    "|        Component<T$>.Initer?.Invoke(concreteEntity, ref ref$);\n|")]
-[Variadic("            Span = archetype.GetComponentSpan<T>()[initalEntityCount..],", "|            Span$ = archetype.GetComponentSpan<T$>()[initalEntityCount..],\n|")]
-[Variadic("e<T>", "e<|T$, |>")]
-[Variadic("y<T>", "y<|T$, |>")]
-[Variadic("in T comp", "|in T$ comp$, |")]
+
+
+
+
+
+
 //it just so happens Archetype and Create both end with "e"
 partial class World
 {

@@ -1,4 +1,4 @@
-﻿using Frent.Variadic.Generator;
+﻿
 using static Frent.AttributeHelpers;
 
 namespace Frent.Components;
@@ -15,8 +15,8 @@ public interface IEntityUniformComponent<TUniform> : IComponentBase
 /// <summary>
 /// Indicates a component should be updated with itself as an argument and a uniform of type <typeparamref name="TUniform"/>, along with the specified components
 /// </summary>
-[Variadic(TArgFrom, TArgPattern)]
-[Variadic(RefArgFrom, RefArgPattern)]
+
+
 public interface IEntityUniformComponent<TUniform, TArg> : IComponentBase
 {
     /// <inheritdoc cref="IComponent.Update"/>

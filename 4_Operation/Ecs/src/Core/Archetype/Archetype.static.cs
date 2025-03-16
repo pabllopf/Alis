@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using Frent.Collections;
 using Frent.Core.Structures;
 using Frent.Updating;
-using Frent.Variadic.Generator;
+
 using System.Collections.Immutable;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace Frent.Core;
 
-[Variadic("            i = map.UnsafeArrayIndex(Component<T>.ID.RawIndex) & GlobalWorldTables.IndexBits; runners[i] = Component<T>.CreateInstance(1); tmpStorages[i] = Component<T>.CreateInstance(0);",
-    "|            i = map.UnsafeArrayIndex(Component<T$>.ID.RawIndex) & GlobalWorldTables.IndexBits; runners[i] = Component<T$>.CreateInstance(1); tmpStorages[i] = Component<T$>.CreateInstance(0);\n|")]
-[Variadic("Archetype<T>", "Archetype<|T$, |>")]
-[Variadic("typeof(T)", "|typeof(T$), |")]
-[Variadic("Component<T>.ID", "|Component<T$>.ID, |")]
+
+
+
+
 internal static class Archetype<T>
 {
     public static readonly ImmutableArray<ComponentID> ArchetypeComponentIDs = new ComponentID[] { Component<T>.ID }.ToImmutableArray();

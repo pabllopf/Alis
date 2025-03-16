@@ -1,14 +1,12 @@
-﻿using Frent.Variadic.Generator;
+﻿
 using System.Runtime.CompilerServices;
 
 namespace Frent.Systems;
 
-[Variadic("            ref T c1 = ref archetype.GetComponentDataReference<T>();",
-    "|            ref T$ c$ = ref archetype.GetComponentDataReference<T$>();\n|")]
-[Variadic("                c1 = ref Unsafe.Add(ref c1, 1);",
-    "|                c$ = ref Unsafe.Add(ref c$, 1);\n|")]
-[Variadic("T>", "|T$, |>")]
-[Variadic("ref c1)", "|ref c$, |)")]
+
+
+
+
 public static partial class QueryIterationExtensions
 {
     public static void Delegate<T>(this Query query, QueryDelegates.Query<T> action)

@@ -3,7 +3,7 @@ using Frent.Core;
 using Frent.Core.Structures;
 using Frent.Updating;
 using Frent.Updating.Runners;
-using Frent.Variadic.Generator;
+
 using System.Runtime.CompilerServices;
 
 namespace Frent;
@@ -11,10 +11,9 @@ namespace Frent;
 /// <summary>
 /// Deconstruction extensions for entities.
 /// </summary>
-[Variadic("Deconstruct<T>", "Deconstruct<|T$, |>", 8)]
-[Variadic("out Ref<T> comp", "|out Ref<T$> comp$, |")]
-[Variadic("        comp = GetComp<T>(archetypeTable, comps, eloc.Index);",
-    "|        comp$ = GetComp<T$>(archetypeTable, comps, eloc.Index);\n|")]
+
+
+
 public static partial class EntityExtensions
 {
     /// <summary>

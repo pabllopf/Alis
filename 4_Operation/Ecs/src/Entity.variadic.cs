@@ -4,32 +4,31 @@ using Frent.Core;
 using Frent.Core.Events;
 using Frent.Updating;
 using Frent.Updating.Runners;
-using Frent.Variadic.Generator;
+
 using System.Collections.Immutable;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace Frent;
 
-[Variadic("[null!]", "[|null!, |]", 8)]
-[Variadic("        events.GenericEvent!.Invoke(entity, ref component);", "|        events.GenericEvent!.Invoke(entity, ref component$);\n|")]
-[Variadic("        events.NormalEvent.Invoke(entity, Component<T>.ID);", "|        events.NormalEvent.Invoke(entity, Component<T$>.ID);\n|")]
-[Variadic("            world.WorldUpdateCommandBuffer.AddComponent(this, c1);", "|            world.WorldUpdateCommandBuffer.AddComponent(this, c$);\n|")]
-[Variadic("            world.WorldUpdateCommandBuffer.RemoveComponent(this, Component<T>.ID);", "|            world.WorldUpdateCommandBuffer.RemoveComponent(this, Component<T$>.ID);\n|")]
-[Variadic("ref T component", "|ref T$ component$, |")]
-[Variadic("in T c1", "|in T$ c$, |")]
-[Variadic("stackalloc ComponentHandle[1]", "stackalloc ComponentHandle[|1 + |0]")]
-[Variadic("        @event.InvokeInternal(entity, Component<T>.ID);", "|        @event.InvokeInternal(entity, Component<T$>.ID);\n|")]
 
-[Variadic("        @event.InvokeInternal(entity, Core.Tag<T>.ID);", "|        @event.InvokeInternal(entity, Core.Tag<T$>.ID);\n|")]
-[Variadic("        events.Invoke(entity, Core.Tag<T>.ID);", "|        events.Invoke(entity, Core.Tag<T$>.ID);\n|")]
 
-[Variadic("        Component<T>.Initer?.Invoke(this, ref c1ref);", "|        Component<T$>.Initer?.Invoke(this, ref c$ref);\n|")]
-[Variadic("        ref var c1ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T>>(buff.UnsafeSpanIndex(0))[nextLocation.Index]; c1ref = c1;",
-    "|        ref var c$ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T$>>(buff.UnsafeSpanIndex($ - 1))[nextLocation.Index]; c$ref = c$;\n|")]
-[Variadic("Core.Tag<T>.ID", "[|Core.Tag<T$>.ID, |]")]
-[Variadic("Component<T>.ID", "[|Component<T$>.ID, |]")]
-[Variadic("<T>", "<|T$, |>")]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 partial struct Entity
 {
     //traversing archetype graph strategy:

@@ -35,30 +35,15 @@
     <ItemGroup Condition="$(AssemblyName.Contains('App')) == true">
         <PackageReference Include="MonoMac.NetStandard" Version="0.0.4"/>
     </ItemGroup>
-
-    <ItemGroup Condition="$(AssemblyName.Contains('Generator')) == true">
-        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.11.0" PrivateAssets="all" />
-        <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4" PrivateAssets="all" />
-        <PackageReference Include="Microsoft.Bcl.HashCode" Version="1.1.1" />
-    </ItemGroup>
-
-    <PropertyGroup Condition="$(AssemblyName.Contains('Generator')) == true">
-        <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
-    </PropertyGroup>
-
-    <ItemGroup Condition="$(AssemblyName.Contains('Ecs')) == true AND $(AssemblyName.Contains('Generator')) == false">
+    
+    <ItemGroup>
         <PackageReference Include="CommunityToolkit.HighPerformance" Version="7.0.1" />
         <PackageReference Include="System.Collections.Immutable" Version="1.6.0" />
     </ItemGroup>
 
-    <ItemGroup Condition="Exists('$(ProjectDir)../generator/') == True AND $(AssemblyName.Contains('Generator')) == false">
-        <ProjectReference Include="$(ProjectDir)../generator/*.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
-    </ItemGroup>
-
     <ItemGroup Condition="$(AssemblyName.Contains('Benchmark')) == true">
         <PackageReference Include="BenchmarkDotNet" Version="0.14.0"/>
-
-
+        
         <PackageReference Include="Arch.System" Version="1.0.5" />
         <PackageReference Include="Arch.System.SourceGenerator" Version="1.2.1" />
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0" PrivateAssets="all" />

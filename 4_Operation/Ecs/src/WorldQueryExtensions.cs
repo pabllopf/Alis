@@ -1,13 +1,13 @@
 ﻿using Frent.Core;
 using Frent.Systems;
-using Frent.Variadic.Generator;
+
 using System.Runtime.InteropServices;
 
 namespace Frent;
 
-[Variadic("<T>", "<|T$, |>")]
-[Variadic("default(T).Rule", "|default(T$).Rule, |")]
-[Variadic("        where T : struct, IRuleProvider", "|        where T$ : struct, IRuleProvider\n|")]
+
+
+
 public static partial class WorldQueryExtensions
 {
     //we could use static abstract methods IF NOT FOR DOTNET6

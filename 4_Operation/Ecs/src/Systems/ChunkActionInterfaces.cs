@@ -1,5 +1,5 @@
 ﻿using System;
-using Frent.Variadic.Generator;
+
 using static Frent.AttributeHelpers;
 
 namespace Frent.Systems;
@@ -8,8 +8,8 @@ namespace Frent.Systems;
 /// An arbitary function that operates over a range of components
 /// </summary>
 /// <remarks>Used for SIMD</remarks>
-[Variadic(SpanArgFrom, SpanArgPattern)]
-[Variadic(TArgFrom, TArgPattern)]
+
+
 public interface IChunkAction<TArg>
 {
     /// <summary>
@@ -23,8 +23,8 @@ public interface IChunkAction<TArg>
 /// </summary>
 /// <remarks>Used for SIMD</remarks>
 
-[Variadic(SpanArgFrom, SpanArgPattern)]
-[Variadic(TArgFrom, TArgPattern)]
+
+
 public interface IEntityChunkAction<TArg>
 {
     /// <summary>
@@ -49,8 +49,8 @@ public interface IEntityChunkAction
 /// An arbitary function that operates over a range of components
 /// </summary>
 /// <remarks>Used for SIMD</remarks>
-[Variadic(SpanArgFrom, SpanArgPattern)]
-[Variadic(TArgFrom, TArgPattern)]
+
+
 public interface IEntityUniformChunkAction<TUniform, TArg>
 {
     /// <summary>
@@ -75,8 +75,8 @@ public interface IEntityUniformChunkAction<TUniform>
 /// An arbitary function that operates over a range of components
 /// </summary>
 /// <remarks>Used for SIMD</remarks>
-[Variadic(SpanArgFrom, SpanArgPattern)]
-[Variadic(TArgFrom, TArgPattern)]
+
+
 public interface IUniformChunkAction<TUniform, TArg>
 {
     /// <summary>
