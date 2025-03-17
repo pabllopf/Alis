@@ -99,10 +99,10 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
                 {
                     Entity e = (entityCount % 4) switch
                     {
-                        0 => World.Create<Component1, Component2, Padding1>(default, new() {Value = 1}, default),
-                        1 => World.Create<Component1, Component2, Padding2>(default, new() {Value = 1}, default),
-                        2 => World.Create<Component1, Component2, Padding3>(default, new() {Value = 1}, default),
-                        _ => World.Create<Component1, Component2, Padding4>(default, new() {Value = 1}, default)
+                        0 => World.Create<Component1, Component2, Padding1>(default, new Component2 {Value = 1}, default),
+                        1 => World.Create<Component1, Component2, Padding2>(default, new Component2 {Value = 1}, default),
+                        2 => World.Create<Component1, Component2, Padding3>(default, new Component2 {Value = 1}, default),
+                        _ => World.Create<Component1, Component2, Padding4>(default, new Component2 {Value = 1}, default)
                     };
                 }
 

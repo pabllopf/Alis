@@ -54,7 +54,7 @@ namespace Alis.Core.Ecs.Core
         /// </summary>
         /// <param name="world">The world</param>
         /// <returns>The entity</returns>
-        internal Entity ToEntity(World world) => new Entity(world.ID, Version, ID);
+        internal Entity ToEntity(World world) => new Entity(world.Id, Version, ID);
 
         /// <summary>
         ///     Deconstructs the id

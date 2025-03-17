@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:FlecsNet.cs
+//  File:Frent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,36 +28,53 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Benchmark.EntityComponentSystem.Contexts;
-using Alis.Benchmark.EntityComponentSystem.Contexts.Arch_Components;
+using Alis.Core.Ecs.Core;
+using Alis.Core.Ecs;
+using Alis.Core.Ecs.Systems;
 using BenchmarkDotNet.Attributes;
-using Flecs.NET.Core;
+using static Alis.Benchmark.EntityComponentSystem.Contexts.AlisBaseContext;
 
-namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents
+namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent
 {
     /// <summary>
-    ///     The create entity with two components class
+    ///     The create entity with one component class
     /// </summary>
-    public partial class CreateEntityWithTwoComponents
+    public partial class CreateEntityWithOneComponent
     {
         /// <summary>
-        ///     The flecs
+        ///     The id
         /// </summary>
-        [Context] private readonly FlecsNetBaseContext _flecs;
+        private static readonly EntityType _entityAlisType = Entity.EntityTypeOf([Component<Component1>.ID], []);
 
         /// <summary>
-        ///     Flecses the net
+        ///     The frent
         /// </summary>
-        [BenchmarkCategory(Categories.FlecsNet), Benchmark]
-        public void FlecsNet()
-        {
-            World world = _flecs.World;
+        [Context] private readonly AlisBaseContext _alis;
 
-            for (int i = 0; i < EntityCount; ++i)
-            {
-                world.Entity()
-                    .Set<Component1>(new Component1())
-                    .Set<Component2>(new Component2());
-            }
+        /// <summary>
+        ///     Frents this instance
+        /// </summary>
+        [BenchmarkCategory(Categories.Alis), Benchmark]
+        public void Alis()
+        {
+            World world = _alis.World;
+            world.EnsureCapacity(_entityAlisType, EntityCount);
+
+            for (int i = 0; i < EntityCount; i++)
+                world.Create<Component1>(default);
+        }
+
+        /// <summary>
+        ///     Frents the bulk
+        /// </summary>
+        [BenchmarkCategory(Categories.Alis), Benchmark]
+        public void Alis_Bulk()
+        {
+            World world = _alis.World;
+            ChunkTuple<Component1> chunks = world.CreateMany<Component1>(EntityCount);
+
+            for (int i = 0; i < chunks.Span.Length; i++)
+                chunks.Span[i] = new Component1();
         }
     }
 }

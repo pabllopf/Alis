@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:FlecsNet.cs
+//  File:FrentBaseContext.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,37 +27,58 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Benchmark.EntityComponentSystem.Contexts;
-using Alis.Benchmark.EntityComponentSystem.Contexts.Arch_Components;
-using BenchmarkDotNet.Attributes;
-using Flecs.NET.Core;
+using System;
+using Alis.Core.Ecs;
 
-namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents
+namespace Alis.Benchmark.EntityComponentSystem.Contexts
 {
     /// <summary>
-    ///     The create entity with two components class
+    ///     The frent base context class
     /// </summary>
-    public partial class CreateEntityWithTwoComponents
+    /// <seealso cref="IDisposable" />
+    internal class AlisBaseContext : IDisposable
     {
         /// <summary>
-        ///     The flecs
+        ///     Gets the value of the world
         /// </summary>
-        [Context] private readonly FlecsNetBaseContext _flecs;
+        public World World { get; } = new World();
 
         /// <summary>
-        ///     Flecses the net
+        ///     Disposes this instance
         /// </summary>
-        [BenchmarkCategory(Categories.FlecsNet), Benchmark]
-        public void FlecsNet()
-        {
-            World world = _flecs.World;
+        public void Dispose() => World.Dispose();
 
-            for (int i = 0; i < EntityCount; ++i)
-            {
-                world.Entity()
-                    .Set<Component1>(new Component1())
-                    .Set<Component2>(new Component2());
-            }
+        /// <summary>
+        ///     The component
+        /// </summary>
+        internal struct Component1
+        {
+            /// <summary>
+            ///     The value
+            /// </summary>
+            public int Value;
+        }
+
+        /// <summary>
+        ///     The component
+        /// </summary>
+        internal struct Component2
+        {
+            /// <summary>
+            ///     The value
+            /// </summary>
+            public int Value;
+        }
+
+        /// <summary>
+        ///     The component
+        /// </summary>
+        internal struct Component3
+        {
+            /// <summary>
+            ///     The value
+            /// </summary>
+            public int Value;
         }
     }
 }

@@ -108,7 +108,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
             {
                 for (int i = 0; i < entityCount; i++)
                 {
-                    World.Create<Component1, Component2, Component3>(default, new() {Value = 1}, new() {Value = 1});
+                    World.Create<Component1, Component2, Component3>(default, new Component2 {Value = 1}, new Component3 {Value = 1});
                 }
 
                 Query = World.Query<With<Component1>, With<Component2>, With<Component3>>();

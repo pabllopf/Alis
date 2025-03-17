@@ -54,7 +54,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The next world id
         /// </summary>
-        private static ushort _nextWorldID = 1;
+        private static ushort _nextWorldId = 1;
 
 
         //entityID -> entity metadata
@@ -87,12 +87,12 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The next entity id
         /// </summary>
-        internal int NextEntityID;
+        internal int NextEntityId;
 
         /// <summary>
         ///     The id
         /// </summary>
-        internal readonly ushort ID;
+        internal readonly ushort Id;
 
         /// <summary>
         ///     The default world entity
@@ -324,7 +324,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Gets the current number of entities managed by the world.
         /// </summary>
-        public int EntityCount => NextEntityID - RecycledEntityIds.Count;
+        public int EntityCount => NextEntityId - RecycledEntityIds.Count;
 
         /// <summary>
         ///     The current world config.
@@ -350,14 +350,14 @@ namespace Alis.Core.Ecs
         {
             CurrentConfig = config ?? Config.Singlethreaded;
             _uniformProvider = uniformProvider ?? NullUniformProvider.Instance;
-            ID = _nextWorldID++;
+            Id = _nextWorldId++;
 
-            GlobalWorldTables.Worlds[ID] = this;
+            GlobalWorldTables.Worlds[Id] = this;
 
             WorldArchetypeTable = new Archetype[GlobalWorldTables.ComponentTagLocationTable.Length];
 
             WorldUpdateCommandBuffer = new CommandBuffer(this);
-            DefaultWorldEntity = new Entity(ID, default, default);
+            DefaultWorldEntity = new Entity(Id, default, default);
             DefaultArchetype = Archetype.CreateOrGetExistingArchetype([], [], this, ImmutableArray<ComponentID>.Empty, ImmutableArray<TagID>.Empty);
             DeferredCreateArchetype = Archetype.CreateOrGetExistingArchetype(Archetype.DeferredCreate, this);
         }
@@ -369,10 +369,10 @@ namespace Alis.Core.Ecs
         /// <returns>The entity</returns>
         internal Entity CreateEntityFromLocation(EntityLocation entityLocation)
         {
-            (int id, ushort version) = RecycledEntityIds.TryPop(out EntityIDOnly v) ? v : new EntityIDOnly(NextEntityID++, 0);
+            (int id, ushort version) = RecycledEntityIds.TryPop(out EntityIDOnly v) ? v : new EntityIDOnly(NextEntityId++, 0);
             entityLocation.Version = version;
             EntityTable[id] = entityLocation;
-            return new Entity(ID, version, id);
+            return new Entity(Id, version, id);
         }
 
         /// <summary>
@@ -592,7 +592,7 @@ namespace Alis.Core.Ecs
                 throw new InvalidOperationException("World is already disposed!");
             }
 
-            GlobalWorldTables.Worlds[ID] = null!;
+            GlobalWorldTables.Worlds[Id] = null!;
 
             foreach (ref Archetype? item in WorldArchetypeTable.AsSpan())
                 if (item is not null)
@@ -627,10 +627,10 @@ namespace Alis.Core.Ecs
 
             Archetype archetype = Archetype.CreateOrGetExistingArchetype(types!, [], this);
 
-            ref EntityIDOnly entityID = ref archetype.CreateEntityLocation(EntityFlags.None, out EntityLocation loc);
+            ref EntityIDOnly entityId = ref archetype.CreateEntityLocation(EntityFlags.None, out EntityLocation loc);
             Entity entity = CreateEntityFromLocation(loc);
-            entityID.ID = entity.EntityID;
-            entityID.Version = entity.EntityVersion;
+            entityId.ID = entity.EntityID;
+            entityId.Version = entity.EntityVersion;
 
             Span<ComponentStorageBase> archetypeComponents = archetype.Components.AsSpan()[..components.Length];
             for (int i = 1; i < archetypeComponents.Length; i++)
@@ -661,11 +661,11 @@ namespace Alis.Core.Ecs
         {
             ref EntityIDOnly entity = ref DefaultArchetype.CreateEntityLocation(EntityFlags.None, out EntityLocation eloc);
 
-            (int id, ushort version) = entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.PopUnsafe() : new EntityIDOnly(NextEntityID++, 0);
+            (int id, ushort version) = entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.PopUnsafe() : new EntityIDOnly(NextEntityId++, 0);
             eloc.Version = version;
             EntityTable[id] = eloc;
 
-            return new Entity(ID, version, id);
+            return new Entity(Id, version, id);
         }
 
         /// <summary>
@@ -766,7 +766,7 @@ namespace Alis.Core.Ecs
             //manually inlined from World.CreateEntityFromLocation
             //The jit likes to inline the outer create function and not inline
             //the inner functions - benchmarked to improve perf by 10-20%
-            (int id, ushort version) = entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.PopUnsafe() : new(NextEntityID++, 0);
+            (int id, ushort version) = entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.PopUnsafe() : new(NextEntityId++, 0);
             eloc.Version = version;
             EntityTable[id] = eloc;
 
@@ -774,7 +774,7 @@ namespace Alis.Core.Ecs
             ref T ref1 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T>>(components.UnsafeArrayIndex(Archetype<T>.OfComponent<T>.Index))[index];
             ref1 = comp;
 
-            Entity concreteEntity = new Entity(ID, version, id);
+            Entity concreteEntity = new Entity(Id, version, id);
 
             Component<T>.Initer?.Invoke(concreteEntity, ref ref1);
             EntityCreatedEvent.Invoke(concreteEntity);
@@ -821,10 +821,10 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="entity">The entity</param>
         /// <param name="lookup">The lookup</param>
-        /// <param name="componentID">The component id</param>
-        internal void RemoveComponent(Entity entity, ref EntityLocation lookup, ComponentID componentID)
+        /// <param name="componentId">The component id</param>
+        internal void RemoveComponent(Entity entity, ref EntityLocation lookup, ComponentID componentId)
         {
-            Archetype destination = RemoveComponentLookup.FindAdjacentArchetypeID(componentID, lookup.ArchetypeID, this, ArchetypeEdgeType.RemoveComponent)
+            Archetype destination = RemoveComponentLookup.FindAdjacentArchetypeID(componentId, lookup.ArchetypeID, this, ArchetypeEdgeType.RemoveComponent)
                 .Archetype(this);
 
             Span<ComponentHandle> tmpHandleSpan = [default!];
@@ -836,12 +836,12 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="entity">The entity</param>
         /// <param name="lookup">The lookup</param>
-        /// <param name="componentID">The component id</param>
+        /// <param name="componentId">The component id</param>
         /// <param name="runner">The runner</param>
         /// <param name="entityLocation">The entity location</param>
-        internal void AddComponent(Entity entity, ref EntityLocation lookup, ComponentID componentID, ref ComponentStorageBase runner, out EntityLocation entityLocation)
+        internal void AddComponent(Entity entity, ref EntityLocation lookup, ComponentID componentId, ref ComponentStorageBase runner, out EntityLocation entityLocation)
         {
-            Archetype destination = AddComponentLookup.FindAdjacentArchetypeID(componentID, lookup.ArchetypeID, this, ArchetypeEdgeType.AddComponent)
+            Archetype destination = AddComponentLookup.FindAdjacentArchetypeID(componentId, lookup.ArchetypeID, this, ArchetypeEdgeType.AddComponent)
                 .Archetype(this);
             Span<ComponentStorageBase> runnerSpan = [null!];
             MoveEntityToArchetypeAdd(runnerSpan, entity, ref lookup, out entityLocation, destination);

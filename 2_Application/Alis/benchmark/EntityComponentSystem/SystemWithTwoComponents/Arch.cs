@@ -50,7 +50,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
         /// <summary>
         ///     The filter
         /// </summary>
-        private static readonly QueryDescription _queryDescription = new() {All = _filter};
+        private static readonly QueryDescription _queryDescription = new QueryDescription {All = _filter};
 
         /// <summary>
         ///     The arch
