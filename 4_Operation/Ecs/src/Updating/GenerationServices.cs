@@ -84,7 +84,9 @@ namespace Alis.Core.Ecs.Updating
         public static void RegisterType(Type type, object fact)
         {
             if (fact is not IComponentStorageBaseFactory value)
+            {
                 throw new InvalidOperationException("Source generation appears to be broken. This method should not be called from user code!");
+            }
 
             if (UserGeneratedTypeMap.TryGetValue(type, out (IComponentStorageBaseFactory Factory, int UpdateOrder) val))
             {
@@ -105,7 +107,10 @@ namespace Alis.Core.Ecs.Updating
         public static void RegisterUpdateMethodAttribute(Type attributeType, Type componentType)
         {
             if (!TypeAttributeCache.TryGetValue(attributeType, out HashSet<Type>? set))
+            {
                 set = TypeAttributeCache[attributeType] = [];
+            }
+
             set.Add(componentType);
         }
     }

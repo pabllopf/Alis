@@ -86,7 +86,9 @@ namespace Alis.Core.Ecs.Collections
             {
                 index = _nextIndex++;
                 if (index == _buffer.Length)
+                {
                     Double();
+                }
             }
 
             SetValue(toStore, index);
@@ -192,7 +194,9 @@ namespace Alis.Core.Ecs.Collections
             {
                 index = _nextIndex++;
                 if (index == _buffer.Length)
+                {
                     Double();
+                }
             }
 
             return ref Buffer[index];

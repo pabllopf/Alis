@@ -100,9 +100,13 @@ namespace Alis.Core.Ecs.Collections
         {
             T[]? buffer = _buffer;
             if ((uint) _nextIndex < (uint) buffer.Length)
+            {
                 buffer[_nextIndex++] = comp;
+            }
             else
+            {
                 ResizeAndPush(comp);
+            }
         }
 
         /// <summary>
@@ -130,7 +134,10 @@ namespace Alis.Core.Ecs.Collections
             T[]? buffer = _buffer;
             T? next = buffer[--_nextIndex];
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+            {
                 buffer[_nextIndex] = default!;
+            }
+
             return next;
         }
 
@@ -144,7 +151,9 @@ namespace Alis.Core.Ecs.Collections
         public bool TryPop(out T? value)
         {
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+            {
                 throw new NotImplementedException();
+            }
 
             if (_nextIndex == 0)
             {
@@ -171,7 +180,9 @@ namespace Alis.Core.Ecs.Collections
             {
                 buffer[index] = buffer[--_nextIndex];
                 if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+                {
                     buffer[_nextIndex] = default!;
+                }
             }
         }
 
@@ -187,7 +198,10 @@ namespace Alis.Core.Ecs.Collections
         public void Clear()
         {
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+            {
                 AsSpan().Clear();
+            }
+
             _nextIndex = 0;
         }
 

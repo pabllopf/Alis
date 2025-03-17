@@ -291,7 +291,9 @@ namespace Alis.Core.Ecs.Core
             bool hasItems = _deleteEntityBuffer.Count > 0 | _createEntityBuffer.Count > 0 | _removeComponentBuffer.Count > 0 | _addComponentBuffer.Count > 0;
 
             if (!hasItems)
+            {
                 return hasItems;
+            }
 
             while (_createEntityBuffer.TryPop(out CreateCommand createCommand))
             {

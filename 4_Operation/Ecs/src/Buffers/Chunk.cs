@@ -92,7 +92,9 @@ namespace Alis.Core.Ecs.Buffers
         {
             //these arrays are too small to pool
             if (newChunkIndex == chunks.Length)
+            {
                 Array.Resize(ref chunks, newChunkIndex << 1);
+            }
 
             Chunk<TData> nextChunk = new Chunk<TData>(size);
             chunks[newChunkIndex] = nextChunk;

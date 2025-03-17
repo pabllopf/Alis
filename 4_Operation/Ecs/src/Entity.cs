@@ -187,7 +187,10 @@ namespace Alis.Core.Ecs
             //hardware trap
             ref EntityLocation lookup = ref world.EntityTable.UnsafeIndexNoResize(EntityID);
             if (lookup.Version != EntityVersion)
+            {
                 Throw_EntityIsDead();
+            }
+
             return ref lookup;
         }
 
@@ -201,12 +204,16 @@ namespace Alis.Core.Ecs
         private Ref<T> TryGetCore<T>(out bool exists)
         {
             if (!InternalIsAlive(out World _, out EntityLocation entityLocation))
+            {
                 goto doesntExist;
+            }
 
             int compIndex = GlobalWorldTables.ComponentIndex(entityLocation.ArchetypeID, Component<T>.ID);
 
             if (compIndex == 0)
+            {
                 goto doesntExist;
+            }
 
             exists = true;
             ComponentStorage<T> storage = UnsafeExtensions.UnsafeCast<ComponentStorage<T>>(
@@ -272,7 +279,9 @@ namespace Alis.Core.Ecs
                 get
                 {
                     if (!target.InternalIsAlive(out World? world, out EntityLocation eloc))
+                    {
                         return [];
+                    }
 
                     Dictionary<Type, object> components = [];
 

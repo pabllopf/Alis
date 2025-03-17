@@ -100,7 +100,10 @@ namespace Alis.Core.Ecs.Core
         public T Retrieve<T>()
         {
             if (_componentType != Component<T>.ID)
+            {
                 FrentExceptions.Throw_InvalidOperationException("Wrong component handle type!");
+            }
+
             return Component<T>.GeneralComponentStorage.Take(_index);
         }
 

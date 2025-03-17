@@ -89,10 +89,14 @@ namespace Alis.Core.Ecs.Systems
         internal void TryAttachArchetype(Archetype archetype)
         {
             if (!IncludeDisabled && archetype.HasTag<Disable>())
+            {
                 return;
+            }
 
             if (ArchetypeSatisfiesQuery(archetype.ID))
+            {
                 _archetypes.Push(archetype);
+            }
         }
 
         /// <summary>

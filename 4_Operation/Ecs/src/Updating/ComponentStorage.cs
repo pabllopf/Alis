@@ -129,7 +129,9 @@ namespace Alis.Core.Ecs.Updating
             this[me] = item;
 
             if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
+            {
                 item = default;
+            }
         }
 
         /// <summary>
@@ -144,7 +146,9 @@ namespace Alis.Core.Ecs.Updating
 
 
             if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
+            {
                 from = default;
+            }
         }
 
         /// <summary>

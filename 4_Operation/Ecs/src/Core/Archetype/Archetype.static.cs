@@ -165,7 +165,9 @@ namespace Alis.Core.Ecs.Core.Archetype
         {
             ref Archetype archetype = ref world.WorldArchetypeTable[id.RawIndex];
             if (archetype is not null)
+            {
                 return archetype;
+            }
 
             ImmutableArray<ComponentID> types = id.Types;
             ComponentStorageBase[] componentRunners = new ComponentStorageBase[types.Length + 1];
@@ -231,7 +233,10 @@ namespace Alis.Core.Ecs.Core.Archetype
         internal static EntityType GetArchetypeID(ReadOnlySpan<ComponentID> types, ReadOnlySpan<TagID> tagTypes, ImmutableArray<ComponentID>? typesArray = null, ImmutableArray<TagID>? tagTypesArray = null)
         {
             if (types.Length > MemoryHelpers.MaxComponentCount)
+            {
                 throw new InvalidOperationException("Entities can have a max of 127 components!");
+            }
+
             lock (GlobalWorldTables.BufferChangeLock)
             {
                 long key = GetHash(types, tagTypes);
@@ -242,7 +247,10 @@ namespace Alis.Core.Ecs.Core.Archetype
 
                 int nextIDInt = ++NextArchetypeID;
                 if (nextIDInt == ushort.MaxValue)
+                {
                     throw new InvalidOperationException("Exceeded maximum unique archetype count of 65535");
+                }
+
                 EntityType finalID = new EntityType((ushort) nextIDInt);
 
                 ImmutableArray<ComponentID> arr = typesArray ?? MemoryHelpers.ReadOnlySpanToImmutableArray(types);

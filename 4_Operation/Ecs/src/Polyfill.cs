@@ -60,9 +60,14 @@ namespace System.Runtime.CompilerServices
         private static bool IsReferenceOrContainsReferences(Type type)
         {
             if (!type.IsValueType)
+            {
                 return true;
+            }
+
             if (type.IsPrimitive || type.IsPointer || type.IsPointer)
+            {
                 return false;
+            }
 
             return type.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
                 .Any(f => IsReferenceOrContainsReferences(f.FieldType));
@@ -291,9 +296,13 @@ namespace System
             }
 
             if (fromEnd)
+            {
                 _value = ~value;
+            }
             else
+            {
                 _value = value;
+            }
         }
 
         // The following private constructors mainly created for perf reason to avoid the checks
@@ -337,7 +346,10 @@ namespace System
             get
             {
                 if (_value < 0)
+                {
                     return ~_value;
+                }
+
                 return _value;
             }
         }
@@ -389,7 +401,9 @@ namespace System
         public override string ToString()
         {
             if (IsFromEnd)
+            {
                 return ToStringFromEnd();
+            }
 
             return ((uint) Value).ToString();
         }

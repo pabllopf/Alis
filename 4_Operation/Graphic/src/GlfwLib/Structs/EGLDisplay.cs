@@ -84,7 +84,10 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
         public override bool Equals(object obj)
         {
             if (obj is EGLDisplay display)
+            {
                 return Equals(display);
+            }
+
             return false;
         }
 

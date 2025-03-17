@@ -68,7 +68,10 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
         public override bool Equals(object obj)
         {
             if (obj is Cursor cur)
+            {
                 return Equals(cur);
+            }
+
             return false;
         }
 

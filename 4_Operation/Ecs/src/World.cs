@@ -211,7 +211,9 @@ namespace Alis.Core.Ecs
             {
                 EntityCreatedEvent.Remove(value);
                 if (!EntityCreatedEvent.HasListeners)
+                {
                     WorldEventFlags &= ~EntityFlags.WorldCreate;
+                }
             }
         }
 
@@ -229,7 +231,9 @@ namespace Alis.Core.Ecs
             {
                 EntityDeletedEvent.Remove(value);
                 if (!EntityDeletedEvent.HasListeners)
+                {
                     WorldEventFlags &= ~EntityFlags.OnDelete;
+                }
             }
         }
 
@@ -293,7 +297,9 @@ namespace Alis.Core.Ecs
         {
             @event.Remove(action);
             if (!@event.HasListeners)
+            {
                 WorldEventFlags &= ~flag;
+            }
         }
 
         /// <summary>
@@ -417,7 +423,9 @@ namespace Alis.Core.Ecs
             try
             {
                 if (!_updatesByAttributes.TryGetValue(attributeType, out WorldUpdateFilter? appliesTo))
+                {
                     _updatesByAttributes[attributeType] = appliesTo = new WorldUpdateFilter();
+                }
 
                 //fill up the table with the correct IDs
                 //works for initalization as well as updating it
@@ -461,7 +469,9 @@ namespace Alis.Core.Ecs
             int hashCode = queryHash.ToHashCode();
 
             if (!QueryCache.TryGetValue(hashCode, out Query? query))
+            {
                 QueryCache[hashCode] = query = CreateQueryFromSpan([.. rules]);
+            }
 
             return query;
         }
@@ -473,7 +483,10 @@ namespace Alis.Core.Ecs
         internal void ArchetypeAdded(Archetype archetype)
         {
             if (!GlobalWorldTables.HasTag(archetype.ID, Tag<Disable>.ID))
+            {
                 _enabledArchetypes.Push(archetype.ID);
+            }
+
             foreach (KeyValuePair<int, Query> qkvp in QueryCache)
             {
                 qkvp.Value.TryAttachArchetype(archetype);
@@ -490,7 +503,10 @@ namespace Alis.Core.Ecs
             Query q = new Query(this, rules);
             foreach (ref Archetype? element in WorldArchetypeTable.AsSpan())
                 if (element is not null)
+                {
                     q.TryAttachArchetype(element);
+                }
+
             return q;
         }
 
@@ -572,13 +588,17 @@ namespace Alis.Core.Ecs
         public void Dispose()
         {
             if (_isDisposed)
+            {
                 throw new InvalidOperationException("World is already disposed!");
+            }
 
             GlobalWorldTables.Worlds[ID] = null!;
 
             foreach (ref Archetype? item in WorldArchetypeTable.AsSpan())
                 if (item is not null)
+                {
                     item.ReleaseArrays();
+                }
 
             _sharedCountdown.Dispose();
 
@@ -596,7 +616,10 @@ namespace Alis.Core.Ecs
         public Entity CreateFromObjects(ReadOnlySpan<object> components)
         {
             if (components.Length > MemoryHelpers.MaxComponentCount)
+            {
                 throw new ArgumentException("Max 127 components on an entity", nameof(components));
+            }
+
             Span<ComponentID> types = stackalloc ComponentID[components.Length];
 
             for (int i = 0; i < components.Length; i++)
@@ -663,7 +686,10 @@ namespace Alis.Core.Ecs
         public void EnsureCapacity(ArchetypeID entityType, int count)
         {
             if (count < 1)
+            {
                 return;
+            }
+
             Archetype archetype = Archetype.CreateOrGetExistingArchetype(entityType, this);
             EnsureCapacityCore(archetype, count);
         }
@@ -677,7 +703,10 @@ namespace Alis.Core.Ecs
         internal void EnsureCapacityCore(Archetype archetype, int count)
         {
             if (count < 1)
+            {
                 throw new ArgumentOutOfRangeException("Count must be positive", nameof(count));
+            }
+
             archetype.EnsureCapacity(count);
             EntityTable.EnsureCapacity(count + EntityCount);
         }
@@ -761,7 +790,9 @@ namespace Alis.Core.Ecs
         public ChunkTuple<T> CreateMany<T>(int count)
         {
             if (count < 0)
+            {
                 FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+            }
 
             Archetype archetype = Archetype<T>.CreateNewOrGetExistingArchetype(this);
             int initalEntityCount = archetype.EntityCount;
@@ -909,9 +940,14 @@ namespace Alis.Core.Ecs
                     ComponentStorageBase? runner = fromRunners.UnsafeArrayIndex(i);
                     ref ComponentHandle writeTo = ref componentHandles.UnsafeSpanIndex(writeToIndex++);
                     if (hasGenericRemoveEvent)
+                    {
                         writeTo = runner.Store(currentLookup.Index);
+                    }
                     else //kinda illegal but whatever
+                    {
                         writeTo = new ComponentHandle(0, componentToMoveFromFromToTo);
+                    }
+
                     runner.Delete(deleteData);
                 }
                 else
@@ -1006,7 +1042,10 @@ namespace Alis.Core.Ecs
         {
             EntityFlags check = entityLocation.Flags | WorldEventFlags;
             if ((check & EntityFlags.Events) != 0)
+            {
                 InvokeDeleteEvents(entity, entityLocation);
+            }
+
             DeleteEntityWithoutEvents(entity, ref entityLocation);
         }
 

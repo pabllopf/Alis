@@ -155,7 +155,10 @@ namespace Alis.Core.Graphic.GlfwLib
             Window = Glfw.CreateWindow(width, height, title ?? string.Empty, monitor, share);
             SetHandle(Window);
             if (Glfw.GetClientApi(this) != ClientApi.None)
+            {
                 MakeCurrent();
+            }
+
             BindCallbacks();
         }
 
@@ -221,7 +224,10 @@ namespace Alis.Core.Graphic.GlfwLib
             set
             {
                 if (value < 1)
+                {
                     throw new Exception("Window width muts be greater than 0.");
+                }
+
                 Glfw.GetWindowSize(Window, out int dummy, out int height);
                 Glfw.SetWindowSize(Window, value, height);
             }
@@ -241,7 +247,10 @@ namespace Alis.Core.Graphic.GlfwLib
             set
             {
                 if (value < 1)
+                {
                     throw new Exception("Window height muts be greater than 0.");
+                }
+
                 Glfw.GetWindowSize(Window, out int width, out int dummy);
                 Glfw.SetWindowSize(Window, width, value);
             }
@@ -371,9 +380,13 @@ namespace Alis.Core.Graphic.GlfwLib
             set
             {
                 if (value)
+                {
                     Glfw.MaximizeWindow(Window);
+                }
                 else
+                {
                     Glfw.RestoreWindow(Window);
+                }
             }
         }
 
@@ -390,9 +403,13 @@ namespace Alis.Core.Graphic.GlfwLib
             set
             {
                 if (value)
+                {
                     Glfw.IconifyWindow(Window);
+                }
                 else
+                {
                     Glfw.RestoreWindow(Window);
+                }
             }
         }
 
@@ -554,9 +571,13 @@ namespace Alis.Core.Graphic.GlfwLib
             set
             {
                 if (value)
+                {
                     Glfw.ShowWindow(Window);
+                }
                 else
+                {
                     Glfw.HideWindow(Window);
+                }
             }
         }
 
@@ -567,7 +588,11 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <returns><c>true</c> if objects represent the same window, otherwise <c>false</c>.</returns>
         public bool Equals(NativeWindow window)
         {
-            if (ReferenceEquals(null, window)) return false;
+            if (ReferenceEquals(null, window))
+            {
+                return false;
+            }
+
             return ReferenceEquals(this, window) || Window.Equals(window.Window);
         }
 
@@ -656,7 +681,10 @@ namespace Alis.Core.Graphic.GlfwLib
         public void CenterOnScreen()
         {
             if (Maximized)
+            {
                 return;
+            }
+
             Monitor monitor = Monitor == Monitor.None ? Glfw.PrimaryMonitor : Monitor;
             VideoMode videoMode = Glfw.GetVideoMode(monitor);
             Size size = Size;
@@ -1074,11 +1102,18 @@ namespace Alis.Core.Graphic.GlfwLib
         {
             KeyEventArgs args = new KeyEventArgs(key, scanCode, state, mods);
             if (state.HasFlag(InputState.Press))
+            {
                 KeyPress?.Invoke(this, args);
+            }
             else if (state.HasFlag(InputState.Release))
+            {
                 KeyRelease?.Invoke(this, args);
+            }
             else
+            {
                 KeyRepeat?.Invoke(this, args);
+            }
+
             KeyAction?.Invoke(this, args);
         }
 
@@ -1100,9 +1135,13 @@ namespace Alis.Core.Graphic.GlfwLib
         protected virtual void OnMouseEnter(bool entering)
         {
             if (entering)
+            {
                 MouseEnter?.Invoke(this, EventArgs.Empty);
+            }
             else
+            {
                 MouseLeave?.Invoke(this, EventArgs.Empty);
+            }
         }
 
         /// <summary>
