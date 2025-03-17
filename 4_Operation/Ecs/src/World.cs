@@ -55,8 +55,7 @@ namespace Alis.Core.Ecs
         ///     The next world id
         /// </summary>
         private static ushort _nextWorldId = 1;
-
-
+        
         //entityID -> entity metadata
         /// <summary>
         ///     The entity location
@@ -553,30 +552,6 @@ namespace Alis.Core.Ecs
             }
         }
 
-#if !NETSTANDARD2_1 && !NETSTANDARD2_0 && !NET5_0 && !NETCOREAPP2_0 && !NETCOREAPP2_1 && !NETCOREAPP2_2 && !NETCOREAPP3_0 && !NETCOREAPP3_1 && !NET481 && !NET48 && !NET472 && !NET471 && !NET47 && !NET462 && !NET461 && !NET46 && !NET452 && !NET451 && !NET45 && !NET40
-        /// <summary>
-        /// Tries the get event data using the specified entity location
-        /// </summary>
-        /// <param name="entityLocation">The entity location</param>
-        /// <param name="entity">The entity</param>
-        /// <param name="eventType">The event type</param>
-        /// <param name="exists">The exists</param>
-        /// <returns>The ref event record</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal ref EventRecord TryGetEventData(EntityLocation entityLocation, EntityIDOnly entity, EntityFlags eventType, out bool exists)
-        {
-            if (entityLocation.HasEvent(eventType))
-            {
-                exists = true;
-                return ref CollectionsMarshal.GetValueRefOrNullRef(EventLookup, entity);
-            }
-
-
-            exists = false;
-            return ref Unsafe.NullRef<EventRecord>();
-        }
-#endif
-
         /// <summary>
         ///     Gets the value of the allow structual changes
         /// </summary>
@@ -712,30 +687,6 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        ///     The null uniform provider class
-        /// </summary>
-        /// <seealso cref="IUniformProvider" />
-        internal class NullUniformProvider : IUniformProvider
-        {
-            /// <summary>
-            ///     Gets the value of the instance
-            /// </summary>
-            internal static NullUniformProvider Instance { get; } = new NullUniformProvider();
-
-            /// <summary>
-            ///     Gets the uniform
-            /// </summary>
-            /// <typeparam name="T">The </typeparam>
-            /// <returns>The</returns>
-            [DebuggerHidden]
-            public T GetUniform<T>()
-            {
-                FrentExceptions.Throw_InvalidOperationException("Initialize the world with an IUniformProvider in order to use uniforms");
-                return default!;
-            }
-        }
-        
-            /// <summary>
         ///     Creates an <see cref="Entity" /> with the given component(s)
         /// </summary>
         /// <returns>An <see cref="Entity" /> that can be used to acsess the component data</returns>

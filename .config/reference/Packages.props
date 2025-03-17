@@ -36,7 +36,7 @@
         <PackageReference Include="MonoMac.NetStandard" Version="0.0.4"/>
     </ItemGroup>
 
-    <ItemGroup Condition="$(AssemblyName.Contains('Benchmark')) == true">
+    <ItemGroup Condition="$(AssemblyName.Equals('Alis.Benchmark')) == true">
         <PackageReference Include="BenchmarkDotNet" Version="0.14.0"/>
 
         <PackageReference Include="Arch.System" Version="1.0.5"/>
@@ -65,7 +65,7 @@
         <PackageReference Include="Svelto.Common" Version="3.3.2"/>
         <PackageReference Include="Flecs.NET.Release" Version="3.2.11"/>
         
-        <ProjectReference Include="$(SolutionDir)2_Application/Alis/src/Alis.csproj"/>
+        <ProjectReference Include="$(SolutionDir)**/Alis.Core.Ecs.csproj;"/>
     </ItemGroup>
 
     <ItemGroup Condition="
@@ -76,8 +76,8 @@
     ">
         <PackageReference Include="System.IO.Compression" Version="4.3.0"/>
         <PackageReference Include="System.Net.Http" Version="4.3.0"/>
-        <PackageReference Include="System.Collections.Immutable" Version="1.6.0"/>
-        <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="5.0.0"/>
+        <PackageReference Include="System.Collections.Immutable" Version="10.0.0-preview.2.25163.2"/>
+        <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.1"/>
     </ItemGroup>
 
     <ItemGroup Condition="
@@ -87,16 +87,26 @@
     $(TargetFramework.Equals('netcoreapp3.0')) OR
     $(TargetFramework.Equals('netcoreapp3.1'))
     ">
-        <PackageReference Include="System.Collections.Immutable" Version="1.6.0"/>
-        <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="5.0.0"/>
+        <PackageReference Include="System.Collections.Immutable" Version="10.0.0-preview.2.25163.2"/>
+        <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.1"/>
     </ItemGroup>
 
     <ItemGroup Condition="
     $(TargetFramework.Equals('netstandard2.0')) OR
     $(TargetFramework.Equals('netstandard2.1'))
     ">
-        <PackageReference Include="System.Collections.Immutable" Version="1.6.0"/>
-        <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="5.0.0"/>
+        <PackageReference Include="System.Collections.Immutable" Version="10.0.0-preview.2.25163.2"/>
+        <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.1"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="
+    $(TargetFramework.Equals('net5.0')) OR
+    $(TargetFramework.Equals('net6.0')) OR
+    $(TargetFramework.Equals('net7.0')) OR
+    $(TargetFramework.Equals('net8.0')) OR
+    $(TargetFramework.Equals('net9.0'))
+    ">
+        <PackageReference Include="System.Collections.Immutable" Version="10.0.0-preview.2.25163.2"/>
     </ItemGroup>
 
 </Project>

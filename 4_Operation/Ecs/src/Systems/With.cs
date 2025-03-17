@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IComponentRunnerFactory.cs
+//  File:QueryHashes.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,18 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Ecs.Updating
+using Alis.Core.Ecs.Core;
+
+namespace Alis.Core.Ecs.Systems
 {
     /// <summary>
-    ///     The component storage base factory interface
+    ///     Specifies a query should have a component of <see paramref="T" />
     /// </summary>
-    internal interface IComponentStorageBaseFactory<T>
+    public struct With<T> : IRuleProvider
     {
         /// <summary>
-        ///     Creates the strongly typed using the specified capacity
+        ///     The rule.
         /// </summary>
-        /// <param name="capacity">The capacity</param>
-        /// <returns>A component storage of t</returns>
-        internal ComponentStorage<T> CreateStronglyTyped(int capacity);
+        public Rule Rule => Rule.HasComponent(Component<T>.ID);
     }
 }

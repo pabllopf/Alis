@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:QueryHashes.cs
+//  File:RefTuples.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,57 +32,22 @@ using Alis.Core.Ecs.Core;
 namespace Alis.Core.Ecs.Systems
 {
     /// <summary>
-    ///     Specifies a query should have a component of <see paramref="T" />
+    ///     The ref tuple
     /// </summary>
-    public struct With<T> : IRuleProvider
+    public ref struct RefTuple<T>
     {
         /// <summary>
-        ///     The rule.
+        ///     The item
         /// </summary>
-        public Rule Rule => Rule.HasComponent(Component<T>.ID);
-    }
+        public Ref<T> Item1;
 
-    /// <summary>
-    ///     Specifies a query should have a tag of <see paramref="T" />
-    /// </summary>
-    public struct Tagged<T> : IRuleProvider
-    {
         /// <summary>
-        ///     The rule.
+        ///     Deconstructs the ref
         /// </summary>
-        public Rule Rule => Rule.HasTag(Tag<T>.ID);
-    }
-
-    /// <summary>
-    ///     Specifies a query should not have a component of <see paramref="T" />
-    /// </summary>
-    public struct Not<T> : IRuleProvider
-    {
-        /// <summary>
-        ///     The rule.
-        /// </summary>
-        public Rule Rule => Rule.NotComponent(Component<T>.ID);
-    }
-
-    /// <summary>
-    ///     Specifies a query should not have a tag of <see paramref="T" />
-    /// </summary>
-    public struct Untagged<T> : IRuleProvider
-    {
-        /// <summary>
-        ///     The rule.
-        /// </summary>
-        public Rule Rule => Rule.NotTag(Tag<T>.ID);
-    }
-
-    /// <summary>
-    ///     Specifies a query should include all entities
-    /// </summary>
-    public struct IncludeDisabled : IRuleProvider
-    {
-        /// <summary>
-        ///     The rule.
-        /// </summary>
-        public Rule Rule => Rule.IncludeDisabledRule;
+        /// <param name="ref">The ref</param>
+        public void Deconstruct(out Ref<T> @ref)
+        {
+            @ref = Item1;
+        }
     }
 }

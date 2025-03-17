@@ -29,6 +29,7 @@
 
 
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -46,9 +47,6 @@ namespace System.Runtime.CompilerServices
     /// <seealso cref="Attribute" />
     internal class IsExternalInit : Attribute;
 }
-
-
-#if NETSTANDARD2_1 || NETSTANDARD2_0 || NET5_0 || NETCOREAPP2_0 || NETCOREAPP2_1 || NETCOREAPP2_2 || NETCOREAPP3_0 || NETCOREAPP3_1 || NET481 || NET48 || NET472 || NET471 || NET47 || NET462 || NET461 || NET46 || NET452 || NET451 || NET45 || NET40
 
 
 namespace System.Runtime.CompilerServices
@@ -80,6 +78,7 @@ namespace System.Runtime.CompilerServices
     }
 }
 
+#if  !NET8_0_OR_GREATER
 namespace System.Runtime.InteropServices
 {
     internal static class MemoryMarshal
@@ -95,6 +94,7 @@ namespace System.Runtime.InteropServices
         public static ReadOnlySpan<T> CreateReadOnlySpan<T>(T[] array) => new ReadOnlySpan<T>(array);
     }
 }
+#endif
 
 namespace System.Numerics
 {
@@ -191,34 +191,7 @@ namespace System
         /// <summary>Converts the value of the current Range object to its equivalent string representation.</summary>
         public override string ToString()
         {
-#if !NETSTANDARD2_1 && !NETSTANDARD2_0 && !NET5_0 && !NETCOREAPP2_0 && !NETCOREAPP2_1 && !NETCOREAPP2_2 && !NETCOREAPP3_0 && !NETCOREAPP3_1 && !NET481 && !NET48 && !NET472 && !NET471 && !NET47 && !NET462 && !NET461 && !NET46 && !NET452 && !NET451 && !NET45 && !NET40
-            Span<char> span = stackalloc char[2 + (2 * 11)]; // 2 for "..", then for each index 1 for '^' and 10 for longest possible uint
-            int pos = 0;
- 
-            if (Start.IsFromEnd)
-            {
-                span[0] = '^';
-                pos = 1;
-            }
-            bool formatted = ((uint)Start.Value).TryFormat(span.Slice(pos), out int charsWritten);
-            Debug.Assert(formatted);
-            pos += charsWritten;
- 
-            span[pos++] = '.';
-            span[pos++] = '.';
- 
-            if (End.IsFromEnd)
-            {
-                span[pos++] = '^';
-            }
-            formatted = ((uint)End.Value).TryFormat(span.Slice(pos), out charsWritten);
-            Debug.Assert(formatted);
-            pos += charsWritten;
- 
-            return new string(span.Slice(0, pos));
-#else
             return Start + ".." + End;
-#endif
         }
 
         /// <summary>Create a Range object starting from start index to the end of the collection.</summary>
@@ -419,18 +392,7 @@ namespace System
 
         private string ToStringFromEnd()
         {
-#if !NETSTANDARD2_1 && !NETSTANDARD2_0 && !NET5_0 && !NETCOREAPP2_0 && !NETCOREAPP2_1 && !NETCOREAPP2_2 && !NETCOREAPP3_0 && !NETCOREAPP3_1 && !NET481 && !NET48 && !NET472 && !NET471 && !NET47 && !NET462 && !NET461 && !NET46 && !NET452 && !NET451 && !NET45 && !NET40
-            Span<char> span = stackalloc char[11]; // 1 for ^ and 10 for longest possible uint value
-            bool formatted = ((uint)Value).TryFormat(span.Slice(1), out int charsWritten);
-            Debug.Assert(formatted);
-            span[0] = '^';
-            return new string(span.Slice(0, charsWritten + 1));
-#else
             return '^' + Value.ToString();
-#endif
         }
     }
 }
-
-
-#endif

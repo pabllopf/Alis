@@ -36,11 +36,4 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <seealso cref="Attribute" />
         internal class SkipLocalsInit : Attribute;
-
-        /// <summary>
-        ///     The stack trace hidden class
-        /// </summary>
-        /// <seealso cref="Attribute" />
-        internal class StackTraceHidden : Attribute;
-    
 }
