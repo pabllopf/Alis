@@ -30,13 +30,14 @@
 using System;
 using System.Collections.Immutable;
 using System.Runtime.CompilerServices;
-using Frent.Collections;
-using Frent.Core;
-using Frent.Core.Events;
-using Frent.Updating;
-using Frent.Updating.Runners;
+using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Core;
+using Alis.Core.Ecs.Core.Archetype;
+using Alis.Core.Ecs.Core.Events;
+using Alis.Core.Ecs.Core.Memory;
+using Alis.Core.Ecs.Updating;
 
-namespace Frent
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     The entity
@@ -53,7 +54,7 @@ namespace Frent
         ///     Adds a component to this <see cref="Entity" />.
         /// </summary>
         /// <remarks>If the world is being updated, changed are deffered to the end of the world update.</remarks>
-        [Frent.SkipLocalsInit]
+        [Ecs.SkipLocalsInit]
         public void Add<T>(in T c1)
         {
             ref EntityLocation thisLookup = ref AssertIsAlive(out World world);
@@ -96,7 +97,7 @@ namespace Frent
         ///     Removes a component from this <see cref="Entity" />
         /// </summary>
         /// <inheritdoc cref="Add{T}(in T)" />
-        [Frent.SkipLocalsInit]
+        [Ecs.SkipLocalsInit]
         public void Remove<T>()
         {
             ref EntityLocation thisLookup = ref AssertIsAlive(out World world);
@@ -122,7 +123,7 @@ namespace Frent
         ///     Adds a tag to this <see cref="Entity" />
         /// </summary>
         /// <inheritdoc cref="Add{T}(in T)" />
-        [Frent.SkipLocalsInit]
+        [Ecs.SkipLocalsInit]
         public void Tag<T>()
         {
             ref EntityLocation thisLookup = ref AssertIsAlive(out World world);
@@ -153,7 +154,7 @@ namespace Frent
         ///     Removes a tag from this <see cref="Entity" />
         /// </summary>
         /// <inheritdoc cref="Add{T}(in T)" />
-        [Frent.SkipLocalsInit]
+        [Ecs.SkipLocalsInit]
         public void Detach<T>()
         {
             ref EntityLocation thisLookup = ref AssertIsAlive(out World world);
@@ -184,7 +185,7 @@ namespace Frent
         ///     Invokes the component world events using the specified event
         /// </summary>
         /// <typeparam name="T">The </typeparam>
-        /// <param name="@event">The event</param>
+        /// <param name="event">The event</param>
         /// <param name="entity">The entity</param>
         private static void InvokeComponentWorldEvents<T>(ref Event<ComponentID> @event, Entity entity)
         {
@@ -213,7 +214,7 @@ namespace Frent
         ///     Invokes the tag world events using the specified event
         /// </summary>
         /// <typeparam name="T">The </typeparam>
-        /// <param name="@event">The event</param>
+        /// <param name="event">The event</param>
         /// <param name="entity">The entity</param>
         private static void InvokeTagWorldEvents<T>(ref TagEvent @event, Entity entity)
         {

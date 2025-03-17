@@ -28,9 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Frent.Core;
+using Alis.Core.Ecs.Core;
 
-namespace Frent.Systems
+namespace Alis.Core.Ecs.Systems
 {
     /// <summary>
     ///     The entity enumerator

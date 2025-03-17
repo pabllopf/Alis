@@ -28,9 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Definition;
-using Alis.Core.Ecs.Component.Render;
-using Alis.Core.Ecs.Entity;
-using Alis.Core.Ecs.System;
+using Alis.Core.EcsOld.Component.Render;
+using Alis.Core.EcsOld.Entity;
+using Alis.Core.EcsOld.System;
 
 namespace Alis.Sample.Egg
 {

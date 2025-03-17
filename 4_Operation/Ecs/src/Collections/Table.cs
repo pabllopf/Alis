@@ -29,10 +29,10 @@
 
 using System;
 using System.Numerics;
-using Frent.Buffers;
-using Frent.Core;
+using Alis.Core.Ecs.Buffers;
+using Alis.Core.Ecs.Core.Memory;
 
-namespace Frent.Collections
+namespace Alis.Core.Ecs.Collections
 {
     /// <summary>
     ///     The table

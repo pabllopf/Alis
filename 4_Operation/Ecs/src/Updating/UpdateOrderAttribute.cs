@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Frent.Updating
+namespace Alis.Core.Ecs.Updating
 {
     /// <summary>
     ///     The update order attribute class

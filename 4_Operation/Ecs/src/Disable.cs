@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Frent
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     Built-in tag that can be used to disable entities.

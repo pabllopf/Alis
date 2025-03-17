@@ -30,7 +30,7 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace Frent.Core
+namespace Alis.Core.Ecs.Core
 {
     /// <summary>
     ///     The entity id only

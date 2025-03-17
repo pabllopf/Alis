@@ -29,9 +29,9 @@
 
 using System;
 using System.Diagnostics;
-using Frent.Core;
+using Alis.Core.Ecs.Core.Memory;
 
-namespace Frent.Buffers
+namespace Alis.Core.Ecs.Buffers
 {
     /// <summary>
     ///     The chunk

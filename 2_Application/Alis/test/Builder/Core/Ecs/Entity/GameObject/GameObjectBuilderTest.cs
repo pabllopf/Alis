@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Ecs.Entity.GameObject;
-using Alis.Builder.Core.Ecs.Entity.Transform;
-using Alis.Builder.Core.Ecs.System;
+using Alis.Builder.Core.EcsOld.Entity.GameObject;
+using Alis.Builder.Core.EcsOld.Entity.Transform;
+using Alis.Builder.Core.EcsOld.System;
 using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
@@ -60,7 +60,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
             GameObjectBuilder gameObjectBuilder = new GameObjectBuilder(videoGameBuilder.Context);
 
-            Alis.Core.Ecs.Entity.GameObject gameObject = gameObjectBuilder.Build();
+           Alis.Core.EcsOld.Entity.GameObject gameObject = gameObjectBuilder.Build();
 
             Assert.NotNull(gameObject);
         }

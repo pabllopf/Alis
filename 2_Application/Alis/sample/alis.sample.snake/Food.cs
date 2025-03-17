@@ -27,9 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Component;
-using Alis.Core.Ecs.Component.Collider;
-using Alis.Core.Ecs.Entity;
+
+using Alis.Core.EcsOld.Component;
+using Alis.Core.EcsOld.Component.Collider;
+using Alis.Core.EcsOld.Entity;
 
 namespace Alis.Sample.Snake
 {

@@ -28,9 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Frent.Updating.Runners;
+using Alis.Core.Ecs.Core.Memory;
+using Alis.Core.Ecs.Updating;
 
-namespace Frent.Core
+namespace Alis.Core.Ecs.Core
 {
     /// <summary>
     ///     A wrapper ref struct over a reference to a <typeparamref name="T" />

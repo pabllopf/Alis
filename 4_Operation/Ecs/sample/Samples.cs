@@ -28,9 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Frent.Components;
-using Frent.Core;
-using Frent.Systems;
+using Alis.Core.Ecs;
+using Alis.Core.Ecs.Components;
+using Alis.Core.Ecs.Core;
+using Alis.Core.Ecs.Systems;
 
 namespace Frent.Sample
 {

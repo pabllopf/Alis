@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Frent.Core
+namespace Alis.Core.Ecs.Core.Memory
 {
     /// <summary>
     ///     Specifies the level of memory trimming Frent's internal buffers should do

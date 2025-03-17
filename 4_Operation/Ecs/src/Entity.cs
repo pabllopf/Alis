@@ -33,16 +33,17 @@ using System.Collections.Immutable;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Frent.Core;
-using Frent.Core.Structures;
-using Frent.Updating.Runners;
+using Alis.Core.Ecs.Core;
+using Alis.Core.Ecs.Core.Archetype;
+using Alis.Core.Ecs.Core.Memory;
+using Alis.Core.Ecs.Updating;
 
-namespace Frent
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     An Entity reference; refers to a collection of components of unqiue types.
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 2), DebuggerDisplay(AttributeHelpers.DebuggerDisplay), DebuggerTypeProxy(typeof(EntityDebugView))]
+    [StructLayout(LayoutKind.Sequential, Pack = 2), DebuggerTypeProxy(typeof(EntityDebugView))]
     public partial struct Entity : IEquatable<Entity>
     {
         /// <summary>

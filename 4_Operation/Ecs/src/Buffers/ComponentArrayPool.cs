@@ -31,9 +31,9 @@ using System;
 using System.Buffers;
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using Frent.Core;
+using Alis.Core.Ecs.Core.Memory;
 
-namespace Frent.Buffers
+namespace Alis.Core.Ecs.Buffers
 {
     //super simple arraypool class
     /// <summary>

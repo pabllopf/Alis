@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Frent.Components
+namespace Alis.Core.Ecs.Components
 {
     /*  ALL COMPONENT TYPES                                 |Interface|Storage
      *  Arbitary data                                           X       X

@@ -31,7 +31,7 @@ using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 
-namespace Frent.Collections
+namespace Alis.Core.Ecs.Collections
 {
     //Do not pass around this struct by value!!!
 //You must use the constructor when initalizating!!!

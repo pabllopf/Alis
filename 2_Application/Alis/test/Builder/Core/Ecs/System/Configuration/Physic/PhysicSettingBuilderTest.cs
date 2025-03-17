@@ -27,10 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Ecs.System.Setting.Physic;
+using Alis.Builder.Core.EcsOld.System.Setting.Physic;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Ecs.System.Configuration.Physic;
+using Alis.Core.EcsOld.System.Configuration.Physic;
 using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.System.Configuration.Physic

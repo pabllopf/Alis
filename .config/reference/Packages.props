@@ -36,11 +36,6 @@
         <PackageReference Include="MonoMac.NetStandard" Version="0.0.4"/>
     </ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="CommunityToolkit.HighPerformance" Version="7.0.1"/>
-        <PackageReference Include="System.Collections.Immutable" Version="1.6.0"/>
-    </ItemGroup>
-
     <ItemGroup Condition="$(AssemblyName.Contains('Benchmark')) == true">
         <PackageReference Include="BenchmarkDotNet" Version="0.14.0"/>
 
@@ -69,6 +64,8 @@
         <PackageReference Include="Svelto.ECS" Version="3.3.2"/>
         <PackageReference Include="Svelto.Common" Version="3.3.2"/>
         <PackageReference Include="Flecs.NET.Release" Version="3.2.11"/>
+        
+        <ProjectReference Include="$(SolutionDir)2_Application/Alis/src/Alis.csproj"/>
     </ItemGroup>
 
     <ItemGroup Condition="
@@ -79,6 +76,8 @@
     ">
         <PackageReference Include="System.IO.Compression" Version="4.3.0"/>
         <PackageReference Include="System.Net.Http" Version="4.3.0"/>
+        <PackageReference Include="System.Collections.Immutable" Version="1.6.0"/>
+        <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="5.0.0"/>
     </ItemGroup>
 
     <ItemGroup Condition="
@@ -88,6 +87,16 @@
     $(TargetFramework.Equals('netcoreapp3.0')) OR
     $(TargetFramework.Equals('netcoreapp3.1'))
     ">
+        <PackageReference Include="System.Collections.Immutable" Version="1.6.0"/>
+        <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="5.0.0"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="
+    $(TargetFramework.Equals('netstandard2.0')) OR
+    $(TargetFramework.Equals('netstandard2.1'))
+    ">
+        <PackageReference Include="System.Collections.Immutable" Version="1.6.0"/>
+        <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="5.0.0"/>
     </ItemGroup>
 
 </Project>

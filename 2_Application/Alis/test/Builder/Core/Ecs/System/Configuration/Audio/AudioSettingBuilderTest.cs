@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Ecs.System.Setting.Audio;
-using Alis.Core.Ecs.System.Configuration.Audio;
+using Alis.Builder.Core.EcsOld.System.Setting.Audio;
+using Alis.Core.EcsOld.System.Configuration.Audio;
 using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.System.Configuration.Audio

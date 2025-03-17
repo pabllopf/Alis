@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Data.Mapping;
-using Alis.Core.Ecs.Component;
+using Alis.Core.EcsOld.Component;
 
 namespace Alis.Sample.Flappy.Bird
 {

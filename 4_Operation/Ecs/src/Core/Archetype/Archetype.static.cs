@@ -31,11 +31,12 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Runtime.CompilerServices;
-using Frent.Collections;
-using Frent.Core.Structures;
-using Frent.Updating;
+using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Core.Memory;
+using Alis.Core.Ecs.Updating;
+using HashCode = Alis.Core.Aspect.Math.Util;
 
-namespace Frent.Core
+namespace Alis.Core.Ecs.Core.Archetype
 {
     /// <summary>
     ///     The archetype class
@@ -51,7 +52,7 @@ namespace Frent.Core
         /// <summary>
         ///     The empty
         /// </summary>
-        public static readonly ArchetypeID ID = Archetype.GetArchetypeID(ArchetypeComponentIDs.AsSpan(), [], ArchetypeComponentIDs, ImmutableArray<TagID>.Empty);
+        public static readonly EntityType ID = Archetype.GetArchetypeID(ArchetypeComponentIDs.AsSpan(), [], ArchetypeComponentIDs, ImmutableArray<TagID>.Empty);
 
         /// <summary>
         ///     Creates the new or get existing archetype using the specified world
@@ -106,12 +107,12 @@ namespace Frent.Core
         /// <summary>
         ///     The null
         /// </summary>
-        internal static readonly ArchetypeID Null;
+        internal static readonly EntityType Null;
 
         /// <summary>
         ///     The deferred create
         /// </summary>
-        internal static readonly ArchetypeID DeferredCreate;
+        internal static readonly EntityType DeferredCreate;
 
         /// <summary>
         ///     The create
@@ -150,7 +151,7 @@ namespace Frent.Core
         /// <returns>The archetype</returns>
         internal static Archetype CreateOrGetExistingArchetype(ReadOnlySpan<ComponentID> types, ReadOnlySpan<TagID> tagTypes, World world, ImmutableArray<ComponentID>? typeArray = null, ImmutableArray<TagID>? tagTypesArray = null)
         {
-            ArchetypeID id = GetArchetypeID(types, tagTypes, typeArray, tagTypesArray);
+            EntityType id = GetArchetypeID(types, tagTypes, typeArray, tagTypesArray);
             return CreateOrGetExistingArchetype(id, world);
         }
 
@@ -160,7 +161,7 @@ namespace Frent.Core
         /// <param name="id">The id</param>
         /// <param name="world">The world</param>
         /// <returns>The archetype</returns>
-        internal static Archetype CreateOrGetExistingArchetype(ArchetypeID id, World world)
+        internal static Archetype CreateOrGetExistingArchetype(EntityType id, World world)
         {
             ref Archetype archetype = ref world.WorldArchetypeTable[id.RawIndex];
             if (archetype is not null)
@@ -227,7 +228,7 @@ namespace Frent.Core
         /// <exception cref="InvalidOperationException">Entities can have a max of 127 components!</exception>
         /// <exception cref="InvalidOperationException">Exceeded maximum unique archetype count of 65535</exception>
         /// <returns>The archetype id</returns>
-        internal static ArchetypeID GetArchetypeID(ReadOnlySpan<ComponentID> types, ReadOnlySpan<TagID> tagTypes, ImmutableArray<ComponentID>? typesArray = null, ImmutableArray<TagID>? tagTypesArray = null)
+        internal static EntityType GetArchetypeID(ReadOnlySpan<ComponentID> types, ReadOnlySpan<TagID> tagTypes, ImmutableArray<ComponentID>? typesArray = null, ImmutableArray<TagID>? tagTypesArray = null)
         {
             if (types.Length > MemoryHelpers.MaxComponentCount)
                 throw new InvalidOperationException("Entities can have a max of 127 components!");
@@ -242,7 +243,7 @@ namespace Frent.Core
                 int nextIDInt = ++NextArchetypeID;
                 if (nextIDInt == ushort.MaxValue)
                     throw new InvalidOperationException("Exceeded maximum unique archetype count of 65535");
-                ArchetypeID finalID = new ArchetypeID((ushort) nextIDInt);
+                EntityType finalID = new EntityType((ushort) nextIDInt);
 
                 ImmutableArray<ComponentID> arr = typesArray ?? MemoryHelpers.ReadOnlySpanToImmutableArray(types);
                 ImmutableArray<TagID> tagArr = tagTypesArray ?? MemoryHelpers.ReadOnlySpanToImmutableArray(tagTypes);
@@ -308,8 +309,8 @@ namespace Frent.Core
         /// <returns>The hash</returns>
         private static long GetHash(ReadOnlySpan<ComponentID> types, ReadOnlySpan<TagID> andMoreTypes)
         {
-            HashCode h1 = new();
-            HashCode h2 = new();
+            HashCode.HashCode h1 = new();
+            HashCode.HashCode h2 = new();
 
             int i;
             for (i = 0; i < types.Length >> 1; i++)
@@ -327,7 +328,7 @@ namespace Frent.Core
                 hash2 += item.RawValue * 53U;
             }
 
-            h1.Add(HashCode.Combine(hash1, hash2));
+            h1.Add(HashCode.HashCode.Combine(hash1, hash2));
 
             for (; i < types.Length; i++)
             {

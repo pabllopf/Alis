@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Frent.Core
+namespace Alis.Core.Ecs.Core
 {
     /// <summary>
     ///     Represents a specific type as a tag, and can be used for tag related queries

@@ -27,12 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
-global using ArchetypeID = Frent.Core.EntityType;
+global using ArchetypeID = Alis.Core.Ecs.Core.EntityType;
 using System;
 using System.Collections.Immutable;
-using Frent.Core.Structures;
+using Alis.Core.Ecs.Core.Archetype;
+using Alis.Core.Ecs.Core.Memory;
 
-namespace Frent.Core
+namespace Alis.Core.Ecs.Core
 {
     //This isn't named ArchetypeID because archetypes are an implementation detail
     /// <summary>
@@ -54,12 +55,12 @@ namespace Frent.Core
         /// <summary>
         ///     The component types
         /// </summary>
-        public readonly ImmutableArray<ComponentID> Types => Core.Archetype.ArchetypeTable[RawIndex].ComponentTypes;
+        public readonly ImmutableArray<ComponentID> Types => Core.Archetype.Archetype.ArchetypeTable[RawIndex].ComponentTypes;
 
         /// <summary>
         ///     The tag types
         /// </summary>
-        public readonly ImmutableArray<TagID> Tags => Core.Archetype.ArchetypeTable[RawIndex].TagTypes;
+        public readonly ImmutableArray<TagID> Tags => Core.Archetype.Archetype.ArchetypeTable[RawIndex].TagTypes;
 
         /// <summary>
         ///     Checks if this <see cref="EntityType" /> has a component represented by a <see cref="ComponentID" />
@@ -122,6 +123,6 @@ namespace Frent.Core
         /// </summary>
         /// <param name="context">The context</param>
         /// <returns>The ref archetype</returns>
-        internal readonly ref Archetype Archetype(World context) => ref context.WorldArchetypeTable.UnsafeArrayIndex(RawIndex);
+        internal readonly ref Archetype.Archetype Archetype(World context) => ref context.WorldArchetypeTable.UnsafeArrayIndex(RawIndex);
     }
 }

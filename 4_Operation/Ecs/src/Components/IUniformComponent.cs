@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Frent.Components
+namespace Alis.Core.Ecs.Components
 {
     /// <summary>
     ///     Indicates a component should be updated with a uniform of type <typeparamref name="TUniform" />

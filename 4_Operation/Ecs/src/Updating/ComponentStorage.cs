@@ -31,11 +31,12 @@ using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Frent.Collections;
-using Frent.Core;
-using Frent.Core.Events;
+using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Core;
+using Alis.Core.Ecs.Core.Events;
+using Alis.Core.Ecs.Core.Memory;
 
-namespace Frent.Updating.Runners
+namespace Alis.Core.Ecs.Updating
 {
     /// <summary>
     ///     The component storage class

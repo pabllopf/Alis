@@ -35,9 +35,9 @@ using System.Diagnostics;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Frent.Buffers;
+using Alis.Core.Ecs.Buffers;
 
-namespace Frent.Core
+namespace Alis.Core.Ecs.Core.Memory
 {
     /// <summary>
     ///     The memory helpers class

@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 
-namespace Frent.Systems
+namespace Alis.Core.Ecs.Systems
 {
     /// <summary>
     ///     The query hash cache class

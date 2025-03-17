@@ -30,12 +30,11 @@
 using System;
 using System.Diagnostics;
 
-namespace Frent.Core
+namespace Alis.Core.Ecs.Core
 {
     /// <summary>
     ///     A lightweight struct that represents a component type. Used for fast lookups
     /// </summary>
-    [DebuggerDisplay(AttributeHelpers.DebuggerDisplay)]
     public readonly struct ComponentID : ITypeID, IEquatable<ComponentID>
     {
         /// <summary>

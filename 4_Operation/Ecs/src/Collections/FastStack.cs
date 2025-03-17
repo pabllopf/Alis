@@ -32,10 +32,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using Frent.Buffers;
-using Frent.Core;
+using Alis.Core.Ecs.Buffers;
+using Alis.Core.Ecs.Core.Memory;
 
-namespace Frent.Collections
+namespace Alis.Core.Ecs.Collections
 {
     /// <summary>
     ///     The fast stack

@@ -29,9 +29,9 @@
 
 using System;
 using System.Runtime.CompilerServices;
-using Frent.Core;
+using Alis.Core.Ecs.Core.Memory;
 
-namespace Frent.Collections
+namespace Alis.Core.Ecs.Collections
 {
     //Do not pass around this struct by value!!!
 //You must use the constructor when initalizating!!!

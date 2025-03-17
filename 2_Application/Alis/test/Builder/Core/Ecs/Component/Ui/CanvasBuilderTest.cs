@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Ecs.Component.Ui;
-using Alis.Core.Ecs.Component.Ui;
+using Alis.Builder.Core.EcsOld.Component.Ui;
+using Alis.Core.EcsOld.Component.Ui;
 using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.Component.Ui

@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Frent.Systems
+namespace Alis.Core.Ecs.Systems
 {
     /// <summary>
     ///     An arbitary function that operates over a range of components

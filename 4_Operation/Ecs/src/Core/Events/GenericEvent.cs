@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Frent.Collections;
+using Alis.Core.Ecs.Collections;
 
-namespace Frent.Core.Events
+namespace Alis.Core.Ecs.Core.Events
 {
     /// <summary>
     ///     A collection of <see cref="IGenericAction{Entity}" /> instances which can be added to or removed from.

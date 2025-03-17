@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Frent.Components;
+using Alis.Core.Ecs.Components;
 
-namespace Frent
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     Defines a uniform provider, which is used by <see cref="World" /> to supply uniforms to components and queries

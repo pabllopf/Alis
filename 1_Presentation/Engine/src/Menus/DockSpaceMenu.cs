@@ -33,7 +33,7 @@ using Alis.App.Engine.Fonts;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Ecs.Entity;
+using Alis.Core.EcsOld.Entity;
 using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Native;
 

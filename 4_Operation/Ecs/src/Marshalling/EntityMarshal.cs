@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Frent.Core.Structures;
+using Alis.Core.Ecs.Core.Archetype;
 
-namespace Frent.Marshalling
+namespace Alis.Core.Ecs.Marshalling
 {
     /// <summary>
     ///     Unsafe methods to write even faster code! Users are expected to know what they are doing and improper usage can

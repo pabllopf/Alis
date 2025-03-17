@@ -33,8 +33,8 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Ecs.System.Manager;
-using Alis.Core.Ecs.System.Scope;
+using Alis.Core.EcsOld.System.Manager;
+using Alis.Core.EcsOld.System.Scope;
 
 namespace Alis.Extension.Plugin
 {

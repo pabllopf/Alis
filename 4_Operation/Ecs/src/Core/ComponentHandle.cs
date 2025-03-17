@@ -28,10 +28,12 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Frent.Collections;
-using Frent.Core.Events;
 
-namespace Frent.Core
+using Alis.Core.Ecs.Collections;
+using HashCode = Alis.Core.Aspect.Math.Util;
+using Alis.Core.Ecs.Core.Events;
+
+namespace Alis.Core.Ecs.Core
 {
     /// <summary>
     ///     The component handle
@@ -72,7 +74,7 @@ namespace Frent.Core
         ///     Creates the from boxed using the specified type as
         /// </summary>
         /// <param name="typeAs">The type as</param>
-        /// <param name="@object">The object</param>
+        /// <param name="object">The object</param>
         /// <returns>The component handle</returns>
         public static ComponentHandle CreateFromBoxed(ComponentID typeAs, object @object)
         {
@@ -83,7 +85,7 @@ namespace Frent.Core
         /// <summary>
         ///     Creates the from boxed using the specified object
         /// </summary>
-        /// <param name="@object">The object</param>
+        /// <param name="object">The object</param>
         /// <returns>The component handle</returns>
         public static ComponentHandle CreateFromBoxed(object @object) => CreateFromBoxed(Component.GetComponentID(@object.GetType()), @object);
 
@@ -112,7 +114,7 @@ namespace Frent.Core
         ///     Invokes the component event and consume using the specified entity
         /// </summary>
         /// <param name="entity">The entity</param>
-        /// <param name="@event">The event</param>
+        /// <param name="event">The event</param>
         internal void InvokeComponentEventAndConsume(Entity entity, GenericEvent? @event)
         {
             Component.ComponentTable[_componentType.RawIndex].Storage.InvokeEventWithAndConsume(@event, entity, _index);
@@ -171,7 +173,7 @@ namespace Frent.Core
         ///     The hashcode.
         /// </summary>
         /// <returns>The hashcode -_-.</returns>
-        public override int GetHashCode() => HashCode.Combine(_componentType, _index);
+        public override int GetHashCode() => HashCode.HashCode.Combine(_componentType, _index);
 
         /// <summary>
         ///     Gets the value of the index

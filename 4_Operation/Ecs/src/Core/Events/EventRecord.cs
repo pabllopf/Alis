@@ -28,9 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Frent.Collections;
+using Alis.Core.Ecs.Collections;
 
-namespace Frent.Core.Events
+namespace Alis.Core.Ecs.Core.Events
 {
     /// <summary>
     ///     The event record class

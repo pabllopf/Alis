@@ -29,13 +29,13 @@
 
 using System;
 using System.Collections.Generic;
-using Frent.Collections;
-using Frent.Components;
-using Frent.Core.Structures;
-using Frent.Updating;
-using Frent.Updating.Runners;
+using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Components;
+using Alis.Core.Ecs.Core.Archetype;
+using Alis.Core.Ecs.Updating;
+using Alis.Core.Ecs.Updating.Runners;
 
-namespace Frent.Core
+namespace Alis.Core.Ecs.Core
 {
     /// <summary>
     ///     Used to quickly get the component ID of a given type

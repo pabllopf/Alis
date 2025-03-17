@@ -28,14 +28,14 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.CompilerServices;
-using Frent.Core;
-using Frent.Core.Structures;
+using Alis.Core.Ecs.Core;
+using Alis.Core.Ecs.Core.Archetype;
 #if NET7_0_OR_GREATER
 using System.Numerics;
 using System.Runtime.Intrinsics;
 #endif
 
-namespace Frent.Collections
+namespace Alis.Core.Ecs.Collections
 {
     /// <summary>
     ///     The fast lookup
@@ -72,7 +72,7 @@ namespace Frent.Collections
         /// <param name="edgeType">The edge type</param>
         /// <returns>The archetype id</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public ArchetypeID FindAdjacentArchetypeID<T>(T id, ArchetypeID archetype, World world, ArchetypeEdgeType edgeType)
+        public EntityType FindAdjacentArchetypeID<T>(T id, EntityType archetype, World world, ArchetypeEdgeType edgeType)
             where T : ITypeID
         {
             uint key = GetKey(id.Value, archetype);
@@ -80,7 +80,7 @@ namespace Frent.Collections
             int index = LookupIndex(key);
             if (index != 32)
             {
-                return new ArchetypeID(InlineArray8<ushort>.Get(ref _ids, index));
+                return new EntityType(InlineArray8<ushort>.Get(ref _ids, index));
             }
 
             if (world.ArchetypeGraphEdges.TryGetValue(edgeKey = typeof(T) == typeof(ComponentID) ? ArchetypeEdgeKey.Component(new(id.Value), archetype, edgeType) : ArchetypeEdgeKey.Tag(new(id.Value), archetype, edgeType), out Archetype? destination))
@@ -101,7 +101,7 @@ namespace Frent.Collections
         /// <param name="id">The id</param>
         /// <param name="archetypeID">The archetype id</param>
         /// <returns>The key</returns>
-        public uint GetKey(ushort id, ArchetypeID archetypeID)
+        public uint GetKey(ushort id, EntityType archetypeID)
         {
             uint key = archetypeID.RawIndex | ((uint) id << 16);
             return key;
@@ -113,7 +113,7 @@ namespace Frent.Collections
         /// <param name="id">The id</param>
         /// <param name="from">The from</param>
         /// <param name="to">The to</param>
-        public void SetArchetype(ushort id, ArchetypeID from, Archetype to)
+        public void SetArchetype(ushort id, EntityType from, Archetype to)
         {
             uint key = GetKey(id, from);
 
