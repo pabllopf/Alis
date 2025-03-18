@@ -1,75 +1,76 @@
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
-namespace Frent.Collections;
-
-//160 bits, 20 bytes
-/// <summary>
-/// The archetype neighbor cache
-/// </summary>
-internal struct ArchetypeNeighborCache
+namespace Frent.Collections
 {
-    //128 bits
+    //160 bits, 20 bytes
     /// <summary>
-    /// The keys and values
+    /// The archetype neighbor cache
     /// </summary>
-    private InlineArray8<ushort> _keysAndValues;
-    //32
-    /// <summary>
-    /// The next index
-    /// </summary>
-    private int _nextIndex;
-
-    /// <summary>
-    /// Traverses the value
-    /// </summary>
-    /// <param name="value">The value</param>
-    /// <returns>The int</returns>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public int Traverse(ushort value)
+    internal struct ArchetypeNeighborCache
     {
-        //my simd code is garbage
-        //#if NET7_0_OR_GREATER
-        //        if(Vector256.IsHardwareAccelerated)
-        //        {
-        //            Vector256<ushort> bits = Vector256.Equals(Vector256.LoadUnsafe(ref _keysAndValues._0), Vector256.Create(value));
-        //            int index = BitOperations.TrailingZeroCount(bits.ExtractMostSignificantBits());
-        //            return index;
-        //        }
-        //#endif
-        //TODO: better impl
-        if (value == _keysAndValues._0)
-            return 0;
-        if (value == _keysAndValues._1)
-            return 1;
-        if (value == _keysAndValues._2)
-            return 2;
-        if (value == _keysAndValues._3)
-            return 3;
+        //128 bits
+        /// <summary>
+        /// The keys and values
+        /// </summary>
+        private InlineArray8<ushort> _keysAndValues;
+        //32
+        /// <summary>
+        /// The next index
+        /// </summary>
+        private int _nextIndex;
 
-        return 32;
-    }
+        /// <summary>
+        /// Traverses the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The int</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public int Traverse(ushort value)
+        {
+            //my simd code is garbage
+            //#if NET7_0_OR_GREATER
+            //        if(Vector256.IsHardwareAccelerated)
+            //        {
+            //            Vector256<ushort> bits = Vector256.Equals(Vector256.LoadUnsafe(ref _keysAndValues._0), Vector256.Create(value));
+            //            int index = BitOperations.TrailingZeroCount(bits.ExtractMostSignificantBits());
+            //            return index;
+            //        }
+            //#endif
+            //TODO: better impl
+            if (value == _keysAndValues._0)
+                return 0;
+            if (value == _keysAndValues._1)
+                return 1;
+            if (value == _keysAndValues._2)
+                return 2;
+            if (value == _keysAndValues._3)
+                return 3;
 
-    /// <summary>
-    /// Lookups the index
-    /// </summary>
-    /// <param name="index">The index</param>
-    /// <returns>The ushort</returns>
-    public ushort Lookup(int index)
-    {
-        Debug.Assert(index < 4);
-        return Unsafe.Add(ref _keysAndValues._4, index);
-    }
+            return 32;
+        }
 
-    /// <summary>
-    /// Sets the key
-    /// </summary>
-    /// <param name="key">The key</param>
-    /// <param name="value">The value</param>
-    public void Set(ushort key, ushort value)
-    {
-        Unsafe.Add(ref _keysAndValues._4, _nextIndex) = value;
-        Unsafe.Add(ref _keysAndValues._0, _nextIndex) = key;
-        _nextIndex = (_nextIndex + 1) & 3;
+        /// <summary>
+        /// Lookups the index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <returns>The ushort</returns>
+        public ushort Lookup(int index)
+        {
+            Debug.Assert(index < 4);
+            return Unsafe.Add(ref _keysAndValues._4, index);
+        }
+
+        /// <summary>
+        /// Sets the key
+        /// </summary>
+        /// <param name="key">The key</param>
+        /// <param name="value">The value</param>
+        public void Set(ushort key, ushort value)
+        {
+            Unsafe.Add(ref _keysAndValues._4, _nextIndex) = value;
+            Unsafe.Add(ref _keysAndValues._0, _nextIndex) = key;
+            _nextIndex = (_nextIndex + 1) & 3;
+        }
     }
 }

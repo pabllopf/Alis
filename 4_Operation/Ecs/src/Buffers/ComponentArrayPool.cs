@@ -4,80 +4,81 @@ using System.Buffers;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 
-namespace Frent.Buffers;
-
-//super simple arraypool class
-/// <summary>
-/// The component array pool class
-/// </summary>
-/// <seealso cref="ArrayPool{T}"/>
-internal class ComponentArrayPool<T> : ArrayPool<T>
+namespace Frent.Buffers
 {
+    //super simple arraypool class
     /// <summary>
-    /// Initializes a new instance of the <see cref="ComponentArrayPool{T}"/> class
+    /// The component array pool class
     /// </summary>
-    public ComponentArrayPool()
+    /// <seealso cref="ArrayPool{T}"/>
+    internal class ComponentArrayPool<T> : ArrayPool<T>
     {
-        //16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536 
-        //13 array sizes for components
-        Gen2GcCallback.Gen2CollectionOccured += ClearBuckets;
-
-        Buckets = new T[13][];
-    }
-
-    /// <summary>
-    /// The buckets
-    /// </summary>
-    private T[][] Buckets;
-
-    /// <summary>
-    /// Rents the minimum length
-    /// </summary>
-    /// <param name="minimumLength">The minimum length</param>
-    /// <returns>The array</returns>
-    public override T[] Rent(int minimumLength)
-    {
-        if (minimumLength < 16)
-            return new T[minimumLength];
-
-        int bucketIndex = BitOperations.Log2((uint)minimumLength) - 4;
-
-        if ((uint)bucketIndex < (uint)Buckets.Length)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ComponentArrayPool{T}"/> class
+        /// </summary>
+        public ComponentArrayPool()
         {
-            ref T[] item = ref Buckets[bucketIndex];
+            //16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536 
+            //13 array sizes for components
+            Gen2GcCallback.Gen2CollectionOccured += ClearBuckets;
 
-            if (item is not null)
-            {
-                var loc = item;
-                item = null!;
-                return loc;
-            }
+            Buckets = new T[13][];
         }
 
-        return new T[minimumLength];//GC.AllocateUninitializedArray<T>(minimumLength)
-        //benchmarks say uninit is the same speed
-    }
+        /// <summary>
+        /// The buckets
+        /// </summary>
+        private T[][] Buckets;
 
-    /// <summary>
-    /// Returns the array
-    /// </summary>
-    /// <param name="array">The array</param>
-    /// <param name="clearArray">The clear array</param>
-    public override void Return(T[] array, bool clearArray = false)
-    {
-        //easier to deal w/ all logic here
-        if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
-            array.AsSpan().Clear();
-        int bucketIndex = BitOperations.Log2((uint)array.Length) - 4;
-        if ((uint)bucketIndex < (uint)Buckets.Length)
-            Buckets[bucketIndex] = array;
-    }
+        /// <summary>
+        /// Rents the minimum length
+        /// </summary>
+        /// <param name="minimumLength">The minimum length</param>
+        /// <returns>The array</returns>
+        public override T[] Rent(int minimumLength)
+        {
+            if (minimumLength < 16)
+                return new T[minimumLength];
 
-    /// <summary>
-    /// Clears the buckets
-    /// </summary>
-    private void ClearBuckets()
-    {
-        Buckets.AsSpan().Clear();
+            int bucketIndex = BitOperations.Log2((uint)minimumLength) - 4;
+
+            if ((uint)bucketIndex < (uint)Buckets.Length)
+            {
+                ref T[] item = ref Buckets[bucketIndex];
+
+                if (item is not null)
+                {
+                    var loc = item;
+                    item = null!;
+                    return loc;
+                }
+            }
+
+            return new T[minimumLength];//GC.AllocateUninitializedArray<T>(minimumLength)
+            //benchmarks say uninit is the same speed
+        }
+
+        /// <summary>
+        /// Returns the array
+        /// </summary>
+        /// <param name="array">The array</param>
+        /// <param name="clearArray">The clear array</param>
+        public override void Return(T[] array, bool clearArray = false)
+        {
+            //easier to deal w/ all logic here
+            if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+                array.AsSpan().Clear();
+            int bucketIndex = BitOperations.Log2((uint)array.Length) - 4;
+            if ((uint)bucketIndex < (uint)Buckets.Length)
+                Buckets[bucketIndex] = array;
+        }
+
+        /// <summary>
+        /// Clears the buckets
+        /// </summary>
+        private void ClearBuckets()
+        {
+            Buckets.AsSpan().Clear();
+        }
     }
 }

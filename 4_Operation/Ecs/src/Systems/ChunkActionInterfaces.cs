@@ -2,85 +2,84 @@ using System;
 
 using static Frent.AttributeHelpers;
 
-namespace Frent.Systems;
-
-/// <summary>
-/// An arbitary function that operates over a range of components
-/// </summary>
-/// <remarks>Used for SIMD</remarks>
-
-
-public interface IChunkAction<TArg>
+namespace Frent.Systems
 {
     /// <summary>
-    /// Executes the function
+    /// An arbitary function that operates over a range of components
     /// </summary>
-    void RunChunk(Span<TArg> arg);
-}
+    /// <remarks>Used for SIMD</remarks>
+    public interface IChunkAction<TArg>
+    {
+        /// <summary>
+        /// Executes the function
+        /// </summary>
+        void RunChunk(Span<TArg> arg);
+    }
 
-/// <summary>
-/// An arbitary function that operates over a range of components
-/// </summary>
-/// <remarks>Used for SIMD</remarks>
-
-
-
-public interface IEntityChunkAction<TArg>
-{
     /// <summary>
-    /// Executes the function
+    /// An arbitary function that operates over a range of components
     /// </summary>
-    void RunChunk(ReadOnlySpan<Entity> entity, Span<TArg> arg);
-}
+    /// <remarks>Used for SIMD</remarks>
 
-/// <summary>
-/// An arbitary function that operates over a range of components
-/// </summary>
-/// <remarks>Used for SIMD</remarks>
-public interface IEntityChunkAction
-{
+
+
+    public interface IEntityChunkAction<TArg>
+    {
+        /// <summary>
+        /// Executes the function
+        /// </summary>
+        void RunChunk(ReadOnlySpan<Entity> entity, Span<TArg> arg);
+    }
+
     /// <summary>
-    /// Executes the function
+    /// An arbitary function that operates over a range of components
     /// </summary>
-    void RunChunk(ReadOnlySpan<Entity> entity);
-}
+    /// <remarks>Used for SIMD</remarks>
+    public interface IEntityChunkAction
+    {
+        /// <summary>
+        /// Executes the function
+        /// </summary>
+        void RunChunk(ReadOnlySpan<Entity> entity);
+    }
 
-/// <summary>
-/// An arbitary function that operates over a range of components
-/// </summary>
-/// <remarks>Used for SIMD</remarks>
-
-
-public interface IEntityUniformChunkAction<TUniform, TArg>
-{
     /// <summary>
-    /// Executes the function
+    /// An arbitary function that operates over a range of components
     /// </summary>
-    void RunChunk(ReadOnlySpan<Entity> entity, TUniform uniform, Span<TArg> arg);
-}
+    /// <remarks>Used for SIMD</remarks>
 
-/// <summary>
-/// An arbitary function that operates over a range of components
-/// </summary>
-/// <remarks>Used for SIMD</remarks>
-public interface IEntityUniformChunkAction<TUniform>
-{
+
+    public interface IEntityUniformChunkAction<TUniform, TArg>
+    {
+        /// <summary>
+        /// Executes the function
+        /// </summary>
+        void RunChunk(ReadOnlySpan<Entity> entity, TUniform uniform, Span<TArg> arg);
+    }
+
     /// <summary>
-    /// Executes the function
+    /// An arbitary function that operates over a range of components
     /// </summary>
-    void RunChunk(ReadOnlySpan<Entity> entity, TUniform uniform);
-}
+    /// <remarks>Used for SIMD</remarks>
+    public interface IEntityUniformChunkAction<TUniform>
+    {
+        /// <summary>
+        /// Executes the function
+        /// </summary>
+        void RunChunk(ReadOnlySpan<Entity> entity, TUniform uniform);
+    }
 
-/// <summary>
-/// An arbitary function that operates over a range of components
-/// </summary>
-/// <remarks>Used for SIMD</remarks>
-
-
-public interface IUniformChunkAction<TUniform, TArg>
-{
     /// <summary>
-    /// Executes the function
+    /// An arbitary function that operates over a range of components
     /// </summary>
-    void RunChunk(TUniform uniform, Span<TArg> arg);
+    /// <remarks>Used for SIMD</remarks>
+
+
+    public interface IUniformChunkAction<TUniform, TArg>
+    {
+        /// <summary>
+        /// Executes the function
+        /// </summary>
+        void RunChunk(TUniform uniform, Span<TArg> arg);
+    }
 }

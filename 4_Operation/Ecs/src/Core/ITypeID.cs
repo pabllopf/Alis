@@ -1,18 +1,19 @@
 using System;
 
-namespace Frent.Core;
-
-/// <summary>
-/// The type id interface
-/// </summary>
-internal interface ITypeID
+namespace Frent.Core
 {
     /// <summary>
-    /// Gets the value of the type
+    /// The type id interface
     /// </summary>
-    internal Type Type { get; }
-    /// <summary>
-    /// Gets the value of the value
-    /// </summary>
-    internal ushort Value { get; }
+    internal interface ITypeID
+    {
+        /// <summary>
+        /// Gets the value of the type
+        /// </summary>
+        internal Type Type { get; }
+        /// <summary>
+        /// Gets the value of the value
+        /// </summary>
+        internal ushort Value { get; }
+    }
 }

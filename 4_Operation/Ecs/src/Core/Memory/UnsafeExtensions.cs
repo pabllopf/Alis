@@ -2,13 +2,13 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace Frent.Core;
-
-/// <summary>
-/// The unsafe extensions class
-/// </summary>
-internal static class UnsafeExtensions
+namespace Frent.Core
 {
+    /// <summary>
+    /// The unsafe extensions class
+    /// </summary>
+    internal static class UnsafeExtensions
+    {
 #if !DEBUG
     /// <summary>
     /// Unsafes the array index using the specified arr
@@ -82,21 +82,22 @@ internal static class UnsafeExtensions
     public static T UnsafeCast<T>(object o) where T : class =>
         Unsafe.As<T>(o);
 #else
-    public static ref T UnsafeArrayIndex<T>(this T[] arr, nint index) =>
-        ref arr[index];
-    public static ref T UnsafeArrayIndex<T>(this T[] arr, int index) =>
-        ref arr[index];
-    public static ref T UnsafeArrayIndex<T>(this T[] arr, ushort index) =>
-        ref arr[index];
-    public static ref T UnsafeArrayIndex<T>(this T[] arr, uint index) =>
-        ref arr[index];
-    public static ref T UnsafeSpanIndex<T>(this Span<T> arr, int index) =>
-        ref arr[index];
-    public static ref T UnsafeSpanIndex<T>(this Span<T> arr, ushort index) =>
-        ref arr[index];
-    public static ref T UnsafeSpanIndex<T>(this Span<T> arr, uint index) =>
-        ref arr[(int)index];
-    public static T UnsafeCast<T>(object o) where T : class =>
-        (T)o;
+        public static ref T UnsafeArrayIndex<T>(this T[] arr, nint index) =>
+            ref arr[index];
+        public static ref T UnsafeArrayIndex<T>(this T[] arr, int index) =>
+            ref arr[index];
+        public static ref T UnsafeArrayIndex<T>(this T[] arr, ushort index) =>
+            ref arr[index];
+        public static ref T UnsafeArrayIndex<T>(this T[] arr, uint index) =>
+            ref arr[index];
+        public static ref T UnsafeSpanIndex<T>(this Span<T> arr, int index) =>
+            ref arr[index];
+        public static ref T UnsafeSpanIndex<T>(this Span<T> arr, ushort index) =>
+            ref arr[index];
+        public static ref T UnsafeSpanIndex<T>(this Span<T> arr, uint index) =>
+            ref arr[(int)index];
+        public static T UnsafeCast<T>(object o) where T : class =>
+            (T)o;
 #endif
+    }
 }
