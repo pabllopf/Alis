@@ -77,4 +77,13 @@
         <PackageReference Include="System.Net.Http" Version="4.3.0"/>
     </ItemGroup>
 
+    <ItemGroup Condition="
+    $(TargetFramework.Equals('netcoreapp2.0')) OR
+    $(TargetFramework.Equals('netcoreapp2.1')) OR
+    $(TargetFramework.Equals('netcoreapp2.2')) OR
+    $(TargetFramework.Equals('netcoreapp3.0')) OR
+    $(TargetFramework.Equals('netcoreapp3.1'))
+    ">
+    </ItemGroup>
+
 </Project>
