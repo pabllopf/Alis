@@ -446,21 +446,18 @@ namespace Alis.Core.Ecs.Core.Archetype
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal bool HasTag(TagID tagID) => ComponentTagTable.UnsafeArrayIndex(tagID.RawValue) << 7 != 0;
 
-        /// <summary>
-        ///     Gets the entity span
-        /// </summary>
-        /// <returns>A span of entity id only</returns>
         internal Span<EntityIDOnly> GetEntitySpan()
         {
             Debug.Assert(_nextComponentIndex <= _entities.Length);
-            return _entities.AsSpan(0, _nextComponentIndex);
+#if (NETSTANDARD || NETCOREAPP || NETFRAMEWORK) && !NET6_0_OR_GREATER
+        return _entities.AsSpan(0, _nextComponentIndex);
+#else
+            return MemoryMarshal.CreateSpan(ref MemoryMarshal.GetArrayDataReference(_entities), _nextComponentIndex);
+#endif
         }
 
-        /// <summary>
-        ///     Gets the entity data reference
-        /// </summary>
-        /// <returns>The ref entity id only</returns>
         internal ref EntityIDOnly GetEntityDataReference() => ref MemoryMarshal.GetArrayDataReference(_entities);
+
 
         /// <summary>
         ///     The fields

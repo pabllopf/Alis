@@ -106,12 +106,13 @@ namespace Alis.Core.Ecs.Updating
         /// </summary>
         public static void RegisterUpdateMethodAttribute(Type attributeType, Type componentType)
         {
-            if (!TypeAttributeCache.TryGetValue(attributeType, out HashSet<Type>? set))
-            {
-                set = TypeAttributeCache[attributeType] = [];
-            }
-
-            set.Add(componentType);
+#if (NETSTANDARD || NETCOREAPP || NETFRAMEWORK) && !NET6_0_OR_GREATER
+        if (!TypeAttributeCache.TryGetValue(attributeType, out var set))
+            set = TypeAttributeCache[attributeType] = [];
+        set.Add(componentType);
+#else
+            (System.Runtime.InteropServices.CollectionsMarshal.GetValueRefOrAddDefault(TypeAttributeCache, attributeType, out _) ??= []).Add(componentType);
+#endif
         }
     }
 }
