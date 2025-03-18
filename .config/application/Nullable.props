@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
     <PropertyGroup>
+        <Nullable>disable</Nullable>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="$(AssemblyName.Contains('Ecs')) == true">
         <Nullable>enable</Nullable>
     </PropertyGroup>
 </Project>
