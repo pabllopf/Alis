@@ -39,7 +39,7 @@ namespace Alis.Core.Graphic.GlfwLib
     /// <seealso cref="EventArgs" />
     public class KeyEventArgs : EventArgs
     {
-        #region Constructors
+        
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="KeyEventArgs" /> class.
@@ -56,9 +56,9 @@ namespace Alis.Core.Graphic.GlfwLib
             Modifiers = mods;
         }
 
-        #endregion
+        
 
-        #region Properties
+        
 
         /// <summary>
         ///     Gets the key whose state change raised the event.
@@ -92,6 +92,6 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </value>
         public InputState State { get; }
 
-        #endregion
+        
     }
 }

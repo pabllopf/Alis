@@ -250,7 +250,7 @@ namespace Frent.Core
             _nextComponentIndex--;
             Debug.Assert(_nextComponentIndex >= 0);
             //TODO: args
-            #region Unroll
+            
             DeleteComponentData args = new(index, _nextComponentIndex);
 
             ref ComponentStorageBase first = ref MemoryMarshal.GetArrayDataReference(Components);
@@ -293,7 +293,7 @@ namespace Frent.Core
             Unsafe.Add(ref first, 2).Delete(args);
             len2:
             Unsafe.Add(ref first, 1).Delete(args);
-            #endregion
+            
 
             end:
 

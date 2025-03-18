@@ -88,7 +88,7 @@ namespace Alis.Core.Physic.Dynamics
             }
         }
 
-        #region IEnumerator<Controller>
+        
 
         /// <summary>
         ///     Gets the value of the current
@@ -106,9 +106,9 @@ namespace Alis.Core.Physic.Dynamics
             }
         }
 
-        #endregion IEnumerator<Controller>
+        
 
-        #region IEnumerator
+        
 
         /// <summary>
         ///     Describes whether this instance move next
@@ -160,6 +160,6 @@ namespace Alis.Core.Physic.Dynamics
             i = -1;
         }
 
-        #endregion IEnumerator
+        
     }
 }

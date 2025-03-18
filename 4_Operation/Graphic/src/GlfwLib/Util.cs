@@ -38,7 +38,7 @@ namespace Alis.Core.Graphic.GlfwLib
     /// </summary>
     internal static class Util
     {
-        #region Methods
+        
 
         /// <summary>
         ///     Reads memory from the pointer until the first null byte is encountered and decodes the bytes from UTF-8 into a
@@ -63,6 +63,6 @@ namespace Alis.Core.Graphic.GlfwLib
             return "";
         }
 
-        #endregion
+        
     }
 }

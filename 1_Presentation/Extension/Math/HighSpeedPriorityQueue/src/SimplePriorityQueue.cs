@@ -512,7 +512,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             public TItem Data { get; }
         }
 
-        #region Try* methods for multithreading
+        
 
         /// Get the head of the queue, without removing it (use TryDequeue() for that).
         /// Useful for multi-threading, where the queue may become empty between calls to Contains() and First
@@ -655,7 +655,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             }
         }
 
-        #endregion
+        
     }
 
     /// <summary>

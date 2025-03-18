@@ -244,7 +244,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
             Points.Remove(p);
         }
 
-        #region Triangulatable Members
+        
 
         /// <summary>
         ///     Gets the value of the triangulation mode
@@ -335,6 +335,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
             }
         }
 
-        #endregion
+        
     }
 }

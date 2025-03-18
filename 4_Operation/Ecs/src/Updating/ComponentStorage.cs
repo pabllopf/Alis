@@ -126,16 +126,11 @@ namespace Frent.Updating.Runners
             return new ComponentHandle(stackIndex, Component<TComponent>.ID);
         }
     }
-
-#if MANAGED_COMPONENTS || TRUE
+    
     /// <summary>
-#if MANAGED_COMPONENTS || TRUE
     /// The component storage class
-#if MANAGED_COMPONENTS || TRUE
     /// </summary>
-#if MANAGED_COMPONENTS || TRUE
     /// <seealso cref="ComponentStorageBase"/>
-#if MANAGED_COMPONENTS || TRUE
     internal abstract partial class ComponentStorage<TComponent>(int length) : ComponentStorageBase(length == 0 ? [] : new TComponent[length])
     {
         /// <summary>
@@ -192,65 +187,4 @@ namespace Frent.Updating.Runners
 
         }
     }
-#else
-internal unsafe abstract class ComponentStorage<TComponent> : IDisposable
-{
-
-    public ref TComponent this[int index]
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get
-        {
-            if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
-            {
-                return ref _managed!.UnsafeArrayIndex(index);
-            }
-
-            return ref _nativeArray[index];
-        }
-    }
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public ComponentStorage()
-    {
-        if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
-        {
-            _managed = new TComponent[1];
-        }
-        else
-        {
-            _nativeArray = new(1);
-        }
-    }
-
-    private TComponent[]? _managed;
-    private NativeArray<TComponent> _nativeArray;
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    protected void Resize(int size)
-    {
-        if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
-        {
-            Array.Resize(ref _managed, size);
-        }
-        else
-        {
-            _nativeArray.Resize(size);
-        }
-    }
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Span<TComponent> AsSpan() => RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>() ?
-        _managed.AsSpan() : _nativeArray.AsSpan();
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Span<TComponent> AsSpan(int length) => RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>() ?
-        _managed.AsSpan(0, length) : _nativeArray.AsSpanLen(length);
-
-    public void Dispose()
-    {
-        _nativeArray.Dispose();
-    }
-}
-#endif
 }

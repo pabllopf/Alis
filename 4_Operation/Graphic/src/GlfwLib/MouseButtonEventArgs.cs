@@ -38,7 +38,7 @@ namespace Alis.Core.Graphic.GlfwLib
     /// <seealso cref="EventArgs" />
     public class MouseButtonEventArgs : EventArgs
     {
-        #region Constructors
+        
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="MouseButtonEventArgs" /> class.
@@ -53,9 +53,9 @@ namespace Alis.Core.Graphic.GlfwLib
             Modifiers = modifiers;
         }
 
-        #endregion
+        
 
-        #region Properties
+        
 
         /// <summary>
         ///     Gets the state of the mouse button when the event was raised.
@@ -81,6 +81,6 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </value>
         public ModifierKeys Modifiers { get; }
 
-        #endregion
+        
     }
 }

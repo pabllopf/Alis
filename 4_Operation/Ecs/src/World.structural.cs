@@ -233,7 +233,7 @@ namespace Frent
             currentLookup = nextLocation;
         }
 
-        #region Delete
+        
         //Delete
         /// <summary>
         /// Deletes the entity using the specified entity
@@ -295,6 +295,6 @@ namespace Frent
                 id.Version++;
             }
         }
-        #endregion
+        
     }
 }

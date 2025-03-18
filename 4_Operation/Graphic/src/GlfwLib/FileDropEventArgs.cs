@@ -37,7 +37,7 @@ namespace Alis.Core.Graphic.GlfwLib
     /// <seealso cref="EventArgs" />
     public class FileDropEventArgs : EventArgs
     {
-        #region Constructors
+        
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="FileDropEventArgs" /> class.
@@ -45,9 +45,9 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="filenames">The dropped filenames.</param>
         public FileDropEventArgs(string[] filenames) => Filenames = filenames;
 
-        #endregion
+        
 
-        #region Properties
+        
 
         /// <summary>
         ///     Gets the filenames of the dropped files.
@@ -57,6 +57,6 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </value>
         public string[] Filenames { get; }
 
-        #endregion
+        
     }
 }

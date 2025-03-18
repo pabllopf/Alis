@@ -42,7 +42,7 @@ namespace Alis.Core.Physic.Common
     /// </summary>
     public static class PathManager
     {
-        #region LinkType enum
+        
 
         /// <summary>
         ///     The link type enum
@@ -60,7 +60,7 @@ namespace Alis.Core.Physic.Common
             Slider
         }
 
-        #endregion
+        
 
         //Contributed by Matthew Bettcher
 

@@ -328,9 +328,9 @@ namespace Alis.Core.Physic.Common.TextureTools
             return verticesList;
         }
 
-        #region CxFastList from nape physics
+        
 
-        #region Nested type: CxFastList
+        
 
         /// <summary>
         ///     Designed as a complete port of CxFastList from CxStd.
@@ -599,13 +599,13 @@ namespace Alis.Core.Physic.Common.TextureTools
             }
         }
 
-        #endregion
+        
 
-        #endregion
+        
 
-        #region Internal Stuff
+        
 
-        #region Nested type: GeomPoly
+        
 
         /// <summary>
         ///     The geom poly class
@@ -632,11 +632,11 @@ namespace Alis.Core.Physic.Common.TextureTools
             }
         }
 
-        #endregion
+        
 
-        #endregion
+        
 
-        #region Private Methods
+        
 
         //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -936,6 +936,6 @@ namespace Alis.Core.Physic.Common.TextureTools
             }
         }
 
-        #endregion
+        
     }
 }

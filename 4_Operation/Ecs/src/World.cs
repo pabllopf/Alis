@@ -23,12 +23,12 @@ namespace Frent
     /// </summary>
     public partial class World : IDisposable
     {
-        #region Static Version Management
+        
         /// <summary>
         /// The next world id
         /// </summary>
         private static ushort _nextWorldID = 1;
-        #endregion
+        
 
         //entityID -> entity metadata
         /// <summary>

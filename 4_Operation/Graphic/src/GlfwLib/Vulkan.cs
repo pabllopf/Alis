@@ -42,7 +42,7 @@ namespace Alis.Core.Graphic.GlfwLib
     [SuppressUnmanagedCodeSecurity]
     public static class Vulkan
     {
-        #region Properties
+        
 
         /// <summary>
         ///     Gets whether the Vulkan loader has been found. This check is performed by <see cref="Glfw.Init" />.
@@ -52,9 +52,9 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </value>
         public static bool IsSupported => VulkanSupported();
 
-        #endregion
+        
 
-        #region External
+        
 
         /// <summary>
         ///     This function creates a Vulkan surface for the specified window.
@@ -106,9 +106,9 @@ namespace Alis.Core.Graphic.GlfwLib
         [DllImport(Glfw.LIBRARY, EntryPoint = "glfwVulkanSupported", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool VulkanSupported();
 
-        #endregion
+        
 
-        #region Methods
+        
 
         /// <summary>
         ///     This function returns the address of the specified Vulkan core or extension function for the specified instance. If
@@ -154,6 +154,6 @@ namespace Alis.Core.Graphic.GlfwLib
             return extensions.Where(s => !string.IsNullOrWhiteSpace(s)).ToArray();
         }
 
-        #endregion
+        
     }
 }

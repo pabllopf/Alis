@@ -142,7 +142,7 @@ namespace Frent.Core
         /// <param name="component">The component to add.</param>
         public void AddComponent(Entity entity, object component) => AddComponent(entity, component.GetType(), component);
 
-        #region Create
+        
         /// <summary>
         /// Begins to create an entity, which will be resolved when <see cref="Playback"/> is called.
         /// </summary>
@@ -214,7 +214,7 @@ namespace Frent.Core
             _lastCreateEntityComponentsBufferIndex = -1;
             return e;
         }
-        #endregion
+        
 
         /// <summary>
         /// Removes all commands without playing them back.

@@ -631,7 +631,7 @@ namespace Alis.Core.Physic.Dynamics
             return collide;
         }
 
-        #region Settings
+        
 
         /// <summary>
         ///     A threshold for activating multiple cores to solve VelocityConstraints.
@@ -657,6 +657,6 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public readonly int CollideMultithreadThreshold = int.MaxValue;
 
-        #endregion
+        
     }
 }

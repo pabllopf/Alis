@@ -8,7 +8,7 @@ using MemoryMarshal = System.Runtime.InteropServices.MemoryMarshal;
 using RuntimeHelpers = System.Runtime.CompilerServices.RuntimeHelpers;
 #pragma warning restore CS0436 // Type conflicts with imported type
 
-#region Attributes
+
 using CommunityToolkit.HighPerformance;
 using Frent;
 using System.Reflection;
@@ -36,11 +36,11 @@ namespace System.Runtime.CompilerServices
     /// <seealso cref="Attribute"/>
     internal class IsExternalInit : Attribute;
 }
-#endregion
+
 
 #if NETSTANDARD2_1 || NETSTANDARD2_0 || NET5_0 || NETCOREAPP2_0 || NETCOREAPP2_1 || NETCOREAPP2_2 || NETCOREAPP3_0 || NETCOREAPP3_1 || NET481 || NET48 || NET472 || NET471 || NET47 || NET462 || NET461 || NET46 || NET452 || NET451 || NET45 || NET40
 
-#region Static class helpers
+
 namespace System.Runtime.CompilerServices
 {
     internal static class RuntimeHelpers
@@ -120,9 +120,9 @@ namespace System.Numerics
         ];
     }
 }
-#endregion
 
-#region Index and Range
+
+
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
@@ -418,6 +418,6 @@ namespace System
         }
     }
 }
-#endregion
+
 
 #endif

@@ -64,7 +64,7 @@ namespace Alis.Core.Physic.Dynamics
         public BodyCollection(World world) => _world = world;
 
 
-        #region IEnumerable<Body>
+        
 
         /// <summary>
         ///     Gets the enumerator
@@ -72,10 +72,10 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>An enumerator of body</returns>
         IEnumerator<Body> IEnumerable<Body>.GetEnumerator() => new BodyEnumerator(this, List);
 
-        #endregion IEnumerable<Body>
+        
 
 
-        #region IEnumerable
+        
 
         /// <summary>
         ///     Gets the enumerator
@@ -83,7 +83,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>The enumerator</returns>
         IEnumerator IEnumerable.GetEnumerator() => new BodyEnumerator(this, List);
 
-        #endregion IEnumerable
+        
 
         /// <summary>
         ///     Gets the enumerator
@@ -146,7 +146,7 @@ namespace Alis.Core.Physic.Dynamics
                 }
             }
 
-            #region IEnumerator<Body>
+            
 
             /// <summary>
             ///     Gets the value of the current
@@ -164,9 +164,9 @@ namespace Alis.Core.Physic.Dynamics
                 }
             }
 
-            #endregion IEnumerator<Body>
+            
 
-            #region IEnumerator
+            
 
             /// <summary>
             ///     Describes whether this instance move next
@@ -218,11 +218,11 @@ namespace Alis.Core.Physic.Dynamics
                 i = -1;
             }
 
-            #endregion IEnumerator
+            
         }
 
 
-        #region IList<Body>
+        
 
         /// <summary>
         ///     The not supported exception
@@ -261,10 +261,10 @@ namespace Alis.Core.Physic.Dynamics
             throw new NotSupportedException();
         }
 
-        #endregion IList<Body>
+        
 
 
-        #region ICollection<Body>
+        
 
         /// <summary>
         ///     Gets the value of the is read only
@@ -319,6 +319,6 @@ namespace Alis.Core.Physic.Dynamics
             List.CopyTo(array, arrayIndex);
         }
 
-        #endregion ICollection<Body>
+        
     }
 }

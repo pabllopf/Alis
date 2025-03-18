@@ -38,7 +38,7 @@ namespace Alis.Core.Graphic.GlfwLib
     /// <seealso cref="EventArgs" />
     public class MouseMoveEventArgs : EventArgs
     {
-        #region Constructors
+        
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="MouseMoveEventArgs" /> class.
@@ -57,9 +57,9 @@ namespace Alis.Core.Graphic.GlfwLib
             Y = y;
         }
 
-        #endregion
+        
 
-        #region Properties
+        
 
         /// <summary>
         ///     Gets the position of the mouse, relative to the screen.
@@ -87,6 +87,6 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </value>
         public double Y { get; }
 
-        #endregion
+        
     }
 }

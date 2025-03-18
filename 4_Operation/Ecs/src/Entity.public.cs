@@ -17,9 +17,9 @@ namespace Frent
     /// </summary>
     partial struct Entity
     {
-        #region Public API
+        
 
-        #region Has
+        
         /// <summary>
         /// Checks of this <see cref="Entity"/> has a component specified by <paramref name="componentID"/>.
         /// </summary>
@@ -66,9 +66,9 @@ namespace Frent
         /// <param name="type">The type of the component type to check.</param>
         /// <returns><see langword="true"/> if the entity is alive and has a component of <paramref name="type"/>, otherwise <see langword="false"/>.</returns>
         public bool TryHas(Type type) => TryHas(Component.GetComponentID(type));
-        #endregion
+        
 
-        #region Get
+        
         /// <summary>
         /// Gets this <see cref="Entity"/>'s component of type <typeparamref name="T"/>.
         /// </summary>
@@ -150,9 +150,9 @@ namespace Frent
         /// <exception cref="ComponentNotFoundException"><see cref="Entity"/> does not have component of type <paramref name="type"/>.</exception>
         /// <returns>The component of type <paramref name="type"/></returns>
         public void Set(Type type, object obj) => Set(Component.GetComponentID(type), obj);
-        #endregion
+        
 
-        #region TryGet
+        
         /// <summary>
         /// Attempts to get a component from an <see cref="Entity"/>.
         /// </summary>
@@ -187,9 +187,9 @@ namespace Frent
             value = lookup.Archetype.Components[compIndex].GetAt(lookup.Index);
             return true;
         }
-        #endregion
+        
 
-        #region Add
+        
         /// <summary>
         /// Adds a component to this <see cref="Entity"/> as its own type
         /// </summary>
@@ -223,9 +223,9 @@ namespace Frent
                 w.WorldUpdateCommandBuffer.AddComponent(this, componentID, component);
             }
         }
-        #endregion
+        
 
-        #region Remove
+        
         /// <summary>
         /// Removes a component from this entity
         /// </summary>
@@ -250,9 +250,9 @@ namespace Frent
         /// <exception cref="InvalidOperationException"><see cref="Entity"/> is dead.</exception>
         /// <exception cref="ComponentNotFoundException"><see cref="Entity"/> does not have component of type <paramref name="type"/>.</exception>
         public void Remove(Type type) => Remove(Component.GetComponentID(type));
-        #endregion
+        
 
-        #region Tag
+        
         /// <summary>
         /// Checks whether this <see cref="Entity"/> has a specific tag, using a <see cref="TagID"/> to represent the tag.
         /// </summary>
@@ -312,9 +312,9 @@ namespace Frent
 
             return true;
         }
-        #endregion
+        
 
-        #region Detach
+        
         /// <summary>
         /// Removes a tag from this <see cref="Entity"/>. Tags are like components but do not take up extra memory.
         /// </summary>
@@ -340,9 +340,9 @@ namespace Frent
 
             return true;
         }
-        #endregion
+        
 
-        #region Events
+        
         /// <summary>
         /// Raised when the entity is deleted
         /// </summary>
@@ -508,9 +508,9 @@ namespace Frent
             }
         }
 
-        #endregion
+        
 
-        #region Misc
+        
         /// <summary>
         /// Deletes this entity
         /// </summary>
@@ -620,8 +620,8 @@ namespace Frent
         {
             return Archetype.GetArchetypeID(components, tags);
         }
-        #endregion
+        
 
-        #endregion
+        
     }
 }
