@@ -47,6 +47,7 @@
 
     <ItemGroup Condition="$(AssemblyName.Contains('Ecs')) == true">
         <PackageReference Include="CommunityToolkit.HighPerformance" Version="8.4.0" />
+        <PackageReference Include="System.Collections.Immutable" Version="9.0.3" />
     </ItemGroup>
 
     <ItemGroup Condition="Exists('$(ProjectDir)../generator/') == True AND $(AssemblyName.Contains('Generator')) == false">
