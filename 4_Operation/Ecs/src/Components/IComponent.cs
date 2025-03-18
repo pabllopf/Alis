@@ -1,4 +1,4 @@
-﻿
+
 using static Frent.AttributeHelpers;
 
 namespace Frent.Components;

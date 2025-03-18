@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Frent.Collections;
 using Frent.Components;
 using Frent.Core;
@@ -9,9 +9,18 @@ using static Frent.AttributeHelpers;
 
 namespace Frent.Updating.Runners;
 
+/// <summary>
+/// The entity uniform update class
+/// </summary>
+/// <seealso cref="ComponentStorage{TComp}"/>
 internal class EntityUniformUpdate<TComp, TUniform>(int len) : ComponentStorage<TComp>(len)
     where TComp : IEntityUniformComponent<TUniform>
 {
+    /// <summary>
+    /// Runs the world
+    /// </summary>
+    /// <param name="world">The world</param>
+    /// <param name="b">The </param>
     internal override void Run(World world, Archetype b)
     {
         ref EntityIDOnly entityIds = ref b.GetEntityDataReference();
@@ -30,6 +39,12 @@ internal class EntityUniformUpdate<TComp, TUniform>(int len) : ComponentStorage<
         }
     }
 
+    /// <summary>
+    /// Multithreadeds the run using the specified countdown
+    /// </summary>
+    /// <param name="countdown">The countdown</param>
+    /// <param name="world">The world</param>
+    /// <param name="b">The </param>
     internal override void MultithreadedRun(CountdownEvent countdown, World world, Archetype b) =>
         throw new NotImplementedException();
 }
@@ -38,8 +53,22 @@ internal class EntityUniformUpdate<TComp, TUniform>(int len) : ComponentStorage<
 public class EntityUniformUpdateRunnerFactory<TComp, TUniform> : IComponentStorageBaseFactory, IComponentStorageBaseFactory<TComp>
     where TComp : IEntityUniformComponent<TUniform>
 {
+    /// <summary>
+    /// Creates the capacity
+    /// </summary>
+    /// <param name="capacity">The capacity</param>
+    /// <returns>The component storage base</returns>
     ComponentStorageBase IComponentStorageBaseFactory.Create(int capacity) => new EntityUniformUpdate<TComp, TUniform>(capacity);
+    /// <summary>
+    /// Creates the stack
+    /// </summary>
+    /// <returns>The id table</returns>
     IDTable IComponentStorageBaseFactory.CreateStack() => new IDTable<TComp>();
+    /// <summary>
+    /// Creates the strongly typed using the specified capacity
+    /// </summary>
+    /// <param name="capacity">The capacity</param>
+    /// <returns>A component storage of t comp</returns>
     ComponentStorage<TComp> IComponentStorageBaseFactory<TComp>.CreateStronglyTyped(int capacity) => new EntityUniformUpdate<TComp, TUniform>(capacity);
 }
 
@@ -52,6 +81,11 @@ internal class EntityUniformUpdate<TComp, TUniform, TArg>(int capacity) : Compon
     where TComp : IEntityUniformComponent<TUniform, TArg>
 {
     //maybe field acsesses can be optimzed???
+    /// <summary>
+    /// Runs the world
+    /// </summary>
+    /// <param name="world">The world</param>
+    /// <param name="b">The </param>
     internal override void Run(World world, Archetype b)
     {
         ref EntityIDOnly entityIds = ref b.GetEntityDataReference();
@@ -74,6 +108,12 @@ internal class EntityUniformUpdate<TComp, TUniform, TArg>(int capacity) : Compon
         }
     }
 
+    /// <summary>
+    /// Multithreadeds the run using the specified countdown
+    /// </summary>
+    /// <param name="countdown">The countdown</param>
+    /// <param name="world">The world</param>
+    /// <param name="b">The </param>
     internal override void MultithreadedRun(CountdownEvent countdown, World world, Archetype b)
         => throw new NotImplementedException();
 }
@@ -102,7 +142,21 @@ internal class EntityUniformUpdate<TComp, TUniform, TArg>(int capacity) : Compon
 public class EntityUniformUpdateRunnerFactory<TComp, TUniform, TArg> : IComponentStorageBaseFactory, IComponentStorageBaseFactory<TComp>
     where TComp : IEntityUniformComponent<TUniform, TArg>
 {
+    /// <summary>
+    /// Creates the capacity
+    /// </summary>
+    /// <param name="capacity">The capacity</param>
+    /// <returns>The component storage base</returns>
     ComponentStorageBase IComponentStorageBaseFactory.Create(int capacity) => new EntityUniformUpdate<TComp, TUniform, TArg>(capacity);
+    /// <summary>
+    /// Creates the stack
+    /// </summary>
+    /// <returns>The id table</returns>
     IDTable IComponentStorageBaseFactory.CreateStack() => new IDTable<TComp>();
+    /// <summary>
+    /// Creates the strongly typed using the specified capacity
+    /// </summary>
+    /// <param name="capacity">The capacity</param>
+    /// <returns>A component storage of t comp</returns>
     ComponentStorage<TComp> IComponentStorageBaseFactory<TComp>.CreateStronglyTyped(int capacity) => new EntityUniformUpdate<TComp, TUniform, TArg>(capacity);
 }

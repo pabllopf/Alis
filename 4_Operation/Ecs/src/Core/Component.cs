@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Frent.Collections;
 using Frent.Components;
@@ -20,20 +20,47 @@ public static class Component<T>
     /// </summary>
     public static ComponentID ID => _id;
 
+    /// <summary>
+    /// The id
+    /// </summary>
     private static readonly ComponentID _id;
+    /// <summary>
+    /// The runner instance
+    /// </summary>
     private static readonly IComponentStorageBaseFactory<T> RunnerInstance;
+    /// <summary>
+    /// The general component storage
+    /// </summary>
     internal static readonly IDTable<T> GeneralComponentStorage;
+    /// <summary>
+    /// The initer
+    /// </summary>
     internal static readonly ComponentDelegates<T>.InitDelegate? Initer;
+    /// <summary>
+    /// The destroyer
+    /// </summary>
     internal static readonly ComponentDelegates<T>.DestroyDelegate? Destroyer;
 
+    /// <summary>
+    /// The 
+    /// </summary>
     internal static readonly bool IsDestroyable = typeof(T).IsValueType ? default(T) is IDestroyable : typeof(IDestroyable).IsAssignableFrom(typeof(T));
 
+    /// <summary>
+    /// Stores the component using the specified component
+    /// </summary>
+    /// <param name="component">The component</param>
+    /// <returns>The component handle</returns>
     public static ComponentHandle StoreComponent(in T component)
     {
         GeneralComponentStorage.Create(out var index) = component;
         return new ComponentHandle(index, _id);
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Component{T}"/> class
+    /// </summary>
+    /// <exception cref="InvalidOperationException">{typeof(T).FullName} is not initalized correctly. (Is the source generator working?)</exception>
     static Component()
     {
         (_id, GeneralComponentStorage, Initer, Destroyer) = Component.GetExistingOrSetupNewComponent<T>();
@@ -54,6 +81,11 @@ public static class Component<T>
         RunnerInstance = fac;
     }
 
+    /// <summary>
+    /// Creates the instance using the specified cap
+    /// </summary>
+    /// <param name="cap">The cap</param>
+    /// <returns>A component storage of t</returns>
     internal static ComponentStorage<T> CreateInstance(int cap) => RunnerInstance.CreateStronglyTyped(cap);
 }
 
@@ -77,14 +109,31 @@ public static class ComponentDelegates<T>
 /// </summary>
 public static class Component
 {
+    /// <summary>
+    /// The create
+    /// </summary>
     internal static FastStack<ComponentData> ComponentTable = FastStack<ComponentData>.Create(16);
 
+    /// <summary>
+    /// The none component runner table
+    /// </summary>
     internal static Dictionary<Type, IComponentStorageBaseFactory> NoneComponentRunnerTable = [];
 
+    /// <summary>
+    /// The existing component ds
+    /// </summary>
     private static Dictionary<Type, ComponentID> ExistingComponentIDs = [];
 
+    /// <summary>
+    /// The next component id
+    /// </summary>
     private static int NextComponentID = -1;
 
+    /// <summary>
+    /// Gets the component factory from type using the specified t
+    /// </summary>
+    /// <param name="t">The </param>
+    /// <returns>The component storage base factory</returns>
     internal static IComponentStorageBaseFactory GetComponentFactoryFromType(Type t)
     {
         if (GenerationServices.UserGeneratedTypeMap.TryGetValue(t, out var type))
@@ -110,6 +159,12 @@ public static class Component
             NoneComponentRunnerTable[typeof(T)] = new NoneUpdateRunnerFactory<T>();
     }
 
+    /// <summary>
+    /// Gets the existing or setup new component
+    /// </summary>
+    /// <typeparam name="T">The </typeparam>
+    /// <exception cref="InvalidOperationException">Exceeded maximum unique component type count of 65535</exception>
+    /// <returns>A component id component id and id table of t stack and component delegates t init delegate initer and component delegates t destroy delegate destroyer</returns>
     internal static (ComponentID ComponentID, IDTable<T> Stack, ComponentDelegates<T>.InitDelegate? Initer, ComponentDelegates<T>.DestroyDelegate? Destroyer) GetExistingOrSetupNewComponent<T>()
     {
         lock (GlobalWorldTables.BufferChangeLock)
@@ -174,6 +229,11 @@ public static class Component
         }
     }
 
+    /// <summary>
+    /// Gets the component table using the specified type
+    /// </summary>
+    /// <param name="type">The type</param>
+    /// <returns>The id table</returns>
     private static IDTable GetComponentTable(Type type)
     {
         if (NoneComponentRunnerTable.TryGetValue(type, out var fac))
@@ -187,6 +247,12 @@ public static class Component
     }
 
     
+    /// <summary>
+    /// Throws the component type not init using the specified t
+    /// </summary>
+    /// <param name="t">The </param>
+    /// <exception cref="InvalidOperationException">{t.FullName} is not initalized. (Did you initalize T with Component.RegisterComponent&lt;T&gt;()?)</exception>
+    /// <exception cref="InvalidOperationException">{t.FullName} is not initalized. (Is the source generator working?)</exception>
     private static void Throw_ComponentTypeNotInit(Type t)
     {
         if (typeof(IComponentBase).IsAssignableFrom(t))
@@ -200,5 +266,8 @@ public static class Component
     }
 
     //initalize default(ComponentID) to point to void
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Component"/> class
+    /// </summary>
     static Component() => GetComponentID(typeof(void));
 }

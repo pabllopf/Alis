@@ -1,4 +1,4 @@
-﻿namespace Frent;
+namespace Frent;
 
 /// <summary>
 /// Config information for a <see cref="World"/>.

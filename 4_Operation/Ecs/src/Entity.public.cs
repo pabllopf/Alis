@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Frent.Core;
 using Frent.Core.Events;
@@ -12,6 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace Frent;
 
+/// <summary>
+/// The entity
+/// </summary>
 partial struct Entity
 {
     #region Public API
@@ -415,6 +418,11 @@ partial struct Entity
         remove => UnsubscribeEvent(value, EntityFlags.Detach);
     }
 
+    /// <summary>
+    /// Unsubscribes the event using the specified value
+    /// </summary>
+    /// <param name="value">The value</param>
+    /// <param name="flag">The flag</param>
     private void UnsubscribeEvent(object value, EntityFlags flag)
     {
         if (value is null || !InternalIsAlive(out var world, out EntityLocation entityLocation))
@@ -459,6 +467,12 @@ partial struct Entity
     
 
 
+    /// <summary>
+    /// Initalizes the event record using the specified delegate
+    /// </summary>
+    /// <param name="@delegate">The delegate</param>
+    /// <param name="flag">The flag</param>
+    /// <param name="isGenericEvent">The is generic event</param>
     private void InitalizeEventRecord(object @delegate, EntityFlags flag, bool isGenericEvent = false)
     {
         if (@delegate is null || !InternalIsAlive(out var world, out EntityLocation entityLocation))

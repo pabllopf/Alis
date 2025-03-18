@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Frent.Collections;
 using Frent.Core;
 using Frent.Core.Events;
@@ -29,6 +29,9 @@ namespace Frent;
 
 
 
+/// <summary>
+/// The entity
+/// </summary>
 partial struct Entity
 {
     //traversing archetype graph strategy:
@@ -167,11 +170,25 @@ partial struct Entity
         }
     }
 
+    /// <summary>
+    /// Invokes the component world events using the specified event
+    /// </summary>
+    /// <typeparam name="T">The </typeparam>
+    /// <param name="@event">The event</param>
+    /// <param name="entity">The entity</param>
     private static void InvokeComponentWorldEvents<T>(ref Event<ComponentID> @event, Entity entity)
     {
         @event.InvokeInternal(entity, Component<T>.ID);
     }
 
+    /// <summary>
+    /// Invokes the per entity events using the specified entity
+    /// </summary>
+    /// <typeparam name="T">The </typeparam>
+    /// <param name="entity">The entity</param>
+    /// <param name="hasGenericEvent">The has generic event</param>
+    /// <param name="events">The events</param>
+    /// <param name="component">The component</param>
     private static void InvokePerEntityEvents<T>(Entity entity, bool hasGenericEvent, ref ComponentEvent events, ref T component)
     {
         events.NormalEvent.Invoke(entity, Component<T>.ID);
@@ -182,18 +199,38 @@ partial struct Entity
         events.GenericEvent!.Invoke(entity, ref component);
     }
 
+    /// <summary>
+    /// Invokes the tag world events using the specified event
+    /// </summary>
+    /// <typeparam name="T">The </typeparam>
+    /// <param name="@event">The event</param>
+    /// <param name="entity">The entity</param>
     private static void InvokeTagWorldEvents<T>(ref TagEvent @event, Entity entity)
     {
         @event.InvokeInternal(entity, Core.Tag<T>.ID);
     }
 
+    /// <summary>
+    /// Invokes the per entity tag events using the specified entity
+    /// </summary>
+    /// <typeparam name="T">The </typeparam>
+    /// <param name="entity">The entity</param>
+    /// <param name="events">The events</param>
     private static void InvokePerEntityTagEvents<T>(Entity entity, ref TagEvent events)
     {
         events.Invoke(entity, Core.Tag<T>.ID);
     }
 
+    /// <summary>
+    /// The neighbor cache
+    /// </summary>
     private struct NeighborCache<T> : IArchetypeGraphEdge
     {
+        /// <summary>
+        /// Modifies the tags using the specified tags
+        /// </summary>
+        /// <param name="tags">The tags</param>
+        /// <param name="add">The add</param>
         public void ModifyTags(ref ImmutableArray<TagID> tags, bool add)
         {
             if (add)
@@ -206,6 +243,11 @@ partial struct Entity
             }
         }
 
+        /// <summary>
+        /// Modifies the components using the specified components
+        /// </summary>
+        /// <param name="components">The components</param>
+        /// <param name="add">The add</param>
         public void ModifyComponents(ref ImmutableArray<ComponentID> components, bool add)
         {
             if (add)
@@ -220,30 +262,67 @@ partial struct Entity
 
         //separate into individual classes to avoid creating uneccecary static classes.
 
+        /// <summary>
+        /// The add class
+        /// </summary>
         internal static class Add
         {
+            /// <summary>
+            /// The lookup
+            /// </summary>
             internal static ArchetypeNeighborCache Lookup;
         }
 
+        /// <summary>
+        /// The remove class
+        /// </summary>
         internal static class Remove
         {
+            /// <summary>
+            /// The lookup
+            /// </summary>
             internal static ArchetypeNeighborCache Lookup;
         }
 
+        /// <summary>
+        /// The tag class
+        /// </summary>
         internal static class Tag
         {
+            /// <summary>
+            /// The lookup
+            /// </summary>
             internal static ArchetypeNeighborCache Lookup;
         }
 
+        /// <summary>
+        /// The detach class
+        /// </summary>
         internal static class Detach
         {
+            /// <summary>
+            /// The lookup
+            /// </summary>
             internal static ArchetypeNeighborCache Lookup;
         }
     }
 }
 
+/// <summary>
+/// The entity
+/// </summary>
 partial struct Entity
 {
+    /// <summary>
+    /// Traverses the through cache or create using the specified world
+    /// </summary>
+    /// <typeparam name="T">The </typeparam>
+    /// <typeparam name="TEdge">The edge</typeparam>
+    /// <param name="world">The world</param>
+    /// <param name="cache">The cache</param>
+    /// <param name="currentLookup">The current lookup</param>
+    /// <param name="add">The add</param>
+    /// <returns>The archetype</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal static Archetype TraverseThroughCacheOrCreate<T, TEdge>(
         World world,
@@ -292,9 +371,22 @@ partial struct Entity
         }
     }
 
+    /// <summary>
+    /// The archetype graph edge interface
+    /// </summary>
     internal interface IArchetypeGraphEdge
     {
+        /// <summary>
+        /// Modifies the tags using the specified tags
+        /// </summary>
+        /// <param name="tags">The tags</param>
+        /// <param name="add">The add</param>
         void ModifyTags(ref ImmutableArray<TagID> tags, bool add);
+        /// <summary>
+        /// Modifies the components using the specified components
+        /// </summary>
+        /// <param name="components">The components</param>
+        /// <param name="add">The add</param>
         void ModifyComponents(ref ImmutableArray<ComponentID> components, bool add);
     }
 }

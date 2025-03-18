@@ -1,4 +1,4 @@
-﻿global using ArchetypeID = Frent.Core.EntityType;
+global using ArchetypeID = Frent.Core.EntityType;
 using System;
 using Frent.Core.Structures;
 using System.Collections.Immutable;
@@ -11,7 +11,14 @@ namespace Frent.Core;
 /// </summary>
 public struct EntityType : IEquatable<ArchetypeID>
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="EntityType"/> class
+    /// </summary>
+    /// <param name="id">The id</param>
     internal EntityType(ushort id) => RawIndex = id;
+    /// <summary>
+    /// The raw index
+    /// </summary>
     internal ushort RawIndex;
 
     /// <summary>
@@ -74,5 +81,10 @@ public struct EntityType : IEquatable<ArchetypeID>
     /// <returns><see langword="true"/> if they represent different IDs, <see langword="false"/> otherwise</returns>
     public static bool operator !=(EntityType left, EntityType right) => !left.Equals(right);
 
+    /// <summary>
+    /// Archetypes the context
+    /// </summary>
+    /// <param name="context">The context</param>
+    /// <returns>The ref archetype</returns>
     internal readonly ref Archetype Archetype(World context) => ref context.WorldArchetypeTable.UnsafeArrayIndex(RawIndex);
 }

@@ -1,4 +1,4 @@
-﻿using Frent.Core;
+using Frent.Core;
 
 namespace Frent.Systems;
 

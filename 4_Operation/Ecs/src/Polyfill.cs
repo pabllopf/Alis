@@ -1,4 +1,4 @@
-﻿
+
 
 using System;
 using System.Linq;
@@ -16,12 +16,24 @@ using System.Runtime.CompilerServices;
 
 namespace Frent
 {
+    /// <summary>
+    /// The skip locals init class
+    /// </summary>
+    /// <seealso cref="Attribute"/>
     internal class SkipLocalsInit : Attribute;
+    /// <summary>
+    /// The stack trace hidden class
+    /// </summary>
+    /// <seealso cref="Attribute"/>
     internal class StackTraceHidden : Attribute;
 }
 
 namespace System.Runtime.CompilerServices
 {
+    /// <summary>
+    /// The is external init class
+    /// </summary>
+    /// <seealso cref="Attribute"/>
     internal class IsExternalInit : Attribute;
 }
 #endregion
