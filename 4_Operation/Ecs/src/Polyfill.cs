@@ -26,7 +26,7 @@ namespace System.Runtime.CompilerServices
 }
 #endregion
 
-#if NETSTANDARD2_1 || NETSTANDARD2_0 || NET5_0 || NET481 || NET48 || NET472 || NET471 || NET47 || NET462 || NET461 || NET46 || NET452 || NET451 || NET45 || NET40
+#if NETSTANDARD2_1 || NETSTANDARD2_0 || NET5_0 || NETCOREAPP2_0 || NETCOREAPP2_1 || NETCOREAPP2_2 || NETCOREAPP3_0 || NETCOREAPP3_1 || NET481 || NET48 || NET472 || NET471 || NET47 || NET462 || NET461 || NET46 || NET452 || NET451 || NET45 || NET40
 
 #region Static class helpers
 namespace System.Runtime.CompilerServices
@@ -171,7 +171,7 @@ namespace System
         /// <summary>Converts the value of the current Range object to its equivalent string representation.</summary>
         public override string ToString()
         {
-#if (!NETSTANDARD2_0 && !NETFRAMEWORK)
+#if !NETSTANDARD2_1 && !NETSTANDARD2_0 && !NET5_0 && !NETCOREAPP2_0 && !NETCOREAPP2_1 && !NETCOREAPP2_2 && !NETCOREAPP3_0 && !NETCOREAPP3_1 && !NET481 && !NET48 && !NET472 && !NET471 && !NET47 && !NET462 && !NET461 && !NET46 && !NET452 && !NET451 && !NET45 && !NET40
             Span<char> span = stackalloc char[2 + (2 * 11)]; // 2 for "..", then for each index 1 for '^' and 10 for longest possible uint
             int pos = 0;
  
@@ -394,7 +394,7 @@ namespace System
 
         private string ToStringFromEnd()
         {
-#if (!NETSTANDARD2_0 && !NETFRAMEWORK)
+#if !NETSTANDARD2_1 && !NETSTANDARD2_0 && !NET5_0 && !NETCOREAPP2_0 && !NETCOREAPP2_1 && !NETCOREAPP2_2 && !NETCOREAPP3_0 && !NETCOREAPP3_1 && !NET481 && !NET48 && !NET472 && !NET471 && !NET47 && !NET462 && !NET461 && !NET46 && !NET452 && !NET451 && !NET45 && !NET40
             Span<char> span = stackalloc char[11]; // 1 for ^ and 10 for longest possible uint value
             bool formatted = ((uint)Value).TryFormat(span.Slice(1), out int charsWritten);
             Debug.Assert(formatted);

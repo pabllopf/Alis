@@ -1,50 +1,28 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Program.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+﻿using System;
+using System.Linq;
+using System.Reflection;
 
-using System;
-using Alis.Core.Aspect.Logging;
-
-namespace Alis.Core.Ecs.Sample
+namespace Frent.Sample;
+internal class Program
 {
-    /// <summary>
-    ///     The program class
-    /// </summary>
-    public static class Program
+    static void Main(string[] args)
     {
-        /// <summary>
-        ///     Main the args
-        /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        MethodInfo[] methods = typeof(Samples).GetMethods().Where(m => m.GetCustomAttribute<SampleAttribute>() is not null).ToArray();
+        Console.WriteLine($"Pick a sample: 0-{methods.Length + 1}");
+        Console.WriteLine("[0] Asteroids");
+        Console.WriteLine("[1] Monogame Square Sample");
+        for (int i = 0; i < methods.Length; i++)
         {
-            Logger.Info("Press any key to continue...");
-            Console.ReadKey();
+            Console.WriteLine($"[{i + 2}] {methods[i].Name.Replace('_', ' ')}");
         }
+
+        int userOption;
+        while (!int.TryParse(Console.ReadLine(), out userOption) || userOption > methods.Length + 1 || userOption < 0)
+            Console.WriteLine("Write a valid input");
+        
+        methods[userOption - 2].Invoke(null, []);
+
+        Console.WriteLine("\n\nSample Completed. Press Enter to exit");
+        Console.ReadLine();
     }
 }

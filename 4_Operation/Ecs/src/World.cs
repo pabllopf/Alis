@@ -353,7 +353,7 @@ public partial class World : IDisposable
         }
     }
 
-#if !NETSTANDARD2_1 && !NETSTANDARD2_0 && !NET5_0 && !NET481 && !NET48 && !NET472 && !NET471 && !NET47 && !NET462 && !NET461 && !NET46 && !NET452 && !NET451 && !NET45 && !NET40
+#if !NETSTANDARD2_1 && !NETSTANDARD2_0 && !NET5_0 && !NETCOREAPP2_0 && !NETCOREAPP2_1 && !NETCOREAPP2_2 && !NETCOREAPP3_0 && !NETCOREAPP3_1 && !NET481 && !NET48 && !NET472 && !NET471 && !NET47 && !NET462 && !NET461 && !NET46 && !NET452 && !NET451 && !NET45 && !NET40
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal ref EventRecord TryGetEventData(EntityLocation entityLocation, EntityIDOnly entity, EntityFlags eventType, out bool exists)
     {
