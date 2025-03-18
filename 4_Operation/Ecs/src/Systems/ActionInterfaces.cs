@@ -1,4 +1,4 @@
-﻿using Frent.Variadic.Generator;
+﻿
 using static Frent.AttributeHelpers;
 
 namespace Frent.Systems;
@@ -7,8 +7,8 @@ namespace Frent.Systems;
 /// An arbitary function with one parameter
 /// </summary>
 /// <remarks>Used to inline query functions</remarks>
-[Variadic(TArgFrom, TArgPattern)]
-[Variadic(RefArgFrom, RefArgPattern)]
+
+
 public interface IAction<TArg>
 {
     /// Executes the function

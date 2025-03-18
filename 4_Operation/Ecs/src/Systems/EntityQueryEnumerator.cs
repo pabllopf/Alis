@@ -1,15 +1,13 @@
 using System;
 using Frent.Core;
-using Frent.Variadic.Generator;
+
 
 namespace Frent.Systems;
 
-[Variadic("    private Span<T> _currentSpan1;", "|    private Span<T$> _currentSpan$;\n|")]
-[Variadic("        Item1 = new Ref<T>(_currentSpan1, _componentIndex),",
-    "|        Item$ = new Ref<T$>(_currentSpan$, _componentIndex),\n|")]
-[Variadic("                _currentSpan1 = cur.GetComponentSpan<T>();",
-    "|                _currentSpan$ = cur.GetComponentSpan<T$>();\n|")]
-[Variadic("<T>", "<|T$, |>")]
+
+
+
+
 public ref struct EntityQueryEnumerator<T>
 {
     private int _archetypeIndex;

@@ -1,12 +1,11 @@
 using System;
 using Frent.Core;
-using Frent.Variadic.Generator;
+
 
 namespace Frent.Systems;
 
-[Variadic("                Span = cur.GetComponentSpan<T>(),",
-    "|                Span$ = cur.GetComponentSpan<T$>(),\n|")]
-[Variadic("<T>", "<|T$, |>")]
+
+
 public ref struct ChunkQueryEnumerator<T>
 {
     //ptr, ptr, int, int is better alignment

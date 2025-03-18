@@ -2,7 +2,7 @@
 using Frent.Collections;
 using Frent.Components;
 using Frent.Core;
-using Frent.Variadic.Generator;
+
 using System.Runtime.CompilerServices;
 using System.Threading;
 using static Frent.AttributeHelpers;
@@ -42,10 +42,10 @@ public class EntityUpdateRunnerFactory<TComp> : IComponentStorageBaseFactory, IC
     ComponentStorage<TComp> IComponentStorageBaseFactory<TComp>.CreateStronglyTyped(int capacity) => new EntityUpdate<TComp>(capacity);
 }
 
-[Variadic(GetComponentRefFrom, GetComponentRefPattern)]
-[Variadic(IncRefFrom, IncRefPattern)]
-[Variadic(TArgFrom, TArgPattern)]
-[Variadic(PutArgFrom, PutArgPattern)]
+
+
+
+
 internal class EntityUpdate<TComp, TArg>(int capacity) : ComponentStorage<TComp>(capacity)
     where TComp : IEntityComponent<TArg>
 {
@@ -75,7 +75,7 @@ internal class EntityUpdate<TComp, TArg>(int capacity) : ComponentStorage<TComp>
 }
 
 /// <inheritdoc cref="IComponentStorageBaseFactory"/>
-[Variadic(TArgFrom, TArgPattern)]
+
 public class EntityUpdateRunnerFactory<TComp, TArg> : IComponentStorageBaseFactory, IComponentStorageBaseFactory<TComp>
     where TComp : IEntityComponent<TArg>
 {

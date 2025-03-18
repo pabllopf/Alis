@@ -1,4 +1,4 @@
-﻿using Frent.Variadic.Generator;
+﻿
 using static Frent.AttributeHelpers;
 
 namespace Frent.Components;
@@ -17,8 +17,6 @@ public interface IComponent : IComponentBase
 /// <summary>
 /// Indicates a component should be updated with the specified components
 /// </summary>
-[Variadic(TArgFrom, TArgPattern)]
-[Variadic(RefArgFrom, RefArgPattern)]
 public interface IComponent<TArg> : IComponentBase
 {
     /// <inheritdoc cref="IComponent.Update"/>
