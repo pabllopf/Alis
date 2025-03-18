@@ -282,7 +282,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// <returns>The triangulation constraint</returns>
         public override TriangulationConstraint NewConstraint(TriangulationPoint a, TriangulationPoint b) => new DtSweepConstraint(a, b);
 
-        
 
         /// <summary>
         ///     The dt sweep basin class
@@ -315,9 +314,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             public double Width;
         }
 
-        
-
-        
 
         /// <summary>
         ///     The dt sweep edge event class
@@ -334,7 +330,5 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             /// </summary>
             public bool Right;
         }
-
-        
     }
 }

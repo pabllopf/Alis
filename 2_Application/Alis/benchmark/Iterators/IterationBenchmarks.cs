@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:d.cs
+//  File:IterationBenchmarks.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -37,41 +37,39 @@ using BenchmarkDotNet.Attributes;
 
 namespace Alis.Benchmark.Iterators
 {
-
     /// <summary>
-    /// The iteration benchmarks class
+    ///     The iteration benchmarks class
     /// </summary>
-    [MemoryDiagnoser(true), Config(typeof(Config))]
+    [MemoryDiagnoser(), Config(typeof(Config))]
     public class IterationBenchmarks
     {
         /// <summary>
-        /// The array
+        ///     The array
         /// </summary>
         private int[] array;
 
         /// <summary>
-        /// The list
-        /// </summary>
-        private List<int> list;
-
-        /// <summary>
-        /// The linked list
+        ///     The linked list
         /// </summary>
         private LinkedList<int> linkedList;
 
         /// <summary>
-        /// The memory
+        ///     The list
+        /// </summary>
+        private List<int> list;
+
+        /// <summary>
+        ///     The memory
         /// </summary>
         private Memory<int> memory;
 
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
-        [Params(10)] 
-        public int N;
+        [Params(10)] public int N;
 
         /// <summary>
-        /// Setup this instance
+        ///     Setup this instance
         /// </summary>
         [GlobalSetup]
         public void Setup()
@@ -83,7 +81,7 @@ namespace Alis.Benchmark.Iterators
         }
 
         /// <summary>
-        /// Iterates the linked list manual
+        ///     Iterates the linked list manual
         /// </summary>
         /// <returns>The sum</returns>
         [Benchmark]
@@ -99,9 +97,9 @@ namespace Alis.Benchmark.Iterators
 
             return sum;
         }
-        
+
         /// <summary>
-        /// Iterates the linked list foreach
+        ///     Iterates the linked list foreach
         /// </summary>
         /// <returns>The sum</returns>
         [Benchmark]
@@ -115,9 +113,9 @@ namespace Alis.Benchmark.Iterators
 
             return sum;
         }
-        
+
         /// <summary>
-        /// Iterates the list foreach
+        ///     Iterates the list foreach
         /// </summary>
         /// <returns>The sum</returns>
         [Benchmark]
@@ -131,9 +129,9 @@ namespace Alis.Benchmark.Iterators
 
             return sum;
         }
-        
+
         /// <summary>
-        /// Iterates the array for
+        ///     Iterates the array for
         /// </summary>
         /// <returns>The sum</returns>
         [Benchmark]
@@ -149,7 +147,7 @@ namespace Alis.Benchmark.Iterators
         }
 
         /// <summary>
-        /// Iterates the array foreach
+        ///     Iterates the array foreach
         /// </summary>
         /// <returns>The sum</returns>
         [Benchmark]
@@ -165,7 +163,7 @@ namespace Alis.Benchmark.Iterators
         }
 
         /// <summary>
-        /// Iterates the list for
+        ///     Iterates the list for
         /// </summary>
         /// <returns>The sum</returns>
         [Benchmark]
@@ -180,14 +178,9 @@ namespace Alis.Benchmark.Iterators
             return sum;
         }
 
-       
-
-       
-
-       
 
         /// <summary>
-        /// Iterates the span
+        ///     Iterates the span
         /// </summary>
         /// <returns>The sum</returns>
         [Benchmark]
@@ -203,9 +196,9 @@ namespace Alis.Benchmark.Iterators
 
             return sum;
         }
-        
+
         /// <summary>
-        /// Iteración optimizada con ref y Unsafe.Add
+        ///     Iteración optimizada con ref y Unsafe.Add
         /// </summary>
         [Benchmark]
         public int IterateRefUnsafe()
@@ -221,10 +214,10 @@ namespace Alis.Benchmark.Iterators
 
             return sum;
         }
-        
-      
+
+
         /// <summary>
-        /// Iterates the fastest
+        ///     Iterates the fastest
         /// </summary>
         /// <returns>The sum</returns>
         [Benchmark]
@@ -245,9 +238,9 @@ namespace Alis.Benchmark.Iterators
 
             return sum;
         }
-        
+
         /// <summary>
-        /// Iterates the fastest with sim
+        ///     Iterates the fastest with sim
         /// </summary>
         /// <returns>The sum</returns>
         [Benchmark]
@@ -268,7 +261,7 @@ namespace Alis.Benchmark.Iterators
             // Procesar en bloques SIMD
             while (Unsafe.IsAddressLessThan(ref start, ref vectorEnd))
             {
-                vectorSum += new Vector<int>(array.AsSpan((int)(Unsafe.ByteOffset(ref MemoryMarshal.GetArrayDataReference(array), ref start) / sizeof(int)), vectorSize));
+                vectorSum += new Vector<int>(array.AsSpan((int) (Unsafe.ByteOffset(ref MemoryMarshal.GetArrayDataReference(array), ref start) / sizeof(int)), vectorSize));
                 start = ref Unsafe.Add(ref start, vectorSize);
             }
 
@@ -287,20 +280,17 @@ namespace Alis.Benchmark.Iterators
 
             return sum;
         }
-        
+
         /// <summary>
-        /// Iterates the linq sum
+        ///     Iterates the linq sum
         /// </summary>
         /// <returns>The int</returns>
         [Benchmark]
-        public int IterateLinqSum()
-        {
-            return array.Sum();
-        }
-        
-        
+        public int IterateLinqSum() => array.Sum();
+
+
         /// <summary>
-        /// Bests the iterate with span and vector
+        ///     Bests the iterate with span and vector
         /// </summary>
         /// <returns>The sum</returns>
         [Benchmark]

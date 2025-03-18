@@ -1,8 +1,33 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Archetype.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
-using Frent.Buffers;
-using Frent.Core.Structures;
-using Frent.Updating;
-using Frent.Updating.Runners;
 using System.Collections.Immutable;
 using System.Diagnostics;
 using System.Linq;
@@ -10,38 +35,56 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
+using Frent.Buffers;
 using Frent.Collections;
+using Frent.Core.Structures;
+using Frent.Updating;
+using Frent.Updating.Runners;
 
 namespace Frent.Core
 {
     /// <summary>
-    /// The archetype class
+    ///     The archetype class
     /// </summary>
     [DebuggerDisplay(AttributeHelpers.DebuggerDisplay)]
     internal partial class Archetype
     {
         /// <summary>
-        /// Gets the value of the id
+        ///     Gets the value of the id
         /// </summary>
         internal ArchetypeID ID => _archetypeID;
+
         /// <summary>
-        /// Gets the value of the archetype type array
+        ///     Gets the value of the archetype type array
         /// </summary>
         internal ImmutableArray<ComponentID> ArchetypeTypeArray => _archetypeID.Types;
+
         /// <summary>
-        /// Gets the value of the archetype tag array
+        ///     Gets the value of the archetype tag array
         /// </summary>
         internal ImmutableArray<TagID> ArchetypeTagArray => _archetypeID.Tags;
+
         /// <summary>
-        /// Gets the value of the debugger display string
+        ///     Gets the value of the debugger display string
         /// </summary>
         internal string DebuggerDisplayString => $"Archetype Count: {EntityCount} Types: {string.Join(", ", ArchetypeTypeArray.Select(t => t.Type.Name))} Tags: {string.Join(", ", ArchetypeTagArray.Select(t => t.Type.Name))}";
+
         /// <summary>
-        /// Gets the value of the entity count
+        ///     Gets the value of the entity count
         /// </summary>
         internal int EntityCount => _nextComponentIndex;
+
         /// <summary>
-        /// Gets the component span
+        ///     Gets the value of the data
+        /// </summary>
+        internal Fields Data => new Fields
+        {
+            Map = ComponentTagTable,
+            Components = Components
+        };
+
+        /// <summary>
+        ///     Gets the component span
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>A span of t</returns>
@@ -53,11 +96,12 @@ namespace Frent.Core
             {
                 FrentExceptions.Throw_ComponentNotFoundException(typeof(T));
             }
+
             return UnsafeExtensions.UnsafeCast<ComponentStorage<T>>(components.UnsafeArrayIndex(index)).AsSpanLength(_nextComponentIndex);
         }
 
         /// <summary>
-        /// Gets the component data reference
+        ///     Gets the component data reference
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The ref</returns>
@@ -69,7 +113,7 @@ namespace Frent.Core
         }
 
         /// <summary>
-        /// Note! Entity location version is not set!
+        ///     Note! Entity location version is not set!
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal ref EntityIDOnly CreateEntityLocation(EntityFlags flags, out EntityLocation entityLocation)
@@ -86,7 +130,7 @@ namespace Frent.Core
         }
 
         /// <summary>
-        /// Caller needs write archetype field
+        ///     Caller needs write archetype field
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal ref EntityIDOnly CreateDeferredEntityLocation(World world, scoped ref EntityLocation entityLocation, out int physicalIndex, out ComponentStorageBase[] writeStorage)
@@ -98,7 +142,8 @@ namespace Frent.Core
             entityLocation.Index = futureSlot;
 
             if (futureSlot < _entities.Length)
-            {//hot path: we have space and can directly place into existing array
+            {
+                //hot path: we have space and can directly place into existing array
                 writeStorage = Components;
                 physicalIndex = futureSlot;
                 return ref _entities.UnsafeArrayIndex(physicalIndex);
@@ -118,7 +163,7 @@ namespace Frent.Core
         }
 
         /// <summary>
-        /// Resolves the deferred entity creations using the specified world
+        ///     Resolves the deferred entity creations using the specified world
         /// </summary>
         /// <param name="world">The world</param>
         internal void ResolveDeferredEntityCreations(World world)
@@ -128,14 +173,15 @@ namespace Frent.Core
             int previousComponentCount = _nextComponentIndex;
 
             if (!(deltaFromMaxDeferredInPlace <= 0))
-            {//components overflowed into temp storage
+            {
+                //components overflowed into temp storage
 
                 int oldEntitiesLen = _entities.Length;
                 int totalCapacityRequired = previousComponentCount + _deferredEntityCount;
                 Debug.Assert(totalCapacityRequired >= oldEntitiesLen);
 
                 //we should always have to resize here - after all, no space is left
-                Resize((int)BitOperations.RoundUpToPowerOf2((uint)totalCapacityRequired));
+                Resize((int) BitOperations.RoundUpToPowerOf2((uint) totalCapacityRequired));
                 ComponentStorageBase[]? destination = Components;
                 ComponentStorageBase[]? source = CreateComponentBuffers;
                 for (int i = 1; i < destination.Length; i++)
@@ -154,7 +200,7 @@ namespace Frent.Core
         }
 
         /// <summary>
-        /// Creates the entity locations using the specified count
+        ///     Creates the entity locations using the specified count
         /// </summary>
         /// <param name="count">The count</param>
         /// <param name="world">The world</param>
@@ -188,7 +234,7 @@ namespace Frent.Core
         }
 
         /// <summary>
-        /// Resizes the new len
+        ///     Resizes the new len
         /// </summary>
         /// <param name="newLen">The new len</param>
         private void Resize(int newLen)
@@ -200,7 +246,7 @@ namespace Frent.Core
         }
 
         /// <summary>
-        /// Resizes the create component buffers
+        ///     Resizes the create component buffers
         /// </summary>
         private void ResizeCreateComponentBuffers()
         {
@@ -213,7 +259,7 @@ namespace Frent.Core
         }
 
         /// <summary>
-        /// Ensures the capacity using the specified count
+        ///     Ensures the capacity using the specified count
         /// </summary>
         /// <param name="count">The count</param>
         public void EnsureCapacity(int count)
@@ -232,7 +278,7 @@ namespace Frent.Core
         }
 
         /// <summary>
-        /// This method doesn't modify component storages
+        ///     This method doesn't modify component storages
         /// </summary>
         internal EntityIDOnly DeleteEntityFromStorage(int index, out int deletedIndex)
         {
@@ -242,7 +288,7 @@ namespace Frent.Core
         }
 
         /// <summary>
-        /// Deletes the entity using the specified index
+        ///     Deletes the entity using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The entity id only</returns>
@@ -251,7 +297,7 @@ namespace Frent.Core
             _nextComponentIndex--;
             Debug.Assert(_nextComponentIndex >= 0);
             //TODO: args
-            
+
             DeleteComponentData args = new(index, _nextComponentIndex);
 
             ref ComponentStorageBase first = ref MemoryMarshal.GetArrayDataReference(Components);
@@ -294,7 +340,7 @@ namespace Frent.Core
             Unsafe.Add(ref first, 2).Delete(args);
             len2:
             Unsafe.Add(ref first, 1).Delete(args);
-            
+
 
             end:
 
@@ -302,7 +348,7 @@ namespace Frent.Core
         }
 
         /// <summary>
-        /// Updates the world
+        ///     Updates the world
         /// </summary>
         /// <param name="world">The world</param>
         internal void Update(World world)
@@ -315,7 +361,7 @@ namespace Frent.Core
         }
 
         /// <summary>
-        /// Updates the world
+        ///     Updates the world
         /// </summary>
         /// <param name="world">The world</param>
         /// <param name="componentID">The component id</param>
@@ -333,7 +379,7 @@ namespace Frent.Core
         }
 
         /// <summary>
-        /// Multis the threaded update using the specified countdown
+        ///     Multis the threaded update using the specified countdown
         /// </summary>
         /// <param name="countdown">The countdown</param>
         /// <param name="world">The world</param>
@@ -346,7 +392,7 @@ namespace Frent.Core
         }
 
         /// <summary>
-        /// Releases the arrays
+        ///     Releases the arrays
         /// </summary>
         internal void ReleaseArrays()
         {
@@ -357,60 +403,39 @@ namespace Frent.Core
         }
 
         /// <summary>
-        /// Gets the component index
+        ///     Gets the component index
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The int</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal int GetComponentIndex<T>()
-        {
-            return ComponentTagTable.UnsafeArrayIndex(Component<T>.ID.RawIndex) & GlobalWorldTables.IndexBits;
-        }
+        internal int GetComponentIndex<T>() => ComponentTagTable.UnsafeArrayIndex(Component<T>.ID.RawIndex) & GlobalWorldTables.IndexBits;
 
         /// <summary>
-        /// Gets the component index using the specified component
+        ///     Gets the component index using the specified component
         /// </summary>
         /// <param name="component">The component</param>
         /// <returns>The int</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal int GetComponentIndex(ComponentID component)
-        {
-            return ComponentTagTable.UnsafeArrayIndex(component.RawIndex) & GlobalWorldTables.IndexBits;
-        }
+        internal int GetComponentIndex(ComponentID component) => ComponentTagTable.UnsafeArrayIndex(component.RawIndex) & GlobalWorldTables.IndexBits;
 
         /// <summary>
-        /// Hases the tag
+        ///     Hases the tag
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The bool</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal bool HasTag<T>()
-        {
-            return (ComponentTagTable.UnsafeArrayIndex(Tag<T>.ID.RawValue) << 7) != 0;
-        }
+        internal bool HasTag<T>() => ComponentTagTable.UnsafeArrayIndex(Tag<T>.ID.RawValue) << 7 != 0;
 
         /// <summary>
-        /// Hases the tag using the specified tag id
+        ///     Hases the tag using the specified tag id
         /// </summary>
         /// <param name="tagID">The tag id</param>
         /// <returns>The bool</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal bool HasTag(TagID tagID)
-        {
-            return (ComponentTagTable.UnsafeArrayIndex(tagID.RawValue) << 7) != 0;
-        }
+        internal bool HasTag(TagID tagID) => ComponentTagTable.UnsafeArrayIndex(tagID.RawValue) << 7 != 0;
 
         /// <summary>
-        /// Gets the value of the data
-        /// </summary>
-        internal Fields Data => new Fields()
-        {
-            Map = ComponentTagTable,
-            Components = Components,
-        };
-
-        /// <summary>
-        /// Gets the entity span
+        ///     Gets the entity span
         /// </summary>
         /// <returns>A span of entity id only</returns>
         internal Span<EntityIDOnly> GetEntitySpan()
@@ -420,27 +445,28 @@ namespace Frent.Core
         }
 
         /// <summary>
-        /// Gets the entity data reference
+        ///     Gets the entity data reference
         /// </summary>
         /// <returns>The ref entity id only</returns>
         internal ref EntityIDOnly GetEntityDataReference() => ref MemoryMarshal.GetArrayDataReference(_entities);
 
         /// <summary>
-        /// The fields
+        ///     The fields
         /// </summary>
         internal struct Fields
         {
             /// <summary>
-            /// The map
+            ///     The map
             /// </summary>
             internal byte[] Map;
+
             /// <summary>
-            /// The components
+            ///     The components
             /// </summary>
             internal ComponentStorageBase[] Components;
 
             /// <summary>
-            /// Gets the component data reference
+            ///     Gets the component data reference
             /// </summary>
             /// <typeparam name="T">The </typeparam>
             /// <returns>The ref</returns>

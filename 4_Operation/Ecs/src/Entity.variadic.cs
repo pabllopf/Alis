@@ -1,18 +1,45 @@
-﻿using System;
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Entity.variadic.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using System;
+using System.Collections.Immutable;
+using System.Runtime.CompilerServices;
 using Frent.Collections;
 using Frent.Core;
 using Frent.Core.Events;
 using Frent.Updating;
 using Frent.Updating.Runners;
 
-using System.Collections.Immutable;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-
 namespace Frent
 {
     /// <summary>
-    /// The entity
+    ///     The entity
     /// </summary>
     partial struct Entity
     {
@@ -23,7 +50,7 @@ namespace Frent
         //4. create new archetype
 
         /// <summary>
-        /// Adds a component to this <see cref="Entity"/>.
+        ///     Adds a component to this <see cref="Entity" />.
         /// </summary>
         /// <remarks>If the world is being updated, changed are deffered to the end of the world update.</remarks>
         [Frent.SkipLocalsInit]
@@ -46,7 +73,8 @@ namespace Frent
             Span<ComponentStorageBase> buff = [null!];
             world.MoveEntityToArchetypeAdd(buff, this, ref thisLookup, out EntityLocation nextLocation, to);
 
-            ref T? c1ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T>>(buff.UnsafeSpanIndex(0))[nextLocation.Index]; c1ref = c1;
+            ref T? c1ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T>>(buff.UnsafeSpanIndex(0))[nextLocation.Index];
+            c1ref = c1;
 
             Component<T>.Initer?.Invoke(this, ref c1ref);
 
@@ -65,9 +93,9 @@ namespace Frent
         }
 
         /// <summary>
-        /// Removes a component from this <see cref="Entity"/>
+        ///     Removes a component from this <see cref="Entity" />
         /// </summary>
-        /// <inheritdoc cref="Add{T}(in T)"/>
+        /// <inheritdoc cref="Add{T}(in T)" />
         [Frent.SkipLocalsInit]
         public void Remove<T>()
         {
@@ -91,9 +119,9 @@ namespace Frent
         }
 
         /// <summary>
-        /// Adds a tag to this <see cref="Entity"/>
+        ///     Adds a tag to this <see cref="Entity" />
         /// </summary>
-        /// <inheritdoc cref="Add{T}(in T)"/>
+        /// <inheritdoc cref="Add{T}(in T)" />
         [Frent.SkipLocalsInit]
         public void Tag<T>()
         {
@@ -122,9 +150,9 @@ namespace Frent
         }
 
         /// <summary>
-        /// Removes a tag from this <see cref="Entity"/>
+        ///     Removes a tag from this <see cref="Entity" />
         /// </summary>
-        /// <inheritdoc cref="Add{T}(in T)"/>
+        /// <inheritdoc cref="Add{T}(in T)" />
         [Frent.SkipLocalsInit]
         public void Detach<T>()
         {
@@ -153,7 +181,7 @@ namespace Frent
         }
 
         /// <summary>
-        /// Invokes the component world events using the specified event
+        ///     Invokes the component world events using the specified event
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="@event">The event</param>
@@ -164,7 +192,7 @@ namespace Frent
         }
 
         /// <summary>
-        /// Invokes the per entity events using the specified entity
+        ///     Invokes the per entity events using the specified entity
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="entity">The entity</param>
@@ -182,7 +210,7 @@ namespace Frent
         }
 
         /// <summary>
-        /// Invokes the tag world events using the specified event
+        ///     Invokes the tag world events using the specified event
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="@event">The event</param>
@@ -193,7 +221,7 @@ namespace Frent
         }
 
         /// <summary>
-        /// Invokes the per entity tag events using the specified entity
+        ///     Invokes the per entity tag events using the specified entity
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="entity">The entity</param>
@@ -204,12 +232,12 @@ namespace Frent
         }
 
         /// <summary>
-        /// The neighbor cache
+        ///     The neighbor cache
         /// </summary>
         private struct NeighborCache<T> : IArchetypeGraphEdge
         {
             /// <summary>
-            /// Modifies the tags using the specified tags
+            ///     Modifies the tags using the specified tags
             /// </summary>
             /// <param name="tags">The tags</param>
             /// <param name="add">The add</param>
@@ -226,7 +254,7 @@ namespace Frent
             }
 
             /// <summary>
-            /// Modifies the components using the specified components
+            ///     Modifies the components using the specified components
             /// </summary>
             /// <param name="components">The components</param>
             /// <param name="add">The add</param>
@@ -245,45 +273,45 @@ namespace Frent
             //separate into individual classes to avoid creating uneccecary static classes.
 
             /// <summary>
-            /// The add class
+            ///     The add class
             /// </summary>
             internal static class Add
             {
                 /// <summary>
-                /// The lookup
+                ///     The lookup
                 /// </summary>
                 internal static ArchetypeNeighborCache Lookup;
             }
 
             /// <summary>
-            /// The remove class
+            ///     The remove class
             /// </summary>
             internal static class Remove
             {
                 /// <summary>
-                /// The lookup
+                ///     The lookup
                 /// </summary>
                 internal static ArchetypeNeighborCache Lookup;
             }
 
             /// <summary>
-            /// The tag class
+            ///     The tag class
             /// </summary>
             internal static class Tag
             {
                 /// <summary>
-                /// The lookup
+                ///     The lookup
                 /// </summary>
                 internal static ArchetypeNeighborCache Lookup;
             }
 
             /// <summary>
-            /// The detach class
+            ///     The detach class
             /// </summary>
             internal static class Detach
             {
                 /// <summary>
-                /// The lookup
+                ///     The lookup
                 /// </summary>
                 internal static ArchetypeNeighborCache Lookup;
             }
@@ -291,12 +319,12 @@ namespace Frent
     }
 
     /// <summary>
-    /// The entity
+    ///     The entity
     /// </summary>
     partial struct Entity
     {
         /// <summary>
-        /// Traverses the through cache or create using the specified world
+        ///     Traverses the through cache or create using the specified world
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <typeparam name="TEdge">The edge</typeparam>
@@ -321,10 +349,8 @@ namespace Frent
             {
                 return NotInCache(world, ref cache, archetypeFromID, add);
             }
-            else
-            {
-                return Archetype.CreateOrGetExistingArchetype(new EntityType(cache.Lookup(index)), world);
-            }
+
+            return Archetype.CreateOrGetExistingArchetype(new EntityType(cache.Lookup(index)), world);
 
             static Archetype NotInCache(World world, ref ArchetypeNeighborCache cache, ArchetypeID archetypeFromID, bool add)
             {
@@ -354,18 +380,19 @@ namespace Frent
         }
 
         /// <summary>
-        /// The archetype graph edge interface
+        ///     The archetype graph edge interface
         /// </summary>
         internal interface IArchetypeGraphEdge
         {
             /// <summary>
-            /// Modifies the tags using the specified tags
+            ///     Modifies the tags using the specified tags
             /// </summary>
             /// <param name="tags">The tags</param>
             /// <param name="add">The add</param>
             void ModifyTags(ref ImmutableArray<TagID> tags, bool add);
+
             /// <summary>
-            /// Modifies the components using the specified components
+            ///     Modifies the components using the specified components
             /// </summary>
             /// <param name="components">The components</param>
             /// <param name="add">The add</param>

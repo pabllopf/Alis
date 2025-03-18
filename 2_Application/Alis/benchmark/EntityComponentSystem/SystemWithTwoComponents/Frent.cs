@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Frent.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics;
@@ -10,88 +39,37 @@ using static Alis.Benchmark.EntityComponentSystem.Contexts.FrentBaseContext;
 namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
 {
     /// <summary>
-    /// The system with two components class
+    ///     The system with two components class
     /// </summary>
     public partial class SystemWithTwoComponents
     {
         /// <summary>
-        /// The frent
+        ///     The frent
         /// </summary>
-        [Context]
-        private readonly FrentContext _frent;
+        [Context] private readonly FrentContext _frent;
 
         /// <summary>
-        /// The frent context class
+        ///     Frents the query inline
         /// </summary>
-        /// <seealso cref="FrentBaseContext"/>
-        internal sealed class FrentContext : FrentBaseContext
-        {
-            /// <summary>
-            /// Initializes a new instance of the <see cref="FrentContext"/> class
-            /// </summary>
-            /// <param name="entityCount">The entity count</param>
-            /// <param name="padding">The padding</param>
-            public FrentContext(int entityCount, int padding)
-            {
-                for (int i = 0; i < entityCount; i++)
-                {
-                    World.Create<Component1, Component2>(default, new() { Value = 1 });
-                    for (int j = 0; j < padding; j++)
-                    {
-                        World.Create();
-                    }
-                }
-
-                Query = World.Query<With<Component1>, With<Component2>>();
-            }
-
-            /// <summary>
-            /// The query
-            /// </summary>
-            public Query Query;
-        }
-
-        /// <summary>
-        /// The sum
-        /// </summary>
-        internal struct Sum : IAction<FrentBaseContext.Component1, FrentBaseContext.Component2>
-        {
-            /// <summary>
-            /// Runs the t 0
-            /// </summary>
-            /// <param name="t0">The </param>
-            /// <param name="t1">The </param>
-            public void Run(ref Component1 t0, ref Component2 t1)
-            {
-                t0.Value += t1.Value;
-            }
-        }
-
-        /// <summary>
-        /// Frents the query inline
-        /// </summary>
-        [BenchmarkCategory(Categories.Frent)]
-        [Benchmark]
+        [BenchmarkCategory(Categories.Frent), Benchmark]
         public void Frent_QueryInline()
         {
             _frent.Query.Inline<Sum, Component1, Component2>(default);
         }
 
         /// <summary>
-        /// Frents the query delegate
+        ///     Frents the query delegate
         /// </summary>
-        [BenchmarkCategory(Categories.Frent)]
-        [Benchmark]
+        [BenchmarkCategory(Categories.Frent), Benchmark]
         public void Frent_QueryDelegate()
         {
             _frent.Query.Delegate((ref Component1 c1, ref Component2 c2) => c1.Value += c2.Value);
         }
 
         /// <summary>
-        /// Frents the simd
+        ///     Frents the simd
         /// </summary>
-        [BenchmarkCategory(Categories.Frent)]
-        [Benchmark]
+        [BenchmarkCategory(Categories.Frent), Benchmark]
         public void Frent_Simd()
         {
             foreach ((Span<Component1> s1, Span<Component2> s2) in _frent.Query.EnumerateChunks<Component1, Component2>())
@@ -106,6 +84,53 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
 
                 for (int i = len; i < s1.Length; i++)
                     s1[i].Value += s2[i].Value;
+            }
+        }
+
+        /// <summary>
+        ///     The frent context class
+        /// </summary>
+        /// <seealso cref="FrentBaseContext" />
+        internal sealed class FrentContext : FrentBaseContext
+        {
+            /// <summary>
+            ///     The query
+            /// </summary>
+            public Query Query;
+
+            /// <summary>
+            ///     Initializes a new instance of the <see cref="FrentContext" /> class
+            /// </summary>
+            /// <param name="entityCount">The entity count</param>
+            /// <param name="padding">The padding</param>
+            public FrentContext(int entityCount, int padding)
+            {
+                for (int i = 0; i < entityCount; i++)
+                {
+                    World.Create<Component1, Component2>(default, new() {Value = 1});
+                    for (int j = 0; j < padding; j++)
+                    {
+                        World.Create();
+                    }
+                }
+
+                Query = World.Query<With<Component1>, With<Component2>>();
+            }
+        }
+
+        /// <summary>
+        ///     The sum
+        /// </summary>
+        internal struct Sum : IAction<Component1, Component2>
+        {
+            /// <summary>
+            ///     Runs the t 0
+            /// </summary>
+            /// <param name="t0">The </param>
+            /// <param name="t1">The </param>
+            public void Run(ref Component1 t0, ref Component2 t1)
+            {
+                t0.Value += t1.Value;
             }
         }
     }

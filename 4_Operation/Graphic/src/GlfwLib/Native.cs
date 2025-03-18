@@ -46,8 +46,6 @@ namespace Alis.Core.Graphic.GlfwLib
     [SuppressUnmanagedCodeSecurity]
     public static class Native
     {
-        
-
         /// <summary>
         ///     Returns the CGDirectDisplayID of the specified monitor.
         /// </summary>
@@ -270,9 +268,6 @@ namespace Alis.Core.Graphic.GlfwLib
         [DllImport(Glfw.LIBRARY, EntryPoint = "glfwGetWin32Monitor", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetWin32MonitorInternal(Monitor monitor);
 
-        
-
-        
 
         /// <summary>
         ///     Gets the win32 adapter.
@@ -290,7 +285,5 @@ namespace Alis.Core.Graphic.GlfwLib
         ///     error occurred.
         /// </returns>
         public static string GetWin32Monitor(Monitor monitor) => Util.PtrToStringUTF8(GetWin32MonitorInternal(monitor));
-
-        
     }
 }

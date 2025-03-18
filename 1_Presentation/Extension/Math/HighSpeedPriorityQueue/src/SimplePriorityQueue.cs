@@ -494,25 +494,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             }
         }
 
-        /// <summary>
-        ///     The simple node class
-        /// </summary>
-        /// <seealso cref="GenericPriorityQueueNode{TPriority}" />
-        private class SimpleNode : GenericPriorityQueueNode<TPriority>
-        {
-            /// <summary>
-            ///     Initializes a new instance of the <see cref="SimpleNode" /> class
-            /// </summary>
-            /// <param name="data">The data</param>
-            public SimpleNode(TItem data) => Data = data;
-
-            /// <summary>
-            ///     Gets or sets the value of the data
-            /// </summary>
-            public TItem Data { get; }
-        }
-
-        
 
         /// Get the head of the queue, without removing it (use TryDequeue() for that).
         /// Useful for multi-threading, where the queue may become empty between calls to Contains() and First
@@ -655,7 +636,23 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             }
         }
 
-        
+        /// <summary>
+        ///     The simple node class
+        /// </summary>
+        /// <seealso cref="GenericPriorityQueueNode{TPriority}" />
+        private class SimpleNode : GenericPriorityQueueNode<TPriority>
+        {
+            /// <summary>
+            ///     Initializes a new instance of the <see cref="SimpleNode" /> class
+            /// </summary>
+            /// <param name="data">The data</param>
+            public SimpleNode(TItem data) => Data = data;
+
+            /// <summary>
+            ///     Gets or sets the value of the data
+            /// </summary>
+            public TItem Data { get; }
+        }
     }
 
     /// <summary>

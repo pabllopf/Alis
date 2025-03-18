@@ -38,7 +38,8 @@
 ### ⚙️ Modular Design
 
 > All modules within the Alis framework, including `Alis.Core.Aspect.Math`, are fully independent and can be used
-> separately. While the primary focus of Alis is game development, these modules are versatile and can be integrated into
+> separately. While the primary focus of Alis is game development, these modules are versatile and can be integrated
+> into
 > other types of applications requiring advanced mathematical capabilities.
 
 ---

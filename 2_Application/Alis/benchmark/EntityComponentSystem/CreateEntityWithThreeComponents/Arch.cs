@@ -1,34 +1,62 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Arch.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using Alis.Benchmark.EntityComponentSystem.Contexts;
 using Alis.Benchmark.EntityComponentSystem.Contexts.Arch_Components;
+using Arch.Core;
 using Arch.Core.Utils;
 using BenchmarkDotNet.Attributes;
 
 namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithThreeComponents
 {
     /// <summary>
-    /// The create entity with three components class
+    ///     The create entity with three components class
     /// </summary>
     public partial class CreateEntityWithThreeComponents
     {
         /// <summary>
-        /// The component
+        ///     The component
         /// </summary>
         private static readonly ComponentType[] _archetype = [typeof(Component1), typeof(Component2), typeof(Component3)];
 
         /// <summary>
-        /// The arch
+        ///     The arch
         /// </summary>
-        [Context]
-        private readonly ArchBaseContext _arch;
+        [Context] private readonly ArchBaseContext _arch;
 
         /// <summary>
-        /// Arches this instance
+        ///     Arches this instance
         /// </summary>
-        [BenchmarkCategory(Categories.Arch)]
-        [Benchmark]
+        [BenchmarkCategory(Categories.Arch), Benchmark]
         public void Arch()
         {
-            Arch.Core.World world = _arch.World;
+            World world = _arch.World;
             world.Reserve(_archetype, EntityCount);
 
             for (int i = 0; i < EntityCount; ++i)

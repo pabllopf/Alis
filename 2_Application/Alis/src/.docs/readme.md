@@ -60,7 +60,8 @@ integrations, AI, and more.
 ### 🖥️ Platform Compatibility
 
 > The Alis framework is designed to support a wide range of platforms, ensuring flexibility and adaptability for
-> developers. Each module is optimized for seamless integration across the following architectures and operating systems:
+> developers. Each module is optimized for seamless integration across the following architectures and operating
+> systems:
 
 #### Supported Platforms:
 

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:d.cs
+//  File:PooledObject.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,12 +30,12 @@
 namespace Alis.Benchmark.ObjectPooling.Instancies
 {
     /// <summary>
-    /// The pooled object class
+    ///     The pooled object class
     /// </summary>
     public class PooledObject
     {
         /// <summary>
-        /// The value
+        ///     The value
         /// </summary>
         public int Value;
     }

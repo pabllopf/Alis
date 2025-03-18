@@ -1,5 +1,33 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:MemoryHelpers.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
-using Frent.Buffers;
 using System.Buffers;
 using System.Collections.Generic;
 using System.Collections.Immutable;
@@ -7,47 +35,50 @@ using System.Diagnostics;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using Frent.Buffers;
 
 namespace Frent.Core
 {
     /// <summary>
-    /// The memory helpers class
+    ///     The memory helpers class
     /// </summary>
     internal static class MemoryHelpers
     {
         /// <summary>
-        /// The max component count
+        ///     The max component count
         /// </summary>
         public const int MaxComponentCount = 127;
 
         /// <summary>
-        /// Rounds the down to power of two using the specified value
+        ///     Rounds the down to power of two using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The uint</returns>
         public static uint RoundDownToPowerOfTwo(uint value) => BitOperations.RoundUpToPowerOf2((value >> 1) + 1);
 
         /// <summary>
-        /// Rounds the up to next multiple of 16 using the specified value
+        ///     Rounds the up to next multiple of 16 using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The int</returns>
         public static int RoundUpToNextMultipleOf16(int value) => (value + 15) & ~15;
+
         /// <summary>
-        /// Rounds the down to next multiple of 16 using the specified value
+        ///     Rounds the down to next multiple of 16 using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The int</returns>
         public static int RoundDownToNextMultipleOf16(int value) => value & ~15;
+
         /// <summary>
-        /// Bools the to byte using the specified b
+        ///     Bools the to byte using the specified b
         /// </summary>
         /// <param name="b">The </param>
         /// <returns>The byte</returns>
         public static byte BoolToByte(bool b) => Unsafe.As<bool, byte>(ref b);
 
         /// <summary>
-        /// Reads the only span to immutable array using the specified span
+        ///     Reads the only span to immutable array using the specified span
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="span">The span</param>
@@ -61,7 +92,7 @@ namespace Frent.Core
         }
 
         /// <summary>
-        /// Concats the start
+        ///     Concats the start
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="start">The start</param>
@@ -80,11 +111,12 @@ namespace Frent.Core
                     FrentExceptions.Throw_InvalidOperationException($"This entity already has a component of type {t.Type.Name}");
                 builder.Add(t);
             }
+
             return builder.MoveToImmutable();
         }
 
         /// <summary>
-        /// Concats the types
+        ///     Concats the types
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="types">The types</param>
@@ -105,7 +137,7 @@ namespace Frent.Core
         }
 
         /// <summary>
-        /// Removes the types
+        ///     Removes the types
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="types">The types</param>
@@ -122,7 +154,7 @@ namespace Frent.Core
         }
 
         /// <summary>
-        /// Removes the types
+        ///     Removes the types
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="types">The types</param>
@@ -146,7 +178,7 @@ namespace Frent.Core
         }
 
         /// <summary>
-        /// Gets the or add new using the specified dictionary
+        ///     Gets the or add new using the specified dictionary
         /// </summary>
         /// <typeparam name="TKey">The key</typeparam>
         /// <typeparam name="TValue">The value</typeparam>
@@ -161,11 +193,12 @@ namespace Frent.Core
             {
                 return value;
             }
+
             return dictionary[key] = new();
         }
 
         /// <summary>
-        /// Copies the block using the specified destination
+        ///     Copies the block using the specified destination
         /// </summary>
         /// <typeparam name="TBlock">The block</typeparam>
         /// <param name="destination">The destination</param>
@@ -182,31 +215,10 @@ namespace Frent.Core
             Unsafe.As<byte, TBlock>(ref destination) = Unsafe.As<byte, TBlock>(ref destination);
         }
 
-        /// <summary>
-        /// The block
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential, Size = 2)]
-        internal struct Block2;
-        /// <summary>
-        /// The block
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential, Size = 4)]
-        internal struct Block4;
-        /// <summary>
-        /// The block
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential, Size = 8)]
-        internal struct Block8;
-        /// <summary>
-        /// The block 16
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential, Size = 16)]
-        internal struct Block16;
-
 
         // catch bugs with Unsafe.SkitInit
         /// <summary>
-        /// Poisons the item
+        ///     Poisons the item
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="item">The item</param>
@@ -217,19 +229,44 @@ namespace Frent.Core
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
                 throw new NotSupportedException("Cleared anyways");
         }
+
+        /// <summary>
+        ///     The block
+        /// </summary>
+        [StructLayout(LayoutKind.Sequential, Size = 2)]
+        internal struct Block2;
+
+        /// <summary>
+        ///     The block
+        /// </summary>
+        [StructLayout(LayoutKind.Sequential, Size = 4)]
+        internal struct Block4;
+
+        /// <summary>
+        ///     The block
+        /// </summary>
+        [StructLayout(LayoutKind.Sequential, Size = 8)]
+        internal struct Block8;
+
+        /// <summary>
+        ///     The block 16
+        /// </summary>
+        [StructLayout(LayoutKind.Sequential, Size = 16)]
+        internal struct Block16;
     }
 
     /// <summary>
-    /// The memory helpers class
+    ///     The memory helpers class
     /// </summary>
     internal static class MemoryHelpers<T>
     {
         /// <summary>
-        /// The pool
+        ///     The pool
         /// </summary>
-        private static ComponentArrayPool<T> _pool = new();
+        private static readonly ComponentArrayPool<T> _pool = new();
+
         /// <summary>
-        /// Gets the value of the pool
+        ///     Gets the value of the pool
         /// </summary>
         internal static ArrayPool<T> Pool => _pool;
     }

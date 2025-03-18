@@ -1,46 +1,76 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:FrugalStack.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
-using Frent.Buffers;
 using System.Runtime.CompilerServices;
+using Frent.Buffers;
 
 namespace Frent.Collections
 {
     /// <summary>
-    /// The frugal stack
+    ///     The frugal stack
     /// </summary>
     internal struct FrugalStack<T>()
     {
         /// <summary>
-        /// The buffer
+        ///     The buffer
         /// </summary>
         private T[] _buffer = [];
+
         /// <summary>
-        /// The next index
+        ///     The next index
         /// </summary>
         private int _nextIndex = 0;
 
         /// <summary>
-        /// Gets the value of the any
+        ///     Gets the value of the any
         /// </summary>
         public bool Any => _nextIndex != 0;
 
 
         /// <summary>
-        /// Pushes the comp
+        ///     Pushes the comp
         /// </summary>
         /// <param name="comp">The comp</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Push(T comp)
         {
             T[]? buffer = _buffer;
-            if ((uint)_nextIndex < (uint)buffer.Length)
+            if ((uint) _nextIndex < (uint) buffer.Length)
                 buffer[_nextIndex++] = comp;
             else
                 ResizeAndPush(comp);
         }
 
         /// <summary>
-        /// Resizes the and push using the specified comp
+        ///     Resizes the and push using the specified comp
         /// </summary>
         /// <param name="comp">The comp</param>
         private void ResizeAndPush(in T comp)
@@ -50,7 +80,7 @@ namespace Frent.Collections
         }
 
         /// <summary>
-        /// Tries the pop using the specified value
+        ///     Tries the pop using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
@@ -67,7 +97,7 @@ namespace Frent.Collections
         }
 
         /// <summary>
-        /// Pops this instance
+        ///     Pops this instance
         /// </summary>
         /// <returns>The next</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -80,7 +110,7 @@ namespace Frent.Collections
         }
 
         /// <summary>
-        /// Removes the item
+        ///     Removes the item
         /// </summary>
         /// <param name="item">The item</param>
         public void Remove(T item)
@@ -99,7 +129,7 @@ namespace Frent.Collections
 
 
         /// <summary>
-        /// DO NOT ALTER WHILE SPAN IS IN USE
+        ///     DO NOT ALTER WHILE SPAN IS IN USE
         /// </summary>
         public readonly Span<T> AsSpan() => _buffer.AsSpan(0, _nextIndex);
     }

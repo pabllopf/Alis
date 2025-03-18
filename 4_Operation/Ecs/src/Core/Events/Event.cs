@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Event.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 global using TagEvent = Frent.Core.Events.Event<Frent.Core.TagID>;
 using System;
 using Frent.Collections;
@@ -5,26 +34,27 @@ using Frent.Collections;
 namespace Frent.Core.Events
 {
     /// <summary>
-    /// The event
+    ///     The event
     /// </summary>
     internal struct Event<T>()
     {
         /// <summary>
-        /// Gets the value of the has listeners
+        ///     Gets the value of the has listeners
         /// </summary>
         public bool HasListeners => _first is not null;
 
         /// <summary>
-        /// The first
+        ///     The first
         /// </summary>
         private Action<Entity, T>? _first;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         private FrugalStack<Action<Entity, T>> _invokationList = new FrugalStack<Action<Entity, T>>();
 
         /// <summary>
-        /// Adds the action
+        ///     Adds the action
         /// </summary>
         /// <param name="action">The action</param>
         public void Add(Action<Entity, T> action)
@@ -40,7 +70,7 @@ namespace Frent.Core.Events
         }
 
         /// <summary>
-        /// Removes the action
+        ///     Removes the action
         /// </summary>
         /// <param name="action">The action</param>
         public void Remove(Action<Entity, T> action)
@@ -58,7 +88,7 @@ namespace Frent.Core.Events
         }
 
         /// <summary>
-        /// Invokes the entity
+        ///     Invokes the entity
         /// </summary>
         /// <param name="entity">The entity</param>
         /// <param name="arg">The arg</param>
@@ -71,7 +101,7 @@ namespace Frent.Core.Events
         }
 
         /// <summary>
-        /// Invokes the internal using the specified entity
+        ///     Invokes the internal using the specified entity
         /// </summary>
         /// <param name="entity">The entity</param>
         /// <param name="arg">The arg</param>
@@ -84,30 +114,32 @@ namespace Frent.Core.Events
     }
 
     /// <summary>
-    /// The entity only event
+    ///     The entity only event
     /// </summary>
     internal struct EntityOnlyEvent()
     {
         /// <summary>
-        /// Gets the value of the has listeners
+        ///     Gets the value of the has listeners
         /// </summary>
         public bool HasListeners => _first is not null;
 
         /// <summary>
-        /// The first
+        ///     The first
         /// </summary>
         private Action<Entity>? _first;
+
         /// <summary>
-        /// The second
+        ///     The second
         /// </summary>
         private Action<Entity>? _second;
+
         /// <summary>
-        /// The entity
+        ///     The entity
         /// </summary>
         private FrugalStack<Action<Entity>> _invokationList = new FrugalStack<Action<Entity>>();
 
         /// <summary>
-        /// Adds the action
+        ///     Adds the action
         /// </summary>
         /// <param name="action">The action</param>
         public void Add(Action<Entity> action)
@@ -127,7 +159,7 @@ namespace Frent.Core.Events
         }
 
         /// <summary>
-        /// Removes the action
+        ///     Removes the action
         /// </summary>
         /// <param name="action">The action</param>
         public void Remove(Action<Entity> action)
@@ -151,7 +183,7 @@ namespace Frent.Core.Events
         }
 
         /// <summary>
-        /// Invokes the entity
+        ///     Invokes the entity
         /// </summary>
         /// <param name="entity">The entity</param>
         public readonly void Invoke(Entity entity)
@@ -161,7 +193,7 @@ namespace Frent.Core.Events
         }
 
         /// <summary>
-        /// Executes the entity
+        ///     Executes the entity
         /// </summary>
         /// <param name="entity">The entity</param>
         private readonly void Execute(Entity entity)
@@ -177,20 +209,22 @@ namespace Frent.Core.Events
     }
 
     /// <summary>
-    /// The component event
+    ///     The component event
     /// </summary>
     internal struct ComponentEvent()
     {
         /// <summary>
-        /// The normal event
+        ///     The normal event
         /// </summary>
         internal Event<ComponentID> NormalEvent = new();
+
         /// <summary>
-        /// The generic event
+        ///     The generic event
         /// </summary>
         internal GenericEvent? GenericEvent = null;
+
         /// <summary>
-        /// Gets the value of the has listeners
+        ///     Gets the value of the has listeners
         /// </summary>
         public bool HasListeners => NormalEvent.HasListeners || (GenericEvent is { } e && e.HasListeners);
     }

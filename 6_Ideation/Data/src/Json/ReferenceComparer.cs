@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 
 namespace Alis.Core.Aspect.Data.Json
 {
@@ -57,11 +56,11 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The bool</returns>
         bool IEqualityComparer<object>.Equals(object x, object y) => ReferenceEquals(x, y);
 
-         /// <summary>
-         ///     Obtiene el código hash usando el objeto especificado
-         /// </summary>
-         /// <param name="obj">El objeto</param>
-         /// <returns>El código hash</returns>
-         int IEqualityComparer<object>.GetHashCode(object obj) => obj.GetHashCode();
+        /// <summary>
+        ///     Obtiene el código hash usando el objeto especificado
+        /// </summary>
+        /// <param name="obj">El objeto</param>
+        /// <returns>El código hash</returns>
+        int IEqualityComparer<object>.GetHashCode(object obj) => obj.GetHashCode();
     }
 }

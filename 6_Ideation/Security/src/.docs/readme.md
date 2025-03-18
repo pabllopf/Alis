@@ -37,7 +37,8 @@
 
 > All modules within the Alis framework, including `Alis.Core.Aspect.Security`, are fully independent and can be used
 > separately. While the primary focus of Alis is game development, these modules are designed to be versatile and can be
-> integrated into other types of applications or environments where security, encryption, or data integrity are required.
+> integrated into other types of applications or environments where security, encryption, or data integrity are
+> required.
 
 ---
 

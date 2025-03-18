@@ -502,7 +502,6 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         /// <returns>The bool</returns>
         private static bool VectorEqual(Vector2F vec1, Vector2F vec2) => (vec2 - vec1).LengthSquared() <= ClipperEpsilonSquared;
 
-        
 
         /// <summary>Specifies an Edge. Edges are used to represent simplicies in simplical chains</summary>
         private sealed class Edge
@@ -576,7 +575,5 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             /// <returns>The int</returns>
             public override int GetHashCode() => EdgeStart.GetHashCode() ^ EdgeEnd.GetHashCode();
         }
-
-        
     }
 }

@@ -48,6 +48,14 @@ namespace Alis.Core.Physic.Dynamics
         public readonly IBroadPhase BroadPhase;
 
         /// <summary>
+        ///     A threshold for activating multiple cores to solve Collide.
+        ///     An World with a contact count above this threshold will use multiple threads to solve Collide.
+        ///     A value of 0 will always use multithreading. A value of (int.MaxValue) will never use multithreading.
+        ///     Typical values are {128 or 256}.
+        /// </summary>
+        public readonly int CollideMultithreadThreshold = int.MaxValue;
+
+        /// <summary>
         ///     The contact list
         /// </summary>
         public readonly ContactListHead ContactList;
@@ -63,9 +71,26 @@ namespace Alis.Core.Physic.Dynamics
         public readonly BroadphaseDelegate OnBroadphaseCollision;
 
         /// <summary>
+        ///     A threshold for activating multiple cores to solve PositionConstraints.
+        ///     An Island with a contact count above this threshold will use multiple threads to solve PositionConstraints.
+        ///     A value of 0 will always use multithreading. A value of (int.MaxValue) will never use multithreading.
+        ///     Typical values are {128 or 256}.
+        /// </summary>
+        public readonly int PositionConstraintsMultithreadThreshold = int.MaxValue;
+
+        /// <summary>
         ///     A temporary list of contacts to be updated during Collide().
         /// </summary>
         private readonly List<Contact> updateList = new List<Contact>();
+
+
+        /// <summary>
+        ///     A threshold for activating multiple cores to solve VelocityConstraints.
+        ///     An Island with a contact count above this threshold will use multiple threads to solve VelocityConstraints.
+        ///     A value of 0 will always use multithreading. A value of (int.MaxValue) will never use multithreading.
+        ///     Typical values are {128 or 256}.
+        /// </summary>
+        public readonly int VelocityConstraintsMultithreadThreshold = int.MaxValue;
 
 
         /// <summary>
@@ -630,33 +655,5 @@ namespace Alis.Core.Physic.Dynamics
 
             return collide;
         }
-
-        
-
-        /// <summary>
-        ///     A threshold for activating multiple cores to solve VelocityConstraints.
-        ///     An Island with a contact count above this threshold will use multiple threads to solve VelocityConstraints.
-        ///     A value of 0 will always use multithreading. A value of (int.MaxValue) will never use multithreading.
-        ///     Typical values are {128 or 256}.
-        /// </summary>
-        public readonly int VelocityConstraintsMultithreadThreshold = int.MaxValue;
-
-        /// <summary>
-        ///     A threshold for activating multiple cores to solve PositionConstraints.
-        ///     An Island with a contact count above this threshold will use multiple threads to solve PositionConstraints.
-        ///     A value of 0 will always use multithreading. A value of (int.MaxValue) will never use multithreading.
-        ///     Typical values are {128 or 256}.
-        /// </summary>
-        public readonly int PositionConstraintsMultithreadThreshold = int.MaxValue;
-
-        /// <summary>
-        ///     A threshold for activating multiple cores to solve Collide.
-        ///     An World with a contact count above this threshold will use multiple threads to solve Collide.
-        ///     A value of 0 will always use multithreading. A value of (int.MaxValue) will never use multithreading.
-        ///     Typical values are {128 or 256}.
-        /// </summary>
-        public readonly int CollideMultithreadThreshold = int.MaxValue;
-
-        
     }
 }

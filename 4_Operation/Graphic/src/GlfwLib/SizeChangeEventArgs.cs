@@ -38,20 +38,6 @@ namespace Alis.Core.Graphic.GlfwLib
     /// <seealso cref="EventArgs" />
     public class SizeChangeEventArgs : EventArgs
     {
-        
-
-        /// <summary>
-        ///     Gets the new size.
-        /// </summary>
-        /// <value>
-        ///     The size.
-        /// </value>
-        public Size Size { get; }
-
-        
-
-        
-
         /// <summary>
         ///     Initializes a new instance of the <see cref="SizeChangeEventArgs" /> class.
         /// </summary>
@@ -67,6 +53,13 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="size">The new size.</param>
         public SizeChangeEventArgs(Size size) => Size = size;
 
-        
+
+        /// <summary>
+        ///     Gets the new size.
+        /// </summary>
+        /// <value>
+        ///     The size.
+        /// </value>
+        public Size Size { get; }
     }
 }

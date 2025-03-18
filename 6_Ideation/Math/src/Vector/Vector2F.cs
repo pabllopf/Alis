@@ -540,7 +540,6 @@ namespace Alis.Core.Aspect.Math.Vector
             Y *= invLength;
         }
 
-        
 
         /// <summary>
         ///     Dots the left
@@ -660,7 +659,6 @@ namespace Alis.Core.Aspect.Math.Vector
             result = new Vector2F(left.X * invRight, left.Y * invRight);
         }
 
-        
 
         /// <summary>
         ///     Returns the string using the specified f 2

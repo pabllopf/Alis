@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using Alis.Builder.Core.Ecs.Component.Audio;
 using Alis.Core.Aspect.Data.Json;
@@ -44,9 +45,8 @@ namespace Alis.Core.Ecs.Component.Audio
         ///     Initializes a new instance of the <see cref="AudioSource" /> class
         /// </summary>
         /// <param name="audioClip">The audio clip</param>
-        [JsonConstructor]
+        [JsonConstructor, DynamicDependency(DynamicallyAccessedMemberTypes.PublicConstructors, typeof(AudioSource))]
 #if NET5_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.DynamicDependency(global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicConstructors, typeof(AudioSource))]
 #endif
         public AudioSource(AudioClip audioClip)
         {
@@ -58,7 +58,7 @@ namespace Alis.Core.Ecs.Component.Audio
         ///     Initializes a new instance of the <see cref="AudioSource" /> class
         /// </summary>
 #if NET5_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.DynamicDependency(global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicConstructors, typeof(AudioSource))]
+        [DynamicDependency(DynamicallyAccessedMemberTypes.PublicConstructors, typeof(AudioSource))]
 #endif
         public AudioSource()
         {

@@ -1,39 +1,63 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Polyfill.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 
 using System;
 using System.Linq;
-using System.Runtime.InteropServices;
-#pragma warning disable CS0436 // Type conflicts with imported type
-using MemoryMarshal = System.Runtime.InteropServices.MemoryMarshal;
-using RuntimeHelpers = System.Runtime.CompilerServices.RuntimeHelpers;
-#pragma warning restore CS0436 // Type conflicts with imported type
-
-
-using CommunityToolkit.HighPerformance;
-using Frent;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using CommunityToolkit.HighPerformance;
+#pragma warning disable CS0436 // Type conflicts with imported type
+using MemoryMarshal = System.Runtime.InteropServices.MemoryMarshal;
+#pragma warning restore CS0436 // Type conflicts with imported type
 
 namespace Frent
 {
     /// <summary>
-    /// The skip locals init class
+    ///     The skip locals init class
     /// </summary>
-    /// <seealso cref="Attribute"/>
+    /// <seealso cref="Attribute" />
     internal class SkipLocalsInit : Attribute;
+
     /// <summary>
-    /// The stack trace hidden class
+    ///     The stack trace hidden class
     /// </summary>
-    /// <seealso cref="Attribute"/>
+    /// <seealso cref="Attribute" />
     internal class StackTraceHidden : Attribute;
 }
 
 namespace System.Runtime.CompilerServices
 {
     /// <summary>
-    /// The is external init class
+    ///     The is external init class
     /// </summary>
-    /// <seealso cref="Attribute"/>
+    /// <seealso cref="Attribute" />
     internal class IsExternalInit : Attribute;
 }
 
@@ -47,11 +71,6 @@ namespace System.Runtime.CompilerServices
     {
         public static bool IsReferenceOrContainsReferences<T>() => Cache<T>.Value;
 
-        private static class Cache<T>
-        {
-            public static readonly bool Value = IsReferenceOrContainsReferences(typeof(T));
-        }
-
         private static bool IsReferenceOrContainsReferences(Type type)
         {
             if (!type.IsValueType)
@@ -62,8 +81,14 @@ namespace System.Runtime.CompilerServices
             return type.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
                 .Any(f => IsReferenceOrContainsReferences(f.FieldType));
         }
+
+        private static class Cache<T>
+        {
+            public static readonly bool Value = IsReferenceOrContainsReferences(typeof(T));
+        }
     }
 }
+
 namespace System.Runtime.InteropServices
 {
     internal static class MemoryMarshal
@@ -71,11 +96,11 @@ namespace System.Runtime.InteropServices
         public static ref T GetReference<T>(Span<T> span) => ref span.DangerousGetReference();
         public static ref T GetArrayDataReference<T>(T[] arr) => ref arr.DangerousGetReference();
         public static ref byte GetArrayDataReference(Array arr) => throw new NotSupportedException();
-        
+
         public static Span<T> CreateSpan<T>(T[] array) => new Span<T>(array);
-        
+
         public static Span<T> CreateSpan<T>(T[] array, int start, int length) => new Span<T>(array, start, length);
-        
+
         public static ReadOnlySpan<T> CreateReadOnlySpan<T>(T[] array) => new ReadOnlySpan<T>(array);
     }
 }
@@ -84,6 +109,14 @@ namespace System.Numerics
 {
     internal static class BitOperations
     {
+        private static readonly byte[] Log2DeBruijn = // 32
+        [
+            00, 09, 01, 10, 13, 21, 02, 29,
+            11, 14, 16, 18, 22, 25, 03, 30,
+            08, 12, 20, 28, 15, 17, 24, 07,
+            19, 27, 23, 06, 26, 05, 04, 31
+        ];
+
         public static int Log2(uint value)
         {
             value |= value >> 01;
@@ -97,7 +130,7 @@ namespace System.Numerics
                 // Using deBruijn sequence, k=2, n=5 (2^5=32) : 0b_0000_0111_1100_0100_1010_1100_1101_1101u
                 ref MemoryMarshal.GetArrayDataReference(Log2DeBruijn),
                 // uint|long -> IntPtr cast on 32-bit platforms does expensive overflow checks not needed here
-                (IntPtr)(int)((value * 0x07C4ACDDu) >> 27));
+                (IntPtr) (int) ((value * 0x07C4ACDDu) >> 27));
         }
 
         public static uint RoundUpToPowerOf2(uint value)
@@ -110,17 +143,8 @@ namespace System.Numerics
             value |= value >> 16;
             return value + 1;
         }
-
-        private static readonly byte[] Log2DeBruijn =  // 32
-        [
-            00, 09, 01, 10, 13, 21, 02, 29,
-            11, 14, 16, 18, 22, 25, 03, 30,
-            08, 12, 20, 28, 15, 17, 24, 07,
-            19, 27, 23, 06, 26, 05, 04, 31
-        ];
     }
 }
-
 
 
 // Licensed to the .NET Foundation under one or more agreements.
@@ -128,14 +152,10 @@ namespace System.Numerics
 
 namespace System
 {
-    using System.Diagnostics;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Runtime.CompilerServices;
-
     /// <summary>Represent a range has start and end indexes.</summary>
     /// <remarks>
-    /// Range is used by the C# compiler to support the range syntax.
-    /// <code>
+    ///     Range is used by the C# compiler to support the range syntax.
+    ///     <code>
     /// int[] someArray = new int[5] { 1, 2, 3, 4, 5 };
     /// int[] subArray1 = someArray[0..2]; // { 1, 2 }
     /// int[] subArray2 = someArray[1..^0]; // { 2, 3, 4, 5 }
@@ -146,7 +166,7 @@ namespace System
 #else
     internal
 #endif
-    readonly struct Range : IEquatable<Range>
+        readonly struct Range : IEquatable<Range>
     {
         /// <summary>Represent the inclusive start index of the Range.</summary>
         public Index Start { get; }
@@ -175,10 +195,7 @@ namespace System
         public bool Equals(Range other) => other.Start.Equals(Start) && other.End.Equals(End);
 
         /// <summary>Returns the hash code for this instance.</summary>
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(Start, End);
-        }
+        public override int GetHashCode() => HashCode.Combine(Start, End);
 
         /// <summary>Converts the value of the current Range object to its equivalent string representation.</summary>
         public override string ToString()
@@ -209,7 +226,7 @@ namespace System
  
             return new string(span.Slice(0, pos));
 #else
-            return Start.ToString() + ".." + End.ToString();
+            return Start + ".." + End;
 #endif
         }
 
@@ -225,9 +242,9 @@ namespace System
         /// <summary>Calculate the start offset and length of range object using a collection length.</summary>
         /// <param name="length">The length of the collection that the range will be used with. length has to be a positive value.</param>
         /// <remarks>
-        /// For performance reason, we don't validate the input length parameter against negative values.
-        /// It is expected Range will be used with collections which always have non negative length/count.
-        /// We validate the range is inside the length scope though.
+        ///     For performance reason, we don't validate the input length parameter against negative values.
+        ///     It is expected Range will be used with collections which always have non negative length/count.
+        ///     We validate the range is inside the length scope though.
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public (int Offset, int Length) GetOffsetAndLength(int length)
@@ -235,7 +252,7 @@ namespace System
             int start = Start.GetOffset(length);
             int end = End.GetOffset(length);
 
-            if ((uint)end > (uint)length || (uint)start > (uint)end)
+            if ((uint) end > (uint) length || (uint) start > (uint) end)
             {
                 ThrowArgumentOutOfRangeException();
             }
@@ -252,17 +269,13 @@ namespace System
 
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
- 
+
 namespace System
 {
-    using System.Diagnostics;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Runtime.CompilerServices;
-
     /// <summary>Represent a type can be used to index a collection either from the start or the end.</summary>
     /// <remarks>
-    /// Index is used by the C# compiler to support the new index syntax
-    /// <code>
+    ///     Index is used by the C# compiler to support the new index syntax
+    ///     <code>
     /// int[] someArray = new int[5] { 1, 2, 3, 4, 5 } ;
     /// int lastElement = someArray[^1]; // lastElement = 5
     /// </code>
@@ -272,7 +285,7 @@ namespace System
 #else
     internal
 #endif
-    readonly struct Index : IEquatable<Index>
+        readonly struct Index : IEquatable<Index>
     {
         private readonly int _value;
 
@@ -280,7 +293,8 @@ namespace System
         /// <param name="value">The index value. it has to be zero or positive number.</param>
         /// <param name="fromEnd">Indicating if the index is from the start or from the end.</param>
         /// <remarks>
-        /// If the Index constructed from the end, index value 1 means pointing at the last element and index value 0 means pointing at beyond last element.
+        ///     If the Index constructed from the end, index value 1 means pointing at the last element and index value 0 means
+        ///     pointing at beyond last element.
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Index(int value, bool fromEnd = false)
@@ -297,10 +311,7 @@ namespace System
         }
 
         // The following private constructors mainly created for perf reason to avoid the checks
-        private Index(int value)
-        {
-            _value = value;
-        }
+        private Index(int value) => _value = value;
 
         /// <summary>Create an Index pointing at first element.</summary>
         public static Index Start => new Index(0);
@@ -341,8 +352,7 @@ namespace System
             {
                 if (_value < 0)
                     return ~_value;
-                else
-                    return _value;
+                return _value;
             }
         }
 
@@ -352,10 +362,12 @@ namespace System
         /// <summary>Calculate the offset from the start using the giving collection length.</summary>
         /// <param name="length">The length of the collection that the Index will be used with. length has to be a positive value</param>
         /// <remarks>
-        /// For performance reason, we don't validate the input length parameter and the returned offset value against negative values.
-        /// we don't validate either the returned offset is greater than the input length.
-        /// It is expected Index will be used with collections which always have non negative length/count. If the returned offset is negative and
-        /// then used to index a collection will get out of range exception which will be same affect as the validation.
+        ///     For performance reason, we don't validate the input length parameter and the returned offset value against negative
+        ///     values.
+        ///     we don't validate either the returned offset is greater than the input length.
+        ///     It is expected Index will be used with collections which always have non negative length/count. If the returned
+        ///     offset is negative and
+        ///     then used to index a collection will get out of range exception which will be same affect as the validation.
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public int GetOffset(int length)
@@ -369,12 +381,13 @@ namespace System
 
                 offset += length + 1;
             }
+
             return offset;
         }
 
         /// <summary>Indicates whether the current Index object is equal to another object of the same type.</summary>
         /// <param name="value">An object to compare with this object</param>
-        public override bool Equals(object? value) => value is Index && _value == ((Index)value)._value;
+        public override bool Equals(object? value) => value is Index && _value == ((Index) value)._value;
 
         /// <summary>Indicates whether the current Index object is equal to another Index object.</summary>
         /// <param name="other">An object to compare with this object</param>
@@ -392,7 +405,7 @@ namespace System
             if (IsFromEnd)
                 return ToStringFromEnd();
 
-            return ((uint)Value).ToString();
+            return ((uint) Value).ToString();
         }
 
         private static void ThrowValueArgumentOutOfRange_NeedNonNegNumException()

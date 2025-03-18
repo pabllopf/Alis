@@ -1,33 +1,65 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:IDTable.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
-using Frent.Core.Events;
 using System.Runtime.CompilerServices;
+using Frent.Core.Events;
 
 namespace Frent.Collections
 {
     /// <summary>
-    /// The id table class
+    ///     The id table class
     /// </summary>
     internal abstract class IDTable
     {
         /// <summary>
-        /// The buffer
+        ///     The has gc references
         /// </summary>
-        protected Array _buffer;
-        /// <summary>
-        /// The recycled
-        /// </summary>
-        protected NativeStack<int> _recycled;
-        /// <summary>
-        /// The next index
-        /// </summary>
-        protected int _nextIndex;
-        /// <summary>
-        /// The has gc references
-        /// </summary>
-        private bool _hasGCReferences;
+        private readonly bool _hasGCReferences;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="IDTable"/> class
+        ///     The buffer
+        /// </summary>
+        protected Array _buffer;
+
+        /// <summary>
+        ///     The next index
+        /// </summary>
+        protected int _nextIndex;
+
+        /// <summary>
+        ///     The recycled
+        /// </summary>
+        protected NativeStack<int> _recycled;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="IDTable" /> class
         /// </summary>
         /// <param name="empty">The empty</param>
         /// <param name="gcRefs">The gc refs</param>
@@ -39,7 +71,7 @@ namespace Frent.Collections
         }
 
         /// <summary>
-        /// Creates the boxed using the specified to store
+        ///     Creates the boxed using the specified to store
         /// </summary>
         /// <param name="toStore">The to store</param>
         /// <returns>The index</returns>
@@ -63,14 +95,14 @@ namespace Frent.Collections
         }
 
         /// <summary>
-        /// Gets the value boxed using the specified index
+        ///     Gets the value boxed using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The object</returns>
         public object GetValueBoxed(int index) => GetValue(index);
 
         /// <summary>
-        /// Takes the boxed using the specified index
+        ///     Takes the boxed using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The object</returns>
@@ -81,7 +113,7 @@ namespace Frent.Collections
         }
 
         /// <summary>
-        /// Consumes the index
+        ///     Consumes the index
         /// </summary>
         /// <param name="index">The index</param>
         public void Consume(int index)
@@ -94,52 +126,59 @@ namespace Frent.Collections
         }
 
         /// <summary>
-        /// Invokes the event with and consume using the specified generic event
+        ///     Invokes the event with and consume using the specified generic event
         /// </summary>
         /// <param name="genericEvent">The generic event</param>
         /// <param name="entity">The entity</param>
         /// <param name="index">The index</param>
         public abstract void InvokeEventWithAndConsume(GenericEvent? genericEvent, Entity entity, int index);
+
         /// <summary>
-        /// Sets the value using the specified value
+        ///     Sets the value using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <param name="index">The index</param>
         protected abstract void SetValue(object value, int index);
+
         /// <summary>
-        /// Clears the value using the specified index
+        ///     Clears the value using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         protected abstract void ClearValue(int index);
+
         /// <summary>
-        /// Gets the value using the specified index
+        ///     Gets the value using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The object</returns>
         protected abstract object GetValue(int index);
+
         /// <summary>
-        /// Doubles this instance
+        ///     Doubles this instance
         /// </summary>
         protected abstract void Double();
     }
 
     /// <summary>
-    /// The id table class
+    ///     The id table class
     /// </summary>
-    /// <seealso cref="IDTable"/>
+    /// <seealso cref="IDTable" />
     internal class IDTable<T> : IDTable
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="IDTable{T}"/> class
+        ///     Initializes a new instance of the <see cref="IDTable{T}" /> class
         /// </summary>
-        public IDTable() : base(Array.Empty<T>(), RuntimeHelpers.IsReferenceOrContainsReferences<T>()) { }
+        public IDTable() : base(Array.Empty<T>(), RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+        {
+        }
+
         /// <summary>
-        /// Gets the value of the buffer
+        ///     Gets the value of the buffer
         /// </summary>
         public ref T[] Buffer => ref Unsafe.As<Array, T[]>(ref _buffer);
 
         /// <summary>
-        /// Creates the index
+        ///     Creates the index
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The ref</returns>
@@ -160,7 +199,7 @@ namespace Frent.Collections
         }
 
         /// <summary>
-        /// Invokes the event with and consume using the specified generic event
+        ///     Invokes the event with and consume using the specified generic event
         /// </summary>
         /// <param name="genericEvent">The generic event</param>
         /// <param name="entity">The entity</param>
@@ -172,17 +211,14 @@ namespace Frent.Collections
         }
 
         /// <summary>
-        /// Takes the index
+        ///     Takes the index
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The ref</returns>
-        public ref T Take(int index)
-        {
-            return ref Buffer[index];
-        }
+        public ref T Take(int index) => ref Buffer[index];
 
         /// <summary>
-        /// Doubles this instance
+        ///     Doubles this instance
         /// </summary>
         protected override void Double()
         {
@@ -190,19 +226,21 @@ namespace Frent.Collections
         }
 
         /// <summary>
-        /// Gets the value using the specified index
+        ///     Gets the value using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The object</returns>
         protected override object GetValue(int index) => Buffer[index]!;
+
         /// <summary>
-        /// Sets the value using the specified value
+        ///     Sets the value using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <param name="index">The index</param>
-        protected override void SetValue(object value, int index) => Buffer[index] = (T)value;
+        protected override void SetValue(object value, int index) => Buffer[index] = (T) value;
+
         /// <summary>
-        /// Clears the value using the specified index
+        ///     Clears the value using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         protected override void ClearValue(int index) => Buffer[index] = default!;

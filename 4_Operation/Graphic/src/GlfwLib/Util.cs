@@ -38,8 +38,6 @@ namespace Alis.Core.Graphic.GlfwLib
     /// </summary>
     internal static class Util
     {
-        
-
         /// <summary>
         ///     Reads memory from the pointer until the first null byte is encountered and decodes the bytes from UTF-8 into a
         ///     managed <see cref="string" />.
@@ -62,7 +60,5 @@ namespace Alis.Core.Graphic.GlfwLib
 
             return "";
         }
-
-        
     }
 }
