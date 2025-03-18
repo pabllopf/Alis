@@ -37,7 +37,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
                 {
                     for (int j = 0; j < entityPadding; ++j)
                     {
-                        var padding = World.Entity();
+                        EntityView padding = World.Entity();
                         switch (j % 3)
                         {
                             case 0:

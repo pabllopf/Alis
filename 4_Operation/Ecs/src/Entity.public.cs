@@ -82,7 +82,7 @@ namespace Frent
             //Total: 4x lookup
 
             //1x
-            ref var lookup = ref AssertIsAlive(out var world);
+            ref EntityLocation lookup = ref AssertIsAlive(out World? world);
 
             //1x
             //other lookup is optimized into indirect pointer addressing
@@ -105,7 +105,7 @@ namespace Frent
         /// <returns>The boxed component.</returns>
         public object Get(ComponentID id)
         {
-            ref var lookup = ref AssertIsAlive(out _);
+            ref EntityLocation lookup = ref AssertIsAlive(out _);
 
             int compIndex = lookup.Archetype.GetComponentIndex(id);
 
@@ -130,7 +130,7 @@ namespace Frent
         /// <exception cref="ComponentNotFoundException"><see cref="Entity"/> does not have component of type <paramref name="id"/>.</exception>
         public void Set(ComponentID id, object obj)
         {
-            ref var lookup = ref AssertIsAlive(out _);
+            ref EntityLocation lookup = ref AssertIsAlive(out _);
 
             //2x
             int compIndex = lookup.Archetype.GetComponentIndex(id);
@@ -173,7 +173,7 @@ namespace Frent
         /// <returns><see langword="true"/> if this entity has a component of type <paramref name="type"/>, otherwise <see langword="false"/>.</returns>
         public bool TryGet(Type type, out object? value)
         {
-            ref var lookup = ref AssertIsAlive(out _);
+            ref EntityLocation lookup = ref AssertIsAlive(out _);
 
             ComponentID componentId = Component.GetComponentID(type);
             int compIndex = GlobalWorldTables.ComponentIndex(lookup.ArchetypeID, componentId);
@@ -211,7 +211,7 @@ namespace Frent
         /// <exception cref="InvalidCastException"><paramref name="component"/> is not assignable to the type represented by <paramref name="componentID"/>.</exception>
         public void AddAs(ComponentID componentID, object component)
         {
-            ref EntityLocation lookup = ref AssertIsAlive(out var w);
+            ref EntityLocation lookup = ref AssertIsAlive(out World? w);
             if (w.AllowStructualChanges)
             {
                 ComponentStorageBase componentRunner = null!;
@@ -232,7 +232,7 @@ namespace Frent
         /// <param name="componentID">The <see cref="ComponentID"/> of the component to be removed</param>
         public void Remove(ComponentID componentID)
         {
-            ref var lookup = ref AssertIsAlive(out var w);
+            ref EntityLocation lookup = ref AssertIsAlive(out World? w);
             if (w.AllowStructualChanges)
             {
                 w.RemoveComponent(this, ref lookup, componentID);
@@ -263,7 +263,7 @@ namespace Frent
         /// <exception cref="InvalidOperationException">Thrown if the <see cref="Entity"/> is not alive.</exception>
         public bool Tagged(TagID tagID)
         {
-            ref var lookup = ref AssertIsAlive(out var w);
+            ref EntityLocation lookup = ref AssertIsAlive(out World? w);
             return lookup.Archetype.HasTag(tagID);
         }
 
@@ -303,7 +303,7 @@ namespace Frent
         /// <param name="tagID">The tagID to use as the tag</param>
         public bool Tag(TagID tagID)
         {
-            ref var lookup = ref AssertIsAlive(out var w);
+            ref EntityLocation lookup = ref AssertIsAlive(out World? w);
             if (lookup.Archetype.HasTag(tagID))
                 return false;
 
@@ -331,7 +331,7 @@ namespace Frent
         /// <param name="tagID">The type of tag to remove.</param>
         public bool Detach(TagID tagID)
         {
-            ref var lookup = ref AssertIsAlive(out var w);
+            ref EntityLocation lookup = ref AssertIsAlive(out World? w);
             if (!lookup.Archetype.HasTag(tagID))
                 return false;
 
@@ -378,7 +378,7 @@ namespace Frent
             readonly set { /*the set is just to enable the += syntax*/ }
             get
             {
-                if (!InternalIsAlive(out var world, out _))
+                if (!InternalIsAlive(out World? world, out _))
                     return null;
                 world.EntityTable[EntityID].Flags |= EntityFlags.AddGenericComp;
                 return world.EventLookup.GetOrAddNew(EntityIDOnly).Add.GenericEvent ??= new();
@@ -393,7 +393,7 @@ namespace Frent
             readonly set { /*the set is just to enable the += syntax*/ }
             get
             {
-                if (!InternalIsAlive(out var world, out _))
+                if (!InternalIsAlive(out World? world, out _))
                     return null;
                 world.EntityTable[EntityID].Flags |= EntityFlags.RemoveGenericComp;
                 return world.EventLookup.GetOrAddNew(EntityIDOnly).Remove.GenericEvent ??= new();
@@ -425,11 +425,11 @@ namespace Frent
         /// <param name="flag">The flag</param>
         private void UnsubscribeEvent(object value, EntityFlags flag)
         {
-            if (value is null || !InternalIsAlive(out var world, out EntityLocation entityLocation))
+            if (value is null || !InternalIsAlive(out World? world, out EntityLocation entityLocation))
                 return;
         
             bool exists = entityLocation.HasEvent(flag);
-            var events = exists ? world.EventLookup[EntityIDOnly] : default;
+            EventRecord? events = exists ? world.EventLookup[EntityIDOnly] : default;
 
 
             if (exists)
@@ -475,10 +475,10 @@ namespace Frent
         /// <param name="isGenericEvent">The is generic event</param>
         private void InitalizeEventRecord(object @delegate, EntityFlags flag, bool isGenericEvent = false)
         {
-            if (@delegate is null || !InternalIsAlive(out var world, out EntityLocation entityLocation))
+            if (@delegate is null || !InternalIsAlive(out World? world, out EntityLocation entityLocation))
                 return;
             bool exists = entityLocation.HasEvent(flag);
-            var record = exists ? world.EventLookup[EntityIDOnly] : default;
+            EventRecord? record = exists ? world.EventLookup[EntityIDOnly] : default;
             world.EntityTable[EntityID].Flags |= flag;
             EventRecord.Initalize(exists, ref record!);
 
@@ -517,9 +517,9 @@ namespace Frent
         [Frent.SkipLocalsInit]
         public void Delete()
         {
-            var world = GlobalWorldTables.Worlds.UnsafeIndexNoResize(WorldID);
+            World? world = GlobalWorldTables.Worlds.UnsafeIndexNoResize(WorldID);
             //hardware trap
-            ref var lookup = ref world.EntityTable.UnsafeIndexNoResize(EntityID);
+            ref EntityLocation lookup = ref world.EntityTable.UnsafeIndexNoResize(EntityID);
 
             if (lookup.Version != EntityVersion)
                 return;
@@ -562,7 +562,7 @@ namespace Frent
         {
             get
             {
-                ref var lookup = ref AssertIsAlive(out _);
+                ref EntityLocation lookup = ref AssertIsAlive(out _);
                 return lookup.Archetype.ArchetypeTypeArray;
             }
         }
@@ -575,7 +575,7 @@ namespace Frent
         {
             get
             {
-                ref var lookup = ref AssertIsAlive(out _);
+                ref EntityLocation lookup = ref AssertIsAlive(out _);
                 return lookup.Archetype.ArchetypeTagArray;
             }
         }
@@ -587,7 +587,7 @@ namespace Frent
         {
             get
             {
-                ref var lookup = ref AssertIsAlive(out _);
+                ref EntityLocation lookup = ref AssertIsAlive(out _);
                 return lookup.Archetype.ID;
             }
         }
@@ -598,7 +598,7 @@ namespace Frent
         /// <param name="onEach">The unbound generic function called on each item</param>
         public void EnumerateComponents(IGenericAction onEach)
         {
-            ref var lookup = ref AssertIsAlive(out var _);
+            ref EntityLocation lookup = ref AssertIsAlive(out World _);
             ComponentStorageBase[] runners = lookup.Archetype.Components;
             for (int i = 1; i < runners.Length; i++)
             {

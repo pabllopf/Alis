@@ -93,8 +93,8 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
         {
             _fennecs.query.Raw(delegate(Memory<Component1> c1v, Memory<Component2> c2v)
             {
-                var c1vs = c1v.Span;
-                var c2vs = c2v.Span;
+                Span<Component1> c1vs = c1v.Span;
+                Span<Component2> c2vs = c2v.Span;
                 for (int i = 0; i < c1vs.Length; ++i)
                 {
                     ref Component1 c1 = ref c1vs[i];

@@ -48,7 +48,7 @@ namespace Frent.Core.Events
             if (_first == action)
             {
                 _first = null;
-                if (_invokationList.TryPop(out var v))
+                if (_invokationList.TryPop(out Action<Entity, T>? v))
                     _first = v;
             }
             else
@@ -78,7 +78,7 @@ namespace Frent.Core.Events
         public readonly void InvokeInternal(Entity entity, T arg)
         {
             _first!.Invoke(entity, arg);
-            foreach (var item in _invokationList.AsSpan())
+            foreach (Action<Entity, T>? item in _invokationList.AsSpan())
                 item.Invoke(entity, arg);
         }
     }
@@ -135,13 +135,13 @@ namespace Frent.Core.Events
             if (_first == action)
             {
                 _first = null;
-                if (_invokationList.TryPop(out var v))
+                if (_invokationList.TryPop(out Action<Entity>? v))
                     _first = v;
             }
             else if (_second == action)
             {
                 _second = null;
-                if (_invokationList.TryPop(out var v))
+                if (_invokationList.TryPop(out Action<Entity>? v))
                     _second = v;
             }
             else
@@ -170,7 +170,7 @@ namespace Frent.Core.Events
             if (_second is not null)
             {
                 _second.Invoke(entity);
-                foreach (var item in _invokationList.AsSpan())
+                foreach (Action<Entity>? item in _invokationList.AsSpan())
                     item.Invoke(entity);
             }
         }

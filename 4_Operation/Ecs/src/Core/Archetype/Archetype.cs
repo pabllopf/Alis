@@ -10,6 +10,7 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
+using Frent.Collections;
 
 namespace Frent.Core
 {
@@ -46,7 +47,7 @@ namespace Frent.Core
         /// <returns>A span of t</returns>
         internal Span<T> GetComponentSpan<T>()
         {
-            var components = Components;
+            ComponentStorageBase[]? components = Components;
             int index = GetComponentIndex<T>();
             if (index == 0)
             {
@@ -135,8 +136,8 @@ namespace Frent.Core
 
                 //we should always have to resize here - after all, no space is left
                 Resize((int)BitOperations.RoundUpToPowerOf2((uint)totalCapacityRequired));
-                var destination = Components;
-                var source = CreateComponentBuffers;
+                ComponentStorageBase[]? destination = Components;
+                ComponentStorageBase[]? source = CreateComponentBuffers;
                 for (int i = 1; i < destination.Length; i++)
                     Array.Copy(source[i].Buffer, 0, destination[i].Buffer, oldEntitiesLen, deltaFromMaxDeferredInPlace);
                 Array.Copy(_createComponentBufferEntities, 0, _entities, oldEntitiesLen, deltaFromMaxDeferredInPlace);
@@ -144,8 +145,8 @@ namespace Frent.Core
 
             _nextComponentIndex += _deferredEntityCount;
 
-            var entities = _entities;
-            var table = world.EntityTable._buffer;
+            EntityIDOnly[]? entities = _entities;
+            EntityLocation[]? table = world.EntityTable._buffer;
             for (int i = previousComponentCount; i < entities.Length && i < _nextComponentIndex; i++)
                 table.UnsafeArrayIndex(entities[i].ID).Archetype = this;
 
@@ -166,7 +167,7 @@ namespace Frent.Core
             Span<EntityIDOnly> entitySpan = _entities.AsSpan(_nextComponentIndex, count);
 
             int componentIndex = _nextComponentIndex;
-            ref var recycled = ref world.RecycledEntityIds;
+            ref NativeStack<EntityIDOnly> recycled = ref world.RecycledEntityIds;
             for (int i = 0; i < entitySpan.Length; i++)
             {
                 ref EntityIDOnly archetypeEntity = ref entitySpan[i];
@@ -193,7 +194,7 @@ namespace Frent.Core
         private void Resize(int newLen)
         {
             Array.Resize(ref _entities, newLen);
-            var runners = Components;
+            ComponentStorageBase[]? runners = Components;
             for (int i = 1; i < runners.Length; i++)
                 runners[i].ResizeBuffer(newLen);
         }
@@ -206,7 +207,7 @@ namespace Frent.Core
             int newLen = checked(Math.Max(1, _createComponentBufferEntities.Length) * 2);
             //we only need to resize the EntityIDOnly array when future total entity count is greater than capacity
             Array.Resize(ref _createComponentBufferEntities, newLen);
-            var runners = CreateComponentBuffers;
+            ComponentStorageBase[]? runners = CreateComponentBuffers;
             for (int i = 1; i < runners.Length; i++)
                 runners[i].ResizeBuffer(newLen);
         }
@@ -223,7 +224,7 @@ namespace Frent.Core
             }
 
             FastStackArrayPool<EntityIDOnly>.ResizeArrayFromPool(ref _entities, count);
-            var runners = Components;
+            ComponentStorageBase[]? runners = Components;
             for (int i = 1; i < runners.Length; i++)
             {
                 runners[i].ResizeBuffer(count);
@@ -270,7 +271,7 @@ namespace Frent.Core
             }
 
             @long:
-            var comps = Components;
+            ComponentStorageBase[]? comps = Components;
             for (int i = 9; i < comps.Length; i++)
             {
                 comps[i].Delete(args);
@@ -308,7 +309,7 @@ namespace Frent.Core
         {
             if (_nextComponentIndex == 0)
                 return;
-            var comprunners = Components;
+            ComponentStorageBase[]? comprunners = Components;
             for (int i = 1; i < comprunners.Length; i++)
                 comprunners[i].Run(world, this);
         }
@@ -340,7 +341,7 @@ namespace Frent.Core
         {
             if (_nextComponentIndex == 0)
                 return;
-            foreach (var comprunner in Components)
+            foreach (ComponentStorageBase? comprunner in Components)
                 comprunner.MultithreadedRun(countdown, world, this);
         }
 
@@ -350,7 +351,7 @@ namespace Frent.Core
         internal void ReleaseArrays()
         {
             _entities = [];
-            var comprunners = Components;
+            ComponentStorageBase[]? comprunners = Components;
             for (int i = 1; i < comprunners.Length; i++)
                 comprunners[i].Trim(0);
         }

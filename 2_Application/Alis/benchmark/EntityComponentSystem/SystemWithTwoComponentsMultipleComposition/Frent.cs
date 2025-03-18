@@ -101,7 +101,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
         [Benchmark]
         public void Frent_Simd()
         {
-            foreach ((var s1, var s2) in _frent.Query.EnumerateChunks<Component1, Component2>())
+            foreach ((Span<Component1> s1, Span<Component2> s2) in _frent.Query.EnumerateChunks<Component1, Component2>())
             {
                 int len = s1.Length - (s1.Length & 7);
 

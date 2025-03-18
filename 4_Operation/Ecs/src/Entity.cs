@@ -153,7 +153,7 @@ namespace Frent
         {
             world = GlobalWorldTables.Worlds.UnsafeIndexNoResize(WorldID);
             //hardware trap
-            ref var lookup = ref world.EntityTable.UnsafeIndexNoResize(EntityID);
+            ref EntityLocation lookup = ref world.EntityTable.UnsafeIndexNoResize(EntityID);
             if (lookup.Version != EntityVersion)
                 Throw_EntityIsDead();
             return ref lookup;
@@ -169,7 +169,7 @@ namespace Frent
         /// <returns>A ref of t</returns>
         private Ref<T> TryGetCore<T>(out bool exists)
         {
-            if (!InternalIsAlive(out var _, out var entityLocation))
+            if (!InternalIsAlive(out World _, out EntityLocation entityLocation))
                 goto doesntExist;
 
             int compIndex = GlobalWorldTables.ComponentIndex(entityLocation.ArchetypeID, Component<T>.ID);
@@ -238,7 +238,7 @@ namespace Frent
             {
                 get
                 {
-                    if (!target.InternalIsAlive(out World? world, out var eloc))
+                    if (!target.InternalIsAlive(out World? world, out EntityLocation eloc))
                         return [];
 
                     Dictionary<Type, object> components = [];

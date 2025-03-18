@@ -6,6 +6,7 @@ using System.Collections.Immutable;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using Frent.Core.Events;
 
 namespace Frent
 {
@@ -117,7 +118,7 @@ namespace Frent
 
             Debug.Assert(from.Components.Length > destination.Components.Length);
 
-            destination.CreateEntityLocation(currentLookup.Flags, out var nextLocation).Init(entity);
+            destination.CreateEntityLocation(currentLookup.Flags, out EntityLocation nextLocation).Init(entity);
             nextLocation.Version = currentLookup.Version;
 
             EntityIDOnly movedDown = from.DeleteEntityFromStorage(currentLookup.Index, out int deletedIndex);
@@ -143,7 +144,7 @@ namespace Frent
 
                 if (toIndex == 0)
                 {
-                    var runner = fromRunners.UnsafeArrayIndex(i);
+                    ComponentStorageBase? runner = fromRunners.UnsafeArrayIndex(i);
                     ref ComponentHandle writeTo = ref componentHandles.UnsafeSpanIndex(writeToIndex++);
                     if (hasGenericRemoveEvent)
                         writeTo = runner.Store(currentLookup.Index);
@@ -164,19 +165,19 @@ namespace Frent
             {
                 if (ComponentRemovedEvent.HasListeners)
                 {
-                    foreach (var handle in componentHandles)
+                    foreach (ComponentHandle handle in componentHandles)
                         ComponentRemovedEvent.Invoke(entity, handle.ComponentID);
                 }
 
                 if (EntityLocation.HasEventFlag(currentLookup.Flags, EntityFlags.RemoveComp | EntityFlags.RemoveGenericComp))
                 {
 
-                    var lookup = EventLookup[entity.EntityIDOnly];
+                    EventRecord? lookup = EventLookup[entity.EntityIDOnly];
 
 
                     if (hasGenericRemoveEvent)
                     {
-                        foreach (var handle in componentHandles)
+                        foreach (ComponentHandle handle in componentHandles)
                         {
                             lookup.Remove.NormalEvent.Invoke(entity, handle.ComponentID);
                             handle.InvokeComponentEventAndConsume(entity, lookup.Remove.GenericEvent);
@@ -185,7 +186,7 @@ namespace Frent
                     else
                     {
                         //no need to dispose here, as they were never created
-                        foreach (var handle in componentHandles)
+                        foreach (ComponentHandle handle in componentHandles)
                         {
                             lookup.Remove.NormalEvent.Invoke(entity, handle.ComponentID);
                         }
@@ -208,7 +209,7 @@ namespace Frent
 
             Debug.Assert(from.Components.Length == destination.Components.Length);
 
-            destination.CreateEntityLocation(currentLookup.Flags, out var nextLocation).Init(entity);
+            destination.CreateEntityLocation(currentLookup.Flags, out EntityLocation nextLocation).Init(entity);
             nextLocation.Version = currentLookup.Version;
 
             EntityIDOnly movedDown = from.DeleteEntityFromStorage(currentLookup.Index, out int deletedIndex);
@@ -260,7 +261,7 @@ namespace Frent
             EntityDeletedEvent.Invoke(entity);
             if (entityLocation.HasEvent(EntityFlags.OnDelete))
             {
-                foreach (var @event in EventLookup[entity.EntityIDOnly].Delete.AsSpan())
+                foreach (Action<Entity>? @event in EventLookup[entity.EntityIDOnly].Delete.AsSpan())
                 {
                     @event.Invoke(entity);
                 }
@@ -282,7 +283,7 @@ namespace Frent
             Debug.Assert(replacedEntity.ID < EntityTable._buffer.Length);
             Debug.Assert(entity.EntityID < EntityTable._buffer.Length);
 
-            ref var replaced = ref EntityTable.UnsafeIndexNoResize(replacedEntity.ID);
+            ref EntityLocation replaced = ref EntityTable.UnsafeIndexNoResize(replacedEntity.ID);
             replaced = currentLookup;
             replaced.Version = replacedEntity.Version;
             currentLookup.Version = ushort.MaxValue;
@@ -290,7 +291,7 @@ namespace Frent
             if (entity.EntityVersion != ushort.MaxValue - 1)
             {
                 //can't use max value as an ID, as it is used as a default value
-                ref var id = ref RecycledEntityIds.Push();
+                ref EntityIDOnly id = ref RecycledEntityIds.Push();
                 id = entity.EntityIDOnly;
                 id.Version++;
             }

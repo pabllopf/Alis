@@ -30,7 +30,7 @@ namespace Frent.Collections
         {
             get
             {
-                var buffer = _buffer;
+                T[]? buffer = _buffer;
                 if ((uint)index < (uint)buffer.Length)
                     return ref buffer.UnsafeArrayIndex(index);
                 return ref ResizeGet(index);

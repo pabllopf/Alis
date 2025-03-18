@@ -90,9 +90,9 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
         {
             _fennecs.query.Raw(delegate(Memory<Component1> c1v, Memory<Component2> c2v, Memory<Component3> c3v)
             {
-                var c1vs = c1v.Span;
-                var c2vs = c2v.Span;
-                var c3vs = c3v.Span;
+                Span<Component1> c1vs = c1v.Span;
+                Span<Component2> c2vs = c2v.Span;
+                Span<Component3> c3vs = c3v.Span;
                 
                 for (int i = 0; i < c1vs.Length; ++i)
                 {

@@ -320,7 +320,7 @@ namespace Frent
         /// <returns>The entity</returns>
         internal Entity CreateEntityFromLocation(EntityLocation entityLocation)
         {
-            var (id, version) = RecycledEntityIds.TryPop(out var v) ? v : new EntityIDOnly(NextEntityID++, (ushort)0);
+            (int id, ushort version) = RecycledEntityIds.TryPop(out EntityIDOnly v) ? v : new EntityIDOnly(NextEntityID++, (ushort)0);
             entityLocation.Version = version;
             EntityTable[id] = entityLocation;
             return new Entity(ID, version, id);
@@ -336,14 +336,14 @@ namespace Frent
             {
                 if (CurrentConfig.MultiThreadedUpdate)
                 {
-                    foreach (var element in _enabledArchetypes.AsSpan())
+                    foreach (ArchetypeID element in _enabledArchetypes.AsSpan())
                     {
                         element.Archetype(this).MultiThreadedUpdate(_sharedCountdown, this);
                     }
                 }
                 else
                 {
-                    foreach (var element in _enabledArchetypes.AsSpan())
+                    foreach (ArchetypeID element in _enabledArchetypes.AsSpan())
                     {
                         element.Archetype(this).Update(this);
                     }
@@ -376,11 +376,11 @@ namespace Frent
 
                 //fill up the table with the correct IDs
                 //works for initalization as well as updating it
-                if(GenerationServices.TypeAttributeCache.TryGetValue(attributeType, out var compSet))
+                if(GenerationServices.TypeAttributeCache.TryGetValue(attributeType, out HashSet<Type>? compSet))
                 {
                     for (ref int i = ref appliesTo.NextComponentIndex; i < Component.ComponentTable.Count; i++)
                     {
-                        var id = new ComponentID((ushort)i);
+                        ComponentID id = new ComponentID((ushort)i);
                         if (compSet.Contains(id.Type))
                         {
                             appliesTo.Stack.Push(id);
@@ -388,9 +388,9 @@ namespace Frent
                     }
                 }
 
-                foreach (var compid in appliesTo.Stack.AsSpan())
+                foreach (ComponentID compid in appliesTo.Stack.AsSpan())
                 {
-                    foreach (var item in _enabledArchetypes.AsSpan())
+                    foreach (ArchetypeID item in _enabledArchetypes.AsSpan())
                     {
                         item.Archetype(this).Update(this, compid);
                     }
@@ -429,7 +429,7 @@ namespace Frent
         {
             if (!GlobalWorldTables.HasTag(archetype.ID, Tag<Disable>.ID))
                 _enabledArchetypes.Push(archetype.ID);
-            foreach (var qkvp in QueryCache)
+            foreach (KeyValuePair<int, Query> qkvp in QueryCache)
             {
                 qkvp.Value.TryAttachArchetype(archetype);
             }
@@ -443,7 +443,7 @@ namespace Frent
         internal Query CreateQuery(ImmutableArray<Rule> rules)
         {
             Query q = new Query(this, rules);
-            foreach (ref var element in WorldArchetypeTable.AsSpan())
+            foreach (ref Archetype? element in WorldArchetypeTable.AsSpan())
                 if (element is not null)
                     q.TryAttachArchetype(element);
             return q;
@@ -483,7 +483,7 @@ namespace Frent
             {
                 Span<Archetype> resolveArchetypes = DeferredCreationArchetypes.AsSpan();
 
-                foreach (var archetype in resolveArchetypes)
+                foreach (Archetype? archetype in resolveArchetypes)
                     archetype.ResolveDeferredEntityCreations(this);
                 DeferredCreationArchetypes.ClearWithoutClearingGCReferences();
 
@@ -531,7 +531,7 @@ namespace Frent
 
             GlobalWorldTables.Worlds[ID] = null!;
 
-            foreach (ref var item in WorldArchetypeTable.AsSpan())
+            foreach (ref Archetype? item in WorldArchetypeTable.AsSpan())
                 if (item is not null)
                     item.ReleaseArrays();
 
@@ -580,7 +580,7 @@ namespace Frent
         /// <returns>The entity that was created.</returns>
         public Entity Create()
         {
-            var entity = CreateEntityWithoutEvent();
+            Entity entity = CreateEntityWithoutEvent();
             EntityCreatedEvent.Invoke(entity);
             return entity;
         }
@@ -591,9 +591,9 @@ namespace Frent
         /// <returns>The entity</returns>
         internal Entity CreateEntityWithoutEvent()
         {
-            ref var entity = ref DefaultArchetype.CreateEntityLocation(EntityFlags.None, out var eloc);
+            ref EntityIDOnly entity = ref DefaultArchetype.CreateEntityLocation(EntityFlags.None, out EntityLocation eloc);
 
-            var (id, version) = entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.PopUnsafe() : new EntityIDOnly(NextEntityID++, 0);
+            (int id, ushort version) = entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.PopUnsafe() : new EntityIDOnly(NextEntityID++, 0);
             eloc.Version = version;
             EntityTable[id] = eloc;
 

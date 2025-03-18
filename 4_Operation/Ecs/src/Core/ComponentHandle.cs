@@ -50,7 +50,7 @@ namespace Frent.Core
         /// <returns>The component handle</returns>
         public static ComponentHandle CreateFromBoxed(ComponentID typeAs, object @object)
         {
-            var index = Component.ComponentTable[typeAs.RawIndex].Storage.CreateBoxed(@object);
+            int index = Component.ComponentTable[typeAs.RawIndex].Storage.CreateBoxed(@object);
             return new ComponentHandle(index, typeAs);
         }
 

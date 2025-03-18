@@ -55,9 +55,9 @@ namespace Frent.Core.Structures
         /// <param name="idValue">The id value</param>
         internal static void GrowComponentTagTableIfNeeded(int idValue)
         {
-            var table = ComponentTagLocationTable;
-            var tableSize = ComponentTagTableBufferSize;
-            var worlds = Worlds.AsSpan();
+            byte[][]? table = ComponentTagLocationTable;
+            int tableSize = ComponentTagTableBufferSize;
+            Span<World> worlds = Worlds.AsSpan();
 
             //when adding a component, we only care about changing the length
             if (tableSize == idValue)
@@ -65,13 +65,13 @@ namespace Frent.Core.Structures
                 ComponentTagTableBufferSize = Math.Max(tableSize << 1, 1);
                 for (int i = 0; i < table.Length; i++)
                 {
-                    ref var componentsForArchetype = ref table[i];
+                    ref byte[]? componentsForArchetype = ref table[i];
                     Array.Resize(ref componentsForArchetype, ComponentTagTableBufferSize);
 
                     //componentsForArchetype.AsSpan(tableSize).Fill(DefaultNoTag);
 
                     //update world archetypes
-                    foreach (var world in worlds)
+                    foreach (World? world in worlds)
                     {
                         if (world is not null && world.WorldArchetypeTable[i] is Archetype archetype)
                         {
