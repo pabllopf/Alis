@@ -28,8 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Builder.Core.Ecs.Component.Audio;
-using Alis.Core.Ecs.Component.Audio;
 using Alis.Builder.Core.EcsOld.Component.Audio;
 using Alis.Core.EcsOld.Component.Audio;
 using Xunit;
