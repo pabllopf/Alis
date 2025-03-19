@@ -28,6 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 namespace Alis.Core.Ecs.Core.Memory
 {
@@ -36,7 +38,6 @@ namespace Alis.Core.Ecs.Core.Memory
     /// </summary>
     internal static class UnsafeExtensions
     {
-#if !DEBUG
         /// <summary>
         /// Unsafes the array index using the specified arr
         /// </summary>
@@ -115,30 +116,5 @@ namespace Alis.Core.Ecs.Core.Memory
         /// <returns>The</returns>
         public static T UnsafeCast<T>(object o) where T : class =>
             Unsafe.As<T>(o);
-#else
-        public static ref T UnsafeArrayIndex<T>(this T[] arr, nint index) =>
-            ref arr[index];
-
-        public static ref T UnsafeArrayIndex<T>(this T[] arr, int index) =>
-            ref arr[index];
-
-        public static ref T UnsafeArrayIndex<T>(this T[] arr, ushort index) =>
-            ref arr[index];
-
-        public static ref T UnsafeArrayIndex<T>(this T[] arr, uint index) =>
-            ref arr[index];
-
-        public static ref T UnsafeSpanIndex<T>(this Span<T> arr, int index) =>
-            ref arr[index];
-
-        public static ref T UnsafeSpanIndex<T>(this Span<T> arr, ushort index) =>
-            ref arr[index];
-
-        public static ref T UnsafeSpanIndex<T>(this Span<T> arr, uint index) =>
-            ref arr[(int) index];
-
-        public static T UnsafeCast<T>(object o) where T : class =>
-            (T) o;
-#endif
     }
 }
