@@ -29,12 +29,12 @@
 
 using System;
 using System.Runtime.CompilerServices;
-using Frent.Core;
-using Frent.Core.Structures;
-using Frent.Updating;
-using Frent.Updating.Runners;
+using Alis.Core.Ecs.Core;
+using Alis.Core.Ecs.Core.Archetype;
+using Alis.Core.Ecs.Core.Memory;
+using Alis.Core.Ecs.Updating;
 
-namespace Frent
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     Deconstruction extensions for entities.

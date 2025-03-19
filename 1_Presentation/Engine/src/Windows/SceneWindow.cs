@@ -37,10 +37,11 @@ using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Ecs.Component.Collider;
-using Alis.Core.Ecs.Component.Render;
-using Alis.Core.Ecs.Entity;
-using Alis.Core.Ecs.System;
+
+using Alis.Core.EcsOld.Component.Collider;
+using Alis.Core.EcsOld.Component.Render;
+using Alis.Core.EcsOld.Entity;
+using Alis.Core.EcsOld.System;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Physic.Dynamics;

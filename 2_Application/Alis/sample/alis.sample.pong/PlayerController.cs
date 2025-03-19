@@ -30,8 +30,8 @@
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Ecs.Component;
-using Alis.Core.Ecs.Component.Collider;
+using Alis.Core.EcsOld.Component;
+using Alis.Core.EcsOld.Component.Collider;
 
 namespace Alis.Sample.Pong
 {

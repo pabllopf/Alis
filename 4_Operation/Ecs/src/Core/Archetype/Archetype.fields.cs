@@ -28,22 +28,21 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Frent.Core.Structures;
-using Frent.Updating;
+using Alis.Core.Ecs.Updating;
 
-namespace Frent.Core
+namespace Alis.Core.Ecs.Core.Archetype
 {
     //38 bytes total - 16 header + mt, 8 comps, 8 create, 8 entities, 6 ids and tracking
     /// <summary>
     ///     The archetype class
     /// </summary>
-    internal partial class Archetype(ArchetypeID archetypeID, ComponentStorageBase[] components, ComponentStorageBase[] createBuffers)
+    internal partial class Archetype(EntityType archetypeID, ComponentStorageBase[] components, ComponentStorageBase[] createBuffers)
     {
         //2
         /// <summary>
         ///     The archetype id
         /// </summary>
-        private readonly ArchetypeID _archetypeID = archetypeID;
+        private readonly EntityType _archetypeID = archetypeID;
 
         //8
         /// <summary>

@@ -27,10 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Frent.Collections;
-using Frent.Updating.Runners;
+using Alis.Core.Ecs.Collections;
 
-namespace Frent.Updating
+namespace Alis.Core.Ecs.Updating
 {
     /// <summary>
     ///     Defines an object for creating component runners

@@ -27,13 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Ecs.System;
-using Alis.Builder.Core.Ecs.System.Manager.Scene;
-using Alis.Builder.Core.Ecs.System.Setting;
-using Alis.Core.Ecs.System;
-using Alis.Core.Ecs.System.Configuration;
-using Alis.Core.Ecs.System.Manager.Scene;
-using Alis.Core.Ecs.System.Scope;
+using Alis.Builder.Core.EcsOld.System;
+using Alis.Builder.Core.EcsOld.System.Manager.Scene;
+using Alis.Builder.Core.EcsOld.System.Setting;
+using Alis.Core.EcsOld.System;
+using Alis.Core.EcsOld.System.Configuration;
+using Alis.Core.EcsOld.System.Manager.Scene;
+using Alis.Core.EcsOld.System.Scope;
 using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.System

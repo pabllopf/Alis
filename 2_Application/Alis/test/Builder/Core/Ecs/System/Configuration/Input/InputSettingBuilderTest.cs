@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Ecs.System.Setting.Input;
-using Alis.Core.Ecs.System.Configuration.Input;
+using Alis.Builder.Core.EcsOld.System.Setting.Input;
+using Alis.Core.EcsOld.System.Configuration.Input;
 using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.System.Configuration.Input

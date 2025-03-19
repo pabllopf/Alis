@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Ecs.Component.Light;
+using Alis.Builder.Core.EcsOld.Component.Light;
 using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.Component.Light

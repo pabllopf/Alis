@@ -35,24 +35,22 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
-using Frent.Buffers;
-using Frent.Collections;
-using Frent.Core.Structures;
-using Frent.Updating;
-using Frent.Updating.Runners;
+using Alis.Core.Ecs.Buffers;
+using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Core.Memory;
+using Alis.Core.Ecs.Updating;
 
-namespace Frent.Core
+namespace Alis.Core.Ecs.Core.Archetype
 {
     /// <summary>
     ///     The archetype class
     /// </summary>
-    [DebuggerDisplay(AttributeHelpers.DebuggerDisplay)]
     internal partial class Archetype
     {
         /// <summary>
         ///     Gets the value of the id
         /// </summary>
-        internal ArchetypeID ID => _archetypeID;
+        internal EntityType ID => _archetypeID;
 
         /// <summary>
         ///     Gets the value of the archetype type array

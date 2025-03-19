@@ -27,11 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-global using TagEvent = Frent.Core.Events.Event<Frent.Core.TagID>;
+global using TagEvent = Alis.Core.Ecs.Core.Events.Event<Alis.Core.Ecs.Core.TagID>;
 using System;
-using Frent.Collections;
+using Alis.Core.Ecs.Collections;
 
-namespace Frent.Core.Events
+namespace Alis.Core.Ecs.Core.Events
 {
     /// <summary>
     ///     The event

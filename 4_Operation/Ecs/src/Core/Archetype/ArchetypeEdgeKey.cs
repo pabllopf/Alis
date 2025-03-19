@@ -31,7 +31,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace Frent.Core.Structures
+namespace Alis.Core.Ecs.Core.Archetype
 {
     /// <summary>
     ///     The archetype edge key
@@ -53,7 +53,7 @@ namespace Frent.Core.Structures
         /// <summary>
         ///     The archetype from
         /// </summary>
-        internal ArchetypeID ArchetypeFrom;
+        internal EntityType ArchetypeFrom;
 
         /// <summary>
         ///     The edge type
@@ -67,7 +67,7 @@ namespace Frent.Core.Structures
         /// <param name="from">The from</param>
         /// <param name="archetypeEdgeType">The archetype edge type</param>
         /// <returns>The archetype edge key</returns>
-        public static ArchetypeEdgeKey Component(ComponentID componentID, ArchetypeID from, ArchetypeEdgeType archetypeEdgeType) => new()
+        public static ArchetypeEdgeKey Component(ComponentID componentID, EntityType from, ArchetypeEdgeType archetypeEdgeType) => new()
         {
             ComponentID = componentID,
             ArchetypeFrom = from,
@@ -81,7 +81,7 @@ namespace Frent.Core.Structures
         /// <param name="from">The from</param>
         /// <param name="archetypeEdgeType">The archetype edge type</param>
         /// <returns>The archetype edge key</returns>
-        public static ArchetypeEdgeKey Tag(TagID tagID, ArchetypeID from, ArchetypeEdgeType archetypeEdgeType) => new()
+        public static ArchetypeEdgeKey Tag(TagID tagID, EntityType from, ArchetypeEdgeType archetypeEdgeType) => new()
         {
             TagID = tagID,
             ArchetypeFrom = from,

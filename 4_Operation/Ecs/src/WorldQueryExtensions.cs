@@ -27,10 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Frent.Core;
-using Frent.Systems;
+using Alis.Core.Ecs.Core.Memory;
+using Alis.Core.Ecs.Systems;
 
-namespace Frent
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     The world query extensions class

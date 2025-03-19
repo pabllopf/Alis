@@ -33,7 +33,8 @@ using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Ecs.Entity;
+
+using Alis.Core.EcsOld.Entity;
 using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Native;
 

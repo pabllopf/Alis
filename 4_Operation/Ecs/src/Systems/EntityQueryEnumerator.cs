@@ -28,9 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Frent.Core;
+using Alis.Core.Ecs.Core;
+using Alis.Core.Ecs.Core.Archetype;
 
-namespace Frent.Systems
+namespace Alis.Core.Ecs.Systems
 {
     /// <summary>
     ///     The entity query enumerator

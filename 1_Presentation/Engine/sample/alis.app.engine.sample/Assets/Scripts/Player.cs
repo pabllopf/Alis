@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Ecs.Component;
+using Alis.Core.EcsOld.Component;
 
 namespace Alis.App.Engine.Sample.Assets.Scripts
 {

@@ -29,10 +29,10 @@
 
 using System;
 using System.Collections.Immutable;
-using Frent.Collections;
-using Frent.Core;
+using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Core.Archetype;
 
-namespace Frent.Systems
+namespace Alis.Core.Ecs.Systems
 {
     /// <summary>
     ///     Represents a set of entities from a world which can have systems applied to
@@ -69,12 +69,12 @@ namespace Frent.Systems
         /// <summary>
         ///     Gets or inits the value of the world
         /// </summary>
-        internal World World { get; init; }
+        internal World World { get; set; }
 
         /// <summary>
         ///     Gets or inits the value of the include disabled
         /// </summary>
-        internal bool IncludeDisabled { get; init; }
+        internal bool IncludeDisabled { get; set; }
 
         /// <summary>
         ///     Converts the span

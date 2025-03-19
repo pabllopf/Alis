@@ -30,10 +30,10 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Frent.Components;
-using Frent.Core;
+using Alis.Core.Ecs.Components;
+using Alis.Core.Ecs.Core;
 
-namespace Frent.Updating
+namespace Alis.Core.Ecs.Updating
 {
     /// <summary>
     ///     Used only for source generation

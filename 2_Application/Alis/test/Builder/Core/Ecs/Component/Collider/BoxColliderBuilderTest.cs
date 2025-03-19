@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Ecs.Component.Collider;
+using Alis.Builder.Core.EcsOld.Component.Collider;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Ecs.Component.Collider;
+using Alis.Core.EcsOld.Component.Collider;
 using Alis.Core.Physic.Dynamics;
 using Xunit;
 

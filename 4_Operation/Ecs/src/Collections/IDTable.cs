@@ -29,9 +29,9 @@
 
 using System;
 using System.Runtime.CompilerServices;
-using Frent.Core.Events;
+using Alis.Core.Ecs.Core.Events;
 
-namespace Frent.Collections
+namespace Alis.Core.Ecs.Collections
 {
     /// <summary>
     ///     The id table class

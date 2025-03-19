@@ -30,12 +30,12 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Threading;
-using Frent.Collections;
-using Frent.Core;
-using Frent.Core.Events;
-using Frent.Updating.Runners;
+using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Core;
+using Alis.Core.Ecs.Core.Archetype;
+using Alis.Core.Ecs.Core.Events;
 
-namespace Frent.Updating
+namespace Alis.Core.Ecs.Updating
 {
     /// <summary>
     ///     The component storage base class

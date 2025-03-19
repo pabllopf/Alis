@@ -29,9 +29,10 @@
 
 using System;
 using System.IO;
-using Frent.Core;
+using HashCode = Alis.Core.Aspect.Math.Util;
+using Alis.Core.Ecs.Core;
 
-namespace Frent.Systems
+namespace Alis.Core.Ecs.Systems
 {
     /// <summary>
     ///     Encapsulates a check for an entity, used to filter queries
@@ -154,7 +155,7 @@ namespace Frent.Systems
         ///     Gets a hash code for this <see cref="Rule" />.
         /// </summary>
         /// <returns>A hash code representing this <see cref="Rule" />.</returns>
-        public override int GetHashCode() => HashCode.Combine(_ruleState, _custom, _compID, _tagID);
+        public override int GetHashCode() => HashCode.HashCode.Combine(_ruleState, _custom, _compID, _tagID);
 
         /// <summary>
         ///     Determines whether two <see cref="Rule" /> instances are equal.

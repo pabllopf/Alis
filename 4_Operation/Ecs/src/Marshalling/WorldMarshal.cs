@@ -28,10 +28,11 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Frent.Core;
-using Frent.Updating.Runners;
+using Alis.Core.Ecs.Core.Archetype;
+using Alis.Core.Ecs.Core.Memory;
+using Alis.Core.Ecs.Updating;
 
-namespace Frent.Marshalling
+namespace Alis.Core.Ecs.Marshalling
 {
     /// <summary>
     ///     Unsafe methods to write even faster code! Users are expected to know what they are doing and improper usage can

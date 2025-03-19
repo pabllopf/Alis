@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Component;
+using Alis.Core.EcsOld.Component;
 
 namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject.Sample
 {

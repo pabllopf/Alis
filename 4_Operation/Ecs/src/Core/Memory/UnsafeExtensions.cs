@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Frent.Core
+namespace Alis.Core.Ecs.Core.Memory
 {
     /// <summary>
     ///     The unsafe extensions class

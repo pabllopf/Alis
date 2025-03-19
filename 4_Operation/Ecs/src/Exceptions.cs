@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Frent
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     The frent exceptions class

@@ -28,10 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System.Threading;
-using Frent.Collections;
-using Frent.Core;
+using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Core.Archetype;
 
-namespace Frent.Updating.Runners
+namespace Alis.Core.Ecs.Updating.Runners
 {
     /// <summary>
     ///     The none update class

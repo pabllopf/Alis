@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Ecs.System.Setting.Scene;
-using Alis.Core.Ecs.System.Configuration.Scene;
+using Alis.Builder.Core.EcsOld.System.Setting.Scene;
+using Alis.Core.EcsOld.System.Configuration.Scene;
 using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.System.Configuration.Scene

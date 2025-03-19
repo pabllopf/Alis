@@ -29,11 +29,12 @@
 
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Ecs.Component;
-using Alis.Core.Ecs.Component.Audio;
-using Alis.Core.Ecs.Component.Collider;
-using Alis.Core.Ecs.Component.Render;
-using Alis.Core.Ecs.Entity;
+
+using Alis.Core.EcsOld.Component;
+using Alis.Core.EcsOld.Component.Audio;
+using Alis.Core.EcsOld.Component.Collider;
+using Alis.Core.EcsOld.Component.Render;
+using Alis.Core.EcsOld.Entity;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Sample.Flappy.Bird

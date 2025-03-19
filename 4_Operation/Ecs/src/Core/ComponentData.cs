@@ -28,9 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Frent.Collections;
+using Alis.Core.Ecs.Collections;
 
-namespace Frent.Core
+namespace Alis.Core.Ecs.Core
 {
     internal record struct ComponentData(Type Type, IDTable Storage, Delegate? Initer, Delegate? Destroyer);
 }

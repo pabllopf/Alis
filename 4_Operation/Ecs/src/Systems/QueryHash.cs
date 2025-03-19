@@ -29,7 +29,7 @@
 
 using System.Collections.Immutable;
 
-namespace Frent.Systems
+namespace Alis.Core.Ecs.Systems
 {
     /// <summary>
     ///     The query hash

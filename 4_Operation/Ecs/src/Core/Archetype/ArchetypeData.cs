@@ -29,7 +29,7 @@
 
 using System.Collections.Immutable;
 
-namespace Frent.Core.Structures
+namespace Alis.Core.Ecs.Core.Archetype
 {
-    internal record struct ArchetypeData(ArchetypeID ID, ImmutableArray<ComponentID> ComponentTypes, ImmutableArray<TagID> TagTypes);
+    internal record struct ArchetypeData(EntityType ID, ImmutableArray<ComponentID> ComponentTypes, ImmutableArray<TagID> TagTypes);
 }

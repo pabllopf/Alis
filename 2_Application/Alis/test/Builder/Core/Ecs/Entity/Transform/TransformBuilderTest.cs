@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Ecs.Entity.Transform;
+using Alis.Builder.Core.EcsOld.Entity.Transform;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 

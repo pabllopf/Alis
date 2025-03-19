@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Ecs.System.Setting.General;
-using Alis.Core.Ecs.System.Configuration.General;
+using Alis.Builder.Core.EcsOld.System.Setting.General;
+using Alis.Core.EcsOld.System.Configuration.General;
 using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.System.Configuration.General

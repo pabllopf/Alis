@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Frent.Components
+namespace Alis.Core.Ecs.Components
 {
     /// <summary>
     ///     Indicates a component should be updated with itself as an argument and a uniform of type

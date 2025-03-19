@@ -30,9 +30,9 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Frent.Buffers;
+using Alis.Core.Ecs.Buffers;
 
-namespace Frent.Collections
+namespace Alis.Core.Ecs.Collections
 {
     /// <summary>
     ///     The frugal stack

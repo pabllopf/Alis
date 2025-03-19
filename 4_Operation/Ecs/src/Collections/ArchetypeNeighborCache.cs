@@ -30,7 +30,7 @@
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
-namespace Frent.Collections
+namespace Alis.Core.Ecs.Collections
 {
     //160 bits, 20 bytes
     /// <summary>

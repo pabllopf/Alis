@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.System;
+using Alis.Core.EcsOld.System;
 
 namespace Alis.Sample.Desktop
 {

@@ -27,10 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Ecs.Component.Render;
+using Alis.Builder.Core.EcsOld.Component.Render;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Ecs.Component.Render;
+using Alis.Core.EcsOld.Component.Render;
 using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.Component.Render

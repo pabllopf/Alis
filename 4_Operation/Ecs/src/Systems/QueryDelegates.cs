@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 
-namespace Frent.Systems
+namespace Alis.Core.Ecs.Systems
 {
     /// <summary>
     ///     Delegates for executing a functions on a <see cref="Query" />

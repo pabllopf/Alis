@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Ecs.System.Setting.Graphic;
-using Alis.Core.Ecs.System.Configuration.Graphic;
+using Alis.Builder.Core.EcsOld.System.Setting.Graphic;
+using Alis.Core.EcsOld.System.Configuration.Graphic;
 using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.System.Configuration.Graphic

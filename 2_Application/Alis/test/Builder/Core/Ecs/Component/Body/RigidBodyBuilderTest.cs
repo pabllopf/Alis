@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Ecs.Component.Body;
-using Alis.Core.Ecs.Component.Body;
+using Alis.Builder.Core.EcsOld.Component.Body;
+using Alis.Core.EcsOld.Component.Body;
 using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.Component.Body

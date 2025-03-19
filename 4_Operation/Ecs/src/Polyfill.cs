@@ -32,25 +32,11 @@ using System;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using CommunityToolkit.HighPerformance;
 #pragma warning disable CS0436 // Type conflicts with imported type
 using MemoryMarshal = System.Runtime.InteropServices.MemoryMarshal;
 #pragma warning restore CS0436 // Type conflicts with imported type
 
-namespace Frent
-{
-    /// <summary>
-    ///     The skip locals init class
-    /// </summary>
-    /// <seealso cref="Attribute" />
-    internal class SkipLocalsInit : Attribute;
 
-    /// <summary>
-    ///     The stack trace hidden class
-    /// </summary>
-    /// <seealso cref="Attribute" />
-    internal class StackTraceHidden : Attribute;
-}
 
 namespace System.Runtime.CompilerServices
 {
@@ -93,8 +79,8 @@ namespace System.Runtime.InteropServices
 {
     internal static class MemoryMarshal
     {
-        public static ref T GetReference<T>(Span<T> span) => ref span.DangerousGetReference();
-        public static ref T GetArrayDataReference<T>(T[] arr) => ref arr.DangerousGetReference();
+        public static ref T GetReference<T>(Span<T> span) => ref span.GetPinnableReference();
+        public static ref T GetArrayDataReference<T>(T[] arr) => ref new Span<T>(arr).GetPinnableReference();
         public static ref byte GetArrayDataReference(Array arr) => throw new NotSupportedException();
 
         public static Span<T> CreateSpan<T>(T[] array) => new Span<T>(array);
@@ -195,7 +181,7 @@ namespace System
         public bool Equals(Range other) => other.Start.Equals(Start) && other.End.Equals(End);
 
         /// <summary>Returns the hash code for this instance.</summary>
-        public override int GetHashCode() => HashCode.Combine(Start, End);
+        public override int GetHashCode() => Alis.Core.Aspect.Math.Util.HashCode.Combine(Start, End);
 
         /// <summary>Converts the value of the current Range object to its equivalent string representation.</summary>
         public override string ToString()

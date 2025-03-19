@@ -28,8 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System.Diagnostics.CodeAnalysis;
-using Alis.Core.Ecs.System.Manager;
-using Alis.Core.Ecs.System.Scope;
+using Alis.Core.EcsOld.System.Manager;
+using Alis.Core.EcsOld.System.Scope;
 
 namespace Alis.Test.Sample
 {

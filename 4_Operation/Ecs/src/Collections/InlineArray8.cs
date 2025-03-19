@@ -29,7 +29,7 @@
 
 using System.Runtime.CompilerServices;
 
-namespace Frent.Collections
+namespace Alis.Core.Ecs.Collections
 {
     /// <summary>
     ///     The inline array

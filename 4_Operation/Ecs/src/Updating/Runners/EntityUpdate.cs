@@ -30,11 +30,12 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Threading;
-using Frent.Collections;
-using Frent.Components;
-using Frent.Core;
+using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Components;
+using Alis.Core.Ecs.Core;
+using Alis.Core.Ecs.Core.Archetype;
 
-namespace Frent.Updating.Runners
+namespace Alis.Core.Ecs.Updating.Runners
 {
     /// <summary>
     ///     The entity update class

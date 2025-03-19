@@ -29,13 +29,13 @@
 
 using System;
 using System.Collections.Immutable;
-using Frent.Core;
-using Frent.Core.Events;
-using Frent.Core.Structures;
-using Frent.Updating;
-using Frent.Updating.Runners;
+using Alis.Core.Ecs.Core;
+using Alis.Core.Ecs.Core.Archetype;
+using Alis.Core.Ecs.Core.Events;
+using Alis.Core.Ecs.Core.Memory;
+using Alis.Core.Ecs.Updating;
 
-namespace Frent
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     The entity
@@ -122,7 +122,7 @@ namespace Frent
         ///     <typeparamref name="T" />.
         /// </exception>
         /// <returns>A reference to the component in memory.</returns>
-        [Frent.SkipLocalsInit]
+        [Ecs.SkipLocalsInit]
         public ref T Get<T>()
         {
             //Total: 4x lookup
@@ -557,7 +557,7 @@ namespace Frent
         /// <summary>
         ///     Initalizes the event record using the specified delegate
         /// </summary>
-        /// <param name="@delegate">The delegate</param>
+        /// <param name="delegate">The delegate</param>
         /// <param name="flag">The flag</param>
         /// <param name="isGenericEvent">The is generic event</param>
         private void InitalizeEventRecord(object @delegate, EntityFlags flag, bool isGenericEvent = false)
@@ -599,7 +599,7 @@ namespace Frent
         /// <summary>
         ///     Deletes this entity
         /// </summary>
-        [Frent.SkipLocalsInit]
+        [Ecs.SkipLocalsInit]
         public void Delete()
         {
             World? world = GlobalWorldTables.Worlds.UnsafeIndexNoResize(WorldID);

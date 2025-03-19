@@ -28,9 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Frent.Core;
+using Alis.Core.Ecs.Core;
 
-namespace Frent.Systems
+namespace Alis.Core.Ecs.Systems
 {
     /// <summary>
     ///     The ref tuple
@@ -45,7 +45,7 @@ namespace Frent.Systems
         /// <summary>
         ///     Deconstructs the ref
         /// </summary>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         public void Deconstruct(out Ref<T> @ref)
         {
             @ref = Item1;
@@ -72,7 +72,7 @@ namespace Frent.Systems
         ///     Deconstructs the entity
         /// </summary>
         /// <param name="entity">The entity</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         public void Deconstruct(out Entity entity, out Ref<T> @ref)
         {
             entity = Entity;
@@ -99,7 +99,7 @@ namespace Frent.Systems
         /// <summary>
         ///     Deconstructs the comp 1
         /// </summary>
-        /// <param name="@comp1">The comp</param>
+        /// <param name="comp1">The comp</param>
         public void Deconstruct(out Span<T> comp1)
         {
             comp1 = Span;

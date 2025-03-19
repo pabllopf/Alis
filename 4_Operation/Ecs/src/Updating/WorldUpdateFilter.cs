@@ -27,10 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Frent.Collections;
-using Frent.Core;
+using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Core;
 
-namespace Frent.Updating
+namespace Alis.Core.Ecs.Updating
 {
     /// <summary>
     ///     The world update filter class

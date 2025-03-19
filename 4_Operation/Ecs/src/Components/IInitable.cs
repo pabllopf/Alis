@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Frent.Components
+namespace Alis.Core.Ecs.Components
 {
     /// <summary>
     ///     Marks a component to have a <see cref="Init(Entity)" /> method to be called at the start of a component lifetime.

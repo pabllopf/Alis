@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Ecs.Entity.Scene;
-using Alis.Builder.Core.Ecs.System;
+using Alis.Builder.Core.EcsOld.Entity.Scene;
+using Alis.Builder.Core.EcsOld.System;
 using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.Entity.Scene
@@ -59,7 +59,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Scene
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
             SceneBuilder sceneBuilder = new SceneBuilder(videoGameBuilder.Context);
 
-            Alis.Core.Ecs.Entity.Scene scene = sceneBuilder.Build();
+           Alis.Core.EcsOld.Entity.Scene scene = sceneBuilder.Build();
 
             Assert.NotNull(scene);
         }

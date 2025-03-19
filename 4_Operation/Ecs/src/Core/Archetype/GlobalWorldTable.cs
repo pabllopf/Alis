@@ -28,9 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Frent.Collections;
+using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Core.Memory;
 
-namespace Frent.Core.Structures
+namespace Alis.Core.Ecs.Core.Archetype
 {
     /// <summary>
     ///     The global world tables class
@@ -122,7 +123,7 @@ namespace Frent.Core.Structures
         /// <param name="archetype">The archetype</param>
         /// <param name="component">The component</param>
         /// <returns>The int</returns>
-        public static int ComponentIndex(ArchetypeID archetype, ComponentID component) => ComponentTagLocationTable.UnsafeArrayIndex(archetype.RawIndex).UnsafeArrayIndex(component.RawIndex) & IndexBits;
+        public static int ComponentIndex(EntityType archetype, ComponentID component) => ComponentTagLocationTable.UnsafeArrayIndex(archetype.RawIndex).UnsafeArrayIndex(component.RawIndex) & IndexBits;
 
         /// <summary>
         ///     Hases the tag using the specified archetype
@@ -130,6 +131,6 @@ namespace Frent.Core.Structures
         /// <param name="archetype">The archetype</param>
         /// <param name="tag">The tag</param>
         /// <returns>The bool</returns>
-        public static bool HasTag(ArchetypeID archetype, TagID tag) => (ComponentTagLocationTable.UnsafeArrayIndex(archetype.RawIndex).UnsafeArrayIndex(tag.RawValue) & HasTagMask) != 0;
+        public static bool HasTag(EntityType archetype, TagID tag) => (ComponentTagLocationTable.UnsafeArrayIndex(archetype.RawIndex).UnsafeArrayIndex(tag.RawValue) & HasTagMask) != 0;
     }
 }

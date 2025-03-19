@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Ecs.System.Setting.Network;
-using Alis.Core.Ecs.System.Configuration.Network;
+using Alis.Builder.Core.EcsOld.System.Setting.Network;
+using Alis.Core.EcsOld.System.Configuration.Network;
 using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.System.Configuration.Network

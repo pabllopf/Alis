@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Frent
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     Config information for a <see cref="World" />.
@@ -37,7 +37,7 @@ namespace Frent
         /// <summary>
         ///     Whether or not to multithread.
         /// </summary>
-        public bool MultiThreadedUpdate { get; init; }
+        public bool MultiThreadedUpdate { get; set; }
 
         /// <summary>
         ///     The default multithreaded config.

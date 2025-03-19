@@ -28,10 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Builder.Core.Ecs.Entity.Scene;
-using Alis.Builder.Core.Ecs.System.Manager.Scene;
-using Alis.Core.Ecs.System.Manager.Scene;
-using Alis.Core.Ecs.System.Scope;
+using Alis.Builder.Core.EcsOld.Entity.Scene;
+using Alis.Builder.Core.EcsOld.System.Manager.Scene;
+using Alis.Core.EcsOld.System.Manager.Scene;
+using Alis.Core.EcsOld.System.Scope;
 using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.System.Manager.Scene
@@ -59,7 +59,7 @@ namespace Alis.Test.Builder.Core.Ecs.System.Manager.Scene
         public void Add_ValidInput()
         {
             SceneManagerBuilder sceneManagerBuilder = new SceneManagerBuilder(new Context());
-            Func<SceneBuilder, Alis.Core.Ecs.Entity.Scene> sceneFunc = sb => sb.Build();
+            Func<SceneBuilder,Alis.Core.EcsOld.Entity.Scene> sceneFunc = sb => sb.Build();
 
             sceneManagerBuilder.Add<SceneManagerBuilder>(sceneFunc);
 

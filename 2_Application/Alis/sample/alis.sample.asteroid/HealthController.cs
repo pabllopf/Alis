@@ -29,8 +29,8 @@
 
 using System;
 using Alis.Core.Aspect.Data.Mapping;
-using Alis.Core.Ecs.Component;
-using Alis.Core.Ecs.Component.Audio;
+using Alis.Core.EcsOld.Component;
+using Alis.Core.EcsOld.Component.Audio;
 
 namespace Alis.Sample.Asteroid
 {

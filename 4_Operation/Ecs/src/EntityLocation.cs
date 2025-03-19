@@ -30,9 +30,9 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Frent.Core;
+using Alis.Core.Ecs.Core.Archetype;
 
-namespace Frent
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     The entity location

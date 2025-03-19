@@ -29,12 +29,13 @@
 
 using System;
 using System.Runtime.CompilerServices;
-using Frent.Collections;
-using Frent.Core.Events;
-using Frent.Core.Structures;
-using Frent.Updating;
+using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Core.Archetype;
+using Alis.Core.Ecs.Core.Events;
+using Alis.Core.Ecs.Core.Memory;
+using Alis.Core.Ecs.Updating;
 
-namespace Frent.Core
+namespace Alis.Core.Ecs.Core
 {
     /// <summary>
     ///     Stores a set of structual changes that can be applied to a <see cref="World" />.
