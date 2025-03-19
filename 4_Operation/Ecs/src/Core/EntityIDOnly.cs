@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:RefTuples.cs
+//  File:CommandBufferItems.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,82 +27,77 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Ecs.Core;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
-namespace Alis.Core.Ecs.Systems
+namespace Alis.Core.Ecs.Core
 {
     /// <summary>
-    ///     The ref tuple
+    ///     The entity id only
     /// </summary>
-    public ref struct RefTuple<T>
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+//TODO: rename this?
+    internal struct EntityIDOnly(int id, ushort version)
     {
         /// <summary>
-        ///     The item
+        ///     The id
         /// </summary>
-        public Ref<T> Item1;
+        internal int ID = id;
 
         /// <summary>
-        ///     Deconstructs the ref
+        ///     The version
         /// </summary>
-        /// <param name="ref">The ref</param>
-        public void Deconstruct(out Ref<T> @ref)
+        internal ushort Version = version;
+
+        /// <summary>
+        ///     Returns the entity using the specified world
+        /// </summary>
+        /// <param name="world">The world</param>
+        /// <returns>The entity</returns>
+        internal Entity ToEntity(World world) => new Entity(world.Id, Version, ID);
+
+        /// <summary>
+        ///     Deconstructs the id
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="version">The version</param>
+        internal void Deconstruct(out int id, out ushort version)
         {
-            @ref = Item1;
+            id = ID;
+            version = Version;
         }
-    }
-
-
-    /// <summary>
-    ///     The entity ref tuple
-    /// </summary>
-    public ref struct EntityRefTuple<T>
-    {
-        /// <summary>
-        ///     The entity
-        /// </summary>
-        public Entity Entity;
 
         /// <summary>
-        ///     The item
-        /// </summary>
-        public Ref<T> Item1;
-
-        /// <summary>
-        ///     Deconstructs the entity
+        ///     Sets the entity using the specified entity
         /// </summary>
         /// <param name="entity">The entity</param>
-        /// <param name="ref">The ref</param>
-        public void Deconstruct(out Entity entity, out Ref<T> @ref)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal void SetEntity(ref Entity entity)
         {
-            entity = Entity;
-            @ref = Item1;
+            entity.EntityVersion = Version;
+            entity.EntityID = ID;
         }
-    }
-
-
-    /// <summary>
-    ///     The chunk tuple
-    /// </summary>
-    public ref struct ChunkTuple<T>
-    {
-        /// <summary>
-        ///     The entities
-        /// </summary>
-        public EntityEnumerator.EntityEnumerable Entities;
 
         /// <summary>
-        ///     The span
+        ///     Inits the entity
         /// </summary>
-        public Span<T> Span;
-
-        /// <summary>
-        ///     Deconstructs the comp 1
-        /// </summary>
-        /// <param name="comp1">The comp</param>
-        public void Deconstruct(out Span<T> comp1)
+        /// <param name="entity">The entity</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal void Init(Entity entity)
         {
-            comp1 = Span;
+            Version = entity.EntityVersion;
+            ID = entity.EntityID;
+        }
+
+        /// <summary>
+        ///     Inits the entity
+        /// </summary>
+        /// <param name="entity">The entity</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal void Init(EntityIDOnly entity)
+        {
+            Version = entity.Version;
+            ID = entity.ID;
         }
     }
 }

@@ -1,0 +1,30 @@
+using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Components;
+
+namespace Alis.Core.Ecs.Updating.Runners
+{
+    /// <inheritdoc cref="IComponentStorageBaseFactory" />
+    public class UpdateRunnerFactory<TComp> : IComponentStorageBaseFactory, IComponentStorageBaseFactory<TComp>
+        where TComp : IComponent
+    {
+        /// <summary>
+        ///     Creates the capacity
+        /// </summary>
+        /// <param name="capacity">The capacity</param>
+        /// <returns>The component storage base</returns>
+        ComponentStorageBase IComponentStorageBaseFactory.Create(int capacity) => new Update<TComp>(capacity);
+
+        /// <summary>
+        ///     Creates the stack
+        /// </summary>
+        /// <returns>The id table</returns>
+        IDTable IComponentStorageBaseFactory.CreateStack() => new IDTable<TComp>();
+
+        /// <summary>
+        ///     Creates the strongly typed using the specified capacity
+        /// </summary>
+        /// <param name="capacity">The capacity</param>
+        /// <returns>A component storage of t comp</returns>
+        ComponentStorage<TComp> IComponentStorageBaseFactory<TComp>.CreateStronglyTyped(int capacity) => new Update<TComp>(capacity);
+    }
+}

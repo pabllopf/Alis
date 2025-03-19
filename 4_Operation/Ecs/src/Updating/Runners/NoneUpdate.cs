@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Threading;
-using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Core.Archetype;
 
 namespace Alis.Core.Ecs.Updating.Runners
@@ -57,29 +56,5 @@ namespace Alis.Core.Ecs.Updating.Runners
         internal override void Run(World world, Archetype b)
         {
         }
-    }
-
-    /// <inheritdoc cref="IComponentStorageBaseFactory" />
-    public class NoneUpdateRunnerFactory<T> : IComponentStorageBaseFactory, IComponentStorageBaseFactory<T>
-    {
-        /// <summary>
-        ///     Creates the capacity
-        /// </summary>
-        /// <param name="capacity">The capacity</param>
-        /// <returns>The component storage base</returns>
-        ComponentStorageBase IComponentStorageBaseFactory.Create(int capacity) => new NoneUpdate<T>(capacity);
-
-        /// <summary>
-        ///     Creates the stack
-        /// </summary>
-        /// <returns>The id table</returns>
-        IDTable IComponentStorageBaseFactory.CreateStack() => new IDTable<T>();
-
-        /// <summary>
-        ///     Creates the strongly typed using the specified capacity
-        /// </summary>
-        /// <param name="capacity">The capacity</param>
-        /// <returns>A component storage of t</returns>
-        ComponentStorage<T> IComponentStorageBaseFactory<T>.CreateStronglyTyped(int capacity) => new NoneUpdate<T>(capacity);
     }
 }
