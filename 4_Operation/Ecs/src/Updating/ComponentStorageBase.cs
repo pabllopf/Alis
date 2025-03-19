@@ -215,7 +215,10 @@ namespace Alis.Core.Ecs.Updating
         internal static int GetComponentSize<T>()
         {
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+            {
                 return -1;
+            }
+
             int size = Unsafe.SizeOf<T>();
 
             if ((size & (size - 1)) != 0)

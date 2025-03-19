@@ -67,7 +67,9 @@ internal struct NativeStack<T> : IDisposable where T : struct
             {
 #if DEBUG
                 if (index >= _nextIndex || index < 0)
+                {
                     throw new IndexOutOfRangeException();
+                }
 #endif
                 return ref _array.UnsafeArrayIndex(index);
             }
@@ -82,9 +84,14 @@ internal struct NativeStack<T> : IDisposable where T : struct
         public NativeStack(int initalCapacity)
         {
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+            {
                 throw new InvalidOperationException("Cannot store managed objects in native code");
+            }
+
             if (initalCapacity < 1)
+            {
                 throw new ArgumentOutOfRangeException();
+            }
 
             _array = new T[initalCapacity];
         }
@@ -96,7 +103,10 @@ internal struct NativeStack<T> : IDisposable where T : struct
         public ref T Push()
         {
             if (_nextIndex == _array.Length)
+            {
                 Resize();
+            }
+
             return ref _array[_nextIndex++];
         }
 
@@ -107,7 +117,10 @@ internal struct NativeStack<T> : IDisposable where T : struct
         public void Pop(out T value)
         {
             if (_nextIndex == 0)
+            {
                 FrentExceptions.Throw_InvalidOperationException("Stack is empty!");
+            }
+
             value = _array[--_nextIndex];
         }
 

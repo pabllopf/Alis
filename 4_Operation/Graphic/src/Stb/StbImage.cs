@@ -74,7 +74,10 @@ namespace Alis.Core.Graphic.Stb
         public static byte stbi__get8(stbi__context s)
         {
             int b = s.Stream.ReadByte();
-            if (b == -1) return 0;
+            if (b == -1)
+            {
+                return 0;
+            }
 
             return (byte) b;
         }
@@ -116,7 +119,9 @@ namespace Alis.Core.Graphic.Stb
         {
             if (s._tempBuffer == null ||
                 s._tempBuffer.Length < size)
+            {
                 s._tempBuffer = new byte[size * 2];
+            }
 
             int result = s.Stream.Read(s._tempBuffer, 0, size);
             Marshal.Copy(s._tempBuffer, 0, new IntPtr(buf), result);
@@ -167,7 +172,9 @@ namespace Alis.Core.Graphic.Stb
             public stbi__context(Stream stream)
             {
                 if (stream == null)
+                {
                     throw new ArgumentNullException("stream");
+                }
 
                 _stream = stream;
             }

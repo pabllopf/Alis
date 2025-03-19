@@ -84,7 +84,9 @@ namespace Alis.Core.Ecs.Core.Events
             {
                 _first = null;
                 if (_invokationList.TryPop(out IGenericAction<Entity>? v))
+                {
                     _first = v;
+                }
             }
             else
             {
@@ -120,7 +122,9 @@ namespace Alis.Core.Ecs.Core.Events
         public static GenericEvent? operator +(GenericEvent? left, IGenericAction<Entity> right)
         {
             if (left is null)
+            {
                 return null;
+            }
 
             if (left._first is null)
             {
@@ -143,7 +147,9 @@ namespace Alis.Core.Ecs.Core.Events
         public static GenericEvent? operator -(GenericEvent? left, IGenericAction<Entity> right)
         {
             if (left is null)
+            {
                 return null;
+            }
 
             left.Remove(right);
             return left;

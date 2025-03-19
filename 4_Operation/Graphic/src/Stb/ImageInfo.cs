@@ -74,7 +74,10 @@ namespace Alis.Core.Graphic.Stb
             int infoResult = StbImage.stbi__info_main(context, &width, &height, &comp);
             StbImage.stbi__rewind(context);
 
-            if (infoResult == 0) return null;
+            if (infoResult == 0)
+            {
+                return null;
+            }
 
             return new ImageInfo
             {

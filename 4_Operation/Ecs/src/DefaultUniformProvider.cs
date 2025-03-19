@@ -61,7 +61,9 @@ namespace Alis.Core.Ecs
         {
             object boxed = obj;
             if (boxed is null)
+            {
                 throw new ArgumentNullException(nameof(obj));
+            }
 
             _uniforms[typeof(T)] = boxed;
             return this;
@@ -77,9 +79,15 @@ namespace Alis.Core.Ecs
         public DefaultUniformProvider Add(Type type, object @object)
         {
             if (type is null)
+            {
                 throw new ArgumentNullException(nameof(type));
+            }
+
             if (!type.IsAssignableFrom(@object.GetType()))
+            {
                 throw new ArgumentException("Object must be assignable to the type!", nameof(@object));
+            }
+
             _uniforms[type] = @object;
             return this;
         }

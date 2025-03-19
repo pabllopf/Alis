@@ -97,7 +97,10 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
         public override bool Equals(object obj)
         {
             if (obj is Window window)
+            {
                 return Equals(window);
+            }
+
             return false;
         }
 

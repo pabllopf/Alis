@@ -79,7 +79,9 @@ namespace Alis.Core.Ecs.Core.Events
             {
                 _first = null;
                 if (_invokationList.TryPop(out Action<Entity, T>? v))
+                {
                     _first = v;
+                }
             }
             else
             {
@@ -168,13 +170,17 @@ namespace Alis.Core.Ecs.Core.Events
             {
                 _first = null;
                 if (_invokationList.TryPop(out Action<Entity>? v))
+                {
                     _first = v;
+                }
             }
             else if (_second == action)
             {
                 _second = null;
                 if (_invokationList.TryPop(out Action<Entity>? v))
+                {
                     _second = v;
+                }
             }
             else
             {
@@ -189,7 +195,9 @@ namespace Alis.Core.Ecs.Core.Events
         public readonly void Invoke(Entity entity)
         {
             if (_first is not null)
+            {
                 Execute(entity);
+            }
         }
 
         /// <summary>

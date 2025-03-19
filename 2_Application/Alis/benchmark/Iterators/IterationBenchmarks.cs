@@ -224,7 +224,9 @@ namespace Alis.Benchmark.Iterators
         public int IterateFastest()
         {
             if (array == null || array.Length == 0)
+            {
                 return 0;
+            }
 
             ref int start = ref MemoryMarshal.GetArrayDataReference(array);
             ref int end = ref Unsafe.Add(ref start, array.Length);
@@ -247,7 +249,9 @@ namespace Alis.Benchmark.Iterators
         public int IterateFastestWithSIM()
         {
             if (array == null || array.Length == 0)
+            {
                 return 0;
+            }
 
             ref int start = ref MemoryMarshal.GetArrayDataReference(array);
             ref int end = ref Unsafe.Add(ref start, array.Length);

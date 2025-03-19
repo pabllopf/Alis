@@ -61,7 +61,10 @@ namespace Alis.Core.Ecs.Collections
             {
                 T[]? buffer = _buffer;
                 if ((uint) index < (uint) buffer.Length)
+                {
                     return ref buffer.UnsafeArrayIndex(index);
+                }
+
                 return ref ResizeGet(index);
             }
         }
@@ -91,7 +94,10 @@ namespace Alis.Core.Ecs.Collections
         public void EnsureCapacity(int size)
         {
             if (_buffer.Length >= size)
+            {
                 return;
+            }
+
             FastStackArrayPool<T>.ResizeArrayFromPool(ref _buffer, size);
         }
 

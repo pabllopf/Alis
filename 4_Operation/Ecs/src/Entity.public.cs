@@ -191,7 +191,10 @@ namespace Alis.Core.Ecs
             int compIndex = lookup.Archetype.GetComponentIndex(id);
 
             if (compIndex == 0)
+            {
                 FrentExceptions.Throw_ComponentNotFoundException(id.Type);
+            }
+
             //3x
             lookup.Archetype.Components[compIndex].SetAt(obj, lookup.Index);
         }
@@ -383,7 +386,9 @@ namespace Alis.Core.Ecs
         {
             ref EntityLocation lookup = ref AssertIsAlive(out World? w);
             if (lookup.Archetype.HasTag(tagID))
+            {
                 return false;
+            }
 
             ArchetypeID archetype = w.AddTagLookup.FindAdjacentArchetypeID(tagID, lookup.Archetype.ID, World, ArchetypeEdgeType.AddTag);
             w.MoveEntityToArchetypeIso(this, ref lookup, archetype.Archetype(w));
@@ -416,7 +421,9 @@ namespace Alis.Core.Ecs
         {
             ref EntityLocation lookup = ref AssertIsAlive(out World? w);
             if (!lookup.Archetype.HasTag(tagID))
+            {
                 return false;
+            }
 
             ArchetypeID archetype = w.AddTagLookup.FindAdjacentArchetypeID(tagID, lookup.Archetype.ID, World, ArchetypeEdgeType.RemoveTag);
             w.MoveEntityToArchetypeIso(this, ref lookup, archetype.Archetype(w));
@@ -464,7 +471,10 @@ namespace Alis.Core.Ecs
             get
             {
                 if (!InternalIsAlive(out World? world, out _))
+                {
                     return null;
+                }
+
                 world.EntityTable[EntityID].Flags |= EntityFlags.AddGenericComp;
                 return world.EventLookup.GetOrAddNew(EntityIDOnly).Add.GenericEvent ??= new();
             }
@@ -482,7 +492,10 @@ namespace Alis.Core.Ecs
             get
             {
                 if (!InternalIsAlive(out World? world, out _))
+                {
                     return null;
+                }
+
                 world.EntityTable[EntityID].Flags |= EntityFlags.RemoveGenericComp;
                 return world.EventLookup.GetOrAddNew(EntityIDOnly).Remove.GenericEvent ??= new();
             }
@@ -514,7 +527,9 @@ namespace Alis.Core.Ecs
         private void UnsubscribeEvent(object value, EntityFlags flag)
         {
             if (value is null || !InternalIsAlive(out World? world, out EntityLocation entityLocation))
+            {
                 return;
+            }
 
             bool exists = entityLocation.HasEvent(flag);
             EventRecord? events = exists ? world.EventLookup[EntityIDOnly] : default;
@@ -549,7 +564,9 @@ namespace Alis.Core.Ecs
                 }
 
                 if (removeFlags)
+                {
                     world.EntityTable[EntityID].Flags &= ~flag;
+                }
             }
         }
 
@@ -563,7 +580,10 @@ namespace Alis.Core.Ecs
         private void InitalizeEventRecord(object @delegate, EntityFlags flag, bool isGenericEvent = false)
         {
             if (@delegate is null || !InternalIsAlive(out World? world, out EntityLocation entityLocation))
+            {
                 return;
+            }
+
             bool exists = entityLocation.HasEvent(flag);
             EventRecord? record = exists ? world.EventLookup[EntityIDOnly] : default;
             world.EntityTable[EntityID].Flags |= flag;
@@ -573,15 +593,25 @@ namespace Alis.Core.Ecs
             {
                 case EntityFlags.AddComp:
                     if (isGenericEvent)
+                    {
                         record.Add.GenericEvent = (GenericEvent) @delegate;
+                    }
                     else
+                    {
                         record.Add.NormalEvent.Add((Action<Entity, ComponentID>) @delegate);
+                    }
+
                     break;
                 case EntityFlags.RemoveComp:
                     if (isGenericEvent)
+                    {
                         record.Remove.GenericEvent = (GenericEvent) @delegate;
+                    }
                     else
+                    {
                         record.Remove.NormalEvent.Add((Action<Entity, ComponentID>) @delegate);
+                    }
+
                     break;
                 case EntityFlags.Tagged:
                     record.Tag.Add((Action<Entity, TagID>) @delegate);
@@ -607,7 +637,9 @@ namespace Alis.Core.Ecs
             ref EntityLocation lookup = ref world.EntityTable.UnsafeIndexNoResize(EntityID);
 
             if (lookup.Version != EntityVersion)
+            {
                 return;
+            }
 
             if (world.AllowStructualChanges)
             {

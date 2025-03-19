@@ -70,7 +70,9 @@ namespace Alis.Core.Graphic.Stb.Hebron.Runtime
         public static void free(void* a)
         {
             if (a == null)
+            {
                 return;
+            }
 
             IntPtr ptr = new IntPtr(a);
             Marshal.FreeHGlobal(ptr);
@@ -119,7 +121,9 @@ namespace Alis.Core.Graphic.Stb.Hebron.Runtime
             finally
             {
                 if (temp != null)
+                {
                     free(temp);
+                }
             }
         }
 
@@ -138,7 +142,9 @@ namespace Alis.Core.Graphic.Stb.Hebron.Runtime
             for (long i = 0; i < size; ++i)
             {
                 if (*ap != *bp)
+                {
                     result += 1;
+                }
 
                 ap++;
                 bp++;
@@ -189,7 +195,9 @@ namespace Alis.Core.Graphic.Stb.Hebron.Runtime
         public static void* realloc(void* a, long newSize)
         {
             if (a == null)
+            {
                 return malloc(newSize);
+            }
 
             IntPtr ptr = new IntPtr(a);
             IntPtr result = Marshal.ReAllocHGlobal(ptr, new IntPtr(newSize));

@@ -83,7 +83,9 @@ namespace Alis.Core.Ecs
             if (EntityLocation.HasEventFlag(flags | world.WorldEventFlags, EntityFlags.AddComp | EntityFlags.AddGenericComp))
             {
                 if (world.ComponentAddedEvent.HasListeners)
+                {
                     InvokeComponentWorldEvents<T>(ref world.ComponentAddedEvent, this);
+                }
 
                 if (EntityLocation.HasEventFlag(flags, EntityFlags.AddComp | EntityFlags.AddGenericComp))
                 {
@@ -140,7 +142,9 @@ namespace Alis.Core.Ecs
             if (EntityLocation.HasEventFlag(flags, EntityFlags.Tagged))
             {
                 if (world.Tagged.HasListeners)
+                {
                     InvokeTagWorldEvents<T>(ref world.Tagged, this);
+                }
 
                 if (EntityLocation.HasEventFlag(flags, EntityFlags.Tagged))
                 {
@@ -171,7 +175,9 @@ namespace Alis.Core.Ecs
             if (EntityLocation.HasEventFlag(flags, EntityFlags.Detach))
             {
                 if (world.Detached.HasListeners)
+                {
                     InvokeTagWorldEvents<T>(ref world.Detached, this);
+                }
 
                 if (EntityLocation.HasEventFlag(flags, EntityFlags.Detach))
                 {
@@ -205,7 +211,9 @@ namespace Alis.Core.Ecs
             events.NormalEvent.Invoke(entity, Component<T>.ID);
 
             if (!hasGenericEvent)
+            {
                 return;
+            }
 
             events.GenericEvent!.Invoke(entity, ref component);
         }

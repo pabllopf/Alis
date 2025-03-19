@@ -133,21 +133,45 @@ namespace Alis.Core.Ecs.Collections
         public int LookupIndex(uint key)
         {
             if (_data._0 == key)
+            {
                 return 0;
+            }
+
             if (_data._1 == key)
+            {
                 return 1;
+            }
+
             if (_data._2 == key)
+            {
                 return 2;
+            }
+
             if (_data._3 == key)
+            {
                 return 3;
+            }
+
             if (_data._4 == key)
+            {
                 return 4;
+            }
+
             if (_data._5 == key)
+            {
                 return 5;
+            }
+
             if (_data._6 == key)
+            {
                 return 6;
+            }
+
             if (_data._7 == key)
+            {
                 return 7;
+            }
+
             return 32;
         }
     }

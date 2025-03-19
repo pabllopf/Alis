@@ -200,7 +200,9 @@ namespace Alis.Core.Ecs.Core
         public static void RegisterComponent<T>()
         {
             if (!GenerationServices.UserGeneratedTypeMap.ContainsKey(typeof(T)))
+            {
                 NoneComponentRunnerTable[typeof(T)] = new NoneUpdateRunnerFactory<T>();
+            }
         }
 
         /// <summary>
@@ -225,7 +227,9 @@ namespace Alis.Core.Ecs.Core
                 int nextIDInt = ++NextComponentID;
 
                 if (nextIDInt == ushort.MaxValue)
+                {
                     throw new InvalidOperationException("Exceeded maximum unique component type count of 65535");
+                }
 
                 ComponentID id = new ComponentID((ushort) nextIDInt);
                 ExistingComponentIDs[type] = id;
@@ -261,7 +265,9 @@ namespace Alis.Core.Ecs.Core
                 int nextIDInt = ++NextComponentID;
 
                 if (nextIDInt == ushort.MaxValue)
+                {
                     throw new InvalidOperationException("Exceeded maximum unique component type count of 65535");
+                }
 
                 ComponentID id = new ComponentID((ushort) nextIDInt);
                 ExistingComponentIDs[t] = id;
@@ -284,11 +290,20 @@ namespace Alis.Core.Ecs.Core
         private static IDTable GetComponentTable(Type type)
         {
             if (NoneComponentRunnerTable.TryGetValue(type, out IComponentStorageBaseFactory? fac))
+            {
                 return (IDTable) fac.CreateStack();
+            }
+
             if (GenerationServices.UserGeneratedTypeMap.TryGetValue(type, out (IComponentStorageBaseFactory Factory, int UpdateOrder) data))
+            {
                 return (IDTable) data.Factory.CreateStack();
+            }
+
             if (type == typeof(void))
+            {
                 return null!;
+            }
+
             Throw_ComponentTypeNotInit(type);
             return null!;
         }

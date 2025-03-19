@@ -1707,7 +1707,10 @@ namespace Alis.Core.Graphic.GlfwLib
             IntPtr ptr = GetJoystickAxes(joystick, out int count);
             float[] axes = new float[count];
             if (count > 0)
+            {
                 Marshal.Copy(ptr, axes, 0, count);
+            }
+
             return axes;
         }
 

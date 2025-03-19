@@ -79,13 +79,22 @@ namespace Alis.Core.Graphic.Stb
             stbi__bmp_data info = new stbi__bmp_data();
             info.all_a = 255;
             if (stbi__bmp_parse_header(s, &info) == null)
+            {
                 return null;
+            }
+
             flip_vertically = (int) s.img_y > 0 ? 1 : 0;
             s.img_y = (uint) CRuntime.abs((int) s.img_y);
             if (s.img_y > 1 << 24)
+            {
                 return (byte*) (ulong) (stbi__err("too large") != 0 ? 0 : 0);
+            }
+
             if (s.img_x > 1 << 24)
+            {
                 return (byte*) (ulong) (stbi__err("too large") != 0 ? 0 : 0);
+            }
+
             mr = info.mr;
             mg = info.mg;
             mb = info.mb;
@@ -94,12 +103,16 @@ namespace Alis.Core.Graphic.Stb
             if (info.hsz == 12)
             {
                 if (info.bpp < 24)
+                {
                     psize = (info.offset - info.extra_read - 24) / 3;
+                }
             }
             else
             {
                 if (info.bpp < 16)
+                {
                     psize = (info.offset - info.extra_read - info.hsz) >> 2;
+                }
             }
 
             if (psize == 0)
@@ -108,26 +121,47 @@ namespace Alis.Core.Graphic.Stb
                 int header_limit = 1024;
                 int extra_data_limit = 256 * 4;
                 if (bytes_read_so_far <= 0 || bytes_read_so_far > header_limit)
+                {
                     return (byte*) (ulong) (stbi__err("bad header") != 0 ? 0 : 0);
+                }
 
                 if (info.offset < bytes_read_so_far || info.offset - bytes_read_so_far > extra_data_limit)
+                {
                     return (byte*) (ulong) (stbi__err("bad offset") != 0 ? 0 : 0);
+                }
+
                 stbi__skip(s, info.offset - bytes_read_so_far);
             }
 
             if (info.bpp == 24 && ma == 0xff000000)
+            {
                 s.img_n = 3;
+            }
             else
+            {
                 s.img_n = ma != 0 ? 4 : 3;
+            }
+
             if (req_comp != 0 && req_comp >= 3)
+            {
                 target = req_comp;
+            }
             else
+            {
                 target = s.img_n;
+            }
+
             if (stbi__mad3sizes_valid(target, (int) s.img_x, (int) s.img_y, 0) == 0)
+            {
                 return (byte*) (ulong) (stbi__err("too large") != 0 ? 0 : 0);
+            }
+
             _out_ = (byte*) stbi__malloc_mad3(target, (int) s.img_x, (int) s.img_y, 0);
             if (_out_ == null)
+            {
                 return (byte*) (ulong) (stbi__err("outofmem") != 0 ? 0 : 0);
+            }
+
             if (info.bpp < 16)
             {
                 int z = 0;
@@ -143,7 +177,10 @@ namespace Alis.Core.Graphic.Stb
                     pal[i][1] = stbi__get8(s);
                     pal[i][0] = stbi__get8(s);
                     if (info.hsz != 12)
+                    {
                         stbi__get8(s);
+                    }
+
                     pal[i][3] = 255;
                 }
 
@@ -168,6 +205,7 @@ namespace Alis.Core.Graphic.Stb
 
                 pad = -width & 3;
                 if (info.bpp == 1)
+                {
                     for (j = 0; j < (int) s.img_y; ++j)
                     {
                         int bit_offset = 7;
@@ -179,9 +217,15 @@ namespace Alis.Core.Graphic.Stb
                             _out_[z++] = pal[color][1];
                             _out_[z++] = pal[color][2];
                             if (target == 4)
+                            {
                                 _out_[z++] = 255;
+                            }
+
                             if (i + 1 == (int) s.img_x)
+                            {
                                 break;
+                            }
+
                             if (--bit_offset < 0)
                             {
                                 bit_offset = 7;
@@ -191,7 +235,9 @@ namespace Alis.Core.Graphic.Stb
 
                         stbi__skip(s, pad);
                     }
+                }
                 else
+                {
                     for (j = 0; j < (int) s.img_y; ++j)
                     {
                         for (i = 0; i < (int) s.img_x; i += 2)
@@ -208,19 +254,28 @@ namespace Alis.Core.Graphic.Stb
                             _out_[z++] = pal[v][1];
                             _out_[z++] = pal[v][2];
                             if (target == 4)
+                            {
                                 _out_[z++] = 255;
+                            }
+
                             if (i + 1 == (int) s.img_x)
+                            {
                                 break;
+                            }
+
                             v = info.bpp == 8 ? stbi__get8(s) : v2;
                             _out_[z++] = pal[v][0];
                             _out_[z++] = pal[v][1];
                             _out_[z++] = pal[v][2];
                             if (target == 4)
+                            {
                                 _out_[z++] = 255;
+                            }
                         }
 
                         stbi__skip(s, pad);
                     }
+                }
             }
             else
             {
@@ -236,17 +291,30 @@ namespace Alis.Core.Graphic.Stb
                 int easy = 0;
                 stbi__skip(s, info.offset - info.extra_read - info.hsz);
                 if (info.bpp == 24)
+                {
                     width = (int) (3 * s.img_x);
+                }
                 else if (info.bpp == 16)
+                {
                     width = (int) (2 * s.img_x);
+                }
                 else
+                {
                     width = 0;
+                }
+
                 pad = -width & 3;
                 if (info.bpp == 24)
+                {
                     easy = 1;
+                }
                 else if (info.bpp == 32)
+                {
                     if (mb == 0xff && mg == 0xff00 && mr == 0x00ff0000 && ma == 0xff000000)
+                    {
                         easy = 2;
+                    }
+                }
 
                 if (easy == 0)
                 {
@@ -285,7 +353,9 @@ namespace Alis.Core.Graphic.Stb
                             a = (byte) (easy == 2 ? stbi__get8(s) : 255);
                             all_a |= a;
                             if (target == 4)
+                            {
                                 _out_[z++] = a;
+                            }
                         }
                     }
                     else
@@ -301,7 +371,9 @@ namespace Alis.Core.Graphic.Stb
                             a = (uint) (ma != 0 ? stbi__shiftsigned(v & ma, ashift, acount) : 255);
                             all_a |= a;
                             if (target == 4)
+                            {
                                 _out_[z++] = (byte) (a & 255);
+                            }
                         }
                     }
 
@@ -310,8 +382,10 @@ namespace Alis.Core.Graphic.Stb
             }
 
             if (target == 4 && all_a == 0)
+            {
                 for (i = (int) (4 * s.img_x * s.img_y - 1); i >= 0; i -= 4)
                     _out_[i] = 255;
+            }
 
             if (flip_vertically != 0)
             {
@@ -333,13 +407,18 @@ namespace Alis.Core.Graphic.Stb
             {
                 _out_ = stbi__convert_format(_out_, target, req_comp, s.img_x, s.img_y);
                 if (_out_ == null)
+                {
                     return _out_;
+                }
             }
 
             *x = (int) s.img_x;
             *y = (int) s.img_y;
             if (comp != null)
+            {
                 *comp = s.img_n;
+            }
+
             return _out_;
         }
 
@@ -364,15 +443,25 @@ namespace Alis.Core.Graphic.Stb
             }
 
             if (x != null)
+            {
                 *x = (int) s.img_x;
+            }
+
             if (y != null)
+            {
                 *y = (int) s.img_y;
+            }
+
             if (comp != null)
             {
                 if (info.bpp == 24 && info.ma == 0xff000000)
+                {
                     *comp = 3;
+                }
                 else
+                {
                     *comp = info.ma != 0 ? 4 : 3;
+                }
             }
 
             return 1;
@@ -388,9 +477,15 @@ namespace Alis.Core.Graphic.Stb
             int r = 0;
             int sz = 0;
             if (stbi__get8(s) != 66)
+            {
                 return 0;
+            }
+
             if (stbi__get8(s) != 77)
+            {
                 return 0;
+            }
+
             stbi__get32le(s);
             stbi__get16le(s);
             stbi__get16le(s);
@@ -409,7 +504,10 @@ namespace Alis.Core.Graphic.Stb
         public static int stbi__bmp_set_mask_defaults(stbi__bmp_data* info, int compress)
         {
             if (compress == 3)
+            {
                 return 1;
+            }
+
             if (compress == 0)
             {
                 if (info->bpp == 16)
@@ -447,7 +545,10 @@ namespace Alis.Core.Graphic.Stb
         {
             int hsz = 0;
             if (stbi__get8(s) != 66 || stbi__get8(s) != 77)
+            {
                 return (byte*) (ulong) (stbi__err("not BMP") != 0 ? 0 : 0);
+            }
+
             stbi__get32le(s);
             stbi__get16le(s);
             stbi__get16le(s);
@@ -456,9 +557,15 @@ namespace Alis.Core.Graphic.Stb
             info->mr = info->mg = info->mb = info->ma = 0;
             info->extra_read = 14;
             if (info->offset < 0)
+            {
                 return (byte*) (ulong) (stbi__err("bad BMP") != 0 ? 0 : 0);
+            }
+
             if (hsz != 12 && hsz != 40 && hsz != 56 && hsz != 108 && hsz != 124)
+            {
                 return (byte*) (ulong) (stbi__err("unknown BMP") != 0 ? 0 : 0);
+            }
+
             if (hsz == 12)
             {
                 s.img_x = (uint) stbi__get16le(s);
@@ -471,17 +578,29 @@ namespace Alis.Core.Graphic.Stb
             }
 
             if (stbi__get16le(s) != 1)
+            {
                 return (byte*) (ulong) (stbi__err("bad BMP") != 0 ? 0 : 0);
+            }
+
             info->bpp = stbi__get16le(s);
             if (hsz != 12)
             {
                 int compress = (int) stbi__get32le(s);
                 if (compress == 1 || compress == 2)
+                {
                     return (byte*) (ulong) (stbi__err("BMP RLE") != 0 ? 0 : 0);
+                }
+
                 if (compress >= 4)
+                {
                     return (byte*) (ulong) (stbi__err("BMP JPEG/PNG") != 0 ? 0 : 0);
+                }
+
                 if (compress == 3 && info->bpp != 16 && info->bpp != 32)
+                {
                     return (byte*) (ulong) (stbi__err("bad BMP") != 0 ? 0 : 0);
+                }
+
                 stbi__get32le(s);
                 stbi__get32le(s);
                 stbi__get32le(s);
@@ -510,7 +629,9 @@ namespace Alis.Core.Graphic.Stb
                             info->mb = stbi__get32le(s);
                             info->extra_read += 12;
                             if (info->mr == info->mg && info->mg == info->mb)
+                            {
                                 return (byte*) (ulong) (stbi__err("bad BMP") != 0 ? 0 : 0);
+                            }
                         }
                         else
                         {
@@ -522,13 +643,19 @@ namespace Alis.Core.Graphic.Stb
                 {
                     int i = 0;
                     if (hsz != 108 && hsz != 124)
+                    {
                         return (byte*) (ulong) (stbi__err("bad BMP") != 0 ? 0 : 0);
+                    }
+
                     info->mr = stbi__get32le(s);
                     info->mg = stbi__get32le(s);
                     info->mb = stbi__get32le(s);
                     info->ma = stbi__get32le(s);
                     if (compress != 3)
+                    {
                         stbi__bmp_set_mask_defaults(info, compress);
+                    }
+
                     stbi__get32le(s);
                     for (i = 0; i < 12; ++i)
                         stbi__get32le(s);

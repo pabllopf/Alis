@@ -117,7 +117,9 @@ namespace Alis.Core.Ecs.Core.Archetype
         internal ref EntityIDOnly CreateEntityLocation(EntityFlags flags, out EntityLocation entityLocation)
         {
             if (_entities.Length == _nextComponentIndex)
+            {
                 Resize(_entities.Length * 2);
+            }
 
             entityLocation.Archetype = this;
             entityLocation.Index = _nextComponentIndex;
@@ -134,7 +136,9 @@ namespace Alis.Core.Ecs.Core.Archetype
         internal ref EntityIDOnly CreateDeferredEntityLocation(World world, scoped ref EntityLocation entityLocation, out int physicalIndex, out ComponentStorageBase[] writeStorage)
         {
             if (_deferredEntityCount == 0)
+            {
                 world.DeferredCreationArchetypes.Push(this);
+            }
 
             int futureSlot = _nextComponentIndex + _deferredEntityCount++;
             entityLocation.Index = futureSlot;
@@ -352,7 +356,10 @@ namespace Alis.Core.Ecs.Core.Archetype
         internal void Update(World world)
         {
             if (_nextComponentIndex == 0)
+            {
                 return;
+            }
+
             ComponentStorageBase[]? comprunners = Components;
             for (int i = 1; i < comprunners.Length; i++)
                 comprunners[i].Run(world, this);
@@ -366,12 +373,16 @@ namespace Alis.Core.Ecs.Core.Archetype
         internal void Update(World world, ComponentID componentID)
         {
             if (_nextComponentIndex == 0)
+            {
                 return;
+            }
 
             int compIndex = GetComponentIndex(componentID);
 
             if (compIndex == 0)
+            {
                 return;
+            }
 
             Components.UnsafeArrayIndex(compIndex).Run(world, this);
         }
@@ -384,7 +395,10 @@ namespace Alis.Core.Ecs.Core.Archetype
         internal void MultiThreadedUpdate(CountdownEvent countdown, World world)
         {
             if (_nextComponentIndex == 0)
+            {
                 return;
+            }
+
             foreach (ComponentStorageBase? comprunner in Components)
                 comprunner.MultithreadedRun(countdown, world, this);
         }

@@ -69,13 +69,24 @@ namespace Alis.Core.Ecs.Collections
             //#endif
             //TODO: better impl
             if (value == _keysAndValues._0)
+            {
                 return 0;
+            }
+
             if (value == _keysAndValues._1)
+            {
                 return 1;
+            }
+
             if (value == _keysAndValues._2)
+            {
                 return 2;
+            }
+
             if (value == _keysAndValues._3)
+            {
                 return 3;
+            }
 
             return 32;
         }

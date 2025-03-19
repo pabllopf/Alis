@@ -62,10 +62,15 @@ internal struct NativeTable<T> : IDisposable where T : struct
             {
 #if DEBUG
                 if (index < 0)
+                {
                     throw new ArgumentOutOfRangeException();
+                }
 #endif
                 if (index >= _length)
+                {
                     return ref ResizeFor(index);
+                }
+
                 return ref _array[index];
             }
         }
@@ -86,9 +91,14 @@ internal struct NativeTable<T> : IDisposable where T : struct
         public NativeTable(int initalCapacity)
         {
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+            {
                 throw new InvalidOperationException("Cannot store managed objects in native code");
+            }
+
             if (initalCapacity < 1)
+            {
                 throw new ArgumentOutOfRangeException();
+            }
 
             _length = initalCapacity;
             _array = new T[initalCapacity];

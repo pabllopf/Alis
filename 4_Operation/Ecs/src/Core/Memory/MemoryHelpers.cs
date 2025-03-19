@@ -108,7 +108,10 @@ namespace Alis.Core.Ecs.Core.Memory
             {
                 T? t = span[i];
                 if (start.IndexOf(t) != -1)
+                {
                     FrentExceptions.Throw_InvalidOperationException($"This entity already has a component of type {t.Type.Name}");
+                }
+
                 builder.Add(t);
             }
 
@@ -126,7 +129,9 @@ namespace Alis.Core.Ecs.Core.Memory
             where T : ITypeID
         {
             if (types.IndexOf(type) != -1)
+            {
                 FrentExceptions.Throw_InvalidOperationException($"This entity already has a component of type {type.Type.Name}");
+            }
 
             ImmutableArray<T>.Builder? builder = ImmutableArray.CreateBuilder<T>(types.Length + 1);
             builder.AddRange(types);
@@ -148,7 +153,10 @@ namespace Alis.Core.Ecs.Core.Memory
         {
             int index = types.IndexOf(type);
             if (index == -1)
+            {
                 FrentExceptions.Throw_ComponentNotFoundException(type.Type);
+            }
+
             ImmutableArray<T> result = types.RemoveAt(index);
             return result;
         }
@@ -170,7 +178,10 @@ namespace Alis.Core.Ecs.Core.Memory
             {
                 int index = builder.IndexOf(type);
                 if (index == -1)
+                {
                     FrentExceptions.Throw_ComponentNotFoundException(type.Type);
+                }
+
                 builder.RemoveAt(index);
             }
 
@@ -227,7 +238,9 @@ namespace Alis.Core.Ecs.Core.Memory
         public static void Poison<T>(ref T item)
         {
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+            {
                 throw new NotSupportedException("Cleared anyways");
+            }
         }
 
         /// <summary>

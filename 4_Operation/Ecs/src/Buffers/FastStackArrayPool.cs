@@ -83,7 +83,9 @@ namespace Alis.Core.Ecs.Buffers
         public override T[] Rent(int minimumLength)
         {
             if (minimumLength < 16)
+            {
                 return new T[minimumLength];
+            }
 
             int bucketIndex = BitOperations.Log2((uint) minimumLength) - 4;
 
@@ -112,10 +114,15 @@ namespace Alis.Core.Ecs.Buffers
         {
             //easier to deal w/ all logic here
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+            {
                 array.AsSpan().Clear();
+            }
+
             int bucketIndex = BitOperations.Log2((uint) array.Length) - 5;
             if ((uint) bucketIndex < (uint) Buckets.Length)
+            {
                 Buckets[bucketIndex] = array;
+            }
         }
 
         /// <summary>

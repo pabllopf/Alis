@@ -79,7 +79,9 @@ namespace Alis.Core.Graphic.Stb
             ColorComponents req_comp)
         {
             if (result == null)
+            {
                 throw new InvalidOperationException(StbImage.stbi__g_failure_reason);
+            }
 
             ImageResult image = new ImageResult
             {
@@ -120,7 +122,9 @@ namespace Alis.Core.Graphic.Stb
             finally
             {
                 if (result != null)
+                {
                     CRuntime.free(result);
+                }
             }
         }
 

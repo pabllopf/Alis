@@ -85,7 +85,10 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
         public override bool Equals(object obj)
         {
             if (obj is NSOpenGLContext context)
+            {
                 return Equals(context);
+            }
+
             return false;
         }
 

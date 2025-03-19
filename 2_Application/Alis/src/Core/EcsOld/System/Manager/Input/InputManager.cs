@@ -89,7 +89,10 @@ namespace Alis.Core.EcsOld.System.Manager.Input
         private void KeyCallback(Window window, Keys key, int scancode, InputState state, ModifierKeys mods)
         {
             Entity.Scene currentScene = Context.SceneManager.CurrentScene;
-            if (currentScene == null) return;
+            if (currentScene == null)
+            {
+                return;
+            }
 
             List<GameObject> gameObjects = currentScene.GameObjects;
             foreach (GameObject gameObject in gameObjects)
