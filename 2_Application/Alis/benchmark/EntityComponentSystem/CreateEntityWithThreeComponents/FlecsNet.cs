@@ -55,9 +55,9 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithThreeComponents
             for (int i = 0; i < EntityCount; ++i)
             {
                 world.Entity()
-                    .Set<Component1>(new())
-                    .Set<Component2>(new())
-                    .Set<Component3>(new());
+                    .Set<Component1>(new Component1())
+                    .Set<Component2>(new Component2())
+                    .Set<Component3>(new Component3());
             }
         }
     }

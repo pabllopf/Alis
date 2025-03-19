@@ -220,7 +220,7 @@ namespace Alis.Core.Ecs.Core.Archetype
             {
                 ref EntityIDOnly archetypeEntity = ref entitySpan[i];
 
-                archetypeEntity = recycled.CanPop() ? recycled.PopUnsafe() : new EntityIDOnly(world.NextEntityID++, 0);
+                archetypeEntity = recycled.CanPop() ? recycled.PopUnsafe() : new EntityIDOnly(world.NextEntityId++, 0);
 
                 ref EntityLocation lookup = ref world.EntityTable.UnsafeIndexNoResize(archetypeEntity.ID);
 

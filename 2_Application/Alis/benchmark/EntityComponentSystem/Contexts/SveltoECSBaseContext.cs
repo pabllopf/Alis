@@ -52,7 +52,7 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         /// <summary>
         ///     Gets the value of the group
         /// </summary>
-        public static ExclusiveGroup Group { get; } = new();
+        public static ExclusiveGroup Group { get; } = new ExclusiveGroup();
 
         /// <summary>
         ///     Gets the value of the scheduler

@@ -74,7 +74,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent
             ChunkTuple<Component1> chunks = world.CreateMany<Component1>(EntityCount);
 
             for (int i = 0; i < chunks.Span.Length; i++)
-                chunks.Span[i] = new();
+                chunks.Span[i] = new Component1();
         }
     }
 }

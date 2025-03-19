@@ -48,6 +48,8 @@ namespace Alis.Benchmark.EntityComponentSystem
         ///     The frent
         /// </summary>
         public const string Frent = "Frent";
+        
+        public const string Alis = "Alis";
 
         /// <summary>
         ///     The friflo engine ecs

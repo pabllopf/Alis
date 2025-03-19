@@ -41,7 +41,7 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         /// <summary>
         ///     Gets the value of the world
         /// </summary>
-        public World World { get; } = new();
+        public World World { get; } = new World();
 
         /// <summary>
         ///     Disposes this instance
