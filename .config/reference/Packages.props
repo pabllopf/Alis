@@ -108,5 +108,9 @@
     ">
         <PackageReference Include="System.Collections.Immutable" Version="10.0.0-preview.2.25163.2"/>
     </ItemGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="CommunityToolkit.HighPerformance" Version="8.4.0" />
+    </ItemGroup>
 
 </Project>

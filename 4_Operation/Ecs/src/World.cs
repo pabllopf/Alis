@@ -551,6 +551,22 @@ namespace Alis.Core.Ecs
                 while (WorldUpdateCommandBuffer.Playback()) ;
             }
         }
+        
+#if (!NETSTANDARD && NETCOREAPP && NETFRAMEWORK) || NET6_0_OR_GREATER
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal ref EventRecord TryGetEventData(EntityLocation entityLocation, EntityIDOnly entity, EntityFlags eventType, out bool exists)
+        {
+            if (entityLocation.HasEvent(eventType))
+            {
+                exists = true;
+                return ref CollectionsMarshal.GetValueRefOrNullRef(EventLookup, entity);
+            }
+
+
+            exists = false;
+            return ref Unsafe.NullRef<EventRecord>();
+        }
+#endif
 
         /// <summary>
         ///     Gets the value of the allow structual changes
@@ -773,13 +789,19 @@ namespace Alis.Core.Ecs
         /// <param name="entity">The entity</param>
         /// <param name="lookup">The lookup</param>
         /// <param name="componentId">The component id</param>
-        internal void RemoveComponent(Entity entity, ref EntityLocation lookup, ComponentID componentId)
+        internal void RemoveComponent(Entity entity, ref EntityLocation lookup, ComponentID componentID)
         {
-            Archetype destination = RemoveComponentLookup.FindAdjacentArchetypeID(componentId, lookup.ArchetypeID, this, ArchetypeEdgeType.RemoveComponent)
+            Archetype destination = RemoveComponentLookup.FindAdjacentArchetypeID(componentID, lookup.ArchetypeID, this, ArchetypeEdgeType.RemoveComponent)
                 .Archetype(this);
 
-            Span<ComponentHandle> tmpHandleSpan = [default!];
-            MoveEntityToArchetypeRemove(tmpHandleSpan, entity, ref lookup, destination);
+#if (NETSTANDARD || NETCOREAPP || NETFRAMEWORK) && !NET6_0_OR_GREATER
+        Span<ComponentHandle> tmpHandleSpan = [default!];
+        MoveEntityToArchetypeRemove(tmpHandleSpan, entity, ref lookup, destination);
+#else
+            Unsafe.SkipInit(out ComponentHandle tmpHandle);
+            MemoryHelpers.Poison(ref tmpHandle);
+            MoveEntityToArchetypeRemove(MemoryMarshal.CreateSpan(ref tmpHandle, 1), entity, ref lookup, destination);
+#endif
         }
 
         /// <summary>
@@ -790,13 +812,17 @@ namespace Alis.Core.Ecs
         /// <param name="componentId">The component id</param>
         /// <param name="runner">The runner</param>
         /// <param name="entityLocation">The entity location</param>
-        internal void AddComponent(Entity entity, ref EntityLocation lookup, ComponentID componentId, ref ComponentStorageBase runner, out EntityLocation entityLocation)
+        internal void AddComponent(Entity entity, ref EntityLocation lookup, ComponentID componentID, ref ComponentStorageBase runner, out EntityLocation entityLocation)
         {
-            Archetype destination = AddComponentLookup.FindAdjacentArchetypeID(componentId, lookup.ArchetypeID, this, ArchetypeEdgeType.AddComponent)
+            Archetype destination = AddComponentLookup.FindAdjacentArchetypeID(componentID, lookup.ArchetypeID, this, ArchetypeEdgeType.AddComponent)
                 .Archetype(this);
-            Span<ComponentStorageBase> runnerSpan = [null!];
-            MoveEntityToArchetypeAdd(runnerSpan, entity, ref lookup, out entityLocation, destination);
-            runner = MemoryMarshal.GetReference(runnerSpan);
+#if (NETSTANDARD || NETCOREAPP || NETFRAMEWORK) && !NET6_0_OR_GREATER
+        Span<ComponentStorageBase> runnerSpan = [null!];
+        MoveEntityToArchetypeAdd(runnerSpan, entity, ref lookup, out entityLocation, destination);
+        runner = MemoryMarshal.GetReference(runnerSpan);
+#else
+            MoveEntityToArchetypeAdd(MemoryMarshal.CreateSpan(ref runner, 1), entity, ref lookup, out entityLocation, destination);
+#endif
         }
 
         /// <summary>
@@ -920,7 +946,11 @@ namespace Alis.Core.Ecs
 
                 if (EntityLocation.HasEventFlag(currentLookup.Flags, EntityFlags.RemoveComp | EntityFlags.RemoveGenericComp))
                 {
-                    EventRecord? lookup = EventLookup[entity.EntityIDOnly];
+#if (NETSTANDARD || NETCOREAPP || NETFRAMEWORK) && !NET6_0_OR_GREATER
+                EventRecord? lookup = EventLookup[entity.EntityIDOnly];
+#else
+                    ref var lookup = ref CollectionsMarshal.GetValueRefOrNullRef(EventLookup, entity.EntityIDOnly);
+#endif
 
 
                     if (hasGenericRemoveEvent)

@@ -41,138 +41,93 @@ namespace Alis.Core.Ecs.Collections
     ///     The fast lookup
     /// </summary>
     internal struct FastLookup()
+{
+    private InlineArray8<uint> _data;
+    private InlineArray8<ushort> _ids;
+    internal Archetype[] Archetypes = new Archetype[8];
+    private int index;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public ArchetypeID FindAdjacentArchetypeID<T>(T id, ArchetypeID archetype, World world, ArchetypeEdgeType edgeType)
+        where T : ITypeID
     {
-        /// <summary>
-        ///     The data
-        /// </summary>
-        private InlineArray8<uint> _data;
-
-        /// <summary>
-        ///     The ids
-        /// </summary>
-        private InlineArray8<ushort> _ids;
-
-        /// <summary>
-        ///     The archetype
-        /// </summary>
-        internal Archetype[] Archetypes = new Archetype[8];
-
-        /// <summary>
-        ///     The index
-        /// </summary>
-        private int index;
-
-        /// <summary>
-        ///     Finds the adjacent archetype id using the specified id
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="id">The id</param>
-        /// <param name="archetype">The archetype</param>
-        /// <param name="world">The world</param>
-        /// <param name="edgeType">The edge type</param>
-        /// <returns>The archetype id</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public EntityType FindAdjacentArchetypeID<T>(T id, EntityType archetype, World world, ArchetypeEdgeType edgeType)
-            where T : ITypeID
+        uint key = GetKey(id.Value, archetype);
+        ArchetypeEdgeKey edgeKey;
+        int index = LookupIndex(key);
+        if (index != 32)
         {
-            uint key = GetKey(id.Value, archetype);
-            ArchetypeEdgeKey edgeKey;
-            int index = LookupIndex(key);
-            if (index != 32)
-            {
-                return new EntityType(InlineArray8<ushort>.Get(ref _ids, index));
-            }
-
-            if (world.ArchetypeGraphEdges.TryGetValue(edgeKey = typeof(T) == typeof(ComponentID) ? ArchetypeEdgeKey.Component(new(id.Value), archetype, edgeType) : ArchetypeEdgeKey.Tag(new(id.Value), archetype, edgeType), out Archetype? destination))
-            {
-                //warm/cool depending on number of times they add/remove
-                return destination.ID;
-            }
-
-            //cold path
-            Archetype dest = Archetype.GetAdjacentArchetypeCold(world, edgeKey);
-            world.ArchetypeGraphEdges.Add(edgeKey, dest);
-            return dest.ID;
+            return new ArchetypeID(InlineArray8<ushort>.Get(ref _ids, index));
         }
-
-        /// <summary>
-        ///     Gets the key using the specified id
-        /// </summary>
-        /// <param name="id">The id</param>
-        /// <param name="archetypeID">The archetype id</param>
-        /// <returns>The key</returns>
-        public uint GetKey(ushort id, EntityType archetypeID)
+        else if (world.ArchetypeGraphEdges.TryGetValue(edgeKey = typeof(T) == typeof(ComponentID) ?
+            ArchetypeEdgeKey.Component(new(id.Value), archetype, edgeType) :
+            ArchetypeEdgeKey.Tag(new(id.Value), archetype, edgeType), out var destination))
         {
-            uint key = archetypeID.RawIndex | ((uint) id << 16);
-            return key;
+            //warm/cool depending on number of times they add/remove
+            return destination.ID;
         }
-
-        /// <summary>
-        ///     Sets the archetype using the specified id
-        /// </summary>
-        /// <param name="id">The id</param>
-        /// <param name="from">The from</param>
-        /// <param name="to">The to</param>
-        public void SetArchetype(ushort id, EntityType from, Archetype to)
-        {
-            uint key = GetKey(id, from);
-
-            InlineArray8<uint>.Get(ref _data, index) = key;
-            InlineArray8<ushort>.Get(ref _ids, index) = to.ID.RawIndex;
-
-            Archetypes[index] = to;
-
-            index = (index + 1) & 7;
-        }
-
-        /// <summary>
-        ///     Lookups the index using the specified key
-        /// </summary>
-        /// <param name="key">The key</param>
-        /// <returns>The int</returns>
-        public int LookupIndex(uint key)
-        {
-            if (_data._0 == key)
-            {
-                return 0;
-            }
-
-            if (_data._1 == key)
-            {
-                return 1;
-            }
-
-            if (_data._2 == key)
-            {
-                return 2;
-            }
-
-            if (_data._3 == key)
-            {
-                return 3;
-            }
-
-            if (_data._4 == key)
-            {
-                return 4;
-            }
-
-            if (_data._5 == key)
-            {
-                return 5;
-            }
-
-            if (_data._6 == key)
-            {
-                return 6;
-            }
-
-            if (_data._7 == key)
-            {
-                return 7;
-            }
-
-            return 32;
-        }
+        //cold path
+        Archetype dest = Archetype.GetAdjacentArchetypeCold(world, edgeKey);
+        world.ArchetypeGraphEdges.Add(edgeKey, dest);
+        return dest.ID;
     }
+
+    public uint GetKey(ushort id, ArchetypeID archetypeID)
+    {
+        uint key = archetypeID.RawIndex | ((uint)id << 16);
+        return key;
+    }
+
+    public void SetArchetype(ushort id, ArchetypeID from, Archetype to)
+    {
+        uint key = GetKey(id, from);
+
+        InlineArray8<uint>.Get(ref _data, index) = key;
+        InlineArray8<ushort>.Get(ref _ids, index) = to.ID.RawIndex;
+
+        Archetypes[index] = to;
+
+        index = (index + 1) & 7;
+    }
+
+    public int LookupIndex(uint key)
+    {
+#if NET7_0_OR_GREATER
+        if (Vector256.IsHardwareAccelerated)
+        {
+            Vector256<uint> bits = Vector256.Equals(Vector256.Create(key), Vector256.LoadUnsafe(ref _data._0));
+            int index = BitOperations.TrailingZeroCount(bits.ExtractMostSignificantBits());
+            return index;
+        }
+        //else if (Vector128.IsHardwareAccelerated)
+        //{
+        //    Vector128<uint> lower = Vector128.Equals(Vector128.Create(key), Vector128.LoadUnsafe(ref l0));
+        //    Vector128<uint> upper = Vector128.Equals(Vector128.Create(key), Vector128.LoadUnsafe(ref l4));
+        //
+        //    uint lowerMask = lower.ExtractMostSignificantBits();
+        //    uint upperMask = upper.ExtractMostSignificantBits() << 4;
+        //
+        //    int index = BitOperations.TrailingZeroCount(lowerMask | upperMask);
+        //    return index;
+        //}
+#endif
+
+        if (_data._0 == key)
+            return 0;
+        if (_data._1 == key)
+            return 1;
+        if (_data._2 == key)
+            return 2;
+        if (_data._3 == key)
+            return 3;
+        if (_data._4 == key)
+            return 4;
+        if (_data._5 == key)
+            return 5;
+        if (_data._6 == key)
+            return 6;
+        if (_data._7 == key)
+            return 7;
+        return 32;
+    }
+}
 }
