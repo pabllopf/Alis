@@ -14,7 +14,7 @@ namespace Alis.Core.Ecs
         public static Query Query<T>(this World world)
             where T : struct, IRuleProvider
         {
-#if NETSTANDARD2_1
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
         if (world.QueryCache.TryGetValue(QueryHashCache<T>.Value, out Query value))
         {
             return value;

@@ -72,7 +72,7 @@ namespace Alis.Core.Ecs
         #region Internal Helpers
 
         #region IsAlive
-        internal bool InternalIsAlive([NotNullWhen(true)] out World world, out EntityLocation entityLocation)
+        internal bool InternalIsAlive( out World world, out EntityLocation entityLocation)
         {
             world = GlobalWorldTables.Worlds.UnsafeIndexNoResize(WorldID);
             if (world is null)

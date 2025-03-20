@@ -8,7 +8,7 @@
         /// <summary>
         /// Whether or not to multithread.
         /// </summary>
-#if NET6_0_OR_GREATER
+#if NET7_0_OR_GREATER
         public bool MultiThreadedUpdate { get; init; }
 #else
         public bool MultiThreadedUpdate { get; set; }

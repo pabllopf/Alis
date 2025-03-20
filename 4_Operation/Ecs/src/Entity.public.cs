@@ -167,7 +167,7 @@ namespace Alis.Core.Ecs
         /// <param name="value">A wrapper over a reference to the component when <see langword="true"/>.</param>
         /// <param name="type">The type of component to try and get</param>
         /// <returns><see langword="true"/> if this entity has a component of type <paramref name="type"/>, otherwise <see langword="false"/>.</returns>
-        public bool TryGet(Type type, [NotNullWhen(true)] out object? value)
+        public bool TryGet(Type type,  out object? value)
         {
             ref var lookup = ref AssertIsAlive(out _);
 
@@ -419,7 +419,7 @@ namespace Alis.Core.Ecs
             if (value is null || !InternalIsAlive(out var world, out EntityLocation entityLocation))
                 return;
 
-#if NETSTANDARD2_1
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
         bool exists = entityLocation.HasEvent(flag);
         var events = exists ? world.EventLookup[EntityIDOnly] : default;
 #else
@@ -464,7 +464,7 @@ namespace Alis.Core.Ecs
         {
             if (@delegate is null || !InternalIsAlive(out var world, out EntityLocation entityLocation))
                 return;
-#if NETSTANDARD2_1
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
         bool exists = entityLocation.HasEvent(flag);
         var record = exists ? world.EventLookup[EntityIDOnly] : default;
 #else

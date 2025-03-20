@@ -89,7 +89,7 @@ namespace Alis.Core.Ecs.Core.Memory
             where TKey : notnull
             where TValue : new()
         {
-#if NETSTANDARD2_1
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
         if (dictionary.TryGetValue(key, out var value))
         {
             return value;
@@ -130,7 +130,7 @@ namespace Alis.Core.Ecs.Core.Memory
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
                 throw new NotSupportedException("Cleared anyways");
 
-#if NET6_0_OR_GREATER
+#if NET7_0_OR_GREATER
             Span<byte> raw = MemoryMarshal.CreateSpan(ref Unsafe.As<T, byte>(ref item), Unsafe.SizeOf<T>());
             raw.Fill(93);
 #endif

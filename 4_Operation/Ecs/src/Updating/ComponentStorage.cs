@@ -90,7 +90,7 @@ namespace Alis.Core.Ecs.Updating
         }
 
 
-#if NETSTANDARD2_1
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
     public Span<TComponent> AsSpanLength(int length) => TypedBuffer.AsSpan(0, length);
     public Span<TComponent> AsSpan() => TypedBuffer;
 #else

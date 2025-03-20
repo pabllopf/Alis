@@ -55,7 +55,7 @@ namespace Alis.Core.Ecs
 
                 if (EntityLocation.HasEventFlag(flags, EntityFlags.AddComp | EntityFlags.AddGenericComp))
                 {
-#if NETSTANDARD2_1
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
                 EventRecord events = world.EventLookup[EntityIDOnly];
 #else
                     ref EventRecord events = ref CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIDOnly);
@@ -116,7 +116,7 @@ namespace Alis.Core.Ecs
 
                 if (EntityLocation.HasEventFlag(flags, EntityFlags.Tagged))
                 {
-#if NETSTANDARD2_1
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
                 EventRecord events = world.EventLookup[EntityIDOnly];
 #else
                     ref EventRecord events = ref CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIDOnly);
@@ -151,7 +151,7 @@ namespace Alis.Core.Ecs
 
                 if (EntityLocation.HasEventFlag(flags, EntityFlags.Detach))
                 {
-#if NETSTANDARD2_1
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
                 EventRecord events = world.EventLookup[EntityIDOnly];
 #else
                     ref EventRecord events = ref CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIDOnly);

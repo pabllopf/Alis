@@ -186,7 +186,7 @@ namespace Alis.Core.Ecs.Core
             if (!typeof(IComponentBase).IsAssignableFrom(t))
                 return;
             //it needs init!!
-#if NETSTANDARD2_1
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
         t.TypeInitializer?.Invoke(null, []);
 #else
             RuntimeHelpers.RunClassConstructor(t.TypeHandle);
@@ -205,7 +205,7 @@ namespace Alis.Core.Ecs.Core
             return null!;
         }
 
-        [DoesNotReturn]
+        
         private static void Throw_ComponentTypeNotInit(Type t)
         {
             if (typeof(IComponentBase).IsAssignableFrom(t))
