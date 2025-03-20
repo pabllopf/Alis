@@ -471,7 +471,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="c">The </param>
         /// <param name="d">The </param>
         /// <returns>The uint</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static uint Fourcc(byte a, byte b, byte c, byte d) => (uint) (a | (b << 8) | (c << 16) | (d << 24));
 
         /// <summary>
@@ -480,7 +480,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="file">The file</param>
         /// <param name="mode">The mode</param>
         /// <returns>The rw ops</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         private static IntPtr RwFromFile(string file, string mode)
         {
             IntPtr result = NativeSdl.InternalRWFromFile(file, mode);
@@ -494,7 +494,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="file">The file</param>
         /// <param name="dataSize">The data size</param>
         /// <returns>The result</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr LoadFile(string file, out IntPtr dataSize)
         {
             IntPtr result = NativeSdl.InternalLoadFile(file, out dataSize);
@@ -506,7 +506,7 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Sdl the get error
         /// </summary>
         /// <returns>The string</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static string GetError()
         {
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetError());
@@ -518,7 +518,7 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Sdl the set error using the specified fmt and arg list
         /// </summary>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void SetError(string fmtAndArgList)
         {
             NativeSdl.InternalSetError(fmtAndArgList);
@@ -529,7 +529,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="flags">The flags</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int Init(InitSettings flags)
         {
             int result = NativeSdl.InternalInit(flags);
@@ -540,7 +540,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <summary>
         ///     Sdl the quit
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void Quit()
         {
             NativeSdl.InternalQuit();
@@ -551,7 +551,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="flags">The flags</param>
         /// <returns>The uint</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static uint WasInit(InitSettings flags)
         {
             uint result = NativeSdl.InternalWasInit(flags);
@@ -562,7 +562,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <summary>
         ///     Clears the hints
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void ClearHints()
         {
             NativeSdl.InternalClearHints();
@@ -573,7 +573,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="name">The name</param>
         /// <returns>The string</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static string GetHint(string name)
         {
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetHint(name));
@@ -587,7 +587,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="name">The name</param>
         /// <param name="value">The value</param>
         /// <returns>The sdl bool</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static bool SetHint(string name, string value)
         {
             bool result = NativeSdl.InternalSetHint(name, value);
@@ -602,7 +602,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="value">The value</param>
         /// <param name="priority">The priority</param>
         /// <returns>The sdl bool</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static bool SetHintWithPriority(string name, string value, HintPriority priority)
         {
             bool result = NativeSdl.InternalSetHintWithPriority(name, value, priority);
@@ -616,7 +616,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="name">The name</param>
         /// <param name="defaultValue">The default value</param>
         /// <returns>The sdl bool</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static bool GetHintBoolean(string name, bool defaultValue)
         {
             bool result = NativeSdl.InternalGetHintBoolean(name, defaultValue);
@@ -627,7 +627,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <summary>
         ///     Sdl the get version using the specified ver
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static Version GetVersion() => new Version(2, 0, 18);
 
         /// <summary>
@@ -668,7 +668,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="h">The </param>
         /// <param name="flags">The flags</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr CreateWindow(string title, int x, int y, int w, int h, WindowSettings flags)
         {
             IntPtr result = NativeSdl.InternalCreateWindow(title, x, y, w, h, flags);
@@ -691,7 +691,7 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Sdl the destroy window using the specified window
         /// </summary>
         /// <param name="window">The window</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void DestroyWindow(IntPtr window)
         {
             NativeSdl.InternalDestroyWindow(window);
@@ -704,7 +704,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="mode">The mode</param>
         /// <param name="closest">The closest</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr GetClosestDisplayMode(int displayIndex, ref DisplayMode mode, out DisplayMode closest)
         {
             IntPtr result = NativeSdl.InternalGetClosestDisplayMode(displayIndex, ref mode, out closest);
@@ -718,7 +718,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="displayIndex">The display index</param>
         /// <param name="mode">The mode</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetCurrentDisplayMode(int displayIndex, out DisplayMode mode)
         {
             int result = NativeSdl.InternalGetCurrentDisplayMode(displayIndex, out mode);
@@ -743,7 +743,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="displayIndex">The display index</param>
         /// <param name="mode">The mode</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetDesktopDisplayMode(int displayIndex, out DisplayMode mode)
         {
             int result = NativeSdl.InternalGetDesktopDisplayMode(displayIndex, out mode);
@@ -756,7 +756,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The string</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static string GetDisplayName(int index)
         {
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetDisplayName(index));
@@ -770,7 +770,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="displayIndex">The display index</param>
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetDisplayBounds(int displayIndex, out RectangleI rect)
         {
             int result = NativeSdl.InternalGetDisplayBounds(displayIndex, out rect);
@@ -786,7 +786,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="hDpi">The dpi</param>
         /// <param name="vDpi">The dpi</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetDisplayDpi(int displayIndex, out float dDpi, out float hDpi, out float vDpi)
         {
             int result = NativeSdl.InternalGetDisplayDPI(displayIndex, out dDpi, out hDpi, out vDpi);
@@ -801,7 +801,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="modeIndex">The mode index</param>
         /// <param name="mode">The mode</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetDisplayMode(int displayIndex, int modeIndex, out DisplayMode mode)
         {
             int result = NativeSdl.InternalGetDisplayMode(displayIndex, modeIndex, out mode);
@@ -816,7 +816,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="displayIndex">The display index</param>
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetDisplayUsableBounds(int displayIndex, out RectangleI rect) => NativeSdl.InternalGetDisplayUsableBounds(displayIndex, out rect);
 
 
@@ -825,21 +825,21 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="displayIndex">The display index</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetNumDisplayModes(int displayIndex) => NativeSdl.InternalGetNumDisplayModes(displayIndex);
 
         /// <summary>
         ///     Gets the num video displays
         /// </summary>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetNumVideoDisplays() => NativeSdl.InternalGetNumVideoDisplays();
 
         /// <summary>
         ///     Gets the num video drivers
         /// </summary>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetNumVideoDrivers() => NativeSdl.InternalGetNumVideoDrivers();
 
         /// <summary>
@@ -847,7 +847,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The string</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static string GetVideoDriver(int index) => Marshal.PtrToStringAnsi(NativeSdl.InternalGetVideoDriver(index));
 
         /// <summary>
@@ -855,7 +855,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="window">The window</param>
         /// <returns>The float</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static float GetWindowBrightness(IntPtr window) => NativeSdl.InternalGetWindowBrightness(window);
 
         /// <summary>
@@ -864,7 +864,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <param name="opacity">The opacity</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SetWindowOpacity(IntPtr window, float opacity) => NativeSdl.InternalSetWindowOpacity(window, opacity);
 
         /// <summary>
@@ -873,7 +873,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <param name="outOpacity">The out opacity</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetWindowOpacity(IntPtr window, out float outOpacity) => NativeSdl.InternalGetWindowOpacity(window, out outOpacity);
 
         /// <summary>
@@ -882,7 +882,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="modalWindow">The modal window</param>
         /// <param name="parentWindow">The parent window</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SetWindowModalFor(IntPtr modalWindow, IntPtr parentWindow) => NativeSdl.InternalSetWindowModalFor(modalWindow, parentWindow);
 
         /// <summary>
@@ -890,7 +890,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="window">The window</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SetWindowInputFocus(IntPtr window) => NativeSdl.InternalSetWindowInputFocus(window);
 
         /// <summary>
@@ -899,7 +899,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <param name="name">The name</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr GetWindowData(IntPtr window, string name) => NativeSdl.InternalGetWindowData(window, name);
 
         /// <summary>
@@ -907,7 +907,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="window">The window</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetWindowDisplayIndex(IntPtr window) => NativeSdl.InternalGetWindowDisplayIndex(window);
 
         /// <summary>
@@ -916,7 +916,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <param name="mode">The mode</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetWindowDisplayMode(IntPtr window, out DisplayMode mode)
         {
             int result = NativeSdl.InternalGetWindowDisplayMode(window, out mode);
@@ -929,7 +929,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="window">The window</param>
         /// <returns>The uint</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static uint GetWindowFlags(IntPtr window)
         {
             uint result = NativeSdl.InternalGetWindowFlags(window);
@@ -942,7 +942,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="id">The id</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr GetWindowFromId(uint id)
         {
             IntPtr result = NativeSdl.InternalGetWindowFromID(id);
@@ -958,7 +958,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="green">The green</param>
         /// <param name="blue">The blue</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetWindowGammaRamp(IntPtr window, [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] red, [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] green, [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] blue)
         {
             int result = NativeSdl.InternalGetWindowGammaRamp(window, red, green, blue);
@@ -971,7 +971,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="window">The window</param>
         /// <returns>The sdl bool</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static bool GetWindowGrab(IntPtr window)
         {
             bool result = NativeSdl.InternalGetWindowGrab(window);
@@ -984,7 +984,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="window">The window</param>
         /// <returns>The uint</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static uint GetWindowId(IntPtr window)
         {
             uint result = NativeSdl.InternalGetWindowID(window);
@@ -997,7 +997,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="window">The window</param>
         /// <returns>The uint</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static uint GetWindowPixelFormat(IntPtr window) => NativeSdl.InternalGetWindowPixelFormat(window);
 
         /// <summary>
@@ -1006,7 +1006,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <param name="maxW">The max</param>
         /// <param name="maxH">The max</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void GetWindowMaximumSize(IntPtr window, out int maxW, out int maxH)
         {
             NativeSdl.InternalGetWindowMaximumSize(window, out maxW, out maxH);
@@ -1018,7 +1018,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <param name="minW">The min</param>
         /// <param name="minH">The min</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void GetWindowMinimumSize(IntPtr window, out int minW, out int minH)
         {
             NativeSdl.InternalGetWindowMinimumSize(window, out minW, out minH);
@@ -1030,7 +1030,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void GetWindowPosition(IntPtr window, out int x, out int y)
         {
             NativeSdl.InternalGetWindowPosition(window, out x, out y);
@@ -1041,7 +1041,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="window"></param>
         /// <returns></returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static Vector2F GetWindowSize(IntPtr window)
         {
             NativeSdl.InternalGetWindowSize(window, out int w, out int h);
@@ -1053,7 +1053,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="window">The window</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr GetWindowSurface(IntPtr window) => NativeSdl.InternalGetWindowSurface(window);
 
         /// <summary>
@@ -1061,7 +1061,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="window">The window</param>
         /// <returns>The string</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static string GetWindowTitle(IntPtr window)
         {
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetWindowTitle(window));
@@ -1076,7 +1076,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="texW">The tex</param>
         /// <param name="texH">The tex</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int BindTexture(IntPtr texture, out float texW, out float texH) => NativeSdl.InternalGlBindTexture(texture, out texW, out texH);
 
         /// <summary>
@@ -1084,14 +1084,14 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="window">The window</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr CreateContext(IntPtr window) => NativeSdl.InternalGlCreateContext(window);
 
         /// <summary>
         ///     Gls the delete context using the specified context
         /// </summary>
         /// <param name="context">The context</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void DeleteContext(IntPtr context)
         {
             NativeSdl.InternalGlDeleteContext(context);
@@ -1102,7 +1102,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="proc">The proc</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr GetProcAddress(string proc) => NativeSdl.InternalGlGetProcAddress(proc);
 
         /// <summary>
@@ -1110,13 +1110,13 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="extension">The extension</param>
         /// <returns>The sdl bool</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static bool ExtensionSupported(string extension) => NativeSdl.InternalGlExtensionSupported(extension);
 
         /// <summary>
         ///     Gls the reset attributes
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void ResetAttributes()
         {
             NativeSdl.InternalGlResetAttributes();
@@ -1128,14 +1128,14 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="attr">The attr</param>
         /// <param name="value">The value</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetAttribute(Attr attr, out int value) => NativeSdl.InternalGlGetAttribute(attr, out value);
 
         /// <summary>
         ///     Gls the get swap interval
         /// </summary>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetSwapInterval() => NativeSdl.InternalGlGetSwapInterval();
 
         /// <summary>
@@ -1144,7 +1144,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <param name="context">The context</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int MakeCurrent(IntPtr window, IntPtr context) => NativeSdl.InternalGlMakeCurrent(window, context);
 
 
@@ -1152,14 +1152,14 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Gls the get current window
         /// </summary>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr GetCurrentWindow() => NativeSdl.InternalGlGetCurrentWindow();
 
         /// <summary>
         ///     Gls the get current context
         /// </summary>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr GetCurrentContext()
         {
             IntPtr result = NativeSdl.InternalGlGetCurrentContext();
@@ -1173,7 +1173,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <param name="w">The </param>
         /// <param name="h">The </param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void GetDrawableSize(IntPtr window, out int w, out int h)
         {
             NativeSdl.InternalGlGetDrawableSize(window, out w, out h);
@@ -1185,7 +1185,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="attr">The attr</param>
         /// <param name="value">The value</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SetAttributeByInt(Attr attr, int value) => NativeSdl.InternalGlSetAttribute(attr, value);
 
         /// <summary>
@@ -1194,7 +1194,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="attr">The attr</param>
         /// <param name="profile">The profile</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SetAttributeByProfile(Attr attr, Profiles profile)
         {
             int result = NativeSdl.InternalGlSetAttribute(attr, (int) profile);
@@ -1207,7 +1207,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="interval">The interval</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SetSwapInterval(int interval)
         {
             int result = NativeSdl.InternalGlSetSwapInterval(interval);
@@ -1219,7 +1219,7 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Gls the swap window using the specified window
         /// </summary>
         /// <param name="window">The window</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void SwapWindow(IntPtr window)
         {
             NativeSdl.InternalGlSwapWindow(window);
@@ -1230,7 +1230,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="texture">The texture</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int UnbindTexture(IntPtr texture)
         {
             int result = NativeSdl.InternalGlUnbindTexture(texture);
@@ -1242,7 +1242,7 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Hides the window using the specified window
         /// </summary>
         /// <param name="window">The window</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void HideWindow(IntPtr window)
         {
             NativeSdl.InternalHideWindow(window);
@@ -1252,7 +1252,7 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Maximizes the window using the specified window
         /// </summary>
         /// <param name="window">The window</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void MaximizeWindow(IntPtr window)
         {
             NativeSdl.InternalMaximizeWindow(window);
@@ -1262,7 +1262,7 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Minimizes the window using the specified window
         /// </summary>
         /// <param name="window">The window</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void MinimizeWindow(IntPtr window)
         {
             NativeSdl.InternalMinimizeWindow(window);
@@ -1272,7 +1272,7 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Raises the window using the specified window
         /// </summary>
         /// <param name="window">The window</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void RaiseWindow(IntPtr window)
         {
             NativeSdl.InternalRaiseWindow(window);
@@ -1282,7 +1282,7 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Restores the window using the specified window
         /// </summary>
         /// <param name="window">The window</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void RestoreWindow(IntPtr window)
         {
             NativeSdl.InternalRestoreWindow(window);
@@ -1294,7 +1294,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <param name="brightness">The brightness</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SetWindowBrightness(IntPtr window, float brightness)
         {
             int result = NativeSdl.InternalSetWindowBrightness(window, brightness);
@@ -1309,7 +1309,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="name">The name</param>
         /// <param name="userdata">The userdata</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr SetWindowData(IntPtr window, string name, IntPtr userdata)
         {
             IntPtr result = NativeSdl.InternalSetWindowData(window, name, userdata);
@@ -1323,7 +1323,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <param name="mode">The mode</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SetWindowDisplayMode(IntPtr window, ref DisplayMode mode)
         {
             int result = NativeSdl.InternalSetWindowDisplayMode(window, ref mode);
@@ -1337,7 +1337,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <param name="mode">The mode</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SetWindowDisplayMode(IntPtr window, IntPtr mode)
         {
             int result = NativeSdl.InternalSetWindowDisplayMode(window, mode);
@@ -1351,7 +1351,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <param name="flags">The flags</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SetWindowFullscreen(IntPtr window, uint flags)
         {
             int result = NativeSdl.InternalSetWindowFullscreen(window, flags);
@@ -1367,7 +1367,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="green">The green</param>
         /// <param name="blue">The blue</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SetWindowGammaRamp(IntPtr window, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] red, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] green, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] blue)
         {
             int result = NativeSdl.InternalSetWindowGammaRamp(window, red, green, blue);
@@ -1380,7 +1380,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="window">The window</param>
         /// <param name="grabbed">The grabbed</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void SetWindowGrab(IntPtr window, bool grabbed)
         {
             NativeSdl.InternalSetWindowGrab(window, grabbed);
@@ -1391,7 +1391,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="window">The window</param>
         /// <param name="icon">The icon</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void SetWindowIcon(IntPtr window, IntPtr icon)
         {
             NativeSdl.InternalSetWindowIcon(window, icon);
@@ -1403,7 +1403,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <param name="maxW">The max</param>
         /// <param name="maxH">The max</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void SetWindowMaximumSize(IntPtr window, int maxW, int maxH)
         {
             NativeSdl.InternalSetWindowMaximumSize(window, maxW, maxH);
@@ -1415,7 +1415,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <param name="minW">The min</param>
         /// <param name="minH">The min</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void SetWindowMinimumSize(IntPtr window, int minW, int minH)
         {
             NativeSdl.InternalSetWindowMinimumSize(window, minW, minH);
@@ -1427,7 +1427,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void SetWindowPosition(IntPtr window, int x, int y)
         {
             NativeSdl.InternalSetWindowPosition(window, x, y);
@@ -1439,7 +1439,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <param name="w">The </param>
         /// <param name="h">The </param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void SetWindowSize(IntPtr window, int w, int h)
         {
             NativeSdl.InternalSetWindowSize(window, w, h);
@@ -1450,7 +1450,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="window">The window</param>
         /// <param name="bordered">The bordered</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void SetWindowBordered(IntPtr window, bool bordered)
         {
             NativeSdl.InternalSetWindowBordered(window, bordered);
@@ -1465,7 +1465,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="bottom">The bottom</param>
         /// <param name="right">The right</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetWindowBordersSize(IntPtr window, out int top, out int left, out int bottom, out int right)
         {
             int result = NativeSdl.InternalGetWindowBordersSize(window, out top, out left, out bottom, out right);
@@ -1478,7 +1478,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="window">The window</param>
         /// <param name="resizable">The resizable</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void SetWindowResizable(IntPtr window, bool resizable)
         {
             NativeSdl.InternalSetWindowResizable(window, resizable);
@@ -1489,7 +1489,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="window">The window</param>
         /// <param name="title">The title</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void SetWindowTitle(IntPtr window, string title)
         {
             NativeSdl.InternalSetWindowTitle(window, title);
@@ -1499,7 +1499,7 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Shows the window using the specified window
         /// </summary>
         /// <param name="window">The window</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void ShowWindow(IntPtr window)
         {
             NativeSdl.InternalShowWindow(window);
@@ -1510,7 +1510,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="window">The window</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int UpdateWindowSurface(IntPtr window)
         {
             int result = NativeSdl.InternalUpdateWindowSurface(window);
@@ -1525,7 +1525,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="rects">The rects</param>
         /// <param name="numRects">The num rects</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int UpdateWindowSurfaceRects(IntPtr window, [In] RectangleI[] rects, int numRects)
         {
             int result = NativeSdl.InternalUpdateWindowSurfaceRects(window, rects, numRects);
@@ -1540,7 +1540,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="callback">The callback</param>
         /// <param name="callbackData">The callback data</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SetWindowHitTest(IntPtr window, SdlHitTest callback, IntPtr callbackData)
         {
             int result = NativeSdl.InternalSetWindowHitTest(window, callback, callbackData);
@@ -1552,7 +1552,7 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Gets the grabbed window
         /// </summary>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr GetGrabbedWindow()
         {
             IntPtr result = NativeSdl.InternalGetGrabbedWindow();
@@ -1570,7 +1570,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="dstAlphaFactor">The dst alpha factor</param>
         /// <param name="alphaOperation">The alpha operation</param>
         /// <returns>The sdl blend mode</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static BlendModes ComposeCustomBlendMode(BlendFactor srcColorFactor, BlendFactor dstColorFactor, BlendOperation colorOperation, BlendFactor srcAlphaFactor, BlendFactor dstAlphaFactor, BlendOperation alphaOperation)
         {
             BlendModes result = NativeSdl.InternalComposeCustomBlendMode(srcColorFactor, dstColorFactor, colorOperation, srcAlphaFactor, dstAlphaFactor, alphaOperation);
@@ -1585,7 +1585,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="index">The index</param>
         /// <param name="flags">The flags</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr CreateRenderer(IntPtr window, int index, Renderers flags) => NativeSdl.InternalCreateRenderer(window, index, flags);
 
         /// <summary>
@@ -1593,7 +1593,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="surface">The surface</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr CreateSoftwareRenderer(IntPtr surface)
         {
             IntPtr result = NativeSdl.InternalCreateSoftwareRenderer(surface);
@@ -1610,7 +1610,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="w">The </param>
         /// <param name="h">The </param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr CreateTexture(IntPtr renderer, uint format, int access, int w, int h) => NativeSdl.InternalCreateTexture(renderer, format, access, w, h);
 
         /// <summary>
@@ -1619,7 +1619,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="renderer">The renderer</param>
         /// <param name="surface">The surface</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr CreateTextureFromSurface(IntPtr renderer, IntPtr surface)
         {
             IntPtr result = NativeSdl.InternalCreateTextureFromSurface(renderer, surface);
@@ -1631,7 +1631,7 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Destroys the renderer using the specified renderer
         /// </summary>
         /// <param name="renderer">The renderer</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void DestroyRenderer(IntPtr renderer)
         {
             NativeSdl.InternalDestroyRenderer(renderer);
@@ -1641,7 +1641,7 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Destroys the texture using the specified texture
         /// </summary>
         /// <param name="texture">The texture</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void DestroyTexture(IntPtr texture)
         {
             NativeSdl.InternalDestroyTexture(texture);
@@ -1651,7 +1651,7 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Gets the num render drivers
         /// </summary>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetNumRenderDrivers() => NativeSdl.InternalGetNumRenderDrivers();
 
         /// <summary>
@@ -1660,7 +1660,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="renderer">The renderer</param>
         /// <param name="blendMode">The blend mode</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetRenderDrawBlendMode(IntPtr renderer, out BlendModes blendMode) => NativeSdl.InternalGetRenderDrawBlendMode(renderer, out blendMode);
 
         /// <summary>
@@ -1672,7 +1672,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="b">The </param>
         /// <param name="a">The </param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetRenderDrawColor(IntPtr renderer, out byte r, out byte g, out byte b, out byte a) => NativeSdl.InternalGetRenderDrawColor(renderer, out r, out g, out b, out a);
 
         /// <summary>
@@ -1681,7 +1681,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="index">The index</param>
         /// <param name="info">The info</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetRenderDriverInfo(int index, out RendererInfo info) => NativeSdl.InternalGetRenderDriverInfo(index, out info);
 
         /// <summary>
@@ -1689,7 +1689,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="window">The window</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr GetRenderer(IntPtr window) => NativeSdl.InternalGetRenderer(window);
 
         /// <summary>
@@ -1698,7 +1698,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="renderer">The renderer</param>
         /// <param name="info">The info</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetRendererInfo(IntPtr renderer, out RendererInfo info) => NativeSdl.InternalGetRendererInfo(renderer, out info);
 
         /// <summary>
@@ -1708,7 +1708,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="w">The </param>
         /// <param name="h">The </param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetRendererOutputSize(IntPtr renderer, out int w, out int h) => NativeSdl.InternalGetRendererOutputSize(renderer, out w, out h);
 
         /// <summary>
@@ -1717,7 +1717,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="texture">The texture</param>
         /// <param name="alpha">The alpha</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetTextureAlphaMod(IntPtr texture, out byte alpha) => NativeSdl.InternalGetTextureAlphaMod(texture, out alpha);
 
         /// <summary>
@@ -1726,7 +1726,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="texture">The texture</param>
         /// <param name="blendMode">The blend mode</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetTextureBlendMode(IntPtr texture, out BlendModes blendMode) => NativeSdl.InternalGetTextureBlendMode(texture, out blendMode);
 
         /// <summary>
@@ -1737,7 +1737,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="g">The </param>
         /// <param name="b">The </param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetTextureColorMod(IntPtr texture, out byte r, out byte g, out byte b) => NativeSdl.InternalGetTextureColorMod(texture, out r, out g, out b);
 
         /// <summary>
@@ -1748,7 +1748,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="pixels">The pixels</param>
         /// <param name="pitch">The pitch</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int LockTexture(IntPtr texture, ref RectangleI rect, out IntPtr pixels, out int pitch) => NativeSdl.InternalLockTexture(texture, ref rect, out pixels, out pitch);
 
         /// <summary>
@@ -1760,7 +1760,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="w">The </param>
         /// <param name="h">The </param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int QueryTexture(IntPtr texture, out uint format, out int access, out int w, out int h)
         {
             int result = NativeSdl.InternalQueryTexture(texture, out format, out access, out w, out h);
@@ -1773,7 +1773,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="renderer">The renderer</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderClear(IntPtr renderer)
         {
             int result = NativeSdl.InternalRenderClear(renderer);
@@ -1789,7 +1789,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="srcRect">The src rect</param>
         /// <param name="dstRect">The dst rect</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderCopy(IntPtr renderer, IntPtr texture, ref RectangleI srcRect, ref RectangleI dstRect)
         {
             int result = NativeSdl.InternalRenderCopy(renderer, texture, ref srcRect, ref dstRect);
@@ -1805,7 +1805,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="srcRect">The src rect</param>
         /// <param name="dstRect">The dst rect</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderCopy(IntPtr renderer, IntPtr texture, IntPtr srcRect, ref RectangleI dstRect) => NativeSdl.InternalRenderCopy(renderer, texture, srcRect, ref dstRect);
 
         /// <summary>
@@ -1816,7 +1816,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="srcRect">The src rect</param>
         /// <param name="dstRect">The dst rect</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderCopy(IntPtr renderer, IntPtr texture, ref RectangleI srcRect, IntPtr dstRect) => NativeSdl.InternalRenderCopy(renderer, texture, ref srcRect, dstRect);
 
         /// <summary>
@@ -1827,7 +1827,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="srcRect">The src rect</param>
         /// <param name="dstRect">The dst rect</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderCopy(IntPtr renderer, IntPtr texture, IntPtr srcRect, IntPtr dstRect) => NativeSdl.InternalRenderCopy(renderer, texture, srcRect, dstRect);
 
         /// <summary>
@@ -1841,7 +1841,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="center">The center</param>
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderCopyEx(IntPtr renderer, IntPtr texture, ref RectangleI srcRect, ref RectangleI dstRect, double angle, ref PointI center, RendererFlips flips) => NativeSdl.InternalRenderCopyEx(renderer, texture, ref srcRect, ref dstRect, angle, ref center, flips);
 
         /// <summary>
@@ -1855,7 +1855,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="center">The center</param>
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderCopyEx(IntPtr renderer, IntPtr texture, IntPtr srcRect, ref RectangleI dstRect, double angle, ref PointI center, RendererFlips flips) => NativeSdl.InternalRenderCopyEx(renderer, texture, srcRect, ref dstRect, angle, ref center, flips);
 
         /// <summary>
@@ -1869,7 +1869,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="center">The center</param>
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderCopyEx(IntPtr renderer, IntPtr texture, ref RectangleI srcRect, IntPtr dstRect, double angle, ref PointI center, RendererFlips flips) => NativeSdl.InternalRenderCopyEx(renderer, texture, ref srcRect, dstRect, angle, ref center, flips);
 
         /// <summary>
@@ -1883,7 +1883,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="center">The center</param>
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderCopyEx(IntPtr renderer, IntPtr texture, ref RectangleI srcRect, ref RectangleI dstRect, double angle, IntPtr center, RendererFlips flips) => NativeSdl.InternalRenderCopyEx(renderer, texture, ref srcRect, ref dstRect, angle, center, flips);
 
         /// <summary>
@@ -1897,7 +1897,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="center">The center</param>
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderCopyEx(IntPtr renderer, IntPtr texture, IntPtr srcRect, IntPtr dstRect, double angle, ref PointI center, RendererFlips flips) => NativeSdl.InternalRenderCopyEx(renderer, texture, srcRect, dstRect, angle, ref center, flips);
 
         /// <summary>
@@ -1911,7 +1911,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="center">The center</param>
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderCopyEx(IntPtr renderer, IntPtr texture, IntPtr srcRect, ref RectangleI dstRect, double angle, IntPtr center, RendererFlips flips) => NativeSdl.InternalRenderCopyEx(renderer, texture, srcRect, ref dstRect, angle, center, flips);
 
         /// <summary>
@@ -1925,7 +1925,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="center">The center</param>
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderCopyEx(IntPtr renderer, IntPtr texture, ref RectangleI srcRect, IntPtr dstRect, double angle, IntPtr center, RendererFlips flips) => NativeSdl.InternalRenderCopyEx(renderer, texture, ref srcRect, dstRect, angle, center, flips);
 
         /// <summary>
@@ -1939,7 +1939,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="center">The center</param>
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderCopyEx(IntPtr renderer, IntPtr texture, IntPtr srcRect, IntPtr dstRect, double angle, IntPtr center, RendererFlips flips) => NativeSdl.InternalRenderCopyEx(renderer, texture, srcRect, dstRect, angle, center, flips);
 
         /// <summary>
@@ -1951,7 +1951,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="x2">The </param>
         /// <param name="y2">The </param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderDrawLine(IntPtr renderer, int x1, int y1, int x2, int y2) => NativeSdl.InternalRenderDrawLine(renderer, x1, y1, x2, y2);
 
         /// <summary>
@@ -1961,7 +1961,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="points">The points</param>
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderDrawLines(IntPtr renderer, [In] PointI[] points, int count) => NativeSdl.InternalRenderDrawLines(renderer, points, count);
 
         /// <summary>
@@ -1971,7 +1971,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderDrawPoint(IntPtr renderer, int x, int y) => NativeSdl.InternalRenderDrawPoint(renderer, x, y);
 
         /// <summary>
@@ -1981,7 +1981,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="points">The points</param>
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderDrawPoints(IntPtr renderer, [In] PointI[] points, int count) => NativeSdl.InternalRenderDrawPoints(renderer, points, count);
 
         /// <summary>
@@ -1990,7 +1990,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="renderer">The renderer</param>
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderDrawRect(IntPtr renderer, ref RectangleI rect) => NativeSdl.InternalRenderDrawRect(renderer, ref rect);
 
         /// <summary>
@@ -1999,7 +1999,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="renderer">The renderer</param>
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderDrawRect(IntPtr renderer, IntPtr rect) => NativeSdl.InternalRenderDrawRect(renderer, rect);
 
         /// <summary>
@@ -2009,7 +2009,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="rects">The rects</param>
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderDrawRects(IntPtr renderer, [In] RectangleI[] rects, int count) => NativeSdl.InternalRenderDrawRects(renderer, rects, count);
 
         /// <summary>
@@ -2018,7 +2018,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="renderer">The renderer</param>
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderFillRect(IntPtr renderer, ref RectangleI rect) => NativeSdl.InternalRenderFillRect(renderer, ref rect);
 
         /// <summary>
@@ -2027,7 +2027,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="renderer">The renderer</param>
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderFillRect(IntPtr renderer, IntPtr rect) => NativeSdl.InternalRenderFillRect(renderer, rect);
 
         /// <summary>
@@ -2037,7 +2037,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="rects">The rects</param>
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderFillRects(IntPtr renderer, [In] RectangleI[] rects, int count) => NativeSdl.InternalRenderFillRects(renderer, rects, count);
 
         /// <summary>
@@ -2048,7 +2048,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="srcRect">The src rect</param>
         /// <param name="dst">The dst rect</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderCopyF(IntPtr renderer, IntPtr texture, ref RectangleI srcRect, ref RectangleF dst) => NativeSdl.InternalRenderCopyF(renderer, texture, ref srcRect, ref dst);
 
         /// <summary>
@@ -2059,7 +2059,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="srcRect">The src rect</param>
         /// <param name="dst">The dst rect</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderCopyF(IntPtr renderer, IntPtr texture, IntPtr srcRect, ref RectangleF dst) => NativeSdl.InternalRenderCopyF(renderer, texture, srcRect, ref dst);
 
         /// <summary>
@@ -2070,7 +2070,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="srcRect">The src rect</param>
         /// <param name="dstRect">The dst rect</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderCopyF(IntPtr renderer, IntPtr texture, ref RectangleI srcRect, IntPtr dstRect) => NativeSdl.InternalRenderCopyF(renderer, texture, ref srcRect, dstRect);
 
         /// <summary>
@@ -2081,7 +2081,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="srcRect">The src rect</param>
         /// <param name="dstRect">The dst rect</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderCopyF(IntPtr renderer, IntPtr texture, IntPtr srcRect, IntPtr dstRect) => NativeSdl.InternalRenderCopyF(renderer, texture, srcRect, dstRect);
 
         /// <summary>
@@ -2095,7 +2095,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="center">The center</param>
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderCopyEx(IntPtr renderer, IntPtr texture, ref RectangleI srcRect, ref RectangleF dst, double angle, ref PointF center, RendererFlips flips) => NativeSdl.InternalRenderCopyEx(renderer, texture, ref srcRect, ref dst, angle, ref center, flips);
 
         /// <summary>
@@ -2109,7 +2109,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="center">The center</param>
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderCopyEx(IntPtr renderer, IntPtr texture, IntPtr srcRect, ref RectangleF dst, double angle, ref PointF center, RendererFlips flips) => NativeSdl.InternalRenderCopyEx(renderer, texture, srcRect, ref dst, angle, ref center, flips);
 
         /// <summary>
@@ -2123,7 +2123,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="center">The center</param>
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderCopyExF(IntPtr renderer, IntPtr texture, ref RectangleI srcRect, IntPtr dstRect, double angle, ref PointF center, RendererFlips flips) => NativeSdl.InternalRenderCopyExF(renderer, texture, ref srcRect, dstRect, angle, ref center, flips);
 
         /// <summary>
@@ -2137,7 +2137,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="center">The center</param>
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderCopyExF(IntPtr renderer, IntPtr texture, ref RectangleI srcRect, ref RectangleF dst, double angle, IntPtr center, RendererFlips flips) => NativeSdl.InternalRenderCopyExF(renderer, texture, ref srcRect, ref dst, angle, center, flips);
 
         /// <summary>
@@ -2151,7 +2151,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="center">The center</param>
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderCopyExF(IntPtr renderer, IntPtr texture, IntPtr srcRect, IntPtr dstRect, double angle, ref PointF center, RendererFlips flips) => NativeSdl.InternalRenderCopyExF(renderer, texture, srcRect, dstRect, angle, ref center, flips);
 
 
@@ -2166,7 +2166,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="center">The center</param>
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderCopyExF(IntPtr renderer, IntPtr texture, IntPtr srcRect, ref RectangleF dst, double angle, IntPtr center, RendererFlips flips) => NativeSdl.InternalRenderCopyExF(renderer, texture, srcRect, ref dst, angle, center, flips);
 
 
@@ -2181,7 +2181,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="center">The center</param>
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderCopyExF(IntPtr renderer, IntPtr texture, ref RectangleI srcRect, IntPtr dstRect, double angle, IntPtr center, RendererFlips flips) => NativeSdl.InternalRenderCopyExF(renderer, texture, ref srcRect, dstRect, angle, center, flips);
 
 
@@ -2196,7 +2196,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="center">The center</param>
         /// <param name="flips">The flip</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderCopyExF(IntPtr renderer, IntPtr texture, IntPtr srcRect, IntPtr dstRect, double angle, IntPtr center, RendererFlips flips) => NativeSdl.InternalRenderCopyExF(renderer, texture, srcRect, dstRect, angle, center, flips);
 
         /// <summary>
@@ -2206,7 +2206,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderDrawPointF(IntPtr renderer, float x, float y) => NativeSdl.InternalRenderDrawPointF(renderer, x, y);
 
         /// <summary>
@@ -2216,7 +2216,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="points">The points</param>
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderDrawPointsF(IntPtr renderer, [In] PointF[] points, int count) => NativeSdl.InternalRenderDrawPointsF(renderer, points, count);
 
         /// <summary>
@@ -2228,7 +2228,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="x2">The </param>
         /// <param name="y2">The </param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderDrawLineF(IntPtr renderer, float x1, float y1, float x2, float y2) => NativeSdl.InternalRenderDrawLineF(renderer, x1, y1, x2, y2);
 
 
@@ -2239,7 +2239,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="points">The points</param>
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderDrawLinesF(IntPtr renderer, [In] PointF[] points, int count) => NativeSdl.InternalRenderDrawLinesF(renderer, points, count);
 
 
@@ -2249,7 +2249,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="renderer">The renderer</param>
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderDrawRectF(IntPtr renderer, ref RectangleF rect) => NativeSdl.InternalRenderDrawRectF(renderer, ref rect);
 
 
@@ -2259,7 +2259,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="renderer">The renderer</param>
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderDrawRectF(IntPtr renderer, IntPtr rect) => NativeSdl.InternalRenderDrawRectF(renderer, rect);
 
         /// <summary>
@@ -2269,7 +2269,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="rects">The rects</param>
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderDrawRectsF(IntPtr renderer, [In] RectangleF[] rects, int count) => NativeSdl.InternalRenderDrawRectsF(renderer, rects, count);
 
 
@@ -2279,7 +2279,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="renderer">The renderer</param>
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderFillRectF(IntPtr renderer, RectangleF rect) => NativeSdl.InternalRenderFillRectF(renderer, rect);
 
         /// <summary>
@@ -2288,7 +2288,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="renderer">The renderer</param>
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderFillRectF(IntPtr renderer, IntPtr rect) => NativeSdl.InternalRenderFillRectF(renderer, rect);
 
         /// <summary>
@@ -2298,7 +2298,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="rects">The rects</param>
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderFillRectsF(IntPtr renderer, [In] RectangleF[] rects, int count) => NativeSdl.InternalRenderFillRectsF(renderer, rects, count);
 
 
@@ -2307,7 +2307,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="renderer">The renderer</param>
         /// <param name="rect">The rect</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void RenderGetClipRect(IntPtr renderer, out RectangleI rect)
         {
             NativeSdl.InternalRenderGetClipRect(renderer, out rect);
@@ -2320,7 +2320,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="renderer">The renderer</param>
         /// <param name="w">The </param>
         /// <param name="h">The </param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void RenderGetLogicalSize(IntPtr renderer, out int w, out int h)
         {
             NativeSdl.InternalRenderGetLogicalSize(renderer, out w, out h);
@@ -2333,7 +2333,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="renderer">The renderer</param>
         /// <param name="scaleX">The scale</param>
         /// <param name="scaleY">The scale</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void RenderGetScale(IntPtr renderer, out float scaleX, out float scaleY)
         {
             NativeSdl.InternalRenderGetScale(renderer, out scaleX, out scaleY);
@@ -2345,14 +2345,14 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="renderer">The renderer</param>
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderGetViewport(IntPtr renderer, out RectangleI rect) => NativeSdl.InternalRenderGetViewport(renderer, out rect);
 
         /// <summary>
         ///     Renders the present using the specified renderer
         /// </summary>
         /// <param name="renderer">The renderer</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void RenderPresent(IntPtr renderer)
         {
             NativeSdl.InternalRenderPresent(renderer);
@@ -2367,7 +2367,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="pixels">The pixels</param>
         /// <param name="pitch">The pitch</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderReadPixels(IntPtr renderer, ref RectangleI rect, uint format, IntPtr pixels, int pitch) => NativeSdl.InternalRenderReadPixels(renderer, ref rect, format, pixels, pitch);
 
 
@@ -2377,7 +2377,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="renderer">The renderer</param>
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderSetClipRect(IntPtr renderer, ref RectangleI rect) => NativeSdl.InternalRenderSetClipRect(renderer, ref rect);
 
 
@@ -2387,7 +2387,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="renderer">The renderer</param>
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderSetClipRect(IntPtr renderer, IntPtr rect) => NativeSdl.InternalRenderSetClipRect(renderer, rect);
 
         /// <summary>
@@ -2397,7 +2397,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="w">The </param>
         /// <param name="h">The </param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderSetLogicalSize(IntPtr renderer, int w, int h) => NativeSdl.InternalRenderSetLogicalSize(renderer, w, h);
 
 
@@ -2408,7 +2408,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="scaleX">The scale</param>
         /// <param name="scaleY">The scale</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderSetScale(IntPtr renderer, float scaleX, float scaleY) => NativeSdl.InternalRenderSetScale(renderer, scaleX, scaleY);
 
 
@@ -2418,7 +2418,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="renderer">The renderer</param>
         /// <param name="enable">The enable</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderSetIntegerScale(IntPtr renderer, bool enable) => NativeSdl.InternalRenderSetIntegerScale(renderer, enable);
 
         /// <summary>
@@ -2427,7 +2427,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="renderer">The renderer</param>
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int RenderSetViewport(IntPtr renderer, ref RectangleI rect) => NativeSdl.InternalRenderSetViewportWithRef(renderer, ref rect);
 
         /// <summary>
@@ -2436,7 +2436,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="renderer">The renderer</param>
         /// <param name="blendMode">The blend mode</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SetRenderDrawBlendMode(IntPtr renderer, BlendModes blendMode) => NativeSdl.InternalSetRenderDrawBlendMode(renderer, blendMode);
 
         /// <summary>
@@ -2448,7 +2448,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="b">The </param>
         /// <param name="a">The </param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SetRenderDrawColor(IntPtr renderer, byte r, byte g, byte b, byte a) => NativeSdl.InternalSetRenderDrawColor(renderer, r, g, b, a);
 
 
@@ -2458,7 +2458,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="renderer">The renderer</param>
         /// <param name="texture">The texture</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SetRenderTarget(IntPtr renderer, IntPtr texture) => NativeSdl.InternalSetRenderTarget(renderer, texture);
 
         /// <summary>
@@ -2467,7 +2467,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="texture">The texture</param>
         /// <param name="alpha">The alpha</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SetTextureAlphaMod(IntPtr texture, byte alpha) => NativeSdl.InternalSetTextureAlphaMod(texture, alpha);
 
 
@@ -2477,7 +2477,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="texture">The texture</param>
         /// <param name="blendMode">The blend mode</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SetTextureBlendMode(IntPtr texture, BlendModes blendMode) => NativeSdl.InternalSetTextureBlendMode(texture, blendMode);
 
 
@@ -2489,7 +2489,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="g">The </param>
         /// <param name="b">The </param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SetTextureColorMod(IntPtr texture, byte r, byte g, byte b) => NativeSdl.InternalSetTextureColorMod(texture, r, g, b);
 
         /// <summary>
@@ -2500,7 +2500,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="pixels">The pixels</param>
         /// <param name="pitch">The pitch</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int UpdateTexture(IntPtr texture, ref RectangleI rect, IntPtr pixels, int pitch) => NativeSdl.InternalUpdateTexture(texture, ref rect, pixels, pitch);
 
         /// <summary>
@@ -2511,7 +2511,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="pixels">The pixels</param>
         /// <param name="pitch">The pitch</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int UpdateTexture(IntPtr texture, IntPtr rect, IntPtr pixels, int pitch) => NativeSdl.InternalUpdateTexture(texture, rect, pixels, pitch);
 
         /// <summary>
@@ -2522,7 +2522,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="pixels">The pixels</param>
         /// <param name="pitch">The pitch</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int UpdateTexture(IntPtr texture, IntPtr rect, byte[] pixels, int pitch) => NativeSdl.InternalUpdateTexturev2(texture, rect, pixels, pitch);
 
         /// <summary>
@@ -2530,7 +2530,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="renderer">The renderer</param>
         /// <returns>The sdl bool</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static bool RenderTargetSupported(IntPtr renderer) => NativeSdl.InternalRenderTargetSupported(renderer);
 
         /// <summary>
@@ -2538,7 +2538,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="renderer">The renderer</param>
         /// <returns>The sdl bool</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static bool RenderIsClipEnabled(IntPtr renderer) => NativeSdl.InternalRenderIsClipEnabled(renderer);
 
         /// <summary>
@@ -2546,7 +2546,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="gamma">The gamma</param>
         /// <param name="ramp">The ramp</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void CalculateGammaRamp(float gamma, [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] ramp)
         {
             NativeSdl.InternalCalculateGammaRamp(gamma, ramp);
@@ -2557,7 +2557,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="format">The format</param>
         /// <returns>The string</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static string GetPixelFormatName(uint format)
         {
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetPixelFormatName(format));
@@ -2575,7 +2575,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="bMask">The mask</param>
         /// <param name="aMask">The mask</param>
         /// <returns>The sdl bool</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static bool FormatEnumToMasks(uint format, out int bpp, out uint rMask, out uint gMask, out uint bMask, out uint aMask) => NativeSdl.InternalPixelFormatEnumToMasks(format, out bpp, out rMask, out gMask, out bMask, out aMask);
 
         /// <summary>
@@ -2586,7 +2586,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="firstColor">The first color</param>
         /// <param name="nColors">The colors</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SetPaletteColors(IntPtr palette, [In] Color[] colors, int firstColor, int nColors) => NativeSdl.InternalSetPaletteColors(palette, colors, firstColor, nColors);
 
         /// <summary>
@@ -2595,7 +2595,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="format">The format</param>
         /// <param name="palette">The palette</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SetPixelFormatPalette(IntPtr format, IntPtr palette) => NativeSdl.InternalSetPixelFormatPalette(format, palette);
 
         /// <summary>
@@ -2606,7 +2606,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="dst">The dst</param>
         /// <param name="dstRect">The dst rect</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int BlitSurface(IntPtr src, ref RectangleI srcRect, IntPtr dst, ref RectangleI dstRect)
         {
             int result = NativeSdl.InternalBlitSurface(src, ref srcRect, dst, ref dstRect);
@@ -2623,7 +2623,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="dst">The dst</param>
         /// <param name="dstRect">The dst rect</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int BlitSurface(IntPtr src, IntPtr srcRect, IntPtr dst, ref RectangleI dstRect)
         {
             int result = NativeSdl.InternalBlitSurface(src, srcRect, dst, ref dstRect);
@@ -2639,7 +2639,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="dst">The dst</param>
         /// <param name="dstRect">The dst rect</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int BlitSurface(IntPtr src, ref RectangleI srcRect, IntPtr dst, IntPtr dstRect)
         {
             int result = NativeSdl.InternalBlitSurface(src, ref srcRect, dst, dstRect);
@@ -2655,7 +2655,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="dst">The dst</param>
         /// <param name="dstRect">The dst rect</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int BlitSurface(IntPtr src, IntPtr srcRect, IntPtr dst, IntPtr dstRect)
         {
             int result = NativeSdl.InternalBlitSurface(src, srcRect, dst, dstRect);
@@ -2670,7 +2670,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="fmt">The fmt</param>
         /// <param name="flags">The flags</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr ConvertSurface(IntPtr src, IntPtr fmt, uint flags)
         {
             IntPtr result = NativeSdl.InternalConvertSurface(src, fmt, flags);
@@ -2687,7 +2687,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="depth">The depth</param>
         /// <param name="format">The format</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr CreateRgbSurfaceWithFormat(uint flags, int width, int height, int depth, uint format) => NativeSdl.InternalCreateRGBSurfaceWithFormat(flags, width, height, depth, format);
 
         /// <summary>
@@ -2697,7 +2697,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="rect">The rect</param>
         /// <param name="color">The color</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int FillRect(IntPtr dst, ref RectangleI rect, uint color) => NativeSdl.InternalFillRect(dst, ref rect, color);
 
         /// <summary>
@@ -2707,7 +2707,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="rect">The rect</param>
         /// <param name="color">The color</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int FillRect(IntPtr dst, IntPtr rect, uint color) => NativeSdl.InternalFillRect(dst, rect, color);
 
         /// <summary>
@@ -2718,7 +2718,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="count">The count</param>
         /// <param name="color">The color</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int FillRects(IntPtr dst, [In] RectangleI[] rects, int count, uint color)
         {
             int result = NativeSdl.InternalFillRects(dst, rects, count, color);
@@ -2731,7 +2731,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="surface">The surface</param>
         /// <param name="rect">The rect</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void GetClipRect(IntPtr surface, out RectangleI rect)
         {
             NativeSdl.InternalGetClipRect(surface, out rect);
@@ -2742,7 +2742,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="surface">The surface</param>
         /// <returns>The sdl bool</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static bool HasColorKey(IntPtr surface) => NativeSdl.InternalHasColorKey(surface);
 
         /// <summary>
@@ -2751,7 +2751,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="surface">The surface</param>
         /// <param name="key">The key</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetColorKey(IntPtr surface, out uint key) => NativeSdl.InternalGetColorKey(surface, out key);
 
         /// <summary>
@@ -2760,7 +2760,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="surface">The surface</param>
         /// <param name="alpha">The alpha</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetSurfaceAlphaMod(IntPtr surface, out byte alpha) => NativeSdl.InternalGetSurfaceAlphaMod(surface, out alpha);
 
         /// <summary>
@@ -2769,7 +2769,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="surface">The surface</param>
         /// <param name="blendMode">The blend mode</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetSurfaceBlendMode(IntPtr surface, out BlendModes blendMode) => NativeSdl.InternalGetSurfaceBlendMode(surface, out blendMode);
 
         /// <summary>
@@ -2780,7 +2780,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="g">The </param>
         /// <param name="b">The </param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetSurfaceColorMod(IntPtr surface, out byte r, out byte g, out byte b) => NativeSdl.InternalGetSurfaceColorMod(surface, out r, out g, out b);
 
         /// <summary>
@@ -2788,7 +2788,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="file">The file</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr LoadBmp(string file) => NativeSdl.InternalLoadBMP_RW(RwFromFile(file, "rb"), 1);
 
         /// <summary>
@@ -2797,7 +2797,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="surface">The surface</param>
         /// <param name="rect">The rect</param>
         /// <returns>The sdl bool</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static bool SetClipRect(IntPtr surface, ref RectangleI rect) => NativeSdl.InternalSetClipRect(surface, ref rect);
 
         /// <summary>
@@ -2807,7 +2807,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="flag">The flag</param>
         /// <param name="key">The key</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SetColorKey(IntPtr surface, int flag, uint key) => NativeSdl.InternalSetColorKey(surface, flag, key);
 
         /// <summary>
@@ -2816,7 +2816,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="surface">The surface</param>
         /// <param name="alpha">The alpha</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SetSurfaceAlphaMod(IntPtr surface, byte alpha) => NativeSdl.InternalSetSurfaceAlphaMod(surface, alpha);
 
         /// <summary>
@@ -2825,7 +2825,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="surface">The surface</param>
         /// <param name="blendMode">The blend mode</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SetSurfaceBlendMode(IntPtr surface, BlendModes blendMode) => NativeSdl.InternalSetSurfaceBlendMode(surface, blendMode);
 
         /// <summary>
@@ -2836,7 +2836,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="g">The </param>
         /// <param name="b">The </param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SetSurfaceColorMod(IntPtr surface, byte r, byte g, byte b) => NativeSdl.InternalSetSurfaceColorMod(surface, r, g, b);
 
         /// <summary>
@@ -2845,7 +2845,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="surface">The surface</param>
         /// <param name="palette">The palette</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SetSurfacePalette(IntPtr surface, IntPtr palette) => NativeSdl.InternalSetSurfacePalette(surface, palette);
 
         /// <summary>
@@ -2856,7 +2856,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="dst">The dst</param>
         /// <param name="dstRect">The dst rect</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int UpperBlit(IntPtr src, ref RectangleI srcRect, IntPtr dst, ref RectangleI dstRect) => NativeSdl.InternalUpperBlit(src, ref srcRect, dst, ref dstRect);
 
         /// <summary>
@@ -2867,21 +2867,21 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="dst">The dst</param>
         /// <param name="dstRect">The dst rect</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int UpperBlitScaled(IntPtr src, ref RectangleI srcRect, IntPtr dst, ref RectangleI dstRect) => NativeSdl.InternalUpperBlitScaled(src, ref srcRect, dst, ref dstRect);
 
         /// <summary>
         ///     Has the clipboard text
         /// </summary>
         /// <returns>The sdl bool</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static bool HasClipboardText() => NativeSdl.InternalHasClipboardText();
 
         /// <summary>
         ///     Sdl the get clipboard text
         /// </summary>
         /// <returns>The string</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static string GetClipboardText()
         {
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetClipboardText());
@@ -2894,7 +2894,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="text">The text</param>
         /// <returns>The result</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SetClipboardText(string text) => NativeSdl.InternalSetClipboardText(text);
 
         /// <summary>
@@ -2906,7 +2906,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="minType">The min type</param>
         /// <param name="maxType">The max type</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int PeepEvents([Out] Event[] events, int numEvents, EventAction action, EventType minType, EventType maxType) => NativeSdl.InternalPeepEvents(events, numEvents, action, minType, maxType);
 
 
@@ -2915,7 +2915,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="type">The type</param>
         /// <returns>The sdl bool</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static bool HasEvent(EventType type) => NativeSdl.InternalHasEvent(type);
 
         /// <summary>
@@ -2924,14 +2924,14 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="minType">The min type</param>
         /// <param name="maxType">The max type</param>
         /// <returns>The sdl bool</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static bool HasEvents(EventType minType, EventType maxType) => NativeSdl.InternalHasEvents(minType, maxType);
 
         /// <summary>
         ///     Flushes the event using the specified type
         /// </summary>
         /// <param name="type">The type</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void FlushEvent(EventType type)
         {
             NativeSdl.InternalFlushEvent(type);
@@ -2951,7 +2951,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="sdlEvent">The sdl event</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int PushEvent(ref Event sdlEvent) => NativeSdl.InternalPushEvent(ref sdlEvent);
 
         /// <summary>
@@ -2959,7 +2959,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="filter">The filter</param>
         /// <param name="userdata">The userdata</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void SetEventFilter(SdlEventFilter filter, IntPtr userdata)
         {
             NativeSdl.InternalSetEventFilter(filter, userdata);
@@ -2970,7 +2970,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="filter">The filter</param>
         /// <param name="userdata">The userdata</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void AddEventWatch(SdlEventFilter filter, IntPtr userdata)
         {
             NativeSdl.InternalAddEventWatch(filter, userdata);
@@ -2981,7 +2981,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="filter">The filter</param>
         /// <param name="userdata">The userdata</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void DelEventWatch(SdlEventFilter filter, IntPtr userdata)
         {
             NativeSdl.InternalDelEventWatch(filter, userdata);
@@ -2992,7 +2992,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="type">The type</param>
         /// <returns>The byte</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static byte GetEventState(EventType type) => NativeSdl.InternalEventState(type, Query);
 
         /// <summary>
@@ -3000,7 +3000,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="numEvents">The num events</param>
         /// <returns>The uint</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static uint RegisterEvents(int numEvents) => NativeSdl.InternalRegisterEvents(numEvents);
 
         /// <summary>
@@ -3008,14 +3008,14 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The sdl keycode</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static KeyCodes ScanCodeToKeyCode(SdlScancode x) => (KeyCodes) ((int) x | KScancodeMask);
 
         /// <summary>
         ///     Gets the keyboard focus
         /// </summary>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr GetKeyboardFocus() => NativeSdl.InternalGetKeyboardFocus();
 
         /// <summary>
@@ -3023,21 +3023,21 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="numKeys">The num keys</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr GetKeyboardState(out int numKeys) => NativeSdl.InternalGetKeyboardState(out numKeys);
 
         /// <summary>
         ///     Gets the mod state
         /// </summary>
         /// <returns>The sdl key mod</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static KeyMods GetModState() => NativeSdl.InternalGetModState();
 
         /// <summary>
         ///     Sets the mod state using the specified mod state
         /// </summary>
         /// <param name="modState">The mod state</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void SetModState(KeyMods modState)
         {
             NativeSdl.InternalSetModState(modState);
@@ -3048,7 +3048,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="scancode">The scancode</param>
         /// <returns>The sdl keycode</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static KeyCodes GetKeyFromScancode(SdlScancode scancode) => NativeSdl.InternalGetKeyFromScancode(scancode);
 
         /// <summary>
@@ -3056,7 +3056,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="key">The key</param>
         /// <returns>The sdl scancode</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static SdlScancode GetScancodeFromKey(KeyCodes key) => NativeSdl.InternalGetScancodeFromKey(key);
 
         /// <summary>
@@ -3064,7 +3064,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="scancode">The scancode</param>
         /// <returns>The string</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static string GetScancodeName(SdlScancode scancode)
         {
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetScancodeName(scancode));
@@ -3077,7 +3077,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="name">The name</param>
         /// <returns>The sdl scancode</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static SdlScancode GetScancodeFromName(string name) => NativeSdl.InternalGetScancodeFromName(name);
 
         /// <summary>
@@ -3085,7 +3085,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="key">The key</param>
         /// <returns>The string</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static string SGetKeyName(KeyCodes key)
         {
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetKeyName(key));
@@ -3098,13 +3098,13 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="name">The name</param>
         /// <returns>The sdl keycode</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static KeyCodes GetKeyFromName(string name) => NativeSdl.InternalGetKeyFromName(name);
 
         /// <summary>
         ///     Starts the text input
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void StartTextInput()
         {
             NativeSdl.InternalStartTextInput();
@@ -3114,13 +3114,13 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Is the text input active
         /// </summary>
         /// <returns>The sdl bool</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static bool IsTextInputActive() => NativeSdl.InternalIsTextInputActive();
 
         /// <summary>
         ///     Stops the text input
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void StopTextInput()
         {
             NativeSdl.InternalStopTextInput();
@@ -3130,7 +3130,7 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Sets the text input rect using the specified rect
         /// </summary>
         /// <param name="rect">The rect</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void SetTextInputRect(ref RectangleI rect)
         {
             NativeSdl.InternalSetTextInputRect(ref rect);
@@ -3140,7 +3140,7 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Has the screen keyboard support
         /// </summary>
         /// <returns>The sdl bool</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static bool HasScreenKeyboardSupport()
         {
             bool result = NativeSdl.InternalHasScreenKeyboardSupport();
@@ -3153,7 +3153,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="window">The window</param>
         /// <returns>The sdl bool</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static bool IsScreenKeyboardShown(IntPtr window)
         {
             bool result = NativeSdl.InternalIsScreenKeyboardShown(window);
@@ -3165,7 +3165,7 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Gets the mouse focus
         /// </summary>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr GetMouseFocus() => NativeSdl.InternalGetMouseFocus();
 
         /// <summary>
@@ -3174,7 +3174,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The uint</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static uint GetMouseStateOutXAndY(out int x, out int y) => NativeSdl.InternalGetMouseState(out x, out y);
 
         /// <summary>
@@ -3183,7 +3183,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The uint</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static uint GetMouseStateXAndYOut(IntPtr x, out int y) => NativeSdl.InternalGetMouseState(x, out y);
 
         /// <summary>
@@ -3192,7 +3192,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The uint</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static uint GetMouseStateXOutAndY(out int x, IntPtr y) => NativeSdl.InternalGetMouseState(out x, y);
 
         /// <summary>
@@ -3201,7 +3201,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The uint</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static uint GetMouseStateToXAndY(IntPtr x, IntPtr y) => NativeSdl.InternalGetMouseState(x, y);
 
         /// <summary>
@@ -3210,7 +3210,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The uint</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static uint GetGlobalMouseStateOutXAndOutY(out int x, out int y) => NativeSdl.InternalGetGlobalMouseState(out x, out y);
 
         /// <summary>
@@ -3219,7 +3219,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The uint</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static uint GetGlobalMouseStateXAndY(IntPtr x, IntPtr y) => NativeSdl.InternalGetGlobalMouseState(x, y);
 
         /// <summary>
@@ -3228,7 +3228,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The uint</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static uint GetRelativeMouseState(out int x, out int y) => NativeSdl.InternalGetRelativeMouseState(out x, out y);
 
         /// <summary>
@@ -3237,7 +3237,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void WarpMouseInWindow(IntPtr window, int x, int y)
         {
             NativeSdl.InternalWarpMouseInWindow(window, x, y);
@@ -3249,7 +3249,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int WarpMouseGlobal(int x, int y) => NativeSdl.InternalWarpMouseGlobal(x, y);
 
         /// <summary>
@@ -3257,7 +3257,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="enabled">The enabled</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SetRelativeMouseMode(bool enabled) => NativeSdl.InternalSetRelativeMouseMode(enabled);
 
         /// <summary>
@@ -3265,14 +3265,14 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="enabled">The enabled</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int CaptureMouse(bool enabled) => NativeSdl.InternalCaptureMouse(enabled);
 
         /// <summary>
         ///     Gets the relative mouse mode
         /// </summary>
         /// <returns>The sdl bool</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static bool GetRelativeMouseMode() => NativeSdl.InternalGetRelativeMouseMode();
 
         /// <summary>
@@ -3285,7 +3285,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="hotX">The hot</param>
         /// <param name="hotY">The hot</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr CreateCursor(IntPtr data, IntPtr mask, int w, int h, int hotX, int hotY) => NativeSdl.InternalCreateCursor(data, mask, w, h, hotX, hotY);
 
         /// <summary>
@@ -3295,7 +3295,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="hotX">The hot</param>
         /// <param name="hotY">The hot</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr CreateColorCursor(IntPtr surface, int hotX, int hotY) => NativeSdl.InternalCreateColorCursor(surface, hotX, hotY);
 
         /// <summary>
@@ -3303,14 +3303,14 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="id">The id</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr CreateSystemCursor(SystemCursor id) => NativeSdl.InternalCreateSystemCursor(id);
 
         /// <summary>
         ///     Sets the cursor using the specified cursor
         /// </summary>
         /// <param name="cursor">The cursor</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void SetCursor(IntPtr cursor)
         {
             NativeSdl.InternalSetCursor(cursor);
@@ -3320,14 +3320,14 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Gets the cursor
         /// </summary>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr GetCursor() => NativeSdl.InternalGetCursor();
 
         /// <summary>
         ///     Frees the cursor using the specified cursor
         /// </summary>
         /// <param name="cursor">The cursor</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void FreeCursor(IntPtr cursor)
         {
             NativeSdl.InternalFreeCursor(cursor);
@@ -3338,7 +3338,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="toggle">The toggle</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int ShowCursor(int toggle) => NativeSdl.InternalShowCursor(toggle);
 
         /// <summary>
@@ -3346,7 +3346,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The uint</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static uint Button(uint x) => (uint) (1 << ((int) x - 1));
 
         /// <summary>
@@ -3354,7 +3354,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The long</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static long GetTouchDevice(int index) => NativeSdl.InternalGetTouchDevice(index);
 
         /// <summary>
@@ -3362,7 +3362,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="touchId">The touch id</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetNumTouchFingers(long touchId) => NativeSdl.InternalGetNumTouchFingers(touchId);
 
         /// <summary>
@@ -3371,7 +3371,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="touchId">The touch id</param>
         /// <param name="index">The index</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr GetTouchFinger(long touchId, int index) => NativeSdl.InternalGetTouchFinger(touchId, index);
 
         /// <summary>
@@ -3379,7 +3379,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="touchId">The touch id</param>
         /// <returns>The sdl touch device type</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static TouchDeviceType GetTouchDeviceType(long touchId) => NativeSdl.InternalGetTouchDeviceType(touchId);
 
 
@@ -3391,14 +3391,14 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="highFrequencyRumble">The high frequency rumble</param>
         /// <param name="durationMs">The duration ms</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int JoystickRumble(IntPtr joystick, ushort lowFrequencyRumble, ushort highFrequencyRumble, uint durationMs) => NativeSdl.InternalJoystickRumble(joystick, lowFrequencyRumble, highFrequencyRumble, durationMs);
 
         /// <summary>
         ///     Joysticks the close using the specified joystick
         /// </summary>
         /// <param name="joystick">The joystick</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void JoystickClose(IntPtr joystick)
         {
             NativeSdl.InternalJoystickClose(joystick);
@@ -3409,7 +3409,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="state">The state</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int JoystickEventState(int state) => NativeSdl.InternalJoystickEventState(state);
 
         /// <summary>
@@ -3418,7 +3418,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="joystick">The joystick</param>
         /// <param name="axis">The axis</param>
         /// <returns>The short</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static short JoystickGetAxis(IntPtr joystick, int axis) => NativeSdl.InternalJoystickGetAxis(joystick, axis);
 
         /// <summary>
@@ -3428,7 +3428,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="axis">The axis</param>
         /// <param name="state">The state</param>
         /// <returns>The sdl bool</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static bool JoystickGetAxisInitialState(IntPtr joystick, int axis, out ushort state) => NativeSdl.InternalJoystickGetAxisInitialState(joystick, axis, out state);
 
         /// <summary>
@@ -3439,7 +3439,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="dx">The dx</param>
         /// <param name="dy">The dy</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int JoystickGetBall(IntPtr joystick, int ball, out int dx, out int dy) => NativeSdl.InternalJoystickGetBall(joystick, ball, out dx, out dy);
 
         /// <summary>
@@ -3448,7 +3448,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="joystick">The joystick</param>
         /// <param name="button">The button</param>
         /// <returns>The byte</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static byte JoystickGetButton(IntPtr joystick, int button) => NativeSdl.InternalJoystickGetButton(joystick, button);
 
         /// <summary>
@@ -3457,7 +3457,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="joystick">The joystick</param>
         /// <param name="hat">The hat</param>
         /// <returns>The byte</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static byte JoystickGetHat(IntPtr joystick, int hat) => NativeSdl.InternalJoystickGetHat(joystick, hat);
 
         /// <summary>
@@ -3465,7 +3465,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The string</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static string JoystickName(IntPtr joystick)
         {
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalJoystickName(joystick));
@@ -3478,7 +3478,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The string</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static string JoystickNameForIndex(int deviceIndex)
         {
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalJoystickNameForIndex(deviceIndex));
@@ -3491,7 +3491,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int JoystickNumAxes(IntPtr joystick) => NativeSdl.InternalJoystickNumAxes(joystick);
 
         /// <summary>
@@ -3499,7 +3499,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int JoystickNumBalls(IntPtr joystick) => NativeSdl.InternalJoystickNumBalls(joystick);
 
         /// <summary>
@@ -3507,7 +3507,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int JoystickNumButtons(IntPtr joystick) => NativeSdl.InternalJoystickNumButtons(joystick);
 
         /// <summary>
@@ -3515,7 +3515,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int JoystickNumHats(IntPtr joystick)
         {
             int result = NativeSdl.InternalJoystickNumHats(joystick);
@@ -3528,7 +3528,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr JoystickOpen(int deviceIndex)
         {
             IntPtr result = NativeSdl.InternalJoystickOpen(deviceIndex);
@@ -3539,7 +3539,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <summary>
         ///     Joysticks the update
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void JoystickUpdate()
         {
             NativeSdl.InternalJoystickUpdate();
@@ -3549,7 +3549,7 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Nums the joysticks
         /// </summary>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int NumJoysticks()
         {
             int result = NativeSdl.InternalNumJoysticks();
@@ -3562,7 +3562,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The guid</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static Guid JoystickGetDeviceGuid(int deviceIndex) => NativeSdl.InternalJoystickGetDeviceGUID(deviceIndex);
 
         /// <summary>
@@ -3570,7 +3570,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The guid</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static Guid JoystickGetGuid(IntPtr joystick) => NativeSdl.InternalJoystickGetGUID(joystick);
 
         /// <summary>
@@ -3579,7 +3579,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="guid">The guid</param>
         /// <param name="pszGuid">The psz guid</param>
         /// <param name="cbGuid">The cb guid</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void JoystickGetGuidString(Guid guid, byte[] pszGuid, int cbGuid)
         {
             NativeSdl.InternalJoystickGetGUIDString(guid, pszGuid, cbGuid);
@@ -3590,7 +3590,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="pchGuid">The pch guid</param>
         /// <returns>The guid</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static Guid JoystickGetGuidFromString(string pchGuid) => NativeSdl.InternalJoystickGetGUIDFromString(pchGuid);
 
         /// <summary>
@@ -3598,7 +3598,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The ushort</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static ushort JoystickGetDeviceVendor(int deviceIndex) => NativeSdl.InternalJoystickGetDeviceVendor(deviceIndex);
 
         /// <summary>
@@ -3606,7 +3606,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The ushort</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static ushort JoystickGetDeviceProduct(int deviceIndex) => NativeSdl.InternalJoystickGetDeviceProduct(deviceIndex);
 
         /// <summary>
@@ -3614,7 +3614,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The ushort</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static ushort JoystickGetDeviceProductVersion(int deviceIndex) => NativeSdl.InternalJoystickGetDeviceProductVersion(deviceIndex);
 
         /// <summary>
@@ -3622,7 +3622,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The sdl joystick type</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static JoystickType JoystickGetDeviceType(int deviceIndex) => NativeSdl.InternalJoystickGetDeviceType(deviceIndex);
 
         /// <summary>
@@ -3630,7 +3630,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int JoystickGetDeviceInstanceId(int deviceIndex) => NativeSdl.InternalJoystickGetDeviceInstanceID(deviceIndex);
 
         /// <summary>
@@ -3638,7 +3638,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The ushort</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static ushort JoystickGetVendor(IntPtr joystick) => NativeSdl.InternalJoystickGetVendor(joystick);
 
         /// <summary>
@@ -3646,7 +3646,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The ushort</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static ushort JoystickGetProduct(IntPtr joystick) => NativeSdl.InternalJoystickGetProduct(joystick);
 
         /// <summary>
@@ -3654,7 +3654,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The ushort</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static ushort JoystickGetProductVersion(IntPtr joystick) => NativeSdl.InternalJoystickGetProductVersion(joystick);
 
         /// <summary>
@@ -3662,7 +3662,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The sdl joystick type</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static JoystickType JoystickGetType(IntPtr joystick) => NativeSdl.InternalJoystickGetType(joystick);
 
         /// <summary>
@@ -3670,7 +3670,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The sdl bool</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static bool JoystickGetAttached(IntPtr joystick) => NativeSdl.InternalJoystickGetAttached(joystick);
 
         /// <summary>
@@ -3678,7 +3678,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int JoystickInstanceId(IntPtr joystick) => NativeSdl.InternalJoystickInstanceID(joystick);
 
         /// <summary>
@@ -3686,7 +3686,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The sdl joystick power level</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static JoystickPowerLevel JoystickCurrentPowerLevel(IntPtr joystick) => NativeSdl.InternalJoystickCurrentPowerLevel(joystick);
 
         /// <summary>
@@ -3694,13 +3694,13 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="instanceId">The instance id</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr JoystickFromInstanceId(int instanceId) => NativeSdl.InternalJoystickFromInstanceID(instanceId);
 
         /// <summary>
         ///     Locks the joysticks
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void LockJoysticks()
         {
             NativeSdl.InternalLockJoysticks();
@@ -3709,7 +3709,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <summary>
         ///     Unlocks the joysticks
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void UnlockJoysticks()
         {
             NativeSdl.InternalUnlockJoysticks();
@@ -3720,14 +3720,14 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="mappingString">The mapping string</param>
         /// <returns>The result</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GameControllerAddMapping(string mappingString) => NativeSdl.InternalGameControllerAddMapping(mappingString);
 
         /// <summary>
         ///     Games the controller num mappings
         /// </summary>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GameControllerNumMappings() => NativeSdl.InternalGameControllerNumMappings();
 
         /// <summary>
@@ -3735,7 +3735,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="mappingIndex">The mapping index</param>
         /// <returns>The string</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static string GameControllerMappingForIndex(int mappingIndex)
         {
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGameControllerMappingForIndex(mappingIndex));
@@ -3748,7 +3748,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="file">The file</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GameControllerAddMappingsFromFile(string file) => NativeSdl.InternalGameControllerAddMappingsFromRW(RwFromFile(file, "rb"), 1);
 
         /// <summary>
@@ -3756,7 +3756,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <returns>The string</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static string GameControllerMappingForGuid(Guid guid)
         {
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGameControllerMappingForGUID(guid));
@@ -3769,7 +3769,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="gameController">The game controller</param>
         /// <returns>The string</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static string GameControllerMapping(IntPtr gameController)
         {
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGameControllerMapping(gameController));
@@ -3782,7 +3782,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="joystickIndex">The joystick index</param>
         /// <returns>The sdl bool</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static bool IsGameController(int joystickIndex) => NativeSdl.InternalIsGameController(joystickIndex);
 
         /// <summary>
@@ -3790,7 +3790,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="joystickIndex">The joystick index</param>
         /// <returns>The string</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static string GameControllerNameForIndex(int joystickIndex)
         {
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGameControllerNameForIndex(joystickIndex));
@@ -3803,7 +3803,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="joystickIndex">The joystick index</param>
         /// <returns>The string</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static string GameControllerMappingForDeviceIndex(int joystickIndex)
         {
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGameControllerMappingForDeviceIndex(joystickIndex));
@@ -3816,7 +3816,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="joystickIndex">The joystick index</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr GameControllerOpen(int joystickIndex) => NativeSdl.InternalGameControllerOpen(joystickIndex);
 
         /// <summary>
@@ -3824,7 +3824,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="gameController">The game controller</param>
         /// <returns>The string</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static string GameControllerName(IntPtr gameController)
         {
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGameControllerName(gameController));
@@ -3837,7 +3837,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="gameController">The game controller</param>
         /// <returns>The ushort</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static ushort GameControllerGetVendor(IntPtr gameController) => NativeSdl.InternalGameControllerGetVendor(gameController);
 
         /// <summary>
@@ -3845,7 +3845,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="gameController">The game controller</param>
         /// <returns>The ushort</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static ushort GameControllerGetProduct(IntPtr gameController) => NativeSdl.InternalGameControllerGetProduct(gameController);
 
         /// <summary>
@@ -3853,7 +3853,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="gameController">The game controller</param>
         /// <returns>The ushort</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static ushort GameControllerGetProductVersion(IntPtr gameController) => NativeSdl.InternalGameControllerGetProductVersion(gameController);
 
 
@@ -3862,7 +3862,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="gameController">The game controller</param>
         /// <returns>The sdl bool</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static bool GameControllerGetAttached(IntPtr gameController) => NativeSdl.InternalGameControllerGetAttached(gameController);
 
         /// <summary>
@@ -3870,7 +3870,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="gameController">The game controller</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr GameControllerGetJoystick(IntPtr gameController) => NativeSdl.InternalGameControllerGetJoystick(gameController);
 
         /// <summary>
@@ -3878,13 +3878,13 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="state">The state</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GameControllerEventState(int state) => NativeSdl.InternalGameControllerEventState(state);
 
         /// <summary>
         ///     Games the controller update
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void GameControllerUpdate()
         {
             NativeSdl.InternalGameControllerUpdate();
@@ -3895,7 +3895,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="pchString">The pch string</param>
         /// <returns>The sdl game controller axis</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static GameControllerAxis GameControllerGetAxisFromString(string pchString) => NativeSdl.InternalGameControllerGetAxisFromString(pchString);
 
         /// <summary>
@@ -3903,7 +3903,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="axis">The axis</param>
         /// <returns>The string</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static string GameControllerGetStringForAxis(GameControllerAxis axis)
         {
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGameControllerGetStringForAxis(axis));
@@ -3917,7 +3917,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="gameController">The game controller</param>
         /// <param name="axis">The axis</param>
         /// <returns>The result</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static GameControllerButtonBind GameControllerGetBindForAxis(IntPtr gameController, GameControllerAxis axis)
         {
             // This is guaranteed to never be null
@@ -3940,7 +3940,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="gameController">The game controller</param>
         /// <param name="axis">The axis</param>
         /// <returns>The short</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static short GameControllerGetAxis(IntPtr gameController, GameControllerAxis axis) => NativeSdl.InternalGameControllerGetAxis(gameController, axis);
 
         /// <summary>
@@ -3948,7 +3948,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="pchString">The pch string</param>
         /// <returns>The sdl game controller button</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static GameControllerButton GameControllerGetButtonFromString(string pchString) => NativeSdl.InternalGameControllerGetButtonFromString(pchString);
 
         /// <summary>
@@ -3956,7 +3956,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="button">The button</param>
         /// <returns>The string</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static string GameControllerGetStringForButton(GameControllerButton button)
         {
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGameControllerGetStringForButton(button));
@@ -3970,7 +3970,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="gameController">The game controller</param>
         /// <param name="button">The button</param>
         /// <returns>The result</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static GameControllerButtonBind GameControllerGetBindForButton(
             IntPtr gameController,
             GameControllerButton button
@@ -3996,7 +3996,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="gameController">The game controller</param>
         /// <param name="button">The button</param>
         /// <returns>The byte</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static byte GameControllerGetButton(IntPtr gameController, GameControllerButton button) => NativeSdl.InternalGameControllerGetButton(gameController, button);
 
         /// <summary>
@@ -4007,14 +4007,14 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="highFrequencyRumble">The high frequency rumble</param>
         /// <param name="durationMs">The duration ms</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GameControllerRumble(IntPtr gameController, ushort lowFrequencyRumble, ushort highFrequencyRumble, uint durationMs) => NativeSdl.InternalGameControllerRumble(gameController, lowFrequencyRumble, highFrequencyRumble, durationMs);
 
         /// <summary>
         ///     Games the controller close using the specified game controller
         /// </summary>
         /// <param name="gameController">The game controller</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void GameControllerClose(IntPtr gameController)
         {
             NativeSdl.InternalGameControllerClose(gameController);
@@ -4025,7 +4025,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="joyId">The joy id</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr GameControllerFromInstanceId(int joyId) => NativeSdl.InternalGameControllerFromInstanceID(joyId);
 
         /// <summary>
@@ -4033,21 +4033,21 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int JoystickIsHaptic(IntPtr joystick) => NativeSdl.InternalJoystickIsHaptic(joystick);
 
         /// <summary>
         ///     Mouses the is haptic
         /// </summary>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int MouseIsHaptic() => NativeSdl.InternalMouseIsHaptic();
 
         /// <summary>
         ///     Nums the haptics
         /// </summary>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int NumHaptics()
         {
             int result = NativeSdl.InternalNumHaptics();
@@ -4108,7 +4108,7 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Closes the audio device using the specified dev
         /// </summary>
         /// <param name="dev">The dev</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void CloseAudioDevice(uint dev)
         {
             NativeSdl.InternalCloseAudioDevice(dev);
@@ -4132,7 +4132,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="dev">The dev</param>
         /// <returns>The sdl audio status</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static AudioStatus GetAudioDeviceStatus(uint dev) => NativeSdl.InternalGetAudioDeviceStatus(dev);
 
         /// <summary>
@@ -4151,7 +4151,7 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Sdl the get current audio driver
         /// </summary>
         /// <returns>The string</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static string GetCurrentAudioDriver()
         {
             string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetCurrentAudioDriver());
@@ -4164,7 +4164,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="isCapture">The is capture</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetNumAudioDevices(int isCapture)
         {
             int result = NativeSdl.InternalGetNumAudioDevices(isCapture);
@@ -4176,7 +4176,7 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Gets the num audio drivers
         /// </summary>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetNumAudioDrivers()
         {
             int result = NativeSdl.InternalGetNumAudioDrivers();
@@ -4203,7 +4203,7 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Locks the audio device using the specified dev
         /// </summary>
         /// <param name="dev">The dev</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void LockAudioDevice(uint dev)
         {
             NativeSdl.InternalLockAudioDevice(dev);
@@ -4216,7 +4216,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="src">The src</param>
         /// <param name="len">The len</param>
         /// <param name="volume">The volume</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void MixAudio([Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 2)] byte[] dst, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 2)] byte[] src, uint len, int volume)
         {
             NativeSdl.InternalMixAudio(dst, src, len, volume);
@@ -4230,7 +4230,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="format">The format</param>
         /// <param name="len">The len</param>
         /// <param name="volume">The volume</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void MixAudioFormat(IntPtr dst, IntPtr src, ushort format, uint len, int volume)
         {
             NativeSdl.InternalMixAudioFormat(dst, src, format, len, volume);
@@ -4244,7 +4244,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="format">The format</param>
         /// <param name="len">The len</param>
         /// <param name="volume">The volume</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void MixAudioFormat([Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)] byte[] dst, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)] byte[] src, ushort format, uint len, int volume)
         {
             NativeSdl.InternalMixAudioFormat(dst, src, format, len, volume);
@@ -4259,7 +4259,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="obtained">The obtained</param>
         /// <param name="allowedChanges">The allowed changes</param>
         /// <returns>The uint</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static uint OpenAudioDevice(IntPtr device, int isCapture, ref AudioSpec desired, out AudioSpec obtained, int allowedChanges)
         {
             uint result = NativeSdl.InternalOpenAudioDevice(device, isCapture, ref desired, out obtained, allowedChanges);
@@ -4276,7 +4276,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="obtained">The obtained</param>
         /// <param name="allowedChanges">The allowed changes</param>
         /// <returns>The uint</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static uint SdlOpenAudioDevice(string device, int isCapture, ref AudioSpec desired, out AudioSpec obtained, int allowedChanges)
         {
             uint result = NativeSdl.InternalOpenAudioDevice(device, isCapture, ref desired, out obtained, allowedChanges);
@@ -4288,7 +4288,7 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Sdl the pause audio using the specified pause on
         /// </summary>
         /// <param name="pauseOn">The pause on</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void SdlPauseAudio(int pauseOn)
         {
             NativeSdl.InternalPauseAudio(pauseOn);
@@ -4299,7 +4299,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="dev">The dev</param>
         /// <param name="pauseOn">The pause on</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void SdlPauseAudioDevice(uint dev, int pauseOn)
         {
             NativeSdl.InternalPauseAudioDevice(dev, pauseOn);
@@ -4309,7 +4309,7 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Sdl the unlock audio device using the specified dev
         /// </summary>
         /// <param name="dev">The dev</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void SdlUnlockAudioDevice(uint dev)
         {
             NativeSdl.InternalUnlockAudioDevice(dev);
@@ -4339,7 +4339,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="buf">The buf</param>
         /// <param name="len">The len</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SdlAudioStreamPut(IntPtr stream, IntPtr buf, int len)
         {
             int result = NativeSdl.InternalAudioStreamPut(stream, buf, len);
@@ -4354,7 +4354,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="buf">The buf</param>
         /// <param name="len">The len</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SdlAudioStreamGet(IntPtr stream, IntPtr buf, int len)
         {
             int result = NativeSdl.InternalAudioStreamGet(stream, buf, len);
@@ -4367,7 +4367,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// </summary>
         /// <param name="stream">The stream</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SdlAudioStreamAvailable(IntPtr stream)
         {
             int result = NativeSdl.InternalAudioStreamAvailable(stream);
@@ -4379,7 +4379,7 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Sdl the audio stream clear using the specified stream
         /// </summary>
         /// <param name="stream">The stream</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void SdlAudioStreamClear(IntPtr stream)
         {
             NativeSdl.InternalAudioStreamClear(stream);
@@ -4389,7 +4389,7 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Sdl the free audio stream using the specified stream
         /// </summary>
         /// <param name="stream">The stream</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void SdlFreeAudioStream(IntPtr stream)
         {
             NativeSdl.InternalFreeAudioStream(stream);
@@ -4399,7 +4399,7 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Internals the sdl get performance frequency
         /// </summary>
         /// <returns>The ulong</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static ulong GetPerformanceFrequency()
         {
             ulong result = NativeSdl.InternalGetPerformanceFrequency();
@@ -4411,7 +4411,7 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     Gets the performance counter
         /// </summary>
         /// <returns>The ulong</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static ulong GetPerformanceCounter()
         {
             ulong result = NativeSdl.InternalGetPerformanceCounter();
@@ -4428,7 +4428,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="bits">The bits</param>
         /// <param name="bytes">The bytes</param>
         /// <returns>The uint</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         private static uint SdlDefinePixelFormat(TypePixel type, uint order, PackedLayout layout, byte bits, byte bytes) => (uint) ((1 << 28) | ((byte) type << 24) | ((byte) order << 20) | ((byte) layout << 16) | (bits << 8) | bytes);
 
         /// <summary>
@@ -4439,7 +4439,7 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="c">The </param>
         /// <param name="d">The </param>
         /// <returns>The uint</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static uint SdlDefinePixelFourcc(byte a, byte b, byte c, byte d) => Fourcc(a, b, c, d);
 
         /// <summary>

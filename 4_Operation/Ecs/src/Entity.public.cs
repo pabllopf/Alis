@@ -101,7 +101,7 @@ namespace Alis.Core.Ecs
     /// <exception cref="InvalidOperationException"><see cref="Entity"/> is dead.</exception>
     /// <exception cref="ComponentNotFoundException"><see cref="Entity"/> does not have component of type <typeparamref name="T"/>.</exception>
     /// <returns>A reference to the component in memory.</returns>
-    [SkipLocalsInit]
+    [System.Runtime.CompilerServices.SkipLocalsInit]
     public ref T Get<T>()
     {
         //Total: 4x lookup
@@ -534,7 +534,7 @@ namespace Alis.Core.Ecs
     /// <summary>
     /// Deletes this entity
     /// </summary>
-    [SkipLocalsInit]
+    [System.Runtime.CompilerServices.SkipLocalsInit]
     public void Delete()
     {
         var world = GlobalWorldTables.Worlds.UnsafeIndexNoResize(WorldID);

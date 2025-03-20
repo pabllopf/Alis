@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.CompilerServices;
+
 using System.Threading;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Core;
@@ -214,12 +214,12 @@ namespace Alis.Core.Ecs.Updating
         /// <returns>The size</returns>
         internal static int GetComponentSize<T>()
         {
-            if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+            if (System.Runtime.CompilerServices.RuntimeHelpers.IsReferenceOrContainsReferences<T>())
             {
                 return -1;
             }
 
-            int size = Unsafe.SizeOf<T>();
+            int size = System.Runtime.CompilerServices.Unsafe.SizeOf<T>();
 
             if ((size & (size - 1)) != 0)
             {

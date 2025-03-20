@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.CompilerServices;
+
 using System.Runtime.InteropServices;
 
 namespace Alis.Core.Ecs.Collections
@@ -43,13 +43,13 @@ namespace Alis.Core.Ecs.Collections
     {
         public int Length => _length;
 
-        private static readonly nuint Size = (nuint)Unsafe.SizeOf<T>();
+        private static readonly nuint Size = (nuint)System.Runtime.CompilerServices.Unsafe.SizeOf<T>();
         private T* _array;
         private int _length;
 
         public ref T this[int index]
         {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
             get
             {
 #if DEBUG
@@ -62,7 +62,7 @@ namespace Alis.Core.Ecs.Collections
 
         public NativeArray(int length)
         {
-            if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+            if (System.Runtime.CompilerServices.RuntimeHelpers.IsReferenceOrContainsReferences<T>())
                 throw new InvalidOperationException("Cannot store managed objects in native code");
             if (length < 1)
                 throw new ArgumentOutOfRangeException();
@@ -84,11 +84,11 @@ namespace Alis.Core.Ecs.Collections
             _array = (T*)0;
         }
 
-        public Span<T> AsSpan() => MemoryMarshal.CreateSpan(ref Unsafe.AsRef<T>(_array), _length);
+        public Span<T> AsSpan() => MemoryMarshal.CreateSpan(ref System.Runtime.CompilerServices.Unsafe.AsRef<T>(_array), _length);
         public Span<T> AsSpanLen(int len)
         {
             System.Diagnostics.Debug.Assert(len <= _length);
-            return MemoryMarshal.CreateSpan(ref Unsafe.AsRef<T>(_array), len);
+            return MemoryMarshal.CreateSpan(ref System.Runtime.CompilerServices.Unsafe.AsRef<T>(_array), len);
         }
     }
 #endif

@@ -2439,7 +2439,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [`00da05a`](https://github.com/pabllopf/Alis/commit/00da05ad5b8520ac93cf06c66db68d47f15b695d) - refactor sdl ttf files
   to include better wrappers *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`a801768`](https://github.com/pabllopf/Alis/commit/a801768caed219357ee66dbbfe433091ca1d1613) - add to
-  sdl [return: NotNull]         [MethodImpl(MethodImplOptions.AggressiveInlining)] *(commit
+  sdl [return: NotNull]         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)] *(commit
   by [@pabllopf](https://github.com/pabllopf))*
 - [`6023669`](https://github.com/pabllopf/Alis/commit/6023669fd3fded13c3efb7a10b3f62e51e5623be) - refactor the sdl
   native code to include all wrappers *(commit by [@pabllopf](https://github.com/pabllopf))*

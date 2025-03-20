@@ -32,7 +32,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.Runtime.CompilerServices;
+
 using Alis.Core.Ecs.Buffers;
 using Alis.Core.Ecs.Core.Memory;
 
@@ -60,7 +60,7 @@ namespace Alis.Core.Ecs.Collections
     public readonly ref T this[int i] => ref _buffer[i];
 
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
     public void Push(T comp)
     {
         var buffer = _buffer;
@@ -78,12 +78,12 @@ namespace Alis.Core.Ecs.Collections
 
     public void Compact() => Array.Resize(ref _buffer, _nextIndex);
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
     public T Pop()
     {
         var buffer = _buffer;
         var next = buffer[--_nextIndex];
-        if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+        if (System.Runtime.CompilerServices.RuntimeHelpers.IsReferenceOrContainsReferences<T>())
             buffer[_nextIndex] = default!;
         return next;
     }
@@ -91,7 +91,7 @@ namespace Alis.Core.Ecs.Collections
     [DebuggerStepThrough]
     public bool TryPop(out T? value)
     {
-        if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+        if (System.Runtime.CompilerServices.RuntimeHelpers.IsReferenceOrContainsReferences<T>())
             throw new NotImplementedException();
 
         if (_nextIndex == 0)
@@ -114,7 +114,7 @@ namespace Alis.Core.Ecs.Collections
         if (index < buffer.Length)
         {
             buffer[index] = buffer[--_nextIndex];
-            if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+            if (System.Runtime.CompilerServices.RuntimeHelpers.IsReferenceOrContainsReferences<T>())
                 buffer[_nextIndex] = default!;
         }
     }
@@ -131,7 +131,7 @@ namespace Alis.Core.Ecs.Collections
 
     public void Clear()
     {
-        if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+        if (System.Runtime.CompilerServices.RuntimeHelpers.IsReferenceOrContainsReferences<T>())
             AsSpan().Clear();
         _nextIndex = 0;
     }

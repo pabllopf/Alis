@@ -26,9 +26,7 @@
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
-
-using System.Runtime.CompilerServices;
-using Alis.Core.Aspect.Math.Util;
+using System;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Aspect.Math.Matrix
@@ -284,7 +282,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="value1">The first matrix.</param>
         /// <param name="value2">The second matrix.</param>
         /// <returns>The matrix that contains the summed values of <paramref name="value1" /> and <paramref name="value2" />.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static Matrix3X2 Add(Matrix3X2 value1, Matrix3X2 value2) => value1 + value2;
 
 

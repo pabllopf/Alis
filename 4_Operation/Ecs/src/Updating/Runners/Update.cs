@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.CompilerServices;
+
 using System.Threading;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Components;
@@ -56,7 +56,7 @@ namespace Alis.Core.Ecs.Updating.Runners
             {
                 comp.Update();
 
-                comp = ref Unsafe.Add(ref comp, 1);
+                comp = ref System.Runtime.CompilerServices.Unsafe.Add(ref comp, 1);
             }
         }
 
@@ -93,9 +93,9 @@ namespace Alis.Core.Ecs.Updating.Runners
             {
                 comp.Update(ref arg);
 
-                comp = ref Unsafe.Add(ref comp, 1);
+                comp = ref System.Runtime.CompilerServices.Unsafe.Add(ref comp, 1);
 
-                arg = ref Unsafe.Add(ref arg, 1);
+                arg = ref System.Runtime.CompilerServices.Unsafe.Add(ref arg, 1);
             }
         }
 

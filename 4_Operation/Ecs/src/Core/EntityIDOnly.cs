@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
+
 using System.Runtime.InteropServices;
 
 namespace Alis.Core.Ecs.Core
@@ -71,7 +71,7 @@ namespace Alis.Core.Ecs.Core
         ///     Sets the entity using the specified entity
         /// </summary>
         /// <param name="entity">The entity</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         internal void SetEntity(ref Entity entity)
         {
             entity.EntityVersion = Version;
@@ -82,7 +82,7 @@ namespace Alis.Core.Ecs.Core
         ///     Inits the entity
         /// </summary>
         /// <param name="entity">The entity</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         internal void Init(Entity entity)
         {
             Version = entity.EntityVersion;
@@ -93,7 +93,7 @@ namespace Alis.Core.Ecs.Core
         ///     Inits the entity
         /// </summary>
         /// <param name="entity">The entity</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         internal void Init(EntityIDOnly entity)
         {
             Version = entity.Version;

@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.CompilerServices;
+
 using System.Runtime.InteropServices;
 
 namespace Alis.Core.Ecs.Core.Archetype
@@ -89,12 +89,12 @@ namespace Alis.Core.Ecs.Core.Archetype
         };
 
 #if NET8_0_OR_GREATER
-        internal long Packed => Unsafe.BitCast<ArchetypeEdgeKey, long>(this);
+        internal long Packed => System.Runtime.CompilerServices.Unsafe.BitCast<ArchetypeEdgeKey, long>(this);
 #else
         /// <summary>
         ///     Gets the value of the packed
         /// </summary>
-        internal long Packed => Unsafe.As<ArchetypeEdgeKey, long>(ref this);
+        internal long Packed => System.Runtime.CompilerServices.Unsafe.As<ArchetypeEdgeKey, long>(ref this);
 #endif
         /// <summary>
         ///     Equalses the other

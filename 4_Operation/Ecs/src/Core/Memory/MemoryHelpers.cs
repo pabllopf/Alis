@@ -33,7 +33,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics;
 using System.Numerics;
-using System.Runtime.CompilerServices;
+
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Buffers;
 
@@ -47,7 +47,7 @@ namespace Alis.Core.Ecs.Core.Memory
 
     public static int RoundUpToNextMultipleOf16(int value) => (value + 15) & ~15;
     public static int RoundDownToNextMultipleOf16(int value) => value & ~15;
-    public static byte BoolToByte(bool b) => Unsafe.As<bool, byte>(ref b);
+    public static byte BoolToByte(bool b) => System.Runtime.CompilerServices.Unsafe.As<bool, byte>(ref b);
 
     public static ImmutableArray<T> ReadOnlySpanToImmutableArray<T>(ReadOnlySpan<T> span)
     {
@@ -130,7 +130,7 @@ namespace Alis.Core.Ecs.Core.Memory
 #endif
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
     public static void CopyBlock<TBlock>(ref byte destination, ref byte source)
         where TBlock : struct
     {
@@ -139,7 +139,7 @@ namespace Alis.Core.Ecs.Core.Memory
             || typeof(TBlock) == typeof(Block4)
             || typeof(TBlock) == typeof(Block8)
             || typeof(TBlock) == typeof(Block16));
-        Unsafe.As<byte, TBlock>(ref destination) = Unsafe.As<byte, TBlock>(ref destination);
+        System.Runtime.CompilerServices.Unsafe.As<byte, TBlock>(ref destination) = System.Runtime.CompilerServices.Unsafe.As<byte, TBlock>(ref destination);
     }
 
     [StructLayout(LayoutKind.Sequential, Size = 2)]
@@ -156,11 +156,11 @@ namespace Alis.Core.Ecs.Core.Memory
     [Conditional("DEBUG")]
     public static void Poison<T>(ref T item)
     {
-        if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+        if (System.Runtime.CompilerServices.RuntimeHelpers.IsReferenceOrContainsReferences<T>())
             throw new NotSupportedException("Cleared anyways");
 
 #if NET6_0_OR_GREATER
-        Span<byte> raw = MemoryMarshal.CreateSpan(ref Unsafe.As<T, byte>(ref item), Unsafe.SizeOf<T>());
+        Span<byte> raw = MemoryMarshal.CreateSpan(ref System.Runtime.CompilerServices.Unsafe.As<T, byte>(ref item), System.Runtime.CompilerServices.Unsafe.SizeOf<T>());
         raw.Fill(93);
 #endif
     }

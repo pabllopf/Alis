@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.CompilerServices;
+
 using Alis.Core.Ecs.Core.Events;
 
 namespace Alis.Core.Ecs.Collections
@@ -170,14 +170,14 @@ namespace Alis.Core.Ecs.Collections
         /// <summary>
         ///     Initializes a new instance of the <see cref="IDTable{T}" /> class
         /// </summary>
-        public IDTable() : base(Array.Empty<T>(), RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+        public IDTable() : base(Array.Empty<T>(), System.Runtime.CompilerServices.RuntimeHelpers.IsReferenceOrContainsReferences<T>())
         {
         }
 
         /// <summary>
         ///     Gets the value of the buffer
         /// </summary>
-        public ref T[] Buffer => ref Unsafe.As<Array, T[]>(ref _buffer);
+        public ref T[] Buffer => ref System.Runtime.CompilerServices.Unsafe.As<Array, T[]>(ref _buffer);
 
         /// <summary>
         ///     Creates the index

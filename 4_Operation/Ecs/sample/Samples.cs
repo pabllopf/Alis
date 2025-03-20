@@ -57,6 +57,21 @@ namespace Frent.Sample
             //Update the three entities
             world.Update();
         }
+        
+        /// <summary>
+        ///     Updates the component
+        /// </summary>
+        [Sample]
+        public static void Create_Component()
+        {
+            using World world = new World();
+
+            //Create three entities
+            for (int i = 0; i < 100_000; i++)
+            {
+                world.Create<ConsoleText>(new(ConsoleColor.Blue));
+            }
+        }
 
 
         /// <summary>

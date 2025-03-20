@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
+
 using Alis.Core.Ecs.Core.Archetype;
 
 namespace Alis.Core.Ecs.Systems
@@ -55,7 +55,7 @@ namespace Alis.Core.Ecs.Systems
                 {
                     action(ref c1);
 
-                    c1 = ref Unsafe.Add(ref c1, 1);
+                    c1 = ref System.Runtime.CompilerServices.Unsafe.Add(ref c1, 1);
                 }
             }
         }
@@ -79,7 +79,7 @@ namespace Alis.Core.Ecs.Systems
                 {
                     action.Run(ref c1);
 
-                    c1 = ref Unsafe.Add(ref c1, 1);
+                    c1 = ref System.Runtime.CompilerServices.Unsafe.Add(ref c1, 1);
                 }
             }
         }

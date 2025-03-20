@@ -29,7 +29,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+
 using Alis.Core.Ecs.Buffers;
 
 namespace Alis.Core.Ecs.Collections
@@ -59,7 +59,7 @@ namespace Alis.Core.Ecs.Collections
         ///     Pushes the comp
         /// </summary>
         /// <param name="comp">The comp</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public void Push(T comp)
         {
             T[]? buffer = _buffer;
@@ -104,11 +104,11 @@ namespace Alis.Core.Ecs.Collections
         ///     Pops this instance
         /// </summary>
         /// <returns>The next</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public T Pop()
         {
             T? next = _buffer[--_nextIndex];
-            if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+            if (System.Runtime.CompilerServices.RuntimeHelpers.IsReferenceOrContainsReferences<T>())
             {
                 _buffer[_nextIndex] = default!;
             }

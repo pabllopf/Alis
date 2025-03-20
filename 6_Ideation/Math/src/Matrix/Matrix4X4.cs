@@ -28,10 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.CompilerServices;
 using Alis.Core.Aspect.Math.Vector;
-using HashCode = Alis.Core.Aspect.Math.Util.HashCode;
-
 namespace Alis.Core.Aspect.Math.Matrix
 {
     /// <summary>
@@ -107,8 +104,8 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="m34">The value to assign to the fourth element in the third row.</param>
         /// <param name="m41">The value to assign to the first element in the fourth row.</param>
         /// <param name="m42">The value to assign to the second element in the fourth row.</param>
-        /// <param name="m43">The value to assign to the third element in the fourth row.</param>
-        /// <param name="m44">The value to assign to the fourth element in the fourth row.</param>
+        /// <param name="m43">The value to assign to the third eleme<>nt in the fourth row<>.</param>
+        /// <param name="m44">The value <><><><><><><><><><><><><><><><>to assign to the fourth element in the fourth row.</param>
         public Matrix4X4(float m11, float m12, float m13, float m14,
             float m21, float m22, float m23, float m24,
             float m31, float m32, float m33, float m34,
@@ -334,7 +331,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         ///     The current instance and <paramref name="obj" /> are equal if <paramref name="obj" /> is a
         ///     <see cref="Matrix4X4" /> object and the corresponding elements of each matrix are equal.
         /// </remarks>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public override bool Equals(object obj) => obj is Matrix4X4 other && Equals(other);
 
         public static Matrix4X4 operator *(Matrix4X4 a, Matrix4X4 b)
