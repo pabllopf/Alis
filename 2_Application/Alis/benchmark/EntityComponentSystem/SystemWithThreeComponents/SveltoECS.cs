@@ -88,8 +88,8 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
                     }
 
                     EntityInitializer entity = Factory.BuildEntity<Entity>(id++, Group);
-                    entity.GetOrAdd<Component2>() = new Component2 {Value = 1};
-                    entity.GetOrAdd<Component3>() = new Component3 {Value = 1};
+                    entity.Get<Component2>() = new Component2 {Value = 1};
+                    entity.Get<Component3>() = new Component3 {Value = 1};
                 }
 
                 Scheduler.SubmitEntities();

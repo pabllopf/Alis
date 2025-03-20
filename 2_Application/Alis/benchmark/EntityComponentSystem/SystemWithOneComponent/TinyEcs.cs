@@ -82,10 +82,8 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
                         World.Entity();
                     }
 
-                    World.Entity().Set<Component1>();
+                    World.Entity().Set<Component1>(new Component1 {Value = 1});
                 }
-
-                Query = World.Query<Component1>();
             }
 
             /// <summary>

@@ -76,7 +76,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
                         _ => Factory.BuildEntity<Entity4>(id++, Group)
                     };
 
-                    entity.GetOrAdd<Component2>() = new Component2 {Value = 1};
+                    entity.Get<Component2>() = new Component2 {Value = 1};
                 }
 
                 Scheduler.SubmitEntities();

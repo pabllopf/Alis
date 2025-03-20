@@ -1,34 +1,7 @@
-﻿// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Entity.variadic.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
-
-using System;
+﻿using System;
 using System.Collections.Immutable;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Core;
 using Alis.Core.Ecs.Core.Archetype;
@@ -39,284 +12,284 @@ using Alis.Core.Ecs.Updating;
 namespace Alis.Core.Ecs
 {
     partial struct Entity
-{
-    //traversing archetype graph strategy:
-    //1. hit small & fast static per type cache - 1 branch
-    //2. dictionary lookup
-    //3. find existing archetype
-    //4. create new archetype
-
-    /// <summary>
-    /// Adds a component to this <see cref="Entity"/>.
-    /// </summary>
-    /// <remarks>If the world is being updated, changed are deffered to the end of the world update.</remarks>
-    [System.Runtime.CompilerServices.SkipLocalsInit]
-    public void Add<T>(in T c1)
     {
-        ref EntityLocation thisLookup = ref AssertIsAlive(out World world);
+        //traversing archetype graph strategy:
+        //1. hit small & fast static per type cache - 1 branch
+        //2. dictionary lookup
+        //3. find existing archetype
+        //4. create new archetype
 
-        if (!world.AllowStructualChanges)
+        /// <summary>
+        /// Adds a component to this <see cref="Entity"/>.
+        /// </summary>
+        /// <remarks>If the world is being updated, changed are deffered to the end of the world update.</remarks>
+        [SkipLocalsInit]
+        public void Add<T>(in T c1)
         {
-            world.WorldUpdateCommandBuffer.AddComponent(this, c1);
-            return;
-        }
+            ref EntityLocation thisLookup = ref AssertIsAlive(out World world);
 
-        Archetype to = TraverseThroughCacheOrCreate<ComponentID, NeighborCache<T>>(
-            world,
-            ref NeighborCache<T>.Add.Lookup,
-            ref thisLookup,
-            true);
-
-        Span<ComponentStorageBase> buff = [null!];
-        world.MoveEntityToArchetypeAdd(buff, this, ref thisLookup, out EntityLocation nextLocation, to);
-
-        ref var c1ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T>>(buff.UnsafeSpanIndex(0))[nextLocation.Index]; c1ref = c1;
-
-        Component<T>.Initer?.Invoke(this, ref c1ref);
-
-        EntityFlags flags = thisLookup.Flags;
-        if (EntityLocation.HasEventFlag(flags | world.WorldEventFlags, EntityFlags.AddComp | EntityFlags.AddGenericComp))
-        {
-            if (world.ComponentAddedEvent.HasListeners)
-                InvokeComponentWorldEvents<T>(ref world.ComponentAddedEvent, this);
-
-            if (EntityLocation.HasEventFlag(flags, EntityFlags.AddComp | EntityFlags.AddGenericComp))
+            if (!world.AllowStructualChanges)
             {
-#if (NETSTANDARD || NETCOREAPP || NETFRAMEWORK) && !NET6_0_OR_GREATER
+                world.WorldUpdateCommandBuffer.AddComponent(this, c1);
+                return;
+            }
+
+            Archetype to = TraverseThroughCacheOrCreate<ComponentID, NeighborCache<T>>(
+                world,
+                ref NeighborCache<T>.Add.Lookup,
+                ref thisLookup,
+                true);
+
+            Span<ComponentStorageBase> buff = [null!];
+            world.MoveEntityToArchetypeAdd(buff, this, ref thisLookup, out EntityLocation nextLocation, to);
+
+            ref var c1ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T>>(buff.UnsafeSpanIndex(0))[nextLocation.Index]; c1ref = c1;
+
+            Component<T>.Initer?.Invoke(this, ref c1ref);
+
+            EntityFlags flags = thisLookup.Flags;
+            if (EntityLocation.HasEventFlag(flags | world.WorldEventFlags, EntityFlags.AddComp | EntityFlags.AddGenericComp))
+            {
+                if (world.ComponentAddedEvent.HasListeners)
+                    InvokeComponentWorldEvents<T>(ref world.ComponentAddedEvent, this);
+
+                if (EntityLocation.HasEventFlag(flags, EntityFlags.AddComp | EntityFlags.AddGenericComp))
+                {
+#if NETSTANDARD2_1
                 EventRecord events = world.EventLookup[EntityIDOnly];
 #else
-                ref EventRecord events = ref System.Runtime.InteropServices.CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIDOnly);
+                    ref EventRecord events = ref CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIDOnly);
 #endif
-                InvokePerEntityEvents(this, EntityLocation.HasEventFlag(thisLookup.Flags, EntityFlags.AddGenericComp), ref events.Add, ref c1ref);
+                    InvokePerEntityEvents(this, EntityLocation.HasEventFlag(thisLookup.Flags, EntityFlags.AddGenericComp), ref events.Add, ref c1ref);
+                }
             }
         }
-    }
 
-    /// <summary>
-    /// Removes a component from this <see cref="Entity"/>
-    /// </summary>
-    /// <inheritdoc cref="Add{T}(in T)"/>
-    [System.Runtime.CompilerServices.SkipLocalsInit]
-    public void Remove<T>()
-    {
-        ref EntityLocation thisLookup = ref AssertIsAlive(out World world);
-
-        if (!world.AllowStructualChanges)
+        /// <summary>
+        /// Removes a component from this <see cref="Entity"/>
+        /// </summary>
+        /// <inheritdoc cref="Add{T}(in T)"/>
+        [SkipLocalsInit]
+        public void Remove<T>()
         {
-            world.WorldUpdateCommandBuffer.RemoveComponent(this, Component<T>.ID);
-            return;
+            ref EntityLocation thisLookup = ref AssertIsAlive(out World world);
+
+            if (!world.AllowStructualChanges)
+            {
+                world.WorldUpdateCommandBuffer.RemoveComponent(this, Component<T>.ID);
+                return;
+            }
+
+            Archetype to = TraverseThroughCacheOrCreate<ComponentID, NeighborCache<T>>(
+                world,
+                ref NeighborCache<T>.Remove.Lookup,
+                ref thisLookup,
+                false);
+
+            Span<ComponentHandle> runners = stackalloc ComponentHandle[1];
+            world.MoveEntityToArchetypeRemove(runners, this, ref thisLookup, to);
+            //world.MoveEntityToArchetypeRemove invokes the events for us
         }
 
-        Archetype to = TraverseThroughCacheOrCreate<ComponentID, NeighborCache<T>>(
-            world,
-            ref NeighborCache<T>.Remove.Lookup,
-            ref thisLookup,
-            false);
-
-        Span<ComponentHandle> runners = stackalloc ComponentHandle[1];
-        world.MoveEntityToArchetypeRemove(runners, this, ref thisLookup, to);
-        //world.MoveEntityToArchetypeRemove invokes the events for us
-    }
-
-    /// <summary>
-    /// Adds a tag to this <see cref="Entity"/>
-    /// </summary>
-    /// <inheritdoc cref="Add{T}(in T)"/>
-    [System.Runtime.CompilerServices.SkipLocalsInit]
-    public void Tag<T>()
-    {
-        ref EntityLocation thisLookup = ref AssertIsAlive(out World world);
-
-        Archetype to = TraverseThroughCacheOrCreate<TagID, NeighborCache<T>>(
-            world,
-            ref NeighborCache<T>.Tag.Lookup,
-            ref thisLookup,
-            true);
-
-        world.MoveEntityToArchetypeIso(this, ref thisLookup, to);
-
-        EntityFlags flags = thisLookup.Flags | world.WorldEventFlags;
-        if (EntityLocation.HasEventFlag(flags, EntityFlags.Tagged))
+        /// <summary>
+        /// Adds a tag to this <see cref="Entity"/>
+        /// </summary>
+        /// <inheritdoc cref="Add{T}(in T)"/>
+        [SkipLocalsInit]
+        public void Tag<T>()
         {
-            if (world.Tagged.HasListeners)
-                InvokeTagWorldEvents<T>(ref world.Tagged, this);
+            ref EntityLocation thisLookup = ref AssertIsAlive(out World world);
 
+            Archetype to = TraverseThroughCacheOrCreate<TagID, NeighborCache<T>>(
+                world,
+                ref NeighborCache<T>.Tag.Lookup,
+                ref thisLookup,
+                true);
+
+            world.MoveEntityToArchetypeIso(this, ref thisLookup, to);
+
+            EntityFlags flags = thisLookup.Flags | world.WorldEventFlags;
             if (EntityLocation.HasEventFlag(flags, EntityFlags.Tagged))
             {
-#if (NETSTANDARD || NETCOREAPP || NETFRAMEWORK) && !NET6_0_OR_GREATER
+                if (world.Tagged.HasListeners)
+                    InvokeTagWorldEvents<T>(ref world.Tagged, this);
+
+                if (EntityLocation.HasEventFlag(flags, EntityFlags.Tagged))
+                {
+#if NETSTANDARD2_1
                 EventRecord events = world.EventLookup[EntityIDOnly];
 #else
-                ref EventRecord events = ref System.Runtime.InteropServices.CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIDOnly);
+                    ref EventRecord events = ref CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIDOnly);
 #endif
-                InvokePerEntityTagEvents<T>(this, ref events.Tag);
+                    InvokePerEntityTagEvents<T>(this, ref events.Tag);
+                }
             }
         }
-    }
 
-    /// <summary>
-    /// Removes a tag from this <see cref="Entity"/>
-    /// </summary>
-    /// <inheritdoc cref="Add{T}(in T)"/>
-    [System.Runtime.CompilerServices.SkipLocalsInit]
-    public void Detach<T>()
-    {
-        ref EntityLocation thisLookup = ref AssertIsAlive(out World world);
-
-        Archetype to = TraverseThroughCacheOrCreate<TagID, NeighborCache<T>>(
-            world,
-            ref NeighborCache<T>.Detach.Lookup,
-            ref thisLookup,
-            false);
-
-        world.MoveEntityToArchetypeIso(this, ref thisLookup, to);
-
-        EntityFlags flags = thisLookup.Flags | world.WorldEventFlags;
-        if (EntityLocation.HasEventFlag(flags, EntityFlags.Detach))
+        /// <summary>
+        /// Removes a tag from this <see cref="Entity"/>
+        /// </summary>
+        /// <inheritdoc cref="Add{T}(in T)"/>
+        [SkipLocalsInit]
+        public void Detach<T>()
         {
-            if (world.Detached.HasListeners)
-                InvokeTagWorldEvents<T>(ref world.Detached, this);
+            ref EntityLocation thisLookup = ref AssertIsAlive(out World world);
 
+            Archetype to = TraverseThroughCacheOrCreate<TagID, NeighborCache<T>>(
+                world,
+                ref NeighborCache<T>.Detach.Lookup,
+                ref thisLookup,
+                false);
+
+            world.MoveEntityToArchetypeIso(this, ref thisLookup, to);
+
+            EntityFlags flags = thisLookup.Flags | world.WorldEventFlags;
             if (EntityLocation.HasEventFlag(flags, EntityFlags.Detach))
             {
-#if (NETSTANDARD || NETCOREAPP || NETFRAMEWORK) && !NET6_0_OR_GREATER
+                if (world.Detached.HasListeners)
+                    InvokeTagWorldEvents<T>(ref world.Detached, this);
+
+                if (EntityLocation.HasEventFlag(flags, EntityFlags.Detach))
+                {
+#if NETSTANDARD2_1
                 EventRecord events = world.EventLookup[EntityIDOnly];
 #else
-                ref EventRecord events = ref System.Runtime.InteropServices.CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIDOnly);
+                    ref EventRecord events = ref CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIDOnly);
 #endif
-                InvokePerEntityTagEvents<T>(this, ref events.Detach);
+                    InvokePerEntityTagEvents<T>(this, ref events.Detach);
+                }
             }
         }
-    }
 
-    private static void InvokeComponentWorldEvents<T>(ref Event<ComponentID> @event, Entity entity)
-    {
-        @event.InvokeInternal(entity, Component<T>.ID);
-    }
-
-    private static void InvokePerEntityEvents<T>(Entity entity, bool hasGenericEvent, ref ComponentEvent events, ref T component)
-    {
-        events.NormalEvent.Invoke(entity, Component<T>.ID);
-
-        if (!hasGenericEvent)
-            return;
-
-        events.GenericEvent!.Invoke(entity, ref component);
-    }
-
-    private static void InvokeTagWorldEvents<T>(ref TagEvent @event, Entity entity)
-    {
-        @event.InvokeInternal(entity, Core.Tag<T>.ID);
-    }
-
-    private static void InvokePerEntityTagEvents<T>(Entity entity, ref TagEvent events)
-    {
-        events.Invoke(entity, Core.Tag<T>.ID);
-    }
-
-    private struct NeighborCache<T> : IArchetypeGraphEdge
-    {
-        public void ModifyTags(ref ImmutableArray<TagID> tags, bool add)
+        private static void InvokeComponentWorldEvents<T>(ref Event<ComponentID> @event, Entity entity)
         {
-            if (add)
+            @event.InvokeInternal(entity, Component<T>.ID);
+        }
+
+        private static void InvokePerEntityEvents<T>(Entity entity, bool hasGenericEvent, ref ComponentEvent events, ref T component)
+        {
+            events.NormalEvent.Invoke(entity, Component<T>.ID);
+
+            if (!hasGenericEvent)
+                return;
+
+            events.GenericEvent!.Invoke(entity, ref component);
+        }
+
+        private static void InvokeTagWorldEvents<T>(ref TagEvent @event, Entity entity)
+        {
+            @event.InvokeInternal(entity, Core.Tag<T>.ID);
+        }
+
+        private static void InvokePerEntityTagEvents<T>(Entity entity, ref TagEvent events)
+        {
+            events.Invoke(entity, Core.Tag<T>.ID);
+        }
+
+        private struct NeighborCache<T> : IArchetypeGraphEdge
+        {
+            public void ModifyTags(ref ImmutableArray<TagID> tags, bool add)
             {
-                tags = MemoryHelpers.Concat(tags, Core.Tag<T>.ID);
+                if (add)
+                {
+                    tags = MemoryHelpers.Concat(tags, Core.Tag<T>.ID);
+                }
+                else
+                {
+                    tags = MemoryHelpers.Remove(tags, Core.Tag<T>.ID);
+                }
             }
-            else
+
+            public void ModifyComponents(ref ImmutableArray<ComponentID> components, bool add)
             {
-                tags = MemoryHelpers.Remove(tags, Core.Tag<T>.ID);
+                if (add)
+                {
+                    components = MemoryHelpers.Concat(components, Component<T>.ID);
+                }
+                else
+                {
+                    components = MemoryHelpers.Remove(components, Component<T>.ID);
+                }
             }
-        }
 
-        public void ModifyComponents(ref ImmutableArray<ComponentID> components, bool add)
-        {
-            if (add)
+            //separate into individual classes to avoid creating uneccecary static classes.
+
+            internal static class Add
             {
-                components = MemoryHelpers.Concat(components, Component<T>.ID);
+                internal static ArchetypeNeighborCache Lookup;
             }
-            else
+
+            internal static class Remove
             {
-                components = MemoryHelpers.Remove(components, Component<T>.ID);
+                internal static ArchetypeNeighborCache Lookup;
             }
-        }
 
-        //separate into individual classes to avoid creating uneccecary static classes.
+            internal static class Tag
+            {
+                internal static ArchetypeNeighborCache Lookup;
+            }
 
-        internal static class Add
-        {
-            internal static ArchetypeNeighborCache Lookup;
-        }
-
-        internal static class Remove
-        {
-            internal static ArchetypeNeighborCache Lookup;
-        }
-
-        internal static class Tag
-        {
-            internal static ArchetypeNeighborCache Lookup;
-        }
-
-        internal static class Detach
-        {
-            internal static ArchetypeNeighborCache Lookup;
+            internal static class Detach
+            {
+                internal static ArchetypeNeighborCache Lookup;
+            }
         }
     }
-}
 
-partial struct Entity
-{
-    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-    internal static Archetype TraverseThroughCacheOrCreate<T, TEdge>(
-        World world,
-        ref ArchetypeNeighborCache cache,
-        ref EntityLocation currentLookup,
-        bool add)
+    partial struct Entity
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal static Archetype TraverseThroughCacheOrCreate<T, TEdge>(
+            World world,
+            ref ArchetypeNeighborCache cache,
+            ref EntityLocation currentLookup,
+            bool add)
             where T : ITypeID
             where TEdge : struct, IArchetypeGraphEdge
-    {
-        ArchetypeID archetypeFromID = currentLookup.ArchetypeID;
-        int index = cache.Traverse(archetypeFromID.RawIndex);
-
-        if (index == 32)
         {
-            return NotInCache(world, ref cache, archetypeFromID, add);
-        }
-        else
-        {
-            return Archetype.CreateOrGetExistingArchetype(new EntityType(cache.Lookup(index)), world);
-        }
+            ArchetypeID archetypeFromID = currentLookup.ArchetypeID;
+            int index = cache.Traverse(archetypeFromID.RawIndex);
 
-        static Archetype NotInCache(World world, ref ArchetypeNeighborCache cache, ArchetypeID archetypeFromID, bool add)
-        {
-            ImmutableArray<ComponentID> componentIDs = archetypeFromID.Types;
-            ImmutableArray<TagID> tagIDs = archetypeFromID.Tags;
-
-            if (typeof(T) == typeof(ComponentID))
+            if (index == 32)
             {
-                default(TEdge).ModifyComponents(ref componentIDs, add);
+                return NotInCache(world, ref cache, archetypeFromID, add);
             }
             else
             {
-                default(TEdge).ModifyTags(ref tagIDs, add);
+                return Archetype.CreateOrGetExistingArchetype(new EntityType(cache.Lookup(index)), world);
             }
 
-            Archetype archetype = Archetype.CreateOrGetExistingArchetype(
-                componentIDs.AsSpan(),
-                tagIDs.AsSpan(),
-                world,
-                componentIDs,
-                tagIDs);
+            static Archetype NotInCache(World world, ref ArchetypeNeighborCache cache, ArchetypeID archetypeFromID, bool add)
+            {
+                ImmutableArray<ComponentID> componentIDs = archetypeFromID.Types;
+                ImmutableArray<TagID> tagIDs = archetypeFromID.Tags;
 
-            cache.Set(archetypeFromID.RawIndex, archetype.ID.RawIndex);
+                if (typeof(T) == typeof(ComponentID))
+                {
+                    default(TEdge).ModifyComponents(ref componentIDs, add);
+                }
+                else
+                {
+                    default(TEdge).ModifyTags(ref tagIDs, add);
+                }
 
-            return archetype;
+                Archetype archetype = Archetype.CreateOrGetExistingArchetype(
+                    componentIDs.AsSpan(),
+                    tagIDs.AsSpan(),
+                    world,
+                    componentIDs,
+                    tagIDs);
+
+                cache.Set(archetypeFromID.RawIndex, archetype.ID.RawIndex);
+
+                return archetype;
+            }
+        }
+
+        internal interface IArchetypeGraphEdge
+        {
+            void ModifyTags(ref ImmutableArray<TagID> tags, bool add);
+            void ModifyComponents(ref ImmutableArray<ComponentID> components, bool add);
         }
     }
-
-    internal interface IArchetypeGraphEdge
-    {
-        void ModifyTags(ref ImmutableArray<TagID> tags, bool add);
-        void ModifyComponents(ref ImmutableArray<ComponentID> components, bool add);
-    }
-}
 }
