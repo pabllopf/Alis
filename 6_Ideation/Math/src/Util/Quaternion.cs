@@ -30,6 +30,7 @@
 
 using System;
 
+
 namespace Alis.Core.Aspect.Math.Util
 {
     /// <summary>

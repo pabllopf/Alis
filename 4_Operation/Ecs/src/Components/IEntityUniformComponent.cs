@@ -1,4 +1,4 @@
-﻿
+
 namespace Alis.Core.Ecs.Components
 {
     /// <summary>

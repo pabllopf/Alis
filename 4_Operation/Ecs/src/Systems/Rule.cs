@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using Alis.Core.Ecs.Core;
 
@@ -9,11 +9,28 @@ namespace Alis.Core.Ecs.Systems
     /// </summary>
     public struct Rule : IEquatable<Rule>
     {
+        /// <summary>
+        /// The rule state
+        /// </summary>
         private RuleState _ruleState;
+        /// <summary>
+        /// The custom
+        /// </summary>
         private Func<ArchetypeID, bool>? _custom;
+        /// <summary>
+        /// The comp id
+        /// </summary>
         private ComponentID _compID;
+        /// <summary>
+        /// The tag id
+        /// </summary>
         private TagID _tagID;
 
+        /// <summary>
+        /// Rules the applies using the specified archetype id
+        /// </summary>
+        /// <param name="archetypeID">The archetype id</param>
+        /// <returns>The bool</returns>
         internal bool RuleApplies(ArchetypeID archetypeID) => _ruleState switch
         {
             RuleState.NotComponent => !archetypeID.HasComponent(_compID),
@@ -120,17 +137,44 @@ namespace Alis.Core.Ecs.Systems
         /// <returns><see langword="true"/> if the rules are not equal, <see langword="false"/> otherwise.</returns>
         public static bool operator !=(Rule left, Rule right) => !left.Equals(right);
 
+        /// <summary>
+        /// The rule state enum
+        /// </summary>
         private enum RuleState : int
         {
+            /// <summary>
+            /// The none rule state
+            /// </summary>
             None = 0,
+            /// <summary>
+            /// The custom delegate rule state
+            /// </summary>
             CustomDelegate,
+            /// <summary>
+            /// The has component rule state
+            /// </summary>
             HasComponent,
+            /// <summary>
+            /// The not component rule state
+            /// </summary>
             NotComponent,
+            /// <summary>
+            /// The has tag rule state
+            /// </summary>
             HasTag,
+            /// <summary>
+            /// The not tag rule state
+            /// </summary>
             NotTag,
+            /// <summary>
+            /// The include disabled rule state
+            /// </summary>
             IncludeDisabled,
         }
 
+        /// <summary>
+        /// The include disabled
+        /// </summary>
         public static readonly Rule IncludeDisabledRule = new Rule() { _ruleState = RuleState.IncludeDisabled };
     }
 }

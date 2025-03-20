@@ -1,9 +1,12 @@
-﻿using System.Runtime.InteropServices;
+using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Core.Memory;
 using Alis.Core.Ecs.Systems;
 
 namespace Alis.Core.Ecs
 {
+    /// <summary>
+    /// The world query extensions class
+    /// </summary>
     public static partial class WorldQueryExtensions
     {
         //we could use static abstract methods IF NOT FOR DOTNET6

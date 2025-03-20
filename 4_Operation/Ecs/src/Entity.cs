@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics;
@@ -27,6 +27,12 @@ namespace Alis.Core.Ecs
         /// <remarks><see cref="Entity"/> generally shouldn't manually constructed</remarks>
         public Entity() { }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Entity"/> class
+        /// </summary>
+        /// <param name="worldID">The world id</param>
+        /// <param name="version">The version</param>
+        /// <param name="entityID">The entity id</param>
         internal Entity(ushort worldID, ushort version, int entityID)
         {
             WorldID = worldID;
@@ -36,42 +42,96 @@ namespace Alis.Core.Ecs
 
         //WARNING
         //DO NOT CHANGE STRUCT LAYOUT
+        /// <summary>
+        /// The entity id
+        /// </summary>
         internal int EntityID;
+        /// <summary>
+        /// The entity version
+        /// </summary>
         internal ushort EntityVersion;
+        /// <summary>
+        /// The world id
+        /// </summary>
         internal ushort WorldID;
         #endregion
 
         #region Props
+        /// <summary>
+        /// The entity world info access
+        /// </summary>
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
         private struct EntityWorldInfoAccess
         {
+            /// <summary>
+            /// The entity id only
+            /// </summary>
             internal EntityIDOnly EntityIDOnly;
+            /// <summary>
+            /// The world id
+            /// </summary>
             internal ushort WorldID;
         }
 
+        /// <summary>
+        /// The entity high low
+        /// </summary>
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
         private struct EntityHighLow
         {
+            /// <summary>
+            /// The entity id
+            /// </summary>
             internal int EntityID;
+            /// <summary>
+            /// The entity low
+            /// </summary>
             internal int EntityLow;
         }
 
+        /// <summary>
+        /// The entity data
+        /// </summary>
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
         private struct EntityData
         {
+            /// <summary>
+            /// The entity id
+            /// </summary>
             internal int EntityID;
+            /// <summary>
+            /// The entity version
+            /// </summary>
             internal ushort EntityVersion;
+            /// <summary>
+            /// The world id
+            /// </summary>
             internal ushort WorldID;
         }
 
+        /// <summary>
+        /// Gets the value of the entity id only
+        /// </summary>
         internal EntityIDOnly EntityIDOnly => Unsafe.As<Entity, EntityWorldInfoAccess>(ref this).EntityIDOnly;
+        /// <summary>
+        /// Gets the value of the packed value
+        /// </summary>
         internal long PackedValue => Unsafe.As<Entity, long>(ref this);
+        /// <summary>
+        /// Gets the value of the entity low
+        /// </summary>
         internal int EntityLow => Unsafe.As<Entity, EntityHighLow>(ref this).EntityLow;
         #endregion
 
         #region Internal Helpers
 
         #region IsAlive
+        /// <summary>
+        /// Internals the is alive using the specified world
+        /// </summary>
+        /// <param name="world">The world</param>
+        /// <param name="entityLocation">The entity location</param>
+        /// <returns>The bool</returns>
         internal bool InternalIsAlive( out World world, out EntityLocation entityLocation)
         {
             world = GlobalWorldTables.Worlds.UnsafeIndexNoResize(WorldID);
@@ -84,6 +144,11 @@ namespace Alis.Core.Ecs
             return entityLocation.Version == EntityVersion;
         }
 
+        /// <summary>
+        /// Asserts the is alive using the specified world
+        /// </summary>
+        /// <param name="world">The world</param>
+        /// <returns>The ref entity location</returns>
         internal ref EntityLocation AssertIsAlive(out World world)
         {
             world = GlobalWorldTables.Worlds.UnsafeIndexNoResize(WorldID);
@@ -96,6 +161,12 @@ namespace Alis.Core.Ecs
 
         #endregion IsAlive
 
+        /// <summary>
+        /// Tries the get core using the specified exists
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="exists">The exists</param>
+        /// <returns>A ref of t</returns>
         private Ref<T> TryGetCore<T>(out bool exists)
         {
             if (!InternalIsAlive(out var _, out var entityLocation))
@@ -117,24 +188,51 @@ namespace Alis.Core.Ecs
             return default;
         }
 
+        /// <summary>
+        /// Ms
+        /// </summary>
         [MethodImpl(MethodImplOptions.NoInlining)]
         private static void M()
         {
 
         }
 
+        /// <summary>
+        /// Throws the entity is dead
+        /// </summary>
         private static void Throw_EntityIsDead() => throw new InvalidOperationException(EntityIsDeadMessage);
 
         //captial N null to distinguish between actual null and default
+        /// <summary>
+        /// Gets the value of the debugger display string
+        /// </summary>
         internal string DebuggerDisplayString => IsNull ? "Null" : InternalIsAlive(out _, out _) ? $"World: {WorldID}, ID: {EntityID}, Version {EntityVersion}" : EntityIsDeadMessage;
+        /// <summary>
+        /// The entity is dead message
+        /// </summary>
         internal const string EntityIsDeadMessage = "Entity is Dead";
+        /// <summary>
+        /// The does not have tag message
+        /// </summary>
         internal const string DoesNotHaveTagMessage = "This Entity does not have this tag";
 
+        /// <summary>
+        /// The entity debug view class
+        /// </summary>
         private class EntityDebugView(Entity target)
         {
+            /// <summary>
+            /// Gets the value of the component types
+            /// </summary>
             public ImmutableArray<ComponentID> ComponentTypes => target.ComponentTypes;
+            /// <summary>
+            /// Gets the value of the tags
+            /// </summary>
             public ImmutableArray<TagID> Tags => target.TagTypes;
 
+            /// <summary>
+            /// Gets the value of the components
+            /// </summary>
             [DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]
             public Dictionary<Type, object> Components
             {

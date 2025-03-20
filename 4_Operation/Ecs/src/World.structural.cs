@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Immutable;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
@@ -10,6 +10,9 @@ using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs
 {
+    /// <summary>
+    /// The world class
+    /// </summary>
     partial class World
     {
         /*
@@ -26,6 +29,12 @@ namespace Alis.Core.Ecs
     private static readonly ComponentStorageBase[] _sharedOneElementComponentStorage = new ComponentStorageBase[1];
 #endif
 
+        /// <summary>
+        /// Removes the component using the specified entity
+        /// </summary>
+        /// <param name="entity">The entity</param>
+        /// <param name="lookup">The lookup</param>
+        /// <param name="componentID">The component id</param>
         internal void RemoveComponent(Entity entity, ref EntityLocation lookup, ComponentID componentID)
         {
             Archetype destination = RemoveComponentLookup.FindAdjacentArchetypeID(componentID, lookup.ArchetypeID, this, ArchetypeEdgeType.RemoveComponent)
@@ -42,6 +51,14 @@ namespace Alis.Core.Ecs
 #endif
         }
 
+        /// <summary>
+        /// Adds the component using the specified entity
+        /// </summary>
+        /// <param name="entity">The entity</param>
+        /// <param name="lookup">The lookup</param>
+        /// <param name="componentID">The component id</param>
+        /// <param name="runner">The runner</param>
+        /// <param name="entityLocation">The entity location</param>
         internal void AddComponent(Entity entity, ref EntityLocation lookup, ComponentID componentID, ref ComponentStorageBase runner, out EntityLocation entityLocation)
         {
             Archetype destination = AddComponentLookup.FindAdjacentArchetypeID(componentID, lookup.ArchetypeID, this, ArchetypeEdgeType.AddComponent)
@@ -54,6 +71,14 @@ namespace Alis.Core.Ecs
 #endif
         }
 
+        /// <summary>
+        /// Moves the entity to archetype add using the specified write to
+        /// </summary>
+        /// <param name="writeTo">The write to</param>
+        /// <param name="entity">The entity</param>
+        /// <param name="currentLookup">The current lookup</param>
+        /// <param name="nextLocation">The next location</param>
+        /// <param name="destination">The destination</param>
         [SkipLocalsInit]
         internal void MoveEntityToArchetypeAdd(Span<ComponentStorageBase> writeTo, Entity entity, ref EntityLocation currentLookup, out EntityLocation nextLocation, Archetype destination)
         {
@@ -95,6 +120,13 @@ namespace Alis.Core.Ecs
             currentLookup = nextLocation;
         }
 
+        /// <summary>
+        /// Moves the entity to archetype remove using the specified component handles
+        /// </summary>
+        /// <param name="componentHandles">The component handles</param>
+        /// <param name="entity">The entity</param>
+        /// <param name="currentLookup">The current lookup</param>
+        /// <param name="destination">The destination</param>
         [SkipLocalsInit]
         internal void MoveEntityToArchetypeRemove(Span<ComponentHandle> componentHandles, Entity entity, ref EntityLocation currentLookup, Archetype destination)
         {
@@ -182,6 +214,12 @@ namespace Alis.Core.Ecs
             }
         }
 
+        /// <summary>
+        /// Moves the entity to archetype iso using the specified entity
+        /// </summary>
+        /// <param name="entity">The entity</param>
+        /// <param name="currentLookup">The current lookup</param>
+        /// <param name="destination">The destination</param>
         [SkipLocalsInit]
         internal void MoveEntityToArchetypeIso(Entity entity, ref EntityLocation currentLookup, Archetype destination)
         {
@@ -216,6 +254,11 @@ namespace Alis.Core.Ecs
 
         #region Delete
         //Delete
+        /// <summary>
+        /// Deletes the entity using the specified entity
+        /// </summary>
+        /// <param name="entity">The entity</param>
+        /// <param name="entityLocation">The entity location</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void DeleteEntity(Entity entity, ref EntityLocation entityLocation)
         {
@@ -226,6 +269,11 @@ namespace Alis.Core.Ecs
         }
 
         //let the jit decide whether or not to inline
+        /// <summary>
+        /// Invokes the delete events using the specified entity
+        /// </summary>
+        /// <param name="entity">The entity</param>
+        /// <param name="entityLocation">The entity location</param>
         private void InvokeDeleteEvents(Entity entity, EntityLocation entityLocation)
         {
             EntityDeletedEvent.Invoke(entity);
@@ -239,6 +287,11 @@ namespace Alis.Core.Ecs
             EventLookup.Remove(entity.EntityIDOnly);
         }
 
+        /// <summary>
+        /// Deletes the entity without events using the specified entity
+        /// </summary>
+        /// <param name="entity">The entity</param>
+        /// <param name="currentLookup">The current lookup</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void DeleteEntityWithoutEvents(Entity entity, ref EntityLocation currentLookup)
         {

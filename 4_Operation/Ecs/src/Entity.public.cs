@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
@@ -11,6 +11,9 @@ using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs
 {
+    /// <summary>
+    /// The entity
+    /// </summary>
     partial struct Entity
     {
         #region Public API
@@ -414,6 +417,11 @@ namespace Alis.Core.Ecs
             remove => UnsubscribeEvent(value, EntityFlags.Detach);
         }
 
+        /// <summary>
+        /// Unsubscribes the event using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <param name="flag">The flag</param>
         private void UnsubscribeEvent(object value, EntityFlags flag)
         {
             if (value is null || !InternalIsAlive(out var world, out EntityLocation entityLocation))
@@ -460,6 +468,12 @@ namespace Alis.Core.Ecs
             }
         }
 
+        /// <summary>
+        /// Initalizes the event record using the specified delegate
+        /// </summary>
+        /// <param name="@delegate">The delegate</param>
+        /// <param name="flag">The flag</param>
+        /// <param name="isGenericEvent">The is generic event</param>
         private void InitalizeEventRecord(object @delegate, EntityFlags flag, bool isGenericEvent = false)
         {
             if (@delegate is null || !InternalIsAlive(out var world, out EntityLocation entityLocation))

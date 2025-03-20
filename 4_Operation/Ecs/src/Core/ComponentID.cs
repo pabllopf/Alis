@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 
 namespace Alis.Core.Ecs.Core
@@ -9,7 +9,14 @@ namespace Alis.Core.Ecs.Core
     [DebuggerDisplay(AttributeHelpers.DebuggerDisplay)]
     public readonly struct ComponentID : ITypeID, IEquatable<ComponentID>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ComponentID"/> class
+        /// </summary>
+        /// <param name="id">The id</param>
         internal ComponentID(ushort id) => RawIndex = id;
+        /// <summary>
+        /// The raw index
+        /// </summary>
         internal readonly ushort RawIndex;
 
         /// <summary>
@@ -17,6 +24,9 @@ namespace Alis.Core.Ecs.Core
         /// </summary>
         public Type Type => Component.ComponentTable[RawIndex].Type;
 
+        /// <summary>
+        /// Gets the value of the value
+        /// </summary>
         ushort ITypeID.Value => RawIndex;
 
         /// <summary>
@@ -55,6 +65,9 @@ namespace Alis.Core.Ecs.Core
         /// <returns><see langword="true"/> if they represent different IDs, <see langword="false"/> otherwise</returns>
         public static bool operator !=(ComponentID left, ComponentID right) => !left.Equals(right);
 
+        /// <summary>
+        /// Gets the value of the debugger display string
+        /// </summary>
         internal string DebuggerDisplayString => $"Types: {Type.ToString()} ID: {RawIndex}";
     }
 }

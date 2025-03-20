@@ -1,4 +1,4 @@
-﻿using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Collections;
 
 namespace Alis.Core.Ecs.Core.Events
 {
@@ -7,13 +7,29 @@ namespace Alis.Core.Ecs.Core.Events
     /// </summary>
     public class GenericEvent
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GenericEvent"/> class
+        /// </summary>
         internal GenericEvent() { }
 
+        /// <summary>
+        /// Gets the value of the has listeners
+        /// </summary>
         internal bool HasListeners => _first is not null;
 
+        /// <summary>
+        /// The first
+        /// </summary>
         private IGenericAction<Entity>? _first;
+        /// <summary>
+        /// The entity
+        /// </summary>
         private FrugalStack<IGenericAction<Entity>> _invokationList = new FrugalStack<IGenericAction<Entity>>();
 
+        /// <summary>
+        /// Adds the action
+        /// </summary>
+        /// <param name="action">The action</param>
         internal void Add(IGenericAction<Entity> action)
         {
             if (_first is null)
@@ -26,6 +42,10 @@ namespace Alis.Core.Ecs.Core.Events
             }
         }
 
+        /// <summary>
+        /// Removes the action
+        /// </summary>
+        /// <param name="action">The action</param>
         internal void Remove(IGenericAction<Entity> action)
         {
             if (_first == action)
@@ -40,6 +60,12 @@ namespace Alis.Core.Ecs.Core.Events
             }
         }
 
+        /// <summary>
+        /// Invokes the entity
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="entity">The entity</param>
+        /// <param name="arg">The arg</param>
         internal void Invoke<T>(Entity entity, ref T arg)
         {
             if (_first is not null)

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.CompilerServices;
 using Alis.Core.Ecs.Core;
 using Alis.Core.Ecs.Core.Archetype;
@@ -9,6 +9,9 @@ using Alis.Core.Ecs.Updating;
 namespace Alis.Core.Ecs
 {
     //it just so happens Archetype and Create both end with "e"
+    /// <summary>
+    /// The world class
+    /// </summary>
     partial class World
     {
         /// <summary>
