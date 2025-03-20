@@ -1,6 +1,8 @@
 using System;
 using System.IO;
+using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Ecs.Core;
+using HashCode = Alis.Core.Aspect.Math.Util.HashCode;
 
 namespace Alis.Core.Ecs.Systems
 {

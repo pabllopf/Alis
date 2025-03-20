@@ -1,7 +1,9 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
+using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Core.Events;
+using HashCode = Alis.Core.Aspect.Math.Util.HashCode;
 
 namespace Alis.Core.Ecs.Core
 {

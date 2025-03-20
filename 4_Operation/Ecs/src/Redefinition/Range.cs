@@ -31,6 +31,7 @@
 
 
 using System.Runtime.CompilerServices;
+using Alis.Core.Aspect.Math.Util;
 
 // ReSharper disable once CheckNamespace
 namespace System
