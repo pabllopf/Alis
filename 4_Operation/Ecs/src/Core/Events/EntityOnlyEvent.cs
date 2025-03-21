@@ -1,4 +1,5 @@
 using System;
+using Alis.Benchmark.NativeCollections.NativeStack;
 using Alis.Core.Ecs.Collections;
 
 namespace Alis.Core.Ecs.Core.Events
@@ -26,7 +27,7 @@ namespace Alis.Core.Ecs.Core.Events
         /// <summary>
         ///     The entity
         /// </summary>
-        private FrugalStack<Action<Entity>> _invokationList = new FrugalStack<Action<Entity>>();
+        private FastStack<Action<Entity>> _invokationList = new FastStack<Action<Entity>>();
 
         /// <summary>
         ///     Adds the action

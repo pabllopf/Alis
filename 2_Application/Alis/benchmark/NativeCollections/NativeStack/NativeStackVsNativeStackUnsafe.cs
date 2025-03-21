@@ -47,11 +47,6 @@ namespace Alis.Benchmark.NativeCollections.NativeStack
         /// The native array unsafe
         /// </summary>
         private NativeStackUnsafe<int> nativeArrayUnsafe;
-
-        /// <summary>
-        /// The native array
-        /// </summary>
-        private NativeStackSafe<int> nativeArray;
         
         /// <summary>
         /// The fastest stack
@@ -66,7 +61,6 @@ namespace Alis.Benchmark.NativeCollections.NativeStack
         public void Setup()
         {
             nativeArrayUnsafe = new NativeStackUnsafe<int>(ArraySize);
-            nativeArray = new NativeStackSafe<int>(ArraySize);
             fastStack = new FastStack<int>(ArraySize);
         }
         
@@ -91,18 +85,6 @@ namespace Alis.Benchmark.NativeCollections.NativeStack
             for (int i = 0; i < ArraySize; i++)
             {
                 nativeArrayUnsafe[i] = i;
-            }
-        }
-
-        /// <summary>
-        /// Benchmarks the native array
-        /// </summary>
-        [Benchmark(Description = "Benchmark for Native Array Iteration")]
-        public void Save_code_Current_Stack_ArrayIterate()
-        {
-            for (int i = 0; i < ArraySize; i++)
-            {
-                nativeArray[i] = i;
             }
         }
     }

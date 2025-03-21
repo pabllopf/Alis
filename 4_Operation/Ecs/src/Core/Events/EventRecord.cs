@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Benchmark.NativeCollections.NativeStack;
 using Alis.Core.Ecs.Collections;
 
 namespace Alis.Core.Ecs.Core.Events
@@ -45,7 +46,7 @@ namespace Alis.Core.Ecs.Core.Events
         /// <summary>
         ///     The delete
         /// </summary>
-        internal FrugalStack<Action<Entity>> Delete;
+        internal FastStack<Action<Entity>> Delete;
 
         /// <summary>
         ///     The detach
@@ -76,7 +77,7 @@ namespace Alis.Core.Ecs.Core.Events
                 record.Detach = new TagEvent();
                 record.Add = new ComponentEvent();
                 record.Remove = new ComponentEvent();
-                record.Delete = new FrugalStack<Action<Entity>>();
+                record.Delete = new FastStack<Action<Entity>>();
             }
         }
     }
