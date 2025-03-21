@@ -27,9 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using Alis.Core.Ecs.Collections;
 using BenchmarkDotNet.Attributes;
 
 namespace Alis.Benchmark.NativeCollections.NativeStack
@@ -54,7 +51,7 @@ namespace Alis.Benchmark.NativeCollections.NativeStack
         /// <summary>
         /// The native array
         /// </summary>
-        private NativeArray<int> nativeArray;
+        private NativeStackSafe<int> nativeArray;
         
         /// <summary>
         /// The fastest stack
@@ -69,7 +66,7 @@ namespace Alis.Benchmark.NativeCollections.NativeStack
         public void Setup()
         {
             nativeArrayUnsafe = new NativeStackUnsafe<int>(ArraySize);
-            nativeArray = new NativeArray<int>(ArraySize);
+            nativeArray = new NativeStackSafe<int>(ArraySize);
             fastStack = new FastStack<int>(ArraySize);
         }
         
