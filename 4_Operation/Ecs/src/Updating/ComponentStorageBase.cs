@@ -236,6 +236,4 @@ namespace Alis.Core.Ecs.Updating
             return size;
         }
     }
-
-    internal record struct DeleteComponentData(int ToIndex, int FromIndex);
 }
