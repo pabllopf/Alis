@@ -28,13 +28,14 @@
 //  --------------------------------------------------------------------------
 
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Order;
 
 namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent
 {
     /// <summary>
     ///     The create entity with one component class
     /// </summary>
-    [BenchmarkCategory(Categories.CreateEntity), MemoryDiagnoser]
+    [BenchmarkCategory(Categories.CreateEntity), MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]
 #if CHECK_CACHE_MISSES
     [HardwareCounters(BenchmarkDotNet.Diagnosers.HardwareCounter.CacheMisses)]
 #endif
@@ -43,7 +44,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent
         /// <summary>
         ///     Gets or sets the value of the entity count
         /// </summary>
-        [Params(100000)]
+        [Params(100_000)]
         public int EntityCount { get; set; }
 
         /// <summary>

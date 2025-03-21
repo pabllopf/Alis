@@ -34,7 +34,7 @@ namespace Alis.Core.Ecs.Core
     /// <summary>
     ///     The type id interface
     /// </summary>
-    internal interface ITypeID
+    public interface ITypeID
     {
         /// <summary>
         ///     Gets the value of the type

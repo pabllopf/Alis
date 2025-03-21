@@ -35,7 +35,7 @@ namespace Alis.Benchmark.ClassVsStruct
     /// <summary>
     ///     The class vs struct benchmark class
     /// </summary>
-    [MemoryDiagnoser, Config(typeof(Config))]
+    [MemoryDiagnoser]
     public class ClassVsStructBenchmark
     {
         /// <summary>

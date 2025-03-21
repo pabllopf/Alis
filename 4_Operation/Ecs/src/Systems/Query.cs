@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Immutable;
+using Alis.Benchmark.NativeCollections.NativeStack;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Core.Archetype;
 

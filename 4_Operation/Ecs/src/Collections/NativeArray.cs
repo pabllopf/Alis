@@ -11,7 +11,7 @@ namespace Alis.Core.Ecs.Collections
     /// The native array class
     /// </summary>
     /// <seealso cref="IDisposable"/>
-    internal sealed class NativeArray<T> : IDisposable where T : unmanaged
+    public sealed class NativeArray<T> : IDisposable where T : unmanaged
     {
         /// <summary>
         /// The handle
