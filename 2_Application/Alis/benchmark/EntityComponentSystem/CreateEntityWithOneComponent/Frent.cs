@@ -61,7 +61,9 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent
             world.EnsureCapacity(_entityType, EntityCount);
 
             for (int i = 0; i < EntityCount; i++)
-                world.Create<Component1>(default);
+            {
+                world.Create<Component1>(default(Component1));
+            }
         }
 
         /// <summary>
@@ -74,7 +76,9 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent
             ChunkTuple<Component1> chunks = world.CreateMany<Component1>(EntityCount);
 
             for (int i = 0; i < chunks.Span.Length; i++)
+            {
                 chunks.Span[i] = new Component1();
+            }
         }
     }
 }

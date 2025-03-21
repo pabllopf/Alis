@@ -48,9 +48,9 @@ namespace Alis.Benchmark.EntityComponentSystem
         ///     The frent
         /// </summary>
         public const string Frent = "Frent";
-        
+
         /// <summary>
-        /// The alis
+        ///     The alis
         /// </summary>
         public const string Alis = "Alis";
 

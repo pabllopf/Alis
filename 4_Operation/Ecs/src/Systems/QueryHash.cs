@@ -1,28 +1,61 @@
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:QueryHash.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System.Collections.Immutable;
 
 namespace Alis.Core.Ecs.Systems
 {
     /// <summary>
-    /// The query hash
+    ///     The query hash
     /// </summary>
     internal struct QueryHash
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="QueryHash"/> class
+        ///     Initializes a new instance of the <see cref="QueryHash" /> class
         /// </summary>
-        public QueryHash() { }
+        public QueryHash()
+        {
+        }
+
         /// <summary>
-        /// The state
+        ///     The state
         /// </summary>
         private int _state = 12582917;
 
         /// <summary>
-        /// News
+        ///     News
         /// </summary>
         /// <returns>The query hash</returns>
         public static QueryHash New() => new QueryHash();
+
         /// <summary>
-        /// News the rules
+        ///     News the rules
         /// </summary>
         /// <param name="rules">The rules</param>
         /// <returns>The hash</returns>
@@ -33,11 +66,12 @@ namespace Alis.Core.Ecs.Systems
             {
                 hash.AddRule(rule);
             }
+
             return hash;
         }
 
         /// <summary>
-        /// Adds the rule using the specified rule
+        ///     Adds the rule using the specified rule
         /// </summary>
         /// <param name="rule">The rule</param>
         /// <returns>The query hash</returns>
@@ -48,7 +82,7 @@ namespace Alis.Core.Ecs.Systems
         }
 
         /// <summary>
-        /// Returns the hash code
+        ///     Returns the hash code
         /// </summary>
         /// <returns>The int</returns>
         public int ToHashCode() => _state;

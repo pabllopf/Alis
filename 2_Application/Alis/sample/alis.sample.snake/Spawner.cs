@@ -32,7 +32,6 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
-
 using Alis.Core.EcsOld.Component;
 using Alis.Core.EcsOld.Component.Collider;
 using Alis.Core.EcsOld.Entity;

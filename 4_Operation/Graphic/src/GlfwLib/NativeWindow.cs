@@ -621,7 +621,7 @@ namespace Alis.Core.Graphic.GlfwLib
         }
 
         /// <inheritdoc cref="Object.Equals(object)" />
-        public override bool Equals(object obj) => ReferenceEquals(this, obj) || obj is NativeWindow other && Equals(other);
+        public override bool Equals(object obj) => ReferenceEquals(this, obj) || (obj is NativeWindow other && Equals(other));
 
         /// <inheritdoc cref="Object.GetHashCode" />
         public override int GetHashCode() => Window.GetHashCode();

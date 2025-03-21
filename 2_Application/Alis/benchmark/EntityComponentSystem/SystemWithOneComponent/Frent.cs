@@ -54,7 +54,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         [BenchmarkCategory(Categories.Frent), Benchmark]
         public void Frent_QueryInline()
         {
-            _frent.Query.Inline<Increment, Component1>(default);
+            _frent.Query.Inline<Increment, Component1>(default(Increment));
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
             {
                 for (int i = 0; i < entityCount; i++)
                 {
-                    World.Create<Component1>(default);
+                    World.Create<Component1>(default(Component1));
                     for (int j = 0; j < entityPadding; j++)
                     {
                         World.Create();

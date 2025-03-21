@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Linq;
-
+using System.Runtime.CompilerServices;
 using Alis.Benchmark.EntityComponentSystem.Contexts;
 using Alis.Benchmark.EntityComponentSystem.Contexts.Arch_Components;
 using Arch.Core;
@@ -115,7 +115,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
             /// </summary>
             /// <param name="t0">The </param>
             /// <param name="t1">The </param>
-            [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public void Update(ref Component1 t0, ref Component2 t1)
             {
                 t0.Value += t1.Value;

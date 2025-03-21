@@ -64,7 +64,7 @@
         <PackageReference Include="Svelto.ECS" Version="3.5.2"/>
         <PackageReference Include="Svelto.Common" Version="3.5.2"/>
         <PackageReference Include="Flecs.NET.Release" Version="3.2.11"/>
-        
+
         <ProjectReference Include="$(SolutionDir)**/Alis.Core.Ecs.csproj;"/>
     </ItemGroup>
 
@@ -76,7 +76,7 @@
     ">
         <PackageReference Include="System.IO.Compression" Version="4.3.0"/>
         <PackageReference Include="System.Net.Http" Version="4.3.0"/>
-        <PackageReference Include="System.Collections.Immutable" Version="10.0.0-preview.1.25080.5" />
+        <PackageReference Include="System.Collections.Immutable" Version="10.0.0-preview.1.25080.5"/>
     </ItemGroup>
 
     <ItemGroup Condition="
@@ -85,22 +85,22 @@
     $(TargetFramework.Equals('netcoreapp3.1')) OR
     $(TargetFramework.Equals('net5.0'))
     ">
-        <PackageReference Include="System.Collections.Immutable" Version="10.0.0-preview.1.25080.5" />
+        <PackageReference Include="System.Collections.Immutable" Version="10.0.0-preview.1.25080.5"/>
     </ItemGroup>
 
     <ItemGroup Condition="
     $(TargetFramework.Equals('netcoreapp2.1')) OR
     $(TargetFramework.Equals('netcoreapp2.2')) 
     ">
-        <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.0" />
-        <PackageReference Include="System.Collections.Immutable" Version="10.0.0-preview.1.25080.5" />
+        <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.0"/>
+        <PackageReference Include="System.Collections.Immutable" Version="10.0.0-preview.1.25080.5"/>
     </ItemGroup>
 
     <ItemGroup Condition="
     $(TargetFramework.Equals('netstandard2.0')) OR
     $(TargetFramework.Equals('netstandard2.1'))
     ">
-        <PackageReference Include="System.Collections.Immutable" Version="10.0.0-preview.1.25080.5" />
+        <PackageReference Include="System.Collections.Immutable" Version="10.0.0-preview.1.25080.5"/>
     </ItemGroup>
 
     <ItemGroup Condition="

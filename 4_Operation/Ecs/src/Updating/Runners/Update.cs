@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Update.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Runtime.CompilerServices;
 using System.Threading;
@@ -8,14 +37,14 @@ using Alis.Core.Ecs.Core.Archetype;
 namespace Alis.Core.Ecs.Updating.Runners
 {
     /// <summary>
-    /// The update class
+    ///     The update class
     /// </summary>
-    /// <seealso cref="ComponentStorage{TComp}"/>
+    /// <seealso cref="ComponentStorage{TComp}" />
     internal class Update<TComp>(int cap) : ComponentStorage<TComp>(cap)
         where TComp : IComponent
     {
         /// <summary>
-        /// Runs the world
+        ///     Runs the world
         /// </summary>
         /// <param name="world">The world</param>
         /// <param name="b">The </param>
@@ -32,7 +61,7 @@ namespace Alis.Core.Ecs.Updating.Runners
         }
 
         /// <summary>
-        /// Multithreadeds the run using the specified countdown
+        ///     Multithreadeds the run using the specified countdown
         /// </summary>
         /// <param name="countdown">The countdown</param>
         /// <param name="world">The world</param>
@@ -41,23 +70,25 @@ namespace Alis.Core.Ecs.Updating.Runners
             throw new NotImplementedException();
     }
 
-    /// <inheritdoc cref="IComponentStorageBaseFactory"/>
+    /// <inheritdoc cref="IComponentStorageBaseFactory" />
     public class UpdateRunnerFactory<TComp> : IComponentStorageBaseFactory, IComponentStorageBaseFactory<TComp>
         where TComp : IComponent
     {
         /// <summary>
-        /// Creates the capacity
+        ///     Creates the capacity
         /// </summary>
         /// <param name="capacity">The capacity</param>
         /// <returns>The component storage base</returns>
         ComponentStorageBase IComponentStorageBaseFactory.Create(int capacity) => new Update<TComp>(capacity);
+
         /// <summary>
-        /// Creates the stack
+        ///     Creates the stack
         /// </summary>
         /// <returns>The id table</returns>
         IDTable IComponentStorageBaseFactory.CreateStack() => new IDTable<TComp>();
+
         /// <summary>
-        /// Creates the strongly typed using the specified capacity
+        ///     Creates the strongly typed using the specified capacity
         /// </summary>
         /// <param name="capacity">The capacity</param>
         /// <returns>A component storage of t comp</returns>
@@ -65,18 +96,15 @@ namespace Alis.Core.Ecs.Updating.Runners
     }
 
 
-
-
-
     /// <summary>
-    /// The update class
+    ///     The update class
     /// </summary>
-    /// <seealso cref="ComponentStorage{TComp}"/>
+    /// <seealso cref="ComponentStorage{TComp}" />
     internal class Update<TComp, TArg>(int cap) : ComponentStorage<TComp>(cap)
         where TComp : IComponent<TArg>
     {
         /// <summary>
-        /// Runs the world
+        ///     Runs the world
         /// </summary>
         /// <param name="world">The world</param>
         /// <param name="b">The </param>
@@ -97,7 +125,7 @@ namespace Alis.Core.Ecs.Updating.Runners
         }
 
         /// <summary>
-        /// Multithreadeds the run using the specified countdown
+        ///     Multithreadeds the run using the specified countdown
         /// </summary>
         /// <param name="countdown">The countdown</param>
         /// <param name="world">The world</param>
@@ -106,24 +134,25 @@ namespace Alis.Core.Ecs.Updating.Runners
             throw new NotImplementedException();
     }
 
-    /// <inheritdoc cref="IComponentStorageBaseFactory"/>
-
+    /// <inheritdoc cref="IComponentStorageBaseFactory" />
     public class UpdateRunnerFactory<TComp, TArg> : IComponentStorageBaseFactory, IComponentStorageBaseFactory<TComp>
         where TComp : IComponent<TArg>
     {
         /// <summary>
-        /// Creates the capacity
+        ///     Creates the capacity
         /// </summary>
         /// <param name="capacity">The capacity</param>
         /// <returns>The component storage base</returns>
         ComponentStorageBase IComponentStorageBaseFactory.Create(int capacity) => new Update<TComp, TArg>(capacity);
+
         /// <summary>
-        /// Creates the stack
+        ///     Creates the stack
         /// </summary>
         /// <returns>The id table</returns>
         IDTable IComponentStorageBaseFactory.CreateStack() => new IDTable<TComp>();
+
         /// <summary>
-        /// Creates the strongly typed using the specified capacity
+        ///     Creates the strongly typed using the specified capacity
         /// </summary>
         /// <param name="capacity">The capacity</param>
         /// <returns>A component storage of t comp</returns>

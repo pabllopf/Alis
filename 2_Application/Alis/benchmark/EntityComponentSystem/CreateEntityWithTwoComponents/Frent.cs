@@ -61,7 +61,9 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents
             world.EnsureCapacity(_entityType, EntityCount);
 
             for (int i = 0; i < EntityCount; i++)
-                world.Create<Component1, Component2>(default, default);
+            {
+                world.Create<Component1, Component2>(default(Component1), default(Component2));
+            }
         }
 
         /// <summary>
@@ -76,8 +78,8 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents
             chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
             for (int i = 0; i < chunks.Span1.Length; i++)
             {
-                chunks.Span1[i] = default;
-                chunks.Span2[i] = default;
+                chunks.Span1[i] = default(Component1);
+                chunks.Span2[i] = default(Component2);
             }
         }
     }

@@ -67,7 +67,7 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
         /// <param name="blue">An array of value describing the response of the blue channel.</param>
         public GammaRamp(ushort[] red, ushort[] green, ushort[] blue)
         {
-            if (red.Length == green.Length && green.Length == blue.Length)
+            if ((red.Length == green.Length) && (green.Length == blue.Length))
             {
                 Red = red;
                 Green = green;

@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-
+using System.Runtime.CompilerServices;
 using Alis.Benchmark.EntityComponentSystem.Contexts;
 using Alis.Benchmark.EntityComponentSystem.Contexts.Arch_Components;
 using Arch.Core;
@@ -110,7 +110,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
             ///     Updates the t 0
             /// </summary>
             /// <param name="t0">The </param>
-            [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public void Update(ref Component1 t0)
             {
                 ++t0.Value;

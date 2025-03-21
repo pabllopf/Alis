@@ -37,7 +37,6 @@ using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
-
 using Alis.Core.EcsOld.Component.Collider;
 using Alis.Core.EcsOld.Component.Render;
 using Alis.Core.EcsOld.Entity;

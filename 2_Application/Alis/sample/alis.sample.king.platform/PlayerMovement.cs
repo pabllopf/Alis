@@ -29,7 +29,6 @@
 
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Math.Vector;
-
 using Alis.Core.EcsOld.Component;
 using Alis.Core.EcsOld.Component.Collider;
 using Alis.Core.EcsOld.Component.Render;
@@ -102,7 +101,7 @@ namespace Alis.Sample.King.Platform
             boxCollider.Body.LinearVelocity = new Vector2F(directionPlayer.X * VelocityPlayer, boxCollider.Body.LinearVelocity.Y);
 
             // Update animation based on movement
-            if (directionPlayer.X != 0 && !isJumping)
+            if ((directionPlayer.X != 0) && !isJumping)
             {
                 animator.ChangeAnimationTo("Run");
                 if (directionPlayer.X < 0)
@@ -126,7 +125,7 @@ namespace Alis.Sample.King.Platform
         /// <param name="key">The key</param>
         public override void OnReleaseKey(Keys key)
         {
-            if ((key == Keys.A && directionPlayer.X == -1) || (key == Keys.D && directionPlayer.X == 1))
+            if (((key == Keys.A) && (directionPlayer.X == -1)) || ((key == Keys.D) && (directionPlayer.X == 1)))
             {
                 directionPlayer.X = 0;
             }
@@ -138,7 +137,7 @@ namespace Alis.Sample.King.Platform
         /// <param name="key">The key</param>
         public override void OnPressKey(Keys key)
         {
-            if (key == Keys.Space && !isJumping)
+            if ((key == Keys.Space) && !isJumping)
             {
                 boxCollider.Body.ApplyLinearImpulse(new Vector2F(0, JumpForce));
                 isJumping = true;

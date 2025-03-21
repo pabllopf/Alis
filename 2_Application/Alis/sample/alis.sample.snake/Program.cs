@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Definition;
-
 using Alis.Core.EcsOld.Component.Audio;
 using Alis.Core.EcsOld.Component.Collider;
 using Alis.Core.EcsOld.Component.Render;

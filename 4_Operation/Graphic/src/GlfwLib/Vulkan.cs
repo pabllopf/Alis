@@ -133,7 +133,7 @@ namespace Alis.Core.Graphic.GlfwLib
         {
             IntPtr ptr = GetRequiredInstanceExtensions(out uint count);
             string[] extensions = new string[count];
-            if (count > 0 && ptr != IntPtr.Zero)
+            if ((count > 0) && (ptr != IntPtr.Zero))
             {
                 int offset = 0;
                 for (int i = 0; i < count; i++, offset += IntPtr.Size)

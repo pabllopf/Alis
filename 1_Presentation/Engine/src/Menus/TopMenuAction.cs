@@ -34,7 +34,6 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
-
 using Alis.Core.EcsOld.Component.Render;
 using Alis.Core.EcsOld.Entity;
 using Alis.Extension.Graphic.ImGui.Native;

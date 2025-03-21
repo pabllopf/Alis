@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:FrentBaseContext.cs
+//  File:AlisBaseContext.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Ecs;
 
 namespace Alis.Benchmark.EntityComponentSystem.Contexts
 {
@@ -40,7 +41,7 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         /// <summary>
         ///     Gets the value of the world
         /// </summary>
-        public Alis.Core.Ecs.World World { get; } = new Alis.Core.Ecs.World();
+        public World World { get; } = new World();
 
         /// <summary>
         ///     Disposes this instance

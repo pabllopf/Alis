@@ -51,8 +51,8 @@ namespace Alis.Benchmark
             AddColumn(StatisticColumn.OperationsPerSecond);
             AddDiagnoser(ThreadingDiagnoser.Default);
             AddDiagnoser(MemoryDiagnoser.Default);
-            
-            AddDiagnoser(new DisassemblyDiagnoser(new DisassemblyDiagnoserConfig(maxDepth: 5)));
+
+            AddDiagnoser(new DisassemblyDiagnoser(new DisassemblyDiagnoserConfig(5)));
         }
     }
 }

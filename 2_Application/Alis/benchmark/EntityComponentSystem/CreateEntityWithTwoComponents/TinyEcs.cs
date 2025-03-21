@@ -52,8 +52,8 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents
             for (int i = 0; i < EntityCount; ++i)
             {
                 _tinyEcs.World.Entity()
-                    .Set<Component1>(new Component1())
-                    .Set<Component2>(new Component2());
+                    .Set(new Component1())
+                    .Set(new Component2());
             }
         }
     }

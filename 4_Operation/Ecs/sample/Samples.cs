@@ -57,7 +57,7 @@ namespace Frent.Sample
             //Update the three entities
             world.Update();
         }
-        
+
         /// <summary>
         ///     Updates the component
         /// </summary>
@@ -86,8 +86,8 @@ namespace Frent.Sample
 
             using World world = new World(uniforms);
 
-            world.Create<Vel>(default);
-            world.Create<Pos>(default);
+            world.Create<Vel>(default(Vel));
+            world.Create<Pos>(default(Pos));
 
             world.Update();
         }
@@ -104,12 +104,14 @@ namespace Frent.Sample
             using World world = new World(provider);
 
             for (int i = 0; i < 5; i++)
+            {
                 world.Create(i);
+            }
 
             world.Query<With<int>>().Delegate((ref int x) => Console.Write($"{x++}, "));
             Console.WriteLine();
 
-            world.Query<With<int>>().Inline<WriteAction, int>(default);
+            world.Query<With<int>>().Inline<WriteAction, int>(default(WriteAction));
         }
 
 

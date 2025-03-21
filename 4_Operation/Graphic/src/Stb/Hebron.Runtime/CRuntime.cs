@@ -164,7 +164,9 @@ namespace Alis.Core.Graphic.Stb.Hebron.Runtime
             byte* bptr = (byte*) ptr;
             byte bval = (byte) value;
             for (long i = 0; i < size; ++i)
+            {
                 *bptr++ = bval;
+            }
         }
 
         /// <summary>

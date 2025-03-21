@@ -30,7 +30,6 @@
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
-
 using Alis.Core.EcsOld.Component;
 using Alis.Core.EcsOld.Component.Audio;
 using Alis.Core.EcsOld.Component.Collider;
@@ -122,25 +121,25 @@ namespace Alis.Sample.Asteroid
             }
             else
             {
-                if (x > 0 && y > 0)
+                if ((x > 0) && (y > 0))
                 {
                     angle = 315;
                     //Console.WriteLine("angle: " + angle);
                 }
 
-                if (x < 0 && y > 0)
+                if ((x < 0) && (y > 0))
                 {
                     angle = 45;
                     //Console.WriteLine("angle: " + angle);
                 }
 
-                if (x < 0 && y < 0)
+                if ((x < 0) && (y < 0))
                 {
                     angle = 135;
                     //Console.WriteLine("angle: " + angle);
                 }
 
-                if (x > 0 && y < 0)
+                if ((x > 0) && (y < 0))
                 {
                     angle = 225;
                     //Console.WriteLine("angle: " + angle);
@@ -188,7 +187,7 @@ namespace Alis.Sample.Asteroid
         /// <param name="key">The key</param>
         public override void OnPressKey(Keys key)
         {
-            if (key == Keys.Space && (direction.X != 0 || direction.Y != 0))
+            if ((key == Keys.Space) && (direction.X != 0 || direction.Y != 0))
             {
                 GameObject.Get<AudioSource>().Play();
                 Context.SceneManager.CurrentScene.GetByTag("Points").Get<CounterManager>().Decrement();

@@ -53,7 +53,9 @@ namespace Frent.Sample
 
             int userOption;
             while (!int.TryParse(Console.ReadLine(), out userOption) || userOption > methods.Length + 1 || userOption < 0)
+            {
                 Console.WriteLine("Write a valid input");
+            }
 
             methods[userOption].Invoke(null, []);
 

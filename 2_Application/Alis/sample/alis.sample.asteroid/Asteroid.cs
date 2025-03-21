@@ -30,7 +30,6 @@
 using System;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
-
 using Alis.Core.EcsOld.Component;
 using Alis.Core.EcsOld.Component.Audio;
 using Alis.Core.EcsOld.Component.Collider;
@@ -205,7 +204,7 @@ namespace Alis.Sample.Asteroid
                 float xRandom = random.Next(-2, 2);
                 float yRandom = random.Next(-2, 2);
 
-                while (xRandom == 0 && yRandom == 0)
+                while ((xRandom == 0) && (yRandom == 0))
                 {
                     yRandom = random.Next(-2, 2);
                     xRandom = random.Next(-2, 2);

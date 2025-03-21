@@ -54,7 +54,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
         [BenchmarkCategory(Categories.Frent), Benchmark]
         public void Frent_QueryInline()
         {
-            _frent.Query.Inline<Sum, Component1, Component2, Component3>(default);
+            _frent.Query.Inline<Sum, Component1, Component2, Component3>(default(Sum));
         }
 
         /// <summary>
@@ -81,10 +81,14 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
                 Span<Vector256<int>> b = MemoryMarshal.Cast<Component3, Vector256<int>>(s3.Slice(0, len))[..ints.Length];
 
                 for (int i = 0; i < ints.Length; i++)
+                {
                     ints[i] += a[i] + b[i];
+                }
 
                 for (int i = len; i < s1.Length; i++)
+                {
                     s1[i].Value += s2[i].Value + s3[i].Value;
+                }
             }
         }
 
@@ -108,7 +112,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
             {
                 for (int i = 0; i < entityCount; i++)
                 {
-                    World.Create<Component1, Component2, Component3>(default, new Component2 {Value = 1}, new Component3 {Value = 1});
+                    World.Create<Component1, Component2, Component3>(default(Component1), new Component2 {Value = 1}, new Component3 {Value = 1});
                 }
 
                 Query = World.Query<With<Component1>, With<Component2>, With<Component3>>();

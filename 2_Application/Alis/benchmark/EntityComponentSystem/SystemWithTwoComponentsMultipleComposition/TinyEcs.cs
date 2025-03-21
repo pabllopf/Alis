@@ -77,25 +77,25 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
                 for (int i = 0; i < entityCount; ++i)
                 {
                     EntityView entity = World.Entity();
-                    entity.Set<Component1>(new Component1 {Value = 1});
+                    entity.Set(new Component1 {Value = 1});
                     entity.Set(new Component2 {Value = 1});
 
                     switch (i % 4)
                     {
                         case 0:
-                            entity.Set<Padding1>(new Padding1());
+                            entity.Set(new Padding1());
                             break;
 
                         case 1:
-                            entity.Set<Padding2>(new Padding2());
+                            entity.Set(new Padding2());
                             break;
 
                         case 2:
-                            entity.Set<Padding3>(new Padding3());
+                            entity.Set(new Padding3());
                             break;
 
                         case 3:
-                            entity.Set<Padding4>(new Padding4());
+                            entity.Set(new Padding4());
                             break;
                     }
                 }

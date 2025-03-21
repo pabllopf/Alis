@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Frent.cs
+//  File:AlisEcs.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,8 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Benchmark.EntityComponentSystem.Contexts;
-using Alis.Core.Ecs.Core;
 using Alis.Core.Ecs;
+using Alis.Core.Ecs.Core;
 using Alis.Core.Ecs.Systems;
 using BenchmarkDotNet.Attributes;
 using static Alis.Benchmark.EntityComponentSystem.Contexts.AlisBaseContext;
@@ -61,7 +61,9 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent
             world.EnsureCapacity(_entityAlisType, EntityCount);
 
             for (int i = 0; i < EntityCount; i++)
-                world.Create<Component1>(default);
+            {
+                world.Create<Component1>(default(Component1));
+            }
         }
 
         /// <summary>
@@ -74,7 +76,9 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent
             ChunkTuple<Component1> chunks = world.CreateMany<Component1>(EntityCount);
 
             for (int i = 0; i < chunks.Span.Length; i++)
+            {
                 chunks.Span[i] = new Component1();
+            }
         }
     }
 }

@@ -59,7 +59,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Scene
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
             SceneBuilder sceneBuilder = new SceneBuilder(videoGameBuilder.Context);
 
-           Alis.Core.EcsOld.Entity.Scene scene = sceneBuilder.Build();
+            Alis.Core.EcsOld.Entity.Scene scene = sceneBuilder.Build();
 
             Assert.NotNull(scene);
         }

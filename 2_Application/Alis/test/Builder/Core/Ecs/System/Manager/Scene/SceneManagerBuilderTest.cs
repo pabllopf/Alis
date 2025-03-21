@@ -59,7 +59,7 @@ namespace Alis.Test.Builder.Core.Ecs.System.Manager.Scene
         public void Add_ValidInput()
         {
             SceneManagerBuilder sceneManagerBuilder = new SceneManagerBuilder(new Context());
-            Func<SceneBuilder,Alis.Core.EcsOld.Entity.Scene> sceneFunc = sb => sb.Build();
+            Func<SceneBuilder, Alis.Core.EcsOld.Entity.Scene> sceneFunc = sb => sb.Build();
 
             sceneManagerBuilder.Add<SceneManagerBuilder>(sceneFunc);
 
