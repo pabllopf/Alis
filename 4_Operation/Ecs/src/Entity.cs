@@ -195,7 +195,7 @@ namespace Alis.Core.Ecs
         {
             world = GlobalWorldTables.Worlds.UnsafeIndexNoResize(WorldID);
             //hardware trap
-            ref var lookup = ref world.EntityTable.UnsafeIndexNoResize(EntityID);
+            ref EntityLocation lookup = ref world.EntityTable.UnsafeIndexNoResize(EntityID);
             if (lookup.Version != EntityVersion)
             {
                 Throw_EntityIsDead();
@@ -214,7 +214,7 @@ namespace Alis.Core.Ecs
         /// <returns>A ref of t</returns>
         private Ref<T> TryGetCore<T>(out bool exists)
         {
-            if (!InternalIsAlive(out var _, out var entityLocation))
+            if (!InternalIsAlive(out World _, out EntityLocation entityLocation))
             {
                 goto doesntExist;
             }
@@ -289,7 +289,7 @@ namespace Alis.Core.Ecs
             {
                 get
                 {
-                    if (!target.InternalIsAlive(out World? world, out var eloc))
+                    if (!target.InternalIsAlive(out World? world, out EntityLocation eloc))
                     {
                         return [];
                     }

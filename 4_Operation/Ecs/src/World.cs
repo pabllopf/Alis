@@ -374,7 +374,7 @@ namespace Alis.Core.Ecs
         /// <returns>The entity</returns>
         internal Entity CreateEntityFromLocation(EntityLocation entityLocation)
         {
-            var (id, version) = RecycledEntityIds.TryPop(out var v) ? v : new EntityIDOnly(NextEntityID++, 0);
+            (int id, ushort version) = RecycledEntityIds.TryPop(out EntityIDOnly v) ? v : new EntityIDOnly(NextEntityID++, 0);
             entityLocation.Version = version;
             EntityTable[id] = entityLocation;
             return new Entity(ID, version, id);
@@ -390,14 +390,14 @@ namespace Alis.Core.Ecs
             {
                 if (CurrentConfig.MultiThreadedUpdate)
                 {
-                    foreach (var element in _enabledArchetypes.AsSpan())
+                    foreach (ArchetypeID element in _enabledArchetypes.AsSpan())
                     {
                         element.Archetype(this).MultiThreadedUpdate(_sharedCountdown, this);
                     }
                 }
                 else
                 {
-                    foreach (var element in _enabledArchetypes.AsSpan())
+                    foreach (ArchetypeID element in _enabledArchetypes.AsSpan())
                     {
                         element.Archetype(this).Update(this);
                     }
@@ -434,11 +434,11 @@ namespace Alis.Core.Ecs
 
                 //fill up the table with the correct IDs
                 //works for initalization as well as updating it
-                if (GenerationServices.TypeAttributeCache.TryGetValue(attributeType, out var compSet))
+                if (GenerationServices.TypeAttributeCache.TryGetValue(attributeType, out HashSet<Type>? compSet))
                 {
                     for (ref int i = ref appliesTo.NextComponentIndex; i < Component.ComponentTable.Count; i++)
                     {
-                        var id = new ComponentID((ushort) i);
+                        ComponentID id = new ComponentID((ushort) i);
                         if (compSet.Contains(id.Type))
                         {
                             appliesTo.Stack.Push(id);
@@ -446,9 +446,9 @@ namespace Alis.Core.Ecs
                     }
                 }
 
-                foreach (var compid in appliesTo.Stack.AsSpan())
+                foreach (ComponentID compid in appliesTo.Stack.AsSpan())
                 {
-                    foreach (var item in _enabledArchetypes.AsSpan())
+                    foreach (ArchetypeID item in _enabledArchetypes.AsSpan())
                     {
                         item.Archetype(this).Update(this, compid);
                     }
@@ -494,7 +494,7 @@ namespace Alis.Core.Ecs
                 _enabledArchetypes.Push(archetype.ID);
             }
 
-            foreach (var qkvp in QueryCache)
+            foreach (KeyValuePair<int, Query> qkvp in QueryCache)
             {
                 qkvp.Value.TryAttachArchetype(archetype);
             }
@@ -508,7 +508,7 @@ namespace Alis.Core.Ecs
         internal Query CreateQuery(ImmutableArray<Rule> rules)
         {
             Query q = new Query(this, rules);
-            foreach (ref var element in WorldArchetypeTable.AsSpan())
+            foreach (ref Archetype? element in WorldArchetypeTable.AsSpan())
             {
                 if (element is not null)
                 {
@@ -553,7 +553,7 @@ namespace Alis.Core.Ecs
             {
                 Span<Archetype> resolveArchetypes = DeferredCreationArchetypes.AsSpan();
 
-                foreach (var archetype in resolveArchetypes)
+                foreach (Archetype archetype in resolveArchetypes)
                 {
                     archetype.ResolveDeferredEntityCreations(this);
                 }
@@ -609,7 +609,7 @@ namespace Alis.Core.Ecs
 
             GlobalWorldTables.Worlds[ID] = null!;
 
-            foreach (ref var item in WorldArchetypeTable.AsSpan())
+            foreach (ref Archetype? item in WorldArchetypeTable.AsSpan())
             {
                 if (item is not null)
                 {
@@ -667,7 +667,7 @@ namespace Alis.Core.Ecs
         /// <returns>The entity that was created.</returns>
         public Entity Create()
         {
-            var entity = CreateEntityWithoutEvent();
+            Entity entity = CreateEntityWithoutEvent();
             EntityCreatedEvent.Invoke(entity);
             return entity;
         }
@@ -678,9 +678,9 @@ namespace Alis.Core.Ecs
         /// <returns>The entity</returns>
         internal Entity CreateEntityWithoutEvent()
         {
-            ref var entity = ref DefaultArchetype.CreateEntityLocation(EntityFlags.None, out var eloc);
+            ref EntityIDOnly entity = ref DefaultArchetype.CreateEntityLocation(EntityFlags.None, out EntityLocation eloc);
 
-            var (id, version) = entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.PopUnsafe() : new EntityIDOnly(NextEntityID++, 0);
+            (int id, ushort version) = entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.PopUnsafe() : new EntityIDOnly(NextEntityID++, 0);
             eloc.Version = version;
             EntityTable[id] = eloc;
 
@@ -859,7 +859,7 @@ namespace Alis.Core.Ecs
 
             Debug.Assert(from.Components.Length > destination.Components.Length);
 
-            destination.CreateEntityLocation(currentLookup.Flags, out var nextLocation).Init(entity);
+            destination.CreateEntityLocation(currentLookup.Flags, out EntityLocation nextLocation).Init(entity);
             nextLocation.Version = currentLookup.Version;
 
             EntityIDOnly movedDown = from.DeleteEntityFromStorage(currentLookup.Index, out int deletedIndex);
@@ -885,7 +885,7 @@ namespace Alis.Core.Ecs
 
                 if (toIndex == 0)
                 {
-                    var runner = fromRunners.UnsafeArrayIndex(i);
+                    ComponentStorageBase runner = fromRunners.UnsafeArrayIndex(i);
                     ref ComponentHandle writeTo = ref componentHandles.UnsafeSpanIndex(writeToIndex++);
                     if (hasGenericRemoveEvent)
                     {
@@ -911,7 +911,7 @@ namespace Alis.Core.Ecs
             {
                 if (ComponentRemovedEvent.HasListeners)
                 {
-                    foreach (var handle in componentHandles)
+                    foreach (ComponentHandle handle in componentHandles)
                     {
                         ComponentRemovedEvent.Invoke(entity, handle.ComponentID);
                     }
@@ -920,14 +920,14 @@ namespace Alis.Core.Ecs
                 if (EntityLocation.HasEventFlag(currentLookup.Flags, EntityFlags.RemoveComp | EntityFlags.RemoveGenericComp))
                 {
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
-                    var lookup = EventLookup[entity.EntityIDOnly];
+                    EventRecord lookup = EventLookup[entity.EntityIDOnly];
 #else
-                    ref var lookup = ref CollectionsMarshal.GetValueRefOrNullRef(EventLookup, entity.EntityIDOnly);
+                    ref EventRecord lookup = ref CollectionsMarshal.GetValueRefOrNullRef(EventLookup, entity.EntityIDOnly);
 #endif
 
                     if (hasGenericRemoveEvent)
                     {
-                        foreach (var handle in componentHandles)
+                        foreach (ComponentHandle handle in componentHandles)
                         {
                             lookup.Remove.NormalEvent.Invoke(entity, handle.ComponentID);
                             handle.InvokeComponentEventAndConsume(entity, lookup.Remove.GenericEvent);
@@ -936,7 +936,7 @@ namespace Alis.Core.Ecs
                     else
                     {
                         //no need to dispose here, as they were never created
-                        foreach (var handle in componentHandles)
+                        foreach (ComponentHandle handle in componentHandles)
                         {
                             lookup.Remove.NormalEvent.Invoke(entity, handle.ComponentID);
                         }
@@ -958,7 +958,7 @@ namespace Alis.Core.Ecs
 
             Debug.Assert(from.Components.Length == destination.Components.Length);
 
-            destination.CreateEntityLocation(currentLookup.Flags, out var nextLocation).Init(entity);
+            destination.CreateEntityLocation(currentLookup.Flags, out EntityLocation nextLocation).Init(entity);
             nextLocation.Version = currentLookup.Version;
 
             EntityIDOnly movedDown = from.DeleteEntityFromStorage(currentLookup.Index, out int deletedIndex);
@@ -1024,7 +1024,7 @@ namespace Alis.Core.Ecs
             EntityDeletedEvent.Invoke(entity);
             if (entityLocation.HasEvent(EntityFlags.OnDelete))
             {
-                foreach (var @event in EventLookup[entity.EntityIDOnly].Delete.AsSpan())
+                foreach (Action<Entity> @event in EventLookup[entity.EntityIDOnly].Delete.AsSpan())
                 {
                     @event.Invoke(entity);
                 }
@@ -1047,7 +1047,7 @@ namespace Alis.Core.Ecs
             Debug.Assert(replacedEntity.ID < EntityTable._buffer.Length);
             Debug.Assert(entity.EntityID < EntityTable._buffer.Length);
 
-            ref var replaced = ref EntityTable.UnsafeIndexNoResize(replacedEntity.ID);
+            ref EntityLocation replaced = ref EntityTable.UnsafeIndexNoResize(replacedEntity.ID);
             replaced = currentLookup;
             replaced.Version = replacedEntity.Version;
             currentLookup.Version = ushort.MaxValue;
@@ -1055,7 +1055,7 @@ namespace Alis.Core.Ecs
             if (entity.EntityVersion != ushort.MaxValue - 1)
             {
                 //can't use max value as an ID, as it is used as a default value
-                ref var id = ref RecycledEntityIds.Push();
+                ref EntityIDOnly id = ref RecycledEntityIds.Push();
                 id = entity.EntityIDOnly;
                 id.Version++;
             }
@@ -1070,7 +1070,7 @@ namespace Alis.Core.Ecs
         {
             Archetype archetype = Archetype<T>.CreateNewOrGetExistingArchetype(this);
 
-            ref var entity = ref Unsafe.NullRef<EntityIDOnly>();
+            ref EntityIDOnly entity = ref Unsafe.NullRef<EntityIDOnly>();
             EntityLocation eloc = default(EntityLocation);
 
             ComponentStorageBase[] components;
@@ -1092,7 +1092,7 @@ namespace Alis.Core.Ecs
             //manually inlined from World.CreateEntityFromLocation
             //The jit likes to inline the outer create function and not inline
             //the inner functions - benchmarked to improve perf by 10-20%
-            var (id, version) = entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.PopUnsafe() : new(NextEntityID++, 0);
+            (int id, ushort version) = entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.PopUnsafe() : new(NextEntityID++, 0);
             eloc.Version = version;
             EntityTable[id] = eloc;
 
@@ -1129,13 +1129,13 @@ namespace Alis.Core.Ecs
 
             if (EntityCreatedEvent.HasListeners)
             {
-                foreach (var entity in entities)
+                foreach (EntityIDOnly entity in entities)
                 {
                     EntityCreatedEvent.Invoke(entity.ToEntity(this));
                 }
             }
 
-            var chunks = new ChunkTuple<T>
+            ChunkTuple<T> chunks = new ChunkTuple<T>
             {
                 Entities = new EntityEnumerator.EntityEnumerable(this, entities),
                 Span = archetype.GetComponentSpan<T>()[initalEntityCount..]

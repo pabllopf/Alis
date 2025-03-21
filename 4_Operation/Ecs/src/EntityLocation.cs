@@ -104,7 +104,7 @@ namespace Alis.Core.Ecs
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public readonly bool HasEvent(EntityFlags entityFlags)
         {
-            var res = (Flags & entityFlags) != EntityFlags.None;
+            bool res = (Flags & entityFlags) != EntityFlags.None;
             return res;
         }
 
@@ -117,7 +117,7 @@ namespace Alis.Core.Ecs
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool HasEventFlag(EntityFlags entityFlags, EntityFlags target)
         {
-            var res = (entityFlags & target) != EntityFlags.None;
+            bool res = (entityFlags & target) != EntityFlags.None;
             return res;
         }
     }

@@ -105,10 +105,10 @@ namespace Alis.Core.Ecs.Updating
             ComponentStorage<TComponent> componentRunner = UnsafeExtensions.UnsafeCast<ComponentStorage<TComponent>>(otherRunner);
 
             // see comment in ComponentStorageBase.PullComponentFromAndClearTryDevirt
-            ref var item = ref componentRunner[other];
+            ref TComponent item = ref componentRunner[other];
             this[me] = item;
 
-            ref var downItem = ref componentRunner[otherRemoveIndex];
+            ref TComponent? downItem = ref componentRunner[otherRemoveIndex];
             item = downItem;
 
             if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
@@ -125,7 +125,7 @@ namespace Alis.Core.Ecs.Updating
         /// <param name="other">The other</param>
         internal override void PullComponentFrom(IDTable storage, int me, int other)
         {
-            ref var item = ref ((IDTable<TComponent>) storage).Buffer[other];
+            ref TComponent? item = ref ((IDTable<TComponent>) storage).Buffer[other];
             this[me] = item;
 
             if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
@@ -140,7 +140,7 @@ namespace Alis.Core.Ecs.Updating
         /// <param name="data">The data</param>
         internal override void Delete(DeleteComponentData data)
         {
-            ref var from = ref this[data.FromIndex];
+            ref TComponent? from = ref this[data.FromIndex];
             Component<TComponent>.Destroyer?.Invoke(ref from);
             this[data.ToIndex] = from;
 
@@ -158,13 +158,13 @@ namespace Alis.Core.Ecs.Updating
         /// <returns>The component handle</returns>
         internal override ComponentHandle Store(int componentIndex)
         {
-            ref var item = ref this[componentIndex];
+            ref TComponent item = ref this[componentIndex];
 
             //we can't just copy to stack and run the destroyer on it
             //it is stored
             Component<TComponent>.Destroyer?.Invoke(ref item);
 
-            Component<TComponent>.GeneralComponentStorage.Create(out var stackIndex) = item;
+            Component<TComponent>.GeneralComponentStorage.Create(out int stackIndex) = item;
             return new ComponentHandle(stackIndex, Component<TComponent>.ID);
         }
     }

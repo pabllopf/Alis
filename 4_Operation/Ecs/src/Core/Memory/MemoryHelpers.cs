@@ -85,7 +85,7 @@ namespace Alis.Core.Ecs.Core.Memory
         /// <returns>An immutable array of t</returns>
         public static ImmutableArray<T> ReadOnlySpanToImmutableArray<T>(ReadOnlySpan<T> span)
         {
-            var builder = ImmutableArray.CreateBuilder<T>(span.Length);
+            ImmutableArray<T>.Builder builder = ImmutableArray.CreateBuilder<T>(span.Length);
             for (int i = 0; i < span.Length; i++)
             {
                 builder.Add(span[i]);
@@ -104,7 +104,7 @@ namespace Alis.Core.Ecs.Core.Memory
         public static ImmutableArray<T> Concat<T>(ImmutableArray<T> start, ReadOnlySpan<T> span)
             where T : ITypeID
         {
-            var builder = ImmutableArray.CreateBuilder<T>(start.Length + span.Length);
+            ImmutableArray<T>.Builder builder = ImmutableArray.CreateBuilder<T>(start.Length + span.Length);
             for (int i = 0; i < start.Length; i++)
             {
                 builder.Add(start[i]);
@@ -112,7 +112,7 @@ namespace Alis.Core.Ecs.Core.Memory
 
             for (int i = 0; i < span.Length; i++)
             {
-                var t = span[i];
+                T? t = span[i];
                 if (start.IndexOf(t) != -1)
                 {
                     FrentExceptions.Throw_InvalidOperationException($"This entity already has a component of type {t.Type.Name}");
@@ -139,11 +139,11 @@ namespace Alis.Core.Ecs.Core.Memory
                 FrentExceptions.Throw_InvalidOperationException($"This entity already has a component of type {type.Type.Name}");
             }
 
-            var builder = ImmutableArray.CreateBuilder<T>(types.Length + 1);
+            ImmutableArray<T>.Builder builder = ImmutableArray.CreateBuilder<T>(types.Length + 1);
             builder.AddRange(types);
             builder.Add(type);
 
-            var result = builder.MoveToImmutable();
+            ImmutableArray<T> result = builder.MoveToImmutable();
             return result;
         }
 
@@ -163,7 +163,7 @@ namespace Alis.Core.Ecs.Core.Memory
                 FrentExceptions.Throw_ComponentNotFoundException(type.Type);
             }
 
-            var result = types.RemoveAt(index);
+            ImmutableArray<T> result = types.RemoveAt(index);
             return result;
         }
 
@@ -177,10 +177,10 @@ namespace Alis.Core.Ecs.Core.Memory
         public static ImmutableArray<T> Remove<T>(ImmutableArray<T> types, ReadOnlySpan<T> span)
             where T : ITypeID
         {
-            var builder = ImmutableArray.CreateBuilder<T>(types.Length);
+            ImmutableArray<T>.Builder builder = ImmutableArray.CreateBuilder<T>(types.Length);
             builder.AddRange(types);
 
-            foreach (var type in span)
+            foreach (T? type in span)
             {
                 int index = builder.IndexOf(type);
                 if (index == -1)
@@ -207,14 +207,14 @@ namespace Alis.Core.Ecs.Core.Memory
             where TValue : new()
         {
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
-            if (dictionary.TryGetValue(key, out var value))
+            if (dictionary.TryGetValue(key, out TValue? value))
             {
                 return value;
             }
 
             return dictionary[key] = new();
 #else
-            ref var res = ref CollectionsMarshal.GetValueRefOrAddDefault(dictionary, key, out bool _);
+            ref TValue? res = ref CollectionsMarshal.GetValueRefOrAddDefault(dictionary, key, out bool _);
             return res ??= new();
 #endif
         }

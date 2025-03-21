@@ -137,7 +137,7 @@ namespace Alis.Core.Ecs
             //Total: 4x lookup
 
             //1x
-            ref var lookup = ref AssertIsAlive(out var world);
+            ref EntityLocation lookup = ref AssertIsAlive(out World world);
 
             //1x
             //other lookup is optimized into indirect pointer addressing
@@ -163,7 +163,7 @@ namespace Alis.Core.Ecs
         /// <returns>The boxed component.</returns>
         public object Get(ComponentID id)
         {
-            ref var lookup = ref AssertIsAlive(out _);
+            ref EntityLocation lookup = ref AssertIsAlive(out _);
 
             int compIndex = lookup.Archetype.GetComponentIndex(id);
 
@@ -194,7 +194,7 @@ namespace Alis.Core.Ecs
         /// </exception>
         public void Set(ComponentID id, object obj)
         {
-            ref var lookup = ref AssertIsAlive(out _);
+            ref EntityLocation lookup = ref AssertIsAlive(out _);
 
             //2x
             int compIndex = lookup.Archetype.GetComponentIndex(id);
@@ -251,7 +251,7 @@ namespace Alis.Core.Ecs
         /// </returns>
         public bool TryGet(Type type, out object? value)
         {
-            ref var lookup = ref AssertIsAlive(out _);
+            ref EntityLocation lookup = ref AssertIsAlive(out _);
 
             ComponentID componentId = Component.GetComponentID(type);
             int compIndex = GlobalWorldTables.ComponentIndex(lookup.ArchetypeID, componentId);
@@ -297,7 +297,7 @@ namespace Alis.Core.Ecs
         /// </exception>
         public void AddAs(ComponentID componentID, object component)
         {
-            ref EntityLocation lookup = ref AssertIsAlive(out var w);
+            ref EntityLocation lookup = ref AssertIsAlive(out World w);
             if (w.AllowStructualChanges)
             {
                 ComponentStorageBase componentRunner = null!;
@@ -320,7 +320,7 @@ namespace Alis.Core.Ecs
         /// <param name="componentID">The <see cref="ComponentID" /> of the component to be removed</param>
         public void Remove(ComponentID componentID)
         {
-            ref var lookup = ref AssertIsAlive(out var w);
+            ref EntityLocation lookup = ref AssertIsAlive(out World w);
             if (w.AllowStructualChanges)
             {
                 w.RemoveComponent(this, ref lookup, componentID);
@@ -357,7 +357,7 @@ namespace Alis.Core.Ecs
         /// <exception cref="InvalidOperationException">Thrown if the <see cref="Entity" /> is not alive.</exception>
         public bool Tagged(TagID tagID)
         {
-            ref var lookup = ref AssertIsAlive(out var w);
+            ref EntityLocation lookup = ref AssertIsAlive(out World w);
             return lookup.Archetype.HasTag(tagID);
         }
 
@@ -405,7 +405,7 @@ namespace Alis.Core.Ecs
         /// <param name="tagID">The tagID to use as the tag</param>
         public bool Tag(TagID tagID)
         {
-            ref var lookup = ref AssertIsAlive(out var w);
+            ref EntityLocation lookup = ref AssertIsAlive(out World w);
             if (lookup.Archetype.HasTag(tagID))
             {
                 return false;
@@ -443,7 +443,7 @@ namespace Alis.Core.Ecs
         /// <param name="tagID">The type of tag to remove.</param>
         public bool Detach(TagID tagID)
         {
-            ref var lookup = ref AssertIsAlive(out var w);
+            ref EntityLocation lookup = ref AssertIsAlive(out World w);
             if (!lookup.Archetype.HasTag(tagID))
             {
                 return false;
@@ -497,7 +497,7 @@ namespace Alis.Core.Ecs
             }
             get
             {
-                if (!InternalIsAlive(out var world, out _))
+                if (!InternalIsAlive(out World world, out _))
                 {
                     return null;
                 }
@@ -518,7 +518,7 @@ namespace Alis.Core.Ecs
             }
             get
             {
-                if (!InternalIsAlive(out var world, out _))
+                if (!InternalIsAlive(out World world, out _))
                 {
                     return null;
                 }
@@ -553,16 +553,16 @@ namespace Alis.Core.Ecs
         /// <param name="flag">The flag</param>
         private void UnsubscribeEvent(object value, EntityFlags flag)
         {
-            if (value is null || !InternalIsAlive(out var world, out EntityLocation entityLocation))
+            if (value is null || !InternalIsAlive(out World world, out EntityLocation entityLocation))
             {
                 return;
             }
 
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
             bool exists = entityLocation.HasEvent(flag);
-            var events = exists ? world.EventLookup[EntityIDOnly] : default(EventRecord?);
+            EventRecord? events = exists ? world.EventLookup[EntityIDOnly] : default(EventRecord?);
 #else
-            ref var events = ref world.TryGetEventData(entityLocation, EntityIDOnly, flag, out bool exists);
+            ref EventRecord events = ref world.TryGetEventData(entityLocation, EntityIDOnly, flag, out bool exists);
 #endif
 
 
@@ -609,15 +609,15 @@ namespace Alis.Core.Ecs
         /// <param name="isGenericEvent">The is generic event</param>
         private void InitalizeEventRecord(object @delegate, EntityFlags flag, bool isGenericEvent = false)
         {
-            if (@delegate is null || !InternalIsAlive(out var world, out EntityLocation entityLocation))
+            if (@delegate is null || !InternalIsAlive(out World world, out EntityLocation entityLocation))
             {
                 return;
             }
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
             bool exists = entityLocation.HasEvent(flag);
-            var record = exists ? world.EventLookup[EntityIDOnly] : default(EventRecord?);
+            EventRecord? record = exists ? world.EventLookup[EntityIDOnly] : default(EventRecord?);
 #else
-            ref var record = ref CollectionsMarshal.GetValueRefOrAddDefault(world.EventLookup, EntityIDOnly, out bool exists);
+            ref EventRecord? record = ref CollectionsMarshal.GetValueRefOrAddDefault(world.EventLookup, EntityIDOnly, out bool exists);
 #endif
             world.EntityTable[EntityID].Flags |= flag;
             EventRecord.Initalize(exists, ref record!);
@@ -668,9 +668,9 @@ namespace Alis.Core.Ecs
         [SkipLocalsInit]
         public void Delete()
         {
-            var world = GlobalWorldTables.Worlds.UnsafeIndexNoResize(WorldID);
+            World world = GlobalWorldTables.Worlds.UnsafeIndexNoResize(WorldID);
             //hardware trap
-            ref var lookup = ref world.EntityTable.UnsafeIndexNoResize(EntityID);
+            ref EntityLocation lookup = ref world.EntityTable.UnsafeIndexNoResize(EntityID);
 
             if (lookup.Version != EntityVersion)
             {
@@ -715,7 +715,7 @@ namespace Alis.Core.Ecs
         {
             get
             {
-                ref var lookup = ref AssertIsAlive(out _);
+                ref EntityLocation lookup = ref AssertIsAlive(out _);
                 return lookup.Archetype.ArchetypeTypeArray;
             }
         }
@@ -728,7 +728,7 @@ namespace Alis.Core.Ecs
         {
             get
             {
-                ref var lookup = ref AssertIsAlive(out _);
+                ref EntityLocation lookup = ref AssertIsAlive(out _);
                 return lookup.Archetype.ArchetypeTagArray;
             }
         }
@@ -740,7 +740,7 @@ namespace Alis.Core.Ecs
         {
             get
             {
-                ref var lookup = ref AssertIsAlive(out _);
+                ref EntityLocation lookup = ref AssertIsAlive(out _);
                 return lookup.Archetype.ID;
             }
         }
@@ -751,7 +751,7 @@ namespace Alis.Core.Ecs
         /// <param name="onEach">The unbound generic function called on each item</param>
         public void EnumerateComponents(IGenericAction onEach)
         {
-            ref var lookup = ref AssertIsAlive(out var _);
+            ref EntityLocation lookup = ref AssertIsAlive(out World _);
             ComponentStorageBase[] runners = lookup.Archetype.Components;
             for (int i = 1; i < runners.Length; i++)
             {

@@ -32,6 +32,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Core.Archetype;
+using Alis.Core.Ecs.Core.Events;
 using Alis.Core.Ecs.Core.Memory;
 using Alis.Core.Ecs.Updating;
 
@@ -189,8 +190,8 @@ namespace Alis.Core.Ecs.Core
 
             while (_createEntityBuffer.TryPop(out CreateCommand createCommand))
             {
-                var item = createCommand.Entity;
-                ref var record = ref _world.EntityTable[item.ID];
+                EntityIDOnly item = createCommand.Entity;
+                ref EntityLocation record = ref _world.EntityTable[item.ID];
                 if (record.Version == item.Version)
                 {
                     _world.DeleteEntityWithoutEvents(item.ToEntity(_world), ref record);
@@ -239,45 +240,45 @@ namespace Alis.Core.Ecs.Core
                 _world.InvokeEntityCreated(concrete);
             }
 
-            while (_deleteEntityBuffer.TryPop(out var item))
+            while (_deleteEntityBuffer.TryPop(out EntityIDOnly item))
             {
                 //double check that its alive
-                ref var record = ref _world.EntityTable[item.ID];
+                ref EntityLocation record = ref _world.EntityTable[item.ID];
                 if (record.Version == item.Version)
                 {
                     _world.DeleteEntity(item.ToEntity(_world), ref record);
                 }
             }
 
-            while (_removeComponentBuffer.TryPop(out var item))
+            while (_removeComponentBuffer.TryPop(out DeleteComponent item))
             {
-                var id = item.Entity.ID;
-                ref var record = ref _world.EntityTable[id];
+                int id = item.Entity.ID;
+                ref EntityLocation record = ref _world.EntityTable[id];
                 if (record.Version == item.Entity.Version)
                 {
                     _world.RemoveComponent(item.Entity.ToEntity(_world), ref record, item.ComponentID);
                 }
             }
 
-            while (_addComponentBuffer.TryPop(out var command))
+            while (_addComponentBuffer.TryPop(out AddComponent command))
             {
-                var id = command.Entity.ID;
-                ref var record = ref _world.EntityTable[id];
+                int id = command.Entity.ID;
+                ref EntityLocation record = ref _world.EntityTable[id];
                 if (record.Version == command.Entity.Version)
                 {
                     Entity concrete = command.Entity.ToEntity(_world);
 
                     ComponentStorageBase runner = null!;
-                    _world.AddComponent(concrete, ref record, command.ComponentHandle.ComponentID, ref runner, out var location);
+                    _world.AddComponent(concrete, ref record, command.ComponentHandle.ComponentID, ref runner, out EntityLocation location);
 
                     runner.PullComponentFrom(command.ComponentHandle.ParentTable, location.Index, command.ComponentHandle.Index);
 
                     if (record.HasEvent(EntityFlags.AddComp))
                     {
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
-                        var events = _world.EventLookup[command.Entity];
+                        EventRecord? events = _world.EventLookup[command.Entity];
 #else
-                        ref var events = ref CollectionsMarshal.GetValueRefOrNullRef(_world.EventLookup, command.Entity);
+                        ref EventRecord events = ref CollectionsMarshal.GetValueRefOrNullRef(_world.EventLookup, command.Entity);
 #endif
                         events.Add.NormalEvent.Invoke(concrete, command.ComponentHandle.ComponentID);
                         runner.InvokeGenericActionWith(events.Add.GenericEvent, concrete, location.Index);
@@ -384,7 +385,7 @@ namespace Alis.Core.Ecs.Core
         public Entity End()
         {
             //CreateCommand points to a segment of the _createEntityComponents stack
-            var e = _world.CreateEntityWithoutEvent();
+            Entity e = _world.CreateEntityWithoutEvent();
             _createEntityBuffer.Push(new CreateCommand(
                 e.EntityIDOnly,
                 _lastCreateEntityComponentsBufferIndex,

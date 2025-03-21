@@ -75,7 +75,7 @@ namespace Alis.Core.Ecs
             Span<ComponentStorageBase> buff = [null!];
             world.MoveEntityToArchetypeAdd(buff, this, ref thisLookup, out EntityLocation nextLocation, to);
 
-            ref var c1ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T>>(buff.UnsafeSpanIndex(0))[nextLocation.Index];
+            ref T c1ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T>>(buff.UnsafeSpanIndex(0))[nextLocation.Index];
             c1ref = c1;
 
             Component<T>.Initer?.Invoke(this, ref c1ref);
