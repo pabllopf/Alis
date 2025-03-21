@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Core;
 
 namespace Alis.Core.Ecs.Systems
@@ -5,6 +6,7 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     The entity ref tuple
     /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
     public ref struct EntityRefTuple<T>
     {
         /// <summary>

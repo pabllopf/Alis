@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:NativeArrayUnsafe.cs
+//  File:FastestArray.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,98 +28,95 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+using System.Buffers;
 
 namespace Alis.Benchmark.NativeCollections.NativeArrays
 {
     /// <summary>
-    /// The native array unsafe
+    /// The fastest array
     /// </summary>
-    public unsafe struct NativeArrayUnsafe<T> : IDisposable
+    public struct FastestArray<T>
     {
-        /// <summary>
-        /// Gets the value of the length
-        /// </summary>
-        public int Length => _length;
-
-        /// <summary>
-        /// The 
-        /// </summary>
-        private static readonly nuint Size = (nuint)Unsafe.SizeOf<T>();
         /// <summary>
         /// The array
         /// </summary>
-        private T* _array;
+        private T[] _array;
         
         /// <summary>
-        /// The length
+        /// The memory
         /// </summary>
-        private int _length;
+        private Memory<T> _memory;
 
         /// <summary>
-        /// The index
+        /// Gets the value of the length
         /// </summary>
-        public ref T this[int index]
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get
-            {
-                return ref _array[index];
-            }
-        }
+        public int Length => _array.Length;
+        /// <summary>
+        /// Gets the value of the span
+        /// </summary>
+        public Span<T> Span => _memory.Span;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NativeArray"/> class
+        /// Initializes a new instance of the <see cref="FastestArray"/> class
         /// </summary>
         /// <param name="length">The length</param>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
-        /// <exception cref="InvalidOperationException">Cannot store managed objects in native code</exception>
-        public NativeArrayUnsafe(int length)
+        public FastestArray(int length)
         {
-            if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
-                throw new InvalidOperationException("Cannot store managed objects in native code");
-            if (length < 1)
-                throw new ArgumentOutOfRangeException();
-
-            _length = length;
-            _array = (T*)NativeMemory.Alloc((nuint)length * Size);
+            _array = ArrayPool<T>.Shared.Rent(length);
+            _memory = new Memory<T>(_array);
         }
 
         /// <summary>
-        /// Resizes the size
+        /// The value
         /// </summary>
-        /// <param name="size">The size</param>
-        public void Resize(int size)
+        public T this[int index]
         {
-            _length = size;
-            _array = (T*)NativeMemory.Realloc(_array, Size * (nuint)size);
+            get => _memory.Span[index];
+            set => _memory.Span[index] = value;
         }
+
+        /// <summary>
+        /// Clears this instance
+        /// </summary>
+        public void Clear() => _memory.Span.Clear();
 
         /// <summary>
         /// Disposes this instance
         /// </summary>
         public void Dispose()
         {
-            NativeMemory.Free(_array);
-            //null reference isnt as bad as a use after free, right?
-            _array = (T*)0;
+            _array = null;
+            _memory = Memory<T>.Empty;
+        }
+
+        /// <summary>
+        /// Resizes the array size
+        /// </summary>
+        /// <param name="arraySize">The array size</param>
+        public void Resize(int arraySize)
+        {
+            if (arraySize == _array.Length)
+                return;
+
+            T[] newArray = ArrayPool<T>.Shared.Rent(arraySize);
+            _memory.Span.Slice(0, Math.Min(_array.Length, arraySize)).CopyTo(newArray.AsSpan());
+
+            ArrayPool<T>.Shared.Return(_array);
+            _array = newArray;
+            _memory = new Memory<T>(_array, 0, arraySize);
         }
 
         /// <summary>
         /// Converts the span
         /// </summary>
         /// <returns>A span of t</returns>
-        public Span<T> AsSpan() => MemoryMarshal.CreateSpan(ref Unsafe.AsRef<T>(_array), _length);
-        
+        public Span<T> AsSpan() => _memory.Span;
+
         /// <summary>
-        /// Converts the span len using the specified len
+        /// Converts the span len using the specified array size
         /// </summary>
-        /// <param name="len">The len</param>
+        /// <param name="arraySize">The array size</param>
         /// <returns>A span of t</returns>
-        public Span<T> AsSpanLen(int len)
-        {
-            return MemoryMarshal.CreateSpan(ref Unsafe.AsRef<T>(_array), len);
-        }
+        public Span<T> AsSpanLen(int arraySize) => _memory.Span.Slice(0, arraySize);
     }
 }

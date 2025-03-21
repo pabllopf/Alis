@@ -29,6 +29,7 @@
 
 using System;
 using System.Numerics;
+using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Buffers;
 using Alis.Core.Ecs.Core.Memory;
 
@@ -37,6 +38,7 @@ namespace Alis.Core.Ecs.Collections
     /// <summary>
     ///     The table
     /// </summary>
+    [StructLayout( LayoutKind.Auto )]
     internal struct Table<T>(int size)
     {
         /// <summary>

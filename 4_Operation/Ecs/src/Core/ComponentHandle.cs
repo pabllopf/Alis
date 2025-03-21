@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Core.Events;
 using HashCode = Alis.Core.Aspect.Math.Util.HashCode;
@@ -37,6 +38,7 @@ namespace Alis.Core.Ecs.Core
     /// <summary>
     ///     The component handle
     /// </summary>
+    [StructLayout( LayoutKind.Auto )]
     public readonly struct ComponentHandle : IEquatable<ComponentHandle>, IDisposable
     {
         /// <summary>

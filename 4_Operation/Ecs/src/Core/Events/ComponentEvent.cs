@@ -1,8 +1,11 @@
+using System.Runtime.InteropServices;
+
 namespace Alis.Core.Ecs.Core.Events
 {
     /// <summary>
     ///     The component event
     /// </summary>
+    [StructLayout( LayoutKind.Auto )]
     internal struct ComponentEvent()
     {
         /// <summary>

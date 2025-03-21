@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Core;
 
 namespace Alis.Core.Ecs.Systems
@@ -34,6 +35,7 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     Specifies a query should have a component of <see paramref="T" />
     /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
     public struct With<T> : IRuleProvider
     {
         /// <summary>

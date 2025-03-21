@@ -28,12 +28,14 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 
 namespace Alis.Core.Ecs.Core
 {
     /// <summary>
     ///     Represents a specific type as a tag, and can be used for tag related queries
     /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
     public readonly struct TagID : ITypeID, IEquatable<TagID>
     {
         /// <summary>

@@ -1,4 +1,5 @@
 using System.Collections.Immutable;
+using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Core;
 using Alis.Core.Ecs.Core.Memory;
@@ -8,6 +9,7 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     The neighbor cache
     /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
     internal struct NeighborCache<T> : IArchetypeGraphEdge
     {
         /// <summary>

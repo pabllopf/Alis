@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Runtime.InteropServices;
+
 namespace Alis.Core.Ecs
 {
     /// <summary>
@@ -36,5 +38,6 @@ namespace Alis.Core.Ecs
     ///     Entities with the <see cref="Disable" /> tag will not be updated in <see cref="World.Update()" /> or similar
     ///     overloads, nor in queries unless explicitly required.
     /// </remarks>
+    [StructLayout(LayoutKind.Sequential)]
     public struct Disable;
 }

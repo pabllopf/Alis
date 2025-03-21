@@ -1,10 +1,12 @@
 using System;
+using System.Runtime.InteropServices;
 
 namespace Alis.Core.Ecs.Systems
 {
     /// <summary>
     ///     The chunk tuple
     /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
     public ref struct ChunkTuple<T>
     {
         /// <summary>

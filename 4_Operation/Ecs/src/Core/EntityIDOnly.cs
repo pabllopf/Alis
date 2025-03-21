@@ -36,7 +36,6 @@ namespace Alis.Core.Ecs.Core
     ///     The entity id only
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 2)]
-//TODO: rename this?
     internal struct EntityIDOnly(int id, ushort version)
     {
         /// <summary>

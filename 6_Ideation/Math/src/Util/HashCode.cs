@@ -58,6 +58,7 @@
 
 using System;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 
 namespace Alis.Core.Aspect.Math.Util
@@ -65,6 +66,7 @@ namespace Alis.Core.Aspect.Math.Util
     /// <summary>
     ///     The hash code
     /// </summary>
+    [StructLayout( LayoutKind.Auto )]
     public struct HashCode
     {
         /// <summary>

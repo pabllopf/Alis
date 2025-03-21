@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Core;
 using Alis.Core.Ecs.Core.Archetype;
 #if NET7_0_OR_GREATER
@@ -39,6 +40,7 @@ namespace Alis.Core.Ecs.Collections
     /// <summary>
     ///     The fast lookup
     /// </summary>
+    [StructLayout( LayoutKind.Auto )]
     internal struct FastLookup()
     {
         /// <summary>

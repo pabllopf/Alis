@@ -29,6 +29,7 @@
 
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 namespace Alis.Core.Ecs.Collections
 {
@@ -36,6 +37,7 @@ namespace Alis.Core.Ecs.Collections
     /// <summary>
     ///     The archetype neighbor cache
     /// </summary>
+    [StructLayout( LayoutKind.Auto )]
     internal struct ArchetypeNeighborCache
     {
         //128 bits

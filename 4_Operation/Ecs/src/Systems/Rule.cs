@@ -29,6 +29,7 @@
 
 using System;
 using System.IO;
+using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Core;
 using HashCode = Alis.Core.Aspect.Math.Util.HashCode;
 
@@ -37,6 +38,7 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     Encapsulates a check for an entity, used to filter queries
     /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
     public struct Rule : IEquatable<Rule>
     {
         /// <summary>

@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.InteropServices;
 using Alis.Benchmark.NativeCollections.NativeStack;
 using Alis.Core.Ecs.Collections;
 
@@ -7,6 +8,7 @@ namespace Alis.Core.Ecs.Core.Events
     /// <summary>
     ///     The entity only event
     /// </summary>
+    [StructLayout( LayoutKind.Auto )]
     internal struct EntityOnlyEvent()
     {
         /// <summary>

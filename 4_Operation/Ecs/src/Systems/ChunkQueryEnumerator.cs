@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Core.Archetype;
 
 namespace Alis.Core.Ecs.Systems
@@ -35,6 +36,7 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     The chunk query enumerator
     /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
     public ref struct ChunkQueryEnumerator<T>
     {
         //ptr, ptr, int, int is better alignment
@@ -97,6 +99,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The query enumerable
         /// </summary>
+        [StructLayout(LayoutKind.Sequential)]
         public struct QueryEnumerable(Query query)
         {
             /// <summary>

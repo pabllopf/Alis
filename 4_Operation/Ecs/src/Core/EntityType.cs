@@ -30,6 +30,7 @@
 global using ArchetypeID = Alis.Core.Ecs.Core.EntityType;
 using System;
 using System.Collections.Immutable;
+using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Core.Archetype;
 using Alis.Core.Ecs.Core.Memory;
 
@@ -39,6 +40,7 @@ namespace Alis.Core.Ecs.Core
     /// <summary>
     ///     Represents an entity's type, or set of component and tag types that make it up
     /// </summary>
+    [StructLayout( LayoutKind.Auto )]
     public struct EntityType : IEquatable<ArchetypeID>
     {
         /// <summary>
