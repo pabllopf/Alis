@@ -1,68 +1,32 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:NativeArray.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
-
 using System;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace Alis.Core.Ecs.Collections
 {
 #if (!NETSTANDARD && !NETFRAMEWORK && !NETCOREAPP) || NET6_0_OR_GREATER
-//Do not pass around this struct by value!!!
-//You must use the constructor when initalizating!!!
 
-#pragma warning disable CS8500 // This takes the address of, gets the size of, or declares a pointer to a managed type
-//As long as the user always uses the ctor, it would throw when managed type is used
     /// <summary>
-    /// The native array
+    /// The native array class
     /// </summary>
-    internal unsafe struct NativeArray<T> : IDisposable
+    /// <seealso cref="IDisposable"/>
+    internal sealed class NativeArray<T> : IDisposable where T : unmanaged
     {
         /// <summary>
-        /// Gets the value of the length
+        /// The handle
         /// </summary>
-        public int Length => _length;
-
-        /// <summary>
-        /// The 
-        /// </summary>
-        private static readonly nuint Size = (nuint) Unsafe.SizeOf<T>();
-
-        /// <summary>
-        /// The array
-        /// </summary>
-        private T* _array;
-
+        private SafeMemoryHandle _handle;
+        
         /// <summary>
         /// The length
         /// </summary>
         private int _length;
+
+        /// <summary>
+        /// Gets the value of the length
+        /// </summary>
+        public int Length => _length;
 
         /// <summary>
         /// The index
@@ -70,51 +34,54 @@ namespace Alis.Core.Ecs.Collections
         public ref T this[int index]
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return ref _array[index]; }
-        }
+            get
+            {
+                if ((uint)index >= (uint)_length)
+                {
+                    throw new IndexOutOfRangeException();
+                }
 
+                return ref AsSpan()[index];
+            }
+        }
+        
         /// <summary>
-        /// Initializes a new instance of the <see cref="NativeArray"/> class
+        /// Initializes a new instance of the <see cref="NativeArray{T}"/> class
         /// </summary>
         /// <param name="length">The length</param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        /// <exception cref="InvalidOperationException">Cannot store managed objects in native code</exception>
         public NativeArray(int length)
         {
-            if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
-                throw new InvalidOperationException("Cannot store managed objects in native code");
-            if (length < 1)
-                throw new ArgumentOutOfRangeException();
+            if (length <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(length));
+            }
 
             _length = length;
-            _array = (T*) NativeMemory.Alloc((nuint) length * Size);
+            _handle = new SafeMemoryHandle(length * Unsafe.SizeOf<T>());
         }
 
         /// <summary>
-        /// Resizes the size
+        /// Resizes the new size
         /// </summary>
-        /// <param name="size">The size</param>
-        public void Resize(int size)
+        /// <param name="newSize">The new size</param>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        public void Resize(int newSize)
         {
-            _length = size;
-            _array = (T*) NativeMemory.Realloc(_array, Size * (nuint) size);
-        }
+            if (newSize <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(newSize));
+            }
 
-        /// <summary>
-        /// Disposes this instance
-        /// </summary>
-        public void Dispose()
-        {
-            NativeMemory.Free(_array);
-            //null reference isnt as bad as a use after free, right?
-            _array = (T*) 0;
+            _handle.Realloc(newSize * Unsafe.SizeOf<T>());
+            _length = newSize;
         }
 
         /// <summary>
         /// Converts the span
         /// </summary>
         /// <returns>A span of t</returns>
-        public Span<T> AsSpan() => MemoryMarshal.CreateSpan(ref Unsafe.AsRef<T>(_array), _length);
+        public Span<T> AsSpan() => MemoryMarshal.Cast<byte, T>(_handle.GetSpan(_length * Unsafe.SizeOf<T>()));
 
         /// <summary>
         /// Converts the span len using the specified len
@@ -123,9 +90,88 @@ namespace Alis.Core.Ecs.Collections
         /// <returns>A span of t</returns>
         public Span<T> AsSpanLen(int len)
         {
-            System.Diagnostics.Debug.Assert(len <= _length);
-            return MemoryMarshal.CreateSpan(ref Unsafe.AsRef<T>(_array), len);
+            Debug.Assert(len <= _length);
+            return AsSpan().Slice(0, len);
         }
+
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
+        public void Dispose() => _handle.Dispose();
     }
+
+    /// <summary>
+    /// The safe memory handle class
+    /// </summary>
+    /// <seealso cref="SafeHandle"/>
+    internal sealed class SafeMemoryHandle : SafeHandle
+    {
+        /// <summary>
+        /// Gets the value of the pointer
+        /// </summary>
+        public IntPtr Pointer => handle;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SafeMemoryHandle"/> class
+        /// </summary>
+        /// <param name="byteSize">The byte size</param>
+        public SafeMemoryHandle(int byteSize) : base(IntPtr.Zero, true)
+        {
+            SetHandle(Marshal.AllocHGlobal(byteSize));
+        }
+
+        /// <summary>
+        /// Reallocs the new size
+        /// </summary>
+        /// <param name="newSize">The new size</param>
+        /// <exception cref="ObjectDisposedException"></exception>
+        public void Realloc(int newSize)
+        {
+            if (IsInvalid)
+            {
+                throw new ObjectDisposedException(nameof(SafeMemoryHandle));
+            }
+
+            SetHandle(Marshal.ReAllocHGlobal(handle, (IntPtr)newSize));
+        }
+
+        /// <summary>
+        /// Gets the span using the specified size
+        /// </summary>
+        /// <param name="size">The size</param>
+        /// <exception cref="ObjectDisposedException"></exception>
+        /// <returns>The temp array</returns>
+        public Span<byte> GetSpan(int size)
+        {
+            if (IsInvalid)
+            {
+                throw new ObjectDisposedException(nameof(SafeMemoryHandle));
+            }
+
+            byte[] tempArray = new byte[size];
+            Marshal.Copy(handle, tempArray, 0, size);
+            return tempArray;
+        }
+        
+        /// <summary>
+        /// Releases the handle
+        /// </summary>
+        /// <returns>The bool</returns>
+        protected override bool ReleaseHandle()
+        {
+            if (!IsInvalid)
+            {
+                Marshal.FreeHGlobal(handle);
+                SetHandle(IntPtr.Zero);
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Gets the value of the is invalid
+        /// </summary>
+        public override bool IsInvalid => handle == IntPtr.Zero;
+    }
+
 #endif
 }
