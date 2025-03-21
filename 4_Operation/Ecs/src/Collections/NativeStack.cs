@@ -123,157 +123,137 @@ namespace Alis.Core.Ecs.Collections
         public Span<T> AsSpan() => _array.AsSpan(0, Count);
     }
 #else
-//Do not pass around this struct by value!!!
-//You must use the constructor when initalizating!!!
 
-#pragma warning disable CS8500 // This takes the address of, gets the size of, or declares a pointer to a managed type
-//As long as the user always uses the ctor, it would throw when managed type is used
+    using System;
+using System.Runtime.CompilerServices;
+
+internal struct NativeStack<T> : IDisposable where T : struct
+{
     /// <summary>
-    /// The native stack
+    /// Número de elementos en la pila.
     /// </summary>
-    internal unsafe struct NativeStack<T> : IDisposable where T : struct
+    public int Count => _nextIndex;
+
+    private T[] _array;
+    private int _capacity;
+    private int _nextIndex;
+
+    /// <summary>
+    /// Acceso por índice con retorno por referencia.
+    /// </summary>
+    public ref T this[int index]
     {
-        /// <summary>
-        /// Gets the value of the count
-        /// </summary>
-        public int Count => _nextIndex;
-
-        /// <summary>
-        /// The 
-        /// </summary>
-        private static readonly nuint Size = (nuint) Unsafe.SizeOf<T>();
-
-        /// <summary>
-        /// The array
-        /// </summary>
-        private T* _array;
-
-        /// <summary>
-        /// The capacity
-        /// </summary>
-        private int _capacity;
-
-        /// <summary>
-        /// The next index
-        /// </summary>
-        private int _nextIndex;
-
-        /// <summary>
-        /// The index
-        /// </summary>
-        public ref T this[int index]
+        get
         {
-            get { return ref _array[index]; }
+            if ((uint)index >= (uint)_nextIndex)
+                throw new IndexOutOfRangeException();
+            return ref _array[index];
         }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="NativeStack"/> class
-        /// </summary>
-        /// <param name="initalCapacity">The inital capacity</param>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
-        /// <exception cref="InvalidOperationException">Cannot store managed objects in native code</exception>
-        public NativeStack(int initalCapacity)
-        {
-            if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
-                throw new InvalidOperationException("Cannot store managed objects in native code");
-            if (initalCapacity < 1)
-                throw new ArgumentOutOfRangeException();
-
-            _capacity = initalCapacity;
-            _array = (T*) NativeMemory.Alloc((nuint) initalCapacity * Size);
-        }
-
-        /// <summary>
-        /// Pushes this instance
-        /// </summary>
-        /// <returns>The ref</returns>
-        public ref T Push()
-        {
-            if (_nextIndex == _capacity)
-                Resize();
-            return ref _array[_nextIndex++];
-        }
-
-        /// <summary>
-        /// Pops the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        public void Pop(out T value)
-        {
-            if (_nextIndex == 0)
-                FrentExceptions.Throw_InvalidOperationException("Stack is empty!");
-            value = _array[--_nextIndex];
-        }
-
-        /// <summary>
-        /// Cans the pop
-        /// </summary>
-        /// <returns>The bool</returns>
-        public bool CanPop() => _nextIndex != 0;
-
-        /// <summary>
-        /// Pops the unsafe
-        /// </summary>
-        /// <returns>The</returns>
-        public T PopUnsafe() => _array[--_nextIndex];
-
-        /// <summary>
-        /// Tries the pop using the specified value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The bool</returns>
-        public bool TryPop(out T value)
-        {
-            if (_nextIndex == 0)
-            {
-                Unsafe.SkipInit(out value);
-                MemoryHelpers.Poison(ref value);
-                return false;
-            }
-
-            value = _array[--_nextIndex];
-            return true;
-        }
-
-        /// <summary>
-        /// Removes the at using the specified index
-        /// </summary>
-        /// <param name="index">The index</param>
-        public void RemoveAt(int index)
-        {
-            if ((uint) index < (uint) _nextIndex)
-            {
-                _array[index] = _array[--_nextIndex];
-                return;
-            }
-
-            FrentExceptions.Throw_InvalidOperationException("Invalid Index!");
-        }
-
-        /// <summary>
-        /// Resizes this instance
-        /// </summary>
-        private void Resize()
-        {
-            _capacity = checked(_capacity * 2);
-            _array = (T*) NativeMemory.Realloc(_array, Size * (nuint) _capacity);
-        }
-
-        /// <summary>
-        /// Disposes this instance
-        /// </summary>
-        public void Dispose()
-        {
-            NativeMemory.Free(_array);
-            //null reference isnt as bad as a use after free, right?
-            _array = (T*) 0;
-        }
-
-        /// <summary>
-        /// Converts the span
-        /// </summary>
-        /// <returns>A span of t</returns>
-        public Span<T> AsSpan() => MemoryMarshal.CreateSpan(ref Unsafe.AsRef<T>(_array), _nextIndex);
     }
+
+    /// <summary>
+    /// Inicializa una nueva instancia de NativeStack.
+    /// Se rechaza si T contiene referencias, pues se quiere mantener la semántica original.
+    /// </summary>
+    /// <param name="initialCapacity">Capacidad inicial</param>
+    /// <exception cref="ArgumentOutOfRangeException"></exception>
+    /// <exception cref="InvalidOperationException"></exception>
+    public NativeStack(int initialCapacity)
+    {
+        if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+            throw new InvalidOperationException("No se pueden almacenar objetos administrados en este contenedor.");
+        if (initialCapacity < 1)
+            throw new ArgumentOutOfRangeException(nameof(initialCapacity));
+
+        _capacity = initialCapacity;
+        _array = new T[_capacity];
+        _nextIndex = 0;
+    }
+
+    /// <summary>
+    /// Agrega un nuevo elemento a la pila y retorna una referencia al espacio reservado.
+    /// </summary>
+    public ref T Push()
+    {
+        if (_nextIndex == _capacity)
+            Resize();
+        return ref _array[_nextIndex++];
+    }
+
+    /// <summary>
+    /// Extrae el elemento en la cima de la pila y lo retorna por medio de un parámetro de salida.
+    /// </summary>
+    public void Pop(out T value)
+    {
+        if (_nextIndex == 0)
+            throw new InvalidOperationException("La pila está vacía.");
+        value = _array[--_nextIndex];
+    }
+
+    /// <summary>
+    /// Indica si es posible realizar un Pop.
+    /// </summary>
+    public bool CanPop() => _nextIndex != 0;
+
+    /// <summary>
+    /// Extrae el elemento en la cima de la pila (sin comprobaciones) y lo retorna.
+    /// </summary>
+    public T PopUnsafe()
+    {
+        if (_nextIndex == 0)
+            throw new InvalidOperationException("La pila está vacía.");
+        return _array[--_nextIndex];
+    }
+
+    /// <summary>
+    /// Intenta extraer un elemento. Retorna false si la pila está vacía.
+    /// </summary>
+    public bool TryPop(out T value)
+    {
+        if (_nextIndex == 0)
+        {
+            value = default;
+            return false;
+        }
+
+        value = _array[--_nextIndex];
+        return true;
+    }
+
+    /// <summary>
+    /// Elimina el elemento en el índice especificado, reemplazándolo con el último elemento.
+    /// </summary>
+    public void RemoveAt(int index)
+    {
+        if ((uint)index >= (uint)_nextIndex)
+            throw new InvalidOperationException("Índice inválido.");
+        _array[index] = _array[--_nextIndex];
+    }
+
+    /// <summary>
+    /// Duplica la capacidad del arreglo cuando es necesario.
+    /// </summary>
+    private void Resize()
+    {
+        _capacity = checked(_capacity * 2);
+        Array.Resize(ref _array, _capacity);
+    }
+
+    /// <summary>
+    /// Libera recursos administrados.
+    /// </summary>
+    public void Dispose()
+    {
+        // Para memoria administrada no es necesario liberar explícitamente,
+        // se anula la referencia para que el GC pueda limpiar.
+        _array = null;
+    }
+
+    /// <summary>
+    /// Retorna un Span que cubre los elementos actuales en la pila.
+    /// </summary>
+    public Span<T> AsSpan() => new Span<T>(_array, 0, _nextIndex);
+}
+
 #endif
 }
