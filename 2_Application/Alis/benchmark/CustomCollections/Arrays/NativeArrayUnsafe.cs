@@ -31,7 +31,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace Alis.Benchmark.NativeCollections.NativeArrays
+namespace Alis.Benchmark.CustomCollections.Arrays
 {
     /// <summary>
     /// The native array unsafe

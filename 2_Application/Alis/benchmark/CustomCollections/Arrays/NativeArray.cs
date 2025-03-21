@@ -3,10 +3,8 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Ecs.Collections
+namespace Alis.Benchmark.CustomCollections.Arrays
 {
-#if (!NETSTANDARD && !NETFRAMEWORK && !NETCOREAPP) || NET6_0_OR_GREATER
-
     /// <summary>
     /// The native array class
     /// </summary>
@@ -172,6 +170,4 @@ namespace Alis.Core.Ecs.Collections
         /// </summary>
         public override bool IsInvalid => handle == IntPtr.Zero;
     }
-
-#endif
 }

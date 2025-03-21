@@ -30,7 +30,7 @@
 using System;
 using System.Buffers;
 
-namespace Alis.Benchmark.NativeCollections.NativeArrays
+namespace Alis.Benchmark.CustomCollections.Arrays
 {
     /// <summary>
     /// The fastest array

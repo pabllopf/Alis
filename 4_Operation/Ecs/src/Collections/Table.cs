@@ -39,7 +39,7 @@ namespace Alis.Core.Ecs.Collections
     ///     The table
     /// </summary>
     [StructLayout( LayoutKind.Auto )]
-    internal struct Table<T>(int size)
+    public struct Table<T>(int size)
     {
         /// <summary>
         ///     Gets the value of the empty
