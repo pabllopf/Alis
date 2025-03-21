@@ -44,9 +44,9 @@ namespace Alis.Core.Ecs
     /// </summary>
     partial struct Entity
     {
-        #region Public API
+        
 
-        #region Has
+        
 
         /// <summary>
         ///     Checks of this <see cref="Entity" /> has a component specified by <paramref name="componentID" />.
@@ -117,9 +117,9 @@ namespace Alis.Core.Ecs
         /// </returns>
         public bool TryHas(Type type) => TryHas(Component.GetComponentID(type));
 
-        #endregion
+        
 
-        #region Get
+        
 
         /// <summary>
         ///     Gets this <see cref="Entity" />'s component of type <typeparamref name="T" />.
@@ -221,9 +221,9 @@ namespace Alis.Core.Ecs
         /// <returns>The component of type <paramref name="type" /></returns>
         public void Set(Type type, object obj) => Set(Component.GetComponentID(type), obj);
 
-        #endregion
+        
 
-        #region TryGet
+        
 
         /// <summary>
         ///     Attempts to get a component from an <see cref="Entity" />.
@@ -266,9 +266,9 @@ namespace Alis.Core.Ecs
             return true;
         }
 
-        #endregion
+        
 
-        #region Add
+        
 
         /// <summary>
         ///     Adds a component to this <see cref="Entity" /> as its own type
@@ -310,9 +310,9 @@ namespace Alis.Core.Ecs
             }
         }
 
-        #endregion
+        
 
-        #region Remove
+        
 
         /// <summary>
         ///     Removes a component from this entity
@@ -342,9 +342,9 @@ namespace Alis.Core.Ecs
         /// </exception>
         public void Remove(Type type) => Remove(Component.GetComponentID(type));
 
-        #endregion
+        
 
-        #region Tag
+        
 
         /// <summary>
         ///     Checks whether this <see cref="Entity" /> has a specific tag, using a <see cref="TagID" /> to represent the tag.
@@ -417,9 +417,9 @@ namespace Alis.Core.Ecs
             return true;
         }
 
-        #endregion
+        
 
-        #region Detach
+        
 
         /// <summary>
         ///     Removes a tag from this <see cref="Entity" />. Tags are like components but do not take up extra memory.
@@ -455,9 +455,9 @@ namespace Alis.Core.Ecs
             return true;
         }
 
-        #endregion
+        
 
-        #region Events
+        
 
         /// <summary>
         ///     Raised when the entity is deleted
@@ -658,9 +658,9 @@ namespace Alis.Core.Ecs
             }
         }
 
-        #endregion
+        
 
-        #region Misc
+        
 
         /// <summary>
         ///     Deletes this entity
@@ -771,8 +771,8 @@ namespace Alis.Core.Ecs
         /// <param name="tags">The tags the <see cref="EntityType" /> should have.</param>
         public static EntityType EntityTypeOf(ReadOnlySpan<ComponentID> components, ReadOnlySpan<TagID> tags) => Archetype.GetArchetypeID(components, tags);
 
-        #endregion
+        
 
-        #endregion
+        
     }
 }

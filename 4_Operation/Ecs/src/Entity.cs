@@ -46,7 +46,7 @@ namespace Alis.Core.Ecs
     [StructLayout(LayoutKind.Sequential, Pack = 2), DebuggerDisplay(AttributeHelpers.DebuggerDisplay), DebuggerTypeProxy(typeof(EntityDebugView))]
     public partial struct Entity : IEquatable<Entity>
     {
-        #region Fields & Ctor
+        
 
         /// <summary>
         ///     Creates an <see cref="Entity" /> identical to <see cref="Entity.Null" />
@@ -86,9 +86,9 @@ namespace Alis.Core.Ecs
         /// </summary>
         internal ushort WorldID;
 
-        #endregion
+        
 
-        #region Props
+        
 
         /// <summary>
         ///     The entity world info access
@@ -161,11 +161,11 @@ namespace Alis.Core.Ecs
         /// </summary>
         internal int EntityLow => Unsafe.As<Entity, EntityHighLow>(ref this).EntityLow;
 
-        #endregion
+        
 
-        #region Internal Helpers
+        
 
-        #region IsAlive
+        
 
         /// <summary>
         ///     Internals the is alive using the specified world
@@ -204,7 +204,7 @@ namespace Alis.Core.Ecs
             return ref lookup;
         }
 
-        #endregion IsAlive
+        
 
         /// <summary>
         ///     Tries the get core using the specified exists
@@ -306,9 +306,9 @@ namespace Alis.Core.Ecs
             }
         }
 
-        #endregion
+        
 
-        #region IEquatable
+        
 
         /// <summary>
         ///     Checks if two <see cref="Entity" /> structs refer to the same entity.
@@ -352,6 +352,6 @@ namespace Alis.Core.Ecs
         /// <returns>A hash code for the current <see cref="Entity" />.</returns>
         public override int GetHashCode() => PackedValue.GetHashCode();
 
-        #endregion
+        
     }
 }

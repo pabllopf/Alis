@@ -309,9 +309,7 @@ namespace Alis.Core.Ecs.Core.Archetype
             _nextComponentIndex--;
             Debug.Assert(_nextComponentIndex >= 0);
             //TODO: args
-
-            #region Unroll
-
+            
             DeleteComponentData args = new(index, _nextComponentIndex);
 
             ref ComponentStorageBase first = ref MemoryMarshal.GetArrayDataReference(Components);
@@ -354,9 +352,7 @@ namespace Alis.Core.Ecs.Core.Archetype
             Unsafe.Add(ref first, 2).Delete(args);
             len2:
             Unsafe.Add(ref first, 1).Delete(args);
-
-            #endregion
-
+            
             end:
 
             return _entities.UnsafeArrayIndex(args.ToIndex) = _entities.UnsafeArrayIndex(args.FromIndex);

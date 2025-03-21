@@ -3,8 +3,4 @@
     <PropertyGroup>
         <Nullable>disable</Nullable>
     </PropertyGroup>
-
-    <PropertyGroup Condition="$(AssemblyName.Contains('Ecs')) == true">
-        <Nullable>enable</Nullable>
-    </PropertyGroup>
 </Project>
