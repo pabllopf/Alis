@@ -71,7 +71,7 @@ namespace Alis.Core.Ecs.Core
         /// </summary>
         /// <param name="other">The tag to compare against</param>
         /// <returns><see langword="true" /> when they represent the same type, <see langword="false" /> otherwise</returns>
-        public override bool Equals(object? other) => other is TagID t && (RawValue == t.RawValue);
+        public override bool Equals(object other) => other is TagID t && (RawValue == t.RawValue);
 
         /// <summary>
         ///     Checks if two <see cref="TagID" />s represent the same type

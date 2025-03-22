@@ -108,7 +108,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// </summary>
         /// <param name="obj">The obj</param>
         /// <returns>The bool</returns>
-        public override bool Equals(object? obj) => obj is ArchetypeEdgeKey other && Equals(other);
+        public override bool Equals(object obj) => obj is ArchetypeEdgeKey other && Equals(other);
 
         /// <summary>
         ///     Gets the hash code

@@ -48,7 +48,7 @@ namespace Alis.Core.Ecs.Core.Events
         /// <summary>
         ///     The first
         /// </summary>
-        private Action<Entity, T>? _first;
+        private Action<Entity, T> _first;
 
         /// <summary>
         ///     The
@@ -80,7 +80,7 @@ namespace Alis.Core.Ecs.Core.Events
             if (_first == action)
             {
                 _first = null;
-                if (_invokationList.TryPop(out Action<Entity, T>? v))
+                if (_invokationList.TryPop(out Action<Entity, T> v))
                 {
                     _first = v;
                 }

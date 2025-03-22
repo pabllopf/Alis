@@ -18,12 +18,12 @@ namespace Alis.Core.Ecs.Core.Events
         /// <summary>
         ///     The first
         /// </summary>
-        private Action<Entity>? _first;
+        private Action<Entity> _first;
 
         /// <summary>
         ///     The second
         /// </summary>
-        private Action<Entity>? _second;
+        private Action<Entity> _second;
 
         /// <summary>
         ///     The entity
@@ -59,7 +59,7 @@ namespace Alis.Core.Ecs.Core.Events
             if (_first == action)
             {
                 _first = null;
-                if (_invokationList.TryPop(out Action<Entity>? v))
+                if (_invokationList.TryPop(out Action<Entity> v))
                 {
                     _first = v;
                 }
@@ -67,7 +67,7 @@ namespace Alis.Core.Ecs.Core.Events
             else if (_second == action)
             {
                 _second = null;
-                if (_invokationList.TryPop(out Action<Entity>? v))
+                if (_invokationList.TryPop(out Action<Entity> v))
                 {
                     _second = v;
                 }

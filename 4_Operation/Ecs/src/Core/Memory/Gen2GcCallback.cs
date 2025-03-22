@@ -43,17 +43,17 @@ namespace Alis.Core.Ecs.Core.Memory
         /// <summary>
         ///     The gen collection occured
         /// </summary>
-        public static Action? Gen2CollectionOccured;
+        public static Action Gen2CollectionOccured;
 
         /// <summary>
         ///     The callback
         /// </summary>
-        private readonly Func<bool>? _callback0;
+        private readonly Func<bool> _callback0;
 
         /// <summary>
         ///     The callback
         /// </summary>
-        private readonly Func<object, bool>? _callback1;
+        private readonly Func<object, bool> _callback1;
 
         /// <summary>
         ///     The weak target obj
@@ -116,7 +116,7 @@ namespace Alis.Core.Ecs.Core.Memory
             if (_weakTargetObj.IsAllocated)
             {
                 // Check to see if the target object is still alive.
-                object? targetObj = _weakTargetObj.Target;
+                object targetObj = _weakTargetObj.Target;
                 if (targetObj == null)
                 {
                     // The target object is dead, so this callback object is no longer needed.

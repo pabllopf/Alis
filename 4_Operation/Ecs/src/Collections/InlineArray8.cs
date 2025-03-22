@@ -35,7 +35,7 @@ namespace Alis.Core.Ecs.Collections
     /// <summary>
     ///     The inline array
     /// </summary>
-    [StructLayout( LayoutKind.Auto )]
+    [StructLayout(LayoutKind.Sequential)]
     internal struct InlineArray8<T>
     {
         /// <summary>

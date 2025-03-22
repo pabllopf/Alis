@@ -45,7 +45,7 @@ namespace Alis.Core.Ecs.Systems
         /// <param name="action">The action</param>
         public static void Delegate<T>(this Query query, QueryDelegates.Query<T> action)
         {
-            foreach (Archetype? archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 //use ref instead of span to avoid extra locals
                 ref T c1 = ref archetype.GetComponentDataReference<T>();
@@ -71,7 +71,7 @@ namespace Alis.Core.Ecs.Systems
         public static void Inline<TAction, T>(this Query query, TAction action)
             where TAction : IAction<T>
         {
-            foreach (Archetype? archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 //use ref instead of span to avoid extra locals
                 ref T c1 = ref archetype.GetComponentDataReference<T>();

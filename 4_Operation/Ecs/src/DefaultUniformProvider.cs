@@ -48,7 +48,7 @@ namespace Alis.Core.Ecs
         /// <typeparam name="T">The type of uniform to get.</typeparam>
         /// <returns>The uniform instance.</returns>
         /// <exception cref="InvalidOperationException">The uniform of the specified type is not found.</exception>
-        public T GetUniform<T>() => _uniforms.TryGetValue(typeof(T), out object? value) ? (T) value : throw new InvalidOperationException($"Uniform of {typeof(T).Name} not found");
+        public T GetUniform<T>() => _uniforms.TryGetValue(typeof(T), out object value) ? (T) value : throw new InvalidOperationException($"Uniform of {typeof(T).Name} not found");
 
         /// <summary>
         ///     Adds a uniform to this uniform provider.

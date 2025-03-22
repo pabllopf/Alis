@@ -117,7 +117,7 @@ namespace Alis.Core.Ecs.Systems
 
                 if ((uint) _archetypeIndex < (uint) _archetypes.Length)
                 {
-                    Archetype? cur = _archetypes[_archetypeIndex];
+                    Archetype cur = _archetypes[_archetypeIndex];
                     _entityIds = cur.GetEntitySpan();
                     _currentSpan1 = cur.GetComponentSpan<T>();
                 }
@@ -216,7 +216,7 @@ namespace Alis.Core.Ecs.Systems
 
             if ((uint) _archetypeIndex < (uint) _archetypes.Length)
             {
-                Archetype? cur = _archetypes[_archetypeIndex];
+                Archetype cur = _archetypes[_archetypeIndex];
                 _entityIds = cur.GetEntitySpan();
                 return true;
             }

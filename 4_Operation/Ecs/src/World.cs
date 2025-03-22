@@ -68,7 +68,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The world archetype table
         /// </summary>
-        internal Archetype?[] WorldArchetypeTable;
+        internal Archetype[] WorldArchetypeTable;
 
         /// <summary>
         ///     The archetype graph edges
@@ -347,7 +347,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="uniformProvider">The initial uniform provider to be used.</param>
         /// <param name="config">The inital config to use. If not provided, <see cref="Config.Singlethreaded" /> is used.</param>
-        public World(IUniformProvider? uniformProvider = null, Config? config = null)
+        public World(IUniformProvider uniformProvider = null, Config config = null)
         {
             CurrentConfig = config ?? Config.Singlethreaded;
             _uniformProvider = uniformProvider ?? NullUniformProvider.Instance;
@@ -423,14 +423,14 @@ namespace Alis.Core.Ecs
 
             try
             {
-                if (!_updatesByAttributes.TryGetValue(attributeType, out WorldUpdateFilter? appliesTo))
+                if (!_updatesByAttributes.TryGetValue(attributeType, out WorldUpdateFilter appliesTo))
                 {
                     _updatesByAttributes[attributeType] = appliesTo = new WorldUpdateFilter();
                 }
 
                 //fill up the table with the correct IDs
                 //works for initalization as well as updating it
-                if (GenerationServices.TypeAttributeCache.TryGetValue(attributeType, out HashSet<Type>? compSet))
+                if (GenerationServices.TypeAttributeCache.TryGetValue(attributeType, out HashSet<Type> compSet))
                 {
                     int size = Component.ComponentTable.Count;
                     for (ref int i = ref appliesTo.NextComponentIndex; i < size; i++)
@@ -472,7 +472,7 @@ namespace Alis.Core.Ecs
 
             int hashCode = queryHash.ToHashCode();
 
-            if (!QueryCache.TryGetValue(hashCode, out Query? query))
+            if (!QueryCache.TryGetValue(hashCode, out Query query))
             {
                 QueryCache[hashCode] = query = CreateQueryFromSpan([.. rules]);
             }
@@ -505,7 +505,7 @@ namespace Alis.Core.Ecs
         internal Query CreateQuery(ImmutableArray<Rule> rules)
         {
             Query q = new Query(this, rules);
-            foreach (ref Archetype? element in WorldArchetypeTable.AsSpan())
+            foreach (ref Archetype element in WorldArchetypeTable.AsSpan())
             {
                 if (element is not null)
                 {
@@ -602,7 +602,7 @@ namespace Alis.Core.Ecs
 
             GlobalWorldTables.Worlds[ID] = null!;
 
-            foreach (ref Archetype? item in WorldArchetypeTable.AsSpan())
+            foreach (ref Archetype item in WorldArchetypeTable.AsSpan())
             {
                 if (item is not null)
                 {

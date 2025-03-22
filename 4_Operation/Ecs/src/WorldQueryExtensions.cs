@@ -56,7 +56,7 @@ namespace Alis.Core.Ecs
             world.QueryCache[QueryHashCache<T>.Value] = value;
             return value;
 #else
-            ref Query? cachedValue = ref CollectionsMarshal.GetValueRefOrAddDefault(world.QueryCache, QueryHashCache<T>.Value, out bool exists);
+            ref Query cachedValue = ref CollectionsMarshal.GetValueRefOrAddDefault(world.QueryCache, QueryHashCache<T>.Value, out bool exists);
             if (!exists)
             {
                 cachedValue = world.CreateQuery(MemoryHelpers.ReadOnlySpanToImmutableArray([default(T).Rule]));

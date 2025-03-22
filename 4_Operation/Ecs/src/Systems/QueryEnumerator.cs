@@ -109,7 +109,7 @@ namespace Alis.Core.Ecs.Systems
 
             if ((uint) _archetypeIndex < (uint) _archetypes.Length)
             {
-                Archetype? cur = _archetypes[_archetypeIndex];
+                Archetype cur = _archetypes[_archetypeIndex];
                 _currentSpan1 = cur.GetComponentSpan<T>();
                 return true;
             }

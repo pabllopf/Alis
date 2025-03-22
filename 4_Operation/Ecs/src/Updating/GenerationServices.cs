@@ -108,7 +108,7 @@ namespace Alis.Core.Ecs.Updating
         public static void RegisterUpdateMethodAttribute(Type attributeType, Type componentType)
         {
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
-            if (!TypeAttributeCache.TryGetValue(attributeType, out HashSet<Type>? set))
+            if (!TypeAttributeCache.TryGetValue(attributeType, out HashSet<Type> set))
             {
                 set = TypeAttributeCache[attributeType] = [];
             }

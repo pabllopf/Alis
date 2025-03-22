@@ -113,7 +113,7 @@ namespace Alis.Core.Ecs.Updating
         /// <param name="action">The action</param>
         /// <param name="entity">The entity</param>
         /// <param name="index">The index</param>
-        internal abstract void InvokeGenericActionWith(GenericEvent? action, Entity entity, int index);
+        internal abstract void InvokeGenericActionWith(GenericEvent action, Entity entity, int index);
 
         /// <summary>
         ///     Invokes the generic action with using the specified action

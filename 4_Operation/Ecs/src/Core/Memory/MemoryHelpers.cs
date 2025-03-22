@@ -115,7 +115,7 @@ namespace Alis.Core.Ecs.Core.Memory
             int sizeSpan = span.Length;
             for (int i = 0; i < sizeSpan; i++)
             {
-                T? t = span[i];
+                T t = span[i];
                 if (start.IndexOf(t) != -1)
                 {
                     FrentExceptions.Throw_InvalidOperationException($"This entity already has a component of type {t.Type.Name}");
@@ -183,7 +183,7 @@ namespace Alis.Core.Ecs.Core.Memory
             ImmutableArray<T>.Builder builder = ImmutableArray.CreateBuilder<T>(types.Length);
             builder.AddRange(types);
 
-            foreach (T? type in span)
+            foreach (T type in span)
             {
                 int index = builder.IndexOf(type);
                 if (index == -1)
@@ -210,14 +210,14 @@ namespace Alis.Core.Ecs.Core.Memory
             where TValue : new()
         {
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
-            if (dictionary.TryGetValue(key, out TValue? value))
+            if (dictionary.TryGetValue(key, out TValue value))
             {
                 return value;
             }
 
             return dictionary[key] = new();
 #else
-            ref TValue? res = ref CollectionsMarshal.GetValueRefOrAddDefault(dictionary, key, out bool _);
+            ref TValue res = ref CollectionsMarshal.GetValueRefOrAddDefault(dictionary, key, out bool _);
             return res ??= new();
 #endif
         }
