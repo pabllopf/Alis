@@ -29,7 +29,7 @@
 
 using System;
 using System.Numerics;
-using System.Runtime.CompilerServices;
+
 
 namespace Alis.Core.Ecs.Collections
 {
@@ -66,7 +66,7 @@ internal unsafe struct NativeTable<T> : IDisposable where T : struct
 
     public NativeTable(int initalCapacity)
     {
-        if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+        if (System.Runtime.CompilerServices.RuntimeHelpers.IsReferenceOrContainsReferences<T>())
             throw new InvalidOperationException("Cannot store managed objects in native code");
         if(initalCapacity < 1)
             throw new ArgumentOutOfRangeException();
@@ -105,7 +105,7 @@ internal unsafe struct NativeTable<T> : IDisposable where T : struct
 //As long as the user always uses the ctor, it would throw when managed type is used
 internal unsafe struct NativeTable<T> : IDisposable where T : struct
 {
-    private static readonly nuint Size = (nuint)Unsafe.SizeOf<T>();
+    private static readonly nuint Size = (nuint)System.Runtime.CompilerServices.Unsafe.SizeOf<T>();
     private T* _array;
     private int _length;
 
@@ -130,7 +130,7 @@ internal unsafe struct NativeTable<T> : IDisposable where T : struct
 
     public NativeTable(int initalCapacity)
     {
-        if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+        if (System.Runtime.CompilerServices.RuntimeHelpers.IsReferenceOrContainsReferences<T>())
             throw new InvalidOperationException("Cannot store managed objects in native code");
         if (initalCapacity < 1)
             throw new ArgumentOutOfRangeException();
@@ -159,7 +159,7 @@ internal unsafe struct NativeTable<T> : IDisposable where T : struct
         _array = (T*)System.Runtime.InteropServices.NativeMemory.Realloc(_array, (nuint)_length * Size);
     }
 
-    public Span<T> AsSpan() => System.Runtime.InteropServices.MemoryMarshal.CreateSpan(ref Unsafe.AsRef<T>(_array), _length);
+    public Span<T> AsSpan() => System.Runtime.InteropServices.MemoryMarshal.CreateSpan(ref System.Runtime.CompilerServices.Unsafe.AsRef<T>(_array), _length);
 
     internal Span<T> Span => AsSpan();
 }

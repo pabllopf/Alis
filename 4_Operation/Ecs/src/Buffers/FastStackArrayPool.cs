@@ -30,7 +30,7 @@
 using System;
 using System.Buffers;
 using System.Numerics;
-using System.Runtime.CompilerServices;
+
 using Alis.Core.Ecs.Core.Memory;
 
 namespace Alis.Core.Ecs.Buffers
@@ -113,7 +113,7 @@ namespace Alis.Core.Ecs.Buffers
         public override void Return(T[] array, bool clearArray = false)
         {
             //easier to deal w/ all logic here
-            if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+            if (System.Runtime.CompilerServices.RuntimeHelpers.IsReferenceOrContainsReferences<T>())
             {
                 array.AsSpan().Clear();
             }

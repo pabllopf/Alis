@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.CompilerServices;
+
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Definition;
 using Version = Alis.Extension.Graphic.Sdl2.Structs.Version;
@@ -104,7 +104,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         ///     Ttf the byte swapped unicode using the specified swapped
         /// </summary>
         /// <param name="swapped">The swapped</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void ByteSwappedUnicode(int swapped)
         {
             NativeSdlTtf.InternalByteSwappedUnicode(swapped);
@@ -115,7 +115,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// </summary>
         /// <exception cref="Exception">InternalInit failed</exception>
         /// <returns>The result</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int Init()
         {
             int result = NativeSdlTtf.InternalInit();
@@ -130,7 +130,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// <param name="ptSize">The pt size</param>
         /// <param name="index">The index</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr OpenFontIndex(string file, int ptSize, long index)
         {
             IntPtr result = NativeSdlTtf.InternalOpenFontIndex(file, ptSize, index);
@@ -143,7 +143,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetFontStyle(IntPtr font)
         {
             int result = NativeSdlTtf.InternalGetFontStyle(font);
@@ -156,7 +156,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="style">The style</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void SetFontStyle(IntPtr font, int style)
         {
             NativeSdlTtf.InternalSetFontStyle(font, style);
@@ -167,7 +167,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetFontOutline(IntPtr font)
         {
             int result = NativeSdlTtf.InternalGetFontOutline(font);
@@ -180,7 +180,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="outline">The outline</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void SetFontOutline(IntPtr font, int outline)
         {
             NativeSdlTtf.InternalSetFontOutline(font, outline);
@@ -191,7 +191,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetFontHinting(IntPtr font)
         {
             int result = NativeSdlTtf.InternalGetFontHinting(font);
@@ -204,7 +204,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="hinting">The hinting</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void SetFontHinting(IntPtr font, int hinting)
         {
             NativeSdlTtf.InternalSetFontHinting(font, hinting);
@@ -215,7 +215,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int FontHeight(IntPtr font)
         {
             int result = NativeSdlTtf.InternalFontHeight(font);
@@ -228,7 +228,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int FontAscent(IntPtr font)
         {
             int result = NativeSdlTtf.InternalFontAscent(font);
@@ -241,7 +241,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int FontDescent(IntPtr font)
         {
             int result = NativeSdlTtf.InternalFontDescent(font);
@@ -254,7 +254,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int FontLineSkip(IntPtr font)
         {
             int result = NativeSdlTtf.InternalFontLineSkip(font);
@@ -267,7 +267,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetFontKerning(IntPtr font)
         {
             int result = NativeSdlTtf.InternalGetFontKerning(font);
@@ -280,7 +280,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="allowed">The allowed</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void SetFontKerning(IntPtr font, int allowed)
         {
             NativeSdlTtf.InternalSetFontKerning(font, allowed);
@@ -291,7 +291,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr FontFaces(IntPtr font)
         {
             IntPtr result = NativeSdlTtf.InternalFontFaces(font);
@@ -304,7 +304,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int FontFaceIsFixedWidth(IntPtr font)
         {
             int result = NativeSdlTtf.InternalFontFaceIsFixedWidth(font);
@@ -317,7 +317,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static string FontFaceStyleName(IntPtr font)
         {
             string result = Marshal.PtrToStringAnsi(NativeSdlTtf.InternalFontFaceStyleName(font));
@@ -331,7 +331,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// <param name="font">The font</param>
         /// <param name="ch">The ch</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GlyphIsProvided(IntPtr font, ushort ch)
         {
             int result = NativeSdlTtf.InternalGlyphIsProvided(font, ch);
@@ -350,7 +350,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// <param name="maxy">The maxy</param>
         /// <param name="advance">The advance</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GlyphMetrics(IntPtr font, ushort ch, out int minx, out int max, out int miny, out int maxy, out int advance)
         {
             int result = NativeSdlTtf.InternalGlyphMetrics(font, ch, out minx, out max, out miny, out maxy, out advance);
@@ -366,7 +366,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// <param name="w">The </param>
         /// <param name="h">The </param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SizeText(IntPtr font, string text, out int w, out int h)
         {
             int result = NativeSdlTtf.InternalSizeText(font, text, out w, out h);
@@ -382,7 +382,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// <param name="w">The </param>
         /// <param name="h">The </param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SizeUtf8(IntPtr font, string text, out int w, out int h)
         {
             int result = NativeSdlTtf.InternalSizeUTF8(font, text, out w, out h);
@@ -398,7 +398,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// <param name="w">The </param>
         /// <param name="h">The </param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int SizeUnicode(IntPtr font, string text, out int w, out int h)
         {
             int result = NativeSdlTtf.InternalSizeUnicode(font, text, out w, out h);
@@ -413,7 +413,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// <param name="text">The text</param>
         /// <param name="fg">The fg</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr RenderTextSolid(IntPtr font, string text, Color fg)
         {
             IntPtr result = NativeSdlTtf.InternalRenderTextSolid(font, text, fg);
@@ -428,7 +428,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// <param name="text">The text</param>
         /// <param name="fg">The fg</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr RenderUtf8Solid(IntPtr font, string text, Color fg)
         {
             IntPtr result = NativeSdlTtf.InternalRenderUTF8Solid(font, text, fg);
@@ -443,7 +443,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// <param name="text">The text</param>
         /// <param name="fg">The fg</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr RenderUnicodeSolid(IntPtr font, string text, Color fg)
         {
             IntPtr result = NativeSdlTtf.InternalRenderUnicodeSolid(font, text, fg);
@@ -458,7 +458,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// <param name="ch">The ch</param>
         /// <param name="fg">The fg</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr RenderGlyphSolid(IntPtr font, ushort ch, Color fg)
         {
             IntPtr result = NativeSdlTtf.InternalRenderGlyphSolid(font, ch, fg);
@@ -474,7 +474,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// <param name="fg">The fg</param>
         /// <param name="bg">The bg</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr RenderTextShaded(IntPtr font, string text, Color fg, Color bg)
         {
             IntPtr result = NativeSdlTtf.InternalRenderTextShaded(font, text, fg, bg);
@@ -490,7 +490,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// <param name="fg">The fg</param>
         /// <param name="bg">The bg</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr RenderUtf8Shaded(IntPtr font, string text, Color fg, Color bg)
         {
             IntPtr result = NativeSdlTtf.InternalRenderUtf8Shaded(font, text, fg, bg);
@@ -506,7 +506,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// <param name="fg">The fg</param>
         /// <param name="bg">The bg</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr RenderUnicodeShaded(IntPtr font, string text, Color fg, Color bg)
         {
             IntPtr result = NativeSdlTtf.InternalRenderUnicodeShaded(font, text, fg, bg);
@@ -522,7 +522,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// <param name="fg">The fg</param>
         /// <param name="bg">The bg</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr RenderGlyphShaded(IntPtr font, ushort ch, Color fg, Color bg)
         {
             IntPtr result = NativeSdlTtf.InternalRenderGlyphShaded(font, ch, fg, bg);
@@ -537,7 +537,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// <param name="text">The text</param>
         /// <param name="fg">The fg</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr RenderTextBlended(IntPtr font, string text, Color fg)
         {
             IntPtr result = NativeSdlTtf.InternalRenderTextBlended(font, text, fg);
@@ -552,7 +552,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// <param name="text">The text</param>
         /// <param name="fg">The fg</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr RenderUnicodeBlended(IntPtr font, string text, Color fg)
         {
             IntPtr result = NativeSdlTtf.InternalRenderUnicodeBlended(font, text, fg);
@@ -568,7 +568,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// <param name="fg">The fg</param>
         /// <param name="wrapped">The wrapped</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr RenderTextBlendedWrapped(IntPtr font, string text, Color fg, uint wrapped)
         {
             IntPtr result = NativeSdlTtf.InternalRenderTextBlendedWrapped(font, text, fg, wrapped);
@@ -584,7 +584,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// <param name="sdlColor">The fg</param>
         /// <param name="wrapped">The wrapped</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr RenderUtf8BlendedWrapped(IntPtr font, string text, Color sdlColor, uint wrapped)
         {
             IntPtr result = NativeSdlTtf.InternalRenderUtf8BlendedWrapped(font, text, sdlColor, wrapped);
@@ -600,7 +600,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// <param name="fg">The fg</param>
         /// <param name="wrapped">The wrapped</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr RenderUnicodeBlendedWrapped(IntPtr font, string text, Color fg, uint wrapped)
         {
             IntPtr result = NativeSdlTtf.InternalRenderUnicodeBlendedWrapped(font, text, fg, wrapped);
@@ -615,7 +615,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// <param name="ch">The ch</param>
         /// <param name="fg">The fg</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr RenderGlyphBlended(IntPtr font, ushort ch, Color fg)
         {
             IntPtr result = NativeSdlTtf.InternalRenderGlyphBlended(font, ch, fg);
@@ -627,7 +627,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         ///     Ttf the close font using the specified font
         /// </summary>
         /// <param name="font">The font</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void CloseFont(IntPtr font)
         {
             NativeSdlTtf.InternalCloseFont(font);
@@ -636,7 +636,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// <summary>
         ///     Ttf the quit
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void Quit()
         {
             NativeSdlTtf.InternalQuit();
@@ -646,7 +646,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         ///     Ttf the was init
         /// </summary>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int WasInit()
         {
             int result = NativeSdlTtf.InternalWasInit();
@@ -661,7 +661,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// <param name="prevIndex">The prev index</param>
         /// <param name="index">The index</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetFontKerningSize(IntPtr font, int prevIndex, int index)
         {
             int result = NativeSdlTtf.InternalGetFontKerningSize(font, prevIndex, index);
@@ -676,7 +676,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// <param name="previousCh">The previous ch</param>
         /// <param name="ch">The ch</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static int GetFontKerningSizeGlyphs(IntPtr font, ushort previousCh, ushort ch)
         {
             int result = NativeSdlTtf.InternalGetFontKerningSizeGlyphs(font, previousCh, ch);
@@ -690,7 +690,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// <param name="file">The file</param>
         /// <param name="ptSize">The pt size</param>
         /// <returns>The handle</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr OpenFont(string file, int ptSize)
         {
             IntPtr result = NativeSdlTtf.InternalOpenFont(file, ptSize);
@@ -702,7 +702,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         ///     Ttf the get error
         /// </summary>
         /// <returns>The string</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static string GetError()
         {
             string result = Sdl.GetError();
@@ -714,7 +714,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         ///     Ttf the set error using the specified fmt and arg
         /// </summary>
         /// <param name="fmtAndArgList">The fmt and arg</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static void SetError(string fmtAndArgList)
         {
             Sdl.SetError(fmtAndArgList);
@@ -723,7 +723,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// <summary>
         ///     Sdl the ttf version using the specified x
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static Version GetVersion()
         {
             Version result = NativeSdlTtf.InternalGetTtfVersion();
@@ -738,7 +738,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         /// <param name="text">The text</param>
         /// <param name="fg">The fg</param>
         /// <returns>The int ptr</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IntPtr RenderUtf8Blended(IntPtr font, string text, Color fg)
         {
             IntPtr result = NativeSdlTtf.InternalRenderUtf8Blended(font, text, fg);

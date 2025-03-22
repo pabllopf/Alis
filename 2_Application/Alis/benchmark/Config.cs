@@ -29,6 +29,7 @@
 
 using BenchmarkDotNet.Columns;
 using BenchmarkDotNet.Configs;
+using BenchmarkDotNet.Diagnosers;
 
 namespace Alis.Benchmark
 {
@@ -48,6 +49,10 @@ namespace Alis.Benchmark
             AddColumn(StatisticColumn.StdErr);
             AddColumn(StatisticColumn.Iterations);
             AddColumn(StatisticColumn.OperationsPerSecond);
+            AddDiagnoser(ThreadingDiagnoser.Default);
+            AddDiagnoser(MemoryDiagnoser.Default);
+            
+            AddDiagnoser(new DisassemblyDiagnoser(new DisassemblyDiagnoserConfig(maxDepth: 5)));
         }
     }
 }

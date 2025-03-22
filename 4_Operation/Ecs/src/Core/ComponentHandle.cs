@@ -30,7 +30,7 @@
 using System;
 
 using Alis.Core.Ecs.Collections;
-using HashCode = Alis.Core.Aspect.Math.Util;
+
 using Alis.Core.Ecs.Core.Events;
 
 namespace Alis.Core.Ecs.Core
@@ -176,7 +176,7 @@ namespace Alis.Core.Ecs.Core
         ///     The hashcode.
         /// </summary>
         /// <returns>The hashcode -_-.</returns>
-        public override int GetHashCode() => HashCode.HashCode.Combine(_componentType, _index);
+        public override int GetHashCode() => HashCode.Combine(_componentType, _index);
 
         /// <summary>
         ///     Gets the value of the index

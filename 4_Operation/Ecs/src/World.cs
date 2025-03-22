@@ -31,7 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics;
-using System.Runtime.CompilerServices;
+
 using System.Runtime.InteropServices;
 using System.Threading;
 using Alis.Core.Ecs.Buffers;
@@ -553,7 +553,7 @@ namespace Alis.Core.Ecs
         }
         
 #if (!NETSTANDARD && NETCOREAPP && NETFRAMEWORK) || NET6_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         internal ref EventRecord TryGetEventData(EntityLocation entityLocation, EntityIDOnly entity, EntityFlags eventType, out bool exists)
         {
             if (entityLocation.HasEvent(eventType))
@@ -564,7 +564,7 @@ namespace Alis.Core.Ecs
 
 
             exists = false;
-            return ref Unsafe.NullRef<EventRecord>();
+            return ref System.Runtime.CompilerServices.Unsafe.NullRef<EventRecord>();
         }
 #endif
 
@@ -706,16 +706,16 @@ namespace Alis.Core.Ecs
         ///     Creates an <see cref="Entity" /> with the given component(s)
         /// </summary>
         /// <returns>An <see cref="Entity" /> that can be used to acsess the component data</returns>
-        [Ecs.SkipLocalsInit]
+        [System.Runtime.CompilerServices.SkipLocalsInit]
         public Entity Create<T>(in T comp)
         {
             Archetype archetype = Archetype<T>.CreateNewOrGetExistingArchetype(this);
 
-            ref EntityIDOnly entity = ref Unsafe.NullRef<EntityIDOnly>();
+            ref EntityIDOnly entity = ref System.Runtime.CompilerServices.Unsafe.NullRef<EntityIDOnly>();
             EntityLocation eloc = default;
 
             ComponentStorageBase[] components;
-            Unsafe.SkipInit(out int index);
+            System.Runtime.CompilerServices.Unsafe.SkipInit(out int index);
             MemoryHelpers.Poison(ref index);
 
             if (AllowStructualChanges)
@@ -798,7 +798,7 @@ namespace Alis.Core.Ecs
         Span<ComponentHandle> tmpHandleSpan = [default!];
         MoveEntityToArchetypeRemove(tmpHandleSpan, entity, ref lookup, destination);
 #else
-            Unsafe.SkipInit(out ComponentHandle tmpHandle);
+            System.Runtime.CompilerServices.Unsafe.SkipInit(out ComponentHandle tmpHandle);
             MemoryHelpers.Poison(ref tmpHandle);
             MoveEntityToArchetypeRemove(MemoryMarshal.CreateSpan(ref tmpHandle, 1), entity, ref lookup, destination);
 #endif
@@ -833,7 +833,7 @@ namespace Alis.Core.Ecs
         /// <param name="currentLookup">The current lookup</param>
         /// <param name="nextLocation">The next location</param>
         /// <param name="destination">The destination</param>
-        [Ecs.SkipLocalsInit]
+        [System.Runtime.CompilerServices.SkipLocalsInit]
         internal void MoveEntityToArchetypeAdd(Span<ComponentStorageBase> writeTo, Entity entity, ref EntityLocation currentLookup, out EntityLocation nextLocation, Archetype destination)
         {
             Archetype from = currentLookup.Archetype;
@@ -881,7 +881,7 @@ namespace Alis.Core.Ecs
         /// <param name="entity">The entity</param>
         /// <param name="currentLookup">The current lookup</param>
         /// <param name="destination">The destination</param>
-        [Ecs.SkipLocalsInit]
+        [System.Runtime.CompilerServices.SkipLocalsInit]
         internal void MoveEntityToArchetypeRemove(Span<ComponentHandle> componentHandles, Entity entity, ref EntityLocation currentLookup, Archetype destination)
         {
             Archetype from = currentLookup.Archetype;
@@ -979,7 +979,7 @@ namespace Alis.Core.Ecs
         /// <param name="entity">The entity</param>
         /// <param name="currentLookup">The current lookup</param>
         /// <param name="destination">The destination</param>
-        [Ecs.SkipLocalsInit]
+        [System.Runtime.CompilerServices.SkipLocalsInit]
         internal void MoveEntityToArchetypeIso(Entity entity, ref EntityLocation currentLookup, Archetype destination)
         {
             Archetype from = currentLookup.Archetype;
@@ -1018,7 +1018,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="entity">The entity</param>
         /// <param name="entityLocation">The entity location</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         internal void DeleteEntity(Entity entity, ref EntityLocation entityLocation)
         {
             EntityFlags check = entityLocation.Flags | WorldEventFlags;
@@ -1055,7 +1055,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="entity">The entity</param>
         /// <param name="currentLookup">The current lookup</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         internal void DeleteEntityWithoutEvents(Entity entity, ref EntityLocation currentLookup)
         {
             //entity is guaranteed to be alive here

@@ -32,7 +32,7 @@ using System.Collections.Immutable;
 using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
-using System.Runtime.CompilerServices;
+
 using System.Runtime.InteropServices;
 using System.Threading;
 using Alis.Core.Ecs.Buffers;
@@ -103,7 +103,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The ref</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         internal ref T GetComponentDataReference<T>()
         {
             int index = GetComponentIndex<T>();
@@ -113,7 +113,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// <summary>
         ///     Note! Entity location version is not set!
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         internal ref EntityIDOnly CreateEntityLocation(EntityFlags flags, out EntityLocation entityLocation)
         {
             if (_entities.Length == _nextComponentIndex)
@@ -124,7 +124,7 @@ namespace Alis.Core.Ecs.Core.Archetype
             entityLocation.Archetype = this;
             entityLocation.Index = _nextComponentIndex;
             entityLocation.Flags = flags;
-            Unsafe.SkipInit(out entityLocation.Version);
+            System.Runtime.CompilerServices.Unsafe.SkipInit(out entityLocation.Version);
             MemoryHelpers.Poison(ref entityLocation.Version);
             return ref _entities.UnsafeArrayIndex(_nextComponentIndex++);
         }
@@ -132,7 +132,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// <summary>
         ///     Caller needs write archetype field
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         internal ref EntityIDOnly CreateDeferredEntityLocation(World world, scoped ref EntityLocation entityLocation, out int physicalIndex, out ComponentStorageBase[] writeStorage)
         {
             if (_deferredEntityCount == 0)
@@ -327,21 +327,21 @@ namespace Alis.Core.Ecs.Core.Archetype
 
             //TODO: figure out the distribution of component counts
             len9:
-            Unsafe.Add(ref first, 8).Delete(args);
+            System.Runtime.CompilerServices.Unsafe.Add(ref first, 8).Delete(args);
             len8:
-            Unsafe.Add(ref first, 7).Delete(args);
+            System.Runtime.CompilerServices.Unsafe.Add(ref first, 7).Delete(args);
             len7:
-            Unsafe.Add(ref first, 6).Delete(args);
+            System.Runtime.CompilerServices.Unsafe.Add(ref first, 6).Delete(args);
             len6:
-            Unsafe.Add(ref first, 5).Delete(args);
+            System.Runtime.CompilerServices.Unsafe.Add(ref first, 5).Delete(args);
             len5:
-            Unsafe.Add(ref first, 4).Delete(args);
+            System.Runtime.CompilerServices.Unsafe.Add(ref first, 4).Delete(args);
             len4:
-            Unsafe.Add(ref first, 3).Delete(args);
+            System.Runtime.CompilerServices.Unsafe.Add(ref first, 3).Delete(args);
             len3:
-            Unsafe.Add(ref first, 2).Delete(args);
+            System.Runtime.CompilerServices.Unsafe.Add(ref first, 2).Delete(args);
             len2:
-            Unsafe.Add(ref first, 1).Delete(args);
+            System.Runtime.CompilerServices.Unsafe.Add(ref first, 1).Delete(args);
 
 
             end:
@@ -419,7 +419,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         internal int GetComponentIndex<T>() => ComponentTagTable.UnsafeArrayIndex(Component<T>.ID.RawIndex) & GlobalWorldTables.IndexBits;
 
         /// <summary>
@@ -427,7 +427,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// </summary>
         /// <param name="component">The component</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         internal int GetComponentIndex(ComponentID component) => ComponentTagTable.UnsafeArrayIndex(component.RawIndex) & GlobalWorldTables.IndexBits;
 
         /// <summary>
@@ -435,7 +435,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The bool</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         internal bool HasTag<T>() => ComponentTagTable.UnsafeArrayIndex(Tag<T>.ID.RawValue) << 7 != 0;
 
         /// <summary>
@@ -443,7 +443,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// </summary>
         /// <param name="tagID">The tag id</param>
         /// <returns>The bool</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         internal bool HasTag(TagID tagID) => ComponentTagTable.UnsafeArrayIndex(tagID.RawValue) << 7 != 0;
 
         internal Span<EntityIDOnly> GetEntitySpan()
@@ -479,7 +479,7 @@ namespace Alis.Core.Ecs.Core.Archetype
             /// </summary>
             /// <typeparam name="T">The </typeparam>
             /// <returns>The ref</returns>
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
             internal ref T GetComponentDataReference<T>()
             {
                 int index = Map.UnsafeArrayIndex(Component<T>.ID.RawIndex);

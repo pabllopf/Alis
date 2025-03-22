@@ -31,7 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics;
-using System.Runtime.CompilerServices;
+
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Core;
 using Alis.Core.Ecs.Core.Archetype;
@@ -144,17 +144,17 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Gets the value of the entity id only
         /// </summary>
-        internal EntityIDOnly EntityIDOnly => Unsafe.As<Entity, EntityWorldInfoAccess>(ref this).EntityIDOnly;
+        internal EntityIDOnly EntityIDOnly => System.Runtime.CompilerServices.Unsafe.As<Entity, EntityWorldInfoAccess>(ref this).EntityIDOnly;
 
         /// <summary>
         ///     Gets the value of the packed value
         /// </summary>
-        internal long PackedValue => Unsafe.As<Entity, long>(ref this);
+        internal long PackedValue => System.Runtime.CompilerServices.Unsafe.As<Entity, long>(ref this);
 
         /// <summary>
         ///     Gets the value of the entity low
         /// </summary>
-        internal int EntityLow => Unsafe.As<Entity, EntityHighLow>(ref this).EntityLow;
+        internal int EntityLow => System.Runtime.CompilerServices.Unsafe.As<Entity, EntityHighLow>(ref this).EntityLow;
 
 
         /// <summary>
@@ -229,7 +229,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Ms
         /// </summary>
-        [MethodImpl(MethodImplOptions.NoInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]
         private static void M()
         {
         }

@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.CompilerServices;
+
 using System.Runtime.InteropServices;
 
 namespace Alis.Core.Ecs.Core.Memory
@@ -46,7 +46,7 @@ namespace Alis.Core.Ecs.Core.Memory
         /// <param name="index">The index</param>
         /// <returns>The ref</returns>
         public static ref T UnsafeArrayIndex<T>(this T[] arr, nint index) =>
-            ref Unsafe.Add(ref MemoryMarshal.GetArrayDataReference(arr), index);
+            ref System.Runtime.CompilerServices.Unsafe.Add(ref MemoryMarshal.GetArrayDataReference(arr), index);
 
         /// <summary>
         /// Unsafes the array index using the specified arr
@@ -56,7 +56,7 @@ namespace Alis.Core.Ecs.Core.Memory
         /// <param name="index">The index</param>
         /// <returns>The ref</returns>
         public static ref T UnsafeArrayIndex<T>(this T[] arr, int index) =>
-            ref Unsafe.Add(ref MemoryMarshal.GetArrayDataReference(arr), index);
+            ref System.Runtime.CompilerServices.Unsafe.Add(ref MemoryMarshal.GetArrayDataReference(arr), index);
 
         /// <summary>
         /// Unsafes the array index using the specified arr
@@ -66,7 +66,7 @@ namespace Alis.Core.Ecs.Core.Memory
         /// <param name="index">The index</param>
         /// <returns>The ref</returns>
         public static ref T UnsafeArrayIndex<T>(this T[] arr, ushort index) =>
-            ref Unsafe.Add(ref MemoryMarshal.GetArrayDataReference(arr), index);
+            ref System.Runtime.CompilerServices.Unsafe.Add(ref MemoryMarshal.GetArrayDataReference(arr), index);
 
         /// <summary>
         /// Unsafes the array index using the specified arr
@@ -76,7 +76,7 @@ namespace Alis.Core.Ecs.Core.Memory
         /// <param name="index">The index</param>
         /// <returns>The ref</returns>
         public static ref T UnsafeArrayIndex<T>(this T[] arr, uint index) =>
-            ref Unsafe.Add(ref MemoryMarshal.GetArrayDataReference(arr), new IntPtr(index));
+            ref System.Runtime.CompilerServices.Unsafe.Add(ref MemoryMarshal.GetArrayDataReference(arr), new IntPtr(index));
 
         /// <summary>
         /// Unsafes the span index using the specified arr
@@ -86,7 +86,7 @@ namespace Alis.Core.Ecs.Core.Memory
         /// <param name="index">The index</param>
         /// <returns>The ref</returns>
         public static ref T UnsafeSpanIndex<T>(this Span<T> arr, int index) =>
-            ref Unsafe.Add(ref MemoryMarshal.GetReference(arr), index);
+            ref System.Runtime.CompilerServices.Unsafe.Add(ref MemoryMarshal.GetReference(arr), index);
 
         /// <summary>
         /// Unsafes the span index using the specified arr
@@ -96,7 +96,7 @@ namespace Alis.Core.Ecs.Core.Memory
         /// <param name="index">The index</param>
         /// <returns>The ref</returns>
         public static ref T UnsafeSpanIndex<T>(this Span<T> arr, ushort index) =>
-            ref Unsafe.Add(ref MemoryMarshal.GetReference(arr), index);
+            ref System.Runtime.CompilerServices.Unsafe.Add(ref MemoryMarshal.GetReference(arr), index);
 
         /// <summary>
         /// Unsafes the span index using the specified arr
@@ -106,7 +106,7 @@ namespace Alis.Core.Ecs.Core.Memory
         /// <param name="index">The index</param>
         /// <returns>The ref</returns>
         public static ref T UnsafeSpanIndex<T>(this Span<T> arr, uint index) =>
-            ref Unsafe.Add(ref MemoryMarshal.GetReference(arr), new IntPtr(index));
+            ref System.Runtime.CompilerServices.Unsafe.Add(ref MemoryMarshal.GetReference(arr), new IntPtr(index));
 
         /// <summary>
         /// Unsafes the cast using the specified o
@@ -115,6 +115,6 @@ namespace Alis.Core.Ecs.Core.Memory
         /// <param name="o">The </param>
         /// <returns>The</returns>
         public static T UnsafeCast<T>(object o) where T : class =>
-            Unsafe.As<T>(o);
+            System.Runtime.CompilerServices.Unsafe.As<T>(o);
     }
 }

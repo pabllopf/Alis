@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
+
 using Alis.Core.Ecs.Core;
 using Alis.Core.Ecs.Core.Archetype;
 #if NET7_0_OR_GREATER
@@ -47,7 +47,7 @@ namespace Alis.Core.Ecs.Collections
     internal Archetype[] Archetypes = new Archetype[8];
     private int index;
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
     public ArchetypeID FindAdjacentArchetypeID<T>(T id, ArchetypeID archetype, World world, ArchetypeEdgeType edgeType)
         where T : ITypeID
     {

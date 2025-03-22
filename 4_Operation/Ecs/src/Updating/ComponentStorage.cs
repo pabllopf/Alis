@@ -29,7 +29,7 @@
 
 using System;
 using System.Numerics;
-using System.Runtime.CompilerServices;
+
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Core;
@@ -111,7 +111,7 @@ namespace Alis.Core.Ecs.Updating
             ref TComponent? downItem = ref componentRunner[otherRemoveIndex];
             item = downItem;
 
-            if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
+            if (System.Runtime.CompilerServices.RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
             {
                 downItem = default;
             }
@@ -128,7 +128,7 @@ namespace Alis.Core.Ecs.Updating
             ref TComponent? item = ref ((IDTable<TComponent>) storage).Buffer[other];
             this[me] = item;
 
-            if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
+            if (System.Runtime.CompilerServices.RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
             {
                 item = default;
             }
@@ -145,7 +145,7 @@ namespace Alis.Core.Ecs.Updating
             this[data.ToIndex] = from;
 
 
-            if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
+            if (System.Runtime.CompilerServices.RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
             {
                 from = default;
             }
@@ -175,14 +175,14 @@ internal unsafe abstract partial class ComponentStorage<TComponent>(int length) 
 {
     public ref TComponent this[int index]
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         get
         {
             return ref TypedBuffer.UnsafeArrayIndex(index);
         }
     }
 
-    private ref TComponent[] TypedBuffer => ref Unsafe.As<Array, TComponent[]>(ref _buffer);
+    private ref TComponent[] TypedBuffer => ref System.Runtime.CompilerServices.Unsafe.As<Array, TComponent[]>(ref _buffer);
 
     protected void Resize(int size)
     {
@@ -211,7 +211,7 @@ internal unsafe abstract class ComponentStorage<TComponent> : IDisposable
 
     public ref TComponent this[int index]
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         get
         {
             if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
@@ -223,7 +223,7 @@ internal unsafe abstract class ComponentStorage<TComponent> : IDisposable
         }
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
     public ComponentStorage()
     {
         if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
@@ -239,7 +239,7 @@ internal unsafe abstract class ComponentStorage<TComponent> : IDisposable
     private TComponent[]? _managed;
     private NativeArray<TComponent> _nativeArray;
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
     protected void Resize(int size)
     {
         if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
@@ -252,11 +252,11 @@ internal unsafe abstract class ComponentStorage<TComponent> : IDisposable
         }
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
     public Span<TComponent> AsSpan() => RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>() ?
         _managed.AsSpan() : _nativeArray.AsSpan();
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
     public Span<TComponent> AsSpan(int length) => RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>() ?
         _managed.AsSpan(0, length) : _nativeArray.AsSpanLen(length);
 

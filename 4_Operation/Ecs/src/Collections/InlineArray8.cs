@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
+
 
 namespace Alis.Core.Ecs.Collections
 {
@@ -82,6 +82,6 @@ namespace Alis.Core.Ecs.Collections
         /// <param name="array">The array</param>
         /// <param name="index">The index</param>
         /// <returns>The ref</returns>
-        public static ref T Get(ref InlineArray8<T> array, int index) => ref Unsafe.Add(ref array._0, index);
+        public static ref T Get(ref InlineArray8<T> array, int index) => ref System.Runtime.CompilerServices.Unsafe.Add(ref array._0, index);
     }
 }

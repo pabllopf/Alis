@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.CompilerServices;
+
 using Alis.Core.Ecs.Core.Memory;
 
 namespace Alis.Core.Ecs.Collections
@@ -83,7 +83,7 @@ internal struct NativeStack<T> : IDisposable where T : struct
         /// <exception cref="InvalidOperationException">Cannot store managed objects in native code</exception>
         public NativeStack(int initalCapacity)
         {
-            if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+            if (System.Runtime.CompilerServices.RuntimeHelpers.IsReferenceOrContainsReferences<T>())
             {
                 throw new InvalidOperationException("Cannot store managed objects in native code");
             }
@@ -145,7 +145,7 @@ internal struct NativeStack<T> : IDisposable where T : struct
         {
             if (_nextIndex == 0)
             {
-                Unsafe.SkipInit(out value);
+                System.Runtime.CompilerServices.Unsafe.SkipInit(out value);
                 MemoryHelpers.Poison(ref value);
                 return false;
             }

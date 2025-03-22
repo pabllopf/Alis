@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Immutable;
-using System.Runtime.CompilerServices;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Core;
 using Alis.Core.Ecs.Core.Archetype;
@@ -51,7 +50,7 @@ namespace Alis.Core.Ecs
     /// Adds a component to this <see cref="Entity"/>.
     /// </summary>
     /// <remarks>If the world is being updated, changed are deffered to the end of the world update.</remarks>
-    [Ecs.SkipLocalsInit]
+    [System.Runtime.CompilerServices.SkipLocalsInit]
     public void Add<T>(in T c1)
     {
         ref EntityLocation thisLookup = ref AssertIsAlive(out World world);
@@ -97,7 +96,7 @@ namespace Alis.Core.Ecs
     /// Removes a component from this <see cref="Entity"/>
     /// </summary>
     /// <inheritdoc cref="Add{T}(in T)"/>
-    [Ecs.SkipLocalsInit]
+    [System.Runtime.CompilerServices.SkipLocalsInit]
     public void Remove<T>()
     {
         ref EntityLocation thisLookup = ref AssertIsAlive(out World world);
@@ -123,7 +122,7 @@ namespace Alis.Core.Ecs
     /// Adds a tag to this <see cref="Entity"/>
     /// </summary>
     /// <inheritdoc cref="Add{T}(in T)"/>
-    [Ecs.SkipLocalsInit]
+    [System.Runtime.CompilerServices.SkipLocalsInit]
     public void Tag<T>()
     {
         ref EntityLocation thisLookup = ref AssertIsAlive(out World world);
@@ -158,7 +157,7 @@ namespace Alis.Core.Ecs
     /// Removes a tag from this <see cref="Entity"/>
     /// </summary>
     /// <inheritdoc cref="Add{T}(in T)"/>
-    [Ecs.SkipLocalsInit]
+    [System.Runtime.CompilerServices.SkipLocalsInit]
     public void Detach<T>()
     {
         ref EntityLocation thisLookup = ref AssertIsAlive(out World world);
@@ -266,7 +265,7 @@ namespace Alis.Core.Ecs
 
 partial struct Entity
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
     internal static Archetype TraverseThroughCacheOrCreate<T, TEdge>(
         World world,
         ref ArchetypeNeighborCache cache,

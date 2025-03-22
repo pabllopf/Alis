@@ -30,11 +30,11 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.Runtime.CompilerServices;
+
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Core.Memory;
 using Alis.Core.Ecs.Updating;
-using HashCode = Alis.Core.Aspect.Math.Util;
+
 
 namespace Alis.Core.Ecs.Core.Archetype
 {
@@ -56,7 +56,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         return archetype!;
 
         //this method is literally only called once per world
-        [MethodImpl(MethodImplOptions.NoInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]
         static Archetype CreateArchetype(World world)
         {
             ComponentStorageBase[] runners = new ComponentStorageBase[ArchetypeComponentIDs.Length + 1];
@@ -247,8 +247,8 @@ partial class Archetype
 
     private static long GetHash(ReadOnlySpan<ComponentID> types, ReadOnlySpan<TagID> andMoreTypes)
     {
-        HashCode.HashCode h1 = new();
-        HashCode.HashCode h2 = new();
+        HashCode h1 = new();
+        HashCode h2 = new();
 
         int i;
         for (i = 0; i < types.Length >> 1; i++)
@@ -266,7 +266,7 @@ partial class Archetype
             hash2 += item.RawValue * 53U;
         }
 
-        h1.Add(HashCode.HashCode.Combine(hash1, hash2));
+        h1.Add(HashCode.Combine(hash1, hash2));
 
         for (; i < types.Length; i++)
         {

@@ -78,6 +78,7 @@
         <PackageReference Include="System.Net.Http" Version="4.3.0"/>
         <PackageReference Include="System.Collections.Immutable" Version="10.0.0-preview.2.25163.2"/>
         <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.1"/>
+        <PackageReference Include="CommunityToolkit.HighPerformance" Version="8.4.0" />
     </ItemGroup>
 
     <ItemGroup Condition="
@@ -85,10 +86,12 @@
     $(TargetFramework.Equals('netcoreapp2.1')) OR
     $(TargetFramework.Equals('netcoreapp2.2')) OR
     $(TargetFramework.Equals('netcoreapp3.0')) OR
-    $(TargetFramework.Equals('netcoreapp3.1'))
+    $(TargetFramework.Equals('netcoreapp3.1')) OR
+    $(TargetFramework.Equals('net5.0'))
     ">
         <PackageReference Include="System.Collections.Immutable" Version="10.0.0-preview.2.25163.2"/>
         <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.1"/>
+        <PackageReference Include="CommunityToolkit.HighPerformance" Version="8.4.0" />
     </ItemGroup>
 
     <ItemGroup Condition="
@@ -97,10 +100,11 @@
     ">
         <PackageReference Include="System.Collections.Immutable" Version="10.0.0-preview.2.25163.2"/>
         <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.1"/>
+        <PackageReference Include="CommunityToolkit.HighPerformance" Version="8.4.0" />
+        <PackageReference Include="Microsoft.Bcl.HashCode" Version="6.0.0" />
     </ItemGroup>
 
     <ItemGroup Condition="
-    $(TargetFramework.Equals('net5.0')) OR
     $(TargetFramework.Equals('net6.0')) OR
     $(TargetFramework.Equals('net7.0')) OR
     $(TargetFramework.Equals('net8.0')) OR
@@ -108,9 +112,4 @@
     ">
         <PackageReference Include="System.Collections.Immutable" Version="10.0.0-preview.2.25163.2"/>
     </ItemGroup>
-    
-    <ItemGroup>
-        <PackageReference Include="CommunityToolkit.HighPerformance" Version="8.4.0" />
-    </ItemGroup>
-
 </Project>

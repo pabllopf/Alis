@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.CompilerServices;
+
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Core.Archetype;
 using Alis.Core.Ecs.Core.Events;
@@ -334,7 +334,7 @@ namespace Alis.Core.Ecs.Core
             Throw();
         }
 
-        [MethodImpl(MethodImplOptions.NoInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]
         static void Throw() => throw new InvalidOperationException("Use CommandBuffer.Entity() to begin creating an entity!");
     }
 

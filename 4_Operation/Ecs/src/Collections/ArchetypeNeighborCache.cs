@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Diagnostics;
-using System.Runtime.CompilerServices;
+
 
 namespace Alis.Core.Ecs.Collections
 {
@@ -55,7 +55,7 @@ namespace Alis.Core.Ecs.Collections
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public int Traverse(ushort value)
         {
             //my simd code is garbage
@@ -99,7 +99,7 @@ namespace Alis.Core.Ecs.Collections
         public ushort Lookup(int index)
         {
             Debug.Assert(index < 4);
-            return Unsafe.Add(ref _keysAndValues._4, index);
+            return System.Runtime.CompilerServices.Unsafe.Add(ref _keysAndValues._4, index);
         }
 
         /// <summary>
@@ -109,8 +109,8 @@ namespace Alis.Core.Ecs.Collections
         /// <param name="value">The value</param>
         public void Set(ushort key, ushort value)
         {
-            Unsafe.Add(ref _keysAndValues._4, _nextIndex) = value;
-            Unsafe.Add(ref _keysAndValues._0, _nextIndex) = key;
+            System.Runtime.CompilerServices.Unsafe.Add(ref _keysAndValues._4, _nextIndex) = value;
+            System.Runtime.CompilerServices.Unsafe.Add(ref _keysAndValues._0, _nextIndex) = key;
             _nextIndex = (_nextIndex + 1) & 3;
         }
     }
