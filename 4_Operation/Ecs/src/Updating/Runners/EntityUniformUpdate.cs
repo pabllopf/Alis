@@ -136,7 +136,7 @@ public class EntityUniformUpdateRunnerFactory<TComp, TUniform, TArg> : IComponen
         ///     Creates the stack
         /// </summary>
         /// <returns>The id table</returns>
-        IDTable IComponentStorageBaseFactory.CreateStack() => new IDTable<TComp>();
+        IdTable IComponentStorageBaseFactory.CreateStack() => new IdTable<TComp>();
 
         /// <summary>
         ///     Creates the strongly typed using the specified capacity

@@ -187,6 +187,6 @@ namespace Alis.Core.Ecs.Core
         /// <summary>
         ///     Gets the value of the parent table
         /// </summary>
-        internal IDTable ParentTable => Component.ComponentTable[_componentType.RawIndex].Storage;
+        internal IdTable ParentTable => Component.ComponentTable[_componentType.RawIndex].Storage;
     }
 }

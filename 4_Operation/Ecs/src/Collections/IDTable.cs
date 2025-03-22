@@ -36,38 +36,38 @@ namespace Alis.Core.Ecs.Collections
     /// <summary>
     ///     The id table class
     /// </summary>
-    internal abstract class IDTable
+    internal abstract class IdTable
     {
         /// <summary>
         ///     The has gc references
         /// </summary>
-        private readonly bool _hasGCReferences;
+        private readonly bool hasGcReferences;
 
         /// <summary>
         ///     The buffer
         /// </summary>
-        protected Array _buffer;
+        protected Array Buffer;
 
         /// <summary>
         ///     The next index
         /// </summary>
-        protected int _nextIndex;
+        protected int NextIndex;
 
         /// <summary>
         ///     The recycled
         /// </summary>
-        protected FastStack<int> _recycled;
+        protected FastStack<int> Recycled;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="IDTable" /> class
+        ///     Initializes a new instance of the <see cref="IdTable" /> class
         /// </summary>
         /// <param name="empty">The empty</param>
         /// <param name="gcRefs">The gc refs</param>
-        public IDTable(Array empty, bool gcRefs)
+        public IdTable(Array empty, bool gcRefs)
         {
-            _buffer = empty;
-            _hasGCReferences = gcRefs;
-            _recycled = new FastStack<int>(2);
+            Buffer = empty;
+            hasGcReferences = gcRefs;
+            Recycled = new FastStack<int>(2);
         }
 
         /// <summary>
@@ -78,14 +78,14 @@ namespace Alis.Core.Ecs.Collections
         public int CreateBoxed(object toStore)
         {
             int index;
-            if (_recycled.CanPop())
+            if (Recycled.CanPop())
             {
-                index = _recycled.Pop();
+                index = Recycled.Pop();
             }
             else
             {
-                index = _nextIndex++;
-                if (index == _buffer.Length)
+                index = NextIndex++;
+                if (index == Buffer.Length)
                 {
                     Double();
                 }
@@ -110,7 +110,7 @@ namespace Alis.Core.Ecs.Collections
         /// <returns>The object</returns>
         public object TakeBoxed(int index)
         {
-            _recycled.Push(index);
+            Recycled.Push(index);
             return GetValue(index);
         }
 
@@ -120,8 +120,8 @@ namespace Alis.Core.Ecs.Collections
         /// <param name="index">The index</param>
         public void Consume(int index)
         {
-            _recycled.Push(index);
-            if (_hasGCReferences)
+            Recycled.Push(index);
+            if (hasGcReferences)
             {
                 ClearValue(index);
             }
@@ -164,20 +164,20 @@ namespace Alis.Core.Ecs.Collections
     /// <summary>
     ///     The id table class
     /// </summary>
-    /// <seealso cref="IDTable" />
-    internal class IDTable<T> : IDTable
+    /// <seealso cref="IdTable" />
+    internal class IdTable<T> : IdTable
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="IDTable{T}" /> class
+        ///     Initializes a new instance of the <see cref="IdTable{T}" /> class
         /// </summary>
-        public IDTable() : base(Array.Empty<T>(), RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+        public IdTable() : base(Array.Empty<T>(), RuntimeHelpers.IsReferenceOrContainsReferences<T>())
         {
         }
 
         /// <summary>
         ///     Gets the value of the buffer
         /// </summary>
-        public ref T[] Buffer => ref Unsafe.As<Array, T[]>(ref _buffer);
+        public ref T[] Buffer => ref Unsafe.As<Array, T[]>(ref base.Buffer);
 
         /// <summary>
         ///     Creates the index
@@ -186,14 +186,14 @@ namespace Alis.Core.Ecs.Collections
         /// <returns>The ref</returns>
         public ref T Create(out int index)
         {
-            if (_recycled.CanPop())
+            if (Recycled.CanPop())
             {
-                index = _recycled.Pop();
+                index = Recycled.Pop();
             }
             else
             {
-                index = _nextIndex++;
-                if (index == _buffer.Length)
+                index = NextIndex++;
+                if (index == base.Buffer.Length)
                 {
                     Double();
                 }
@@ -211,7 +211,7 @@ namespace Alis.Core.Ecs.Collections
         public override void InvokeEventWithAndConsume(GenericEvent genericEvent, Entity entity, int index)
         {
             genericEvent?.Invoke(entity, ref Buffer[index]);
-            _recycled.Push(index);
+            Recycled.Push(index);
         }
 
         /// <summary>

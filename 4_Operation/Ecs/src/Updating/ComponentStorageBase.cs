@@ -105,7 +105,7 @@ namespace Alis.Core.Ecs.Updating
         /// <param name="storage">The storage</param>
         /// <param name="me">The me</param>
         /// <param name="other">The other</param>
-        internal abstract void PullComponentFrom(IDTable storage, int me, int other);
+        internal abstract void PullComponentFrom(IdTable storage, int me, int other);
 
         /// <summary>
         ///     Invokes the generic action with using the specified action

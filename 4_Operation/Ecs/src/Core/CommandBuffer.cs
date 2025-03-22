@@ -232,7 +232,7 @@ namespace Alis.Core.Ecs.Core
                     int size = handles.Length;
                     for (int i = 0; i < size; i++)
                     {
-                        id = _world.AddComponentLookup.FindAdjacentArchetypeID(handles[i].ComponentID, id, _world, ArchetypeEdgeType.AddComponent);
+                        id = _world.AddComponentLookup.FindAdjacentArchetypeId(handles[i].ComponentID, id, _world, ArchetypeEdgeType.AddComponent);
                     }
 
                     _world.MoveEntityToArchetypeAdd(runners, concrete, ref lookup, out EntityLocation location, id.Archetype(_world));
