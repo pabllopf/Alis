@@ -185,14 +185,21 @@ namespace Alis.Core.Ecs.Core.Archetype
 
                 //we should always have to resize here - after all, no space is left
                 Resize((int) BitOperations.RoundUpToPowerOf2((uint) totalCapacityRequired));
-                ComponentStorageBase[] destination = Components;
-                ComponentStorageBase[] source = CreateComponentBuffers;
-                int size = destination.Length;
-                for (int i = 1; i < size; i++)
+                
+                Span<ComponentStorageBase> componentStorage = Components;
+                ref ComponentStorageBase destination = ref MemoryMarshal.GetReference(componentStorage);
+                
+                Span<ComponentStorageBase> createComponentBuffers = CreateComponentBuffers;
+                ref ComponentStorageBase source = ref MemoryMarshal.GetReference(createComponentBuffers);
+                
+                int size = componentStorage.Length;
+                for (int i = 0; i < size; i++)
                 {
-                    Array.Copy(source[i].Buffer, 0, destination[i].Buffer, oldEntitiesLen, deltaFromMaxDeferredInPlace);
+                    ref byte srcBuffer = ref Unsafe.As<ComponentStorageBase, byte>(ref Unsafe.Add(ref source, i));
+                    ref byte dstBuffer = ref Unsafe.As<ComponentStorageBase, byte>(ref Unsafe.Add(ref destination, i));
+                    Unsafe.CopyBlock(ref dstBuffer, ref srcBuffer, (uint)(deltaFromMaxDeferredInPlace * Unsafe.SizeOf<ComponentStorageBase>()));
                 }
-
+                
                 Array.Copy(_createComponentBufferEntities, 0, _entities, oldEntitiesLen, deltaFromMaxDeferredInPlace);
             }
 
