@@ -34,24 +34,19 @@ using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Buffers;
 using Alis.Core.Ecs.Core.Memory;
 
-namespace Alis.Benchmark.CustomCollections.Tables
+namespace Alis.Core.Ecs.Collections
 {
     /// <summary>
     /// The the best table
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct TheBestTable<T> : IDisposable where T : unmanaged
+    public struct TheBestTable<T> : IDisposable 
     {
         /// <summary>
         /// The array
         /// </summary>
         private T[] _array;
-        
-        /// <summary>
-        /// The length
-        /// </summary>
-        private int _length;
-        
+       
         /// <summary>
         /// The index
         /// </summary>
@@ -59,12 +54,12 @@ namespace Alis.Benchmark.CustomCollections.Tables
         {
             get
             {
-                if (index >= _length)
+                if ((uint) index < (uint) _array)
                 {
                     return ref ResizeFor(index);
                 }
 
-                return ref _array.UnsafeArrayIndex(index);
+                return ref Unsafe.Add(ref MemoryMarshal.GetArrayDataReference(_array), index);
             }
         }
 
@@ -74,7 +69,7 @@ namespace Alis.Benchmark.CustomCollections.Tables
         /// <param name="index">The index</param>
         /// <returns>The ref</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public ref T UnsafeIndexNoResize(int index) =>  ref _array.UnsafeArrayIndex(index);
+        public ref T UnsafeIndexNoResize(int index) =>  ref Unsafe.Add(ref MemoryMarshal.GetArrayDataReference(_array), index);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TheBestTable"/> class
@@ -95,8 +90,7 @@ namespace Alis.Benchmark.CustomCollections.Tables
                 throw new ArgumentOutOfRangeException(nameof(initialCapacity));
             }
 
-            _length = initialCapacity;
-            _array = GC.AllocateUninitializedArray<T>(_length, pinned: false);
+            FastStackArrayPool<T>.ResizeArrayFromPool(ref _array, (int) BitOperations.RoundUpToPowerOf2((uint) (initialCapacity * 2)));
         }
 
         /// <summary>
@@ -114,13 +108,13 @@ namespace Alis.Benchmark.CustomCollections.Tables
         private ref T ResizeFor(int index)
         {
             FastStackArrayPool<T>.ResizeArrayFromPool(ref _array, (int) BitOperations.RoundUpToPowerOf2((uint) (index + 1)));
-            return ref _array.UnsafeArrayIndex(index);
+            return ref Unsafe.Add(ref MemoryMarshal.GetArrayDataReference(_array), index);
         }
 
         /// <summary>
         /// Ensures the capacity using the specified new capacity
         /// </summary>
-        /// <param name="size"></param>
+        /// <param name="newCapacity">The new capacity</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void EnsureCapacity(int size)
         {
@@ -137,6 +131,6 @@ namespace Alis.Benchmark.CustomCollections.Tables
         /// </summary>
         /// <returns>A span of t</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public Span<T> AsSpan() =>  MemoryMarshal.CreateSpan(ref MemoryMarshal.GetArrayDataReference(_array), _length);
+        public Span<T> AsSpan() => _array.AsSpan();
     }
 }
