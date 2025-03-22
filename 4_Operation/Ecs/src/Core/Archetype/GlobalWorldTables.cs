@@ -72,7 +72,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// <summary>
         ///     The world
         /// </summary>
-        internal static TheBestTable<World> Worlds = new TheBestTable<World>(2);
+        internal static Table<World> Worlds = new Table<World>(2);
 
         /// <summary>
         ///     The buffer change lock

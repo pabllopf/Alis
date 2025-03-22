@@ -62,7 +62,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The entity location
         /// </summary>
-        internal TheBestTable<EntityLocation> EntityTable = new TheBestTable<EntityLocation>(256);
+        internal Table<EntityLocation> EntityTable = new Table<EntityLocation>(256);
 
         //archetype ID -> Archetype?
         /// <summary>
@@ -527,11 +527,7 @@ namespace Alis.Core.Ecs
         ///     Updates the archetype table using the specified new size
         /// </summary>
         /// <param name="newSize">The new size</param>
-        internal void UpdateArchetypeTable(int newSize)
-        {
-            Debug.Assert(newSize > WorldArchetypeTable.Length);
-            FastStackArrayPool<Archetype>.ResizeArrayFromPool(ref WorldArchetypeTable, newSize);
-        }
+        internal void UpdateArchetypeTable(int newSize) => FastStackArrayPool<Archetype>.ResizeArrayFromPool(ref WorldArchetypeTable, newSize);
 
         /// <summary>
         ///     Enters the disallow state
@@ -1021,9 +1017,6 @@ namespace Alis.Core.Ecs
         {
             //entity is guaranteed to be alive here
             EntityIDOnly replacedEntity = currentLookup.Archetype.DeleteEntity(currentLookup.Index);
-
-            Debug.Assert(replacedEntity.ID < EntityTable._buffer.Length);
-            Debug.Assert(entity.EntityID < EntityTable._buffer.Length);
 
             ref EntityLocation replaced = ref EntityTable.UnsafeIndexNoResize(replacedEntity.ID);
             replaced = currentLookup;
