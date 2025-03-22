@@ -35,7 +35,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Util;
-
+using HashCode = Alis.Core.Aspect.Math.Util.HashCode;
 
 
 namespace Alis.Core.Aspect.Math.Vector

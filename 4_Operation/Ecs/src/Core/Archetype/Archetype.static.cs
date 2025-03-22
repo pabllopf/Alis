@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Core.Memory;
 using Alis.Core.Ecs.Updating;
+using HashCode = Alis.Core.Aspect.Math.Util.HashCode;
 
 namespace Alis.Core.Ecs.Core.Archetype
 {

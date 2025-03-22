@@ -27,7 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 using System;
+using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
+using HashCode = Alis.Core.Aspect.Math.Util.HashCode;
 
 namespace Alis.Core.Aspect.Math.Matrix
 {
