@@ -13,16 +13,43 @@ namespace Alis.Core.Ecs.Core
     /// </summary>
     public class CommandBuffer
     {
+        /// <summary>
+        /// The create
+        /// </summary>
         internal FastStack<EntityIDOnly> _deleteEntityBuffer = FastStack<EntityIDOnly>.Create(4);
+        /// <summary>
+        /// The create
+        /// </summary>
         internal FastStack<AddComponent> _addComponentBuffer = FastStack<AddComponent>.Create(4);
+        /// <summary>
+        /// The create
+        /// </summary>
         internal FastStack<DeleteComponent> _removeComponentBuffer = FastStack<DeleteComponent>.Create(4);
+        /// <summary>
+        /// The create
+        /// </summary>
         internal FastStack<CreateCommand> _createEntityBuffer = FastStack<CreateCommand>.Create(4);
+        /// <summary>
+        /// The create
+        /// </summary>
         internal FastStack<ComponentHandle> _createEntityComponents = FastStack<ComponentHandle>.Create(4);
+        /// <summary>
+        /// The max component count
+        /// </summary>
         private readonly ComponentStorageBase[] _componentRunnerBuffer = new ComponentStorageBase[MemoryHelpers.MaxComponentCount];
 
+        /// <summary>
+        /// The world
+        /// </summary>
         internal World _world;
         //-1 indicates normal state
+        /// <summary>
+        /// The last create entity components buffer index
+        /// </summary>
         internal int _lastCreateEntityComponentsBufferIndex = -1;
+        /// <summary>
+        /// The is inactive
+        /// </summary>
         internal bool _isInactive;
 
         /// <summary>
@@ -298,6 +325,10 @@ namespace Alis.Core.Ecs.Core
             return hasItems;
         }
 
+        /// <summary>
+        /// Asserts the creating entity
+        /// </summary>
+        /// <exception cref="InvalidOperationException">Use CommandBuffer.Entity() to begin creating an entity!</exception>
         private void AssertCreatingEntity()
         {
             if (_lastCreateEntityComponentsBufferIndex < 0)
@@ -309,6 +340,9 @@ namespace Alis.Core.Ecs.Core
             static void Throw() => throw new InvalidOperationException("Use CommandBuffer.Entity() to begin creating an entity!");
         }
 
+        /// <summary>
+        /// Sets the is active
+        /// </summary>
         private void SetIsActive()
         {
             _isInactive = false;

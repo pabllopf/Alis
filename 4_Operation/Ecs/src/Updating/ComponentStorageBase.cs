@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using Alis.Core.Ecs.Collections;
@@ -8,22 +8,96 @@ using Alis.Core.Ecs.Core.Events;
 
 namespace Alis.Core.Ecs.Updating
 {
+    /// <summary>
+    /// The component storage base class
+    /// </summary>
     internal abstract class ComponentStorageBase(Array initalBuffer)
     {
+        /// <summary>
+        /// The inital buffer
+        /// </summary>
         protected Array _buffer = initalBuffer;
+        /// <summary>
+        /// Gets the value of the buffer
+        /// </summary>
         public Array Buffer => _buffer;
+        /// <summary>
+        /// Runs the world
+        /// </summary>
+        /// <param name="world">The world</param>
+        /// <param name="b">The </param>
         internal abstract void Run(World world, Archetype b);
+        /// <summary>
+        /// Multithreadeds the run using the specified countdown
+        /// </summary>
+        /// <param name="countdown">The countdown</param>
+        /// <param name="world">The world</param>
+        /// <param name="b">The </param>
         internal abstract void MultithreadedRun(CountdownEvent countdown, World world, Archetype b);
+        /// <summary>
+        /// Deletes the delete component data
+        /// </summary>
+        /// <param name="deleteComponentData">The delete component data</param>
         internal abstract void Delete(DeleteComponentData deleteComponentData);
+        /// <summary>
+        /// Trims the chunk index
+        /// </summary>
+        /// <param name="chunkIndex">The chunk index</param>
         internal abstract void Trim(int chunkIndex);
+        /// <summary>
+        /// Resizes the buffer using the specified size
+        /// </summary>
+        /// <param name="size">The size</param>
         internal abstract void ResizeBuffer(int size);
+        /// <summary>
+        /// Pulls the component from and clear using the specified other runner
+        /// </summary>
+        /// <param name="otherRunner">The other runner</param>
+        /// <param name="me">The me</param>
+        /// <param name="other">The other</param>
+        /// <param name="otherRemove">The other remove</param>
         internal abstract void PullComponentFromAndClear(ComponentStorageBase otherRunner, int me, int other, int otherRemove);
+        /// <summary>
+        /// Pulls the component from using the specified storage
+        /// </summary>
+        /// <param name="storage">The storage</param>
+        /// <param name="me">The me</param>
+        /// <param name="other">The other</param>
         internal abstract void PullComponentFrom(IDTable storage, int me, int other);
+        /// <summary>
+        /// Invokes the generic action with using the specified action
+        /// </summary>
+        /// <param name="action">The action</param>
+        /// <param name="entity">The entity</param>
+        /// <param name="index">The index</param>
         internal abstract void InvokeGenericActionWith(GenericEvent? action, Entity entity, int index);
+        /// <summary>
+        /// Invokes the generic action with using the specified action
+        /// </summary>
+        /// <param name="action">The action</param>
+        /// <param name="index">The index</param>
         internal abstract void InvokeGenericActionWith(IGenericAction action, int index);
+        /// <summary>
+        /// Stores the index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <returns>The component handle</returns>
         internal abstract ComponentHandle Store(int index);
+        /// <summary>
+        /// Sets the at using the specified component
+        /// </summary>
+        /// <param name="component">The component</param>
+        /// <param name="index">The index</param>
         internal abstract void SetAt(object component, int index);
+        /// <summary>
+        /// Gets the at using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <returns>The object</returns>
         internal abstract object GetAt(int index);
+        /// <summary>
+        /// Gets the value of the component id
+        /// </summary>
         internal abstract ComponentID ComponentID { get; }
 
 
@@ -89,6 +163,11 @@ namespace Alis.Core.Ecs.Updating
             PullComponentFromAndClear(otherRunner, me, other, otherRemove);
         }
 
+        /// <summary>
+        /// Gets the component size
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <returns>The size</returns>
         internal static int GetComponentSize<T>()
         {
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())

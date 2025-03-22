@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Core.Memory;
 using Alis.Core.Ecs.Updating;
@@ -66,10 +66,28 @@ namespace Alis.Core.Ecs.Core
     /// <returns>A string representation of the wrapped <typeparamref name="T"/>'s</returns>
     public override readonly string? ToString() => Value?.ToString();
 #else
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Ref"/> class
+    /// </summary>
+    /// <param name="compArr">The comp arr</param>
+    /// <param name="index">The index</param>
     internal Ref(T[] compArr, int index) => _comp = MemoryMarshal.CreateSpan(ref compArr.UnsafeArrayIndex(index), 1);
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Ref"/> class
+    /// </summary>
+    /// <param name="compSpan">The comp span</param>
+    /// <param name="index">The index</param>
     internal Ref(Span<T> compSpan, int index) => _comp = MemoryMarshal.CreateSpan(ref compSpan.UnsafeSpanIndex(index), 1);
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Ref"/> class
+    /// </summary>
+    /// <param name="compSpan">The comp span</param>
+    /// <param name="index">The index</param>
     internal Ref(ComponentStorage<T> compSpan, int index) => _comp = MemoryMarshal.CreateSpan(ref compSpan[index], 1);
 
+    /// <summary>
+    /// The comp
+    /// </summary>
     private Span<T> _comp;
 
     /// <summary>

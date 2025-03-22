@@ -1,33 +1,64 @@
-﻿using System;
+using System;
 using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Core.Events;
 
 namespace Alis.Core.Ecs.Core
 {
+    /// <summary>
+    /// The component handle
+    /// </summary>
     public readonly struct ComponentHandle : IEquatable<ComponentHandle>, IDisposable
     {
+        /// <summary>
+        /// The index
+        /// </summary>
         private readonly int _index;
+        /// <summary>
+        /// The component type
+        /// </summary>
         private readonly ComponentID _componentType;
 
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ComponentHandle"/> class
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <param name="componentID">The component id</param>
         internal ComponentHandle(int index, ComponentID componentID)
         {
             _index = index;
             _componentType = componentID;
         }
 
+        /// <summary>
+        /// Creates the comp
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="comp">The comp</param>
+        /// <returns>The component handle</returns>
         public static ComponentHandle Create<T>(in T comp)
         {
             return Component<T>.StoreComponent(comp);
         }
 
+        /// <summary>
+        /// Creates the from boxed using the specified type as
+        /// </summary>
+        /// <param name="typeAs">The type as</param>
+        /// <param name="@object">The object</param>
+        /// <returns>The component handle</returns>
         public static ComponentHandle CreateFromBoxed(ComponentID typeAs, object @object)
         {
             var index = Component.ComponentTable[typeAs.RawIndex].Storage.CreateBoxed(@object);
             return new ComponentHandle(index, typeAs);
         }
 
+        /// <summary>
+        /// Creates the from boxed using the specified object
+        /// </summary>
+        /// <param name="@object">The object</param>
+        /// <returns>The component handle</returns>
         public static ComponentHandle CreateFromBoxed(object @object) => CreateFromBoxed(Component.GetComponentID(@object.GetType()), @object);
 
         /// <summary>
@@ -51,6 +82,11 @@ namespace Alis.Core.Ecs.Core
             return Component.ComponentTable[_componentType.RawIndex].Storage.TakeBoxed(_index);
         }
 
+        /// <summary>
+        /// Invokes the component event and consume using the specified entity
+        /// </summary>
+        /// <param name="entity">The entity</param>
+        /// <param name="@event">The event</param>
         internal void InvokeComponentEventAndConsume(Entity entity, GenericEvent? @event)
         {
             Component.ComponentTable[_componentType.RawIndex].Storage.InvokeEventWithAndConsume(@event, entity, _index);
@@ -101,7 +137,13 @@ namespace Alis.Core.Ecs.Core
         /// </summary>
         /// <returns>The hashcode -_-.</returns>
         public override int GetHashCode() => HashCode.Combine(_componentType, _index);
+        /// <summary>
+        /// Gets the value of the index
+        /// </summary>
         internal int Index => _index;
+        /// <summary>
+        /// Gets the value of the parent table
+        /// </summary>
         internal IDTable ParentTable => Component.ComponentTable[_componentType.RawIndex].Storage;
     }
 }

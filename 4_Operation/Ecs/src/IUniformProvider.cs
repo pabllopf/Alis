@@ -1,4 +1,4 @@
-﻿using Alis.Core.Ecs.Components;
+using Alis.Core.Ecs.Components;
 
 namespace Alis.Core.Ecs
 {

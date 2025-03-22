@@ -1,4 +1,4 @@
-﻿namespace Alis.Core.Ecs.Core.Events
+namespace Alis.Core.Ecs.Core.Events
 {
     /// <summary>
     /// An generic action with known parameter

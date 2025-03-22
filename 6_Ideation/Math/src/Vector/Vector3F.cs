@@ -35,6 +35,7 @@ using System.Runtime.Serialization;
 using System.Text;
 
 
+
 namespace Alis.Core.Aspect.Math.Vector
 {
     /// <summary>

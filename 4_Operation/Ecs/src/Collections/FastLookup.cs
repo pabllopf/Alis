@@ -1,20 +1,44 @@
-﻿using System.Runtime.CompilerServices;
+using System.Runtime.CompilerServices;
 using Alis.Core.Ecs.Core;
 using Alis.Core.Ecs.Core.Archetype;
 #if NET7_0_OR_GREATER
-using System.Numerics;
+
 using System.Runtime.Intrinsics;
 #endif
 
 namespace Alis.Core.Ecs.Collections
 {
+    /// <summary>
+    /// The fast lookup
+    /// </summary>
     internal struct FastLookup()
     {
+        /// <summary>
+        /// The data
+        /// </summary>
         private InlineArray8<uint> _data;
+        /// <summary>
+        /// The ids
+        /// </summary>
         private InlineArray8<ushort> _ids;
+        /// <summary>
+        /// The archetype
+        /// </summary>
         internal Archetype[] Archetypes = new Archetype[8];
+        /// <summary>
+        /// The index
+        /// </summary>
         private int index;
 
+        /// <summary>
+        /// Finds the adjacent archetype id using the specified id
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="id">The id</param>
+        /// <param name="archetype">The archetype</param>
+        /// <param name="world">The world</param>
+        /// <param name="edgeType">The edge type</param>
+        /// <returns>The entity type</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public EntityType FindAdjacentArchetypeID<T>(T id, EntityType archetype, World world, ArchetypeEdgeType edgeType)
             where T : ITypeID
@@ -39,12 +63,24 @@ namespace Alis.Core.Ecs.Collections
             return dest.ID;
         }
 
+        /// <summary>
+        /// Gets the key using the specified id
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="archetypeID">The archetype id</param>
+        /// <returns>The key</returns>
         public uint GetKey(ushort id, EntityType archetypeID)
         {
             uint key = archetypeID.RawIndex | ((uint)id << 16);
             return key;
         }
 
+        /// <summary>
+        /// Sets the archetype using the specified id
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="from">The from</param>
+        /// <param name="to">The to</param>
         public void SetArchetype(ushort id, EntityType from, Archetype to)
         {
             uint key = GetKey(id, from);
@@ -57,13 +93,18 @@ namespace Alis.Core.Ecs.Collections
             index = (index + 1) & 7;
         }
 
+        /// <summary>
+        /// Lookups the index using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
+        /// <returns>The int</returns>
         public int LookupIndex(uint key)
         {
 #if NET7_0_OR_GREATER
             if (Vector256.IsHardwareAccelerated)
             {
                 Vector256<uint> bits = Vector256.Equals(Vector256.Create(key), Vector256.LoadUnsafe(ref _data._0));
-                int index = BitOperations.TrailingZeroCount(bits.ExtractMostSignificantBits());
+                int index = System.Numerics.BitOperations.TrailingZeroCount(bits.ExtractMostSignificantBits());
                 return index;
             }
 #endif

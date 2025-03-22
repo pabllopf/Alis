@@ -76,7 +76,6 @@
     ">
         <PackageReference Include="System.IO.Compression" Version="4.3.0"/>
         <PackageReference Include="System.Net.Http" Version="4.3.0"/>
-        <PackageReference Include="Microsoft.Bcl.HashCode" Version="6.0.0" />
         <PackageReference Include="System.Collections.Immutable" Version="10.0.0-preview.1.25080.5" />
     </ItemGroup>
 
@@ -86,7 +85,6 @@
     $(TargetFramework.Equals('netcoreapp3.1')) OR
     $(TargetFramework.Equals('net5.0'))
     ">
-        <PackageReference Include="Microsoft.Bcl.HashCode" Version="6.0.0" />
         <PackageReference Include="System.Collections.Immutable" Version="10.0.0-preview.1.25080.5" />
     </ItemGroup>
 
@@ -102,7 +100,6 @@
     $(TargetFramework.Equals('netstandard2.0')) OR
     $(TargetFramework.Equals('netstandard2.1'))
     ">
-        <PackageReference Include="Microsoft.Bcl.HashCode" Version="6.0.0" />
         <PackageReference Include="System.Collections.Immutable" Version="10.0.0-preview.1.25080.5" />
     </ItemGroup>
 

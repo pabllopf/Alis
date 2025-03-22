@@ -14,12 +14,27 @@ namespace Alis.Core.Ecs.Core.Memory
     /// </summary>
     internal sealed class Gen2GcCallback : CriticalFinalizerObject
     {
+        /// <summary>
+        /// The gen collection occured
+        /// </summary>
         public static Action? Gen2CollectionOccured;
 
+        /// <summary>
+        /// The callback
+        /// </summary>
         private readonly Func<bool>? _callback0;
+        /// <summary>
+        /// The callback
+        /// </summary>
         private readonly Func<object, bool>? _callback1;
+        /// <summary>
+        /// The weak target obj
+        /// </summary>
         private GCHandle _weakTargetObj;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Gen2GcCallback"/> class
+        /// </summary>
         static Gen2GcCallback()
         {
             Register(() =>
@@ -29,11 +44,20 @@ namespace Alis.Core.Ecs.Core.Memory
             });
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Gen2GcCallback"/> class
+        /// </summary>
+        /// <param name="callback">The callback</param>
         private Gen2GcCallback(Func<bool> callback)
         {
             _callback0 = callback;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Gen2GcCallback"/> class
+        /// </summary>
+        /// <param name="callback">The callback</param>
+        /// <param name="targetObj">The target obj</param>
         private Gen2GcCallback(Func<object, bool> callback, object targetObj)
         {
             _callback1 = callback;

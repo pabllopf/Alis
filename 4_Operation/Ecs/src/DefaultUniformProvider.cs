@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Alis.Core.Ecs
@@ -8,6 +8,9 @@ namespace Alis.Core.Ecs
     /// </summary>
     public class DefaultUniformProvider : IUniformProvider
     {
+        /// <summary>
+        /// The uniforms
+        /// </summary>
         private Dictionary<Type, object> _uniforms = [];
 
         /// <summary>

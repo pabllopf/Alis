@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using Alis.Core.Ecs.Collections;
@@ -8,9 +8,18 @@ using Alis.Core.Ecs.Core.Archetype;
 
 namespace Alis.Core.Ecs.Updating.Runners
 {
+    /// <summary>
+    /// The entity update class
+    /// </summary>
+    /// <seealso cref="ComponentStorage{TComp}"/>
     internal class EntityUpdate<TComp>(int capacity) : ComponentStorage<TComp>(capacity)
         where TComp : IEntityComponent
     {
+        /// <summary>
+        /// Runs the world
+        /// </summary>
+        /// <param name="world">The world</param>
+        /// <param name="b">The </param>
         internal override void Run(World world, Archetype b)
         {
             ref EntityIDOnly entityIds = ref b.GetEntityDataReference();
@@ -28,6 +37,12 @@ namespace Alis.Core.Ecs.Updating.Runners
             }
         }
 
+        /// <summary>
+        /// Multithreadeds the run using the specified countdown
+        /// </summary>
+        /// <param name="countdown">The countdown</param>
+        /// <param name="world">The world</param>
+        /// <param name="b">The </param>
         internal override void MultithreadedRun(CountdownEvent countdown, World world, Archetype b) =>
             throw new NotImplementedException();
     }
@@ -36,8 +51,22 @@ namespace Alis.Core.Ecs.Updating.Runners
     public class EntityUpdateRunnerFactory<TComp> : IComponentStorageBaseFactory, IComponentStorageBaseFactory<TComp>
         where TComp : IEntityComponent
     {
+        /// <summary>
+        /// Creates the capacity
+        /// </summary>
+        /// <param name="capacity">The capacity</param>
+        /// <returns>The component storage base</returns>
         ComponentStorageBase IComponentStorageBaseFactory.Create(int capacity) => new EntityUpdate<TComp>(capacity);
+        /// <summary>
+        /// Creates the stack
+        /// </summary>
+        /// <returns>The id table</returns>
         IDTable IComponentStorageBaseFactory.CreateStack() => new IDTable<TComp>();
+        /// <summary>
+        /// Creates the strongly typed using the specified capacity
+        /// </summary>
+        /// <param name="capacity">The capacity</param>
+        /// <returns>A component storage of t comp</returns>
         ComponentStorage<TComp> IComponentStorageBaseFactory<TComp>.CreateStronglyTyped(int capacity) => new EntityUpdate<TComp>(capacity);
     }
 
@@ -45,9 +74,18 @@ namespace Alis.Core.Ecs.Updating.Runners
 
 
 
+    /// <summary>
+    /// The entity update class
+    /// </summary>
+    /// <seealso cref="ComponentStorage{TComp}"/>
     internal class EntityUpdate<TComp, TArg>(int capacity) : ComponentStorage<TComp>(capacity)
         where TComp : IEntityComponent<TArg>
     {
+        /// <summary>
+        /// Runs the world
+        /// </summary>
+        /// <param name="world">The world</param>
+        /// <param name="b">The </param>
         internal override void Run(World world, Archetype b)
         {
             ref EntityIDOnly entityIds = ref b.GetEntityDataReference();
@@ -69,6 +107,12 @@ namespace Alis.Core.Ecs.Updating.Runners
             }
         }
 
+        /// <summary>
+        /// Multithreadeds the run using the specified countdown
+        /// </summary>
+        /// <param name="countdown">The countdown</param>
+        /// <param name="world">The world</param>
+        /// <param name="b">The </param>
         internal override void MultithreadedRun(CountdownEvent countdown, World world, Archetype b)
             => throw new NotImplementedException();
     }
@@ -78,8 +122,22 @@ namespace Alis.Core.Ecs.Updating.Runners
     public class EntityUpdateRunnerFactory<TComp, TArg> : IComponentStorageBaseFactory, IComponentStorageBaseFactory<TComp>
         where TComp : IEntityComponent<TArg>
     {
+        /// <summary>
+        /// Creates the capacity
+        /// </summary>
+        /// <param name="capacity">The capacity</param>
+        /// <returns>The component storage base</returns>
         ComponentStorageBase IComponentStorageBaseFactory.Create(int capacity) => new EntityUpdate<TComp, TArg>(capacity);
+        /// <summary>
+        /// Creates the stack
+        /// </summary>
+        /// <returns>The id table</returns>
         IDTable IComponentStorageBaseFactory.CreateStack() => new IDTable<TComp>();
+        /// <summary>
+        /// Creates the strongly typed using the specified capacity
+        /// </summary>
+        /// <param name="capacity">The capacity</param>
+        /// <returns>A component storage of t comp</returns>
         ComponentStorage<TComp> IComponentStorageBaseFactory<TComp>.CreateStronglyTyped(int capacity) => new EntityUpdate<TComp, TArg>(capacity);
     }
 }

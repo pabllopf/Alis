@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Runtime.CompilerServices;
@@ -9,13 +9,27 @@ using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs.Core.Archetype
 {
+    /// <summary>
+    /// The archetype class
+    /// </summary>
     internal static class Archetype<T>
     {
+        /// <summary>
+        /// The to immutable array
+        /// </summary>
         public static readonly ImmutableArray<ComponentID> ArchetypeComponentIDs = new ComponentID[] { Component<T>.ID }.ToImmutableArray();
 
         //ArchetypeTypes init first, then ID
+        /// <summary>
+        /// The empty
+        /// </summary>
         public static readonly EntityType ID = Archetype.GetArchetypeID(ArchetypeComponentIDs.AsSpan(), [], ArchetypeComponentIDs, ImmutableArray<TagID>.Empty);
 
+        /// <summary>
+        /// Creates the new or get existing archetype using the specified world
+        /// </summary>
+        /// <param name="world">The world</param>
+        /// <returns>The archetype</returns>
         internal static Archetype CreateNewOrGetExistingArchetype(World world)
         {
             var index = ID.RawIndex;
@@ -42,27 +56,66 @@ namespace Alis.Core.Ecs.Core.Archetype
             }
         }
 
+        /// <summary>
+        /// The of component class
+        /// </summary>
         internal static class OfComponent<C>
         {
+            /// <summary>
+            /// The id
+            /// </summary>
             public static readonly int Index = GlobalWorldTables.ComponentIndex(ID, Component<C>.ID);
         }
     }
 
+    /// <summary>
+    /// The archetype class
+    /// </summary>
     partial class Archetype
     {
+        /// <summary>
+        /// The null
+        /// </summary>
         internal static readonly EntityType Null;
+        /// <summary>
+        /// The deferred create
+        /// </summary>
         internal static readonly EntityType DeferredCreate;
+        /// <summary>
+        /// The create
+        /// </summary>
         internal static FastStack<ArchetypeData> ArchetypeTable = FastStack<ArchetypeData>.Create(16);
+        /// <summary>
+        /// The next archetype id
+        /// </summary>
         internal static int NextArchetypeID = -1;
 
+        /// <summary>
+        /// The existing archetypes
+        /// </summary>
         private static readonly Dictionary<long, ArchetypeData> ExistingArchetypes = [];
 
+        /// <summary>
+        /// Creates the or get existing archetype using the specified types
+        /// </summary>
+        /// <param name="types">The types</param>
+        /// <param name="tagTypes">The tag types</param>
+        /// <param name="world">The world</param>
+        /// <param name="typeArray">The type array</param>
+        /// <param name="tagTypesArray">The tag types array</param>
+        /// <returns>The archetype</returns>
         internal static Archetype CreateOrGetExistingArchetype(ReadOnlySpan<ComponentID> types, ReadOnlySpan<TagID> tagTypes, World world, ImmutableArray<ComponentID>? typeArray = null, ImmutableArray<TagID>? tagTypesArray = null)
         {
             EntityType id = GetArchetypeID(types, tagTypes, typeArray, tagTypesArray);
             return CreateOrGetExistingArchetype(id, world);
         }
 
+        /// <summary>
+        /// Creates the or get existing archetype using the specified id
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="world">The world</param>
+        /// <returns>The archetype</returns>
         internal static Archetype CreateOrGetExistingArchetype(EntityType id, World world)
         {
             ref Archetype archetype = ref world.WorldArchetypeTable[id.RawIndex];
@@ -85,6 +138,12 @@ namespace Alis.Core.Ecs.Core.Archetype
             return archetype;
         }
 
+        /// <summary>
+        /// Gets the adjacent archetype cold using the specified world
+        /// </summary>
+        /// <param name="world">The world</param>
+        /// <param name="edge">The edge</param>
+        /// <returns>The archetype</returns>
         internal static Archetype GetAdjacentArchetypeCold(World world, ArchetypeEdgeKey edge)
         {
             //this world doesn't have the archetype, or it doesnt even exist
@@ -114,6 +173,9 @@ namespace Alis.Core.Ecs.Core.Archetype
             return archetype;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Archetype"/> class
+        /// </summary>
         static Archetype()
         {
             Null = GetArchetypeID([Component.GetComponentID(typeof(void))], [Tag.GetTagID(typeof(Disable))]);
@@ -122,6 +184,16 @@ namespace Alis.Core.Ecs.Core.Archetype
             DeferredCreate = GetArchetypeID([], [Tag.GetTagID(typeof(DeferredCreate)), Tag.GetTagID(typeof(Disable))]);
         }
 
+        /// <summary>
+        /// Gets the archetype id using the specified types
+        /// </summary>
+        /// <param name="types">The types</param>
+        /// <param name="tagTypes">The tag types</param>
+        /// <param name="typesArray">The types array</param>
+        /// <param name="tagTypesArray">The tag types array</param>
+        /// <exception cref="InvalidOperationException">Entities can have a max of 127 components!</exception>
+        /// <exception cref="InvalidOperationException">Exceeded maximum unique archetype count of 65535</exception>
+        /// <returns>The entity type</returns>
         internal static EntityType GetArchetypeID(ReadOnlySpan<ComponentID> types, ReadOnlySpan<TagID> tagTypes, ImmutableArray<ComponentID>? typesArray = null, ImmutableArray<TagID>? tagTypesArray = null)
         {
             if (types.Length > MemoryHelpers.MaxComponentCount)
@@ -177,6 +249,12 @@ namespace Alis.Core.Ecs.Core.Archetype
             }
         }
 
+        /// <summary>
+        /// Modifies the component location table using the specified archetype types
+        /// </summary>
+        /// <param name="archetypeTypes">The archetype types</param>
+        /// <param name="archetypeTags">The archetype tags</param>
+        /// <param name="id">The id</param>
         private static void ModifyComponentLocationTable(ImmutableArray<ComponentID> archetypeTypes, ImmutableArray<TagID> archetypeTags, int id)
         {
             if (GlobalWorldTables.ComponentTagLocationTable.Length == id)
@@ -213,6 +291,12 @@ namespace Alis.Core.Ecs.Core.Archetype
             }
         }
 
+        /// <summary>
+        /// Gets the hash using the specified types
+        /// </summary>
+        /// <param name="types">The types</param>
+        /// <param name="andMoreTypes">The and more types</param>
+        /// <returns>The hash</returns>
         private static long GetHash(ReadOnlySpan<ComponentID> types, ReadOnlySpan<TagID> andMoreTypes)
         {
             HashCode h1 = new();

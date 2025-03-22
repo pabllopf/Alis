@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Immutable;
 using System.Diagnostics;
 using System.Linq;
@@ -6,20 +6,44 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
+
 using Alis.Core.Ecs.Buffers;
 using Alis.Core.Ecs.Core.Memory;
 using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs.Core.Archetype
 {
+    /// <summary>
+    /// The archetype class
+    /// </summary>
     [DebuggerDisplay(AttributeHelpers.DebuggerDisplay)]
     internal partial class Archetype
     {
+        /// <summary>
+        /// Gets the value of the id
+        /// </summary>
         internal EntityType ID => _archetypeID;
+        /// <summary>
+        /// Gets the value of the archetype type array
+        /// </summary>
         internal ImmutableArray<ComponentID> ArchetypeTypeArray => _archetypeID.Types;
+        /// <summary>
+        /// Gets the value of the archetype tag array
+        /// </summary>
         internal ImmutableArray<TagID> ArchetypeTagArray => _archetypeID.Tags;
+        /// <summary>
+        /// Gets the value of the debugger display string
+        /// </summary>
         internal string DebuggerDisplayString => $"Archetype Count: {EntityCount} Types: {string.Join(", ", ArchetypeTypeArray.Select(t => t.Type.Name))} Tags: {string.Join(", ", ArchetypeTagArray.Select(t => t.Type.Name))}";
+        /// <summary>
+        /// Gets the value of the entity count
+        /// </summary>
         internal int EntityCount => _nextComponentIndex;
+        /// <summary>
+        /// Gets the component span
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <returns>A span of t</returns>
         internal Span<T> GetComponentSpan<T>()
         {
             var components = Components;
@@ -31,6 +55,11 @@ namespace Alis.Core.Ecs.Core.Archetype
             return UnsafeExtensions.UnsafeCast<ComponentStorage<T>>(components.UnsafeArrayIndex(index)).AsSpanLength(_nextComponentIndex);
         }
 
+        /// <summary>
+        /// Gets the component data reference
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <returns>The ref</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal ref T GetComponentDataReference<T>()
         {
@@ -87,6 +116,10 @@ namespace Alis.Core.Ecs.Core.Archetype
             return ref _createComponentBufferEntities.UnsafeArrayIndex(physicalIndex);
         }
 
+        /// <summary>
+        /// Resolves the deferred entity creations using the specified world
+        /// </summary>
+        /// <param name="world">The world</param>
         internal void ResolveDeferredEntityCreations(World world)
         {
             Debug.Assert(_deferredEntityCount != 0);
@@ -119,6 +152,12 @@ namespace Alis.Core.Ecs.Core.Archetype
             _deferredEntityCount = 0;
         }
 
+        /// <summary>
+        /// Creates the entity locations using the specified count
+        /// </summary>
+        /// <param name="count">The count</param>
+        /// <param name="world">The world</param>
+        /// <returns>The entity span</returns>
         internal Span<EntityIDOnly> CreateEntityLocations(int count, World world)
         {
             int newLen = _nextComponentIndex + count;
@@ -147,6 +186,10 @@ namespace Alis.Core.Ecs.Core.Archetype
             return entitySpan;
         }
 
+        /// <summary>
+        /// Resizes the new len
+        /// </summary>
+        /// <param name="newLen">The new len</param>
         private void Resize(int newLen)
         {
             Array.Resize(ref _entities, newLen);
@@ -155,6 +198,9 @@ namespace Alis.Core.Ecs.Core.Archetype
                 runners[i].ResizeBuffer(newLen);
         }
 
+        /// <summary>
+        /// Resizes the create component buffers
+        /// </summary>
         private void ResizeCreateComponentBuffers()
         {
             int newLen = checked(Math.Max(1, _createComponentBufferEntities.Length) * 2);
@@ -165,6 +211,10 @@ namespace Alis.Core.Ecs.Core.Archetype
                 runners[i].ResizeBuffer(newLen);
         }
 
+        /// <summary>
+        /// Ensures the capacity using the specified count
+        /// </summary>
+        /// <param name="count">The count</param>
         public void EnsureCapacity(int count)
         {
             if (_entities.Length >= count)
@@ -190,6 +240,11 @@ namespace Alis.Core.Ecs.Core.Archetype
             return _entities.UnsafeArrayIndex(index) = _entities.UnsafeArrayIndex(_nextComponentIndex);
         }
 
+        /// <summary>
+        /// Deletes the entity using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <returns>The entity id only</returns>
         internal EntityIDOnly DeleteEntity(int index)
         {
             _nextComponentIndex--;
@@ -245,6 +300,10 @@ namespace Alis.Core.Ecs.Core.Archetype
             return _entities.UnsafeArrayIndex(args.ToIndex) = _entities.UnsafeArrayIndex(args.FromIndex);
         }
 
+        /// <summary>
+        /// Updates the world
+        /// </summary>
+        /// <param name="world">The world</param>
         internal void Update(World world)
         {
             if (_nextComponentIndex == 0)
@@ -254,6 +313,11 @@ namespace Alis.Core.Ecs.Core.Archetype
                 comprunners[i].Run(world, this);
         }
 
+        /// <summary>
+        /// Updates the world
+        /// </summary>
+        /// <param name="world">The world</param>
+        /// <param name="componentID">The component id</param>
         internal void Update(World world, ComponentID componentID)
         {
             if (_nextComponentIndex == 0)
@@ -267,6 +331,11 @@ namespace Alis.Core.Ecs.Core.Archetype
             Components.UnsafeArrayIndex(compIndex).Run(world, this);
         }
 
+        /// <summary>
+        /// Multis the threaded update using the specified countdown
+        /// </summary>
+        /// <param name="countdown">The countdown</param>
+        /// <param name="world">The world</param>
         internal void MultiThreadedUpdate(CountdownEvent countdown, World world)
         {
             if (_nextComponentIndex == 0)
@@ -275,6 +344,9 @@ namespace Alis.Core.Ecs.Core.Archetype
                 comprunner.MultithreadedRun(countdown, world, this);
         }
 
+        /// <summary>
+        /// Releases the arrays
+        /// </summary>
         internal void ReleaseArrays()
         {
             _entities = [];
@@ -283,53 +355,98 @@ namespace Alis.Core.Ecs.Core.Archetype
                 comprunners[i].Trim(0);
         }
 
+        /// <summary>
+        /// Gets the component index
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <returns>The int</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal int GetComponentIndex<T>()
         {
             return ComponentTagTable.UnsafeArrayIndex(Component<T>.ID.RawIndex) & GlobalWorldTables.IndexBits;
         }
 
+        /// <summary>
+        /// Gets the component index using the specified component
+        /// </summary>
+        /// <param name="component">The component</param>
+        /// <returns>The int</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal int GetComponentIndex(ComponentID component)
         {
             return ComponentTagTable.UnsafeArrayIndex(component.RawIndex) & GlobalWorldTables.IndexBits;
         }
 
+        /// <summary>
+        /// Hases the tag
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <returns>The bool</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal bool HasTag<T>()
         {
             return (ComponentTagTable.UnsafeArrayIndex(Tag<T>.ID.RawValue) << 7) != 0;
         }
 
+        /// <summary>
+        /// Hases the tag using the specified tag id
+        /// </summary>
+        /// <param name="tagID">The tag id</param>
+        /// <returns>The bool</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal bool HasTag(TagID tagID)
         {
             return (ComponentTagTable.UnsafeArrayIndex(tagID.RawValue) << 7) != 0;
         }
 
+        /// <summary>
+        /// Gets the value of the data
+        /// </summary>
         internal Fields Data => new Fields()
         {
             Map = ComponentTagTable,
             Components = Components,
         };
 
+        /// <summary>
+        /// Gets the entity span
+        /// </summary>
+        /// <returns>A span of entity id only</returns>
         internal Span<EntityIDOnly> GetEntitySpan()
         {
             Debug.Assert(_nextComponentIndex <= _entities.Length);
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
         return _entities.AsSpan(0, _nextComponentIndex);
 #else
-            return MemoryMarshal.CreateSpan(ref MemoryMarshal.GetArrayDataReference(_entities), _nextComponentIndex);
+            return System.Runtime.InteropServices.MemoryMarshal.CreateSpan(ref System.Runtime.InteropServices.MemoryMarshal.GetArrayDataReference(_entities), _nextComponentIndex);
 #endif
         }
 
+        /// <summary>
+        /// Gets the entity data reference
+        /// </summary>
+        /// <returns>The ref entity id only</returns>
         internal ref EntityIDOnly GetEntityDataReference() => ref MemoryMarshal.GetArrayDataReference(_entities);
 
+        /// <summary>
+        /// The fields
+        /// </summary>
         internal struct Fields
         {
+            /// <summary>
+            /// The map
+            /// </summary>
             internal byte[] Map;
+            /// <summary>
+            /// The components
+            /// </summary>
             internal ComponentStorageBase[] Components;
 
+            /// <summary>
+            /// Gets the component data reference
+            /// </summary>
+            /// <typeparam name="T">The </typeparam>
+            /// <returns>The ref</returns>
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             internal ref T GetComponentDataReference<T>()
             {

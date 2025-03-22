@@ -1,4 +1,4 @@
-﻿namespace Alis.Core.Ecs
+namespace Alis.Core.Ecs
 {
     /// <summary>
     /// Config information for a <see cref="World"/>.

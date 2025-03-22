@@ -1,10 +1,19 @@
-﻿
+
 using System.Runtime.CompilerServices;
 
 namespace Alis.Core.Ecs.Systems
 {
+    /// <summary>
+    /// The query iteration extensions class
+    /// </summary>
     public static partial class QueryIterationExtensions
     {
+        /// <summary>
+        /// Delegates the query
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Delegate<T>(this Query query, QueryDelegates.Query<T> action)
         {
             foreach (var archetype in query.AsSpan())
@@ -22,6 +31,13 @@ namespace Alis.Core.Ecs.Systems
             }
         }
 
+        /// <summary>
+        /// Inlines the query
+        /// </summary>
+        /// <typeparam name="TAction">The action</typeparam>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Inline<TAction, T>(this Query query, TAction action)
             where TAction : IAction<T>
         {
