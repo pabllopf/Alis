@@ -188,7 +188,8 @@ namespace Alis.Core.Ecs.Core.Archetype
                 Resize((int) BitOperations.RoundUpToPowerOf2((uint) totalCapacityRequired));
                 ComponentStorageBase[] destination = Components;
                 ComponentStorageBase[] source = CreateComponentBuffers;
-                for (int i = 1; i < destination.Length; i++)
+                int size = destination.Length;
+                for (int i = 1; i < size; i++)
                 {
                     Array.Copy(source[i].Buffer, 0, destination[i].Buffer, oldEntitiesLen, deltaFromMaxDeferredInPlace);
                 }
@@ -200,7 +201,8 @@ namespace Alis.Core.Ecs.Core.Archetype
 
             EntityIDOnly[] entities = _entities;
             EntityLocation[] table = world.EntityTable._buffer;
-            for (int i = previousComponentCount; (i < entities.Length) && (i < _nextComponentIndex); i++)
+            int sizeEntities = entities.Length;
+            for (int i = previousComponentCount; (i < sizeEntities) && (i < _nextComponentIndex); i++)
             {
                 table.UnsafeArrayIndex(entities[i].ID).Archetype = this;
             }
@@ -223,7 +225,8 @@ namespace Alis.Core.Ecs.Core.Archetype
 
             int componentIndex = _nextComponentIndex;
             ref FastStack<EntityIDOnly> recycled = ref world.RecycledEntityIds;
-            for (int i = 0; i < entitySpan.Length; i++)
+            int size = entitySpan.Length;
+            for (int i = 0; i < size; i++)
             {
                 ref EntityIDOnly archetypeEntity = ref entitySpan[i];
 
@@ -250,7 +253,8 @@ namespace Alis.Core.Ecs.Core.Archetype
         {
             Array.Resize(ref _entities, newLen);
             ComponentStorageBase[] runners = Components;
-            for (int i = 1; i < runners.Length; i++)
+            int size = runners.Length;
+            for (int i = 1; i < size; i++)
             {
                 runners[i].ResizeBuffer(newLen);
             }
@@ -265,7 +269,8 @@ namespace Alis.Core.Ecs.Core.Archetype
             //we only need to resize the EntityIDOnly array when future total entity count is greater than capacity
             Array.Resize(ref _createComponentBufferEntities, newLen);
             ComponentStorageBase[] runners = CreateComponentBuffers;
-            for (int i = 1; i < runners.Length; i++)
+            int size = runners.Length;
+            for (int i = 1; i < size; i++)
             {
                 runners[i].ResizeBuffer(newLen);
             }
@@ -284,7 +289,8 @@ namespace Alis.Core.Ecs.Core.Archetype
 
             FastStackArrayPool<EntityIDOnly>.ResizeArrayFromPool(ref _entities, count);
             ComponentStorageBase[] runners = Components;
-            for (int i = 1; i < runners.Length; i++)
+            int size = runners.Length;
+            for (int i = 1; i < size; i++)
             {
                 runners[i].ResizeBuffer(count);
             }
@@ -331,7 +337,8 @@ namespace Alis.Core.Ecs.Core.Archetype
 
             @long:
             ComponentStorageBase[] comps = Components;
-            for (int i = 9; i < comps.Length; i++)
+            int size = comps.Length;
+            for (int i = 9; i < size; i++)
             {
                 comps[i].Delete(args);
             }
@@ -371,7 +378,8 @@ namespace Alis.Core.Ecs.Core.Archetype
             }
 
             ComponentStorageBase[] comprunners = Components;
-            for (int i = 1; i < comprunners.Length; i++)
+            int size = comprunners.Length;
+            for (int i = 1; i < size; i++)
             {
                 comprunners[i].Run(world, this);
             }
@@ -424,7 +432,8 @@ namespace Alis.Core.Ecs.Core.Archetype
         {
             _entities = [];
             ComponentStorageBase[] comprunners = Components;
-            for (int i = 1; i < comprunners.Length; i++)
+            int size = comprunners.Length;
+            for (int i = 1; i < size; i++)
             {
                 comprunners[i].Trim(0);
             }

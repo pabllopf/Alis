@@ -703,7 +703,8 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The bool</returns>
         internal static bool TryMatchNames(string[] names, Array values, string input, out object value)
         {
-            for (int i = 0; i < names.Length; i++)
+            int size = names.Length;
+            for (int i = 0; i < size; i++)
             {
                 if (names[i].EqualsIgnoreCase(input))
                 {

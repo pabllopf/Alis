@@ -52,7 +52,8 @@ namespace Alis.Core.Ecs.Updating.Runners
         {
             ref TComp comp = ref GetComponentStorageDataReference();
 
-            for (int i = b.EntityCount - 1; i >= 0; i--)
+            int size = b.EntityCount;
+            for (int i = size - 1; i >= 0; i--)
             {
                 comp.Update();
 
@@ -89,7 +90,8 @@ namespace Alis.Core.Ecs.Updating.Runners
 
             ref TArg arg = ref b.GetComponentDataReference<TArg>();
 
-            for (int i = b.EntityCount - 1; i >= 0; i--)
+            int size = b.EntityCount;
+            for (int i = size - 1; i >= 0; i--)
             {
                 comp.Update(ref arg);
 

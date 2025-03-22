@@ -230,7 +230,8 @@ namespace Alis.Core.Ecs.Core
 
                     EntityType id = _world.DefaultArchetype.ID;
                     Span<ComponentHandle> handles = _createEntityComponents.AsSpan().Slice(createCommand.BufferIndex, createCommand.BufferLength);
-                    for (int i = 0; i < handles.Length; i++)
+                    int size = handles.Length;
+                    for (int i = 0; i < size; i++)
                     {
                         id = _world.AddComponentLookup.FindAdjacentArchetypeID(handles[i].ComponentID, id, _world, ArchetypeEdgeType.AddComponent);
                     }

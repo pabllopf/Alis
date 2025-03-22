@@ -54,7 +54,8 @@ namespace Alis.Core.Ecs.Updating.Runners
 
             TUniform uniform = world.UniformProvider.GetUniform<TUniform>();
 
-            for (int i = b.EntityCount - 1; i >= 0; i--)
+            int size = b.EntityCount;
+            for (int i = size - 1; i >= 0; i--)
             {
                 comp.Update(uniform);
 
@@ -93,7 +94,8 @@ namespace Alis.Core.Ecs.Updating.Runners
 
             TUniform uniform = world.UniformProvider.GetUniform<TUniform>();
 
-            for (int i = b.EntityCount - 1; i >= 0; i--)
+            int size = b.EntityCount;
+            for (int i = size - 1; i >= 0; i--)
             {
                 comp.Update(uniform, ref arg);
 

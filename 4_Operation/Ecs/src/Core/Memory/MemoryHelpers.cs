@@ -86,7 +86,8 @@ namespace Alis.Core.Ecs.Core.Memory
         public static ImmutableArray<T> ReadOnlySpanToImmutableArray<T>(ReadOnlySpan<T> span)
         {
             ImmutableArray<T>.Builder builder = ImmutableArray.CreateBuilder<T>(span.Length);
-            for (int i = 0; i < span.Length; i++)
+            int size = span.Length;
+            for (int i = 0; i < size; i++)
             {
                 builder.Add(span[i]);
             }
@@ -104,13 +105,15 @@ namespace Alis.Core.Ecs.Core.Memory
         public static ImmutableArray<T> Concat<T>(ImmutableArray<T> start, ReadOnlySpan<T> span)
             where T : ITypeID
         {
-            ImmutableArray<T>.Builder builder = ImmutableArray.CreateBuilder<T>(start.Length + span.Length);
-            for (int i = 0; i < start.Length; i++)
+            int sizeStart = start.Length;
+            ImmutableArray<T>.Builder builder = ImmutableArray.CreateBuilder<T>(sizeStart + span.Length);
+            for (int i = 0; i < sizeStart; i++)
             {
                 builder.Add(start[i]);
             }
 
-            for (int i = 0; i < span.Length; i++)
+            int sizeSpan = span.Length;
+            for (int i = 0; i < sizeSpan; i++)
             {
                 T? t = span[i];
                 if (start.IndexOf(t) != -1)
