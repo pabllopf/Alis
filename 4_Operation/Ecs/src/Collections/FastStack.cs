@@ -34,7 +34,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace Alis.Benchmark.NativeCollections.NativeStack
+namespace Alis.Core.Ecs.Collections
 {
     /// <summary>
     /// The fastest stack class

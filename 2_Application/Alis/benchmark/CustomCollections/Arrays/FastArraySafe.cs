@@ -61,7 +61,10 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         public FastArraySafe(int length)
         {
             if (length < 1)
+            {
                 throw new ArgumentOutOfRangeException(nameof(length), "La longitud debe ser mayor a 0.");
+            }
+
             _array = new T[length];
         }
 
@@ -86,7 +89,9 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         public void Resize(int newLength)
         {
             if (newLength == _array.Length)
+            {
                 return;
+            }
 
             T[] newArray = new T[newLength];
             int count = Math.Min(_array.Length, newLength);

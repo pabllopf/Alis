@@ -33,7 +33,7 @@ using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Buffers;
 using Alis.Core.Ecs.Core.Memory;
 
-namespace Alis.Core.Ecs.Collections
+namespace Alis.Benchmark.CustomCollections.Tables
 {
     /// <summary>
     ///     The table
@@ -108,5 +108,13 @@ namespace Alis.Core.Ecs.Collections
         /// </summary>
         /// <returns>A span of t</returns>
         public Span<T> AsSpan() => _buffer.AsSpan();
+
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
+        public void Dispose()
+        {
+            FastStackArrayPool<T>.Instance.Return(_buffer);
+        }
     }
 }

@@ -96,7 +96,9 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         public void Resize(int arraySize)
         {
             if (arraySize == _array.Length)
+            {
                 return;
+            }
 
             T[] newArray = ArrayPool<T>.Shared.Rent(arraySize);
             _memory.Span.Slice(0, Math.Min(_array.Length, arraySize)).CopyTo(newArray.AsSpan());

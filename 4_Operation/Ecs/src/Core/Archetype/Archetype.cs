@@ -35,7 +35,6 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
-using Alis.Benchmark.NativeCollections.NativeStack;
 using Alis.Core.Ecs.Buffers;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Core.Memory;

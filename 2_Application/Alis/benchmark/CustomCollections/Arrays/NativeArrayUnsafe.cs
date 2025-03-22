@@ -78,9 +78,14 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         public NativeArrayUnsafe(int length)
         {
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+            {
                 throw new InvalidOperationException("Cannot store managed objects in native code");
+            }
+
             if (length < 1)
+            {
                 throw new ArgumentOutOfRangeException();
+            }
 
             _length = length;
             _array = (T*)NativeMemory.Alloc((nuint)length * Size);

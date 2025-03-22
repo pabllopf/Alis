@@ -40,7 +40,7 @@ namespace Alis.Core.Ecs.Buffers
     ///     The component array pool class
     /// </summary>
     /// <seealso cref="ArrayPool{T}" />
-    internal class ComponentArrayPool<T> : ArrayPool<T>
+    public class ComponentArrayPool<T> : ArrayPool<T>
     {
         /// <summary>
         ///     The buckets

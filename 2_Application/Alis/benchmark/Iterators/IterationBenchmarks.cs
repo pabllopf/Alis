@@ -48,26 +48,12 @@ namespace Alis.Benchmark.Iterators
         ///     The array
         /// </summary>
         private int[] array;
-
-        /// <summary>
-        ///     The linked list
-        /// </summary>
-        private LinkedList<int> linkedList;
-
-        /// <summary>
-        ///     The list
-        /// </summary>
-        private List<int> list;
-
-        /// <summary>
-        ///     The memory
-        /// </summary>
-        private Memory<int> memory;
-
+        
         /// <summary>
         ///     The
         /// </summary>
-        [Params(10)] public int N;
+        [Params(10, 1000, 10_000)] 
+        public int N;
 
         /// <summary>
         ///     Setup this instance
@@ -76,61 +62,8 @@ namespace Alis.Benchmark.Iterators
         public void Setup()
         {
             array = Enumerable.Range(0, N).ToArray();
-            list = new List<int>(array);
-            linkedList = new LinkedList<int>(array);
-            memory = new Memory<int>(array);
         }
-
-        /// <summary>
-        ///     Iterates the linked list manual
-        /// </summary>
-        /// <returns>The sum</returns>
-        [Benchmark]
-        public int IterateLinkedListManual()
-        {
-            int sum = 0;
-            LinkedListNode<int> node = linkedList.First;
-            while (node != null)
-            {
-                sum += node.Value;
-                node = node.Next;
-            }
-
-            return sum;
-        }
-
-        /// <summary>
-        ///     Iterates the linked list foreach
-        /// </summary>
-        /// <returns>The sum</returns>
-        [Benchmark]
-        public int IterateLinkedListForeach()
-        {
-            int sum = 0;
-            foreach (int item in linkedList)
-            {
-                sum += item;
-            }
-
-            return sum;
-        }
-
-        /// <summary>
-        ///     Iterates the list foreach
-        /// </summary>
-        /// <returns>The sum</returns>
-        [Benchmark]
-        public int IterateListForeach()
-        {
-            int sum = 0;
-            foreach (int item in list)
-            {
-                sum += item;
-            }
-
-            return sum;
-        }
-
+        
         /// <summary>
         ///     Iterates the array for
         /// </summary>
@@ -162,61 +95,23 @@ namespace Alis.Benchmark.Iterators
 
             return sum;
         }
-
-        /// <summary>
-        ///     Iterates the list for
-        /// </summary>
-        /// <returns>The sum</returns>
-        [Benchmark]
-        public int IterateListFor()
-        {
-            int sum = 0;
-            for (int i = 0; i < list.Count; i++)
-            {
-                sum += list[i];
-            }
-
-            return sum;
-        }
-
-
-        /// <summary>
-        ///     Iterates the span
-        /// </summary>
-        /// <returns>The sum</returns>
-        [Benchmark]
-        public int IterateSpan()
-        {
-            int sum = 0;
-            Span<int> span = array;
-            ref int r = ref span[0];
-            for (int i = 0; i < span.Length; i++)
-            {
-                sum += Unsafe.Add(ref r, i);
-            }
-
-            return sum;
-        }
-
+        
         /// <summary>
         ///     Iteración optimizada con ref y Unsafe.Add
         /// </summary>
         [Benchmark]
-        public int IterateRefUnsafe()
+        public int Unsafe_For_Span_GetReference()
         {
+            Span<int> asSpan = array.AsSpan();
+            ref int searchSpace = ref MemoryMarshal.GetReference(asSpan);
             int sum = 0;
-            Span<int> span = memory.Span;
-            ref int r = ref span[0];
-
-            for (int i = 0; i < span.Length; i++)
+            for (int i = 0; i < asSpan.Length; i++)
             {
-                sum += Unsafe.Add(ref r, i);
+                 sum = Unsafe.Add(ref searchSpace, i);
             }
-
             return sum;
         }
-
-
+        
         /// <summary>
         ///     Iterates the fastest
         /// </summary>
@@ -285,15 +180,7 @@ namespace Alis.Benchmark.Iterators
 
             return sum;
         }
-
-        /// <summary>
-        ///     Iterates the linq sum
-        /// </summary>
-        /// <returns>The int</returns>
-        [Benchmark]
-        public int IterateLinqSum() => array.Sum();
-
-
+        
         /// <summary>
         ///     Bests the iterate with span and vector
         /// </summary>

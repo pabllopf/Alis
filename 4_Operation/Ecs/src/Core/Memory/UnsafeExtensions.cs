@@ -36,7 +36,7 @@ namespace Alis.Core.Ecs.Core.Memory
     /// <summary>
     ///     The unsafe extensions class
     /// </summary>
-    internal static class UnsafeExtensions
+    public static class UnsafeExtensions
     {
         /// <summary>
         ///     Unsafes the array index using the specified arr

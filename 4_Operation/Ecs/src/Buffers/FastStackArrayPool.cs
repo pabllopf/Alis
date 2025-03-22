@@ -39,7 +39,7 @@ namespace Alis.Core.Ecs.Buffers
     ///     The fast stack array pool class
     /// </summary>
     /// <seealso cref="ArrayPool{T}" />
-    internal class FastStackArrayPool<T> : ArrayPool<T>
+    public class FastStackArrayPool<T> : ArrayPool<T>
     {
         /// <summary>
         ///     The buckets
@@ -67,7 +67,7 @@ namespace Alis.Core.Ecs.Buffers
         /// </summary>
         /// <param name="arr">The arr</param>
         /// <param name="len">The len</param>
-        internal static void ResizeArrayFromPool(ref T[] arr, int len)
+        public static void ResizeArrayFromPool(ref T[] arr, int len)
         {
             T[] finalArr = Instance.Rent(len);
             arr.AsSpan().CopyTo(finalArr);

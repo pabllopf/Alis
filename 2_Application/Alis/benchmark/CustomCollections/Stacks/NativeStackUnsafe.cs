@@ -80,9 +80,14 @@ namespace Alis.Benchmark.CustomCollections.Stacks
         public NativeStackUnsafe(int initalCapacity)
         {
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+            {
                 throw new InvalidOperationException("Cannot store managed objects in native code");
+            }
+
             if (initalCapacity < 1)
+            {
                 throw new ArgumentOutOfRangeException();
+            }
 
             _capacity = initalCapacity;
             _array = (T*)NativeMemory.Alloc((nuint)initalCapacity * Size);
@@ -95,7 +100,10 @@ namespace Alis.Benchmark.CustomCollections.Stacks
         public ref T Push()
         {
             if (_nextIndex == _capacity)
+            {
                 Resize();
+            }
+
             return ref _array[_nextIndex++];
         }
 
@@ -106,7 +114,10 @@ namespace Alis.Benchmark.CustomCollections.Stacks
         public void Pop(out T value)
         {
             if (_nextIndex == 0)
+            {
                 throw new InvalidOperationException("Stack is empty!");
+            }
+
             value = _array[--_nextIndex];
         }
 

@@ -34,7 +34,6 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
-using Alis.Benchmark.NativeCollections.NativeStack;
 using Alis.Core.Ecs.Buffers;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Components;
@@ -63,7 +62,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The entity location
         /// </summary>
-        internal Table<EntityLocation> EntityTable = new Table<EntityLocation>(256);
+        internal FastTableSafe<EntityLocation> EntityTable = new FastTableSafe<EntityLocation>(256);
 
         //archetype ID -> Archetype?
         /// <summary>

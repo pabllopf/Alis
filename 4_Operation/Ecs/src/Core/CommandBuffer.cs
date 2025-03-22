@@ -30,7 +30,6 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Alis.Benchmark.NativeCollections.NativeStack;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Core.Archetype;
 using Alis.Core.Ecs.Core.Events;

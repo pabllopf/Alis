@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -34,6 +34,9 @@ using BenchmarkDotNet.Order;
 
 namespace Alis.Benchmark.RemoveAtVsRemoveUnnorderAt
 {
+    /// <summary>
+    /// The remove at vs remove unnorder at list benchmark class
+    /// </summary>
     [MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]
     public class RemoveAtVsRemoveUnnorderAtListBenchmark
     {
@@ -41,6 +44,9 @@ namespace Alis.Benchmark.RemoveAtVsRemoveUnnorderAt
         ///     The
         /// </summary>
         [Params(100)] public int N; 
+        /// <summary>
+        /// The list
+        /// </summary>
         private List<int> list;
 
         /// <summary>
@@ -52,6 +58,9 @@ namespace Alis.Benchmark.RemoveAtVsRemoveUnnorderAt
             list = new List<int>(N);
         }
         
+        /// <summary>
+        /// Removes the at
+        /// </summary>
         [Benchmark]
         public void RemoveAt()
         {
@@ -66,6 +75,9 @@ namespace Alis.Benchmark.RemoveAtVsRemoveUnnorderAt
             }
         }
         
+        /// <summary>
+        /// Removes the unnorder at
+        /// </summary>
         [Benchmark]
         public void RemoveUnnorderAt()
         {
