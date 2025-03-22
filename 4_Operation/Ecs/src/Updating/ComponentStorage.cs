@@ -1,35 +1,6 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:ComponentStorage.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
-
-using System;
+﻿using System;
 using System.Numerics;
-
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Core;
@@ -38,180 +9,109 @@ using Alis.Core.Ecs.Core.Memory;
 
 namespace Alis.Core.Ecs.Updating
 {
-    /// <summary>
-    ///     The component storage class
-    /// </summary>
-    /// <seealso cref="ComponentStorageBase" />
     internal abstract partial class ComponentStorage<TComponent> : ComponentStorageBase
     {
-        /// <summary>
-        ///     Gets the value of the component id
-        /// </summary>
-        internal override ComponentID ComponentID => Component<TComponent>.ID;
-
         //TODO: improve
-        /// <summary>
-        ///     Trims the index
-        /// </summary>
-        /// <param name="index">The index</param>
-        internal override void Trim(int index) => Resize((int) BitOperations.RoundUpToPowerOf2((uint) index));
-
+        internal override void Trim(int index) => Resize((int)BitOperations.RoundUpToPowerOf2((uint)index));
         //TODO: pool
-        /// <summary>
-        ///     Resizes the buffer using the specified size
-        /// </summary>
-        /// <param name="size">The size</param>
         internal override void ResizeBuffer(int size) => Resize(size);
-
         //Note - no unsafe here
-        /// <summary>
-        ///     Sets the at using the specified component
-        /// </summary>
-        /// <param name="component">The component</param>
-        /// <param name="index">The index</param>
-        internal override void SetAt(object component, int index) => this[index] = (TComponent) component;
-
-        /// <summary>
-        ///     Gets the at using the specified index
-        /// </summary>
-        /// <param name="index">The index</param>
-        /// <returns>The object</returns>
+        internal override void SetAt(object component, int index) => this[index] = (TComponent)component;
         internal override object GetAt(int index) => this[index]!;
-
-        /// <summary>
-        ///     Invokes the generic action with using the specified action
-        /// </summary>
-        /// <param name="action">The action</param>
-        /// <param name="e">The </param>
-        /// <param name="index">The index</param>
         internal override void InvokeGenericActionWith(GenericEvent? action, Entity e, int index) => action?.Invoke(e, ref this[index]);
-
-        /// <summary>
-        ///     Invokes the generic action with using the specified action
-        /// </summary>
-        /// <param name="action">The action</param>
-        /// <param name="index">The index</param>
         internal override void InvokeGenericActionWith(IGenericAction action, int index) => action?.Invoke(ref this[index]);
-
-        /// <summary>
-        ///     Pulls the component from and clear using the specified other runner
-        /// </summary>
-        /// <param name="otherRunner">The other runner</param>
-        /// <param name="me">The me</param>
-        /// <param name="other">The other</param>
-        /// <param name="otherRemoveIndex">The other remove index</param>
+        internal override ComponentID ComponentID => Component<TComponent>.ID;
         internal override void PullComponentFromAndClear(ComponentStorageBase otherRunner, int me, int other, int otherRemoveIndex)
         {
             ComponentStorage<TComponent> componentRunner = UnsafeExtensions.UnsafeCast<ComponentStorage<TComponent>>(otherRunner);
 
             // see comment in ComponentStorageBase.PullComponentFromAndClearTryDevirt
-            ref TComponent? item = ref componentRunner[other];
+            ref var item = ref componentRunner[other];
             this[me] = item;
 
-            ref TComponent? downItem = ref componentRunner[otherRemoveIndex];
+            ref var downItem = ref componentRunner[otherRemoveIndex];
             item = downItem;
 
-            if (System.Runtime.CompilerServices.RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
+            if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
             {
                 downItem = default;
             }
         }
-
-        /// <summary>
-        ///     Pulls the component from using the specified storage
-        /// </summary>
-        /// <param name="storage">The storage</param>
-        /// <param name="me">The me</param>
-        /// <param name="other">The other</param>
         internal override void PullComponentFrom(IDTable storage, int me, int other)
         {
-            ref TComponent? item = ref ((IDTable<TComponent>) storage).Buffer[other];
+            ref var item = ref ((IDTable<TComponent>)storage).Buffer[other];
             this[me] = item;
 
-            if (System.Runtime.CompilerServices.RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
-            {
+            if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
                 item = default;
-            }
         }
 
-        /// <summary>
-        ///     Deletes the data
-        /// </summary>
-        /// <param name="data">The data</param>
         internal override void Delete(DeleteComponentData data)
         {
-            ref TComponent? from = ref this[data.FromIndex];
+            ref var from = ref this[data.FromIndex];
             Component<TComponent>.Destroyer?.Invoke(ref from);
             this[data.ToIndex] = from;
 
 
-            if (System.Runtime.CompilerServices.RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
-            {
+            if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
                 from = default;
-            }
         }
 
-        /// <summary>
-        ///     Stores the component index
-        /// </summary>
-        /// <param name="componentIndex">The component index</param>
-        /// <returns>The component handle</returns>
         internal override ComponentHandle Store(int componentIndex)
         {
-            ref TComponent? item = ref this[componentIndex];
+            ref var item = ref this[componentIndex];
 
             //we can't just copy to stack and run the destroyer on it
             //it is stored
             Component<TComponent>.Destroyer?.Invoke(ref item);
 
-            Component<TComponent>.GeneralComponentStorage.Create(out int stackIndex) = item;
+            Component<TComponent>.GeneralComponentStorage.Create(out var stackIndex) = item;
             return new ComponentHandle(stackIndex, Component<TComponent>.ID);
         }
     }
 
-   
 #if MANAGED_COMPONENTS || TRUE
-internal unsafe abstract partial class ComponentStorage<TComponent>(int length) : ComponentStorageBase(length == 0 ? [] : new TComponent[length])
-{
-    public ref TComponent this[int index]
+    internal unsafe abstract partial class ComponentStorage<TComponent>(int length) : ComponentStorageBase(length == 0 ? [] : new TComponent[length])
     {
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        get
+        public ref TComponent this[int index]
         {
-            return ref TypedBuffer.UnsafeArrayIndex(index);
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get
+            {
+                return ref TypedBuffer.UnsafeArrayIndex(index);
+            }
         }
-    }
 
-    private ref TComponent[] TypedBuffer => ref System.Runtime.CompilerServices.Unsafe.As<Array, TComponent[]>(ref _buffer);
+        private ref TComponent[] TypedBuffer => ref Unsafe.As<Array, TComponent[]>(ref _buffer);
 
-    protected void Resize(int size)
-    {
-        Array.Resize(ref TypedBuffer, size);
-    }
+        protected void Resize(int size)
+        {
+            Array.Resize(ref TypedBuffer, size);
+        }
 
 
-#if (NETSTANDARD || NETCOREAPP || NETFRAMEWORK) && !NET6_0_OR_GREATER
+#if NETSTANDARD2_1
     public Span<TComponent> AsSpanLength(int length) => TypedBuffer.AsSpan(0, length);
     public Span<TComponent> AsSpan() => TypedBuffer;
 #else
-    public Span<TComponent> AsSpanLength(int length) => MemoryMarshal.CreateSpan(ref MemoryMarshal.GetArrayDataReference(TypedBuffer), length);
-    public Span<TComponent> AsSpan() => MemoryMarshal.CreateSpan(ref MemoryMarshal.GetArrayDataReference(TypedBuffer), TypedBuffer.Length);
+        public Span<TComponent> AsSpanLength(int length) => MemoryMarshal.CreateSpan(ref MemoryMarshal.GetArrayDataReference(TypedBuffer), length);
+        public Span<TComponent> AsSpan() => MemoryMarshal.CreateSpan(ref MemoryMarshal.GetArrayDataReference(TypedBuffer), TypedBuffer.Length);
 #endif
 
-    public ref TComponent GetComponentStorageDataReference() => ref MemoryMarshal.GetArrayDataReference(TypedBuffer);
+        public ref TComponent GetComponentStorageDataReference() => ref MemoryMarshal.GetArrayDataReference(TypedBuffer);
 
-    public void Dispose()
-    {
+        public void Dispose()
+        {
 
+        }
     }
-}
 #else
 internal unsafe abstract class ComponentStorage<TComponent> : IDisposable
 {
 
     public ref TComponent this[int index]
     {
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         get
         {
             if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
@@ -223,7 +123,7 @@ internal unsafe abstract class ComponentStorage<TComponent> : IDisposable
         }
     }
 
-    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public ComponentStorage()
     {
         if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
@@ -239,7 +139,7 @@ internal unsafe abstract class ComponentStorage<TComponent> : IDisposable
     private TComponent[]? _managed;
     private NativeArray<TComponent> _nativeArray;
 
-    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     protected void Resize(int size)
     {
         if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
@@ -252,11 +152,11 @@ internal unsafe abstract class ComponentStorage<TComponent> : IDisposable
         }
     }
 
-    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Span<TComponent> AsSpan() => RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>() ?
         _managed.AsSpan() : _nativeArray.AsSpan();
 
-    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Span<TComponent> AsSpan(int length) => RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>() ?
         _managed.AsSpan(0, length) : _nativeArray.AsSpanLen(length);
 

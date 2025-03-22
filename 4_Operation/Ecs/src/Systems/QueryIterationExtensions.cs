@@ -1,51 +1,13 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:QueryIterationExtensions.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
-
-
-using Alis.Core.Ecs.Core.Archetype;
+﻿
+using System.Runtime.CompilerServices;
 
 namespace Alis.Core.Ecs.Systems
 {
-    /// <summary>
-    ///     The query iteration extensions class
-    /// </summary>
-    public static class QueryIterationExtensions
+    public static partial class QueryIterationExtensions
     {
-        /// <summary>
-        ///     Delegates the query
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="query">The query</param>
-        /// <param name="action">The action</param>
         public static void Delegate<T>(this Query query, QueryDelegates.Query<T> action)
         {
-            foreach (Archetype? archetype in query.AsSpan())
+            foreach (var archetype in query.AsSpan())
             {
                 //use ref instead of span to avoid extra locals
                 ref T c1 = ref archetype.GetComponentDataReference<T>();
@@ -55,22 +17,15 @@ namespace Alis.Core.Ecs.Systems
                 {
                     action(ref c1);
 
-                    c1 = ref System.Runtime.CompilerServices.Unsafe.Add(ref c1, 1);
+                    c1 = ref Unsafe.Add(ref c1, 1);
                 }
             }
         }
 
-        /// <summary>
-        ///     Inlines the query
-        /// </summary>
-        /// <typeparam name="TAction">The action</typeparam>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="query">The query</param>
-        /// <param name="action">The action</param>
         public static void Inline<TAction, T>(this Query query, TAction action)
             where TAction : IAction<T>
         {
-            foreach (Archetype? archetype in query.AsSpan())
+            foreach (var archetype in query.AsSpan())
             {
                 //use ref instead of span to avoid extra locals
                 ref T c1 = ref archetype.GetComponentDataReference<T>();
@@ -79,7 +34,7 @@ namespace Alis.Core.Ecs.Systems
                 {
                     action.Run(ref c1);
 
-                    c1 = ref System.Runtime.CompilerServices.Unsafe.Add(ref c1, 1);
+                    c1 = ref Unsafe.Add(ref c1, 1);
                 }
             }
         }

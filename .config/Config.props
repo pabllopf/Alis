@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
     <PropertyGroup>
-        <TargetFrameworks>
-            <!-- netcoreapp2.1;netcoreapp2.2;-->
-            netcoreapp2.0;netcoreapp3.0;netcoreapp3.1;
+        <!--<TargetFrameworks>
+            netcoreapp2.0;netcoreapp2.1;netcoreapp2.2;netcoreapp3.0;netcoreapp3.1;
             net5.0;net6.0;net7.0;net8.0;net9.0;
             netstandard2.0;netstandard2.1;
             net471;net472;net48;net481;
-        </TargetFrameworks>
+        </TargetFrameworks>-->
+
+        <TargetFrameworks>net9.0;net8.0;net7.0;net6.0;netstandard2.1</TargetFrameworks>
 
         <TargetFrameworks Condition="$(AssemblyName.Contains('App')) == true">net8.0;</TargetFrameworks>
         <TargetFrameworks Condition="$(AssemblyName.Contains('Generator')) == true">netstandard2.0;netstandard2.1;</TargetFrameworks>
-        <TargetFrameworks Condition="$(AssemblyName.Contains('Extension')) == true">net471;netcoreapp2.0;net5.0;net8.0;netstandard2.0;</TargetFrameworks>
+        <TargetFrameworks Condition="$(AssemblyName.Contains('Extension')) == true">net8.0;netstandard2.1;</TargetFrameworks>
         <TargetFrameworks Condition="$(AssemblyName.Contains('Benchmark')) == true">net8.0;</TargetFrameworks>
         <TargetFrameworks Condition="$(AssemblyName.Contains('Test')) == true">net8.0;</TargetFrameworks>
         <TargetFrameworks Condition="$(AssemblyName.Contains('Sample')) == true">net8.0;</TargetFrameworks>

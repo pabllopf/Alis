@@ -1,34 +1,26 @@
-#if (NETSTANDARD || NETCOREAPP || NETFRAMEWORK) && !NET6_0_OR_GREATER
+﻿#if NETSTANDARD2_1
+#pragma warning disable CS0436 // Type conflicts with imported type
+global using MemoryMarshal = System.Runtime.InteropServices.MemoryMarshal;
+global using RuntimeHelpers = System.Runtime.CompilerServices.RuntimeHelpers;
+#pragma warning restore CS0436 // Type conflicts with imported type
+
 using System;
 using System.Linq;
-using System.Runtime.InteropServices;
-#pragma warning disable CS0436 // Type conflicts with imported type
-using MemoryMarshal = System.Runtime.InteropServices.MemoryMarshal;
-using RuntimeHelpers = System.Runtime.CompilerServices.RuntimeHelpers;
-#pragma warning restore CS0436 // Type conflicts with imported type
 
 #region Attributes
 using CommunityToolkit.HighPerformance;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 
+namespace Alis.Core.Ecs
+{
+    internal class SkipLocalsInit : Attribute;
+    internal class StackTraceHidden : Attribute;
+}
 
 namespace System.Runtime.CompilerServices
 {
     internal class IsExternalInit : Attribute;
-
-#if !NET5_0_OR_GREATER
-    /// <summary>
-    ///     The stack trace hidden class
-    /// </summary>
-    /// <seealso cref="Attribute" />
-    internal class StackTraceHidden : Attribute;
-    
-    /// <summary>
-    ///     The skip locals init class
-    /// </summary>
-    /// <seealso cref="Attribute" />
-    internal class SkipLocalsInit : Attribute;
-#endif
 }
 #endregion
 
@@ -80,7 +72,7 @@ namespace System.Numerics
             value |= value >> 16;
 
             // uint.MaxValue >> 27 is always in range [0 - 31] so we use Unsafe.AddByteOffset to avoid bounds check
-            return System.Runtime.CompilerServices.Unsafe.AddByteOffset(
+            return Unsafe.AddByteOffset(
                 // Using deBruijn sequence, k=2, n=5 (2^5=32) : 0b_0000_0111_1100_0100_1010_1100_1101_1101u
                 ref MemoryMarshal.GetArrayDataReference(Log2DeBruijn),
                 // uint|long -> IntPtr cast on 32-bit platforms does expensive overflow checks not needed here
@@ -117,7 +109,7 @@ namespace System
 {
     using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
-    
+    using System.Runtime.CompilerServices;
 
     /// <summary>Represent a range has start and end indexes.</summary>
     /// <remarks>
@@ -152,7 +144,7 @@ namespace System
 
         /// <summary>Indicates whether the current Range object is equal to another object of the same type.</summary>
         /// <param name="value">An object to compare with this object</param>
-        public override bool Equals(object value) =>
+        public override bool Equals([NotNullWhen(true)] object? value) =>
             value is Range r &&
             r.Start.Equals(Start) &&
             r.End.Equals(End);
@@ -170,7 +162,7 @@ namespace System
         /// <summary>Converts the value of the current Range object to its equivalent string representation.</summary>
         public override string ToString()
         {
-#if (!NETSTANDARD && !NETFRAMEWORK && !NETCOREAPP2_0)
+#if (!NETSTANDARD2_0 && !NETFRAMEWORK)
             Span<char> span = stackalloc char[2 + (2 * 11)]; // 2 for "..", then for each index 1 for '^' and 10 for longest possible uint
             int pos = 0;
  
@@ -216,7 +208,7 @@ namespace System
         /// It is expected Range will be used with collections which always have non negative length/count.
         /// We validate the range is inside the length scope though.
         /// </remarks>
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public (int Offset, int Length) GetOffsetAndLength(int length)
         {
             int start = Start.GetOffset(length);
@@ -244,7 +236,7 @@ namespace System
 {
     using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
-    
+    using System.Runtime.CompilerServices;
 
     /// <summary>Represent a type can be used to index a collection either from the start or the end.</summary>
     /// <remarks>
@@ -269,7 +261,7 @@ namespace System
         /// <remarks>
         /// If the Index constructed from the end, index value 1 means pointing at the last element and index value 0 means pointing at beyond last element.
         /// </remarks>
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Index(int value, bool fromEnd = false)
         {
             if (value < 0)
@@ -297,7 +289,7 @@ namespace System
 
         /// <summary>Create an Index from the start at the position indicated by the value.</summary>
         /// <param name="value">The index value from the start.</param>
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Index FromStart(int value)
         {
             if (value < 0)
@@ -310,7 +302,7 @@ namespace System
 
         /// <summary>Create an Index from the end at the position indicated by the value.</summary>
         /// <param name="value">The index value from the end.</param>
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Index FromEnd(int value)
         {
             if (value < 0)
@@ -344,7 +336,7 @@ namespace System
         /// It is expected Index will be used with collections which always have non negative length/count. If the returned offset is negative and
         /// then used to index a collection will get out of range exception which will be same affect as the validation.
         /// </remarks>
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public int GetOffset(int length)
         {
             int offset = _value;
@@ -361,7 +353,7 @@ namespace System
 
         /// <summary>Indicates whether the current Index object is equal to another object of the same type.</summary>
         /// <param name="value">An object to compare with this object</param>
-        public override bool Equals(object value) => value is Index && _value == ((Index)value)._value;
+        public override bool Equals([NotNullWhen(true)] object? value) => value is Index && _value == ((Index)value)._value;
 
         /// <summary>Indicates whether the current Index object is equal to another Index object.</summary>
         /// <param name="other">An object to compare with this object</param>
@@ -393,7 +385,7 @@ namespace System
 
         private string ToStringFromEnd()
         {
-#if (!NETSTANDARD && !NETFRAMEWORK && !NETCOREAPP2_0)
+#if (!NETSTANDARD2_0 && !NETFRAMEWORK)
             Span<char> span = stackalloc char[11]; // 1 for ^ and 10 for longest possible uint value
             bool formatted = ((uint)Value).TryFormat(span.Slice(1), out int charsWritten);
             Debug.Assert(formatted);
