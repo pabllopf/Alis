@@ -32,7 +32,7 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Ecs.Collections
+namespace Alis.Benchmark.CustomCollections.Tables
 {
     /// <summary>
     /// The fast table
