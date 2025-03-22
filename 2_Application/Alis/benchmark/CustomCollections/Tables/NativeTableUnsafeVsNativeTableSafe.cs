@@ -29,13 +29,14 @@
 
 using Alis.Core.Ecs.Collections;
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Order;
 
 namespace Alis.Benchmark.CustomCollections.Tables
 {
     /// <summary>
     /// The native array unsafe vs native array safe class
     /// </summary>
-    [MemoryDiagnoser]
+     [MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]
     public class NativeTableUnsafeVsNativeTableSafe
     {
         /// <summary>

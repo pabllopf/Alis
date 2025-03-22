@@ -34,13 +34,14 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Order;
 
 namespace Alis.Benchmark.Iterators
 {
     /// <summary>
     ///     The iteration benchmarks class
     /// </summary>
-    [MemoryDiagnoser]
+    [MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]
     public class IterationBenchmarks
     {
         /// <summary>

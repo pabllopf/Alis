@@ -29,13 +29,14 @@
 
 using Alis.Benchmark.NativeCollections.NativeStack;
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Order;
 
 namespace Alis.Benchmark.CustomCollections.Stacks
 {
     /// <summary>
     /// The native array unsafe vs native array safe class
     /// </summary>
-    [MemoryDiagnoser]
+     [MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]
     public class NativeStackVsNativeStackUnsafe
     {
         /// <summary>

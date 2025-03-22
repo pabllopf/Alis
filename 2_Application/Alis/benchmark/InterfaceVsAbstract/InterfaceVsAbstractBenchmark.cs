@@ -29,13 +29,14 @@
 
 using Alis.Benchmark.InterfaceVsAbstract.Instancies;
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Order;
 
 namespace Alis.Benchmark.InterfaceVsAbstract
 {
     /// <summary>
     ///     The interface vs abstract benchmark class
     /// </summary>
-    [MemoryDiagnoser]
+     [MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]
     public class InterfaceVsAbstractBenchmark
     {
         /// <summary>
