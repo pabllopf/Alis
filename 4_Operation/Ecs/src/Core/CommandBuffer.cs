@@ -280,7 +280,7 @@ namespace Alis.Core.Ecs.Core
 
                     if (record.HasEvent(EntityFlags.AddComp))
                     {
-#if NETSTANDARD2_1
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
                     var events = _world.EventLookup[command.Entity];
 #else
                         ref var events = ref CollectionsMarshal.GetValueRefOrNullRef(_world.EventLookup, command.Entity);

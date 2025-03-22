@@ -58,7 +58,7 @@ namespace Alis.Core.Ecs.Collections
         }
 
         [DebuggerStepThrough]
-        public bool TryPop([NotNullWhen(true)] out T? value)
+        public bool TryPop( out T? value)
         {
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
                 throw new NotImplementedException();
@@ -92,7 +92,7 @@ namespace Alis.Core.Ecs.Collections
         /// <summary>
         /// DO NOT ALTER WHILE SPAN IS IN USE
         /// </summary>
-#if NETSTANDARD2_1
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
     public readonly Span<T> AsSpan() => _buffer.AsSpan(0, _nextIndex);
 #else
         public readonly Span<T> AsSpan() => MemoryMarshal.CreateSpan(ref MemoryMarshal.GetArrayDataReference(_buffer), _nextIndex);

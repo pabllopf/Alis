@@ -19,7 +19,7 @@ namespace Alis.Core.Ecs
          */
 
 
-#if NETSTANDARD2_1
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
     [ThreadStatic]
     private static readonly ComponentHandle[] _sharedOneElementComponentHandle = new ComponentHandle[1];
     [ThreadStatic]
@@ -31,7 +31,7 @@ namespace Alis.Core.Ecs
             Archetype destination = RemoveComponentLookup.FindAdjacentArchetypeID(componentID, lookup.ArchetypeID, this, ArchetypeEdgeType.RemoveComponent)
                 .Archetype(this);
 
-#if NETSTANDARD2_1
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
         //array is allocated
         //Span<ComponentHandle> tmpHandleSpan = [default!];
         MoveEntityToArchetypeRemove(_sharedOneElementComponentHandle, entity, ref lookup, destination);
@@ -46,7 +46,7 @@ namespace Alis.Core.Ecs
         {
             Archetype destination = AddComponentLookup.FindAdjacentArchetypeID(componentID, lookup.ArchetypeID, this, ArchetypeEdgeType.AddComponent)
                 .Archetype(this);
-#if NETSTANDARD2_1
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
         MoveEntityToArchetypeAdd(_sharedOneElementComponentStorage, entity, ref lookup, out entityLocation, destination);
         runner = _sharedOneElementComponentStorage[0];
 #else
@@ -155,7 +155,7 @@ namespace Alis.Core.Ecs
 
                 if (EntityLocation.HasEventFlag(currentLookup.Flags, EntityFlags.RemoveComp | EntityFlags.RemoveGenericComp))
                 {
-#if NETSTANDARD2_1
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
                 var lookup = EventLookup[entity.EntityIDOnly];
 #else
                     ref var lookup = ref CollectionsMarshal.GetValueRefOrNullRef(EventLookup, entity.EntityIDOnly);

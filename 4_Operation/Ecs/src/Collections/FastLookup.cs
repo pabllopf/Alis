@@ -66,17 +66,6 @@ namespace Alis.Core.Ecs.Collections
                 int index = BitOperations.TrailingZeroCount(bits.ExtractMostSignificantBits());
                 return index;
             }
-            //else if (Vector128.IsHardwareAccelerated)
-            //{
-            //    Vector128<uint> lower = Vector128.Equals(Vector128.Create(key), Vector128.LoadUnsafe(ref l0));
-            //    Vector128<uint> upper = Vector128.Equals(Vector128.Create(key), Vector128.LoadUnsafe(ref l4));
-            //
-            //    uint lowerMask = lower.ExtractMostSignificantBits();
-            //    uint upperMask = upper.ExtractMostSignificantBits() << 4;
-            //
-            //    int index = BitOperations.TrailingZeroCount(lowerMask | upperMask);
-            //    return index;
-            //}
 #endif
 
             if (_data._0 == key)

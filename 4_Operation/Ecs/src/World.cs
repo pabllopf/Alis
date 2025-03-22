@@ -353,7 +353,7 @@ namespace Alis.Core.Ecs
             }
         }
 
-#if !NETSTANDARD2_1
+#if (!NETSTANDARD && !NETFRAMEWORK && !NETCOREAPP) || NET6_0_OR_GREATER
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal ref EventRecord TryGetEventData(EntityLocation entityLocation, EntityIDOnly entity, EntityFlags eventType, out bool exists)
         {

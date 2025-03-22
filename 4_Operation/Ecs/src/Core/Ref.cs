@@ -31,7 +31,7 @@ namespace Alis.Core.Ecs.Core
         /// </summary>
         /// <returns>A string representation of the wrapped <typeparamref name="T"/>'s</returns>
         public override readonly string? ToString() => Value?.ToString();
-#elif NETSTANDARD2_1
+#elif (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
     internal Ref(T[] compArr, int index)
     {
         _data = compArr;

@@ -1,4 +1,4 @@
-﻿#if NETSTANDARD2_1
+﻿#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
 #pragma warning disable CS0436 // Type conflicts with imported type
 global using MemoryMarshal = System.Runtime.InteropServices.MemoryMarshal;
 global using RuntimeHelpers = System.Runtime.CompilerServices.RuntimeHelpers;
@@ -6,12 +6,10 @@ global using RuntimeHelpers = System.Runtime.CompilerServices.RuntimeHelpers;
 
 using System;
 using System.Linq;
-
-#region Attributes
-using CommunityToolkit.HighPerformance;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
+#if !NET5_0
 namespace Alis.Core.Ecs
 {
     internal class SkipLocalsInit : Attribute;
@@ -22,7 +20,8 @@ namespace System.Runtime.CompilerServices
 {
     internal class IsExternalInit : Attribute;
 }
-#endregion
+#endif
+
 
 #region Static class helpers
 namespace System.Runtime.CompilerServices
@@ -53,8 +52,10 @@ namespace System.Runtime.InteropServices
 {
     internal static class MemoryMarshal
     {
-        public static ref T GetReference<T>(Span<T> span) => ref span.DangerousGetReference();
-        public static ref T GetArrayDataReference<T>(T[] arr) => ref arr.DangerousGetReference();
+        public static ref T GetReference<T>(Span<T> span) => ref span.GetPinnableReference();
+        
+        public static ref T GetArrayDataReference<T>(T[] arr) => ref MemoryMarshal.GetReference(arr.AsSpan());
+        
         public static ref byte GetArrayDataReference(Array arr) => throw new NotSupportedException();
     }
 }
@@ -144,7 +145,7 @@ namespace System
 
         /// <summary>Indicates whether the current Range object is equal to another object of the same type.</summary>
         /// <param name="value">An object to compare with this object</param>
-        public override bool Equals([NotNullWhen(true)] object? value) =>
+        public override bool Equals( object? value) =>
             value is Range r &&
             r.Start.Equals(Start) &&
             r.End.Equals(End);
@@ -162,7 +163,7 @@ namespace System
         /// <summary>Converts the value of the current Range object to its equivalent string representation.</summary>
         public override string ToString()
         {
-#if (!NETSTANDARD2_0 && !NETFRAMEWORK)
+#if (!NETSTANDARD && !NETFRAMEWORK && !NETCOREAPP) || NET6_0_OR_GREATER
             Span<char> span = stackalloc char[2 + (2 * 11)]; // 2 for "..", then for each index 1 for '^' and 10 for longest possible uint
             int pos = 0;
  
@@ -353,7 +354,7 @@ namespace System
 
         /// <summary>Indicates whether the current Index object is equal to another object of the same type.</summary>
         /// <param name="value">An object to compare with this object</param>
-        public override bool Equals([NotNullWhen(true)] object? value) => value is Index && _value == ((Index)value)._value;
+        public override bool Equals( object? value) => value is Index && _value == ((Index)value)._value;
 
         /// <summary>Indicates whether the current Index object is equal to another Index object.</summary>
         /// <param name="other">An object to compare with this object</param>
@@ -385,7 +386,7 @@ namespace System
 
         private string ToStringFromEnd()
         {
-#if (!NETSTANDARD2_0 && !NETFRAMEWORK)
+#if (!NETSTANDARD && !NETFRAMEWORK && !NETCOREAPP) || NET6_0_OR_GREATER
             Span<char> span = stackalloc char[11]; // 1 for ^ and 10 for longest possible uint value
             bool formatted = ((uint)Value).TryFormat(span.Slice(1), out int charsWritten);
             Debug.Assert(formatted);

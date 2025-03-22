@@ -76,45 +76,21 @@ namespace Alis.Core.Ecs.Core.Memory
                     return;
                 }
 
-                // Execute the callback method.
-                try
+                Debug.Assert(_callback1 != null);
+                if (!_callback1(targetObj))
                 {
-                    Debug.Assert(_callback1 != null);
-                    if (!_callback1(targetObj))
-                    {
-                        // If the callback returns false, this callback object is no longer needed.
-                        _weakTargetObj.Free();
-                        return;
-                    }
-                }
-                catch
-                {
-                    // Ensure that we still get a chance to resurrect this object, even if the callback throws an exception.
-#if DEBUG
-                    // Except in DEBUG, as we really shouldn't be hitting any exceptions here.
-                    throw;
-#endif
+                    // If the callback returns false, this callback object is no longer needed.
+                    _weakTargetObj.Free();
+                    return;
                 }
             }
             else
             {
-                // Execute the callback method.
-                try
+                Debug.Assert(_callback0 != null);
+                if (!_callback0())
                 {
-                    Debug.Assert(_callback0 != null);
-                    if (!_callback0())
-                    {
-                        // If the callback returns false, this callback object is no longer needed.
-                        return;
-                    }
-                }
-                catch
-                {
-                    // Ensure that we still get a chance to resurrect this object, even if the callback throws an exception.
-#if DEBUG
-                    // Except in DEBUG, as we really shouldn't be hitting any exceptions here.
-                    throw;
-#endif
+                    // If the callback returns false, this callback object is no longer needed.
+                    return;
                 }
             }
 

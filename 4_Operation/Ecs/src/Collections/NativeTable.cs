@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace Alis.Core.Ecs.Collections
 {
-#if NETSTANDARD2_1
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
 //Do not pass around this struct by value!!!
 //You must use the constructor when initalizating!!!
 
@@ -20,10 +20,6 @@ internal unsafe struct NativeTable<T> : IDisposable where T : struct
     {
         get
         {
-#if DEBUG
-            if(index < 0)
-                throw new ArgumentOutOfRangeException();
-#endif
             if (index >= _length)
                 return ref ResizeFor(index);
             return ref _array[index];
@@ -84,10 +80,6 @@ internal unsafe struct NativeTable<T> : IDisposable where T : struct
         {
             get
             {
-#if DEBUG
-                if (index < 0)
-                    throw new ArgumentOutOfRangeException();
-#endif
                 if (index >= _length)
                     return ref ResizeFor(index);
                 return ref _array[index];

@@ -5,7 +5,7 @@ using Alis.Core.Ecs.Core.Memory;
 
 namespace Alis.Core.Ecs.Collections
 {
-#if NETSTANDARD2_1
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
 //Do not pass around this struct by value!!!
 //You must use the constructor when initalizating!!!
 
@@ -22,10 +22,6 @@ internal unsafe struct NativeStack<T> : IDisposable where T : struct
     {
         get
         {
-#if DEBUG
-            if (index >= _nextIndex || index < 0)
-                throw new IndexOutOfRangeException();
-#endif
             return ref _array.UnsafeArrayIndex(index);
         }
     }
@@ -112,10 +108,6 @@ internal unsafe struct NativeStack<T> : IDisposable where T : struct
         {
             get
             {
-#if DEBUG
-                if (index >= _nextIndex || index < 0)
-                    throw new IndexOutOfRangeException();
-#endif
                 return ref _array[index];
             }
         }

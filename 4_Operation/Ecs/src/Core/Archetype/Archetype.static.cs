@@ -128,7 +128,7 @@ namespace Alis.Core.Ecs.Core.Archetype
                 throw new InvalidOperationException("Entities can have a max of 127 components!");
             lock (GlobalWorldTables.BufferChangeLock)
             {
-#if NETSTANDARD2_1
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
             var key = GetHash(types, tagTypes);
             if (ExistingArchetypes.TryGetValue(key, out ArchetypeData value))
             {

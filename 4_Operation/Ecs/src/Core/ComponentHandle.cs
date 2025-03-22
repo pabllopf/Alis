@@ -72,7 +72,7 @@ namespace Alis.Core.Ecs.Core
         /// </summary>
         /// <param name="obj">The object to check.</param>
         /// <returns><see langword="true"/> when they are equal, <see langword="false"/> otherwise.</returns>
-        public override bool Equals([NotNullWhen(true)] object? obj) => obj is ComponentHandle handle && Equals(handle);
+        public override bool Equals( object? obj) => obj is ComponentHandle handle && Equals(handle);
         /// <summary>
         /// Checks if two component handles point to the same component.
         /// </summary>

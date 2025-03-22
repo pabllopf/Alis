@@ -316,7 +316,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         internal Span<EntityIDOnly> GetEntitySpan()
         {
             Debug.Assert(_nextComponentIndex <= _entities.Length);
-#if NETSTANDARD2_1
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
         return _entities.AsSpan(0, _nextComponentIndex);
 #else
             return MemoryMarshal.CreateSpan(ref MemoryMarshal.GetArrayDataReference(_entities), _nextComponentIndex);
