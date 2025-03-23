@@ -35,6 +35,7 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
+using Alis.Benchmark.NativeCollections.NativeStack;
 using Alis.Core.Ecs.Buffers;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Core.Memory;
@@ -221,12 +222,12 @@ namespace Alis.Core.Ecs.Core.Archetype
             Span<EntityIDOnly> entitySpan = _entities.AsSpan(_nextComponentIndex, count);
 
             int componentIndex = _nextComponentIndex;
-            ref NativeStack<EntityIDOnly> recycled = ref world.RecycledEntityIds;
+            ref FastStack<EntityIDOnly> recycled = ref world.RecycledEntityIds;
             for (int i = 0; i < entitySpan.Length; i++)
             {
                 ref EntityIDOnly archetypeEntity = ref entitySpan[i];
 
-                archetypeEntity = recycled.CanPop() ? recycled.PopUnsafe() : new EntityIDOnly(world.NextEntityID++, 0);
+                archetypeEntity = recycled.CanPop() ? recycled.Pop() : new EntityIDOnly(world.NextEntityID++, 0);
 
                 ref EntityLocation lookup = ref world.EntityTable.UnsafeIndexNoResize(archetypeEntity.ID);
 

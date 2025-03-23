@@ -34,6 +34,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
+using Alis.Benchmark.NativeCollections.NativeStack;
 using Alis.Core.Ecs.Buffers;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Components;
@@ -78,7 +79,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The entity id only
         /// </summary>
-        internal NativeStack<EntityIDOnly> RecycledEntityIds = new NativeStack<EntityIDOnly>(256);
+        internal FastStack<EntityIDOnly> RecycledEntityIds = new FastStack<EntityIDOnly>(256);
 
         /// <summary>
         ///     The updates by attributes
@@ -554,7 +555,7 @@ namespace Alis.Core.Ecs
                     archetype.ResolveDeferredEntityCreations(this);
                 }
 
-                DeferredCreationArchetypes.ClearWithoutClearingGCReferences();
+                DeferredCreationArchetypes.Clear();
 
                 //i plan on adding events later, so even more command buffer events could be added during playback
                 while (WorldUpdateCommandBuffer.Playback())
@@ -676,7 +677,7 @@ namespace Alis.Core.Ecs
         {
             ref EntityIDOnly entity = ref DefaultArchetype.CreateEntityLocation(EntityFlags.None, out EntityLocation eloc);
 
-            (int id, ushort version) = entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.PopUnsafe() : new EntityIDOnly(NextEntityID++, 0);
+            (int id, ushort version) = entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.Pop() : new EntityIDOnly(NextEntityID++, 0);
             eloc.Version = version;
             EntityTable[id] = eloc;
 
@@ -1024,13 +1025,13 @@ namespace Alis.Core.Ecs
             replaced.Version = replacedEntity.Version;
             currentLookup.Version = ushort.MaxValue;
 
-            if (entity.EntityVersion != ushort.MaxValue - 1)
-            {
-                //can't use max value as an ID, as it is used as a default value
-                ref EntityIDOnly id = ref RecycledEntityIds.Push();
-                id = entity.EntityIDOnly;
-                id.Version++;
-            }
+           if (entity.EntityVersion != ushort.MaxValue - 1)
+           {
+               // can't use max value as an ID, as it is used as a default value
+               EntityIDOnly id = entity.EntityIDOnly;
+               id.Version++;
+               RecycledEntityIds.Push(id);
+           }
         }
         
         /// <summary>
@@ -1064,7 +1065,7 @@ namespace Alis.Core.Ecs
             //manually inlined from World.CreateEntityFromLocation
             //The jit likes to inline the outer create function and not inline
             //the inner functions - benchmarked to improve perf by 10-20%
-            (int id, ushort version) = entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.PopUnsafe() : new(NextEntityID++, 0);
+            (int id, ushort version) = entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.Pop() : new(NextEntityID++, 0);
             eloc.Version = version;
             EntityTable[id] = eloc;
 

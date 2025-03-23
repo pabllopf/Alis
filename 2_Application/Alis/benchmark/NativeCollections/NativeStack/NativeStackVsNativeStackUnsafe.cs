@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InterfaceVsAbstractBenchmark.cs
+//  File:NativeArrayUnsafeVsNativeArraySafe.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,78 +27,86 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Benchmark.InterfaceVsAbstract.Instancies;
+using System;
+using System.Collections.Generic;
+using Alis.Core.Ecs.Collections;
 using BenchmarkDotNet.Attributes;
 
-namespace Alis.Benchmark.InterfaceVsAbstract
+namespace Alis.Benchmark.NativeCollections.NativeStack
 {
     /// <summary>
-    ///     The interface vs abstract benchmark class
+    /// The native array unsafe vs native array safe class
     /// </summary>
     [MemoryDiagnoser]
-    public class InterfaceVsAbstractBenchmark
+    public class NativeStackVsNativeStackUnsafe
     {
         /// <summary>
-        ///     The abstract shapes
+        /// The array size
         /// </summary>
-        private Shape[] abstractShapes;
+        [Params(5)]
+        public int ArraySize;
 
         /// <summary>
-        ///     The interface shapes
+        /// The native array unsafe
         /// </summary>
-        private IShape[] interfaceShapes;
+        private NativeStackUnsafe<int> nativeArrayUnsafe;
 
         /// <summary>
-        ///     The
+        /// The native array
         /// </summary>
-        [Params(10, 100, 1000)] public int N;
-
+        private NativeArray<int> nativeArray;
+        
         /// <summary>
-        ///     Setup this instance
+        /// The fastest stack
+        /// </summary>
+        private FastStack<int> fastStack;
+        
+        // Inicialización
+        /// <summary>
+        /// Setup this instance
         /// </summary>
         [GlobalSetup]
         public void Setup()
         {
-            interfaceShapes = new IShape[N];
-            abstractShapes = new Shape[N];
-
-            for (int i = 0; i < N; i++)
+            nativeArrayUnsafe = new NativeStackUnsafe<int>(ArraySize);
+            nativeArray = new NativeArray<int>(ArraySize);
+            fastStack = new FastStack<int>(ArraySize);
+        }
+        
+        /// <summary>
+        /// Fastests the stack array iterate
+        /// </summary>
+        [Benchmark(Description = "Benchmark for Fastest Stack Array Iteration")]
+        public void Fastest_Stack_ArrayIterate()
+        {
+            for (int i = 0; i < ArraySize; i++)
             {
-                interfaceShapes[i] = new CircleInterface(i + 1);
-                abstractShapes[i] = new CircleAbstract(i + 1);
+                fastStack[i] = i;
+            }
+        }
+        
+        /// <summary>
+        /// Benchmarks the native array unsafe
+        /// </summary>
+        [Benchmark(Description = "Benchmark for Native Array Unsafe Iteration")]
+        public void Unsafe_code_Stack_ArrayIterate()
+        {
+            for (int i = 0; i < ArraySize; i++)
+            {
+                nativeArrayUnsafe[i] = i;
             }
         }
 
         /// <summary>
-        ///     Interfaces the method call
+        /// Benchmarks the native array
         /// </summary>
-        /// <returns>The sum</returns>
-        [Benchmark]
-        public float InterfaceMethodCall()
+        [Benchmark(Description = "Benchmark for Native Array Iteration")]
+        public void Save_code_Current_Stack_ArrayIterate()
         {
-            float sum = 0;
-            for (int i = 0; i < N; i++)
+            for (int i = 0; i < ArraySize; i++)
             {
-                sum += interfaceShapes[i].GetArea();
+                nativeArray[i] = i;
             }
-
-            return sum;
-        }
-
-        /// <summary>
-        ///     Abstracts the method call
-        /// </summary>
-        /// <returns>The sum</returns>
-        [Benchmark]
-        public float AbstractMethodCall()
-        {
-            float sum = 0;
-            for (int i = 0; i < N; i++)
-            {
-                sum += abstractShapes[i].GetArea();
-            }
-
-            return sum;
         }
     }
 }

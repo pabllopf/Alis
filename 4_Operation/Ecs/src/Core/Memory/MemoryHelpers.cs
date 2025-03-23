@@ -42,7 +42,7 @@ namespace Alis.Core.Ecs.Core.Memory
     /// <summary>
     ///     The memory helpers class
     /// </summary>
-    internal static class MemoryHelpers
+    public static class MemoryHelpers
     {
         /// <summary>
         ///     The max component count

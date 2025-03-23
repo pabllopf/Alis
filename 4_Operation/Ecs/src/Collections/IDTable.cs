@@ -29,6 +29,7 @@
 
 using System;
 using System.Runtime.CompilerServices;
+using Alis.Benchmark.NativeCollections.NativeStack;
 using Alis.Core.Ecs.Core.Events;
 
 namespace Alis.Core.Ecs.Collections
@@ -56,7 +57,7 @@ namespace Alis.Core.Ecs.Collections
         /// <summary>
         ///     The recycled
         /// </summary>
-        protected NativeStack<int> _recycled;
+        protected FastStack<int> _recycled;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="IDTable" /> class
@@ -67,7 +68,7 @@ namespace Alis.Core.Ecs.Collections
         {
             _buffer = empty;
             _hasGCReferences = gcRefs;
-            _recycled = new NativeStack<int>(2);
+            _recycled = new FastStack<int>(2);
         }
 
         /// <summary>
@@ -80,7 +81,7 @@ namespace Alis.Core.Ecs.Collections
             int index;
             if (_recycled.CanPop())
             {
-                index = _recycled.PopUnsafe();
+                index = _recycled.Pop();
             }
             else
             {
@@ -110,7 +111,7 @@ namespace Alis.Core.Ecs.Collections
         /// <returns>The object</returns>
         public object TakeBoxed(int index)
         {
-            _recycled.Push() = index;
+            _recycled.Push(index);
             return GetValue(index);
         }
 
@@ -120,7 +121,7 @@ namespace Alis.Core.Ecs.Collections
         /// <param name="index">The index</param>
         public void Consume(int index)
         {
-            _recycled.Push() = index;
+            _recycled.Push(index);
             if (_hasGCReferences)
             {
                 ClearValue(index);
@@ -188,7 +189,7 @@ namespace Alis.Core.Ecs.Collections
         {
             if (_recycled.CanPop())
             {
-                index = _recycled.PopUnsafe();
+                index = _recycled.Pop();
             }
             else
             {
@@ -211,7 +212,7 @@ namespace Alis.Core.Ecs.Collections
         public override void InvokeEventWithAndConsume(GenericEvent? genericEvent, Entity entity, int index)
         {
             genericEvent?.Invoke(entity, ref Buffer[index]);
-            _recycled.Push() = index;
+            _recycled.Push(index);
         }
 
         /// <summary>

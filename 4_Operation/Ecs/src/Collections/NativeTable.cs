@@ -30,7 +30,6 @@
 using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 
 namespace Alis.Core.Ecs.Collections
 {
@@ -103,6 +102,10 @@ namespace Alis.Core.Ecs.Collections
     using System.Collections.Generic;
 
     
+    /// <summary>
+    /// The native table class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     internal class NativeTable<T> : IDisposable where T : struct
     {
         /// <summary>

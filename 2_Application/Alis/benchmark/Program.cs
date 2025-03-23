@@ -35,6 +35,8 @@ using Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents;
 using Alis.Benchmark.IDs;
 using Alis.Benchmark.InterfaceVsAbstract;
 using Alis.Benchmark.Iterators;
+using Alis.Benchmark.NativeCollections.NativeArrays;
+using Alis.Benchmark.NativeCollections.NativeStack;
 using Alis.Benchmark.Strings;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Order;
@@ -80,12 +82,15 @@ namespace Alis.Benchmark
                 typeof(ClassVsStructBenchmark),
                 typeof(IdStorageBenchmark),
                 typeof(IterationBenchmarks),
-                typeof(InterfaceVsAbstractBenchmark)
+                typeof(InterfaceVsAbstractBenchmark),
+                
+                typeof(NativeArrayUnsafeVsNativeArraySafe),
+                typeof(NativeStackVsNativeStackUnsafe)
             });
 
             IConfig configuration = DefaultConfig.Instance
-                .WithOptions(ConfigOptions.DisableOptimizationsValidator)
-                .WithOrderer(new DefaultOrderer(SummaryOrderPolicy.FastestToSlowest));
+                .WithOptions(ConfigOptions.DisableOptimizationsValidator);
+                //.WithOrderer(new DefaultOrderer(SummaryOrderPolicy.FastestToSlowest));
 
             if (args.Length > 0)
             {

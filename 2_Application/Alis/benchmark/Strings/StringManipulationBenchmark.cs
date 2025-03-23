@@ -35,7 +35,7 @@ namespace Alis.Benchmark.Strings
     /// <summary>
     ///     The string manipulation benchmark class
     /// </summary>
-    [MemoryDiagnoser, Config(typeof(Config))]
+    [MemoryDiagnoser]
     public class StringManipulationBenchmark
     {
         /// <summary>
