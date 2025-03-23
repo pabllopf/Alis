@@ -39,7 +39,6 @@ namespace Alis.Benchmark.CustomCollections.ArrayPools
     /// </summary>
     [MemoryDiagnoser(false)]
     [ShortRunJob]
-    [Orderer(SummaryOrderPolicy.FastestToSlowest)]
     public class ArrayPoolsBenchmark
     {
         /// <summary>
