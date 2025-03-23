@@ -48,10 +48,7 @@ namespace Alis.Core.Ecs.Buffers
         /// <summary>
         ///     The
         /// </summary>
-        public ref TData this[int i]
-        {
-            [DebuggerHidden] get => ref Buffer.UnsafeArrayIndex(i);
-        }
+        public ref TData this[int i] => ref Buffer.UnsafeArrayIndex(i);
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Chunk" /> class
@@ -80,7 +77,7 @@ namespace Alis.Core.Ecs.Buffers
         /// <param name="start">The start</param>
         /// <param name="length">The length</param>
         /// <returns>A span of t data</returns>
-        [DebuggerHidden]
+        
         public Span<TData> AsSpan(int start, int length) => Buffer.AsSpan(start, length);
 
 

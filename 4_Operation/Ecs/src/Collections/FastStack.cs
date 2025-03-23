@@ -622,10 +622,7 @@ namespace Alis.Core.Ecs.Collections
             /// <summary>
             /// Gets the value of the current
             /// </summary>
-            object IEnumerator.Current
-            {
-                get { return Current; }
-            }
+            object IEnumerator.Current => Current;
 
             /// <summary>
             /// Resets this instance
