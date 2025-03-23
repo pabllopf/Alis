@@ -65,11 +65,11 @@ namespace Alis.Core.Ecs.Buffers
             Buffer = null!;
         }
 
-        /// <summary>
-        ///     Converts the span
-        /// </summary>
-        /// <returns>A span of t data</returns>
-        public Span<TData> AsSpan() => Buffer;
+#if NET6_0_OR_GREATER
+            public Span<TData> AsSpan() => MemoryMarshal.CreateSpan(ref Buffer[0], Buffer.Length);
+#else
+           public Span<TData> AsSpan() => Buffer;
+#endif
 
         /// <summary>
         ///     Converts the span using the specified start
@@ -78,9 +78,12 @@ namespace Alis.Core.Ecs.Buffers
         /// <param name="length">The length</param>
         /// <returns>A span of t data</returns>
         
+#if NET6_0_OR_GREATER
+        public Span<TData> AsSpan(int start, int length) => MemoryMarshal.CreateSpan(ref Buffer[start], length);
+#else
         public Span<TData> AsSpan(int start, int length) => Buffer.AsSpan(start, length);
-
-
+#endif
+        
         /// <summary>
         ///     Nexts the chunk using the specified chunks
         /// </summary>
@@ -89,7 +92,6 @@ namespace Alis.Core.Ecs.Buffers
         /// <param name="newChunkIndex">The new chunk index</param>
         public static void NextChunk(ref Chunk<TData>[] chunks, int size, int newChunkIndex)
         {
-            //these arrays are too small to pool
             if (newChunkIndex == chunks.Length)
             {
                 Array.Resize(ref chunks, newChunkIndex << 1);

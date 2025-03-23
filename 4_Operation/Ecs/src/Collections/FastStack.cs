@@ -666,7 +666,11 @@ namespace Alis.Core.Ecs.Collections
         /// Converts the span
         /// </summary>
         /// <returns>A span of t</returns>
+#if NET6_0_OR_GREATER
+        public Span<T> AsSpan() => MemoryMarshal.CreateSpan(ref _array[0], _size);
+#else
         public Span<T> AsSpan() => _array.AsSpan(0, _size);
+#endif
 
         /// <summary>
         /// Cans the pop
