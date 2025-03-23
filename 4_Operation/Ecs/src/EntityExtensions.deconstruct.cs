@@ -48,7 +48,7 @@ namespace Alis.Core.Ecs
         /// <param name="comps">The comps</param>
         /// <param name="index">The index</param>
         /// <returns>A ref of tc</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         private static Ref<TC> GetComp<TC>(byte[] archetypeTable, ComponentStorageBase[] comps, int index)
         {
             int compIndex = archetypeTable.UnsafeArrayIndex(Component<TC>.ID.RawIndex) & GlobalWorldTables.IndexBits;

@@ -115,7 +115,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
             /// </summary>
             /// <param name="t0">The </param>
             /// <param name="t1">The </param>
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            
             public void Update(ref Component1 t0, ref Component2 t1)
             {
                 t0.Value += t1.Value;

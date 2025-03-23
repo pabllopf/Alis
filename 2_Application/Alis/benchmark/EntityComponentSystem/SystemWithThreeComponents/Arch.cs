@@ -114,7 +114,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
             /// <param name="t0">The </param>
             /// <param name="t1">The </param>
             /// <param name="t2">The </param>
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            
             public void Update(ref Component1 t0, ref Component2 t1, ref Component3 t2)
             {
                 t0.Value += t1.Value + t2.Value;

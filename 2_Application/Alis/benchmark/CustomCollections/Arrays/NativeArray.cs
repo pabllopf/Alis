@@ -31,7 +31,7 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         /// </summary>
         public ref T this[int index]
         {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            
             get
             {
                 if ((uint)index >= (uint)_length)

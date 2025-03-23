@@ -1236,7 +1236,7 @@ namespace Alis.Core.Ecs
         /// <param name="currentLookup">The current lookup</param>
         /// <param name="add">The add</param>
         /// <returns>The archetype</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         internal static Archetype TraverseThroughCacheOrCreate<T, TEdge>(
             World world,
             ref ArchetypeNeighborCache cache,

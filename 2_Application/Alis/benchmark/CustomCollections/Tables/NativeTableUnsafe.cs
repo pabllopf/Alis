@@ -138,7 +138,7 @@ namespace Alis.Benchmark.CustomCollections.Tables
         /// Converts the span
         /// </summary>
         /// <returns>A span of t</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public Span<T> AsSpan() => System.Runtime.InteropServices.MemoryMarshal.CreateSpan(ref Unsafe.AsRef<T>(_array), _length);
 
         /// <summary>

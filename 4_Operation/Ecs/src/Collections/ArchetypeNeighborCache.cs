@@ -57,7 +57,7 @@ namespace Alis.Core.Ecs.Collections
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public int Traverse(ushort value)
         {
             if (value == _keysAndValues._0)

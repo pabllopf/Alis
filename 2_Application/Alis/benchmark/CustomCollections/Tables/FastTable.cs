@@ -63,7 +63,7 @@ namespace Alis.Benchmark.CustomCollections.Tables
         /// </summary>
         public ref T this[int index]
         {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            
             get
             {
                 if ((uint)index >= (uint)_buffer.Length)
@@ -80,7 +80,7 @@ namespace Alis.Benchmark.CustomCollections.Tables
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The ref</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         private ref T ResizeGet(int index)
         {
             int newSize = (int)BitOperations.RoundUpToPowerOf2((uint)(index + 1));
@@ -101,14 +101,14 @@ namespace Alis.Benchmark.CustomCollections.Tables
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The ref</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public ref T UnsafeIndexNoResize(int index) => ref Unsafe.Add(ref MemoryMarshal.GetArrayDataReference(_buffer), index);
 
         /// <summary>
         /// Ensures the capacity using the specified size
         /// </summary>
         /// <param name="size">The size</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public void EnsureCapacity(int size)
         {
             if (_buffer.Length < size)
@@ -128,7 +128,7 @@ namespace Alis.Benchmark.CustomCollections.Tables
         /// Converts the span
         /// </summary>
         /// <returns>A span of t</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public Span<T> AsSpan()
         {
 #if NET6_0_OR_GREATER

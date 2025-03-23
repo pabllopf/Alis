@@ -104,7 +104,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The ref</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         internal ref T GetComponentDataReference<T>()
         {
             int index = GetComponentIndex<T>();
@@ -114,7 +114,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// <summary>
         ///     Note! Entity location version is not set!
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         internal ref EntityIDOnly CreateEntityLocation(EntityFlags flags, out EntityLocation entityLocation)
         {
             if (_entities.Length == _nextComponentIndex)
@@ -133,7 +133,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// <summary>
         ///     Caller needs write archetype field
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         internal ref EntityIDOnly CreateDeferredEntityLocation(World world, scoped ref EntityLocation entityLocation, out int physicalIndex, out ComponentStorageBase[] writeStorage)
         {
             if (_deferredEntityCount == 0)
@@ -443,7 +443,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         internal int GetComponentIndex<T>() => ComponentTagTable.UnsafeArrayIndex(Component<T>.ID.RawIndex) & GlobalWorldTables.IndexBits;
 
         /// <summary>
@@ -451,7 +451,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// </summary>
         /// <param name="component">The component</param>
         /// <returns>The int</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         internal int GetComponentIndex(ComponentID component) => ComponentTagTable.UnsafeArrayIndex(component.RawIndex) & GlobalWorldTables.IndexBits;
 
         /// <summary>
@@ -459,7 +459,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The bool</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         internal bool HasTag<T>() => ComponentTagTable.UnsafeArrayIndex(Tag<T>.ID.RawValue) << 7 != 0;
 
         /// <summary>
@@ -467,7 +467,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// </summary>
         /// <param name="tagID">The tag id</param>
         /// <returns>The bool</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         internal bool HasTag(TagID tagID) => ComponentTagTable.UnsafeArrayIndex(tagID.RawValue) << 7 != 0;
 
         /// <summary>
@@ -511,7 +511,7 @@ namespace Alis.Core.Ecs.Core.Archetype
             /// </summary>
             /// <typeparam name="T">The </typeparam>
             /// <returns>The ref</returns>
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            
             internal ref T GetComponentDataReference<T>()
             {
                 int index = Map.UnsafeArrayIndex(Component<T>.ID.RawIndex);

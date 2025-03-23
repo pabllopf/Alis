@@ -570,7 +570,7 @@ namespace Alis.Core.Ecs
         /// <param name="eventType">The event type</param>
         /// <param name="exists">The exists</param>
         /// <returns>The ref event record</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         internal ref EventRecord TryGetEventData(EntityLocation entityLocation, EntityIDOnly entity, EntityFlags eventType, out bool exists)
         {
             if (entityLocation.HasEvent(eventType))
@@ -969,7 +969,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="entity">The entity</param>
         /// <param name="entityLocation">The entity location</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         internal void DeleteEntity(Entity entity, ref EntityLocation entityLocation)
         {
             EntityFlags check = entityLocation.Flags | WorldEventFlags;
@@ -1006,7 +1006,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="entity">The entity</param>
         /// <param name="currentLookup">The current lookup</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         internal void DeleteEntityWithoutEvents(Entity entity, ref EntityLocation currentLookup)
         {
             //entity is guaranteed to be alive here
