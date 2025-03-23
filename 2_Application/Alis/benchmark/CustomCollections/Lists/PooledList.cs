@@ -92,9 +92,7 @@ namespace Alis.Benchmark.CustomCollections.Lists
         /// The clear on free
         /// </summary>
         private readonly bool _clearOnFree;
-
-        #region Constructors
-
+        
         /// <summary>
         /// Constructs a PooledList. The list is initially empty and has a capacity
         /// of zero. Upon adding the first element to the list the capacity is
@@ -463,9 +461,7 @@ namespace Alis.Benchmark.CustomCollections.Lists
                     break;
             }
         }
-
-        #endregion
-
+        
         /// <summary>
         /// Gets a <see cref="System.Span{T}"/> for the items currently in the collection.
         /// </summary>
