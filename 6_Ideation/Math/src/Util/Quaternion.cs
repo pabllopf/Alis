@@ -28,12 +28,14 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 namespace Alis.Core.Aspect.Math.Util
 {
     /// <summary>
     ///     The quaternion
     /// </summary>
+    [StructLayout( LayoutKind.Auto )]
     public struct Quaternion
     {
         /// <summary>

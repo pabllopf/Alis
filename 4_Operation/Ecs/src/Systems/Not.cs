@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Core;
 
 namespace Alis.Core.Ecs.Systems
@@ -5,6 +6,7 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     Specifies a query should not have a component of <see paramref="T" />
     /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
     public struct Not<T> : IRuleProvider
     {
         /// <summary>

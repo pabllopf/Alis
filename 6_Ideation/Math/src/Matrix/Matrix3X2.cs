@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 using HashCode = Alis.Core.Aspect.Math.Util.HashCode;
 
@@ -36,7 +37,8 @@ namespace Alis.Core.Aspect.Math.Matrix
     /// <summary>
     ///     The matrix 3x class
     /// </summary>
-    public class Matrix3X2
+    [StructLayout( LayoutKind.Auto )]
+    public struct Matrix3X2
     {
         /// <summary>
         ///     The hash code

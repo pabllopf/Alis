@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Core;
 using Alis.Core.Ecs.Core.Archetype;
 
@@ -36,6 +37,7 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     The entity query enumerator
     /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
     public ref struct EntityQueryEnumerator<T>
     {
         /// <summary>
@@ -131,6 +133,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The query enumerable
         /// </summary>
+        [StructLayout(LayoutKind.Sequential)]
         public struct QueryEnumerable(Query query)
         {
             /// <summary>
@@ -144,6 +147,7 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     The entity query enumerator
     /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
     public ref struct EntityQueryEnumerator
     {
         /// <summary>
@@ -223,6 +227,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The query enumerable
         /// </summary>
+        [StructLayout(LayoutKind.Sequential)]
         public struct QueryEnumerable(Query query)
         {
             /// <summary>

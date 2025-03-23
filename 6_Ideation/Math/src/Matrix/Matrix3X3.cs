@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Aspect.Math.Matrix
@@ -34,6 +35,7 @@ namespace Alis.Core.Aspect.Math.Matrix
     /// <summary>
     ///     The matrix
     /// </summary>
+    [StructLayout( LayoutKind.Auto )]
     public struct Matrix3X3
     {
         /// <summary>

@@ -28,12 +28,14 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 namespace Alis.Core.Ecs.Collections
 {
     /// <summary>
     ///     The inline array
     /// </summary>
+    [StructLayout( LayoutKind.Auto )]
     internal struct InlineArray8<T>
     {
         /// <summary>

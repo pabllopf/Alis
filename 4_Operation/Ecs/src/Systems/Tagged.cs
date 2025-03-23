@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Core;
 
 namespace Alis.Core.Ecs.Systems
@@ -5,6 +6,7 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     Specifies a query should have a tag of <see paramref="T" />
     /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
     public struct Tagged<T> : IRuleProvider
     {
         /// <summary>

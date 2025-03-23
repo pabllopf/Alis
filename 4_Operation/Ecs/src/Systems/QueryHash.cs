@@ -28,12 +28,14 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Immutable;
+using System.Runtime.InteropServices;
 
 namespace Alis.Core.Ecs.Systems
 {
     /// <summary>
     ///     The query hash
     /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
     internal struct QueryHash
     {
         /// <summary>

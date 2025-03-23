@@ -32,7 +32,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using Alis.Core.Ecs.Core.Archetype;
+using System.Runtime.InteropServices;
 
 namespace Alis.Benchmark.NativeCollections.NativeStack
 {
@@ -133,6 +133,9 @@ namespace Alis.Benchmark.NativeCollections.NativeStack
         /// </summary>
         object ICollection.SyncRoot => this;
 
+        /// <summary>
+        /// Gets the value of the any
+        /// </summary>
         public bool Any => _size > 0;
 
         // Removes all Objects from the Stack.
@@ -532,7 +535,8 @@ namespace Alis.Benchmark.NativeCollections.NativeStack
         /// <summary>
         /// The enumerator
         /// </summary>
-        public struct Enumerator : IEnumerator<T>, IEnumerator
+        [StructLayout( LayoutKind.Auto )]
+        public struct Enumerator : IEnumerator<T>
         {
             /// <summary>
             /// The fastest stack

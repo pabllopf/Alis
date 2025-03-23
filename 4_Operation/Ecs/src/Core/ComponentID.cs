@@ -29,6 +29,7 @@
 
 using System;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace Alis.Core.Ecs.Core
 {
@@ -36,6 +37,7 @@ namespace Alis.Core.Ecs.Core
     ///     A lightweight struct that represents a component type. Used for fast lookups
     /// </summary>
     [DebuggerDisplay(AttributeHelpers.DebuggerDisplay)]
+    [StructLayout(LayoutKind.Auto )]
     public readonly struct ComponentID : ITypeID, IEquatable<ComponentID>
     {
         /// <summary>
