@@ -38,6 +38,6 @@ namespace Alis.Core.Ecs
     ///     Entities with the <see cref="Disable" /> tag will not be updated in <see cref="World.Update()" /> or similar
     ///     overloads, nor in queries unless explicitly required.
     /// </remarks>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public readonly record struct Disable;
 }

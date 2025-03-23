@@ -257,7 +257,7 @@ namespace Alis.Core.Ecs.Core.Archetype
                 EntityType finalID = new EntityType((ushort) nextIDInt);
 
                 ImmutableArray<ComponentID> arr = typesArray ?? MemoryHelpers.ReadOnlySpanToImmutableArray(types);
-                ImmutableArray<TagID> tagArr = tagTypesArray ?? MemoryHelpers.ReadOnlySpanToImmutableArray(tagTypes);
+                ImmutableArray<TagId> tagArr = tagTypesArray ?? MemoryHelpers.ReadOnlySpanToImmutableArray(tagTypes);
 
                 ArchetypeData slot = new ArchetypeData(finalID, arr, tagArr);
                 ArchetypeTable.Push(slot);
