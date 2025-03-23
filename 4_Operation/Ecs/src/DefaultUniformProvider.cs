@@ -60,14 +60,10 @@ namespace Alis.Core.Ecs
             where T : notnull
         {
             object boxed = obj;
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
             if (boxed is null)
             {
                 throw new ArgumentNullException(nameof(obj));
             }
-#else
-            ArgumentNullException.ThrowIfNull(boxed);
-#endif
             _uniforms[typeof(T)] = boxed;
             return this;
         }
@@ -81,14 +77,11 @@ namespace Alis.Core.Ecs
         /// <exception cref="ArgumentException"><paramref name="object" /> is not assignable to <paramref name="type" />.</exception>
         public DefaultUniformProvider Add(Type type, object @object)
         {
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
             if (type is null)
             {
                 throw new ArgumentNullException(nameof(type));
             }
-#else
-            ArgumentNullException.ThrowIfNull(type);
-#endif
+            
             if (!type.IsAssignableFrom(@object.GetType()))
             {
                 throw new ArgumentException("Object must be assignable to the type!", nameof(@object));
