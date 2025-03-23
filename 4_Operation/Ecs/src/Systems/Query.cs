@@ -108,7 +108,7 @@ namespace Alis.Core.Ecs.Systems
         /// <returns>The bool</returns>
         private bool ArchetypeSatisfiesQuery(ArchetypeID id)
         {
-            foreach (var rule in _rules)
+            foreach (Rule rule in _rules)
             {
                 if (!rule.RuleApplies(id))
                 {

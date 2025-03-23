@@ -79,7 +79,7 @@ namespace Alis.Core.Ecs.Buffers
 
                 if (item is not null)
                 {
-                    var loc = item;
+                    T[] loc = item;
                     item = null!;
                     return loc;
                 }

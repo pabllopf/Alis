@@ -82,7 +82,7 @@ namespace Alis.Core.Ecs.Collections
                 return new EntityType(InlineArray8<ushort>.Get(ref _ids, index));
             }
 
-            if (world.ArchetypeGraphEdges.TryGetValue(edgeKey = typeof(T) == typeof(ComponentID) ? ArchetypeEdgeKey.Component(new(id.Value), archetype, edgeType) : ArchetypeEdgeKey.Tag(new(id.Value), archetype, edgeType), out var destination))
+            if (world.ArchetypeGraphEdges.TryGetValue(edgeKey = typeof(T) == typeof(ComponentID) ? ArchetypeEdgeKey.Component(new(id.Value), archetype, edgeType) : ArchetypeEdgeKey.Tag(new(id.Value), archetype, edgeType), out Archetype? destination))
             {
                 //warm/cool depending on number of times they add/remove
                 return destination.ID;

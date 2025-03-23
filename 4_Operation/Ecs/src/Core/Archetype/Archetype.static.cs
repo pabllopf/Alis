@@ -62,7 +62,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// <returns>The archetype</returns>
         internal static Archetype CreateNewOrGetExistingArchetype(World world)
         {
-            var index = ID.RawIndex;
+            ushort index = ID.RawIndex;
             ref Archetype archetype = ref world.WorldArchetypeTable.UnsafeArrayIndex(index);
             archetype ??= CreateArchetype(world);
             return archetype!;
@@ -170,12 +170,12 @@ namespace Alis.Core.Ecs.Core.Archetype
                 return archetype;
             }
 
-            var types = id.Types;
+            ImmutableArray<ComponentID> types = id.Types;
             ComponentStorageBase[] componentRunners = new ComponentStorageBase[types.Length + 1];
             ComponentStorageBase[] tmpRunners = new ComponentStorageBase[types.Length + 1];
             for (int i = 1; i < componentRunners.Length; i++)
             {
-                var fact = Component.GetComponentFactoryFromType(types[i - 1].Type);
+                IComponentStorageBaseFactory fact = Component.GetComponentFactoryFromType(types[i - 1].Type);
                 componentRunners[i] = fact.Create(1);
                 tmpRunners[i] = fact.Create(0);
             }
@@ -216,7 +216,7 @@ namespace Alis.Core.Ecs.Core.Archetype
                     break;
             }
 
-            var archetype = CreateOrGetExistingArchetype(fromComponents.AsSpan(), fromTags.AsSpan(), world, fromComponents, fromTags);
+            Archetype archetype = CreateOrGetExistingArchetype(fromComponents.AsSpan(), fromTags.AsSpan(), world, fromComponents, fromTags);
 
             return archetype;
         }
@@ -241,7 +241,7 @@ namespace Alis.Core.Ecs.Core.Archetype
             lock (GlobalWorldTables.BufferChangeLock)
             {
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
-                var key = GetHash(types, tagTypes);
+                long key = GetHash(types, tagTypes);
                 if (ExistingArchetypes.TryGetValue(key, out ArchetypeData value))
                 {
                     return value.ID;
@@ -253,12 +253,12 @@ namespace Alis.Core.Ecs.Core.Archetype
                     throw new InvalidOperationException("Exceeded maximum unique archetype count of 65535");
                 }
 
-                var finalID = new EntityType((ushort) nextIDInt);
+                EntityType finalID = new EntityType((ushort) nextIDInt);
 
-                var arr = typesArray ?? MemoryHelpers.ReadOnlySpanToImmutableArray(types);
-                var tagArr = tagTypesArray ?? MemoryHelpers.ReadOnlySpanToImmutableArray(tagTypes);
+                ImmutableArray<ComponentID> arr = typesArray ?? MemoryHelpers.ReadOnlySpanToImmutableArray(types);
+                ImmutableArray<TagID> tagArr = tagTypesArray ?? MemoryHelpers.ReadOnlySpanToImmutableArray(tagTypes);
 
-                var slot = new ArchetypeData(finalID, arr, tagArr);
+                ArchetypeData slot = new ArchetypeData(finalID, arr, tagArr);
                 ArchetypeTable.Push(slot);
                 ModifyComponentLocationTable(arr, tagArr, finalID.RawIndex);
 
@@ -279,8 +279,8 @@ namespace Alis.Core.Ecs.Core.Archetype
                         throw new InvalidOperationException($"Exceeded maximum unique archetype count of 65535");
                     finalID = new ArchetypeID((ushort) nextIDInt);
 
-                    var arr = typesArray ?? MemoryHelpers.ReadOnlySpanToImmutableArray(types);
-                    var tagArr = tagTypesArray ?? MemoryHelpers.ReadOnlySpanToImmutableArray(tagTypes);
+                    ImmutableArray<ComponentID> arr = typesArray ?? MemoryHelpers.ReadOnlySpanToImmutableArray(types);
+                    ImmutableArray<TagID> tagArr = tagTypesArray ?? MemoryHelpers.ReadOnlySpanToImmutableArray(tagTypes);
 
                     slot = new ArchetypeData(finalID, arr, tagArr);
                     ArchetypeTable.Push(slot);
@@ -304,7 +304,7 @@ namespace Alis.Core.Ecs.Core.Archetype
             {
                 int size = Math.Max(id << 1, 1);
                 Array.Resize(ref GlobalWorldTables.ComponentTagLocationTable, size);
-                foreach (var world in GlobalWorldTables.Worlds.AsSpan())
+                foreach (World world in GlobalWorldTables.Worlds.AsSpan())
                 {
                     if (world is World w)
                     {
@@ -318,7 +318,7 @@ namespace Alis.Core.Ecs.Core.Archetype
             //    _ = Component.GetComponentID(archetypeTypes[i].Type);
             //}
 
-            ref var componentTable = ref GlobalWorldTables.ComponentTagLocationTable[id];
+            ref byte[] componentTable = ref GlobalWorldTables.ComponentTagLocationTable[id];
             componentTable = new byte[GlobalWorldTables.ComponentTagTableBufferSize];
             componentTable.AsSpan().Fill(GlobalWorldTables.DefaultNoTag);
 
@@ -352,10 +352,10 @@ namespace Alis.Core.Ecs.Core.Archetype
             }
 
 
-            var hash1 = 0U;
-            var hash2 = 0U;
+            uint hash1 = 0U;
+            uint hash2 = 0U;
 
-            foreach (var item in andMoreTypes)
+            foreach (TagID item in andMoreTypes)
             {
                 hash1 ^= item.RawValue * 98317U;
                 hash2 += item.RawValue * 53U;
@@ -368,7 +368,7 @@ namespace Alis.Core.Ecs.Core.Archetype
                 h2.Add(types[i]);
             }
 
-            var hash = (long) h1.ToHashCode() * 1610612741 + h2.ToHashCode();
+            long hash = (long) h1.ToHashCode() * 1610612741 + h2.ToHashCode();
 
             return hash;
         }
