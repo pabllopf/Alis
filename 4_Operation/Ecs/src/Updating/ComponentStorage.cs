@@ -168,8 +168,7 @@ namespace Alis.Core.Ecs.Updating
             return new ComponentHandle(stackIndex, Component<TComponent>.ID);
         }
     }
-
-#if MANAGED_COMPONENTS || TRUE
+    
     /// <summary>
     ///     The component storage class
     /// </summary>
@@ -231,65 +230,4 @@ namespace Alis.Core.Ecs.Updating
         {
         }
     }
-#else
-internal unsafe abstract class ComponentStorage<TComponent> : IDisposable
-{
-
-    public ref TComponent this[int index]
-    {
-        
-        get
-        {
-            if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
-            {
-                return ref _managed!.UnsafeArrayIndex(index);
-            }
-
-            return ref _nativeArray[index];
-        }
-    }
-
-    
-    public ComponentStorage()
-    {
-        if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
-        {
-            _managed = new TComponent[1];
-        }
-        else
-        {
-            _nativeArray = new(1);
-        }
-    }
-
-    private TComponent[]? _managed;
-    private NativeArray<TComponent> _nativeArray;
-
-    
-    protected void Resize(int size)
-    {
-        if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
-        {
-            Array.Resize(ref _managed, size);
-        }
-        else
-        {
-            _nativeArray.Resize(size);
-        }
-    }
-
-    
-    public Span<TComponent> AsSpan() => RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>() ?
-        _managed.AsSpan() : _nativeArray.AsSpan();
-
-    
-    public Span<TComponent> AsSpan(int length) => RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>() ?
-        _managed.AsSpan(0, length) : _nativeArray.AsSpanLen(length);
-
-    public void Dispose()
-    {
-        _nativeArray.Dispose();
-    }
-}
-#endif
 }
