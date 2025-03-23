@@ -98,113 +98,83 @@ namespace Alis.Core.Ecs.Collections
         internal Span<T> Span => AsSpan();
     }
 #else
-//Do not pass around this struct by value!!!
-//You must use the constructor when initalizating!!!
 
-#pragma warning disable CS8500 // This takes the address of, gets the size of, or declares a pointer to a managed type
-//As long as the user always uses the ctor, it would throw when managed type is used
-    /// <summary>
-    /// The native table
-    /// </summary>
-    internal unsafe struct NativeTable<T> : IDisposable where T : struct
+    using System;
+    using System.Collections.Generic;
+
+    
+    internal class NativeTable<T> : IDisposable where T : struct
     {
         /// <summary>
-        /// The 
+        /// The list that holds the elements.
         /// </summary>
-        private static readonly nuint Size = (nuint) Unsafe.SizeOf<T>();
+        private List<T> _array;
 
         /// <summary>
-        /// The array
-        /// </summary>
-        private T* _array;
-
-        /// <summary>
-        /// The length
+        /// The length (current capacity) of the table.
         /// </summary>
         private int _length;
 
         /// <summary>
-        /// The index
+        /// Indexer to access elements.
         /// </summary>
-        public ref T this[int index]
+        /// <param name="index">The index of the element.</param>
+        /// <returns>The element at the specified index.</returns>
+        public T this[int index]
         {
             get
             {
                 if (index >= _length)
-                    return ref ResizeFor(index);
-                return ref _array[index];
+                    EnsureCapacity(index + 1);
+                return _array[index];
             }
         }
 
         /// <summary>
-        /// Unsafes the index no resize using the specified index
+        /// Initializes a new instance of the <see cref="NativeTable{T}"/> class.
         /// </summary>
-        /// <param name="index">The index</param>
-        /// <returns>The ref</returns>
-        public ref T UnsafeIndexNoResize(int index)
+        /// <param name="initialCapacity">The initial capacity of the table.</param>
+        public NativeTable(int initialCapacity)
         {
-            return ref _array[index];
+            if (initialCapacity < 1)
+                throw new ArgumentOutOfRangeException(nameof(initialCapacity), "Capacity must be greater than zero.");
+
+            _array = new List<T>(initialCapacity);
+            _length = initialCapacity;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NativeTable"/> class
-        /// </summary>
-        /// <param name="initalCapacity">The inital capacity</param>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
-        /// <exception cref="InvalidOperationException">Cannot store managed objects in native code</exception>
-        public NativeTable(int initalCapacity)
-        {
-            if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
-                throw new InvalidOperationException("Cannot store managed objects in native code");
-            if (initalCapacity < 1)
-                throw new ArgumentOutOfRangeException();
-
-            _length = initalCapacity;
-            _array = (T*) NativeMemory.Alloc((nuint) initalCapacity * Size);
-        }
-
-        /// <summary>
-        /// Disposes this instance
+        /// Disposes the instance and clears the list.
         /// </summary>
         public void Dispose()
         {
-            NativeMemory.Free(_array);
-            //null reference isnt as bad as a use after free, right?
-            _array = (T*) 0;
+            _array.Clear();
         }
 
         /// <summary>
-        /// Resizes the for using the specified index
+        /// Ensures that the table has at least the specified capacity.
         /// </summary>
-        /// <param name="index">The index</param>
-        /// <returns>The ref</returns>
-        private ref T ResizeFor(int index)
-        {
-            _length = checked((int) BitOperations.RoundUpToPowerOf2((uint) (index + 1)));
-            _array = (T*) NativeMemory.Realloc(_array, (nuint) _length * Size);
-            return ref _array[index];
-        }
-
-        /// <summary>
-        /// Ensures the capacity using the specified new capacity
-        /// </summary>
-        /// <param name="newCapacity">The new capacity</param>
+        /// <param name="newCapacity">The new capacity.</param>
         public void EnsureCapacity(int newCapacity)
         {
-            _length = checked((int) BitOperations.RoundUpToPowerOf2((uint) newCapacity));
-            _array = (T*) NativeMemory.Realloc(_array, (nuint) _length * Size);
+            if (newCapacity > _length)
+            {
+                _length = Math.Max(newCapacity, _length * 2);
+                _array.Capacity = _length;
+            }
         }
 
         /// <summary>
-        /// Converts the span
+        /// Converts the list into a span representation.
         /// </summary>
-        /// <returns>A span of t</returns>
-        public Span<T> AsSpan() => System.Runtime.InteropServices.MemoryMarshal.CreateSpan(ref Unsafe.AsRef<T>(_array), _length);
+        /// <returns>A span representing the elements in the table.</returns>
+        public Span<T> AsSpan() => _array.ToArray().AsSpan();
 
         /// <summary>
-        /// Gets the value of the span
+        /// The elements of the table as a span.
         /// </summary>
         internal Span<T> Span => AsSpan();
     }
+
 #endif
 }
