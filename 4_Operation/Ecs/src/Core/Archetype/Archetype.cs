@@ -61,7 +61,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// <summary>
         ///     Gets the value of the archetype tag array
         /// </summary>
-        internal ImmutableArray<TagID> ArchetypeTagArray => _archetypeID.Tags;
+        internal ImmutableArray<TagId> ArchetypeTagArray => _archetypeID.Tags;
 
         /// <summary>
         ///     Gets the value of the debugger display string
@@ -460,7 +460,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// <typeparam name="T">The </typeparam>
         /// <returns>The bool</returns>
         
-        internal bool HasTag<T>() => ComponentTagTable.UnsafeArrayIndex(Tag<T>.ID.RawValue) << 7 != 0;
+        internal bool HasTag<T>() => ComponentTagTable.UnsafeArrayIndex(Tag<T>.ID.RawData) << 7 != 0;
 
         /// <summary>
         ///     Hases the tag using the specified tag id
@@ -468,7 +468,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// <param name="tagID">The tag id</param>
         /// <returns>The bool</returns>
         
-        internal bool HasTag(TagID tagID) => ComponentTagTable.UnsafeArrayIndex(tagID.RawValue) << 7 != 0;
+        internal bool HasTag(TagId tagID) => ComponentTagTable.UnsafeArrayIndex(tagID.RawData) << 7 != 0;
 
         /// <summary>
         ///     Gets the entity span

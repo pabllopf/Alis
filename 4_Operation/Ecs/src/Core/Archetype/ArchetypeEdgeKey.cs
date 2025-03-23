@@ -48,7 +48,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// <summary>
         ///     The tag id
         /// </summary>
-        internal TagID TagID;
+        internal TagId TagID;
 
         /// <summary>
         ///     The archetype from
@@ -81,7 +81,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// <param name="from">The from</param>
         /// <param name="archetypeEdgeType">The archetype edge type</param>
         /// <returns>The archetype edge key</returns>
-        public static ArchetypeEdgeKey Tag(TagID tagID, EntityType from, ArchetypeEdgeType archetypeEdgeType) => new()
+        public static ArchetypeEdgeKey Tag(TagId tagID, EntityType from, ArchetypeEdgeType archetypeEdgeType) => new()
         {
             TagID = tagID,
             ArchetypeFrom = from,

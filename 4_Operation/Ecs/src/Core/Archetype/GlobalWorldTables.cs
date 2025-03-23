@@ -132,6 +132,6 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// <param name="archetype">The archetype</param>
         /// <param name="tag">The tag</param>
         /// <returns>The bool</returns>
-        public static bool HasTag(EntityType archetype, TagID tag) => (ComponentTagLocationTable.UnsafeArrayIndex(archetype.RawIndex).UnsafeArrayIndex(tag.RawValue) & HasTagMask) != 0;
+        public static bool HasTag(EntityType archetype, TagId tag) => (ComponentTagLocationTable.UnsafeArrayIndex(archetype.RawIndex).UnsafeArrayIndex(tag.RawData) & HasTagMask) != 0;
     }
 }

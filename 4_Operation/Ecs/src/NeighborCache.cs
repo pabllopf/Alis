@@ -17,7 +17,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="tags">The tags</param>
         /// <param name="add">The add</param>
-        public void ModifyTags(ref ImmutableArray<TagID> tags, bool add)
+        public void ModifyTags(ref ImmutableArray<TagId> tags, bool add)
         {
             if (add)
             {

@@ -45,7 +45,7 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     An Entity reference; refers to a collection of components of unqiue types.
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 2), DebuggerDisplay(AttributeHelpers.DebuggerDisplay), DebuggerTypeProxy(typeof(EntityDebugView))]
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
     public struct Entity : IEquatable<Entity>
     {
         /// <summary>
@@ -220,7 +220,7 @@ namespace Alis.Core.Ecs
             /// <summary>
             ///     Gets the value of the tags
             /// </summary>
-            public ImmutableArray<TagID> Tags => target.TagTypes;
+            public ImmutableArray<TagId> Tags => target.TagTypes;
 
             /// <summary>
             ///     Gets the value of the components
@@ -594,7 +594,7 @@ namespace Alis.Core.Ecs
 
 
         /// <summary>
-        ///     Checks whether this <see cref="Entity" /> has a specific tag, using a <see cref="TagID" /> to represent the tag.
+        ///     Checks whether this <see cref="Entity" /> has a specific tag, using a <see cref="TagId" /> to represent the tag.
         /// </summary>
         /// <param name="tagID">The identifier of the tag to check.</param>
         /// <returns>
@@ -602,7 +602,7 @@ namespace Alis.Core.Ecs
         ///     otherwise, <see langword="false" />.
         /// </returns>
         /// <exception cref="InvalidOperationException">Thrown if the <see cref="Entity" /> is not alive.</exception>
-        public bool Tagged(TagID tagID)
+        public bool Tagged(TagId tagID)
         {
             ref EntityLocation lookup = ref AssertIsAlive(out World w);
             return lookup.Archetype.HasTag(tagID);
@@ -623,8 +623,8 @@ namespace Alis.Core.Ecs
         ///     Checks whether this <see cref="Entity" /> has a specific tag, using a <see cref="Type" /> to represent the tag.
         /// </summary>
         /// <remarks>
-        ///     Prefer the <see cref="Tagged(TagID)" /> or <see cref="Tagged{T}()" /> overloads. Use <see cref="Tag{T}.ID" />
-        ///     to get a <see cref="TagID" /> instance
+        ///     Prefer the <see cref="Tagged(TagId)" /> or <see cref="Tagged{T}()" /> overloads. Use <see cref="Tag{T}.ID" />
+        ///     to get a <see cref="TagId" /> instance
         /// </remarks>
         /// <param name="type">The <see cref="Type" /> representing the tag to check.</param>
         /// <returns>
@@ -645,12 +645,12 @@ namespace Alis.Core.Ecs
         ///     Adds a tag to this <see cref="Entity" />. Tags are like components but do not take up extra memory.
         /// </summary>
         /// <remarks>
-        ///     Prefer the <see cref="Tag(TagID)" /> or <see cref="Tag{T}()" /> overloads. Use <see cref="Tag{T}.ID" /> to get
-        ///     a <see cref="TagID" /> instance
+        ///     Prefer the <see cref="Tag(TagId)" /> or <see cref="Tag{T}()" /> overloads. Use <see cref="Tag{T}.ID" /> to get
+        ///     a <see cref="TagId" /> instance
         /// </remarks>
         /// <exception cref="InvalidOperationException"><see cref="Entity" /> is dead.</exception>
         /// <param name="tagID">The tagID to use as the tag</param>
-        public bool Tag(TagID tagID)
+        public bool Tag(TagId tagID)
         {
             ref EntityLocation lookup = ref AssertIsAlive(out World w);
             if (lookup.Archetype.HasTag(tagID))
@@ -688,7 +688,7 @@ namespace Alis.Core.Ecs
         ///     <see cref="Entity" /> doesn't have the component
         /// </returns>
         /// <param name="tagID">The type of tag to remove.</param>
-        public bool Detach(TagID tagID)
+        public bool Detach(TagId tagID)
         {
             ref EntityLocation lookup = ref AssertIsAlive(out World w);
             if (!lookup.Archetype.HasTag(tagID))
@@ -778,7 +778,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Raised when the entity is tagged
         /// </summary>
-        public event Action<Entity, TagID> OnTagged
+        public event Action<Entity, TagId> OnTagged
         {
             add => InitalizeEventRecord(value, EntityFlags.Tagged);
             remove => UnsubscribeEvent(value, EntityFlags.Tagged);
@@ -787,7 +787,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Raised when a tag is detached from the entity
         /// </summary>
-        public event Action<Entity, TagID> OnDetach
+        public event Action<Entity, TagId> OnDetach
         {
             add => InitalizeEventRecord(value, EntityFlags.Detach);
             remove => UnsubscribeEvent(value, EntityFlags.Detach);
@@ -828,11 +828,11 @@ namespace Alis.Core.Ecs
                         removeFlags = !events.Remove.HasListeners;
                         break;
                     case EntityFlags.Tagged:
-                        events!.Tag.Remove((Action<Entity, TagID>) value);
+                        events!.Tag.Remove((Action<Entity, TagId>) value);
                         removeFlags = !events.Tag.HasListeners;
                         break;
                     case EntityFlags.Detach:
-                        events!.Detach.Remove((Action<Entity, TagID>) value);
+                        events!.Detach.Remove((Action<Entity, TagId>) value);
                         removeFlags = !events.Detach.HasListeners;
                         break;
                     case EntityFlags.OnDelete:
@@ -894,10 +894,10 @@ namespace Alis.Core.Ecs
 
                     break;
                 case EntityFlags.Tagged:
-                    record.Tag.Add((Action<Entity, TagID>) @delegate);
+                    record.Tag.Add((Action<Entity, TagId>) @delegate);
                     break;
                 case EntityFlags.Detach:
-                    record.Detach.Add((Action<Entity, TagID>) @delegate);
+                    record.Detach.Add((Action<Entity, TagId>) @delegate);
                     break;
                 case EntityFlags.OnDelete:
                     record.Delete.Push((Action<Entity>) @delegate);
@@ -971,7 +971,7 @@ namespace Alis.Core.Ecs
         ///     Gets tags the entity has
         /// </summary>
         /// <exception cref="InvalidOperationException"><see cref="Entity" /> is dead.</exception>
-        public ImmutableArray<TagID> TagTypes
+        public ImmutableArray<TagId> TagTypes
         {
             get
             {
@@ -1017,7 +1017,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="components">The components the <see cref="EntityType" /> should have.</param>
         /// <param name="tags">The tags the <see cref="EntityType" /> should have.</param>
-        public static EntityType EntityTypeOf(ReadOnlySpan<ComponentID> components, ReadOnlySpan<TagID> tags) => Archetype.GetArchetypeID(components, tags);
+        public static EntityType EntityTypeOf(ReadOnlySpan<ComponentID> components, ReadOnlySpan<TagId> tags) => Archetype.GetArchetypeID(components, tags);
 
         //traversing archetype graph strategy:
         //1. hit small & fast static per type cache - 1 branch
@@ -1109,7 +1109,7 @@ namespace Alis.Core.Ecs
         {
             ref EntityLocation thisLookup = ref AssertIsAlive(out World world);
 
-            Archetype to = TraverseThroughCacheOrCreate<TagID, NeighborCache<T>>(
+            Archetype to = TraverseThroughCacheOrCreate<TagId, NeighborCache<T>>(
                 world,
                 ref NeighborCache<T>.Tag.Lookup,
                 ref thisLookup,
@@ -1145,7 +1145,7 @@ namespace Alis.Core.Ecs
         {
             ref EntityLocation thisLookup = ref AssertIsAlive(out World world);
 
-            Archetype to = TraverseThroughCacheOrCreate<TagID, NeighborCache<T>>(
+            Archetype to = TraverseThroughCacheOrCreate<TagId, NeighborCache<T>>(
                 world,
                 ref NeighborCache<T>.Detach.Lookup,
                 ref thisLookup,
@@ -1258,7 +1258,7 @@ namespace Alis.Core.Ecs
             static Archetype NotInCache(World world, ref ArchetypeNeighborCache cache, ArchetypeID archetypeFromID, bool add)
             {
                 ImmutableArray<ComponentID> componentIDs = archetypeFromID.Types;
-                ImmutableArray<TagID> tagIDs = archetypeFromID.Tags;
+                ImmutableArray<TagId> tagIDs = archetypeFromID.Tags;
 
                 if (typeof(T) == typeof(ComponentID))
                 {

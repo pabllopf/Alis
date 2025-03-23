@@ -36,5 +36,5 @@ namespace Alis.Core.Ecs
     ///     and will have its components added on afterwards.
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct DeferredCreate;
+    public readonly record struct DeferredCreate;
 }

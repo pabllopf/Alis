@@ -59,7 +59,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The tag id
         /// </summary>
-        private TagID _tagID;
+        private TagId _tagID;
 
         /// <summary>
         ///     Rules the applies using the specified archetype id
@@ -115,7 +115,7 @@ namespace Alis.Core.Ecs.Systems
         /// </summary>
         /// <param name="tagID">The ID of the tag to check for.</param>
         /// <returns>A <see cref="Rule" /> that checks for the presence of a tag.</returns>
-        public static Rule HasTag(TagID tagID) => new()
+        public static Rule HasTag(TagId tagID) => new()
         {
             _ruleState = RuleState.HasTag,
             _tagID = tagID
@@ -126,7 +126,7 @@ namespace Alis.Core.Ecs.Systems
         /// </summary>
         /// <param name="tagID">The ID of the tag to check for absence.</param>
         /// <returns>A <see cref="Rule" /> that checks for the absence of a tag.</returns>
-        public static Rule NotTag(TagID tagID) => new()
+        public static Rule NotTag(TagId tagID) => new()
         {
             _ruleState = RuleState.NotTag,
             _tagID = tagID
