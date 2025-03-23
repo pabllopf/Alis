@@ -2,6 +2,9 @@ using System.Runtime.InteropServices;
 
 namespace Alis.Core.Ecs
 {
+   /// <summary>
+   /// The entity data
+   /// </summary>
    [StructLayout(LayoutKind.Explicit, Pack = 1)]
    internal readonly struct EntityData(int entityId, ushort entityVersion, ushort worldId)
    {

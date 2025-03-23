@@ -68,6 +68,10 @@ namespace Alis.Core.Ecs.Buffers
 #if NET6_0_OR_GREATER
             public Span<TData> AsSpan() => MemoryMarshal.CreateSpan(ref Buffer[0], Buffer.Length);
 #else
+           /// <summary>
+           /// Converts the span
+           /// </summary>
+           /// <returns>A span of t data</returns>
            public Span<TData> AsSpan() => Buffer;
 #endif
 

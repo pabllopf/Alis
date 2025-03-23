@@ -45,7 +45,7 @@ namespace Alis.Core.Ecs.Core.Archetype
     /// <summary>
     ///     The archetype class
     /// </summary>
-    [DebuggerDisplay(AttributeHelpers.DebuggerDisplay)]
+    
     internal partial class Archetype
     {
         /// <summary>

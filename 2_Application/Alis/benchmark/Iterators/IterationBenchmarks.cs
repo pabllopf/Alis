@@ -134,6 +134,9 @@ namespace Alis.Benchmark.Iterators
             array.AsSpan().FastFor(element => DoSometring(element));
         }
         
+        /// <summary>
+        /// Does the while
+        /// </summary>
         [Benchmark]
         public void DoWhile()
         {
@@ -145,6 +148,11 @@ namespace Alis.Benchmark.Iterators
             } while (i <  array.Length);
         }
 
+        /// <summary>
+        /// Does the sometring using the specified i
+        /// </summary>
+        /// <param name="i">The </param>
+        /// <returns>The </returns>
         public int DoSometring(int i)
         {
             return i;

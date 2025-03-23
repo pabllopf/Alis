@@ -91,6 +91,8 @@ namespace Alis.Benchmark
                 typeof(NativeTableUnsafeVsNativeTableSafe),
                 
                 typeof(RemoveAtVsRemoveUnnorderAtListBenchmark),
+                
+                typeof(ArrayPoolsBenchmark),
             });
 
             IConfig configuration = DefaultConfig.Instance
