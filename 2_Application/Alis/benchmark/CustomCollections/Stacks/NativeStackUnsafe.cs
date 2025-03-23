@@ -31,7 +31,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace Alis.Benchmark.NativeCollections.NativeStack
+namespace Alis.Benchmark.CustomCollections.Stacks
 {
    /// <summary>
    /// The native stack unsafe

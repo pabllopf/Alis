@@ -29,13 +29,15 @@
 
 using System.Globalization;
 using Alis.Benchmark.ClassVsStruct;
+using Alis.Benchmark.CustomCollections.Arrays;
+using Alis.Benchmark.CustomCollections.Stacks;
+using Alis.Benchmark.CustomCollections.Tables;
 using Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent;
 using Alis.Benchmark.EntityComponentSystem.CreateEntityWithThreeComponents;
 using Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents;
 using Alis.Benchmark.IDs;
 using Alis.Benchmark.InterfaceVsAbstract;
 using Alis.Benchmark.Iterators;
-using Alis.Benchmark.NativeCollections.NativeArrays;
 using Alis.Benchmark.NativeCollections.NativeStack;
 using Alis.Benchmark.Strings;
 using BenchmarkDotNet.Configs;
@@ -85,7 +87,8 @@ namespace Alis.Benchmark
                 typeof(InterfaceVsAbstractBenchmark),
                 
                 typeof(NativeArrayUnsafeVsNativeArraySafe),
-                typeof(NativeStackVsNativeStackUnsafe)
+                typeof(NativeStackVsNativeStackUnsafe),
+                typeof(NativeTableUnsafeVsNativeTableSafe),
             });
 
             IConfig configuration = DefaultConfig.Instance

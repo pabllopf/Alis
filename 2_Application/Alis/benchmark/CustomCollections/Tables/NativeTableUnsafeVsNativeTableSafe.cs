@@ -27,31 +27,37 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.Collections;
 using BenchmarkDotNet.Attributes;
 
-namespace Alis.Benchmark.NativeCollections.NativeStack
+namespace Alis.Benchmark.CustomCollections.Tables
 {
     /// <summary>
     /// The native array unsafe vs native array safe class
     /// </summary>
     [MemoryDiagnoser]
-    public class NativeStackVsNativeStackUnsafe
+    public class NativeTableUnsafeVsNativeTableSafe
     {
         /// <summary>
         /// The array size
         /// </summary>
-        [Params(5)]
+        [Params(2)]
         public int ArraySize;
 
         /// <summary>
-        /// The native array unsafe
+        /// The tabla unsafe
         /// </summary>
-        private NativeStackUnsafe<int> nativeArrayUnsafe;
+        private NativeTableUnsafe<int> tablaUnsafe;
         
         /// <summary>
-        /// The fastest stack
+        /// The table
         /// </summary>
-        private FastStack<int> fastStack;
+        private Table<int> table;
+        
+        /// <summary>
+        /// The fast table safe
+        /// </summary>
+        private FastTableSafe<int> fastTableSafe;
         
         // Inicialización
         /// <summary>
@@ -60,31 +66,44 @@ namespace Alis.Benchmark.NativeCollections.NativeStack
         [GlobalSetup]
         public void Setup()
         {
-            nativeArrayUnsafe = new NativeStackUnsafe<int>(ArraySize);
-            fastStack = new FastStack<int>(ArraySize);
+            tablaUnsafe = new NativeTableUnsafe<int>(ArraySize);
+            table = new Table<int>(ArraySize);
+            fastTableSafe = new FastTableSafe<int>(ArraySize);
         }
         
         /// <summary>
-        /// Fastests the stack array iterate
+        /// Benchmarks the native array safe
         /// </summary>
-        [Benchmark(Description = "Benchmark for Fastest Stack Array Iteration")]
-        public void Fastest_Stack_ArrayIterate()
+        [Benchmark(Description = "[UNSAFE] get value of the native array")]
+        public void BenchmarkNativeArraySafe()
         {
             for (int i = 0; i < ArraySize; i++)
             {
-                fastStack[i] = i;
+                int value = tablaUnsafe.AsSpan()[i];
             }
         }
         
         /// <summary>
-        /// Benchmarks the native array unsafe
+        /// Benchmarks the native array fast
         /// </summary>
-        [Benchmark(Description = "Benchmark for Native Array Unsafe Iteration")]
-        public void Unsafe_code_Stack_ArrayIterate()
+        [Benchmark(Description = "[FAST] get value of the native array")]
+        public void BenchmarkNativeArrayFast()
         {
             for (int i = 0; i < ArraySize; i++)
             {
-                nativeArrayUnsafe[i] = i;
+                int value = table[i];
+            }
+        }
+        
+        /// <summary>
+        /// Benchmarks the native array fast safe
+        /// </summary>
+        [Benchmark(Description = "[FAST SAFE] get value of the native array")]
+        public void BenchmarkNativeArrayFastSafe()
+        {
+            for (int i = 0; i < ArraySize; i++)
+            {
+                int value = fastTableSafe[i];
             }
         }
     }
