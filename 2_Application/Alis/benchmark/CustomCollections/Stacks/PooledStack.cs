@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -47,16 +47,37 @@ namespace Alis.Benchmark.CustomCollections.Stacks
     [Serializable]
     public class PooledStack<T> : IEnumerable<T>, ICollection, IReadOnlyCollection<T>, IDisposable, IDeserializationCallback
     {
+        /// <summary>
+        /// The pool
+        /// </summary>
         [NonSerialized]
         private ArrayPool<T> _pool;
+        /// <summary>
+        /// The sync root
+        /// </summary>
         [NonSerialized]
         private object _syncRoot;
 
+        /// <summary>
+        /// The array
+        /// </summary>
         private T[] _array; // Storage for stack elements. Do not rename (binary serialization)
+        /// <summary>
+        /// The size
+        /// </summary>
         private int _size; // Number of items in the stack. Do not rename (binary serialization)
+        /// <summary>
+        /// The version
+        /// </summary>
         private int _version; // Used to keep enumerator in sync w/ collection. Do not rename (binary serialization)
+        /// <summary>
+        /// The clear on free
+        /// </summary>
         private readonly bool _clearOnFree;
 
+        /// <summary>
+        /// The default capacity
+        /// </summary>
         private const int DefaultCapacity = 4;
 
         #region Constructors
@@ -244,8 +265,14 @@ namespace Alis.Benchmark.CustomCollections.Stacks
         /// </summary>
         public ClearMode ClearMode => _clearOnFree ? ClearMode.Always : ClearMode.Never;
 
+        /// <summary>
+        /// Gets the value of the is synchronized
+        /// </summary>
         bool ICollection.IsSynchronized => false;
 
+        /// <summary>
+        /// Gets the value of the sync root
+        /// </summary>
         object ICollection.SyncRoot
         {
             get
@@ -294,13 +321,18 @@ namespace Alis.Benchmark.CustomCollections.Stacks
         public int RemoveWhere(Func<T, bool> match)
         {
             if (match == null)
+            {
                 throw new ArgumentNullException(nameof(match));
+            }
 
             int freeIndex = 0;   // the first free slot in items array
 
             // Find the first item which needs to be removed.
             while (freeIndex < _size && !match(_array[freeIndex])) freeIndex++;
-            if (freeIndex >= _size) return 0;
+            if (freeIndex >= _size)
+            {
+                return 0;
+            }
 
             int current = freeIndex + 1;
             while (current < _size)
@@ -328,6 +360,14 @@ namespace Alis.Benchmark.CustomCollections.Stacks
         }
 
         // Copies the stack into an array.
+        /// <summary>
+        /// Copies the to using the specified array
+        /// </summary>
+        /// <param name="array">The array</param>
+        /// <param name="arrayIndex">The array index</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <exception cref="ArgumentException">Argument_InvalidOffLen</exception>
         public void CopyTo(T[] array, int arrayIndex)
         {
             if (array == null)
@@ -354,6 +394,11 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             }
         }
 
+        /// <summary>
+        /// Copies the to using the specified span
+        /// </summary>
+        /// <param name="span">The span</param>
+        /// <exception cref="ArgumentException">Argument_InvalidOffLen</exception>
         public void CopyTo(Span<T> span)
         {
             if (span.Length < _size)
@@ -369,6 +414,17 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             }
         }
 
+        /// <summary>
+        /// Copies the to using the specified array
+        /// </summary>
+        /// <param name="array">The array</param>
+        /// <param name="arrayIndex">The array index</param>
+        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <exception cref="ArgumentException">Argument_InvalidOffLen</exception>
+        /// <exception cref="ArgumentException">Argument_InvalidOffLen</exception>
+        /// <exception cref="ArgumentException">Argument_InvalidOffLen</exception>
         void ICollection.CopyTo(Array array, int arrayIndex)
         {
             if (array == null)
@@ -418,9 +474,16 @@ namespace Alis.Benchmark.CustomCollections.Stacks
         IEnumerator<T> IEnumerable<T>.GetEnumerator()
             => new Enumerator(this);
 
+        /// <summary>
+        /// Gets the enumerator
+        /// </summary>
+        /// <returns>The enumerator</returns>
         IEnumerator IEnumerable.GetEnumerator()
             => new Enumerator(this);
 
+        /// <summary>
+        /// Trims the excess
+        /// </summary>
         public void TrimExcess()
         {
             if (_size == 0)
@@ -468,6 +531,11 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             return array[size];
         }
 
+        /// <summary>
+        /// Tries the peek using the specified result
+        /// </summary>
+        /// <param name="result">The result</param>
+        /// <returns>The bool</returns>
         public bool TryPeek(out T result)
         {
             int size = _size - 1;
@@ -509,6 +577,11 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             return item;
         }
 
+        /// <summary>
+        /// Tries the pop using the specified result
+        /// </summary>
+        /// <param name="result">The result</param>
+        /// <returns>The bool</returns>
         public bool TryPop(out T result)
         {
             int size = _size - 1;
@@ -551,6 +624,10 @@ namespace Alis.Benchmark.CustomCollections.Stacks
         }
 
         // Non-inline from Stack.Push to improve its code quality as uncommon path
+        /// <summary>
+        /// Pushes the with resize using the specified item
+        /// </summary>
+        /// <param name="item">The item</param>
         [MethodImpl(MethodImplOptions.NoInlining)]
         private void PushWithResize(T item)
         {
@@ -568,7 +645,9 @@ namespace Alis.Benchmark.CustomCollections.Stacks
         public T[] ToArray()
         {
             if (_size == 0)
+            {
                 return Array.Empty<T>();
+            }
 
             T[] objArray = new T[_size];
             int i = 0;
@@ -580,12 +659,20 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             return objArray;
         }
 
+        /// <summary>
+        /// Throws the for empty stack
+        /// </summary>
+        /// <exception cref="InvalidOperationException">Stack was empty.</exception>
         private void ThrowForEmptyStack()
         {
             Debug.Assert(_size == 0);
             throw new InvalidOperationException("Stack was empty.");
         }
 
+        /// <summary>
+        /// Returns the array using the specified replace with
+        /// </summary>
+        /// <param name="replaceWith">The replace with</param>
         private void ReturnArray(T[] replaceWith = null)
         {
             if (_array?.Length > 0)
@@ -606,6 +693,11 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             }
         }
 
+        /// <summary>
+        /// Shoulds the clear using the specified mode
+        /// </summary>
+        /// <param name="mode">The mode</param>
+        /// <returns>The bool</returns>
         private static bool ShouldClear(ClearMode mode)
         {
 #if NETCOREAPP2_1
@@ -616,6 +708,9 @@ namespace Alis.Benchmark.CustomCollections.Stacks
 #endif
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             ReturnArray(replaceWith: Array.Empty<T>());
@@ -623,6 +718,10 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             _version++;
         }
 
+        /// <summary>
+        /// Ons the deserialization using the specified sender
+        /// </summary>
+        /// <param name="sender">The sender</param>
         void IDeserializationCallback.OnDeserialization(object sender)
         {
             // We can't serialize array pools, so deserialized PooledStacks will
@@ -631,14 +730,33 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             _pool = ArrayPool<T>.Shared;
         }
 
+        /// <summary>
+        /// The enumerator
+        /// </summary>
         [SuppressMessage("Microsoft.Performance", "CA1815:OverrideEqualsAndOperatorEqualsOnValueTypes", Justification = "not an expected scenario")]
         public struct Enumerator : IEnumerator<T>, IEnumerator
         {
+            /// <summary>
+            /// The stack
+            /// </summary>
             private readonly PooledStack<T> _stack;
+            /// <summary>
+            /// The version
+            /// </summary>
             private readonly int _version;
+            /// <summary>
+            /// The index
+            /// </summary>
             private int _index;
+            /// <summary>
+            /// The current element
+            /// </summary>
             private T _currentElement;
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="Enumerator"/> class
+            /// </summary>
+            /// <param name="stack">The stack</param>
             internal Enumerator(PooledStack<T> stack)
             {
                 _stack = stack;
@@ -647,21 +765,36 @@ namespace Alis.Benchmark.CustomCollections.Stacks
                 _currentElement = default;
             }
 
+            /// <summary>
+            /// Disposes this instance
+            /// </summary>
             public void Dispose()
             {
                 _index = -1;
             }
 
+            /// <summary>
+            /// Moves the next
+            /// </summary>
+            /// <exception cref="InvalidOperationException">Collection was modified during enumeration.</exception>
+            /// <returns>The retval</returns>
             public bool MoveNext()
             {
                 bool retval;
-                if (_version != _stack._version) throw new InvalidOperationException("Collection was modified during enumeration.");
+                if (_version != _stack._version)
+                {
+                    throw new InvalidOperationException("Collection was modified during enumeration.");
+                }
+
                 if (_index == -2)
                 {  // First call to enumerator.
                     _index = _stack._size - 1;
                     retval = (_index >= 0);
                     if (retval)
+                    {
                         _currentElement = _stack._array[_index];
+                    }
+
                     return retval;
                 }
                 if (_index == -1)
@@ -671,41 +804,70 @@ namespace Alis.Benchmark.CustomCollections.Stacks
 
                 retval = (--_index >= 0);
                 if (retval)
+                {
                     _currentElement = _stack._array[_index];
+                }
                 else
+                {
                     _currentElement = default;
+                }
+
                 return retval;
             }
 
+            /// <summary>
+            /// Gets the value of the current
+            /// </summary>
             public T Current
             {
                 get
                 {
                     if (_index < 0)
+                    {
                         ThrowEnumerationNotStartedOrEnded();
+                    }
+
                     return _currentElement;
                 }
             }
 
+            /// <summary>
+            /// Throws the enumeration not started or ended
+            /// </summary>
+            /// <exception cref="InvalidOperationException"></exception>
             private void ThrowEnumerationNotStartedOrEnded()
             {
                 Debug.Assert(_index == -1 || _index == -2);
                 throw new InvalidOperationException(_index == -2 ? "Enumeration was not started." : "Enumeration has ended.");
             }
 
+            /// <summary>
+            /// Gets the value of the current
+            /// </summary>
             object IEnumerator.Current
             {
                 get { return Current; }
             }
 
+            /// <summary>
+            /// Resets this instance
+            /// </summary>
+            /// <exception cref="InvalidOperationException">Collection was modified during enumeration.</exception>
             void IEnumerator.Reset()
             {
-                if (_version != _stack._version) throw new InvalidOperationException("Collection was modified during enumeration.");
+                if (_version != _stack._version)
+                {
+                    throw new InvalidOperationException("Collection was modified during enumeration.");
+                }
+
                 _index = -2;
                 _currentElement = default;
             }
         }
         
+        /// <summary>
+        /// The value
+        /// </summary>
         public T this[int i]
         {
             get => _array[i];

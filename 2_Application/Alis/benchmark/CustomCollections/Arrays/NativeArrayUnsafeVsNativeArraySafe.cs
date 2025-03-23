@@ -36,7 +36,8 @@ namespace Alis.Benchmark.CustomCollections.Arrays
     /// <summary>
     /// The native array unsafe vs native array safe class
     /// </summary>
-     [MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]
+    [MemoryDiagnoser(false)]
+    [ShortRunJob]
     public class NativeArrayUnsafeVsNativeArraySafe
     {
         /// <summary>
