@@ -133,6 +133,8 @@ namespace Alis.Benchmark.NativeCollections.NativeStack
         /// </summary>
         object ICollection.SyncRoot => this;
 
+        public bool Any => _size > 0;
+
         // Removes all Objects from the Stack.
         /// <summary>
         /// Clears this instance
@@ -434,6 +436,24 @@ namespace Alis.Benchmark.NativeCollections.NativeStack
             _array[_size] = item;
             _version++;
             _size++;
+        }
+        
+        /// <summary>
+        ///     Removes the item
+        /// </summary>
+        /// <param name="item">The item</param>
+        public void Remove(T item)
+        {
+            Span<T> items = AsSpan();
+            int count = items.Length;
+            for (int i = 0; i < count; i++)
+            {
+                if (EqualityComparer<T>.Default.Equals(items[i], item))
+                {
+                    items[i] = Pop();
+                    break;
+                }
+            }
         }
 
         /// <summary>

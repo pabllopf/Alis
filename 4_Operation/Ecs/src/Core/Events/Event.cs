@@ -29,6 +29,7 @@
 
 global using TagEvent = Alis.Core.Ecs.Core.Events.Event<Alis.Core.Ecs.Core.TagID>;
 using System;
+using Alis.Benchmark.NativeCollections.NativeStack;
 using Alis.Core.Ecs.Collections;
 
 namespace Alis.Core.Ecs.Core.Events
@@ -51,7 +52,7 @@ namespace Alis.Core.Ecs.Core.Events
         /// <summary>
         ///     The
         /// </summary>
-        private FrugalStack<Action<Entity, T>> _invokationList = new FrugalStack<Action<Entity, T>>();
+        private FastStack<Action<Entity, T>> _invokationList = new FastStack<Action<Entity, T>>();
 
         /// <summary>
         ///     Adds the action

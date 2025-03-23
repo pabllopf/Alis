@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Benchmark.NativeCollections.NativeStack;
 using Alis.Core.Ecs.Collections;
 
 namespace Alis.Core.Ecs.Core.Events
@@ -44,7 +45,7 @@ namespace Alis.Core.Ecs.Core.Events
         /// <summary>
         ///     The entity
         /// </summary>
-        private FrugalStack<IGenericAction<Entity>> _invokationList = new FrugalStack<IGenericAction<Entity>>();
+        private FastStack<IGenericAction<Entity>> _invokationList = new FastStack<IGenericAction<Entity>>();
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="GenericEvent" /> class
