@@ -286,7 +286,7 @@ namespace Alis.Core.Ecs.Core.Archetype
                 return;
             }
 
-            FastStackArrayPool<EntityIDOnly>.ResizeArrayFromPool(ref _entities, count);
+            ComponentArrayPool<EntityIDOnly>.ResizeArrayFromPool(ref _entities, count);
             ComponentStorageBase[] runners = Components;
             int size = runners.Length;
             for (int i = 1; i < size; i++)

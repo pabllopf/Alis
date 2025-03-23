@@ -527,7 +527,7 @@ namespace Alis.Core.Ecs
         ///     Updates the archetype table using the specified new size
         /// </summary>
         /// <param name="newSize">The new size</param>
-        internal void UpdateArchetypeTable(int newSize) => FastStackArrayPool<Archetype>.ResizeArrayFromPool(ref WorldArchetypeTable, newSize);
+        internal void UpdateArchetypeTable(int newSize) => ComponentArrayPool<Archetype>.ResizeArrayFromPool(ref WorldArchetypeTable, newSize);
 
         /// <summary>
         ///     Enters the disallow state
