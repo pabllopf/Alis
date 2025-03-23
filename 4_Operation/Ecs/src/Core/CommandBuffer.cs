@@ -316,7 +316,7 @@ namespace Alis.Core.Ecs.Core
             _isInactive = false;
         }
 
-        #region Create
+        
 
         /// <summary>
         ///     Begins to create an entity, which will be resolved when <see cref="Playback" /> is called.
@@ -394,6 +394,6 @@ namespace Alis.Core.Ecs.Core
             return e;
         }
 
-        #endregion
+        
     }
 }
