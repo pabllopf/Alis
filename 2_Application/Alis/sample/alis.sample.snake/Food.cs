@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.EcsOld.Component;
 using Alis.Core.EcsOld.Component.Collider;
 using Alis.Core.EcsOld.Entity;

@@ -37,20 +37,25 @@ namespace System.Runtime.CompilerServices
     {
         public static bool IsReferenceOrContainsReferences<T>() => Cache<T>.Value;
 
-        private static class Cache<T>
-        {
-            public static readonly bool Value = IsReferenceOrContainsReferences(typeof(T));
-        }
-
         private static bool IsReferenceOrContainsReferences(Type type)
         {
             if (!type.IsValueType)
+            {
                 return true;
+            }
+
             if (type.IsPrimitive || type.IsPointer || type.IsPointer)
+            {
                 return false;
+            }
 
             return type.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
                 .Any(f => IsReferenceOrContainsReferences(f.FieldType));
+        }
+
+        private static class Cache<T>
+        {
+            public static readonly bool Value = IsReferenceOrContainsReferences(typeof(T));
         }
     }
 }

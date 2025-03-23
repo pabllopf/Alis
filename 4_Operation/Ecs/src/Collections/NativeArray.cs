@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:NativeArray.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -23,11 +52,13 @@ namespace Alis.Core.Ecs.Collections
         /// <summary>
         /// The 
         /// </summary>
-        private static readonly nuint Size = (nuint)Unsafe.SizeOf<T>();
+        private static readonly nuint Size = (nuint) Unsafe.SizeOf<T>();
+
         /// <summary>
         /// The array
         /// </summary>
         private T* _array;
+
         /// <summary>
         /// The length
         /// </summary>
@@ -39,10 +70,7 @@ namespace Alis.Core.Ecs.Collections
         public ref T this[int index]
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get
-            {
-                return ref _array[index];
-            }
+            get { return ref _array[index]; }
         }
 
         /// <summary>
@@ -59,7 +87,7 @@ namespace Alis.Core.Ecs.Collections
                 throw new ArgumentOutOfRangeException();
 
             _length = length;
-            _array = (T*)NativeMemory.Alloc((nuint)length * Size);
+            _array = (T*) NativeMemory.Alloc((nuint) length * Size);
         }
 
         /// <summary>
@@ -69,7 +97,7 @@ namespace Alis.Core.Ecs.Collections
         public void Resize(int size)
         {
             _length = size;
-            _array = (T*)NativeMemory.Realloc(_array, Size * (nuint)size);
+            _array = (T*) NativeMemory.Realloc(_array, Size * (nuint) size);
         }
 
         /// <summary>
@@ -79,7 +107,7 @@ namespace Alis.Core.Ecs.Collections
         {
             NativeMemory.Free(_array);
             //null reference isnt as bad as a use after free, right?
-            _array = (T*)0;
+            _array = (T*) 0;
         }
 
         /// <summary>
@@ -87,6 +115,7 @@ namespace Alis.Core.Ecs.Collections
         /// </summary>
         /// <returns>A span of t</returns>
         public Span<T> AsSpan() => MemoryMarshal.CreateSpan(ref Unsafe.AsRef<T>(_array), _length);
+
         /// <summary>
         /// Converts the span len using the specified len
         /// </summary>

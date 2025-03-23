@@ -34,9 +34,9 @@ namespace System.Runtime.InteropServices
     public static class MemoryMarshal
     {
         public static ref T GetReference<T>(Span<T> span) => ref span.GetPinnableReference();
-        
+
         public static ref T GetArrayDataReference<T>(T[] arr) => ref GetReference(arr.AsSpan());
-        
+
         public static ref byte GetArrayDataReference(Array arr) => throw new NotSupportedException();
     }
 }

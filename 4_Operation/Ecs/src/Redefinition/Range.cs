@@ -55,7 +55,7 @@ namespace System
 
         /// <summary>Indicates whether the current Range object is equal to another object of the same type.</summary>
         /// <param name="value">An object to compare with this object</param>
-        public override bool Equals( object? value) =>
+        public override bool Equals(object? value) =>
             value is Range r &&
             r.Start.Equals(Start) &&
             r.End.Equals(End);
@@ -65,10 +65,7 @@ namespace System
         public bool Equals(Range other) => other.Start.Equals(Start) && other.End.Equals(End);
 
         /// <summary>Returns the hash code for this instance.</summary>
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(Start, End);
-        }
+        public override int GetHashCode() => HashCode.Combine(Start, End);
 
         /// <summary>Converts the value of the current Range object to its equivalent string representation.</summary>
         public override string ToString()
@@ -97,7 +94,7 @@ namespace System
  
             return new string(span.Slice(0, pos));
 #else
-            return Start.ToString() + ".." + End.ToString();
+            return Start + ".." + End;
 #endif
         }
 
@@ -113,9 +110,9 @@ namespace System
         /// <summary>Calculate the start offset and length of range object using a collection length.</summary>
         /// <param name="length">The length of the collection that the range will be used with. length has to be a positive value.</param>
         /// <remarks>
-        /// For performance reason, we don't validate the input length parameter against negative values.
-        /// It is expected Range will be used with collections which always have non negative length/count.
-        /// We validate the range is inside the length scope though.
+        ///     For performance reason, we don't validate the input length parameter against negative values.
+        ///     It is expected Range will be used with collections which always have non negative length/count.
+        ///     We validate the range is inside the length scope though.
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public (int Offset, int Length) GetOffsetAndLength(int length)
@@ -123,7 +120,7 @@ namespace System
             int start = Start.GetOffset(length);
             int end = End.GetOffset(length);
 
-            if ((uint)end > (uint)length || (uint)start > (uint)end)
+            if ((uint) end > (uint) length || (uint) start > (uint) end)
             {
                 ThrowArgumentOutOfRangeException();
             }

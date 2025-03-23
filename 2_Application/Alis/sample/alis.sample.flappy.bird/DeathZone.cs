@@ -29,7 +29,6 @@
 
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
-
 using Alis.Core.EcsOld.Component;
 using Alis.Core.EcsOld.Component.Audio;
 using Alis.Core.EcsOld.Component.Collider;

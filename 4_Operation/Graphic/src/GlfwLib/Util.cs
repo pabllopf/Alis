@@ -52,7 +52,10 @@ namespace Alis.Core.Graphic.GlfwLib
             {
                 int length = 0;
                 while (Marshal.ReadByte(ptr, length) != 0)
+                {
                     length++;
+                }
+
                 byte[] buffer = new byte[length];
                 Marshal.Copy(ptr, buffer, 0, length);
                 return Encoding.UTF8.GetString(buffer);

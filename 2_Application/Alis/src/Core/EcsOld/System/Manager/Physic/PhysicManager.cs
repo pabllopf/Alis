@@ -46,7 +46,7 @@ namespace Alis.Core.EcsOld.System.Manager.Physic
         /// <summary>
         ///     The vector
         /// </summary>
-        public Alis.Core.Physic.Dynamics.World World = new Alis.Core.Physic.Dynamics.World();
+        public World World = new World();
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PhysicManager" /> class
@@ -79,7 +79,7 @@ namespace Alis.Core.EcsOld.System.Manager.Physic
         /// </summary>
         public override void OnInit()
         {
-            World = new Alis.Core.Physic.Dynamics.World(Context.Setting.Physic.Gravity);
+            World = new World(Context.Setting.Physic.Gravity);
         }
 
         /// <summary>

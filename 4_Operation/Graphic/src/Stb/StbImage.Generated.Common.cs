@@ -322,7 +322,7 @@ namespace Alis.Core.Graphic.Stb
         /// <param name="b">The </param>
         /// <param name="add">The add</param>
         /// <returns>The int</returns>
-        public static int stbi__mad2sizes_valid(int a, int b, int add) => stbi__mul2sizes_valid(a, b) != 0 && stbi__addsizes_valid(a * b, add) != 0 ? 1 : 0;
+        public static int stbi__mad2sizes_valid(int a, int b, int add) => (stbi__mul2sizes_valid(a, b) != 0) && (stbi__addsizes_valid(a * b, add) != 0) ? 1 : 0;
 
         /// <summary>
         ///     Stbis the mad 3sizes valid using the specified a
@@ -332,8 +332,8 @@ namespace Alis.Core.Graphic.Stb
         /// <param name="c">The </param>
         /// <param name="add">The add</param>
         /// <returns>The int</returns>
-        public static int stbi__mad3sizes_valid(int a, int b, int c, int add) => stbi__mul2sizes_valid(a, b) != 0 && stbi__mul2sizes_valid(a * b, c) != 0 &&
-                                                                                 stbi__addsizes_valid(a * b * c, add) != 0
+        public static int stbi__mad3sizes_valid(int a, int b, int c, int add) => (stbi__mul2sizes_valid(a, b) != 0) && (stbi__mul2sizes_valid(a * b, c) != 0) &&
+                                                                                 (stbi__addsizes_valid(a * b * c, add) != 0)
             ? 1
             : 0;
 
@@ -346,8 +346,8 @@ namespace Alis.Core.Graphic.Stb
         /// <param name="d">The </param>
         /// <param name="add">The add</param>
         /// <returns>The int</returns>
-        public static int stbi__mad4sizes_valid(int a, int b, int c, int d, int add) => stbi__mul2sizes_valid(a, b) != 0 && stbi__mul2sizes_valid(a * b, c) != 0 &&
-                                                                                        stbi__mul2sizes_valid(a * b * c, d) != 0 && stbi__addsizes_valid(a * b * c * d, add) != 0
+        public static int stbi__mad4sizes_valid(int a, int b, int c, int d, int add) => (stbi__mul2sizes_valid(a, b) != 0) && (stbi__mul2sizes_valid(a * b, c) != 0) &&
+                                                                                        (stbi__mul2sizes_valid(a * b * c, d) != 0) && (stbi__addsizes_valid(a * b * c * d, add) != 0)
             ? 1
             : 0;
 
@@ -418,7 +418,7 @@ namespace Alis.Core.Graphic.Stb
                 return 1;
             }
 
-            if (a < 0 && b < 0)
+            if ((a < 0) && (b < 0))
             {
                 return a >= -2147483647 - 1 - b ? 1 : 0;
             }
@@ -489,13 +489,17 @@ namespace Alis.Core.Graphic.Stb
 
             for (i = 0; i < x * y; ++i)
             for (k = 0; k < n; ++k)
+            {
                 output[i * comp + k] =
                     (float) (CRuntime.pow(data[i * comp + k] / 255.0f, stbi__l2h_gamma) * stbi__l2h_scale);
+            }
 
             if (n < comp)
             {
                 for (i = 0; i < x * y; ++i)
+                {
                     output[i * comp + n] = data[i * comp + n] / 255.0f;
+                }
             }
 
             CRuntime.free(data);
@@ -558,7 +562,9 @@ namespace Alis.Core.Graphic.Stb
             }
 
             for (i = 0; i < img_len; ++i)
+            {
                 reduced[i] = (byte) ((orig[i] >> 8) & 0xFF);
+            }
 
             CRuntime.free(orig);
             return reduced;
@@ -584,7 +590,9 @@ namespace Alis.Core.Graphic.Stb
             }
 
             for (i = 0; i < img_len; ++i)
+            {
                 enlarged[i] = (ushort) ((orig[i] << 8) + orig[i]);
+            }
 
             CRuntime.free(orig);
             return enlarged;
@@ -721,9 +729,9 @@ namespace Alis.Core.Graphic.Stb
         /// <param name="req_comp">The req comp</param>
         public static void stbi__float_postprocess(float* result, int* x, int* y, int* comp, int req_comp)
         {
-            if ((stbi__vertically_flip_on_load_set != 0
+            if (((stbi__vertically_flip_on_load_set != 0
                     ? stbi__vertically_flip_on_load_local
-                    : stbi__vertically_flip_on_load_global) != 0 && result != null)
+                    : stbi__vertically_flip_on_load_global) != 0) && (result != null))
             {
                 int channels = req_comp != 0 ? req_comp : *comp;
                 stbi__vertical_flip(result, *x, *y, channels * sizeof(float));
@@ -847,7 +855,9 @@ namespace Alis.Core.Graphic.Stb
                         break;
                     case 1 * 8 + 3:
                         for (i = (int) (x - 1); i >= 0; --i, src += 1, dest += 3)
+                        {
                             dest[0] = dest[1] = dest[2] = src[0];
+                        }
 
                         break;
                     case 1 * 8 + 4:
@@ -860,12 +870,16 @@ namespace Alis.Core.Graphic.Stb
                         break;
                     case 2 * 8 + 1:
                         for (i = (int) (x - 1); i >= 0; --i, src += 2, dest += 1)
+                        {
                             dest[0] = src[0];
+                        }
 
                         break;
                     case 2 * 8 + 3:
                         for (i = (int) (x - 1); i >= 0; --i, src += 2, dest += 3)
+                        {
                             dest[0] = dest[1] = dest[2] = src[0];
+                        }
 
                         break;
                     case 2 * 8 + 4:
@@ -888,7 +902,9 @@ namespace Alis.Core.Graphic.Stb
                         break;
                     case 3 * 8 + 1:
                         for (i = (int) (x - 1); i >= 0; --i, src += 3, dest += 1)
+                        {
                             dest[0] = stbi__compute_y(src[0], src[1], src[2]);
+                        }
 
                         break;
                     case 3 * 8 + 2:
@@ -901,7 +917,9 @@ namespace Alis.Core.Graphic.Stb
                         break;
                     case 4 * 8 + 1:
                         for (i = (int) (x - 1); i >= 0; --i, src += 4, dest += 1)
+                        {
                             dest[0] = stbi__compute_y(src[0], src[1], src[2]);
+                        }
 
                         break;
                     case 4 * 8 + 2:
@@ -984,7 +1002,9 @@ namespace Alis.Core.Graphic.Stb
                         break;
                     case 1 * 8 + 3:
                         for (i = (int) (x - 1); i >= 0; --i, src += 1, dest += 3)
+                        {
                             dest[0] = dest[1] = dest[2] = src[0];
+                        }
 
                         break;
                     case 1 * 8 + 4:
@@ -997,12 +1017,16 @@ namespace Alis.Core.Graphic.Stb
                         break;
                     case 2 * 8 + 1:
                         for (i = (int) (x - 1); i >= 0; --i, src += 2, dest += 1)
+                        {
                             dest[0] = src[0];
+                        }
 
                         break;
                     case 2 * 8 + 3:
                         for (i = (int) (x - 1); i >= 0; --i, src += 2, dest += 3)
+                        {
                             dest[0] = dest[1] = dest[2] = src[0];
+                        }
 
                         break;
                     case 2 * 8 + 4:
@@ -1025,7 +1049,9 @@ namespace Alis.Core.Graphic.Stb
                         break;
                     case 3 * 8 + 1:
                         for (i = (int) (x - 1); i >= 0; --i, src += 3, dest += 1)
+                        {
                             dest[0] = stbi__compute_y_16(src[0], src[1], src[2]);
+                        }
 
                         break;
                     case 3 * 8 + 2:
@@ -1038,7 +1064,9 @@ namespace Alis.Core.Graphic.Stb
                         break;
                     case 4 * 8 + 1:
                         for (i = (int) (x - 1); i >= 0; --i, src += 4, dest += 1)
+                        {
                             dest[0] = stbi__compute_y_16(src[0], src[1], src[2]);
+                        }
 
                         break;
                     case 4 * 8 + 2:

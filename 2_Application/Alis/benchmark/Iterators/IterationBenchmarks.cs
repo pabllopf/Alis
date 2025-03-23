@@ -40,7 +40,7 @@ namespace Alis.Benchmark.Iterators
     /// <summary>
     ///     The iteration benchmarks class
     /// </summary>
-    [MemoryDiagnoser(), Config(typeof(Config))]
+    [MemoryDiagnoser, Config(typeof(Config))]
     public class IterationBenchmarks
     {
         /// <summary>

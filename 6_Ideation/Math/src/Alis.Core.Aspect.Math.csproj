@@ -6,6 +6,6 @@
         <OutDir Condition="($(AssemblyName.Contains('Sample')) OR $(AssemblyName.Contains('App'))) AND $(AssemblyName.Contains('Test')) == false">bin/$(Configuration)/$(RuntimeIdentifier)/lib/</OutDir>
     </PropertyGroup>
     <ItemGroup>
-      <Folder Include="Redefinition\" />
+        <Folder Include="Redefinition\"/>
     </ItemGroup>
 </Project>

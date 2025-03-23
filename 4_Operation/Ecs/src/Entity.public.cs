@@ -1,6 +1,34 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Entity.public.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Collections.Immutable;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Core;
@@ -12,18 +40,22 @@ using Alis.Core.Ecs.Updating;
 namespace Alis.Core.Ecs
 {
     /// <summary>
-    /// The entity
+    ///     The entity
     /// </summary>
     partial struct Entity
     {
         #region Public API
 
         #region Has
+
         /// <summary>
-        /// Checks of this <see cref="Entity"/> has a component specified by <paramref name="componentID"/>.
+        ///     Checks of this <see cref="Entity" /> has a component specified by <paramref name="componentID" />.
         /// </summary>
         /// <param name="componentID">The component ID of the component type to check.</param>
-        /// <returns><see langword="true"/> if the entity has a component of <paramref name="componentID"/>, otherwise <see langword="false"/>.</returns>
+        /// <returns>
+        ///     <see langword="true" /> if the entity has a component of <paramref name="componentID" />, otherwise
+        ///     <see langword="false" />.
+        /// </returns>
         public bool Has(ComponentID componentID)
         {
             ref EntityLocation entityLocation = ref AssertIsAlive(out _);
@@ -31,49 +63,73 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// Checks to see if this <see cref="Entity"/> has a component of Type <typeparamref name="T"/>.
+        ///     Checks to see if this <see cref="Entity" /> has a component of Type <typeparamref name="T" />.
         /// </summary>
         /// <typeparam name="T">The type of component to check.</typeparam>
-        /// <returns><see langword="true"/> if the entity has a component of <typeparamref name="T"/>, otherwise <see langword="false"/>.</returns>
+        /// <returns>
+        ///     <see langword="true" /> if the entity has a component of <typeparamref name="T" />, otherwise
+        ///     <see langword="false" />.
+        /// </returns>
         public bool Has<T>() => Has(Component<T>.ID);
 
         /// <summary>
-        /// Checks to see if this <see cref="Entity"/> has a component of Type <paramref name="type"/>.
+        ///     Checks to see if this <see cref="Entity" /> has a component of Type <paramref name="type" />.
         /// </summary>
         /// <param name="type">The component type to check if this entity has.</param>
-        /// <returns><see langword="true"/> if the entity has a component of <paramref name="type"/>, otherwise <see langword="false"/>.</returns>
+        /// <returns>
+        ///     <see langword="true" /> if the entity has a component of <paramref name="type" />, otherwise
+        ///     <see langword="false" />.
+        /// </returns>
         public bool Has(Type type) => Has(Component.GetComponentID(type));
 
         /// <summary>
-        /// Checks of this <see cref="Entity"/> has a component specified by <paramref name="componentID"/> without throwing when dead.
+        ///     Checks of this <see cref="Entity" /> has a component specified by <paramref name="componentID" /> without throwing
+        ///     when dead.
         /// </summary>
         /// <param name="componentID">The component ID of the component type to check.</param>
-        /// <returns><see langword="true"/> if the entity is alive and has a component of <paramref name="componentID"/>, otherwise <see langword="false"/>.</returns>
+        /// <returns>
+        ///     <see langword="true" /> if the entity is alive and has a component of <paramref name="componentID" />,
+        ///     otherwise <see langword="false" />.
+        /// </returns>
         public bool TryHas(ComponentID componentID) =>
             InternalIsAlive(out _, out EntityLocation entityLocation) &&
-            entityLocation.Archetype.GetComponentIndex(componentID) != 0;
+            (entityLocation.Archetype.GetComponentIndex(componentID) != 0);
 
         /// <summary>
-        /// Checks of this <see cref="Entity"/> has a component specified by <typeparamref name="T"/> without throwing when dead.
+        ///     Checks of this <see cref="Entity" /> has a component specified by <typeparamref name="T" /> without throwing when
+        ///     dead.
         /// </summary>
         /// <typeparam name="T">The type of component to check.</typeparam>
-        /// <returns><see langword="true"/> if the entity is alive and has a component of <typeparamref name="T"/>, otherwise <see langword="false"/>.</returns>
+        /// <returns>
+        ///     <see langword="true" /> if the entity is alive and has a component of <typeparamref name="T" />, otherwise
+        ///     <see langword="false" />.
+        /// </returns>
         public bool TryHas<T>() => TryHas(Component<T>.ID);
+
         /// <summary>
-        /// Checks of this <see cref="Entity"/> has a component specified by <paramref name="type"/> without throwing when dead.
+        ///     Checks of this <see cref="Entity" /> has a component specified by <paramref name="type" /> without throwing when
+        ///     dead.
         /// </summary>
         /// <param name="type">The type of the component type to check.</param>
-        /// <returns><see langword="true"/> if the entity is alive and has a component of <paramref name="type"/>, otherwise <see langword="false"/>.</returns>
+        /// <returns>
+        ///     <see langword="true" /> if the entity is alive and has a component of <paramref name="type" />, otherwise
+        ///     <see langword="false" />.
+        /// </returns>
         public bool TryHas(Type type) => TryHas(Component.GetComponentID(type));
+
         #endregion
 
         #region Get
+
         /// <summary>
-        /// Gets this <see cref="Entity"/>'s component of type <typeparamref name="T"/>.
+        ///     Gets this <see cref="Entity" />'s component of type <typeparamref name="T" />.
         /// </summary>
         /// <typeparam name="T">The type of component.</typeparam>
-        /// <exception cref="InvalidOperationException"><see cref="Entity"/> is dead.</exception>
-        /// <exception cref="ComponentNotFoundException"><see cref="Entity"/> does not have component of type <typeparamref name="T"/>.</exception>
+        /// <exception cref="InvalidOperationException"><see cref="Entity" /> is dead.</exception>
+        /// <exception cref="ComponentNotFoundException">
+        ///     <see cref="Entity" /> does not have component of type
+        ///     <typeparamref name="T" />.
+        /// </exception>
         /// <returns>A reference to the component in memory.</returns>
         [SkipLocalsInit]
         public ref T Get<T>()
@@ -93,14 +149,17 @@ namespace Alis.Core.Ecs
             //hardware trap
             ComponentStorage<T> storage = UnsafeExtensions.UnsafeCast<ComponentStorage<T>>(archetype.Components.UnsafeArrayIndex(compIndex));
             return ref storage[lookup.Index];
-        }//2, 0
+        } //2, 0
 
         /// <summary>
-        /// Gets this <see cref="Entity"/>'s component of type <paramref name="id"/>.
+        ///     Gets this <see cref="Entity" />'s component of type <paramref name="id" />.
         /// </summary>
         /// <param name="id">The ID of the type of component to get</param>
-        /// <exception cref="InvalidOperationException"><see cref="Entity"/> is dead.</exception>
-        /// <exception cref="ComponentNotFoundException"><see cref="Entity"/> does not have component of type <paramref name="type"/>.</exception>
+        /// <exception cref="InvalidOperationException"><see cref="Entity" /> is dead.</exception>
+        /// <exception cref="ComponentNotFoundException">
+        ///     <see cref="Entity" /> does not have component of type
+        ///     <paramref name="type" />.
+        /// </exception>
         /// <returns>The boxed component.</returns>
         public object Get(ComponentID id)
         {
@@ -112,21 +171,27 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// Gets this <see cref="Entity"/>'s component of type <paramref name="type"/>.
+        ///     Gets this <see cref="Entity" />'s component of type <paramref name="type" />.
         /// </summary>
         /// <param name="type">The type of component to get</param>
-        /// <exception cref="InvalidOperationException"><see cref="Entity"/> is dead.</exception>
-        /// <exception cref="ComponentNotFoundException"><see cref="Entity"/> does not have component of type <paramref name="type"/>.</exception>
-        /// <returns>The component of type <paramref name="type"/></returns>
+        /// <exception cref="InvalidOperationException"><see cref="Entity" /> is dead.</exception>
+        /// <exception cref="ComponentNotFoundException">
+        ///     <see cref="Entity" /> does not have component of type
+        ///     <paramref name="type" />.
+        /// </exception>
+        /// <returns>The component of type <paramref name="type" /></returns>
         public object Get(Type type) => Get(Component.GetComponentID(type));
 
         /// <summary>
-        /// Gets this <see cref="Entity"/>'s component of type <paramref name="id"/>.
+        ///     Gets this <see cref="Entity" />'s component of type <paramref name="id" />.
         /// </summary>
         /// <param name="id">The ID of the type of component to get</param>
         /// <param name="obj">The component to set</param>
-        /// <exception cref="InvalidOperationException"><see cref="Entity"/> is dead.</exception>
-        /// <exception cref="ComponentNotFoundException"><see cref="Entity"/> does not have component of type <paramref name="id"/>.</exception>
+        /// <exception cref="InvalidOperationException"><see cref="Entity" /> is dead.</exception>
+        /// <exception cref="ComponentNotFoundException">
+        ///     <see cref="Entity" /> does not have component of type
+        ///     <paramref name="id" />.
+        /// </exception>
         public void Set(ComponentID id, object obj)
         {
             ref var lookup = ref AssertIsAlive(out _);
@@ -135,29 +200,40 @@ namespace Alis.Core.Ecs
             int compIndex = lookup.Archetype.GetComponentIndex(id);
 
             if (compIndex == 0)
+            {
                 FrentExceptions.Throw_ComponentNotFoundException(id.Type);
+            }
+
             //3x
             lookup.Archetype.Components[compIndex].SetAt(obj, lookup.Index);
         }
 
         /// <summary>
-        /// Gets this <see cref="Entity"/>'s component of type <paramref name="type"/>.
+        ///     Gets this <see cref="Entity" />'s component of type <paramref name="type" />.
         /// </summary>
         /// <param name="type">The type of component to get</param>
         /// <param name="obj">The component to set</param>
-        /// <exception cref="InvalidOperationException"><see cref="Entity"/> is dead.</exception>
-        /// <exception cref="ComponentNotFoundException"><see cref="Entity"/> does not have component of type <paramref name="type"/>.</exception>
-        /// <returns>The component of type <paramref name="type"/></returns>
+        /// <exception cref="InvalidOperationException"><see cref="Entity" /> is dead.</exception>
+        /// <exception cref="ComponentNotFoundException">
+        ///     <see cref="Entity" /> does not have component of type
+        ///     <paramref name="type" />.
+        /// </exception>
+        /// <returns>The component of type <paramref name="type" /></returns>
         public void Set(Type type, object obj) => Set(Component.GetComponentID(type), obj);
+
         #endregion
 
         #region TryGet
+
         /// <summary>
-        /// Attempts to get a component from an <see cref="Entity"/>.
+        ///     Attempts to get a component from an <see cref="Entity" />.
         /// </summary>
         /// <typeparam name="T">The type of component.</typeparam>
-        /// <param name="value">A wrapper over a reference to the component when <see langword="true"/>.</param>
-        /// <returns><see langword="true"/> if this entity has a component of type <typeparamref name="T"/>, otherwise <see langword="false"/>.</returns>
+        /// <param name="value">A wrapper over a reference to the component when <see langword="true" />.</param>
+        /// <returns>
+        ///     <see langword="true" /> if this entity has a component of type <typeparamref name="T" />, otherwise
+        ///     <see langword="false" />.
+        /// </returns>
         public bool TryGet<T>(out Ref<T> value)
         {
             value = TryGetCore<T>(out bool exists)!;
@@ -165,12 +241,15 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// Attempts to get a component from an <see cref="Entity"/>.
+        ///     Attempts to get a component from an <see cref="Entity" />.
         /// </summary>
-        /// <param name="value">A wrapper over a reference to the component when <see langword="true"/>.</param>
+        /// <param name="value">A wrapper over a reference to the component when <see langword="true" />.</param>
         /// <param name="type">The type of component to try and get</param>
-        /// <returns><see langword="true"/> if this entity has a component of type <paramref name="type"/>, otherwise <see langword="false"/>.</returns>
-        public bool TryGet(Type type,  out object? value)
+        /// <returns>
+        ///     <see langword="true" /> if this entity has a component of type <paramref name="type" />, otherwise
+        ///     <see langword="false" />.
+        /// </returns>
+        public bool TryGet(Type type, out object? value)
         {
             ref var lookup = ref AssertIsAlive(out _);
 
@@ -186,28 +265,36 @@ namespace Alis.Core.Ecs
             value = lookup.Archetype.Components[compIndex].GetAt(lookup.Index);
             return true;
         }
+
         #endregion
 
         #region Add
+
         /// <summary>
-        /// Adds a component to this <see cref="Entity"/> as its own type
+        ///     Adds a component to this <see cref="Entity" /> as its own type
         /// </summary>
         /// <param name="component">The component, which could be boxed</param>
         public void AddBoxed(object component) => AddAs(component.GetType(), component);
 
         /// <summary>
-        /// Add a component to an <see cref="Entity"/>
+        ///     Add a component to an <see cref="Entity" />
         /// </summary>
-        /// <param name="type">The type to add the component as. Note that a component of type DerivedClass and BaseClass are different component types.</param>
+        /// <param name="type">
+        ///     The type to add the component as. Note that a component of type DerivedClass and BaseClass are
+        ///     different component types.
+        /// </param>
         /// <param name="component">The component to add</param>
         public void AddAs(Type type, object component) => AddAs(Component.GetComponentID(type), component);
 
         /// <summary>
-        /// Adds a component to this <see cref="Entity"/>, as a specific component type.
+        ///     Adds a component to this <see cref="Entity" />, as a specific component type.
         /// </summary>
         /// <param name="componentID">The component type to add as.</param>
         /// <param name="component">The component to add.</param>
-        /// <exception cref="InvalidCastException"><paramref name="component"/> is not assignable to the type represented by <paramref name="componentID"/>.</exception>
+        /// <exception cref="InvalidCastException">
+        ///     <paramref name="component" /> is not assignable to the type represented by
+        ///     <paramref name="componentID" />.
+        /// </exception>
         public void AddAs(ComponentID componentID, object component)
         {
             ref EntityLocation lookup = ref AssertIsAlive(out var w);
@@ -222,13 +309,15 @@ namespace Alis.Core.Ecs
                 w.WorldUpdateCommandBuffer.AddComponent(this, componentID, component);
             }
         }
+
         #endregion
 
         #region Remove
+
         /// <summary>
-        /// Removes a component from this entity
+        ///     Removes a component from this entity
         /// </summary>
-        /// <param name="componentID">The <see cref="ComponentID"/> of the component to be removed</param>
+        /// <param name="componentID">The <see cref="ComponentID" /> of the component to be removed</param>
         public void Remove(ComponentID componentID)
         {
             ref var lookup = ref AssertIsAlive(out var w);
@@ -243,23 +332,29 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// Removes a component from an <see cref="Entity"/>
+        ///     Removes a component from an <see cref="Entity" />
         /// </summary>
         /// <param name="type">The type of component to remove</param>
-        /// <exception cref="InvalidOperationException"><see cref="Entity"/> is dead.</exception>
-        /// <exception cref="ComponentNotFoundException"><see cref="Entity"/> does not have component of type <paramref name="type"/>.</exception>
+        /// <exception cref="InvalidOperationException"><see cref="Entity" /> is dead.</exception>
+        /// <exception cref="ComponentNotFoundException">
+        ///     <see cref="Entity" /> does not have component of type
+        ///     <paramref name="type" />.
+        /// </exception>
         public void Remove(Type type) => Remove(Component.GetComponentID(type));
+
         #endregion
 
         #region Tag
+
         /// <summary>
-        /// Checks whether this <see cref="Entity"/> has a specific tag, using a <see cref="TagID"/> to represent the tag.
+        ///     Checks whether this <see cref="Entity" /> has a specific tag, using a <see cref="TagID" /> to represent the tag.
         /// </summary>
         /// <param name="tagID">The identifier of the tag to check.</param>
         /// <returns>
-        /// <see langword="true"/> if the tag identified by <paramref name="tagID"/> has this <see cref="Entity"/>; otherwise, <see langword="false"/>.
+        ///     <see langword="true" /> if the tag identified by <paramref name="tagID" /> has this <see cref="Entity" />;
+        ///     otherwise, <see langword="false" />.
         /// </returns>
-        /// <exception cref="InvalidOperationException">Thrown if the <see cref="Entity"/> is not alive.</exception>
+        /// <exception cref="InvalidOperationException">Thrown if the <see cref="Entity" /> is not alive.</exception>
         public bool Tagged(TagID tagID)
         {
             ref var lookup = ref AssertIsAlive(out var w);
@@ -267,83 +362,105 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// Checks whether this <see cref="Entity"/> has a specific tag, using a generic type parameter to represent the tag.
+        ///     Checks whether this <see cref="Entity" /> has a specific tag, using a generic type parameter to represent the tag.
         /// </summary>
         /// <typeparam name="T">The type used as the tag.</typeparam>
         /// <returns>
-        /// <see langword="true"/> if the tag of type <typeparamref name="T"/> has this <see cref="Entity"/>; otherwise, <see langword="false"/>.
+        ///     <see langword="true" /> if the tag of type <typeparamref name="T" /> has this <see cref="Entity" />; otherwise,
+        ///     <see langword="false" />.
         /// </returns>
-        /// <exception cref="InvalidOperationException">Thrown if the <see cref="Entity"/> is not alive.</exception>
+        /// <exception cref="InvalidOperationException">Thrown if the <see cref="Entity" /> is not alive.</exception>
         public bool Tagged<T>() => Tagged(Core.Tag<T>.ID);
 
         /// <summary>
-        /// Checks whether this <see cref="Entity"/> has a specific tag, using a <see cref="Type"/> to represent the tag.
+        ///     Checks whether this <see cref="Entity" /> has a specific tag, using a <see cref="Type" /> to represent the tag.
         /// </summary>
-        /// <remarks>Prefer the <see cref="Tagged(TagID)"/> or <see cref="Tagged{T}()"/> overloads. Use <see cref="Tag{T}.ID"/> to get a <see cref="TagID"/> instance</remarks>
-        /// <param name="type">The <see cref="Type"/> representing the tag to check.</param>
+        /// <remarks>
+        ///     Prefer the <see cref="Tagged(TagID)" /> or <see cref="Tagged{T}()" /> overloads. Use <see cref="Tag{T}.ID" />
+        ///     to get a <see cref="TagID" /> instance
+        /// </remarks>
+        /// <param name="type">The <see cref="Type" /> representing the tag to check.</param>
         /// <returns>
-        /// <see langword="true"/> if the tag represented by <paramref name="type"/> has this <see cref="Entity"/>; otherwise, <see langword="false"/>.
+        ///     <see langword="true" /> if the tag represented by <paramref name="type" /> has this <see cref="Entity" />;
+        ///     otherwise, <see langword="false" />.
         /// </returns>
-        /// <exception cref="InvalidOperationException">Thrown if the <see cref="Entity"/> not alive.</exception>
+        /// <exception cref="InvalidOperationException">Thrown if the <see cref="Entity" /> not alive.</exception>
         public bool Tagged(Type type) => Tagged(Core.Tag.GetTagID(type));
 
         /// <summary>
-        /// Adds a tag to this <see cref="Entity"/>. Tags are like components but do not take up extra memory.
+        ///     Adds a tag to this <see cref="Entity" />. Tags are like components but do not take up extra memory.
         /// </summary>
-        /// <exception cref="InvalidOperationException"><see cref="Entity"/> is dead.</exception>
+        /// <exception cref="InvalidOperationException"><see cref="Entity" /> is dead.</exception>
         /// <param name="type">The type to use as a tag</param>
         public bool Tag(Type type) => Tag(Core.Tag.GetTagID(type));
 
         /// <summary>
-        /// Adds a tag to this <see cref="Entity"/>. Tags are like components but do not take up extra memory.
+        ///     Adds a tag to this <see cref="Entity" />. Tags are like components but do not take up extra memory.
         /// </summary>
-        /// <remarks>Prefer the <see cref="Tag(TagID)"/> or <see cref="Tag{T}()"/> overloads. Use <see cref="Tag{T}.ID"/> to get a <see cref="TagID"/> instance</remarks>
-        /// <exception cref="InvalidOperationException"><see cref="Entity"/> is dead.</exception>
+        /// <remarks>
+        ///     Prefer the <see cref="Tag(TagID)" /> or <see cref="Tag{T}()" /> overloads. Use <see cref="Tag{T}.ID" /> to get
+        ///     a <see cref="TagID" /> instance
+        /// </remarks>
+        /// <exception cref="InvalidOperationException"><see cref="Entity" /> is dead.</exception>
         /// <param name="tagID">The tagID to use as the tag</param>
         public bool Tag(TagID tagID)
         {
             ref var lookup = ref AssertIsAlive(out var w);
             if (lookup.Archetype.HasTag(tagID))
+            {
                 return false;
+            }
 
             ArchetypeID archetype = w.AddTagLookup.FindAdjacentArchetypeID(tagID, lookup.Archetype.ID, World, ArchetypeEdgeType.AddTag);
             w.MoveEntityToArchetypeIso(this, ref lookup, archetype.Archetype(w));
 
             return true;
         }
+
         #endregion
 
         #region Detach
+
         /// <summary>
-        /// Removes a tag from this <see cref="Entity"/>. Tags are like components but do not take up extra memory.
+        ///     Removes a tag from this <see cref="Entity" />. Tags are like components but do not take up extra memory.
         /// </summary>
-        /// <exception cref="InvalidOperationException"><see cref="Entity"/> is dead.</exception>
-        /// <returns><see langword="true"/> if the Tag was removed successfully, <see langword="false"/> when the <see cref="Entity"/> doesn't have the component</returns>
+        /// <exception cref="InvalidOperationException"><see cref="Entity" /> is dead.</exception>
+        /// <returns>
+        ///     <see langword="true" /> if the Tag was removed successfully, <see langword="false" /> when the
+        ///     <see cref="Entity" /> doesn't have the component
+        /// </returns>
         /// <param name="type">The type of tag to remove.</param>
         public bool Detach(Type type) => Detach(Core.Tag.GetTagID(type));
 
         /// <summary>
-        /// Removes a tag from this <see cref="Entity"/>. Tags are like components but do not take up extra memory.
+        ///     Removes a tag from this <see cref="Entity" />. Tags are like components but do not take up extra memory.
         /// </summary>
-        /// <exception cref="InvalidOperationException"><see cref="Entity"/> is dead.</exception>
-        /// <returns><see langword="true"/> if the Tag was removed successfully, <see langword="false"/> when the <see cref="Entity"/> doesn't have the component</returns>
+        /// <exception cref="InvalidOperationException"><see cref="Entity" /> is dead.</exception>
+        /// <returns>
+        ///     <see langword="true" /> if the Tag was removed successfully, <see langword="false" /> when the
+        ///     <see cref="Entity" /> doesn't have the component
+        /// </returns>
         /// <param name="tagID">The type of tag to remove.</param>
         public bool Detach(TagID tagID)
         {
             ref var lookup = ref AssertIsAlive(out var w);
             if (!lookup.Archetype.HasTag(tagID))
+            {
                 return false;
+            }
 
             ArchetypeID archetype = w.AddTagLookup.FindAdjacentArchetypeID(tagID, lookup.Archetype.ID, World, ArchetypeEdgeType.RemoveTag);
             w.MoveEntityToArchetypeIso(this, ref lookup, archetype.Archetype(w));
 
             return true;
         }
+
         #endregion
 
         #region Events
+
         /// <summary>
-        /// Raised when the entity is deleted
+        ///     Raised when the entity is deleted
         /// </summary>
         public event Action<Entity> OnDelete
         {
@@ -352,7 +469,7 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// Raised when a component is added to an entity
+        ///     Raised when a component is added to an entity
         /// </summary>
         public event Action<Entity, ComponentID> OnComponentAdded
         {
@@ -361,7 +478,7 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// Raised when a component is removed from an entity
+        ///     Raised when a component is removed from an entity
         /// </summary>
         public event Action<Entity, ComponentID> OnComponentRemoved
         {
@@ -370,37 +487,49 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// Raised when a component is added to an entity, with the generic parameter
+        ///     Raised when a component is added to an entity, with the generic parameter
         /// </summary>
         public GenericEvent? OnComponentAddedGeneric
         {
-            readonly set { /*the set is just to enable the += syntax*/ }
+            readonly set
+            {
+                /*the set is just to enable the += syntax*/
+            }
             get
             {
                 if (!InternalIsAlive(out var world, out _))
+                {
                     return null;
+                }
+
                 world.EntityTable[EntityID].Flags |= EntityFlags.AddGenericComp;
                 return world.EventLookup.GetOrAddNew(EntityIDOnly).Add.GenericEvent ??= new();
             }
         }
 
         /// <summary>
-        /// Raised when a component is removed to an entity, with the generic parameter
+        ///     Raised when a component is removed to an entity, with the generic parameter
         /// </summary>
         public GenericEvent? OnComponentRemovedGeneric
         {
-            readonly set { /*the set is just to enable the += syntax*/ }
+            readonly set
+            {
+                /*the set is just to enable the += syntax*/
+            }
             get
             {
                 if (!InternalIsAlive(out var world, out _))
+                {
                     return null;
+                }
+
                 world.EntityTable[EntityID].Flags |= EntityFlags.RemoveGenericComp;
                 return world.EventLookup.GetOrAddNew(EntityIDOnly).Remove.GenericEvent ??= new();
             }
         }
 
         /// <summary>
-        /// Raised when the entity is tagged
+        ///     Raised when the entity is tagged
         /// </summary>
         public event Action<Entity, TagID> OnTagged
         {
@@ -409,7 +538,7 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// Raised when a tag is detached from the entity
+        ///     Raised when a tag is detached from the entity
         /// </summary>
         public event Action<Entity, TagID> OnDetach
         {
@@ -418,18 +547,20 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// Unsubscribes the event using the specified value
+        ///     Unsubscribes the event using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <param name="flag">The flag</param>
         private void UnsubscribeEvent(object value, EntityFlags flag)
         {
             if (value is null || !InternalIsAlive(out var world, out EntityLocation entityLocation))
+            {
                 return;
+            }
 
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
-        bool exists = entityLocation.HasEvent(flag);
-        var events = exists ? world.EventLookup[EntityIDOnly] : default;
+            bool exists = entityLocation.HasEvent(flag);
+            var events = exists ? world.EventLookup[EntityIDOnly] : default(EventRecord?);
 #else
             ref var events = ref world.TryGetEventData(entityLocation, EntityIDOnly, flag, out bool exists);
 #endif
@@ -442,34 +573,36 @@ namespace Alis.Core.Ecs
                 switch (flag)
                 {
                     case EntityFlags.AddComp:
-                        events!.Add.NormalEvent.Remove((Action<Entity, ComponentID>)value);
+                        events!.Add.NormalEvent.Remove((Action<Entity, ComponentID>) value);
                         removeFlags = !events.Add.HasListeners;
                         break;
                     case EntityFlags.RemoveComp:
-                        events!.Remove.NormalEvent.Remove((Action<Entity, ComponentID>)value);
+                        events!.Remove.NormalEvent.Remove((Action<Entity, ComponentID>) value);
                         removeFlags = !events.Remove.HasListeners;
                         break;
                     case EntityFlags.Tagged:
-                        events!.Tag.Remove((Action<Entity, TagID>)value);
+                        events!.Tag.Remove((Action<Entity, TagID>) value);
                         removeFlags = !events.Tag.HasListeners;
                         break;
                     case EntityFlags.Detach:
-                        events!.Detach.Remove((Action<Entity, TagID>)value);
+                        events!.Detach.Remove((Action<Entity, TagID>) value);
                         removeFlags = !events.Detach.HasListeners;
                         break;
                     case EntityFlags.OnDelete:
-                        events!.Delete.Remove((Action<Entity>)value);
+                        events!.Delete.Remove((Action<Entity>) value);
                         removeFlags = !events.Delete.Any;
                         break;
                 }
 
                 if (removeFlags)
+                {
                     world.EntityTable[EntityID].Flags &= ~flag;
+                }
             }
         }
 
         /// <summary>
-        /// Initalizes the event record using the specified delegate
+        ///     Initalizes the event record using the specified delegate
         /// </summary>
         /// <param name="@delegate">The delegate</param>
         /// <param name="flag">The flag</param>
@@ -477,10 +610,12 @@ namespace Alis.Core.Ecs
         private void InitalizeEventRecord(object @delegate, EntityFlags flag, bool isGenericEvent = false)
         {
             if (@delegate is null || !InternalIsAlive(out var world, out EntityLocation entityLocation))
+            {
                 return;
+            }
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
-        bool exists = entityLocation.HasEvent(flag);
-        var record = exists ? world.EventLookup[EntityIDOnly] : default;
+            bool exists = entityLocation.HasEvent(flag);
+            var record = exists ? world.EventLookup[EntityIDOnly] : default(EventRecord?);
 #else
             ref var record = ref CollectionsMarshal.GetValueRefOrAddDefault(world.EventLookup, EntityIDOnly, out bool exists);
 #endif
@@ -491,24 +626,34 @@ namespace Alis.Core.Ecs
             {
                 case EntityFlags.AddComp:
                     if (isGenericEvent)
-                        record.Add.GenericEvent = (GenericEvent)@delegate;
+                    {
+                        record.Add.GenericEvent = (GenericEvent) @delegate;
+                    }
                     else
-                        record.Add.NormalEvent.Add((Action<Entity, ComponentID>)@delegate);
+                    {
+                        record.Add.NormalEvent.Add((Action<Entity, ComponentID>) @delegate);
+                    }
+
                     break;
                 case EntityFlags.RemoveComp:
                     if (isGenericEvent)
-                        record.Remove.GenericEvent = (GenericEvent)@delegate;
+                    {
+                        record.Remove.GenericEvent = (GenericEvent) @delegate;
+                    }
                     else
-                        record.Remove.NormalEvent.Add((Action<Entity, ComponentID>)@delegate);
+                    {
+                        record.Remove.NormalEvent.Add((Action<Entity, ComponentID>) @delegate);
+                    }
+
                     break;
                 case EntityFlags.Tagged:
-                    record.Tag.Add((Action<Entity, TagID>)@delegate);
+                    record.Tag.Add((Action<Entity, TagID>) @delegate);
                     break;
                 case EntityFlags.Detach:
-                    record.Detach.Add((Action<Entity, TagID>)@delegate);
+                    record.Detach.Add((Action<Entity, TagID>) @delegate);
                     break;
                 case EntityFlags.OnDelete:
-                    record.Delete.Push((Action<Entity>)@delegate);
+                    record.Delete.Push((Action<Entity>) @delegate);
                     break;
             }
         }
@@ -516,8 +661,9 @@ namespace Alis.Core.Ecs
         #endregion
 
         #region Misc
+
         /// <summary>
-        /// Deletes this entity
+        ///     Deletes this entity
         /// </summary>
         [SkipLocalsInit]
         public void Delete()
@@ -527,7 +673,9 @@ namespace Alis.Core.Ecs
             ref var lookup = ref world.EntityTable.UnsafeIndexNoResize(EntityID);
 
             if (lookup.Version != EntityVersion)
+            {
                 return;
+            }
 
             if (world.AllowStructualChanges)
             {
@@ -540,29 +688,29 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// Checks to see if this <see cref="Entity"/> is still alive
+        ///     Checks to see if this <see cref="Entity" /> is still alive
         /// </summary>
-        /// <returns><see langword="true"/> if this entity is still alive (not deleted), otherwise <see langword="false"/></returns>
+        /// <returns>
+        ///     <see langword="true" /> if this entity is still alive (not deleted), otherwise <see langword="false" />
+        /// </returns>
         public bool IsAlive => InternalIsAlive(out _, out _);
 
         /// <summary>
-        /// Checks to see if this <see cref="Entity"/> instance is the null entity: <see langword="default"/>(<see cref="Entity"/>)
+        ///     Checks to see if this <see cref="Entity" /> instance is the null entity: <see langword="default" />(
+        ///     <see cref="Entity" />)
         /// </summary>
         public bool IsNull => PackedValue == 0;
 
         /// <summary>
-        /// Gets the world this entity belongs to
+        ///     Gets the world this entity belongs to
         /// </summary>
-        /// <exception cref="InvalidOperationException"><see cref="Entity"/> is dead.</exception>
-        public World World
-        {
-            get => GlobalWorldTables.Worlds.UnsafeIndexNoResize(WorldID) ?? throw new InvalidOperationException();
-        }
+        /// <exception cref="InvalidOperationException"><see cref="Entity" /> is dead.</exception>
+        public World World => GlobalWorldTables.Worlds.UnsafeIndexNoResize(WorldID) ?? throw new InvalidOperationException();
 
         /// <summary>
-        /// Gets the component types for this entity, ordered in update order
+        ///     Gets the component types for this entity, ordered in update order
         /// </summary>
-        /// <exception cref="InvalidOperationException"><see cref="Entity"/> is dead.</exception>
+        /// <exception cref="InvalidOperationException"><see cref="Entity" /> is dead.</exception>
         public ImmutableArray<ComponentID> ComponentTypes
         {
             get
@@ -573,9 +721,9 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// Gets tags the entity has 
+        ///     Gets tags the entity has
         /// </summary>
-        /// <exception cref="InvalidOperationException"><see cref="Entity"/> is dead.</exception>
+        /// <exception cref="InvalidOperationException"><see cref="Entity" /> is dead.</exception>
         public ImmutableArray<TagID> TagTypes
         {
             get
@@ -586,7 +734,7 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// The <see cref="EntityType"/> of this <see cref="Entity"/>.
+        ///     The <see cref="EntityType" /> of this <see cref="Entity" />.
         /// </summary>
         public EntityType Type
         {
@@ -598,7 +746,7 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// Enumerates all components one by one
+        ///     Enumerates all components one by one
         /// </summary>
         /// <param name="onEach">The unbound generic function called on each item</param>
         public void EnumerateComponents(IGenericAction onEach)
@@ -612,19 +760,17 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// The null entity
+        ///     The null entity
         /// </summary>
-        public static Entity Null => default;
+        public static Entity Null => default(Entity);
 
         /// <summary>
-        /// Gets an <see cref="EntityType"/> without needing an <see cref="Entity"/> of the specific type.
+        ///     Gets an <see cref="EntityType" /> without needing an <see cref="Entity" /> of the specific type.
         /// </summary>
-        /// <param name="components">The components the <see cref="EntityType"/> should have.</param>
-        /// <param name="tags">The tags the <see cref="EntityType"/> should have.</param>
-        public static EntityType EntityTypeOf(ReadOnlySpan<ComponentID> components, ReadOnlySpan<TagID> tags)
-        {
-            return Archetype.GetArchetypeID(components, tags);
-        }
+        /// <param name="components">The components the <see cref="EntityType" /> should have.</param>
+        /// <param name="tags">The tags the <see cref="EntityType" /> should have.</param>
+        public static EntityType EntityTypeOf(ReadOnlySpan<ComponentID> components, ReadOnlySpan<TagID> tags) => Archetype.GetArchetypeID(components, tags);
+
         #endregion
 
         #endregion

@@ -174,10 +174,12 @@ namespace Alis.Core.Graphic.Stb
         {
             int i = 0;
             for (i = 0; i < 8; ++i)
+            {
                 if (stbi__get8(s) != stbi__check_png_header_png_sig[i])
                 {
                     return stbi__err("bad png sig");
                 }
+            }
 
             return 1;
         }
@@ -320,35 +322,49 @@ namespace Alis.Core.Graphic.Stb
                     case STBI__F_sub:
                         CRuntime.memcpy(cur, raw, (ulong) filter_bytes);
                         for (k = filter_bytes; k < nk; ++k)
+                        {
                             cur[k] = (byte) ((raw[k] + cur[k - filter_bytes]) & 255);
+                        }
 
                         break;
                     case STBI__F_up:
                         for (k = 0; k < nk; ++k)
+                        {
                             cur[k] = (byte) ((raw[k] + prior[k]) & 255);
+                        }
 
                         break;
                     case STBI__F_avg:
                         for (k = 0; k < filter_bytes; ++k)
+                        {
                             cur[k] = (byte) ((raw[k] + (prior[k] >> 1)) & 255);
+                        }
 
                         for (k = filter_bytes; k < nk; ++k)
+                        {
                             cur[k] = (byte) ((raw[k] + ((prior[k] + cur[k - filter_bytes]) >> 1)) & 255);
+                        }
 
                         break;
                     case STBI__F_paeth:
                         for (k = 0; k < filter_bytes; ++k)
+                        {
                             cur[k] = (byte) ((raw[k] + prior[k]) & 255);
+                        }
 
                         for (k = filter_bytes; k < nk; ++k)
+                        {
                             cur[k] = (byte) ((raw[k] + stbi__paeth(cur[k - filter_bytes], prior[k],
                                 prior[k - filter_bytes])) & 255);
+                        }
 
                         break;
                     case STBI__F_avg_first:
                         CRuntime.memcpy(cur, raw, (ulong) filter_bytes);
                         for (k = filter_bytes; k < nk; ++k)
+                        {
                             cur[k] = (byte) ((raw[k] + (cur[k - filter_bytes] >> 1)) & 255);
+                        }
 
                         break;
                 }
@@ -424,7 +440,9 @@ namespace Alis.Core.Graphic.Stb
                     if (img_n == out_n)
                     {
                         for (i = 0; i < nsmp; ++i, ++dest16, cur += 2)
+                        {
                             *dest16 = (ushort) ((cur[0] << 8) | cur[1]);
+                        }
                     }
                     else
                     {
@@ -503,7 +521,7 @@ namespace Alis.Core.Graphic.Stb
                 int y = 0;
                 x = (int) ((a.s.img_x - xorig[p] + xspc[p] - 1) / xspc[p]);
                 y = (int) ((a.s.img_y - yorig[p] + yspc[p] - 1) / yspc[p]);
-                if (x != 0 && y != 0)
+                if ((x != 0) && (y != 0))
                 {
                     uint img_len = (uint) ((((a.s.img_n * x * depth + 7) >> 3) + 1) * y);
                     if (stbi__create_png_image_raw(a, image_data, image_data_len, out_n, (uint) x, (uint) y, depth,
@@ -557,7 +575,7 @@ namespace Alis.Core.Graphic.Stb
             {
                 for (i = 0; i < pixel_count; ++i)
                 {
-                    if (p[0] == tc[0] && p[1] == tc[1] && p[2] == tc[2])
+                    if ((p[0] == tc[0]) && (p[1] == tc[1]) && (p[2] == tc[2]))
                     {
                         p[3] = 0;
                     }
@@ -594,7 +612,7 @@ namespace Alis.Core.Graphic.Stb
             {
                 for (i = 0; i < pixel_count; ++i)
                 {
-                    if (p[0] == tc[0] && p[1] == tc[1] && p[2] == tc[2])
+                    if ((p[0] == tc[0]) && (p[1] == tc[1]) && (p[2] == tc[2]))
                     {
                         p[3] = 0;
                     }
@@ -790,7 +808,7 @@ namespace Alis.Core.Graphic.Stb
                         }
 
                         z.depth = stbi__get8(s);
-                        if (z.depth != 1 && z.depth != 2 && z.depth != 4 && z.depth != 8 && z.depth != 16)
+                        if ((z.depth != 1) && (z.depth != 2) && (z.depth != 4) && (z.depth != 8) && (z.depth != 16))
                         {
                             return stbi__err("1/2/4/8/16-bit only");
                         }
@@ -801,7 +819,7 @@ namespace Alis.Core.Graphic.Stb
                             return stbi__err("bad ctype");
                         }
 
-                        if (color == 3 && z.depth == 16)
+                        if ((color == 3) && (z.depth == 16))
                         {
                             return stbi__err("bad ctype");
                         }
@@ -919,7 +937,9 @@ namespace Alis.Core.Graphic.Stb
 
                             pal_img_n = 4;
                             for (i = 0; i < c.length; ++i)
+                            {
                                 palette[i * 4 + 3] = stbi__get8(s);
+                            }
                         }
                         else
                         {
@@ -942,13 +962,17 @@ namespace Alis.Core.Graphic.Stb
 
                             if (z.depth == 16)
                             {
-                                for (k = 0; k < s.img_n && k < 3; ++k)
+                                for (k = 0; (k < s.img_n) && (k < 3); ++k)
+                                {
                                     tc16[k] = (ushort) stbi__get16be(s);
+                                }
                             }
                             else
                             {
-                                for (k = 0; k < s.img_n && k < 3; ++k)
+                                for (k = 0; (k < s.img_n) && (k < 3); ++k)
+                                {
                                     tc[k] = (byte) ((byte) (stbi__get16be(s) & 255) * stbi__depth_scale_table[z.depth]);
+                                }
                             }
                         }
 
@@ -962,7 +986,7 @@ namespace Alis.Core.Graphic.Stb
                             return stbi__err("first not IHDR");
                         }
 
-                        if (pal_img_n != 0 && pal_len == 0)
+                        if ((pal_img_n != 0) && (pal_len == 0))
                         {
                             return stbi__err("no PLTE");
                         }
@@ -997,7 +1021,9 @@ namespace Alis.Core.Graphic.Stb
                             }
 
                             while (ioff + c.length > idata_limit)
+                            {
                                 idata_limit *= 2;
+                            }
 
                             p = (byte*) CRuntime.realloc(z.idata, (ulong) idata_limit);
                             if (p == null)
@@ -1042,7 +1068,7 @@ namespace Alis.Core.Graphic.Stb
 
                         CRuntime.free(z.idata);
                         z.idata = null;
-                        if ((req_comp == s.img_n + 1 && req_comp != 3 && pal_img_n == 0) || has_trans != 0)
+                        if (((req_comp == s.img_n + 1) && (req_comp != 3) && (pal_img_n == 0)) || has_trans != 0)
                         {
                             s.img_out_n = s.img_n + 1;
                         }
@@ -1074,10 +1100,10 @@ namespace Alis.Core.Graphic.Stb
                             }
                         }
 
-                        if (is_iphone != 0 &&
-                            (stbi__de_iphone_flag_set != 0
+                        if ((is_iphone != 0) &&
+                            ((stbi__de_iphone_flag_set != 0
                                 ? stbi__de_iphone_flag_local
-                                : stbi__de_iphone_flag_global) != 0 && s.img_out_n > 2)
+                                : stbi__de_iphone_flag_global) != 0) && (s.img_out_n > 2))
                         {
                             stbi__de_iphone(z);
                         }
@@ -1165,7 +1191,7 @@ namespace Alis.Core.Graphic.Stb
 
                 result = p._out_;
                 p._out_ = null;
-                if (req_comp != 0 && req_comp != p.s.img_out_n)
+                if ((req_comp != 0) && (req_comp != p.s.img_out_n))
                 {
                     if (ri->bits_per_channel == 8)
                     {

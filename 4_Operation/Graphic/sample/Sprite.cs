@@ -161,7 +161,7 @@ namespace Alis.Core.Graphic.Sample
                 // Replace the background color with transparency
                 for (int i = 0; i < image.Data.Length; i += 4)
                 {
-                    if (image.Data[i] == r && image.Data[i + 1] == g && image.Data[i + 2] == b)
+                    if ((image.Data[i] == r) && (image.Data[i + 1] == g) && (image.Data[i + 2] == b))
                     {
                         image.Data[i + 3] = 0; // Set alpha to 0 (transparent)
                     }

@@ -176,7 +176,9 @@ namespace Alis.Core.Graphic.Stb
                 if (h->size[k] == j)
                 {
                     while (h->size[k] == j)
+                    {
                         h->code[k++] = (ushort) code++;
+                    }
 
                     if (code - 1 >= 1u << j)
                     {
@@ -198,7 +200,9 @@ namespace Alis.Core.Graphic.Stb
                     int c = h->code[i] << (9 - s);
                     int m = 1 << (9 - s);
                     for (j = 0; j < m; ++j)
+                    {
                         h->fast[c + j] = (byte) i;
+                    }
                 }
             }
 
@@ -223,7 +227,7 @@ namespace Alis.Core.Graphic.Stb
                     int run = (rs >> 4) & 15;
                     int magbits = rs & 15;
                     int len = h->size[fast];
-                    if (magbits != 0 && len + magbits <= 9)
+                    if ((magbits != 0) && (len + magbits <= 9))
                     {
                         int k = ((i << len) & ((1 << 9) - 1)) >> (9 - magbits);
                         int m = 1 << (magbits - 1);
@@ -232,7 +236,7 @@ namespace Alis.Core.Graphic.Stb
                             k += (int) ((~0U << magbits) + 1);
                         }
 
-                        if (k >= -128 && k <= 127)
+                        if ((k >= -128) && (k <= 127))
                         {
                             fast_ac[i] = (short) (k * 256 + run * 16 + len + magbits);
                         }
@@ -254,7 +258,9 @@ namespace Alis.Core.Graphic.Stb
                 {
                     int c = stbi__get8(j.s);
                     while (c == 0xff)
+                    {
                         c = stbi__get8(j.s);
+                    }
 
                     if (c != 0)
                     {
@@ -302,10 +308,12 @@ namespace Alis.Core.Graphic.Stb
 
             temp = j.code_buffer >> 16;
             for (k = 9 + 1;; ++k)
+            {
                 if (temp < h->maxcode[k])
                 {
                     break;
                 }
+            }
 
             if (k == 17)
             {
@@ -781,7 +789,8 @@ namespace Alis.Core.Graphic.Stb
             byte* o;
             short* d = data;
             for (i = 0; i < 8; ++i, ++d, ++v)
-                if (d[8] == 0 && d[16] == 0 && d[24] == 0 && d[32] == 0 && d[40] == 0 && d[48] == 0 && d[56] == 0)
+            {
+                if ((d[8] == 0) && (d[16] == 0) && (d[24] == 0) && (d[32] == 0) && (d[40] == 0) && (d[48] == 0) && (d[56] == 0))
                 {
                     int dcterm = d[0] * 4;
                     v[0] = v[8] = v[16] = v[24] = v[32] = v[40] = v[48] = v[56] = dcterm;
@@ -848,6 +857,7 @@ namespace Alis.Core.Graphic.Stb
                     v[24] = (x3 + t0) >> 10;
                     v[32] = (x3 - t0) >> 10;
                 }
+            }
 
             for (i = 0, v = val, o = _out_; i < 8; ++i, v += 8, o += out_stride)
             {
@@ -935,7 +945,9 @@ namespace Alis.Core.Graphic.Stb
             }
 
             while (x == 0xff)
+            {
                 x = stbi__get8(j.s);
+            }
 
             return x;
         }
@@ -996,7 +1008,7 @@ namespace Alis.Core.Graphic.Stb
                                 stbi__grow_buffer_unsafe(z);
                             }
 
-                            if (!(z.marker >= 0xd0 && z.marker <= 0xd7))
+                            if (!((z.marker >= 0xd0) && (z.marker <= 0xd7)))
                             {
                                 return 1;
                             }
@@ -1050,7 +1062,7 @@ namespace Alis.Core.Graphic.Stb
                                 stbi__grow_buffer_unsafe(z);
                             }
 
-                            if (!(z.marker >= 0xd0 && z.marker <= 0xd7))
+                            if (!((z.marker >= 0xd0) && (z.marker <= 0xd7)))
                             {
                                 return 1;
                             }
@@ -1103,7 +1115,7 @@ namespace Alis.Core.Graphic.Stb
                             stbi__grow_buffer_unsafe(z);
                         }
 
-                        if (!(z.marker >= 0xd0 && z.marker <= 0xd7))
+                        if (!((z.marker >= 0xd0) && (z.marker <= 0xd7)))
                         {
                             return 1;
                         }
@@ -1152,7 +1164,7 @@ namespace Alis.Core.Graphic.Stb
                             stbi__grow_buffer_unsafe(z);
                         }
 
-                        if (!(z.marker >= 0xd0 && z.marker <= 0xd7))
+                        if (!((z.marker >= 0xd0) && (z.marker <= 0xd7)))
                         {
                             return 1;
                         }
@@ -1174,7 +1186,9 @@ namespace Alis.Core.Graphic.Stb
         {
             int i = 0;
             for (i = 0; i < 64; ++i)
+            {
                 data[i] *= (short) dequant[i];
+            }
         }
 
         /// <summary>
@@ -1234,7 +1248,7 @@ namespace Alis.Core.Graphic.Stb
                         int sixteen = p != 0 ? 1 : 0;
                         int t = q & 15;
                         int i = 0;
-                        if (p != 0 && p != 1)
+                        if ((p != 0) && (p != 1))
                         {
                             return stbi__err("bad DQT type");
                         }
@@ -1245,8 +1259,11 @@ namespace Alis.Core.Graphic.Stb
                         }
 
                         for (i = 0; i < 64; ++i)
+                        {
                             z.dequant[t][stbi__jpeg_dezigzag[i]] =
                                 (ushort) (sixteen != 0 ? stbi__get16be(z.s) : stbi__get8(z.s));
+                        }
+
                         L -= sixteen != 0 ? 129 : 65;
                     }
 
@@ -1289,7 +1306,9 @@ namespace Alis.Core.Graphic.Stb
 
                                 byte* v = hptr->values;
                                 for (i = 0; i < n; ++i)
+                                {
                                     v[i] = stbi__get8(z.s);
+                                }
                             }
                         }
                         else
@@ -1303,7 +1322,9 @@ namespace Alis.Core.Graphic.Stb
 
                                 byte* v = aptr->values;
                                 for (i = 0; i < n; ++i)
+                                {
                                     v[i] = stbi__get8(z.s);
+                                }
                             }
                         }
 
@@ -1321,7 +1342,7 @@ namespace Alis.Core.Graphic.Stb
                     return L == 0 ? 1 : 0;
             }
 
-            if (m >= 0xE0 && m <= 0xEF || m == 0xFE)
+            if (((m >= 0xE0) && (m <= 0xEF)) || m == 0xFE)
             {
                 L = stbi__get16be(z.s);
                 if (L < 2)
@@ -1335,15 +1356,17 @@ namespace Alis.Core.Graphic.Stb
                 }
 
                 L -= 2;
-                if (m == 0xE0 && L >= 5)
+                if ((m == 0xE0) && (L >= 5))
                 {
                     int ok = 1;
                     int i = 0;
                     for (i = 0; i < 5; ++i)
+                    {
                         if (stbi__get8(z.s) != stbi__process_marker_tag[i])
                         {
                             ok = 0;
                         }
+                    }
 
                     L -= 5;
                     if (ok != 0)
@@ -1351,15 +1374,17 @@ namespace Alis.Core.Graphic.Stb
                         z.jfif = 1;
                     }
                 }
-                else if (m == 0xEE && L >= 12)
+                else if ((m == 0xEE) && (L >= 12))
                 {
                     int ok = 1;
                     int i = 0;
                     for (i = 0; i < 6; ++i)
+                    {
                         if (stbi__get8(z.s) != stbi__process_marker_tag[i])
                         {
                             ok = 0;
                         }
+                    }
 
                     L -= 6;
                     if (ok != 0)
@@ -1405,10 +1430,12 @@ namespace Alis.Core.Graphic.Stb
                 int which = 0;
                 int q = stbi__get8(z.s);
                 for (which = 0; which < z.s.img_n; ++which)
+                {
                     if (z.img_comp[which].id == id)
                     {
                         break;
                     }
+                }
 
                 if (which == z.s.img_n)
                 {
@@ -1551,7 +1578,7 @@ namespace Alis.Core.Graphic.Stb
             }
 
             c = stbi__get8(s);
-            if (c != 3 && c != 1 && c != 4)
+            if ((c != 3) && (c != 1) && (c != 4))
             {
                 return stbi__err("bad component count");
             }
@@ -1572,7 +1599,7 @@ namespace Alis.Core.Graphic.Stb
             for (i = 0; i < s.img_n; ++i)
             {
                 z.img_comp[i].id = stbi__get8(s);
-                if (s.img_n == 3 && z.img_comp[i].id == stbi__process_frame_header_rgb[i])
+                if ((s.img_n == 3) && (z.img_comp[i].id == stbi__process_frame_header_rgb[i]))
                 {
                     ++z.rgb;
                 }
@@ -1742,7 +1769,7 @@ namespace Alis.Core.Graphic.Stb
                     }
 
                     x = stbi__get8(j.s);
-                    if (x != 0x00 && x != 0xff)
+                    if ((x != 0x00) && (x != 0xff))
                     {
                         return x;
                     }
@@ -1774,6 +1801,7 @@ namespace Alis.Core.Graphic.Stb
 
             m = stbi__get_marker(j);
             while (!(m == 0xd9))
+            {
                 if (m == 0xda)
                 {
                     if (stbi__process_scan_header(j) == 0)
@@ -1792,7 +1820,7 @@ namespace Alis.Core.Graphic.Stb
                     }
 
                     m = stbi__get_marker(j);
-                    if (m >= 0xd0 && m <= 0xd7)
+                    if ((m >= 0xd0) && (m <= 0xd7))
                     {
                         m = stbi__get_marker(j);
                     }
@@ -1822,6 +1850,7 @@ namespace Alis.Core.Graphic.Stb
 
                     m = stbi__get_marker(j);
                 }
+            }
 
             if (j.progressive != 0)
             {
@@ -1855,7 +1884,9 @@ namespace Alis.Core.Graphic.Stb
         {
             int i = 0;
             for (i = 0; i < w; ++i)
+            {
                 _out_[i] = (byte) ((3 * in_near[i] + in_far[i] + 2) >> 2);
+            }
 
             return _out_;
         }
@@ -1942,7 +1973,9 @@ namespace Alis.Core.Graphic.Stb
             int j = 0;
             for (i = 0; i < w; ++i)
             for (j = 0; j < hs; ++j)
+            {
                 _out_[i * hs + j] = in_near[i];
+            }
 
             return _out_;
         }
@@ -2065,8 +2098,8 @@ namespace Alis.Core.Graphic.Stb
             }
 
             n = req_comp != 0 ? req_comp : z.s.img_n >= 3 ? 3 : 1;
-            is_rgb = z.s.img_n == 3 && (z.rgb == 3 || (z.app14_color_transform == 0 && z.jfif == 0)) ? 1 : 0;
-            if (z.s.img_n == 3 && n < 3 && is_rgb == 0)
+            is_rgb = (z.s.img_n == 3) && (z.rgb == 3 || ((z.app14_color_transform == 0) && (z.jfif == 0))) ? 1 : 0;
+            if ((z.s.img_n == 3) && (n < 3) && (is_rgb == 0))
             {
                 decode_n = 1;
             }
@@ -2108,19 +2141,19 @@ namespace Alis.Core.Graphic.Stb
                     r.w_lores = (int) ((z.s.img_x + r.hs - 1) / r.hs);
                     r.ypos = 0;
                     r.line0 = r.line1 = z.img_comp[k].data;
-                    if (r.hs == 1 && r.vs == 1)
+                    if ((r.hs == 1) && (r.vs == 1))
                     {
                         r.resample = resample_row_1;
                     }
-                    else if (r.hs == 1 && r.vs == 2)
+                    else if ((r.hs == 1) && (r.vs == 2))
                     {
                         r.resample = stbi__resample_row_v_2;
                     }
-                    else if (r.hs == 2 && r.vs == 1)
+                    else if ((r.hs == 2) && (r.vs == 1))
                     {
                         r.resample = stbi__resample_row_h_2;
                     }
-                    else if (r.hs == 2 && r.vs == 2)
+                    else if ((r.hs == 2) && (r.vs == 2))
                     {
                         r.resample = z.resample_row_hv_2_kernel;
                     }
@@ -2226,7 +2259,9 @@ namespace Alis.Core.Graphic.Stb
                             if (n == 1)
                             {
                                 for (i = 0; i < z.s.img_x; ++i)
+                                {
                                     *_out_++ = stbi__compute_y(coutput[0][i], coutput[1][i], coutput[2][i]);
+                                }
                             }
                             else
                             {
@@ -2237,7 +2272,7 @@ namespace Alis.Core.Graphic.Stb
                                 }
                             }
                         }
-                        else if (z.s.img_n == 4 && z.app14_color_transform == 0)
+                        else if ((z.s.img_n == 4) && (z.app14_color_transform == 0))
                         {
                             for (i = 0; i < z.s.img_x; ++i)
                             {
@@ -2250,7 +2285,7 @@ namespace Alis.Core.Graphic.Stb
                                 _out_ += n;
                             }
                         }
-                        else if (z.s.img_n == 4 && z.app14_color_transform == 2)
+                        else if ((z.s.img_n == 4) && (z.app14_color_transform == 2))
                         {
                             for (i = 0; i < z.s.img_x; ++i)
                             {
@@ -2265,7 +2300,9 @@ namespace Alis.Core.Graphic.Stb
                             if (n == 1)
                             {
                                 for (i = 0; i < z.s.img_x; ++i)
+                                {
                                     _out_[i] = y[i];
+                                }
                             }
                             else
                             {

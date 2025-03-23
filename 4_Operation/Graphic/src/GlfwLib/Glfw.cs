@@ -1724,7 +1724,10 @@ namespace Alis.Core.Graphic.GlfwLib
             IntPtr ptr = GetJoystickButtons(joystick, out int count);
             InputState[] states = new InputState[count];
             for (int i = 0; i < count; i++)
+            {
                 states[i] = (InputState) Marshal.ReadByte(ptr, i);
+            }
+
             return states;
         }
 
@@ -1817,7 +1820,10 @@ namespace Alis.Core.Graphic.GlfwLib
             IntPtr pointer = GetVideoModes(monitor, out int count);
             VideoMode[] modes = new VideoMode[count];
             for (int i = 0; i < count; i++, pointer += Marshal.SizeOf<VideoMode>())
+            {
                 modes[i] = Marshal.PtrToStructure<VideoMode>(pointer);
+            }
+
             return modes;
         }
 

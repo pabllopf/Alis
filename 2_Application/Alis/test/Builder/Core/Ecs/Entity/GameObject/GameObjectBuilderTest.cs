@@ -60,7 +60,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
             GameObjectBuilder gameObjectBuilder = new GameObjectBuilder(videoGameBuilder.Context);
 
-           Alis.Core.EcsOld.Entity.GameObject gameObject = gameObjectBuilder.Build();
+            Alis.Core.EcsOld.Entity.GameObject gameObject = gameObjectBuilder.Build();
 
             Assert.NotNull(gameObject);
         }

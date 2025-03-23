@@ -42,7 +42,8 @@ namespace System
         /// <param name="value">The index value. it has to be zero or positive number.</param>
         /// <param name="fromEnd">Indicating if the index is from the start or from the end.</param>
         /// <remarks>
-        /// If the Index constructed from the end, index value 1 means pointing at the last element and index value 0 means pointing at beyond last element.
+        ///     If the Index constructed from the end, index value 1 means pointing at the last element and index value 0 means
+        ///     pointing at beyond last element.
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Index(int value, bool fromEnd = false)
@@ -53,16 +54,17 @@ namespace System
             }
 
             if (fromEnd)
+            {
                 _value = ~value;
+            }
             else
+            {
                 _value = value;
+            }
         }
 
         // The following private constructors mainly created for perf reason to avoid the checks
-        private Index(int value)
-        {
-            _value = value;
-        }
+        private Index(int value) => _value = value;
 
         /// <summary>Create an Index pointing at first element.</summary>
         public static Index Start => new Index(0);
@@ -102,9 +104,11 @@ namespace System
             get
             {
                 if (_value < 0)
+                {
                     return ~_value;
-                else
-                    return _value;
+                }
+
+                return _value;
             }
         }
 
@@ -114,10 +118,12 @@ namespace System
         /// <summary>Calculate the offset from the start using the giving collection length.</summary>
         /// <param name="length">The length of the collection that the Index will be used with. length has to be a positive value</param>
         /// <remarks>
-        /// For performance reason, we don't validate the input length parameter and the returned offset value against negative values.
-        /// we don't validate either the returned offset is greater than the input length.
-        /// It is expected Index will be used with collections which always have non negative length/count. If the returned offset is negative and
-        /// then used to index a collection will get out of range exception which will be same affect as the validation.
+        ///     For performance reason, we don't validate the input length parameter and the returned offset value against negative
+        ///     values.
+        ///     we don't validate either the returned offset is greater than the input length.
+        ///     It is expected Index will be used with collections which always have non negative length/count. If the returned
+        ///     offset is negative and
+        ///     then used to index a collection will get out of range exception which will be same affect as the validation.
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public int GetOffset(int length)
@@ -127,12 +133,13 @@ namespace System
             {
                 offset += length + 1;
             }
+
             return offset;
         }
 
         /// <summary>Indicates whether the current Index object is equal to another object of the same type.</summary>
         /// <param name="value">An object to compare with this object</param>
-        public override bool Equals( object? value) => value is Index && _value == ((Index)value)._value;
+        public override bool Equals(object? value) => value is Index && (_value == ((Index) value)._value);
 
         /// <summary>Indicates whether the current Index object is equal to another Index object.</summary>
         /// <param name="other">An object to compare with this object</param>
@@ -148,9 +155,11 @@ namespace System
         public override string ToString()
         {
             if (IsFromEnd)
+            {
                 return ToStringFromEnd();
+            }
 
-            return ((uint)Value).ToString();
+            return ((uint) Value).ToString();
         }
 
         private static void ThrowValueArgumentOutOfRange_NeedNonNegNumException()

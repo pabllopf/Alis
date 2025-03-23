@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-using System;
-
+using System.Runtime.CompilerServices;
 
 namespace Alis.Core.Aspect.Math.Util
 {
@@ -285,7 +283,7 @@ namespace Alis.Core.Aspect.Math.Util
         /// <param name="other">The other quaternion.</param>
         /// <returns><see langword="true" /> if the two quaternions are equal; otherwise, <see langword="false" />.</returns>
         /// <remarks>Two quaternions are equal if each of their corresponding components is equal.</remarks>
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private readonly bool Equals(Quaternion other)
         {
             return SoftwareFallback(in this, other);

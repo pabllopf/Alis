@@ -1,8 +1,36 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:FastStack.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Buffers;
@@ -11,71 +39,79 @@ using Alis.Core.Ecs.Core.Memory;
 namespace Alis.Core.Ecs.Collections
 {
     /// <summary>
-    /// The fast stack
+    ///     The fast stack
     /// </summary>
     internal struct FastStack<T>(int initalComponents) : IEnumerable<T>
     {
         /// <summary>
-        /// Creates the inital components
+        ///     Creates the inital components
         /// </summary>
         /// <param name="initalComponents">The inital components</param>
         /// <returns>A fast stack of t</returns>
         [DebuggerStepThrough]
         public static FastStack<T> Create(int initalComponents) => new FastStack<T>(initalComponents);
+
         /// <summary>
-        /// Creates the inital buffer
+        ///     Creates the inital buffer
         /// </summary>
         /// <param name="initalBuffer">The inital buffer</param>
         /// <returns>A fast stack of t</returns>
-        public static FastStack<T> Create(T[] initalBuffer) => new FastStack<T>()
+        public static FastStack<T> Create(T[] initalBuffer) => new FastStack<T>
         {
             _buffer = initalBuffer
         };
 
         /// <summary>
-        /// The inital components
+        ///     The inital components
         /// </summary>
         private T[] _buffer = new T[initalComponents];
+
         /// <summary>
-        /// The next index
+        ///     The next index
         /// </summary>
         private int _nextIndex = 0;
 
         /// <summary>
-        /// Gets the value of the count
+        ///     Gets the value of the count
         /// </summary>
         public readonly int Count => _nextIndex;
+
         /// <summary>
-        /// Gets the value of the top
+        ///     Gets the value of the top
         /// </summary>
         public readonly T Top => _buffer[_nextIndex - 1];
+
         /// <summary>
-        /// Gets the value of the has elements
+        ///     Gets the value of the has elements
         /// </summary>
         public readonly bool HasElements => _nextIndex > 0;
 
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public readonly ref T this[int i] => ref _buffer[i];
 
 
         /// <summary>
-        /// Pushes the comp
+        ///     Pushes the comp
         /// </summary>
         /// <param name="comp">The comp</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Push(T comp)
         {
             var buffer = _buffer;
-            if ((uint)_nextIndex < (uint)buffer.Length)
+            if ((uint) _nextIndex < (uint) buffer.Length)
+            {
                 buffer[_nextIndex++] = comp;
+            }
             else
+            {
                 ResizeAndPush(comp);
+            }
         }
 
         /// <summary>
-        /// Resizes the and push using the specified comp
+        ///     Resizes the and push using the specified comp
         /// </summary>
         /// <param name="comp">The comp</param>
         private void ResizeAndPush(in T comp)
@@ -85,12 +121,12 @@ namespace Alis.Core.Ecs.Collections
         }
 
         /// <summary>
-        /// Compacts this instance
+        ///     Compacts this instance
         /// </summary>
         public void Compact() => Array.Resize(ref _buffer, _nextIndex);
 
         /// <summary>
-        /// Pops this instance
+        ///     Pops this instance
         /// </summary>
         /// <returns>The next</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -99,25 +135,30 @@ namespace Alis.Core.Ecs.Collections
             var buffer = _buffer;
             var next = buffer[--_nextIndex];
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
-                buffer[_nextIndex] = default!;
+            {
+                buffer[_nextIndex] = default(T)!;
+            }
+
             return next;
         }
 
         /// <summary>
-        /// Tries the pop using the specified value
+        ///     Tries the pop using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <exception cref="NotImplementedException"></exception>
         /// <returns>The bool</returns>
         [DebuggerStepThrough]
-        public bool TryPop( out T? value)
+        public bool TryPop(out T? value)
         {
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+            {
                 throw new NotImplementedException();
+            }
 
             if (_nextIndex == 0)
             {
-                value = default;
+                value = default(T);
                 return false;
             }
 
@@ -128,7 +169,7 @@ namespace Alis.Core.Ecs.Collections
         }
 
         /// <summary>
-        /// Removes the at replace using the specified index
+        ///     Removes the at replace using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         public void RemoveAtReplace(int index)
@@ -140,87 +181,101 @@ namespace Alis.Core.Ecs.Collections
             {
                 buffer[index] = buffer[--_nextIndex];
                 if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
-                    buffer[_nextIndex] = default!;
+                {
+                    buffer[_nextIndex] = default(T)!;
+                }
             }
         }
 
 
         /// <summary>
-        /// DO NOT ALTER WHILE SPAN IS IN USE
+        ///     DO NOT ALTER WHILE SPAN IS IN USE
         /// </summary>
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
-    public readonly Span<T> AsSpan() => _buffer.AsSpan(0, _nextIndex);
+        public readonly Span<T> AsSpan() => _buffer.AsSpan(0, _nextIndex);
 #else
         public readonly Span<T> AsSpan() => MemoryMarshal.CreateSpan(ref MemoryMarshal.GetArrayDataReference(_buffer), _nextIndex);
 #endif
 
         /// <summary>
-        /// Clears this instance
+        ///     Clears this instance
         /// </summary>
         public void Clear()
         {
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+            {
                 AsSpan().Clear();
+            }
+
             _nextIndex = 0;
         }
 
         /// <summary>
-        /// Clears the without clearing gc references
+        ///     Clears the without clearing gc references
         /// </summary>
         public void ClearWithoutClearingGCReferences() => _nextIndex = 0;
 
         /// <summary>
-        /// Gets the enumerator
+        ///     Gets the enumerator
         /// </summary>
         /// <returns>An enumerator of t</returns>
         readonly IEnumerator<T> IEnumerable<T>.GetEnumerator() => GetEnumerator();
+
         /// <summary>
-        /// Gets the enumerator
+        ///     Gets the enumerator
         /// </summary>
         /// <returns>The enumerator</returns>
         readonly IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
         /// <summary>
-        /// Gets the enumerator
+        ///     Gets the enumerator
         /// </summary>
         /// <returns>The fast stack enumerator</returns>
         public readonly FastStackEnumerator GetEnumerator() => new(this);
 
         /// <summary>
-        /// The fast stack enumerator
+        ///     The fast stack enumerator
         /// </summary>
         public struct FastStackEnumerator(FastStack<T> stack) : IEnumerator<T>
         {
             /// <summary>
-            /// The buffer
+            ///     The buffer
             /// </summary>
             private T[] _elements = stack._buffer;
+
             /// <summary>
-            /// The next index
+            ///     The next index
             /// </summary>
-            private int _max = stack._nextIndex;
+            private readonly int _max = stack._nextIndex;
+
             /// <summary>
-            /// The index
+            ///     The index
             /// </summary>
             private int _index = -1;
+
             /// <summary>
-            /// Gets the value of the current
+            ///     Gets the value of the current
             /// </summary>
             public readonly T Current => _elements[_index];
+
             /// <summary>
-            /// Gets the value of the current
+            ///     Gets the value of the current
             /// </summary>
             readonly object? IEnumerator.Current => _elements[_index];
+
             /// <summary>
-            /// Disposes this instance
+            ///     Disposes this instance
             /// </summary>
             public void Dispose() => _elements = null!;
+
             /// <summary>
-            /// Moves the next
+            ///     Moves the next
             /// </summary>
             /// <returns>The bool</returns>
             public bool MoveNext() => ++_index < _max;
+
             /// <summary>
-            /// Resets this instance
+            ///     Resets this instance
             /// </summary>
             public void Reset() => _index = -1;
         }
