@@ -51,7 +51,7 @@ namespace Alis.Core.Ecs.Updating.Runners
         /// <param name="b">The </param>
         internal override void Run(World world, Archetype b)
         {
-            ref EntityIDOnly entityIds = ref b.GetEntityDataReference();
+            ref EntityIdOnly entityIds = ref b.GetEntityDataReference();
             ref TComp comp = ref GetComponentStorageDataReference();
 
             Entity entity = world.DefaultWorldEntity;
@@ -92,7 +92,7 @@ namespace Alis.Core.Ecs.Updating.Runners
         /// <param name="b">The </param>
         internal override void Run(World world, Archetype b)
         {
-            ref EntityIDOnly entityIds = ref b.GetEntityDataReference();
+            ref EntityIdOnly entityIds = ref b.GetEntityDataReference();
             ref TComp comp = ref GetComponentStorageDataReference();
 
             ref TArg arg = ref b.GetComponentDataReference<TArg>();

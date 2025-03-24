@@ -109,7 +109,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         ///     Note! Entity location version is not set!
         /// </summary>
         
-        internal ref EntityIDOnly CreateEntityLocation(EntityFlags flags, out EntityLocation entityLocation)
+        internal ref EntityIdOnly CreateEntityLocation(EntityFlags flags, out EntityLocation entityLocation)
         {
             if (_entities.Length == _nextComponentIndex)
             {
@@ -128,7 +128,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         ///     Caller needs write archetype field
         /// </summary>
         
-        internal ref EntityIDOnly CreateDeferredEntityLocation(World world, scoped ref EntityLocation entityLocation, out int physicalIndex, out ComponentStorageBase[] writeStorage)
+        internal ref EntityIdOnly CreateDeferredEntityLocation(World world, scoped ref EntityLocation entityLocation, out int physicalIndex, out ComponentStorageBase[] writeStorage)
         {
             if (_deferredEntityCount == 0)
             {
@@ -188,7 +188,7 @@ namespace Alis.Core.Ecs.Core.Archetype
 
             _nextComponentIndex += _deferredEntityCount;
 
-            EntityIDOnly[] entities = _entities;
+            EntityIdOnly[] entities = _entities;
             EntityLocation[] table = world.EntityTable._buffer;
             int sizeEntities = entities.Length;
             for (int i = previousComponentCount; (i < sizeEntities) && (i < _nextComponentIndex); i++)
@@ -205,21 +205,21 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// <param name="count">The count</param>
         /// <param name="world">The world</param>
         /// <returns>The entity span</returns>
-        internal Span<EntityIDOnly> CreateEntityLocations(int count, World world)
+        internal Span<EntityIdOnly> CreateEntityLocations(int count, World world)
         {
             int newLen = _nextComponentIndex + count;
             EnsureCapacity(newLen);
 
-            Span<EntityIDOnly> entitySpan = _entities.AsSpan(_nextComponentIndex, count);
+            Span<EntityIdOnly> entitySpan = _entities.AsSpan(_nextComponentIndex, count);
 
             int componentIndex = _nextComponentIndex;
-            ref FastStack<EntityIDOnly> recycled = ref world.RecycledEntityIds;
+            ref FastStack<EntityIdOnly> recycled = ref world.RecycledEntityIds;
             int size = entitySpan.Length;
             for (int i = 0; i < size; i++)
             {
-                ref EntityIDOnly archetypeEntity = ref entitySpan[i];
+                ref EntityIdOnly archetypeEntity = ref entitySpan[i];
 
-                archetypeEntity = recycled.CanPop() ? recycled.Pop() : new EntityIDOnly(world.NextEntityID++, 0);
+                archetypeEntity = recycled.CanPop() ? recycled.Pop() : new EntityIdOnly(world.NextEntityID++, 0);
 
                 ref EntityLocation lookup = ref world.EntityTable.UnsafeIndexNoResize(archetypeEntity.ID);
 
@@ -276,7 +276,7 @@ namespace Alis.Core.Ecs.Core.Archetype
                 return;
             }
 
-            ComponentArrayPool<EntityIDOnly>.ResizeArrayFromPool(ref _entities, count);
+            ComponentArrayPool<EntityIdOnly>.ResizeArrayFromPool(ref _entities, count);
             ComponentStorageBase[] runners = Components;
             int size = runners.Length;
             for (int i = 1; i < size; i++)
@@ -288,7 +288,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// <summary>
         ///     This method doesn't modify component storages
         /// </summary>
-        internal EntityIDOnly DeleteEntityFromStorage(int index, out int deletedIndex)
+        internal EntityIdOnly DeleteEntityFromStorage(int index, out int deletedIndex)
         {
             deletedIndex = --_nextComponentIndex;
             return _entities.UnsafeArrayIndex(index) = _entities.UnsafeArrayIndex(_nextComponentIndex);
@@ -299,7 +299,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The entity id only</returns>
-        internal EntityIDOnly DeleteEntity(int index)
+        internal EntityIdOnly DeleteEntity(int index)
         {
             _nextComponentIndex--;
             //TODO: args
@@ -462,7 +462,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         ///     Gets the entity span
         /// </summary>
         /// <returns>A span of entity id only</returns>
-        internal Span<EntityIDOnly> GetEntitySpan()
+        internal Span<EntityIdOnly> GetEntitySpan()
         {
             #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
             return _entities.AsSpan(0, _nextComponentIndex);
@@ -475,7 +475,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         ///     Gets the entity data reference
         /// </summary>
         /// <returns>The ref entity id only</returns>
-        internal ref EntityIDOnly GetEntityDataReference() => ref MemoryMarshal.GetArrayDataReference(_entities);
+        internal ref EntityIdOnly GetEntityDataReference() => ref MemoryMarshal.GetArrayDataReference(_entities);
 
         /// <summary>
         ///     The fields

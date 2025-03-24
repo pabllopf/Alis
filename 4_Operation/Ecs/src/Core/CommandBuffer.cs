@@ -66,7 +66,7 @@ namespace Alis.Core.Ecs.Core
         /// <summary>
         ///     The create
         /// </summary>
-        internal FastStack<EntityIDOnly> _deleteEntityBuffer = FastStack<EntityIDOnly>.Create(4);
+        internal FastStack<EntityIdOnly> _deleteEntityBuffer = FastStack<EntityIdOnly>.Create(4);
 
         /// <summary>
         ///     The is inactive
@@ -190,7 +190,7 @@ namespace Alis.Core.Ecs.Core
 
             while (_createEntityBuffer.TryPop(out CreateCommand createCommand))
             {
-                EntityIDOnly item = createCommand.Entity;
+                EntityIdOnly item = createCommand.Entity;
                 ref EntityLocation record = ref _world.EntityTable[item.ID];
                 if (record.Version == item.Version)
                 {
@@ -241,7 +241,7 @@ namespace Alis.Core.Ecs.Core
                 _world.InvokeEntityCreated(concrete);
             }
 
-            while (_deleteEntityBuffer.TryPop(out EntityIDOnly item))
+            while (_deleteEntityBuffer.TryPop(out EntityIdOnly item))
             {
                 //double check that its alive
                 ref EntityLocation record = ref _world.EntityTable[item.ID];

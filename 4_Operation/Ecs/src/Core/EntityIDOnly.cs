@@ -35,7 +35,7 @@ namespace Alis.Core.Ecs.Core
     ///     The entity id only
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 2)]
-    internal struct EntityIDOnly(int id, ushort version)
+    internal struct EntityIdOnly(int id, ushort version)
     {
         /// <summary>
         ///     The id
@@ -92,7 +92,7 @@ namespace Alis.Core.Ecs.Core
         /// </summary>
         /// <param name="entity">The entity</param>
         
-        internal void Init(EntityIDOnly entity)
+        internal void Init(EntityIdOnly entity)
         {
             Version = entity.Version;
             ID = entity.ID;

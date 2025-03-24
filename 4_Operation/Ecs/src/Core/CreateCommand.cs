@@ -5,5 +5,5 @@ namespace Alis.Core.Ecs.Core
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     [SkipLocalsInit]
-    internal readonly record struct CreateCommand(EntityIDOnly Entity, int BufferIndex, int BufferLength);
+    internal readonly record struct CreateCommand(EntityIdOnly Entity, int BufferIndex, int BufferLength);
 }

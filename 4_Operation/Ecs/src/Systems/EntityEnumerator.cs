@@ -47,7 +47,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The entities
         /// </summary>
-        private readonly Span<EntityIDOnly> _entities;
+        private readonly Span<EntityIdOnly> _entities;
 
         /// <summary>
         ///     The index
@@ -59,7 +59,7 @@ namespace Alis.Core.Ecs.Systems
         /// </summary>
         /// <param name="world">The world</param>
         /// <param name="entities">The entities</param>
-        internal EntityEnumerator(World world, Span<EntityIDOnly> entities)
+        internal EntityEnumerator(World world, Span<EntityIdOnly> entities)
         {
             _world = world;
             _entities = entities;
@@ -91,14 +91,14 @@ namespace Alis.Core.Ecs.Systems
             /// <summary>
             ///     The entities
             /// </summary>
-            private readonly Span<EntityIDOnly> _entities;
+            private readonly Span<EntityIdOnly> _entities;
 
             /// <summary>
             ///     Initializes a new instance of the <see cref="EntityEnumerable" /> class
             /// </summary>
             /// <param name="world">The world</param>
             /// <param name="entities">The entities</param>
-            internal EntityEnumerable(World world, Span<EntityIDOnly> entities)
+            internal EntityEnumerable(World world, Span<EntityIdOnly> entities)
             {
                 _world = world;
                 _entities = entities;

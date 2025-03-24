@@ -77,7 +77,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The entity id only
         /// </summary>
-        internal FastStack<EntityIDOnly> RecycledEntityIds = new FastStack<EntityIDOnly>(256);
+        internal FastStack<EntityIdOnly> RecycledEntityIds = new FastStack<EntityIdOnly>(256);
 
         /// <summary>
         ///     The updates by attributes
@@ -305,7 +305,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The event lookup
         /// </summary>
-        internal Dictionary<EntityIDOnly, EventRecord> EventLookup = [];
+        internal Dictionary<EntityIdOnly, EventRecord> EventLookup = [];
 
         /// <summary>
         ///     The current uniform provider used when updating components/queries with uniforms.
@@ -369,7 +369,7 @@ namespace Alis.Core.Ecs
         /// <returns>The entity</returns>
         internal Entity CreateEntityFromLocation(EntityLocation entityLocation)
         {
-            (int id, ushort version) = RecycledEntityIds.TryPop(out EntityIDOnly v) ? v : new EntityIDOnly(NextEntityID++, 0);
+            (int id, ushort version) = RecycledEntityIds.TryPop(out EntityIdOnly v) ? v : new EntityIdOnly(NextEntityID++, 0);
             entityLocation.Version = version;
             EntityTable[id] = entityLocation;
             return new Entity(ID, version, id);
@@ -570,7 +570,7 @@ namespace Alis.Core.Ecs
         /// <param name="exists">The exists</param>
         /// <returns>The ref event record</returns>
         
-        internal ref EventRecord TryGetEventData(EntityLocation entityLocation, EntityIDOnly entity, EntityFlags eventType, out bool exists)
+        internal ref EventRecord TryGetEventData(EntityLocation entityLocation, EntityIdOnly entity, EntityFlags eventType, out bool exists)
         {
             if (entityLocation.HasEvent(eventType))
             {
@@ -639,7 +639,7 @@ namespace Alis.Core.Ecs
 
             Archetype archetype = Archetype.CreateOrGetExistingArchetype(types!, [], this);
 
-            ref EntityIDOnly entityID = ref archetype.CreateEntityLocation(EntityFlags.None, out EntityLocation loc);
+            ref EntityIdOnly entityID = ref archetype.CreateEntityLocation(EntityFlags.None, out EntityLocation loc);
             Entity entity = CreateEntityFromLocation(loc);
             entityID.ID = entity.EntityID;
             entityID.Version = entity.EntityVersion;
@@ -672,9 +672,9 @@ namespace Alis.Core.Ecs
         /// <returns>The entity</returns>
         internal Entity CreateEntityWithoutEvent()
         {
-            ref EntityIDOnly entity = ref DefaultArchetype.CreateEntityLocation(EntityFlags.None, out EntityLocation eloc);
+            ref EntityIdOnly entity = ref DefaultArchetype.CreateEntityLocation(EntityFlags.None, out EntityLocation eloc);
 
-            (int id, ushort version) = entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.Pop() : new EntityIDOnly(NextEntityID++, 0);
+            (int id, ushort version) = entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.Pop() : new EntityIdOnly(NextEntityID++, 0);
             eloc.Version = version;
             EntityTable[id] = eloc;
 
@@ -782,7 +782,7 @@ namespace Alis.Core.Ecs
             destination.CreateEntityLocation(currentLookup.Flags, out nextLocation).Init(entity);
             nextLocation.Version = currentLookup.Version;
 
-            EntityIDOnly movedDown = from.DeleteEntityFromStorage(currentLookup.Index, out int deletedIndex);
+            EntityIdOnly movedDown = from.DeleteEntityFromStorage(currentLookup.Index, out int deletedIndex);
 
             ComponentStorageBase[] fromRunners = from.Components;
             ComponentStorageBase[] destRunners = destination.Components;
@@ -829,7 +829,7 @@ namespace Alis.Core.Ecs
             destination.CreateEntityLocation(currentLookup.Flags, out EntityLocation nextLocation).Init(entity);
             nextLocation.Version = currentLookup.Version;
 
-            EntityIDOnly movedDown = from.DeleteEntityFromStorage(currentLookup.Index, out int deletedIndex);
+            EntityIdOnly movedDown = from.DeleteEntityFromStorage(currentLookup.Index, out int deletedIndex);
 
             ComponentStorageBase[] fromRunners = from.Components;
             ComponentStorageBase[] destRunners = destination.Components;
@@ -927,7 +927,7 @@ namespace Alis.Core.Ecs
             destination.CreateEntityLocation(currentLookup.Flags, out EntityLocation nextLocation).Init(entity);
             nextLocation.Version = currentLookup.Version;
 
-            EntityIDOnly movedDown = from.DeleteEntityFromStorage(currentLookup.Index, out int deletedIndex);
+            EntityIdOnly movedDown = from.DeleteEntityFromStorage(currentLookup.Index, out int deletedIndex);
             
             ComponentStorageBase[] fromRunners = from.Components;
             ComponentStorageBase[] destRunners = destination.Components;
@@ -1003,7 +1003,7 @@ namespace Alis.Core.Ecs
         internal void DeleteEntityWithoutEvents(Entity entity, ref EntityLocation currentLookup)
         {
             //entity is guaranteed to be alive here
-            EntityIDOnly replacedEntity = currentLookup.Archetype.DeleteEntity(currentLookup.Index);
+            EntityIdOnly replacedEntity = currentLookup.Archetype.DeleteEntity(currentLookup.Index);
 
             ref EntityLocation replaced = ref EntityTable.UnsafeIndexNoResize(replacedEntity.ID);
             replaced = currentLookup;
@@ -1013,7 +1013,7 @@ namespace Alis.Core.Ecs
            if (entity.EntityVersion != ushort.MaxValue - 1)
            {
                // can't use max value as an ID, as it is used as a default value
-               EntityIDOnly id = entity.EntityIDOnly;
+               EntityIdOnly id = entity.EntityIDOnly;
                id.Version++;
                RecycledEntityIds.Push(id);
            }
@@ -1028,7 +1028,7 @@ namespace Alis.Core.Ecs
         {
             Archetype archetype = Archetype<T>.CreateNewOrGetExistingArchetype(this);
 
-            ref EntityIDOnly entity = ref Unsafe.NullRef<EntityIDOnly>();
+            ref EntityIdOnly entity = ref Unsafe.NullRef<EntityIdOnly>();
             EntityLocation eloc = default(EntityLocation);
 
             ComponentStorageBase[] components;
@@ -1083,11 +1083,11 @@ namespace Alis.Core.Ecs
 
             EntityTable.EnsureCapacity(EntityCount + count);
 
-            Span<EntityIDOnly> entities = archetype.CreateEntityLocations(count, this);
+            Span<EntityIdOnly> entities = archetype.CreateEntityLocations(count, this);
 
             if (EntityCreatedEvent.HasListeners)
             {
-                foreach (EntityIDOnly entity in entities)
+                foreach (EntityIdOnly entity in entities)
                 {
                     EntityCreatedEvent.Invoke(entity.ToEntity(this));
                 }
