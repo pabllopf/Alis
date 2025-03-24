@@ -935,8 +935,7 @@ namespace Alis.Core.Ecs
             nextLocation.Version = currentLookup.Version;
 
             EntityIDOnly movedDown = from.DeleteEntityFromStorage(currentLookup.Index, out int deletedIndex);
-
-
+            
             ComponentStorageBase[] fromRunners = from.Components;
             ComponentStorageBase[] destRunners = destination.Components;
             byte[] destMap = destination.ComponentTagTable;
@@ -956,13 +955,8 @@ namespace Alis.Core.Ecs
             EntityTable.UnsafeIndexNoResize(movedDown.ID) = currentLookup;
             currentLookup = nextLocation;
         }
-        /*
-         *  This file contains all core functions related to structual changes on the world
-         *  The only core structual change function not here is the normal create function, since it needs to be source generated
-         *  These functions take all the data it needs, with no validation that an entity is alive
-         */
 
-
+        
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
         [ThreadStatic] private static readonly ComponentHandle[] _sharedOneElementComponentHandle = new ComponentHandle[1];
 
