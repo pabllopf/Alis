@@ -62,7 +62,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The entity location
         /// </summary>
-        internal FastTableSafe<EntityLocation> EntityTable = new FastTableSafe<EntityLocation>(256);
+        internal TheBestTable<EntityLocation> EntityTable = new TheBestTable<EntityLocation>(256);
 
         //archetype ID -> Archetype?
         /// <summary>
