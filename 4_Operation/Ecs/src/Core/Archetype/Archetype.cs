@@ -258,12 +258,11 @@ namespace Alis.Core.Ecs.Core.Archetype
         private void Resize(int newLen)
         {
             Array.Resize(ref _entities, newLen);
-            int size = Components.Length;
-            
-            ref ComponentStorageBase firstRunner = ref MemoryMarshal.GetArrayDataReference(Components);
+            ComponentStorageBase[] runners = Components;
+            int size = runners.Length;
             for (int i = 1; i < size; i++)
             {
-                Unsafe.Add(ref firstRunner, i).ResizeBuffer(newLen);
+                runners[i].ResizeBuffer(newLen);
             }
         }
 
