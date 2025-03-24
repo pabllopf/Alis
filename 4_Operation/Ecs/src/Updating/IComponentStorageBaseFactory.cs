@@ -16,6 +16,6 @@ namespace Alis.Core.Ecs.Updating
         /// <summary>
         ///     Used only in source generation
         /// </summary>
-        internal IDTable CreateStack();
+        internal IdTable CreateStack();
     }
 }

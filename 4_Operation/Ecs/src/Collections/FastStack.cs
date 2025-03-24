@@ -701,7 +701,7 @@ namespace Alis.Core.Ecs.Collections
         internal static T[] ToArray<T>(IEnumerable<T> source, out int length)
         {
             // Copied from Array.MaxLength in System.Private.CoreLib/src/libraries/System.Private.CoreLib/src/System/Array.cs
-            const int ArrayMaxLength = 0X7FFFFFC7;
+            const int arrayMaxLength = 0X7FFFFFC7;
             
             if (source is ICollection<T> ic)
             {
@@ -726,8 +726,8 @@ namespace Alis.Core.Ecs.Collections
                 {
                     if (en.MoveNext())
                     {
-                        const int DefaultCapacity = 4;
-                        T[] arr = new T[DefaultCapacity];
+                        const int defaultCapacity = 4;
+                        T[] arr = new T[defaultCapacity];
                         arr[0] = en.Current;
                         int count = 1;
 
@@ -742,9 +742,9 @@ namespace Alis.Core.Ecs.Collections
                                 // constrain the length to be Array.MaxLength (this overflow check works because of the
                                 // cast to uint).
                                 int newLength = count << 1;
-                                if ((uint)newLength > ArrayMaxLength)
+                                if ((uint)newLength > arrayMaxLength)
                                 {
-                                    newLength = ArrayMaxLength <= count ? count + 1 : ArrayMaxLength;
+                                    newLength = arrayMaxLength <= count ? count + 1 : arrayMaxLength;
                                 }
 
                                 Array.Resize(ref arr, newLength);

@@ -16,7 +16,7 @@ namespace Alis.Core.Ecs.Updating.Runners
         ///     Creates the stack
         /// </summary>
         /// <returns>The id table</returns>
-        IDTable IComponentStorageBaseFactory.CreateStack() => new IDTable<T>();
+        IdTable IComponentStorageBaseFactory.CreateStack() => new IdTable<T>();
 
         /// <summary>
         ///     Creates the strongly typed using the specified capacity

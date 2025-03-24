@@ -123,9 +123,9 @@ namespace Alis.Core.Ecs.Updating
         /// <param name="storage">The storage</param>
         /// <param name="me">The me</param>
         /// <param name="other">The other</param>
-        internal override void PullComponentFrom(IDTable storage, int me, int other)
+        internal override void PullComponentFrom(IdTable storage, int me, int other)
         {
-            ref TComponent item = ref ((IDTable<TComponent>) storage).Buffer[other];
+            ref TComponent item = ref ((IdTable<TComponent>) storage).Buffer[other];
             this[me] = item;
 
             if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())

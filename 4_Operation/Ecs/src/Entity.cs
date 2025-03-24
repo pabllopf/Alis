@@ -658,7 +658,7 @@ namespace Alis.Core.Ecs
                 return false;
             }
 
-            ArchetypeID archetype = w.AddTagLookup.FindAdjacentArchetypeID(tagID, lookup.Archetype.ID, World, ArchetypeEdgeType.AddTag);
+            ArchetypeID archetype = w.AddTagLookup.FindAdjacentArchetypeId(tagID, lookup.Archetype.ID, World, ArchetypeEdgeType.AddTag);
             w.MoveEntityToArchetypeIso(this, ref lookup, archetype.Archetype(w));
 
             return true;
@@ -696,7 +696,7 @@ namespace Alis.Core.Ecs
                 return false;
             }
 
-            ArchetypeID archetype = w.AddTagLookup.FindAdjacentArchetypeID(tagID, lookup.Archetype.ID, World, ArchetypeEdgeType.RemoveTag);
+            ArchetypeID archetype = w.AddTagLookup.FindAdjacentArchetypeId(tagID, lookup.Archetype.ID, World, ArchetypeEdgeType.RemoveTag);
             w.MoveEntityToArchetypeIso(this, ref lookup, archetype.Archetype(w));
 
             return true;

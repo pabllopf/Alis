@@ -73,7 +73,7 @@ namespace Alis.Core.Ecs.Collections
         /// <param name="edgeType">The edge type</param>
         /// <returns>The entity type</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public ArchetypeID FindAdjacentArchetypeID<T>(T id, EntityType archetype, World world, ArchetypeEdgeType edgeType)
+        public ArchetypeID FindAdjacentArchetypeId<T>(T id, EntityType archetype, World world, ArchetypeEdgeType edgeType)
             where T : ITypeID
         {
             uint key = GetKey(id.Value, archetype);
@@ -100,11 +100,11 @@ namespace Alis.Core.Ecs.Collections
         ///     Gets the key using the specified id
         /// </summary>
         /// <param name="id">The id</param>
-        /// <param name="archetypeID">The archetype id</param>
+        /// <param name="archetypeId">The archetype id</param>
         /// <returns>The key</returns>
-        public uint GetKey(ushort id, EntityType archetypeID)
+        public uint GetKey(ushort id, EntityType archetypeId)
         {
-            uint key = archetypeID.RawIndex | ((uint) id << 16);
+            uint key = archetypeId.RawIndex | ((uint) id << 16);
             return key;
         }
 

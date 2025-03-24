@@ -733,7 +733,7 @@ namespace Alis.Core.Ecs
         /// <param name="componentID">The component id</param>
         internal void RemoveComponent(Entity entity, ref EntityLocation lookup, ComponentID componentID)
         {
-            Archetype destination = RemoveComponentLookup.FindAdjacentArchetypeID(componentID, lookup.ArchetypeID, this, ArchetypeEdgeType.RemoveComponent)
+            Archetype destination = RemoveComponentLookup.FindAdjacentArchetypeId(componentID, lookup.ArchetypeID, this, ArchetypeEdgeType.RemoveComponent)
                 .Archetype(this);
 
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
@@ -757,7 +757,7 @@ namespace Alis.Core.Ecs
         /// <param name="entityLocation">The entity location</param>
         internal void AddComponent(Entity entity, ref EntityLocation lookup, ComponentID componentID, ref ComponentStorageBase runner, out EntityLocation entityLocation)
         {
-            Archetype destination = AddComponentLookup.FindAdjacentArchetypeID(componentID, lookup.ArchetypeID, this, ArchetypeEdgeType.AddComponent)
+            Archetype destination = AddComponentLookup.FindAdjacentArchetypeId(componentID, lookup.ArchetypeID, this, ArchetypeEdgeType.AddComponent)
                 .Archetype(this);
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
             MoveEntityToArchetypeAdd(_sharedOneElementComponentStorage, entity, ref lookup, out entityLocation, destination);

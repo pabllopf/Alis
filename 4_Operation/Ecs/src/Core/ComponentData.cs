@@ -34,5 +34,5 @@ using Alis.Core.Ecs.Collections;
 namespace Alis.Core.Ecs.Core
 {
     [StructLayout( LayoutKind.Auto )]
-    internal record struct ComponentData(Type Type, IDTable Storage, Delegate? Initer, Delegate? Destroyer);
+    internal record struct ComponentData(Type Type, IdTable Storage, Delegate? Initer, Delegate? Destroyer);
 }
