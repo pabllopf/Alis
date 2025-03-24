@@ -29,7 +29,6 @@
 
 using System;
 using System.Runtime.CompilerServices;
-using Alis.Benchmark.NativeCollections.NativeStack;
 using Alis.Core.Ecs.Core.Events;
 
 namespace Alis.Core.Ecs.Collections

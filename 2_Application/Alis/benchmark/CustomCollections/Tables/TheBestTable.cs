@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:NativeTable.cs
+//  File:TheBestTable.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -31,29 +31,27 @@ using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using Alis.Core.Ecs.Buffers;
+using Alis.Core.Ecs.Core.Memory;
 
 namespace Alis.Benchmark.CustomCollections.Tables
 {
     /// <summary>
-    /// The native table unsafe
+    /// The the best table
     /// </summary>
-    public unsafe struct NativeTableUnsafe<T> : IDisposable where T : struct
+    [StructLayout(LayoutKind.Sequential)]
+    public struct TheBestTable<T> : IDisposable where T : unmanaged
     {
-        /// <summary>
-        /// The 
-        /// </summary>
-        private static readonly nuint Size = (nuint) Unsafe.SizeOf<T>();
-
         /// <summary>
         /// The array
         /// </summary>
-        private T* _array;
-
+        private T[] _array;
+        
         /// <summary>
         /// The length
         /// </summary>
         private int _length;
-
+        
         /// <summary>
         /// The index
         /// </summary>
@@ -66,7 +64,7 @@ namespace Alis.Benchmark.CustomCollections.Tables
                     return ref ResizeFor(index);
                 }
 
-                return ref _array[index];
+                return ref _array.UnsafeArrayIndex(index);
             }
         }
 
@@ -75,63 +73,63 @@ namespace Alis.Benchmark.CustomCollections.Tables
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The ref</returns>
-        public ref T UnsafeIndexNoResize(int index)
-        {
-            return ref _array[index];
-        }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public ref T UnsafeIndexNoResize(int index) =>  ref _array.UnsafeArrayIndex(index);
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NativeTableUnsafe{T}"/> class
+        /// Initializes a new instance of the <see cref="TheBestTable"/> class
         /// </summary>
-        /// <param name="initalCapacity">The inital capacity</param>
+        /// <param name="initialCapacity">The initial capacity</param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         /// <exception cref="InvalidOperationException">Cannot store managed objects in native code</exception>
-        public NativeTableUnsafe(int initalCapacity)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public TheBestTable(int initialCapacity = 32)
         {
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
             {
                 throw new InvalidOperationException("Cannot store managed objects in native code");
             }
 
-            if (initalCapacity < 1)
+            if (initialCapacity < 1)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException(nameof(initialCapacity));
             }
 
-            _length = initalCapacity;
-            _array = (T*) NativeMemory.Alloc((nuint) initalCapacity * Size);
+            _length = initialCapacity;
+            _array = GC.AllocateUninitializedArray<T>(_length, pinned: false);
         }
 
         /// <summary>
         /// Disposes this instance
         /// </summary>
-        public void Dispose()
-        {
-            NativeMemory.Free(_array);
-            //null reference isnt as bad as a use after free, right?
-            _array = (T*) 0;
-        }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void Dispose() => FastStackArrayPool<T>.Instance.Return(_array, true);
 
         /// <summary>
         /// Resizes the for using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The ref</returns>
-        public ref T ResizeFor(int index)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private ref T ResizeFor(int index)
         {
-            _length = checked((int) BitOperations.RoundUpToPowerOf2((uint) (index + 1)));
-            _array = (T*) NativeMemory.Realloc(_array, (nuint) _length * Size);
-            return ref _array[index];
+            FastStackArrayPool<T>.ResizeArrayFromPool(ref _array, (int) BitOperations.RoundUpToPowerOf2((uint) (index + 1)));
+            return ref _array.UnsafeArrayIndex(index);
         }
 
         /// <summary>
         /// Ensures the capacity using the specified new capacity
         /// </summary>
-        /// <param name="newCapacity">The new capacity</param>
-        public void EnsureCapacity(int newCapacity)
+        /// <param name="size"></param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void EnsureCapacity(int size)
         {
-            _length = checked((int) BitOperations.RoundUpToPowerOf2((uint) newCapacity));
-            _array = (T*) NativeMemory.Realloc(_array, (nuint) _length * Size);
+            if (_array.Length >= size)
+            {
+                return;
+            }
+            
+            FastStackArrayPool<T>.ResizeArrayFromPool(ref _array, size);
         }
 
         /// <summary>
@@ -139,11 +137,6 @@ namespace Alis.Benchmark.CustomCollections.Tables
         /// </summary>
         /// <returns>A span of t</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public Span<T> AsSpan() => System.Runtime.InteropServices.MemoryMarshal.CreateSpan(ref Unsafe.AsRef<T>(_array), _length);
-
-        /// <summary>
-        /// Gets the value of the span
-        /// </summary>
-        internal Span<T> Span => AsSpan();
+        public Span<T> AsSpan() =>  MemoryMarshal.CreateSpan(ref MemoryMarshal.GetArrayDataReference(_array), _length);
     }
 }

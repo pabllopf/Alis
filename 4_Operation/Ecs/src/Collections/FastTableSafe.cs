@@ -32,41 +32,11 @@ using System.Buffers;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using Alis.Core.Ecs.Buffers;
+using Alis.Core.Ecs.Core.Archetype;
 
-namespace Alis.Benchmark.CustomCollections.Tables
+namespace Alis.Core.Ecs.Collections
 {
-    /// <summary>
-    /// The fast stack array pool class
-    /// </summary>
-    public static class FastStackArrayPool<T>
-    {
-        /// <summary>
-        /// Rents the size
-        /// </summary>
-        /// <param name="size">The size</param>
-        /// <returns>The array</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static T[] Rent(int size)
-        {
-            return ArrayPool<T>.Shared.Rent(size);
-        }
-
-        /// <summary>
-        /// Resizes the array from pool using the specified array
-        /// </summary>
-        /// <param name="array">The array</param>
-        /// <param name="newSize">The new size</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void ResizeArrayFromPool(ref T[] array, int newSize)
-        {
-            T[] newArray = ArrayPool<T>.Shared.Rent(newSize);
-            int copyLength = Math.Min(array.Length, newSize);
-            Array.Copy(array, newArray, copyLength);
-            ArrayPool<T>.Shared.Return(array, clearArray: true);
-            array = newArray;
-        }
-    }
-
     /// <summary>
     /// The fast table safe
     /// </summary>
@@ -84,7 +54,7 @@ namespace Alis.Benchmark.CustomCollections.Tables
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public FastTableSafe(int size)
         {
-            _buffer = size > 0 ? FastStackArrayPool<T>.Rent(size) : Array.Empty<T>();
+            _buffer = size > 0 ? FastStackArrayPool<T>.Instance.Rent(size) : Array.Empty<T>();
         }
 
         /// <summary>
@@ -140,5 +110,10 @@ namespace Alis.Benchmark.CustomCollections.Tables
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Span<T> AsSpan() => _buffer.AsSpan();
+
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
+        public void Dispose() => FastStackArrayPool<T>.Instance.Return(_buffer, true);
     }
 }

@@ -27,16 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Ecs.Collections;
 using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Order;
 
 namespace Alis.Benchmark.CustomCollections.Tables
 {
-    /// <summary>
+        /// <summary>
     /// The native array unsafe vs native array safe class
     /// </summary>
-     [MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]
+    [MemoryDiagnoser]
     public class NativeTableUnsafeVsNativeTableSafe
     {
         /// <summary>
@@ -60,6 +60,11 @@ namespace Alis.Benchmark.CustomCollections.Tables
         /// </summary>
         private FastTableSafe<int> fastTableSafe;
         
+        /// <summary>
+        /// The the best table
+        /// </summary>
+        private TheBestTable<int> theBestTable;
+        
         // Inicialización
         /// <summary>
         /// Setup this instance
@@ -70,6 +75,7 @@ namespace Alis.Benchmark.CustomCollections.Tables
             tablaUnsafe = new NativeTableUnsafe<int>(ArraySize);
             table = new Table<int>(ArraySize);
             fastTableSafe = new FastTableSafe<int>(ArraySize);
+            theBestTable = new TheBestTable<int>(ArraySize);
         }
         
         /// <summary>
@@ -80,7 +86,7 @@ namespace Alis.Benchmark.CustomCollections.Tables
         {
             for (int i = 0; i < ArraySize; i++)
             {
-                int value = tablaUnsafe.AsSpan()[i];
+                int value = tablaUnsafe[i];
             }
         }
         
@@ -106,6 +112,174 @@ namespace Alis.Benchmark.CustomCollections.Tables
             {
                 int value = fastTableSafe[i];
             }
+        }
+        
+        /// <summary>
+        /// Benchmarks the native array the best
+        /// </summary>
+        [Benchmark(Description = "[THE BEST] get value of the native array")]
+        public void BenchmarkNativeArrayTheBest()
+        {
+            for (int i = 0; i < ArraySize; i++)
+            {
+                int value = theBestTable[i];
+            }
+        }
+        
+        /// <summary>
+        /// Ensures the capacity of the unsafe table
+        /// </summary>
+        [Benchmark(Description = "[UNSAFE] ensure capacity")]
+        public void BenchmarkEnsureCapacityUnsafe()
+        {
+            tablaUnsafe.EnsureCapacity(ArraySize * 2);
+        }
+        
+        /// <summary>
+        /// Ensures the capacity of the fast table
+        /// </summary>
+        [Benchmark(Description = "[FAST] ensure capacity")]
+        public void BenchmarkEnsureCapacityFast()
+        {
+            table.EnsureCapacity(ArraySize * 2);
+        }
+        
+        /// <summary>
+        /// Ensures the capacity of the fast safe table
+        /// </summary>
+        [Benchmark(Description = "[FAST SAFE] ensure capacity")]
+        public void BenchmarkEnsureCapacityFastSafe()
+        {
+            fastTableSafe.EnsureCapacity(ArraySize * 2);
+        }
+        
+        /// <summary>
+        /// Benchmarks the ensure capacity the best
+        /// </summary>
+        [Benchmark(Description = "[THE BEST] ensure capacity")]
+        public void BenchmarkEnsureCapacityTheBest()
+        {
+            theBestTable.EnsureCapacity(ArraySize * 2);
+        }
+        
+        /// <summary>
+        /// Converts the unsafe table to Span
+        /// </summary>
+        [Benchmark(Description = "[UNSAFE] convert to Span")]
+        public void BenchmarkConvertToSpanUnsafe()
+        {
+            Span<int> span = tablaUnsafe.AsSpan();
+        }
+        
+        /// <summary>
+        /// Converts the fast table to Span
+        /// </summary>
+        [Benchmark(Description = "[FAST] convert to Span")]
+        public void BenchmarkConvertToSpanFast()
+        {
+            Span<int> span = table.AsSpan();
+        }
+        
+        /// <summary>
+        /// Converts the fast safe table to Span
+        /// </summary>
+        [Benchmark(Description = "[FAST SAFE] convert to Span")]
+        public void BenchmarkConvertToSpanFastSafe()
+        {
+            Span<int> span = fastTableSafe.AsSpan();
+        }
+        
+        /// <summary>
+        /// Benchmarks the convert to span the best
+        /// </summary>
+        [Benchmark(Description = "[THE BEST] convert to Span")]
+        public void BenchmarkConvertToSpanTheBest()
+        {
+            Span<int> span = theBestTable.AsSpan();
+        }
+        
+        /// <summary>
+        /// Benchmarks the unsafe index no resize
+        /// </summary>
+        [Benchmark(Description ="[UNSAFE] test UnsafeIndexNoResize")]
+        public void BenchmarkUnsafeIndexNoResize()
+        {
+            for (int i = 0; i < ArraySize; i++)
+            {
+                int value = tablaUnsafe.UnsafeIndexNoResize(i);
+            }
+        }
+        
+        /// <summary>
+        /// Benchmarks the unsafe index no resize fast
+        /// </summary>
+        [Benchmark(Description ="[FAST] test UnsafeIndexNoResize")]
+        public void BenchmarkUnsafeIndexNoResizeFast()
+        {
+            for (int i = 0; i < ArraySize; i++)
+            {
+                int value = table.UnsafeIndexNoResize(i);
+            }
+        }
+        
+        /// <summary>
+        /// Benchmarks the unsafe index no resize fast safe
+        /// </summary>
+        [Benchmark(Description ="[FAST SAFE] test UnsafeIndexNoResize")]
+        public void BenchmarkUnsafeIndexNoResizeFastSafe()
+        {
+            for (int i = 0; i < ArraySize; i++)
+            {
+                int value = fastTableSafe.UnsafeIndexNoResize(i);
+            }
+        }
+        
+        /// <summary>
+        /// Benchmarks the unsafe index no resize the best
+        /// </summary>
+        [Benchmark(Description ="[THE BEST] test UnsafeIndexNoResize")]
+        public void BenchmarkUnsafeIndexNoResizeTheBest()
+        {
+            for (int i = 0; i < ArraySize; i++)
+            {
+                int value = theBestTable.UnsafeIndexNoResize(i);
+            }
+        }
+        
+        /// <summary>
+        /// Benchmarks the dispose unsafe
+        /// </summary>
+        [Benchmark(Description = "[UNSAFE] test dispose")]
+        public void BenchmarkDisposeUnsafe()
+        {
+            tablaUnsafe.Dispose();
+        }
+        
+        /// <summary>
+        /// Benchmarks the dispose fast
+        /// </summary>
+        [Benchmark(Description = "[FAST] test dispose")]
+        public void BenchmarkDisposeFast()
+        {
+            table.Dispose();
+        }
+        
+        /// <summary>
+        /// Benchmarks the dispose fast safe
+        /// </summary>
+        [Benchmark(Description = "[FAST SAFE] test dispose")]
+        public void BenchmarkDisposeFastSafe()
+        {
+            fastTableSafe.Dispose();
+        }
+        
+        /// <summary>
+        /// Benchmarks the dispose the best
+        /// </summary>
+        [Benchmark(Description = "[THE BEST] test dispose")]
+        public void BenchmarkDisposeTheBest()
+        {
+            theBestTable.Dispose();
         }
     }
 }

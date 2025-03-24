@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -31,8 +31,17 @@ using System.Collections.Generic;
 
 namespace Alis.Benchmark.RemoveAtVsRemoveUnnorderAt
 {
+    /// <summary>
+    /// The list extensions class
+    /// </summary>
     public static class ListExtensions
     {
+        /// <summary>
+        /// Removes the unnorder at using the specified list
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="list">The list</param>
+        /// <param name="index">The index</param>
         public static void RemoveUnnorderAt<T>(this List<T> list, int index)
         {
             list[index] = list[list.Count - 1];

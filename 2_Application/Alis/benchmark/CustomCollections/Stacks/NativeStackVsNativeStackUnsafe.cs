@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Benchmark.NativeCollections.NativeStack;
+using Alis.Core.Ecs.Collections;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Order;
 
