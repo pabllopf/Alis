@@ -29,8 +29,9 @@
 
 global using ArchetypeID = Alis.Core.Ecs.Core.EntityType;
 using System;
-using System.Collections.Immutable;
+
 using System.Runtime.InteropServices;
+using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Core.Archetype;
 using Alis.Core.Ecs.Core.Memory;
 
@@ -57,12 +58,12 @@ namespace Alis.Core.Ecs.Core
         /// <summary>
         ///     The component types
         /// </summary>
-        public readonly ImmutableArray<ComponentID> Types => Core.Archetype.Archetype.ArchetypeTable[RawIndex].ComponentTypes;
+        public readonly FastImmutableArray<ComponentID> Types => Core.Archetype.Archetype.ArchetypeTable[RawIndex].ComponentTypes;
 
         /// <summary>
         ///     The tag types
         /// </summary>
-        public readonly ImmutableArray<TagId> Tags => Core.Archetype.Archetype.ArchetypeTable[RawIndex].TagTypes;
+        public readonly FastImmutableArray<TagId> Tags => Core.Archetype.Archetype.ArchetypeTable[RawIndex].TagTypes;
 
         /// <summary>
         ///     Checks if this <see cref="EntityType" /> has a component represented by a <see cref="ComponentID" />

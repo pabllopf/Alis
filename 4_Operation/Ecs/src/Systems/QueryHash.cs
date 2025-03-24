@@ -29,7 +29,8 @@
 
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Alis.Core.Ecs.Redefinition;
+using Alis.Core.Ecs.Collections;
+
 
 namespace Alis.Core.Ecs.Systems
 {

@@ -30,12 +30,15 @@
 using System;
 using System.Buffers;
 using System.Collections.Generic;
-using System.Collections.Immutable;
+
 using System.Diagnostics;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Buffers;
+using Alis.Core.Ecs.Collections;
+
+
 
 namespace Alis.Core.Ecs.Core.Memory
 {
@@ -83,9 +86,9 @@ namespace Alis.Core.Ecs.Core.Memory
         /// <typeparam name="T">The </typeparam>
         /// <param name="span">The span</param>
         /// <returns>An immutable array of t</returns>
-        public static ImmutableArray<T> ReadOnlySpanToImmutableArray<T>(ReadOnlySpan<T> span)
+        public static FastImmutableArray<T> ReadOnlySpanToImmutableArray<T>(ReadOnlySpan<T> span)
         {
-            ImmutableArray<T>.Builder builder = ImmutableArray.CreateBuilder<T>(span.Length);
+            FastImmutableArray<T>.Builder builder = FastImmutableArray<T>.CreateBuilder<T>(span.Length);
             int size = span.Length;
             for (int i = 0; i < size; i++)
             {
@@ -102,11 +105,11 @@ namespace Alis.Core.Ecs.Core.Memory
         /// <param name="start">The start</param>
         /// <param name="span">The span</param>
         /// <returns>An immutable array of t</returns>
-        public static ImmutableArray<T> Concat<T>(ImmutableArray<T> start, ReadOnlySpan<T> span)
+        public static FastImmutableArray<T> Concat<T>(FastImmutableArray<T> start, ReadOnlySpan<T> span)
             where T : ITypeID
         {
             int sizeStart = start.Length;
-            ImmutableArray<T>.Builder builder = ImmutableArray.CreateBuilder<T>(sizeStart + span.Length);
+            FastImmutableArray<T>.Builder builder = FastImmutableArray<T>.CreateBuilder<T>(sizeStart + span.Length);
             for (int i = 0; i < sizeStart; i++)
             {
                 builder.Add(start[i]);
@@ -134,7 +137,7 @@ namespace Alis.Core.Ecs.Core.Memory
         /// <param name="types">The types</param>
         /// <param name="type">The type</param>
         /// <returns>The result</returns>
-        public static ImmutableArray<T> Concat<T>(ImmutableArray<T> types, T type)
+        public static FastImmutableArray<T> Concat<T>(FastImmutableArray<T> types, T type)
             where T : ITypeID
         {
             if (types.IndexOf(type) != -1)
@@ -142,11 +145,11 @@ namespace Alis.Core.Ecs.Core.Memory
                 FrentExceptions.Throw_InvalidOperationException($"This entity already has a component of type {type.Type.Name}");
             }
 
-            ImmutableArray<T>.Builder builder = ImmutableArray.CreateBuilder<T>(types.Length + 1);
+            FastImmutableArray<T>.Builder builder = FastImmutableArray<T>.CreateBuilder<T>(types.Length + 1);
             builder.AddRange(types);
             builder.Add(type);
 
-            ImmutableArray<T> result = builder.MoveToImmutable();
+            FastImmutableArray<T> result = builder.MoveToImmutable();
             return result;
         }
 
@@ -157,7 +160,7 @@ namespace Alis.Core.Ecs.Core.Memory
         /// <param name="types">The types</param>
         /// <param name="type">The type</param>
         /// <returns>The result</returns>
-        public static ImmutableArray<T> Remove<T>(ImmutableArray<T> types, T type)
+        public static FastImmutableArray<T> Remove<T>(FastImmutableArray<T> types, T type)
             where T : ITypeID
         {
             int index = types.IndexOf(type);
@@ -166,7 +169,7 @@ namespace Alis.Core.Ecs.Core.Memory
                 FrentExceptions.Throw_ComponentNotFoundException(type.Type);
             }
 
-            ImmutableArray<T> result = types.RemoveAt(index);
+            FastImmutableArray<T> result = types.RemoveAt<T>(index);
             return result;
         }
 
@@ -177,10 +180,10 @@ namespace Alis.Core.Ecs.Core.Memory
         /// <param name="types">The types</param>
         /// <param name="span">The span</param>
         /// <returns>An immutable array of t</returns>
-        public static ImmutableArray<T> Remove<T>(ImmutableArray<T> types, ReadOnlySpan<T> span)
+        public static FastImmutableArray<T> Remove<T>(FastImmutableArray<T> types, ReadOnlySpan<T> span)
             where T : ITypeID
         {
-            ImmutableArray<T>.Builder builder = ImmutableArray.CreateBuilder<T>(types.Length);
+            FastImmutableArray<T>.Builder builder = FastImmutableArray<T>.CreateBuilder<T>(types.Length);
             builder.AddRange(types);
 
             foreach (T type in span)

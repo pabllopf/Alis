@@ -29,7 +29,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.Immutable;
+
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -215,12 +215,12 @@ namespace Alis.Core.Ecs
             /// <summary>
             ///     Gets the value of the component types
             /// </summary>
-            public ImmutableArray<ComponentID> ComponentTypes => target.ComponentTypes;
+            public FastImmutableArray<ComponentID> ComponentTypes => target.ComponentTypes;
 
             /// <summary>
             ///     Gets the value of the tags
             /// </summary>
-            public ImmutableArray<TagId> Tags => target.TagTypes;
+            public FastImmutableArray<TagId> Tags => target.TagTypes;
 
             /// <summary>
             ///     Gets the value of the components
@@ -958,7 +958,7 @@ namespace Alis.Core.Ecs
         ///     Gets the component types for this entity, ordered in update order
         /// </summary>
         /// <exception cref="InvalidOperationException"><see cref="Entity" /> is dead.</exception>
-        public ImmutableArray<ComponentID> ComponentTypes
+        public FastImmutableArray<ComponentID> ComponentTypes
         {
             get
             {
@@ -971,7 +971,7 @@ namespace Alis.Core.Ecs
         ///     Gets tags the entity has
         /// </summary>
         /// <exception cref="InvalidOperationException"><see cref="Entity" /> is dead.</exception>
-        public ImmutableArray<TagId> TagTypes
+        public FastImmutableArray<TagId> TagTypes
         {
             get
             {
@@ -1257,8 +1257,8 @@ namespace Alis.Core.Ecs
 
             static Archetype NotInCache(World world, ref ArchetypeNeighborCache cache, ArchetypeID archetypeFromID, bool add)
             {
-                ImmutableArray<ComponentID> componentIDs = archetypeFromID.Types;
-                ImmutableArray<TagId> tagIDs = archetypeFromID.Tags;
+                FastImmutableArray<ComponentID> componentIDs = archetypeFromID.Types;
+                FastImmutableArray<TagId> tagIDs = archetypeFromID.Tags;
 
                 if (typeof(T) == typeof(ComponentID))
                 {

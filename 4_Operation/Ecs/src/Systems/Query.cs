@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Immutable;
+
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Core.Archetype;
 
@@ -42,7 +42,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The rules
         /// </summary>
-        private readonly ImmutableArray<Rule> _rules;
+        private readonly FastImmutableArray<Rule> _rules;
 
         /// <summary>
         ///     The create
@@ -54,7 +54,7 @@ namespace Alis.Core.Ecs.Systems
         /// </summary>
         /// <param name="world">The world</param>
         /// <param name="rules">The rules</param>
-        internal Query(World world, ImmutableArray<Rule> rules)
+        internal Query(World world, FastImmutableArray<Rule> rules)
         {
             World = world;
             _rules = rules;

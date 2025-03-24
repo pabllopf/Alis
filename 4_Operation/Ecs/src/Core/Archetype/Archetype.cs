@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Immutable;
+
 using System.Linq;
 using System.Numerics;
 using System.Runtime.CompilerServices;
@@ -38,6 +38,7 @@ using Alis.Core.Ecs.Buffers;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Core.Memory;
 using Alis.Core.Ecs.Updating;
+
 
 namespace Alis.Core.Ecs.Core.Archetype
 {
@@ -55,12 +56,12 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// <summary>
         ///     Gets the value of the archetype type array
         /// </summary>
-        internal ImmutableArray<ComponentID> ArchetypeTypeArray => _archetypeID.Types;
+        internal FastImmutableArray<ComponentID> ArchetypeTypeArray => _archetypeID.Types;
 
         /// <summary>
         ///     Gets the value of the archetype tag array
         /// </summary>
-        internal ImmutableArray<TagId> ArchetypeTagArray => _archetypeID.Tags;
+        internal FastImmutableArray<TagId> ArchetypeTagArray => _archetypeID.Tags;
         
         /// <summary>
         ///     Gets the value of the entity count

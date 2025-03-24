@@ -1,6 +1,7 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
+
 namespace Alis.Core.Ecs.Core.Events
 {
     /// <summary>

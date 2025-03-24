@@ -36,6 +36,9 @@ using Alis.Core.Ecs.Core;
 using Alis.Core.Ecs.Core.Events;
 using Alis.Core.Ecs.Core.Memory;
 
+
+
+
 namespace Alis.Core.Ecs.Updating
 {
     /// <summary>

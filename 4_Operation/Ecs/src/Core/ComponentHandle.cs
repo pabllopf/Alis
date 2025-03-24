@@ -32,6 +32,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Core.Events;
+
 using HashCode = Alis.Core.Aspect.Math.Util.HashCode;
 
 namespace Alis.Core.Ecs.Core
