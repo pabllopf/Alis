@@ -237,7 +237,8 @@ namespace Alis.Core.Ecs
 
                     Dictionary<Type, object> components = [];
 
-                    for (int i = 0; i < ComponentTypes.Length; i++)
+                    int size = ComponentTypes.Length;
+                    for (int i = 0; i < size; i++)
                     {
                         components[ComponentTypes[i].Type] = target.Get(ComponentTypes[i]);
                     }
@@ -999,7 +1000,8 @@ namespace Alis.Core.Ecs
         {
             ref EntityLocation lookup = ref AssertIsAlive(out World _);
             ComponentStorageBase[] runners = lookup.Archetype.Components;
-            for (int i = 1; i < runners.Length; i++)
+            int size = runners.Length;
+            for (int i = 1; i < size; i++)
             {
                 runners[i].InvokeGenericActionWith(onEach, lookup.Index);
             }

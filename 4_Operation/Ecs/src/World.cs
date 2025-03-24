@@ -433,7 +433,8 @@ namespace Alis.Core.Ecs
                 //works for initalization as well as updating it
                 if (GenerationServices.TypeAttributeCache.TryGetValue(attributeType, out HashSet<Type>? compSet))
                 {
-                    for (ref int i = ref appliesTo.NextComponentIndex; i < Component.ComponentTable.Count; i++)
+                    int size = Component.ComponentTable.Count;
+                    for (ref int i = ref appliesTo.NextComponentIndex; i < size; i++)
                     {
                         ComponentID id = new ComponentID((ushort) i);
                         if (compSet.Contains(id.Type))
@@ -636,7 +637,8 @@ namespace Alis.Core.Ecs
 
             Span<ComponentID> types = stackalloc ComponentID[components.Length];
 
-            for (int i = 0; i < components.Length; i++)
+            int size = components.Length;
+            for (int i = 0; i < size ; i++)
             {
                 types[i] = Component.GetComponentID(components[i].GetType());
             }
@@ -649,7 +651,8 @@ namespace Alis.Core.Ecs
             entityID.Version = entity.EntityVersion;
 
             Span<ComponentStorageBase> archetypeComponents = archetype.Components.AsSpan()[..components.Length];
-            for (int i = 1; i < archetypeComponents.Length; i++)
+            int sizearchetypeComponents = archetypeComponents.Length;
+            for (int i = 1; i < sizearchetypeComponents; i++)
             {
                 archetypeComponents[i].SetAt(components[i - 1], loc.Index);
             }
@@ -796,7 +799,8 @@ namespace Alis.Core.Ecs
             ImmutableArray<ComponentID> destinationComponents = destination.ArchetypeTypeArray;
 
             int writeToIndex = 0;
-            for (int i = 0; i < destinationComponents.Length;)
+            int size = destinationComponents.Length;
+            for (int i = 0; i < size;)
             {
                 ComponentID componentToMove = destinationComponents[i];
                 int fromIndex = fromMap.UnsafeArrayIndex(componentToMove.RawIndex) & GlobalWorldTables.IndexBits;
@@ -849,7 +853,8 @@ namespace Alis.Core.Ecs
 
             DeleteComponentData deleteData = new DeleteComponentData(currentLookup.Index, deletedIndex);
 
-            for (int i = 0; i < fromComponents.Length;)
+            int size = fromComponents.Length;
+            for (int i = 0; i < size ;)
             {
                 ComponentID componentToMoveFromFromToTo = fromComponents[i];
                 int toIndex = destMap.UnsafeArrayIndex(componentToMoveFromFromToTo.RawIndex);
@@ -943,7 +948,8 @@ namespace Alis.Core.Ecs
 
             ImmutableArray<ComponentID> fromComponents = from.ArchetypeTypeArray;
 
-            for (int i = 0; i < fromComponents.Length;)
+            int size = fromComponents.Length;
+            for (int i = 0; i < size;)
             {
                 int toIndex = destMap.UnsafeArrayIndex(fromComponents[i].RawIndex) & GlobalWorldTables.IndexBits;
 

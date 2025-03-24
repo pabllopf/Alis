@@ -56,7 +56,8 @@ namespace Alis.Core.Ecs.Updating.Runners
 
             Entity entity = world.DefaultWorldEntity;
 
-            for (int i = b.EntityCount - 1; i >= 0; i--)
+            int size = b.EntityCount;
+            for (int i = size - 1; i >= 0; i--)
             {
                 entityIds.SetEntity(ref entity);
                 comp.Update(entity);
@@ -98,7 +99,8 @@ namespace Alis.Core.Ecs.Updating.Runners
 
             Entity entity = world.DefaultWorldEntity;
 
-            for (int i = b.EntityCount - 1; i >= 0; i--)
+            int size = b.EntityCount;
+            for (int i = size - 1; i >= 0; i--)
             {
                 entityIds.SetEntity(ref entity);
                 comp.Update(entity, ref arg);

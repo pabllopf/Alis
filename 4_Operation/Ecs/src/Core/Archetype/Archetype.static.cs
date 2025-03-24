@@ -174,7 +174,8 @@ namespace Alis.Core.Ecs.Core.Archetype
             ImmutableArray<ComponentID> types = id.Types;
             ComponentStorageBase[] componentRunners = new ComponentStorageBase[types.Length + 1];
             ComponentStorageBase[] tmpRunners = new ComponentStorageBase[types.Length + 1];
-            for (int i = 1; i < componentRunners.Length; i++)
+            int size = componentRunners.Length;
+            for (int i = 1; i < size; i++)
             {
                 IComponentStorageBaseFactory fact = Component.GetComponentFactoryFromType(types[i - 1].Type);
                 componentRunners[i] = fact.Create(1);
@@ -313,23 +314,20 @@ namespace Alis.Core.Ecs.Core.Archetype
                     }
                 }
             }
-
-            //for (int i = 0; i < archetypeTypes.Length; i++)
-            //{
-            //    _ = Component.GetComponentID(archetypeTypes[i].Type);
-            //}
-
+            
             ref byte[] componentTable = ref GlobalWorldTables.ComponentTagLocationTable[id];
             componentTable = new byte[GlobalWorldTables.ComponentTagTableBufferSize];
             componentTable.AsSpan().Fill(GlobalWorldTables.DefaultNoTag);
 
-            for (int i = 0; i < archetypeTypes.Length; i++)
+            int sizearchetypeTypes = archetypeTypes.Length;
+            for (int i = 0; i < sizearchetypeTypes; i++)
             {
                 //add 1 so zero is null always
                 componentTable[archetypeTypes[i].RawIndex] = (byte) (i + 1);
             }
 
-            for (int i = 0; i < archetypeTags.Length; i++)
+            int sizearchetypeTags = archetypeTags.Length;
+            for (int i = 0; i < sizearchetypeTags; i++)
             {
                 componentTable[archetypeTags[i].RawValue] |= GlobalWorldTables.HasTagMask;
             }
@@ -347,7 +345,8 @@ namespace Alis.Core.Ecs.Core.Archetype
             HashCode h2 = new();
 
             int i;
-            for (i = 0; i < types.Length >> 1; i++)
+            int size = types.Length;
+            for (i = 0; i < size >> 1; i++)
             {
                 h1.Add(types[i]);
             }
@@ -364,7 +363,8 @@ namespace Alis.Core.Ecs.Core.Archetype
 
             h1.Add(HashCode.Combine(hash1, hash2));
 
-            for (; i < types.Length; i++)
+            int sizetypes = types.Length;
+            for (; i < sizetypes; i++)
             {
                 h2.Add(types[i]);
             }

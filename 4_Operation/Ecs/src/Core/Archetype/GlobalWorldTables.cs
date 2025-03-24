@@ -98,7 +98,8 @@ namespace Alis.Core.Ecs.Core.Archetype
             if (tableSize == idValue)
             {
                 ComponentTagTableBufferSize = Math.Max(tableSize << 1, 1);
-                for (int i = 0; i < table.Length; i++)
+                int size = table.Length;
+                for (int i = 0; i < size; i++)
                 {
                     ref byte[]? componentsForArchetype = ref table[i];
                     Array.Resize(ref componentsForArchetype, ComponentTagTableBufferSize);

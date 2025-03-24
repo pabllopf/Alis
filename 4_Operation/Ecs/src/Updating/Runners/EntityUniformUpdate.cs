@@ -57,7 +57,8 @@ namespace Alis.Core.Ecs.Updating.Runners
             Entity entity = world.DefaultWorldEntity;
             TUniform uniform = world.UniformProvider.GetUniform<TUniform>();
 
-            for (int i = b.EntityCount - 1; i >= 0; i--)
+            int size = b.EntityCount;
+            for (int i = size - 1; i >= 0; i--)
             {
                 entityIds.SetEntity(ref entity);
                 comp.Update(entity, uniform);
@@ -97,7 +98,8 @@ namespace Alis.Core.Ecs.Updating.Runners
             Entity entity = world.DefaultWorldEntity;
             TUniform uniform = world.UniformProvider.GetUniform<TUniform>();
 
-            for (int i = b.EntityCount - 1; i >= 0; i--)
+            int size = b.EntityCount;
+            for (int i = size - 1; i >= 0; i--)
             {
                 entityIds.SetEntity(ref entity);
                 comp.Update(entity, uniform, ref arg);
@@ -118,26 +120,7 @@ namespace Alis.Core.Ecs.Updating.Runners
         internal override void MultithreadedRun(CountdownEvent countdown, World world, Archetype b)
             => throw new NotImplementedException();
     }
-
-/*
-         ref EntityIDOnly entityIds = ref b.GetEntityDataReference();
-        ref TComp comp = ref GetComponentStorageDataReference();
-        ref TArg arg = ref b.GetComponentDataReference<TArg>();
-
-        Entity entity = world.DefaultWorldEntity;
-        TUniform uniform = world.UniformProvider.GetUniform<TUniform>();
-
-        for (int i = b.EntityCount - 1; i >= 0; i--)
-        {
-            entityIds.SetEntity(ref entity);
-            comp.Update(entity, uniform, ref arg);
-
-            entityIds = ref Unsafe.Add(ref entityIds, 1);
-            comp = ref Unsafe.Add(ref comp, 1);
-            arg = ref Unsafe.Add(ref arg, 1);
-        }
- */
-
+    
 /// <inheritdoc cref="IComponentStorageBaseFactory" />
 public class EntityUniformUpdateRunnerFactory<TComp, TUniform, TArg> : IComponentStorageBaseFactory, IComponentStorageBaseFactory<TComp>
         where TComp : IEntityUniformComponent<TUniform, TArg>
