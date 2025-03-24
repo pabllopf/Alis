@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Core;
 
@@ -6,8 +7,9 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     Specifies a query should not have a component of <see paramref="T" />
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    public struct Not<T> : IRuleProvider
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    [SkipLocalsInit]
+    public readonly struct Not<T> : IRuleProvider
     {
         /// <summary>
         ///     The rule.
