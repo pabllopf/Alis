@@ -101,8 +101,7 @@ namespace Alis.Core.Ecs.Buffers
                 }
             }
 
-            return new T[minimumLength]; //GC.AllocateUninitializedArray<T>(minimumLength)
-            //benchmarks say uninit is the same speed
+            return new T[minimumLength]; 
         }
 
         /// <summary>
@@ -112,7 +111,6 @@ namespace Alis.Core.Ecs.Buffers
         /// <param name="clearArray">The clear array</param>
         public override void Return(T[] array, bool clearArray = false)
         {
-            //easier to deal w/ all logic here
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
             {
                 array.AsSpan().Clear();
