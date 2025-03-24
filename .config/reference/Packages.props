@@ -80,19 +80,9 @@
     </ItemGroup>
 
     <ItemGroup Condition="
-    $(TargetFramework.Equals('netcoreapp2.0')) OR
-    $(TargetFramework.Equals('netcoreapp3.0')) OR
-    $(TargetFramework.Equals('netcoreapp3.1')) OR
-    $(TargetFramework.Equals('net5.0'))
-    ">
-        <PackageReference Include="System.Collections.Immutable" Version="10.0.0-preview.1.25080.5"/>
-    </ItemGroup>
-
-    <ItemGroup Condition="
     $(TargetFramework.Equals('netcoreapp2.1')) OR
     $(TargetFramework.Equals('netcoreapp2.2')) 
     ">
         <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.0"/>
-        <PackageReference Include="System.Collections.Immutable" Version="10.0.0-preview.1.25080.5"/>
     </ItemGroup>
 </Project>
