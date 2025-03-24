@@ -39,6 +39,7 @@ using Alis.Benchmark.IDs;
 using Alis.Benchmark.InterfaceVsAbstract;
 using Alis.Benchmark.Iterators;
 using Alis.Benchmark.NativeCollections.NativeStack;
+using Alis.Benchmark.RemoveAtVsRemoveUnnorderAt;
 using Alis.Benchmark.Strings;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Order;
@@ -89,6 +90,8 @@ namespace Alis.Benchmark
                 typeof(NativeArrayUnsafeVsNativeArraySafe),
                 typeof(NativeStackVsNativeStackUnsafe),
                 typeof(NativeTableUnsafeVsNativeTableSafe),
+                
+                typeof(RemoveAtVsRemoveUnnorderAtListBenchmark),
             });
 
             IConfig configuration = DefaultConfig.Instance

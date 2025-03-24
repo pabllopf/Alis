@@ -29,13 +29,14 @@
 
 using System.Text;
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Order;
 
 namespace Alis.Benchmark.Strings
 {
     /// <summary>
     ///     The string manipulation benchmark class
     /// </summary>
-    [MemoryDiagnoser]
+     [MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]
     public class StringManipulationBenchmark
     {
         /// <summary>

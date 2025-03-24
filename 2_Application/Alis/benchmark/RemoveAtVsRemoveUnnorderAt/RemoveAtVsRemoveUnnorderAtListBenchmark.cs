@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ClassVsStructBenchmark.cs
+//  File:RemoveAtVsRemoveUnnorderAtBenchmark.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,55 +27,57 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Benchmark.ClassVsStruct.Instancies;
+using System;
+using System.Collections.Generic;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Order;
 
-namespace Alis.Benchmark.ClassVsStruct
+namespace Alis.Benchmark.RemoveAtVsRemoveUnnorderAt
 {
-    /// <summary>
-    ///     The class vs struct benchmark class
-    /// </summary>
-     [MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]
-    public class ClassVsStructBenchmark
+    [MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]
+    public class RemoveAtVsRemoveUnnorderAtListBenchmark
     {
         /// <summary>
-        ///     The iterations
+        ///     The
         /// </summary>
-        private const int Iterations = 1_000_000;
+        [Params(100)] public int N; 
+        private List<int> list;
 
         /// <summary>
-        ///     Usings this instance
+        ///     Setup this instance
         /// </summary>
-        /// <returns>The sum</returns>
-        [Benchmark(Baseline = true)]
-        public int UsingClass()
+        [GlobalSetup]
+        public void Setup()
         {
-            ClassPoint obj = new ClassPoint(1, 2);
-            int sum = 0;
-            for (int i = 0; i < Iterations; i++)
-            {
-                sum += obj.X + obj.Y;
-            }
-
-            return sum;
+            list = new List<int>(N);
         }
-
-        /// <summary>
-        ///     Usings the struct
-        /// </summary>
-        /// <returns>The sum</returns>
+        
         [Benchmark]
-        public int UsingStruct()
+        public void RemoveAt()
         {
-            StructPoint obj = new StructPoint(1, 2);
-            int sum = 0;
-            for (int i = 0; i < Iterations; i++)
+            for (int i = 1; i < N - 1; i++)
             {
-                sum += obj.X + obj.Y;
+                list.Add(i);
             }
-
-            return sum;
+            
+            for (int i = 1; i < N - 1; i++)
+            {
+                list.RemoveAt(i);
+            }
+        }
+        
+        [Benchmark]
+        public void RemoveUnnorderAt()
+        {
+            for (int i = 1; i < N - 1; i++)
+            {
+                list.Add(i);
+            }
+            
+            for (int i = 1; i < N - 1; i++)
+            {
+                list.RemoveUnnorderAt(i);
+            }
         }
     }
 }

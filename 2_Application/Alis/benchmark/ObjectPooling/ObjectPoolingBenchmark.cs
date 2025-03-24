@@ -29,13 +29,14 @@
 
 using Alis.Benchmark.ObjectPooling.Instancies;
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Order;
 
 namespace Alis.Benchmark.ObjectPooling
 {
     /// <summary>
     ///     The object pooling benchmark class
     /// </summary>
-    [MemoryDiagnoser]
+     [MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]
     public class ObjectPoolingBenchmark
     {
         /// <summary>
