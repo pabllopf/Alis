@@ -133,7 +133,7 @@ namespace Alis.Core.Ecs.Collections
         /// <param name="genericEvent">The generic event</param>
         /// <param name="entity">The entity</param>
         /// <param name="index">The index</param>
-        public abstract void InvokeEventWithAndConsume(GenericEvent? genericEvent, Entity entity, int index);
+        public abstract void InvokeEventWithAndConsume(GenericEvent genericEvent, Entity entity, int index);
 
         /// <summary>
         ///     Sets the value using the specified value
@@ -208,7 +208,7 @@ namespace Alis.Core.Ecs.Collections
         /// <param name="genericEvent">The generic event</param>
         /// <param name="entity">The entity</param>
         /// <param name="index">The index</param>
-        public override void InvokeEventWithAndConsume(GenericEvent? genericEvent, Entity entity, int index)
+        public override void InvokeEventWithAndConsume(GenericEvent genericEvent, Entity entity, int index)
         {
             genericEvent?.Invoke(entity, ref Buffer[index]);
             _recycled.Push(index);
