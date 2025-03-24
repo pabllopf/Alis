@@ -62,7 +62,7 @@ namespace Alis.Core.Ecs.Core
         /// Calls the wrapped <typeparamref name="T"/>'s ToString() function, or returns null.
         /// </summary>
         /// <returns>A string representation of the wrapped <typeparamref name="T"/>'s</returns>
-        public override readonly string ToString() => Value?.ToString();
+        public readonly override string ToString() => Value?.ToString();
 #elif (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
         internal Ref(T[] compArr, int index)
         {
@@ -141,7 +141,7 @@ namespace Alis.Core.Ecs.Core
         /// Calls the wrapped <typeparamref name="T"/>'s ToString() function, or returns null.
         /// </summary>
         /// <returns>A string representation of the wrapped <typeparamref name="T"/>'s</returns>
-        public override readonly string ToString() => Value?.ToString();
+        public readonly override string ToString() => Value?.ToString();
 #endif
     }
 }
