@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Core;
 
@@ -35,8 +36,9 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     Specifies a query should have a component of <see paramref="T" />
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    public struct With<T> : IRuleProvider
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    [SkipLocalsInit]
+    public readonly struct With<T> : IRuleProvider
     {
         /// <summary>
         ///     The rule.

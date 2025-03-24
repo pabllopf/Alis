@@ -27,12 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Core.Ecs.Systems
 {
     /// <summary>
     ///     The rule types enum
     /// </summary>
-    public enum RuleTypes
+    [Flags]
+    public enum RuleTypes : byte
     {
         /// <summary>
         ///     The have rule types
