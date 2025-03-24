@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Collections;
 
@@ -7,7 +8,8 @@ namespace Alis.Core.Ecs.Core.Events
     /// <summary>
     ///     The entity only event
     /// </summary>
-    [StructLayout( LayoutKind.Auto )]
+    [StructLayout( LayoutKind.Sequential )]
+    [SkipLocalsInit]
     internal struct EntityOnlyEvent()
     {
         /// <summary>

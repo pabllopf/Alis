@@ -29,6 +29,7 @@
 
 global using TagEvent = Alis.Core.Ecs.Core.Events.Event<Alis.Core.Ecs.Core.TagId>;
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Collections;
 
@@ -37,7 +38,8 @@ namespace Alis.Core.Ecs.Core.Events
     /// <summary>
     ///     The event
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)] 
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    [SkipLocalsInit]
     internal struct Event<T>()
     {
         /// <summary>
