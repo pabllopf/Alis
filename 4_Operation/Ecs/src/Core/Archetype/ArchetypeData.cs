@@ -28,10 +28,12 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Immutable;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace Alis.Core.Ecs.Core.Archetype
 {
-    [StructLayout( LayoutKind.Auto )]
-    internal record struct ArchetypeData(EntityType ID, ImmutableArray<ComponentID> ComponentTypes, ImmutableArray<TagId> TagTypes);
+    [StructLayout( LayoutKind.Sequential, Pack = 1 )]
+    [SkipLocalsInit]
+    internal readonly record struct ArchetypeData(EntityType Id, ImmutableArray<ComponentID> ComponentTypes, ImmutableArray<TagId> TagTypes);
 }
