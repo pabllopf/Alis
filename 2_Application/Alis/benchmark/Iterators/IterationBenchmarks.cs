@@ -41,7 +41,9 @@ namespace Alis.Benchmark.Iterators
     /// <summary>
     ///     The iteration benchmarks class
     /// </summary>
-    [MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]
+    [MemoryDiagnoser(false)]
+    [ShortRunJob]
+    [Orderer(SummaryOrderPolicy.FastestToSlowest)]
     public class IterationBenchmarks
     {
         /// <summary>
@@ -69,15 +71,12 @@ namespace Alis.Benchmark.Iterators
         /// </summary>
         /// <returns>The sum</returns>
         [Benchmark]
-        public int IterateArrayFor()
+        public void IterateArrayFor()
         {
-            int sum = 0;
             for (int i = 0; i < array.Length; i++)
             {
-                sum += array[i];
+                DoSometring(array[i]);
             }
-
-            return sum;
         }
 
         /// <summary>
@@ -85,31 +84,27 @@ namespace Alis.Benchmark.Iterators
         /// </summary>
         /// <returns>The sum</returns>
         [Benchmark]
-        public int IterateArrayForeach()
+        public void IterateArrayForeach()
         {
-            int sum = 0;
             foreach (int item in array)
             {
-                sum += item;
+                DoSometring(item);
             }
-
-            return sum;
         }
         
         /// <summary>
         ///     Iteración optimizada con ref y Unsafe.Add
         /// </summary>
         [Benchmark]
-        public int Unsafe_For_Span_GetReference()
+        public void Unsafe_For_Span_GetReference()
         {
-            Span<int> asSpan = array.AsSpan();
+            Span<int> asSpan = array;
             ref int searchSpace = ref MemoryMarshal.GetReference(asSpan);
-            int sum = 0;
             for (int i = 0; i < asSpan.Length; i++)
             {
-                 sum = Unsafe.Add(ref searchSpace, i);
+                int item = Unsafe.Add(ref searchSpace, i);
+                DoSometring(item);
             }
-            return sum;
         }
         
         /// <summary>
@@ -117,68 +112,16 @@ namespace Alis.Benchmark.Iterators
         /// </summary>
         /// <returns>The sum</returns>
         [Benchmark]
-        public int IterateFastest()
+        public void IterateFastest()
         {
-            if (array == null || array.Length == 0)
-            {
-                return 0;
-            }
-
             ref int start = ref MemoryMarshal.GetArrayDataReference(array);
             ref int end = ref Unsafe.Add(ref start, array.Length);
-            int sum = 0;
 
             while (Unsafe.IsAddressLessThan(ref start, ref end))
             {
-                sum += start;
+                DoSometring(start);
                 start = ref Unsafe.Add(ref start, 1);
             }
-
-            return sum;
-        }
-
-        /// <summary>
-        ///     Iterates the fastest with sim
-        /// </summary>
-        /// <returns>The sum</returns>
-        [Benchmark]
-        public int IterateFastestWithSIM()
-        {
-            if (array == null || array.Length == 0)
-            {
-                return 0;
-            }
-
-            ref int start = ref MemoryMarshal.GetArrayDataReference(array);
-            ref int end = ref Unsafe.Add(ref start, array.Length);
-            int sum = 0;
-
-            int vectorSize = Vector<int>.Count; // Tamaño del vector SIMD
-            ref int vectorEnd = ref Unsafe.Subtract(ref end, vectorSize); // Último bloque SIMD
-
-            Vector<int> vectorSum = Vector<int>.Zero;
-
-            // Procesar en bloques SIMD
-            while (Unsafe.IsAddressLessThan(ref start, ref vectorEnd))
-            {
-                vectorSum += new Vector<int>(array.AsSpan((int) (Unsafe.ByteOffset(ref MemoryMarshal.GetArrayDataReference(array), ref start) / sizeof(int)), vectorSize));
-                start = ref Unsafe.Add(ref start, vectorSize);
-            }
-
-            // Sumar los valores de los vectores
-            for (int i = 0; i < vectorSize; i++)
-            {
-                sum += vectorSum[i];
-            }
-
-            // Procesar los elementos restantes (si el tamaño del array no es múltiplo de vectorSize)
-            while (Unsafe.IsAddressLessThan(ref start, ref end))
-            {
-                sum += start;
-                start = ref Unsafe.Add(ref start, 1);
-            }
-
-            return sum;
         }
         
         /// <summary>
@@ -186,34 +129,25 @@ namespace Alis.Benchmark.Iterators
         /// </summary>
         /// <returns>The sum</returns>
         [Benchmark]
-        public int Best_IterateWithSpanAndVector()
+        public void Best_IterateWithSpanAndVector()
         {
-            Span<int> span = array;
-            int sum = 0;
+            array.AsSpan().FastFor(element => DoSometring(element));
+        }
+        
+        [Benchmark]
+        public void DoWhile()
+        {
             int i = 0;
-            int vectorSize = Vector<int>.Count;
-
-            Vector<int> vectorSum = Vector<int>.Zero;
-
-            // Procesar en bloques de vectorSize (SIMD)
-            for (; i <= span.Length - vectorSize; i += vectorSize)
+            do
             {
-                vectorSum += new Vector<int>(span.Slice(i, vectorSize));
-            }
+                DoSometring(array[i]);
+                i++;
+            } while (i <  array.Length);
+        }
 
-            // Sumar los valores del vector
-            for (int j = 0; j < vectorSize; j++)
-            {
-                sum += vectorSum[j];
-            }
-
-            // Procesar los elementos restantes
-            for (; i < span.Length; i++)
-            {
-                sum += span[i];
-            }
-
-            return sum;
+        public int DoSometring(int i)
+        {
+            return i;
         }
     }
 }
