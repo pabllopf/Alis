@@ -39,7 +39,7 @@ namespace Alis.Core.Ecs.Core.Events
         /// <summary>
         ///     The first
         /// </summary>
-        private IGenericAction<Entity>? _first;
+        private IGenericAction<Entity> _first;
 
         /// <summary>
         ///     The entity
@@ -83,7 +83,7 @@ namespace Alis.Core.Ecs.Core.Events
             if (_first == action)
             {
                 _first = null;
-                if (_invokationList.TryPop(out IGenericAction<Entity>? v))
+                if (_invokationList.TryPop(out IGenericAction<Entity> v))
                 {
                     _first = v;
                 }
@@ -105,7 +105,7 @@ namespace Alis.Core.Ecs.Core.Events
             if (_first is not null)
             {
                 _first.Invoke(entity, ref arg);
-                foreach (IGenericAction<Entity>? item in _invokationList.AsSpan())
+                foreach (IGenericAction<Entity> item in _invokationList.AsSpan())
                 {
                     item.Invoke(entity, ref arg);
                 }
@@ -121,7 +121,7 @@ namespace Alis.Core.Ecs.Core.Events
         /// <param name="left">The event collection to add to.</param>
         /// <param name="right">The event to add</param>
         /// <returns>The event itself. When <paramref name="left" /> is null, the return value is also null.</returns>
-        public static GenericEvent? operator +(GenericEvent? left, IGenericAction<Entity> right)
+        public static GenericEvent operator +(GenericEvent left, IGenericAction<Entity> right)
         {
             if (left is null)
             {
@@ -146,7 +146,7 @@ namespace Alis.Core.Ecs.Core.Events
         /// <param name="left">The event collection to unsubscribe from.</param>
         /// <param name="right">The event to unsubscribe</param>
         /// <returns>The event itself. When <paramref name="left" /> is null, the return value is also null.</returns>
-        public static GenericEvent? operator -(GenericEvent? left, IGenericAction<Entity> right)
+        public static GenericEvent operator -(GenericEvent left, IGenericAction<Entity> right)
         {
             if (left is null)
             {

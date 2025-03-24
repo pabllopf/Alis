@@ -73,7 +73,7 @@ namespace Alis.Core.Ecs.Core
         /// </summary>
         /// <param name="obj">The object to compare against</param>
         /// <returns><see langword="true" /> if they represent the same ID, <see langword="false" /> otherwise</returns>
-        public override bool Equals(object? obj) => obj is ComponentID other && Equals(other);
+        public override bool Equals(object obj) => obj is ComponentID other && Equals(other);
 
         /// <summary>
         ///     Gets the hash code for this ComponentID

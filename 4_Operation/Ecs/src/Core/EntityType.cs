@@ -96,7 +96,7 @@ namespace Alis.Core.Ecs.Core
         /// </summary>
         /// <param name="obj">The object to compare against</param>
         /// <returns><see langword="true" /> if they represent the same ID, <see langword="false" /> otherwise</returns>
-        public readonly override bool Equals(object? obj) => obj is EntityType other && Equals(other);
+        public readonly override bool Equals(object obj) => obj is EntityType other && Equals(other);
 
         /// <summary>
         ///     Gets the hash code for this <see cref="EntityType" />

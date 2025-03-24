@@ -230,7 +230,7 @@ namespace Alis.Core.Ecs
             {
                 get
                 {
-                    if (!target.InternalIsAlive(out World? world, out EntityLocation eloc))
+                    if (!target.InternalIsAlive(out World world, out EntityLocation eloc))
                     {
                         return [];
                     }
@@ -276,7 +276,7 @@ namespace Alis.Core.Ecs
         ///     <see langword="true" /> if the specified object is an <see cref="Entity" /> and is equal to the current
         ///     entity; otherwise, <see langword="false" />.
         /// </returns>
-        public override bool Equals(object? obj) => obj is Entity entity && Equals(entity);
+        public override bool Equals(object obj) => obj is Entity entity && Equals(entity);
 
         /// <summary>
         ///     Determines whether the specified <see cref="Entity" /> is equal to the current <see cref="Entity" />.
@@ -496,7 +496,7 @@ namespace Alis.Core.Ecs
         ///     <see langword="true" /> if this entity has a component of type <paramref name="type" />, otherwise
         ///     <see langword="false" />.
         /// </returns>
-        public bool TryGet(Type type, out object? value)
+        public bool TryGet(Type type, out object value)
         {
             ref EntityLocation lookup = ref AssertIsAlive(out _);
 
@@ -736,7 +736,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Raised when a component is added to an entity, with the generic parameter
         /// </summary>
-        public GenericEvent? OnComponentAddedGeneric
+        public GenericEvent OnComponentAddedGeneric
         {
             readonly set
             {
@@ -757,7 +757,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Raised when a component is removed to an entity, with the generic parameter
         /// </summary>
-        public GenericEvent? OnComponentRemovedGeneric
+        public GenericEvent OnComponentRemovedGeneric
         {
             readonly set
             {
@@ -807,7 +807,7 @@ namespace Alis.Core.Ecs
 
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
             bool exists = entityLocation.HasEvent(flag);
-            EventRecord? events = exists ? world.EventLookup[EntityIDOnly] : default(EventRecord?);
+            EventRecord events = exists ? world.EventLookup[EntityIDOnly] : default(EventRecord);
 #else
             ref EventRecord events = ref world.TryGetEventData(entityLocation, EntityIDOnly, flag, out bool exists);
 #endif
@@ -862,9 +862,9 @@ namespace Alis.Core.Ecs
             }
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
             bool exists = entityLocation.HasEvent(flag);
-            EventRecord? record = exists ? world.EventLookup[EntityIDOnly] : default(EventRecord?);
+            EventRecord record = exists ? world.EventLookup[EntityIDOnly] : default(EventRecord);
 #else
-            ref EventRecord? record = ref CollectionsMarshal.GetValueRefOrAddDefault(world.EventLookup, EntityIDOnly, out bool exists);
+            ref EventRecord record = ref CollectionsMarshal.GetValueRefOrAddDefault(world.EventLookup, EntityIDOnly, out bool exists);
 #endif
             world.EntityTable[EntityID].Flags |= flag;
             EventRecord.Initalize(exists, ref record!);

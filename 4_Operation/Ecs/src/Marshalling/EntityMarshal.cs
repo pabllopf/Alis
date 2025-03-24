@@ -43,7 +43,7 @@ namespace Alis.Core.Ecs.Marshalling
         /// </summary>
         /// <param name="entity">The entity</param>
         /// <returns>The world</returns>
-        public static World? GetWorld(Entity entity) => GlobalWorldTables.Worlds.UnsafeIndexNoResize(entity.EntityID);
+        public static World GetWorld(Entity entity) => GlobalWorldTables.Worlds.UnsafeIndexNoResize(entity.EntityID);
 
         /// <summary>
         ///     Entities the id using the specified entity

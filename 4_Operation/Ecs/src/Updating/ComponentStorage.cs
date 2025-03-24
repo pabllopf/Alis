@@ -84,7 +84,7 @@ namespace Alis.Core.Ecs.Updating
         /// <param name="action">The action</param>
         /// <param name="e">The </param>
         /// <param name="index">The index</param>
-        internal override void InvokeGenericActionWith(GenericEvent? action, Entity e, int index) => action?.Invoke(e, ref this[index]);
+        internal override void InvokeGenericActionWith(GenericEvent action, Entity e, int index) => action?.Invoke(e, ref this[index]);
 
         /// <summary>
         ///     Invokes the generic action with using the specified action
@@ -108,7 +108,7 @@ namespace Alis.Core.Ecs.Updating
             ref TComponent item = ref componentRunner[other];
             this[me] = item;
 
-            ref TComponent? downItem = ref componentRunner[otherRemoveIndex];
+            ref TComponent downItem = ref componentRunner[otherRemoveIndex];
             item = downItem;
 
             if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
@@ -125,7 +125,7 @@ namespace Alis.Core.Ecs.Updating
         /// <param name="other">The other</param>
         internal override void PullComponentFrom(IDTable storage, int me, int other)
         {
-            ref TComponent? item = ref ((IDTable<TComponent>) storage).Buffer[other];
+            ref TComponent item = ref ((IDTable<TComponent>) storage).Buffer[other];
             this[me] = item;
 
             if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
@@ -140,7 +140,7 @@ namespace Alis.Core.Ecs.Updating
         /// <param name="data">The data</param>
         internal override void Delete(DeleteComponentData data)
         {
-            ref TComponent? from = ref this[data.FromIndex];
+            ref TComponent from = ref this[data.FromIndex];
             Component<TComponent>.Destroyer?.Invoke(ref from);
             this[data.ToIndex] = from;
 

@@ -62,12 +62,12 @@ namespace Alis.Core.Ecs.Core
         /// <summary>
         ///     The initer
         /// </summary>
-        internal static readonly ComponentDelegates<T>.InitDelegate? Initer;
+        internal static readonly ComponentDelegates<T>.InitDelegate Initer;
 
         /// <summary>
         ///     The destroyer
         /// </summary>
-        internal static readonly ComponentDelegates<T>.DestroyDelegate? Destroyer;
+        internal static readonly ComponentDelegates<T>.DestroyDelegate Destroyer;
 
         /// <summary>
         ///     The
@@ -168,7 +168,7 @@ namespace Alis.Core.Ecs.Core
                 return type.Factory;
             }
 
-            if (NoneComponentRunnerTable.TryGetValue(t, out IComponentStorageBaseFactory? t1))
+            if (NoneComponentRunnerTable.TryGetValue(t, out IComponentStorageBaseFactory t1))
             {
                 return t1;
             }
@@ -199,14 +199,14 @@ namespace Alis.Core.Ecs.Core
         ///     A component id component id and id table of t stack and component delegates t init delegate initer and
         ///     component delegates t destroy delegate destroyer
         /// </returns>
-        internal static (ComponentID ComponentID, IDTable<T> Stack, ComponentDelegates<T>.InitDelegate? Initer, ComponentDelegates<T>.DestroyDelegate? Destroyer) GetExistingOrSetupNewComponent<T>()
+        internal static (ComponentID ComponentID, IDTable<T> Stack, ComponentDelegates<T>.InitDelegate Initer, ComponentDelegates<T>.DestroyDelegate Destroyer) GetExistingOrSetupNewComponent<T>()
         {
             lock (GlobalWorldTables.BufferChangeLock)
             {
                 Type type = typeof(T);
                 if (ExistingComponentIDs.TryGetValue(type, out ComponentID value))
                 {
-                    return (value, (IDTable<T>) ComponentTable[value.RawIndex].Storage, (ComponentDelegates<T>.InitDelegate?) ComponentTable[value.RawIndex].Initer, (ComponentDelegates<T>.DestroyDelegate?) ComponentTable[value.RawIndex].Destroyer);
+                    return (value, (IDTable<T>) ComponentTable[value.RawIndex].Storage, (ComponentDelegates<T>.InitDelegate) ComponentTable[value.RawIndex].Initer, (ComponentDelegates<T>.DestroyDelegate) ComponentTable[value.RawIndex].Destroyer);
                 }
 
                 EnsureTypeInit(type);
@@ -223,13 +223,13 @@ namespace Alis.Core.Ecs.Core
 
                 GlobalWorldTables.GrowComponentTagTableIfNeeded(id.RawIndex);
 
-                ComponentDelegates<T>.InitDelegate? initDelegate = (ComponentDelegates<T>.InitDelegate?) (GenerationServices.TypeIniters.TryGetValue(type, out Delegate? v) ? v : null);
-                ComponentDelegates<T>.DestroyDelegate? destroyDelegate = (ComponentDelegates<T>.DestroyDelegate?) (GenerationServices.TypeDestroyers.TryGetValue(type, out Delegate? v2) ? v2 : null);
+                ComponentDelegates<T>.InitDelegate initDelegate = (ComponentDelegates<T>.InitDelegate) (GenerationServices.TypeIniters.TryGetValue(type, out Delegate v) ? v : null);
+                ComponentDelegates<T>.DestroyDelegate destroyDelegate = (ComponentDelegates<T>.DestroyDelegate) (GenerationServices.TypeDestroyers.TryGetValue(type, out Delegate v2) ? v2 : null);
 
                 IDTable<T> stack = new IDTable<T>();
                 ComponentTable.Push(new ComponentData(type, stack,
-                    GenerationServices.TypeIniters.TryGetValue(type, out Delegate? v1) ? initDelegate : null,
-                    GenerationServices.TypeDestroyers.TryGetValue(type, out Delegate? d) ? destroyDelegate : null));
+                    GenerationServices.TypeIniters.TryGetValue(type, out Delegate v1) ? initDelegate : null,
+                    GenerationServices.TypeDestroyers.TryGetValue(type, out Delegate d) ? destroyDelegate : null));
 
                 return (id, stack, initDelegate, destroyDelegate);
             }
@@ -264,8 +264,8 @@ namespace Alis.Core.Ecs.Core
                 GlobalWorldTables.GrowComponentTagTableIfNeeded(id.RawIndex);
 
                 ComponentTable.Push(new ComponentData(t, GetComponentTable(t),
-                    GenerationServices.TypeIniters.TryGetValue(t, out Delegate? v) ? v : null,
-                    GenerationServices.TypeDestroyers.TryGetValue(t, out Delegate? d) ? d : null));
+                    GenerationServices.TypeIniters.TryGetValue(t, out Delegate v) ? v : null,
+                    GenerationServices.TypeDestroyers.TryGetValue(t, out Delegate d) ? d : null));
 
                 return id;
             }
@@ -301,7 +301,7 @@ namespace Alis.Core.Ecs.Core
         /// <returns>The id table</returns>
         private static IDTable GetComponentTable(Type type)
         {
-            if (NoneComponentRunnerTable.TryGetValue(type, out IComponentStorageBaseFactory? fac))
+            if (NoneComponentRunnerTable.TryGetValue(type, out IComponentStorageBaseFactory fac))
             {
                 return (IDTable) fac.CreateStack();
             }

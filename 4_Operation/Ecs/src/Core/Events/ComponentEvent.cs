@@ -16,7 +16,7 @@ namespace Alis.Core.Ecs.Core.Events
         /// <summary>
         ///     The generic event
         /// </summary>
-        internal GenericEvent? GenericEvent = null;
+        internal GenericEvent GenericEvent = null;
 
         /// <summary>
         ///     Gets the value of the has listeners

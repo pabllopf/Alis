@@ -49,7 +49,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The custom
         /// </summary>
-        private Func<ArchetypeID, bool>? _custom;
+        private Func<ArchetypeID, bool> _custom;
 
         /// <summary>
         ///     The comp id
@@ -151,7 +151,7 @@ namespace Alis.Core.Ecs.Systems
         ///     <see langword="true" /> if the object is a <see cref="Rule" /> and they are equal, <see langword="false" />
         ///     otherwise.
         /// </returns>
-        public override bool Equals(object? obj) => obj is Rule other && Equals(other);
+        public override bool Equals(object obj) => obj is Rule other && Equals(other);
 
         /// <summary>
         ///     Gets a hash code for this <see cref="Rule" />.

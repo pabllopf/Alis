@@ -101,13 +101,13 @@ namespace Alis.Core.Ecs.Core.Archetype
                 int size = table.Length;
                 for (int i = 0; i < size; i++)
                 {
-                    ref byte[]? componentsForArchetype = ref table[i];
+                    ref byte[] componentsForArchetype = ref table[i];
                     Array.Resize(ref componentsForArchetype, ComponentTagTableBufferSize);
 
                     //componentsForArchetype.AsSpan(tableSize).Fill(DefaultNoTag);
 
                     //update world archetypes
-                    foreach (World? world in worlds)
+                    foreach (World world in worlds)
                     {
                         if (world is not null && world.WorldArchetypeTable[i] is Archetype archetype)
                         {

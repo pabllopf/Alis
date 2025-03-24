@@ -277,7 +277,7 @@ namespace Alis.Core.Ecs.Core
                     if (record.HasEvent(EntityFlags.AddComp))
                     {
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
-                        EventRecord? events = _world.EventLookup[command.Entity];
+                        EventRecord events = _world.EventLookup[command.Entity];
 #else
                         ref EventRecord events = ref CollectionsMarshal.GetValueRefOrNullRef(_world.EventLookup, command.Entity);
 #endif

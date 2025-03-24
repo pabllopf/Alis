@@ -41,7 +41,8 @@ namespace Alis.Core.Ecs.Collections
     /// </summary>
     /// <seealso cref="ICollection"/>
     /// <seealso cref="IReadOnlyCollection{T}"/>
-    public class FastStack<T> : ICollection,
+    [StructLayout(LayoutKind.Sequential)] 
+    public struct FastStack<T> : ICollection,
         IReadOnlyCollection<T>, IDisposable
     {
         /// <summary>
