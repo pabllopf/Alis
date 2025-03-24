@@ -188,7 +188,6 @@ namespace Alis.Core.Ecs.Collections
                 throw new ArgumentException("Argument_InvalidOffLen");
             }
 
-            Debug.Assert(array != _array);
             int srcIndex = 0;
             int dstIndex = arrayIndex + _size;
             while (srcIndex < _size)
@@ -425,7 +424,6 @@ namespace Alis.Core.Ecs.Collections
         [MethodImpl(MethodImplOptions.NoInlining)]
         private void PushWithResize(T item)
         {
-            Debug.Assert(_size == _array.Length);
             Grow(_size + 1);
             _array[_size] = item;
             _version++;
@@ -478,8 +476,6 @@ namespace Alis.Core.Ecs.Collections
         /// <param name="capacity">The capacity</param>
         private void Grow(int capacity)
         {
-            Debug.Assert(_array.Length < capacity);
-        
             int newcapacity = _array.Length == 0 ? DefaultCapacity : 2 * _array.Length;
         
             // Allow the list to grow to maximum possible capacity (~2G elements) before encountering overflow.
@@ -519,7 +515,6 @@ namespace Alis.Core.Ecs.Collections
         /// <exception cref="InvalidOperationException">InvalidOperation_EmptyStack</exception>
         private void ThrowForEmptyStack()
         {
-            Debug.Assert(_size == 0);
             throw new InvalidOperationException("InvalidOperation_EmptyStack");
         }
 
@@ -615,7 +610,6 @@ namespace Alis.Core.Ecs.Collections
             /// <exception cref="InvalidOperationException"></exception>
             private void ThrowEnumerationNotStartedOrEnded()
             {
-                Debug.Assert(_index == -1 || _index == -2);
                 throw new InvalidOperationException(_index == -2 ? "InvalidOperation_EnumNotStarted" : "InvalidOperation_EnumEnded");
             }
 
