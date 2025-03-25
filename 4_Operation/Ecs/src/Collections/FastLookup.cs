@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Core;
@@ -133,15 +134,15 @@ namespace Alis.Core.Ecs.Collections
         /// <returns>The int</returns>
         public int LookupIndex(uint key)
         {
-#if NET7_0_OR_GREATER
-            if (Vector256.IsHardwareAccelerated)
+#if NET6_0_OR_GREATER
+            ReadOnlySpan<uint> span = MemoryMarshal.CreateReadOnlySpan(ref _data._0, 8);
+            for (int i = 0; i < span.Length; i++)
             {
-                Vector256<uint> bits = Vector256.Equals(Vector256.Create(key), Vector256.LoadUnsafe(ref _data._0));
-                int index = System.Numerics.BitOperations.TrailingZeroCount(bits.ExtractMostSignificantBits());
-                return index;
+                if (span[i] == key)
+                    return i;
             }
-#endif
-
+            return 32;
+#else
             if (_data._0 == key)
             {
                 return 0;
@@ -183,6 +184,7 @@ namespace Alis.Core.Ecs.Collections
             }
 
             return 32;
+#endif
         }
     }
 }
