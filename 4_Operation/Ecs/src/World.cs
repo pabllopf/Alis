@@ -47,7 +47,7 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     A collection of entities that can be updated and queried.
     /// </summary>
-    public class World : IDisposable
+    public partial class World : IDisposable
     {
         /// <summary>
         ///     The next world id
@@ -1020,7 +1020,6 @@ namespace Alis.Core.Ecs
         ///     Creates an <see cref="Entity" /> with the given component(s)
         /// </summary>
         /// <returns>An <see cref="Entity" /> that can be used to acsess the component data</returns>
-        
         public Entity Create<T>(in T comp)
         {
             Archetype archetype = Archetype<T>.CreateNewOrGetExistingArchetype(this);
