@@ -42,18 +42,15 @@ namespace Alis.Benchmark.CustomCollections.Stacks
         /// <summary>
         /// The array size
         /// </summary>
-        [Params(5)]
+        [Params(10)]
         public int ArraySize;
-
-        /// <summary>
-        /// The native array unsafe
-        /// </summary>
-        private NativeStackUnsafe<int> nativeArrayUnsafe;
         
         /// <summary>
         /// The fastest stack
         /// </summary>
         private FastStack<int> fastStack;
+        
+        private PooledStack<int> pooledStack;
         
         // Inicialización
         /// <summary>
@@ -62,14 +59,14 @@ namespace Alis.Benchmark.CustomCollections.Stacks
         [GlobalSetup]
         public void Setup()
         {
-            nativeArrayUnsafe = new NativeStackUnsafe<int>(ArraySize);
             fastStack = new FastStack<int>(ArraySize);
+            pooledStack = new PooledStack<int>(ArraySize);
         }
         
         /// <summary>
         /// Fastests the stack array iterate
         /// </summary>
-        [Benchmark(Description = "Benchmark for Fastest Stack Array Iteration")]
+        [Benchmark(Description = "[FASTEST] Initialize stack")]
         public void Fastest_Stack_ArrayIterate()
         {
             for (int i = 0; i < ArraySize; i++)
@@ -78,16 +75,71 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             }
         }
         
-        /// <summary>
-        /// Benchmarks the native array unsafe
-        /// </summary>
-        [Benchmark(Description = "Benchmark for Native Array Unsafe Iteration")]
-        public void Unsafe_code_Stack_ArrayIterate()
+        [Benchmark(Description = "[POOLED] Initialize stack")]
+        public void Pooled_Stack_ArrayIterate()
         {
             for (int i = 0; i < ArraySize; i++)
             {
-                nativeArrayUnsafe[i] = i;
+                pooledStack[i] = i;
             }
         }
+        
+        [Benchmark(Description = "[FASTEST] Pop elements")]
+        public void Fastest_Stack_Pop()
+        {
+            for (int i = 0; i < ArraySize; i++)
+            {
+                _ = fastStack.Pop();
+            }
+        }
+        
+        [Benchmark(Description = "[POOLED] Pop elements")]
+        public void Pooled_Stack_Pop()
+        {
+            for (int i = 0; i < ArraySize; i++)
+            {
+                _ = pooledStack.Pop();
+            }
+        }
+        
+        
+        [Benchmark(Description = "[FASTEST] Push elements")]
+        public void Fastest_Stack_Push()
+        {
+            for (int i = 0; i < ArraySize; i++)
+            {
+                fastStack.Push(i);
+            }
+        }
+        
+        [Benchmark(Description = "[POOLED] Push elements")]
+        public void Pooled_Stack_Push()
+        {
+            for (int i = 0; i < ArraySize; i++)
+            {
+                pooledStack.Push(i);
+            }
+        }
+        
+        [Benchmark(Description = "[FASTEST] Peek elements")]
+        public void Fastest_Stack_Peek()
+        {
+            for (int i = 0; i < ArraySize; i++)
+            {
+                _ = fastStack.Peek();
+            }
+        }
+        
+        [Benchmark(Description = "[POOLED] Peek elements")]
+        public void Pooled_Stack_Peek()
+        {
+            for (int i = 0; i < ArraySize; i++)
+            {
+                _ = pooledStack.Peek();
+            }
+        }
+        
+
+        
     }
 }

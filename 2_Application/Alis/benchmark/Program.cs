@@ -29,6 +29,7 @@
 
 using System.Globalization;
 using Alis.Benchmark.ClassVsStruct;
+using Alis.Benchmark.CustomCollections.ArrayPools;
 using Alis.Benchmark.CustomCollections.Arrays;
 using Alis.Benchmark.CustomCollections.Stacks;
 using Alis.Benchmark.CustomCollections.Tables;
