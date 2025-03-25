@@ -31,6 +31,7 @@ using System.Globalization;
 using Alis.Benchmark.ClassVsStruct;
 using Alis.Benchmark.CustomCollections.ArrayPools;
 using Alis.Benchmark.CustomCollections.Arrays;
+using Alis.Benchmark.CustomCollections.Lists;
 using Alis.Benchmark.CustomCollections.Stacks;
 using Alis.Benchmark.CustomCollections.Tables;
 using Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent;
@@ -94,6 +95,8 @@ namespace Alis.Benchmark
                 typeof(RemoveAtVsRemoveUnnorderAtListBenchmark),
                 
                 typeof(ArrayPoolsBenchmark),
+                
+                typeof(ListsBenchmarks)
             });
 
             IConfig configuration = DefaultConfig.Instance
