@@ -11,7 +11,7 @@ internal interface IArchetypeGraphEdge
     /// </summary>
     /// <param name="tags">The tags</param>
     /// <param name="add">The add</param>
-    void ModifyTags(ref ImmutableArray<TagID> tags, bool add);
+    void ModifyTags(ref ImmutableArray<TagId> tags, bool add);
 
     /// <summary>
     ///     Modifies the components using the specified components

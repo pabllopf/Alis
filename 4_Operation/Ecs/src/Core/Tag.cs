@@ -36,7 +36,7 @@ using Alis.Core.Ecs.Core.Archetype;
 namespace Alis.Core.Ecs.Core
 {
     /// <summary>
-    ///     Holds the static <see cref="TagID" /> instance for the type <typeparamref name="T" />
+    ///     Holds the static <see cref="TagId" /> instance for the type <typeparamref name="T" />
     /// </summary>
     /// <typeparam name="T">The type of tag this class has info about</typeparam>
     public class Tag<T>
@@ -44,7 +44,7 @@ namespace Alis.Core.Ecs.Core
         /// <summary>
         ///     The static tag ID instance
         /// </summary>
-        public static readonly TagID ID = Tag.GetTagID(typeof(T));
+        public static readonly TagId ID = Tag.GetTagID(typeof(T));
     }
 
 //this entirely piggybacks on top of component
@@ -56,7 +56,7 @@ internal class Tag
         /// <summary>
         ///     The existing tag ds
         /// </summary>
-        private static readonly Dictionary<Type, TagID> ExistingTagIDs = [];
+        private static readonly Dictionary<Type, TagId> ExistingTagIDs = [];
 
         /// <summary>
         ///     The create
@@ -80,11 +80,11 @@ internal class Tag
         /// <param name="type">The type</param>
         /// <exception cref="Exception">Exceeded max tag count of 65535</exception>
         /// <returns>The tag id</returns>
-        internal static TagID GetTagID(Type type)
+        internal static TagId GetTagID(Type type)
         {
             lock (GlobalWorldTables.BufferChangeLock)
             {
-                if (ExistingTagIDs.TryGetValue(type, out TagID tagID))
+                if (ExistingTagIDs.TryGetValue(type, out TagId tagID))
                 {
                     return tagID;
                 }
@@ -96,11 +96,11 @@ internal class Tag
                     throw new Exception("Exceeded max tag count of 65535");
                 }
 
-                TagID newID = new TagID((ushort) id);
+                TagId newID = new TagId((ushort) id);
                 ExistingTagIDs[type] = newID;
                 TagTable.Push(type);
 
-                GlobalWorldTables.GrowComponentTagTableIfNeeded(newID.RawValue);
+                GlobalWorldTables.GrowComponentTagTableIfNeeded(newID.RawData);
 
                 return newID;
             }

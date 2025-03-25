@@ -259,7 +259,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Invoked whenever a tag is added to an entity.
         /// </summary>
-        public event Action<Entity, TagID> TagTagged
+        public event Action<Entity, TagId> TagTagged
         {
             add => AddEvent(ref Tagged, value, EntityFlags.Tagged);
             remove => RemoveEvent(ref Tagged, value, EntityFlags.Tagged);
@@ -268,7 +268,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Invoked whenever a tag is removed from an entity.
         /// </summary>
-        public event Action<Entity, TagID> TagDetached
+        public event Action<Entity, TagId> TagDetached
         {
             add => AddEvent(ref Detached, value, EntityFlags.Detach);
             remove => RemoveEvent(ref Detached, value, EntityFlags.Detach);
@@ -359,7 +359,7 @@ namespace Alis.Core.Ecs
 
             WorldUpdateCommandBuffer = new CommandBuffer(this);
             DefaultWorldEntity = new Entity(ID, default(ushort), default(int));
-            DefaultArchetype = Archetype.CreateOrGetExistingArchetype([], [], this, ImmutableArray<ComponentID>.Empty, ImmutableArray<TagID>.Empty);
+            DefaultArchetype = Archetype.CreateOrGetExistingArchetype([], [], this, ImmutableArray<ComponentID>.Empty, ImmutableArray<TagId>.Empty);
             DeferredCreateArchetype = Archetype.CreateOrGetExistingArchetype(Archetype.DeferredCreate, this);
         }
 

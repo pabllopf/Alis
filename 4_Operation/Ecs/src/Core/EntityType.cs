@@ -62,7 +62,7 @@ namespace Alis.Core.Ecs.Core
         /// <summary>
         ///     The tag types
         /// </summary>
-        public readonly ImmutableArray<TagID> Tags => Core.Archetype.Archetype.ArchetypeTable[RawIndex].TagTypes;
+        public readonly ImmutableArray<TagId> Tags => Core.Archetype.Archetype.ArchetypeTable[RawIndex].TagTypes;
 
         /// <summary>
         ///     Checks if this <see cref="EntityType" /> has a component represented by a <see cref="ComponentID" />
@@ -75,14 +75,14 @@ namespace Alis.Core.Ecs.Core
         public readonly bool HasComponent(ComponentID componentID) => GlobalWorldTables.ComponentIndex(this, componentID) != 0;
 
         /// <summary>
-        ///     Checks if this <see cref="EntityType" /> has a tag represented by a <see cref="TagID" />
+        ///     Checks if this <see cref="EntityType" /> has a tag represented by a <see cref="TagId" />
         /// </summary>
         /// <param name="tagID">The ID of the tag type to check if this <see cref="EntityType" /> has</param>
         /// <returns>
         ///     <see langword="true" /> if this Entity type has a tag of the specified tag ID, <see langword="false" />
         ///     otherwise
         /// </returns>
-        public readonly bool HasTag(TagID tagID) => GlobalWorldTables.HasTag(this, tagID);
+        public readonly bool HasTag(TagId tagID) => GlobalWorldTables.HasTag(this, tagID);
 
         /// <summary>
         ///     Checks if this <see cref="EntityType" /> represents the same ID as <paramref name="other" />

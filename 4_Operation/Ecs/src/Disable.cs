@@ -39,5 +39,5 @@ namespace Alis.Core.Ecs
     ///     overloads, nor in queries unless explicitly required.
     /// </remarks>
     [StructLayout(LayoutKind.Sequential)]
-    public struct Disable;
+    public readonly record struct Disable;
 }
