@@ -40,6 +40,7 @@ using Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents;
 using Alis.Benchmark.IDs;
 using Alis.Benchmark.InterfaceVsAbstract;
 using Alis.Benchmark.Iterators;
+using Alis.Benchmark.Loop;
 using Alis.Benchmark.RemoveAtVsRemoveUnnorderAt;
 using Alis.Benchmark.Strings;
 using BenchmarkDotNet.Configs;
@@ -96,7 +97,9 @@ namespace Alis.Benchmark
                 
                 typeof(ArrayPoolsBenchmark),
                 
-                typeof(ListsBenchmarks)
+                typeof(ListsBenchmarks),
+                
+                typeof(LoopBenchmark),
             });
 
             IConfig configuration = DefaultConfig.Instance
