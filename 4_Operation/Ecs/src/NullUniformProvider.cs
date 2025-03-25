@@ -18,7 +18,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The</returns>
-        [DebuggerHidden]
+        
         public T GetUniform<T>()
         {
             FrentExceptions.Throw_InvalidOperationException("Initialize the world with an IUniformProvider in order to use uniforms");
