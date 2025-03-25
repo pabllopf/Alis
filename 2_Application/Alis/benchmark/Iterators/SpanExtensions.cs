@@ -34,8 +34,17 @@ using System.Runtime.InteropServices;
 
 namespace Alis.Benchmark.Iterators
 {
+    /// <summary>
+    /// The span extensions class
+    /// </summary>
     public static class SpanExtensions
     {
+        /// <summary>
+        /// Fasts the for using the specified span
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="span">The span</param>
+        /// <param name="action">The action</param>
         public static void FastFor<T>(this Span<T> span, Action<T> action) where T : struct
         {
             int vectorSize = Vector<T>.Count;
