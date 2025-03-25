@@ -6,16 +6,5 @@ namespace Alis.Core.Ecs
     ///     The entity high low
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    internal struct EntityHighLow
-    {
-        /// <summary>
-        ///     The entity id
-        /// </summary>
-        internal int EntityID;
-
-        /// <summary>
-        ///     The entity low
-        /// </summary>
-        internal int EntityLow;
-    }
+    internal readonly record struct EntityHighLow(int EntityId, int EntityLow);
 }
