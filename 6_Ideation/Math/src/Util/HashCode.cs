@@ -418,7 +418,7 @@ namespace Alis.Core.Aspect.Math.Util
         /// <param name="v2">The </param>
         /// <param name="v3">The </param>
         /// <param name="v4">The </param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         private static void Initialize(out uint v1, out uint v2, out uint v3, out uint v4)
         {
             v1 = SSeed + Prime1 + Prime2;
@@ -433,7 +433,7 @@ namespace Alis.Core.Aspect.Math.Util
         /// <param name="hash">The hash</param>
         /// <param name="input">The input</param>
         /// <returns>The uint</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         private static uint Round(uint hash, uint input) => RotateLeft(hash + input * Prime2, 13) * Prime1;
 
         /// <summary>
@@ -442,7 +442,7 @@ namespace Alis.Core.Aspect.Math.Util
         /// <param name="hash">The hash</param>
         /// <param name="queuedValue">The queued value</param>
         /// <returns>The uint</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         private static uint QueueRound(uint hash, uint queuedValue) => RotateLeft(hash + queuedValue * Prime3, 17) * Prime4;
 
         /// <summary>
@@ -453,7 +453,7 @@ namespace Alis.Core.Aspect.Math.Util
         /// <param name="v3">The </param>
         /// <param name="v4">The </param>
         /// <returns>The uint</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         private static uint MixState(uint v1, uint v2, uint v3, uint v4) => RotateLeft(v1, 1) + RotateLeft(v2, 7) + RotateLeft(v3, 12) + RotateLeft(v4, 18);
 
         /// <summary>
@@ -476,7 +476,7 @@ namespace Alis.Core.Aspect.Math.Util
         /// </summary>
         /// <param name="hash">The hash</param>
         /// <returns>The hash</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         private static uint MixFinal(uint hash)
         {
             hash ^= hash >> 15;

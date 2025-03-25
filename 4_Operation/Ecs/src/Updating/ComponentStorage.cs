@@ -181,7 +181,7 @@ namespace Alis.Core.Ecs.Updating
         /// </summary>
         public ref TComponent this[int index]
         {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            
             get => ref TypedBuffer.UnsafeArrayIndex(index);
         }
 
@@ -237,7 +237,7 @@ internal unsafe abstract class ComponentStorage<TComponent> : IDisposable
 
     public ref TComponent this[int index]
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         get
         {
             if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
@@ -249,7 +249,7 @@ internal unsafe abstract class ComponentStorage<TComponent> : IDisposable
         }
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    
     public ComponentStorage()
     {
         if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
@@ -265,7 +265,7 @@ internal unsafe abstract class ComponentStorage<TComponent> : IDisposable
     private TComponent[]? _managed;
     private NativeArray<TComponent> _nativeArray;
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    
     protected void Resize(int size)
     {
         if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
@@ -278,11 +278,11 @@ internal unsafe abstract class ComponentStorage<TComponent> : IDisposable
         }
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    
     public Span<TComponent> AsSpan() => RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>() ?
         _managed.AsSpan() : _nativeArray.AsSpan();
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    
     public Span<TComponent> AsSpan(int length) => RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>() ?
         _managed.AsSpan(0, length) : _nativeArray.AsSpanLen(length);
 

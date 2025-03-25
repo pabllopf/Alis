@@ -71,7 +71,7 @@ namespace System.Numerics
             return value + 1;
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public static uint RotateLeft(uint value, int offset) => (value << offset) | (value >> (32 - offset));
     }
 }

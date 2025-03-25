@@ -72,7 +72,7 @@ namespace Alis.Core.Ecs.Collections
         /// <param name="world">The world</param>
         /// <param name="edgeType">The edge type</param>
         /// <returns>The entity type</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public ArchetypeID FindAdjacentArchetypeId<T>(T id, EntityType archetype, World world, ArchetypeEdgeType edgeType)
             where T : ITypeID
         {

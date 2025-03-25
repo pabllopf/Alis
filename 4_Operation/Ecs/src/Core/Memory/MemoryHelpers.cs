@@ -228,7 +228,7 @@ namespace Alis.Core.Ecs.Core.Memory
         /// <typeparam name="TBlock">The block</typeparam>
         /// <param name="destination">The destination</param>
         /// <param name="source">The source</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public static void CopyBlock<TBlock>(ref byte destination, ref byte source)
             where TBlock : struct
         {

@@ -71,13 +71,13 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         /// <summary>
         /// Devuelve el array como Span&lt;T&gt; para iteraciones rápidas.
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public Span<T> AsSpan() => _array;
 
         /// <summary>
         /// Limpia el array asignando el valor por defecto a cada elemento.
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public void Clear() => Array.Clear(_array, 0, _array.Length);
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         /// Se copia el contenido existente hasta el menor de ambas longitudes.
         /// </summary>
         /// <param name="newLength">La nueva longitud del array.</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public void Resize(int newLength)
         {
             if (newLength == _array.Length)

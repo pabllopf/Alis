@@ -62,7 +62,7 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         /// </summary>
         public ref T this[int index]
         {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            
             get
             {
                 return ref _array[index];
