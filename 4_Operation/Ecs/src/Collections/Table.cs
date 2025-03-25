@@ -73,7 +73,7 @@ namespace Alis.Core.Ecs.Collections
         
         private ref T ResizeGet(int index)
         {
-            FastStackArrayPool<T>.ResizeArrayFromPool(ref _buffer, (int) BitOperations.RoundUpToPowerOf2((uint) (index + 1)));
+            ComponentArrayPool<T>.ResizeArrayFromPool(ref _buffer, (int) BitOperations.RoundUpToPowerOf2((uint) (index + 1)));
             return ref _buffer.UnsafeArrayIndex(index);
         }
 
@@ -97,7 +97,7 @@ namespace Alis.Core.Ecs.Collections
                 return;
             }
 
-            FastStackArrayPool<T>.ResizeArrayFromPool(ref _buffer, size);
+            ComponentArrayPool<T>.ResizeArrayFromPool(ref _buffer, size);
         }
 
         /// <summary>

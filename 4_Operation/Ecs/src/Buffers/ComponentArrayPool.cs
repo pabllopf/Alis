@@ -56,8 +56,13 @@ namespace Alis.Core.Ecs.Buffers
             //13 array sizes for components
             Gen2GcCallback.Gen2CollectionOccured += ClearBuckets;
 
-            Buckets = new T[13][];
+            Buckets = new T[27][];
         }
+        
+        /// <summary>
+        ///     Gets the value of the instance
+        /// </summary>
+        public static ComponentArrayPool<T> Instance { get; } = new ComponentArrayPool<T>();
 
         /// <summary>
         ///     Rents the minimum length
@@ -85,8 +90,7 @@ namespace Alis.Core.Ecs.Buffers
                 }
             }
 
-            return new T[minimumLength]; //GC.AllocateUninitializedArray<T>(minimumLength)
-            //benchmarks say uninit is the same speed
+            return new T[minimumLength];
         }
 
         /// <summary>
@@ -96,7 +100,6 @@ namespace Alis.Core.Ecs.Buffers
         /// <param name="clearArray">The clear array</param>
         public override void Return(T[] array, bool clearArray = false)
         {
-            //easier to deal w/ all logic here
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
             {
                 array.AsSpan().Clear();
@@ -107,6 +110,14 @@ namespace Alis.Core.Ecs.Buffers
             {
                 Buckets[bucketIndex] = array;
             }
+        }
+        
+        public static void ResizeArrayFromPool(ref T[] arr, int len)
+        {
+            T[] finalArr = Instance.Rent(len);
+            arr.AsSpan().CopyTo(finalArr);
+            Instance.Return(arr);
+            arr = finalArr;
         }
 
         /// <summary>

@@ -73,7 +73,8 @@ namespace Alis.Benchmark.CustomCollections.Lists
         [Benchmark(Description = "[NORMAL] Iterate List")]
         public void Fastest_List_ArrayIterate()
         {
-            for (int i = 0; i < ArraySize; i++)
+            fastList = new List<int>(ArraySize);
+            for (int i = 1; i < ArraySize - 1; i++)
             {
                 _ = fastList[i];
             }
@@ -85,7 +86,8 @@ namespace Alis.Benchmark.CustomCollections.Lists
         [Benchmark(Description = "[POOLED] Iterate List")]
         public void Pooled_List_ArrayIterate()
         {
-            for (int i = 0; i < ArraySize; i++)
+            pooledList = new PooledList<int>(ArraySize);
+            for (int i = 1; i < ArraySize - 1; i++)
             {
                 _ = pooledList[i];
             }
@@ -97,7 +99,8 @@ namespace Alis.Benchmark.CustomCollections.Lists
         [Benchmark(Description = "[NORMAL] Add List")]
         public void Fastest_List_Add()
         {
-            for (int i = 0; i < ArraySize; i++)
+            fastList = new List<int>(ArraySize);
+            for (int i = 1; i < ArraySize - 1; i++)
             {
                 fastList.Add(i);
             }
@@ -109,7 +112,8 @@ namespace Alis.Benchmark.CustomCollections.Lists
         [Benchmark(Description = "[POOLED] Add List")]
         public void Pooled_List_Add()
         {
-            for (int i = 0; i < ArraySize; i++)
+            pooledList = new PooledList<int>(ArraySize);
+            for (int i = 1; i < ArraySize - 1; i++)
             {
                 pooledList.Add(i);
             }
@@ -121,7 +125,13 @@ namespace Alis.Benchmark.CustomCollections.Lists
         [Benchmark(Description = "[NORMAL] Remove List")]
         public void Fastest_List_Remove()
         {
-            for (int i = 0; i < ArraySize; i++)
+            fastList = new List<int>(ArraySize);
+            for (int i = 1; i < ArraySize - 1; i++)
+            {
+                fastList.Add(i);
+            }
+            
+            for (int i = 1; i < ArraySize - 1; i++)
             {
                 fastList.RemoveAt(i);
             }
@@ -133,7 +143,13 @@ namespace Alis.Benchmark.CustomCollections.Lists
         [Benchmark(Description = "[POOLED] Remove List")]
         public void Pooled_List_Remove()
         {
-            for (int i = 0; i < ArraySize; i++)
+            pooledList = new PooledList<int>(ArraySize);
+            for (int i = 1; i < ArraySize - 1; i++)
+            {
+                pooledList.Add(i);
+            }
+            
+            for (int i = 1; i < ArraySize - 1; i++)
             {
                 pooledList.RemoveAt(i);
             }
@@ -145,6 +161,7 @@ namespace Alis.Benchmark.CustomCollections.Lists
         [Benchmark(Description = "[NORMAL] Clear List")]
         public void Fastest_List_Clear()
         {
+            fastList = new List<int>(ArraySize);
             fastList.Clear();
         }
         
@@ -154,6 +171,7 @@ namespace Alis.Benchmark.CustomCollections.Lists
         [Benchmark(Description = "[POOLED] Clear List")]
         public void Pooled_List_Clear()
         {
+            pooledList = new PooledList<int>(ArraySize);
             pooledList.Clear();
         }
         
@@ -163,7 +181,8 @@ namespace Alis.Benchmark.CustomCollections.Lists
         [Benchmark(Description = "[NORMAL] Contains List")]
         public void Fastest_List_Contains()
         {
-            for (int i = 0; i < ArraySize; i++)
+            fastList = new List<int>(ArraySize);
+            for (int i = 1; i < ArraySize - 1; i++)
             {
                 _ = fastList.Contains(i);
             }
@@ -175,7 +194,8 @@ namespace Alis.Benchmark.CustomCollections.Lists
         [Benchmark(Description = "[POOLED] Contains List")]
         public void Pooled_List_Contains()
         {
-            for (int i = 0; i < ArraySize; i++)
+            pooledList = new PooledList<int>(ArraySize);
+            for (int i = 1; i < ArraySize - 1; i++)
             {
                 _ = pooledList.Contains(i);
             }
@@ -188,7 +208,8 @@ namespace Alis.Benchmark.CustomCollections.Lists
         [Benchmark(Description = "[NORMAL] IndexOf List")]
         public void Fastest_List_IndexOf()
         {
-            for (int i = 0; i < ArraySize; i++)
+            fastList = new List<int>(ArraySize);
+            for (int i = 1; i < ArraySize - 1; i++)
             {
                 _ = fastList.IndexOf(i);
             }
@@ -200,7 +221,8 @@ namespace Alis.Benchmark.CustomCollections.Lists
         [Benchmark(Description = "[POOLED] IndexOf List")]
         public void Pooled_List_IndexOf()
         {
-            for (int i = 0; i < ArraySize; i++)
+            pooledList = new PooledList<int>(ArraySize);
+            for (int i = 1; i < ArraySize - 1; i++)
             {
                 _ = pooledList.IndexOf(i);
             }
@@ -212,7 +234,8 @@ namespace Alis.Benchmark.CustomCollections.Lists
         [Benchmark(Description = "[NORMAL] Insert List")]
         public void Fastest_List_Insert()
         {
-            for (int i = 0; i < ArraySize; i++)
+            fastList = new List<int>(ArraySize);
+            for (int i = 1; i < ArraySize - 1; i++)
             {
                 fastList.Insert(i, i);
             }
@@ -224,7 +247,8 @@ namespace Alis.Benchmark.CustomCollections.Lists
         [Benchmark(Description = "[POOLED] Insert List")]
         public void Pooled_List_Insert()
         {
-            for (int i = 0; i < ArraySize; i++)
+            pooledList = new PooledList<int>(ArraySize);
+            for (int i = 1; i < ArraySize - 1; i++)
             {
                 pooledList.Insert(i, i);
             }

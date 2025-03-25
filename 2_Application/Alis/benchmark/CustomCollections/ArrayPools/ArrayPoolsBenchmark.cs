@@ -59,7 +59,7 @@ namespace Alis.Benchmark.CustomCollections.ArrayPools
         /// <summary>
         /// Gets or sets the value of the array size
         /// </summary>
-        [Params(10, 100, 1000)]
+        [Params(16, 32, 64, 128, 256, 512, 1024, 2048, 4096)]
         public int ArraySize { get; set; }
         
         /// <summary>
@@ -74,22 +74,22 @@ namespace Alis.Benchmark.CustomCollections.ArrayPools
         }
         
         /// <summary>
+        /// Creates the array new array
+        /// </summary>
+        [Benchmark(Description = "[ARRAY] Create array with FastStackArrayPool")]
+        public void CreateArrayNewArray()
+        {
+            int[] array = new int[ArraySize];
+        }
+        
+        /// <summary>
         /// Creates the array with array pool
         /// </summary>
-        [Benchmark(Description = "[ArrayPool .net] Create array with FastStackArrayPool")]
+        [Benchmark(Description = "[ARRAYPOOL] Create array with FastStackArrayPool")]
         public void CreateArrayWithArrayPool()
         {
             int[] array = _arrayPool.Rent(ArraySize);
             _arrayPool.Return(array);
-        }
-        
-        /// <summary>
-        /// Creates the array new array
-        /// </summary>
-        [Benchmark(Description = "[Array normal .net] Create array with FastStackArrayPool")]
-        public void CreateArrayNewArray()
-        {
-            int[] array = new int[ArraySize];
         }
         
         /// <summary>

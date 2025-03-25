@@ -33,7 +33,7 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using Alis.Core.Ecs.Core.Memory;
 
-namespace Alis.Core.Ecs.Buffers
+namespace Alis.Benchmark.CustomCollections.ArrayPools
 {
     /// <summary>
     ///     The fast stack array pool class
@@ -60,7 +60,7 @@ namespace Alis.Core.Ecs.Buffers
         /// <summary>
         ///     Gets the value of the instance
         /// </summary>
-        public static FastStackArrayPool<T> Instance { get; } = new();
+        public static FastStackArrayPool<T> Instance { get; } = new FastStackArrayPool<T>();
 
         /// <summary>
         ///     Resizes the array from pool using the specified arr
