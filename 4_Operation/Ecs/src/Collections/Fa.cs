@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -36,6 +36,9 @@ using Alis.Core.Ecs.Core;
 
 namespace Alis.Core.Ecs.Collections
 {
+    /// <summary>
+    /// The fast immutable array
+    /// </summary>
     public partial struct FastImmutableArray<T>
     {
         /// <summary>
@@ -154,6 +157,9 @@ namespace Alis.Core.Ecs.Collections
                 }
             }
 
+            /// <summary>
+            /// Throws the index out of range exception
+            /// </summary>
             private static void ThrowIndexOutOfRangeException() => throw new IndexOutOfRangeException();
 
             /// <summary>
@@ -1041,6 +1047,10 @@ namespace Alis.Core.Ecs.Collections
                 }
             }
 
+            /// <summary>
+            /// Removes the at range using the specified indices to remove
+            /// </summary>
+            /// <param name="indicesToRemove">The indices to remove</param>
             private void RemoveAtRange(ICollection<int> indicesToRemove)
             {
                 
@@ -1072,18 +1082,41 @@ namespace Alis.Core.Ecs.Collections
             internal Memory<T> AsMemory() => new(_elements, 0, _count);
         }
 
+        /// <summary>
+        /// Creates the builder using the specified types length
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="typesLength">The types length</param>
+        /// <returns>The builder</returns>
         public static Builder CreateBuilder<T>(int typesLength)
         {
             return new Builder { Capacity = typesLength };
         }
 
+        /// <summary>
+        /// Converts the span
+        /// </summary>
+        /// <returns>A read only span of t</returns>
         public ReadOnlySpan<T> AsSpan() => array.AsSpan();
 
+        /// <summary>
+        /// Indexes the of using the specified type id
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="typeId">The type id</param>
+        /// <returns>The int</returns>
         public int IndexOf<T>(T typeId)
         {
             return Array.IndexOf(array, typeId, 0, Length);
         }
 
+        /// <summary>
+        /// Removes the at using the specified index
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="index">The index</param>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <returns>A fast immutable array of t</returns>
         public FastImmutableArray<T> RemoveAt<T>(int index)
         {
             if (index < 0 || index >= Length)

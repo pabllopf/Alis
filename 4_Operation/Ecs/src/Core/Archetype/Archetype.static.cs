@@ -44,6 +44,9 @@ namespace Alis.Core.Ecs.Core.Archetype
     internal static class Archetype<T>
     {
         
+        /// <summary>
+        /// The id
+        /// </summary>
         public static readonly FastImmutableArray<ComponentID> ArchetypeComponentIDs = new FastImmutableArray<ComponentID>(new[] { Component<T>.ID });
 
         //ArchetypeTypes init first, then ID
