@@ -27,28 +27,23 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Immutable;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using Alis.Core.Ecs.Redefinition;
 
 namespace Alis.Core.Ecs.Systems
 {
     /// <summary>
     ///     The query hash
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    internal struct QueryHash
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    [SkipLocalsInit]
+    internal struct QueryHash(int state = 12582917)
     {
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="QueryHash" /> class
-        /// </summary>
-        public QueryHash()
-        {
-        }
-
         /// <summary>
         ///     The state
         /// </summary>
-        private int _state = 12582917;
+        private int _state = state;
 
         /// <summary>
         ///     News
@@ -61,7 +56,7 @@ namespace Alis.Core.Ecs.Systems
         /// </summary>
         /// <param name="rules">The rules</param>
         /// <returns>The hash</returns>
-        public static QueryHash New(ImmutableArray<Rule> rules)
+        public static QueryHash New(FastImmutableArray<Rule> rules)
         {
             QueryHash hash = new QueryHash();
             foreach (Rule rule in rules)
