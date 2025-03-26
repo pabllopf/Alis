@@ -61,12 +61,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         ///     Gets the value of the archetype tag array
         /// </summary>
         internal ImmutableArray<TagId> ArchetypeTagArray => _archetypeID.Tags;
-
-        /// <summary>
-        ///     Gets the value of the debugger display string
-        /// </summary>
-        internal string DebuggerDisplayString => $"Archetype Count: {EntityCount} Types: {string.Join(", ", ArchetypeTypeArray.Select(t => t.Type.Name))} Tags: {string.Join(", ", ArchetypeTagArray.Select(t => t.Type.Name))}";
-
+        
         /// <summary>
         ///     Gets the value of the entity count
         /// </summary>
