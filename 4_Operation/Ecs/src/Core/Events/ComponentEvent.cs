@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace Alis.Core.Ecs.Core.Events
@@ -5,7 +6,8 @@ namespace Alis.Core.Ecs.Core.Events
     /// <summary>
     ///     The component event
     /// </summary>
-    [StructLayout( LayoutKind.Auto )]
+    [StructLayout(LayoutKind.Sequential, Pack = 1 )]
+    [SkipLocalsInit]
     internal struct ComponentEvent()
     {
         /// <summary>
