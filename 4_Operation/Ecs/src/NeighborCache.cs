@@ -1,4 +1,4 @@
-using System.Collections.Immutable;
+
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Core;
@@ -17,7 +17,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="tags">The tags</param>
         /// <param name="add">The add</param>
-        public void ModifyTags(ref ImmutableArray<TagId> tags, bool add)
+        public void ModifyTags(ref FastImmutableArray<TagId> tags, bool add)
         {
             if (add)
             {
@@ -34,7 +34,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="components">The components</param>
         /// <param name="add">The add</param>
-        public void ModifyComponents(ref ImmutableArray<ComponentID> components, bool add)
+        public void ModifyComponents(ref FastImmutableArray<ComponentID> components, bool add)
         {
             if (add)
             {

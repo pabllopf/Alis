@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.Immutable;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -42,8 +41,6 @@ using Alis.Core.Ecs.Core.Events;
 using Alis.Core.Ecs.Core.Memory;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Updating;
-
-[assembly: InternalsVisibleTo("Frent.Tests")]
 
 namespace Alis.Core.Ecs
 {
@@ -358,7 +355,7 @@ namespace Alis.Core.Ecs
 
             WorldUpdateCommandBuffer = new CommandBuffer(this);
             DefaultWorldEntity = new Entity(ID, default(ushort), default(int));
-            DefaultArchetype = Archetype.CreateOrGetExistingArchetype([], [], this, ImmutableArray<ComponentID>.Empty, ImmutableArray<TagId>.Empty);
+            DefaultArchetype = Archetype.CreateOrGetExistingArchetype([], [], this, FastImmutableArray<ComponentID>.Empty, FastImmutableArray<TagId>.Empty);
             DeferredCreateArchetype = Archetype.CreateOrGetExistingArchetype(Archetype.DeferredCreate, this);
         }
 
@@ -501,7 +498,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="rules">The rules</param>
         /// <returns>The </returns>
-        internal Query CreateQuery(ImmutableArray<Rule> rules)
+        internal Query CreateQuery(FastImmutableArray<Rule> rules)
         {
             Query q = new Query(this, rules);
             foreach (ref Archetype element in WorldArchetypeTable.AsSpan())
@@ -788,7 +785,7 @@ namespace Alis.Core.Ecs
             ComponentStorageBase[] destRunners = destination.Components;
             byte[] fromMap = from.ComponentTagTable;
 
-            ImmutableArray<ComponentID> destinationComponents = destination.ArchetypeTypeArray;
+            FastImmutableArray<ComponentID> destinationComponents = destination.ArchetypeTypeArray;
 
             int writeToIndex = 0;
             int size = destinationComponents.Length;
@@ -835,7 +832,7 @@ namespace Alis.Core.Ecs
             ComponentStorageBase[] destRunners = destination.Components;
             byte[] destMap = destination.ComponentTagTable;
 
-            ImmutableArray<ComponentID> fromComponents = from.ArchetypeTypeArray;
+            FastImmutableArray<ComponentID> fromComponents = from.ArchetypeTypeArray;
 
             bool hasGenericRemoveEvent = EntityLocation.HasEventFlag(currentLookup.Flags, EntityFlags.RemoveGenericComp);
 
@@ -933,7 +930,7 @@ namespace Alis.Core.Ecs
             ComponentStorageBase[] destRunners = destination.Components;
             byte[] destMap = destination.ComponentTagTable;
 
-            ImmutableArray<ComponentID> fromComponents = from.ArchetypeTypeArray;
+            FastImmutableArray<ComponentID> fromComponents = from.ArchetypeTypeArray;
 
             int size = fromComponents.Length;
             for (int i = 0; i < size;)

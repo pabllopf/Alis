@@ -35,6 +35,7 @@ using Alis.Core.Ecs.Core;
 using Alis.Core.Ecs.Core.Archetype;
 using Alis.Core.Ecs.Core.Events;
 
+
 namespace Alis.Core.Ecs.Updating
 {
     /// <summary>

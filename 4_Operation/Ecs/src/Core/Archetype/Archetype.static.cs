@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.Immutable;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Collections;
@@ -44,16 +43,14 @@ namespace Alis.Core.Ecs.Core.Archetype
     /// </summary>
     internal static class Archetype<T>
     {
-        /// <summary>
-        ///     The to immutable array
-        /// </summary>
-        public static readonly ImmutableArray<ComponentID> ArchetypeComponentIDs = new[] {Component<T>.ID}.ToImmutableArray();
+        
+        public static readonly FastImmutableArray<ComponentID> ArchetypeComponentIDs = new FastImmutableArray<ComponentID>(new[] { Component<T>.ID });
 
         //ArchetypeTypes init first, then ID
         /// <summary>
         ///     The empty
         /// </summary>
-        public static readonly EntityType ID = Archetype.GetArchetypeID(ArchetypeComponentIDs.AsSpan(), [], ArchetypeComponentIDs, ImmutableArray<TagId>.Empty);
+        public static readonly EntityType ID = Archetype.GetArchetypeID(ArchetypeComponentIDs.AsSpan(), [], ArchetypeComponentIDs, FastImmutableArray<TagId>.Empty);
 
         /// <summary>
         ///     Creates the new or get existing archetype using the specified world
@@ -150,7 +147,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// <param name="typeArray">The type array</param>
         /// <param name="tagTypesArray">The tag types array</param>
         /// <returns>The archetype</returns>
-        internal static Archetype CreateOrGetExistingArchetype(ReadOnlySpan<ComponentID> types, ReadOnlySpan<TagId> tagTypes, World world, ImmutableArray<ComponentID>? typeArray = null, ImmutableArray<TagId>? tagTypesArray = null)
+        internal static Archetype CreateOrGetExistingArchetype(ReadOnlySpan<ComponentID> types, ReadOnlySpan<TagId> tagTypes, World world, FastImmutableArray<ComponentID>? typeArray = null, FastImmutableArray<TagId>? tagTypesArray = null)
         {
             EntityType id = GetArchetypeID(types, tagTypes, typeArray, tagTypesArray);
             return CreateOrGetExistingArchetype(id, world);
@@ -170,7 +167,7 @@ namespace Alis.Core.Ecs.Core.Archetype
                 return archetype;
             }
 
-            ImmutableArray<ComponentID> types = id.Types;
+            FastImmutableArray<ComponentID> types = id.Types;
             ComponentStorageBase[] componentRunners = new ComponentStorageBase[types.Length + 1];
             ComponentStorageBase[] tmpRunners = new ComponentStorageBase[types.Length + 1];
             int size = componentRunners.Length;
@@ -198,8 +195,8 @@ namespace Alis.Core.Ecs.Core.Archetype
             //this world doesn't have the archetype, or it doesnt even exist
 
             Archetype from = edge.ArchetypeFrom.Archetype(world);
-            ImmutableArray<ComponentID> fromComponents = edge.ArchetypeFrom.Types;
-            ImmutableArray<TagId> fromTags = edge.ArchetypeFrom.Tags;
+            FastImmutableArray<ComponentID> fromComponents = edge.ArchetypeFrom.Types;
+            FastImmutableArray<TagId> fromTags = edge.ArchetypeFrom.Tags;
 
             switch (edge.EdgeType)
             {
@@ -232,7 +229,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// <exception cref="InvalidOperationException">Entities can have a max of 127 components!</exception>
         /// <exception cref="InvalidOperationException">Exceeded maximum unique archetype count of 65535</exception>
         /// <returns>The entity type</returns>
-        internal static EntityType GetArchetypeID(ReadOnlySpan<ComponentID> types, ReadOnlySpan<TagId> tagTypes, ImmutableArray<ComponentID>? typesArray = null, ImmutableArray<TagId>? tagTypesArray = null)
+        internal static EntityType GetArchetypeID(ReadOnlySpan<ComponentID> types, ReadOnlySpan<TagId> tagTypes, FastImmutableArray<ComponentID>? typesArray = null, FastImmutableArray<TagId>? tagTypesArray = null)
         {
             if (types.Length > MemoryHelpers.MaxComponentCount)
             {
@@ -256,8 +253,8 @@ namespace Alis.Core.Ecs.Core.Archetype
 
                 EntityType finalID = new EntityType((ushort) nextIDInt);
 
-                ImmutableArray<ComponentID> arr = typesArray ?? MemoryHelpers.ReadOnlySpanToImmutableArray(types);
-                ImmutableArray<TagId> tagArr = tagTypesArray ?? MemoryHelpers.ReadOnlySpanToImmutableArray(tagTypes);
+                FastImmutableArray<ComponentID> arr = typesArray ?? MemoryHelpers.ReadOnlySpanToImmutableArray(types);
+                FastImmutableArray<TagId> tagArr = tagTypesArray ?? MemoryHelpers.ReadOnlySpanToImmutableArray(tagTypes);
 
                 ArchetypeData slot = new ArchetypeData(finalID, arr, tagArr);
                 ArchetypeTable.Push(slot);
@@ -280,8 +277,8 @@ namespace Alis.Core.Ecs.Core.Archetype
                         throw new InvalidOperationException($"Exceeded maximum unique archetype count of 65535");
                     finalID = new ArchetypeID((ushort) nextIDInt);
 
-                    ImmutableArray<ComponentID> arr = typesArray ?? MemoryHelpers.ReadOnlySpanToImmutableArray(types);
-                    ImmutableArray<TagId> tagArr = tagTypesArray ?? MemoryHelpers.ReadOnlySpanToImmutableArray(tagTypes);
+                    FastImmutableArray<ComponentID> arr = typesArray ?? MemoryHelpers.ReadOnlySpanToImmutableArray(types);
+                    FastImmutableArray<TagId> tagArr = tagTypesArray ?? MemoryHelpers.ReadOnlySpanToImmutableArray(tagTypes);
 
                     slot = new ArchetypeData(finalID, arr, tagArr);
                     ArchetypeTable.Push(slot);
@@ -299,7 +296,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// <param name="archetypeTypes">The archetype types</param>
         /// <param name="archetypeTags">The archetype tags</param>
         /// <param name="id">The id</param>
-        private static void ModifyComponentLocationTable(ImmutableArray<ComponentID> archetypeTypes, ImmutableArray<TagId> archetypeTags, int id)
+        private static void ModifyComponentLocationTable(FastImmutableArray<ComponentID> archetypeTypes, FastImmutableArray<TagId> archetypeTags, int id)
         {
             if (GlobalWorldTables.ComponentTagLocationTable.Length == id)
             {

@@ -2,6 +2,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Core;
 
+
 namespace Alis.Core.Ecs.Systems
 {
     /// <summary>

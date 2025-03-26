@@ -30,7 +30,7 @@ namespace Alis.Core.Ecs.Collections
     /// This effectively copies the one field in the struct to a local variable so that
     /// it is insulated from other threads.
     /// </devremarks>
-    public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableArray<T>>, IFastImmutableArray
+    public partial struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableArray<T>>, IFastImmutableArray
     {
         /// <summary>
         /// An empty (initialized) instance of <see cref="FastImmutableArray{T}"/>.
