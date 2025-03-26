@@ -95,19 +95,4 @@
         <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.0"/>
         <PackageReference Include="System.Collections.Immutable" Version="10.0.0-preview.1.25080.5"/>
     </ItemGroup>
-
-    <ItemGroup Condition="
-    $(TargetFramework.Equals('netstandard2.0')) OR
-    $(TargetFramework.Equals('netstandard2.1'))
-    ">
-        <PackageReference Include="System.Collections.Immutable" Version="10.0.0-preview.1.25080.5"/>
-    </ItemGroup>
-
-    <ItemGroup Condition="
-    $(TargetFramework.Equals('net6.0')) OR
-    $(TargetFramework.Equals('net7.0')) OR
-    $(TargetFramework.Equals('net8.0')) OR
-    $(TargetFramework.Equals('net9.0'))
-    ">
-    </ItemGroup>
 </Project>

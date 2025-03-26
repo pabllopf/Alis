@@ -44,12 +44,9 @@ namespace Alis.Core.Ecs.Systems
         public Ref<T> Item1;
 
         /// <summary>
-        ///     Deconstructs the ref
+        ///     Deconstructs the reference
         /// </summary>
-        /// <param name="@ref">The ref</param>
-        public void Deconstruct(out Ref<T> @ref)
-        {
-            @ref = Item1;
-        }
+        /// <param name="reference"></param>
+        public void Deconstruct(out Ref<T> reference) => reference = Item1;
     }
 }
