@@ -644,7 +644,7 @@ namespace Alis.Core.Ecs
             entityID.ID = entity.EntityID;
             entityID.Version = entity.EntityVersion;
 
-            Span<ComponentStorageBase> archetypeComponents = archetype.Components.AsSpan()[..components.Length];
+            Span<ComponentStorageBase> archetypeComponents = archetype.Components.AsSpan(0, components.Length);
             int sizearchetypeComponents = archetypeComponents.Length;
             for (int i = 1; i < sizearchetypeComponents; i++)
             {
@@ -1092,11 +1092,11 @@ namespace Alis.Core.Ecs
                     EntityCreatedEvent.Invoke(entity.ToEntity(this));
                 }
             }
-
+            
             ChunkTuple<T> chunks = new ChunkTuple<T>
             {
                 Entities = new EntityEnumerator.EntityEnumerable(this, entities),
-                Span = archetype.GetComponentSpan<T>()[initalEntityCount..]
+                Span = archetype.GetComponentSpan<T>().Slice(initalEntityCount)
             };
 
             return chunks;

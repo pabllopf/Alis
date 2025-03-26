@@ -245,7 +245,7 @@ namespace Alis.Core.Ecs.Core.Archetype
                 long key = GetHash(types, tagTypes);
                 if (ExistingArchetypes.TryGetValue(key, out ArchetypeData value))
                 {
-                    return value.ID;
+                    return value.Id;
                 }
 
                 int nextIDInt = ++NextArchetypeID;
@@ -271,7 +271,7 @@ namespace Alis.Core.Ecs.Core.Archetype
                 if (exists)
                 {
                     //can't be null if entry exists
-                    finalID = slot!.ID;
+                    finalID = slot!.Id;
                 }
                 else
                 {

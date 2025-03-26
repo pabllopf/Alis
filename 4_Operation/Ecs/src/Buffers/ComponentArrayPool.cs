@@ -112,6 +112,11 @@ namespace Alis.Core.Ecs.Buffers
             }
         }
         
+        /// <summary>
+        /// Resizes the array from pool using the specified arr
+        /// </summary>
+        /// <param name="arr">The arr</param>
+        /// <param name="len">The len</param>
         public static void ResizeArrayFromPool(ref T[] arr, int len)
         {
             T[] finalArr = Instance.Rent(len);

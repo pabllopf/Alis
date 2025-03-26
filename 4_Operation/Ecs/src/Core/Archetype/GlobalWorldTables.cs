@@ -38,11 +38,6 @@ namespace Alis.Core.Ecs.Core.Archetype
     /// </summary>
     internal static class GlobalWorldTables
     {
-        //each byte contains the data as follows:
-        // 1 bit Tag exists -> Lookup by tag ID
-        // 3 bits - nothing
-        // 4 bits - index of component (1111) -> Lookup by component ID
-
         /// <summary>
         ///     The has tag mask
         /// </summary>

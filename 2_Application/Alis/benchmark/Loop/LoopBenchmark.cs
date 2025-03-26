@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -36,23 +36,41 @@ using BenchmarkDotNet.Attributes;
 
 namespace Alis.Benchmark.Loop
 {
+    /// <summary>
+    /// The loop benchmark class
+    /// </summary>
     [MemoryDiagnoser(false)]
     [ShortRunJob]
     public class LoopBenchmark
     {
+        /// <summary>
+        /// The random
+        /// </summary>
         private static readonly Random random = new Random(999999);
 
+        /// <summary>
+        /// Gets or sets the value of the size
+        /// </summary>
         [Params(100, 10000)]
         public int size { get; set; } = 100;
 
+        /// <summary>
+        /// The items
+        /// </summary>
         private List<int> items = new();
 
+        /// <summary>
+        /// Inits the list
+        /// </summary>
         [GlobalSetup]
         public void InitList()
         {
             items = Enumerable.Range(1, size).Select(x => random.Next()).ToList();
         }
 
+        /// <summary>
+        /// Fors this instance
+        /// </summary>
         [Benchmark]
         public void For()
         {
@@ -62,6 +80,9 @@ namespace Alis.Benchmark.Loop
             }
         }
 
+        /// <summary>
+        /// Whiles this instance
+        /// </summary>
         [Benchmark]
         public void While()
         {
@@ -73,6 +94,9 @@ namespace Alis.Benchmark.Loop
             }
         }
 
+        /// <summary>
+        /// Fors the each
+        /// </summary>
         [Benchmark]
         public void ForEach()
         {
@@ -81,6 +105,9 @@ namespace Alis.Benchmark.Loop
             }
         }
 
+        /// <summary>
+        /// Foreaches the linq
+        /// </summary>
         [Benchmark]
         public void Foreach_Linq()
         {
@@ -90,6 +117,9 @@ namespace Alis.Benchmark.Loop
             });
         }
 
+        /// <summary>
+        /// Parallels the for each
+        /// </summary>
         [Benchmark]
         public void Parallel_ForEach()
         {
@@ -99,6 +129,9 @@ namespace Alis.Benchmark.Loop
             });
         }
 
+        /// <summary>
+        /// Parallels the linq
+        /// </summary>
         [Benchmark]
         public void Parallel_Linq()
         {
@@ -108,6 +141,9 @@ namespace Alis.Benchmark.Loop
             });
         }
 
+        /// <summary>
+        /// Fors the span
+        /// </summary>
         [Benchmark]
         public void For_Span()
         {
@@ -119,6 +155,9 @@ namespace Alis.Benchmark.Loop
             }
         }
 
+        /// <summary>
+        /// Foreaches the span
+        /// </summary>
         [Benchmark]
         public void Foreach_Span()
         {
