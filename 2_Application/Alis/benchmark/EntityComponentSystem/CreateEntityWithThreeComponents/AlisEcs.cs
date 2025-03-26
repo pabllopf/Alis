@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:_CreateEntityWithThreeComponents.cs
+//  File:Frent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,36 +27,62 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Benchmark.EntityComponentSystem.Contexts;
+using Alis.Core.Ecs;
+using Alis.Core.Ecs.Core;
+using Alis.Core.Ecs.Systems;
 using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Order;
+using static Alis.Benchmark.EntityComponentSystem.Contexts.AlisBaseContext;
 
 namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithThreeComponents
 {
     /// <summary>
     ///     The create entity with three components class
     /// </summary>
-    [BenchmarkCategory(Categories.CreateEntity), MemoryDiagnoser(false), Orderer(SummaryOrderPolicy.FastestToSlowest)]
-#if CHECK_CACHE_MISSES
-    [HardwareCounters(BenchmarkDotNet.Diagnosers.HardwareCounter.CacheMisses)]
-#endif
     public partial class CreateEntityWithThreeComponents
     {
         /// <summary>
-        ///     Gets or sets the value of the entity count
+        ///     The id
         /// </summary>
-        [Params(100_000)]
-        public int EntityCount { get; set; }
+        private static readonly EntityType _entityAlisType = Entity.EntityTypeOf([Component<Component1>.ID, Component<Component2>.ID, Component<Component3>.ID], []);
 
         /// <summary>
-        ///     Setup this instance
+        ///     The frent
         /// </summary>
-        [IterationSetup]
-        public void Setup() => BenchmarkOperations.SetupContexts(this);
+        [Context] private readonly AlisBaseContext _alis;
 
         /// <summary>
-        ///     Cleanups this instance
+        ///     Frents this instance
         /// </summary>
-        [IterationCleanup]
-        public void Cleanup() => BenchmarkOperations.CleanupContexts(this);
+        [BenchmarkCategory(Categories.Alis), Benchmark]
+        public void Alis()
+        {
+            World world = _alis.World;
+            world.EnsureCapacity(_entityAlisType, EntityCount);
+
+            for (int i = 0; i < EntityCount; i++)
+            {
+                world.Create<Component1, Component2, Component3>(default(Component1), default(Component2), default(Component3));
+            }
+        }
+
+        /// <summary>
+        ///     Frents the bulk
+        /// </summary>
+        [BenchmarkCategory(Categories.Alis), Benchmark]
+        public void Alis_Bulk()
+        {
+            World world = _alis.World;
+            ChunkTuple<Component1, Component2, Component3> chunks = world.CreateMany<Component1, Component2, Component3>(EntityCount);
+
+            chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
+            chunks.Span3 = chunks.Span3[..chunks.Span1.Length];
+            for (int i = 0; i < chunks.Span1.Length; i++)
+            {
+                chunks.Span1[i] = default(Component1);
+                chunks.Span2[i] = default(Component2);
+                chunks.Span3[i] = default(Component3);
+            }
+        }
     }
 }

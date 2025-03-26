@@ -35,7 +35,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent
     /// <summary>
     ///     The create entity with one component class
     /// </summary>
-    [BenchmarkCategory(Categories.CreateEntity), MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]
+    [BenchmarkCategory(Categories.CreateEntity), MemoryDiagnoser(false), Orderer(SummaryOrderPolicy.FastestToSlowest)]
 #if CHECK_CACHE_MISSES
     [HardwareCounters(BenchmarkDotNet.Diagnosers.HardwareCounter.CacheMisses)]
 #endif

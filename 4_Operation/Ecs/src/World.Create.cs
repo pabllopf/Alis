@@ -81,5 +81,46 @@ namespace Alis.Core.Ecs
             this.EntityCreatedEvent.Invoke(entity);
             return entity;
         }
+
+        [SkipLocalsInit]
+        public Entity Create<T1, T2>(in T1 comp1, in T2 comp2)
+        {
+            Archetype existingArchetype = Archetype<T1, T2>.CreateNewOrGetExistingArchetype(this);
+            Unsafe.NullRef<EntityIdOnly>();
+            EntityLocation entityLocation = new EntityLocation();
+            int physicalIndex;
+            Unsafe.SkipInit<int>(out physicalIndex);
+            ComponentStorageBase[] writeStorage;
+            // ISSUE: variable of a reference type
+            ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
+            if (this.AllowStructualChanges)
+            {
+                writeStorage = existingArchetype.Components;
+                local1 = ref existingArchetype.CreateEntityLocation(EntityFlags.None, out entityLocation);
+                physicalIndex = entityLocation.Index;
+            }
+            else
+            {
+                local1 = ref existingArchetype.CreateDeferredEntityLocation(this, ref entityLocation, out physicalIndex, out writeStorage);
+                entityLocation.Archetype = this.DeferredCreateArchetype;
+            }
+
+            (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, (ushort) 0);
+            entityLocation.Version = version;
+            this.EntityTable[num] = entityLocation;
+            ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2>.OfComponent<T1>.Index))[physicalIndex];
+            local2 = comp1;
+            ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2>.OfComponent<T2>.Index))[physicalIndex];
+            local3 = comp2;
+            Entity entity = new Entity(this.ID, version, num);
+            ComponentDelegates<T1>.InitDelegate initer1 = Component<T1>.Initer;
+            if (initer1 != null)
+                initer1(entity, ref local2);
+            ComponentDelegates<T2>.InitDelegate initer2 = Component<T2>.Initer;
+            if (initer2 != null)
+                initer2(entity, ref local3);
+            this.EntityCreatedEvent.Invoke(entity);
+            return entity;
+        }
     }
 }

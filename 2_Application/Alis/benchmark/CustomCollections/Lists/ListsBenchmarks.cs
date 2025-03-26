@@ -28,10 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using Alis.Benchmark.CustomCollections.Stacks;
-using Alis.Core.Ecs.Collections;
 using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Order;
 
 namespace Alis.Benchmark.CustomCollections.Lists
 {

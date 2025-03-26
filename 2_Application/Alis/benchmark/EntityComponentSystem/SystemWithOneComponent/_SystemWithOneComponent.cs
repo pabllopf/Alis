@@ -34,7 +34,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
     /// <summary>
     ///     The system with one component class
     /// </summary>
-    [BenchmarkCategory(Categories.System), MemoryDiagnoser(false), ShortRunJob]
+    [BenchmarkCategory(Categories.System), MemoryDiagnoser(false), ShortRunJob, Orderer(BenchmarkDotNet.Order.SummaryOrderPolicy.FastestToSlowest)]
 #if CHECK_CACHE_MISSES
     [HardwareCounters(BenchmarkDotNet.Diagnosers.HardwareCounter.CacheMisses)]
 #endif
@@ -43,7 +43,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         /// <summary>
         ///     Gets or sets the value of the entity count
         /// </summary>
-        [Params(1_000)]
+        [Params(10_000)]
         public int EntityCount { get; set; }
 
         /// <summary>

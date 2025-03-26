@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Linq;
-using System.Runtime.CompilerServices;
 using Alis.Benchmark.EntityComponentSystem.Contexts;
 using Alis.Benchmark.EntityComponentSystem.Contexts.Arch_Components;
 using Arch.Core;

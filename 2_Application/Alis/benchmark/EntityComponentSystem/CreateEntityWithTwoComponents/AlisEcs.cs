@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:RemoveAtVsRemoveUnnorderAtBenchmark.cs
+//  File:Frent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,67 +27,59 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using Alis.Benchmark.EntityComponentSystem.Contexts;
+using Alis.Core.Ecs;
+using Alis.Core.Ecs.Core;
+using Alis.Core.Ecs.Systems;
 using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Order;
+using static Alis.Benchmark.EntityComponentSystem.Contexts.AlisBaseContext;
 
-namespace Alis.Benchmark.RemoveAtVsRemoveUnnorderAt
+namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents
 {
     /// <summary>
-    /// The remove at vs remove unnorder at list benchmark class
+    ///     The create entity with two components class
     /// </summary>
-    [MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]
-    public class RemoveAtVsRemoveUnnorderAtListBenchmark
+    public partial class CreateEntityWithTwoComponents
     {
         /// <summary>
-        ///     The
+        ///     The id
         /// </summary>
-        [Params(100)] public int N; 
-        /// <summary>
-        /// The list
-        /// </summary>
-        private List<int> list;
+        private static readonly EntityType _entityAlisType = Entity.EntityTypeOf([Component<Component1>.ID, Component<Component2>.ID], []);
 
         /// <summary>
-        ///     Setup this instance
+        ///     The frent
         /// </summary>
-        [GlobalSetup]
-        public void Setup()
-        {
-            list = new List<int>(N);
-        }
-        
+        [Context] private readonly AlisBaseContext _alis;
+
         /// <summary>
-        /// Removes the at
+        ///     Frents this instance
         /// </summary>
-        [Benchmark]
-        public void RemoveAt()
+        [BenchmarkCategory(Categories.Alis), Benchmark]
+        public void Alis()
         {
-            for (int i = 1; i < N - 1; i++)
+            World world = _alis.World;
+            world.EnsureCapacity(_entityAlisType, EntityCount);
+
+            for (int i = 0; i < EntityCount; i++)
             {
-                list.Add(i);
-            }
-            
-            for (int i = 1; i < N - 1; i++)
-            {
-                list.RemoveAt(i);
+                world.Create<Component1, Component2>(default(Component1), default(Component2));
             }
         }
-        
+
         /// <summary>
-        /// Removes the unnorder at
+        ///     Frents the bulk
         /// </summary>
-        [Benchmark]
-        public void RemoveUnnorderAt()
+        [BenchmarkCategory(Categories.Alis), Benchmark]
+        public void Alis_Bulk()
         {
-            for (int i = 1; i < N - 1; i++)
+            World world = _alis.World;
+            ChunkTuple<Component1, Component2> chunks = world.CreateMany<Component1, Component2>(EntityCount);
+
+            chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
+            for (int i = 0; i < chunks.Span1.Length; i++)
             {
-                list.Add(i);
-            }
-            
-            for (int i = 1; i < N - 1; i++)
-            {
-                list.RemoveUnnorderAt(i);
+                chunks.Span1[i] = default(Component1);
+                chunks.Span2[i] = default(Component2);
             }
         }
     }
