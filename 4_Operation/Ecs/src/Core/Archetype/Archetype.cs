@@ -154,7 +154,6 @@ namespace Alis.Core.Ecs.Core.Archetype
 
             //we need to place into temp buffers
             physicalIndex = futureSlot - _entities.Length;
-            Debug.Assert(physicalIndex >= 0);
             if (physicalIndex >= _createComponentBufferEntities.Length)
             {
                 ResizeCreateComponentBuffers();
@@ -171,7 +170,6 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// <param name="world">The world</param>
         internal void ResolveDeferredEntityCreations(World world)
         {
-            Debug.Assert(_deferredEntityCount != 0);
             int deltaFromMaxDeferredInPlace = -(_entities.Length - (_nextComponentIndex + _deferredEntityCount));
             int previousComponentCount = _nextComponentIndex;
 
@@ -181,8 +179,6 @@ namespace Alis.Core.Ecs.Core.Archetype
 
                 int oldEntitiesLen = _entities.Length;
                 int totalCapacityRequired = previousComponentCount + _deferredEntityCount;
-                Debug.Assert(totalCapacityRequired >= oldEntitiesLen);
-
                 //we should always have to resize here - after all, no space is left
                 Resize((int) BitOperations.RoundUpToPowerOf2((uint) totalCapacityRequired));
                 ComponentStorageBase[] destination = Components;
@@ -301,7 +297,6 @@ namespace Alis.Core.Ecs.Core.Archetype
         internal EntityIDOnly DeleteEntityFromStorage(int index, out int deletedIndex)
         {
             deletedIndex = --_nextComponentIndex;
-            Debug.Assert(_nextComponentIndex >= 0);
             return _entities.UnsafeArrayIndex(index) = _entities.UnsafeArrayIndex(_nextComponentIndex);
         }
 
@@ -313,7 +308,6 @@ namespace Alis.Core.Ecs.Core.Archetype
         internal EntityIDOnly DeleteEntity(int index)
         {
             _nextComponentIndex--;
-            Debug.Assert(_nextComponentIndex >= 0);
             //TODO: args
             
             DeleteComponentData args = new(index, _nextComponentIndex);
@@ -476,8 +470,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// <returns>A span of entity id only</returns>
         internal Span<EntityIDOnly> GetEntitySpan()
         {
-            Debug.Assert(_nextComponentIndex <= _entities.Length);
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
+            #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
             return _entities.AsSpan(0, _nextComponentIndex);
 #else
             return System.Runtime.InteropServices.MemoryMarshal.CreateSpan(ref System.Runtime.InteropServices.MemoryMarshal.GetArrayDataReference(_entities), _nextComponentIndex);

@@ -780,8 +780,6 @@ namespace Alis.Core.Ecs
         {
             Archetype from = currentLookup.Archetype;
 
-            Debug.Assert(from.Components.Length < destination.Components.Length);
-
             destination.CreateEntityLocation(currentLookup.Flags, out nextLocation).Init(entity);
             nextLocation.Version = currentLookup.Version;
 
@@ -828,8 +826,6 @@ namespace Alis.Core.Ecs
         internal void MoveEntityToArchetypeRemove(Span<ComponentHandle> componentHandles, Entity entity, ref EntityLocation currentLookup, Archetype destination)
         {
             Archetype from = currentLookup.Archetype;
-
-            Debug.Assert(from.Components.Length > destination.Components.Length);
 
             destination.CreateEntityLocation(currentLookup.Flags, out EntityLocation nextLocation).Init(entity);
             nextLocation.Version = currentLookup.Version;
@@ -928,8 +924,6 @@ namespace Alis.Core.Ecs
         internal void MoveEntityToArchetypeIso(Entity entity, ref EntityLocation currentLookup, Archetype destination)
         {
             Archetype from = currentLookup.Archetype;
-
-            Debug.Assert(from.Components.Length == destination.Components.Length);
 
             destination.CreateEntityLocation(currentLookup.Flags, out EntityLocation nextLocation).Init(entity);
             nextLocation.Version = currentLookup.Version;

@@ -90,7 +90,6 @@ namespace Alis.Core.Ecs.Collections
         /// <returns>The ushort</returns>
         public ushort Lookup(int index)
         {
-            Debug.Assert(index < 4);
             return Unsafe.Add(ref _keysAndValues._4, index);
         }
 
