@@ -5,5 +5,5 @@ namespace Alis.Core.Ecs.Core
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     [SkipLocalsInit]
-    internal readonly record struct DeleteComponent(EntityIDOnly Entity, ComponentID ComponentId);
+    internal readonly record struct DeleteComponent(EntityIdOnly Entity, ComponentID ComponentId);
 }

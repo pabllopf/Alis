@@ -28,11 +28,13 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Collections;
 
 namespace Alis.Core.Ecs.Core
 {
-    [StructLayout( LayoutKind.Auto )]
-    internal record struct ComponentData(Type Type, IdTable Storage, Delegate? Initer, Delegate? Destroyer);
+    [StructLayout( LayoutKind.Sequential, Pack = 1 )]
+    [SkipLocalsInit]
+    internal readonly record struct ComponentData(Type Type, IdTable Storage, Delegate Initer, Delegate Destroyer);
 }

@@ -62,7 +62,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// <summary>
         ///     The entity id only
         /// </summary>
-        private EntityIDOnly[] _createComponentBufferEntities = Array.Empty<EntityIDOnly>();
+        private EntityIdOnly[] _createComponentBufferEntities = Array.Empty<EntityIdOnly>();
 
         /// <summary>
         ///     The deferred entity count
@@ -76,7 +76,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// <summary>
         ///     The entity id only
         /// </summary>
-        private EntityIDOnly[] _entities = new EntityIDOnly[1];
+        private EntityIdOnly[] _entities = new EntityIdOnly[1];
 
         //4
         /// <summary>

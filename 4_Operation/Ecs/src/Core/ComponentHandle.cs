@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Core.Events;
@@ -38,7 +39,8 @@ namespace Alis.Core.Ecs.Core
     /// <summary>
     ///     The component handle
     /// </summary>
-    [StructLayout( LayoutKind.Auto )]
+    [StructLayout( LayoutKind.Sequential, Pack = 1)]
+    [SkipLocalsInit]
     public readonly struct ComponentHandle : IEquatable<ComponentHandle>, IDisposable
     {
         /// <summary>

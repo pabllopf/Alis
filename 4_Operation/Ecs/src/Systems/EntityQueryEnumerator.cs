@@ -63,7 +63,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The entity ids
         /// </summary>
-        private Span<EntityIDOnly> _entityIds;
+        private Span<EntityIdOnly> _entityIds;
 
         /// <summary>
         ///     The current span
@@ -173,7 +173,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The entity ids
         /// </summary>
-        private Span<EntityIDOnly> _entityIds;
+        private Span<EntityIdOnly> _entityIds;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="EntityQueryEnumerator" /> class

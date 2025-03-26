@@ -90,7 +90,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Gets the value of the entity id only
         /// </summary>
-        internal EntityIDOnly EntityIDOnly => Unsafe.As<Entity, EntityWorldInfoAccess>(ref this).EntityIDOnly;
+        internal EntityIdOnly EntityIDOnly => Unsafe.As<Entity, EntityWorldInfoAccess>(ref this).EntityIDOnly;
 
         /// <summary>
         ///     Gets the value of the packed value
