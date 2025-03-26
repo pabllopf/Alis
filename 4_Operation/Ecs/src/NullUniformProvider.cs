@@ -1,4 +1,4 @@
-using System.Diagnostics;
+using System;
 
 namespace Alis.Core.Ecs
 {
@@ -18,11 +18,9 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The</returns>
-        
         public T GetUniform<T>()
         {
-            FrentExceptions.Throw_InvalidOperationException("Initialize the world with an IUniformProvider in order to use uniforms");
-            return default(T)!;
+            throw new InvalidOperationException("Initialize the world with an IUniformProvider in order to use uniforms");
         }
     }
 }
