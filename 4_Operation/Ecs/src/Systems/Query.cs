@@ -146,6 +146,16 @@ namespace Alis.Core.Ecs.Systems
         /// <typeparam name="T">The </typeparam>
         /// <returns>A chunk query enumerator of t query enumerable</returns>
         public ChunkQueryEnumerator<T>.QueryEnumerable EnumerateChunks<T>() => new(this);
+        
+        public ChunkQueryEnumerator<T1, T2>.QueryEnumerable EnumerateChunks<T1, T2>() => new(this);
+        
+        public ChunkQueryEnumerator<T1, T2, T3>.QueryEnumerable EnumerateChunks<T1, T2, T3>() => new(this);
+        
+        public ChunkQueryEnumerator<T1, T2, T3, T4>.QueryEnumerable EnumerateChunks<T1, T2, T3, T4>() => new(this);
+        
+        public ChunkQueryEnumerator<T1, T2, T3, T4, T5>.QueryEnumerable EnumerateChunks<T1, T2, T3, T4, T5>() => new(this);
+        
+        public ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6>.QueryEnumerable EnumerateChunks<T1, T2, T3, T4, T5, T6>() => new(this);
     }
 
     /// <summary>

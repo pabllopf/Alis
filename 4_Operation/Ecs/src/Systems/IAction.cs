@@ -30,12 +30,314 @@
 namespace Alis.Core.Ecs.Systems
 {
     /// <summary>
-    ///     An arbitary function with one parameter
+    /// The action interface
     /// </summary>
-    /// <remarks>Used to inline query functions</remarks>
     public interface IAction<TArg>
     {
-        /// Executes the function
+        /// <summary>
+        /// Runs the arg
+        /// </summary>
+        /// <param name="arg">The arg</param>
         void Run(ref TArg arg);
+    }
+    
+    /// <summary>
+    /// The action interface
+    /// </summary>
+    public interface IAction<TArg1, TArg2>
+    {
+        /// <summary>
+        /// Runs the arg 1
+        /// </summary>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        void Run(ref TArg1 arg1, ref TArg2 arg2);
+    }
+    
+    /// <summary>
+    /// The action interface
+    /// </summary>
+    public interface IAction<TArg1, TArg2, TArg3>
+    {
+        /// <summary>
+        /// Runs the arg 1
+        /// </summary>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <param name="arg3">The arg</param>
+        void Run(ref TArg1 arg1, ref TArg2 arg2, ref TArg3 arg3);
+    }
+    
+    /// <summary>
+    /// The action interface
+    /// </summary>
+    public interface IAction<TArg1, TArg2, TArg3, TArg4>
+    {
+        /// <summary>
+        /// Runs the arg 1
+        /// </summary>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <param name="arg3">The arg</param>
+        /// <param name="arg4">The arg</param>
+        void Run(ref TArg1 arg1, ref TArg2 arg2, ref TArg3 arg3, ref TArg4 arg4);
+    }
+    
+    /// <summary>
+    /// The action interface
+    /// </summary>
+    public interface IAction<TArg1, TArg2, TArg3, TArg4, TArg5>
+    {
+        /// <summary>
+        /// Runs the arg 1
+        /// </summary>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <param name="arg3">The arg</param>
+        /// <param name="arg4">The arg</param>
+        /// <param name="arg5">The arg</param>
+        void Run(ref TArg1 arg1, ref TArg2 arg2, ref TArg3 arg3, ref TArg4 arg4, ref TArg5 arg5);
+    }
+    
+    /// <summary>
+    /// The action interface
+    /// </summary>
+    public interface IAction<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>
+    {
+        /// <summary>
+        /// Runs the arg 1
+        /// </summary>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <param name="arg3">The arg</param>
+        /// <param name="arg4">The arg</param>
+        /// <param name="arg5">The arg</param>
+        /// <param name="arg6">The arg</param>
+        void Run(ref TArg1 arg1, ref TArg2 arg2, ref TArg3 arg3, ref TArg4 arg4, ref TArg5 arg5, ref TArg6 arg6);
+    }
+    
+    /// <summary>
+    /// The action interface
+    /// </summary>
+    public interface IAction<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7>
+    {
+        /// <summary>
+        /// Runs the arg 1
+        /// </summary>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <param name="arg3">The arg</param>
+        /// <param name="arg4">The arg</param>
+        /// <param name="arg5">The arg</param>
+        /// <param name="arg6">The arg</param>
+        /// <param name="arg7">The arg</param>
+        void Run(ref TArg1 arg1, ref TArg2 arg2, ref TArg3 arg3, ref TArg4 arg4, ref TArg5 arg5, ref TArg6 arg6, ref TArg7 arg7);
+    }
+    
+    /// <summary>
+    /// The action interface
+    /// </summary>
+    public interface IAction<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8>
+    {
+        /// <summary>
+        /// Runs the arg 1
+        /// </summary>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <param name="arg3">The arg</param>
+        /// <param name="arg4">The arg</param>
+        /// <param name="arg5">The arg</param>
+        /// <param name="arg6">The arg</param>
+        /// <param name="arg7">The arg</param>
+        /// <param name="arg8">The arg</param>
+        void Run(ref TArg1 arg1, ref TArg2 arg2, ref TArg3 arg3, ref TArg4 arg4, ref TArg5 arg5, ref TArg6 arg6, ref TArg7 arg7, ref TArg8 arg8);
+    }
+    
+    /// <summary>
+    /// The action interface
+    /// </summary>
+    public interface IAction<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9>
+    {
+        /// <summary>
+        /// Runs the arg 1
+        /// </summary>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <param name="arg3">The arg</param>
+        /// <param name="arg4">The arg</param>
+        /// <param name="arg5">The arg</param>
+        /// <param name="arg6">The arg</param>
+        /// <param name="arg7">The arg</param>
+        /// <param name="arg8">The arg</param>
+        /// <param name="arg9">The arg</param>
+        void Run(ref TArg1 arg1, ref TArg2 arg2, ref TArg3 arg3, ref TArg4 arg4, ref TArg5 arg5, ref TArg6 arg6, ref TArg7 arg7, ref TArg8 arg8, ref TArg9 arg9);
+    }
+    
+    /// <summary>
+    /// The action interface
+    /// </summary>
+    public interface IAction<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10>
+    {
+        /// <summary>
+        /// Runs the arg 1
+        /// </summary>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <param name="arg3">The arg</param>
+        /// <param name="arg4">The arg</param>
+        /// <param name="arg5">The arg</param>
+        /// <param name="arg6">The arg</param>
+        /// <param name="arg7">The arg</param>
+        /// <param name="arg8">The arg</param>
+        /// <param name="arg9">The arg</param>
+        /// <param name="arg10">The arg 10</param>
+        void Run(ref TArg1 arg1, ref TArg2 arg2, ref TArg3 arg3, ref TArg4 arg4, ref TArg5 arg5, ref TArg6 arg6, ref TArg7 arg7, ref TArg8 arg8, ref TArg9 arg9, ref TArg10 arg10);
+    }
+    
+    /// <summary>
+    /// The action interface
+    /// </summary>
+    public interface IAction<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11>
+    {
+        /// <summary>
+        /// Runs the arg 1
+        /// </summary>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <param name="arg3">The arg</param>
+        /// <param name="arg4">The arg</param>
+        /// <param name="arg5">The arg</param>
+        /// <param name="arg6">The arg</param>
+        /// <param name="arg7">The arg</param>
+        /// <param name="arg8">The arg</param>
+        /// <param name="arg9">The arg</param>
+        /// <param name="arg10">The arg 10</param>
+        /// <param name="arg11">The arg 11</param>
+        void Run(ref TArg1 arg1, ref TArg2 arg2, ref TArg3 arg3, ref TArg4 arg4, ref TArg5 arg5, ref TArg6 arg6, ref TArg7 arg7, ref TArg8 arg8, ref TArg9 arg9, ref TArg10 arg10, ref TArg11 arg11);
+    }
+    
+    /// <summary>
+    /// The action interface
+    /// </summary>
+    public interface IAction<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12>
+    {
+        /// <summary>
+        /// Runs the arg 1
+        /// </summary>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <param name="arg3">The arg</param>
+        /// <param name="arg4">The arg</param>
+        /// <param name="arg5">The arg</param>
+        /// <param name="arg6">The arg</param>
+        /// <param name="arg7">The arg</param>
+        /// <param name="arg8">The arg</param>
+        /// <param name="arg9">The arg</param>
+        /// <param name="arg10">The arg 10</param>
+        /// <param name="arg11">The arg 11</param>
+        /// <param name="arg12">The arg 12</param>
+        void Run(ref TArg1 arg1, ref TArg2 arg2, ref TArg3 arg3, ref TArg4 arg4, ref TArg5 arg5, ref TArg6 arg6, ref TArg7 arg7, ref TArg8 arg8, ref TArg9 arg9, ref TArg10 arg10, ref TArg11 arg11, ref TArg12 arg12);
+    }
+    
+    /// <summary>
+    /// The action interface
+    /// </summary>
+    public interface IAction<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13>
+    {
+        /// <summary>
+        /// Runs the arg 1
+        /// </summary>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <param name="arg3">The arg</param>
+        /// <param name="arg4">The arg</param>
+        /// <param name="arg5">The arg</param>
+        /// <param name="arg6">The arg</param>
+        /// <param name="arg7">The arg</param>
+        /// <param name="arg8">The arg</param>
+        /// <param name="arg9">The arg</param>
+        /// <param name="arg10">The arg 10</param>
+        /// <param name="arg11">The arg 11</param>
+        /// <param name="arg12">The arg 12</param>
+        /// <param name="arg13">The arg 13</param>
+        void Run(ref TArg1 arg1, ref TArg2 arg2, ref TArg3 arg3, ref TArg4 arg4, ref TArg5 arg5, ref TArg6 arg6, ref TArg7 arg7, ref TArg8 arg8, ref TArg9 arg9, ref TArg10 arg10, ref TArg11 arg11, ref TArg12 arg12, ref TArg13 arg13);
+    }
+    
+    /// <summary>
+    /// The action interface
+    /// </summary>
+    public interface IAction<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14>
+    {
+        /// <summary>
+        /// Runs the arg 1
+        /// </summary>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <param name="arg3">The arg</param>
+        /// <param name="arg4">The arg</param>
+        /// <param name="arg5">The arg</param>
+        /// <param name="arg6">The arg</param>
+        /// <param name="arg7">The arg</param>
+        /// <param name="arg8">The arg</param>
+        /// <param name="arg9">The arg</param>
+        /// <param name="arg10">The arg 10</param>
+        /// <param name="arg11">The arg 11</param>
+        /// <param name="arg12">The arg 12</param>
+        /// <param name="arg13">The arg 13</param>
+        /// <param name="arg14">The arg 14</param>
+        void Run(ref TArg1 arg1, ref TArg2 arg2, ref TArg3 arg3, ref TArg4 arg4, ref TArg5 arg5, ref TArg6 arg6, ref TArg7 arg7, ref TArg8 arg8, ref TArg9 arg9, ref TArg10 arg10, ref TArg11 arg11, ref TArg12 arg12, ref TArg13 arg13, ref TArg14 arg14);
+    }
+    
+    /// <summary>
+    /// The action interface
+    /// </summary>
+    public interface IAction<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15>
+    {
+        /// <summary>
+        /// Runs the arg 1
+        /// </summary>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <param name="arg3">The arg</param>
+        /// <param name="arg4">The arg</param>
+        /// <param name="arg5">The arg</param>
+        /// <param name="arg6">The arg</param>
+        /// <param name="arg7">The arg</param>
+        /// <param name="arg8">The arg</param>
+        /// <param name="arg9">The arg</param>
+        /// <param name="arg10">The arg 10</param>
+        /// <param name="arg11">The arg 11</param>
+        /// <param name="arg12">The arg 12</param>
+        /// <param name="arg13">The arg 13</param>
+        /// <param name="arg14">The arg 14</param>
+        /// <param name="arg15">The arg 15</param>
+        void Run(ref TArg1 arg1, ref TArg2 arg2, ref TArg3 arg3, ref TArg4 arg4, ref TArg5 arg5, ref TArg6 arg6, ref TArg7 arg7, ref TArg8 arg8, ref TArg9 arg9, ref TArg10 arg10, ref TArg11 arg11, ref TArg12 arg12, ref TArg13 arg13, ref TArg14 arg14, ref TArg15 arg15);
+    }
+    
+    /// <summary>
+    /// The action interface
+    /// </summary>
+    public interface IAction<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TArg16>
+    {
+        /// <summary>
+        /// Runs the arg 1
+        /// </summary>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <param name="arg3">The arg</param>
+        /// <param name="arg4">The arg</param>
+        /// <param name="arg5">The arg</param>
+        /// <param name="arg6">The arg</param>
+        /// <param name="arg7">The arg</param>
+        /// <param name="arg8">The arg</param>
+        /// <param name="arg9">The arg</param>
+        /// <param name="arg10">The arg 10</param>
+        /// <param name="arg11">The arg 11</param>
+        /// <param name="arg12">The arg 12</param>
+        /// <param name="arg13">The arg 13</param>
+        /// <param name="arg14">The arg 14</param>
+        /// <param name="arg15">The arg 15</param>
+        /// <param name="arg16">The arg 16</param>
+        void Run(ref TArg1 arg1, ref TArg2 arg2, ref TArg3 arg3, ref TArg4 arg4, ref TArg5 arg5, ref TArg6 arg6, ref TArg7 arg7, ref TArg8 arg8, ref TArg9 arg9, ref TArg10 arg10, ref TArg11 arg11, ref TArg12 arg12, ref TArg13 arg13, ref TArg14 arg14, ref TArg15 arg15, ref TArg16 arg16);
     }
 }

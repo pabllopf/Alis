@@ -65,5 +65,144 @@ namespace Alis.Core.Ecs
             return cachedValue!;
 #endif
         }
+        
+        public static Query Query<T1, T2>(this World world)
+            where T1 : struct, IRuleProvider
+            where T2 : struct, IRuleProvider
+        {
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
+            if (world.QueryCache.TryGetValue(QueryHashCache<T1, T2>.Value, out Query value))
+            {
+                return value;
+            }
+            
+            value = world.CreateQuery(MemoryHelpers.ReadOnlySpanToImmutableArray([default(T1).Rule, default(T2).Rule]));
+            world.QueryCache[QueryHashCache<T1, T2>.Value] = value;
+            return value;
+#else
+            ref Query cachedValue = ref CollectionsMarshal.GetValueRefOrAddDefault(world.QueryCache, QueryHashCache<T1, T2>.Value, out bool exists);
+            
+            if (!exists)
+            {
+                cachedValue = world.CreateQuery(MemoryHelpers.ReadOnlySpanToImmutableArray([default(T1).Rule, default(T2).Rule]));
+            }
+            
+            return cachedValue!;
+            
+#endif
+        }
+
+        public static Query Query<T1, T2, T3>(this World world)
+            where T1 : struct, IRuleProvider
+            where T2 : struct, IRuleProvider
+            where T3 : struct, IRuleProvider
+        {
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
+            if (world.QueryCache.TryGetValue(QueryHashCache<T1, T2, T3>.Value, out Query value))
+            {
+                return value;
+            }
+            
+            value = world.CreateQuery(MemoryHelpers.ReadOnlySpanToImmutableArray([default(T1).Rule, default(T2).Rule, default(T3).Rule]));
+            world.QueryCache[QueryHashCache<T1, T2, T3>.Value] = value;
+            return value;
+#else
+            ref Query cachedValue = ref CollectionsMarshal.GetValueRefOrAddDefault(world.QueryCache, QueryHashCache<T1, T2, T3>.Value, out bool exists);
+
+            if (!exists)
+            {
+                cachedValue = world.CreateQuery(MemoryHelpers.ReadOnlySpanToImmutableArray([default(T1).Rule, default(T2).Rule, default(T3).Rule]));
+            }
+
+            return cachedValue!;
+#endif
+        }
+
+        public static Query Query<T1, T2, T3, T4>(this World world)
+            where T1 : struct, IRuleProvider
+            where T2 : struct, IRuleProvider
+            where T3 : struct, IRuleProvider
+            where T4 : struct, IRuleProvider
+        {
+            
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
+            if (world.QueryCache.TryGetValue(QueryHashCache<T1, T2, T3, T4>.Value, out Query value))
+            {
+                return value;
+            }
+            
+            value = world.CreateQuery(MemoryHelpers.ReadOnlySpanToImmutableArray([default(T1).Rule, default(T2).Rule, default(T3).Rule, default(T4).Rule]));
+            world.QueryCache[QueryHashCache<T1, T2, T3, T4>.Value] = value;
+            return value;
+
+#else
+            ref Query cachedValue = ref CollectionsMarshal.GetValueRefOrAddDefault(world.QueryCache, QueryHashCache<T1, T2, T3, T4>.Value, out bool exists);
+
+            if (!exists)
+            {
+                cachedValue = world.CreateQuery(MemoryHelpers.ReadOnlySpanToImmutableArray([default(T1).Rule, default(T2).Rule, default(T3).Rule, default(T4).Rule]));
+            }
+
+            return cachedValue!;
+#endif
+        }
+
+        public static Query Query<T1, T2, T3, T4, T5>(this World world)
+            where T1 : struct, IRuleProvider
+            where T2 : struct, IRuleProvider
+            where T3 : struct, IRuleProvider
+            where T4 : struct, IRuleProvider
+            where T5 : struct, IRuleProvider
+        {
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
+            if (world.QueryCache.TryGetValue(QueryHashCache<T1, T2, T3, T4, T5>.Value, out Query value))
+            {
+                return value;
+            }
+            
+            value = world.CreateQuery(MemoryHelpers.ReadOnlySpanToImmutableArray([default(T1).Rule, default(T2).Rule, default(T3).Rule, default(T4).Rule, default(T5).Rule]));
+            world.QueryCache[QueryHashCache<T1, T2, T3, T4, T5>.Value] = value;
+            return value;
+#else
+            ref Query cachedValue = ref CollectionsMarshal.GetValueRefOrAddDefault(world.QueryCache, QueryHashCache<T1, T2, T3, T4, T5>.Value, out bool exists);
+
+            if (!exists)
+            {
+                cachedValue = world.CreateQuery(MemoryHelpers.ReadOnlySpanToImmutableArray([default(T1).Rule, default(T2).Rule, default(T3).Rule, default(T4).Rule, default(T5).Rule]));
+            }
+
+            return cachedValue!;
+#endif
+        }
+
+        public static Query Query<T1, T2, T3, T4, T5, T6>(this World world)
+            where T1 : struct, IRuleProvider
+            where T2 : struct, IRuleProvider
+            where T3 : struct, IRuleProvider
+            where T4 : struct, IRuleProvider
+            where T5 : struct, IRuleProvider
+            where T6 : struct, IRuleProvider
+        {
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
+            if (world.QueryCache.TryGetValue(QueryHashCache<T1, T2, T3, T4, T5, T6>.Value, out Query value))
+            {
+                return value;
+            }
+            
+            value = world.CreateQuery(MemoryHelpers.ReadOnlySpanToImmutableArray([default(T1).Rule, default(T2).Rule, default(T3).Rule, default(T4).Rule, default(T5).Rule, default(T6).Rule]));
+            world.QueryCache[QueryHashCache<T1, T2, T3, T4, T5, T6>.Value] = value;
+            return value;
+
+#else
+            ref Query cachedValue = ref CollectionsMarshal.GetValueRefOrAddDefault(world.QueryCache, QueryHashCache<T1, T2, T3, T4, T5, T6>.Value, out bool exists);
+
+            if (!exists)
+            {
+                cachedValue = world.CreateQuery(MemoryHelpers.ReadOnlySpanToImmutableArray([default(T1).Rule, default(T2).Rule, default(T3).Rule, default(T4).Rule, default(T5).Rule, default(T6).Rule]));
+            }
+
+            return cachedValue!;
+#endif
+        }
     }
 }

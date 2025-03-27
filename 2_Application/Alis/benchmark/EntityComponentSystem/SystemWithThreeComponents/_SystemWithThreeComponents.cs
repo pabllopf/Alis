@@ -34,7 +34,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
     /// <summary>
     ///     The system with three components class
     /// </summary>
-    [BenchmarkCategory(Categories.System), MemoryDiagnoser]
+    [BenchmarkCategory(Categories.System), MemoryDiagnoser(false), ShortRunJob, Orderer(BenchmarkDotNet.Order.SummaryOrderPolicy.FastestToSlowest)]
 #if CHECK_CACHE_MISSES
     [HardwareCounters(BenchmarkDotNet.Diagnosers.HardwareCounter.CacheMisses)]
 #endif
@@ -43,7 +43,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
         /// <summary>
         ///     Gets or sets the value of the entity count
         /// </summary>
-        [Params(100000)]
+        [Params(10_000)]
         public int EntityCount { get; set; }
 
         /// <summary>
