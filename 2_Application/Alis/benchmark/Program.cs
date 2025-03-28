@@ -44,7 +44,6 @@ using Alis.Benchmark.Loop;
 using Alis.Benchmark.RemoveAtVsRemoveUnnorderAt;
 using Alis.Benchmark.Strings;
 using BenchmarkDotNet.Configs;
-using BenchmarkDotNet.Order;
 using BenchmarkDotNet.Running;
 using SystemWithOneComponent = Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent.SystemWithOneComponent;
 using SystemWithThreeComponents = Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents.SystemWithThreeComponents;
@@ -104,7 +103,6 @@ namespace Alis.Benchmark
 
             IConfig configuration = DefaultConfig.Instance
                 .WithOptions(ConfigOptions.DisableOptimizationsValidator);
-                //.WithOrderer(new DefaultOrderer(SummaryOrderPolicy.FastestToSlowest));
 
             if (args.Length > 0)
             {
