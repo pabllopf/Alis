@@ -211,7 +211,7 @@ namespace Alis.Benchmark.CustomEcs
 
             for (int i = 0; i < EntityCount; i++)
             {
-                world.Create<Component1>(default(Component1));
+                world.Create(default(Component1));
             }
         }
 
@@ -238,7 +238,7 @@ namespace Alis.Benchmark.CustomEcs
 
             for (int i = 0; i < EntityCount; i++)
             {
-                world.Create<Component1, Component2>(default(Component1), default(Component2));
+                world.Create(default(Component1), default(Component2));
             }
         }
 
@@ -267,7 +267,7 @@ namespace Alis.Benchmark.CustomEcs
 
             for (int i = 0; i < EntityCount; i++)
             {
-                world.Create<Component1, Component2, Component3>(default(Component1), default(Component2), default(Component3));
+                world.Create(default(Component1), default(Component2), default(Component3));
             }
         }
 
@@ -298,7 +298,7 @@ namespace Alis.Benchmark.CustomEcs
 
             for (int i = 0; i < EntityCount; i++)
             {
-                world.Create<Component1, Component2, Component3, Component4>(default(Component1), default(Component2), default(Component3), default(Component4));
+                world.Create(default(Component1), default(Component2), default(Component3), default(Component4));
             }
         }
         
@@ -328,7 +328,7 @@ namespace Alis.Benchmark.CustomEcs
 
             for (int i = 0; i < EntityCount; i++)
             {
-                world.Create<Component1, Component2, Component3, Component4, Component5>(default(Component1), default(Component2), default(Component3), default(Component4), default(Component5));
+                world.Create(default(Component1), default(Component2), default(Component3), default(Component4), default(Component5));
             }
         }
         
@@ -360,7 +360,7 @@ namespace Alis.Benchmark.CustomEcs
 
             for (int i = 0; i < EntityCount; i++)
             {
-                world.Create<Component1, Component2, Component3, Component4, Component5, Component6>(default(Component1), default(Component2), default(Component3), default(Component4), default(Component5), default(Component6));
+                world.Create(default(Component1), default(Component2), default(Component3), default(Component4), default(Component5), default(Component6));
             }
         }
         
@@ -386,6 +386,439 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        [Benchmark]
+        public void Create_With_Seven_Component()
+        {
+            World world = this.World;
+            world.EnsureCapacity(_entityAlisType, EntityCount);
+
+            for (int i = 0; i < EntityCount; i++)
+            {
+                world.Create(default(Component1), default(Component2), default(Component3), default(Component4), default(Component5), default(Component6), default(Component7));
+            }
+        }
+        
+        [Benchmark]
+        public void Create_Bulk_With_Seven_Component()
+        {
+            World world = this.World;
+            ChunkTuple<Component1, Component2, Component3, Component4, Component5, Component6, Component7> chunks = world.CreateMany<Component1, Component2, Component3, Component4, Component5, Component6, Component7>(EntityCount);
+
+            chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
+            chunks.Span3 = chunks.Span3[..chunks.Span1.Length];
+            chunks.Span4 = chunks.Span4[..chunks.Span1.Length];
+            chunks.Span5 = chunks.Span5[..chunks.Span1.Length];
+            chunks.Span6 = chunks.Span6[..chunks.Span1.Length];
+            chunks.Span7 = chunks.Span7[..chunks.Span1.Length];
+            for (int i = 0; i < chunks.Span1.Length; i++)
+            {
+                chunks.Span1[i] = default(Component1);
+                chunks.Span2[i] = default(Component2);
+                chunks.Span3[i] = default(Component3);
+                chunks.Span4[i] = default(Component4);
+                chunks.Span5[i] = default(Component5);
+                chunks.Span6[i] = default(Component6);
+                chunks.Span7[i] = default(Component7);
+            }
+        }
+        
+        [Benchmark]
+        public void Create_With_Eight_Component()
+        {
+            World world = this.World;
+            world.EnsureCapacity(_entityAlisType, EntityCount);
+
+            for (int i = 0; i < EntityCount; i++)
+            {
+                world.Create(default(Component1), default(Component2), default(Component3), default(Component4), default(Component5), default(Component6), default(Component7), default(Component8));
+            }
+        }
+        
+        [Benchmark]
+        public void Create_Bulk_With_Eight_Component()
+        {
+            World world = this.World;
+            ChunkTuple<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8> chunks = world.CreateMany<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8>(EntityCount);
+
+            chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
+            chunks.Span3 = chunks.Span3[..chunks.Span1.Length];
+            chunks.Span4 = chunks.Span4[..chunks.Span1.Length];
+            chunks.Span5 = chunks.Span5[..chunks.Span1.Length];
+            chunks.Span6 = chunks.Span6[..chunks.Span1.Length];
+            chunks.Span7 = chunks.Span7[..chunks.Span1.Length];
+            chunks.Span8 = chunks.Span8[..chunks.Span1.Length];
+            for (int i = 0; i < chunks.Span1.Length; i++)
+            {
+                chunks.Span1[i] = default(Component1);
+                chunks.Span2[i] = default(Component2);
+                chunks.Span3[i] = default(Component3);
+                chunks.Span4[i] = default(Component4);
+                chunks.Span5[i] = default(Component5);
+                chunks.Span6[i] = default(Component6);
+                chunks.Span7[i] = default(Component7);
+                chunks.Span8[i] = default(Component8);
+            }
+        }
+        
+        [Benchmark]
+        public void Create_With_Nine_Component()
+        {
+            World world = this.World;
+            world.EnsureCapacity(_entityAlisType, EntityCount);
+
+            for (int i = 0; i < EntityCount; i++)
+            {
+                world.Create(default(Component1), default(Component2), default(Component3), default(Component4), default(Component5), default(Component6), default(Component7), default(Component8), default(Component9));
+            }
+        }
+        
+        [Benchmark]
+        public void Create_Bulk_With_Nine_Component()
+        {
+            World world = this.World;
+            ChunkTuple<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9> chunks = world.CreateMany<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9>(EntityCount);
+
+            chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
+            chunks.Span3 = chunks.Span3[..chunks.Span1.Length];
+            chunks.Span4 = chunks.Span4[..chunks.Span1.Length];
+            chunks.Span5 = chunks.Span5[..chunks.Span1.Length];
+            chunks.Span6 = chunks.Span6[..chunks.Span1.Length];
+            chunks.Span7 = chunks.Span7[..chunks.Span1.Length];
+            chunks.Span8 = chunks.Span8[..chunks.Span1.Length];
+            chunks.Span9 = chunks.Span9[..chunks.Span1.Length];
+            for (int i = 0; i < chunks.Span1.Length; i++)
+            {
+                chunks.Span1[i] = default(Component1);
+                chunks.Span2[i] = default(Component2);
+                chunks.Span3[i] = default(Component3);
+                chunks.Span4[i] = default(Component4);
+                chunks.Span5[i] = default(Component5);
+                chunks.Span6[i] = default(Component6);
+                chunks.Span7[i] = default(Component7);
+                chunks.Span8[i] = default(Component8);
+                chunks.Span9[i] = default(Component9);
+            }
+        }
+        
+        [Benchmark]
+        public void Create_With_Ten_Component()
+        {
+            World world = this.World;
+            world.EnsureCapacity(_entityAlisType, EntityCount);
+
+            for (int i = 0; i < EntityCount; i++)
+            {
+                world.Create(default(Component1), default(Component2), default(Component3), default(Component4), default(Component5), default(Component6), default(Component7), default(Component8), default(Component9), default(Component10));
+            }
+        }
+        
+        [Benchmark]
+        public void Create_Bulk_With_Ten_Component()
+        {
+            World world = this.World;
+            ChunkTuple<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10> chunks = world.CreateMany<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10>(EntityCount);
+
+            chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
+            chunks.Span3 = chunks.Span3[..chunks.Span1.Length];
+            chunks.Span4 = chunks.Span4[..chunks.Span1.Length];
+            chunks.Span5 = chunks.Span5[..chunks.Span1.Length];
+            chunks.Span6 = chunks.Span6[..chunks.Span1.Length];
+            chunks.Span7 = chunks.Span7[..chunks.Span1.Length];
+            chunks.Span8 = chunks.Span8[..chunks.Span1.Length];
+            chunks.Span9 = chunks.Span9[..chunks.Span1.Length];
+            chunks.Span10 = chunks.Span10[..chunks.Span1.Length];
+            for (int i = 0; i < chunks.Span1.Length; i++)
+            {
+                chunks.Span1[i] = default(Component1);
+                chunks.Span2[i] = default(Component2);
+                chunks.Span3[i] = default(Component3);
+                chunks.Span4[i] = default(Component4);
+                chunks.Span5[i] = default(Component5);
+                chunks.Span6[i] = default(Component6);
+                chunks.Span7[i] = default(Component7);
+                chunks.Span8[i] = default(Component8);
+                chunks.Span9[i] = default(Component9);
+                chunks.Span10[i] = default(Component10);
+            }
+        }
+        
+        [Benchmark]
+        public void Create_With_Eleven_Component()
+        {
+            World world = this.World;
+            world.EnsureCapacity(_entityAlisType, EntityCount);
+
+            for (int i = 0; i < EntityCount; i++)
+            {
+                world.Create(default(Component1), default(Component2), default(Component3), default(Component4), default(Component5), default(Component6), default(Component7), default(Component8), default(Component9), default(Component10), default(Component11));
+            }
+        }
+        
+        [Benchmark]
+        public void Create_Bulk_With_Eleven_Component()
+        {
+            World world = this.World;
+            ChunkTuple<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11> chunks = world.CreateMany<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11>(EntityCount);
+
+            chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
+            chunks.Span3 = chunks.Span3[..chunks.Span1.Length];
+            chunks.Span4 = chunks.Span4[..chunks.Span1.Length];
+            chunks.Span5 = chunks.Span5[..chunks.Span1.Length];
+            chunks.Span6 = chunks.Span6[..chunks.Span1.Length];
+            chunks.Span7 = chunks.Span7[..chunks.Span1.Length];
+            chunks.Span8 = chunks.Span8[..chunks.Span1.Length];
+            chunks.Span9 = chunks.Span9[..chunks.Span1.Length];
+            chunks.Span10 = chunks.Span10[..chunks.Span1.Length];
+            for (int i = 0; i < chunks.Span1.Length; i++)
+            {
+                chunks.Span1[i] = default(Component1);
+                chunks.Span2[i] = default(Component2);
+                chunks.Span3[i] = default(Component3);
+                chunks.Span4[i] = default(Component4);
+                chunks.Span5[i] = default(Component5);
+                chunks.Span6[i] = default(Component6);
+                chunks.Span7[i] = default(Component7);
+                chunks.Span8[i] = default(Component8);
+                chunks.Span9[i] = default(Component9);
+                chunks.Span10[i] = default(Component10);
+                chunks.Span11[i] = default(Component11);
+            }
+        }
+        
+        [Benchmark]
+        public void Create_With_Twelve_Component()
+        {
+            World world = this.World;
+            world.EnsureCapacity(_entityAlisType, EntityCount);
+
+            for (int i = 0; i < EntityCount; i++)
+            {
+                world.Create(default(Component1), default(Component2), default(Component3), default(Component4), default(Component5), default(Component6), default(Component7), default(Component8), default(Component9), default(Component10), default(Component11), default(Component12));
+            }
+        }
+        
+        [Benchmark]
+        public void Create_Bulk_With_Twelve_Component()
+        {
+            World world = this.World;
+            ChunkTuple<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11, Component12> chunks = world.CreateMany<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11, Component12>(EntityCount);
+
+            chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
+            chunks.Span3 = chunks.Span3[..chunks.Span1.Length];
+            chunks.Span4 = chunks.Span4[..chunks.Span1.Length];
+            chunks.Span5 = chunks.Span5[..chunks.Span1.Length];
+            chunks.Span6 = chunks.Span6[..chunks.Span1.Length];
+            chunks.Span7 = chunks.Span7[..chunks.Span1.Length];
+            chunks.Span8 = chunks.Span8[..chunks.Span1.Length];
+            chunks.Span9 = chunks.Span9[..chunks.Span1.Length];
+            chunks.Span10 = chunks.Span10[..chunks.Span1.Length];
+            chunks.Span11 = chunks.Span11[..chunks.Span1.Length];
+            for (int i = 0; i < chunks.Span1.Length; i++)
+            {
+                chunks.Span1[i] = default(Component1);
+                chunks.Span2[i] = default(Component2);
+                chunks.Span3[i] = default(Component3);
+                chunks.Span4[i] = default(Component4);
+                chunks.Span5[i] = default(Component5);
+                chunks.Span6[i] = default(Component6);
+                chunks.Span7[i] = default(Component7);
+                chunks.Span8[i] = default(Component8);
+                chunks.Span9[i] = default(Component9);
+                chunks.Span10[i] = default(Component10);
+                chunks.Span11[i] = default(Component11);
+                chunks.Span12[i] = default(Component12);
+            }
+        }
+        
+        [Benchmark]
+        public void Create_With_Thirteen_Component()
+        {
+            World world = this.World;
+            world.EnsureCapacity(_entityAlisType, EntityCount);
+
+            for (int i = 0; i < EntityCount; i++)
+            {
+                world.Create(default(Component1), default(Component2), default(Component3), default(Component4), default(Component5), default(Component6), default(Component7), default(Component8), default(Component9), default(Component10), default(Component11), default(Component12), default(Component13));
+            }
+        }
+        
+        [Benchmark]
+        public void Create_Bulk_With_Thirteen_Component()
+        {
+            World world = this.World;
+            ChunkTuple<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11, Component12, Component13> chunks = world.CreateMany<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11, Component12, Component13>(EntityCount);
+
+            chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
+            chunks.Span3 = chunks.Span3[..chunks.Span1.Length];
+            chunks.Span4 = chunks.Span4[..chunks.Span1.Length];
+            chunks.Span5 = chunks.Span5[..chunks.Span1.Length];
+            chunks.Span6 = chunks.Span6[..chunks.Span1.Length];
+            chunks.Span7 = chunks.Span7[..chunks.Span1.Length];
+            chunks.Span8 = chunks.Span8[..chunks.Span1.Length];
+            chunks.Span9 = chunks.Span9[..chunks.Span1.Length];
+            chunks.Span10 = chunks.Span10[..chunks.Span1.Length];
+            chunks.Span11 = chunks.Span11[..chunks.Span1.Length];
+            for (int i = 0; i < chunks.Span1.Length; i++)
+            {
+                chunks.Span1[i] = default(Component1);
+                chunks.Span2[i] = default(Component2);
+                chunks.Span3[i] = default(Component3);
+                chunks.Span4[i] = default(Component4);
+                chunks.Span5[i] = default(Component5);
+                chunks.Span6[i] = default(Component6);
+                chunks.Span7[i] = default(Component7);
+                chunks.Span8[i] = default(Component8);
+                chunks.Span9[i] = default(Component9);
+                chunks.Span10[i] = default(Component10);
+                chunks.Span11[i] = default(Component11);
+                chunks.Span12[i] = default(Component12);
+                chunks.Span13[i] = default(Component13);
+            }
+        }
+        
+        [Benchmark]
+        public void Create_With_Fourteen_Component()
+        {
+            World world = this.World;
+            world.EnsureCapacity(_entityAlisType, EntityCount);
+
+            for (int i = 0; i < EntityCount; i++)
+            {
+                world.Create(default(Component1), default(Component2), default(Component3), default(Component4), default(Component5), default(Component6), default(Component7), default(Component8), default(Component9), default(Component10), default(Component11), default(Component12), default(Component13), default(Component14));
+            }
+        }
+        
+        [Benchmark]
+        public void Create_Bulk_With_Fourteen_Component()
+        {
+            World world = this.World;
+            ChunkTuple<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11, Component12, Component13, Component14> chunks = world.CreateMany<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11, Component12, Component13, Component14>(EntityCount);
+
+            chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
+            chunks.Span3 = chunks.Span3[..chunks.Span1.Length];
+            chunks.Span4 = chunks.Span4[..chunks.Span1.Length];
+            chunks.Span5 = chunks.Span5[..chunks.Span1.Length];
+            chunks.Span6 = chunks.Span6[..chunks.Span1.Length];
+            chunks.Span7 = chunks.Span7[..chunks.Span1.Length];
+            chunks.Span8 = chunks.Span8[..chunks.Span1.Length];
+            chunks.Span9 = chunks.Span9[..chunks.Span1.Length];
+            chunks.Span10 = chunks.Span10[..chunks.Span1.Length];
+            chunks.Span11 = chunks.Span11[..chunks.Span1.Length];
+            for (int i = 0; i < chunks.Span1.Length; i++)
+            {
+                chunks.Span1[i] = default(Component1);
+                chunks.Span2[i] = default(Component2);
+                chunks.Span3[i] = default(Component3);
+                chunks.Span4[i] = default(Component4);
+                chunks.Span5[i] = default(Component5);
+                chunks.Span6[i] = default(Component6);
+                chunks.Span7[i] = default(Component7);
+                chunks.Span8[i] = default(Component8);
+                chunks.Span9[i] = default(Component9);
+                chunks.Span10[i] = default(Component10);
+                chunks.Span11[i] = default(Component11);
+                chunks.Span12[i] = default(Component12);
+                chunks.Span13[i] = default(Component13);
+                chunks.Span14[i] = default(Component14);
+            }
+        }
+        
+        [Benchmark]
+        public void Create_With_Fifteen_Component()
+        {
+            World world = this.World;
+            world.EnsureCapacity(_entityAlisType, EntityCount);
+
+            for (int i = 0; i < EntityCount; i++)
+            {
+                world.Create(default(Component1), default(Component2), default(Component3), default(Component4), default(Component5), default(Component6), default(Component7), default(Component8), default(Component9), default(Component10), default(Component11), default(Component12), default(Component13), default(Component14), default(Component15));
+            }
+        }
+        
+        
+        [Benchmark]
+        public void Create_Bulk_With_Fifteen_Component()
+        {
+            World world = this.World;
+            ChunkTuple<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11, Component12, Component13, Component14, Component15> chunks = world.CreateMany<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11, Component12, Component13, Component14, Component15>(EntityCount);
+
+            chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
+            chunks.Span3 = chunks.Span3[..chunks.Span1.Length];
+            chunks.Span4 = chunks.Span4[..chunks.Span1.Length];
+            chunks.Span5 = chunks.Span5[..chunks.Span1.Length];
+            chunks.Span6 = chunks.Span6[..chunks.Span1.Length];
+            chunks.Span7 = chunks.Span7[..chunks.Span1.Length];
+            chunks.Span8 = chunks.Span8[..chunks.Span1.Length];
+            chunks.Span9 = chunks.Span9[..chunks.Span1.Length];
+            chunks.Span10 = chunks.Span10[..chunks.Span1.Length];
+            for (int i = 0; i < chunks.Span1.Length; i++)
+            {
+                chunks.Span1[i] = default(Component1);
+                chunks.Span2[i] = default(Component2);
+                chunks.Span3[i] = default(Component3);
+                chunks.Span4[i] = default(Component4);
+                chunks.Span5[i] = default(Component5);
+                chunks.Span6[i] = default(Component6);
+                chunks.Span7[i] = default(Component7);
+                chunks.Span8[i] = default(Component8);
+                chunks.Span9[i] = default(Component9);
+                chunks.Span10[i] = default(Component10);
+                chunks.Span11[i] = default(Component11);
+                chunks.Span12[i] = default(Component12);
+                chunks.Span13[i] = default(Component13);
+                chunks.Span14[i] = default(Component14);
+                chunks.Span15[i] = default(Component15);
+            }
+        }
+        
+        [Benchmark]
+        public void Create_With_Sixteen_Component()
+        {
+            World world = this.World;
+            world.EnsureCapacity(_entityAlisType, EntityCount);
+
+            for (int i = 0; i < EntityCount; i++)
+            {
+                world.Create(default(Component1), default(Component2), default(Component3), default(Component4), default(Component5), default(Component6), default(Component7), default(Component8), default(Component9), default(Component10), default(Component11), default(Component12), default(Component13), default(Component14), default(Component15), default(Component16));
+            }
+        }
+        
+        [Benchmark]
+        public void Create_Bulk_With_Sixteen_Component()
+        {
+            World world = this.World;
+            ChunkTuple<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11, Component12, Component13, Component14, Component15, Component16> chunks = world.CreateMany<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11, Component12, Component13, Component14, Component15, Component16>(EntityCount);
+
+            chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
+            chunks.Span3 = chunks.Span3[..chunks.Span1.Length];
+            chunks.Span4 = chunks.Span4[..chunks.Span1.Length];
+            chunks.Span5 = chunks.Span5[..chunks.Span1.Length];
+            chunks.Span6 = chunks.Span6[..chunks.Span1.Length];
+            chunks.Span7 = chunks.Span7[..chunks.Span1.Length];
+            chunks.Span8 = chunks.Span8[..chunks.Span1.Length];
+            chunks.Span9 = chunks.Span9[..chunks.Span1.Length];
+            chunks.Span10 = chunks.Span10[..chunks.Span1.Length];
+            for (int i = 0; i < chunks.Span1.Length; i++)
+            {
+                chunks.Span1[i] = default(Component1);
+                chunks.Span2[i] = default(Component2);
+                chunks.Span3[i] = default(Component3);
+                chunks.Span4[i] = default(Component4);
+                chunks.Span5[i] = default(Component5);
+                chunks.Span6[i] = default(Component6);
+                chunks.Span7[i] = default(Component7);
+                chunks.Span8[i] = default(Component8);
+                chunks.Span9[i] = default(Component9);
+                chunks.Span10[i] = default(Component10);
+                chunks.Span11[i] = default(Component11);
+                chunks.Span12[i] = default(Component12);
+                chunks.Span13[i] = default(Component13);
+                chunks.Span14[i] = default(Component14);
+                chunks.Span15[i] = default(Component15);
+                chunks.Span16[i] = default(Component16);
+            }
+        }
+        
         /// <summary>
         /// Alises the query inline
         /// </summary>
@@ -394,7 +827,7 @@ namespace Alis.Benchmark.CustomEcs
         {
             for (int i = 0; i < EntityCount; i++)
             {
-                World.Create<Component1>(default(Component1));
+                World.Create(default(Component1));
             }
             
             Query.Inline<IncrementAlis, Component1>(default(IncrementAlis));
@@ -409,7 +842,7 @@ namespace Alis.Benchmark.CustomEcs
         {
             for (int i = 0; i < EntityCount; i++)
             {
-                World.Create<Component1>(default(Component1));
+                World.Create(default(Component1));
             }
             
             Query.Delegate((ref Component1 c) => c.Value++);
@@ -424,7 +857,7 @@ namespace Alis.Benchmark.CustomEcs
         {
             for (int i = 0; i < EntityCount; i++)
             {
-                World.Create<Component1>(default(Component1));
+                World.Create(default(Component1));
             }
             
             Vector256<int> sum = Vector256.Create(1);
@@ -453,7 +886,7 @@ namespace Alis.Benchmark.CustomEcs
         {
             for (int i = 0; i < EntityCount; i++)
             {
-                World.Create<Component1>(default(Component1));
+                World.Create(default(Component1));
                 for (int j = 0; j < 10; j++)
                 {
                     World.Create();
@@ -472,7 +905,7 @@ namespace Alis.Benchmark.CustomEcs
         {
             for (int i = 0; i < EntityCount; i++)
             {
-                World.Create<Component1>(default(Component1));
+                World.Create(default(Component1));
                 for (int j = 0; j < 10; j++)
                 {
                     World.Create();
@@ -491,7 +924,7 @@ namespace Alis.Benchmark.CustomEcs
         {
             for (int i = 0; i < EntityCount; i++)
             {
-                World.Create<Component1>(default(Component1));
+                World.Create(default(Component1));
                 for (int j = 0; j < 10; j++)
                 {
                     World.Create();
@@ -515,6 +948,8 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
 
+        
+        
     
     }
 }
