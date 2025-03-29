@@ -1,40 +1,12 @@
-﻿// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:AlisEcsBenchmark.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
-
+﻿
 using System;
 using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics;
 using Alis.Benchmark.CustomEcs.Components;
-using Alis.Core.Ecs;
-using Alis.Core.Ecs.Core;
-using Alis.Core.Ecs.Systems;
 using BenchmarkDotNet.Attributes;
+using Frent;
+using Frent.Core;
+using Frent.Systems;
 
 namespace Alis.Benchmark.CustomEcs
 {
@@ -43,28 +15,21 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     The id
         /// </summary>
-        private static readonly EntityType _entityAlisType = Entity.EntityTypeOf([Component<Component1>.ID], []);
-        
-        private void SetupAlis()
-        {
-            World = new Alis.Core.Ecs.World();
-            Query = World.Query<Alis.Core.Ecs.Systems.With<Component1>>();
-        }
+        private static readonly EntityType _entityFrentType = Entity.EntityTypeOf([Component<Component1>.ID], []);
         
         /// <summary>
         ///     Gets the value of the world
         /// </summary>
-        public World World { get; set; }
+        public Frent.World WorldFrent { get; set; }
         
-        /// <summary>
-        ///     Disposes this instance
-        /// </summary>
-        public void Dispose() => World.Dispose();
+      
+        private void SetupFrent()
+        {
+            WorldFrent = new Frent.World();
+            QueryFrent = WorldFrent.Query<With<Component1>>();
+        }
         
-        /// <summary>
-        /// The increment alis
-        /// </summary>
-        internal struct IncrementAlis : IAction<Component1>
+        internal struct IncrementFrent : IAction<Component1>
         {
 
             /// <summary>
@@ -80,16 +45,16 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         /// The query
         /// </summary>
-        public Query Query;
+        public Query QueryFrent;
         
         /// <summary>
         ///     Frents this instance
         /// </summary>
         [Benchmark]
-        public void Alis_Create_With_One_Component()
+        public void Frent_Create_With_One_Component()
         {
-            World world = this.World;
-            world.EnsureCapacity(_entityAlisType, EntityCount);
+            World world = this.WorldFrent;
+            world.EnsureCapacity(_entityFrentType, EntityCount);
 
             for (int i = 0; i < EntityCount; i++)
             {
@@ -101,9 +66,9 @@ namespace Alis.Benchmark.CustomEcs
         ///     Frents the bulk
         /// </summary>
         [Benchmark]
-        public void Alis_Create_Bulk_With_One_Component()
+        public void Frent_Create_Bulk_With_One_Component()
         {
-            World world = this.World;
+            World world = this.WorldFrent;
             ChunkTuple<Component1> chunks = world.CreateMany<Component1>(EntityCount);
 
             for (int i = 0; i < chunks.Span.Length; i++)
@@ -113,10 +78,10 @@ namespace Alis.Benchmark.CustomEcs
         }
         
         [Benchmark]
-        public void Alis_Create_With_Two_Component()
+        public void Frent_Create_With_Two_Component()
         {
-            World world = this.World;
-            world.EnsureCapacity(_entityAlisType, EntityCount);
+            World world = this.WorldFrent;
+            world.EnsureCapacity(_entityFrentType, EntityCount);
 
             for (int i = 0; i < EntityCount; i++)
             {
@@ -128,9 +93,9 @@ namespace Alis.Benchmark.CustomEcs
         ///     Frents the bulk
         /// </summary>
         [Benchmark]
-        public void Alis_Create_Bulk_With_Two_Component()
+        public void Frent_Create_Bulk_With_Two_Component()
         {
-            World world = this.World;
+            World world = this.WorldFrent;
             ChunkTuple<Component1, Component2> chunks = world.CreateMany<Component1, Component2>(EntityCount);
 
             chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
@@ -142,10 +107,10 @@ namespace Alis.Benchmark.CustomEcs
         }
         
         [Benchmark]
-        public void Alis_Create_With_Three_Component()
+        public void Frent_Create_With_Three_Component()
         {
-            World world = this.World;
-            world.EnsureCapacity(_entityAlisType, EntityCount);
+            World world = this.WorldFrent;
+            world.EnsureCapacity(_entityFrentType, EntityCount);
 
             for (int i = 0; i < EntityCount; i++)
             {
@@ -157,9 +122,9 @@ namespace Alis.Benchmark.CustomEcs
         ///     Frents the bulk
         /// </summary>
         [Benchmark]
-        public void Alis_Create_Bulk_With_Thre_Component()
+        public void Frent_Create_Bulk_With_Thre_Component()
         {
-            World world = this.World;
+            World world = this.WorldFrent;
             ChunkTuple<Component1, Component2, Component3> chunks = world.CreateMany<Component1, Component2, Component3>(EntityCount);
 
             chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
@@ -173,10 +138,10 @@ namespace Alis.Benchmark.CustomEcs
         }
         
         [Benchmark]
-        public void Alis_Create_With_Four_Component()
+        public void Frent_Create_With_Four_Component()
         {
-            World world = this.World;
-            world.EnsureCapacity(_entityAlisType, EntityCount);
+            World world = this.WorldFrent;
+            world.EnsureCapacity(_entityFrentType, EntityCount);
 
             for (int i = 0; i < EntityCount; i++)
             {
@@ -185,9 +150,9 @@ namespace Alis.Benchmark.CustomEcs
         }
         
         [Benchmark]
-        public void Alis_Create_Bulk_With_Four_Component()
+        public void Frent_Create_Bulk_With_Four_Component()
         {
-            World world = this.World;
+            World world = this.WorldFrent;
             ChunkTuple<Component1, Component2, Component3, Component4> chunks = world.CreateMany<Component1, Component2, Component3, Component4>(EntityCount);
 
             chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
@@ -203,10 +168,10 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         [Benchmark]
-        public void Alis_Create_With_Five_Component()
+        public void Frent_Create_With_Five_Component()
         {
-            World world = this.World;
-            world.EnsureCapacity(_entityAlisType, EntityCount);
+            World world = this.WorldFrent;
+            world.EnsureCapacity(_entityFrentType, EntityCount);
 
             for (int i = 0; i < EntityCount; i++)
             {
@@ -215,9 +180,9 @@ namespace Alis.Benchmark.CustomEcs
         }
         
         [Benchmark]
-        public void Alis_Create_Bulk_With_Five_Component()
+        public void Frent_Create_Bulk_With_Five_Component()
         {
-            World world = this.World;
+            World world = this.WorldFrent;
             ChunkTuple<Component1, Component2, Component3, Component4, Component5> chunks = world.CreateMany<Component1, Component2, Component3, Component4, Component5>(EntityCount);
 
             chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
@@ -235,10 +200,10 @@ namespace Alis.Benchmark.CustomEcs
         }
         
         [Benchmark]
-        public void Alis_Create_With_Six_Component()
+        public void Frent_Create_With_Six_Component()
         {
-            World world = this.World;
-            world.EnsureCapacity(_entityAlisType, EntityCount);
+            World world = this.WorldFrent;
+            world.EnsureCapacity(_entityFrentType, EntityCount);
 
             for (int i = 0; i < EntityCount; i++)
             {
@@ -247,9 +212,9 @@ namespace Alis.Benchmark.CustomEcs
         }
         
         [Benchmark]
-        public void Alis_Create_Bulk_With_Six_Component()
+        public void Frent_Create_Bulk_With_Six_Component()
         {
-            World world = this.World;
+            World world = this.WorldFrent;
             ChunkTuple<Component1, Component2, Component3, Component4, Component5, Component6> chunks = world.CreateMany<Component1, Component2, Component3, Component4, Component5, Component6>(EntityCount);
 
             chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
@@ -269,10 +234,10 @@ namespace Alis.Benchmark.CustomEcs
         }
         
         [Benchmark]
-        public void Alis_Create_With_Seven_Component()
+        public void Frent_Create_With_Seven_Component()
         {
-            World world = this.World;
-            world.EnsureCapacity(_entityAlisType, EntityCount);
+            World world = this.WorldFrent;
+            world.EnsureCapacity(_entityFrentType, EntityCount);
 
             for (int i = 0; i < EntityCount; i++)
             {
@@ -281,9 +246,9 @@ namespace Alis.Benchmark.CustomEcs
         }
         
         [Benchmark]
-        public void Alis_Create_Bulk_With_Seven_Component()
+        public void Frent_Create_Bulk_With_Seven_Component()
         {
-            World world = this.World;
+            World world = this.WorldFrent;
             ChunkTuple<Component1, Component2, Component3, Component4, Component5, Component6, Component7> chunks = world.CreateMany<Component1, Component2, Component3, Component4, Component5, Component6, Component7>(EntityCount);
 
             chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
@@ -305,10 +270,10 @@ namespace Alis.Benchmark.CustomEcs
         }
         
         [Benchmark]
-        public void Alis_Create_With_Eight_Component()
+        public void Create_With_Eight_Component()
         {
-            World world = this.World;
-            world.EnsureCapacity(_entityAlisType, EntityCount);
+            World world = this.WorldFrent;
+            world.EnsureCapacity(_entityFrentType, EntityCount);
 
             for (int i = 0; i < EntityCount; i++)
             {
@@ -317,9 +282,9 @@ namespace Alis.Benchmark.CustomEcs
         }
         
         [Benchmark]
-        public void Alis_Create_Bulk_With_Eight_Component()
+        public void Frent_Create_Bulk_With_Eight_Component()
         {
-            World world = this.World;
+            World world = this.WorldFrent;
             ChunkTuple<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8> chunks = world.CreateMany<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8>(EntityCount);
 
             chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
@@ -343,10 +308,10 @@ namespace Alis.Benchmark.CustomEcs
         }
         
         [Benchmark]
-        public void Alis_Create_With_Nine_Component()
+        public void Frent_Create_With_Nine_Component()
         {
-            World world = this.World;
-            world.EnsureCapacity(_entityAlisType, EntityCount);
+            World world = this.WorldFrent;
+            world.EnsureCapacity(_entityFrentType, EntityCount);
 
             for (int i = 0; i < EntityCount; i++)
             {
@@ -355,9 +320,9 @@ namespace Alis.Benchmark.CustomEcs
         }
         
         [Benchmark]
-        public void Alis_Create_Bulk_With_Nine_Component()
+        public void Frent_Create_Bulk_With_Nine_Component()
         {
-            World world = this.World;
+            World world = this.WorldFrent;
             ChunkTuple<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9> chunks = world.CreateMany<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9>(EntityCount);
 
             chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
@@ -383,10 +348,10 @@ namespace Alis.Benchmark.CustomEcs
         }
         
         [Benchmark]
-        public void Alis_Create_With_Ten_Component()
+        public void Frent_Create_With_Ten_Component()
         {
-            World world = this.World;
-            world.EnsureCapacity(_entityAlisType, EntityCount);
+            World world = this.WorldFrent;
+            world.EnsureCapacity(_entityFrentType, EntityCount);
 
             for (int i = 0; i < EntityCount; i++)
             {
@@ -395,9 +360,9 @@ namespace Alis.Benchmark.CustomEcs
         }
         
         [Benchmark]
-        public void Alis_Create_Bulk_With_Ten_Component()
+        public void Frent_Create_Bulk_With_Ten_Component()
         {
-            World world = this.World;
+            World world = this.WorldFrent;
             ChunkTuple<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10> chunks = world.CreateMany<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10>(EntityCount);
 
             chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
@@ -425,10 +390,10 @@ namespace Alis.Benchmark.CustomEcs
         }
         
         [Benchmark]
-        public void Alis_Create_With_Eleven_Component()
+        public void Frent_Create_With_Eleven_Component()
         {
-            World world = this.World;
-            world.EnsureCapacity(_entityAlisType, EntityCount);
+            World world = this.WorldFrent;
+            world.EnsureCapacity(_entityFrentType, EntityCount);
 
             for (int i = 0; i < EntityCount; i++)
             {
@@ -437,9 +402,9 @@ namespace Alis.Benchmark.CustomEcs
         }
         
         [Benchmark]
-        public void Alis_Create_Bulk_With_Eleven_Component()
+        public void Frent_Create_Bulk_With_Eleven_Component()
         {
-            World world = this.World;
+            World world = this.WorldFrent;
             ChunkTuple<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11> chunks = world.CreateMany<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11>(EntityCount);
 
             chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
@@ -468,10 +433,10 @@ namespace Alis.Benchmark.CustomEcs
         }
         
         [Benchmark]
-        public void Alis_Create_With_Twelve_Component()
+        public void Frent_Create_With_Twelve_Component()
         {
-            World world = this.World;
-            world.EnsureCapacity(_entityAlisType, EntityCount);
+            World world = this.WorldFrent;
+            world.EnsureCapacity(_entityFrentType, EntityCount);
 
             for (int i = 0; i < EntityCount; i++)
             {
@@ -480,9 +445,9 @@ namespace Alis.Benchmark.CustomEcs
         }
         
         [Benchmark]
-        public void Alis_Create_Bulk_With_Twelve_Component()
+        public void Frent_Create_Bulk_With_Twelve_Component()
         {
-            World world = this.World;
+            World world = this.WorldFrent;
             ChunkTuple<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11, Component12> chunks = world.CreateMany<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11, Component12>(EntityCount);
 
             chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
@@ -513,10 +478,10 @@ namespace Alis.Benchmark.CustomEcs
         }
         
         [Benchmark]
-        public void Alis_Create_With_Thirteen_Component()
+        public void Frent_Create_With_Thirteen_Component()
         {
-            World world = this.World;
-            world.EnsureCapacity(_entityAlisType, EntityCount);
+            World world = this.WorldFrent;
+            world.EnsureCapacity(_entityFrentType, EntityCount);
 
             for (int i = 0; i < EntityCount; i++)
             {
@@ -525,9 +490,9 @@ namespace Alis.Benchmark.CustomEcs
         }
         
         [Benchmark]
-        public void Alis_Create_Bulk_With_Thirteen_Component()
+        public void Frent_Create_Bulk_With_Thirteen_Component()
         {
-            World world = this.World;
+            World world = this.WorldFrent;
             ChunkTuple<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11, Component12, Component13> chunks = world.CreateMany<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11, Component12, Component13>(EntityCount);
 
             chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
@@ -559,10 +524,10 @@ namespace Alis.Benchmark.CustomEcs
         }
         
         [Benchmark]
-        public void Alis_Create_With_Fourteen_Component()
+        public void Frent_Create_With_Fourteen_Component()
         {
-            World world = this.World;
-            world.EnsureCapacity(_entityAlisType, EntityCount);
+            World world = this.WorldFrent;
+            world.EnsureCapacity(_entityFrentType, EntityCount);
 
             for (int i = 0; i < EntityCount; i++)
             {
@@ -571,9 +536,9 @@ namespace Alis.Benchmark.CustomEcs
         }
         
         [Benchmark]
-        public void Alis_Create_Bulk_With_Fourteen_Component()
+        public void Frent_Create_Bulk_With_Fourteen_Component()
         {
-            World world = this.World;
+            World world = this.WorldFrent;
             ChunkTuple<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11, Component12, Component13, Component14> chunks = world.CreateMany<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11, Component12, Component13, Component14>(EntityCount);
 
             chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
@@ -606,10 +571,10 @@ namespace Alis.Benchmark.CustomEcs
         }
         
         [Benchmark]
-        public void Alis_Create_With_Fifteen_Component()
+        public void Frent_Create_With_Fifteen_Component()
         {
-            World world = this.World;
-            world.EnsureCapacity(_entityAlisType, EntityCount);
+            World world = this.WorldFrent;
+            world.EnsureCapacity(_entityFrentType, EntityCount);
 
             for (int i = 0; i < EntityCount; i++)
             {
@@ -619,9 +584,9 @@ namespace Alis.Benchmark.CustomEcs
         
         
         [Benchmark]
-        public void Alis_Create_Bulk_With_Fifteen_Component()
+        public void Frent_Create_Bulk_With_Fifteen_Component()
         {
-            World world = this.World;
+            World world = this.WorldFrent;
             ChunkTuple<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11, Component12, Component13, Component14, Component15> chunks = world.CreateMany<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11, Component12, Component13, Component14, Component15>(EntityCount);
 
             chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
@@ -654,10 +619,10 @@ namespace Alis.Benchmark.CustomEcs
         }
         
         [Benchmark]
-        public void Alis_Create_With_Sixteen_Component()
+        public void Frent_Create_With_Sixteen_Component()
         {
-            World world = this.World;
-            world.EnsureCapacity(_entityAlisType, EntityCount);
+            World world = this.WorldFrent;
+            world.EnsureCapacity(_entityFrentType, EntityCount);
 
             for (int i = 0; i < EntityCount; i++)
             {
@@ -666,9 +631,9 @@ namespace Alis.Benchmark.CustomEcs
         }
         
         [Benchmark]
-        public void Alis_Create_Bulk_With_Sixteen_Component()
+        public void Frent_Create_Bulk_With_Sixteen_Component()
         {
-            World world = this.World;
+            World world = this.WorldFrent;
             ChunkTuple<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11, Component12, Component13, Component14, Component15, Component16> chunks = world.CreateMany<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11, Component12, Component13, Component14, Component15, Component16>(EntityCount);
 
             chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
@@ -701,120 +666,40 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
-        /// <summary>
-        /// Alises the query inline
-        /// </summary>
+
         [Benchmark]
-        public void Alis_SystemWithOneComponent_QueryInline_With_Padding_0()
+        public void Frent_SystemWithOneComponent_QueryInline_With_Padding_0()
         {
             for (int i = 0; i < EntityCount; i++)
             {
-                World.Create(default(Component1));
+                WorldFrent.Create(default(Component1));
             }
             
-            Query.Inline<IncrementAlis, Component1>(default(IncrementAlis));
+            QueryFrent.Inline<IncrementFrent, Component1>(default(IncrementFrent));
         }
 
 
-        /// <summary>
-        /// Alises the query delegate
-        /// </summary>
         [Benchmark]
-        public void Alis_SystemWithOneComponent_QueryDelegate_With_Padding_0()
+        public void Frent_SystemWithOneComponent_QueryDelegate_With_Padding_0()
         {
             for (int i = 0; i < EntityCount; i++)
             {
-                World.Create(default(Component1));
+                WorldFrent.Create(default(Component1));
             }
             
-            Query.Delegate((ref Component1 c) => c.Value++);
+            QueryFrent.Delegate((ref Component1 c) => c.Value++);
         }
-
-
-        /// <summary>
-        /// Alises the simd
-        /// </summary>
+        
         [Benchmark]
-        public void Alis_SystemWithOneComponent_Simd_With_Padding_0()
+        public void Frent_SystemWithOneComponent_Simd_With_Padding_0()
         {
             for (int i = 0; i < EntityCount; i++)
             {
-                World.Create(default(Component1));
+                WorldFrent.Create(default(Component1));
             }
             
             Vector256<int> sum = Vector256.Create(1);
-            foreach (ChunkTuple<Component1> chunk in Query.EnumerateChunks<Component1>())
-            {
-                int len = chunk.Span.Length - (chunk.Span.Length & 7);
-                Span<Vector256<int>> ints = MemoryMarshal.Cast<Component1, Vector256<int>>(chunk.Span.Slice(0, len));
-                for (int i = 0; i < ints.Length; i++)
-                {
-                    ints[i] += sum;
-                }
-
-                for (int i = len; i < chunk.Span.Length; i++)
-                {
-                    chunk.Span[i].Value++;
-                }
-            }
-        }
-        
-        
-        /// <summary>
-        /// Alises the query inline
-        /// </summary>
-        [Benchmark]
-        public void Alis_SystemWithOneComponent_QueryInline_With_Padding_10()
-        {
-            for (int i = 0; i < EntityCount; i++)
-            {
-                World.Create(default(Component1));
-                for (int j = 0; j < 10; j++)
-                {
-                    World.Create();
-                }
-            }
-            
-            Query.Inline<IncrementAlis, Component1>(default(IncrementAlis));
-        }
-
-
-        /// <summary>
-        /// Alises the query delegate
-        /// </summary>
-        [Benchmark]
-        public void Alis_SystemWithOneComponent_QueryDelegate_With_Padding_10()
-        {
-            for (int i = 0; i < EntityCount; i++)
-            {
-                World.Create(default(Component1));
-                for (int j = 0; j < 10; j++)
-                {
-                    World.Create();
-                }
-            }
-            
-            Query.Delegate((ref Component1 c) => c.Value++);
-        }
-
-
-        /// <summary>
-        /// Alises the simd
-        /// </summary>
-        [Benchmark]
-        public void Alis_SystemWithOneComponent_Simd_With_Padding_10()
-        {
-            for (int i = 0; i < EntityCount; i++)
-            {
-                World.Create(default(Component1));
-                for (int j = 0; j < 10; j++)
-                {
-                    World.Create();
-                }
-            }
-            
-            Vector256<int> sum = Vector256.Create(1);
-            foreach (ChunkTuple<Component1> chunk in Query.EnumerateChunks<Component1>())
+            foreach (ChunkTuple<Component1> chunk in QueryFrent.EnumerateChunks<Component1>())
             {
                 int len = chunk.Span.Length - (chunk.Span.Length & 7);
                 Span<Vector256<int>> ints = MemoryMarshal.Cast<Component1, Vector256<int>>(chunk.Span.Slice(0, len));
@@ -830,6 +715,67 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
 
-     
+        
+        [Benchmark]
+        public void Frent_SystemWithOneComponent_QueryInline_With_Padding_10()
+        {
+            for (int i = 0; i < EntityCount; i++)
+            {
+                WorldFrent.Create(default(Component1));
+                for (int j = 0; j < 10; j++)
+                {
+                    WorldFrent.Create();
+                }
+            }
+            
+            QueryFrent.Inline<IncrementFrent, Component1>(default(IncrementFrent));
+        }
+
+        
+        [Benchmark]
+        public void Frent_SystemWithOneComponent_QueryDelegate_With_Padding_10()
+        {
+            for (int i = 0; i < EntityCount; i++)
+            {
+                WorldFrent.Create(default(Component1));
+                for (int j = 0; j < 10; j++)
+                {
+                    WorldFrent.Create();
+                }
+            }
+            
+            QueryFrent.Delegate((ref Component1 c) => c.Value++);
+        }
+        
+        [Benchmark]
+        public void Frent_SystemWithOneComponent_Simd_With_Padding_10()
+        {
+            for (int i = 0; i < EntityCount; i++)
+            {
+                WorldFrent.Create(default(Component1));
+                for (int j = 0; j < 10; j++)
+                {
+                    WorldFrent.Create();
+                }
+            }
+            
+            Vector256<int> sum = Vector256.Create(1);
+            foreach (ChunkTuple<Component1> chunk in QueryFrent.EnumerateChunks<Component1>())
+            {
+                int len = chunk.Span.Length - (chunk.Span.Length & 7);
+                Span<Vector256<int>> ints = MemoryMarshal.Cast<Component1, Vector256<int>>(chunk.Span.Slice(0, len));
+                for (int i = 0; i < ints.Length; i++)
+                {
+                    ints[i] += sum;
+                }
+
+                for (int i = len; i < chunk.Span.Length; i++)
+                {
+                    chunk.Span[i].Value++;
+                }
+            }
+        }
+
+        
     }
 }
