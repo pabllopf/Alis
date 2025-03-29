@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace Alis.Core.Aspect.Math.Shape.Square
@@ -35,6 +36,7 @@ namespace Alis.Core.Aspect.Math.Shape.Square
     ///     The sdl f rect
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    [SkipLocalsInit]
     public struct SquareF : IShape
     {
         /// <summary>

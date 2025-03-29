@@ -37,7 +37,7 @@ namespace Alis.Core.Aspect.Math.Matrix
     /// <summary>
     ///     The matrix 3x class
     /// </summary>
-    [StructLayout( LayoutKind.Auto )]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct Matrix3X2
     {
         /// <summary>

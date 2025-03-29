@@ -40,7 +40,7 @@ namespace Alis.Core.Ecs.Collections
     /// <summary>
     ///     The fast lookup
     /// </summary>
-    [StructLayout( LayoutKind.Auto )]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal struct FastLookup()
     {
         /// <summary>

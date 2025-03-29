@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Core.Memory;
 
@@ -36,7 +37,8 @@ namespace Alis.Core.Ecs.Buffers
     /// <summary>
     ///     The chunk
     /// </summary>
-    [StructLayout( LayoutKind.Auto )]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    [SkipLocalsInit]
     internal struct Chunk<TData>
     {
         /// <summary>

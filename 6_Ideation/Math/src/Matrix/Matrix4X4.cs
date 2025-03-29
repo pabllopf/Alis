@@ -39,7 +39,7 @@ namespace Alis.Core.Aspect.Math.Matrix
     /// <summary>
     ///     The matrix
     /// </summary>
-    [StructLayout( LayoutKind.Auto )]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct Matrix4X4 : IEquatable<Matrix4X4>
     {
         /// <summary>

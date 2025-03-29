@@ -35,7 +35,7 @@ namespace Alis.Core.Aspect.Math.Util
     /// <summary>
     ///     The quaternion
     /// </summary>
-    [StructLayout( LayoutKind.Auto )]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct Quaternion
     {
         /// <summary>
