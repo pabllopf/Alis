@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Core.Archetype;
 
@@ -35,7 +36,8 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     The entity location
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    [SkipLocalsInit]
     internal struct EntityLocation
     {
         //128 bits

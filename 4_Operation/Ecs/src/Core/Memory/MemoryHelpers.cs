@@ -269,24 +269,28 @@ namespace Alis.Core.Ecs.Core.Memory
         ///     The block
         /// </summary>
         [StructLayout(LayoutKind.Sequential, Size = 2)]
+        [SkipLocalsInit]
         internal struct Block2;
 
         /// <summary>
         ///     The block
         /// </summary>
         [StructLayout(LayoutKind.Sequential, Size = 4)]
+        [SkipLocalsInit]
         internal struct Block4;
 
         /// <summary>
         ///     The block
         /// </summary>
         [StructLayout(LayoutKind.Sequential, Size = 8)]
+        [SkipLocalsInit]
         internal struct Block8;
 
         /// <summary>
         ///     The block 16
         /// </summary>
         [StructLayout(LayoutKind.Sequential, Size = 16)]
+        [SkipLocalsInit]
         internal struct Block16;
     }
 

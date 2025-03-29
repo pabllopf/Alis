@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace Alis.Core.Ecs.Core
@@ -34,7 +35,8 @@ namespace Alis.Core.Ecs.Core
     /// <summary>
     ///     The entity id only
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    [SkipLocalsInit]
     internal struct EntityIdOnly(int id, ushort version)
     {
         /// <summary>

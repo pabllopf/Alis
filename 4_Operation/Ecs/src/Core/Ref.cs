@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Core.Memory;
 using Alis.Core.Ecs.Updating;
@@ -39,6 +40,7 @@ namespace Alis.Core.Ecs.Core
     /// </summary>
     /// <typeparam name="T">The type this <see cref="Ref{T}" /> wraps over</typeparam>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    [SkipLocalsInit]
     public ref struct Ref<T>
     {
 #if NET7_0_OR_GREATER

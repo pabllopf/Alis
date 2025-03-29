@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Core.Archetype;
 
@@ -96,6 +97,7 @@ namespace Alis.Core.Ecs.Systems
         ///     The query enumerable
         /// </summary>
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
+        [SkipLocalsInit]
         public struct QueryEnumerable(Query query)
         {
             /// <summary>
@@ -107,6 +109,7 @@ namespace Alis.Core.Ecs.Systems
     }
     
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    [SkipLocalsInit]
     public ref struct ChunkQueryEnumerator<T1, T2>
     {
         private World _world;

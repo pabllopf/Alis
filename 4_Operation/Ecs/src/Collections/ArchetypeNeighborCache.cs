@@ -37,6 +37,7 @@ namespace Alis.Core.Ecs.Collections
     ///     The archetype neighbor cache
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    [SkipLocalsInit]
     internal struct ArchetypeNeighborCache
     {
         //128 bits
