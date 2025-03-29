@@ -34,7 +34,7 @@ namespace Alis.Extension.Graphic.Sdl2.Structs
     /// <summary>
     ///     The sdl dollar gesture event
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct DollarGestureEvent
     {
         /// <summary>

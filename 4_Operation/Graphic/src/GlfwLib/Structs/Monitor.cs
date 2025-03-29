@@ -37,7 +37,7 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
     ///     Wrapper around a pointer to monitor.
     /// </summary>
     /// <seealso cref="Monitor" />
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct Monitor : IEquatable<Monitor>
     {
         /// <summary>

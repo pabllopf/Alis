@@ -37,7 +37,7 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
     /// <summary>
     ///     Used internally for marshalling
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal struct GammaRampInternal
     {
         /// <summary>

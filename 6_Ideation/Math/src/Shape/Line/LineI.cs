@@ -34,7 +34,7 @@ namespace Alis.Core.Aspect.Math.Shape.Line
     /// <summary>
     ///     The line
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct LineI : IShape
     {
         /// <summary>

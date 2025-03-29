@@ -35,7 +35,7 @@ namespace Alis.Core.Aspect.Math.Shape.Rectangle
     /// <summary>
     ///     The sdl f rect
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct RectangleF : IShape
     {
         /// <summary>

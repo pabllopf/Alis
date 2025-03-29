@@ -34,7 +34,7 @@ namespace Alis.Extension.Graphic.Sdl2.Structs
     /// <summary>
     ///     The sdl audio device event
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct AudioDeviceEvent
     {
         /// <summary>

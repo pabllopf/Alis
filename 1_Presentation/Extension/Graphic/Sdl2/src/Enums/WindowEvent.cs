@@ -34,7 +34,7 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// <summary>
     ///     The sdl window event
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct WindowEvent
     {
         /// <summary>

@@ -35,7 +35,7 @@ namespace Alis.Benchmark.CustomCollections.Arrays
     /// <summary>
     /// The fast array safe
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct FastArraySafe<T> : IDisposable
     {
         /// <summary>

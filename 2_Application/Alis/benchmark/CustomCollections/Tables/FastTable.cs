@@ -37,7 +37,7 @@ namespace Alis.Benchmark.CustomCollections.Tables
     /// <summary>
     /// The fast table
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct FastTable<T>
     {
         /// <summary>

@@ -34,7 +34,7 @@ namespace Alis.Core.Aspect.Math.Shape.Circle
     /// <summary>
     ///     The circle
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct CircleF : IShape
     {
         /// <summary>

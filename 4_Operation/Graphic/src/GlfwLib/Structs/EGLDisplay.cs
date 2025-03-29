@@ -35,7 +35,7 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
     /// <summary>
     ///     Wrapper around a EGL display pointer.
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct EGLDisplay : IEquatable<EGLDisplay>
     {
         /// <summary>

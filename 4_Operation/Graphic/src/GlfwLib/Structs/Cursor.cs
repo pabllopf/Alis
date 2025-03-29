@@ -36,7 +36,7 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
     ///     Wrapper around a handle for a window cursor object.
     /// </summary>
     /// <seealso cref="Cursor" />
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct Cursor : IEquatable<Cursor>
     {
         /// <summary>
