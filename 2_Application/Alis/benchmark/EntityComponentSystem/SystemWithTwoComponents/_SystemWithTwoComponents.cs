@@ -43,7 +43,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
         /// <summary>
         ///     Gets or sets the value of the entity count
         /// </summary>
-        [Params(100000)]
+        [Params(1_000)]
         public int EntityCount { get; set; }
 
         /// <summary>
