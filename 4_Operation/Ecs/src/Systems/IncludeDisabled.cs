@@ -5,7 +5,7 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     Specifies a query should include all entities
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct IncludeDisabled : IRuleProvider
     {
         /// <summary>

@@ -36,7 +36,7 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     The entity enumerator
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct EntityEnumerator
     {
         /// <summary>
@@ -80,7 +80,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The entity enumerable
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public ref struct EntityEnumerable
         {
             /// <summary>

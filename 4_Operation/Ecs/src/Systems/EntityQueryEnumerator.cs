@@ -37,7 +37,7 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     The entity query enumerator
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct EntityQueryEnumerator<T>
     {
         /// <summary>
@@ -133,7 +133,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The query enumerable
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public struct QueryEnumerable(Query query)
         {
             /// <summary>
@@ -147,7 +147,7 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     The entity query enumerator
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct EntityQueryEnumerator
     {
         /// <summary>
@@ -227,7 +227,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The query enumerable
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public struct QueryEnumerable(Query query)
         {
             /// <summary>

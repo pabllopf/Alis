@@ -36,7 +36,7 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     The chunk query enumerator
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T>
     {
         //ptr, ptr, int, int is better alignment
@@ -95,7 +95,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The query enumerable
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public struct QueryEnumerable(Query query)
         {
             /// <summary>
@@ -106,7 +106,7 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2>
     {
         private World _world;
@@ -150,7 +150,7 @@ namespace Alis.Core.Ecs.Systems
     }
 
 
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3>
     {
         private World _world;
@@ -193,7 +193,7 @@ namespace Alis.Core.Ecs.Systems
     }
     
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4>
     {
         private World _world;
@@ -236,7 +236,7 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4, T5>
     {
         private World _world;
@@ -280,7 +280,7 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6>
     {
         private World _world;
@@ -325,7 +325,7 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7>
     {
         private World _world;
@@ -371,7 +371,7 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8>
     {
         private World _world;
@@ -418,7 +418,7 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9>
     {
         private World _world;
@@ -466,7 +466,7 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>
     {
         private World _world;
@@ -515,7 +515,7 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>
     {
         private World _world;
@@ -565,7 +565,7 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>
     {
         private World _world;
@@ -616,7 +616,7 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>
     {
         private World _world;
@@ -668,7 +668,7 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>
     {
         private World _world;
@@ -721,7 +721,7 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>
     {
         private World _world;
@@ -775,7 +775,7 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>
     {
         private World _world;

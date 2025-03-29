@@ -40,7 +40,7 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     Encapsulates a check for an entity, used to filter queries
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     [SkipLocalsInit]
     public struct Rule : IEquatable<Rule>
     {
