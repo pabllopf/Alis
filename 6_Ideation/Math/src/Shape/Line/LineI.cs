@@ -36,7 +36,7 @@ namespace Alis.Core.Aspect.Math.Shape.Line
     ///     The line
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    [SkipLocalsInit]
+    
     public struct LineI : IShape
     {
         /// <summary>

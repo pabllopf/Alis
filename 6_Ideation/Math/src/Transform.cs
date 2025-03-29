@@ -39,7 +39,7 @@ namespace Alis.Core.Aspect.Math
     ///     frames.
     /// </summary>
     [Serializable]
-    [SkipLocalsInit]
+    
     public struct Transform : ISerializable
     {
         /// <summary>
