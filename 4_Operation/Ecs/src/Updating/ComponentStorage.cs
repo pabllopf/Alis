@@ -35,9 +35,8 @@ using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Core;
 using Alis.Core.Ecs.Core.Events;
 using Alis.Core.Ecs.Core.Memory;
-using Alis.Core.Ecs.Redefinition;
-using MemoryMarshal = Alis.Core.Ecs.Redefinition.MemoryMarshal;
-using RuntimeHelpers = Alis.Core.Ecs.Redefinition.RuntimeHelpers;
+
+
 
 
 namespace Alis.Core.Ecs.Updating

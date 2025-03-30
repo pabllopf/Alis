@@ -32,7 +32,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using RuntimeHelpers = Alis.Core.Ecs.Redefinition.RuntimeHelpers;
 
 
 namespace Alis.Core.Ecs.Collections

@@ -37,8 +37,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Buffers;
 using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Redefinition;
-using RuntimeHelpers = Alis.Core.Ecs.Redefinition.RuntimeHelpers;
+
 
 
 namespace Alis.Core.Ecs.Core.Memory

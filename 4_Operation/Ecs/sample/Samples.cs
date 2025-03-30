@@ -28,12 +28,13 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components;
 using Alis.Core.Ecs.Core;
 using Alis.Core.Ecs.Sample.Components;
 using Alis.Core.Ecs.Systems;
 
-namespace Alis.Core.Ecs.Sample
+namespace Frent.Sample
 {
     /// <summary>
     ///     The samples class

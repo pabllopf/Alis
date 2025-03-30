@@ -32,7 +32,6 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Core;
 using Alis.Core.Ecs.Core.Archetype;
-using Alis.Core.Ecs.Redefinition;
 #if NET7_0_OR_GREATER
 using System.Runtime.Intrinsics;
 #endif

@@ -28,11 +28,10 @@
 //  --------------------------------------------------------------------------
 
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
-using System;
 using System.Linq;
 using System.Reflection;
 
-namespace Alis.Core.Ecs.Redefinition
+namespace System.Runtime.CompilerServices
 {
     public static class RuntimeHelpers
     {
