@@ -66,6 +66,13 @@ namespace Alis.Core.Ecs
 #endif
         }
         
+        /// <summary>
+        /// Queries the world
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <param name="world">The world</param>
+        /// <returns>The query</returns>
         public static Query Query<T1, T2>(this World world)
             where T1 : struct, IRuleProvider
             where T2 : struct, IRuleProvider
@@ -92,6 +99,14 @@ namespace Alis.Core.Ecs
 #endif
         }
 
+        /// <summary>
+        /// Queries the world
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <param name="world">The world</param>
+        /// <returns>The query</returns>
         public static Query Query<T1, T2, T3>(this World world)
             where T1 : struct, IRuleProvider
             where T2 : struct, IRuleProvider
@@ -118,6 +133,15 @@ namespace Alis.Core.Ecs
 #endif
         }
 
+        /// <summary>
+        /// Queries the world
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <param name="world">The world</param>
+        /// <returns>The query</returns>
         public static Query Query<T1, T2, T3, T4>(this World world)
             where T1 : struct, IRuleProvider
             where T2 : struct, IRuleProvider
@@ -147,6 +171,16 @@ namespace Alis.Core.Ecs
 #endif
         }
 
+        /// <summary>
+        /// Queries the world
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <param name="world">The world</param>
+        /// <returns>The query</returns>
         public static Query Query<T1, T2, T3, T4, T5>(this World world)
             where T1 : struct, IRuleProvider
             where T2 : struct, IRuleProvider
@@ -175,6 +209,17 @@ namespace Alis.Core.Ecs
 #endif
         }
 
+        /// <summary>
+        /// Queries the world
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <param name="world">The world</param>
+        /// <returns>The query</returns>
         public static Query Query<T1, T2, T3, T4, T5, T6>(this World world)
             where T1 : struct, IRuleProvider
             where T2 : struct, IRuleProvider

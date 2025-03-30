@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -37,8 +37,19 @@ using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs
 {
+    /// <summary>
+    /// The world class
+    /// </summary>
     public partial class World
     {
+        /// <summary>
+        /// Creates the comp 1
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <param name="comp1">The comp</param>
+        /// <param name="comp2">The comp</param>
+        /// <returns>The entity</returns>
         [SkipLocalsInit]
         public Entity Create<T1, T2>(in T1 comp1, in T2 comp2)
         {
@@ -216,6 +227,18 @@ namespace Alis.Core.Ecs
 
 
 
+        /// <summary>
+        /// Creates the comp 1
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <param name="comp1">The comp</param>
+        /// <param name="comp2">The comp</param>
+        /// <param name="comp3">The comp</param>
+        /// <param name="comp4">The comp</param>
+        /// <returns>The entity</returns>
         [SkipLocalsInit]
         public Entity Create<T1, T2, T3, T4>(in T1 comp1, in T2 comp2, in T3 comp3, in T4 comp4)
         {

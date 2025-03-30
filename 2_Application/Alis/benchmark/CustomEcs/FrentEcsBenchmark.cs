@@ -1,4 +1,4 @@
-﻿
+
 using System;
 using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics;
@@ -10,6 +10,9 @@ using Frent.Systems;
 
 namespace Alis.Benchmark.CustomEcs
 {
+    /// <summary>
+    /// The alis ecs benchmark class
+    /// </summary>
     public partial class AlisEcsBenchmark
     {
         /// <summary>
@@ -23,12 +26,18 @@ namespace Alis.Benchmark.CustomEcs
         public Frent.World WorldFrent { get; set; }
         
       
+        /// <summary>
+        /// Setup the frent
+        /// </summary>
         private void SetupFrent()
         {
             WorldFrent = new Frent.World();
             QueryFrent = WorldFrent.Query<With<Component1>>();
         }
         
+        /// <summary>
+        /// The increment frent
+        /// </summary>
         internal struct IncrementFrent : IAction<Component1>
         {
 
@@ -77,6 +86,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Frents the create with two component
+        /// </summary>
         [Benchmark]
         public void Frent_Create_With_Two_Component()
         {
@@ -106,6 +118,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Frents the create with three component
+        /// </summary>
         [Benchmark]
         public void Frent_Create_With_Three_Component()
         {
@@ -137,6 +152,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Frents the create with four component
+        /// </summary>
         [Benchmark]
         public void Frent_Create_With_Four_Component()
         {
@@ -149,6 +167,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Frents the create bulk with four component
+        /// </summary>
         [Benchmark]
         public void Frent_Create_Bulk_With_Four_Component()
         {
@@ -167,6 +188,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
 
+        /// <summary>
+        /// Frents the create with five component
+        /// </summary>
         [Benchmark]
         public void Frent_Create_With_Five_Component()
         {
@@ -179,6 +203,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Frents the create bulk with five component
+        /// </summary>
         [Benchmark]
         public void Frent_Create_Bulk_With_Five_Component()
         {
@@ -199,6 +226,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Frents the create with six component
+        /// </summary>
         [Benchmark]
         public void Frent_Create_With_Six_Component()
         {
@@ -211,6 +241,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Frents the create bulk with six component
+        /// </summary>
         [Benchmark]
         public void Frent_Create_Bulk_With_Six_Component()
         {
@@ -233,6 +266,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Frents the create with seven component
+        /// </summary>
         [Benchmark]
         public void Frent_Create_With_Seven_Component()
         {
@@ -245,6 +281,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Frents the create bulk with seven component
+        /// </summary>
         [Benchmark]
         public void Frent_Create_Bulk_With_Seven_Component()
         {
@@ -269,6 +308,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Creates the with eight component
+        /// </summary>
         [Benchmark]
         public void Create_With_Eight_Component()
         {
@@ -281,6 +323,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Frents the create bulk with eight component
+        /// </summary>
         [Benchmark]
         public void Frent_Create_Bulk_With_Eight_Component()
         {
@@ -307,6 +352,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Frents the create with nine component
+        /// </summary>
         [Benchmark]
         public void Frent_Create_With_Nine_Component()
         {
@@ -319,6 +367,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Frents the create bulk with nine component
+        /// </summary>
         [Benchmark]
         public void Frent_Create_Bulk_With_Nine_Component()
         {
@@ -347,6 +398,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Frents the create with ten component
+        /// </summary>
         [Benchmark]
         public void Frent_Create_With_Ten_Component()
         {
@@ -359,6 +413,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Frents the create bulk with ten component
+        /// </summary>
         [Benchmark]
         public void Frent_Create_Bulk_With_Ten_Component()
         {
@@ -389,6 +446,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Frents the create with eleven component
+        /// </summary>
         [Benchmark]
         public void Frent_Create_With_Eleven_Component()
         {
@@ -401,6 +461,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Frents the create bulk with eleven component
+        /// </summary>
         [Benchmark]
         public void Frent_Create_Bulk_With_Eleven_Component()
         {
@@ -432,6 +495,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Frents the create with twelve component
+        /// </summary>
         [Benchmark]
         public void Frent_Create_With_Twelve_Component()
         {
@@ -444,6 +510,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Frents the create bulk with twelve component
+        /// </summary>
         [Benchmark]
         public void Frent_Create_Bulk_With_Twelve_Component()
         {
@@ -477,6 +546,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Frents the create with thirteen component
+        /// </summary>
         [Benchmark]
         public void Frent_Create_With_Thirteen_Component()
         {
@@ -489,6 +561,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Frents the create bulk with thirteen component
+        /// </summary>
         [Benchmark]
         public void Frent_Create_Bulk_With_Thirteen_Component()
         {
@@ -523,6 +598,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Frents the create with fourteen component
+        /// </summary>
         [Benchmark]
         public void Frent_Create_With_Fourteen_Component()
         {
@@ -535,6 +613,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Frents the create bulk with fourteen component
+        /// </summary>
         [Benchmark]
         public void Frent_Create_Bulk_With_Fourteen_Component()
         {
@@ -570,6 +651,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Frents the create with fifteen component
+        /// </summary>
         [Benchmark]
         public void Frent_Create_With_Fifteen_Component()
         {
@@ -583,6 +667,9 @@ namespace Alis.Benchmark.CustomEcs
         }
         
         
+        /// <summary>
+        /// Frents the create bulk with fifteen component
+        /// </summary>
         [Benchmark]
         public void Frent_Create_Bulk_With_Fifteen_Component()
         {
@@ -618,6 +705,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Frents the create with sixteen component
+        /// </summary>
         [Benchmark]
         public void Frent_Create_With_Sixteen_Component()
         {
@@ -630,6 +720,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Frents the create bulk with sixteen component
+        /// </summary>
         [Benchmark]
         public void Frent_Create_Bulk_With_Sixteen_Component()
         {
@@ -667,6 +760,9 @@ namespace Alis.Benchmark.CustomEcs
         }
         
 
+        /// <summary>
+        /// Frents the system with one component query inline with padding 0
+        /// </summary>
         [Benchmark]
         public void Frent_SystemWithOneComponent_QueryInline_With_Padding_0()
         {
@@ -679,6 +775,9 @@ namespace Alis.Benchmark.CustomEcs
         }
 
 
+        /// <summary>
+        /// Frents the system with one component query delegate with padding 0
+        /// </summary>
         [Benchmark]
         public void Frent_SystemWithOneComponent_QueryDelegate_With_Padding_0()
         {
@@ -690,6 +789,9 @@ namespace Alis.Benchmark.CustomEcs
             QueryFrent.Delegate((ref Component1 c) => c.Value++);
         }
         
+        /// <summary>
+        /// Frents the system with one component simd with padding 0
+        /// </summary>
         [Benchmark]
         public void Frent_SystemWithOneComponent_Simd_With_Padding_0()
         {
@@ -716,6 +818,9 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         
+        /// <summary>
+        /// Frents the system with one component query inline with padding 10
+        /// </summary>
         [Benchmark]
         public void Frent_SystemWithOneComponent_QueryInline_With_Padding_10()
         {
@@ -732,6 +837,9 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         
+        /// <summary>
+        /// Frents the system with one component query delegate with padding 10
+        /// </summary>
         [Benchmark]
         public void Frent_SystemWithOneComponent_QueryDelegate_With_Padding_10()
         {
@@ -747,6 +855,9 @@ namespace Alis.Benchmark.CustomEcs
             QueryFrent.Delegate((ref Component1 c) => c.Value++);
         }
         
+        /// <summary>
+        /// Frents the system with one component simd with padding 10
+        /// </summary>
         [Benchmark]
         public void Frent_SystemWithOneComponent_Simd_With_Padding_10()
         {

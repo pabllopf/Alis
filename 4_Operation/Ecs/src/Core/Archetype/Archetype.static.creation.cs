@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -35,15 +35,29 @@ using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs.Core.Archetype
 {
+      /// <summary>
+      /// The archetype class
+      /// </summary>
       internal static class Archetype<T1, T2>
   {
+      /// <summary>
+      /// The id
+      /// </summary>
       public static readonly FastImmutableArray<ComponentID> ArchetypeComponentIDs = new FastImmutableArray<ComponentID>(new[]
       {
           Component<T1>.ID,
           Component<T2>.ID
       });
+    /// <summary>
+    /// The empty
+    /// </summary>
     public static readonly EntityType ID = Archetype.GetArchetypeID(Archetype<T1, T2>.ArchetypeComponentIDs.AsSpan(), new ReadOnlySpan<TagId>(), new FastImmutableArray<ComponentID>?(Archetype<T1, T2>.ArchetypeComponentIDs), new FastImmutableArray<TagId>?(FastImmutableArray<TagId>.Empty));
 
+    /// <summary>
+    /// Creates the new or get existing archetype using the specified world
+    /// </summary>
+    /// <param name="world">The world</param>
+    /// <returns>The local</returns>
     internal static Archetype CreateNewOrGetExistingArchetype(World world)
     {
       ushort rawIndex = Archetype<T1, T2>.ID.RawIndex;
@@ -70,14 +84,26 @@ namespace Alis.Core.Ecs.Core.Archetype
       }
     }
 
+    /// <summary>
+    /// The of component class
+    /// </summary>
     internal static class OfComponent<C>
     {
+      /// <summary>
+      /// The id
+      /// </summary>
       public static readonly int Index = GlobalWorldTables.ComponentIndex(Archetype<T1, T2>.ID, Component<C>.ID);
     }
   }
     
+    /// <summary>
+    /// The archetype class
+    /// </summary>
     internal static class Archetype<T1, T2, T3>
   {
+   /// <summary>
+   /// The id
+   /// </summary>
    public static readonly FastImmutableArray<ComponentID> ArchetypeComponentIDs = new FastImmutableArray<ComponentID>(new[]
    {
        Component<T1>.ID,
@@ -85,8 +111,16 @@ namespace Alis.Core.Ecs.Core.Archetype
        Component<T3>.ID
    });
     
+    /// <summary>
+    /// The empty
+    /// </summary>
     public static readonly EntityType ID = Archetype.GetArchetypeID(Archetype<T1, T2, T3>.ArchetypeComponentIDs.AsSpan(), new ReadOnlySpan<TagId>(), new FastImmutableArray<ComponentID>?(Archetype<T1, T2, T3>.ArchetypeComponentIDs), new FastImmutableArray<TagId>?(FastImmutableArray<TagId>.Empty));
 
+    /// <summary>
+    /// Creates the new or get existing archetype using the specified world
+    /// </summary>
+    /// <param name="world">The world</param>
+    /// <returns>The local</returns>
     internal static Archetype CreateNewOrGetExistingArchetype(World world)
     {
       ushort rawIndex = Archetype<T1, T2, T3>.ID.RawIndex;
@@ -119,14 +153,26 @@ namespace Alis.Core.Ecs.Core.Archetype
       }
     }
 
+    /// <summary>
+    /// The of component class
+    /// </summary>
     internal static class OfComponent<TC>
     {
+      /// <summary>
+      /// The id
+      /// </summary>
       public static readonly int Index = GlobalWorldTables.ComponentIndex(Archetype<T1, T2, T3>.ID, Component<TC>.ID);
     }
   }
     
+    /// <summary>
+    /// The archetype class
+    /// </summary>
     internal static class Archetype<T1, T2, T3, T4>
   {
+    /// <summary>
+    /// The id
+    /// </summary>
     public static readonly FastImmutableArray<ComponentID> ArchetypeComponentIDs = new FastImmutableArray<ComponentID>(new[]
     {
       Component<T1>.ID,
@@ -135,8 +181,16 @@ namespace Alis.Core.Ecs.Core.Archetype
       Component<T4>.ID
     });
     
+    /// <summary>
+    /// The empty
+    /// </summary>
     public static readonly EntityType ID = Archetype.GetArchetypeID(Archetype<T1, T2, T3, T4>.ArchetypeComponentIDs.AsSpan(), new ReadOnlySpan<TagId>(), new FastImmutableArray<ComponentID>?(Archetype<T1, T2, T3, T4>.ArchetypeComponentIDs), new FastImmutableArray<TagId>?(FastImmutableArray<TagId>.Empty));
 
+    /// <summary>
+    /// Creates the new or get existing archetype using the specified world
+    /// </summary>
+    /// <param name="world">The world</param>
+    /// <returns>The local</returns>
     internal static Archetype CreateNewOrGetExistingArchetype(World world)
     {
       ushort rawIndex = Archetype<T1, T2, T3, T4>.ID.RawIndex;
@@ -169,14 +223,26 @@ namespace Alis.Core.Ecs.Core.Archetype
       }
     }
 
+    /// <summary>
+    /// The of component class
+    /// </summary>
     internal static class OfComponent<C>
     {
+      /// <summary>
+      /// The id
+      /// </summary>
       public static readonly int Index = GlobalWorldTables.ComponentIndex(Archetype<T1, T2, T3, T4>.ID, Component<C>.ID);
     }
   }
     
+      /// <summary>
+      /// The archetype class
+      /// </summary>
       internal static class Archetype<T1, T2, T3, T4, T5>
   {
+    /// <summary>
+    /// The id
+    /// </summary>
     public static readonly FastImmutableArray<ComponentID> ArchetypeComponentIDs = new FastImmutableArray<ComponentID>(new[]
     {
       Component<T1>.ID,
@@ -185,8 +251,16 @@ namespace Alis.Core.Ecs.Core.Archetype
       Component<T4>.ID,
       Component<T5>.ID
     });
+    /// <summary>
+    /// The empty
+    /// </summary>
     public static readonly EntityType ID = Archetype.GetArchetypeID(Archetype<T1, T2, T3, T4, T5>.ArchetypeComponentIDs.AsSpan(), new ReadOnlySpan<TagId>(), new FastImmutableArray<ComponentID>?(Archetype<T1, T2, T3, T4, T5>.ArchetypeComponentIDs), new FastImmutableArray<TagId>?(FastImmutableArray<TagId>.Empty));
 
+    /// <summary>
+    /// Creates the new or get existing archetype using the specified world
+    /// </summary>
+    /// <param name="world">The world</param>
+    /// <returns>The local</returns>
     internal static Archetype CreateNewOrGetExistingArchetype(World world)
     {
       ushort rawIndex = Archetype<T1, T2, T3, T4, T5>.ID.RawIndex;
@@ -222,14 +296,26 @@ namespace Alis.Core.Ecs.Core.Archetype
       }
     }
 
+    /// <summary>
+    /// The of component class
+    /// </summary>
     internal static class OfComponent<C>
     {
+      /// <summary>
+      /// The id
+      /// </summary>
       public static readonly int Index = GlobalWorldTables.ComponentIndex(Archetype<T1, T2, T3, T4, T5>.ID, Component<C>.ID);
     }
   }
       
+        /// <summary>
+        /// The archetype class
+        /// </summary>
         internal static class Archetype<T1, T2, T3, T4, T5, T6>
   {
+    /// <summary>
+    /// The id
+    /// </summary>
     public static readonly FastImmutableArray<ComponentID> ArchetypeComponentIDs = new FastImmutableArray<ComponentID>(new[]
     {
       Component<T1>.ID,
@@ -239,8 +325,16 @@ namespace Alis.Core.Ecs.Core.Archetype
       Component<T5>.ID,
       Component<T6>.ID
     });
+    /// <summary>
+    /// The empty
+    /// </summary>
     public static readonly EntityType ID = Archetype.GetArchetypeID(Archetype<T1, T2, T3, T4, T5, T6>.ArchetypeComponentIDs.AsSpan(), new ReadOnlySpan<TagId>(), new FastImmutableArray<ComponentID>?(Archetype<T1, T2, T3, T4, T5, T6>.ArchetypeComponentIDs), new FastImmutableArray<TagId>?(FastImmutableArray<TagId>.Empty));
 
+    /// <summary>
+    /// Creates the new or get existing archetype using the specified world
+    /// </summary>
+    /// <param name="world">The world</param>
+    /// <returns>The local</returns>
     internal static Archetype CreateNewOrGetExistingArchetype(World world)
     {
       ushort rawIndex = Archetype<T1, T2, T3, T4, T5, T6>.ID.RawIndex;
@@ -279,14 +373,26 @@ namespace Alis.Core.Ecs.Core.Archetype
       }
     }
 
+    /// <summary>
+    /// The of component class
+    /// </summary>
     internal static class OfComponent<C>
     {
+      /// <summary>
+      /// The id
+      /// </summary>
       public static readonly int Index = GlobalWorldTables.ComponentIndex(Archetype<T1, T2, T3, T4, T5, T6>.ID, Component<C>.ID);
     }
   }
         
+          /// <summary>
+          /// The archetype class
+          /// </summary>
           internal static class Archetype<T1, T2, T3, T4, T5, T6, T7>
   {
+    /// <summary>
+    /// The id
+    /// </summary>
     public static readonly FastImmutableArray<ComponentID> ArchetypeComponentIDs = new FastImmutableArray<ComponentID>(new[]
     {
       Component<T1>.ID,
@@ -297,8 +403,16 @@ namespace Alis.Core.Ecs.Core.Archetype
       Component<T6>.ID,
       Component<T7>.ID
     });
+    /// <summary>
+    /// The empty
+    /// </summary>
     public static readonly EntityType ID = Archetype.GetArchetypeID(Archetype<T1, T2, T3, T4, T5, T6, T7>.ArchetypeComponentIDs.AsSpan(), new ReadOnlySpan<TagId>(), new FastImmutableArray<ComponentID>?(Archetype<T1, T2, T3, T4, T5, T6, T7>.ArchetypeComponentIDs), new FastImmutableArray<TagId>?(FastImmutableArray<TagId>.Empty));
 
+    /// <summary>
+    /// Creates the new or get existing archetype using the specified world
+    /// </summary>
+    /// <param name="world">The world</param>
+    /// <returns>The local</returns>
     internal static Archetype CreateNewOrGetExistingArchetype(World world)
     {
       ushort rawIndex = Archetype<T1, T2, T3, T4, T5, T6, T7>.ID.RawIndex;
@@ -340,14 +454,26 @@ namespace Alis.Core.Ecs.Core.Archetype
       }
     }
 
+    /// <summary>
+    /// The of component class
+    /// </summary>
     internal static class OfComponent<C>
     {
+      /// <summary>
+      /// The id
+      /// </summary>
       public static readonly int Index = GlobalWorldTables.ComponentIndex(Archetype<T1, T2, T3, T4, T5, T6, T7>.ID, Component<C>.ID);
     }
   }
           
+            /// <summary>
+            /// The archetype class
+            /// </summary>
             internal static class Archetype<T1, T2, T3, T4, T5, T6, T7, T8>
   {
+    /// <summary>
+    /// The id
+    /// </summary>
     public static readonly FastImmutableArray<ComponentID> ArchetypeComponentIDs = new FastImmutableArray<ComponentID>(new[]
     {
       Component<T1>.ID,
@@ -359,8 +485,16 @@ namespace Alis.Core.Ecs.Core.Archetype
       Component<T7>.ID,
       Component<T8>.ID
     });
+    /// <summary>
+    /// The empty
+    /// </summary>
     public static readonly EntityType ID = Archetype.GetArchetypeID(Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.ArchetypeComponentIDs.AsSpan(), new ReadOnlySpan<TagId>(), new FastImmutableArray<ComponentID>?(Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.ArchetypeComponentIDs), new FastImmutableArray<TagId>?(FastImmutableArray<TagId>.Empty));
 
+    /// <summary>
+    /// Creates the new or get existing archetype using the specified world
+    /// </summary>
+    /// <param name="world">The world</param>
+    /// <returns>The local</returns>
     internal static Archetype CreateNewOrGetExistingArchetype(World world)
     {
       ushort rawIndex = Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.ID.RawIndex;
@@ -405,14 +539,26 @@ namespace Alis.Core.Ecs.Core.Archetype
       }
     }
 
+    /// <summary>
+    /// The of component class
+    /// </summary>
     internal static class OfComponent<C>
     {
+      /// <summary>
+      /// The id
+      /// </summary>
       public static readonly int Index = GlobalWorldTables.ComponentIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.ID, Component<C>.ID);
     }
   }
             
+              /// <summary>
+              /// The archetype class
+              /// </summary>
               internal static class Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>
   {
+    /// <summary>
+    /// The id
+    /// </summary>
     public static readonly FastImmutableArray<ComponentID> ArchetypeComponentIDs = new FastImmutableArray<ComponentID>(new[]
     {
       Component<T1>.ID,
@@ -425,8 +571,16 @@ namespace Alis.Core.Ecs.Core.Archetype
       Component<T8>.ID,
       Component<T9>.ID
     });
+    /// <summary>
+    /// The empty
+    /// </summary>
     public static readonly EntityType ID = Archetype.GetArchetypeID(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>.ArchetypeComponentIDs.AsSpan(), new ReadOnlySpan<TagId>(), new FastImmutableArray<ComponentID>?(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>.ArchetypeComponentIDs), new FastImmutableArray<TagId>?(FastImmutableArray<TagId>.Empty));
 
+    /// <summary>
+    /// Creates the new or get existing archetype using the specified world
+    /// </summary>
+    /// <param name="world">The world</param>
+    /// <returns>The local</returns>
     internal static Archetype CreateNewOrGetExistingArchetype(World world)
     {
       ushort rawIndex = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>.ID.RawIndex;
@@ -474,14 +628,26 @@ namespace Alis.Core.Ecs.Core.Archetype
       }
     }
 
+    /// <summary>
+    /// The of component class
+    /// </summary>
     internal static class OfComponent<C>
     {
+      /// <summary>
+      /// The id
+      /// </summary>
       public static readonly int Index = GlobalWorldTables.ComponentIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>.ID, Component<C>.ID);
     }
   }
               
+               /// <summary>
+               /// The archetype class
+               /// </summary>
                internal static class Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>
   {
+    /// <summary>
+    /// The id
+    /// </summary>
     public static readonly FastImmutableArray<ComponentID> ArchetypeComponentIDs = new FastImmutableArray<ComponentID>(new[]
     {
       Component<T1>.ID,
@@ -495,8 +661,16 @@ namespace Alis.Core.Ecs.Core.Archetype
       Component<T9>.ID,
       Component<T10>.ID
     });
+    /// <summary>
+    /// The empty
+    /// </summary>
     public static readonly EntityType ID = Archetype.GetArchetypeID(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.ArchetypeComponentIDs.AsSpan(), new ReadOnlySpan<TagId>(), new FastImmutableArray<ComponentID>?(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.ArchetypeComponentIDs), new FastImmutableArray<TagId>?(FastImmutableArray<TagId>.Empty));
 
+    /// <summary>
+    /// Creates the new or get existing archetype using the specified world
+    /// </summary>
+    /// <param name="world">The world</param>
+    /// <returns>The local</returns>
     internal static Archetype CreateNewOrGetExistingArchetype(World world)
     {
       ushort rawIndex = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.ID.RawIndex;
@@ -547,14 +721,26 @@ namespace Alis.Core.Ecs.Core.Archetype
       }
     }
 
+    /// <summary>
+    /// The of component class
+    /// </summary>
     internal static class OfComponent<C>
     {
+      /// <summary>
+      /// The id
+      /// </summary>
       public static readonly int Index = GlobalWorldTables.ComponentIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.ID, Component<C>.ID);
     }
   }
                
+                 /// <summary>
+                 /// The archetype class
+                 /// </summary>
                  internal static class Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>
   {
+    /// <summary>
+    /// The id
+    /// </summary>
     public static readonly FastImmutableArray<ComponentID> ArchetypeComponentIDs = new FastImmutableArray<ComponentID>(new[]
     {
       Component<T1>.ID,
@@ -569,8 +755,16 @@ namespace Alis.Core.Ecs.Core.Archetype
       Component<T10>.ID,
       Component<T11>.ID
     });
+    /// <summary>
+    /// The empty
+    /// </summary>
     public static readonly EntityType ID = Archetype.GetArchetypeID(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.ArchetypeComponentIDs.AsSpan(), new ReadOnlySpan<TagId>(), new FastImmutableArray<ComponentID>?(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.ArchetypeComponentIDs), new FastImmutableArray<TagId>?(FastImmutableArray<TagId>.Empty));
 
+    /// <summary>
+    /// Creates the new or get existing archetype using the specified world
+    /// </summary>
+    /// <param name="world">The world</param>
+    /// <returns>The local</returns>
     internal static Archetype CreateNewOrGetExistingArchetype(World world)
     {
       ushort rawIndex = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.ID.RawIndex;
@@ -624,14 +818,26 @@ namespace Alis.Core.Ecs.Core.Archetype
       }
     }
 
+    /// <summary>
+    /// The of component class
+    /// </summary>
     internal static class OfComponent<C>
     {
+      /// <summary>
+      /// The id
+      /// </summary>
       public static readonly int Index = GlobalWorldTables.ComponentIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.ID, Component<C>.ID);
     }
   }
                  
+                   /// <summary>
+                   /// The archetype class
+                   /// </summary>
                    internal static class Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>
   {
+    /// <summary>
+    /// The id
+    /// </summary>
     public static readonly FastImmutableArray<ComponentID> ArchetypeComponentIDs = new FastImmutableArray<ComponentID>(new[]
     {
       Component<T1>.ID,
@@ -647,8 +853,16 @@ namespace Alis.Core.Ecs.Core.Archetype
       Component<T11>.ID,
       Component<T12>.ID
     });
+    /// <summary>
+    /// The empty
+    /// </summary>
     public static readonly EntityType ID = Archetype.GetArchetypeID(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.ArchetypeComponentIDs.AsSpan(), new ReadOnlySpan<TagId>(), new FastImmutableArray<ComponentID>?(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.ArchetypeComponentIDs), new FastImmutableArray<TagId>?(FastImmutableArray<TagId>.Empty));
 
+    /// <summary>
+    /// Creates the new or get existing archetype using the specified world
+    /// </summary>
+    /// <param name="world">The world</param>
+    /// <returns>The local</returns>
     internal static Archetype CreateNewOrGetExistingArchetype(World world)
     {
       ushort rawIndex = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.ID.RawIndex;
@@ -705,14 +919,26 @@ namespace Alis.Core.Ecs.Core.Archetype
       }
     }
 
+    /// <summary>
+    /// The of component class
+    /// </summary>
     internal static class OfComponent<C>
     {
+      /// <summary>
+      /// The id
+      /// </summary>
       public static readonly int Index = GlobalWorldTables.ComponentIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.ID, Component<C>.ID);
     }
   }
                    
+                    /// <summary>
+                    /// The archetype class
+                    /// </summary>
                     internal static class Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>
   {
+    /// <summary>
+    /// The id
+    /// </summary>
     public static readonly FastImmutableArray<ComponentID> ArchetypeComponentIDs = new FastImmutableArray<ComponentID>(new[]
     {
       Component<T1>.ID,
@@ -729,8 +955,16 @@ namespace Alis.Core.Ecs.Core.Archetype
       Component<T12>.ID,
       Component<T13>.ID
     });
+    /// <summary>
+    /// The empty
+    /// </summary>
     public static readonly EntityType ID = Archetype.GetArchetypeID(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.ArchetypeComponentIDs.AsSpan(), new ReadOnlySpan<TagId>(), new FastImmutableArray<ComponentID>?(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.ArchetypeComponentIDs), new FastImmutableArray<TagId>?(FastImmutableArray<TagId>.Empty));
 
+    /// <summary>
+    /// Creates the new or get existing archetype using the specified world
+    /// </summary>
+    /// <param name="world">The world</param>
+    /// <returns>The local</returns>
     internal static Archetype CreateNewOrGetExistingArchetype(World world)
     {
       ushort rawIndex = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.ID.RawIndex;
@@ -790,14 +1024,26 @@ namespace Alis.Core.Ecs.Core.Archetype
       }
     }
 
+    /// <summary>
+    /// The of component class
+    /// </summary>
     internal static class OfComponent<C>
     {
+      /// <summary>
+      /// The id
+      /// </summary>
       public static readonly int Index = GlobalWorldTables.ComponentIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.ID, Component<C>.ID);
     }
   }
                     
+                    /// <summary>
+                    /// The archetype class
+                    /// </summary>
                     internal static class Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>
   {
+    /// <summary>
+    /// The id
+    /// </summary>
     public static readonly FastImmutableArray<ComponentID> ArchetypeComponentIDs = new FastImmutableArray<ComponentID>(new[]
     {
       Component<T1>.ID,
@@ -815,8 +1061,16 @@ namespace Alis.Core.Ecs.Core.Archetype
       Component<T13>.ID,
       Component<T14>.ID
     });
+    /// <summary>
+    /// The empty
+    /// </summary>
     public static readonly EntityType ID = Archetype.GetArchetypeID(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.ArchetypeComponentIDs.AsSpan(), new ReadOnlySpan<TagId>(), new FastImmutableArray<ComponentID>?(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.ArchetypeComponentIDs), new FastImmutableArray<TagId>?(FastImmutableArray<TagId>.Empty));
 
+    /// <summary>
+    /// Creates the new or get existing archetype using the specified world
+    /// </summary>
+    /// <param name="world">The world</param>
+    /// <returns>The local</returns>
     internal static Archetype CreateNewOrGetExistingArchetype(World world)
     {
       ushort rawIndex = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.ID.RawIndex;
@@ -879,14 +1133,26 @@ namespace Alis.Core.Ecs.Core.Archetype
       }
     }
 
+    /// <summary>
+    /// The of component class
+    /// </summary>
     internal static class OfComponent<C>
     {
+      /// <summary>
+      /// The id
+      /// </summary>
       public static readonly int Index = GlobalWorldTables.ComponentIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.ID, Component<C>.ID);
     }
   }
                     
+                     /// <summary>
+                     /// The archetype class
+                     /// </summary>
                      internal static class Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>
   {
+    /// <summary>
+    /// The id
+    /// </summary>
     public static readonly FastImmutableArray<ComponentID> ArchetypeComponentIDs = new FastImmutableArray<ComponentID>(new[]
     {
       Component<T1>.ID,
@@ -905,8 +1171,16 @@ namespace Alis.Core.Ecs.Core.Archetype
       Component<T14>.ID,
       Component<T15>.ID
     });
+    /// <summary>
+    /// The empty
+    /// </summary>
     public static readonly EntityType ID = Archetype.GetArchetypeID(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.ArchetypeComponentIDs.AsSpan(), new ReadOnlySpan<TagId>(), new FastImmutableArray<ComponentID>?(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.ArchetypeComponentIDs), new FastImmutableArray<TagId>?(FastImmutableArray<TagId>.Empty));
 
+    /// <summary>
+    /// Creates the new or get existing archetype using the specified world
+    /// </summary>
+    /// <param name="world">The world</param>
+    /// <returns>The local</returns>
     internal static Archetype CreateNewOrGetExistingArchetype(World world)
     {
       ushort rawIndex = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.ID.RawIndex;
@@ -972,14 +1246,26 @@ namespace Alis.Core.Ecs.Core.Archetype
       }
     }
 
+    /// <summary>
+    /// The of component class
+    /// </summary>
     internal static class OfComponent<C>
     {
+      /// <summary>
+      /// The id
+      /// </summary>
       public static readonly int Index = GlobalWorldTables.ComponentIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.ID, Component<C>.ID);
     }
   }
 
+  /// <summary>
+  /// The archetype class
+  /// </summary>
   internal static class Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>
   {
+      /// <summary>
+      /// The id
+      /// </summary>
       public static readonly FastImmutableArray<ComponentID> ArchetypeComponentIDs = new FastImmutableArray<ComponentID>(new[]
       {
           Component<T1>.ID,
@@ -1000,9 +1286,17 @@ namespace Alis.Core.Ecs.Core.Archetype
           Component<T16>.ID
       });
 
+      /// <summary>
+      /// The empty
+      /// </summary>
       public static readonly EntityType ID = Archetype.GetArchetypeID(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.ArchetypeComponentIDs.AsSpan(), new ReadOnlySpan<TagId>(), new FastImmutableArray<ComponentID>?(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.ArchetypeComponentIDs),
           new FastImmutableArray<TagId>?(FastImmutableArray<TagId>.Empty));
 
+      /// <summary>
+      /// Creates the new or get existing archetype using the specified world
+      /// </summary>
+      /// <param name="world">The world</param>
+      /// <returns>The local</returns>
       internal static Archetype CreateNewOrGetExistingArchetype(World world)
       {
           ushort rawIndex = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.ID.RawIndex;
@@ -1071,8 +1365,14 @@ namespace Alis.Core.Ecs.Core.Archetype
           }
       }
 
+      /// <summary>
+      /// The of component class
+      /// </summary>
       internal static class OfComponent<C>
       {
+          /// <summary>
+          /// The id
+          /// </summary>
           public static readonly int Index = GlobalWorldTables.ComponentIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.ID, Component<C>.ID);
       }
   }

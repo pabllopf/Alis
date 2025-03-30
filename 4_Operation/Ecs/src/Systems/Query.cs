@@ -147,14 +147,54 @@ namespace Alis.Core.Ecs.Systems
         /// <returns>A chunk query enumerator of t query enumerable</returns>
         public ChunkQueryEnumerator<T>.QueryEnumerable EnumerateChunks<T>() => new(this);
         
+        /// <summary>
+        /// Enumerates the chunks
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <returns>A chunk query enumerator of t 1 and t 2 query enumerable</returns>
         public ChunkQueryEnumerator<T1, T2>.QueryEnumerable EnumerateChunks<T1, T2>() => new(this);
         
+        /// <summary>
+        /// Enumerates the chunks
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <returns>A chunk query enumerator of t 1 and t 2 and t 3 query enumerable</returns>
         public ChunkQueryEnumerator<T1, T2, T3>.QueryEnumerable EnumerateChunks<T1, T2, T3>() => new(this);
         
+        /// <summary>
+        /// Enumerates the chunks
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <returns>A chunk query enumerator of t 1 and t 2 and t 3 and t 4 query enumerable</returns>
         public ChunkQueryEnumerator<T1, T2, T3, T4>.QueryEnumerable EnumerateChunks<T1, T2, T3, T4>() => new(this);
         
+        /// <summary>
+        /// Enumerates the chunks
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <returns>A chunk query enumerator of t 1 and t 2 and t 3 and t 4 and t 5 query enumerable</returns>
         public ChunkQueryEnumerator<T1, T2, T3, T4, T5>.QueryEnumerable EnumerateChunks<T1, T2, T3, T4, T5>() => new(this);
         
+        /// <summary>
+        /// Enumerates the chunks
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <returns>A chunk query enumerator of t 1 and t 2 and t 3 and t 4 and t 5 and t 6 query enumerable</returns>
         public ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6>.QueryEnumerable EnumerateChunks<T1, T2, T3, T4, T5, T6>() => new(this);
     }
 

@@ -74,8 +74,14 @@ namespace Frent.Sample
             }
         }
         
+        /// <summary>
+        /// The id
+        /// </summary>
         private static readonly EntityType _entityAlisType = Entity.EntityTypeOf([Component<Component1>.ID], []);
         
+        /// <summary>
+        /// Creates the entity
+        /// </summary>
         [Sample]
         public static void Create_Entity()
         {

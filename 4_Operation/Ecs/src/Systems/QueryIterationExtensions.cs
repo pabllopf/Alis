@@ -61,6 +61,13 @@ namespace Alis.Core.Ecs.Systems
             }
         }
 
+        /// <summary>
+        /// Delegates the query
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Delegate<T1, T2>(this Query query, QueryDelegates.Query<T1, T2> action)
         {
             foreach (Archetype archetype in query.AsSpan())
@@ -79,6 +86,14 @@ namespace Alis.Core.Ecs.Systems
             }
         }
 
+        /// <summary>
+        /// Delegates the query
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Delegate<T1, T2, T3>(this Query query, QueryDelegates.Query<T1, T2, T3> action)
         {
             foreach (Archetype archetype in query.AsSpan())
@@ -99,6 +114,15 @@ namespace Alis.Core.Ecs.Systems
             }
         }
 
+        /// <summary>
+        /// Delegates the query
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Delegate<T1, T2, T3, T4>(this Query query, QueryDelegates.Query<T1, T2, T3, T4> action)
         {
             foreach (Archetype archetype in query.AsSpan())
@@ -121,6 +145,16 @@ namespace Alis.Core.Ecs.Systems
             }
         }
 
+        /// <summary>
+        /// Delegates the query
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Delegate<T1, T2, T3, T4, T5>(this Query query, QueryDelegates.Query<T1, T2, T3, T4, T5> action)
         {
             foreach (Archetype archetype in query.AsSpan())
@@ -145,6 +179,17 @@ namespace Alis.Core.Ecs.Systems
             }
         }
 
+        /// <summary>
+        /// Delegates the query
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Delegate<T1, T2, T3, T4, T5, T6>(this Query query, QueryDelegates.Query<T1, T2, T3, T4, T5, T6> action)
         {
             foreach (Archetype archetype in query.AsSpan())
@@ -171,6 +216,18 @@ namespace Alis.Core.Ecs.Systems
             }
         }
 
+        /// <summary>
+        /// Delegates the query
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <typeparam name="T7">The </typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Delegate<T1, T2, T3, T4, T5, T6, T7>(this Query query, QueryDelegates.Query<T1, T2, T3, T4, T5, T6, T7> action)
         {
             foreach (Archetype archetype in query.AsSpan())
@@ -199,6 +256,19 @@ namespace Alis.Core.Ecs.Systems
             }
         }
 
+        /// <summary>
+        /// Delegates the query
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <typeparam name="T7">The </typeparam>
+        /// <typeparam name="T8">The </typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Delegate<T1, T2, T3, T4, T5, T6, T7, T8>(this Query query, QueryDelegates.Query<T1, T2, T3, T4, T5, T6, T7, T8> action)
         {
             foreach (Archetype archetype in query.AsSpan())
@@ -229,6 +299,20 @@ namespace Alis.Core.Ecs.Systems
             }
         }
 
+        /// <summary>
+        /// Delegates the query
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <typeparam name="T7">The </typeparam>
+        /// <typeparam name="T8">The </typeparam>
+        /// <typeparam name="T9">The </typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Delegate<T1, T2, T3, T4, T5, T6, T7, T8, T9>(this Query query, QueryDelegates.Query<T1, T2, T3, T4, T5, T6, T7, T8, T9> action)
         {
             foreach (Archetype archetype in query.AsSpan())
@@ -261,6 +345,21 @@ namespace Alis.Core.Ecs.Systems
             }
         }
 
+        /// <summary>
+        /// Delegates the query
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <typeparam name="T7">The </typeparam>
+        /// <typeparam name="T8">The </typeparam>
+        /// <typeparam name="T9">The </typeparam>
+        /// <typeparam name="T10">The 10</typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Delegate<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(this Query query, QueryDelegates.Query<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> action)
         {
             foreach (Archetype archetype in query.AsSpan())
@@ -295,6 +394,22 @@ namespace Alis.Core.Ecs.Systems
             }
         }
 
+        /// <summary>
+        /// Delegates the query
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <typeparam name="T7">The </typeparam>
+        /// <typeparam name="T8">The </typeparam>
+        /// <typeparam name="T9">The </typeparam>
+        /// <typeparam name="T10">The 10</typeparam>
+        /// <typeparam name="T11">The 11</typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Delegate<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(this Query query, QueryDelegates.Query<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11> action)
         {
             foreach (Archetype archetype in query.AsSpan())
@@ -332,6 +447,23 @@ namespace Alis.Core.Ecs.Systems
         }
 
 
+        /// <summary>
+        /// Delegates the query
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <typeparam name="T7">The </typeparam>
+        /// <typeparam name="T8">The </typeparam>
+        /// <typeparam name="T9">The </typeparam>
+        /// <typeparam name="T10">The 10</typeparam>
+        /// <typeparam name="T11">The 11</typeparam>
+        /// <typeparam name="T12">The 12</typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Delegate<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(this Query query, QueryDelegates.Query<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12> action)
         {
             foreach (Archetype archetype in query.AsSpan())
@@ -370,6 +502,24 @@ namespace Alis.Core.Ecs.Systems
             }
         }
 
+        /// <summary>
+        /// Delegates the query
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <typeparam name="T7">The </typeparam>
+        /// <typeparam name="T8">The </typeparam>
+        /// <typeparam name="T9">The </typeparam>
+        /// <typeparam name="T10">The 10</typeparam>
+        /// <typeparam name="T11">The 11</typeparam>
+        /// <typeparam name="T12">The 12</typeparam>
+        /// <typeparam name="T13">The 13</typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Delegate<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(this Query query, QueryDelegates.Query<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13> action)
         {
             foreach (Archetype archetype in query.AsSpan())
@@ -410,6 +560,25 @@ namespace Alis.Core.Ecs.Systems
             }
         }
         
+        /// <summary>
+        /// Delegates the query
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <typeparam name="T7">The </typeparam>
+        /// <typeparam name="T8">The </typeparam>
+        /// <typeparam name="T9">The </typeparam>
+        /// <typeparam name="T10">The 10</typeparam>
+        /// <typeparam name="T11">The 11</typeparam>
+        /// <typeparam name="T12">The 12</typeparam>
+        /// <typeparam name="T13">The 13</typeparam>
+        /// <typeparam name="T14">The 14</typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Delegate<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(this Query query, QueryDelegates.Query<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14> action)
         {
             foreach (Archetype archetype in query.AsSpan())
@@ -452,6 +621,26 @@ namespace Alis.Core.Ecs.Systems
             }
         }
         
+        /// <summary>
+        /// Delegates the query
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <typeparam name="T7">The </typeparam>
+        /// <typeparam name="T8">The </typeparam>
+        /// <typeparam name="T9">The </typeparam>
+        /// <typeparam name="T10">The 10</typeparam>
+        /// <typeparam name="T11">The 11</typeparam>
+        /// <typeparam name="T12">The 12</typeparam>
+        /// <typeparam name="T13">The 13</typeparam>
+        /// <typeparam name="T14">The 14</typeparam>
+        /// <typeparam name="T15">The 15</typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Delegate<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(this Query query, QueryDelegates.Query<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15> action)
         {
             foreach (Archetype archetype in query.AsSpan())
@@ -499,6 +688,27 @@ namespace Alis.Core.Ecs.Systems
         
 
 
+        /// <summary>
+        /// Delegates the query
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <typeparam name="T7">The </typeparam>
+        /// <typeparam name="T8">The </typeparam>
+        /// <typeparam name="T9">The </typeparam>
+        /// <typeparam name="T10">The 10</typeparam>
+        /// <typeparam name="T11">The 11</typeparam>
+        /// <typeparam name="T12">The 12</typeparam>
+        /// <typeparam name="T13">The 13</typeparam>
+        /// <typeparam name="T14">The 14</typeparam>
+        /// <typeparam name="T15">The 15</typeparam>
+        /// <typeparam name="T16">The 16</typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Delegate<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(this Query query, QueryDelegates.Query<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16> action)
         {
             foreach (Archetype archetype in query.AsSpan())
@@ -570,6 +780,14 @@ namespace Alis.Core.Ecs.Systems
             }
         }
 
+        /// <summary>
+        /// Inlines the query
+        /// </summary>
+        /// <typeparam name="TAction">The action</typeparam>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Inline<TAction, T1, T2>(this Query query, TAction action)
             where TAction : IAction<T1, T2>
         {
@@ -589,6 +807,15 @@ namespace Alis.Core.Ecs.Systems
             }
         }
 
+        /// <summary>
+        /// Inlines the query
+        /// </summary>
+        /// <typeparam name="TAction">The action</typeparam>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Inline<TAction, T1, T2, T3>(this Query query, TAction action)
             where TAction : IAction<T1, T2, T3>
         {
@@ -610,6 +837,16 @@ namespace Alis.Core.Ecs.Systems
             }
         }
 
+        /// <summary>
+        /// Inlines the query
+        /// </summary>
+        /// <typeparam name="TAction">The action</typeparam>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Inline<TAction, T1, T2, T3, T4>(this Query query, TAction action)
             where TAction : IAction<T1, T2, T3, T4>
         {
@@ -633,6 +870,17 @@ namespace Alis.Core.Ecs.Systems
             }
         }
 
+        /// <summary>
+        /// Inlines the query
+        /// </summary>
+        /// <typeparam name="TAction">The action</typeparam>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Inline<TAction, T1, T2, T3, T4, T5>(this Query query, TAction action)
             where TAction : IAction<T1, T2, T3, T4, T5>
         {
@@ -658,6 +906,18 @@ namespace Alis.Core.Ecs.Systems
             }
         }
 
+        /// <summary>
+        /// Inlines the query
+        /// </summary>
+        /// <typeparam name="TAction">The action</typeparam>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Inline<TAction, T1, T2, T3, T4, T5, T6>(this Query query, TAction action)
             where TAction : IAction<T1, T2, T3, T4, T5, T6>
         {
@@ -685,6 +945,19 @@ namespace Alis.Core.Ecs.Systems
             }
         }
 
+        /// <summary>
+        /// Inlines the query
+        /// </summary>
+        /// <typeparam name="TAction">The action</typeparam>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <typeparam name="T7">The </typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Inline<TAction, T1, T2, T3, T4, T5, T6, T7>(this Query query, TAction action)
             where TAction : IAction<T1, T2, T3, T4, T5, T6, T7>
         {
@@ -714,6 +987,20 @@ namespace Alis.Core.Ecs.Systems
             }
         }
 
+        /// <summary>
+        /// Inlines the query
+        /// </summary>
+        /// <typeparam name="TAction">The action</typeparam>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <typeparam name="T7">The </typeparam>
+        /// <typeparam name="T8">The </typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Inline<TAction, T1, T2, T3, T4, T5, T6, T7, T8>(this Query query, TAction action)
             where TAction : IAction<T1, T2, T3, T4, T5, T6, T7, T8>
         {
@@ -745,6 +1032,21 @@ namespace Alis.Core.Ecs.Systems
             }
         }
 
+        /// <summary>
+        /// Inlines the query
+        /// </summary>
+        /// <typeparam name="TAction">The action</typeparam>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <typeparam name="T7">The </typeparam>
+        /// <typeparam name="T8">The </typeparam>
+        /// <typeparam name="T9">The </typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Inline<TAction, T1, T2, T3, T4, T5, T6, T7, T8, T9>(this Query query, TAction action)
             where TAction : IAction<T1, T2, T3, T4, T5, T6, T7, T8, T9>
         {
@@ -778,6 +1080,22 @@ namespace Alis.Core.Ecs.Systems
             }
         }
 
+        /// <summary>
+        /// Inlines the query
+        /// </summary>
+        /// <typeparam name="TAction">The action</typeparam>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <typeparam name="T7">The </typeparam>
+        /// <typeparam name="T8">The </typeparam>
+        /// <typeparam name="T9">The </typeparam>
+        /// <typeparam name="T10">The 10</typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Inline<TAction, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(this Query query, TAction action)
             where TAction : IAction<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>
         {
@@ -813,6 +1131,23 @@ namespace Alis.Core.Ecs.Systems
             }
         }
 
+        /// <summary>
+        /// Inlines the query
+        /// </summary>
+        /// <typeparam name="TAction">The action</typeparam>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <typeparam name="T7">The </typeparam>
+        /// <typeparam name="T8">The </typeparam>
+        /// <typeparam name="T9">The </typeparam>
+        /// <typeparam name="T10">The 10</typeparam>
+        /// <typeparam name="T11">The 11</typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Inline<TAction, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(this Query query, TAction action)
             where TAction : IAction<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>
         {
@@ -850,6 +1185,24 @@ namespace Alis.Core.Ecs.Systems
             }
         }
 
+        /// <summary>
+        /// Inlines the query
+        /// </summary>
+        /// <typeparam name="TAction">The action</typeparam>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <typeparam name="T7">The </typeparam>
+        /// <typeparam name="T8">The </typeparam>
+        /// <typeparam name="T9">The </typeparam>
+        /// <typeparam name="T10">The 10</typeparam>
+        /// <typeparam name="T11">The 11</typeparam>
+        /// <typeparam name="T12">The 12</typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Inline<TAction, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(this Query query, TAction action)
             where TAction : IAction<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>
         {
@@ -889,6 +1242,25 @@ namespace Alis.Core.Ecs.Systems
             }
         }
 
+        /// <summary>
+        /// Inlines the query
+        /// </summary>
+        /// <typeparam name="TAction">The action</typeparam>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <typeparam name="T7">The </typeparam>
+        /// <typeparam name="T8">The </typeparam>
+        /// <typeparam name="T9">The </typeparam>
+        /// <typeparam name="T10">The 10</typeparam>
+        /// <typeparam name="T11">The 11</typeparam>
+        /// <typeparam name="T12">The 12</typeparam>
+        /// <typeparam name="T13">The 13</typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Inline<TAction, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(this Query query, TAction action)
             where TAction : IAction<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>
         {
@@ -930,6 +1302,26 @@ namespace Alis.Core.Ecs.Systems
             }
         }
 
+        /// <summary>
+        /// Inlines the query
+        /// </summary>
+        /// <typeparam name="TAction">The action</typeparam>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <typeparam name="T7">The </typeparam>
+        /// <typeparam name="T8">The </typeparam>
+        /// <typeparam name="T9">The </typeparam>
+        /// <typeparam name="T10">The 10</typeparam>
+        /// <typeparam name="T11">The 11</typeparam>
+        /// <typeparam name="T12">The 12</typeparam>
+        /// <typeparam name="T13">The 13</typeparam>
+        /// <typeparam name="T14">The 14</typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Inline<TAction, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(this Query query, TAction action)
             where TAction : IAction<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>
         {
@@ -973,6 +1365,27 @@ namespace Alis.Core.Ecs.Systems
             }
         }
 
+        /// <summary>
+        /// Inlines the query
+        /// </summary>
+        /// <typeparam name="TAction">The action</typeparam>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <typeparam name="T7">The </typeparam>
+        /// <typeparam name="T8">The </typeparam>
+        /// <typeparam name="T9">The </typeparam>
+        /// <typeparam name="T10">The 10</typeparam>
+        /// <typeparam name="T11">The 11</typeparam>
+        /// <typeparam name="T12">The 12</typeparam>
+        /// <typeparam name="T13">The 13</typeparam>
+        /// <typeparam name="T14">The 14</typeparam>
+        /// <typeparam name="T15">The 15</typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Inline<TAction, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(this Query query, TAction action)
             where TAction : IAction<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>
         {
@@ -1018,6 +1431,28 @@ namespace Alis.Core.Ecs.Systems
             }
         }
 
+        /// <summary>
+        /// Inlines the query
+        /// </summary>
+        /// <typeparam name="TAction">The action</typeparam>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <typeparam name="T7">The </typeparam>
+        /// <typeparam name="T8">The </typeparam>
+        /// <typeparam name="T9">The </typeparam>
+        /// <typeparam name="T10">The 10</typeparam>
+        /// <typeparam name="T11">The 11</typeparam>
+        /// <typeparam name="T12">The 12</typeparam>
+        /// <typeparam name="T13">The 13</typeparam>
+        /// <typeparam name="T14">The 14</typeparam>
+        /// <typeparam name="T15">The 15</typeparam>
+        /// <typeparam name="T16">The 16</typeparam>
+        /// <param name="query">The query</param>
+        /// <param name="action">The action</param>
         public static void Inline<TAction, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(this Query query, TAction action)
             where TAction : IAction<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>
         {

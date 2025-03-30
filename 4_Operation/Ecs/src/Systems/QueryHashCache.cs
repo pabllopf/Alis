@@ -44,6 +44,9 @@ namespace Alis.Core.Ecs.Systems
             .ToHashCode();
     }
 
+    /// <summary>
+    /// The query hash cache class
+    /// </summary>
     internal static class QueryHashCache<TArg1, TArg2>
         where TArg1 : struct, IRuleProvider
         where TArg2 : struct, IRuleProvider
@@ -57,6 +60,9 @@ namespace Alis.Core.Ecs.Systems
             .ToHashCode();
     }
 
+    /// <summary>
+    /// The query hash cache class
+    /// </summary>
     internal static class QueryHashCache<TArg1, TArg2, TArg3>
         where TArg1 : struct, IRuleProvider
         where TArg2 : struct, IRuleProvider
@@ -72,6 +78,9 @@ namespace Alis.Core.Ecs.Systems
             .ToHashCode();
     }
 
+    /// <summary>
+    /// The query hash cache class
+    /// </summary>
     internal static class QueryHashCache<TArg1, TArg2, TArg3, TArg4>
         where TArg1 : struct, IRuleProvider
         where TArg2 : struct, IRuleProvider
@@ -89,6 +98,9 @@ namespace Alis.Core.Ecs.Systems
             .ToHashCode();
     }
 
+    /// <summary>
+    /// The query hash cache class
+    /// </summary>
     internal static class QueryHashCache<TArg1, TArg2, TArg3, TArg4, TArg5>
         where TArg1 : struct, IRuleProvider
         where TArg2 : struct, IRuleProvider
@@ -109,6 +121,9 @@ namespace Alis.Core.Ecs.Systems
     }
 
 
+    /// <summary>
+    /// The query hash cache class
+    /// </summary>
     internal static class QueryHashCache<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>
         where TArg1 : struct, IRuleProvider
         where TArg2 : struct, IRuleProvider
@@ -131,6 +146,9 @@ namespace Alis.Core.Ecs.Systems
     }
 
 
+    /// <summary>
+    /// The query hash cache class
+    /// </summary>
     internal static class QueryHashCache<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7>
         where TArg1 : struct, IRuleProvider
         where TArg2 : struct, IRuleProvider
@@ -154,6 +172,9 @@ namespace Alis.Core.Ecs.Systems
             .ToHashCode();
     }
 
+    /// <summary>
+    /// The query hash cache class
+    /// </summary>
     internal static class QueryHashCache<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8>
         where TArg1 : struct, IRuleProvider
         where TArg2 : struct, IRuleProvider
@@ -179,6 +200,9 @@ namespace Alis.Core.Ecs.Systems
             .ToHashCode();
     }
 
+    /// <summary>
+    /// The query hash cache class
+    /// </summary>
     internal static class QueryHashCache<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9>
         where TArg1 : struct, IRuleProvider
         where TArg2 : struct, IRuleProvider
@@ -206,6 +230,9 @@ namespace Alis.Core.Ecs.Systems
             .ToHashCode();
     }
 
+    /// <summary>
+    /// The query hash cache class
+    /// </summary>
     internal static class QueryHashCache<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10>
         where TArg1 : struct, IRuleProvider
         where TArg2 : struct, IRuleProvider
@@ -236,6 +263,9 @@ namespace Alis.Core.Ecs.Systems
     }
 
 
+    /// <summary>
+    /// The query hash cache class
+    /// </summary>
     internal static class QueryHashCache<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11>
         where TArg1 : struct, IRuleProvider
         where TArg2 : struct, IRuleProvider
@@ -269,6 +299,9 @@ namespace Alis.Core.Ecs.Systems
 
 
 
+    /// <summary>
+    /// The query hash cache class
+    /// </summary>
     internal static class QueryHashCache<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12>
         where TArg1 : struct, IRuleProvider
         where TArg2 : struct, IRuleProvider
@@ -283,6 +316,9 @@ namespace Alis.Core.Ecs.Systems
         where TArg11 : struct, IRuleProvider
         where TArg12 : struct, IRuleProvider
     {
+        /// <summary>
+        /// The to hash code
+        /// </summary>
         public static readonly int Value = new QueryHash()
             .AddRule(default(TArg1).Rule)
             .AddRule(default(TArg2).Rule)
@@ -299,6 +335,9 @@ namespace Alis.Core.Ecs.Systems
             .ToHashCode();
     }
 
+    /// <summary>
+    /// The query hash cache class
+    /// </summary>
     internal static class QueryHashCache<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13>
         where TArg1 : struct, IRuleProvider
         where TArg2 : struct, IRuleProvider
@@ -314,6 +353,9 @@ namespace Alis.Core.Ecs.Systems
         where TArg12 : struct, IRuleProvider
         where TArg13 : struct, IRuleProvider
     {
+        /// <summary>
+        /// The to hash code
+        /// </summary>
         public static readonly int Value = new QueryHash()
             .AddRule(default(TArg1).Rule)
             .AddRule(default(TArg2).Rule)
@@ -331,6 +373,9 @@ namespace Alis.Core.Ecs.Systems
             .ToHashCode();
     }
 
+    /// <summary>
+    /// The query hash cache class
+    /// </summary>
     internal static class QueryHashCache<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14>
         where TArg1 : struct, IRuleProvider
         where TArg2 : struct, IRuleProvider
@@ -347,6 +392,9 @@ namespace Alis.Core.Ecs.Systems
         where TArg13 : struct, IRuleProvider
         where TArg14 : struct, IRuleProvider
     {
+        /// <summary>
+        /// The to hash code
+        /// </summary>
         public static readonly int Value = new QueryHash()
             .AddRule(default(TArg1).Rule)
             .AddRule(default(TArg2).Rule)
@@ -365,6 +413,9 @@ namespace Alis.Core.Ecs.Systems
             .ToHashCode();
     }
 
+    /// <summary>
+    /// The query hash cache class
+    /// </summary>
     internal static class QueryHashCache<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15>
         where TArg1 : struct, IRuleProvider
         where TArg2 : struct, IRuleProvider
@@ -382,6 +433,9 @@ namespace Alis.Core.Ecs.Systems
         where TArg14 : struct, IRuleProvider
         where TArg15 : struct, IRuleProvider
     {
+        /// <summary>
+        /// The to hash code
+        /// </summary>
         public static readonly int Value = new QueryHash()
             .AddRule(default(TArg1).Rule)
             .AddRule(default(TArg2).Rule)
@@ -401,6 +455,9 @@ namespace Alis.Core.Ecs.Systems
             .ToHashCode();
     }
 
+    /// <summary>
+    /// The query hash cache class
+    /// </summary>
     internal static class QueryHashCache<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TArg16>
         where TArg1 : struct, IRuleProvider
         where TArg2 : struct, IRuleProvider
@@ -419,6 +476,9 @@ namespace Alis.Core.Ecs.Systems
         where TArg15 : struct, IRuleProvider
         where TArg16 : struct, IRuleProvider
     {
+        /// <summary>
+        /// The to hash code
+        /// </summary>
         public static readonly int Value = new QueryHash()
             .AddRule(default(TArg1).Rule)
             .AddRule(default(TArg2).Rule)

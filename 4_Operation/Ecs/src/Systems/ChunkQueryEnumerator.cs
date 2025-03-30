@@ -56,6 +56,10 @@ namespace Alis.Core.Ecs.Systems
         /// </summary>
         private int _archetypeIndex;
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ChunkQueryEnumerator"/> class
+        /// </summary>
+        /// <param name="query">The query</param>
         private ChunkQueryEnumerator(Query query)
         {
             _world = query.World;
@@ -108,16 +112,32 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
+    /// <summary>
+    /// The chunk query enumerator
+    /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     [SkipLocalsInit]
     public ref struct ChunkQueryEnumerator<T1, T2>
     {
+        /// <summary>
+        /// The world
+        /// </summary>
         private World _world;
         
+        /// <summary>
+        /// The archetypes
+        /// </summary>
         private Span<Archetype> _archetypes;
         
+        /// <summary>
+        /// The archetype index
+        /// </summary>
         private int _archetypeIndex;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ChunkQueryEnumerator"/> class
+        /// </summary>
+        /// <param name="query">The query</param>
         private ChunkQueryEnumerator(Query query)
         {
             this._world = query.World;
@@ -126,6 +146,9 @@ namespace Alis.Core.Ecs.Systems
             this._archetypeIndex = -1;
         }
 
+        /// <summary>
+        /// Gets the value of the current
+        /// </summary>
         public ChunkTuple<T1, T2> Current
         {
             get
@@ -139,12 +162,26 @@ namespace Alis.Core.Ecs.Systems
             }
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose() => this._world.ExitDisallowState();
 
+        /// <summary>
+        /// Moves the next
+        /// </summary>
+        /// <returns>The bool</returns>
         public bool MoveNext() => ++this._archetypeIndex < this._archetypes.Length;
 
+        /// <summary>
+        /// The query enumerable
+        /// </summary>
         public struct QueryEnumerable(Query query)
         {
+            /// <summary>
+            /// Gets the enumerator
+            /// </summary>
+            /// <returns>A chunk query enumerator of t 1 and t 2</returns>
             public ChunkQueryEnumerator<T1, T2> GetEnumerator()
             {
                 return new ChunkQueryEnumerator<T1, T2>(query);
@@ -153,13 +190,29 @@ namespace Alis.Core.Ecs.Systems
     }
 
 
+    /// <summary>
+    /// The chunk query enumerator
+    /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3>
     {
+        /// <summary>
+        /// The world
+        /// </summary>
         private World _world;
+        /// <summary>
+        /// The archetypes
+        /// </summary>
         private Span<Archetype> _archetypes;
+        /// <summary>
+        /// The archetype index
+        /// </summary>
         private int _archetypeIndex;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ChunkQueryEnumerator"/> class
+        /// </summary>
+        /// <param name="query">The query</param>
         private ChunkQueryEnumerator(Query query)
         {
             this._world = query.World;
@@ -168,6 +221,9 @@ namespace Alis.Core.Ecs.Systems
             this._archetypeIndex = -1;
         }
 
+        /// <summary>
+        /// Gets the value of the current
+        /// </summary>
         public ChunkTuple<T1, T2, T3> Current
         {
             get
@@ -182,12 +238,26 @@ namespace Alis.Core.Ecs.Systems
             }
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose() => this._world.ExitDisallowState();
 
+        /// <summary>
+        /// Moves the next
+        /// </summary>
+        /// <returns>The bool</returns>
         public bool MoveNext() => ++this._archetypeIndex < this._archetypes.Length;
 
+        /// <summary>
+        /// The query enumerable
+        /// </summary>
         public struct QueryEnumerable(Query query)
         {
+            /// <summary>
+            /// Gets the enumerator
+            /// </summary>
+            /// <returns>A chunk query enumerator of t 1 and t 2 and t 3</returns>
             public ChunkQueryEnumerator<T1, T2, T3> GetEnumerator()
             {
                 return new ChunkQueryEnumerator<T1, T2, T3>(query);
@@ -196,13 +266,29 @@ namespace Alis.Core.Ecs.Systems
     }
     
     
+    /// <summary>
+    /// The chunk query enumerator
+    /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4>
     {
+        /// <summary>
+        /// The world
+        /// </summary>
         private World _world;
+        /// <summary>
+        /// The archetypes
+        /// </summary>
         private Span<Archetype> _archetypes;
+        /// <summary>
+        /// The archetype index
+        /// </summary>
         private int _archetypeIndex;
     
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ChunkQueryEnumerator"/> class
+        /// </summary>
+        /// <param name="query">The query</param>
         private ChunkQueryEnumerator(Query query)
         {
             this._world = query.World;
@@ -211,6 +297,9 @@ namespace Alis.Core.Ecs.Systems
             this._archetypeIndex = -1;
         }
     
+        /// <summary>
+        /// Gets the value of the current
+        /// </summary>
         public ChunkTuple<T1, T2, T3, T4> Current
         {
             get
@@ -226,12 +315,26 @@ namespace Alis.Core.Ecs.Systems
             }
         }
     
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose() => this._world.ExitDisallowState();
     
+        /// <summary>
+        /// Moves the next
+        /// </summary>
+        /// <returns>The bool</returns>
         public bool MoveNext() => ++this._archetypeIndex < this._archetypes.Length;
     
+        /// <summary>
+        /// The query enumerable
+        /// </summary>
         public struct QueryEnumerable(Query query)
         {
+            /// <summary>
+            /// Gets the enumerator
+            /// </summary>
+            /// <returns>A chunk query enumerator of t 1 and t 2 and t 3 and t 4</returns>
             public ChunkQueryEnumerator<T1, T2, T3, T4> GetEnumerator()
             {
                 return new ChunkQueryEnumerator<T1, T2, T3, T4>(query);
@@ -239,13 +342,29 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
+    /// <summary>
+    /// The chunk query enumerator
+    /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4, T5>
     {
+        /// <summary>
+        /// The world
+        /// </summary>
         private World _world;
+        /// <summary>
+        /// The archetypes
+        /// </summary>
         private Span<Archetype> _archetypes;
+        /// <summary>
+        /// The archetype index
+        /// </summary>
         private int _archetypeIndex;
     
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ChunkQueryEnumerator"/> class
+        /// </summary>
+        /// <param name="query">The query</param>
         private ChunkQueryEnumerator(Query query)
         {
             this._world = query.World;
@@ -254,6 +373,9 @@ namespace Alis.Core.Ecs.Systems
             this._archetypeIndex = -1;
         }
     
+        /// <summary>
+        /// Gets the value of the current
+        /// </summary>
         public ChunkTuple<T1, T2, T3, T4, T5> Current
         {
             get
@@ -270,12 +392,26 @@ namespace Alis.Core.Ecs.Systems
             }
         }
     
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose() => this._world.ExitDisallowState();
     
+        /// <summary>
+        /// Moves the next
+        /// </summary>
+        /// <returns>The bool</returns>
         public bool MoveNext() => ++this._archetypeIndex < this._archetypes.Length;
     
+        /// <summary>
+        /// The query enumerable
+        /// </summary>
         public struct QueryEnumerable(Query query)
         {
+            /// <summary>
+            /// Gets the enumerator
+            /// </summary>
+            /// <returns>A chunk query enumerator of t 1 and t 2 and t 3 and t 4 and t 5</returns>
             public ChunkQueryEnumerator<T1, T2, T3, T4, T5> GetEnumerator()
             {
                 return new ChunkQueryEnumerator<T1, T2, T3, T4, T5>(query);
@@ -283,13 +419,29 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
+    /// <summary>
+    /// The chunk query enumerator
+    /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6>
     {
+        /// <summary>
+        /// The world
+        /// </summary>
         private World _world;
+        /// <summary>
+        /// The archetypes
+        /// </summary>
         private Span<Archetype> _archetypes;
+        /// <summary>
+        /// The archetype index
+        /// </summary>
         private int _archetypeIndex;
     
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ChunkQueryEnumerator"/> class
+        /// </summary>
+        /// <param name="query">The query</param>
         private ChunkQueryEnumerator(Query query)
         {
             this._world = query.World;
@@ -298,6 +450,9 @@ namespace Alis.Core.Ecs.Systems
             this._archetypeIndex = -1;
         }
     
+        /// <summary>
+        /// Gets the value of the current
+        /// </summary>
         public ChunkTuple<T1, T2, T3, T4, T5, T6> Current
         {
             get
@@ -315,12 +470,26 @@ namespace Alis.Core.Ecs.Systems
             }
         }
     
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose() => this._world.ExitDisallowState();
     
+        /// <summary>
+        /// Moves the next
+        /// </summary>
+        /// <returns>The bool</returns>
         public bool MoveNext() => ++this._archetypeIndex < this._archetypes.Length;
     
+        /// <summary>
+        /// The query enumerable
+        /// </summary>
         public struct QueryEnumerable(Query query)
         {
+            /// <summary>
+            /// Gets the enumerator
+            /// </summary>
+            /// <returns>A chunk query enumerator of t 1 and t 2 and t 3 and t 4 and t 5 and t 6</returns>
             public ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6> GetEnumerator()
             {
                 return new ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6>(query);
@@ -328,13 +497,29 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
+    /// <summary>
+    /// The chunk query enumerator
+    /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7>
     {
+        /// <summary>
+        /// The world
+        /// </summary>
         private World _world;
+        /// <summary>
+        /// The archetypes
+        /// </summary>
         private Span<Archetype> _archetypes;
+        /// <summary>
+        /// The archetype index
+        /// </summary>
         private int _archetypeIndex;
     
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ChunkQueryEnumerator"/> class
+        /// </summary>
+        /// <param name="query">The query</param>
         private ChunkQueryEnumerator(Query query)
         {
             this._world = query.World;
@@ -343,6 +528,9 @@ namespace Alis.Core.Ecs.Systems
             this._archetypeIndex = -1;
         }
     
+        /// <summary>
+        /// Gets the value of the current
+        /// </summary>
         public ChunkTuple<T1, T2, T3, T4, T5, T6, T7> Current
         {
             get
@@ -361,12 +549,26 @@ namespace Alis.Core.Ecs.Systems
             }
         }
     
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose() => this._world.ExitDisallowState();
     
+        /// <summary>
+        /// Moves the next
+        /// </summary>
+        /// <returns>The bool</returns>
         public bool MoveNext() => ++this._archetypeIndex < this._archetypes.Length;
     
+        /// <summary>
+        /// The query enumerable
+        /// </summary>
         public struct QueryEnumerable(Query query)
         {
+            /// <summary>
+            /// Gets the enumerator
+            /// </summary>
+            /// <returns>A chunk query enumerator of t 1 and t 2 and t 3 and t 4 and t 5 and t 6 and t 7</returns>
             public ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7> GetEnumerator()
             {
                 return new ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7>(query);
@@ -374,13 +576,29 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
+    /// <summary>
+    /// The chunk query enumerator
+    /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8>
     {
+        /// <summary>
+        /// The world
+        /// </summary>
         private World _world;
+        /// <summary>
+        /// The archetypes
+        /// </summary>
         private Span<Archetype> _archetypes;
+        /// <summary>
+        /// The archetype index
+        /// </summary>
         private int _archetypeIndex;
     
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ChunkQueryEnumerator"/> class
+        /// </summary>
+        /// <param name="query">The query</param>
         private ChunkQueryEnumerator(Query query)
         {
             this._world = query.World;
@@ -389,6 +607,9 @@ namespace Alis.Core.Ecs.Systems
             this._archetypeIndex = -1;
         }
     
+        /// <summary>
+        /// Gets the value of the current
+        /// </summary>
         public ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8> Current
         {
             get
@@ -408,12 +629,26 @@ namespace Alis.Core.Ecs.Systems
             }
         }
     
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose() => this._world.ExitDisallowState();
     
+        /// <summary>
+        /// Moves the next
+        /// </summary>
+        /// <returns>The bool</returns>
         public bool MoveNext() => ++this._archetypeIndex < this._archetypes.Length;
     
+        /// <summary>
+        /// The query enumerable
+        /// </summary>
         public struct QueryEnumerable(Query query)
         {
+            /// <summary>
+            /// Gets the enumerator
+            /// </summary>
+            /// <returns>A chunk query enumerator of t 1 and t 2 and t 3 and t 4 and t 5 and t 6 and t 7 and t 8</returns>
             public ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8> GetEnumerator()
             {
                 return new ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8>(query);
@@ -421,13 +656,29 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
+    /// <summary>
+    /// The chunk query enumerator
+    /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9>
     {
+        /// <summary>
+        /// The world
+        /// </summary>
         private World _world;
+        /// <summary>
+        /// The archetypes
+        /// </summary>
         private Span<Archetype> _archetypes;
+        /// <summary>
+        /// The archetype index
+        /// </summary>
         private int _archetypeIndex;
     
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ChunkQueryEnumerator"/> class
+        /// </summary>
+        /// <param name="query">The query</param>
         private ChunkQueryEnumerator(Query query)
         {
             this._world = query.World;
@@ -436,6 +687,9 @@ namespace Alis.Core.Ecs.Systems
             this._archetypeIndex = -1;
         }
     
+        /// <summary>
+        /// Gets the value of the current
+        /// </summary>
         public ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9> Current
         {
             get
@@ -456,12 +710,26 @@ namespace Alis.Core.Ecs.Systems
             }
         }
     
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose() => this._world.ExitDisallowState();
     
+        /// <summary>
+        /// Moves the next
+        /// </summary>
+        /// <returns>The bool</returns>
         public bool MoveNext() => ++this._archetypeIndex < this._archetypes.Length;
     
+        /// <summary>
+        /// The query enumerable
+        /// </summary>
         public struct QueryEnumerable(Query query)
         {
+            /// <summary>
+            /// Gets the enumerator
+            /// </summary>
+            /// <returns>A chunk query enumerator of t 1 and t 2 and t 3 and t 4 and t 5 and t 6 and t 7 and t 8 and t 9</returns>
             public ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9> GetEnumerator()
             {
                 return new ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9>(query);
@@ -469,13 +737,29 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
+    /// <summary>
+    /// The chunk query enumerator
+    /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>
     {
+        /// <summary>
+        /// The world
+        /// </summary>
         private World _world;
+        /// <summary>
+        /// The archetypes
+        /// </summary>
         private Span<Archetype> _archetypes;
+        /// <summary>
+        /// The archetype index
+        /// </summary>
         private int _archetypeIndex;
     
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ChunkQueryEnumerator"/> class
+        /// </summary>
+        /// <param name="query">The query</param>
         private ChunkQueryEnumerator(Query query)
         {
             this._world = query.World;
@@ -484,6 +768,9 @@ namespace Alis.Core.Ecs.Systems
             this._archetypeIndex = -1;
         }
     
+        /// <summary>
+        /// Gets the value of the current
+        /// </summary>
         public ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> Current
         {
             get
@@ -505,12 +792,26 @@ namespace Alis.Core.Ecs.Systems
             }
         }
     
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose() => this._world.ExitDisallowState();
     
+        /// <summary>
+        /// Moves the next
+        /// </summary>
+        /// <returns>The bool</returns>
         public bool MoveNext() => ++this._archetypeIndex < this._archetypes.Length;
     
+        /// <summary>
+        /// The query enumerable
+        /// </summary>
         public struct QueryEnumerable(Query query)
         {
+            /// <summary>
+            /// Gets the enumerator
+            /// </summary>
+            /// <returns>A chunk query enumerator of t 1 and t 2 and t 3 and t 4 and t 5 and t 6 and t 7 and t 8 and t 9 and t 10</returns>
             public ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> GetEnumerator()
             {
                 return new ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(query);
@@ -518,13 +819,29 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
+    /// <summary>
+    /// The chunk query enumerator
+    /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>
     {
+        /// <summary>
+        /// The world
+        /// </summary>
         private World _world;
+        /// <summary>
+        /// The archetypes
+        /// </summary>
         private Span<Archetype> _archetypes;
+        /// <summary>
+        /// The archetype index
+        /// </summary>
         private int _archetypeIndex;
     
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ChunkQueryEnumerator"/> class
+        /// </summary>
+        /// <param name="query">The query</param>
         private ChunkQueryEnumerator(Query query)
         {
             this._world = query.World;
@@ -533,6 +850,9 @@ namespace Alis.Core.Ecs.Systems
             this._archetypeIndex = -1;
         }
     
+        /// <summary>
+        /// Gets the value of the current
+        /// </summary>
         public ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11> Current
         {
             get
@@ -555,12 +875,26 @@ namespace Alis.Core.Ecs.Systems
             }
         }
     
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose() => this._world.ExitDisallowState();
     
+        /// <summary>
+        /// Moves the next
+        /// </summary>
+        /// <returns>The bool</returns>
         public bool MoveNext() => ++this._archetypeIndex < this._archetypes.Length;
     
+        /// <summary>
+        /// The query enumerable
+        /// </summary>
         public struct QueryEnumerable(Query query)
         {
+            /// <summary>
+            /// Gets the enumerator
+            /// </summary>
+            /// <returns>A chunk query enumerator of t 1 and t 2 and t 3 and t 4 and t 5 and t 6 and t 7 and t 8 and t 9 and t 10 and t 11</returns>
             public ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11> GetEnumerator()
             {
                 return new ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(query);
@@ -568,13 +902,29 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
+    /// <summary>
+    /// The chunk query enumerator
+    /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>
     {
+        /// <summary>
+        /// The world
+        /// </summary>
         private World _world;
+        /// <summary>
+        /// The archetypes
+        /// </summary>
         private Span<Archetype> _archetypes;
+        /// <summary>
+        /// The archetype index
+        /// </summary>
         private int _archetypeIndex;
     
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ChunkQueryEnumerator"/> class
+        /// </summary>
+        /// <param name="query">The query</param>
         private ChunkQueryEnumerator(Query query)
         {
             this._world = query.World;
@@ -583,6 +933,9 @@ namespace Alis.Core.Ecs.Systems
             this._archetypeIndex = -1;
         }
     
+        /// <summary>
+        /// Gets the value of the current
+        /// </summary>
         public ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12> Current
         {
             get
@@ -606,12 +959,26 @@ namespace Alis.Core.Ecs.Systems
             }
         }
     
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose() => this._world.ExitDisallowState();
     
+        /// <summary>
+        /// Moves the next
+        /// </summary>
+        /// <returns>The bool</returns>
         public bool MoveNext() => ++this._archetypeIndex < this._archetypes.Length;
     
+        /// <summary>
+        /// The query enumerable
+        /// </summary>
         public struct QueryEnumerable(Query query)
         {
+            /// <summary>
+            /// Gets the enumerator
+            /// </summary>
+            /// <returns>A chunk query enumerator of t 1 and t 2 and t 3 and t 4 and t 5 and t 6 and t 7 and t 8 and t 9 and t 10 and t 11 and t 12</returns>
             public ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12> GetEnumerator()
             {
                 return new ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(query);
@@ -619,13 +986,29 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
+    /// <summary>
+    /// The chunk query enumerator
+    /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>
     {
+        /// <summary>
+        /// The world
+        /// </summary>
         private World _world;
+        /// <summary>
+        /// The archetypes
+        /// </summary>
         private Span<Archetype> _archetypes;
+        /// <summary>
+        /// The archetype index
+        /// </summary>
         private int _archetypeIndex;
     
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ChunkQueryEnumerator"/> class
+        /// </summary>
+        /// <param name="query">The query</param>
         private ChunkQueryEnumerator(Query query)
         {
             this._world = query.World;
@@ -634,6 +1017,9 @@ namespace Alis.Core.Ecs.Systems
             this._archetypeIndex = -1;
         }
     
+        /// <summary>
+        /// Gets the value of the current
+        /// </summary>
         public ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13> Current
         {
             get
@@ -658,12 +1044,26 @@ namespace Alis.Core.Ecs.Systems
             }
         }
     
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose() => this._world.ExitDisallowState();
     
+        /// <summary>
+        /// Moves the next
+        /// </summary>
+        /// <returns>The bool</returns>
         public bool MoveNext() => ++this._archetypeIndex < this._archetypes.Length;
     
+        /// <summary>
+        /// The query enumerable
+        /// </summary>
         public struct QueryEnumerable(Query query)
         {
+            /// <summary>
+            /// Gets the enumerator
+            /// </summary>
+            /// <returns>A chunk query enumerator of t 1 and t 2 and t 3 and t 4 and t 5 and t 6 and t 7 and t 8 and t 9 and t 10 and t 11 and t 12 and t 13</returns>
             public ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13> GetEnumerator()
             {
                 return new ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(query);
@@ -671,13 +1071,29 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
+    /// <summary>
+    /// The chunk query enumerator
+    /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>
     {
+        /// <summary>
+        /// The world
+        /// </summary>
         private World _world;
+        /// <summary>
+        /// The archetypes
+        /// </summary>
         private Span<Archetype> _archetypes;
+        /// <summary>
+        /// The archetype index
+        /// </summary>
         private int _archetypeIndex;
     
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ChunkQueryEnumerator"/> class
+        /// </summary>
+        /// <param name="query">The query</param>
         private ChunkQueryEnumerator(Query query)
         {
             this._world = query.World;
@@ -686,6 +1102,9 @@ namespace Alis.Core.Ecs.Systems
             this._archetypeIndex = -1;
         }
     
+        /// <summary>
+        /// Gets the value of the current
+        /// </summary>
         public ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14> Current
         {
             get
@@ -711,12 +1130,26 @@ namespace Alis.Core.Ecs.Systems
             }
         }
     
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose() => this._world.ExitDisallowState();
     
+        /// <summary>
+        /// Moves the next
+        /// </summary>
+        /// <returns>The bool</returns>
         public bool MoveNext() => ++this._archetypeIndex < this._archetypes.Length;
     
+        /// <summary>
+        /// The query enumerable
+        /// </summary>
         public struct QueryEnumerable(Query query)
         {
+            /// <summary>
+            /// Gets the enumerator
+            /// </summary>
+            /// <returns>A chunk query enumerator of t 1 and t 2 and t 3 and t 4 and t 5 and t 6 and t 7 and t 8 and t 9 and t 10 and t 11 and t 12 and t 13 and t 14</returns>
             public ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14> GetEnumerator()
             {
                 return new ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(query);
@@ -724,13 +1157,29 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
+    /// <summary>
+    /// The chunk query enumerator
+    /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>
     {
+        /// <summary>
+        /// The world
+        /// </summary>
         private World _world;
+        /// <summary>
+        /// The archetypes
+        /// </summary>
         private Span<Archetype> _archetypes;
+        /// <summary>
+        /// The archetype index
+        /// </summary>
         private int _archetypeIndex;
     
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ChunkQueryEnumerator"/> class
+        /// </summary>
+        /// <param name="query">The query</param>
         private ChunkQueryEnumerator(Query query)
         {
             this._world = query.World;
@@ -739,6 +1188,9 @@ namespace Alis.Core.Ecs.Systems
             this._archetypeIndex = -1;
         }
     
+        /// <summary>
+        /// Gets the value of the current
+        /// </summary>
         public ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15> Current
         {
             get
@@ -765,12 +1217,26 @@ namespace Alis.Core.Ecs.Systems
             }
         }
     
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose() => this._world.ExitDisallowState();
     
+        /// <summary>
+        /// Moves the next
+        /// </summary>
+        /// <returns>The bool</returns>
         public bool MoveNext() => ++this._archetypeIndex < this._archetypes.Length;
     
+        /// <summary>
+        /// The query enumerable
+        /// </summary>
         public struct QueryEnumerable(Query query)
         {
+            /// <summary>
+            /// Gets the enumerator
+            /// </summary>
+            /// <returns>A chunk query enumerator of t 1 and t 2 and t 3 and t 4 and t 5 and t 6 and t 7 and t 8 and t 9 and t 10 and t 11 and t 12 and t 13 and t 14 and t 15</returns>
             public ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15> GetEnumerator()
             {
                 return new ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(query);
@@ -778,13 +1244,29 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
+    /// <summary>
+    /// The chunk query enumerator
+    /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>
     {
+        /// <summary>
+        /// The world
+        /// </summary>
         private World _world;
+        /// <summary>
+        /// The archetypes
+        /// </summary>
         private Span<Archetype> _archetypes;
+        /// <summary>
+        /// The archetype index
+        /// </summary>
         private int _archetypeIndex;
     
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ChunkQueryEnumerator"/> class
+        /// </summary>
+        /// <param name="query">The query</param>
         private ChunkQueryEnumerator(Query query)
         {
             this._world = query.World;
@@ -793,6 +1275,9 @@ namespace Alis.Core.Ecs.Systems
             this._archetypeIndex = -1;
         }
     
+        /// <summary>
+        /// Gets the value of the current
+        /// </summary>
         public ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16> Current
         {
             get
@@ -820,12 +1305,26 @@ namespace Alis.Core.Ecs.Systems
             }
         }
     
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose() => this._world.ExitDisallowState();
     
+        /// <summary>
+        /// Moves the next
+        /// </summary>
+        /// <returns>The bool</returns>
         public bool MoveNext() => ++this._archetypeIndex < this._archetypes.Length;
     
+        /// <summary>
+        /// The query enumerable
+        /// </summary>
         public struct QueryEnumerable(Query query)
         {
+            /// <summary>
+            /// Gets the enumerator
+            /// </summary>
+            /// <returns>A chunk query enumerator of t 1 and t 2 and t 3 and t 4 and t 5 and t 6 and t 7 and t 8 and t 9 and t 10 and t 11 and t 12 and t 13 and t 14 and t 15 and t 16</returns>
             public ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16> GetEnumerator()
             {
                 return new ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(query);
