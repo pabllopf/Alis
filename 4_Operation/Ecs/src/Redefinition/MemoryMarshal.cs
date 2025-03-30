@@ -27,9 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
 
-namespace System.Runtime.InteropServices
+namespace Alis.Core.Ecs.Redefinition
 {
     public static class MemoryMarshal
     {

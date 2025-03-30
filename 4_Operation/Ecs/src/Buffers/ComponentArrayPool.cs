@@ -4,6 +4,8 @@ using System.Buffers.Binary;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using Alis.Core.Ecs.Core.Memory;
+using Alis.Core.Ecs.Redefinition;
+using RuntimeHelpers = Alis.Core.Ecs.Redefinition.RuntimeHelpers;
 
 namespace Alis.Core.Ecs.Buffers
 {

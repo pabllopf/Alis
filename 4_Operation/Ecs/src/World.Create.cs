@@ -32,6 +32,7 @@ using System.Runtime.CompilerServices;
 using Alis.Core.Ecs.Core;
 using Alis.Core.Ecs.Core.Archetype;
 using Alis.Core.Ecs.Core.Memory;
+using Alis.Core.Ecs.Redefinition;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Updating;
 
