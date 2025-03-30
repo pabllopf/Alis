@@ -131,9 +131,9 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// Creates an <see cref="T:Frent.Entity" /> with the given component(s)
+        /// Creates an <see cref="T:Alis.Entity" /> with the given component(s)
         /// </summary>
-        /// <returns>An <see cref="T:Frent.Entity" /> that can be used to acsess the component data</returns>
+        /// <returns>An <see cref="T:Alis.Entity" /> that can be used to acsess the component data</returns>
         [SkipLocalsInit]
         public Entity Create<T1, T2, T3>(in T1 comp1, in T2 comp2, in T3 comp3)
         {
@@ -342,9 +342,9 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// Creates an <see cref="T:Frent.Entity" /> with the given component(s)
+        /// Creates an <see cref="T:Alis.Entity" /> with the given component(s)
         /// </summary>
-        /// <returns>An <see cref="T:Frent.Entity" /> that can be used to acsess the component data</returns>
+        /// <returns>An <see cref="T:Alis.Entity" /> that can be used to acsess the component data</returns>
         [SkipLocalsInit]
         public Entity Create<T1, T2, T3, T4, T5>(
             in T1 comp1,
@@ -464,9 +464,9 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// Creates an <see cref="T:Frent.Entity" /> with the given component(s)
+        /// Creates an <see cref="T:Alis.Entity" /> with the given component(s)
         /// </summary>
-        /// <returns>An <see cref="T:Frent.Entity" /> that can be used to acsess the component data</returns>
+        /// <returns>An <see cref="T:Alis.Entity" /> that can be used to acsess the component data</returns>
         [SkipLocalsInit]
         public Entity Create<T1, T2, T3, T4, T5, T6>(
             in T1 comp1,
@@ -598,9 +598,9 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// Creates an <see cref="T:Frent.Entity" /> with the given component(s)
+        /// Creates an <see cref="T:Alis.Entity" /> with the given component(s)
         /// </summary>
-        /// <returns>An <see cref="T:Frent.Entity" /> that can be used to acsess the component data</returns>
+        /// <returns>An <see cref="T:Alis.Entity" /> that can be used to acsess the component data</returns>
         [SkipLocalsInit]
         public Entity Create<T1, T2, T3, T4, T5, T6, T7>(
             in T1 comp1,
@@ -744,9 +744,9 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// Creates an <see cref="T:Frent.Entity" /> with the given component(s)
+        /// Creates an <see cref="T:Alis.Entity" /> with the given component(s)
         /// </summary>
-        /// <returns>An <see cref="T:Frent.Entity" /> that can be used to acsess the component data</returns>
+        /// <returns>An <see cref="T:Alis.Entity" /> that can be used to acsess the component data</returns>
         [SkipLocalsInit]
         public Entity Create<T1, T2, T3, T4, T5, T6, T7, T8>(
             in T1 comp1,
@@ -903,9 +903,9 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// Creates an <see cref="T:Frent.Entity" /> with the given component(s)
+        /// Creates an <see cref="T:Alis.Entity" /> with the given component(s)
         /// </summary>
-        /// <returns>An <see cref="T:Frent.Entity" /> that can be used to acsess the component data</returns>
+        /// <returns>An <see cref="T:Alis.Entity" /> that can be used to acsess the component data</returns>
         [SkipLocalsInit]
         public Entity Create<T1, T2, T3, T4, T5, T6, T7, T8, T9>(
             in T1 comp1,
@@ -1074,9 +1074,9 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// Creates an <see cref="T:Frent.Entity" /> with the given component(s)
+        /// Creates an <see cref="T:Alis.Entity" /> with the given component(s)
         /// </summary>
-        /// <returns>An <see cref="T:Frent.Entity" /> that can be used to acsess the component data</returns>
+        /// <returns>An <see cref="T:Alis.Entity" /> that can be used to acsess the component data</returns>
         [SkipLocalsInit]
         public Entity Create<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(
             in T1 comp1,
@@ -1257,9 +1257,9 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// Creates an <see cref="T:Frent.Entity" /> with the given component(s)
+        /// Creates an <see cref="T:Alis.Entity" /> with the given component(s)
         /// </summary>
-        /// <returns>An <see cref="T:Frent.Entity" /> that can be used to acsess the component data</returns>
+        /// <returns>An <see cref="T:Alis.Entity" /> that can be used to acsess the component data</returns>
         [SkipLocalsInit]
         public Entity Create<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(
             in T1 comp1,
@@ -1452,9 +1452,9 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// Creates an <see cref="T:Frent.Entity" /> with the given component(s)
+        /// Creates an <see cref="T:Alis.Entity" /> with the given component(s)
         /// </summary>
-        /// <returns>An <see cref="T:Frent.Entity" /> that can be used to acsess the component data</returns>
+        /// <returns>An <see cref="T:Alis.Entity" /> that can be used to acsess the component data</returns>
         [SkipLocalsInit]
         public Entity Create<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(
             in T1 comp1,
@@ -1659,9 +1659,9 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// Creates an <see cref="T:Frent.Entity" /> with the given component(s)
+        /// Creates an <see cref="T:Alis.Entity" /> with the given component(s)
         /// </summary>
-        /// <returns>An <see cref="T:Frent.Entity" /> that can be used to acsess the component data</returns>
+        /// <returns>An <see cref="T:Alis.Entity" /> that can be used to acsess the component data</returns>
         [SkipLocalsInit]
         public Entity Create<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(
             in T1 comp1,
@@ -1878,9 +1878,9 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// Creates an <see cref="T:Frent.Entity" /> with the given component(s)
+        /// Creates an <see cref="T:Alis.Entity" /> with the given component(s)
         /// </summary>
-        /// <returns>An <see cref="T:Frent.Entity" /> that can be used to acsess the component data</returns>
+        /// <returns>An <see cref="T:Alis.Entity" /> that can be used to acsess the component data</returns>
         [SkipLocalsInit]
         public Entity Create<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(
             in T1 comp1,
@@ -2109,9 +2109,9 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// Creates an <see cref="T:Frent.Entity" /> with the given component(s)
+        /// Creates an <see cref="T:Alis.Entity" /> with the given component(s)
         /// </summary>
-        /// <returns>An <see cref="T:Frent.Entity" /> that can be used to acsess the component data</returns>
+        /// <returns>An <see cref="T:Alis.Entity" /> that can be used to acsess the component data</returns>
         [SkipLocalsInit]
         public Entity Create<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(
             in T1 comp1,
@@ -2352,9 +2352,9 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// Creates an <see cref="T:Frent.Entity" /> with the given component(s)
+        /// Creates an <see cref="T:Alis.Entity" /> with the given component(s)
         /// </summary>
-        /// <returns>An <see cref="T:Frent.Entity" /> that can be used to acsess the component data</returns>
+        /// <returns>An <see cref="T:Alis.Entity" /> that can be used to acsess the component data</returns>
         [SkipLocalsInit]
         public Entity Create<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(
             in T1 comp1,
