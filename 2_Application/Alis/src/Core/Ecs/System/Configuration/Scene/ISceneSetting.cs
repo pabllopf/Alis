@@ -34,5 +34,6 @@ namespace Alis.Core.Ecs.System.Configuration.Scene
     /// </summary>
     public interface ISceneSetting
     {
+        int MaximumEntities { get; set; }
     }
 }

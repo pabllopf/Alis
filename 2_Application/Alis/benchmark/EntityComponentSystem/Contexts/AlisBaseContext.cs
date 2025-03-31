@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Ecs;
+using Alis.Core.Ecs.Kernel;
 
 namespace Alis.Benchmark.EntityComponentSystem.Contexts
 {

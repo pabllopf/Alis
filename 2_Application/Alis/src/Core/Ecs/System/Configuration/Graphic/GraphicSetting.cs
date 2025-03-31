@@ -33,7 +33,7 @@ using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Ecs.System.Configuration.Graphic
 {
-    [SkipLocalsInit]
+    
     public record struct GraphicSetting(
         double TargetFrames = 60, 
         string Target = "OpenGL", 

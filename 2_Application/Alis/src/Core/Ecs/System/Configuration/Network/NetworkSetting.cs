@@ -31,7 +31,7 @@ using System.Runtime.CompilerServices;
 
 namespace Alis.Core.Ecs.System.Configuration.Network
 {
-    [SkipLocalsInit]
+    
     public record struct NetworkSetting(
         int Port = 8080,
         string Ip = "127.0.0.1",
