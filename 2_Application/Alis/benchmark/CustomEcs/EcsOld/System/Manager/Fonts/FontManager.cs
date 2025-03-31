@@ -29,7 +29,7 @@
 
 using Alis.Core.Aspect.Math.Definition;
 
-namespace Alis.Core.EcsOld.System.Manager.Fonts
+namespace Alis.Benchmark.CustomEcs.EcsOld.System.Manager.Fonts
 {
     /// <summary>
     ///     The font manager class

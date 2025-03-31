@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.EcsOld.System.Configuration.Graphic
+namespace Alis.Benchmark.CustomEcs.EcsOld.System.Configuration.Graphic
 {
     /// <summary>
     ///     The graphic setting interface

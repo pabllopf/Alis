@@ -27,10 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Benchmark.CustomEcs.EcsOld.System.Scope;
 using Alis.Core.Aspect.Time;
-using Alis.Core.EcsOld.System.Scope;
 
-namespace Alis.Core.EcsOld.System.Manager.Time
+namespace Alis.Benchmark.CustomEcs.EcsOld.System.Manager.Time
 {
     /// <summary>
     ///     Provides an interface to get time information.

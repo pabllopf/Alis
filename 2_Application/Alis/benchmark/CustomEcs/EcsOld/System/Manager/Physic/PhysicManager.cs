@@ -27,10 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.EcsOld.System.Scope;
-using Alis.Core.Physic.Dynamics;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Scope;
 
-namespace Alis.Core.EcsOld.System.Manager.Physic
+namespace Alis.Benchmark.CustomEcs.EcsOld.System.Manager.Physic
 {
     /// <summary>
     ///     The physic manager base class

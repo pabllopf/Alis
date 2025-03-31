@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.EcsOld.System.Execution
+namespace Alis.Benchmark.CustomEcs.EcsOld.System.Execution
 {
     /// <summary>
     ///     The runteable interface

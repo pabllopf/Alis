@@ -29,7 +29,7 @@
 
 using Alis.Core.Aspect.Logging;
 
-namespace Alis.Core.EcsOld.Component.Light
+namespace Alis.Benchmark.CustomEcs.EcsOld.Component.Light
 {
     /// <summary>
     ///     The spot light class

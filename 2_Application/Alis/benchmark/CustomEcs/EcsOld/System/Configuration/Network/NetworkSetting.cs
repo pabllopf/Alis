@@ -27,11 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.EcsOld.System.Setting.Network;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 
-namespace Alis.Core.EcsOld.System.Configuration.Network
+namespace Alis.Benchmark.CustomEcs.EcsOld.System.Configuration.Network
 {
     /// <summary>
     ///     The network setting class

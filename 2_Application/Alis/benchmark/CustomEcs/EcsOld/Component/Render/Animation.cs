@@ -29,11 +29,10 @@
 
 using System;
 using System.Collections.Generic;
-using Alis.Builder.Core.EcsOld.Component.Render;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 
-namespace Alis.Core.EcsOld.Component.Render
+namespace Alis.Benchmark.CustomEcs.EcsOld.Component.Render
 {
     /// <summary>
     ///     The animation class

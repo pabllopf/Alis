@@ -29,14 +29,13 @@
 
 using System;
 using System.Diagnostics.CodeAnalysis;
-using Alis.Builder.Core.EcsOld.Component.Render;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Color = Alis.Core.Aspect.Math.Definition.Color;
 
-namespace Alis.Core.EcsOld.Component.Render
+namespace Alis.Benchmark.CustomEcs.EcsOld.Component.Render
 {
     /// <summary>
     ///     The camera class

@@ -27,12 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.EcsOld.Component.Render;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent;
 
-namespace Alis.Core.EcsOld.Component.Render
+namespace Alis.Benchmark.CustomEcs.EcsOld.Component.Render
 {
     /// <summary>
     ///     The frame class

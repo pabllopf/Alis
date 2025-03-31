@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.EcsOld.System.Configuration.Input
+namespace Alis.Benchmark.CustomEcs.EcsOld.System.Configuration.Input
 {
     /// <summary>
     ///     The input setting interface

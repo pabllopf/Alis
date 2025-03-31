@@ -27,11 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.EcsOld.System.Setting.Scene;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 
-namespace Alis.Core.EcsOld.System.Configuration.Scene
+namespace Alis.Benchmark.CustomEcs.EcsOld.System.Configuration.Scene
 {
     /// <summary>
     ///     The scene setting class

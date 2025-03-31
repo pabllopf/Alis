@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.EcsOld.Entity
+namespace Alis.Benchmark.CustomEcs.EcsOld.Entity
 {
     /// <summary>
     ///     The entity interface

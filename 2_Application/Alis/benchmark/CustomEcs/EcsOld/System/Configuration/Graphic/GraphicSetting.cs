@@ -27,13 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.EcsOld.System.Setting.Graphic;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Core.EcsOld.System.Configuration.Graphic
+namespace Alis.Benchmark.CustomEcs.EcsOld.System.Configuration.Graphic
 {
     /// <summary>
     ///     The graphic setting class

@@ -28,15 +28,12 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Alis.Benchmark.CustomEcs.EcsOld.Component;
+using Alis.Benchmark.CustomEcs.EcsOld.Entity;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Scope;
 using Alis.Core.Aspect.Data.Mapping;
-using Alis.Core.EcsOld.Component;
-using Alis.Core.EcsOld.Entity;
-using Alis.Core.EcsOld.System.Scope;
-using Alis.Core.Graphic.GlfwLib;
-using Alis.Core.Graphic.GlfwLib.Enums;
-using Alis.Core.Graphic.GlfwLib.Structs;
 
-namespace Alis.Core.EcsOld.System.Manager.Input
+namespace Alis.Benchmark.CustomEcs.EcsOld.System.Manager.Input
 {
     /// <summary>
     ///     The input manager class

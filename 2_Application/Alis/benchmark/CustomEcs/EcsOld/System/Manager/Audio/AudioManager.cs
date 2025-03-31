@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.EcsOld.System.Scope;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Scope;
 
-namespace Alis.Core.EcsOld.System.Manager.Audio
+namespace Alis.Benchmark.CustomEcs.EcsOld.System.Manager.Audio
 {
     /// <summary>
     ///     The audio manager base class

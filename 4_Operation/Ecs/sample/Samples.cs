@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Threading;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Operations;
@@ -169,6 +170,55 @@ namespace Alis.Core.Ecs.Sample
             d.Value = 4;
             Console.WriteLine(d.Value);
         }
+
+        [Sample]
+        public static void SimpleGame()
+        {
+            World world = new World();
+
+            //create
+            Entity entity = world.Create<Position, Velocity, Character>(new(4, 6), new(2, 0), new('@'));
+
+            //simulate 20 frames
+            for (int i = 0; i < 20; i++)
+            {
+                world.Update();
+                Thread.Sleep(100);
+                Console.Clear();
+            }
+
+            Position finalPos = entity.Get<Position>();
+            Console.WriteLine($"Position: X: {finalPos.X} Y: {finalPos.Y}");
+        }
+
+
+        struct Position(int x, int y)
+        {
+            public int X = x;
+            public int Y = y;
+        }
+
+        struct Velocity(int dx, int dy) : IComponent<Position>
+        {
+            public int DX = dx;
+            public int DY = dy;
+            public void Update(ref Position pos)
+            {
+                pos.X += DX;
+                pos.Y += DY;
+            }
+        }
+
+        struct Character(char c) : IComponent<Position>
+        {
+            public char Char = c;
+            public void Update(ref Position pos)
+            {
+                Console.SetCursorPosition(pos.X, pos.Y);
+                Console.Write(Char);
+            }
+        }
+        
 
         /// <summary>
         ///     The write action

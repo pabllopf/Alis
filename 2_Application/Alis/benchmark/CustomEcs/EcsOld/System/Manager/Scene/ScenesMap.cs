@@ -32,7 +32,7 @@ using System.Collections.Generic;
 using System.IO;
 using Alis.Core.Aspect.Data.Json;
 
-namespace Alis.Core.EcsOld.System.Manager.Scene
+namespace Alis.Benchmark.CustomEcs.EcsOld.System.Manager.Scene
 {
     /// <summary>
     ///     The scenes map class

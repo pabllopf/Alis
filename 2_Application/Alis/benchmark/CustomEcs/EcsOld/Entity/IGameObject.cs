@@ -28,10 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using Alis.Core.EcsOld.System.Common;
-using Alis.Core.EcsOld.System.Execution;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Common;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Execution;
 
-namespace Alis.Core.EcsOld.Entity
+namespace Alis.Benchmark.CustomEcs.EcsOld.Entity
 {
     /// <summary>
     ///     The game object interface

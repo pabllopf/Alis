@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.EcsOld.System
+namespace Alis.Benchmark.CustomEcs.EcsOld.System
 {
     /// <summary>
     ///     The game interface

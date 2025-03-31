@@ -29,13 +29,13 @@
 
 using System;
 using System.Runtime.Serialization;
+using Alis.Benchmark.CustomEcs.EcsOld.Entity;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Scope;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.EcsOld.Entity;
-using Alis.Core.EcsOld.System.Scope;
 
-namespace Alis.Core.EcsOld.Component
+namespace Alis.Benchmark.CustomEcs.EcsOld.Component
 {
     /// <summary>
     ///     The component class

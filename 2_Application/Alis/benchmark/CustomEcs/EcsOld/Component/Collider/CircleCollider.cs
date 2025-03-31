@@ -29,7 +29,7 @@
 
 using Alis.Core.Aspect.Logging;
 
-namespace Alis.Core.EcsOld.Component.Collider
+namespace Alis.Benchmark.CustomEcs.EcsOld.Component.Collider
 {
     /// <summary>
     ///     The circle collider class

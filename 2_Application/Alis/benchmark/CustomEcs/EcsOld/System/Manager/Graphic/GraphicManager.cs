@@ -32,26 +32,20 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using Alis.Benchmark.CustomEcs.EcsOld.Component.Collider;
+using Alis.Benchmark.CustomEcs.EcsOld.Component.Render;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Configuration;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Configuration.Physic;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Manager.Fonts;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Scope;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.EcsOld.Component.Collider;
-using Alis.Core.EcsOld.Component.Render;
-using Alis.Core.EcsOld.System.Configuration;
-using Alis.Core.EcsOld.System.Configuration.Physic;
-using Alis.Core.EcsOld.System.Manager.Fonts;
-using Alis.Core.EcsOld.System.Scope;
-using Alis.Core.Graphic.GlfwLib;
-using Alis.Core.Graphic.GlfwLib.Enums;
-using Alis.Core.Graphic.GlfwLib.Structs;
-using Alis.Core.Graphic.OpenGL;
-using Alis.Core.Graphic.OpenGL.Enums;
-using Alis.Core.Graphic.Stb;
 using Color = Alis.Core.Aspect.Math.Definition.Color;
 using Exception = System.Exception;
 
-namespace Alis.Core.EcsOld.System.Manager.Graphic
+namespace Alis.Benchmark.CustomEcs.EcsOld.System.Manager.Graphic
 {
     /// <summary>
     ///     The graphic manager base class

@@ -30,16 +30,12 @@
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
-using Alis.Builder.Core.EcsOld.Component.Render;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Graphic.OpenGL;
-using Alis.Core.Graphic.OpenGL.Enums;
-using Alis.Core.Graphic.Stb;
 
-namespace Alis.Core.EcsOld.Component.Render
+namespace Alis.Benchmark.CustomEcs.EcsOld.Component.Render
 {
     /// <summary>
     ///     The sprite class

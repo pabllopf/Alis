@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.EcsOld.System.Configuration.Scene
+namespace Alis.Benchmark.CustomEcs.EcsOld.System.Configuration.Scene
 {
     /// <summary>
     ///     The scene setting interface

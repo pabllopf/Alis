@@ -29,12 +29,11 @@
 
 using System;
 using System.Collections.Generic;
-using Alis.Builder.Core.EcsOld.Entity.Scene;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Scope;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.EcsOld.System.Scope;
 
-namespace Alis.Core.EcsOld.Entity
+namespace Alis.Benchmark.CustomEcs.EcsOld.Entity
 {
     /// <summary>
     ///     The scene class

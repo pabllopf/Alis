@@ -27,11 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Benchmark.CustomEcs.EcsOld.System.Common;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Execution;
 using Alis.Core.Aspect.Data.Mapping;
-using Alis.Core.EcsOld.System.Common;
-using Alis.Core.EcsOld.System.Execution;
 
-namespace Alis.Core.EcsOld.Component
+namespace Alis.Benchmark.CustomEcs.EcsOld.Component
 {
     /// <summary>
     ///     The component interface

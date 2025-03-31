@@ -29,12 +29,12 @@
 
 using System;
 using System.Threading;
-using Alis.Core.EcsOld.System.Configuration;
-using Alis.Core.EcsOld.System.Execution;
-using Alis.Core.EcsOld.System.Manager;
-using Alis.Core.EcsOld.System.Manager.Time;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Configuration;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Execution;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Manager;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Manager.Time;
 
-namespace Alis.Core.EcsOld.System.Scope
+namespace Alis.Benchmark.CustomEcs.EcsOld.System.Scope
 {
     /// <summary>
     ///     The context handler class

@@ -29,16 +29,16 @@
 
 using System;
 using System.IO;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Configuration.Audio;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Configuration.General;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Configuration.Graphic;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Configuration.Input;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Configuration.Network;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Configuration.Physic;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Configuration.Scene;
 using Alis.Core.Aspect.Data.Json;
-using Alis.Core.EcsOld.System.Configuration.Audio;
-using Alis.Core.EcsOld.System.Configuration.General;
-using Alis.Core.EcsOld.System.Configuration.Graphic;
-using Alis.Core.EcsOld.System.Configuration.Input;
-using Alis.Core.EcsOld.System.Configuration.Network;
-using Alis.Core.EcsOld.System.Configuration.Physic;
-using Alis.Core.EcsOld.System.Configuration.Scene;
 
-namespace Alis.Core.EcsOld.System.Configuration
+namespace Alis.Benchmark.CustomEcs.EcsOld.System.Configuration
 {
     /// <summary>
     ///     The setting class

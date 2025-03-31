@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.EcsOld.System.Common
+namespace Alis.Benchmark.CustomEcs.EcsOld.System.Common
 {
     /// <summary>
     ///     The identifier interface

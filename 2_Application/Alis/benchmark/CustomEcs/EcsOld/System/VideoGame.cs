@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Benchmark.CustomEcs.EcsOld.System.Configuration;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Scope;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.EcsOld.System.Configuration;
-using Alis.Core.EcsOld.System.Scope;
 
-namespace Alis.Core.EcsOld.System
+namespace Alis.Benchmark.CustomEcs.EcsOld.System
 {
     /// <summary>
     ///     Represents a video game with context handling capabilities.

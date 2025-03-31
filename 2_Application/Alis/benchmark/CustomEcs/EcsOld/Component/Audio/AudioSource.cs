@@ -28,11 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System.Threading;
-using Alis.Builder.Core.EcsOld.Component.Audio;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Logging;
 
-namespace Alis.Core.EcsOld.Component.Audio
+namespace Alis.Benchmark.CustomEcs.EcsOld.Component.Audio
 {
     /// <summary>
     ///     The audio source class
