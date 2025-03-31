@@ -28,22 +28,20 @@
 //  --------------------------------------------------------------------------
 
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Order;
 
 namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleComposition
 {
     /// <summary>
     ///     The system with two components multiple composition class
     /// </summary>
-    [BenchmarkCategory(Categories.System), MemoryDiagnoser]
-#if CHECK_CACHE_MISSES
-    [HardwareCounters(BenchmarkDotNet.Diagnosers.HardwareCounter.CacheMisses)]
-#endif
+    [BenchmarkCategory(Categories.System), MemoryDiagnoser(false), ShortRunJob, Orderer(SummaryOrderPolicy.FastestToSlowest)]
     public partial class SystemWithTwoComponentsMultipleComposition
     {
         /// <summary>
         ///     Gets or sets the value of the entity count
         /// </summary>
-        [Params(100000)]
+        [Params(1_000)]
         public int EntityCount { get; set; }
 
         /// <summary>
