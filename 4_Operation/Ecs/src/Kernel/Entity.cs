@@ -98,13 +98,7 @@ namespace Alis.Core.Ecs.Kernel
         ///     Gets the value of the entity low
         /// </summary>
         internal int EntityLow => Unsafe.As<Entity, EntityHighLow>(ref this).EntityLow;
-
-
-
-
-
-
-
+        
         /// <summary>
         ///     Internals the is alive using the specified world
         /// </summary>
