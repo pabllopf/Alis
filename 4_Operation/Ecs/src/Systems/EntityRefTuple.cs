@@ -6,7 +6,7 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     The entity ref tuple
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct EntityRefTuple<T>
     {
         /// <summary>

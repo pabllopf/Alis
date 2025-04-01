@@ -7,7 +7,7 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     The chunk tuple
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkTuple<T>
     {
         /// <summary>
@@ -30,7 +30,7 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkTuple<T1, T2>
     {
         public EntityEnumerator.EntityEnumerable Entities;
@@ -44,7 +44,7 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkTuple<T1, T2, T3>
     {
         public EntityEnumerator.EntityEnumerable Entities;
@@ -60,7 +60,7 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkTuple<T1, T2, T3, T4>
     {
         public EntityEnumerator.EntityEnumerable Entities;
@@ -78,7 +78,7 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkTuple<T1, T2, T3, T4, T5>
     {
         public EntityEnumerator.EntityEnumerable Entities;
@@ -98,7 +98,7 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkTuple<T1, T2, T3, T4, T5, T6>
     {
         public EntityEnumerator.EntityEnumerable Entities;
@@ -120,7 +120,7 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkTuple<T1, T2, T3, T4, T5, T6, T7>
     {
         public EntityEnumerator.EntityEnumerable Entities;
@@ -144,7 +144,7 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8>
     {
         public EntityEnumerator.EntityEnumerable Entities;
@@ -170,7 +170,7 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9>
     {
         public EntityEnumerator.EntityEnumerable Entities;
@@ -198,7 +198,7 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>
     {
         public EntityEnumerator.EntityEnumerable Entities;
@@ -228,7 +228,7 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>
     {
         public EntityEnumerator.EntityEnumerable Entities;
@@ -260,7 +260,7 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>
     {
         public EntityEnumerator.EntityEnumerable Entities;
@@ -294,7 +294,7 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>
     {
         public EntityEnumerator.EntityEnumerable Entities;
@@ -330,7 +330,7 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>
     {
         public EntityEnumerator.EntityEnumerable Entities;
@@ -368,7 +368,7 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>
     {
         public EntityEnumerator.EntityEnumerable Entities;
@@ -408,7 +408,7 @@ namespace Alis.Core.Ecs.Systems
         }
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>
     {
         public EntityEnumerator.EntityEnumerable Entities;

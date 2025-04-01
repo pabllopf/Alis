@@ -38,7 +38,7 @@ namespace Alis.Core.Ecs.Collections
     /// <summary>
     ///     The table
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct Table<T>(int size)
     {
         /// <summary>
