@@ -47,7 +47,7 @@ namespace Alis.Core.Ecs
       EntityLocation entityLocation = new EntityLocation();
       Unsafe.SkipInit<int>(out int physicalIndex);
       ComponentStorageBase[] writeStorage;
-      // ISSUE: variable of a reference type
+      
       ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
       if (this.AllowStructualChanges)
       {
@@ -124,7 +124,7 @@ namespace Alis.Core.Ecs
       EntityLocation entityLocation = new EntityLocation();
       Unsafe.SkipInit<int>(out int physicalIndex);
       ComponentStorageBase[] writeStorage;
-      // ISSUE: variable of a reference type
+      
       ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
       if (this.AllowStructualChanges)
       {
@@ -210,7 +210,7 @@ namespace Alis.Core.Ecs
       EntityLocation entityLocation = new EntityLocation();
       Unsafe.SkipInit<int>(out int physicalIndex);
       ComponentStorageBase[] writeStorage;
-      // ISSUE: variable of a reference type
+      
        ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
       if (this.AllowStructualChanges)
       {
@@ -314,7 +314,7 @@ namespace Alis.Core.Ecs
       EntityLocation entityLocation = new EntityLocation();
       Unsafe.SkipInit<int>(out int physicalIndex);
       ComponentStorageBase[] writeStorage;
-      // ISSUE: variable of a reference type
+      
        ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
       if (this.AllowStructualChanges)
       {
@@ -430,7 +430,7 @@ namespace Alis.Core.Ecs
       EntityLocation entityLocation = new EntityLocation();
       Unsafe.SkipInit<int>(out int physicalIndex);
       ComponentStorageBase[] writeStorage;
-      // ISSUE: variable of a reference type
+      
        ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
       if (this.AllowStructualChanges)
       {
@@ -558,7 +558,7 @@ namespace Alis.Core.Ecs
       EntityLocation entityLocation = new EntityLocation();
       Unsafe.SkipInit<int>(out int physicalIndex);
       ComponentStorageBase[] writeStorage;
-      // ISSUE: variable of a reference type
+      
        ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
       if (this.AllowStructualChanges)
       {
@@ -698,7 +698,7 @@ namespace Alis.Core.Ecs
       EntityLocation entityLocation = new EntityLocation();
       Unsafe.SkipInit<int>(out int physicalIndex);
       ComponentStorageBase[] writeStorage;
-      // ISSUE: variable of a reference type
+      
        ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
       if (this.AllowStructualChanges)
       {
@@ -851,7 +851,7 @@ namespace Alis.Core.Ecs
       EntityLocation entityLocation = new EntityLocation();
       Unsafe.SkipInit<int>(out int physicalIndex);
       ComponentStorageBase[] writeStorage;
-      // ISSUE: variable of a reference type
+      
        ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
       if (this.AllowStructualChanges)
       {
@@ -1016,7 +1016,7 @@ namespace Alis.Core.Ecs
       EntityLocation entityLocation = new EntityLocation();
       Unsafe.SkipInit<int>(out int physicalIndex);
       ComponentStorageBase[] writeStorage;
-      // ISSUE: variable of a reference type
+      
        ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
       if (this.AllowStructualChanges)
       {
@@ -1193,7 +1193,7 @@ namespace Alis.Core.Ecs
       EntityLocation entityLocation = new EntityLocation();
       Unsafe.SkipInit<int>(out int physicalIndex);
       ComponentStorageBase[] writeStorage;
-      // ISSUE: variable of a reference type
+      
        ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
       if (this.AllowStructualChanges)
       {
@@ -1382,7 +1382,7 @@ namespace Alis.Core.Ecs
       EntityLocation entityLocation = new EntityLocation();
       Unsafe.SkipInit<int>(out int physicalIndex);
       ComponentStorageBase[] writeStorage;
-      // ISSUE: variable of a reference type
+      
        ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
       if (this.AllowStructualChanges)
       {
@@ -1583,7 +1583,7 @@ namespace Alis.Core.Ecs
       EntityLocation entityLocation = new EntityLocation();
       Unsafe.SkipInit<int>(out int physicalIndex);
       ComponentStorageBase[] writeStorage;
-      // ISSUE: variable of a reference type
+      
        ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
       if (this.AllowStructualChanges)
       {
@@ -1796,7 +1796,7 @@ namespace Alis.Core.Ecs
       EntityLocation entityLocation = new EntityLocation();
       Unsafe.SkipInit<int>(out int physicalIndex);
       ComponentStorageBase[] writeStorage;
-      // ISSUE: variable of a reference type
+      
        ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
       if (this.AllowStructualChanges)
       {
@@ -2021,7 +2021,7 @@ namespace Alis.Core.Ecs
       EntityLocation entityLocation = new EntityLocation();
       Unsafe.SkipInit<int>(out int physicalIndex);
       ComponentStorageBase[] writeStorage;
-      // ISSUE: variable of a reference type
+      
        ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
       if (this.AllowStructualChanges)
       {
@@ -2258,7 +2258,7 @@ namespace Alis.Core.Ecs
       EntityLocation entityLocation = new EntityLocation();
       Unsafe.SkipInit<int>(out int physicalIndex);
       ComponentStorageBase[] writeStorage;
-      // ISSUE: variable of a reference type
+      
        ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
       if (this.AllowStructualChanges)
       {
