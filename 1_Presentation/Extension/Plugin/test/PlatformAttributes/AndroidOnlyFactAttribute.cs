@@ -27,7 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.EcsOld.System.Scope;
+using Alis.Core.Ecs.System.Scope;
+
 using Xunit;
 
 namespace Alis.Extension.Plugin.Test.PlatformAttributes
