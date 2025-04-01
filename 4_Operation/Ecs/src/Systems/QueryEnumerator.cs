@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Core;
 using Alis.Core.Ecs.Core.Archetype;
@@ -38,6 +39,7 @@ namespace Alis.Core.Ecs.Systems
     ///     The query enumerator
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    [SkipLocalsInit]
     public ref struct QueryEnumerator<T>
     {
         /// <summary>

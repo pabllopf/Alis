@@ -45,7 +45,7 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     An Entity reference; refers to a collection of components of unqiue types.
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct Entity : IEquatable<Entity>
     {
         /// <summary>

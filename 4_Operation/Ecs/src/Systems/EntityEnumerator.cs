@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Core;
 
@@ -37,6 +38,7 @@ namespace Alis.Core.Ecs.Systems
     ///     The entity enumerator
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    [SkipLocalsInit]
     public ref struct EntityEnumerator
     {
         /// <summary>

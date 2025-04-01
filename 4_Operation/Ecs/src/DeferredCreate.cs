@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace Alis.Core.Ecs
@@ -36,5 +37,6 @@ namespace Alis.Core.Ecs
     ///     and will have its components added on afterwards.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    [SkipLocalsInit]
     public readonly record struct DeferredCreate;
 }
