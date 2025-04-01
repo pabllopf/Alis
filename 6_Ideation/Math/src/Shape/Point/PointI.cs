@@ -34,7 +34,7 @@ namespace Alis.Core.Aspect.Math.Shape.Point
     /// <summary>
     ///     The sdl point
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct PointI : IShape
     {
         /// <summary>

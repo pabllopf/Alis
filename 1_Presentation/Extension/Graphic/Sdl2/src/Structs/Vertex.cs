@@ -36,7 +36,7 @@ namespace Alis.Extension.Graphic.Sdl2.Structs
     /// <summary>
     ///     The sdl vertex
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct Vertex
     {
         /// <summary>

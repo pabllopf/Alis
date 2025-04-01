@@ -1294,7 +1294,7 @@ namespace Alis.Core.Graphic.Stb
         /// <summary>
         ///     The stbi pngchunk
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public struct stbi__pngchunk
         {
             /// <summary>

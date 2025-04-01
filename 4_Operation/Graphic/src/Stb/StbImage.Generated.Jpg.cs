@@ -2365,7 +2365,7 @@ namespace Alis.Core.Graphic.Stb
         /// <summary>
         ///     The stbi huffman
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public struct stbi__huffman
         {
             /// <summary>
@@ -2567,7 +2567,7 @@ namespace Alis.Core.Graphic.Stb
             /// <summary>
             ///     The unnamed
             /// </summary>
-            [StructLayout(LayoutKind.Sequential)]
+            [StructLayout(LayoutKind.Sequential, Pack = 1)]
             public struct unnamed1
             {
                 /// <summary>

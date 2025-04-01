@@ -36,7 +36,7 @@ namespace Alis.Extension.Graphic.Sdl2.Structs
     /// <summary>
     ///     The sdl text editing event
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public readonly struct TextEditingEvent
     {
         /// <summary>

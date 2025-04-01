@@ -35,7 +35,7 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
     /// <summary>
     ///     Represents the state of a gamepad.
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct GamePadState
     {
         /// <summary>

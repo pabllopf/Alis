@@ -34,7 +34,7 @@ namespace Alis.Core.Aspect.Math.Shape.Square
     /// <summary>
     ///     The sdl rect
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct SquareI : IShape
     {
         /// <summary>

@@ -34,7 +34,7 @@ namespace Alis.Extension.Graphic.Sdl2.Structs
     /// <summary>
     ///     The internal sdl game controller button bind
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal struct InternalSdlGameControllerButtonBind
     {
         /// <summary>

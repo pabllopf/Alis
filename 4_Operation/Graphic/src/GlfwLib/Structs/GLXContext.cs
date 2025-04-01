@@ -35,7 +35,7 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
     /// <summary>
     ///     Wrapper around a GLX context pointer.
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     // ReSharper disable once InconsistentNaming
     public struct GLXContext : IEquatable<GLXContext>
     {

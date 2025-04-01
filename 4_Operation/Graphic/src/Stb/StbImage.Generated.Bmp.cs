@@ -680,7 +680,7 @@ namespace Alis.Core.Graphic.Stb
         /// <summary>
         ///     The stbi bmp data
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public struct stbi__bmp_data
         {
             /// <summary>
